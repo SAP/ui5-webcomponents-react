@@ -2,10 +2,12 @@ import { useReducer } from 'react';
 import { createPortal } from 'react-dom';
 import { InputType } from '../../enums/index.js';
 import { Input, Label } from '../../webComponents/index.js';
+import type { FormGroupPropTypes } from '../FormGroup';
 import { FormGroup } from '../FormGroup';
 import { FormItem } from '../FormItem';
+import type { FormPropTypes } from './index.js';
 import { Form } from './index.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 const component = (
   <Form titleText={'Test form'}>
@@ -148,7 +150,7 @@ describe('Form', () => {
     cy.findByText('Toggle Input').click();
     cy.findAllByText('Item 2').should('exist');
     cy.findByTestId('2').should('be.visible').as('item2');
-    cy.get('@item2').parent().should('have.css', 'grid-column-start', '17').and('have.css', 'grid-row-start', '1');
+    cy.get('@item2').parent().should('have.css', 'grid-column-start', '5').and('have.css', 'grid-row-start', '2');
 
     cy.findByText('Toggle Group').click();
     cy.findByText('Group 1')
@@ -186,6 +188,46 @@ describe('Form', () => {
     cy.findByTestId('g2').should('be.visible').as('g2');
     cy.get('@g2').parent().should('have.css', 'grid-column-start', '5').and('have.css', 'grid-row-start', '5');
     cy.findByTestId('2').should('not.exist');
+  });
+
+  [undefined, 'div'].forEach((as: FormPropTypes['as']) => {
+    const isDefault = !as;
+    mountWithCustomTagName(
+      Form,
+      {
+        as,
+        children: (
+          <FormItem label="FormItem">
+            <Input />
+          </FormItem>
+        )
+      },
+      {
+        testTitle: `mount with ${isDefault ? 'default' : 'custom'} tag name`,
+        defaultTagName: isDefault ? 'form' : as
+      }
+    );
+  });
+
+  [undefined, 'div'].forEach((as: FormGroupPropTypes['as']) => {
+    const isDefault = !as;
+    mountWithCustomTagName(
+      FormGroup,
+      {
+        as,
+        titleText: 'FormGroup',
+        children: (
+          <FormItem label="FormItem">
+            <Input />
+          </FormItem>
+        )
+      },
+      {
+        testTitle: `FormGroup: mount with ${isDefault ? 'default' : 'custom'} tag name`,
+        defaultTagName: isDefault ? 'h5' : as,
+        wrapperComponent: Form
+      }
+    );
   });
 
   cypressPassThroughTestsFactory(Form, {

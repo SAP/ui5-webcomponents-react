@@ -3,11 +3,10 @@ import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
-import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { createUseStyles } from 'react-jss';
 import {
   FlexBoxAlignItems,
   ListItemType,
@@ -27,6 +26,7 @@ import { Popover } from '../../../webComponents/Popover/index.js';
 import { StandardListItem } from '../../../webComponents/StandardListItem/index.js';
 import { FlexBox } from '../../FlexBox/index.js';
 import type { AnalyticalTableColumnDefinition } from '../types/index.js';
+import { classNames, styleData } from './ColumnHeaderModal.module.css.js';
 
 export interface ColumnHeaderModalProperties {
   column: AnalyticalTableColumnDefinition;
@@ -39,25 +39,9 @@ export interface ColumnHeaderModalProperties {
   openerRef: MutableRefObject<HTMLDivElement>;
 }
 
-const styles = {
-  popover: {
-    fontWeight: 'normal',
-    '&::part(content)': {
-      padding: 0
-    }
-  },
-  filterIcon: {
-    paddingInlineEnd: '0.5rem',
-    minWidth: '1rem',
-    minHeight: '1rem',
-    color: ThemingParameters.sapContent_NonInteractiveIconColor
-  }
-};
-const useStyles = createUseStyles(styles, { name: 'ColumnHeaderModal' });
-
 export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   const { column, onSort, onGroupBy, open, setPopoverOpen, portalContainer, isRtl, openerRef } = props;
-  const classes = useStyles();
+  useStylesheet(styleData, ColumnHeaderModal.displayName);
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
   const showSort = column.canSort;
@@ -141,7 +125,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   };
 
   const horizontalAlign = (() => {
-    switch (column.hAlign as AnalyticalTableColumnDefinition['hAlign']) {
+    switch (column.hAlign) {
       case TextAlign.Begin:
         return isRtl ? PopoverHorizontalAlign.Right : PopoverHorizontalAlign.Left;
       case TextAlign.End:
@@ -197,7 +181,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       horizontalAlign={horizontalAlign}
       placementType={PopoverPlacementType.Bottom}
       ref={ref}
-      className={classes.popover}
+      className={classNames.popover}
       onClick={stopPropagation}
       onAfterClose={onAfterClose}
       onAfterOpen={onAfterOpen}
@@ -227,7 +211,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
           //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed (undefined is displayed as val)
           <CustomListItem type={ListItemType.Inactive} onKeyDown={handleCustomLiKeyDown}>
             <FlexBox alignItems={FlexBoxAlignItems.Center}>
-              <Icon name={iconFilter} className={classes.filterIcon} aria-hidden />
+              <Icon name={iconFilter} className={classNames.filterIcon} aria-hidden />
               <Filter column={column} popoverRef={ref} />
             </FlexBox>
           </CustomListItem>

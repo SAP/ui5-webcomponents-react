@@ -1,0 +1,11 @@
+.tableContainer {
+  margin-top: 25px;
+
+  table {
+    margin-top: 0 !important;
+  }
+}
+
+.strip {
+  margin-bottom: 10px;
+}

@@ -1,7 +1,7 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { useState } from 'react';
 import type { SplitterLayoutPropTypes } from '../..';
 import { Button, Label, SplitterElement, SplitterLayout } from '../..';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 function TestComp({ vertical, dir }: { vertical: SplitterLayoutPropTypes['vertical']; dir: string }) {
   const [mount, setMount] = useState(false);

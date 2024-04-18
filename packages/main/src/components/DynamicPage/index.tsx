@@ -1,16 +1,16 @@
 'use client';
 
-import { debounce, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
+import { debounce, ThemingParameters, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import React, { cloneElement, forwardRef, useEffect, useRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums/index.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import type { CommonProps } from '../../types/index.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
 import { FlexBox } from '../FlexBox/index.js';
-import { DynamicPageCssVariables, styles } from './DynamicPage.jss.js';
+import { classNames, styleData } from './DynamicPage.module.css.js';
+import { DynamicPageCssVariables } from './utils.js';
 
 export interface DynamicPagePropTypes extends Omit<CommonProps, 'title' | 'children'> {
   /**
@@ -107,7 +107,6 @@ enum HEADER_STATES {
   HIDDEN = 'HIDDEN'
 }
 
-const useStyles = createUseStyles(styles, { name: 'DynamicPage' });
 /**
  * The dynamic page is a generic layout control designed to support various floorplans and use cases.
  * The content of both the header and the page can differ from floorplan to floorplan.
@@ -187,13 +186,13 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     }
   }, [headerCollapsedProp]);
 
-  const classes = useStyles();
+  useStylesheet(styleData, DynamicPage.displayName);
   const dynamicPageClasses = clsx(
-    classes.dynamicPage,
+    classNames.dynamicPage,
     GlobalStyleClasses.sapScrollBar,
-    classes[`background${backgroundDesign}`],
+    classNames[`background${backgroundDesign}`],
     className,
-    [HEADER_STATES.HIDDEN, HEADER_STATES.HIDDEN_PINNED].includes(headerState) && classes.headerCollapsed
+    [HEADER_STATES.HIDDEN, HEADER_STATES.HIDDEN_PINNED].includes(headerState) && classNames.headerCollapsed
   );
 
   useEffect(() => {
@@ -352,7 +351,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
             !headerContent ||
             (!showHideHeaderButton && !headerContentPinnable),
           ref: componentRefTopHeader,
-          className: clsx(classes.title, headerTitle?.props?.className),
+          className: clsx(classNames.title, headerTitle?.props?.className),
           onToggleHeaderContentVisibility: onToggleHeaderContentInternal,
           'data-header-content-visible': headerContent && headerCollapsed !== true
         })}
@@ -363,7 +362,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
             headerCollapsed === true
               ? { ...headerContent.props.style, position: 'relative', visibility: 'hidden' }
               : headerContent.props.style,
-          className: clsx(classes.header, headerContent?.props?.className),
+          className: clsx(classNames.header, headerContent?.props?.className),
           headerPinned:
             preserveHeaderStateOnScroll ||
             headerState === HEADER_STATES.VISIBLE_PINNED ||
@@ -372,7 +371,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
         })}
       <FlexBox
         data-component-name="DynamicPageAnchorBarContainer"
-        className={classes.anchorBar}
+        className={classNames.anchorBar}
         ref={anchorBarRef}
         style={{ top }}
       >
@@ -391,7 +390,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
       <div
         ref={contentRef}
         data-component-name="DynamicPageContent"
-        className={classes.contentContainer}
+        className={classNames.contentContainer}
         style={{
           paddingBlockEnd: footer ? '1rem' : 0
         }}
@@ -400,7 +399,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
       </div>
       {footer && (
         <div
-          className={classes.footer}
+          className={classNames.footer}
           style={{ position: isOverflowing ? 'sticky' : 'absolute' }}
           data-component-name="DynamicPageFooter"
           role={a11yConfig?.dynamicPageFooter?.role ?? 'contentinfo'}

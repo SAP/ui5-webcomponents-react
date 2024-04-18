@@ -17,7 +17,7 @@ const Cell = (instance) => {
     return (
       <div
         style={baseStyles}
-        className={webComponentsReactProperties.classes.valueStateInformation}
+        className={webComponentsReactProperties.classes.navigation}
         data-component-name="AnalyticalTableNavigatedCell"
       />
     );

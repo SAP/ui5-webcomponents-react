@@ -13,7 +13,7 @@ import { Footer, TableOfContent } from '@sb/components';
 ## Styling UI5 Web Components for React components
 
 You can change the appearance of the Web Components by using [CSS Variables](https://www.w3schools.com/Css/css3_variables.asp).
-Per default, we are injecting the Fiori 3 theme parameters as CSS Variables into the `<head>`.
+Per default, we are injecting the Horizon theme parameters as CSS Variables into the `<head>`.
 For example, if you want to change the color of all texts that use the `--sapTextColor` variable, you can create an additional `style` tag with the following content:
 
 ```html
@@ -60,11 +60,7 @@ Some components like the `ObjectPage`, `DynamicPage` and `AnalyticalTable` use t
 ## Style your own components
 
 It's quite likely you have to create some custom components when you are building an app.
-In order to reuse our central styling approach, you can import the `ThemingParameters` that contain the various CSS variables used in our theming.
-
-If you want to style your components with the `react-jss` syntax, you can use the `createUseStyles` styling hook.
-`react-jss` comes already as a dependency of `@ui5/webcomponents-react` to your project - but we recommend adding it to your `package.json` as well.
-**Please make sure you are installing `"react-jss": "^10.0.0"`**. Previous versions of this library won't work correctly together with our library.
+In order to reuse our central styling approach, you can import the `ThemingParameters` that contain the various CSS variables used in our theming, or use the CSS variables directly.
 
 <MessageStrip
   design={MessageStripDesign.Information}
@@ -85,34 +81,31 @@ If you want to style your components with the `react-jss` syntax, you can use th
 
 You can then create a custom component by following this recipe:
 
-```jsx
+```tsx
 import React from 'react';
-import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import './MyCustomElement.css';
 
-const styles = {
-  container: {
-    backgroundColor: ThemingParameters.sapBackgroundColor,
-    fontFamily: ThemingParameters.sapFontFamily,
-    height: '50px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-};
-
-const useStyles = createUseStyles(styles, { name: 'MyCustomElement' });
-
-const MyCustomElement = () => {
-  const classes = useStyles();
+export const MyCustomElement = () => {
   return (
-    <div className={classes.container}>
+    <div className="containerCustomElement">
       <span style={{ color: ThemingParameters.sapNegativeColor, fontSize: ThemingParameters.sapFontLargeSize }}>
         My Text
       </span>
     </div>
   );
 };
+```
+
+```css
+.containerCustomElement {
+  background-color: var(--sapBackgroundColor);
+  font-family: var(--sapFontFamily);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 ```
 
 This would then be the result:

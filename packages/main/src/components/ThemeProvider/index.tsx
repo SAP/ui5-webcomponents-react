@@ -55,7 +55,8 @@ const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes
   const StyleContext = getStyleContext();
   const styleContextValue = useMemo(() => {
     return {
-      staticCssInjected: staticCssInjected ?? false
+      staticCssInjected: staticCssInjected ?? false,
+      componentsMap: new Map()
     };
   }, [staticCssInjected]);
 

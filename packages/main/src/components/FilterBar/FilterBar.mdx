@@ -190,6 +190,79 @@ const FilterBarComponent = (args) => {
 
 </details>
 
+## FilterBar with Reordering
+
+To enable the reordering feature set `enableReordering` to `true` and add a unique `orderId` prop to each `FilterGroupItem`.
+
+<Canvas of={ComponentStories.WithReordering} />
+
+### Code
+
+<details>
+
+<summary>Show Code</summary>
+
+```jsx
+function FilterBarWithReordering(props) {
+  const uniqueId = useId();
+  const [orderedChildren, setOrderedChildren] = useState([
+    <FilterGroupItem key={`${uniqueId}-0`} label="StepInput" required orderId={`${uniqueId}-0`}>
+      <StepInput required />
+    </FilterGroupItem>,
+    <FilterGroupItem key={`${uniqueId}-1`} label="RatingIndicator" orderId={`${uniqueId}-1`}>
+      <RatingIndicator />
+    </FilterGroupItem>,
+    <FilterGroupItem key={`${uniqueId}-2`} label="MultiInput" active orderId={`${uniqueId}-2`}>
+      <MultiInput
+        tokens={
+          <>
+            <Token text="Argentina" selected />
+            <Token text="Bulgaria" />
+            <Token text="England" />
+            <Token text="Finland" />
+          </>
+        }
+      />
+    </FilterGroupItem>,
+    <FilterGroupItem key={`${uniqueId}-3`} label="Input" orderId={`${uniqueId}-3`}>
+      <Input placeholder="Placeholder" />
+    </FilterGroupItem>,
+    <FilterGroupItem key={`${uniqueId}-4`} label="Switch" orderId={`${uniqueId}-4`}>
+      <Switch />
+    </FilterGroupItem>,
+    <FilterGroupItem
+      key={`${uniqueId}-5`}
+      label="SELECT w/ initial selected"
+      visibleInFilterBar={false}
+      orderId={`${uniqueId}-5`}
+    >
+      <Select>
+        <Option>Option 1</Option>
+        <Option selected>Option 2</Option>
+        <Option>Option 3</Option>
+        <Option>Option 4</Option>
+      </Select>
+    </FilterGroupItem>
+  ]);
+
+  const handleFiltersDialogSave = (e) => {
+    setOrderedChildren((prev) => {
+      return e.detail.reorderedItems.orderedIds.map((orderId) => {
+        const obj = prev.find((item) => item.props.orderId === orderId);
+        return { ...obj };
+      });
+    });
+  };
+  return (
+    <FilterBar {...props} onFiltersDialogSave={handleFiltersDialogSave} enableReordering showResetButton>
+      {orderedChildren}
+    </FilterBar>
+  );
+}
+```
+
+</details>
+
 ## FilterBar in a DynamicPage
 
 When a FilterBar is used inside e.g. a DynamicPage, `hideToolbar` should be set to `true`, since the `VariantManagement` of

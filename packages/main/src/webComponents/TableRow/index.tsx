@@ -9,6 +9,8 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface TableRowAttributes {
   /**
    * Indicates if the table row is navigated.
+   *
+   * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
    * @default false
    */
   navigated?: boolean;
@@ -20,7 +22,10 @@ interface TableRowAttributes {
   selected?: boolean;
 
   /**
-   * Defines the visual indication and behavior of the component. **Note:** When set to `Active`, the item will provide visual response upon press, while with type `Inactive`\-will not.
+   * Defines the visual indication and behavior of the component.
+   *
+   * **Note:** When set to `Active`, the item will provide visual response upon press,
+   * while with type `Inactive`-will not.
    * @default "Inactive"
    */
   type?: TableRowType | keyof typeof TableRowType;

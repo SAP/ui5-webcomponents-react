@@ -4,10 +4,11 @@ import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { CardHeader } from '../CardHeader';
 import * as ComponentStories from './Card.stories';
 import { AnalyticalCardHeader } from '../../components/AnalyticalCardHeader/index';
+import { NumericSideIndicator } from '../../components/NumericSideIndicator/index';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader subComponents={['AnalyticalCardHeader', 'NumericSideIndicator']} mergeSubComponents />
 
 <br />
 
@@ -42,5 +43,14 @@ import { AnalyticalCardHeader } from '../../components/AnalyticalCardHeader/inde
 **Note:** The `AnalyticalCardHeader` is a pure React component developed exclusively in the ui5-webcomponents-react repo.
 
 <ArgTypesWithNote of={AnalyticalCardHeader} />
+
+## NumericSideIndicator
+
+<Description of={NumericSideIndicator} />
+
+**Note:** The `NumericSideIndicator` is a pure React component developed exclusively in the ui5-webcomponents-react repo.
+It should only be used inside the `AnalyticalCardHeader`.
+
+<ArgTypesWithNote of={NumericSideIndicator} />
 
 <Footer />

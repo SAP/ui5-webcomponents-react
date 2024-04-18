@@ -1,14 +1,13 @@
 'use client';
 
-import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
+import { Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ElementType, ReactNode } from 'react';
 import React, { forwardRef, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
 import { FormBackgroundDesign, TitleLevel } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';
 import { Title } from '../../webComponents/index.js';
-import { styles } from './Form.jss.js';
+import { classNames, styleData } from './Form.module.css.js';
 import { FormContext } from './FormContext.js';
 import type { FormContextType, FormElementTypes, FormGroupLayoutInfo, FormItemLayoutInfo, ItemInfo } from './types.js';
 
@@ -16,7 +15,7 @@ const recalcReducerFn = (prev: number) => {
   return prev + 1;
 };
 
-const useStyles = createUseStyles(styles, { name: 'Form' });
+type DisplayRange = 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop';
 
 export interface FormPropTypes extends CommonProps {
   /**
@@ -130,15 +129,15 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   } = props;
 
   const [items, setItems] = useState<Map<string, ItemInfo>>(() => new Map());
-  const classes = useStyles();
+  useStylesheet(styleData, Form.displayName);
 
-  const columnsMap = new Map();
+  const columnsMap = new Map<DisplayRange, number>();
   columnsMap.set('Phone', columnsS);
   columnsMap.set('Tablet', columnsM);
   columnsMap.set('Desktop', columnsL);
   columnsMap.set('LargeDesktop', columnsXL);
 
-  const labelSpanMap = new Map();
+  const labelSpanMap = new Map<DisplayRange, number>();
   labelSpanMap.set('Phone', labelSpanS);
   labelSpanMap.set('Tablet', labelSpanM);
   labelSpanMap.set('Desktop', labelSpanL);
@@ -150,10 +149,13 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const lastRange = useRef(currentRange);
   useEffect(() => {
     const observer = new ResizeObserver(([form]) => {
-      const rangeInfo = Device.getCurrentRange(form.contentRect.width);
-      if (rangeInfo && lastRange.current !== rangeInfo.name) {
-        lastRange.current = rangeInfo.name;
-        setCurrentRange(rangeInfo.name);
+      const width = form.contentRect.width;
+      if (width) {
+        const rangeInfo = Device.getCurrentRange(form.contentRect.width);
+        if (rangeInfo && lastRange.current !== rangeInfo.name) {
+          lastRange.current = rangeInfo.name;
+          setCurrentRange(rangeInfo.name);
+        }
       }
     });
 
@@ -177,13 +179,14 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
           groupItem.formItemIds = new Set(groupItem.formItemIds).add(id);
         } else {
           clonedMap.set(groupId, {
+            id: groupId,
             type: 'formGroup',
             formItemIds: new Set([id])
           });
         }
       } else {
         if (!clonedMap.has(id)) {
-          clonedMap.set(id, { type, formItemIds: new Set() });
+          clonedMap.set(id, { id, type, formItemIds: new Set() });
         }
       }
       return clonedMap;
@@ -210,59 +213,89 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     const formGroups: FormGroupLayoutInfo[] = [];
 
     let index = -1;
-    let localColumnIndex = 0;
     // depending on the labelSpan, each form item takes up either 1 (labelSpan < 12) or 2 (labelSpan == 12) rows
     const rowsPerFormItem = currentLabelSpan === 12 ? 2 : 1;
-    let rowIndex = (titleText ? 2 : 1) + rowsPerFormItem - 1;
     // no. of rows in a "line" - e.g. when a group has 5 items, the next line needs to start below that group
-    let nextRowIndex = rowIndex;
+    let nextRowIndex = (titleText ? 2 : 1) + rowsPerFormItem - 1;
     const rowsWithGroup = {};
 
-    items.forEach(({ type, formItemIds }, id) => {
-      const columnIndex = localColumnIndex % currentNumberOfColumns;
-      index++;
-      if (type === 'formGroup') {
-        rowsWithGroup[rowIndex] = true;
-        formGroups.push({ id, index, columnIndex, rowIndex });
-        let localRowIndex = 1;
-        let localIndex = 1;
+    const columnsWithItems: ItemInfo[][] = [];
+    const rowsPerColumn = Math.ceil(items.size / currentNumberOfColumns);
 
-        if (!formItemIds.size) {
-          nextRowIndex++;
-        }
-        formItemIds.forEach((itemId, _, set) => {
-          formItems.push({
-            id: itemId,
-            index,
-            groupId: id,
-            columnIndex,
-            rowIndex: rowIndex + localRowIndex,
-            lastGroupItem: set.size === localIndex
-          });
-          if (set.size === localIndex) {
-            if (nextRowIndex < rowIndex + localRowIndex + rowsPerFormItem) {
-              nextRowIndex = rowIndex + localRowIndex + rowsPerFormItem;
-            }
-          }
-          localRowIndex += rowsPerFormItem;
-          localIndex++;
-        });
-      } else {
-        if (nextRowIndex < rowIndex + 1) {
-          nextRowIndex += rowsPerFormItem;
-        }
-        formItems.push({ id, index, columnIndex, rowIndex });
-      }
+    const allItemsArray = Array.from(items.entries());
+    const onlyFormItems = allItemsArray.every(([, item]) => item.type === 'formItem');
 
-      if ((localColumnIndex + 1) % currentNumberOfColumns === 0) {
-        rowIndex = nextRowIndex;
-      }
-      localColumnIndex++;
+    allItemsArray.forEach(([id, item], idx) => {
+      // when only FormItems are used, the Form should build up from top to bottom, then left to right
+      // when FormGroups are used, the Form should build up from left to right, then top to bottom
+      const localColumnIndex = onlyFormItems ? Math.floor(idx / rowsPerColumn) : idx % currentNumberOfColumns;
+      columnsWithItems[localColumnIndex] ??= [];
+      columnsWithItems[localColumnIndex].push({ id, ...item });
     });
+
+    if (onlyFormItems) {
+      // if the last column only contains one row, balance it with the previous column
+      if (columnsWithItems.at(-1)?.length === 1 && columnsWithItems.at(-2)?.length > 1) {
+        columnsWithItems.at(-1).unshift(columnsWithItems.at(-2).pop());
+      }
+      columnsWithItems.forEach((columnItems, columnIndex) => {
+        let rowIndex = nextRowIndex;
+        columnItems.forEach(({ id }) => {
+          index++;
+          formItems.push({ id, index, columnIndex, rowIndex });
+          rowIndex += rowsPerFormItem;
+        });
+      });
+    } else {
+      let localColumnIndex = 0;
+      let rowIndex = (titleText ? 2 : 1) + rowsPerFormItem - 1;
+
+      items.forEach(({ type, formItemIds }, id) => {
+        const columnIndex = localColumnIndex % currentNumberOfColumns;
+        index++;
+        if (type === 'formGroup') {
+          rowsWithGroup[rowIndex] = true;
+          formGroups.push({ id, index, columnIndex, rowIndex });
+          let localRowIndex = 1;
+          let localIndex = 1;
+
+          if (!formItemIds.size) {
+            nextRowIndex++;
+          }
+          formItemIds.forEach((itemId, _, set) => {
+            formItems.push({
+              id: itemId,
+              index,
+              groupId: id,
+              columnIndex,
+              rowIndex: rowIndex + localRowIndex,
+              lastGroupItem: set.size === localIndex
+            });
+            if (set.size === localIndex) {
+              if (nextRowIndex < rowIndex + localRowIndex + rowsPerFormItem) {
+                nextRowIndex = rowIndex + localRowIndex + rowsPerFormItem;
+              }
+            }
+            localRowIndex += rowsPerFormItem;
+            localIndex++;
+          });
+        } else {
+          if (nextRowIndex < rowIndex + 1) {
+            nextRowIndex += rowsPerFormItem;
+          }
+          formItems.push({ id, index, columnIndex, rowIndex });
+        }
+
+        if ((localColumnIndex + 1) % currentNumberOfColumns === 0) {
+          rowIndex = nextRowIndex;
+        }
+        localColumnIndex++;
+      });
+    }
 
     return { formItems, formGroups, registerItem, unregisterItem, rowsWithGroup };
   }, [items, registerItem, unregisterItem, currentNumberOfColumns, titleText, currentLabelSpan]);
-  const formClassNames = clsx(classes.form, classes[backgroundDesign.toLowerCase()]);
+  const formClassNames = clsx(classNames.form, classNames[backgroundDesign.toLowerCase()]);
   const CustomTag = as as ElementType;
 
   const prevFormItems = useRef<undefined | FormItemLayoutInfo[]>(undefined);
@@ -295,7 +328,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   return (
     <FormContext.Provider value={{ ...formLayoutContextValue, labelSpan: currentLabelSpan, recalcTrigger }}>
       <CustomTag
-        className={clsx(classes.formContainer, className)}
+        className={clsx(classNames.formContainer, className)}
         suppressHydrationWarning={true}
         ref={componentRef}
         style={{
@@ -313,7 +346,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
       >
         <div className={formClassNames}>
           {titleText && (
-            <Title level={TitleLevel.H3} className={classes.formTitle} style={{ gridColumn: '1 / -1' }}>
+            <Title level={TitleLevel.H3} className={classNames.formTitle} style={{ gridColumn: '1 / -1' }}>
               {titleText}
             </Title>
           )}

@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/SelectMenuOption.js';
 import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import type HighlightTypes from '@ui5/webcomponents/dist/types/HighlightTypes.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -9,7 +10,9 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface SelectMenuOptionAttributes {
   /**
-   * Defines the text alternative of the component. Note: If not provided a default text alternative will be set, if present.
+   * Defines the text alternative of the component.
+   *
+   * **Note**: If not provided a default text alternative will be set, if present.
    */
   accessibleName?: string;
 
@@ -22,9 +25,19 @@ interface SelectMenuOptionAttributes {
   disabled?: boolean;
 
   /**
-   * Defines the text, displayed inside the `Select` input filed when the option gets selected.
+   * Defines the text, displayed inside the `Select` input filed
+   * when the option gets selected.
    */
   displayText?: string;
+
+  /**
+   * Defines the highlight state of the list items.
+   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   *
+   * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * @default "None"
+   */
+  highlight?: HighlightTypes | keyof typeof HighlightTypes;
 
   /**
    * **Note:** The property is inherited and not supported. If set, it won't take any effect.
@@ -40,6 +53,13 @@ interface SelectMenuOptionAttributes {
   selected?: boolean;
 
   /**
+   * Defines the text of the tooltip that would be displayed for the list item.
+   *
+   * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
+   */
+  tooltip?: string;
+
+  /**
    * **Note:** The property is inherited and not supported. If set, it won't take any effect.
    * @default "Active"
    * @deprecated true
@@ -47,7 +67,8 @@ interface SelectMenuOptionAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 
   /**
-   * Defines the value of the `Select` inside an HTML Form element when this component is selected. For more information on HTML Form support, see the `name` property of `Select`.
+   * Defines the value of the `Select` inside an HTML Form element when this component is selected.
+   * For more information on HTML Form support, see the `name` property of `Select`.
    */
   value?: string;
 }
@@ -94,11 +115,14 @@ interface SelectMenuOptionPropTypes
  *
  * For the `SelectMenuOption`
  *
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ * @since [1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of __@ui5/webcomponents__.
  */
 const SelectMenuOption = withWebComponent<SelectMenuOptionPropTypes, SelectMenuOptionDomRef>(
   'ui5-select-menu-option',
-  ['accessibleName', 'displayText', 'type', 'value'],
+  ['accessibleName', 'displayText', 'highlight', 'tooltip', 'type', 'value'],
   ['disabled', 'navigated', 'selected'],
   ['deleteButton'],
   ['detail-click'],

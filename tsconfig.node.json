@@ -10,6 +10,7 @@
   "include": [
     "vite.config.ts",
     ".storybook",
+    "docs",
     "packages/**/*.stories.tsx",
     "packages/cypress-commands/CommandsAndQueries.tsx"
   ]

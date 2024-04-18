@@ -30,7 +30,8 @@ interface NotificationListItemAttributes {
   /**
    * Defines if the `notification` is new or has been already read.
    *
-   * **Note:** if set to `false` the `titleText` has bold font, if set to true - it has a normal font.
+   * **Note:** if set to `false` the `titleText` has bold font,
+   * if set to true - it has a normal font.
    * @default false
    */
   read?: boolean;
@@ -53,9 +54,11 @@ interface NotificationListItemAttributes {
   titleText?: string;
 
   /**
-   * Defines if the `titleText` and `description` should wrap, they truncate by default.
+   * Defines if the `titleText` and `description` should wrap,
+   * they truncate by default.
    *
-   * **Note:** by default the `titleText` and `description`, and a `ShowMore/Less` button would be displayed.
+   * **Note:** by default the `titleText` and `description`,
+   * and a `ShowMore/Less` button would be displayed.
    * @default "None"
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
@@ -86,7 +89,10 @@ interface NotificationListItemPropTypes
    * Defines the avatar, displayed in the `NotificationListItem`.
    *
    * **Note:** Consider using the `ui5-avatar` to display icons, initials or images.
-   * **Note:**In order to be complaint with the UX guidlines and for best experience, we recommend using avatars with 2rem X 2rem in size (32px X 32px). In case you are using the `ui5-avatar` you can set its `size` property to `XS` to get the required size - `<ui5-avatar size="XS"></ui5-avatar>`.
+   *
+   * **Note:** In order to be complaint with the UX guidlines and for best experience,
+   * we recommend using avatars with 2rem X 2rem in size (32px X 32px). In case you are using the `ui5-avatar`
+   * you can set its `size` property to `XS` to get the required size - `<ui5-avatar size="XS"></ui5-avatar>`.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="avatar"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -97,7 +103,8 @@ interface NotificationListItemPropTypes
   avatar?: UI5WCSlotsNode;
 
   /**
-   * Defines the content of the `NotificationListItem`, usually a description of the notification.
+   * Defines the content of the `NotificationListItem`,
+   * usually a description of the notification.
    *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
@@ -121,16 +128,22 @@ interface NotificationListItemPropTypes
 
 /**
  * The `NotificationListItem` is a type of list item, meant to display notifications.
- * The component has a rich set of various properties that allows the user to set `avatar`, `titleText`, descriptive `content` and `footnotes` to fully describe a notification.
+ *
+ * The component has a rich set of various properties that allows the user to set `avatar`, `titleText`, descriptive `content`
+ * and `footnotes` to fully describe a notification.
+ *
  * The user can:
  *
- * *   display a `Close` button
- * *   can control whether the `titleText` and `description` should wrap or truncate and display a `ShowMore` button to switch between less and more information
- * *   add custom actions by using the `NotificationAction` component
+ * - display a `Close` button
+ * - can control whether the `titleText` and `description` should wrap or truncate
+ * and display a `ShowMore` button to switch between less and more information
+ * - add custom actions by using the `NotificationAction` component
  *
  * ### Usage
- *
  * The component can be used in a standard `ui5-list`.
+ *
+ *
+ *
  * `import "@ui5/webcomponents/dist/NotificationAction.js";` (optional)
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)

@@ -24,7 +24,9 @@ interface NotificationActionAttributes {
   /**
    * Defines the `icon` source URI.
    *
-   * **Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * **Note:**
+   * SAP-icons font provides numerous built-in icons. To find all the available icons, see the
+   * [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
 
@@ -46,10 +48,11 @@ interface NotificationActionPropTypes
 }
 
 /**
- * The `NotificationAction` represents an abstract action, used in the `NotificationListItem` and the `NotificationListGroupItem` items.
+ * The `NotificationAction` represents an abstract action,
+ * used in the `NotificationListItem` and the `NotificationListGroupItem` items.
  *
- * @abstract
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * @abstract
  */
 const NotificationAction = withWebComponent<NotificationActionPropTypes, NotificationActionDomRef>(
   'ui5-notification-action',

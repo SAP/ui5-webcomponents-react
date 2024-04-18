@@ -137,8 +137,10 @@ describe('VariantManagement', () => {
     cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
-    cy.realPress('Tab');
+    // Fallback: click on the Apply Automatically checkbox to prevent strange behavior in CI tests because of valueStateMessage popover
+    cy.get('[text="Apply Automatically"]').realClick();
     cy.realPress('Escape');
+    cy.get('[ui5-dialog]').should('not.exist');
     cy.contains('Only alphanumeric chars in Save View input').click();
     cy.findByText('Save As').click();
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'None');
@@ -150,9 +152,10 @@ describe('VariantManagement', () => {
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'None');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
-    cy.findByText('Save').click();
+    cy.findByText('Save').realClick();
     cy.get('[ui5-dialog]').should('have.attr', 'open');
-    cy.focused().should('have.attr', 'value-state', 'Error');
+    cy.wait(50);
+    cy.get('[ui5-input]').should('be.focused').and('have.attr', 'value-state', 'Error');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('{selectall}{backspace}A');
     cy.findByText('Save').click();
     cy.findByTestId('alphanumeric').should('not.exist');

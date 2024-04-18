@@ -19,4 +19,5 @@
   --_ui5wcr_ObjectPage_SubSectionBackgroundColor: var(--sapGroup_ContentBackground);
   --_ui5wcr-AnalyticalTable-HeaderActiveTextColor: var(--sapContent_ContrastTextColor);
   --_ui5wcr_ObjectPage_SectionTitleTextDecoration: underline var(--sapList_SelectionBorderColor);
+  --_ui5wcr_Form_HeaderBorderWidth: calc(3 * var(--sapList_BorderWidth));
 }

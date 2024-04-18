@@ -20,7 +20,6 @@ export enum CssSizeVariablesNames {
   ui5WcrMessageViewListItemHeightSingle = '--_ui5wcr-MessageViewListItemHeightSingle',
   ui5WcrMessageViewListItemHeightByLine = '--_ui5wcr-MessageViewListItemHeightByLine',
   ui5WcrMessageItemTitleFontSize = '--_ui5wcr-MessageItemTitleFontSize',
-  ui5WcrSplitterSize = '--_ui5wcr-SplitterSize',
   ui5WcrDialogHeaderHeight = '--_ui5wcr-DialogHeaderHeight',
   ui5WcrDialogSubHeaderHeight = '--_ui5wcr-DialogSubHeaderHeight',
   ui5WcrElementHeight = '--_ui5wcr-ElementHeight'
@@ -55,7 +54,6 @@ export const CozySizes = {
   [CssSizeVariablesNames.ui5WcrMessageViewListItemHeightSingle]: `2.75rem`,
   [CssSizeVariablesNames.ui5WcrMessageViewListItemHeightByLine]: `3.325rem`,
   [CssSizeVariablesNames.ui5WcrMessageItemTitleFontSize]: ThemingParameters.sapFontHeader5Size,
-  [CssSizeVariablesNames.ui5WcrSplitterSize]: `1rem`,
   [CssSizeVariablesNames.ui5WcrDialogHeaderHeight]: '2.75rem',
   [CssSizeVariablesNames.ui5WcrDialogSubHeaderHeight]: '3rem',
   [CssSizeVariablesNames.ui5WcrElementHeight]: ThemingParameters.sapElement_Height

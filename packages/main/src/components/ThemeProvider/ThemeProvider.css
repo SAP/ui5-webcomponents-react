@@ -12,6 +12,7 @@
 @import '../../themes/sap_horizon.css';
 @import '../../themes/sap_horizon_dark.css';
 @import '../../themes/sap_horizon_hcb.css';
+@import '../../themes/sap_horizon_hcw.css';
 
 .inheritingSapScrollBar *:not([data-native-scrollbar]) {
   &::-webkit-scrollbar {

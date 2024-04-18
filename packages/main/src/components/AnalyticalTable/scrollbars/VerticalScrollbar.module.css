@@ -1,0 +1,25 @@
+.headerSection {
+  box-sizing: border-box;
+  border-block-start: var(--_ui5wcr-AnalyticalTable-OuterBorderBlock);
+  border-inline-end: var(--_ui5wcr-AnalyticalTable-OuterBorderInline);
+  border-block-end: var(--_ui5wcr-AnalyticalTable-HeaderBorderWidth) solid var(--sapList_HeaderBorderColor);
+  background-color: var(--sapList_HeaderBackground);
+  border-inline-start: 1px solid var(--sapList_BorderColor);
+  margin-inline-start: -1px;
+  width: calc(var(--sapScrollBar_Dimension) + 2px);
+}
+.scrollbar {
+  overflow-y: auto;
+  border-inline-end: var(--_ui5wcr-AnalyticalTable-OuterBorderInline);
+  border-block-end: 1px solid var(--sapList_TableFooterBorder);
+  border-inline-start: 1px solid var(--sapList_BorderColor);
+  margin-inline-start: -1px;
+  box-sizing: border-box;
+}
+
+.bottomSection {
+  flex-grow: 1;
+  background-color: var(--sapList_FooterBackground);
+  box-sizing: border-box;
+  border-inline-end: var(--_ui5wcr-AnalyticalTable-OuterBorderInline);
+}

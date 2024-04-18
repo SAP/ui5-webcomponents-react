@@ -1,12 +1,12 @@
 'use client';
 
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import React, { forwardRef } from 'react';
-import { createUseStyles } from 'react-jss';
 import type { TitleLevel } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';
-import styles from './ObjectPageSection.jss.js';
+import { classNames, styleData } from './ObjectPageSection.module.css.js';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
   /**
@@ -56,7 +56,6 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   header?: ReactNode;
 }
 
-const useStyles = createUseStyles(styles, { name: 'ObjectPageSection' });
 /**
  * Top-level information container of an `ObjectPage`.
  */
@@ -75,35 +74,35 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     ...rest
   } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, ObjectPageSection.displayName);
 
   const htmlId = `ObjectPageSection-${id}`;
 
-  const titleClasses = clsx(classes.title, titleTextUppercase && classes.uppercase);
+  const titleClasses = clsx(classNames.title, titleTextUppercase && classNames.uppercase);
 
   return (
     <section
       ref={ref}
       role="region"
-      className={clsx(classes.section, wrapTitleText && classes.wrap, className)}
+      className={clsx(classNames.section, wrapTitleText && classNames.wrap, className)}
       style={style}
       {...rest}
       id={htmlId}
       data-component-name="ObjectPageSection"
     >
-      {!!header && <div className={classes.headerContainer}>{header}</div>}
+      {!!header && <div className={classNames.headerContainer}>{header}</div>}
       {!hideTitleText && (
         <div
           role="heading"
           aria-level={parseInt(titleTextLevel.slice(1))}
-          className={classes.titleContainer}
+          className={classNames.titleContainer}
           data-component-name="ObjectPageSectionTitleText"
         >
           <div className={titleClasses}>{titleText}</div>
         </div>
       )}
-      <div className={classes.sectionContent}>
-        <div className={classes.sectionContentInner} data-component-name="ObjectPageSectionContent">
+      <div className={classNames.sectionContent}>
+        <div className={classNames.sectionContentInner} data-component-name="ObjectPageSectionContent">
           {children}
         </div>
       </div>

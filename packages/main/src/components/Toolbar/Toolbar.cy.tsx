@@ -1,4 +1,4 @@
-import { setTheme, getTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useRef, useState } from 'react';
@@ -440,8 +440,7 @@ describe('Toolbar', () => {
     cy.get(`[ui5-toggle-button]`)
       .find('button')
       .should('have.attr', 'aria-expanded', 'false')
-      //todo: this will be fixed with next ui5-wc version - then use "menu" again
-      .should('have.attr', 'aria-haspopup', 'Menu')
+      .should('have.attr', 'aria-haspopup', 'menu')
       .click();
 
     cy.get(`[ui5-toggle-button]`).find('button').should('have.attr', 'aria-expanded', 'true');
@@ -546,17 +545,16 @@ describe('Toolbar', () => {
         Text
       </Toolbar>
     );
-    console.log(getTheme());
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
 
-    cy.findByTestId('tb').click();
+    cy.findByTestId('tb').realClick();
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 50, 165) 0px 0px 0px 2px inset');
 
     cy.wait(500).then(() => {
       cy.findByTestId('tb').blur();
-      setTheme('sap_fiori_3');
+      void setTheme('sap_fiori_3');
     });
 
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');

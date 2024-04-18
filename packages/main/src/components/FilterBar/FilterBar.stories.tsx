@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useReducer, useRef } from 'react';
+import React, { useId, useReducer, useRef, useState } from 'react';
 import { FlexBoxDirection } from '../../enums/index.js';
 import {
   ComboBox,
@@ -391,6 +391,65 @@ export const InDynamicPage: Story = {
           <Text style={{ color: 'white' }}>Content</Text>
         </div>
       </DynamicPage>
+    );
+  }
+};
+
+export const WithReordering: Story = {
+  render(args) {
+    const uniqueId = useId();
+    const [orderedChildren, setOrderedChildren] = useState([
+      <FilterGroupItem key={`${uniqueId}-0`} label="StepInput" required orderId={`${uniqueId}-0`}>
+        <StepInput required />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-1`} label="RatingIndicator" orderId={`${uniqueId}-1`}>
+        <RatingIndicator />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-2`} label="MultiInput" active orderId={`${uniqueId}-2`}>
+        <MultiInput
+          tokens={
+            <>
+              <Token text="Argentina" selected />
+              <Token text="Bulgaria" />
+              <Token text="England" />
+              <Token text="Finland" />
+            </>
+          }
+        />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-3`} label="Input" orderId={`${uniqueId}-3`}>
+        <Input placeholder="Placeholder" />
+      </FilterGroupItem>,
+      <FilterGroupItem key={`${uniqueId}-4`} label="Switch" orderId={`${uniqueId}-4`}>
+        <Switch />
+      </FilterGroupItem>,
+      <FilterGroupItem
+        key={`${uniqueId}-5`}
+        label="SELECT w/ initial selected"
+        visibleInFilterBar={false}
+        orderId={`${uniqueId}-5`}
+      >
+        <Select>
+          <Option>Option 1</Option>
+          <Option selected>Option 2</Option>
+          <Option>Option 3</Option>
+          <Option>Option 4</Option>
+        </Select>
+      </FilterGroupItem>
+    ]);
+
+    const handleFiltersDialogSave = (e) => {
+      setOrderedChildren((prev) => {
+        return e.detail.orderIds.map((orderId) => {
+          const obj = prev.find((item) => item.props.orderId === orderId);
+          return { ...obj };
+        });
+      });
+    };
+    return (
+      <FilterBar {...args} onFiltersDialogSave={handleFiltersDialogSave} enableReordering showResetButton>
+        {orderedChildren}
+      </FilterBar>
     );
   }
 };

@@ -1,0 +1,27 @@
+.label {
+  grid-column-end: span var(--_ui5wcr_form_label_span);
+  justify-self: var(--_ui5wcr_form_label_text_align);
+  text-align: var(--_ui5wcr_form_label_text_align);
+
+  &[data-label-span='12'] {
+    justify-self: start;
+  }
+
+  &:has(+ .content > *:is([ui5-checkbox], [ui5-radio-button], [ui5-switch], [ui5-range-slider], [ui5-slider])) {
+    align-self: center;
+  }
+}
+
+.content {
+  display: flex;
+  grid-column-end: span var(--_ui5wcr_form_content_span);
+
+  &[data-label-span='12'] {
+    grid-column-end: span 12;
+    padding-block-end: 0.75rem;
+  }
+}
+
+.lastGroupItem {
+  margin-block-end: 1rem;
+}

@@ -42,27 +42,34 @@ interface InputAttributes {
   /**
    * Determines the name with which the component will be submitted in an HTML form.
    *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Important:** For the `name` property to have effect, you must add the following import to your project:
+   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    *
-   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** When set, a native `input` HTML element
+   * will be created inside the component so that it can be submitted as
+   * part of an HTML form. Do not use this property unless you need to submit a form.
    */
   name?: string;
 
   /**
    * Defines whether the value will be autcompleted to match an item
+   *
+   * **Note:** Available since [v1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of **@ui5/webcomponents**.
    * @default false
    */
   noTypeahead?: boolean;
 
   /**
-   * Defines a short hint intended to aid the user with data entry when the component has no value.
+   * Defines a short hint intended to aid the user with data entry when the
+   * component has no value.
    */
   placeholder?: string;
 
   /**
    * Defines whether the component is read-only.
    *
-   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable,
+   * but still provides visual feedback upon user interaction.
    * @default false
    */
   readonly?: boolean;
@@ -75,6 +82,8 @@ interface InputAttributes {
 
   /**
    * Defines whether the clear icon of the input will be shown.
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    * @default false
    */
   showClearIcon?: boolean;
@@ -82,7 +91,8 @@ interface InputAttributes {
   /**
    * Defines whether the component should show suggestions, if such are present.
    *
-   * **Note:** You need to import the `InputSuggestions` module from `"@ui5/webcomponents/dist/features/InputSuggestions.js"` to enable this functionality.
+   * **Note:** You need to import the `InputSuggestions` module
+   * from `"@ui5/webcomponents/dist/features/InputSuggestions.js"` to enable this functionality.
    * @default false
    */
   showSuggestions?: boolean;
@@ -92,8 +102,10 @@ interface InputAttributes {
    *
    * **Notes:**
    *
-   * *   The particular effect of this property differs depending on the browser and the current language settings, especially for type `Number`.
-   * *   The property is mostly intended to be used with touch devices that use different soft keyboard layouts depending on the given input type.
+   * - The particular effect of this property differs depending on the browser
+   * and the current language settings, especially for type `Number`.
+   * - The property is mostly intended to be used with touch devices
+   * that use different soft keyboard layouts depending on the given input type.
    * @default "Text"
    */
   type?: InputType | keyof typeof InputType;
@@ -115,6 +127,8 @@ interface InputAttributes {
 interface InputDomRef extends Required<InputAttributes>, Ui5DomRef {
   /**
    * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
+   *
+   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    * @returns {void}
    */
   openPicker: () => void;
@@ -141,21 +155,15 @@ interface InputPropTypes
   /**
    * Defines the suggestion items.
    *
-   * Example:
-   *
-   *```
-   * <Input showSuggestions>
-   *     <SuggestionItem text="Item #1" />
-   *     <SuggestionItem text="Item #2" />
-   * </Input>
-   *```
-   *
-   * **Note:** The suggestions would be displayed only if the `showSuggestions` property is set to `true`.
+   * **Note:** The suggestions would be displayed only if the `showSuggestions`
+   * property is set to `true`.
    *
    * **Note:** The `<SuggestionItem>` and `<SuggestionGroupItem>` are recommended to be used as suggestion items.
    *
    * **Note:** Importing the Input Suggestions Support feature:
+   *
    * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
+   *
    * automatically imports the `<SuggestionItem>` and `<SuggestionGroupItem>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
@@ -173,12 +181,15 @@ interface InputPropTypes
 
   /**
    * Defines the value state message that will be displayed as pop up under the component.
+   * The value state message slot should contain only one root element.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    *
-   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   * **Note:** The `valueStateMessage` would be displayed,
+   * when the component is in `Information`, `Warning` or `Error` value state.
    *
-   * **Note:** If the component has `suggestionItems`, the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
+   * **Note:** If the component has `suggestionItems`,
+   * the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -193,41 +204,54 @@ interface InputPropTypes
   onChange?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
   /**
-   * Fired when the value of the component changes at each keystroke, and when a suggestion item has been selected.
+   * Fired when the value of the component changes at each keystroke,
+   * and when a suggestion item has been selected.
    */
   onInput?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
   /**
-   * Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.
+   * Fired when the user navigates to a suggestion item via the ARROW keys,
+   * as a preview, before the final selection.
    */
   onSuggestionItemPreview?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemPreviewEventDetail>) => void;
 
   /**
    * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => void;
 }
 
 /**
  * The `Input` component allows the user to enter and edit text or numeric values in one line.
- * Additionally, you can provide `suggestionItems`, that are displayed in a popover right under the input.
  *
- * The text field can be editable or read-only (`readonly` property), and it can be enabled or disabled (`disabled` property). To visualize semantic states, such as "error" or "warning", the `valueState` property is provided. When the user makes changes to the text, the change event is fired, which enables you to react on any text change.
+ * Additionally, you can provide `suggestionItems`,
+ * that are displayed in a popover right under the input.
  *
- * **Note:** If you are using the `Input` as a single npm module, don't forget to import the `InputSuggestions` module from "@ui5/webcomponents/dist/features/InputSuggestions.js" to enable the suggestions functionality.
+ * The text field can be editable or read-only (`readonly` property),
+ * and it can be enabled or disabled (`disabled` property).
+ * To visualize semantic states, such as "error" or "warning", the `valueState` property is provided.
+ * When the user makes changes to the text, the change event is fired,
+ * which enables you to react on any text change.
+ *
+ * **Note:** If you are using the `Input` as a single npm module,
+ * don't forget to import the `InputSuggestions` module from
+ * "@ui5/webcomponents/dist/features/InputSuggestions.js"
+ * to enable the suggestions functionality.
  *
  * ### Keyboard Handling
- *
  * The `Input` provides the following keyboard shortcuts:
  *
- * *   \[ESC\] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.
- * *   \[ENTER\] or \[RETURN\] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.
- * *   \[DOWN\] - Focuses the next matching item in the suggestion list.
- * *   \[UP\] - Focuses the previous matching item in the suggestion list.
- * *   \[HOME\] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.
- * *   \[END\] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.
- * *   \[PAGEUP\] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.
- * *   \[PAGEDOWN\] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.
+ * - [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.
+ * - [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.
+ * - [Down] - Focuses the next matching item in the suggestion list.
+ * - [Up] - Focuses the previous matching item in the suggestion list.
+ * - [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.
+ * - [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.
+ * - [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.
+ * - [Page Down] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.
+ *
  *
  *
  * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";` (optional - for input suggestions support)

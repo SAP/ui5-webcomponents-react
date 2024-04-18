@@ -1,7 +1,14 @@
 'use client';
 
 import type { TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/TabContainer.js';
-import { debounce, enrichEventWithDetails, ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
+import {
+  debounce,
+  deprecationNotice,
+  enrichEventWithDetails,
+  ThemingParameters,
+  useStylesheet,
+  useSyncRef
+} from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import React, {
@@ -14,7 +21,6 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { createUseStyles } from 'react-jss';
 import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
@@ -22,12 +28,12 @@ import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
 import type { AvatarPropTypes, TabContainerDomRef } from '../../webComponents/index.js';
 import { Tab, TabContainer } from '../../webComponents/index.js';
-import { DynamicPageCssVariables } from '../DynamicPage/DynamicPage.jss.js';
+import { DynamicPageCssVariables } from '../DynamicPage/utils.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
 import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
 import type { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
 import { CollapsedAvatar } from './CollapsedAvatar.js';
-import { styles } from './ObjectPage.jss.js';
+import { classNames, styleData } from './ObjectPage.module.css.js';
 import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils.js';
 
 addCustomCSSWithScoping(
@@ -103,6 +109,8 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   alwaysShowContentHeader?: boolean;
   /**
    * Defines whether the title is displayed in the content section of the header or above the image.
+   *
+   * @deprecated: This feature will be removed with our next major release.
    */
   showTitleInHeaderContent?: boolean;
   /**
@@ -165,8 +173,6 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   onPinnedStateChange?: (pinned: boolean) => void;
 }
 
-const useStyles = createUseStyles(styles, { name: 'ObjectPage' });
-
 /**
  * A component that allows apps to easily display information related to a business object.
  *
@@ -198,7 +204,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     ...rest
   } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, ObjectPage.displayName);
 
   const firstSectionId: string | undefined = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
 
@@ -227,7 +233,18 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const titleInHeader = headerTitle && showTitleInHeaderContent;
   const [sectionSpacer, setSectionSpacer] = useState(0);
   const [currentTabModeSection, setCurrentTabModeSection] = useState(null);
-  const sections = currentTabModeSection ?? children;
+  const sections = mode === ObjectPageMode.IconTabBar ? currentTabModeSection : children;
+
+  const deprecationNoticeDisplayed = useRef(false);
+  useEffect(() => {
+    if (showTitleInHeaderContent && !deprecationNoticeDisplayed.current) {
+      deprecationNotice(
+        'showTitleInHeaderContent',
+        'showTitleInHeaderContent is deprecated and will be removed with the next major release.'
+      );
+      deprecationNoticeDisplayed.current = true;
+    }
+  }, [showTitleInHeaderContent]);
 
   useEffect(() => {
     const currentSection =
@@ -285,23 +302,23 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     if (typeof image === 'string') {
       return (
         <span
-          className={classes.headerImage}
+          className={classNames.headerImage}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
         >
-          <img src={image} className={classes.image} alt="Company Logo" />
+          <img src={image} className={classNames.image} alt="Company Logo" />
         </span>
       );
     } else {
       return cloneElement(image, {
         size: AvatarSize.L,
-        className: clsx(classes.headerImage, image.props?.className)
+        className: clsx(classNames.headerImage, image.props?.className)
       } as AvatarPropTypes);
     }
-  }, [image, classes.headerImage, classes.image, imageShapeCircle]);
+  }, [image, classNames.headerImage, classNames.image, imageShapeCircle]);
 
   const scrollToSectionById = (id?: string, isSubSection = false) => {
     const section = objectPageRef.current?.querySelector<HTMLElement>(
-      `#${isSubSection ? 'ObjectPageSubSection' : 'ObjectPageSection'}-${id}`
+      `#${isSubSection ? 'ObjectPageSubSection' : 'ObjectPageSection'}-${CSS.escape(id)}`
     );
     scrollTimeout.current = performance.now() + 500;
     if (section) {
@@ -337,11 +354,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       isProgrammaticallyScrolled.current = true;
       setInternalSelectedSectionId(currentId);
       prevSelectedSectionId.current = currentId;
-      const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+      const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
       const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
         return isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
       });
-      fireOnSelectedChangedEvent({}, currentIndex, currentId, sections[0]);
+      fireOnSelectedChangedEvent({}, currentIndex, currentId, sectionNodes[0]);
     }
   };
 
@@ -447,28 +464,28 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const tabContainerContainerRef = useRef(null);
   useEffect(() => {
     const objectPage = objectPageRef.current;
-    const sections = objectPage.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSection"]');
-    const lastSection = sections[sections.length - 1];
+    const sectionNodes = objectPage.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSection"]');
+    const lastSectionNode = sectionNodes[sectionNodes.length - 1];
+    const tabContainerContainer = tabContainerContainerRef.current;
 
     const observer = new ResizeObserver(([sectionElement]) => {
-      const subSections = lastSection.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSubSection"]');
+      const subSections = lastSectionNode.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSubSection"]');
       const lastSubSection = subSections[subSections.length - 1];
       const lastSubSectionOrSection = lastSubSection ?? sectionElement.target;
-
-      if ((currentTabModeSection && !lastSubSection) || (sections.length === 1 && !lastSubSection)) {
+      if ((currentTabModeSection && !lastSubSection) || (sectionNodes.length === 1 && !lastSubSection)) {
         setSectionSpacer(0);
-      } else {
+      } else if (!!tabContainerContainer) {
         setSectionSpacer(
           objectPage.getBoundingClientRect().bottom -
-            tabContainerContainerRef.current.getBoundingClientRect().bottom -
+            tabContainerContainer.getBoundingClientRect().bottom -
             lastSubSectionOrSection.getBoundingClientRect().height -
             TAB_CONTAINER_HEADER_HEIGHT
         );
       }
     });
 
-    if (objectPage && lastSection) {
-      observer.observe(lastSection, { box: 'border-box' });
+    if (objectPage && lastSectionNode) {
+      observer.observe(lastSectionNode, { box: 'border-box' });
     }
 
     return () => {
@@ -481,11 +498,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     scrollTimeout.current = performance.now() + 500;
     if (!e.detail.visible) {
       setHeaderCollapsedInternal(true);
-      objectPageRef.current?.classList.add(classes.headerCollapsed);
+      objectPageRef.current?.classList.add(classNames.headerCollapsed);
     } else {
       setHeaderCollapsedInternal(false);
       setScrolledHeaderExpanded(true);
-      objectPageRef.current?.classList.remove(classes.headerCollapsed);
+      objectPageRef.current?.classList.remove(classNames.headerCollapsed);
     }
   }, []);
 
@@ -495,11 +512,13 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (mode === ObjectPageMode.IconTabBar) {
         const sectionId = e.detail.sectionId;
         setInternalSelectedSectionId(sectionId);
-        const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+        const sectionNodes = objectPageRef.current?.querySelectorAll(
+          'section[data-component-name="ObjectPageSection"]'
+        );
         const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
           return isValidElement(objectPageSection) && objectPageSection.props?.id === sectionId;
         });
-        debouncedOnSectionChange(e, currentIndex, sectionId, sections[currentIndex]);
+        debouncedOnSectionChange(e, currentIndex, sectionId, sectionNodes[currentIndex]);
       }
       const subSectionId = e.detail.subSectionId;
       scrollTimeout.current = performance.now() + 200;
@@ -509,16 +528,16 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   );
 
   const objectPageClasses = clsx(
-    classes.objectPage,
+    classNames.objectPage,
     GlobalStyleClasses.sapScrollBar,
     className,
-    mode === ObjectPageMode.IconTabBar && classes.iconTabBarMode
+    mode === ObjectPageMode.IconTabBar && classNames.iconTabBarMode
   );
 
   const { onScroll: _0, selectedSubSectionId: _1, ...propsWithoutOmitted } = rest;
 
   useEffect(() => {
-    const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+    const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     const objectPageHeight = objectPageRef.current?.clientHeight ?? 1000;
     const marginBottom = objectPageHeight - totalHeaderHeight - /*TabContainer*/ TAB_CONTAINER_HEADER_HEIGHT;
     const rootMargin = `-${totalHeaderHeight}px 0px -${marginBottom < 0 ? 0 : marginBottom}px 0px`;
@@ -545,7 +564,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       }
     );
 
-    sections.forEach((el) => {
+    sectionNodes.forEach((el) => {
       observer.observe(el);
     });
 
@@ -556,17 +575,17 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   // Fallback when scrolling faster than the IntersectionObserver can observe (in most cases faster than 60fps)
   useEffect(() => {
-    const sections = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+    const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     if (isAfterScroll) {
-      let currentSection = sections[sections.length - 1];
+      let currentSection = sectionNodes[sectionNodes.length - 1];
       let currentIndex: number;
-      for (let i = 0; i <= sections.length - 1; i++) {
-        const section = sections[i];
+      for (let i = 0; i <= sectionNodes.length - 1; i++) {
+        const sectionNode = sectionNodes[i];
         if (
           objectPageRef.current.getBoundingClientRect().top + totalHeaderHeight + TAB_CONTAINER_HEADER_HEIGHT <=
-          section.getBoundingClientRect().bottom
+          sectionNode.getBoundingClientRect().bottom
         ) {
-          currentSection = section;
+          currentSection = sectionNode;
           currentIndex = i;
           break;
         }
@@ -576,7 +595,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         setInternalSelectedSectionId(currentSectionId);
         debouncedOnSectionChange(
           scrollEvent.current,
-          currentIndex ?? sections.length - 1,
+          currentIndex ?? sectionNodes.length - 1,
           currentSectionId,
           currentSection
         );
@@ -605,7 +624,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const hasHeaderContent = !!headerContent;
   const renderTitleSection = useCallback(
     (inHeader = false) => {
-      const titleInHeaderClass = inHeader ? classes.titleInHeader : undefined;
+      const titleInHeaderClass = inHeader ? classNames.titleInHeader : undefined;
 
       if (headerTitle?.props && headerTitle.props?.showSubHeaderRight === undefined) {
         return cloneElement(headerTitle, {
@@ -649,7 +668,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: componentRefHeaderContent,
         children: (
-          <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
+          <div className={classNames.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
             {(headerContent.props.children || titleInHeader) && (
               <div data-component-name="ObjectPageHeaderContent">
@@ -668,7 +687,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           headerPinned={headerPinned || scrolledHeaderExpanded}
           ref={componentRefHeaderContent}
         >
-          <div className={classes.headerContainer} data-component-name="ObjectPageHeaderContainer">
+          <div className={classNames.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
             <div data-component-name="ObjectPageHeaderContent">{titleInHeader && renderTitleSection(true)}</div>
           </div>
@@ -738,7 +757,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         setIsAfterScroll(true);
       }, 100);
       if (!headerPinned || e.target.scrollTop === 0) {
-        objectPageRef.current?.classList.remove(classes.headerCollapsed);
+        objectPageRef.current?.classList.remove(classNames.headerCollapsed);
       }
       if (scrolledHeaderExpanded && e.target.scrollTop !== prevScrollTop.current) {
         if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
@@ -757,12 +776,12 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const onHoverToggleButton = useCallback(
     (e) => {
       if (e?.type === 'mouseover') {
-        topHeaderRef.current?.classList.add(classes.headerHoverStyles);
+        topHeaderRef.current?.classList.add(classNames.headerHoverStyles);
       } else {
-        topHeaderRef.current?.classList.remove(classes.headerHoverStyles);
+        topHeaderRef.current?.classList.remove(classNames.headerHoverStyles);
       }
     },
-    [classes.headerHoverStyles]
+    [classNames.headerHoverStyles]
   );
 
   const objectPageStyles: CSSProperties = {
@@ -790,7 +809,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         role={a11yConfig?.objectPageTopHeader?.role}
         data-not-clickable={titleHeaderNotClickable}
         aria-roledescription={a11yConfig?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
-        className={classes.header}
+        className={classNames.header}
         onClick={onTitleClick}
         style={{
           gridAutoColumns: `min-content ${
@@ -804,7 +823,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         )}
         {headerTitle && renderTitleSection()}
         {snappedHeaderInObjPage && (
-          <div className={classes.snappedContent} data-component-name="ATwithImageSnappedContentContainer">
+          <div className={classNames.snappedContent} data-component-name="ATwithImageSnappedContentContainer">
             {headerTitle.props.snappedContent}
           </div>
         )}
@@ -814,7 +833,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         <div
           data-component-name="ObjectPageAnchorBar"
           ref={anchorBarRef}
-          className={classes.anchorBar}
+          className={classNames.anchorBar}
           style={{
             top:
               scrolledHeaderExpanded || headerPinned
@@ -838,7 +857,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       {!placeholder && (
         <div
           ref={tabContainerContainerRef}
-          className={classes.tabContainer}
+          className={classNames.tabContainer}
           data-component-name="ObjectPageTabContainer"
           style={{
             top:
@@ -852,7 +871,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             fixed
             onTabSelect={onTabItemSelect}
             data-component-name="ObjectPageTabContainer"
-            className={classes.tabContainerComponent}
+            className={classNames.tabContainerComponent}
           >
             {safeGetChildrenArray(children).map((section, index) => {
               if (!isValidElement(section) || !section.props) return null;
@@ -896,16 +915,16 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           </TabContainer>
         </div>
       )}
-      <div data-component-name="ObjectPageContent" className={classes.content} ref={objectPageContentRef}>
+      <div data-component-name="ObjectPageContent" className={classNames.content} ref={objectPageContentRef}>
         <div style={{ height: headerCollapsed ? `${headerContentHeight}px` : 0 }} aria-hidden />
         {placeholder ? placeholder : sections}
         <div style={{ height: `${sectionSpacer}px` }} aria-hidden />
       </div>
       {footer && mode === ObjectPageMode.IconTabBar && !sectionSpacer && (
-        <div className={classes.footerSpacer} data-component-name="ObjectPageFooterSpacer" aria-hidden />
+        <div className={classNames.footerSpacer} data-component-name="ObjectPageFooterSpacer" aria-hidden />
       )}
       {footer && (
-        <footer className={classes.footer} data-component-name="ObjectPageFooter">
+        <footer className={classNames.footer} data-component-name="ObjectPageFooter">
           {footer}
         </footer>
       )}

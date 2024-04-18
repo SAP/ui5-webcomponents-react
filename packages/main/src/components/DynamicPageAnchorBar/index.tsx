@@ -1,17 +1,19 @@
 'use client';
 
-import iconPushPin from '@ui5/webcomponents-icons/dist/pushpin-off.js';
+import iconPushPinOff from '@ui5/webcomponents-icons/dist/pushpin-off.js';
+import iconPushPinOn from '@ui5/webcomponents-icons/dist/pushpin-on.js';
 import iconArrowDown from '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import iconArrowUp from '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
-import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import type { CSSProperties } from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults.js';
-import { cssVarVersionInfoPrefix } from '../../internal/utils.js';
+import { cssVarVersionInfoPrefix, getUi5TagWithSuffix } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
 import { Button, ToggleButton } from '../../webComponents/index.js';
+import type { ButtonDomRef } from '../../webComponents/index.js';
+import { classNames, styleData } from './DynamicPageAnchorBar.module.css.js';
 
 const _buttonBaseMinWidth = `${cssVarVersionInfoPrefix}button_base_min_width`;
 const _buttonBaseHeight = `${cssVarVersionInfoPrefix}button_base_height`;
@@ -20,51 +22,6 @@ const anchorButtonVariables = {
   [_buttonBaseMinWidth]: '1.5rem',
   [_buttonBaseHeight]: '1.5rem'
 } as CSSProperties;
-
-const anchorBarStyles = {
-  container: {
-    position: 'absolute',
-    left: '50%',
-    '&:before, &:after': {
-      content: '""',
-      position: 'absolute',
-      width: '4rem',
-      top: '50%',
-      height: '0.0625rem'
-    },
-    '&:before': {
-      right: '100%',
-      backgroundImage: `linear-gradient(to left, ${ThemingParameters.sapObjectHeader_BorderColor}, transparent)`
-    },
-    '&:after': {
-      backgroundImage: `linear-gradient(to right, ${ThemingParameters.sapObjectHeader_BorderColor}, transparent)`,
-      left: '100%'
-    }
-  },
-  anchorBarActionButton: {
-    '--_ui5wcr_anchor-btn-center': `calc((var(${_buttonBaseMinWidth}) - ${ThemingParameters.sapButton_BorderWidth}) / 2)`,
-    position: 'absolute',
-    insetBlockStart: `calc(-1 * var(--_ui5wcr_anchor-btn-center))`,
-    insetInlineStart: 'calc(50% - var(--_ui5wcr_anchor-btn-center))',
-    zIndex: 3,
-    '&:not([pressed])': {
-      backgroundColor: ThemingParameters.sapObjectHeader_Background
-    }
-  },
-  anchorBarActionButtonExpandable: {
-    '& + $anchorBarActionButtonPinnable': {
-      insetInlineStart: 'calc(50% - var(--_ui5wcr_anchor-btn-center) + 1rem)'
-    }
-  },
-  anchorBarActionButtonPinnable: {},
-  anchorBarActionPinnableAndExpandable: {
-    '&$anchorBarActionButtonExpandable': {
-      insetInlineStart: 'calc(50% - var(--_ui5wcr_anchor-btn-center) - 1rem)'
-    }
-  }
-};
-
-const useStyles = createUseStyles(anchorBarStyles, { name: 'DynamicPageAnchorBar' });
 
 interface DynamicPageAnchorBarPropTypes extends CommonProps {
   /**
@@ -127,7 +84,8 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
     onHoverToggleButton
   } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, DynamicPageAnchorBar.displayName);
+  const showHideHeaderBtnRef = useRef<ButtonDomRef>(null);
   const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentVisible;
   const showBothActions = shouldRenderHeaderPinnableButton && showHideHeaderButton;
 
@@ -148,6 +106,16 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
     }
   }, [headerPinned]);
 
+  useEffect(() => {
+    const tagName = getUi5TagWithSuffix('ui5-button');
+    const showHideHeaderBtn = showHideHeaderBtnRef.current;
+    customElements.whenDefined(tagName).then(() => {
+      if (showHideHeaderBtn) {
+        showHideHeaderBtn.accessibilityAttributes = { expanded: !!headerContentVisible };
+      }
+    });
+  }, [!!headerContentVisible]);
+
   const onToggleHeaderButtonClick = (e) => {
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentVisible }));
   };
@@ -156,18 +124,19 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
     <section
       data-component-name="DynamicPageAnchorBar"
       style={style}
-      role={a11yConfig?.dynamicPageAnchorBar?.role ?? 'navigation'}
-      className={showHideHeaderButton || headerContentPinnable ? classes.container : null}
+      role={a11yConfig?.dynamicPageAnchorBar?.role}
+      className={showHideHeaderButton || headerContentPinnable ? classNames.container : null}
       ref={ref}
     >
       {showHideHeaderButton && (
         <Button
+          ref={showHideHeaderBtnRef}
           icon={!headerContentVisible ? iconArrowDown : iconArrowUp}
           data-ui5wcr-dynamic-page-header-action=""
           className={clsx(
-            classes.anchorBarActionButton,
-            classes.anchorBarActionButtonExpandable,
-            showBothActions && classes.anchorBarActionPinnableAndExpandable
+            classNames.anchorBarActionButton,
+            classNames.anchorBarActionButtonExpandable,
+            showBothActions && classNames.anchorBarActionPinnableAndExpandable
           )}
           style={anchorButtonVariables}
           onClick={onToggleHeaderButtonClick}
@@ -180,9 +149,9 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
       )}
       {shouldRenderHeaderPinnableButton && (
         <ToggleButton
-          icon={iconPushPin}
+          icon={headerPinned ? iconPushPinOn : iconPushPinOff}
           data-ui5wcr-dynamic-page-header-action=""
-          className={clsx(classes.anchorBarActionButton, classes.anchorBarActionButtonPinnable)}
+          className={clsx(classNames.anchorBarActionButton, classNames.anchorBarActionButtonPinnable)}
           style={anchorButtonVariables}
           pressed={headerPinned}
           onClick={onPinHeader}

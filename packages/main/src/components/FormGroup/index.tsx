@@ -3,10 +3,11 @@
 import { useIsomorphicId } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 import React, { useEffect, useMemo } from 'react';
+import type { CommonProps } from '../../types/index.js';
 import { GroupContext, useFormContext } from '../Form/FormContext.js';
 import { FormGroupTitle } from './FormGroupTitle.js';
 
-export interface FormGroupPropTypes {
+export interface FormGroupPropTypes extends CommonProps<HTMLHeadingElement> {
   /**
    * Title of the FormGroup.
    */
@@ -17,15 +18,21 @@ export interface FormGroupPropTypes {
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `FormItem` in order to preserve the intended design.
    */
   children: ReactNode | ReactNode[];
+  /**
+   * Sets the components outer HTML tag.
+   *
+   * @default "h5"
+   */
+  as?: keyof HTMLElementTagNameMap;
 }
 
 /**
- * The `FormGroup` encapsulates `FormItems` into groups.
+ * The `FormGroup` encapsulates `FormItems` into groups and allows setting a title for each group.
  *
- * __Note:__ `FormGroup` is only used for calculating the final layout of the `Form`, thus it doesn't accept any other props than `titleText` and `children`, especially no `className`, `style` or `ref`.
+ * __Note:__ Setting a React Ref is not supported by this component.
  */
 const FormGroup = (props: FormGroupPropTypes) => {
-  const { titleText, children } = props;
+  const { titleText, children, as = 'h5', style, ...rest } = props;
   const { formGroups: layoutInfos, registerItem, unregisterItem, labelSpan, recalcTrigger } = useFormContext();
   const uniqueId = useIsomorphicId();
 
@@ -42,16 +49,23 @@ const FormGroup = (props: FormGroupPropTypes) => {
   if (!layoutInfo) return null;
   const { columnIndex, rowIndex } = layoutInfo;
 
+  const localRowIndex = labelSpan === 12 ? rowIndex - 1 : rowIndex;
+
   return (
     <GroupContext.Provider value={{ id: uniqueId }}>
       <>
         <FormGroupTitle
+          {...rest}
           titleText={titleText}
           style={{
+            ...style,
             display: titleText ? 'unset' : 'none',
             gridColumnStart: columnIndex * 12 + 1,
-            gridRowStart: labelSpan === 12 ? rowIndex - 1 : rowIndex
+            gridRowStart: localRowIndex,
+            // smaller margin for groups in first row with form title
+            marginBlockStart: localRowIndex === 2 ? '0.5rem' : '1rem'
           }}
+          as={as}
         />
         {children}
       </>

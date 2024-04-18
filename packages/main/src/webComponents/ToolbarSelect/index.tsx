@@ -28,17 +28,15 @@ interface ToolbarSelectAttributes {
   disabled?: boolean;
 
   /**
-   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set, the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it. Available options are:
-   *
-   * *   `NeverOverflow`
-   * *   `AlwaysOverflow`
-   * *   `Default`
+   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set,
+   * the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it.
    * @default "Default"
    */
   overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
 
   /**
-   * Defines if the toolbar overflow popup should close upon intereaction with the item. It will close by default.
+   * Defines if the toolbar overflow popup should close upon intereaction with the item.
+   * It will close by default.
    * @default false
    */
   preventOverflowClosing?: boolean;
@@ -66,13 +64,16 @@ interface ToolbarSelectPropTypes
   /**
    * Defines the component options.
    *
-   * **Note:** Only one selected option is allowed. If more than one option is defined as selected, the last one would be considered as the selected one.
+   * **Note:** Only one selected option is allowed.
+   * If more than one option is defined as selected, the last one would be considered as the selected one.
    *
    * **Note:** Use the `ToolbarSelectOption` component to define the desired options.
    */
   children?: ReactNode | ReactNode[];
   /**
    * Fired when the selected option changes.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onChange?: (event: Ui5CustomEvent<ToolbarSelectDomRef, ToolbarSelectChangeEventDetail>) => void;
 
@@ -88,11 +89,17 @@ interface ToolbarSelectPropTypes
 }
 
 /**
- * The `ToolbarSelect` component is used to create a toolbar drop-down list. The items inside the `ToolbarSelect` define the available options by using the `ToolbarSelectOption` component.
- * `import "@ui5/webcomponents/dist/ToolbarSelectOption";` (comes with `ToolbarSelect`)
+ * The `ToolbarSelect` component is used to create a toolbar drop-down list.
+ * The items inside the `ToolbarSelect` define the available options by using the `ToolbarSelectOption` component.
  *
- * @abstract
+ *
+ *
+ * `import "@ui5/webcomponents/dist/ToolbarSelectOption.js";` (comes with `ToolbarSelect`)
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ * @since [1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of __@ui5/webcomponents__.
+ * @abstract
  */
 const ToolbarSelect = withWebComponent<ToolbarSelectPropTypes, ToolbarSelectDomRef>(
   'ui5-toolbar-select',

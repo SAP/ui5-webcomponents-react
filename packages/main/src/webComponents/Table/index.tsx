@@ -12,17 +12,24 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface TableAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the component.
+   *
+   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    */
   accessibleNameRef?: string;
 
   /**
-   * Defines if the table is in busy state. **In this state the component's opacity is reduced and busy indicator is displayed at the bottom of the table.**
+   * Defines if the table is in busy state.
+   *
+   * In this state the component's opacity is reduced
+   * and busy indicator is displayed at the bottom of the table.
    * @default false
    */
   busy?: boolean;
@@ -34,15 +41,19 @@ interface TableAttributes {
   busyDelay?: number;
 
   /**
-   * Defines whether the table will have growing capability either by pressing a `More` button, or via user scroll. In both cases `load-more` event is fired.
+   * Defines whether the table will have growing capability either by pressing a `More` button,
+   * or via user scroll. In both cases `load-more` event is fired.
    *
    * Available options:
    *
    * `Button` - Shows a `More` button at the bottom of the table, pressing of which triggers the `load-more` event.
+   *
    * `Scroll` - The `load-more` event is triggered when the user scrolls to the bottom of the table;
+   *
    * `None` (default) - The growing is off.
    *
-   * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer, and the component will fallback to `growing="Button"`.
+   * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer,
+   * and the component will fallback to `growing="Button"`.
    * @default "None"
    */
   growing?: TableGrowingMode | keyof typeof TableGrowingMode;
@@ -55,9 +66,11 @@ interface TableAttributes {
   growingButtonSubtext?: string;
 
   /**
-   * Defines the text that will be displayed inside the growing button at the bottom of the table, meant for loading more rows upon press.
+   * Defines the text that will be displayed inside the growing button at the bottom of the table,
+   * meant for loading more rows upon press.
    *
    * **Note:** If not specified a built-in text will be displayed.
+   *
    * **Note:** This property takes effect if `growing` is set to `Button`.
    */
   growingButtonText?: string;
@@ -80,16 +93,22 @@ interface TableAttributes {
   noDataText?: string;
 
   /**
-   * Determines whether the column headers remain fixed at the top of the page during vertical scrolling as long as the Web Component is in the viewport.
+   * Determines whether the column headers remain fixed at the top of the page during
+   * vertical scrolling as long as the Web Component is in the viewport.
    *
    * **Restrictions:**
    *
-   * *   Browsers that do not support this feature:
-   *     *   Internet Explorer
-   *     *   Microsoft Edge lower than version 41 (EdgeHTML 16)
-   *     *   Mozilla Firefox lower than version 59
-   * *   Scrolling behavior:
-   *     *   If the Web Component is placed in layout containers that have the `overflow: hidden` or `overflow: auto` style definition, this can prevent the sticky elements of the Web Component from becoming fixed at the top of the viewport.
+   * - Browsers that do not support this feature:
+   *
+   * - Internet Explorer
+   * - Microsoft Edge lower than version 41 (EdgeHTML 16)
+   * - Mozilla Firefox lower than version 59
+   *
+   * - Scrolling behavior:
+   *
+   * - If the Web Component is placed in layout containers that have the `overflow: hidden`
+   * or `overflow: auto` style definition, this can
+   * prevent the sticky elements of the Web Component from becoming fixed at the top of the viewport.
    * @default false
    */
   stickyColumnHeader?: boolean;
@@ -146,49 +165,62 @@ interface TablePropTypes
   onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
 
   /**
-   * Fired when selection is changed by user interaction in `SingleSelect` and `MultiSelect` modes.
+   * Fired when selection is changed by user interaction
+   * in `SingleSelect` and `MultiSelect` modes.
    */
   onSelectionChange?: (event: Ui5CustomEvent<TableDomRef, TableSelectionChangeEventDetail>) => void;
 }
 
 /**
- * The `Table` component provides a set of sophisticated and convenient functions for responsive table design. It provides a comprehensive set of features for displaying and dealing with vast amounts of data.
+ * The `Table` component provides a set of sophisticated and convenient functions for responsive table design.
+ * It provides a comprehensive set of features for displaying and dealing with vast amounts of data.
  *
- * To render the `Table` properly, the order of the `columns` should match with the order of the item `cells` in the `rows`.
+ * To render the `Table` properly, the order of the `columns` should match with the
+ * order of the item `cells` in the `rows`.
  *
- * Desktop and tablet devices are supported. On tablets, special consideration should be given to the number of visible columns and rows due to the limited performance of some devices.
+ * Desktop and tablet devices are supported.
+ * On tablets, special consideration should be given to the number of visible columns
+ * and rows due to the limited performance of some devices.
  *
  * ### Selection
+ * To benefit from the selection mechanism of `Table` component, you can use the available selection modes:
+ * `SingleSelect` and `MultiSelect`.
  *
- * To benefit from the selection mechanism of `Table` component, you can use the available selection modes: `SingleSelect` and `MultiSelect`.
- * In additition to the used mode, you can also specify the `TableRow` type choosing between `Active` or `Inactive`.
+ * In additition to the used mode, you can also specify the `TableRow` type choosing between
+ * `Active` or `Inactive`.
  *
- * In `SingleSelect` mode, you can select both an `Active` and `Inactive` row via mouse or by pressing the `Space` or `Enter` keys.
- * In `MultiSelect` mode, you can select both an `Active` and `Inactive` row by pressing the `Space` key when a row is on focus or via mouse click over the selection checkbox of the row. In order to select all the available rows at once, you can use the selection checkbox presented in the table's header.
+ * In `SingleSelect` mode, you can select both an `Active` and `Inactive` row via mouse or
+ * by pressing the `Space` or `Enter` keys.
+ *
+ * In `MultiSelect` mode, you can select both an `Active` and `Inactive` row by pressing the
+ * `Space` key when a row is on focus or via mouse click over the selection checkbox of the row.
+ * In order to select all the available rows at once, you can use the selection checkbox presented in the table's header.
  *
  * **Note:** Currently, when a column is shown as a pop-in, the visual indication for selection is not presented over it.
  *
  * ### Keyboard Handling
  *
  * #### Fast Navigation
- *
- * This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or `Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up`. In order to use this functionality, you need to import the following module: `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
+ * This component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].
+ * In order to use this functionality, you need to import the following module:
+ * `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
  *
  * Furthermore, you can interact with `Table` via the following keys.
  *
- * *   \[F7\] - If focus is on an interactive control inside an item, moves focus to the corresponding item.
- * *   \[CTRL\]+\[A\] - Selects all items, if MultiSelect mode is enabled.
- * *   \[HOME\]/\[END\] - Focuses the first/last item.
- * *   \[PAGEUP\]/\[PAGEDOWN\] - Moves focus up/down by page size (20 items by default).
- * *   \[ALT\]+\[DOWN\]/\[UP\] - Switches focus between header, last focused item, and More button (if applies) in either direction.
- * *   \[SHIFT\]+\[DOWN\]/\[UP\] - Selects the next/previous item in a MultiSelect table, if the current item is selected (Range selection). Otherwise, deselects them (Range deselection).
- * *   \[SHIFT\]+\[HOME\]/\[END\] - Range selection to the first/last item of the List.
- * *   \[CTRL\]+\[HOME\]/\[END\] - Same behavior as HOME & END.
+ * - [F7] - If focus is on an interactive control inside an item, moves focus to the corresponding item.
+ * - [Ctrl]+[A] - Selects all items, if MultiSelect mode is enabled.
+ * - [Home]/[End] - Focuses the first/last item.
+ * - [Page Up]/[Page Down] - Moves focus up/down by page size (20 items by default).
+ * - [Alt]+[Down]/[Up] - Switches focus between header, last focused item, and More button (if applies) in either direction.
+ * - [Shift]+[Down]/[Up] - Selects the next/previous item in a MultiSelect table, if the current item is selected (Range selection). Otherwise, deselects them (Range deselection).
+ * - [Shift]+[Home]/[End] - Range selection to the first/last item of the List.
+ * - [Ctrl]+[Home]/[End] - Same behavior as HOME & END.
  *
  *
- * `import "@ui5/webcomponents/dist/TableColumn.js";` (for `TableColumn`)
- * `import "@ui5/webcomponents/dist/TableRow.js";` (for `TableRow`)
- * `import "@ui5/webcomponents/dist/TableCell.js";` (for `TableCell`)
+ * `import "@ui5/webcomponents/dist/TableColumn.js";` (`TableColumn`)
+ * `import "@ui5/webcomponents/dist/TableRow.js";` (`TableRow`)
+ * `import "@ui5/webcomponents/dist/TableGroupRow.js";` (`TableGroupRow`)
+ * `import "@ui5/webcomponents/dist/TableCell.js";` (`TableCell`)
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */

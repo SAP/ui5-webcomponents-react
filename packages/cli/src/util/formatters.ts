@@ -43,17 +43,11 @@ function replaceUi5TagNames(text: string) {
 }
 
 export function propDescriptionFormatter(html: string) {
-  let summary = turndownService.turndown(html);
-  summary = replaceUi5TagNames(summary);
-  summary = summary.replaceAll('\n', '\n * ');
-  return summary;
+  return replaceUi5TagNames(html).replaceAll('\n', '\n * ');
 }
 
 export function summaryFormatter(htmlDesc: string) {
-  let description = htmlDesc.replace(/<h3 class="comment-api-title">Overview<\/h3>\n*/, '');
-  description = description.replace(/<h3>ES6 Module Import<\/h3>\n*<code>.+<\/code>/, '');
-
-  let summary = turndownService.turndown(description);
+  let summary = htmlDesc.replace(/###\s?Overview\n*/, '').replace(/### ES6 Module Import\n*`.+`/, '');
   summary = replaceUi5TagNames(summary);
   summary = summary.replaceAll('\n', '\n * ');
 
@@ -83,4 +77,8 @@ export function mapWebComponentTypeToPrimitive(type: string): string | null {
     default:
       return null;
   }
+}
+
+export function sinceFilter(ui5since: string | undefined) {
+  return ui5since && !ui5since.startsWith('0') && !ui5since.includes('-rc');
 }

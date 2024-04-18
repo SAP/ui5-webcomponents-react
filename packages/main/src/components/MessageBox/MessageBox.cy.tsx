@@ -214,11 +214,13 @@ describe('MessageBox', () => {
       </MessageBox>
     );
 
-    cy.focused().then(([el]) => {
-      const focusedElementId = el.id;
-      cy.findByText('Cancel').should('have.id', focusedElementId);
-      cy.findByTestId('Dialog').should('have.attr', 'initial-focus', focusedElementId);
-    });
+    cy.focused()
+      .parent()
+      .then(([el]) => {
+        const focusedElementId = el.id;
+        cy.findByText('Cancel').should('have.id', focusedElementId);
+        cy.findByTestId('Dialog').should('have.attr', 'initial-focus', focusedElementId);
+      });
   });
 
   it('display custom header', () => {

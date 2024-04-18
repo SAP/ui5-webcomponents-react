@@ -1,4 +1,3 @@
-
 :root {
   --_ui5wcr_Scrollbar_Border: none;
   --_ui5wcr_Splitter_IconColor: var(--sapButton_Lite_TextColor);
@@ -29,4 +28,5 @@
   --_ui5wcr_ObjectPage_SubSectionBackgroundColor: transparent;
   --_ui5wcr-AnalyticalTable-HeaderActiveTextColor: var(--sapList_HeaderTextColor);
   --_ui5wcr_ObjectPage_SectionTitleTextDecoration: none;
+  --_ui5wcr_Form_HeaderBorderWidth: var(--sapList_BorderWidth);
 }

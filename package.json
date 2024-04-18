@@ -31,36 +31,38 @@
     "sb:prepare-cem": "node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents --out ./.storybook/custom-element-manifests/main.json && node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents-fiori --out ./.storybook/custom-element-manifests/fiori.json"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "7.6.17",
-    "@storybook/addon-essentials": "7.6.17",
-    "@storybook/blocks": "7.6.17",
-    "@storybook/react": "7.6.17",
-    "@storybook/react-vite": "7.6.17",
-    "@storybook/theming": "7.6.17",
-    "@ui5/webcomponents": "1.22.0",
-    "@ui5/webcomponents-fiori": "1.22.0",
-    "@ui5/webcomponents-icons": "1.22.0",
+    "@storybook/addon-a11y": "8.0.8",
+    "@storybook/addon-essentials": "8.0.8",
+    "@storybook/blocks": "8.0.8",
+    "@storybook/manager-api": "8.0.8",
+    "@storybook/preview-api": "8.0.8",
+    "@storybook/react": "8.0.8",
+    "@storybook/react-vite": "8.0.8",
+    "@storybook/theming": "8.0.8",
+    "@ui5/webcomponents": "1.24.0",
+    "@ui5/webcomponents-fiori": "1.24.0",
+    "@ui5/webcomponents-icons": "1.24.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "remark-gfm": "^3.0.1",
+    "remark-gfm": "^4.0.0",
     "tocbot": "^4.12.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
-    "@babel/core": "7.23.9",
-    "@babel/preset-env": "7.23.9",
+    "@babel/core": "7.24.4",
+    "@babel/preset-env": "7.24.4",
     "@babel/preset-react": "7.23.3",
     "@babel/preset-typescript": "7.23.3",
     "@cypress/code-coverage": "^3.10.0",
-    "@semantic-release/github": "^9.0.0",
+    "@semantic-release/github": "^10.0.0",
     "@testing-library/cypress": "^10.0.0",
     "@types/node": "^20.0.0",
-    "@types/react": "^18.2.23",
-    "@types/react-dom": "^18.2.7",
+    "@types/react": "18.2.78",
+    "@types/react-dom": "^18.2.22",
     "@types/turndown": "^5.0.4",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
-    "@ui5/webcomponents-tools": "1.22.0",
+    "@ui5/webcomponents-tools": "1.24.0",
     "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^11.0.0",
     "cssnano": "^6.0.1",
@@ -92,12 +94,12 @@
     "prettier": "^3.0.0",
     "react-textarea-autosize": "^8.5.3",
     "rimraf": "^5.0.0",
-    "storybook": "7.6.17",
+    "storybook": "8.0.8",
     "turndown": "^7.0.0",
     "typedoc": "^0.25.0",
     "typescript": "5.3.3",
     "vite": "^5.0.0",
-    "vite-plugin-istanbul": "^5.0.0",
+    "vite-plugin-istanbul": "^6.0.0",
     "vite-tsconfig-paths": "^4.0.5"
   },
   "lint-staged": {
@@ -109,6 +111,9 @@
       "eslint"
     ]
   },
+  "resolutions": {
+    "@types/react": "18.2.78"
+  },
   "type": "module",
   "nyc": {
     "report-dir": "temp/cypress-coverage",
@@ -117,5 +122,5 @@
       "lcov"
     ]
   },
-  "packageManager": "yarn@4.1.0"
+  "packageManager": "yarn@4.1.1"
 }

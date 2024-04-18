@@ -1,0 +1,83 @@
+.filterItem {
+  margin-block-end: 1rem;
+  margin-inline-end: 1rem;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: var(--_ui5wcr_filter_group_item_flex_basis);
+  max-width: calc(var(--_ui5wcr_filter_group_item_flex_basis));
+
+  &[data-with-toolbar='false'] {
+    max-width: calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2);
+  }
+}
+
+.innerFilterItemContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+
+  > :last-child {
+    width: 100%;
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  width: 100%;
+  height: 1.625rem;
+  justify-content: center;
+}
+
+.dialogTableRow {
+  --_ui5wcr-ActiveIconDisplayVariable: inline-block;
+
+  * {
+    cursor: pointer;
+  }
+}
+
+.dialogCellLabel {
+  margin-block-end: 0.25rem;
+  color: var(--sapTextColor);
+}
+
+.dialogActiveCell {
+  width: 25%;
+  text-align: center;
+}
+
+.dialogActiveIcon {
+  display: var(--_ui5wcr-ActiveIconDisplayVariable);
+  flex-grow: 1;
+  color: var(--sapNeutralColor);
+  transform: scale(-50%);
+}
+
+.labelContainer {
+  :not(:first-child) {
+    width: 100%;
+  }
+}
+
+.withReorderBtns {
+  --_ui5wcr-ReorderBtnsDisplay: none;
+
+  &[selected='true']::part(row):focus,
+  &[selected='true']::part(row):active {
+    --_ui5wcr-ActiveIconDisplayVariable: none;
+    --_ui5wcr-ReorderBtnsDisplay: flex;
+    background-color: var(--sapList_SelectionBackgroundColor);
+    border-block-end: 1px solid var(--sapList_SelectionBorderColor);
+  }
+}
+
+.withReorderHoverBtns {
+  &[selected='true']:hover {
+    --_ui5wcr-ReorderBtnsDisplay: flex;
+    --_ui5wcr-ActiveIconDisplayVariable: none;
+  }
+}
+
+.reorderBtnsContainer {
+  display: var(--_ui5wcr-ReorderBtnsDisplay);
+}

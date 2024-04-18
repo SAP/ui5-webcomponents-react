@@ -321,6 +321,12 @@ describe('AnalyticalTable', () => {
     cy.findByText('1-100').should('be.visible');
   });
 
+  it('tree - no subrows spacer', () => {
+    const data = [...dataTree, { name: 'No Subrows', age: 1337 }];
+    cy.mount(<AnalyticalTable columns={columns} data={data} isTreeTable />);
+    cy.get('[data-component-name="AnalyticalTableNonExpandableCellSpacer"]').should('have.length', 1);
+  });
+
   it('tree selection & filtering', () => {
     const TreeSelectFilterTable = (props: PropTypes) => {
       const [filter, setFilter] = useState('');
@@ -1306,7 +1312,15 @@ describe('AnalyticalTable', () => {
     cy.mount(<AnalyticalTable data={data} columns={columns} loading />);
     cy.get('[data-component-name="Loader"]').should('be.visible');
     cy.mount(<AnalyticalTable data={[]} columns={columns} />);
-    cy.findByText('No Data').should('be.visible');
+    cy.findByText('No data').should('be.visible');
+    cy.mount(<AnalyticalTable data={data} columns={columns} filterable globalFilterValue="test123" />);
+    cy.findByText('No data found. Try adjusting the filter settings.').should('be.visible');
+    cy.mount(<AnalyticalTable data={data} columns={columns} filterable />);
+    cy.findByText('Lorem').should('be.visible');
+    cy.findByText('Name').realClick();
+    cy.get('[ui5-input]').typeIntoUi5Input('test123');
+    cy.findByText('Lorem').should('not.exist');
+    cy.findByText('No data found. Try adjusting the filter settings.').should('be.visible');
   });
 
   it('Alternate Row Color', () => {
@@ -1405,6 +1419,7 @@ describe('AnalyticalTable', () => {
   });
 
   it('navigated row', () => {
+    const navigationColor = cssVarToRgb(ThemingParameters.sapList_SelectionBorderColor);
     const TestComp = () => {
       const [selectedRow, setSelectedRow] = useState<{ id?: boolean }>({});
       const onRowSelect = (e) => {
@@ -1429,9 +1444,15 @@ describe('AnalyticalTable', () => {
     };
     cy.mount(<TestComp />);
     cy.findByText('A').click();
-    cy.get('[data-component-name="AnalyticalTableNavigatedCell"]').should('be.visible').should('have.length', 1);
+    cy.get('[data-component-name="AnalyticalTableNavigatedCell"]')
+      .should('be.visible')
+      .should('have.length', 1)
+      .should('have.css', 'background-color', navigationColor);
     cy.findByText('B').click();
-    cy.get('[data-component-name="AnalyticalTableNavigatedCell"]').should('be.visible').should('have.length', 1);
+    cy.get('[data-component-name="AnalyticalTableNavigatedCell"]')
+      .should('be.visible')
+      .should('have.length', 1)
+      .should('have.css', 'background-color', navigationColor);
   });
 
   it('select row with custom row key', () => {
@@ -1930,6 +1951,10 @@ describe('AnalyticalTable', () => {
       cellLabel: ({ cell }) => `${cell.cellLabel} custom aria-label`
     };
     cy.mount(<AnalyticalTable columns={[...columns, customCellColumn]} data={data} groupable filterable sortable />);
+
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name A ');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.attr', 'aria-label', 'Age 40 ');
+
     cy.findByText('Name').click();
     cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
     cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'ascending');
@@ -1953,17 +1978,17 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
       'have.attr',
       'aria-label',
-      'Name Grouped, To expand the row, press the spacebar'
+      'Name A Grouped, To expand the row, press the spacebar'
     );
     cy.get('[name="navigation-right-arrow"]').click();
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
       'have.attr',
       'aria-label',
-      'Name Grouped, To collapse the row, press the spacebar'
+      'Name A Grouped, To collapse the row, press the spacebar'
     );
     cy.findByText('Name').click();
     cy.findByText('Ungroup').shadow().findByRole('listitem').click({ force: true });
-    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name ');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name A ');
     cy.get('[data-column-id="name"]')
       .should('have.attr', 'aria-sort', 'descending')
       .and('have.attr', 'aria-label', 'Filtered');
@@ -1977,7 +2002,7 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should(
       'have.attr',
       'aria-label',
-      'Custom Label '
+      'Custom Label 42 '
     );
     cy.get('[data-visible-row-index="1"][data-visible-column-index="4"]').should(
       'have.attr',
@@ -2512,15 +2537,15 @@ describe('AnalyticalTable', () => {
     cy.realPress('Tab');
     cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '0');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowLeft');
     cy.focused().should('have.attr', 'data-row-index', '1').should('have.attr', 'data-column-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowDown');
     cy.focused().should('have.attr', 'data-row-index', '2').should('have.attr', 'data-column-index', '2');
     cy.realPress(['Shift', 'Tab']);
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
 
     const renderSubComp = (row) => {
       if (row.id === '2') {
@@ -2590,23 +2615,23 @@ describe('AnalyticalTable', () => {
     cy.realPress('ArrowDown');
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowDown');
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowUp');
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowLeft');
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
     cy.realPress('ArrowRight');
     cy.focused().should('have.attr', 'data-subcomponent-row-index', '1');
     cy.realPress('Tab');
-    cy.focused().should('have.attr', 'ui5-button');
+    cy.focused().parent().should('have.attr', 'ui5-button');
 
     cy.mount(
       <AnalyticalTable
@@ -2942,7 +2967,7 @@ describe('AnalyticalTable', () => {
       'aria-label',
       'Name  Empty'
     );
-    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.attr', 'aria-label', 'Age ');
+    cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.attr', 'aria-label', 'Age 0 ');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="2"]').should(
       'have.attr',
       'aria-label',
@@ -2953,7 +2978,7 @@ describe('AnalyticalTable', () => {
       'aria-label',
       'Custom Label  Empty'
     );
-    cy.get('[data-visible-row-index="2"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name ');
+    cy.get('[data-visible-row-index="2"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name A ');
   });
 
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
