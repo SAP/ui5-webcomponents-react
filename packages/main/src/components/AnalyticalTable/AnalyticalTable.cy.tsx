@@ -1582,6 +1582,56 @@ describe('AnalyticalTable', () => {
           cy.wrap($highlightCell).should('have.css', 'background-color', color);
         }
       });
+
+    cy.mount(
+      <AnalyticalTable
+        header="Table Title"
+        data={data}
+        columns={columns}
+        withRowHighlight
+        highlightField={(row) => {
+          switch (row.name) {
+            case 'A':
+              return ValueState.Error;
+            case 'B':
+              return 'Success';
+            case 'X':
+              return IndicationColor.Indication01;
+            case 'C':
+              return 'Indication08';
+            default:
+              return ValueState.None;
+          }
+        }}
+      />
+    );
+
+    cy.get('[data-component-name="AnalyticalTableHighlightCell"]')
+      .should('have.length', 4)
+      .each(($highlightCell, index) => {
+        switch (index) {
+          case 0:
+            cy.wrap($highlightCell).should('have.css', 'background-color', errorColor);
+            break;
+          case 1:
+            cy.wrap($highlightCell).should('have.css', 'background-color', successColor);
+            break;
+          case 2:
+            cy.wrap($highlightCell).should(
+              'have.css',
+              'background-color',
+              cssVarToRgb(ThemingParameters.sapIndicationColor_1)
+            );
+            break;
+          case 3:
+            cy.wrap($highlightCell).should(
+              'have.css',
+              'background-color',
+              cssVarToRgb(ThemingParameters.sapIndicationColor_8)
+            );
+            break;
+        }
+      });
   });
 
   it('header popover open', () => {
