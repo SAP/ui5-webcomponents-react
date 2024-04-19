@@ -3,7 +3,7 @@ import { Avatar, ShellBar, ThemeProvider } from '@ui5/webcomponents-react';
 
 export default function Page() {
   return (
-    <ThemeProvider>
+    <ThemeProvider staticCssInjected>
       <ShellBar
         logo={
           <img
