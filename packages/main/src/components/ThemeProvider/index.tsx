@@ -5,6 +5,7 @@ import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/di
 import {
   getStyleContext,
   ThemingParameters,
+  useIsomorphicId,
   useIsomorphicLayoutEffect,
   useStylesheet
 } from '@ui5/webcomponents-react-base';
@@ -16,7 +17,8 @@ import { ModalsProvider } from '../Modals/ModalsProvider.js';
 import { styleData } from './ThemeProvider.css.js';
 
 function ThemeProviderStyles() {
-  useStylesheet(styleData, ThemeProvider.displayName);
+  const uniqueId = useIsomorphicId();
+  useStylesheet(styleData, `${ThemeProvider.displayName}-${uniqueId}`);
   return null;
 }
 
