@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.28.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.27.0...v1.28.0) (2024-04-19)
+
+### Bug Fixes
+
+- **AnalyticalTable:** correct color of navigation indicator ([#5702](https://github.com/SAP/ui5-webcomponents-react/issues/5702)) ([a15bb43](https://github.com/SAP/ui5-webcomponents-react/commit/a15bb43b7b63d010c9853b9188f63e1c01fd09eb)), closes [#5701](https://github.com/SAP/ui5-webcomponents-react/issues/5701)
+- **deps:** update dependency @tanstack/react-virtual to ~3.3.0 ([#5712](https://github.com/SAP/ui5-webcomponents-react/issues/5712)) ([abd25b5](https://github.com/SAP/ui5-webcomponents-react/commit/abd25b549e2ed58f5c8838dc8320f21bedfaccb6))
+- **deps:** update dependency @tanstack/react-virtual to v3.2.1 ([#5703](https://github.com/SAP/ui5-webcomponents-react/issues/5703)) ([2e25b72](https://github.com/SAP/ui5-webcomponents-react/commit/2e25b72725f99ffa52386d85e0ee9e791fd9260b))
+- **deps:** update dependency dedent to v1.5.3 ([#5698](https://github.com/SAP/ui5-webcomponents-react/issues/5698)) ([f52e00e](https://github.com/SAP/ui5-webcomponents-react/commit/f52e00eb701a49c5ae99320558b1cb1a5920ecb5))
+- **deps:** update dependency recharts to v2.12.5 ([#5706](https://github.com/SAP/ui5-webcomponents-react/issues/5706)) ([50d94c2](https://github.com/SAP/ui5-webcomponents-react/commit/50d94c2a4dec8f690bfa2b4b9da6ee93923788d3))
+- **DynamicPage & ObjectPage:** improve a11y of header-features section ([#5684](https://github.com/SAP/ui5-webcomponents-react/issues/5684)) ([f207e57](https://github.com/SAP/ui5-webcomponents-react/commit/f207e574ab726726fa4e803566bd73f47aafdb13)), closes [#5670](https://github.com/SAP/ui5-webcomponents-react/issues/5670) [#5669](https://github.com/SAP/ui5-webcomponents-react/issues/5669) [#5666](https://github.com/SAP/ui5-webcomponents-react/issues/5666)
+- **Form:** adjust to use latest design spec ([#5716](https://github.com/SAP/ui5-webcomponents-react/issues/5716)) ([c3ea83f](https://github.com/SAP/ui5-webcomponents-react/commit/c3ea83f9d77e4a283986858ca389b684cb07c76d))
+- **Form:** fix reading and tab order when only FormItems are used ([#5714](https://github.com/SAP/ui5-webcomponents-react/issues/5714)) ([5cec60b](https://github.com/SAP/ui5-webcomponents-react/commit/5cec60b024cc3946478abe3a72939663e62bbfcd)), closes [#5704](https://github.com/SAP/ui5-webcomponents-react/issues/5704)
+- **Form:** improve balancing across multiple columns when only FormItems are used ([#5731](https://github.com/SAP/ui5-webcomponents-react/issues/5731)) ([ad0f422](https://github.com/SAP/ui5-webcomponents-react/commit/ad0f4222d84a2f37dfd523853d123397076f2194))
+- **SelectDialog - TypeScript:** omit unsupported `state` prop from prop types ([#5692](https://github.com/SAP/ui5-webcomponents-react/issues/5692)) ([67bcc70](https://github.com/SAP/ui5-webcomponents-react/commit/67bcc709484589080952cfd84657bf9d7190d256))
+- **ThemeProvider:** fix style injection and removal in case multiple ThemeProviders are used ([#5732](https://github.com/SAP/ui5-webcomponents-react/issues/5732)) ([d290739](https://github.com/SAP/ui5-webcomponents-react/commit/d290739264b9f1977616f5f88edd3603b0be2a8c))
+
 # [1.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.1...v1.27.0) (2024-04-09)
 
 ### Bug Fixes
