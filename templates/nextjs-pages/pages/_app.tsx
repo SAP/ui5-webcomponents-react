@@ -1,3 +1,4 @@
+import '@ui5/webcomponents-react/styles.css';
 import '../styles/globals.css';
 import '@ui5/webcomponents-react/dist/Assets.js';
 import { ThemeProvider } from '@ui5/webcomponents-react/ssr';
@@ -26,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
           }}
         />
       </Head>
-      <ThemeProvider>
+      <ThemeProvider staticCssInjected>
         <Component {...pageProps} />
       </ThemeProvider>
     </>
