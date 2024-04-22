@@ -22321,10 +22321,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tocbot@npm:^4.12.0, tocbot@npm:^4.20.1":
-  version: 4.27.0
-  resolution: "tocbot@npm:4.27.0"
-  checksum: 10c0/5eb5ff092271aec64f7589a95870219e6ed37c0532859a34904e20bbefdad015c577aed11cdf050a0fcab185e12d70b202256d2fe590254e515864e5738afa5d
+"tocbot@npm:4.25.0":
+  version: 4.25.0
+  resolution: "tocbot@npm:4.25.0"
+  checksum: 10c0/b6ca2ca5a3549e7c4007843e0b41cb113656006a59f5aa2328bcccdc8b780f25b642c1d0d64e02255c97a3ba5072ae5085a403cd2b560fb3ee30bd59924fe273
   languageName: node
   linkType: hard
 
@@ -22919,7 +22919,7 @@ __metadata:
     remark-gfm: "npm:^4.0.0"
     rimraf: "npm:^5.0.0"
     storybook: "npm:8.0.8"
-    tocbot: "npm:^4.12.0"
+    tocbot: "npm:4.25.0"
     turndown: "npm:^7.0.0"
     typedoc: "npm:^0.25.0"
     typescript: "npm:5.4.5"
