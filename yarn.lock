@@ -3236,8 +3236,8 @@ __metadata:
   linkType: hard
 
 "@cypress/code-coverage@npm:^3.10.0":
-  version: 3.12.34
-  resolution: "@cypress/code-coverage@npm:3.12.34"
+  version: 3.12.35
+  resolution: "@cypress/code-coverage@npm:3.12.35"
   dependencies:
     "@cypress/webpack-preprocessor": "npm:^6.0.0"
     chalk: "npm:4.1.2"
@@ -3254,7 +3254,7 @@ __metadata:
     babel-loader: ^8.3 || ^9
     cypress: "*"
     webpack: ^4 || ^5
-  checksum: 10c0/276a66f95086f201e19a697fcaf259c5e0bedd7adda61b2c4329e29a6a0a94749e42ee8a2de2dd1f38fdd031ffb99ac740d0c93684ab5210fddfc564b884b96a
+  checksum: 10c0/feaab90159b2609b9565cf299901a80a718bce2d316657450bfc393fde8f4e9b264d27fecd23fc0f97e6248af33e4d177d234ff043fe8e8e16edeb8a25a486a0
   languageName: node
   linkType: hard
 
@@ -6395,13 +6395,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.2.78":
-  version: 18.2.78
-  resolution: "@types/react@npm:18.2.78"
+"@types/react@npm:18.2.79":
+  version: 18.2.79
+  resolution: "@types/react@npm:18.2.79"
   dependencies:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10c0/5eb8e1dd98c29aeddf40b90f466d1a9ce83b113d42a096633d632b834e7ae9821f24ba7999928de9d98cca37764532a7ea35355a8103a377d8baa750f1841b5c
+  checksum: 10c0/c8a8a005d8830a48cc1ef93c3510c4935a2a03e5557dbecaa8f1038450cbfcb18eb206fa7fba7077d54b8da21faeb25577e897a333392770a7797f625b62c78a
   languageName: node
   linkType: hard
 
@@ -19195,15 +19195,15 @@ __metadata:
   linkType: hard
 
 "postcss-nesting@npm:^12.0.3":
-  version: 12.1.1
-  resolution: "postcss-nesting@npm:12.1.1"
+  version: 12.1.2
+  resolution: "postcss-nesting@npm:12.1.2"
   dependencies:
     "@csstools/selector-resolve-nested": "npm:^1.1.0"
     "@csstools/selector-specificity": "npm:^3.0.3"
     postcss-selector-parser: "npm:^6.0.13"
   peerDependencies:
     postcss: ^8.4
-  checksum: 10c0/8fac718e69ee2ac93179cc59810a8184581c04715fe34621ec5d504fc680cad4a11219ed0c918cbe15c468994c9aba88e729f35eef698c5d44cadd824425c47d
+  checksum: 10c0/39d1d100f61863f904393b17169be83cdf82bd50d530efb3e3ae0c7b0f838b254e10e5d12e25119cf31dce9e351a2b770a03f9b2029ff33bef0ec924c0d2f642
   languageName: node
   linkType: hard
 
@@ -22824,7 +22824,7 @@ __metadata:
     "@storybook/theming": "npm:8.0.8"
     "@testing-library/cypress": "npm:^10.0.0"
     "@types/node": "npm:^20.0.0"
-    "@types/react": "npm:18.2.78"
+    "@types/react": "npm:18.2.79"
     "@types/react-dom": "npm:^18.2.22"
     "@types/turndown": "npm:^5.0.4"
     "@typescript-eslint/eslint-plugin": "npm:^7.0.0"
@@ -23415,8 +23415,8 @@ __metadata:
   linkType: hard
 
 "vite@npm:^5.0.0":
-  version: 5.2.8
-  resolution: "vite@npm:5.2.8"
+  version: 5.2.10
+  resolution: "vite@npm:5.2.10"
   dependencies:
     esbuild: "npm:^0.20.1"
     fsevents: "npm:~2.3.3"
@@ -23450,7 +23450,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/b5717bb00c2570c08ff6d8ed917655e79184efcafa9dd62d52eea19c5d6dfc5a708ec3de9ebc670a7165fc5d401c2bdf1563bb39e2748d8e51e1593d286a9a13
+  checksum: 10c0/d50630ac8de807a6185cd9b5763b3969b2950a454cf6a4482f3780f183865e8d6f7e3aa57dd70ede1c493aaa861efb25b43562287efbcf8b471b7f3b88857a33
   languageName: node
   linkType: hard
 
