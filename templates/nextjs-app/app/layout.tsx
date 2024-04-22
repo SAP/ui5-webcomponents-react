@@ -1,3 +1,4 @@
+import '@ui5/webcomponents-react/styles.css';
 import './globals.css';
 import { CssRegistry } from '@/app/CssRegistry';
 
