@@ -1,11 +1,11 @@
 import '@ui5/webcomponents-react/dist/Assets.js';
+import '@ui5/webcomponents-react/styles.css';
+import '../styles/globals.css';
 import { ThemeProvider } from '@ui5/webcomponents-react/ssr';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { AppShell } from '../components/AppShell';
-import '@ui5/webcomponents-react/styles.css';
-import '../styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
