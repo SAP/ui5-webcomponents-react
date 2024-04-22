@@ -57,7 +57,7 @@
     "@semantic-release/github": "^10.0.0",
     "@testing-library/cypress": "^10.0.0",
     "@types/node": "^20.0.0",
-    "@types/react": "18.2.78",
+    "@types/react": "18.2.79",
     "@types/react-dom": "^18.2.22",
     "@types/turndown": "^5.0.4",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
@@ -112,7 +112,7 @@
     ]
   },
   "resolutions": {
-    "@types/react": "18.2.78"
+    "@types/react": "18.2.79"
   },
   "type": "module",
   "nyc": {
