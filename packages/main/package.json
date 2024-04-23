@@ -56,7 +56,7 @@
   "dependencies": {
     "@tanstack/react-virtual": "~3.4.0",
     "@ui5/webcomponents-react-base": "workspace:~",
-    "clsx": "2.1.0",
+    "clsx": "2.1.1",
     "react-jss": "^10.10.0",
     "react-table": "7.8.0"
   },
