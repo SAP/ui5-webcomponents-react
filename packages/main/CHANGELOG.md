@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.26.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.1...v1.26.2) (2024-04-23)
+
+### Bug Fixes
+
+- **SplitterLayout:** improve drag and drop behavior ([#5654](https://github.com/SAP/ui5-webcomponents-react/issues/5654)) ([8cdbf39](https://github.com/SAP/ui5-webcomponents-react/commit/8cdbf3965e2472d42782d5c6a19996a125d3ac69)), closes [#5605](https://github.com/SAP/ui5-webcomponents-react/issues/5605)
+- **SplitterLayout:** improve drag and drop behavior ([#5683](https://github.com/SAP/ui5-webcomponents-react/issues/5683)) ([79b7bea](https://github.com/SAP/ui5-webcomponents-react/commit/79b7beae0055de284973646916b723623175cee8)), closes [#5605](https://github.com/SAP/ui5-webcomponents-react/issues/5605)
+
 ## [1.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.0...v1.26.1) (2024-03-19)
 
 ### Bug Fixes
