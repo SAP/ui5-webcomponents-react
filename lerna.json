@@ -4,14 +4,14 @@
   "npmClient": "yarn",
   "command": {
     "version": {
-      "allowBranch": "main",
+      "allowBranch": "v1.26.x",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
       "message": "chore(release): publish %s [ci skip]"
     },
     "publish": {
-      "allowBranch": "main",
+      "allowBranch": "v1.26.x",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
