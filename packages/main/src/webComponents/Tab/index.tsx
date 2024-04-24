@@ -91,7 +91,7 @@ interface TabPropTypes extends TabAttributes, Omit<CommonProps, keyof TabAttribu
  * It defines both the item in the tab strip (top part of the `TabContainer`) and the
  * content that is presented to the user once the tab is selected.
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  * @abstract
  */
 const Tab = withWebComponent<TabPropTypes, TabDomRef>(

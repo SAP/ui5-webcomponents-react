@@ -37,7 +37,7 @@ interface TimelinePropTypes extends TimelineAttributes, Omit<CommonProps, keyof 
  * There are two distinct variants of the timeline: basic and social. The basic timeline is read-only,
  * while the social timeline offers a high level of interaction and collaboration, and is integrated within SAP Jam.
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const Timeline = withWebComponent<TimelinePropTypes, TimelineDomRef>(
   'ui5-timeline',
