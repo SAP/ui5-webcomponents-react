@@ -65,7 +65,7 @@
     "@ui5/webcomponents-tools": "1.24.0",
     "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^11.0.0",
-    "cssnano": "^6.0.1",
+    "cssnano": "^7.0.0",
     "cypress": "^13.0.0",
     "cypress-real-events": "^1.8.1",
     "dedent": "^1.0.0",
