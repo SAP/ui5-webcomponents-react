@@ -106,11 +106,18 @@ declare global {
       /**
        * Click on a chained option of "select-like" components. Currently supported components are `ui5-option` and `ui5-mcb-item`.
        *
-       * __Note:__ The select popover must be visible, otherwise it can lead to unwanted side effects.
+       * __Note:__ The popover must be visible, otherwise it can lead to unwanted side effects.
        *
        * @example cy.get('[ui5-option]').clickDropdownMenuItem();
        */
       clickDropdownMenuItem(options?: Partial<ClickOptions>): Chainable<Element>;
+
+      /**
+       * Click on the open button in "select-like" components to open the popover. Currently supported components are `ui5-select`, `ui5-combobox` and `ui5-multi-combobox`.
+       *
+       * @example cy.get('[ui5-select]').openDropDownByClick();
+       */
+      openDropDownByClick(options?: Partial<ClickOptions>): Chainable<Element>;
     }
   }
 }
@@ -208,4 +215,13 @@ Cypress.Commands.add('clickDropdownMenuItem', { prevSubject: 'element' }, (subje
       .click({ force: true, ...options });
   });
 });
+
+Cypress.Commands.add('openDropDownByClick', { prevSubject: 'element' }, (subject, options = {}) => {
+  if (subject.get(0).hasAttribute('ui5-multi-combobox')) {
+    // mcb needs a lot of calculation time to make the popover available
+    cy.wait(500);
+  }
+  cy.wrap(subject).shadow().find('[input-icon]').click(options);
+});
+
 export {};

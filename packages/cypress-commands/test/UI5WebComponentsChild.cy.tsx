@@ -214,11 +214,7 @@ describe('UI5 Web Components - Child Commands', () => {
 
     components.forEach((component) => {
       cy.mount(component);
-      if (component.key === 'ui5-multi-combobox') {
-        // mcb needs a lot of calculation time to make the popover available
-        cy.wait(500);
-      }
-      cy.get(`[${component.key}]`).shadow().get('[input-icon]').click();
+      cy.get(`[${component.key}]`).openDropDownByClick();
       cy.get(`[${component.key}]`).clickDropdownMenuItemByText(selectItemText);
 
       switch (component.key) {
@@ -235,22 +231,25 @@ describe('UI5 Web Components - Child Commands', () => {
 
       cy.get('@change').should('have.callCount', callCounter);
       callCounter++;
+      cy.wait(200);
     });
   });
 
   it('clickDropDownMenuItem', () => {
     const selectItemText = 'Select me';
+    const changeSpy = cy.spy().as('change');
+    let callCounter = 1;
     const components = [
       // todo: activate cb test once `getDomRef` returns correct value: https://github.com/SAP/ui5-webcomponents/issues/8841
       // <ComboBox key="ui5-combobox">
-      //   {...new Array(5).fill(<ComboBoxItem text="Item" />)}
+      //   {...new Array(5).fill(<ComboBoxItem text="Item" onSelectionChange={changeSpy}/>)}
       //   <ComboBoxItem text={selectItemText} data-testid="selectItem" />
       // </ComboBox>,
-      <MultiComboBox key="ui5-multi-combobox" onKeyDown={console.log}>
+      <MultiComboBox key="ui5-multi-combobox" onSelectionChange={changeSpy}>
         {...new Array(5).fill(<MultiComboBoxItem text="Item" />)}
         <MultiComboBoxItem text={selectItemText} data-testid="selectItem" />
       </MultiComboBox>,
-      <Select key="ui5-select">
+      <Select key="ui5-select" onChange={changeSpy}>
         {...new Array(5).fill(<Option>Item</Option>)}
         <Option data-testid="selectItem">{selectItemText}</Option>
       </Select>
@@ -258,12 +257,25 @@ describe('UI5 Web Components - Child Commands', () => {
 
     components.forEach((component) => {
       cy.mount(component);
-      if (component.key === 'ui5-multi-combobox') {
-        // mcb needs a lot of calculation time to make the popover available
-        cy.wait(500);
-      }
-      cy.get(`[${component.key}]`).shadow().find('[input-icon]').click();
+      cy.get(`[${component.key}]`).openDropDownByClick();
+      cy.get('[ui5-responsive-popover][open]').should('be.visible');
       cy.get(`[data-testid="selectItem"]`).clickDropdownMenuItem();
+
+      switch (component.key) {
+        case 'ui5-combobox':
+          cy.get(`[${component.key}]`).should('have.value', selectItemText);
+          break;
+        case 'ui5-multi-combobox':
+          cy.get(`[${component.key}]`).find('[ui5-token]').contains(selectItemText);
+          break;
+        case 'ui5-select':
+          cy.get(`[${component.key}]`).should('have.value', selectItemText);
+          break;
+      }
+
+      cy.get('@change').should('have.callCount', callCounter);
+      callCounter++;
+      cy.wait(200);
     });
   });
 });
