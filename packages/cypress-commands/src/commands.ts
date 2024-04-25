@@ -195,7 +195,7 @@ Cypress.Commands.add('clickDropdownMenuItemByText', { prevSubject: 'element' }, 
     const staticArea = await $dropdown.get(0).getStaticAreaItemDomRef();
     cy.wrap(staticArea).find('[ui5-responsive-popover][open]').should('be.visible');
     // necessary as otherwise focusing the ui5-li is fuzzy
-    cy.wait(100);
+    cy.wait(300);
     cy.wrap(staticArea)
       .contains(text)
       .then(async ($li) => {
