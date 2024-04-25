@@ -67,17 +67,22 @@ declare global {
       clickUi5ListItemByText(text: string): Chainable<Element>;
 
       /**
+       * @deprecated: This command is deprecated. Please use `clickDropdownMenuItemByText` instead.
+       *
        * Click on an `ui5-option` of the `ui5-select` component by text.
        *
        * __Note:__ The select popover must be visible, otherwise it can lead to unwanted side effects.
        *
        * @param text text of the ui5-option that should be clicked
+       * @param options
        * @example cy.get('[ui5-select]').clickUi5SelectOptionByText('Option2');
        *
        */
       clickUi5SelectOptionByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
 
       /**
+       * @deprecated: This command is deprecated. Please use `clickDropdownMenuItem` instead.
+       *
        * Click on chained `ui5-option`.
        *
        * __Note:__ The select popover must be visible, otherwise it can lead to unwanted side effects.
@@ -85,6 +90,27 @@ declare global {
        * @example cy.get('[ui5-option]').clickUi5SelectOption();
        */
       clickUi5SelectOption(options?: Partial<ClickOptions>): Chainable<Element>;
+
+      /**
+       * Click on an option of "select-like" components by text. Currently supported components are `ui5-select`, `ui5-combobox` and `ui5-multi-combobox`.
+       *
+       * __Note:__ The popover must be visible, otherwise it can lead to unwanted side effects.
+       *
+       * @param text text of the option inside the popover that should be clicked
+       * @param options Cypress.ClickOptions
+       * @example cy.get('[ui5-select]').clickDropdownMenuItemByText('Option2');
+       *
+       */
+      clickDropdownMenuItemByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
+
+      /**
+       * Click on a chained option of "select-like" components. Currently supported components are `ui5-option` and `ui5-mcb-item`.
+       *
+       * __Note:__ The select popover must be visible, otherwise it can lead to unwanted side effects.
+       *
+       * @example cy.get('[ui5-option]').clickDropdownMenuItem();
+       */
+      clickDropdownMenuItem(options?: Partial<ClickOptions>): Chainable<Element>;
     }
   }
 }
@@ -155,4 +181,32 @@ Cypress.Commands.add('clickUi5SelectOption', { prevSubject: 'element' }, (subjec
   });
 });
 
+Cypress.Commands.add('clickDropdownMenuItemByText', { prevSubject: 'element' }, (subject, text, options = {}) => {
+  cy.wrap(subject).then(async ($dropdown) => {
+    // @ts-expect-error: ui5-webcomponent types are not bundled in
+    const staticArea = await $dropdown.get(0).getStaticAreaItemDomRef();
+    cy.wrap(staticArea).find('[ui5-responsive-popover][open]').should('be.visible');
+    // necessary as otherwise focusing the ui5-li is fuzzy
+    cy.wait(100);
+    cy.wrap(staticArea)
+      .contains(text)
+      .then(async ($li) => {
+        await $li.get(0).focus();
+        cy.wrap($li)
+          .find('li')
+          .click({ force: true, ...options });
+      });
+  });
+});
+
+Cypress.Commands.add('clickDropdownMenuItem', { prevSubject: 'element' }, (subject, options = {}) => {
+  cy.wrap(subject).then(($option) => {
+    console.log($option.get(0));
+    // @ts-expect-error: ui5-webcomponent types are not bundled in
+    const domRef = $option.get(0).getDomRef();
+    cy.wrap(domRef)
+      .find('li')
+      .click({ force: true, ...options });
+  });
+});
 export {};
