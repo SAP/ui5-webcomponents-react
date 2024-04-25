@@ -192,94 +192,90 @@ describe('UI5 Web Components - Child Commands', () => {
     cy.get('@select').should('have.been.calledTwice');
   });
 
-  for (let i = 0; i < 20; i++) {
-    it('clickDropdownMenuItemByText', () => {
-      const selectItemText =
-        'This very long item should be selected by first focusing it and then pressing it. A focus is applied first, because otherwise it wouldnt be visible. Strangely, longer items tend to result in occasional test failures compared to smaller ones, which is why this item has this text.';
-      const changeSpy = cy.spy().as('change');
-      let callCounter = 1;
-      const components = [
-        <ComboBox key="ui5-combobox" onSelectionChange={changeSpy}>
-          {...new Array(30).fill(<ComboBoxItem text="Item" />)}
-          <ComboBoxItem text={selectItemText} />
-        </ComboBox>,
-        <MultiComboBox key="ui5-multi-combobox" onSelectionChange={changeSpy}>
-          {...new Array(30).fill(<MultiComboBoxItem text="Item" />)}
-          <MultiComboBoxItem text={selectItemText} />
-        </MultiComboBox>,
-        <Select key="ui5-select" onChange={changeSpy}>
-          {...new Array(30).fill(<Option>Item</Option>)}
-          <Option>{selectItemText}</Option>
-        </Select>
-      ];
+  it('clickDropdownMenuItemByText', () => {
+    const selectItemText =
+      'This very long item should be selected by first focusing it and then pressing it. A focus is applied first, because otherwise it wouldnt be visible. Strangely, longer items tend to result in occasional test failures compared to smaller ones, which is why this item has this text.';
+    const changeSpy = cy.spy().as('change');
+    let callCounter = 1;
+    const components = [
+      <ComboBox key="ui5-combobox" onSelectionChange={changeSpy}>
+        {...new Array(30).fill(<ComboBoxItem text="Item" />)}
+        <ComboBoxItem text={selectItemText} />
+      </ComboBox>,
+      <MultiComboBox key="ui5-multi-combobox" onSelectionChange={changeSpy}>
+        {...new Array(30).fill(<MultiComboBoxItem text="Item" />)}
+        <MultiComboBoxItem text={selectItemText} />
+      </MultiComboBox>,
+      <Select key="ui5-select" onChange={changeSpy}>
+        {...new Array(30).fill(<Option>Item</Option>)}
+        <Option>{selectItemText}</Option>
+      </Select>
+    ];
 
-      components.forEach((component) => {
-        cy.mount(component);
-        cy.get(`[${component.key}]`).openDropDownByClick();
-        cy.get(`[${component.key}]`).clickDropdownMenuItemByText(selectItemText);
+    components.forEach((component) => {
+      cy.mount(component);
+      cy.get(`[${component.key}]`).openDropDownByClick();
+      cy.get(`[${component.key}]`).clickDropdownMenuItemByText(selectItemText);
 
-        switch (component.key) {
-          case 'ui5-combobox':
-            cy.get(`[${component.key}]`).should('have.value', selectItemText);
-            break;
-          case 'ui5-multi-combobox':
-            cy.get(`[${component.key}]`).find('[ui5-token]').contains(selectItemText);
-            break;
-          case 'ui5-select':
-            cy.get(`[${component.key}]`).should('have.value', selectItemText);
-            break;
-        }
+      switch (component.key) {
+        case 'ui5-combobox':
+          cy.get(`[${component.key}]`).should('have.value', selectItemText);
+          break;
+        case 'ui5-multi-combobox':
+          cy.get(`[${component.key}]`).find('[ui5-token]').contains(selectItemText);
+          break;
+        case 'ui5-select':
+          cy.get(`[${component.key}]`).should('have.value', selectItemText);
+          break;
+      }
 
-        cy.get('@change').should('have.callCount', callCounter);
-        callCounter++;
-        cy.wait(200);
-      });
+      cy.get('@change').should('have.callCount', callCounter);
+      callCounter++;
+      cy.wait(200);
     });
-  }
+  });
 
-  for (let i = 0; i < 20; i++) {
-    it.only('clickDropDownMenuItem', () => {
-      const selectItemText = 'Select me';
-      const changeSpy = cy.spy().as('change');
-      let callCounter = 1;
-      const components = [
-        // todo: activate cb test once `getDomRef` returns correct value: https://github.com/SAP/ui5-webcomponents/issues/8841
-        // <ComboBox key="ui5-combobox">
-        //   {...new Array(5).fill(<ComboBoxItem text="Item" onSelectionChange={changeSpy}/>)}
-        //   <ComboBoxItem text={selectItemText} data-testid="selectItem" />
-        // </ComboBox>,
-        <MultiComboBox key="ui5-multi-combobox" onSelectionChange={changeSpy}>
-          {...new Array(5).fill(<MultiComboBoxItem text="Item" />)}
-          <MultiComboBoxItem text={selectItemText} data-testid="selectItem" />
-        </MultiComboBox>,
-        <Select key="ui5-select" onChange={changeSpy}>
-          {...new Array(5).fill(<Option>Item</Option>)}
-          <Option data-testid="selectItem">{selectItemText}</Option>
-        </Select>
-      ];
+  it('clickDropDownMenuItem', () => {
+    const selectItemText = 'Select me';
+    const changeSpy = cy.spy().as('change');
+    let callCounter = 1;
+    const components = [
+      // todo: activate cb test once `getDomRef` returns correct value: https://github.com/SAP/ui5-webcomponents/issues/8841
+      // <ComboBox key="ui5-combobox">
+      //   {...new Array(5).fill(<ComboBoxItem text="Item" onSelectionChange={changeSpy}/>)}
+      //   <ComboBoxItem text={selectItemText} data-testid="selectItem" />
+      // </ComboBox>,
+      <MultiComboBox key="ui5-multi-combobox" onSelectionChange={changeSpy}>
+        {...new Array(5).fill(<MultiComboBoxItem text="Item" />)}
+        <MultiComboBoxItem text={selectItemText} data-testid="selectItem" />
+      </MultiComboBox>,
+      <Select key="ui5-select" onChange={changeSpy}>
+        {...new Array(5).fill(<Option>Item</Option>)}
+        <Option data-testid="selectItem">{selectItemText}</Option>
+      </Select>
+    ];
 
-      components.forEach((component) => {
-        cy.mount(component);
-        cy.get(`[${component.key}]`).openDropDownByClick();
-        cy.get('[ui5-responsive-popover][open]').should('be.visible');
-        cy.get(`[data-testid="selectItem"]`).clickDropdownMenuItem();
+    components.forEach((component) => {
+      cy.mount(component);
+      cy.get(`[${component.key}]`).openDropDownByClick();
+      cy.get('[ui5-responsive-popover][open]').should('be.visible');
+      cy.get(`[data-testid="selectItem"]`).clickDropdownMenuItem();
 
-        switch (component.key) {
-          case 'ui5-combobox':
-            cy.get(`[${component.key}]`).should('have.value', selectItemText);
-            break;
-          case 'ui5-multi-combobox':
-            cy.get(`[${component.key}]`).find('[ui5-token]').contains(selectItemText);
-            break;
-          case 'ui5-select':
-            cy.get(`[${component.key}]`).should('have.value', selectItemText);
-            break;
-        }
+      switch (component.key) {
+        case 'ui5-combobox':
+          cy.get(`[${component.key}]`).should('have.value', selectItemText);
+          break;
+        case 'ui5-multi-combobox':
+          cy.get(`[${component.key}]`).find('[ui5-token]').contains(selectItemText);
+          break;
+        case 'ui5-select':
+          cy.get(`[${component.key}]`).should('have.value', selectItemText);
+          break;
+      }
 
-        cy.get('@change').should('have.callCount', callCounter);
-        callCounter++;
-        cy.wait(200);
-      });
+      cy.get('@change').should('have.callCount', callCounter);
+      callCounter++;
+      cy.wait(200);
     });
-  }
+  });
 });

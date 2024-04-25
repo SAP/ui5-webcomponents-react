@@ -15,7 +15,11 @@ jobs:
     strategy:
       matrix:
         spec:
+          - base
+          - charts
           - cypress-commands
+          - main/src/components
+          - main/src/internal
       fail-fast: false
 
     steps:
