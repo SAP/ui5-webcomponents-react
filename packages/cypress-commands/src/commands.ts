@@ -103,6 +103,7 @@ declare global {
        */
       clickDropdownMenuItemByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
 
+      // todo: add `ui5-cb-item` once possible: https://github.com/SAP/ui5-webcomponents/issues/8841
       /**
        * Click on a chained option of "select-like" components. Currently supported components are `ui5-option` and `ui5-mcb-item`.
        *
