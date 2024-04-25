@@ -201,7 +201,6 @@ Cypress.Commands.add('clickDropdownMenuItemByText', { prevSubject: 'element' }, 
 
 Cypress.Commands.add('clickDropdownMenuItem', { prevSubject: 'element' }, (subject, options = {}) => {
   cy.wrap(subject).then(($option) => {
-    console.log($option.get(0));
     // @ts-expect-error: ui5-webcomponent types are not bundled in
     const domRef = $option.get(0).getDomRef();
     cy.wrap(domRef)
