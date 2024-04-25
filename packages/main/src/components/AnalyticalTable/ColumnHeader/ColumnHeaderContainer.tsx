@@ -17,6 +17,7 @@ interface ColumnHeaderContainerProps {
   columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
   uniqueId: string;
   showVerticalEndBorder: boolean;
+  onAutoResize: (e: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>, accessor: string) => void;
 }
 
 export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderContainerProps>((props, ref) => {
@@ -30,7 +31,8 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     portalContainer,
     columnVirtualizer,
     uniqueId,
-    showVerticalEndBorder
+    showVerticalEndBorder,
+    onAutoResize
   } = props;
 
   useStylesheet(styleData, 'Resizer');
@@ -65,8 +67,14 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
               <div
                 {...column.getResizerProps()}
                 data-resizer
+                data-cy={`data-resizer-${index}`}
                 className={classNames.resizer}
                 style={resizerDirectionStyle}
+                onDoubleClick={(e) => {
+                  if (column.autoResizable) {
+                    onAutoResize(e, rest.id);
+                  }
+                }}
               />
             )}
             <ColumnHeader
