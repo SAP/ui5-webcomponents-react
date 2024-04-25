@@ -33,7 +33,7 @@
     "watch:css": "yarn build:css --watch"
   },
   "dependencies": {
-    "clsx": "2.1.0",
+    "clsx": "2.1.1",
     "react-content-loader": "7.0.0",
     "recharts": "2.12.6"
   },
