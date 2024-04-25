@@ -257,7 +257,12 @@ export interface AnalyticalTableColumnDefinition {
    * Disable resizing for this column.
    */
   disableResizing?: boolean;
-
+  /**
+   * Defines whether double clicking a columns data-resizer will automatically resize the column.
+   *
+   * Available on text columns
+   */
+  autoResizable?: boolean;
   // ui5 web components react properties
   /**
    * Horizontal alignment of the cell.
@@ -676,6 +681,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Fired when the body of the table is scrolled.
    */
   onTableScroll?: (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
+  /**
+   * Fired when the table is resized by double-clicking the data-resizer.
+   */
+  onAutoResize?: (e?: CustomEvent<{ accessor: string; width: number }>) => void;
   // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.

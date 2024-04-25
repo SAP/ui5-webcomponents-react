@@ -239,6 +239,65 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name-3').should('not.be.visible');
   });
 
+  it('autoResize', () => {
+    let resizeColumns = columns.map((el) => {
+      return { ...el, autoResizable: true };
+    });
+
+    let dataFixed = data.map((el, i) => {
+      if (i === 2) return { ...el, name: 'Much Longer Name To Resize Larger For Testing A Larger Auto Resize' };
+      return el;
+    });
+
+    cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} onAutoResize={(e) => e.preventDefault()} />);
+    cy.wait(200);
+    cy.get('[data-cy="data-resizer-1"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 476);
+    cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 476);
+
+    cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} />);
+    cy.wait(200);
+    cy.get('[data-cy="data-resizer-1"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
+    cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 451);
+
+    dataFixed = generateMoreData(200);
+
+    dataFixed = dataFixed.map((el, i) => {
+      if (i === 2) return { ...el, name: 'Much Longer Name To Resize Larger For Testing A Larger Auto Resize' };
+      else if (i > 50) return { ...el, name: 'Short Name' };
+      return el;
+    });
+
+    const loadMore = cy.spy().as('more');
+    cy.mount(
+      <AnalyticalTable
+        data={dataFixed}
+        columns={resizeColumns}
+        onLoadMore={loadMore}
+        infiniteScroll={true}
+        infiniteScrollThreshold={0}
+      />
+    );
+
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 94);
+
+    resizeColumns = columns.map((el) => {
+      return { ...el, autoResizable: false };
+    });
+
+    cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} />);
+    cy.wait(200);
+    cy.get('[data-cy="data-resizer-1"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 472.75);
+    cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 472.75);
+  });
+
   it('scrollTo', () => {
     interface ScrollTableProps {
       scrollFn: string;
