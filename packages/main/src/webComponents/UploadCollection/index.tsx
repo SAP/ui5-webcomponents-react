@@ -104,7 +104,7 @@ interface UploadCollectionPropTypes
  *
  * `import "@ui5/webcomponents-fiori/dist/UploadCollectionItem.js";` (for `UploadCollectionItem`)
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const UploadCollection = withWebComponent<UploadCollectionPropTypes, UploadCollectionDomRef>(
   'ui5-upload-collection',

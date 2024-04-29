@@ -59,7 +59,7 @@ interface TableColumnPropTypes
  * The `TableColumn` component allows to define column specific properties that are applied
  * when rendering the `Table` component.
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const TableColumn = withWebComponent<TableColumnPropTypes, TableColumnDomRef>(
   'ui5-table-column',
