@@ -5,7 +5,7 @@ import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 
 import React, { cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign, PopoverPlacementType, PopupAccessibleRole } from '../../enums/index.js';
-import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
+import { getOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '../../internal/utils.js';
@@ -116,8 +116,10 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     return a11yConfig?.overflowPopover?.role;
   })();
 
+  const OverflowPopoverContextProvider = getOverflowPopoverContext().Provider;
+
   return (
-    <OverflowPopoverContext.Provider value={{ inPopover: true }}>
+    <OverflowPopoverContextProvider value={{ inPopover: true }}>
       {overflowButton ? (
         cloneElement(overflowButton, { onClick: clonedOverflowButtonClick })
       ) : (
@@ -177,6 +179,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           </Popover>,
           portalContainer ?? document.body
         )}
-    </OverflowPopoverContext.Provider>
+    </OverflowPopoverContextProvider>
   );
 };
