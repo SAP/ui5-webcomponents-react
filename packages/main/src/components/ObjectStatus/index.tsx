@@ -248,7 +248,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
           )}
         </span>
       )}
-      {!!invisibleText && computedChildren && (
+      {!!invisibleText && (computedChildren || iconToRender) && (
         <span className={classNames.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleTextContainer">
           {invisibleText}
         </span>
