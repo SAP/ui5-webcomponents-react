@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.0...v1.28.1) (2024-05-02)
+
+### Bug Fixes
+
+- **AnalyticalTable:** correct indentation for tree tables with custom cell ([#5765](https://github.com/SAP/ui5-webcomponents-react/issues/5765)) ([30ead6e](https://github.com/SAP/ui5-webcomponents-react/commit/30ead6e6227730e1fe560881bc5adaf8e2bf8e5e))
+- **AnalyticalTable:** exclude expand button from tab-chain ([#5753](https://github.com/SAP/ui5-webcomponents-react/issues/5753)) ([169ed49](https://github.com/SAP/ui5-webcomponents-react/commit/169ed4947a50d36d92b4adcc1a95e0fcb621140e)), closes [#5749](https://github.com/SAP/ui5-webcomponents-react/issues/5749)
+- **deps:** update dependency @tanstack/react-virtual to ~3.4.0 ([#5728](https://github.com/SAP/ui5-webcomponents-react/issues/5728)) ([10ebc6d](https://github.com/SAP/ui5-webcomponents-react/commit/10ebc6d5f62dd8680c2d5d0f1052c3bb8f410a97))
+- **deps:** update dependency clsx to v2.1.1 ([#5747](https://github.com/SAP/ui5-webcomponents-react/issues/5747)) ([fa5bbc6](https://github.com/SAP/ui5-webcomponents-react/commit/fa5bbc67ff3613766d5c2b7ccc8232e3ae480fb8))
+- **deps:** update dependency recharts to v2.12.6 ([#5740](https://github.com/SAP/ui5-webcomponents-react/issues/5740)) ([2843807](https://github.com/SAP/ui5-webcomponents-react/commit/2843807239cb0dc8405e03ab20ae60e828b88bae))
+- **ObjectStatus:** always announce state via screen reader ([#5757](https://github.com/SAP/ui5-webcomponents-react/issues/5757)) ([7fc8ae7](https://github.com/SAP/ui5-webcomponents-react/commit/7fc8ae7cc5a9e2f6dbb6fb13bdf805a475df80ef)), closes [#5625](https://github.com/SAP/ui5-webcomponents-react/issues/5625)
+- **OverflowPopover:** make OverflowPopoverContext to a single to issue on multiple instances ([#5739](https://github.com/SAP/ui5-webcomponents-react/issues/5739)) ([368815a](https://github.com/SAP/ui5-webcomponents-react/commit/368815ac686a5edaed221be668b1a2d01a603f8c)), closes [#5738](https://github.com/SAP/ui5-webcomponents-react/issues/5738)
+
 # [1.28.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.27.0...v1.28.0) (2024-04-19)
 
 ### Bug Fixes
