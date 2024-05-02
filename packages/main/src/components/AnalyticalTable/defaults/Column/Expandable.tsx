@@ -56,6 +56,7 @@ export const Expandable = (props) => {
             >
               {shouldRenderButton ? (
                 <Button
+                  tabIndex={-1}
                   icon={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
                   design={ButtonDesign.Transparent}
                   onClick={rowProps.onClick}
@@ -63,6 +64,7 @@ export const Expandable = (props) => {
                 />
               ) : (
                 <Icon
+                  tabIndex={-1}
                   onClick={rowProps.onClick}
                   interactive
                   name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
