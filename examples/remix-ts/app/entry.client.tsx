@@ -4,15 +4,22 @@
  * For more information, see https://remix.run/file-conventions/entry.client
  */
 
-import { RemixBrowser } from "@remix-run/react";
-import { startTransition, StrictMode } from "react";
-import { hydrateRoot } from "react-dom/client";
+import { RemixBrowser } from '@remix-run/react';
+import { ThemeProvider } from '@ui5/webcomponents-react';
+import { startTransition, StrictMode } from 'react';
+import { hydrateRoot } from 'react-dom/client';
+
+import './globals.css';
+import '@ui5/webcomponents-react/styles.css';
+import '@ui5/webcomponents-icons/dist/Assets.js';
 
 startTransition(() => {
   hydrateRoot(
-    document,
+    document.getElementById('root')!,
     <StrictMode>
-      <RemixBrowser />
+      <ThemeProvider>
+        <RemixBrowser />
+      </ThemeProvider>
     </StrictMode>
   );
 });
