@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.26.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.2...v1.26.3) (2024-05-03)
+
+**Note:** Version bump only for package ui5-webcomponents-react
+
 ## [1.26.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.1...v1.26.2) (2024-04-23)
 
 ### Bug Fixes
