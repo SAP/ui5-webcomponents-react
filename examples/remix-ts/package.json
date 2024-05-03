@@ -19,7 +19,8 @@
     "@ui5/webcomponents-react": "^1.28.1",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remix-island": "^0.2.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.9.1",
