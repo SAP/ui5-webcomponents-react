@@ -1,5 +1,6 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import { createHead } from 'remix-island';
+import { AppShell } from './components/AppShell';
 
 export const Head = createHead(() => {
   return (
@@ -17,7 +18,9 @@ export default function App() {
   return (
     <>
       <Head />
-      <Outlet />
+      <AppShell>
+        <Outlet />
+      </AppShell>
       <ScrollRestoration />
       <Scripts />
     </>

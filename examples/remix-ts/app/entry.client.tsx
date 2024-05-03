@@ -5,7 +5,6 @@
  */
 
 import { RemixBrowser } from '@remix-run/react';
-import { ThemeProvider } from '@ui5/webcomponents-react';
 import { startTransition, StrictMode } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 
@@ -17,9 +16,7 @@ startTransition(() => {
   hydrateRoot(
     document.getElementById('root')!,
     <StrictMode>
-      <ThemeProvider>
-        <RemixBrowser />
-      </ThemeProvider>
+      <RemixBrowser />
     </StrictMode>
   );
 });
