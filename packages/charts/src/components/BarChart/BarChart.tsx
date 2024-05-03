@@ -297,7 +297,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
               <YAxis
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
                 type="category"
-                key={dimension.accessor}
+                key={dimension.reactKey}
                 dataKey={dimension.accessor}
                 tick={<YAxisTicks config={dimension} />}
                 tickLine={index < 1}
@@ -316,7 +316,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
               <Bar
                 stackId={element.stackId}
                 fillOpacity={element.opacity}
-                key={element.accessor}
+                key={element.reactKey}
                 name={element.label ?? element.accessor}
                 strokeOpacity={element.opacity}
                 type="monotone"

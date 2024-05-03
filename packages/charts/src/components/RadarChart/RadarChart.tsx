@@ -187,7 +187,7 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
         {measures.map((element, index) => {
           return (
             <Radar
-              key={element.accessor}
+              key={element.reactKey}
               activeDot={{ onClick: onDataPointClickInternal } as any}
               name={element.label ?? element.accessor}
               dataKey={element.accessor}

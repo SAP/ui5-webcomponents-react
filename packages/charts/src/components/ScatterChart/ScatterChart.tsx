@@ -237,7 +237,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
         {chartConfig.xAxisVisible && (
           <XAxis
             type={'number'}
-            key={xMeasure?.accessor}
+            key={typeof xMeasure?.accessor !== 'function' ? xMeasure?.accessor : xMeasure?.label}
             name={xMeasure?.label}
             dataKey={xMeasure?.accessor}
             xAxisId={0}
@@ -263,7 +263,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
           name={yMeasure?.label}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
-          key={yMeasure?.accessor}
+          key={typeof yMeasure?.accessor !== 'function' ? yMeasure?.accessor : yMeasure?.label}
           dataKey={yMeasure?.accessor}
           tickFormatter={yMeasure?.formatter}
           interval={0}
@@ -272,7 +272,12 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
           margin={yMeasure?.label ? { left: 200 } : 0}
           orientation={isRTL === true ? 'right' : 'left'}
         />
-        <ZAxis name={zMeasure?.label} dataKey={zMeasure?.accessor} range={[0, 5000]} key={zMeasure?.accessor} />
+        <ZAxis
+          name={zMeasure?.label}
+          dataKey={zMeasure?.accessor}
+          range={[0, 5000]}
+          key={typeof zMeasure?.accessor !== 'function' ? zMeasure?.accessor : zMeasure?.label}
+        />
         {dataset?.map((dataSet, index) => {
           return (
             <Scatter

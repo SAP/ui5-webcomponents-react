@@ -253,7 +253,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
           dimensions.map((dimension, index) => {
             return (
               <XAxis
-                key={dimension.accessor}
+                key={dimension.reactKey}
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
@@ -310,7 +310,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
                 yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
                 stackId={element.stackId}
                 fillOpacity={element.opacity}
-                key={element.accessor}
+                key={element.key}
                 name={element.label ?? element.accessor}
                 strokeOpacity={element.opacity}
                 type="monotone"
