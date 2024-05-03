@@ -310,7 +310,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
                 yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
                 stackId={element.stackId}
                 fillOpacity={element.opacity}
-                key={element.key}
+                key={element.reactKey}
                 name={element.label ?? element.accessor}
                 strokeOpacity={element.opacity}
                 type="monotone"
