@@ -1,0 +1,1 @@
+var e=!0,t="Invariant failed";function i(o,r){if(!o){if(e)throw new Error(t);var n=typeof r=="function"?r():r,a=n?"".concat(t,": ").concat(n):t;throw new Error(a)}}const c=Object.freeze(Object.defineProperty({__proto__:null,default:i},Symbol.toStringTag,{value:"Module"}));export{i,c as t};
