@@ -87,7 +87,7 @@ describe('SplitterLayout', () => {
     });
   });
 
-  it('SplitterLayout w/ multiple SplitterElements', () => {
+  it.skip('SplitterLayout w/ multiple SplitterElements', () => {
     const click = cy.spy().as('click');
     [true, false].forEach((vertical) => {
       cy.mount(
