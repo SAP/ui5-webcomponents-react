@@ -326,7 +326,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             axisProps.reversed = isRTL;
           }
 
-          return <AxisComponent key={dimension.accessor} {...axisProps} />;
+          return <AxisComponent key={dimension.reactKey} {...axisProps} />;
         })}
         {layout === 'horizontal' && (
           <YAxis
@@ -487,7 +487,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
           }
           return (
             <ChartElement
-              key={element.accessor}
+              key={element.reactKey}
               name={element.label ?? element.accessor}
               label={
                 element.type === 'bar' || isBigDataSet ? undefined : (

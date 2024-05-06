@@ -237,7 +237,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
         {dimensions.map((dimension, index) => {
           return (
             <XAxis
-              key={dimension.accessor}
+              key={dimension.reactKey}
               dataKey={dimension.accessor}
               xAxisId={index}
               interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
@@ -294,7 +294,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
             <Line
               dot={element.showDot ?? !isBigDataSet}
               yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
-              key={element.accessor}
+              key={element.reactKey}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment

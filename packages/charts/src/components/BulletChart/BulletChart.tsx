@@ -319,7 +319,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
               axisProps.reversed = isRTL;
             }
 
-            return <AxisComponent key={dimension.accessor} {...axisProps} />;
+            return <AxisComponent key={dimension.reactKey} {...axisProps} />;
           })}
         {layout === 'horizontal' && (
           <YAxis
@@ -473,7 +473,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
 
           return (
             <Bar
-              key={element.accessor}
+              key={element.reactKey}
               name={element.label ?? element.accessor}
               label={
                 isBigDataSet ? null : <ChartDataLabel config={element} chartType={'bar'} position={labelPosition} />
