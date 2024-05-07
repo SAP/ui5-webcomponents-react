@@ -2,7 +2,7 @@
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import React, { forwardRef, useCallback, useRef } from 'react';
-import type { LineProps } from 'recharts';
+import type { LineProps, YAxisProps } from 'recharts';
 import {
   Brush,
   CartesianGrid,
@@ -58,7 +58,7 @@ interface MeasureConfig extends IChartMeasure {
 }
 
 interface DimensionConfig extends IChartDimension {
-  interval?: number;
+  interval?: YAxisProps['interval'];
 }
 
 export interface LineChartProps extends IChartBaseProps {
