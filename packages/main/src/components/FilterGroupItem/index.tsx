@@ -58,7 +58,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       considerGroupName,
       label = '',
       labelTooltip,
-      required = false,
+      required,
       visible = true,
       visibleInFilterBar,
       children,
@@ -268,13 +268,6 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
 );
 
 FilterGroupItem.displayName = 'FilterGroupItem';
-
-FilterGroupItem.defaultProps = {
-  groupName: 'default',
-  visible: true,
-  required: false,
-  label: ''
-};
 
 export { FilterGroupItem };
 export type { FilterGroupItemPropTypes };
