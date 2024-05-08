@@ -60,7 +60,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       labelTooltip,
       required,
       visible = true,
-      visibleInFilterBar,
+      visibleInFilterBar = true,
       children,
       loading,
       className,

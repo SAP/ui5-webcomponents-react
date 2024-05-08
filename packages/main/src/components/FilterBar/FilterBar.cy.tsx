@@ -630,6 +630,64 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('div[data-order-id]').eq(4).find('[ui5-label]').should('have.text', 'RatingIndicator');
   });
 
+  it('visible & visibleInFilterBar', () => {
+    cy.mount(
+      <FilterBar>
+        <FilterGroupItem label="undefined">
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="false" visible={false}>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="true" visible>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="undefined undefined">
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="false false" visible={false} visibleInFilterBar={false}>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="true true" visible visibleInFilterBar>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="true false" visible visibleInFilterBar={false}>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="undefined true" visible visibleInFilterBar={true}>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="undefined false" visible visibleInFilterBar={false}>
+          <StepInput />
+        </FilterGroupItem>
+
+        <FilterGroupItem label="undefined false">
+          <StepInput />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+    cy.findByText('undefined').should('be.visible');
+    cy.findByText('false').should('not.exist');
+    cy.findByText('true').should('be.visible');
+    cy.findByText('undefined undefined').should('be.visible');
+    cy.findByText('false false').should('not.exist');
+    cy.findByText('true true').should('be.visible');
+    cy.findByText('true false').should('not.exist');
+    cy.findByText('undefined true').should('be.visible');
+    cy.findByText('undefined false').should('not.exist');
+
+    cy.findByText('Filters').realClick();
+    cy.get('[ui5-table-row][data-text="undefined"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-table-row][data-text="false"]').should('not.exist');
+    cy.get('[ui5-table-row][data-text="true"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-table-row][data-text="undefined undefined"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-table-row][data-text="false false"]').should('not.exist');
+    cy.get('[ui5-table-row][data-text="true true"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-table-row][data-text="true false"]').should('not.have.attr', 'selected');
+    cy.get('[ui5-table-row][data-text="undefined true"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-table-row][data-text="undefined false"]').should('not.have.attr', 'selected');
+  });
+
   mountWithCustomTagName(FilterBar);
 
   cypressPassThroughTestsFactory(FilterBar);
