@@ -660,12 +660,9 @@ describe('FilterBar.cy.tsx', () => {
         <FilterGroupItem label="undefined false" visible visibleInFilterBar={false}>
           <StepInput />
         </FilterGroupItem>
-
-        <FilterGroupItem label="undefined false">
-          <StepInput />
-        </FilterGroupItem>
       </FilterBar>
     );
+
     cy.findByText('undefined').should('be.visible');
     cy.findByText('false').should('not.exist');
     cy.findByText('true').should('be.visible');
@@ -677,6 +674,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.findByText('undefined false').should('not.exist');
 
     cy.findByText('Filters').realClick();
+    cy.get('[ui5-dialog]').should('be.visible');
     cy.get('[ui5-table-row][data-text="undefined"]').should('have.attr', 'selected', 'selected');
     cy.get('[ui5-table-row][data-text="false"]').should('not.exist');
     cy.get('[ui5-table-row][data-text="true"]').should('have.attr', 'selected', 'selected');
