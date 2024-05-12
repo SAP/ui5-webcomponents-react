@@ -245,7 +245,7 @@ describe('AnalyticalTable', () => {
     });
 
     let dataFixed = data.map((el, i) => {
-      if (i === 2) return { ...el, name: 'Much Longer Name To Resize Larger For Testing A Larger Auto Resize' };
+      if (i === 2) return { ...el, name: 'Longer Name Too' };
       return el;
     });
 
@@ -261,7 +261,7 @@ describe('AnalyticalTable', () => {
     cy.get('[data-cy="data-resizer-1"]').should('be.visible').dblclick();
     cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
     cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 451);
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 127);
 
     dataFixed = generateMoreData(200);
 
@@ -284,7 +284,7 @@ describe('AnalyticalTable', () => {
 
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 94);
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 91);
 
     resizeColumns = columns.map((el) => {
       return { ...el, autoResizable: false };
@@ -296,6 +296,26 @@ describe('AnalyticalTable', () => {
     cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 472.75);
     cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
     cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 472.75);
+
+    const dataSub = data.map((el, i) => {
+      if (i === 2) return { ...el, name: 'Longer Name Too' };
+      return el;
+    });
+
+    resizeColumns = columns.map((el) => {
+      return { ...el, autoResizable: true };
+    });
+
+    const renderRowSubComponent = () => {
+      return <div title="subcomponent">SubComponent</div>;
+    };
+
+    cy.mount(<AnalyticalTable data={dataSub} columns={resizeColumns} renderRowSubComponent={renderRowSubComponent} />);
+    cy.wait(200);
+    cy.get('[data-cy="data-resizer-1"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
+    cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 165);
   });
 
   it('scrollTo', () => {

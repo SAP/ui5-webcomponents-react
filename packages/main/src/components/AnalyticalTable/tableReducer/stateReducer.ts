@@ -67,7 +67,7 @@ export const stateReducer = (state, action, _prevState, instance) => {
     // fallback if the component wasn't ready yet for scrolling (elements are not initialized), e.g. when calling `.scrollToItem` on mount
     case 'TRIGGER_PROG_SCROLL':
       return { ...state, triggerScroll: payload };
-    case 'DOUBLE_CLICK_RESIZE':
+    case 'AUTO_RESIZE':
       return {
         ...state,
         columnResizing: {
