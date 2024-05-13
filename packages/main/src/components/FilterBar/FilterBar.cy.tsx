@@ -500,7 +500,7 @@ describe('FilterBar.cy.tsx', () => {
     );
     cy.findByText('Filters').click();
     cy.findByText('Show Values').click();
-    cy.get('[ui5-select]:not([title="Show Fields by Attribute"])').should('have.length', 2);
+    cy.get('[ui5-select]:not([title="Show Filters by Attribute"])').should('have.length', 2);
     cy.get('[ui5-multi-combobox]').should('have.length', 2);
   });
 
