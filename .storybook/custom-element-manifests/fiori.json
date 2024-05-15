@@ -22,66 +22,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/types/BarDesign.js",
-      "declarations": [
-        {
-          "kind": "enum",
-          "name": "BarDesign",
-          "description": "Different types of Bar design",
-          "_ui5privacy": "public",
-          "members": [
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Default type",
-              "default": "Header",
-              "name": "Header",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Subheader type",
-              "default": "Subheader",
-              "name": "Subheader",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Footer type",
-              "default": "Footer",
-              "name": "Footer",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Floating Footer type - there is visible border on all sides",
-              "default": "FloatingFooter",
-              "name": "FloatingFooter",
-              "readonly": true
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "BarDesign",
-            "module": "dist/types/BarDesign.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "dist/types/FCLLayout.js",
       "declarations": [
         {
@@ -1691,6 +1631,84 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/UploadCollectionSelectionMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "UploadCollectionSelectionMode",
+          "description": "Different UploadCollection selection modes.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Default mode (no selection).",
+              "default": "None",
+              "name": "None",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Right-positioned single selection mode (only one list item can be selected).",
+              "default": "Single",
+              "name": "Single",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Left-positioned single selection mode (only one list item can be selected).",
+              "default": "SingleStart",
+              "name": "SingleStart",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Selected item is highlighted but no selection element is visible\n(only one list item can be selected).",
+              "default": "SingleEnd",
+              "name": "SingleEnd",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Selected item is highlighted and selection is changed upon arrow navigation\n(only one list item can be selected - this is always the focused item).",
+              "default": "SingleAuto",
+              "name": "SingleAuto",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Multi selection mode (more than one list item can be selected).",
+              "default": "Multiple",
+              "name": "Multiple",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UploadCollectionSelectionMode",
+            "module": "dist/types/UploadCollectionSelectionMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/UploadState.js",
       "declarations": [
         {
@@ -1843,117 +1861,9 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/Assets-static.js",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "dist/Assets.js",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/Bar.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "### Overview\nThe Bar is a container which is primarily used to hold titles, buttons and input elements\nand its design and functionality is the basis for page headers and footers.\nThe component consists of three areas to hold its content - startContent slot, default slot and endContent slot.\nIt has the capability to center content, such as a title, while having other components on the left and right side.\n\n### Usage\nWith the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter.\n\n**Note:** Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.\n\n### Responsive Behavior\nThe default slot will be centered in the available space between the startContent and the endContent areas,\ntherefore it might not always be centered in the entire bar.\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Bar.js\";`",
-          "name": "Bar",
-          "cssParts": [
-            {
-              "description": "Used to style the wrapper of the content of the component",
-              "name": "bar"
-            }
-          ],
-          "slots": [
-            {
-              "name": "startContent",
-              "description": "Defines the content at the start of the bar.",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "default",
-              "description": "Defines the content in the middle of the bar.",
-              "_ui5propertyName": "middleContent",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "endContent",
-              "description": "Defines the content at the end of the bar.",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "design",
-              "type": {
-                "text": "BarDesign",
-                "references": [
-                  {
-                    "name": "BarDesign",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/types/BarDesign.js"
-                  }
-                ]
-              },
-              "description": "Defines the component's design.",
-              "default": "\"Header\"",
-              "privacy": "public",
-              "_ui5validator": "BarDesign"
-            }
-          ],
-          "attributes": [
-            {
-              "description": "Defines the component's design.",
-              "name": "design",
-              "default": "\"Header\"",
-              "fieldName": "design",
-              "type": {
-                "text": "\"Header\" | \"Subheader\" | \"Footer\" | \"FloatingFooter\""
-              }
-            }
-          ],
-          "superclass": {
-            "name": "UI5Element",
-            "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
-          },
-          "tagName": "ui5-bar",
-          "customElement": true,
-          "_ui5since": "1.0.0-rc.11",
-          "_ui5privacy": "public"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "Bar",
-            "module": "dist/Bar.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ui5-bar",
-          "declaration": {
-            "name": "Bar",
-            "module": "dist/Bar.js"
-          }
-        }
-      ]
     },
     {
       "kind": "javascript-module",
@@ -1975,33 +1885,17 @@
               "default": "false",
               "_ui5since": "1.24.0",
               "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "method",
-              "name": "show",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Shows a dialog with the camera videostream. Starts a scan session.",
-              "privacy": "public",
-              "deprecated": "The method is deprecated in favour of <code>open</code> property."
-            },
-            {
-              "kind": "method",
-              "name": "close",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Closes the dialog and the scan session.",
-              "privacy": "public",
-              "deprecated": "The method is deprecated in favour of <code>open</code> property."
             }
           ],
           "events": [
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user closes the component."
+            },
             {
               "name": "scan-success",
               "_ui5privacy": "public",
@@ -2615,40 +2509,21 @@
             },
             {
               "kind": "field",
-              "name": "accessibilityTexts",
+              "name": "accessibilityAttributes",
               "type": {
-                "text": "FlexibleColumnLayoutAccessibilityTexts",
+                "text": "FCLAccessibilityAttributes",
                 "references": [
                   {
-                    "name": "FlexibleColumnLayoutAccessibilityTexts",
+                    "name": "FCLAccessibilityAttributes",
                     "package": "@ui5/webcomponents-fiori",
                     "module": "dist/FlexibleColumnLayout.js"
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility texts for even further customization.\n\nIt supports the following fields:\n - `startColumnAccessibleName`: the accessibility name for the `startColumn` region\n - `midColumnAccessibleName`: the accessibility name for the `midColumn` region\n - `endColumnAccessibleName`: the accessibility name for the `endColumn` region\n - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left\n - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right\n - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left\n - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right\n - `startArrowContainerAccessibleName`: the text that the first arrow container (between the `begin` and `mid` columns) will have as `aria-label`\n - `endArrowContainerAccessibleName`: the text that the second arrow container (between the `mid` and `end` columns) will have as `aria-label`",
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n - **startColumn**: `startColumn.role` and `startColumn.name`.\n - **midColumn**: `midColumn.role` and `midColumn.name`.\n - **endColumn**: `endColumn.role` and `endColumn.name`.\n - **startArrowContainer**: `startArrowContainer.role` and `startArrowContainer.name`.\n - **endArrowContainer**: `endArrowContainerrole.role` and `endArrowContainer.name`.\n - **startArrowLeft**: `startArrowLeft.name`.\n - **startArrowRight**: `startArrowRight.name`.\n - **endArrowLeft**: `endArrowLeft.name`.\n - **endArrowRight**: `endArrowRight.name`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA landmark role of the area.\nAccepts the following values: `none`, `complementary`, `contentinfo`, `main` or `region`.\n\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
               "default": "{}",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.11",
-              "_ui5validator": "Object"
-            },
-            {
-              "kind": "field",
-              "name": "accessibilityRoles",
-              "type": {
-                "text": "FlexibleColumnLayoutAccessibilityRoles",
-                "references": [
-                  {
-                    "name": "FlexibleColumnLayoutAccessibilityRoles",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/FlexibleColumnLayout.js"
-                  }
-                ]
-              },
-              "description": "An object of strings that defines additional accessibility roles for further customization.\n\nIt supports the following fields:\n - `startColumnRole`: the accessibility role for the `startColumn`\n - `startArrowContainerRole`: the accessibility role for the first arrow container (between the `begin` and `mid` columns)\n - `midColumnRole`: the accessibility role for the `midColumn`\n - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns)\n - `endColumnRole`: the accessibility role for the `endColumn`",
-              "default": "{}",
-              "privacy": "public",
-              "_ui5since": "1.1.0",
+              "_ui5since": "2.0.0",
               "_ui5validator": "Object"
             },
             {
@@ -2955,7 +2830,7 @@
             },
             {
               "kind": "field",
-              "name": "size",
+              "name": "design",
               "type": {
                 "text": "IllustrationMessageSize",
                 "references": [
@@ -2966,7 +2841,7 @@
                   }
                 ]
               },
-              "description": "Determines which illustration breakpoint variant is used.\n\nAs `IllustratedMessage` adapts itself around the `Illustration`, the other\nelements of the component are displayed differently on the different breakpoints/illustration sizes.",
+              "description": "Determines which illustration breakpoint variant is used.\n\nAs `IllustratedMessage` adapts itself around the `Illustration`, the other\nelements of the component are displayed differently on the different breakpoints/illustration designs.",
               "default": "\"Auto\"",
               "privacy": "public",
               "_ui5since": "1.5.0",
@@ -3005,25 +2880,6 @@
               "privacy": "public",
               "_ui5since": "1.7.0",
               "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "titleLevel",
-              "type": {
-                "text": "TitleLevel",
-                "references": [
-                  {
-                    "name": "TitleLevel",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/TitleLevel.js"
-                  }
-                ]
-              },
-              "description": "Defines the semantic level of the title.\n\n**Note:** Used for accessibility purposes only.\n\n**Note:** Doesn't take effect when `title` slot is being used.",
-              "default": "\"H2\"",
-              "privacy": "public",
-              "_ui5since": "1.20.0",
-              "_ui5validator": "TitleLevel"
             }
           ],
           "attributes": [
@@ -3037,10 +2893,10 @@
               }
             },
             {
-              "description": "Determines which illustration breakpoint variant is used.\n\nAs `IllustratedMessage` adapts itself around the `Illustration`, the other\nelements of the component are displayed differently on the different breakpoints/illustration sizes.",
-              "name": "size",
+              "description": "Determines which illustration breakpoint variant is used.\n\nAs `IllustratedMessage` adapts itself around the `Illustration`, the other\nelements of the component are displayed differently on the different breakpoints/illustration designs.",
+              "name": "design",
               "default": "\"Auto\"",
-              "fieldName": "size",
+              "fieldName": "design",
               "type": {
                 "text": "\"Auto\" | \"Base\" | \"Dot\" | \"Spot\" | \"Dialog\" | \"Scene\""
               }
@@ -3070,15 +2926,6 @@
               "fieldName": "accessibleNameRef",
               "type": {
                 "text": "string"
-              }
-            },
-            {
-              "description": "Defines the semantic level of the title.\n\n**Note:** Used for accessibility purposes only.\n\n**Note:** Doesn't take effect when `title` slot is being used.",
-              "name": "title-level",
-              "default": "\"H2\"",
-              "fieldName": "titleLevel",
-              "type": {
-                "text": "\"H1\" | \"H2\" | \"H3\" | \"H4\" | \"H5\" | \"H6\""
               }
             }
           ],
@@ -4522,7 +4369,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-page` is a container component that holds one whole screen of an application.\nThe page has three distinct areas that can hold content - a header, content area and a footer.\n### Structure\n#### Header\nThe top most area of the page is occupied by the header. The standard header includes a navigation button and a title.\n#### Content\nThe content occupies the main part of the page. Only the content area is scrollable by default.\nThis can be prevented by setting  `enableScrolling` to `false`.\n#### Footer\nThe footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content.\nThis is enabled with the `floatingFooter` property.\n\n**Note:** `ui5-page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure\nthat there is enough space for the `ui5-page` to be rendered.\n**Note:** In order for the `ui5-page` to be displayed, the parent element should have fixed height.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Page.js\";`",
+          "description": "### Overview\n\nThe `ui5-page` is a container component that holds one whole screen of an application.\nThe page has three distinct areas that can hold content - a header, content area and a footer.\n### Structure\n#### Header\nThe top most area of the page is occupied by the header. The standard header includes a navigation button and a title.\n#### Content\nThe content occupies the main part of the page. Only the content area is scrollable by default.\nThis can be prevented by setting  `enableScrolling` to `false`.\n#### Footer\nThe footer is optional and occupies the part above the bottom part of the content. Alternatively, the footer can be fixed at the bottom of the page by enabling the `fixedFooter` property.\n\n**Note:** `ui5-page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure\nthat there is enough space for the `ui5-page` to be rendered.\n**Note:** In order for the `ui5-page` to be displayed, the parent element should have fixed height.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Page.js\";`",
           "name": "Page",
           "cssParts": [
             {
@@ -4544,7 +4391,7 @@
               "description": "Defines the content HTML Element.",
               "_ui5propertyName": "content",
               "_ui5type": {
-                "text": "Array<HTMLElement>"
+                "text": "Array<Node>"
               },
               "_ui5privacy": "public"
             },
@@ -4578,7 +4425,7 @@
             },
             {
               "kind": "field",
-              "name": "disableScrolling",
+              "name": "noScrolling",
               "type": {
                 "text": "boolean"
               },
@@ -4589,12 +4436,12 @@
             },
             {
               "kind": "field",
-              "name": "floatingFooter",
+              "name": "fixedFooter",
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the footer should float over the content.\n\n**Note:** When set to true the footer floats over the content with a slight offset from the bottom, otherwise it is fixed at the very bottom of the page.",
-              "default": "true",
+              "description": "Defines if the footer is fixed at the very bottom of the page.\n\n**Note:** When set to true the footer is fixed at the very bottom of the page, otherwise it floats over the content with a slight offset from the bottom.",
+              "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
             },
@@ -4622,18 +4469,18 @@
             },
             {
               "description": "Disables vertical scrolling of page content.\nIf set to true, there will be no vertical scrolling at all.",
-              "name": "disable-scrolling",
+              "name": "no-scrolling",
               "default": "false",
-              "fieldName": "disableScrolling",
+              "fieldName": "noScrolling",
               "type": {
                 "text": "boolean"
               }
             },
             {
-              "description": "Defines if the footer should float over the content.\n\n**Note:** When set to true the footer floats over the content with a slight offset from the bottom, otherwise it is fixed at the very bottom of the page.",
-              "name": "floating-footer",
-              "default": "true",
-              "fieldName": "floatingFooter",
+              "description": "Defines if the footer is fixed at the very bottom of the page.\n\n**Note:** When set to true the footer is fixed at the very bottom of the page, otherwise it floats over the content with a slight offset from the bottom.",
+              "name": "fixed-footer",
+              "default": "false",
+              "fieldName": "fixedFooter",
               "type": {
                 "text": "boolean"
               }
@@ -5078,44 +4925,6 @@
             },
             {
               "kind": "field",
-              "name": "accessibilityRoles",
-              "type": {
-                "text": "ShellBarAccessibilityRoles",
-                "references": [
-                  {
-                    "name": "ShellBarAccessibilityRoles",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/ShellBar.js"
-                  }
-                ]
-              },
-              "description": "An object of strings that defines additional accessibility roles for further customization.\n\nIt supports the following fields:\n - `logoRole`: the accessibility role for the `logo`",
-              "default": "{}",
-              "privacy": "public",
-              "_ui5since": "1.6.0",
-              "_ui5validator": "Object"
-            },
-            {
-              "kind": "field",
-              "name": "accessibilityTexts",
-              "type": {
-                "text": "ShellBarAccessibilityTexts",
-                "references": [
-                  {
-                    "name": "ShellBarAccessibilityTexts",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/ShellBar.js"
-                  }
-                ]
-              },
-              "description": "An object of strings that defines several additional accessibility texts\nfor even further customization.\n\nIt supports the following fields:\n- `profileButtonTitle`: defines the tooltip for the profile button\n- `logoTitle`: defines the tooltip for the logo",
-              "default": "{}",
-              "privacy": "public",
-              "_ui5since": "1.1.0",
-              "_ui5validator": "Object"
-            },
-            {
-              "kind": "field",
               "name": "accessibilityAttributes",
               "type": {
                 "text": "ShellBarAccessibilityAttributes",
@@ -5127,7 +4936,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n- `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\n- `true`\n- `false`\n\n- `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n- `Dialog`\n- `Grid`\n- `ListBox`\n- `Menu`\n- `Tree`",
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n- **logo** - `logo.role` and `logo.name`.\n- **notifications** - `notifications.expanded` and `notifications.hasPopup`.\n- **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.\n- **product** - `product.expanded` and `product.hasPopup`.\n- **search** - `search.expanded` and `search.hasPopup`.\n- **overflow** - `overflow.expanded` and `overflow.hasPopup`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA role of the logo area.\nAccepts the following string values: `button` or `link`.\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
               "default": "{}",
               "privacy": "public",
               "_ui5since": "1.10.0",
@@ -5674,7 +5483,14 @@
               "description": "Defines the main items of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component\nfor the top-level items, and the `ui5-side-navigation-sub-item` component for second-level items, nested\ninside the items.",
               "_ui5propertyName": "items",
               "_ui5type": {
-                "text": "Array<SideNavigationItem | SideNavigationGroup>"
+                "text": "Array<SideNavigationItemBase>",
+                "references": [
+                  {
+                    "name": "SideNavigationItemBase",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SideNavigationItemBase.js"
+                  }
+                ]
               },
               "_ui5privacy": "public"
             },
@@ -5682,7 +5498,14 @@
               "name": "fixedItems",
               "description": "Defines the fixed items at the bottom of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component\nfor the fixed items, and optionally the `ui5-side-navigation-sub-item` component to provide second-level items inside them.\n\n**Note:** In order to achieve the best user experience, it is recommended that you keep the fixed items \"flat\" (do not pass sub-items)",
               "_ui5type": {
-                "text": "Array<SideNavigationItem | SideNavigationGroup>"
+                "text": "Array<SideNavigationItemBase>",
+                "references": [
+                  {
+                    "name": "SideNavigationItemBase",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SideNavigationItemBase.js"
+                  }
+                ]
               },
               "_ui5privacy": "public"
             },
@@ -5853,6 +5676,22 @@
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
             }
           ],
           "attributes": [
@@ -5885,6 +5724,19 @@
               "fieldName": "disabled",
               "type": {
                 "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "name": "tooltip",
+              "default": "\"\"",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
               },
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
@@ -6184,6 +6036,18 @@
               "privacy": "public",
               "_ui5since": "1.19.0",
               "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "String"
             }
           ],
           "attributes": [
@@ -6203,6 +6067,15 @@
               "fieldName": "disabled",
               "type": {
                 "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "name": "tooltip",
+              "default": "\"\"",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -6891,12 +6764,6 @@
       "path": "dist/UploadCollection.js",
       "declarations": [
         {
-          "kind": "interface",
-          "name": "IUploadCollectionItem",
-          "description": "Interface for components that may be slotted inside `ui5-upload-collection` as items",
-          "_ui5privacy": "public"
-        },
-        {
           "kind": "class",
           "description": "### Overview\nThis component allows you to represent files before uploading them to a server, with the help of `ui5-upload-collection-item`.\nIt also allows you to show already uploaded files.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UploadCollection.js\";`\n\n`import \"@ui5/webcomponents-fiori/dist/UploadCollectionItem.js\";` (for `ui5-upload-collection-item`)",
           "name": "UploadCollection",
@@ -6906,12 +6773,12 @@
               "description": "Defines the items of the `ui5-upload-collection`.\n\n**Note:** Use `ui5-upload-collection-item` for the intended design.",
               "_ui5propertyName": "items",
               "_ui5type": {
-                "text": "Array<IUploadCollectionItem>",
+                "text": "Array<UploadCollectionItem>",
                 "references": [
                   {
-                    "name": "IUploadCollectionItem",
+                    "name": "UploadCollectionItem",
                     "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/UploadCollection.js"
+                    "module": "dist/UploadCollectionItem.js"
                   }
                 ]
               },
@@ -6929,21 +6796,21 @@
           "members": [
             {
               "kind": "field",
-              "name": "mode",
+              "name": "selectionMode",
               "type": {
-                "text": "ListMode",
+                "text": "UploadCollectionSelectionMode",
                 "references": [
                   {
-                    "name": "ListMode",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ListMode.js"
+                    "name": "UploadCollectionSelectionMode",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/types/UploadCollectionSelectionMode.js"
                   }
                 ]
               },
-              "description": "Defines the mode of the `ui5-upload-collection`.\n\n**Note:**\nMode \"Delete\" has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem",
+              "description": "Defines the selection mode of the `ui5-upload-collection`.",
               "default": "\"None\"",
               "privacy": "public",
-              "_ui5validator": "ListMode"
+              "_ui5validator": "UploadCollectionSelectionMode"
             },
             {
               "kind": "field",
@@ -7038,7 +6905,7 @@
                   }
                 ]
               },
-              "description": "Fired when selection is changed by user interaction\nin `SingleSelect` and `MultiSelect` modes.",
+              "description": "Fired when selection is changed by user interaction\nin `Single` and `Multiple` modes.",
               "_ui5parameters": [
                 {
                   "type": {
@@ -7053,12 +6920,12 @@
           ],
           "attributes": [
             {
-              "description": "Defines the mode of the `ui5-upload-collection`.\n\n**Note:**\nMode \"Delete\" has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem",
-              "name": "mode",
+              "description": "Defines the selection mode of the `ui5-upload-collection`.",
+              "name": "selection-mode",
               "default": "\"None\"",
-              "fieldName": "mode",
+              "fieldName": "selectionMode",
               "type": {
-                "text": "\"None\" | \"SingleSelect\" | \"SingleSelectBegin\" | \"SingleSelectEnd\" | \"SingleSelectAuto\" | \"MultiSelect\" | \"Delete\""
+                "text": "\"None\" | \"Single\" | \"SingleStart\" | \"SingleEnd\" | \"SingleAuto\" | \"Multiple\""
               }
             },
             {
@@ -7222,7 +7089,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "By default, the delete button will always be shown, regardless of the `ui5-upload-collection`'s property `mode`.\nSetting this property to `true` will hide the delete button.",
+              "description": "Hides the delete button.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -7273,7 +7140,7 @@
                   }
                 ]
               },
-              "description": "If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed.\nAlso if set to `Error`, a refresh button is shown. When this icon is pressed `retry` event is fired.\nIf set to `Uploading`, a terminate button is shown. When this icon is pressed `terminate` event is fired.",
+              "description": "Upload state.\n\nDepending on this property, the item displays the following:\n\n- `Ready` - progress indicator is displayed.\n- `Uploading` - progress indicator and terminate button are displayed. When the terminate button is pressed, `terminate` event is fired.\n- `Error` - progress indicator and retry button are displayed. When the retry button is pressed, `retry` event is fired.\n- `Complete` - progress indicator is not displayed.",
               "default": "\"Ready\"",
               "privacy": "public",
               "_ui5validator": "UploadState"
@@ -7300,16 +7167,16 @@
               "kind": "field",
               "name": "accessibilityAttributes",
               "type": {
-                "text": "AccessibilityAttributes",
+                "text": "ListItemAccessibilityAttributes",
                 "references": [
                   {
-                    "name": "AccessibilityAttributes",
+                    "name": "ListItemAccessibilityAttributes",
                     "package": "@ui5/webcomponents",
                     "module": "dist/ListItem.js"
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n- `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\tThe value of each `aria-setsize` is an integer reflecting number of items in the complete set.\n\n\t**Note:** If the size of the entire set is unknown, set `aria-setsize=\"-1\"`.\n\t- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\tThe value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
               "default": "{}",
               "privacy": "public",
               "_ui5since": "1.15.0",
@@ -7352,7 +7219,7 @@
                   }
                 ]
               },
-              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Success\"`, `\"Warning\"`, `\"Information\"` and `\"Error\"`.",
+              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "default": "\"None\"",
               "privacy": "public",
               "_ui5since": "1.24",
@@ -7445,7 +7312,7 @@
               }
             },
             {
-              "description": "By default, the delete button will always be shown, regardless of the `ui5-upload-collection`'s property `mode`.\nSetting this property to `true` will hide the delete button.",
+              "description": "Hides the delete button.",
               "name": "hide-delete-button",
               "default": "false",
               "fieldName": "hideDeleteButton",
@@ -7481,7 +7348,7 @@
               }
             },
             {
-              "description": "If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed.\nAlso if set to `Error`, a refresh button is shown. When this icon is pressed `retry` event is fired.\nIf set to `Uploading`, a terminate button is shown. When this icon is pressed `terminate` event is fired.",
+              "description": "Upload state.\n\nDepending on this property, the item displays the following:\n\n- `Ready` - progress indicator is displayed.\n- `Uploading` - progress indicator and terminate button are displayed. When the terminate button is pressed, `terminate` event is fired.\n- `Error` - progress indicator and retry button are displayed. When the retry button is pressed, `retry` event is fired.\n- `Complete` - progress indicator is not displayed.",
               "name": "upload-state",
               "default": "\"Ready\"",
               "fieldName": "uploadState",
@@ -7498,14 +7365,7 @@
           "tagName": "ui5-upload-collection-item",
           "customElement": true,
           "_ui5since": "1.0.0-rc.7",
-          "_ui5privacy": "public",
-          "_ui5implements": [
-            {
-              "name": "IUploadCollectionItem",
-              "package": "@ui5/webcomponents-fiori",
-              "module": "dist/UploadCollection.js"
-            }
-          ]
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -7891,9 +7751,9 @@
                   "type": {
                     "text": "boolean"
                   },
-                  "name": "changeWithClick",
+                  "name": "withScroll",
                   "_ui5privacy": "public",
-                  "description": "The step change occurs due to user's click or 'Enter'/'Space' key press on step within the navigation."
+                  "description": "true when the event occurs due to user scrolling."
                 }
               ]
             }
