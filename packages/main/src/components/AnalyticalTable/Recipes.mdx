@@ -225,14 +225,21 @@ const columns = [
 <AnalyticalTable data={props.data} columns={columns} scaleWidthMode={AnalyticalTableScaleWidthMode.Smart} />
 ```
 
-## How to render a Dialog or Popover inside a custom Cell?
+## How to render active components, dialogs and popovers in custom cells?
+
+The table implements [Events](https://developer.mozilla.org/en-US/docs/Web/API/Event) for keyboard navigation, selection, etc. When rendering an active element inside a custom cell, the events of the elements are bubbling up to the table.
+To prevent this you can call `event.stopPropagation()` inside the respective handler.
+
+Below you can find two examples of typical pain points:
+
+### Dialogs & Popovers
 
 In general, we recommend mounting modals like Dialogs or Popovers outside the `AnalyticalTable`.
 Still, it's possible to also render them inside a custom cell, but there are some things to consider:
 
 - Use `createPortal` to render the modal outside the `AnalyticalTable` to prevent visual issues.
 - Use conditional rendering to prevent the modal from being rendered for every cell.
-- Events for i.a. the keyboard navigation are bubbling up to the modal, so in case of `focus`, `key`, `click`, etc. event issues, prevent the event from bubbling up to the modal by calling `event.stopPropagation()` in the respective handler.
+- Call `event.stopPropagation()` in the respective handler of the event if you're facing issues with focus handling (`onFocus`), keyboard navigation (i.a. `onKeyDown`), etc.
 
 Here you can find an example of how to prevent the `focus` event from bubbling up:
 
@@ -260,6 +267,33 @@ const columns = [
             document.body
           )}
         </>
+      );
+    }
+  }
+];
+```
+
+### Inputs
+
+Per default the table stops event propagation for `click` events of ui5-webcomponent inputs. This is not the case for native inputs (`<input>`) or other events like `key` events.
+
+A typical case is moving the caret inside an input via the arrow keys, which will bubble up to the table if propagation isn't stopped.
+In the example below, you can see how you could stop the `keydown` event from bubbling up to the table if arrow keys are pressed.
+
+```jsx
+const columns = [
+  {
+    Header: 'Column with Inputs',
+    id: 'inputs',
+    Cell: () => {
+      return (
+        <Input
+          onKeyDown={(e) => {
+            if (e.key.startsWith('Arrow')) {
+              e.stopPropagation();
+            }
+          }}
+        />
       );
     }
   }
