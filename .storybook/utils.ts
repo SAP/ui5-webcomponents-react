@@ -47,7 +47,7 @@ export function useGetCem() {
   }
 }
 const replaceSubComps = {
-  ListItemBase: ['StandardListItem', 'CustomListItem', 'GroupHeaderListItem'],
+  ListItemBase: ['StandardListItem', 'CustomListItem', 'ListItemGroup'],
   InputSuggestionItem: ['SuggestionItem', 'SuggestionGroupItem'],
   NotificationListItemBase: ['NotificationListItem'],
   ToolbarItem: ['ToolbarSeparatorV2', 'ToolbarSpacerV2', 'ToolbarButton', 'ToolbarSelect', 'ToolbarSelectOption'],

@@ -4,7 +4,7 @@ import { FlexBox } from '../../components/FlexBox';
 import { Text } from '../../components/Text';
 import { FlexBoxJustifyContent, ListGrowingMode, ListMode, ListSeparators } from '../../enums';
 import { CustomListItem } from '../CustomListItem';
-import { GroupHeaderListItem } from '../GroupHeaderListItem';
+import { ListItemGroup } from '../ListItemGroup';
 import { ProgressIndicator } from '../ProgressIndicator';
 import { StandardListItem } from '../StandardListItem';
 import { List } from './index.js';
@@ -65,18 +65,18 @@ export const CustomListItemStory: Story = {
   }
 };
 
-export const GroupHeaderListItemStory: Story = {
-  name: 'GroupHeaderListItem',
+export const ListItemGroupStory: Story = {
+  name: 'ListItemGroup',
   args: {
-    headerText: 'List with a GroupHeaderListItem'
+    headerText: 'List with a ListItemGroup'
   },
   render: (args) => {
     return (
       <List {...args}>
-        <GroupHeaderListItem>GroupHeaderListItem 1</GroupHeaderListItem>
+        <ListItemGroup>ListItemGroup 1</ListItemGroup>
         <StandardListItem>List Item</StandardListItem>
         <StandardListItem>List Item</StandardListItem>
-        <GroupHeaderListItem>GroupHeaderListItem 2</GroupHeaderListItem>
+        <ListItemGroup>ListItemGroup 2</ListItemGroup>
         <StandardListItem>List Item</StandardListItem>
       </List>
     );

@@ -18,7 +18,7 @@ import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
-import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem/index.js';
+import { ListItemGroup } from '../../webComponents/ListItemGroup/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import type { ListPropTypes } from '../../webComponents/List/index.js';
 import { List } from '../../webComponents/List/index.js';
@@ -195,7 +195,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                   ? groupedMessages.map(([groupName, items]) => {
                       return (
                         <Fragment key={groupName}>
-                          {groupName && <GroupHeaderListItem>{groupName}</GroupHeaderListItem>}
+                          {groupName && <ListItemGroup>{groupName}</ListItemGroup>}
                           {items}
                         </Fragment>
                       );
