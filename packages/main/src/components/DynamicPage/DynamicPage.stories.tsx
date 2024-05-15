@@ -9,7 +9,6 @@ import menu2Icon from '@ui5/webcomponents-icons/dist/menu2';
 import navDownArrowIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import { useReducer, useState } from 'react';
 import {
-  Badge,
   Bar,
   BarDesign,
   Breadcrumbs,
@@ -27,6 +26,7 @@ import {
   ObjectStatus,
   PageBackgroundDesign,
   Panel,
+  Tag,
   Title,
   ToggleButton,
   ValueState,
@@ -34,6 +34,7 @@ import {
   VariantManagement
 } from '../..';
 import { DynamicPage } from './index.js';
+import React from 'react';
 
 const meta = {
   title: 'Layouts & Floorplans / DynamicPage',
@@ -94,7 +95,7 @@ const meta = {
         expandedContent={<MessageStrip>Information (only visible if header content is expanded)</MessageStrip>}
         snappedContent={<MessageStrip>Information (only visible if header content is collapsed/snapped)</MessageStrip>}
       >
-        <Badge>Status: OK</Badge>
+        <Tag>Status: OK</Tag>
       </DynamicPageTitle>
     ),
     headerContent: (
@@ -230,7 +231,7 @@ export const WithVariants: Story = {
                 }
                 subHeader={<Label>This is a sub header</Label>}
               >
-                <Badge>Status: OK</Badge>
+                <Tag>Status: OK</Tag>
               </DynamicPageTitle>
             }
           >
