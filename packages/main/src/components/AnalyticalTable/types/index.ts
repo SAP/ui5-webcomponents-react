@@ -258,9 +258,9 @@ export interface AnalyticalTableColumnDefinition {
    */
   disableResizing?: boolean;
   /**
-   * Defines whether double clicking a columns data-resizer will automatically resize the column.
+   * Defines whether double-clicking a columns resizer will automatically resize the column to fit the largest cell content of visible rows.
    *
-   * Disabled if isTreeTable is true or groupBy is used
+   * __Note:__ Only default text content is supported by this option.
    */
   autoResizable?: boolean;
   // ui5 web components react properties

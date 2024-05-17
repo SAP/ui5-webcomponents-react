@@ -17,10 +17,6 @@ interface ColumnHeaderContainerProps {
   columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
   uniqueId: string;
   showVerticalEndBorder: boolean;
-  isTreeTable: boolean;
-  rowVirtualizer: Virtualizer<DivWithCustomScrollProp, HTMLElement>;
-  onAutoResize: (e?: CustomEvent<{ accessor: string; width: number }>) => void;
-  grouped: boolean;
 }
 
 export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderContainerProps>((props, ref) => {
@@ -34,11 +30,7 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     portalContainer,
     columnVirtualizer,
     uniqueId,
-    showVerticalEndBorder,
-    onAutoResize,
-    rowVirtualizer,
-    isTreeTable,
-    grouped
+    showVerticalEndBorder
   } = props;
 
   useStylesheet(styleData, 'Resizer');
@@ -73,17 +65,9 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
               <div
                 {...column.getResizerProps()}
                 data-resizer
-                data-cy={`data-resizer-${index}`}
+                data-component-name="AnalyticalTableResizer"
                 className={classNames.resizer}
                 style={resizerDirectionStyle}
-                onDoubleClick={(e) => {
-                  if (column.autoResizable) {
-                    const { startIndex, endIndex } = rowVirtualizer.range;
-                    column
-                      .getResizerProps()
-                      .onDoubleClick(e, startIndex, endIndex, rest.id, onAutoResize, isTreeTable, grouped);
-                  }
-                }}
               />
             )}
             <ColumnHeader
