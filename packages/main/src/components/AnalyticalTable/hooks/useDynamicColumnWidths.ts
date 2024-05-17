@@ -33,7 +33,7 @@ function stringToPx(dataPoint, id, isHeader = false) {
   const elementId = isHeader ? 'scaleModeHelperHeader' : 'scaleModeHelper';
   const ruler = document.getElementById(`${elementId}-${id}`);
   if (ruler) {
-    ruler.innerHTML = `${dataPoint}`;
+    ruler.textContent = `${dataPoint}`;
     return ruler.scrollWidth;
   }
   return 0;

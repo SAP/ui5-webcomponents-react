@@ -1,6 +1,7 @@
 .container {
   height: var(--_ui5wcr-AnalyticalTableExpandButtonHeight);
   margin-inline-end: 0.125rem;
+  flex-shrink: 0;
 }
 
 .icon {
@@ -24,6 +25,7 @@
 
 .nonExpandableCellSpacer {
   width: var(--_ui5wcr-AnalyticalTableExpandIndicatorWidth);
+  flex-shrink: 0;
 }
 
 .withExpandableButton {

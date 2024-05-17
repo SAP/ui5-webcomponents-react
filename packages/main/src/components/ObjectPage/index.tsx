@@ -90,7 +90,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines the content area of the `ObjectPage`. It consists of sections and subsections.
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` and `ObjectPageSubSection` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` in order to preserve the intended design.
    */
   children?: ObjectPageSectionType | ObjectPageSectionType[];
   /**

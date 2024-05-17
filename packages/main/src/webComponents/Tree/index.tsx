@@ -176,7 +176,7 @@ interface TreePropTypes
  *
  * `import "@ui5/webcomponents/dist/TreeItem.js";`
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const Tree = withWebComponent<TreePropTypes, TreeDomRef>(
   'ui5-tree',

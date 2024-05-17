@@ -94,7 +94,10 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       props.manageViewsInputProps?.onInput(e);
     }
     const trimmedValue = trimAndRemoveSpaces(e.target.value);
-    if (variantNames.includes(trimmedValue) || Array.from(changedVariantNames.values()).includes(trimmedValue)) {
+    if (
+      children !== trimmedValue &&
+      (variantNames.includes(trimmedValue) || Array.from(changedVariantNames.values()).includes(trimmedValue))
+    ) {
       setVariantNameInvalid(errorTextAlreadyExists);
       setInvalidVariants((prev) => ({ ...prev, [`${children}`]: inputRef.current }));
       handleRowChange(e, { currentVariant: children, children: trimmedValue });

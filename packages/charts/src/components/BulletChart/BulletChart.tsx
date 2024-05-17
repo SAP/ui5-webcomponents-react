@@ -15,6 +15,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import type { YAxisProps } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
@@ -69,7 +70,7 @@ interface MeasureConfig extends IChartMeasure {
 }
 
 interface DimensionConfig extends IChartDimension {
-  interval?: number;
+  interval?: YAxisProps['interval'];
 }
 
 export interface BulletChartProps extends IChartBaseProps {
@@ -319,7 +320,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
               axisProps.reversed = isRTL;
             }
 
-            return <AxisComponent key={dimension.accessor} {...axisProps} />;
+            return <AxisComponent key={dimension.reactKey} {...axisProps} />;
           })}
         {layout === 'horizontal' && (
           <YAxis
@@ -473,7 +474,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
 
           return (
             <Bar
-              key={element.accessor}
+              key={element.reactKey}
               name={element.label ?? element.accessor}
               label={
                 isBigDataSet ? null : <ChartDataLabel config={element} chartType={'bar'} position={labelPosition} />

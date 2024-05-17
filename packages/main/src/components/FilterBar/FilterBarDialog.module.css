@@ -23,6 +23,7 @@
 
 .dialogComponent {
   width: 40rem;
+  height: 55rem;
 
   &::part(content),
   &::part(footer),

@@ -16,6 +16,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import type { YAxisProps } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useCancelAnimationFallback } from '../../hooks/useCancelAnimationFallback.js';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
@@ -64,9 +65,8 @@ interface MeasureConfig extends IChartMeasure {
 interface DimensionConfig extends IChartDimension {
   /**
    * Interval of axis label
-   * @default 0
    */
-  interval?: number;
+  interval?: YAxisProps['interval'];
 }
 
 export interface ColumnChartProps extends IChartBaseProps {
@@ -253,7 +253,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
           dimensions.map((dimension, index) => {
             return (
               <XAxis
-                key={dimension.accessor}
+                key={dimension.reactKey}
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
@@ -310,7 +310,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
                 yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
                 stackId={element.stackId}
                 fillOpacity={element.opacity}
-                key={element.accessor}
+                key={element.reactKey}
                 name={element.label ?? element.accessor}
                 strokeOpacity={element.opacity}
                 type="monotone"

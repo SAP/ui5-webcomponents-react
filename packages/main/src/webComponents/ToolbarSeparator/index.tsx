@@ -31,7 +31,7 @@ interface ToolbarSeparatorPropTypes
  * The `ToolbarSeparator` is an element, used for visual separation between two elements.
  * It takes no space in calculating toolbar items width.
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
  * @since [1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of __@ui5/webcomponents__.
  * @abstract
