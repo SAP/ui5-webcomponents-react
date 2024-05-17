@@ -1,6 +1,6 @@
 import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
-import { CssSizeVariables, useCurrentTheme, useStylesheet, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, useCurrentTheme, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React from 'react';
 import { ButtonDesign } from '../../../../enums/index.js';
@@ -24,7 +24,7 @@ const getPadding = (level) => {
 
 export const Expandable = (props) => {
   const { cell, row, column, visibleColumns: columns, webComponentsReactProperties } = props;
-  const { renderRowSubComponent, alwaysShowSubComponent, translatableTexts, uniqueId } = webComponentsReactProperties;
+  const { renderRowSubComponent, alwaysShowSubComponent, translatableTexts } = webComponentsReactProperties;
   const currentTheme = useCurrentTheme();
   useStylesheet(styleData, Expandable.displayName);
   const shouldRenderButton = currentTheme === 'sap_horizon' || currentTheme === 'sap_horizon_dark';
@@ -41,8 +41,6 @@ export const Expandable = (props) => {
   const subComponentExpandable =
     typeof renderRowSubComponent === 'function' && !!renderRowSubComponent(row) && !alwaysShowSubComponent;
 
-  const expandId = useIsomorphicId();
-
   return (
     <>
       {columnIndex === 0 && (
@@ -55,7 +53,6 @@ export const Expandable = (props) => {
               className={classNames.container}
               aria-expanded={row.isExpanded}
               aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
-              id={`scaleModeHelperExpand-${uniqueId}-${expandId}`}
             >
               {shouldRenderButton ? (
                 <Button

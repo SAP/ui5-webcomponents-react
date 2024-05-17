@@ -764,7 +764,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     uniqueId={uniqueId}
                     showVerticalEndBorder={showVerticalEndBorder}
                     onAutoResize={onAutoResize}
-                    groupBy={groupBy}
+                    grouped={groupBy.length > 0}
                   />
                 )
               );

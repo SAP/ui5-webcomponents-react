@@ -260,7 +260,6 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Defines whether double clicking a columns data-resizer will automatically resize the column.
    *
-   * Available on text columns
    * Disabled if isTreeTable is true or groupBy is used
    */
   autoResizable?: boolean;

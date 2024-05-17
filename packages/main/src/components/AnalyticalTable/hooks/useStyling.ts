@@ -102,7 +102,8 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
     {
       className,
       style,
-      tabIndex: -1
+      tabIndex: -1,
+      id: `${cellProps.key}-${instance?.webComponentsReactProperties.uniqueId}`
     }
   ];
 };
