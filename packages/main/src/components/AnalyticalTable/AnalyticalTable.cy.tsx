@@ -250,14 +250,14 @@ describe('AnalyticalTable', () => {
     });
 
     cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} onAutoResize={(e) => e.preventDefault()} />);
-    cy.wait(200);
+    cy.wait(100);
     cy.get('[data-cy="data-resizer-1"]').should('be.visible').dblclick();
     cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 476);
     cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
     cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 476);
 
     cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} />);
-    cy.wait(200);
+    cy.wait(100);
     cy.get('[data-cy="data-resizer-1"]').should('be.visible').dblclick();
     cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
     cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
@@ -291,7 +291,7 @@ describe('AnalyticalTable', () => {
     });
 
     cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} />);
-    cy.wait(200);
+    cy.wait(100);
     cy.get('[data-cy="data-resizer-1"]').should('be.visible').dblclick();
     cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 472.75);
     cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
@@ -311,11 +311,21 @@ describe('AnalyticalTable', () => {
     };
 
     cy.mount(<AnalyticalTable data={dataSub} columns={resizeColumns} renderRowSubComponent={renderRowSubComponent} />);
-    cy.wait(200);
+    cy.wait(100);
     cy.get('[data-cy="data-resizer-1"]').should('be.visible').dblclick();
     cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
     cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
     cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 165);
+
+    const dataResizeTree = [...dataTree];
+    dataResizeTree[0].subRows[0].name = 'Longer Name To Resize Here';
+    cy.mount(<AnalyticalTable columns={resizeColumns} data={dataResizeTree} isTreeTable />);
+    cy.wait(100);
+    cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 169);
+    cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-button]').click();
+    cy.get('[data-cy="data-resizer-0"]').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 251);
   });
 
   it('scrollTo', () => {

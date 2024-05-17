@@ -6,37 +6,12 @@ import { CELL_PADDING_PX } from './useDynamicColumnWidths.js';
 const handleAutoResize = (props, { instance }) => {
   return {
     ...props,
-    onDoubleClick: (e, start, end, accessor, onAutoResize) => {
-      // Find first in column to compare to accessor
-      let columnFirst;
-      const { columnOrder } = instance.state;
-      let colOrder = [];
-      if (columnOrder.length) {
-        colOrder = columnOrder.filter(
-          (col) =>
-            col !== '__ui5wcr__internal_selection_column' &&
-            col !== '__ui5wcr__internal_highlight_column' &&
-            col !== '__ui5wcr__internal_navigation_column'
-        );
-        columnFirst = colOrder[0];
-      }
-      if (!columnFirst) {
-        colOrder = instance.visibleColumns?.filter(
-          (col) =>
-            col.id !== '__ui5wcr__internal_selection_column' &&
-            col.id !== '__ui5wcr__internal_highlight_column' &&
-            col.id !== '__ui5wcr__internal_navigation_column'
-        );
-        columnFirst = colOrder[0].id;
-      }
-
-      // Undefined accessor should not occur but checking to be safe
-      columnFirst = columnFirst ? columnFirst === accessor : false;
-
-      const rows = instance.rows;
+    onDoubleClick: (e, start, end, accessor, onAutoResize, isTreeTable, grouped) => {
+      if (!instance.rows.length) return;
       const dispatch = instance.dispatch;
-      const rowSlice = rows.slice(start, end);
-      let largest = getContentPxMax(rowSlice, accessor, instance?.webComponentsReactProperties.uniqueId, columnFirst);
+      let rowSlice = instance.rows.slice(start, end + 1);
+      if (isTreeTable || grouped) rowSlice = getExpandedRowsRecursive(rowSlice);
+      let largest = getMeasureMax(rowSlice, accessor, instance.webComponentsReactProperties.uniqueId);
       largest = largest > DEFAULT_COLUMN_WIDTH ? largest : DEFAULT_COLUMN_WIDTH;
       onAutoResize(
         enrichEventWithDetails(e, {
@@ -55,41 +30,36 @@ const handleAutoResize = (props, { instance }) => {
   };
 };
 
-function getContentPxMax(rowSlice, accessor, uniqueId, isFirstColumn) {
-  let high = 0,
-    current,
-    ruler,
-    expand,
-    expandPx = 0,
-    style,
-    margin = 0;
-
-  // Check for Expandable Row
-  // If found in range: All rows treated as expandable
-  if (isFirstColumn) {
-    expand = document.querySelector(`[id^="scaleModeHelperExpand-${uniqueId}"]`);
-    if (expand) {
-      style = getComputedStyle(expand, null);
-      margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-      margin = margin > 0 ? margin : 0;
-    }
-    console.log(margin);
-    expandPx = expand ? expand.offsetWidth + margin : 0 + margin;
-  }
-
+const getMeasureMax = (rowSlice, accessor, uniqueId) => {
+  let maxWidth = 0;
   for (let i = 0; i < rowSlice.length; i++) {
-    const dataPoint = rowSlice[i]?.values?.[accessor];
-    if (dataPoint) {
-      ruler = ruler ? ruler : document.getElementById(`scaleModeHelper-${uniqueId}`);
-      if (ruler) {
-        ruler.innerHTML = `${dataPoint}`;
-        current = ruler.scrollWidth + CELL_PADDING_PX + expandPx;
-      } else current = 0;
-      high = high > current ? high : current;
+    const element = document.getElementById(`cell_${rowSlice[i].id}_${accessor}-${uniqueId}`);
+    let currWidth = 0;
+    const children = element.children;
+    for (let j = 0; j < children.length; j++) {
+      const computedStyle = getComputedStyle(children[j]);
+      currWidth += children[j].scrollWidth;
+      currWidth += parseFloat(computedStyle.marginLeft) + parseFloat(computedStyle.marginRight);
+      currWidth += parseFloat(computedStyle.borderLeftWidth) + parseFloat(computedStyle.borderRightWidth);
+    }
+    currWidth = currWidth + CELL_PADDING_PX;
+    maxWidth = maxWidth > currWidth ? maxWidth : currWidth;
+  }
+  return Math.ceil(maxWidth);
+};
+
+const getExpandedRowsRecursive = (rowSlice, allRows = []) => {
+  if (!rowSlice.length) return allRows;
+  allRows = [...allRows, ...rowSlice];
+  const nextRows = [];
+  // Iterate to find expanded rows then call recursively
+  for (let i = 0; i < rowSlice.length; i++) {
+    if (rowSlice[i].isExpanded) {
+      nextRows.push(...rowSlice[i].subRows);
     }
   }
-  return high ?? 0;
-}
+  return getExpandedRowsRecursive(nextRows, allRows);
+};
 
 export const useAutoResize = (hooks: ReactTableHooks) => {
   hooks.getResizerProps.push(handleAutoResize);

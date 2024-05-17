@@ -20,7 +20,7 @@ interface ColumnHeaderContainerProps {
   isTreeTable: boolean;
   rowVirtualizer: Virtualizer<DivWithCustomScrollProp, HTMLElement>;
   onAutoResize: (e?: CustomEvent<{ accessor: string; width: number }>) => void;
-  groupBy: string[];
+  grouped: boolean;
 }
 
 export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderContainerProps>((props, ref) => {
@@ -38,7 +38,7 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     onAutoResize,
     rowVirtualizer,
     isTreeTable,
-    groupBy
+    grouped
   } = props;
 
   useStylesheet(styleData, 'Resizer');
@@ -77,10 +77,11 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
                 className={classNames.resizer}
                 style={resizerDirectionStyle}
                 onDoubleClick={(e) => {
-                  if (column.autoResizable && !isTreeTable && !groupBy.length) {
-                    const items = rowVirtualizer.getVirtualItems();
-                    const [start, end] = [items[0].index, items[items.length - 1].index];
-                    column.getResizerProps().onDoubleClick(e, start, end, rest.id, onAutoResize);
+                  if (column.autoResizable) {
+                    const { startIndex, endIndex } = rowVirtualizer.range;
+                    column
+                      .getResizerProps()
+                      .onDoubleClick(e, startIndex, endIndex, rest.id, onAutoResize, isTreeTable, grouped);
                   }
                 }}
               />
