@@ -36,6 +36,7 @@ interface VirtualTableBodyProps {
   triggerScroll?: TriggerScrollState;
   scrollToRef: MutableRefObject<ScrollToRefType>;
   rowVirtualizer: Virtualizer<DivWithCustomScrollProp, HTMLElement>;
+  uniqueId: string;
 }
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
@@ -61,7 +62,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     scrollContainerRef,
     subComponentsBehavior,
     triggerScroll,
-    rowVirtualizer
+    rowVirtualizer,
+    uniqueId
   } = props;
 
   const rowHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
@@ -97,6 +99,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     <div
       ref={scrollContainerRef}
       data-component-name="AnalyticalTableBodyScrollableContainer"
+      data-react-id={uniqueId}
       style={{
         position: 'relative',
         height: `${rowVirtualizer.getTotalSize()}px`,

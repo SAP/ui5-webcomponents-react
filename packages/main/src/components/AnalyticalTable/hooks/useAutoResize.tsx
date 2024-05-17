@@ -3,15 +3,20 @@ import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column/index.js';
 import type { ReactTableHooks } from '../types/index.js';
 import { CELL_PADDING_PX } from './useDynamicColumnWidths.js';
 
-const handleAutoResize = (props, { instance }) => {
+function setResizerProps(...params) {
+  const [props, { instance, header }] = params;
+  const { dispatch, virtualRowsRange, rows, webComponentsReactProperties, state } = instance;
+  const { uniqueId, onAutoResize } = webComponentsReactProperties;
+  const { autoResizable, id: accessor } = header;
+
+  if (!document || !autoResizable || !rows.length || !virtualRowsRange) {
+    return props;
+  }
+
   return {
     ...props,
-    onDoubleClick: (e, start, end, accessor, onAutoResize, isTreeTable, grouped) => {
-      if (!instance.rows.length) return;
-      const dispatch = instance.dispatch;
-      let rowSlice = instance.rows.slice(start, end + 1);
-      if (isTreeTable || grouped) rowSlice = getExpandedRowsRecursive(rowSlice);
-      let largest = getMeasureMax(rowSlice, accessor, instance.webComponentsReactProperties.uniqueId);
+    onDoubleClick: (e) => {
+      let largest = getMeasureMax(accessor, uniqueId, virtualRowsRange, state.isRtl);
       largest = largest > DEFAULT_COLUMN_WIDTH ? largest : DEFAULT_COLUMN_WIDTH;
       onAutoResize(
         enrichEventWithDetails(e, {
@@ -28,41 +33,39 @@ const handleAutoResize = (props, { instance }) => {
       });
     }
   };
-};
+}
 
-const getMeasureMax = (rowSlice, accessor, uniqueId) => {
+function getMeasureMax(accessor, uniqueId, virtualRowsRange, isRtl) {
   let maxWidth = 0;
-  for (let i = 0; i < rowSlice.length; i++) {
-    const element = document.getElementById(`cell_${rowSlice[i].id}_${accessor}-${uniqueId}`);
+  const firstRowQuery = `[data-component-name="AnalyticalTableBodyScrollableContainer"][data-react-id="${uniqueId}"] [data-virtual-row-index="${virtualRowsRange.startIndex}"]`;
+  const rowsDOM = document.querySelectorAll(`${firstRowQuery}, ${firstRowQuery} ~ [data-virtual-row-index]`);
+  const start = virtualRowsRange.startIndex;
+  const end = virtualRowsRange.endIndex;
+
+  for (let i = 0; i <= end - start; i++) {
+    const cellTextElement: HTMLSpanElement = rowsDOM[i]?.querySelector(`[data-id="${accessor}"]`);
     let currWidth = 0;
-    const children = element.children;
-    for (let j = 0; j < children.length; j++) {
-      const computedStyle = getComputedStyle(children[j]);
-      currWidth += children[j].scrollWidth;
-      currWidth += parseFloat(computedStyle.marginLeft) + parseFloat(computedStyle.marginRight);
-      currWidth += parseFloat(computedStyle.borderLeftWidth) + parseFloat(computedStyle.borderRightWidth);
+    if (!cellTextElement) {
+      continue;
     }
-    currWidth = currWidth + CELL_PADDING_PX;
+    const computedStyle = getComputedStyle(cellTextElement);
+    currWidth += cellTextElement.scrollWidth;
+    // cannot use `offsetLeft` for RTL direction
+    currWidth += !isRtl
+      ? cellTextElement.offsetLeft
+      : cellTextElement.parentElement.getBoundingClientRect().right - cellTextElement.getBoundingClientRect().right;
+    currWidth += parseFloat(computedStyle.marginInlineEnd);
+    currWidth += parseFloat(computedStyle.borderInlineEndWidth);
+    currWidth += CELL_PADDING_PX;
+
     maxWidth = maxWidth > currWidth ? maxWidth : currWidth;
   }
-  return Math.ceil(maxWidth);
-};
 
-const getExpandedRowsRecursive = (rowSlice, allRows = []) => {
-  if (!rowSlice.length) return allRows;
-  allRows = [...allRows, ...rowSlice];
-  const nextRows = [];
-  // Iterate to find expanded rows then call recursively
-  for (let i = 0; i < rowSlice.length; i++) {
-    if (rowSlice[i].isExpanded) {
-      nextRows.push(...rowSlice[i].subRows);
-    }
-  }
-  return getExpandedRowsRecursive(nextRows, allRows);
-};
+  return Math.ceil(maxWidth);
+}
 
 export const useAutoResize = (hooks: ReactTableHooks) => {
-  hooks.getResizerProps.push(handleAutoResize);
+  hooks.getResizerProps.push(setResizerProps);
 };
 
 useAutoResize.pluginName = 'useAutoResize';

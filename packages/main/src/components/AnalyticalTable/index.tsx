@@ -92,6 +92,11 @@ import { VerticalResizer } from './VerticalResizer.js';
 const sortTypesFallback = {
   undefined: () => undefined
 };
+
+const measureElement = (el: HTMLElement) => {
+  return el.offsetHeight;
+};
+
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
@@ -219,6 +224,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         selectionMode,
         selectionBehavior,
         classes: classNames,
+        onAutoResize,
         onRowSelect: onRowSelect,
         onRowClick,
         onRowExpandChange,
@@ -658,10 +664,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     );
   };
 
-  const measureElement = (el: HTMLElement) => {
-    return el.offsetHeight;
-  };
-
   const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
   const rHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
 
@@ -692,6 +694,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     measureElement,
     indexAttribute: 'data-virtual-row-index'
   });
+  // add range to instance for `useAutoResize` plugin hook
+  tableInstanceRef.current.virtualRowsRange = rowVirtualizer.range;
 
   return (
     <>
@@ -759,12 +763,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     isRtl={isRtl}
                     portalContainer={portalContainer}
                     columnVirtualizer={columnVirtualizer}
-                    isTreeTable={isTreeTable}
-                    rowVirtualizer={rowVirtualizer}
                     uniqueId={uniqueId}
                     showVerticalEndBorder={showVerticalEndBorder}
-                    onAutoResize={onAutoResize}
-                    grouped={groupBy.length > 0}
                   />
                 )
               );
@@ -820,6 +820,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   subComponentsBehavior={subComponentsBehavior}
                   triggerScroll={tableState.triggerScroll}
                   rowVirtualizer={rowVirtualizer}
+                  uniqueId={uniqueId}
                 />
               </VirtualTableBodyContainer>
             )}
