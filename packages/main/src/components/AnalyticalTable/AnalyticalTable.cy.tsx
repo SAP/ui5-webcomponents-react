@@ -278,7 +278,7 @@ describe('AnalyticalTable', () => {
     cy.get('@resizer2').should('be.visible').dblclick();
     cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
     cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 135);
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 127);
 
     cy.get('@resize').should('have.callCount', 4);
 
@@ -304,7 +304,7 @@ describe('AnalyticalTable', () => {
 
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 99);
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 91);
 
     cy.get('@resize').should('have.callCount', 5);
 
@@ -346,7 +346,7 @@ describe('AnalyticalTable', () => {
     cy.get('@resizer2').should('be.visible').dblclick();
     cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
     cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 173);
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 165);
 
     cy.get('@resize').should('have.callCount', 7);
 
@@ -355,10 +355,10 @@ describe('AnalyticalTable', () => {
     cy.mount(<AnalyticalTable columns={resizeColumns} data={dataResizeTree} isTreeTable onAutoResize={resizeSpy} />);
     cy.wait(100);
     cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 177);
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 169);
     cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-button]').click();
     cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 259);
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 251);
 
     cy.get('@resize').should('have.callCount', 9);
   });
