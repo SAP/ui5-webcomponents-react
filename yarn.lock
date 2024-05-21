@@ -3098,15 +3098,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.20.13":
-  version: 7.23.1
-  resolution: "@babel/runtime@npm:7.23.1"
-  dependencies:
-    regenerator-runtime: "npm:^0.14.0"
-  checksum: 10c0/e57ab1436d4845efe67c3f76d578508bb584173690ecfeac105bc4e09d64b2aa6a53c1e03bca3c97cc238e5390a804e5a4ded211e6350243b735905ca45a4822
-  languageName: node
-  linkType: hard
-
 "@babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7":
   version: 7.23.9
   resolution: "@babel/runtime@npm:7.23.9"
@@ -6659,13 +6650,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/turndown@npm:^5.0.4":
-  version: 5.0.4
-  resolution: "@types/turndown@npm:5.0.4"
-  checksum: 10c0/8e61d87dc662b05fced9182d60b1f7a42417b6eb8b8c5bc236017d9b1980d2909aab18a945cba82d4c49827799031bf2e89d95f0e86b241c4fb011a844572478
-  languageName: node
-  linkType: hard
-
 "@types/ua-parser-js@npm:^0.7.33":
   version: 0.7.36
   resolution: "@types/ua-parser-js@npm:0.7.36"
@@ -7133,7 +7117,6 @@ __metadata:
   resolution: "@ui5/webcomponents-react-cli@workspace:packages/cli"
   dependencies:
     dedent: "npm:^1.5.1"
-    turndown: "npm:^7.1.2"
   bin:
     ui5-wcr: ./dist/bin/index.js
   languageName: unknown
@@ -10887,13 +10870,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domino@npm:^2.1.6":
-  version: 2.1.6
-  resolution: "domino@npm:2.1.6"
-  checksum: 10c0/18afc4b61cf9bc2bfdbb48782748484319eb78c07d98ee6ab5850c2ed8e8d617ecf48ea2b34543d66d639ae33104ab4d2c79a316480805b66c5f537f38f75862
-  languageName: node
-  linkType: hard
-
 "domutils@npm:^3.0.1":
   version: 3.1.0
   resolution: "domutils@npm:3.1.0"
@@ -13595,13 +13571,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"harmony-reflect@npm:^1.4.6":
-  version: 1.6.2
-  resolution: "harmony-reflect@npm:1.6.2"
-  checksum: 10c0/fa5b251fbeff0e2d925f0bfb5ffe39e0627639e998c453562d6a39e41789c15499649dc022178c807cf99bfb97e7b974bbbc031ba82078a26be7b098b9bc2b1a
-  languageName: node
-  linkType: hard
-
 "has-ansi@npm:^2.0.0":
   version: 2.0.0
   resolution: "has-ansi@npm:2.0.0"
@@ -14004,15 +13973,6 @@ __metadata:
   peerDependencies:
     postcss: ^8.1.0
   checksum: 10c0/39c92936fabd23169c8611d2b5cc39e39d10b19b0d223352f20a7579f75b39d5f786114a6b8fc62bee8c5fed59ba9e0d38f7219a4db383e324fb3061664b043d
-  languageName: node
-  linkType: hard
-
-"identity-obj-proxy@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "identity-obj-proxy@npm:3.0.0"
-  dependencies:
-    harmony-reflect: "npm:^1.4.6"
-  checksum: 10c0/a3fc4de0042d7b45bf8652d5596c80b42139d8625c9cd6a8834e29e1b6dce8fccabd1228e08744b78677a19ceed7201a32fed8ca3dc3e4852e8fee24360a6cfc
   languageName: node
   linkType: hard
 
@@ -20145,19 +20105,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-textarea-autosize@npm:^8.5.3":
-  version: 8.5.3
-  resolution: "react-textarea-autosize@npm:8.5.3"
-  dependencies:
-    "@babel/runtime": "npm:^7.20.13"
-    use-composed-ref: "npm:^1.3.0"
-    use-latest: "npm:^1.2.1"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/33d38a6d96cf584842695b50c341980944ece23a42155bf0bd1958f02396adb185c7720b88678dc677817fe111783059c0ebcdf7761644006892583b10e258ee
-  languageName: node
-  linkType: hard
-
 "react-transition-group@npm:^4.4.5":
   version: 4.4.5
   resolution: "react-transition-group@npm:4.4.5"
@@ -22636,15 +22583,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turndown@npm:^7.0.0, turndown@npm:^7.1.2":
-  version: 7.1.3
-  resolution: "turndown@npm:7.1.3"
-  dependencies:
-    domino: "npm:^2.1.6"
-  checksum: 10c0/e9e345eb6cd620b5291d8c546dc5bed9aa2c5b0c73492cf60a3f4dcf4a81c344ba9e3e1af72ec33edd6105402c211d4dee7310c648ea73ff1eb89f9d4ff4cdd8
-  languageName: node
-  linkType: hard
-
 "tweetnacl@npm:^0.14.3, tweetnacl@npm:~0.14.0":
   version: 0.14.5
   resolution: "tweetnacl@npm:0.14.5"
@@ -22994,7 +22932,6 @@ __metadata:
     "@types/node": "npm:^20.0.0"
     "@types/react": "npm:18.3.2"
     "@types/react-dom": "npm:^18.2.22"
-    "@types/turndown": "npm:^5.0.4"
     "@typescript-eslint/eslint-plugin": "npm:^7.0.0"
     "@typescript-eslint/parser": "npm:^7.0.0"
     "@ui5/webcomponents": "npm:1.24.2"
@@ -23018,9 +22955,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-storybook: "npm:^0.8.0"
     glob: "npm:^10.3.10"
-    handlebars: "npm:^4.7.7"
     husky: "npm:^9.0.6"
-    identity-obj-proxy: "npm:^3.0.0"
     lerna: "npm:^8.0.0"
     lint-staged: "npm:^15.0.0"
     npm-run-all2: "npm:^6.0.0"
@@ -23032,12 +22967,10 @@ __metadata:
     prettier: "npm:^3.0.0"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
-    react-textarea-autosize: "npm:^8.5.3"
     remark-gfm: "npm:^4.0.0"
     rimraf: "npm:^5.0.0"
     storybook: "npm:8.0.10"
     tocbot: "npm:4.27.20"
-    turndown: "npm:^7.0.0"
     typedoc: "npm:^0.25.0"
     typescript: "npm:5.4.5"
     vite: "npm:^5.0.0"
@@ -23331,41 +23264,6 @@ __metadata:
     querystringify: "npm:^2.1.1"
     requires-port: "npm:^1.0.0"
   checksum: 10c0/bd5aa9389f896974beb851c112f63b466505a04b4807cea2e5a3b7092f6fbb75316f0491ea84e44f66fed55f1b440df5195d7e3a8203f64fcefa19d182f5be87
-  languageName: node
-  linkType: hard
-
-"use-composed-ref@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "use-composed-ref@npm:1.3.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/e64ce52f4b18c020407636784192726807404a2552609acf7497b66a2b7070674fb5d2b950d426c4aa85f353e2bbecb02ebf9c5b865cd06797938c70bcbf5d26
-  languageName: node
-  linkType: hard
-
-"use-isomorphic-layout-effect@npm:^1.1.1":
-  version: 1.1.2
-  resolution: "use-isomorphic-layout-effect@npm:1.1.2"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: 10c0/d8deea8b85e55ac6daba237a889630bfdbf0ebf60e9e22b6a78a78c26fabe6025e04ada7abef1e444e6786227d921e648b2707db8b3564daf757264a148a6e23
-  languageName: node
-  linkType: hard
-
-"use-latest@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "use-latest@npm:1.2.1"
-  dependencies:
-    use-isomorphic-layout-effect: "npm:^1.1.1"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: 10c0/1958886fc35262d973f5cd4ce16acd6ce3a66707a72761c93abd1b5ae64e1a11efa83f68e6c8c9bf1647628037980ce59df64cba50adb36bd4071851e70527d2
   languageName: node
   linkType: hard
 

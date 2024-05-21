@@ -32,7 +32,6 @@
     "dist"
   ],
   "dependencies": {
-    "dedent": "^1.5.1",
-    "turndown": "^7.1.2"
+    "dedent": "^1.5.1"
   }
 }
