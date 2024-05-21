@@ -97,7 +97,14 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
 
   const onTableFocus = useCallback(
     (e) => {
-      if (e.target.dataset?.emptyRowCell === 'true' || e.target.dataset.subcomponentActiveElement) {
+      const { dataset } = e.target;
+      if (
+        dataset.emptyRowCell === 'true' ||
+        dataset.subcomponentActiveElement ||
+        // todo: with the new popover API of ui5wc this might not be necessary anymore
+        dataset.componentName === 'ATHeaderPopoverList' ||
+        dataset.componentName === 'ATHeaderPopover'
+      ) {
         return;
       }
       if (e.target.dataset.subcomponent) {
