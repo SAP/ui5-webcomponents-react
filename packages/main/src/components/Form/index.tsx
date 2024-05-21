@@ -219,11 +219,13 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     let nextRowIndex = (titleText ? 2 : 1) + rowsPerFormItem - 1;
     const rowsWithGroup = {};
 
-    const columnsWithItems: ItemInfo[][] = [];
+    const columnsWithItems: Array<ItemInfo[]> = [];
     const rowsPerColumn = Math.ceil(items.size / currentNumberOfColumns);
 
     const allItemsArray = Array.from(items.entries());
     const onlyFormItems = allItemsArray.every(([, item]) => item.type === 'formItem');
+    const onlyFormGroups = allItemsArray.every(([, item]) => item.type === 'formGroup');
+    const columnsToFill = Math.max(0, currentNumberOfColumns - allItemsArray.length);
 
     allItemsArray.forEach(([id, item], idx) => {
       // when only FormItems are used, the Form should build up from top to bottom, then left to right
@@ -245,6 +247,67 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
           formItems.push({ id, index, columnIndex, rowIndex });
           rowIndex += rowsPerFormItem;
         });
+      });
+    } else if (onlyFormGroups && columnsToFill > 0) {
+      const columnsToBalance = [...columnsWithItems]
+        .sort(([a], [b]) => b.formItemIds.size - a.formItemIds.size)
+        .slice(0, columnsToFill);
+      for (const column of columnsToBalance) {
+        const currentColumnIndex = columnsWithItems.findIndex(([c]) => {
+          return c.id === column.at(0).id;
+        });
+        const unbalancedFormItems: Set<string> = column.at(0).formItemIds;
+        const movedFormItems = new Set([
+          ...Array.from(unbalancedFormItems).slice(Math.ceil(unbalancedFormItems.size / 2))
+        ]);
+        columnsWithItems.splice(currentColumnIndex + 1, 0, [
+          {
+            id: `${column.at(0).id}-clone`,
+            type: column.at(0).type,
+            formItemIds: movedFormItems
+          }
+        ]);
+        movedFormItems.forEach((item) => {
+          unbalancedFormItems.delete(item);
+        });
+      }
+
+      let localColumnIndex = 0;
+      let rowIndex = (titleText ? 2 : 1) + rowsPerFormItem - 1;
+
+      columnsWithItems.forEach(([{ id, formItemIds }]) => {
+        const columnIndex = localColumnIndex % currentNumberOfColumns;
+        index++;
+        rowsWithGroup[rowIndex] = true;
+        formGroups.push({ id, index, columnIndex, rowIndex });
+        let localRowIndex = 1;
+        let localIndex = 1;
+
+        if (!formItemIds.size) {
+          nextRowIndex++;
+        }
+        formItemIds.forEach((itemId, _, set) => {
+          formItems.push({
+            id: itemId,
+            index,
+            groupId: id,
+            columnIndex,
+            rowIndex: rowIndex + localRowIndex,
+            lastGroupItem: set.size === localIndex
+          });
+          if (set.size === localIndex) {
+            if (nextRowIndex < rowIndex + localRowIndex + rowsPerFormItem) {
+              nextRowIndex = rowIndex + localRowIndex + rowsPerFormItem;
+            }
+          }
+          localRowIndex += rowsPerFormItem;
+          localIndex++;
+        });
+
+        if ((localColumnIndex + 1) % currentNumberOfColumns === 0) {
+          rowIndex = nextRowIndex;
+        }
+        localColumnIndex++;
       });
     } else {
       let localColumnIndex = 0;
