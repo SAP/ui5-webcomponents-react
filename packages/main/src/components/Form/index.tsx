@@ -272,6 +272,14 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
         });
       }
 
+      const isInitialRender = columnsWithItems.every((itemInfos) => itemInfos.every((i) => i.formItemIds.size === 0));
+      columnsWithItems.forEach((el, index) => {
+        const allGroupsEmpty = el.every((i) => i.formItemIds.size === 0);
+        if (!isInitialRender && allGroupsEmpty) {
+          columnsWithItems.splice(index, 1);
+        }
+      });
+
       let localColumnIndex = 0;
       let rowIndex = (titleText ? 2 : 1) + rowsPerFormItem - 1;
 
