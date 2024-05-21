@@ -25,13 +25,13 @@ export const RadioButtonGroups: Story = {
   render() {
     return (
       <FlexBox style={{ width: '600px' }} justifyContent={FlexBoxJustifyContent.SpaceBetween}>
-        <FlexBox alignItems={FlexBoxAlignItems.Center}>
+        <FlexBox alignItems={FlexBoxAlignItems.Center} role="radiogroup">
           <Label>Horizontal Group: </Label>
           <RadioButton name="GroupA" text="Option A" />
           <RadioButton name="GroupA" text="Option B" />
           <RadioButton name="GroupA" text="Option C" />
         </FlexBox>
-        <FlexBox direction={FlexBoxDirection.Column}>
+        <FlexBox direction={FlexBoxDirection.Column} role="radiogroup">
           <Label>Vertical Group: </Label>
           <RadioButton name="GroupB" text="Neutral" valueState={ValueState.None} />
           <RadioButton name="GroupB" text="Warning" valueState={ValueState.Warning} />
