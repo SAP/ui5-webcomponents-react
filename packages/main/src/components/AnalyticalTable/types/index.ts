@@ -260,7 +260,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Defines whether double-clicking a columns resizer will automatically resize the column to fit the largest cell content of visible rows.
    *
-   * __Note:__ Only default text content is supported by this option.
+   * __Note:__ Only default text content is supported by this option, for custom content it might work as well, but we recommend checking the behavior carefully as the logic can't account for all possible implementations.
    */
   autoResizable?: boolean;
   // ui5 web components react properties
@@ -342,6 +342,10 @@ export interface AnalyticalTableDomRef extends Omit<HTMLDivElement, 'scrollTo'> 
 }
 
 type HighlightColor = ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;
+
+interface OnAutoResizeMouseEvent extends Omit<MouseEvent, 'detail'> {
+  detail: { columnId: string; width: number };
+}
 
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
@@ -682,9 +686,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   onTableScroll?: (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
   /**
-   * Fired when the table is resized by double-clicking the data-resizer.
+   * Fired when the table is resized by double-clicking the Resizer.
+   *
+   * __Note:__ Auto-resize is only available on columns that have the `autoResizable` option set to `true`.
    */
-  onAutoResize?: (e?: CustomEvent<{ accessor: string; width: number }>) => void;
+  onAutoResize?: (e?: OnAutoResizeMouseEvent) => void;
   // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.

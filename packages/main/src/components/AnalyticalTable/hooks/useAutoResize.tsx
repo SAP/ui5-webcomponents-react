@@ -3,29 +3,31 @@ import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column/index.js';
 import type { ReactTableHooks } from '../types/index.js';
 import { CELL_PADDING_PX } from './useDynamicColumnWidths.js';
 
-function setResizerProps(...params) {
-  const [props, { instance, header }] = params;
+function setResizerProps(props, { instance, header }) {
   const { dispatch, virtualRowsRange, rows, webComponentsReactProperties } = instance;
-  const { uniqueId, onAutoResize } = webComponentsReactProperties;
+  const { onAutoResize, tableRef } = webComponentsReactProperties;
   const { autoResizable, id: accessor } = header;
 
-  if (!document || !autoResizable || !rows.length || !virtualRowsRange) {
+  if (!document || !tableRef.current || !autoResizable || !rows.length || !virtualRowsRange) {
     return props;
   }
 
   return {
     ...props,
     onDoubleClick: (e) => {
-      // isRtl not currently implemented
-      //  let largest = getMeasureMax(accessor, uniqueId, virtualRowsRange, state.isRtl);
-      let largest = getMeasureMax(accessor, uniqueId, virtualRowsRange);
+      let largest = getMeasureMax(accessor, virtualRowsRange, tableRef.current);
+      if (largest === -1) {
+        return;
+      }
       largest = largest > DEFAULT_COLUMN_WIDTH ? largest : DEFAULT_COLUMN_WIDTH;
-      onAutoResize(
-        enrichEventWithDetails(e, {
-          accessor,
-          width: largest
-        })
-      );
+      if (typeof onAutoResize === 'function') {
+        onAutoResize(
+          enrichEventWithDetails(e, {
+            columnId: accessor,
+            width: largest
+          })
+        );
+      }
       if (e.defaultPrevented) {
         return;
       }
@@ -37,48 +39,66 @@ function setResizerProps(...params) {
   };
 }
 
-// Currently not implementing isRtl logic
-//function getMeasureMax(accessor, uniqueId, virtualRowsRange, isRtl) {
-function getMeasureMax(accessor, uniqueId, virtualRowsRange) {
+function getMeasureMax(accessor, virtualRowsRange, tableNode): number {
   let maxWidth = 0;
-  // We won't need to know it is the first row if we use this measuring method
-  const rowsDOM = document.querySelectorAll(
-    `[data-component-name="AnalyticalTableBodyScrollableContainer"][data-react-id="${uniqueId}"]`
-  );
-  const elements = rowsDOM[0].querySelectorAll(`[dataid="${accessor}"]`);
-  const start = virtualRowsRange.startIndex;
-  const end = virtualRowsRange.endIndex;
+  let cellWithMaxWidthContent = null;
 
-  for (let i = 0; i <= end - start; i++) {
-    // Column based dataids give us the cell
-    // This is an attempt to support other types rather than only text
-    const element = elements[i];
-    let currWidth = 0;
-    if (!element) {
-      continue;
+  /**
+   * recursively find the largest visible cell of the current column
+   */
+  function recursiveFindMaxWidth(row, accessor, remainingRows) {
+    if (!row || remainingRows === 0) {
+      return;
+    }
+    const cellNode = row.querySelector(`[data-column-id-cell="${accessor}"]`);
+    const cellTextElement = cellNode.querySelector(`[data-column-id-cell-text="${accessor}"]`);
+
+    if (cellTextElement) {
+      const currWidth = cellTextElement.scrollWidth;
+      if (maxWidth < currWidth) {
+        maxWidth = currWidth;
+        // only use the cell with the largest content for measuring
+        cellWithMaxWidthContent = cellNode;
+      }
+    }
+    // if custom content (`Cell`) is rendered, the `cellTextElement` is not available.
+    // In this case only the content of the first visible cell is used for measuring
+    if (cellWithMaxWidthContent === null) {
+      cellWithMaxWidthContent = cellNode;
     }
 
-    // This inner loop is not ideal, but the number of
-    // children of a cell should be low.
-
-    // I do not know how this should be adapted for isRtl
-    // But, I can look into isRtl if we prefer this type of measuring
-    const children = element.children;
-    for (let j = 0; j < children.length; j++) {
-      const computedStyle = getComputedStyle(children[j]);
-      currWidth += children[j].scrollWidth;
-      currWidth += parseFloat(computedStyle.marginLeft) + parseFloat(computedStyle.marginRight);
-      currWidth += parseFloat(computedStyle.borderLeftWidth) + parseFloat(computedStyle.borderRightWidth);
-    }
-    currWidth = currWidth + CELL_PADDING_PX;
-    maxWidth = maxWidth > currWidth ? maxWidth : currWidth;
+    recursiveFindMaxWidth(row.nextElementSibling, accessor, remainingRows - 1);
   }
 
-  return Math.ceil(maxWidth);
+  const firstRow = tableNode.querySelector(`[data-virtual-row-index="${virtualRowsRange.startIndex}"]`);
+  recursiveFindMaxWidth(firstRow, accessor, virtualRowsRange.endIndex - virtualRowsRange.startIndex);
+
+  if (!cellWithMaxWidthContent) {
+    return -1;
+  }
+
+  let contentWidth = 0;
+  Array.from<HTMLElement>(cellWithMaxWidthContent.children).forEach((child) => {
+    contentWidth += child.scrollWidth;
+  });
+
+  return Math.ceil(contentWidth + CELL_PADDING_PX + 2 /* account for rounding error and border */);
 }
+
+const setCellProps = (
+  props,
+  {
+    cell: {
+      column: { id }
+    }
+  }
+) => {
+  return [props, { ['data-column-id-cell']: id }];
+};
 
 export const useAutoResize = (hooks: ReactTableHooks) => {
   hooks.getResizerProps.push(setResizerProps);
+  hooks.getCellProps.push(setCellProps);
 };
 
 useAutoResize.pluginName = 'useAutoResize';

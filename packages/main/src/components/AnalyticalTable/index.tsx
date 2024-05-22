@@ -820,7 +820,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   subComponentsBehavior={subComponentsBehavior}
                   triggerScroll={tableState.triggerScroll}
                   rowVirtualizer={rowVirtualizer}
-                  uniqueId={uniqueId}
                 />
               </VirtualTableBodyContainer>
             )}
@@ -902,8 +901,7 @@ AnalyticalTable.defaultProps = {
   isTreeTable: false,
   alternateRowColor: false,
   overscanCountHorizontal: 5,
-  visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
-  onAutoResize: () => {}
+  visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed
 };
 
 export { AnalyticalTable };
