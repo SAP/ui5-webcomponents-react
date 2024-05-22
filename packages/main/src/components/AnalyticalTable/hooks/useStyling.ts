@@ -102,8 +102,7 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
     {
       className,
       style,
-      tabIndex: -1,
-      dataid: column.id
+      tabIndex: -1
     }
   ];
 };
