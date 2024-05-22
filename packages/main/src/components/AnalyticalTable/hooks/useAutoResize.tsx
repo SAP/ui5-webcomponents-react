@@ -5,7 +5,7 @@ import { CELL_PADDING_PX } from './useDynamicColumnWidths.js';
 
 function setResizerProps(props, { instance, header }) {
   const { dispatch, virtualRowsRange, rows, webComponentsReactProperties } = instance;
-  const { onAutoResize, tableRef } = webComponentsReactProperties;
+  const { onAutoResize, tableRef, isTreeTable } = webComponentsReactProperties;
   const { autoResizable, id: accessor } = header;
 
   if (!document || !tableRef.current || !autoResizable || !rows.length || !virtualRowsRange) {
@@ -15,7 +15,7 @@ function setResizerProps(props, { instance, header }) {
   return {
     ...props,
     onDoubleClick: (e) => {
-      let largest = getMeasureMax(accessor, virtualRowsRange, tableRef.current);
+      let largest = getMeasureMax(accessor, virtualRowsRange, tableRef.current, isTreeTable);
       if (largest === -1) {
         return;
       }
@@ -39,9 +39,17 @@ function setResizerProps(props, { instance, header }) {
   };
 }
 
-function getMeasureMax(accessor, virtualRowsRange, tableNode): number {
+function calculateContentWidth(cell) {
+  let contentWidth = 0;
+  Array.from<HTMLElement>(cell.children).forEach((child) => {
+    contentWidth += child.scrollWidth;
+  });
+  return contentWidth;
+}
+
+function getMeasureMax(accessor, virtualRowsRange, tableNode, isTreeTable): number {
   let maxWidth = 0;
-  let cellWithMaxWidthContent = null;
+  let cellWithMaxWidthContent: HTMLElement | null | false = null;
 
   /**
    * recursively find the largest visible cell of the current column
@@ -51,14 +59,23 @@ function getMeasureMax(accessor, virtualRowsRange, tableNode): number {
       return;
     }
     const cellNode = row.querySelector(`[data-column-id-cell="${accessor}"]`);
-    const cellTextElement = cellNode.querySelector(`[data-column-id-cell-text="${accessor}"]`);
+    const cellTextElement = cellNode?.querySelector(`[data-column-id-cell-text="${accessor}"]`);
 
     if (cellTextElement) {
-      const currWidth = cellTextElement.scrollWidth;
-      if (maxWidth < currWidth) {
-        maxWidth = currWidth;
-        // only use the cell with the largest content for measuring
-        cellWithMaxWidthContent = cellNode;
+      // for tree tables the indent (margin) has to be taken into account
+      if (isTreeTable && cellNode?.dataset.isFirstColumn) {
+        const cellWidth = calculateContentWidth(cellNode);
+        if (maxWidth < cellWidth) {
+          maxWidth = cellWidth;
+          cellWithMaxWidthContent = false;
+        }
+      } else {
+        const currWidth = cellTextElement.scrollWidth;
+        if (maxWidth < currWidth) {
+          maxWidth = currWidth;
+          // only use the cell with the largest content for measuring
+          cellWithMaxWidthContent = cellNode;
+        }
       }
     }
     // if custom content (`Cell`) is rendered, the `cellTextElement` is not available.
@@ -73,16 +90,17 @@ function getMeasureMax(accessor, virtualRowsRange, tableNode): number {
   const firstRow = tableNode.querySelector(`[data-virtual-row-index="${virtualRowsRange.startIndex}"]`);
   recursiveFindMaxWidth(firstRow, accessor, virtualRowsRange.endIndex - virtualRowsRange.startIndex);
 
+  if (cellWithMaxWidthContent === false) {
+    return Math.ceil(maxWidth + CELL_PADDING_PX + 2 /* account for rounding error and border */);
+  }
+
   if (!cellWithMaxWidthContent) {
     return -1;
   }
 
-  let contentWidth = 0;
-  Array.from<HTMLElement>(cellWithMaxWidthContent.children).forEach((child) => {
-    contentWidth += child.scrollWidth;
-  });
-
-  return Math.ceil(contentWidth + CELL_PADDING_PX + 2 /* account for rounding error and border */);
+  return Math.ceil(
+    calculateContentWidth(cellWithMaxWidthContent) + CELL_PADDING_PX + 2 /* account for rounding error and border */
+  );
 }
 
 const setCellProps = (
