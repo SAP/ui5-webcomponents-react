@@ -3,7 +3,7 @@
 import { useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
-import React, { cloneElement, Fragment, isValidElement, useEffect, useMemo } from 'react';
+import { cloneElement, Fragment, isValidElement, useEffect, useMemo } from 'react';
 import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { ReducedReactNodeWithBoolean } from '../../types/index.js';

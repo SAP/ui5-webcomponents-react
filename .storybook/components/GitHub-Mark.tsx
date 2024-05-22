@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const GitHubLogo = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.58 31.77" style={{ height: '1.75rem' }}>
     <g id="Layer_2" data-name="Layer 2">

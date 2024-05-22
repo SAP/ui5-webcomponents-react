@@ -1,6 +1,6 @@
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { type ElementType } from 'react';
+import type { ElementType } from 'react';
 import { classNames, styleData } from './FormGroupTitle.module.css.js';
 import type { FormGroupPropTypes } from './index.js';
 

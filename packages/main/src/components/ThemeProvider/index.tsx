@@ -10,7 +10,7 @@ import {
   useStylesheet
 } from '@ui5/webcomponents-react-base';
 import type { FC, ReactNode } from 'react';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { I18nProvider } from '../../internal/I18nProvider.js';
 import { ModalsProvider } from '../Modals/ModalsProvider.js';

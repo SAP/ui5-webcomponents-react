@@ -11,7 +11,7 @@ import {
   PopoverPlacementType,
   WrappingType
 } from '@ui5/webcomponents-react';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';
 import classes from './Footer.module.css';

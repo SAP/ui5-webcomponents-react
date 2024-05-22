@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { useOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
 import type { ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
 import { ToggleButton } from '../../webComponents/index.js';

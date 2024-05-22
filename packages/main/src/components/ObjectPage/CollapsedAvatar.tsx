@@ -1,7 +1,7 @@
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement } from 'react';
-import React, { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
+import { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
 import { AvatarSize } from '../../enums/index.js';
 import { classNames, styleData } from './CollapsedAvatar.module.css.js';
 

@@ -4,7 +4,7 @@ import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { debounce, Device, enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ElementType, ReactElement } from 'react';
-import React, { Children, cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
+import { Children, cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
 import { ButtonDesign, ToolbarStyle } from '../../enums/index.js';
 import {
   ADAPT_FILTERS,

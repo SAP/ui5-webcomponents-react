@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { Bar, Button } from '@ui5/webcomponents-react';
-import React from 'react';
 
 const FaultyBarStart = () => {
   return <div>Start</div>;
@@ -10,7 +10,7 @@ const FaultyBarEnd = () => {
 export const FaultyBarComponent = () => {
   return (
     <Bar startContent={<FaultyBarStart />} endContent={<FaultyBarEnd />}>
-      <div>I'm not a custom component</div>
+      <div>Not a custom component</div>
     </Bar>
   );
 };
@@ -24,7 +24,7 @@ const BarEnd = (props) => {
 export const BarComponent = () => {
   return (
     <Bar startContent={<BarStart />} endContent={<BarEnd />}>
-      <div>I'm not a custom component</div>
+      <div>Not a custom component</div>
     </Bar>
   );
 };

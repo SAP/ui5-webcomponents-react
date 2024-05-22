@@ -1,6 +1,5 @@
 import { CssSizeVariablesNames, enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import React from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 import { CheckBox } from '../../../webComponents/CheckBox/index.js';
 import type { ReactTableHooks } from '../types/index.js';
