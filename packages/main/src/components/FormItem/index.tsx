@@ -54,6 +54,7 @@ function FormItemLabel({ label, style, className, rowIndex }: FormItemLabelProps
         data-label-span={labelSpan}
         showColon={!!label}
         data-row-index-label={rowIndex}
+        data-component-name="FormItemLabel"
       >
         {label}
       </Label>
@@ -62,7 +63,13 @@ function FormItemLabel({ label, style, className, rowIndex }: FormItemLabelProps
 
   if (isValidElement(label)) {
     const { showColon, wrappingType, style: labelStyle, children } = label.props;
-    return cloneElement<LabelPropTypes & { 'data-label-span'?: number; 'data-row-index-label'?: number }>(
+    return cloneElement<
+      LabelPropTypes & {
+        'data-label-span'?: number;
+        'data-row-index-label'?: number;
+        'data-component-name'?: string;
+      }
+    >(
       label,
       {
         showColon: showColon ?? true,
@@ -73,7 +80,8 @@ function FormItemLabel({ label, style, className, rowIndex }: FormItemLabelProps
           ...(labelStyle || {})
         },
         'data-label-span': labelSpan,
-        'data-row-index-label': rowIndex
+        'data-row-index-label': rowIndex,
+        'data-component-name': 'FormItemLabel'
       },
       children ?? ''
     );
@@ -159,6 +167,7 @@ const FormItem = (props: FormItemPropTypes) => {
         }}
         data-label-span={labelSpan}
         data-row-index={calculatedGridRowStart}
+        data-component-name="FormItemContent"
       >
         {flattenFragments(children).map((child, index) => {
           // @ts-expect-error: type can't be string because of `isValidElement`
