@@ -117,7 +117,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
     switch (state) {
       case ValueState.Error:
         if (renderDefaultIcon) {
-          icon = <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" />;
+          icon = <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
         }
         if (!invisibleText) {
           invisibleText = errorStateText;
@@ -125,7 +125,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Success:
         if (renderDefaultIcon) {
-          icon = <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" />;
+          icon = <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
         }
         if (!invisibleText) {
           invisibleText = successStateText;
@@ -133,7 +133,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Warning:
         if (renderDefaultIcon) {
-          icon = <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" />;
+          icon = <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
         }
         if (!invisibleText) {
           invisibleText = warningStateText;
@@ -141,7 +141,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Information:
         if (renderDefaultIcon) {
-          icon = <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" />;
+          icon = <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
         }
         if (!invisibleText) {
           invisibleText = informationStateText;

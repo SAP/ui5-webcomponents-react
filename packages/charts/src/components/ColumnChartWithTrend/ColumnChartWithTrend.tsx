@@ -3,7 +3,7 @@
 import { ThemingParameters, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
 import React, { forwardRef } from 'react';
-import type { TooltipProps } from 'recharts';
+import type { TooltipProps, YAxisProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures.js';
@@ -44,9 +44,8 @@ interface MeasureConfig extends IChartMeasure {
 interface DimensionConfig extends IChartDimension {
   /**
    * Interval of axis label which defines the number that controls how many ticks are rendered on the x axis
-   * @default 0
    */
-  interval?: number;
+  interval?: YAxisProps['interval'];
 }
 
 export interface ColumnChartWithTrendProps

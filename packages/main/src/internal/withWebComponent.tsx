@@ -169,6 +169,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         {...regularProps}
         {...nonWebComponentRelatedProps}
         class={className}
+        suppressHydrationWarning
       >
         {slots}
         {children}
