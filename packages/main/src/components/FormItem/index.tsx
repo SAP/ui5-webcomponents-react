@@ -25,6 +25,8 @@ export interface FormItemPropTypes {
   /**
    * Content of the FormItem.
    *
+   * __Note:__ Only ui5 web component inputs such as `Input (ui5-input)`, `CheckBox (ui5-checkbox)`,`DatePicker (ui5-date-picker)`, etc. are supporting screen readers. For all other inputs the labels have to be set manually.
+   *
    * __Note:__ Text, numbers and React portals are ignored.
    */
   children: FormItemContent;

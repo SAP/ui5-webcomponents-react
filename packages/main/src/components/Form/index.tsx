@@ -110,7 +110,7 @@ export interface FormPropTypes extends CommonProps {
  * __Accessibility features:__
  *
  * The Form only supports announcing labels and groups by screen readers for UI5 Web Components inputs like `Input (ui5-input)`, `CheckBox (ui5-checkbox)`,`DatePicker (ui5-date-picker)`, etc.
- * For other inputs, this behavior must be implemented manually. Also, please note that when passing custom React components to the `FilterItem`, it's mandatory to pass through the `accessibleNameRef` prop, as otherwise the label won't be announced
+ * For other inputs, this behavior must be implemented manually. Also, please note that when passing custom React components to the `FilterItem`, it's mandatory to pass through the `accessibleNameRef` prop, as otherwise the label won't be announced.
  *
  * __Note:__ The `Form` calculates its width based on the available space of its container. If the container also dynamically adjusts its width to its contents, you must ensure that you specify a fixed width, either for the container or for the `Form` itself. (e.g. when used inside a 'popover').
  *
