@@ -1,12 +1,25 @@
-# Welcome to Remix + Vite!
+# UI5 Web Components React - Remix Example
 
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/guides/vite) for details on supported features.
+This example shows how to use the [Remix](https://remix.run) with UI5 Web Components for React.
 
-## Development
+## How to use this template
 
-Run the Vite dev server:
+```bash
+npx degit SAP/ui5-webcomponents-react/examples/remix-ts#main my-project
+cd my-project
+```
 
-```shellscript
+## Getting Started
+
+First, install the node_modules:
+
+```bash
+npm install
+```
+
+Then, run the development server:
+
+```bash
 npm run dev
 ```
 
@@ -34,3 +47,7 @@ Make sure to deploy the output of `npm run build`
 
 - `build/server`
 - `build/client`
+
+## Learn More
+
+- 📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/guides/vite) for details on supported features.
