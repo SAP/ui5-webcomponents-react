@@ -44,7 +44,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderPropTypes>((props, ref) => {
   const backgroundSize = type !== LoaderType.Determinate ? '40%' : progress;
 
   useEffect(() => {
-    deprecationNotice('Loader', 'The `Loader` component is deprecated. Please use `BusyIndicator` instead.');
+    deprecationNotice('Loader', 'The `Loader` component is deprecated. Please use the `BusyIndicator` instead.');
   }, []);
 
   useEffect(() => {
