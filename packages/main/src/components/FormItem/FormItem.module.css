@@ -25,3 +25,11 @@
 .lastGroupItem {
   margin-block-end: 1rem;
 }
+
+.pseudoInvisibleText {
+  font-size: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  user-select: none;
+}
