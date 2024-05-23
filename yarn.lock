@@ -6664,6 +6664,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/use-sync-external-store@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "@types/use-sync-external-store@npm:0.0.6"
+  checksum: 10c0/77c045a98f57488201f678b181cccd042279aff3da34540ad242f893acc52b358bd0a8207a321b8ac09adbcef36e3236944390e2df4fcedb556ce7bb2a88f2a8
+  languageName: node
+  linkType: hard
+
 "@types/uuid@npm:^9.0.1":
   version: 9.0.7
   resolution: "@types/uuid@npm:9.0.7"
@@ -7083,6 +7090,8 @@ __metadata:
 "@ui5/webcomponents-react-base@workspace:packages/base, @ui5/webcomponents-react-base@workspace:~":
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react-base@workspace:packages/base"
+  dependencies:
+    use-sync-external-store: "npm:1.2.2"
   peerDependencies:
     "@types/react": "*"
     "@ui5/webcomponents-base": ~1.24.0
@@ -22932,6 +22941,7 @@ __metadata:
     "@types/node": "npm:^20.0.0"
     "@types/react": "npm:18.3.2"
     "@types/react-dom": "npm:^18.2.22"
+    "@types/use-sync-external-store": "npm:^0.0.6"
     "@typescript-eslint/eslint-plugin": "npm:^7.0.0"
     "@typescript-eslint/parser": "npm:^7.0.0"
     "@ui5/webcomponents": "npm:1.24.2"
@@ -23264,6 +23274,15 @@ __metadata:
     querystringify: "npm:^2.1.1"
     requires-port: "npm:^1.0.0"
   checksum: 10c0/bd5aa9389f896974beb851c112f63b466505a04b4807cea2e5a3b7092f6fbb75316f0491ea84e44f66fed55f1b440df5195d7e3a8203f64fcefa19d182f5be87
+  languageName: node
+  linkType: hard
+
+"use-sync-external-store@npm:1.2.2":
+  version: 1.2.2
+  resolution: "use-sync-external-store@npm:1.2.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/23b1597c10adf15b26ade9e8c318d8cc0abc9ec0ab5fc7ca7338da92e89c2536abd150a5891bf076836c352fdfa104fc7231fb48f806fd9960e0cbe03601abaf
   languageName: node
   linkType: hard
 
