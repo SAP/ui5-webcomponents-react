@@ -105,9 +105,16 @@ export interface FormPropTypes extends CommonProps {
 
 /**
  * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
- * It is possible to change the alignment of all labels by setting the CSS `align-items` property, per default all labels are centered.
+ * It is possible to change the alignment of all labels by setting the CSS `align-items` property. By default, labels are centered when `labelSpan` is less than 12 and aligned to the start when `labelSpan` is equal to 12."
+ *
+ * __Accessibility features:__
+ *
+ * The Form only supports announcing labels and groups by screen readers for UI5 Web Components inputs like `Input (ui5-input)`, `CheckBox (ui5-checkbox)`,`DatePicker (ui5-date-picker)`, etc.
+ * For other inputs, this behavior must be implemented manually. Also, please note that when passing custom React components to the `FilterItem`, it's mandatory to pass through the `accessibleNameRef` prop, as otherwise the label won't be announced.
  *
  * __Note:__ The `Form` calculates its width based on the available space of its container. If the container also dynamically adjusts its width to its contents, you must ensure that you specify a fixed width, either for the container or for the `Form` itself. (e.g. when used inside a 'popover').
+ *
+ * __Note:__ It's not recommended mixing `FormGroup`s with standalone `FormItem`s, either only use FormItems inside a Form, or wrap all items in one or more groups.
  */
 const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const {
@@ -417,6 +424,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
           '--_ui5wcr_form_columns_l': columnsL,
           '--_ui5wcr_form_columns_xl': columnsXL
         }}
+        aria-label={titleText}
         {...rest}
       >
         <div className={formClassNames}>

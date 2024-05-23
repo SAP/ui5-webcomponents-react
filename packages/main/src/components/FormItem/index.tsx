@@ -25,6 +25,8 @@ export interface FormItemPropTypes {
   /**
    * Content of the FormItem.
    *
+   * __Note:__ Only ui5 web component inputs such as `Input (ui5-input)`, `CheckBox (ui5-checkbox)`,`DatePicker (ui5-date-picker)`, etc. are supporting screen readers. For all other inputs the labels have to be set manually.
+   *
    * __Note:__ Text, numbers and React portals are ignored.
    */
   children: FormItemContent;
@@ -173,14 +175,23 @@ const FormItem = (props: FormItemPropTypes) => {
           // @ts-expect-error: type can't be string because of `isValidElement`
           if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {
             const content = getContentForHtmlLabel(label);
-            const childId = child?.props?.id;
+            let accessibleNameRef: string | undefined;
+            if (!child?.props.accessibleName) {
+              accessibleNameRef =
+                child?.props?.accessibleNameRef ?? `${layoutInfo.groupId}-group ${uniqueId}-${index}-label`;
+            }
+
             return (
               <Fragment key={`${content}-${uniqueId}-${index}`}>
-                {/*@ts-expect-error: child is ReactElement*/}
-                {cloneElement(child, { id: childId ?? `${uniqueId}-${index}` })}
-                <label htmlFor={childId ?? `${uniqueId}-${index}`} style={{ display: 'none' }} aria-hidden={true}>
+                {accessibleNameRef
+                  ? cloneElement(child, {
+                      //@ts-expect-error: child is ReactElement
+                      accessibleNameRef
+                    })
+                  : child}
+                <span className={classNames.pseudoInvisibleText} id={`${uniqueId}-${index}-label`}>
                   {content}
-                </label>
+                </span>
               </Fragment>
             );
           }
