@@ -366,7 +366,11 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
 
     return { formItems, formGroups, registerItem, unregisterItem, rowsWithGroup };
   }, [items, registerItem, unregisterItem, currentNumberOfColumns, titleText, currentLabelSpan]);
-  const formClassNames = clsx(classNames.form, classNames[backgroundDesign.toLowerCase()]);
+  const formClassNames = clsx(
+    classNames.form,
+    classNames[backgroundDesign.toLowerCase()],
+    currentLabelSpan == 12 && classNames.labelSpan12
+  );
   const CustomTag = as as ElementType;
 
   const prevFormItems = useRef<undefined | FormItemLayoutInfo[]>(undefined);

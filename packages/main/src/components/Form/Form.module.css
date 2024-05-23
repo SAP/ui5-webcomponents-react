@@ -10,6 +10,10 @@
 
   --_ui5wcr_form_label_text_align: end;
 
+  &.labelSpan12 {
+    align-items: start;
+  }
+
   [data-component-name='FormGroupTitle'] {
     margin-inline: 1rem;
   }
