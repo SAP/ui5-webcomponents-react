@@ -152,10 +152,10 @@ import * as ComponentStories from './AnalyticalTable.stories';
 
 **Required Attributes**
 
-| Attribute  | Type                                              | Description                               |
-| ---------- | ------------------------------------------------- | ----------------------------------------- |
-| `accessor` | `string OR ((row: any, rowIndex: number) => any)` |                                           |
-| `id`       | `string`                                          | Only required if `accessor` is a function |
+| Attribute  | Type                                              | Description                                                                                                                                                                                                                    |
+| ---------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accessor` | `string OR ((row: any, rowIndex: number) => any)` | This `string`/`function` is used to build the data model for your column.<br /><br />**Note**: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`<br />                    |
+| `id`       | `string`                                          | Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.<br /><br />**Note:** If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set. |
 
 **Optional Properties**
 
@@ -192,6 +192,7 @@ import * as ComponentStories from './AnalyticalTable.stories';
 | `PopInHeader`           | `string OR ComponentType`                                                          | Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.                                                                                                                                                                                                                                                                                                                                                             |
 | `disableDragAndDrop`    | `boolean`                                                                          | Defines if the column is reorderable by dragging and dropping columns.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `enableMultiSort`       | `boolean`                                                                          | Defines whether this column should allow multi-sort.<br /><br /> **Note:** When sorting by a column that does not allow multiple sorting, only the current column is sorted and all other sorted columns are reset.                                                                                                                                                                                                                                                                                             |
+| `autoResizable`         | `boolean`                                                                          | Defines whether double-clicking a columns resizer will automatically resize the column to fit the largest cell content of visible rows.<br /><br />**Note:** Only default text content is supported by this option, for custom content it might work as well, but we recommend checking the behavior carefully as the logic can't account for all possible implementations.                                                                                                                                     |
 
 <br />
 
