@@ -45,7 +45,7 @@ export interface ThemeProviderPropTypes {
  * __Note:__ Per default, the `ThemeProvider` injects the CSS for the components during runtime. If you have imported our static CSS bundle/s in your application, you can set the prop `staticCssInjected` to `true` to prevent this.
  */
 const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes) => {
-  const { children, withoutModalsProvider, staticCssInjected } = props;
+  const { children, withoutModalsProvider = false, staticCssInjected = false } = props;
 
   useIsomorphicLayoutEffect(() => {
     document.documentElement.setAttribute('data-sap-theme', getTheme());

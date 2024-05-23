@@ -2,28 +2,25 @@
 
 import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import { createOrUpdateStyle, removeStyle } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
-import * as React from 'react';
-import { useSyncExternalStore } from 'use-sync-external-store';
+import { useSyncExternalStore } from 'use-sync-external-store/shim';
 import { StyleStore } from '../stores/StyleStore.js';
-
-function getUseInsertionEffect(isSSR: boolean) {
-  return isSSR ? React.useEffect : Reflect.get(React, 'useInsertionEffect') || React.useLayoutEffect;
-}
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect.js';
 
 export function useStylesheet(styles: StyleDataCSP, componentName: string) {
   const { staticCssInjected, componentsMap } = useSyncExternalStore(StyleStore.subscribe, StyleStore.getSnapshot);
 
-  getUseInsertionEffect(typeof window === 'undefined')(() => {
-    if (!staticCssInjected) {
+  useIsomorphicLayoutEffect(() => {
+    const shouldInject = !staticCssInjected;
+    if (shouldInject) {
       createOrUpdateStyle(styles, 'data-ui5wcr-component', componentName);
       StyleStore.mountComponent(componentName);
     }
 
     return () => {
-      if (!staticCssInjected) {
+      if (shouldInject) {
         StyleStore.unmountComponent(componentName);
-        const numberOfMountedComponents = componentsMap.get(componentName);
-        if (typeof numberOfMountedComponents === 'number' && numberOfMountedComponents <= 0) {
+        const numberOfMountedComponents = componentsMap.get(componentName)!;
+        if (numberOfMountedComponents <= 0) {
           removeStyle('data-ui5wcr-component', componentName);
         }
       }

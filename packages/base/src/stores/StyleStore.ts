@@ -22,26 +22,32 @@ function emitChange() {
   }
 }
 
-function getStyleStore(): IStyleStore {
+function getSnapshot(): IStyleStore {
   globalThis[STORE_SYMBOL] ??= initialStore;
   return globalThis[STORE_SYMBOL];
 }
 
+function subscribe(listener: () => void) {
+  const listeners = getListeners();
+  globalThis[STORE_SYMBOL_LISTENERS] = [...listeners, listener];
+  return () => {
+    globalThis[STORE_SYMBOL_LISTENERS] = listeners.filter((l) => l !== listener);
+  };
+}
+
 export const StyleStore = {
-  subscribe: (listener: () => void) => {
-    let listeners = getListeners();
-    listeners = [...listeners, listener];
-    return () => {
-      listeners = listeners.filter((l) => l !== listener);
+  subscribe,
+  getSnapshot,
+  setStaticCssInjected: (staticCssInjected: boolean) => {
+    const curr = getSnapshot();
+    globalThis[STORE_SYMBOL] = {
+      ...curr,
+      staticCssInjected
     };
-  },
-  getSnapshot: getStyleStore,
-  setStaticCssInjected: (injected: boolean) => {
-    getStyleStore().staticCssInjected = injected;
     emitChange();
   },
   mountComponent: (componentName: string) => {
-    const { componentsMap } = getStyleStore();
+    const { componentsMap } = getSnapshot();
     if (componentsMap.has(componentName)) {
       componentsMap.set(componentName, componentsMap.get(componentName)! + 1);
     } else {
@@ -50,7 +56,7 @@ export const StyleStore = {
     emitChange();
   },
   unmountComponent: (componentName: string) => {
-    const { componentsMap } = getStyleStore();
+    const { componentsMap } = getSnapshot();
     if (componentsMap.has(componentName)) {
       componentsMap.set(componentName, componentsMap.get(componentName)! - 1);
     }
