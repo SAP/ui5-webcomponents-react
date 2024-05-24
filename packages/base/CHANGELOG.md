@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.2...v1.28.3) (2024-05-24)
+
+### Bug Fixes
+
+- **useStylesheet:** support server side rendering ([#5849](https://github.com/SAP/ui5-webcomponents-react/issues/5849)) ([10fbc64](https://github.com/SAP/ui5-webcomponents-react/commit/10fbc645ecde3aed4c098f4515edbe5d297a0799))
+
 ## [1.28.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.1...v1.28.2) (2024-05-24)
 
 ### Bug Fixes
