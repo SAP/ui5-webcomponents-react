@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.4](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.3...v1.28.4) (2024-05-24)
+
+### Bug Fixes
+
+- **useStylesheet:** update import path for use-sync-external-store ([34e8e22](https://github.com/SAP/ui5-webcomponents-react/commit/34e8e228ee47637e7fce10edb52f01f6c68a54c9))
+
 ## [1.28.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.2...v1.28.3) (2024-05-24)
 
 ### Bug Fixes
