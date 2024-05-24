@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "1.28.1",
+  "version": "1.28.2",
   "description": "Base for ui5-webcomponents-react",
   "type": "module",
   "main": "dist/index.js",
