@@ -1,13 +1,13 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Button.js';
-import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
-import type ButtonAccessibleRole from '@ui5/webcomponents/dist/types/ButtonAccessibleRole.js';
-import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
-import type { MouseEventHandler, ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
+import ButtonAccessibleRole from '@ui5/webcomponents/dist/types/ButtonAccessibleRole.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
+import type { MouseEventHandler, ReactNode } from 'react';
 
 interface ButtonAttributes {
   /**
@@ -96,27 +96,21 @@ interface ButtonAttributes {
 
 interface ButtonDomRef extends Required<ButtonAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values
-   * for customization depending on the use case.
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
    *
-   * It supports the following fields:
+   * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
+   * Accepts the following string values: `true` or `false`
    *
-   * - `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
-   * - `true`
-   * - `false`
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
    *
-   * - `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
-   * - `Dialog`
-   * - `Grid`
-   * - `ListBox`
-   * - `Menu`
-   * - `Tree`
-   *
-   * - `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
+   * - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
+   * Accepts a lowercase string value.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    */
-  accessibilityAttributes: AccessibilityAttributes;
+  accessibilityAttributes: ButtonAccessibilityAttributes;
 }
 
 interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, keyof ButtonAttributes | 'children' | 'onClick'> {

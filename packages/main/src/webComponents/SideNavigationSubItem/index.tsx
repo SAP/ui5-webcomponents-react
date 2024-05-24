@@ -6,16 +6,6 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface SideNavigationSubItemAttributes {
   /**
-   * Defines whether the component is disabled.
-   * A disabled component can't be pressed or
-   * focused, and it is not in the tab chain.
-   *
-   * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents-fiori**.
-   * @default false
-   */
-  disabled?: boolean;
-
-  /**
    * Defines the link target URI. Supports standard hyperlink behavior.
    * If a JavaScript action should be triggered,
    * this should not be set, but instead an event handler
@@ -56,11 +46,6 @@ interface SideNavigationSubItemAttributes {
    * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents-fiori**.
    */
   target?: string;
-
-  /**
-   * Defines the text of the item.
-   */
-  text?: string;
 }
 
 interface SideNavigationSubItemDomRef extends Required<SideNavigationSubItemAttributes>, Ui5DomRef {}
@@ -86,8 +71,8 @@ interface SideNavigationSubItemPropTypes
  */
 const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, SideNavigationSubItemDomRef>(
   'ui5-side-navigation-sub-item',
-  ['href', 'icon', 'target', 'text'],
-  ['disabled', 'selected'],
+  ['href', 'icon', 'target'],
+  ['selected'],
   [],
   ['click'],
   () => import('@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js')

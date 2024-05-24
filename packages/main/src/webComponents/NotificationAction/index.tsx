@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
-import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import type { NotificationActionClickEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationAction.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import type { NotificationActionClickEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationAction.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 
 interface NotificationActionAttributes {
   /**

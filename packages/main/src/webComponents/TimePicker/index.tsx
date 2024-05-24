@@ -1,17 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TimePicker.js';
-import type {
-  TimePickerBaseChangeEventDetail,
-  TimePickerBaseInputEventDetail
-} from '@ui5/webcomponents/dist/TimePickerBase.js';
-import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import type { TimePickerChangeEventDetail, TimePickerInputEventDetail } from '@ui5/webcomponents/dist/TimePicker.js';
 
 interface TimePickerAttributes {
   /**
-   * Determines whether the `TimePicker` is displayed as disabled.
+   * Defines the disabled state of the comonent.
    * @default false
    */
   disabled?: boolean;
@@ -37,7 +34,7 @@ interface TimePickerAttributes {
   placeholder?: string | undefined;
 
   /**
-   * Determines whether the `TimePicker` is displayed as readonly.
+   * Defines the readonly state of the comonent.
    * @default false
    */
   readonly?: boolean;
@@ -49,7 +46,7 @@ interface TimePickerAttributes {
   value?: string | undefined;
 
   /**
-   * Defines the value state of the `TimePicker`.
+   * Defines the value state of the component.
    * @default "None"
    */
   valueState?: ValueState | keyof typeof ValueState;
@@ -58,9 +55,9 @@ interface TimePickerAttributes {
 interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
   /**
    * Closes the picker
-   * @returns {Promise<void>} - Resolves when the picker is closed
+   * @returns {void} - Resolves when the picker is closed
    */
-  closePicker: () => Promise<void>;
+  closePicker: () => void;
 
   /**
    * Currently selected time represented as JavaScript Date instance
@@ -92,9 +89,9 @@ interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
 
   /**
    * Opens the picker.
-   * @returns {Promise<void>} - Resolves when the picker is open
+   * @returns {void} - Resolves when the picker is open
    */
-  openPicker: () => Promise<void>;
+  openPicker: () => void;
 }
 
 interface TimePickerPropTypes
@@ -119,12 +116,12 @@ interface TimePickerPropTypes
    * Fired when the input operation has finished by clicking the "OK" button or
    * when the text in the input field has changed and the focus leaves the input field.
    */
-  onChange?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerBaseChangeEventDetail>) => void;
+  onChange?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerChangeEventDetail>) => void;
 
   /**
    * Fired when the value of the `TimePicker` is changed at each key stroke.
    */
-  onInput?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerBaseInputEventDetail>) => void;
+  onInput?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerInputEventDetail>) => void;
 }
 
 /**

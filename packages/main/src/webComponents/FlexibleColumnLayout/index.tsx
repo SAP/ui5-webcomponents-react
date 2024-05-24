@@ -1,15 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 import type {
-  FlexibleColumnLayoutAccessibilityRoles,
-  FlexibleColumnLayoutAccessibilityTexts,
+  FCLAccessibilityAttributes,
   FlexibleColumnLayoutColumnLayout,
   FlexibleColumnLayoutLayoutChangeEventDetail
 } from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
-import type FCLLayout from '@ui5/webcomponents-fiori/dist/types/FCLLayout.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import FCLLayout from '@ui5/webcomponents-fiori/dist/types/FCLLayout.js';
 
 interface FlexibleColumnLayoutAttributes {
   /**
@@ -34,34 +33,32 @@ interface FlexibleColumnLayoutAttributes {
 
 interface FlexibleColumnLayoutDomRef extends Required<FlexibleColumnLayoutAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines additional accessibility roles for further customization.
+   * Defines additional accessibility attributes on different areas of the component.
    *
-   * It supports the following fields:
-   *  - `startColumnRole`: the accessibility role for the `startColumn`
-   *  - `startArrowContainerRole`: the accessibility role for the first arrow container (between the `begin` and `mid` columns)
-   *  - `midColumnRole`: the accessibility role for the `midColumn`
-   *  - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns)
-   *  - `endColumnRole`: the accessibility role for the `endColumn`
+   * The accessibilityAttributes object has the following fields,
+   * where each field is an object supporting one or more accessibility attributes:
    *
-   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents-fiori**.
+   *  - **startColumn**: `startColumn.role` and `startColumn.name`.
+   *  - **midColumn**: `midColumn.role` and `midColumn.name`.
+   *  - **endColumn**: `endColumn.role` and `endColumn.name`.
+   *  - **startArrowContainer**: `startArrowContainer.role` and `startArrowContainer.name`.
+   *  - **endArrowContainer**: `endArrowContainerrole.role` and `endArrowContainer.name`.
+   *  - **startArrowLeft**: `startArrowLeft.name`.
+   *  - **startArrowRight**: `startArrowRight.name`.
+   *  - **endArrowLeft**: `endArrowLeft.name`.
+   *  - **endArrowRight**: `endArrowRight.name`.
+   *
+   * The accessibility attributes support the following values:
+   *
+   * - **role**: Defines the accessible ARIA landmark role of the area.
+   * Accepts the following values: `none`, `complementary`, `contentinfo`, `main` or `region`.
+   *
+   * - **name**: Defines the accessible ARIA name of the area.
+   * Accepts any string.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
    */
-  accessibilityRoles: FlexibleColumnLayoutAccessibilityRoles;
-
-  /**
-   * An object of strings that defines several additional accessibility texts for even further customization.
-   *
-   * It supports the following fields:
-   *  - `startColumnAccessibleName`: the accessibility name for the `startColumn` region
-   *  - `midColumnAccessibleName`: the accessibility name for the `midColumn` region
-   *  - `endColumnAccessibleName`: the accessibility name for the `endColumn` region
-   *  - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left
-   *  - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right
-   *  - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left
-   *  - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right
-   *  - `startArrowContainerAccessibleName`: the text that the first arrow container (between the `begin` and `mid` columns) will have as `aria-label`
-   *  - `endArrowContainerAccessibleName`: the text that the second arrow container (between the `mid` and `end` columns) will have as `aria-label`
-   */
-  accessibilityTexts: FlexibleColumnLayoutAccessibilityTexts;
+  accessibilityAttributes: FCLAccessibilityAttributes;
 
   /**
    * Returns the current column layout, based on both the `layout` property and the screen size.

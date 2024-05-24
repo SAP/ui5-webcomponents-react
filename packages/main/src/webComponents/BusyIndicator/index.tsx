@@ -1,11 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents/dist/BusyIndicator.js';
-import type BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
-import type BusyIndicatorTextPlacement from '@ui5/webcomponents/dist/types/BusyIndicatorTextPlacement.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
+import BusyIndicatorTextPlacement from '@ui5/webcomponents/dist/types/BusyIndicatorTextPlacement.js';
+import type { ReactNode } from 'react';
 
 interface BusyIndicatorAttributes {
   /**
@@ -22,7 +22,7 @@ interface BusyIndicatorAttributes {
 
   /**
    * Defines the size of the component.
-   * @default "Medium"
+   * @default "M"
    */
   size?: BusyIndicatorSize | keyof typeof BusyIndicatorSize;
 

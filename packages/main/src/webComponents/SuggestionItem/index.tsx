@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SuggestionItem.js';
-import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
-import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 
 interface SuggestionItemAttributes {
   /**

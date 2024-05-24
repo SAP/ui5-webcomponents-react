@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Switch.js';
-import type SwitchDesign from '@ui5/webcomponents/dist/types/SwitchDesign.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import SwitchDesign from '@ui5/webcomponents/dist/types/SwitchDesign.js';
 
 interface SwitchAttributes {
   /**

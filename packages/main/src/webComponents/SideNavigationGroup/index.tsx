@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigationGroup.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { ReactNode } from 'react';
 
 interface SideNavigationGroupAttributes {
   /**
@@ -26,6 +26,15 @@ interface SideNavigationGroupAttributes {
    * Defines the text of the item.
    */
   text?: string;
+
+  /**
+   * Defines the tooltip of the component.
+   *
+   * A tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   */
+  tooltip?: string;
 }
 
 interface SideNavigationGroupDomRef extends Required<SideNavigationGroupAttributes>, Ui5DomRef {}
@@ -52,7 +61,7 @@ interface SideNavigationGroupPropTypes
  */
 const SideNavigationGroup = withWebComponent<SideNavigationGroupPropTypes, SideNavigationGroupDomRef>(
   'ui5-side-navigation-group',
-  ['text'],
+  ['text', 'tooltip'],
   ['disabled', 'expanded'],
   [],
   [],

@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MenuItem.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { ReactNode } from 'react';
 
 interface MenuItemAttributes {
   /**
@@ -23,24 +23,6 @@ interface MenuItemAttributes {
   additionalText?: string;
 
   /**
-   * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover.
-   *
-   * **Note:** If set to `true` a `BusyIndicator` component will be displayed into the related one to the current `MenuItem` sub-menu popover.
-   *
-   * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
-   * @default false
-   */
-  busy?: boolean;
-
-  /**
-   * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover.
-   *
-   * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
-   * @default 1000
-   */
-  busyDelay?: number;
-
-  /**
    * Defines whether `MenuItem` is in disabled state.
    *
    * **Note:** A disabled `MenuItem` is noninteractive.
@@ -57,6 +39,24 @@ interface MenuItemAttributes {
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
+
+  /**
+   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+   *
+   * **Note:** If set to `true` a `BusyIndicator` component will be displayed into the related one to the current `MenuItem` sub-menu popover.
+   *
+   * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  loading?: boolean;
+
+  /**
+   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+   *
+   * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
+   * @default 1000
+   */
+  loadingDelay?: number;
 
   /**
    * Defines whether a visual separator should be rendered before the item.
@@ -105,8 +105,8 @@ interface MenuItemPropTypes extends MenuItemAttributes, Omit<CommonProps, keyof 
  */
 const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   'ui5-menu-item',
-  ['accessibleName', 'additionalText', 'busyDelay', 'icon', 'text', 'tooltip'],
-  ['busy', 'disabled', 'startsSection'],
+  ['accessibleName', 'additionalText', 'icon', 'loadingDelay', 'text', 'tooltip'],
+  ['disabled', 'loading', 'startsSection'],
   [],
   [],
   () => import('@ui5/webcomponents/dist/MenuItem.js')

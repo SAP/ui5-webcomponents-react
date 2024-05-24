@@ -1,11 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/Wizard.js';
-import type WizardContentLayout from '@ui5/webcomponents-fiori/dist/types/WizardContentLayout.js';
-import type { WizardStepChangeEventDetail } from '@ui5/webcomponents-fiori/dist/Wizard.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import WizardContentLayout from '@ui5/webcomponents-fiori/dist/types/WizardContentLayout.js';
+import type { WizardStepChangeEventDetail } from '@ui5/webcomponents-fiori/dist/Wizard.js';
+import type { ReactNode } from 'react';
 
 interface WizardAttributes {
   /**

@@ -1,12 +1,16 @@
 'use client';
 
 import '@ui5/webcomponents/dist/AvatarGroup.js';
-import type { AvatarGroupClickEventDetail, IAvatarGroupItem } from '@ui5/webcomponents/dist/AvatarGroup.js';
-import type AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
-import type AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type {
+  AvatarGroupAccessibilityAttributes,
+  AvatarGroupClickEventDetail,
+  IAvatarGroupItem
+} from '@ui5/webcomponents/dist/AvatarGroup.js';
+import AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
+import AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
+import type { ReactNode } from 'react';
 
 interface AvatarGroupAttributes {
   /**
@@ -17,6 +21,17 @@ interface AvatarGroupAttributes {
 }
 
 interface AvatarGroupDomRef extends Required<AvatarGroupAttributes>, Ui5DomRef {
+  /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following field is supported:
+   *
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  accessibilityAttributes: AvatarGroupAccessibilityAttributes;
+
   /**
    * Returns an array containing the `AvatarColorScheme` values that correspond to the avatars in the component.
    */

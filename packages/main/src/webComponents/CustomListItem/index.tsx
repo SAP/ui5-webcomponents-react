@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/CustomListItem.js';
-import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
-import type HighlightTypes from '@ui5/webcomponents/dist/types/HighlightTypes.js';
-import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import HighlightTypes from '@ui5/webcomponents/dist/types/HighlightTypes.js';
+import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
+import type { ReactNode } from 'react';
 
 interface CustomListItemAttributes {
   /**
@@ -18,7 +18,7 @@ interface CustomListItemAttributes {
 
   /**
    * Defines the highlight state of the list items.
-   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
    *
    * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
    * @default "None"
@@ -60,21 +60,18 @@ interface CustomListItemAttributes {
 
 interface CustomListItemDomRef extends Required<CustomListItemAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values
-   * for customization depending on the use case.
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
    *
-   *  It supports the following fields:
+   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
    *
-   * - `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.
-   * 	The value of each `aria-setsize` is an integer reflecting number of items in the complete set.
-   *
-   * 	**Note:** If the size of the entire set is unknown, set `aria-setsize="-1"`.
-   * 	- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.
-   * 	The value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
    *
    * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
    */
-  accessibilityAttributes: AccessibilityAttributes;
+  accessibilityAttributes: ListItemAccessibilityAttributes;
 }
 
 interface CustomListItemPropTypes

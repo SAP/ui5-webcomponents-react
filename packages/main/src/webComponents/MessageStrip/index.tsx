@@ -1,12 +1,22 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MessageStrip.js';
-import type MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
+import type { ReactNode } from 'react';
 
 interface MessageStripAttributes {
+  /**
+   * Defines the color scheme of the component.
+   * There are 10 predefined schemes.
+   * To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default "1"
+   */
+  colorScheme?: string;
+
   /**
    * Defines the component type.
    * @default "Information"
@@ -22,6 +32,8 @@ interface MessageStripAttributes {
   /**
    * Defines whether the MessageStrip will show an icon in the beginning.
    * You can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.
+   *
+   *  * **Note:** If <code>MessageStripDesign.ColorSet1</code> or <code>MessageStripDesign.ColorSet2</code> value is set to the <code>design</code> property, default icon will not be presented.
    * @default false
    */
   hideIcon?: boolean;
@@ -63,7 +75,7 @@ interface MessageStripPropTypes
 
 /**
  * The `MessageStrip` component enables the embedding of app-related messages.
- * It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Warning and Negative.
+ * It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Critical and Negative.
  * Each message can have a Close button, so that it can be removed from the UI, if needed.
  *
  * ### Usage
@@ -85,7 +97,7 @@ interface MessageStripPropTypes
  */
 const MessageStrip = withWebComponent<MessageStripPropTypes, MessageStripDomRef>(
   'ui5-message-strip',
-  ['design'],
+  ['colorScheme', 'design'],
   ['hideCloseButton', 'hideIcon'],
   ['icon'],
   ['close'],

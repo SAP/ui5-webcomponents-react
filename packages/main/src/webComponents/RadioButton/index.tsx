@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/RadioButton.js';
-import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
-import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 
 interface RadioButtonAttributes {
   /**

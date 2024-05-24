@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/ShellBar.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 import type {
   ShellBarAccessibilityAttributes,
-  ShellBarAccessibilityRoles,
-  ShellBarAccessibilityTexts,
   ShellBarCoPilotClickEventDetail,
   ShellBarLogoClickEventDetail,
   ShellBarMenuItemClickEventDetail,
@@ -14,8 +14,6 @@ import type {
   ShellBarSearchButtonEventDetail
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ShellBarAttributes {
   /**
@@ -70,48 +68,37 @@ interface ShellBarAttributes {
 
 interface ShellBarDomRef extends Required<ShellBarAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values
-   * for customization depending on the use case.
+   * Defines additional accessibility attributes on different areas of the component.
    *
-   * It supports the following fields:
+   * The accessibilityAttributes object has the following fields,
+   * where each field is an object supporting one or more accessibility attributes:
    *
-   * - `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
+   * - **logo** - `logo.role` and `logo.name`.
+   * - **notifications** - `notifications.expanded` and `notifications.hasPopup`.
+   * - **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.
+   * - **product** - `product.expanded` and `product.hasPopup`.
+   * - **search** - `search.expanded` and `search.hasPopup`.
+   * - **overflow** - `overflow.expanded` and `overflow.hasPopup`.
    *
-   * - `true`
-   * - `false`
+   * The accessibility attributes support the following values:
    *
-   * - `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
-   * - `Dialog`
-   * - `Grid`
-   * - `ListBox`
-   * - `Menu`
-   * - `Tree`
+   * - **role**: Defines the accessible ARIA role of the logo area.
+   * Accepts the following string values: `button` or `link`.
+   *
+   * - **expanded**: Indicates whether the button, or another grouping element it controls,
+   * is currently expanded or collapsed.
+   * Accepts the following string values: `true` or `false`.
+   *
+   * - **hasPopup**: Indicates the availability and type of interactive popup element,
+   * such as menu or dialog, that can be triggered by the button.
+   *
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
+   * - **name**: Defines the accessible ARIA name of the area.
+   * Accepts any string.
    *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents-fiori**.
    */
   accessibilityAttributes: ShellBarAccessibilityAttributes;
-
-  /**
-   * An object of strings that defines additional accessibility roles for further customization.
-   *
-   * It supports the following fields:
-   *  - `logoRole`: the accessibility role for the `logo`
-   *
-   * **Note:** Available since [v1.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.6.0) of **@ui5/webcomponents-fiori**.
-   */
-  accessibilityRoles: ShellBarAccessibilityRoles;
-
-  /**
-   * An object of strings that defines several additional accessibility texts
-   * for even further customization.
-   *
-   * It supports the following fields:
-   * - `profileButtonTitle`: defines the tooltip for the profile button
-   * - `logoTitle`: defines the tooltip for the logo
-   *
-   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents-fiori**.
-   */
-  accessibilityTexts: ShellBarAccessibilityTexts;
 
   /**
    * Closes the overflow area.

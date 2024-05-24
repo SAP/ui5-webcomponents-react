@@ -1,6 +1,7 @@
 'use client';
 
 import type { TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/TabContainer.js';
+import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
 import {
   debounce,
   deprecationNotice,
@@ -21,7 +22,7 @@ import React, {
   useRef,
   useState
 } from 'react';
-import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
+import { GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';

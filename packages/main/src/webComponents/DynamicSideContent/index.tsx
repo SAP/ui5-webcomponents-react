@@ -1,13 +1,13 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
-import type { DynamicSideContentLayoutChangeEventDetail } from '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
-import type SideContentFallDown from '@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js';
-import type SideContentPosition from '@ui5/webcomponents-fiori/dist/types/SideContentPosition.js';
-import type SideContentVisibility from '@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { DynamicSideContentLayoutChangeEventDetail } from '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
+import SideContentFallDown from '@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js';
+import SideContentPosition from '@ui5/webcomponents-fiori/dist/types/SideContentPosition.js';
+import SideContentVisibility from '@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js';
+import type { ReactNode } from 'react';
 
 interface DynamicSideContentAttributes {
   /**

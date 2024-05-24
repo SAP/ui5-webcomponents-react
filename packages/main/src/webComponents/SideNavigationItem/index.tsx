@@ -1,21 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import type { ReactNode } from 'react';
 
 interface SideNavigationItemAttributes {
-  /**
-   * Defines whether the component is disabled.
-   * A disabled component can't be pressed or
-   * focused, and it is not in the tab chain.
-   *
-   * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents-fiori**.
-   * @default false
-   */
-  disabled?: boolean;
-
   /**
    * Defines if the item is expanded
    * @default false
@@ -65,11 +55,6 @@ interface SideNavigationItemAttributes {
   target?: string;
 
   /**
-   * Defines the text of the item.
-   */
-  text?: string;
-
-  /**
    * Defines whether clicking the whole item or only pressing the icon will show/hide the sub items (if present).
    * If set to true, clicking the whole item will toggle the sub items, and it won't fire the `click` event.
    * By default, only clicking the arrow icon will toggle the sub items.
@@ -105,8 +90,8 @@ interface SideNavigationItemPropTypes
  */
 const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNavigationItemDomRef>(
   'ui5-side-navigation-item',
-  ['href', 'icon', 'target', 'text'],
-  ['disabled', 'expanded', 'selected', 'wholeItemToggleable'],
+  ['href', 'icon', 'target'],
+  ['expanded', 'selected', 'wholeItemToggleable'],
   [],
   ['click'],
   () => import('@ui5/webcomponents-fiori/dist/SideNavigationItem.js')

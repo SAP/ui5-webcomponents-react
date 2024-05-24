@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ProgressIndicator.js';
-import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 
 interface ProgressIndicatorAttributes {
   /**
@@ -12,12 +12,6 @@ interface ProgressIndicatorAttributes {
    * **Note:** Available since [v1.16.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.16.0) of **@ui5/webcomponents**.
    */
   accessibleName?: string;
-
-  /**
-   * Defines whether component is in disabled state.
-   * @default false
-   */
-  disabled?: boolean;
 
   /**
    * Specifies the text value to be displayed in the bar.
@@ -72,7 +66,7 @@ interface ProgressIndicatorPropTypes
 const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes, ProgressIndicatorDomRef>(
   'ui5-progress-indicator',
   ['accessibleName', 'displayValue', 'value', 'valueState'],
-  ['disabled', 'hideValue'],
+  ['hideValue'],
   [],
   [],
   () => import('@ui5/webcomponents/dist/ProgressIndicator.js')

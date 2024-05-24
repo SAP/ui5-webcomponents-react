@@ -1,17 +1,13 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiInput.js';
-import type {
-  IInputSuggestionItem,
-  InputSuggestionItemPreviewEventDetail,
-  InputSuggestionItemSelectEventDetail
-} from '@ui5/webcomponents/dist/Input.js';
-import type { MultiInputTokenDeleteEventDetail } from '@ui5/webcomponents/dist/MultiInput.js';
-import type InputType from '@ui5/webcomponents/dist/types/InputType.js';
-import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import type { InputSelectionChangeEventDetail } from '@ui5/webcomponents/dist/Input.js';
+import type { MultiInputTokenDeleteEventDetail } from '@ui5/webcomponents/dist/MultiInput.js';
+import InputType from '@ui5/webcomponents/dist/types/InputType.js';
+import type { ReactNode } from 'react';
 
 interface MultiInputAttributes {
   /**
@@ -140,11 +136,6 @@ interface MultiInputDomRef extends Required<MultiInputAttributes>, Ui5DomRef {
    * @returns {void}
    */
   openPicker: () => void;
-
-  /**
-   * The suggestion item on preview.
-   */
-  readonly previewItem: IInputSuggestionItem | null;
 }
 
 interface MultiInputPropTypes
@@ -158,8 +149,7 @@ interface MultiInputPropTypes
       | 'valueStateMessage'
       | 'onChange'
       | 'onInput'
-      | 'onSuggestionItemPreview'
-      | 'onSuggestionItemSelect'
+      | 'onSelectionChange'
       | 'onTokenDelete'
       | 'onValueHelpTrigger'
     > {
@@ -234,15 +224,10 @@ interface MultiInputPropTypes
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys,
    * as a preview, before the final selection.
-   */
-  onSuggestionItemPreview?: (event: Ui5CustomEvent<MultiInputDomRef, InputSuggestionItemPreviewEventDetail>) => void;
-
-  /**
-   * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    *
-   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<MultiInputDomRef, InputSuggestionItemSelectEventDetail>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<MultiInputDomRef, InputSelectionChangeEventDetail>) => void;
 
   /**
    * Fired when a token is about to be deleted.
@@ -263,7 +248,8 @@ interface MultiInputPropTypes
  * Fiori Guidelines say that user should create tokens when:
  *
  * - Type a value in the input and press enter or focus out the input field (`change` event is fired)
- * - Select a value from the suggestion list (`suggestion-item-select` event is fired)
+ * - Move between suggestion items (`selection-change` event is fired)
+ * - Clicking on a suggestion item (`selection-change` event is fired if the clicked item is different than the current value. Also `change` event is fired )
  *
  *
  *
@@ -274,7 +260,7 @@ const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSuggestions', 'showValueHelpIcon'],
   ['icon', 'tokens', 'valueStateMessage'],
-  ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select', 'token-delete', 'value-help-trigger'],
+  ['change', 'input', 'selection-change', 'token-delete', 'value-help-trigger'],
   () => import('@ui5/webcomponents/dist/MultiInput.js')
 );
 

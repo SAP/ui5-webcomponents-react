@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Dialog.js';
-import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
-import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
-import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
+import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
+import type { ReactNode } from 'react';
 
 interface DialogAttributes {
   /**
@@ -85,7 +85,7 @@ interface DialogAttributes {
   /**
    * Defines the state of the `Dialog`.
    *
-   * **Note:** If `"Error"` and `"Warning"` state is set, it will change the
+   * **Note:** If `"Negative"` and `"Critical"` states is set, it will change the
    * accessibility role to "alertdialog", if the accessibleRole property is set to `"Dialog"`.
    * @default "None"
    */
@@ -150,7 +150,7 @@ interface DialogPropTypes
   /**
    * Defines the footer HTML Element.
    *
-   * **Note:** When a `ui5-bar` is used in the footer, you should remove the default dialog's paddings.
+   * **Note:** When a `Bar` is used in the footer, you should remove the default dialog's paddings.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="footer"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -163,7 +163,7 @@ interface DialogPropTypes
   /**
    * Defines the header HTML Element.
    *
-   * **Note:** When a `ui5-bar` is used in the header, you should remove the default dialog's paddings.
+   * **Note:** When a `Bar` is used in the header, you should remove the default dialog's paddings.
    *
    * **Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer.
    * `accessibleName` should be used.
@@ -223,7 +223,7 @@ interface DialogPropTypes
  * The `stretch` property can be used to stretch the
  * `Dialog` on full screen.
  *
- * **Note:** When a `ui5-bar` is used in the header or in the footer, you should remove the default dialog's paddings.
+ * **Note:** When a `Bar` is used in the header or in the footer, you should remove the default dialog's paddings.
  *
  * For more information see the sample "Bar in Header/Footer".
  *

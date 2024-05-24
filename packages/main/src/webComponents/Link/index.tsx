@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Link.js';
-import type { AccessibilityAttributes, LinkClickEventDetail } from '@ui5/webcomponents/dist/Link.js';
-import type LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
-import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import type { LinkAccessibilityAttributes, LinkClickEventDetail } from '@ui5/webcomponents/dist/Link.js';
+import LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
+import type { ReactNode } from 'react';
 
 interface LinkAttributes {
   /**
@@ -70,6 +70,13 @@ interface LinkAttributes {
   target?: string;
 
   /**
+   * Defines the tooltip of the component.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  tooltip?: string;
+
+  /**
    * Defines how the text of a component will be displayed when there is not enough space.
    *
    * **Note:** for option "Normal" the text will wrap and the words will not be broken based on hyphenation.
@@ -80,24 +87,18 @@ interface LinkAttributes {
 
 interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values
-   * for customization depending on the use case.
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
    *
-   * It supports the following fields:
+   * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
+   * Accepts the following string values: `true` or `false`.
    *
-   * - `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
-   * - `true`
-   * - `false`
-   * - `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:
-   * - `Dialog`
-   * - `Grid`
-   * - `ListBox`
-   * - `Menu`
-   * - `Tree`
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
    *
    * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    */
-  accessibilityAttributes: AccessibilityAttributes;
+  accessibilityAttributes: LinkAccessibilityAttributes;
 }
 
 interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttributes | 'children' | 'onClick'> {
@@ -147,7 +148,7 @@ interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttr
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
-  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'href', 'target', 'wrappingType'],
+  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'href', 'target', 'tooltip', 'wrappingType'],
   ['disabled'],
   [],
   ['click'],

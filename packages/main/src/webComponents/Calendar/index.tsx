@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Calendar.js';
-import type { CalendarSelectedDatesChangeEventDetail } from '@ui5/webcomponents/dist/Calendar.js';
-import type CalendarSelectionMode from '@ui5/webcomponents/dist/types/CalendarSelectionMode.js';
-import type CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
+import type { CalendarSelectionChangeEventDetail } from '@ui5/webcomponents/dist/Calendar.js';
+import CalendarSelectionMode from '@ui5/webcomponents/dist/types/CalendarSelectionMode.js';
+import type { ReactNode } from 'react';
 
 interface CalendarAttributes {
   /**
@@ -42,14 +42,14 @@ interface CalendarAttributes {
    * If not set, the calendar type of the global configuration is used.
    * @default undefined
    */
-  primaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
+  primaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType | undefined;
 
   /**
    * Defines the secondary calendar type.
    * If not set, the calendar will only show the primary calendar type.
    * @default undefined
    */
-  secondaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
+  secondaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType | undefined;
 
   /**
    * Defines the type of selection used in the calendar component.
@@ -67,10 +67,7 @@ interface CalendarDomRef extends Required<CalendarAttributes>, Ui5DomRef {}
 
 interface CalendarPropTypes
   extends CalendarAttributes,
-    Omit<
-      CommonProps,
-      keyof CalendarAttributes | 'calendarLegend' | 'children' | 'specialDates' | 'onSelectedDatesChange'
-    > {
+    Omit<CommonProps, keyof CalendarAttributes | 'calendarLegend' | 'children' | 'specialDates' | 'onSelectionChange'> {
   /**
    * Defines the calendar legend of the component.
    *
@@ -110,7 +107,7 @@ interface CalendarPropTypes
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
-  onSelectedDatesChange?: (event: Ui5CustomEvent<CalendarDomRef, CalendarSelectedDatesChangeEventDetail>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<CalendarDomRef, CalendarSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -121,7 +118,7 @@ interface CalendarPropTypes
  * date string, correctly formatted according to the `Calendar`'s `formatPattern` property.
  * Whenever the user changes the date selection, `Calendar` will automatically create/remove instances
  * of `CalendarDate` in itself, unless you prevent this behavior by calling `preventDefault()` for the
- * `selected-dates-change` event. This is useful if you want to control the selected dates externally.
+ * `selection-change` event. This is useful if you want to control the selected dates externally.
  *
  * ### Usage
  *
@@ -207,7 +204,7 @@ const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   ['formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType', 'selectionMode'],
   ['hideWeekNumbers'],
   ['calendarLegend', 'specialDates'],
-  ['selected-dates-change'],
+  ['selection-change'],
   () => import('@ui5/webcomponents/dist/Calendar.js')
 );
 

@@ -1,16 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Input.js';
-import type {
-  IInputSuggestionItem,
-  InputSuggestionItemPreviewEventDetail,
-  InputSuggestionItemSelectEventDetail
-} from '@ui5/webcomponents/dist/Input.js';
-import type InputType from '@ui5/webcomponents/dist/types/InputType.js';
-import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import type { InputSelectionChangeEventDetail } from '@ui5/webcomponents/dist/Input.js';
+import InputType from '@ui5/webcomponents/dist/types/InputType.js';
+import type { ReactNode } from 'react';
 
 interface InputAttributes {
   /**
@@ -132,25 +128,13 @@ interface InputDomRef extends Required<InputAttributes>, Ui5DomRef {
    * @returns {void}
    */
   openPicker: () => void;
-
-  /**
-   * The suggestion item on preview.
-   */
-  readonly previewItem: IInputSuggestionItem | null;
 }
 
 interface InputPropTypes
   extends InputAttributes,
     Omit<
       CommonProps,
-      | keyof InputAttributes
-      | 'children'
-      | 'icon'
-      | 'valueStateMessage'
-      | 'onChange'
-      | 'onInput'
-      | 'onSuggestionItemPreview'
-      | 'onSuggestionItemSelect'
+      keyof InputAttributes | 'children' | 'icon' | 'valueStateMessage' | 'onChange' | 'onInput' | 'onSelectionChange'
     > {
   /**
    * Defines the suggestion items.
@@ -212,15 +196,10 @@ interface InputPropTypes
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys,
    * as a preview, before the final selection.
-   */
-  onSuggestionItemPreview?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemPreviewEventDetail>) => void;
-
-  /**
-   * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
    *
-   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<InputDomRef, InputSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -245,8 +224,8 @@ interface InputPropTypes
  *
  * - [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.
  * - [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.
- * - [Down] - Focuses the next matching item in the suggestion list.
- * - [Up] - Focuses the previous matching item in the suggestion list.
+ * - [Down] - Focuses the next matching item in the suggestion list. Selection-change event is fired.
+ * - [Up] - Focuses the previous matching item in the suggestion list. Selection-change event is fired.
  * - [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.
  * - [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.
  * - [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.
@@ -263,7 +242,7 @@ const Input = withWebComponent<InputPropTypes, InputDomRef>(
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select'],
+  ['change', 'input', 'selection-change'],
   () => import('@ui5/webcomponents/dist/Input.js')
 );
 

@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/Timeline.js';
-import type TimelineLayout from '@ui5/webcomponents-fiori/dist/types/TimelineLayout.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import TimelineLayout from '@ui5/webcomponents-fiori/dist/types/TimelineLayout.js';
+import type { ReactNode } from 'react';
 
 interface TimelineAttributes {
   /**

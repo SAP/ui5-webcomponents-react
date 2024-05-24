@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Breadcrumbs.js';
-import type { BreadcrumbsItemClickEventDetail } from '@ui5/webcomponents/dist/Breadcrumbs.js';
-import type BreadcrumbsDesign from '@ui5/webcomponents/dist/types/BreadcrumbsDesign.js';
-import type BreadcrumbsSeparatorStyle from '@ui5/webcomponents/dist/types/BreadcrumbsSeparatorStyle.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import type { BreadcrumbsItemClickEventDetail } from '@ui5/webcomponents/dist/Breadcrumbs.js';
+import BreadcrumbsDesign from '@ui5/webcomponents/dist/types/BreadcrumbsDesign.js';
+import BreadcrumbsSeparator from '@ui5/webcomponents/dist/types/BreadcrumbsSeparator.js';
+import type { ReactNode } from 'react';
 
 interface BreadcrumbsAttributes {
   /**
@@ -23,7 +23,7 @@ interface BreadcrumbsAttributes {
    * Determines the visual style of the separator between the breadcrumb items.
    * @default "Slash"
    */
-  separatorStyle?: BreadcrumbsSeparatorStyle | keyof typeof BreadcrumbsSeparatorStyle;
+  separators?: BreadcrumbsSeparator | keyof typeof BreadcrumbsSeparator;
 }
 
 interface BreadcrumbsDomRef extends Required<BreadcrumbsAttributes>, Ui5DomRef {}
@@ -73,7 +73,7 @@ interface BreadcrumbsPropTypes
  */
 const Breadcrumbs = withWebComponent<BreadcrumbsPropTypes, BreadcrumbsDomRef>(
   'ui5-breadcrumbs',
-  ['design', 'separatorStyle'],
+  ['design', 'separators'],
   [],
   [],
   ['item-click'],

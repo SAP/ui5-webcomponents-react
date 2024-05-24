@@ -1,13 +1,13 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
-import type { MediaGallerySelectionChangeEventDetail } from '@ui5/webcomponents-fiori/dist/MediaGallery.js';
-import type MediaGalleryLayout from '@ui5/webcomponents-fiori/dist/types/MediaGalleryLayout.js';
-import type MediaGalleryMenuHorizontalAlign from '@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuHorizontalAlign.js';
-import type MediaGalleryMenuVerticalAlign from '@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuVerticalAlign.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import type { MediaGallerySelectionChangeEventDetail } from '@ui5/webcomponents-fiori/dist/MediaGallery.js';
+import MediaGalleryLayout from '@ui5/webcomponents-fiori/dist/types/MediaGalleryLayout.js';
+import MediaGalleryMenuHorizontalAlign from '@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuHorizontalAlign.js';
+import MediaGalleryMenuVerticalAlign from '@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuVerticalAlign.js';
+import type { ReactNode } from 'react';
 
 interface MediaGalleryAttributes {
   /**

@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TextArea.js';
-import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 
 interface TextAreaAttributes {
   /**
@@ -31,10 +31,10 @@ interface TextAreaAttributes {
   growing?: boolean;
 
   /**
-   * Defines the maximum number of lines that the component can grow.
+   * Defines the maximum number of rows that the component can grow.
    * @default 0
    */
-  growingMaxLines?: number;
+  growingMaxRows?: number;
 
   /**
    * Defines the maximum number of characters that the `value` can have.
@@ -75,7 +75,7 @@ interface TextAreaAttributes {
   required?: boolean;
 
   /**
-   * Defines the number of visible text lines for the component.
+   * Defines the number of visible text rows for the component.
    *
    * **Notes:**
    *
@@ -165,7 +165,7 @@ interface TextAreaPropTypes
 }
 
 /**
- * The `TextArea` component is used to enter multiple lines of text.
+ * The `TextArea` component is used to enter multiple rows of text.
  *
  * When empty, it can hold a placeholder similar to a `Input`.
  * You can define the rows of the `TextArea` and also determine specific behavior when handling long texts.
@@ -179,7 +179,7 @@ const TextArea = withWebComponent<TextAreaPropTypes, TextAreaDomRef>(
   [
     'accessibleName',
     'accessibleNameRef',
-    'growingMaxLines',
+    'growingMaxRows',
     'maxlength',
     'name',
     'placeholder',

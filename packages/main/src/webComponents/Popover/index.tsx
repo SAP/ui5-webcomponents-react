@@ -1,14 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Popover.js';
-import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
-import type PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
-import type PopoverPlacementType from '@ui5/webcomponents/dist/types/PopoverPlacementType.js';
-import type PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
-import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
+import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
+import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
+import type { ReactNode } from 'react';
 
 interface PopoverAttributes {
   /**
@@ -91,13 +91,13 @@ interface PopoverAttributes {
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    * @default undefined
    */
-  opener?: string;
+  opener?: HTMLElement | undefined;
 
   /**
    * Determines on which side the component is placed at.
-   * @default "Right"
+   * @default "End"
    */
-  placementType?: PopoverPlacementType | keyof typeof PopoverPlacementType;
+  placement?: PopoverPlacement | keyof typeof PopoverPlacement;
 
   /**
    * Defines if the focus should be returned to the previously focused element,
@@ -113,7 +113,7 @@ interface PopoverAttributes {
   verticalAlign?: PopoverVerticalAlign | keyof typeof PopoverVerticalAlign;
 }
 
-interface PopoverDomRef extends Omit<Required<PopoverAttributes>, 'opener'>, Ui5DomRef {
+interface PopoverDomRef extends Required<PopoverAttributes>, Ui5DomRef {
   /**
    * Focuses the element denoted by `initialFocus`, if provided,
    * or the first focusable element otherwise.
@@ -132,13 +132,6 @@ interface PopoverDomRef extends Omit<Required<PopoverAttributes>, 'opener'>, Ui5
    * @returns {boolean}
    */
   isOpen: () => boolean;
-
-  /**
-   * Defines the ID or DOM Reference of the element that the popover is shown at
-   *
-   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
-   */
-  opener: HTMLElement | string | undefined;
 
   /**
    * Shows the popover.
@@ -253,7 +246,7 @@ const Popover = withWebComponent<PopoverPropTypes, PopoverDomRef>(
     'horizontalAlign',
     'initialFocus',
     'opener',
-    'placementType',
+    'placement',
     'verticalAlign'
   ],
   ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'open', 'preventFocusRestore'],

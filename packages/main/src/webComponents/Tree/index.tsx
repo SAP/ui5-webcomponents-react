@@ -1,6 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Tree.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 import type {
   TreeItemClickEventDetail,
   TreeItemDeleteEventDetail,
@@ -10,10 +12,8 @@ import type {
   TreeSelectionChangeEventDetail,
   WalkCallback
 } from '@ui5/webcomponents/dist/Tree.js';
-import type ListMode from '@ui5/webcomponents/dist/types/ListMode.js';
+import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TreeAttributes {
   /**
@@ -43,16 +43,16 @@ interface TreeAttributes {
   headerText?: string;
 
   /**
-   * Defines the mode of the component. Since the tree uses a `List` to display its structure,
-   * the tree modes are exactly the same as the list modes, and are all applicable.
-   * @default "None"
-   */
-  mode?: ListMode | keyof typeof ListMode;
-
-  /**
    * Defines the text that is displayed when the component contains no items.
    */
   noDataText?: string;
+
+  /**
+   * Defines the selection mode of the component. Since the tree uses a `List` to display its structure,
+   * the tree modes are exactly the same as the list modes, and are all applicable.
+   * @default "None"
+   */
+  selectionMode?: ListSelectionMode | keyof typeof ListSelectionMode;
 }
 
 interface TreeDomRef extends Required<TreeAttributes>, Ui5DomRef {
@@ -109,7 +109,7 @@ interface TreePropTypes
    * Fired when the Delete button of any tree item is pressed.
    *
    * **Note:** A Delete button is displayed on each item,
-   * when the component `mode` property is set to `Delete`.
+   * when the component `selectionMode` property is set to `Delete`.
    */
   onItemDelete?: (event: Ui5CustomEvent<TreeDomRef, TreeItemDeleteEventDetail>) => void;
 
@@ -136,7 +136,7 @@ interface TreePropTypes
 
   /**
    * Fired when selection is changed by user interaction
-   * in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
+   * in `Single`, `SingleStart`, `SingleEnd` and `Multiple` modes.
    */
   onSelectionChange?: (event: Ui5CustomEvent<TreeDomRef, TreeSelectionChangeEventDetail>) => void;
 }
@@ -167,7 +167,7 @@ interface TreePropTypes
  * - [Left] - Goes up the tree and collapses the tree nodes.
  *
  * The user can use the following keyboard shortcuts to perform selection,
- * when the `mode` property is in use:
+ * when the `selectionMode` property is in use:
  *
  * - [Space] - Selects the currently focused item upon keyup.
  * - [Enter]  - Selects the currently focused item upon keydown.
@@ -180,7 +180,7 @@ interface TreePropTypes
  */
 const Tree = withWebComponent<TreePropTypes, TreeDomRef>(
   'ui5-tree',
-  ['accessibleName', 'accessibleNameRef', 'footerText', 'headerText', 'mode', 'noDataText'],
+  ['accessibleName', 'accessibleNameRef', 'footerText', 'headerText', 'noDataText', 'selectionMode'],
   [],
   ['header'],
   ['item-click', 'item-delete', 'item-mouseout', 'item-mouseover', 'item-toggle', 'selection-change'],

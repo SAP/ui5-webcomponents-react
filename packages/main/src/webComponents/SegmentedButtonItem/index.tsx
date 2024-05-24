@@ -1,13 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
-import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
-import type ButtonAccessibleRole from '@ui5/webcomponents/dist/types/ButtonAccessibleRole.js';
-import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
-import type { MouseEventHandler, ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { ReactNode } from 'react';
 
 interface SegmentedButtonItemAttributes {
   /**
@@ -24,20 +20,8 @@ interface SegmentedButtonItemAttributes {
   accessibleNameRef?: string;
 
   /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   * @default "Button"
-   */
-  accessibleRole?: ButtonAccessibleRole | keyof typeof ButtonAccessibleRole;
-
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   * @default "Default"
-   */
-  design?: ButtonDesign | keyof typeof ButtonDesign;
-
-  /**
    * Defines whether the component is disabled.
-   * A disabled component can't be pressed or
+   * A disabled component can't be selected or
    * focused, and it is not in the tab chain.
    * @default false
    */
@@ -53,23 +37,10 @@ interface SegmentedButtonItemAttributes {
   icon?: string;
 
   /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
+   * Determines whether the component is displayed as selected.
    * @default false
    */
-  iconEnd?: boolean;
-
-  /**
-   * Determines whether the component is displayed as pressed.
-   * @default false
-   */
-  pressed?: boolean;
-
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   * @default false
-   * @deprecated Set the "type" property to "Submit" to achieve the same result. The "submits" property is ignored if "type" is set to any value other than "Button".
-   */
-  submits?: boolean;
+  selected?: boolean;
 
   /**
    * Defines the tooltip of the component.
@@ -79,44 +50,25 @@ interface SegmentedButtonItemAttributes {
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    */
   tooltip?: string;
-
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   * @default "Button"
-   */
-  type?: ButtonType | keyof typeof ButtonType;
 }
 
-interface SegmentedButtonItemDomRef extends Required<SegmentedButtonItemAttributes>, Ui5DomRef {
-  /**
-   * **Note:** The property is inherited and not supported. If set, it won't take any effect.
-   */
-  accessibilityAttributes: AccessibilityAttributes;
-}
+interface SegmentedButtonItemDomRef extends Required<SegmentedButtonItemAttributes>, Ui5DomRef {}
 
 interface SegmentedButtonItemPropTypes
   extends SegmentedButtonItemAttributes,
-    Omit<CommonProps, keyof SegmentedButtonItemAttributes | 'children' | 'onClick'> {
+    Omit<CommonProps, keyof SegmentedButtonItemAttributes | 'children'> {
   /**
    * Defines the text of the component.
    *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Fired when the component is activated either with a
-   * mouse/tap or by using the Enter or Space key.
-   *
-   * **Note:** The event will not be fired if the `disabled`
-   * property is set to `true`.
-   */
-  onClick?: MouseEventHandler<SegmentedButtonItemDomRef>;
 }
 
 /**
  * Users can use the `SegmentedButtonItem` as part of a `SegmentedButton`.
  *
- * Clicking or tapping on a `SegmentedButtonItem` changes its state to `pressed`.
+ * Clicking or tapping on a `SegmentedButtonItem` changes its state to `selected`.
  * The item returns to its initial state when the user clicks or taps on it again.
  * By applying additional custom CSS-styling classes, apps can give a different style to any
  * `SegmentedButtonItem`.
@@ -127,10 +79,10 @@ interface SegmentedButtonItemPropTypes
  */
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, SegmentedButtonItemDomRef>(
   'ui5-segmented-button-item',
-  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'icon', 'tooltip', 'type'],
-  ['disabled', 'iconEnd', 'pressed', 'submits'],
+  ['accessibleName', 'accessibleNameRef', 'icon', 'tooltip'],
+  ['disabled', 'selected'],
   [],
-  ['click'],
+  [],
   () => import('@ui5/webcomponents/dist/SegmentedButtonItem.js')
 );
 

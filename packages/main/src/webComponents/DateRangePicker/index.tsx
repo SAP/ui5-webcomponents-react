@@ -1,15 +1,15 @@
 'use client';
 
 import '@ui5/webcomponents/dist/DateRangePicker.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type {
   DatePickerChangeEventDetail,
   DatePickerInputEventDetail,
   DatePickerValueStateChangeEventDetail
 } from '@ui5/webcomponents/dist/DatePicker.js';
-import type CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
-import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface DateRangePickerAttributes {
   /**
@@ -76,6 +76,14 @@ interface DateRangePickerAttributes {
   name?: string;
 
   /**
+   * Defines the open or closed state of the popover.
+   *
+   * **Note:** Available since [v2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  open?: boolean;
+
+  /**
    * Defines a short hint, intended to aid the user with data entry when the
    * component has no value.
    *
@@ -90,7 +98,7 @@ interface DateRangePickerAttributes {
    * If not set, the calendar type of the global configuration is used.
    * @default undefined
    */
-  primaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
+  primaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType | undefined;
 
   /**
    * Determines whether the component is displayed as read-only.
@@ -109,7 +117,7 @@ interface DateRangePickerAttributes {
    * If not set, the calendar will only show the primary calendar type.
    * @default undefined
    */
-  secondaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
+  secondaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType | undefined;
 
   /**
    * Defines a formatted date value.
@@ -124,12 +132,6 @@ interface DateRangePickerAttributes {
 }
 
 interface DateRangePickerDomRef extends Required<DateRangePickerAttributes>, Ui5DomRef {
-  /**
-   * Closes the picker.
-   * @returns {void}
-   */
-  closePicker: () => void;
-
   /**
    * **Note:** The getter method is inherited and not supported. If called it will return an empty value.
    */
@@ -161,23 +163,11 @@ interface DateRangePickerDomRef extends Required<DateRangePickerAttributes>, Ui5
   isInValidRange: (value: string) => boolean;
 
   /**
-   * Checks if the picker is open.
-   * @returns {boolean} - true if the picker is open, false otherwise
-   */
-  isOpen: () => boolean;
-
-  /**
    * Checks if a value is valid against the current date format of the DatePicker.
    * @param {string} value - A value to be tested against the current date format
    * @returns {boolean}
    */
   isValid: (value: string) => boolean;
-
-  /**
-   * Opens the picker.
-   * @returns {Promise<void>} - Resolves when the picker is open
-   */
-  openPicker: () => Promise<void>;
 
   /**
    * Returns the start date of the currently selected range as JavaScript Date instance.
@@ -271,7 +261,7 @@ const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePick
     'value',
     'valueState'
   ],
-  ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
+  ['disabled', 'hideWeekNumbers', 'open', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'input', 'value-state-change'],
   () => import('@ui5/webcomponents/dist/DateRangePicker.js')

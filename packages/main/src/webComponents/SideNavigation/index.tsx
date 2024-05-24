@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
-import type { SideNavigationSelectionChangeEventDetail } from '@ui5/webcomponents-fiori/dist/SideNavigation.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { SideNavigationSelectionChangeEventDetail } from '@ui5/webcomponents-fiori/dist/SideNavigation.js';
+import type { ReactNode } from 'react';
 
 interface SideNavigationAttributes {
   /**

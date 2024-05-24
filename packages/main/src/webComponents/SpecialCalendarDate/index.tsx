@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SpecialCalendarDate.js';
-import type CalendarLegendItemType from '@ui5/webcomponents/dist/types/CalendarLegendItemType.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import CalendarLegendItemType from '@ui5/webcomponents/dist/types/CalendarLegendItemType.js';
 
 interface SpecialCalendarDateAttributes {
   /**

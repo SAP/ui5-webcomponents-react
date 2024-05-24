@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ColorPicker.js';
-import type { CSSProperties } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import type { CSSProperties } from 'react';
 
 interface ColorPickerAttributes {
   /**
@@ -12,7 +12,7 @@ interface ColorPickerAttributes {
    * **Note**: use HEX, RGB, RGBA, HSV formats or a CSS color name when modifying this property.
    * @default "rgba(255, 255, 255, 1)"
    */
-  color?: CSSProperties['color'];
+  value?: CSSProperties['color'];
 }
 
 interface ColorPickerDomRef extends Required<ColorPickerAttributes>, Ui5DomRef {}
@@ -46,7 +46,7 @@ interface ColorPickerPropTypes
  */
 const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(
   'ui5-color-picker',
-  ['color'],
+  ['value'],
   [],
   [],
   ['change'],

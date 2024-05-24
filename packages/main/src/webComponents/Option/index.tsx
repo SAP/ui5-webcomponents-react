@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Option.js';
-import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { ReactNode } from 'react';
 
 interface OptionAttributes {
   /**
@@ -12,14 +12,6 @@ interface OptionAttributes {
    * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
    */
   additionalText?: string;
-
-  /**
-   * Defines whether the component is in disabled state.
-   *
-   * **Note:** A disabled component is hidden.
-   * @default false
-   */
-  disabled?: boolean;
 
   /**
    * Defines the `icon` source URI.
@@ -36,6 +28,13 @@ interface OptionAttributes {
    * @default false
    */
   selected?: boolean;
+
+  /**
+   * Defines the text of the tooltip that would be displayed for the option component.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  tooltip?: string;
 
   /**
    * Defines the value of the `Select` inside an HTML Form element when this component is selected.
@@ -65,8 +64,8 @@ interface OptionPropTypes extends OptionAttributes, Omit<CommonProps, keyof Opti
  */
 const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   'ui5-option',
-  ['additionalText', 'icon', 'value'],
-  ['disabled', 'selected'],
+  ['additionalText', 'icon', 'tooltip', 'value'],
+  ['selected'],
   [],
   [],
   () => import('@ui5/webcomponents/dist/Option.js')

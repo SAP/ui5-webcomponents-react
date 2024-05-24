@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
-import type { ColorPalettePopoverItemClickEventDetail } from '@ui5/webcomponents/dist/ColorPalettePopover.js';
-import type { CSSProperties, ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import type { ColorPalettePopoverItemClickEventDetail } from '@ui5/webcomponents/dist/ColorPalettePopover.js';
+import type { CSSProperties, ReactNode } from 'react';
 
 interface ColorPalettePopoverAttributes {
   /**
@@ -59,26 +59,6 @@ interface ColorPalettePopoverDomRef extends Omit<Required<ColorPalettePopoverAtt
    * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    */
   opener: HTMLElement | string | undefined;
-
-  /**
-   * Shows the ColorPalettePopover.
-   *
-   * @deprecated The method is deprecated in favour of `open` and `opener` properties.
-   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
-   * @returns {void}
-   */
-  openPopover: (opener: HTMLElement | EventTarget) => void;
-
-  /**
-   * Shows the ColorPalettePopover.
-   *
-   * **Note:** Available since [v1.1.1](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.1) of **@ui5/webcomponents**.
-   *
-   * @deprecated The method is deprecated in favour of `open` and `opener` properties.
-   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
-   * @returns {void}
-   */
-  showAt: (opener: HTMLElement | EventTarget) => void;
 }
 
 interface ColorPalettePopoverPropTypes
