@@ -240,11 +240,10 @@ describe('UI5 Web Components - Child Commands', () => {
     const changeSpy = cy.spy().as('change');
     let callCounter = 1;
     const components = [
-      // todo: activate cb test once `getDomRef` returns correct value: https://github.com/SAP/ui5-webcomponents/issues/8841
-      // <ComboBox key="ui5-combobox">
-      //   {...new Array(5).fill(<ComboBoxItem text="Item" onSelectionChange={changeSpy}/>)}
-      //   <ComboBoxItem text={selectItemText} data-testid="selectItem" />
-      // </ComboBox>,
+      <ComboBox key="ui5-combobox" onSelectionChange={changeSpy}>
+        {...new Array(5).fill(<ComboBoxItem text="Item" />)}
+        <ComboBoxItem text={selectItemText} data-testid="selectItem" />
+      </ComboBox>,
       <MultiComboBox key="ui5-multi-combobox" onSelectionChange={changeSpy}>
         {...new Array(5).fill(<MultiComboBoxItem text="Item" />)}
         <MultiComboBoxItem text={selectItemText} data-testid="selectItem" />

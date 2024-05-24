@@ -103,9 +103,8 @@ declare global {
        */
       clickDropdownMenuItemByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
 
-      // todo: add `ui5-cb-item` once possible: https://github.com/SAP/ui5-webcomponents/issues/8841
       /**
-       * Click on a chained option of "select-like" components. Currently supported components are `ui5-option` and `ui5-mcb-item`.
+       * Click on a chained option of "select-like" components. Currently supported components are `ui5-option`, `ui5-mcb-item` and `ui5-cb-item` (since v1.24.3 of `@ui5/webcomponents`).
        *
        * __Note:__ The popover must be visible, otherwise it can lead to unwanted side effects.
        *
@@ -194,7 +193,7 @@ Cypress.Commands.add('clickDropdownMenuItemByText', { prevSubject: 'element' }, 
     // @ts-expect-error: ui5-webcomponent types are not bundled in
     const staticArea = await $dropdown.get(0).getStaticAreaItemDomRef();
     cy.wrap(staticArea).find('[ui5-responsive-popover][open]').should('be.visible');
-    // necessary as otherwise focusing the ui5-li is fuzzy
+    // necessary as otherwise focusing the ui5-li is flaky
     cy.wait(300);
     cy.wrap(staticArea)
       .contains(text)
