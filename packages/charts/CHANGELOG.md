@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.1...v1.28.2) (2024-05-24)
+
+### Bug Fixes
+
+- **charts - TypeScript:** correct `interval` type ([#5785](https://github.com/SAP/ui5-webcomponents-react/issues/5785)) ([4c7fe42](https://github.com/SAP/ui5-webcomponents-react/commit/4c7fe4294efee17d15a87e3fdc8a90edd0d731bb))
+- **charts:** correctly apply React `key` with function `accessor`s ([#5775](https://github.com/SAP/ui5-webcomponents-react/issues/5775)) ([86e568a](https://github.com/SAP/ui5-webcomponents-react/commit/86e568ac439e5916bbe7db9e61dd6b31e62733ca)), closes [#5774](https://github.com/SAP/ui5-webcomponents-react/issues/5774)
+- **deps:** update dependency recharts to v2.12.7 ([#5786](https://github.com/SAP/ui5-webcomponents-react/issues/5786)) ([47d8065](https://github.com/SAP/ui5-webcomponents-react/commit/47d8065dfb5bf7c6ed02d2c8f47dc1796db02b86))
+
 ## [1.28.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.0...v1.28.1) (2024-05-02)
 
 ### Bug Fixes

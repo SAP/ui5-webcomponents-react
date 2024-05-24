@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.1...v1.28.2) (2024-05-24)
+
+### Bug Fixes
+
+- **useStylesheet:** track stylesheets with `useSyncExternalStore` ([#5845](https://github.com/SAP/ui5-webcomponents-react/issues/5845)) ([a5c0f6d](https://github.com/SAP/ui5-webcomponents-react/commit/a5c0f6df29925eee08f584c79f93623b84c163fe))
+
 ## [1.28.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.0...v1.28.1) (2024-05-02)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base
