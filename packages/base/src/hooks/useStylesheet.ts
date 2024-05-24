@@ -2,7 +2,7 @@
 
 import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import { createOrUpdateStyle, removeStyle } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
-import { useSyncExternalStore } from 'use-sync-external-store/shim';
+import { useSyncExternalStore } from 'use-sync-external-store/shim/index.js';
 import { StyleStore } from '../stores/StyleStore.js';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect.js';
 
