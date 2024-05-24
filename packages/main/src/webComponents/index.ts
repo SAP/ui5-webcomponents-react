@@ -99,6 +99,7 @@ export * from './Title/index.js';
 export * from './Toast/index.js';
 export * from './ToggleButton/index.js';
 export * from './Token/index.js';
+export * from './Tokenizer/index.js';
 export * from './ToolbarButton/index.js';
 export * from './ToolbarSelect/index.js';
 export * from './ToolbarSelectOption/index.js';
