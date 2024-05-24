@@ -228,7 +228,7 @@ interface SelectPropTypes
  *
  * `import "@ui5/webcomponents/dist/Option";` (comes with `Select`)
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   'ui5-select',

@@ -18,6 +18,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import type { YAxisProps } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
@@ -77,7 +78,7 @@ interface MeasureConfig extends IChartMeasure {
 }
 
 interface DimensionConfig extends IChartDimension {
-  interval?: number;
+  interval?: YAxisProps['interval'];
 }
 
 export interface ComposedChartProps extends IChartBaseProps {
@@ -326,7 +327,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             axisProps.reversed = isRTL;
           }
 
-          return <AxisComponent key={dimension.accessor} {...axisProps} />;
+          return <AxisComponent key={dimension.reactKey} {...axisProps} />;
         })}
         {layout === 'horizontal' && (
           <YAxis
@@ -487,7 +488,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
           }
           return (
             <ChartElement
-              key={element.accessor}
+              key={element.reactKey}
               name={element.label ?? element.accessor}
               label={
                 element.type === 'bar' || isBigDataSet ? undefined : (

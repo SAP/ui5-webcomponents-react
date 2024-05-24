@@ -8,14 +8,15 @@ const dimensions = [
     interval: 0
   }
 ];
+
 const measures = [
   {
-    accessor: 'users',
+    accessor: (data) => data.users,
     label: 'Users',
     formatter: (val: number) => val.toLocaleString('en')
   },
   {
-    accessor: 'sessions',
+    accessor: (data) => data.sessions,
     label: 'Active Sessions',
     formatter: (val) => `${val} sessions`,
     hideDataLabel: true
@@ -66,7 +67,16 @@ describe('BarChart', () => {
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          dataKey: 'users'
+          value: 'Users'
+        })
+      })
+    );
+    cy.contains('Vol.').click();
+    cy.get('@onLegendClick').should(
+      'have.been.calledWith',
+      Cypress.sinon.match({
+        detail: Cypress.sinon.match({
+          dataKey: 'volume'
         })
       })
     );

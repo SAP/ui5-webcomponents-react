@@ -25,8 +25,4 @@ packages/cypress-commands/api.json
 packages/main/scripts/wrapperGeneration/json
 packages/main/tmp
 
-examples/seed-test
-
-scripts/web-component-wrappers/interfaces.json
-
 .nx/cache

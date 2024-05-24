@@ -233,7 +233,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         if (!isValidElement(item)) {
           return false;
         }
-        return item?.props?.visible && item.props?.visibleInFilterBar;
+        return (typeof item.props.visible === 'undefined' || item?.props?.visible) && item.props?.visibleInFilterBar;
       })
       .map((child) => {
         const key = child.key as ReactKeyWithoutBigInt;

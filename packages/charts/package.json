@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "1.28.0",
+  "version": "1.28.1",
   "description": "Charts for ui5-webcomponents-react",
   "type": "module",
   "main": "dist/index.js",
@@ -35,7 +35,7 @@
   "dependencies": {
     "clsx": "2.1.1",
     "react-content-loader": "7.0.0",
-    "recharts": "2.12.6"
+    "recharts": "2.12.7"
   },
   "peerDependencies": {
     "@ui5/webcomponents-react": "~1.28.0",

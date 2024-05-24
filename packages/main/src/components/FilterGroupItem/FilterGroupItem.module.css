@@ -81,3 +81,11 @@
 .reorderBtnsContainer {
   display: var(--_ui5wcr-ReorderBtnsDisplay);
 }
+
+.pseudoInvisibleText {
+  font-size: 0;
+  position: absolute;
+  user-select: none;
+  left: 0;
+  top: 0;
+}

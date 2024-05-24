@@ -27,12 +27,14 @@ describe('useLabelFormatter', () => {
     cy.get('@result').should('have.been.calledWith', {
       dimensions: [
         {
-          accessor: 'a'
+          accessor: 'a',
+          reactKey: 'a'
         }
       ],
       measures: [
         {
-          accessor: 'b'
+          accessor: 'b',
+          reactKey: 'b'
         }
       ]
     });
@@ -52,13 +54,15 @@ describe('useLabelFormatter', () => {
       dimensions: [
         {
           accessor: 'a',
-          dimensionDefault: true
+          dimensionDefault: true,
+          reactKey: 'a'
         }
       ],
       measures: [
         {
           accessor: 'b',
-          measureDefault: true
+          measureDefault: true,
+          reactKey: 'b'
         }
       ]
     });
@@ -81,13 +85,15 @@ describe('useLabelFormatter', () => {
       dimensions: [
         {
           accessor: 'a',
-          dimensionDefault: true
+          dimensionDefault: true,
+          reactKey: 'a'
         }
       ],
       measures: [
         {
           accessor: 'b',
-          measureDefault: true
+          measureDefault: true,
+          reactKey: 'b'
         }
       ]
     });
