@@ -7,7 +7,11 @@ import { StyleStore } from '../stores/StyleStore.js';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect.js';
 
 export function useStylesheet(styles: StyleDataCSP, componentName: string) {
-  const { staticCssInjected, componentsMap } = useSyncExternalStore(StyleStore.subscribe, StyleStore.getSnapshot);
+  const { staticCssInjected, componentsMap } = useSyncExternalStore(
+    StyleStore.subscribe,
+    StyleStore.getSnapshot,
+    StyleStore.getServerSnapshot
+  );
 
   useIsomorphicLayoutEffect(() => {
     const shouldInject = !staticCssInjected;
