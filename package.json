@@ -49,15 +49,15 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
-    "@babel/core": "7.24.5",
-    "@babel/preset-env": "7.24.5",
-    "@babel/preset-react": "7.24.1",
-    "@babel/preset-typescript": "7.24.1",
+    "@babel/core": "7.24.6",
+    "@babel/preset-env": "7.24.6",
+    "@babel/preset-react": "7.24.6",
+    "@babel/preset-typescript": "7.24.6",
     "@cypress/code-coverage": "^3.10.0",
     "@semantic-release/github": "^10.0.0",
     "@testing-library/cypress": "^10.0.0",
     "@types/node": "^20.0.0",
-    "@types/react": "18.3.2",
+    "@types/react": "18.3.3",
     "@types/react-dom": "^18.2.22",
     "@types/use-sync-external-store": "^0.0.6",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
@@ -108,7 +108,7 @@
     ]
   },
   "resolutions": {
-    "@types/react": "18.3.2",
+    "@types/react": "18.3.3",
     "tocbot": "4.28.2"
   },
   "type": "module",
