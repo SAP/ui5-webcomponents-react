@@ -38,6 +38,9 @@ function subscribe(listener: () => void) {
 export const StyleStore = {
   subscribe,
   getSnapshot,
+  getServerSnapshot: () => {
+    return initialStore;
+  },
   setStaticCssInjected: (staticCssInjected: boolean) => {
     const curr = getSnapshot();
     globalThis[STORE_SYMBOL] = {
