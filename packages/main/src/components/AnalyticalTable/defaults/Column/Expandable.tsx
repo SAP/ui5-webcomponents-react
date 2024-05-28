@@ -1,9 +1,9 @@
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import { CssSizeVariables, useCurrentTheme, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React from 'react';
-import { ButtonDesign } from '../../../../enums/index.js';
 import { Button, Icon } from '../../../../webComponents/index.js';
 import { classNames, styleData } from './Expandable.module.css.js';
 

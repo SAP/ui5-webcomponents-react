@@ -1,6 +1,7 @@
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type { CSSProperties } from 'react';
 import { useEffect, useReducer, useRef, useState } from 'react';
 import type { ObjectPagePropTypes } from '../..';
@@ -10,7 +11,6 @@ import {
   Breadcrumbs,
   BreadcrumbsItem,
   Button,
-  ButtonDesign,
   DynamicPageHeader,
   DynamicPageTitle,
   FlexBox,

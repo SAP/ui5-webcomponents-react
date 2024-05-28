@@ -1,8 +1,8 @@
 import { Description, DocsContext, Subtitle, Title } from '@storybook/addon-docs';
 import copyIcon from '@ui5/webcomponents-icons/dist/copy';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import {
   Button,
-  ButtonDesign,
   FlexBox,
   FlexBoxAlignItems,
   Label,

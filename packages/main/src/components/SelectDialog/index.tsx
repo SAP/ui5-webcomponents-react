@@ -1,12 +1,13 @@
 'use client';
 
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
 import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import React, { forwardRef, useState } from 'react';
-import { ButtonDesign, ListMode, ToolbarDesign } from '../../enums/index.js';
+import { ListMode, ToolbarDesign } from '../../enums/index.js';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
 import type {

@@ -2,6 +2,7 @@ import { ProductsTable } from '@sb/components/ProductsTable';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import actionIcon from '@ui5/webcomponents-icons/dist/action.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import exitFSIcon from '@ui5/webcomponents-icons/dist/exit-full-screen.js';
@@ -15,7 +16,6 @@ import {
   BreadcrumbsItem,
   BusyIndicator,
   Button,
-  ButtonDesign,
   DynamicPageHeader,
   DynamicPageTitle,
   FlexBox,

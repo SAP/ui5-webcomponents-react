@@ -1,3 +1,4 @@
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
@@ -16,7 +17,7 @@ import {
   OverflowToolbarToggleButton,
   PopupAccessibleRole
 } from '../..';
-import { ButtonDesign, ToolbarDesign } from '../../enums/index.js';
+import { ToolbarDesign } from '../../enums/index.js';
 import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 interface PropTypes {

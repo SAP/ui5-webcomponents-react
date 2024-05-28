@@ -1,6 +1,5 @@
 import {
   Button,
-  ButtonDesign,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxJustifyContent,
@@ -11,6 +10,7 @@ import {
   PopoverPlacementType,
   WrappingType
 } from '@ui5/webcomponents-react';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';

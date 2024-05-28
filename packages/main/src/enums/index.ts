@@ -9,8 +9,6 @@ export * from './AnalyticalTableSubComponentsBehavior.js';
 export * from './AnalyticalTableVisibleRowCountMode.js';
 export * from './BackgroundDesign.js';
 export * from './BorderDesign.js';
-export * from './ButtonDesign.js';
-export * from './ButtonType.js';
 export * from './CalendarLegendItemType.js';
 export * from './CalendarSelection.js';
 export * from './CalendarSelectionMode.js';

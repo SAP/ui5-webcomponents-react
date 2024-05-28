@@ -1,13 +1,13 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Button.js';
+import type { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
+import type ButtonAccessibleRole from '@ui5/webcomponents/dist/types/ButtonAccessibleRole.js';
+import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
+import type { MouseEventHandler, ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
-import type { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
-import ButtonAccessibleRole from '@ui5/webcomponents/dist/types/ButtonAccessibleRole.js';
-import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
-import type { MouseEventHandler, ReactNode } from 'react';
 
 interface ButtonAttributes {
   /**

@@ -1,9 +1,10 @@
 import { generateMessageItems } from '@sb/mockData/generateMessageItems';
 import type { Meta, StoryObj } from '@storybook/react';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import arrowLeftIcon from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import { forwardRef, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ButtonDesign, FlexBoxAlignItems, FlexBoxJustifyContent, TitleLevel, ValueState } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxJustifyContent, TitleLevel, ValueState } from '../../enums/index.js';
 import type {
   DialogDomRef,
   DialogPropTypes,

@@ -21,6 +21,8 @@ You can then create a form with UI5 Web Components for React as follows. Also, y
     <summary>Show code</summary>
 
 ```jsx
+// For the submits property of the button to have effect, you must add the following import
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import React, { useState } from 'react';
 import {
   ThemeProvider,
@@ -33,14 +35,12 @@ import {
   CheckBox,
   InputType,
   Button,
-  ButtonType,
   MultiComboBox,
   MultiComboBoxItem,
   DatePicker,
   Label
 } from '@ui5/webcomponents-react';
-//For the submits property of the button to have effect, you must add the following import
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+import ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
 
 export default function RegisterForm() {
   const [email, setEmail] = useState('');
@@ -161,7 +161,6 @@ import {
   Button,
   MultiComboBox,
   DatePicker,
-  ButtonType,
   CheckBox,
   ValueState,
   InputType,
@@ -170,6 +169,7 @@ import {
   MultiComboBoxItem,
   ObjectStatus
 } from '@ui5/webcomponents-react';
+import ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
 import { useForm, useController } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';

@@ -17,5 +17,6 @@
       "separatorStyle": "separators"
     }
   },
-  "BusyIndicator": {}
+  "BusyIndicator": {},
+  "Button": {}
 }

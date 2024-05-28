@@ -1,3 +1,5 @@
+import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+import ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
 import React, { useState } from 'react';
 import {
   ThemeProvider,
@@ -9,13 +11,11 @@ import {
   Select,
   InputType,
   Button,
-  ButtonType,
   MultiComboBox,
   MultiComboBoxItem,
   DatePicker,
   Label
 } from '@ui5/webcomponents-react';
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 
 export function RegisterForm() {
   const [email, setEmail] = useState('');

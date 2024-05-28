@@ -1,6 +1,7 @@
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { useState } from 'react';
 import type { ListPropTypes, SelectDialogPropTypes } from '../..';
-import { Button, ButtonDesign, ListMode, SelectDialog, StandardListItem } from '../..';
+import { Button, ListMode, SelectDialog, StandardListItem } from '../..';
 
 const listItems = new Array(5).fill('o_O').map((_, index) => (
   <StandardListItem key={index} data-li={index} description={`description${index}`}>

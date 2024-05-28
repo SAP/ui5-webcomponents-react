@@ -1,18 +1,12 @@
 'use client';
 
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import React, { cloneElement, forwardRef, isValidElement } from 'react';
-import {
-  ButtonDesign,
-  MessageBoxActions,
-  MessageBoxTypes,
-  PopupAccessibleRole,
-  TitleLevel,
-  ValueState
-} from '../../enums/index.js';
+import { MessageBoxActions, MessageBoxTypes, PopupAccessibleRole, TitleLevel, ValueState } from '../../enums/index.js';
 import {
   ABORT,
   CANCEL,

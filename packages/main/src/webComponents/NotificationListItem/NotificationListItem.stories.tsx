@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
 import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
-import { ButtonDesign, Priority, WrappingType } from '../../enums/index.js';
+import { Priority, WrappingType } from '../../enums/index.js';
 import { Avatar } from '../Avatar';
 import { Label } from '../Label';
 import { List } from '../List';

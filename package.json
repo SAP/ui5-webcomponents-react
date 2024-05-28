@@ -108,7 +108,7 @@
     ],
     "*.{js,jsx,cjs,mjs,ts,tsx}": [
       "prettier --write",
-      "eslint"
+      "eslint --quiet"
     ]
   },
   "resolutions": {
