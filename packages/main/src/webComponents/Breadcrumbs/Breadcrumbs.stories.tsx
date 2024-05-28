@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BreadcrumbsDesign, BreadcrumbsSeparatorStyle } from '../../enums/index.js';
+import BreadcrumbsDesign from '@ui5/webcomponents/dist/types/BreadcrumbsDesign.js';
+import BreadcrumbsSeparatorStyle from '@ui5/webcomponents/dist/types/BreadcrumbsSeparator.js';
 import { BreadcrumbsItem } from '../BreadcrumbsItem/index.js';
 import { Breadcrumbs } from './index.js';
 
@@ -11,7 +12,7 @@ const meta = {
   },
   args: {
     design: BreadcrumbsDesign.Standard,
-    separatorStyle: BreadcrumbsSeparatorStyle.Slash
+    separators: BreadcrumbsSeparatorStyle.Slash
   },
   tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Breadcrumbs>;

@@ -9,8 +9,6 @@ export * from './AnalyticalTableSubComponentsBehavior.js';
 export * from './AnalyticalTableVisibleRowCountMode.js';
 export * from './BackgroundDesign.js';
 export * from './BorderDesign.js';
-export * from './BreadcrumbsDesign.js';
-export * from './BreadcrumbsSeparatorStyle.js';
 export * from './BusyIndicatorSize.js';
 export * from './BusyIndicatorTextPlacement.js';
 export * from './ButtonDesign.js';
