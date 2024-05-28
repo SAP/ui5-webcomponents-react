@@ -27,6 +27,18 @@
     }
   },
   "enums": {
+    "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
+    "AvatarGroupType": "@ui5/webcomponents/dist/types/AvatarGroupType.js",
+    "AvatarShape": "@ui5/webcomponents/dist/types/AvatarShape.js",
+    "AvatarSize": "@ui5/webcomponents/dist/types/AvatarSize.js",
+    "BadgeDesign": "@ui5/webcomponents/dist/types/TagDesign.js",
+    "BarDesign": "@ui5/webcomponents/dist/types/BarDesign.js",
+    "BreadcrumbsDesign": "@ui5/webcomponents/dist/types/BreadcrumbsDesign.js",
+    "BreadcrumbsSeparatorStyle": "@ui5/webcomponents/dist/types/BreadcrumbsSeparator.js",
+    "BusyIndicatorSize": "@ui5/webcomponents/dist/types/BusyIndicatorSize.js",
+    "BusyIndicatorTextPlacement": "@ui5/webcomponents/dist/types/BusyIndicatorTextPlacement.js",
+    "ButtonDesign": "@ui5/webcomponents/dist/types/ButtonDesign.js",
+    "ButtonType": "@ui5/webcomponents/dist/types/ButtonType.js",
     "CalendarLegendItemType": "@ui5/webcomponents/dist/types/CalendarLegendItemType.js",
     "CalendarSelection": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
     "CalendarSelectionMode": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
