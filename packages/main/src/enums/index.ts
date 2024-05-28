@@ -9,7 +9,6 @@ export * from './AnalyticalTableSubComponentsBehavior.js';
 export * from './AnalyticalTableVisibleRowCountMode.js';
 export * from './BackgroundDesign.js';
 export * from './BorderDesign.js';
-export * from './CalendarLegendItemType.js';
 export * from './CarouselArrowsPlacement.js';
 export * from './CarouselPageIndicatorStyle.js';
 export * from './ComboBoxFilter.js';
