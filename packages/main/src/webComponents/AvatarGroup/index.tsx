@@ -1,16 +1,16 @@
 'use client';
 
 import '@ui5/webcomponents/dist/AvatarGroup.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 import type {
   AvatarGroupAccessibilityAttributes,
   AvatarGroupClickEventDetail,
   IAvatarGroupItem
 } from '@ui5/webcomponents/dist/AvatarGroup.js';
-import AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
-import AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
+import type AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
+import type AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
 import type { ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface AvatarGroupAttributes {
   /**

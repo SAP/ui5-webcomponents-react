@@ -7,7 +7,6 @@ export * from './AnalyticalTableSelectionBehavior.js';
 export * from './AnalyticalTableSelectionMode.js';
 export * from './AnalyticalTableSubComponentsBehavior.js';
 export * from './AnalyticalTableVisibleRowCountMode.js';
-export * from './AvatarGroupType.js';
 export * from './BackgroundDesign.js';
 export * from './BarDesign.js';
 export * from './BorderDesign.js';
