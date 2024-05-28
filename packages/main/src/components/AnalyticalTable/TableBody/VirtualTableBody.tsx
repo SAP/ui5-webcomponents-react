@@ -1,8 +1,7 @@
 import type { Virtualizer } from '@tanstack/react-virtual';
-import { useVirtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
 import type { MutableRefObject, ReactNode } from 'react';
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { AnalyticalTableSubComponentsBehavior } from '../../../enums/index.js';
 import type {
   AnalyticalTablePropTypes,
@@ -18,15 +17,10 @@ interface VirtualTableBodyProps {
   classes: Record<string, string>;
   prepareRow: (row: unknown) => void;
   rows: Record<string, any>[];
-  itemCount: number;
-  scrollToRef: MutableRefObject<ScrollToRefType>;
   isTreeTable: boolean;
   internalRowHeight: number;
-  visibleRows: number;
   alternateRowColor: boolean;
-  overscanCount: number;
   visibleColumns: Record<string, unknown>[];
-  parentRef: MutableRefObject<HTMLDivElement>;
   renderRowSubComponent: (row?: Record<string, unknown>) => ReactNode;
   popInRowHeight: number;
   isRtl: boolean;
@@ -40,11 +34,9 @@ interface VirtualTableBodyProps {
   scrollContainerRef?: MutableRefObject<HTMLDivElement>;
   subComponentsBehavior: AnalyticalTablePropTypes['subComponentsBehavior'];
   triggerScroll?: TriggerScrollState;
+  scrollToRef: MutableRefObject<ScrollToRefType>;
+  rowVirtualizer: Virtualizer<DivWithCustomScrollProp, HTMLElement>;
 }
-
-const measureElement = (el: HTMLElement) => {
-  return el.offsetHeight;
-};
 
 export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   const {
@@ -52,14 +44,10 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     classes,
     prepareRow,
     rows,
-    itemCount,
     scrollToRef,
     isTreeTable,
     internalRowHeight,
-    visibleRows,
-    overscanCount,
     visibleColumns,
-    parentRef,
     renderRowSubComponent,
     popInRowHeight,
     markNavigatedRow,
@@ -72,33 +60,13 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     subRowsKey,
     scrollContainerRef,
     subComponentsBehavior,
-    triggerScroll
+    triggerScroll,
+    rowVirtualizer
   } = props;
 
-  const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
   const rowHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
   const lastNonEmptyRow = useRef(null);
 
-  const rowVirtualizer = useVirtualizer({
-    count: itemCount,
-    getScrollElement: () => parentRef.current,
-    estimateSize: useCallback(
-      (index) => {
-        if (
-          renderRowSubComponent &&
-          (rows[index]?.isExpanded || alwaysShowSubComponent) &&
-          subComponentsHeight?.[index]?.rowId === rows[index]?.id
-        ) {
-          return rowHeight + (subComponentsHeight?.[index]?.subComponentHeight ?? 0);
-        }
-        return rowHeight;
-      },
-      [rowHeight, rows, renderRowSubComponent, alwaysShowSubComponent, subComponentsHeight]
-    ),
-    overscan,
-    measureElement,
-    indexAttribute: 'data-virtual-row-index'
-  });
   scrollToRef.current = {
     ...scrollToRef.current,
     scrollToOffset: rowVirtualizer.scrollToOffset,
