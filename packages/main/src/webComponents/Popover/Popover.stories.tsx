@@ -1,10 +1,10 @@
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import { clsx } from 'clsx';
 import { forwardRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { BarDesign } from '../../enums/BarDesign';
 import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
 import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
 import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';

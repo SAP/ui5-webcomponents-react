@@ -8,7 +8,6 @@ export * from './AnalyticalTableSelectionMode.js';
 export * from './AnalyticalTableSubComponentsBehavior.js';
 export * from './AnalyticalTableVisibleRowCountMode.js';
 export * from './BackgroundDesign.js';
-export * from './BarDesign.js';
 export * from './BorderDesign.js';
 export * from './BreadcrumbsDesign.js';
 export * from './BreadcrumbsSeparatorStyle.js';

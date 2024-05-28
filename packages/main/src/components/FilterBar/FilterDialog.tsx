@@ -1,3 +1,4 @@
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
@@ -6,7 +7,6 @@ import type { Dispatch, MutableRefObject, ReactElement, SetStateAction } from 'r
 import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
-  BarDesign,
   ButtonDesign,
   FlexBoxDirection,
   FlexBoxJustifyContent,

@@ -1,7 +1,7 @@
 import { GitHubLogo } from '@sb/components/GitHub-Mark';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';
-import { BarDesign } from '../../enums/BarDesign';
 import { ButtonDesign } from '../../enums/ButtonDesign';
 import { Button } from '../Button';
 import { Input } from '../Input';

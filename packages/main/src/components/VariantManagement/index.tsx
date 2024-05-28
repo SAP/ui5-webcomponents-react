@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
@@ -18,7 +19,6 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import {
-  BarDesign,
   ButtonDesign,
   IllustrationMessageType,
   ListMode,

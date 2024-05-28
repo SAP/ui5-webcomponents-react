@@ -1,6 +1,7 @@
 import { ProductsTable } from '@sb/components/ProductsTable';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import actionIcon from '@ui5/webcomponents-icons/dist/action.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import exitFSIcon from '@ui5/webcomponents-icons/dist/exit-full-screen.js';
@@ -10,7 +11,6 @@ import navDownArrowIcon from '@ui5/webcomponents-icons/dist/navigation-down-arro
 import { useReducer, useState } from 'react';
 import {
   Bar,
-  BarDesign,
   Breadcrumbs,
   BreadcrumbsItem,
   BusyIndicator,
@@ -34,7 +34,6 @@ import {
   VariantManagement
 } from '../..';
 import { DynamicPage } from './index.js';
-import React from 'react';
 
 const meta = {
   title: 'Layouts & Floorplans / DynamicPage',

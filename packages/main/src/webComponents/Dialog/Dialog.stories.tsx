@@ -1,10 +1,10 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
 import { clsx } from 'clsx';
 import { forwardRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { BarDesign } from '../../enums';
 import type { DialogDomRef, DialogPropTypes } from '../index.js';
 import { Bar, Button, Icon, List, StandardListItem, Title } from '../index.js';
 import { Dialog as OriginalDialog } from './index';

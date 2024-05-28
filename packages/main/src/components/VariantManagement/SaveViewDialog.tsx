@@ -1,8 +1,9 @@
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
+import { ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,

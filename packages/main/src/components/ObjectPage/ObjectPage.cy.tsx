@@ -1,12 +1,12 @@
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import type { CSSProperties } from 'react';
 import { useEffect, useReducer, useRef, useState } from 'react';
 import type { ObjectPagePropTypes } from '../..';
 import {
   Avatar,
   Bar,
-  BarDesign,
   Breadcrumbs,
   BreadcrumbsItem,
   Button,

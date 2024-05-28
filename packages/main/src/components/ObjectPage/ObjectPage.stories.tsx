@@ -1,10 +1,10 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import SampleImage from '@sb/demoImages/Person.png';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
 import {
   Bar,
-  BarDesign,
   Breadcrumbs,
   BreadcrumbsItem,
   Button,

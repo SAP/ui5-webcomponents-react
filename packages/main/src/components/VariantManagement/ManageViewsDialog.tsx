@@ -1,9 +1,10 @@
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactNode } from 'react';
 import React, { Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
+import { ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,
