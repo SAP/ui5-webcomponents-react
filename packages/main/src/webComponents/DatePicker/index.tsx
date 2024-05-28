@@ -1,15 +1,15 @@
 'use client';
 
 import '@ui5/webcomponents/dist/DatePicker.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
-import CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
-import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type {
   DatePickerChangeEventDetail,
   DatePickerInputEventDetail,
   DatePickerValueStateChangeEventDetail
 } from '@ui5/webcomponents/dist/DatePicker.js';
+import type CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface DatePickerAttributes {
   /**
@@ -91,7 +91,7 @@ interface DatePickerAttributes {
    * If not set, the calendar type of the global configuration is used.
    * @default undefined
    */
-  primaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType | undefined;
+  primaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
 
   /**
    * Determines whether the component is displayed as read-only.
@@ -110,7 +110,7 @@ interface DatePickerAttributes {
    * If not set, the calendar will only show the primary calendar type.
    * @default undefined
    */
-  secondaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType | undefined;
+  secondaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
 
   /**
    * Defines a formatted date value.

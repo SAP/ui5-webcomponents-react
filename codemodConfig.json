@@ -1,22 +1,35 @@
 {
-  "DONOTUSE_TEMPLATE": {
-    "newComponent": "",
-    "changedProps": {
-      "oldName": "newName"
+  "components": {
+    "DONOTUSE_TEMPLATE": {
+      "newComponent": "",
+      "changedProps": {
+        "oldName": "newName"
+      },
+      "removedProps": ["propName"]
     },
-    "removedProps": ["propName"]
-  },
-  "Avatar": {},
-  "Badge": {
-    "newComponent": "Tag"
-  },
-  "Bar": {},
-  "BarcodeScannerDialog": {},
-  "Breadcrumbs": {
-    "changedProps": {
-      "separatorStyle": "separators"
+    "Avatar": {},
+    "Badge": {
+      "newComponent": "Tag"
+    },
+    "Bar": {},
+    "BarcodeScannerDialog": {},
+    "Breadcrumbs": {
+      "changedProps": {
+        "separatorStyle": "separators"
+      }
+    },
+    "BusyIndicator": {},
+    "Button": {},
+    "Calendar": {
+      "changedProps": {
+        "onSelectedDatesChange": "onSelectionChange"
+      }
     }
   },
-  "BusyIndicator": {},
-  "Button": {}
+  "enums": {
+    "CalendarLegendItemType": "@ui5/webcomponents/dist/types/CalendarLegendItemType.js",
+    "CalendarSelection": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
+    "CalendarSelectionMode": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
+    "CalendarType": "@ui5/webcomponents-base/dist/types/CalendarType.js"
+  }
 }
