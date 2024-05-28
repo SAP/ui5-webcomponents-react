@@ -1,5 +1,6 @@
 'use client';
 
+import BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
 import { isMac as isMacFn } from '@ui5/webcomponents-base/dist/Device.js';
 import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
 import moveToTopIcon from '@ui5/webcomponents-icons/dist/collapse-group.js';
@@ -9,13 +10,7 @@ import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import React, { forwardRef, useContext, useEffect, useRef, useState } from 'react';
-import {
-  BusyIndicatorSize,
-  ButtonDesign,
-  FlexBoxAlignItems,
-  FlexBoxDirection,
-  FlexBoxJustifyContent
-} from '../../enums/index.js';
+import { ButtonDesign, FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import {
   DOWN_ARROW,
   FILTER_DIALOG_REORDER_FILTERS,
@@ -251,7 +246,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
             </Label>
           </FlexBox>
           {loading ? (
-            <BusyIndicator className={classNames.loadingContainer} active size={BusyIndicatorSize.Small} />
+            <BusyIndicator className={classNames.loadingContainer} active size={BusyIndicatorSize.S} />
           ) : (
             children
           )}

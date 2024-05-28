@@ -1,0 +1,21 @@
+{
+  "DONOTUSE_TEMPLATE": {
+    "newComponent": "",
+    "changedProps": {
+      "oldName": "newName"
+    },
+    "removedProps": ["propName"]
+  },
+  "Avatar": {},
+  "Badge": {
+    "newComponent": "Tag"
+  },
+  "Bar": {},
+  "BarcodeScannerDialog": {},
+  "Breadcrumbs": {
+    "changedProps": {
+      "separatorStyle": "separators"
+    }
+  },
+  "BusyIndicator": {}
+}
