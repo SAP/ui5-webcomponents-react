@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 import type {
   BarcodeScannerDialogScanErrorEventDetail,
   BarcodeScannerDialogScanSuccessEventDetail
 } from '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface BarcodeScannerDialogAttributes {
   /**
