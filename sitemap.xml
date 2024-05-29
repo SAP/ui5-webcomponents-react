@@ -2,510 +2,510 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/getting-started--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/project-templates-examples--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/change-log--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/migration-guide--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-faq--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-form-handling--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-ids-via-dataset--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-internationalization--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-public-utils--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-server-side-rendering--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-styling--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-testing-with-jest--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/testing-with-cypress-setup--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/testing-with-cypress-commands--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/testing-with-cypress-queries--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-barchart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-bulletchart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-columnchart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-columnchartwithtrend--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-composedchart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-donutchart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-linechart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-microbarchart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-piechart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-radarchart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-radialchart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-scatterchart--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-timelinechart-experimental--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticalcard--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-plugin-hooks--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-plugin-hooks-useannounceemptycells--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-plugin-hooks-useindeterminaterowselection--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-plugin-hooks-usemanualrowselect--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-plugin-hooks-useoncolumnresize--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-plugin-hooks-useorderedmultisort--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-plugin-hooks-userowdisableselection--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-recipes--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-avatar--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-avatargroup--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-badge--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-card--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-colorpalette--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-expandabletext--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-icon--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-label--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-link--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-list--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-messagestrip--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-notificationlistgroupitem--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-notificationlistitem--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-objectstatus--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-progressindicator--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-table--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-text--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-timeline--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-title--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-tree--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-barcodescannerdialog--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-button--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-calendar--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-checkbox--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-colorpicker--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-combobox--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-datepicker--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-daterangepicker--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-datetimepicker--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-fileuploader--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-input--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-messageviewbutton--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-multicombobox--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-multiinput--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-productswitch--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-radiobutton--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-rangeslider--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-ratingindicator--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-segmentedbutton--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-select--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-slider--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-splitbutton--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-stepinput--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-switch--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-textarea--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-timepicker--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-togglebutton--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-uploadcollection--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/inputs-variantmanagement--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-bar--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-breadcrumbs--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-carousel--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-dynamicpage--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-dynamicsidecontent--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-filterbar--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-flexbox--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-flexiblecolumnlayout--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-form--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-grid--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-mediagallery--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-objectpage--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-page--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-panel--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-responsivegridlayout--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-shellbar--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-sidenavigation--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-splitterlayout--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-tabcontainer--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-toolbar--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-toolbarv2--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/layouts-floorplans-wizard--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/modals-popovers-actionsheet--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/modals-popovers-colorpalettepopover--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/modals-popovers-dialog--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/modals-popovers-menu--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/modals-popovers-messagebox--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/modals-popovers-popover--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/modals-popovers-responsivepopover--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/modals-popovers-selectdialog--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/modals-popovers-toast--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/modals-popovers-viewsettingsdialog--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-busyindicator--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-illustratedmessage--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-loader--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-messageview--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
     <url>
         <loc>https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-modals--docs</loc>
-        <lastmod>2024-05-24</lastmod>
+        <lastmod>2024-05-29</lastmod>
     </url>
 </urlset>
