@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.0...v1.29.1) (2024-05-29)
+
+### Bug Fixes
+
+- **charts:** fix peer dependencies ([#5870](https://github.com/SAP/ui5-webcomponents-react/issues/5870)) ([10e2212](https://github.com/SAP/ui5-webcomponents-react/commit/10e22129b84eba4b84cf42eb3bd03f0614bdc280))
+
 # [1.29.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.4...v1.29.0) (2024-05-29)
 
 ### Bug Fixes
