@@ -27,7 +27,13 @@
     },
     "CalendarDate": {},
     "CalendarLegend": {},
-    "CalendarLegendItem": {}
+    "CalendarLegendItem": {},
+    "Card": {},
+    "CardHeader": {
+      "changedProps": {
+        "status": "additionalText"
+      }
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
