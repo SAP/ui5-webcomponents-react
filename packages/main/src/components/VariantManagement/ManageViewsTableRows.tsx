@@ -1,10 +1,10 @@
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import unfavoriteIcon from '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import React, { useReducer, useRef, useState } from 'react';
-import { ValueState } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   DELETE_VIEW,
@@ -157,7 +157,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         {...props.manageViewsInputProps}
         valueStateMessage={props.manageViewsInputProps?.valueStateMessage ?? <div>{variantNameInvalid}</div>}
         valueState={
-          props.manageViewsInputProps?.valueState ?? (!variantNameInvalid ? ValueState.None : ValueState.Error)
+          props.manageViewsInputProps?.valueState ?? (!variantNameInvalid ? ValueState.None : ValueState.Negative)
         }
         value={children}
         onInput={handleVariantInput}

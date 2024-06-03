@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import { FlexBox } from '../../components/FlexBox/index.js';
-import { FlexBoxDirection, FlexBoxJustifyContent, ValueState } from '../../enums/index.js';
+import { FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import { ComboBoxItem } from '../ComboBoxItem/index.js';
 import { Icon } from '../Icon/index.js';
 import { Label } from '../Label/index.js';

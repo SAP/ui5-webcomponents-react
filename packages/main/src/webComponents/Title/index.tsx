@@ -1,11 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Title.js';
+import type TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
-import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
-import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
-import type { ReactNode } from 'react';
 
 interface TitleAttributes {
   /**

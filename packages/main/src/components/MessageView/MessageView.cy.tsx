@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { ValueState } from '../../enums/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { MessageItem } from './MessageItem';
 import { MessageView } from './index.js';
 
@@ -16,13 +16,13 @@ describe('MessageView', () => {
     [undefined, true].forEach((grouped) => {
       cy.mount(
         <MessageView groupItems={grouped}>
-          <MessageItem titleText="Error" type={ValueState.Error} groupName="Group1">
+          <MessageItem titleText="Error" type={ValueState.Negative} groupName="Group1">
             Error
           </MessageItem>
-          <MessageItem titleText="Warning" type={ValueState.Warning} groupName="Group1">
+          <MessageItem titleText="Warning" type={ValueState.Critical} groupName="Group1">
             Warning
           </MessageItem>
-          <MessageItem titleText="Success" type={ValueState.Success}>
+          <MessageItem titleText="Success" type={ValueState.Positive}>
             Success
           </MessageItem>
           <MessageItem titleText="Information" type={ValueState.Information}>
@@ -86,13 +86,13 @@ describe('MessageView', () => {
             nav back
           </button>
           <MessageView onItemSelect={select} ref={ref} showDetailsPageHeader>
-            <MessageItem titleText="Error" type={ValueState.Error} groupName="Group1">
+            <MessageItem titleText="Error" type={ValueState.Negative} groupName="Group1">
               Error Message
             </MessageItem>
-            <MessageItem titleText="Warning" type={ValueState.Warning} groupName="Group1">
+            <MessageItem titleText="Warning" type={ValueState.Critical} groupName="Group1">
               Warning
             </MessageItem>
-            <MessageItem titleText="Success" type={ValueState.Success}>
+            <MessageItem titleText="Success" type={ValueState.Positive}>
               Success
             </MessageItem>
             <MessageItem titleText="Information" type={ValueState.Information}>
@@ -125,14 +125,14 @@ describe('MessageView', () => {
   it('one/no message-type/item', () => {
     [
       undefined,
-      <MessageItem titleText="Error" type={ValueState.Error} key={0}>
+      <MessageItem titleText="Error" type={ValueState.Negative} key={0}>
         Error
       </MessageItem>,
       <>
-        <MessageItem titleText="Error" type={ValueState.Error} key={1}>
+        <MessageItem titleText="Error" type={ValueState.Negative} key={1}>
           Error
         </MessageItem>
-        <MessageItem titleText="Error" type={ValueState.Error} key={2}>
+        <MessageItem titleText="Error" type={ValueState.Negative} key={2}>
           Error
         </MessageItem>
       </>
@@ -150,7 +150,7 @@ describe('MessageView', () => {
           titleText="TitleText"
           subtitleText="SubtitleText"
           counter={1337}
-          type={ValueState.Error}
+          type={ValueState.Negative}
           groupName="Group1"
         >
           Message

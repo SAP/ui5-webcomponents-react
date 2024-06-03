@@ -42,7 +42,8 @@
         "itemsPerPageL": "itemsPerPage",
         "pageIndicatorStyle": "pageIndicatorType"
       }
-    }
+    },
+    "CheckBox": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -61,6 +62,16 @@
     "CalendarSelection": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
     "CalendarSelectionMode": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
     "CalendarType": "@ui5/webcomponents-base/dist/types/CalendarType.js",
-    "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js"
+    "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js",
+
+    "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
+    "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
+  },
+  "enumProperties": {
+    "ValueState": {
+      "Success": "Positive",
+      "Warning": "Critical",
+      "Error": "Negative"
+    }
   }
 }

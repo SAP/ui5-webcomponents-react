@@ -1,12 +1,14 @@
 'use client';
 
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconSlimArrowLeft from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import { useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import React, { Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
-import { FlexBoxDirection, GlobalStyleClasses, TitleLevel, ValueState, WrappingType } from '../../enums/index.js';
+import { FlexBoxDirection, GlobalStyleClasses, TitleLevel } from '../../enums/index.js';
 import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';
@@ -67,9 +69,9 @@ export const resolveMessageTypes = (children: ReactElement<MessageItemPropTypes>
         return acc;
       },
       {
-        [ValueState.Error]: 0,
-        [ValueState.Warning]: 0,
-        [ValueState.Success]: 0,
+        [ValueState.Negative]: 0,
+        [ValueState.Critical]: 0,
+        [ValueState.Positive]: 0,
         [ValueState.Information]: 0
       }
     );

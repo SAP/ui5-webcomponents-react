@@ -3,6 +3,7 @@ import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import actionIcon from '@ui5/webcomponents-icons/dist/action.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import exitFSIcon from '@ui5/webcomponents-icons/dist/exit-full-screen.js';
@@ -29,7 +30,6 @@ import {
   Tag,
   Title,
   ToggleButton,
-  ValueState,
   VariantItem,
   VariantManagement
 } from '../..';
@@ -108,7 +108,7 @@ const meta = {
           <span style={{ width: '1rem' }} />
           <FlexBox direction={FlexBoxDirection.Column}>
             <Label>Availability:</Label>
-            <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
+            <ObjectStatus state={ValueState.Positive}>In Stock</ObjectStatus>
           </FlexBox>
         </FlexBox>
       </DynamicPageHeader>

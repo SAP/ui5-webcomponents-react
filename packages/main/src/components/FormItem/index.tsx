@@ -1,10 +1,10 @@
 'use client';
 
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import { useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import React, { cloneElement, Fragment, isValidElement, useEffect, useMemo } from 'react';
-import { WrappingType } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { ReducedReactNodeWithBoolean } from '../../types/index.js';
 import type { LabelPropTypes } from '../../webComponents/Label/index.js';

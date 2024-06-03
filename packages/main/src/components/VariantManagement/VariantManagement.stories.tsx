@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { useEffect, useReducer, useRef, useState } from 'react';
-import { PopoverPlacementType, TitleLevel, ValueState } from '../../enums/index.js';
+import { PopoverPlacementType, TitleLevel } from '../../enums/index.js';
 import { DatePicker } from '../../webComponents/DatePicker/index.js';
 import { MultiComboBox } from '../../webComponents/MultiComboBox/index.js';
 import { MultiComboBoxItem } from '../../webComponents/MultiComboBoxItem/index.js';
@@ -73,7 +74,7 @@ export const WithCustomValidation: Story = {
       if (!e.target.value.match(/^[a-z0-9\s]+$/i)) {
         // mark variant as invalid (prevent internal logic from being applied)
         e.isInvalid = true;
-        setValueStateSaveView(ValueState.Error);
+        setValueStateSaveView(ValueState.Negative);
       } else {
         // mark variant as valid again
         e.isInvalid = false;
@@ -89,7 +90,7 @@ export const WithCustomValidation: Story = {
       if (e.target.value.length > 12) {
         // mark variant as invalid (prevent internal logic from being applied)
         e.isInvalid = true;
-        setValueStateManageViews(ValueState.Error);
+        setValueStateManageViews(ValueState.Negative);
       } else {
         // mark variant as valid again
         e.isInvalid = false;

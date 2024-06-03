@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Link.js';
+import type { LinkAccessibilityAttributes, LinkClickEventDetail } from '@ui5/webcomponents/dist/Link.js';
+import type LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
+import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
-import type { LinkAccessibilityAttributes, LinkClickEventDetail } from '@ui5/webcomponents/dist/Link.js';
-import LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
-import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
-import type { ReactNode } from 'react';
 
 interface LinkAttributes {
   /**

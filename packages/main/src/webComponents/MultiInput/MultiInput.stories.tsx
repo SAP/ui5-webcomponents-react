@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { InputType, ValueState } from '../../enums/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import { InputType } from '../../enums/index.js';
 import { Token } from '../Token/index.js';
 import { MultiInput } from './index.js';
 

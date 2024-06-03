@@ -162,7 +162,6 @@ import {
   MultiComboBox,
   DatePicker,
   CheckBox,
-  ValueState,
   InputType,
   Popover,
   Option,
@@ -170,6 +169,7 @@ import {
   ObjectStatus
 } from '@ui5/webcomponents-react';
 import ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { useForm, useController } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -272,11 +272,11 @@ const WrappedCheckBox = (props) => {
         onChange={handleChange}
         id={uniqueId}
         onFocus={handleFocus}
-        valueState={errorMessage ? ValueState.Error : ValueState.None}
+        valueState={errorMessage ? ValueState.Negative : ValueState.None}
       />
       {createPortal(
         <Popover open={open} opener={uniqueId} onAfterClose={handleClose} initialFocus={uniqueId}>
-          <ObjectStatus state={ValueState.Error}>{errorMessage}</ObjectStatus>
+          <ObjectStatus state={ValueState.Negative}>{errorMessage}</ObjectStatus>
         </Popover>,
         document.body
       )}
@@ -315,7 +315,7 @@ function App() {
           <FormItem label={<Label required>Email</Label>}>
             <Input
               {...register('email', { required: true })}
-              valueState={errors.email ? ValueState.Error : ValueState.None}
+              valueState={errors.email ? ValueState.Negative : ValueState.None}
               valueStateMessage={<span>{errors.email?.message}</span>}
               type={InputType.Email}
             />
@@ -323,7 +323,7 @@ function App() {
           <FormItem label={<Label required>Password</Label>}>
             <Input
               {...register('password', { required: true })}
-              valueState={errors.password ? ValueState.Error : ValueState.None}
+              valueState={errors.password ? ValueState.Negative : ValueState.None}
               valueStateMessage={<span>{errors.password?.message}</span>}
               type={InputType.Password}
             />
@@ -331,7 +331,7 @@ function App() {
           <FormItem label={<Label required>Confirm Password</Label>}>
             <Input
               {...register('confirmPassword', { required: true })}
-              valueState={errors.confirmPassword ? ValueState.Error : ValueState.None}
+              valueState={errors.confirmPassword ? ValueState.Negative : ValueState.None}
               valueStateMessage={<span>{errors.confirmPassword?.message}</span>}
               type={InputType.Password}
             />
@@ -356,7 +356,7 @@ function App() {
               name="toc"
               control={control}
               rules={{ required: true }}
-              valueState={errors.toc ? ValueState.Error : ValueState.None}
+              valueState={errors.toc ? ValueState.Negative : ValueState.None}
             />
           </FormItem>
         </FormGroup>

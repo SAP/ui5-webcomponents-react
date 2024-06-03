@@ -1,10 +1,11 @@
 import { generateMessageItems } from '@sb/mockData/generateMessageItems';
 import type { Meta, StoryObj } from '@storybook/react';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import arrowLeftIcon from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import { forwardRef, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { FlexBoxAlignItems, FlexBoxJustifyContent, TitleLevel, ValueState } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxJustifyContent, TitleLevel } from '../../enums/index.js';
 import type {
   DialogDomRef,
   DialogPropTypes,
@@ -55,7 +56,7 @@ const meta = {
         key={1}
         titleText={'Error Message Type'}
         subtitleText={'Some bad error occurred'}
-        type={ValueState.Error}
+        type={ValueState.Negative}
         counter={1}
         groupName={'Products'}
       >
@@ -65,7 +66,7 @@ const meta = {
         key={2}
         titleText={'Success Message Type'}
         subtitleText={'You can also use subtitles'}
-        type={ValueState.Success}
+        type={ValueState.Positive}
         counter={2}
       >
         This is a success message! You can even use{' '}
@@ -75,7 +76,7 @@ const meta = {
         key={3}
         titleText={'Warning Message Type'}
         subtitleText={'Warnign without details'}
-        type={ValueState.Warning}
+        type={ValueState.Critical}
         counter={3}
       />,
       <MessageItem key={4} titleText={'Empty Message Type'} groupName={'Products'} />,
@@ -192,7 +193,7 @@ export const WithMessageViewButton: Story = {
       <>
         <MessageViewButton
           counter={3}
-          type={ValueState.Error}
+          type={ValueState.Negative}
           onClick={(e) => {
             ref.current.showAt(e.target);
           }}

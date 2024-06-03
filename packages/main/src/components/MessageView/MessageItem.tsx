@@ -1,11 +1,12 @@
 'use client';
 
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import React, { forwardRef, useContext } from 'react';
-import { FlexBoxAlignItems, FlexBoxDirection, ListItemType, ValueState } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxDirection, ListItemType } from '../../enums/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';
 import type { CustomListItemDomRef } from '../../webComponents/CustomListItem/index.js';
@@ -56,7 +57,7 @@ export interface MessageItemPropTypes extends CommonProps {
  * A component used to hold different types of system messages inside the `MessageView` component.
  */
 const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((props, ref) => {
-  const { titleText, subtitleText, counter, type = ValueState.Error, children, className, ...rest } = props;
+  const { titleText, subtitleText, counter, type = ValueState.Negative, children, className, ...rest } = props;
 
   useStylesheet(styleData, MessageItem.displayName);
 

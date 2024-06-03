@@ -1,12 +1,12 @@
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import React from 'react';
-import { ValueState } from '../../enums/index.js';
 import { MessageViewButton } from './index.js';
 
 describe('MessageViewButton', () => {
   [
-    [ValueState.Error, 'error'],
-    [ValueState.Success, 'sys-enter-2'],
-    [ValueState.Warning, 'alert'],
+    [ValueState.Negative, 'error'],
+    [ValueState.Positive, 'sys-enter-2'],
+    [ValueState.Critical, 'alert'],
     [ValueState.Information, 'information'],
     [ValueState.None, 'information'],
     [undefined, 'error']

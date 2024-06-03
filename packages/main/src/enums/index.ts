@@ -78,8 +78,6 @@ export * from './ToolbarStyle.js';
 export * from './UploadCollectionDnDOverlayMode.js';
 export * from './UploadState.js';
 export * from './ValueColor.js';
-export * from './ValueState.js';
 export * from './VerticalAlign.js';
 export * from './ViewSettingsDialogMode.js';
 export * from './WizardContentLayout.js';
-export * from './WrappingType.js';

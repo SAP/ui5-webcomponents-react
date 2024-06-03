@@ -2,6 +2,7 @@ import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { CSSProperties } from 'react';
 import { useEffect, useReducer, useRef, useState } from 'react';
 import type { ObjectPagePropTypes } from '../..';
@@ -30,8 +31,7 @@ import {
   ObjectStatus,
   Text,
   Title,
-  TitleLevel,
-  ValueState
+  TitleLevel
 } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
@@ -923,7 +923,7 @@ const DPTitle = (
       </Breadcrumbs>
     }
   >
-    <ObjectStatus state={ValueState.Success}>employed</ObjectStatus>
+    <ObjectStatus state={ValueState.Positive}>employed</ObjectStatus>
   </DynamicPageTitle>
 );
 

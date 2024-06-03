@@ -8,11 +8,11 @@ import {
   AnalyticalTableSubComponentsBehavior,
   AnalyticalTableSelectionMode,
   AnalyticalTableVisibleRowCountMode,
-  ValueState,
   Button,
   Input,
   IndicationColor
 } from '../..';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
@@ -59,8 +59,8 @@ const data = [
       name: 'Lorem',
       age: 28
     },
-    status: ValueState.Success,
-    navigation: ValueState.Error
+    status: ValueState.Positive,
+    navigation: ValueState.Negative
   },
   {
     name: 'B',
@@ -1531,9 +1531,9 @@ describe('AnalyticalTable', () => {
     const successColor = cssVarToRgb(ThemingParameters.sapSuccessColor);
     const localData = data.map((item, index) => {
       if ((index + 1) % 2) {
-        return { ...item, status: ValueState.Error };
+        return { ...item, status: ValueState.Negative };
       }
-      return { ...item, highlight: ValueState.Success };
+      return { ...item, highlight: ValueState.Positive };
     });
     const indicationData = new Array(9)
       .fill('')
@@ -1592,7 +1592,7 @@ describe('AnalyticalTable', () => {
         highlightField={(row) => {
           switch (row.name) {
             case 'A':
-              return ValueState.Error;
+              return ValueState.Negative;
             case 'B':
               return 'Success';
             case 'X':

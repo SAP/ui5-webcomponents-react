@@ -1,12 +1,13 @@
 'use client';
 
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import React, { cloneElement, forwardRef, isValidElement } from 'react';
-import { MessageBoxActions, MessageBoxTypes, PopupAccessibleRole, TitleLevel, ValueState } from '../../enums/index.js';
+import { MessageBoxActions, MessageBoxTypes, PopupAccessibleRole, TitleLevel } from '../../enums/index.js';
 import {
   ABORT,
   CANCEL,
@@ -104,11 +105,11 @@ const convertMessageBoxTypeToState = (type: MessageBoxTypes) => {
     case MessageBoxTypes.Information:
       return ValueState.Information;
     case MessageBoxTypes.Success:
-      return ValueState.Success;
+      return ValueState.Positive;
     case MessageBoxTypes.Warning:
-      return ValueState.Warning;
+      return ValueState.Critical;
     case MessageBoxTypes.Error:
-      return ValueState.Error;
+      return ValueState.Negative;
     default:
       return ValueState.None;
   }

@@ -7,10 +7,10 @@ import {
   Label,
   Link,
   Popover,
-  PopoverPlacementType,
-  WrappingType
+  PopoverPlacementType
 } from '@ui5/webcomponents-react';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';

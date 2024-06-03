@@ -6,6 +6,7 @@ import {
   VALUE_STATE_SUCCESS,
   VALUE_STATE_WARNING
 } from '@ui5/webcomponents/dist/generated/i18n/i18n-defaults.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import alertIcon from '@ui5/webcomponents-icons/dist/alert.js';
 import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
 import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
@@ -15,7 +16,6 @@ import { clsx } from 'clsx';
 import type { MouseEventHandler, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
 import type { IndicationColor } from '../../enums/index.js';
-import { ValueState } from '../../enums/index.js';
 import {
   ARIA_OBJ_STATUS_DESC,
   ARIA_OBJ_STATUS_DESC_INACTIVE,
@@ -115,7 +115,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
   }
   if (!invisibleText || renderDefaultIcon) {
     switch (state) {
-      case ValueState.Error:
+      case ValueState.Negative:
         if (renderDefaultIcon) {
           icon = <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" />;
         }
@@ -123,7 +123,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
           invisibleText = errorStateText;
         }
         break;
-      case ValueState.Success:
+      case ValueState.Positive:
         if (renderDefaultIcon) {
           icon = <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" />;
         }
@@ -131,7 +131,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
           invisibleText = successStateText;
         }
         break;
-      case ValueState.Warning:
+      case ValueState.Critical:
         if (renderDefaultIcon) {
           icon = <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" />;
         }

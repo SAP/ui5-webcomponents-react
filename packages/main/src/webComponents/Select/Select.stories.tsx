@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import soccerIcon from '@ui5/webcomponents-icons/dist/soccer.js';
 import { forwardRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FlexBox } from '../../components/FlexBox';
 import { Text } from '../../components/Text';
-import { FlexBoxAlignItems, FlexBoxJustifyContent, ValueState } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums/index.js';
 import { Icon } from '../Icon';
 import { Option } from '../Option/index.js';
 import type { SelectMenuDomRef, SelectMenuPropTypes } from '../SelectMenu';
