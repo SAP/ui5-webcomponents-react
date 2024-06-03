@@ -1,10 +1,10 @@
 import TsLogo from '@sb/images/logo-ts.png';
+import LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
 import {
   Avatar,
   Card,
   CardHeader,
   Link,
-  LinkDesign,
   MessageStrip,
   MessageStripDesign,
   Text,

@@ -198,18 +198,7 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'BorderDesign':
     case 'BreadcrumbsDesign':
     case 'BreadcrumbsSeparatorStyle':
-    case 'CalendarType':
-    case 'CalendarSelection':
-    case 'CalendarSelectionMode':
-    case 'CarouselArrowsPlacement':
-    case 'CarouselPageIndicatorStyle':
     case 'ComboBoxFilter':
-    case 'FCLLayout':
-    case 'IconDesign':
-    case 'IllustrationMessageSize':
-    case 'IllustrationMessageType':
-    case 'InputType':
-    case 'LinkDesign':
     case 'ListItemType':
     case 'ListMode':
     case 'ListGrowingMode':

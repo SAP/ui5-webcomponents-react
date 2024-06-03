@@ -80,7 +80,12 @@
       },
       "removedProps": ["onSuggestionItemSelect"]
     },
-    "Label": {}
+    "Label": {},
+    "Link": {
+      "changedProps": {
+        "title": "tooltip"
+      }
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -107,6 +112,7 @@
     "IllustrationMessageSize": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js",
     "IllustrationMessageType": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js",
     "InputType": "@ui5/webcomponents/dist/types/InputType.js",
+    "LinkDesign": "@ui5/webcomponents/dist/types/LinkDesign.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
     "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
