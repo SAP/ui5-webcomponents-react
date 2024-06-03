@@ -77,6 +77,7 @@
     "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js",
     "ComboBoxFilter": "@ui5/webcomponents/dist/types/ComboBoxFilter.js",
     "HighlightTypes": "@ui5/webcomponents/dist/types/HighlightTypes.js",
+    "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
     "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
   },

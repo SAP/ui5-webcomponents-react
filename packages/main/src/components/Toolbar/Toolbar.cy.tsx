@@ -14,9 +14,9 @@ import {
   ToolbarSeparator,
   ToolbarSpacer,
   ToolbarStyle,
-  OverflowToolbarToggleButton,
-  PopupAccessibleRole
+  OverflowToolbarToggleButton
 } from '../..';
+import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import { ToolbarDesign } from '../../enums/index.js';
 import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
