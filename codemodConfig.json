@@ -57,7 +57,10 @@
     "DateRangePicker": {},
     "DateTimePicker": {},
     "Dialog": {},
-    "DynamicSideContent": {}
+    "DynamicSideContent": {},
+    "FileUploader": {},
+    "FilterItem": {},
+    "FilterItemOption": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
