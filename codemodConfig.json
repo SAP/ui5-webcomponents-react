@@ -33,6 +33,15 @@
       "changedProps": {
         "status": "additionalText"
       }
+    },
+    "Carousel": {
+      "comment": "combine s, m and l into a single string S M L",
+      "changedProps": {
+        "itemsPerPageS": "itemsPerPage",
+        "itemsPerPageM": "itemsPerPage",
+        "itemsPerPageL": "itemsPerPage",
+        "pageIndicatorStyle": "pageIndicatorType"
+      }
     }
   },
   "enums": {
@@ -51,6 +60,7 @@
     "CalendarLegendItemType": "@ui5/webcomponents/dist/types/CalendarLegendItemType.js",
     "CalendarSelection": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
     "CalendarSelectionMode": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
-    "CalendarType": "@ui5/webcomponents-base/dist/types/CalendarType.js"
+    "CalendarType": "@ui5/webcomponents-base/dist/types/CalendarType.js",
+    "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js"
   }
 }

@@ -1,14 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Carousel.js';
+import type { CarouselNavigateEventDetail } from '@ui5/webcomponents/dist/Carousel.js';
+import type BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
+import type BorderDesign from '@ui5/webcomponents/dist/types/BorderDesign.js';
+import type CarouselArrowsPlacement from '@ui5/webcomponents/dist/types/CarouselArrowsPlacement.js';
+import type CarouselPageIndicatorType from '@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
-import type { CarouselNavigateEventDetail } from '@ui5/webcomponents/dist/Carousel.js';
-import BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
-import BorderDesign from '@ui5/webcomponents/dist/types/BorderDesign.js';
-import CarouselArrowsPlacement from '@ui5/webcomponents/dist/types/CarouselArrowsPlacement.js';
-import CarouselPageIndicatorType from '@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js';
-import type { ReactNode } from 'react';
 
 interface CarouselAttributes {
   /**
