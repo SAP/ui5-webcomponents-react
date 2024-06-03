@@ -51,7 +51,8 @@
       "changedProps": {
         "color": "value"
       }
-    }
+    },
+    "CustomListItem": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -72,6 +73,7 @@
     "CalendarType": "@ui5/webcomponents-base/dist/types/CalendarType.js",
     "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js",
     "ComboBoxFilter": "@ui5/webcomponents/dist/types/ComboBoxFilter.js",
+    "HighlightTypes": "@ui5/webcomponents/dist/types/HighlightTypes.js",
 
     "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
     "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
