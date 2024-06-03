@@ -79,7 +79,8 @@
         "onSuggestionItemPreview": "onSelectionChange"
       },
       "removedProps": ["onSuggestionItemSelect"]
-    }
+    },
+    "Label": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
