@@ -67,6 +67,12 @@
         "interactive": "mode"
       },
       "removedProps": ["accessibleRole"]
+    },
+    "IllustratedMessage": {
+      "changedProps": {
+        "size": "design"
+      },
+      "removedProps": ["titleLevel"]
     }
   },
   "enums": {
@@ -89,8 +95,10 @@
     "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js",
     "ComboBoxFilter": "@ui5/webcomponents/dist/types/ComboBoxFilter.js",
     "FCLLayout": "@ui5/webcomponents-fiori/dist/types/FCLLayout.js",
-    "IconDesign": "@ui5/webcomponents/dist/types/IconDesign.js",
     "HighlightTypes": "@ui5/webcomponents/dist/types/HighlightTypes.js",
+    "IconDesign": "@ui5/webcomponents/dist/types/IconDesign.js",
+    "IllustrationMessageSize": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js",
+    "IllustrationMessageType": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
     "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",

@@ -3,6 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
 import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
@@ -19,7 +20,7 @@ import React, {
   useState
 } from 'react';
 import { createPortal } from 'react-dom';
-import { IllustrationMessageType, ListMode, PopoverPlacementType, TitleLevel } from '../../enums/index.js';
+import { ListMode, PopoverPlacementType, TitleLevel } from '../../enums/index.js';
 import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
