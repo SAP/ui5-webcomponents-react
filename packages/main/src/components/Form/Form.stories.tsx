@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useReducer } from 'react';
+import { useId, useReducer } from 'react';
 import {
   Button,
   CheckBox,
@@ -309,7 +309,7 @@ export const DisplayEditMode: Story = {
   }
 };
 
-export const FormWithOneGroup: Story = {
+export const FormItemsWithoutGroup: Story = {
   args: {
     titleText: 'Address',
     columnsM: 2,
@@ -372,6 +372,49 @@ export const FormWithOneGroup: Story = {
         <FormItem label="Fax">
           <Input type="Tel" />
         </FormItem>
+      </Form>
+    );
+  }
+};
+
+export const CustomLabel: Story = {
+  name: 'Custom Label (a11y)',
+  render() {
+    const uniqueId = useId();
+    return (
+      <Form
+        titleText="Not announced (because of `aria-label` of the `Form`)"
+        aria-label="Custom announcement of the form title via aria-label"
+      >
+        <FormGroup titleText="Default Group Announcement">
+          <FormItem label={<Label>Default announcement with custom Label</Label>}>
+            <Input />
+          </FormItem>
+        </FormGroup>
+        <FormGroup titleText="Not announced (because of `accessibleName` of the `Input`)">
+          <FormItem label={<Label>Not announced (because of `accessibleName` of the `Input`)</Label>}>
+            <Input accessibleName="Custom announcement via accessibleName prop" />
+          </FormItem>
+        </FormGroup>
+        <FormGroup titleText="Not announced (because of `accessibleNameRef` of the `Input`)">
+          <FormItem label={<Label>Not announced (because of `accessibleNameRef` of the `Input`)</Label>}>
+            <Input accessibleNameRef={`${uniqueId}-input1`} />
+            <span id={`${uniqueId}-input1`} className="pseudoInvisibleText">
+              Custom announcement via accessibleNameRef prop
+            </span>
+          </FormItem>
+        </FormGroup>
+        <FormGroup
+          titleText="Announced (because of `accessibleNameRef` of the `Input` and linking id)"
+          id={`${uniqueId}-group`}
+        >
+          <FormItem label={<Label>Not announced (because of `accessibleNameRef` of the `Input`)</Label>}>
+            <Input accessibleNameRef={`${uniqueId}-group ${uniqueId}-input2`} />
+            <span id={`${uniqueId}-input2`} className="pseudoInvisibleText">
+              Custom announcement via accessibleNameRef prop
+            </span>
+          </FormItem>
+        </FormGroup>
       </Form>
     );
   }

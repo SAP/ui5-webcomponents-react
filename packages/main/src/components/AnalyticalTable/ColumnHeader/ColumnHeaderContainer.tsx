@@ -65,6 +65,7 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
               <div
                 {...column.getResizerProps()}
                 data-resizer
+                data-component-name="AnalyticalTableResizer"
                 className={classNames.resizer}
                 style={resizerDirectionStyle}
               />

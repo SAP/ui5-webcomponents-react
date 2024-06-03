@@ -4,16 +4,22 @@ import type { ElementType } from 'react';
 import { classNames, styleData } from './FormGroupTitle.module.css.js';
 import type { FormGroupPropTypes } from './index.js';
 
-export function FormGroupTitle({ as, className, titleText, style, ...rest }: Omit<FormGroupPropTypes, 'children'>) {
+export function FormGroupTitle({
+  as,
+  className,
+  titleText,
+  style,
+  uniqueId,
+  ...rest
+}: Omit<FormGroupPropTypes, 'children'> & { uniqueId: string }) {
   useStylesheet(styleData, FormGroupTitle.displayName);
   const CustomTag = as as ElementType;
 
   return (
     <CustomTag
+      id={`${uniqueId}-group`}
       {...rest}
       className={clsx(classNames.title, className)}
-      title={titleText}
-      aria-label={titleText}
       data-component-name="FormGroupTitle"
       style={style}
     >

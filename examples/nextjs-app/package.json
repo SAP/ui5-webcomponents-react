@@ -9,11 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.24.3",
-    "@ui5/webcomponents-fiori": "1.24.3",
-    "@ui5/webcomponents-react": "1.28.1",
-    "@types/node": "20.12.11",
-    "@types/react": "18.3.2",
+    "@ui5/webcomponents": "1.24.4",
+    "@ui5/webcomponents-fiori": "1.24.4",
+    "@ui5/webcomponents-react": "1.29.1",
+    "@types/node": "20.14.0",
+    "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",

@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.0...v1.29.1) (2024-05-29)
+
+### Bug Fixes
+
+- **charts:** fix peer dependencies ([#5870](https://github.com/SAP/ui5-webcomponents-react/issues/5870)) ([10e2212](https://github.com/SAP/ui5-webcomponents-react/commit/10e22129b84eba4b84cf42eb3bd03f0614bdc280))
+
+# [1.29.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.4...v1.29.0) (2024-05-29)
+
+### Bug Fixes
+
+- fix postcss flexbox warnings ([#5859](https://github.com/SAP/ui5-webcomponents-react/issues/5859)) ([71688b8](https://github.com/SAP/ui5-webcomponents-react/commit/71688b84ca5ed6d0b0b0e1359cd44451b4a50872))
+
+### Features
+
+- **AnalyticalTable:** introduce autoResize column feature ([#3196](https://github.com/SAP/ui5-webcomponents-react/issues/3196)) ([#5758](https://github.com/SAP/ui5-webcomponents-react/issues/5758)) ([8f2ca88](https://github.com/SAP/ui5-webcomponents-react/commit/8f2ca882e008f1ba8f96e3a29afc0da5c088cead))
+- **cypress-commands:** add commands for dropdown menus ([#5756](https://github.com/SAP/ui5-webcomponents-react/issues/5756)) ([b80b36e](https://github.com/SAP/ui5-webcomponents-react/commit/b80b36e61678e276630d52b48cf3fcb0584af694))
+
+## [1.28.4](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.3...v1.28.4) (2024-05-24)
+
+### Bug Fixes
+
+- **useStylesheet:** update import path for use-sync-external-store ([34e8e22](https://github.com/SAP/ui5-webcomponents-react/commit/34e8e228ee47637e7fce10edb52f01f6c68a54c9))
+
+## [1.28.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.2...v1.28.3) (2024-05-24)
+
+### Bug Fixes
+
+- **useStylesheet:** support server side rendering ([#5849](https://github.com/SAP/ui5-webcomponents-react/issues/5849)) ([10fbc64](https://github.com/SAP/ui5-webcomponents-react/commit/10fbc645ecde3aed4c098f4515edbe5d297a0799))
+
+## [1.28.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.1...v1.28.2) (2024-05-24)
+
+### Bug Fixes
+
+- **AnalyticalTable:** trap focus inside column header popover while open ([#5827](https://github.com/SAP/ui5-webcomponents-react/issues/5827)) ([25be46d](https://github.com/SAP/ui5-webcomponents-react/commit/25be46dfb45862e3d16f54d22d6b457bdd530792)), closes [#5821](https://github.com/SAP/ui5-webcomponents-react/issues/5821)
+- **charts - TypeScript:** correct `interval` type ([#5785](https://github.com/SAP/ui5-webcomponents-react/issues/5785)) ([4c7fe42](https://github.com/SAP/ui5-webcomponents-react/commit/4c7fe4294efee17d15a87e3fdc8a90edd0d731bb))
+- **charts:** correctly apply React `key` with function `accessor`s ([#5775](https://github.com/SAP/ui5-webcomponents-react/issues/5775)) ([86e568a](https://github.com/SAP/ui5-webcomponents-react/commit/86e568ac439e5916bbe7db9e61dd6b31e62733ca)), closes [#5774](https://github.com/SAP/ui5-webcomponents-react/issues/5774)
+- **deps:** update dependency @tanstack/react-virtual to ~3.5.0 ([#5763](https://github.com/SAP/ui5-webcomponents-react/issues/5763)) ([412206b](https://github.com/SAP/ui5-webcomponents-react/commit/412206bbe4e47ad731bc1086d1b8bc7f74ad22fe))
+- **deps:** update dependency recharts to v2.12.7 ([#5786](https://github.com/SAP/ui5-webcomponents-react/issues/5786)) ([47d8065](https://github.com/SAP/ui5-webcomponents-react/commit/47d8065dfb5bf7c6ed02d2c8f47dc1796db02b86))
+- **ExpandableText:** announce state of "Show More" button correctly with screen readers ([#5836](https://github.com/SAP/ui5-webcomponents-react/issues/5836)) ([34d4a39](https://github.com/SAP/ui5-webcomponents-react/commit/34d4a39b4e62c257c24cb45a9719d883a31ba913))
+- **FilterBar:** improve a11y & update to latest design specs ([#5787](https://github.com/SAP/ui5-webcomponents-react/issues/5787)) ([5ee04d7](https://github.com/SAP/ui5-webcomponents-react/commit/5ee04d7f8202e8ca21b161daf0e67ec6b79c5ccf)), closes [#5667](https://github.com/SAP/ui5-webcomponents-react/issues/5667) [#5764](https://github.com/SAP/ui5-webcomponents-react/issues/5764)
+- **Form:** add gap between columns ([#5832](https://github.com/SAP/ui5-webcomponents-react/issues/5832)) ([954c627](https://github.com/SAP/ui5-webcomponents-react/commit/954c627756ac864a8686c5a5bc0b6b3121d39ebc))
+- **Form:** fix column layout for FormGroups ([#5824](https://github.com/SAP/ui5-webcomponents-react/issues/5824)) ([f90ce16](https://github.com/SAP/ui5-webcomponents-react/commit/f90ce167a18a9241cfe1549cd4176af7fd78d29c))
+- **Form:** fix vertical alignment of FormItems for `labelSpan=12` ([#5843](https://github.com/SAP/ui5-webcomponents-react/issues/5843)) ([11c5094](https://github.com/SAP/ui5-webcomponents-react/commit/11c5094ebc385a49266b192fdd6b8d740990f6d8))
+- **Form:** improve a11y of ui5 web component inputs ([#5846](https://github.com/SAP/ui5-webcomponents-react/issues/5846)) ([a2d4b7f](https://github.com/SAP/ui5-webcomponents-react/commit/a2d4b7f80bcd35c7a7168bcfa023bc1290b01f45)), closes [#5820](https://github.com/SAP/ui5-webcomponents-react/issues/5820)
+- **Loader:** deprecate component ([#5844](https://github.com/SAP/ui5-webcomponents-react/issues/5844)) ([69901b5](https://github.com/SAP/ui5-webcomponents-react/commit/69901b5068bac33dd8f121846480b9bafe8b87e5))
+- **ObjectStatus:** don't announce default icons via screen readers ([#5809](https://github.com/SAP/ui5-webcomponents-react/issues/5809)) ([cecce78](https://github.com/SAP/ui5-webcomponents-react/commit/cecce78a64050ff69c09f2e8aed539ae59993616)), closes [#5806](https://github.com/SAP/ui5-webcomponents-react/issues/5806)
+- suppress hydration warnings for web components ([#5803](https://github.com/SAP/ui5-webcomponents-react/issues/5803)) ([1def75b](https://github.com/SAP/ui5-webcomponents-react/commit/1def75bc1581a382d898137a91d0b9d7f375504f))
+- **ToolbarSeparator:** use "separator" `role` to announce separator ([#5810](https://github.com/SAP/ui5-webcomponents-react/issues/5810)) ([9471454](https://github.com/SAP/ui5-webcomponents-react/commit/94714547eefc8841b1ec25071e7f2688bcaf4a53)), closes [#5808](https://github.com/SAP/ui5-webcomponents-react/issues/5808)
+- **useStylesheet:** track stylesheets with `useSyncExternalStore` ([#5845](https://github.com/SAP/ui5-webcomponents-react/issues/5845)) ([a5c0f6d](https://github.com/SAP/ui5-webcomponents-react/commit/a5c0f6df29925eee08f584c79f93623b84c163fe))
+- **VariantManagement:** fix "Manage Views" default validation ([#5798](https://github.com/SAP/ui5-webcomponents-react/issues/5798)) ([2f3263b](https://github.com/SAP/ui5-webcomponents-react/commit/2f3263ba77cc55c88aec8dc4369791a4a12e8ce1)), closes [#5766](https://github.com/SAP/ui5-webcomponents-react/issues/5766)
+
 ## [1.28.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.0...v1.28.1) (2024-05-02)
 
 ### Bug Fixes

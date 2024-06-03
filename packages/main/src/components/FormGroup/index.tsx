@@ -24,6 +24,12 @@ export interface FormGroupPropTypes extends CommonProps<HTMLHeadingElement> {
    * @default "h5"
    */
   as?: keyof HTMLElementTagNameMap;
+  /**
+   * Defines the [global `id` attribute](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/id).
+   *
+   * __Note:__ Only override this prop if you want to implement screen reader announcements for groups manually.
+   */
+  id?: HTMLHeadingElement['id'];
 }
 
 /**
@@ -57,6 +63,7 @@ const FormGroup = (props: FormGroupPropTypes) => {
         <FormGroupTitle
           {...rest}
           titleText={titleText}
+          uniqueId={uniqueId}
           style={{
             ...style,
             display: titleText ? 'unset' : 'none',

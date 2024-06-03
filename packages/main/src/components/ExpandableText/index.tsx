@@ -120,8 +120,8 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
             accessibleName={
               showOverflowInPopover
                 ? collapsed
-                  ? i18nBundle.getText(CLOSE_POPOVER)
-                  : i18nBundle.getText(SHOW_FULL_TEXT)
+                  ? i18nBundle.getText(SHOW_FULL_TEXT)
+                  : i18nBundle.getText(CLOSE_POPOVER)
                 : undefined
             }
             accessibleRole="button"

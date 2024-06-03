@@ -239,6 +239,130 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name-3').should('not.be.visible');
   });
 
+  it('autoResize', () => {
+    let resizeColumns = columns.map((el) => {
+      return { ...el, autoResizable: true };
+    });
+
+    let dataFixed = data.map((el, i) => {
+      if (i === 2) return { ...el, name: 'Longer Name Too' };
+      return el;
+    });
+
+    const resizeSpy = cy.spy().as('resize');
+
+    cy.mount(
+      <AnalyticalTable
+        data={dataFixed}
+        columns={resizeColumns}
+        onAutoResize={(e) => {
+          resizeSpy(e);
+          e.preventDefault();
+        }}
+      />
+    );
+    cy.wait(100);
+
+    cy.get('[data-component-name="AnalyticalTableResizer"]').eq(0).as('resizer1');
+    cy.get('[data-component-name="AnalyticalTableResizer"]').eq(1).as('resizer2');
+
+    cy.get('@resizer2').should('be.visible').dblclick();
+    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 476);
+    cy.get('@resizer1').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 476);
+
+    cy.get('@resize').should('have.callCount', 2);
+
+    cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} onAutoResize={resizeSpy} />);
+    cy.wait(100);
+    cy.get('@resizer2').should('be.visible').dblclick();
+    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
+    cy.get('@resizer1').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 129);
+
+    cy.get('@resize').should('have.callCount', 4);
+
+    dataFixed = generateMoreData(200);
+
+    dataFixed = dataFixed.map((el, i) => {
+      if (i === 2) return { ...el, name: 'Much Longer Name To Resize Larger For Testing A Larger Auto Resize' };
+      else if (i > 50) return { ...el, name: 'Short Name' };
+      return el;
+    });
+
+    const loadMore = cy.spy().as('more');
+    cy.mount(
+      <AnalyticalTable
+        data={dataFixed}
+        columns={resizeColumns}
+        onLoadMore={loadMore}
+        infiniteScroll={true}
+        infiniteScrollThreshold={0}
+        onAutoResize={resizeSpy}
+      />
+    );
+
+    cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
+    cy.get('@resizer1').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 93);
+
+    cy.get('@resize').should('have.callCount', 5);
+
+    resizeColumns = columns.map((el) => {
+      return { ...el, autoResizable: false };
+    });
+
+    cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} />);
+    cy.wait(100);
+    cy.get('@resizer2').should('be.visible').dblclick();
+    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 472.75);
+    cy.get('@resizer1').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 472.75);
+
+    cy.get('@resize').should('have.callCount', 5);
+
+    const dataSub = data.map((el, i) => {
+      if (i === 2) return { ...el, name: 'Longer Name Too' };
+      return el;
+    });
+
+    resizeColumns = columns.map((el) => {
+      return { ...el, autoResizable: true };
+    });
+
+    const renderRowSubComponent = () => {
+      return <div title="subcomponent">SubComponent</div>;
+    };
+
+    cy.mount(
+      <AnalyticalTable
+        data={dataSub}
+        columns={resizeColumns}
+        renderRowSubComponent={renderRowSubComponent}
+        onAutoResize={resizeSpy}
+      />
+    );
+    cy.wait(100);
+    cy.get('@resizer2').should('be.visible').dblclick();
+    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
+    cy.get('@resizer1').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 165);
+
+    cy.get('@resize').should('have.callCount', 7);
+
+    const dataResizeTree = [...dataTree];
+    dataResizeTree[0].subRows[0].name = 'Longer Name To Resize Here';
+    cy.mount(<AnalyticalTable columns={resizeColumns} data={dataResizeTree} isTreeTable onAutoResize={resizeSpy} />);
+    cy.wait(100);
+    cy.get('@resizer1').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 169);
+    cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-button]').click();
+    cy.get('@resizer1').should('be.visible').dblclick();
+    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 251);
+
+    cy.get('@resize').should('have.callCount', 9);
+  });
+
   it('scrollTo', () => {
     interface ScrollTableProps {
       scrollFn: string;
