@@ -1,13 +1,13 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MultiInput.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
-import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { InputSelectionChangeEventDetail } from '@ui5/webcomponents/dist/Input.js';
 import type { MultiInputTokenDeleteEventDetail } from '@ui5/webcomponents/dist/MultiInput.js';
-import InputType from '@ui5/webcomponents/dist/types/InputType.js';
+import type InputType from '@ui5/webcomponents/dist/types/InputType.js';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface MultiInputAttributes {
   /**

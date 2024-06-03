@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import { useReducer } from 'react';
 import {
   Button,
@@ -7,7 +8,6 @@ import {
   FormGroup,
   FormItem,
   Input,
-  InputType,
   Label,
   Link,
   Option,

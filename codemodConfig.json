@@ -73,6 +73,12 @@
         "size": "design"
       },
       "removedProps": ["titleLevel"]
+    },
+    "Input": {
+      "changedProps": {
+        "onSuggestionItemPreview": "onSelectionChange"
+      },
+      "removedProps": ["onSuggestionItemSelect"]
     }
   },
   "enums": {
@@ -99,6 +105,7 @@
     "IconDesign": "@ui5/webcomponents/dist/types/IconDesign.js",
     "IllustrationMessageSize": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js",
     "IllustrationMessageType": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js",
+    "InputType": "@ui5/webcomponents/dist/types/InputType.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
     "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
