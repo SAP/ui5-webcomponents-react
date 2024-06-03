@@ -60,7 +60,14 @@
     "DynamicSideContent": {},
     "FileUploader": {},
     "FilterItem": {},
-    "FilterItemOption": {}
+    "FilterItemOption": {},
+    "Icon": {
+      "comment": "interactive=true becomes mode=IconMode.Interactive",
+      "changedProps": {
+        "interactive": "mode"
+      },
+      "removedProps": ["accessibleRole"]
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -82,6 +89,7 @@
     "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js",
     "ComboBoxFilter": "@ui5/webcomponents/dist/types/ComboBoxFilter.js",
     "FCLLayout": "@ui5/webcomponents-fiori/dist/types/FCLLayout.js",
+    "IconDesign": "@ui5/webcomponents/dist/types/IconDesign.js",
     "HighlightTypes": "@ui5/webcomponents/dist/types/HighlightTypes.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",

@@ -18,7 +18,6 @@ export * from './FlexBoxWrap.js';
 export * from './FormBackgroundDesign.js';
 export * from './GlobalStyleClasses.js';
 export * from './GridPosition.js';
-export * from './IconDesign.js';
 export * from './IllustrationMessageSize.js';
 export * from './IllustrationMessageType.js';
 export * from './IndicationColor.js';
