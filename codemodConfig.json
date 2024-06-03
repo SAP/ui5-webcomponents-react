@@ -81,6 +81,7 @@
     "CalendarType": "@ui5/webcomponents-base/dist/types/CalendarType.js",
     "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js",
     "ComboBoxFilter": "@ui5/webcomponents/dist/types/ComboBoxFilter.js",
+    "FCLLayout": "@ui5/webcomponents-fiori/dist/types/FCLLayout.js",
     "HighlightTypes": "@ui5/webcomponents/dist/types/HighlightTypes.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",

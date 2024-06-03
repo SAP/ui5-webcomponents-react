@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import FCLLayout from '@ui5/webcomponents-fiori/dist/types/FCLLayout.js';
 import { spacing } from '@ui5/webcomponents-react-base';
 import { useState } from 'react';
 import { FlexBox } from '../../components/FlexBox';
 import { Text } from '../../components/Text';
 import { Toolbar } from '../../components/Toolbar';
 import { ToolbarSpacer } from '../../components/ToolbarSpacer';
-import { FCLLayout, FlexBoxDirection, ToolbarDesign } from '../../enums';
+import { FlexBoxDirection, ToolbarDesign } from '../../enums';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Card } from '../Card';

@@ -11,7 +11,6 @@ export * from './BackgroundDesign.js';
 export * from './BorderDesign.js';
 export * from './ContentDensity.js';
 export * from './DeviationIndicator.js';
-export * from './FCLLayout.js';
 export * from './FlexBoxAlignItems.js';
 export * from './FlexBoxDirection.js';
 export * from './FlexBoxJustifyContent.js';
