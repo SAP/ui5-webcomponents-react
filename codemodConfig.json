@@ -52,7 +52,10 @@
         "color": "value"
       }
     },
-    "CustomListItem": {}
+    "CustomListItem": {},
+    "DatePicker": {},
+    "DateRangePicker": {},
+    "DateTimePicker": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
