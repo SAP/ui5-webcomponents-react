@@ -55,7 +55,9 @@
     "CustomListItem": {},
     "DatePicker": {},
     "DateRangePicker": {},
-    "DateTimePicker": {}
+    "DateTimePicker": {},
+    "Dialog": {},
+    "DynamicSideContent": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -78,6 +80,9 @@
     "ComboBoxFilter": "@ui5/webcomponents/dist/types/ComboBoxFilter.js",
     "HighlightTypes": "@ui5/webcomponents/dist/types/HighlightTypes.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
+    "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
+    "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
+    "SideContentVisibility": "@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js",
     "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
     "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
   },
