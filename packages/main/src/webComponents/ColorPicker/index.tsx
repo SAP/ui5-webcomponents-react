@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ColorPicker.js';
+import type { CSSProperties } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
-import type { CSSProperties } from 'react';
 
 interface ColorPickerAttributes {
   /**
