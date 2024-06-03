@@ -1,7 +1,7 @@
 import { ThemingParameters, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MutableRefObject, RefObject } from 'react';
-import React, { forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 import { FlexBoxDirection, GlobalStyleClasses } from '../../../enums/index.js';
 import { FlexBox } from '../../FlexBox/index.js';
 import { classNames, styleData } from './VerticalScrollbar.module.css.js';

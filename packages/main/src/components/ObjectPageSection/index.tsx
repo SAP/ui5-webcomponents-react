@@ -3,7 +3,7 @@
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { TitleLevel } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';
 import { classNames, styleData } from './ObjectPageSection.module.css.js';

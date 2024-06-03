@@ -1,5 +1,5 @@
 import { DocsContext } from '@storybook/addon-docs';
-import React, { useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import { useGetCem, useGetSubComponentsOfModule } from '../utils';
 
 interface ImportStatementPropTypes {
@@ -39,11 +39,11 @@ export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPro
             <>
               {moduleNames.map((item) => {
                 return (
-                  <React.Fragment key={item}>
+                  <Fragment key={item}>
                     <br />
                     &nbsp;&nbsp;
                     {item},
-                  </React.Fragment>
+                  </Fragment>
                 );
               })}
               <br />

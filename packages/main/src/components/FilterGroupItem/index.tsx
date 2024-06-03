@@ -8,7 +8,7 @@ import moveDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js
 import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, useContext, useEffect, useRef, useState } from 'react';
+import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import {
   BusyIndicatorSize,
   ButtonDesign,

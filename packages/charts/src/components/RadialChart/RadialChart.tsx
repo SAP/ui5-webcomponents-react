@@ -3,7 +3,7 @@
 import type { CommonProps } from '@ui5/webcomponents-react';
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';

@@ -3,16 +3,7 @@
 import { debounce, Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MutableRefObject, ReactElement, ReactNode } from 'react';
-import React, {
-  Children,
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import { flattenFragments } from '../../internal/utils.js';

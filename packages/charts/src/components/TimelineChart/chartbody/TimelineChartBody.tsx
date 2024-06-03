@@ -1,6 +1,6 @@
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import type { CSSProperties, ReactNode } from 'react';
-import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import type { ITimelineChartRow } from '../types/TimelineChartTypes.js';
 import { MAX_BODY_WIDTH, SCALE_FACTOR } from '../util/constants.js';
 import { TimelineChartBodyCtx } from '../util/context.js';

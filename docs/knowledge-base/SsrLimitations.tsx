@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
 
 export function SsrLimitations() {

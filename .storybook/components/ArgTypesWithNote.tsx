@@ -1,6 +1,6 @@
 import { ArgTypes } from '@storybook/blocks';
 import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
-import React, { ComponentProps, ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 import classes from './ArgTypesWithNote.module.css';
 
 interface ArgTypesWithNotePropTypes {

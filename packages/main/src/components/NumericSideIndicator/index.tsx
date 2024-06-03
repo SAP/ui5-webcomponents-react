@@ -2,7 +2,7 @@
 
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { ValueColor } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';
 import { Text } from '../Text/index.js';

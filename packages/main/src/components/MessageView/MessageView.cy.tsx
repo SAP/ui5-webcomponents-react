@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { ValueState } from '../../enums/index.js';
 import { MessageItem } from './MessageItem';
 import { MessageView } from './index.js';

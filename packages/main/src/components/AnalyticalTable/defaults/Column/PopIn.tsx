@@ -1,5 +1,4 @@
 import { useStylesheet } from '@ui5/webcomponents-react-base';
-import React from 'react';
 import { makeRenderer } from 'react-table';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../../../enums/index.js';
 import { FlexBox } from '../../../FlexBox/index.js';

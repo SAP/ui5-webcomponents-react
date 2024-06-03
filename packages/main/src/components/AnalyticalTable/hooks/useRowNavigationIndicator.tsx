@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ReactTableHooks } from '../types/index.js';
 
 const baseStyles = {

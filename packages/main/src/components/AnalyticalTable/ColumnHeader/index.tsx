@@ -13,7 +13,7 @@ import type {
   MouseEventHandler,
   ReactNode
 } from 'react';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Icon } from '../../../webComponents/Icon/index.js';
 import { Text } from '../../Text/index.js';
 import type { ColumnType } from '../types/ColumnType.js';

@@ -3,7 +3,7 @@
 import { debounce, ThemingParameters, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
-import React, { cloneElement, forwardRef, useEffect, useRef, useState } from 'react';
+import { cloneElement, forwardRef, useEffect, useRef, useState } from 'react';
 import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums/index.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import type { CommonProps } from '../../types/index.js';
