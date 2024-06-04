@@ -1,11 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
+import type Priority from '@ui5/webcomponents/dist/types/Priority.js';
+import type { NotificationListItemBaseCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
-import type { NotificationListItemBaseCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
-import Priority from '@ui5/webcomponents/dist/types/Priority.js';
-import type { ReactNode } from 'react';
 
 interface NotificationListGroupItemAttributes {
   /**

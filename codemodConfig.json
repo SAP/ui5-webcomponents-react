@@ -122,7 +122,10 @@
         "onSuggestionItemPreview": "onSelectionChange"
       },
       "removedProps": ["onSuggestionItemSelect"]
-    }
+    },
+    "NotificationAction": {},
+    "NotificationListGroupItem": {},
+    "NotificationListItem": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -159,6 +162,7 @@
     "MediaGalleryMenuVerticalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuVerticalAlign.js",
     "MessageStripDesign": "@ui5/webcomponents/dist/types/MessageStripDesign.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
+    "Priority": "@ui5/webcomponents/dist/types/Priority.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
     "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
     "SideContentVisibility": "@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js",

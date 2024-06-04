@@ -205,7 +205,6 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'PopoverHorizontalAlign':
     case 'PopoverPlacementType':
     case 'PopoverVerticalAlign':
-    case 'Priority':
     case 'SegmentedButtonMode':
     case 'SemanticColor':
     case 'SideContentFallDown':

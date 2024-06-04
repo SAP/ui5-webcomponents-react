@@ -29,7 +29,6 @@ export * from './PanelAccessibleRole.js';
 export * from './PopoverHorizontalAlign.js';
 export * from './PopoverPlacementType.js';
 export * from './PopoverVerticalAlign.js';
-export * from './Priority.js';
 export * from './SegmentedButtonMode.js';
 export * from './SemanticColor.js';
 export * from './Size.js';

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
-import { Priority } from '../../enums/Priority';
+import Priority from '@ui5/webcomponents/dist/types/Priority.js';
 import { Avatar } from '../Avatar';
 import { NotificationAction } from '../NotificationAction';
 import { NotificationListItem } from '../NotificationListItem';
