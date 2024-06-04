@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import TableGrowingMode from '@ui5/webcomponents-compat/dist/types/TableGrowingMode.js';
 import { useState } from 'react';
-import { TableGrowingMode } from '../../enums/index.js';
 import { TableCell } from '../TableCell/index.js';
 import { TableColumn } from '../TableColumn/index.js';
 import { TableRow } from '../TableRow/index.js';
