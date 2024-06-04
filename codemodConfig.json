@@ -116,7 +116,13 @@
       }
     },
     "MultiComboBoxGroupItem": {},
-    "MultiComboBoxItem": {}
+    "MultiComboBoxItem": {},
+    "MultiInput": {
+      "changedProps": {
+        "onSuggestionItemPreview": "onSelectionChange"
+      },
+      "removedProps": ["onSuggestionItemSelect"]
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
