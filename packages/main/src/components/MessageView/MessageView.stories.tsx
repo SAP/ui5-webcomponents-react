@@ -1,11 +1,12 @@
 import { generateMessageItems } from '@sb/mockData/generateMessageItems';
 import type { Meta, StoryObj } from '@storybook/react';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import arrowLeftIcon from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import { forwardRef, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { FlexBoxAlignItems, FlexBoxJustifyContent, TitleLevel } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums/index.js';
 import type {
   DialogDomRef,
   DialogPropTypes,

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TitleLevel } from '../../enums/index.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { VariantItem } from './VariantItem';
 import { WithCustomValidation as WithCustomValidationStory } from './VariantManagement.stories';
 import type { VariantManagementPropTypes } from './index.js';

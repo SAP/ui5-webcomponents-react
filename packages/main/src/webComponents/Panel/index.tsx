@@ -1,11 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Panel.js';
+import type PanelAccessibleRole from '@ui5/webcomponents/dist/types/PanelAccessibleRole.js';
+import type TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
-import PanelAccessibleRole from '@ui5/webcomponents/dist/types/PanelAccessibleRole.js';
-import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
-import type { ReactNode } from 'react';
 
 interface PanelAttributes {
   /**

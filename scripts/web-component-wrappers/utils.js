@@ -199,8 +199,6 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'BreadcrumbsDesign':
     case 'BreadcrumbsSeparatorStyle':
     case 'ListItemType':
-    case 'PanelAccessibleRole':
-    case 'PopupAccessibleRole':
     case 'PopoverHorizontalAlign':
     case 'PopoverPlacementType':
     case 'PopoverVerticalAlign':
@@ -219,7 +217,6 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'TableMode':
     case 'TableRowType':
     case 'TimelineLayout':
-    case 'TitleLevel':
     case 'ToastPlacement':
     case 'ToolbarAlign':
     case 'ToolbarItemOverflowBehavior':

@@ -139,7 +139,8 @@
         "floatingFooter": "fixedFooter"
       },
       "removedProps": ["disabled"]
-    }
+    },
+    "Panel": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -178,9 +179,11 @@
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "Priority": "@ui5/webcomponents/dist/types/Priority.js",
     "PageBackgroundDesign": "@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js",
+    "PanelAccessibleRole": "@ui5/webcomponents/dist/types/PanelAccessibleRole.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
     "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
     "SideContentVisibility": "@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js",
+    "TitleLevel": "@ui5/webcomponents/dist/types/TitleLevel.js",
     "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
     "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
   },

@@ -1,5 +1,6 @@
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
@@ -13,7 +14,6 @@ import {
   MessageBoxActions,
   MessageBoxTypes,
   TableMode,
-  TitleLevel,
   ToolbarStyle
 } from '../../enums/index.js';
 import {

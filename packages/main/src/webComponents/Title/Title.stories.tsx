@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TitleLevel } from '../../enums/index.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { Title } from './index.js';
 
 const meta = {

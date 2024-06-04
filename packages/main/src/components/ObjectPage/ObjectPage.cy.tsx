@@ -2,6 +2,7 @@ import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
 import type { CSSProperties } from 'react';
@@ -31,7 +32,6 @@ import {
   ObjectStatus,
   Text,
   Title,
-  TitleLevel
 } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 

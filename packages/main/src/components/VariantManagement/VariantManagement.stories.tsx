@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { useEffect, useReducer, useRef, useState } from 'react';
-import { PopoverPlacementType, TitleLevel } from '../../enums/index.js';
+import { PopoverPlacementType } from '../../enums/index.js';
 import { DatePicker } from '../../webComponents/DatePicker/index.js';
 import { MultiComboBox } from '../../webComponents/MultiComboBox/index.js';
 import { MultiComboBoxItem } from '../../webComponents/MultiComboBoxItem/index.js';
