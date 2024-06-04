@@ -1,7 +1,8 @@
 import { Meta } from '@storybook/addon-docs';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import { MyCustomElement } from '../styling/MyCustomElement';
 import { TableShadowRootExample } from '../styling/TableShadowRootExample';
-import { MessageStrip, MessageStripDesign, ThemeProvider } from '@ui5/webcomponents-react';
+import { MessageStrip, ThemeProvider } from '@ui5/webcomponents-react';
 import { Footer, TableOfContent } from '@sb/components';
 
 <Meta title="Styling" />
@@ -26,7 +27,7 @@ For example, if you want to change the color of all texts that use the `--sapTex
 
 <MessageStrip
   hideCloseButton
-  design={MessageStripDesign.Warning}
+  design={MessageStripDesign.Critical}
   children="Changing the value of a CSS Variable will affect theming capabilities, as it will be changed for all themes!"
 />
 

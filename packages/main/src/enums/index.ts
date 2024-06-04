@@ -23,7 +23,6 @@ export * from './ListItemType.js';
 export * from './LoaderType.js';
 export * from './MessageBoxActions.js';
 export * from './MessageBoxTypes.js';
-export * from './MessageStripDesign.js';
 export * from './ObjectPageMode.js';
 export * from './PageBackgroundDesign.js';
 export * from './PanelAccessibleRole.js';

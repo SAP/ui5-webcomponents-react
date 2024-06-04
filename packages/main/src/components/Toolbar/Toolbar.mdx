@@ -1,12 +1,12 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import * as ComponentStories from './Toolbar.stories';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import {
   OverflowToolbarButton,
   OverflowToolbarToggleButton,
   MessageStrip,
-  MessageStripDesign,
   ToolbarSpacer,
   ToolbarSeparator
 } from '../..';
@@ -18,7 +18,7 @@ import {
 />
 
 <MessageStrip
-  design={MessageStripDesign.Warning}
+  design={MessageStripDesign.Critical}
   hideCloseButton
   children={
     <>

@@ -108,7 +108,8 @@
         "busy": "loading",
         "busyDelay": "loadingDelay"
       }
-    }
+    },
+    "MessageStrip": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -143,6 +144,7 @@
     "MediaGalleryLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryLayout.js",
     "MediaGalleryMenuHorizontalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuHorizontalAlign.js",
     "MediaGalleryMenuVerticalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuVerticalAlign.js",
+    "MessageStripDesign": "@ui5/webcomponents/dist/types/MessageStripDesign.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
     "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
@@ -167,6 +169,9 @@
       "MultiSelect": "Multiple",
       "SingleSelectEnd": "SingleEnd",
       "SingleSelectAuto": "SingleAuto"
+    },
+    "MessageStripDesign": {
+      "Warning": "Critical"
     }
   }
 }

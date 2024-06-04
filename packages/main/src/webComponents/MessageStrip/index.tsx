@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/MessageStrip.js';
+import type MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
-import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
-import type { ReactNode } from 'react';
 
 interface MessageStripAttributes {
   /**
