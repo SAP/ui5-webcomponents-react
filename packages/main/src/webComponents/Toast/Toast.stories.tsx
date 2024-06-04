@@ -1,8 +1,8 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta } from '@storybook/react';
+import ToastPlacement from '@ui5/webcomponents/dist/types/ToastPlacement.js';
 import { useRef, useEffect, forwardRef } from 'react';
 import { createPortal } from 'react-dom';
-import { ToastPlacement } from '../../enums/index.js';
 import { Button } from '../Button/index.js';
 import type { ToastDomRef, ToastPropTypes } from './index.js';
 import { Toast as OriginalToast } from './index.js';

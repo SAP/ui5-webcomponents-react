@@ -209,7 +209,6 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'TableGrowingMode':
     case 'TableMode':
     case 'TableRowType':
-    case 'ToastPlacement':
     case 'ToolbarAlign':
     case 'ToolbarItemOverflowBehavior':
     case 'UploadState':

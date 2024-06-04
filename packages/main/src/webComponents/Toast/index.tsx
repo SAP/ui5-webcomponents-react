@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Toast.js';
+import type ToastPlacement from '@ui5/webcomponents/dist/types/ToastPlacement.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
-import ToastPlacement from '@ui5/webcomponents/dist/types/ToastPlacement.js';
-import type { ReactNode } from 'react';
 
 interface ToastAttributes {
   /**
