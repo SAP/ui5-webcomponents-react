@@ -232,7 +232,14 @@
     "ToolbarSelect": {},
     "ToolbarSelectOption": {},
     "ToolbarSeparator": {},
-    "ToolbarSpacer": {}
+    "ToolbarSpacer": {},
+    "Tree": {
+      "changedProps": {
+        "mode": "selectionMode"
+      }
+    },
+    "TreeItem": {},
+    "TreeItemCustom": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
