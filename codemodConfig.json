@@ -125,7 +125,13 @@
     },
     "NotificationAction": {},
     "NotificationListGroupItem": {},
-    "NotificationListItem": {}
+    "NotificationListItem": {},
+    "Option": {
+      "changedProps": {
+        "title": "tooltip"
+      },
+      "removedProps": ["disabled"]
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
