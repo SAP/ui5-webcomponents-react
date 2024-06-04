@@ -35,9 +35,12 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
 
   useStylesheet(styleData, 'Resizer');
 
+  const { key, ...reactTableHeaderProps } = headerProps;
+
   return (
     <div
-      {...headerProps}
+      key={key}
+      {...reactTableHeaderProps}
       style={{ width: `${columnVirtualizer.getTotalSize()}px` }}
       ref={ref}
       data-component-name="AnalyticalTableHeaderRow"

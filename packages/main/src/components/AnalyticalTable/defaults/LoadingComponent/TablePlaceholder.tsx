@@ -14,7 +14,7 @@ interface TablePlaceholderPropTypes {
 }
 
 export const TablePlaceholder: FC<TablePlaceholderPropTypes> = (props) => {
-  const { columns, rows, style } = props;
+  const { columns, rows = 5, style } = props;
 
   useStylesheet(styleData, TablePlaceholder.displayName);
 
@@ -49,7 +49,3 @@ export const TablePlaceholder: FC<TablePlaceholderPropTypes> = (props) => {
 };
 
 TablePlaceholder.displayName = 'TablePlaceholder';
-
-TablePlaceholder.defaultProps = {
-  rows: 5
-};

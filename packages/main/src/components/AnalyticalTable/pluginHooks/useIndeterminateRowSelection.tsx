@@ -78,7 +78,7 @@ const getIndeterminate = (rows, rowsById, state) => {
  */
 export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndeterminateChange) => {
   const toggleRowProps = (rowProps, { row, instance }) => {
-    let indeterminate;
+    let indeterminate: boolean;
     if (instance.isAllRowsSelected) {
       indeterminate = false;
     } else {

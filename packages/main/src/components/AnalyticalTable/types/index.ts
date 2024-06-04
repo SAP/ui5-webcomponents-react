@@ -373,7 +373,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * The minimum number of rows that are displayed. If the data contains fewer entries than `minRows`, it will be filled with empty rows.
    *
-   * __Default:__ `5`
+   * @default `5`
    */
   minRows?: number;
   /**
@@ -471,7 +471,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * The value of this prop can either be a `string` pointing to a `ValueState` or an `IndicationColor` in your dataset
    * or an accessor function which should return a `ValueState` or an `IndicationColor`.
    *
-   * __Default:__ `"status"`
+   * @default `"status"`
    */
   highlightField?: string | ((row: Record<any, any>) => HighlightColor);
   /**
@@ -482,6 +482,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   filterable?: boolean;
   /**
    * Defines whether columns are sortable.
+   *
+   * @default true
    */
   sortable?: boolean;
   /**
@@ -516,7 +518,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
    * - __"MultiSelect":__ You can select multiple rows.
    *
-   * __Default:__ `"None"`
+   * @default `"None"`
    */
   selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode | TableSelectionMode;
 
@@ -527,10 +529,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - **Smart**: Every column gets the space it needs for displaying the full header text. If all header texts need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long text will get more space until there is no more table space left.
    * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled. To prevent huge header text from polluting the table, a max-width of 700px is applied to each column. It can be overwritten by setting the respective column property. This mode adds a calculated `minWidth` to each column. If the internally calculated `minWidth` is larger than the `width` set in the column options, it can lead to an unwanted scrollbar. To prevent this, you can set the `minWidth` in the column options yourself.
    *
-   * __Default:__ `"Default"`
-   *
    * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
+   *
    * __Note:__ For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
+   *
+   * @default `"Default"`
    *
    */
   scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode | TableScaleWidthMode;
@@ -551,7 +554,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * Example: Your initial dataset consists of 50 entries and you want to load more data when the user scrolled to the 40th row. Then you should set the `infiniteScrollThreshold` to 10.
    *
-   * __Default:__ `20`
+   * @default 20
    */
   infiniteScrollThreshold?: number;
   /**
@@ -566,6 +569,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   reactTableOptions?: Record<string, unknown>;
   /**
    * You can use this prop to add custom hooks to the table.
+   *
+   * @default `[]`
    */
   tableHooks?: ((hooks: ReactTableHooks) => void)[];
   /**
@@ -573,7 +578,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note__: You can also specify deeply nested sub-rows with accessors like `values.subRows`.
    *
-   * __Default:__ `"subRows"`
+   * @default `"subRows"`
    */
   subRowsKey?: string;
   /**
@@ -589,7 +594,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * The amount of columns to load both behind and ahead of the current window range.
    *
-   * __Default:__ `5`
+   * @default `5`
    */
   overscanCountHorizontal?: number;
   /**
@@ -618,7 +623,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"IncludeHeight":__ Render subcomponents below each row. The height of each initially visible subcomponent (defined by `visibleRows`) is taken into account when defining the body height of the table.
    * - __"IncludeHeightExpandable":__ Render subcomponents as expandable container of each row. The height of each expanded subcomponent of visible rows (defined by `visibleRows`) is taken into account when defining the body height of the table, so that the height of the table changes when a subcomponent is expanded/collapsed. (since: v1.23.0)
    *
-   * __Default:__ `"Expandable"`
+   * @default `"Expandable"`
    *
    * @since 1.19.0
    */
