@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Toolbar.js';
+import type ToolbarAlign from '@ui5/webcomponents/dist/types/ToolbarAlign.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
-import ToolbarAlign from '@ui5/webcomponents/dist/types/ToolbarAlign.js';
-import type { ReactNode } from 'react';
 
 interface ToolbarAttributes {
   /**

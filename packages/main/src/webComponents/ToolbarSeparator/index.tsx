@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarSeparator.js';
+import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
-import ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
 
 interface ToolbarSeparatorAttributes {
   /**

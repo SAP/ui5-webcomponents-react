@@ -1,12 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarButton.js';
+import type { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
+import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
+import type { CSSProperties } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
-import type { ToolbarAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
-import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
-import type { CSSProperties } from 'react';
 
 interface ToolbarButtonAttributes {
   /**
@@ -98,7 +98,7 @@ interface ToolbarButtonDomRef extends Required<ToolbarButtonAttributes>, Ui5DomR
    * - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
    * Accepts a lowercase string value.
    */
-  accessibilityAttributes: ToolbarAccessibilityAttributes;
+  accessibilityAttributes: ButtonAccessibilityAttributes;
 }
 
 interface ToolbarButtonPropTypes

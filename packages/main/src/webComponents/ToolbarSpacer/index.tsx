@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarSpacer.js';
+import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
+import type { CSSProperties } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
-import ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
-import type { CSSProperties } from 'react';
 
 interface ToolbarSpacerAttributes {
   /**
