@@ -146,6 +146,11 @@
         "placementType": "placement"
       },
       "removedProps": ["hideBackdrop", "modal"]
+    },
+    "ProductSwitch": {},
+    "ProductSwitchItem": {},
+    "ProgressIndicator": {
+      "removedProps": ["disabled"]
     }
   },
   "enums": {
