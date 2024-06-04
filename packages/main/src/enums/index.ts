@@ -41,4 +41,3 @@ export * from './ToolbarDesign.js';
 export * from './ToolbarStyle.js';
 export * from './ValueColor.js';
 export * from './VerticalAlign.js';
-export * from './WizardContentLayout.js';

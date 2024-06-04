@@ -246,7 +246,9 @@
       }
     },
     "UploadCollectionItem": {},
-    "ViewSettingsDialog": {}
+    "ViewSettingsDialog": {},
+    "Wizard": {},
+    "WizardStep": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -304,6 +306,7 @@
     "ToolbarItemOverflowBehavior": "@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js",
     "UploadState": "@ui5/webcomponents-fiori/dist/types/UploadState.js",
     "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
+    "WizardContentLayout": "@ui5/webcomponents-fiori/dist/types/WizardContentLayout.js",
     "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
   },
   "enumProperties": {

@@ -211,7 +211,6 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'TableRowType':
     case 'ValueState':
     case 'ViewSettingsDialogMode':
-    case 'WizardContentLayout':
     case 'WrappingType':
       return {
         importStatement: `import { ${typeWithoutNamespace} } from '../../enums/index.js';`,
