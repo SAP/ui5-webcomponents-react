@@ -158,85 +158,100 @@
       "changedProps": {
         "placementType": "placement"
       }
-    }
-  },
-  "enums": {
-    "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
-    "AvatarGroupType": "@ui5/webcomponents/dist/types/AvatarGroupType.js",
-    "AvatarShape": "@ui5/webcomponents/dist/types/AvatarShape.js",
-    "AvatarSize": "@ui5/webcomponents/dist/types/AvatarSize.js",
-    "BadgeDesign": "@ui5/webcomponents/dist/types/TagDesign.js",
-    "BarDesign": "@ui5/webcomponents/dist/types/BarDesign.js",
-    "BreadcrumbsDesign": "@ui5/webcomponents/dist/types/BreadcrumbsDesign.js",
-    "BreadcrumbsSeparatorStyle": "@ui5/webcomponents/dist/types/BreadcrumbsSeparator.js",
-    "BusyIndicatorSize": "@ui5/webcomponents/dist/types/BusyIndicatorSize.js",
-    "BusyIndicatorTextPlacement": "@ui5/webcomponents/dist/types/BusyIndicatorTextPlacement.js",
-    "ButtonDesign": "@ui5/webcomponents/dist/types/ButtonDesign.js",
-    "ButtonType": "@ui5/webcomponents/dist/types/ButtonType.js",
-    "CalendarLegendItemType": "@ui5/webcomponents/dist/types/CalendarLegendItemType.js",
-    "CalendarSelection": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
-    "CalendarSelectionMode": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
-    "CalendarType": "@ui5/webcomponents-base/dist/types/CalendarType.js",
-    "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js",
-    "ComboBoxFilter": "@ui5/webcomponents/dist/types/ComboBoxFilter.js",
-    "FCLLayout": "@ui5/webcomponents-fiori/dist/types/FCLLayout.js",
-    "HighlightTypes": "@ui5/webcomponents/dist/types/HighlightTypes.js",
-    "IconDesign": "@ui5/webcomponents/dist/types/IconDesign.js",
-    "IllustrationMessageSize": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js",
-    "IllustrationMessageType": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js",
-    "InputType": "@ui5/webcomponents/dist/types/InputType.js",
-    "LinkDesign": "@ui5/webcomponents/dist/types/LinkDesign.js",
-    "ListMode": "@ui5/webcomponents/dist/types/ListSelectionMode.js",
-    "ListGrowingMode": "@ui5/webcomponents/dist/types/ListGrowingMode.js",
-    "ListSeparators": "@ui5/webcomponents/dist/types/ListSeparators.js",
-    "MediaGalleryItemLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryItemLayout.js",
-    "MediaGalleryLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryLayout.js",
-    "MediaGalleryMenuHorizontalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuHorizontalAlign.js",
-    "MediaGalleryMenuVerticalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuVerticalAlign.js",
-    "MessageStripDesign": "@ui5/webcomponents/dist/types/MessageStripDesign.js",
-    "Priority": "@ui5/webcomponents/dist/types/Priority.js",
-    "PageBackgroundDesign": "@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js",
-    "PanelAccessibleRole": "@ui5/webcomponents/dist/types/PanelAccessibleRole.js",
-    "PopoverHorizontalAlign": "@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js",
-    "PopoverPlacementType": "@ui5/webcomponents/dist/types/PopoverPlacement.js",
-    "PopoverPlacement": "@ui5/webcomponents/dist/types/PopoverPlacement.js",
-    "PopoverVerticalAlign": "@ui5/webcomponents/dist/types/PopoverVerticalAlign.js",
-    "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
-    "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
-    "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
-    "SideContentVisibility": "@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js",
-    "TitleLevel": "@ui5/webcomponents/dist/types/TitleLevel.js",
-    "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
-    "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
-  },
-  "enumProperties": {
-    "ValueState": {
-      "Success": "Positive",
-      "Warning": "Critical",
-      "Error": "Negative"
     },
-    "HighlightTypes": {
-      "Success": "Positive",
-      "Warning": "Critical",
-      "Error": "Negative"
+    "SegmentedButton": {
+      "changedProps": {
+        "mode": "selectionMode"
+      },
+      "SegmentedButtonItem": {
+        "changedProps": {
+          "pressed": "selected"
+        }
+      }
     },
-    "ListMode": {
-      "SingleSelectBegin": "SingleStart",
-      "SingleSelect": "Single",
-      "MultiSelect": "Multiple",
-      "SingleSelectEnd": "SingleEnd",
-      "SingleSelectAuto": "SingleAuto"
+    "enums": {
+      "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
+      "AvatarGroupType": "@ui5/webcomponents/dist/types/AvatarGroupType.js",
+      "AvatarShape": "@ui5/webcomponents/dist/types/AvatarShape.js",
+      "AvatarSize": "@ui5/webcomponents/dist/types/AvatarSize.js",
+      "BadgeDesign": "@ui5/webcomponents/dist/types/TagDesign.js",
+      "BarDesign": "@ui5/webcomponents/dist/types/BarDesign.js",
+      "BreadcrumbsDesign": "@ui5/webcomponents/dist/types/BreadcrumbsDesign.js",
+      "BreadcrumbsSeparatorStyle": "@ui5/webcomponents/dist/types/BreadcrumbsSeparator.js",
+      "BusyIndicatorSize": "@ui5/webcomponents/dist/types/BusyIndicatorSize.js",
+      "BusyIndicatorTextPlacement": "@ui5/webcomponents/dist/types/BusyIndicatorTextPlacement.js",
+      "ButtonDesign": "@ui5/webcomponents/dist/types/ButtonDesign.js",
+      "ButtonType": "@ui5/webcomponents/dist/types/ButtonType.js",
+      "CalendarLegendItemType": "@ui5/webcomponents/dist/types/CalendarLegendItemType.js",
+      "CalendarSelection": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
+      "CalendarSelectionMode": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
+      "CalendarType": "@ui5/webcomponents-base/dist/types/CalendarType.js",
+      "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js",
+      "ComboBoxFilter": "@ui5/webcomponents/dist/types/ComboBoxFilter.js",
+      "FCLLayout": "@ui5/webcomponents-fiori/dist/types/FCLLayout.js",
+      "HighlightTypes": "@ui5/webcomponents/dist/types/HighlightTypes.js",
+      "IconDesign": "@ui5/webcomponents/dist/types/IconDesign.js",
+      "IllustrationMessageSize": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js",
+      "IllustrationMessageType": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js",
+      "InputType": "@ui5/webcomponents/dist/types/InputType.js",
+      "LinkDesign": "@ui5/webcomponents/dist/types/LinkDesign.js",
+      "ListMode": "@ui5/webcomponents/dist/types/ListSelectionMode.js",
+      "ListGrowingMode": "@ui5/webcomponents/dist/types/ListGrowingMode.js",
+      "ListSeparators": "@ui5/webcomponents/dist/types/ListSeparators.js",
+      "MediaGalleryItemLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryItemLayout.js",
+      "MediaGalleryLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryLayout.js",
+      "MediaGalleryMenuHorizontalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuHorizontalAlign.js",
+      "MediaGalleryMenuVerticalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuVerticalAlign.js",
+      "MessageStripDesign": "@ui5/webcomponents/dist/types/MessageStripDesign.js",
+      "Priority": "@ui5/webcomponents/dist/types/Priority.js",
+      "PageBackgroundDesign": "@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js",
+      "PanelAccessibleRole": "@ui5/webcomponents/dist/types/PanelAccessibleRole.js",
+      "PopoverHorizontalAlign": "@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js",
+      "PopoverPlacementType": "@ui5/webcomponents/dist/types/PopoverPlacement.js",
+      "PopoverPlacement": "@ui5/webcomponents/dist/types/PopoverPlacement.js",
+      "PopoverVerticalAlign": "@ui5/webcomponents/dist/types/PopoverVerticalAlign.js",
+      "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
+      "SegmentedButtonMode": "@ui5/webcomponents/dist/types/SegmentedButtonSelectionMode.js",
+      "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
+      "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
+      "SideContentVisibility": "@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js",
+      "TitleLevel": "@ui5/webcomponents/dist/types/TitleLevel.js",
+      "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
+      "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
     },
-    "MessageStripDesign": {
-      "Warning": "Critical"
-    },
-    "PopoverPlacementType": {
-      "Left": "Start",
-      "Right": "End"
-    },
-    "PopoverHorizontalAlign": {
-      "Left": "Start",
-      "Right": "End"
+    "enumProperties": {
+      "ValueState": {
+        "Success": "Positive",
+        "Warning": "Critical",
+        "Error": "Negative"
+      },
+      "HighlightTypes": {
+        "Success": "Positive",
+        "Warning": "Critical",
+        "Error": "Negative"
+      },
+      "ListMode": {
+        "SingleSelectBegin": "SingleStart",
+        "SingleSelect": "Single",
+        "MultiSelect": "Multiple",
+        "SingleSelectEnd": "SingleEnd",
+        "SingleSelectAuto": "SingleAuto"
+      },
+      "MessageStripDesign": {
+        "Warning": "Critical"
+      },
+      "PopoverPlacementType": {
+        "Left": "Start",
+        "Right": "End"
+      },
+      "PopoverHorizontalAlign": {
+        "Left": "Start",
+        "Right": "End"
+      },
+      "SegmentedButtonMode": {
+        "SingleSelect": "Single",
+        "MultiSelect": "Multiple"
+      }
     }
   }
 }

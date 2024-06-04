@@ -24,7 +24,6 @@ export * from './LoaderType.js';
 export * from './MessageBoxActions.js';
 export * from './MessageBoxTypes.js';
 export * from './ObjectPageMode.js';
-export * from './SegmentedButtonMode.js';
 export * from './SemanticColor.js';
 export * from './Size.js';
 export * from './SwitchDesign.js';
