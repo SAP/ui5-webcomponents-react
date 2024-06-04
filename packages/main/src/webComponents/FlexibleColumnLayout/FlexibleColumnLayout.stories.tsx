@@ -19,6 +19,7 @@ import { ShellBar } from '../ShellBar';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { FlexibleColumnLayout } from './index';
+import { CardHeader } from '@ui5/webcomponents-react';
 
 const meta = {
   title: 'Layouts & Floorplans / FlexibleColumnLayout',
@@ -390,10 +391,14 @@ export const WithDifferentColumns: Story = {
               />
             </Toolbar>
             <Card
-              avatar={<Avatar icon="person-placeholder" />}
-              titleText={selectedCast.name}
-              subtitleText={`age: ${Math.floor(Math.random() * (75 - 18 + 1) + 18)}`}
-              status={selectedCast.gender}
+              header={
+                <CardHeader
+                  avatar={<Avatar icon="person-placeholder" />}
+                  titleText={selectedCast.name}
+                  subtitleText={`age: ${Math.floor(Math.random() * (75 - 18 + 1) + 18)}`}
+                  additionalText={selectedCast.gender}
+                />
+              }
             >
               <div style={spacing.sapUiContentPadding}>
                 <Text>
