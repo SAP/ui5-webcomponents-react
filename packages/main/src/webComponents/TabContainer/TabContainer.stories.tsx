@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
+import TabLayout from '@ui5/webcomponents/dist/types/TabLayout.js';
 import activitiesIcon from '@ui5/webcomponents-icons/dist/activities.js';
 import addIcon from '@ui5/webcomponents-icons/dist/add.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import menuIcon from '@ui5/webcomponents-icons/dist/menu.js';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
-import { TabContainerBackgroundDesign, TabLayout } from '../../enums/index.js';
 import { Tab } from '../Tab/index.js';
 import { TabSeparator } from '../TabSeparator/index.js';
 import { TabContainer } from './index.js';
@@ -18,8 +19,8 @@ const meta = {
   },
   args: {
     tabLayout: TabLayout.Standard,
-    contentBackgroundDesign: TabContainerBackgroundDesign.Solid,
-    headerBackgroundDesign: TabContainerBackgroundDesign.Solid
+    contentBackgroundDesign: BackgroundDesign.Solid,
+    headerBackgroundDesign: BackgroundDesign.Solid
   },
   tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof TabContainer>;

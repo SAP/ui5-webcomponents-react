@@ -204,9 +204,6 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'SideContentPosition':
     case 'SideContentVisibility':
     case 'SwitchDesign':
-    case 'TabContainerBackgroundDesign':
-    case 'TabContainerTabsPlacement':
-    case 'TabLayout':
     case 'TabsOverflowMode':
     case 'TableColumnPopinDisplay':
     case 'TableGrowingMode':

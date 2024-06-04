@@ -1,17 +1,17 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TabContainer.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 import type {
   ITab,
   TabContainerMoveEventDetail,
   TabContainerTabSelectEventDetail
 } from '@ui5/webcomponents/dist/TabContainer.js';
-import BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
-import OverflowMode from '@ui5/webcomponents/dist/types/OverflowMode.js';
-import TabLayout from '@ui5/webcomponents/dist/types/TabLayout.js';
+import type BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
+import type OverflowMode from '@ui5/webcomponents/dist/types/OverflowMode.js';
+import type TabLayout from '@ui5/webcomponents/dist/types/TabLayout.js';
 import type { ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TabContainerAttributes {
   /**
