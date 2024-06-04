@@ -144,8 +144,7 @@
     "Popover": {
       "changedProps": {
         "placementType": "placement"
-      },
-      "removedProps": ["hideBackdrop", "modal"]
+      }
     },
     "ProductSwitch": {},
     "ProductSwitchItem": {},
@@ -154,7 +153,12 @@
     },
     "RadioButton": {},
     "RangeSlider": {},
-    "RatingIndicator": {}
+    "RatingIndicator": {},
+    "ResponsivePopover": {
+      "changedProps": {
+        "placementType": "placement"
+      }
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
