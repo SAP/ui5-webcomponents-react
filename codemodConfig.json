@@ -223,7 +223,10 @@
     "TimelineItem": {},
     "Title": {},
     "Toast": {},
-    "ToggleButton": {}
+    "ToggleButton": {},
+    "Token": {
+      "removedProps": ["disabled"]
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
