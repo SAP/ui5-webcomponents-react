@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import documentIcon from '@ui5/webcomponents-icons/dist/document.js';
 import { Children, cloneElement, useState } from 'react';
 import { FlexBox } from '../../components/FlexBox/index.js';
 import { Text } from '../../components/Text/index.js';
-import { FlexBoxAlignItems, ListMode, UploadState } from '../../enums/index.js';
+import { FlexBoxAlignItems, UploadState } from '../../enums/index.js';
 import { Button } from '../Button/index.js';
 import { Icon } from '../Icon/index.js';
 import { Title } from '../Title/index.js';
@@ -18,7 +19,7 @@ const meta = {
     header: { control: { disable: true } }
   },
   args: {
-    mode: ListMode.None
+    selectionMode: ListSelectionMode.None
   },
   tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof UploadCollection>;

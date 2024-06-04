@@ -45,7 +45,7 @@ const onSelectionChange = (event) => {
   console.log(targetItem.dataset.custom);
 };
 
-<List mode={ListMode.MultiSelect} onSelectionChange={onSelectionChange}>
+<List mode={ListSelectionMode.MultiSelect} onSelectionChange={onSelectionChange}>
   <StandardListItem additionalText="3" data-custom="custom value of list item 1">
     List Item 1
   </StandardListItem>

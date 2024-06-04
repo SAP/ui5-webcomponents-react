@@ -148,7 +148,7 @@ const MultiSelectDialog = () => {
       <Button onClick={handleOpen}>Open Dialog</Button>
       <SelectDialog
         open={dialogOpen}
-        mode={ListMode.MultiSelect}
+        mode={ListSelectionMode.Multiple}
         numberOfSelectedItems={Object.keys(selectedItems).length}
         listProps={{ onItemClick: handleItemClick }}
         showClearButton

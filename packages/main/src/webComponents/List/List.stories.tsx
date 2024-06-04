@@ -1,8 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ListGrowingMode from '@ui5/webcomponents/dist/types/ListGrowingMode.js';
+import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
+import ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { FlexBox } from '../../components/FlexBox';
 import { Text } from '../../components/Text';
-import { FlexBoxJustifyContent, ListGrowingMode, ListMode, ListSeparators } from '../../enums';
+import { FlexBoxJustifyContent } from '../../enums';
 import { CustomListItem } from '../CustomListItem';
 import { ListItemGroup } from '../ListItemGroup';
 import { ProgressIndicator } from '../ProgressIndicator';
@@ -18,7 +21,7 @@ const meta = {
   },
   args: {
     headerText: 'List with StandardListItems',
-    mode: ListMode.None,
+    selectionMode: ListSelectionMode.None,
     separators: ListSeparators.All,
     growing: ListGrowingMode.None
   },

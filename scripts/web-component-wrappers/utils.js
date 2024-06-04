@@ -200,9 +200,6 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'BreadcrumbsSeparatorStyle':
     case 'ComboBoxFilter':
     case 'ListItemType':
-    case 'ListMode':
-    case 'ListGrowingMode':
-    case 'ListSeparators':
     case 'MediaGalleryLayout':
     case 'MediaGalleryItemLayout':
     case 'MediaGalleryMenuHorizontalAlign':

@@ -4,10 +4,11 @@ import Pc1 from '@sb/demoImages/PC1.jpg';
 import Pc2 from '@sb/demoImages/PC2.jpg';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
+import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { DialogDomRef } from '../..';
-import { Button, FlexBox, Label, ListMode, StandardListItem, Text } from '../..';
+import { Button, FlexBox, Label, StandardListItem, Text } from '../..';
 import type { SelectDialogPropTypes } from './index.js';
 import { SelectDialog as OriginalSelectDialog } from './index.js';
 
@@ -131,7 +132,7 @@ export const MultiSelect: Story = {
         <Button onClick={handleOpen}>Open Dialog</Button>
         <SelectDialog
           open={dialogOpen}
-          mode={ListMode.MultiSelect}
+          mode={ListSelectionMode.Multiple}
           numberOfSelectedItems={Object.keys(selectedItems).length}
           listProps={{ onItemClick: handleItemClick }}
           showClearButton

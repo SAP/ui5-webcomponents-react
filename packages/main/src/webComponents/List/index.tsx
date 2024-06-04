@@ -1,8 +1,6 @@
 'use client';
 
 import '@ui5/webcomponents/dist/List.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 import type {
   ListItemClickEventDetail,
   ListItemCloseEventDetail,
@@ -10,12 +8,14 @@ import type {
   ListItemToggleEventDetail,
   ListSelectionChangeEventDetail
 } from '@ui5/webcomponents/dist/List.js';
-import ListItemBase from '@ui5/webcomponents/dist/ListItemBase.js';
-import ListAccessibleRole from '@ui5/webcomponents/dist/types/ListAccessibleRole.js';
-import ListGrowingMode from '@ui5/webcomponents/dist/types/ListGrowingMode.js';
-import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
-import ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators.js';
+import type ListItemBase from '@ui5/webcomponents/dist/ListItemBase.js';
+import type ListAccessibleRole from '@ui5/webcomponents/dist/types/ListAccessibleRole.js';
+import type ListGrowingMode from '@ui5/webcomponents/dist/types/ListGrowingMode.js';
+import type ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
+import type ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators.js';
 import type { ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ListAttributes {
   /**

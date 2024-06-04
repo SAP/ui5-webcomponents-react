@@ -85,6 +85,12 @@
       "changedProps": {
         "title": "tooltip"
       }
+    },
+    "List": {
+      "changedProps": {
+        "mode": "selectionMode",
+        "busy": "loading"
+      }
     }
   },
   "enums": {
@@ -113,6 +119,9 @@
     "IllustrationMessageType": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js",
     "InputType": "@ui5/webcomponents/dist/types/InputType.js",
     "LinkDesign": "@ui5/webcomponents/dist/types/LinkDesign.js",
+    "ListMode": "@ui5/webcomponents/dist/types/ListSelectionMode.js",
+    "ListGrowingMode": "@ui5/webcomponents/dist/types/ListGrowingMode.js",
+    "ListSeparators": "@ui5/webcomponents/dist/types/ListSeparators.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
     "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
@@ -130,6 +139,13 @@
       "Success": "Positive",
       "Warning": "Critical",
       "Error": "Negative"
+    },
+    "ListMode": {
+      "SingleSelectBegin": "SingleStart",
+      "SingleSelect": "Single",
+      "MultiSelect": "Multiple",
+      "SingleSelectEnd": "SingleEnd",
+      "SingleSelectAuto": "SingleAuto"
     }
   }
 }
