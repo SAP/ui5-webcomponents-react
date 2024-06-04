@@ -110,7 +110,11 @@
   },
   "resolutions": {
     "@types/react": "18.3.3",
-    "tocbot": "4.28.2"
+    "tocbot": "4.28.2",
+    "@ui5/webcomponents": "2.0.0-rc.3",
+    "@ui5/webcomponents-base": "2.0.0-rc.3",
+    "@ui5/webcomponents-icons": "2.0.0-rc.3",
+    "@ui5/webcomponents-theming": "2.0.0-rc.3"
   },
   "type": "module",
   "nyc": {
