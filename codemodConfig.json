@@ -152,7 +152,9 @@
     "ProgressIndicator": {
       "removedProps": ["disabled"]
     },
-    "RadioButton": {}
+    "RadioButton": {},
+    "RangeSlider": {},
+    "RatingIndicator": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
