@@ -7,6 +7,11 @@
       },
       "removedProps": ["propName"]
     },
+    "ActionSheet": {
+      "changedProps": {
+        "placementType": "placement"
+      }
+    },
     "Avatar": {},
     "Badge": {
       "newComponent": "Tag"
@@ -170,6 +175,11 @@
       }
     },
     "Select": {},
+    "SelectDialog": {
+      "changedProps": {
+        "mode": "selectionMode"
+      }
+    },
     "SelectMenu": {},
     "SelectMenuOption": {},
     "ShellBar": {},
