@@ -37,7 +37,6 @@ export * from './TableSelectionMode.js';
 export * from './TableVisibleRowCountMode.js';
 export * from './TextAlign.js';
 export * from './Themes.js';
-export * from './TimelineLayout.js';
 export * from './ToastPlacement.js';
 export * from './ToolbarAlign.js';
 export * from './ToolbarDesign.js';

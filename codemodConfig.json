@@ -217,7 +217,10 @@
       "changedProps": {
         "growingMaxLines": "growingMaxRows"
       }
-    }
+    },
+    "TimePicker": {},
+    "Timeline": {},
+    "TimelineItem": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -268,6 +271,7 @@
     "TabContainerBackgroundDesign": "@ui5/webcomponents/dist/types/BackgroundDesign.js",
     "TabLayout": "@ui5/webcomponents/dist/types/TabLayout.js",
     "TabsOverflowMode": "@ui5/webcomponents/dist/types/OverflowMode.js",
+    "TimelineLayout": "@ui5/webcomponents-fiori/dist/types/TimelineLayout.js",
     "TitleLevel": "@ui5/webcomponents/dist/types/TitleLevel.js",
     "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
     "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
