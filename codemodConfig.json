@@ -151,7 +151,8 @@
     "ProductSwitchItem": {},
     "ProgressIndicator": {
       "removedProps": ["disabled"]
-    }
+    },
+    "RadioButton": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
