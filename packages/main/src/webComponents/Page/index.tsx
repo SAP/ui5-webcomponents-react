@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/Page.js';
+import type PageBackgroundDesign from '@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
-import PageBackgroundDesign from '@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js';
-import type { ReactNode } from 'react';
 
 interface PageAttributes {
   /**

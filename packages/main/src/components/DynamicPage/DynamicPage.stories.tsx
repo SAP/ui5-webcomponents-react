@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import PageBackgroundDesign from '@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js';
 import actionIcon from '@ui5/webcomponents-icons/dist/action.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import exitFSIcon from '@ui5/webcomponents-icons/dist/exit-full-screen.js';
@@ -25,7 +26,6 @@ import {
   Label,
   MessageStrip,
   ObjectStatus,
-  PageBackgroundDesign,
   Panel,
   Tag,
   Title,

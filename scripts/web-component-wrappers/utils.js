@@ -199,7 +199,6 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'BreadcrumbsDesign':
     case 'BreadcrumbsSeparatorStyle':
     case 'ListItemType':
-    case 'PageBackgroundDesign':
     case 'PanelAccessibleRole':
     case 'PopupAccessibleRole':
     case 'PopoverHorizontalAlign':

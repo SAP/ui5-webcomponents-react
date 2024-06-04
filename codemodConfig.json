@@ -131,6 +131,14 @@
         "title": "tooltip"
       },
       "removedProps": ["disabled"]
+    },
+    "Page": {
+      "comment": "logic for floatingFooter is inverted",
+      "changedProps": {
+        "disableScrolling": "noScrolling",
+        "floatingFooter": "fixedFooter"
+      },
+      "removedProps": ["disabled"]
     }
   },
   "enums": {
@@ -169,6 +177,7 @@
     "MessageStripDesign": "@ui5/webcomponents/dist/types/MessageStripDesign.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "Priority": "@ui5/webcomponents/dist/types/Priority.js",
+    "PageBackgroundDesign": "@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
     "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
     "SideContentVisibility": "@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js",

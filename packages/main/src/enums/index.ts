@@ -24,7 +24,6 @@ export * from './LoaderType.js';
 export * from './MessageBoxActions.js';
 export * from './MessageBoxTypes.js';
 export * from './ObjectPageMode.js';
-export * from './PageBackgroundDesign.js';
 export * from './PanelAccessibleRole.js';
 export * from './PopoverHorizontalAlign.js';
 export * from './PopoverPlacementType.js';

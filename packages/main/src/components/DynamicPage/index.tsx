@@ -1,10 +1,11 @@
 'use client';
 
+import PageBackgroundDesign from '@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js';
 import { debounce, ThemingParameters, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import React, { cloneElement, forwardRef, useEffect, useRef, useState } from 'react';
-import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums/index.js';
+import { GlobalStyleClasses } from '../../enums/index.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import type { CommonProps } from '../../types/index.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
