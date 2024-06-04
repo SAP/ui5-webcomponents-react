@@ -1,14 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
-import UploadCollectionSelectionMode from '@ui5/webcomponents-fiori/dist/types/UploadCollectionSelectionMode.js';
+import type UploadCollectionSelectionMode from '@ui5/webcomponents-fiori/dist/types/UploadCollectionSelectionMode.js';
 import type {
   UploadCollectionItemDeleteEventDetail,
   UploadCollectionSelectionChangeEventDetail
 } from '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 import type { DragEventHandler, ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface UploadCollectionAttributes {
   /**

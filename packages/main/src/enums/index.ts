@@ -39,8 +39,6 @@ export * from './TextAlign.js';
 export * from './Themes.js';
 export * from './ToolbarDesign.js';
 export * from './ToolbarStyle.js';
-export * from './UploadCollectionDnDOverlayMode.js';
-export * from './UploadState.js';
 export * from './ValueColor.js';
 export * from './VerticalAlign.js';
 export * from './ViewSettingsDialogMode.js';
