@@ -11,7 +11,7 @@ import {
   ThemeProvider
 } from '@ui5/webcomponents-react';
 import { clsx } from 'clsx';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { useGetSubComponentsOfModule } from '../utils';
 import classes from './DocsHeader.module.css';
 import { GitHubLogo } from './GitHub-Mark';

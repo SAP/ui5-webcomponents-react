@@ -1,6 +1,6 @@
 import { useStylesheet, useI18nBundle } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { DRAG_TO_RESIZE } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';

@@ -1,5 +1,4 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import React from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 import { CheckBox } from '../../../webComponents/CheckBox/index.js';
 import type { ReactTableHooks } from '../types/index.js';

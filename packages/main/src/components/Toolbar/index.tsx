@@ -9,7 +9,7 @@ import {
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ElementType, HTMLAttributes, ReactElement, ReactNode, Ref, RefObject } from 'react';
-import React, {
+import {
   Children,
   cloneElement,
   createRef,

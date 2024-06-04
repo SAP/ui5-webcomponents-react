@@ -3,7 +3,7 @@
 import { deprecationNotice, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
-import React, { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import { LoaderType } from '../../enums/index.js';
 import { PLEASE_WAIT } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../types/index.js';

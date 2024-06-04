@@ -13,7 +13,7 @@ import successIcon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MouseEventHandler, ReactNode } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { IndicationColor } from '../../enums/index.js';
 import { ValueState } from '../../enums/index.js';
 import {

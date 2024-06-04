@@ -1,7 +1,7 @@
 import type { Virtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
 import type { MutableRefObject, ReactNode } from 'react';
-import React, { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { AnalyticalTableSubComponentsBehavior } from '../../../enums/index.js';
 import type {
   AnalyticalTablePropTypes,

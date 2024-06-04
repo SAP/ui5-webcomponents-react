@@ -3,7 +3,7 @@
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactNode } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { EMPTY_VALUE } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../types/index.js';
 import { classNames, styleData } from './Text.module.css.js';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MediaEventProvider } from './EventProvider';
 import { attachMediaHandler, detachMediaHandler, getCurrentRange } from './Media';
 

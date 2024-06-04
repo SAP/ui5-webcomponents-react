@@ -3,7 +3,7 @@
 import { useStylesheet, useViewportRange } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactNode } from 'react';
-import React, { forwardRef, isValidElement } from 'react';
+import { forwardRef, isValidElement } from 'react';
 import { GridPosition } from '../../enums/index.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';

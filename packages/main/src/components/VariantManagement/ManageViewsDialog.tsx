@@ -1,7 +1,7 @@
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactNode } from 'react';
-import React, { Children, useEffect, useRef, useState } from 'react';
+import { isValidElement, Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
@@ -111,7 +111,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
 
   const [childrenProps, setChildrenProps] = useState(
     Children.map(children, (child) => {
-      if (!React.isValidElement(child)) {
+      if (!isValidElement(child)) {
         return {};
       }
       return child.props;
@@ -120,7 +120,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   useEffect(() => {
     setChildrenProps(
       Children.map(children, (child) => {
-        if (!React.isValidElement(child)) {
+        if (!isValidElement(child)) {
           return {};
         }
         return child.props;

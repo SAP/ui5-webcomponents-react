@@ -471,6 +471,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * The value of this prop can either be a `string` pointing to a `ValueState` or an `IndicationColor` in your dataset
    * or an accessor function which should return a `ValueState` or an `IndicationColor`.
    *
+   * __Note:__ `IndicationColor`s are available since `v1.26.0`.
+   *
    * @default `"status"`
    */
   highlightField?: string | ((row: Record<any, any>) => HighlightColor);

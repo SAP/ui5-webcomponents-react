@@ -1,7 +1,6 @@
 import { ThemingParameters, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, FC } from 'react';
-import React from 'react';
 import { resolveCellAlignment } from '../../util/index.js';
 import { classNames, styleData } from './TablePlaceholder.module.css.js';
 

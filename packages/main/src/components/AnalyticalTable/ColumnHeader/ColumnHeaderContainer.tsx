@@ -1,6 +1,6 @@
 import type { Virtualizer } from '@tanstack/react-virtual';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Fragment } from 'react';
+import { forwardRef, Fragment } from 'react';
 import type { DivWithCustomScrollProp } from '../types/index.js';
 import { classNames, styleData } from './Resizer.module.css.js';
 import { ColumnHeader } from './index.js';

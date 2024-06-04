@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.1...v1.29.2) (2024-06-03)
+
+### Bug Fixes
+
+- update translations ([bd070cb](https://github.com/SAP/ui5-webcomponents-react/commit/bd070cb6f9a20ceb0c8c77c3fbd99ab675285573))
+
+## [1.29.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.0...v1.29.1) (2024-05-29)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+# [1.29.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.4...v1.29.0) (2024-05-29)
+
+### Bug Fixes
+
+- fix postcss flexbox warnings ([#5859](https://github.com/SAP/ui5-webcomponents-react/issues/5859)) ([71688b8](https://github.com/SAP/ui5-webcomponents-react/commit/71688b84ca5ed6d0b0b0e1359cd44451b4a50872))
+
+### Features
+
+- **AnalyticalTable:** introduce autoResize column feature ([#3196](https://github.com/SAP/ui5-webcomponents-react/issues/3196)) ([#5758](https://github.com/SAP/ui5-webcomponents-react/issues/5758)) ([8f2ca88](https://github.com/SAP/ui5-webcomponents-react/commit/8f2ca882e008f1ba8f96e3a29afc0da5c088cead))
+
 ## [1.28.4](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.3...v1.28.4) (2024-05-24)
 
 **Note:** Version bump only for package @ui5/webcomponents-react

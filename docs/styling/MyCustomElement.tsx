@@ -1,4 +1,3 @@
-import React from 'react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import './MyCustomElement.css';
 

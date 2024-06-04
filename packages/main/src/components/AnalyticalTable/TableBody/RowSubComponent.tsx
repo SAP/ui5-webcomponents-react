@@ -1,7 +1,7 @@
 import type { VirtualItem } from '@tanstack/react-virtual';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { classNames, styleData } from './RowSubComponent.module.css.js';
 
 interface RowSubComponent {

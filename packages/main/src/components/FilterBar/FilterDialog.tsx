@@ -3,7 +3,7 @@ import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { Dispatch, MutableRefObject, ReactElement, SetStateAction } from 'react';
-import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
+import { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
   BarDesign,

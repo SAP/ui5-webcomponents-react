@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.29.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.4...v1.29.0) (2024-05-29)
+
+### Features
+
+- **cypress-commands:** add commands for dropdown menus ([#5756](https://github.com/SAP/ui5-webcomponents-react/issues/5756)) ([b80b36e](https://github.com/SAP/ui5-webcomponents-react/commit/b80b36e61678e276630d52b48cf3fcb0584af694))
+
 ## [1.25.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.0...v1.25.1) (2024-02-07)
 
 ### Bug Fixes
