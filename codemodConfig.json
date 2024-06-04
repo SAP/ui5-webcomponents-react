@@ -92,7 +92,9 @@
         "busy": "loading"
       }
     },
-    "ListItemGroup": {}
+    "ListItemGroup": {},
+    "MediaGallery": {},
+    "MediaGalleryItem": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -123,6 +125,10 @@
     "ListMode": "@ui5/webcomponents/dist/types/ListSelectionMode.js",
     "ListGrowingMode": "@ui5/webcomponents/dist/types/ListGrowingMode.js",
     "ListSeparators": "@ui5/webcomponents/dist/types/ListSeparators.js",
+    "MediaGalleryItemLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryItemLayout.js",
+    "MediaGalleryLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryLayout.js",
+    "MediaGalleryMenuHorizontalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuHorizontalAlign.js",
+    "MediaGalleryMenuVerticalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuVerticalAlign.js",
     "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
     "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",

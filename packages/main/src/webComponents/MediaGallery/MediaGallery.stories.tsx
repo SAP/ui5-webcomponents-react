@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import MediaGalleryLayout from '@ui5/webcomponents-fiori/dist/types/MediaGalleryLayout.js';
+import MediaGalleryMenuHorizontalAlign from '@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuHorizontalAlign.js';
+import MediaGalleryMenuVerticalAlign from '@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuVerticalAlign.js';
 import React, { useRef } from 'react';
-import {
-  MediaGalleryLayout,
-  MediaGalleryMenuHorizontalAlign,
-  MediaGalleryMenuVerticalAlign
-} from '../../enums/index.js';
 import { MediaGalleryItem } from '../MediaGalleryItem/index.js';
 import { Toast } from '../Toast/index.js';
 import { MediaGallery } from './index.js';
