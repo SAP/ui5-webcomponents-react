@@ -19,10 +19,14 @@ export interface SplitterElementPropTypes extends CommonProps {
   resizable?: boolean;
   /**
    * Defines the initial size of the `SplitterElement`.
+   *
+   * @default `"auto"`
    */
   size?: CSSProperties['width'] | CSSProperties['height'];
   /**
    * Defines the minimum size of the `SplitterElement`. The resizer element stops when the minimum size is reached.
+   *
+   * @default `0`
    */
   minSize?: number;
   /**
@@ -39,7 +43,7 @@ export interface SplitterElementPropTypes extends CommonProps {
  * content can be completely collapsed.
  */
 const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((props, ref) => {
-  const { children, style, className, minSize, size, resizable: _0, ...rest } = props;
+  const { children, style, className, minSize = 0, size = 'auto', resizable: _0, ...rest } = props;
   const [componentRef, splitterElementRef] = useSyncRef(ref);
   const { vertical, reset } = useContext(SplitterLayoutContext);
   const safariStyles = Device.isSafari() ? { width: 'min-content', flex: '1 1 auto' } : {};
@@ -102,11 +106,6 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
     </div>
   );
 });
-
-SplitterElement.defaultProps = {
-  minSize: 0,
-  size: 'auto'
-};
 
 SplitterElement.displayName = 'SplitterElement';
 
