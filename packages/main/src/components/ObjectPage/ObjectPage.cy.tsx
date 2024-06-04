@@ -31,7 +31,7 @@ import {
   ObjectPageSubSection,
   ObjectStatus,
   Text,
-  Title,
+  Title
 } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
