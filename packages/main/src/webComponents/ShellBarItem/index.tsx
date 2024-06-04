@@ -1,9 +1,9 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
+import type { ShellBarItemClickEventDetail } from '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
-import type { ShellBarItemClickEventDetail } from '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 
 interface ShellBarItemAttributes {
   /**

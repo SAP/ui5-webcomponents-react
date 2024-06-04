@@ -171,7 +171,9 @@
     },
     "Select": {},
     "SelectMenu": {},
-    "SelectMenuOption": {}
+    "SelectMenuOption": {},
+    "ShellBar": {},
+    "ShellBarItem": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
