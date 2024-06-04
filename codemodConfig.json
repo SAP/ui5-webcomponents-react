@@ -140,7 +140,13 @@
       },
       "removedProps": ["disabled"]
     },
-    "Panel": {}
+    "Panel": {},
+    "Popover": {
+      "changedProps": {
+        "placementType": "placement"
+      },
+      "removedProps": ["hideBackdrop", "modal"]
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
@@ -176,10 +182,14 @@
     "MediaGalleryMenuHorizontalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuHorizontalAlign.js",
     "MediaGalleryMenuVerticalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuVerticalAlign.js",
     "MessageStripDesign": "@ui5/webcomponents/dist/types/MessageStripDesign.js",
-    "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "Priority": "@ui5/webcomponents/dist/types/Priority.js",
     "PageBackgroundDesign": "@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js",
     "PanelAccessibleRole": "@ui5/webcomponents/dist/types/PanelAccessibleRole.js",
+    "PopoverHorizontalAlign": "@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js",
+    "PopoverPlacementType": "@ui5/webcomponents/dist/types/PopoverPlacement.js",
+    "PopoverPlacement": "@ui5/webcomponents/dist/types/PopoverPlacement.js",
+    "PopoverVerticalAlign": "@ui5/webcomponents/dist/types/PopoverVerticalAlign.js",
+    "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
     "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
     "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
     "SideContentVisibility": "@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js",
@@ -207,6 +217,14 @@
     },
     "MessageStripDesign": {
       "Warning": "Critical"
+    },
+    "PopoverPlacementType": {
+      "Left": "Start",
+      "Right": "End"
+    },
+    "PopoverHorizontalAlign": {
+      "Left": "Start",
+      "Right": "End"
     }
   }
 }

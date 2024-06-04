@@ -138,7 +138,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
     horizontalAlign,
     initialFocus,
     modal,
-    placementType,
+    placement,
     portalContainer,
     showCancelButton = true,
     slot,
@@ -255,7 +255,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
       initialFocus={initialFocus}
       modal={modal}
       hideArrow={hideArrow}
-      placementType={placementType}
+      placement={placement}
       verticalAlign={verticalAlign}
       footer={footer}
       header={displayHeader ? header : undefined}

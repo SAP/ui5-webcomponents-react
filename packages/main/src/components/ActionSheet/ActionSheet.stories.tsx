@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
 import acceptIcon from '@ui5/webcomponents-icons/dist/accept.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import deleteIcon from '@ui5/webcomponents-icons/dist/delete.js';
 import emailIcon from '@ui5/webcomponents-icons/dist/email.js';
 import forwardIcon from '@ui5/webcomponents-icons/dist/forward.js';
 import React, { useState } from 'react';
-import { PopoverHorizontalAlign, PopoverPlacementType, PopoverVerticalAlign } from '../../enums/index.js';
 import { Button } from '../../webComponents/index.js';
 import { ActionSheet } from './index.js';
 
@@ -26,7 +28,7 @@ const meta = {
   },
   args: {
     horizontalAlign: PopoverHorizontalAlign.Center,
-    placementType: PopoverPlacementType.Right,
+    placement: PopoverPlacement.End,
     verticalAlign: PopoverVerticalAlign.Center,
     open: false
   },

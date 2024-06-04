@@ -6,10 +6,10 @@ import {
   FlexBoxWrap,
   Label,
   Link,
-  Popover,
-  PopoverPlacementType
+  Popover
 } from '@ui5/webcomponents-react';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
@@ -63,7 +63,7 @@ export const Footer = ({ style }) => {
         <Popover
           headerText={'Privacy Statement'}
           ref={popoverRef}
-          placementType={PopoverPlacementType.Top}
+          placementType={PopoverPlacement.Top}
           data-ui5-compact-size
           style={{ width: '360px', maxWidth: '100%' }}
         >

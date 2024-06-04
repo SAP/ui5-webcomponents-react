@@ -1,4 +1,5 @@
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
@@ -6,7 +7,6 @@ import { clsx } from 'clsx';
 import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
 import React, { cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { PopoverPlacementType } from '../../enums/index.js';
 import { getOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
@@ -141,7 +141,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           <Popover
             data-component-name="ToolbarOverflowPopover"
             className={clsx(classes.popover, isPhone && classes.popoverPhone)}
-            placementType={PopoverPlacementType.Bottom}
+            placementType={PopoverPlacement.Bottom}
             ref={componentRef}
             open={pressed}
             onAfterClose={handleClose}

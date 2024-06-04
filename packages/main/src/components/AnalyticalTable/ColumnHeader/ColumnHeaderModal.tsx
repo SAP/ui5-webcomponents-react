@@ -1,3 +1,5 @@
+import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
 import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
@@ -7,13 +9,7 @@ import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webco
 import type { MutableRefObject } from 'react';
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import {
-  FlexBoxAlignItems,
-  ListItemType,
-  PopoverHorizontalAlign,
-  PopoverPlacementType,
-  TextAlign
-} from '../../../enums/index.js';
+import { FlexBoxAlignItems, ListItemType, TextAlign } from '../../../enums/index.js';
 import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../../internal/ssr.js';
 import { stopPropagation } from '../../../internal/stopPropagation.js';
@@ -127,17 +123,17 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   const horizontalAlign = (() => {
     switch (column.hAlign) {
       case TextAlign.Begin:
-        return isRtl ? PopoverHorizontalAlign.Right : PopoverHorizontalAlign.Left;
+        return isRtl ? PopoverHorizontalAlign.End : PopoverHorizontalAlign.Start;
       case TextAlign.End:
-        return isRtl ? PopoverHorizontalAlign.Left : PopoverHorizontalAlign.Right;
+        return isRtl ? PopoverHorizontalAlign.Start : PopoverHorizontalAlign.End;
       case TextAlign.Left:
-        return PopoverHorizontalAlign.Left;
+        return PopoverHorizontalAlign.Start;
       case TextAlign.Right:
-        return PopoverHorizontalAlign.Right;
+        return PopoverHorizontalAlign.End;
       case TextAlign.Center:
         return PopoverHorizontalAlign.Center;
       default:
-        return isRtl ? PopoverHorizontalAlign.Right : PopoverHorizontalAlign.Left;
+        return isRtl ? PopoverHorizontalAlign.End : PopoverHorizontalAlign.Start;
     }
   })();
 
@@ -179,7 +175,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     <Popover
       hideArrow
       horizontalAlign={horizontalAlign}
-      placementType={PopoverPlacementType.Bottom}
+      placementType={PopoverPlacement.Bottom}
       ref={ref}
       className={classNames.popover}
       onClick={stopPropagation}

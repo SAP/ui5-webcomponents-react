@@ -1,14 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Popover.js';
+import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
+import type PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
+import type PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import type PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
+import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
-import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
-import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
-import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
-import PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
-import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
-import type { ReactNode } from 'react';
 
 interface PopoverAttributes {
   /**

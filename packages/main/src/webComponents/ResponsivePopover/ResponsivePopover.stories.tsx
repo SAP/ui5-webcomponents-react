@@ -1,11 +1,11 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
+import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
 import { clsx } from 'clsx';
 import { forwardRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
-import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
-import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
 import { Bar } from '../Bar';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
@@ -39,7 +39,7 @@ const meta = {
     ),
     headerText: 'ResponsivePopover Header',
     horizontalAlign: PopoverHorizontalAlign.Center,
-    placementType: PopoverPlacementType.Right,
+    placementType: PopoverPlacement.End,
     verticalAlign: PopoverVerticalAlign.Center,
     opener: 'openPopoverBtn',
     className: 'footerPartNoPadding'

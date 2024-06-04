@@ -2,12 +2,12 @@ import '@ui5/webcomponents-icons/dist/settings.js';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
 import { clsx } from 'clsx';
 import { forwardRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
-import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
-import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
 import { Bar } from '../Bar';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
@@ -34,7 +34,7 @@ const meta = {
     children: <Label>Press "Escape" or click outside to close the Popover</Label>,
     headerText: 'Popover Header',
     horizontalAlign: PopoverHorizontalAlign.Center,
-    placementType: PopoverPlacementType.Right,
+    placement: PopoverPlacement.End,
     verticalAlign: PopoverVerticalAlign.Center,
     className: 'footerPartNoPadding'
   },
