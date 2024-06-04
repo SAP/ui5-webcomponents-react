@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/StepInput.js';
+import type { StepInputValueStateChangeEventDetail } from '@ui5/webcomponents/dist/StepInput.js';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
-import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { StepInputValueStateChangeEventDetail } from '@ui5/webcomponents/dist/StepInput.js';
 
 interface StepInputAttributes {
   /**

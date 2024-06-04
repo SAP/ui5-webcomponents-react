@@ -196,7 +196,8 @@
     "SplitButton": {
       "removedProps": ["activeIcon"]
     },
-    "StandardListItem": {}
+    "StandardListItem": {},
+    "StepInput": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
