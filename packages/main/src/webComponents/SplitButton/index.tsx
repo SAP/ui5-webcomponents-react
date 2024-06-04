@@ -1,10 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SplitButton.js';
+import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
-import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import type { ReactNode } from 'react';
 
 interface SplitButtonAttributes {
   /**
