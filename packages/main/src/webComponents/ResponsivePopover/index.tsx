@@ -91,7 +91,7 @@ interface ResponsivePopoverAttributes {
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    * @default undefined
    */
-  opener?: HTMLElement | undefined;
+  opener?: string;
 
   /**
    * Determines on which side the component is placed at.
@@ -113,7 +113,7 @@ interface ResponsivePopoverAttributes {
   verticalAlign?: PopoverVerticalAlign | keyof typeof PopoverVerticalAlign;
 }
 
-interface ResponsivePopoverDomRef extends Required<ResponsivePopoverAttributes>, Ui5DomRef {
+interface ResponsivePopoverDomRef extends Omit<Required<ResponsivePopoverAttributes>, 'opener'>, Ui5DomRef {
   /**
    * Focuses the element denoted by `initialFocus`, if provided,
    * or the first focusable element otherwise.
@@ -132,6 +132,13 @@ interface ResponsivePopoverDomRef extends Required<ResponsivePopoverAttributes>,
    * @returns {boolean}
    */
   isOpen: () => boolean;
+
+  /**
+   * Defines the ID or DOM Reference of the element that the popover is shown at
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
+   */
+  opener: HTMLElement | string | undefined;
 
   /**
    * Shows popover on desktop and dialog on mobile.

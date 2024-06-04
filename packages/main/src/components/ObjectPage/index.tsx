@@ -860,7 +860,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         >
           <TabContainer
             collapsed
-            fixed
             onTabSelect={onTabItemSelect}
             data-component-name="ObjectPageTabContainer"
             className={classNames.tabContainerComponent}
@@ -879,7 +878,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
                   data-section-id={section.props.id}
                   text={section.props.titleText}
                   selected={internalSelectedSectionId === section.props?.id || undefined}
-                  subTabs={subTabs.map((item) => {
+                  items={subTabs.map((item) => {
                     if (!isValidElement(item)) {
                       return null;
                     }

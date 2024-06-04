@@ -1,6 +1,7 @@
 'use client';
 
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
@@ -94,9 +95,7 @@ const getIcon = (icon, type, classes) => {
   if (isValidElement(icon)) return icon;
   switch (type) {
     case MessageBoxTypes.Confirm:
-      return (
-        <Icon name={iconSysHelp} aria-hidden="true" accessibleRole="presentation" className={classes.confirmIcon} />
-      );
+      return <Icon name={iconSysHelp} mode={IconMode.Decorative} className={classes.confirmIcon} />;
     default:
       return null;
   }

@@ -1,6 +1,7 @@
 'use client';
 
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
 import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
@@ -307,13 +308,13 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
                   accessibleName={i18nBundle.getText(RESET)}
                   title={i18nBundle.getText(RESET)}
                   name={iconDecline}
-                  interactive
+                  mode={IconMode.Interactive}
                   onClick={handleResetSearch}
                   className={classNames.inputIcon}
                 />
               )}
               <Icon
-                interactive
+                mode={IconMode.Interactive}
                 name={iconSearch}
                 className={classNames.inputIcon}
                 onClick={handleSearchSubmit}

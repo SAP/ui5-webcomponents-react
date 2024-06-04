@@ -91,7 +91,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
     void customElements.whenDefined(tagName).then(() => {
       if (linkRef.current) {
         if (showOverflowInPopover) {
-          linkRef.current.accessibilityAttributes = { hasPopup: 'Dialog' };
+          linkRef.current.accessibilityAttributes = { hasPopup: 'dialog' };
         } else {
           linkRef.current.accessibilityAttributes = { expanded: !collapsed };
         }

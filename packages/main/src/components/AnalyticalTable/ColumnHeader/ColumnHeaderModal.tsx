@@ -168,7 +168,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       open={open}
       hideArrow
       horizontalAlign={horizontalAlign}
-      placementType={PopoverPlacement.Bottom}
+      placement={PopoverPlacement.Bottom}
       ref={ref}
       className={classNames.popover}
       onClick={stopPropagation}

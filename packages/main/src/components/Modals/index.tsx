@@ -161,9 +161,9 @@ function showMenu<ContainerElement>(
       props: {
         ...props,
         open: true,
-        onAfterClose: (event) => {
-          if (typeof props.onAfterClose === 'function') {
-            props.onAfterClose(event);
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
           }
           setModal({
             type: 'reset',
@@ -226,12 +226,12 @@ function showToast<ContainerElement>(
     payload: {
       Component: Toast,
       props: {
-        ...props
+        ...props,
+        open: true
       },
       ref: (el: ToastDomRef & { open: boolean }) => {
         ref.current = el;
         if (el && !el.open) {
-          el.show();
           setTimeout(() => {
             setModal({
               type: 'reset',

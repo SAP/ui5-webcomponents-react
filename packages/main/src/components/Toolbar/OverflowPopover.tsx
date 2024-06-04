@@ -76,7 +76,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const handleBeforeOpen = () => {
     if (toggleBtnRef.current) {
-      toggleBtnRef.current.accessibilityAttributes = { expanded: true, hasPopup: 'Menu' };
+      toggleBtnRef.current.accessibilityAttributes = { expanded: true, hasPopup: 'menu' };
     }
   };
   const handleAfterOpen = () => {
@@ -85,7 +85,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const handleClose = (e) => {
     if (toggleBtnRef.current) {
-      toggleBtnRef.current.accessibilityAttributes = { expanded: false, hasPopup: 'Menu' };
+      toggleBtnRef.current.accessibilityAttributes = { expanded: false, hasPopup: 'menu' };
     }
     stopPropagation(e);
     setPressed(false);
@@ -95,7 +95,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     const tagName = getUi5TagWithSuffix('ui5-toggle-button');
     customElements.whenDefined(tagName).then(() => {
       if (toggleBtnRef.current) {
-        toggleBtnRef.current.accessibilityAttributes = { expanded: pressed, hasPopup: 'Menu' };
+        toggleBtnRef.current.accessibilityAttributes = { expanded: pressed, hasPopup: 'menu' };
       }
     });
   }, []);
@@ -141,7 +141,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           <Popover
             data-component-name="ToolbarOverflowPopover"
             className={clsx(classes.popover, isPhone && classes.popoverPhone)}
-            placementType={PopoverPlacement.Bottom}
+            placement={PopoverPlacement.Bottom}
             ref={componentRef}
             open={pressed}
             onAfterClose={handleClose}

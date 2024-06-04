@@ -163,7 +163,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                 <Bar
                   startContent={
                     <SegmentedButton onSelectionChange={handleListFilterChange}>
-                      <SegmentedButtonItem data-key="All" pressed={listFilter === 'All'}>
+                      <SegmentedButtonItem data-key="All" selected={listFilter === 'All'}>
                         {i18nBundle.getText(ALL)}
                       </SegmentedButtonItem>
                       {/* @ts-expect-error: The key can't be typed, it's always `string`, but since the `ValueState` enum only contains strings it's fine to use here*/}
@@ -175,7 +175,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                           <SegmentedButtonItem
                             key={valueState}
                             data-key={valueState}
-                            pressed={listFilter === valueState}
+                            selected={listFilter === valueState}
                             icon={getIconNameForType(valueState)}
                             className={classNames.button}
                           >
