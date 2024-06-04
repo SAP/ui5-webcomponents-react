@@ -94,7 +94,21 @@
     },
     "ListItemGroup": {},
     "MediaGallery": {},
-    "MediaGalleryItem": {}
+    "MediaGalleryItem": {},
+    "Menu": {
+      "changedProps": {
+        "busy": "loading",
+        "busyDelay": "loadingDelay",
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen"
+      }
+    },
+    "MenuItem": {
+      "changedProps": {
+        "busy": "loading",
+        "busyDelay": "loadingDelay"
+      }
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",

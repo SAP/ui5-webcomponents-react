@@ -1,8 +1,6 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Menu.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 import type {
   MenuBeforeCloseEventDetail,
   MenuBeforeOpenEventDetail,
@@ -10,6 +8,8 @@ import type {
   MenuItemFocusEventDetail
 } from '@ui5/webcomponents/dist/Menu.js';
 import type { ReactNode } from 'react';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface MenuAttributes {
   /**
