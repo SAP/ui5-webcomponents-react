@@ -212,7 +212,12 @@
       },
       "removedProps": ["fixed", "showOverflow"]
     },
-    "TabSeparator": {}
+    "TabSeparator": {},
+    "TextArea": {
+      "changedProps": {
+        "growingMaxLines": "growingMaxRows"
+      }
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
