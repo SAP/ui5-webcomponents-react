@@ -91,7 +91,8 @@
         "mode": "selectionMode",
         "busy": "loading"
       }
-    }
+    },
+    "ListItemGroup": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
