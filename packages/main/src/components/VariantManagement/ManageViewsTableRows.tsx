@@ -4,7 +4,7 @@ import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import unfavoriteIcon from '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
-import React, { useReducer, useRef, useState } from 'react';
+import { useReducer, useRef, useState } from 'react';
 import {
   APPLY_AUTOMATICALLY,
   DELETE_VIEW,
@@ -95,7 +95,10 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       props.manageViewsInputProps?.onInput(e);
     }
     const trimmedValue = trimAndRemoveSpaces(e.target.value);
-    if (variantNames.includes(trimmedValue) || Array.from(changedVariantNames.values()).includes(trimmedValue)) {
+    if (
+      children !== trimmedValue &&
+      (variantNames.includes(trimmedValue) || Array.from(changedVariantNames.values()).includes(trimmedValue))
+    ) {
       setVariantNameInvalid(errorTextAlreadyExists);
       setInvalidVariants((prev) => ({ ...prev, [`${children}`]: inputRef.current }));
       handleRowChange(e, { currentVariant: children, children: trimmedValue });

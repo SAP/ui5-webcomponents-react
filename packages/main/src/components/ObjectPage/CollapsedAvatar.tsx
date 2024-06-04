@@ -2,7 +2,7 @@ import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement } from 'react';
-import React, { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
+import { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
 import { classNames, styleData } from './CollapsedAvatar.module.css.js';
 
 export interface CollapsedAvatarPropTypes {

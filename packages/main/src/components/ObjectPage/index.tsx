@@ -12,16 +12,7 @@ import {
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
-import React, {
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import { cloneElement, forwardRef, isValidElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
@@ -91,7 +82,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines the content area of the `ObjectPage`. It consists of sections and subsections.
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` and `ObjectPageSubSection` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageSection` in order to preserve the intended design.
    */
   children?: ObjectPageSectionType | ObjectPageSectionType[];
   /**

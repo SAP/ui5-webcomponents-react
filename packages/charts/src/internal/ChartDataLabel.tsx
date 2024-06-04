@@ -1,5 +1,5 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { createElement } from 'react';
+import { createElement } from 'react';
 import { Label } from 'recharts';
 import type { IChartMeasure } from '../interfaces/IChartMeasure.js';
 import { getTextWidth } from '../internal/Utils.js';

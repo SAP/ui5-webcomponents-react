@@ -4,7 +4,7 @@ import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ElementType, ReactNode } from 'react';
-import React, { forwardRef, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { FormBackgroundDesign } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';
 import { Title } from '../../webComponents/index.js';
@@ -106,9 +106,16 @@ export interface FormPropTypes extends CommonProps {
 
 /**
  * The `Form` component arranges labels and fields into groups and rows. There are different ways to visualize forms for different screen sizes.
- * It is possible to change the alignment of all labels by setting the CSS `align-items` property, per default all labels are centered.
+ * It is possible to change the alignment of all labels by setting the CSS `align-items` property. By default, labels are centered when `labelSpan` is less than 12 and aligned to the start when `labelSpan` is equal to 12."
+ *
+ * __Accessibility features:__
+ *
+ * The Form only supports announcing labels and groups by screen readers for UI5 Web Components inputs like `Input (ui5-input)`, `CheckBox (ui5-checkbox)`,`DatePicker (ui5-date-picker)`, etc.
+ * For other inputs, this behavior must be implemented manually. Also, please note that when passing custom React components to the `FilterItem`, it's mandatory to pass through the `accessibleNameRef` prop, as otherwise the label won't be announced.
  *
  * __Note:__ The `Form` calculates its width based on the available space of its container. If the container also dynamically adjusts its width to its contents, you must ensure that you specify a fixed width, either for the container or for the `Form` itself. (e.g. when used inside a 'popover').
+ *
+ * __Note:__ It's not recommended mixing `FormGroup`s with standalone `FormItem`s, either only use FormItems inside a Form, or wrap all items in one or more groups.
  */
 const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
   const {
@@ -220,11 +227,13 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
     let nextRowIndex = (titleText ? 2 : 1) + rowsPerFormItem - 1;
     const rowsWithGroup = {};
 
-    const columnsWithItems: ItemInfo[][] = [];
+    const columnsWithItems: Array<ItemInfo[]> = [];
     const rowsPerColumn = Math.ceil(items.size / currentNumberOfColumns);
 
     const allItemsArray = Array.from(items.entries());
     const onlyFormItems = allItemsArray.every(([, item]) => item.type === 'formItem');
+    const onlyFormGroups = allItemsArray.every(([, item]) => item.type === 'formGroup');
+    const columnsToFill = Math.max(0, currentNumberOfColumns - allItemsArray.length);
 
     allItemsArray.forEach(([id, item], idx) => {
       // when only FormItems are used, the Form should build up from top to bottom, then left to right
@@ -246,6 +255,75 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
           formItems.push({ id, index, columnIndex, rowIndex });
           rowIndex += rowsPerFormItem;
         });
+      });
+    } else if (onlyFormGroups && columnsToFill > 0) {
+      const columnsToBalance = [...columnsWithItems]
+        .sort(([a], [b]) => b.formItemIds.size - a.formItemIds.size)
+        .slice(0, columnsToFill);
+      for (const column of columnsToBalance) {
+        const currentColumnIndex = columnsWithItems.findIndex(([c]) => {
+          return c.id === column.at(0).id;
+        });
+        const unbalancedFormItems: Set<string> = column.at(0).formItemIds;
+        const movedFormItems = new Set([
+          ...Array.from(unbalancedFormItems).slice(Math.ceil(unbalancedFormItems.size / 2))
+        ]);
+        columnsWithItems.splice(currentColumnIndex + 1, 0, [
+          {
+            id: `${column.at(0).id}-clone`,
+            type: column.at(0).type,
+            formItemIds: movedFormItems
+          }
+        ]);
+        movedFormItems.forEach((item) => {
+          unbalancedFormItems.delete(item);
+        });
+      }
+
+      const isInitialRender = columnsWithItems.every((itemInfos) => itemInfos.every((i) => i.formItemIds.size === 0));
+      columnsWithItems.forEach((el, index) => {
+        const allGroupsEmpty = el.every((i) => i.formItemIds.size === 0);
+        if (!isInitialRender && allGroupsEmpty) {
+          columnsWithItems.splice(index, 1);
+        }
+      });
+
+      let localColumnIndex = 0;
+      let rowIndex = (titleText ? 2 : 1) + rowsPerFormItem - 1;
+
+      columnsWithItems.forEach(([{ id, formItemIds }]) => {
+        const columnIndex = localColumnIndex % currentNumberOfColumns;
+        index++;
+        rowsWithGroup[rowIndex] = true;
+        formGroups.push({ id, index, columnIndex, rowIndex });
+        let localRowIndex = 1;
+        let localIndex = 1;
+
+        if (!formItemIds.size) {
+          nextRowIndex++;
+        }
+        formItemIds.forEach((itemId, _, set) => {
+          formItems.push({
+            id: itemId,
+            index,
+            groupId: id,
+            columnIndex,
+            rowIndex: rowIndex + localRowIndex,
+            lastGroupItem: set.size === localIndex
+          });
+          if (set.size === localIndex) {
+            if (nextRowIndex < rowIndex + localRowIndex + rowsPerFormItem) {
+              nextRowIndex = rowIndex + localRowIndex + rowsPerFormItem;
+            }
+          }
+          localRowIndex += rowsPerFormItem;
+          localIndex++;
+        });
+
+        if ((localColumnIndex + 1) % currentNumberOfColumns === 0) {
+          rowIndex = nextRowIndex;
+        }
+        localColumnIndex++;
       });
     } else {
       let localColumnIndex = 0;
@@ -296,7 +374,11 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
 
     return { formItems, formGroups, registerItem, unregisterItem, rowsWithGroup };
   }, [items, registerItem, unregisterItem, currentNumberOfColumns, titleText, currentLabelSpan]);
-  const formClassNames = clsx(classNames.form, classNames[backgroundDesign.toLowerCase()]);
+  const formClassNames = clsx(
+    classNames.form,
+    classNames[backgroundDesign.toLowerCase()],
+    currentLabelSpan == 12 && classNames.labelSpan12
+  );
   const CustomTag = as as ElementType;
 
   const prevFormItems = useRef<undefined | FormItemLayoutInfo[]>(undefined);
@@ -343,6 +425,7 @@ const Form = forwardRef<HTMLFormElement, FormPropTypes>((props, ref) => {
           '--_ui5wcr_form_columns_l': columnsL,
           '--_ui5wcr_form_columns_xl': columnsXL
         }}
+        aria-label={titleText}
         {...rest}
       >
         <div className={formClassNames}>

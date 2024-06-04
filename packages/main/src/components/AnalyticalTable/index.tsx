@@ -14,7 +14,7 @@ import {
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, MutableRefObject } from 'react';
-import React, { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
+import { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
 import {
   useColumnOrder,
   useExpanded,
@@ -58,6 +58,7 @@ import { DefaultLoadingComponent } from './defaults/LoadingComponent/index.js';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder.js';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent/index.js';
 import { useA11y } from './hooks/useA11y.js';
+import { useAutoResize } from './hooks/useAutoResize.js';
 import { useColumnDragAndDrop } from './hooks/useDragAndDrop.js';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths.js';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation.js';
@@ -91,6 +92,11 @@ import { VerticalResizer } from './VerticalResizer.js';
 const sortTypesFallback = {
   undefined: () => undefined
 };
+
+const measureElement = (el: HTMLElement) => {
+  return el.offsetHeight;
+};
+
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
@@ -149,6 +155,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     onRowSelect,
     onSort,
     onTableScroll,
+    onAutoResize,
     LoadingComponent,
     NoDataComponent,
     additionalEmptyRowsCount = 0,
@@ -217,6 +224,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         selectionMode,
         selectionBehavior,
         classes: classNames,
+        onAutoResize,
         onRowSelect: onRowSelect,
         onRowClick,
         onRowExpandChange,
@@ -247,6 +255,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     useResizeColumns,
     useResizeColumnsConfig,
     useRowSelectionColumn,
+    useAutoResize,
     useSingleRowStateSelection,
     useSelectionChangeCallback,
     useRowHighlight,
@@ -655,6 +664,39 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     );
   };
 
+  const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
+  const rHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
+
+  const itemCount =
+    Math.max(
+      minRows,
+      rows.length,
+      visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows ? internalVisibleRowCount : 0
+    ) + (!tableState.isScrollable ? additionalEmptyRowsCount : 0);
+
+  const rowVirtualizer = useVirtualizer({
+    count: itemCount,
+    getScrollElement: () => parentRef.current,
+    estimateSize: useCallback(
+      (index) => {
+        if (
+          renderRowSubComponent &&
+          (rows[index]?.isExpanded || alwaysShowSubComponent) &&
+          tableState.subComponentsHeight?.[index]?.rowId === rows[index]?.id
+        ) {
+          return rHeight + (tableState.subComponentsHeight?.[index]?.subComponentHeight ?? 0);
+        }
+        return rHeight;
+      },
+      [rHeight, rows, renderRowSubComponent, alwaysShowSubComponent, tableState.subComponentsHeight]
+    ),
+    overscan,
+    measureElement,
+    indexAttribute: 'data-virtual-row-index'
+  });
+  // add range to instance for `useAutoResize` plugin hook
+  tableInstanceRef.current.virtualRowsRange = rowVirtualizer.range;
+
   return (
     <>
       <div
@@ -760,23 +802,11 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   classes={classNames}
                   prepareRow={prepareRow}
                   rows={rows}
-                  itemCount={
-                    Math.max(
-                      minRows,
-                      rows.length,
-                      visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows
-                        ? internalVisibleRowCount
-                        : 0
-                    ) + (!tableState.isScrollable ? additionalEmptyRowsCount : 0)
-                  }
                   scrollToRef={scrollToRef}
                   isTreeTable={isTreeTable}
                   internalRowHeight={internalRowHeight}
                   popInRowHeight={popInRowHeight}
-                  visibleRows={internalVisibleRowCount}
                   alternateRowColor={alternateRowColor}
-                  overscanCount={overscanCount}
-                  parentRef={parentRef}
                   visibleColumns={visibleColumns}
                   renderRowSubComponent={renderRowSubComponent}
                   alwaysShowSubComponent={alwaysShowSubComponent}
@@ -789,6 +819,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   subRowsKey={subRowsKey}
                   subComponentsBehavior={subComponentsBehavior}
                   triggerScroll={tableState.triggerScroll}
+                  rowVirtualizer={rowVirtualizer}
                 />
               </VirtualTableBodyContainer>
             )}

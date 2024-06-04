@@ -298,7 +298,7 @@ describe('Toolbar', () => {
         <Text>Item3</Text>
       </Toolbar>
     );
-    cy.findByLabelText('Separator').should('be.visible');
+    cy.findByRole('separator').should('be.visible');
   });
 
   it('toolbarStyle', () => {

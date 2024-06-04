@@ -1,9 +1,8 @@
 'use client';
 
-import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef } from 'react';
-import { SEPARATOR } from '../../i18n/i18n-defaults.js';
+import { forwardRef } from 'react';
 import type { CommonProps } from '../../types/index.js';
 import { classNames, styleData } from './ToolbarSeparator.module.css.js';
 
@@ -19,11 +18,8 @@ const ToolbarSeparator = forwardRef<HTMLDivElement, ToolbarSeparatorPropTypes>((
 
   useStylesheet(styleData, ToolbarSeparator.displayName);
   const separatorClasses = clsx(classNames.separator, className);
-  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
-  return (
-    <div ref={ref} style={style} className={separatorClasses} aria-label={i18nBundle.getText(SEPARATOR)} {...rest} />
-  );
+  return <div ref={ref} style={style} className={separatorClasses} role="separator" {...rest} />;
 });
 ToolbarSeparator.displayName = 'ToolbarSeparator';
 export { ToolbarSeparator };

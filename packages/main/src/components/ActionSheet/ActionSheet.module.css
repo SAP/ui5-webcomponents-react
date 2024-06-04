@@ -8,7 +8,7 @@
 }
 
 .actionSheet [ui5-button]:not([data-cancel-btn])::part(button) {
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .actionSheet::part(header) {

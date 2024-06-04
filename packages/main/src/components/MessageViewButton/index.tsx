@@ -7,7 +7,7 @@ import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
 import sysEnter2Icon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';
 import { Button } from '../../webComponents/index.js';
 import { classNames, styleData } from './MessageViewButton.module.css.js';

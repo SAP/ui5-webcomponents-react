@@ -12,16 +12,7 @@ import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ComponentElement, ReactElement } from 'react';
-import React, {
-  Children,
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';

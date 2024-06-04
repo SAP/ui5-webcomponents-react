@@ -2,7 +2,7 @@
 
 import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { CLOSE_POPOVER, SHOW_FULL_TEXT, SHOW_LESS, SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
@@ -120,8 +120,8 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
             accessibleName={
               showOverflowInPopover
                 ? collapsed
-                  ? i18nBundle.getText(CLOSE_POPOVER)
-                  : i18nBundle.getText(SHOW_FULL_TEXT)
+                  ? i18nBundle.getText(SHOW_FULL_TEXT)
+                  : i18nBundle.getText(CLOSE_POPOVER)
                 : undefined
             }
             accessibleRole="button"

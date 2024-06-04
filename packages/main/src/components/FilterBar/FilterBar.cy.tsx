@@ -1,4 +1,4 @@
-import React, { useId, useState } from 'react';
+import { useId, useState } from 'react';
 import {
   Input,
   MultiComboBox,
@@ -500,7 +500,7 @@ describe('FilterBar.cy.tsx', () => {
     );
     cy.findByText('Filters').click();
     cy.findByText('Show Values').click();
-    cy.get('[ui5-select]:not([title="Show Fields by Attribute"])').should('have.length', 2);
+    cy.get('[ui5-select]:not([title="Show Filters by Attribute"])').should('have.length', 2);
     cy.get('[ui5-multi-combobox]').should('have.length', 2);
   });
 
@@ -628,6 +628,62 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('div[data-order-id]').eq(1).find('[ui5-label]').should('have.text', 'MultiInput');
     cy.get('div[data-order-id]').eq(2).find('[ui5-label]').should('have.text', 'Input');
     cy.get('div[data-order-id]').eq(4).find('[ui5-label]').should('have.text', 'RatingIndicator');
+  });
+
+  it('visible & visibleInFilterBar', () => {
+    cy.mount(
+      <FilterBar>
+        <FilterGroupItem label="undefined">
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="false" visible={false}>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="true" visible>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="undefined undefined">
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="false false" visible={false} visibleInFilterBar={false}>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="true true" visible visibleInFilterBar>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="true false" visible visibleInFilterBar={false}>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="undefined true" visible visibleInFilterBar={true}>
+          <StepInput />
+        </FilterGroupItem>
+        <FilterGroupItem label="undefined false" visible visibleInFilterBar={false}>
+          <StepInput />
+        </FilterGroupItem>
+      </FilterBar>
+    );
+
+    cy.findByText('undefined').should('be.visible');
+    cy.findByText('false').should('not.exist');
+    cy.findByText('true').should('be.visible');
+    cy.findByText('undefined undefined').should('be.visible');
+    cy.findByText('false false').should('not.exist');
+    cy.findByText('true true').should('be.visible');
+    cy.findByText('true false').should('not.exist');
+    cy.findByText('undefined true').should('be.visible');
+    cy.findByText('undefined false').should('not.exist');
+
+    cy.findByText('Filters').realClick();
+    cy.get('[ui5-dialog]').should('be.visible');
+    cy.get('[ui5-table-row][data-text="undefined"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-table-row][data-text="false"]').should('not.exist');
+    cy.get('[ui5-table-row][data-text="true"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-table-row][data-text="undefined undefined"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-table-row][data-text="false false"]').should('not.exist');
+    cy.get('[ui5-table-row][data-text="true true"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-table-row][data-text="true false"]').should('not.have.attr', 'selected');
+    cy.get('[ui5-table-row][data-text="undefined true"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-table-row][data-text="undefined false"]').should('not.have.attr', 'selected');
   });
 
   mountWithCustomTagName(FilterBar);

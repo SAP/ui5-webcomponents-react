@@ -10,10 +10,11 @@ import moveDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js
 import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, useContext, useEffect, useRef, useState } from 'react';
+import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import {
   DOWN_ARROW,
+  FILTER_IS_ACTIVE,
   FILTER_DIALOG_REORDER_FILTERS,
   MOVE_DOWN,
   MOVE_TO_BOTTOM,
@@ -53,9 +54,9 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       considerGroupName,
       label = '',
       labelTooltip,
-      required = false,
+      required,
       visible = true,
-      visibleInFilterBar,
+      visibleInFilterBar = true,
       children,
       loading,
       className,
@@ -181,9 +182,9 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
               {withValues && children}
             </FlexBox>
           </TableCell>
-          {!withValues && isListView && (
+          {!withValues && (
             <TableCell className={classNames.dialogActiveCell} data-component-name="FilterBarDialogTableCellActive">
-              {withReordering && (
+              {isListView && withReordering && (
                 <FlexBox
                   fitContainer
                   justifyContent={FlexBoxJustifyContent.Center}
@@ -229,7 +230,12 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
                   />
                 </FlexBox>
               )}
-              {active && <Icon name={circleTask2Icon} className={classNames.dialogActiveIcon} />}
+              {active && (
+                <>
+                  <Icon name={circleTask2Icon} className={classNames.dialogActiveIcon} aria-hidden />
+                  <span className={classNames.pseudoInvisibleText}>{i18nBundle.getText(FILTER_IS_ACTIVE)}</span>
+                </>
+              )}
             </TableCell>
           )}
         </TableRow>
@@ -258,13 +264,6 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
 );
 
 FilterGroupItem.displayName = 'FilterGroupItem';
-
-FilterGroupItem.defaultProps = {
-  groupName: 'default',
-  visible: true,
-  required: false,
-  label: ''
-};
 
 export { FilterGroupItem };
 export type { FilterGroupItemPropTypes };

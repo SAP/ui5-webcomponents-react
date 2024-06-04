@@ -1,5 +1,4 @@
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import React from 'react';
 import { MessageViewButton } from './index.js';
 
 describe('MessageViewButton', () => {

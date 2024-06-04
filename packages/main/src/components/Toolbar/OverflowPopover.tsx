@@ -5,7 +5,7 @@ import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
-import React, { cloneElement, useEffect, useRef, useState } from 'react';
+import { cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { getOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';

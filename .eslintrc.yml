@@ -10,6 +10,7 @@ env:
   es2022: true
 extends:
   - plugin:react/recommended
+  - plugin:react/jsx-runtime
   - plugin:react-hooks/recommended
   - plugin:import/recommended
   - plugin:prettier/recommended
@@ -112,8 +113,6 @@ overrides:
 
   - files:
       - 'cypress/**/*'
-    extends:
-      - 'plugin:react/jsx-runtime'
     rules:
       '@typescript-eslint/no-namespace': 'off'
 
@@ -124,7 +123,6 @@ overrides:
       - no-only-tests
     rules:
       '@typescript-eslint/no-empty-function': 'off'
-      'react/react-in-jsx-scope': 'off'
       'import/order': 'warn'
       'import/no-unresolved': 'off'
       'react/no-unescaped-entities': 'off'
@@ -135,7 +133,6 @@ overrides:
   - files:
       - '*.stories.tsx'
     extends:
-      - 'plugin:react/jsx-runtime'
       - 'plugin:storybook/recommended'
     rules:
       'react/prop-types': 'off' # inline custom components within stories don't need prop types

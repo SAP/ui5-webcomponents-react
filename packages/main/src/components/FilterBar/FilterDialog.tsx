@@ -6,7 +6,7 @@ import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { Dispatch, MutableRefObject, ReactElement, SetStateAction } from 'react';
-import React, { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
+import { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
   FlexBoxDirection,
@@ -21,9 +21,9 @@ import {
   ALL,
   BASIC,
   CANCEL,
-  FIELD,
   FIELDS_BY_ATTRIBUTE,
   FILTER_DIALOG_RESET_WARNING,
+  FILTER,
   FILTERS,
   GROUP_VIEW,
   HIDE_VALUES,
@@ -74,6 +74,7 @@ addCustomCSSWithScoping(
 :host([data-component-name="FilterBarDialogPanelTable"]) thead {
   visibility: collapse;
 }
+
 /* don't display border of panel table */
 :host([data-component-name="FilterBarDialogPanelTable"]) table {
   border-collapse: unset;
@@ -82,8 +83,13 @@ addCustomCSSWithScoping(
 /* don't allow table cells to grow
 todo: FilterBarDialogPanelTable
 */
-:host([data-component-name="FilterBarDialogTable"]) table{
+:host([data-component-name="FilterBarDialogTable"]) table {
   table-layout: fixed;
+}
+
+/* prevent focus by click on group-view thead */
+:host([data-component-name="FilterBarDialogTable"][tabindex="-1"]) thead > tr {
+  pointer-events: none;
 }
 
 :host([data-component-name="FilterBarDialogPanelTable"]) .ui5-table-root {
@@ -220,12 +226,12 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const groupViewText = i18nBundle.getText(GROUP_VIEW);
   const showValuesText = i18nBundle.getText(SHOW_VALUES);
   const hideValuesText = i18nBundle.getText(HIDE_VALUES);
-  const fieldText = i18nBundle.getText(FIELD);
+  const filterText = i18nBundle.getText(FILTER);
   const fieldsByAttributeText = i18nBundle.getText(FIELDS_BY_ATTRIBUTE);
 
   const visibleChildren = () =>
     children.filter((item) => {
-      return !!item?.props && item.props?.visible;
+      return !!item?.props && (typeof item.props.visible === 'undefined' || item?.props?.visible);
     });
 
   const [orderedChildren, setOrderedChildren] = useState([]);
@@ -590,9 +596,10 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             hideNoData={!isListView}
             mode={TableMode.MultiSelect}
             onSelectionChange={handleCheckBoxChange}
+            tabIndex={!isListView ? -1 : undefined}
             columns={
               <>
-                <TableColumn>{fieldText}</TableColumn>
+                <TableColumn>{filterText}</TableColumn>
                 {!showValues && <TableColumn className={classNames.tHactive}>{activeText}</TableColumn>}
               </>
             }
@@ -615,7 +622,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           >
             {i18nBundle.getText(FILTER_DIALOG_RESET_WARNING)}
           </MessageBox>,
-          document.body
+          portalContainer ?? document.body
         )}
     </FilterBarDialogContext.Provider>
   );

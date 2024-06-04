@@ -10,27 +10,35 @@ import { Form } from './index.js';
 import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 const component = (
-  <Form titleText={'Test form'}>
-    {false}
-    {null}
-    {undefined}
-    <FormGroup titleText={'Group 1'}>
-      <FormItem label={'item 1'}>
-        <Input data-testid="formInput" type={InputType.Text} />
-      </FormItem>
-      <FormItem label={'item 2'}>
-        <Input type={InputType.Number} />
-      </FormItem>
-    </FormGroup>
-    <FormGroup titleText={'Group 2'}>
-      <FormItem label={'item 3'}>
-        <Input data-testid="formInput2" type={InputType.Text} />
-      </FormItem>
-      <FormItem label={<Label>item 4</Label>}>
-        <Input type={InputType.Number} id="test-id" />
-      </FormItem>
-    </FormGroup>
-  </Form>
+  <>
+    <Form titleText={'Test form'}>
+      {false}
+      {null}
+      {undefined}
+      <FormGroup titleText={'Group 1'}>
+        <FormItem label={'item 1'}>
+          <Input data-testid="formInput" type={InputType.Text} />
+        </FormItem>
+        <FormItem label={'item 2'}>
+          <Input type={InputType.Number} />
+        </FormItem>
+      </FormGroup>
+      <FormGroup titleText={'Group 2'}>
+        <FormItem label={'item 3'}>
+          <Input data-testid="formInput2" type={InputType.Text} />
+        </FormItem>
+        <FormItem label={<Label>item 4</Label>}>
+          <Input type={InputType.Number} accessibleNameRef="test-id" />
+        </FormItem>
+        <FormItem label={<Label>item 4</Label>}>
+          <Input type={InputType.Number} accessibleName="custom label" />
+        </FormItem>
+      </FormGroup>
+    </Form>
+    <span id="test-id" style={{ fontSize: 0, left: 0, position: 'absolute', top: 0, userSelect: 'none' }}>
+      custom label
+    </span>
+  </>
 );
 
 const ConditionRenderingExample = () => {
@@ -119,16 +127,22 @@ describe('Form', () => {
   it('a11y labels', () => {
     cy.mount(component);
     for (let i = 1; i <= 3; i++) {
-      cy.get('label').contains(`item ${i}`).should('exist').should('not.be.visible');
+      cy.get('span').contains(`item ${i}`).should('exist').should('not.be.visible');
       cy.get('[ui5-label]').contains(`item ${i}`).should('be.visible');
     }
     // custom `Label`
     cy.findAllByText(`item 4`).eq(0).should('be.visible');
     cy.findAllByText(`item 4`).eq(1).should('exist').should('not.be.visible');
 
-    // custom id child of FormItem
-    cy.get('#test-id').should('have.length', 1).should('be.visible');
-    cy.get('[for="test-id"]').should('have.length', 1).should('not.be.visible');
+    // custom accessibleNameRef of FormItem input
+    cy.get('#test-id').should('have.length', 1).should('not.be.visible');
+    cy.get('[accessible-name-ref="test-id"]').should('have.length', 1).should('be.visible');
+
+    // custom accessibleName of FormItem input
+    cy.get('[accessible-name="custom label"]')
+      .should('have.length', 1)
+      .should('be.visible')
+      .should('not.have.attr', 'accessible-name-ref');
   });
 
   it('FilterItem: doesnt crash with portal as child', () => {

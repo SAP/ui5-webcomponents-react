@@ -3,14 +3,13 @@
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/dist/theming/ThemeLoaded.js';
 import {
-  getStyleContext,
+  StyleStore,
   ThemingParameters,
   useIsomorphicId,
   useIsomorphicLayoutEffect,
   useStylesheet
 } from '@ui5/webcomponents-react-base';
 import type { FC, ReactNode } from 'react';
-import React, { useMemo } from 'react';
 import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
 import { I18nProvider } from '../../internal/I18nProvider.js';
 import { ModalsProvider } from '../Modals/ModalsProvider.js';
@@ -45,7 +44,7 @@ export interface ThemeProviderPropTypes {
  * __Note:__ Per default, the `ThemeProvider` injects the CSS for the components during runtime. If you have imported our static CSS bundle/s in your application, you can set the prop `staticCssInjected` to `true` to prevent this.
  */
 const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes) => {
-  const { children, withoutModalsProvider, staticCssInjected } = props;
+  const { children, withoutModalsProvider = false, staticCssInjected = false } = props;
 
   useIsomorphicLayoutEffect(() => {
     document.documentElement.setAttribute('data-sap-theme', getTheme());
@@ -59,21 +58,17 @@ const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes
     };
   }, []);
 
-  const StyleContext = getStyleContext();
-  const styleContextValue = useMemo(() => {
-    return {
-      staticCssInjected: staticCssInjected ?? false,
-      componentsMap: new Map()
-    };
+  useIsomorphicLayoutEffect(() => {
+    StyleStore.setStaticCssInjected(staticCssInjected);
   }, [staticCssInjected]);
 
   return (
-    <StyleContext.Provider value={styleContextValue}>
+    <>
       <ThemeProviderStyles />
       <ReactJssThemeProvider theme={ThemingParameters}>
         <I18nProvider>{withoutModalsProvider ? children : <ModalsProvider>{children}</ModalsProvider>}</I18nProvider>
       </ReactJssThemeProvider>
-    </StyleContext.Provider>
+    </>
   );
 };
 

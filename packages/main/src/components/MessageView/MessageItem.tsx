@@ -5,7 +5,7 @@ import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
-import React, { forwardRef, useContext } from 'react';
+import { forwardRef, useContext } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection, ListItemType } from '../../enums/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';

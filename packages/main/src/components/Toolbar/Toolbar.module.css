@@ -115,7 +115,7 @@
 
   > [ui5-button]::part(button),
   > [ui5-toggle-button]::part(button) {
-    justify-content: start;
+    justify-content: flex-start;
   }
 
   > [ui5-button][icon-only]::part(button),

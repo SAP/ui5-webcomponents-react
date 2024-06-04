@@ -7,7 +7,7 @@ import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { FlexBoxAlignItems, ListItemType, TextAlign } from '../../../enums/index.js';
 import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults.js';
@@ -153,17 +153,9 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
 
   useEffect(() => {
     if (open && ref.current && openerRef.current) {
-      customElements
-        .whenDefined(getUi5TagWithSuffix('ui5-popover'))
-        .then(() => {
-          ref.current.opener = openerRef.current;
-          if (canRenderPortal && open) {
-            ref.current.showAt(openerRef.current);
-          }
-        })
-        .catch(() => {
-          // silently catch
-        });
+      void customElements.whenDefined(getUi5TagWithSuffix('ui5-popover')).then(() => {
+        ref.current.opener = openerRef.current;
+      });
     }
   }, [open, canRenderPortal]);
 
@@ -173,6 +165,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
 
   return createPortal(
     <Popover
+      open={open}
       hideArrow
       horizontalAlign={horizontalAlign}
       placementType={PopoverPlacement.Bottom}
@@ -181,8 +174,14 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       onClick={stopPropagation}
       onAfterClose={onAfterClose}
       onAfterOpen={onAfterOpen}
+      data-component-name="ATHeaderPopover"
     >
-      <List onItemClick={handleSort} ref={listRef} onKeyDown={handleListKeyDown}>
+      <List
+        onItemClick={handleSort}
+        ref={listRef}
+        onKeyDown={handleListKeyDown}
+        data-component-name="ATHeaderPopoverList"
+      >
         {isSortedAscending && (
           <StandardListItem type={ListItemType.Active} icon={iconDecline} data-sort="clear">
             {clearSortingText}

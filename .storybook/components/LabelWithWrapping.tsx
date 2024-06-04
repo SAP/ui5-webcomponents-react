@@ -1,6 +1,5 @@
 import { Label } from '@ui5/webcomponents-react';
 import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
-import React from 'react';
 
 //mdx adds a paragraph to children if added inline, this component prevents that.
 export const LabelWithWrapping = ({ children }) => {

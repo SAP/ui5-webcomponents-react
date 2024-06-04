@@ -1,5 +1,4 @@
 import { useStylesheet } from '@ui5/webcomponents-react-base';
-import React from 'react';
 import { Loader } from '../../../Loader/index.js';
 import { classNames, styleData } from './DefaultLoadingComponent.module.css.js';
 

@@ -4,7 +4,7 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import horizontalGripIcon from '@ui5/webcomponents-icons/dist/horizontal-grip.js';
 import verticalGripIcon from '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import { useCurrentTheme, useI18nBundle, useIsRTL, useSyncRef, useStylesheet } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../types/index.js';
 import { Button, Icon } from '../../webComponents/index.js';

@@ -14,7 +14,7 @@ import successIcon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MouseEventHandler, ReactNode } from 'react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { IndicationColor } from '../../enums/index.js';
 import {
   ARIA_OBJ_STATUS_DESC,
@@ -117,7 +117,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
     switch (state) {
       case ValueState.Negative:
         if (renderDefaultIcon) {
-          icon = <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" />;
+          icon = <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
         }
         if (!invisibleText) {
           invisibleText = errorStateText;
@@ -125,7 +125,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Positive:
         if (renderDefaultIcon) {
-          icon = <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" />;
+          icon = <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
         }
         if (!invisibleText) {
           invisibleText = successStateText;
@@ -133,7 +133,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Critical:
         if (renderDefaultIcon) {
-          icon = <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" />;
+          icon = <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
         }
         if (!invisibleText) {
           invisibleText = warningStateText;
@@ -141,7 +141,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Information:
         if (renderDefaultIcon) {
-          icon = <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" />;
+          icon = <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
         }
         if (!invisibleText) {
           invisibleText = informationStateText;

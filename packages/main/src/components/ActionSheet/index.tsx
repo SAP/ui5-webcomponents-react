@@ -5,7 +5,7 @@ import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement } from 'react';
-import React, { forwardRef, useReducer, useRef } from 'react';
+import { forwardRef, useReducer, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';

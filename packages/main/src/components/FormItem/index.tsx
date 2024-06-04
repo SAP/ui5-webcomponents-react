@@ -4,7 +4,7 @@ import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import { useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
-import React, { cloneElement, Fragment, isValidElement, useEffect, useMemo } from 'react';
+import { cloneElement, Fragment, isValidElement, useEffect, useMemo } from 'react';
 import { flattenFragments } from '../../internal/utils.js';
 import type { ReducedReactNodeWithBoolean } from '../../types/index.js';
 import type { LabelPropTypes } from '../../webComponents/Label/index.js';
@@ -24,6 +24,8 @@ export interface FormItemPropTypes {
   label?: string | ReactElement;
   /**
    * Content of the FormItem.
+   *
+   * __Note:__ Only ui5 web component inputs such as `Input (ui5-input)`, `CheckBox (ui5-checkbox)`,`DatePicker (ui5-date-picker)`, etc. are supporting screen readers. For all other inputs the labels have to be set manually.
    *
    * __Note:__ Text, numbers and React portals are ignored.
    */
@@ -54,6 +56,7 @@ function FormItemLabel({ label, style, className, rowIndex }: FormItemLabelProps
         data-label-span={labelSpan}
         showColon={!!label}
         data-row-index-label={rowIndex}
+        data-component-name="FormItemLabel"
       >
         {label}
       </Label>
@@ -62,7 +65,13 @@ function FormItemLabel({ label, style, className, rowIndex }: FormItemLabelProps
 
   if (isValidElement(label)) {
     const { showColon, wrappingType, style: labelStyle, children } = label.props;
-    return cloneElement<LabelPropTypes & { 'data-label-span'?: number; 'data-row-index-label'?: number }>(
+    return cloneElement<
+      LabelPropTypes & {
+        'data-label-span'?: number;
+        'data-row-index-label'?: number;
+        'data-component-name'?: string;
+      }
+    >(
       label,
       {
         showColon: showColon ?? true,
@@ -73,7 +82,8 @@ function FormItemLabel({ label, style, className, rowIndex }: FormItemLabelProps
           ...(labelStyle || {})
         },
         'data-label-span': labelSpan,
-        'data-row-index-label': rowIndex
+        'data-row-index-label': rowIndex,
+        'data-component-name': 'FormItemLabel'
       },
       children ?? ''
     );
@@ -159,19 +169,29 @@ const FormItem = (props: FormItemPropTypes) => {
         }}
         data-label-span={labelSpan}
         data-row-index={calculatedGridRowStart}
+        data-component-name="FormItemContent"
       >
         {flattenFragments(children).map((child, index) => {
           // @ts-expect-error: type can't be string because of `isValidElement`
           if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {
             const content = getContentForHtmlLabel(label);
-            const childId = child?.props?.id;
+            let accessibleNameRef: string | undefined;
+            if (!child?.props.accessibleName) {
+              accessibleNameRef =
+                child?.props?.accessibleNameRef ?? `${layoutInfo.groupId}-group ${uniqueId}-${index}-label`;
+            }
+
             return (
               <Fragment key={`${content}-${uniqueId}-${index}`}>
-                {/*@ts-expect-error: child is ReactElement*/}
-                {cloneElement(child, { id: childId ?? `${uniqueId}-${index}` })}
-                <label htmlFor={childId ?? `${uniqueId}-${index}`} style={{ display: 'none' }} aria-hidden={true}>
+                {accessibleNameRef
+                  ? cloneElement(child, {
+                      //@ts-expect-error: child is ReactElement
+                      accessibleNameRef
+                    })
+                  : child}
+                <span className={classNames.pseudoInvisibleText} id={`${uniqueId}-${index}-label`}>
                   {content}
-                </label>
+                </span>
               </Fragment>
             );
           }

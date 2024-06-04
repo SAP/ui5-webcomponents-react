@@ -3,16 +3,7 @@
 import { debounce, Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MutableRefObject, ReactElement, ReactNode } from 'react';
-import React, {
-  Children,
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import { flattenFragments } from '../../internal/utils.js';
@@ -30,6 +21,8 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    * The `DynamicPageTitle` actions.
    *
    * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault()` to prevent this.
+   *
+   * __Note:__ Although this prop accepts all `ReactElements`, it is strongly recommended that you only use components that render a single element in order to preserve the intended design.
    */
   actions?: ReactElement | ReactElement[];
 
@@ -61,6 +54,8 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    * If the control size is 1280px or bigger, they are rendered right next to the actions.
    * Otherwise, they are rendered in the top-right area, above the actions.
    * If a large number of elements(buttons) are used, there could be visual degradations as the space for the `navigationActions` is limited.
+   *
+   * __Note:__ Although this prop accepts all `ReactElements`, it is strongly recommended that you only use components that render a single element in order to preserve the intended design.
    *
    * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault()` to prevent this.
    */
