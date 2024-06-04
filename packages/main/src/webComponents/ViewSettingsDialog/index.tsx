@@ -1,13 +1,13 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 import type {
   ViewSettingsDialogCancelEventDetail,
   ViewSettingsDialogConfirmEventDetail,
   VSDSettings
 } from '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
+import { withWebComponent } from '../../internal/withWebComponent.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ViewSettingsDialogAttributes {
   /**
