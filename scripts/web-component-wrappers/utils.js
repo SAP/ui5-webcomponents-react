@@ -198,7 +198,6 @@ export const getTypeDefinitionForProperty = (property, options = {}) => {
     case 'BorderDesign':
     case 'BreadcrumbsDesign':
     case 'BreadcrumbsSeparatorStyle':
-    case 'ComboBoxFilter':
     case 'ListItemType':
     case 'PageBackgroundDesign':
     case 'PanelAccessibleRole':

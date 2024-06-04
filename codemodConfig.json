@@ -109,7 +109,14 @@
         "busyDelay": "loadingDelay"
       }
     },
-    "MessageStrip": {}
+    "MessageStrip": {},
+    "MultiComboBox": {
+      "changedProps": {
+        "allowCustomValues": "noValidation"
+      }
+    },
+    "MultiComboBoxGroupItem": {},
+    "MultiComboBoxItem": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
