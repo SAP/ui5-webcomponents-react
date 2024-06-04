@@ -190,7 +190,9 @@
         "title": "tooltip"
       }
     },
-    "Slider": {}
+    "Slider": {},
+    "SortItem": {},
+    "SpecialCalendarDate": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
