@@ -197,7 +197,10 @@
       "removedProps": ["activeIcon"]
     },
     "StandardListItem": {},
-    "StepInput": {}
+    "StepInput": {},
+    "SuggestionGroupItem": {},
+    "SuggestionItem": {},
+    "Switch": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
