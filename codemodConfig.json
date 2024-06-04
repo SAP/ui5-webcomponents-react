@@ -189,7 +189,8 @@
       "changedProps": {
         "title": "tooltip"
       }
-    }
+    },
+    "Slider": {}
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",

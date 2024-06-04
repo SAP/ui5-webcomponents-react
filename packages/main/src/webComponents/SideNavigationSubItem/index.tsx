@@ -86,8 +86,8 @@ interface SideNavigationSubItemPropTypes
  */
 const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, SideNavigationSubItemDomRef>(
   'ui5-side-navigation-sub-item',
-  ['href', 'icon', 'target'],
-  ['selected'],
+  ['href', 'icon', 'target', 'text'],
+  ['disabled', 'selected'],
   [],
   ['click'],
   () => import('@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js')
