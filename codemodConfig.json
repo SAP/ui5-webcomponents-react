@@ -173,7 +173,23 @@
     "SelectMenu": {},
     "SelectMenuOption": {},
     "ShellBar": {},
-    "ShellBarItem": {}
+    "ShellBarItem": {},
+    "SideNavigation": {},
+    "SideNavigationGroup": {
+      "changedProps": {
+        "title": "tooltip"
+      }
+    },
+    "SideNavigationItem": {
+      "changedProps": {
+        "title": "tooltip"
+      }
+    },
+    "SideNavigationSubItem": {
+      "changedProps": {
+        "title": "tooltip"
+      }
+    }
   },
   "enums": {
     "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
