@@ -2,13 +2,13 @@
 
 import { debounce, Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { MutableRefObject, ReactElement, ReactNode } from 'react';
+import type { MouseEventHandler, ReactElement, ReactNode, RefObject } from 'react';
 import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
-import type { PopoverDomRef } from '../../webComponents/index.js';
+import type { ButtonPropTypes, PopoverDomRef } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import type { ToolbarPropTypes } from '../Toolbar/index.js';
 import { Toolbar } from '../Toolbar/index.js';
@@ -105,11 +105,14 @@ export interface InternalProps extends DynamicPageTitlePropTypes {
   'data-is-snapped-rendered-outside'?: boolean;
 }
 
-const enhanceActionsWithClick = (actions, ref: MutableRefObject<PopoverDomRef>) =>
+type ActionsType =
+  | ReactElement<{ onClick: MouseEventHandler<HTMLElement> }>
+  | ReactElement<{ onClick: MouseEventHandler<HTMLElement> }>[];
+
+const enhanceActionsWithClick = (actions: ActionsType, ref: RefObject<PopoverDomRef>) =>
   flattenFragments(actions, Infinity).map((action) => {
     if (isValidElement(action)) {
-      return cloneElement(action, {
-        // @ts-expect-error: only actionable elements should be passed to either of the `action` props
+      return cloneElement<ButtonPropTypes>(action, {
         onClick: (e) => {
           if (typeof action.props?.onClick === 'function') {
             action.props.onClick(e);
@@ -255,7 +258,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
               active
             >
               <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
-              {enhanceActionsWithClick(navigationActions, syncedNavActionsOverflowRef)}
+              {enhanceActionsWithClick(navigationActions as ActionsType, syncedNavActionsOverflowRef)}
             </Toolbar>
           )}
         </FlexBox>
@@ -298,11 +301,12 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
             overflowPopoverRef={actionsOverflowRef}
           >
             <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
-            {enhanceActionsWithClick(actions, syncedActionsOverflowRef)}
+            {enhanceActionsWithClick(actions as ActionsType, syncedActionsOverflowRef)}
             {!showNavigationInTopArea && Children.count(actions) > 0 && Children.count(navigationActions) > 0 && (
               <ToolbarSeparator />
             )}
-            {!showNavigationInTopArea && enhanceActionsWithClick(navigationActions, syncedActionsOverflowRef)}
+            {!showNavigationInTopArea &&
+              enhanceActionsWithClick(navigationActions as ActionsType, syncedActionsOverflowRef)}
           </Toolbar>
         )}
       </FlexBox>
