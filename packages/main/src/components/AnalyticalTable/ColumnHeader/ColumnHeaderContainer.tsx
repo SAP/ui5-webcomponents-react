@@ -6,7 +6,7 @@ import { classNames, styleData } from './Resizer.module.css.js';
 import { ColumnHeader } from './index.js';
 
 interface ColumnHeaderContainerProps {
-  headerProps: Record<string, unknown>;
+  headerProps: Record<string, any>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headerGroup: Record<string, any>;
   onSort: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
