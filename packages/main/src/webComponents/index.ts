@@ -87,7 +87,6 @@ export * from './TableCell/index.js';
 export * from './TableColumn/index.js';
 export * from './TableGroupRow/index.js';
 export * from './TableRow/index.js';
-export * from './Text/index.js';
 export * from './TextArea/index.js';
 export * from './TimePicker/index.js';
 export * from './Timeline/index.js';
