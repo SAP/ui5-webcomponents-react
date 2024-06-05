@@ -16,6 +16,7 @@ import type {
   ToggleButtonPropTypes
 } from '../../webComponents/index.js';
 import { Popover, ToggleButton } from '../../webComponents/index.js';
+import type { ToolbarSeparatorPropTypes } from '../ToolbarSeparator/index.js';
 import type { ToolbarPropTypes } from './index.js';
 
 interface OverflowPopoverProps {
@@ -91,7 +92,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   useEffect(() => {
     const tagName = getUi5TagWithSuffix('ui5-toggle-button');
-    customElements.whenDefined(tagName).then(() => {
+    void customElements.whenDefined(tagName).then(() => {
       if (toggleBtnRef.current) {
         toggleBtnRef.current.accessibilityAttributes = { expanded: pressed, hasPopup: 'Menu' };
       }
@@ -163,7 +164,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
                   }
                   // @ts-expect-error: if type is not defined, it's not a spacer
                   if (item.type?.displayName === 'ToolbarSeparator') {
-                    return cloneElement(item as ReactElement, {
+                    return cloneElement(item as ReactElement<ToolbarSeparatorPropTypes>, {
                       style: {
                         height: '0.0625rem',
                         margin: '0.375rem 0.1875rem',
