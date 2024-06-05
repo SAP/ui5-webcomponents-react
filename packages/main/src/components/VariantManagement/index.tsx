@@ -80,6 +80,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     setSafeChildren(Children.toArray(children));
   }, [children]);
 
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState<SelectedVariant | undefined>(() => {
@@ -95,7 +96,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   );
 
   const handleClose = () => {
-    popoverRef.current.close();
+    setPopoverOpen(false);
   };
 
   const handleManageClick = () => {
@@ -177,10 +178,16 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   const handleOpenVariantManagement = useCallback(
     (e) => {
-      popoverRef.current.showAt(e.target);
+      popoverRef.current.opener = e.target;
+      setPopoverOpen(true);
     },
     [popoverRef]
   );
+
+  const handleCloseVariantManagement = (e) => {
+    stopPropagation(e);
+    setPopoverOpen(false);
+  };
 
   const searchText = i18nBundle.getText(SEARCH);
   const saveAsText = i18nBundle.getText(SAVE_AS);
@@ -289,6 +296,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         {canRenderPortal
           ? createPortal(
               <ResponsivePopover
+                open={popoverOpen}
                 className={classNames.popover}
                 ref={popoverRef}
                 headerText={titleText}
@@ -327,7 +335,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
                     />
                   )
                 }
-                onClose={stopPropagation}
+                onClose={handleCloseVariantManagement}
               >
                 {inErrorState ? (
                   <IllustratedMessage name={IllustrationMessageType.UnableToLoad} />

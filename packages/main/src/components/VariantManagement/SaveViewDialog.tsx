@@ -131,7 +131,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     }
     setIsInvalid(false);
     inputRef.current.isInvalid = false;
-    saveViewDialogRef.current.close();
+    saveViewDialogRef.current.open = false;
   };
 
   const handleChangeDefault = (e) => {
