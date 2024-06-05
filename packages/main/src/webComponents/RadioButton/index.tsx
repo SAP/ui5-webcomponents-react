@@ -40,21 +40,15 @@ interface RadioButtonAttributes {
   disabled?: boolean;
 
   /**
-   * Defines the name of the component.
+   * Determines the name by which the component will be identified upon submission in an HTML form.
+   *
    * Radio buttons with the same `name` will form a radio button group.
    *
-   * **Note:**
-   * The selection can be changed with `ARROW_UP/DOWN` and `ARROW_LEFT/RIGHT` keys between radio buttons in same group.
+   * **Note:** By this name the component will be identified upon submission in an HTML form.
    *
-   * **Note:**
-   * Only one radio button can be selected per group.
+   * **Note:** The selection can be changed with `ARROW_UP/DOWN` and `ARROW_LEFT/RIGHT` keys between radio buttons in same group.
    *
-   * **Important:** For the `name` property to have effect when submitting forms, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
-   *
-   * **Note:** When set, a native `input` HTML element
-   * will be created inside the component so that it can be submitted as
-   * part of an HTML form.
+   * **Note:** Only one radio button can be selected per group.
    */
   name?: string;
 
@@ -84,9 +78,6 @@ interface RadioButtonAttributes {
    * Defines the form value of the component.
    * When a form with a radio button group is submitted, the group's value
    * will be the value of the currently selected radio button.
-   *
-   * **Important:** For the `value` property to have effect, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
    */
   value?: string;
 

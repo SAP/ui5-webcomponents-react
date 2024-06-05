@@ -57,21 +57,16 @@ interface DatePickerAttributes {
   minDate?: string;
 
   /**
-   * Determines the name with which the component will be submitted in an HTML form.
+   * Determines the name by which the component will be identified upon submission in an HTML form.
    *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
-   *
-   * **Note:** When set, a native `input` HTML element
-   * will be created inside the component so that it can be submitted as
-   * part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** This property is only applicable within the context of an HTML Form element.
    */
   name?: string;
 
   /**
    * Defines the open or closed state of the popover.
    *
-   * **Note:** Available since [v2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   open?: boolean;

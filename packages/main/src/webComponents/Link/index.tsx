@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/Link.js';
 import type { LinkAccessibilityAttributes, LinkClickEventDetail } from '@ui5/webcomponents/dist/Link.js';
+import type LinkAccessibleRole from '@ui5/webcomponents/dist/types/LinkAccessibleRole.js';
 import type LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
 import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import type { ReactNode } from 'react';
@@ -24,12 +25,12 @@ interface LinkAttributes {
   /**
    * Defines the ARIA role of the component.
    *
-   * **Note:** Use the "button" role in cases when navigation is not expected to occur and the href property is not defined.
+   * **Note:** Use the <code>LinkAccessibleRole.Button</code> role in cases when navigation is not expected to occur and the href property is not defined.
    *
    * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
    * @default "link"
    */
-  accessibleRole?: string;
+  accessibleRole?: LinkAccessibleRole | keyof typeof LinkAccessibleRole;
 
   /**
    * Defines the component design.

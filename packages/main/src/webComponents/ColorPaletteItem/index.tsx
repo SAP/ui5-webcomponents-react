@@ -7,6 +7,17 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ColorPaletteItemAttributes {
   /**
+   * Defines if the component is selected.
+   *
+   * **Note:** Only one item must be selected per <code>ui5-color-palette</code>.
+   * If more than one item is defined as selected, the last one would be considered as the selected one.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  selected?: boolean;
+
+  /**
    * Defines the colour of the component.
    *
    * **Note:** The value should be a valid CSS color.
@@ -29,7 +40,7 @@ interface ColorPaletteItemPropTypes
 const ColorPaletteItem = withWebComponent<ColorPaletteItemPropTypes, ColorPaletteItemDomRef>(
   'ui5-color-palette-item',
   ['value'],
-  [],
+  ['selected'],
   [],
   [],
   () => import('@ui5/webcomponents/dist/ColorPaletteItem.js')

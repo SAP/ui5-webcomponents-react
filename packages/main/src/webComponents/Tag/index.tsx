@@ -47,7 +47,7 @@ interface TagAttributes {
   /**
    * Defines predefined size of the component.
    *
-   * **Note:** Available since [v2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    * @default "S"
    */
   size?: TagSize | keyof typeof TagSize;
