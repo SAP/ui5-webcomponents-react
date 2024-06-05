@@ -71,6 +71,14 @@ interface DialogAttributes {
   preventFocusRestore?: boolean;
 
   /**
+   * Indicates whether initial focus should be prevented.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  preventInitialFocus?: boolean;
+
+  /**
    * Configures the component to be resizable.
    * If this property is set to true, the Dialog will have a resize handle in its bottom right corner in LTR languages.
    * In RTL languages, the resize handle will be placed in the bottom left corner.
@@ -108,25 +116,6 @@ interface DialogDomRef extends Required<DialogAttributes>, Ui5DomRef {
    * @returns {Promise<void>} - Promise that resolves when the focus is applied
    */
   applyFocus: () => Promise<void>;
-
-  /**
-   * Closes the popup.
-   * @returns {void}
-   */
-  close: () => void;
-
-  /**
-   * Tells if the component is opened
-   * @returns {boolean}
-   */
-  isOpen: () => boolean;
-
-  /**
-   * Shows the dialog.
-   * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
-   * @returns {Promise<void>} - Resolves when the dialog is open
-   */
-  show: (preventInitialFocus?: boolean) => Promise<void>;
 }
 
 interface DialogPropTypes
@@ -137,10 +126,10 @@ interface DialogPropTypes
       | 'children'
       | 'footer'
       | 'header'
-      | 'onAfterClose'
-      | 'onAfterOpen'
       | 'onBeforeClose'
       | 'onBeforeOpen'
+      | 'onClose'
+      | 'onOpen'
     > {
   /**
    * Defines the content of the Popup.
@@ -176,16 +165,6 @@ interface DialogPropTypes
    */
   header?: UI5WCSlotsNode;
   /**
-   * Fired after the component is closed. **This event does not bubble.**
-   */
-  onAfterClose?: (event: Ui5CustomEvent<DialogDomRef>) => void;
-
-  /**
-   * Fired after the component is opened. **This event does not bubble.**
-   */
-  onAfterOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
-
-  /**
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
@@ -198,6 +177,16 @@ interface DialogPropTypes
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
+
+  /**
+   * Fired after the component is closed. **This event does not bubble.**
+   */
+  onClose?: (event: Ui5CustomEvent<DialogDomRef>) => void;
+
+  /**
+   * Fired after the component is opened. **This event does not bubble.**
+   */
+  onOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }
 
 /**
@@ -257,9 +246,9 @@ interface DialogPropTypes
 const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
   ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'headerText', 'initialFocus', 'state'],
-  ['draggable', 'open', 'preventFocusRestore', 'resizable', 'stretch'],
+  ['draggable', 'open', 'preventFocusRestore', 'preventInitialFocus', 'resizable', 'stretch'],
   ['footer', 'header'],
-  ['after-close', 'after-open', 'before-close', 'before-open'],
+  ['before-close', 'before-open', 'close', 'open'],
   () => import('@ui5/webcomponents/dist/Dialog.js')
 );
 

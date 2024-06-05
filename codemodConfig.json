@@ -64,7 +64,12 @@
     "DatePicker": {},
     "DateRangePicker": {},
     "DateTimePicker": {},
-    "Dialog": {},
+    "Dialog": {
+      "changedProps": {
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen"
+      }
+    },
     "DynamicSideContent": {},
     "FileUploader": {},
     "FilterItem": {},
