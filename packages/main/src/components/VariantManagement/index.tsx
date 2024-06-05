@@ -279,7 +279,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   const canRenderPortal = useCanRenderPortal();
 
-  const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
+  // todo: this applies if `readOnly` is set to `false` as well since the value is read via data-attribute and is therefore a string not a boolean
+  const showSaveBtn = dirtyState && !selectedVariant?.hasOwnProperty('readOnly');
+
   return (
     <div className={variantManagementClasses} style={style} {...rest} ref={ref}>
       <VariantManagementContext.Provider
