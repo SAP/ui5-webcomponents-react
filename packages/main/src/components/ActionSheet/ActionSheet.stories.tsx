@@ -58,7 +58,7 @@ export const Default: Story = {
           {...args}
           opener="actionSheetOpener"
           open={actionSheetOpen}
-          onAfterClose={() => {
+          onClose={() => {
             setActionSheetOpen(false);
           }}
         >

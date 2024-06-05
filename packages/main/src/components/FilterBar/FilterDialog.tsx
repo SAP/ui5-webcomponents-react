@@ -486,8 +486,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           ref={dialogRef}
           data-component-name="FilterBarDialog"
           data-is-phone={isPhone}
-          onAfterClose={handleClose}
-          onAfterOpen={onAfterFiltersDialogOpen}
+          onClose={handleClose}
+          onOpen={onAfterFiltersDialogOpen}
           resizable
           draggable
           className={classNames.dialogComponent}

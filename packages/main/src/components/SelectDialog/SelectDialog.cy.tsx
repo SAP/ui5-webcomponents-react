@@ -47,7 +47,7 @@ describe('SelectDialog', () => {
       rememberSelections,
       mode
     }: {
-      close: SelectDialogPropTypes['onAfterClose'];
+      close: SelectDialogPropTypes['onClose'];
       change: ListPropTypes['onSelectionChange'];
       confirm: SelectDialogPropTypes['onConfirm'];
       rememberSelections?: SelectDialogPropTypes['rememberSelections'];
@@ -65,14 +65,14 @@ describe('SelectDialog', () => {
             Open
           </Button>
           <SelectDialog
-            mode={mode}
+            selectionMode={mode}
             rememberSelections={rememberSelections}
             open={open}
             onConfirm={(e) => {
               setItems(e.detail.selectedItems.map((item) => item.textContent));
               confirm(e);
             }}
-            onAfterClose={(e) => {
+            onClose={(e) => {
               setOpen(false);
               close(e);
             }}
@@ -254,7 +254,7 @@ describe('SelectDialog', () => {
           <SelectDialog
             open={open}
             onCancel={cancel}
-            onAfterClose={() => {
+            onClose={() => {
               setOpen(false);
             }}
             mode={mode}

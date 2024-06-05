@@ -34,9 +34,7 @@ interface ToastAttributes {
 
 interface ToastDomRef extends Required<ToastAttributes>, Ui5DomRef {}
 
-interface ToastPropTypes
-  extends ToastAttributes,
-    Omit<CommonProps, keyof ToastAttributes | 'children' | 'onAfterClose'> {
+interface ToastPropTypes extends ToastAttributes, Omit<CommonProps, keyof ToastAttributes | 'children' | 'onClose'> {
   /**
    * Defines the text of the component.
    *
@@ -48,7 +46,7 @@ interface ToastPropTypes
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    */
-  onAfterClose?: (event: Ui5CustomEvent<ToastDomRef>) => void;
+  onClose?: (event: Ui5CustomEvent<ToastDomRef>) => void;
 }
 
 /**
@@ -79,7 +77,7 @@ const Toast = withWebComponent<ToastPropTypes, ToastDomRef>(
   ['duration', 'placement'],
   ['open'],
   [],
-  ['after-close'],
+  ['close'],
   () => import('@ui5/webcomponents/dist/Toast.js')
 );
 

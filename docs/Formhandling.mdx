@@ -275,7 +275,7 @@ const WrappedCheckBox = (props) => {
         valueState={errorMessage ? ValueState.Negative : ValueState.None}
       />
       {createPortal(
-        <Popover open={open} opener={uniqueId} onAfterClose={handleClose} initialFocus={uniqueId}>
+        <Popover open={open} opener={uniqueId} onClose={handleClose} initialFocus={uniqueId}>
           <ObjectStatus state={ValueState.Negative}>{errorMessage}</ObjectStatus>
         </Popover>,
         document.body

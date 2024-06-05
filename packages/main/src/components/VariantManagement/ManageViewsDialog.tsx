@@ -218,7 +218,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       open
       className={classNames.manageViewsDialog}
       data-component-name="VariantManagementManageViewsDialog"
-      onAfterClose={onAfterClose}
+      onClose={onAfterClose}
       onBeforeClose={handleClose}
       headerText={manageViewsText}
       initialFocus={`search-${uniqueId}`}

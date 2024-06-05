@@ -155,7 +155,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
       className={classNames.dialog}
       ref={saveViewDialogRef}
       headerText={headingText}
-      onAfterClose={onAfterClose}
+      onClose={onAfterClose}
       onBeforeClose={handleClose}
       initialFocus={`view-${uniqueId}`}
       footer={

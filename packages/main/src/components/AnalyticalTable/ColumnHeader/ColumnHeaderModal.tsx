@@ -172,8 +172,8 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       ref={ref}
       className={classNames.popover}
       onClick={stopPropagation}
-      onAfterClose={onAfterClose}
-      onAfterOpen={onAfterOpen}
+      onClose={onAfterClose}
+      onOpen={onAfterOpen}
       data-component-name="ATHeaderPopover"
     >
       <List

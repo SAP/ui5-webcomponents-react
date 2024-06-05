@@ -144,9 +144,9 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             placement={PopoverPlacement.Bottom}
             ref={componentRef}
             open={pressed}
-            onAfterClose={handleClose}
+            onClose={handleClose}
             onBeforeOpen={handleBeforeOpen}
-            onAfterOpen={handleAfterOpen}
+            onOpen={handleAfterOpen}
             hideArrow
             accessibleRole={accessibleRole}
           >

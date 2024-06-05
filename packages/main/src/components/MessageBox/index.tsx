@@ -39,7 +39,7 @@ type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | str
 export interface MessageBoxPropTypes
   extends Omit<
     DialogPropTypes,
-    'children' | 'footer' | 'headerText' | 'onAfterClose' | 'state' | 'accessibleNameRef' | 'open' | 'initialFocus'
+    'children' | 'footer' | 'headerText' | 'onClose' | 'state' | 'accessibleNameRef' | 'open' | 'initialFocus'
   > {
   /**
    * Defines the IDs of the elements that label the component.
@@ -201,8 +201,8 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
     return initialFocus;
   };
 
-  // @ts-expect-error: footer, headerText and onAfterClose are already omitted via prop types
-  const { footer: _0, headerText: _1, onAfterClose: _2, ...restWithoutOmitted } = rest;
+  // @ts-expect-error: footer, headerText and onClose are already omitted via prop types
+  const { footer: _0, headerText: _1, onClose: _2, ...restWithoutOmitted } = rest;
 
   const iconToRender = getIcon(icon, type, classNames);
   const needsCustomHeader = !props.header && !!iconToRender;
@@ -212,7 +212,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       open={open}
       ref={ref}
       className={clsx(classNames.messageBox, className)}
-      onAfterClose={open ? handleOnClose : stopPropagation}
+      onClose={open ? handleOnClose : stopPropagation}
       accessibleNameRef={needsCustomHeader ? `${messageBoxId}-title ${messageBoxId}-text` : undefined}
       accessibleRole={PopupAccessibleRole.AlertDialog}
       {...restWithoutOmitted}

@@ -46,7 +46,7 @@ export const Default: Story = {
     };
     const handleClose = (e) => {
       setOpen(false);
-      args.onAfterClose(e);
+      args.onClose(e);
     };
     useEffect(() => {
       setOpen(args.open);
@@ -54,7 +54,7 @@ export const Default: Story = {
     return (
       <>
         <Button onClick={onButtonClick}>Open SelectDialog</Button>
-        <SelectDialog {...args} open={open} onAfterClose={handleClose}>
+        <SelectDialog {...args} open={open} onClose={handleClose}>
           {new Array(40).fill('').map((_, index) => {
             const currentProduct = listItems[index % 4];
             return (
@@ -132,14 +132,14 @@ export const MultiSelect: Story = {
         <Button onClick={handleOpen}>Open Dialog</Button>
         <SelectDialog
           open={dialogOpen}
-          mode={ListSelectionMode.Multiple}
+          selectionMode={ListSelectionMode.Multiple}
           numberOfSelectedItems={Object.keys(selectedItems).length}
           listProps={{ onItemClick: handleItemClick }}
           showClearButton
           rememberSelections
           onClear={handleClear}
           onConfirm={handleConfirm}
-          onAfterClose={handleClose}
+          onClose={handleClose}
           onSearchInput={handleSearch}
           onSearch={handleSearch}
           onSearchReset={handleSearchReset}

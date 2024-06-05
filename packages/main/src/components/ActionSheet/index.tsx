@@ -144,8 +144,8 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
     slot,
     style,
     verticalAlign,
-    onAfterClose,
-    onAfterOpen,
+    onClose,
+    onOpen,
     onBeforeClose,
     onBeforeOpen,
     ...rest
@@ -200,8 +200,8 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
     if (isPhone()) {
       actionBtnsRef.current.querySelector(`[data-action-btn-index="${focusedItem}"]`).focus();
     }
-    if (typeof onAfterOpen === 'function') {
-      onAfterOpen(e);
+    if (typeof onOpen === 'function') {
+      onOpen(e);
     }
   };
 
@@ -259,12 +259,12 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
       verticalAlign={verticalAlign}
       footer={footer}
       header={displayHeader ? header : undefined}
-      onAfterClose={onAfterClose}
+      onClose={onClose}
       onBeforeClose={onBeforeClose}
       onBeforeOpen={onBeforeOpen}
       accessibleName={i18nBundle.getText(AVAILABLE_ACTIONS)}
       {...rest}
-      onAfterOpen={handleAfterOpen}
+      onOpen={handleAfterOpen}
       ref={componentRef}
       className={clsx(classNames.actionSheet, isPhone() && classNames.actionSheetMobile, className)}
       data-actionsheet

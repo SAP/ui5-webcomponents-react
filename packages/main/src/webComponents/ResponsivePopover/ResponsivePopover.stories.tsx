@@ -65,7 +65,7 @@ export const Default: Story = {
         </Button>
         <ResponsivePopover
           {...args}
-          onAfterClose={() => {
+          onClose={() => {
             setResponsivePopoverIsOpen(false);
           }}
           opener="openResponsivePopoverBtn"
@@ -95,7 +95,7 @@ export const WithContent: Story = {
           className={clsx('headerPartNoPadding', args.className)}
           opener="respPopoverBtn2"
           open={responsivePopoverIsOpen}
-          onAfterClose={handleClose}
+          onClose={handleClose}
           header={
             <Bar endContent={<Icon name="settings" />}>
               <Title>Popover</Title>

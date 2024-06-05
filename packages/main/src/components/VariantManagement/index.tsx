@@ -327,7 +327,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
                     />
                   )
                 }
-                onAfterClose={stopPropagation}
+                onClose={stopPropagation}
               >
                 {inErrorState ? (
                   <IllustratedMessage name={IllustrationMessageType.UnableToLoad} />

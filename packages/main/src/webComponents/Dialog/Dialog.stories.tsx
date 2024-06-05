@@ -52,8 +52,8 @@ export const Default: Story = {
         <Dialog
           {...args}
           open={dialogOpen}
-          onAfterClose={(e) => {
-            args.onAfterClose(e);
+          onClose={(e) => {
+            args.onClose(e);
             setDialogOpen(false);
           }}
           footer={
@@ -91,7 +91,7 @@ export const WithContent: Story = {
         <Dialog
           {...args}
           open={dialogIsOpen}
-          onAfterClose={handleClose}
+          onClose={handleClose}
           className={clsx('headerPartNoPadding', args.className)}
           header={
             <Bar endContent={<Icon name={settingsIcon} />}>

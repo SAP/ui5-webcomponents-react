@@ -36,13 +36,13 @@ export const Default: Story = {
       setOpen(true);
     };
 
-    const onAfterClose = (e) => {
+    const onClose = (e) => {
       setOpen(false);
-      args.onAfterClose(e);
+      args.onClose(e);
     };
     return (
       <div style={{ height: '300px' }}>
-        <Toast open={open} duration={args.duration} placement={args.placement} onAfterClose={onAfterClose}>
+        <Toast open={open} duration={args.duration} placement={args.placement} onClose={onClose}>
           {args.children}
         </Toast>
         <Button onClick={showToast}>Show Toast</Button>

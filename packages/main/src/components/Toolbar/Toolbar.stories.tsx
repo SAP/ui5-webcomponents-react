@@ -131,7 +131,7 @@ export const PopoverInOverflowPopover: Story = {
         <Menu
           opener={opener}
           open={popoverIsOpen}
-          onAfterClose={() => {
+          onClose={() => {
             setPopoverIsOpen(false);
           }}
         >

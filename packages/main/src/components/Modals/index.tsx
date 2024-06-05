@@ -60,9 +60,9 @@ function showDialog<ContainerElement>(
       props: {
         ...props,
         open: true,
-        onAfterClose: (event) => {
-          if (typeof props.onAfterClose === 'function') {
-            props.onAfterClose(event);
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
           }
           setModal({
             type: 'reset',
@@ -95,9 +95,9 @@ function showPopover<ContainerElement>(
         ...props,
 
         open: true,
-        onAfterClose: (event) => {
-          if (typeof props.onAfterClose === 'function') {
-            props.onAfterClose(event);
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
           }
           setModal({
             type: 'reset',
@@ -128,9 +128,9 @@ function showResponsivePopover<ContainerElement>(
       props: {
         ...props,
         open: true,
-        onAfterClose: (event) => {
-          if (typeof props.onAfterClose === 'function') {
-            props.onAfterClose(event);
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
           }
           setModal({
             type: 'reset',

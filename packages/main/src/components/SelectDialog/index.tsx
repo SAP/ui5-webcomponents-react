@@ -144,7 +144,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     numberOfSelectedItems,
     rememberSelections,
     showClearButton,
-    onAfterClose,
+    onClose,
     onClear,
     onConfirm,
     onLoadMore,
@@ -153,7 +153,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     onSearchReset,
     onBeforeOpen,
     onBeforeClose,
-    onAfterOpen,
+    onOpen,
     onCancel,
     ...rest
   } = props;
@@ -176,8 +176,8 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
   };
 
   const handleAfterOpen = (e) => {
-    if (typeof onAfterOpen === 'function') {
-      onAfterOpen(e);
+    if (typeof onOpen === 'function') {
+      onOpen(e);
     }
     listRef.current?.focusFirstItem();
   };
@@ -242,8 +242,8 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
   };
 
   const handleAfterClose = (e) => {
-    if (typeof onAfterClose === 'function') {
-      onAfterClose(e);
+    if (typeof onClose === 'function') {
+      onClose(e);
     }
     if (typeof onSearchReset === 'function') {
       onSearchReset(enrichEventWithDetails(e, { prevValue: searchValue }));
@@ -269,9 +269,9 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       data-component-name="SelectDialog"
       ref={componentRef}
       className={clsx(classNames.dialog, className)}
-      onAfterClose={handleAfterClose}
+      onClose={handleAfterClose}
       onBeforeOpen={handleBeforeOpen}
-      onAfterOpen={handleAfterOpen}
+      onOpen={handleAfterOpen}
       onBeforeClose={handleBeforeClose}
     >
       <div className={classNames.headerContent} slot="header">

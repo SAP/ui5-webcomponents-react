@@ -9,6 +9,8 @@
     },
     "ActionSheet": {
       "changedProps": {
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen",
         "placementType": "placement"
       }
     },
@@ -156,8 +158,11 @@
     "Panel": {},
     "Popover": {
       "changedProps": {
-        "placementType": "placement"
-      }
+        "placementType": "placement",
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen"
+      },
+      "removedProps": ["hideBackdrop"]
     },
     "ProductSwitch": {},
     "ProductSwitchItem": {},
@@ -169,8 +174,11 @@
     "RatingIndicator": {},
     "ResponsivePopover": {
       "changedProps": {
-        "placementType": "placement"
-      }
+        "placementType": "placement",
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen"
+      },
+      "removedProps": ["hideBackdrop"]
     },
     "SegmentedButton": {
       "changedProps": {
@@ -187,7 +195,9 @@
     },
     "SelectDialog": {
       "changedProps": {
-        "mode": "selectionMode"
+        "mode": "selectionMode",
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen"
       }
     },
     "SelectMenu": {},
@@ -242,7 +252,11 @@
     "Timeline": {},
     "TimelineItem": {},
     "Title": {},
-    "Toast": {},
+    "Toast": {
+      "changedProps": {
+        "onAfterClose": "onClose"
+      }
+    },
     "ToggleButton": {},
     "Token": {
       "removedProps": ["disabled"]

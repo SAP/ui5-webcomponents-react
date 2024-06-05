@@ -136,12 +136,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
       {showOverflowInPopover &&
         popoverOpen &&
         createPortal(
-          <ResponsivePopover
-            opener={`${uniqueId}-link`}
-            open
-            onAfterClose={closePopover}
-            className={classNames.popover}
-          >
+          <ResponsivePopover opener={`${uniqueId}-link`} open onClose={closePopover} className={classNames.popover}>
             <Text renderWhitespace={renderWhitespace} hyphenated={hyphenated} className={classNames.text}>
               {children}
             </Text>
