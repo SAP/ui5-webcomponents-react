@@ -46,7 +46,6 @@ export * from './MultiComboBox/index.js';
 export * from './MultiComboBoxGroupItem/index.js';
 export * from './MultiComboBoxItem/index.js';
 export * from './MultiInput/index.js';
-export * from './NotificationAction/index.js';
 export * from './NotificationListGroupItem/index.js';
 export * from './NotificationListItem/index.js';
 export * from './Option/index.js';

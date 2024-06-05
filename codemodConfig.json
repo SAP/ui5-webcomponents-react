@@ -139,8 +139,21 @@
       "removedProps": ["onSuggestionItemSelect"]
     },
     "NotificationAction": {},
-    "NotificationListGroupItem": {},
-    "NotificationListItem": {},
+    "NotificationListGroupItem": {
+      "changedProps": {
+        "busy": "loading",
+        "busyDelay": "loadingDelay"
+      },
+      "removedProps": ["actions", "priority", "showClose", "showCounter"]
+    },
+    "NotificationListItem": {
+      "changedProps": {
+        "busy": "loading",
+        "busyDelay": "loadingDelay",
+        "actions": "menu",
+        "priority": "importance"
+      }
+    },
     "Option": {
       "changedProps": {
         "title": "tooltip"
