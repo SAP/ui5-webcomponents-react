@@ -39,10 +39,10 @@
     "@storybook/react": "8.1.5",
     "@storybook/react-vite": "8.1.5",
     "@storybook/theming": "8.1.5",
-    "@ui5/webcomponents": "2.0.0-rc.3",
+    "@ui5/webcomponents": "2.0.0-rc.4",
     "@ui5/webcomponents-compat": "2.0.0-rc.2",
-    "@ui5/webcomponents-fiori": "2.0.0-rc.3",
-    "@ui5/webcomponents-icons": "2.0.0-rc.3",
+    "@ui5/webcomponents-fiori": "2.0.0-rc.4",
+    "@ui5/webcomponents-icons": "2.0.0-rc.4",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "remark-gfm": "^4.0.0",
@@ -63,7 +63,7 @@
     "@types/use-sync-external-store": "^0.0.6",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
-    "@ui5/webcomponents-tools": "2.0.0-rc.3",
+    "@ui5/webcomponents-tools": "2.0.0-rc.4",
     "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^11.0.0",
     "cssnano": "^7.0.0",
@@ -111,10 +111,10 @@
   "resolutions": {
     "@types/react": "18.3.3",
     "tocbot": "4.28.2",
-    "@ui5/webcomponents": "2.0.0-rc.3",
-    "@ui5/webcomponents-base": "2.0.0-rc.3",
-    "@ui5/webcomponents-icons": "2.0.0-rc.3",
-    "@ui5/webcomponents-theming": "2.0.0-rc.3"
+    "@ui5/webcomponents": "2.0.0-rc.4",
+    "@ui5/webcomponents-base": "2.0.0-rc.4",
+    "@ui5/webcomponents-icons": "2.0.0-rc.4",
+    "@ui5/webcomponents-theming": "2.0.0-rc.4"
   },
   "type": "module",
   "nyc": {
