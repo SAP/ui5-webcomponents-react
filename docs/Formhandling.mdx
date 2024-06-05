@@ -21,8 +21,6 @@ You can then create a form with UI5 Web Components for React as follows. Also, y
     <summary>Show code</summary>
 
 ```jsx
-// For the submits property of the button to have effect, you must add the following import
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import React, { useState } from 'react';
 import {
   ThemeProvider,
@@ -122,9 +120,6 @@ Now the `RegisterForm` would compile to this:
 
 <RegisterForm />
 
-For the submits property of the `Button` to have effect, you must add the following import to your project `import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';`.The import creates an internal native `Input` component inside the web-component,
-so that it can be submitted not only via submit button press, but also by pressing the enter key in most components. Basically, the import should enable web-components to behave like native input elements in a form.
-
 Whenever a component has a custom event (e.g. onChange event from `DatePicker`), the corresponding value should be fetched via event.detail (not event.target). This will give you the correct updated value since the internal input has already been updated. At the time the event is fired, however, it is not yet updated and therefore event.target might also not be updated yet.
 
 By default, the browser will reload the page when a form submission event is triggered. Generally, you want to avoid this in React applications because it would cause you to lose the state.
@@ -148,8 +143,6 @@ Here you can find a codeSandbox example that shows the use of various input comp
 <summary>Show Code</summary>
 
 ```jsx
-// To enable form support of ui5-webcomponents, you have to import this feature
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import {
   ThemeProvider,
   Form,
