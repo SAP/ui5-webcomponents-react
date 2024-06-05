@@ -272,12 +272,16 @@
         "onAfterClose": "onClose"
       }
     },
-    "ToggleButton": {},
+    "ToggleButton": {
+      "removedProps": ["iconEnd"]
+    },
     "Token": {
       "removedProps": ["disabled"]
     },
     "Toolbar": {},
-    "ToolbarButton": {},
+    "ToolbarButton": {
+      "removedProps": ["iconEnd"]
+    },
     "ToolbarSelect": {},
     "ToolbarSelectOption": {},
     "ToolbarSeparator": {},

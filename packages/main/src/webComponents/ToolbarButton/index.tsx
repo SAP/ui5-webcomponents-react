@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarButton.js';
-import type { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
+import type { ToolbarAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
 import type { CSSProperties } from 'react';
@@ -35,18 +35,25 @@ interface ToolbarButtonAttributes {
   disabled?: boolean;
 
   /**
+   * Defines the icon, displayed as graphical element within the component after the button text.
+   *
+   * **Note:** It is highly recommended to use `endIcon` property only together with `icon` and/or `text` properties.
+   * Usage of `endIcon` only should be avoided.
+   *
+   * The SAP-icons font provides numerous options.
+   *
+   * Example:
+   * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   */
+  endIcon?: string;
+
+  /**
    * Defines the `icon` source URI.
    *
    * **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the
    * [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
-
-  /**
-   * Defines whether the icon should be displayed after the component text.
-   * @default false
-   */
-  iconEnd?: boolean;
 
   /**
    * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set,
@@ -98,7 +105,7 @@ interface ToolbarButtonDomRef extends Required<ToolbarButtonAttributes>, Ui5DomR
    * - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
    * Accepts a lowercase string value.
    */
-  accessibilityAttributes: ButtonAccessibilityAttributes;
+  accessibilityAttributes: ToolbarAccessibilityAttributes;
 }
 
 interface ToolbarButtonPropTypes
@@ -127,8 +134,8 @@ interface ToolbarButtonPropTypes
  */
 const ToolbarButton = withWebComponent<ToolbarButtonPropTypes, ToolbarButtonDomRef>(
   'ui5-toolbar-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'overflowPriority', 'text', 'tooltip', 'width'],
-  ['disabled', 'iconEnd', 'preventOverflowClosing'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'endIcon', 'icon', 'overflowPriority', 'text', 'tooltip', 'width'],
+  ['disabled', 'preventOverflowClosing'],
   [],
   ['click'],
   () => import('@ui5/webcomponents/dist/ToolbarButton.js')
