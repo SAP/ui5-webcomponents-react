@@ -178,7 +178,7 @@ const FormItem = (props: FormItemPropTypes) => {
         data-row-index={calculatedGridRowStart}
         data-component-name="FormItemContent"
       >
-        {flattenFragments(children).map((child, index) => {
+        {flattenFragments<ReactNode>(children).map((child, index) => {
           // @ts-expect-error: type can't be string because of `isValidElement`
           if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {
             const content = getContentForHtmlLabel(label);
