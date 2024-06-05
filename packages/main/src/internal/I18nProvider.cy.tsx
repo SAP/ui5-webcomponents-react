@@ -31,8 +31,12 @@ describe('I18nProvider', () => {
     setLanguage('en');
   });
 
-  it('should throw error when context is not present', (done) => {
+  it.only('should throw error when context is not present', (done) => {
+    console.error('Hello');
+    cy.log('There');
     cy.on('uncaught:exception', (err) => {
+      console.error(err.message);
+      cy.log(err.message);
       if (err.message.includes(`'useI18nBundle()' may be used only in the context of a '<ThemeProvider>' component.`)) {
         done();
       }
@@ -41,6 +45,7 @@ describe('I18nProvider', () => {
       done(new Error('Should throw error'));
     });
   });
+
   it('should NOT throw error when context is present', (done) => {
     cy.on('uncaught:exception', (err) => {
       if (err.message.includes(`'useI18nBundle()' may be used only in the context of a '<ThemeProvider>' component.`)) {
