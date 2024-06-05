@@ -1,5 +1,6 @@
 'use client';
 
+import LinkAccessibleRole from '@ui5/webcomponents/dist/types/LinkAccessibleRole.js';
 import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef, useEffect, useRef, useState } from 'react';
@@ -124,7 +125,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
                   : i18nBundle.getText(CLOSE_POPOVER)
                 : undefined
             }
-            accessibleRole="button"
+            accessibleRole={LinkAccessibleRole.Button}
             onClick={handleClick}
             ref={linkRef}
             id={`${uniqueId}-link`}
