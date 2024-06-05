@@ -304,7 +304,7 @@
     "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js",
     "ComboBoxFilter": "@ui5/webcomponents/dist/types/ComboBoxFilter.js",
     "FCLLayout": "@ui5/webcomponents-fiori/dist/types/FCLLayout.js",
-    "HighlightTypes": "@ui5/webcomponents/dist/types/HighlightTypes.js",
+    "HighlightTypes": "@ui5/webcomponents/dist/types/Highlight.js",
     "IconDesign": "@ui5/webcomponents/dist/types/IconDesign.js",
     "IllustrationMessageSize": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js",
     "IllustrationMessageType": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js",

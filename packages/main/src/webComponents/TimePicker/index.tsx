@@ -24,6 +24,23 @@ interface TimePickerAttributes {
   formatPattern?: string;
 
   /**
+   * Determines the name by which the component will be identified upon submission in an HTML form.
+   *
+   * **Note:** This property is only applicable within the context of an HTML Form element.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  name?: string;
+
+  /**
+   * Defines the open or closed state of the popover.
+   *
+   * **Note:** Available since [v2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  open?: boolean;
+
+  /**
    * Defines a short hint, intended to aid the user with data entry when the
    * component has no value.
    *
@@ -54,12 +71,6 @@ interface TimePickerAttributes {
 
 interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
   /**
-   * Closes the picker
-   * @returns {void} - Resolves when the picker is closed
-   */
-  closePicker: () => void;
-
-  /**
    * Currently selected time represented as JavaScript Date instance
    */
   readonly dateValue: Date | Array<Date> | null;
@@ -73,12 +84,6 @@ interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
   formatValue: (date: Date) => string;
 
   /**
-   * Checks if the picker is open
-   * @returns {boolean}
-   */
-  isOpen: () => boolean;
-
-  /**
    * Checks if a value is valid against the current `formatPattern` value.
    *
    * **Note:** an empty string is considered as valid value.
@@ -86,12 +91,6 @@ interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
    * @returns {boolean}
    */
   isValid: (value: string | undefined) => boolean;
-
-  /**
-   * Opens the picker.
-   * @returns {void} - Resolves when the picker is open
-   */
-  openPicker: () => void;
 }
 
 interface TimePickerPropTypes
@@ -181,8 +180,8 @@ interface TimePickerPropTypes
  */
 const TimePicker = withWebComponent<TimePickerPropTypes, TimePickerDomRef>(
   'ui5-time-picker',
-  ['formatPattern', 'placeholder', 'value', 'valueState'],
-  ['disabled', 'readonly'],
+  ['formatPattern', 'name', 'placeholder', 'value', 'valueState'],
+  ['disabled', 'open', 'readonly'],
   ['valueStateMessage'],
   ['change', 'input'],
   () => import('@ui5/webcomponents/dist/TimePicker.js')

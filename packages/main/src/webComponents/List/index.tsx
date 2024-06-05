@@ -6,6 +6,7 @@ import type {
   ListItemCloseEventDetail,
   ListItemDeleteEventDetail,
   ListItemToggleEventDetail,
+  ListMoveEventDetail,
   ListSelectionChangeEventDetail
 } from '@ui5/webcomponents/dist/List.js';
 import type ListItemBase from '@ui5/webcomponents/dist/ListItemBase.js';
@@ -124,6 +125,8 @@ interface ListPropTypes
       | 'onItemDelete'
       | 'onItemToggle'
       | 'onLoadMore'
+      | 'onMove'
+      | 'onMoveOver'
       | 'onSelectionChange'
     > {
   /**
@@ -183,6 +186,26 @@ interface ListPropTypes
    * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
    */
   onLoadMore?: (event: Ui5CustomEvent<ListDomRef>) => void;
+
+  /**
+   * Fired when a movable list item is dropped onto a drop target.
+   *
+   * **Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   */
+  onMove?: (event: Ui5CustomEvent<ListDomRef, ListMoveEventDetail>) => void;
+
+  /**
+   * Fired when a movable list item is moved over a potential drop target during a dragging operation.
+   *
+   * If the new position is valid, prevent the default action of the event using `preventDefault()`.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onMoveOver?: (event: Ui5CustomEvent<ListDomRef, ListMoveEventDetail>) => void;
 
   /**
    * Fired when selection is changed by user interaction
@@ -258,7 +281,7 @@ const List = withWebComponent<ListPropTypes, ListDomRef>(
   ],
   ['indent', 'loading'],
   ['header'],
-  ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'selection-change'],
+  ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'move-over', 'move', 'selection-change'],
   () => import('@ui5/webcomponents/dist/List.js')
 );
 

@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/TreeItemCustom.js';
 import type { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
-import type HighlightTypes from '@ui5/webcomponents/dist/types/HighlightTypes.js';
+import type Highlight from '@ui5/webcomponents/dist/types/Highlight.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ReactNode } from 'react';
@@ -54,7 +54,7 @@ interface TreeItemCustomAttributes {
    * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
    * @default "None"
    */
-  highlight?: HighlightTypes | keyof typeof HighlightTypes;
+  highlight?: Highlight | keyof typeof Highlight;
 
   /**
    * If set, an icon will be displayed before the text of the tree list item.
@@ -80,6 +80,14 @@ interface TreeItemCustomAttributes {
   indeterminate?: boolean;
 
   /**
+   * Defines whether the item is movable.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  movable?: boolean;
+
+  /**
    * The navigated state of the list item.
    * If set to `true`, a navigation indicator is displayed at the end of the list item.
    *
@@ -89,7 +97,7 @@ interface TreeItemCustomAttributes {
   navigated?: boolean;
 
   /**
-   * Defines the selected state of the `ListItem`.
+   * Defines the selected state of the component.
    * @default false
    */
   selected?: boolean;
@@ -193,7 +201,7 @@ interface TreeItemCustomPropTypes
 const TreeItemCustom = withWebComponent<TreeItemCustomPropTypes, TreeItemCustomDomRef>(
   'ui5-tree-item-custom',
   ['accessibleName', 'additionalTextState', 'highlight', 'icon', 'tooltip', 'type'],
-  ['expanded', 'hasChildren', 'hideSelectionElement', 'indeterminate', 'navigated', 'selected'],
+  ['expanded', 'hasChildren', 'hideSelectionElement', 'indeterminate', 'movable', 'navigated', 'selected'],
   ['content', 'deleteButton'],
   ['detail-click'],
   () => import('@ui5/webcomponents/dist/TreeItemCustom.js')
