@@ -2,7 +2,6 @@
 
 import '@ui5/webcomponents/dist/Tokenizer.js';
 import type {
-  TokenizerDialogButtonPressDetail,
   TokenizerSelectionChangeEventDetail,
   TokenizerTokenDeleteEventDetail
 } from '@ui5/webcomponents/dist/Tokenizer.js';
@@ -44,27 +43,14 @@ interface TokenizerDomRef extends Required<TokenizerAttributes>, Ui5DomRef {}
 
 interface TokenizerPropTypes
   extends TokenizerAttributes,
-    Omit<
-      CommonProps,
-      keyof TokenizerAttributes | 'onDialogButtonPress' | 'onSelectionChange' | 'onShowMoreItemsPress' | 'onTokenDelete'
-    > {
-  /**
-   * Fired when a dialog button is pressed.
-   */
-  onDialogButtonPress?: (event: Ui5CustomEvent<TokenizerDomRef, TokenizerDialogButtonPressDetail>) => void;
-
+    Omit<CommonProps, keyof TokenizerAttributes | 'onSelectionChange' | 'onTokenDelete'> {
   /**
    * Fired when token selection is changed by user interaction
    */
   onSelectionChange?: (event: Ui5CustomEvent<TokenizerDomRef, TokenizerSelectionChangeEventDetail>) => void;
 
   /**
-   * Fired when nMore link is pressed.
-   */
-  onShowMoreItemsPress?: (event: Ui5CustomEvent<TokenizerDomRef>) => void;
-
-  /**
-   * Fired when a token is deleted (delete icon, delete or backspace is pressed)
+   * Fired when tokens are being deleted (delete icon, delete or backspace is pressed)
    */
   onTokenDelete?: (event: Ui5CustomEvent<TokenizerDomRef, TokenizerTokenDeleteEventDetail>) => void;
 }
@@ -97,14 +83,14 @@ interface TokenizerPropTypes
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
- * @since [2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0) of __@ui5/webcomponents__.
+ * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents__.
  */
 const Tokenizer = withWebComponent<TokenizerPropTypes, TokenizerDomRef>(
   'ui5-tokenizer',
   ['accessibleName', 'accessibleNameRef'],
   ['disabled', 'readonly'],
   [],
-  ['dialog-button-press', 'selection-change', 'show-more-items-press', 'token-delete'],
+  ['selection-change', 'token-delete'],
   () => import('@ui5/webcomponents/dist/Tokenizer.js')
 );
 
