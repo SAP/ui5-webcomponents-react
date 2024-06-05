@@ -123,10 +123,11 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
           if (!isValidElement(message)) {
             return false;
           }
+          const castMessage = message as ReactElement<MessageItemPropTypes>;
           if (listFilter === ValueState.Information) {
-            return message?.props?.type === ValueState.Information || message?.props?.type === ValueState.None;
+            return castMessage?.props?.type === ValueState.Information || castMessage?.props?.type === ValueState.None;
           }
-          return message?.props?.type === listFilter;
+          return castMessage?.props?.type === listFilter;
         });
 
   const groupedMessages = resolveMessageGroups(filteredChildren as ReactElement<MessageItemPropTypes>[]);
