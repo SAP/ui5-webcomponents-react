@@ -7,7 +7,7 @@ import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import deleteIcon from '@ui5/webcomponents-icons/dist/delete.js';
 import emailIcon from '@ui5/webcomponents-icons/dist/email.js';
 import forwardIcon from '@ui5/webcomponents-icons/dist/forward.js';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../../webComponents/index.js';
 import { ActionSheet } from './index.js';
 
@@ -58,7 +58,8 @@ export const Default: Story = {
           {...args}
           opener="actionSheetOpener"
           open={actionSheetOpen}
-          onClose={() => {
+          onClose={(e) => {
+            args.onClose(e);
             setActionSheetOpen(false);
           }}
         >

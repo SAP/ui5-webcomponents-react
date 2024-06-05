@@ -2,10 +2,10 @@
 
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
-import { useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement } from 'react';
-import { forwardRef, useReducer, useRef } from 'react';
+import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
@@ -128,33 +128,20 @@ function ActionSheetButton(props: ActionSheetButtonPropTypes) {
 const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((props, ref) => {
   const {
     a11yConfig,
-    allowTargetOverlap,
     children,
     className,
-    footer,
     header,
     headerText,
-    hideArrow,
-    horizontalAlign,
-    initialFocus,
-    modal,
-    placement,
     portalContainer,
     showCancelButton = true,
-    slot,
-    style,
-    verticalAlign,
-    onClose,
     onOpen,
-    onBeforeClose,
-    onBeforeOpen,
+    open,
     ...rest
   } = props;
 
   useStylesheet(styleData, ActionSheet.displayName);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const [componentRef, popoverRef] = useSyncRef(ref);
   const actionBtnsRef = useRef(null);
   const [focusedItem, setFocusedItem] = useReducer((_, action) => {
     return parseInt(action.target.dataset.actionBtnIndex);
@@ -163,13 +150,18 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const childrenArrayLength = childrenToRender.length;
   const childrenLength = isPhone() && showCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
 
+  const [internalOpen, setInternalOpen] = useState(open);
+  useEffect(() => {
+    setInternalOpen(open);
+  }, [open]);
+
   const canRenderPortal = useCanRenderPortal();
   if (!canRenderPortal) {
     return null;
   }
 
   const handleCancelBtnClick = () => {
-    popoverRef.current.close();
+    setInternalOpen(false);
   };
 
   const renderActionSheetButton = (element, index: number, childrenArray) => {
@@ -181,7 +173,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
         tabIndex={focusedItem === index ? 0 : -1}
         {...element.props}
         onClick={(e) => {
-          popoverRef.current.close();
+          setInternalOpen(false);
           if (typeof element.props?.onClick === 'function') {
             element.props?.onClick(e);
           }
@@ -247,25 +239,13 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const displayHeader = isPhone();
   return createPortal(
     <ResponsivePopover
-      style={style}
-      slot={slot}
-      allowTargetOverlap={allowTargetOverlap}
+      open={internalOpen}
       headerText={displayHeader ? headerText : undefined}
-      horizontalAlign={horizontalAlign}
-      initialFocus={initialFocus}
-      modal={modal}
-      hideArrow={hideArrow}
-      placement={placement}
-      verticalAlign={verticalAlign}
-      footer={footer}
       header={displayHeader ? header : undefined}
-      onClose={onClose}
-      onBeforeClose={onBeforeClose}
-      onBeforeOpen={onBeforeOpen}
       accessibleName={i18nBundle.getText(AVAILABLE_ACTIONS)}
       {...rest}
       onOpen={handleAfterOpen}
-      ref={componentRef}
+      ref={ref}
       className={clsx(classNames.actionSheet, isPhone() && classNames.actionSheetMobile, className)}
       data-actionsheet
     >
