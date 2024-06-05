@@ -3,7 +3,6 @@
 import '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import type {
   ShellBarAccessibilityAttributes,
-  ShellBarCoPilotClickEventDetail,
   ShellBarLogoClickEventDetail,
   ShellBarMenuItemClickEventDetail,
   ShellBarNotificationsClickEventDetail,
@@ -35,15 +34,6 @@ interface ShellBarAttributes {
    * **Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).
    */
   secondaryTitle?: string;
-
-  /**
-   * Defines, if the product CoPilot icon would be displayed.
-   *
-   * **Note:** By default the co-pilot is displayed as static SVG.
-   * If you need an animated co-pilot, you can import the `"@ui5/webcomponents-fiori/dist/features/CoPilotAnimation.js"` module as add-on feature.
-   * @default false
-   */
-  showCoPilot?: boolean;
 
   /**
    * Defines, if the notification icon would be displayed.
@@ -108,11 +98,6 @@ interface ShellBarDomRef extends Required<ShellBarAttributes>, Ui5DomRef {
   closeOverflow: () => void;
 
   /**
-   * Returns the `copilot` DOM ref.
-   */
-  readonly copilotDomRef: HTMLElement | null;
-
-  /**
    * Returns the `logo` DOM ref.
    */
   readonly logoDomRef: HTMLElement | null;
@@ -143,13 +128,13 @@ interface ShellBarPropTypes
     Omit<
       CommonProps,
       | keyof ShellBarAttributes
+      | 'assistant'
       | 'children'
       | 'logo'
       | 'menuItems'
       | 'profile'
       | 'searchField'
       | 'startButton'
-      | 'onCoPilotClick'
       | 'onLogoClick'
       | 'onMenuItemClick'
       | 'onNotificationsClick'
@@ -158,7 +143,20 @@ interface ShellBarPropTypes
       | 'onSearchButtonClick'
     > {
   /**
-   * Defines the `ShellBar` aditional items.
+   * Defines the assistant slot.
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="assistant"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   */
+  assistant?: UI5WCSlotsNode;
+
+  /**
+   * Defines the `ShellBar` additional items.
    *
    * **Note:**
    * You can use the `<ShellBarItem></ShellBarItem>`.
@@ -229,11 +227,6 @@ interface ShellBarPropTypes
    */
   startButton?: UI5WCSlotsNode;
   /**
-   * Fired, when the co pilot is activated.
-   */
-  onCoPilotClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarCoPilotClickEventDetail>) => void;
-
-  /**
    * Fired, when the logo is activated.
    */
   onLogoClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarLogoClickEventDetail>) => void;
@@ -285,7 +278,6 @@ interface ShellBarPropTypes
  * You can use the following stable DOM refs for the `ShellBar`:
  *
  * - logo
- * - copilot
  * - notifications
  * - overflow
  * - profile
@@ -305,10 +297,9 @@ interface ShellBarPropTypes
 const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',
   ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
-  ['showCoPilot', 'showNotifications', 'showProductSwitch', 'showSearchField'],
-  ['logo', 'menuItems', 'profile', 'searchField', 'startButton'],
+  ['showNotifications', 'showProductSwitch', 'showSearchField'],
+  ['assistant', 'logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   [
-    'co-pilot-click',
     'logo-click',
     'menu-item-click',
     'notifications-click',

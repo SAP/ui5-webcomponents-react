@@ -215,7 +215,9 @@
     },
     "SelectMenu": {},
     "SelectMenuOption": {},
-    "ShellBar": {},
+    "ShellBar": {
+      "removedProps": ["showCoPilot", "onCoPilotClick"]
+    },
     "ShellBarItem": {},
     "SideNavigation": {},
     "SideNavigationGroup": {
