@@ -1,13 +1,14 @@
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { CSSProperties, ReactElement } from 'react';
+import type { CSSProperties } from 'react';
 import { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
 import { AvatarSize } from '../../enums/index.js';
 import { classNames, styleData } from './CollapsedAvatar.module.css.js';
+import type { ObjectPagePropTypes } from './index.js';
 
 export interface CollapsedAvatarPropTypes {
-  image?: string | ReactElement;
-  imageShapeCircle?: boolean;
+  image?: ObjectPagePropTypes['image'];
+  imageShapeCircle?: ObjectPagePropTypes['imageShapeCircle'];
   style?: CSSProperties;
 }
 

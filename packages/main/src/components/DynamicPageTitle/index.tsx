@@ -86,11 +86,11 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
   snappedContent?: ReactNode | ReactNode[];
 }
 
-interface InternalProps extends DynamicPageTitlePropTypes {
+export interface InternalProps extends DynamicPageTitlePropTypes {
   /**
    * The onToggleHeaderContentVisibility show or hide the header section
    */
-  onToggleHeaderContentVisibility?: (e: any) => boolean;
+  onToggleHeaderContentVisibility?: (e: any) => void;
   /**
    * Defines whether the content area can be toggled
    */

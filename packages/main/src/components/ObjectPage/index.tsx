@@ -22,7 +22,16 @@ import { Tab, TabContainer } from '../../webComponents/index.js';
 import { DynamicPageCssVariables } from '../DynamicPage/utils.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
 import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
+import type {
+  DynamicPageHeaderPropTypes,
+  InternalProps as DynamicPageHeaderPropTypesWithInternals
+} from '../DynamicPageHeader/index.js';
+import type {
+  DynamicPageTitlePropTypes,
+  InternalProps as DynamicPageTitlePropTypesWithInternals
+} from '../DynamicPageTitle/index.js';
 import type { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
+import type { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection/index.js';
 import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { classNames, styleData } from './ObjectPage.module.css.js';
 import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils.js';
@@ -49,6 +58,12 @@ interface BeforeNavigateDetail {
 
 type ObjectPageTabSelectEventDetail = TabContainerTabSelectEventDetail & BeforeNavigateDetail;
 
+type DynamicPageTitlePropsWithDataAttributes = DynamicPageTitlePropTypesWithInternals & {
+  'data-not-clickable': boolean;
+  'data-header-content-visible': boolean;
+  'data-is-snapped-rendered-outside': boolean;
+};
+
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines the upper, always static, title section of the `ObjectPage`.
@@ -59,7 +74,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    *
    * __Note:__ When the `DynamicPageTitle` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
    */
-  headerTitle?: ReactElement;
+  headerTitle?: ReactElement<DynamicPageTitlePropTypes>;
   /**
    * Defines the dynamic header section of the `ObjectPage`.
    *
@@ -67,7 +82,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    *
    * __Note:__ When the `DynamicPageHeader` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
    */
-  headerContent?: ReactElement;
+  headerContent?: ReactElement<DynamicPageHeaderPropTypes>;
   /**
    * React element which defines the footer content.
    *
@@ -77,7 +92,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines the image of the `ObjectPage`. You can pass a path to an image or an `Avatar` component.
    */
-  image?: string | ReactElement;
+  image?: string | ReactElement<AvatarPropTypes>;
   /**
    * Defines the content area of the `ObjectPage`. It consists of sections and subsections.
    *
@@ -114,6 +129,8 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    *
    * - "Default": All `ObjectPageSections` and `ObjectPageSubSections` are displayed on one page. Selecting tabs will scroll to the corresponding section.
    * - "IconTabBar": All `ObjectPageSections` are displayed on separate pages. Selecting tabs will lead to the corresponding page.
+   *
+   * @default `"Default"`
    */
   mode?: ObjectPageMode | keyof typeof ObjectPageMode;
   /**
@@ -174,7 +191,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     headerTitle,
     image,
     footer,
-    mode,
+    mode = ObjectPageMode.Default,
     imageShapeCircle,
     className,
     style,
@@ -197,7 +214,8 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   useStylesheet(styleData, ObjectPage.displayName);
 
-  const firstSectionId: string | undefined = safeGetChildrenArray<ReactElement>(children)[0]?.props?.id;
+  const firstSectionId: string | undefined =
+    safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children)[0]?.props?.id;
 
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState<string | undefined>(
     selectedSectionId ?? firstSectionId
@@ -205,11 +223,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
   const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
   const isProgrammaticallyScrolled = useRef(false);
-  const prevSelectedSectionId = useRef<string | undefined>();
+  const prevSelectedSectionId = useRef<string | undefined>(undefined);
 
   const [componentRef, objectPageRef] = useSyncRef(ref);
   const topHeaderRef = useRef<HTMLDivElement>(null);
-  const scrollEvent = useRef();
+  const scrollEvent = useRef(undefined);
   const prevTopHeaderHeight = useRef(0);
   // @ts-expect-error: useSyncRef will create a ref if not present
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
@@ -347,7 +365,10 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       prevSelectedSectionId.current = currentId;
       const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
       const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-        return isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
+        return (
+          isValidElement(objectPageSection) &&
+          (objectPageSection as ReactElement<ObjectPageSectionPropTypes>).props?.id === currentId
+        );
       });
       fireOnSelectedChangedEvent({}, currentIndex, currentId, sectionNodes[0]);
     }
@@ -355,7 +376,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   // change selected section when prop is changed (external change)
   const [timeStamp, setTimeStamp] = useState(0);
-  const requestAnimationFrameRef = useRef<undefined | number>();
+  const requestAnimationFrameRef = useRef<undefined | number>(undefined);
   useEffect(() => {
     if (selectedSectionId) {
       if (mode === ObjectPageMode.Default) {
@@ -438,7 +459,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
               if (
                 isValidElement(subSection) &&
                 subSection.props &&
-                subSection.props.id === props.selectedSubSectionId
+                (subSection as ReactElement<ObjectPageSubSectionPropTypes>).props.id === props.selectedSubSectionId
               ) {
                 sectionId = section.props?.id;
               }
@@ -507,7 +528,10 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           'section[data-component-name="ObjectPageSection"]'
         );
         const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-          return isValidElement(objectPageSection) && objectPageSection.props?.id === sectionId;
+          return (
+            isValidElement(objectPageSection) &&
+            (objectPageSection as ReactElement<ObjectPagePropTypes>).props?.id === sectionId
+          );
         });
         debouncedOnSectionChange(e, currentIndex, sectionId, sectionNodes[currentIndex]);
       }
@@ -542,7 +566,10 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             const currentId = extractSectionIdFromHtmlId(section.target.id);
             setInternalSelectedSectionId(currentId);
             const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-              return isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
+              return (
+                isValidElement(objectPageSection) &&
+                (objectPageSection as ReactElement<ObjectPageSectionPropTypes>).props?.id === currentId
+              );
             });
             debouncedOnSectionChange(scrollEvent.current, currentIndex, currentId, section.target);
           }
@@ -618,19 +645,19 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       const titleInHeaderClass = inHeader ? classNames.titleInHeader : undefined;
 
       if (headerTitle?.props && headerTitle.props?.showSubHeaderRight === undefined) {
-        return cloneElement(headerTitle, {
+        return cloneElement(headerTitle as ReactElement<DynamicPageTitlePropsWithDataAttributes>, {
           showSubHeaderRight: true,
           className: clsx(titleInHeaderClass, headerTitle?.props?.className),
-          'data-not-clickable': titleHeaderNotClickable,
           onToggleHeaderContentVisibility: onTitleClick,
+          'data-not-clickable': titleHeaderNotClickable,
           'data-header-content-visible': headerContent && headerCollapsed !== true,
           'data-is-snapped-rendered-outside': snappedHeaderInObjPage
         });
       }
-      return cloneElement(headerTitle, {
+      return cloneElement(headerTitle as ReactElement<DynamicPageTitlePropsWithDataAttributes>, {
         className: clsx(titleInHeaderClass, headerTitle?.props?.className),
-        'data-not-clickable': titleHeaderNotClickable,
         onToggleHeaderContentVisibility: onTitleClick,
+        'data-not-clickable': titleHeaderNotClickable,
         'data-header-content-visible': headerContent && headerCollapsed !== true,
         'data-is-snapped-rendered-outside': snappedHeaderInObjPage
       });
@@ -649,7 +676,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const renderHeaderContentSection = useCallback(() => {
     if (headerContent?.props) {
-      return cloneElement(headerContent, {
+      return cloneElement(headerContent as ReactElement<DynamicPageHeaderPropTypesWithInternals>, {
         ...headerContent.props,
         topHeaderHeight,
         style:
@@ -657,6 +684,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             ? { position: 'absolute', visibility: 'hidden', flexShrink: 0 }
             : { ...headerContent.props.style, flexShrink: 0 },
         headerPinned: headerPinned || scrolledHeaderExpanded,
+        //@ts-expect-error: todo remove me when forwardref has been replaced
         ref: componentRefHeaderContent,
         children: (
           <div className={classNames.headerContainer} data-component-name="ObjectPageHeaderContainer">
@@ -701,7 +729,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       const selectedTabDataset = event.detail.tab.dataset;
       const sectionIndex = parseInt(selectedTabDataset.index, 10);
       const sectionId = selectedTabDataset.parentId ?? selectedTabDataset.sectionId;
-      const subSectionId = selectedTabDataset.isSubTab ? selectedTabDataset.sectionId : undefined;
+      const subSectionId = selectedTabDataset.hasOwnProperty('isSubTab') ? selectedTabDataset.sectionId : undefined;
       onBeforeNavigate(
         enrichEventWithDetails(event, {
           sectionIndex,
@@ -715,17 +743,17 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     }
     event.preventDefault();
     const { sectionId, index, isSubTab, parentId } = event.detail.tab.dataset;
-    if (isSubTab) {
+    if (isSubTab !== undefined) {
       handleOnSubSectionSelected(enrichEventWithDetails(event, { sectionId: parentId, subSectionId: sectionId }));
     } else {
-      const section = safeGetChildrenArray<ReactElement>(children).find((el) => {
+      const section = safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children).find((el) => {
         return el.props.id == sectionId;
       });
       handleOnSectionSelected(event, section?.props?.id, index, section);
     }
   };
 
-  const prevScrollTop = useRef();
+  const prevScrollTop = useRef(undefined);
   const onObjectPageScroll = useCallback(
     (e) => {
       if (!isToggledRef.current) {
@@ -864,9 +892,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             data-component-name="ObjectPageTabContainer"
             className={classNames.tabContainerComponent}
           >
-            {safeGetChildrenArray(children).map((section, index) => {
+            {safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children).map((section, index) => {
               if (!isValidElement(section) || !section.props) return null;
-              const subTabs = safeGetChildrenArray(section.props.children).filter(
+              const subTabs = safeGetChildrenArray<ReactElement<ObjectPageSubSectionPropTypes>>(
+                section.props.children
+              ).filter(
                 (subSection) =>
                   // @ts-expect-error: if the `ObjectPageSubSection` component is passed as children, the `displayName` is available. Otherwise, the default children should be rendered w/o additional logic.
                   isValidElement(subSection) && subSection?.type?.displayName === 'ObjectPageSubSection'
@@ -924,12 +954,5 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 });
 
 ObjectPage.displayName = 'ObjectPage';
-
-ObjectPage.defaultProps = {
-  image: null,
-  mode: ObjectPageMode.Default,
-  imageShapeCircle: false,
-  showHideHeaderButton: false
-};
 
 export { ObjectPage };
