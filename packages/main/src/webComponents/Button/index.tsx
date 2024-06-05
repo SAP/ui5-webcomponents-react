@@ -26,7 +26,7 @@ interface ButtonAttributes {
   /**
    * Describes the accessibility role of the button.
    *
-   * **Note:** Use link role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
+   * **Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
    *
    * **Note:** Available since [v1.23](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23) of **@ui5/webcomponents**.
    * @default "Button"
@@ -48,6 +48,19 @@ interface ButtonAttributes {
   disabled?: boolean;
 
   /**
+   * Defines the icon, displayed as graphical element within the component after the button text.
+   *
+   * **Note:** It is highly recommended to use `endIcon` property only together with `icon` and/or `text` properties.
+   * Usage of `endIcon` only should be avoided.
+   *
+   * The SAP-icons font provides numerous options.
+   *
+   * Example:
+   * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   */
+  endIcon?: string;
+
+  /**
    * Defines the icon, displayed as graphical element within the component.
    * The SAP-icons font provides numerous options.
    *
@@ -57,17 +70,10 @@ interface ButtonAttributes {
   icon?: string;
 
   /**
-   * Defines whether the icon should be displayed after the component text.
-   * @default false
-   */
-  iconEnd?: boolean;
-
-  /**
    * When set to `true`, the component will
    * automatically submit the nearest HTML form element on `press`.
    *
-   * **Note:** For the `submits` property to have effect, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Note:** This property is only applicable within the context of an HTML Form element.`
    * @default false
    * @deprecated Set the "type" property to "Submit" to achieve the same result. The "submits" property is ignored if "type" is set to any value other than "Button".
    */
@@ -85,8 +91,7 @@ interface ButtonAttributes {
   /**
    * Defines whether the button has special form-related functionality.
    *
-   * **Note:** For the `type` property to have effect, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Note:** This property is only applicable within the context of an HTML Form element.
    *
    * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
    * @default "Button"
@@ -154,8 +159,8 @@ interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, keyof Butt
  */
 const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
   'ui5-button',
-  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'icon', 'tooltip', 'type'],
-  ['disabled', 'iconEnd', 'submits'],
+  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'endIcon', 'icon', 'tooltip', 'type'],
+  ['disabled', 'submits'],
   [],
   ['click'],
   () => import('@ui5/webcomponents/dist/Button.js')

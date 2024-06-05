@@ -24,7 +24,10 @@
       }
     },
     "BusyIndicator": {},
-    "Button": {},
+    "Button": {
+      "comment": "new slot endIcon",
+      "removedProps": ["iconEnd"]
+    },
     "Calendar": {
       "changedProps": {
         "onSelectedDatesChange": "onSelectionChange"
