@@ -8,7 +8,7 @@ import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
-import { forwardRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import { ToolbarDesign } from '../../enums/index.js';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
@@ -132,6 +132,7 @@ export interface SelectDialogPropTypes
  */
 const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref) => {
   const {
+    open,
     children,
     className,
     confirmButtonText,
@@ -162,8 +163,11 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const [searchValue, setSearchValue] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
-  const [componentRef, selectDialogRef] = useSyncRef(ref);
   const [listComponentRef, listRef] = useSyncRef<ListDomRefWithPrivateAPIs>((listProps as any).ref);
+  const [internalOpen, setInternalOpen] = useState(open);
+  useEffect(() => {
+    setInternalOpen(open);
+  }, [open]);
 
   const handleBeforeOpen = (e) => {
     const localSelectedItems = listRef.current?.getSelectedItems() ?? [];
@@ -215,12 +219,12 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       if (typeof onConfirm === 'function') {
         onConfirm(e);
       }
-      selectDialogRef.current.close();
+      setInternalOpen(false);
     }
   };
 
   const handleClose = (e) => {
-    selectDialogRef.current.close();
+    setInternalOpen(false);
     if (typeof onCancel === 'function') {
       onCancel(e);
     }
@@ -238,10 +242,11 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     if (typeof onConfirm === 'function') {
       onConfirm(enrichEventWithDetails(e, { selectedItems }));
     }
-    selectDialogRef.current.close();
+    setInternalOpen(false);
   };
 
   const handleAfterClose = (e) => {
+    setInternalOpen(false);
     if (typeof onClose === 'function') {
       onClose(e);
     }
@@ -266,8 +271,9 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
   return (
     <Dialog
       {...rest}
+      open={internalOpen}
       data-component-name="SelectDialog"
-      ref={componentRef}
+      ref={ref}
       className={clsx(classNames.dialog, className)}
       onClose={handleAfterClose}
       onBeforeOpen={handleBeforeOpen}

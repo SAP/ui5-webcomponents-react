@@ -5,32 +5,23 @@ import Pc2 from '@sb/demoImages/PC2.jpg';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import type { DialogDomRef } from '../..';
+import { useEffect, useRef, useState } from 'react';
 import { Button, FlexBox, Label, StandardListItem, Text } from '../..';
-import type { SelectDialogPropTypes } from './index.js';
-import { SelectDialog as OriginalSelectDialog } from './index.js';
+import { SelectDialog } from './index.js';
 
 const meta = {
   title: 'Modals & Popovers / SelectDialog',
-  component: OriginalSelectDialog,
+  component: SelectDialog,
   argTypes: { children: { control: { disable: true } } },
   args: { headerText: 'Select Product' },
   parameters: {
     chromatic: { delay: 1000 }
   },
   tags: ['package:@ui5/webcomponents', 'cem-module:Dialog']
-} satisfies Meta<typeof OriginalSelectDialog>;
+} satisfies Meta<typeof SelectDialog>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// todo remove once portals are supported inline, or general popovers are supported w/o having to mount them to the body
-const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((args, ref) =>
-  createPortal(<OriginalSelectDialog {...args} ref={ref} />, document.body)
-);
-SelectDialog.displayName = 'SelectDialog';
 
 const listItems = [
   { img: Laptop1, description: 'LT-10', text: 'Gaming Laptop' },
@@ -82,7 +73,7 @@ export const MultiSelect: Story = {
     // number of selected items
     const [selectedItems, setSelectedItems] = useState<Record<string, boolean>>(selectedProducts);
     const selectedItemsBeforeOpen = useRef(selectedItems);
-    const [searchVal, setSearchVal] = useState();
+    const [searchVal, setSearchVal] = useState<string | undefined>();
     const [products, setProducts] = useState(Object.keys(selectedProducts));
 
     const handleBeforeOpen = () => {

@@ -48,29 +48,6 @@ const MyComponentWithSelectDialog = () => {
 };
 ```
 
-#### before 0.22.0
-
-`SelectDialog`s can be opened by attaching a `ref` to the component and then calling the corresponding **`show`** method.
-
-```jsx
-const SelectDialogComponent = () => {
-  const dialogRef = useRef(null);
-  const onButtonClick = () => {
-    dialogRef.current.show();
-  };
-  return (
-    <>
-      <Button onClick={onButtonClick}>Open SelectDialog</Button>
-      <SelectDialog ref={dialogRef} headerText="Select Product">
-        <StandardListItem image="pathToImg" description="description">
-          Product
-        </StandardListItem>
-      </SelectDialog>
-    </>
-  );
-};
-```
-
 ## More Examples
 
 ### SelectDialog in MultiSelect mode with search
