@@ -48,10 +48,10 @@ const checkContext = (context: any): void => {
 function showDialog<ContainerElement>(
   props: DialogPropTypes,
   setModal: Dispatch<UpdateModalStateAction<DialogPropTypes, DialogDomRef, ContainerElement>>,
+  id: string,
   container?: ContainerElement
 ) {
   checkContext(setModal);
-  const id = getRandomId();
   const ref = createRef<DialogDomRef>();
   setModal?.({
     type: 'set',
@@ -82,10 +82,10 @@ function showDialog<ContainerElement>(
 function showPopover<ContainerElement>(
   props: PopoverPropTypes,
   setModal: Dispatch<UpdateModalStateAction<PopoverPropTypes, PopoverDomRef, ContainerElement>>,
+  id: string,
   container?: ContainerElement
 ) {
   checkContext(setModal);
-  const id = getRandomId();
   const ref = createRef<PopoverDomRef>();
   setModal?.({
     type: 'set',
@@ -116,10 +116,10 @@ function showPopover<ContainerElement>(
 function showResponsivePopover<ContainerElement>(
   props: ResponsivePopoverPropTypes,
   setModal: Dispatch<UpdateModalStateAction<ResponsivePopoverPropTypes, ResponsivePopoverDomRef, ContainerElement>>,
+  id: string,
   container?: ContainerElement
 ) {
   checkContext(setModal);
-  const id = getRandomId();
   const ref = createRef<ResponsivePopoverDomRef>();
   setModal?.({
     type: 'set',
@@ -149,10 +149,10 @@ function showResponsivePopover<ContainerElement>(
 function showMenu<ContainerElement>(
   props: MenuPropTypes,
   setModal: Dispatch<UpdateModalStateAction<MenuPropTypes, MenuDomRef, ContainerElement>>,
+  id: string,
   container?: ContainerElement
 ) {
   checkContext(setModal);
-  const id = getRandomId();
   const ref = createRef<MenuDomRef>();
   setModal?.({
     type: 'set',
@@ -182,10 +182,10 @@ function showMenu<ContainerElement>(
 function showMessageBox<ContainerElement>(
   props: MessageBoxPropTypes,
   setModal: Dispatch<UpdateModalStateAction<MessageBoxPropTypes, DialogDomRef, ContainerElement>>,
+  id: string,
   container?: ContainerElement
 ) {
   checkContext(setModal);
-  const id = getRandomId();
   const ref = createRef<DialogDomRef>();
   setModal?.({
     type: 'set',
@@ -252,13 +252,16 @@ function showDialogFn<ContainerElement = HTMLElement>(
   container?: ContainerElement
 ): ClosableModalReturnType<DialogDomRef> {
   const setModal = window['@ui5/webcomponents-react']?.setModal;
-
-  const { ref } = showDialog<ContainerElement>(props, setModal, container);
+  const id = getRandomId();
+  const { ref } = showDialog<ContainerElement>(props, setModal, id, container);
 
   return {
     ref,
     close: () => {
-      ref.current?.close();
+      setModal({
+        type: 'reset',
+        payload: { id }
+      });
     }
   };
 }
@@ -272,12 +275,16 @@ function useShowDialogHook<ContainerElement>(): CloseableModalHookReturnType<
 
   return useCallback(
     (props, container) => {
-      const { ref } = showDialog<ContainerElement>(props, setModal, container);
+      const id = getRandomId();
+      const { ref } = showDialog<ContainerElement>(props, setModal, id, container);
 
       return {
         ref,
         close: () => {
-          ref.current?.close();
+          setModal({
+            type: 'reset',
+            payload: { id }
+          });
         }
       };
     },
@@ -290,12 +297,16 @@ function showPopoverFn<ContainerElement>(
   container?: ContainerElement
 ): ClosableModalReturnType<PopoverDomRef> {
   const setModal = window['@ui5/webcomponents-react']?.setModal;
-  const { ref } = showPopover(props, setModal, container);
+  const id = getRandomId();
+  const { ref } = showPopover(props, setModal, id, container);
 
   return {
     ref,
     close: () => {
-      ref.current?.close();
+      setModal({
+        type: 'reset',
+        payload: { id }
+      });
     }
   };
 }
@@ -308,12 +319,16 @@ function useShowPopoverHook<ContainerElement>(): CloseableModalHookReturnType<
   const { setModal } = useModalsContext();
   return useCallback(
     (props, container) => {
-      const { ref } = showPopover<ContainerElement>(props, setModal, container);
+      const id = getRandomId();
+      const { ref } = showPopover<ContainerElement>(props, setModal, id, container);
 
       return {
         ref,
         close: () => {
-          ref.current?.close();
+          setModal({
+            type: 'reset',
+            payload: { id }
+          });
         }
       };
     },
@@ -326,12 +341,16 @@ function showResponsivePopoverFn<ContainerElement>(
   container?: ContainerElement
 ): ClosableModalReturnType<ResponsivePopoverDomRef> {
   const setModal = window['@ui5/webcomponents-react']?.setModal;
-  const { ref } = showResponsivePopover<ContainerElement>(props, setModal, container);
+  const id = getRandomId();
+  const { ref } = showResponsivePopover<ContainerElement>(props, setModal, id, container);
 
   return {
     ref,
     close: () => {
-      ref.current?.close();
+      setModal({
+        type: 'reset',
+        payload: { id }
+      });
     }
   };
 }
@@ -344,12 +363,16 @@ function useShowResponsivePopoverHook<ContainerElement>(): CloseableModalHookRet
   const { setModal } = useModalsContext();
   return useCallback(
     (props, container) => {
-      const { ref } = showResponsivePopover<ContainerElement>(props, setModal, container);
+      const id = getRandomId();
+      const { ref } = showResponsivePopover<ContainerElement>(props, setModal, id, container);
 
       return {
         ref,
         close: () => {
-          ref.current?.close();
+          setModal({
+            type: 'reset',
+            payload: { id }
+          });
         }
       };
     },
@@ -362,12 +385,16 @@ function showMenuFn<ContainerElement>(
   container?: ContainerElement
 ): ClosableModalReturnType<MenuDomRef> {
   const setModal = window['@ui5/webcomponents-react']?.setModal;
-  const { ref } = showMenu<ContainerElement>(props, setModal, container);
+  const id = getRandomId();
+  const { ref } = showMenu<ContainerElement>(props, setModal, id, container);
 
   return {
     ref,
     close: () => {
-      ref.current?.close();
+      setModal({
+        type: 'reset',
+        payload: { id }
+      });
     }
   };
 }
@@ -380,12 +407,16 @@ function useShowMenuHook<ContainerElement>(): CloseableModalHookReturnType<
   const { setModal } = useModalsContext();
   return useCallback(
     (props, container) => {
-      const { ref } = showMenu<ContainerElement>(props, setModal, container);
+      const id = getRandomId();
+      const { ref } = showMenu<ContainerElement>(props, setModal, id, container);
 
       return {
         ref,
         close: () => {
-          ref.current?.close();
+          setModal({
+            type: 'reset',
+            payload: { id }
+          });
         }
       };
     },
@@ -398,15 +429,20 @@ function showMessageBoxFn<ContainerElement>(
   container?: ContainerElement
 ): ClosableModalReturnType<DialogDomRef> {
   const setModal = window['@ui5/webcomponents-react']?.setModal;
-  const { ref } = showMessageBox<ContainerElement>(props, setModal, container);
+  const id = getRandomId();
+  const { ref } = showMessageBox<ContainerElement>(props, setModal, id, container);
 
   return {
     ref,
     close: () => {
-      ref.current?.close();
+      setModal({
+        type: 'reset',
+        payload: { id }
+      });
     }
   };
 }
+
 function useShowMessageBox<ContainerElement>(): CloseableModalHookReturnType<
   MessageBoxPropTypes,
   DialogDomRef,
@@ -415,12 +451,16 @@ function useShowMessageBox<ContainerElement>(): CloseableModalHookReturnType<
   const { setModal } = useModalsContext();
   return useCallback(
     (props, container) => {
-      const { ref } = showMessageBox<ContainerElement>(props, setModal, container);
+      const id = getRandomId();
+      const { ref } = showMessageBox<ContainerElement>(props, setModal, id, container);
 
       return {
         ref,
         close: () => {
-          ref.current?.close();
+          setModal({
+            type: 'reset',
+            payload: { id }
+          });
         }
       };
     },
