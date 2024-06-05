@@ -7,9 +7,7 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface OptionAttributes {
   /**
-   * Defines the additional text displayed at the end of the option element.
-   *
-   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
+   * Defines the `additionalText`, displayed in the end of the list item.
    */
   additionalText?: string;
 
@@ -19,9 +17,8 @@ interface OptionAttributes {
    * **Note:**
    * SAP-icons font provides numerous built-in icons. To find all the available icons, see the
    * [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-   * @default null
    */
-  icon?: string | null | undefined;
+  icon?: string;
 
   /**
    * Defines the selected state of the component.
@@ -30,9 +27,9 @@ interface OptionAttributes {
   selected?: boolean;
 
   /**
-   * Defines the text of the tooltip that would be displayed for the option component.
+   * Defines the text of the tooltip that would be displayed for the list item.
    *
-   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
    */
   tooltip?: string;
 
@@ -60,7 +57,6 @@ interface OptionPropTypes extends OptionAttributes, Omit<CommonProps, keyof Opti
  *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
- * @abstract
  */
 const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   'ui5-option',

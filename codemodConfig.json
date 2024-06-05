@@ -174,7 +174,9 @@
         "pressed": "selected"
       }
     },
-    "Select": {},
+    "Select": {
+      "removedProps": ["menu"]
+    },
     "SelectDialog": {
       "changedProps": {
         "mode": "selectionMode"

@@ -64,8 +64,6 @@ export * from './ResponsivePopover/index.js';
 export * from './SegmentedButton/index.js';
 export * from './SegmentedButtonItem/index.js';
 export * from './Select/index.js';
-export * from './SelectMenu/index.js';
-export * from './SelectMenuOption/index.js';
 export * from './ShellBar/index.js';
 export * from './ShellBarItem/index.js';
 export * from './SideNavigation/index.js';
