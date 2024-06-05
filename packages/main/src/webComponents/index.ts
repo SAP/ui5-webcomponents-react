@@ -19,7 +19,6 @@ export * from './ColorPaletteItem/index.js';
 export * from './ColorPalettePopover/index.js';
 export * from './ColorPicker/index.js';
 export * from './ComboBox/index.js';
-export * from './ComboBoxGroupItem/index.js';
 export * from './ComboBoxItem/index.js';
 export * from './CustomListItem/index.js';
 export * from './DatePicker/index.js';
