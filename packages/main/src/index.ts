@@ -1,7 +1,6 @@
 import * as AnalyticalTableHooks from './components/AnalyticalTable/pluginHooks/AnalyticalTableHooks.js';
 
 export * from './components/ActionSheet/index.js';
-export * from './components/AnalyticalCard/index.js';
 export * from './components/AnalyticalCardHeader/index.js';
 export * from './components/AnalyticalTable/index.js';
 export * from './components/AnalyticalTable/defaults/LoadingComponent/TablePlaceholder.js';
