@@ -1,12 +1,13 @@
 'use client';
 
+import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import { forwardRef, useContext } from 'react';
-import { FlexBoxAlignItems, FlexBoxDirection, ListItemType } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';
 import type { CustomListItemDomRef } from '../../webComponents/CustomListItem/index.js';

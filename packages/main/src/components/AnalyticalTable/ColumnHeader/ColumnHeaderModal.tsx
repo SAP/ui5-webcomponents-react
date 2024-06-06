@@ -1,3 +1,4 @@
+import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
 import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
@@ -9,7 +10,7 @@ import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webco
 import type { MutableRefObject } from 'react';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { FlexBoxAlignItems, ListItemType, TextAlign } from '../../../enums/index.js';
+import { FlexBoxAlignItems, TextAlign } from '../../../enums/index.js';
 import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../../internal/ssr.js';
 import { stopPropagation } from '../../../internal/stopPropagation.js';
