@@ -1,0 +1,48 @@
+import { Footer, TableOfContent } from '@sb/components';
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Migration Guide (V2)" />
+
+# Migration Guide (V2)
+
+<br />
+
+_The most important breaking changes of the corresponding releases are outlined here.
+For a full list of all changes, please refer to [the list of releases](https://github.com/SAP/ui5-webcomponents-react/releases)
+or the [changelog](?path=/docs/change-log--page)._
+
+<br />
+
+<TableOfContent headingSelector="h2" />
+
+## Replaced Components
+
+### AnalyticalCard
+
+The deprecated `AnalyticalCard` component has been replaced with the `Card` web component as a drop-in replacement:
+
+```tsx
+// v1
+import { AnalyticalCard, AnalyticalCardHeader } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return (
+    <AnalyticalCard header={<AnalyticalCardHeader />}>
+      <span>My Content</span>
+    </AnalyticalCard>
+  );
+}
+
+// v2
+import { AnalyticalCardHeader, Card } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return (
+    <Card header={<AnalyticalCardHeader />}>
+      <span>My Content</span>
+    </Card>
+  );
+}
+```
+
+<Footer />
