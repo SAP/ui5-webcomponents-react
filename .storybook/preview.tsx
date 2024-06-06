@@ -141,7 +141,14 @@ const preview: Preview = {
           'Migration Guide',
           'Knowledge Base',
           'Testing with Cypress',
-          ['Setup', 'Commands', 'Queries']
+          ['Setup', 'Commands', 'Queries'],
+          'Charts',
+          'Data Display',
+          'Inputs',
+          'Layouts & Floorplans',
+          'Modals & Popovers',
+          'User Feedback',
+          'Legacy Components'
         ]
       }
     },

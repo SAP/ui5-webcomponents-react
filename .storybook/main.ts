@@ -1,5 +1,5 @@
-import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
+import { dirname, join } from 'path';
 import remarkGfm from 'remark-gfm';
 import { isChromatic } from './utils';
 
@@ -58,7 +58,12 @@ const config: StorybookConfig = {
           titlePrefix: 'Testing with Cypress'
         },
         '../packages/main/**/*.mdx',
-        '../packages/main/**/*.stories.@(tsx|jsx)'
+        '../packages/main/**/*.stories.@(tsx|jsx)',
+        {
+          directory: '../packages/compat',
+          files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
+          titlePrefix: 'Legacy Components'
+        }
       ],
   addons,
   docs: {

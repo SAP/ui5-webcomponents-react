@@ -1,0 +1,102 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { TableCell } from '../TableCell';
+import { TableColumn } from '../TableColumn';
+import { TableGroupRow } from '../TableGroupRow';
+import { TableRow } from '../TableRow';
+import * as ComponentStories from './Table.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<br />
+
+# More Examples
+
+<br />
+
+## Growing Table
+
+`Table` with `growing={TableGrowingMode.Scroll}`.
+
+<Canvas of={ComponentStories.GrowingTable} />
+
+### Code
+
+```jsx
+const createRows = (indexOffset) => {
+  return new Array(25).fill('').map((_, index) => (
+    <TableRow key={`${index + indexOffset} - row`}>
+      <TableCell>
+        <Label>{index + indexOffset}</Label>
+      </TableCell>
+      <TableCell>
+        <Label>Placeholder</Label>
+      </TableCell>
+    </TableRow>
+  ));
+};
+
+const GrowingTable = () => {
+  const [rows, setRows] = useState(createRows(1));
+  const onLoadMore = () => {
+    setRows((prev) => [...prev, ...createRows(prev.length + 1)]);
+  };
+  return (
+    <div style={{ height: '250px', overflow: 'auto' }}>
+      <Table
+        onLoadMore={onLoadMore}
+        growing={TableGrowingMode.Scroll}
+        columns={
+          <>
+            <TableColumn>
+              <Label>Column 1</Label>
+            </TableColumn>
+            <TableColumn>
+              <Label>Column 2</Label>
+            </TableColumn>
+          </>
+        }
+      >
+        {rows}
+      </Table>
+    </div>
+  );
+};
+```
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## TableColumn
+
+<Description of={TableColumn} />
+<ArgTypes of={TableColumn} />
+
+## TableRow
+
+<Description of={TableRow} />
+<ArgTypes of={TableRow} />
+
+## TableGroupRow
+
+<Description of={TableGroupRow} />
+<ArgTypes of={TableGroupRow} />
+
+## TableCell
+
+<Description of={TableCell} />
+<ArgTypes of={TableCell} />
+
+<Footer />

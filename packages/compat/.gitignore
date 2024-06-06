@@ -1,0 +1,14 @@
+/components
+/enums
+/internal
+/webComponents
+/index.d.ts
+/index.esm.js
+/LICENSE
+/NOTICE.txt
+/scripts/wrapperGeneration/dist
+/dist
+/wrappers
+/ssr
+src/i18n/i18n-defaults.ts
+src/**/*.css.ts
