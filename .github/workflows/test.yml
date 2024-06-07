@@ -20,9 +20,9 @@ jobs:
           - cypress-commands
           - main/src/components
           - main/src/internal
-        react: ['^18.3.1', 'rc']
+        react: ['18', 'rc']
       fail-fast: false
-
+    if: !(${{ matrix.react }} == 'rc' && ${{matrix.spec}} == 'charts')
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,12 +35,12 @@ jobs:
       - name: Install
         run: yarn install --immutable
 
-      - name: Install rcs
-        if: ${{ matrix.react }} == 'rc' && ${{matrix.spec}} != 'charts'
+      - name: Install 18
+        if: ${{ matrix.react }} == '18'
         run: |
-          yarn set resolution "@types/react@npm:*" "npm:types-react@rc"
-          yarn set resolution "@types/react-dom@npm:*" "npm:types-react-dom@rc"
-          yarn add react@rc react-dom@rc
+          yarn set resolution "@types/react@npm:*" "18"
+          yarn set resolution "@types/react-dom@npm:*" "18"
+          yarn add react@18 react-dom@18
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
