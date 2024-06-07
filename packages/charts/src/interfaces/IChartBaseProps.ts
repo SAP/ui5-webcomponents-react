@@ -69,10 +69,10 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
      * Sets the margin of the chart container. Receives a object with four possible properties (`right`, `left`, `top`, `bottom`) that expect a number as value.
      */
     margin?: {
-      right: number;
-      left: number;
-      top: number;
-      bottom: number;
+      right?: number;
+      left?: number;
+      top?: number;
+      bottom?: number;
     };
     /**
      * Vertical position of the legend. Can be one of the following: `"top"`,`"middle"`, `"bottom"` (`"middle"` is not supported for: ColumnChartWithTrend, DonutChart, PieChart)
