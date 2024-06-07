@@ -77,11 +77,11 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
     /**
      * Vertical position of the legend. Can be one of the following: `"top"`,`"middle"`, `"bottom"` (`"middle"` is not supported for: ColumnChartWithTrend, DonutChart, PieChart)
      */
-    legendPosition?: string;
+    legendPosition?: 'top' | 'bottom' | 'middle';
     /**
      * Horizontal alignment of the legend. Can be one of the following: `"left"`, `"center"`, `"right"`
      */
-    legendHorizontalAlign?: string;
+    legendHorizontalAlign?: 'center' | 'left' | 'right';
     /**
      * Number that sets the amount of delay time the chart waits when resizing.
      */
