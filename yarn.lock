@@ -6626,7 +6626,7 @@ __metadata:
   peerDependencies:
     "@ui5/webcomponents-react": ~1.29.0
     "@ui5/webcomponents-react-base": ~1.29.0
-    react: ^16.14.0 || ^17 || ^18 || ^19
+    react: ^16.14.0 || ^17 || ^18
   languageName: unknown
   linkType: soft
 
