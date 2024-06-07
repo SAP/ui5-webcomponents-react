@@ -19,7 +19,11 @@ interface MenuItemAttributes {
   /**
    * Defines the `additionalText`, displayed in the end of the menu item.
    *
-   * **Note:** The additional text would not be displayed if the item has a submenu.
+   * **Note:** The additional text will not be displayed if there are items added in `items` slot or there are
+   * components added to `endContent` slot.
+   *
+   * The priority of what will be displayed at the end of the menu item is as follows:
+   * sub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.
    *
    * **Note:** Available since [v1.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.8.0) of **@ui5/webcomponents**.
    */
@@ -132,9 +136,16 @@ interface MenuItemDomRef extends Required<MenuItemAttributes>, Ui5DomRef {
 
 interface MenuItemPropTypes
   extends MenuItemAttributes,
-    Omit<CommonProps, keyof MenuItemAttributes | 'children' | 'deleteButton' | 'onDetailClick'> {
+    Omit<CommonProps, keyof MenuItemAttributes | 'children' | 'deleteButton' | 'endContent' | 'onDetailClick'> {
   /**
    * Defines the items of this component.
+   *
+   * **Note:** If there are items added to this slot, an arrow will be displayed at the end
+   * of the item in order to indicate that there are items added. In that case components added
+   * to `endContent` slot or `additionalText` content will not be displayed.
+   *
+   * The priority of what will be displayed at the end of the menu item is as follows:
+   * sub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.
    */
   children?: ReactNode | ReactNode[];
 
@@ -153,6 +164,27 @@ interface MenuItemPropTypes
    * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
    */
   deleteButton?: UI5WCSlotsNode;
+
+  /**
+   * Defines the components that should be displayed at the end of the menu item.
+   *
+   * **Note:** It is highly recommended to slot only components of type `Button`,`Link`
+   * or `Icon` in order to preserve the intended design. If there are components added to this slot,
+   * and there is text set in `additionalText`, it will not be displayed. If there are items added to `items` slot,
+   * nether `additionalText` nor components added to this slot would be displayed.
+   *
+   * The priority of what will be displayed at the end of the menu item is as follows:
+   * sub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="endContent"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  endContent?: UI5WCSlotsNode;
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
@@ -179,7 +211,7 @@ const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   'ui5-menu-item',
   ['accessibleName', 'additionalText', 'highlight', 'icon', 'loadingDelay', 'text', 'tooltip', 'type'],
   ['disabled', 'loading', 'navigated', 'selected', 'startsSection'],
-  ['deleteButton'],
+  ['deleteButton', 'endContent'],
   ['detail-click'],
   () => import('@ui5/webcomponents/dist/MenuItem.js')
 );

@@ -95,7 +95,10 @@ interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
 
 interface TimePickerPropTypes
   extends TimePickerAttributes,
-    Omit<CommonProps, keyof TimePickerAttributes | 'valueStateMessage' | 'onChange' | 'onInput'> {
+    Omit<
+      CommonProps,
+      keyof TimePickerAttributes | 'valueStateMessage' | 'onChange' | 'onClose' | 'onInput' | 'onOpen'
+    > {
   /**
    * Defines the value state message that will be displayed as pop up under the `TimePicker`.
    *
@@ -118,9 +121,23 @@ interface TimePickerPropTypes
   onChange?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerChangeEventDetail>) => void;
 
   /**
+   * Fired after the value-help dialog of the component is closed.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onClose?: (event: Ui5CustomEvent<TimePickerDomRef>) => void;
+
+  /**
    * Fired when the value of the `TimePicker` is changed at each key stroke.
    */
   onInput?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerInputEventDetail>) => void;
+
+  /**
+   * Fired after the value-help dialog of the component is opened.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onOpen?: (event: Ui5CustomEvent<TimePickerDomRef>) => void;
 }
 
 /**
@@ -183,7 +200,7 @@ const TimePicker = withWebComponent<TimePickerPropTypes, TimePickerDomRef>(
   ['formatPattern', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'open', 'readonly'],
   ['valueStateMessage'],
-  ['change', 'input'],
+  ['change', 'close', 'input', 'open'],
   () => import('@ui5/webcomponents/dist/TimePicker.js')
 );
 

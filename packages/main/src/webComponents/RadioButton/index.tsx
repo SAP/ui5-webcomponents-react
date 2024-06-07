@@ -91,7 +91,7 @@ interface RadioButtonAttributes {
    * Defines whether the component text wraps when there is not enough space.
    *
    * **Note:** for option "Normal" the text will wrap and the words will not be broken based on hyphenation.
-   * @default "None"
+   * @default "Normal"
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
