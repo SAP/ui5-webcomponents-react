@@ -22,7 +22,7 @@ jobs:
           - main/src/internal
         react: ['18', 'rc']
       fail-fast: false
-    if: !(${{ matrix.react }} == 'rc' && ${{matrix.spec}} == 'charts')
+    if: (${{ matrix.react }} == 'rc' && ${{matrix.spec}} == 'charts') != true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
