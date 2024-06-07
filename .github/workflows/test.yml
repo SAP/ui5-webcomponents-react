@@ -51,7 +51,7 @@ jobs:
           install: false
 
       - uses: coverallsapp/github-action@v2.3.0
-        if: ${{ inputs.reportCoverage && (matrix.react == '19' || matrix.react == '18' && matrix.spec == 'charts') }}
+        if: ${{ inputs.reportCoverage && (matrix.react == '19' && matrix.spec != 'charts' || matrix.react == '18' && matrix.spec == 'charts') }}
         with:
           file: temp/cypress-coverage/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
