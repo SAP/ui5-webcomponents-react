@@ -3745,69 +3745,27 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The `ui5-notification-list` web component represents\na container for `ui5-li-notification-group` and `ui5-li-notification`.",
+          "description": "### Overview\nThe `ui5-notification-list` web component represents\na container for `ui5-li-notification-group` and `ui5-li-notification`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationList.js\";``",
           "name": "NotificationList",
-          "superclass": {
-            "name": "List",
-            "package": "@ui5/webcomponents",
-            "module": "dist/List.js"
-          },
-          "tagName": "ui5-notification-list",
-          "customElement": true,
-          "_ui5since": "2.0",
-          "_ui5privacy": "public",
-          "members": [
+          "slots": [
             {
-              "kind": "field",
-              "name": "headerText",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the component header text.\n\n**Note:** If `header` is set this property is ignored.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "footerText",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the footer text.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "indent",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Determines whether the component is indented.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
-              "name": "selectionMode",
-              "type": {
-                "text": "ListSelectionMode",
+              "name": "default",
+              "description": "Defines the items of the component.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<NotificationListItemBase>",
                 "references": [
                   {
-                    "name": "ListSelectionMode",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ListSelectionMode.js"
+                    "name": "NotificationListItemBase",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/NotificationListItemBase.js"
                   }
                 ]
               },
-              "description": "Defines the selection mode of the component.",
-              "default": "\"None\"",
-              "privacy": "public",
-              "_ui5validator": "ListSelectionMode"
-            },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
             {
               "kind": "field",
               "name": "noDataText",
@@ -3818,159 +3776,6 @@
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "separators",
-              "type": {
-                "text": "ListSeparators",
-                "references": [
-                  {
-                    "name": "ListSeparators",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ListSeparators.js"
-                  }
-                ]
-              },
-              "description": "Defines the item separator style that is used.",
-              "default": "\"All\"",
-              "privacy": "public",
-              "_ui5validator": "ListSeparators"
-            },
-            {
-              "kind": "field",
-              "name": "growing",
-              "type": {
-                "text": "ListGrowingMode",
-                "references": [
-                  {
-                    "name": "ListGrowingMode",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ListGrowingMode.js"
-                  }
-                ]
-              },
-              "description": "Defines whether the component will have growing capability either by pressing a `More` button,\nor via user scroll. In both cases `load-more` event is fired.\n\n**Restrictions:** `growing=\"Scroll\"` is not supported for Internet Explorer,\non IE the component will fallback to `growing=\"Button\"`.",
-              "default": "\"None\"",
-              "privacy": "public",
-              "_ui5since": "1.0.0-rc.13",
-              "_ui5validator": "ListGrowingMode"
-            },
-            {
-              "kind": "field",
-              "name": "growingButtonText",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the text that will be displayed inside the growing button.\n\n**Note:** If not specified a built-in text will be displayed.\n\n**Note:** This property takes effect if the `growing` property is set to the `Button`.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5since": "1.24",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "loading",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines if the component would display a loading indicator over the list.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5since": "1.0.0-rc.6",
-              "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
-              "name": "loadingDelay",
-              "type": {
-                "text": "number"
-              },
-              "description": "Defines the delay in milliseconds, after which the loading indicator will show up for this component.",
-              "default": "1000",
-              "privacy": "public",
-              "_ui5validator": "Integer"
-            },
-            {
-              "kind": "field",
-              "name": "accessibleName",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the accessible name of the component.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "accessibleNameRef",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the IDs of the elements that label the input.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "accessibleRole",
-              "type": {
-                "text": "ListAccessibleRole",
-                "references": [
-                  {
-                    "name": "ListAccessibleRole",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ListAccessibleRole.js"
-                  }
-                ]
-              },
-              "description": "Defines the accessible role of the component.",
-              "privacy": "public",
-              "default": "\"List\"",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "ListAccessibleRole"
-            },
-            {
-              "kind": "field",
-              "name": "listItems",
-              "type": {
-                "text": "Array<ListItemBase>",
-                "references": [
-                  {
-                    "name": "ListItemBase",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/ListItemBase.js"
-                  }
-                ]
-              },
-              "description": "Returns an array containing the list item instances without the groups in a flat structure.",
-              "default": "[]",
-              "privacy": "public",
-              "readonly": true,
-              "_ui5since": "2.0.0"
-            }
-          ],
-          "slots": [
-            {
-              "name": "default",
-              "description": "Defines the items of the component.\n\n**Note:** Use `ui5-li`, `ui5-li-custom`, and `ui5-li-group` for the intended design.",
-              "_ui5propertyName": "items",
-              "_ui5type": {
-                "text": "Array<ListItemBase | ListItemGroup>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "header",
-              "description": "Defines the component header.\n\n**Note:** When `header` is set, the\n`headerText` property is ignored.",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
             }
           ],
           "events": [
@@ -3978,16 +3783,16 @@
               "name": "item-click",
               "_ui5privacy": "public",
               "type": {
-                "text": "CustomEvent<ListItemClickEventDetail>",
+                "text": "CustomEvent<NotificationItemClickEventDetail>",
                 "references": [
                   {
-                    "name": "ListItemClickEventDetail",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/List.js"
+                    "name": "NotificationItemClickEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/NotificationList.js"
                   }
                 ]
               },
-              "description": "Fired when an item is activated, unless the item's `type` property\nis set to `Inactive`.",
+              "description": "Fired when an item is clicked.",
               "_ui5allowPreventDefault": true,
               "_ui5parameters": [
                 {
@@ -4004,17 +3809,16 @@
               "name": "item-close",
               "_ui5privacy": "public",
               "type": {
-                "text": "CustomEvent<ListItemCloseEventDetail>",
+                "text": "CustomEvent<NotificationItemCloseEventDetail>",
                 "references": [
                   {
-                    "name": "ListItemCloseEventDetail",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/List.js"
+                    "name": "NotificationItemCloseEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/NotificationList.js"
                   }
                 ]
               },
-              "description": "Fired when the `Close` button of any item is clicked\n\n**Note:** This event is only applicable to list items that can be closed (such as notification list items),\nnot to be confused with `item-delete`.",
-              "_ui5since": "1.0.0-rc.8",
+              "description": "Fired when the `Close` button of any item is clicked.",
               "_ui5parameters": [
                 {
                   "type": {
@@ -4030,17 +3834,16 @@
               "name": "item-toggle",
               "_ui5privacy": "public",
               "type": {
-                "text": "CustomEvent<ListItemToggleEventDetail>",
+                "text": "CustomEvent<NotificationItemToggleEventDetail>",
                 "references": [
                   {
-                    "name": "ListItemToggleEventDetail",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/List.js"
+                    "name": "NotificationItemToggleEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/NotificationList.js"
                   }
                 ]
               },
-              "description": "Fired when the `Toggle` button of any item is clicked.\n\n**Note:** This event is only applicable to list items that can be toggled (such as notification group list items).",
-              "_ui5since": "1.0.0-rc.8",
+              "description": "Fired when an item is toggled.",
               "_ui5parameters": [
                 {
                   "type": {
@@ -4051,159 +3854,28 @@
                   "description": "the toggled item."
                 }
               ]
-            },
-            {
-              "name": "item-delete",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent<ListItemDeleteEventDetail>",
-                "references": [
-                  {
-                    "name": "ListItemDeleteEventDetail",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/List.js"
-                  }
-                ]
-              },
-              "description": "Fired when the Delete button of any item is pressed.\n\n**Note:** A Delete button is displayed on each item,\nwhen the component `selectionMode` property is set to `Delete`.",
-              "_ui5parameters": [
-                {
-                  "type": {
-                    "text": "HTMLElement"
-                  },
-                  "name": "item",
-                  "_ui5privacy": "public",
-                  "description": "the deleted item."
-                }
-              ]
-            },
-            {
-              "name": "selection-change",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent<ListSelectionChangeEventDetail>",
-                "references": [
-                  {
-                    "name": "ListSelectionChangeEventDetail",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/List.js"
-                  }
-                ]
-              },
-              "description": "Fired when selection is changed by user interaction\nin `Single`, `SingleStart`, `SingleEnd` and `Multiple` selection modes.",
-              "_ui5allowPreventDefault": true,
-              "_ui5parameters": [
-                {
-                  "type": {
-                    "text": "Array<ListItemBase>",
-                    "references": [
-                      {
-                        "name": "ListItemBase",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/ListItemBase.js"
-                      }
-                    ]
-                  },
-                  "name": "selectedItems",
-                  "_ui5privacy": "public",
-                  "description": "An array of the selected items."
-                },
-                {
-                  "type": {
-                    "text": "Array<ListItemBase>",
-                    "references": [
-                      {
-                        "name": "ListItemBase",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/ListItemBase.js"
-                      }
-                    ]
-                  },
-                  "name": "previouslySelectedItems",
-                  "_ui5privacy": "public",
-                  "description": "An array of the previously selected items."
-                }
-              ]
-            },
-            {
-              "name": "load-more",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the user scrolls to the bottom of the list.\n\n**Note:** The event is fired when the `growing='Scroll'` property is enabled.",
-              "_ui5since": "1.0.0-rc.6"
-            },
-            {
-              "name": "move-over",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent<ListMoveEventDetail>",
-                "references": [
-                  {
-                    "name": "ListMoveEventDetail",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/List.js"
-                  }
-                ]
-              },
-              "description": "Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
-              "_ui5allowPreventDefault": true,
-              "_ui5since": "2.0.0",
-              "_ui5parameters": [
-                {
-                  "type": {
-                    "text": "object"
-                  },
-                  "name": "source",
-                  "_ui5privacy": "public",
-                  "description": "Contains information about the moved element under `element` property."
-                },
-                {
-                  "type": {
-                    "text": "object"
-                  },
-                  "name": "destination",
-                  "_ui5privacy": "public",
-                  "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
-                }
-              ]
-            },
-            {
-              "name": "move",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent<ListMoveEventDetail>",
-                "references": [
-                  {
-                    "name": "ListMoveEventDetail",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/List.js"
-                  }
-                ]
-              },
-              "description": "Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.",
-              "_ui5allowPreventDefault": true,
-              "_ui5parameters": [
-                {
-                  "type": {
-                    "text": "object"
-                  },
-                  "name": "source",
-                  "_ui5privacy": "public",
-                  "description": "Contains information about the moved element under `element` property."
-                },
-                {
-                  "type": {
-                    "text": "object"
-                  },
-                  "name": "destination",
-                  "_ui5privacy": "public",
-                  "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
-                }
-              ]
             }
-          ]
+          ],
+          "attributes": [
+            {
+              "description": "Defines the text that is displayed when the component contains no items.",
+              "name": "no-data-text",
+              "default": "\"\"",
+              "fieldName": "noDataText",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-notification-list",
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -4398,6 +4070,21 @@
           "declaration": {
             "name": "NotificationListGroupList",
             "module": "dist/NotificationListGroupList.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/NotificationListInternal.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NotificationListInternal",
+            "module": "dist/NotificationListInternal.js"
           }
         }
       ]
