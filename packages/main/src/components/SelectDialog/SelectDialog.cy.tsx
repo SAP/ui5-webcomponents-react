@@ -219,7 +219,12 @@ describe('SelectDialog', () => {
   it('confirmButtonText', () => {
     const confirm = cy.spy().as('confirm');
     cy.mount(
-      <SelectDialog mode={ListSelectionMode.Multiple} confirmButtonText="Exterminate" onConfirm={confirm} open />
+      <SelectDialog
+        selectionMode={ListSelectionMode.Multiple}
+        confirmButtonText="Exterminate"
+        onConfirm={confirm}
+        open
+      />
     );
     cy.get('[ui5-dialog]').should('be.visible');
     cy.findByText('Exterminate').click();
@@ -228,7 +233,7 @@ describe('SelectDialog', () => {
   });
 
   it('numberOfSelectedItems', () => {
-    cy.mount(<SelectDialog mode={ListSelectionMode.Multiple} numberOfSelectedItems={1337} open />);
+    cy.mount(<SelectDialog selectionMode={ListSelectionMode.Multiple} numberOfSelectedItems={1337} open />);
     cy.findByText('Selected: 1337').should('be.visible');
   });
 
@@ -257,7 +262,7 @@ describe('SelectDialog', () => {
             onClose={() => {
               setOpen(false);
             }}
-            mode={mode}
+            selectionMode={mode}
           >
             {listItems}
           </SelectDialog>
@@ -285,7 +290,7 @@ describe('SelectDialog', () => {
         //@ts-expect-error: design is not a valid prop - only added for testing purpose
         confirmButtonProps={{ disabled: true, design: ButtonDesign.Negative, 'data-testid': 'confirmBtn' }}
         open
-        mode={ListSelectionMode.Multiple}
+        selectionMode={ListSelectionMode.Multiple}
       />
     );
     cy.findByTestId('confirmBtn').should('be.visible').and('have.attr', 'disabled');
