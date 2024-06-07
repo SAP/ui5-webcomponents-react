@@ -22,7 +22,6 @@ jobs:
           - main/src/internal
         react: ['18', 'rc']
       fail-fast: false
-    if: (${{ matrix.react }} == 'rc' && ${{matrix.spec}} == 'charts') != true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -43,6 +42,7 @@ jobs:
           yarn add react@18 react-dom@18
 
       - name: Cypress run
+        if: (${{ matrix.react }} == 'rc' && ${{matrix.spec}} == 'charts') != true
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
