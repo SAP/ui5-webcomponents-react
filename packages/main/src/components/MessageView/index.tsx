@@ -19,6 +19,7 @@ import { Icon } from '../../webComponents/Icon/index.js';
 import type { ListPropTypes } from '../../webComponents/List/index.js';
 import { List } from '../../webComponents/List/index.js';
 import { ListItemGroup } from '../../webComponents/ListItemGroup/index.js';
+import type { SegmentedButtonPropTypes } from '../../webComponents/SegmentedButton/index.js';
 import { SegmentedButton } from '../../webComponents/SegmentedButton/index.js';
 import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem/index.js';
 import { Title } from '../../webComponents/Title/index.js';
@@ -138,8 +139,8 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
     }
   }, [internalRef.current, navigateBack]);
 
-  const handleListFilterChange = (e) => {
-    setListFilter(e.detail.selectedItem.dataset.key);
+  const handleListFilterChange: SegmentedButtonPropTypes['onSelectionChange'] = (e) => {
+    setListFilter(e.detail.selectedItems.at(0).dataset.key as never);
   };
 
   const outerClasses = clsx(

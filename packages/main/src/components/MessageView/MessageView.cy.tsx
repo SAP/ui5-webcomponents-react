@@ -1,5 +1,5 @@
-import { useRef } from 'react';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import { useRef } from 'react';
 import { MessageItem } from './MessageItem';
 import { MessageView } from './index.js';
 
