@@ -20,11 +20,27 @@ jobs:
           - cypress-commands
           - main/src/components
           - main/src/internal
+        react: ['^18.3.1', 'rc']
       fail-fast: false
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4.0.2
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install
+        run: yarn install --immutable
+
+      - name: Install rcs
+        if: ${{ matrix.react }} == 'rc' && ${{matrix.spec}} != 'charts'
+        run: |
+          yarn set resolution "@types/react@npm:*" "npm:types-react@rc"
+          yarn set resolution "@types/react-dom@npm:*" "npm:types-react-dom@rc"
+          yarn add react@rc react-dom@rc
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
@@ -32,6 +48,7 @@ jobs:
           browser: chrome
           component: true
           spec: packages/${{ matrix.spec }}
+          install: false
 
       - uses: coverallsapp/github-action@v2.3.0
         if: ${{ inputs.reportCoverage }}
