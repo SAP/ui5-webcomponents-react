@@ -2,7 +2,7 @@ import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
-import type { MouseEventHandler, ReactNode } from 'react';
+import type { MouseEventHandler, ReactElement } from 'react';
 import { isValidElement, Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
@@ -20,6 +20,7 @@ import {
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
+import type { DialogPropTypes } from '../../webComponents/Dialog/index.js';
 import { Dialog } from '../../webComponents/Dialog/index.js';
 import type { InputDomRef } from '../../webComponents/index.js';
 import { Icon, Input } from '../../webComponents/index.js';
@@ -31,9 +32,11 @@ import { ManageViewsTableRows } from './ManageViewsTableRows.js';
 import type { VariantManagementPropTypes } from './types.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
 
-interface ManageViewsDialogPropTypes {
-  children: ReactNode | ReactNode[];
-  onAfterClose: any;
+type ManageViewsDialogChildType = boolean | undefined | null | ReactElement<VariantItemPropTypes>;
+
+export interface ManageViewsDialogPropTypes {
+  children: ManageViewsDialogChildType | ManageViewsDialogChildType[];
+  onAfterClose: DialogPropTypes['onAfterClose'];
   handleSaveManageViews: (
     e: MouseEventHandler<HTMLElement>,
     payload: {
@@ -111,7 +114,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     </>
   );
 
-  const [childrenProps, setChildrenProps] = useState(
+  const [childrenProps, setChildrenProps] = useState<Partial<VariantItemPropTypes>[]>(
     Children.map(children, (child) => {
       if (!isValidElement(child)) {
         return {};
@@ -253,7 +256,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       }
     >
       <Table columns={columns} stickyColumnHeader role="table">
-        {filteredProps.map((itemProps: VariantItemPropTypes) => {
+        {filteredProps.map((itemProps) => {
           return (
             <ManageViewsTableRows
               {...itemProps}

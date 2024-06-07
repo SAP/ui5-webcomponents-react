@@ -8,7 +8,7 @@ import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement } from 'react';
 import { MessageBoxActions, MessageBoxTypes } from '../../enums/index.js';
 import {
@@ -71,6 +71,8 @@ export interface MessageBoxPropTypes
    * Specifies which action of the created dialog will be emphasized.
    *
    * @since 0.16.3
+   *
+   * @default `"OK"`
    */
   emphasizedAction?: MessageBoxAction;
   /**
@@ -79,6 +81,8 @@ export interface MessageBoxPropTypes
   icon?: ReactNode;
   /**
    * Defines the type of the `MessageBox` with predefined title, icon, actions and a visual highlight color.
+   *
+   * @default `"Confirm"`
    */
   type?: MessageBoxTypes | keyof typeof MessageBoxTypes;
   /**
@@ -116,7 +120,7 @@ const convertMessageBoxTypeToState = (type: MessageBoxTypes) => {
   }
 };
 
-const getActions = (actions, type): (string | ReactNode)[] => {
+const getActions = (actions, type): (string | ReactElement<ButtonPropTypes>)[] => {
   if (actions && actions.length > 0) {
     return actions;
   }
@@ -136,13 +140,13 @@ const getActions = (actions, type): (string | ReactNode)[] => {
 const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) => {
   const {
     open,
-    type,
+    type = MessageBoxTypes.Confirm,
     children,
     className,
     titleText,
     icon,
-    actions,
-    emphasizedAction,
+    actions = [],
+    emphasizedAction = MessageBoxActions.OK,
     onClose,
     initialFocus,
     ...rest
@@ -265,12 +269,5 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
 });
 
 MessageBox.displayName = 'MessageBox';
-
-MessageBox.defaultProps = {
-  open: false,
-  type: MessageBoxTypes.Confirm,
-  emphasizedAction: MessageBoxActions.OK,
-  actions: []
-};
 
 export { MessageBox };

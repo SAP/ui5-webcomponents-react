@@ -17,7 +17,13 @@ import {
   SEARCH,
   SHOW_FILTER_BAR
 } from '../../i18n/i18n-defaults.js';
-import type { ButtonDomRef, DialogDomRef } from '../../webComponents/index.js';
+import type {
+  ButtonDomRef,
+  CheckBoxPropTypes,
+  DialogDomRef,
+  InputPropTypes,
+  SelectPropTypes
+} from '../../webComponents/index.js';
 import { Button, Icon } from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
@@ -103,7 +109,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const filterRefs = useRef({});
   const dialogRef = useRef<DialogDomRef>(null);
   const prevVisibleInFilterBarProps = useRef({});
-  const prevSearchInputPropsValueRef = useRef<string>();
+  const prevSearchInputPropsValueRef = useRef<string>(undefined);
   const filterBarButtonsRef = useRef(null);
   const filterAreaRef = useRef<HTMLDivElement>(null);
   const filterBtnRef = useRef<ButtonDomRef>(null);
@@ -127,7 +133,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
             return { ...prev, [key]: true };
           }
           if (item.props.hasOwnProperty('visibleInFilterBar')) {
-            return { ...prev, [key]: item.props.visibleInFilterBar };
+            return { ...prev, [key]: (item as ReactElement<FilterGroupItemInternalProps>).props.visibleInFilterBar };
           }
           return prev;
         });
@@ -230,7 +236,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     };
 
     return safeChildren()
-      .filter((item): item is ReactElement => {
+      .filter((item) => {
         if (!isValidElement(item)) {
           return false;
         }
@@ -258,35 +264,43 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
             ...childProps
           });
         }
+        const filter = child.props.children as ReactElement<Record<string, any>>;
         if (
           prevChildren.current?.[key] &&
           //Input
-          (child.props.children?.props?.value !== prevChildren.current?.[key]?.value ||
+          ((filter as ReactElement<InputPropTypes>)?.props?.value !== prevChildren.current?.[key]?.value ||
             //Checkbox
-            child.props.children?.props?.checked !== prevChildren.current?.[key]?.checked ||
+            (filter as ReactElement<CheckBoxPropTypes>)?.props?.checked !== prevChildren.current?.[key]?.checked ||
             //Selectable
-            (Array.isArray(child.props.children?.props?.children) &&
-              child.props.children?.props?.children?.map((item) => item.props.selected).join(',') !==
-                prevChildren?.current?.[key]?.children?.map((item) => item.props.selected).join(',')))
+            (Array.isArray((filter as ReactElement<SelectPropTypes>)?.props?.children) &&
+              (filter as ReactElement<SelectPropTypes>)?.props?.children
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore children is iterable here
+                ?.map((item) => item.props.selected)
+                .join(',') !== prevChildren?.current?.[key]?.children?.map((item) => item.props.selected).join(',')))
         ) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           const { [child.key]: _omit, ...rest } = dialogRefs;
           setDialogRefs(rest);
         }
-        prevChildren.current[key] = child.props.children.props;
+        prevChildren.current[key] = filter.props;
 
         return cloneElement(child, {
           ...childProps,
           children: {
-            ...child.props.children,
+            ...filter,
             props: {
-              ...child.props.children.props,
+              ...filter.props,
               ...filterItemProps
             },
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            //@ts-ignore: todo check React19 support
             ref: (node) => {
               filterRefs.current[key] = node;
-              if (!dialogOpen) syncRef(child.props.children.ref, node);
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              //@ts-ignore: todo check React19 support
+              if (!dialogOpen) syncRef(filter.ref, node);
             }
           }
         });

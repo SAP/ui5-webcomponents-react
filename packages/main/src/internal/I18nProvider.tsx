@@ -18,7 +18,7 @@ const bundleReducer = (currentBundles: I18nBundleMap, action: { payload: I18nBun
   };
 };
 
-export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
+export function I18nProvider({ children }: I18nProviderPropTypes) {
   const [i18nBundles, setI18nBundles] = useReducer(bundleReducer, {});
   const localBundles = useRef<I18nBundleMap>({});
   const isMounted = useRef(false);

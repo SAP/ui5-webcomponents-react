@@ -144,7 +144,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
     ...rest
   } = props;
 
-  const chartConfig = {
+  const chartConfig: ColumnChartProps['chartConfig'] = {
     yAxisVisible: false,
     xAxisVisible: true,
     gridStroke: ThemingParameters.sapList_BorderColor,
@@ -233,6 +233,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <ColumnChartLib
         syncId={syncId}
         onClick={onClickInternal}
@@ -321,7 +322,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 onClick={onDataPointClickInternal}
-                isAnimationActive={noAnimation === false}
+                isAnimationActive={!noAnimation}
                 onAnimationStart={handleBarAnimationStart}
                 onAnimationEnd={handleBarAnimationEnd}
               >
@@ -386,11 +387,6 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
     </ChartContainer>
   );
 });
-
-ColumnChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 ColumnChart.displayName = 'ColumnChart';
 

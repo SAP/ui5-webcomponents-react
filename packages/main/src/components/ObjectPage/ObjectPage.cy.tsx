@@ -251,7 +251,10 @@ describe('ObjectPage', () => {
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
+    //fallback
+    cy.wait(50);
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
     cy.findByText('Employment').should('be.visible');
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('Test').should('be.visible');

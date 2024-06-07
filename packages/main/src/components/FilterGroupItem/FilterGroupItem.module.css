@@ -62,8 +62,8 @@
 .withReorderBtns {
   --_ui5wcr-ReorderBtnsDisplay: none;
 
-  &[selected='true']::part(row):focus,
-  &[selected='true']::part(row):active {
+  &[selected]::part(row):focus,
+  &[selected]::part(row):active {
     --_ui5wcr-ActiveIconDisplayVariable: none;
     --_ui5wcr-ReorderBtnsDisplay: flex;
     background-color: var(--sapList_SelectionBackgroundColor);
@@ -72,7 +72,7 @@
 }
 
 .withReorderHoverBtns {
-  &[selected='true']:hover {
+  &[selected]:hover {
     --_ui5wcr-ReorderBtnsDisplay: flex;
     --_ui5wcr-ActiveIconDisplayVariable: none;
   }

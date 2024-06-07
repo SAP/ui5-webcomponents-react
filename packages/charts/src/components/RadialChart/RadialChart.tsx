@@ -92,7 +92,7 @@ const defaultDisplayValueStyles = {
  */
 const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) => {
   const {
-    maxValue,
+    maxValue = 100,
     value,
     displayValue,
     onDataPointClick,
@@ -103,7 +103,7 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
     slot,
     noAnimation,
     chartConfig,
-    displayValueStyle,
+    displayValueStyle = defaultDisplayValueStyles,
     ...rest
   } = props;
 
@@ -135,6 +135,7 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
       style={style}
       {...rest}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <RadialBarChart
         onClick={onClickInternal}
         innerRadius="90%"
@@ -149,7 +150,7 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
       >
         <PolarAngleAxis type="number" domain={range} tick={false} />
         <RadialBar
-          isAnimationActive={noAnimation === false}
+          isAnimationActive={!noAnimation}
           background={radialBarBackground}
           dataKey="value"
           fill={color ?? ThemingParameters.sapChart_OrderedColor_1}
@@ -171,12 +172,6 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
     </ChartContainer>
   );
 });
-
-RadialChart.defaultProps = {
-  maxValue: 100,
-  noAnimation: false,
-  displayValueStyle: defaultDisplayValueStyles
-};
 
 RadialChart.displayName = 'RadialChart';
 

@@ -255,7 +255,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     };
   }, [numberOfAlwaysVisibleItems, overflowNeeded]);
 
-  const requestAnimationFrameRef = useRef<undefined | number>();
+  const requestAnimationFrameRef = useRef<undefined | number>(undefined);
   const calculateVisibleItems = useCallback(() => {
     requestAnimationFrameRef.current = requestAnimationFrame(() => {
       if (!outerContainer.current) return;
@@ -337,7 +337,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   };
 
   const prevChildren = useRef(flatChildren);
-  const debouncedOverflowChange = useRef<ToolbarPropTypes['onOverflowChange'] & { cancel(): void }>();
+  const debouncedOverflowChange = useRef<ToolbarPropTypes['onOverflowChange'] & { cancel(): void }>(undefined);
 
   useEffect(() => {
     if (typeof onOverflowChange === 'function') {
@@ -390,7 +390,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
         {overflowNeeded &&
           Children.map(childrenWithRef, (item, index) => {
             if (index >= lastVisibleIndex + 1 && index > numberOfAlwaysVisibleItems - 1) {
-              return cloneElement(item as ReactElement, {
+              return cloneElement(item as ReactElement<CommonProps>, {
                 style: { visibility: 'hidden', position: 'absolute', pointerEvents: 'none' }
               });
             }

@@ -7,6 +7,7 @@ import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import { cloneElement, Fragment, isValidElement, useEffect, useMemo } from 'react';
 import { flattenFragments } from '../../internal/utils.js';
 import type { ReducedReactNodeWithBoolean } from '../../types/index.js';
+import type { InputPropTypes } from '../../webComponents/index.js';
 import type { LabelPropTypes } from '../../webComponents/Label/index.js';
 import { Label } from '../../webComponents/Label/index.js';
 import { useFormContext, useFormGroupContext } from '../Form/FormContext.js';
@@ -44,6 +45,12 @@ interface FormItemLabelProps {
   rowIndex: number | undefined;
 }
 
+type LabelPropsWithDataAttributeType = LabelPropTypes & {
+  'data-label-span'?: number;
+  'data-row-index-label'?: number;
+  'data-component-name'?: string;
+};
+
 function FormItemLabel({ label, style, className, rowIndex }: FormItemLabelProps) {
   const { labelSpan } = useFormContext();
 
@@ -64,19 +71,19 @@ function FormItemLabel({ label, style, className, rowIndex }: FormItemLabelProps
   }
 
   if (isValidElement(label)) {
-    const { showColon, wrappingType, style: labelStyle, children } = label.props;
-    return cloneElement<
-      LabelPropTypes & {
-        'data-label-span'?: number;
-        'data-row-index-label'?: number;
-        'data-component-name'?: string;
-      }
-    >(
+    const {
+      showColon,
+      wrappingType,
+      style: labelStyle,
+      children,
+      className: labelClassName
+    } = (label as ReactElement<LabelPropsWithDataAttributeType>).props;
+    return cloneElement<LabelPropsWithDataAttributeType>(
       label,
       {
         showColon: showColon ?? true,
         wrappingType: wrappingType ?? WrappingType.Normal,
-        className: clsx(classNames.label, className, label.props.className),
+        className: clsx(classNames.label, className, labelClassName),
         style: {
           ...style,
           ...(labelStyle || {})
@@ -92,7 +99,7 @@ function FormItemLabel({ label, style, className, rowIndex }: FormItemLabelProps
   return null;
 }
 
-const getContentForHtmlLabel = (label: ReactNode) => {
+const getContentForHtmlLabel = (label: string | boolean | null | ReactElement<LabelPropsWithDataAttributeType>) => {
   if (typeof label === 'string') {
     return label;
   } else if (isValidElement(label) && typeof label.props?.children === 'string') {
@@ -171,21 +178,22 @@ const FormItem = (props: FormItemPropTypes) => {
         data-row-index={calculatedGridRowStart}
         data-component-name="FormItemContent"
       >
-        {flattenFragments(children).map((child, index) => {
+        {flattenFragments<ReactNode>(children).map((child, index) => {
           // @ts-expect-error: type can't be string because of `isValidElement`
           if (isValidElement(child) && child.type && child.type.$$typeof !== Symbol.for('react.portal')) {
             const content = getContentForHtmlLabel(label);
             let accessibleNameRef: string | undefined;
-            if (!child?.props.accessibleName) {
+            // use the InputPropTypes as type here, as we cannot cover all possible inputs
+            const castChild = child as ReactElement<InputPropTypes>;
+            if (!castChild?.props.accessibleName) {
               accessibleNameRef =
-                child?.props?.accessibleNameRef ?? `${layoutInfo.groupId}-group ${uniqueId}-${index}-label`;
+                castChild?.props?.accessibleNameRef ?? `${layoutInfo.groupId}-group ${uniqueId}-${index}-label`;
             }
 
             return (
               <Fragment key={`${content}-${uniqueId}-${index}`}>
                 {accessibleNameRef
-                  ? cloneElement(child, {
-                      //@ts-expect-error: child is ReactElement
+                  ? cloneElement<InputPropTypes>(child, {
                       accessibleNameRef
                     })
                   : child}

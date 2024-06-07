@@ -459,10 +459,10 @@ describe('FilterBar.cy.tsx', () => {
       </FilterBar>
     );
 
-    cy.get('[show-colon="true"]').should('have.length', 1);
+    cy.get('[show-colon]').should('have.length', 1);
     cy.findByText('Filters').click();
     cy.findByText('Show Values').click();
-    cy.get('[show-colon="true"]').should('have.length', 2);
+    cy.get('[show-colon]').should('have.length', 2);
   });
 
   it('FB search field', () => {

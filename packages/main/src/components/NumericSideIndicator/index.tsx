@@ -15,6 +15,8 @@ export interface NumericSideIndicatorPropTypes extends CommonProps {
   number: number | string;
   /**
    * The semantic color which represents the state of the side indicator.
+   *
+   * @default `"None"`
    */
   state?: ValueColor;
   /**
@@ -31,7 +33,7 @@ export interface NumericSideIndicatorPropTypes extends CommonProps {
  * Holds a set of side indicator attributes used in the AnalyticalCardHeader component.
  */
 export const NumericSideIndicator = forwardRef<HTMLDivElement, NumericSideIndicatorPropTypes>((props, ref) => {
-  const { number, state, titleText, unit, className, ...rest } = props;
+  const { number, state = ValueColor.None, titleText, unit, className, ...rest } = props;
 
   useStylesheet(styleData, NumericSideIndicator.displayName);
 
@@ -47,7 +49,3 @@ export const NumericSideIndicator = forwardRef<HTMLDivElement, NumericSideIndica
 });
 
 NumericSideIndicator.displayName = 'NumericSideIndicator';
-
-NumericSideIndicator.defaultProps = {
-  state: ValueColor.None
-};

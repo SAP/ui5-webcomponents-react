@@ -31,6 +31,7 @@ import {
   Title
 } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
+import type { ManageViewsDialogPropTypes } from './ManageViewsDialog.js';
 import { ManageViewsDialog } from './ManageViewsDialog.js';
 import { SaveViewDialog } from './SaveViewDialog.js';
 import type { VariantManagementPropTypes } from './types.js';
@@ -85,7 +86,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState<SelectedVariant | undefined>(() => {
     const currentSelectedVariant = safeChildren.find(
-      (item) => isValidElement(item) && item.props.selected
+      (item) => isValidElement(item) && (item as ReactElement<VariantItemPropTypes>).props.selected
     ) as ComponentElement<any, any>;
     if (currentSelectedVariant) {
       return { ...currentSelectedVariant.props, variantItem: currentSelectedVariant.ref };
@@ -137,34 +138,37 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
           if (!isValidElement(child)) {
             return false;
           }
+          const castChild = child as ReactElement<VariantItemPropTypes>;
           let updatedProps: Omit<SelectedVariant, 'children' | 'variantItem'> = {};
-          const currentVariant = popoverRef.current.querySelector(`ui5-li[data-children="${child.props.children}"]`);
-          callbackProperties.prevVariants.push(child.props);
+          const currentVariant = popoverRef.current.querySelector(
+            `ui5-li[data-children="${castChild.props.children}"]`
+          );
+          callbackProperties.prevVariants.push(castChild.props);
           if (defaultView) {
-            if (defaultView === child.props.children) {
+            if (defaultView === castChild.props.children) {
               updatedProps.isDefault = true;
-            } else if (child.props.isDefault) {
+            } else if (castChild.props.isDefault) {
               updatedProps.isDefault = false;
             }
           }
-          if (Object.keys(updatedRows).includes(child.props.children)) {
-            const { currentVariant: _0, ...rest } = updatedRows[child.props.children];
+          if (Object.keys(updatedRows).includes(castChild.props.children)) {
+            const { currentVariant: _0, ...rest } = updatedRows[castChild.props.children];
             updatedProps = { ...updatedProps, ...rest };
           }
-          if (deletedRows.has(child.props.children)) {
-            callbackProperties.deletedVariants.push(child.props);
+          if (deletedRows.has(castChild.props.children)) {
+            callbackProperties.deletedVariants.push(castChild.props);
             return false;
           }
           if (Object.keys(updatedProps).length > 0) {
             callbackProperties.updatedVariants.push({
-              ...child.props,
+              ...castChild.props,
               ...updatedProps,
               variantItem: currentVariant,
-              prevVariant: { ...child.props }
+              prevVariant: { ...castChild.props }
             });
           }
-          callbackProperties.variants.push({ ...child.props, ...updatedProps, variantItem: currentVariant });
-          return cloneElement(child, updatedProps);
+          callbackProperties.variants.push({ ...castChild.props, ...updatedProps, variantItem: currentVariant });
+          return cloneElement(castChild, updatedProps);
         })
       )
     );
@@ -200,7 +204,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   const dirtyStateClasses = clsx(classNames.dirtyState, dirtyStateText !== '*' && classNames.dirtyStateText);
 
-  const selectVariantEventRef = useRef();
+  const selectVariantEventRef = useRef(undefined);
   useEffect(() => {
     if (selectVariantEventRef.current) {
       if (typeof onSelect === 'function') {
@@ -212,7 +216,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   useEffect(() => {
     const selectedChild = safeChildren.find(
-      (item) => isValidElement(item) && item.props.children === selectedVariant?.children
+      (item) =>
+        isValidElement(item) &&
+        (item as ReactElement<VariantItemPropTypes>).props.children === selectedVariant?.children
     ) as ReactElement<VariantItemPropTypes>;
     setSelectedSaveViewInputProps(selectedChild?.props.saveViewInputProps ?? {});
   }, [selectedVariant, safeChildren]);
@@ -226,7 +232,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   };
 
   const variantNames = safeChildren.map((item) =>
-    isValidElement(item) && typeof item.props?.children === 'string' ? item.props.children : ''
+    isValidElement(item) && typeof (item as ReactElement<VariantItemPropTypes>).props?.children === 'string'
+      ? (item as ReactElement<VariantItemPropTypes>).props.children
+      : ''
   );
 
   const [favoriteChildren, setFavoriteChildren] = useState(undefined);
@@ -234,7 +242,13 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   useEffect(() => {
     if (showOnlyFavorites) {
       setFavoriteChildren(
-        safeChildren.filter((child) => isValidElement(child) && (child.props.favorite || child.props.isDefault))
+        safeChildren.filter((child) => {
+          return (
+            isValidElement(child) &&
+            ((child as ReactElement<VariantItemPropTypes>).props.favorite ||
+              (child as ReactElement<VariantItemPropTypes>).props.isDefault)
+          );
+        })
       );
     }
     if (!showOnlyFavorites && favoriteChildren?.length > 0) {
@@ -270,7 +284,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   const canRenderPortal = useCanRenderPortal();
 
-  const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
+  // todo: this applies if `readOnly` is set to `false` as well since the value is read via data-attribute and is therefore a string not a boolean
+  const showSaveBtn = dirtyState && !selectedVariant?.hasOwnProperty('readOnly');
+
   return (
     <div className={variantManagementClasses} style={style} {...rest} ref={ref}>
       <VariantManagementContext.Provider
@@ -379,7 +395,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
             portalContainer={portalContainer}
             showOnlyFavorites={showOnlyFavorites}
           >
-            {safeChildren}
+            {safeChildren as unknown as ManageViewsDialogPropTypes['children']}
           </ManageViewsDialog>
         )}
         {saveAsDialogOpen && (

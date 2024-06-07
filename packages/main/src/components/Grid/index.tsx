@@ -12,10 +12,14 @@ import { classNames, styleData } from './Grid.module.css.js';
 export interface GridPropTypes extends CommonProps {
   /**
    * Vertical spacing between the rows in the Grid. If not specified, then 1rem.
+   *
+   * @default `"1rem"`
    */
   vSpacing?: CSSProperties['height'];
   /**
    * Horizontal spacing between the content in the Grid. If not specified, then 1rem.
+   *
+   * @default `"1rem"`
    */
   hSpacing?: CSSProperties['width'];
   /**
@@ -28,6 +32,8 @@ export interface GridPropTypes extends CommonProps {
    * Note that the parameters has to be provided in the order very large, large, medium, small.
    *
    * You can override this default span on each child element by setting the prop `data-layout-span`.
+   *
+   * @default `"XL3 L3 M6 S12"`
    */
   defaultSpan?: string;
   /**
@@ -36,6 +42,8 @@ export interface GridPropTypes extends CommonProps {
    * Note that the parameters has to be provided in the order very-large, large, medium, small.
    *
    * You can override this default indent on each child element by setting the prop `data-layout-indent`.
+   *
+   * @default `"XL0 L0 M0 S0"`
    */
   defaultIndent?: string;
   /**
@@ -77,7 +85,18 @@ const getIndentFromString = (indent: string, currentRange: Range) => {
  * A layout container component used for aligning items with various sizes in a simple grid.
  */
 const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
-  const { position, children, hSpacing, vSpacing, style, className, slot, defaultIndent, defaultSpan, ...rest } = props;
+  const {
+    position,
+    children,
+    hSpacing = '1rem',
+    vSpacing = '1rem',
+    style,
+    className,
+    slot,
+    defaultIndent = 'XL0 L0 M0 S0',
+    defaultSpan = 'XL3 L3 M6 S12',
+    ...rest
+  } = props;
 
   useStylesheet(styleData, Grid.displayName);
   const currentRange = useViewportRange();
@@ -128,12 +147,5 @@ const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
 });
 
 Grid.displayName = 'Grid';
-
-Grid.defaultProps = {
-  hSpacing: '1rem',
-  vSpacing: '1rem',
-  defaultIndent: 'XL0 L0 M0 S0',
-  defaultSpan: 'XL3 L3 M6 S12'
-};
 
 export { Grid };
