@@ -1,4 +1,5 @@
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
@@ -16,7 +17,6 @@ import {
   ToolbarStyle,
   OverflowToolbarToggleButton
 } from '../..';
-import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import { ToolbarDesign } from '../../enums/index.js';
 import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
@@ -414,7 +414,7 @@ describe('Toolbar', () => {
         <Toolbar overflowPopoverRef={popoverRef} style={{ width: '50px' }}>
           <Button
             onClick={() => {
-              popoverRef.current.close();
+              popoverRef.current.open = false;
             }}
           >
             Close
