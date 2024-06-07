@@ -367,8 +367,9 @@ describe('ObjectPage', () => {
     cy.findByTestId('footer').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.wait(500);
 
-    cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
+    cy.get('[ui5-tabcontainer]').contains('Job Relationship').click({ force: true });
     cy.findByText('Job Information').should('not.be.visible');
     cy.findByText('Job Relationship').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
@@ -646,7 +647,8 @@ describe('ObjectPage', () => {
       cy.findByText('Custom Header Section Two').should('be.visible');
 
       cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Goals').click();
-      cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Goals 2').click({ force: true });
+      cy.wait(500);
+      cy.get('[ui5-tabcontainer]').contains('Goals 2').click({ force: true });
       cy.findByText('Goals 2').should('not.exist');
       cy.findByText('toggle titleTextSub').click({ scrollBehavior: false, force: true });
       cy.findByText('Goals 2').should('be.visible');
