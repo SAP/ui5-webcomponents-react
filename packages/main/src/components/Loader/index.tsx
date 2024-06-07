@@ -12,16 +12,24 @@ import { classNames, styleData } from './Loader.module.css.js';
 export interface LoaderPropTypes extends CommonProps {
   /**
    * Delay in ms until the Loader will be displayed
+   *
+   * @default `0`
    */
   delay?: number;
   /**
    * Defines the type of the `Loader`.
+   *
    * __Note:__ If the process completion rate can be detected the `Determinate` type should be used.
+   *
+   * @default `"Indeterminate"`
    */
   type?: LoaderType | keyof typeof LoaderType;
   /**
-   * Defines the progress of the Loader Bar. <br />
+   * Defines the progress of the Loader Bar.
+   *
    * __Note:__ This prop has no effect if used with type `Indeterminate`.
+   *
+   * @default `"0px"`
    */
   progress?: CSSProperties['width'];
 }
@@ -35,7 +43,7 @@ export interface LoaderPropTypes extends CommonProps {
  * @deprecated This component is deprecated and will be removed with our next major release (v2.0.0)! Please use the [BusyIndicator](https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-busyindicator--docs) instead.
  */
 const Loader = forwardRef<HTMLDivElement, LoaderPropTypes>((props, ref) => {
-  const { className, type, progress, slot, style, delay, ...rest } = props;
+  const { className, type = LoaderType.Indeterminate, progress = '0px', slot, style, delay = 0, ...rest } = props;
 
   useStylesheet(styleData, Loader.displayName);
   const [isVisible, setIsVisible] = useState(delay === 0);
@@ -82,12 +90,6 @@ const Loader = forwardRef<HTMLDivElement, LoaderPropTypes>((props, ref) => {
     />
   );
 });
-
-Loader.defaultProps = {
-  type: LoaderType.Indeterminate,
-  progress: '0px',
-  delay: 0
-};
 
 Loader.displayName = 'Loader';
 

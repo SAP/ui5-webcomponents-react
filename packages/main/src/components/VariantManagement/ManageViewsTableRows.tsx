@@ -22,7 +22,7 @@ import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from 
 import { Text } from '../Text/index.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
 
-interface ManageViewsTableRowsProps extends VariantItemPropTypes {
+interface ManageViewsTableRowsProps extends Partial<VariantItemPropTypes> {
   variantNames: string[];
   handleRowChange: (e: Event, payload: any) => void;
   handleDelete: (e: any) => void;

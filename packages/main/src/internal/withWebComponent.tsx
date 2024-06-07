@@ -80,7 +80,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       const removeFragments = (element: ReactNode) => {
         if (!isValidElement(element)) return;
         if (element.type === Fragment) {
-          const elementChildren = element.props?.children;
+          const elementChildren = (element as ReactElement<{ children?: ReactNode | ReactNode[] }>).props?.children;
           if (Array.isArray(elementChildren)) {
             elementChildren.forEach((item) => {
               if (Array.isArray(item)) {

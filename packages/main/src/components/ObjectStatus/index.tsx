@@ -69,6 +69,8 @@ export interface ObjectStatusPropTypes extends CommonProps {
    * Defines the value state of the <code>ObjectStatus</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
    *
    * Since version 0.17.0 the state property also accepts values from enum `IndicationColor`.
+   *
+   * @default `"None"`
    */
   state?: ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;
 
@@ -158,7 +160,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
  */
 const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatusPropTypes>((props, ref) => {
   const {
-    state,
+    state = ValueState.None,
     showDefaultIcon,
     children,
     icon,
@@ -258,9 +260,5 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
 });
 
 ObjectStatus.displayName = 'ObjectStatus';
-
-ObjectStatus.defaultProps = {
-  state: ValueState.None
-};
 
 export { ObjectStatus };

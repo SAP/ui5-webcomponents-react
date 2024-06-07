@@ -146,7 +146,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     ...rest
   } = props;
 
-  const chartConfig = {
+  const chartConfig: BarChartProps['chartConfig'] = {
     margin: {},
     yAxisVisible: true,
     xAxisVisible: true,
@@ -234,6 +234,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <BarChartLib
         syncId={syncId}
         onClick={onClickInternal}
@@ -327,7 +328,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 onClick={onDataPointClickInternal}
-                isAnimationActive={noAnimation === false}
+                isAnimationActive={!noAnimation}
                 onAnimationStart={handleBarAnimationStart}
                 onAnimationEnd={handleBarAnimationEnd}
               >
@@ -391,11 +392,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     </ChartContainer>
   );
 });
-
-BarChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 BarChart.displayName = 'BarChart';
 

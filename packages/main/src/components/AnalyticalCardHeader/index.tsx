@@ -19,6 +19,7 @@ import {
 import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
 import { Icon } from '../../webComponents/index.js';
+import type { NumericSideIndicatorPropTypes } from '../NumericSideIndicator/index.js';
 import { classNames, styleData } from './AnalyticalCardHeader.module.css.js';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
@@ -32,6 +33,8 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   subtitleText?: string;
   /**
    * The direction of the trend arrow. Shows deviation for the value of the main number indicator.
+   *
+   * @default `"None"`
    */
   trend?: DeviationIndicator | keyof typeof DeviationIndicator;
   /**
@@ -46,6 +49,8 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
    * The semantic color which represents the state of the main number indicator.
    * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Critical</code></li> <li><code>Good</code></li> <li><code>Neutral</code></li></ul>
+   *
+   * @default `"None"`
    */
   state?: ValueColor | keyof typeof ValueColor;
   /**
@@ -96,13 +101,13 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
     subtitleText,
     value,
     scale,
-    state,
+    state = ValueColor.None,
     onClick,
     className,
     description,
     status,
     unitOfMeasurement,
-    trend,
+    trend = DeviationIndicator.None,
     style,
     children,
     id,
@@ -125,7 +130,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
   const uniqueHeaderId = useIsomorphicId();
   const headerId = id ?? uniqueHeaderId;
 
-  const sideIndicators = flattenFragments(children) as ReactElement[];
+  const sideIndicators = flattenFragments(children) as ReactElement<NumericSideIndicatorPropTypes>[];
   const sideIndicatorIds: string[] = sideIndicators.map((child, idx) => {
     return child.props?.id ?? `${headerId}-indicator${idx}`;
   });
@@ -208,7 +213,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
           </div>
           <div className={classNames.indicatorGap} />
           <div className={classNames.sideIndicators}>
-            {sideIndicators.map((sideIndicator: ReactElement, index) => {
+            {sideIndicators.map((sideIndicator, index) => {
               return cloneElement(sideIndicator, {
                 id: sideIndicator.props.id ?? `${headerId}-indicator${index}`
               });
@@ -226,8 +231,3 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
 });
 
 AnalyticalCardHeader.displayName = 'AnalyticalCardHeader';
-
-AnalyticalCardHeader.defaultProps = {
-  trend: DeviationIndicator.None,
-  state: ValueColor.None
-};
