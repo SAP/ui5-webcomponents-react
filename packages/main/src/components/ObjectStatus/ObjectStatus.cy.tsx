@@ -21,7 +21,7 @@ const statesWithCSSVars: {
   hiddenText: undefined | string;
 }[] = [
   {
-    state: 'Error',
+    state: ValueState.Negative,
     color: ThemingParameters.sapNegativeTextColor,
     iconColor: ThemingParameters.sapNegativeElementColor,
     hasDefaultIcon: true,
@@ -44,7 +44,7 @@ const statesWithCSSVars: {
     hiddenText: undefined
   },
   {
-    state: 'Success',
+    state: ValueState.Positive,
     color: ThemingParameters.sapPositiveTextColor,
     iconColor: ThemingParameters.sapPositiveElementColor,
     hasDefaultIcon: true,
@@ -56,7 +56,7 @@ const statesWithCSSVars: {
     hiddenText: VALUE_STATE_SUCCESS.defaultText
   },
   {
-    state: 'Warning',
+    state: ValueState.Critical,
     color: ThemingParameters.sapCriticalTextColor,
     iconColor: ThemingParameters.sapCriticalElementColor,
     hasDefaultIcon: true,
