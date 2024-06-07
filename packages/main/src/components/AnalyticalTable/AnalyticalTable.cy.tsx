@@ -1,19 +1,19 @@
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
 import {
   AnalyticalTable,
   AnalyticalTableHooks,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
-  AnalyticalTableSubComponentsBehavior,
   AnalyticalTableSelectionMode,
+  AnalyticalTableSubComponentsBehavior,
   AnalyticalTableVisibleRowCountMode,
   Button,
-  Input,
-  IndicationColor
+  IndicationColor,
+  Input
 } from '../..';
-import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
@@ -1718,7 +1718,7 @@ describe('AnalyticalTable', () => {
             case 'A':
               return ValueState.Negative;
             case 'B':
-              return 'Success';
+              return 'Positive';
             case 'X':
               return IndicationColor.Indication01;
             case 'C':
