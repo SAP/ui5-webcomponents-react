@@ -36,7 +36,7 @@ type ManageViewsDialogChildType = boolean | undefined | null | ReactElement<Vari
 
 export interface ManageViewsDialogPropTypes {
   children: ManageViewsDialogChildType | ManageViewsDialogChildType[];
-  onAfterClose: DialogPropTypes['onAfterClose'];
+  onAfterClose: DialogPropTypes['onClose'];
   handleSaveManageViews: (
     e: MouseEventHandler<HTMLElement>,
     payload: {
