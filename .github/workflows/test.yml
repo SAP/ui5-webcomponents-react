@@ -20,7 +20,7 @@ jobs:
           - cypress-commands
           - main/src/components
           - main/src/internal
-        react: ['18', 'rc']
+        react: ['18', '19']
       fail-fast: false
     steps:
       - name: Checkout
@@ -42,7 +42,7 @@ jobs:
           yarn add react@18 react-dom@18
 
       - name: Cypress run
-        if: ${{ (matrix.react == 'rc' && matrix.spec == 'charts') != true }}
+        if: ${{ (matrix.react == '19' && matrix.spec == 'charts') != true }}
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
@@ -51,7 +51,7 @@ jobs:
           install: false
 
       - uses: coverallsapp/github-action@v2.3.0
-        if: ${{ inputs.reportCoverage && matrix.react == 'rc' }}
+        if: ${{ inputs.reportCoverage && (matrix.react == '19' || matrix.react == '18' && matrix.spec == 'charts') }}
         with:
           file: temp/cypress-coverage/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
