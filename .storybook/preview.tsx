@@ -138,7 +138,8 @@ const preview: Preview = {
           'Getting Started',
           'Project Templates & Examples',
           'Change Log',
-          'Migration Guide',
+          'Migration Guide (V2)',
+          'Migration Guide (V1)',
           'Knowledge Base',
           'Testing with Cypress',
           ['Setup', 'Commands', 'Queries']

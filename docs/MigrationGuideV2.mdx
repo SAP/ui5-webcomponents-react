@@ -1,0 +1,29 @@
+import { Footer, TableOfContent } from '@sb/components';
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Migration Guide (V2)" />
+
+# Migration Guide (V2)
+
+<br />
+
+_The most important breaking changes of the corresponding releases are outlined here.
+For a full list of all changes, please refer to [the list of releases](https://github.com/SAP/ui5-webcomponents-react/releases)
+or the [changelog](?path=/docs/change-log--page)._
+
+<br />
+
+<TableOfContent headingSelector="h2" />
+
+<br />
+<br />
+
+## Removed hooks
+
+### `useResponsiveContentPadding`
+
+The `useResponsiveContentPadding` hook has been removed.
+You can now apply responsive content paddings by applying the `sap-content-paddings-container` class from `@sap-ui/common-css` package to your element.
+You can find a more detailed documentation [here](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/knowledge-base-common-css--docs#content-paddings).
+
+<Footer />
