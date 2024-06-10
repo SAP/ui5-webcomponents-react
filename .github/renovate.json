@@ -38,7 +38,8 @@
       "groupName": "all non-major dependencies",
       "groupSlug": "root-all-minor-patch",
       "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "excludePackageNames": ["react", "react-dom"]
     },
     {
       "description": "Example & Template dependencies",
