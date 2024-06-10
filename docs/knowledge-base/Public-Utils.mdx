@@ -104,30 +104,4 @@ The `useI18nBundle` hook can be used for adding internationalization to your app
 The `useViewportRange` hook is a utility hook based on the `Device.getCurrentRange()` and `Device.attachMediaHandler` API.
 It will always return a string with the name of the currently active range.
 
-### `useResponsiveContentPadding`
-
-<Source code={`import { useResponsiveContentPadding } from '@ui5/webcomponents-react-base';`} />
-
-The `useResponsiveContentPadding` hook is a hook generating a style class or a tuple containing the style class and the current range if `returnRangeString` is set to `true`.
-It adds `padding-left` and `padding-right` corresponding to the range (retrieved with `Device.getCurrentRange()`) of the element.
-
-```jsx
-const YourComponent = (props) => {
-  const elementRef = useRef(null);
-  const responsivePaddingClass = useResponsiveContentPadding(elementRef.current);
-  return (
-    <div ref={elementRef} className={responsivePaddingClass}>
-      Content
-    </div>
-  );
-};
-```
-
-```js
-// returns the style class as string
-const responsivePaddingClass = useResponsiveContentPadding(elementRef.current);
-// returns a tuple - the first entry is the style class, the second the current range string
-const [responsivePaddingClass, currentRange] = useResponsiveContentPadding(elementRef.current, true);
-```
-
 <Footer />
