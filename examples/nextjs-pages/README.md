@@ -1,7 +1,7 @@
 ## UI5 Web Components React - Next.js Pages Router Example
 
 This example shows how to use the [Next.js](https://nextjs.org/) Pages Router with UI5 Web Components for React.
-It includes the required adjustments in `pages/_app.tsx` and `pages/_document.tsx` as well as a very simple Todo
+It includes the required adjustments in `pages/_app.tsx` as well as a very simple Todo
 App.
 
 ## How to use this template
