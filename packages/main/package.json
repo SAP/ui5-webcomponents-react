@@ -22,8 +22,6 @@
       "default": "./ssr/index.js"
     },
     "./package.json": "./package.json",
-    "./jestSetup": "./jestSetup.js",
-    "./jestSetup.js": "./jestSetup.js",
     "./styles.css": "./dist/css/index.css",
     "./dist": "./dist/index.js",
     "./dist/*": "./dist/*",
@@ -92,7 +90,6 @@
     "wrappers",
     "ssr",
     "CHANGELOG.md",
-    "jestSetup.js",
     "LICENSE",
     "NOTICE.txt",
     "README.md"
