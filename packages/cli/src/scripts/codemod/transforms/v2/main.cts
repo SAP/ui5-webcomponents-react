@@ -66,6 +66,80 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       return;
     }
 
+    // Special Handling for logic inversions, etc.
+    if (componentName === 'Carousel') {
+      jsxElements.forEach((el) => {
+        const itemsPerPageS = j(el).find(j.JSXAttribute, { name: { name: 'itemsPerPageS' } });
+        const itemsPerPageM = j(el).find(j.JSXAttribute, { name: { name: 'itemsPerPageM' } });
+        const itemsPerPageL = j(el).find(j.JSXAttribute, { name: { name: 'itemsPerPageL' } });
+
+        const sizeValues: string[] = [];
+
+        if (itemsPerPageS.size()) {
+          const s = itemsPerPageS.get();
+          const stringLiteral = itemsPerPageS.find(j.StringLiteral);
+          const numericLiteral = itemsPerPageS.find(j.NumericLiteral);
+
+          if (stringLiteral.size() > 0) {
+            sizeValues.push(`S${stringLiteral.get().value.value}`);
+          } else if (numericLiteral.size() > 0) {
+            sizeValues.push(`S${numericLiteral.get().value.value}`);
+          } else {
+            console.warn(`Unable to read value for prop 'itemsPerPageS' (Carousel). Please check the code manually.`);
+          }
+        }
+
+        if (itemsPerPageM.size()) {
+          const stringLiteral = itemsPerPageM.find(j.StringLiteral);
+          const numericLiteral = itemsPerPageM.find(j.NumericLiteral);
+          if (stringLiteral.size() > 0) {
+            sizeValues.push(`M${stringLiteral.get().value.value}`);
+          } else if (numericLiteral.size() > 0) {
+            sizeValues.push(`M${numericLiteral.get().value.value}`);
+          } else {
+            console.warn(`Unable to read value for prop 'itemsPerPageM' (Carousel). Please check the code manually.`);
+          }
+        }
+
+        if (itemsPerPageL.size()) {
+          const stringLiteral = itemsPerPageL.find(j.StringLiteral);
+          const numericLiteral = itemsPerPageL.find(j.NumericLiteral);
+          if (stringLiteral.size() > 0) {
+            sizeValues.push(`L${stringLiteral.get().value.value}`);
+          } else if (numericLiteral.size() > 0) {
+            sizeValues.push(`L${numericLiteral.get().value.value}`);
+          } else {
+            console.warn(`Unable to read value for prop 'itemsPerPageL' (Carousel). Please check the code manually.`);
+          }
+        }
+
+        if (sizeValues.length > 0) {
+          [itemsPerPageS, itemsPerPageM, itemsPerPageL].forEach((e) => e.remove());
+          j(el)
+            .find(j.JSXOpeningElement)
+            .get()
+            .value.attributes.push(
+              j.jsxAttribute(j.jsxIdentifier('itemsPerPage'), j.stringLiteral(sizeValues.join(' ')))
+            );
+        }
+      });
+    }
+
+    if (componentName === 'Icon') {
+      jsxElements.forEach((el) => {
+        const interactive = j(el).find(j.JSXAttribute, { name: { name: 'interactive' } });
+        if (interactive.size() > 0) {
+          if (interactive.get().value.value === null || interactive.get().value.value.expression.value) {
+            j(el)
+              .find(j.JSXOpeningElement)
+              .get()
+              .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('mode'), j.stringLiteral('Interactive')));
+          }
+          interactive.remove();
+        }
+      });
+    }
+
     if (typeof changes.newComponent === 'string') {
       jsxElements.find(j.Identifier, { name: componentName }).replaceWith(j.jsxIdentifier(changes.newComponent));
       const importSpecifier = root.find(j.ImportSpecifier, { local: { name: componentName } });
