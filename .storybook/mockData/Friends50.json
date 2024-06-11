@@ -6,7 +6,7 @@
       "name": "Daisy Giles",
       "age": 33
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Waller Nguyen",
@@ -33,7 +33,7 @@
       "name": "Lee Johnson",
       "age": 61
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "England Whitehead",
@@ -60,7 +60,7 @@
       "name": "Madge Mitchell",
       "age": 48
     },
-    "status": "Warning"
+    "status": "Critical"
   },
   {
     "name": "Malone Hampton",
@@ -69,7 +69,7 @@
       "name": "Landry Hancock",
       "age": 33
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Lorna Hinton",
@@ -87,7 +87,7 @@
       "name": "Nell Hines",
       "age": 82
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Rose Vance",
@@ -105,7 +105,7 @@
       "name": "Vasquez Craft",
       "age": 79
     },
-    "status": "Warning"
+    "status": "Critical"
   },
   {
     "name": "Trisha Ellis",
@@ -114,7 +114,7 @@
       "name": "Jacobs Ramsey",
       "age": 41
     },
-    "status": "Success"
+    "status": "Positive"
   },
   {
     "name": "Bowers Rowe",
@@ -132,7 +132,7 @@
       "name": "Manning Jenkins",
       "age": 57
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Letitia Finch",
@@ -159,7 +159,7 @@
       "name": "Benjamin Rodriguez",
       "age": 76
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Natasha Simon",
@@ -168,7 +168,7 @@
       "name": "Simon Morin",
       "age": 20
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Marquita Morrison",
@@ -177,7 +177,7 @@
       "name": "Mitzi Blake",
       "age": 80
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Lula Mason",
@@ -213,7 +213,7 @@
       "name": "Horton Smith",
       "age": 37
     },
-    "status": "Warning"
+    "status": "Critical"
   },
   {
     "name": "Moreno Moore",
@@ -231,7 +231,7 @@
       "name": "Baird Barton",
       "age": 68
     },
-    "status": "Warning"
+    "status": "Critical"
   },
   {
     "name": "Deidre Richmond",
@@ -240,7 +240,7 @@
       "name": "Newman Adkins",
       "age": 81
     },
-    "status": "Success"
+    "status": "Positive"
   },
   {
     "name": "Willis Wise",
@@ -249,7 +249,7 @@
       "name": "Haynes Dominguez",
       "age": 47
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Wilson Hunter",
@@ -267,7 +267,7 @@
       "name": "Callie Foster",
       "age": 64
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Woods Porter",
@@ -285,7 +285,7 @@
       "name": "Mcfadden David",
       "age": 51
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Yang Lloyd",
@@ -303,7 +303,7 @@
       "name": "Dejesus Owens",
       "age": 47
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Flores Jones",
@@ -312,7 +312,7 @@
       "name": "Anita Stark",
       "age": 47
     },
-    "status": "Success"
+    "status": "Positive"
   },
   {
     "name": "Jennings Pope",
@@ -339,7 +339,7 @@
       "name": "Floyd Clarke",
       "age": 51
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Barrett Cameron",
@@ -357,7 +357,7 @@
       "name": "Hardin Branch",
       "age": 47
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Cheri Obrien",
@@ -366,7 +366,7 @@
       "name": "Karyn Merrill",
       "age": 81
     },
-    "status": "Success"
+    "status": "Positive"
   },
   {
     "name": "Anne Hayden",
@@ -375,7 +375,7 @@
       "name": "Joanne Powell",
       "age": 79
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Hart Cortez",
@@ -411,7 +411,7 @@
       "name": "Langley Nielsen",
       "age": 80
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Kemp Workman",
@@ -429,7 +429,7 @@
       "name": "Savannah Hogan",
       "age": 36
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Colon Dunn",
@@ -438,7 +438,7 @@
       "name": "Lily Love",
       "age": 73
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Koch Henson",
@@ -447,6 +447,6 @@
       "name": "Ola Welch",
       "age": 24
     },
-    "status": "Success"
+    "status": "Positive"
   }
 ]
