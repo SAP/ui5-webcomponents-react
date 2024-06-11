@@ -7714,7 +7714,7 @@ __metadata:
   resolution: "@ui5/webcomponents-react-charts@workspace:packages/charts"
   dependencies:
     clsx: "npm:2.1.1"
-    react-content-loader: "npm:7.0.1"
+    react-content-loader: "npm:7.0.2"
     recharts: "npm:2.12.7"
   peerDependencies:
     "@ui5/webcomponents-react": ~1.29.0
@@ -20653,12 +20653,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-content-loader@npm:7.0.1":
-  version: 7.0.1
-  resolution: "react-content-loader@npm:7.0.1"
+"react-content-loader@npm:7.0.2":
+  version: 7.0.2
+  resolution: "react-content-loader@npm:7.0.2"
   peerDependencies:
     react: ">=16.0.0"
-  checksum: 10c0/84f63ee18439cfa0e941df1e3463fd286714c25a69d80154fa90a95887f433a954a318ae5d2e498fa8d3d13e787456a2409c216beb914cc156b77642094f7f02
+  checksum: 10c0/77e5976dedd91c793d9c4dd529ce81b89afedfc09c373547aac370e786fce0ed7220887b672ec4252a88e53ef1db1130b668b78f833276a53d0c6e1b040bcd1c
   languageName: node
   linkType: hard
 
