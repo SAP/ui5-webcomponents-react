@@ -169,6 +169,19 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       });
     }
 
+    // change wrapping type
+    if (config.wrappingTypeComponents.includes(componentName)) {
+      jsxElements.forEach((el) => {
+        const wrappingType = j(el).find(j.JSXAttribute, { name: { name: 'wrappingType' } });
+        if (wrappingType.size() === 0) {
+          j(el)
+            .find(j.JSXOpeningElement)
+            .get()
+            .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('wrappingType'), j.stringLiteral('None')));
+        }
+      });
+    }
+
     if (typeof changes.newComponent === 'string') {
       jsxElements.find(j.Identifier, { name: componentName }).replaceWith(j.jsxIdentifier(changes.newComponent));
       const importSpecifier = root.find(j.ImportSpecifier, { local: { name: componentName } });
