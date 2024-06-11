@@ -36,6 +36,8 @@ const ResponsivePopover = forwardRef<ResponsivePopoverDomRef, ResponsivePopoverP
 );
 ResponsivePopover.displayName = 'ResponsivePopover';
 
+// TODO: check docs for outdated info
+
 const meta = {
   title: 'User Feedback / MessageView',
   component: MessageView,
@@ -108,22 +110,25 @@ export const Default: Story = {};
 export const MessageViewInDialog: Story = {
   name: 'MessageView in Dialog',
   render(args) {
-    const dialogRef = useRef(null);
+    const [open, setOpen] = useState(false);
     const messageViewRef = useRef(null);
     const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
     return (
       <>
         <Button
           onClick={() => {
-            dialogRef.current.show();
+            setOpen(true);
           }}
         >
           Open Dialog
         </Button>
         <Dialog
-          ref={dialogRef}
           style={{ width: '400px' }}
           className="contentPartNoPadding headerPartNoPadding"
+          open={open}
+          onClose={() => {
+            setOpen(false);
+          }}
           header={
             <Bar
               startContent={
@@ -156,7 +161,7 @@ export const MessageViewInDialog: Story = {
               <Button
                 design={ButtonDesign.Transparent}
                 onClick={() => {
-                  dialogRef.current?.close();
+                  setOpen(false);
                 }}
               >
                 Close
@@ -184,6 +189,7 @@ export const WithMessageViewButton: Story = {
     const ref = useRef(null);
     const messageViewRef = useRef(null);
     const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
+    const [open, setOpen] = useState(false);
     const numberOfItems = {
       information: 2,
       warning: 5,
@@ -196,13 +202,18 @@ export const WithMessageViewButton: Story = {
           counter={3}
           type={ValueState.Negative}
           onClick={(e) => {
-            ref.current.showAt(e.target);
+            ref.current.opener = e.currentTarget;
+            setOpen(true);
           }}
         />
         <ResponsivePopover
           ref={ref}
+          open={open}
           headerText="Messages"
           className="contentPartNoPadding headerPartNoPadding"
+          onClose={() => {
+            setOpen(false);
+          }}
           header={
             <Bar
               startContent={
@@ -236,7 +247,7 @@ export const WithMessageViewButton: Story = {
               <Button
                 design={ButtonDesign.Transparent}
                 onClick={() => {
-                  ref.current?.close();
+                  setOpen(false);
                 }}
               >
                 Close

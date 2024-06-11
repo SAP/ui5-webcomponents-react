@@ -1,6 +1,7 @@
 'use client';
 
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
@@ -189,13 +190,16 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                   }
                 />
               )}
-              <List onItemClick={onItemSelect} noDataText={i18nBundle.getText(LIST_NO_DATA)}>
+              <List
+                onItemClick={onItemSelect}
+                noDataText={i18nBundle.getText(LIST_NO_DATA)}
+                separators={ListSeparators.Inner}
+              >
                 {groupItems
                   ? groupedMessages.map(([groupName, items]) => {
                       return (
                         <Fragment key={groupName}>
-                          {groupName && <ListItemGroup>{groupName}</ListItemGroup>}
-                          {items}
+                          {groupName && <ListItemGroup headerText={groupName}>{items}</ListItemGroup>}
                         </Fragment>
                       );
                     })
