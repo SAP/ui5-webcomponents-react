@@ -140,6 +140,22 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       });
     }
 
+    if (componentName === 'Page') {
+      jsxElements.forEach((el) => {
+        const floatingFooter = j(el).find(j.JSXAttribute, { name: { name: 'floatingFooter' } });
+        if (
+          floatingFooter.size() === 0 ||
+          !(floatingFooter.get().value.value === null || floatingFooter.get().value.value.expression.value)
+        ) {
+          j(el)
+            .find(j.JSXOpeningElement)
+            .get()
+            .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('fixedFooter'), null));
+        }
+        floatingFooter.remove();
+      });
+    }
+
     if (typeof changes.newComponent === 'string') {
       jsxElements.find(j.Identifier, { name: componentName }).replaceWith(j.jsxIdentifier(changes.newComponent));
       const importSpecifier = root.find(j.ImportSpecifier, { local: { name: componentName } });
