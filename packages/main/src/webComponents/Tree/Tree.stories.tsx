@@ -34,7 +34,7 @@ export const Default: Story = {
     return (
       <Tree {...args}>
         <TreeItem expanded text="Tree 1" icon={pasteIcon} selected>
-          <TreeItem expanded text="Tree 1.1" selected>
+          <TreeItem expanded text="Tree 1.1">
             <TreeItem text="Tree 1.1.1" />
             <TreeItem text="Tree 1.1.2" />
           </TreeItem>

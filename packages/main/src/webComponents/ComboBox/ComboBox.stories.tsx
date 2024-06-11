@@ -23,6 +23,7 @@ const meta = {
   tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof ComboBox>;
 
+// TODO: check why ComboBoxItemGroup is now showing up in subcomponents table in docs
 export default meta;
 type Story = StoryObj<typeof meta>;
 
