@@ -378,6 +378,11 @@
     "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
   },
   "enumProperties": {
+    "BusyIndicatorSize": {
+      "Small": "S",
+      "Medium": "M",
+      "Large": "L"
+    },
     "ValueState": {
       "Success": "Positive",
       "Warning": "Critical",
