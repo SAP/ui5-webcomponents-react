@@ -76,11 +76,13 @@ export const ListItemGroupStory: Story = {
   render: (args) => {
     return (
       <List {...args}>
-        <ListItemGroup>ListItemGroup 1</ListItemGroup>
-        <StandardListItem>List Item</StandardListItem>
-        <StandardListItem>List Item</StandardListItem>
-        <ListItemGroup>ListItemGroup 2</ListItemGroup>
-        <StandardListItem>List Item</StandardListItem>
+        <ListItemGroup headerText="ListItemGroup 1">
+          <StandardListItem>List Item</StandardListItem>
+          <StandardListItem>List Item</StandardListItem>
+        </ListItemGroup>
+        <ListItemGroup headerText="ListItemGroup 2">
+          <StandardListItem>List Item</StandardListItem>
+        </ListItemGroup>
       </List>
     );
   }
