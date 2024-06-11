@@ -25,7 +25,11 @@
         "separatorStyle": "separators"
       }
     },
-    "BusyIndicator": {},
+    "BusyIndicator": {
+      "renamedEnums": {
+        "size": "BusyIndicatorSize"
+      }
+    },
     "Button": {
       "comment": "new slot endIcon",
       "removedProps": ["iconEnd"]
@@ -53,7 +57,11 @@
         "pageIndicatorStyle": "pageIndicatorType"
       }
     },
-    "CheckBox": {},
+    "CheckBox": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
     "ColorPalette": {},
     "ColorPaletteItem": {},
     "ColorPalettePopover": {},
@@ -62,21 +70,49 @@
         "color": "value"
       }
     },
+    "ComboBox": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
     "ComboBoxGroupItem": {
       "newComponent": "ComboBoxItemGroup"
     },
-    "CustomListItem": {},
-    "DatePicker": {},
-    "DateRangePicker": {},
-    "DateTimePicker": {},
+    "CustomListItem": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes"
+      }
+    },
+    "DatePicker": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "DateRangePicker": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "DateTimePicker": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
     "Dialog": {
       "changedProps": {
         "onAfterClose": "onClose",
         "onAfterOpen": "onOpen"
+      },
+      "renamedEnums": {
+        "state": "ValueState"
       }
     },
     "DynamicSideContent": {},
-    "FileUploader": {},
+    "FileUploader": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
     "FilterItem": {},
     "FilterItemOption": {},
     "GroupHeaderListItem": {
@@ -99,7 +135,10 @@
       "changedProps": {
         "onSuggestionItemPreview": "onSelectionChange"
       },
-      "removedProps": ["onSuggestionItemSelect"]
+      "removedProps": ["onSuggestionItemSelect"],
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
     },
     "Label": {},
     "Link": {
@@ -111,6 +150,9 @@
       "changedProps": {
         "mode": "selectionMode",
         "busy": "loading"
+      },
+      "renamedEnums": {
+        "mode": "ListMode"
       }
     },
     "ListItemGroup": {},
@@ -130,10 +172,27 @@
         "busyDelay": "loadingDelay"
       }
     },
-    "MessageStrip": {},
+    "MessageItem": {
+      "renamedEnums": {
+        "type": "ValueState"
+      }
+    },
+    "MessageViewButton": {
+      "renamedEnums": {
+        "type": "ValueState"
+      }
+    },
+    "MessageStrip": {
+      "renamedEnums": {
+        "design": "MessageStripDesign"
+      }
+    },
     "MultiComboBox": {
       "changedProps": {
         "allowCustomValues": "noValidation"
+      },
+      "renamedEnums": {
+        "valueState": "ValueState"
       }
     },
     "MultiComboBoxGroupItem": {},
@@ -142,7 +201,10 @@
       "changedProps": {
         "onSuggestionItemPreview": "onSelectionChange"
       },
-      "removedProps": ["onSuggestionItemSelect"]
+      "removedProps": ["onSuggestionItemSelect"],
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
     },
     "NotificationAction": {},
     "NotificationListGroupItem": {
@@ -158,6 +220,11 @@
         "busyDelay": "loadingDelay",
         "actions": "menu",
         "priority": "importance"
+      }
+    },
+    "ObjectStatus": {
+      "renamedEnums": {
+        "state": "ValueState"
       }
     },
     "Option": {
@@ -181,14 +248,25 @@
         "onAfterClose": "onClose",
         "onAfterOpen": "onOpen"
       },
-      "removedProps": ["hideBackdrop"]
+      "removedProps": ["hideBackdrop"],
+      "renamedEnums": {
+        "placementType": "PopoverPlacementType",
+        "horizontalAlign": "PopoverHorizontalAlign"
+      }
     },
     "ProductSwitch": {},
     "ProductSwitchItem": {},
     "ProgressIndicator": {
-      "removedProps": ["disabled"]
+      "removedProps": ["disabled"],
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
     },
-    "RadioButton": {},
+    "RadioButton": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
     "RangeSlider": {},
     "RatingIndicator": {},
     "ResponsivePopover": {
@@ -197,11 +275,18 @@
         "onAfterClose": "onClose",
         "onAfterOpen": "onOpen"
       },
-      "removedProps": ["hideBackdrop"]
+      "removedProps": ["hideBackdrop"],
+      "renamedEnums": {
+        "placementType": "PopoverPlacementType",
+        "horizontalAlign": "PopoverHorizontalAlign"
+      }
     },
     "SegmentedButton": {
       "changedProps": {
         "mode": "selectionMode"
+      },
+      "renamedEnums": {
+        "mode": "SegmentedButtonMode"
       }
     },
     "SegmentedButtonItem": {
@@ -210,7 +295,10 @@
       }
     },
     "Select": {
-      "removedProps": ["menu"]
+      "removedProps": ["menu"],
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
     },
     "SelectDialog": {
       "changedProps": {
@@ -247,10 +335,23 @@
     "SplitButton": {
       "removedProps": ["activeIcon"]
     },
-    "StandardListItem": {},
-    "StepInput": {},
+    "StandardListItem": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes",
+        "additionalTextState": "ValueState"
+      }
+    },
+    "StepInput": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
     "SuggestionGroupItem": {},
-    "SuggestionItem": {},
+    "SuggestionItem": {
+      "renamedEnums": {
+        "additionalTextState": "ValueState"
+      }
+    },
     "Switch": {},
     "Tab": {
       "changedProps": {
@@ -267,9 +368,16 @@
     "TextArea": {
       "changedProps": {
         "growingMaxLines": "growingMaxRows"
+      },
+      "renamedEnums": {
+        "valueState": "ValueState"
       }
     },
-    "TimePicker": {},
+    "TimePicker": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
     "Timeline": {},
     "TimelineItem": {},
     "Title": {},
@@ -288,20 +396,41 @@
     "ToolbarButton": {
       "removedProps": ["iconEnd"]
     },
-    "ToolbarSelect": {},
+    "ToolbarSelect": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
     "ToolbarSelectOption": {},
     "ToolbarSeparator": {},
     "ToolbarSpacer": {},
     "Tree": {
       "changedProps": {
         "mode": "selectionMode"
+      },
+      "renamedEnums": {
+        "mode": "ListMode"
       }
     },
-    "TreeItem": {},
-    "TreeItemCustom": {},
+    "TreeItem": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes",
+        "additionalTextState": "ValueState"
+      }
+    },
+    "TreeItemCustom": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes",
+        "additionalTextState": "ValueState"
+      }
+    },
     "UploadCollection": {
       "changedProps": {
         "mode": "selectionMode"
+      },
+      "renamedEnums": {
+        "highlight": "HighlightTypes",
+        "mode": "ListMode"
       }
     },
     "UploadCollectionItem": {},
