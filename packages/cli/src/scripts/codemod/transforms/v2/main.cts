@@ -4,10 +4,9 @@ const config = require('./codemodConfig.json');
 
 interface ComponentTransformConfig {
   newComponent?: string;
-  changedProps?: {
-    [key: string]: string;
-  };
+  changedProps?: Record<string, string>;
   removedProps?: string[];
+  renamedEnums?: Record<string, string>;
 }
 
 function componentIsImportedFromWebComponentsReact(j: JSCodeshift, root: Collection, componentName: string): boolean {
@@ -172,6 +171,23 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
         isDirty = true;
       });
     }
+
+    // before renaming any values, replace hard coded enum values
+    Object.entries(changes.renamedEnums ?? {}).forEach(([propName, enumRef]) => {
+      jsxElements.forEach((el) => {
+        const prop = j(el).find(j.JSXAttribute, { name: { name: propName } });
+        if (prop.size() > 0) {
+          const enumMapping = config.enumProperties[enumRef];
+          Object.entries<string>(enumMapping).forEach(([oldEnumValue, newEnumValue]) => {
+            const literalToReplace = prop.find(j.StringLiteral, { value: oldEnumValue });
+            if (literalToReplace.size() > 0) {
+              literalToReplace.replaceWith(j.stringLiteral(newEnumValue));
+              isDirty = true;
+            }
+          });
+        }
+      });
+    });
 
     // change wrapping type
     if (config.wrappingTypeComponents.includes(componentName)) {
