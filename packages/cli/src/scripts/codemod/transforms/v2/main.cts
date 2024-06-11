@@ -37,7 +37,10 @@ function addWebComponentsReactImport(j: JSCodeshift, root: Collection, importNam
   );
 
   if (n) {
-    imports.at(n - 1).get().insertAfter(importStatement);
+    imports
+      .at(n - 1)
+      .get()
+      .insertAfter(importStatement);
   } else {
     root.get().node.program.body.unshift(importStatement);
   }
@@ -97,7 +100,6 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
   Object.entries<string>(config.enums).forEach(([enumName, newImport]) => {
     const currentImportSpecifier = root.find(j.ImportSpecifier, { local: { name: enumName } });
     if (currentImportSpecifier.paths().length) {
-      console.log('-> currentImportSpecifier', currentImportSpecifier);
       const importedFrom = currentImportSpecifier.get().parentPath.parentPath.value.source.value;
 
       if (importedFrom === '@ui5/webcomponents-react') {
@@ -119,6 +121,22 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
         isDirty = true;
       }
     }
+  });
+
+  Object.entries<Record<string, string>>(config.enumProperties).forEach(([changedEnum, changedValues]) => {
+    Object.entries(changedValues ?? {}).forEach(([oldValue, newValue]) => {
+      const enumValueToReplace = root
+        .find(j.MemberExpression, {
+          object: { name: changedEnum },
+          property: { name: oldValue }
+        })
+        .find(j.Identifier, { name: oldValue });
+
+      if (enumValueToReplace.length) {
+        enumValueToReplace.replaceWith(j.identifier(newValue));
+        isDirty = true;
+      }
+    });
   });
 
   return isDirty ? root.toSource() : undefined;
