@@ -76,6 +76,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
             icon.find(j.JSXIdentifier, { name: 'icon' }).replaceWith(j.jsxIdentifier('endIcon'));
           }
           iconEnd.remove();
+          isDirty = true;
         }
       });
     }
@@ -134,6 +135,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
             .value.attributes.push(
               j.jsxAttribute(j.jsxIdentifier('itemsPerPage'), j.stringLiteral(sizeValues.join(' ')))
             );
+          isDirty = true;
         }
       });
     }
@@ -149,6 +151,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
               .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('mode'), j.stringLiteral('Interactive')));
           }
           interactive.remove();
+          isDirty = true;
         }
       });
     }
@@ -166,6 +169,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
             .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('fixedFooter'), null));
         }
         floatingFooter.remove();
+        isDirty = true;
       });
     }
 
@@ -178,6 +182,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
             .find(j.JSXOpeningElement)
             .get()
             .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('wrappingType'), j.stringLiteral('None')));
+          isDirty = true;
         }
       });
     }
