@@ -67,6 +67,19 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
     }
 
     // Special Handling for logic inversions, etc.
+    if (componentName === 'Button') {
+      jsxElements.forEach((el) => {
+        const icon = j(el).find(j.JSXAttribute, { name: { name: 'icon' } });
+        const iconEnd = j(el).find(j.JSXAttribute, { name: { name: 'iconEnd' } });
+        if (icon.size() > 0 && iconEnd.size() > 0) {
+          if (iconEnd.get().value.value === null || iconEnd.get().value.value.expression.value) {
+            icon.find(j.JSXIdentifier, { name: 'icon' }).replaceWith(j.jsxIdentifier('endIcon'));
+          }
+          iconEnd.remove();
+        }
+      });
+    }
+
     if (componentName === 'Carousel') {
       jsxElements.forEach((el) => {
         const itemsPerPageS = j(el).find(j.JSXAttribute, { name: { name: 'itemsPerPageS' } });
