@@ -77,7 +77,7 @@ export const WithNestedTabs: Story = {
         <Tab
           text="Tab One"
           selected
-          subTabs={
+          items={
             <>
               <Tab text="Tab 1.1" />
               <Tab text="Tab 1.2" />
@@ -91,7 +91,7 @@ export const WithNestedTabs: Story = {
         <Tab text="Tab Two" />
         <Tab
           text="Tab Three"
-          subTabs={
+          items={
             <>
               <Tab text="Tab 3.1" />
               <Tab text="Tab 3.2" />

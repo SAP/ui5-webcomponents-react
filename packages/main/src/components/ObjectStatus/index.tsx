@@ -66,7 +66,7 @@ export interface ObjectStatusPropTypes extends CommonProps {
   children?: ReactNode;
 
   /**
-   * Defines the value state of the <code>ObjectStatus</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>
+   * Defines the value state of the `ObjectStatus`.
    *
    * Since version 0.17.0 the state property also accepts values from enum `IndicationColor`.
    *

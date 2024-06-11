@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import TagDesign from '@ui5/webcomponents/dist/types/TagDesign.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import { FlexBox } from '../../components/FlexBox';
+import { Text } from '../../components/Text/index.js';
 import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
 import { Icon } from '../Icon/index.js';
 import { Tag } from './index.js';
@@ -25,37 +27,35 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const AllColors: Story = {
-  render(args) {
+  render() {
     return (
-      <FlexBox wrap={FlexBoxWrap.Wrap}>
-        <Tag colorScheme="1" style={{ marginRight: '10px', marginBottom: '10px' }}>
-          colorScheme = "1"
-        </Tag>
-        <Tag colorScheme="2" style={{ marginRight: '10px', marginBottom: '10px' }}>
-          colorScheme = "2"
-        </Tag>
-        <Tag colorScheme="3" style={{ marginRight: '10px', marginBottom: '10px' }}>
-          colorScheme = "3"
-        </Tag>
-        <Tag colorScheme="4" style={{ marginRight: '10px', marginBottom: '10px' }}>
-          colorScheme = "4"
-        </Tag>
-        <Tag colorScheme="5" style={{ marginRight: '10px', marginBottom: '10px' }}>
-          colorScheme = "5"
-        </Tag>
-        <Tag colorScheme="6" style={{ marginRight: '10px', marginBottom: '10px' }}>
-          colorScheme = "6"
-        </Tag>
-        <Tag colorScheme="7" style={{ marginRight: '10px', marginBottom: '10px' }}>
-          colorScheme = "7"
-        </Tag>
-        <Tag colorScheme="8" style={{ marginRight: '10px', marginBottom: '10px' }}>
-          colorScheme = "8"
-        </Tag>
-        <Tag colorScheme="9" style={{ marginRight: '10px', marginBottom: '10px' }}>
-          colorScheme = "9"
-        </Tag>
-        <Tag colorScheme="10">colorScheme = "10"</Tag>
+      <FlexBox wrap={FlexBoxWrap.Wrap} style={{ gap: '0.5rem' }}>
+        <Text style={{ flexGrow: 1, width: '100%' }}>Value States:</Text>
+        {Object.values(TagDesign)
+          .filter((item) => !item.startsWith('Set'))
+          .map((vs) => (
+            <Tag key={vs} design={vs}>
+              {vs}
+            </Tag>
+          ))}
+        <Text style={{ flexGrow: 1, width: '100%' }}>Set1:</Text>
+        {new Array(10).fill('').map((_, index) => (
+          <Tag key={index} design="Set1" colorScheme={`${index + 1}`}>
+            colorScheme: "{index + 1}"
+          </Tag>
+        ))}
+        <Text style={{ flexGrow: 1, width: '100%' }}>Set2:</Text>
+        {new Array(10).fill('').map((_, index) => (
+          <Tag key={index} design="Set2" colorScheme={`${index + 1}`}>
+            colorScheme: "{index + 1}"
+          </Tag>
+        ))}
+        <Text style={{ flexGrow: 1, width: '100%' }}>Set2:</Text>
+        {new Array(10).fill('').map((_, index) => (
+          <Tag key={index} design="Set3" colorScheme={`${index + 1}`}>
+            colorScheme: "{index + 1}"
+          </Tag>
+        ))}
       </FlexBox>
     );
   }

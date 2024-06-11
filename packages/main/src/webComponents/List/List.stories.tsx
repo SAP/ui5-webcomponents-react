@@ -28,6 +28,8 @@ const meta = {
   tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof List>;
 
+// TODO: check why subcomponents aren't showing up in table in docs
+
 export default meta;
 type Story = StoryObj<typeof meta>;
 

@@ -19,8 +19,6 @@ const meta = {
     header: { control: { disable: true } }
   },
   args: {
-    accessibleRole: PanelAccessibleRole.Form,
-    headerLevel: TitleLevel.H2,
     headerText: 'Panel'
   },
   tags: ['package:@ui5/webcomponents']

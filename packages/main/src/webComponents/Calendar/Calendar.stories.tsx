@@ -16,7 +16,8 @@ const meta = {
   title: 'Inputs / Calendar',
   component: Calendar,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
+    specialDates: { control: { disable: true } }
   },
   args: {
     primaryCalendarType: CalendarType.Gregorian,
