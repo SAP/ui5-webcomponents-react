@@ -227,17 +227,15 @@ function showToast<ContainerElement>(
       Component: Toast,
       props: {
         ...props,
-        open: true
-      },
-      ref: (el: ToastDomRef & { open: boolean }) => {
-        ref.current = el;
-        if (el && !el.open) {
-          setTimeout(() => {
-            setModal({
-              type: 'reset',
-              payload: { id }
-            });
-          }, props.duration ?? 3000);
+        open: true,
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
+          }
+          setModal({
+            type: 'reset',
+            payload: { id }
+          });
         }
       },
       container,
