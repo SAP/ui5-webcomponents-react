@@ -14,6 +14,7 @@ describe('MessageView', () => {
     };
 
     [undefined, true].forEach((grouped) => {
+      cy.log(`grouped = ${!!grouped}`);
       cy.mount(
         <MessageView groupItems={grouped}>
           <MessageItem titleText="Error" type={ValueState.Negative} groupName="Group1">
@@ -47,17 +48,21 @@ describe('MessageView', () => {
       .next()
       .should('have.text', 'Information')
       .next()
-      .should('have.text', 'Group1')
-      .next()
+      .should('have.attr', 'header-text', 'Group1')
+      .children()
+      .first()
       .should('have.text', 'Error')
       .next()
       .should('have.text', 'Warning')
+      .parent()
       .next()
-      .should('have.text', 'Group2')
-      .next()
+      .should('have.attr', 'header-text', 'Group2')
+      .children()
+      .first()
       .should('have.text', 'None');
 
     ['error', 'alert', 'sys-enter-2', 'information'].forEach((btn, index, arr) => {
+      cy.log('SegmentedButton click');
       cy.get(`[icon="${btn}"]`).click();
       cy.get(`[ui5-icon][name="${btn}"]`)
         .should('have.length', btn === 'information' ? 3 : 2)

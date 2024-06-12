@@ -197,6 +197,9 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
               >
                 {groupItems
                   ? groupedMessages.map(([groupName, items]) => {
+                      if (!groupName) {
+                        return items;
+                      }
                       return (
                         <Fragment key={groupName}>
                           {groupName && <ListItemGroup headerText={groupName}>{items}</ListItemGroup>}
