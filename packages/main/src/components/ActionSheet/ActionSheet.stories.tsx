@@ -41,6 +41,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+//TODO: check docs for outdated info
 export const Default: Story = {
   render(args) {
     const [actionSheetOpen, setActionSheetOpen] = useState<boolean | undefined>(args.open);

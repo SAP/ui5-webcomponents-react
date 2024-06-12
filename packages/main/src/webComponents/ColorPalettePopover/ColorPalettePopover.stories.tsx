@@ -1,6 +1,6 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from '../Button';
 import { ColorPaletteItem } from '../ColorPaletteItem';
@@ -34,20 +34,30 @@ export const Default: Story = {
   render(args) {
     const popoverRef = useRef(null);
     const btnRef = useRef(null);
+    const [open, setOpen] = useState(args.open);
     useEffect(() => {
       if (isChromatic) {
         popoverRef.current.showAt(btnRef.current);
       }
     }, []);
     const onButtonClick = (e) => {
-      popoverRef.current.showAt(e.target);
+      popoverRef.current.opener = e.currentTarget;
+      setOpen((prev) => !prev);
     };
     return (
       <>
         <Button onClick={onButtonClick} ref={btnRef}>
           Open ColorPalettePopover
         </Button>
-        <ColorPalettePopover {...args} ref={popoverRef}>
+        <ColorPalettePopover
+          {...args}
+          ref={popoverRef}
+          open={open}
+          onClose={(e) => {
+            args.onClose(e);
+            setOpen(false);
+          }}
+        >
           <ColorPaletteItem value="black" />
           <ColorPaletteItem value="darkblue" />
           <ColorPaletteItem value="#444444" />

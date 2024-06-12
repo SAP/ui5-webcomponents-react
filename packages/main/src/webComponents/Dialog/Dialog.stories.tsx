@@ -31,6 +31,7 @@ const meta = {
   tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof OriginalDialog>;
 
+//TODO: check all "modals" for outdated info
 export default meta;
 type Story = StoryObj<typeof meta>;
 
