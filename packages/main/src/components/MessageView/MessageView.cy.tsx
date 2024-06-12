@@ -62,7 +62,7 @@ describe('MessageView', () => {
       .should('have.text', 'None');
 
     ['error', 'alert', 'sys-enter-2', 'information'].forEach((btn, index, arr) => {
-      cy.log('SegmentedButton click');
+      cy.log(`SegmentedButton click - ${btn}`);
       cy.get(`[icon="${btn}"]`).click();
       cy.get(`[ui5-icon][name="${btn}"]`)
         .should('have.length', btn === 'information' ? 3 : 2)
