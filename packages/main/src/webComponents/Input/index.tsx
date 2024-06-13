@@ -1,11 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Input.js';
-import type {
-  IInputSuggestionItem,
-  InputSuggestionItemPreviewEventDetail,
-  InputSuggestionItemSelectEventDetail
-} from '@ui5/webcomponents/dist/Input.js';
+import type { InputSelectionChangeEventDetail } from '@ui5/webcomponents/dist/Input.js';
 import type InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ReactNode } from 'react';
@@ -40,14 +36,9 @@ interface InputAttributes {
   maxlength?: number | undefined;
 
   /**
-   * Determines the name with which the component will be submitted in an HTML form.
+   * Determines the name by which the component will be identified upon submission in an HTML form.
    *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
-   *
-   * **Note:** When set, a native `input` HTML element
-   * will be created inside the component so that it can be submitted as
-   * part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** This property is only applicable within the context of an HTML Form element.
    */
   name?: string;
 
@@ -58,6 +49,16 @@ interface InputAttributes {
    * @default false
    */
   noTypeahead?: boolean;
+
+  /**
+   * Defines whether the suggestions picker is open.
+   * The picker will not open if the `showSuggestions` property is set to `false`, the input is disabled or the input is readonly.
+   * The picker will close automatically and `close` event will be fired if the input is not in the viewport.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  open?: boolean;
 
   /**
    * Defines a short hint intended to aid the user with data entry when the
@@ -124,20 +125,7 @@ interface InputAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface InputDomRef extends Required<InputAttributes>, Ui5DomRef {
-  /**
-   * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
-   *
-   * **Note:** Available since [v1.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.3.0) of **@ui5/webcomponents**.
-   * @returns {void}
-   */
-  openPicker: () => void;
-
-  /**
-   * The suggestion item on preview.
-   */
-  readonly previewItem: IInputSuggestionItem | null;
-}
+interface InputDomRef extends Required<InputAttributes>, Ui5DomRef {}
 
 interface InputPropTypes
   extends InputAttributes,
@@ -148,9 +136,10 @@ interface InputPropTypes
       | 'icon'
       | 'valueStateMessage'
       | 'onChange'
+      | 'onClose'
       | 'onInput'
-      | 'onSuggestionItemPreview'
-      | 'onSuggestionItemSelect'
+      | 'onOpen'
+      | 'onSelectionChange'
     > {
   /**
    * Defines the suggestion items.
@@ -204,23 +193,32 @@ interface InputPropTypes
   onChange?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
   /**
+   * Fired when the suggestions picker is closed.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onClose?: (event: Ui5CustomEvent<InputDomRef>) => void;
+
+  /**
    * Fired when the value of the component changes at each keystroke,
    * and when a suggestion item has been selected.
    */
   onInput?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
   /**
-   * Fired when the user navigates to a suggestion item via the ARROW keys,
-   * as a preview, before the final selection.
+   * Fired when the suggestions picker is open.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    */
-  onSuggestionItemPreview?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemPreviewEventDetail>) => void;
+  onOpen?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
   /**
-   * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
+   * Fired when the user navigates to a suggestion item via the ARROW keys,
+   * as a preview, before the final selection.
    *
-   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    */
-  onSuggestionItemSelect?: (event: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => void;
+  onSelectionChange?: (event: Ui5CustomEvent<InputDomRef, InputSelectionChangeEventDetail>) => void;
 }
 
 /**
@@ -245,8 +243,8 @@ interface InputPropTypes
  *
  * - [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.
  * - [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.
- * - [Down] - Focuses the next matching item in the suggestion list.
- * - [Up] - Focuses the previous matching item in the suggestion list.
+ * - [Down] - Focuses the next matching item in the suggestion list. Selection-change event is fired.
+ * - [Up] - Focuses the previous matching item in the suggestion list. Selection-change event is fired.
  * - [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.
  * - [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.
  * - [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.
@@ -261,9 +259,9 @@ interface InputPropTypes
 const Input = withWebComponent<InputPropTypes, InputDomRef>(
   'ui5-input',
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
-  ['disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
+  ['disabled', 'noTypeahead', 'open', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input', 'suggestion-item-preview', 'suggestion-item-select'],
+  ['change', 'close', 'input', 'open', 'selection-change'],
   () => import('@ui5/webcomponents/dist/Input.js')
 );
 

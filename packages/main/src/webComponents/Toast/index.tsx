@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/Toast.js';
 import type ToastPlacement from '@ui5/webcomponents/dist/types/ToastPlacement.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface ToastAttributes {
   /**
@@ -18,27 +18,35 @@ interface ToastAttributes {
   duration?: number;
 
   /**
+   * Indicates whether the component is open (visible).
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  open?: boolean;
+
+  /**
    * Defines the placement of the component.
    * @default "BottomCenter"
    */
   placement?: ToastPlacement | keyof typeof ToastPlacement;
 }
 
-interface ToastDomRef extends Required<ToastAttributes>, Ui5DomRef {
-  /**
-   * Shows the component.
-   * @returns {void}
-   */
-  show: () => void;
-}
+interface ToastDomRef extends Required<ToastAttributes>, Ui5DomRef {}
 
-interface ToastPropTypes extends ToastAttributes, Omit<CommonProps, keyof ToastAttributes | 'children'> {
+interface ToastPropTypes extends ToastAttributes, Omit<CommonProps, keyof ToastAttributes | 'children' | 'onClose'> {
   /**
    * Defines the text of the component.
    *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired after the component is auto closed.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onClose?: (event: Ui5CustomEvent<ToastDomRef>) => void;
 }
 
 /**
@@ -67,9 +75,9 @@ interface ToastPropTypes extends ToastAttributes, Omit<CommonProps, keyof ToastA
 const Toast = withWebComponent<ToastPropTypes, ToastDomRef>(
   'ui5-toast',
   ['duration', 'placement'],
+  ['open'],
   [],
-  [],
-  [],
+  ['close'],
   () => import('@ui5/webcomponents/dist/Toast.js')
 );
 

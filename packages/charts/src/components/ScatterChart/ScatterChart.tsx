@@ -147,7 +147,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
     ...rest
   } = props;
 
-  const chartConfig = {
+  const chartConfig: ScatterChartProps['chartConfig'] = {
     yAxisVisible: false,
     xAxisVisible: true,
     gridStroke: ThemingParameters.sapList_BorderColor,
@@ -224,6 +224,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <ScatterChartLib
         onClick={onClickInternal}
         margin={marginChart}
@@ -290,13 +291,11 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
               name={dataSet?.label}
               key={dataSet?.label}
               fill={dataSet?.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-              isAnimationActive={noAnimation === false}
+              isAnimationActive={!noAnimation}
             />
           );
         })}
         {!noLegend && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -334,11 +333,6 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
     </ChartContainer>
   );
 });
-
-ScatterChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 ScatterChart.displayName = 'ScatterChart';
 

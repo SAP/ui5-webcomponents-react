@@ -42,7 +42,7 @@ const MyComponentWithActionSheet = () => {
       <ActionSheet
         opener={'openActionSheetBtn'}
         open={actionSheetIsOpen}
-        onAfterClose={() => {
+        onClose={() => {
           setActionSheetIsOpen(false);
         }}
       />

@@ -23,7 +23,7 @@ const meta = {
       <CardHeader
         titleText="TeamSpace"
         subtitleText="Direct Reports"
-        status={'3 of 5'}
+        additionalText={'3 of 5'}
         avatar={<Icon name={personIcon} />}
       />
     )

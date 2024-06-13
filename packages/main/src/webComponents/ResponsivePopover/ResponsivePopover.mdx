@@ -42,7 +42,7 @@ const MyComponentWithPopover = () => {
       <ResponsivePopover
         opener={'openPopoverBtn'}
         open={popoverIsOpen}
-        onAfterClose={() => {
+        onClose={() => {
           setResponsivePopoverIsOpen(false);
         }}
       />

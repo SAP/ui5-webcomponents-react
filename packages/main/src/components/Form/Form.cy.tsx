@@ -1,6 +1,6 @@
+import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import { useReducer } from 'react';
 import { createPortal } from 'react-dom';
-import { InputType } from '../../enums/index.js';
 import { Input, Label } from '../../webComponents/index.js';
 import type { FormGroupPropTypes } from '../FormGroup';
 import { FormGroup } from '../FormGroup';

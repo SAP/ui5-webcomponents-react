@@ -3,7 +3,11 @@ import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { defaultMaxYAxisWidth } from '../internal/defaults.js';
 import { getTextWidth } from '../internal/Utils.js';
 
-export const useLongestYAxisLabel = (dataset: unknown[], elements, legendPosition: string): [number, object] =>
+export const useLongestYAxisLabel = (
+  dataset: unknown[],
+  elements,
+  legendPosition: 'top' | 'bottom' | 'middle'
+): [number, object] =>
   useMemo(() => {
     let labelLength = 0;
     const primaryElement = elements[0];

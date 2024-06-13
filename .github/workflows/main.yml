@@ -57,6 +57,9 @@ jobs:
     needs: ['install']
     name: 'Build'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        react: ['18', '19']
     env:
       CYPRESS_INSTALL_BINARY: 0
     steps:
@@ -67,10 +70,18 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
-      - name: Install and Build
+      - name: Install
+        run: yarn install --immutable
+
+      - name: Install 18
+        if: ${{ matrix.react == '18' }}
         run: |
-          yarn install --immutable
-          yarn build
+          yarn set resolution "@types/react@npm:*" "18"
+          yarn set resolution "@types/react-dom@npm:*" "18"
+          yarn add react@18 react-dom@18
+
+      - name: Build
+        run: yarn build
 
   lint:
     needs: ['install']

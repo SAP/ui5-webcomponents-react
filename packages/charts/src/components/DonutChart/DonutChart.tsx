@@ -10,7 +10,7 @@ import { PieChart } from '../PieChart/PieChart.js';
  * A `DonutChart` is basically a `PieChart` with a hole.
  */
 const DonutChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
-  const chartConfig = {
+  const chartConfig: PieChartProps['chartConfig'] = {
     legendPosition: 'bottom',
     paddingAngle: 0,
     innerRadius: '50%',

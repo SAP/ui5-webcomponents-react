@@ -1,6 +1,8 @@
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import { useState } from 'react';
 import type { ListPropTypes, SelectDialogPropTypes } from '../..';
-import { Button, ButtonDesign, ListMode, SelectDialog, StandardListItem } from '../..';
+import { Button, SelectDialog, StandardListItem } from '../..';
 
 const listItems = new Array(5).fill('o_O').map((_, index) => (
   <StandardListItem key={index} data-li={index} description={`description${index}`}>
@@ -45,11 +47,11 @@ describe('SelectDialog', () => {
       rememberSelections,
       mode
     }: {
-      close: SelectDialogPropTypes['onAfterClose'];
+      close: SelectDialogPropTypes['onClose'];
       change: ListPropTypes['onSelectionChange'];
       confirm: SelectDialogPropTypes['onConfirm'];
       rememberSelections?: SelectDialogPropTypes['rememberSelections'];
-      mode?: SelectDialogPropTypes['mode'];
+      mode?: SelectDialogPropTypes['selectionMode'];
     }) => {
       const [open, setOpen] = useState(true);
       const [items, setItems] = useState(undefined);
@@ -63,14 +65,14 @@ describe('SelectDialog', () => {
             Open
           </Button>
           <SelectDialog
-            mode={mode}
+            selectionMode={mode}
             rememberSelections={rememberSelections}
             open={open}
             onConfirm={(e) => {
               setItems(e.detail.selectedItems.map((item) => item.textContent));
               confirm(e);
             }}
-            onAfterClose={(e) => {
+            onClose={(e) => {
               setOpen(false);
               close(e);
             }}
@@ -120,7 +122,7 @@ describe('SelectDialog', () => {
     cy.get('@confirm').should('have.callCount', 2);
     cy.get('@change').should('have.callCount', 2);
 
-    cy.mount(<TestComp close={close} change={change} confirm={confirm} mode={ListMode.MultiSelect} />);
+    cy.mount(<TestComp close={close} change={change} confirm={confirm} mode={ListSelectionMode.Multiple} />);
     cy.clickUi5ListItemByText('Product1');
     cy.clickUi5ListItemByText('Product3');
     cy.get('[ui5-dialog]').should('be.visible');
@@ -133,7 +135,7 @@ describe('SelectDialog', () => {
     });
 
     cy.mount(
-      <TestComp close={close} change={change} confirm={confirm} mode={ListMode.MultiSelect} rememberSelections />
+      <TestComp close={close} change={change} confirm={confirm} mode={ListSelectionMode.Multiple} rememberSelections />
     );
     cy.clickUi5ListItemByText('Product1');
     cy.clickUi5ListItemByText('Product3');
@@ -216,7 +218,14 @@ describe('SelectDialog', () => {
 
   it('confirmButtonText', () => {
     const confirm = cy.spy().as('confirm');
-    cy.mount(<SelectDialog mode={ListMode.MultiSelect} confirmButtonText="Exterminate" onConfirm={confirm} open />);
+    cy.mount(
+      <SelectDialog
+        selectionMode={ListSelectionMode.Multiple}
+        confirmButtonText="Exterminate"
+        onConfirm={confirm}
+        open
+      />
+    );
     cy.get('[ui5-dialog]').should('be.visible');
     cy.findByText('Exterminate').click();
     cy.get('@confirm').should('have.been.calledOnce');
@@ -224,7 +233,7 @@ describe('SelectDialog', () => {
   });
 
   it('numberOfSelectedItems', () => {
-    cy.mount(<SelectDialog mode={ListMode.MultiSelect} numberOfSelectedItems={1337} open />);
+    cy.mount(<SelectDialog selectionMode={ListSelectionMode.Multiple} numberOfSelectedItems={1337} open />);
     cy.findByText('Selected: 1337').should('be.visible');
   });
 
@@ -235,7 +244,7 @@ describe('SelectDialog', () => {
       mode
     }: {
       cancel: SelectDialogPropTypes['onCancel'];
-      mode: SelectDialogPropTypes['mode'];
+      mode: SelectDialogPropTypes['selectionMode'];
     }) => {
       const [open, setOpen] = useState(false);
       return (
@@ -250,10 +259,10 @@ describe('SelectDialog', () => {
           <SelectDialog
             open={open}
             onCancel={cancel}
-            onAfterClose={() => {
+            onClose={() => {
               setOpen(false);
             }}
-            mode={mode}
+            selectionMode={mode}
           >
             {listItems}
           </SelectDialog>
@@ -261,7 +270,7 @@ describe('SelectDialog', () => {
       );
     };
     let callCount = 1;
-    [ListMode.SingleSelect, ListMode.MultiSelect].forEach((mode) => {
+    [ListSelectionMode.Single, ListSelectionMode.Multiple].forEach((mode) => {
       cy.mount(<TestComp cancel={cancel} mode={mode} />);
       cy.findByText('Open').click();
       cy.findByText('Cancel').click();
@@ -281,7 +290,7 @@ describe('SelectDialog', () => {
         //@ts-expect-error: design is not a valid prop - only added for testing purpose
         confirmButtonProps={{ disabled: true, design: ButtonDesign.Negative, 'data-testid': 'confirmBtn' }}
         open
-        mode={ListMode.MultiSelect}
+        selectionMode={ListSelectionMode.Multiple}
       />
     );
     cy.findByTestId('confirmBtn').should('be.visible').and('have.attr', 'disabled');

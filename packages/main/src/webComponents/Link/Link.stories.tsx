@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LinkDesign } from '../../enums/LinkDesign';
+import LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
 import { Link } from './index.js';
 
 const meta = {

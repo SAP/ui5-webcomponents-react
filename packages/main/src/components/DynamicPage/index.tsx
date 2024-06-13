@@ -1,13 +1,16 @@
 'use client';
 
+import PageBackgroundDesign from '@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js';
 import { debounce, ThemingParameters, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, useEffect, useRef, useState } from 'react';
-import { GlobalStyleClasses, PageBackgroundDesign } from '../../enums/index.js';
+import { GlobalStyleClasses } from '../../enums/index.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import type { CommonProps } from '../../types/index.js';
 import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
+import type { DynamicPageHeaderPropTypes } from '../DynamicPageHeader/index.js';
+import type { DynamicPageTitlePropTypes } from '../DynamicPageTitle/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './DynamicPage.module.css.js';
 import { DynamicPageCssVariables } from './utils.js';
@@ -116,12 +119,12 @@ enum HEADER_STATES {
  */
 const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref) => {
   const {
-    headerTitle,
-    headerContent,
+    headerTitle: headerTitleProp,
+    headerContent: headerContentProp,
     style,
-    backgroundDesign,
-    showHideHeaderButton,
-    headerContentPinnable,
+    backgroundDesign = PageBackgroundDesign.Solid,
+    showHideHeaderButton = true,
+    headerContentPinnable = true,
     alwaysShowContentHeader,
     children,
     className,
@@ -133,6 +136,10 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     preserveHeaderStateOnScroll,
     ...rest
   } = props;
+
+  const headerTitle = headerTitleProp as ReactElement<DynamicPageTitlePropTypes>;
+  const headerContent = headerContentProp as ReactElement<DynamicPageHeaderPropTypes>;
+
   const { onScroll: _1, ...propsWithoutOmitted } = rest;
 
   const anchorBarRef = useRef<HTMLDivElement>(null);
@@ -345,7 +352,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
       {...propsWithoutOmitted}
     >
       {headerTitle &&
-        cloneElement(headerTitle, {
+        cloneElement<any>(headerTitle, {
           'data-not-clickable':
             (alwaysShowContentHeader && !headerContentPinnable) ||
             !headerContent ||
@@ -356,7 +363,7 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
           'data-header-content-visible': headerContent && headerCollapsed !== true
         })}
       {headerContent &&
-        cloneElement(headerContent, {
+        cloneElement<any>(headerContent, {
           ref: componentRefHeaderContent,
           style:
             headerCollapsed === true
@@ -414,11 +421,5 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
 });
 
 DynamicPage.displayName = 'DynamicPage';
-
-DynamicPage.defaultProps = {
-  backgroundDesign: PageBackgroundDesign.Solid,
-  showHideHeaderButton: true,
-  headerContentPinnable: true
-};
 
 export { DynamicPage };

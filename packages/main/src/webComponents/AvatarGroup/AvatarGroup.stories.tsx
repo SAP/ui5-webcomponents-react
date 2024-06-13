@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AvatarGroupType } from '../../enums/AvatarGroupType';
+import AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
 import { Avatar } from '../Avatar/index.js';
 import { AvatarGroup } from './index.js';
 

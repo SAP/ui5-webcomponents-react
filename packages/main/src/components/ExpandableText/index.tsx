@@ -1,5 +1,6 @@
 'use client';
 
+import LinkAccessibleRole from '@ui5/webcomponents/dist/types/LinkAccessibleRole.js';
 import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef, useEffect, useRef, useState } from 'react';
@@ -91,7 +92,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
     void customElements.whenDefined(tagName).then(() => {
       if (linkRef.current) {
         if (showOverflowInPopover) {
-          linkRef.current.accessibilityAttributes = { hasPopup: 'Dialog' };
+          linkRef.current.accessibilityAttributes = { hasPopup: 'dialog' };
         } else {
           linkRef.current.accessibilityAttributes = { expanded: !collapsed };
         }
@@ -124,7 +125,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
                   : i18nBundle.getText(CLOSE_POPOVER)
                 : undefined
             }
-            accessibleRole="button"
+            accessibleRole={LinkAccessibleRole.Button}
             onClick={handleClick}
             ref={linkRef}
             id={`${uniqueId}-link`}
@@ -136,12 +137,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
       {showOverflowInPopover &&
         popoverOpen &&
         createPortal(
-          <ResponsivePopover
-            opener={`${uniqueId}-link`}
-            open
-            onAfterClose={closePopover}
-            className={classNames.popover}
-          >
+          <ResponsivePopover opener={`${uniqueId}-link`} open onClose={closePopover} className={classNames.popover}>
             <Text renderWhitespace={renderWhitespace} hyphenated={hyphenated} className={classNames.text}>
               {children}
             </Text>

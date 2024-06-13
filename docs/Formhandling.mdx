@@ -31,16 +31,14 @@ import {
   Option,
   Select,
   CheckBox,
-  InputType,
   Button,
-  ButtonType,
   MultiComboBox,
   MultiComboBoxItem,
   DatePicker,
   Label
 } from '@ui5/webcomponents-react';
-//For the submits property of the button to have effect, you must add the following import
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
+import ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
+import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 
 export default function RegisterForm() {
   const [email, setEmail] = useState('');
@@ -122,9 +120,6 @@ Now the `RegisterForm` would compile to this:
 
 <RegisterForm />
 
-For the submits property of the `Button` to have effect, you must add the following import to your project `import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';`.The import creates an internal native `Input` component inside the web-component,
-so that it can be submitted not only via submit button press, but also by pressing the enter key in most components. Basically, the import should enable web-components to behave like native input elements in a form.
-
 Whenever a component has a custom event (e.g. onChange event from `DatePicker`), the corresponding value should be fetched via event.detail (not event.target). This will give you the correct updated value since the internal input has already been updated. At the time the event is fired, however, it is not yet updated and therefore event.target might also not be updated yet.
 
 By default, the browser will reload the page when a form submission event is triggered. Generally, you want to avoid this in React applications because it would cause you to lose the state.
@@ -148,8 +143,6 @@ Here you can find a codeSandbox example that shows the use of various input comp
 <summary>Show Code</summary>
 
 ```jsx
-// To enable form support of ui5-webcomponents, you have to import this feature
-import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js';
 import {
   ThemeProvider,
   Form,
@@ -161,15 +154,15 @@ import {
   Button,
   MultiComboBox,
   DatePicker,
-  ButtonType,
   CheckBox,
-  ValueState,
-  InputType,
   Popover,
   Option,
   MultiComboBoxItem,
   ObjectStatus
 } from '@ui5/webcomponents-react';
+import ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
+import InputType from '@ui5/webcomponents/dist/types/InputType.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { useForm, useController } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -272,11 +265,11 @@ const WrappedCheckBox = (props) => {
         onChange={handleChange}
         id={uniqueId}
         onFocus={handleFocus}
-        valueState={errorMessage ? ValueState.Error : ValueState.None}
+        valueState={errorMessage ? ValueState.Negative : ValueState.None}
       />
       {createPortal(
-        <Popover open={open} opener={uniqueId} onAfterClose={handleClose} initialFocus={uniqueId}>
-          <ObjectStatus state={ValueState.Error}>{errorMessage}</ObjectStatus>
+        <Popover open={open} opener={uniqueId} onClose={handleClose} initialFocus={uniqueId}>
+          <ObjectStatus state={ValueState.Negative}>{errorMessage}</ObjectStatus>
         </Popover>,
         document.body
       )}
@@ -315,7 +308,7 @@ function App() {
           <FormItem label={<Label required>Email</Label>}>
             <Input
               {...register('email', { required: true })}
-              valueState={errors.email ? ValueState.Error : ValueState.None}
+              valueState={errors.email ? ValueState.Negative : ValueState.None}
               valueStateMessage={<span>{errors.email?.message}</span>}
               type={InputType.Email}
             />
@@ -323,7 +316,7 @@ function App() {
           <FormItem label={<Label required>Password</Label>}>
             <Input
               {...register('password', { required: true })}
-              valueState={errors.password ? ValueState.Error : ValueState.None}
+              valueState={errors.password ? ValueState.Negative : ValueState.None}
               valueStateMessage={<span>{errors.password?.message}</span>}
               type={InputType.Password}
             />
@@ -331,7 +324,7 @@ function App() {
           <FormItem label={<Label required>Confirm Password</Label>}>
             <Input
               {...register('confirmPassword', { required: true })}
-              valueState={errors.confirmPassword ? ValueState.Error : ValueState.None}
+              valueState={errors.confirmPassword ? ValueState.Negative : ValueState.None}
               valueStateMessage={<span>{errors.confirmPassword?.message}</span>}
               type={InputType.Password}
             />
@@ -356,7 +349,7 @@ function App() {
               name="toc"
               control={control}
               rules={{ required: true }}
-              valueState={errors.toc ? ValueState.Error : ValueState.None}
+              valueState={errors.toc ? ValueState.Negative : ValueState.None}
             />
           </FormItem>
         </FormGroup>

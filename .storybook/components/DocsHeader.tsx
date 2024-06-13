@@ -1,15 +1,7 @@
 import { Description, DocsContext, Subtitle, Title } from '@storybook/addon-docs';
 import copyIcon from '@ui5/webcomponents-icons/dist/copy';
-import {
-  Button,
-  ButtonDesign,
-  FlexBox,
-  FlexBoxAlignItems,
-  Label,
-  Link,
-  Text,
-  ThemeProvider
-} from '@ui5/webcomponents-react';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import { Button, FlexBox, FlexBoxAlignItems, Label, Link, Text, ThemeProvider } from '@ui5/webcomponents-react';
 import { clsx } from 'clsx';
 import { useContext } from 'react';
 import { useGetSubComponentsOfModule } from '../utils';

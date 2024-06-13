@@ -1,8 +1,10 @@
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,
@@ -129,7 +131,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     }
     setIsInvalid(false);
     inputRef.current.isInvalid = false;
-    saveViewDialogRef.current.close();
+    saveViewDialogRef.current.open = false;
   };
 
   const handleChangeDefault = (e) => {
@@ -153,7 +155,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
       className={classNames.dialog}
       ref={saveViewDialogRef}
       headerText={headingText}
-      onAfterClose={onAfterClose}
+      onClose={onAfterClose}
       onBeforeClose={handleClose}
       initialFocus={`view-${uniqueId}`}
       footer={
@@ -180,7 +182,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
           accessibleName={inputLabelText}
           ref={inputRef}
           {...saveViewInputProps}
-          valueState={saveViewInputProps?.valueState ?? (!variantNameInvalid ? 'None' : 'Error')}
+          valueState={saveViewInputProps?.valueState ?? (!variantNameInvalid ? 'None' : 'Negative')}
           valueStateMessage={saveViewInputProps?.valueStateMessage ?? <div>{variantNameInvalid}</div>}
           className={clsx(classNames.input, saveViewInputProps?.className)}
           id={`view-${uniqueId}`}

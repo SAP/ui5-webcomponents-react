@@ -1,16 +1,16 @@
 import {
   Button,
-  ButtonDesign,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxJustifyContent,
   FlexBoxWrap,
   Label,
   Link,
-  Popover,
-  PopoverPlacementType,
-  WrappingType
+  Popover
 } from '@ui5/webcomponents-react';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';
@@ -63,7 +63,7 @@ export const Footer = ({ style }) => {
         <Popover
           headerText={'Privacy Statement'}
           ref={popoverRef}
-          placementType={PopoverPlacementType.Top}
+          placementType={PopoverPlacement.Top}
           data-ui5-compact-size
           style={{ width: '360px', maxWidth: '100%' }}
         >

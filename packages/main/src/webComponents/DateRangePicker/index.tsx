@@ -64,16 +64,19 @@ interface DateRangePickerAttributes {
   minDate?: string;
 
   /**
-   * Determines the name with which the component will be submitted in an HTML form.
+   * Determines the name by which the component will be identified upon submission in an HTML form.
    *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
-   *
-   * **Note:** When set, a native `input` HTML element
-   * will be created inside the component so that it can be submitted as
-   * part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** This property is only applicable within the context of an HTML Form element.
    */
   name?: string;
+
+  /**
+   * Defines the open or closed state of the popover.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  open?: boolean;
 
   /**
    * Defines a short hint, intended to aid the user with data entry when the
@@ -125,12 +128,6 @@ interface DateRangePickerAttributes {
 
 interface DateRangePickerDomRef extends Required<DateRangePickerAttributes>, Ui5DomRef {
   /**
-   * Closes the picker.
-   * @returns {void}
-   */
-  closePicker: () => void;
-
-  /**
    * **Note:** The getter method is inherited and not supported. If called it will return an empty value.
    */
   readonly dateValue: Date | null;
@@ -161,23 +158,11 @@ interface DateRangePickerDomRef extends Required<DateRangePickerAttributes>, Ui5
   isInValidRange: (value: string) => boolean;
 
   /**
-   * Checks if the picker is open.
-   * @returns {boolean} - true if the picker is open, false otherwise
-   */
-  isOpen: () => boolean;
-
-  /**
    * Checks if a value is valid against the current date format of the DatePicker.
    * @param {string} value - A value to be tested against the current date format
    * @returns {boolean}
    */
   isValid: (value: string) => boolean;
-
-  /**
-   * Opens the picker.
-   * @returns {Promise<void>} - Resolves when the picker is open
-   */
-  openPicker: () => Promise<void>;
 
   /**
    * Returns the start date of the currently selected range as JavaScript Date instance.
@@ -271,7 +256,7 @@ const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePick
     'value',
     'valueState'
   ],
-  ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
+  ['disabled', 'hideWeekNumbers', 'open', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'input', 'value-state-change'],
   () => import('@ui5/webcomponents/dist/DateRangePicker.js')

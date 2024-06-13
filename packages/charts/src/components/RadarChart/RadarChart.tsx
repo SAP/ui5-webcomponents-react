@@ -2,6 +2,7 @@
 
 import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-react-base';
 import { forwardRef, useCallback, useRef } from 'react';
+import type { PolarGridProps } from 'recharts';
 import {
   Legend,
   PolarAngleAxis,
@@ -94,11 +95,14 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
     ...rest
   } = props;
 
-  const chartConfig = {
+  const chartConfig: RadarChartProps['chartConfig'] & {
+    dataLabel: boolean;
+    polarGridType: PolarGridProps['gridType'];
+  } = {
     legendPosition: 'bottom',
     legendHorizontalAlign: 'center',
     dataLabel: true,
-    polarGridType: 'circle' as const,
+    polarGridType: 'circle',
     resizeDebounce: 250,
     ...props.chartConfig
   };
@@ -169,6 +173,7 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <RadarChartLib
         onClick={onClickInternal}
         data={dataset}
@@ -195,7 +200,7 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
               fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               fillOpacity={element.opacity}
               label={<ChartDataLabel config={element} chartType="radar" position={'outside'} />}
-              isAnimationActive={noAnimation === false}
+              isAnimationActive={!noAnimation}
             />
           );
         })}
@@ -223,11 +228,6 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
     </ChartContainer>
   );
 });
-
-RadarChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 RadarChart.displayName = 'RadarChart';
 

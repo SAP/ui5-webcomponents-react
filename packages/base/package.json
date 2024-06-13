@@ -30,8 +30,8 @@
   },
   "peerDependencies": {
     "@types/react": "*",
-    "@ui5/webcomponents-base": "~1.24.0",
-    "react": "^16.14.0 || ^17.0.0 || ^18.0.0"
+    "@ui5/webcomponents-base": "2.0.0-rc.3",
+    "react": "^16.14.0 || ^17 || ^18 || ^19"
   },
   "peerDependenciesMeta": {
     "@types/react": {

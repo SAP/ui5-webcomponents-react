@@ -1,3 +1,7 @@
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import TableMode from '@ui5/webcomponents-compat/dist/types/TableMode.js';
 import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
@@ -6,14 +10,10 @@ import type { Dispatch, MutableRefObject, ReactElement, SetStateAction } from 'r
 import { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
-  BarDesign,
-  ButtonDesign,
   FlexBoxDirection,
   FlexBoxJustifyContent,
   MessageBoxActions,
   MessageBoxTypes,
-  TableMode,
-  TitleLevel,
   ToolbarStyle
 } from '../../enums/index.js';
 import {
@@ -315,7 +315,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     setMessageBoxOpen(true);
   };
   const handleViewChange: SegmentedButtonPropTypes['onSelectionChange'] = (e) => {
-    setIsListView(e.detail.selectedItem.dataset.id === 'list');
+    const selectedItem = e.detail.selectedItems.at(0);
+    setIsListView(selectedItem.dataset.id === 'list');
   };
 
   const handleMessageBoxClose = (e) => {
@@ -485,8 +486,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           ref={dialogRef}
           data-component-name="FilterBarDialog"
           data-is-phone={isPhone}
-          onAfterClose={handleClose}
-          onAfterOpen={onAfterFiltersDialogOpen}
+          onClose={handleClose}
+          onOpen={onAfterFiltersDialogOpen}
           resizable
           draggable
           className={classNames.dialogComponent}
@@ -565,13 +566,13 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
                 <SegmentedButtonItem
                   icon={listIcon}
                   data-id="list"
-                  pressed={isListView}
+                  selected={isListView}
                   accessibleName={listViewText}
                 />
                 <SegmentedButtonItem
                   icon={group2Icon}
                   data-id="group"
-                  pressed={!isListView}
+                  selected={!isListView}
                   accessibleName={groupViewText}
                 />
               </SegmentedButton>

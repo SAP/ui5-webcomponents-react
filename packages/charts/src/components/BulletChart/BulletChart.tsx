@@ -112,6 +112,8 @@ export interface BulletChartProps extends IChartBaseProps {
   /**
    * layout for showing measures. `horizontal` bars would equal the column chart, `vertical` would be a bar chart.
    * Default Value: `horizontal`
+   *
+   * @default `"horizontal"`
    */
   layout?: 'horizontal' | 'vertical';
 }
@@ -133,7 +135,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
     tooltipConfig,
     onLegendClick,
     onClick,
-    layout,
+    layout = 'horizontal',
     style,
     className,
     slot,
@@ -145,7 +147,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
-  const chartConfig = {
+  const chartConfig: BulletChartProps['chartConfig'] = {
     yAxisVisible: false,
     xAxisVisible: true,
     gridStroke: ThemingParameters.sapList_BorderColor,
@@ -277,6 +279,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <ComposedChartLib
         syncId={syncId}
         onClick={onClickInternal}
@@ -435,7 +438,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
         )}
         {sortedMeasures?.map((element, index) => {
           const chartElementProps: any = {
-            isAnimationActive: noAnimation === false
+            isAnimationActive: !noAnimation
           };
           let labelPosition = 'top';
           switch (element.type) {
@@ -513,12 +516,6 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
     </ChartContainer>
   );
 });
-
-BulletChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false,
-  layout: 'horizontal'
-};
 
 BulletChart.displayName = 'BulletChart';
 

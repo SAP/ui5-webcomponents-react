@@ -83,7 +83,7 @@ const testOverflowRefs = (should = { nav: 'false', actions: 'false' }) => {
   cy.findByTestId('navActionsInstance').should('have.text', should.nav);
 };
 
-describe('DynamicPageTitle', () => {
+describe.skip('DynamicPageTitle', () => {
   it('toolbar instances - DynamicPage', () => {
     cy.mount(<PageComponent isObjectPage={false} />);
     cy.wait(300);

@@ -121,7 +121,7 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
 
   const syncId = useIsomorphicId();
 
-  const chartConfig = {
+  const chartConfig: ColumnChartWithTrendProps['chartConfig'] = {
     yAxisVisible: false,
     xAxisVisible: true,
     gridStroke: ThemingParameters.sapList_BorderColor,
@@ -217,11 +217,6 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
     </div>
   );
 });
-
-ColumnChartWithTrend.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 ColumnChartWithTrend.displayName = 'ColumnChartWithTrend';
 
