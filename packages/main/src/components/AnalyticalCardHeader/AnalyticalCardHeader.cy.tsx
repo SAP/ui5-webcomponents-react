@@ -1,23 +1,23 @@
 import { getRGBColor } from '@ui5/webcomponents-base/dist/util/ColorConversion';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { DeviationIndicator, ValueColor } from '../../enums/index.js';
-import type { AnalyticalCardHeaderPropTypes } from '../AnalyticalCardHeader';
-import { AnalyticalCardHeader } from '../AnalyticalCardHeader';
+import { DeviationIndicator, ValueColor } from '../../enums';
+import type { CardPropTypes } from '../../webComponents/Card/index.js';
+import { Card } from '../../webComponents/Card/index.js';
 import { NumericSideIndicator } from '../NumericSideIndicator';
 import { Text } from '../Text';
-import type { AnalyticalCardPropTypes } from './index.js';
-import { AnalyticalCard } from './index.js';
+import type { AnalyticalCardHeaderPropTypes } from './index';
+import { AnalyticalCardHeader } from './index';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
-const TestComp = (props: Omit<AnalyticalCardPropTypes, 'children'>) => {
+const TestComp = (props: Omit<CardPropTypes, 'children'>) => {
   return (
-    <AnalyticalCard {...props}>
+    <Card {...props}>
       <Text>Content</Text>
-    </AnalyticalCard>
+    </Card>
   );
 };
 
-describe('AnalyticalCard', () => {
+describe('AnalyticalCardHeader', () => {
   it('Render with default AnalyticalCardHeader', () => {
     cy.mount(<TestComp header={<AnalyticalCardHeader titleText="Header Title" />} />);
     cy.findByText('Content').should('be.visible');
@@ -79,6 +79,5 @@ describe('AnalyticalCard', () => {
     cy.get('[ui5-icon]').should('have.attr', 'name', 'up');
   });
 
-  cypressPassThroughTestsFactory(AnalyticalCard);
   cypressPassThroughTestsFactory(AnalyticalCardHeader);
 });
