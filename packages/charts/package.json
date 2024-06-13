@@ -34,13 +34,13 @@
   },
   "dependencies": {
     "clsx": "2.1.1",
-    "react-content-loader": "7.0.0",
+    "react-content-loader": "7.0.2",
     "recharts": "2.12.7"
   },
   "peerDependencies": {
     "@ui5/webcomponents-react": "~1.29.0",
     "@ui5/webcomponents-react-base": "~1.29.0",
-    "react": "^16.14.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.14.0 || ^17 || ^18"
   },
   "publishConfig": {
     "access": "public"

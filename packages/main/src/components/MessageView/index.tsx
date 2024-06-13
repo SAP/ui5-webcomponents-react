@@ -1,27 +1,26 @@
 'use client';
 
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconSlimArrowLeft from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import { useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import { Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
-import {
-  ButtonDesign,
-  FlexBoxDirection,
-  GlobalStyleClasses,
-  TitleLevel,
-  ValueState,
-  WrappingType
-} from '../../enums/index.js';
+import { FlexBoxDirection, GlobalStyleClasses } from '../../enums/index.js';
 import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
-import { GroupHeaderListItem } from '../../webComponents/GroupHeaderListItem/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import type { ListPropTypes } from '../../webComponents/List/index.js';
 import { List } from '../../webComponents/List/index.js';
+import { ListItemGroup } from '../../webComponents/ListItemGroup/index.js';
+import type { SegmentedButtonPropTypes } from '../../webComponents/SegmentedButton/index.js';
 import { SegmentedButton } from '../../webComponents/SegmentedButton/index.js';
 import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem/index.js';
 import { Title } from '../../webComponents/Title/index.js';
@@ -73,9 +72,9 @@ export const resolveMessageTypes = (children: ReactElement<MessageItemPropTypes>
         return acc;
       },
       {
-        [ValueState.Error]: 0,
-        [ValueState.Warning]: 0,
-        [ValueState.Success]: 0,
+        [ValueState.Negative]: 0,
+        [ValueState.Critical]: 0,
+        [ValueState.Positive]: 0,
         [ValueState.Information]: 0
       }
     );
@@ -123,10 +122,11 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
           if (!isValidElement(message)) {
             return false;
           }
+          const castMessage = message as ReactElement<MessageItemPropTypes>;
           if (listFilter === ValueState.Information) {
-            return message?.props?.type === ValueState.Information || message?.props?.type === ValueState.None;
+            return castMessage?.props?.type === ValueState.Information || castMessage?.props?.type === ValueState.None;
           }
-          return message?.props?.type === listFilter;
+          return castMessage?.props?.type === listFilter;
         });
 
   const groupedMessages = resolveMessageGroups(filteredChildren as ReactElement<MessageItemPropTypes>[]);
@@ -141,8 +141,8 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
     }
   }, [internalRef.current, navigateBack]);
 
-  const handleListFilterChange = (e) => {
-    setListFilter(e.detail.selectedItem.dataset.key);
+  const handleListFilterChange: SegmentedButtonPropTypes['onSelectionChange'] = (e) => {
+    setListFilter(e.detail.selectedItems.at(0).dataset.key as never);
   };
 
   const outerClasses = clsx(
@@ -166,7 +166,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                 <Bar
                   startContent={
                     <SegmentedButton onSelectionChange={handleListFilterChange}>
-                      <SegmentedButtonItem data-key="All" pressed={listFilter === 'All'}>
+                      <SegmentedButtonItem data-key="All" selected={listFilter === 'All'}>
                         {i18nBundle.getText(ALL)}
                       </SegmentedButtonItem>
                       {/* @ts-expect-error: The key can't be typed, it's always `string`, but since the `ValueState` enum only contains strings it's fine to use here*/}
@@ -178,7 +178,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                           <SegmentedButtonItem
                             key={valueState}
                             data-key={valueState}
-                            pressed={listFilter === valueState}
+                            selected={listFilter === valueState}
                             icon={getIconNameForType(valueState)}
                             className={classNames.button}
                           >
@@ -190,13 +190,19 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                   }
                 />
               )}
-              <List onItemClick={onItemSelect} noDataText={i18nBundle.getText(LIST_NO_DATA)}>
+              <List
+                onItemClick={onItemSelect}
+                noDataText={i18nBundle.getText(LIST_NO_DATA)}
+                separators={ListSeparators.Inner}
+              >
                 {groupItems
                   ? groupedMessages.map(([groupName, items]) => {
+                      if (!groupName) {
+                        return items;
+                      }
                       return (
                         <Fragment key={groupName}>
-                          {groupName && <GroupHeaderListItem>{groupName}</GroupHeaderListItem>}
-                          {items}
+                          {groupName && <ListItemGroup headerText={groupName}>{items}</ListItemGroup>}
                         </Fragment>
                       );
                     })

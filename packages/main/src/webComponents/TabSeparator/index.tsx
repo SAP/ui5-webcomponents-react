@@ -1,7 +1,6 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TabSeparator.js';
-import type { ITab } from '@ui5/webcomponents/dist/TabContainer.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
@@ -11,10 +10,10 @@ interface TabSeparatorDomRef extends Required<TabSeparatorAttributes>, Ui5DomRef
   /**
    * Returns the DOM reference of the separator that is placed in the header.
    *
-   * **Note:** Tabs and separators, placed in the `subTabs` slot of other tabs are not shown in the header. Calling this method on such tabs or separators will return `null`.
-   * @returns {ITab | null}
+   * **Note:** Separators, placed in the `items` slot of other tabs are not shown in the header. Calling this method on such separators will return `undefined`.
+   * @returns {HTMLElement | undefined}
    */
-  getTabInStripDomRef: () => ITab | null;
+  getDomRefInStrip: () => HTMLElement | undefined;
 }
 
 interface TabSeparatorPropTypes extends TabSeparatorAttributes, CommonProps {}

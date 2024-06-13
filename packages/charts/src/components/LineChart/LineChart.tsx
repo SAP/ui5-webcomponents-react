@@ -130,7 +130,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     ...rest
   } = props;
 
-  const chartConfig = {
+  const chartConfig: LineChartProps['chartConfig'] = {
     yAxisVisible: false,
     xAxisVisible: true,
     gridStroke: ThemingParameters.sapList_BorderColor,
@@ -222,6 +222,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <LineChartLib
         syncId={syncId}
         margin={marginChart}
@@ -304,8 +305,8 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               strokeWidth={element.width}
-              activeDot={{ onClick: onDataPointClickInternal } as any}
-              isAnimationActive={noAnimation === false}
+              activeDot={{ onClick: onDataPointClickInternal }}
+              isAnimationActive={!noAnimation}
               {...element.lineConfig}
             />
           );
@@ -354,11 +355,6 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     </ChartContainer>
   );
 });
-
-LineChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 LineChart.displayName = 'LineChart';
 

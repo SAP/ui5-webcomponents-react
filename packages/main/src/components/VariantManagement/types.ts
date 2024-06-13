@@ -27,7 +27,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   /**
    * Determines on which side the VariantManagement popover is placed at.
    */
-  placement?: ResponsivePopoverPropTypes['placementType'];
+  placement?: ResponsivePopoverPropTypes['placement'];
   /**
    * Describes the title of the VariantManagement popover.
    *

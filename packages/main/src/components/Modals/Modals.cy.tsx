@@ -268,10 +268,8 @@ describe('Modals - hooks', () => {
     cy.mount(<TestComp />);
 
     cy.findByText('Show Menu').click();
-    cy.get('[ui5-static-area-item]');
-    cy.wait(200);
-    cy.get('[ui5-menu-li]').find('li').click({ force: true });
-    cy.get('[ui5-static-area-item]').should('not.exist');
+    cy.get('[ui5-menu-item]').click();
+    cy.get('[ui5-menu]').should('not.exist');
   });
 
   it('useShowMessageBox', () => {

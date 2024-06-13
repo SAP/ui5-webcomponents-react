@@ -1,11 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import FCLLayout from '@ui5/webcomponents-fiori/dist/types/FCLLayout.js';
 import { spacing } from '@ui5/webcomponents-react-base';
 import { useState } from 'react';
 import { FlexBox } from '../../components/FlexBox';
 import { Text } from '../../components/Text';
 import { Toolbar } from '../../components/Toolbar';
 import { ToolbarSpacer } from '../../components/ToolbarSpacer';
-import { AvatarSize, ButtonDesign, FCLLayout, FlexBoxDirection, ToolbarDesign } from '../../enums';
+import { FlexBoxDirection, ToolbarDesign } from '../../enums';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Card } from '../Card';
@@ -16,6 +19,7 @@ import { ShellBar } from '../ShellBar';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { FlexibleColumnLayout } from './index';
+import { CardHeader } from '@ui5/webcomponents-react';
 
 const meta = {
   title: 'Layouts & Floorplans / FlexibleColumnLayout',
@@ -387,10 +391,14 @@ export const WithDifferentColumns: Story = {
               />
             </Toolbar>
             <Card
-              avatar={<Avatar icon="person-placeholder" />}
-              titleText={selectedCast.name}
-              subtitleText={`age: ${Math.floor(Math.random() * (75 - 18 + 1) + 18)}`}
-              status={selectedCast.gender}
+              header={
+                <CardHeader
+                  avatar={<Avatar icon="person-placeholder" />}
+                  titleText={selectedCast.name}
+                  subtitleText={`age: ${Math.floor(Math.random() * (75 - 18 + 1) + 18)}`}
+                  additionalText={selectedCast.gender}
+                />
+              }
             >
               <div style={spacing.sapUiContentPadding}>
                 <Text>

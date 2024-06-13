@@ -116,35 +116,35 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     groupable,
     header,
     headerRowHeight,
-    highlightField,
+    highlightField = 'status',
     infiniteScroll,
-    infiniteScrollThreshold,
+    infiniteScrollThreshold = 20,
     isTreeTable,
     loading,
     markNavigatedRow,
-    minRows,
+    minRows = 5,
     noDataText,
     overscanCount,
-    overscanCountHorizontal,
+    overscanCountHorizontal = 5,
     portalContainer,
     retainColumnWidth,
     reactTableOptions,
     renderRowSubComponent,
     rowHeight,
-    scaleWidthMode,
+    scaleWidthMode = AnalyticalTableScaleWidthMode.Default,
     scaleXFactor,
     selectedRowIds,
-    selectionBehavior,
-    selectionMode,
+    selectionBehavior = AnalyticalTableSelectionBehavior.Row,
+    selectionMode = AnalyticalTableSelectionMode.None,
     showOverlay,
-    sortable,
+    sortable = true,
     style,
-    subComponentsBehavior,
-    subRowsKey,
-    tableHooks,
+    subComponentsBehavior = AnalyticalTableSubComponentsBehavior.Expandable,
+    subRowsKey = 'subRows',
+    tableHooks = [],
     tableInstance,
-    visibleRowCountMode,
-    visibleRows,
+    visibleRowCountMode = AnalyticalTableVisibleRowCountMode.Fixed,
+    visibleRows = 15,
     withNavigationHighlight,
     withRowHighlight,
     onColumnsReorder,
@@ -156,8 +156,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     onSort,
     onTableScroll,
     onAutoResize,
-    LoadingComponent,
-    NoDataComponent,
+    LoadingComponent = DefaultLoadingComponent,
+    NoDataComponent = DefaultNoDataComponent,
     additionalEmptyRowsCount = 0,
     alwaysShowSubComponent: _omit,
     ...rest
@@ -472,11 +472,15 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [visibleRowCountMode, tableState.visibleRows]);
 
   useEffect(() => {
-    setGroupBy(groupBy);
+    if (groupBy) {
+      setGroupBy(groupBy);
+    }
   }, [groupBy, setGroupBy]);
 
   useEffect(() => {
-    dispatch({ type: 'SET_SELECTED_ROW_IDS', payload: { selectedRowIds } });
+    if (selectedRowIds) {
+      dispatch({ type: 'SET_SELECTED_ROW_IDS', payload: { selectedRowIds } });
+    }
   }, [selectedRowIds]);
 
   useEffect(() => {
@@ -558,12 +562,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         groupedColumns = tableState.groupBy.filter((group) => group !== column.id);
       }
       setGroupBy(groupedColumns);
-      onGroup(
-        enrichEventWithDetails(e, {
-          column,
-          groupedColumns
-        })
-      );
+      if (typeof onGroup === 'function') {
+        onGroup(
+          enrichEventWithDetails(e, {
+            column,
+            groupedColumns
+          })
+        );
+      }
     },
     [tableState.groupBy, onGroup, setGroupBy]
   );
@@ -873,36 +879,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 });
 
 AnalyticalTable.displayName = 'AnalyticalTable';
-AnalyticalTable.defaultProps = {
-  infiniteScrollThreshold: 20,
-  loading: false,
-  sortable: true,
-  filterable: false,
-  groupable: false,
-  selectionMode: AnalyticalTableSelectionMode.None,
-  selectionBehavior: AnalyticalTableSelectionBehavior.Row,
-  scaleWidthMode: AnalyticalTableScaleWidthMode.Default,
-  subComponentsBehavior: AnalyticalTableSubComponentsBehavior.Expandable,
-  data: [],
-  columns: [],
-  minRows: 5,
-  groupBy: [],
-  NoDataComponent: DefaultNoDataComponent,
-  LoadingComponent: DefaultLoadingComponent,
-  reactTableOptions: {},
-  tableHooks: [],
-  visibleRows: 15,
-  subRowsKey: 'subRows',
-  highlightField: 'status',
-  markNavigatedRow: () => false,
-  selectedRowIds: {},
-  onGroup: () => {},
-  onRowExpandChange: () => {},
-  isTreeTable: false,
-  alternateRowColor: false,
-  overscanCountHorizontal: 5,
-  visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed
-};
 
 export { AnalyticalTable };
 export type {

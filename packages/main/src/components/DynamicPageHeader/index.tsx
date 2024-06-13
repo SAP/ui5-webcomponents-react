@@ -14,7 +14,7 @@ export interface DynamicPageHeaderPropTypes extends CommonProps {
   children?: ReactNode | ReactNode[];
 }
 
-interface InternalProps extends DynamicPageHeaderPropTypes {
+export interface InternalProps extends DynamicPageHeaderPropTypes {
   /**
    * Determines if the header is pinned.
    */

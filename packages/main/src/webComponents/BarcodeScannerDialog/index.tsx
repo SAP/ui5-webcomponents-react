@@ -18,27 +18,16 @@ interface BarcodeScannerDialogAttributes {
   open?: boolean;
 }
 
-interface BarcodeScannerDialogDomRef extends Required<BarcodeScannerDialogAttributes>, Ui5DomRef {
-  /**
-   * Closes the dialog and the scan session.
-   *
-   * @deprecated The method is deprecated in favour of <code>open</code> property.
-   * @returns {void}
-   */
-  close: () => void;
-
-  /**
-   * Shows a dialog with the camera videostream. Starts a scan session.
-   *
-   * @deprecated The method is deprecated in favour of <code>open</code> property.
-   * @returns {void}
-   */
-  show: () => void;
-}
+interface BarcodeScannerDialogDomRef extends Required<BarcodeScannerDialogAttributes>, Ui5DomRef {}
 
 interface BarcodeScannerDialogPropTypes
   extends BarcodeScannerDialogAttributes,
-    Omit<CommonProps, keyof BarcodeScannerDialogAttributes | 'onScanError' | 'onScanSuccess'> {
+    Omit<CommonProps, keyof BarcodeScannerDialogAttributes | 'onClose' | 'onScanError' | 'onScanSuccess'> {
+  /**
+   * Fired when the user closes the component.
+   */
+  onClose?: (event: Ui5CustomEvent<BarcodeScannerDialogDomRef>) => void;
+
   /**
    * Fires when the scan fails with error.
    */
@@ -70,7 +59,7 @@ const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, Bar
   [],
   ['open'],
   [],
-  ['scan-error', 'scan-success'],
+  ['close', 'scan-error', 'scan-success'],
   () => import('@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js')
 );
 

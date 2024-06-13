@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ValueState } from '../../enums/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { CheckBox } from './index.js';
 
 const meta = {
@@ -23,14 +23,14 @@ export const CheckBoxStates: Story = {
   render(args) {
     return (
       <>
-        <CheckBox text="Error" valueState={ValueState.Error} />
-        <CheckBox text="Warning" valueState={ValueState.Warning} />
+        <CheckBox text="Error" valueState={ValueState.Negative} />
+        <CheckBox text="Warning" valueState={ValueState.Critical} />
         <CheckBox text="Disabled" disabled checked />
         <CheckBox text="Readonly" readonly checked />
-        <CheckBox text="Error disabled" disabled valueState={ValueState.Error} checked />
-        <CheckBox text="Warning disabled " disabled valueState={ValueState.Warning} checked />
-        <CheckBox text="Error readonly" readonly valueState={ValueState.Error} checked />
-        <CheckBox text="Warning readonly" readonly valueState={ValueState.Warning} checked />
+        <CheckBox text="Error disabled" disabled valueState={ValueState.Negative} checked />
+        <CheckBox text="Warning disabled " disabled valueState={ValueState.Critical} checked />
+        <CheckBox text="Error readonly" readonly valueState={ValueState.Negative} checked />
+        <CheckBox text="Warning readonly" readonly valueState={ValueState.Critical} checked />
       </>
     );
   }

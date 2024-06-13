@@ -3,7 +3,7 @@
 import '@ui5/webcomponents/dist/ResponsivePopover.js';
 import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
 import type PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
-import type PopoverPlacementType from '@ui5/webcomponents/dist/types/PopoverPlacementType.js';
+import type PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import type PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
 import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import type { ReactNode } from 'react';
@@ -53,12 +53,6 @@ interface ResponsivePopoverAttributes {
   hideArrow?: boolean;
 
   /**
-   * Defines whether the block layer will be shown if modal property is set to true.
-   * @default false
-   */
-  hideBackdrop?: boolean;
-
-  /**
    * Determines the horizontal alignment of the component.
    * @default "Center"
    */
@@ -66,6 +60,9 @@ interface ResponsivePopoverAttributes {
 
   /**
    * Defines the ID of the HTML Element, which will get the initial focus.
+   *
+   * **Note:** If an element with `autofocus` attribute is added inside the component,
+   * `initialFocus` won't take effect.
    */
   initialFocus?: string;
 
@@ -86,7 +83,9 @@ interface ResponsivePopoverAttributes {
   open?: boolean;
 
   /**
-   * Defines the ID or DOM Reference of the element that the popover is shown at
+   * Defines the ID or DOM Reference of the element at which the popover is shown.
+   * When using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.
+   * You can only set the `opener` attribute to a DOM Reference when using JavaScript.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    * @default undefined
@@ -95,9 +94,9 @@ interface ResponsivePopoverAttributes {
 
   /**
    * Determines on which side the component is placed at.
-   * @default "Right"
+   * @default "End"
    */
-  placementType?: PopoverPlacementType | keyof typeof PopoverPlacementType;
+  placement?: PopoverPlacement | keyof typeof PopoverPlacement;
 
   /**
    * Defines if the focus should be returned to the previously focused element,
@@ -105,6 +104,14 @@ interface ResponsivePopoverAttributes {
    * @default false
    */
   preventFocusRestore?: boolean;
+
+  /**
+   * Indicates whether initial focus should be prevented.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  preventInitialFocus?: boolean;
 
   /**
    * Determines the vertical alignment of the component.
@@ -122,31 +129,13 @@ interface ResponsivePopoverDomRef extends Omit<Required<ResponsivePopoverAttribu
   applyFocus: () => Promise<void>;
 
   /**
-   * Closes the popover/dialog.
-   * @returns {void}
-   */
-  close: () => void;
-
-  /**
-   * Tells if the responsive popover is open.
-   * @returns {boolean}
-   */
-  isOpen: () => boolean;
-
-  /**
-   * Defines the ID or DOM Reference of the element that the popover is shown at
+   * Defines the ID or DOM Reference of the element at which the popover is shown.
+   * When using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.
+   * You can only set the `opener` attribute to a DOM Reference when using JavaScript.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    */
   opener: HTMLElement | string | undefined;
-
-  /**
-   * Shows popover on desktop and dialog on mobile.
-   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
-   * @param {boolean} [preventInitialFocus] - Prevents applying the focus inside the popup
-   * @returns {Promise<void>} - Resolves when the responsive popover is open
-   */
-  showAt: (opener: HTMLElement | EventTarget, preventInitialFocus?: boolean) => Promise<void>;
 }
 
 interface ResponsivePopoverPropTypes
@@ -157,10 +146,10 @@ interface ResponsivePopoverPropTypes
       | 'children'
       | 'footer'
       | 'header'
-      | 'onAfterClose'
-      | 'onAfterOpen'
       | 'onBeforeClose'
       | 'onBeforeOpen'
+      | 'onClose'
+      | 'onOpen'
     > {
   /**
    * Defines the content of the Popup.
@@ -189,16 +178,6 @@ interface ResponsivePopoverPropTypes
    */
   header?: UI5WCSlotsNode;
   /**
-   * Fired after the component is closed. **This event does not bubble.**
-   */
-  onAfterClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
-
-  /**
-   * Fired after the component is opened. **This event does not bubble.**
-   */
-  onAfterOpen?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
-
-  /**
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
@@ -211,6 +190,16 @@ interface ResponsivePopoverPropTypes
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onBeforeOpen?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
+
+  /**
+   * Fired after the component is closed. **This event does not bubble.**
+   */
+  onClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
+
+  /**
+   * Fired after the component is opened. **This event does not bubble.**
+   */
+  onOpen?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
 }
 
 /**
@@ -234,12 +223,12 @@ const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Responsiv
     'horizontalAlign',
     'initialFocus',
     'opener',
-    'placementType',
+    'placement',
     'verticalAlign'
   ],
-  ['allowTargetOverlap', 'hideArrow', 'hideBackdrop', 'modal', 'open', 'preventFocusRestore'],
+  ['allowTargetOverlap', 'hideArrow', 'modal', 'open', 'preventFocusRestore', 'preventInitialFocus'],
   ['footer', 'header'],
-  ['after-close', 'after-open', 'before-close', 'before-open'],
+  ['before-close', 'before-open', 'close', 'open'],
   () => import('@ui5/webcomponents/dist/ResponsivePopover.js')
 );
 

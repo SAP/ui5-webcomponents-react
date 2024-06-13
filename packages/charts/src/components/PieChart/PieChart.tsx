@@ -109,7 +109,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
 
   useStylesheet(styleData, PieChart.displayName);
 
-  const chartConfig = {
+  const chartConfig: PieChartProps['chartConfig'] = {
     margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
     legendPosition: 'bottom',
     legendHorizontalAlign: 'center',
@@ -274,6 +274,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <PieChartLib
         onClick={onClickInternal}
         margin={chartConfig.margin}
@@ -291,7 +292,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
           dataKey={measure.accessor}
           data={dataset}
           animationBegin={0}
-          isAnimationActive={noAnimation === false}
+          isAnimationActive={!noAnimation}
           labelLine={renderLabelLine}
           label={dataLabel}
           activeIndex={chartConfig.activeSegment}
@@ -332,11 +333,6 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     </ChartContainer>
   );
 });
-
-PieChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 PieChart.displayName = 'PieChart';
 

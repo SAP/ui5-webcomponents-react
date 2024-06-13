@@ -24,12 +24,6 @@ interface MultiComboBoxAttributes {
   accessibleNameRef?: string;
 
   /**
-   * Defines if the user input will be prevented, if no matching item has been found
-   * @default false
-   */
-  allowCustomValues?: boolean;
-
-  /**
    * Defines whether the component is in disabled state.
    *
    * **Note:** A disabled component is completely noninteractive.
@@ -44,12 +38,29 @@ interface MultiComboBoxAttributes {
   filter?: ComboBoxFilter | keyof typeof ComboBoxFilter;
 
   /**
+   * Determines the name by which the component will be identified upon submission in an HTML form.
+   *
+   * **Note:** This property is only applicable within the context of an HTML Form element.
+   * **Note:** When the component is used inside a form element,
+   * the value is sent as the first element in the form data, even if it's empty.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  name?: string;
+
+  /**
    * Defines whether the value will be autcompleted to match an item
    *
    * **Note:** Available since [v1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of **@ui5/webcomponents**.
    * @default false
    */
   noTypeahead?: boolean;
+
+  /**
+   * Defines if the user input will be prevented, if no matching item has been found
+   * @default false
+   */
+  noValidation?: boolean;
 
   /**
    * Defines a short hint intended to aid the user with data entry when the
@@ -210,8 +221,8 @@ interface MultiComboBoxPropTypes
  */
 const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomRef>(
   'ui5-multi-combobox',
-  ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
-  ['allowCustomValues', 'disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSelectAll'],
+  ['accessibleName', 'accessibleNameRef', 'filter', 'name', 'placeholder', 'value', 'valueState'],
+  ['disabled', 'noTypeahead', 'noValidation', 'readonly', 'required', 'showClearIcon', 'showSelectAll'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'open-change', 'selection-change'],
   () => import('@ui5/webcomponents/dist/MultiComboBox.js')

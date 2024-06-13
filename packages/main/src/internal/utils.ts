@@ -6,7 +6,7 @@ import {
 import type { ReactNode } from 'react';
 import { Children, cloneElement, Fragment } from 'react';
 
-export function flattenFragments(children: ReactNode | ReactNode[], depth = 1): ReactNode[] {
+export function flattenFragments<T = ReactNode>(children: T | T[], depth = 1): T[] {
   const flatChildren = [];
   const removeFragments = (element, level = 0, key = []) => {
     if (!element) {

@@ -1,15 +1,7 @@
 import TsLogo from '@sb/images/logo-ts.png';
-import {
-  Avatar,
-  Card,
-  CardHeader,
-  Link,
-  LinkDesign,
-  MessageStrip,
-  MessageStripDesign,
-  Text,
-  ThemeProvider
-} from '@ui5/webcomponents-react';
+import LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
+import { Avatar, Card, CardHeader, Link, MessageStrip, Text, ThemeProvider } from '@ui5/webcomponents-react';
 import { clsx } from 'clsx';
 import { ReactNode } from 'react';
 import { addCustomCSSWithScoping } from '../../packages/main/src/internal/addCustomCSSWithScoping';
@@ -79,7 +71,7 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
           {deprecationNotice && (
             <MessageStrip
               hideCloseButton
-              design={MessageStripDesign.Warning}
+              design={MessageStripDesign.Critical}
               children={deprecationNotice}
               className={classes.deprecationNotice}
             />

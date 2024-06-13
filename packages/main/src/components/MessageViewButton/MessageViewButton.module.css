@@ -25,7 +25,7 @@
     }
   }
 
-  &[data-type='Error'] {
+  &[data-type='Negative'] {
     text-shadow: var(--sapContent_ContrastTextShadow);
     color: var(--sapButton_Negative_TextColor);
     background: var(--sapButton_Negative_Background);
@@ -52,7 +52,7 @@
     }
   }
 
-  &[data-type='Warning'] {
+  &[data-type='Critical'] {
     text-shadow: var(--sapContent_ContrastTextShadow);
     color: var(--sapButton_Critical_TextColor);
     background: var(--sapButton_Critical_Background);
@@ -79,7 +79,7 @@
     }
   }
 
-  &[data-type='Success'] {
+  &[data-type='Positive'] {
     text-shadow: var(--sapContent_ContrastTextShadow);
     color: var(--sapButton_Success_TextColor);
     background: var(--sapButton_Success_Background);

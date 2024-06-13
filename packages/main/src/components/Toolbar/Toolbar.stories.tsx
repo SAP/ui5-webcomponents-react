@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import downloadIcon from '@ui5/webcomponents-icons/dist/download.js';
 import editIcon from '@ui5/webcomponents-icons/dist/edit.js';
 import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
 import { useState } from 'react';
-import { ButtonDesign, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
+import { ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { DatePicker } from '../../webComponents/DatePicker/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
@@ -130,7 +131,7 @@ export const PopoverInOverflowPopover: Story = {
         <Menu
           opener={opener}
           open={popoverIsOpen}
-          onAfterClose={() => {
+          onClose={() => {
             setPopoverIsOpen(false);
           }}
         >

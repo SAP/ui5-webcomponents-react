@@ -121,6 +121,8 @@ export interface ComposedChartProps extends IChartBaseProps {
   /**
    * layout for showing measures. `horizontal` bars would equal the column chart, `vertical` would be a bar chart.
    * Default Value: `horizontal`
+   *
+   * @default `"horizontal"`
    */
   layout?: 'horizontal' | 'vertical';
 }
@@ -147,7 +149,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
     tooltipConfig,
     onLegendClick,
     onClick,
-    layout,
+    layout = 'horizontal',
     style,
     className,
     slot,
@@ -159,7 +161,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
-  const chartConfig = {
+  const chartConfig: ComposedChartProps['chartConfig'] = {
     yAxisLabelsVisible: true,
     yAxisVisible: false,
     xAxisVisible: true,
@@ -282,6 +284,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <ComposedChartLib
         syncId={syncId}
         onClick={onClickInternal}
@@ -443,7 +446,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
           const ChartElement = ChartTypes[element.type] as any as FC<any>;
 
           const chartElementProps: any = {
-            isAnimationActive: noAnimation === false
+            isAnimationActive: !noAnimation
           };
           let labelPosition = 'top';
 
@@ -537,12 +540,6 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
     </ChartContainer>
   );
 });
-
-ComposedChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false,
-  layout: 'horizontal'
-};
 
 ComposedChart.displayName = 'ComposedChart';
 

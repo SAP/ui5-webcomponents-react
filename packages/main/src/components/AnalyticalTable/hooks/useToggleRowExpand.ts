@@ -18,13 +18,14 @@ const getToggleRowExpandedProps = (rowProps, { row, instance, userProps }) => {
         column = userProps.column;
       }
     }
-
-    onRowExpandChange(
-      enrichEventWithDetails(e, {
-        row,
-        column
-      })
-    );
+    if (typeof onRowExpandChange === 'function') {
+      onRowExpandChange(
+        enrichEventWithDetails(e, {
+          row,
+          column
+        })
+      );
+    }
     row.toggleRowExpanded();
   };
   const onKeyDown = (e) => {

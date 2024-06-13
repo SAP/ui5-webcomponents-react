@@ -1,6 +1,6 @@
 'use client';
 
-import '@ui5/webcomponents/dist/TableGroupRow.js';
+import '@ui5/webcomponents-compat/dist/TableGroupRow.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
@@ -29,7 +29,7 @@ const TableGroupRow = withWebComponent<TableGroupRowPropTypes, TableGroupRowDomR
   [],
   [],
   [],
-  () => import('@ui5/webcomponents/dist/TableGroupRow.js')
+  () => import('@ui5/webcomponents-compat/dist/TableGroupRow.js')
 );
 
 TableGroupRow.displayName = 'TableGroupRow';

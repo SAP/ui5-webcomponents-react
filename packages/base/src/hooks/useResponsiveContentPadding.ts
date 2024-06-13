@@ -36,7 +36,7 @@ export function useResponsiveContentPadding(
 export function useResponsiveContentPadding(element: HTMLElement | undefined | null, returnRangeString = false) {
   const [currentRange, setCurrentRange] = useState(() => getCurrentRange()?.name ?? 'Desktop');
   const classes = useStyles();
-  const requestAnimationFrameRef = useRef<number | undefined>();
+  const requestAnimationFrameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const observer = new ResizeObserver(([el]) => {

@@ -40,6 +40,15 @@ interface ComboBoxAttributes {
   loading?: boolean;
 
   /**
+   * Determines the name by which the component will be identified upon submission in an HTML form.
+   *
+   * **Note:** This property is only applicable within the context of an HTML Form element.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  name?: string;
+
+  /**
    * Defines whether the value will be autocompleted to match an item
    *
    * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents**.
@@ -184,7 +193,7 @@ interface ComboBoxPropTypes
  */
 const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(
   'ui5-combobox',
-  ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'filter', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'noTypeahead', 'readonly', 'required', 'showClearIcon'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'selection-change'],

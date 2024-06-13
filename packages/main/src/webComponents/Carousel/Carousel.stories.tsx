@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CarouselArrowsPlacement } from '../../enums/CarouselArrowsPlacement';
+import CarouselArrowsPlacement from '@ui5/webcomponents/dist/types/CarouselArrowsPlacement.js';
 import { Carousel } from './index';
 
 const meta = {

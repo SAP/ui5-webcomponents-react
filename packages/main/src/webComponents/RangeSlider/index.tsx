@@ -47,6 +47,15 @@ interface RangeSliderAttributes {
   min?: number;
 
   /**
+   * Determines the name by which the component will be identified upon submission in an HTML form.
+   *
+   * **Note:** This property is only applicable within the context of an HTML Form element.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  name?: string;
+
+  /**
    * Enables tickmarks visualization for each step.
    *
    * **Note:** The step must be a positive number.
@@ -137,7 +146,7 @@ interface RangeSliderPropTypes
  */
 const RangeSlider = withWebComponent<RangeSliderPropTypes, RangeSliderDomRef>(
   'ui5-range-slider',
-  ['accessibleName', 'endValue', 'labelInterval', 'max', 'min', 'startValue', 'step'],
+  ['accessibleName', 'endValue', 'labelInterval', 'max', 'min', 'name', 'startValue', 'step'],
   ['disabled', 'showTickmarks', 'showTooltip'],
   [],
   ['change', 'input'],

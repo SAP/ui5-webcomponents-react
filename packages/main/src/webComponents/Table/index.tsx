@@ -1,10 +1,13 @@
 'use client';
 
-import '@ui5/webcomponents/dist/Table.js';
-import type { TablePopinChangeEventDetail, TableSelectionChangeEventDetail } from '@ui5/webcomponents/dist/Table.js';
-import type { TableRowClickEventDetail } from '@ui5/webcomponents/dist/TableRow.js';
-import type TableGrowingMode from '@ui5/webcomponents/dist/types/TableGrowingMode.js';
-import type TableMode from '@ui5/webcomponents/dist/types/TableMode.js';
+import '@ui5/webcomponents-compat/dist/Table.js';
+import type {
+  TablePopinChangeEventDetail,
+  TableSelectionChangeEventDetail
+} from '@ui5/webcomponents-compat/dist/Table.js';
+import type { TableRowClickEventDetail } from '@ui5/webcomponents-compat/dist/TableRow.js';
+import type TableGrowingMode from '@ui5/webcomponents-compat/dist/types/TableGrowingMode.js';
+import type TableMode from '@ui5/webcomponents-compat/dist/types/TableMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
@@ -239,7 +242,7 @@ const Table = withWebComponent<TablePropTypes, TableDomRef>(
   ['busy', 'hideNoData', 'stickyColumnHeader'],
   ['columns'],
   ['load-more', 'popin-change', 'row-click', 'selection-change'],
-  () => import('@ui5/webcomponents/dist/Table.js')
+  () => import('@ui5/webcomponents-compat/dist/Table.js')
 );
 
 Table.displayName = 'Table';
