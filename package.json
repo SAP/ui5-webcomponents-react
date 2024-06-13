@@ -43,8 +43,8 @@
     "@ui5/webcomponents-compat": "2.0.0-rc.5",
     "@ui5/webcomponents-fiori": "2.0.0-rc.5",
     "@ui5/webcomponents-icons": "2.0.0-rc.5",
-    "react": "19.0.0-rc-827cbea417-20240606",
-    "react-dom": "19.0.0-rc-827cbea417-20240606",
+    "react": "19.0.0-rc-f3e09d6328-20240612",
+    "react-dom": "19.0.0-rc-f3e09d6328-20240612",
     "remark-gfm": "^4.0.0",
     "tocbot": "4.28.2"
   },
