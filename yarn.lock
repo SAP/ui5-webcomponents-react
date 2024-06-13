@@ -5299,21 +5299,21 @@ __metadata:
   linkType: hard
 
 "@tanstack/react-virtual@npm:~3.5.0":
-  version: 3.5.0
-  resolution: "@tanstack/react-virtual@npm:3.5.0"
+  version: 3.5.1
+  resolution: "@tanstack/react-virtual@npm:3.5.1"
   dependencies:
-    "@tanstack/virtual-core": "npm:3.5.0"
+    "@tanstack/virtual-core": "npm:3.5.1"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/0e0389dcae02cb3a6dc31644be6fedc9c635f66b747136149b065351ef23995e131b01c85348875a8c8c7bade28a2bb8bbc9c7b66a995051d6be08aec60d07c4
+  checksum: 10c0/165992ca01d124be2289f61cc51d1c26d12cd4af11f658167f512d86a89795903478ce3ded1799072cc20feffd1d17bbcb8843269736145769cfc00b113349bd
   languageName: node
   linkType: hard
 
-"@tanstack/virtual-core@npm:3.5.0":
-  version: 3.5.0
-  resolution: "@tanstack/virtual-core@npm:3.5.0"
-  checksum: 10c0/21a12049df81ce282054e8406cb74dd21d867aac077f31568ffdb08acd9aa171ae0666ceb43654895e73907acf5db02c7d651a66960da8acceeb2e034885e605
+"@tanstack/virtual-core@npm:3.5.1":
+  version: 3.5.1
+  resolution: "@tanstack/virtual-core@npm:3.5.1"
+  checksum: 10c0/3ed6c82d168c8a7f240f7882c4386f1136ccc727a4db7ca8051505dab6175c43aa4c8d5a0eaca861d1503f4f98ad2f8e46b876e02002d8218a9f344fc944708b
   languageName: node
   linkType: hard
 
@@ -6548,7 +6548,7 @@ __metadata:
     use-sync-external-store: "npm:1.2.2"
   peerDependencies:
     "@types/react": "*"
-    "@ui5/webcomponents-base": 2.0.0-rc.3
+    "@ui5/webcomponents-base": 2.0.0-rc.5
     react: ^16.14.0 || ^17 || ^18 || ^19
   peerDependenciesMeta:
     "@types/react":
@@ -6621,10 +6621,10 @@ __metadata:
   peerDependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
-    "@ui5/webcomponents": 2.0.0-rc.3
-    "@ui5/webcomponents-base": 2.0.0-rc.3
-    "@ui5/webcomponents-fiori": 2.0.0-rc.3
-    "@ui5/webcomponents-icons": 2.0.0-rc.3
+    "@ui5/webcomponents": 2.0.0-rc.5
+    "@ui5/webcomponents-base": 2.0.0-rc.5
+    "@ui5/webcomponents-fiori": 2.0.0-rc.5
+    "@ui5/webcomponents-icons": 2.0.0-rc.5
     react: ^16.14.0 || ^17 || ^18 || ^19
     react-dom: ^16.14.0 || ^17.0.0 || ^18 || ^19
   peerDependenciesMeta:
@@ -19423,14 +19423,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:19.0.0-rc-827cbea417-20240606":
-  version: 19.0.0-rc-827cbea417-20240606
-  resolution: "react-dom@npm:19.0.0-rc-827cbea417-20240606"
+"react-dom@npm:19.0.0-rc-f3e09d6328-20240612":
+  version: 19.0.0-rc-f3e09d6328-20240612
+  resolution: "react-dom@npm:19.0.0-rc-f3e09d6328-20240612"
   dependencies:
-    scheduler: "npm:0.25.0-rc-827cbea417-20240606"
+    scheduler: "npm:0.25.0-rc-f3e09d6328-20240612"
   peerDependencies:
-    react: 19.0.0-rc-827cbea417-20240606
-  checksum: 10c0/7db8f3534e1828564c4f3c44319a26697e3176f4e338f67dc8eefddf4639f8dc1f77eb54d21dbc9a69cc73e10647786f873577c70b65d9eb62091ea78b0a8a3d
+    react: 19.0.0-rc-f3e09d6328-20240612
+  checksum: 10c0/160017b4039800e91b849b92138e7402a1e223cb233d2e4f5f6a893af473d25511fc42e2c3169a5b03eac65797deacbc93f382f602614b422951c0ab024f641c
   languageName: node
   linkType: hard
 
@@ -19554,10 +19554,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:19.0.0-rc-827cbea417-20240606":
-  version: 19.0.0-rc-827cbea417-20240606
-  resolution: "react@npm:19.0.0-rc-827cbea417-20240606"
-  checksum: 10c0/35dda576f794d20eff1cb6603c489d6defd3fabf8a894ead1b56c58033509fe9d2a46e5cb059ed40321c689cb9b9ab8f27f32228f9d47e7118fd23d618567d67
+"react@npm:19.0.0-rc-f3e09d6328-20240612":
+  version: 19.0.0-rc-f3e09d6328-20240612
+  resolution: "react@npm:19.0.0-rc-f3e09d6328-20240612"
+  checksum: 10c0/ada5b9ccb81559169411d9811837b77da23f99705607449ef0cf43dc52bd76a20b13565c1d551a1356fea02a879bfe60a4e9b8ad125f1b44eac6848d6295bf50
   languageName: node
   linkType: hard
 
@@ -20458,10 +20458,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:0.25.0-rc-827cbea417-20240606":
-  version: 0.25.0-rc-827cbea417-20240606
-  resolution: "scheduler@npm:0.25.0-rc-827cbea417-20240606"
-  checksum: 10c0/d3c0501ff69f59f774dc6eee0561ea016581b2d21d26e2aee16690fd9829d8269ce434f96b7e5082c4efd2ceec3bd8163676ad21bc1d334161d3d8abb400dbe0
+"scheduler@npm:0.25.0-rc-f3e09d6328-20240612":
+  version: 0.25.0-rc-f3e09d6328-20240612
+  resolution: "scheduler@npm:0.25.0-rc-f3e09d6328-20240612"
+  checksum: 10c0/315431131788bcbc242794a155855e0a1c34e55f3da563e3f403d53b8166fa38b06a2aa992c2fc91f8655418d60973fe5a540c2a21c69fbe8aed71b9fb167057
   languageName: node
   linkType: hard
 
@@ -21602,7 +21602,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar@npm:6.2.1":
+"tar@npm:6.2.1, tar@npm:^6.1.11, tar@npm:^6.1.13, tar@npm:^6.1.2":
   version: 6.2.1
   resolution: "tar@npm:6.2.1"
   dependencies:
@@ -21613,20 +21613,6 @@ __metadata:
     mkdirp: "npm:^1.0.3"
     yallist: "npm:^4.0.0"
   checksum: 10c0/a5eca3eb50bc11552d453488344e6507156b9193efd7635e98e867fab275d527af53d8866e2370cd09dfe74378a18111622ace35af6a608e5223a7d27fe99537
-  languageName: node
-  linkType: hard
-
-"tar@npm:^6.1.11, tar@npm:^6.1.13, tar@npm:^6.1.2":
-  version: 6.1.13
-  resolution: "tar@npm:6.1.13"
-  dependencies:
-    chownr: "npm:^2.0.0"
-    fs-minipass: "npm:^2.0.0"
-    minipass: "npm:^4.0.0"
-    minizlib: "npm:^2.1.1"
-    mkdirp: "npm:^1.0.3"
-    yallist: "npm:^4.0.0"
-  checksum: 10c0/eee5f264f3f3c27cd8d4934f80c568470f92811c416144ab671bb36b45a8ed55fbfbbd31f0146f3eddaca91fd564c9a7ec4d2086940968b836f4a2c54146c060
   languageName: node
   linkType: hard
 
@@ -22406,8 +22392,8 @@ __metadata:
     postcss-modules: "npm:^6.0.0"
     postcss-nesting: "npm:^12.0.3"
     prettier: "npm:^3.0.0"
-    react: "npm:19.0.0-rc-827cbea417-20240606"
-    react-dom: "npm:19.0.0-rc-827cbea417-20240606"
+    react: "npm:19.0.0-rc-f3e09d6328-20240612"
+    react-dom: "npm:19.0.0-rc-f3e09d6328-20240612"
     remark-gfm: "npm:^4.0.0"
     rimraf: "npm:^5.0.0"
     storybook: "npm:8.0.10"

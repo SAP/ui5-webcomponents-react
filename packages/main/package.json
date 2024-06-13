@@ -22,8 +22,6 @@
       "default": "./ssr/index.js"
     },
     "./package.json": "./package.json",
-    "./jestSetup": "./jestSetup.js",
-    "./jestSetup.js": "./jestSetup.js",
     "./styles.css": "./dist/css/index.css",
     "./dist": "./dist/index.js",
     "./dist/*": "./dist/*",
@@ -63,10 +61,10 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "2.0.0-rc.3",
-    "@ui5/webcomponents-base": "2.0.0-rc.3",
-    "@ui5/webcomponents-fiori": "2.0.0-rc.3",
-    "@ui5/webcomponents-icons": "2.0.0-rc.3",
+    "@ui5/webcomponents": "2.0.0-rc.5",
+    "@ui5/webcomponents-base": "2.0.0-rc.5",
+    "@ui5/webcomponents-fiori": "2.0.0-rc.5",
+    "@ui5/webcomponents-icons": "2.0.0-rc.5",
     "react": "^16.14.0 || ^17 || ^18 || ^19",
     "react-dom": "^16.14.0 || ^17.0.0 || ^18 || ^19"
   },
@@ -92,7 +90,6 @@
     "wrappers",
     "ssr",
     "CHANGELOG.md",
-    "jestSetup.js",
     "LICENSE",
     "NOTICE.txt",
     "README.md"
