@@ -17,6 +17,35 @@ or the [changelog](?path=/docs/change-log--page)._
 
 <TableOfContent headingSelector="h2" />
 
+## General changes
+
+### Removed `react-jss`
+
+UI5 Web Components for React is no longer relying on `react-jss` internally, hence the dependency is now removed and the `react-jss` ThemeProvider is no longer rendered as part of our `ThemeProvider`.
+If you are relying on `react-jss` in your application, please make sure to render your own `react-jss` ThemeProvider:
+
+```tsx
+import { ThemeProvider } from '@ui5/webcomponents-react';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemeProvider as ReactJssThemeProvider } from 'react-jss';
+
+function MyRootComponent() {
+  return (
+    <ThemeProvider>
+      <ReactJssThemeProvider theme={ThemingParameters}>{/* your app content goes here */}</ReactJssThemeProvider>
+    </ThemeProvider>
+  );
+}
+```
+
+## Removed hooks
+
+### `useResponsiveContentPadding`
+
+The `useResponsiveContentPadding` hook has been removed.
+You can now apply responsive content paddings by applying the `sap-content-paddings-container` class from `@sap-ui/common-css` package to your element.
+You can find a more detailed documentation [here](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/knowledge-base-common-css--docs#content-paddings).
+
 ## Replaced Components
 
 ### AnalyticalCard
