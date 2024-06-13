@@ -1,0 +1,549 @@
+{
+  "components": {
+    "DONOTUSE_TEMPLATE": {
+      "newComponent": "",
+      "changedProps": {
+        "oldName": "newName"
+      },
+      "removedProps": ["propName"]
+    },
+    "ActionSheet": {
+      "changedProps": {
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen",
+        "placementType": "placement"
+      }
+    },
+    "Avatar": {},
+    "Badge": {
+      "newComponent": "Tag"
+    },
+    "Bar": {},
+    "BarcodeScannerDialog": {},
+    "Breadcrumbs": {
+      "changedProps": {
+        "separatorStyle": "separators"
+      }
+    },
+    "BusyIndicator": {
+      "renamedEnums": {
+        "size": "BusyIndicatorSize"
+      }
+    },
+    "Button": {
+      "comment": "new slot endIcon",
+      "removedProps": ["iconEnd"]
+    },
+    "Calendar": {
+      "changedProps": {
+        "onSelectedDatesChange": "onSelectionChange"
+      }
+    },
+    "CalendarDate": {},
+    "CalendarLegend": {},
+    "CalendarLegendItem": {},
+    "Card": {},
+    "CardHeader": {
+      "changedProps": {
+        "status": "additionalText"
+      }
+    },
+    "Carousel": {
+      "comment": "combine s, m and l into a single string S M L",
+      "changedProps": {
+        "itemsPerPageS": "itemsPerPage",
+        "itemsPerPageM": "itemsPerPage",
+        "itemsPerPageL": "itemsPerPage",
+        "pageIndicatorStyle": "pageIndicatorType"
+      }
+    },
+    "CheckBox": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "ColorPalette": {},
+    "ColorPaletteItem": {},
+    "ColorPalettePopover": {},
+    "ColorPicker": {
+      "changedProps": {
+        "color": "value"
+      }
+    },
+    "ComboBox": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "ComboBoxGroupItem": {
+      "newComponent": "ComboBoxItemGroup"
+    },
+    "CustomListItem": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes"
+      }
+    },
+    "DatePicker": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "DateRangePicker": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "DateTimePicker": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "Dialog": {
+      "changedProps": {
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen"
+      },
+      "renamedEnums": {
+        "state": "ValueState"
+      }
+    },
+    "DynamicSideContent": {},
+    "FileUploader": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "FilterItem": {},
+    "FilterItemOption": {},
+    "GroupHeaderListItem": {
+      "newComponent": "ListItemGroup"
+    },
+    "Icon": {
+      "comment": "interactive=true becomes mode=IconMode.Interactive",
+      "changedProps": {
+        "interactive": "mode"
+      },
+      "removedProps": ["accessibleRole"]
+    },
+    "IllustratedMessage": {
+      "changedProps": {
+        "size": "design"
+      },
+      "removedProps": ["titleLevel"]
+    },
+    "Input": {
+      "changedProps": {
+        "onSuggestionItemPreview": "onSelectionChange"
+      },
+      "removedProps": ["onSuggestionItemSelect"],
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "Label": {},
+    "Link": {
+      "changedProps": {
+        "title": "tooltip"
+      }
+    },
+    "List": {
+      "changedProps": {
+        "mode": "selectionMode",
+        "busy": "loading"
+      },
+      "renamedEnums": {
+        "mode": "ListMode"
+      }
+    },
+    "ListItemGroup": {},
+    "MediaGallery": {},
+    "MediaGalleryItem": {},
+    "Menu": {
+      "changedProps": {
+        "busy": "loading",
+        "busyDelay": "loadingDelay",
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen"
+      }
+    },
+    "MenuItem": {
+      "changedProps": {
+        "busy": "loading",
+        "busyDelay": "loadingDelay"
+      }
+    },
+    "MessageItem": {
+      "renamedEnums": {
+        "type": "ValueState"
+      }
+    },
+    "MessageViewButton": {
+      "renamedEnums": {
+        "type": "ValueState"
+      }
+    },
+    "MessageStrip": {
+      "renamedEnums": {
+        "design": "MessageStripDesign"
+      }
+    },
+    "MultiComboBox": {
+      "changedProps": {
+        "allowCustomValues": "noValidation"
+      },
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "MultiComboBoxGroupItem": {},
+    "MultiComboBoxItem": {},
+    "MultiInput": {
+      "changedProps": {
+        "onSuggestionItemPreview": "onSelectionChange"
+      },
+      "removedProps": ["onSuggestionItemSelect"],
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "NotificationAction": {},
+    "NotificationListGroupItem": {
+      "changedProps": {
+        "busy": "loading",
+        "busyDelay": "loadingDelay"
+      },
+      "removedProps": ["actions", "priority", "showClose", "showCounter"]
+    },
+    "NotificationListItem": {
+      "changedProps": {
+        "busy": "loading",
+        "busyDelay": "loadingDelay",
+        "actions": "menu",
+        "priority": "importance"
+      }
+    },
+    "ObjectStatus": {
+      "renamedEnums": {
+        "state": "ValueState"
+      }
+    },
+    "Option": {
+      "changedProps": {
+        "title": "tooltip"
+      },
+      "removedProps": ["disabled"]
+    },
+    "Page": {
+      "comment": "logic for floatingFooter is inverted",
+      "changedProps": {
+        "disableScrolling": "noScrolling",
+        "floatingFooter": "fixedFooter"
+      },
+      "removedProps": ["disabled"]
+    },
+    "Panel": {},
+    "Popover": {
+      "changedProps": {
+        "placementType": "placement",
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen"
+      },
+      "removedProps": ["hideBackdrop"],
+      "renamedEnums": {
+        "placementType": "PopoverPlacementType",
+        "horizontalAlign": "PopoverHorizontalAlign"
+      }
+    },
+    "ProductSwitch": {},
+    "ProductSwitchItem": {},
+    "ProgressIndicator": {
+      "removedProps": ["disabled"],
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "RadioButton": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "RangeSlider": {},
+    "RatingIndicator": {},
+    "ResponsivePopover": {
+      "changedProps": {
+        "placementType": "placement",
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen"
+      },
+      "removedProps": ["hideBackdrop"],
+      "renamedEnums": {
+        "placementType": "PopoverPlacementType",
+        "horizontalAlign": "PopoverHorizontalAlign"
+      }
+    },
+    "SegmentedButton": {
+      "changedProps": {
+        "mode": "selectionMode"
+      },
+      "renamedEnums": {
+        "mode": "SegmentedButtonMode"
+      }
+    },
+    "SegmentedButtonItem": {
+      "changedProps": {
+        "pressed": "selected"
+      }
+    },
+    "Select": {
+      "removedProps": ["menu"],
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "SelectDialog": {
+      "changedProps": {
+        "mode": "selectionMode",
+        "onAfterClose": "onClose",
+        "onAfterOpen": "onOpen"
+      }
+    },
+    "SelectMenu": {},
+    "SelectMenuOption": {},
+    "ShellBar": {
+      "removedProps": ["showCoPilot", "onCoPilotClick"]
+    },
+    "ShellBarItem": {},
+    "SideNavigation": {},
+    "SideNavigationGroup": {
+      "changedProps": {
+        "title": "tooltip"
+      }
+    },
+    "SideNavigationItem": {
+      "changedProps": {
+        "title": "tooltip"
+      }
+    },
+    "SideNavigationSubItem": {
+      "changedProps": {
+        "title": "tooltip"
+      }
+    },
+    "Slider": {},
+    "SortItem": {},
+    "SpecialCalendarDate": {},
+    "SplitButton": {
+      "removedProps": ["activeIcon"]
+    },
+    "StandardListItem": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes",
+        "additionalTextState": "ValueState"
+      }
+    },
+    "StepInput": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "SuggestionGroupItem": {},
+    "SuggestionItem": {
+      "renamedEnums": {
+        "additionalTextState": "ValueState"
+      }
+    },
+    "Switch": {},
+    "Tab": {
+      "changedProps": {
+        "subTabs": "items"
+      }
+    },
+    "TabContainer": {
+      "changedProps": {
+        "tabsOverflowMode": "overflowMode"
+      },
+      "removedProps": ["fixed", "showOverflow"]
+    },
+    "TabSeparator": {},
+    "TextArea": {
+      "changedProps": {
+        "growingMaxLines": "growingMaxRows"
+      },
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "TimePicker": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "Timeline": {},
+    "TimelineItem": {},
+    "Title": {},
+    "Toast": {
+      "changedProps": {
+        "onAfterClose": "onClose"
+      }
+    },
+    "ToggleButton": {
+      "removedProps": ["iconEnd"]
+    },
+    "Token": {
+      "removedProps": ["disabled"]
+    },
+    "Toolbar": {},
+    "ToolbarButton": {
+      "removedProps": ["iconEnd"]
+    },
+    "ToolbarSelect": {
+      "renamedEnums": {
+        "valueState": "ValueState"
+      }
+    },
+    "ToolbarSelectOption": {},
+    "ToolbarSeparator": {},
+    "ToolbarSpacer": {},
+    "Tree": {
+      "changedProps": {
+        "mode": "selectionMode"
+      },
+      "renamedEnums": {
+        "mode": "ListMode"
+      }
+    },
+    "TreeItem": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes",
+        "additionalTextState": "ValueState"
+      }
+    },
+    "TreeItemCustom": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes",
+        "additionalTextState": "ValueState"
+      }
+    },
+    "UploadCollection": {
+      "changedProps": {
+        "mode": "selectionMode"
+      },
+      "renamedEnums": {
+        "highlight": "HighlightTypes",
+        "mode": "ListMode"
+      }
+    },
+    "UploadCollectionItem": {},
+    "ViewSettingsDialog": {},
+    "Wizard": {},
+    "WizardStep": {}
+  },
+  "enums": {
+    "AvatarColorScheme": "@ui5/webcomponents/dist/types/AvatarColorScheme.js",
+    "AvatarGroupType": "@ui5/webcomponents/dist/types/AvatarGroupType.js",
+    "AvatarShape": "@ui5/webcomponents/dist/types/AvatarShape.js",
+    "AvatarSize": "@ui5/webcomponents/dist/types/AvatarSize.js",
+    "BadgeDesign": "@ui5/webcomponents/dist/types/TagDesign.js",
+    "BarDesign": "@ui5/webcomponents/dist/types/BarDesign.js",
+    "BackgroundDesign": "@ui5/webcomponents/dist/types/BackgroundDesign.js",
+    "BorderDesign": "@ui5/webcomponents/dist/types/BorderDesign.js",
+    "BreadcrumbsDesign": "@ui5/webcomponents/dist/types/BreadcrumbsDesign.js",
+    "BreadcrumbsSeparatorStyle": "@ui5/webcomponents/dist/types/BreadcrumbsSeparator.js",
+    "BusyIndicatorSize": "@ui5/webcomponents/dist/types/BusyIndicatorSize.js",
+    "BusyIndicatorTextPlacement": "@ui5/webcomponents/dist/types/BusyIndicatorTextPlacement.js",
+    "ButtonDesign": "@ui5/webcomponents/dist/types/ButtonDesign.js",
+    "ButtonType": "@ui5/webcomponents/dist/types/ButtonType.js",
+    "CalendarLegendItemType": "@ui5/webcomponents/dist/types/CalendarLegendItemType.js",
+    "CalendarSelection": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
+    "CalendarSelectionMode": "@ui5/webcomponents/dist/types/CalendarSelectionMode.js",
+    "CalendarType": "@ui5/webcomponents-base/dist/types/CalendarType.js",
+    "CarouselPageIndicatorStyle": "@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js",
+    "ComboBoxFilter": "@ui5/webcomponents/dist/types/ComboBoxFilter.js",
+    "FCLLayout": "@ui5/webcomponents-fiori/dist/types/FCLLayout.js",
+    "HighlightTypes": "@ui5/webcomponents/dist/types/Highlight.js",
+    "IconDesign": "@ui5/webcomponents/dist/types/IconDesign.js",
+    "IllustrationMessageSize": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js",
+    "IllustrationMessageType": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js",
+    "InputType": "@ui5/webcomponents/dist/types/InputType.js",
+    "LinkDesign": "@ui5/webcomponents/dist/types/LinkDesign.js",
+    "ListItemType": "@ui5/webcomponents/dist/types/ListItemType.js",
+    "ListMode": "@ui5/webcomponents/dist/types/ListSelectionMode.js",
+    "ListGrowingMode": "@ui5/webcomponents/dist/types/ListGrowingMode.js",
+    "ListSeparators": "@ui5/webcomponents/dist/types/ListSeparators.js",
+    "MediaGalleryItemLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryItemLayout.js",
+    "MediaGalleryLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryLayout.js",
+    "MediaGalleryMenuHorizontalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuHorizontalAlign.js",
+    "MediaGalleryMenuVerticalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuVerticalAlign.js",
+    "MessageStripDesign": "@ui5/webcomponents/dist/types/MessageStripDesign.js",
+    "Priority": "@ui5/webcomponents/dist/types/Priority.js",
+    "PageBackgroundDesign": "@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js",
+    "PanelAccessibleRole": "@ui5/webcomponents/dist/types/PanelAccessibleRole.js",
+    "PopoverHorizontalAlign": "@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js",
+    "PopoverPlacementType": "@ui5/webcomponents/dist/types/PopoverPlacement.js",
+    "PopoverPlacement": "@ui5/webcomponents/dist/types/PopoverPlacement.js",
+    "PopoverVerticalAlign": "@ui5/webcomponents/dist/types/PopoverVerticalAlign.js",
+    "PopupAccessibleRole": "@ui5/webcomponents/dist/types/PopupAccessibleRole.js",
+    "SegmentedButtonMode": "@ui5/webcomponents/dist/types/SegmentedButtonSelectionMode.js",
+    "SemanticColor": "@ui5/webcomponents/dist/types/SemanticColor.js",
+    "SideContentFallDown": "@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js",
+    "SideContentPosition": "@ui5/webcomponents-fiori/dist/types/SideContentPosition.js",
+    "SideContentVisibility": "@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js",
+    "SwitchDesign": "@ui5/webcomponents/dist/types/SwitchDesign.js",
+    "TabContainerBackgroundDesign": "@ui5/webcomponents/dist/types/BackgroundDesign.js",
+    "TabLayout": "@ui5/webcomponents/dist/types/TabLayout.js",
+    "TabsOverflowMode": "@ui5/webcomponents/dist/types/OverflowMode.js",
+    "TableColumnPopinDisplay": "@ui5/webcomponents-compat/dist/types/TableColumnPopinDisplay.js",
+    "TableGrowingMode": "@ui5/webcomponents-compat/dist/types/TableGrowingMode.js",
+    "TableMode": "@ui5/webcomponents-compat/dist/types/TableMode.js",
+    "TableRowType": "@ui5/webcomponents-compat/dist/types/TableRowType.js",
+    "TimelineLayout": "@ui5/webcomponents-fiori/dist/types/TimelineLayout.js",
+    "TitleLevel": "@ui5/webcomponents/dist/types/TitleLevel.js",
+    "ToastPlacement": "@ui5/webcomponents/dist/types/ToastPlacement.js",
+    "ToolbarAlign": "@ui5/webcomponents/dist/types/ToolbarAlign.js",
+    "ToolbarItemOverflowBehavior": "@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js",
+    "UploadState": "@ui5/webcomponents-fiori/dist/types/UploadState.js",
+    "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
+    "WizardContentLayout": "@ui5/webcomponents-fiori/dist/types/WizardContentLayout.js",
+    "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
+  },
+  "enumProperties": {
+    "BusyIndicatorSize": {
+      "Small": "S",
+      "Medium": "M",
+      "Large": "L"
+    },
+    "ValueState": {
+      "Success": "Positive",
+      "Warning": "Critical",
+      "Error": "Negative"
+    },
+    "HighlightTypes": {
+      "Success": "Positive",
+      "Warning": "Critical",
+      "Error": "Negative"
+    },
+    "ListMode": {
+      "SingleSelectBegin": "SingleStart",
+      "SingleSelect": "Single",
+      "MultiSelect": "Multiple",
+      "SingleSelectEnd": "SingleEnd",
+      "SingleSelectAuto": "SingleAuto"
+    },
+    "MessageStripDesign": {
+      "Warning": "Critical"
+    },
+    "PopoverPlacementType": {
+      "Left": "Start",
+      "Right": "End"
+    },
+    "PopoverHorizontalAlign": {
+      "Left": "Start",
+      "Right": "End"
+    },
+    "SegmentedButtonMode": {
+      "SingleSelect": "Single",
+      "MultiSelect": "Multiple"
+    }
+  },
+  "wrappingTypeComponents": ["Badge", "CheckBox", "Label", "Link", "Title", "RadioButton", "NotificationListItem"]
+}

@@ -1,0 +1,47 @@
+import { Footer, TableOfContent } from '@sb/components';
+import { Meta } from '@storybook/blocks';
+import { Link, MessageStrip } from '@ui5/webcomponents-react';
+
+<Meta title="Common CSS" />
+
+# Using Common CSS in your application
+
+<TableOfContent />
+
+We recommend using the [@sap-ui/common-css](https://www.npmjs.com/package/@sap-ui/common-css) package for applying common styling blocks based on SAP Fiori Design Guidelines.
+
+<MessageStrip
+  hideCloseButton
+  children={
+    <>
+      This documentation is only showing a few samples which we consider to be useful for applications using UI5 Web
+      Components for React. You can find the full documentation for SAP UI Common CSS{' '}
+      <Link href="https://sap.github.io/fundamental-styles/?path=/docs/common-css-introduction--docs">here</Link>.
+    </>
+  }
+></MessageStrip>
+
+<br />
+<br />
+
+## Content Paddings
+
+[Full Documentation](https://sap.github.io/fundamental-styles/?path=/docs/common-css-content-paddings--docs)
+
+You can import the content paddings by adding the following import to your project:
+
+```ts
+import '@sap-ui/common-css/dist/sap-content-paddings.css';
+```
+
+### Responsive Content Paddings
+
+You can apply a dynamic content padding for your element by applying the following classes to your HTML:
+
+```html
+<div class="sap-container-type-inline-size">
+  <div class="sap-content-paddings-container">I will have a responsive content padding</div>
+</div>
+```
+
+<Footer />
