@@ -1,0 +1,32 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import '@ui5/webcomponents-icons/dist/person-placeholder.js';
+import '@ui5/webcomponents/dist/Link.js';
+import { NumericSideIndicator } from '../NumericSideIndicator';
+import * as ComponentStories from './AnalyticalCardHeader.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader subComponents={['NumericSideIndicator']} />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<br />
+<br />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## NumericSideIndicator
+
+<Description of={NumericSideIndicator} />
+
+<ArgTypesWithNote of={NumericSideIndicator} />
+
+<Footer />
