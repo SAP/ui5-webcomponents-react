@@ -15,7 +15,11 @@ jobs:
     strategy:
       matrix:
         spec:
-          - main/src/components/FilterBar
+          - base
+          - charts
+          - cypress-commands
+          - main/src/components
+          - main/src/internal
         react: ['18', '19']
       fail-fast: false
     steps:
