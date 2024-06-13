@@ -1,8 +1,9 @@
 import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 import type { Meta, StoryObj } from '@storybook/react';
+import InputType from '@ui5/webcomponents/dist/types/InputType.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import globeIcon from '@ui5/webcomponents-icons/dist/globe.js';
-import { InputType, ValueState } from '../../enums/index.js';
 import { Icon } from '../Icon/index.js';
 import { SuggestionGroupItem } from '../SuggestionGroupItem/index.js';
 import { SuggestionItem } from '../SuggestionItem/index.js';

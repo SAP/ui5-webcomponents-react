@@ -242,15 +242,15 @@
   background-color: var(--sapList_SelectionBorderColor);
 }
 
-.success {
+.positive {
   background-color: var(--sapSuccessColor);
 }
 
-.error {
+.negative {
   background-color: var(--sapErrorColor);
 }
 
-.warning {
+.critical {
   background-color: var(--sapWarningColor);
 }
 

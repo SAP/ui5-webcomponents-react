@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import cancelIcon from '@ui5/webcomponents-icons/dist/sys-cancel.js';
-import { Icon, IndicationColor, Label, ValueState } from '../..';
+import { Icon, IndicationColor, Label } from '../..';
 import { ObjectStatus } from './index.js';
 
 const meta = {
@@ -36,14 +37,14 @@ export const WithDefaultIcons: Story = {
         <ObjectStatus showDefaultIcon state={ValueState.None}>
           ValueState.None
         </ObjectStatus>
-        <ObjectStatus showDefaultIcon state={ValueState.Success}>
-          ValueState.Success
+        <ObjectStatus showDefaultIcon state={ValueState.Positive}>
+          ValueState.Positive
         </ObjectStatus>
-        <ObjectStatus showDefaultIcon state={ValueState.Warning}>
-          ValueState.Warning
+        <ObjectStatus showDefaultIcon state={ValueState.Critical}>
+          ValueState.Critical
         </ObjectStatus>
-        <ObjectStatus showDefaultIcon state={ValueState.Error}>
-          ValueState.Error
+        <ObjectStatus showDefaultIcon state={ValueState.Negative}>
+          ValueState.Negative
         </ObjectStatus>
         <ObjectStatus showDefaultIcon state={ValueState.Information}>
           ValueState.Information
@@ -77,14 +78,14 @@ export const InvertedObjectStatus: Story = {
         <ObjectStatus inverted state={ValueState.None}>
           ValueState.None
         </ObjectStatus>
-        <ObjectStatus inverted state={ValueState.Success}>
-          ValueState.Success
+        <ObjectStatus inverted state={ValueState.Positive}>
+          ValueState.Positive
         </ObjectStatus>
-        <ObjectStatus inverted state={ValueState.Warning}>
-          ValueState.Warning
+        <ObjectStatus inverted state={ValueState.Critical}>
+          ValueState.Critical
         </ObjectStatus>
-        <ObjectStatus inverted state={ValueState.Error}>
-          ValueState.Error
+        <ObjectStatus inverted state={ValueState.Negative}>
+          ValueState.Negative
         </ObjectStatus>
         <ObjectStatus inverted state={ValueState.Information}>
           ValueState.Information
@@ -119,14 +120,14 @@ export const InvertedObjectStatus: Story = {
         <ObjectStatus active inverted state={ValueState.None}>
           ValueState.None
         </ObjectStatus>
-        <ObjectStatus active inverted state={ValueState.Success}>
-          ValueState.Success
+        <ObjectStatus active inverted state={ValueState.Positive}>
+          ValueState.Positive
         </ObjectStatus>
-        <ObjectStatus active inverted state={ValueState.Warning}>
-          ValueState.Warning
+        <ObjectStatus active inverted state={ValueState.Critical}>
+          ValueState.Critical
         </ObjectStatus>
-        <ObjectStatus active inverted state={ValueState.Error}>
-          ValueState.Error
+        <ObjectStatus active inverted state={ValueState.Negative}>
+          ValueState.Negative
         </ObjectStatus>
         <ObjectStatus active inverted state={ValueState.Information}>
           ValueState.Information

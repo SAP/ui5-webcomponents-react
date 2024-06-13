@@ -1,8 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents/dist/StandardListItem.js';
-import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
-import type HighlightTypes from '@ui5/webcomponents/dist/types/HighlightTypes.js';
+import type { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import type Highlight from '@ui5/webcomponents/dist/types/Highlight.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ReactNode } from 'react';
@@ -24,7 +24,7 @@ interface StandardListItemAttributes {
   /**
    * Defines the state of the `additionalText`.
    *
-   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
    * @default "None"
    */
   additionalTextState?: ValueState | keyof typeof ValueState;
@@ -36,12 +36,12 @@ interface StandardListItemAttributes {
 
   /**
    * Defines the highlight state of the list items.
-   * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+   * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
    *
    * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
    * @default "None"
    */
-  highlight?: HighlightTypes | keyof typeof HighlightTypes;
+  highlight?: Highlight | keyof typeof Highlight;
 
   /**
    * Defines the `icon` source URI.
@@ -68,6 +68,14 @@ interface StandardListItemAttributes {
   image?: string;
 
   /**
+   * Defines whether the item is movable.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  movable?: boolean;
+
+  /**
    * The navigated state of the list item.
    * If set to `true`, a navigation indicator is displayed at the end of the list item.
    *
@@ -77,7 +85,7 @@ interface StandardListItemAttributes {
   navigated?: boolean;
 
   /**
-   * Defines the selected state of the `ListItem`.
+   * Defines the selected state of the component.
    * @default false
    */
   selected?: boolean;
@@ -102,21 +110,18 @@ interface StandardListItemAttributes {
 
 interface StandardListItemDomRef extends Required<StandardListItemAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values
-   * for customization depending on the use case.
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
    *
-   *  It supports the following fields:
+   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
    *
-   * - `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.
-   * 	The value of each `aria-setsize` is an integer reflecting number of items in the complete set.
-   *
-   * 	**Note:** If the size of the entire set is unknown, set `aria-setsize="-1"`.
-   * 	- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.
-   * 	The value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
    *
    * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
    */
-  accessibilityAttributes: AccessibilityAttributes;
+  accessibilityAttributes: ListItemAccessibilityAttributes;
 }
 
 interface StandardListItemPropTypes
@@ -192,7 +197,7 @@ const StandardListItem = withWebComponent<StandardListItemPropTypes, StandardLis
     'tooltip',
     'type'
   ],
-  ['iconEnd', 'navigated', 'selected'],
+  ['iconEnd', 'movable', 'navigated', 'selected'],
   ['deleteButton', 'imageContent'],
   ['detail-click'],
   () => import('@ui5/webcomponents/dist/StandardListItem.js')

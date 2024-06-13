@@ -1,7 +1,7 @@
 'use client';
 
-import '@ui5/webcomponents/dist/TableColumn.js';
-import type TableColumnPopinDisplay from '@ui5/webcomponents/dist/types/TableColumnPopinDisplay.js';
+import '@ui5/webcomponents-compat/dist/TableColumn.js';
+import type TableColumnPopinDisplay from '@ui5/webcomponents-compat/dist/types/TableColumnPopinDisplay.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
@@ -67,7 +67,7 @@ const TableColumn = withWebComponent<TableColumnPropTypes, TableColumnDomRef>(
   ['demandPopin'],
   [],
   [],
-  () => import('@ui5/webcomponents/dist/TableColumn.js')
+  () => import('@ui5/webcomponents-compat/dist/TableColumn.js')
 );
 
 TableColumn.displayName = 'TableColumn';

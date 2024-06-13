@@ -41,6 +41,15 @@ interface SliderAttributes {
   min?: number;
 
   /**
+   * Determines the name by which the component will be identified upon submission in an HTML form.
+   *
+   * **Note:** This property is only applicable within the context of an HTML Form element.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  name?: string;
+
+  /**
    * Enables tickmarks visualization for each step.
    *
    * **Note:** The step must be a positive number.
@@ -129,7 +138,7 @@ interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, keyof Slid
  */
 const Slider = withWebComponent<SliderPropTypes, SliderDomRef>(
   'ui5-slider',
-  ['accessibleName', 'labelInterval', 'max', 'min', 'step', 'value'],
+  ['accessibleName', 'labelInterval', 'max', 'min', 'name', 'step', 'value'],
   ['disabled', 'showTickmarks', 'showTooltip'],
   [],
   ['change', 'input'],

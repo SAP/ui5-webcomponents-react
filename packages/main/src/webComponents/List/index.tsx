@@ -6,10 +6,13 @@ import type {
   ListItemCloseEventDetail,
   ListItemDeleteEventDetail,
   ListItemToggleEventDetail,
+  ListMoveEventDetail,
   ListSelectionChangeEventDetail
 } from '@ui5/webcomponents/dist/List.js';
+import type ListItemBase from '@ui5/webcomponents/dist/ListItemBase.js';
+import type ListAccessibleRole from '@ui5/webcomponents/dist/types/ListAccessibleRole.js';
 import type ListGrowingMode from '@ui5/webcomponents/dist/types/ListGrowingMode.js';
-import type ListMode from '@ui5/webcomponents/dist/types/ListMode.js';
+import type ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import type ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -28,21 +31,9 @@ interface ListAttributes {
 
   /**
    * Defines the accessible role of the component.
-   * @default "list"
+   * @default "List"
    */
-  accessibleRole?: string;
-
-  /**
-   * Defines if the component would display a loading indicator over the list.
-   * @default false
-   */
-  busy?: boolean;
-
-  /**
-   * Defines the delay in milliseconds, after which the busy indicator will show up for this component.
-   * @default 1000
-   */
-  busyDelay?: number;
+  accessibleRole?: ListAccessibleRole | keyof typeof ListAccessibleRole;
 
   /**
    * Defines the footer text.
@@ -84,15 +75,27 @@ interface ListAttributes {
   indent?: boolean;
 
   /**
-   * Defines the mode of the component.
-   * @default "None"
+   * Defines if the component would display a loading indicator over the list.
+   * @default false
    */
-  mode?: ListMode | keyof typeof ListMode;
+  loading?: boolean;
+
+  /**
+   * Defines the delay in milliseconds, after which the loading indicator will show up for this component.
+   * @default 1000
+   */
+  loadingDelay?: number;
 
   /**
    * Defines the text that is displayed when the component contains no items.
    */
   noDataText?: string;
+
+  /**
+   * Defines the selection mode of the component.
+   * @default "None"
+   */
+  selectionMode?: ListSelectionMode | keyof typeof ListSelectionMode;
 
   /**
    * Defines the item separator style that is used.
@@ -101,7 +104,14 @@ interface ListAttributes {
   separators?: ListSeparators | keyof typeof ListSeparators;
 }
 
-interface ListDomRef extends Required<ListAttributes>, Ui5DomRef {}
+interface ListDomRef extends Required<ListAttributes>, Ui5DomRef {
+  /**
+   * Returns an array containing the list item instances without the groups in a flat structure.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  readonly listItems: Array<ListItemBase>;
+}
 
 interface ListPropTypes
   extends ListAttributes,
@@ -115,12 +125,14 @@ interface ListPropTypes
       | 'onItemDelete'
       | 'onItemToggle'
       | 'onLoadMore'
+      | 'onMove'
+      | 'onMoveOver'
       | 'onSelectionChange'
     > {
   /**
    * Defines the items of the component.
    *
-   * **Note:** Use `StandardListItem`, `CustomListItem`, and `GroupHeaderListItem` for the intended design.
+   * **Note:** Use `StandardListItem`, `CustomListItem`, and `ListItemGroup` for the intended design.
    */
   children?: ReactNode | ReactNode[];
 
@@ -157,7 +169,7 @@ interface ListPropTypes
    * Fired when the Delete button of any item is pressed.
    *
    * **Note:** A Delete button is displayed on each item,
-   * when the component `mode` property is set to `Delete`.
+   * when the component `selectionMode` property is set to `Delete`.
    */
   onItemDelete?: (event: Ui5CustomEvent<ListDomRef, ListItemDeleteEventDetail>) => void;
 
@@ -176,8 +188,28 @@ interface ListPropTypes
   onLoadMore?: (event: Ui5CustomEvent<ListDomRef>) => void;
 
   /**
+   * Fired when a movable list item is dropped onto a drop target.
+   *
+   * **Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   */
+  onMove?: (event: Ui5CustomEvent<ListDomRef, ListMoveEventDetail>) => void;
+
+  /**
+   * Fired when a movable list item is moved over a potential drop target during a dragging operation.
+   *
+   * If the new position is valid, prevent the default action of the event using `preventDefault()`.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onMoveOver?: (event: Ui5CustomEvent<ListDomRef, ListMoveEventDetail>) => void;
+
+  /**
    * Fired when selection is changed by user interaction
-   * in `SingleSelect`, `SingleSelectBegin`, `SingleSelectEnd` and `MultiSelect` modes.
+   * in `Single`, `SingleStart`, `SingleEnd` and `Multiple` selection modes.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
@@ -192,11 +224,11 @@ interface ListPropTypes
  *
  * - `StandardListItem`
  * - `CustomListItem`
- * - `GroupHeaderListItem`
+ * - `ListItemGroup`
  *
  * To benefit from the built-in selection mechanism, you can use the available
  * selection modes, such as
- * `SingleSelect`, `MultiSelect` and `Delete`.
+ * `Single`, `Multiple` and `Delete`.
  *
  * Additionally, the `List` provides header, footer, and customization for the list item separators.
  *
@@ -212,10 +244,10 @@ interface ListPropTypes
  * - [End] - Navigates to the last item
  *
  * The user can use the following keyboard shortcuts to perform actions (such as select, delete),
- * when the `mode` property is in use:
+ * when the `selectionMode` property is in use:
  *
- * - [Space] - Select an item (if `type` is 'Active') when `mode` is selection
- * - [Delete] - Delete an item if `mode` property is `Delete`
+ * - [Space] - Select an item (if `type` is 'Active') when `selectionMode` is selection
+ * - [Delete] - Delete an item if `selectionMode` property is `Delete`
  *
  * #### Fast Navigation
  * This component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].
@@ -228,7 +260,7 @@ interface ListPropTypes
  *
  * `import "@ui5/webcomponents/dist/CustomListItem.js";` (for `CustomListItem`)
  *
- * `import "@ui5/webcomponents/dist/GroupHeaderListItem.js";` (for `GroupHeaderListItem`)
+ * `import "@ui5/webcomponents/dist/ListItemGroup.js";` (for `ListItemGroup`)
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
@@ -238,18 +270,18 @@ const List = withWebComponent<ListPropTypes, ListDomRef>(
     'accessibleName',
     'accessibleNameRef',
     'accessibleRole',
-    'busyDelay',
     'footerText',
     'growing',
     'growingButtonText',
     'headerText',
-    'mode',
+    'loadingDelay',
     'noDataText',
+    'selectionMode',
     'separators'
   ],
-  ['busy', 'indent'],
+  ['indent', 'loading'],
   ['header'],
-  ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'selection-change'],
+  ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'move-over', 'move', 'selection-change'],
   () => import('@ui5/webcomponents/dist/List.js')
 );
 

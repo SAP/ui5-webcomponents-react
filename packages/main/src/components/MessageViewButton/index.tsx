@@ -1,5 +1,6 @@
 'use client';
 
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import alertIcon from '@ui5/webcomponents-icons/dist/alert.js';
 import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
 import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
@@ -7,7 +8,6 @@ import sysEnter2Icon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef } from 'react';
-import { ValueState } from '../../enums/index.js';
 import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';
 import { Button } from '../../webComponents/index.js';
 import { classNames, styleData } from './MessageViewButton.module.css.js';
@@ -30,11 +30,11 @@ export interface MessageViewButtonProptypes
 
 const getIcon = (type) => {
   switch (type) {
-    case ValueState.Error:
+    case ValueState.Negative:
       return errorIcon;
-    case ValueState.Success:
+    case ValueState.Positive:
       return sysEnter2Icon;
-    case ValueState.Warning:
+    case ValueState.Critical:
       return alertIcon;
     default:
       return informationIcon;
@@ -45,7 +45,7 @@ const getIcon = (type) => {
  * The `MessageViewButton` can be used for opening a `Popover` containing the `MessageView` component. It should always reflect the message `type` with the highest severity.
  */
 const MessageViewButton = forwardRef<ButtonDomRef, MessageViewButtonProptypes>((props, ref) => {
-  const { type = ValueState.Error, counter, className, ...rest } = props;
+  const { type = ValueState.Negative, counter, className, ...rest } = props;
   useStylesheet(styleData, MessageViewButton.displayName);
   const classes = clsx(classNames.btn, className);
   const icon = getIcon(type);

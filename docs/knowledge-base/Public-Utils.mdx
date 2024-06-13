@@ -1,5 +1,6 @@
 import { Meta, Source } from '@storybook/blocks';
-import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
+import { MessageStrip } from '@ui5/webcomponents-react';
 import { Footer, TableOfContent } from '@sb/components';
 import { ThemeableCSSVars } from '../knowledgeBaseExamples/ThemeableThemingParameters';
 
@@ -10,7 +11,7 @@ import { ThemeableCSSVars } from '../knowledgeBaseExamples/ThemeableThemingParam
 The `@ui5/webcomponents-react-base` package is providing a couple of utils, which can be used in your application as well.
 
 <MessageStrip
-  design={MessageStripDesign.Warning}
+  design={MessageStripDesign.Critical}
   hideCloseButton
   children={`Please only use the utils mentioned in this document in your application. All other exports are intended for internal
   use and are not subject to semantic versioning!`}

@@ -1,12 +1,15 @@
 'use client';
 
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
+import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
 import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
-import { forwardRef, useState } from 'react';
-import { ButtonDesign, ListMode, ToolbarDesign } from '../../enums/index.js';
+import { forwardRef, useEffect, useState } from 'react';
+import { ToolbarDesign } from '../../enums/index.js';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
 import type {
@@ -73,19 +76,19 @@ export interface SelectDialogPropTypes
   /**
    * Defines the mode of the SelectDialog list.
    *
-   * __Note:__ Although this prop accepts all `ListMode`s, it is strongly recommended that you only use `SingleSelect` or `MultiSelect` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all `ListSelectionMode`s, it is strongly recommended that you only use `Single` or `Multiple` in order to preserve the intended design.
    *
-   * @default ListMode.SingleSelect
+   * @default ListSelectionMode.Single
    */
-  mode?: ListPropTypes['mode'];
+  selectionMode?: ListPropTypes['selectionMode'];
   /**
    * Defines props you can pass to the internal `List` component.
    *
-   * __Note:__ `mode`, `children`, `growing`, `onLoadMore` and `footerText` are not supported.
+   * __Note:__ `selectionMode`, `children`, `growing`, `onLoadMore` and `footerText` are not supported.
    *
    * @default {}
    */
-  listProps?: Omit<ListPropTypes, 'mode' | 'children' | 'footerText' | 'growing' | 'onLoadMore'>;
+  listProps?: Omit<ListPropTypes, 'selectionMode' | 'children' | 'footerText' | 'growing' | 'onLoadMore'>;
   /**
    * Defines the props of the confirm button.
    *
@@ -129,6 +132,7 @@ export interface SelectDialogPropTypes
  */
 const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref) => {
   const {
+    open,
     children,
     className,
     confirmButtonText,
@@ -137,11 +141,11 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     headerText,
     headerTextAlignCenter,
     listProps = {},
-    mode = ListMode.SingleSelect,
+    selectionMode = ListSelectionMode.Single,
     numberOfSelectedItems,
     rememberSelections,
     showClearButton,
-    onAfterClose,
+    onClose,
     onClear,
     onConfirm,
     onLoadMore,
@@ -150,7 +154,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     onSearchReset,
     onBeforeOpen,
     onBeforeClose,
-    onAfterOpen,
+    onOpen,
     onCancel,
     ...rest
   } = props;
@@ -159,22 +163,25 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const [searchValue, setSearchValue] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
-  const [componentRef, selectDialogRef] = useSyncRef(ref);
   const [listComponentRef, listRef] = useSyncRef<ListDomRefWithPrivateAPIs>((listProps as any).ref);
+  const [internalOpen, setInternalOpen] = useState(open);
+  useEffect(() => {
+    setInternalOpen(open);
+  }, [open]);
 
   const handleBeforeOpen = (e) => {
     const localSelectedItems = listRef.current?.getSelectedItems() ?? [];
     if (typeof onBeforeOpen === 'function') {
       onBeforeOpen(e);
     }
-    if (mode === ListMode.MultiSelect && listRef.current?.hasData) {
+    if (selectionMode === ListSelectionMode.Multiple && listRef.current?.hasData) {
       setSelectedItems(localSelectedItems);
     }
   };
 
   const handleAfterOpen = (e) => {
-    if (typeof onAfterOpen === 'function') {
-      onAfterOpen(e);
+    if (typeof onOpen === 'function') {
+      onOpen(e);
     }
     listRef.current?.focusFirstItem();
   };
@@ -206,18 +213,18 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     if (typeof listProps?.onSelectionChange === 'function') {
       listProps.onSelectionChange(e);
     }
-    if (mode === ListMode.MultiSelect) {
+    if (selectionMode === ListSelectionMode.Multiple) {
       setSelectedItems(e.detail.selectedItems);
     } else {
       if (typeof onConfirm === 'function') {
         onConfirm(e);
       }
-      selectDialogRef.current.close();
+      setInternalOpen(false);
     }
   };
 
   const handleClose = (e) => {
-    selectDialogRef.current.close();
+    setInternalOpen(false);
     if (typeof onCancel === 'function') {
       onCancel(e);
     }
@@ -235,12 +242,13 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     if (typeof onConfirm === 'function') {
       onConfirm(enrichEventWithDetails(e, { selectedItems }));
     }
-    selectDialogRef.current.close();
+    setInternalOpen(false);
   };
 
   const handleAfterClose = (e) => {
-    if (typeof onAfterClose === 'function') {
-      onAfterClose(e);
+    setInternalOpen(false);
+    if (typeof onClose === 'function') {
+      onClose(e);
     }
     if (typeof onSearchReset === 'function') {
       onSearchReset(enrichEventWithDetails(e, { prevValue: searchValue }));
@@ -263,12 +271,13 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
   return (
     <Dialog
       {...rest}
+      open={internalOpen}
       data-component-name="SelectDialog"
-      ref={componentRef}
+      ref={ref}
       className={clsx(classNames.dialog, className)}
-      onAfterClose={handleAfterClose}
+      onClose={handleAfterClose}
       onBeforeOpen={handleBeforeOpen}
-      onAfterOpen={handleAfterOpen}
+      onOpen={handleAfterOpen}
       onBeforeClose={handleBeforeClose}
     >
       <div className={classNames.headerContent} slot="header">
@@ -305,13 +314,13 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
                   accessibleName={i18nBundle.getText(RESET)}
                   title={i18nBundle.getText(RESET)}
                   name={iconDecline}
-                  interactive
+                  mode={IconMode.Interactive}
                   onClick={handleResetSearch}
                   className={classNames.inputIcon}
                 />
               )}
               <Icon
-                interactive
+                mode={IconMode.Interactive}
                 name={iconSearch}
                 className={classNames.inputIcon}
                 onClick={handleSearchSubmit}
@@ -323,7 +332,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
         />
       </div>
 
-      {mode === ListMode.MultiSelect && (!!selectedItems.length || numberOfSelectedItems > 0) && (
+      {selectionMode === ListSelectionMode.Multiple && (!!selectedItems.length || numberOfSelectedItems > 0) && (
         <Toolbar design={ToolbarDesign.Info} className={classNames.infoBar}>
           <Text>{`${i18nBundle.getText(SELECTED)}: ${numberOfSelectedItems ?? selectedItems.length}`}</Text>
         </Toolbar>
@@ -333,13 +342,13 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
         ref={listComponentRef}
         growing={growing}
         onLoadMore={onLoadMore}
-        mode={mode}
+        selectionMode={selectionMode}
         onSelectionChange={handleSelectionChange}
       >
         {children}
       </List>
       <div slot="footer" className={classNames.footer}>
-        {mode === ListMode.MultiSelect && (
+        {selectionMode === ListSelectionMode.Multiple && (
           <Button {...confirmButtonProps} onClick={handleConfirm} design={ButtonDesign.Emphasized}>
             {confirmButtonText ?? i18nBundle.getText(SELECT)}
           </Button>

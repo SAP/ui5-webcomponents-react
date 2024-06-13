@@ -15,7 +15,7 @@ import {
   FlexBoxJustifyContent,
   TextAlign
 } from '../../enums/index.js';
-import { Badge, Button, MultiComboBox, MultiComboBoxItem, Option, Select } from '../../webComponents/index.js';
+import { Button, MultiComboBox, MultiComboBoxItem, Option, Select, Tag } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox';
 import { Text } from '../Text';
 import { AnalyticalTable } from './index.js';
@@ -196,7 +196,7 @@ export const Subcomponents: Story = {
             alignItems={FlexBoxAlignItems.Center}
             direction={FlexBoxDirection.Column}
           >
-            <Badge>height: 300px</Badge>
+            <Tag>height: 300px</Tag>
             <Text>This subcomponent will only be displayed below the first row.</Text>
             <hr />
             <Text>
@@ -215,7 +215,7 @@ export const Subcomponents: Story = {
             alignItems={FlexBoxAlignItems.Center}
             direction={FlexBoxDirection.Column}
           >
-            <Badge>height: 100px</Badge>
+            <Tag>height: 100px</Tag>
             <Text>This subcomponent will only be displayed below the second row.</Text>
           </FlexBox>
         );
@@ -230,7 +230,7 @@ export const Subcomponents: Story = {
           alignItems={FlexBoxAlignItems.Center}
           direction={FlexBoxDirection.Column}
         >
-          <Badge>height: 50px</Badge>
+          <Tag>height: 50px</Tag>
           <Text>This subcomponent will be displayed below all rows except the first, second and third.</Text>
         </FlexBox>
       );

@@ -1,7 +1,8 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
-import { NotificationAction } from '../NotificationAction';
+import { Menu } from '../Menu';
+import { MenuItem } from '../MenuItem';
 import * as ComponentStories from './NotificationListItem.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -29,9 +30,14 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 <Markdown>{SubcomponentsSection}</Markdown>
 
-## NotificationAction
+## Menu
 
-<Description of={NotificationAction} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={NotificationAction} />
+<Description of={Menu} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={Menu} />
+
+## MenuItem
+
+<Description of={MenuItem} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MenuItem} />
 
 <Footer />

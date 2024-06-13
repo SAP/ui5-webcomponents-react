@@ -64,19 +64,19 @@
   flex-shrink: 0;
 }
 
-.typeError {
+.typeNegative {
   .icon {
     color: var(--sapNegativeElementColor);
   }
 }
 
-.typeSuccess {
+.typePositive {
   .icon {
     color: var(--sapPositiveElementColor);
   }
 }
 
-.typeWarning {
+.typeCritical {
   .icon {
     color: var(--sapCriticalElementColor);
   }

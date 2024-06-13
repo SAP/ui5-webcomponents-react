@@ -1,4 +1,5 @@
 import type { ScrollToOptions } from '@tanstack/react-virtual';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ComponentType, ReactNode, Ref } from 'react';
 import type {
   AnalyticalTableScaleWidthMode,
@@ -13,7 +14,6 @@ import type {
   TableSelectionMode,
   TableVisibleRowCountMode,
   TextAlign,
-  ValueState,
   VerticalAlign
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../types/index.js';

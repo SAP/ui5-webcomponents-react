@@ -74,7 +74,6 @@ declare global {
        * @param text text of the ui5-option that should be clicked
        * @param options ClickOptions
        *
-       * @deprecated: This command is deprecated. Please use `clickDropdownMenuItemByText` instead.
        *
        * @example cy.get('[ui5-select]').clickUi5SelectOptionByText('Option2');*
        */
@@ -173,11 +172,12 @@ Cypress.Commands.add('clickUi5ListItemByText', (text) => {
 });
 
 Cypress.Commands.add('clickUi5SelectOptionByText', { prevSubject: 'element' }, (subject, text, options = {}) => {
-  cy.wrap(subject).then(async ($select) => {
-    // @ts-expect-error: cannot set $select to use SelectDomRef
-    const domRef = await $select.get(0).getStaticAreaItemDomRef();
-    cy.wrap(domRef).contains(text).click(options);
-  });
+  cy.wrap(subject)
+    .contains(text)
+    .then(($option) => {
+      $option.get(0).focus();
+    })
+    .click(options);
 });
 
 Cypress.Commands.add('clickUi5SelectOption', { prevSubject: 'element' }, (subject, options = {}) => {
@@ -189,21 +189,21 @@ Cypress.Commands.add('clickUi5SelectOption', { prevSubject: 'element' }, (subjec
 });
 
 Cypress.Commands.add('clickDropdownMenuItemByText', { prevSubject: 'element' }, (subject, text, options = {}) => {
-  cy.wrap(subject).then(async ($dropdown) => {
-    // @ts-expect-error: ui5-webcomponent types are not bundled in
-    const staticArea = await $dropdown.get(0).getStaticAreaItemDomRef();
-    cy.wrap(staticArea).find('[ui5-responsive-popover][open]').should('be.visible');
-    // necessary as otherwise focusing the ui5-li is flaky
-    cy.wait(300);
-    cy.wrap(staticArea)
-      .contains(text)
-      .then(async ($li) => {
-        await $li.get(0).focus();
-        cy.wrap($li)
-          .find('li')
-          .click({ force: true, ...options });
-      });
-  });
+  cy.wrap(subject)
+    .find('[ui5-responsive-popover]')
+    .then(($popover) => {
+      cy.wrap($popover).should('have.attr', 'open');
+      // necessary as otherwise focusing the ui5-li is flaky
+      cy.wait(300);
+      cy.wrap($popover)
+        .contains(text)
+        .then(($li) => {
+          $li.get(0).focus();
+          cy.wrap($li)
+            .find('li')
+            .click({ force: true, ...options });
+        });
+    });
 });
 
 Cypress.Commands.add('clickDropdownMenuItem', { prevSubject: 'element' }, (subject, options = {}) => {
@@ -221,7 +221,7 @@ Cypress.Commands.add('openDropDownByClick', { prevSubject: 'element' }, (subject
     // mcb needs a lot of calculation time to make the popover available
     cy.wait(500);
   }
-  cy.wrap(subject).shadow().find('[input-icon]').click(options);
+  cy.wrap(subject).shadow().find('.inputIcon').click(options);
 });
 
 export {};

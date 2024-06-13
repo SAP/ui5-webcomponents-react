@@ -41,7 +41,7 @@ const MyComponentWithMenu = () => {
       <Menu
         opener={'openMenuBtn'}
         open={menuIsOpen}
-        onAfterClose={() => {
+        onClose={() => {
           setMenuIsOpen(false);
         }}
       />

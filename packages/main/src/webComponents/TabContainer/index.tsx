@@ -1,10 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TabContainer.js';
-import type { ITab, TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/TabContainer.js';
-import type TabContainerBackgroundDesign from '@ui5/webcomponents/dist/types/TabContainerBackgroundDesign.js';
+import type {
+  ITab,
+  TabContainerMoveEventDetail,
+  TabContainerTabSelectEventDetail
+} from '@ui5/webcomponents/dist/TabContainer.js';
+import type BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
+import type OverflowMode from '@ui5/webcomponents/dist/types/OverflowMode.js';
 import type TabLayout from '@ui5/webcomponents/dist/types/TabLayout.js';
-import type TabsOverflowMode from '@ui5/webcomponents/dist/types/TabsOverflowMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
@@ -22,14 +26,7 @@ interface TabContainerAttributes {
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    * @default "Solid"
    */
-  contentBackgroundDesign?: TabContainerBackgroundDesign | keyof typeof TabContainerBackgroundDesign;
-
-  /**
-   * Defines whether the tabs are in a fixed state that is not
-   * expandable/collapsible by user interaction.
-   * @default false
-   */
-  fixed?: boolean;
+  contentBackgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
 
   /**
    * Sets the background color of the Tab Container's header as `Solid`, `Transparent`, or `Translucent`.
@@ -37,28 +34,7 @@ interface TabContainerAttributes {
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    * @default "Solid"
    */
-  headerBackgroundDesign?: TabContainerBackgroundDesign | keyof typeof TabContainerBackgroundDesign;
-
-  /**
-* Defines whether the overflow select list is displayed.
-* 
-* The overflow select list represents a list, where all tabs are displayed
-* so that it's easier for the user to select a specific tab.
-* @default false
-* @deprecated Since the introduction of TabsOverflowMode, overflows will always be visible if there is not enough space for all tabs,
-all hidden tabs are moved to a select list in the respective overflows and are accessible via the `overflowButton` and / or `startOverflowButton` slots.
-*/
-  showOverflow?: boolean;
-
-  /**
-   * Defines the alignment of the content and the `additionalText` of a tab.
-   *
-   * **Note:**
-   * The content and the `additionalText` would be displayed vertically by default,
-   * but when set to `Inline`, they would be displayed horizontally.
-   * @default "Standard"
-   */
-  tabLayout?: TabLayout | keyof typeof TabLayout;
+  headerBackgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
 
   /**
    * Defines the overflow mode of the header (the tab strip). If you have a large number of tabs, only the tabs that can fit on screen will be visible.
@@ -71,7 +47,17 @@ all hidden tabs are moved to a select list in the respective overflows and are a
    * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
    * @default "End"
    */
-  tabsOverflowMode?: TabsOverflowMode | keyof typeof TabsOverflowMode;
+  overflowMode?: OverflowMode | keyof typeof OverflowMode;
+
+  /**
+   * Defines the alignment of the content and the `additionalText` of a tab.
+   *
+   * **Note:**
+   * The content and the `additionalText` would be displayed vertically by default,
+   * but when set to `Inline`, they would be displayed horizontally.
+   * @default "Standard"
+   */
+  tabLayout?: TabLayout | keyof typeof TabLayout;
 }
 
 interface TabContainerDomRef extends Required<TabContainerAttributes>, Ui5DomRef {
@@ -86,7 +72,13 @@ interface TabContainerPropTypes
   extends TabContainerAttributes,
     Omit<
       CommonProps,
-      keyof TabContainerAttributes | 'children' | 'overflowButton' | 'startOverflowButton' | 'onTabSelect'
+      | keyof TabContainerAttributes
+      | 'children'
+      | 'overflowButton'
+      | 'startOverflowButton'
+      | 'onMove'
+      | 'onMoveOver'
+      | 'onTabSelect'
     > {
   /**
    * Defines the tabs.
@@ -121,9 +113,31 @@ interface TabContainerPropTypes
    */
   startOverflowButton?: UI5WCSlotsNode;
   /**
+   * Fired when element is moved to the tab container.
+   *
+   * **Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   */
+  onMove?: (event: Ui5CustomEvent<TabContainerDomRef, TabContainerMoveEventDetail>) => void;
+
+  /**
+   * Fired when element is being moved over the tab container.
+   *
+   * If the new position is valid, prevent the default action of the event using `preventDefault()`.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onMoveOver?: (event: Ui5CustomEvent<TabContainerDomRef, TabContainerMoveEventDetail>) => void;
+
+  /**
    * Fired when a tab is selected.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    */
   onTabSelect?: (event: Ui5CustomEvent<TabContainerDomRef, TabContainerTabSelectEventDetail>) => void;
 }
@@ -162,10 +176,10 @@ interface TabContainerPropTypes
  */
 const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>(
   'ui5-tabcontainer',
-  ['contentBackgroundDesign', 'headerBackgroundDesign', 'tabLayout', 'tabsOverflowMode'],
-  ['collapsed', 'fixed', 'showOverflow'],
+  ['contentBackgroundDesign', 'headerBackgroundDesign', 'overflowMode', 'tabLayout'],
+  ['collapsed'],
   ['overflowButton', 'startOverflowButton'],
-  ['tab-select'],
+  ['move-over', 'move', 'tab-select'],
   () => import('@ui5/webcomponents/dist/TabContainer.js')
 );
 

@@ -60,9 +60,9 @@ function showDialog<ContainerElement>(
       props: {
         ...props,
         open: true,
-        onAfterClose: (event) => {
-          if (typeof props.onAfterClose === 'function') {
-            props.onAfterClose(event);
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
           }
           setModal({
             type: 'reset',
@@ -95,9 +95,9 @@ function showPopover<ContainerElement>(
         ...props,
 
         open: true,
-        onAfterClose: (event) => {
-          if (typeof props.onAfterClose === 'function') {
-            props.onAfterClose(event);
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
           }
           setModal({
             type: 'reset',
@@ -128,9 +128,9 @@ function showResponsivePopover<ContainerElement>(
       props: {
         ...props,
         open: true,
-        onAfterClose: (event) => {
-          if (typeof props.onAfterClose === 'function') {
-            props.onAfterClose(event);
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
           }
           setModal({
             type: 'reset',
@@ -161,9 +161,9 @@ function showMenu<ContainerElement>(
       props: {
         ...props,
         open: true,
-        onAfterClose: (event) => {
-          if (typeof props.onAfterClose === 'function') {
-            props.onAfterClose(event);
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
           }
           setModal({
             type: 'reset',
@@ -226,18 +226,16 @@ function showToast<ContainerElement>(
     payload: {
       Component: Toast,
       props: {
-        ...props
-      },
-      ref: (el: ToastDomRef & { open: boolean }) => {
-        ref.current = el;
-        if (el && !el.open) {
-          el.show();
-          setTimeout(() => {
-            setModal({
-              type: 'reset',
-              payload: { id }
-            });
-          }, props.duration ?? 3000);
+        ...props,
+        open: true,
+        onClose: (event) => {
+          if (typeof props.onClose === 'function') {
+            props.onClose(event);
+          }
+          setModal({
+            type: 'reset',
+            payload: { id }
+          });
         }
       },
       container,
@@ -258,7 +256,9 @@ function showDialogFn<ContainerElement = HTMLElement>(
   return {
     ref,
     close: () => {
-      ref.current?.close();
+      if (ref.current) {
+        ref.current.open = false;
+      }
     }
   };
 }
@@ -277,7 +277,9 @@ function useShowDialogHook<ContainerElement>(): CloseableModalHookReturnType<
       return {
         ref,
         close: () => {
-          ref.current?.close();
+          if (ref.current) {
+            ref.current.open = false;
+          }
         }
       };
     },
@@ -295,7 +297,9 @@ function showPopoverFn<ContainerElement>(
   return {
     ref,
     close: () => {
-      ref.current?.close();
+      if (ref.current) {
+        ref.current.open = false;
+      }
     }
   };
 }
@@ -313,7 +317,9 @@ function useShowPopoverHook<ContainerElement>(): CloseableModalHookReturnType<
       return {
         ref,
         close: () => {
-          ref.current?.close();
+          if (ref.current) {
+            ref.current.open = false;
+          }
         }
       };
     },
@@ -331,7 +337,9 @@ function showResponsivePopoverFn<ContainerElement>(
   return {
     ref,
     close: () => {
-      ref.current?.close();
+      if (ref.current) {
+        ref.current.open = false;
+      }
     }
   };
 }
@@ -349,7 +357,9 @@ function useShowResponsivePopoverHook<ContainerElement>(): CloseableModalHookRet
       return {
         ref,
         close: () => {
-          ref.current?.close();
+          if (ref.current) {
+            ref.current.open = false;
+          }
         }
       };
     },
@@ -367,7 +377,9 @@ function showMenuFn<ContainerElement>(
   return {
     ref,
     close: () => {
-      ref.current?.close();
+      if (ref.current) {
+        ref.current.open = false;
+      }
     }
   };
 }
@@ -385,7 +397,9 @@ function useShowMenuHook<ContainerElement>(): CloseableModalHookReturnType<
       return {
         ref,
         close: () => {
-          ref.current?.close();
+          if (ref.current) {
+            ref.current.open = false;
+          }
         }
       };
     },
@@ -403,10 +417,13 @@ function showMessageBoxFn<ContainerElement>(
   return {
     ref,
     close: () => {
-      ref.current?.close();
+      if (ref.current) {
+        ref.current.open = false;
+      }
     }
   };
 }
+
 function useShowMessageBox<ContainerElement>(): CloseableModalHookReturnType<
   MessageBoxPropTypes,
   DialogDomRef,
@@ -420,7 +437,9 @@ function useShowMessageBox<ContainerElement>(): CloseableModalHookReturnType<
       return {
         ref,
         close: () => {
-          ref.current?.close();
+          if (ref.current) {
+            ref.current.open = false;
+          }
         }
       };
     },

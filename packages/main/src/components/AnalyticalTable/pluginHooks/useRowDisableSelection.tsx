@@ -66,9 +66,16 @@ const columns = (columns) => {
 
 /**
  * A plugin hook for disabling row selection of specific rows.
+ *
  * __Note:__ The "Select All" checkbox is not available with this hook.
  *
  * @param disableRowSelection - Can be either a `string` or a `function`. `string:` Defines the key in the dataset for disabling rows. If the value of the key is `true`, then the row will not be selectable. `function:` Programmatically disable rows for selection. The function receives the current row as parameter.
+ *
+ * @deprecated It is not recommended to disable table rows, mainly because of the following reasons:
+ *
+ * * Users are not informed why items cannot be selected.
+ * * ARIA lacks built-in support for selective item selection, complicating accessibility.
+ * * Consistency to other applications which do not offer disabled items.
  */
 export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionType) => {
   const disableRowAccessor =

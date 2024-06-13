@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
+import UploadState from '@ui5/webcomponents-fiori/dist/types/UploadState.js';
 import documentIcon from '@ui5/webcomponents-icons/dist/document.js';
 import { Children, cloneElement, useState } from 'react';
 import { FlexBox } from '../../components/FlexBox/index.js';
 import { Text } from '../../components/Text/index.js';
-import { FlexBoxAlignItems, ListMode, UploadState } from '../../enums/index.js';
+import { FlexBoxAlignItems } from '../../enums/index.js';
 import { Button } from '../Button/index.js';
 import { Icon } from '../Icon/index.js';
 import { Title } from '../Title/index.js';
@@ -18,7 +20,7 @@ const meta = {
     header: { control: { disable: true } }
   },
   args: {
-    mode: ListMode.None
+    selectionMode: ListSelectionMode.None
   },
   tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof UploadCollection>;
@@ -61,7 +63,7 @@ export const SimulateUpload: Story = {
         key={'0'}
         file={null}
         fileName={'file-name.txt'}
-        thumbnail={<img src="https://sap.github.io/ui5-webcomponents/images/logo.png" />}
+        thumbnail={<img src="https://sap.github.io/ui5-webcomponents/img/logo.png" />}
       >
         <Text>Uploaded by: Susanne Schmitt · Uploaded On: 2019-04-20</Text>
       </UploadCollectionItem>
