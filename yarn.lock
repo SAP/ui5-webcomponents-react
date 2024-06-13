@@ -19056,14 +19056,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:19.0.0-rc-827cbea417-20240606":
-  version: 19.0.0-rc-827cbea417-20240606
-  resolution: "react-dom@npm:19.0.0-rc-827cbea417-20240606"
+"react-dom@npm:19.0.0-rc-f994737d14-20240522":
+  version: 19.0.0-rc-f994737d14-20240522
+  resolution: "react-dom@npm:19.0.0-rc-f994737d14-20240522"
   dependencies:
-    scheduler: "npm:0.25.0-rc-827cbea417-20240606"
+    scheduler: "npm:0.25.0-rc-f994737d14-20240522"
   peerDependencies:
-    react: 19.0.0-rc-827cbea417-20240606
-  checksum: 10c0/7db8f3534e1828564c4f3c44319a26697e3176f4e338f67dc8eefddf4639f8dc1f77eb54d21dbc9a69cc73e10647786f873577c70b65d9eb62091ea78b0a8a3d
+    react: 19.0.0-rc-f994737d14-20240522
+  checksum: 10c0/ccc01d625a7c23c6b4dd0eef4fe39adad2cbfa8c436144b4482411feadd775481e2d2a2906c686f25cf6946e0d2cefb8eb96171b19ac33e691bab40c9e13cc49
   languageName: node
   linkType: hard
 
@@ -19187,10 +19187,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:19.0.0-rc-827cbea417-20240606":
-  version: 19.0.0-rc-827cbea417-20240606
-  resolution: "react@npm:19.0.0-rc-827cbea417-20240606"
-  checksum: 10c0/35dda576f794d20eff1cb6603c489d6defd3fabf8a894ead1b56c58033509fe9d2a46e5cb059ed40321c689cb9b9ab8f27f32228f9d47e7118fd23d618567d67
+"react@npm:19.0.0-rc-f994737d14-20240522":
+  version: 19.0.0-rc-f994737d14-20240522
+  resolution: "react@npm:19.0.0-rc-f994737d14-20240522"
+  checksum: 10c0/2824ce543143529b327e2f37e21e0926578675bb9b00b7d4df147eaabef19ee326eb16fb5ef6ce01d0788fd91ee346566d908eab5483e82709e343f4b9298342
   languageName: node
   linkType: hard
 
@@ -20084,10 +20084,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:0.25.0-rc-827cbea417-20240606":
-  version: 0.25.0-rc-827cbea417-20240606
-  resolution: "scheduler@npm:0.25.0-rc-827cbea417-20240606"
-  checksum: 10c0/d3c0501ff69f59f774dc6eee0561ea016581b2d21d26e2aee16690fd9829d8269ce434f96b7e5082c4efd2ceec3bd8163676ad21bc1d334161d3d8abb400dbe0
+"scheduler@npm:0.25.0-rc-f994737d14-20240522":
+  version: 0.25.0-rc-f994737d14-20240522
+  resolution: "scheduler@npm:0.25.0-rc-f994737d14-20240522"
+  checksum: 10c0/7d538084e6a1c328a90f09d071aaad5fb04ab8343655c4831e664a59003c6165c355c58333ba83ef045a010b8ce99d1595d6a7e700fe56ab693b2f52c084d2c1
   languageName: node
   linkType: hard
 
@@ -22007,8 +22007,8 @@ __metadata:
     postcss-modules: "npm:^6.0.0"
     postcss-nesting: "npm:^12.0.3"
     prettier: "npm:^3.0.0"
-    react: "npm:19.0.0-rc-827cbea417-20240606"
-    react-dom: "npm:19.0.0-rc-827cbea417-20240606"
+    react: "npm:19.0.0-rc-f994737d14-20240522"
+    react-dom: "npm:19.0.0-rc-f994737d14-20240522"
     remark-gfm: "npm:^4.0.0"
     rimraf: "npm:^5.0.0"
     storybook: "npm:8.0.10"
