@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToggleButton.js';
-import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
+import type { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
 import type ButtonAccessibleRole from '@ui5/webcomponents/dist/types/ButtonAccessibleRole.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
@@ -26,7 +26,7 @@ interface ToggleButtonAttributes {
   /**
    * Describes the accessibility role of the button.
    *
-   * **Note:** Use link role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
+   * **Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.
    *
    * **Note:** Available since [v1.23](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23) of **@ui5/webcomponents**.
    * @default "Button"
@@ -48,6 +48,19 @@ interface ToggleButtonAttributes {
   disabled?: boolean;
 
   /**
+   * Defines the icon, displayed as graphical element within the component after the button text.
+   *
+   * **Note:** It is highly recommended to use `endIcon` property only together with `icon` and/or `text` properties.
+   * Usage of `endIcon` only should be avoided.
+   *
+   * The SAP-icons font provides numerous options.
+   *
+   * Example:
+   * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   */
+  endIcon?: string;
+
+  /**
    * Defines the icon, displayed as graphical element within the component.
    * The SAP-icons font provides numerous options.
    *
@@ -55,12 +68,6 @@ interface ToggleButtonAttributes {
    * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
-
-  /**
-   * Defines whether the icon should be displayed after the component text.
-   * @default false
-   */
-  iconEnd?: boolean;
 
   /**
    * Determines whether the component is displayed as pressed.
@@ -72,8 +79,7 @@ interface ToggleButtonAttributes {
    * When set to `true`, the component will
    * automatically submit the nearest HTML form element on `press`.
    *
-   * **Note:** For the `submits` property to have effect, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Note:** This property is only applicable within the context of an HTML Form element.`
    * @default false
    * @deprecated Set the "type" property to "Submit" to achieve the same result. The "submits" property is ignored if "type" is set to any value other than "Button".
    */
@@ -91,8 +97,7 @@ interface ToggleButtonAttributes {
   /**
    * Defines whether the button has special form-related functionality.
    *
-   * **Note:** For the `type` property to have effect, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
+   * **Note:** This property is only applicable within the context of an HTML Form element.
    *
    * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
    * @default "Button"
@@ -102,27 +107,21 @@ interface ToggleButtonAttributes {
 
 interface ToggleButtonDomRef extends Required<ToggleButtonAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values
-   * for customization depending on the use case.
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
    *
-   * It supports the following fields:
+   * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
+   * Accepts the following string values: `true` or `false`
    *
-   * - `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
-   * - `true`
-   * - `false`
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
    *
-   * - `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
-   * - `Dialog`
-   * - `Grid`
-   * - `ListBox`
-   * - `Menu`
-   * - `Tree`
-   *
-   * - `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
+   * - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
+   * Accepts a lowercase string value.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    */
-  accessibilityAttributes: AccessibilityAttributes;
+  accessibilityAttributes: ButtonAccessibilityAttributes;
 }
 
 interface ToggleButtonPropTypes
@@ -160,8 +159,8 @@ interface ToggleButtonPropTypes
  */
 const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>(
   'ui5-toggle-button',
-  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'icon', 'tooltip', 'type'],
-  ['disabled', 'iconEnd', 'pressed', 'submits'],
+  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'endIcon', 'icon', 'tooltip', 'type'],
+  ['disabled', 'pressed', 'submits'],
   [],
   ['click'],
   () => import('@ui5/webcomponents/dist/ToggleButton.js')

@@ -5,7 +5,7 @@ import type {
   ISegmentedButtonItem,
   SegmentedButtonSelectionChangeEventDetail
 } from '@ui5/webcomponents/dist/SegmentedButton.js';
-import type SegmentedButtonMode from '@ui5/webcomponents/dist/types/SegmentedButtonMode.js';
+import type SegmentedButtonSelectionMode from '@ui5/webcomponents/dist/types/SegmentedButtonSelectionMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
@@ -23,20 +23,12 @@ interface SegmentedButtonAttributes {
    * Defines the component selection mode.
    *
    * **Note:** Available since [v1.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.14.0) of **@ui5/webcomponents**.
-   * @default "SingleSelect"
+   * @default "Single"
    */
-  mode?: SegmentedButtonMode | keyof typeof SegmentedButtonMode;
+  selectionMode?: SegmentedButtonSelectionMode | keyof typeof SegmentedButtonSelectionMode;
 }
 
 interface SegmentedButtonDomRef extends Required<SegmentedButtonAttributes>, Ui5DomRef {
-  /**
-* Currently selected item.
-*
-* @deprecated since 1.14.0. This method will be removed in the next major release.
-Please use the `selectedItems` property instead.
-*/
-  readonly selectedItem: ISegmentedButtonItem | undefined;
-
   /**
    * Returns an array of the currently selected items.
    *
@@ -67,7 +59,6 @@ interface SegmentedButtonPropTypes
  * one of the items, it stays in a pressed state. It automatically resizes the items
  * to fit proportionally within the component. When no width is set, the component uses the available width.
  *
- * **Note:** There can be just one selected `item` at a time.
  *
  *
  *
@@ -75,7 +66,7 @@ interface SegmentedButtonPropTypes
  */
 const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButtonDomRef>(
   'ui5-segmented-button',
-  ['accessibleName', 'mode'],
+  ['accessibleName', 'selectionMode'],
   [],
   [],
   ['selection-change'],

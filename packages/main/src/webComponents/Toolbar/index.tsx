@@ -27,9 +27,9 @@ interface ToolbarAttributes {
 interface ToolbarDomRef extends Required<ToolbarAttributes>, Ui5DomRef {
   /**
    * Returns if the overflow popup is open.
-   * @returns {Promise<boolean>}
+   * @returns {boolean}
    */
-  isOverflowOpen: () => Promise<boolean>;
+  isOverflowOpen: () => boolean;
 }
 
 interface ToolbarPropTypes extends ToolbarAttributes, Omit<CommonProps, keyof ToolbarAttributes | 'children'> {

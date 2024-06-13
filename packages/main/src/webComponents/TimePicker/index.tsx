@@ -1,17 +1,14 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TimePicker.js';
-import type {
-  TimePickerBaseChangeEventDetail,
-  TimePickerBaseInputEventDetail
-} from '@ui5/webcomponents/dist/TimePickerBase.js';
+import type { TimePickerChangeEventDetail, TimePickerInputEventDetail } from '@ui5/webcomponents/dist/TimePicker.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TimePickerAttributes {
   /**
-   * Determines whether the `TimePicker` is displayed as disabled.
+   * Defines the disabled state of the comonent.
    * @default false
    */
   disabled?: boolean;
@@ -27,6 +24,23 @@ interface TimePickerAttributes {
   formatPattern?: string;
 
   /**
+   * Determines the name by which the component will be identified upon submission in an HTML form.
+   *
+   * **Note:** This property is only applicable within the context of an HTML Form element.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  name?: string;
+
+  /**
+   * Defines the open or closed state of the popover.
+   *
+   * **Note:** Available since [v2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  open?: boolean;
+
+  /**
    * Defines a short hint, intended to aid the user with data entry when the
    * component has no value.
    *
@@ -37,7 +51,7 @@ interface TimePickerAttributes {
   placeholder?: string | undefined;
 
   /**
-   * Determines whether the `TimePicker` is displayed as readonly.
+   * Defines the readonly state of the comonent.
    * @default false
    */
   readonly?: boolean;
@@ -49,19 +63,13 @@ interface TimePickerAttributes {
   value?: string | undefined;
 
   /**
-   * Defines the value state of the `TimePicker`.
+   * Defines the value state of the component.
    * @default "None"
    */
   valueState?: ValueState | keyof typeof ValueState;
 }
 
 interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
-  /**
-   * Closes the picker
-   * @returns {Promise<void>} - Resolves when the picker is closed
-   */
-  closePicker: () => Promise<void>;
-
   /**
    * Currently selected time represented as JavaScript Date instance
    */
@@ -76,12 +84,6 @@ interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
   formatValue: (date: Date) => string;
 
   /**
-   * Checks if the picker is open
-   * @returns {boolean}
-   */
-  isOpen: () => boolean;
-
-  /**
    * Checks if a value is valid against the current `formatPattern` value.
    *
    * **Note:** an empty string is considered as valid value.
@@ -89,17 +91,14 @@ interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
    * @returns {boolean}
    */
   isValid: (value: string | undefined) => boolean;
-
-  /**
-   * Opens the picker.
-   * @returns {Promise<void>} - Resolves when the picker is open
-   */
-  openPicker: () => Promise<void>;
 }
 
 interface TimePickerPropTypes
   extends TimePickerAttributes,
-    Omit<CommonProps, keyof TimePickerAttributes | 'valueStateMessage' | 'onChange' | 'onInput'> {
+    Omit<
+      CommonProps,
+      keyof TimePickerAttributes | 'valueStateMessage' | 'onChange' | 'onClose' | 'onInput' | 'onOpen'
+    > {
   /**
    * Defines the value state message that will be displayed as pop up under the `TimePicker`.
    *
@@ -119,12 +118,26 @@ interface TimePickerPropTypes
    * Fired when the input operation has finished by clicking the "OK" button or
    * when the text in the input field has changed and the focus leaves the input field.
    */
-  onChange?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerBaseChangeEventDetail>) => void;
+  onChange?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerChangeEventDetail>) => void;
+
+  /**
+   * Fired after the value-help dialog of the component is closed.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onClose?: (event: Ui5CustomEvent<TimePickerDomRef>) => void;
 
   /**
    * Fired when the value of the `TimePicker` is changed at each key stroke.
    */
-  onInput?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerBaseInputEventDetail>) => void;
+  onInput?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerInputEventDetail>) => void;
+
+  /**
+   * Fired after the value-help dialog of the component is opened.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onOpen?: (event: Ui5CustomEvent<TimePickerDomRef>) => void;
 }
 
 /**
@@ -184,10 +197,10 @@ interface TimePickerPropTypes
  */
 const TimePicker = withWebComponent<TimePickerPropTypes, TimePickerDomRef>(
   'ui5-time-picker',
-  ['formatPattern', 'placeholder', 'value', 'valueState'],
-  ['disabled', 'readonly'],
+  ['formatPattern', 'name', 'placeholder', 'value', 'valueState'],
+  ['disabled', 'open', 'readonly'],
   ['valueStateMessage'],
-  ['change', 'input'],
+  ['change', 'close', 'input', 'open'],
   () => import('@ui5/webcomponents/dist/TimePicker.js')
 );
 

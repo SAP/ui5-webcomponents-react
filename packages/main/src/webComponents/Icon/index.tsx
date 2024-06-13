@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/Icon.js';
 import type IconDesign from '@ui5/webcomponents/dist/types/IconDesign.js';
+import type IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
@@ -16,13 +17,6 @@ interface IconAttributes {
   accessibleName?: string;
 
   /**
-   * Defines the accessibility role of the component.
-   *
-   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
-   */
-  accessibleRole?: string;
-
-  /**
    * Defines the component semantic design.
    *
    * **Note:** Available since [v1.9.2](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.2) of **@ui5/webcomponents**.
@@ -31,10 +25,12 @@ interface IconAttributes {
   design?: IconDesign | keyof typeof IconDesign;
 
   /**
-   * Defines if the icon is interactive (focusable and pressable)
-   * @default false
+   * Defines the mode of the component.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default "Image"
    */
-  interactive?: boolean;
+  mode?: IconMode | keyof typeof IconMode;
 
   /**
    * Defines the unique identifier (icon name) of the component.
@@ -129,7 +125,7 @@ interface IconPropTypes extends IconAttributes, Omit<CommonProps, keyof IconAttr
  *
  * ### Keyboard Handling
  *
- * - [Space] / [Enter] or [Return] - Fires the `click` event if the `interactive` property is set to true.
+ * - [Space] / [Enter] or [Return] - Fires the `click` event if the `mode` property is set to `Interactive`.
  * - [Shift] - If [Space] / [Enter] or [Return] is pressed, pressing [Shift] releases the ui5-icon without triggering the click event.
  *
  *
@@ -138,8 +134,8 @@ interface IconPropTypes extends IconAttributes, Omit<CommonProps, keyof IconAttr
  */
 const Icon = withWebComponent<IconPropTypes, IconDomRef>(
   'ui5-icon',
-  ['accessibleName', 'accessibleRole', 'design', 'name'],
-  ['interactive', 'showTooltip'],
+  ['accessibleName', 'design', 'mode', 'name'],
+  ['showTooltip'],
   [],
   [],
   () => import('@ui5/webcomponents/dist/Icon.js')

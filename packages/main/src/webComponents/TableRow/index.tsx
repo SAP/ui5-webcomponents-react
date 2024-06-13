@@ -1,7 +1,7 @@
 'use client';
 
-import '@ui5/webcomponents/dist/TableRow.js';
-import type TableRowType from '@ui5/webcomponents/dist/types/TableRowType.js';
+import '@ui5/webcomponents-compat/dist/TableRow.js';
+import type TableRowType from '@ui5/webcomponents-compat/dist/types/TableRowType.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
@@ -53,7 +53,7 @@ const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   ['navigated', 'selected'],
   [],
   [],
-  () => import('@ui5/webcomponents/dist/TableRow.js')
+  () => import('@ui5/webcomponents-compat/dist/TableRow.js')
 );
 
 TableRow.displayName = 'TableRow';

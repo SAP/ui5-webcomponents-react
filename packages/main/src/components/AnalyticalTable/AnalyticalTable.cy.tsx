@@ -1,19 +1,19 @@
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useMemo, useRef, useState, version as reactVersion } from 'react';
+import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
 import {
   AnalyticalTable,
   AnalyticalTableHooks,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
-  AnalyticalTableSubComponentsBehavior,
   AnalyticalTableSelectionMode,
+  AnalyticalTableSubComponentsBehavior,
   AnalyticalTableVisibleRowCountMode,
-  ValueState,
   Button,
-  Input,
-  IndicationColor
+  IndicationColor,
+  Input
 } from '../..';
-import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
@@ -59,8 +59,8 @@ const data = [
       name: 'Lorem',
       age: 28
     },
-    status: ValueState.Success,
-    navigation: ValueState.Error
+    status: ValueState.Positive,
+    navigation: ValueState.Negative
   },
   {
     name: 'B',
@@ -1659,9 +1659,9 @@ describe('AnalyticalTable', () => {
     const successColor = cssVarToRgb(ThemingParameters.sapSuccessColor);
     const localData = data.map((item, index) => {
       if ((index + 1) % 2) {
-        return { ...item, status: ValueState.Error };
+        return { ...item, status: ValueState.Negative };
       }
-      return { ...item, highlight: ValueState.Success };
+      return { ...item, highlight: ValueState.Positive };
     });
     const indicationData = new Array(9)
       .fill('')
@@ -1720,9 +1720,9 @@ describe('AnalyticalTable', () => {
         highlightField={(row) => {
           switch (row.name) {
             case 'A':
-              return ValueState.Error;
+              return ValueState.Negative;
             case 'B':
-              return 'Success';
+              return 'Positive';
             case 'X':
               return IndicationColor.Indication01;
             case 'C':

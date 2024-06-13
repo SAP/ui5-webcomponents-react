@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ValueState } from '../../enums/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { MultiComboBoxGroupItem } from '../MultiComboBoxGroupItem/index.js';
 import { MultiComboBoxItem } from '../MultiComboBoxItem/index.js';
 import { MultiComboBox } from './index.js';

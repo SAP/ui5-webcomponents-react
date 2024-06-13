@@ -6,7 +6,7 @@
       "name": "Daisy Giles",
       "age": 33
     },
-    "status": "Error",
+    "status": "Negative",
     "isSelected": true
   },
   {
@@ -35,7 +35,7 @@
       "name": "Lee Johnson",
       "age": 61
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "England Whitehead",
@@ -63,7 +63,7 @@
       "name": "Madge Mitchell",
       "age": 48
     },
-    "status": "Warning"
+    "status": "Critical"
   },
   {
     "name": "Malone Hampton",
@@ -72,7 +72,7 @@
       "name": "Landry Hancock",
       "age": 33
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Lorna Hinton",
@@ -90,7 +90,7 @@
       "name": "Nell Hines",
       "age": 82
     },
-    "status": "Error",
+    "status": "Negative",
     "isSelected": true
   },
   {
@@ -109,7 +109,7 @@
       "name": "Vasquez Craft",
       "age": 79
     },
-    "status": "Warning"
+    "status": "Critical"
   },
   {
     "name": "Trisha Ellis",
@@ -118,7 +118,7 @@
       "name": "Jacobs Ramsey",
       "age": 41
     },
-    "status": "Success"
+    "status": "Positive"
   },
   {
     "name": "Bowers Rowe",
@@ -136,7 +136,7 @@
       "name": "Manning Jenkins",
       "age": 57
     },
-    "status": "Error",
+    "status": "Negative",
     "isSelected": true
   },
   {
@@ -164,7 +164,7 @@
       "name": "Benjamin Rodriguez",
       "age": 76
     },
-    "status": "Error",
+    "status": "Negative",
     "isSelected": true
   },
   {
@@ -174,7 +174,7 @@
       "name": "Simon Morin",
       "age": 20
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Marquita Morrison",
@@ -183,7 +183,7 @@
       "name": "Mitzi Blake",
       "age": 80
     },
-    "status": "Error"
+    "status": "Negative"
   },
   {
     "name": "Lula Mason",
@@ -220,7 +220,7 @@
       "name": "Horton Smith",
       "age": 37
     },
-    "status": "Warning"
+    "status": "Critical"
   },
   {
     "name": "Moreno Moore",

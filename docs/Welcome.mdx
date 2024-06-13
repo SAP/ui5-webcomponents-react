@@ -159,7 +159,7 @@ export default function App() {
   const handleClick: ButtonPropTypes['onClick'] = (e) => {
     setOpen(true);
   };
-  const handleAfterClose: PopoverPropTypes['onAfterClose'] = (e) => {
+  const handleAfterClose: PopoverPropTypes['onClose'] = (e) => {
     setOpen(false);
   };
 
@@ -168,7 +168,7 @@ export default function App() {
       <Button id="opener" onClick={handleClick}>
         Open Popover
       </Button>
-      <Popover ref={popoverRef} opener="opener" open={open} onAfterClose={handleAfterClose}>
+      <Popover ref={popoverRef} opener="opener" open={open} onClose={handleAfterClose}>
         Content
       </Popover>
     </ThemeProvider>

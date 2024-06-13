@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
-import type ListMode from '@ui5/webcomponents/dist/types/ListMode.js';
+import type UploadCollectionSelectionMode from '@ui5/webcomponents-fiori/dist/types/UploadCollectionSelectionMode.js';
 import type {
   UploadCollectionItemDeleteEventDetail,
   UploadCollectionSelectionChangeEventDetail
@@ -27,15 +27,6 @@ interface UploadCollectionAttributes {
   hideDragOverlay?: boolean;
 
   /**
-   * Defines the mode of the `UploadCollection`.
-   *
-   * **Note:**
-   * Mode "Delete" has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem
-   * @default "None"
-   */
-  mode?: ListMode | keyof typeof ListMode;
-
-  /**
    * Allows you to set your own text for the 'No data' description.
    */
   noDataDescription?: string;
@@ -44,6 +35,12 @@ interface UploadCollectionAttributes {
    * Allows you to set your own text for the 'No data' text.
    */
   noDataText?: string;
+
+  /**
+   * Defines the selection mode of the `UploadCollection`.
+   * @default "None"
+   */
+  selectionMode?: UploadCollectionSelectionMode | keyof typeof UploadCollectionSelectionMode;
 }
 
 interface UploadCollectionDomRef extends Required<UploadCollectionAttributes>, Ui5DomRef {}
@@ -89,7 +86,7 @@ interface UploadCollectionPropTypes
 
   /**
    * Fired when selection is changed by user interaction
-   * in `SingleSelect` and `MultiSelect` modes.
+   * in `Single` and `Multiple` modes.
    */
   onSelectionChange?: (
     event: Ui5CustomEvent<UploadCollectionDomRef, UploadCollectionSelectionChangeEventDetail>
@@ -108,7 +105,7 @@ interface UploadCollectionPropTypes
  */
 const UploadCollection = withWebComponent<UploadCollectionPropTypes, UploadCollectionDomRef>(
   'ui5-upload-collection',
-  ['accessibleName', 'mode', 'noDataDescription', 'noDataText'],
+  ['accessibleName', 'noDataDescription', 'noDataText', 'selectionMode'],
   ['hideDragOverlay'],
   ['header'],
   ['drop', 'item-delete', 'selection-change'],

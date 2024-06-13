@@ -1,12 +1,12 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import '@ui5/webcomponents/dist/Link.js';
 import { AnalyticalCardHeader } from '../AnalyticalCardHeader';
 import { NumericSideIndicator } from '../NumericSideIndicator';
 import { MessageStrip } from '../../webComponents/MessageStrip/index';
-import { MessageStripDesign } from '../../enums/MessageStripDesign';
 import * as ComponentStories from './AnalyticalCard.stories';
 
 <Meta of={ComponentStories} subcomponents={{ AnalyticalCardHeader, NumericSideIndicator }} />
@@ -14,7 +14,7 @@ import * as ComponentStories from './AnalyticalCard.stories';
 <DocsHeader />
 
 <MessageStrip
-  design={MessageStripDesign.Warning}
+  design={MessageStripDesign.Critical}
   children={
     <>
       This component is deprecated and will be removed with our next major release (v2.0.0)! Please use

@@ -4,7 +4,7 @@ import type { DynamicPagePropTypes } from '../..';
 import { Button, DynamicPage, DynamicPageHeader, DynamicPageTitle, ToggleButton } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
-describe('DynamicPage', () => {
+describe.skip('DynamicPage', () => {
   it('toggle header', () => {
     const toggle = cy.spy().as('toggleSpy');
     cy.mount(

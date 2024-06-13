@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import hintIcon from '@ui5/webcomponents-icons/dist/hint.js';
 import leadIcon from '@ui5/webcomponents-icons/dist/lead.js';
 import productIcon from '@ui5/webcomponents-icons/dist/product.js';
 import { useState } from 'react';
-import { ButtonDesign } from '../../enums/ButtonDesign.js';
-import { MessageStripDesign } from '../../enums/MessageStripDesign.js';
-import { WrappingType } from '../../enums/WrappingType.js';
 import { Button } from '../Button/index.js';
 import { CheckBox } from '../CheckBox/index.js';
 import { Input } from '../Input/index.js';

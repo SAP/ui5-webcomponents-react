@@ -1,6 +1,7 @@
 'use client';
 
 import type { TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/TabContainer.js';
+import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
 import {
   debounce,
   deprecationNotice,
@@ -12,7 +13,7 @@ import {
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { AvatarSize, GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
+import { GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
@@ -887,7 +888,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         >
           <TabContainer
             collapsed
-            fixed
             onTabSelect={onTabItemSelect}
             data-component-name="ObjectPageTabContainer"
             className={classNames.tabContainerComponent}
@@ -908,7 +908,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
                   data-section-id={section.props.id}
                   text={section.props.titleText}
                   selected={internalSelectedSectionId === section.props?.id || undefined}
-                  subTabs={subTabs.map((item) => {
+                  items={subTabs.map((item) => {
                     if (!isValidElement(item)) {
                       return null;
                     }

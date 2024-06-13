@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
-import { ButtonDesign } from '../../enums';
 import { Button } from './index.js';
 
 const meta = {

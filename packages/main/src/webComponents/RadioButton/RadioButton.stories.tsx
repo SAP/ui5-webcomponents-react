@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { useId } from 'react';
 import { FlexBox } from '../../components/FlexBox/index.js';
-import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, ValueState } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import { Label } from '../Label/index.js';
 import { RadioButton } from './index.js';
 
@@ -36,8 +37,8 @@ export const RadioButtonGroups: Story = {
         <FlexBox direction={FlexBoxDirection.Column} aria-labelledby={`${uniqueId}-vertical`} role="radiogroup">
           <Label id={`${uniqueId}-vertical`}>Vertical Group: </Label>
           <RadioButton name="GroupB" text="Neutral" valueState={ValueState.None} />
-          <RadioButton name="GroupB" text="Warning" valueState={ValueState.Warning} />
-          <RadioButton name="GroupB" text="Critical" valueState={ValueState.Error} />
+          <RadioButton name="GroupB" text="Warning" valueState={ValueState.Critical} />
+          <RadioButton name="GroupB" text="Critical" valueState={ValueState.Negative} />
         </FlexBox>
       </FlexBox>
     );
@@ -49,14 +50,14 @@ export const RadioButtonStates: Story = {
   render() {
     return (
       <>
-        <RadioButton text="Error" valueState={ValueState.Error} />
-        <RadioButton text="Warning" valueState={ValueState.Warning} />
+        <RadioButton text="Error" valueState={ValueState.Negative} />
+        <RadioButton text="Warning" valueState={ValueState.Critical} />
         <RadioButton text="Disabled" disabled checked />
         <RadioButton text="Readonly" readonly checked />
-        <RadioButton text="Error disabled" disabled valueState={ValueState.Error} checked />
-        <RadioButton text="Warning disabled " disabled valueState={ValueState.Warning} checked />
-        <RadioButton text="Error readonly" readonly valueState={ValueState.Error} checked />
-        <RadioButton text="Warning readonly" readonly valueState={ValueState.Warning} checked />
+        <RadioButton text="Error disabled" disabled valueState={ValueState.Negative} checked />
+        <RadioButton text="Warning disabled " disabled valueState={ValueState.Critical} checked />
+        <RadioButton text="Error readonly" readonly valueState={ValueState.Negative} checked />
+        <RadioButton text="Warning readonly" readonly valueState={ValueState.Critical} checked />
       </>
     );
   }

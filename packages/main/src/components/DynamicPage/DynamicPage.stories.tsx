@@ -1,6 +1,10 @@
 import { ProductsTable } from '@sb/components/ProductsTable';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import PageBackgroundDesign from '@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js';
 import actionIcon from '@ui5/webcomponents-icons/dist/action.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import exitFSIcon from '@ui5/webcomponents-icons/dist/exit-full-screen.js';
@@ -9,14 +13,11 @@ import menu2Icon from '@ui5/webcomponents-icons/dist/menu2';
 import navDownArrowIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import { useReducer, useState } from 'react';
 import {
-  Badge,
   Bar,
-  BarDesign,
   Breadcrumbs,
   BreadcrumbsItem,
   BusyIndicator,
   Button,
-  ButtonDesign,
   DynamicPageHeader,
   DynamicPageTitle,
   FlexBox,
@@ -25,11 +26,10 @@ import {
   Label,
   MessageStrip,
   ObjectStatus,
-  PageBackgroundDesign,
   Panel,
+  Tag,
   Title,
   ToggleButton,
-  ValueState,
   VariantItem,
   VariantManagement
 } from '../..';
@@ -94,7 +94,7 @@ const meta = {
         expandedContent={<MessageStrip>Information (only visible if header content is expanded)</MessageStrip>}
         snappedContent={<MessageStrip>Information (only visible if header content is collapsed/snapped)</MessageStrip>}
       >
-        <Badge>Status: OK</Badge>
+        <Tag>Status: OK</Tag>
       </DynamicPageTitle>
     ),
     headerContent: (
@@ -108,7 +108,7 @@ const meta = {
           <span style={{ width: '1rem' }} />
           <FlexBox direction={FlexBoxDirection.Column}>
             <Label>Availability:</Label>
-            <ObjectStatus state={ValueState.Success}>In Stock</ObjectStatus>
+            <ObjectStatus state={ValueState.Positive}>In Stock</ObjectStatus>
           </FlexBox>
         </FlexBox>
       </DynamicPageHeader>
@@ -230,7 +230,7 @@ export const WithVariants: Story = {
                 }
                 subHeader={<Label>This is a sub header</Label>}
               >
-                <Badge>Status: OK</Badge>
+                <Tag>Status: OK</Tag>
               </DynamicPageTitle>
             }
           >

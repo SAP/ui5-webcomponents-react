@@ -14,12 +14,6 @@ interface ProgressIndicatorAttributes {
   accessibleName?: string;
 
   /**
-   * Defines whether component is in disabled state.
-   * @default false
-   */
-  disabled?: boolean;
-
-  /**
    * Specifies the text value to be displayed in the bar.
    *
    * **Note:**
@@ -72,7 +66,7 @@ interface ProgressIndicatorPropTypes
 const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes, ProgressIndicatorDomRef>(
   'ui5-progress-indicator',
   ['accessibleName', 'displayValue', 'value', 'valueState'],
-  ['disabled', 'hideValue'],
+  ['hideValue'],
   [],
   [],
   () => import('@ui5/webcomponents/dist/ProgressIndicator.js')

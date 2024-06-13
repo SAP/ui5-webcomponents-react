@@ -22,7 +22,7 @@ interface BusyIndicatorAttributes {
 
   /**
    * Defines the size of the component.
-   * @default "Medium"
+   * @default "M"
    */
   size?: BusyIndicatorSize | keyof typeof BusyIndicatorSize;
 

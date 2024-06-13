@@ -4,8 +4,7 @@ import '@ui5/webcomponents/dist/Menu.js';
 import type {
   MenuBeforeCloseEventDetail,
   MenuBeforeOpenEventDetail,
-  MenuItemClickEventDetail,
-  MenuItemFocusEventDetail
+  MenuItemClickEventDetail
 } from '@ui5/webcomponents/dist/Menu.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -13,25 +12,25 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface MenuAttributes {
   /**
+   * Defines the header text of the menu (displayed on mobile).
+   */
+  headerText?: string;
+
+  /**
    * Defines if a loading indicator would be displayed inside the corresponding ui5-menu popover.
    *
    * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
    * @default false
    */
-  busy?: boolean;
+  loading?: boolean;
 
   /**
-   * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover..
+   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover..
    *
    * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
    * @default 1000
    */
-  busyDelay?: number;
-
-  /**
-   * Defines the header text of the menu (displayed on mobile).
-   */
-  headerText?: string;
+  loadingDelay?: number;
 
   /**
    * Indicates if the menu is open
@@ -42,7 +41,9 @@ interface MenuAttributes {
   open?: boolean;
 
   /**
-   * Defines the ID or DOM Reference of the element that the menu is shown at
+   * Defines the ID or DOM Reference of the element at which the menu is shown.
+   * When using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.
+   * You can only set the `opener` attribute to a DOM Reference when using JavaScript.
    *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    */
@@ -51,38 +52,20 @@ interface MenuAttributes {
 
 interface MenuDomRef extends Omit<Required<MenuAttributes>, 'opener'>, Ui5DomRef {
   /**
-   * Closes the Menu.
-   * @returns {void}
-   */
-  close: () => void;
-
-  /**
-   * Defines the ID or DOM Reference of the element that the menu is shown at
+   * Defines the ID or DOM Reference of the element at which the menu is shown.
+   * When using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.
+   * You can only set the `opener` attribute to a DOM Reference when using JavaScript.
    *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    */
   opener: HTMLElement | string;
-
-  /**
-   * Shows the Menu near the opener element.
-   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
-   * @returns {Promise<void>}
-   */
-  showAt: (opener: HTMLElement | EventTarget) => Promise<void>;
 }
 
 interface MenuPropTypes
   extends MenuAttributes,
     Omit<
       CommonProps,
-      | keyof MenuAttributes
-      | 'children'
-      | 'onAfterClose'
-      | 'onAfterOpen'
-      | 'onBeforeClose'
-      | 'onBeforeOpen'
-      | 'onItemClick'
-      | 'onItemFocus'
+      keyof MenuAttributes | 'children' | 'onBeforeClose' | 'onBeforeOpen' | 'onClose' | 'onItemClick' | 'onOpen'
     > {
   /**
    * Defines the items of this component.
@@ -90,20 +73,6 @@ interface MenuPropTypes
    * **Note:** Use `MenuItem` for the intended design.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Fired after the menu is closed. **This event does not bubble.**
-   *
-   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
-   */
-  onAfterClose?: (event: Ui5CustomEvent<MenuDomRef>) => void;
-
-  /**
-   * Fired after the menu is opened. **This event does not bubble.**
-   *
-   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
-   */
-  onAfterOpen?: (event: Ui5CustomEvent<MenuDomRef>) => void;
-
   /**
    * Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. **This event does not bubble.**
    *
@@ -125,6 +94,13 @@ interface MenuPropTypes
   onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
 
   /**
+   * Fired after the menu is closed. **This event does not bubble.**
+   *
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
+   */
+  onClose?: (event: Ui5CustomEvent<MenuDomRef>) => void;
+
+  /**
    * Fired when an item is being clicked.
    *
    * **Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.
@@ -134,11 +110,11 @@ interface MenuPropTypes
   onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
 
   /**
-   * Fired when a menu item receives focus.
+   * Fired after the menu is opened. **This event does not bubble.**
    *
-   * **Note:** Available since [v1.23.1](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.1) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    */
-  onItemFocus?: (event: Ui5CustomEvent<MenuDomRef, MenuItemFocusEventDetail>) => void;
+  onOpen?: (event: Ui5CustomEvent<MenuDomRef>) => void;
 }
 
 /**
@@ -169,10 +145,10 @@ interface MenuPropTypes
  */
 const Menu = withWebComponent<MenuPropTypes, MenuDomRef>(
   'ui5-menu',
-  ['busyDelay', 'headerText', 'opener'],
-  ['busy', 'open'],
+  ['headerText', 'loadingDelay', 'opener'],
+  ['loading', 'open'],
   [],
-  ['after-close', 'after-open', 'before-close', 'before-open', 'item-click', 'item-focus'],
+  ['before-close', 'before-open', 'close', 'item-click', 'open'],
   () => import('@ui5/webcomponents/dist/Menu.js')
 );
 

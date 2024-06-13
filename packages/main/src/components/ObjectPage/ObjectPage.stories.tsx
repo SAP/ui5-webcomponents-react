@@ -1,14 +1,16 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import SampleImage from '@sb/demoImages/Person.png';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
 import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
 import {
   Bar,
-  BarDesign,
   Breadcrumbs,
   BreadcrumbsItem,
   Button,
-  ButtonDesign,
   DynamicPageHeader,
   DynamicPageTitle,
   FlexBox,
@@ -20,7 +22,6 @@ import {
   FormItem,
   Icon,
   IllustratedMessage,
-  IllustrationMessageType,
   Label,
   Link,
   MessageStrip,
@@ -30,8 +31,7 @@ import {
   ObjectStatus,
   Text,
   Title,
-  ToggleButton,
-  ValueState
+  ToggleButton
 } from '../..';
 import { ObjectPage } from './index.js';
 
@@ -88,7 +88,7 @@ const meta = {
         expandedContent={<MessageStrip>Information (only visible if header content is expanded)</MessageStrip>}
         snappedContent={<MessageStrip>Information (only visible if header content is collapsed/snapped)</MessageStrip>}
       >
-        <ObjectStatus state={ValueState.Success}>employed</ObjectStatus>
+        <ObjectStatus state={ValueState.Positive}>employed</ObjectStatus>
       </DynamicPageTitle>
     ),
     headerContent: (

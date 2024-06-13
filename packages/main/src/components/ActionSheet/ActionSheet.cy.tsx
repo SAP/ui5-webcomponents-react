@@ -54,6 +54,7 @@ describe('ActionSheet', () => {
         ))}
       </TestComp>
     );
+    cy.wait(500);
     cy.focused().parent().should('have.text', 'Button0');
     cy.realPress('ArrowDown');
     cy.focused().parent().should('have.text', 'Button1');

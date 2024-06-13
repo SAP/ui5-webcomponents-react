@@ -1,13 +1,14 @@
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import unfavoriteIcon from '@ui5/webcomponents-icons/dist/unfavorite.js';
 import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
 import { useReducer, useRef, useState } from 'react';
-import { ButtonDesign, ValueState } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   DELETE_VIEW,
-  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   MARK_AS_FAVORITE,
   MARK_AS_STANDARD,
   PRIVATE,
@@ -15,6 +16,7 @@ import {
   SELECTED_AS_FAVORITE,
   SPECIFY_VIEW_NAME,
   UNSELECTED_AS_FAVORITE,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   VIEW
 } from '../../i18n/i18n-defaults.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
@@ -159,7 +161,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
         {...props.manageViewsInputProps}
         valueStateMessage={props.manageViewsInputProps?.valueStateMessage ?? <div>{variantNameInvalid}</div>}
         valueState={
-          props.manageViewsInputProps?.valueState ?? (!variantNameInvalid ? ValueState.None : ValueState.Error)
+          props.manageViewsInputProps?.valueState ?? (!variantNameInvalid ? ValueState.None : ValueState.Negative)
         }
         value={children}
         onInput={handleVariantInput}
@@ -178,7 +180,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
               accessibleName={a11yFavoriteText}
               title={iconName === favoriteIcon ? favoriteIconTitleText : unfavoriteIconTitleText}
               name={iconName}
-              interactive
+              mode={IconMode.Interactive}
               style={{ color: ThemingParameters.sapContent_MarkerIconColor, cursor: 'pointer' }}
               onClick={onFavoriteClick}
             />

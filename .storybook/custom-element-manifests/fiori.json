@@ -10,75 +10,9 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/features/CoPilotAnimation.js",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "dist/illustrations/AllIllustrations.js",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/types/BarDesign.js",
-      "declarations": [
-        {
-          "kind": "enum",
-          "name": "BarDesign",
-          "description": "Different types of Bar design",
-          "_ui5privacy": "public",
-          "members": [
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Default type",
-              "default": "Header",
-              "name": "Header",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Subheader type",
-              "default": "Subheader",
-              "name": "Subheader",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Footer type",
-              "default": "Footer",
-              "name": "Footer",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Floating Footer type - there is visible border on all sides",
-              "default": "FloatingFooter",
-              "name": "FloatingFooter",
-              "readonly": true
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "BarDesign",
-            "module": "dist/types/BarDesign.js"
-          }
-        }
-      ]
     },
     {
       "kind": "javascript-module",
@@ -1412,6 +1346,46 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/NotificationListItemImportance.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "NotificationListItemImportance",
+          "description": "Different types of NotificationListItemImportance.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "default": "Standard",
+              "name": "Standard",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "default": "Important",
+              "name": "Important",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NotificationListItemImportance",
+            "module": "dist/types/NotificationListItemImportance.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/PageBackgroundDesign.js",
       "declarations": [
         {
@@ -1691,6 +1665,84 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/UploadCollectionSelectionMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "UploadCollectionSelectionMode",
+          "description": "Different UploadCollection selection modes.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Default mode (no selection).",
+              "default": "None",
+              "name": "None",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Right-positioned single selection mode (only one list item can be selected).",
+              "default": "Single",
+              "name": "Single",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Left-positioned single selection mode (only one list item can be selected).",
+              "default": "SingleStart",
+              "name": "SingleStart",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Selected item is highlighted but no selection element is visible\n(only one list item can be selected).",
+              "default": "SingleEnd",
+              "name": "SingleEnd",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Selected item is highlighted and selection is changed upon arrow navigation\n(only one list item can be selected - this is always the focused item).",
+              "default": "SingleAuto",
+              "name": "SingleAuto",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Multi selection mode (more than one list item can be selected).",
+              "default": "Multiple",
+              "name": "Multiple",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UploadCollectionSelectionMode",
+            "module": "dist/types/UploadCollectionSelectionMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/UploadState.js",
       "declarations": [
         {
@@ -1843,117 +1895,9 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/Assets-static.js",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "dist/Assets.js",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/Bar.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "### Overview\nThe Bar is a container which is primarily used to hold titles, buttons and input elements\nand its design and functionality is the basis for page headers and footers.\nThe component consists of three areas to hold its content - startContent slot, default slot and endContent slot.\nIt has the capability to center content, such as a title, while having other components on the left and right side.\n\n### Usage\nWith the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter.\n\n**Note:** Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.\n\n### Responsive Behavior\nThe default slot will be centered in the available space between the startContent and the endContent areas,\ntherefore it might not always be centered in the entire bar.\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Bar.js\";`",
-          "name": "Bar",
-          "cssParts": [
-            {
-              "description": "Used to style the wrapper of the content of the component",
-              "name": "bar"
-            }
-          ],
-          "slots": [
-            {
-              "name": "startContent",
-              "description": "Defines the content at the start of the bar.",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "default",
-              "description": "Defines the content in the middle of the bar.",
-              "_ui5propertyName": "middleContent",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "endContent",
-              "description": "Defines the content at the end of the bar.",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "design",
-              "type": {
-                "text": "BarDesign",
-                "references": [
-                  {
-                    "name": "BarDesign",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/types/BarDesign.js"
-                  }
-                ]
-              },
-              "description": "Defines the component's design.",
-              "default": "\"Header\"",
-              "privacy": "public",
-              "_ui5validator": "BarDesign"
-            }
-          ],
-          "attributes": [
-            {
-              "description": "Defines the component's design.",
-              "name": "design",
-              "default": "\"Header\"",
-              "fieldName": "design",
-              "type": {
-                "text": "\"Header\" | \"Subheader\" | \"Footer\" | \"FloatingFooter\""
-              }
-            }
-          ],
-          "superclass": {
-            "name": "UI5Element",
-            "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
-          },
-          "tagName": "ui5-bar",
-          "customElement": true,
-          "_ui5since": "1.0.0-rc.11",
-          "_ui5privacy": "public"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "Bar",
-            "module": "dist/Bar.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ui5-bar",
-          "declaration": {
-            "name": "Bar",
-            "module": "dist/Bar.js"
-          }
-        }
-      ]
     },
     {
       "kind": "javascript-module",
@@ -1975,33 +1919,17 @@
               "default": "false",
               "_ui5since": "1.24.0",
               "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "method",
-              "name": "show",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Shows a dialog with the camera videostream. Starts a scan session.",
-              "privacy": "public",
-              "deprecated": "The method is deprecated in favour of <code>open</code> property."
-            },
-            {
-              "kind": "method",
-              "name": "close",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Closes the dialog and the scan session.",
-              "privacy": "public",
-              "deprecated": "The method is deprecated in favour of <code>open</code> property."
             }
           ],
           "events": [
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user closes the component."
+            },
             {
               "name": "scan-success",
               "_ui5privacy": "public",
@@ -2098,6 +2026,387 @@
           "declaration": {
             "name": "BarcodeScannerDialog",
             "module": "dist/BarcodeScannerDialog.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DynamicPage.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nA layout component, representing a web page, consisting of a title, header with dynamic behavior, a content area, and an optional floating footer.\n\nThe component consist of several components:\n\n- `DynamicPageTitle` - a component, holding the title of the page, the navigation actions and the content. The displayed content changes based on the current mode of the `DynamicPageHeader`.\n- `DynamicPageHeader` - a generic container, which can contain a single layout component and any other HTML elements. The header works in two modes - expanded and snapped and its behavior can be adjusted with the help of different properties.\n- `Content area` - a generic container, which can have a single UI5 layout.\n- `Footer` - positioned at the bottom with a small offset and used for additional actions, the footer floats above the content.\n\n### Usage\n\nUse the `DynamicPage` if you need to have a title, that is always visible\nand a header, that has configurable Expanding/Snapping functionality.\nIf you don't need the Expanding/Snapping functionality it is better to use the\n`ui5-page` as a lighter component.\n\nThe app can add to the `default` slot of the ui5-dynamic-page either content that is designed to fit its container (e.g. has 100% height),\nor content with own height that may overflow its container. In the second case the `DynamicPage` will show a scrollbar that allows the user\nscroll through the content.\n\n## Notes:\n\n- Snapping of the `DynamicPageTitle` is not supported in the following case:\n - When the `DynamicPage` has a scroll bar, the component usually scrolls to the snapping point - the point, where the `DynamicPageHeader` is scrolled out completely. However, when there is a scroll bar, but not enough content to reach the snapping point, the snapping is not possible using scrolling.\n\n### Responsive Behavior\n\nDynamic page web component implements the responsive paddings design.\n\n### Keyboard Handling\n\n\n### Basic Navigation\n\n- [SPACE, ENTER, RETURN] - If focus is on a button inside DynamicPageTitle its action is being triggered, once activated.\nIf focus is on the snap header button (arrow button), or on the header itself, once activated, it triggers the associated action (such as snap/expand the header).\nIf focus is on pin button (the button with pin icon on the bottom of the header), once activated, it triggers the associated action (pinning of the header).\n\n### Fast Navigation\n- This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or ` Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up`.\nIn order to use this functionality, you need to import the following module:\n\n- `import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/DynamicPage.js\";`",
+          "name": "DynamicPage",
+          "cssParts": [
+            {
+              "description": "Used to style the content of the component",
+              "name": "content"
+            },
+            {
+              "description": "Used to style the fit content container of the component.",
+              "name": "fit-content"
+            },
+            {
+              "description": "Used to style the footer of the component",
+              "name": "footer"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the content of the Dynamic Page.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "titleArea",
+              "description": "Defines the title HTML Element.",
+              "_ui5type": {
+                "text": "Array<DynamicPageTitle>",
+                "references": [
+                  {
+                    "name": "DynamicPageTitle",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/DynamicPageTitle.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "headerArea",
+              "description": "Defines the header HTML Element.",
+              "_ui5type": {
+                "text": "Array<DynamicPageHeader>",
+                "references": [
+                  {
+                    "name": "DynamicPageHeader",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/DynamicPageHeader.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "footerArea",
+              "description": "Defines the footer HTML Element.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "hidePinButton",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines if the pin button is hidden.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "headerPinned",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines if the header is pinned.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "showFooter",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines if the footer is shown.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "headerSnapped",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines if the header is snapped.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            }
+          ],
+          "events": [
+            {
+              "name": "pin-button-toggle",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the pin header button is toggled."
+            },
+            {
+              "name": "title-toggle",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the expand/collapse area of the title is toggled."
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines if the pin button is hidden.",
+              "name": "hide-pin-button",
+              "default": "false",
+              "fieldName": "hidePinButton",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines if the header is pinned.",
+              "name": "header-pinned",
+              "default": "false",
+              "fieldName": "headerPinned",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines if the footer is shown.",
+              "name": "show-footer",
+              "default": "false",
+              "fieldName": "showFooter",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines if the header is snapped.",
+              "name": "header-snapped",
+              "default": "false",
+              "fieldName": "headerSnapped",
+              "type": {
+                "text": "any"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-dynamic-page",
+          "customElement": true,
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicPage",
+            "module": "dist/DynamicPage.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-dynamic-page",
+          "declaration": {
+            "name": "DynamicPage",
+            "module": "dist/DynamicPage.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DynamicPageHeader.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Header of the DynamicPage.\n\n### Overview\n\nThe DynamicPageHeader `ui5-dynamic-page-header` is part of the DynamicPage family\nand is used to serve as header of the `DynamicPage`.\n\n### Usage\n\nThe `DynamicPageHeader` can hold any layout control and has two states - expanded\nand collapsed (snapped). The switching between these states happens when:\n- the user scrolls below its bottom margin\n- the user clicks on the `DynamicPageTitle`\n- through the `DynamicPage` property `headerSnapped`\n\n### Responsive Behavior\n\nThe responsive behavior of the `DynamicPageHeader` depends on the behavior of the\ncontent that is displayed.",
+          "name": "DynamicPageHeader",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the content of the Dynamic Page Header.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-dynamic-page-header",
+          "customElement": true,
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public",
+          "members": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicPageHeader",
+            "module": "dist/DynamicPageHeader.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-dynamic-page-header",
+          "declaration": {
+            "name": "DynamicPageHeader",
+            "module": "dist/DynamicPageHeader.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DynamicPageHeaderActions.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicPageHeaderActions",
+            "module": "dist/DynamicPageHeaderActions.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DynamicPageTitle.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nTitle of the `DynamicPage`.\n\nThe `DynamicPageTitle` component is part of the `DynamicPage`\nfamily and is used to serve as title of the `DynamicPage`.\n\n### Usage\n\nThe `DynamicPageTitle` can hold any component and displays the most important\ninformation regarding the object that will always remain visible while scrolling.\n\n**Note:** The `actions` slot accepts any UI5 web component, but it's\nrecommended to use `ui5-toolbar`.\n\nThe user can switch between the expanded/collapsed states of the\n`DynamicPage` by clicking on the `DynamicPageTitle`\nor by using the expand/collapse visual indicators, positioned at the bottom of the\n`DynamicPageTitle` and the `DynamicPageHeader` inside `ui5-dynamic-page-header-actions`.\n\n### Responsive Behavior\n\nThe responsive behavior of the `DynamicPageTitle` depends on the behavior of the\ncontent that is displayed.",
+          "name": "DynamicPageTitle",
+          "slots": [
+            {
+              "name": "heading",
+              "description": "Defines the content of the Heading of the Dynamic Page.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "snappedHeading",
+              "description": "Defines the heading that is shown only when the header is snapped.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "actionsBar",
+              "description": "Defines the bar with actions in the Dynamic page title.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "navigationBar",
+              "description": "Defines the bar with navigation actions in the Dynamic page title.",
+              "_ui5type": {
+                "text": "Array<Toolbar>",
+                "references": [
+                  {
+                    "name": "Toolbar",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Toolbar.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "default",
+              "description": "Defines the content of the Dynamic page title.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "subheading",
+              "description": "Defines the content of the title that is shown only when the header is not snapped.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "snappedSubheading",
+              "description": "Defines the content of the title that is shown only when the header is snapped.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "breadcrumbs",
+              "description": "Defines the content of the breadcrumbs inside Dynamic Page Title.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-dynamic-page-title",
+          "customElement": true,
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public",
+          "members": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicPageTitle",
+            "module": "dist/DynamicPageTitle.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-dynamic-page-title",
+          "declaration": {
+            "name": "DynamicPageTitle",
+            "module": "dist/DynamicPageTitle.js"
           }
         }
       ]
@@ -2615,40 +2924,21 @@
             },
             {
               "kind": "field",
-              "name": "accessibilityTexts",
+              "name": "accessibilityAttributes",
               "type": {
-                "text": "FlexibleColumnLayoutAccessibilityTexts",
+                "text": "FCLAccessibilityAttributes",
                 "references": [
                   {
-                    "name": "FlexibleColumnLayoutAccessibilityTexts",
+                    "name": "FCLAccessibilityAttributes",
                     "package": "@ui5/webcomponents-fiori",
                     "module": "dist/FlexibleColumnLayout.js"
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility texts for even further customization.\n\nIt supports the following fields:\n - `startColumnAccessibleName`: the accessibility name for the `startColumn` region\n - `midColumnAccessibleName`: the accessibility name for the `midColumn` region\n - `endColumnAccessibleName`: the accessibility name for the `endColumn` region\n - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left\n - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right\n - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left\n - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right\n - `startArrowContainerAccessibleName`: the text that the first arrow container (between the `begin` and `mid` columns) will have as `aria-label`\n - `endArrowContainerAccessibleName`: the text that the second arrow container (between the `mid` and `end` columns) will have as `aria-label`",
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n - **startColumn**: `startColumn.role` and `startColumn.name`.\n - **midColumn**: `midColumn.role` and `midColumn.name`.\n - **endColumn**: `endColumn.role` and `endColumn.name`.\n - **startArrowContainer**: `startArrowContainer.role` and `startArrowContainer.name`.\n - **endArrowContainer**: `endArrowContainerrole.role` and `endArrowContainer.name`.\n - **startArrowLeft**: `startArrowLeft.name`.\n - **startArrowRight**: `startArrowRight.name`.\n - **endArrowLeft**: `endArrowLeft.name`.\n - **endArrowRight**: `endArrowRight.name`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA landmark role of the area.\nAccepts the following values: `none`, `complementary`, `contentinfo`, `main` or `region`.\n\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
               "default": "{}",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.11",
-              "_ui5validator": "Object"
-            },
-            {
-              "kind": "field",
-              "name": "accessibilityRoles",
-              "type": {
-                "text": "FlexibleColumnLayoutAccessibilityRoles",
-                "references": [
-                  {
-                    "name": "FlexibleColumnLayoutAccessibilityRoles",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/FlexibleColumnLayout.js"
-                  }
-                ]
-              },
-              "description": "An object of strings that defines additional accessibility roles for further customization.\n\nIt supports the following fields:\n - `startColumnRole`: the accessibility role for the `startColumn`\n - `startArrowContainerRole`: the accessibility role for the first arrow container (between the `begin` and `mid` columns)\n - `midColumnRole`: the accessibility role for the `midColumn`\n - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns)\n - `endColumnRole`: the accessibility role for the `endColumn`",
-              "default": "{}",
-              "privacy": "public",
-              "_ui5since": "1.1.0",
+              "_ui5since": "2.0.0",
               "_ui5validator": "Object"
             },
             {
@@ -2955,7 +3245,7 @@
             },
             {
               "kind": "field",
-              "name": "size",
+              "name": "design",
               "type": {
                 "text": "IllustrationMessageSize",
                 "references": [
@@ -2966,7 +3256,7 @@
                   }
                 ]
               },
-              "description": "Determines which illustration breakpoint variant is used.\n\nAs `IllustratedMessage` adapts itself around the `Illustration`, the other\nelements of the component are displayed differently on the different breakpoints/illustration sizes.",
+              "description": "Determines which illustration breakpoint variant is used.\n\nAs `IllustratedMessage` adapts itself around the `Illustration`, the other\nelements of the component are displayed differently on the different breakpoints/illustration designs.",
               "default": "\"Auto\"",
               "privacy": "public",
               "_ui5since": "1.5.0",
@@ -3005,25 +3295,6 @@
               "privacy": "public",
               "_ui5since": "1.7.0",
               "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "titleLevel",
-              "type": {
-                "text": "TitleLevel",
-                "references": [
-                  {
-                    "name": "TitleLevel",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/TitleLevel.js"
-                  }
-                ]
-              },
-              "description": "Defines the semantic level of the title.\n\n**Note:** Used for accessibility purposes only.\n\n**Note:** Doesn't take effect when `title` slot is being used.",
-              "default": "\"H2\"",
-              "privacy": "public",
-              "_ui5since": "1.20.0",
-              "_ui5validator": "TitleLevel"
             }
           ],
           "attributes": [
@@ -3037,10 +3308,10 @@
               }
             },
             {
-              "description": "Determines which illustration breakpoint variant is used.\n\nAs `IllustratedMessage` adapts itself around the `Illustration`, the other\nelements of the component are displayed differently on the different breakpoints/illustration sizes.",
-              "name": "size",
+              "description": "Determines which illustration breakpoint variant is used.\n\nAs `IllustratedMessage` adapts itself around the `Illustration`, the other\nelements of the component are displayed differently on the different breakpoints/illustration designs.",
+              "name": "design",
               "default": "\"Auto\"",
-              "fieldName": "size",
+              "fieldName": "design",
               "type": {
                 "text": "\"Auto\" | \"Base\" | \"Dot\" | \"Spot\" | \"Dialog\" | \"Scene\""
               }
@@ -3070,15 +3341,6 @@
               "fieldName": "accessibleNameRef",
               "type": {
                 "text": "string"
-              }
-            },
-            {
-              "description": "Defines the semantic level of the title.\n\n**Note:** Used for accessibility purposes only.\n\n**Note:** Doesn't take effect when `title` slot is being used.",
-              "name": "title-level",
-              "default": "\"H2\"",
-              "fieldName": "titleLevel",
-              "type": {
-                "text": "\"H1\" | \"H2\" | \"H3\" | \"H4\" | \"H5\" | \"H6\""
               }
             }
           ],
@@ -3479,60 +3741,38 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/NotificationAction.js",
+      "path": "dist/NotificationList.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "The `ui5-notification-action` represents an abstract action,\nused in the `ui5-li-notification` and the `ui5-li-notification-group` items.",
-          "name": "NotificationAction",
-          "members": [
+          "description": "### Overview\nThe `ui5-notification-list` web component represents\na container for `ui5-li-notification-group` and `ui5-li-notification`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationList.js\";``",
+          "name": "NotificationList",
+          "slots": [
             {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the text of the `ui5-notification-action`.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines if the action is disabled.\n\n**Note:** a disabled action can't be pressed or focused, and it is not in the tab chain.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
-              "name": "design",
-              "type": {
-                "text": "ButtonDesign",
+              "name": "default",
+              "description": "Defines the items of the component.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<NotificationListItemBase>",
                 "references": [
                   {
-                    "name": "ButtonDesign",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ButtonDesign.js"
+                    "name": "NotificationListItemBase",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/NotificationListItemBase.js"
                   }
                 ]
               },
-              "description": "Defines the action design.",
-              "default": "\"Transparent\"",
-              "privacy": "public",
-              "_ui5validator": "ButtonDesign"
-            },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
             {
               "kind": "field",
-              "name": "icon",
+              "name": "noDataText",
               "type": {
                 "text": "string"
               },
-              "description": "Defines the `icon` source URI.\n\n**Note:**\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the text that is displayed when the component contains no items.",
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String"
@@ -3540,54 +3780,88 @@
           ],
           "events": [
             {
-              "name": "click",
+              "name": "item-click",
               "_ui5privacy": "public",
               "type": {
-                "text": "CustomEvent<NotificationActionClickEventDetail>",
+                "text": "CustomEvent<NotificationItemClickEventDetail>",
                 "references": [
                   {
-                    "name": "NotificationActionClickEventDetail",
+                    "name": "NotificationItemClickEventDetail",
                     "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/NotificationAction.js"
+                    "module": "dist/NotificationList.js"
                   }
                 ]
               },
-              "description": "Fired, when the action is pressed."
+              "description": "Fired when an item is clicked.",
+              "_ui5allowPreventDefault": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "item",
+                  "_ui5privacy": "public",
+                  "description": "The clicked item."
+                }
+              ]
+            },
+            {
+              "name": "item-close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<NotificationItemCloseEventDetail>",
+                "references": [
+                  {
+                    "name": "NotificationItemCloseEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/NotificationList.js"
+                  }
+                ]
+              },
+              "description": "Fired when the `Close` button of any item is clicked.",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "item",
+                  "_ui5privacy": "public",
+                  "description": "the item about to be closed."
+                }
+              ]
+            },
+            {
+              "name": "item-toggle",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<NotificationItemToggleEventDetail>",
+                "references": [
+                  {
+                    "name": "NotificationItemToggleEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/NotificationList.js"
+                  }
+                ]
+              },
+              "description": "Fired when an item is toggled.",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "item",
+                  "_ui5privacy": "public",
+                  "description": "the toggled item."
+                }
+              ]
             }
           ],
           "attributes": [
             {
-              "description": "Defines the text of the `ui5-notification-action`.",
-              "name": "text",
+              "description": "Defines the text that is displayed when the component contains no items.",
+              "name": "no-data-text",
               "default": "\"\"",
-              "fieldName": "text",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines if the action is disabled.\n\n**Note:** a disabled action can't be pressed or focused, and it is not in the tab chain.",
-              "name": "disabled",
-              "default": "false",
-              "fieldName": "disabled",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines the action design.",
-              "name": "design",
-              "default": "\"Transparent\"",
-              "fieldName": "design",
-              "type": {
-                "text": "\"Default\" | \"Positive\" | \"Negative\" | \"Transparent\" | \"Emphasized\" | \"Attention\""
-              }
-            },
-            {
-              "description": "Defines the `icon` source URI.\n\n**Note:**\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
-              "name": "icon",
-              "default": "\"\"",
-              "fieldName": "icon",
+              "fieldName": "noDataText",
               "type": {
                 "text": "string"
               }
@@ -3598,10 +3872,10 @@
             "package": "@ui5/webcomponents-base",
             "module": "dist/UI5Element.js"
           },
-          "tagName": "ui5-notification-action",
+          "tagName": "ui5-notification-list",
           "customElement": true,
-          "_ui5privacy": "public",
-          "_ui5abstract": true
+          "_ui5since": "2.0",
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -3609,16 +3883,16 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "NotificationAction",
-            "module": "dist/NotificationAction.js"
+            "name": "NotificationList",
+            "module": "dist/NotificationList.js"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "ui5-notification-action",
+          "name": "ui5-notification-list",
           "declaration": {
-            "name": "NotificationAction",
-            "module": "dist/NotificationAction.js"
+            "name": "NotificationList",
+            "module": "dist/NotificationList.js"
           }
         }
       ]
@@ -3629,7 +3903,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\nThe `ui5-li-notification-group` is a special type of list item,\nthat unlike others can group items within self, usually `ui5-li-notification` items.\n\nThe component consists of:\n\n- `Toggle` button to expand and collapse the group\n- `Priority` icon to display the priority of the group\n- `TitleText` to entitle the group\n- Custom actions - with the use of `ui5-notification-action`\n- Items of the group\n\n### Usage\nThe component can be used in a standard `ui5-list`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationListGroupItem.js\";`\n\n`import \"@ui5/webcomponents/dist/NotificationAction.js\";` (optional)",
+          "description": "### Overview\nThe `ui5-li-notification-group` is a special type of list item,\nthat unlike others can group items within self, usually `ui5-li-notification` items.\n\nThe component consists of:\n\n- `Toggle` button to expand and collapse the group\n- `TitleText` to entitle the group\n- Items of the group\n\n### Usage\nThe component can be used in a standard `ui5-list`.\n\n### Keyboard Handling\nThe `ui5-li-notification-group` provides advanced keyboard handling.\n\n#### Basic Navigation\nWhen a list is focused, the user can use the following keyboard shortcuts in order to navigate:\n\n- [Up] or [Down] - navigates up or down the items\n- [Home] - navigates to the first item\n- [End] - navigates to the last item\n\n#### Fast Navigation\nThis component provides fast navigation when the header is focused using the following keyboard shortcuts:\n\n- [Space] - toggles expand / collapse of the group\n- [Plus] - expands the group\n- [Minus] - collapses the group\n- [Right] - expands the group\n- [Left] - collapses the group\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationListGroupItem.js\";`",
           "name": "NotificationListGroupItem",
           "slots": [
             {
@@ -3647,21 +3921,6 @@
                 ]
               },
               "_ui5privacy": "public"
-            },
-            {
-              "name": "actions",
-              "description": "Defines the actions, displayed in the top-right area.\n\n**Note:** use the `ui5-notification-action` component.",
-              "_ui5type": {
-                "text": "Array<NotificationAction>",
-                "references": [
-                  {
-                    "name": "NotificationAction",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/NotificationAction.js"
-                  }
-                ]
-              },
-              "_ui5privacy": "public"
             }
           ],
           "members": [
@@ -3672,17 +3931,6 @@
                 "text": "boolean"
               },
               "description": "Defines if the group is collapsed or expanded.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
-              "name": "showCounter",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines if the items `counter` would be displayed.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -3704,43 +3952,6 @@
             },
             {
               "kind": "field",
-              "name": "priority",
-              "type": {
-                "text": "Priority",
-                "references": [
-                  {
-                    "name": "Priority",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/Priority.js"
-                  }
-                ]
-              },
-              "description": "Defines the `priority` of the item.",
-              "default": "\"None\"",
-              "privacy": "public",
-              "_ui5validator": "Priority",
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "showClose",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines if the `close` button would be displayed.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean",
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "kind": "field",
               "name": "read",
               "type": {
                 "text": "boolean"
@@ -3756,7 +3967,7 @@
             },
             {
               "kind": "field",
-              "name": "busy",
+              "name": "loading",
               "type": {
                 "text": "boolean"
               },
@@ -3772,7 +3983,7 @@
             },
             {
               "kind": "field",
-              "name": "busyDelay",
+              "name": "loadingDelay",
               "type": {
                 "text": "number"
               },
@@ -3791,7 +4002,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the `ListItem`.",
+              "description": "Defines the selected state of the component.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -3805,35 +4016,6 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the `ui5-li-notification-group` is expanded/collapsed by user interaction."
-            },
-            {
-              "name": "close",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent<NotificationListItemBaseCloseEventDetail>",
-                "references": [
-                  {
-                    "name": "NotificationListItemBaseCloseEventDetail",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/NotificationListItemBase.js"
-                  }
-                ]
-              },
-              "description": "Fired when the `Close` button is pressed.",
-              "_ui5parameters": [
-                {
-                  "type": {
-                    "text": "HTMLElement"
-                  },
-                  "name": "item",
-                  "_ui5privacy": "public",
-                  "description": "the closed item."
-                }
-              ],
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
             }
           ],
           "attributes": [
@@ -3844,93 +4026,6 @@
               "fieldName": "collapsed",
               "type": {
                 "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines if the items `counter` would be displayed.",
-              "name": "show-counter",
-              "default": "false",
-              "fieldName": "showCounter",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines the `titleText` of the item.",
-              "name": "title-text",
-              "default": "\"\"",
-              "fieldName": "titleText",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "description": "Defines the `priority` of the item.",
-              "name": "priority",
-              "default": "\"None\"",
-              "fieldName": "priority",
-              "type": {
-                "text": "\"None\" | \"High\" | \"Medium\" | \"Low\""
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "description": "Defines if the `close` button would be displayed.",
-              "name": "show-close",
-              "default": "false",
-              "fieldName": "showClose",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "description": "Defines if the `notification` is new or has been already read.\n\n**Note:** if set to `false` the `titleText` has bold font,\nif set to true - it has a normal font.",
-              "name": "read",
-              "default": "false",
-              "fieldName": "read",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "description": "Defines if a busy indicator would be displayed over the item.",
-              "name": "busy",
-              "default": "false",
-              "fieldName": "busy",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "description": "Defines the delay in milliseconds, after which the busy indicator will show up for this component.",
-              "name": "busy-delay",
-              "default": "1000",
-              "fieldName": "busyDelay",
-              "type": {
-                "text": "number"
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
               }
             }
           ],
@@ -3966,11 +4061,41 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/NotificationListGroupList.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NotificationListGroupList",
+            "module": "dist/NotificationListGroupList.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/NotificationListInternal.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NotificationListInternal",
+            "module": "dist/NotificationListInternal.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/NotificationListItem.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\nThe `ui5-li-notification` is a type of list item, meant to display notifications.\n\nThe component has a rich set of various properties that allows the user to set `avatar`, `titleText`, descriptive `content`\nand `footnotes` to fully describe a notification.\n\nThe user can:\n\n- display a `Close` button\n- can control whether the `titleText` and `description` should wrap or truncate\nand display a `ShowMore` button to switch between less and more information\n- add custom actions by using the `ui5-notification-action` component\n\n### Usage\nThe component can be used in a standard `ui5-list`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationListItem.js\";`\n\n`import \"@ui5/webcomponents/dist/NotificationAction.js\";` (optional)",
+          "description": "### Overview\nThe `ui5-li-notification` is a type of list item, meant to display notifications.\n\nThe component has a rich set of various properties that allows the user to set `avatar`, `menu`, `titleText`, descriptive `content`\nand `footnotes` to fully describe a notification.\n\nThe user can:\n\n- display a `Close` button\n- can control whether the `titleText` and `description` should wrap or truncate\nand display a `ShowMore` button to switch between less and more information\n- add actions by using the `ui5-menu` component\n\n**Note:** Adding custom actions by using the `ui5-notification-action` component is deprecated as of version 2.0!\n\n### Usage\nThe component can be used in a standard `ui5-list`.\n\n### Keyboard Handling\n\n#### Basic Navigation\nThe user can use the following keyboard shortcuts to perform actions (such as select, delete):\n\n- [Enter] - select an item (trigger \"item-click\" event)\n- [Delete] - close an item (trigger \"item-close\" event)\n\n#### Fast Navigation\nThis component provides a fast navigation using the the following keyboard shortcuts:\n\n- [Shift] + [Enter] - 'More'/'Less' link will be triggered\n- [Shift] + [F10] - 'Menu' (Actions) button will be triggered (clicked)\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationListItem.js\";`",
           "name": "NotificationListItem",
           "cssParts": [
             {
@@ -3982,6 +4107,14 @@
             {
               "name": "avatar",
               "description": "Defines the avatar, displayed in the `ui5-li-notification`.\n\n**Note:** Consider using the `ui5-avatar` to display icons, initials or images.\n\n**Note:** In order to be complaint with the UX guidlines and for best experience,\nwe recommend using avatars with 2rem X 2rem in size (32px X 32px). In case you are using the `ui5-avatar`\nyou can set its `size` property to `XS` to get the required size - `<ui5-avatar size=\"XS\"></ui5-avatar>`.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "menu",
+              "description": "Defines the menu, displayed in the `ui5-li-notification`.\n\n**Note:** Use this for implementing actions.\n\n**Note:** Should be used instead `u5-notification-action`, which is deprecated as of version 2.0.",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -4001,21 +4134,6 @@
               "_ui5propertyName": "description",
               "_ui5type": {
                 "text": "Array<Node>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "actions",
-              "description": "Defines the actions, displayed in the top-right area.\n\n**Note:** use the `ui5-notification-action` component.",
-              "_ui5type": {
-                "text": "Array<NotificationAction>",
-                "references": [
-                  {
-                    "name": "NotificationAction",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/NotificationAction.js"
-                  }
-                ]
               },
               "_ui5privacy": "public"
             }
@@ -4042,6 +4160,53 @@
             },
             {
               "kind": "field",
+              "name": "state",
+              "type": {
+                "text": "ValueState",
+                "references": [
+                  {
+                    "name": "ValueState",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/ValueState.js"
+                  }
+                ]
+              },
+              "description": "Defines the status indicator of the item.",
+              "default": "\"None\"",
+              "privacy": "public",
+              "_ui5validator": "ValueState"
+            },
+            {
+              "kind": "field",
+              "name": "showClose",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines if the `Close` button would be displayed.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "importance",
+              "type": {
+                "text": "NotificationListItemImportance",
+                "references": [
+                  {
+                    "name": "NotificationListItemImportance",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/types/NotificationListItemImportance.js"
+                  }
+                ]
+              },
+              "description": "Defines the `Important` label of the item.",
+              "default": "\"Standard\"",
+              "privacy": "public",
+              "_ui5validator": "NotificationListItemImportance"
+            },
+            {
+              "kind": "field",
               "name": "titleText",
               "type": {
                 "text": "string"
@@ -4050,43 +4215,6 @@
               "default": "\"\"",
               "privacy": "public",
               "_ui5validator": "String",
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "priority",
-              "type": {
-                "text": "Priority",
-                "references": [
-                  {
-                    "name": "Priority",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/Priority.js"
-                  }
-                ]
-              },
-              "description": "Defines the `priority` of the item.",
-              "default": "\"None\"",
-              "privacy": "public",
-              "_ui5validator": "Priority",
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "showClose",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines if the `close` button would be displayed.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "NotificationListItemBase",
                 "module": "dist/NotificationListItemBase.js"
@@ -4109,7 +4237,7 @@
             },
             {
               "kind": "field",
-              "name": "busy",
+              "name": "loading",
               "type": {
                 "text": "boolean"
               },
@@ -4125,7 +4253,7 @@
             },
             {
               "kind": "field",
-              "name": "busyDelay",
+              "name": "loadingDelay",
               "type": {
                 "text": "number"
               },
@@ -4144,121 +4272,23 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the `ListItem`.",
+              "description": "Defines the selected state of the component.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
             }
           ],
-          "attributes": [
-            {
-              "description": "Defines if the `titleText` and `description` should wrap,\nthey truncate by default.\n\n**Note:** by default the `titleText` and `description`,\nand a `ShowMore/Less` button would be displayed.",
-              "name": "wrapping-type",
-              "default": "\"None\"",
-              "fieldName": "wrappingType",
-              "type": {
-                "text": "\"None\" | \"Normal\""
-              }
-            },
-            {
-              "description": "Defines the `titleText` of the item.",
-              "name": "title-text",
-              "default": "\"\"",
-              "fieldName": "titleText",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "description": "Defines the `priority` of the item.",
-              "name": "priority",
-              "default": "\"None\"",
-              "fieldName": "priority",
-              "type": {
-                "text": "\"None\" | \"High\" | \"Medium\" | \"Low\""
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "description": "Defines if the `close` button would be displayed.",
-              "name": "show-close",
-              "default": "false",
-              "fieldName": "showClose",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "description": "Defines if the `notification` is new or has been already read.\n\n**Note:** if set to `false` the `titleText` has bold font,\nif set to true - it has a normal font.",
-              "name": "read",
-              "default": "false",
-              "fieldName": "read",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "description": "Defines if a busy indicator would be displayed over the item.",
-              "name": "busy",
-              "default": "false",
-              "fieldName": "busy",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            },
-            {
-              "description": "Defines the delay in milliseconds, after which the busy indicator will show up for this component.",
-              "name": "busy-delay",
-              "default": "1000",
-              "fieldName": "busyDelay",
-              "type": {
-                "text": "number"
-              },
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "NotificationListItemBase",
-            "package": "@ui5/webcomponents-fiori",
-            "module": "dist/NotificationListItemBase.js"
-          },
-          "tagName": "ui5-li-notification",
-          "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
-          "_ui5privacy": "public",
           "events": [
             {
               "name": "close",
               "_ui5privacy": "public",
               "type": {
-                "text": "CustomEvent<NotificationListItemBaseCloseEventDetail>",
+                "text": "CustomEvent<NotificationListItemCloseEventDetail>",
                 "references": [
                   {
-                    "name": "NotificationListItemBaseCloseEventDetail",
+                    "name": "NotificationListItemCloseEventDetail",
                     "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/NotificationListItemBase.js"
+                    "module": "dist/NotificationListItem.js"
                   }
                 ]
               },
@@ -4272,13 +4302,56 @@
                   "_ui5privacy": "public",
                   "description": "the closed item."
                 }
-              ],
-              "inheritedFrom": {
-                "name": "NotificationListItemBase",
-                "module": "dist/NotificationListItemBase.js"
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines if the `titleText` and `description` should wrap,\nthey truncate by default.\n\n**Note:** by default the `titleText` and `description`,\nand a `ShowMore/Less` button would be displayed.",
+              "name": "wrapping-type",
+              "default": "\"None\"",
+              "fieldName": "wrappingType",
+              "type": {
+                "text": "\"None\" | \"Normal\""
+              }
+            },
+            {
+              "description": "Defines the status indicator of the item.",
+              "name": "state",
+              "default": "\"None\"",
+              "fieldName": "state",
+              "type": {
+                "text": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
+              }
+            },
+            {
+              "description": "Defines if the `Close` button would be displayed.",
+              "name": "show-close",
+              "default": "false",
+              "fieldName": "showClose",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the `Important` label of the item.",
+              "name": "importance",
+              "default": "\"Standard\"",
+              "fieldName": "importance",
+              "type": {
+                "text": "\"Standard\" | \"Important\""
               }
             }
-          ]
+          ],
+          "superclass": {
+            "name": "NotificationListItemBase",
+            "package": "@ui5/webcomponents-fiori",
+            "module": "dist/NotificationListItemBase.js"
+          },
+          "tagName": "ui5-li-notification",
+          "customElement": true,
+          "_ui5since": "1.0.0-rc.8",
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -4308,23 +4381,6 @@
           "kind": "class",
           "description": "The base class of the `NotificationListItem` and `NotificationListGroupItem`.",
           "name": "NotificationListItemBase",
-          "slots": [
-            {
-              "name": "actions",
-              "description": "Defines the actions, displayed in the top-right area.\n\n**Note:** use the `ui5-notification-action` component.",
-              "_ui5type": {
-                "text": "Array<NotificationAction>",
-                "references": [
-                  {
-                    "name": "NotificationAction",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/NotificationAction.js"
-                  }
-                ]
-              },
-              "_ui5privacy": "public"
-            }
-          ],
           "members": [
             {
               "kind": "field",
@@ -4339,35 +4395,6 @@
             },
             {
               "kind": "field",
-              "name": "priority",
-              "type": {
-                "text": "Priority",
-                "references": [
-                  {
-                    "name": "Priority",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/Priority.js"
-                  }
-                ]
-              },
-              "description": "Defines the `priority` of the item.",
-              "default": "\"None\"",
-              "privacy": "public",
-              "_ui5validator": "Priority"
-            },
-            {
-              "kind": "field",
-              "name": "showClose",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines if the `close` button would be displayed.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
               "name": "read",
               "type": {
                 "text": "boolean"
@@ -4379,7 +4406,7 @@
             },
             {
               "kind": "field",
-              "name": "busy",
+              "name": "loading",
               "type": {
                 "text": "boolean"
               },
@@ -4391,7 +4418,7 @@
             },
             {
               "kind": "field",
-              "name": "busyDelay",
+              "name": "loadingDelay",
               "type": {
                 "text": "number"
               },
@@ -4406,93 +4433,10 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the `ListItem`.",
+              "description": "Defines the selected state of the component.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
-            }
-          ],
-          "events": [
-            {
-              "name": "close",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent<NotificationListItemBaseCloseEventDetail>",
-                "references": [
-                  {
-                    "name": "NotificationListItemBaseCloseEventDetail",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/NotificationListItemBase.js"
-                  }
-                ]
-              },
-              "description": "Fired when the `Close` button is pressed.",
-              "_ui5parameters": [
-                {
-                  "type": {
-                    "text": "HTMLElement"
-                  },
-                  "name": "item",
-                  "_ui5privacy": "public",
-                  "description": "the closed item."
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "description": "Defines the `titleText` of the item.",
-              "name": "title-text",
-              "default": "\"\"",
-              "fieldName": "titleText",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines the `priority` of the item.",
-              "name": "priority",
-              "default": "\"None\"",
-              "fieldName": "priority",
-              "type": {
-                "text": "\"None\" | \"High\" | \"Medium\" | \"Low\""
-              }
-            },
-            {
-              "description": "Defines if the `close` button would be displayed.",
-              "name": "show-close",
-              "default": "false",
-              "fieldName": "showClose",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines if the `notification` is new or has been already read.\n\n**Note:** if set to `false` the `titleText` has bold font,\nif set to true - it has a normal font.",
-              "name": "read",
-              "default": "false",
-              "fieldName": "read",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines if a busy indicator would be displayed over the item.",
-              "name": "busy",
-              "default": "false",
-              "fieldName": "busy",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines the delay in milliseconds, after which the busy indicator will show up for this component.",
-              "name": "busy-delay",
-              "default": "1000",
-              "fieldName": "busyDelay",
-              "type": {
-                "text": "number"
-              }
             }
           ],
           "superclass": {
@@ -4500,7 +4444,6 @@
             "package": "@ui5/webcomponents",
             "module": "dist/ListItemBase.js"
           },
-          "customElement": true,
           "_ui5since": "1.0.0-rc.8",
           "_ui5privacy": "public"
         }
@@ -4522,7 +4465,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-page` is a container component that holds one whole screen of an application.\nThe page has three distinct areas that can hold content - a header, content area and a footer.\n### Structure\n#### Header\nThe top most area of the page is occupied by the header. The standard header includes a navigation button and a title.\n#### Content\nThe content occupies the main part of the page. Only the content area is scrollable by default.\nThis can be prevented by setting  `enableScrolling` to `false`.\n#### Footer\nThe footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content.\nThis is enabled with the `floatingFooter` property.\n\n**Note:** `ui5-page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure\nthat there is enough space for the `ui5-page` to be rendered.\n**Note:** In order for the `ui5-page` to be displayed, the parent element should have fixed height.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Page.js\";`",
+          "description": "### Overview\n\nThe `ui5-page` is a container component that holds one whole screen of an application.\nThe page has three distinct areas that can hold content - a header, content area and a footer.\n### Structure\n#### Header\nThe top most area of the page is occupied by the header. The standard header includes a navigation button and a title.\n#### Content\nThe content occupies the main part of the page. Only the content area is scrollable by default.\nThis can be prevented by setting  `enableScrolling` to `false`.\n#### Footer\nThe footer is optional and occupies the part above the bottom part of the content. Alternatively, the footer can be fixed at the bottom of the page by enabling the `fixedFooter` property.\n\n**Note:** `ui5-page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure\nthat there is enough space for the `ui5-page` to be rendered.\n**Note:** In order for the `ui5-page` to be displayed, the parent element should have fixed height.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Page.js\";`",
           "name": "Page",
           "cssParts": [
             {
@@ -4544,7 +4487,7 @@
               "description": "Defines the content HTML Element.",
               "_ui5propertyName": "content",
               "_ui5type": {
-                "text": "Array<HTMLElement>"
+                "text": "Array<Node>"
               },
               "_ui5privacy": "public"
             },
@@ -4578,7 +4521,7 @@
             },
             {
               "kind": "field",
-              "name": "disableScrolling",
+              "name": "noScrolling",
               "type": {
                 "text": "boolean"
               },
@@ -4589,12 +4532,12 @@
             },
             {
               "kind": "field",
-              "name": "floatingFooter",
+              "name": "fixedFooter",
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the footer should float over the content.\n\n**Note:** When set to true the footer floats over the content with a slight offset from the bottom, otherwise it is fixed at the very bottom of the page.",
-              "default": "true",
+              "description": "Defines if the footer is fixed at the very bottom of the page.\n\n**Note:** When set to true the footer is fixed at the very bottom of the page, otherwise it floats over the content with a slight offset from the bottom.",
+              "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
             },
@@ -4617,23 +4560,23 @@
               "default": "\"Solid\"",
               "fieldName": "backgroundDesign",
               "type": {
-                "text": "\"Transparent\" | \"List\" | \"Solid\""
+                "text": "\"List\" | \"Solid\" | \"Transparent\""
               }
             },
             {
               "description": "Disables vertical scrolling of page content.\nIf set to true, there will be no vertical scrolling at all.",
-              "name": "disable-scrolling",
+              "name": "no-scrolling",
               "default": "false",
-              "fieldName": "disableScrolling",
+              "fieldName": "noScrolling",
               "type": {
                 "text": "boolean"
               }
             },
             {
-              "description": "Defines if the footer should float over the content.\n\n**Note:** When set to true the footer floats over the content with a slight offset from the bottom, otherwise it is fixed at the very bottom of the page.",
-              "name": "floating-footer",
-              "default": "true",
-              "fieldName": "floatingFooter",
+              "description": "Defines if the footer is fixed at the very bottom of the page.\n\n**Note:** When set to true the footer is fixed at the very bottom of the page, otherwise it floats over the content with a slight offset from the bottom.",
+              "name": "fixed-footer",
+              "default": "false",
+              "fieldName": "fixedFooter",
               "type": {
                 "text": "boolean"
               }
@@ -4908,7 +4851,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-shellbar` is meant to serve as an application header\nand includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on.\n\n### Stable DOM Refs\n\nYou can use the following stable DOM refs for the `ui5-shellbar`:\n\n- logo\n- copilot\n- notifications\n- overflow\n- profile\n- product-switch\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ShellBar.js\";`",
+          "description": "### Overview\n\nThe `ui5-shellbar` is meant to serve as an application header\nand includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on.\n\n### Stable DOM Refs\n\nYou can use the following stable DOM refs for the `ui5-shellbar`:\n\n- logo\n- notifications\n- overflow\n- profile\n- product-switch\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ShellBar.js\";`",
           "name": "ShellBar",
           "cssParts": [
             {
@@ -4918,8 +4861,24 @@
           ],
           "slots": [
             {
+              "name": "assistant",
+              "description": "Defines the assistant slot.",
+              "_ui5since": "2.0.0",
+              "_ui5type": {
+                "text": "Array<IButton>",
+                "references": [
+                  {
+                    "name": "IButton",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
               "name": "default",
-              "description": "Defines the `ui5-shellbar` aditional items.\n\n**Note:**\nYou can use the `<ui5-shellbar-item></ui5-shellbar-item>`.",
+              "description": "Defines the `ui5-shellbar` additional items.\n\n**Note:**\nYou can use the `<ui5-shellbar-item></ui5-shellbar-item>`.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<ShellBarItem>",
@@ -5056,17 +5015,6 @@
             },
             {
               "kind": "field",
-              "name": "showCoPilot",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines, if the product CoPilot icon would be displayed.\n\n**Note:** By default the co-pilot is displayed as static SVG.\nIf you need an animated co-pilot, you can import the `\"@ui5/webcomponents-fiori/dist/features/CoPilotAnimation.js\"` module as add-on feature.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
               "name": "showSearchField",
               "type": {
                 "text": "boolean"
@@ -5075,44 +5023,6 @@
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
-              "name": "accessibilityRoles",
-              "type": {
-                "text": "ShellBarAccessibilityRoles",
-                "references": [
-                  {
-                    "name": "ShellBarAccessibilityRoles",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/ShellBar.js"
-                  }
-                ]
-              },
-              "description": "An object of strings that defines additional accessibility roles for further customization.\n\nIt supports the following fields:\n - `logoRole`: the accessibility role for the `logo`",
-              "default": "{}",
-              "privacy": "public",
-              "_ui5since": "1.6.0",
-              "_ui5validator": "Object"
-            },
-            {
-              "kind": "field",
-              "name": "accessibilityTexts",
-              "type": {
-                "text": "ShellBarAccessibilityTexts",
-                "references": [
-                  {
-                    "name": "ShellBarAccessibilityTexts",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/ShellBar.js"
-                  }
-                ]
-              },
-              "description": "An object of strings that defines several additional accessibility texts\nfor even further customization.\n\nIt supports the following fields:\n- `profileButtonTitle`: defines the tooltip for the profile button\n- `logoTitle`: defines the tooltip for the logo",
-              "default": "{}",
-              "privacy": "public",
-              "_ui5since": "1.1.0",
-              "_ui5validator": "Object"
             },
             {
               "kind": "field",
@@ -5127,7 +5037,7 @@
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n- `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\n- `true`\n- `false`\n\n- `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n- `Dialog`\n- `Grid`\n- `ListBox`\n- `Menu`\n- `Tree`",
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n- **logo** - `logo.role` and `logo.name`.\n- **notifications** - `notifications.expanded` and `notifications.hasPopup`.\n- **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.\n- **product** - `product.expanded` and `product.hasPopup`.\n- **search** - `search.expanded` and `search.hasPopup`.\n- **overflow** - `overflow.expanded` and `overflow.hasPopup`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA role of the logo area.\nAccepts the following string values: `button` or `link`.\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
               "default": "{}",
               "privacy": "public",
               "_ui5since": "1.10.0",
@@ -5151,18 +5061,6 @@
                 "text": "HTMLElement | null"
               },
               "description": "Returns the `logo` DOM ref.",
-              "privacy": "public",
-              "default": "null",
-              "readonly": true,
-              "_ui5since": "1.0.0-rc.16"
-            },
-            {
-              "kind": "field",
-              "name": "copilotDomRef",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "description": "Returns the `copilot` DOM ref.",
               "privacy": "public",
               "default": "null",
               "readonly": true,
@@ -5322,32 +5220,6 @@
               ]
             },
             {
-              "name": "co-pilot-click",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent<ShellBarCoPilotClickEventDetail>",
-                "references": [
-                  {
-                    "name": "ShellBarCoPilotClickEventDetail",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/ShellBar.js"
-                  }
-                ]
-              },
-              "description": "Fired, when the co pilot is activated.",
-              "_ui5since": "0.10",
-              "_ui5parameters": [
-                {
-                  "type": {
-                    "text": "HTMLElement"
-                  },
-                  "name": "targetRef",
-                  "_ui5privacy": "public",
-                  "description": "dom ref of the activated element"
-                }
-              ]
-            },
-            {
               "name": "menu-item-click",
               "_ui5privacy": "public",
               "type": {
@@ -5437,15 +5309,6 @@
               }
             },
             {
-              "description": "Defines, if the product CoPilot icon would be displayed.\n\n**Note:** By default the co-pilot is displayed as static SVG.\nIf you need an animated co-pilot, you can import the `\"@ui5/webcomponents-fiori/dist/features/CoPilotAnimation.js\"` module as add-on feature.",
-              "name": "show-co-pilot",
-              "default": "false",
-              "fieldName": "showCoPilot",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
               "description": "Defines, if the Search Field would be displayed when there is a valid `searchField` slot.\n\n**Note:** By default the Search Field is not displayed.",
               "name": "show-search-field",
               "default": "false",
@@ -5459,15 +5322,6 @@
               "name": "logo-dom-ref",
               "default": "null",
               "fieldName": "logoDomRef",
-              "type": {
-                "text": "any"
-              }
-            },
-            {
-              "description": "Returns the `copilot` DOM ref.",
-              "name": "copilot-dom-ref",
-              "default": "null",
-              "fieldName": "copilotDomRef",
               "type": {
                 "text": "any"
               }
@@ -5674,7 +5528,14 @@
               "description": "Defines the main items of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component\nfor the top-level items, and the `ui5-side-navigation-sub-item` component for second-level items, nested\ninside the items.",
               "_ui5propertyName": "items",
               "_ui5type": {
-                "text": "Array<SideNavigationItem | SideNavigationGroup>"
+                "text": "Array<SideNavigationItemBase>",
+                "references": [
+                  {
+                    "name": "SideNavigationItemBase",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SideNavigationItemBase.js"
+                  }
+                ]
               },
               "_ui5privacy": "public"
             },
@@ -5682,7 +5543,14 @@
               "name": "fixedItems",
               "description": "Defines the fixed items at the bottom of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component\nfor the fixed items, and optionally the `ui5-side-navigation-sub-item` component to provide second-level items inside them.\n\n**Note:** In order to achieve the best user experience, it is recommended that you keep the fixed items \"flat\" (do not pass sub-items)",
               "_ui5type": {
-                "text": "Array<SideNavigationItem | SideNavigationGroup>"
+                "text": "Array<SideNavigationItemBase>",
+                "references": [
+                  {
+                    "name": "SideNavigationItemBase",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SideNavigationItemBase.js"
+                  }
+                ]
               },
               "_ui5privacy": "public"
             },
@@ -5853,6 +5721,22 @@
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
             }
           ],
           "attributes": [
@@ -5885,6 +5769,19 @@
               "fieldName": "disabled",
               "type": {
                 "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "name": "tooltip",
+              "default": "\"\"",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
               },
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
@@ -6184,6 +6081,18 @@
               "privacy": "public",
               "_ui5since": "1.19.0",
               "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "String"
             }
           ],
           "attributes": [
@@ -6203,6 +6112,15 @@
               "fieldName": "disabled",
               "type": {
                 "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "name": "tooltip",
+              "default": "\"\"",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -6891,12 +6809,6 @@
       "path": "dist/UploadCollection.js",
       "declarations": [
         {
-          "kind": "interface",
-          "name": "IUploadCollectionItem",
-          "description": "Interface for components that may be slotted inside `ui5-upload-collection` as items",
-          "_ui5privacy": "public"
-        },
-        {
           "kind": "class",
           "description": "### Overview\nThis component allows you to represent files before uploading them to a server, with the help of `ui5-upload-collection-item`.\nIt also allows you to show already uploaded files.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UploadCollection.js\";`\n\n`import \"@ui5/webcomponents-fiori/dist/UploadCollectionItem.js\";` (for `ui5-upload-collection-item`)",
           "name": "UploadCollection",
@@ -6906,12 +6818,12 @@
               "description": "Defines the items of the `ui5-upload-collection`.\n\n**Note:** Use `ui5-upload-collection-item` for the intended design.",
               "_ui5propertyName": "items",
               "_ui5type": {
-                "text": "Array<IUploadCollectionItem>",
+                "text": "Array<UploadCollectionItem>",
                 "references": [
                   {
-                    "name": "IUploadCollectionItem",
+                    "name": "UploadCollectionItem",
                     "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/UploadCollection.js"
+                    "module": "dist/UploadCollectionItem.js"
                   }
                 ]
               },
@@ -6929,21 +6841,21 @@
           "members": [
             {
               "kind": "field",
-              "name": "mode",
+              "name": "selectionMode",
               "type": {
-                "text": "ListMode",
+                "text": "UploadCollectionSelectionMode",
                 "references": [
                   {
-                    "name": "ListMode",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ListMode.js"
+                    "name": "UploadCollectionSelectionMode",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/types/UploadCollectionSelectionMode.js"
                   }
                 ]
               },
-              "description": "Defines the mode of the `ui5-upload-collection`.\n\n**Note:**\nMode \"Delete\" has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem",
+              "description": "Defines the selection mode of the `ui5-upload-collection`.",
               "default": "\"None\"",
               "privacy": "public",
-              "_ui5validator": "ListMode"
+              "_ui5validator": "UploadCollectionSelectionMode"
             },
             {
               "kind": "field",
@@ -7038,7 +6950,7 @@
                   }
                 ]
               },
-              "description": "Fired when selection is changed by user interaction\nin `SingleSelect` and `MultiSelect` modes.",
+              "description": "Fired when selection is changed by user interaction\nin `Single` and `Multiple` modes.",
               "_ui5parameters": [
                 {
                   "type": {
@@ -7053,12 +6965,12 @@
           ],
           "attributes": [
             {
-              "description": "Defines the mode of the `ui5-upload-collection`.\n\n**Note:**\nMode \"Delete\" has no effect. The delete button is controlled by the `hideDeleteButton` property of UploadCollectionItem",
-              "name": "mode",
+              "description": "Defines the selection mode of the `ui5-upload-collection`.",
+              "name": "selection-mode",
               "default": "\"None\"",
-              "fieldName": "mode",
+              "fieldName": "selectionMode",
               "type": {
-                "text": "\"None\" | \"SingleSelect\" | \"SingleSelectBegin\" | \"SingleSelectEnd\" | \"SingleSelectAuto\" | \"MultiSelect\" | \"Delete\""
+                "text": "\"None\" | \"Single\" | \"SingleStart\" | \"SingleEnd\" | \"SingleAuto\" | \"Multiple\""
               }
             },
             {
@@ -7222,7 +7134,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "By default, the delete button will always be shown, regardless of the `ui5-upload-collection`'s property `mode`.\nSetting this property to `true` will hide the delete button.",
+              "description": "Hides the delete button.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean"
@@ -7273,7 +7185,7 @@
                   }
                 ]
               },
-              "description": "If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed.\nAlso if set to `Error`, a refresh button is shown. When this icon is pressed `retry` event is fired.\nIf set to `Uploading`, a terminate button is shown. When this icon is pressed `terminate` event is fired.",
+              "description": "Upload state.\n\nDepending on this property, the item displays the following:\n\n- `Ready` - progress indicator is displayed.\n- `Uploading` - progress indicator and terminate button are displayed. When the terminate button is pressed, `terminate` event is fired.\n- `Error` - progress indicator and retry button are displayed. When the retry button is pressed, `retry` event is fired.\n- `Complete` - progress indicator is not displayed.",
               "default": "\"Ready\"",
               "privacy": "public",
               "_ui5validator": "UploadState"
@@ -7300,16 +7212,16 @@
               "kind": "field",
               "name": "accessibilityAttributes",
               "type": {
-                "text": "AccessibilityAttributes",
+                "text": "ListItemAccessibilityAttributes",
                 "references": [
                   {
-                    "name": "AccessibilityAttributes",
+                    "name": "ListItemAccessibilityAttributes",
                     "package": "@ui5/webcomponents",
                     "module": "dist/ListItem.js"
                   }
                 ]
               },
-              "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n- `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\tThe value of each `aria-setsize` is an integer reflecting number of items in the complete set.\n\n\t**Note:** If the size of the entire set is unknown, set `aria-setsize=\"-1\"`.\n\t- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\tThe value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
               "default": "{}",
               "privacy": "public",
               "_ui5since": "1.15.0",
@@ -7343,20 +7255,20 @@
               "kind": "field",
               "name": "highlight",
               "type": {
-                "text": "HighlightTypes",
+                "text": "Highlight",
                 "references": [
                   {
-                    "name": "HighlightTypes",
+                    "name": "Highlight",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/types/HighlightTypes.js"
+                    "module": "dist/types/Highlight.js"
                   }
                 ]
               },
-              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Success\"`, `\"Warning\"`, `\"Information\"` and `\"Error\"`.",
+              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "default": "\"None\"",
               "privacy": "public",
               "_ui5since": "1.24",
-              "_ui5validator": "HighlightTypes"
+              "_ui5validator": "Highlight"
             },
             {
               "kind": "field",
@@ -7364,7 +7276,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the `ListItem`.",
+              "description": "Defines the selected state of the component.",
               "default": "false",
               "privacy": "public",
               "_ui5validator": "Boolean",
@@ -7445,7 +7357,7 @@
               }
             },
             {
-              "description": "By default, the delete button will always be shown, regardless of the `ui5-upload-collection`'s property `mode`.\nSetting this property to `true` will hide the delete button.",
+              "description": "Hides the delete button.",
               "name": "hide-delete-button",
               "default": "false",
               "fieldName": "hideDeleteButton",
@@ -7481,7 +7393,7 @@
               }
             },
             {
-              "description": "If set to `Uploading` or `Error`, a progress indicator showing the `progress` is displayed.\nAlso if set to `Error`, a refresh button is shown. When this icon is pressed `retry` event is fired.\nIf set to `Uploading`, a terminate button is shown. When this icon is pressed `terminate` event is fired.",
+              "description": "Upload state.\n\nDepending on this property, the item displays the following:\n\n- `Ready` - progress indicator is displayed.\n- `Uploading` - progress indicator and terminate button are displayed. When the terminate button is pressed, `terminate` event is fired.\n- `Error` - progress indicator and retry button are displayed. When the retry button is pressed, `retry` event is fired.\n- `Complete` - progress indicator is not displayed.",
               "name": "upload-state",
               "default": "\"Ready\"",
               "fieldName": "uploadState",
@@ -7498,14 +7410,7 @@
           "tagName": "ui5-upload-collection-item",
           "customElement": true,
           "_ui5since": "1.0.0-rc.7",
-          "_ui5privacy": "public",
-          "_ui5implements": [
-            {
-              "name": "IUploadCollectionItem",
-              "package": "@ui5/webcomponents-fiori",
-              "module": "dist/UploadCollection.js"
-            }
-          ]
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -7891,9 +7796,9 @@
                   "type": {
                     "text": "boolean"
                   },
-                  "name": "changeWithClick",
+                  "name": "withScroll",
                   "_ui5privacy": "public",
-                  "description": "The step change occurs due to user's click or 'Enter'/'Space' key press on step within the navigation."
+                  "description": "true when the event occurs due to user scrolling."
                 }
               ]
             }

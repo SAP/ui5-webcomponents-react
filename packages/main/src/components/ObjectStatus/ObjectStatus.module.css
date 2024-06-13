@@ -48,7 +48,7 @@
   top: 0;
 }
 
-.success {
+.positive {
   color: var(--sapPositiveTextColor);
 
   [ui5-icon] {
@@ -56,7 +56,7 @@
   }
 }
 
-.warning {
+.critical {
   color: var(--sapCriticalTextColor);
 
   [ui5-icon] {
@@ -64,7 +64,7 @@
   }
 }
 
-.error {
+.negative {
   color: var(--sapNegativeTextColor);
 
   [ui5-icon] {
@@ -268,7 +268,7 @@
 }
 
 /* Inverted Value State Styles */
-.objectStatus:is(.inverted.error) {
+.objectStatus:is(.inverted.negative) {
   text-shadow: var(--sapContent_ContrastTextShadow);
 
   --_ui5wcr-ObjectStatus-inverted-vs-text-color: var(--sapButton_Negative_TextColor);
@@ -284,7 +284,7 @@
   --_ui5wcr-ObjectStatus-inverted-vs-active-border-color: var(--sapButton_Negative_Active_BorderColor);
 }
 
-.objectStatus:is(.inverted.warning) {
+.objectStatus:is(.inverted.critical) {
   text-shadow: var(--sapContent_ContrastTextShadow);
 
   --_ui5wcr-ObjectStatus-inverted-vs-text-color: var(--sapButton_Critical_TextColor);
@@ -300,7 +300,7 @@
   --_ui5wcr-ObjectStatus-inverted-vs-active-border-color: var(--sapButton_Critical_Active_BorderColor);
 }
 
-.objectStatus:is(.inverted.success) {
+.objectStatus:is(.inverted.positive) {
   text-shadow: var(--sapContent_ContrastTextShadow);
 
   --_ui5wcr-ObjectStatus-inverted-vs-text-color: var(--sapButton_Success_TextColor);
@@ -317,7 +317,7 @@
 }
 
 .objectStatus:is(.inverted.information) {
-  text-shadow: var(sapContent_TextShadow);
+  text-shadow: var(--sapContent_TextShadow);
 
   --_ui5wcr-ObjectStatus-inverted-vs-text-color: var(--sapButton_Information_TextColor);
   --_ui5wcr-ObjectStatus-inverted-vs-background-color: var(--sapButton_Information_Background);
@@ -333,7 +333,7 @@
 }
 
 .objectStatus:is(.inverted.none) {
-  text-shadow: var(sapContent_TextShadow);
+  text-shadow: var(--sapContent_TextShadow);
 
   --_ui5wcr-ObjectStatus-inverted-vs-text-color: var(--sapTextColor);
   --_ui5wcr-ObjectStatus-inverted-vs-background-color: var(--sapNeutralBackground);
@@ -348,7 +348,7 @@
   --_ui5wcr-ObjectStatus-inverted-vs-active-border-color: var(--sapButton_Neutral_Active_BorderColor);
 }
 
-.objectStatus:is(.inverted):is(.error, .warning, .success, .information, .none) {
+.objectStatus:is(.inverted):is(.negative, .critical, .positive, .information, .none) {
   color: var(--_ui5wcr-ObjectStatus-inverted-vs-text-color);
   background: var(--_ui5wcr-ObjectStatus-inverted-vs-background-color);
   border: 0.0625rem solid var(--_ui5wcr-ObjectStatus-inverted-vs-border-color);
