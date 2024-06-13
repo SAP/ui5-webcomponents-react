@@ -1,266 +1,50 @@
 import { Footer, TableOfContent } from '@sb/components';
 import { Meta } from '@storybook/blocks';
 
-<Meta title="Migration Guide (V1)" />
+<Meta title="Migration Guide" />
 
-# Migration Guide (V1)
-
-<br />
+# Migration Guide (v1 to v2)
 
 _The most important breaking changes of the corresponding releases are outlined here.
 For a full list of all changes, please refer to [the list of releases](https://github.com/SAP/ui5-webcomponents-react/releases)
 or the [changelog](?path=/docs/change-log--page)._
 
+> **Older releases**  
+> This migration guide only covers breaking changes when updating from v1 to v2.
+> For migration guides for older releases, please refer to our [Migration Guide Archive](https://github.com/SAP/ui5-webcomponents-react/blob/main/docs/MigrationGuide.archive.md).
+
 <br />
 
 <TableOfContent headingSelector="h2" />
 
-## From 0.28.x to 1.0.1
+## Replaced Components
 
-### Removal of deprecated props
+### AnalyticalCard
 
-The following props were deprecated in previous versions and have now been removed.
+The deprecated `AnalyticalCard` component has been replaced with the `Card` web component as a drop-in replacement:
 
-**ActionSheet**
+```tsx
+// v1
+import { AnalyticalCard, AnalyticalCardHeader } from '@ui5/webcomponents-react';
 
-The prop `alwaysShowHeader` has been removed as is not specified by the Fiori Design Guidelines. <br />
-In addition, the `a11yConfig.actionSheetMobileContent.ariaLabel` has been removed as well. You can use the `accessibleName` prop as replacement.
-
-**AnalyticalTable**
-
-The props `onRowSelected` and `onColumnsReordered` have been removed in favor for a more streamlined naming pattern. <br />
-Please use the new prop names `onRowSelect` and `onColumnsReorder`.
-
-**DynamicPageTitle**
-
-The props `actionsOverflowButton` and `navigationActionsOverflowButton` have been removed. <br />
-If needed, you can pass a custom overflow button for the respective toolbar by using the `actionsToolbarProps={{ overflowButton: <Button />}}` and `navigationActionsToolbarProps={{ overflowButton: <Button />}}` props.
-
-In addition, the `onToolbarOverflowChange` event has been removed as well. Previously, this event contained a property `origin` with the value of `actions` or `navigationActions` in order to distinguish between the toolbars. <br />
-Please use `onOverflowChange` of the respective toolbar props object instead (`actionsToolbarProps={{ onOverflowChange: yourHandler }}` and `navigationActionsToolbarProps={{ onOverflowChange: yourHandlerForNavigationActions }}`).
-
-### FilterBar: implement new design specification
-
-The Design for the `FilterBar` component had some major updates, so we've updated the component accordingly.
-One of these changes is, that the optional search field (passed via the `search` prop), is no longer available in the `Filters` dialog.
-
-**The following props are removed without replacement as they are no longer specified by the design:**
-
-- `showClearButton`
-- `showGo`
-- `onFiltersDialogClear`
-- `showSearchOnFiltersDialog`
-- `loading` <br />
-  In order to place a loading indicator on the `FilterBar`, please wrap it into the `BusyIndicator` component.
-
-**The following props have been renamed without further modifications:**
-
-- `variant` --> `header`
-- `showRestoreButton` --> `showResetButton`
-
-**The following props have been renamed and changed their logic for a more streamlined API:**
-
-- `filterBarExpanded` --> `filterBarCollapsed` <br />
-  Previously, `filterBarExpanded` was defaulted to `true`. This prop has been replaced by `filterBarCollapsed` (inactive by default).
-- `showFilterConfiguration` --> `hideFilterConfiguration` <br />
-  Previously, `showFilterConfiguration` was defaulted to `true`. This prop has been replaced by `hideFilterConfiguration` (inactive by default).
-- `useToolbar` --> `hideToolbar` <br />
-  If you wanted to hide the toolbar of the `FilterBar`, you could set the prop `useToolbar` to `false` in earlier versions. This prop has been replaced by `hideToolbar={true}`.
-
-**The following event handlers have changed their payload:**
-
-- `onFiltersDialogSelectionChange` <br />
-  The event type changed to `UI5CustomEvent` and the properties `elements` and `toggledElements` have been removed. <br />
-  You can now use `element` to access the most recently interacted row and `checked` to get the current selection state.
-  If you need to access all selected rows, you can use the `selectedRows` property.
-- `onRestore` and `onClear` <br />
-  The `dialogSearch` property has been removed from the event payload as the search field in the dialog is no longer available.
-- `onGo` <br />
-  The `toggledElements` property has been removed
-- `onFiltersDialogOpen` <br />
-  The property `dialog` has been removed. If you need to access the filter dialog HTML element, you might use the new prop `onAfterFiltersDialogOpen`
-  on the `FilterBar` which is fired after the filter dialog has been opened.
-
-**Migration Example (removed props and event handlers are not listed for brevity):**
-
-```jsx
-// component with 0.28.x
-<FilterBar
-    variant={<Title>Header</Title>}
-    showRestoreButton
-    filterBarExpanded={false}
-    showFilterConfiguration={false}
-    useToolbar={false}
-/>
-
-// becomes with 1.0.0
-<FilterBar
-    header={<Title>Header</Title>}
-    showResetButton
-    filterBarCollapsed
-    hideFilterConfiguration
-    hideToolbar
-/>
-```
-
-### VariantManagement: removed option to show the "Cancel" button
-
-The "Cancel" button is not part of the design guidelines anymore, so the prop `showCancelButton` has been removed without replacement.
-
-## From 0.27.x to 0.28.0
-
-### AnalyticalTable: Scaling the table
-
-Scaling the table via the CSS `scale()` function is now only supported if the abscissa (`sx`) is passed to the `scaleXFactor` prop. `scaleXFactor` only accepts values of type `number`.
-
-Before 0.28.0:
-
-```jsx
-<div style={{ transform: 'scale(0.5)' }}>
-  <AnalyticalTable data={data} columns={columns} />
-</div>
-```
-
-Now:
-
-```jsx
-<div style={{ transform: 'scale(0.5)' }}>
-  <AnalyticalTable data={data} columns={columns} scaleXFactor={0.5} />
-</div>
-```
-
-### MessageItem: new default value for `type`
-
-The default value `type` value of the `MessageItem` component has been changed from `ValueState.None` to `ValueState.Error`.
-
-### ObjectPage: `portalContainer` prop removed
-
-The prop `portalContainer` has been removed from the `ObjectPage` as it is not used anymore.
-
-## From 0.25.x to 0.26.0
-
-### Removed deprecated entrypoints
-
-In version 0.26.0, we have removed several legacy exports which have been deprecated a couple of months ago.
-This affects all exports using the following pattern:
-
-```js
-import { COMPONENT_NAME } from '@ui5/webcomponents-react/dist/COMPONENT_NAME';
-import { UTIL_NAME } from '@ui5/webcomponents-react-base/dist/UTIL_NAME';
-import { CHART_NAME } from '@ui5/webcomponents-react-charts/dist/CHART_NAME';
-```
-
-You can now shorten all your imports by removing the `/dist/NAME` part to match the following pattern:
-
-```js
-import { COMPONENT_NAME } from '@ui5/webcomponents-react';
-import { UTIL_NAME } from '@ui5/webcomponents-react-base';
-import { CHART_NAME } from '@ui5/webcomponents-react-charts';
-```
-
-In case the file you are trying to import is not available, please raise an [issue](https://github.com/SAP/ui5-webcomponents-react/issues/new?labels=bug&template=bug_report.md).
-
-### Removed polyfills
-
-In 0.26.0, we have removed the polyfill imports `@ui5/webcomponents-react-base/polyfill/Safari` (all features supported now) and `@ui5/webcomponents-react-base/polyfill/IE11` (end of life).
-As a consequence, the internal dependencies of `@ui5/webcomponents-react-base` are cleaned up as well,
-so you'll most likely need to install `resize-observer-polyfill` on your own for running tests with Jest (see next section).
-
-```shell
-npm install resize-observer-polyfill --save-dev
-# or if you are using yarn
-yarn add resize-observer-polyfill --dev
-```
-
-### Improved Jest Setup
-
-In order to run Tests with Jest, there has always been the need of adding additional polyfills to the Jest environment.
-With 0.26.0, things are changing a little:
-
-1. You have to install `resize-observer-polyfill` on your own because it's not longer a dependency of `@ui5/webcomponents-react-base`.
-
-```
-npm install resize-observer-polyfill --save-dev
-```
-
-2. We now offer an improved way of adding the additional APIs to the Jest environment by exposing a file which is setting up the
-   jest environment for you. You can import it via `import '@ui5/webcomponents-react/jestSetup.js';`.
-
-If you are using `create-react-app`, your simplified `src/setupTests.js` file looks like:
-
-```js
-import ResizeObserverPolyfill from 'resize-observer-polyfill';
-import '@ui5/webcomponents-react/jestSetup.js';
-
-window.ResizeObserver = ResizeObserverPolyfill;
-```
-
-### New API for `AnalyticalCardHeader`
-
-The `AnalyticalCardHeader` component has been refactored to match the latest design specifications.
-As a consequence, the API has changed:
-
-```jsx
-function OldApi() {
+function MyComponent() {
   return (
-    <AnalyticalCardHeader
-      titleText="Title"
-      subtitleText="Subtitle"
-      arrowIndicator={DeviationIndicator.Up} // renamed to `trend`
-      showIndicator={true} // removed, please use `trend={DeviationIndicator.None}` in future
-      indicatorState={ValueState.Error} // removed without replacement
-      value="100"
-      unit="k" // renamed to `scale`
-      valueState={ValueState.Success} // renamed to `state`, allowed enum values coming from `ValueColor`
-      target="100" // replaced with `children`. Use the `NumericSideIndicator` component.
-      deviation="50" // replaced with `children`. Use the `NumericSideIndicator` component.
-      description="Additional Description"
-      counter="Hello Counter" // renamed to `status`
-      counterState={ValueState.Error} // removed without replacement
-      currency="CURRENCY" // renamed to `unitOfMeasurement`
-      onClick={(e) => {}}
-    />
+    <AnalyticalCard header={<AnalyticalCardHeader />}>
+      <span>My Content</span>
+    </AnalyticalCard>
   );
 }
 
-// will become
+// v2
+import { AnalyticalCardHeader, Card } from '@ui5/webcomponents-react';
 
-function NewAPI() {
+function MyComponent() {
   return (
-    <AnalyticalCardHeader
-      titleText="Title"
-      subtitleText="Subtitle"
-      trend={DeviationIndicator.Up}
-      value="100"
-      scale="k"
-      state={ValueColor.Good}
-      description="Additional Description"
-      status="Hello Counter"
-      unitOfMeasurement="CURRENCY"
-      onClick={(e) => {}}
-    >
-      <NumericSideIndicator titleText="Target" number="100" />
-      <NumericSideIndicator titleText="Deviation" number="50" />
-    </AnalyticalCardHeader>
+    <Card header={<AnalyticalCardHeader />}>
+      <span>My Content</span>
+    </Card>
   );
 }
 ```
-
-## From 0.23.x to 0.24.0
-
-- The deprecated `tooltip` prop has been removed, please use the native `title` attribute instead. (This does not remove the `tooltip` prop of the `Button`, `ToggleButton` or `SegmentedButtonItem`.)
-- The deprecated `useConsolidatedRef` hook has been removed, please use `useSyncRef` instead.
-- The deprecated `StyleClassHelper` class has been removed, please use `clsx` instead or implement your own `className` constructor.
-
-## From 0.21.x to 0.22.0
-
-**useI18nBundle:** The `useI18nBundle` hook must now be used in the context of the `ThemeProvider`.
-
-You will not need to change anything in your app's code base, since all components should already be wrapped by the `ThemeProvider`, but now you have to make sure that even your test components are wrapped inside of it.
-Otherwise, translatable components will likely not render.
-
-## Older releases
-
-If you are looking for migration guides for older releases, please take a look into our [Migration Guide Archive](https://github.com/SAP/ui5-webcomponents-react/blob/main/docs/MigrationGuide.archive.md).
 
 <Footer />

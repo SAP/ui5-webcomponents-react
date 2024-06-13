@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ValueState } from '../../enums/ValueState';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { Button } from '../Button';
 import { FileUploader } from './index.js';
 

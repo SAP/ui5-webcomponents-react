@@ -5,7 +5,7 @@ import type { CarouselNavigateEventDetail } from '@ui5/webcomponents/dist/Carous
 import type BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
 import type BorderDesign from '@ui5/webcomponents/dist/types/BorderDesign.js';
 import type CarouselArrowsPlacement from '@ui5/webcomponents/dist/types/CarouselArrowsPlacement.js';
-import type CarouselPageIndicatorStyle from '@ui5/webcomponents/dist/types/CarouselPageIndicatorStyle.js';
+import type CarouselPageIndicatorType from '@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
@@ -68,22 +68,17 @@ interface CarouselAttributes {
   hidePageIndicator?: boolean;
 
   /**
-   * Defines the number of items per page on large size (more than 1024px). One item per page shown by default.
-   * @default 1
+   * Defines the number of items per page depending on the carousel width.
+   *
+   * - 'S' for screens smaller than 600 pixels.
+   * - 'M' for screens greater than or equal to 600 pixels and smaller than 1024 pixels.
+   * - 'L' for screens greater than or equal to 1024 pixels and smaller than 1440 pixels.
+   * - 'XL' for screens greater than or equal to 1440 pixels.
+   *
+   * One item per page is shown by default.
+   * @default "S1 M1 L1 XL1"
    */
-  itemsPerPageL?: number;
-
-  /**
-   * Defines the number of items per page on medium size (from 640px to 1024px). One item per page shown by default.
-   * @default 1
-   */
-  itemsPerPageM?: number;
-
-  /**
-   * Defines the number of items per page on small size (up to 640px). One item per page shown by default.
-   * @default 1
-   */
-  itemsPerPageS?: number;
+  itemsPerPage?: string;
 
   /**
    * Defines the page indicator background design.
@@ -111,7 +106,7 @@ interface CarouselAttributes {
    * **Note:** Available since [v1.10](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10) of **@ui5/webcomponents**.
    * @default "Default"
    */
-  pageIndicatorStyle?: CarouselPageIndicatorStyle | keyof typeof CarouselPageIndicatorStyle;
+  pageIndicatorType?: CarouselPageIndicatorType | keyof typeof CarouselPageIndicatorType;
 }
 
 interface CarouselDomRef extends Required<CarouselAttributes>, Ui5DomRef {
@@ -138,7 +133,7 @@ interface CarouselPropTypes
   /**
    * Fired whenever the page changes due to user interaction,
    * when the user clicks on the navigation arrows or while resizing,
-   * based on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.
+   * based on the `items-per-page` property.
    */
   onNavigate?: (event: Ui5CustomEvent<CarouselDomRef, CarouselNavigateEventDetail>) => void;
 }
@@ -149,7 +144,7 @@ interface CarouselPropTypes
  *
  * There are several ways to perform navigation:
  *
- * - on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.
+ * - on desktop - the user can navigate using the navigation arrows or with keyboard shortcuts.
  * - on mobile - the user can use swipe gestures.
  *
  * ### Usage
@@ -190,12 +185,10 @@ const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
     'accessibleNameRef',
     'arrowsPlacement',
     'backgroundDesign',
-    'itemsPerPageL',
-    'itemsPerPageM',
-    'itemsPerPageS',
+    'itemsPerPage',
     'pageIndicatorBackgroundDesign',
     'pageIndicatorBorderDesign',
-    'pageIndicatorStyle'
+    'pageIndicatorType'
   ],
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],
   [],

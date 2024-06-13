@@ -1,6 +1,12 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
 import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
@@ -8,14 +14,6 @@ import { clsx } from 'clsx';
 import type { ComponentElement, ReactElement } from 'react';
 import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import {
-  BarDesign,
-  ButtonDesign,
-  IllustrationMessageType,
-  ListMode,
-  PopoverPlacementType,
-  TitleLevel
-} from '../../enums/index.js';
 import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
@@ -49,7 +47,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     titleText = i18nBundle.getText(MY_VIEWS),
     className,
     style,
-    placement = PopoverPlacementType.Bottom,
+    placement = PopoverPlacement.Bottom,
     level = TitleLevel.H4,
     onSelect,
     closeOnItemSelect,
@@ -83,6 +81,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     setSafeChildren(Children.toArray(children));
   }, [children]);
 
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState<SelectedVariant | undefined>(() => {
@@ -98,7 +97,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   );
 
   const handleClose = () => {
-    popoverRef.current.close();
+    setPopoverOpen(false);
   };
 
   const handleManageClick = () => {
@@ -183,10 +182,16 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   const handleOpenVariantManagement = useCallback(
     (e) => {
-      popoverRef.current.showAt(e.target);
+      popoverRef.current.opener = e.target;
+      setPopoverOpen(true);
     },
     [popoverRef]
   );
+
+  const handleCloseVariantManagement = (e) => {
+    stopPropagation(e);
+    setPopoverOpen(false);
+  };
 
   const searchText = i18nBundle.getText(SEARCH);
   const saveAsText = i18nBundle.getText(SAVE_AS);
@@ -307,10 +312,11 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         {canRenderPortal
           ? createPortal(
               <ResponsivePopover
+                open={popoverOpen}
                 className={classNames.popover}
                 ref={popoverRef}
                 headerText={titleText}
-                placementType={placement}
+                placement={placement}
                 footer={
                   (showSaveBtn || !hideSaveAs || !hideManageVariants) && (
                     <Bar
@@ -345,14 +351,14 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
                     />
                   )
                 }
-                onAfterClose={stopPropagation}
+                onClose={handleCloseVariantManagement}
               >
                 {inErrorState ? (
                   <IllustratedMessage name={IllustrationMessageType.UnableToLoad} />
                 ) : (
                   <List
                     onSelectionChange={handleVariantItemSelect}
-                    mode={ListMode.SingleSelect}
+                    selectionMode={ListSelectionMode.Single}
                     header={
                       showInput ? (
                         <div className={classNames.searchInputContainer} tabIndex={-1}>

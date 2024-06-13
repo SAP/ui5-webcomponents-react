@@ -27,26 +27,9 @@ interface SelectAttributes {
   disabled?: boolean;
 
   /**
-   * Defines a reference (ID or DOM element) of component's menu of options
-   * as alternative to define the select's dropdown.
+   * Determines the name by which the component will be identified upon submission in an HTML form.
    *
-   * **Note:** Usage of `SelectMenu` is recommended.
-   *
-   * **Note:** Available since [v1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of **@ui5/webcomponents**.
-   * @default undefined
-   */
-  menu?: string;
-
-  /**
-   * Determines the name with which the component will be submitted in an HTML form.
-   * The value of the component will be the value of the currently selected `Option`.
-   *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project:
-   * `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
-   *
-   * **Note:** When set, a native `input` HTML element
-   * will be created inside the `Select` so that it can be submitted as
-   * part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** This property is only applicable within the context of an HTML Form element.
    */
   name?: string;
 
@@ -88,17 +71,7 @@ interface SelectAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface SelectDomRef extends Omit<Required<SelectAttributes>, 'menu'>, Ui5DomRef {
-  /**
-   * Defines a reference (ID or DOM element) of component's menu of options
-   * as alternative to define the select's dropdown.
-   *
-   * **Note:** Usage of `SelectMenu` is recommended.
-   *
-   * **Note:** Available since [v1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of **@ui5/webcomponents**.
-   */
-  menu: HTMLElement | string | undefined;
-
+interface SelectDomRef extends Required<SelectAttributes>, Ui5DomRef {
   /**
    * Currently selected `Option` element.
    */
@@ -132,7 +105,7 @@ interface SelectPropTypes
    * Defines the HTML element that will be displayed in the component input part,
    * representing the selected option.
    *
-   * **Note:** If not specified and `SelectMenuOption` is used,
+   * **Note:** If not specified and `OptionCustom` is used,
    * either the option's `display-text` or its textContent will be displayed.
    *
    * **Note:** If not specified and `Option` is used,
@@ -204,15 +177,10 @@ interface SelectPropTypes
  * The available options of the Select are defined by using the Option component.
  * The Option comes with predefined design and layout, including `icon`, `text` and `additional-text`.
  *
- * 2. With SelectMenu (`SelectMenu`) and SelectMenuOption (`SelectMenuOption`) web components:
+ * 2. With OptionCustom (`OptionCustom`) web component.
  *
- * The SelectMenu can be used as alternative to define the Select's dropdown
- * and can be used via the `menu` property of the Select to reference SelectMenu by its ID.
- * The component gives the possibility to customize the Select's dropdown
- * by slotting entirely custom options (via the SelectMenuOption component) and adding custom styles.
- *
- * **Note:** SelectMenu is a popover and placing it top-level in the HTML page is recommended,
- * because some page styles (for example transitions) can misplace the SelectMenu.
+ * Options with custom content are defined by using the OptionCustom component
+ * The OptionCustom component comes with no predefined layout and it expects consumers to define it.
  *
  * ### Keyboard Handling
  * The `Select` provides advanced keyboard handling.
@@ -226,13 +194,14 @@ interface SelectPropTypes
  *
  *
  *
- * `import "@ui5/webcomponents/dist/Option";` (comes with `Select`)
+ * `import "@ui5/webcomponents/dist/Option";`
+ * `import "@ui5/webcomponents/dist/OptionCustom";`
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   'ui5-select',
-  ['accessibleName', 'accessibleNameRef', 'menu', 'name', 'value', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'name', 'value', 'valueState'],
   ['disabled', 'readonly', 'required'],
   ['label', 'valueStateMessage'],
   ['change', 'close', 'live-change', 'open'],

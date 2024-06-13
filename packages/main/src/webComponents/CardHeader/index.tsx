@@ -6,16 +6,16 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface CardHeaderAttributes {
   /**
+   * Defines the additional text.
+   */
+  additionalText?: string;
+
+  /**
    * Defines if the component would be interactive,
    * e.g gets hover effect, gets focus outline and `click` event is fired, when pressed.
    * @default false
    */
   interactive?: boolean;
-
-  /**
-   * Defines the status text.
-   */
-  status?: string;
 
   /**
    * Defines the subtitle text.
@@ -64,7 +64,7 @@ interface CardHeaderPropTypes
 
 /**
  * The `CardHeader` is a component, meant to be used as a header of the `Card` component.
- * It displays valuable information, that can be defined with several properties, such as: `titleText`, `subtitleText`, `status`
+ * It displays valuable information, that can be defined with several properties, such as: `titleText`, `subtitleText`, `additionalText`
  * and two slots: `avatar` and `action`.
  *
  * ### Keyboard handling
@@ -76,7 +76,7 @@ interface CardHeaderPropTypes
  */
 const CardHeader = withWebComponent<CardHeaderPropTypes, CardHeaderDomRef>(
   'ui5-card-header',
-  ['status', 'subtitleText', 'titleText'],
+  ['additionalText', 'subtitleText', 'titleText'],
   ['interactive'],
   ['action', 'avatar'],
   ['click'],

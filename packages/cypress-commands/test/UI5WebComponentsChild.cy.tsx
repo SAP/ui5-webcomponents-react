@@ -44,7 +44,7 @@ describe('UI5 Web Components - Child Commands', () => {
         <Tab
           data-testId="tab2"
           text={'Tab 2'}
-          subTabs={
+          items={
             <>
               <Tab data-testId="tab2.1" text={'Tab 2.1'}>
                 Tab 2.1
@@ -60,7 +60,7 @@ describe('UI5 Web Components - Child Commands', () => {
       </TabContainer>
     );
     cy.findByTestId('tabContainer').findUi5TabOpenPopoverButtonByText('Tab 2').click();
-    cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Tab 2.2').should('be.visible');
+    cy.findByTestId('tabContainer').shadow().get('[ui5-list]').findByText('Tab 2.2').should('be.visible');
   });
 
   it('typeIntoUi5Input', () => {
@@ -205,11 +205,7 @@ describe('UI5 Web Components - Child Commands', () => {
       <MultiComboBox key="ui5-multi-combobox" onSelectionChange={changeSpy}>
         {...new Array(30).fill(<MultiComboBoxItem text="Item" />)}
         <MultiComboBoxItem text={selectItemText} />
-      </MultiComboBox>,
-      <Select key="ui5-select" onChange={changeSpy}>
-        {...new Array(30).fill(<Option>Item</Option>)}
-        <Option>{selectItemText}</Option>
-      </Select>
+      </MultiComboBox>
     ];
 
     components.forEach((component) => {
@@ -223,9 +219,6 @@ describe('UI5 Web Components - Child Commands', () => {
           break;
         case 'ui5-multi-combobox':
           cy.get(`[${component.key}]`).find('[ui5-token]').contains(selectItemText);
-          break;
-        case 'ui5-select':
-          cy.get(`[${component.key}]`).should('have.value', selectItemText);
           break;
       }
 
@@ -247,11 +240,7 @@ describe('UI5 Web Components - Child Commands', () => {
       <MultiComboBox key="ui5-multi-combobox" onSelectionChange={changeSpy}>
         {...new Array(5).fill(<MultiComboBoxItem text="Item" />)}
         <MultiComboBoxItem text={selectItemText} data-testid="selectItem" />
-      </MultiComboBox>,
-      <Select key="ui5-select" onChange={changeSpy}>
-        {...new Array(5).fill(<Option>Item</Option>)}
-        <Option data-testid="selectItem">{selectItemText}</Option>
-      </Select>
+      </MultiComboBox>
     ];
 
     components.forEach((component) => {
@@ -260,16 +249,10 @@ describe('UI5 Web Components - Child Commands', () => {
       cy.get('[ui5-responsive-popover][open]').should('be.visible');
       cy.get(`[data-testid="selectItem"]`).clickDropdownMenuItem();
 
-      switch (component.key) {
-        case 'ui5-combobox':
-          cy.get(`[${component.key}]`).should('have.value', selectItemText);
-          break;
-        case 'ui5-multi-combobox':
-          cy.get(`[${component.key}]`).find('[ui5-token]').contains(selectItemText);
-          break;
-        case 'ui5-select':
-          cy.get(`[${component.key}]`).should('have.value', selectItemText);
-          break;
+      if (component.key === 'ui5-combobox') {
+        cy.get(`[${component.key}]`).should('have.value', selectItemText);
+      } else if (component.key === 'ui5-multi-combobox') {
+        cy.get(`[${component.key}]`).find('[ui5-token]').contains(selectItemText);
       }
 
       cy.get('@change').should('have.callCount', callCounter);

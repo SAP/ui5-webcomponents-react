@@ -1,7 +1,6 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
-import type TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import type IllustrationMessageSize from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -14,6 +13,17 @@ interface IllustratedMessageAttributes {
    * **Note:** Available since [v1.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.7.0) of **@ui5/webcomponents-fiori**.
    */
   accessibleNameRef?: string;
+
+  /**
+   * Determines which illustration breakpoint variant is used.
+   *
+   * As `IllustratedMessage` adapts itself around the `Illustration`, the other
+   * elements of the component are displayed differently on the different breakpoints/illustration designs.
+   *
+   * **Note:** Available since [v1.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.5.0) of **@ui5/webcomponents-fiori**.
+   * @default "Auto"
+   */
+  design?: IllustrationMessageSize | keyof typeof IllustrationMessageSize;
 
   /**
    * Defines the illustration name that will be displayed in the component.
@@ -42,17 +52,6 @@ interface IllustratedMessageAttributes {
   name?: string;
 
   /**
-   * Determines which illustration breakpoint variant is used.
-   *
-   * As `IllustratedMessage` adapts itself around the `Illustration`, the other
-   * elements of the component are displayed differently on the different breakpoints/illustration sizes.
-   *
-   * **Note:** Available since [v1.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.5.0) of **@ui5/webcomponents-fiori**.
-   * @default "Auto"
-   */
-  size?: IllustrationMessageSize | keyof typeof IllustrationMessageSize;
-
-  /**
    * Defines the subtitle of the component.
    *
    * **Note:** Using this property, the default subtitle text of illustration will be overwritten.
@@ -60,18 +59,6 @@ interface IllustratedMessageAttributes {
    * **Note:** Using `subtitle` slot, the default of this property will be overwritten.
    */
   subtitleText?: string;
-
-  /**
-   * Defines the semantic level of the title.
-   *
-   * **Note:** Used for accessibility purposes only.
-   *
-   * **Note:** Doesn't take effect when `title` slot is being used.
-   *
-   * **Note:** Available since [v1.20.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.20.0) of **@ui5/webcomponents-fiori**.
-   * @default "H2"
-   */
-  titleLevel?: TitleLevel | keyof typeof TitleLevel;
 
   /**
    * Defines the title of the component.
@@ -156,7 +143,7 @@ interface IllustratedMessagePropTypes
  */
 const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, IllustratedMessageDomRef>(
   'ui5-illustrated-message',
-  ['accessibleNameRef', 'name', 'size', 'subtitleText', 'titleLevel', 'titleText'],
+  ['accessibleNameRef', 'design', 'name', 'subtitleText', 'titleText'],
   [],
   ['subtitle', 'title'],
   [],

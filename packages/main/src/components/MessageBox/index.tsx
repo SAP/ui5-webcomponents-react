@@ -1,18 +1,16 @@
 'use client';
 
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
+import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement } from 'react';
-import {
-  ButtonDesign,
-  MessageBoxActions,
-  MessageBoxTypes,
-  PopupAccessibleRole,
-  TitleLevel,
-  ValueState
-} from '../../enums/index.js';
+import { MessageBoxActions, MessageBoxTypes } from '../../enums/index.js';
 import {
   ABORT,
   CANCEL,
@@ -41,7 +39,7 @@ type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | str
 export interface MessageBoxPropTypes
   extends Omit<
     DialogPropTypes,
-    'children' | 'footer' | 'headerText' | 'onAfterClose' | 'state' | 'accessibleNameRef' | 'open' | 'initialFocus'
+    'children' | 'footer' | 'headerText' | 'onClose' | 'state' | 'accessibleNameRef' | 'open' | 'initialFocus'
   > {
   /**
    * Defines the IDs of the elements that label the component.
@@ -101,9 +99,7 @@ const getIcon = (icon, type, classes) => {
   if (isValidElement(icon)) return icon;
   switch (type) {
     case MessageBoxTypes.Confirm:
-      return (
-        <Icon name={iconSysHelp} aria-hidden="true" accessibleRole="presentation" className={classes.confirmIcon} />
-      );
+      return <Icon name={iconSysHelp} mode={IconMode.Decorative} className={classes.confirmIcon} />;
     default:
       return null;
   }
@@ -114,11 +110,11 @@ const convertMessageBoxTypeToState = (type: MessageBoxTypes) => {
     case MessageBoxTypes.Information:
       return ValueState.Information;
     case MessageBoxTypes.Success:
-      return ValueState.Success;
+      return ValueState.Positive;
     case MessageBoxTypes.Warning:
-      return ValueState.Warning;
+      return ValueState.Critical;
     case MessageBoxTypes.Error:
-      return ValueState.Error;
+      return ValueState.Negative;
     default:
       return ValueState.None;
   }
@@ -209,8 +205,8 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
     return initialFocus;
   };
 
-  // @ts-expect-error: footer, headerText and onAfterClose are already omitted via prop types
-  const { footer: _0, headerText: _1, onAfterClose: _2, ...restWithoutOmitted } = rest;
+  // @ts-expect-error: footer, headerText and onClose are already omitted via prop types
+  const { footer: _0, headerText: _1, onClose: _2, ...restWithoutOmitted } = rest;
 
   const iconToRender = getIcon(icon, type, classNames);
   const needsCustomHeader = !props.header && !!iconToRender;
@@ -220,7 +216,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       open={open}
       ref={ref}
       className={clsx(classNames.messageBox, className)}
-      onAfterClose={open ? handleOnClose : stopPropagation}
+      onClose={open ? handleOnClose : stopPropagation}
       accessibleNameRef={needsCustomHeader ? `${messageBoxId}-title ${messageBoxId}-text` : undefined}
       accessibleRole={PopupAccessibleRole.AlertDialog}
       {...restWithoutOmitted}

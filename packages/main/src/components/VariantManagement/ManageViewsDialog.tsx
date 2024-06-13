@@ -1,9 +1,11 @@
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactElement } from 'react';
 import { isValidElement, Children, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { BarDesign, ButtonDesign, FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,
@@ -34,7 +36,7 @@ type ManageViewsDialogChildType = boolean | undefined | null | ReactElement<Vari
 
 export interface ManageViewsDialogPropTypes {
   children: ManageViewsDialogChildType | ManageViewsDialogChildType[];
-  onAfterClose: DialogPropTypes['onAfterClose'];
+  onAfterClose: DialogPropTypes['onClose'];
   handleSaveManageViews: (
     e: MouseEventHandler<HTMLElement>,
     payload: {
@@ -219,7 +221,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       open
       className={classNames.manageViewsDialog}
       data-component-name="VariantManagementManageViewsDialog"
-      onAfterClose={onAfterClose}
+      onClose={onAfterClose}
       onBeforeClose={handleClose}
       headerText={manageViewsText}
       initialFocus={`search-${uniqueId}`}

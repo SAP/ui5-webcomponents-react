@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BarDesign, ButtonDesign, PageBackgroundDesign } from '../../enums/index.js';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import PageBackgroundDesign from '@ui5/webcomponents-fiori/dist/types/PageBackgroundDesign.js';
 import { Bar, Button, Label } from '../index.js';
 import { Page } from './index.js';
 

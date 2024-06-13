@@ -32,11 +32,10 @@ const meta = {
         <StandardListItem data-key="3">Menu Item 3</StandardListItem>
       </>
     ),
-    searchField: <Input showClearIcon icon={<Icon name={searchIcon} interactive />} />,
+    searchField: <Input showClearIcon icon={<Icon name={searchIcon} />} />,
     notificationsCount: '10',
     primaryTitle: 'Shell Bar',
-    secondaryTitle: 'Fiori 3 Shell Bar',
-    showCoPilot: true,
+    secondaryTitle: 'Secondary Title',
     showNotifications: true,
     showProductSwitch: true,
     children: <ShellBarItem count="3" text={'ShellBarItem'} icon={addIcon} />

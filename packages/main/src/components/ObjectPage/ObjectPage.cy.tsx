@@ -1,16 +1,19 @@
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
 import type { CSSProperties } from 'react';
 import { useEffect, useReducer, useRef, useState } from 'react';
 import type { ObjectPagePropTypes } from '../..';
 import {
   Avatar,
   Bar,
-  BarDesign,
   Breadcrumbs,
   BreadcrumbsItem,
   Button,
-  ButtonDesign,
   DynamicPageHeader,
   DynamicPageTitle,
   FlexBox,
@@ -19,7 +22,6 @@ import {
   FlexBoxWrap,
   Icon,
   IllustratedMessage,
-  IllustrationMessageType,
   Label,
   Link,
   MessageStrip,
@@ -29,9 +31,7 @@ import {
   ObjectPageSubSection,
   ObjectStatus,
   Text,
-  Title,
-  TitleLevel,
-  ValueState
+  Title
 } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
@@ -367,8 +367,9 @@ describe('ObjectPage', () => {
     cy.findByTestId('footer').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.wait(500);
 
-    cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Job Relationship').click({ force: true });
+    cy.get('[ui5-tabcontainer]').contains('Job Relationship').click({ force: true });
     cy.findByText('Job Information').should('not.be.visible');
     cy.findByText('Job Relationship').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
@@ -646,7 +647,8 @@ describe('ObjectPage', () => {
       cy.findByText('Custom Header Section Two').should('be.visible');
 
       cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Goals').click();
-      cy.get('[ui5-static-area-item]').shadow().get('[ui5-list]').findByText('Goals 2').click({ force: true });
+      cy.wait(500);
+      cy.get('[ui5-tabcontainer]').contains('Goals 2').click({ force: true });
       cy.findByText('Goals 2').should('not.exist');
       cy.findByText('toggle titleTextSub').click({ scrollBehavior: false, force: true });
       cy.findByText('Goals 2').should('be.visible');
@@ -926,7 +928,7 @@ const DPTitle = (
       </Breadcrumbs>
     }
   >
-    <ObjectStatus state={ValueState.Success}>employed</ObjectStatus>
+    <ObjectStatus state={ValueState.Positive}>employed</ObjectStatus>
   </DynamicPageTitle>
 );
 

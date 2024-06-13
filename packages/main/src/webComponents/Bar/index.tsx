@@ -1,7 +1,7 @@
 'use client';
 
-import '@ui5/webcomponents-fiori/dist/Bar.js';
-import type BarDesign from '@ui5/webcomponents-fiori/dist/types/BarDesign.js';
+import '@ui5/webcomponents/dist/Bar.js';
+import type BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
@@ -79,7 +79,7 @@ const Bar = withWebComponent<BarPropTypes, BarDomRef>(
   [],
   ['endContent', 'startContent'],
   [],
-  () => import('@ui5/webcomponents-fiori/dist/Bar.js')
+  () => import('@ui5/webcomponents/dist/Bar.js')
 );
 
 Bar.displayName = 'Bar';

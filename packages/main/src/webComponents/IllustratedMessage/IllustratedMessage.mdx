@@ -1,6 +1,6 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { MessageStripDesign } from '../../enums';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import { MessageStrip } from '../MessageStrip';
 import * as ComponentStories from './IllustratedMessage.stories';
 import { IllustratedMessage } from './index';
@@ -22,7 +22,7 @@ import { IllustratedMessage } from './index';
 ## Fully customizable title
 
 <MessageStrip
-  design={MessageStripDesign.Warning}
+  design={MessageStripDesign.Critical}
   hideCloseButton
   children={
     <>

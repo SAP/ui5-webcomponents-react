@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Avatar.js';
+import type { AvatarAccessibilityAttributes } from '@ui5/webcomponents/dist/Avatar.js';
 import type AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
 import type AvatarShape from '@ui5/webcomponents/dist/types/AvatarShape.js';
 import type AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
@@ -94,14 +95,25 @@ interface AvatarAttributes {
   size?: AvatarSize | keyof typeof AvatarSize;
 }
 
-interface AvatarDomRef extends Required<AvatarAttributes>, Ui5DomRef {}
+interface AvatarDomRef extends Required<AvatarAttributes>, Ui5DomRef {
+  /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following field is supported:
+   *
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  accessibilityAttributes: AvatarAccessibilityAttributes;
+}
 
 interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof AvatarAttributes | 'badge' | 'children'> {
   /**
    * Defines the optional badge that will be used for visual affordance.
    *
    * **Note:** While the slot allows for custom badges, to achieve
-   * the Fiori design, please use `Badge` with `Icon`
+   * the Fiori design, you can use the `Tag` with `Icon`
    * in the corresponding `icon` slot, without text nodes.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="badge"`).

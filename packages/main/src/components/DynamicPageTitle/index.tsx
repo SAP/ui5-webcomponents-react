@@ -117,7 +117,9 @@ const enhanceActionsWithClick = (actions: ActionsType, ref: RefObject<PopoverDom
           if (typeof action.props?.onClick === 'function') {
             action.props.onClick(e);
           }
+          // @ts-expect-error: will be replaced
           if (ref.current?.isOpen() && !e.defaultPrevented) {
+            // @ts-expect-error: will be replaced
             ref.current.close();
           }
         }

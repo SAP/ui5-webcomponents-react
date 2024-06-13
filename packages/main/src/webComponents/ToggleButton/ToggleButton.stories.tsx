@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonDesign } from '../../enums/ButtonDesign';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { ToggleButton } from './index.js';
 
 const meta = {

@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AvatarColorScheme, AvatarShape, AvatarSize } from '../../enums';
+import AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
+import AvatarShape from '@ui5/webcomponents/dist/types/AvatarShape.js';
+import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
 import { Avatar } from './index';
 
 const meta = {

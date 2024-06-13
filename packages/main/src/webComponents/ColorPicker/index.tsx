@@ -7,12 +7,21 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface ColorPickerAttributes {
   /**
+   * Determines the name by which the component will be identified upon submission in an HTML form.
+   *
+   * **Note:** This property is only applicable within the context of an HTML Form element.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  name?: string;
+
+  /**
    * Defines the currently selected color of the component.
    *
    * **Note**: use HEX, RGB, RGBA, HSV formats or a CSS color name when modifying this property.
    * @default "rgba(255, 255, 255, 1)"
    */
-  color?: CSSProperties['color'];
+  value?: CSSProperties['color'];
 }
 
 interface ColorPickerDomRef extends Required<ColorPickerAttributes>, Ui5DomRef {}
@@ -46,7 +55,7 @@ interface ColorPickerPropTypes
  */
 const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(
   'ui5-color-picker',
-  ['color'],
+  ['name', 'value'],
   [],
   [],
   ['change'],

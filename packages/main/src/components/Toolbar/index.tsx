@@ -1,5 +1,6 @@
 'use client';
 
+import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import {
   debounce,
   useI18nBundle,
@@ -20,7 +21,6 @@ import {
   useRef,
   useState
 } from 'react';
-import type { PopupAccessibleRole } from '../../enums/index.js';
 import { ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import { flattenFragments } from '../../internal/utils.js';

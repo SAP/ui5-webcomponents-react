@@ -5,7 +5,8 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
 import type { Meta, StoryObj } from '@storybook/react';
 import CalendarLegendItemType from '@ui5/webcomponents/dist/types/CalendarLegendItemType.js';
-import { CalendarSelectionMode, CalendarType } from '../../enums/index.js';
+import CalendarSelectionMode from '@ui5/webcomponents/dist/types/CalendarSelectionMode.js';
+import CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
 import { CalendarLegend } from '../CalendarLegend/index.js';
 import { CalendarLegendItem } from '../CalendarLegendItem/index.js';
 import { SpecialCalendarDate } from '../SpecialCalendarDate/index.js';
@@ -15,7 +16,8 @@ const meta = {
   title: 'Inputs / Calendar',
   component: Calendar,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
+    specialDates: { control: { disable: true } }
   },
   args: {
     primaryCalendarType: CalendarType.Gregorian,

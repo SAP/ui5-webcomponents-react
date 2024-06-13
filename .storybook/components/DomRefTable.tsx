@@ -1,5 +1,6 @@
 import { DocsContext, Heading } from '@storybook/blocks';
-import { Badge, BadgeDesign, Link, MessageStrip, Popover } from '@ui5/webcomponents-react';
+import { Tag, Link, MessageStrip, Popover } from '@ui5/webcomponents-react';
+import TagDesign from '@ui5/webcomponents/dist/types/TagDesign.js';
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types';
 import type { ReactNode } from 'react';
 import { Fragment, useContext, useRef } from 'react';
@@ -99,9 +100,9 @@ export function DomRefTable() {
                       {row.deprecated && (
                         <>
                           <br />
-                          <Badge
+                          <Tag
                             className={classes.deprecationInfoBadge}
-                            design={BadgeDesign.Critical}
+                            design={TagDesign.Critical}
                             interactive={typeof row.deprecated === 'string'}
                             onClick={
                               typeof row.deprecated === 'string'
@@ -113,7 +114,7 @@ export function DomRefTable() {
                             }
                           >
                             deprecated
-                          </Badge>
+                          </Tag>
                         </>
                       )}
                     </td>

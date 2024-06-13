@@ -19,15 +19,15 @@
 }
 
 .button {
-  &[data-key='Error']:not([pressed]) {
+  &[data-key='Negative']:not([pressed]) {
     color: var(--sapNegativeElementColor);
   }
 
-  &[data-key='Warning']:not([pressed]) {
+  &[data-key='Critical']:not([pressed]) {
     color: var(--sapCriticalElementColor);
   }
 
-  &[data-key='Success']:not([pressed]) {
+  &[data-key='Positive']:not([pressed]) {
     color: var(--sapPositiveElementColor);
   }
 
@@ -44,15 +44,15 @@
   flex-shrink: 0;
   margin: 0 1rem 0 0.5rem;
 
-  &[data-type='Error'] {
+  &[data-type='Negative'] {
     color: var(--sapNegativeElementColor);
   }
 
-  &[data-type='Warning'] {
+  &[data-type='Critical'] {
     color: var(--sapCriticalElementColor);
   }
 
-  &[data-type='Success'] {
+  &[data-type='Positive'] {
     color: var(--sapPositiveElementColor);
   }
 

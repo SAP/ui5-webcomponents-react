@@ -1,10 +1,12 @@
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
 import { cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ButtonDesign, PopoverPlacementType, PopupAccessibleRole } from '../../enums/index.js';
 import { getOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
@@ -75,7 +77,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const handleBeforeOpen = () => {
     if (toggleBtnRef.current) {
-      toggleBtnRef.current.accessibilityAttributes = { expanded: true, hasPopup: 'Menu' };
+      toggleBtnRef.current.accessibilityAttributes = { expanded: true, hasPopup: 'menu' };
     }
   };
   const handleAfterOpen = () => {
@@ -84,7 +86,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const handleClose = (e) => {
     if (toggleBtnRef.current) {
-      toggleBtnRef.current.accessibilityAttributes = { expanded: false, hasPopup: 'Menu' };
+      toggleBtnRef.current.accessibilityAttributes = { expanded: false, hasPopup: 'menu' };
     }
     stopPropagation(e);
     setPressed(false);
@@ -94,7 +96,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     const tagName = getUi5TagWithSuffix('ui5-toggle-button');
     void customElements.whenDefined(tagName).then(() => {
       if (toggleBtnRef.current) {
-        toggleBtnRef.current.accessibilityAttributes = { expanded: pressed, hasPopup: 'Menu' };
+        toggleBtnRef.current.accessibilityAttributes = { expanded: pressed, hasPopup: 'menu' };
       }
     });
   }, []);
@@ -140,12 +142,12 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           <Popover
             data-component-name="ToolbarOverflowPopover"
             className={clsx(classes.popover, isPhone && classes.popoverPhone)}
-            placementType={PopoverPlacementType.Bottom}
+            placement={PopoverPlacement.Bottom}
             ref={componentRef}
             open={pressed}
-            onAfterClose={handleClose}
+            onClose={handleClose}
             onBeforeOpen={handleBeforeOpen}
-            onAfterOpen={handleAfterOpen}
+            onOpen={handleAfterOpen}
             hideArrow
             accessibleRole={accessibleRole}
           >
