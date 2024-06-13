@@ -6365,7 +6365,32 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ui5/webcomponents-react@workspace:packages/main":
+"@ui5/webcomponents-react-compat@workspace:packages/compat":
+  version: 0.0.0-use.local
+  resolution: "@ui5/webcomponents-react-compat@workspace:packages/compat"
+  dependencies:
+    "@ui5/webcomponents-react": "workspace:~"
+    clsx: "npm:2.1.1"
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    "@ui5/webcomponents-compat": ~2.0.0-rc.5
+    "@ui5/webcomponents-react": "workspace:~"
+    react: ^16.14.0 || ^17 || ^18 || ^19
+    react-dom: ^16.14.0 || ^17 || ^18 || ^19
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+    "@ui5/webcomponents-base":
+      optional: true
+    "@ui5/webcomponents-icons":
+      optional: true
+  languageName: unknown
+  linkType: soft
+
+"@ui5/webcomponents-react@workspace:packages/main, @ui5/webcomponents-react@workspace:~":
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react@workspace:packages/main"
   dependencies:
@@ -6381,7 +6406,7 @@ __metadata:
     "@ui5/webcomponents-fiori": 2.0.0-rc.5
     "@ui5/webcomponents-icons": 2.0.0-rc.5
     react: ^16.14.0 || ^17 || ^18 || ^19
-    react-dom: ^16.14.0 || ^17.0.0 || ^18 || ^19
+    react-dom: ^16.14.0 || ^17 || ^18 || ^19
   peerDependenciesMeta:
     "@types/react":
       optional: true
