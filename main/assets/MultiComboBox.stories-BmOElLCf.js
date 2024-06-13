@@ -1,0 +1,40 @@
+const __vite__fileDeps=["./index-CHeNrQxH.js","./iframe-BvH98P4b.js","./UI5Element-ZIczsayz.js","./Boot-DBJWGo1y.js","./EventProvider-CVfkyUHo.js","./useIsomorphicLayoutEffect-J-vjyzBO.js","./index-DVqgc125.js","./CustomElementsScopeUtils-Di1jckr8.js","./withWebComponent-CZCh4Hye.js","./utils-xoLr7-0V.js","./slot--DoKcWSY.js","./event-Dq0fpeHi.js","./ResizeHandler-D26-bsEk.js","./ValueState-Bg0UWejw.js","./Keys-B00bFMgT.js","./Integer-WDQzHAdZ.js","./slim-arrow-down-ADRUHrK3.js","./Icons-VTGLGKPM.js","./i18nBundle-Baemx9Ir.js","./Device-RcFucVeJ.js","./decline-iFbg0EvE.js","./i18n-defaults-C2wY9l8t.js","./Input-Cq0HsieF.js","./AriaLabelHelper-LMIEtYQL.js","./getActiveElement-kltGt_DR.js","./information-DBr1nnf3.js","./alert-CRLi12vy.js","./Popover-CiDK1VtS.js","./PopupsCommon.css-BU4M9Cwb.js","./FocusableElements-xn9p5spb.js","./isElementHidden-B4HqmI2E.js","./getEffectiveScrollbarStyle-BwuZEAK6.js","./MediaRange-Bnzt26Xb.js","./style-map-H4TARQHt.js","./class-map-7Nty0QHu.js","./parameters-bundle.css-B_nLitlw.js","./BrowserScrollbar.css-DkjKirWP.js","./Icon-bm18Wc8p.js","./i18n-defaults-BBSxky5H.js","./ResponsivePopoverCommon.css-C8UIk1KD.js","./ValueStateMessage.css-SoZnH5nl.js","./ResponsivePopover-B13iEHLw.js","./Dialog-DHL3bsk8.js","./Button-B3obxaDo.js","./MarkedEvents-CAur0wxK.js","./willShowContent-CZcfsNXp.js","./Title-BjHLMeGd.js","./WrappingType-CW8URInd.js","./List-BowJIEi8.js","./ItemNavigation-D9iN2lPd.js","./TabbableElements-BE9nZgBS.js","./debounce-TTkz9ISH.js","./BusyIndicator-CuIVkbpJ.js","./Label-BcDuAK9i.js","./CheckBox-C9-X9sQD.js","./accept-Db-bru4f.js","./RadioButton-Ct9qh8VX.js","./slim-arrow-right-CXb39j_L.js","./Avatar-BQsj5wMZ.js","./employee-DN6CdZzr.js","./Tokenizer-Oq4PYRi-.js","./ScrollEnablement-CFDeWxNn.js","./animate-DF-0g--S.js","./sys-cancel-e1cGZooq.js","./ToggleButton-BMFUAp5_.js","./ComboBoxFilter-BrJkmvoR.js","./SuggestionItem-BceR_g91.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+import{j as e}from"./useIsomorphicLayoutEffect-J-vjyzBO.js";import{o as c}from"./ValueState-Bg0UWejw.js";import{_ as d}from"./iframe-BvH98P4b.js";import{M as s,a as t}from"./index-CHeNrQxH.js";import{w as b}from"./withWebComponent-CZCh4Hye.js";const o=b("ui5-mcb-group-item",["text"],[],[],[],()=>d(()=>import("./index-CHeNrQxH.js").then(n=>n.b),__vite__mapDeps([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66]),import.meta.url));o.displayName="MultiComboBoxGroupItem";try{o.displayName="MultiComboBoxGroupItem",o.__docgenInfo={description:"The `MultiComboBoxGroupItem` is type of suggestion item,\nthat can be used to split the `MultiComboBox` suggestions into groups.\n\n__Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)",displayName:"MultiComboBoxGroupItem",props:{text:{defaultValue:null,description:"Defines the text of the component.",name:"text",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}try{o.displayName="MultiComboBoxGroupItem",o.__docgenInfo={description:"The `MultiComboBoxGroupItem` is type of suggestion item,\nthat can be used to split the `MultiComboBox` suggestions into groups.\n\n__Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)",displayName:"MultiComboBoxGroupItem",props:{text:{defaultValue:null,description:"Defines the text of the component.",name:"text",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}const h={title:"Inputs / MultiComboBox",component:s,argTypes:{children:{control:{disable:!0}},icon:{control:{disable:!0}},valueStateMessage:{control:{disable:!0}}},args:{valueState:c.None},tags:["package:@ui5/webcomponents"]},i={render:n=>e.jsxs(s,{...n,children:[e.jsx(t,{text:"Item 1"}),e.jsx(t,{text:"Item 2"}),e.jsx(t,{text:"Item 3"}),e.jsx(t,{text:"Item 4"}),e.jsx(t,{text:"Item 5"})]})},m={render:n=>e.jsxs(s,{...n,children:[e.jsx(o,{text:"Asia"}),e.jsx(t,{text:"Afghanistan"}),e.jsx(t,{text:"China"}),e.jsx(t,{text:"India"}),e.jsx(t,{text:"Indonesia"}),e.jsx(o,{text:"Europe"}),e.jsx(t,{text:"Austria"}),e.jsx(t,{text:"Bulgaria"}),e.jsx(t,{text:"Germany"}),e.jsx(t,{text:"Italy"}),e.jsx(o,{text:"North America"}),e.jsx(t,{text:"Canada"}),e.jsx(t,{text:"Granada"}),e.jsx(t,{text:"Haiti"}),e.jsx(t,{text:"United States"})]})};var r,a,l;i.parameters={...i.parameters,docs:{...(r=i.parameters)==null?void 0:r.docs,source:{originalSource:`{
+  render: args => {
+    return <MultiComboBox {...args}>
+        <MultiComboBoxItem text="Item 1" />
+        <MultiComboBoxItem text="Item 2" />
+        <MultiComboBoxItem text="Item 3" />
+        <MultiComboBoxItem text="Item 4" />
+        <MultiComboBoxItem text="Item 5" />
+      </MultiComboBox>;
+  }
+}`,...(l=(a=i.parameters)==null?void 0:a.docs)==null?void 0:l.source}}};var u,p,x;m.parameters={...m.parameters,docs:{...(u=m.parameters)==null?void 0:u.docs,source:{originalSource:`{
+  render: args => {
+    return <MultiComboBox {...args}>
+        <MultiComboBoxGroupItem text="Asia"></MultiComboBoxGroupItem>
+        <MultiComboBoxItem text="Afghanistan"></MultiComboBoxItem>
+        <MultiComboBoxItem text="China"></MultiComboBoxItem>
+        <MultiComboBoxItem text="India"></MultiComboBoxItem>
+        <MultiComboBoxItem text="Indonesia"></MultiComboBoxItem>
+        <MultiComboBoxGroupItem text="Europe"></MultiComboBoxGroupItem>
+        <MultiComboBoxItem text="Austria"></MultiComboBoxItem>
+        <MultiComboBoxItem text="Bulgaria"></MultiComboBoxItem>
+        <MultiComboBoxItem text="Germany"></MultiComboBoxItem>
+        <MultiComboBoxItem text="Italy"></MultiComboBoxItem>
+        <MultiComboBoxGroupItem text="North America"></MultiComboBoxGroupItem>
+        <MultiComboBoxItem text="Canada"></MultiComboBoxItem>
+        <MultiComboBoxItem text="Granada"></MultiComboBoxItem>
+        <MultiComboBoxItem text="Haiti"></MultiComboBoxItem>
+        <MultiComboBoxItem text="United States"></MultiComboBoxItem>
+      </MultiComboBox>;
+  }
+}`,...(x=(p=m.parameters)==null?void 0:p.docs)==null?void 0:x.source}}};const C=["Default","Grouping"],_=Object.freeze(Object.defineProperty({__proto__:null,Default:i,Grouping:m,__namedExportsOrder:C,default:h},Symbol.toStringTag,{value:"Module"}));export{_ as C,i as D,m as G,o as M};

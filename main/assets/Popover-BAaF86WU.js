@@ -1,0 +1,115 @@
+import{j as e}from"./useIsomorphicLayoutEffect-J-vjyzBO.js";import{useMDXComponents as i}from"./index-Bpj30qF7.js";import{M as s,C as r}from"./index-BGPPIhb8.js";import{M as c}from"./index-DgydNPrY.js";import{C as m}from"./ControlsWithNote-DN_PI1bF.js";import{D as h}from"./DocsHeader-Csu7KlNu.js";import{F as a}from"./ProjectTemplate-B9geGl3q.js";import"./index-DVqgc125.js";import"./WrappingType-CW8URInd.js";import{C as d,D as t,P as l}from"./Popover.stories-Ce0KjD3E.js";import"./iframe-BvH98P4b.js";import"../sb-preview/runtime.js";import"./index-oytpl9VN.js";import"./_baseForOwn-czysEfXW.js";import"./mapValues-DJmJhyxk.js";import"./_baseUniq-fADs2fxN.js";import"./index-MwrKYwMg.js";import"./index-DrFu-skq.js";import"./UI5Element-ZIczsayz.js";import"./Boot-DBJWGo1y.js";import"./EventProvider-CVfkyUHo.js";import"./CustomElementsScopeUtils-Di1jckr8.js";import"./withWebComponent-CZCh4Hye.js";import"./utils-xoLr7-0V.js";import"./slot--DoKcWSY.js";import"./event-Dq0fpeHi.js";import"./i18nBundle-Baemx9Ir.js";import"./decline-iFbg0EvE.js";import"./Icons-VTGLGKPM.js";import"./i18n-defaults-C2wY9l8t.js";import"./information-DBr1nnf3.js";import"./alert-CRLi12vy.js";import"./class-map-7Nty0QHu.js";import"./Icon-bm18Wc8p.js";import"./Device-RcFucVeJ.js";import"./Keys-B00bFMgT.js";import"./parameters-bundle.css-B_nLitlw.js";import"./Button-B3obxaDo.js";import"./AriaLabelHelper-LMIEtYQL.js";import"./MarkedEvents-CAur0wxK.js";import"./willShowContent-CZcfsNXp.js";import"./i18n-defaults-BBSxky5H.js";import"./TagDesign-B60Yj3Pp.js";import"./utils-WT0mJUCa.js";import"./main-J1meqccC.js";import"./index-PaECXGmn.js";import"./Tag-BT5Mvbr4.js";import"./sys-help-2-2Us62-4y.js";import"./index-Du6xKB7b.js";import"./Popover-CiDK1VtS.js";import"./Integer-WDQzHAdZ.js";import"./PopupsCommon.css-BU4M9Cwb.js";import"./FocusableElements-xn9p5spb.js";import"./isElementHidden-B4HqmI2E.js";import"./getEffectiveScrollbarStyle-BwuZEAK6.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-D26-bsEk.js";import"./MediaRange-Bnzt26Xb.js";import"./style-map-H4TARQHt.js";import"./BrowserScrollbar.css-DkjKirWP.js";import"./index-szvHrz99.js";import"./Link-CM0QSx8V.js";import"./chunk-HLWAVYOI-u4kM9-ix.js";import"./client-5PD-IPQ1.js";import"./copy-Cmf2rNBH.js";import"./copy-e7WxF_om.js";import"./index-Bo6CU_bj.js";import"./clsx-B-dksMZM.js";import"./useStylesheet-DGwRvl1X.js";import"./index-CUZZ9nZS.js";import"./i18n-defaults-CNyODxfy.js";import"./I18nContext-BrA05J-F.js";import"./index-DoUANS_S.js";import"./ThemingParameters-DOkJX3Ed.js";import"./ModalsContext-DrY1dyul.js";import"./useIsomorphicId-B7SE6ZVh.js";import"./GitHub-Mark-BB1PBR_N.js";import"./TableOfContent-BAp_w_wX.js";import"./index-BNqEw21-.js";import"./Label-BcDuAK9i.js";import"./index-El8wsCbc.js";import"./addCustomCSSWithScoping-D0vrnlbk.js";import"./index-4eQD1Xi9.js";import"./index-Decb0PcY.js";import"./index-jPWG4tlh.js";import"./Avatar-BQsj5wMZ.js";import"./employee-DN6CdZzr.js";import"./settings-Wtiqo1-j.js";import"./index-DgWZR629.js";import"./index-DB7CteaV.js";import"./index-DHtUmWDF.js";import"./List-BowJIEi8.js";import"./ItemNavigation-D9iN2lPd.js";import"./TabbableElements-BE9nZgBS.js";import"./debounce-TTkz9ISH.js";import"./BusyIndicator-CuIVkbpJ.js";import"./CheckBox-C9-X9sQD.js";import"./ValueState-Bg0UWejw.js";import"./accept-Db-bru4f.js";import"./RadioButton-Ct9qh8VX.js";import"./slim-arrow-right-CXb39j_L.js";import"./index-DAMrXPbC.js";import"./index-DfmQVsUf.js";import"./Title-BjHLMeGd.js";function p(n){const o={a:"a",code:"code",em:"em",h1:"h1",h2:"h2",h4:"h4",p:"p",pre:"pre",strong:"strong",...i(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(s,{of:d}),`
+`,e.jsx(h,{since:"0.9.0"}),`
+`,e.jsx("br",{}),`
+`,e.jsx(o.h2,{id:"example",children:"Example"}),`
+`,e.jsx(r,{of:t}),`
+`,e.jsx(o.h2,{id:"properties",children:"Properties"}),`
+`,e.jsx(m,{of:t}),`
+`,e.jsx(o.h2,{id:"opening-popovers",children:"Opening Popovers"}),`
+`,e.jsx("br",{}),`
+`,e.jsx(o.h4,{id:"since-0220",children:"since 0.22.0"}),`
+`,e.jsxs(o.p,{children:["We recommend opening and closing the ",e.jsx(o.code,{children:"Popover"})," component in a declarative way using the ",e.jsx(o.code,{children:"open"})," and ",e.jsx(o.code,{children:"opener"}),` prop.
+You can still use the imperative way which is outlined below.`]}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-jsx",children:`const MyComponentWithPopover = () => {
+  const [popoverIsOpen, setPopoverIsOpen] = useState(false);
+  return (
+    <>
+      <Button
+        id={'openPopoverBtn'}
+        onClick={() => {
+          setPopoverIsOpen(true);
+        }}
+      >
+        Open Popover
+      </Button>
+      <Popover
+        opener={'openPopoverBtn'}
+        open={popoverIsOpen}
+        onClose={() => {
+          setPopoverIsOpen(false);
+        }}
+      />
+    </>
+  );
+};
+`})}),`
+`,e.jsx(o.p,{children:e.jsxs(o.strong,{children:["Opening a ",e.jsx(o.code,{children:"Popover"})," by reference and not by ",e.jsx(o.code,{children:"id"})]})}),`
+`,e.jsxs(o.p,{children:["This web component exposes a way to pass a reference of an element instead of an ",e.jsx(o.code,{children:"id"})," to the ",e.jsx(o.code,{children:"opener"})," prop. Since this is not supported when passing the reference in a declarative way to a React ",e.jsx(o.code,{children:"prop"}),`, you have to attach the ref directly on the web component.
+You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.`]}),`
+`,e.jsx(c,{hideCloseButton:!0,children:`Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
+using this approach!`}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-jsx",children:`const PopoverComponent = () => {
+  const popoverRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const handleOpenerClick = (e) => {
+    if (popoverRef.current) {
+      popoverRef.current.opener = e.target;
+      setOpen((prev) => !prev);
+    }
+  };
+  return (
+    <>
+      <Button onClick={handleOpenerClick}>Opener</Button>
+      <Popover ref={popoverRef} open={open}>
+        {/* Content */}
+      </Popover>
+    </>
+  );
+};
+`})}),`
+`,e.jsx(o.h4,{id:"before-0220",children:"before 0.22.0"}),`
+`,e.jsxs(o.p,{children:[e.jsx(o.code,{children:"Popovers"})," can only be opened by attaching a ",e.jsx(o.code,{children:"ref"})," to the component and then calling the corresponding ",e.jsx(o.strong,{children:e.jsx(o.code,{children:"showAt"})})," method. The method receives the target element - ",e.jsxs(o.em,{children:["on which the ",e.jsx(o.code,{children:"Popover"})," is to be opened"]})," - as parameter."]}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-jsx",children:`const PopoverComponent = () => {
+  const popoverRef = useRef();
+  const onButtonClick = (e) => {
+    popoverRef.current.showAt(e.target);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Popover</Button>
+      <Popover ref={popoverRef}>Some Content</Popover>
+    </>
+  );
+};
+`})}),`
+`,e.jsx(o.h2,{id:"using-popovers-inside-other-components",children:"Using Popovers inside other components"}),`
+`,e.jsxs(o.p,{children:[e.jsx(o.code,{children:"Popovers"}),` are often used within other components, when opened this could sometimes have unwanted side effects.
+In this case, we recommend using `,e.jsx(o.a,{href:"https://reactjs.org/docs/portals.html",rel:"nofollow",children:"createPortal"})," to mount the ",e.jsx(o.code,{children:"Popover"})," outside of the DOM hierarchy of the parent component."]}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-jsx",children:`const PopoverComponent = () => {
+  const popoverRef = useRef(null);
+  const onButtonClick = (e) => {
+    popoverRef.current.showAt(e.target);
+  };
+  return (
+    <>
+      <Button onClick={onButtonClick}>Open Popover</Button>
+      {createPortal(<Popover ref={popoverRef} />, document.body)}
+    </>
+  );
+};
+`})}),`
+`,e.jsx(o.h2,{id:"closing-popovers",children:"Closing Popovers"}),`
+`,e.jsxs(o.p,{children:["Closing ",e.jsx(o.code,{children:"Popovers"}),` works in the same way as opening them.
+You can either set the `,e.jsx(o.code,{children:"open"})," prop to ",e.jsx(o.code,{children:"false"})," or attaching a ",e.jsx(o.code,{children:"ref"})," on which the corresponding ",e.jsx(o.code,{children:"close"})," method is called."]}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-jsx",children:`const PopoverComponent = () => {
+  const popoverRef = useRef(null);
+  const handleOpen = (e) => {
+    popoverRef.current.showAt(e.target);
+  };
+  const handleClose = () => {
+    popoverRef.current.close();
+  };
+  return (
+    <>
+      <Button onClick={handleOpen}>Open Popover</Button>
+      <Popover ref={popoverRef}>
+        <Button onClick={handleClose}>Close Popover</Button>
+      </Popover>
+    </>
+  );
+};
+`})}),`
+`,e.jsx(o.h1,{id:"more-examples",children:"More Examples"}),`
+`,e.jsx(o.h2,{id:"popover-with-content",children:"Popover with content"}),`
+`,e.jsx(r,{of:l}),`
+`,e.jsx(a,{})]})}function ho(n={}){const{wrapper:o}={...i(),...n.components};return o?e.jsx(o,{...n,children:e.jsx(p,{...n})}):p(n)}export{ho as default};
