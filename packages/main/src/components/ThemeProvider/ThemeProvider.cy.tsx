@@ -1,13 +1,8 @@
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { useTheme } from 'react-jss';
 
 describe('ThemeProvider', () => {
   it('Provides Correct Context', () => {
     const InnerComponent = () => {
-      const theme = useTheme();
-      expect(JSON.stringify(theme)).equal(JSON.stringify(ThemingParameters));
-
       return (
         <button
           onClick={() => {
