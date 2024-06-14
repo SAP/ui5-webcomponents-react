@@ -115,6 +115,32 @@
     },
     "FilterItem": {},
     "FilterItemOption": {},
+    "Form": {
+      "changedProps": {
+        "titleText": "headerText",
+        "labelSpanS": "labelSpan",
+        "labelSpanM": "labelSpan",
+        "labelSpanL": "labelSpan",
+        "labelSpanXL": "labelSpan",
+        "columnsS": "layout",
+        "columnsM": "layout",
+        "columnsL": "layout",
+        "columnsXL": "layout"
+      },
+      "removedProps": ["backgroundDesign", "as"]
+    },
+    "FormGroup": {
+      "changedProps": {
+        "titleText": "headerText"
+      },
+      "removedProps": ["as"]
+    },
+    "FormItem": {
+      "comment": "if label is string, convert it to Label Component",
+      "changedProps": {
+        "label": "labelContent"
+      }
+    },
     "GroupHeaderListItem": {
       "newComponent": "ListItemGroup"
     },

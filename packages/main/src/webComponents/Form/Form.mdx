@@ -23,120 +23,6 @@ import * as ComponentStories from './Form.stories';
 
 # More Examples
 
-## Form with wrapped FormItems and FormGroups
-
-This feature is supported **since v1.17.0**.
-
-It is possible to nest `FormItem`s and `FormGroup`s in custom components, the only thing you have to take care of is that no other elements (e.g. `div` or `span`) are mounted outside of FilterItems, as this will most likely result in breaking the layout of the `Form`.
-
-<Canvas of={ComponentStories.FormWithCustomComponents} sourceState="none" />
-
-### Code
-
-<details>
-
-<summary>Show Code</summary>
-
-```jsx
-const CustomComponent = ({ children }) => {
-  return <>{children}</>;
-};
-
-const CustomComponent2 = () => {
-  return (
-    <CustomComponent>
-      <FormGroup titleText="Group 1 inside custom component2">
-        <CustomComponent>
-          <FormItem label="FormItem 1 within group">
-            <Input />
-          </FormItem>
-          <FormItem label="FormItem 2 within group">
-            <Input />
-          </FormItem>
-        </CustomComponent>
-      </FormGroup>
-      <FormGroup titleText="Group 2 inside custom component2">
-        <FormItem label="FormItem 1 within group">
-          <Input />
-        </FormItem>
-        <FormItem label="FormItem 2 within group">
-          <Input />
-        </FormItem>
-      </FormGroup>
-    </CustomComponent>
-  );
-};
-
-const FormComponent = (props) => {
-  return (
-    <Form {...props}>
-      <FormItem label="Standalone FormItem">
-        <Input />
-      </FormItem>
-      <FormGroup titleText="Standalone FormGroup">
-        <FormItem label="Standalone FormItem within group">
-          <Input />
-        </FormItem>
-        <FormItem label="Standalone FormItem within group">
-          <Input />
-        </FormItem>
-      </FormGroup>
-      <FormItem label="Standalone FormItem">
-        <Input />
-      </FormItem>
-      <CustomComponent>
-        <FormItem label="FormItem within custom component">
-          <Input />
-        </FormItem>
-      </CustomComponent>
-      <FormGroup titleText="Standalone FormGroup with custom component">
-        <CustomComponent>
-          <FormItem label="FormItem 1 within custom component">
-            <Input />
-          </FormItem>
-          <FormItem label="FormItem 2 within custom component">
-            <Input />
-          </FormItem>
-        </CustomComponent>
-      </FormGroup>
-      <CustomComponent>
-        <FormGroup titleText="FormGroup within custom component">
-          <FormItem label="FormItem 1 within group">
-            <Input />
-          </FormItem>
-          <FormItem label="FormItem 2 within group">
-            <Input />
-          </FormItem>
-        </FormGroup>
-      </CustomComponent>
-      <CustomComponent>
-        <FormGroup titleText="Group 1 inside custom component">
-          <CustomComponent>
-            <FormItem label="FormItem 1 within group">
-              <Input />
-            </FormItem>
-            <FormItem label="FormItem 2 within group">
-              <Input />
-            </FormItem>
-          </CustomComponent>
-        </FormGroup>
-        <FormGroup titleText="Group 2 inside custom component">
-          <FormItem label="FormItem 1 within group">
-            <Input />
-          </FormItem>
-          <FormItem label="FormItem 2 within group">
-            <Input />
-          </FormItem>
-        </FormGroup>
-      </CustomComponent>
-      <CustomComponent2 />
-    </Form>
-  );
-};
-```
-
-</details>
-
 ## Display-Only and Edit mode
 
 <Canvas of={ComponentStories.DisplayEditMode} sourceState="none" />
@@ -145,10 +31,12 @@ const FormComponent = (props) => {
 
 <details>
 
+{' '}
+
 <summary>Show Code</summary>
 
 ```jsx
-const StandardField = ({ editMode, value, inputType = InputType.None, onInput, ...rest }) => {
+const StandardField = ({ editMode, value, inputType = InputType.Text, onInput, ...rest }) => {
   if (editMode) {
     return <Input value={value} style={{ width: '100%' }} type={inputType} onInput={onInput} {...rest} />;
   }
@@ -262,6 +150,8 @@ In general we recommend using the default announcements of the Form, but if you 
 ### Code
 
 <details>
+
+{' '}
 
 <summary>Show Code</summary>
 

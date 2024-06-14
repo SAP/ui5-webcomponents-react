@@ -1,20 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import { useId, useReducer } from 'react';
-import {
-  Button,
-  CheckBox,
-  FormBackgroundDesign,
-  FormGroup,
-  FormItem,
-  Input,
-  Label,
-  Link,
-  Option,
-  Select,
-  Text,
-  TextArea
-} from '../../index.js';
+import { Button, CheckBox, Input, Label, Link, Option, Select, Text, TextArea } from '../../index';
+import { FormGroup } from '../FormGroup/index.js';
+import { FormItem } from '../FormItem/index.js';
 import { Form } from './index.js';
 
 const meta = {
@@ -24,18 +13,12 @@ const meta = {
     children: { control: { disable: true } }
   },
   args: {
-    backgroundDesign: FormBackgroundDesign.Transparent,
-    titleText: 'Test Form',
-    labelSpanS: 12,
-    labelSpanM: 2,
-    labelSpanL: 4,
-    labelSpanXL: 4,
-    columnsS: 1,
-    columnsM: 1,
-    columnsL: 1,
-    columnsXL: 2,
+    headerText: 'Test Form',
+    layout: 'S1 M1 L2 XL2',
+    labelSpan: 'S12 M4 L4 XL4',
     style: { alignItems: 'center' }
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Form>;
 
 export default meta;
@@ -45,58 +28,60 @@ export const Default: Story = {
   render: (props) => {
     return (
       <Form {...props}>
-        <FormGroup titleText="Personal Data">
-          <FormItem label="Name">
+        <FormGroup headerText="Personal Data">
+          <FormItem labelContent={<Label>Name</Label>}>
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label={<Label>Address</Label>}>
+          <FormItem labelContent={<Label>Address</Label>}>
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label="Country">
+          <FormItem labelContent={<Label>Country</Label>}>
             <Select>
               <Option>Germany</Option>
               <Option>France</Option>
               <Option>Italy</Option>
             </Select>
           </FormItem>
-          <FormItem label={<Label style={{ alignSelf: 'start', paddingTop: '0.25rem' }}>Additional Comment</Label>}>
+          <FormItem
+            labelContent={<Label style={{ alignSelf: 'start', paddingTop: '0.25rem' }}>Additional Comment</Label>}
+          >
             <TextArea
               rows={5}
               placeholder="The styles of the Label of the TextArea FormItem is set to: alignSelf: 'start', paddingTop: '0.25rem'"
             />
           </FormItem>
-          <FormItem label="Home address">
+          <FormItem labelContent={<Label>Home address</Label>}>
             <CheckBox checked />
           </FormItem>
         </FormGroup>
-        <FormGroup titleText="Company Data">
-          <FormItem label={'Company Name'}>
+        <FormGroup headerText="Company Data">
+          <FormItem labelContent={<Label>Company Name</Label>}>
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label="Company Address">
+          <FormItem labelContent={<Label>Company Address</Label>}>
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label="Company City">
+          <FormItem labelContent={<Label>Company City</Label>}>
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label="Company Country">
+          <FormItem labelContent={<Label>Company Country</Label>}>
             <Input type={InputType.Text} />
           </FormItem>
-          <FormItem label="Number of Employees">
+          <FormItem labelContent={<Label>Number of Employees</Label>}>
             <Input type={InputType.Number} value="5000" disabled />
           </FormItem>
-          <FormItem label="Member of Partner Network">
+          <FormItem labelContent={<Label>Member of Partner Network</Label>}>
             <CheckBox checked />
           </FormItem>
         </FormGroup>
-        <FormGroup titleText="Marketing Data">
-          <FormItem label="Email">
+        <FormGroup headerText="Marketing Data">
+          <FormItem labelContent={<Label>Email</Label>}>
             <Input type={InputType.Email} />
           </FormItem>
-          <FormItem label="Company Email">
+          <FormItem labelContent={<Label>Company Email</Label>}>
             <Input type={InputType.Email} />
           </FormItem>
-          <FormItem label="I want to receive the newsletter">
+          <FormItem labelContent={<Label>I want to receive the newsletter</Label>}>
             <CheckBox />
           </FormItem>
         </FormGroup>
@@ -105,105 +90,7 @@ export const Default: Story = {
   }
 };
 
-const CustomComponent = ({ children }) => {
-  return <>{children}</>;
-};
-
-const CustomComponent2 = () => {
-  return (
-    <CustomComponent>
-      <FormGroup titleText="Group 1 inside custom component2">
-        <CustomComponent>
-          <FormItem label="FormItem 1 within group">
-            <Input />
-          </FormItem>
-          <FormItem label="FormItem 2 within group">
-            <Input />
-          </FormItem>
-        </CustomComponent>
-      </FormGroup>
-      <FormGroup titleText="Group 2 inside custom component2">
-        <FormItem label="FormItem 1 within group">
-          <Input />
-        </FormItem>
-        <FormItem label="FormItem 2 within group">
-          <Input />
-        </FormItem>
-      </FormGroup>
-    </CustomComponent>
-  );
-};
-
-export const FormWithCustomComponents: Story = {
-  render: (args) => {
-    return (
-      <Form {...args}>
-        <FormItem label="Standalone FormItem">
-          <Input />
-        </FormItem>
-        <FormGroup titleText="Standalone FormGroup">
-          <FormItem label="Standalone FormItem within group">
-            <Input />
-          </FormItem>
-          <FormItem label="Standalone FormItem within group">
-            <Input />
-          </FormItem>
-        </FormGroup>
-        <FormItem label="Standalone FormItem">
-          <Input />
-        </FormItem>
-        <CustomComponent>
-          <FormItem label="FormItem within custom component">
-            <Input />
-          </FormItem>
-        </CustomComponent>
-        <FormGroup titleText="Standalone FormGroup with custom component">
-          <CustomComponent>
-            <FormItem label="FormItem 1 within custom component">
-              <Input />
-            </FormItem>
-            <FormItem label="FormItem 2 within custom component">
-              <Input />
-            </FormItem>
-          </CustomComponent>
-        </FormGroup>
-        <CustomComponent>
-          <FormGroup titleText="FormGroup within custom component">
-            <FormItem label="FormItem 1 within group">
-              <Input />
-            </FormItem>
-            <FormItem label="FormItem 2 within group">
-              <Input />
-            </FormItem>
-          </FormGroup>
-        </CustomComponent>
-        <CustomComponent>
-          <FormGroup titleText="Group 1 inside custom component">
-            <CustomComponent>
-              <FormItem label="FormItem 1 within group">
-                <Input />
-              </FormItem>
-              <FormItem label="FormItem 2 within group">
-                <Input />
-              </FormItem>
-            </CustomComponent>
-          </FormGroup>
-          <FormGroup titleText="Group 2 inside custom component">
-            <FormItem label="FormItem 1 within group">
-              <Input />
-            </FormItem>
-            <FormItem label="FormItem 2 within group">
-              <Input />
-            </FormItem>
-          </FormGroup>
-        </CustomComponent>
-        <CustomComponent2 />
-      </Form>
-    );
-  }
-};
-
-const StandardField = ({ editMode, value, inputType = InputType.None, onInput, ...rest }) => {
+const StandardField = ({ editMode, value, inputType = InputType.Text, onInput, ...rest }) => {
   if (editMode) {
     return <Input value={value} style={{ width: '100%' }} type={inputType} onInput={onInput} {...rest} />;
   }
@@ -223,7 +110,7 @@ const reducer = (state, { field, value }) => {
 
 export const DisplayEditMode: Story = {
   name: 'Display & Edit mode',
-  args: { titleText: 'Supplier' },
+  args: { headerText: 'Supplier' },
   render: (args) => {
     const [editMode, toggleEditMode] = useReducer((prev) => !prev, false, undefined);
     const [formState, dispatch] = useReducer(
@@ -256,14 +143,14 @@ export const DisplayEditMode: Story = {
             e.preventDefault();
           }}
         >
-          <FormGroup titleText="Address">
-            <FormItem label="Name">
+          <FormGroup headerText="Address">
+            <FormItem labelContent={<Label>Name</Label>}>
               <StandardField editMode={editMode} value={name} onInput={handleInput} data-name />
             </FormItem>
-            <FormItem label="Street">
+            <FormItem labelContent={<Label>Street</Label>}>
               <StandardField editMode={editMode} value={street} onInput={handleInput} data-street />
             </FormItem>
-            <FormItem label="ZIP Code / City">
+            <FormItem labelContent={<Label>ZIP Code / City</Label>}>
               {editMode ? (
                 <>
                   <Input value={zip} type={InputType.Number} style={{ width: '30%' }} onInput={handleInput} data-zip />
@@ -273,15 +160,15 @@ export const DisplayEditMode: Story = {
                 <Text>{`${zip} ${city}`}</Text>
               )}
             </FormItem>
-            <FormItem label="Country">
+            <FormItem labelContent={<Label>Country</Label>}>
               <StandardField editMode={editMode} value={country} onInput={handleInput} data-country />
             </FormItem>
-            <FormItem label="Web">
+            <FormItem labelContent={<Label>Web</Label>}>
               <StandardField editMode={editMode} value={web} inputType={InputType.URL} onInput={handleInput} data-web />
             </FormItem>
           </FormGroup>
-          <FormGroup titleText="Contact">
-            <FormItem label="Email">
+          <FormGroup headerText="Contact">
+            <FormItem labelContent={<Label>Email</Label>}>
               <StandardField
                 editMode={editMode}
                 value={mail}
@@ -290,10 +177,10 @@ export const DisplayEditMode: Story = {
                 data-email
               />
             </FormItem>
-            <FormItem label="Twitter">
+            <FormItem labelContent={<Label>Twitter</Label>}>
               <StandardField editMode={editMode} value={twitter} onInput={handleInput} data-twitter />
             </FormItem>
-            <FormItem label="Phone">
+            <FormItem labelContent={<Label>Phone</Label>}>
               <StandardField
                 editMode={editMode}
                 value={phone}
@@ -311,32 +198,27 @@ export const DisplayEditMode: Story = {
 
 export const FormItemsWithoutGroup: Story = {
   args: {
-    titleText: 'Address',
-    columnsM: 2,
-    columnsL: 3,
-    columnsXL: 4,
-    labelSpanS: 12,
-    labelSpanM: 12,
-    labelSpanL: 12,
-    labelSpanXL: 12,
+    headerText: 'Address',
+    layout: 'S1 M2 L3 XL4',
+    labelSpan: 'S12 M12 L12 XL12',
     children: null
   },
   render(props) {
     return (
       <Form {...props}>
-        <FormItem label="Name">
+        <FormItem labelContent={<Label>Name</Label>}>
           <Input id="name" />
         </FormItem>
 
-        <FormItem label="Street/No">
+        <FormItem labelContent={<Label>Street/No</Label>}>
           <Input></Input>
         </FormItem>
 
-        <FormItem label="ZIP Code/City">
+        <FormItem labelContent={<Label>ZIP Code/City</Label>}>
           <Input />
         </FormItem>
 
-        <FormItem label="Country">
+        <FormItem labelContent={<Label>Country</Label>}>
           <Select id="country">
             <Option value="England">England</Option>
             <Option value="Germany">Germany</Option>
@@ -344,32 +226,32 @@ export const FormItemsWithoutGroup: Story = {
           </Select>
         </FormItem>
 
-        <FormItem label="Web">
+        <FormItem labelContent={<Label>Web</Label>}>
           <Input type="URL" />
         </FormItem>
 
-        <FormItem label="Twitter">
+        <FormItem labelContent={<Label>Twitter</Label>}>
           <Input />
         </FormItem>
 
-        <FormItem label="Email">
+        <FormItem labelContent={<Label>Email</Label>}>
           <Input type="Email" />
         </FormItem>
 
-        <FormItem label="Tel.">
+        <FormItem labelContent={<Label>Tel.</Label>}>
           <Input type="Tel" />
         </FormItem>
 
-        <FormItem label="SMS">
+        <FormItem labelContent={<Label>SMS</Label>}>
           <Input type="Tel" />
         </FormItem>
-        <FormItem label="Mobile">
+        <FormItem labelContent={<Label>Mobile</Label>}>
           <Input type="Tel" />
         </FormItem>
-        <FormItem label="Pager">
+        <FormItem labelContent={<Label>Pager</Label>}>
           <Input type="Tel" />
         </FormItem>
-        <FormItem label="Fax">
+        <FormItem labelContent={<Label>Fax</Label>}>
           <Input type="Tel" />
         </FormItem>
       </Form>
@@ -383,21 +265,21 @@ export const CustomLabel: Story = {
     const uniqueId = useId();
     return (
       <Form
-        titleText="Not announced (because of `aria-label` of the `Form`)"
+        headerText="Not announced (because of `aria-label` of the `Form`)"
         aria-label="Custom announcement of the form title via aria-label"
       >
-        <FormGroup titleText="Default Group Announcement">
-          <FormItem label={<Label>Default announcement with custom Label</Label>}>
+        <FormGroup headerText="Default Group Announcement">
+          <FormItem labelContent={<Label>Default announcement with custom Label</Label>}>
             <Input />
           </FormItem>
         </FormGroup>
-        <FormGroup titleText="Not announced (because of `accessibleName` of the `Input`)">
-          <FormItem label={<Label>Not announced (because of `accessibleName` of the `Input`)</Label>}>
+        <FormGroup headerText="Not announced (because of `accessibleName` of the `Input`)">
+          <FormItem labelContent={<Label>Not announced (because of `accessibleName` of the `Input`)</Label>}>
             <Input accessibleName="Custom announcement via accessibleName prop" />
           </FormItem>
         </FormGroup>
-        <FormGroup titleText="Not announced (because of `accessibleNameRef` of the `Input`)">
-          <FormItem label={<Label>Not announced (because of `accessibleNameRef` of the `Input`)</Label>}>
+        <FormGroup headerText="Not announced (because of `accessibleNameRef` of the `Input`)">
+          <FormItem labelContent={<Label>Not announced (because of `accessibleNameRef` of the `Input`)</Label>}>
             <Input accessibleNameRef={`${uniqueId}-input1`} />
             <span id={`${uniqueId}-input1`} className="pseudoInvisibleText">
               Custom announcement via accessibleNameRef prop
@@ -405,10 +287,10 @@ export const CustomLabel: Story = {
           </FormItem>
         </FormGroup>
         <FormGroup
-          titleText="Announced (because of `accessibleNameRef` of the `Input` and linking id)"
+          headerText="Announced (because of `accessibleNameRef` of the `Input` and linking id)"
           id={`${uniqueId}-group`}
         >
-          <FormItem label={<Label>Not announced (because of `accessibleNameRef` of the `Input`)</Label>}>
+          <FormItem labelContent={<Label>Not announced (because of `accessibleNameRef` of the `Input`)</Label>}>
             <Input accessibleNameRef={`${uniqueId}-group ${uniqueId}-input2`} />
             <span id={`${uniqueId}-input2`} className="pseudoInvisibleText">
               Custom announcement via accessibleNameRef prop
