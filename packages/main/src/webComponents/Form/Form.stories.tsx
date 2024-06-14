@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
-import { useId, useReducer } from 'react';
+import { useReducer } from 'react';
 import { Button, CheckBox, Input, Label, Link, Option, Select, Text, TextArea } from '../../index';
 import { FormGroup } from '../FormGroup/index.js';
 import { FormItem } from '../FormItem/index.js';
@@ -192,112 +192,6 @@ export const DisplayEditMode: Story = {
           </FormGroup>
         </Form>
       </>
-    );
-  }
-};
-
-export const FormItemsWithoutGroup: Story = {
-  args: {
-    headerText: 'Address',
-    layout: 'S1 M2 L3 XL4',
-    labelSpan: 'S12 M12 L12 XL12',
-    children: null
-  },
-  render(props) {
-    return (
-      <Form {...props}>
-        <FormItem labelContent={<Label>Name</Label>}>
-          <Input id="name" />
-        </FormItem>
-
-        <FormItem labelContent={<Label>Street/No</Label>}>
-          <Input></Input>
-        </FormItem>
-
-        <FormItem labelContent={<Label>ZIP Code/City</Label>}>
-          <Input />
-        </FormItem>
-
-        <FormItem labelContent={<Label>Country</Label>}>
-          <Select id="country">
-            <Option value="England">England</Option>
-            <Option value="Germany">Germany</Option>
-            <Option value="USA">USA</Option>
-          </Select>
-        </FormItem>
-
-        <FormItem labelContent={<Label>Web</Label>}>
-          <Input type="URL" />
-        </FormItem>
-
-        <FormItem labelContent={<Label>Twitter</Label>}>
-          <Input />
-        </FormItem>
-
-        <FormItem labelContent={<Label>Email</Label>}>
-          <Input type="Email" />
-        </FormItem>
-
-        <FormItem labelContent={<Label>Tel.</Label>}>
-          <Input type="Tel" />
-        </FormItem>
-
-        <FormItem labelContent={<Label>SMS</Label>}>
-          <Input type="Tel" />
-        </FormItem>
-        <FormItem labelContent={<Label>Mobile</Label>}>
-          <Input type="Tel" />
-        </FormItem>
-        <FormItem labelContent={<Label>Pager</Label>}>
-          <Input type="Tel" />
-        </FormItem>
-        <FormItem labelContent={<Label>Fax</Label>}>
-          <Input type="Tel" />
-        </FormItem>
-      </Form>
-    );
-  }
-};
-
-export const CustomLabel: Story = {
-  name: 'Custom Label (a11y)',
-  render() {
-    const uniqueId = useId();
-    return (
-      <Form
-        headerText="Not announced (because of `aria-label` of the `Form`)"
-        aria-label="Custom announcement of the form title via aria-label"
-      >
-        <FormGroup headerText="Default Group Announcement">
-          <FormItem labelContent={<Label>Default announcement with custom Label</Label>}>
-            <Input />
-          </FormItem>
-        </FormGroup>
-        <FormGroup headerText="Not announced (because of `accessibleName` of the `Input`)">
-          <FormItem labelContent={<Label>Not announced (because of `accessibleName` of the `Input`)</Label>}>
-            <Input accessibleName="Custom announcement via accessibleName prop" />
-          </FormItem>
-        </FormGroup>
-        <FormGroup headerText="Not announced (because of `accessibleNameRef` of the `Input`)">
-          <FormItem labelContent={<Label>Not announced (because of `accessibleNameRef` of the `Input`)</Label>}>
-            <Input accessibleNameRef={`${uniqueId}-input1`} />
-            <span id={`${uniqueId}-input1`} className="pseudoInvisibleText">
-              Custom announcement via accessibleNameRef prop
-            </span>
-          </FormItem>
-        </FormGroup>
-        <FormGroup
-          headerText="Announced (because of `accessibleNameRef` of the `Input` and linking id)"
-          id={`${uniqueId}-group`}
-        >
-          <FormItem labelContent={<Label>Not announced (because of `accessibleNameRef` of the `Input`)</Label>}>
-            <Input accessibleNameRef={`${uniqueId}-group ${uniqueId}-input2`} />
-            <span id={`${uniqueId}-input2`} className="pseudoInvisibleText">
-              Custom announcement via accessibleNameRef prop
-            </span>
-          </FormItem>
-        </FormGroup>
-      </Form>
     );
   }
 };
