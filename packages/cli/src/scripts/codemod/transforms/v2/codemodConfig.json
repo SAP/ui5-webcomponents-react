@@ -116,6 +116,7 @@
     "FilterItem": {},
     "FilterItemOption": {},
     "Form": {
+      "comment": "merge labelSpan and columns props",
       "changedProps": {
         "titleText": "headerText",
         "labelSpanS": "labelSpan",
