@@ -33,13 +33,13 @@
     {
       "description": "root package dependencies",
       "extends": ["schedule:weekly"],
-      "matchFiles": ["package.json"],
       "semanticCommitType": "chore",
       "groupName": "all non-major dependencies",
       "groupSlug": "root-all-minor-patch",
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
-      "excludePackageNames": ["react", "react-dom"]
+      "excludePackageNames": ["react", "react-dom", "storybook"],
+      "excludePackagePatterns": ["^@storybook/"]
     },
     {
       "description": "Example & Template dependencies",
