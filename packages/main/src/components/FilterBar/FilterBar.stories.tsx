@@ -19,14 +19,9 @@ import {
   Title,
   Token
 } from '../../webComponents/index.js';
-import { DynamicPage } from '../DynamicPage/index.js';
-import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
-import { DynamicPageTitle } from '../DynamicPageTitle/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { Text } from '../Text/index.js';
-import { VariantManagement } from '../VariantManagement/index.js';
-import { VariantItem } from '../VariantManagement/VariantItem.js';
 import { FilterBar } from './index.js';
 
 const meta = {
@@ -285,115 +280,116 @@ export const WithLogic: Story = {
   }
 };
 
-export const InDynamicPage: Story = {
-  name: 'In DynamicPage',
-  render: (args) => {
-    return (
-      <DynamicPage
-        headerTitle={
-          <DynamicPageTitle
-            header={
-              <VariantManagement
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-              >
-                <VariantItem>Variant 1</VariantItem>
-                <VariantItem selected>Variant 2</VariantItem>
-              </VariantManagement>
-            }
-          />
-        }
-        headerContent={
-          <DynamicPageHeader>
-            <FilterBar {...args} hideToolbar>
-              <FilterGroupItem label="StepInput">
-                <StepInput />
-              </FilterGroupItem>
-              <FilterGroupItem label="MultiInput" active required>
-                <MultiInput
-                  required
-                  tokens={
-                    <>
-                      <Token text="Argentina" selected />
-                      <Token text="Bulgaria" />
-                      <Token text="England" />
-                      <Token text="Finland" />
-                    </>
-                  }
-                />
-              </FilterGroupItem>
-              <FilterGroupItem label="Input">
-                <Input placeholder="Placeholder" />
-              </FilterGroupItem>
-              <FilterGroupItem label="Switch" visibleInFilterBar={false}>
-                <Switch />
-              </FilterGroupItem>
-              <FilterGroupItem label="SELECT w/ initial selected" visibleInFilterBar={false}>
-                <Select>
-                  <Option>Option 1</Option>
-                  <Option selected>Option 2</Option>
-                  <Option>Option 3</Option>
-                  <Option>Option 4</Option>
-                </Select>
-              </FilterGroupItem>
-              <FilterGroupItem label="SELECT w/o initial selected" visibleInFilterBar={false}>
-                <Select>
-                  <Option data-key="Test 1" selected icon="add">
-                    Test 1
-                  </Option>
-                  <Option data-key="Test 2" icon="add">
-                    Test 2
-                  </Option>
-                  <Option data-key="Test 3" icon="add">
-                    Test 3
-                  </Option>
-                  <Option data-key="Test 4" icon="add">
-                    Test 4
-                  </Option>
-                  <Option data-key="Test 5" icon="add">
-                    Test 5
-                  </Option>
-                </Select>
-              </FilterGroupItem>
-              <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1" visibleInFilterBar={false}>
-                <MultiComboBox>
-                  <MultiComboBoxItem text="MultiComboBoxItem 1" />
-                  <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
-                  <MultiComboBoxItem text="MultiComboBoxItem 3" />
-                  <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
-                </MultiComboBox>
-              </FilterGroupItem>
-              <FilterGroupItem label="ComboBox w/o initial selected" groupName="Group 2" visibleInFilterBar={false}>
-                <ComboBox>
-                  <ComboBoxItem text="ComboBoxItem 1" />
-                  <ComboBoxItem text="ComboBoxItem 2" />
-                  <ComboBoxItem text="ComboBoxItem 3" />
-                  <ComboBoxItem text="ComboBoxItem 4" />
-                </ComboBox>
-              </FilterGroupItem>
-              <FilterGroupItem label="Date Picker" groupName="Group 2">
-                <DateRangePicker style={{ minWidth: 'auto' }} />
-              </FilterGroupItem>
-            </FilterBar>
-          </DynamicPageHeader>
-        }
-      >
-        <div
-          style={{
-            background: 'cadetblue',
-            height: '200px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <Text style={{ color: 'white' }}>Content</Text>
-        </div>
-      </DynamicPage>
-    );
-  }
-};
+// TODO: migrate this to the wc DynamicPage
+// export const InDynamicPage: Story = {
+//   name: 'In DynamicPage',
+//   render: (args) => {
+//     return (
+//       <DynamicPage
+//         headerTitle={
+//           <DynamicPageTitle
+//             header={
+//               <VariantManagement
+//                 onClick={(e) => {
+//                   e.stopPropagation();
+//                 }}
+//               >
+//                 <VariantItem>Variant 1</VariantItem>
+//                 <VariantItem selected>Variant 2</VariantItem>
+//               </VariantManagement>
+//             }
+//           />
+//         }
+//         headerContent={
+//           <DynamicPageHeader>
+//             <FilterBar {...args} hideToolbar>
+//               <FilterGroupItem label="StepInput">
+//                 <StepInput />
+//               </FilterGroupItem>
+//               <FilterGroupItem label="MultiInput" active required>
+//                 <MultiInput
+//                   required
+//                   tokens={
+//                     <>
+//                       <Token text="Argentina" selected />
+//                       <Token text="Bulgaria" />
+//                       <Token text="England" />
+//                       <Token text="Finland" />
+//                     </>
+//                   }
+//                 />
+//               </FilterGroupItem>
+//               <FilterGroupItem label="Input">
+//                 <Input placeholder="Placeholder" />
+//               </FilterGroupItem>
+//               <FilterGroupItem label="Switch" visibleInFilterBar={false}>
+//                 <Switch />
+//               </FilterGroupItem>
+//               <FilterGroupItem label="SELECT w/ initial selected" visibleInFilterBar={false}>
+//                 <Select>
+//                   <Option>Option 1</Option>
+//                   <Option selected>Option 2</Option>
+//                   <Option>Option 3</Option>
+//                   <Option>Option 4</Option>
+//                 </Select>
+//               </FilterGroupItem>
+//               <FilterGroupItem label="SELECT w/o initial selected" visibleInFilterBar={false}>
+//                 <Select>
+//                   <Option data-key="Test 1" selected icon="add">
+//                     Test 1
+//                   </Option>
+//                   <Option data-key="Test 2" icon="add">
+//                     Test 2
+//                   </Option>
+//                   <Option data-key="Test 3" icon="add">
+//                     Test 3
+//                   </Option>
+//                   <Option data-key="Test 4" icon="add">
+//                     Test 4
+//                   </Option>
+//                   <Option data-key="Test 5" icon="add">
+//                     Test 5
+//                   </Option>
+//                 </Select>
+//               </FilterGroupItem>
+//               <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1" visibleInFilterBar={false}>
+//                 <MultiComboBox>
+//                   <MultiComboBoxItem text="MultiComboBoxItem 1" />
+//                   <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
+//                   <MultiComboBoxItem text="MultiComboBoxItem 3" />
+//                   <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
+//                 </MultiComboBox>
+//               </FilterGroupItem>
+//               <FilterGroupItem label="ComboBox w/o initial selected" groupName="Group 2" visibleInFilterBar={false}>
+//                 <ComboBox>
+//                   <ComboBoxItem text="ComboBoxItem 1" />
+//                   <ComboBoxItem text="ComboBoxItem 2" />
+//                   <ComboBoxItem text="ComboBoxItem 3" />
+//                   <ComboBoxItem text="ComboBoxItem 4" />
+//                 </ComboBox>
+//               </FilterGroupItem>
+//               <FilterGroupItem label="Date Picker" groupName="Group 2">
+//                 <DateRangePicker style={{ minWidth: 'auto' }} />
+//               </FilterGroupItem>
+//             </FilterBar>
+//           </DynamicPageHeader>
+//         }
+//       >
+//         <div
+//           style={{
+//             background: 'cadetblue',
+//             height: '200px',
+//             display: 'flex',
+//             alignItems: 'center',
+//             justifyContent: 'center'
+//           }}
+//         >
+//           <Text style={{ color: 'white' }}>Content</Text>
+//         </div>
+//       </DynamicPage>
+//     );
+//   }
+// };
 
 export const WithReordering: Story = {
   render(args) {

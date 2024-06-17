@@ -13,7 +13,7 @@ import { cssVarVersionInfoPrefix, getUi5TagWithSuffix } from '../../internal/uti
 import type { CommonProps } from '../../types/index.js';
 import { Button, ToggleButton } from '../../webComponents/index.js';
 import type { ButtonDomRef } from '../../webComponents/index.js';
-import { classNames, styleData } from './DynamicPageAnchorBar.module.css.js';
+import { classNames, styleData } from './ObjectPageAnchorBar.module.css.js';
 
 const _buttonBaseMinWidth = `${cssVarVersionInfoPrefix}button_base_min_width`;
 const _buttonBaseHeight = `${cssVarVersionInfoPrefix}button_base_height`;
@@ -70,7 +70,7 @@ interface DynamicPageAnchorBarPropTypes extends CommonProps {
  * The dynamic page anchor bar contains the expand/collapse (expands or collapses the header content)
  * and pin button (pins the content header).
  */
-const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTypes>((props, ref) => {
+const ObjectPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTypes>((props, ref) => {
   const {
     showHideHeaderButton,
     headerContentVisible,
@@ -84,7 +84,7 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
     onHoverToggleButton
   } = props;
 
-  useStylesheet(styleData, DynamicPageAnchorBar.displayName);
+  useStylesheet(styleData, ObjectPageAnchorBar.displayName);
   const showHideHeaderBtnRef = useRef<ButtonDomRef>(null);
   const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentVisible;
   const showBothActions = shouldRenderHeaderPinnableButton && showHideHeaderButton;
@@ -164,6 +164,6 @@ const DynamicPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTyp
   );
 });
 
-DynamicPageAnchorBar.displayName = 'DynamicPageAnchorBar';
+ObjectPageAnchorBar.displayName = 'DynamicPageAnchorBar';
 
-export { DynamicPageAnchorBar };
+export { ObjectPageAnchorBar };

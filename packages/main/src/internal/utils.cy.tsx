@@ -90,4 +90,8 @@ describe('utils', function () {
       expect(r).have.property('type', 'span');
     });
   });
+
+  it('DynamicPage: sticky content hook', () => {
+    //TODO: create test
+  });
 });

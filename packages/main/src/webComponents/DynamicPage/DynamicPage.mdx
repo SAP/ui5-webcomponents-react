@@ -1,0 +1,115 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import * as ComponentStories from './DynamicPage.stories';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { DynamicPageTitle } from '../DynamicPageTitle';
+import { DynamicPageHeader } from '../DynamicPageHeader';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader subComponents={['DynamicPageTitle', 'DynamicPageHeader']} />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+## DynamicPage with sticky subheaders
+
+The DynamicPage currently doesn't support sticky subheaders out of the box.
+This example shows how you could achieve this behavior by applying custom CSS and using a `ResizeObserver` for measuring the header height.
+
+**Note:** We only recommend applying custom CSS if the `DynamicPage` is scrollable.
+
+<Canvas of={ComponentStories.StickyContentHeaders} sourceState="none" />
+
+These are the key points of this implementation:
+
+- Using the `part` pseudo-element selector to set the `fit-content` part to use `position: static;`.
+- Adding a `ResizeObserver` to measure the `header` element inside the shadow root of the component.
+- Waiting for the custom element to be defined and for the `shadowRoot` to be populated.
+
+### Code
+
+```css
+.dynamicPageStickyContent::part(fit-content) {
+  position: static;
+}
+```
+
+```tsx
+const useGetHeaderHeight = (dynamicPageRef: RefObject<DynamicPageDomRef & { shadowRoot: ShadowRoot }>) => {
+  const [headerHeight, setHeaderHeight] = useState<undefined | number>(undefined);
+  useEffect(() => {
+    const headerObserver = new ResizeObserver(([header]) => {
+      setHeaderHeight(header.contentRect.height);
+    });
+    if (dynamicPageRef.current) {
+      // wait for the custom element to be defined (adjust the tag-name if you're using the scoping feature)
+      void customElements.whenDefined('ui5-dynamic-page').then(() => {
+        const { shadowRoot } = dynamicPageRef.current;
+
+        // wait for the shadowRoot to be populated
+        const shadowRootObserver = new MutationObserver(() => {
+          const header = shadowRoot.querySelector('header');
+          if (header) {
+            shadowRootObserver.disconnect();
+            headerObserver.observe(header);
+          }
+        });
+
+        if (shadowRoot && shadowRoot.childElementCount) {
+          headerObserver.observe(shadowRoot.querySelector('header'));
+        } else {
+          shadowRootObserver.observe(shadowRoot, { childList: true });
+        }
+      });
+    }
+    return () => {
+      headerObserver.disconnect();
+    };
+  }, []);
+  return headerHeight;
+};
+
+function DynamicPageWithStickyContent(props) {
+  const dynamicPageRef = useRef<DynamicPageDomRef & { shadowRoot: ShadowRoot }>(null);
+  const headerHeight = useGetHeaderHeight(dynamicPageRef);
+
+  return (
+    <DynamicPage {...props} ref={dynamicPageRef} className="dynamicPageStickyContent">
+      <>
+        <div
+          style={{
+            position: 'sticky',
+            width: '100%',
+            height: '4rem',
+            background: 'lightgreen',
+            insetBlockStart: `${headerHeight}px`
+          }}
+        >
+          Sticky Header
+        </div>
+        <div style={{ width: '100%', background: 'orange', height: '10rem' }}>Content</div>
+        <div
+          style={{
+            position: 'sticky',
+            width: '100%',
+            height: '8rem',
+            background: 'lightgreen',
+            insetBlockStart: `calc(${headerHeight}px + 4rem)`
+          }}
+        >
+          Sticky Header 2
+        </div>
+        <div style={{ background: 'lightblue', height: '2000px', width: '100%' }}>Content</div>
+      </>
+    </DynamicPage>
+  );
+}
+```
+
+<Footer />

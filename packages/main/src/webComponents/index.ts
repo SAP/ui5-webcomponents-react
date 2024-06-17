@@ -25,6 +25,8 @@ export * from './DatePicker/index.js';
 export * from './DateRangePicker/index.js';
 export * from './DateTimePicker/index.js';
 export * from './Dialog/index.js';
+export * from './DynamicPage/index.js';
+// TODO: add DynamicPageHeader & DynamicPageTitle
 export * from './DynamicSideContent/index.js';
 export * from './FileUploader/index.js';
 export * from './FilterItem/index.js';

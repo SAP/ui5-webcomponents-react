@@ -20,17 +20,16 @@ import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
 import type { AvatarPropTypes, TabContainerDomRef } from '../../webComponents/index.js';
 import { Tab, TabContainer } from '../../webComponents/index.js';
-import { DynamicPageCssVariables } from '../DynamicPage/utils.js';
-import { DynamicPageAnchorBar } from '../DynamicPageAnchorBar/index.js';
-import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
 import type {
   DynamicPageHeaderPropTypes,
   InternalProps as DynamicPageHeaderPropTypesWithInternals
 } from '../DynamicPageHeader/index.js';
+import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
 import type {
   DynamicPageTitlePropTypes,
   InternalProps as DynamicPageTitlePropTypesWithInternals
 } from '../DynamicPageTitle/index.js';
+import { ObjectPageAnchorBar } from '../ObjectPageAnchorBar/index.js';
 import type { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
 import type { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection/index.js';
 import { CollapsedAvatar } from './CollapsedAvatar.js';
@@ -46,6 +45,11 @@ addCustomCSSWithScoping(
   }
   `
 );
+
+const ObjectPageCssVariables = {
+  headerDisplay: '--_ui5wcr_DynamicPage_header_display',
+  titleFontSize: '--_ui5wcr_DynamicPage_title_fontsize'
+};
 
 const TAB_CONTAINER_HEADER_HEIGHT = 48;
 
@@ -808,7 +812,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     ...style
   };
   if (headerCollapsed === true && (headerContent || titleInHeader)) {
-    objectPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
+    objectPageStyles[ObjectPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 
   return (
@@ -861,7 +865,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
                 : `${topHeaderHeight + 5}px`
           }}
         >
-          <DynamicPageAnchorBar
+          <ObjectPageAnchorBar
             headerContentVisible={headerContent && headerCollapsed !== true}
             headerContentPinnable={headerContentPinnable}
             showHideHeaderButton={showHideHeaderButton}

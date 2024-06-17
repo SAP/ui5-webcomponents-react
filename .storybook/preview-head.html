@@ -63,6 +63,10 @@
     user-select: none;
   }
 
+  .dynamicPageStickyContent::part(fit-content) {
+    position: static;
+  }
+
   /* TODO remove this workaround as soon as https://github.com/storybookjs/storybook/issues/20497 is fixed */
   .docs-story > div > div[scale] {
     min-height: 20px;

@@ -4,7 +4,6 @@ export * from './components/ActionSheet/index.js';
 export * from './components/AnalyticalCardHeader/index.js';
 export * from './components/AnalyticalTable/index.js';
 export * from './components/AnalyticalTable/defaults/LoadingComponent/TablePlaceholder.js';
-export * from './components/DynamicPage/index.js';
 export { DynamicPageHeader } from './components/DynamicPageHeader/index.js';
 export type { DynamicPageHeaderPropTypes } from './components/DynamicPageHeader/index.js';
 export { DynamicPageTitle } from './components/DynamicPageTitle/index.js';
