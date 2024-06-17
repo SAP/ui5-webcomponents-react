@@ -28,7 +28,7 @@
     {
       "groupName": "Storybook",
       "matchPackageNames": ["storybook"],
-      "matchPackagePatterns": ["^@storybook"]
+      "matchPackagePatterns": ["^@storybook/"]
     },
     {
       "groupName": "vite & plugins",
@@ -45,7 +45,7 @@
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
       "excludePackageNames": ["react", "react-dom", "storybook"],
-      "excludePackagePatterns": ["^@storybook"]
+      "excludePackagePatterns": ["^@storybook/"]
     },
     {
       "description": "Example & Template dependencies",
