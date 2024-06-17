@@ -26,12 +26,6 @@
       "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"]
     },
     {
-      "groupName": "Storybook",
-      "extends": ["schedule:weekly"],
-      "matchPackageNames": ["storybook"],
-      "matchPackagePatterns": ["^@storybook/"]
-    },
-    {
       "groupName": "vite & plugins",
       "matchPackagePatterns": ["vite"],
       "excludePackageNames": ["@storybook/react-vite"]
