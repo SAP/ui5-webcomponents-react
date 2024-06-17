@@ -1,0 +1,1 @@
+import{g as t}from"./index-CP2MHerv.js";import{_ as i,i as s,a}from"./_baseForOwn-39ViRbo3.js";var e=i,g=s,o=a,n="[object String]";function b(r){return typeof r=="string"||!g(r)&&o(r)&&e(r)==n}var c=b;const p=t(c);export{p as a,c as i};
