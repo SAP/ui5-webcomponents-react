@@ -26,6 +26,11 @@
       "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"]
     },
     {
+      "groupName": "Storybook",
+      "matchPackageNames": ["storybook"],
+      "matchPackagePatterns": ["^@storybook"]
+    },
+    {
       "groupName": "vite & plugins",
       "matchPackagePatterns": ["vite"],
       "excludePackageNames": ["@storybook/react-vite"]
@@ -39,7 +44,8 @@
       "groupSlug": "root-all-minor-patch",
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
-      "excludePackageNames": ["react", "react-dom"]
+      "excludePackageNames": ["react", "react-dom", "storybook"],
+      "excludePackagePatterns": ["^@storybook"]
     },
     {
       "description": "Example & Template dependencies",
