@@ -31,10 +31,7 @@
       "excludePackageNames": ["@storybook/react-vite"]
     },
     {
-      "groupName": "Storybook",
-      "extends": ["schedule:weekly"],
-      "matchPackageNames": ["storybook"],
-      "matchPackagePatterns": ["^@storybook/"],
+      "extends": ["group:storybookMonorepo", "schedule:weekly"],
       "semanticCommitType": "chore"
     },
     {
