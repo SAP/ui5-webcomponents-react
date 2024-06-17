@@ -1,0 +1,72 @@
+{
+  "name": "@ui5/webcomponents-react-compat",
+  "private": true,
+  "version": "1.29.2",
+  "description": "React Wrapper for UI5 Web Components Compat package",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json",
+    "./styles.css": "./dist/css/index.css"
+  },
+  "homepage": "https://sap.github.io/ui5-webcomponents-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/ui5-webcomponents-react.git",
+    "directory": "packages/compat"
+  },
+  "author": "SAP SE (https://www.sap.com)",
+  "license": "Apache-2.0",
+  "sideEffects": [
+    "./dist/Assets.js",
+    "./dist/json-imports/*"
+  ],
+  "scripts": {
+    "clean": "rimraf dist tmp",
+    "build:css": "postcss --base src --dir dist/css src/**/*.css",
+    "build:css-bundle": "node ../../config/merge-css-modules.js",
+    "watch:css": "yarn build:css --watch"
+  },
+  "dependencies": {
+    "@ui5/webcomponents-react": "workspace:~",
+    "clsx": "2.1.1"
+  },
+  "peerDependencies": {
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "@ui5/webcomponents-compat": "~2.0.0-rc.5",
+    "@ui5/webcomponents-react": "workspace:~",
+    "react": "^16.14.0 || ^17 || ^18 || ^19",
+    "react-dom": "^16.14.0 || ^17 || ^18 || ^19"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    },
+    "@ui5/webcomponents-base": {
+      "optional": true
+    },
+    "@ui5/webcomponents-icons": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE.txt",
+    "README.md"
+  ]
+}

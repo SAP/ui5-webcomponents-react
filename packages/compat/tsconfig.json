@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "isolatedModules": true
+  },
+  "references": [
+    {
+      "path": "../base"
+    },
+    {
+      "path": "../main"
+    }
+  ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.cy.ts", "**/*.cy.tsx", "**/*.stories.tsx"]
+}
