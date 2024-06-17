@@ -28,7 +28,6 @@
     {
       "groupName": "Storybook",
       "extends": ["schedule:weekly"],
-      "matchFiles": ["package.json"],
       "matchPackageNames": ["storybook"],
       "matchPackagePatterns": ["^@storybook/"]
     },
@@ -40,7 +39,6 @@
     {
       "description": "root package dependencies",
       "extends": ["schedule:weekly"],
-      "matchFiles": ["package.json"],
       "semanticCommitType": "chore",
       "groupName": "all non-major dependencies",
       "groupSlug": "root-all-minor-patch",
