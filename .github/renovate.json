@@ -27,6 +27,8 @@
     },
     {
       "groupName": "Storybook",
+      "extends": ["schedule:weekly"],
+      "matchFiles": ["package.json"],
       "matchPackageNames": ["storybook"],
       "matchPackagePatterns": ["^@storybook/"]
     },
