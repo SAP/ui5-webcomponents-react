@@ -32,7 +32,7 @@ import type { DynamicPageDomRef } from './index.js';
 import { DynamicPage } from './index.js';
 
 const meta = {
-  title: 'Layouts & Floorplans / DynamicPageV2',
+  title: 'Layouts & Floorplans / DynamicPage',
   component: DynamicPage,
   argTypes: {
     children: {
