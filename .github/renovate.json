@@ -31,6 +31,10 @@
       "excludePackageNames": ["@storybook/react-vite"]
     },
     {
+      "extends": ["group:storybookMonorepo", "schedule:weekly"],
+      "semanticCommitType": "chore"
+    },
+    {
       "description": "root package dependencies",
       "extends": ["schedule:weekly"],
       "semanticCommitType": "chore",
