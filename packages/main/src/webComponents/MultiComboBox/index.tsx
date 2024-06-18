@@ -127,8 +127,9 @@ interface MultiComboBoxPropTypes
       | 'icon'
       | 'valueStateMessage'
       | 'onChange'
+      | 'onClose'
       | 'onInput'
-      | 'onOpenChange'
+      | 'onOpen'
       | 'onSelectionChange'
     > {
   /**
@@ -169,14 +170,23 @@ interface MultiComboBoxPropTypes
   onChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
 
   /**
+   * Fired when the dropdown is closed.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onClose?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
+
+  /**
    * Fired when the value of the component changes at each keystroke or clear icon is pressed.
    */
   onInput?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
 
   /**
-   * Fired when the dropdown is opened or closed.
+   * Fired when the dropdown is opened.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    */
-  onOpenChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
+  onOpen?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
 
   /**
    * Fired when selection is changed by user interaction.
@@ -224,7 +234,7 @@ const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomR
   ['accessibleName', 'accessibleNameRef', 'filter', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'noTypeahead', 'noValidation', 'readonly', 'required', 'showClearIcon', 'showSelectAll'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input', 'open-change', 'selection-change'],
+  ['change', 'close', 'input', 'open', 'selection-change'],
   () => import('@ui5/webcomponents/dist/MultiComboBox.js')
 );
 

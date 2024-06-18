@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import { MultiComboBoxGroupItem } from '../MultiComboBoxGroupItem/index.js';
 import { MultiComboBoxItem } from '../MultiComboBoxItem/index.js';
+import { MultiComboBoxItemGroup } from '../MultiComboBoxItemGroup/index.js';
 import { MultiComboBox } from './index.js';
 
 const meta = {
@@ -39,21 +39,24 @@ export const Grouping: Story = {
   render: (args) => {
     return (
       <MultiComboBox {...args}>
-        <MultiComboBoxGroupItem text="Asia"></MultiComboBoxGroupItem>
-        <MultiComboBoxItem text="Afghanistan"></MultiComboBoxItem>
-        <MultiComboBoxItem text="China"></MultiComboBoxItem>
-        <MultiComboBoxItem text="India"></MultiComboBoxItem>
-        <MultiComboBoxItem text="Indonesia"></MultiComboBoxItem>
-        <MultiComboBoxGroupItem text="Europe"></MultiComboBoxGroupItem>
-        <MultiComboBoxItem text="Austria"></MultiComboBoxItem>
-        <MultiComboBoxItem text="Bulgaria"></MultiComboBoxItem>
-        <MultiComboBoxItem text="Germany"></MultiComboBoxItem>
-        <MultiComboBoxItem text="Italy"></MultiComboBoxItem>
-        <MultiComboBoxGroupItem text="North America"></MultiComboBoxGroupItem>
-        <MultiComboBoxItem text="Canada"></MultiComboBoxItem>
-        <MultiComboBoxItem text="Granada"></MultiComboBoxItem>
-        <MultiComboBoxItem text="Haiti"></MultiComboBoxItem>
-        <MultiComboBoxItem text="United States"></MultiComboBoxItem>
+        <MultiComboBoxItemGroup text="Asia">
+          <MultiComboBoxItem text="Afghanistan"></MultiComboBoxItem>
+          <MultiComboBoxItem text="China"></MultiComboBoxItem>
+          <MultiComboBoxItem text="India"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Indonesia"></MultiComboBoxItem>
+        </MultiComboBoxItemGroup>
+        <MultiComboBoxItemGroup text="Europe">
+          <MultiComboBoxItem text="Austria"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Bulgaria"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Germany"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Italy"></MultiComboBoxItem>
+        </MultiComboBoxItemGroup>
+        <MultiComboBoxItemGroup text="North America">
+          <MultiComboBoxItem text="Canada"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Granada"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Haiti"></MultiComboBoxItem>
+          <MultiComboBoxItem text="United States"></MultiComboBoxItem>
+        </MultiComboBoxItemGroup>
       </MultiComboBox>
     );
   }

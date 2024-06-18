@@ -207,8 +207,18 @@
         "valueState": "ValueState"
       }
     },
-    "MultiComboBoxGroupItem": {},
+    "MultiComboBoxGroupItem": {
+      "newComponent": "MultiComboBoxItemGroup",
+      "changedProps": {
+        "onOpenChange": "onOpen"
+      }
+    },
     "MultiComboBoxItem": {},
+    "MultiComboBoxItemGroup": {
+      "changedProps": {
+        "onOpenChange": "onOpen"
+      }
+    },
     "MultiInput": {
       "changedProps": {
         "onSuggestionItemPreview": "onSelectionChange"
