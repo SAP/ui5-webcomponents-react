@@ -1,6 +1,23 @@
+import { useGetHeaderHeight } from '@/packages/main/src/webComponents/DynamicPage/DynamicPage.stories';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState';
 import { expect } from 'chai';
-import { Fragment } from 'react';
+import { Fragment, useRef } from 'react';
 import { flattenFragments } from './utils';
+import type { DynamicPageDomRef } from '@/packages/main/src';
+import {
+  Bar,
+  Button,
+  DynamicPageHeader,
+  FlexBox,
+  FlexBoxDirection,
+  FlexBoxWrap,
+  Label,
+  ObjectStatus,
+  DynamicPage,
+  DynamicPageTitle,
+  Title
+} from '@/packages/main/src';
+import './DynamicPageStickyHeader.css';
 
 describe('utils', function () {
   it('flattenFragments - no fragment', () => {
@@ -92,6 +109,128 @@ describe('utils', function () {
   });
 
   it('DynamicPage: sticky content hook', () => {
-    //TODO: create test
+    cy.mount(<DynamicPageWithStickyContentHeaders />);
+    // be.visible & not.be.visible returns wrong results
+    cy.findByText('Sticky Header')
+      .as('sticky1')
+      .should(($el) => {
+        expect($el[0].getBoundingClientRect().top).to.eq(216);
+      });
+    cy.findByText('Content1')
+      .as('content1')
+      .should(($el) => {
+        expect($el[0].getBoundingClientRect().top).to.eq(280);
+      });
+    cy.findByText('Sticky Header 2')
+      .as('sticky2')
+      .should(($el) => {
+        expect($el[0].getBoundingClientRect().top).to.eq(520);
+      });
+    cy.findByText('End Content')
+      .as('endContent')
+      .should(($el) => {
+        expect($el[0].getBoundingClientRect().top).to.eq(2648);
+      });
+
+    cy.get('.ui5-dynamic-page-scroll-container').scrollTo('bottom');
+    cy.wait(50);
+    cy.get('.ui5-dynamic-page-scroll-container').scrollTo('bottom');
+
+    cy.get('@sticky1').should(($el) => {
+      expect($el[0].getBoundingClientRect().top).to.eq(88);
+    });
+    cy.get('@content1').should(($el) => {
+      expect($el[0].getBoundingClientRect().top).to.eq(-1842.5);
+    });
+    cy.get('@sticky2').should(($el) => {
+      expect($el[0].getBoundingClientRect().top).to.eq(152);
+    });
+    cy.get('@endContent').should(($el) => {
+      expect($el[0].getBoundingClientRect().top).to.eq(525.5);
+    });
   });
 });
+
+function DynamicPageWithStickyContentHeaders() {
+  const dynamicPageRef = useRef<DynamicPageDomRef & { shadowRoot: ShadowRoot }>(null);
+  const headerHeight = useGetHeaderHeight(dynamicPageRef);
+
+  return (
+    <DynamicPage
+      style={{ height: '600px' }}
+      titleArea={
+        <DynamicPageTitle
+          heading={<Title style={{ fontSize: 'var(--sapObjectHeader_Title_FontSize)' }}>Header Title</Title>}
+          snappedHeading={
+            <Title style={{ fontSize: 'var(--sapObjectHeader_Title_SnappedFontSize)' }}>Snapped Header Title</Title>
+          }
+        />
+      }
+      headerArea={
+        <DynamicPageHeader>
+          <FlexBox wrap={FlexBoxWrap.Wrap}>
+            <FlexBox direction={FlexBoxDirection.Column}>
+              <Label>Location: Warehouse A</Label>
+              <Label>Halway: 23L</Label>
+              <Label>Rack: 34</Label>
+            </FlexBox>
+            <span style={{ width: '1rem' }} />
+            <FlexBox direction={FlexBoxDirection.Column}>
+              <Label>Availability:</Label>
+              <ObjectStatus state={ValueState.Positive}>In Stock</ObjectStatus>
+            </FlexBox>
+          </FlexBox>
+        </DynamicPageHeader>
+      }
+      footerArea={
+        <Bar
+          design="FloatingFooter"
+          endContent={
+            <>
+              <Button>Button</Button>
+            </>
+          }
+        />
+      }
+      showFooter
+      ref={dynamicPageRef}
+      className="dynamicPageStickyContent"
+    >
+      <>
+        <div
+          style={{
+            position: 'sticky',
+            width: '100%',
+            height: '4rem',
+            background: 'lightgreen',
+            insetBlockStart: `${headerHeight}px`
+          }}
+        >
+          Sticky Header
+        </div>
+        <div style={{ width: '100%', background: 'orange', height: '15rem' }}>Content1</div>
+        <div
+          style={{
+            position: 'sticky',
+            width: '100%',
+            height: '8rem',
+            background: 'lightgreen',
+            insetBlockStart: `calc(${headerHeight}px + 4rem)`
+          }}
+        >
+          Sticky Header 2
+        </div>
+        <div
+          style={{
+            background: 'lightblue',
+            height: '2000px',
+            width: '100%'
+          }}
+        >
+          Content 2
+        </div>
+        <div>End Content</div>
+      </>
+    </DynamicPage>
+  );
+}

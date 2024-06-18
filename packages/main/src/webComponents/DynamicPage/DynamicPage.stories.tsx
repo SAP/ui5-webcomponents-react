@@ -132,7 +132,7 @@ export const Default: Story = {
   }
 };
 
-const useGetHeaderHeight = (dynamicPageRef: RefObject<DynamicPageDomRef & { shadowRoot: ShadowRoot }>) => {
+export const useGetHeaderHeight = (dynamicPageRef: RefObject<DynamicPageDomRef & { shadowRoot: ShadowRoot }>) => {
   const [headerHeight, setHeaderHeight] = useState<undefined | number>(undefined);
   useEffect(() => {
     const headerObserver = new ResizeObserver(([header]) => {
