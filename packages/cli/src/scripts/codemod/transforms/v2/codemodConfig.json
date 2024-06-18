@@ -344,7 +344,8 @@
     "SideNavigationItem": {
       "changedProps": {
         "title": "tooltip"
-      }
+      },
+      "removedProps": ["wholeItemToggleable"]
     },
     "SideNavigationSubItem": {
       "changedProps": {
