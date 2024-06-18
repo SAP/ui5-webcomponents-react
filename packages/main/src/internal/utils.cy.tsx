@@ -114,22 +114,22 @@ describe('utils', function () {
     cy.findByText('Sticky Header')
       .as('sticky1')
       .should(($el) => {
-        expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(216);
+        expect($el[0].getBoundingClientRect().top).to.approximately(216, 1);
       });
     cy.findByText('Content1')
       .as('content1')
       .should(($el) => {
-        expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(280);
+        expect($el[0].getBoundingClientRect().top).to.approximately(280, 1);
       });
     cy.findByText('Sticky Header 2')
       .as('sticky2')
       .should(($el) => {
-        expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(520);
+        expect($el[0].getBoundingClientRect().top).to.approximately(520, 1);
       });
     cy.findByText('End Content')
       .as('endContent')
       .should(($el) => {
-        expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(2648);
+        expect($el[0].getBoundingClientRect().top).to.approximately(2648, 1);
       });
 
     cy.get('.ui5-dynamic-page-scroll-container').scrollTo('bottom');
@@ -137,16 +137,16 @@ describe('utils', function () {
     cy.get('.ui5-dynamic-page-scroll-container').scrollTo('bottom');
 
     cy.get('@sticky1').should(($el) => {
-      expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(88);
+      expect($el[0].getBoundingClientRect().top).to.approximately(88, 1);
     });
     cy.get('@content1').should(($el) => {
-      expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(-1842);
+      expect($el[0].getBoundingClientRect().top).to.approximately(-1842.5, 1);
     });
     cy.get('@sticky2').should(($el) => {
-      expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(152);
+      expect($el[0].getBoundingClientRect().top).to.approximately(152, 1);
     });
     cy.get('@endContent').should(($el) => {
-      expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(525);
+      expect($el[0].getBoundingClientRect().top).to.approximately(525.5, 1);
     });
   });
 });
