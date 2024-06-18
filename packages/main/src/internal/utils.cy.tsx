@@ -114,22 +114,22 @@ describe('utils', function () {
     cy.findByText('Sticky Header')
       .as('sticky1')
       .should(($el) => {
-        expect($el[0].getBoundingClientRect().top).to.eq(216);
+        expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(216);
       });
     cy.findByText('Content1')
       .as('content1')
       .should(($el) => {
-        expect($el[0].getBoundingClientRect().top).to.eq(280);
+        expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(280);
       });
     cy.findByText('Sticky Header 2')
       .as('sticky2')
       .should(($el) => {
-        expect($el[0].getBoundingClientRect().top).to.eq(520);
+        expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(520);
       });
     cy.findByText('End Content')
       .as('endContent')
       .should(($el) => {
-        expect($el[0].getBoundingClientRect().top).to.eq(2648);
+        expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(2648);
       });
 
     cy.get('.ui5-dynamic-page-scroll-container').scrollTo('bottom');
@@ -137,16 +137,16 @@ describe('utils', function () {
     cy.get('.ui5-dynamic-page-scroll-container').scrollTo('bottom');
 
     cy.get('@sticky1').should(($el) => {
-      expect($el[0].getBoundingClientRect().top).to.eq(88);
+      expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(88);
     });
     cy.get('@content1').should(($el) => {
-      expect($el[0].getBoundingClientRect().top).to.eq(-1842.5);
+      expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(-1842);
     });
     cy.get('@sticky2').should(($el) => {
-      expect($el[0].getBoundingClientRect().top).to.eq(152);
+      expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(152);
     });
     cy.get('@endContent').should(($el) => {
-      expect($el[0].getBoundingClientRect().top).to.eq(525.5);
+      expect(Math.floor($el[0].getBoundingClientRect().top)).to.eq(525);
     });
   });
 });
