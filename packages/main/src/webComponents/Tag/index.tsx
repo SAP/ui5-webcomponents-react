@@ -36,9 +36,6 @@ interface TagAttributes {
   /**
    * Defines if the component is interactive (focusable and pressable).
    *
-   * **Note:** The tag cannot be `interactive`
-   * when `design` property is `TagDesign.Set3`
-   *
    * **Note:** Available since [v1.22.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.22.0) of **@ui5/webcomponents**.
    * @default false
    */
@@ -59,7 +56,7 @@ interface TagAttributes {
    * words will not be broken based on hyphenation.
    *
    * **Note:** Available since [v1.22.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.22.0) of **@ui5/webcomponents**.
-   * @default "None"
+   * @default "Normal"
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }

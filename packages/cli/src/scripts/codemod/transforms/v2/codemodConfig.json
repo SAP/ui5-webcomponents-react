@@ -545,5 +545,14 @@
       "MultiSelect": "Multiple"
     }
   },
-  "wrappingTypeComponents": ["Badge", "CheckBox", "Label", "Link", "Title", "RadioButton", "NotificationListItem"]
+  "wrappingTypeComponents": [
+    "Badge",
+    "CheckBox",
+    "Label",
+    "Link",
+    "Title",
+    "RadioButton",
+    "NotificationListItem",
+    "Tag"
+  ]
 }

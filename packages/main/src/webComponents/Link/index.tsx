@@ -49,11 +49,39 @@ interface LinkAttributes {
   disabled?: boolean;
 
   /**
+   * Defines the icon, displayed as graphical element within the component after the link's text.
+   * The SAP-icons font provides numerous options.
+   *
+   * **Note:** Usage of icon-only link is not supported, the link must always have a text.
+   *
+   * **Note:** We recommend using аn icon in the beginning or the end only, and with text.
+   *
+   * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  endIcon?: string;
+
+  /**
    * Defines the component href.
    *
    * **Note:** Standard hyperlink behavior is supported.
    */
   href?: string;
+
+  /**
+   * Defines the icon, displayed as graphical element within the component before the link's text.
+   * The SAP-icons font provides numerous options.
+   *
+   * **Note:** Usage of icon-only link is not supported, the link must always have a text.
+   *
+   * **Note:** We recommend using аn icon in the beginning or the end only, and with text.
+   *
+   * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  icon?: string;
 
   /**
    * Defines the component target.
@@ -149,7 +177,18 @@ interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttr
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
-  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'href', 'target', 'tooltip', 'wrappingType'],
+  [
+    'accessibleName',
+    'accessibleNameRef',
+    'accessibleRole',
+    'design',
+    'endIcon',
+    'href',
+    'icon',
+    'target',
+    'tooltip',
+    'wrappingType'
+  ],
   ['disabled'],
   [],
   ['click'],
