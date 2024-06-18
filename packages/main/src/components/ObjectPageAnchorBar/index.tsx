@@ -23,7 +23,7 @@ const anchorButtonVariables = {
   [_buttonBaseHeight]: '1.5rem'
 } as CSSProperties;
 
-interface DynamicPageAnchorBarPropTypes extends CommonProps {
+interface ObjectPageAnchorBarPropTypes extends CommonProps {
   /**
    * Determines if the header content is visible.
    */
@@ -56,7 +56,7 @@ interface DynamicPageAnchorBarPropTypes extends CommonProps {
    * Defines internally used a11y properties.
    */
   a11yConfig?: {
-    dynamicPageAnchorBar?: {
+    objectPageAnchorBar?: {
       role?: string;
     };
   };
@@ -67,10 +67,9 @@ interface DynamicPageAnchorBarPropTypes extends CommonProps {
 }
 
 /**
- * The dynamic page anchor bar contains the expand/collapse (expands or collapses the header content)
- * and pin button (pins the content header).
+ * The `ObjectPageAnchorBar` bar contains the expand/collapse (expands or collapses the header content) and pin button (pins the content header).
  */
-const ObjectPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropTypes>((props, ref) => {
+const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes>((props, ref) => {
   const {
     showHideHeaderButton,
     headerContentVisible,
@@ -122,9 +121,9 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropType
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   return (
     <section
-      data-component-name="DynamicPageAnchorBar"
+      data-component-name="ObjectPageAnchorBar"
       style={style}
-      role={a11yConfig?.dynamicPageAnchorBar?.role}
+      role={a11yConfig?.objectPageAnchorBar?.role}
       className={showHideHeaderButton || headerContentPinnable ? classNames.container : null}
       ref={ref}
     >
@@ -144,7 +143,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropType
           onMouseLeave={onHoverToggleButton}
           tooltip={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
           accessibleName={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
-          data-component-name="DynamicPageAnchorBarExpandBtn"
+          data-component-name="ObjectPageAnchorBarExpandBtn"
         />
       )}
       {shouldRenderHeaderPinnableButton && (
@@ -157,13 +156,13 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, DynamicPageAnchorBarPropType
           onClick={onPinHeader}
           tooltip={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
           accessibleName={i18nBundle.getText(headerPinned ? UNPIN_HEADER : PIN_HEADER)}
-          data-component-name="DynamicPageAnchorBarPinBtn"
+          data-component-name="ObjectPageAnchorBarPinBtn"
         />
       )}
     </section>
   );
 });
 
-ObjectPageAnchorBar.displayName = 'DynamicPageAnchorBar';
+ObjectPageAnchorBar.displayName = 'ObjectPageAnchorBar';
 
 export { ObjectPageAnchorBar };

@@ -20,18 +20,18 @@ import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
 import type { AvatarPropTypes, TabContainerDomRef } from '../../webComponents/index.js';
 import { Tab, TabContainer } from '../../webComponents/index.js';
-import type {
-  DynamicPageHeaderPropTypes,
-  InternalProps as DynamicPageHeaderPropTypesWithInternals
-} from '../DynamicPageHeader/index.js';
-import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
-import type {
-  DynamicPageTitlePropTypes,
-  InternalProps as DynamicPageTitlePropTypesWithInternals
-} from '../DynamicPageTitle/index.js';
 import { ObjectPageAnchorBar } from '../ObjectPageAnchorBar/index.js';
+import type {
+  ObjectPageHeaderPropTypes,
+  InternalProps as ObjectPageHeaderPropTypesWithInternals
+} from '../ObjectPageHeader/index.js';
+import { ObjectPageHeader } from '../ObjectPageHeader/index.js';
 import type { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
 import type { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection/index.js';
+import type {
+  ObjectPageTitlePropTypes,
+  InternalProps as ObjectPageTitlePropTypesWithInternals
+} from '../ObjectPageTitle/index.js';
 import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { classNames, styleData } from './ObjectPage.module.css.js';
 import { extractSectionIdFromHtmlId, getSectionById } from './ObjectPageUtils.js';
@@ -47,8 +47,8 @@ addCustomCSSWithScoping(
 );
 
 const ObjectPageCssVariables = {
-  headerDisplay: '--_ui5wcr_DynamicPage_header_display',
-  titleFontSize: '--_ui5wcr_DynamicPage_title_fontsize'
+  headerDisplay: '--_ui5wcr_ObjectPage_header_display',
+  titleFontSize: '--_ui5wcr_ObjectPage_title_fontsize'
 };
 
 const TAB_CONTAINER_HEADER_HEIGHT = 48;
@@ -63,7 +63,7 @@ interface BeforeNavigateDetail {
 
 type ObjectPageTabSelectEventDetail = TabContainerTabSelectEventDetail & BeforeNavigateDetail;
 
-type DynamicPageTitlePropsWithDataAttributes = DynamicPageTitlePropTypesWithInternals & {
+type ObjectPageTitlePropsWithDataAttributes = ObjectPageTitlePropTypesWithInternals & {
   'data-not-clickable': boolean;
   'data-header-content-visible': boolean;
   'data-is-snapped-rendered-outside': boolean;
@@ -73,21 +73,21 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Defines the upper, always static, title section of the `ObjectPage`.
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageTitle` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageTitle` in order to preserve the intended design.
    *
-   * __Note:__ If not defined otherwise the prop `showSubHeaderRight` of the `DynamicPageTitle` is set to `true` by default.
+   * __Note:__ If not defined otherwise the prop `showSubHeaderRight` of the `ObjectPageTitle` is set to `true` by default.
    *
-   * __Note:__ When the `DynamicPageTitle` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
+   * __Note:__ When the `ObjectPageTitle` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
    */
-  headerTitle?: ReactElement<DynamicPageTitlePropTypes>;
+  headerTitle?: ReactElement<ObjectPageTitlePropTypes>;
   /**
-   * Defines the dynamic header section of the `ObjectPage`.
+   * Defines the `ObjectPageHeader` section of the `ObjectPage`.
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `DynamicPageHeader` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageHeader` in order to preserve the intended design.
    *
-   * __Note:__ When the `DynamicPageHeader` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
+   * __Note:__ When the `ObjectPageHeader` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
    */
-  headerContent?: ReactElement<DynamicPageHeaderPropTypes>;
+  headerContent?: ReactElement<ObjectPageHeaderPropTypes>;
   /**
    * React element which defines the footer content.
    *
@@ -154,7 +154,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
       role?: string;
       ariaRoledescription?: string;
     };
-    dynamicPageAnchorBar?: {
+    objectPageAnchorBar?: {
       role?: string;
     };
   };
@@ -650,7 +650,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       const titleInHeaderClass = inHeader ? classNames.titleInHeader : undefined;
 
       if (headerTitle?.props && headerTitle.props?.showSubHeaderRight === undefined) {
-        return cloneElement(headerTitle as ReactElement<DynamicPageTitlePropsWithDataAttributes>, {
+        return cloneElement(headerTitle as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
           showSubHeaderRight: true,
           className: clsx(titleInHeaderClass, headerTitle?.props?.className),
           onToggleHeaderContentVisibility: onTitleClick,
@@ -659,7 +659,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           'data-is-snapped-rendered-outside': snappedHeaderInObjPage
         });
       }
-      return cloneElement(headerTitle as ReactElement<DynamicPageTitlePropsWithDataAttributes>, {
+      return cloneElement(headerTitle as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
         className: clsx(titleInHeaderClass, headerTitle?.props?.className),
         onToggleHeaderContentVisibility: onTitleClick,
         'data-not-clickable': titleHeaderNotClickable,
@@ -681,7 +681,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const renderHeaderContentSection = useCallback(() => {
     if (headerContent?.props) {
-      return cloneElement(headerContent as ReactElement<DynamicPageHeaderPropTypesWithInternals>, {
+      return cloneElement(headerContent as ReactElement<ObjectPageHeaderPropTypesWithInternals>, {
         ...headerContent.props,
         topHeaderHeight,
         style:
@@ -705,7 +705,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       });
     } else if (titleInHeader) {
       return (
-        <DynamicPageHeader
+        <ObjectPageHeader
           topHeaderHeight={topHeaderHeight}
           style={headerCollapsed === true ? { position: 'absolute', visibility: 'hidden' } : undefined}
           headerPinned={headerPinned || scrolledHeaderExpanded}
@@ -715,7 +715,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             {avatar}
             <div data-component-name="ObjectPageHeaderContent">{titleInHeader && renderTitleSection(true)}</div>
           </div>
-        </DynamicPageHeader>
+        </ObjectPageHeader>
       );
     }
   }, [

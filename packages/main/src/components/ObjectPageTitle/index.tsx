@@ -14,11 +14,11 @@ import type { ToolbarPropTypes } from '../Toolbar/index.js';
 import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
 import { ActionsSpacer } from './ActionsSpacer.js';
-import { classNames, styleData } from './DynamicPageTitle.module.css.js';
+import { classNames, styleData } from './ObjectPageTitle.module.css.js';
 
-export interface DynamicPageTitlePropTypes extends CommonProps {
+export interface ObjectPageTitlePropTypes extends CommonProps {
   /**
-   * The `DynamicPageTitle` actions.
+   * Defines the actions of the `ObjectPageTitle`.
    *
    * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault()` to prevent this.
    *
@@ -27,29 +27,29 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
   actions?: ReactElement | ReactElement[];
 
   /**
-   * The `breadcrumbs` displayed in the `DynamicPageTitle` top-left area.
+   * The `breadcrumbs` displayed in the `ObjectPageTitle` top-left area.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Breadcrumbs` in order to preserve the intended design.
    */
   breadcrumbs?: ReactNode | ReactNode[];
 
   /**
-   * The content is positioned in the `DynamicPageTitle` middle area
+   * The content is positioned in the `ObjectPageTitle` middle area
    */
   children?: ReactNode | ReactNode[];
 
   /**
-   * The `header` is positioned in the `DynamicPageTitle` left area.
+   * The `header` is positioned in the `ObjectPageTitle` left area.
    * Use this prop to display a `Title` (or any other component that serves as a heading).
    */
   header?: ReactNode;
   /**
-   * The `subHeader` is positioned in the `DynamicPageTitle` left area below the `header`.
+   * The `subHeader` is positioned in the `ObjectPageTitle` left area below the `header`.
    * Use this aggregation to display a component like `Label` or any other component that serves as sub header.
    */
   subHeader?: ReactNode;
   /**
-   * The `DynamicPageTitle` navigation actions.<br />
+   * The `ObjectPageTitle` navigation actions.<br />
    * *Note*: The `navigationActions` position depends on the control size.
    * If the control size is 1280px or bigger, they are rendered right next to the actions.
    * Otherwise, they are rendered in the top-right area, above the actions.
@@ -77,16 +77,16 @@ export interface DynamicPageTitlePropTypes extends CommonProps {
    */
   navigationActionsToolbarProps?: Omit<ToolbarPropTypes, 'design' | 'toolbarStyle' | 'active'>;
   /**
-   * The content displayed in the `DynamicPageTitle` in expanded state.
+   * The content displayed in the `ObjectPageTitle` in expanded state.
    */
   expandedContent?: ReactNode | ReactNode[];
   /**
-   * The content displayed in the `DynamicPageTitle` in collapsed (snapped) state.
+   * The content displayed in the `ObjectPageTitle` in collapsed (snapped) state.
    */
   snappedContent?: ReactNode | ReactNode[];
 }
 
-export interface InternalProps extends DynamicPageTitlePropTypes {
+export interface InternalProps extends ObjectPageTitlePropTypes {
   /**
    * The onToggleHeaderContentVisibility show or hide the header section
    */
@@ -100,7 +100,7 @@ export interface InternalProps extends DynamicPageTitlePropTypes {
    */
   'data-header-content-visible'?: boolean;
   /**
-   * Defines if the `snappedContent` should be rendered by the `DynamicPageTitle`
+   * Defines if the `snappedContent` should be rendered by the `ObjectPageTitle`
    */
   'data-is-snapped-rendered-outside'?: boolean;
 }
@@ -128,12 +128,12 @@ const enhanceActionsWithClick = (actions: ActionsType, ref: RefObject<PopoverDom
   });
 
 /**
- * The `DynamicPageTitle` component is part of the `DynamicPage` family and is used to serve as title of the `DynamicPage` and `ObjectPage`.
+ * The `ObjectPageTitle` component is used to serve as title of the `ObjectPage`.
  * It can contain Breadcrumbs, Title, Subtitle, Content, KPIs and Actions.
  *
  * __Note:__ When used inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
  */
-const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((props, ref) => {
+const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((props, ref) => {
   const {
     actions,
     breadcrumbs,
@@ -152,7 +152,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
     ...rest
   } = props as InternalProps;
 
-  useStylesheet(styleData, DynamicPageTitle.displayName);
+  useStylesheet(styleData, ObjectPageTitle.displayName);
   const [componentRef, dynamicPageTitleRef] = useSyncRef<HTMLDivElement>(ref);
   const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
   const isMounted = useRef(false);
@@ -233,12 +233,12 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
       className={containerClasses}
       style={style}
       ref={componentRef}
-      data-component-name="DynamicPageTitle"
+      data-component-name="ObjectPageTitle"
       onClick={onHeaderClick}
       {...propsWithoutOmitted}
     >
       {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
-        <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="DynamicPageTitleBreadcrumbs">
+        <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="ObjectPageTitleBreadcrumbs">
           {breadcrumbs && (
             <div className={classNames.breadcrumbs} onClick={stopPropagation}>
               {breadcrumbs}
@@ -252,7 +252,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
               overflowButton={navigationActionsToolbarProps?.overflowButton}
               className={clsx(classNames.toolbar, navigationActionsToolbarProps?.className)}
               onClick={handleNavigationActionsToolbarClick}
-              data-component-name="DynamicPageTitleNavActions"
+              data-component-name="ObjectPageTitleNavActions"
               onOverflowChange={navigationActionsToolbarProps?.onOverflowChange}
               overflowPopoverRef={navActionsOverflowRef}
               design={ToolbarDesign.Auto}
@@ -268,21 +268,21 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
       <FlexBox
         alignItems={FlexBoxAlignItems.Center}
         className={classNames.middleSection}
-        data-component-name="DynamicPageTitleMiddleSection"
+        data-component-name="ObjectPageTitleMiddleSection"
       >
         <FlexBox className={classNames.titleMainSection}>
           {header && (
-            <div className={classNames.title} data-component-name="DynamicPageTitleHeader">
+            <div className={classNames.title} data-component-name="ObjectPageTitleHeader">
               {header}
             </div>
           )}
           {subHeader && showSubHeaderRight && (
-            <div className={classNames.subTitle} data-component-name="DynamicPageTitleSubHeader">
+            <div className={classNames.subTitle} data-component-name="ObjectPageTitleSubHeader">
               {subHeader}
             </div>
           )}
           {children && (
-            <div className={classNames.content} data-component-name="DynamicPageTitleContent">
+            <div className={classNames.content} data-component-name="ObjectPageTitleContent">
               {children}
             </div>
           )}
@@ -298,7 +298,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
             active
             className={clsx(classNames.toolbar, actionsToolbarProps?.className)}
             onClick={handleActionsToolbarClick}
-            data-component-name="DynamicPageTitleActions"
+            data-component-name="ObjectPageTitleActions"
             onOverflowChange={actionsToolbarProps?.onOverflowChange}
             overflowPopoverRef={actionsOverflowRef}
           >
@@ -316,7 +316,7 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
         <FlexBox>
           <div
             className={clsx(classNames.subTitle, classNames.subTitleBottom)}
-            data-component-name="DynamicPageTitleSubHeader"
+            data-component-name="ObjectPageTitleSubHeader"
           >
             {subHeader}
           </div>
@@ -331,6 +331,6 @@ const DynamicPageTitle = forwardRef<HTMLDivElement, DynamicPageTitlePropTypes>((
   );
 });
 
-DynamicPageTitle.displayName = 'DynamicPageTitle';
+ObjectPageTitle.displayName = 'ObjectPageTitle';
 
-export { DynamicPageTitle };
+export { ObjectPageTitle };

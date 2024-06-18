@@ -11,8 +11,8 @@ import {
   Breadcrumbs,
   BreadcrumbsItem,
   Button,
-  DynamicPageHeader,
-  DynamicPageTitle,
+  ObjectPageHeader,
+  ObjectPageTitle,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,
@@ -66,7 +66,7 @@ const meta = {
       />
     ),
     headerTitle: (
-      <DynamicPageTitle
+      <ObjectPageTitle
         showSubHeaderRight
         header="Denise Smith"
         subHeader="Senior UI Developer"
@@ -89,10 +89,10 @@ const meta = {
         snappedContent={<MessageStrip>Information (only visible if header content is collapsed/snapped)</MessageStrip>}
       >
         <ObjectStatus state={ValueState.Positive}>employed</ObjectStatus>
-      </DynamicPageTitle>
+      </ObjectPageTitle>
     ),
     headerContent: (
-      <DynamicPageHeader>
+      <ObjectPageHeader>
         <FlexBox wrap={FlexBoxWrap.Wrap} alignItems={FlexBoxAlignItems.Center}>
           <FlexBox direction={FlexBoxDirection.Column}>
             <Link>+33 6 4512 5158</Link>
@@ -106,7 +106,7 @@ const meta = {
             <Label>California, USA</Label>
           </FlexBox>
         </FlexBox>
-      </DynamicPageHeader>
+      </ObjectPageHeader>
     )
   }
 } satisfies Meta<typeof ObjectPage>;
@@ -349,7 +349,7 @@ export const WithCustomOverflowButton: Story = {
           style={{ width: '1000px' }}
           showHideHeaderButton={false}
           headerTitle={
-            <DynamicPageTitle
+            <ObjectPageTitle
               {...titleProps}
               header={
                 <Title wrappingType="Normal">
@@ -363,7 +363,7 @@ export const WithCustomOverflowButton: Story = {
           style={{ width: '1400px' }}
           showHideHeaderButton={false}
           headerTitle={
-            <DynamicPageTitle
+            <ObjectPageTitle
               {...titleProps}
               header={<Title>Custom overflow buttons for actions (width: 1400px)</Title>}
             />

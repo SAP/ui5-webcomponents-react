@@ -5,33 +5,32 @@ import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import { forwardRef, useMemo } from 'react';
 import type { CommonProps } from '../../types/index.js';
-import { classNames, styleData } from './DynamicPageHeader.module.css.js';
+import { classNames, styleData } from './ObjectPageHeader.module.css.js';
 
-export interface DynamicPageHeaderPropTypes extends CommonProps {
+export interface ObjectPageHeaderPropTypes extends CommonProps {
   /**
-   * Content of the `DynamicPageHeader`.
+   * Content of the `ObjectPageHeader`.
    */
   children?: ReactNode | ReactNode[];
 }
 
-export interface InternalProps extends DynamicPageHeaderPropTypes {
+export interface InternalProps extends ObjectPageHeaderPropTypes {
   /**
    * Determines if the header is pinned.
    */
   headerPinned?: boolean;
   /**
-   * Determines the height of the top header (dynamic page title).
+   * Determines the height of the top header (`ObjectPageTitle`).
    */
   topHeaderHeight?: number;
 }
 
 /**
- * The `DynamicPageHeader` component is part of the `DynamicPage` family and is used to serve as header section of the `DynamicPage` and `ObjectPage`.
- * This component can be collapsed and pinned by the anchorbar.
+ * The `ObjectPageHeader` component is used to serve as header section of the `ObjectPage`. It can hold any layout control and has two states - expanded and collapsed.
  *
  * __Note:__ When used inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
  */
-const DynamicPageHeader = forwardRef<HTMLDivElement, InternalProps>((props, ref) => {
+const ObjectPageHeader = forwardRef<HTMLDivElement, InternalProps>((props, ref) => {
   const { children, headerPinned, topHeaderHeight, className, style, ...rest } = props;
 
   const headerStyles = useMemo(() => {
@@ -45,14 +44,14 @@ const DynamicPageHeader = forwardRef<HTMLDivElement, InternalProps>((props, ref)
     return style;
   }, [headerPinned, topHeaderHeight, style]);
 
-  useStylesheet(styleData, DynamicPageHeader.displayName);
+  useStylesheet(styleData, ObjectPageHeader.displayName);
 
   return (
     <div
       ref={ref}
       {...rest}
       className={clsx(classNames.header, className)}
-      data-component-name="DynamicPageHeader"
+      data-component-name="ObjectPageHeader"
       style={headerStyles}
     >
       {children}
@@ -60,6 +59,6 @@ const DynamicPageHeader = forwardRef<HTMLDivElement, InternalProps>((props, ref)
   );
 });
 
-DynamicPageHeader.displayName = 'DynamicPageHeader';
+ObjectPageHeader.displayName = 'ObjectPageHeader';
 
-export { DynamicPageHeader };
+export { ObjectPageHeader };
