@@ -20,6 +20,7 @@ import {
   FlexBoxDirection,
   FlexBoxWrap,
   Label,
+  MessageStrip,
   ObjectStatus,
   Tag,
   Title,
@@ -58,8 +59,18 @@ const meta = {
             Snapped Header Title
           </Title>
         }
-        subheading={<Label>Subheader</Label>}
-        snappedSubheading={<Label>Snapped Subheader</Label>}
+        subheading={
+          <>
+            <Label>Subheader</Label>
+            <MessageStrip>Information (only visible if header content is expanded)</MessageStrip>
+          </>
+        }
+        snappedSubheading={
+          <>
+            <Label>Snapped Subheader</Label>
+            <MessageStrip>Information (only visible if header content is collapsed (snapped))</MessageStrip>
+          </>
+        }
         actionsBar={
           <ToolbarV2>
             <ToolbarButton design={ButtonDesign.Emphasized} text="Edit" />
