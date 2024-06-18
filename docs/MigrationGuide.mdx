@@ -80,11 +80,7 @@ function MyComponent() {
 
 The `DynamicPage` component has been replaced with the `ui5-dynamic-page` web component. This comes with a few breaking changes:
 
-#### Props
-
-##### Replaced
-
-[//]: # 'TODO: check events details etc and note the differences'
+#### Replaced Props
 
 - `backgroundDesign` is not available anymore. To set the background of the page you can use standard CSS and the respective CSS variables instead:
   - **List:** `var(--sapGroup_ContentBackground)`
@@ -93,15 +89,50 @@ The `DynamicPage` component has been replaced with the `ui5-dynamic-page` web co
 - `alwaysShowContentHeader` has been renamed to `headerPinned`
 - `headerCollapsed` has been renamed to `headerSnapped`
 - `headerContentPinnable` (default: `true`) has been replaced by `hidePinButton` (default: `false`)
-- `onPinnedStateChange` has been replaced by `onPinButtonToggle`
-- `onToggleHeaderContent` has been replaced by `onTitleToggle`
 - `footer` has been replaced by `footerArea` and is now a `slot`
 - `headerContent` has been replaced by `headerArea` and is now a `slot`
 - `headerTitle` has been replaced by `titleArea` and is now a `slot`
 
-##### Removed
+**Events:**
 
-[//]: # 'TODO: explanation why preserveHeaderStateOnScroll has been removed'
+- `onPinnedStateChange` has been replaced by `onPinButtonToggle`.
+- `onToggleHeaderContent` has been replaced by `onTitleToggle`.
+
+  ```jsx
+  // v1
+  function DynamicPageComponent(props) {
+    const [pinned, setPinned] = useState(false);
+    const [expanded, setExpanded] = useState(true);
+    return (
+      <DynamicPage
+        {...props}
+        onPinnedStateChange={(pinned) => setPinned(pinned)}
+        onToggleHeaderContent={(visible) => {
+          setExpanded(visible);
+        }}
+      />
+    );
+  }
+
+  // v2
+  function DynamicPageComponent(props) {
+    const [pinned, setPinned] = useState(false);
+    const [expanded, setExpanded] = useState(true);
+    return (
+      <DynamicPage
+        {...props}
+        onPinButtonToggle={(event) => setPinned(event.target.headerPinned)}
+        onTitleToggle={(event) => {
+          setExpanded(event.target.headerSnapped);
+        }}
+      />
+    );
+  }
+  ```
+
+#### Removed Props
+
+[//]: # 'TODO: FR for preserveHeaderStateOnScroll and link it'
 
 - `preserveHeaderStateOnScroll`: TODO
 - `showHideHeaderButton`: Hiding the expand/collapse button is not supported by design anymore.
@@ -116,28 +147,25 @@ Since the `ObjectPage` isn't compatible with the `DynamicPageHeader` web compone
 The `DynamicPageTitle` component has been replaced with the `ui5-dynamic-page-title` web component. This comes with a few breaking changes listed below.
 Since the `ObjectPage` isn't compatible with the `DynamicPageTitle` web component, please use the `ObjectPageTitle` component in the `ObjectPage` instead.
 
-#### Props
-
-##### Replaced
+#### Replaced Props
 
 - `actions` has been replaced by `actionsBar` and is now a `slot`. Instead of passing actions (e.g. `Buttons`) directly, it is now recommended to use the `Toolbar` component in order to preserve the intended design.
 - `navigationActions` has been replaced by `navigationBar` and is now a `slot`. Instead of passing actions (e.g. `Buttons`) directly, it is now recommended to use the `Toolbar` component in order to preserve the intended design.
-- `header` has been renamed to `heading` and is now a `slot`. The `font-size` isn't automatically adjusted anymore, so to keep the intended design you can leverage the new `snappedHeading` prop and apply the corresponding CSS Variables yourself.
+- `subHeader` has been renamed to `subheading` and is now a slot.
+- `header` has been renamed to `heading` and is now a `slot`. The `font-size` isn't automatically adjusted anymore, so to keep the intended design you can leverage the new `snappedHeading` prop and apply the corresponding CSS Variables yourself. (see example below)
 
   Example:
 
   ```jsx
   <DynamicPageTitle
-    heading={<Title style={{ fontSize: ThemingParameters.sapObjectHeader_Title_FontSize }}>Header Title</Title>}
+    heading={<Title style={{ fontSize: 'var(--sapObjectHeader_Title_FontSize)' }}>Header Title</Title>}
     snappedHeading={
-      <Title style={{ fontSize: ThemingParameters.sapObjectHeader_Title_SnappedFontSize }}>Snapped Header Title</Title>
+      <Title style={{ fontSize: 'var(--sapObjectHeader_Title_SnappedFontSize)' }}>Snapped Header Title</Title>
     }
   />
   ```
 
-- `subHeader` has been renamed to `subheading` and is now a slot.
-
-##### Removed
+#### Removed Props
 
 - `showSubHeaderRight` is not defined by the global design guidelines and is therefore not available with the new web component.
 - `actionsToolbarProps` is not necessary anymore, as you now can pass a `Toolbar` yourself.
