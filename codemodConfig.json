@@ -72,6 +72,30 @@
         "onAfterOpen": "onOpen"
       }
     },
+    "DynamicPage": {
+      "comment": "TODO: add note for props that can't be migrated",
+      "changedProps": {
+        "alwaysShowContentHeader": "headerPinned",
+        "headerCollapsed": "headerSnapped",
+        "footer": "footerArea",
+        "headerContent": "headerArea",
+        "headerTitle": "titleArea"
+      },
+      "removedProps": ["preserveHeaderStateOnScroll", "showHideHeaderButton"]
+    },
+    "DynamicPageTitle": {
+      "comment": "TODO: add note for props that can't be migrated & outline oddity about expanded/snappedContent prop",
+      "changedProps": {
+        "header": "heading"
+      },
+      "removedProps": [
+        "showSubHeaderRight",
+        "actionsToolbarProps",
+        "navigationActionsToolbarProps",
+        "expandedContent",
+        "snappedContent"
+      ]
+    },
     "DynamicSideContent": {},
     "FileUploader": {},
     "FilterItem": {},
