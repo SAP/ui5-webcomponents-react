@@ -79,6 +79,7 @@
       "newComponent": "ComboBoxItemGroup"
     },
     "CustomListItem": {
+      "newComponent": "ListItemCustom",
       "renamedEnums": {
         "highlight": "HighlightTypes"
       }
@@ -153,6 +154,17 @@
       },
       "renamedEnums": {
         "mode": "ListMode"
+      }
+    },
+    "ListItemCustom": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes"
+      }
+    },
+    "ListItemStandard": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes",
+        "additionalTextState": "ValueState"
       }
     },
     "ListItemGroup": {},
@@ -336,6 +348,7 @@
       "removedProps": ["activeIcon"]
     },
     "StandardListItem": {
+      "newComponent": "ListItemStandard",
       "renamedEnums": {
         "highlight": "HighlightTypes",
         "additionalTextState": "ValueState"

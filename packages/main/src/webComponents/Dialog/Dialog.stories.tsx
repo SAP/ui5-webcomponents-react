@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 import { forwardRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { DialogDomRef, DialogPropTypes } from '../index.js';
-import { Bar, Button, Icon, List, StandardListItem, Title } from '../index.js';
+import { Bar, Button, Icon, List, ListItemStandard, Title } from '../index.js';
 import { Dialog as OriginalDialog } from './index';
 
 // todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
@@ -102,9 +102,9 @@ export const WithContent: Story = {
           footer={<Bar design={BarDesign.Footer} endContent={<Button onClick={handleClose}>Close</Button>} />}
         >
           <List>
-            <StandardListItem additionalText="3">List Item 1</StandardListItem>
-            <StandardListItem additionalText="2">List Item 2</StandardListItem>
-            <StandardListItem additionalText="1">List Item 3</StandardListItem>
+            <ListItemStandard additionalText="3">List Item 1</ListItemStandard>
+            <ListItemStandard additionalText="2">List Item 2</ListItemStandard>
+            <ListItemStandard additionalText="1">List Item 3</ListItemStandard>
           </List>
         </Dialog>
       </>

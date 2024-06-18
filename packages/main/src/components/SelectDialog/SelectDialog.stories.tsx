@@ -6,7 +6,7 @@ import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import { useEffect, useRef, useState } from 'react';
-import { Button, FlexBox, Label, StandardListItem, Text } from '../..';
+import { Button, FlexBox, Label, ListItemStandard, Text } from '../..';
 import { SelectDialog } from './index.js';
 
 const meta = {
@@ -49,14 +49,14 @@ export const Default: Story = {
           {new Array(40).fill('').map((_, index) => {
             const currentProduct = listItems[index % 4];
             return (
-              <StandardListItem
+              <ListItemStandard
                 selected={index === 1}
                 image={currentProduct.img}
                 description={`${currentProduct.description}${index}`}
                 key={`${currentProduct.text}${index}`}
               >
                 {currentProduct.text}
-              </StandardListItem>
+              </ListItemStandard>
             );
           })}
         </SelectDialog>
@@ -151,7 +151,7 @@ export const MultiSelect: Story = {
                 return null;
               }
               return (
-                <StandardListItem
+                <ListItemStandard
                   image={currentProduct.img}
                   description={`${currentProduct.description}${index}`}
                   data-description={`${currentProduct.description}${index}`}
@@ -159,7 +159,7 @@ export const MultiSelect: Story = {
                   selected={selectedItems[description]}
                 >
                   {currentProduct.text}
-                </StandardListItem>
+                </ListItemStandard>
               );
             })
             .filter(Boolean)}

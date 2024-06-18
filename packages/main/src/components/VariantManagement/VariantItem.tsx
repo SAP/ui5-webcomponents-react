@@ -4,10 +4,10 @@ import { useSyncRef } from '@ui5/webcomponents-react-base';
 import { forwardRef, useContext, useEffect } from 'react';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
 import type { InputPropTypes } from '../../webComponents/index.js';
-import type { StandardListItemDomRef, StandardListItemPropTypes } from '../../webComponents/StandardListItem/index.js';
-import { StandardListItem } from '../../webComponents/StandardListItem/index.js';
+import type { ListItemStandardDomRef, ListItemStandardPropTypes } from '../../webComponents/ListItemStandard/index.js';
+import { ListItemStandard } from '../../webComponents/ListItemStandard/index.js';
 
-export interface VariantItemPropTypes extends Pick<StandardListItemPropTypes, 'accessibleName' | 'selected'> {
+export interface VariantItemPropTypes extends Pick<ListItemStandardPropTypes, 'accessibleName' | 'selected'> {
   /**
    * The name of the variant.
    */
@@ -71,7 +71,7 @@ export interface VariantItemPropTypes extends Pick<StandardListItemPropTypes, 'a
 /**
  * The `VariantItem` describes a variant/view of the `VariantManagement` component.
  */
-const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((props, ref) => {
+const VariantItem = forwardRef<ListItemStandardDomRef, VariantItemPropTypes>((props, ref) => {
   const {
     isDefault,
     author,
@@ -86,7 +86,7 @@ const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((pr
     hideDelete
   } = props;
   const { selectVariantItem } = useContext(VariantManagementContext);
-  const [componentRef, consolidatedRef] = useSyncRef<StandardListItemDomRef>(ref);
+  const [componentRef, consolidatedRef] = useSyncRef<ListItemStandardDomRef>(ref);
   useEffect(() => {
     if (selected) {
       selectVariantItem({ ...props, variantItem: consolidatedRef.current });
@@ -97,7 +97,7 @@ const VariantItem = forwardRef<StandardListItemDomRef, VariantItemPropTypes>((pr
   const { manageViewsInputProps: _0, saveViewInputProps: _1, ...rest } = props;
 
   return (
-    <StandardListItem
+    <ListItemStandard
       {...rest}
       ref={componentRef}
       data-is-default={isDefault}
