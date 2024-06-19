@@ -318,18 +318,6 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       });
     }
 
-    if (typeof changes.newComponent === 'string') {
-      jsxElements.find(j.Identifier, { name: componentName }).replaceWith(j.jsxIdentifier(changes.newComponent));
-      const importSpecifier = root.find(j.ImportSpecifier, { local: { name: componentName } });
-      const importedFrom = importSpecifier.get().parentPath.parentPath.value.source.value;
-      if (importedFrom === '@ui5/webcomponents-react') {
-        importSpecifier.replaceWith(
-          j.importSpecifier(j.identifier(changes.newComponent), j.identifier(changes.newComponent))
-        );
-      }
-      isDirty = true;
-    }
-
     Object.entries(changes.changedProps ?? {}).forEach(([oldName, newName]) => {
       const jsxAttributes = jsxElements.find(j.JSXAttribute, { name: { name: oldName } });
       if (!jsxAttributes.length) {
@@ -347,6 +335,18 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       jsxAttributes.remove();
       isDirty = true;
     });
+
+    if (typeof changes.newComponent === 'string') {
+      jsxElements.find(j.Identifier, { name: componentName }).replaceWith(j.jsxIdentifier(changes.newComponent));
+      const importSpecifier = root.find(j.ImportSpecifier, { local: { name: componentName } });
+      const importedFrom = importSpecifier.get().parentPath.parentPath.value.source.value;
+      if (importedFrom === '@ui5/webcomponents-react') {
+        importSpecifier.replaceWith(
+          j.importSpecifier(j.identifier(changes.newComponent), j.identifier(changes.newComponent))
+        );
+      }
+      isDirty = true;
+    }
   });
 
   Object.entries<string>(config.enums).forEach(([enumName, newImport]) => {
