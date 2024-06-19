@@ -416,6 +416,25 @@
       "removedProps": ["fixed", "showOverflow"]
     },
     "TabSeparator": {},
+    "Table": {
+      "comment": "noDataText is now noData slot",
+      "changedProps": {
+        "busy": "loading",
+        "columns": "headerRow"
+      },
+      "removedProps": [
+        "busyDelay",
+        "growing",
+        "growingButtonSubtext",
+        "growingButtonText",
+        "mode",
+        "hideNoData",
+        "stickyColumnHeader",
+        "onLoadMore",
+        "onPopinChange",
+        "onSelectionChange"
+      ]
+    },
     "TableCell": {},
     "TableColumn": {
       "newComponent": "TableHeaderCell",
