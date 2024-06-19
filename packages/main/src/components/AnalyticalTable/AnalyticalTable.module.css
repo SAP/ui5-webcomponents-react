@@ -214,6 +214,7 @@
   }
   &:not([data-empty-row-cell]):focus::after {
     content: '';
+    pointer-events: none;
     inset-inline: 1px;
     inset-block: 1px;
     border: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
