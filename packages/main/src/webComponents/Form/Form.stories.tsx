@@ -15,8 +15,7 @@ const meta = {
   args: {
     headerText: 'Test Form',
     layout: 'S1 M1 L2 XL2',
-    labelSpan: 'S12 M4 L4 XL4',
-    style: { alignItems: 'center' }
+    labelSpan: 'S12 M4 L4 XL4'
   },
   tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Form>;
@@ -42,12 +41,10 @@ export const Default: Story = {
               <Option>Italy</Option>
             </Select>
           </FormItem>
-          <FormItem
-            labelContent={<Label style={{ alignSelf: 'start', paddingTop: '0.25rem' }}>Additional Comment</Label>}
-          >
+          <FormItem labelContent={<Label>Additional Comment</Label>} className="formAlignLabelStart">
             <TextArea
               rows={5}
-              placeholder="The styles of the Label of the TextArea FormItem is set to: alignSelf: 'start', paddingTop: '0.25rem'"
+              placeholder="The label is aligned to start by setting `<class>::part(label){  align-self: start; }` "
             />
           </FormItem>
           <FormItem labelContent={<Label>Home address</Label>}>
@@ -92,7 +89,7 @@ export const Default: Story = {
 
 const StandardField = ({ editMode, value, inputType = InputType.Text, onInput, ...rest }) => {
   if (editMode) {
-    return <Input value={value} style={{ width: '100%' }} type={inputType} onInput={onInput} {...rest} />;
+    return <Input value={value} type={inputType} onInput={onInput} {...rest} />;
   }
   if (inputType === InputType.URL || inputType === InputType.Email) {
     return (
@@ -153,8 +150,8 @@ export const DisplayEditMode: Story = {
             <FormItem labelContent={<Label>ZIP Code / City</Label>}>
               {editMode ? (
                 <>
-                  <Input value={zip} type={InputType.Number} style={{ width: '30%' }} onInput={handleInput} data-zip />
-                  <Input value={city} style={{ width: '70%' }} onInput={handleInput} data-city />
+                  <Input value={zip} type={InputType.Number} onInput={handleInput} data-zip />
+                  <Input value={city} onInput={handleInput} data-city />
                 </>
               ) : (
                 <Text>{`${zip} ${city}`}</Text>
