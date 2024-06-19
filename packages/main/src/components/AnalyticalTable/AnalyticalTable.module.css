@@ -210,12 +210,17 @@
   }
 
   &:focus {
-    outline-offset: calc(-1 * var(--sapContent_FocusWidth));
-    outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
-
-    &[data-empty-row-cell] {
-      outline: none;
-    }
+    outline: none;
+  }
+  &:not([data-empty-row-cell]):focus::after {
+    content: '';
+    inset-inline: 1px;
+    inset-block: 1px;
+    border: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+    position: absolute;
+  }
+  &[aria-selected='true']:not([data-empty-row-cell]):focus::after {
+    inset-block-end: 2px;
   }
 }
 
