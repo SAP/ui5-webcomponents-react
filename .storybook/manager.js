@@ -52,5 +52,8 @@ addons.setConfig({
         return !item.tags.includes('excludeFromSidebar');
       }
     }
+  },
+  toolbar: {
+    'storybook/viewport': { hidden: true }
   }
 });
