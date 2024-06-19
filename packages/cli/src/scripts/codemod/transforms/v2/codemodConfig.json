@@ -389,6 +389,7 @@
       "removedProps": ["fixed", "showOverflow"]
     },
     "TabSeparator": {},
+    "TableCell": {},
     "TextArea": {
       "changedProps": {
         "growingMaxLines": "growingMaxRows"
