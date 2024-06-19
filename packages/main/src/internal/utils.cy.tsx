@@ -1,7 +1,7 @@
-import { useGetHeaderHeight } from '@/packages/main/src/webComponents/DynamicPage/DynamicPage.stories';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState';
 import { expect } from 'chai';
 import { Fragment, useRef } from 'react';
+import { useGetHeaderHeight } from '../webComponents/DynamicPage/DynamicPage.stories';
 import { flattenFragments } from './utils';
 import type { DynamicPageDomRef } from '@/packages/main/src';
 import {
