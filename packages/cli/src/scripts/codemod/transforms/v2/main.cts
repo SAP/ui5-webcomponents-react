@@ -1,4 +1,4 @@
-import type { API, Collection, FileInfo, JSCodeshift, Options } from 'jscodeshift';
+import type { API, ASTPath, Collection, FileInfo, JSCodeshift, JSXElement, Options } from 'jscodeshift';
 
 const config = require('./codemodConfig.json');
 
@@ -45,6 +45,32 @@ function addWebComponentsReactImport(j: JSCodeshift, root: Collection, importNam
   }
 }
 
+function extractValueFromProp(
+  j: JSCodeshift,
+  el: ASTPath<JSXElement>,
+  componentName: string,
+  propName: string
+): string | null {
+  const prop = j(el).find(j.JSXAttribute, { name: { name: propName } });
+
+  if (prop.size()) {
+    const s = prop.get();
+    const stringLiteral = prop.find(j.StringLiteral);
+    const numericLiteral = prop.find(j.NumericLiteral);
+    prop.remove();
+
+    if (stringLiteral.size() > 0) {
+      return stringLiteral.get().value.value;
+    } else if (numericLiteral.size() > 0) {
+      return numericLiteral.get().value.value;
+    } else {
+      console.warn(`Unable to read value for prop '${propName}' (${componentName}). Please check the code manually.`);
+      return null;
+    }
+  }
+  return null;
+}
+
 export default function transform(file: FileInfo, api: API, options?: Options): string | undefined {
   const j = api.jscodeshift;
   const root = j(file.source);
@@ -82,52 +108,21 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
 
     if (componentName === 'Carousel') {
       jsxElements.forEach((el) => {
-        const itemsPerPageS = j(el).find(j.JSXAttribute, { name: { name: 'itemsPerPageS' } });
-        const itemsPerPageM = j(el).find(j.JSXAttribute, { name: { name: 'itemsPerPageM' } });
-        const itemsPerPageL = j(el).find(j.JSXAttribute, { name: { name: 'itemsPerPageL' } });
-
-        const sizeValues: string[] = [];
-
-        if (itemsPerPageS.size()) {
-          const s = itemsPerPageS.get();
-          const stringLiteral = itemsPerPageS.find(j.StringLiteral);
-          const numericLiteral = itemsPerPageS.find(j.NumericLiteral);
-
-          if (stringLiteral.size() > 0) {
-            sizeValues.push(`S${stringLiteral.get().value.value}`);
-          } else if (numericLiteral.size() > 0) {
-            sizeValues.push(`S${numericLiteral.get().value.value}`);
-          } else {
-            console.warn(`Unable to read value for prop 'itemsPerPageS' (Carousel). Please check the code manually.`);
-          }
-        }
-
-        if (itemsPerPageM.size()) {
-          const stringLiteral = itemsPerPageM.find(j.StringLiteral);
-          const numericLiteral = itemsPerPageM.find(j.NumericLiteral);
-          if (stringLiteral.size() > 0) {
-            sizeValues.push(`M${stringLiteral.get().value.value}`);
-          } else if (numericLiteral.size() > 0) {
-            sizeValues.push(`M${numericLiteral.get().value.value}`);
-          } else {
-            console.warn(`Unable to read value for prop 'itemsPerPageM' (Carousel). Please check the code manually.`);
-          }
-        }
-
-        if (itemsPerPageL.size()) {
-          const stringLiteral = itemsPerPageL.find(j.StringLiteral);
-          const numericLiteral = itemsPerPageL.find(j.NumericLiteral);
-          if (stringLiteral.size() > 0) {
-            sizeValues.push(`L${stringLiteral.get().value.value}`);
-          } else if (numericLiteral.size() > 0) {
-            sizeValues.push(`L${numericLiteral.get().value.value}`);
-          } else {
-            console.warn(`Unable to read value for prop 'itemsPerPageL' (Carousel). Please check the code manually.`);
-          }
-        }
+        const sizeValues: string[] = [
+          ['S', 'itemsPerPageS'],
+          ['M', 'itemsPerPageM'],
+          ['L', 'itemsPerPageL']
+        ]
+          .map(([key, prop]) => {
+            const val = extractValueFromProp(j, el, componentName, prop);
+            if (val != null) {
+              return `${key}${val}`;
+            }
+            return '';
+          })
+          .filter((val) => val.length > 0);
 
         if (sizeValues.length > 0) {
-          [itemsPerPageS, itemsPerPageM, itemsPerPageL].forEach((e) => e.remove());
           j(el)
             .find(j.JSXOpeningElement)
             .get()
@@ -135,6 +130,88 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
               j.jsxAttribute(j.jsxIdentifier('itemsPerPage'), j.stringLiteral(sizeValues.join(' ')))
             );
           isDirty = true;
+        }
+      });
+    }
+
+    if (componentName === 'Form') {
+      jsxElements.forEach((el) => {
+        const labelSpan: string[] = [
+          ['S', 'labelSpanS'],
+          ['M', 'labelSpanM'],
+          ['L', 'labelSpanL'],
+          ['XL', 'labelSpanXL']
+        ]
+          .map(([key, prop]) => {
+            const val = extractValueFromProp(j, el, componentName, prop);
+            if (val != null) {
+              return `${key}${val}`;
+            }
+            return '';
+          })
+          .filter((val) => val.length > 0);
+
+        if (labelSpan.length > 0) {
+          j(el)
+            .find(j.JSXOpeningElement)
+            .get()
+            .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('labelSpan'), j.stringLiteral(labelSpan.join(' '))));
+          isDirty = true;
+        }
+
+        const layout: string[] = [
+          ['S', 'columnsS'],
+          ['M', 'columnsM'],
+          ['L', 'columnsL'],
+          ['XL', 'columnsXL']
+        ]
+          .map(([key, prop]) => {
+            const val = extractValueFromProp(j, el, componentName, prop);
+            if (val != null) {
+              return `${key}${val}`;
+            }
+            return '';
+          })
+          .filter((val) => val.length > 0);
+
+        if (layout.length > 0) {
+          j(el)
+            .find(j.JSXOpeningElement)
+            .get()
+            .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('layout'), j.stringLiteral(layout.join(' '))));
+          isDirty = true;
+        }
+      });
+    }
+
+    if (componentName === 'FormItem') {
+      jsxElements.forEach((el) => {
+        const label = j(el).find(j.JSXAttribute, { name: { name: 'label' } });
+        if (label.size()) {
+          const labelNode = label.get();
+          let value: string | undefined;
+          if (labelNode.value.value.type === 'StringLiteral') {
+            value = labelNode.value.value.value;
+          }
+          if (
+            labelNode.value.value.type === 'JSXExpressionContainer' &&
+            labelNode.value.value.expression.type === 'StringLiteral'
+          ) {
+            value = labelNode.value.value.expression.value;
+          }
+
+          if (value) {
+            addWebComponentsReactImport(j, root, 'Label');
+            const labelComponent = j.jsxElement(
+              j.jsxOpeningElement(j.jsxIdentifier('Label'), [], false),
+              j.jsxClosingElement(j.jsxIdentifier('Label')),
+              [j.jsxText(value)]
+            );
+            label.replaceWith(
+              j.jsxAttribute(j.jsxIdentifier('labelContent'), j.jsxExpressionContainer(labelComponent))
+            );
+            isDirty = true;
+          }
         }
       });
     }
