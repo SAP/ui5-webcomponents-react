@@ -63,8 +63,13 @@
     user-select: none;
   }
 
+  .formAlignLabelStart::part(label) {
+    padding-block-start: 0.25rem;
+    align-self: start;
+  }
+
   .dynamicPageStickyContent::part(fit-content) {
-    position: static;
+      position: static;
   }
 
   /* TODO remove this workaround as soon as https://github.com/storybookjs/storybook/issues/20497 is fixed */

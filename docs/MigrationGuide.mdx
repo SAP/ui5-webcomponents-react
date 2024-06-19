@@ -204,4 +204,63 @@ Please use the following components instead:
 
 Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
 
+### Form
+
+The `Form` component has been replaced with the `ui5-form` Web Component.
+You can use the new `Form` component as a feature complete replacement of the old Form component with the important differences to mention:
+
+1. You can't mix `FormGroup`s and `FormItem`s as children of the Form. Either only use `FormItem`s or only `FormGroup`s with `FormItem`s inside.
+2. Additional HTML elements between `Form / FormGroup / FormItem` are not allowed. You can still use custom React components if they render a `FormGroup` or `FormItem` as most outer element (or a fragment).
+
+```tsx
+// v1
+import { Form, FormGroup, FormItem } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return (
+    <Form
+      backgroundDesign="Solid"
+      titleText="My Form"
+      labelSpanS={1}
+      labelSpanM={2}
+      labelSpanL={3}
+      labelSpanXL={4}
+      columnsS={1}
+      columnsM={2}
+      columnsL={3}
+      columnsXL={4}
+      as={'form'}
+    >
+      <FormGroup titleText="My Form Group" as="h5">
+        <FormItem label={'MyLabel'}>{/* FormItem Content */}</FormItem>
+      </FormGroup>
+    </Form>
+  );
+}
+
+// v2
+import { Form, FormGroup, FormItem, Label } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return (
+    // `backgroundDesign` and `as` have been removed without replacement
+    <Form
+      // `titleText` has been renamed to `headerText`
+      headerText="My Form"
+      // the `columnsX` props have been merged into the `layout` string
+      layout="S1 M2 L3 XL4"
+      // the `labelSpanX` props have been merged into the `labelSpan` string
+      labelSpan="S1 M2 L3 XL4"
+    >
+      {/* `titleText` has been renamed to `headerText`, `as` has been removed */}
+      <FormGroup headerText="My Form Group">
+        {/* the `label` prop has been renamed to a `labelContent` slot.
+             It doesn't support strings anymore, it's recommended to use the `Label` component in this slot. */}
+        <FormItem labelContent={<Label>MyLabel</Label>}>{/* FormItem Content */}</FormItem>
+      </FormGroup>
+    </Form>
+  );
+}
+```
+
 <Footer />
