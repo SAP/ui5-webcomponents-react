@@ -15,7 +15,7 @@ or the [changelog](?path=/docs/change-log--page)._
 
 <br />
 
-<TableOfContent headingSelector="h2" />
+<TableOfContent headingSelector="h2, h3" />
 
 ## General changes
 
@@ -190,20 +190,6 @@ Since the `ObjectPage` isn't compatible with the `DynamicPageTitle` web componen
   />
   ```
 
-### ObjectPage
-
-The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
-Please use the following components instead:
-
-- `headerContent` now only accepts the `ObjectPageHeader` component.
-- `headerTitle` now only accepts the `ObjectPageTitle` component.
-
-**Renamed props:**
-
-- `a11yConfig.dynamicPageAnchorBar` has been renamed to `a11yConfig.objectPageAnchorBar`
-
-Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
-
 ### Form
 
 The `Form` component has been replaced with the `ui5-form` Web Component.
@@ -262,5 +248,19 @@ function MyComponent() {
   );
 }
 ```
+
+### ObjectPage
+
+The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
+Please use the following components instead:
+
+- `headerContent` now only accepts the `ObjectPageHeader` component.
+- `headerTitle` now only accepts the `ObjectPageTitle` component.
+
+**Renamed props:**
+
+- `a11yConfig.dynamicPageAnchorBar` has been renamed to `a11yConfig.objectPageAnchorBar`
+
+Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
 
 <Footer />
