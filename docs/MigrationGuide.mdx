@@ -123,7 +123,7 @@ The `DynamicPage` component has been replaced with the `ui5-dynamic-page` web co
         {...props}
         onPinButtonToggle={(event) => setPinned(event.target.headerPinned)}
         onTitleToggle={(event) => {
-          setExpanded(event.target.headerSnapped);
+          setExpanded(!event.target.headerSnapped);
         }}
       />
     );
