@@ -127,7 +127,8 @@ const meta = {
         }
       />
     )
-  }
+  },
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof DynamicPage>;
 
 export default meta;
