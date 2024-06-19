@@ -417,6 +417,10 @@
     },
     "TabSeparator": {},
     "TableCell": {},
+    "TableColumn": {
+      "newComponent": "TableHeaderCell",
+      "removedProps": ["demandPopin", "popinDisplay", "popinText"]
+    },
     "TableRow": {
       "comment": "type=Interactive becomes interactive=true",
       "changedProps": {
