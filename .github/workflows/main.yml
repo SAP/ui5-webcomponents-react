@@ -31,7 +31,7 @@ jobs:
       - uses: preactjs/compressed-size-action@2.6.0
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          pattern: 'packages/**/dist/**/*.js'
+          pattern: 'packages/**/dist/**/*.{js,css}'
           compression: 'gzip'
           clean-script: 'clean:remove-modules'
 

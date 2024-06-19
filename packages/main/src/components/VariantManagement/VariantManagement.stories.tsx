@@ -4,15 +4,16 @@ import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { useEffect, useReducer, useRef, useState } from 'react';
 import { DatePicker } from '../../webComponents/DatePicker/index.js';
+import { Form } from '../../webComponents/Form/index.js';
+import { FormGroup } from '../../webComponents/FormGroup/index.js';
+import { FormItem } from '../../webComponents/FormItem/index.js';
+import { Label } from '../../webComponents/Label/index.js';
 import { MultiComboBox } from '../../webComponents/MultiComboBox/index.js';
 import { MultiComboBoxItem } from '../../webComponents/MultiComboBoxItem/index.js';
 import { Option } from '../../webComponents/Option/index.js';
 import { Select } from '../../webComponents/Select/index.js';
 import { FilterBar } from '../FilterBar/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
-import { Form } from '../Form/index.js';
-import { FormGroup } from '../FormGroup/index.js';
-import { FormItem } from '../FormItem/index.js';
 import { Text } from '../Text/index.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
 import { VariantItem } from './VariantItem.js';
@@ -348,27 +349,18 @@ export const WithFilterBarImplementation: Story = {
             </MultiComboBox>
           </FilterGroupItem>
         </FilterBar>
-        <Form
-          style={{ marginBlockStart: '2rem' }}
-          columnsS={1}
-          columnsM={1}
-          columnsL={1}
-          columnsXL={1}
-          labelSpanM={2}
-          labelSpanL={2}
-          labelSpanXL={2}
-        >
-          <FormItem label="Current View">
+        <Form style={{ marginBlockStart: '2rem' }} layout={'S1 M1 L1 XL1'} labelSpan={'M2 L2 XL2'}>
+          <FormItem labelContent={<Label>Current View</Label>}>
             <Text>{selectedVariant}</Text>
           </FormItem>
-          <FormGroup titleText="Filters">
-            <FormItem label="Selected Country">
+          <FormGroup headerText="Filters">
+            <FormItem labelContent={<Label>Selected Country</Label>}>
               <Text>{selectedCountry}</Text>
             </FormItem>
-            <FormItem label="Selected Date">
+            <FormItem labelContent={<Label>Selected Date</Label>}>
               <Text>{date}</Text>
             </FormItem>
-            <FormItem label="Selected Company Codes">
+            <FormItem labelContent={<Label>Selected Company Codes</Label>}>
               <Text>{Object.keys(selectedCodes).join(', ')}</Text>
             </FormItem>
           </FormGroup>
