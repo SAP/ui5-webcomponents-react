@@ -417,6 +417,13 @@
     },
     "TabSeparator": {},
     "TableCell": {},
+    "TableRow": {
+      "comment": "type=Interactive becomes interactive=true",
+      "changedProps": {
+        "type": "interactive"
+      },
+      "removedProps": ["navigated", "selected"]
+    },
     "TextArea": {
       "changedProps": {
         "growingMaxLines": "growingMaxRows"
