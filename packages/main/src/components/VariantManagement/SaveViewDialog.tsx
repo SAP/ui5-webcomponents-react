@@ -3,7 +3,6 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
 import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
@@ -16,7 +15,6 @@ import {
   VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   VIEW
 } from '../../i18n/i18n-defaults.js';
-import { useCanRenderPortal } from '../../internal/ssr.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
@@ -34,7 +32,6 @@ interface SaveViewDialogPropTypes {
   showApplyAutomatically: boolean;
   showSetAsDefault: boolean;
   variantNames: string[];
-  portalContainer: VariantManagementPropTypes['portalContainer'];
   saveViewInputProps?: Omit<InputPropTypes, 'value'>;
   onSaveViewCancel?: VariantManagementPropTypes['onSaveViewCancel'];
 }
@@ -48,7 +45,6 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     showApplyAutomatically,
     showSetAsDefault,
     variantNames,
-    portalContainer,
     saveViewInputProps,
     onSaveViewCancel
   } = props;
@@ -144,12 +140,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     setApplyAutomatically(e.target.checked);
   };
 
-  const canRenderPortal = useCanRenderPortal();
-  if (!canRenderPortal) {
-    return null;
-  }
-
-  return createPortal(
+  return (
     <Dialog
       open
       className={classNames.dialog}
@@ -205,7 +196,6 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
           )}
         </FlexBox>
       </FlexBox>
-    </Dialog>,
-    portalContainer ?? document.body
+    </Dialog>
   );
 };

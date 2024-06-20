@@ -516,6 +516,9 @@
       }
     },
     "UploadCollectionItem": {},
+    "VariantManagement": {
+      "removedProps": ["portalContainer"]
+    },
     "ViewSettingsDialog": {},
     "Wizard": {},
     "WizardStep": {}
