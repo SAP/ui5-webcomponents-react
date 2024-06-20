@@ -1,11 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useId, useReducer, useRef, useState } from 'react';
+import { useId, useReducer, useRef, useState } from 'react';
 import { FlexBoxDirection } from '../../enums/index.js';
 import {
   ComboBox,
   ComboBoxItem,
   DatePicker,
   DateRangePicker,
+  DynamicPage,
+  DynamicPageHeader,
+  DynamicPageTitle,
   Input,
   Label,
   MultiComboBox,
@@ -19,9 +22,6 @@ import {
   Title,
   Token
 } from '../../webComponents/index.js';
-import { DynamicPage } from '../DynamicPage/index.js';
-import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
-import { DynamicPageTitle } from '../DynamicPageTitle/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { Text } from '../Text/index.js';
@@ -285,14 +285,17 @@ export const WithLogic: Story = {
   }
 };
 
+//TODO: check implementation, with rc5 it looks strange
 export const InDynamicPage: Story = {
   name: 'In DynamicPage',
   render: (args) => {
     return (
       <DynamicPage
-        headerTitle={
+        style={{ height: '800px' }}
+        titleArea={
           <DynamicPageTitle
-            header={
+            style={{ minHeight: '0' }}
+            heading={
               <VariantManagement
                 onClick={(e) => {
                   e.stopPropagation();
@@ -304,7 +307,7 @@ export const InDynamicPage: Story = {
             }
           />
         }
-        headerContent={
+        headerArea={
           <DynamicPageHeader>
             <FilterBar {...args} hideToolbar>
               <FilterGroupItem label="StepInput">

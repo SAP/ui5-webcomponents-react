@@ -26,7 +26,7 @@
 }
 
 .phone {
-  --_ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);
+  --_ui5wcr_ObjectPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);
 }
 
 .breadcrumbs {
@@ -55,7 +55,7 @@
   overflow-x: hidden;
   font-family: var(--sapObjectHeader_Title_FontFamily);
   color: var(--sapObjectHeader_Title_TextColor);
-  font-size: var(--_ui5wcr_DynamicPage_title_fontsize);
+  font-size: var(--_ui5wcr_ObjectPage_title_fontsize);
   padding-block-start: 0.3125rem;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -63,7 +63,7 @@
   > * {
     font-family: var(--sapObjectHeader_Title_FontFamily);
     color: var(--sapObjectHeader_Title_TextColor);
-    font-size: var(--_ui5wcr_DynamicPage_title_fontsize);
+    font-size: var(--_ui5wcr_ObjectPage_title_fontsize);
     overflow-wrap: break-word;
     hyphens: auto;
   }

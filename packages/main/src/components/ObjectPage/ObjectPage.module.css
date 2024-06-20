@@ -1,7 +1,7 @@
 .objectPage {
   container: objectPage / inline-size;
-  --_ui5wcr_DynamicPage_header_display: block;
-  --_ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_FontSize);
+  --_ui5wcr_ObjectPage_header_display: block;
+  --_ui5wcr_ObjectPage_title_fontsize: var(--sapObjectHeader_Title_FontSize);
 
   box-sizing: border-box;
   display: flex;
@@ -34,7 +34,7 @@
 
 /* Header */
 .header {
-  --_ui5wcr_DynamicPage_header_display: block;
+  --_ui5wcr_ObjectPage_header_display: block;
   box-sizing: border-box;
   background-color: var(--sapObjectHeader_Background);
   position: sticky;
@@ -42,15 +42,15 @@
   z-index: 2;
   cursor: pointer;
 
-  [data-component-name='DynamicPageTitle'] {
+  [data-component-name='ObjectPageTitle'] {
     grid-column: 2;
     padding-inline: 0;
   }
 }
 
 .headerCollapsed {
-  --_ui5wcr_DynamicPage_header_display: none;
-  --_ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);
+  --_ui5wcr_ObjectPage_header_display: none;
+  --_ui5wcr_ObjectPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);
 }
 
 .headerContainer {
@@ -72,7 +72,7 @@
   &[data-not-clickable='false'] {
     background-color: var(--sapObjectHeader_Hover_Background);
 
-    [data-component-name='DynamicPageTitle'] {
+    [data-component-name='ObjectPageTitle'] {
       background-color: var(--sapObjectHeader_Hover_Background);
     }
   }

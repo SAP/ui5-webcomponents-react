@@ -1,0 +1,3 @@
+.dynamicPageStickyContent::part(fit-content) {
+  position: static;
+}
