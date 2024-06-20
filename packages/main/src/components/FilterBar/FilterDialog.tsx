@@ -6,7 +6,7 @@ import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
-import type { Dispatch, RefObject, ReactElement, SetStateAction } from 'react';
+import type { Dispatch, ReactElement, RefObject, SetStateAction } from 'react';
 import { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
@@ -426,6 +426,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     const filterGroups = Object.keys(groups)
       .sort((x, y) => (x === 'default' ? -1 : y === 'role' ? 1 : 0))
       .map((item, index) => {
+        const selectedRows = groups[item].map((child) => child.props['data-react-key']).join(' ');
         return (
           <Panel
             headerText={item === 'default' ? basicText : item}
@@ -435,7 +436,13 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             <Table
               className={classNames.tableInGroup}
               data-component-name="FilterBarDialogPanelTable"
-              features={<TableSelection mode={TableSelectionMode.Multiple} onChange={handleCheckBoxChange} />}
+              features={
+                <TableSelection
+                  mode={TableSelectionMode.Multiple}
+                  selected={selectedRows}
+                  onChange={handleCheckBoxChange}
+                />
+              }
               headerRow={
                 <TableHeaderRow className={classNames.groupedTableHeader}>
                   <TableHeaderCell>{filterText}</TableHeaderCell>
