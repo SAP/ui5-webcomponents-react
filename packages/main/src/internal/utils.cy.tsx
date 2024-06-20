@@ -1,22 +1,22 @@
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState';
 import { expect } from 'chai';
 import { Fragment, useRef } from 'react';
-import { useGetHeaderHeight } from '../webComponents/DynamicPage/DynamicPage.stories';
-import { flattenFragments } from './utils';
-import type { DynamicPageDomRef } from '@/packages/main/src';
 import {
   Bar,
   Button,
+  DynamicPage,
   DynamicPageHeader,
+  DynamicPageTitle,
   FlexBox,
   FlexBoxDirection,
   FlexBoxWrap,
   Label,
   ObjectStatus,
-  DynamicPage,
-  DynamicPageTitle,
   Title
-} from '@/packages/main/src';
+} from '../index.js';
+import { useGetHeaderHeight } from '../webComponents/DynamicPage/helpers.js';
+import { flattenFragments } from './utils';
+import type { DynamicPageDomRef } from '@/packages/main/src';
 import './DynamicPageStickyHeader.css';
 
 describe('utils', function () {
