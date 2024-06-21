@@ -8,7 +8,7 @@ import type { ReactElement } from 'react';
 import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
-import { flattenFragments } from '../../internal/utils.js';
+import { flattenFragments, getUi5TagWithSuffix } from '../../internal/utils.js';
 import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
 import type {
@@ -129,9 +129,12 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const childrenArrayLength = childrenToRender.length;
   const childrenLength = isPhone() && !hideCancelButton ? childrenArrayLength + 1 : childrenArrayLength;
 
-  const [internalOpen, setInternalOpen] = useState(open);
+  const [internalOpen, setInternalOpen] = useState(undefined);
   useEffect(() => {
-    setInternalOpen(open);
+    const tagName = getUi5TagWithSuffix('ui5-responsive-popover');
+    void customElements.whenDefined(tagName).then(() => {
+      setInternalOpen(open);
+    });
   }, [open]);
 
   const handleCancelBtnClick = () => {

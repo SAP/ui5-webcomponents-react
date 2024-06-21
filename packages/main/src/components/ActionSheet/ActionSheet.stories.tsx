@@ -43,7 +43,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render(args) {
-    const [actionSheetOpen, setActionSheetOpen] = useState<boolean | undefined>(args.open);
+    const [actionSheetOpen, setActionSheetOpen] = useState<boolean | undefined>(true);
     return (
       <>
         <Button

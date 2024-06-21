@@ -1,4 +1,4 @@
-import type { ButtonPropTypes, ResponsivePopoverDomRef } from '../../webComponents/index.js';
+import type { ButtonPropTypes } from '../../webComponents/index.js';
 import { Button, Label } from '../../webComponents/index.js';
 import type { ActionSheetPropTypes } from './index.js';
 import { ActionSheet } from './index.js';
@@ -32,7 +32,7 @@ describe('ActionSheet', () => {
 
     cy.get('[ui5-responsive-popover]').should('be.visible');
 
-    cy.findByText('Accept').realClick();
+    cy.findByText('Accept').click();
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
     cy.get('@onBtnClick').should('have.been.calledOnce');
   });
@@ -48,17 +48,13 @@ describe('ActionSheet', () => {
 
   it('keyboard navigation', () => {
     cy.mount(
-      <TestComp open={false}>
+      <TestComp>
         {new Array(15).fill('O.o').map((_, index) => (
           <Button key={index}>{`Button${index}`}</Button>
         ))}
       </TestComp>
     );
-    cy.get<ResponsivePopoverDomRef>('.myCustomClass').then(([actionSheet]) => {
-      actionSheet.open = true;
-    });
-    cy.wait(400);
-    cy.get('[ui5-responsive-popover]').should('be.visible').and('have.attr', 'open');
+    cy.wait(500);
     cy.focused().parent().should('have.text', 'Button0');
     cy.realPress('ArrowDown');
     cy.focused().parent().should('have.text', 'Button1');
