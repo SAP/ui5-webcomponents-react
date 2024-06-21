@@ -32,7 +32,7 @@ describe('ActionSheet', () => {
 
     cy.get('[ui5-responsive-popover]').should('be.visible');
 
-    cy.findByText('Accept').click();
+    cy.findByText('Accept').realClick();
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
     cy.get('@onBtnClick').should('have.been.calledOnce');
   });
@@ -48,13 +48,17 @@ describe('ActionSheet', () => {
 
   it('keyboard navigation', () => {
     cy.mount(
-      <TestComp>
+      <TestComp open={false}>
         {new Array(15).fill('O.o').map((_, index) => (
           <Button key={index}>{`Button${index}`}</Button>
         ))}
       </TestComp>
     );
-    cy.wait(500);
+    cy.get('.myCustomClass').then(([actionSheet]) => {
+      actionSheet.open = true;
+    });
+    cy.wait(400);
+    cy.get('[ui5-responsive-popover]').should('be.visible').and('have.attr', 'open');
     cy.focused().parent().should('have.text', 'Button0');
     cy.realPress('ArrowDown');
     cy.focused().parent().should('have.text', 'Button1');
