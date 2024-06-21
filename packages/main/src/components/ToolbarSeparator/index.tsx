@@ -1,21 +1,10 @@
 'use client';
 
-import { CssSizeVariables, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef } from 'react';
-import { createUseStyles } from 'react-jss';
-import { SEPARATOR } from '../../i18n/i18n-defaults.js';
+import { forwardRef } from 'react';
 import type { CommonProps } from '../../types/index.js';
-
-const styles = {
-  separator: {
-    width: '0.0625rem',
-    height: CssSizeVariables.ui5WcrToolbarSeparatorHeight,
-    background: ThemingParameters.sapToolbar_SeparatorColor
-  }
-};
-
-const useStyles = createUseStyles(styles, { name: 'ToolbarSeparator' });
+import { classNames, styleData } from './ToolbarSeparator.module.css.js';
 
 export type ToolbarSeparatorPropTypes = CommonProps;
 
@@ -27,13 +16,10 @@ export type ToolbarSeparatorPropTypes = CommonProps;
 const ToolbarSeparator = forwardRef<HTMLDivElement, ToolbarSeparatorPropTypes>((props, ref) => {
   const { style, className, ...rest } = props;
 
-  const classes = useStyles();
-  const separatorClasses = clsx(classes.separator, className);
-  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  useStylesheet(styleData, ToolbarSeparator.displayName);
+  const separatorClasses = clsx(classNames.separator, className);
 
-  return (
-    <div ref={ref} style={style} className={separatorClasses} aria-label={i18nBundle.getText(SEPARATOR)} {...rest} />
-  );
+  return <div ref={ref} style={style} className={separatorClasses} role="separator" {...rest} />;
 });
 ToolbarSeparator.displayName = 'ToolbarSeparator';
 export { ToolbarSeparator };

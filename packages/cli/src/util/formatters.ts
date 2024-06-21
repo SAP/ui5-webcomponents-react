@@ -1,29 +1,8 @@
-import TurndownService from 'turndown';
-
 let ui5TagNameToComponentNameMap: Record<string, string> = {};
 
 export function setGlobalTagNameMap(map: typeof ui5TagNameToComponentNameMap) {
   ui5TagNameToComponentNameMap = map;
 }
-
-const turndownService = new TurndownService({
-  headingStyle: 'atx',
-  codeBlockStyle: 'fenced'
-});
-
-turndownService.addRule('ui5-link', {
-  filter: (node) => node.nodeName === 'UI5-LINK' && !!node.getAttribute('href'),
-  replacement: (content, node) => {
-    // @ts-expect-error: types seem to be incorrect
-    const href = node.getAttribute('href');
-    // @ts-expect-error: types seem to be incorrect
-    let title = node.getAttribute('title') ?? '';
-    if (title) {
-      title = ` "${title}"`;
-    }
-    return `[${content}](${href}${title})`;
-  }
-});
 
 function replaceUi5TagNames(text: string) {
   let newText = text.replaceAll(/`([\w\d-]+)`/g, (match, tagName) => {
@@ -43,17 +22,11 @@ function replaceUi5TagNames(text: string) {
 }
 
 export function propDescriptionFormatter(html: string) {
-  let summary = turndownService.turndown(html);
-  summary = replaceUi5TagNames(summary);
-  summary = summary.replaceAll('\n', '\n * ');
-  return summary;
+  return replaceUi5TagNames(html).replaceAll('\n', '\n * ');
 }
 
 export function summaryFormatter(htmlDesc: string) {
-  let description = htmlDesc.replace(/<h3 class="comment-api-title">Overview<\/h3>\n*/, '');
-  description = description.replace(/<h3>ES6 Module Import<\/h3>\n*<code>.+<\/code>/, '');
-
-  let summary = turndownService.turndown(description);
+  let summary = htmlDesc.replace(/###\s?Overview\n*/, '').replace(/### ES6 Module Import\n*`.+`/, '');
   summary = replaceUi5TagNames(summary);
   summary = summary.replaceAll('\n', '\n * ');
 
@@ -83,4 +56,8 @@ export function mapWebComponentTypeToPrimitive(type: string): string | null {
     default:
       return null;
   }
+}
+
+export function sinceFilter(ui5since: string | undefined) {
+  return ui5since && !ui5since.startsWith('0') && !ui5since.includes('-rc');
 }

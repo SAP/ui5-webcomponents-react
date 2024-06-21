@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.0...v1.29.1) (2024-05-29)
+
+### Bug Fixes
+
+- **charts:** fix peer dependencies ([#5870](https://github.com/SAP/ui5-webcomponents-react/issues/5870)) ([10e2212](https://github.com/SAP/ui5-webcomponents-react/commit/10e22129b84eba4b84cf42eb3bd03f0614bdc280))
+
+## [1.28.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.1...v1.28.2) (2024-05-24)
+
+### Bug Fixes
+
+- **charts - TypeScript:** correct `interval` type ([#5785](https://github.com/SAP/ui5-webcomponents-react/issues/5785)) ([4c7fe42](https://github.com/SAP/ui5-webcomponents-react/commit/4c7fe4294efee17d15a87e3fdc8a90edd0d731bb))
+- **charts:** correctly apply React `key` with function `accessor`s ([#5775](https://github.com/SAP/ui5-webcomponents-react/issues/5775)) ([86e568a](https://github.com/SAP/ui5-webcomponents-react/commit/86e568ac439e5916bbe7db9e61dd6b31e62733ca)), closes [#5774](https://github.com/SAP/ui5-webcomponents-react/issues/5774)
+- **deps:** update dependency recharts to v2.12.7 ([#5786](https://github.com/SAP/ui5-webcomponents-react/issues/5786)) ([47d8065](https://github.com/SAP/ui5-webcomponents-react/commit/47d8065dfb5bf7c6ed02d2c8f47dc1796db02b86))
+
+## [1.28.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.0...v1.28.1) (2024-05-02)
+
+### Bug Fixes
+
+- **deps:** update dependency clsx to v2.1.1 ([#5747](https://github.com/SAP/ui5-webcomponents-react/issues/5747)) ([fa5bbc6](https://github.com/SAP/ui5-webcomponents-react/commit/fa5bbc67ff3613766d5c2b7ccc8232e3ae480fb8))
+- **deps:** update dependency recharts to v2.12.6 ([#5740](https://github.com/SAP/ui5-webcomponents-react/issues/5740)) ([2843807](https://github.com/SAP/ui5-webcomponents-react/commit/2843807239cb0dc8405e03ab20ae60e828b88bae))
+
+# [1.28.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.27.0...v1.28.0) (2024-04-19)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.12.5 ([#5706](https://github.com/SAP/ui5-webcomponents-react/issues/5706)) ([50d94c2](https://github.com/SAP/ui5-webcomponents-react/commit/50d94c2a4dec8f690bfa2b4b9da6ee93923788d3))
+
+# [1.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.1...v1.27.0) (2024-04-09)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.12.4 ([#5665](https://github.com/SAP/ui5-webcomponents-react/issues/5665)) ([ce4f64f](https://github.com/SAP/ui5-webcomponents-react/commit/ce4f64f2fcf39ff182edeea57cf5534e5a663491))
+
+### Features
+
+- update `@ui5/webcomponents` mono repo to `~1.24.0` ([#5682](https://github.com/SAP/ui5-webcomponents-react/issues/5682)) ([0a6ee9e](https://github.com/SAP/ui5-webcomponents-react/commit/0a6ee9e475765fb4f51fbf180028a3699139c0b9))
+
+## [1.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.0...v1.26.1) (2024-03-19)
+
+### Bug Fixes
+
+- **deps:** update dependency react-content-loader to v7 ([#5587](https://github.com/SAP/ui5-webcomponents-react/issues/5587)) ([86479e3](https://github.com/SAP/ui5-webcomponents-react/commit/86479e36f3764e868a66f209d7a1b363eb98dda2))
+- **deps:** update dependency recharts to v2.12.3 ([#5614](https://github.com/SAP/ui5-webcomponents-react/issues/5614)) ([c0069e2](https://github.com/SAP/ui5-webcomponents-react/commit/c0069e2f431d416c56a981c067fbd44894a76aa0))
+
+# [1.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.1...v1.26.0) (2024-03-08)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.12.0 ([#5479](https://github.com/SAP/ui5-webcomponents-react/issues/5479)) ([c32a810](https://github.com/SAP/ui5-webcomponents-react/commit/c32a81093ae129df5e3983181b8dc274dc97e53e))
+- **deps:** update dependency recharts to v2.12.1 ([#5514](https://github.com/SAP/ui5-webcomponents-react/issues/5514)) ([5e94dc0](https://github.com/SAP/ui5-webcomponents-react/commit/5e94dc042b5ecc7ccb7a247ef6b9a8c789230c36))
+- **deps:** update dependency recharts to v2.12.2 ([#5560](https://github.com/SAP/ui5-webcomponents-react/issues/5560)) ([feb5753](https://github.com/SAP/ui5-webcomponents-react/commit/feb5753d1caa026cca8f81f9900452466963c80a))
+
+### Features
+
+- update `@ui5/webcomponents` to `~1.23.0` ([#5581](https://github.com/SAP/ui5-webcomponents-react/issues/5581)) ([602fd11](https://github.com/SAP/ui5-webcomponents-react/commit/602fd117bdba1824f4d868a9fd09ab4ff00dffec))
+
 ## [1.25.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.0...v1.25.1) (2024-02-07)
 
 ### Bug Fixes

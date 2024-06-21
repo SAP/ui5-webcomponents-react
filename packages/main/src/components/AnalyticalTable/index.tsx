@@ -9,12 +9,12 @@ import {
   useIsomorphicId,
   useIsomorphicLayoutEffect,
   useIsRTL,
+  useStylesheet,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, MutableRefObject } from 'react';
-import React, { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
-import { createUseStyles } from 'react-jss';
+import { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
 import {
   useColumnOrder,
   useExpanded,
@@ -43,19 +43,22 @@ import {
   FILTERED,
   GROUPED,
   INVALID_TABLE,
+  LIST_NO_DATA,
+  NO_DATA_FILTERED,
   SELECT_ALL,
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
 } from '../../i18n/i18n-defaults.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { Text } from '../Text/index.js';
-import styles from './AnayticalTable.jss.js';
+import { classNames, styleData } from './AnalyticalTable.module.css.js';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer.js';
 import { DefaultColumn } from './defaults/Column/index.js';
 import { DefaultLoadingComponent } from './defaults/LoadingComponent/index.js';
 import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder.js';
 import { DefaultNoDataComponent } from './defaults/NoDataComponent/index.js';
 import { useA11y } from './hooks/useA11y.js';
+import { useAutoResize } from './hooks/useAutoResize.js';
 import { useColumnDragAndDrop } from './hooks/useDragAndDrop.js';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths.js';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation.js';
@@ -90,7 +93,10 @@ const sortTypesFallback = {
   undefined: () => undefined
 };
 
-const useStyles = createUseStyles(styles, { name: 'AnalyticalTable' });
+const measureElement = (el: HTMLElement) => {
+  return el.offsetHeight;
+};
+
 /**
  * The `AnalyticalTable` provides a set of convenient functions for responsive table design, including virtualization of rows and columns, infinite scrolling and customizable columns that will, unless otherwise defined, distribute the available space equally among themselves.
  * It also provides several possibilities for working with the data, including sorting, filtering, grouping and aggregation.
@@ -110,35 +116,35 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     groupable,
     header,
     headerRowHeight,
-    highlightField,
+    highlightField = 'status',
     infiniteScroll,
-    infiniteScrollThreshold,
+    infiniteScrollThreshold = 20,
     isTreeTable,
     loading,
     markNavigatedRow,
-    minRows,
+    minRows = 5,
     noDataText,
     overscanCount,
-    overscanCountHorizontal,
+    overscanCountHorizontal = 5,
     portalContainer,
     retainColumnWidth,
     reactTableOptions,
     renderRowSubComponent,
     rowHeight,
-    scaleWidthMode,
+    scaleWidthMode = AnalyticalTableScaleWidthMode.Default,
     scaleXFactor,
     selectedRowIds,
-    selectionBehavior,
-    selectionMode,
+    selectionBehavior = AnalyticalTableSelectionBehavior.Row,
+    selectionMode = AnalyticalTableSelectionMode.None,
     showOverlay,
-    sortable,
+    sortable = true,
     style,
-    subComponentsBehavior,
-    subRowsKey,
-    tableHooks,
+    subComponentsBehavior = AnalyticalTableSubComponentsBehavior.Expandable,
+    subRowsKey = 'subRows',
+    tableHooks = [],
     tableInstance,
-    visibleRowCountMode,
-    visibleRows,
+    visibleRowCountMode = AnalyticalTableVisibleRowCountMode.Fixed,
+    visibleRows = 15,
     withNavigationHighlight,
     withRowHighlight,
     onColumnsReorder,
@@ -149,12 +155,15 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     onRowSelect,
     onSort,
     onTableScroll,
-    LoadingComponent,
-    NoDataComponent,
+    onAutoResize,
+    LoadingComponent = DefaultLoadingComponent,
+    NoDataComponent = DefaultNoDataComponent,
     additionalEmptyRowsCount = 0,
     alwaysShowSubComponent: _omit,
     ...rest
   } = props;
+
+  useStylesheet(styleData, AnalyticalTable.displayName);
 
   useEffect(() => {
     if (props.alwaysShowSubComponent != undefined) {
@@ -175,8 +184,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const titleBarId = useRef(`titlebar-${uniqueId}`).current;
   const invalidTableTextId = useRef(`invalidTableText-${uniqueId}`).current;
 
-  const classes = useStyles();
-
   const tableRef = useRef<DivWithCustomScrollProp>(null);
   const parentRef = useRef<DivWithCustomScrollProp>(null);
   const verticalScrollBarRef = useRef<DivWithCustomScrollProp>(null);
@@ -186,6 +193,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<Record<string, any>>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   tableInstanceRef.current = useTable(
     {
       columns,
@@ -215,7 +223,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         tableRef,
         selectionMode,
         selectionBehavior,
-        classes,
+        classes: classNames,
+        onAutoResize,
         onRowSelect: onRowSelect,
         onRowClick,
         onRowExpandChange,
@@ -246,6 +255,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     useResizeColumns,
     useResizeColumnsConfig,
     useRowSelectionColumn,
+    useAutoResize,
     useSingleRowStateSelection,
     useSelectionChangeCallback,
     useRowHighlight,
@@ -274,8 +284,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     setGroupBy,
     setGlobalFilter
   } = tableInstanceRef.current;
+
   const tableState: AnalyticalTableState = tableInstanceRef.current.state;
   const { triggerScroll } = tableState;
+
+  const noDataTextI18n = i18nBundle.getText(LIST_NO_DATA);
+  const noDataTextFiltered = i18nBundle.getText(NO_DATA_FILTERED);
+  const noDataTextLocal =
+    noDataText ?? (tableState.filters?.length > 0 || tableState.globalFilter ? noDataTextFiltered : noDataTextI18n);
 
   const [componentRef, updatedRef] = useSyncRef<AnalyticalTableDomRef>(ref);
   //@ts-expect-error: types are compatible
@@ -456,11 +472,15 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }, [visibleRowCountMode, tableState.visibleRows]);
 
   useEffect(() => {
-    setGroupBy(groupBy);
+    if (groupBy) {
+      setGroupBy(groupBy);
+    }
   }, [groupBy, setGroupBy]);
 
   useEffect(() => {
-    dispatch({ type: 'SET_SELECTED_ROW_IDS', payload: { selectedRowIds } });
+    if (selectedRowIds) {
+      dispatch({ type: 'SET_SELECTED_ROW_IDS', payload: { selectedRowIds } });
+    }
   }, [selectedRowIds]);
 
   useEffect(() => {
@@ -542,12 +562,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         groupedColumns = tableState.groupBy.filter((group) => group !== column.id);
       }
       setGroupBy(groupedColumns);
-      onGroup(
-        enrichEventWithDetails(e, {
-          column,
-          groupedColumns
-        })
-      );
+      if (typeof onGroup === 'function') {
+        onGroup(
+          enrichEventWithDetails(e, {
+            column,
+            groupedColumns
+          })
+        );
+      }
     },
     [tableState.groupBy, onGroup, setGroupBy]
   );
@@ -632,10 +654,10 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const showVerticalEndBorder = tableState.tableClientWidth > totalSize;
 
   const tableClasses = clsx(
-    classes.table,
+    classNames.table,
     GlobalStyleClasses.sapScrollBar,
-    withNavigationHighlight && classes.hasNavigationIndicator,
-    showVerticalEndBorder && classes.showVerticalEndBorder
+    withNavigationHighlight && classNames.hasNavigationIndicator,
+    showVerticalEndBorder && classNames.showVerticalEndBorder
   );
 
   const handleOnLoadMore = (e) => {
@@ -647,6 +669,39 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       })
     );
   };
+
+  const overscan = overscanCount ? overscanCount : Math.floor(visibleRows / 2);
+  const rHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
+
+  const itemCount =
+    Math.max(
+      minRows,
+      rows.length,
+      visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows ? internalVisibleRowCount : 0
+    ) + (!tableState.isScrollable ? additionalEmptyRowsCount : 0);
+
+  const rowVirtualizer = useVirtualizer({
+    count: itemCount,
+    getScrollElement: () => parentRef.current,
+    estimateSize: useCallback(
+      (index) => {
+        if (
+          renderRowSubComponent &&
+          (rows[index]?.isExpanded || alwaysShowSubComponent) &&
+          tableState.subComponentsHeight?.[index]?.rowId === rows[index]?.id
+        ) {
+          return rHeight + (tableState.subComponentsHeight?.[index]?.subComponentHeight ?? 0);
+        }
+        return rHeight;
+      },
+      [rHeight, rows, renderRowSubComponent, alwaysShowSubComponent, tableState.subComponentsHeight]
+    ),
+    overscan,
+    measureElement,
+    indexAttribute: 'data-virtual-row-index'
+  });
+  // add range to instance for `useAutoResize` plugin hook
+  tableInstanceRef.current.virtualRowsRange = rowVirtualizer.range;
 
   return (
     <>
@@ -664,12 +719,12 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         )}
         {extension && <div ref={extensionRef}>{extension}</div>}
         <FlexBox
-          className={classes.tableContainerWithScrollBar}
+          className={classNames.tableContainerWithScrollBar}
           data-component-name="AnalyticalTableContainerWithScrollbar"
         >
           {showOverlay && (
             <>
-              <span id={invalidTableTextId} className={classes.hiddenA11yText} aria-hidden>
+              <span id={invalidTableTextId} className={classNames.hiddenA11yText} aria-hidden>
                 {invalidTableA11yText}
               </span>
               <div
@@ -677,7 +732,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 aria-labelledby={`${titleBarId} ${invalidTableTextId}`}
                 role="region"
                 data-component-name="AnalyticalTableOverlay"
-                className={classes.overlay}
+                className={classNames.overlay}
               />
             </>
           )}
@@ -694,8 +749,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             data-native-scrollbar={props['data-native-scrollbar']}
             className={tableClasses}
           >
-            <div className={classes.tableHeaderBackgroundElement} />
-            <div className={classes.tableBodyBackgroundElement} />
+            <div className={classNames.tableHeaderBackgroundElement} />
+            <div className={classNames.tableBodyBackgroundElement} />
             {headerGroups.map((headerGroup) => {
               let headerProps: Record<string, unknown> = {};
               if (headerGroup.getHeaderGroupProps) {
@@ -720,21 +775,25 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 )
               );
             })}
-            {loading && rawData?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
-            {loading && rawData?.length === 0 && (
+            {loading && rows?.length > 0 && <LoadingComponent style={{ width: `${totalColumnsWidth}px` }} />}
+            {loading && rows?.length === 0 && (
               <TablePlaceholder columns={visibleColumns} rows={minRows} style={noDataStyles} />
             )}
-            {!loading && rawData?.length === 0 && (
-              <NoDataComponent noDataText={noDataText} className={classes.noDataContainer} style={noDataStyles} />
+            {!loading && rows?.length === 0 && (
+              <NoDataComponent
+                noDataText={noDataTextLocal}
+                className={classNames.noDataContainer}
+                style={noDataStyles}
+              />
             )}
-            {rawData?.length > 0 && tableRef.current && (
+            {rows?.length > 0 && tableRef.current && (
               <VirtualTableBodyContainer
                 rowCollapsedFlag={tableState.rowCollapsed}
                 dispatch={dispatch}
                 tableBodyHeight={tableBodyHeight}
                 totalColumnsWidth={columnVirtualizer.getTotalSize()}
                 parentRef={parentRef}
-                classes={classes}
+                classes={classNames}
                 infiniteScroll={infiniteScroll}
                 infiniteScrollThreshold={infiniteScrollThreshold}
                 onLoadMore={handleOnLoadMore}
@@ -746,26 +805,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               >
                 <VirtualTableBody
                   scrollContainerRef={scrollContainerRef}
-                  classes={classes}
+                  classes={classNames}
                   prepareRow={prepareRow}
                   rows={rows}
-                  itemCount={
-                    Math.max(
-                      minRows,
-                      rows.length,
-                      visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows
-                        ? internalVisibleRowCount
-                        : 0
-                    ) + (!tableState.isScrollable ? additionalEmptyRowsCount : 0)
-                  }
                   scrollToRef={scrollToRef}
                   isTreeTable={isTreeTable}
                   internalRowHeight={internalRowHeight}
                   popInRowHeight={popInRowHeight}
-                  visibleRows={internalVisibleRowCount}
                   alternateRowColor={alternateRowColor}
-                  overscanCount={overscanCount}
-                  parentRef={parentRef}
                   visibleColumns={visibleColumns}
                   renderRowSubComponent={renderRowSubComponent}
                   alwaysShowSubComponent={alwaysShowSubComponent}
@@ -778,6 +825,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   subRowsKey={subRowsKey}
                   subComponentsBehavior={subComponentsBehavior}
                   triggerScroll={tableState.triggerScroll}
+                  rowVirtualizer={rowVirtualizer}
                 />
               </VirtualTableBodyContainer>
             )}
@@ -813,7 +861,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       <Text
         aria-hidden="true"
         id={`scaleModeHelper-${uniqueId}`}
-        className={classes.hiddenSmartColMeasure}
+        className={classNames.hiddenSmartColMeasure}
         data-component-name="AnalyticalTableScaleModeHelper"
       >
         {''}
@@ -821,7 +869,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       <Text
         aria-hidden="true"
         id={`scaleModeHelperHeader-${uniqueId}`}
-        className={clsx(classes.hiddenSmartColMeasure, classes.hiddenSmartColMeasureHeader)}
+        className={clsx(classNames.hiddenSmartColMeasure, classNames.hiddenSmartColMeasureHeader)}
         data-component-name="AnalyticalTableScaleModeHelperHeader"
       >
         {''}
@@ -831,37 +879,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 });
 
 AnalyticalTable.displayName = 'AnalyticalTable';
-AnalyticalTable.defaultProps = {
-  infiniteScrollThreshold: 20,
-  loading: false,
-  sortable: true,
-  filterable: false,
-  groupable: false,
-  selectionMode: AnalyticalTableSelectionMode.None,
-  selectionBehavior: AnalyticalTableSelectionBehavior.Row,
-  scaleWidthMode: AnalyticalTableScaleWidthMode.Default,
-  subComponentsBehavior: AnalyticalTableSubComponentsBehavior.Expandable,
-  data: [],
-  columns: [],
-  minRows: 5,
-  groupBy: [],
-  NoDataComponent: DefaultNoDataComponent,
-  LoadingComponent: DefaultLoadingComponent,
-  noDataText: 'No Data',
-  reactTableOptions: {},
-  tableHooks: [],
-  visibleRows: 15,
-  subRowsKey: 'subRows',
-  highlightField: 'status',
-  markNavigatedRow: () => false,
-  selectedRowIds: {},
-  onGroup: () => {},
-  onRowExpandChange: () => {},
-  isTreeTable: false,
-  alternateRowColor: false,
-  overscanCountHorizontal: 5,
-  visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed
-};
 
 export { AnalyticalTable };
 export type {

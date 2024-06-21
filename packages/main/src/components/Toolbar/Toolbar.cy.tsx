@@ -1,4 +1,6 @@
-import { setTheme, getTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
+import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useRef, useState } from 'react';
@@ -13,10 +15,9 @@ import {
   ToolbarSeparator,
   ToolbarSpacer,
   ToolbarStyle,
-  OverflowToolbarToggleButton,
-  PopupAccessibleRole
+  OverflowToolbarToggleButton
 } from '../..';
-import { ButtonDesign, ToolbarDesign } from '../../enums/index.js';
+import { ToolbarDesign } from '../../enums/index.js';
 import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 interface PropTypes {
@@ -297,7 +298,7 @@ describe('Toolbar', () => {
         <Text>Item3</Text>
       </Toolbar>
     );
-    cy.findByLabelText('Separator').should('be.visible');
+    cy.findByRole('separator').should('be.visible');
   });
 
   it('toolbarStyle', () => {
@@ -413,7 +414,7 @@ describe('Toolbar', () => {
         <Toolbar overflowPopoverRef={popoverRef} style={{ width: '50px' }}>
           <Button
             onClick={() => {
-              popoverRef.current.close();
+              popoverRef.current.open = false;
             }}
           >
             Close
@@ -440,8 +441,7 @@ describe('Toolbar', () => {
     cy.get(`[ui5-toggle-button]`)
       .find('button')
       .should('have.attr', 'aria-expanded', 'false')
-      //todo: this will be fixed with next ui5-wc version - then use "menu" again
-      .should('have.attr', 'aria-haspopup', 'Menu')
+      .should('have.attr', 'aria-haspopup', 'menu')
       .click();
 
     cy.get(`[ui5-toggle-button]`).find('button').should('have.attr', 'aria-expanded', 'true');
@@ -546,17 +546,16 @@ describe('Toolbar', () => {
         Text
       </Toolbar>
     );
-    console.log(getTheme());
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'none');
 
-    cy.findByTestId('tb').click();
+    cy.findByTestId('tb').realClick();
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');
     cy.findByTestId('tb').should('have.css', 'boxShadow', 'rgb(0, 50, 165) 0px 0px 0px 2px inset');
 
     cy.wait(500).then(() => {
       cy.findByTestId('tb').blur();
-      setTheme('sap_fiori_3');
+      void setTheme('sap_fiori_3');
     });
 
     cy.findByTestId('tb').should('have.css', 'outlineStyle', 'none');

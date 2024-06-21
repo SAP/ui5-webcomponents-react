@@ -1,0 +1,8 @@
+.subcomponent {
+  position: absolute;
+  width: 100%;
+  &:focus {
+    outline-offset: calc(-1 * var(--sapContent_FocusWidth));
+    outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+  }
+}

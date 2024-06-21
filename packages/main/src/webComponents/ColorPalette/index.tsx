@@ -26,9 +26,12 @@ interface ColorPalettePropTypes extends ColorPaletteAttributes, Omit<CommonProps
  *
  * ### Usage
  *
- * The `ColorPalette` is meant for users that need to select a color from a predefined set. To define the colors, use the `ColorPaletteItem` component inside the default slot of the `ColorPalette`.
+ * The `ColorPalette` is meant for users that need to select a color from a predefined set.
+ * To define the colors, use the `ColorPaletteItem` component inside the default slot of the `ColorPalette`.
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const ColorPalette = withWebComponent<ColorPalettePropTypes, ColorPaletteDomRef>(
   'ui5-color-palette',

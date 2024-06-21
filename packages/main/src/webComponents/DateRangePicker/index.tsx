@@ -23,7 +23,8 @@ interface DateRangePickerAttributes {
   accessibleNameRef?: string;
 
   /**
-   * Determines the symbol which separates the dates. If not supplied, the default time interval delimiter for the current locale will be used.
+   * Determines the symbol which separates the dates.
+   * If not supplied, the default time interval delimiter for the current locale will be used.
    * @default "-"
    */
   delimiter?: string;
@@ -42,40 +43,54 @@ interface DateRangePickerAttributes {
   /**
    * Defines the visibility of the week numbers column.
    *
-   * **Note:** For calendars other than Gregorian, the week numbers are not displayed regardless of what is set.
+   * **Note:** For calendars other than Gregorian,
+   * the week numbers are not displayed regardless of what is set.
    * @default false
    */
   hideWeekNumbers?: boolean;
 
   /**
-   * Determines the maximum date available for selection. **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
+   * Determines the maximum date available for selection.
+   *
+   * **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   maxDate?: string;
 
   /**
-   * Determines the minimum date available for selection. **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
+   * Determines the minimum date available for selection.
+   *
+   * **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
    */
   minDate?: string;
 
   /**
-   * Determines the name with which the component will be submitted in an HTML form.
+   * Determines the name by which the component will be identified upon submission in an HTML form.
    *
-   * **Important:** For the `name` property to have effect, you must add the following import to your project: `import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";`
-   *
-   * **Note:** When set, a native `input` HTML element will be created inside the component so that it can be submitted as part of an HTML form. Do not use this property unless you need to submit a form.
+   * **Note:** This property is only applicable within the context of an HTML Form element.
    */
   name?: string;
 
   /**
-   * Defines a short hint, intended to aid the user with data entry when the component has no value.
+   * Defines the open or closed state of the popover.
    *
-   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder. Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  open?: boolean;
+
+  /**
+   * Defines a short hint, intended to aid the user with data entry when the
+   * component has no value.
+   *
+   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder.
+   * Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
    * @default undefined
    */
   placeholder?: string | undefined;
 
   /**
-   * Sets a calendar type used for display. If not set, the calendar type of the global configuration is used.
+   * Sets a calendar type used for display.
+   * If not set, the calendar type of the global configuration is used.
    * @default undefined
    */
   primaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
@@ -93,7 +108,8 @@ interface DateRangePickerAttributes {
   required?: boolean;
 
   /**
-   * Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.
+   * Defines the secondary calendar type.
+   * If not set, the calendar will only show the primary calendar type.
    * @default undefined
    */
   secondaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
@@ -112,12 +128,6 @@ interface DateRangePickerAttributes {
 
 interface DateRangePickerDomRef extends Required<DateRangePickerAttributes>, Ui5DomRef {
   /**
-   * Closes the picker.
-   * @returns {void}
-   */
-  closePicker: () => void;
-
-  /**
    * **Note:** The getter method is inherited and not supported. If called it will return an empty value.
    */
   readonly dateValue: Date | null;
@@ -133,7 +143,8 @@ interface DateRangePickerDomRef extends Required<DateRangePickerAttributes>, Ui5
   readonly endDateValue: Date | null;
 
   /**
-   * Formats a Java Script date object into a string representing a locale date according to the `formatPattern` property of the DatePicker instance
+   * Formats a Java Script date object into a string representing a locale date
+   * according to the `formatPattern` property of the DatePicker instance
    * @param {Date} date - A Java Script date object to be formatted as string
    * @returns {string} - The date as string
    */
@@ -147,23 +158,11 @@ interface DateRangePickerDomRef extends Required<DateRangePickerAttributes>, Ui5
   isInValidRange: (value: string) => boolean;
 
   /**
-   * Checks if the picker is open.
-   * @returns {boolean} - true if the picker is open, false otherwise
-   */
-  isOpen: () => boolean;
-
-  /**
    * Checks if a value is valid against the current date format of the DatePicker.
    * @param {string} value - A value to be tested against the current date format
    * @returns {boolean}
    */
   isValid: (value: string) => boolean;
-
-  /**
-   * Opens the picker.
-   * @returns {Promise<void>} - Resolves when the picker is open
-   */
-  openPicker: () => Promise<void>;
 
   /**
    * Returns the start date of the currently selected range as JavaScript Date instance.
@@ -181,7 +180,9 @@ interface DateRangePickerPropTypes
    * Defines the value state message that will be displayed as pop up under the component.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   *
+   * **Note:** The `valueStateMessage` would be displayed,
+   * when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -192,16 +193,24 @@ interface DateRangePickerPropTypes
   valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onChange?: (event: Ui5CustomEvent<DateRangePickerDomRef, DatePickerChangeEventDetail>) => void;
 
   /**
    * Fired when the value of the component is changed at each key stroke.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onInput?: (event: Ui5CustomEvent<DateRangePickerDomRef, DatePickerInputEventDetail>) => void;
 
   /**
-   * Fired before the value state of the component is updated internally. The event is preventable, meaning that if it's default action is prevented, the component will not update the value state.
+   * Fired before the value state of the component is updated internally.
+   * The event is preventable, meaning that if it's default action is
+   * prevented, the component will not update the value state.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onValueStateChange?: (event: Ui5CustomEvent<DateRangePickerDomRef, DatePickerValueStateChangeEventDetail>) => void;
 }
@@ -210,22 +219,26 @@ interface DateRangePickerPropTypes
  * The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by selecting a date range in the calendar.
  *
  * ### Usage
+ * The user can enter a date by:
+ * Using the calendar that opens in a popup or typing it in directly in the input field (not available for mobile devices).
+ * For the `DateRangePicker`
  *
- * The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not available for mobile devices). For the `DateRangePicker`
  *
  * ### Keyboard Handling
- *
  * The `DateRangePicker` provides advanced keyboard handling.
- * When the `DateRangePicker` input field is focused the user can increment or decrement respectively the range start or end date, depending on where the cursor is. The following shortcuts are available:
  *
- * *   \[PAGEDOWN\] - Decrements the corresponding day of the month by one
- * *   \[SHIFT\] + \[PAGEDOWN\] - Decrements the corresponding month by one
- * *   \[SHIFT\] + \[CTRL\] + \[PAGEDOWN\] - Decrements the corresponding year by one
- * *   \[PAGEUP\] - Increments the corresponding day of the month by one
- * *   \[SHIFT\] + \[PAGEUP\] - Increments the corresponding month by one
- * *   \[SHIFT\] + \[CTRL\] + \[PAGEUP\] - Increments the corresponding year by one
+ * When the `DateRangePicker` input field is focused the user can
+ * increment or decrement respectively the range start or end date, depending on where the cursor is.
+ * The following shortcuts are available:
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * - [Page Down] - Decrements the corresponding day of the month by one
+ * - [Shift] + [Page Down] - Decrements the corresponding month by one
+ * - [Shift] + [Ctrl] + [Page Down] - Decrements the corresponding year by one
+ * - [Page Up] - Increments the corresponding day of the month by one
+ * - [Shift] + [Page Up] - Increments the corresponding month by one
+ * - [Shift] + [Ctrl] + [Page Up] - Increments the corresponding year by one
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePickerDomRef>(
   'ui5-daterange-picker',
@@ -243,7 +256,7 @@ const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePick
     'value',
     'valueState'
   ],
-  ['disabled', 'hideWeekNumbers', 'readonly', 'required'],
+  ['disabled', 'hideWeekNumbers', 'open', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'input', 'value-state-change'],
   () => import('@ui5/webcomponents/dist/DateRangePicker.js')

@@ -2,8 +2,8 @@
 
 import { ThemingParameters, useIsomorphicId } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import React, { forwardRef } from 'react';
-import type { TooltipProps } from 'recharts';
+import { forwardRef } from 'react';
+import type { TooltipProps, YAxisProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures.js';
@@ -44,9 +44,8 @@ interface MeasureConfig extends IChartMeasure {
 interface DimensionConfig extends IChartDimension {
   /**
    * Interval of axis label which defines the number that controls how many ticks are rendered on the x axis
-   * @default 0
    */
-  interval?: number;
+  interval?: YAxisProps['interval'];
 }
 
 export interface ColumnChartWithTrendProps
@@ -122,7 +121,7 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
 
   const syncId = useIsomorphicId();
 
-  const chartConfig = {
+  const chartConfig: ColumnChartWithTrendProps['chartConfig'] = {
     yAxisVisible: false,
     xAxisVisible: true,
     gridStroke: ThemingParameters.sapList_BorderColor,
@@ -218,11 +217,6 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
     </div>
   );
 });
-
-ColumnChartWithTrend.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 ColumnChartWithTrend.displayName = 'ColumnChartWithTrend';
 

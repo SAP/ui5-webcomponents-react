@@ -1,28 +1,12 @@
 import type { Virtualizer } from '@tanstack/react-virtual';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, Fragment } from 'react';
-import { createUseStyles } from 'react-jss';
+import { useStylesheet } from '@ui5/webcomponents-react-base';
+import { forwardRef, Fragment } from 'react';
 import type { DivWithCustomScrollProp } from '../types/index.js';
+import { classNames, styleData } from './Resizer.module.css.js';
 import { ColumnHeader } from './index.js';
 
-const styles = {
-  resizer: {
-    display: 'inline-block',
-    width: '3px',
-    height: '100%',
-    position: 'absolute',
-    bottom: 0,
-    top: 0,
-    zIndex: 1,
-    cursor: 'col-resize',
-    '&:hover, &:active': {
-      backgroundColor: ThemingParameters.sapContent_DragAndDropActiveColor
-    }
-  }
-};
-
 interface ColumnHeaderContainerProps {
-  headerProps: Record<string, unknown>;
+  headerProps: Record<string, any>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headerGroup: Record<string, any>;
   onSort: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
@@ -34,8 +18,6 @@ interface ColumnHeaderContainerProps {
   uniqueId: string;
   showVerticalEndBorder: boolean;
 }
-
-const useStyles = createUseStyles(styles, { name: 'Resizer' });
 
 export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderContainerProps>((props, ref) => {
   const {
@@ -51,11 +33,14 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     showVerticalEndBorder
   } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, 'Resizer');
+
+  const { key, ...reactTableHeaderProps } = headerProps;
 
   return (
     <div
-      {...headerProps}
+      key={key}
+      {...reactTableHeaderProps}
       style={{ width: `${columnVirtualizer.getTotalSize()}px` }}
       ref={ref}
       data-component-name="AnalyticalTableHeaderRow"
@@ -83,7 +68,8 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
               <div
                 {...column.getResizerProps()}
                 data-resizer
-                className={classes.resizer}
+                data-component-name="AnalyticalTableResizer"
+                className={classNames.resizer}
                 style={resizerDirectionStyle}
               />
             )}

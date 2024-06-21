@@ -1,4 +1,5 @@
 import type { ScrollToOptions } from '@tanstack/react-virtual';
+import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ComponentType, ReactNode, Ref } from 'react';
 import type {
   AnalyticalTableScaleWidthMode,
@@ -7,15 +8,22 @@ import type {
   AnalyticalTableSelectionMode,
   AnalyticalTableSubComponentsBehavior,
   AnalyticalTableVisibleRowCountMode,
+  IndicationColor,
   TableScaleWidthMode,
   TableSelectionBehavior,
   TableSelectionMode,
   TableVisibleRowCountMode,
   TextAlign,
-  ValueState,
   VerticalAlign
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../types/index.js';
+
+export interface ScrollToRefType {
+  horizontalScrollToOffset: (offset: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;
+  horizontalScrollToIndex: (item: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;
+  scrollToIndex: (item: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;
+  scrollToOffset: (item: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;
+}
 
 export interface ReactTableHooks {
   useOptions: any[];
@@ -72,6 +80,7 @@ export interface AnalyticalTableState {
   hiddenColumns: string[];
   selectedRowIds: Record<string | number, any>;
   sortBy: Record<string | number, any>[];
+  globalFilter?: string;
   tableClientWidth?: number;
   dndColumn?: string;
   popInColumns?: Record<string | number, any>[];
@@ -84,6 +93,11 @@ export interface AnalyticalTableState {
   interactiveRowsHavePopIn?: boolean;
   tableColResized?: true;
   triggerScroll?: TriggerScrollState;
+}
+
+interface CellLabelParam {
+  instance: Record<string, any>;
+  cell: Record<string, any>;
 }
 
 interface ScaleWidthModeOptions {
@@ -140,6 +154,14 @@ export interface AnalyticalTableColumnDefinition {
    * Custom cell renderer. If set, the table will call that component for every cell and pass all required information as props, e.g. the cell value as `props.cell.value`
    */
   Cell?: string | ComponentType<any> | ((props?: any) => ReactNode);
+  /**
+   * Defines a function that receives an object as a parameter, including the cell and table instance, and should return the `aria-label` of the current cell.
+   *
+   * __Note:__ Use this property if there is no textual content available through the dataset (e.g. no `accessor` field available), or if you want to provide additional context when navigating to the respective cell for screen readers.
+   *
+   * __Note:__ To retrieve the internal `aria-label`, utilize the `cell.cellLabel` property.
+   */
+  cellLabel?: (param?: CellLabelParam) => string;
   /**
    * Cell width, if not set the table will distribute all columns without a width evenly.
    */
@@ -220,7 +242,7 @@ export interface AnalyticalTableColumnDefinition {
   sortInverted?: boolean;
   /**
    *  - Used to compare 2 rows of data and order them correctly.
-   *   - If a **function** is passed, it must be **memoized**. The sortType function should return 1 if rowA is larger, and -1 if rowB is larger. `react-table` will take care of the rest.
+   *   - If a function is passed, it must be **memoized**. The sortType function should return 1 if rowA is larger and -1 if rowB is larger. `react-table` will handle the rest; there's no need to manage the inversion of sort numbers (depending on sort direction) manually.
    *   - String options: `basic`, `datetime`, `alphanumeric`.
    *   - The resolved function from the string/function will be used to sort the column's data.
    *     - If a `string` is passed, the function with that name located on either the custom `sortTypes` option or the built-in sorting types object will be used.
@@ -235,7 +257,12 @@ export interface AnalyticalTableColumnDefinition {
    * Disable resizing for this column.
    */
   disableResizing?: boolean;
-
+  /**
+   * Defines whether double-clicking a columns resizer will automatically resize the column to fit the largest cell content of visible rows.
+   *
+   * __Note:__ Only default text content is supported by this option, for custom content it might work as well, but we recommend checking the behavior carefully as the logic can't account for all possible implementations.
+   */
+  autoResizable?: boolean;
   // ui5 web components react properties
   /**
    * Horizontal alignment of the cell.
@@ -314,6 +341,12 @@ export interface AnalyticalTableDomRef extends Omit<HTMLDivElement, 'scrollTo'> 
   ) => void;
 }
 
+type HighlightColor = ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;
+
+interface OnAutoResizeMouseEvent extends Omit<MouseEvent, 'detail'> {
+  detail: { columnId: string; width: number };
+}
+
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the columns array where you can define the configuration for each column.
@@ -340,7 +373,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * The minimum number of rows that are displayed. If the data contains fewer entries than `minRows`, it will be filled with empty rows.
    *
-   * __Default:__ `5`
+   * @default `5`
    */
   minRows?: number;
   /**
@@ -395,7 +428,9 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   showOverlay?: boolean;
   /**
-   * Defines the text shown if the data array is empty. If not set "No data" will be displayed.
+   * Defines the text shown if the data array is empty or a filtered table doesn't return results.
+   *
+   * __Note:__ If `noDataText` isn't set, the default text displayed is "No data". For filtered tables, it will show "No data found. Try adjusting the filter settings." instead.
    */
   noDataText?: string;
   /**
@@ -433,18 +468,24 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Accessor for showing the row highlights. Only taken into account when `withRowHighlight` is set.
    *
-   * The value of this prop can either be a `string` pointing to a `ValueState` in your dataset
-   * or an accessor function which should return a `ValueState`.
+   * The value of this prop can either be a `string` pointing to a `ValueState` or an `IndicationColor` in your dataset
+   * or an accessor function which should return a `ValueState` or an `IndicationColor`.
    *
-   * __Default:__ `"status"`
+   * __Note:__ `IndicationColor`s are available since `v1.26.0`.
+   *
+   * @default `"status"`
    */
-  highlightField?: string | ((row: Record<any, any>) => ValueState);
+  highlightField?: string | ((row: Record<any, any>) => HighlightColor);
   /**
    * Defines whether columns are filterable.
+   *
+   * __Note:__ The table is implementing "top-down" (parent/root node first) filtering.
    */
   filterable?: boolean;
   /**
    * Defines whether columns are sortable.
+   *
+   * @default true
    */
   sortable?: boolean;
   /**
@@ -479,7 +520,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
    * - __"MultiSelect":__ You can select multiple rows.
    *
-   * __Default:__ `"None"`
+   * @default `"None"`
    */
   selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode | TableSelectionMode;
 
@@ -490,10 +531,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - **Smart**: Every column gets the space it needs for displaying the full header text. If all header texts need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long text will get more space until there is no more table space left.
    * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled. To prevent huge header text from polluting the table, a max-width of 700px is applied to each column. It can be overwritten by setting the respective column property. This mode adds a calculated `minWidth` to each column. If the internally calculated `minWidth` is larger than the `width` set in the column options, it can lead to an unwanted scrollbar. To prevent this, you can set the `minWidth` in the column options yourself.
    *
-   * __Default:__ `"Default"`
-   *
    * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
+   *
    * __Note:__ For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
+   *
+   * @default `"Default"`
    *
    */
   scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode | TableScaleWidthMode;
@@ -514,7 +556,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * Example: Your initial dataset consists of 50 entries and you want to load more data when the user scrolled to the 40th row. Then you should set the `infiniteScrollThreshold` to 10.
    *
-   * __Default:__ `20`
+   * @default 20
    */
   infiniteScrollThreshold?: number;
   /**
@@ -529,6 +571,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   reactTableOptions?: Record<string, unknown>;
   /**
    * You can use this prop to add custom hooks to the table.
+   *
+   * @default `[]`
    */
   tableHooks?: ((hooks: ReactTableHooks) => void)[];
   /**
@@ -536,7 +580,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note__: You can also specify deeply nested sub-rows with accessors like `values.subRows`.
    *
-   * __Default:__ `"subRows"`
+   * @default `"subRows"`
    */
   subRowsKey?: string;
   /**
@@ -552,7 +596,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * The amount of columns to load both behind and ahead of the current window range.
    *
-   * __Default:__ `5`
+   * @default `5`
    */
   overscanCountHorizontal?: number;
   /**
@@ -581,7 +625,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"IncludeHeight":__ Render subcomponents below each row. The height of each initially visible subcomponent (defined by `visibleRows`) is taken into account when defining the body height of the table.
    * - __"IncludeHeightExpandable":__ Render subcomponents as expandable container of each row. The height of each expanded subcomponent of visible rows (defined by `visibleRows`) is taken into account when defining the body height of the table, so that the height of the table changes when a subcomponent is expanded/collapsed. (since: v1.23.0)
    *
-   * __Default:__ `"Expandable"`
+   * @default `"Expandable"`
    *
    * @since 1.19.0
    */
@@ -648,6 +692,12 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Fired when the body of the table is scrolled.
    */
   onTableScroll?: (e?: CustomEvent<{ rows: Record<string, any>[]; rowElements: HTMLCollection }>) => void;
+  /**
+   * Fired when the table is resized by double-clicking the Resizer.
+   *
+   * __Note:__ Auto-resize is only available on columns that have the `autoResizable` option set to `true`.
+   */
+  onAutoResize?: (e?: OnAutoResizeMouseEvent) => void;
   // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.

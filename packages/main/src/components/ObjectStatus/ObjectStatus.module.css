@@ -1,0 +1,512 @@
+.normalizeCSS {
+  all: unset;
+}
+
+.objectStatus {
+  font-family: var(--sapFontFamily);
+  font-size: var(--sapFontSize);
+  font-weight: normal;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: fit-content;
+  text-shadow: var(--sapContent_TextShadow);
+}
+
+.icon {
+  width: 1rem;
+  text-align: center;
+  display: inline-block;
+  height: 1rem;
+  line-height: 1rem;
+  vertical-align: top;
+  padding-inline-end: 0.25rem;
+  text-shadow: var(--sapContent_TextShadow);
+
+  &[data-icon-only='true'] {
+    padding-inline-end: 0;
+  }
+}
+
+.text {
+  line-height: 1rem;
+  display: inline-block;
+  height: inherit;
+  vertical-align: top;
+}
+
+.emptyIndicator {
+  line-height: normal;
+  color: var(--sapTextColor);
+}
+
+.pseudoInvisibleText {
+  font-size: 0;
+  position: absolute;
+  user-select: none;
+  left: 0;
+  top: 0;
+}
+
+.positive {
+  color: var(--sapPositiveTextColor);
+
+  [ui5-icon] {
+    color: var(--sapPositiveElementColor);
+  }
+}
+
+.critical {
+  color: var(--sapCriticalTextColor);
+
+  [ui5-icon] {
+    color: var(--sapCriticalElementColor);
+  }
+}
+
+.negative {
+  color: var(--sapNegativeTextColor);
+
+  [ui5-icon] {
+    color: var(--sapNegativeElementColor);
+  }
+}
+
+.information {
+  color: var(--sapInformativeTextColor);
+
+  [ui5-icon] {
+    color: var(--sapInformativeElementColor);
+  }
+}
+
+.none {
+  color: var(--sapNeutralTextColor);
+
+  [ui5-icon] {
+    color: var(--sapNeutralElementColor);
+  }
+}
+
+.indication01 {
+  color: var(--sapIndicationColor_1);
+
+  [ui5-icon] {
+    color: var(--sapIndicationColor_1);
+  }
+}
+
+.indication02 {
+  color: var(--sapIndicationColor_2);
+
+  [ui5-icon] {
+    color: var(--sapIndicationColor_2);
+  }
+}
+
+.indication03 {
+  color: var(--sapIndicationColor_3);
+
+  [ui5-icon] {
+    color: var(--sapIndicationColor_3);
+  }
+}
+
+.indication04 {
+  color: var(--sapIndicationColor_4);
+
+  [ui5-icon] {
+    color: var(--sapIndicationColor_4);
+  }
+}
+
+.indication05 {
+  color: var(--sapIndicationColor_5);
+
+  [ui5-icon] {
+    color: var(--sapIndicationColor_5);
+  }
+}
+
+.indication06 {
+  color: var(--sapIndicationColor_6);
+
+  [ui5-icon] {
+    color: var(--sapIndicationColor_6);
+  }
+}
+
+.indication07 {
+  color: var(--sapIndicationColor_7);
+
+  [ui5-icon] {
+    color: var(--sapIndicationColor_7);
+  }
+}
+
+.indication08 {
+  color: var(--sapIndicationColor_8);
+
+  [ui5-icon] {
+    color: var(--sapIndicationColor_8);
+  }
+}
+
+.large {
+  font-size: 1.5rem;
+  font-family: var(--sapFontLightFamily);
+
+  [ui5-icon],
+  .icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .icon {
+    vertical-align: middle;
+  }
+
+  .text {
+    line-height: normal;
+    vertical-align: middle;
+  }
+
+  &.inverted {
+    font-size: 1.25rem;
+    font-family: var(--sapFontSemiboldDuplexFamily);
+    padding: 0.125rem 0.25rem;
+
+    [ui5-icon],
+    .icon {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+
+    &[data-icon-only='true'] {
+      padding: 0 0.25rem;
+      min-width: 1.75rem;
+      height: auto;
+    }
+
+    [data-icon-only='true'] {
+      height: 1.5rem;
+      width: 1.5rem;
+
+      [ui5-icon] {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+  }
+}
+
+.active {
+  cursor: pointer;
+
+  &:not(.inverted) {
+    .text {
+      text-decoration: underline;
+    }
+
+    &:hover,
+    &:active {
+      .text {
+        text-decoration: none;
+      }
+    }
+
+    &:focus {
+      text-shadow: none;
+      background: var(--sapContent_FocusColor);
+      color: var(--sapContent_ContrastTextColor);
+      border-radius: 0.125rem;
+      outline: 0.125rem var(--sapContent_FocusColor);
+
+      [ui5-icon] {
+        color: var(--sapContent_ContrastTextColor);
+      }
+    }
+  }
+}
+
+.inverted {
+  height: auto;
+  min-height: 1rem;
+  min-width: 1.375rem;
+  padding: 0.1875rem 0.25rem;
+  border-radius: var(--sapButton_BorderCornerRadius);
+  font-family: var(--sapFontBoldFamily);
+  font-size: var(--sapFontSmallSize);
+
+  .icon {
+    vertical-align: text-bottom;
+  }
+
+  [ui5-icon],
+  .icon:not([data-icon-only='true']) {
+    width: var(--sapFontSmallSize);
+    height: var(--sapFontSmallSize);
+  }
+
+  &[data-icon-only='true'] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.1875rem 0.313rem;
+    width: 1rem;
+    height: 1rem;
+
+    [ui5-icon] {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &.active:focus {
+    outline: var(--sapContent_FocusColor) var(--sapContent_FocusStyle) var(--sapContent_FocusWidth);
+  }
+}
+
+/* Inverted Value State Styles */
+.objectStatus:is(.inverted.negative) {
+  text-shadow: var(--sapContent_ContrastTextShadow);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-text-color: var(--sapButton_Negative_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-background-color: var(--sapButton_Negative_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-border-color: var(--sapButton_Negative_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-text-color: var(--sapButton_Negative_Hover_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-background-color: var(--sapButton_Negative_Hover_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-border-color: var(--sapButton_Negative_Hover_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-active-text-color: var(--sapButton_Reject_Selected_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-active-background-color: var(--sapButton_Negative_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-active-border-color: var(--sapButton_Negative_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.critical) {
+  text-shadow: var(--sapContent_ContrastTextShadow);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-text-color: var(--sapButton_Critical_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-background-color: var(--sapButton_Critical_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-border-color: var(--sapButton_Critical_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-text-color: var(--sapButton_Critical_Hover_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-background-color: var(--sapButton_Critical_Hover_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-border-color: var(--sapButton_Critical_Hover_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-active-text-color: var(--sapButton_Attention_Selected_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-active-background-color: var(--sapButton_Critical_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-active-border-color: var(--sapButton_Critical_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.positive) {
+  text-shadow: var(--sapContent_ContrastTextShadow);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-text-color: var(--sapButton_Success_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-background-color: var(--sapButton_Success_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-border-color: var(--sapButton_Success_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-text-color: var(--sapButton_Success_Hover_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-background-color: var(--sapButton_Success_Hover_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-border-color: var(--sapButton_Success_Hover_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-active-text-color: var(--sapButton_Accept_Selected_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-active-background-color: var(--sapButton_Success_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-active-border-color: var(--sapButton_Success_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.information) {
+  text-shadow: var(--sapContent_TextShadow);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-text-color: var(--sapButton_Information_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-background-color: var(--sapButton_Information_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-border-color: var(--sapButton_Information_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-text-color: var(--sapButton_Information_Hover_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-background-color: var(--sapButton_Information_Hover_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-border-color: var(--sapButton_Information_Hover_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-active-text-color: var(--sapButton_Selected_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-active-background-color: var(--sapButton_Information_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-active-border-color: var(--sapButton_Information_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.none) {
+  text-shadow: var(--sapContent_TextShadow);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-text-color: var(--sapTextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-background-color: var(--sapNeutralBackground);
+  --_ui5wcr-ObjectStatus-inverted-vs-border-color: var(--sapNeutralBorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-text-color: var(--sapButton_Neutral_Hover_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-background-color: var(--sapButton_Neutral_Hover_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-hover-border-color: var(--sapButton_Neutral_Hover_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-vs-active-text-color: var(--sapButton_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-vs-active-background-color: var(--sapButton_Neutral_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-vs-active-border-color: var(--sapButton_Neutral_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted):is(.negative, .critical, .positive, .information, .none) {
+  color: var(--_ui5wcr-ObjectStatus-inverted-vs-text-color);
+  background: var(--_ui5wcr-ObjectStatus-inverted-vs-background-color);
+  border: 0.0625rem solid var(--_ui5wcr-ObjectStatus-inverted-vs-border-color);
+
+  [ui5-icon] {
+    color: var(--_ui5wcr-ObjectStatus-inverted-vs-text-color);
+  }
+
+  &.active:hover {
+    color: var(--_ui5wcr-ObjectStatus-inverted-vs-hover-text-color);
+    background: var(--_ui5wcr-ObjectStatus-inverted-vs-hover-background-color);
+    border: 0.0625rem solid var(--_ui5wcr-ObjectStatus-inverted-vs-hover-border-color);
+
+    [ui5-icon] {
+      color: var(--_ui5wcr-ObjectStatus-inverted-vs-hover-text-color);
+    }
+  }
+
+  &.active:active {
+    text-shadow: var(--sapContent_TextShadow);
+    color: var(--_ui5wcr-ObjectStatus-inverted-vs-active-text-color);
+    background: var(--_ui5wcr-ObjectStatus-inverted-vs-active-background-color);
+    border: 0.0625rem solid var(--_ui5wcr-ObjectStatus-inverted-vs-active-border-color);
+
+    [ui5-icon] {
+      color: var(--_ui5wcr-ObjectStatus-inverted-vs-active-text-color);
+    }
+  }
+}
+
+/* Inverted Indication Styles */
+.objectStatus:is(.inverted.indication01) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_1_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_1_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_1_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_1_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_1_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_1_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_1_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication02) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_2_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_2_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_2_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_2_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_2_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_2_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_2_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication03) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_3_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_3_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_3_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_3_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_3_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_3_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_3_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication04) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_4_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_4_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_4_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_4_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_4_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_4_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_4_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication05) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_5_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_5_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_5_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_5_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_5_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_5_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_5_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication06) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_6_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_6_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_6_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_6_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_6_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_6_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_6_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication07) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_7_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_7_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_7_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_7_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_7_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_7_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_7_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication08) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_8_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_8_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_8_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_8_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_8_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_8_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_8_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted):is(
+    .indication01,
+    .indication02,
+    .indication03,
+    .indication04,
+    .indication05,
+    .indication06,
+    .indication07,
+    .indication08
+  ) {
+  text-shadow: var(--sapContent_ContrastTextShadow);
+  color: var(--_ui5wcr-ObjectStatus-inverted-indication-text-color);
+  background-color: var(--_ui5wcr-ObjectStatus-inverted-indication-background-color);
+  border: 0.0625rem solid var(--_ui5wcr-ObjectStatus-inverted-indication-border-color);
+
+  [ui5-icon] {
+    color: var(--_ui5wcr-ObjectStatus-inverted-indication-text-color);
+  }
+
+  &.active:hover {
+    background: var(--_ui5wcr-ObjectStatus-inverted-indication-hover-background-color);
+  }
+
+  &.active:active {
+    text-shadow: var(--sapContent_TextShadow);
+    color: var(--_ui5wcr-ObjectStatus-inverted-indication-active-text-color);
+    background: var(--_ui5wcr-ObjectStatus-inverted-indication-active-background-color);
+    border: 0.0625rem solid var(--_ui5wcr-ObjectStatus-inverted-indication-active-border-color);
+
+    [ui5-icon] {
+      color: var(--_ui5wcr-ObjectStatus-inverted-indication-active-text-color);
+    }
+  }
+}

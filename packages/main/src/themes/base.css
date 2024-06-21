@@ -1,0 +1,32 @@
+:root {
+  --_ui5wcr_Scrollbar_Border: none;
+  --_ui5wcr_Splitter_IconColor: var(--sapButton_Lite_TextColor);
+  --_ui5wcr_Splitter_BarOutline: none;
+  --_ui5wcr_Toolbar_FocusShadow: none;
+  --_ui5wcr_Toolbar_FocusOutline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+  --_ui5wcr_Scrollbar_BorderRadius: var(--sapElement_BorderCornerRadius);
+  --_ui5wcr_Splitter_BarBorderFocus: var(--sapContent_FocusWidth) solid var(--sapContent_FocusColor);
+  --_ui5wcr_Splitter_BarBorderStyle: none;
+  --_ui5wcr_ActionSheet_HeaderBoxShadow: none;
+  --_ui5wcr_ObjectPage_SectionBorderTop: 0.0625rem solid var(--sapGroup_TitleBorderColor);
+  --_ui5wcr_Splitter_ContentBorderColor: var(--sapHighlightColor);
+  --_ui5wcr_ObjectPage_PaddingBlockStart: 2rem;
+  --_ui5wcr_ObjectPage_SectionTitleHeight: 2.25rem;
+  --_ui5wcr-AnalyticalTable-OuterCellBorder: 1px solid var(--sapList_BorderColor);
+  --_ui5wcr-AnalyticalTable-HeaderFontFamily: var(--sapFontFamily);
+  --_ui5wcr-AnalyticalTable-OuterBorderBlock: 1px solid var(--sapList_BorderColor);
+  --_ui5wcr-AnalyticalTable-HeaderBorderWidth: 0.0625rem;
+  --_ui5wcr-AnalyticalTable-OuterBorderInline: 1px solid var(--sapList_BorderColor);
+  --_ui5wcr_ActionSheet_MobileHeaderBoxShadow: none;
+  --_ui5wcr_ActionSheet_MobileHeaderTextColor: var(--sapContent_ContrastTextColor);
+  --_ui5wcr_ObjectPage_SectionTitleFontFamily: var(--sapFontFamily);
+  --_ui5wcr_ObjectPage_SectionTitleLineHeight: 2.25rem;
+  --_ui5wcr_ObjectPage_SubSectionBorderRadius: 0;
+  --_ui5wcr_Splitter_BarBorderHighContrastFix: var(--sapContent_FocusWidth) solid var(--sapContent_FocusColor);
+  --_ui5wcr_ActionSheet_MobileHeaderBackground: transparent;
+  --_ui5wcr_ActionSheet_MobileHeaderBorderRadius: 0;
+  --_ui5wcr_ObjectPage_SubSectionBackgroundColor: transparent;
+  --_ui5wcr-AnalyticalTable-HeaderActiveTextColor: var(--sapList_HeaderTextColor);
+  --_ui5wcr_ObjectPage_SectionTitleTextDecoration: none;
+  --_ui5wcr_Form_HeaderBorderWidth: var(--sapList_BorderWidth);
+}

@@ -5,7 +5,7 @@ import * as ComponentStories from './ActionSheet.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader subComponents={['Button']} />
 
 <br />
 
@@ -42,7 +42,7 @@ const MyComponentWithActionSheet = () => {
       <ActionSheet
         opener={'openActionSheetBtn'}
         open={actionSheetIsOpen}
-        onAfterClose={() => {
+        onClose={() => {
           setActionSheetIsOpen(false);
         }}
       />

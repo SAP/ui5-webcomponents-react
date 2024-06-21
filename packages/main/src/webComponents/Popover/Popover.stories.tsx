@@ -1,12 +1,13 @@
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
 import { clsx } from 'clsx';
-import { useState } from 'react';
-import { BarDesign } from '../../enums/BarDesign';
-import { PopoverHorizontalAlign } from '../../enums/PopoverHorizontalAlign';
-import { PopoverPlacementType } from '../../enums/PopoverPlacementType';
-import { PopoverVerticalAlign } from '../../enums/PopoverVerticalAlign';
+import { forwardRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Bar } from '../Bar';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
@@ -14,8 +15,13 @@ import { Label } from '../Label';
 import { List } from '../List';
 import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
-import { Popover } from './CodeGen';
+import type { PopoverDomRef, PopoverPropTypes } from './index';
 import { Popover as OriginalPopover } from './index';
+
+const Popover = forwardRef<PopoverDomRef, PopoverPropTypes>((args, ref) =>
+  createPortal(<OriginalPopover {...args} ref={ref} />, document.body)
+);
+Popover.displayName = 'Popover';
 
 const meta = {
   title: 'Modals & Popovers / Popover',
@@ -28,7 +34,7 @@ const meta = {
     children: <Label>Press "Escape" or click outside to close the Popover</Label>,
     headerText: 'Popover Header',
     horizontalAlign: PopoverHorizontalAlign.Center,
-    placementType: PopoverPlacementType.Right,
+    placement: PopoverPlacement.End,
     verticalAlign: PopoverVerticalAlign.Center,
     className: 'footerPartNoPadding'
   },
@@ -53,7 +59,7 @@ export const Default: Story = {
         </Button>
         <Popover
           {...args}
-          onAfterClose={() => {
+          onClose={() => {
             setPopoverIsOpen(false);
           }}
           opener="openPopoverBtn"
@@ -82,7 +88,7 @@ export const PopoverWithContent: Story = {
           {...args}
           opener="openPopoverBtn2"
           open={popoverIsOpen}
-          onAfterClose={handleClose}
+          onClose={handleClose}
           className={clsx('headerPartNoPadding', args.className)}
           header={
             <Bar endContent={<Icon name="settings" />} design={BarDesign.Header}>

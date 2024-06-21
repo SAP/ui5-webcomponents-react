@@ -18,10 +18,13 @@ interface MultiComboBoxGroupItemPropTypes
     Omit<CommonProps, keyof MultiComboBoxGroupItemAttributes> {}
 
 /**
- * The `MultiComboBoxGroupItem` is type of suggestion item, that can be used to split the `MultiComboBox` suggestions into groups.
+ * The `MultiComboBoxGroupItem` is type of suggestion item,
+ * that can be used to split the `MultiComboBox` suggestions into groups.
  *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
+ *
+ * @since [1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of __@ui5/webcomponents__.
  * @abstract
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const MultiComboBoxGroupItem = withWebComponent<MultiComboBoxGroupItemPropTypes, MultiComboBoxGroupItemDomRef>(
   'ui5-mcb-group-item',

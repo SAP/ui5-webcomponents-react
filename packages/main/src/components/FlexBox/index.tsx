@@ -1,14 +1,12 @@
 'use client';
 
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ElementType, ReactNode } from 'react';
-import React, { forwardRef } from 'react';
-import { createUseStyles } from 'react-jss';
+import { forwardRef } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';
-import { styles } from './FlexBox.jss.js';
-
-const useStyles = createUseStyles(styles, { name: 'FlexBox' });
+import { classNames, styleData } from './FlexBox.module.css.js';
 
 export interface FlexBoxPropTypes extends CommonProps {
   /**
@@ -70,15 +68,15 @@ const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
     ...rest
   } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, FlexBox.displayName);
   const flexBoxClasses = clsx(
-    classes.flexBox,
-    classes[`flexBoxDirection${direction}`],
-    classes[`justifyContent${justifyContent}`],
-    classes[`alignItems${alignItems}`],
-    classes[`flexWrap${wrap}`],
-    displayInline && classes.flexBoxDisplayInline,
-    fitContainer && classes.fitContainer,
+    classNames.flexBox,
+    classNames[`flexBoxDirection${direction}`],
+    classNames[`justifyContent${justifyContent}`],
+    classNames[`alignItems${alignItems}`],
+    classNames[`flexWrap${wrap}`],
+    displayInline && classNames.flexBoxDisplayInline,
+    fitContainer && classNames.fitContainer,
     className
   );
 

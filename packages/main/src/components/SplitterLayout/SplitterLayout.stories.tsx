@@ -2,7 +2,7 @@ import { SplitterElementContent } from '@sb/components/SplitterElementContent';
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
-import { Button, FlexBox, Label, SegmentedButton, SegmentedButtonItem, SplitterElement } from '../..';
+import { Button, FlexBox, Label, SegmentedButton, SegmentedButtonItem, SplitterElement, Text } from '../..';
 import { SplitterLayout } from './index.js';
 
 const meta = {
@@ -15,9 +15,7 @@ const meta = {
   parameters: {
     chromatic: {
       delay: 1000,
-      diffThreshold: 0.4,
-      // todo: remove after chromatic supports >=Chrome 120
-      disableSnapshot: true
+      diffThreshold: 0.4
     }
   }
 } satisfies Meta<typeof SplitterLayout>;
@@ -35,22 +33,35 @@ export const Default: Story = {
     return (
       <SplitterLayout {...args}>
         <SplitterElement>
-          <SplitterElementContent text="Content 1" />
+          <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
+            <Text>Content 1</Text>
+          </FlexBox>
         </SplitterElement>
         <SplitterElement>
-          <SplitterElementContent
-            text={`Content 2
+          <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
+            <Text>{`Content 2
             with
             multi
             lines
-            `}
-          />
+            `}</Text>
+          </FlexBox>
         </SplitterElement>
         <SplitterElement>
-          <SplitterElementContent text="Content 3 with long text: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." />
+          <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
+            <Text>
+              Content 3 with long text: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+              tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+              justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+              sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+              ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+              ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            </Text>
+          </FlexBox>
         </SplitterElement>
         <SplitterElement>
-          <SplitterElementContent text="Content 4" />
+          <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
+            <Text>Content 4</Text>
+          </FlexBox>
         </SplitterElement>
       </SplitterLayout>
     );

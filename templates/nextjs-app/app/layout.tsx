@@ -1,5 +1,6 @@
+import '@ui5/webcomponents-react/styles.css';
 import './globals.css';
-import { CssRegistry } from '@/app/CssRegistry';
+import { ThemeProvider } from '@ui5/webcomponents-react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <div className="appShell">
-          <CssRegistry>{children}</CssRegistry>
+          <ThemeProvider staticCssInjected>{children}</ThemeProvider>
         </div>
       </body>
     </html>

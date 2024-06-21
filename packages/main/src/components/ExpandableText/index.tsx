@@ -1,10 +1,10 @@
 'use client';
 
-import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import LinkAccessibleRole from '@ui5/webcomponents/dist/types/LinkAccessibleRole.js';
+import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { createUseStyles } from 'react-jss';
 import { CLOSE_POPOVER, SHOW_FULL_TEXT, SHOW_LESS, SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { getUi5TagWithSuffix } from '../../internal/utils.js';
@@ -14,7 +14,7 @@ import { Link } from '../../webComponents/index.js';
 import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
 import type { TextPropTypes } from '../Text/index.js';
 import { Text } from '../Text/index.js';
-import { TextStyles } from '../Text/Text.jss.js';
+import { classNames, styleData } from './ExpandableText.module.css.js';
 
 export interface ExpandableTextPropTypes
   extends Omit<TextPropTypes, 'maxLines' | 'wrapping' | 'children'>,
@@ -43,15 +43,6 @@ export interface ExpandableTextPropTypes
   portalContainer?: Element;
 }
 
-const useStyles = createUseStyles(
-  {
-    expandableText: { ...TextStyles.text },
-    text: { display: 'inline' },
-    ellipsis: { wordSpacing: '0.125rem' },
-    popover: { maxWidth: '30rem', '&::part(content)': { padding: '1rem' } }
-  },
-  { name: 'ExpandableText' }
-);
 /**
  * The `ExpandableText` component can be used to display long texts inside a table, list or form.
  *
@@ -71,10 +62,12 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
     className,
     ...rest
   } = props;
+
+  useStylesheet(styleData, ExpandableText.displayName);
+
   const [collapsed, setCollapsed] = useState(true);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const linkRef = useRef<LinkDomRef>(null);
-  const classes = useStyles();
   const uniqueId = useIsomorphicId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const trimmedChildren = renderWhitespace ? children : children?.replace(/\s+/g, ' ').trim();
@@ -99,7 +92,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
     void customElements.whenDefined(tagName).then(() => {
       if (linkRef.current) {
         if (showOverflowInPopover) {
-          linkRef.current.accessibilityAttributes = { hasPopup: 'Dialog' };
+          linkRef.current.accessibilityAttributes = { hasPopup: 'dialog' };
         } else {
           linkRef.current.accessibilityAttributes = { expanded: !collapsed };
         }
@@ -112,27 +105,27 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
     return null;
   }
   return (
-    <span className={clsx(classes.expandableText, className)} {...rest} ref={ref}>
+    <span className={clsx(classNames.expandableText, className)} {...rest} ref={ref}>
       <Text
         emptyIndicator={emptyIndicator}
         renderWhitespace={renderWhitespace}
         hyphenated={hyphenated}
-        className={classes.text}
+        className={classNames.text}
       >
         {strippedChildren}
       </Text>
       {isOverflow && (
         <>
-          <span className={classes.ellipsis}>{showOverflowInPopover || collapsed ? '... ' : ' '}</span>
+          <span className={classNames.ellipsis}>{showOverflowInPopover || collapsed ? '… ' : ' '}</span>
           <Link
             accessibleName={
               showOverflowInPopover
                 ? collapsed
-                  ? i18nBundle.getText(CLOSE_POPOVER)
-                  : i18nBundle.getText(SHOW_FULL_TEXT)
+                  ? i18nBundle.getText(SHOW_FULL_TEXT)
+                  : i18nBundle.getText(CLOSE_POPOVER)
                 : undefined
             }
-            accessibleRole="button"
+            accessibleRole={LinkAccessibleRole.Button}
             onClick={handleClick}
             ref={linkRef}
             id={`${uniqueId}-link`}
@@ -144,8 +137,8 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
       {showOverflowInPopover &&
         popoverOpen &&
         createPortal(
-          <ResponsivePopover opener={`${uniqueId}-link`} open onAfterClose={closePopover} className={classes.popover}>
-            <Text renderWhitespace={renderWhitespace} hyphenated={hyphenated} className={classes.text}>
+          <ResponsivePopover opener={`${uniqueId}-link`} open onClose={closePopover} className={classNames.popover}>
+            <Text renderWhitespace={renderWhitespace} hyphenated={hyphenated} className={classNames.text}>
               {children}
             </Text>
           </ResponsivePopover>,

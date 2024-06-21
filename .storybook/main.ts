@@ -1,5 +1,5 @@
-import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
+import { dirname, join } from 'path';
 import remarkGfm from 'remark-gfm';
 import { isChromatic } from './utils';
 
@@ -12,6 +12,7 @@ const addons = [
       docs: false
     }
   },
+  getAbsolutePath('@storybook/react-vite'),
   {
     name: '@storybook/addon-docs',
     options: {
@@ -57,23 +58,19 @@ const config: StorybookConfig = {
           titlePrefix: 'Testing with Cypress'
         },
         '../packages/main/**/*.mdx',
-        '../packages/main/**/*.stories.@(tsx|jsx)'
+        '../packages/main/**/*.stories.@(tsx|jsx)',
+        {
+          directory: '../packages/compat',
+          files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
+          titlePrefix: 'Legacy Components'
+        }
       ],
   addons,
   docs: {
     autodocs: true
   },
-  features: {
-    // storyStoreV7: false
-  },
   typescript: {
-    // reactDocgen: 'react-docgen-typescript',
-    // reactDocgenTypescriptOptions: {
-    //   shouldExtractLiteralValuesFromEnum: true,
-    //   propFilter: prop => {
-    //     return prop.parent ? !/(@types\/react|@emotion|@storybook)/.test(prop.parent.fileName) : true;
-    //   }
-    // }
+    reactDocgen: 'react-docgen-typescript'
   },
   staticDirs: [isDevMode && 'images-dev', 'images'].filter(Boolean)
 };

@@ -2,7 +2,7 @@
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import React, { forwardRef, useCallback } from 'react';
+import { forwardRef, useCallback } from 'react';
 import {
   Bar as Column,
   BarChart as ColumnChartLib,
@@ -16,6 +16,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import type { YAxisProps } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useCancelAnimationFallback } from '../../hooks/useCancelAnimationFallback.js';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
@@ -64,9 +65,8 @@ interface MeasureConfig extends IChartMeasure {
 interface DimensionConfig extends IChartDimension {
   /**
    * Interval of axis label
-   * @default 0
    */
-  interval?: number;
+  interval?: YAxisProps['interval'];
 }
 
 export interface ColumnChartProps extends IChartBaseProps {
@@ -144,7 +144,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
     ...rest
   } = props;
 
-  const chartConfig = {
+  const chartConfig: ColumnChartProps['chartConfig'] = {
     yAxisVisible: false,
     xAxisVisible: true,
     gridStroke: ThemingParameters.sapList_BorderColor,
@@ -211,7 +211,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
 
   const onClickInternal = useOnClickInternal(onClick);
 
-  const isBigDataSet = dataset?.length > 30 ?? false;
+  const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
@@ -233,6 +233,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <ColumnChartLib
         syncId={syncId}
         onClick={onClickInternal}
@@ -253,7 +254,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
           dimensions.map((dimension, index) => {
             return (
               <XAxis
-                key={dimension.accessor}
+                key={dimension.reactKey}
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
@@ -310,7 +311,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
                 yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
                 stackId={element.stackId}
                 fillOpacity={element.opacity}
-                key={element.accessor}
+                key={element.reactKey}
                 name={element.label ?? element.accessor}
                 strokeOpacity={element.opacity}
                 type="monotone"
@@ -321,7 +322,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 onClick={onDataPointClickInternal}
-                isAnimationActive={noAnimation === false}
+                isAnimationActive={!noAnimation}
                 onAnimationStart={handleBarAnimationStart}
                 onAnimationEnd={handleBarAnimationEnd}
               >
@@ -386,11 +387,6 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
     </ChartContainer>
   );
 });
-
-ColumnChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 ColumnChart.displayName = 'ColumnChart';
 

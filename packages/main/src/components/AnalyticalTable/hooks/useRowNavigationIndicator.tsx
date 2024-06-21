@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ReactTableHooks } from '../types/index.js';
 
 const baseStyles = {
@@ -17,7 +16,7 @@ const Cell = (instance) => {
     return (
       <div
         style={baseStyles}
-        className={webComponentsReactProperties.classes.valueStateInformation}
+        className={webComponentsReactProperties.classes.navigation}
         data-component-name="AnalyticalTableNavigatedCell"
       />
     );

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AvatarGroupType } from '../../enums/AvatarGroupType';
+import AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
 import { Avatar } from '../Avatar/index.js';
-import { Avatar1, Avatar2 } from './CodeGen.js';
 import { AvatarGroup } from './index.js';
 
 const meta = {
@@ -26,8 +25,12 @@ export const Default: Story = {
       <AvatarGroup {...args}>
         <Avatar icon="employee" />
         <Avatar initials="JD" />
-        <Avatar>{Avatar1}</Avatar>
-        <Avatar>{Avatar2}</Avatar>
+        <Avatar>
+          <img src="https://sap.github.io/ui5-webcomponents/images/avatars/woman_avatar_5.png" alt="Avatar1" />
+        </Avatar>
+        <Avatar>
+          <img src="https://sap.github.io/ui5-webcomponents/images/avatars/man_avatar_3.png" alt="Avatar2" />
+        </Avatar>
       </AvatarGroup>
     );
   }

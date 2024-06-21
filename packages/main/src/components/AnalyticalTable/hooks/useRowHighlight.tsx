@@ -1,5 +1,5 @@
-import React from 'react';
-import { ValueState } from '../../../enums/index.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import { IndicationColor } from '../../../enums/index.js';
 import type { ReactTableHooks } from '../types/index.js';
 
 const baseStyles = {
@@ -7,12 +7,11 @@ const baseStyles = {
   height: '100%'
 };
 
-const StyleClassMap = new Map();
-StyleClassMap.set(ValueState.None, undefined);
-StyleClassMap.set(ValueState.Success, 'valueStateSuccess');
-StyleClassMap.set(ValueState.Warning, 'valueStateWarning');
-StyleClassMap.set(ValueState.Error, 'valueStateError');
-StyleClassMap.set(ValueState.Information, 'valueStateInformation');
+const HighlightColors = {
+  ...ValueState,
+  ...IndicationColor,
+  None: undefined
+};
 
 /*
  * COMPONENTS
@@ -21,8 +20,8 @@ const Header = () => <div style={{ width: '6px' }} />;
 
 const Cell = (instance) => {
   const { cell, webComponentsReactProperties } = instance;
-  const styleClass = StyleClassMap.get(cell.value)
-    ? webComponentsReactProperties.classes[StyleClassMap.get(cell.value)]
+  const styleClass = HighlightColors[cell?.value]
+    ? webComponentsReactProperties.classes[HighlightColors[cell.value].toLowerCase()]
     : undefined;
   return <div style={baseStyles} className={styleClass} data-component-name="AnalyticalTableHighlightCell" />;
 };

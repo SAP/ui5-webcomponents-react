@@ -1,15 +1,7 @@
 import TsLogo from '@sb/images/logo-ts.png';
-import {
-  Avatar,
-  Card,
-  CardHeader,
-  Link,
-  LinkDesign,
-  MessageStrip,
-  MessageStripDesign,
-  Text,
-  ThemeProvider
-} from '@ui5/webcomponents-react';
+import LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
+import { Avatar, Card, CardHeader, Link, MessageStrip, Text, ThemeProvider } from '@ui5/webcomponents-react';
 import { clsx } from 'clsx';
 import { ReactNode } from 'react';
 import { addCustomCSSWithScoping } from '../../packages/main/src/internal/addCustomCSSWithScoping';
@@ -25,6 +17,7 @@ interface ProjectTemplatePropTypes {
   children: ReactNode;
   deprecationNotice?: string;
   isTemplate?: boolean;
+  stackBlitzHref?: string;
 }
 
 addCustomCSSWithScoping(
@@ -33,7 +26,18 @@ addCustomCSSWithScoping(
 );
 
 export function ProjectTemplate(props: ProjectTemplatePropTypes) {
-  const { title, subtitle, logo, logoAttribution, isTypeScript, children, href, deprecationNotice, isTemplate } = props;
+  const {
+    title,
+    subtitle,
+    logo,
+    logoAttribution,
+    isTypeScript,
+    children,
+    href,
+    deprecationNotice,
+    isTemplate,
+    stackBlitzHref
+  } = props;
 
   return (
     <ThemeProvider>
@@ -67,15 +71,22 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
           {deprecationNotice && (
             <MessageStrip
               hideCloseButton
-              design={MessageStripDesign.Warning}
+              design={MessageStripDesign.Critical}
               children={deprecationNotice}
               className={classes.deprecationNotice}
             />
           )}
-
           <Link design={LinkDesign.Emphasized} href={href}>
             View Example
           </Link>
+          {stackBlitzHref && (
+            <>
+              |
+              <Link design={LinkDesign.Emphasized} href={stackBlitzHref}>
+                View in StackBlitz
+              </Link>
+            </>
+          )}
           {!isTemplate && (
             <>
               <br />

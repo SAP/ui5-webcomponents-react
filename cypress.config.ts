@@ -9,7 +9,6 @@ export default defineConfig({
         '**/src/interfaces/*',
         '**/src/enums/*',
         '**/*.stories.tsx',
-        '**/*.jss.ts',
         '**/*.test.{ts,tsx}',
         '**/node_modules/**',
         'packages/*/src/index.ts',

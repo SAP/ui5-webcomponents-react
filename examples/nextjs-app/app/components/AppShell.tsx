@@ -11,7 +11,7 @@ interface AppShellProps {
 
 export function AppShell({ children }: AppShellProps) {
   return (
-    <ThemeProvider>
+    <ThemeProvider staticCssInjected>
       <AppShellBar />
       <div className="appScrollContainer">{children}</div>
     </ThemeProvider>

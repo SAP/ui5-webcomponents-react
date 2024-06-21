@@ -1,5 +1,6 @@
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { useState } from 'react';
-import { TitleLevel } from '../../enums/index.js';
 import { VariantItem } from './VariantItem';
 import { WithCustomValidation as WithCustomValidationStory } from './VariantManagement.stories';
 import type { VariantManagementPropTypes } from './index.js';
@@ -104,7 +105,7 @@ describe('VariantManagement', () => {
     cy.findByText('Manage').click();
     cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.findByTestId('12chars').typeIntoUi5Input('A');
-    cy.findByTestId('12chars').should('have.attr', 'value-state', 'Error');
+    cy.findByTestId('12chars').should('have.attr', 'value-state', ValueState.Negative);
     cy.realPress('Tab');
     // fallback
     cy.get('body').click({ force: true });
@@ -113,12 +114,12 @@ describe('VariantManagement', () => {
     cy.findByText('Manage').click();
     cy.findByTestId('12chars').should('have.attr', 'value-state', 'None');
     cy.findByTestId('12chars').typeIntoUi5Input('A');
-    cy.findByTestId('12chars').should('have.attr', 'value-state', 'Error');
+    cy.findByTestId('12chars').should('have.attr', 'value-state', ValueState.Negative);
     cy.findByText('Cancel').click();
     cy.findByText('Manage').click();
     cy.findByTestId('12chars').should('have.attr', 'value-state', 'None');
     cy.findByTestId('12chars').typeIntoUi5Input('A');
-    cy.findByTestId('12chars').should('have.attr', 'value-state', 'Error');
+    cy.findByTestId('12chars').should('have.attr', 'value-state', ValueState.Negative);
     cy.findByText('Save').click();
     cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.findByTestId('12chars').typeIntoUi5Input('{backspace}');
@@ -136,23 +137,26 @@ describe('VariantManagement', () => {
     cy.findByText('Save As').click();
     cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
-    cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
-    cy.realPress('Tab');
+    cy.findByTestId('alphanumeric').should('have.attr', 'value-state', ValueState.Negative);
+    // Fallback: click on the Apply Automatically checkbox to prevent strange behavior in CI tests because of valueStateMessage popover
+    cy.get('[text="Apply Automatically"]').realClick();
     cy.realPress('Escape');
+    cy.get('[ui5-dialog]').should('not.exist');
     cy.contains('Only alphanumeric chars in Save View input').click();
     cy.findByText('Save As').click();
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'None');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
-    cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
+    cy.findByTestId('alphanumeric').should('have.attr', 'value-state', ValueState.Negative);
     cy.findByText('Cancel').click();
     cy.contains('Only alphanumeric chars in Save View input').click();
     cy.findByText('Save As').click();
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'None');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
-    cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'Error');
-    cy.findByText('Save').click();
+    cy.findByTestId('alphanumeric').should('have.attr', 'value-state', ValueState.Negative);
+    cy.findByText('Save').realClick();
     cy.get('[ui5-dialog]').should('have.attr', 'open');
-    cy.focused().should('have.attr', 'value-state', 'Error');
+    cy.wait(50);
+    cy.get('[ui5-input]').should('be.focused').and('have.attr', 'value-state', ValueState.Negative);
     cy.findByTestId('alphanumeric').typeIntoUi5Input('{selectall}{backspace}A');
     cy.findByText('Save').click();
     cy.findByTestId('alphanumeric').should('not.exist');
@@ -289,7 +293,7 @@ describe('VariantManagement', () => {
     cy.get('[ui5-li]').should('have.length', 11);
     cy.findByPlaceholderText('Search').typeIntoUi5Input('VariantItem 10');
     cy.get('[ui5-li]').should('have.length', 1).should('have.text', 'VariantItem 10');
-    cy.get('[input-icon]').click();
+    cy.get('.ui5-input-clear-icon').click();
     cy.get('[ui5-li]').should('have.length', 11);
 
     cy.mount(
@@ -371,10 +375,10 @@ describe('VariantManagement', () => {
 
     // invalid entries
     cy.get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}');
-    cy.get('[ui5-input]').should('have.attr', 'value-state', 'Error');
+    cy.get('[ui5-input]').should('have.attr', 'value-state', ValueState.Negative);
     cy.findByText('Please specify a view name');
     cy.get('[ui5-input]').typeIntoUi5Input('VariantItem 1');
-    cy.get('[ui5-input]').should('have.attr', 'value-state', 'Error');
+    cy.get('[ui5-input]').should('have.attr', 'value-state', ValueState.Negative);
     cy.findByText('The view name already exists. Please enter a different name.');
 
     // valid entries & save
@@ -469,7 +473,7 @@ describe('VariantManagement', () => {
           author
         } = props;
 
-        cy.get(`ui5-table-row[data-id="${rowId}"]`).as('row');
+        cy.get(`[ui5-table-row][data-id="${rowId}"]`).as('row');
         if (showOnlyFavorites) {
           if (labelReadOnly) {
             if (favorite || isDefault) {
@@ -480,10 +484,10 @@ describe('VariantManagement', () => {
           } else {
             if (favorite || isDefault) {
               cy.findAllByText(rowId).should('have.length', 1);
-              cy.get('@row').find('ui5-input').findShadowInput().should('have.value', rowId);
+              cy.get('@row').find('[ui5-input]').findShadowInput().should('have.value', rowId);
             } else {
               cy.findByText(rowId, { timeout: 100 }).should('not.exist');
-              cy.get('@row').find('ui5-input').findShadowInput().should('have.value', rowId);
+              cy.get('@row').find('[ui5-input]').findShadowInput().should('have.value', rowId);
             }
           }
         } else {
@@ -491,7 +495,7 @@ describe('VariantManagement', () => {
             cy.findAllByText(rowId).should('have.length', 2);
           } else {
             cy.findAllByText(rowId).should('have.length', 1);
-            cy.get('@row').find('ui5-input').findShadowInput().should('have.value', rowId);
+            cy.get('@row').find('[ui5-input]').findShadowInput().should('have.value', rowId);
           }
         }
 

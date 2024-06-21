@@ -1,0 +1,13 @@
+.card {
+  margin-block-start: 1rem;
+  box-sizing: border-box;
+}
+
+.form {
+  padding: 1rem;
+}
+
+.formControl {
+  width: 100%;
+  max-width: 45rem;
+}

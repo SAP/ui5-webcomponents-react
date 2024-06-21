@@ -3,7 +3,7 @@ import { getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
 import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
 import { getI18nContext } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import React, { useCallback, useEffect, useReducer, useRef } from 'react';
+import { useCallback, useEffect, useReducer, useRef } from 'react';
 
 export interface I18nProviderPropTypes {
   children: ReactNode;
@@ -18,7 +18,7 @@ const bundleReducer = (currentBundles: I18nBundleMap, action: { payload: I18nBun
   };
 };
 
-export function I18nProvider({ children }: I18nProviderPropTypes): JSX.Element {
+export function I18nProvider({ children }: I18nProviderPropTypes) {
   const [i18nBundles, setI18nBundles] = useReducer(bundleReducer, {});
   const localBundles = useRef<I18nBundleMap>({});
   const isMounted = useRef(false);

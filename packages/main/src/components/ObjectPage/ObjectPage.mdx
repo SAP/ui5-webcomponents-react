@@ -2,14 +2,14 @@ import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/comp
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import * as ComponentStories from './ObjectPage.stories';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { DynamicPageTitle } from '../DynamicPageTitle';
-import { DynamicPageHeader } from '../DynamicPageHeader';
+import { ObjectPageTitle } from '../ObjectPageTitle';
+import { ObjectPageHeader } from '../ObjectPageHeader';
 import { ObjectPageSection } from '../ObjectPageSection';
 import { ObjectPageSubSection } from '../ObjectPageSubSection';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader subComponents={['ObjectPageTitle', 'ObjectPageHeader', 'ObjectPageSection', 'ObjectPageSubSection']} />
 
 ## Example
 
@@ -27,7 +27,7 @@ import { ObjectPageSubSection } from '../ObjectPageSubSection';
 
 ## ObjectPage with custom actions and navigationActions overflow button
 
-The `DynamicPageTitle` offers two props (`actionsToolbarProps` and `navigationActionsToolbarProps`) to configure the props of the `actions` and `navigationActions` toolbars.
+The `ObjectPageTitle` offers two props (`actionsToolbarProps` and `navigationActionsToolbarProps`) to configure the props of the `actions` and `navigationActions` toolbars.
 With these objectes it's possible to e.g. configure the overflow button displayed within each toolbar by setting the `overflowButton` prop.
 `navigationActionsToolbarProps` only has an effect, if the `navigationActions` toolbar is used. (width < 1280px)
 
@@ -55,17 +55,17 @@ To render a single section in fullscreen mode, set its height to `100%`.
 
 <Markdown>{SubcomponentsSection}</Markdown>
 
-## DynamicPageTitle
+## ObjectPageTitle
 
-<Description of={DynamicPageTitle} />
+<Description of={ObjectPageTitle} />
 
-<ArgTypesWithNote of={DynamicPageTitle} />
+<ArgTypesWithNote of={ObjectPageTitle} />
 
-## DynamicPageHeader
+## ObjectPageHeader
 
-<Description of={DynamicPageHeader} />
+<Description of={ObjectPageHeader} />
 
-<ArgTypesWithNote of={DynamicPageHeader} />
+<ArgTypesWithNote of={ObjectPageHeader} />
 
 ## ObjectPageSection
 

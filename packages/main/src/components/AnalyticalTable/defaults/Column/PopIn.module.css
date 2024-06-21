@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+}
+
+.defaultCell {
+  font-family: var(--sapFontBoldFamily);
+  * {
+    font-family: var(--sapFontBoldFamily);
+  }
+}
+
+.header {
+  height: 16px;
+}

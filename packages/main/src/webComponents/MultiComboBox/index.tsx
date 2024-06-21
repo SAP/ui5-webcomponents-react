@@ -11,19 +11,17 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface MultiComboBoxAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of **@ui5/webcomponents**.
    */
   accessibleName?: string;
 
   /**
    * Receives id(or many ids) of the elements that label the component.
+   *
+   * **Note:** Available since [v1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of **@ui5/webcomponents**.
    */
   accessibleNameRef?: string;
-
-  /**
-   * Defines if the user input will be prevented, if no matching item has been found
-   * @default false
-   */
-  allowCustomValues?: boolean;
 
   /**
    * Defines whether the component is in disabled state.
@@ -40,20 +38,41 @@ interface MultiComboBoxAttributes {
   filter?: ComboBoxFilter | keyof typeof ComboBoxFilter;
 
   /**
+   * Determines the name by which the component will be identified upon submission in an HTML form.
+   *
+   * **Note:** This property is only applicable within the context of an HTML Form element.
+   * **Note:** When the component is used inside a form element,
+   * the value is sent as the first element in the form data, even if it's empty.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  name?: string;
+
+  /**
    * Defines whether the value will be autcompleted to match an item
+   *
+   * **Note:** Available since [v1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of **@ui5/webcomponents**.
    * @default false
    */
   noTypeahead?: boolean;
 
   /**
-   * Defines a short hint intended to aid the user with data entry when the component has no value.
+   * Defines if the user input will be prevented, if no matching item has been found
+   * @default false
+   */
+  noValidation?: boolean;
+
+  /**
+   * Defines a short hint intended to aid the user with data entry when the
+   * component has no value.
    */
   placeholder?: string;
 
   /**
    * Defines whether the component is read-only.
    *
-   * **Note:** A read-only component is not editable, but still provides visual feedback upon user interaction.
+   * **Note:** A read-only component is not editable,
+   * but still provides visual feedback upon user interaction.
    * @default false
    */
   readonly?: boolean;
@@ -66,6 +85,8 @@ interface MultiComboBoxAttributes {
 
   /**
    * Defines whether the clear icon of the multi-combobox will be shown.
+   *
+   * **Note:** Available since [v1.20.1](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.20.1) of **@ui5/webcomponents**.
    * @default false
    */
   showClearIcon?: boolean;
@@ -128,9 +149,12 @@ interface MultiComboBoxPropTypes
 
   /**
    * Defines the value state message that will be displayed as pop up under the component.
+   * The value state message slot should contain only one root element.
    *
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
-   * **Note:** The `valueStateMessage` would be displayed, when the component is in `Information`, `Warning` or `Error` value state.
+   *
+   * **Note:** The `valueStateMessage` would be displayed,
+   * when the component is in `Information`, `Warning` or `Error` value state.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -156,42 +180,49 @@ interface MultiComboBoxPropTypes
 
   /**
    * Fired when selection is changed by user interaction.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, MultiComboBoxSelectionChangeEventDetail>) => void;
 }
 
 /**
- * The `MultiComboBox` component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items. The drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options. The options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
+ * The `MultiComboBox` component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.
  *
+ * The drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options.
+ * The options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.
  * ### Structure
- *
  * The `MultiComboBox` consists of the following elements:
  *
- * *   Tokenizer - a list of tokens with selected options.
- * *   Input field - displays the selected option/s as token/s. Users can type to filter the list.
- * *   Drop-down arrow - expands\\collapses the option list.
- * *   Option list - the list of available options.
+ * -  Tokenizer - a list of tokens with selected options.
+ * -  Input field - displays the selected option/s as token/s. Users can type to filter the list.
+ * -  Drop-down arrow - expands\collapses the option list.
+ * -  Option list - the list of available options.
  *
  * ### Keyboard Handling
  *
  * The `MultiComboBox` provides advanced keyboard handling.
  *
  * #### Picker
- *
- * If the `MultiComboBox` is focused, you can open or close the drop-down by pressing `F4`, `ALT+UP` or `ALT+DOWN` keys. Once the drop-down is opened, you can use the `UP` and `DOWN` arrow keys to navigate through the available options and select one by pressing the `Space` or `Enter` keys.
+ * If the `MultiComboBox` is focused,
+ * you can open or close the drop-down by pressing [F4], [Alt] + [Up] or [Alt] + [Down] keys.
+ * Once the drop-down is opened, you can use the `UP` and `DOWN` arrow keys
+ * to navigate through the available options and select one by pressing the `Space` or `Enter` keys.
  *
  * #### Tokens
  *
- * *   Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).
- * *   Delete - deletes the token and focuses the previous token.
- * *   Backspace - deletes the token and focus the next token.
+ * -  Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).
+ * -  Delete -  deletes the token and focuses the previous token.
+ * -  Backspace -  deletes the token and focus the next token.
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomRef>(
   'ui5-multi-combobox',
-  ['accessibleName', 'accessibleNameRef', 'filter', 'placeholder', 'value', 'valueState'],
-  ['allowCustomValues', 'disabled', 'noTypeahead', 'readonly', 'required', 'showClearIcon', 'showSelectAll'],
+  ['accessibleName', 'accessibleNameRef', 'filter', 'name', 'placeholder', 'value', 'valueState'],
+  ['disabled', 'noTypeahead', 'noValidation', 'readonly', 'required', 'showClearIcon', 'showSelectAll'],
   ['icon', 'valueStateMessage'],
   ['change', 'input', 'open-change', 'selection-change'],
   () => import('@ui5/webcomponents/dist/MultiComboBox.js')

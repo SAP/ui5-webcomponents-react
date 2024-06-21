@@ -2,13 +2,13 @@ import { ImportStatement } from '@sb/components/Import';
 import { Canvas, Meta } from '@storybook/blocks';
 import { Footer } from '@sb/components';
 import { MessageStrip } from '../../webComponents/MessageStrip/index';
-import * as ComponentStories from './AnalyticalTable.stories';
+import * as ComponentStories from './AnalyticalTableHooks.stories';
 
-<Meta title="Data Display / AnalyticalTable / Plugin: useIndeterminateRowSelection" />
+<Meta title="Data Display / AnalyticalTable / Plugin Hooks / useIndeterminateRowSelection" />
 
 # AnalyticalTable Plugin: useIndeterminateRowSelection
 
-<ImportStatement moduleName={'AnalyticalTableHooks'} packageName={'@ui5/webcomponents-react'} />
+<ImportStatement moduleNames={['AnalyticalTableHooks']} packageName={'@ui5/webcomponents-react'} />
 
 The `useIndeterminateRowSelection` plugin hook allows marking parent rows as indeterminate when a child row is selected.
 When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)

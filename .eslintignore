@@ -21,7 +21,6 @@ packages/cypress-commands/dist
 
 scripts
 shared
-CodeGen.tsx
 examples
 templates
 

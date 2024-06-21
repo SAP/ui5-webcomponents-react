@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarButton.js';
-import type { AccessibilityAttributes } from '@ui5/webcomponents/dist/ToolbarButton.js';
+import type { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
 import type { CSSProperties } from 'react';
@@ -21,14 +21,7 @@ interface ToolbarButtonAttributes {
   accessibleNameRef?: string;
 
   /**
-   * Defines the action design. **The available values are:**
-   *
-   * *   `Default`
-   * *   `Emphasized`
-   * *   `Positive`
-   * *   `Negative`
-   * *   `Transparent`
-   * *   `Attention`
+   * Defines the action design.
    * @default "Default"
    */
   design?: ButtonDesign | keyof typeof ButtonDesign;
@@ -42,30 +35,36 @@ interface ToolbarButtonAttributes {
   disabled?: boolean;
 
   /**
+   * Defines the icon, displayed as graphical element within the component after the button text.
+   *
+   * **Note:** It is highly recommended to use `endIcon` property only together with `icon` and/or `text` properties.
+   * Usage of `endIcon` only should be avoided.
+   *
+   * The SAP-icons font provides numerous options.
+   *
+   * Example:
+   * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   */
+  endIcon?: string;
+
+  /**
    * Defines the `icon` source URI.
    *
-   * **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the [Icon Explorer](https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the
+   * [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    */
   icon?: string;
 
   /**
-   * Defines whether the icon should be displayed after the component text.
-   * @default false
-   */
-  iconEnd?: boolean;
-
-  /**
-   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set, the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it. Available options are:
-   *
-   * *   `NeverOverflow`
-   * *   `AlwaysOverflow`
-   * *   `Default`
+   * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set,
+   * the item never goes in the Popover, if "AlwaysOverflow" - it never comes out of it.
    * @default "Default"
    */
   overflowPriority?: ToolbarItemOverflowBehavior | keyof typeof ToolbarItemOverflowBehavior;
 
   /**
-   * Defines if the toolbar overflow popup should close upon intereaction with the item. It will close by default.
+   * Defines if the toolbar overflow popup should close upon intereaction with the item.
+   * It will close by default.
    * @default false
    */
   preventOverflowClosing?: boolean;
@@ -77,6 +76,7 @@ interface ToolbarButtonAttributes {
 
   /**
    * Defines the tooltip of the component.
+   *
    * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
    */
   tooltip?: string;
@@ -92,43 +92,50 @@ interface ToolbarButtonAttributes {
 
 interface ToolbarButtonDomRef extends Required<ToolbarButtonAttributes>, Ui5DomRef {
   /**
-   * An object of strings that defines several additional accessibility attribute values for customization depending on the use case. It supports the following fields:
+   * Defines the additional accessibility attributes that will be applied to the component.
    *
-   * *   `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
-   *     *   `true`
-   *     *   `false`
-   * *   `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
-   *     *   `Dialog`
-   *     *   `Grid`
-   *     *   `Listbox`
-   *     *   `Menu`
-   *     *   `Tree`
-   * *   `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
+   * The following fields are supported:
+   *
+   * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
+   * Accepts the following string values: `true` or `false`
+   *
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
+   *
+   * - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
+   * Accepts a lowercase string value.
    */
-  accessibilityAttributes: AccessibilityAttributes;
+  accessibilityAttributes: ButtonAccessibilityAttributes;
 }
 
 interface ToolbarButtonPropTypes
   extends ToolbarButtonAttributes,
     Omit<CommonProps, keyof ToolbarButtonAttributes | 'onClick'> {
   /**
-   * Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.
+   * Fired when the component is activated either with a
+   * mouse/tap or by using the Enter or Space key.
    *
-   * **Note:** The event will not be fired if the `disabled` property is set to `true`.
+   * **Note:** The event will not be fired if the `disabled`
+   * property is set to `true`.
    */
   onClick?: (event: Ui5CustomEvent<ToolbarButtonDomRef>) => void;
 }
 
 /**
- * The `ToolbarButton` represents an abstract action, used in the `Toolbar`.
+ * The `ToolbarButton` represents an abstract action,
+ * used in the `Toolbar`.
  *
+ *
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
+ *
+ * @since [1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of __@ui5/webcomponents__.
  * @abstract
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const ToolbarButton = withWebComponent<ToolbarButtonPropTypes, ToolbarButtonDomRef>(
   'ui5-toolbar-button',
-  ['accessibleName', 'accessibleNameRef', 'design', 'icon', 'overflowPriority', 'text', 'tooltip', 'width'],
-  ['disabled', 'iconEnd', 'preventOverflowClosing'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'endIcon', 'icon', 'overflowPriority', 'text', 'tooltip', 'width'],
+  ['disabled', 'preventOverflowClosing'],
   [],
   ['click'],
   () => import('@ui5/webcomponents/dist/ToolbarButton.js')

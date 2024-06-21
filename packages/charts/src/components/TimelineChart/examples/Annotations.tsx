@@ -1,6 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { TimelineChartBodyCtx } from '../util/context.js';
 
 interface TimingFigureProps {
@@ -12,7 +12,7 @@ interface TimingFigureProps {
 
 // A custom figure for testing out the TimelineChartAnnotation.
 export const TimingFigure = ({ arrival, period, deadline, totalDuration }: TimingFigureProps) => {
-  const ref = useRef<HTMLCanvasElement>();
+  const ref = useRef<HTMLCanvasElement>(null);
   const verticalSpacing = 2;
   const halfArrowWidth = 4;
   const chartBodyCtx = useContext(TimelineChartBodyCtx);
@@ -85,7 +85,7 @@ export const Invention = ({ name, rowHeight, time, totalDuration, color }: Inven
   const y1 = a * y0 + b * x0;
   const y2 = a * y0 - b * x0;
 
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
   const [offset, setoffset] = useState(0);
   const chartBodyDim = useContext(TimelineChartBodyCtx);
 

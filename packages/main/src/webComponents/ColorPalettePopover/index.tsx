@@ -8,19 +8,27 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface ColorPalettePopoverAttributes {
   /**
-   * Defines the default color of the component. **Note:** The default color should be a part of the ColorPalette colors
+   * Defines the default color of the component.
+   *
+   * **Note:** The default color should be a part of the ColorPalette colors`
    * @default undefined
    */
   defaultColor?: CSSProperties['color'];
 
   /**
    * Defines the open | closed state of the popover.
+   *
+   * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    * @default false
    */
   open?: boolean;
 
   /**
    * Defines the ID or DOM Reference of the element that the popover is shown at.
+   * When using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.
+   * You can only set the `opener` attribute to a DOM Reference when using JavaScript.
+   *
+   * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   opener?: string;
@@ -32,7 +40,9 @@ interface ColorPalettePopoverAttributes {
   showDefaultColor?: boolean;
 
   /**
-   * Defines whether the user can choose a custom color from a component. **Note:** In order to use this property you need to import the following module: `"@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js"`
+   * Defines whether the user can choose a custom color from a component.
+   *
+   * **Note:** In order to use this property you need to import the following module: `"@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js"`
    * @default false
    */
   showMoreColors?: boolean;
@@ -47,26 +57,12 @@ interface ColorPalettePopoverAttributes {
 interface ColorPalettePopoverDomRef extends Omit<Required<ColorPalettePopoverAttributes>, 'opener'>, Ui5DomRef {
   /**
    * Defines the ID or DOM Reference of the element that the popover is shown at.
+   * When using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.
+   * You can only set the `opener` attribute to a DOM Reference when using JavaScript.
+   *
+   * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    */
   opener: HTMLElement | string | undefined;
-
-  /**
-   * Shows the ColorPalettePopover.
-   *
-   * @deprecated The method is deprecated in favour of <code>open</code> and <code>opener</code> properties.
-   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
-   * @returns {void}
-   */
-  openPopover: (opener: HTMLElement | EventTarget) => void;
-
-  /**
-   * Shows the ColorPalettePopover.
-   *
-   * @deprecated The method is deprecated in favour of <code>open</code> and <code>opener</code> properties.
-   * @param {HTMLElement | EventTarget} opener - the element that the popover is shown at
-   * @returns {void}
-   */
-  showAt: (opener: HTMLElement | EventTarget) => void;
 }
 
 interface ColorPalettePopoverPropTypes
@@ -78,6 +74,8 @@ interface ColorPalettePopoverPropTypes
   children?: ReactNode | ReactNode[];
   /**
    * Fired when the `ColorPalettePopover` is closed due to user interaction.
+   *
+   * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    */
   onClose?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef>) => void;
 
@@ -88,13 +86,22 @@ interface ColorPalettePopoverPropTypes
 }
 
 /**
- * Represents a predefined range of colors for easier selection. Overview The ColorPalettePopover provides the users with a slot to predefine colors. You can customize them with the use of the colors property. You can specify a defaultColor and display a "Default color" button for the user to choose directly. You can display a "More colors..." button that opens an additional color picker for the user to choose specific colors that are not present in the predefined range.
+ * Represents a predefined range of colors for easier selection.
+ *
+ * Overview
+ * The ColorPalettePopover provides the users with a slot to predefine colors.
+ *
+ * You can customize them with the use of the colors property. You can specify a defaultColor and display a "Default color" button for the user to choose directly.
+ * You can display a "More colors..." button that opens an additional color picker for the user to choose specific colors that are not present in the predefined range.
  *
  * ### Usage
  *
- * The palette is intended for users, who don't want to check and remember the different values of the colors and spend large amount of time to configure the right color through the color picker. For the `ColorPalettePopover`
+ * The palette is intended for users, who don't want to check and remember the different values of the colors and spend large amount of time to configure the right color through the color picker.
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * For the `ColorPalettePopover`
+ *
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const ColorPalettePopover = withWebComponent<ColorPalettePopoverPropTypes, ColorPalettePopoverDomRef>(
   'ui5-color-palette-popover',

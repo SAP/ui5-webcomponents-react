@@ -1,16 +1,18 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import SampleImage from '@sb/demoImages/Person.png';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
 import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
 import {
   Bar,
-  BarDesign,
   Breadcrumbs,
   BreadcrumbsItem,
   Button,
-  ButtonDesign,
-  DynamicPageHeader,
-  DynamicPageTitle,
+  ObjectPageHeader,
+  ObjectPageTitle,
   FlexBox,
   FlexBoxAlignItems,
   FlexBoxDirection,
@@ -20,7 +22,6 @@ import {
   FormItem,
   Icon,
   IllustratedMessage,
-  IllustrationMessageType,
   Label,
   Link,
   MessageStrip,
@@ -30,8 +31,7 @@ import {
   ObjectStatus,
   Text,
   Title,
-  ToggleButton,
-  ValueState
+  ToggleButton
 } from '../..';
 import { ObjectPage } from './index.js';
 
@@ -66,7 +66,7 @@ const meta = {
       />
     ),
     headerTitle: (
-      <DynamicPageTitle
+      <ObjectPageTitle
         showSubHeaderRight
         header="Denise Smith"
         subHeader="Senior UI Developer"
@@ -88,11 +88,11 @@ const meta = {
         expandedContent={<MessageStrip>Information (only visible if header content is expanded)</MessageStrip>}
         snappedContent={<MessageStrip>Information (only visible if header content is collapsed/snapped)</MessageStrip>}
       >
-        <ObjectStatus state={ValueState.Success}>employed</ObjectStatus>
-      </DynamicPageTitle>
+        <ObjectStatus state={ValueState.Positive}>employed</ObjectStatus>
+      </ObjectPageTitle>
     ),
     headerContent: (
-      <DynamicPageHeader>
+      <ObjectPageHeader>
         <FlexBox wrap={FlexBoxWrap.Wrap} alignItems={FlexBoxAlignItems.Center}>
           <FlexBox direction={FlexBoxDirection.Column}>
             <Link>+33 6 4512 5158</Link>
@@ -106,7 +106,7 @@ const meta = {
             <Label>California, USA</Label>
           </FlexBox>
         </FlexBox>
-      </DynamicPageHeader>
+      </ObjectPageHeader>
     )
   }
 } satisfies Meta<typeof ObjectPage>;
@@ -349,7 +349,7 @@ export const WithCustomOverflowButton: Story = {
           style={{ width: '1000px' }}
           showHideHeaderButton={false}
           headerTitle={
-            <DynamicPageTitle
+            <ObjectPageTitle
               {...titleProps}
               header={
                 <Title wrappingType="Normal">
@@ -363,7 +363,7 @@ export const WithCustomOverflowButton: Story = {
           style={{ width: '1400px' }}
           showHideHeaderButton={false}
           headerTitle={
-            <DynamicPageTitle
+            <ObjectPageTitle
               {...titleProps}
               header={<Title>Custom overflow buttons for actions (width: 1400px)</Title>}
             />

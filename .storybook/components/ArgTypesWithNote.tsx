@@ -1,17 +1,8 @@
 import { ArgTypes } from '@storybook/blocks';
-import { MessageStrip, MessageStripDesign } from '@ui5/webcomponents-react';
-import React, { ComponentProps, ReactNode, useEffect, useRef } from 'react';
-import { createUseStyles } from 'react-jss';
-
-const useStyles = createUseStyles({
-  tableContainer: {
-    marginTop: '25px',
-    '& table': {
-      marginTop: '0 !important'
-    }
-  },
-  strip: { marginBottom: '10px' }
-});
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
+import { MessageStrip } from '@ui5/webcomponents-react';
+import { ComponentProps, ReactNode } from 'react';
+import classes from './ArgTypesWithNote.module.css';
 
 interface ArgTypesWithNotePropTypes {
   hideHTMLPropsNote?: boolean;
@@ -25,7 +16,6 @@ interface ArgTypesWithNotePropTypes {
 
 export function ArgTypesWithNote(props: ComponentProps<typeof ArgTypes> & ArgTypesWithNotePropTypes) {
   const { hideHTMLPropsNote, noteText, ...rest } = props;
-  const classes = useStyles();
 
   if (hideHTMLPropsNote) {
     return <ArgTypes {...rest} />;

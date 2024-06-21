@@ -2,11 +2,10 @@
 
 import iconDown from '@ui5/webcomponents-icons/dist/down.js';
 import iconUp from '@ui5/webcomponents-icons/dist/up.js';
-import { useI18nBundle, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MouseEventHandler, ReactElement, ReactNode } from 'react';
-import React, { cloneElement, forwardRef } from 'react';
-import { createUseStyles } from 'react-jss';
+import { cloneElement, forwardRef } from 'react';
 import { DeviationIndicator, ValueColor } from '../../enums/index.js';
 import {
   ARIA_DESC_CARD_HEADER,
@@ -20,7 +19,8 @@ import {
 import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
 import { Icon } from '../../webComponents/index.js';
-import styles from './AnalyticalCardHeader.jss.js';
+import type { NumericSideIndicatorPropTypes } from '../NumericSideIndicator/index.js';
+import { classNames, styleData } from './AnalyticalCardHeader.module.css.js';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
@@ -33,6 +33,8 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   subtitleText?: string;
   /**
    * The direction of the trend arrow. Shows deviation for the value of the main number indicator.
+   *
+   * @default `"None"`
    */
   trend?: DeviationIndicator | keyof typeof DeviationIndicator;
   /**
@@ -47,6 +49,8 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
    * The semantic color which represents the state of the main number indicator.
    * Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Critical</code></li> <li><code>Good</code></li> <li><code>Neutral</code></li></ul>
+   *
+   * @default `"None"`
    */
   state?: ValueColor | keyof typeof ValueColor;
   /**
@@ -74,10 +78,6 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   children?: ReactNode | ReactNode[];
 }
 
-const useStyles = createUseStyles(styles, {
-  name: 'AnalyticalCardHeader'
-});
-
 const semanticColorMap = new Map<AnalyticalCardHeaderPropTypes['state'], any>([
   [ValueColor.Neutral, SEMANTIC_COLOR_NEUTRAL],
   [ValueColor.Good, SEMANTIC_COLOR_GOOD],
@@ -101,28 +101,28 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
     subtitleText,
     value,
     scale,
-    state,
+    state = ValueColor.None,
     onClick,
     className,
     description,
     status,
     unitOfMeasurement,
-    trend,
+    trend = DeviationIndicator.None,
     style,
     children,
     id,
     ...rest
   } = props;
-  const classes = useStyles();
+  useStylesheet(styleData, AnalyticalCardHeader.displayName);
 
-  const headerClasses = clsx(classes.cardHeader, onClick && classes.cardHeaderClickable, className);
+  const headerClasses = clsx(classNames.cardHeader, onClick && classNames.cardHeaderClickable, className);
 
   const valueAndUnitClasses = clsx(
-    classes.mainIndicator,
-    state === ValueColor.Good && classes.good,
-    state === ValueColor.Error && classes.error,
-    state === ValueColor.Critical && classes.critical,
-    state === ValueColor.Neutral && classes.neutral
+    classNames.mainIndicator,
+    state === ValueColor.Good && classNames.good,
+    state === ValueColor.Error && classNames.error,
+    state === ValueColor.Critical && classNames.critical,
+    state === ValueColor.Neutral && classNames.neutral
   );
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -130,7 +130,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
   const uniqueHeaderId = useIsomorphicId();
   const headerId = id ?? uniqueHeaderId;
 
-  const sideIndicators = flattenFragments(children) as ReactElement[];
+  const sideIndicators = flattenFragments(children) as ReactElement<NumericSideIndicatorPropTypes>[];
   const sideIndicatorIds: string[] = sideIndicators.map((child, idx) => {
     return child.props?.id ?? `${headerId}-indicator${idx}`;
   });
@@ -180,37 +180,40 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
       slot={'header'}
     >
       <div>
-        <div className={classes.headerTitles}>
-          <div className={classes.headerFirstLine}>
-            <span role="heading" aria-level={3} className={classes.headerText} id={`${headerId}-title`}>
+        <div className={classNames.headerTitles}>
+          <div className={classNames.headerFirstLine}>
+            <span role="heading" aria-level={3} className={classNames.headerText} id={`${headerId}-title`}>
               {titleText}
             </span>
-            {status && <span className={classes.status}>{status}</span>}
+            {status && <span className={classNames.status}>{status}</span>}
           </div>
           {(subtitleText || unitOfMeasurement) && (
-            <div className={classes.headerSecondLine}>
+            <div className={classNames.headerSecondLine}>
               <span id={`${headerId}-subtitle`}>{subtitleText}</span>
               {unitOfMeasurement && (
-                <span id={`${headerId}-unitOfMeasurement`} className={classes.unitOfMeasurement}>
+                <span id={`${headerId}-unitOfMeasurement`} className={classNames.unitOfMeasurement}>
                   {unitOfMeasurement}
                 </span>
               )}
             </div>
           )}
         </div>
-        <div className={classes.kpiContent}>
+        <div className={classNames.kpiContent}>
           <div className={valueAndUnitClasses} id={`${headerId}-mainIndicator`} aria-label={kpiAriaLabel} role="img">
-            <span className={classes.value}>{value}</span>
-            <div className={classes.indicatorAndUnit}>
+            <span className={classNames.value}>{value}</span>
+            <div className={classNames.indicatorAndUnit}>
               {trend !== DeviationIndicator.None && (
-                <Icon className={clsx(classes.indicator)} name={trend === DeviationIndicator.Up ? iconUp : iconDown} />
+                <Icon
+                  className={clsx(classNames.indicator)}
+                  name={trend === DeviationIndicator.Up ? iconUp : iconDown}
+                />
               )}
-              <div className={classes.unit}>{scale}</div>
+              <div className={classNames.unit}>{scale}</div>
             </div>
           </div>
-          <div className={classes.indicatorGap} />
-          <div className={classes.sideIndicators}>
-            {sideIndicators.map((sideIndicator: ReactElement, index) => {
+          <div className={classNames.indicatorGap} />
+          <div className={classNames.sideIndicators}>
+            {sideIndicators.map((sideIndicator, index) => {
               return cloneElement(sideIndicator, {
                 id: sideIndicator.props.id ?? `${headerId}-indicator${index}`
               });
@@ -218,7 +221,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
           </div>
         </div>
         {description && (
-          <span id={`${headerId}-description`} className={classes.description}>
+          <span id={`${headerId}-description`} className={classNames.description}>
             {description}
           </span>
         )}
@@ -228,8 +231,3 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
 });
 
 AnalyticalCardHeader.displayName = 'AnalyticalCardHeader';
-
-AnalyticalCardHeader.defaultProps = {
-  trend: DeviationIndicator.None,
-  state: ValueColor.None
-};

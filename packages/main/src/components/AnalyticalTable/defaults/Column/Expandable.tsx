@@ -1,11 +1,11 @@
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
-import { CssSizeVariables, ThemingParameters, useCurrentTheme } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, useCurrentTheme, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
-import { ButtonDesign } from '../../../../enums/index.js';
 import { Button, Icon } from '../../../../webComponents/index.js';
+import { classNames, styleData } from './Expandable.module.css.js';
 
 const getPadding = (level) => {
   switch (level) {
@@ -22,36 +22,11 @@ const getPadding = (level) => {
   }
 };
 
-const useStyles = createUseStyles(
-  {
-    container: {
-      height: CssSizeVariables.ui5WcrAnalyticalTableExpandButtonHeight,
-      marginInlineEnd: '0.125rem'
-    },
-    icon: {
-      color: ThemingParameters.sapContent_IconColor,
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      '&::part(root)': {
-        padding: '0.375rem',
-        width: CssSizeVariables.ui5WcrAnalyticalTableExpandIconHeight,
-        height: CssSizeVariables.ui5WcrAnalyticalTableExpandIconHeight
-      }
-    },
-    button: { color: ThemingParameters.sapTextColor, height: '100%', fontSize: '0.75rem' },
-    nonExpandableCellSpacer: { width: CssSizeVariables.ui5WcrAnalyticalTableExpandIndicatorWidth },
-    withExpandableButton: { marginInlineEnd: '0.5rem' }
-  },
-  { name: 'ExpandableIndicatorStyles' }
-);
-
 export const Expandable = (props) => {
   const { cell, row, column, visibleColumns: columns, webComponentsReactProperties } = props;
   const { renderRowSubComponent, alwaysShowSubComponent, translatableTexts } = webComponentsReactProperties;
   const currentTheme = useCurrentTheme();
-  const classes = useStyles();
+  useStylesheet(styleData, Expandable.displayName);
   const shouldRenderButton = currentTheme === 'sap_horizon' || currentTheme === 'sap_horizon_dark';
   const tableColumns = columns.filter(
     ({ id }) =>
@@ -61,46 +36,58 @@ export const Expandable = (props) => {
   );
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);
-  const paddingLeft = columnIndex === 0 ? getPadding(row.depth) : 0;
+  const paddingLeft = getPadding(row.depth);
   const rowProps = row.getToggleRowExpandedProps();
   const subComponentExpandable =
     typeof renderRowSubComponent === 'function' && !!renderRowSubComponent(row) && !alwaysShowSubComponent;
 
   return (
     <>
-      {columnIndex === 0 && (row.canExpand || subComponentExpandable) ? (
+      {columnIndex === 0 && (
         // todo rowProps should be applied to the whole row, not just the cell. We should consider refactoring this.
-        <span
-          title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
-          style={{ ...rowProps.style, paddingInlineStart: paddingLeft }}
-          className={classes.container}
-          aria-expanded={row.isExpanded}
-          aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
-        >
-          {shouldRenderButton ? (
-            <Button
-              icon={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
-              design={ButtonDesign.Transparent}
-              onClick={rowProps.onClick}
-              className={classes.button}
-            />
+        <>
+          {row.canExpand || subComponentExpandable ? (
+            <span
+              title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
+              style={{ ...rowProps.style, paddingInlineStart: paddingLeft }}
+              className={classNames.container}
+              aria-expanded={row.isExpanded}
+              aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
+            >
+              {shouldRenderButton ? (
+                <Button
+                  tabIndex={-1}
+                  icon={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
+                  design={ButtonDesign.Transparent}
+                  onClick={rowProps.onClick}
+                  className={classNames.button}
+                />
+              ) : (
+                <Icon
+                  tabIndex={-1}
+                  onClick={rowProps.onClick}
+                  mode={IconMode.Interactive}
+                  name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
+                  data-component-name="AnalyticalTableExpandIcon"
+                  className={classNames.icon}
+                />
+              )}
+            </span>
           ) : (
-            <Icon
-              onClick={rowProps.onClick}
-              interactive
-              name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
-              data-component-name="AnalyticalTableExpandIcon"
-              className={classes.icon}
+            <span
+              style={{ paddingInlineStart: paddingLeft }}
+              data-component-name="AnalyticalTableNonExpandableCellSpacer"
+              className={clsx(
+                classNames.nonExpandableCellSpacer,
+                shouldRenderButton && classNames.withExpandableButton
+              )}
             />
           )}
-        </span>
-      ) : (
-        <span
-          style={{ paddingInlineStart: paddingLeft }}
-          className={clsx(classes.nonExpandableCellSpacer, shouldRenderButton && classes.withExpandableButton)}
-        />
+        </>
       )}
       {cell.render('Cell')}
     </>
   );
 };
+
+Expandable.displayName = 'Expandable';

@@ -1,11 +1,11 @@
 import { DocsContext, Heading } from '@storybook/blocks';
-import { Badge, BadgeDesign, Link, MessageStrip, Popover } from '@ui5/webcomponents-react';
+import { Tag, Link, MessageStrip, Popover } from '@ui5/webcomponents-react';
+import TagDesign from '@ui5/webcomponents/dist/types/TagDesign.js';
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types';
 import type { ReactNode } from 'react';
 import { Fragment, useContext, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import cemFiori from '../custom-element-manifests/fiori.json';
-import cemMain from '../custom-element-manifests/main.json';
+import { useGetCem } from '../utils';
 import classes from './DomRefTable.module.css';
 
 function CodeBlock(props: { children: ReactNode }) {
@@ -50,22 +50,12 @@ function Name(props: CEM.ClassMember) {
 export function DomRefTable() {
   const docsContext = useContext(DocsContext);
   const storyTags: string[] = docsContext.attachedCSFFile?.meta?.tags;
-  const packageAnnotation = storyTags?.find((tag) => tag.startsWith('package:'));
   const cemModuleName = storyTags?.find((tag) => tag.startsWith('cem-module:'));
-  const componentName = docsContext.componentStories().at(0).component.displayName;
+  const componentName = docsContext.componentStories().at(0)?.component?.displayName;
   const popoverRef = useRef(null);
 
-  const knownAttributes = new Set(Object.keys(docsContext.primaryStory.argTypes));
-
-  let cem: CEM.CustomElementManifest;
-  switch (packageAnnotation) {
-    case 'package:@ui5/webcomponents':
-      cem = cemMain;
-      break;
-    case 'package:@ui5/webcomponents-fiori':
-      cem = cemFiori;
-      break;
-  }
+  const knownAttributes = new Set(Object.keys(docsContext.primaryStory?.argTypes ?? {}));
+  const cem = useGetCem();
 
   let moduleName = cemModuleName ? cemModuleName.split(':')[1] : componentName;
 
@@ -90,8 +80,7 @@ export function DomRefTable() {
             component, e.g. by using React Refs.
           </p>
           <MessageStrip hideCloseButton style={{ marginBlockEnd: '10px' }}>
-            This table is showing <bold>additional</bold> attributes and methods which are not available as props.{' '}
-            <br />
+            This table is showing <b>additional</b> attributes and methods which are not available as props. <br />
             All props (without event handlers, children, and slots) are available as attributes on the DOM ref as well.
           </MessageStrip>
           <table>
@@ -111,9 +100,9 @@ export function DomRefTable() {
                       {row.deprecated && (
                         <>
                           <br />
-                          <Badge
+                          <Tag
                             className={classes.deprecationInfoBadge}
-                            design={BadgeDesign.Critical}
+                            design={TagDesign.Critical}
                             interactive={typeof row.deprecated === 'string'}
                             onClick={
                               typeof row.deprecated === 'string'
@@ -125,7 +114,7 @@ export function DomRefTable() {
                             }
                           >
                             deprecated
-                          </Badge>
+                          </Tag>
                         </>
                       )}
                     </td>

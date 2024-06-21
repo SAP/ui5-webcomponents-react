@@ -1,8 +1,12 @@
-import { getEffectiveScopingSuffixForTag, getScopedVarName } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
+import {
+  getCustomElementsScopingSuffix,
+  getEffectiveScopingSuffixForTag,
+  getScopedVarName
+} from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import type { ReactNode } from 'react';
 import { Children, cloneElement, Fragment } from 'react';
 
-export function flattenFragments(children: ReactNode | ReactNode[], depth = 1): ReactNode[] {
+export function flattenFragments<T = ReactNode>(children: T | T[], depth = 1): T[] {
   const flatChildren = [];
   const removeFragments = (element, level = 0, key = []) => {
     if (!element) {
@@ -46,3 +50,8 @@ export function trimAndRemoveSpaces(value) {
 }
 
 export const cssVarVersionInfoPrefix = getScopedVarName('--_ui5_').replace('--_ui5_', '');
+
+export function getTagNameWithoutScopingSuffix(tagName) {
+  const tagNameSuffix = getCustomElementsScopingSuffix();
+  return tagNameSuffix ? tagName.replace(`-${tagNameSuffix.toUpperCase()}`, '') : tagName;
+}

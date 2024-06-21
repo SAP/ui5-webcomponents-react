@@ -1,6 +1,11 @@
 import { Description, DocsContext, Subtitle, Title } from '@storybook/addon-docs';
-import { FlexBox, FlexBoxAlignItems, Label, Link, Text, ThemeProvider } from '@ui5/webcomponents-react';
-import React, { useContext } from 'react';
+import copyIcon from '@ui5/webcomponents-icons/dist/copy';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import { Button, FlexBox, FlexBoxAlignItems, Label, Link, Text, ThemeProvider } from '@ui5/webcomponents-react';
+import { clsx } from 'clsx';
+import { useContext } from 'react';
+import { useGetSubComponentsOfModule } from '../utils';
+import classes from './DocsHeader.module.css';
 import { GitHubLogo } from './GitHub-Mark';
 import { Import } from './Import';
 import { TableOfContent } from './TableOfContent';
@@ -29,16 +34,51 @@ const Links = () => {
   );
 };
 
-export const InfoTable = ({ since }) => {
+interface InfoTableProps {
+  since?: string;
+  subComponents?: string[];
+  mergeSubComponents?: boolean;
+}
+
+export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTableProps) => {
+  const context = useContext(DocsContext);
+  const groups = context.componentStories().at(0).kind.split('/');
+  const moduleName = groups[groups.length - 1].replace('(experimental)', '').trim();
+
+  const wcSubComponents = useGetSubComponentsOfModule(moduleName.replace('V2', ''));
+  const subComps = mergeSubComponents
+    ? [...(subComponents ?? []), ...(wcSubComponents ?? [])]
+    : subComponents ?? wcSubComponents;
+
+  const supportsClipboardApi = typeof ClipboardItem !== 'undefined';
+
+  const handleCopy = async (e) => {
+    const importStatementCell = e.currentTarget.parentElement.querySelector('[data-import]');
+    if (supportsClipboardApi && importStatementCell) {
+      const html = new Blob([importStatementCell.outerHTML], { type: 'text/html' });
+      const text = new Blob([importStatementCell.outerText], { type: 'text/plain' });
+      const data = new ClipboardItem({ 'text/html': html, 'text/plain': text });
+      await navigator.clipboard.write([data]);
+    }
+  };
   return (
-    <table className="infoTable">
+    <table className={classes.infoTable}>
       <tbody>
-        <tr>
+        <tr className={classes.hoverTr}>
           <th>
             <Label>Usage</Label>
           </th>
-          <td>
+          <td data-import-cell={supportsClipboardApi}>
             <Import />
+            {supportsClipboardApi && (
+              <Button
+                design={ButtonDesign.Transparent}
+                className={clsx('ui5-content-density-compact', classes.copyBtn)}
+                onClick={handleCopy}
+                icon={copyIcon}
+                tooltip="copy"
+              />
+            )}
           </td>
         </tr>
         {since && (
@@ -51,12 +91,31 @@ export const InfoTable = ({ since }) => {
             </td>
           </tr>
         )}
+        {!!subComps.length && (
+          <tr className={classes.hoverTr}>
+            <th>
+              <Label>Subcomponents</Label>
+            </th>
+            <td data-import-cell={supportsClipboardApi}>
+              <Import moduleNames={subComps} />
+              {supportsClipboardApi && (
+                <Button
+                  design={ButtonDesign.Transparent}
+                  className={clsx('ui5-content-density-compact', classes.copyBtn)}
+                  onClick={handleCopy}
+                  icon={copyIcon}
+                  tooltip="copy"
+                />
+              )}
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   );
 };
 
-export const DocsHeader = ({ since }) => {
+export const DocsHeader = ({ since, subComponents, mergeSubComponents }: InfoTableProps) => {
   return (
     <ThemeProvider>
       <FlexBox alignItems={FlexBoxAlignItems.Center}>
@@ -65,7 +124,7 @@ export const DocsHeader = ({ since }) => {
         <Links />
       </FlexBox>
       <Subtitle />
-      <InfoTable since={since} />
+      <InfoTable since={since} subComponents={subComponents} mergeSubComponents={mergeSubComponents} />
       <TableOfContent />
       <Description />
     </ThemeProvider>

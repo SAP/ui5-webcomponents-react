@@ -2,7 +2,7 @@
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import React, { forwardRef, useCallback } from 'react';
+import { forwardRef, useCallback } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
@@ -16,6 +16,7 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
+import type { YAxisProps } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useCancelAnimationFallback } from '../../hooks/useCancelAnimationFallback.js';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
@@ -81,9 +82,8 @@ interface MeasureConfig extends IChartMeasure {
 interface DimensionConfig extends IChartDimension {
   /**
    * Interval of dimension axis labels
-   * @default 0
    */
-  interval?: number;
+  interval?: YAxisProps['interval'];
 }
 
 export interface BarChartProps extends IChartBaseProps {
@@ -146,7 +146,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     ...rest
   } = props;
 
-  const chartConfig = {
+  const chartConfig: BarChartProps['chartConfig'] = {
     margin: {},
     yAxisVisible: true,
     xAxisVisible: true,
@@ -234,6 +234,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <BarChartLib
         syncId={syncId}
         onClick={onClickInternal}
@@ -297,7 +298,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
               <YAxis
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
                 type="category"
-                key={dimension.accessor}
+                key={dimension.reactKey}
                 dataKey={dimension.accessor}
                 tick={<YAxisTicks config={dimension} />}
                 tickLine={index < 1}
@@ -316,7 +317,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
               <Bar
                 stackId={element.stackId}
                 fillOpacity={element.opacity}
-                key={element.accessor}
+                key={element.reactKey}
                 name={element.label ?? element.accessor}
                 strokeOpacity={element.opacity}
                 type="monotone"
@@ -327,7 +328,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 onClick={onDataPointClickInternal}
-                isAnimationActive={noAnimation === false}
+                isAnimationActive={!noAnimation}
                 onAnimationStart={handleBarAnimationStart}
                 onAnimationEnd={handleBarAnimationEnd}
               >
@@ -391,11 +392,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     </ChartContainer>
   );
 });
-
-BarChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 BarChart.displayName = 'BarChart';
 

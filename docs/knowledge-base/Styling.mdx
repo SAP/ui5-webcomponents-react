@@ -1,7 +1,8 @@
 import { Meta } from '@storybook/addon-docs';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import { MyCustomElement } from '../styling/MyCustomElement';
 import { TableShadowRootExample } from '../styling/TableShadowRootExample';
-import { MessageStrip, MessageStripDesign, ThemeProvider } from '@ui5/webcomponents-react';
+import { MessageStrip, ThemeProvider } from '@ui5/webcomponents-react';
 import { Footer, TableOfContent } from '@sb/components';
 
 <Meta title="Styling" />
@@ -13,7 +14,7 @@ import { Footer, TableOfContent } from '@sb/components';
 ## Styling UI5 Web Components for React components
 
 You can change the appearance of the Web Components by using [CSS Variables](https://www.w3schools.com/Css/css3_variables.asp).
-Per default, we are injecting the Fiori 3 theme parameters as CSS Variables into the `<head>`.
+Per default, we are injecting the Horizon theme parameters as CSS Variables into the `<head>`.
 For example, if you want to change the color of all texts that use the `--sapTextColor` variable, you can create an additional `style` tag with the following content:
 
 ```html
@@ -26,7 +27,7 @@ For example, if you want to change the color of all texts that use the `--sapTex
 
 <MessageStrip
   hideCloseButton
-  design={MessageStripDesign.Warning}
+  design={MessageStripDesign.Critical}
   children="Changing the value of a CSS Variable will affect theming capabilities, as it will be changed for all themes!"
 />
 
@@ -60,11 +61,7 @@ Some components like the `ObjectPage`, `DynamicPage` and `AnalyticalTable` use t
 ## Style your own components
 
 It's quite likely you have to create some custom components when you are building an app.
-In order to reuse our central styling approach, you can import the `ThemingParameters` that contain the various CSS variables used in our theming.
-
-If you want to style your components with the `react-jss` syntax, you can use the `createUseStyles` styling hook.
-`react-jss` comes already as a dependency of `@ui5/webcomponents-react` to your project - but we recommend adding it to your `package.json` as well.
-**Please make sure you are installing `"react-jss": "^10.0.0"`**. Previous versions of this library won't work correctly together with our library.
+In order to reuse our central styling approach, you can import the `ThemingParameters` that contain the various CSS variables used in our theming, or use the CSS variables directly.
 
 <MessageStrip
   design={MessageStripDesign.Information}
@@ -85,34 +82,31 @@ If you want to style your components with the `react-jss` syntax, you can use th
 
 You can then create a custom component by following this recipe:
 
-```jsx
+```tsx
 import React from 'react';
-import { createUseStyles } from 'react-jss';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import './MyCustomElement.css';
 
-const styles = {
-  container: {
-    backgroundColor: ThemingParameters.sapBackgroundColor,
-    fontFamily: ThemingParameters.sapFontFamily,
-    height: '50px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-};
-
-const useStyles = createUseStyles(styles, { name: 'MyCustomElement' });
-
-const MyCustomElement = () => {
-  const classes = useStyles();
+export const MyCustomElement = () => {
   return (
-    <div className={classes.container}>
+    <div className="containerCustomElement">
       <span style={{ color: ThemingParameters.sapNegativeColor, fontSize: ThemingParameters.sapFontLargeSize }}>
         My Text
       </span>
     </div>
   );
 };
+```
+
+```css
+.containerCustomElement {
+  background-color: var(--sapBackgroundColor);
+  font-family: var(--sapFontFamily);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 ```
 
 This would then be the result:
@@ -126,6 +120,14 @@ This would then be the result:
 Almost all components allow setting `className` or `style` to style the component. For web components, this does **not** mean that styles are inherited by shadow root elements per default.
 Only [inherited CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance#inherited_properties) that are not set inside the shadow root or internally passed properties will change the styles of the internal elements.
 Another special case are abstract components like the `SuggestionItem`. The `ui5-suggestion-item` element is mainly there to pass props to the actual component inside the shadow root and is therefore not stylable.
+
+## Explicitly import CSS bundles
+
+By default, the `ThemeProvider` injects the CSS of the components during runtime. If you want to import the CSS bundles explicitly, you can set the `staticCssInjected` prop to `true`.
+This approach provides you with control over the order in which CSS files are injected, making it easier to override styles.
+
+- **main** package import: `import '@ui5/webcomponents-react/styles.css'`
+- **charts** package import: `import '@ui5/webcomponents-react-charts/styles.css'`
 
 ## CSS Shadow Parts
 
@@ -190,5 +192,9 @@ const TableComponent = () => {
 ```
 
 </details>
+
+## Common CSS
+
+For applying common styling blocks based on SAP Fiori Design Guidelines, we recommend using the [@sap-ui/common-css](https://www.npmjs.com/package/@sap-ui/common-css) package. You can find out more about this [here](?path=/docs/knowledge-base-common-css--docs).
 
 <Footer />

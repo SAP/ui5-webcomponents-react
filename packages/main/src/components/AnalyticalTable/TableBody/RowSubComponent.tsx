@@ -1,20 +1,8 @@
 import type { VirtualItem } from '@tanstack/react-virtual';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import React, { useEffect, useRef } from 'react';
-import { createUseStyles } from 'react-jss';
-
-const styles = {
-  subcomponent: {
-    position: 'absolute',
-    width: '100%',
-    '&:focus': {
-      outlineOffset: `calc(-1 * ${ThemingParameters.sapContent_FocusWidth})`,
-      outline: `${ThemingParameters.sapContent_FocusWidth} ${ThemingParameters.sapContent_FocusStyle} ${ThemingParameters.sapContent_FocusColor}`
-    }
-  }
-};
-const useStyles = createUseStyles(styles, { name: 'RowSubComponent' });
+import { useEffect, useRef } from 'react';
+import { classNames, styleData } from './RowSubComponent.module.css.js';
 
 interface RowSubComponent {
   subComponentsHeight: Record<string, { rowId: string; subComponentHeight?: number }>;
@@ -41,7 +29,8 @@ export const RowSubComponent = (props: RowSubComponent) => {
     rowIndex
   } = props;
   const subComponentRef = useRef(null);
-  const classes = useStyles();
+
+  useStylesheet(styleData, RowSubComponent.displayName);
 
   useEffect(() => {
     const subComponentHeightObserver = new ResizeObserver((entries) => {
@@ -124,9 +113,11 @@ export const RowSubComponent = (props: RowSubComponent) => {
         boxSizing: 'border-box',
         transform: `translateY(${rowHeight}px)`
       }}
-      className={classes.subcomponent}
+      className={classNames.subcomponent}
     >
       {children}
     </div>
   );
 };
+
+RowSubComponent.displayName = 'RowSubComponent';

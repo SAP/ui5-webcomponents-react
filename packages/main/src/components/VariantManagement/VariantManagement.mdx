@@ -7,7 +7,7 @@ import * as ComponentStories from './VariantManagement.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader subComponents={['VariantItem']} />
 
 <br />
 
@@ -52,7 +52,7 @@ const VariantManagementWithCustomValidation = ({ selectedByIndex = 1 }) => {
     if (!e.target.value.match(/^[a-z0-9\s]+$/i)) {
       // mark variant as invalid (prevent internal logic from being applied)
       e.isInvalid = true;
-      setValueStateSaveView(ValueState.Error);
+      setValueStateSaveView(ValueState.Negative);
     } else {
       // mark variant as valid again
       e.isInvalid = false;
@@ -71,7 +71,7 @@ const VariantManagementWithCustomValidation = ({ selectedByIndex = 1 }) => {
     if (e.target.value.length > 12) {
       // mark variant as invalid (prevent internal logic from being applied)
       e.isInvalid = true;
-      setValueStateManageViews(ValueState.Error);
+      setValueStateManageViews(ValueState.Negative);
     } else {
       // mark variant as valid again
       e.isInvalid = false;

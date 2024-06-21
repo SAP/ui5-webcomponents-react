@@ -1,8 +1,8 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import React, { forwardRef, useContext } from 'react';
-import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
+import { forwardRef } from 'react';
+import { useOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
 import type { ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
 import { ToggleButton } from '../../webComponents/index.js';
 
@@ -23,11 +23,13 @@ export interface OverflowToolbarToggleButtonPropTypes extends Omit<ToggleButtonP
 
 /**
  * The `OverflowToolbarToggleButton` represents a toggle button that shows its text only when in the overflow area of a `Toolbar`.
+ *
+ * __Note:__ This component is only compatible with the `Toolbar` component and __not__ with `ToolbarV2`.
  */
 const OverflowToolbarToggleButton = forwardRef<ToggleButtonDomRef, OverflowToolbarToggleButtonPropTypes>(
   (props, ref) => {
     const { children, ...rest } = props;
-    const { inPopover } = useContext(OverflowPopoverContext);
+    const { inPopover } = useOverflowPopoverContext();
 
     return (
       <ToggleButton {...rest} ref={ref}>

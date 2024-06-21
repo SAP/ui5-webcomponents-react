@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-charts",
-  "version": "1.25.1",
+  "version": "1.29.1",
   "description": "Charts for ui5-webcomponents-react",
   "type": "module",
   "main": "dist/index.js",
@@ -14,7 +14,8 @@
     "./package.json": "./package.json",
     "./dist": "./dist/index.js",
     "./dist/*": "./dist/*",
-    "./dist/*.js": "./dist/*.js"
+    "./dist/*.js": "./dist/*.js",
+    "./styles.css": "./dist/css/index.css"
   },
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
   "repository": {
@@ -26,18 +27,20 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "build:css": "postcss --base src --dir dist/css src/**/*.css",
+    "build:css-bundle": "node ../../config/merge-css-modules.js",
+    "watch:css": "yarn build:css --watch"
   },
   "dependencies": {
-    "clsx": "2.1.0",
-    "react-content-loader": "6.2.1",
-    "recharts": "2.12.0"
+    "clsx": "2.1.1",
+    "react-content-loader": "7.0.2",
+    "recharts": "2.12.7"
   },
   "peerDependencies": {
-    "@ui5/webcomponents-react": "~1.25.0",
-    "@ui5/webcomponents-react-base": "~1.25.0",
-    "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
-    "react-jss": "^10.10.0"
+    "@ui5/webcomponents-react": "~1.29.0",
+    "@ui5/webcomponents-react-base": "~1.29.0",
+    "react": "^16.14.0 || ^17 || ^18"
   },
   "publishConfig": {
     "access": "public"

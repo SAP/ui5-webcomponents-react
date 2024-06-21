@@ -1,20 +1,17 @@
 import * as AnalyticalTableHooks from './components/AnalyticalTable/pluginHooks/AnalyticalTableHooks.js';
 
 export * from './components/ActionSheet/index.js';
-export * from './components/AnalyticalCard/index.js';
 export * from './components/AnalyticalCardHeader/index.js';
 export * from './components/AnalyticalTable/index.js';
 export * from './components/AnalyticalTable/defaults/LoadingComponent/TablePlaceholder.js';
-export * from './components/DynamicPage/index.js';
-export * from './components/DynamicPageHeader/index.js';
-export * from './components/DynamicPageTitle/index.js';
+export { ObjectPageHeader } from './components/ObjectPageHeader/index.js';
+export type { ObjectPageHeaderPropTypes } from './components/ObjectPageHeader/index.js';
+export { ObjectPageTitle } from './components/ObjectPageTitle/index.js';
+export type { ObjectPageTitlePropTypes } from './components/ObjectPageTitle/index.js';
 export * from './components/ExpandableText/index.js';
 export * from './components/FilterBar/index.js';
 export * from './components/FilterGroupItem/index.js';
 export * from './components/FlexBox/index.js';
-export * from './components/Form/index.js';
-export * from './components/FormGroup/index.js';
-export * from './components/FormItem/index.js';
 export * from './components/Grid/index.js';
 export * from './components/Loader/index.js';
 export * from './components/MessageBox/index.js';

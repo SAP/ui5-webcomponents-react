@@ -97,7 +97,14 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
 
   const onTableFocus = useCallback(
     (e) => {
-      if (e.target.dataset?.emptyRowCell === 'true' || e.target.dataset.subcomponentActiveElement) {
+      const { dataset } = e.target;
+      if (
+        dataset.emptyRowCell === 'true' ||
+        dataset.hasOwnProperty('subcomponentActiveElement') ||
+        // todo: with the new popover API of ui5wc this might not be necessary anymore
+        dataset.componentName === 'ATHeaderPopoverList' ||
+        dataset.componentName === 'ATHeaderPopover'
+      ) {
         return;
       }
       if (e.target.dataset.subcomponent) {
@@ -147,7 +154,7 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
   const onKeyboardNavigation = useCallback(
     (e) => {
       const { isRtl } = state;
-      const isActiveItemInSubComponent = e.target.dataset.subcomponentActiveElement;
+      const isActiveItemInSubComponent = e.target.dataset.hasOwnProperty('subcomponentActiveElement');
       // check if target is cell and if so proceed from there
       if (
         !currentlyFocusedCell.current &&

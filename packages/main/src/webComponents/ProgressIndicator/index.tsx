@@ -8,20 +8,18 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface ProgressIndicatorAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.16.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.16.0) of **@ui5/webcomponents**.
    */
   accessibleName?: string;
 
   /**
-   * Defines whether component is in disabled state.
-   * @default false
-   */
-  disabled?: boolean;
-
-  /**
-   * Specifies the text value to be displayed in the bar. **Note:**
+   * Specifies the text value to be displayed in the bar.
    *
-   * *   If there is no value provided or the value is empty, the default percentage value is shown.
-   * *   If `hideValue` property is `true` both the `displayValue` and `value` property values are not shown.
+   * **Note:**
+   *
+   * - If there is no value provided or the value is empty, the default percentage value is shown.
+   * - If `hideValue` property is `true` both the `displayValue` and `value` property values are not shown.
    * @default null
    */
   displayValue?: string | null | undefined;
@@ -33,7 +31,10 @@ interface ProgressIndicatorAttributes {
   hideValue?: boolean;
 
   /**
-   * Specifies the numerical value in percent for the length of the component. **Note:** If a value greater than 100 is provided, the percentValue is set to 100. In other cases of invalid value, percentValue is set to its default of 0.
+   * Specifies the numerical value in percent for the length of the component.
+   *
+   * **Note:**
+   * If a value greater than 100 is provided, the percentValue is set to 100. In other cases of invalid value, percentValue is set to its default of 0.
    * @default 0
    */
   value?: number;
@@ -52,18 +53,20 @@ interface ProgressIndicatorPropTypes
     Omit<CommonProps, keyof ProgressIndicatorAttributes> {}
 
 /**
- * Shows the progress of a process in a graphical way. To indicate the progress, the inside of the component is filled with a color.
+ * Shows the progress of a process in a graphical way. To indicate the progress,
+ * the inside of the component is filled with a color.
  *
  * ### Responsive Behavior
- *
  * You can change the size of the Progress Indicator by changing its `width` or `height` CSS properties.
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes, ProgressIndicatorDomRef>(
   'ui5-progress-indicator',
   ['accessibleName', 'displayValue', 'value', 'valueState'],
-  ['disabled', 'hideValue'],
+  ['hideValue'],
   [],
   [],
   () => import('@ui5/webcomponents/dist/ProgressIndicator.js')

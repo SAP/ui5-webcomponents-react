@@ -3,7 +3,7 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { ComponentType, ReactElement, ReactNode, Ref } from 'react';
-import React, { cloneElement, forwardRef, Fragment, isValidElement, useEffect, useState } from 'react';
+import { cloneElement, forwardRef, Fragment, isValidElement, useEffect, useState } from 'react';
 import type { CommonProps, Ui5DomRef } from '../types/index.js';
 import { useServerSideEffect } from './ssr.js';
 import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils.js';
@@ -80,7 +80,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       const removeFragments = (element: ReactNode) => {
         if (!isValidElement(element)) return;
         if (element.type === Fragment) {
-          const elementChildren = element.props?.children;
+          const elementChildren = (element as ReactElement<{ children?: ReactNode | ReactNode[] }>).props?.children;
           if (Array.isArray(elementChildren)) {
             elementChildren.forEach((item) => {
               if (Array.isArray(item)) {
@@ -169,6 +169,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         {...regularProps}
         {...nonWebComponentRelatedProps}
         class={className}
+        suppressHydrationWarning
       >
         {slots}
         {children}

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { stopPropagation } from '../../../../internal/stopPropagation.js';
 import { Input } from '../../../../webComponents/Input/index.js';
 

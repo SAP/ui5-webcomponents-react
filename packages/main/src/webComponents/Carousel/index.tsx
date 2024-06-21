@@ -5,25 +5,41 @@ import type { CarouselNavigateEventDetail } from '@ui5/webcomponents/dist/Carous
 import type BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
 import type BorderDesign from '@ui5/webcomponents/dist/types/BorderDesign.js';
 import type CarouselArrowsPlacement from '@ui5/webcomponents/dist/types/CarouselArrowsPlacement.js';
-import type CarouselPageIndicatorStyle from '@ui5/webcomponents/dist/types/CarouselPageIndicatorStyle.js';
+import type CarouselPageIndicatorType from '@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface CarouselAttributes {
   /**
+   * Defines the accessible name of the component.
+   *
+   * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   */
+  accessibleName?: string;
+
+  /**
+   * Defines the IDs of the elements that label the input.
+   *
+   * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   */
+  accessibleNameRef?: string;
+
+  /**
    * Defines the position of arrows.
    *
    * Available options are:
    *
-   * *   `Content` - the arrows are placed on the sides of the current page.
-   * *   `Navigation` - the arrows are placed on the sides of the page indicator.
+   * - `Content` - the arrows are placed on the sides of the current page.
+   * - `Navigation` - the arrows are placed on the sides of the page indicator.
    * @default "Content"
    */
   arrowsPlacement?: CarouselArrowsPlacement | keyof typeof CarouselArrowsPlacement;
 
   /**
    * Defines the carousel's background design.
+   *
+   * **Note:** Available since [v1.14](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.14) of **@ui5/webcomponents**.
    * @default "Translucent"
    */
   backgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
@@ -35,57 +51,62 @@ interface CarouselAttributes {
   cyclic?: boolean;
 
   /**
-   * Defines the visibility of the navigation arrows. If set to true the navigation arrows will be hidden.
+   * Defines the visibility of the navigation arrows.
+   * If set to true the navigation arrows will be hidden.
    *
-   * **Note:** The navigation arrows are never displayed on touch devices. In this case, the user can swipe to navigate through the items.
+   * **Note:** The navigation arrows are never displayed on touch devices.
+   * In this case, the user can swipe to navigate through the items.
    * @default false
    */
   hideNavigationArrows?: boolean;
 
   /**
-   * Defines the visibility of the page indicator. If set to true the page indicator will be hidden.
+   * Defines the visibility of the page indicator.
+   * If set to true the page indicator will be hidden.
    * @default false
    */
   hidePageIndicator?: boolean;
 
   /**
-   * Defines the number of items per page on large size (more than 1024px). One item per page shown by default.
-   * @default 1
+   * Defines the number of items per page depending on the carousel width.
+   *
+   * - 'S' for screens smaller than 600 pixels.
+   * - 'M' for screens greater than or equal to 600 pixels and smaller than 1024 pixels.
+   * - 'L' for screens greater than or equal to 1024 pixels and smaller than 1440 pixels.
+   * - 'XL' for screens greater than or equal to 1440 pixels.
+   *
+   * One item per page is shown by default.
+   * @default "S1 M1 L1 XL1"
    */
-  itemsPerPageL?: number;
-
-  /**
-   * Defines the number of items per page on medium size (from 640px to 1024px). One item per page shown by default.
-   * @default 1
-   */
-  itemsPerPageM?: number;
-
-  /**
-   * Defines the number of items per page on small size (up to 640px). One item per page shown by default.
-   * @default 1
-   */
-  itemsPerPageS?: number;
+  itemsPerPage?: string;
 
   /**
    * Defines the page indicator background design.
+   *
+   * **Note:** Available since [v1.14](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.14) of **@ui5/webcomponents**.
    * @default "Solid"
    */
   pageIndicatorBackgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
 
   /**
    * Defines the page indicator border design.
+   *
+   * **Note:** Available since [v1.14](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.14) of **@ui5/webcomponents**.
    * @default "Solid"
    */
   pageIndicatorBorderDesign?: BorderDesign | keyof typeof BorderDesign;
 
   /**
-   * Defines the style of the page indicator. Available options are:
+   * Defines the style of the page indicator.
+   * Available options are:
    *
-   * *   `Default` - The page indicator will be visualized as dots if there are fewer than 9 pages. If there are more pages, the page indicator will switch to displaying the current page and the total number of pages. (e.g. X of Y)
-   * *   `Numeric` - The page indicator will display the current page and the total number of pages. (e.g. X of Y)
+   * - `Default` - The page indicator will be visualized as dots if there are fewer than 9 pages. If there are more pages, the page indicator will switch to displaying the current page and the total number of pages. (e.g. X of Y)
+   * - `Numeric` - The page indicator will display the current page and the total number of pages. (e.g. X of Y)
+   *
+   * **Note:** Available since [v1.10](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10) of **@ui5/webcomponents**.
    * @default "Default"
    */
-  pageIndicatorStyle?: CarouselPageIndicatorStyle | keyof typeof CarouselPageIndicatorStyle;
+  pageIndicatorType?: CarouselPageIndicatorType | keyof typeof CarouselPageIndicatorType;
 }
 
 interface CarouselDomRef extends Required<CarouselAttributes>, Ui5DomRef {
@@ -110,56 +131,64 @@ interface CarouselPropTypes
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired whenever the page changes due to user interaction, when the user clicks on the navigation arrows or while resizing, based on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.
+   * Fired whenever the page changes due to user interaction,
+   * when the user clicks on the navigation arrows or while resizing,
+   * based on the `items-per-page` property.
    */
   onNavigate?: (event: Ui5CustomEvent<CarouselDomRef, CarouselNavigateEventDetail>) => void;
 }
 
 /**
- * The Carousel allows the user to browse through a set of items. The component is mostly used for showing a gallery of images, but can hold any other HTML element.
+ * The Carousel allows the user to browse through a set of items.
+ * The component is mostly used for showing a gallery of images, but can hold any other HTML element.
+ *
  * There are several ways to perform navigation:
  *
- * *   on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.
- * *   on mobile - the user can use swipe gestures.
+ * - on desktop - the user can navigate using the navigation arrows or with keyboard shortcuts.
+ * - on mobile - the user can use swipe gestures.
  *
  * ### Usage
  *
  * #### When to use:
  *
- * *   The items you want to display are very different from each other.
- * *   You want to display the items one after the other.
+ * - The items you want to display are very different from each other.
+ * - You want to display the items one after the other.
  *
  * #### When not to use:
  *
- * *   The items you want to display need to be visible at the same time.
- * *   The items you want to display are uniform and very similar.
+ * - The items you want to display need to be visible at the same time.
+ * - The items you want to display are uniform and very similar.
  *
  * ### Keyboard Handling
  *
  * #### Basic Navigation
+ * When the `Carousel` is focused the user can navigate between the items
+ * with the following keyboard shortcuts:
  *
- * When the `Carousel` is focused the user can navigate between the items with the following keyboard shortcuts:
- *
- * *   \[UP/DOWN\] - Navigates to previous and next item
- * *   \[LEFT/RIGHT\] - Navigates to previous and next item
+ * - [Up] or [Down] - Navigates to previous and next item
+ * - [Left] or [Right] - Navigates to previous and next item
  *
  * ### Fast Navigation
+ * This component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].
+ * In order to use this functionality, you need to import the following module:
  *
- * This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or `Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up`. In order to use this functionality, you need to import the following module: `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
+ * `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',
   [
+    'accessibleName',
+    'accessibleNameRef',
     'arrowsPlacement',
     'backgroundDesign',
-    'itemsPerPageL',
-    'itemsPerPageM',
-    'itemsPerPageS',
+    'itemsPerPage',
     'pageIndicatorBackgroundDesign',
     'pageIndicatorBorderDesign',
-    'pageIndicatorStyle'
+    'pageIndicatorType'
   ],
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],
   [],

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
-import { MessageStripDesign } from '../../enums/MessageStripDesign';
 import { Icon } from '../Icon/index.js';
 import { MessageStrip } from './index.js';
 

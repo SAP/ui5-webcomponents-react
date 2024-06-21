@@ -1,6 +1,6 @@
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import React from 'react';
-import { useStyles } from '../util/styles.js';
+import { classNames, styleData } from '../util/TimelineChart.module.css.js';
 
 interface TimelineChartLayerProps {
   ignoreClick?: boolean;
@@ -16,7 +16,7 @@ interface TimelineChartLayerProps {
  * annotations or tasks.
  */
 const TimelineChartLayer = ({ ignoreClick = false, isAnnotation, children, name }: TimelineChartLayerProps) => {
-  const classes = useStyles();
+  useStylesheet(styleData, TimelineChartLayer.displayName);
   const position = 'absolute';
   const pointerEvents = ignoreClick ? 'none' : 'auto';
 
@@ -24,7 +24,7 @@ const TimelineChartLayer = ({ ignoreClick = false, isAnnotation, children, name 
     return (
       <div
         data-component-name={name}
-        className={classes.layer}
+        className={classNames.layer}
         style={{ position: position, pointerEvents: pointerEvents }}
       >
         {children}
@@ -42,5 +42,7 @@ const TimelineChartLayer = ({ ignoreClick = false, isAnnotation, children, name 
     </svg>
   );
 };
+
+TimelineChartLayer.displayName = 'TimelineChartLayer';
 
 export { TimelineChartLayer };

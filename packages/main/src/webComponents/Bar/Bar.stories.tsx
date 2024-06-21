@@ -1,13 +1,12 @@
 import { GitHubLogo } from '@sb/components/GitHub-Mark';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';
-import { BarDesign } from '../../enums/BarDesign';
-import { ButtonDesign } from '../../enums/ButtonDesign';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { Link } from '../Link';
 import { Title } from '../Title';
-import { CenterContent, EndContent, Img, StartContent } from './CodeGen';
 import { Bar } from './index.js';
 
 const meta = {
@@ -20,9 +19,9 @@ const meta = {
   },
   args: {
     design: BarDesign.Header,
-    startContent: StartContent,
-    children: CenterContent,
-    endContent: EndContent
+    startContent: <span>Start Content</span>,
+    children: <span>Center Content</span>,
+    endContent: <span>End Content</span>
   },
   tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof Bar>;
@@ -40,7 +39,11 @@ export const WithCustomElements: Story = {
         startContent={
           <>
             <Button icon={navBackIcon} design={ButtonDesign.Transparent} />
-            {Img}
+            <img
+              src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/main/assets/Logo.png"
+              alt="logo"
+              style={{ marginLeft: '6px', width: '120px' }}
+            />
           </>
         }
         endContent={

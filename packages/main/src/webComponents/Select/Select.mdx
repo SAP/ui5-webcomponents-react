@@ -1,6 +1,6 @@
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
-import { Option, SelectMenu, SelectMenuOption } from '../index.ts';
+import { Option } from '../index.ts';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import * as ComponentStories from './Select.stories';
 import { excludePropsForAbstract } from '@sb/utils';
@@ -54,19 +54,5 @@ const onChange = (event) => {
 
 <Description of={Option} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={Option} />
-
-## SelectMenu
-
-<Description of={SelectMenu} />
-<ArgTypesWithNote of={SelectMenu} />
-
-### Example: Select with custom Options
-
-<Canvas of={ComponentStories.WithSelectMenu} />
-
-## SelectMenuOption
-
-<Description of={SelectMenuOption} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SelectMenuOption} />
 
 <Footer />

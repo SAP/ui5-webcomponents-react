@@ -1,6 +1,5 @@
-import { CssSizeVariables } from '@ui5/webcomponents-react-base';
 import type { CSSProperties, ReactElement } from 'react';
-import React, { Children, cloneElement, isValidElement, useMemo } from 'react';
+import { Children, cloneElement, isValidElement, useMemo } from 'react';
 import { Splitter } from '../Splitter/index.js';
 import type { SplitterElementPropTypes } from '../SplitterElement/index.js';
 
@@ -26,10 +25,13 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
 
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
+      const splitterElementChildMinSize = splitterElementChild.props.hasOwnProperty('minSize')
+        ? splitterElementChild.props.minSize
+        : 0;
       if (
         childrenArray.length - splitterCount - 1 > index &&
         (splitterElementChild.props.resizable || splitterElementChild.props.resizable === undefined) &&
-        splitterElementChild.props.minSize !== undefined
+        splitterElementChildMinSize !== undefined
       ) {
         childrenArray.splice(
           index + splitterCount + 1,
@@ -58,7 +60,7 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
       const size = childrenArray[index]?.props?.size;
       if (size && size !== 'auto') {
         childrenArray[index] = cloneElement(childrenArray[index], {
-          size: `calc(${size} - ${CssSizeVariables.ui5WcrSplitterSize})`
+          size: `calc(${size} - var(--_ui5wcr-SplitterSize))`
         });
       }
     });

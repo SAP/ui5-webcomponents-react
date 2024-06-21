@@ -7,12 +7,21 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface ColorPickerAttributes {
   /**
+   * Determines the name by which the component will be identified upon submission in an HTML form.
+   *
+   * **Note:** This property is only applicable within the context of an HTML Form element.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  name?: string;
+
+  /**
    * Defines the currently selected color of the component.
    *
    * **Note**: use HEX, RGB, RGBA, HSV formats or a CSS color name when modifying this property.
    * @default "rgba(255, 255, 255, 1)"
    */
-  color?: CSSProperties['color'];
+  value?: CSSProperties['color'];
 }
 
 interface ColorPickerDomRef extends Required<ColorPickerAttributes>, Ui5DomRef {}
@@ -31,19 +40,22 @@ interface ColorPickerPropTypes
  *
  * ### Usage
  *
- * #### When to use:
+ * #### When to use
+ * Use the color picker if:
  *
- * *   users need to select any color freely.
+ * -  users need to select any color freely.
  *
- * #### When not to use:
+ * #### When not to use
  *
- * *   Users need to select one color from a predefined set of colors. Use the ColorPalette component instead.
+ * -  Users need to select one color from a predefined set of colors. Use the ColorPalette component instead.
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(
   'ui5-color-picker',
-  ['color'],
+  ['name', 'value'],
   [],
   [],
   ['change'],

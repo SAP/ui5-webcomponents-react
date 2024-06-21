@@ -1,12 +1,13 @@
 'use client';
 
+import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
-import { CssSizeVariables, ThemingParameters } from '@ui5/webcomponents-react-base';
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
-import React, { forwardRef, useContext } from 'react';
-import { createUseStyles } from 'react-jss';
-import { FlexBoxAlignItems, FlexBoxDirection, ListItemType, ValueState } from '../../enums/index.js';
+import { forwardRef, useContext } from 'react';
+import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';
 import type { CustomListItemDomRef } from '../../webComponents/CustomListItem/index.js';
@@ -14,6 +15,7 @@ import { CustomListItem } from '../../webComponents/CustomListItem/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import { Label } from '../../webComponents/Label/index.js';
 import { FlexBox } from '../FlexBox/index.js';
+import { classNames, styleData } from './MessageItem.module.css.js';
 import { getIconNameForType } from './utils.js';
 
 export interface MessageItemPropTypes extends CommonProps {
@@ -52,111 +54,24 @@ export interface MessageItemPropTypes extends CommonProps {
   children?: ReactNode | ReactNode[];
 }
 
-const useStyles = createUseStyles(
-  {
-    listItem: {
-      height: CssSizeVariables.ui5WcrMessageViewListItemHeightSingle
-    },
-    message: {
-      padding: '0.25rem 0',
-      width: '100%',
-      maxWidth: '100%',
-      overflow: 'hidden',
-      paddingInlineEnd: '1rem',
-      boxSizing: 'border-box'
-    },
-    withSubtitle: {
-      height: CssSizeVariables.ui5WcrMessageViewListItemHeightByLine
-    },
-    withChildren: {
-      paddingInlineEnd: '0rem'
-    },
-    iconContainer: {
-      width: '3rem',
-      minWidth: '3rem',
-      height: '2.25rem',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    icon: {
-      width: '1rem',
-      height: '1rem'
-    },
-    title: {
-      fontFamily: ThemingParameters.sapFontHeaderFamily,
-      fontSize: CssSizeVariables.ui5WcrMessageItemTitleFontSize,
-      color: ThemingParameters.sapGroup_TitleTextColor,
-      maxWidth: '100%',
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      flex: '1 1 auto',
-      '& + $subtitle': {
-        marginBlockStart: '0.25rem',
-        cursor: 'inherit'
-      }
-    },
-    subtitle: {},
-    counter: {
-      color: ThemingParameters.sapContent_MarkerTextColor,
-      fontFamily: ThemingParameters.sapFontFamily,
-      fontSize: ThemingParameters.sapFontSize,
-      paddingInlineStart: '1rem',
-      flex: 'none'
-    },
-    navigation: {
-      height: '0.875rem',
-      width: '0.875rem',
-      padding: '0 0.9375rem',
-      flexShrink: 0
-    },
-    typeError: {
-      '& $icon': {
-        color: ThemingParameters.sapNegativeElementColor
-      }
-    },
-    typeSuccess: {
-      '& $icon': {
-        color: ThemingParameters.sapPositiveElementColor
-      }
-    },
-    typeWarning: {
-      ' & $icon': {
-        color: ThemingParameters.sapCriticalElementColor
-      }
-    },
-    typeInformation: {
-      '& $icon': {
-        color: ThemingParameters.sapInformativeElementColor
-      }
-    },
-    typeNone: {
-      '& $icon': {
-        color: ThemingParameters.sapInformativeElementColor
-      }
-    }
-  },
-  { name: 'MessageItem' }
-);
 /**
  * A component used to hold different types of system messages inside the `MessageView` component.
  */
 const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((props, ref) => {
-  const { titleText, subtitleText, counter, type = ValueState.Error, children, className, ...rest } = props;
+  const { titleText, subtitleText, counter, type = ValueState.Negative, children, className, ...rest } = props;
+
+  useStylesheet(styleData, MessageItem.displayName);
 
   const { selectMessage } = useContext(MessageViewContext);
 
-  const classes = useStyles();
-
   const listItemClasses = clsx(
-    classes.listItem,
-    Reflect.get(classes, `type${type}`),
+    classNames.listItem,
+    Reflect.get(classNames, `type${type}`),
     className,
-    subtitleText && classes.withSubtitle
+    subtitleText && classNames.withSubtitle
   );
 
-  const messageClasses = clsx(classes.message, children && classes.withChildren);
+  const messageClasses = clsx(classNames.message, children && classNames.withChildren);
 
   const handleListItemClick = (e) => {
     if (children) {
@@ -187,18 +102,18 @@ const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((prop
       ref={ref}
     >
       <FlexBox alignItems={FlexBoxAlignItems.Center} className={messageClasses}>
-        <div className={classes.iconContainer}>
-          <Icon name={getIconNameForType(type as ValueState)} className={classes.icon} />
+        <div className={classNames.iconContainer}>
+          <Icon name={getIconNameForType(type as ValueState)} className={classNames.icon} />
         </div>
         <FlexBox
           direction={FlexBoxDirection.Column}
           style={{ flex: 'auto', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
         >
-          {titleText && <span className={classes.title}>{titleText}</span>}
-          {subtitleText && <Label className={classes.subtitle}>{subtitleText}</Label>}
+          {titleText && <span className={classNames.title}>{titleText}</span>}
+          {subtitleText && <Label className={classNames.subtitle}>{subtitleText}</Label>}
         </FlexBox>
-        {counter != null && <span className={classes.counter}>{counter}</span>}
-        {children && <Icon className={classes.navigation} name={iconArrowRight} />}
+        {counter != null && <span className={classNames.counter}>{counter}</span>}
+        {children && <Icon className={classNames.navigation} name={iconArrowRight} />}
       </FlexBox>
     </CustomListItem>
   );

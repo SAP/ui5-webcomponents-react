@@ -4,9 +4,9 @@ import {
   VALUE_STATE_SUCCESS,
   VALUE_STATE_WARNING
 } from '@ui5/webcomponents/dist/generated/i18n/i18n-defaults.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import type { IndicationColor } from '../../enums/index.js';
-import { ValueState } from '../../enums/index.js';
 import { INDICATION_COLOR } from '../../i18n/i18n-defaults.js';
 import { Icon } from '../../webComponents/index.js';
 import { ObjectStatus } from './index.js';
@@ -21,7 +21,7 @@ const statesWithCSSVars: {
   hiddenText: undefined | string;
 }[] = [
   {
-    state: 'Error',
+    state: ValueState.Negative,
     color: ThemingParameters.sapNegativeTextColor,
     iconColor: ThemingParameters.sapNegativeElementColor,
     hasDefaultIcon: true,
@@ -39,12 +39,12 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapTextColor,
       backgroundColor: ThemingParameters.sapNeutralBackground,
-      iconColor: ThemingParameters.sapButton_Neutral_TextColor
+      iconColor: ThemingParameters.sapTextColor
     },
     hiddenText: undefined
   },
   {
-    state: 'Success',
+    state: ValueState.Positive,
     color: ThemingParameters.sapPositiveTextColor,
     iconColor: ThemingParameters.sapPositiveElementColor,
     hasDefaultIcon: true,
@@ -56,7 +56,7 @@ const statesWithCSSVars: {
     hiddenText: VALUE_STATE_SUCCESS.defaultText
   },
   {
-    state: 'Warning',
+    state: ValueState.Critical,
     color: ThemingParameters.sapCriticalTextColor,
     iconColor: ThemingParameters.sapCriticalElementColor,
     hasDefaultIcon: true,
@@ -262,7 +262,7 @@ describe('ObjectStatus', () => {
 
   it('stateAnnouncementText', () => {
     cy.mount(
-      <ObjectStatus data-testid="os" state={ValueState.Error} stateAnnouncementText="Custom Text">
+      <ObjectStatus data-testid="os" state={ValueState.Negative} stateAnnouncementText="Custom Text">
         Content
       </ObjectStatus>
     );
@@ -272,20 +272,20 @@ describe('ObjectStatus', () => {
 
   it('large', () => {
     cy.mount(
-      <ObjectStatus large data-testid="os" state={ValueState.Error} showDefaultIcon>
+      <ObjectStatus large data-testid="os" state={ValueState.Negative} showDefaultIcon>
         Content
       </ObjectStatus>
     );
     cy.findByTestId('os').should('have.css', 'font-size', '24px');
     cy.get('[ui5-icon]').should('have.css', 'height', '24px');
     cy.mount(
-      <ObjectStatus large data-testid="os" state={ValueState.Error} showDefaultIcon inverted>
+      <ObjectStatus large data-testid="os" state={ValueState.Negative} showDefaultIcon inverted>
         Content
       </ObjectStatus>
     );
     cy.findByTestId('os').should('have.css', 'font-size', '20px');
     cy.get('[ui5-icon]').should('have.css', 'height', '20px');
-    cy.mount(<ObjectStatus large data-testid="os" state={ValueState.Error} showDefaultIcon inverted />);
+    cy.mount(<ObjectStatus large data-testid="os" state={ValueState.Negative} showDefaultIcon inverted />);
     cy.findByTestId('os').should('have.css', 'font-size', '20px');
     cy.get('[ui5-icon]').should('have.css', 'height', '24px');
   });

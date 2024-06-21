@@ -5,7 +5,7 @@ import type { AnalyticalTableColumnDefinition, ReactTableHooks } from '../types/
 
 const ROW_SAMPLE_SIZE = 20;
 const MAX_WIDTH = 700;
-const CELL_PADDING_PX = 18; /* padding left and right 0.5rem each (16px) + borders (1px) + buffer (1px) */
+export const CELL_PADDING_PX = 18; /* padding left and right 0.5rem each (16px) + borders (1px) + buffer (1px) */
 
 function findLongestString(str1, str2) {
   if (typeof str1 !== 'string' || typeof str2 !== 'string') {
@@ -33,7 +33,7 @@ function stringToPx(dataPoint, id, isHeader = false) {
   const elementId = isHeader ? 'scaleModeHelperHeader' : 'scaleModeHelper';
   const ruler = document.getElementById(`${elementId}-${id}`);
   if (ruler) {
-    ruler.innerHTML = `${dataPoint}`;
+    ruler.textContent = `${dataPoint}`;
     return ruler.scrollWidth;
   }
   return 0;

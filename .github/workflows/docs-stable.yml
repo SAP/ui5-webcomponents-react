@@ -29,12 +29,14 @@ jobs:
           CYPRESS_INSTALL_BINARY: 0
 
       - name: Build Storybook
-        run: yarn build:storybook
+        run: |
+          yarn build:storybook
+          yarn build:storybook-sitemap
         env:
           NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Deploy Docs
-        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.

@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AvatarSize } from '../../enums/AvatarSize';
-import { Priority } from '../../enums/Priority';
+import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
+import NotificationListItemImportance from '@ui5/webcomponents-fiori/dist/types/NotificationListItemImportance';
 import { Avatar } from '../Avatar';
-import { NotificationAction } from '../NotificationAction';
+import { Menu } from '../Menu/index.js';
+import { MenuItem } from '../MenuItem/index.js';
 import { NotificationListItem } from '../NotificationListItem';
 import { NotificationListGroupItem } from './index.js';
 
@@ -10,21 +11,12 @@ const meta = {
   title: 'Data Display / NotificationListGroupItem',
   component: NotificationListGroupItem,
   argTypes: {
-    children: { control: { disable: true } },
-    actions: { control: { disable: true } }
+    children: { control: { disable: true } }
   },
   args: {
-    showClose: true,
-    showCounter: true,
-    titleText: 'Orders',
-    priority: Priority.None,
-    actions: (
-      <>
-        <NotificationAction icon="accept" text="Accept all" />
-        <NotificationAction icon="message-error" text="Reject all" />
-      </>
-    )
-  }
+    titleText: 'Orders'
+  },
+  tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof NotificationListGroupItem>;
 
 export default meta;
@@ -35,13 +27,13 @@ export const Default: Story = {
     return (
       <NotificationListGroupItem {...args}>
         <NotificationListItem
-          priority={Priority.Medium}
+          importance={NotificationListItemImportance.Standard}
           titleText={
             'New order (#2525) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc.'
           }
           avatar={
             <Avatar size={AvatarSize.XS}>
-              <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png" />
+              <img src="https://sap.github.io/ui5-webcomponents/images/avatars/woman_avatar_1.png" />
             </Avatar>
           }
           footnotes={
@@ -50,11 +42,11 @@ export const Default: Story = {
               <span>2 Days</span>
             </>
           }
-          actions={
-            <>
-              <NotificationAction icon="accept" text="Accept" />
-              <NotificationAction icon="message-error" text="Reject" />
-            </>
+          menu={
+            <Menu>
+              <MenuItem icon="accept" text="Accept" />
+              <MenuItem icon="message-error" text="Reject" />
+            </Menu>
           }
         >
           And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet,
@@ -64,10 +56,10 @@ export const Default: Story = {
         <NotificationListItem
           showClose
           titleText="New order (#2526) With a very long title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis vel scelerisque pharetra, tellus odio vehicula dolor, nec elementum lectus turpis at nunc."
-          priority={Priority.High}
+          importance={NotificationListItemImportance.Important}
           avatar={
             <Avatar size={AvatarSize.XS}>
-              <img src="https://sap.github.io/ui5-webcomponents/assets/images/avatars/woman_avatar_1.png" />
+              <img src="https://sap.github.io/ui5-webcomponents/images/avatars/woman_avatar_1.png" />
             </Avatar>
           }
           footnotes={
@@ -76,11 +68,11 @@ export const Default: Story = {
               <span>2 Days</span>
             </>
           }
-          actions={
-            <>
-              <NotificationAction icon="accept" text="Accept" />
-              <NotificationAction icon="message-error" text="Reject" />
-            </>
+          menu={
+            <Menu>
+              <MenuItem icon="accept" text="Accept" />
+              <MenuItem icon="message-error" text="Reject" />
+            </Menu>
           }
         >
           And with a very long description and long labels of the action buttons - Lorem ipsum dolor sit amet,

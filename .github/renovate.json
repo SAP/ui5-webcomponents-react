@@ -1,5 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "baseBranches": ["main", "v1.29.x"],
   "extends": [
     "config:base",
     ":disableDependencyDashboard",
@@ -31,14 +32,19 @@
       "excludePackageNames": ["@storybook/react-vite"]
     },
     {
+      "extends": ["group:storybookMonorepo", "schedule:weekly"],
+      "semanticCommitType": "chore"
+    },
+    {
       "description": "root package dependencies",
       "extends": ["schedule:weekly"],
-      "matchFiles": ["package.json"],
       "semanticCommitType": "chore",
       "groupName": "all non-major dependencies",
       "groupSlug": "root-all-minor-patch",
       "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "excludePackageNames": ["react", "react-dom", "storybook"],
+      "excludePackagePatterns": ["^@storybook/"]
     },
     {
       "description": "Example & Template dependencies",

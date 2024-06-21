@@ -1,6 +1,6 @@
 'use client';
 
-import '@ui5/webcomponents/dist/TableGroupRow.js';
+import '@ui5/webcomponents-compat/dist/TableGroupRow.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
@@ -12,6 +12,7 @@ interface TableGroupRowDomRef extends Required<TableGroupRowAttributes>, Ui5DomR
 interface TableGroupRowPropTypes extends TableGroupRowAttributes, Omit<CommonProps, 'children'> {
   /**
    * Defines the text of the component.
+   *
    * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
@@ -20,7 +21,7 @@ interface TableGroupRowPropTypes extends TableGroupRowAttributes, Omit<CommonPro
 /**
  * The `TableGroupRow` component represents a group row in the `Table`.
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const TableGroupRow = withWebComponent<TableGroupRowPropTypes, TableGroupRowDomRef>(
   'ui5-table-group-row',
@@ -28,7 +29,7 @@ const TableGroupRow = withWebComponent<TableGroupRowPropTypes, TableGroupRowDomR
   [],
   [],
   [],
-  () => import('@ui5/webcomponents/dist/TableGroupRow.js')
+  () => import('@ui5/webcomponents-compat/dist/TableGroupRow.js')
 );
 
 TableGroupRow.displayName = 'TableGroupRow';

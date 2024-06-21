@@ -1,26 +1,12 @@
 'use client';
 
-import { Device, useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
+import { Device, useIsomorphicLayoutEffect, useSyncRef, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactNode } from 'react';
-import React, { forwardRef, useContext, useEffect, useState } from 'react';
-import { createUseStyles } from 'react-jss';
+import { forwardRef, useContext, useEffect, useState } from 'react';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext.js';
 import type { CommonProps } from '../../types/index.js';
-
-const useStyles = createUseStyles(
-  {
-    splitterElement: {
-      display: 'flex',
-      overflow: 'hidden',
-      position: 'relative',
-      willChange: 'flex-basis',
-      minWidth: '0px',
-      minHeight: '0px'
-    }
-  },
-  { name: 'SplitterElement' }
-);
+import { classNames, styleData } from './SplitterElement.module.css.js';
 
 export interface SplitterElementPropTypes extends CommonProps {
   /**
@@ -33,10 +19,14 @@ export interface SplitterElementPropTypes extends CommonProps {
   resizable?: boolean;
   /**
    * Defines the initial size of the `SplitterElement`.
+   *
+   * @default `"auto"`
    */
   size?: CSSProperties['width'] | CSSProperties['height'];
   /**
    * Defines the minimum size of the `SplitterElement`. The resizer element stops when the minimum size is reached.
+   *
+   * @default `0`
    */
   minSize?: number;
   /**
@@ -53,14 +43,15 @@ export interface SplitterElementPropTypes extends CommonProps {
  * content can be completely collapsed.
  */
 const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((props, ref) => {
-  const { children, style, className, minSize, size, resizable: _0, ...rest } = props;
+  const { children, style, className, minSize = 0, size = 'auto', resizable: _0, ...rest } = props;
   const [componentRef, splitterElementRef] = useSyncRef(ref);
   const { vertical, reset } = useContext(SplitterLayoutContext);
   const safariStyles = Device.isSafari() ? { width: 'min-content', flex: '1 1 auto' } : {};
   const defaultFlexStyles = size !== 'auto' ? { flex: `0 1 ${size}` } : { flex: '1 0 min-content', ...safariStyles };
   const [flexStyles, setFlexStyles] = useState(defaultFlexStyles);
   const [flexBasisApplied, setFlexBasisApplied] = useState(false);
-  const classes = useStyles();
+
+  useStylesheet(styleData, SplitterElement.displayName);
 
   useEffect(() => {
     const elementObserver = new ResizeObserver(([element]) => {
@@ -101,7 +92,7 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
   return (
     <div
       ref={componentRef}
-      className={clsx(classes.splitterElement, classes[vertical ? 'vertical' : 'horizontal'], className)}
+      className={clsx(classNames.splitterElement, className)}
       style={{
         minHeight: vertical && minSize ? `${minSize}px` : undefined,
         minWidth: !vertical && minSize ? `${minSize}px` : undefined,
@@ -115,11 +106,6 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
     </div>
   );
 });
-
-SplitterElement.defaultProps = {
-  minSize: 0,
-  size: 'auto'
-};
 
 SplitterElement.displayName = 'SplitterElement';
 

@@ -1,42 +1,10 @@
-import { ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { useStylesheet, useI18nBundle } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { createUseStyles } from 'react-jss';
 import { DRAG_TO_RESIZE } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
-
-const verticalResizerStyles = {
-  container: {
-    overflow: 'hidden',
-    position: 'relative',
-    height: '5px',
-    textAlign: 'center',
-    cursor: 'row-resize',
-    boxSizing: 'border-box',
-    '&:hover': {
-      backgroundColor: ThemingParameters.sapContent_DragAndDropActiveColor,
-      color: ThemingParameters.sapHighlightTextColor
-    },
-    '&:before': {
-      fontSize: '10px',
-      fontFamily: ThemingParameters.sapFontFamily,
-      top: 0,
-      position: 'absolute',
-      content: '"\u2981\u2981\u2981\u2981"',
-      lineHeight: '5px',
-      pointerEvents: 'none'
-    }
-  },
-  resizer: {
-    position: 'absolute',
-    opacity: 0.5,
-    backgroundColor: ThemingParameters.sapContent_DragAndDropActiveColor,
-    height: '5px'
-  }
-};
-
-const useStyles = createUseStyles(verticalResizerStyles, { name: 'VerticalResizer' });
+import { classNames, styleData } from './VerticalResizer.module.css.js';
 
 interface VerticalResizerProps {
   analyticalTableRef: MutableRefObject<any>;
@@ -71,7 +39,9 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
     visibleRows,
     handleOnLoadMore
   } = props;
-  const classes = useStyles();
+
+  useStylesheet(styleData, VerticalResizer.displayName);
+
   const startY = useRef(null);
   const verticalResizerRef = useRef(null);
   const [resizerPosition, setResizerPosition] = useState(undefined);
@@ -177,7 +147,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
 
   return (
     <div
-      className={classes.container}
+      className={classNames.container}
       ref={verticalResizerRef}
       onMouseDown={handleResizeStart}
       onTouchStart={handleResizeStart}
@@ -188,7 +158,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
         isDragging &&
         createPortal(
           <div
-            className={classes.resizer}
+            className={classNames.resizer}
             style={{ top: resizerPosition.top, left: resizerPosition.left, width: resizerPosition.width }}
           />,
           portalContainer ?? document.body
@@ -196,3 +166,5 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
     </div>
   );
 };
+
+VerticalResizer.displayName = 'VerticalResizer';

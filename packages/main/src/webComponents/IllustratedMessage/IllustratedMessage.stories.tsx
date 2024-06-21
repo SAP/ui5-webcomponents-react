@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import '@ui5/webcomponents-fiori/dist/illustrations/AllIllustrations.js';
-import { IllustrationMessageType } from '../../enums/IllustrationMessageType';
+import type { Meta, StoryObj } from '@storybook/react';
+import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
 import { IllustratedMessage } from './index';
 
 const meta = {
@@ -10,7 +10,12 @@ const meta = {
     name: IllustrationMessageType.BeforeSearch
   },
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: false },
+    subtitle: { control: false },
+    name: {
+      control: 'select',
+      options: Object.values(IllustrationMessageType)
+    }
   }
 } satisfies Meta<typeof IllustratedMessage>;
 

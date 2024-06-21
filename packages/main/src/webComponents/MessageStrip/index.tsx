@@ -8,6 +8,16 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface MessageStripAttributes {
   /**
+   * Defines the color scheme of the component.
+   * There are 10 predefined schemes.
+   * To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default "1"
+   */
+  colorScheme?: string;
+
+  /**
    * Defines the component type.
    * @default "Information"
    */
@@ -20,7 +30,10 @@ interface MessageStripAttributes {
   hideCloseButton?: boolean;
 
   /**
-   * Defines whether the MessageStrip will show an icon in the beginning. You can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.
+   * Defines whether the MessageStrip will show an icon in the beginning.
+   * You can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.
+   *
+   *  * **Note:** If <code>MessageStripDesign.ColorSet1</code> or <code>MessageStripDesign.ColorSet2</code> value is set to the <code>design</code> property, default icon will not be presented.
    * @default false
    */
   hideIcon?: boolean;
@@ -41,7 +54,8 @@ interface MessageStripPropTypes
   /**
    * Defines the content to be displayed as graphical element within the component.
    *
-   * **Note:** If no icon is given, the default icon for the component type will be used. The SAP-icons font provides numerous options.
+   * **Note:** If no icon is given, the default icon for the component type will be used.
+   * The SAP-icons font provides numerous options.
    *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    *
@@ -53,29 +67,37 @@ interface MessageStripPropTypes
    */
   icon?: UI5WCSlotsNode;
   /**
-   * Fired when the close button is pressed either with a click/tap or by using the Enter or Space key.
+   * Fired when the close button is pressed either with a
+   * click/tap or by using the Enter or Space key.
    */
   onClose?: (event: Ui5CustomEvent<MessageStripDomRef>) => void;
 }
 
 /**
- * The `MessageStrip` component enables the embedding of app-related messages. It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Warning and Negative. Each message can have a Close button, so that it can be removed from the UI, if needed.
+ * The `MessageStrip` component enables the embedding of app-related messages.
+ * It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Critical and Negative.
+ * Each message can have a Close button, so that it can be removed from the UI, if needed.
  *
  * ### Usage
  *
- * For the `MessageStrip` component, you can define whether it displays an icon in the beginning and a close button. Moreover, its size and background can be controlled with CSS.
+ * For the `MessageStrip` component, you can define whether it displays
+ * an icon in the beginning and a close button. Moreover, its size and background
+ * can be controlled with CSS.
  *
  * ### Keyboard Handling
  *
  * #### Fast Navigation
+ * This component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].
+ * In order to use this functionality, you need to import the following module:
+ * `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
  *
- * This component provides a build in fast navigation group which can be used via `F6 / Shift + F6` or `Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up`. In order to use this functionality, you need to import the following module: `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
  *
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
+ *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const MessageStrip = withWebComponent<MessageStripPropTypes, MessageStripDomRef>(
   'ui5-message-strip',
-  ['design'],
+  ['colorScheme', 'design'],
   ['hideCloseButton', 'hideIcon'],
   ['icon'],
   ['close'],

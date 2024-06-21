@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import TableGrowingMode from '@ui5/webcomponents-compat/dist/types/TableGrowingMode.js';
 import { useState } from 'react';
-import { TableGrowingMode } from '../../enums/index.js';
-import { Label } from '../Label/index.js';
 import { TableCell } from '../TableCell/index.js';
 import { TableColumn } from '../TableColumn/index.js';
 import { TableRow } from '../TableRow/index.js';
@@ -14,7 +13,8 @@ const meta = {
     columns: { control: { disable: true } },
     children: { control: { disable: true } }
   },
-  args: {}
+  args: {},
+  tags: ['package:@ui5/webcomponents-compat']
 } satisfies Meta<typeof Table>;
 
 export default meta;
@@ -28,55 +28,55 @@ export const Default: Story = {
         columns={
           <>
             <TableColumn style={{ width: '12rem' }}>
-              <Label>Product</Label>
+              <span>Product</span>
             </TableColumn>
             <TableColumn minWidth={800} popinText="Supplier">
-              <Label>Supplier</Label>
+              <span>Supplier</span>
             </TableColumn>
             <TableColumn minWidth={600} popinText="Dimensions" demandPopin>
-              <Label>Dimensions</Label>
+              <span>Dimensions</span>
             </TableColumn>
             <TableColumn minWidth={600} popinText="Weight" demandPopin>
-              <Label>Weight</Label>
+              <span>Weight</span>
             </TableColumn>
             <TableColumn>
-              <Label>Price</Label>
+              <span>Price</span>
             </TableColumn>
           </>
         }
       >
         <TableRow>
           <TableCell>
-            <Label>Notebook Basic</Label>
+            <span>Notebook Basic</span>
           </TableCell>
           <TableCell>
-            <Label>Very Best Screens</Label>
+            <span>Very Best Screens</span>
           </TableCell>
           <TableCell>
-            <Label>30 x 18 x 3cm</Label>
+            <span>30 x 18 x 3cm</span>
           </TableCell>
           <TableCell>
-            <Label>4.2KG</Label>
+            <span>4.2KG</span>
           </TableCell>
           <TableCell>
-            <Label>956EUR</Label>
+            <span>956EUR</span>
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell>
-            <Label>Notebook Basic 17HT-1001</Label>
+            <span>Notebook Basic 17HT-1001</span>
           </TableCell>
           <TableCell>
-            <Label>Very Best Screens</Label>
+            <span>Very Best Screens</span>
           </TableCell>
           <TableCell>
-            <Label>29 x 17 x 3.1cm</Label>
+            <span>29 x 17 x 3.1cm</span>
           </TableCell>
           <TableCell>
-            <Label>4.5KG</Label>
+            <span>4.5KG</span>
           </TableCell>
           <TableCell>
-            <Label>1249EUR</Label>
+            <span>1249EUR</span>
           </TableCell>
         </TableRow>
       </Table>
@@ -90,10 +90,10 @@ export const GrowingTable: Story = {
       return new Array(25).fill('').map((_, index) => (
         <TableRow key={`${index + indexOffset}-row`}>
           <TableCell>
-            <Label>{index + indexOffset}</Label>
+            <span>{index + indexOffset}</span>
           </TableCell>
           <TableCell>
-            <Label>Placeholder</Label>
+            <span>Placeholder</span>
           </TableCell>
         </TableRow>
       ));
@@ -110,10 +110,10 @@ export const GrowingTable: Story = {
           columns={
             <>
               <TableColumn>
-                <Label>Column 1</Label>
+                <span>Column 1</span>
               </TableColumn>
               <TableColumn>
-                <Label>Column 2</Label>
+                <span>Column 2</span>
               </TableColumn>
             </>
           }

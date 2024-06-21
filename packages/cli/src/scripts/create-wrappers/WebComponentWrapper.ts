@@ -19,11 +19,13 @@ export class WebComponentWrapper {
   public exportSet = new Set<string>();
   public typeExportSet = new Set<string>();
   public attributesMap = new Map<string, string>();
+  public readonly packageName: string;
 
-  constructor(tagName: string, componentName: string, modulePath: string) {
+  constructor(tagName: string, componentName: string, modulePath: string, packageName: string) {
     this.tagName = tagName;
     this.componentName = componentName;
     this.modulePath = modulePath;
+    this.packageName = packageName;
   }
 
   addDefaultImport(pkgName: string, localName: string) {

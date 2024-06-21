@@ -55,22 +55,21 @@
     padding: 0;
   }
 
-  .infoTable {
-    margin: 1rem 0;
-    border-spacing: 0;
-    width: unset;
+  .pseudoInvisibleText {
+    font-size: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+    user-select: none;
   }
 
-  .infoTable th,
-  .infoTable td {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    text-align: start;
-    height: 1.5rem;
+  .formAlignLabelStart::part(label) {
+    padding-block-start: 0.25rem;
+    align-self: start;
   }
 
-  .infoTable th {
-    padding-inline-end: 1.25rem;
+  .dynamicPageStickyContent::part(fit-content) {
+      position: static;
   }
 
   /* TODO remove this workaround as soon as https://github.com/storybookjs/storybook/issues/20497 is fixed */

@@ -1,48 +1,20 @@
+import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
+import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { CSSProperties, ReactElement } from 'react';
-import React, { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { AvatarSize } from '../../enums/index.js';
-
-const styles = {
-  base: {
-    alignSelf: 'center',
-    opacity: 0,
-    paddingInlineEnd: '1rem'
-  },
-  hidden: {
-    opacity: 0
-  },
-  visible: {
-    transition: 'opacity 0.5s',
-    opacity: 1
-  },
-  imageContainer: {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    maxHeight: '3rem',
-    width: '3rem',
-    maxWidth: '3rem'
-  },
-  image: {
-    width: '100%',
-    height: '100%'
-  }
-};
-
-const useStyles = createUseStyles(styles, {
-  name: 'CollapsedAvatar'
-});
+import type { CSSProperties } from 'react';
+import { cloneElement, useEffect, useMemo, useRef, useState } from 'react';
+import { classNames, styleData } from './CollapsedAvatar.module.css.js';
+import type { ObjectPagePropTypes } from './index.js';
 
 export interface CollapsedAvatarPropTypes {
-  image?: string | ReactElement;
-  imageShapeCircle?: boolean;
+  image?: ObjectPagePropTypes['image'];
+  imageShapeCircle?: ObjectPagePropTypes['imageShapeCircle'];
   style?: CSSProperties;
 }
 
 export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
   const { image, imageShapeCircle, style } = props;
-  const classes = useStyles();
+  useStylesheet(styleData, CollapsedAvatar.displayName);
   const [isMounted, setIsMounted] = useState(false);
   const domRef = useRef(null);
 
@@ -52,18 +24,18 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
     if (typeof image === 'string') {
       return (
         <span
-          className={classes.imageContainer}
+          className={classNames.imageContainer}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
         >
-          <img className={classes.image} src={image} alt="Object Page Image" />
+          <img className={classNames.image} src={image} alt="Object Page Image" />
         </span>
       );
     } else {
       return cloneElement(image, {
         size: AvatarSize.S,
         className: image.props?.className
-          ? `${classes.imageContainer} ${image.props?.className}`
-          : classes.imageContainer
+          ? `${classNames.imageContainer} ${image.props?.className}`
+          : classNames.imageContainer
       } as unknown);
     }
   }, [image, imageShapeCircle]);
@@ -72,7 +44,7 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
     setIsMounted(true);
   }, []);
 
-  const containerClasses = clsx(classes.base, isMounted ? classes.visible : classes.hidden);
+  const containerClasses = clsx(classNames.base, isMounted ? classNames.visible : classNames.hidden);
 
   return (
     <div ref={domRef} className={containerClasses} style={style} data-component-name="ObjectPageCollapsedAvatar">
@@ -80,3 +52,5 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
     </div>
   );
 };
+
+CollapsedAvatar.displayName = 'CollapsedAvatar';

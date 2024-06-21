@@ -8,7 +8,6 @@ import {
   TableRow,
   Text
 } from '@ui5/webcomponents-react';
-import React from 'react';
 import { ProductCollection } from './products.json';
 
 export const ProductsTable = () => {

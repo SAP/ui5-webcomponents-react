@@ -3,6 +3,135 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.1...v1.29.2) (2024-06-03)
+
+### Bug Fixes
+
+- update translations ([bd070cb](https://github.com/SAP/ui5-webcomponents-react/commit/bd070cb6f9a20ceb0c8c77c3fbd99ab675285573))
+
+## [1.29.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.0...v1.29.1) (2024-05-29)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+# [1.29.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.4...v1.29.0) (2024-05-29)
+
+### Bug Fixes
+
+- fix postcss flexbox warnings ([#5859](https://github.com/SAP/ui5-webcomponents-react/issues/5859)) ([71688b8](https://github.com/SAP/ui5-webcomponents-react/commit/71688b84ca5ed6d0b0b0e1359cd44451b4a50872))
+
+### Features
+
+- **AnalyticalTable:** introduce autoResize column feature ([#3196](https://github.com/SAP/ui5-webcomponents-react/issues/3196)) ([#5758](https://github.com/SAP/ui5-webcomponents-react/issues/5758)) ([8f2ca88](https://github.com/SAP/ui5-webcomponents-react/commit/8f2ca882e008f1ba8f96e3a29afc0da5c088cead))
+
+## [1.28.4](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.3...v1.28.4) (2024-05-24)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+## [1.28.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.2...v1.28.3) (2024-05-24)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+## [1.28.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.1...v1.28.2) (2024-05-24)
+
+### Bug Fixes
+
+- **AnalyticalTable:** trap focus inside column header popover while open ([#5827](https://github.com/SAP/ui5-webcomponents-react/issues/5827)) ([25be46d](https://github.com/SAP/ui5-webcomponents-react/commit/25be46dfb45862e3d16f54d22d6b457bdd530792)), closes [#5821](https://github.com/SAP/ui5-webcomponents-react/issues/5821)
+- **deps:** update dependency @tanstack/react-virtual to ~3.5.0 ([#5763](https://github.com/SAP/ui5-webcomponents-react/issues/5763)) ([412206b](https://github.com/SAP/ui5-webcomponents-react/commit/412206bbe4e47ad731bc1086d1b8bc7f74ad22fe))
+- **ExpandableText:** announce state of "Show More" button correctly with screen readers ([#5836](https://github.com/SAP/ui5-webcomponents-react/issues/5836)) ([34d4a39](https://github.com/SAP/ui5-webcomponents-react/commit/34d4a39b4e62c257c24cb45a9719d883a31ba913))
+- **FilterBar:** improve a11y & update to latest design specs ([#5787](https://github.com/SAP/ui5-webcomponents-react/issues/5787)) ([5ee04d7](https://github.com/SAP/ui5-webcomponents-react/commit/5ee04d7f8202e8ca21b161daf0e67ec6b79c5ccf)), closes [#5667](https://github.com/SAP/ui5-webcomponents-react/issues/5667) [#5764](https://github.com/SAP/ui5-webcomponents-react/issues/5764)
+- **Form:** add gap between columns ([#5832](https://github.com/SAP/ui5-webcomponents-react/issues/5832)) ([954c627](https://github.com/SAP/ui5-webcomponents-react/commit/954c627756ac864a8686c5a5bc0b6b3121d39ebc))
+- **Form:** fix column layout for FormGroups ([#5824](https://github.com/SAP/ui5-webcomponents-react/issues/5824)) ([f90ce16](https://github.com/SAP/ui5-webcomponents-react/commit/f90ce167a18a9241cfe1549cd4176af7fd78d29c))
+- **Form:** fix vertical alignment of FormItems for `labelSpan=12` ([#5843](https://github.com/SAP/ui5-webcomponents-react/issues/5843)) ([11c5094](https://github.com/SAP/ui5-webcomponents-react/commit/11c5094ebc385a49266b192fdd6b8d740990f6d8))
+- **Form:** improve a11y of ui5 web component inputs ([#5846](https://github.com/SAP/ui5-webcomponents-react/issues/5846)) ([a2d4b7f](https://github.com/SAP/ui5-webcomponents-react/commit/a2d4b7f80bcd35c7a7168bcfa023bc1290b01f45)), closes [#5820](https://github.com/SAP/ui5-webcomponents-react/issues/5820)
+- **Loader:** deprecate component ([#5844](https://github.com/SAP/ui5-webcomponents-react/issues/5844)) ([69901b5](https://github.com/SAP/ui5-webcomponents-react/commit/69901b5068bac33dd8f121846480b9bafe8b87e5))
+- **ObjectStatus:** don't announce default icons via screen readers ([#5809](https://github.com/SAP/ui5-webcomponents-react/issues/5809)) ([cecce78](https://github.com/SAP/ui5-webcomponents-react/commit/cecce78a64050ff69c09f2e8aed539ae59993616)), closes [#5806](https://github.com/SAP/ui5-webcomponents-react/issues/5806)
+- suppress hydration warnings for web components ([#5803](https://github.com/SAP/ui5-webcomponents-react/issues/5803)) ([1def75b](https://github.com/SAP/ui5-webcomponents-react/commit/1def75bc1581a382d898137a91d0b9d7f375504f))
+- **ToolbarSeparator:** use "separator" `role` to announce separator ([#5810](https://github.com/SAP/ui5-webcomponents-react/issues/5810)) ([9471454](https://github.com/SAP/ui5-webcomponents-react/commit/94714547eefc8841b1ec25071e7f2688bcaf4a53)), closes [#5808](https://github.com/SAP/ui5-webcomponents-react/issues/5808)
+- **useStylesheet:** track stylesheets with `useSyncExternalStore` ([#5845](https://github.com/SAP/ui5-webcomponents-react/issues/5845)) ([a5c0f6d](https://github.com/SAP/ui5-webcomponents-react/commit/a5c0f6df29925eee08f584c79f93623b84c163fe))
+- **VariantManagement:** fix "Manage Views" default validation ([#5798](https://github.com/SAP/ui5-webcomponents-react/issues/5798)) ([2f3263b](https://github.com/SAP/ui5-webcomponents-react/commit/2f3263ba77cc55c88aec8dc4369791a4a12e8ce1)), closes [#5766](https://github.com/SAP/ui5-webcomponents-react/issues/5766)
+
+## [1.28.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.0...v1.28.1) (2024-05-02)
+
+### Bug Fixes
+
+- **AnalyticalTable:** correct indentation for tree tables with custom cell ([#5765](https://github.com/SAP/ui5-webcomponents-react/issues/5765)) ([30ead6e](https://github.com/SAP/ui5-webcomponents-react/commit/30ead6e6227730e1fe560881bc5adaf8e2bf8e5e))
+- **AnalyticalTable:** exclude expand button from tab-chain ([#5753](https://github.com/SAP/ui5-webcomponents-react/issues/5753)) ([169ed49](https://github.com/SAP/ui5-webcomponents-react/commit/169ed4947a50d36d92b4adcc1a95e0fcb621140e)), closes [#5749](https://github.com/SAP/ui5-webcomponents-react/issues/5749)
+- **deps:** update dependency @tanstack/react-virtual to ~3.4.0 ([#5728](https://github.com/SAP/ui5-webcomponents-react/issues/5728)) ([10ebc6d](https://github.com/SAP/ui5-webcomponents-react/commit/10ebc6d5f62dd8680c2d5d0f1052c3bb8f410a97))
+- **deps:** update dependency clsx to v2.1.1 ([#5747](https://github.com/SAP/ui5-webcomponents-react/issues/5747)) ([fa5bbc6](https://github.com/SAP/ui5-webcomponents-react/commit/fa5bbc67ff3613766d5c2b7ccc8232e3ae480fb8))
+- **ObjectStatus:** always announce state via screen reader ([#5757](https://github.com/SAP/ui5-webcomponents-react/issues/5757)) ([7fc8ae7](https://github.com/SAP/ui5-webcomponents-react/commit/7fc8ae7cc5a9e2f6dbb6fb13bdf805a475df80ef)), closes [#5625](https://github.com/SAP/ui5-webcomponents-react/issues/5625)
+- **OverflowPopover:** make OverflowPopoverContext to a single to issue on multiple instances ([#5739](https://github.com/SAP/ui5-webcomponents-react/issues/5739)) ([368815a](https://github.com/SAP/ui5-webcomponents-react/commit/368815ac686a5edaed221be668b1a2d01a603f8c)), closes [#5738](https://github.com/SAP/ui5-webcomponents-react/issues/5738)
+
+# [1.28.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.27.0...v1.28.0) (2024-04-19)
+
+### Bug Fixes
+
+- **AnalyticalTable:** correct color of navigation indicator ([#5702](https://github.com/SAP/ui5-webcomponents-react/issues/5702)) ([a15bb43](https://github.com/SAP/ui5-webcomponents-react/commit/a15bb43b7b63d010c9853b9188f63e1c01fd09eb)), closes [#5701](https://github.com/SAP/ui5-webcomponents-react/issues/5701)
+- **deps:** update dependency @tanstack/react-virtual to ~3.3.0 ([#5712](https://github.com/SAP/ui5-webcomponents-react/issues/5712)) ([abd25b5](https://github.com/SAP/ui5-webcomponents-react/commit/abd25b549e2ed58f5c8838dc8320f21bedfaccb6))
+- **DynamicPage & ObjectPage:** improve a11y of header-features section ([#5684](https://github.com/SAP/ui5-webcomponents-react/issues/5684)) ([f207e57](https://github.com/SAP/ui5-webcomponents-react/commit/f207e574ab726726fa4e803566bd73f47aafdb13)), closes [#5670](https://github.com/SAP/ui5-webcomponents-react/issues/5670) [#5669](https://github.com/SAP/ui5-webcomponents-react/issues/5669) [#5666](https://github.com/SAP/ui5-webcomponents-react/issues/5666)
+- **Form:** adjust to use latest design spec ([#5716](https://github.com/SAP/ui5-webcomponents-react/issues/5716)) ([c3ea83f](https://github.com/SAP/ui5-webcomponents-react/commit/c3ea83f9d77e4a283986858ca389b684cb07c76d))
+- **Form:** fix reading and tab order when only FormItems are used ([#5714](https://github.com/SAP/ui5-webcomponents-react/issues/5714)) ([5cec60b](https://github.com/SAP/ui5-webcomponents-react/commit/5cec60b024cc3946478abe3a72939663e62bbfcd)), closes [#5704](https://github.com/SAP/ui5-webcomponents-react/issues/5704)
+- **Form:** improve balancing across multiple columns when only FormItems are used ([#5731](https://github.com/SAP/ui5-webcomponents-react/issues/5731)) ([ad0f422](https://github.com/SAP/ui5-webcomponents-react/commit/ad0f4222d84a2f37dfd523853d123397076f2194))
+- **SelectDialog - TypeScript:** omit unsupported `state` prop from prop types ([#5692](https://github.com/SAP/ui5-webcomponents-react/issues/5692)) ([67bcc70](https://github.com/SAP/ui5-webcomponents-react/commit/67bcc709484589080952cfd84657bf9d7190d256))
+- **ThemeProvider:** fix style injection and removal in case multiple ThemeProviders are used ([#5732](https://github.com/SAP/ui5-webcomponents-react/issues/5732)) ([d290739](https://github.com/SAP/ui5-webcomponents-react/commit/d290739264b9f1977616f5f88edd3603b0be2a8c))
+
+# [1.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.1...v1.27.0) (2024-04-09)
+
+### Bug Fixes
+
+- **AnalyticalTable:** calculate empty cell width correctly ([#5660](https://github.com/SAP/ui5-webcomponents-react/issues/5660)) ([aaf8de8](https://github.com/SAP/ui5-webcomponents-react/commit/aaf8de80b3bc78a0810a90d729bf01623034a651)), closes [#5609](https://github.com/SAP/ui5-webcomponents-react/issues/5609)
+- **AnalyticalTable:** only render tree ident spacer when necessary ([#5634](https://github.com/SAP/ui5-webcomponents-react/issues/5634)) ([d62a9e7](https://github.com/SAP/ui5-webcomponents-react/commit/d62a9e72f7395a845c4ea6641c0e5de67387c4d0))
+- **deps:** update dependency @tanstack/react-virtual to ~3.2.0 ([#5621](https://github.com/SAP/ui5-webcomponents-react/issues/5621)) ([e83f05b](https://github.com/SAP/ui5-webcomponents-react/commit/e83f05b896a73a4e34a61af939cf8c8fbe76698e))
+- **Form:** adjust vertical layout padding ([#5653](https://github.com/SAP/ui5-webcomponents-react/issues/5653)) ([334d1a0](https://github.com/SAP/ui5-webcomponents-react/commit/334d1a0d09646683aa48e234269f9e15332e097c)), closes [#5603](https://github.com/SAP/ui5-webcomponents-react/issues/5603)
+- **FormItem - TypeScript:** improve children type and add note outlining unsupported values ([#5643](https://github.com/SAP/ui5-webcomponents-react/issues/5643)) ([1aaf385](https://github.com/SAP/ui5-webcomponents-react/commit/1aaf3855aba330367aab8e27dcc102d4556bc3e2)), closes [#5642](https://github.com/SAP/ui5-webcomponents-react/issues/5642)
+- **MessageBox:** replace duplicate `footer` and `header` tag ([#5645](https://github.com/SAP/ui5-webcomponents-react/issues/5645)) ([3a1bc7b](https://github.com/SAP/ui5-webcomponents-react/commit/3a1bc7b9d2e63db8a725072cd146ba93fc532966)), closes [#5644](https://github.com/SAP/ui5-webcomponents-react/issues/5644)
+- **ObjectPage:** escape unsupported chars for `id` of sections ([#5641](https://github.com/SAP/ui5-webcomponents-react/issues/5641)) ([94cc89a](https://github.com/SAP/ui5-webcomponents-react/commit/94cc89a9ef9143dadda09053defa061d49381b2a)), closes [#5638](https://github.com/SAP/ui5-webcomponents-react/issues/5638)
+- **SplitterLayout:** improve drag and drop behavior ([#5654](https://github.com/SAP/ui5-webcomponents-react/issues/5654)) ([658e7b8](https://github.com/SAP/ui5-webcomponents-react/commit/658e7b8259c9ac6fe421ded9dcede14cc51fd39e)), closes [#5605](https://github.com/SAP/ui5-webcomponents-react/issues/5605)
+- **SplitterLayout:** improve drag and drop behavior ([#5683](https://github.com/SAP/ui5-webcomponents-react/issues/5683)) ([0efd07a](https://github.com/SAP/ui5-webcomponents-react/commit/0efd07aa68f00686a617e1ad744c2d531b13ee1b)), closes [#5605](https://github.com/SAP/ui5-webcomponents-react/issues/5605)
+
+### Features
+
+- **AnalyticalTable:** show `noDataText` if table is filtered and no rows are returned ([#5659](https://github.com/SAP/ui5-webcomponents-react/issues/5659)) ([5e97597](https://github.com/SAP/ui5-webcomponents-react/commit/5e975978a1c1f2d3b1d53c10b2df12ed22078451))
+- update `@ui5/webcomponents` mono repo to `~1.24.0` ([#5682](https://github.com/SAP/ui5-webcomponents-react/issues/5682)) ([0a6ee9e](https://github.com/SAP/ui5-webcomponents-react/commit/0a6ee9e475765fb4f51fbf180028a3699139c0b9))
+
+## [1.26.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.0...v1.26.1) (2024-03-19)
+
+### Bug Fixes
+
+- **CalendarLegendItemType:** export enum in root ([#5598](https://github.com/SAP/ui5-webcomponents-react/issues/5598)) ([8b95cae](https://github.com/SAP/ui5-webcomponents-react/commit/8b95cae18700686cf439183ae024d4637acd8cb8))
+- **ObjectPage:** add safeguards for single section spacer calculation ([#5604](https://github.com/SAP/ui5-webcomponents-react/issues/5604)) ([f01d47c](https://github.com/SAP/ui5-webcomponents-react/commit/f01d47cf781914d64c828de71e1d8d43bd217f0d)), closes [#5600](https://github.com/SAP/ui5-webcomponents-react/issues/5600)
+- **ObjectPage:** prevent initially mounting all children in `IconTabBar` mode ([#5601](https://github.com/SAP/ui5-webcomponents-react/issues/5601)) ([9e02606](https://github.com/SAP/ui5-webcomponents-react/commit/9e026063207d5264b75355609c90f630d59c4ed9))
+- **useStylesheet:** only remove styles when all components are unmounted ([#5616](https://github.com/SAP/ui5-webcomponents-react/issues/5616)) ([0bc5069](https://github.com/SAP/ui5-webcomponents-react/commit/0bc506990140cd5c94b12dc8cd7f17b546ccd97d)), closes [#5608](https://github.com/SAP/ui5-webcomponents-react/issues/5608)
+
+# [1.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.1...v1.26.0) (2024-03-08)
+
+### Bug Fixes
+
+- **AnalyticalTable & FilterBar:** fully support ui5-webcomponents scoping ([#5537](https://github.com/SAP/ui5-webcomponents-react/issues/5537)) ([3b5a2f5](https://github.com/SAP/ui5-webcomponents-react/commit/3b5a2f5575d5d04818358e5be0ed6abedef5ff2f))
+- **AnalyticalTable:** correct active styles of table rows ([#5509](https://github.com/SAP/ui5-webcomponents-react/issues/5509)) ([dbf0a49](https://github.com/SAP/ui5-webcomponents-react/commit/dbf0a49054117821d7884fd62df784f13c41afdc)), closes [#5499](https://github.com/SAP/ui5-webcomponents-react/issues/5499)
+- **AnalyticalTable:** indent non-expandable rows in tree table correctly ([#5481](https://github.com/SAP/ui5-webcomponents-react/issues/5481)) ([dc2fe02](https://github.com/SAP/ui5-webcomponents-react/commit/dc2fe02e826b52f99d7451482f2cace77202d584)), closes [#5478](https://github.com/SAP/ui5-webcomponents-react/issues/5478)
+- **AnalyticalTable:** set `aria-label` correctly for non-interactive tables ([#5570](https://github.com/SAP/ui5-webcomponents-react/issues/5570)) ([e6d39b6](https://github.com/SAP/ui5-webcomponents-react/commit/e6d39b6e5b6ac2f94d3f80735380fb5712aa6dc7)), closes [#5555](https://github.com/SAP/ui5-webcomponents-react/issues/5555)
+- **deps:** update dependency @tanstack/react-virtual to ~3.1.0 ([#5503](https://github.com/SAP/ui5-webcomponents-react/issues/5503)) ([7744bbd](https://github.com/SAP/ui5-webcomponents-react/commit/7744bbdd881226469492e2ebb62f304600be33a6))
+- **ExpandableText:** use ellipsis char instead of three dots ([#5538](https://github.com/SAP/ui5-webcomponents-react/issues/5538)) ([f5b23f8](https://github.com/SAP/ui5-webcomponents-react/commit/f5b23f849a8fdbf857289485f8937a56e5b5d7c3))
+- **FilterBar & VariantManagement:** fix tablet device detection ([#5571](https://github.com/SAP/ui5-webcomponents-react/issues/5571)) ([8d55d0f](https://github.com/SAP/ui5-webcomponents-react/commit/8d55d0f4f3fe9a1eb032fcd2415df729fe8324c4)), closes [#5541](https://github.com/SAP/ui5-webcomponents-react/issues/5541)
+- **FilterBar:** allow passing a single child for `Select` or `MultiComboBox` ([#5543](https://github.com/SAP/ui5-webcomponents-react/issues/5543)) ([a8040fe](https://github.com/SAP/ui5-webcomponents-react/commit/a8040fe4c235b6321b60a92654de1a8470fb1b75))
+- **FilterBar:** fix bubbling of `selection-change` event in dialog ([#5546](https://github.com/SAP/ui5-webcomponents-react/issues/5546)) ([0e34aad](https://github.com/SAP/ui5-webcomponents-react/commit/0e34aad60de919219dbb1bdcae27f37dfb762dc6)), closes [#5535](https://github.com/SAP/ui5-webcomponents-react/issues/5535)
+- **Form:** don't change layout if form has no width ([#5575](https://github.com/SAP/ui5-webcomponents-react/issues/5575)) ([83d9a4f](https://github.com/SAP/ui5-webcomponents-react/commit/83d9a4fae34e75a5f78a69eb136b93d924ca0d13)), closes [#5551](https://github.com/SAP/ui5-webcomponents-react/issues/5551)
+- **FormGroup:** fix `font-weight` and truncate overflowing text of title ([#5584](https://github.com/SAP/ui5-webcomponents-react/issues/5584)) ([9978cd4](https://github.com/SAP/ui5-webcomponents-react/commit/9978cd4601a2c8b43cbe777d005ae9be73810e92)), closes [#5578](https://github.com/SAP/ui5-webcomponents-react/issues/5578)
+- **ObjectPage:** add deprecation notice to `showTitleInHeaderContent` ([#5574](https://github.com/SAP/ui5-webcomponents-react/issues/5574)) ([fdfb3ec](https://github.com/SAP/ui5-webcomponents-react/commit/fdfb3ec8651aac30c50eb98f53f29fc06ca7d9cc))
+- **SplitterLayout:** show splitter icons correctly ([#5488](https://github.com/SAP/ui5-webcomponents-react/issues/5488)) ([e1d01a9](https://github.com/SAP/ui5-webcomponents-react/commit/e1d01a9f053c113a099ac9b7dad2e39b4e15d645))
+
+### Features
+
+- **AnalyticalTable:** add `cellLabel` column option ([#5512](https://github.com/SAP/ui5-webcomponents-react/issues/5512)) ([f15e7d6](https://github.com/SAP/ui5-webcomponents-react/commit/f15e7d664fb5b03bd43380f94dfd32b366a92c4e))
+- **AnalyticalTable:** allow `IndicationColor`s as row highlight color ([#5510](https://github.com/SAP/ui5-webcomponents-react/issues/5510)) ([b076205](https://github.com/SAP/ui5-webcomponents-react/commit/b076205bd2cc250705ade9cd2fdff5f2e939bcb7)), closes [#5500](https://github.com/SAP/ui5-webcomponents-react/issues/5500)
+- **AnalyticalTable:** introduce `useAnnounceEmptyCells` plugin hook ([#5526](https://github.com/SAP/ui5-webcomponents-react/issues/5526)) ([9d38a78](https://github.com/SAP/ui5-webcomponents-react/commit/9d38a788b7e36e2a00e3ff801490b9f535f0490a)), closes [#5523](https://github.com/SAP/ui5-webcomponents-react/issues/5523)
+- **FilterBar:** add reset warning MessageBox & improve docs ([#5536](https://github.com/SAP/ui5-webcomponents-react/issues/5536)) ([0d838f6](https://github.com/SAP/ui5-webcomponents-react/commit/0d838f6cdab39a3d2bc4bf6b919ae004405c3101))
+- **FilterBar:** introduce reorder filters feature ([#5569](https://github.com/SAP/ui5-webcomponents-react/issues/5569)) ([7433946](https://github.com/SAP/ui5-webcomponents-react/commit/74339465960afe5010bb5ad62abd24bd806655db)), closes [#5243](https://github.com/SAP/ui5-webcomponents-react/issues/5243)
+- **FormGroup:** add `as` prop, allow pass through props ([#5580](https://github.com/SAP/ui5-webcomponents-react/issues/5580)) ([667c2c9](https://github.com/SAP/ui5-webcomponents-react/commit/667c2c9740a3e1d5de0e9e47c6639e943fb866f4))
+- **ObjectPage:** add `onBeforeNavigate` event ([#5557](https://github.com/SAP/ui5-webcomponents-react/issues/5557)) ([3c8c18f](https://github.com/SAP/ui5-webcomponents-react/commit/3c8c18f39f8697593048318f11420bfd7f5da71b)), closes [#5342](https://github.com/SAP/ui5-webcomponents-react/issues/5342)
+- update `@ui5/webcomponents` to `~1.23.0` ([#5581](https://github.com/SAP/ui5-webcomponents-react/issues/5581)) ([602fd11](https://github.com/SAP/ui5-webcomponents-react/commit/602fd117bdba1824f4d868a9fd09ab4ff00dffec))
+- update `@ui5/webcomponents` to `~1.23.1` ([#5586](https://github.com/SAP/ui5-webcomponents-react/issues/5586)) ([51e9858](https://github.com/SAP/ui5-webcomponents-react/commit/51e9858b6cf68d36eca8fc4d2e48bedc311b6fe8))
+
 ## [1.25.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.0...v1.25.1) (2024-02-07)
 
 ### Bug Fixes

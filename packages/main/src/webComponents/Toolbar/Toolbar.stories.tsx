@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ToolbarAlign } from '../../enums/index.js';
+import ToolbarAlign from '@ui5/webcomponents/dist/types/ToolbarAlign.js';
 import { ToolbarButton } from '../ToolbarButton';
 import { ToolbarSelect } from '../ToolbarSelect';
 import { ToolbarSelectOption } from '../ToolbarSelectOption';
@@ -14,8 +14,9 @@ const meta = {
     children: { control: { disable: true } }
   },
   args: {
-    alignContent: ToolbarAlign
-  }
+    alignContent: ToolbarAlign.Start
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Toolbar>;
 
 export default meta;

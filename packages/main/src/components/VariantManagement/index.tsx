@@ -1,31 +1,19 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
 import navDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { enrichEventWithDetails, ThemingParameters, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ComponentElement, ReactElement } from 'react';
-import React, {
-  Children,
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
+import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { createUseStyles } from 'react-jss';
-import {
-  BarDesign,
-  ButtonDesign,
-  IllustrationMessageType,
-  ListMode,
-  PopoverPlacementType,
-  TitleLevel
-} from '../../enums/index.js';
 import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
@@ -43,72 +31,13 @@ import {
   Title
 } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
+import type { ManageViewsDialogPropTypes } from './ManageViewsDialog.js';
 import { ManageViewsDialog } from './ManageViewsDialog.js';
 import { SaveViewDialog } from './SaveViewDialog.js';
 import type { VariantManagementPropTypes } from './types.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
+import { classNames, styleData } from './VariantManagement.module.css.js';
 
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    textAlign: 'center'
-  },
-  title: {
-    cursor: 'pointer',
-    color: ThemingParameters.sapLinkColor,
-    textShadow: 'none',
-    '&:hover': {
-      color: ThemingParameters.sapLink_Hover_Color
-    },
-    '&:active': {
-      color: ThemingParameters.sapLink_Active_Color
-    }
-  },
-  disabled: {
-    '& $title': {
-      color: ThemingParameters.sapGroup_TitleTextColor,
-      cursor: 'default',
-      '&:hover': {
-        color: 'ThemingParameters.sapGroup_TitleTextColor'
-      }
-    }
-  },
-  dirtyState: {
-    color: ThemingParameters.sapGroup_TitleTextColor,
-    paddingInline: '0.125rem',
-    fontWeight: 'bold',
-    font: ThemingParameters.sapFontFamily,
-    fontSize: ThemingParameters.sapFontSize,
-    flexGrow: 1
-  },
-  dirtyStateText: {
-    fontSize: ThemingParameters.sapFontSmallSize,
-    fontWeight: 'normal'
-  },
-  navDownBtn: {
-    marginInlineStart: '0.125rem'
-  },
-  footer: {
-    '& > :last-child': {
-      marginInlineEnd: 0
-    }
-  },
-  inputIcon: { cursor: 'pointer', color: ThemingParameters.sapContent_IconColor },
-  searchInputContainer: { padding: '0.25rem 1rem' },
-  searchInput: { width: '100%' },
-  popover: {
-    minWidth: '25rem',
-    '&::part(content), &::part(footer)': {
-      padding: 0
-    },
-    '&::part(footer)': {
-      borderBlockStart: 'none'
-    }
-  }
-};
-
-const useStyles = createUseStyles(styles, { name: 'VariantManagement' });
 /**
  * The `VariantManagement` component can be used to manage variants, such as FilterBar variants or AnalyticalTable variants.
  */
@@ -118,7 +47,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     titleText = i18nBundle.getText(MY_VIEWS),
     className,
     style,
-    placement = PopoverPlacementType.Bottom,
+    placement = PopoverPlacement.Bottom,
     level = TitleLevel.H4,
     onSelect,
     closeOnItemSelect,
@@ -143,7 +72,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     ...rest
   } = props;
 
-  const classes = useStyles();
+  useStylesheet(styleData, VariantManagement.displayName);
   const popoverRef = useRef<ResponsivePopoverDomRef>(null);
 
   const [safeChildren, setSafeChildren] = useState(Children.toArray(children));
@@ -152,11 +81,12 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     setSafeChildren(Children.toArray(children));
   }, [children]);
 
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
   const [selectedVariant, setSelectedVariant] = useState<SelectedVariant | undefined>(() => {
     const currentSelectedVariant = safeChildren.find(
-      (item) => isValidElement(item) && item.props.selected
+      (item) => isValidElement(item) && (item as ReactElement<VariantItemPropTypes>).props.selected
     ) as ComponentElement<any, any>;
     if (currentSelectedVariant) {
       return { ...currentSelectedVariant.props, variantItem: currentSelectedVariant.ref };
@@ -167,7 +97,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   );
 
   const handleClose = () => {
-    popoverRef.current.close();
+    setPopoverOpen(false);
   };
 
   const handleManageClick = () => {
@@ -208,34 +138,37 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
           if (!isValidElement(child)) {
             return false;
           }
+          const castChild = child as ReactElement<VariantItemPropTypes>;
           let updatedProps: Omit<SelectedVariant, 'children' | 'variantItem'> = {};
-          const currentVariant = popoverRef.current.querySelector(`ui5-li[data-children="${child.props.children}"]`);
-          callbackProperties.prevVariants.push(child.props);
+          const currentVariant = popoverRef.current.querySelector(
+            `ui5-li[data-children="${castChild.props.children}"]`
+          );
+          callbackProperties.prevVariants.push(castChild.props);
           if (defaultView) {
-            if (defaultView === child.props.children) {
+            if (defaultView === castChild.props.children) {
               updatedProps.isDefault = true;
-            } else if (child.props.isDefault) {
+            } else if (castChild.props.isDefault) {
               updatedProps.isDefault = false;
             }
           }
-          if (Object.keys(updatedRows).includes(child.props.children)) {
-            const { currentVariant: _0, ...rest } = updatedRows[child.props.children];
+          if (Object.keys(updatedRows).includes(castChild.props.children)) {
+            const { currentVariant: _0, ...rest } = updatedRows[castChild.props.children];
             updatedProps = { ...updatedProps, ...rest };
           }
-          if (deletedRows.has(child.props.children)) {
-            callbackProperties.deletedVariants.push(child.props);
+          if (deletedRows.has(castChild.props.children)) {
+            callbackProperties.deletedVariants.push(castChild.props);
             return false;
           }
           if (Object.keys(updatedProps).length > 0) {
             callbackProperties.updatedVariants.push({
-              ...child.props,
+              ...castChild.props,
               ...updatedProps,
               variantItem: currentVariant,
-              prevVariant: { ...child.props }
+              prevVariant: { ...castChild.props }
             });
           }
-          callbackProperties.variants.push({ ...child.props, ...updatedProps, variantItem: currentVariant });
-          return cloneElement(child, updatedProps);
+          callbackProperties.variants.push({ ...castChild.props, ...updatedProps, variantItem: currentVariant });
+          return cloneElement(castChild, updatedProps);
         })
       )
     );
@@ -249,10 +182,16 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   const handleOpenVariantManagement = useCallback(
     (e) => {
-      popoverRef.current.showAt(e.target);
+      popoverRef.current.opener = e.target;
+      setPopoverOpen(true);
     },
     [popoverRef]
   );
+
+  const handleCloseVariantManagement = (e) => {
+    stopPropagation(e);
+    setPopoverOpen(false);
+  };
 
   const searchText = i18nBundle.getText(SEARCH);
   const saveAsText = i18nBundle.getText(SAVE_AS);
@@ -261,11 +200,11 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   const a11ySearchText = i18nBundle.getText(SEARCH_VARIANT);
   const selectViewText = i18nBundle.getText(SELECT_VIEW);
 
-  const variantManagementClasses = clsx(classes.container, disabled && classes.disabled, className);
+  const variantManagementClasses = clsx(classNames.container, disabled && classNames.disabled, className);
 
-  const dirtyStateClasses = clsx(classes.dirtyState, dirtyStateText !== '*' && classes.dirtyStateText);
+  const dirtyStateClasses = clsx(classNames.dirtyState, dirtyStateText !== '*' && classNames.dirtyStateText);
 
-  const selectVariantEventRef = useRef();
+  const selectVariantEventRef = useRef(undefined);
   useEffect(() => {
     if (selectVariantEventRef.current) {
       if (typeof onSelect === 'function') {
@@ -277,7 +216,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   useEffect(() => {
     const selectedChild = safeChildren.find(
-      (item) => isValidElement(item) && item.props.children === selectedVariant?.children
+      (item) =>
+        isValidElement(item) &&
+        (item as ReactElement<VariantItemPropTypes>).props.children === selectedVariant?.children
     ) as ReactElement<VariantItemPropTypes>;
     setSelectedSaveViewInputProps(selectedChild?.props.saveViewInputProps ?? {});
   }, [selectedVariant, safeChildren]);
@@ -291,7 +232,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   };
 
   const variantNames = safeChildren.map((item) =>
-    isValidElement(item) && typeof item.props?.children === 'string' ? item.props.children : ''
+    isValidElement(item) && typeof (item as ReactElement<VariantItemPropTypes>).props?.children === 'string'
+      ? (item as ReactElement<VariantItemPropTypes>).props.children
+      : ''
   );
 
   const [favoriteChildren, setFavoriteChildren] = useState(undefined);
@@ -299,7 +242,13 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   useEffect(() => {
     if (showOnlyFavorites) {
       setFavoriteChildren(
-        safeChildren.filter((child) => isValidElement(child) && (child.props.favorite || child.props.isDefault))
+        safeChildren.filter((child) => {
+          return (
+            isValidElement(child) &&
+            ((child as ReactElement<VariantItemPropTypes>).props.favorite ||
+              (child as ReactElement<VariantItemPropTypes>).props.isDefault)
+          );
+        })
       );
     }
     if (!showOnlyFavorites && favoriteChildren?.length > 0) {
@@ -335,7 +284,9 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   const canRenderPortal = useCanRenderPortal();
 
-  const showSaveBtn = dirtyState && !selectedVariant?.readOnly;
+  // todo: this applies if `readOnly` is set to `false` as well since the value is read via data-attribute and is therefore a string not a boolean
+  const showSaveBtn = dirtyState && !selectedVariant?.hasOwnProperty('readOnly');
+
   return (
     <div className={variantManagementClasses} style={style} {...rest} ref={ref}>
       <VariantManagementContext.Provider
@@ -344,13 +295,13 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         }}
       >
         <FlexBox onClick={disabled ? undefined : handleOpenVariantManagement}>
-          <Title level={level} className={classes.title}>
+          <Title level={level} className={classNames.title}>
             {selectedVariant?.children}
           </Title>
           {dirtyState && <div className={dirtyStateClasses}>{dirtyStateText}</div>}
         </FlexBox>
         <Button
-          className={clsx(classes.navDownBtn, 'ui5-content-density-compact')}
+          className={clsx(classNames.navDownBtn, 'ui5-content-density-compact')}
           tooltip={selectViewText}
           accessibleName={selectViewText}
           onClick={disabled ? undefined : handleOpenVariantManagement}
@@ -361,15 +312,16 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         {canRenderPortal
           ? createPortal(
               <ResponsivePopover
-                className={classes.popover}
+                open={popoverOpen}
+                className={classNames.popover}
                 ref={popoverRef}
                 headerText={titleText}
-                placementType={placement}
+                placement={placement}
                 footer={
                   (showSaveBtn || !hideSaveAs || !hideManageVariants) && (
                     <Bar
                       design={BarDesign.Footer}
-                      className={classes.footer}
+                      className={classNames.footer}
                       endContent={
                         <>
                           {!inErrorState && showSaveBtn && (
@@ -399,25 +351,25 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
                     />
                   )
                 }
-                onAfterClose={stopPropagation}
+                onClose={handleCloseVariantManagement}
               >
                 {inErrorState ? (
                   <IllustratedMessage name={IllustrationMessageType.UnableToLoad} />
                 ) : (
                   <List
                     onSelectionChange={handleVariantItemSelect}
-                    mode={ListMode.SingleSelect}
+                    selectionMode={ListSelectionMode.Single}
                     header={
                       showInput ? (
-                        <div className={classes.searchInputContainer} tabIndex={-1}>
+                        <div className={classNames.searchInputContainer} tabIndex={-1}>
                           <Input
-                            className={classes.searchInput}
+                            className={classNames.searchInput}
                             accessibleName={a11ySearchText}
                             value={searchValue}
                             placeholder={searchText}
                             onInput={handleSearchInput}
                             showClearIcon
-                            icon={<Icon name={searchIcon} className={classes.inputIcon} />}
+                            icon={<Icon name={searchIcon} className={classNames.inputIcon} />}
                           />
                         </div>
                       ) : undefined
@@ -443,7 +395,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
             portalContainer={portalContainer}
             showOnlyFavorites={showOnlyFavorites}
           >
-            {safeChildren}
+            {safeChildren as unknown as ManageViewsDialogPropTypes['children']}
           </ManageViewsDialog>
         )}
         {saveAsDialogOpen && (

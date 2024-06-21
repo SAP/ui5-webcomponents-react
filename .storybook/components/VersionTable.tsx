@@ -1,5 +1,5 @@
 import { MessageStrip } from '@ui5/webcomponents-react';
-import versionInfo from '../../scripts/web-component-wrappers/version-info.json';
+import versionInfo from '../../config/version-info.json';
 
 const allWCRVersions = Object.values(versionInfo);
 

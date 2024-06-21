@@ -1,12 +1,19 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
+import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
 import { clsx } from 'clsx';
-import React, { useEffect, useState } from 'react';
-import { BarDesign } from '../../enums';
+import { forwardRef, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import type { DialogDomRef, DialogPropTypes } from '../index.js';
 import { Bar, Button, Icon, List, StandardListItem, Title } from '../index.js';
-import { Dialog } from './CodeGen';
 import { Dialog as OriginalDialog } from './index';
+
+// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
+const Dialog = forwardRef<DialogDomRef, DialogPropTypes>((args, ref) =>
+  createPortal(<OriginalDialog {...args} ref={ref} />, document.body)
+);
+Dialog.displayName = 'Dialog';
 
 const meta = {
   title: 'Modals & Popovers / Dialog',
@@ -24,6 +31,7 @@ const meta = {
   tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof OriginalDialog>;
 
+//TODO: check all "modals" for outdated info
 export default meta;
 type Story = StoryObj<typeof meta>;
 
@@ -45,8 +53,8 @@ export const Default: Story = {
         <Dialog
           {...args}
           open={dialogOpen}
-          onAfterClose={(e) => {
-            args.onAfterClose(e);
+          onClose={(e) => {
+            args.onClose(e);
             setDialogOpen(false);
           }}
           footer={
@@ -84,7 +92,7 @@ export const WithContent: Story = {
         <Dialog
           {...args}
           open={dialogIsOpen}
-          onAfterClose={handleClose}
+          onClose={handleClose}
           className={clsx('headerPartNoPadding', args.className)}
           header={
             <Bar endContent={<Icon name={settingsIcon} />}>

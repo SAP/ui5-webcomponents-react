@@ -1,0 +1,128 @@
+.container {
+  flex: 1 1 100%;
+  background-color: var(--sapObjectHeader_Background);
+  min-height: 3rem;
+  padding-block-start: 0.5rem;
+  padding-block-end: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  cursor: pointer;
+
+  &[data-not-clickable='true'] {
+    cursor: unset;
+
+    &:hover {
+      background-color: var(--sapObjectHeader_Background);
+    }
+  }
+
+  &:hover {
+    background-color: var(--sapObjectHeader_Hover_Background);
+  }
+}
+
+.phone {
+  --_ui5wcr_ObjectPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);
+}
+
+.breadcrumbs {
+  min-width: 50%;
+  padding: 0.5rem 0 0.25rem 0;
+
+  &:only-child {
+    width: 100%;
+  }
+}
+
+.titleMainSection {
+  overflow-x: hidden;
+  flex: 1 1 100%;
+  align-items: baseline;
+}
+
+.middleSection {
+  flex-grow: 1;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.title {
+  min-width: 3rem;
+  overflow-x: hidden;
+  font-family: var(--sapObjectHeader_Title_FontFamily);
+  color: var(--sapObjectHeader_Title_TextColor);
+  font-size: var(--_ui5wcr_ObjectPage_title_fontsize);
+  padding-block-start: 0.3125rem;
+  overflow-wrap: break-word;
+  hyphens: auto;
+
+  > * {
+    font-family: var(--sapObjectHeader_Title_FontFamily);
+    color: var(--sapObjectHeader_Title_TextColor);
+    font-size: var(--_ui5wcr_ObjectPage_title_fontsize);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+@container (min-width: 600px) and (max-width: 1023px) {
+  .title {
+    padding-block-start: 0.6875rem;
+  }
+}
+
+.subTitle {
+  color: var(--sapObjectHeader_Subtitle_TextColor);
+  font-size: var(--sapFontSize);
+  overflow-wrap: break-word;
+  hyphens: auto;
+  padding-inline-start: 0.5rem;
+
+  > * {
+    color: var(--sapObjectHeader_Subtitle_TextColor);
+    font-size: var(--sapFontSize);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+.subTitleBottom {
+  margin-block-start: 0.25rem;
+  padding-inline-start: 0;
+}
+
+.content {
+  display: flex;
+  flex-shrink: 1.6;
+  padding-inline-start: 0.5rem;
+}
+
+.toolbar {
+  flex: 1 1.6 100%;
+  cursor: auto;
+
+  &:hover {
+    background-color: inherit;
+  }
+
+  & > :first-child {
+    height: 100%;
+  }
+
+  /* toolbar w/o overflow button*/
+
+  > [data-component-name='ToolbarContent']:first-child:last-child
+    > [data-component-name='ToolbarChildContainer']:last-child {
+    margin-inline-end: 0;
+  }
+
+  /* toolbar w/ overflow button */
+
+  [data-component-name='ToolbarOverflowButtonContainer'] {
+    margin-inline-end: 0;
+  }
+}

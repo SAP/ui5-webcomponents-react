@@ -18,10 +18,11 @@ interface SuggestionGroupItemPropTypes
     Omit<CommonProps, keyof SuggestionGroupItemAttributes> {}
 
 /**
- * The `SuggestionGroupItem` is type of suggestion item, that can be used to split the `Input` suggestions into groups.
+ * The `SuggestionGroupItem` is type of suggestion item,
+ * that can be used to split the `Input` suggestions into groups.
  *
+ * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  * @abstract
- * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)
  */
 const SuggestionGroupItem = withWebComponent<SuggestionGroupItemPropTypes, SuggestionGroupItemDomRef>(
   'ui5-suggestion-group-item',

@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ListGrowingMode from '@ui5/webcomponents/dist/types/ListGrowingMode.js';
+import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
+import ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { FlexBox } from '../../components/FlexBox';
 import { Text } from '../../components/Text';
-import { FlexBoxJustifyContent, ListGrowingMode, ListMode, ListSeparators } from '../../enums';
+import { FlexBoxJustifyContent } from '../../enums';
 import { CustomListItem } from '../CustomListItem';
-import { GroupHeaderListItem } from '../GroupHeaderListItem';
+import { ListItemGroup } from '../ListItemGroup';
 import { ProgressIndicator } from '../ProgressIndicator';
 import { StandardListItem } from '../StandardListItem';
 import { List } from './index.js';
@@ -18,11 +21,14 @@ const meta = {
   },
   args: {
     headerText: 'List with StandardListItems',
-    mode: ListMode.None,
+    selectionMode: ListSelectionMode.None,
     separators: ListSeparators.All,
     growing: ListGrowingMode.None
-  }
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof List>;
+
+// TODO: check why subcomponents aren't showing up in table in docs
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -64,19 +70,21 @@ export const CustomListItemStory: Story = {
   }
 };
 
-export const GroupHeaderListItemStory: Story = {
-  name: 'GroupHeaderListItem',
+export const ListItemGroupStory: Story = {
+  name: 'ListItemGroup',
   args: {
-    headerText: 'List with a GroupHeaderListItem'
+    headerText: 'List with a ListItemGroup'
   },
   render: (args) => {
     return (
       <List {...args}>
-        <GroupHeaderListItem>GroupHeaderListItem 1</GroupHeaderListItem>
-        <StandardListItem>List Item</StandardListItem>
-        <StandardListItem>List Item</StandardListItem>
-        <GroupHeaderListItem>GroupHeaderListItem 2</GroupHeaderListItem>
-        <StandardListItem>List Item</StandardListItem>
+        <ListItemGroup headerText="ListItemGroup 1">
+          <StandardListItem>List Item</StandardListItem>
+          <StandardListItem>List Item</StandardListItem>
+        </ListItemGroup>
+        <ListItemGroup headerText="ListItemGroup 2">
+          <StandardListItem>List Item</StandardListItem>
+        </ListItemGroup>
       </List>
     );
   }

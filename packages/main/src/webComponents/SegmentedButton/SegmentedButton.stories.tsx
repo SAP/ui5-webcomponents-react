@@ -12,7 +12,7 @@ const meta = {
     children: (
       <>
         <SegmentedButtonItem>Button 1</SegmentedButtonItem>
-        <SegmentedButtonItem pressed>Button 2</SegmentedButtonItem>
+        <SegmentedButtonItem selected>Button 2</SegmentedButtonItem>
         <SegmentedButtonItem>Button 3</SegmentedButtonItem>
       </>
     )

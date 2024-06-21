@@ -1,20 +1,42 @@
 import { generateMessageItems } from '@sb/mockData/generateMessageItems';
 import type { Meta, StoryObj } from '@storybook/react';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import arrowLeftIcon from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
-import { useRef, useState } from 'react';
-import { ButtonDesign, FlexBoxAlignItems, FlexBoxJustifyContent, TitleLevel, ValueState } from '../../enums/index.js';
+import { forwardRef, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums/index.js';
+import type {
+  DialogDomRef,
+  DialogPropTypes,
+  ResponsivePopoverDomRef,
+  ResponsivePopoverPropTypes
+} from '../../webComponents';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
-// todo replace once `createPortal` is supported
-import { Dialog } from '../../webComponents/Dialog/CodeGen.js';
+import { Dialog as OriginalDialog } from '../../webComponents/Dialog';
 import { Link } from '../../webComponents/Link/index.js';
-// todo replace once `createPortal` is supported
-import { ResponsivePopover } from '../../webComponents/ResponsivePopover/CodeGen.js';
+import { ResponsivePopover as OriginalResponsivePopover } from '../../webComponents/ResponsivePopover';
 import { Title } from '../../webComponents/Title/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { MessageViewButton } from '../MessageViewButton/index.js';
 import { MessageItem } from './MessageItem.js';
 import { MessageView } from './index.js';
+
+// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
+const Dialog = forwardRef<DialogDomRef, DialogPropTypes>((args, ref) =>
+  createPortal(<OriginalDialog {...args} ref={ref} />, document.body)
+);
+Dialog.displayName = 'Dialog';
+
+// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
+const ResponsivePopover = forwardRef<ResponsivePopoverDomRef, ResponsivePopoverPropTypes>((args, ref) =>
+  createPortal(<OriginalResponsivePopover {...args} ref={ref} />, document.body)
+);
+ResponsivePopover.displayName = 'ResponsivePopover';
+
+// TODO: check docs for outdated info
 
 const meta = {
   title: 'User Feedback / MessageView',
@@ -37,7 +59,7 @@ const meta = {
         key={1}
         titleText={'Error Message Type'}
         subtitleText={'Some bad error occurred'}
-        type={ValueState.Error}
+        type={ValueState.Negative}
         counter={1}
         groupName={'Products'}
       >
@@ -47,7 +69,7 @@ const meta = {
         key={2}
         titleText={'Success Message Type'}
         subtitleText={'You can also use subtitles'}
-        type={ValueState.Success}
+        type={ValueState.Positive}
         counter={2}
       >
         This is a success message! You can even use{' '}
@@ -57,7 +79,7 @@ const meta = {
         key={3}
         titleText={'Warning Message Type'}
         subtitleText={'Warnign without details'}
-        type={ValueState.Warning}
+        type={ValueState.Critical}
         counter={3}
       />,
       <MessageItem key={4} titleText={'Empty Message Type'} groupName={'Products'} />,
@@ -88,22 +110,25 @@ export const Default: Story = {};
 export const MessageViewInDialog: Story = {
   name: 'MessageView in Dialog',
   render(args) {
-    const dialogRef = useRef(null);
+    const [open, setOpen] = useState(false);
     const messageViewRef = useRef(null);
     const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
     return (
       <>
         <Button
           onClick={() => {
-            dialogRef.current.show();
+            setOpen(true);
           }}
         >
           Open Dialog
         </Button>
         <Dialog
-          ref={dialogRef}
           style={{ width: '400px' }}
           className="contentPartNoPadding headerPartNoPadding"
+          open={open}
+          onClose={() => {
+            setOpen(false);
+          }}
           header={
             <Bar
               startContent={
@@ -136,7 +161,7 @@ export const MessageViewInDialog: Story = {
               <Button
                 design={ButtonDesign.Transparent}
                 onClick={() => {
-                  dialogRef.current?.close();
+                  setOpen(false);
                 }}
               >
                 Close
@@ -164,6 +189,7 @@ export const WithMessageViewButton: Story = {
     const ref = useRef(null);
     const messageViewRef = useRef(null);
     const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
+    const [open, setOpen] = useState(false);
     const numberOfItems = {
       information: 2,
       warning: 5,
@@ -174,15 +200,20 @@ export const WithMessageViewButton: Story = {
       <>
         <MessageViewButton
           counter={3}
-          type={ValueState.Error}
+          type={ValueState.Negative}
           onClick={(e) => {
-            ref.current.showAt(e.target);
+            ref.current.opener = e.currentTarget;
+            setOpen(true);
           }}
         />
         <ResponsivePopover
           ref={ref}
+          open={open}
           headerText="Messages"
           className="contentPartNoPadding headerPartNoPadding"
+          onClose={() => {
+            setOpen(false);
+          }}
           header={
             <Bar
               startContent={
@@ -216,7 +247,7 @@ export const WithMessageViewButton: Story = {
               <Button
                 design={ButtonDesign.Transparent}
                 onClick={() => {
-                  ref.current?.close();
+                  setOpen(false);
                 }}
               >
                 Close

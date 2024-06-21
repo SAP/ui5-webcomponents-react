@@ -1,0 +1,6 @@
+[data-sap-theme="sap_belize_hcb"] {
+  --_ui5wcr_Scrollbar_Border: 0.0625rem solid #999;
+  --_ui5wcr_ActionSheet_BoxShadow: var(--sapContent_HeaderShadow);
+  --_ui5wcr_Scrollbar_BorderRadius: 0;
+  --_ui5wcr_ActionSheet_TopBorderRadius: var(--sapElement_BorderCornerRadius);
+}

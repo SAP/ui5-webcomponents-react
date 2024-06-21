@@ -1,11 +1,13 @@
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
-import React, { cloneElement, useEffect, useRef, useState } from 'react';
+import { cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ButtonDesign, PopoverPlacementType, PopupAccessibleRole } from '../../enums/index.js';
-import { OverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
+import { getOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '../../internal/utils.js';
@@ -16,6 +18,7 @@ import type {
   ToggleButtonPropTypes
 } from '../../webComponents/index.js';
 import { Popover, ToggleButton } from '../../webComponents/index.js';
+import type { ToolbarSeparatorPropTypes } from '../ToolbarSeparator/index.js';
 import type { ToolbarPropTypes } from './index.js';
 
 interface OverflowPopoverProps {
@@ -74,7 +77,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const handleBeforeOpen = () => {
     if (toggleBtnRef.current) {
-      toggleBtnRef.current.accessibilityAttributes = { expanded: true, hasPopup: 'Menu' };
+      toggleBtnRef.current.accessibilityAttributes = { expanded: true, hasPopup: 'menu' };
     }
   };
   const handleAfterOpen = () => {
@@ -83,7 +86,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const handleClose = (e) => {
     if (toggleBtnRef.current) {
-      toggleBtnRef.current.accessibilityAttributes = { expanded: false, hasPopup: 'Menu' };
+      toggleBtnRef.current.accessibilityAttributes = { expanded: false, hasPopup: 'menu' };
     }
     stopPropagation(e);
     setPressed(false);
@@ -91,9 +94,9 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   useEffect(() => {
     const tagName = getUi5TagWithSuffix('ui5-toggle-button');
-    customElements.whenDefined(tagName).then(() => {
+    void customElements.whenDefined(tagName).then(() => {
       if (toggleBtnRef.current) {
-        toggleBtnRef.current.accessibilityAttributes = { expanded: pressed, hasPopup: 'Menu' };
+        toggleBtnRef.current.accessibilityAttributes = { expanded: pressed, hasPopup: 'menu' };
       }
     });
   }, []);
@@ -116,8 +119,10 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     return a11yConfig?.overflowPopover?.role;
   })();
 
+  const OverflowPopoverContextProvider = getOverflowPopoverContext().Provider;
+
   return (
-    <OverflowPopoverContext.Provider value={{ inPopover: true }}>
+    <OverflowPopoverContextProvider value={{ inPopover: true }}>
       {overflowButton ? (
         cloneElement(overflowButton, { onClick: clonedOverflowButtonClick })
       ) : (
@@ -137,12 +142,12 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           <Popover
             data-component-name="ToolbarOverflowPopover"
             className={clsx(classes.popover, isPhone && classes.popoverPhone)}
-            placementType={PopoverPlacementType.Bottom}
+            placement={PopoverPlacement.Bottom}
             ref={componentRef}
             open={pressed}
-            onAfterClose={handleClose}
+            onClose={handleClose}
             onBeforeOpen={handleBeforeOpen}
-            onAfterOpen={handleAfterOpen}
+            onOpen={handleAfterOpen}
             hideArrow
             accessibleRole={accessibleRole}
           >
@@ -161,7 +166,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
                   }
                   // @ts-expect-error: if type is not defined, it's not a spacer
                   if (item.type?.displayName === 'ToolbarSeparator') {
-                    return cloneElement(item as ReactElement, {
+                    return cloneElement(item as ReactElement<ToolbarSeparatorPropTypes>, {
                       style: {
                         height: '0.0625rem',
                         margin: '0.375rem 0.1875rem',
@@ -177,6 +182,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           </Popover>,
           portalContainer ?? document.body
         )}
-    </OverflowPopoverContext.Provider>
+    </OverflowPopoverContextProvider>
   );
 };

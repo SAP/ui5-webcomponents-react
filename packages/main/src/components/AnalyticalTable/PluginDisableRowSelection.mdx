@@ -1,13 +1,21 @@
 import { ImportStatement } from '@sb/components/Import';
 import { Canvas, Meta } from '@storybook/blocks';
 import { Footer } from '@sb/components';
-import * as ComponentStories from './AnalyticalTable.stories';
+import * as ComponentStories from './AnalyticalTableHooks.stories';
 
-<Meta title="Data Display / AnalyticalTable / Plugin: useRowDisableSelection" />
+<Meta title="Data Display / AnalyticalTable / Plugin Hooks / useRowDisableSelection" />
 
 # AnalyticalTable Plugin: useRowDisableSelection
 
-<ImportStatement moduleName={'AnalyticalTableHooks'} packageName={'@ui5/webcomponents-react'} />
+<ImportStatement moduleNames={['AnalyticalTableHooks']} packageName={'@ui5/webcomponents-react'} />
+
+**Deprecated!** It is not recommended to disable table rows, mainly because of the following reasons:
+
+- Users are not informed why items cannot be selected.
+- ARIA lacks built-in support for selective item selection, complicating accessibility.
+- Consistency to other applications which do not offer disabled items.
+
+<hr />
 
 With the `useRowDisableSelection` it's possible to disable the selection of specific rows. It can receive two types of parameters:
 

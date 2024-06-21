@@ -1,0 +1,322 @@
+.table {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  height: 100%;
+  min-height: 3rem;
+  font-family: var(--sapFontFamily);
+  font-size: var(--sapFontSize);
+  font-weight: normal;
+  background-color: var(--sapList_Background);
+
+  /*  bottom border*/
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    height: 1px;
+    width: 100%;
+    background: var(--sapList_TableFooterBorder);
+  }
+}
+
+.tableContainerWithScrollBar {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--sapGroup_ContentBackground);
+  opacity: 0.8;
+
+  &:focus {
+    outline-offset: calc(-1 * var(--sapContent_FocusWidth));
+    outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+  }
+}
+
+.tableHeaderRow {
+  height: var(--_ui5wcr-AnalyticalTableHeaderRowHeight);
+
+  div:first-child .th {
+    border-inline-start: 1px solid var(--sapList_BorderColor);
+  }
+}
+
+.hasNavigationIndicator {
+  .tableHeaderRow :nth-last-child(2) .th {
+    border-inline-end: none;
+  }
+
+  .tr :nth-last-child(2) {
+    border-inline-end: none;
+  }
+}
+
+.tableHeaderBackgroundElement {
+  box-sizing: border-box;
+  position: absolute;
+  inset-inline: 0;
+  height: var(--_ui5wcr-AnalyticalTableHeaderRowHeight);
+  background-color: var(--sapList_HeaderBackground);
+  border-block-start: var(--_ui5wcr-AnalyticalTable-OuterBorderBlock);
+  border-block-end: var(--_ui5wcr-AnalyticalTable-HeaderBorderWidth) solid var(--sapList_HeaderBorderColor);
+}
+
+.tableBodyBackgroundElement {
+  box-sizing: border-box;
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  border-block-end: 1px solid var(--sapList_TableFooterBorder);
+}
+
+.th {
+  height: var(--_ui5wcr-AnalyticalTableHeaderRowHeight);
+  color: var(--sapList_HeaderTextColor);
+  background-color: var(--sapList_HeaderBackground);
+  border-block-start: var(--_ui5wcr-AnalyticalTable-OuterBorderBlock);
+  border-block-end: var(--_ui5wcr-AnalyticalTable-HeaderBorderWidth) solid var(--sapList_HeaderBorderColor);
+  border-inline-end: 1px solid var(--sapList_BorderColor);
+  padding-inline: 0.5rem;
+  text-align: start;
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: var(--sapList_Hover_Background);
+    color: var(--_ui5wcr-AnalyticalTable-HeaderActiveTextColor);
+  }
+
+  &:active {
+    background-color: var(--sapList_Active_Background);
+    color: var(--_ui5wcr-AnalyticalTable-HeaderActiveTextColor);
+  }
+
+  &[data-column-id='__ui5wcr__internal_highlight_column'] {
+    border-inline-end: 1px solid transparent;
+  }
+
+  &:last-child [data-resizer] {
+    transform: translateX(0px);
+  }
+
+  &:focus {
+    &[data-column-id='__ui5wcr__internal_selection_column'] {
+      border-inline-start: 1px solid transparent;
+    }
+    outline-offset: calc(-1 * var(--sapContent_FocusWidth));
+    outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+  }
+}
+
+.tbody {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+  }
+}
+
+.alternateRowColor {
+  background-color: var(--sapList_AlternatingBackground);
+}
+
+.tr {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  color: var(--sapList_TextColor);
+  border-block-end: 1px solid var(--sapList_BorderColor);
+  /* needed for vertical virtualization*/
+  margin-bottom: -1px;
+  box-sizing: border-box;
+  display: flex;
+
+  &:hover:not([data-empty-row]) {
+    background-color: var(--sapList_Hover_Background);
+  }
+
+  &[data-is-selected] {
+    border-block-end: 1px solid var(--sapList_SelectionBorderColor);
+    background-color: var(--sapList_SelectionBackgroundColor);
+  }
+
+  &[data-is-selected]:hover {
+    background-color: var(--sapList_Hover_SelectionBackground);
+  }
+}
+
+.trActive {
+  cursor: pointer;
+}
+
+.tableGroupHeader.tr {
+  font-family: var(--_ui5wcr-AnalyticalTable-HeaderFontFamily);
+  background-color: var(--sapList_TableGroupHeaderBackground);
+  border-color: var(--sapList_TableGroupHeaderBorderColor);
+  color: var(--sapList_TextColor);
+
+  .tableCell {
+    border-inline-end: 1px solid transparent;
+  }
+}
+
+.tableText {
+  display: inline-block;
+  font-size: var(--sapFontSize);
+  max-width: 100%;
+  box-sizing: border-box;
+  font-weight: normal;
+  overflow: hidden;
+  word-wrap: normal;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tableCell {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  border-inline-end: 1px solid var(--sapList_BorderColor);
+  display: inline-flex;
+  padding: 0 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  align-items: center;
+
+  &:first-child {
+    border-inline-start: var(--_ui5wcr-AnalyticalTable-OuterCellBorder);
+  }
+
+  &:last-child {
+    border-inline-end: var(--_ui5wcr-AnalyticalTable-OuterCellBorder);
+  }
+
+  &:focus {
+    outline: none;
+  }
+  &:not([data-empty-row-cell]):focus::after {
+    content: '';
+    pointer-events: none;
+    inset-inline: 1px;
+    inset-block: 1px;
+    border: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+    position: absolute;
+  }
+  &[aria-selected='true']:not([data-empty-row-cell]):focus::after {
+    inset-block-end: 2px;
+  }
+}
+
+.showVerticalEndBorder .tableCell {
+  border-inline-end: 1px solid var(--sapList_BorderColor);
+}
+
+.noDataContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: var(--sapList_Background);
+  width: 100%;
+  box-sizing: border-box;
+  color: var(--sapList_TextColor);
+  font-family: var(--sapFontFamily);
+  font-size: var(--sapFontSize);
+  font-weight: normal;
+  border-block-end: 1px solid var(--sapList_BorderColor);
+}
+
+.navigation {
+  background-color: var(--sapList_SelectionBorderColor);
+}
+
+.positive {
+  background-color: var(--sapSuccessColor);
+}
+
+.negative {
+  background-color: var(--sapErrorColor);
+}
+
+.critical {
+  background-color: var(--sapWarningColor);
+}
+
+.information {
+  background-color: var(--sapInformationColor);
+}
+
+.indication01 {
+  background: var(--sapIndicationColor_1);
+}
+
+.indication02 {
+  background: var(--sapIndicationColor_2);
+}
+
+.indication03 {
+  background: var(--sapIndicationColor_3);
+}
+
+.indication04 {
+  background: var(--sapIndicationColor_4);
+}
+
+.indication05 {
+  background: var(--sapIndicationColor_5);
+}
+
+.indication06 {
+  background: var(--sapIndicationColor_6);
+}
+
+.indication07 {
+  background: var(--sapIndicationColor_7);
+}
+
+.indication08 {
+  background: var(--sapIndicationColor_8);
+}
+
+.hiddenSmartColMeasure {
+  visibility: hidden;
+  position: fixed;
+  white-space: nowrap;
+  height: 0;
+}
+
+.hiddenSmartColMeasureHeader {
+  font-family: var(--_ui5wcr-AnalyticalTable-HeaderFontFamily);
+}
+
+.hiddenA11yText {
+  display: none;
+}
+
+.checkBox::part(root) {
+  display: flex;
+  width: unset;
+  height: unset;
+  justify-content: center;
+  min-height: unset;
+  min-width: unset;
+  padding: 0;
+}

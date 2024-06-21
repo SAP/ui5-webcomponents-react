@@ -1,8 +1,8 @@
 'use client';
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
-import React, { forwardRef, useCallback, useRef } from 'react';
-import type { LineProps } from 'recharts';
+import { forwardRef, useCallback, useRef } from 'react';
+import type { LineProps, YAxisProps } from 'recharts';
 import {
   Brush,
   CartesianGrid,
@@ -58,7 +58,7 @@ interface MeasureConfig extends IChartMeasure {
 }
 
 interface DimensionConfig extends IChartDimension {
-  interval?: number;
+  interval?: YAxisProps['interval'];
 }
 
 export interface LineChartProps extends IChartBaseProps {
@@ -130,7 +130,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     ...rest
   } = props;
 
-  const chartConfig = {
+  const chartConfig: LineChartProps['chartConfig'] = {
     yAxisVisible: false,
     xAxisVisible: true,
     gridStroke: ThemingParameters.sapList_BorderColor,
@@ -200,7 +200,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     [onDataPointClick, preventOnClickCall.current]
   );
 
-  const isBigDataSet = dataset?.length > 30 ?? false;
+  const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(dataset, measures, chartConfig.legendPosition);
@@ -222,6 +222,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <LineChartLib
         syncId={syncId}
         margin={marginChart}
@@ -237,7 +238,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
         {dimensions.map((dimension, index) => {
           return (
             <XAxis
-              key={dimension.accessor}
+              key={dimension.reactKey}
               dataKey={dimension.accessor}
               xAxisId={index}
               interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
@@ -294,7 +295,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
             <Line
               dot={element.showDot ?? !isBigDataSet}
               yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
-              key={element.accessor}
+              key={element.reactKey}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -304,8 +305,8 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
               dataKey={element.accessor}
               stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
               strokeWidth={element.width}
-              activeDot={{ onClick: onDataPointClickInternal } as any}
-              isAnimationActive={noAnimation === false}
+              activeDot={{ onClick: onDataPointClickInternal }}
+              isAnimationActive={!noAnimation}
               {...element.lineConfig}
             />
           );
@@ -354,11 +355,6 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     </ChartContainer>
   );
 });
-
-LineChart.defaultProps = {
-  noLegend: false,
-  noAnimation: false
-};
 
 LineChart.displayName = 'LineChart';
 

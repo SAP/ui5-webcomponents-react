@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "1.25.1",
+  "version": "1.29.1",
   "description": "Base for ui5-webcomponents-react",
   "type": "module",
   "main": "dist/index.js",
@@ -30,8 +30,8 @@
   },
   "peerDependencies": {
     "@types/react": "*",
-    "@ui5/webcomponents-base": "~1.22.0",
-    "react": "^16.14.0 || ^17.0.0 || ^18.0.0"
+    "@ui5/webcomponents-base": "2.0.0-rc.5",
+    "react": "^16.14.0 || ^17 || ^18 || ^19"
   },
   "peerDependenciesMeta": {
     "@types/react": {
@@ -55,5 +55,8 @@
     "LICENSE",
     "NOTICE.txt",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "use-sync-external-store": "1.2.2"
+  }
 }
