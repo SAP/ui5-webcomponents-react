@@ -1,4 +1,4 @@
-import type { ButtonPropTypes } from '../../webComponents/index.js';
+import type { ButtonPropTypes, ResponsivePopoverDomRef } from '../../webComponents/index.js';
 import { Button, Label } from '../../webComponents/index.js';
 import type { ActionSheetPropTypes } from './index.js';
 import { ActionSheet } from './index.js';
@@ -54,7 +54,7 @@ describe('ActionSheet', () => {
         ))}
       </TestComp>
     );
-    cy.get('.myCustomClass').then(([actionSheet]) => {
+    cy.get<ResponsivePopoverDomRef>('.myCustomClass').then(([actionSheet]) => {
       actionSheet.open = true;
     });
     cy.wait(400);
