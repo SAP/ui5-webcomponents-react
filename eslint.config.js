@@ -1,24 +1,36 @@
 // @ts-check
 
-import pluginImport from 'eslint-plugin-import';
-import pluginNoOnlyTests from 'eslint-plugin-no-only-tests';
+import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
+import { FlatCompat } from '@eslint/eslintrc';
+import eslint from '@eslint/js';
+import noOnlyTests from 'eslint-plugin-no-only-tests';
+import preferArrow from 'eslint-plugin-prefer-arrow';
 import pluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
-import pluginStorybook from 'eslint-plugin-storybook';
 import globals from 'globals';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import tseslint from 'typescript-eslint';
 
-/** @type { import("eslint").Linter.FlatConfig } */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  recommendedConfig: eslint.configs.recommended,
+  allConfig: eslint.configs.all
+});
+
+/** @type { import("eslint").Linter.FlatConfig[] } */
 const typescriptConfig = {
-  files: ['*.ts', '*.tsx'],
-  parserOptions: {
-    project: ['./tsconfig.spec.json', './tsconfig.node.json', './packages/*/tsconfig.json'],
-    settings: {
-      'import/resolver': {
-        typescript: true
-      }
+  files: ['**/*.ts', '**/*.tsx'],
+  settings: {
+    languageOptions: {
+      // parser: tsParser,
+    },
+    'import/resolver': {
+      typescript: true
     }
   },
   rules: {
@@ -76,22 +88,18 @@ const webComponentsConfig = {
 /** @type { import("eslint").Linter.FlatConfig[] } */
 const cypressConfig = [
   {
-    files: ['cypress/**/*', '*.cy.ts', '*.cy.tsx'],
-    ...reactJsxRuntime
-  },
-  {
     files: ['cypress/**/*'],
     rules: {
       '@typescript-eslint/no-namespace': 'off'
     }
   },
   {
-    files: ['*.cy.ts', '*.cy.tsx'],
-    plugins: { 'no-only-tests': pluginNoOnlyTests },
+    files: ['**/*.cy.ts', '**/*.cy.tsx'],
+    plugins: {
+      'no-only-tests': noOnlyTests
+    },
     rules: {
       '@typescript-eslint/no-empty-function': 'off',
-      'react/react-in-jsx-scope': 'off',
-      'import/order': 'warn',
       'import/no-unresolved': 'off',
       'react/no-unescaped-entities': 'off',
       '@typescript-eslint/unbound-method': 'warn',
@@ -103,17 +111,15 @@ const cypressConfig = [
 
 /** @type { import("eslint").Linter.FlatConfig[] } */
 const storybookConfig = [
+  ...compat.extends('plugin:storybook/recommended').map((config) => ({
+    ...config,
+    files: ['**/*.stories.tsx']
+  })),
   {
-    files: ['*.stories.tsx'],
-    ...reactJsxRuntime
-  },
-  {
-    files: ['*.stories.tsx'],
-    extends: [pluginStorybook.configs.recommended],
+    files: ['**/*.stories.tsx'],
+
     rules: {
-      // inline custom components within stories don't need prop types
       'react/prop-types': 'off',
-      // some samples can include unused vars to show the API / signature
       '@typescript-eslint/no-unused-vars': 'warn',
       'react/no-unescaped-entities': 'off'
     }
@@ -136,16 +142,13 @@ const specialComponents = [
   }
 ];
 
-const config = tseslint.config(
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
-  reactRecommended,
-  pluginImport.configs.recommended,
-  pluginImport.configs.typescript,
+const finalConfig = tseslint.config(
   {
     languageOptions: {
       sourceType: 'module',
       parserOptions: {
+        project: ['./tsconfig.spec.json', './tsconfig.node.json', './packages/*/tsconfig.json'],
+        tsconfigRootDir: import.meta.dirname,
         ecmaFeatures: {
           jsx: true
         }
@@ -154,14 +157,47 @@ const config = tseslint.config(
         ...globals.browser
       }
     },
-    plugins: {
-      'react-hooks': pluginReactHooks
-    },
+
     settings: {
       react: {
         version: 'detect'
       }
+    }
+  },
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
+  {
+    files: ['**/*.mjs', '**/CommandsAndQueries.tsx', '**/*.js'],
+    ...tseslint.configs.disableTypeChecked
+  },
+  reactRecommended,
+  reactJsxRuntime,
+  ...fixupConfigRules(compat.extends('plugin:import/recommended')),
+  {
+    ignores: [
+      'packages/base/dist',
+      'packages/base/types',
+      'packages/charts/dist',
+      'packages/cli/dist',
+      'packages/main/dist',
+      'packages/main/ssr',
+      'packages/main/wrappers',
+      'packages/main/src/i18n/i18n-defaults.ts',
+      'packages/cypress-commands/dist',
+      'eslint.config.js',
+      '**/scripts',
+      '**/shared',
+      '**/examples',
+      '**/templates'
+    ]
+  },
+  {
+    plugins: {
+      'prefer-arrow': preferArrow,
+      'react-hooks': fixupPluginRules(pluginReactHooks)
     },
+
     rules: {
       camelcase: [
         'error',
@@ -181,12 +217,12 @@ const config = tseslint.config(
           ]
         }
       ],
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
+
       'import/order': [
         'error',
         {
           'newlines-between': 'never',
+
           alphabetize: {
             order: 'asc',
             caseInsensitive: true
@@ -194,16 +230,18 @@ const config = tseslint.config(
         }
       ],
       'import/no-duplicates': 'error',
-      'import/no-unresolved': 'error'
+      'import/no-unresolved': 'error',
+
+      ...pluginReactHooks.configs.recommended.rules
     }
   },
   typescriptConfig,
   webComponentsConfig,
+  ...specialComponents,
   ...cypressConfig,
   ...storybookConfig,
-  ...specialComponents,
   pluginPrettierRecommended
 );
 
-console.log('-> config', config);
-export default config;
+console.log('-> finalConfig', finalConfig);
+export default finalConfig;
