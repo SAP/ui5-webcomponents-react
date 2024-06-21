@@ -81,28 +81,33 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
 
   const [changedVariantNames, setChangedVariantNames] = useState(new Map());
   const [invalidVariants, setInvalidVariants] = useState<Record<string, InputDomRef & { isInvalid?: boolean }>>({});
+  const [hasApplyAutomaticallyText, setHasApplyAutomaticallyText] = useState(false);
 
   useStylesheet(styleData, 'ManageViewsDialog');
 
   const headerRow = (
     <TableHeaderRow sticky>
       {showOnlyFavorites && <TableHeaderCell key="favorite-variant-item" />}
-      <TableHeaderCell importance={10} min-width={'18rem'}>
+      <TableHeaderCell importance={10} min-width="18rem">
         {viewHeaderText}
       </TableHeaderCell>
       {showShare && (
-        <TableHeaderCell minWidth={'4rem'} maxWidth={'8rem'}>
+        <TableHeaderCell minWidth="7.5rem" maxWidth="8rem">
           {sharingHeaderText}
         </TableHeaderCell>
       )}
       {showSetAsDefault && (
-        <TableHeaderCell minWidth={'5rem'} maxWidth={'5rem'}>
+        <TableHeaderCell minWidth="8rem" maxWidth="8rem">
           {defaultHeaderText}
         </TableHeaderCell>
       )}
-      {TableHeaderCell && <TableHeaderCell minWidth={'10rem'}>{applyAutomaticallyHeaderText}</TableHeaderCell>}
-      {showCreatedBy && <TableHeaderCell minWidth={'10rem'}>{createdByHeaderText}</TableHeaderCell>}
-      <TableHeaderCell importance={9} width={'3rem'} key="delete-variant-item" />
+      {TableHeaderCell && (
+        <TableHeaderCell minWidth={hasApplyAutomaticallyText ? '25rem' : '5rem'}>
+          {applyAutomaticallyHeaderText}
+        </TableHeaderCell>
+      )}
+      {showCreatedBy && <TableHeaderCell minWidth="10rem">{createdByHeaderText}</TableHeaderCell>}
+      <TableHeaderCell importance={9} width="3rem" key="delete-variant-item" />
     </TableHeaderRow>
   );
 
@@ -114,15 +119,21 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       return child.props;
     })
   );
+
   useEffect(() => {
+    let _hasApplyAutomaticallyText = false;
     setChildrenProps(
       Children.map(children, (child) => {
         if (!isValidElement(child)) {
           return {};
         }
+        if (child.props?.applyAutomaticallyText) {
+          _hasApplyAutomaticallyText = true;
+        }
         return child.props;
       })
     );
+    setHasApplyAutomaticallyText(_hasApplyAutomaticallyText);
   }, [children]);
 
   const [filteredProps, setFilteredProps] = useState(childrenProps);
