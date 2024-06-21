@@ -23,7 +23,7 @@ const headerProps = (
     selectionMode === AnalyticalTableSelectionMode.MultiSelect
   ) {
     const style = { ...props.style, cursor: 'auto' };
-    return [props, { onClick: undefined, onKeyDown: undefined, style }];
+    return [props, { onClick: undefined, onKeyDown: undefined, title: undefined, style }];
   }
   return props;
 };
