@@ -32,7 +32,7 @@
   }
 }
 
-@container (max-width: 599px) {
+@container (max-width: 599.99px) {
   .form {
     --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_s);
     --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_s);
@@ -41,7 +41,7 @@
   }
 }
 
-@container (min-width: 600px) and (max-width: 1023px) {
+@container (min-width: 600px) and (max-width: 1023.99px) {
   .form {
     --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_m);
     --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_m);
@@ -50,7 +50,7 @@
   }
 }
 
-@container (min-width: 1024px) and (max-width: 1439px) {
+@container (min-width: 1024px) and (max-width: 1439.99px) {
   .form {
     --_ui5wcr_form_label_span: var(--_ui5wcr_form_label_span_l);
     --_ui5wcr_form_columns: var(--_ui5wcr_form_columns_l);
