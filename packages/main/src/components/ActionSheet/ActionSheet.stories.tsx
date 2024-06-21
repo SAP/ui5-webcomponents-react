@@ -7,7 +7,7 @@ import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
 import deleteIcon from '@ui5/webcomponents-icons/dist/delete.js';
 import emailIcon from '@ui5/webcomponents-icons/dist/email.js';
 import forwardIcon from '@ui5/webcomponents-icons/dist/forward.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../../webComponents/index.js';
 import { ActionSheet } from './index.js';
 
@@ -43,7 +43,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render(args) {
-    const [actionSheetOpen, setActionSheetOpen] = useState<boolean | undefined>(true);
+    const [actionSheetOpen, setActionSheetOpen] = useState<boolean | undefined>(args.open);
+    useEffect(() => {
+      setActionSheetOpen(args.open);
+    }, [args.open]);
     return (
       <>
         <Button
