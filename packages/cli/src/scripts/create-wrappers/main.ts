@@ -14,13 +14,7 @@ import { WebComponentWrapper } from './WebComponentWrapper.js';
 const WITH_WEB_COMPONENT_IMPORT_PATH = process.env.WITH_WEB_COMPONENT_IMPORT_PATH ?? '@ui5/webcomponents-react';
 
 function filterAttributes(member: CEM.ClassField | CEM.ClassMethod): member is CEM.ClassField {
-  return (
-    member.kind === 'field' &&
-    member.privacy === 'public' &&
-    !member.readonly &&
-    !member.static &&
-    member._ui5validator !== 'Object'
-  );
+  return member.kind === 'field' && member.privacy === 'public' && !member.readonly && !member.static;
 }
 
 interface Options {

@@ -10,6 +10,10 @@ import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './uti
 
 const createEventPropName = (eventName: string) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
 
+const isPrimitiveAttribute = (value: unknown): boolean => {
+  return typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean';
+};
+
 type EventHandler = (event: CustomEvent<unknown>) => void;
 
 export interface WithWebComponentPropTypes {
@@ -49,7 +53,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 
     // regular props (no booleans, no slots and no events)
     const regularProps = regularProperties.reduce((acc, name) => {
-      if (rest.hasOwnProperty(name)) {
+      if (rest.hasOwnProperty(name) && isPrimitiveAttribute(rest[name])) {
         return { ...acc, [camelToKebabCase(name)]: rest[name] };
       }
       return acc;
@@ -158,6 +162,20 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         });
       }
     }, [Component, waitForDefine, isDefined]);
+
+    const propsToApply = regularProperties.map((prop) => ({ name: prop, value: props[prop] }));
+    useEffect(() => {
+      customElements.whenDefined(Component as unknown as string).then(() => {
+        for (const prop of propsToApply) {
+          if (prop.value != null && !isPrimitiveAttribute(prop.value)) {
+            if (ref.current) {
+              ref.current[prop.name] = prop.value;
+            }
+          }
+        }
+      });
+    }, [Component, ...propsToApply]);
+
     if (waitForDefine && !isDefined) {
       return null;
     }

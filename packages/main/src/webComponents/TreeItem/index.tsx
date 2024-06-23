@@ -11,6 +11,21 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface TreeItemAttributes {
   /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
+   *
+   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
+   *
+   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   *
+   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: ListItemAccessibilityAttributes;
+
+  /**
    * Defines the accessible name of the component.
    *
    * **Note:** Available since [v1.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.8.0) of **@ui5/webcomponents**.
@@ -126,20 +141,6 @@ interface TreeItemAttributes {
 
 interface TreeItemDomRef extends Required<TreeItemAttributes>, Ui5DomRef {
   /**
-   * Defines the additional accessibility attributes that will be applied to the component.
-   * The following fields are supported:
-   *
-   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
-   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
-   *
-   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
-   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-   *
-   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
-   */
-  accessibilityAttributes: ListItemAccessibilityAttributes;
-
-  /**
    * Call this method to manually switch the `expanded` state of a tree item.
    * @returns {void}
    */
@@ -189,7 +190,17 @@ interface TreeItemPropTypes
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',
-  ['accessibleName', 'additionalText', 'additionalTextState', 'highlight', 'icon', 'text', 'tooltip', 'type'],
+  [
+    'accessibilityAttributes',
+    'accessibleName',
+    'additionalText',
+    'additionalTextState',
+    'highlight',
+    'icon',
+    'text',
+    'tooltip',
+    'type'
+  ],
   ['expanded', 'hasChildren', 'indeterminate', 'movable', 'navigated', 'selected'],
   ['deleteButton'],
   ['detail-click'],

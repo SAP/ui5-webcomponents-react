@@ -1,8 +1,9 @@
 import {
-  setCustomElementsScopingSuffix,
-  setCustomElementsScopingRules
+  setCustomElementsScopingRules,
+  setCustomElementsScopingSuffix
 } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { useReducer, useState } from 'react';
+import type { ButtonDomRef } from '../webComponents/index.js';
 import { Bar, Button, Switch } from '../webComponents/index.js';
 
 describe('withWebComponent', () => {
@@ -171,5 +172,14 @@ describe('withWebComponent', () => {
     cy.mount(<TestComp2 />);
     cy.get('ui5-button').should('be.visible');
     cy.get('ui5-button-ui5-wcr').should('not.exist');
+  });
+
+  it('pass objects as props', () => {
+    cy.mount(<Button accessibilityAttributes={{ expanded: 'true' }}>Test</Button>);
+    cy.findByText('Test').should('have.attr', 'ui5-button');
+    cy.wait(500);
+    cy.contains<ButtonDomRef>('Test').then(([$button]) => {
+      expect($button.accessibilityAttributes).to.deep.equal({ expanded: 'true' });
+    });
   });
 });
