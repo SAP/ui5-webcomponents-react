@@ -3745,7 +3745,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\nThe `ui5-notification-list` web component represents\na container for `ui5-li-notification-group` and `ui5-li-notification`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationList.js\";``",
+          "description": "### Overview\nThe `ui5-notification-list` web component represents\na container for `ui5-li-notification-group` and `ui5-li-notification`.\n\n### Keyboard Handling\n\n#### Basic Navigation\nThe `ui5-notification-list` provides advanced keyboard handling.\nWhen a list is focused the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [Up] or [Left] - Navigates up the items\n- [Down] or [Right] - Navigates down the items\n- [Home] - Navigates to first item\n- [End] - Navigates to the last item\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NotificationList.js\";``",
           "name": "NotificationList",
           "slots": [
             {
@@ -3903,7 +3903,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\nThe `ui5-li-notification-group` is a special type of list item,\nthat unlike others can group items within self, usually `ui5-li-notification` items.\n\nThe component consists of:\n\n- `Toggle` button to expand and collapse the group\n- `TitleText` to entitle the group\n- Items of the group\n\n### Usage\nThe component can be used in a standard `ui5-list`.\n\n### Keyboard Handling\nThe `ui5-li-notification-group` provides advanced keyboard handling.\n\n#### Basic Navigation\nWhen a list is focused, the user can use the following keyboard shortcuts in order to navigate:\n\n- [Up] or [Down] - navigates up or down the items\n- [Home] - navigates to the first item\n- [End] - navigates to the last item\n\n#### Fast Navigation\nThis component provides fast navigation when the header is focused using the following keyboard shortcuts:\n\n- [Space] - toggles expand / collapse of the group\n- [Plus] - expands the group\n- [Minus] - collapses the group\n- [Right] - expands the group\n- [Left] - collapses the group\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationListGroupItem.js\";`",
+          "description": "### Overview\nThe `ui5-li-notification-group` is a special type of list item,\nthat unlike others can group items within self, usually `ui5-li-notification` items.\n\nThe component consists of:\n\n- `Toggle` button to expand and collapse the group\n- `TitleText` to entitle the group\n- Items of the group\n\n### Usage\nThe component can be used in a standard `ui5-list`.\n\n### Keyboard Handling\nThe `ui5-li-notification-group` provides advanced keyboard handling.\nThis component provides fast navigation when the header is focused using the following keyboard shortcuts:\n\n- [Space] - toggles expand / collapse of the group\n- [Plus] - expands the group\n- [Minus] - collapses the group\n- [Right] - expands the group\n- [Left] - collapses the group\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js\";`",
           "name": "NotificationListGroupItem",
           "slots": [
             {
@@ -4095,7 +4095,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\nThe `ui5-li-notification` is a type of list item, meant to display notifications.\n\nThe component has a rich set of various properties that allows the user to set `avatar`, `menu`, `titleText`, descriptive `content`\nand `footnotes` to fully describe a notification.\n\nThe user can:\n\n- display a `Close` button\n- can control whether the `titleText` and `description` should wrap or truncate\nand display a `ShowMore` button to switch between less and more information\n- add actions by using the `ui5-menu` component\n\n**Note:** Adding custom actions by using the `ui5-notification-action` component is deprecated as of version 2.0!\n\n### Usage\nThe component can be used in a standard `ui5-list`.\n\n### Keyboard Handling\n\n#### Basic Navigation\nThe user can use the following keyboard shortcuts to perform actions (such as select, delete):\n\n- [Enter] - select an item (trigger \"item-click\" event)\n- [Delete] - close an item (trigger \"item-close\" event)\n\n#### Fast Navigation\nThis component provides a fast navigation using the the following keyboard shortcuts:\n\n- [Shift] + [Enter] - 'More'/'Less' link will be triggered\n- [Shift] + [F10] - 'Menu' (Actions) button will be triggered (clicked)\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NotificationListItem.js\";`",
+          "description": "### Overview\nThe `ui5-li-notification` is a type of list item, meant to display notifications.\n\nThe component has a rich set of various properties that allows the user to set `avatar`, `menu`, `titleText`, descriptive `content`\nand `footnotes` to fully describe a notification.\n\nThe user can:\n\n- display a `Close` button\n- can control whether the `titleText` and `description` should wrap or truncate\nand display a `ShowMore` button to switch between less and more information\n- add actions by using the `ui5-menu` component\n\n**Note:** Adding custom actions by using the `ui5-notification-action` component is deprecated as of version 2.0!\n\n### Usage\nThe component can be used in a standard `ui5-list`.\n\n### Keyboard Handling\n\n#### Basic Navigation\nThe user can use the following keyboard shortcuts to perform actions (such as select, delete):\n\n- [Enter] - select an item (trigger \"item-click\" event)\n- [Delete] - close an item (trigger \"item-close\" event)\n\n#### Fast Navigation\nThis component provides a fast navigation using the following keyboard shortcuts:\n\n- [Shift] + [Enter] - 'More'/'Less' link will be triggered\n- [Shift] + [F10] - 'Menu' (Actions) button will be triggered (clicked)\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NotificationListItem.js\";`",
           "name": "NotificationListItem",
           "cssParts": [
             {
@@ -5860,18 +5860,6 @@
             },
             {
               "kind": "field",
-              "name": "wholeItemToggleable",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines whether clicking the whole item or only pressing the icon will show/hide the sub items (if present).\nIf set to true, clicking the whole item will toggle the sub items, and it won't fire the `click` event.\nBy default, only clicking the arrow icon will toggle the sub items.",
-              "privacy": "public",
-              "default": "false",
-              "_ui5since": "1.0.0-rc.11",
-              "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
               "name": "icon",
               "type": {
                 "text": "string"
@@ -5931,6 +5919,53 @@
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the item.",
+              "privacy": "public",
+              "default": "\"\"",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5since": "1.19.0",
+              "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
             }
           ],
           "attributes": [
@@ -5939,15 +5974,6 @@
               "name": "expanded",
               "default": "false",
               "fieldName": "expanded",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines whether clicking the whole item or only pressing the icon will show/hide the sub items (if present).\nIf set to true, clicking the whole item will toggle the sub items, and it won't fire the `click` event.\nBy default, only clicking the arrow icon will toggle the sub items.",
-              "name": "whole-item-toggleable",
-              "default": "false",
-              "fieldName": "wholeItemToggleable",
               "type": {
                 "text": "boolean"
               }
@@ -6002,6 +6028,45 @@
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the text of the item.",
+              "name": "text",
+              "default": "\"\"",
+              "fieldName": "text",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
+              "name": "disabled",
+              "default": "false",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "name": "tooltip",
+              "default": "\"\"",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
               }
             }
           ],
@@ -6200,6 +6265,53 @@
               "default": "\"\"",
               "_ui5since": "1.19.0",
               "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the item.",
+              "privacy": "public",
+              "default": "\"\"",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5since": "1.19.0",
+              "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
             }
           ],
           "events": [
@@ -6248,8 +6360,52 @@
               "type": {
                 "text": "string"
               }
+            },
+            {
+              "description": "Defines the text of the item.",
+              "name": "text",
+              "default": "\"\"",
+              "fieldName": "text",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
+              "name": "disabled",
+              "default": "false",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "name": "tooltip",
+              "default": "\"\"",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
             }
           ],
+          "superclass": {
+            "name": "SideNavigationItemBase",
+            "package": "@ui5/webcomponents-fiori",
+            "module": "dist/SideNavigationItemBase.js"
+          },
           "customElement": true,
           "_ui5since": "1.24.0",
           "_ui5privacy": "public",
@@ -6337,6 +6493,45 @@
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
               }
+            },
+            {
+              "description": "Defines the text of the item.",
+              "name": "text",
+              "default": "\"\"",
+              "fieldName": "text",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
+              "name": "disabled",
+              "default": "false",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "name": "tooltip",
+              "default": "\"\"",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
             }
           ],
           "members": [
@@ -6400,6 +6595,53 @@
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the item.",
+              "privacy": "public",
+              "default": "\"\"",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5since": "1.19.0",
+              "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
               }
             }
           ],

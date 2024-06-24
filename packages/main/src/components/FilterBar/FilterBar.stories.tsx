@@ -165,7 +165,7 @@ export const WithLogic: Story = {
   render: (args) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { age, countries, currency, date, dateRange, search } = state;
-    const prevDialogOpenState = useRef();
+    const prevDialogOpenState = useRef(undefined);
 
     const handleSearch = (e) => {
       dispatch({ type: 'SET_SEARCH', payload: e.target.value });

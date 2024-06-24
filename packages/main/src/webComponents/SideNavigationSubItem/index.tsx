@@ -61,6 +61,15 @@ interface SideNavigationSubItemAttributes {
    * Defines the text of the item.
    */
   text?: string;
+
+  /**
+   * Defines the tooltip of the component.
+   *
+   * A tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   */
+  tooltip?: string;
 }
 
 interface SideNavigationSubItemDomRef extends Required<SideNavigationSubItemAttributes>, Ui5DomRef {}
@@ -86,7 +95,7 @@ interface SideNavigationSubItemPropTypes
  */
 const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, SideNavigationSubItemDomRef>(
   'ui5-side-navigation-sub-item',
-  ['href', 'icon', 'target', 'text'],
+  ['href', 'icon', 'target', 'text', 'tooltip'],
   ['disabled', 'selected'],
   [],
   ['click'],

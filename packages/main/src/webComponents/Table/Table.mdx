@@ -2,9 +2,11 @@ import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { TableCell } from '../TableCell';
-import { TableColumn } from '../TableColumn';
-import { TableGroupRow } from '../TableGroupRow';
+import { TableHeaderRow } from '../TableHeaderRow';
+import { TableHeaderCell } from '../TableHeaderCell';
 import { TableRow } from '../TableRow';
+import { TableGrowing } from '../TableGrowing';
+import { TableSelection } from '../TableSelection';
 import * as ComponentStories from './Table.stories';
 
 <Meta of={ComponentStories} />
@@ -59,14 +61,14 @@ const GrowingTable = () => {
       <Table
         onLoadMore={onLoadMore}
         growing={TableGrowingMode.Scroll}
-        columns={
-          <>
-            <TableColumn>
+        headerRow={
+          <TableHeaderRow>
+            <TableHeaderCell>
               <Label>Column 1</Label>
-            </TableColumn>
-            <TableColumn>
+            </TableHeaderCell>
+            <TableHeaderCell>
               <Label>Column 2</Label>
-            </TableColumn>
+            </TableHeaderCell>
           </>
         }
       >
@@ -79,24 +81,34 @@ const GrowingTable = () => {
 
 <Markdown>{SubcomponentsSection}</Markdown>
 
-## TableColumn
+## TableHeaderRow
 
-<Description of={TableColumn} />
-<ArgTypes of={TableColumn} />
+<Description of={TableHeaderRow} />
+<ArgTypes of={TableHeaderRow} />
+
+## TableHeaderCell
+
+<Description of={TableHeaderCell} />
+<ArgTypes of={TableHeaderCell} />
 
 ## TableRow
 
 <Description of={TableRow} />
 <ArgTypes of={TableRow} />
 
-## TableGroupRow
-
-<Description of={TableGroupRow} />
-<ArgTypes of={TableGroupRow} />
-
 ## TableCell
 
 <Description of={TableCell} />
 <ArgTypes of={TableCell} />
+
+## TableGrowing
+
+<Description of={TableGrowing} />
+<ArgTypes of={TableGrowing} />
+
+## TableSelection
+
+<Description of={TableSelection} />
+<ArgTypes of={TableSelection} />
 
 <Footer />

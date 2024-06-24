@@ -249,6 +249,44 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       });
     }
 
+    if (componentName === 'TableRow') {
+      jsxElements.forEach((el) => {
+        const type = j(el).find(j.JSXAttribute, { name: { name: 'type' } });
+
+        if (type.size() > 0) {
+          let isInteractive = false;
+          const typeNode = type.get();
+          if (typeNode.value.value.type === 'StringLiteral') {
+            isInteractive = typeNode.value.value.value === 'Interactive';
+          } else if (typeNode.value.value.type === 'JSXExpressionContainer') {
+            const container = typeNode.value.value;
+            if (container.expression.type === 'StringLiteral') {
+              isInteractive = typeNode.value.value.expression.value === 'Interactive';
+            } else if (container.expression.type === 'MemberExpression') {
+              const expr = container.expression;
+              if (expr.object.name === 'TableMode') {
+                if (expr.property.type === 'Identifier' && expr.property.name === 'Interactive') {
+                  isInteractive = true;
+                }
+                if (expr.property.type === 'StringLiteral' && expr.property.value === 'Interactive') {
+                  isInteractive = true;
+                }
+              }
+            }
+          }
+
+          if (isInteractive) {
+            j(el)
+              .find(j.JSXOpeningElement)
+              .get()
+              .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('interactive'), null));
+            type.remove();
+            isDirty = true;
+          }
+        }
+      });
+    }
+
     // before renaming any values, replace hard coded enum values
     Object.entries(changes.renamedEnums ?? {}).forEach(([propName, enumRef]) => {
       jsxElements.forEach((el) => {
@@ -280,18 +318,6 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       });
     }
 
-    if (typeof changes.newComponent === 'string') {
-      jsxElements.find(j.Identifier, { name: componentName }).replaceWith(j.jsxIdentifier(changes.newComponent));
-      const importSpecifier = root.find(j.ImportSpecifier, { local: { name: componentName } });
-      const importedFrom = importSpecifier.get().parentPath.parentPath.value.source.value;
-      if (importedFrom === '@ui5/webcomponents-react') {
-        importSpecifier.replaceWith(
-          j.importSpecifier(j.identifier(changes.newComponent), j.identifier(changes.newComponent))
-        );
-      }
-      isDirty = true;
-    }
-
     Object.entries(changes.changedProps ?? {}).forEach(([oldName, newName]) => {
       const jsxAttributes = jsxElements.find(j.JSXAttribute, { name: { name: oldName } });
       if (!jsxAttributes.length) {
@@ -309,6 +335,18 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       jsxAttributes.remove();
       isDirty = true;
     });
+
+    if (typeof changes.newComponent === 'string') {
+      jsxElements.find(j.Identifier, { name: componentName }).replaceWith(j.jsxIdentifier(changes.newComponent));
+      const importSpecifier = root.find(j.ImportSpecifier, { local: { name: componentName } });
+      const importedFrom = importSpecifier.get().parentPath.parentPath.value.source.value;
+      if (importedFrom === '@ui5/webcomponents-react') {
+        importSpecifier.replaceWith(
+          j.importSpecifier(j.identifier(changes.newComponent), j.identifier(changes.newComponent))
+        );
+      }
+      isDirty = true;
+    }
   });
 
   Object.entries<string>(config.enums).forEach(([enumName, newImport]) => {

@@ -13,7 +13,7 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Label } from '../Label';
 import { List } from '../List';
-import { StandardListItem } from '../StandardListItem';
+import { ListItemStandard } from '../ListItemStandard';
 import { Title } from '../Title';
 import type { PopoverDomRef, PopoverPropTypes } from './index';
 import { Popover as OriginalPopover } from './index';
@@ -98,9 +98,9 @@ export const PopoverWithContent: Story = {
           footer={<Bar endContent={<Button onClick={handleClose}>Close</Button>} design={BarDesign.Footer} />}
         >
           <List style={{ width: '200px' }}>
-            <StandardListItem additionalText="3">List Item 1</StandardListItem>
-            <StandardListItem additionalText="2">List Item 2</StandardListItem>
-            <StandardListItem additionalText="1">List Item 3</StandardListItem>
+            <ListItemStandard additionalText="3">List Item 1</ListItemStandard>
+            <ListItemStandard additionalText="2">List Item 2</ListItemStandard>
+            <ListItemStandard additionalText="1">List Item 3</ListItemStandard>
           </List>
         </Popover>
       </>

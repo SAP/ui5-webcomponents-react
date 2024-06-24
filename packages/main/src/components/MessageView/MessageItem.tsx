@@ -10,10 +10,10 @@ import { forwardRef, useContext } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';
-import type { CustomListItemDomRef } from '../../webComponents/CustomListItem/index.js';
-import { CustomListItem } from '../../webComponents/CustomListItem/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import { Label } from '../../webComponents/Label/index.js';
+import type { ListItemCustomDomRef } from '../../webComponents/ListItemCustom/index.js';
+import { ListItemCustom } from '../../webComponents/ListItemCustom/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './MessageItem.module.css.js';
 import { getIconNameForType } from './utils.js';
@@ -57,7 +57,7 @@ export interface MessageItemPropTypes extends CommonProps {
 /**
  * A component used to hold different types of system messages inside the `MessageView` component.
  */
-const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((props, ref) => {
+const MessageItem = forwardRef<ListItemCustomDomRef, MessageItemPropTypes>((props, ref) => {
   const { titleText, subtitleText, counter, type = ValueState.Negative, children, className, ...rest } = props;
 
   useStylesheet(styleData, MessageItem.displayName);
@@ -91,7 +91,7 @@ const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((prop
     }
   };
   return (
-    <CustomListItem
+    <ListItemCustom
       onClick={handleListItemClick}
       onKeyDown={handleKeyDown}
       data-title={titleText}
@@ -115,7 +115,7 @@ const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((prop
         {counter != null && <span className={classNames.counter}>{counter}</span>}
         {children && <Icon className={classNames.navigation} name={iconArrowRight} />}
       </FlexBox>
-    </CustomListItem>
+    </ListItemCustom>
   );
 });
 

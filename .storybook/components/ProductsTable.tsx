@@ -4,7 +4,8 @@ import {
   Label,
   Table,
   TableCell,
-  TableColumn,
+  TableHeaderCell,
+  TableHeaderRow,
   TableRow,
   Text
 } from '@ui5/webcomponents-react';
@@ -13,13 +14,13 @@ import { ProductCollection } from './products.json';
 export const ProductsTable = () => {
   return (
     <Table
-      columns={
-        <>
-          <TableColumn>Product</TableColumn>
-          <TableColumn>Supplier</TableColumn>
-          <TableColumn>Dimensions</TableColumn>
-          <TableColumn>Price</TableColumn>
-        </>
+      headerRow={
+        <TableHeaderRow>
+          <TableHeaderCell>Product</TableHeaderCell>
+          <TableHeaderCell>Supplier</TableHeaderCell>
+          <TableHeaderCell>Dimensions</TableHeaderCell>
+          <TableHeaderCell>Price</TableHeaderCell>
+        </TableHeaderRow>
       }
     >
       {ProductCollection.map((product) => {
