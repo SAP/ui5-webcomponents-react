@@ -396,6 +396,21 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
     }
   });
 
+  Object.entries<string>(config.renamedEnums).forEach(([enumName, newName]) => {
+    const currentImportSpecifier = root.find(j.ImportSpecifier, { local: { name: enumName } });
+    if (currentImportSpecifier.paths().length) {
+      const importedFrom = currentImportSpecifier.get().parentPath.parentPath.value.source.value;
+
+      if (importedFrom === '@ui5/webcomponents-react') {
+        currentImportSpecifier.replaceWith(j.importSpecifier(j.identifier(newName), j.identifier(newName)));
+
+        const currentIdentifier = root.find(j.Identifier, { name: enumName });
+        currentIdentifier.replaceWith(j.identifier(newName));
+        isDirty = true;
+      }
+    }
+  });
+
   Object.entries<Record<string, string>>(config.enumProperties).forEach(([changedEnum, changedValues]) => {
     Object.entries(changedValues ?? {}).forEach(([oldValue, newValue]) => {
       const enumValueToReplace = root
