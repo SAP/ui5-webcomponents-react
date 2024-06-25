@@ -1,0 +1,1 @@
+import{a as m,o as n,b as a}from"./Boot-CS6Wsrzl.js";import"./UI5Element-GBezswur.js";import{r as t}from"./index-DEe9W-hO.js";function h(){const[r,o]=t.useState(m());return t.useEffect(()=>{const e=s=>{o(s)};return n(e),()=>{a(e)}},[]),r}export{h as u};
