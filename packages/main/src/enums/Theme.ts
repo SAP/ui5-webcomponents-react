@@ -6,8 +6,5 @@ export enum Theme {
   sap_horizon = 'sap_horizon',
   sap_horizon_dark = 'sap_horizon_dark',
   sap_horizon_hcb = 'sap_horizon_hcb',
-  sap_horizon_hcw = 'sap_horizon_hcw',
-  sap_belize = 'sap_belize',
-  sap_belize_hcb = 'sap_belize_hcb',
-  sap_belize_hcw = 'sap_belize_hcw'
+  sap_horizon_hcw = 'sap_horizon_hcw'
 }
