@@ -91,6 +91,27 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       return;
     }
 
+    if (componentName === 'ActionSheet') {
+      jsxElements.forEach((el) => {
+        const showCancelButton = j(el).find(j.JSXAttribute, { name: { name: 'showCancelButton' } });
+        if (showCancelButton.size() > 0) {
+          const attr = showCancelButton.get();
+          if (
+            attr.value.value &&
+            ((attr.value.value.type === 'JSXAttribute' && attr.value.value === false) ||
+              (attr.value.value.type === 'JSXExpressionContainer' && attr.value.value.expression.value === false))
+          ) {
+            j(el)
+              .find(j.JSXOpeningElement)
+              .get()
+              .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('hideCancelButton'), null));
+          }
+          showCancelButton.remove();
+          isDirty = true;
+        }
+      });
+    }
+
     // Special Handling for logic inversions, etc.
     if (componentName === 'Button') {
       jsxElements.forEach((el) => {

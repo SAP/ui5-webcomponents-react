@@ -11,8 +11,10 @@
       "changedProps": {
         "onAfterClose": "onClose",
         "onAfterOpen": "onOpen",
-        "placementType": "placement"
-      }
+        "placementType": "placement",
+        "showCancelButton": "hideCancelButton"
+      },
+      "removedProps": ["portalContainer"]
     },
     "Avatar": {},
     "Badge": {

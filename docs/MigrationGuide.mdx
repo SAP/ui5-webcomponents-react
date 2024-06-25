@@ -263,4 +263,36 @@ Please use the following components instead:
 
 Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
 
+## Components with API Changes
+
+### ActionSheet
+
+The prop `portalContainer` has been removed as it is no longer needed due to the [popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) which is now used in the UI5 Web Components.
+For a better aligned API, the `showCancelButton` prop has been replaced wih the `hideCancelButton` prop and the logic has been inverted.
+You only need to apply changes to your code if `showCancelButton` has been set to `false`.
+
+```tsx
+// v1
+import { ActionSheet, Button } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return (
+    <ActionSheet showCancelButton={false}>
+      <Button>Action 1</Button>
+    </ActionSheet>
+  );
+}
+
+// v2
+import { ActionSheet, Button } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return (
+    <ActionSheet hideCancelButton>
+      <Button>Action 1</Button>
+    </ActionSheet>
+  );
+}
+```
+
 <Footer />
