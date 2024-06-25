@@ -165,7 +165,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 
     const propsToApply = regularProperties.map((prop) => ({ name: prop, value: props[prop] }));
     useEffect(() => {
-      customElements.whenDefined(Component as unknown as string).then(() => {
+      void customElements.whenDefined(Component as unknown as string).then(() => {
         for (const prop of propsToApply) {
           if (prop.value != null && !isPrimitiveAttribute(prop.value)) {
             if (ref.current) {
