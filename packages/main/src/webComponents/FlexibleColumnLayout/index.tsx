@@ -12,27 +12,6 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface FlexibleColumnLayoutAttributes {
   /**
-   * Defines the visibility of the arrows,
-   * used for expanding and shrinking the columns.
-   * @default false
-   */
-  hideArrows?: boolean;
-
-  /**
-   * Defines the columns layout and their proportion.
-   *
-   * **Note:** The layout also depends on the screen size - one column for screens smaller than 599px,
-   * two columns between 599px and 1023px and three columns for sizes bigger than 1023px.
-   *
-   * **For example:** layout=`TwoColumnsStartExpanded` means the layout will display up to two columns
-   * in 67%/33% proportion.
-   * @default "OneColumn"
-   */
-  layout?: FCLLayout | keyof typeof FCLLayout;
-}
-
-interface FlexibleColumnLayoutDomRef extends Required<FlexibleColumnLayoutAttributes>, Ui5DomRef {
-  /**
    * Defines additional accessibility attributes on different areas of the component.
    *
    * The accessibilityAttributes object has the following fields,
@@ -57,9 +36,31 @@ interface FlexibleColumnLayoutDomRef extends Required<FlexibleColumnLayoutAttrib
    * Accepts any string.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   * @default {}
    */
-  accessibilityAttributes: FCLAccessibilityAttributes;
+  accessibilityAttributes?: FCLAccessibilityAttributes;
 
+  /**
+   * Defines the visibility of the arrows,
+   * used for expanding and shrinking the columns.
+   * @default false
+   */
+  hideArrows?: boolean;
+
+  /**
+   * Defines the columns layout and their proportion.
+   *
+   * **Note:** The layout also depends on the screen size - one column for screens smaller than 599px,
+   * two columns between 599px and 1023px and three columns for sizes bigger than 1023px.
+   *
+   * **For example:** layout=`TwoColumnsStartExpanded` means the layout will display up to two columns
+   * in 67%/33% proportion.
+   * @default "OneColumn"
+   */
+  layout?: FCLLayout | keyof typeof FCLLayout;
+}
+
+interface FlexibleColumnLayoutDomRef extends Required<FlexibleColumnLayoutAttributes>, Ui5DomRef {
   /**
    * Returns the current column layout, based on both the `layout` property and the screen size.
    *
@@ -171,7 +172,7 @@ interface FlexibleColumnLayoutPropTypes
  */
 const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, FlexibleColumnLayoutDomRef>(
   'ui5-flexible-column-layout',
-  ['layout'],
+  ['accessibilityAttributes', 'layout'],
   ['hideArrows'],
   ['endColumn', 'midColumn', 'startColumn'],
   ['layout-change'],

@@ -1,11 +1,20 @@
 import {
-  setCustomElementsScopingSuffix,
-  setCustomElementsScopingRules
+  setCustomElementsScopingRules,
+  setCustomElementsScopingSuffix
 } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
-import { useReducer, useState } from 'react';
-import { Bar, Button, Switch } from '../webComponents/index.js';
+import { useReducer, useRef, useState } from 'react';
+import type { ButtonDomRef } from '../webComponents/index.js';
+import { Bar, Button, Popover, Switch } from '../webComponents/index.js';
 
 describe('withWebComponent', () => {
+  // reset scoping
+  afterEach(function () {
+    if (this.currentTest.title === 'scoping') {
+      // it's not possible to pass an empty string to `setCustomElementsScopingSuffix`
+      setCustomElementsScopingRules({ include: [/^ui5-/], exclude: [/.*/] });
+    }
+  });
+
   it('Unmount Event Handlers correctly after prop update', () => {
     const custom = cy.spy().as('custom');
     const nativePassedThrough = cy.spy().as('nativePassedThrough');
@@ -171,5 +180,45 @@ describe('withWebComponent', () => {
     cy.mount(<TestComp2 />);
     cy.get('ui5-button').should('be.visible');
     cy.get('ui5-button-ui5-wcr').should('not.exist');
+  });
+
+  it('pass objects & refs as props', () => {
+    const PopoverComponent = () => {
+      const btnRef = useRef(null);
+      const [open, setOpen] = useState(false);
+      return (
+        <>
+          <Button
+            ref={btnRef}
+            onClick={() => {
+              setOpen((prev) => !prev);
+            }}
+          >
+            Opener
+          </Button>
+          <Popover
+            open={open}
+            opener={btnRef.current}
+            onClose={() => {
+              setOpen(false);
+            }}
+          >
+            Popover Content
+          </Popover>
+        </>
+      );
+    };
+
+    cy.mount(<Button accessibilityAttributes={{ expanded: 'true' }}>Test</Button>);
+    cy.findByText('Test').should('have.attr', 'ui5-button');
+    cy.wait(500);
+    cy.contains<ButtonDomRef>('Test').then(([$button]) => {
+      expect($button.accessibilityAttributes).to.deep.equal({ expanded: 'true' });
+    });
+
+    cy.mount(<PopoverComponent />);
+    cy.get('[ui5-popover]').should('exist').should('not.be.visible');
+    cy.findByText('Opener').click();
+    cy.get('[ui5-popover]').should('be.visible');
   });
 });

@@ -11,6 +11,21 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface LinkAttributes {
   /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
+   *
+   * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
+   * Accepts the following string values: `true` or `false`.
+   *
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: LinkAccessibilityAttributes;
+
+  /**
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
@@ -114,21 +129,7 @@ interface LinkAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {
-  /**
-   * Defines the additional accessibility attributes that will be applied to the component.
-   * The following fields are supported:
-   *
-   * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
-   * Accepts the following string values: `true` or `false`.
-   *
-   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
-   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
-   *
-   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
-   */
-  accessibilityAttributes: LinkAccessibilityAttributes;
-}
+interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {}
 
 interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttributes | 'children' | 'onClick'> {
   /**
@@ -178,6 +179,7 @@ interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttr
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
   [
+    'accessibilityAttributes',
     'accessibleName',
     'accessibleNameRef',
     'accessibleRole',
