@@ -13,9 +13,7 @@ import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webco
 import { clsx } from 'clsx';
 import type { ComponentElement, ReactElement } from 'react';
 import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
 import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
-import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
@@ -66,7 +64,6 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     dirtyStateText = '*',
     dirtyState,
     onSave,
-    portalContainer,
     onManageViewsCancel,
     onSaveViewCancel,
     ...rest
@@ -102,12 +99,14 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   const handleManageClick = () => {
     setManageViewsDialogOpen(true);
+    handleClose();
   };
   const handleManageClose = () => {
     setManageViewsDialogOpen(false);
   };
   const handleOpenSaveAsDialog = () => {
     setSaveAsDialogOpen(true);
+    handleClose();
   };
   const handleSaveAsClose = () => {
     setSaveAsDialogOpen(false);
@@ -282,8 +281,6 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     }
   }, [safeChildrenWithFavorites]);
 
-  const canRenderPortal = useCanRenderPortal();
-
   // todo: this applies if `readOnly` is set to `false` as well since the value is read via data-attribute and is therefore a string not a boolean
   const showSaveBtn = dirtyState && !selectedVariant?.hasOwnProperty('readOnly');
 
@@ -309,79 +306,75 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
           icon={navDownIcon}
           disabled={disabled}
         />
-        {canRenderPortal
-          ? createPortal(
-              <ResponsivePopover
-                open={popoverOpen}
-                className={classNames.popover}
-                ref={popoverRef}
-                headerText={titleText}
-                placement={placement}
-                footer={
-                  (showSaveBtn || !hideSaveAs || !hideManageVariants) && (
-                    <Bar
-                      design={BarDesign.Footer}
-                      className={classNames.footer}
-                      endContent={
-                        <>
-                          {!inErrorState && showSaveBtn && (
-                            <Button onClick={handleSave} design={ButtonDesign.Emphasized}>
-                              {saveText}
-                            </Button>
-                          )}
-                          {!inErrorState && !hideSaveAs && (
-                            <Button
-                              onClick={handleOpenSaveAsDialog}
-                              design={showSaveBtn ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
-                              disabled={!selectedVariant || Object.keys(selectedVariant).length === 0}
-                            >
-                              {saveAsText}
-                            </Button>
-                          )}
-                          {!inErrorState && !hideManageVariants && (
-                            <Button
-                              onClick={handleManageClick}
-                              design={showSaveBtn || !hideSaveAs ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
-                            >
-                              {manageText}
-                            </Button>
-                          )}
-                        </>
-                      }
-                    />
-                  )
+
+        <ResponsivePopover
+          open={popoverOpen}
+          className={classNames.popover}
+          ref={popoverRef}
+          headerText={titleText}
+          placement={placement}
+          footer={
+            (showSaveBtn || !hideSaveAs || !hideManageVariants) && (
+              <Bar
+                design={BarDesign.Footer}
+                className={classNames.footer}
+                endContent={
+                  <>
+                    {!inErrorState && showSaveBtn && (
+                      <Button onClick={handleSave} design={ButtonDesign.Emphasized}>
+                        {saveText}
+                      </Button>
+                    )}
+                    {!inErrorState && !hideSaveAs && (
+                      <Button
+                        onClick={handleOpenSaveAsDialog}
+                        design={showSaveBtn ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
+                        disabled={!selectedVariant || Object.keys(selectedVariant).length === 0}
+                      >
+                        {saveAsText}
+                      </Button>
+                    )}
+                    {!inErrorState && !hideManageVariants && (
+                      <Button
+                        onClick={handleManageClick}
+                        design={showSaveBtn || !hideSaveAs ? ButtonDesign.Transparent : ButtonDesign.Emphasized}
+                      >
+                        {manageText}
+                      </Button>
+                    )}
+                  </>
                 }
-                onClose={handleCloseVariantManagement}
-              >
-                {inErrorState ? (
-                  <IllustratedMessage name={IllustrationMessageType.UnableToLoad} />
-                ) : (
-                  <List
-                    onSelectionChange={handleVariantItemSelect}
-                    selectionMode={ListSelectionMode.Single}
-                    header={
-                      showInput ? (
-                        <div className={classNames.searchInputContainer} tabIndex={-1}>
-                          <Input
-                            className={classNames.searchInput}
-                            accessibleName={a11ySearchText}
-                            value={searchValue}
-                            placeholder={searchText}
-                            onInput={handleSearchInput}
-                            showClearIcon
-                            icon={<Icon name={searchIcon} className={classNames.inputIcon} />}
-                          />
-                        </div>
-                      ) : undefined
-                    }
-                  >
-                    {filteredChildren ?? safeChildrenWithFavorites}
-                  </List>
-                )}
-              </ResponsivePopover>,
-              portalContainer ?? document.body
+              />
             )
-          : null}
+          }
+          onClose={handleCloseVariantManagement}
+        >
+          {inErrorState ? (
+            <IllustratedMessage name={IllustrationMessageType.UnableToLoad} />
+          ) : (
+            <List
+              onSelectionChange={handleVariantItemSelect}
+              selectionMode={ListSelectionMode.Single}
+              header={
+                showInput ? (
+                  <div className={classNames.searchInputContainer} tabIndex={-1}>
+                    <Input
+                      className={classNames.searchInput}
+                      accessibleName={a11ySearchText}
+                      value={searchValue}
+                      placeholder={searchText}
+                      onInput={handleSearchInput}
+                      showClearIcon
+                      icon={<Icon name={searchIcon} className={classNames.inputIcon} />}
+                    />
+                  </div>
+                ) : undefined
+              }
+            >
+              {filteredChildren ?? safeChildrenWithFavorites}
+            </List>
+          )}
+        </ResponsivePopover>
         {manageViewsDialogOpen && (
           <ManageViewsDialog
             onAfterClose={handleManageClose}
@@ -392,7 +385,6 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
             showCreatedBy={!hideCreatedBy}
             showSetAsDefault={!hideSetAsDefault}
             variantNames={variantNames}
-            portalContainer={portalContainer}
             showOnlyFavorites={showOnlyFavorites}
           >
             {safeChildren as unknown as ManageViewsDialogPropTypes['children']}
@@ -402,7 +394,6 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
           <SaveViewDialog
             onSaveViewCancel={onSaveViewCancel}
             saveViewInputProps={selectedSaveViewInputProps}
-            portalContainer={portalContainer}
             showShare={!hideShare}
             showApplyAutomatically={!hideApplyAutomatically}
             showSetAsDefault={!hideSetAsDefault}

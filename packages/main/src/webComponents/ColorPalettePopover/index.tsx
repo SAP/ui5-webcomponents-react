@@ -31,7 +31,7 @@ interface ColorPalettePopoverAttributes {
    * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
    * @default undefined
    */
-  opener?: string;
+  opener?: HTMLElement | string | undefined;
 
   /**
    * Defines whether the user can choose the default color from a button.
@@ -54,16 +54,7 @@ interface ColorPalettePopoverAttributes {
   showRecentColors?: boolean;
 }
 
-interface ColorPalettePopoverDomRef extends Omit<Required<ColorPalettePopoverAttributes>, 'opener'>, Ui5DomRef {
-  /**
-   * Defines the ID or DOM Reference of the element that the popover is shown at.
-   * When using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.
-   * You can only set the `opener` attribute to a DOM Reference when using JavaScript.
-   *
-   * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
-   */
-  opener: HTMLElement | string | undefined;
-}
+interface ColorPalettePopoverDomRef extends Required<ColorPalettePopoverAttributes>, Ui5DomRef {}
 
 interface ColorPalettePopoverPropTypes
   extends ColorPalettePopoverAttributes,

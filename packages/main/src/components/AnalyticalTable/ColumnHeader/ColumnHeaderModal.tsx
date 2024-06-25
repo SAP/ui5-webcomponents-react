@@ -15,12 +15,12 @@ import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '
 import { useCanRenderPortal } from '../../../internal/ssr.js';
 import { stopPropagation } from '../../../internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '../../../internal/utils.js';
-import { CustomListItem } from '../../../webComponents/CustomListItem/index.js';
 import { Icon } from '../../../webComponents/Icon/index.js';
 import { List } from '../../../webComponents/List/index.js';
+import { ListItemCustom } from '../../../webComponents/ListItemCustom/index.js';
+import { ListItemStandard } from '../../../webComponents/ListItemStandard/index.js';
 import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
 import { Popover } from '../../../webComponents/Popover/index.js';
-import { StandardListItem } from '../../../webComponents/StandardListItem/index.js';
 import { FlexBox } from '../../FlexBox/index.js';
 import type { AnalyticalTableColumnDefinition } from '../types/index.js';
 import { classNames, styleData } from './ColumnHeaderModal.module.css.js';
@@ -184,38 +184,38 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
         data-component-name="ATHeaderPopoverList"
       >
         {isSortedAscending && (
-          <StandardListItem type={ListItemType.Active} icon={iconDecline} data-sort="clear">
+          <ListItemStandard type={ListItemType.Active} icon={iconDecline} data-sort="clear">
             {clearSortingText}
-          </StandardListItem>
+          </ListItemStandard>
         )}
         {showSort && !isSortedAscending && (
-          <StandardListItem type={ListItemType.Active} icon={iconSortAscending} data-sort="asc">
+          <ListItemStandard type={ListItemType.Active} icon={iconSortAscending} data-sort="asc">
             {sortAscendingText}
-          </StandardListItem>
+          </ListItemStandard>
         )}
         {showSort && !isSortedDescending && (
-          <StandardListItem type={ListItemType.Active} icon={iconSortDescending} data-sort="desc">
+          <ListItemStandard type={ListItemType.Active} icon={iconSortDescending} data-sort="desc">
             {sortDescendingText}
-          </StandardListItem>
+          </ListItemStandard>
         )}
         {isSortedDescending && (
-          <StandardListItem type={ListItemType.Active} icon={iconDecline} data-sort="clear">
+          <ListItemStandard type={ListItemType.Active} icon={iconDecline} data-sort="clear">
             {clearSortingText}
-          </StandardListItem>
+          </ListItemStandard>
         )}
         {showFilter && (
           //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed (undefined is displayed as val)
-          <CustomListItem type={ListItemType.Inactive} onKeyDown={handleCustomLiKeyDown}>
+          <ListItemCustom type={ListItemType.Inactive} onKeyDown={handleCustomLiKeyDown}>
             <FlexBox alignItems={FlexBoxAlignItems.Center}>
               <Icon name={iconFilter} className={classNames.filterIcon} aria-hidden />
               <Filter column={column} popoverRef={ref} />
             </FlexBox>
-          </CustomListItem>
+          </ListItemCustom>
         )}
         {showGroup && (
-          <StandardListItem type={ListItemType.Active} icon={iconGroup} data-sort={'group'}>
+          <ListItemStandard type={ListItemType.Active} icon={iconGroup} data-sort={'group'}>
             {column.isGrouped ? ungroupText : groupText}
-          </StandardListItem>
+          </ListItemStandard>
         )}
       </List>
     </Popover>,

@@ -11,6 +11,24 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ToggleButtonAttributes {
   /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
+   *
+   * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
+   * Accepts the following string values: `true` or `false`
+   *
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
+   *
+   * - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
+   * Accepts a lowercase string value.
+   *
+   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: ButtonAccessibilityAttributes;
+
+  /**
    * Defines the accessible ARIA name of the component.
    * @default undefined
    */
@@ -105,24 +123,7 @@ interface ToggleButtonAttributes {
   type?: ButtonType | keyof typeof ButtonType;
 }
 
-interface ToggleButtonDomRef extends Required<ToggleButtonAttributes>, Ui5DomRef {
-  /**
-   * Defines the additional accessibility attributes that will be applied to the component.
-   * The following fields are supported:
-   *
-   * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
-   * Accepts the following string values: `true` or `false`
-   *
-   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
-   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
-   *
-   * - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
-   * Accepts a lowercase string value.
-   *
-   * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
-   */
-  accessibilityAttributes: ButtonAccessibilityAttributes;
-}
+interface ToggleButtonDomRef extends Required<ToggleButtonAttributes>, Ui5DomRef {}
 
 interface ToggleButtonPropTypes
   extends ToggleButtonAttributes,
@@ -159,7 +160,17 @@ interface ToggleButtonPropTypes
  */
 const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>(
   'ui5-toggle-button',
-  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'endIcon', 'icon', 'tooltip', 'type'],
+  [
+    'accessibilityAttributes',
+    'accessibleName',
+    'accessibleNameRef',
+    'accessibleRole',
+    'design',
+    'endIcon',
+    'icon',
+    'tooltip',
+    'type'
+  ],
   ['disabled', 'pressed', 'submits'],
   [],
   ['click'],

@@ -21,7 +21,7 @@ import type {
   InputDomRef,
   ListDomRef,
   ListPropTypes,
-  StandardListItemDomRef
+  ListItemStandardDomRef
 } from '../../webComponents/index.js';
 import { Button, Dialog, Icon, Input, List, Title } from '../../webComponents/index.js';
 import { Text } from '../Text/index.js';
@@ -44,7 +44,7 @@ export interface SelectDialogPropTypes
   /**
    * Defines the list items of the component.
    *
-   * __Note:__ Although this prop accepts all HTML Elements and therefore also all list items, it is strongly recommended that you only use `StandardListItem` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements and therefore also all list items, it is strongly recommended that you only use `ListItemStandard` in order to preserve the intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -114,13 +114,13 @@ export interface SelectDialogPropTypes
   /**
    * This event will be fired when the clear button has been clicked.
    */
-  onClear?: (event: Ui5CustomEvent<ButtonDomRef, { prevSelectedItems: StandardListItemDomRef[] }>) => void;
+  onClear?: (event: Ui5CustomEvent<ButtonDomRef, { prevSelectedItems: ListItemStandardDomRef[] }>) => void;
   /**
    * This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode.
    */
   onConfirm?:
-    | ((event: Ui5CustomEvent<ListDomRef, { selectedItems: StandardListItemDomRef[] }>) => void)
-    | ((event: Ui5CustomEvent<ButtonDomRef, { selectedItems: StandardListItemDomRef[] }>) => void);
+    | ((event: Ui5CustomEvent<ListDomRef, { selectedItems: ListItemStandardDomRef[] }>) => void)
+    | ((event: Ui5CustomEvent<ButtonDomRef, { selectedItems: ListItemStandardDomRef[] }>) => void);
   /**
    * This event will be fired when the cancel button is clicked or ESC key is pressed.
    */

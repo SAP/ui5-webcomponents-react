@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import TableGrowingMode from '@ui5/webcomponents-compat/dist/types/TableGrowingMode.js';
+import TableGrowingMode from '@ui5/webcomponents/dist/types/TableGrowingMode.js';
 import { useState } from 'react';
 import { TableCell } from '../TableCell/index.js';
-import { TableColumn } from '../TableColumn/index.js';
+import { TableGrowing } from '../TableGrowing/index.js';
+import { TableHeaderCell } from '../TableHeaderCell/index.js';
+import { TableHeaderRow } from '../TableHeaderRow/index.js';
 import { TableRow } from '../TableRow/index.js';
 import { Table } from './index.js';
 
@@ -10,11 +12,32 @@ const meta = {
   title: 'Data Display / Table',
   component: Table,
   argTypes: {
-    columns: { control: { disable: true } },
+    headerRow: { control: { disable: true } },
+    features: { control: { disable: true } },
     children: { control: { disable: true } }
   },
-  args: {},
-  tags: ['package:@ui5/webcomponents-compat']
+  args: {
+    headerRow: (
+      <TableHeaderRow sticky>
+        <TableHeaderCell width={'12rem'}>
+          <span>Product</span>
+        </TableHeaderCell>
+        <TableHeaderCell minWidth={'800px'}>
+          <span>Supplier</span>
+        </TableHeaderCell>
+        <TableHeaderCell minWidth={'600px'}>
+          <span>Dimensions</span>
+        </TableHeaderCell>
+        <TableHeaderCell minWidth={'600px'}>
+          <span>Weight</span>
+        </TableHeaderCell>
+        <TableHeaderCell>
+          <span>Price</span>
+        </TableHeaderCell>
+      </TableHeaderRow>
+    )
+  },
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Table>;
 
 export default meta;
@@ -23,28 +46,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => {
     return (
-      <Table
-        {...args}
-        columns={
-          <>
-            <TableColumn style={{ width: '12rem' }}>
-              <span>Product</span>
-            </TableColumn>
-            <TableColumn minWidth={800} popinText="Supplier">
-              <span>Supplier</span>
-            </TableColumn>
-            <TableColumn minWidth={600} popinText="Dimensions" demandPopin>
-              <span>Dimensions</span>
-            </TableColumn>
-            <TableColumn minWidth={600} popinText="Weight" demandPopin>
-              <span>Weight</span>
-            </TableColumn>
-            <TableColumn>
-              <span>Price</span>
-            </TableColumn>
-          </>
-        }
-      >
+      <Table {...args}>
         <TableRow>
           <TableCell>
             <span>Notebook Basic</span>
@@ -85,7 +87,7 @@ export const Default: Story = {
 };
 
 export const GrowingTable: Story = {
-  render: () => {
+  render: (args) => {
     const createRows = (indexOffset) => {
       return new Array(25).fill('').map((_, index) => (
         <TableRow key={`${index + indexOffset}-row`}>
@@ -94,6 +96,9 @@ export const GrowingTable: Story = {
           </TableCell>
           <TableCell>
             <span>Placeholder</span>
+          </TableCell>
+          <TableCell>
+            <span>Placeholder 2</span>
           </TableCell>
         </TableRow>
       ));
@@ -104,21 +109,9 @@ export const GrowingTable: Story = {
     };
     return (
       <div style={{ height: '250px', overflow: 'auto' }}>
-        <Table
-          onLoadMore={onLoadMore}
-          growing={TableGrowingMode.Scroll}
-          columns={
-            <>
-              <TableColumn>
-                <span>Column 1</span>
-              </TableColumn>
-              <TableColumn>
-                <span>Column 2</span>
-              </TableColumn>
-            </>
-          }
-        >
+        <Table {...args}>
           {rows}
+          <TableGrowing slot="features" onLoadMore={onLoadMore} type={TableGrowingMode.Button} />
         </Table>
       </div>
     );

@@ -91,6 +91,7 @@ describe('VariantManagement', () => {
     );
 
     cy.findByText('Manage Views').should('not.exist');
+    cy.contains('VariantItem 2').click();
     cy.findByText('Manage').click();
     cy.findByText('Manage Views').should('be.visible');
     cy.findByText('Cancel').click();
@@ -111,11 +112,13 @@ describe('VariantManagement', () => {
     cy.get('body').click({ force: true });
     cy.realPress('Escape');
     cy.get('[ui5-dialog]').should('not.exist');
+    cy.contains('Max 12 chars').click();
     cy.findByText('Manage').click();
     cy.findByTestId('12chars').should('have.attr', 'value-state', 'None');
     cy.findByTestId('12chars').typeIntoUi5Input('A');
     cy.findByTestId('12chars').should('have.attr', 'value-state', ValueState.Negative);
     cy.findByText('Cancel').click();
+    cy.contains('Max 12 chars').click();
     cy.findByText('Manage').click();
     cy.findByTestId('12chars').should('have.attr', 'value-state', 'None');
     cy.findByTestId('12chars').typeIntoUi5Input('A');
@@ -388,6 +391,7 @@ describe('VariantManagement', () => {
     cy.get('@saveAs').should('have.been.calledOnce');
 
     // cancel
+    cy.contains('Updated!').click();
     cy.findByText('Save As').click();
     cy.get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}Updated again!');
     cy.findByText('Cancel').click();

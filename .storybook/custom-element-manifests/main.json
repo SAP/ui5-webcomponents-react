@@ -2785,6 +2785,141 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/TableGrowingMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "TableGrowingMode",
+          "description": "Growing mode of the &lt;ui5-table&gt; component.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Renders a growing button, which can be pressed to load more data.",
+              "default": "Button",
+              "name": "Button",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Scroll to load more data.",
+              "default": "Scroll",
+              "name": "Scroll",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableGrowingMode",
+            "module": "dist/types/TableGrowingMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/TableOverflowMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "TableOverflowMode",
+          "description": "Column mode of the &lt;ui5-table&gt; component.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Shows a scrollbar, when the table cannot fit all columns.",
+              "default": "Scroll",
+              "name": "Scroll",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Pops in columns, that do not fit into the table anymore.",
+              "default": "Popin",
+              "name": "Popin",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableOverflowMode",
+            "module": "dist/types/TableOverflowMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/TableSelectionMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "TableSelectionMode",
+          "description": "Selection modes of the &lt;ui5-table&gt; component.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Default mode (no selection).",
+              "default": "None",
+              "name": "None",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Single selection mode (only one table row can be selected).",
+              "default": "Single",
+              "name": "Single",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Multi selection mode (more than one table row can be selected).",
+              "default": "Multiple",
+              "name": "Multiple",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableSelectionMode",
+            "module": "dist/types/TableSelectionMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/TagDesign.js",
       "declarations": [
         {
@@ -2809,15 +2944,6 @@
               "description": "Set2 of generic indication colors that are intended for industry-specific use cases",
               "default": "Set2",
               "name": "Set2",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Set3 of generic indication colors that are\nintended for industry-specific use cases. Used in SAP BTP design system.",
-              "default": "Set3",
-              "name": "Set3",
               "readonly": true
             },
             {
@@ -3142,6 +3268,49 @@
           "declaration": {
             "name": "ToolbarAlign",
             "module": "dist/types/ToolbarAlign.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/ToolbarDesign.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "ToolbarDesign",
+          "description": "Defines the available toolbar designs.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.0.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The toolbar and its content will be displayed with solid background.",
+              "default": "Solid",
+              "name": "Solid",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The toolbar and its content will be displayed with transparent background.",
+              "default": "Transparent",
+              "name": "Transparent",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToolbarDesign",
+            "module": "dist/types/ToolbarDesign.js"
           }
         }
       ]
@@ -6252,7 +6421,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nAllows the user to set a binary value, such as true/false or yes/no for an item.\n\nThe `ui5-checkbox` component consists of a box and a label that describes its purpose.\nIf it's checked, an indicator is displayed inside the box.\nTo check/uncheck the `ui5-checkbox`, the user has to click or tap the square\nbox or its label.\n\nThe `ui5-checkbox` component only has 2 states - checked and unchecked.\nClicking or tapping toggles the `ui5-checkbox` between checked and unchecked state.\n\n### Usage\n\nYou can define the checkbox text with via the `text` property. If the text exceeds the available width, it is truncated by default.\nIn case you prefer text to wrap, set the `wrappingType` property to \"Normal\".\nThe touchable area for toggling the `ui5-checkbox` ends where the text ends.\n\nYou can disable the `ui5-checkbox` by setting the `disabled` property to\n`true`,\nor use the `ui5-checkbox` in read-only mode by setting the `readonly`\nproperty to `true`.\n\n### Keyboard Handling\n\nThe user can use the following keyboard shortcuts to toggle the checked state of the `ui5-checkbox`.\n\n- [Space],[Enter] - Toggles between different states: checked, not checked.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/CheckBox.js\";`",
+          "description": "### Overview\n\nAllows the user to set a binary value, such as true/false or yes/no for an item.\n\nThe `ui5-checkbox` component consists of a box and a label that describes its purpose.\nIf it's checked, an indicator is displayed inside the box.\nTo check/uncheck the `ui5-checkbox`, the user has to click or tap the square\nbox or its label.\n\nThe `ui5-checkbox` component only has 2 states - checked and unchecked.\nClicking or tapping toggles the `ui5-checkbox` between checked and unchecked state.\n\n### Usage\n\nYou can define the checkbox text with via the `text` property. If the text exceeds the available width, it is truncated by default.\nIn case you prefer text to truncate, set the `wrappingType` property to \"None\".\nThe touchable area for toggling the `ui5-checkbox` ends where the text ends.\n\nYou can disable the `ui5-checkbox` by setting the `disabled` property to\n`true`,\nor use the `ui5-checkbox` in read-only mode by setting the `readonly`\nproperty to `true`.\n\n### Keyboard Handling\n\nThe user can use the following keyboard shortcuts to toggle the checked state of the `ui5-checkbox`.\n\n- [Space],[Enter] - Toggles between different states: checked, not checked.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/CheckBox.js\";`",
           "name": "CheckBox",
           "cssParts": [
             {
@@ -6406,8 +6575,8 @@
                   }
                 ]
               },
-              "description": "Defines whether the component text wraps when there is not enough space.\n\n**Note:** for option \"Normal\" the text will wrap and the words will not be broken based on hyphenation.",
-              "default": "\"None\"",
+              "description": "Defines whether the component text wraps when there is not enough space.\n\n**Note:** for option \"Normal\" the text will wrap and the words will not be broken based on hyphenation.\n**Note:** for option \"None\" the text will be truncated with an ellipsis.",
+              "default": "\"Normal\"",
               "privacy": "public",
               "_ui5validator": "WrappingType"
             },
@@ -6526,9 +6695,9 @@
               }
             },
             {
-              "description": "Defines whether the component text wraps when there is not enough space.\n\n**Note:** for option \"Normal\" the text will wrap and the words will not be broken based on hyphenation.",
+              "description": "Defines whether the component text wraps when there is not enough space.\n\n**Note:** for option \"Normal\" the text will wrap and the words will not be broken based on hyphenation.\n**Note:** for option \"None\" the text will be truncated with an ellipsis.",
               "name": "wrapping-type",
-              "default": "\"None\"",
+              "default": "\"Normal\"",
               "fieldName": "wrappingType",
               "type": {
                 "text": "\"None\" | \"Normal\""
@@ -7661,335 +7830,6 @@
           "declaration": {
             "name": "ComboBoxItemGroup",
             "module": "dist/ComboBoxItemGroup.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/CustomListItem.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A component to be used as custom list item within the `ui5-list`\nthe same way as the standard `ui5-li`.\n\nThe component accepts arbitrary HTML content to allow full customization.",
-          "name": "CustomListItem",
-          "cssParts": [
-            {
-              "description": "Used to style the main li tag of the list item",
-              "name": "native-li"
-            },
-            {
-              "description": "Used to style the content area of the list item",
-              "name": "content"
-            },
-            {
-              "description": "Used to style the button rendered when the list item is of type detail",
-              "name": "detail-button"
-            },
-            {
-              "description": "Used to style the button rendered when the list item is in delete mode",
-              "name": "delete-button"
-            },
-            {
-              "description": "Used to style the radio button rendered when the list item is in single selection mode",
-              "name": "radio"
-            },
-            {
-              "description": "Used to style the checkbox rendered when the list item is in multiple selection mode",
-              "name": "checkbox"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Defines the content of the component.",
-              "name": "default",
-              "_ui5privacy": "public",
-              "_ui5type": {
-                "text": "Array<Node>"
-              }
-            },
-            {
-              "name": "deleteButton",
-              "description": "Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.",
-              "_ui5since": "1.9.0",
-              "_ui5type": {
-                "text": "Array<IButton>",
-                "references": [
-                  {
-                    "name": "IButton",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/Button.js"
-                  }
-                ]
-              },
-              "_ui5privacy": "public"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "movable",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines whether the item is movable.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5since": "2.0.0",
-              "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
-              "name": "accessibleName",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the text alternative of the component.\n\n**Note**: If not provided a default text alternative will be set, if present.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "ListItemType",
-                "references": [
-                  {
-                    "name": "ListItemType",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ListItemType.js"
-                  }
-                ]
-              },
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
-              "default": "\"Active\"",
-              "privacy": "public",
-              "_ui5validator": "ListItemType",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "accessibilityAttributes",
-              "type": {
-                "text": "ListItemAccessibilityAttributes",
-                "references": [
-                  {
-                    "name": "ListItemAccessibilityAttributes",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/ListItem.js"
-                  }
-                ]
-              },
-              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
-              "default": "{}",
-              "privacy": "public",
-              "_ui5since": "1.15.0",
-              "_ui5validator": "Object",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "navigated",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5since": "1.10.0",
-              "_ui5validator": "Boolean",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "tooltip",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the text of the tooltip that would be displayed for the list item.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5since": "1.23.0",
-              "_ui5validator": "String",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "highlight",
-              "type": {
-                "text": "Highlight",
-                "references": [
-                  {
-                    "name": "Highlight",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/Highlight.js"
-                  }
-                ]
-              },
-              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
-              "default": "\"None\"",
-              "privacy": "public",
-              "_ui5since": "1.24",
-              "_ui5validator": "Highlight",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines the selected state of the component.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean",
-              "inheritedFrom": {
-                "name": "ListItemBase",
-                "module": "dist/ListItemBase.js"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "description": "Defines whether the item is movable.",
-              "name": "movable",
-              "default": "false",
-              "fieldName": "movable",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines the text alternative of the component.\n\n**Note**: If not provided a default text alternative will be set, if present.",
-              "name": "accessible-name",
-              "default": "\"\"",
-              "fieldName": "accessibleName",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
-              "name": "type",
-              "default": "\"Active\"",
-              "fieldName": "type",
-              "type": {
-                "text": "\"Navigation\" | \"Inactive\" | \"Active\" | \"Detail\""
-              },
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
-              "name": "navigated",
-              "default": "false",
-              "fieldName": "navigated",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "description": "Defines the text of the tooltip that would be displayed for the list item.",
-              "name": "tooltip",
-              "default": "\"\"",
-              "fieldName": "tooltip",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
-              "name": "highlight",
-              "default": "\"None\"",
-              "fieldName": "highlight",
-              "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
-              },
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "description": "Defines the selected state of the component.",
-              "name": "selected",
-              "default": "false",
-              "fieldName": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "ListItemBase",
-                "module": "dist/ListItemBase.js"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "ListItem",
-            "package": "@ui5/webcomponents",
-            "module": "dist/ListItem.js"
-          },
-          "tagName": "ui5-li-custom",
-          "customElement": true,
-          "_ui5privacy": "public",
-          "events": [
-            {
-              "name": "detail-click",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "CustomListItem",
-            "module": "dist/CustomListItem.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ui5-li-custom",
-          "declaration": {
-            "name": "CustomListItem",
-            "module": "dist/CustomListItem.js"
           }
         }
       ]
@@ -11164,6 +11004,13 @@
       "path": "dist/Form.js",
       "declarations": [
         {
+          "kind": "interface",
+          "name": "IFormItem",
+          "description": "Interface for components that can be slotted inside `ui5-form` as items.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.0.0"
+        },
+        {
           "kind": "class",
           "description": "### Overview\n\nThe Form is a layout component that arranges labels and form fields (like input fields) pairs\ninto a specific number of columns.\n\n### Structure\n\n- **Form** (`ui5-form`) is the top-level container component, responsible for the content layout and responsiveness.\n- **FormGroup** (`ui5-form-group`) enables the grouping of the Form content.\n- **FormItem** (`ui5-form-item`) is a pair of label and form fields and can be used directly in a Form, or as part of a FormGroup.\n\nThe simplest Form (`ui5-form`) consists of a header area on top,\ndisplaying a header text (see the `headingText` property) and content below - an arbitrary number of FormItems (ui5-form-item),\nrepresenting the pairs of label and form fields.\n\nAnd, there is also \"grouping\" available to assist the implementation of richer UIs.\nThis is enabled by the FormGroup (`ui5-form-group`) component.\nIn this case, the Form is structured into FormGroups and each FormGroup consists of FormItems.\n\n ### Responsiveness\n\nThe Form component reacts and changes its layout on predefined breakpoints.\nDepending on its size, the Form content (FormGroups and FormItems) gets divided into one or more columns as follows:\n- **S** (< 600px) – 1 column is recommended (default: 1)\n- **M** (600px - 1022px) – up to 2 columns are recommended (default: 1)\n- **L** (1023px - 1439px) - up to 3 columns are recommended (default: 2)\n- **XL** (> 1439px) – up to 6 columns are recommended (default: 2)\n\nTo change the layout, use the `layout` property - f.e. layout=\"S1 M2 L3 XL6\".\n\n### Groups\n\nTo make better use of screen space, there is built-in logic to determine how many columns should a FormGroup occupy.\n\n- **Example #1** (perfect match):\n4 columns and 4 groups: each group will use 1 column.\n\n- **Example #2** (balanced distribution):\n4 columns and 2 groups: each group will use 2 columns.\n6 columns and 2 groups: each group will use 3 columns.\n\n- **Example #3** (unbalanced distribution):\n3 columns and 2 groups: the larger one will use 2 columns, the smaller 1 column.\n5 columns and 3 groups: two of the groups will use 2 columns each, the smallest 1 column.\n\n**Note:** The size of a group element is determined by the number of FormItems assigned to it.\nIn the case of equality, the first in the DOM will use more columns, and the last - fewer columns.\n\n- **Example #4** (more groups than columns):\n3 columns and 4 groups: each FormGroup uses only 1 column, the last FormGroup will wrap on the second row.\n\n### Groups Column Span\n\nTo influence the built-in group distribution, described in the previous section,\nyou can use the FormGroup's `columnSpan` property, that defines how many columns the group should expand to.\n\n### Items Column Span\n\nFormItem's columnSpan property defines how many columns the form item should expand to inside a form group or the form.\n\n### Items Label Span\n\nThe placement of the labels depends on the size of the used column.\nIf there is enough space, the labels are next to their associated fields, otherwise  - above the fields.\nBy default, the labels take 4/12 of the FormItem, leaving 8/12 parts to associated fields.\nYou can control what space the labels should take via the `labelSpan` property.\n\n**For example:** To always place the labels on top set: `labelSpan=\"S12 M12 L12 XL12\"` property.\n\n### ES6 Module Import\n\n- import @ui5/webcomponents/dist/Form.js\";\n- import @ui5/webcomponents/dist/FormGroup.js\";\n- import @ui5/webcomponents/dist/FormItem.js\";",
           "name": "Form",
@@ -11406,7 +11253,14 @@
           "tagName": "ui5-form-group",
           "customElement": true,
           "_ui5since": "2.0.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IFormItem",
+              "package": "@ui5/webcomponents",
+              "module": "dist/Form.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -11501,7 +11355,14 @@
           "tagName": "ui5-form-item",
           "customElement": true,
           "_ui5since": "2.0.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IFormItem",
+              "package": "@ui5/webcomponents",
+              "module": "dist/Form.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -11519,6 +11380,21 @@
           "declaration": {
             "name": "FormItem",
             "module": "dist/FormItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/GridWalker.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "GridWalker",
+            "module": "dist/GridWalker.js"
           }
         }
       ]
@@ -12327,6 +12203,16 @@
           "kind": "class",
           "description": "### Overview\nThe `ui5-link` is a hyperlink component that is used to navigate to other\napps and web pages, or to trigger actions.\nIt is a clickable text element, visualized in such a way that it stands out\nfrom the standard text.\nOn hover, it changes its style to an underlined text to provide additional feedback to the user.\n\n### Usage\n\nYou can set the `ui5-link` to be enabled or disabled.\n\nTo create a visual hierarchy in large lists of links, you can set the less important links as\n`Subtle` or the more important ones as `Emphasized`,\nby using the `design` property.\n\nIf the `href` property is set, the link behaves as the HTML\nanchor tag (`<a></a>`) and opens the specified URL in the given target frame (`target` property).\nTo specify where the linked content is opened, you can use the `target` property.\n\n### Responsive behavior\n\nIf there is not enough space, the text of the `ui5-link` becomes truncated.\nIf the `wrappingType` property is set to `\"Normal\"`, the text is displayed\non several lines instead of being truncated.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Link\";`",
           "name": "Link",
+          "cssParts": [
+            {
+              "description": "Used to style the provided icon within the link",
+              "name": "icon"
+            },
+            {
+              "description": "Used to style the provided endIcon within the link",
+              "name": "endIcon"
+            }
+          ],
           "slots": [
             {
               "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
@@ -12480,6 +12366,30 @@
               "default": "{}",
               "_ui5since": "1.1.0",
               "_ui5validator": "Object"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the icon, displayed as graphical element within the component before the link's text.\nThe SAP-icons font provides numerous options.\n\n**Note:** Usage of icon-only link is not supported, the link must always have a text.\n\n**Note:** We recommend using аn icon in the beginning or the end only, and with text.\n\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "endIcon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the icon, displayed as graphical element within the component after the link's text.\nThe SAP-icons font provides numerous options.\n\n**Note:** Usage of icon-only link is not supported, the link must always have a text.\n\n**Note:** We recommend using аn icon in the beginning or the end only, and with text.\n\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "String"
             }
           ],
           "events": [
@@ -12615,6 +12525,24 @@
               "type": {
                 "text": "\"Button\" | \"Link\""
               }
+            },
+            {
+              "description": "Defines the icon, displayed as graphical element within the component before the link's text.\nThe SAP-icons font provides numerous options.\n\n**Note:** Usage of icon-only link is not supported, the link must always have a text.\n\n**Note:** We recommend using аn icon in the beginning or the end only, and with text.\n\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "name": "icon",
+              "default": "\"\"",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the icon, displayed as graphical element within the component after the link's text.\nThe SAP-icons font provides numerous options.\n\n**Note:** Usage of icon-only link is not supported, the link must always have a text.\n\n**Note:** We recommend using аn icon in the beginning or the end only, and with text.\n\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "name": "end-icon",
+              "default": "\"\"",
+              "fieldName": "endIcon",
+              "type": {
+                "text": "string"
+              }
             }
           ],
           "superclass": {
@@ -12652,7 +12580,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-list` component allows displaying a list of items, advanced keyboard\nhandling support for navigating between items, and predefined modes to improve the development efficiency.\n\nThe `ui5-list` is a container for the available list items:\n\n- `ui5-li`\n- `ui5-li-custom`\n- `ui5-li-group`\n\nTo benefit from the built-in selection mechanism, you can use the available\nselection modes, such as\n`Single`, `Multiple` and `Delete`.\n\nAdditionally, the `ui5-list` provides header, footer, and customization for the list item separators.\n\n### Keyboard Handling\n\n#### Basic Navigation\nThe `ui5-list` provides advanced keyboard handling.\nWhen a list is focused the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [Up] or [Down] - Navigates up and down the items\n- [Home] - Navigates to first item\n- [End] - Navigates to the last item\n\nThe user can use the following keyboard shortcuts to perform actions (such as select, delete),\nwhen the `selectionMode` property is in use:\n\n- [Space] - Select an item (if `type` is 'Active') when `selectionMode` is selection\n- [Delete] - Delete an item if `selectionMode` property is `Delete`\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/List.js\";`\n\n`import \"@ui5/webcomponents/dist/StandardListItem.js\";` (for `ui5-li`)\n\n`import \"@ui5/webcomponents/dist/CustomListItem.js\";` (for `ui5-li-custom`)\n\n`import \"@ui5/webcomponents/dist/ListItemGroup.js\";` (for `ui5-li-group`)",
+          "description": "### Overview\n\nThe `ui5-list` component allows displaying a list of items, advanced keyboard\nhandling support for navigating between items, and predefined modes to improve the development efficiency.\n\nThe `ui5-list` is a container for the available list items:\n\n- `ui5-li`\n- `ui5-li-custom`\n- `ui5-li-group`\n\nTo benefit from the built-in selection mechanism, you can use the available\nselection modes, such as\n`Single`, `Multiple` and `Delete`.\n\nAdditionally, the `ui5-list` provides header, footer, and customization for the list item separators.\n\n### Keyboard Handling\n\n#### Basic Navigation\nThe `ui5-list` provides advanced keyboard handling.\nWhen a list is focused the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [Up] or [Down] - Navigates up and down the items\n- [Home] - Navigates to first item\n- [End] - Navigates to the last item\n\nThe user can use the following keyboard shortcuts to perform actions (such as select, delete),\nwhen the `selectionMode` property is in use:\n\n- [Space] - Select an item (if `type` is 'Active') when `selectionMode` is selection\n- [Delete] - Delete an item if `selectionMode` property is `Delete`\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/List.js\";`\n\n`import \"@ui5/webcomponents/dist/ListItemStandard.js\";` (for `ui5-li`)\n\n`import \"@ui5/webcomponents/dist/ListItemCustom.js\";` (for `ui5-li-custom`)\n\n`import \"@ui5/webcomponents/dist/ListItemGroup.js\";` (for `ui5-li-group`)",
           "name": "List",
           "slots": [
             {
@@ -13265,7 +13193,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A class to serve as a base\nfor the `StandardListItem` and `CustomListItem` classes.",
+          "description": "A class to serve as a base\nfor the `ListItemStandard` and `ListItemCustom` classes.",
           "name": "ListItem",
           "slots": [
             {
@@ -13519,6 +13447,335 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ListItemCustom.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A component to be used as custom list item within the `ui5-list`\nthe same way as the standard `ui5-li`.\n\nThe component accepts arbitrary HTML content to allow full customization.",
+          "name": "ListItemCustom",
+          "cssParts": [
+            {
+              "description": "Used to style the main li tag of the list item",
+              "name": "native-li"
+            },
+            {
+              "description": "Used to style the content area of the list item",
+              "name": "content"
+            },
+            {
+              "description": "Used to style the button rendered when the list item is of type detail",
+              "name": "detail-button"
+            },
+            {
+              "description": "Used to style the button rendered when the list item is in delete mode",
+              "name": "delete-button"
+            },
+            {
+              "description": "Used to style the radio button rendered when the list item is in single selection mode",
+              "name": "radio"
+            },
+            {
+              "description": "Used to style the checkbox rendered when the list item is in multiple selection mode",
+              "name": "checkbox"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Defines the content of the component.",
+              "name": "default",
+              "_ui5privacy": "public",
+              "_ui5type": {
+                "text": "Array<Node>"
+              }
+            },
+            {
+              "name": "deleteButton",
+              "description": "Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.",
+              "_ui5since": "1.9.0",
+              "_ui5type": {
+                "text": "Array<IButton>",
+                "references": [
+                  {
+                    "name": "IButton",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "movable",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines whether the item is movable.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text alternative of the component.\n\n**Note**: If not provided a default text alternative will be set, if present.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.15",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "ListItemType",
+                "references": [
+                  {
+                    "name": "ListItemType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ListItemType.js"
+                  }
+                ]
+              },
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
+              "default": "\"Active\"",
+              "privacy": "public",
+              "_ui5validator": "ListItemType",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "ListItemAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "ListItemAccessibilityAttributes",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItem.js"
+                  }
+                ]
+              },
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+              "default": "{}",
+              "privacy": "public",
+              "_ui5since": "1.15.0",
+              "_ui5validator": "Object",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "navigated",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5since": "1.10.0",
+              "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "highlight",
+              "type": {
+                "text": "Highlight",
+                "references": [
+                  {
+                    "name": "Highlight",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/Highlight.js"
+                  }
+                ]
+              },
+              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "default": "\"None\"",
+              "privacy": "public",
+              "_ui5since": "1.24",
+              "_ui5validator": "Highlight",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines the selected state of the component.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines whether the item is movable.",
+              "name": "movable",
+              "default": "false",
+              "fieldName": "movable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the text alternative of the component.\n\n**Note**: If not provided a default text alternative will be set, if present.",
+              "name": "accessible-name",
+              "default": "\"\"",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
+              "name": "type",
+              "default": "\"Active\"",
+              "fieldName": "type",
+              "type": {
+                "text": "\"Navigation\" | \"Inactive\" | \"Active\" | \"Detail\""
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
+              "name": "navigated",
+              "default": "false",
+              "fieldName": "navigated",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "name": "tooltip",
+              "default": "\"\"",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "name": "highlight",
+              "default": "\"None\"",
+              "fieldName": "highlight",
+              "type": {
+                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines the selected state of the component.",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ListItem",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ListItem.js"
+          },
+          "tagName": "ui5-li-custom",
+          "customElement": true,
+          "_ui5privacy": "public",
+          "events": [
+            {
+              "name": "detail-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListItemCustom",
+            "module": "dist/ListItemCustom.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-li-custom",
+          "declaration": {
+            "name": "ListItemCustom",
+            "module": "dist/ListItemCustom.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ListItemGroup.js",
       "declarations": [
         {
@@ -13649,6 +13906,490 @@
           "declaration": {
             "name": "ListItemGroupHeader",
             "module": "dist/ListItemGroupHeader.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ListItemStandard.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `ui5-li` represents the simplest type of item for a `ui5-list`.\n\nThis is a list item,\nproviding the most common use cases such as `text`,\n`image` and `icon`.",
+          "name": "ListItemStandard",
+          "cssParts": [
+            {
+              "description": "Used to style the title of the list item",
+              "name": "title"
+            },
+            {
+              "description": "Used to style the description of the list item",
+              "name": "description"
+            },
+            {
+              "description": "Used to style the additionalText of the list item",
+              "name": "additional-text"
+            },
+            {
+              "description": "Used to style the icon of the list item",
+              "name": "icon"
+            },
+            {
+              "description": "Used to style the main li tag of the list item",
+              "name": "native-li"
+            },
+            {
+              "description": "Used to style the content area of the list item",
+              "name": "content"
+            },
+            {
+              "description": "Used to style the button rendered when the list item is of type detail",
+              "name": "detail-button"
+            },
+            {
+              "description": "Used to style the button rendered when the list item is in delete mode",
+              "name": "delete-button"
+            },
+            {
+              "description": "Used to style the radio button rendered when the list item is in single selection mode",
+              "name": "radio"
+            },
+            {
+              "description": "Used to style the checkbox rendered when the list item is in multiple selection mode",
+              "name": "checkbox"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
+              "name": "default",
+              "_ui5privacy": "public",
+              "_ui5type": {
+                "text": "Array<Node>"
+              }
+            },
+            {
+              "name": "imageContent",
+              "description": "**Note:** While the slot allows option for setting custom avatar, to match the\ndesign guidelines, please use the `ui5-avatar` with it's default size - S.\n\n**Note:** If bigger `ui5-avatar` needs to be used, then the size of the\n`ui5-li` should be customized in order to fit.",
+              "_ui5since": "1.10.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "deleteButton",
+              "description": "Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.",
+              "_ui5since": "1.9.0",
+              "_ui5type": {
+                "text": "Array<IButton>",
+                "references": [
+                  {
+                    "name": "IButton",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the description displayed right under the item text, if such is present.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "0.8.0",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the `icon` source URI.\n\n**Note:**\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "iconEnd",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines whether the `icon` should be displayed in the beginning of the list item or in the end.\n\n**Note:** If `image` is set, the `icon` would be displayed after the `image`.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the `image` source URI.\n\n**Note:** The `image` would be displayed in the beginning of the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "additionalText",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the `additionalText`, displayed in the end of the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.15",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "additionalTextState",
+              "type": {
+                "text": "ValueState",
+                "references": [
+                  {
+                    "name": "ValueState",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/ValueState.js"
+                  }
+                ]
+              },
+              "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "default": "\"None\"",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.15",
+              "_ui5validator": "ValueState"
+            },
+            {
+              "kind": "field",
+              "name": "movable",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines whether the item is movable.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "Boolean"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text alternative of the component.\nNote: If not provided a default text alternative will be set, if present.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.15",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "ListItemType",
+                "references": [
+                  {
+                    "name": "ListItemType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ListItemType.js"
+                  }
+                ]
+              },
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
+              "default": "\"Active\"",
+              "privacy": "public",
+              "_ui5validator": "ListItemType",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "ListItemAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "ListItemAccessibilityAttributes",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItem.js"
+                  }
+                ]
+              },
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+              "default": "{}",
+              "privacy": "public",
+              "_ui5since": "1.15.0",
+              "_ui5validator": "Object",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "navigated",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5since": "1.10.0",
+              "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "_ui5validator": "String",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "highlight",
+              "type": {
+                "text": "Highlight",
+                "references": [
+                  {
+                    "name": "Highlight",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/Highlight.js"
+                  }
+                ]
+              },
+              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "default": "\"None\"",
+              "privacy": "public",
+              "_ui5since": "1.24",
+              "_ui5validator": "Highlight",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines the selected state of the component.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the description displayed right under the item text, if such is present.",
+              "name": "description",
+              "default": "\"\"",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the `icon` source URI.\n\n**Note:**\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "name": "icon",
+              "default": "\"\"",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines whether the `icon` should be displayed in the beginning of the list item or in the end.\n\n**Note:** If `image` is set, the `icon` would be displayed after the `image`.",
+              "name": "icon-end",
+              "default": "false",
+              "fieldName": "iconEnd",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the `image` source URI.\n\n**Note:** The `image` would be displayed in the beginning of the list item.",
+              "name": "image",
+              "default": "\"\"",
+              "fieldName": "image",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the `additionalText`, displayed in the end of the list item.",
+              "name": "additional-text",
+              "default": "\"\"",
+              "fieldName": "additionalText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "name": "additional-text-state",
+              "default": "\"None\"",
+              "fieldName": "additionalTextState",
+              "type": {
+                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+              }
+            },
+            {
+              "description": "Defines whether the item is movable.",
+              "name": "movable",
+              "default": "false",
+              "fieldName": "movable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the text alternative of the component.\nNote: If not provided a default text alternative will be set, if present.",
+              "name": "accessible-name",
+              "default": "\"\"",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
+              "name": "type",
+              "default": "\"Active\"",
+              "fieldName": "type",
+              "type": {
+                "text": "\"Navigation\" | \"Inactive\" | \"Active\" | \"Detail\""
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
+              "name": "navigated",
+              "default": "false",
+              "fieldName": "navigated",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "name": "tooltip",
+              "default": "\"\"",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "name": "highlight",
+              "default": "\"None\"",
+              "fieldName": "highlight",
+              "type": {
+                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines the selected state of the component.",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ListItem",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ListItem.js"
+          },
+          "tagName": "ui5-li",
+          "customElement": true,
+          "_ui5privacy": "public",
+          "events": [
+            {
+              "name": "detail-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListItemStandard",
+            "module": "dist/ListItemStandard.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-li",
+          "declaration": {
+            "name": "ListItemStandard",
+            "module": "dist/ListItemStandard.js"
           }
         }
       ]
@@ -14821,13 +15562,22 @@
               "description": "Fired when the value of the component changes at each keystroke or clear icon is pressed."
             },
             {
-              "name": "open-change",
+              "name": "open",
               "_ui5privacy": "public",
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the dropdown is opened or closed.",
-              "_ui5since": "1.0.0-rc.5"
+              "description": "Fired when the dropdown is opened.",
+              "_ui5since": "2.0.0"
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the dropdown is closed.",
+              "_ui5since": "2.0.0"
             },
             {
               "name": "selection-change",
@@ -15032,76 +15782,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/MultiComboBoxGroupItem.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "The `ui5-mcb-group-item` is type of suggestion item,\nthat can be used to split the `ui5-multi-combobox` suggestions into groups.",
-          "name": "MultiComboBoxGroupItem",
-          "members": [
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the text of the component.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5validator": "String"
-            }
-          ],
-          "attributes": [
-            {
-              "description": "Defines the text of the component.",
-              "name": "text",
-              "default": "\"\"",
-              "fieldName": "text",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "UI5Element",
-            "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
-          },
-          "tagName": "ui5-mcb-group-item",
-          "customElement": true,
-          "_ui5since": "1.4.0",
-          "_ui5privacy": "public",
-          "_ui5abstract": true,
-          "_ui5implements": [
-            {
-              "name": "IMultiComboBoxItem",
-              "package": "@ui5/webcomponents",
-              "module": "dist/MultiComboBox.js"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "MultiComboBoxGroupItem",
-            "module": "dist/MultiComboBoxGroupItem.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ui5-mcb-group-item",
-          "declaration": {
-            "name": "MultiComboBoxGroupItem",
-            "module": "dist/MultiComboBoxGroupItem.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "dist/MultiComboBoxItem.js",
       "declarations": [
         {
@@ -15222,6 +15902,94 @@
           "declaration": {
             "name": "MultiComboBoxItem",
             "module": "dist/MultiComboBoxItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MultiComboBoxItemGroup.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `ui5-mcb-item-group` is type of suggestion item,\nthat can be used to split the `ui5-multi-combobox` suggestions into groups.",
+          "name": "MultiComboBoxItemGroup",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the items of the <code>ui5-mcb-item-group</code>.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<MultiComboBoxItem>",
+                "references": [
+                  {
+                    "name": "MultiComboBoxItem",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/MultiComboBoxItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the component.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the text of the component.",
+              "name": "text",
+              "default": "\"\"",
+              "fieldName": "text",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-mcb-item-group",
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public",
+          "_ui5abstract": true,
+          "_ui5implements": [
+            {
+              "name": "IMultiComboBoxItem",
+              "package": "@ui5/webcomponents",
+              "module": "dist/MultiComboBox.js"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MultiComboBoxItemGroup",
+            "module": "dist/MultiComboBoxItemGroup.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-mcb-item-group",
+          "declaration": {
+            "name": "MultiComboBoxItemGroup",
+            "module": "dist/MultiComboBoxItemGroup.js"
           }
         }
       ]
@@ -19364,7 +20132,19 @@
           },
           "tagName": "ui5-segmented-button-item",
           "customElement": true,
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "ISegmentedButtonItem",
+              "package": "@ui5/webcomponents",
+              "module": "dist/SegmentedButton.js"
+            },
+            {
+              "name": "IButton",
+              "package": "@ui5/webcomponents",
+              "module": "dist/Button.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -20616,490 +21396,6 @@
           "declaration": {
             "name": "SplitButton",
             "module": "dist/SplitButton.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/StandardListItem.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "The `ui5-li` represents the simplest type of item for a `ui5-list`.\n\nThis is a list item,\nproviding the most common use cases such as `text`,\n`image` and `icon`.",
-          "name": "StandardListItem",
-          "cssParts": [
-            {
-              "description": "Used to style the title of the list item",
-              "name": "title"
-            },
-            {
-              "description": "Used to style the description of the list item",
-              "name": "description"
-            },
-            {
-              "description": "Used to style the additionalText of the list item",
-              "name": "additional-text"
-            },
-            {
-              "description": "Used to style the icon of the list item",
-              "name": "icon"
-            },
-            {
-              "description": "Used to style the main li tag of the list item",
-              "name": "native-li"
-            },
-            {
-              "description": "Used to style the content area of the list item",
-              "name": "content"
-            },
-            {
-              "description": "Used to style the button rendered when the list item is of type detail",
-              "name": "detail-button"
-            },
-            {
-              "description": "Used to style the button rendered when the list item is in delete mode",
-              "name": "delete-button"
-            },
-            {
-              "description": "Used to style the radio button rendered when the list item is in single selection mode",
-              "name": "radio"
-            },
-            {
-              "description": "Used to style the checkbox rendered when the list item is in multiple selection mode",
-              "name": "checkbox"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
-              "name": "default",
-              "_ui5privacy": "public",
-              "_ui5type": {
-                "text": "Array<Node>"
-              }
-            },
-            {
-              "name": "imageContent",
-              "description": "**Note:** While the slot allows option for setting custom avatar, to match the\ndesign guidelines, please use the `ui5-avatar` with it's default size - S.\n\n**Note:** If bigger `ui5-avatar` needs to be used, then the size of the\n`ui5-li` should be customized in order to fit.",
-              "_ui5since": "1.10.0",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "deleteButton",
-              "description": "Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.",
-              "_ui5since": "1.9.0",
-              "_ui5type": {
-                "text": "Array<IButton>",
-                "references": [
-                  {
-                    "name": "IButton",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/Button.js"
-                  }
-                ]
-              },
-              "_ui5privacy": "public"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "description",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the description displayed right under the item text, if such is present.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5since": "0.8.0",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "icon",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the `icon` source URI.\n\n**Note:**\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "iconEnd",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines whether the `icon` should be displayed in the beginning of the list item or in the end.\n\n**Note:** If `image` is set, the `icon` would be displayed after the `image`.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
-              "name": "image",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the `image` source URI.\n\n**Note:** The `image` would be displayed in the beginning of the list item.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "additionalText",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the `additionalText`, displayed in the end of the list item.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "additionalTextState",
-              "type": {
-                "text": "ValueState",
-                "references": [
-                  {
-                    "name": "ValueState",
-                    "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
-                  }
-                ]
-              },
-              "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
-              "default": "\"None\"",
-              "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "ValueState"
-            },
-            {
-              "kind": "field",
-              "name": "movable",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines whether the item is movable.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5since": "2.0.0",
-              "_ui5validator": "Boolean"
-            },
-            {
-              "kind": "field",
-              "name": "accessibleName",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the text alternative of the component.\nNote: If not provided a default text alternative will be set, if present.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "ListItemType",
-                "references": [
-                  {
-                    "name": "ListItemType",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ListItemType.js"
-                  }
-                ]
-              },
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
-              "default": "\"Active\"",
-              "privacy": "public",
-              "_ui5validator": "ListItemType",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "accessibilityAttributes",
-              "type": {
-                "text": "ListItemAccessibilityAttributes",
-                "references": [
-                  {
-                    "name": "ListItemAccessibilityAttributes",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/ListItem.js"
-                  }
-                ]
-              },
-              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
-              "default": "{}",
-              "privacy": "public",
-              "_ui5since": "1.15.0",
-              "_ui5validator": "Object",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "navigated",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5since": "1.10.0",
-              "_ui5validator": "Boolean",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "tooltip",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the text of the tooltip that would be displayed for the list item.",
-              "default": "\"\"",
-              "privacy": "public",
-              "_ui5since": "1.23.0",
-              "_ui5validator": "String",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "highlight",
-              "type": {
-                "text": "Highlight",
-                "references": [
-                  {
-                    "name": "Highlight",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/Highlight.js"
-                  }
-                ]
-              },
-              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
-              "default": "\"None\"",
-              "privacy": "public",
-              "_ui5since": "1.24",
-              "_ui5validator": "Highlight",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines the selected state of the component.",
-              "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean",
-              "inheritedFrom": {
-                "name": "ListItemBase",
-                "module": "dist/ListItemBase.js"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "description": "Defines the description displayed right under the item text, if such is present.",
-              "name": "description",
-              "default": "\"\"",
-              "fieldName": "description",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines the `icon` source URI.\n\n**Note:**\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
-              "name": "icon",
-              "default": "\"\"",
-              "fieldName": "icon",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines whether the `icon` should be displayed in the beginning of the list item or in the end.\n\n**Note:** If `image` is set, the `icon` would be displayed after the `image`.",
-              "name": "icon-end",
-              "default": "false",
-              "fieldName": "iconEnd",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines the `image` source URI.\n\n**Note:** The `image` would be displayed in the beginning of the list item.",
-              "name": "image",
-              "default": "\"\"",
-              "fieldName": "image",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines the `additionalText`, displayed in the end of the list item.",
-              "name": "additional-text",
-              "default": "\"\"",
-              "fieldName": "additionalText",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
-              "name": "additional-text-state",
-              "default": "\"None\"",
-              "fieldName": "additionalTextState",
-              "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
-              }
-            },
-            {
-              "description": "Defines whether the item is movable.",
-              "name": "movable",
-              "default": "false",
-              "fieldName": "movable",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines the text alternative of the component.\nNote: If not provided a default text alternative will be set, if present.",
-              "name": "accessible-name",
-              "default": "\"\"",
-              "fieldName": "accessibleName",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
-              "name": "type",
-              "default": "\"Active\"",
-              "fieldName": "type",
-              "type": {
-                "text": "\"Navigation\" | \"Inactive\" | \"Active\" | \"Detail\""
-              },
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
-              "name": "navigated",
-              "default": "false",
-              "fieldName": "navigated",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "description": "Defines the text of the tooltip that would be displayed for the list item.",
-              "name": "tooltip",
-              "default": "\"\"",
-              "fieldName": "tooltip",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
-              "name": "highlight",
-              "default": "\"None\"",
-              "fieldName": "highlight",
-              "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
-              },
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "description": "Defines the selected state of the component.",
-              "name": "selected",
-              "default": "false",
-              "fieldName": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "ListItemBase",
-                "module": "dist/ListItemBase.js"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "ListItem",
-            "package": "@ui5/webcomponents",
-            "module": "dist/ListItem.js"
-          },
-          "tagName": "ui5-li",
-          "customElement": true,
-          "_ui5privacy": "public",
-          "events": [
-            {
-              "name": "detail-click",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "StandardListItem",
-            "module": "dist/StandardListItem.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ui5-li",
-          "declaration": {
-            "name": "StandardListItem",
-            "module": "dist/StandardListItem.js"
           }
         }
       ]
@@ -22725,6 +23021,941 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/Table.js",
+      "declarations": [
+        {
+          "kind": "interface",
+          "name": "ITableFeature",
+          "description": "Interface for components that can be slotted inside the <code>features</code> slot of the <code>ui5-table</code>.",
+          "_ui5privacy": "public"
+        },
+        {
+          "kind": "interface",
+          "name": "ITableGrowing",
+          "description": "Interface for components that can be slotted inside the <code>features</code> slot of the <code>ui5-table</code>\nand provide growing/data loading functionality.",
+          "_ui5privacy": "public"
+        },
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table` component provides a set of sophisticated features for displaying and dealing with vast amounts of data in a responsive manner.\nTo render the `ui5-table`, you need to define the columns and rows. You can use the provided `ui5-table-header-row` and `ui5-table-row` components for this purpose.\n\n### Features\n\nThe `ui5-table` can be enhanced in its functionalities by applying different features.\nFeatures can be slotted into the `features` slot, to enable them in the component.\n\nThe following features are currently available:\n\n* [TableSelection](../TableSelection) - adds selection capabilities to the table\n* [TableGrowing](../TableGrowing) - provides growing capabilities to load more data\n\n### Keyboard Handling\n\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\nFurthermore, you can interact with `ui5-table` via the following keys:\n\nIf the focus is on a row, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Navigates down\n* <kbd>Up</kbd> - Navigates up\n* <kbd>Right</kbd> - Selects the first cell of the row\n* <kbd>Space</kbd> - Toggles the selection of the row\n* <kbd>Ctrl/Cmd + A</kbd> - In multi selection mode, toggles the selection of all rows\n* <kbd>Home</kbd> - Navigates to the first row, if the focus is on the first row, navigates to the header row\n* <kbd>End</kbd> - Navigates to the last row, if the focus is on the last row, navigates to the growing button\n* <kbd>Page Up</kbd> - Navigates one page up, if the focus is on the first row, navigates to the header row\n* <kbd>Page Down</kbd> - Navigates one page down, if the focus is on the last row, navigates to the growing button\n* <kbd>F2</kbd> - Focuses the first tabbable element in the row\n* <kbd>F7</kbd> - If focus position is remembered, moves focus to the corresponding focus position row, otherwise to the first tabbable element within the row\n* <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table\n\n\nIf the focus is on a cell, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Navigates down\n* <kbd>Up</kbd> - Navigates up\n* <kbd>Right</kbd> - Navigates right\n* <kbd>Left</kbd> - Navigates left, if the focus is on the first cell of the row, the focus is moved to the row.\n* <kbd>Home</kbd> - Navigates to the first cell of the current row, if the focus is on the first cell, navigates to the corresponding row\n* <kbd>End</kbd> - Navigates to the last cell of the current row, if the focus is on the last cell, navigates to the corresponding row\n* <kbd>Page Up</kbd> - Navigates one page up while keeping the focus in same column\n* <kbd>Page Down</kbd> - Navigates one page down while keeping the focus in same column\n* <kbd>F2</kbd> - Toggles the focus between the first tabbable cell content and the cell\n* <kbd>Enter</kbd> - Focuses the first tabbable cell content\n* <kbd>F7</kbd> - If the focus is on an interactive element inside a row, moves focus to the corresponding row and remembers the focus position of the element within the row\n* <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table\n\n\nIf the focus is on an interactive cell content, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Move the focus to the interactive element in the same column of the previous row, unless the focused element prevents the default\n* <kbd>Up</kbd> - Move the focus to the interactive element in the same column of the next row, unless the focused element prevents the default\n* <kbd>[Shift]Tab</kbd> - Move the focus to the element in the tab chain\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Table.js\";`\\\n`import \"@ui5/webcomponents/dist/TableRow.js\";` (`ui5-table-row`)\\\n`import \"@ui5/webcomponents/dist/TableCell.js\";` (`ui5-table-cell`)\\\n`import \"@ui5/webcomponents/dist/TableHeaderRow.js\";` (`ui5-table-header-row`)\\\n`import \"@ui5/webcomponents/dist/TableHeaderCell.js\";` (`ui5-table-header-cell`)",
+          "name": "Table",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the rows of the component.\n\nNote: Use <code>ui5-table-row</code> for the intended design.",
+              "_ui5propertyName": "rows",
+              "_ui5type": {
+                "text": "Array<TableRow>",
+                "references": [
+                  {
+                    "name": "TableRow",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/TableRow.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "headerRow",
+              "description": "Defines the header row of the component.\n\nNote: Use <code>ui5-table-header-row</code> for the intended design.",
+              "_ui5type": {
+                "text": "Array<TableHeaderRow>",
+                "references": [
+                  {
+                    "name": "TableHeaderRow",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/TableHeaderRow.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "nodata",
+              "description": "Defines the custom visualization if there is no data available.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "features",
+              "description": "Defines the features of the component.",
+              "_ui5type": {
+                "text": "Array<ITableFeature>",
+                "references": [
+                  {
+                    "name": "ITableFeature",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Table.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleNameRef",
+              "type": {
+                "text": "string"
+              },
+              "description": "Identifies the element (or elements) that labels the component.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "noDataText",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text to be displayed when there are no rows in the component.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "overflowMode",
+              "type": {
+                "text": "TableOverflowMode",
+                "references": [
+                  {
+                    "name": "TableOverflowMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TableOverflowMode.js"
+                  }
+                ]
+              },
+              "description": "Defines the mode of the <code>ui5-table</code> overflow behavior.\n\nAvailable options are:\n\n<code>Scroll</code> - Columns are shown as regular columns and horizontal scrolling is enabled.\n\n<code>Popin</code> - Columns are shown as pop-ins instead of regular columns.",
+              "default": "\"Scroll\"",
+              "privacy": "public",
+              "_ui5validator": "TableOverflowMode"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines if the loading indicator should be shown.\n\n<b>Note:</b> When the component is loading, it is non-interactive.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            }
+          ],
+          "events": [
+            {
+              "name": "row-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<TableRowClickEventDetail>",
+                "references": [
+                  {
+                    "name": "TableRowClickEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Table.js"
+                  }
+                ]
+              },
+              "description": "Fired when an interactive row is clicked.",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "TableRow",
+                    "references": [
+                      {
+                        "name": "TableRow",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRow.js"
+                      }
+                    ]
+                  },
+                  "name": "row",
+                  "_ui5privacy": "public",
+                  "description": "The row instance"
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the accessible ARIA name of the component.",
+              "name": "accessible-name",
+              "default": "\"\"",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Identifies the element (or elements) that labels the component.",
+              "name": "accessible-name-ref",
+              "default": "\"\"",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the text to be displayed when there are no rows in the component.",
+              "name": "no-data-text",
+              "default": "\"\"",
+              "fieldName": "noDataText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the mode of the <code>ui5-table</code> overflow behavior.\n\nAvailable options are:\n\n<code>Scroll</code> - Columns are shown as regular columns and horizontal scrolling is enabled.\n\n<code>Popin</code> - Columns are shown as pop-ins instead of regular columns.",
+              "name": "overflow-mode",
+              "default": "\"Scroll\"",
+              "fieldName": "overflowMode",
+              "type": {
+                "text": "\"Scroll\" | \"Popin\""
+              }
+            },
+            {
+              "description": "Defines if the loading indicator should be shown.\n\n<b>Note:</b> When the component is loading, it is non-interactive.",
+              "name": "loading",
+              "default": "false",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-table",
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Table",
+            "module": "dist/Table.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table",
+          "declaration": {
+            "name": "Table",
+            "module": "dist/Table.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableCell.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table-cell` represents a cell inside of a `ui5-table`.\nIt is tightly coupled to the `ui5-table` and thus should only be used in the table component.\n\n### ES6 Module Import\n\n`import @ui5/webcomponents/dist/TableCell.js;`",
+          "name": "TableCell",
+          "superclass": {
+            "name": "TableCellBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TableCellBase.js"
+          },
+          "tagName": "ui5-table-cell",
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the content of the component.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<Node>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableCell",
+            "module": "dist/TableCell.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-cell",
+          "declaration": {
+            "name": "TableCell",
+            "module": "dist/TableCell.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableCellBase.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A class to serve as a foundation for the `TableCell` and `TableHeaderCell` classes.",
+          "name": "TableCellBase",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the content of the component.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<Node>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public",
+          "_ui5abstract": true,
+          "members": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableCellBase",
+            "module": "dist/TableCellBase.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableExtension.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableExtension",
+            "module": "dist/TableExtension.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableGrowing.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table-growing` component is used inside the `ui5-table` to add a growing/data loading functionalities\nto the table.\n\nThe component offers two options:\n* Button - a More button is displayed, clicking it will load more data.\n* Scroll - additional data is loaded automatically when the user scrolls to the end of the table.\n\n### Usage\n\nThe `ui5-table-growing` component is only used inside the `ui5-table` component as a feature.\nIt has to be slotted inside the `ui5-table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<ui5-table>\n\t<ui5-table-growing type=\"Button\" growing-text=\"More\" slot=\"features\"></ui5-table-growing>\n</ui5-table>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableGrowing.js\";`",
+          "name": "TableGrowing",
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "TableGrowingMode",
+                "references": [
+                  {
+                    "name": "TableGrowingMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TableGrowingMode.js"
+                  }
+                ]
+              },
+              "description": "Defines the mode of the <code>ui5-table</code> growing.\n\nAvailable options are:\n\nButton - Shows a More button at the bottom of the table, pressing it will load more rows.\n\nScroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable, this option is the same as the Button.",
+              "default": "\"Button\"",
+              "privacy": "public",
+              "_ui5validator": "TableGrowingMode"
+            },
+            {
+              "kind": "field",
+              "name": "growingText",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text that will be displayed inside the growing button.\nHas no effect when type is set to `Scroll`.\n\n**Note:** When not provided and the type is set to Button, a default text is displayed, corresponding to the\ncurrent language.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "growingSubText",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text that will be displayed below the `growingText` inside the growing button.\nHas no effect when type is set to Scroll.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            }
+          ],
+          "events": [
+            {
+              "name": "load-more",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the growing button is pressed or the user scrolls to the end of the table."
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the mode of the <code>ui5-table</code> growing.\n\nAvailable options are:\n\nButton - Shows a More button at the bottom of the table, pressing it will load more rows.\n\nScroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable, this option is the same as the Button.",
+              "name": "type",
+              "default": "\"Button\"",
+              "fieldName": "type",
+              "type": {
+                "text": "\"Button\" | \"Scroll\""
+              }
+            },
+            {
+              "description": "Defines the text that will be displayed inside the growing button.\nHas no effect when type is set to `Scroll`.\n\n**Note:** When not provided and the type is set to Button, a default text is displayed, corresponding to the\ncurrent language.",
+              "name": "growing-text",
+              "default": "\"\"",
+              "fieldName": "growingText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the text that will be displayed below the `growingText` inside the growing button.\nHas no effect when type is set to Scroll.",
+              "name": "growing-sub-text",
+              "default": "\"\"",
+              "fieldName": "growingSubText",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-table-growing",
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableGrowing",
+            "module": "dist/TableGrowing.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-growing",
+          "declaration": {
+            "name": "TableGrowing",
+            "module": "dist/TableGrowing.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableHeaderCell.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table-header-cell` component represents a column in the `ui5-table`.\n\nAs it is tightly coupled to the `ui5-table`, it should only be used in the `ui5-table-header-row`\nto ensure correct layout and design.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableHeaderCell.js\";`",
+          "name": "TableHeaderCell",
+          "members": [
+            {
+              "kind": "field",
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the width of column.",
+              "default": "\"auto\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "minWidth",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode, the column will move into the popin when\nwhen the minimum width does not fit anymore.",
+              "default": "\"auto\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "maxWidth",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the maximum width of the column.",
+              "default": "\"auto\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "importance",
+              "type": {
+                "text": "number"
+              },
+              "description": "Defines the importance of the column.\n\nThis property affects the popin behaviour.\nColumns with higher importance will move into the popin area later then less important\ncolumns.",
+              "default": "0",
+              "privacy": "public",
+              "_ui5validator": "Integer"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the width of column.",
+              "name": "width",
+              "default": "\"auto\"",
+              "fieldName": "width",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode, the column will move into the popin when\nwhen the minimum width does not fit anymore.",
+              "name": "min-width",
+              "default": "\"auto\"",
+              "fieldName": "minWidth",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the maximum width of the column.",
+              "name": "max-width",
+              "default": "\"auto\"",
+              "fieldName": "maxWidth",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the importance of the column.\n\nThis property affects the popin behaviour.\nColumns with higher importance will move into the popin area later then less important\ncolumns.",
+              "name": "importance",
+              "default": "0",
+              "fieldName": "importance",
+              "type": {
+                "text": "number"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "TableCellBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TableCellBase.js"
+          },
+          "tagName": "ui5-table-header-cell",
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the content of the component.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<Node>"
+              },
+              "_ui5privacy": "public"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableHeaderCell",
+            "module": "dist/TableHeaderCell.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-header-cell",
+          "declaration": {
+            "name": "TableHeaderCell",
+            "module": "dist/TableHeaderCell.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableHeaderRow.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table-header-row` component represents the table headers of a `ui5-table`.\n\nIt is tightly coupled to the `ui5-table` and should therefore be used in the `ui5-table` only.\nThe header row is placed in the `headerRow` slot of the table.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableHeaderRow.js\";`",
+          "name": "TableHeaderRow",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the cells of the component.\n\n**Note:** Use `ui5-table-header-cell` for the intended design.",
+              "_ui5propertyName": "cells",
+              "_ui5type": {
+                "text": "Array<TableHeaderCell>",
+                "references": [
+                  {
+                    "name": "TableHeaderCell",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/TableHeaderCell.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "sticky",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Sticks the `ui5-table-header-row` to the top of a table.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Sticks the `ui5-table-header-row` to the top of a table.",
+              "name": "sticky",
+              "default": "false",
+              "fieldName": "sticky",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "TableRowBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TableRowBase.js"
+          },
+          "tagName": "ui5-table-header-row",
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableHeaderRow",
+            "module": "dist/TableHeaderRow.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-header-row",
+          "declaration": {
+            "name": "TableHeaderRow",
+            "module": "dist/TableHeaderRow.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableNavigation.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableNavigation",
+            "module": "dist/TableNavigation.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableRow.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table-row` component represents a row in the `ui5-table`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableRow.js\";`",
+          "name": "TableRow",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the cells of the component.\n\n**Note:** Use `ui5-table-cell` for the intended design.",
+              "_ui5propertyName": "cells",
+              "_ui5type": {
+                "text": "Array<TableCell>",
+                "references": [
+                  {
+                    "name": "TableCell",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/TableCell.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "key",
+              "type": {
+                "text": "string"
+              },
+              "description": "Unique identifier of the component.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            },
+            {
+              "kind": "field",
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines the interactive state of the row.",
+              "default": "false",
+              "privacy": "public",
+              "_ui5validator": "Boolean"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Unique identifier of the component.",
+              "name": "key",
+              "default": "\"\"",
+              "fieldName": "key",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the interactive state of the row.",
+              "name": "interactive",
+              "default": "false",
+              "fieldName": "interactive",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "TableRowBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TableRowBase.js"
+          },
+          "tagName": "ui5-table-row",
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableRow",
+            "module": "dist/TableRow.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-row",
+          "declaration": {
+            "name": "TableRow",
+            "module": "dist/TableRow.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableRowBase.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A class to serve as a foundation for the `TableRow` and `TableHeaderRow` classes.",
+          "name": "TableRowBase",
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public",
+          "_ui5abstract": true,
+          "members": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableRowBase",
+            "module": "dist/TableRowBase.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableSelection.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table-selection` component is used inside the `ui5-table` ti add key-based selection capabilities to the `ui5-table`.\n\nThe component offers three selection modes:\n* Single - select a single row.\n* Multiple - select multiple rows.\n* None - no selection active.\n\nAs the selection is key-based, `ui5-table-row` components need to define a unique `key` property.\n\n### Usage\n\nThe `ui5-table-selection` component is only used inside the `ui5-table` component as a feature.\nIt has to be slotted inside the `ui5-table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<ui5-table>\n\t<ui5-table-selection mode=\"Multiple\" slot=\"features\"></ui5-table-selection>\n</ui5-table>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableSelection.js\";`",
+          "name": "TableSelection",
+          "members": [
+            {
+              "kind": "field",
+              "name": "mode",
+              "type": {
+                "text": "TableSelectionMode",
+                "references": [
+                  {
+                    "name": "TableSelectionMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TableSelectionMode.js"
+                  }
+                ]
+              },
+              "description": "Defines the selection mode.",
+              "default": "\"Multiple\"",
+              "privacy": "public",
+              "_ui5validator": "TableSelectionMode"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the selected rows separated by a space.",
+              "default": "\"\"",
+              "privacy": "public",
+              "_ui5validator": "String"
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when selection is changed by user interaction."
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the selection mode.",
+              "name": "mode",
+              "default": "\"Multiple\"",
+              "fieldName": "mode",
+              "type": {
+                "text": "\"Single\" | \"Multiple\" | \"None\""
+              }
+            },
+            {
+              "description": "Defines the selected rows separated by a space.",
+              "name": "selected",
+              "default": "\"\"",
+              "fieldName": "selected",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-table-selection",
+          "customElement": true,
+          "_ui5since": "2.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableSelection",
+            "module": "dist/TableSelection.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-selection",
+          "declaration": {
+            "name": "TableSelection",
+            "module": "dist/TableSelection.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Tag.js",
       "declarations": [
         {
@@ -22806,7 +24037,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines if the component is interactive (focusable and pressable).\n\n**Note:** The tag cannot be `interactive`\nwhen `design` property is `TagDesign.Set3`",
+              "description": "Defines if the component is interactive (focusable and pressable).",
               "default": "false",
               "privacy": "public",
               "_ui5since": "1.22.0",
@@ -22826,7 +24057,7 @@
                 ]
               },
               "description": "Defines how the text of a component will be displayed when there is not enough space.\n\n**Note:** For option \"Normal\" the text will wrap and the\nwords will not be broken based on hyphenation.",
-              "default": "\"None\"",
+              "default": "\"Normal\"",
               "privacy": "public",
               "_ui5since": "1.22.0",
               "_ui5validator": "WrappingType"
@@ -22869,7 +24100,7 @@
               "default": "\"Neutral\"",
               "fieldName": "design",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"Critical\" | \"Information\" | \"Neutral\" | \"Set1\" | \"Set2\" | \"Set3\""
+                "text": "\"Positive\" | \"Negative\" | \"Critical\" | \"Information\" | \"Neutral\" | \"Set1\" | \"Set2\""
               }
             },
             {
@@ -22891,7 +24122,7 @@
               }
             },
             {
-              "description": "Defines if the component is interactive (focusable and pressable).\n\n**Note:** The tag cannot be `interactive`\nwhen `design` property is `TagDesign.Set3`",
+              "description": "Defines if the component is interactive (focusable and pressable).",
               "name": "interactive",
               "default": "false",
               "fieldName": "interactive",
@@ -22902,7 +24133,7 @@
             {
               "description": "Defines how the text of a component will be displayed when there is not enough space.\n\n**Note:** For option \"Normal\" the text will wrap and the\nwords will not be broken based on hyphenation.",
               "name": "wrapping-type",
-              "default": "\"None\"",
+              "default": "\"Normal\"",
               "fieldName": "wrappingType",
               "type": {
                 "text": "\"None\" | \"Normal\""
@@ -24756,6 +25987,11 @@
               }
             }
           ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
           "tagName": "ui5-tokenizer",
           "customElement": true,
           "_ui5since": "2.0.0",
@@ -24849,6 +26085,25 @@
               "_ui5validator": "String"
             },
             {
+              "kind": "field",
+              "name": "design",
+              "type": {
+                "text": "ToolbarDesign",
+                "references": [
+                  {
+                    "name": "ToolbarDesign",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ToolbarDesign.js"
+                  }
+                ]
+              },
+              "description": "Defines the toolbar design.",
+              "privacy": "public",
+              "default": "\"Solid\"",
+              "_ui5since": "2.0.0",
+              "_ui5validator": "ToolbarDesign"
+            },
+            {
               "kind": "method",
               "name": "isOverflowOpen",
               "return": {
@@ -24886,6 +26141,15 @@
               "fieldName": "accessibleNameRef",
               "type": {
                 "text": "string"
+              }
+            },
+            {
+              "description": "Defines the toolbar design.",
+              "name": "design",
+              "default": "\"Solid\"",
+              "fieldName": "design",
+              "type": {
+                "text": "\"Transparent\" | \"Solid\""
               }
             }
           ],
@@ -25016,12 +26280,12 @@
               "kind": "field",
               "name": "accessibilityAttributes",
               "type": {
-                "text": "ToolbarAccessibilityAttributes",
+                "text": "ToolbarButtonAccessibilityAttributes",
                 "references": [
                   {
-                    "name": "ToolbarAccessibilityAttributes",
+                    "name": "ToolbarButtonAccessibilityAttributes",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/Button.js"
+                    "module": "dist/ToolbarButton.js"
                   }
                 ]
               },

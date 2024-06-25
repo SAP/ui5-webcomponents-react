@@ -1,19 +1,19 @@
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import TableSelectionMode from '@ui5/webcomponents/dist/types/TableSelectionMode.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
-import TableMode from '@ui5/webcomponents-compat/dist/types/TableMode.js';
 import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
-import type { Dispatch, MutableRefObject, ReactElement, SetStateAction } from 'react';
+import type { Dispatch, ReactElement, RefObject, SetStateAction } from 'react';
 import { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
   FlexBoxDirection,
   FlexBoxJustifyContent,
-  MessageBoxActions,
-  MessageBoxTypes,
+  MessageBoxAction,
+  MessageBoxType,
   ToolbarStyle
 } from '../../enums/index.js';
 import {
@@ -22,8 +22,8 @@ import {
   BASIC,
   CANCEL,
   FIELDS_BY_ATTRIBUTE,
-  FILTER_DIALOG_RESET_WARNING,
   FILTER,
+  FILTER_DIALOG_RESET_WARNING,
   FILTERS,
   GROUP_VIEW,
   HIDE_VALUES,
@@ -55,7 +55,9 @@ import {
   SegmentedButtonItem,
   Select,
   Table,
-  TableColumn,
+  TableHeaderCell,
+  TableHeaderRow,
+  TableSelection,
   Title
 } from '../../webComponents/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
@@ -70,40 +72,19 @@ import { filterValue, syncRef } from './utils.js';
 addCustomCSSWithScoping(
   'ui5-table',
   `
-/* hide table header of panel table */
-:host([data-component-name="FilterBarDialogPanelTable"]) thead {
-  visibility: collapse;
+:host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #nodata-row {
+  display: none;
 }
+`
+);
 
-/* don't display border of panel table */
-:host([data-component-name="FilterBarDialogPanelTable"]) table {
-  border-collapse: unset;
+addCustomCSSWithScoping(
+  'ui5-table-header-row',
+  `
+:host([data-component-name="FilterBarDialogTableHeaderRow"]) :first-child {
+  visibility: hidden;
 }
-
-/* don't allow table cells to grow
-todo: FilterBarDialogPanelTable
-*/
-:host([data-component-name="FilterBarDialogTable"]) table {
-  table-layout: fixed;
-}
-
-/* prevent focus by click on group-view thead */
-:host([data-component-name="FilterBarDialogTable"][tabindex="-1"]) thead > tr {
-  pointer-events: none;
-}
-
-:host([data-component-name="FilterBarDialogPanelTable"]) .ui5-table-root {
-  border-bottom: none;
-}
-/* don't display select all checkbox */
-:host([data-component-name="FilterBarDialogTable"]) thead th.ui5-table-select-all-column [ui5-checkbox] {
- visibility: hidden;
-}
-
-:host([data-component-name="FilterBarDialogPanelTable"]) thead th.ui5-table-select-all-column {
- display: none;
-}
- `
+`
 );
 
 type ActiveFilterAttributes = 'all' | 'visible' | 'active' | 'visibleAndActive' | 'mandatory';
@@ -151,7 +132,7 @@ interface FilterDialogPropTypes {
   handleDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
   portalContainer: Element;
   onAfterFiltersDialogOpen: (event: Ui5CustomEvent<DialogDomRef>) => void;
-  dialogRef: MutableRefObject<DialogDomRef>;
+  dialogRef: RefObject<DialogDomRef>;
   enableReordering?: FilterBarPropTypes['enableReordering'];
   isPhone?: boolean;
 }
@@ -445,6 +426,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     const filterGroups = Object.keys(groups)
       .sort((x, y) => (x === 'default' ? -1 : y === 'role' ? 1 : 0))
       .map((item, index) => {
+        const selectedRows = groups[item].map((child) => child.props['data-react-key']).join(' ');
         return (
           <Panel
             headerText={item === 'default' ? basicText : item}
@@ -452,9 +434,21 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             key={`${item === 'default' ? basicText : item}${index}`}
           >
             <Table
-              mode={TableMode.MultiSelect}
+              className={classNames.tableInGroup}
               data-component-name="FilterBarDialogPanelTable"
-              onSelectionChange={handleCheckBoxChange}
+              features={
+                <TableSelection
+                  mode={TableSelectionMode.Multiple}
+                  selected={selectedRows}
+                  onChange={handleCheckBoxChange}
+                />
+              }
+              headerRow={
+                <TableHeaderRow className={classNames.groupedTableHeader}>
+                  <TableHeaderCell>{filterText}</TableHeaderCell>
+                  {!showValues && <TableHeaderCell className={classNames.tHactive}>{activeText}</TableHeaderCell>}
+                </TableHeaderRow>
+              }
             >
               {groups[item]}
             </Table>
@@ -594,15 +588,19 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           <Table
             ref={tableRef}
             data-component-name="FilterBarDialogTable"
-            hideNoData={!isListView}
-            mode={TableMode.MultiSelect}
-            onSelectionChange={handleCheckBoxChange}
+            data-is-grouped={!isListView}
+            nodata={!isListView ? <span /> : undefined}
             tabIndex={!isListView ? -1 : undefined}
-            columns={
+            features={
               <>
-                <TableColumn>{filterText}</TableColumn>
-                {!showValues && <TableColumn className={classNames.tHactive}>{activeText}</TableColumn>}
+                <TableSelection mode={TableSelectionMode.Multiple} onChange={handleCheckBoxChange} />
               </>
+            }
+            headerRow={
+              <TableHeaderRow data-component-name="FilterBarDialogTableHeaderRow">
+                <TableHeaderCell>{filterText}</TableHeaderCell>
+                {!showValues && <TableHeaderCell className={classNames.tHactive}>{activeText}</TableHeaderCell>}
+              </TableHeaderRow>
             }
           >
             {isListView && renderChildren()}
@@ -616,8 +614,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         createPortal(
           <MessageBox
             open
-            type={MessageBoxTypes.Warning}
-            actions={[MessageBoxActions.OK, MessageBoxActions.Cancel]}
+            type={MessageBoxType.Warning}
+            actions={[MessageBoxAction.OK, MessageBoxAction.Cancel]}
             onClose={handleMessageBoxClose}
             data-component-name="FilterBarDialogResetMessageBox"
           >

@@ -91,14 +91,6 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   inErrorState?: boolean;
   /**
-   * Defines where modals are rendered into via `React.createPortal`.
-   *
-   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--page).
-   *
-   * Defaults to: `document.body`
-   */
-  portalContainer?: Element;
-  /**
    * Fired after a variant has been selected.
    *
    * __Note:__ This event inherits part of its details from the `onSelectionChange` event of the `List` component.

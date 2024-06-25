@@ -7,7 +7,7 @@ import { DeviationIndicator, ValueColor } from '../../enums';
 import { CardHeader } from '../CardHeader';
 import { Icon } from '../Icon';
 import { List } from '../List';
-import { StandardListItem } from '../StandardListItem';
+import { ListItemStandard } from '../ListItemStandard';
 import { Card } from './index.js';
 
 const meta = {
@@ -39,9 +39,9 @@ export const Default: Story = {
     return (
       <Card {...args}>
         <List>
-          <StandardListItem description="Software Architect">Richard Wilson</StandardListItem>
-          <StandardListItem description="Visual Designer">Elena Petrova</StandardListItem>
-          <StandardListItem description="Quality Specialist">John Miller</StandardListItem>
+          <ListItemStandard description="Software Architect">Richard Wilson</ListItemStandard>
+          <ListItemStandard description="Visual Designer">Elena Petrova</ListItemStandard>
+          <ListItemStandard description="Quality Specialist">John Miller</ListItemStandard>
         </List>
       </Card>
     );

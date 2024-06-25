@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/Toolbar.js';
 import type ToolbarAlign from '@ui5/webcomponents/dist/types/ToolbarAlign.js';
+import type ToolbarDesign from '@ui5/webcomponents/dist/types/ToolbarDesign.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
@@ -22,6 +23,14 @@ interface ToolbarAttributes {
    * @default "End"
    */
   alignContent?: ToolbarAlign | keyof typeof ToolbarAlign;
+
+  /**
+   * Defines the toolbar design.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default "Solid"
+   */
+  design?: ToolbarDesign | keyof typeof ToolbarDesign;
 }
 
 interface ToolbarDomRef extends Required<ToolbarAttributes>, Ui5DomRef {
@@ -59,7 +68,7 @@ interface ToolbarPropTypes extends ToolbarAttributes, Omit<CommonProps, keyof To
  */
 const Toolbar = withWebComponent<ToolbarPropTypes, ToolbarDomRef>(
   'ui5-toolbar',
-  ['accessibleName', 'accessibleNameRef', 'alignContent'],
+  ['accessibleName', 'accessibleNameRef', 'alignContent', 'design'],
   [],
   [],
   [],

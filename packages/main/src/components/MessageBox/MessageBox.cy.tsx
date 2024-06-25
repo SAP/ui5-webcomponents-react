@@ -1,15 +1,15 @@
 import addIcon from '@ui5/webcomponents-icons/dist/add.js';
-import { Button, Icon, MessageBoxActions, MessageBoxTypes } from '../..';
+import { Button, Icon, MessageBoxAction, MessageBoxType } from '../..';
 import { MessageBox } from './index.js';
 
 describe('MessageBox', () => {
   [
-    [MessageBoxTypes.Confirm, MessageBoxActions.OK],
-    [MessageBoxTypes.Success, MessageBoxActions.OK],
-    [MessageBoxTypes.Warning, MessageBoxActions.OK],
-    [MessageBoxTypes.Error, MessageBoxActions.Close],
-    [MessageBoxTypes.Information, MessageBoxActions.OK]
-  ].forEach(([type, buttonText]: [MessageBoxTypes, MessageBoxActions]) => {
+    [MessageBoxType.Confirm, MessageBoxAction.OK],
+    [MessageBoxType.Success, MessageBoxAction.OK],
+    [MessageBoxType.Warning, MessageBoxAction.OK],
+    [MessageBoxType.Error, MessageBoxAction.Close],
+    [MessageBoxType.Information, MessageBoxAction.OK]
+  ].forEach(([type, buttonText]: [MessageBoxType, MessageBoxAction]) => {
     it(type, () => {
       const callback = cy.spy();
       cy.mount(
@@ -37,12 +37,12 @@ describe('MessageBox', () => {
         open
         onClose={close}
         actions={[
-          MessageBoxActions.Cancel,
+          MessageBoxAction.Cancel,
           <Button onClick={click} key="0">
             Custom
           </Button>,
           'Custom Text Action',
-          MessageBoxActions.OK
+          MessageBoxAction.OK
         ]}
       >
         My Message Box Content
@@ -70,7 +70,7 @@ describe('MessageBox', () => {
   it('Confirm - Cancel', () => {
     const callback = cy.spy().as('onMessageBoxClose');
     cy.mount(
-      <MessageBox type={MessageBoxTypes.Confirm} open onClose={callback}>
+      <MessageBox type={MessageBoxType.Confirm} open onClose={callback}>
         Confirm
       </MessageBox>
     );
@@ -82,7 +82,7 @@ describe('MessageBox', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: {
-            action: MessageBoxActions.Cancel
+            action: MessageBoxAction.Cancel
           }
         })
       );
@@ -91,7 +91,7 @@ describe('MessageBox', () => {
   it('Show', () => {
     const callback = cy.spy().as('onMessageBoxClose');
     cy.mount(
-      <MessageBox open onClose={callback} titleText="Custom" actions={[MessageBoxActions.Yes, MessageBoxActions.No]}>
+      <MessageBox open onClose={callback} titleText="Custom" actions={[MessageBoxAction.Yes, MessageBoxAction.No]}>
         Custom
       </MessageBox>
     );
@@ -103,7 +103,7 @@ describe('MessageBox', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: {
-            action: MessageBoxActions.Yes
+            action: MessageBoxAction.Yes
           }
         })
       );
@@ -115,7 +115,7 @@ describe('MessageBox', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: {
-            action: MessageBoxActions.No
+            action: MessageBoxAction.No
           }
         })
       );
@@ -125,7 +125,7 @@ describe('MessageBox', () => {
     const callback = cy.spy().as('onMessageBoxClose');
     cy.mount(
       <MessageBox
-        type={MessageBoxTypes.Success}
+        type={MessageBoxType.Success}
         open
         onClose={callback}
         titleText="Custom Success"
@@ -142,7 +142,7 @@ describe('MessageBox', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: {
-            action: MessageBoxActions.OK
+            action: MessageBoxAction.OK
           }
         })
       );
@@ -164,22 +164,22 @@ describe('MessageBox', () => {
     cy.mount(
       <MessageBox
         open
-        type={MessageBoxTypes.Confirm}
-        actions={[MessageBoxActions.OK, 'My Custom Action']}
+        type={MessageBoxType.Confirm}
+        actions={[MessageBoxAction.OK, 'My Custom Action']}
         onClose={callback}
       >
         My Message Box Content
       </MessageBox>
     );
 
-    cy.findByText(MessageBoxActions.OK).should('be.visible').click();
+    cy.findByText(MessageBoxAction.OK).should('be.visible').click();
     cy.get('@onMessageBoxClose')
       .should('have.been.calledOnce')
       .should(
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: {
-            action: MessageBoxActions.OK
+            action: MessageBoxAction.OK
           }
         })
       );
@@ -209,7 +209,7 @@ describe('MessageBox', () => {
 
   it('initial focus', () => {
     cy.mount(
-      <MessageBox open type={MessageBoxTypes.Confirm} initialFocus={MessageBoxActions.Cancel} data-testid="Dialog">
+      <MessageBox open type={MessageBoxType.Confirm} initialFocus={MessageBoxAction.Cancel} data-testid="Dialog">
         Content
       </MessageBox>
     );

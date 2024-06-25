@@ -68,7 +68,6 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const tableRowRef = useRef<TableRowDomRef>(null);
 
-    const selected = props['data-selected'];
     const reactKey = props['data-react-key'];
     const index = props['data-index'];
     const isomporphicReorderKey = isMac ? 'CMD' : 'CTRL';
@@ -153,7 +152,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           ref={tableRowRef}
           data-text={label}
           data-react-key={reactKey}
-          selected={selected}
+          key={reactKey as string}
           data-required={required}
           data-component-name="FilterBarDialogTableRow"
           className={clsx(

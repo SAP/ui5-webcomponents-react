@@ -6,10 +6,10 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { FlexBox } from '../../components/FlexBox';
 import { Text } from '../../components/Text';
 import { FlexBoxJustifyContent } from '../../enums';
-import { CustomListItem } from '../CustomListItem';
+import { ListItemCustom } from '../ListItemCustom';
 import { ListItemGroup } from '../ListItemGroup';
+import { ListItemStandard } from '../ListItemStandard';
 import { ProgressIndicator } from '../ProgressIndicator';
-import { StandardListItem } from '../StandardListItem';
 import { List } from './index.js';
 
 const meta = {
@@ -20,7 +20,7 @@ const meta = {
     header: { control: { disable: true } }
   },
   args: {
-    headerText: 'List with StandardListItems',
+    headerText: 'List with ListItemStandard',
     selectionMode: ListSelectionMode.None,
     separators: ListSeparators.All,
     growing: ListGrowingMode.None
@@ -37,23 +37,23 @@ export const Default: Story = {
   render: (args) => {
     return (
       <List {...args}>
-        <StandardListItem additionalText="3">List Item 1</StandardListItem>
-        <StandardListItem additionalText="2">List Item 2</StandardListItem>
-        <StandardListItem additionalText="1">List Item 3</StandardListItem>
+        <ListItemStandard additionalText="3">List Item 1</ListItemStandard>
+        <ListItemStandard additionalText="2">List Item 2</ListItemStandard>
+        <ListItemStandard additionalText="1">List Item 3</ListItemStandard>
       </List>
     );
   }
 };
 
-export const CustomListItemStory: Story = {
-  name: 'CustomListItem',
+export const ListItemCustomStory: Story = {
+  name: 'ListItemCustom',
   args: {
-    headerText: 'List with a CustomListItem'
+    headerText: 'List with a ListItemCustom'
   },
   render: (args) => {
     return (
       <List {...args}>
-        <CustomListItem>
+        <ListItemCustom>
           <FlexBox justifyContent={FlexBoxJustifyContent.SpaceAround} style={{ width: '100%' }}>
             <Text style={{ fontWeight: 'bold' }}>FULLY</Text>
             <Text style={{ color: 'red' }}>CUSTOMIZABLE</Text>
@@ -61,10 +61,10 @@ export const CustomListItemStory: Story = {
               CHILDREN
             </Text>
           </FlexBox>
-        </CustomListItem>
-        <CustomListItem>
+        </ListItemCustom>
+        <ListItemCustom>
           <ProgressIndicator value={50} />
-        </CustomListItem>
+        </ListItemCustom>
       </List>
     );
   }
@@ -79,11 +79,11 @@ export const ListItemGroupStory: Story = {
     return (
       <List {...args}>
         <ListItemGroup headerText="ListItemGroup 1">
-          <StandardListItem>List Item</StandardListItem>
-          <StandardListItem>List Item</StandardListItem>
+          <ListItemStandard>List Item</ListItemStandard>
+          <ListItemStandard>List Item</ListItemStandard>
         </ListItemGroup>
         <ListItemGroup headerText="ListItemGroup 2">
-          <StandardListItem>List Item</StandardListItem>
+          <ListItemStandard>List Item</ListItemStandard>
         </ListItemGroup>
       </List>
     );

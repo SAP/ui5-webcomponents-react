@@ -15,7 +15,7 @@ or the [changelog](?path=/docs/change-log--page)._
 
 <br />
 
-<TableOfContent headingSelector="h2" />
+<TableOfContent headingSelector="h2, h3" />
 
 ## General changes
 
@@ -76,6 +76,120 @@ function MyComponent() {
 }
 ```
 
+### DynamicPage
+
+The `DynamicPage` component has been replaced with the `ui5-dynamic-page` web component. This comes with a few breaking changes:
+
+#### Replaced Props
+
+- `backgroundDesign` is not available anymore. To set the background of the page you can use standard CSS and the respective CSS variables instead:
+  - **List:** `var(--sapGroup_ContentBackground)`
+  - **Solid:** `var(--sapBackgroundColor)`
+  - **Transparent:** `transparent`
+- `alwaysShowContentHeader` has been renamed to `headerPinned`
+- `headerCollapsed` has been renamed to `headerSnapped`
+- `headerContentPinnable` (default: `true`) has been replaced by `hidePinButton` (default: `false`)
+- `footer` has been replaced by `footerArea` and is now a `slot`
+- `headerContent` has been replaced by `headerArea` and is now a `slot`
+- `headerTitle` has been replaced by `titleArea` and is now a `slot`
+
+**Events:**
+
+- `onPinnedStateChange` has been replaced by `onPinButtonToggle`.
+- `onToggleHeaderContent` has been replaced by `onTitleToggle`.
+
+  ```jsx
+  // v1
+  function DynamicPageComponent(props) {
+    const [pinned, setPinned] = useState(false);
+    const [expanded, setExpanded] = useState(true);
+    return (
+      <DynamicPage
+        {...props}
+        onPinnedStateChange={(pinned) => setPinned(pinned)}
+        onToggleHeaderContent={(visible) => {
+          setExpanded(visible);
+        }}
+      />
+    );
+  }
+
+  // v2
+  function DynamicPageComponent(props) {
+    const [pinned, setPinned] = useState(false);
+    const [expanded, setExpanded] = useState(true);
+    return (
+      <DynamicPage
+        {...props}
+        onPinButtonToggle={(event) => setPinned(event.target.headerPinned)}
+        onTitleToggle={(event) => {
+          setExpanded(!event.target.headerSnapped);
+        }}
+      />
+    );
+  }
+  ```
+
+#### Removed Props
+
+- `preserveHeaderStateOnScroll`: You should be able to achieve the same behavior with the `headerPinned` prop.
+- `showHideHeaderButton`: Hiding the expand/collapse button is not supported by design anymore.
+
+### DynamicPageHeader
+
+The `DynamicPageHeader` component has been replaced with the `ui5-dynamic-page-header` web component.
+Since the `ObjectPage` isn't compatible with the `DynamicPageHeader` web component, please use the `ObjectPageHeader` component in the `ObjectPage` instead.
+
+### DynamicPageTitle
+
+The `DynamicPageTitle` component has been replaced with the `ui5-dynamic-page-title` web component. This comes with a few breaking changes listed below.
+Since the `ObjectPage` isn't compatible with the `DynamicPageTitle` web component, please use the `ObjectPageTitle` component in the `ObjectPage` instead.
+
+#### Replaced Props
+
+- `actions` has been replaced by `actionsBar` and is now a `slot`. Instead of passing actions (e.g. `Buttons`) directly, it is now recommended to use the `Toolbar` component in order to preserve the intended design.
+- `navigationActions` has been replaced by `navigationBar` and is now a `slot`. Instead of passing actions (e.g. `Buttons`) directly, it is now recommended to use the `Toolbar` component in order to preserve the intended design.
+- `subHeader` has been renamed to `subheading` and is now a slot.
+- `header` has been renamed to `heading` and is now a `slot`. The `font-size` isn't automatically adjusted anymore, so to keep the intended design you can leverage the new `snappedHeading` prop and apply the corresponding CSS Variables yourself. (see example below)
+
+  Example:
+
+  ```jsx
+  <DynamicPageTitle
+    heading={<Title style={{ fontSize: 'var(--sapObjectHeader_Title_FontSize)' }}>Header Title</Title>}
+    snappedHeading={
+      <Title style={{ fontSize: 'var(--sapObjectHeader_Title_SnappedFontSize)' }}>Snapped Header Title</Title>
+    }
+  />
+  ```
+
+#### Removed Props
+
+- `showSubHeaderRight` is not defined by the global design guidelines and is therefore not available with the new web component.
+- `actionsToolbarProps` is not necessary anymore, as you now can pass a `Toolbar` yourself.
+- `navigationActionsToolbarProps` is not necessary anymore, as you now can pass a `Toolbar` yourself.
+- `expandedContent` is now part of the `subheading` prop, so if you've rendered a `MessageStrip` below the `subHeader` for example, you can now render the subheading and additional content both in the same slot.
+- `snappedContent` is now part of the `snappedSubheading` prop, so if you've rendered a `MessageStrip` below the `subHeader` for example, you can now render the subheading and additional content both in the same slot.
+
+  Example for combined `subHeader` and `expanded/snappedContent` in `subheading`/`snappedSubheading`:
+
+  ```jsx
+  <DynamicPageTitle
+    subheading={
+      <>
+        <Label>Subheader</Label>
+        <MessageStrip>Information (only visible if header content is expanded)</MessageStrip>
+      </>
+    }
+    snappedSubheading={
+      <>
+        <Label>Snapped Subheader</Label>
+        <MessageStrip>Information (only visible if header content is collapsed (snapped))</MessageStrip>
+      </>
+    }
+  />
+  ```
+
 ### Form
 
 The `Form` component has been replaced with the `ui5-form` Web Component.
@@ -134,5 +248,59 @@ function MyComponent() {
   );
 }
 ```
+
+### ObjectPage
+
+The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
+Please use the following components instead:
+
+- `headerContent` now only accepts the `ObjectPageHeader` component.
+- `headerTitle` now only accepts the `ObjectPageTitle` component.
+
+**Renamed props:**
+
+- `a11yConfig.dynamicPageAnchorBar` has been renamed to `a11yConfig.objectPageAnchorBar`
+
+Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
+
+## Components with API Changes
+
+### ActionSheet
+
+The prop `portalContainer` has been removed as it is no longer needed due to the [popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) which is now used in the UI5 Web Components.
+For a better aligned API, the `showCancelButton` prop has been replaced wih the `hideCancelButton` prop and the logic has been inverted.
+You only need to apply changes to your code if `showCancelButton` has been set to `false`.
+
+```tsx
+// v1
+import { ActionSheet, Button } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return (
+    <ActionSheet showCancelButton={false}>
+      <Button>Action 1</Button>
+    </ActionSheet>
+  );
+}
+
+// v2
+import { ActionSheet, Button } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return (
+    <ActionSheet hideCancelButton>
+      <Button>Action 1</Button>
+    </ActionSheet>
+  );
+}
+```
+
+## Enum Changes
+
+For a better alignment with the UI5 Web Components, the following enums have been renamed:
+
+- `MessageBoxActions` has been renamed to `MessageBoxAction`
+- `MessageBoxTypes` has been renamed to `MessageBoxType`
+- `Themes` has been renamed to `Theme`
 
 <Footer />

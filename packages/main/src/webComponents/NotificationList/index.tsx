@@ -48,6 +48,23 @@ interface NotificationListPropTypes
  * The `NotificationList` web component represents
  * a container for `NotificationListGroupItem` and `NotificationListItem`.
  *
+ * ### Keyboard Handling
+ *
+ * #### Basic Navigation
+ * The `NotificationList` provides advanced keyboard handling.
+ * When a list is focused the user can use the following keyboard
+ * shortcuts in order to perform a navigation:
+ *
+ * - [Up] or [Left] - Navigates up the items
+ * - [Down] or [Right] - Navigates down the items
+ * - [Home] - Navigates to first item
+ * - [End] - Navigates to the last item
+ *
+ * #### Fast Navigation
+ * This component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].
+ * In order to use this functionality, you need to import the following module:
+ * `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
+ *
  *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)

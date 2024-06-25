@@ -21,12 +21,9 @@ import * as ComponentStories from './ActionSheet.stories';
 
 <br />
 
-#### since 0.22.0
+You can open and close the `ActionSheet` component in a declarative way using the `open` and `opener` prop.
 
-We recommend opening and closing the `ActionSheet` component in a declarative way using the `open` and `opener` prop.
-You can still use the imperative way which is outlined below.
-
-```jsx
+```tsx
 const MyComponentWithActionSheet = () => {
   const [actionSheetIsOpen, setActionSheetIsOpen] = useState(false);
   return (
@@ -53,7 +50,8 @@ const MyComponentWithActionSheet = () => {
 
 **Opening an `ActionSheet` by reference and not by `id`**
 
-This web component exposes a way to pass a reference of an element instead of an `id` to the `opener` prop. Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
+The `ActionSheet` exposes a way to pass a reference of an element instead of an `id` to the `opener` prop.
+Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
 You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
 
 <MessageStrip
@@ -78,56 +76,6 @@ const ActionSheetComponent = () => {
       <ActionSheet ref={popoverRef} open={open}>
         {/* Content */}
       </ActionSheet>
-    </>
-  );
-};
-```
-
-#### before 0.22.0
-
-`ActionSheets` can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `ActionSheet` is to be opened_ - as parameter.
-
-```jsx
-const ActionSheetComponent = () => {
-  const actionSheetRef = useRef(null);
-  const onButtonClick = (e) => {
-    actionSheetRef.current.showAt(e.target);
-  };
-  return (
-    <>
-      <Button onClick={onButtonClick}>Open ActionSheet</Button>
-      <ActionSheet ref={actionSheetRef}>
-        <Button icon="add">Accept</Button>
-        <Button>Reject</Button>
-        <Button>This is my super long text!</Button>
-      </ActionSheet>
-    </>
-  );
-};
-```
-
-## Using ActionSheets inside other components
-
-`ActionSheets` are often used within other components, when opened this could sometimes have unwanted side effects.
-In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `ActionSheet` outside of the DOM hierarchy of the parent component.
-
-```JSX
-const ActionSheetComponent = () => {
-  const actionSheetRef = useRef(null);
-  const onButtonClick = (e) => {
-    actionSheetRef.current.showAt(e.target);
-  };
-  return (
-    <>
-      <Button onClick={onButtonClick}>Open ActionSheet</Button>
-      {createPortal(
-        <ActionSheet ref={actionSheetRef}>
-          <Button icon="add">Accept</Button>
-          <Button>Reject</Button>
-          <Button>This is my super long text!</Button>
-        </ActionSheet>,
-        document.body
-      )}
     </>
   );
 };

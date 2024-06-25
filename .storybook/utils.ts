@@ -47,12 +47,13 @@ export function useGetCem() {
   }
 }
 const replaceSubComps = {
-  ListItemBase: ['StandardListItem', 'CustomListItem', 'ListItemGroup'],
+  ListItemBase: ['ListItemStandard', 'ListItemCustom', 'ListItemGroup'],
   InputSuggestionItem: ['SuggestionItem', 'SuggestionGroupItem'],
   NotificationListItemBase: ['NotificationListItem'],
   ToolbarItem: ['ToolbarSeparatorV2', 'ToolbarSpacerV2', 'ToolbarButton', 'ToolbarSelect', 'ToolbarSelectOption'],
   TreeItemBase: ['TreeItem', 'TreeItemCustom'],
-  AvatarGroupItem: ['Avatar']
+  AvatarGroupItem: ['Avatar'],
+  TableFeature: ['TableGrowing', 'TableSelection']
 };
 
 function findSubComponentsRecursively(moduleName: string, cem: any): string[] {
