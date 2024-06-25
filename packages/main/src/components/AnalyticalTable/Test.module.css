@@ -1,0 +1,7 @@
+.baseCellFocus {
+    background: red;
+}
+
+.test1{
+    composes: baseCellFocus
+}
