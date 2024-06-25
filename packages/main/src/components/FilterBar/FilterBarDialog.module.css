@@ -6,6 +6,14 @@
   }
 }
 
+.groupedTableHeader {
+  display: none;
+}
+
+.tableInGroup [ui5-table-row]:last-child {
+  border-bottom: none;
+}
+
 .groupPanel {
   &::part(content) {
     padding: 0;

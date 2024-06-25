@@ -14,9 +14,9 @@ import { Button } from '../Button';
 import { Card } from '../Card';
 import { Label } from '../Label';
 import { List } from '../List';
+import { ListItemStandard } from '../ListItemStandard';
 import { RatingIndicator } from '../RatingIndicator';
 import { ShellBar } from '../ShellBar';
-import { StandardListItem } from '../StandardListItem';
 import { Title } from '../Title';
 import { FlexibleColumnLayout } from './index';
 import { CardHeader } from '@ui5/webcomponents-react';
@@ -46,23 +46,23 @@ export const Default: Story = {
         layout={args.layout}
         startColumn={
           <List headerText="Start Column List">
-            <StandardListItem>List Item 1</StandardListItem>
-            <StandardListItem>List Item 2</StandardListItem>
-            <StandardListItem>List Item 3</StandardListItem>
+            <ListItemStandard>List Item 1</ListItemStandard>
+            <ListItemStandard>List Item 2</ListItemStandard>
+            <ListItemStandard>List Item 3</ListItemStandard>
           </List>
         }
         midColumn={
           <List headerText="Mid Column List">
-            <StandardListItem>List Item 1</StandardListItem>
-            <StandardListItem>List Item 2</StandardListItem>
-            <StandardListItem>List Item 3</StandardListItem>
+            <ListItemStandard>List Item 1</ListItemStandard>
+            <ListItemStandard>List Item 2</ListItemStandard>
+            <ListItemStandard>List Item 3</ListItemStandard>
           </List>
         }
         endColumn={
           <List headerText="End Column List">
-            <StandardListItem>List Item 1</StandardListItem>
-            <StandardListItem>List Item 2</StandardListItem>
-            <StandardListItem>List Item 3</StandardListItem>
+            <ListItemStandard>List Item 1</ListItemStandard>
+            <ListItemStandard>List Item 2</ListItemStandard>
+            <ListItemStandard>List Item 3</ListItemStandard>
           </List>
         }
       />
@@ -330,9 +330,9 @@ export const WithDifferentColumns: Story = {
             />
             <List headerText="Movies" onItemClick={onStartColumnClick}>
               {movieData.map((item) => (
-                <StandardListItem description={item.genre} data-movie={item.movie} key={item.movie}>
+                <ListItemStandard description={item.genre} data-movie={item.movie} key={item.movie}>
                   {item.movie}
-                </StandardListItem>
+                </ListItemStandard>
               ))}
             </List>
           </>
@@ -370,9 +370,9 @@ export const WithDifferentColumns: Story = {
             </Toolbar>
             <List headerText="Cast" onItemClick={onMiddleColumnClick}>
               {castData.map((item) => (
-                <StandardListItem description={item.gender} data-name={item.name} key={item.name}>
+                <ListItemStandard description={item.gender} data-name={item.name} key={item.name}>
                   {item.name}
-                </StandardListItem>
+                </ListItemStandard>
               ))}
             </List>
           </>

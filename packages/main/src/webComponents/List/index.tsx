@@ -132,7 +132,7 @@ interface ListPropTypes
   /**
    * Defines the items of the component.
    *
-   * **Note:** Use `StandardListItem`, `CustomListItem`, and `ListItemGroup` for the intended design.
+   * **Note:** Use `ListItemStandard`, `ListItemCustom`, and `ListItemGroup` for the intended design.
    */
   children?: ReactNode | ReactNode[];
 
@@ -222,8 +222,8 @@ interface ListPropTypes
  *
  * The `List` is a container for the available list items:
  *
- * - `StandardListItem`
- * - `CustomListItem`
+ * - `ListItemStandard`
+ * - `ListItemCustom`
  * - `ListItemGroup`
  *
  * To benefit from the built-in selection mechanism, you can use the available
@@ -256,9 +256,9 @@ interface ListPropTypes
  *
  *
  *
- * `import "@ui5/webcomponents/dist/StandardListItem.js";` (for `StandardListItem`)
+ * `import "@ui5/webcomponents/dist/ListItemStandard.js";` (for `ListItemStandard`)
  *
- * `import "@ui5/webcomponents/dist/CustomListItem.js";` (for `CustomListItem`)
+ * `import "@ui5/webcomponents/dist/ListItemCustom.js";` (for `ListItemCustom`)
  *
  * `import "@ui5/webcomponents/dist/ListItemGroup.js";` (for `ListItemGroup`)
  *

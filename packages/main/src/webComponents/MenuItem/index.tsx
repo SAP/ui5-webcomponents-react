@@ -200,7 +200,7 @@ interface MenuItemPropTypes
  *
  * `MenuItem` represents a node in a `Menu`. The menu itself is rendered as a list,
  * and each `MenuItem` is represented by a list item in that list. Therefore, you should only use
- * `MenuItem` directly in your apps. The `StandardListItem` list item is internal for the list, and not intended for public use.
+ * `MenuItem` directly in your apps. The `ListItemStandard` list item is internal for the list, and not intended for public use.
  *
  *
  *

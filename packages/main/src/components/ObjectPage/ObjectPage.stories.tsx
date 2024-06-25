@@ -119,22 +119,14 @@ export const Default: Story = {
     return (
       <ObjectPage {...args}>
         <ObjectPageSection titleText="Goals" id="goals" aria-label="Goals">
-          <Form
-            columnsL={3}
-            columnsXL={3}
-            labelSpanXL={6}
-            labelSpanL={6}
-            columnsM={2}
-            labelSpanM={6}
-            style={{ alignItems: 'baseline' }}
-          >
-            <FormItem label="Evangelize the UI framework across the company">
+          <Form layout="S1 M2 L3 XL3" labelSpan="S12 M12 L12 XL12">
+            <FormItem labelContent={<Label showColon>Evangelize the UI framework across the company</Label>}>
               <Text>4 days overdue - Cascaded</Text>
             </FormItem>
-            <FormItem label="Get trained in development management direction">
+            <FormItem labelContent={<Label showColon>Get trained in development management direction</Label>}>
               <Text>Due Nov, 21</Text>
             </FormItem>
-            <FormItem label="Mentor junior developers">
+            <FormItem labelContent={<Label showColon>Mentor junior developers</Label>}>
               <Text>Due Dec, 31 - Cascaded</Text>
             </FormItem>
           </Form>
@@ -154,33 +146,31 @@ export const Default: Story = {
               </>
             }
           >
-            <Form columnsXL={4} columnsL={4} style={{ alignItems: 'baseline' }}>
-              <FormGroup titleText="Phone Numbers">
-                <FormItem label="Home">
+            <Form style={{ alignItems: 'baseline' }}>
+              <FormGroup headerText="Phone Numbers">
+                <FormItem labelContent={<Label showColon>Home</Label>}>
                   <Text>+1 234-567-8901</Text>
-                </FormItem>
-                <FormItem label="">
                   <Text>+1 234-567-5555</Text>
                 </FormItem>
               </FormGroup>
-              <FormGroup titleText="Social Accounts">
-                <FormItem label="LinkedIn">
+              <FormGroup headerText="Social Accounts">
+                <FormItem labelContent={<Label showColon>LinkedIn</Label>}>
                   <Text>/DeniseSmith</Text>
                 </FormItem>
-                <FormItem label="Twitter">
+                <FormItem labelContent={<Label showColon>Twitter</Label>}>
                   <Text>@DeniseSmith</Text>
                 </FormItem>
               </FormGroup>
-              <FormGroup titleText="Addresses">
-                <FormItem label="Home Address">
+              <FormGroup headerText="Addresses">
+                <FormItem labelContent={<Label showColon>Home Address</Label>}>
                   <Text>2096 Mission Street</Text>
                 </FormItem>
-                <FormItem label="Mailing Address">
+                <FormItem labelContent={<Label showColon>Mailing Address</Label>}>
                   <Text>PO Box 32114</Text>
                 </FormItem>
               </FormGroup>
-              <FormGroup titleText="Mailing Address">
-                <FormItem label="Work">
+              <FormGroup headerText="Mailing Address">
+                <FormItem labelContent={<Label showColon>Work</Label>}>
                   <Text>DeniseSmith@sap.com</Text>
                 </FormItem>
               </FormGroup>
@@ -191,14 +181,14 @@ export const Default: Story = {
             id="personal-payment-information"
             aria-label="Payment Information"
           >
-            <Form columnsXL={4} columnsL={4} style={{ alignItems: 'baseline' }}>
-              <FormGroup titleText="Salary">
-                <FormItem label="Bank Transfer">
+            <Form>
+              <FormGroup headerText="Salary">
+                <FormItem labelContent={<Label showColon>Bank Transfer</Label>}>
                   <Text>Money Bank, Inc.</Text>
                 </FormItem>
               </FormGroup>
-              <FormGroup titleText="Payment method for Expenses">
-                <FormItem label="Extra Travel Expenses">
+              <FormGroup headerText="Payment method for Expenses">
+                <FormItem labelContent={<Label showColon>Extra Travel Expenses</Label>}>
                   <Text>Cash 100 USD</Text>
                 </FormItem>
               </FormGroup>
@@ -211,29 +201,29 @@ export const Default: Story = {
             id="employment-job-information"
             aria-label="Job Information"
           >
-            <Form columnsXL={4} columnsL={4} style={{ alignItems: 'baseline' }}>
-              <FormItem label="Job Classification">
+            <Form>
+              <FormItem labelContent={<Label showColon>Job Classification</Label>}>
                 <FlexBox direction={FlexBoxDirection.Column}>
                   <Text>Senior UI Developer</Text>
                   <Label>(UIDEV-SR)</Label>
                 </FlexBox>
               </FormItem>
-              <FormItem label="Job Title">
+              <FormItem labelContent={<Label showColon>Job Title</Label>}>
                 <Text>Developer</Text>
               </FormItem>
-              <FormItem label="Employee Class">
+              <FormItem labelContent={<Label showColon>Employee Class</Label>}>
                 <Text>Employee</Text>
               </FormItem>
-              <FormItem label="Manager">
+              <FormItem labelContent={<Label showColon>Manager</Label>}>
                 <FlexBox direction={FlexBoxDirection.Column}>
                   <Text>Dan Smith</Text>
                   <Label>Development Manager</Label>
                 </FlexBox>
               </FormItem>
-              <FormItem label="Pay Grade">
+              <FormItem labelContent={<Label showColon>Pay Grade</Label>}>
                 <Text>Salary Grade 18 (GR-14)</Text>
               </FormItem>
-              <FormItem label="FTE">
+              <FormItem labelContent={<Label showColon>FTE</Label>}>
                 <Text>1</Text>
               </FormItem>
             </Form>
@@ -243,23 +233,23 @@ export const Default: Story = {
             id="employment-employee-details"
             aria-label="Employee Details"
           >
-            <Form columnsXL={4} columnsL={4} style={{ alignItems: 'baseline' }}>
-              <FormItem label="Start Date">
+            <Form>
+              <FormItem labelContent={<Label showColon>Start Date</Label>}>
                 <Text>Jan 01, 2018</Text>
               </FormItem>
-              <FormItem label="End Date">
+              <FormItem labelContent={<Label showColon>End Date</Label>}>
                 <Text>Dec 31, 9999</Text>
               </FormItem>
-              <FormItem label="Payroll Start Date">
+              <FormItem labelContent={<Label showColon>Payroll Start Date</Label>}>
                 <Text>Jan 01, 2018</Text>
               </FormItem>
-              <FormItem label="Benefits Start Date">
+              <FormItem labelContent={<Label showColon>Benefits Start Date</Label>}>
                 <Text>Jul 01, 2018</Text>
               </FormItem>
-              <FormItem label="Company Car Eligibility">
+              <FormItem labelContent={<Label showColon>Company Car Eligibility</Label>}>
                 <Text>Jan 01, 2021</Text>
               </FormItem>
-              <FormItem label="Equity Start Date">
+              <FormItem labelContent={<Label showColon>Equity Start Date</Label>}>
                 <Text>Jul 01, 2018</Text>
               </FormItem>
             </Form>
@@ -269,14 +259,14 @@ export const Default: Story = {
             id="employment-job-relationship"
             aria-label="Job Relationship"
           >
-            <Form columnsXL={4} columnsL={4} style={{ alignItems: 'baseline' }}>
-              <FormItem label="Manager">
+            <Form>
+              <FormItem labelContent={<Label showColon>Manager</Label>}>
                 <Text>John Doe</Text>
               </FormItem>
-              <FormItem label="Scrum Master">
+              <FormItem labelContent={<Label showColon>Scrum Master</Label>}>
                 <Text>Michael Adams</Text>
               </FormItem>
-              <FormItem label="Product Owner">
+              <FormItem labelContent={<Label showColon>Product Owner</Label>}>
                 <Text>John Miller</Text>
               </FormItem>
             </Form>

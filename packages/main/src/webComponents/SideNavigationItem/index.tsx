@@ -70,12 +70,13 @@ interface SideNavigationItemAttributes {
   text?: string;
 
   /**
-   * Defines whether clicking the whole item or only pressing the icon will show/hide the sub items (if present).
-   * If set to true, clicking the whole item will toggle the sub items, and it won't fire the `click` event.
-   * By default, only clicking the arrow icon will toggle the sub items.
-   * @default false
+   * Defines the tooltip of the component.
+   *
+   * A tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
    */
-  wholeItemToggleable?: boolean;
+  tooltip?: string;
 }
 
 interface SideNavigationItemDomRef extends Required<SideNavigationItemAttributes>, Ui5DomRef {}
@@ -105,8 +106,8 @@ interface SideNavigationItemPropTypes
  */
 const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNavigationItemDomRef>(
   'ui5-side-navigation-item',
-  ['href', 'icon', 'target', 'text'],
-  ['disabled', 'expanded', 'selected', 'wholeItemToggleable'],
+  ['href', 'icon', 'target', 'text', 'tooltip'],
+  ['disabled', 'expanded', 'selected'],
   [],
   ['click'],
   () => import('@ui5/webcomponents-fiori/dist/SideNavigationItem.js')

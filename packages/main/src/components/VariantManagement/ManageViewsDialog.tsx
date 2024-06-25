@@ -1,10 +1,10 @@
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import TableOverflowMode from '@ui5/webcomponents/dist/types/TableOverflowMode.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactElement } from 'react';
-import { isValidElement, Children, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { Children, isValidElement, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
@@ -17,7 +17,6 @@ import {
   SHARING,
   VIEW
 } from '../../i18n/i18n-defaults.js';
-import { useCanRenderPortal } from '../../internal/ssr.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import type { DialogPropTypes } from '../../webComponents/Dialog/index.js';
@@ -25,7 +24,8 @@ import { Dialog } from '../../webComponents/Dialog/index.js';
 import type { InputDomRef } from '../../webComponents/index.js';
 import { Icon, Input } from '../../webComponents/index.js';
 import { Table } from '../../webComponents/Table/index.js';
-import { TableColumn } from '../../webComponents/TableColumn/index.js';
+import { TableHeaderCell } from '../../webComponents/TableHeaderCell/index.js';
+import { TableHeaderRow } from '../../webComponents/TableHeaderRow/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './ManageViewsDialog.module.css.js';
 import { ManageViewsTableRows } from './ManageViewsTableRows.js';
@@ -50,7 +50,6 @@ export interface ManageViewsDialogPropTypes {
   showSetAsDefault: boolean;
   showCreatedBy: boolean;
   variantNames: string[];
-  portalContainer: VariantManagementPropTypes['portalContainer'];
   showOnlyFavorites?: VariantManagementPropTypes['showOnlyFavorites'];
   onManageViewsCancel?: VariantManagementPropTypes['onManageViewsCancel'];
 }
@@ -65,7 +64,6 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     showSetAsDefault,
     showCreatedBy,
     variantNames,
-    portalContainer,
     showOnlyFavorites,
     onManageViewsCancel
   } = props;
@@ -83,35 +81,34 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
 
   const [changedVariantNames, setChangedVariantNames] = useState(new Map());
   const [invalidVariants, setInvalidVariants] = useState<Record<string, InputDomRef & { isInvalid?: boolean }>>({});
+  const [hasApplyAutomaticallyText, setHasApplyAutomaticallyText] = useState(false);
 
   useStylesheet(styleData, 'ManageViewsDialog');
 
-  const columns = (
-    <>
-      {showOnlyFavorites && <TableColumn key="favorite-variant-item" />}
-      <TableColumn>{viewHeaderText}</TableColumn>
+  const headerRow = (
+    <TableHeaderRow sticky>
+      {showOnlyFavorites && <TableHeaderCell key="favorite-variant-item" />}
+      <TableHeaderCell importance={10} min-width="18rem">
+        {viewHeaderText}
+      </TableHeaderCell>
       {showShare && (
-        <TableColumn demandPopin minWidth={600}>
+        <TableHeaderCell minWidth="7.5rem" maxWidth="8rem">
           {sharingHeaderText}
-        </TableColumn>
+        </TableHeaderCell>
       )}
       {showSetAsDefault && (
-        <TableColumn demandPopin minWidth={600} popinText={defaultHeaderText}>
+        <TableHeaderCell minWidth="8rem" maxWidth="8rem">
           {defaultHeaderText}
-        </TableColumn>
+        </TableHeaderCell>
       )}
-      {showApplyAutomatically && (
-        <TableColumn demandPopin minWidth={600} popinText={applyAutomaticallyHeaderText}>
+      {TableHeaderCell && (
+        <TableHeaderCell minWidth={hasApplyAutomaticallyText ? '25rem' : '5rem'}>
           {applyAutomaticallyHeaderText}
-        </TableColumn>
+        </TableHeaderCell>
       )}
-      {showCreatedBy && (
-        <TableColumn demandPopin minWidth={600} popinText={createdByHeaderText}>
-          {createdByHeaderText}
-        </TableColumn>
-      )}
-      <TableColumn key="delete-variant-item" />
-    </>
+      {showCreatedBy && <TableHeaderCell minWidth="10rem">{createdByHeaderText}</TableHeaderCell>}
+      <TableHeaderCell importance={9} width="3rem" key="delete-variant-item" />
+    </TableHeaderRow>
   );
 
   const [childrenProps, setChildrenProps] = useState<Partial<VariantItemPropTypes>[]>(
@@ -122,15 +119,21 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       return child.props;
     })
   );
+
   useEffect(() => {
+    let _hasApplyAutomaticallyText = false;
     setChildrenProps(
       Children.map(children, (child) => {
         if (!isValidElement(child)) {
           return {};
         }
+        if (child.props?.applyAutomaticallyText) {
+          _hasApplyAutomaticallyText = true;
+        }
         return child.props;
       })
     );
+    setHasApplyAutomaticallyText(_hasApplyAutomaticallyText);
   }, [children]);
 
   const [filteredProps, setFilteredProps] = useState(childrenProps);
@@ -211,12 +214,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     );
   };
 
-  const canRenderPortal = useCanRenderPortal();
-  if (!canRenderPortal) {
-    return null;
-  }
-
-  return createPortal(
+  return (
     <Dialog
       open
       className={classNames.manageViewsDialog}
@@ -255,7 +253,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         />
       }
     >
-      <Table columns={columns} stickyColumnHeader role="table">
+      <Table headerRow={headerRow} role="table" overflowMode={TableOverflowMode.Popin}>
         {filteredProps.map((itemProps) => {
           return (
             <ManageViewsTableRows
@@ -278,7 +276,6 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
           );
         })}
       </Table>
-    </Dialog>,
-    portalContainer ?? document.body
+    </Dialog>
   );
 };
