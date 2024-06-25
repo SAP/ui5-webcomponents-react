@@ -16,6 +16,40 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface ShellBarAttributes {
   /**
+   * Defines additional accessibility attributes on different areas of the component.
+   *
+   * The accessibilityAttributes object has the following fields,
+   * where each field is an object supporting one or more accessibility attributes:
+   *
+   * - **logo** - `logo.role` and `logo.name`.
+   * - **notifications** - `notifications.expanded` and `notifications.hasPopup`.
+   * - **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.
+   * - **product** - `product.expanded` and `product.hasPopup`.
+   * - **search** - `search.expanded` and `search.hasPopup`.
+   * - **overflow** - `overflow.expanded` and `overflow.hasPopup`.
+   *
+   * The accessibility attributes support the following values:
+   *
+   * - **role**: Defines the accessible ARIA role of the logo area.
+   * Accepts the following string values: `button` or `link`.
+   *
+   * - **expanded**: Indicates whether the button, or another grouping element it controls,
+   * is currently expanded or collapsed.
+   * Accepts the following string values: `true` or `false`.
+   *
+   * - **hasPopup**: Indicates the availability and type of interactive popup element,
+   * such as menu or dialog, that can be triggered by the button.
+   *
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
+   * - **name**: Defines the accessible ARIA name of the area.
+   * Accepts any string.
+   *
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents-fiori**.
+   * @default {}
+   */
+  accessibilityAttributes?: ShellBarAccessibilityAttributes;
+
+  /**
    * Defines the `notificationsCount`,
    * displayed in the notification icon top-right corner.
    */
@@ -57,39 +91,6 @@ interface ShellBarAttributes {
 }
 
 interface ShellBarDomRef extends Required<ShellBarAttributes>, Ui5DomRef {
-  /**
-   * Defines additional accessibility attributes on different areas of the component.
-   *
-   * The accessibilityAttributes object has the following fields,
-   * where each field is an object supporting one or more accessibility attributes:
-   *
-   * - **logo** - `logo.role` and `logo.name`.
-   * - **notifications** - `notifications.expanded` and `notifications.hasPopup`.
-   * - **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.
-   * - **product** - `product.expanded` and `product.hasPopup`.
-   * - **search** - `search.expanded` and `search.hasPopup`.
-   * - **overflow** - `overflow.expanded` and `overflow.hasPopup`.
-   *
-   * The accessibility attributes support the following values:
-   *
-   * - **role**: Defines the accessible ARIA role of the logo area.
-   * Accepts the following string values: `button` or `link`.
-   *
-   * - **expanded**: Indicates whether the button, or another grouping element it controls,
-   * is currently expanded or collapsed.
-   * Accepts the following string values: `true` or `false`.
-   *
-   * - **hasPopup**: Indicates the availability and type of interactive popup element,
-   * such as menu or dialog, that can be triggered by the button.
-   *
-   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
-   * - **name**: Defines the accessible ARIA name of the area.
-   * Accepts any string.
-   *
-   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents-fiori**.
-   */
-  accessibilityAttributes: ShellBarAccessibilityAttributes;
-
   /**
    * Closes the overflow area.
    * Useful to manually close the overflow after having suppressed automatic closing with preventDefault() of ShellbarItem's press event
@@ -296,7 +297,7 @@ interface ShellBarPropTypes
  */
 const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',
-  ['notificationsCount', 'primaryTitle', 'secondaryTitle'],
+  ['accessibilityAttributes', 'notificationsCount', 'primaryTitle', 'secondaryTitle'],
   ['showNotifications', 'showProductSwitch', 'showSearchField'],
   ['assistant', 'logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   [

@@ -18,10 +18,10 @@ function mapWebComponentTypeToTsType(type: string) {
     return primitive;
   }
   switch (type) {
-    case 'HTMLElement | string | undefined':
-    case 'HTMLElement | string':
-      // opener props only accept strings as prop types
-      return 'string';
+    // case 'HTMLElement | string | undefined':
+    // case 'HTMLElement | string':
+    //   // opener props only accept strings as prop types
+    //   return 'string';
 
     default:
       if (!loggedTypes.has(type)) {
@@ -70,7 +70,7 @@ export class AttributesRenderer extends AbstractRenderer {
     type = mapWebComponentTypeToTsType(type);
 
     const references = attribute.type?.references;
-    const isEnum = references != null && references?.length > 0;
+    const isEnum = references != null && references?.length > 0 && attribute._ui5validator !== 'Object';
 
     if (isEnum) {
       type += ` | keyof typeof ${type}`;

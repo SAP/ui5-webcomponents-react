@@ -10,6 +10,21 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface MenuItemAttributes {
   /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
+   *
+   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
+   *
+   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   *
+   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: ListItemAccessibilityAttributes;
+
+  /**
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.7.0) of **@ui5/webcomponents**.
@@ -118,21 +133,7 @@ interface MenuItemAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 }
 
-interface MenuItemDomRef extends Required<MenuItemAttributes>, Ui5DomRef {
-  /**
-   * Defines the additional accessibility attributes that will be applied to the component.
-   * The following fields are supported:
-   *
-   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
-   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
-   *
-   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
-   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-   *
-   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
-   */
-  accessibilityAttributes: ListItemAccessibilityAttributes;
-}
+interface MenuItemDomRef extends Required<MenuItemAttributes>, Ui5DomRef {}
 
 interface MenuItemPropTypes
   extends MenuItemAttributes,
@@ -209,7 +210,17 @@ interface MenuItemPropTypes
  */
 const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   'ui5-menu-item',
-  ['accessibleName', 'additionalText', 'highlight', 'icon', 'loadingDelay', 'text', 'tooltip', 'type'],
+  [
+    'accessibilityAttributes',
+    'accessibleName',
+    'additionalText',
+    'highlight',
+    'icon',
+    'loadingDelay',
+    'text',
+    'tooltip',
+    'type'
+  ],
   ['disabled', 'loading', 'navigated', 'selected', 'startsSection'],
   ['deleteButton', 'endContent'],
   ['detail-click'],

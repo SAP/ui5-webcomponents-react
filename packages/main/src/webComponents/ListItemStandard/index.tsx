@@ -11,6 +11,20 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface ListItemStandardAttributes {
   /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
+   *
+   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
+   *
+   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   *
+   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: ListItemAccessibilityAttributes;
+  /**
    * Defines the text alternative of the component.
    * Note: If not provided a default text alternative will be set, if present.
    */
@@ -108,21 +122,7 @@ interface ListItemStandardAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 }
 
-interface ListItemStandardDomRef extends Required<ListItemStandardAttributes>, Ui5DomRef {
-  /**
-   * Defines the additional accessibility attributes that will be applied to the component.
-   * The following fields are supported:
-   *
-   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
-   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
-   *
-   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
-   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-   *
-   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
-   */
-  accessibilityAttributes: ListItemAccessibilityAttributes;
-}
+interface ListItemStandardDomRef extends Required<ListItemStandardAttributes>, Ui5DomRef {}
 
 interface ListItemStandardPropTypes
   extends ListItemStandardAttributes,
@@ -187,6 +187,7 @@ interface ListItemStandardPropTypes
 const ListItemStandard = withWebComponent<ListItemStandardPropTypes, ListItemStandardDomRef>(
   'ui5-li',
   [
+    'accessibilityAttributes',
     'accessibleName',
     'additionalText',
     'additionalTextState',
