@@ -2,8 +2,8 @@ import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
 import { forwardRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { MessageBoxActions } from '../../enums/MessageBoxActions';
-import { MessageBoxTypes } from '../../enums/MessageBoxTypes';
+import { MessageBoxAction } from '../../enums/MessageBoxAction';
+import { MessageBoxType } from '../../enums/MessageBoxType';
 import type { DialogDomRef } from '../../webComponents';
 import { Button } from '../../webComponents/Button/index';
 import type { MessageBoxPropTypes } from './index.js';
@@ -31,7 +31,7 @@ const meta = {
   },
   args: {
     open: false,
-    type: MessageBoxTypes.Confirm,
+    type: MessageBoxType.Confirm,
     children: 'Press "Escape" to close the MessageBox.'
   },
   parameters: {
@@ -68,9 +68,9 @@ export const Default: Story = {
 export const WithCustomActions: Story = {
   args: {
     actions: [
-      MessageBoxActions.OK,
+      MessageBoxAction.OK,
       'Custom Action',
-      MessageBoxActions.Cancel,
+      MessageBoxAction.Cancel,
       <Button key="0" id="custom-action">
         Custom Button
       </Button>

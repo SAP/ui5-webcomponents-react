@@ -1,4 +1,4 @@
-export enum Themes {
+export enum Theme {
   sap_fiori_3 = 'sap_fiori_3',
   sap_fiori_3_dark = 'sap_fiori_3_dark',
   sap_fiori_3_hcb = 'sap_fiori_3_hcb',
