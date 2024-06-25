@@ -53,7 +53,7 @@ const MessageBoxComponent = () => {
     setOpen(true);
   };
   const handleClose = (event) => {
-    if (event.detail.action === MessageBoxActions.OK) {
+    if (event.detail.action === MessageBoxAction.OK) {
       // do something on "Ok" button click
     } else if (event.detail.action === 'Custom Action') {
       // do something on "Custom Action" click
@@ -68,7 +68,7 @@ const MessageBoxComponent = () => {
       <MessageBox
         open={open}
         onClose={handleClose}
-        actions={[MessageBoxActions.OK, 'Custom Action', MessageBoxActions.Cancel, MessageBoxActions.Abort]}
+        actions={[MessageBoxAction.OK, 'Custom Action', MessageBoxAction.Cancel, MessageBoxAction.Abort]}
       >
         Content
       </MessageBox>

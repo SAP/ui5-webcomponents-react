@@ -1,4 +1,4 @@
-export enum MessageBoxActions {
+export enum MessageBoxAction {
   Abort = 'Abort',
   Cancel = 'Cancel',
   Close = 'Close',

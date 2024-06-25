@@ -12,8 +12,8 @@ import { createPortal } from 'react-dom';
 import {
   FlexBoxDirection,
   FlexBoxJustifyContent,
-  MessageBoxActions,
-  MessageBoxTypes,
+  MessageBoxAction,
+  MessageBoxType,
   ToolbarStyle
 } from '../../enums/index.js';
 import {
@@ -614,8 +614,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         createPortal(
           <MessageBox
             open
-            type={MessageBoxTypes.Warning}
-            actions={[MessageBoxActions.OK, MessageBoxActions.Cancel]}
+            type={MessageBoxType.Warning}
+            actions={[MessageBoxAction.OK, MessageBoxAction.Cancel]}
             onClose={handleMessageBoxClose}
             data-component-name="FilterBarDialogResetMessageBox"
           >
