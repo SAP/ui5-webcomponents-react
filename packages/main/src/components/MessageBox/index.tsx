@@ -28,7 +28,8 @@ import {
   YES
 } from '../../i18n/i18n-defaults.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
-import type { ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
+import type { Ui5CustomEvent } from '../../types/index.js';
+import type { ButtonDomRef, ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
 import { Button, Dialog, Icon, Title } from '../../webComponents/index.js';
 import { Text } from '../Text/index.js';
 import { classNames, styleData } from './MessageBox.module.css.js';
@@ -91,8 +92,15 @@ export interface MessageBoxPropTypes
   initialFocus?: MessageBoxActionType;
   /**
    * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
+   *
+   * __Note:__ The target of the event differs according to how the user closed the dialog.
    */
-  onClose?: (event: CustomEvent<{ action: MessageBoxActionType }>) => void;
+  onClose?: (
+    //todo adjust this once enrichEventWithDetails forwards the native `detail`
+    event:
+      | Ui5CustomEvent<DialogDomRef, { action: MessageBoxActionType }>
+      | (MouseEvent & ButtonDomRef & { detail: { action: MessageBoxActionType } })
+  ) => void;
 }
 
 const getIcon = (icon, type, classes) => {
