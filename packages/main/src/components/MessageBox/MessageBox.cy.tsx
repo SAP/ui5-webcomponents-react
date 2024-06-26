@@ -1,4 +1,5 @@
 import addIcon from '@ui5/webcomponents-icons/dist/add.js';
+import { useState } from 'react';
 import { Button, Icon, MessageBoxAction, MessageBoxType } from '../..';
 import { MessageBox } from './index.js';
 
@@ -27,6 +28,54 @@ describe('MessageBox', () => {
         })
       );
     });
+  });
+
+  it('close event', () => {
+    const callback = cy.spy().as('close');
+    function TestComp() {
+      const [open, setOpen] = useState(false);
+      const [type, setType] = useState('');
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            Open
+          </Button>
+          <MessageBox
+            open={open}
+            onClose={(e) => {
+              callback(e);
+              setType(e.type);
+              setOpen(false);
+            }}
+          >
+            My Message Box Content
+          </MessageBox>
+          <span data-testid="eventType">{type}</span>
+        </>
+      );
+    }
+
+    cy.mount(<TestComp />);
+
+    cy.findByText('Open').click();
+    cy.findByText('OK').click();
+    cy.get('@close').should('have.been.calledOnce');
+    cy.wrap(callback).should(
+      'have.been.calledWith',
+      Cypress.sinon.match({
+        type: 'click'
+      })
+    );
+    cy.findByTestId('eventType').should('have.text', 'click');
+
+    cy.findByText('Open').click();
+    cy.realPress('Escape');
+    cy.get('@close').should('have.been.calledTwice');
+    cy.findByTestId('eventType').should('have.text', 'before-close');
   });
 
   it('Custom Button', () => {

@@ -27,8 +27,8 @@ import {
   WARNING,
   YES
 } from '../../i18n/i18n-defaults.js';
-import { stopPropagation } from '../../internal/stopPropagation.js';
-import type { ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
+import type { Ui5CustomEvent } from '../../types/index.js';
+import type { ButtonDomRef, ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
 import { Button, Dialog, Icon, Title } from '../../webComponents/index.js';
 import { Text } from '../Text/index.js';
 import { classNames, styleData } from './MessageBox.module.css.js';
@@ -90,9 +90,17 @@ export interface MessageBoxPropTypes
    */
   initialFocus?: MessageBoxActionType;
   /**
-   * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
+   * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key).
+   * `event.detail.action` contains the pressed action button.
+   *
+   * __Note:__ The target of the event differs according to how the user closed the dialog.
    */
-  onClose?: (event: CustomEvent<{ action: MessageBoxActionType }>) => void;
+  onClose?: (
+    //todo adjust this once enrichEventWithDetails forwards the native `detail`
+    event:
+      | Ui5CustomEvent<DialogDomRef, { action: undefined }>
+      | (MouseEvent & ButtonDomRef & { detail: { action: MessageBoxActionType } })
+  ) => void;
 }
 
 const getIcon = (icon, type, classes) => {
@@ -188,9 +196,18 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
     }
   };
 
-  const handleOnClose = (e) => {
-    const { action } = e.target.dataset;
-    stopPropagation(e);
+  const handleDialogClose: DialogPropTypes['onBeforeClose'] = (e) => {
+    if (typeof props.onBeforeClose === 'function') {
+      props.onBeforeClose(e);
+    }
+    if (e.detail.escPressed) {
+      // @ts-expect-error: todo check type
+      onClose(enrichEventWithDetails(e, { action: undefined }));
+    }
+  };
+
+  const handleOnClose: ButtonPropTypes['onClick'] = (e) => {
+    const { action } = e.currentTarget.dataset;
     onClose(enrichEventWithDetails(e, { action }));
   };
 
@@ -206,7 +223,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
   };
 
   // @ts-expect-error: footer, headerText and onClose are already omitted via prop types
-  const { footer: _0, headerText: _1, onClose: _2, ...restWithoutOmitted } = rest;
+  const { footer: _0, headerText: _1, onClose: _2, onBeforeClose: _3, ...restWithoutOmitted } = rest;
 
   const iconToRender = getIcon(icon, type, classNames);
   const needsCustomHeader = !props.header && !!iconToRender;
@@ -216,7 +233,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       open={open}
       ref={ref}
       className={clsx(classNames.messageBox, className)}
-      onClose={open ? handleOnClose : stopPropagation}
+      onBeforeClose={handleDialogClose}
       accessibleNameRef={needsCustomHeader ? `${messageBoxId}-title ${messageBoxId}-text` : undefined}
       accessibleRole={PopupAccessibleRole.AlertDialog}
       {...restWithoutOmitted}
