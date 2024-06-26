@@ -1,4 +1,4 @@
-export enum MessageBoxTypes {
+export enum MessageBoxType {
   Confirm = 'Confirm',
   Error = 'Error',
   Information = 'Information',

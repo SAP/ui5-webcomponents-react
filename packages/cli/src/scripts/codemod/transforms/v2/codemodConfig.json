@@ -593,6 +593,11 @@
     "WizardContentLayout": "@ui5/webcomponents-fiori/dist/types/WizardContentLayout.js",
     "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
   },
+  "renamedEnums": {
+    "MessageBoxActions": "MessageBoxAction",
+    "MessageBoxTypes": "MessageBoxType",
+    "Themes": "Theme"
+  },
   "enumProperties": {
     "BusyIndicatorSize": {
       "Small": "S",
