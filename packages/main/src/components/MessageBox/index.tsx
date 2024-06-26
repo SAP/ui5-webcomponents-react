@@ -99,7 +99,7 @@ export interface MessageBoxPropTypes
   onClose?: (
     //todo adjust this once enrichEventWithDetails forwards the native `detail`
     event:
-      | Ui5CustomEvent<DialogDomRef, { action: MessageBoxActionType }>
+      | Ui5CustomEvent<DialogDomRef, { action: undefined }>
       | (MouseEvent & ButtonDomRef & { detail: { action: MessageBoxActionType } })
   ) => void;
 }
