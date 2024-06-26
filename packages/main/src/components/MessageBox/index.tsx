@@ -27,7 +27,6 @@ import {
   WARNING,
   YES
 } from '../../i18n/i18n-defaults.js';
-import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
 import type { ButtonDomRef, ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
 import { Button, Dialog, Icon, Title } from '../../webComponents/index.js';
@@ -208,7 +207,6 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
 
   const handleOnClose: ButtonPropTypes['onClick'] = (e) => {
     const { action } = e.target.dataset;
-    stopPropagation(e);
     onClose(enrichEventWithDetails(e, { action }));
   };
 
