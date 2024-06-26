@@ -1,3 +1,17 @@
+.baseCellFocus {
+  &:focus {
+    outline: none;
+  }
+  &:not([data-empty-row-cell]):focus::after {
+    content: '';
+    pointer-events: none;
+    inset-inline: 1px;
+    inset-block: 1px;
+    border: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+    position: absolute;
+  }
+}
+
 .table {
   position: relative;
   width: 100%;
@@ -80,6 +94,8 @@
 }
 
 .th {
+  composes: baseCellFocus;
+
   height: var(--_ui5wcr-AnalyticalTableHeaderRowHeight);
   color: var(--sapList_HeaderTextColor);
   background-color: var(--sapList_HeaderBackground);
@@ -112,8 +128,6 @@
     &[data-column-id='__ui5wcr__internal_selection_column'] {
       border-inline-start: 1px solid transparent;
     }
-    outline-offset: calc(-1 * var(--sapContent_FocusWidth));
-    outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
   }
 }
 
@@ -190,6 +204,8 @@
 }
 
 .tableCell {
+  composes: baseCellFocus;
+
   position: relative;
   height: 100%;
   box-sizing: border-box;
@@ -209,17 +225,6 @@
     border-inline-end: var(--_ui5wcr-AnalyticalTable-OuterCellBorder);
   }
 
-  &:focus {
-    outline: none;
-  }
-  &:not([data-empty-row-cell]):focus::after {
-    content: '';
-    pointer-events: none;
-    inset-inline: 1px;
-    inset-block: 1px;
-    border: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
-    position: absolute;
-  }
   &[aria-selected='true']:not([data-empty-row-cell]):focus::after {
     inset-block-end: 2px;
   }
