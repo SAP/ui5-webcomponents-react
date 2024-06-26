@@ -201,12 +201,13 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       props.onBeforeClose(e);
     }
     if (e.detail.escPressed) {
+      // @ts-expect-error: todo check type
       onClose(enrichEventWithDetails(e, { action: undefined }));
     }
   };
 
   const handleOnClose: ButtonPropTypes['onClick'] = (e) => {
-    const { action } = e.target.dataset;
+    const { action } = e.currentTarget.dataset;
     onClose(enrichEventWithDetails(e, { action }));
   };
 
