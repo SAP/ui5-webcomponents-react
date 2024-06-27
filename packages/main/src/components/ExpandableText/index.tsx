@@ -4,21 +4,17 @@ import LinkAccessibleRole from '@ui5/webcomponents/dist/types/LinkAccessibleRole
 import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
 import { CLOSE_POPOVER, SHOW_FULL_TEXT, SHOW_LESS, SHOW_MORE } from '../../i18n/i18n-defaults.js';
-import { useCanRenderPortal } from '../../internal/ssr.js';
 import { getUi5TagWithSuffix } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
 import type { LinkDomRef } from '../../webComponents/index.js';
 import { Link } from '../../webComponents/index.js';
 import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
-import type { TextPropTypes } from '../Text/index.js';
-import { Text } from '../Text/index.js';
+import type { TextPropTypes } from '../../webComponents/Text/index.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { classNames, styleData } from './ExpandableText.module.css.js';
 
-export interface ExpandableTextPropTypes
-  extends Omit<TextPropTypes, 'maxLines' | 'wrapping' | 'children'>,
-    CommonProps {
+export interface ExpandableTextPropTypes extends Omit<TextPropTypes, 'maxLines' | 'children'>, CommonProps {
   /**
    * Determines the text to be displayed.
    */
@@ -34,13 +30,9 @@ export interface ExpandableTextPropTypes
    */
   showOverflowInPopover?: boolean;
   /**
-   * Defines where modals are rendered into via `React.createPortal`.
-   *
-   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--page).
-   *
-   * @default document.body
+   * Defines how white-space inside <code>Text</code> is handled. If set to true, sequences of white space are preserved.
    */
-  portalContainer?: Element;
+  renderWhitespace?: boolean;
 }
 
 /**
@@ -51,17 +43,7 @@ export interface ExpandableTextPropTypes
  * @since 1.23.0
  */
 const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((props, ref) => {
-  const {
-    children,
-    emptyIndicator,
-    renderWhitespace,
-    hyphenated,
-    showOverflowInPopover,
-    maxCharacters = 100,
-    portalContainer,
-    className,
-    ...rest
-  } = props;
+  const { children, showOverflowInPopover, maxCharacters = 100, renderWhitespace, className, ...rest } = props;
 
   useStylesheet(styleData, ExpandableText.displayName);
 
@@ -100,20 +82,9 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
     });
   }, [collapsed, showOverflowInPopover]);
 
-  const canRenderPortal = useCanRenderPortal();
-  if (showOverflowInPopover && !canRenderPortal) {
-    return null;
-  }
   return (
-    <span className={clsx(classNames.expandableText, className)} {...rest} ref={ref}>
-      <Text
-        emptyIndicator={emptyIndicator}
-        renderWhitespace={renderWhitespace}
-        hyphenated={hyphenated}
-        className={classNames.text}
-      >
-        {strippedChildren}
-      </Text>
+    <span className={clsx(className)} {...rest} ref={ref}>
+      <Text className={clsx(classNames.text, renderWhitespace && classNames.renderWhitespace)}>{strippedChildren}</Text>
       {isOverflow && (
         <>
           <span className={classNames.ellipsis}>{showOverflowInPopover || collapsed ? '… ' : ' '}</span>
@@ -134,16 +105,11 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
           </Link>
         </>
       )}
-      {showOverflowInPopover &&
-        popoverOpen &&
-        createPortal(
-          <ResponsivePopover opener={`${uniqueId}-link`} open onClose={closePopover} className={classNames.popover}>
-            <Text renderWhitespace={renderWhitespace} hyphenated={hyphenated} className={classNames.text}>
-              {children}
-            </Text>
-          </ResponsivePopover>,
-          portalContainer ?? document.body
-        )}
+      {showOverflowInPopover && popoverOpen && (
+        <ResponsivePopover opener={`${uniqueId}-link`} open onClose={closePopover} className={classNames.popover}>
+          <Text className={clsx(classNames.text, renderWhitespace && classNames.renderWhitespace)}>{children}</Text>
+        </ResponsivePopover>
+      )}
     </span>
   );
 });

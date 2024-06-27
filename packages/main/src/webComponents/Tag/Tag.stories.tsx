@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import TagDesign from '@ui5/webcomponents/dist/types/TagDesign.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import { FlexBox } from '../../components/FlexBox';
-import { Text } from '../../components/Text/index.js';
 import { FlexBoxWrap } from '../../enums/FlexBoxWrap';
+import { Text } from '../../webComponents/Text/index.js';
 import { Icon } from '../Icon/index.js';
 import { Tag } from './index.js';
 

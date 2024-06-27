@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
-import { Text } from '../../components/Text/index.js';
 import { Toolbar } from '../../components/Toolbar/index.js';
 import { ToolbarSpacer } from '../../components/ToolbarSpacer/index.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { Button } from '../Button/index.js';
 import { List } from '../List/index.js';
 import { ListItemStandard } from '../ListItemStandard/index.js';

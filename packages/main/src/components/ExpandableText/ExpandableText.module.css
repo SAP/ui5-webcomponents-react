@@ -1,9 +1,9 @@
-.expandableText {
-    composes: text from '../Text/Text.module.css';
-}
-
 .text {
   display: inline;
+}
+
+.renderWhitespace {
+  white-space: pre-wrap;
 }
 
 .ellipsis {
@@ -17,4 +17,3 @@
 .popover::part(content) {
   padding: 1rem;
 }
-

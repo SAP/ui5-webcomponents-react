@@ -1,8 +1,8 @@
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { makeRenderer } from 'react-table';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../../../enums/index.js';
+import { Text } from '../../../../webComponents/Text/index.js';
 import { FlexBox } from '../../../FlexBox/index.js';
-import { Text } from '../../../Text/index.js';
 import { classNames, styleData } from './PopIn.module.css.js';
 
 export const PopIn = (instance) => {
@@ -43,7 +43,7 @@ export const PopIn = (instance) => {
               const cell = item.column.Cell;
               if (typeof cell === 'string') {
                 return (
-                  <Text wrapping={false} title={cell}>
+                  <Text maxLines={1} title={cell}>
                     {cell}
                   </Text>
                 );
@@ -51,7 +51,7 @@ export const PopIn = (instance) => {
               return makeRenderer({ ...instance, ...popInInstanceProps, isPopIn: true }, item.column)(item.column.Cell);
             }
             return popInInstanceProps?.value ? (
-              <Text wrapping={false} title={popInInstanceProps.value}>
+              <Text maxLines={1} title={popInInstanceProps.value}>
                 {popInInstanceProps.value}
               </Text>
             ) : null;

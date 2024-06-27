@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
-import { Text } from '../../components/Text';
+import { Text } from '../../webComponents/Text';
 import { Select } from '../Select';
 import { BusyIndicator } from './index';
 

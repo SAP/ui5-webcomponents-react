@@ -23,6 +23,7 @@ interface ListItemCustomAttributes {
    * @default {}
    */
   accessibilityAttributes?: ListItemAccessibilityAttributes;
+
   /**
    * Defines the text alternative of the component.
    *

@@ -29,8 +29,7 @@ import {
 } from '../../i18n/i18n-defaults.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
 import type { ButtonDomRef, ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
-import { Button, Dialog, Icon, Title } from '../../webComponents/index.js';
-import { Text } from '../Text/index.js';
+import { Button, Dialog, Icon, Text, Title } from '../../webComponents/index.js';
 import { classNames, styleData } from './MessageBox.module.css.js';
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
