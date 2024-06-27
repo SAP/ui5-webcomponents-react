@@ -92,7 +92,7 @@ export interface MessageBoxPropTypes
    * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the Escape key).
    * `action` is the pressed action button, it's `undefined` when closed via ESC.
    */
-  onClose?: (action: MessageBoxActionType | undefined, escPressed?: boolean) => void;
+  onClose?: (action: MessageBoxActionType | undefined, escPressed?: true) => void;
 }
 
 const getIcon = (icon, type, classes) => {
