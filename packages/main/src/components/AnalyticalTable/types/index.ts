@@ -344,7 +344,11 @@ export interface AnalyticalTableDomRef extends Omit<HTMLDivElement, 'scrollTo'> 
 type HighlightColor = ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;
 
 interface OnAutoResizeMouseEvent extends Omit<MouseEvent, 'detail'> {
-  detail: { columnId: string; width: number };
+  detail: { columnId: string; width: number; nativeDetail: 2 };
+}
+
+interface OnRowClickEvent extends Omit<MouseEvent, 'detail'> {
+  detail: { detail: { row: unknown; nativeDetail: number } };
 }
 
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
@@ -664,12 +668,13 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
       isSelected?: boolean;
       selectedFlatRows: Record<string, unknown>[];
       selectedRowIds: Record<string | number, boolean>;
+      nativeDetail: number;
     }>
   ) => void;
   /**
    * Fired when a row is clicked
    */
-  onRowClick?: (e?: CustomEvent<{ row?: unknown }>) => void;
+  onRowClick?: OnRowClickEvent;
   /**
    * Fired when a row is expanded or collapsed
    */
