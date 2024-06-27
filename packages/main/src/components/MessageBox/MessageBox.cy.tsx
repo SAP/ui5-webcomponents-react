@@ -19,14 +19,7 @@ describe('MessageBox', () => {
         </MessageBox>
       );
       cy.findByText(buttonText).click();
-      cy.wrap(callback).should(
-        'have.been.calledWith',
-        Cypress.sinon.match({
-          detail: {
-            action: buttonText
-          }
-        })
-      );
+      cy.wrap(callback).should('have.been.calledWith', Cypress.sinon.match(buttonText));
     });
   });
 
@@ -46,9 +39,9 @@ describe('MessageBox', () => {
           </Button>
           <MessageBox
             open={open}
-            onClose={(e) => {
-              callback(e);
-              setType(e.type);
+            onClose={(action, escPressed) => {
+              callback(action, escPressed);
+              setType(escPressed ? 'before-close' : 'click');
               setOpen(false);
             }}
           >
@@ -64,12 +57,6 @@ describe('MessageBox', () => {
     cy.findByText('Open').click();
     cy.findByText('OK').click();
     cy.get('@close').should('have.been.calledOnce');
-    cy.wrap(callback).should(
-      'have.been.calledWith',
-      Cypress.sinon.match({
-        type: 'click'
-      })
-    );
     cy.findByTestId('eventType').should('have.text', 'click');
 
     cy.findByText('Open').click();
@@ -105,14 +92,7 @@ describe('MessageBox', () => {
     cy.findByText('Custom').click();
     cy.get('@onMessageBoxClose')
       .should('have.been.calledOnce')
-      .should(
-        'have.been.calledWith',
-        Cypress.sinon.match({
-          detail: {
-            action: `1: custom action`
-          }
-        })
-      );
+      .should('have.been.calledWith', Cypress.sinon.match('1: custom action'));
     cy.get('@onButtonClick').should('have.been.calledOnce');
   });
 
@@ -127,14 +107,7 @@ describe('MessageBox', () => {
     cy.findByText('Cancel').click();
     cy.get('@onMessageBoxClose')
       .should('have.been.calledOnce')
-      .should(
-        'have.been.calledWith',
-        Cypress.sinon.match({
-          detail: {
-            action: MessageBoxAction.Cancel
-          }
-        })
-      );
+      .should('have.been.calledWith', Cypress.sinon.match(MessageBoxAction.Cancel));
   });
 
   it('Show', () => {
@@ -148,26 +121,12 @@ describe('MessageBox', () => {
     cy.findByText('Yes').click();
     cy.get('@onMessageBoxClose')
       .should('have.been.calledOnce')
-      .should(
-        'have.been.calledWith',
-        Cypress.sinon.match({
-          detail: {
-            action: MessageBoxAction.Yes
-          }
-        })
-      );
+      .should('have.been.calledWith', Cypress.sinon.match(MessageBoxAction.Yes));
 
     cy.findByText('No').click();
     cy.get('@onMessageBoxClose')
       .should('have.been.calledTwice')
-      .should(
-        'have.been.calledWith',
-        Cypress.sinon.match({
-          detail: {
-            action: MessageBoxAction.No
-          }
-        })
-      );
+      .should('have.been.calledWith', Cypress.sinon.match(MessageBoxAction.No));
   });
 
   it('Success w/ custom title', () => {
@@ -187,14 +146,7 @@ describe('MessageBox', () => {
     cy.findByText('OK').click();
     cy.get('@onMessageBoxClose')
       .should('have.been.calledOnce')
-      .should(
-        'have.been.calledWith',
-        Cypress.sinon.match({
-          detail: {
-            action: MessageBoxAction.OK
-          }
-        })
-      );
+      .should('have.been.calledWith', Cypress.sinon.match(MessageBoxAction.OK));
   });
 
   it('No Title', () => {
@@ -224,25 +176,11 @@ describe('MessageBox', () => {
     cy.findByText(MessageBoxAction.OK).should('be.visible').click();
     cy.get('@onMessageBoxClose')
       .should('have.been.calledOnce')
-      .should(
-        'have.been.calledWith',
-        Cypress.sinon.match({
-          detail: {
-            action: MessageBoxAction.OK
-          }
-        })
-      );
+      .should('have.been.calledWith', Cypress.sinon.match(MessageBoxAction.OK));
     cy.findByText('My Custom Action').should('be.visible').click();
     cy.get('@onMessageBoxClose')
       .should('have.been.calledTwice')
-      .should(
-        'have.been.calledWith',
-        Cypress.sinon.match({
-          detail: {
-            action: 'My Custom Action'
-          }
-        })
-      );
+      .should('have.been.calledWith', Cypress.sinon.match('My Custom Action'));
   });
 
   it("Don't crash on unknown type", () => {
