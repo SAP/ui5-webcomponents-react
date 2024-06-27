@@ -67,34 +67,38 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
   };
 
   return (
-    <span className={clsx(className)} {...rest} ref={ref}>
-      <Text className={clsx(classNames.text, renderWhitespace && classNames.renderWhitespace)}>{strippedChildren}</Text>
-      {isOverflow && (
-        <>
-          <span className={classNames.ellipsis}>{showOverflowInPopover || collapsed ? '… ' : ' '}</span>
-          <Link
-            accessibleName={
-              showOverflowInPopover
-                ? collapsed
-                  ? i18nBundle.getText(SHOW_FULL_TEXT)
-                  : i18nBundle.getText(CLOSE_POPOVER)
-                : undefined
-            }
-            accessibleRole={LinkAccessibleRole.Button}
-            accessibilityAttributes={showOverflowInPopover ? { hasPopup: 'dialog' } : { expanded: !collapsed }}
-            onClick={handleClick}
-            id={`${uniqueId}-link`}
-          >
-            {collapsed ? i18nBundle.getText(SHOW_MORE) : i18nBundle.getText(SHOW_LESS)}
-          </Link>
-        </>
-      )}
+    <>
+      <span className={clsx(className)} {...rest} ref={ref}>
+        <Text className={clsx(classNames.text, renderWhitespace && classNames.renderWhitespace)}>
+          {strippedChildren}
+        </Text>
+        {isOverflow && (
+          <>
+            <span className={classNames.ellipsis}>{showOverflowInPopover || collapsed ? '… ' : ' '}</span>
+            <Link
+              accessibleName={
+                showOverflowInPopover
+                  ? collapsed
+                    ? i18nBundle.getText(SHOW_FULL_TEXT)
+                    : i18nBundle.getText(CLOSE_POPOVER)
+                  : undefined
+              }
+              accessibleRole={LinkAccessibleRole.Button}
+              accessibilityAttributes={showOverflowInPopover ? { hasPopup: 'dialog' } : { expanded: !collapsed }}
+              onClick={handleClick}
+              id={`${uniqueId}-link`}
+            >
+              {collapsed ? i18nBundle.getText(SHOW_MORE) : i18nBundle.getText(SHOW_LESS)}
+            </Link>
+          </>
+        )}
+      </span>
       {showOverflowInPopover && popoverOpen && (
         <ResponsivePopover opener={`${uniqueId}-link`} open onClose={closePopover} className={classNames.popover}>
           <Text className={clsx(classNames.text, renderWhitespace && classNames.renderWhitespace)}>{children}</Text>
         </ResponsivePopover>
       )}
-    </span>
+    </>
   );
 });
 

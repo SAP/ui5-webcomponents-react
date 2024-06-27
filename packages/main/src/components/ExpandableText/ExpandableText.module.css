@@ -7,6 +7,15 @@
 }
 
 .ellipsis {
+  font-family: var(--sapFontFamily);
+  font-size: var(--sapFontSize);
+  font-weight: normal;
+  color: var(--sapTextColor);
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: pre-line;
+  word-wrap: break-word;
+  max-width: 100%;
   word-spacing: 0.125rem;
 }
 
