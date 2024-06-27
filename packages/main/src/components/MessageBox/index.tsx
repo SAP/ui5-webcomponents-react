@@ -4,12 +4,11 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
-import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/Popup.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
-import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ReactElement, ReactNode, MouseEventHandler } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement } from 'react';
 import { MessageBoxAction, MessageBoxType } from '../../enums/index.js';
 import {
@@ -28,8 +27,7 @@ import {
   WARNING,
   YES
 } from '../../i18n/i18n-defaults.js';
-import type { Ui5CustomEvent } from '../../types/index.js';
-import type { ButtonDomRef, ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
+import type { ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
 import { Button, Dialog, Icon, Title } from '../../webComponents/index.js';
 import { Text } from '../Text/index.js';
 import { classNames, styleData } from './MessageBox.module.css.js';
@@ -91,17 +89,10 @@ export interface MessageBoxPropTypes
    */
   initialFocus?: MessageBoxActionType;
   /**
-   * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key).
-   * `event.detail.action` contains the pressed action button.
-   *
-   * __Note:__ The target of the event differs according to how the user closed the dialog.
+   * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the Escape key).
+   * `action` is the pressed action button, it's `undefined` when closed via ESC.
    */
-  onClose?: (
-    //todo adjust this once enrichEventWithDetails forwards the native `detail`
-    event:
-      | Ui5CustomEvent<DialogDomRef, { action: undefined; nativeDetail: number | null } & PopupBeforeCloseEventDetail>
-      | (MouseEventHandler<ButtonDomRef> & { detail: { action: MessageBoxActionType; nativeDetail: number | null } })
-  ) => void;
+  onClose?: (action: MessageBoxActionType | undefined, escPressed?: boolean) => void;
 }
 
 const getIcon = (icon, type, classes) => {
@@ -202,14 +193,13 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       props.onBeforeClose(e);
     }
     if (e.detail.escPressed) {
-      onClose(enrichEventWithDetails(e, { action: undefined }));
+      onClose(undefined, e.detail.escPressed);
     }
   };
 
   const handleOnClose: ButtonPropTypes['onClick'] = (e) => {
     const { action } = e.currentTarget.dataset;
-    //@ts-expect-error: mixing custom events and synthetic events in one type isn't supported for enrichEventWithDetails
-    onClose(enrichEventWithDetails(e, { action }));
+    onClose(action);
   };
 
   const messageBoxId = useIsomorphicId();

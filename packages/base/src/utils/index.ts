@@ -24,9 +24,9 @@ export const enrichEventWithDetails = <
   event: Event,
   payload: Detail
 ): EnrichedEventType<Event, Detail> => {
+  // todo: once we drop React 16 support, remove this
   // the helper accepts both SyntheticEvents and browser events
   const syntheticEventCast = event as unknown as SyntheticEvent;
-  // todo: once we drop React 16 support, remove this
   if (typeof syntheticEventCast.persist === 'function') {
     // if there is a persist method, it's a SyntheticEvent so we need to persist it
     syntheticEventCast.persist();
@@ -39,15 +39,18 @@ export const enrichEventWithDetails = <
   // native detail is always number (if available)
   const nativeDetail = typeof event.detail === 'number' ? event.detail : null;
 
-  // Merge existing detail with payload
-  if (shouldCreateNewDetails) {
-    event.detail = { nativeDetail, ...payload };
-  } else {
-    const detail = event.detail as Record<string, unknown>;
-    event.detail = { ...detail, ...payload };
-  }
+  // defineProperty is necessary here as event.detail needs to be editable
+  Object.defineProperty<Event>(event, 'detail', {
+    value: shouldCreateNewDetails ? {} : event.detail,
+    writable: true,
+    configurable: true
+  });
 
-  // Return enriched event
+  if (nativeDetail) {
+    Object.assign(event.detail!, { nativeDetail });
+  }
+  Object.assign(event.detail!, payload);
+
   return event as EnrichedEventType<Event, Detail>;
 };
 
