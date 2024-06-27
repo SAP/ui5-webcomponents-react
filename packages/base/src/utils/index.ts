@@ -13,8 +13,7 @@ export const deprecationNotice = (component: string, message: string) => {
 
 // Define EnrichedEventType to extend Event with specific detail structure
 type EnrichedEventType<Event, Detail> = Event & {
-  //   todo check if `null` is necessary
-  detail: Detail & { nativeDetail: number | null };
+  detail: Detail & { nativeDetail?: number };
 };
 
 export const enrichEventWithDetails = <
