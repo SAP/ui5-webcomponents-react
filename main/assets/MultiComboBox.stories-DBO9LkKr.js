@@ -1,0 +1,43 @@
+const __vite__fileDeps=["./index-CHeN48PG.js","./iframe-fPuZz_ze.js","./UI5Element-GBezswur.js","./Boot-CS6Wsrzl.js","./EventProvider-CVfkyUHo.js","./useIsomorphicLayoutEffect-CpdNMtv3.js","./index-DEe9W-hO.js","./CustomElementsScopeUtils-CNP7-t5L.js","./withWebComponent-ystZv1Rq.js","./utils-DQyyc3O0.js","./slot-_4yKMUwC.js","./event-Dq0fpeHi.js","./ResizeHandler-DDwTWVjk.js","./ValueState-Bg0UWejw.js","./Keys-B00bFMgT.js","./Integer-DgRYWdxf.js","./slim-arrow-down-CKJ7Ged_.js","./Icons-DkFvE6sF.js","./i18nBundle-BRH4h-L2.js","./Device-RcFucVeJ.js","./decline-DXuOh8V-.js","./i18n-defaults-CXs2tJOZ.js","./Input-CNNAv05m.js","./AriaLabelHelper-C5uDZewF.js","./getActiveElement-kltGt_DR.js","./information-7KDHAkBn.js","./alert-CC8GYBM5.js","./Popover-D7imDdfT.js","./PopupsCommon.css-D0jBQZ8g.js","./FocusableElements-D2BM6TGM.js","./isElementHidden-B4HqmI2E.js","./isElementClickable-0ACQ4G_A.js","./getEffectiveScrollbarStyle-BwuZEAK6.js","./MediaRange-Bnzt26Xb.js","./style-map-BQrULRrw.js","./class-map-AxOwT-Dx.js","./parameters-bundle.css-DQGkr9pp.js","./BrowserScrollbar.css-CyDwNnGM.js","./Icon-DVdZH5Ds.js","./i18n-defaults-BHzefwI9.js","./ResponsivePopoverCommon.css-DngV6LBK.js","./ValueStateMessage.css-DblJ3QyE.js","./ResponsivePopover-D2fiRNXH.js","./Dialog-CSIc5fqg.js","./Button-BDXX69rx.js","./MarkedEvents-CAur0wxK.js","./willShowContent-CZcfsNXp.js","./Title-BnHhmA7_.js","./WrappingType-CW8URInd.js","./List-k7C2Gn4s.js","./ItemNavigation-D-dZSClp.js","./isElementInView-CjfjvN8v.js","./debounce-TTkz9ISH.js","./BusyIndicator-B-2HBIhX.js","./Label-B7GS_Fjb.js","./TabbableElements-BJJu_CDc.js","./RadioButton-BNgUtgiV.js","./CheckBox-D4hlQcIm.js","./accept-CvbfU8vl.js","./slim-arrow-right-pIbcHzBu.js","./Avatar-BLWqVh2K.js","./employee-RhZDCU51.js","./Token-COOvaP9f.js","./ScrollEnablement-CFDeWxNn.js","./animate-DF-0g--S.js","./sys-cancel-DEKOnv_4.js","./ToggleButton-DWmG7gW5.js","./ComboBoxFilter-DqsaXYFp.js","./SuggestionItem-ToL0op9c.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+import{j as e}from"./useIsomorphicLayoutEffect-CpdNMtv3.js";import{o as c}from"./ValueState-Bg0UWejw.js";import{M as r,a as t}from"./index-CHeN48PG.js";import{_ as d}from"./iframe-fPuZz_ze.js";import{w as b}from"./withWebComponent-ystZv1Rq.js";const o=b("ui5-mcb-item-group",["text"],[],[],[],()=>d(()=>import("./index-CHeN48PG.js").then(n=>n.b),__vite__mapDeps([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68]),import.meta.url));o.displayName="MultiComboBoxItemGroup";try{o.displayName="MultiComboBoxItemGroup",o.__docgenInfo={description:"The `MultiComboBoxItemGroup` is type of suggestion item,\nthat can be used to split the `MultiComboBox` suggestions into groups.\n\n__Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)",displayName:"MultiComboBoxItemGroup",props:{children:{defaultValue:null,description:"Defines the items of the <code>ui5-mcb-item-group</code>.",name:"children",required:!1,type:{name:"ReactNode | ReactNode[]"}},text:{defaultValue:null,description:"Defines the text of the component.",name:"text",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}try{o.displayName="MultiComboBoxItemGroup",o.__docgenInfo={description:"The `MultiComboBoxItemGroup` is type of suggestion item,\nthat can be used to split the `MultiComboBox` suggestions into groups.\n\n__Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)",displayName:"MultiComboBoxItemGroup",props:{children:{defaultValue:null,description:"Defines the items of the <code>ui5-mcb-item-group</code>.",name:"children",required:!1,type:{name:"ReactNode | ReactNode[]"}},text:{defaultValue:null,description:"Defines the text of the component.",name:"text",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}const h={title:"Inputs / MultiComboBox",component:r,argTypes:{children:{control:{disable:!0}},icon:{control:{disable:!0}},valueStateMessage:{control:{disable:!0}}},args:{valueState:c.None},tags:["package:@ui5/webcomponents"]},i={render:n=>e.jsxs(r,{...n,children:[e.jsx(t,{text:"Item 1"}),e.jsx(t,{text:"Item 2"}),e.jsx(t,{text:"Item 3"}),e.jsx(t,{text:"Item 4"}),e.jsx(t,{text:"Item 5"})]})},m={render:n=>e.jsxs(r,{...n,children:[e.jsxs(o,{text:"Asia",children:[e.jsx(t,{text:"Afghanistan"}),e.jsx(t,{text:"China"}),e.jsx(t,{text:"India"}),e.jsx(t,{text:"Indonesia"})]}),e.jsxs(o,{text:"Europe",children:[e.jsx(t,{text:"Austria"}),e.jsx(t,{text:"Bulgaria"}),e.jsx(t,{text:"Germany"}),e.jsx(t,{text:"Italy"})]}),e.jsxs(o,{text:"North America",children:[e.jsx(t,{text:"Canada"}),e.jsx(t,{text:"Granada"}),e.jsx(t,{text:"Haiti"}),e.jsx(t,{text:"United States"})]})]})};var s,a,l;i.parameters={...i.parameters,docs:{...(s=i.parameters)==null?void 0:s.docs,source:{originalSource:`{
+  render: args => {
+    return <MultiComboBox {...args}>
+        <MultiComboBoxItem text="Item 1" />
+        <MultiComboBoxItem text="Item 2" />
+        <MultiComboBoxItem text="Item 3" />
+        <MultiComboBoxItem text="Item 4" />
+        <MultiComboBoxItem text="Item 5" />
+      </MultiComboBox>;
+  }
+}`,...(l=(a=i.parameters)==null?void 0:a.docs)==null?void 0:l.source}}};var u,p,x;m.parameters={...m.parameters,docs:{...(u=m.parameters)==null?void 0:u.docs,source:{originalSource:`{
+  render: args => {
+    return <MultiComboBox {...args}>
+        <MultiComboBoxItemGroup text="Asia">
+          <MultiComboBoxItem text="Afghanistan"></MultiComboBoxItem>
+          <MultiComboBoxItem text="China"></MultiComboBoxItem>
+          <MultiComboBoxItem text="India"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Indonesia"></MultiComboBoxItem>
+        </MultiComboBoxItemGroup>
+        <MultiComboBoxItemGroup text="Europe">
+          <MultiComboBoxItem text="Austria"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Bulgaria"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Germany"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Italy"></MultiComboBoxItem>
+        </MultiComboBoxItemGroup>
+        <MultiComboBoxItemGroup text="North America">
+          <MultiComboBoxItem text="Canada"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Granada"></MultiComboBoxItem>
+          <MultiComboBoxItem text="Haiti"></MultiComboBoxItem>
+          <MultiComboBoxItem text="United States"></MultiComboBoxItem>
+        </MultiComboBoxItemGroup>
+      </MultiComboBox>;
+  }
+}`,...(x=(p=m.parameters)==null?void 0:p.docs)==null?void 0:x.source}}};const f=["Default","Grouping"],y=Object.freeze(Object.defineProperty({__proto__:null,Default:i,Grouping:m,__namedExportsOrder:f,default:h},Symbol.toStringTag,{value:"Module"}));export{y as C,i as D,m as G,o as M};
