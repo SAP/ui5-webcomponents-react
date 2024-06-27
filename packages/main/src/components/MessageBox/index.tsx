@@ -4,11 +4,12 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/Popup.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode, MouseEventHandler } from 'react';
 import { cloneElement, forwardRef, isValidElement } from 'react';
 import { MessageBoxAction, MessageBoxType } from '../../enums/index.js';
 import {
@@ -98,8 +99,8 @@ export interface MessageBoxPropTypes
   onClose?: (
     //todo adjust this once enrichEventWithDetails forwards the native `detail`
     event:
-      | Ui5CustomEvent<DialogDomRef, { action: undefined }>
-      | (MouseEvent & ButtonDomRef & { detail: { action: MessageBoxActionType } })
+      | Ui5CustomEvent<DialogDomRef, { action: undefined; nativeDetail: number | null } & PopupBeforeCloseEventDetail>
+      | (MouseEventHandler<ButtonDomRef> & { detail: { action: MessageBoxActionType; nativeDetail: number | null } })
   ) => void;
 }
 
@@ -201,13 +202,13 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       props.onBeforeClose(e);
     }
     if (e.detail.escPressed) {
-      // @ts-expect-error: todo check type
       onClose(enrichEventWithDetails(e, { action: undefined }));
     }
   };
 
   const handleOnClose: ButtonPropTypes['onClick'] = (e) => {
     const { action } = e.currentTarget.dataset;
+    //@ts-expect-error: mixing custom events and synthetic events in one type isn't supported for enrichEventWithDetails
     onClose(enrichEventWithDetails(e, { action }));
   };
 
