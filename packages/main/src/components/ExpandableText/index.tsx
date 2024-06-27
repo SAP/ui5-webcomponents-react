@@ -3,11 +3,9 @@
 import LinkAccessibleRole from '@ui5/webcomponents/dist/types/LinkAccessibleRole.js';
 import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { CLOSE_POPOVER, SHOW_FULL_TEXT, SHOW_LESS, SHOW_MORE } from '../../i18n/i18n-defaults.js';
-import { getUi5TagWithSuffix } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
-import type { LinkDomRef } from '../../webComponents/index.js';
 import { Link } from '../../webComponents/index.js';
 import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
 import type { TextPropTypes } from '../../webComponents/Text/index.js';
@@ -49,7 +47,6 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
 
   const [collapsed, setCollapsed] = useState(true);
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const linkRef = useRef<LinkDomRef>(null);
   const uniqueId = useIsomorphicId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const trimmedChildren = renderWhitespace ? children : children?.replace(/\s+/g, ' ').trim();
@@ -69,19 +66,6 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
     setPopoverOpen(false);
   };
 
-  useEffect(() => {
-    const tagName = getUi5TagWithSuffix('ui5-link');
-    void customElements.whenDefined(tagName).then(() => {
-      if (linkRef.current) {
-        if (showOverflowInPopover) {
-          linkRef.current.accessibilityAttributes = { hasPopup: 'dialog' };
-        } else {
-          linkRef.current.accessibilityAttributes = { expanded: !collapsed };
-        }
-      }
-    });
-  }, [collapsed, showOverflowInPopover]);
-
   return (
     <span className={clsx(className)} {...rest} ref={ref}>
       <Text className={clsx(classNames.text, renderWhitespace && classNames.renderWhitespace)}>{strippedChildren}</Text>
@@ -97,8 +81,8 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
                 : undefined
             }
             accessibleRole={LinkAccessibleRole.Button}
+            accessibilityAttributes={showOverflowInPopover ? { hasPopup: 'dialog' } : { expanded: !collapsed }}
             onClick={handleClick}
-            ref={linkRef}
             id={`${uniqueId}-link`}
           >
             {collapsed ? i18nBundle.getText(SHOW_MORE) : i18nBundle.getText(SHOW_LESS)}
