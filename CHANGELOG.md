@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.2...v1.29.3) (2024-06-28)
+
+### Bug Fixes
+
+- **AnalyticalTable - `useRowDisableSelection`:** remove `title` from select-all cell ([#5955](https://github.com/SAP/ui5-webcomponents-react/issues/5955)) ([97ef653](https://github.com/SAP/ui5-webcomponents-react/commit/97ef6535454b4ee9c3fd6e107eb995c4f2e81ccd)), closes [#5953](https://github.com/SAP/ui5-webcomponents-react/issues/5953)
+- **AnalyticalTable:** improve focus border alignment ([#5944](https://github.com/SAP/ui5-webcomponents-react/issues/5944)) ([8d12266](https://github.com/SAP/ui5-webcomponents-react/commit/8d1226637669b89a8e4116c234359a0213c9428d)), closes [#5898](https://github.com/SAP/ui5-webcomponents-react/issues/5898)
+- **Form:** use correct container query if width is float ([#5954](https://github.com/SAP/ui5-webcomponents-react/issues/5954)) ([34829f4](https://github.com/SAP/ui5-webcomponents-react/commit/34829f430cf8f13a205d1caed4d595b844be017d)), closes [#5952](https://github.com/SAP/ui5-webcomponents-react/issues/5952)
+- use new JSX transform in preparation for React 19 ([#5837](https://github.com/SAP/ui5-webcomponents-react/issues/5837)) ([7dcad64](https://github.com/SAP/ui5-webcomponents-react/commit/7dcad64b3fb627f245a0a9e1a46e8ac01399ae09))
+
 ## [1.29.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.1...v1.29.2) (2024-06-03)
 
 ### Bug Fixes

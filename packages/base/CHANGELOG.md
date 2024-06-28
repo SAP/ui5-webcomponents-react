@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.2...v1.29.3) (2024-06-28)
+
+### Bug Fixes
+
+- use new JSX transform in preparation for React 19 ([#5837](https://github.com/SAP/ui5-webcomponents-react/issues/5837)) ([7dcad64](https://github.com/SAP/ui5-webcomponents-react/commit/7dcad64b3fb627f245a0a9e1a46e8ac01399ae09))
+
 ## [1.29.1](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.0...v1.29.1) (2024-05-29)
 
 ### Bug Fixes
