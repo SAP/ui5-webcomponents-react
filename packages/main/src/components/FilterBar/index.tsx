@@ -52,9 +52,7 @@ const resizeObserverEntryWidth = (entry) => {
  * In this dialog, the consumer has full control over the FilterBar. The filters in this dialog are displayed in one column and organized in groups. Each filter can be marked as visible in the FilterBar by selecting the respective row.
  *
  * __Responsiveness:__
- * The name of the view or title is always visible.
- *
- * The filter area varies:
+ * The name of the view or title is always visible. The filter area varies:
  *
  * * Desktop: Expanded or collapsed by default
  * * Tablet: Collapsed by default
