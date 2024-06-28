@@ -42,7 +42,7 @@ import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
-import type { DialogDomRef, SegmentedButtonPropTypes, TableDomRef, TableRowDomRef } from '../../webComponents/index.js';
+import type { DialogDomRef, SegmentedButtonPropTypes, TableRowDomRef } from '../../webComponents/index.js';
 import {
   Bar,
   Button,
@@ -122,12 +122,7 @@ interface FilterDialogPropTypes {
   handleRestoreFilters: (e, source, filterElements) => void;
   handleDialogSave: (e, newRefs, updatedToggledFilters, orderedChildren) => void;
   handleSearchValueChange: Dispatch<SetStateAction<string>>;
-  handleSelectionChange?: (
-    event: Ui5CustomEvent<
-      TableDomRef,
-      { element: TableRowDomRef; checked: boolean; selectedRows: unknown[]; previouslySelectedRows: unknown[] }
-    >
-  ) => void;
+  handleSelectionChange?: FilterBarPropTypes['onFiltersDialogSelectionChange'];
   handleDialogSearch?: (event: CustomEvent<{ value: string; element: HTMLElement }>) => void;
   handleDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
   portalContainer: Element;
@@ -266,7 +261,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   };
 
   const handleSearch = (e) => {
-    if (handleDialogSearch) {
+    if (typeof handleDialogSearch === 'function') {
       handleDialogSearch(enrichEventWithDetails(e, { value: e.target.value, element: e.target }));
     }
     setSearchString(e.target.value);
@@ -279,7 +274,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const handleClose = (e) => {
     setToggledFilters({});
     stopPropagation(e);
-    if (handleDialogCancel) {
+    if (typeof handleDialogCancel === 'function') {
       handleDialogCancel(e);
     }
     handleDialogClose(e);

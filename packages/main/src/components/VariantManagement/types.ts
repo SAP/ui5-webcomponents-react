@@ -108,7 +108,9 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ Calling `event.preventDefault()` prevents the dialog from closing when clicked.
    */
-  onSaveAs?: (e: Parameters<NonNullable<ButtonPropTypes['onClick']>>[0] & { detail: SelectedVariant }) => void;
+  onSaveAs?: (
+    e: Parameters<NonNullable<ButtonPropTypes['onClick']>>[0] & { detail: SelectedVariant & { nativeDetail: number } }
+  ) => void;
   /**
    * The event is fired when the "Save" button is clicked inside the Manage Views dialog.
    *
@@ -117,6 +119,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   onSaveManageViews?: (
     e: Parameters<NonNullable<ButtonPropTypes['onClick']>>[0] & {
       detail: {
+        nativeDetail: number;
         deletedVariants: VariantItemPropTypes[];
         prevVariants: VariantItemPropTypes[];
         updatedVariants: UpdatedVariant[];
@@ -129,7 +132,9 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    *
    * __Note:__ The save button is only displayed if the `VariantManagement` is in `dirtyState` and the selected variant is not in `readOnly` mode.
    */
-  onSave?: (e: Parameters<NonNullable<ButtonPropTypes['onClick']>>[0] & { detail: SelectedVariant }) => void;
+  onSave?: (
+    e: Parameters<NonNullable<ButtonPropTypes['onClick']>>[0] & { detail: SelectedVariant & { nativeDetail: number } }
+  ) => void;
   /**
    * The event is fired when the "Cancel" button inside the Manage Views dialog is clicked or ESCAPE is pressed.
    */
@@ -137,7 +142,12 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
     e: (
       | Parameters<NonNullable<ButtonPropTypes['onClick']>>[0]
       | Parameters<NonNullable<DialogPropTypes['onBeforeClose']>>[0]
-    ) & { detail: { invalidVariants: Record<string, InputDomRef> } & Partial<DialogBeforeCloseEventDetail> }
+    ) & {
+      detail: {
+        invalidVariants: Record<string, InputDomRef>;
+        nativeDetail?: number;
+      } & Partial<DialogBeforeCloseEventDetail>;
+    }
   ) => void;
   /**
    * The event is fired when the "Cancel" button inside the Save View dialog is clicked or ESCAPE is pressed.
@@ -146,6 +156,9 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
     e: (
       | Parameters<NonNullable<ButtonPropTypes['onClick']>>[0]
       | Parameters<NonNullable<DialogPropTypes['onBeforeClose']>>[0]
-    ) & { detail: SelectedVariant; isInvalid?: boolean & Partial<DialogBeforeCloseEventDetail> }
+    ) & {
+      detail: SelectedVariant & { nativeDetail?: number };
+      isInvalid?: boolean & Partial<DialogBeforeCloseEventDetail>;
+    }
   ) => void;
 }

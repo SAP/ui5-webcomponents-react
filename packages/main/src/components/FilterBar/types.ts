@@ -1,7 +1,37 @@
-import type { CSSProperties, ReactElement, ReactNode } from 'react';
+import type { CSSProperties, MouseEvent, ReactElement, ReactNode } from 'react';
 import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
-import type { DialogDomRef, InputPropTypes, TableDomRef, TableRowDomRef } from '../../webComponents/index.js';
+import type {
+  ButtonPropTypes,
+  DialogPropTypes,
+  InputPropTypes,
+  TableRowDomRef,
+  TableSelectionDomRef
+} from '../../webComponents/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
+
+interface OnToggleFiltersEvent extends Omit<MouseEvent, 'detail'> {
+  detail: { visible: boolean; filters: HTMLElement[]; search: HTMLElement; nativeDetail: number };
+}
+
+interface OnFiltersDialogSaveEvent extends Omit<MouseEvent, 'detail'> {
+  detail: {
+    elements: Record<string, HTMLElement>;
+    toggledElements?: Record<string, HTMLElement>;
+    filters: HTMLElement[];
+    search: HTMLElement;
+    orderIds: string[];
+    nativeDetail: number;
+  };
+}
+
+interface OnGoEvent extends Omit<MouseEvent, 'detail'> {
+  detail: {
+    elements: Record<string, HTMLElement>;
+    filters: HTMLElement[];
+    search: HTMLElement;
+    nativeDetail: number;
+  };
+}
 
 export interface FilterBarPropTypes extends CommonProps {
   /**
@@ -103,19 +133,11 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
-  onToggleFilters?: (event: CustomEvent<{ visible: boolean; filters: HTMLElement[]; search: HTMLElement }>) => void;
+  onToggleFilters?: (event: OnToggleFiltersEvent) => void;
   /**
    * The event is fired when the "Go" button of the filter configuration dialog is clicked.
    */
-  onFiltersDialogSave?: (
-    event: CustomEvent<{
-      elements: Record<string, HTMLElement>;
-      toggledElements?: Record<string, HTMLElement>;
-      filters: HTMLElement[];
-      search: HTMLElement;
-      orderIds: string[];
-    }>
-  ) => void;
+  onFiltersDialogSave?: (event: OnFiltersDialogSaveEvent) => void;
   /**
    * The event is fired when the "Cancel" button of the filter configuration dialog is clicked or when the dialog is closed by pressing the "Escape" key.
    */
@@ -125,11 +147,11 @@ export interface FilterBarPropTypes extends CommonProps {
    *
    * __Note:__ By adding `event.preventDefault()` to the function body, opening the dialog is prevented and you can add your own custom component. Even though this is possible, we highly recommend using the default dialog in order to preserve the intended design.
    */
-  onFiltersDialogOpen?: (event: CustomEvent) => void;
+  onFiltersDialogOpen?: ButtonPropTypes['onClick'];
   /**
    * The event is fired after the filter configuration dialog has been opened.
    */
-  onAfterFiltersDialogOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
+  onAfterFiltersDialogOpen?: DialogPropTypes['onOpen'];
   /**
    * The event is fired when the filter configuration dialog is closed.
    */
@@ -139,7 +161,7 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   onFiltersDialogSelectionChange?: (
     event: Ui5CustomEvent<
-      TableDomRef,
+      TableSelectionDomRef,
       { element: TableRowDomRef; checked: boolean; selectedRows: unknown[]; previouslySelectedRows: unknown[] }
     >
   ) => void;
@@ -154,18 +176,17 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the "Go" button is clicked.
    */
-  onGo?: (
-    event: CustomEvent<{
-      elements: Record<string, HTMLElement>;
-      filters: HTMLElement[];
-      search: HTMLElement;
-    }>
-  ) => void;
+  onGo?: (event: OnGoEvent) => void;
   /**
    * The event is fired when the "Reset" button is clicked.
    */
   onRestore?: (
-    event: CustomEvent<{ source: string; filters: HTMLElement[] | TableRowDomRef[]; search?: HTMLElement }>
+    event: CustomEvent<{
+      source: string;
+      filters: HTMLElement[] | TableRowDomRef[];
+      search?: HTMLElement;
+      nativeDetail?: number;
+    }>
   ) => void;
 }
 
