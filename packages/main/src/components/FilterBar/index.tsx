@@ -163,7 +163,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   };
 
   const handleToggle = (e) => {
-    if (onToggleFilters) {
+    if (typeof onToggleFilters === 'function') {
       onToggleFilters(enrichEventWithDetails(e, { visible: !showFilters, ...getFilterElements() }));
     }
     setShowFilters(!showFilters);
