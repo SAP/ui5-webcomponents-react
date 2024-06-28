@@ -4,7 +4,7 @@
   "npmClient": "yarn",
   "command": {
     "version": {
-      "allowBranch": "main",
+      "allowBranch": "v1.29.x",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
