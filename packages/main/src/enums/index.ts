@@ -13,7 +13,6 @@ export * from './FlexBoxAlignItems.js';
 export * from './FlexBoxDirection.js';
 export * from './FlexBoxJustifyContent.js';
 export * from './FlexBoxWrap.js';
-export * from './GlobalStyleClasses.js';
 export * from './GridPosition.js';
 export * from './IndicationColor.js';
 export * from './LoaderType.js';

@@ -31,8 +31,7 @@ import {
   AnalyticalTableSelectionBehavior,
   AnalyticalTableSelectionMode,
   AnalyticalTableSubComponentsBehavior,
-  AnalyticalTableVisibleRowCountMode,
-  GlobalStyleClasses
+  AnalyticalTableVisibleRowCountMode
 } from '../../enums/index.js';
 import {
   COLLAPSE_NODE,
@@ -655,9 +654,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const tableClasses = clsx(
     classNames.table,
-    GlobalStyleClasses.sapScrollBar,
     withNavigationHighlight && classNames.hasNavigationIndicator,
-    showVerticalEndBorder && classNames.showVerticalEndBorder
+    showVerticalEndBorder && classNames.showVerticalEndBorder,
+    className?.includes('ui5-content-native-scrollbars') && 'ui5-content-native-scrollbars'
   );
 
   const handleOnLoadMore = (e) => {
@@ -746,7 +745,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             data-per-page={internalVisibleRowCount}
             data-component-name="AnalyticalTableContainer"
             ref={tableRef}
-            data-native-scrollbar={props['data-native-scrollbar']}
             className={tableClasses}
           >
             <div className={classNames.tableHeaderBackgroundElement} />
@@ -837,9 +835,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               tableRef={tableRef}
               handleVerticalScrollBarScroll={handleVerticalScrollBarScroll}
               ref={verticalScrollBarRef}
-              data-native-scrollbar={props['data-native-scrollbar']}
               scrollContainerRef={scrollContainerRef}
               parentRef={parentRef}
+              nativeScrollbar={className?.includes('ui5-content-native-scrollbars')}
             />
           )}
         </FlexBox>
