@@ -97,7 +97,7 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines whether the "Hide/Show Filters" button is displayed in the `FilterBar`.
    *
-   * __Note:__ If `hideToolbar` is `true` this prop has no effect.
+   * __Note:__ If `hideToolbar` is `true` or the FilterBar is used on mobile, this prop has no effect.
    */
   hideToggleFiltersButton?: boolean;
   /**
