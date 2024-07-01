@@ -13,6 +13,11 @@
   --_ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_FontSize);
 }
 
+.dynamicPage:has([data-component-name='DynamicPageFooter']) {
+  /* bar height + padding */
+  scroll-padding-block-end: calc(var(--_ui5_bar_base_height) + 1rem);
+}
+
 .headerCollapsed {
   --_ui5wcr_DynamicPage_header_display: none;
   --_ui5wcr_DynamicPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);

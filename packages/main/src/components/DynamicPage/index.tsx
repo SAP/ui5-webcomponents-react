@@ -319,12 +319,6 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     }
   };
 
-  const dynamicPageStyles = { ...style };
-  if (headerCollapsed === true && headerContent) {
-    scrollTimeout.current = performance.now() + 200;
-    dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
-  }
-
   useEffect(() => {
     if (typeof onToggleHeaderContent === 'function' && isToggledRef.current) {
       onToggleHeaderContent(headerCollapsed !== true);
@@ -335,6 +329,12 @@ const DynamicPage = forwardRef<HTMLDivElement, DynamicPagePropTypes>((props, ref
     headerState === HEADER_STATES.VISIBLE_PINNED || headerState === HEADER_STATES.VISIBLE
       ? (headerContentRef?.current?.offsetHeight ?? 0) + topHeaderHeight
       : topHeaderHeight;
+
+  const dynamicPageStyles = { ...style, scrollPaddingBlockStart: `calc(${top}px + 0.5rem)` };
+  if (headerCollapsed === true && headerContent) {
+    scrollTimeout.current = performance.now() + 200;
+    dynamicPageStyles[DynamicPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
+  }
 
   return (
     <div
