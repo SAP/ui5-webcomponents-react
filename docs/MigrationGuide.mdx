@@ -38,6 +38,11 @@ function MyRootComponent() {
 }
 ```
 
+### Changes Exclusive to TypeScript
+
+- Removed `dangerouslySetInnerHTML` from general prop types since it was never intended to be used with our library.
+  If you've previously used this prop and the component didn't change with the update, then it might still work, but you'll probably need to suppress the TypeScript error.
+
 ### Scrollbar Styling
 
 Starting with v2, the `ThemeProvider` will apply the Fiori styles to all scrollbars on the page.
