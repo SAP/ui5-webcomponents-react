@@ -6,7 +6,7 @@ import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRo
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
-import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement } from 'react';
@@ -27,8 +27,7 @@ import {
   WARNING,
   YES
 } from '../../i18n/i18n-defaults.js';
-import type { Ui5CustomEvent } from '../../types/index.js';
-import type { ButtonDomRef, ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
+import type { ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
 import { Button, Dialog, Icon, Text, Title } from '../../webComponents/index.js';
 import { classNames, styleData } from './MessageBox.module.css.js';
 
@@ -89,17 +88,10 @@ export interface MessageBoxPropTypes
    */
   initialFocus?: MessageBoxActionType;
   /**
-   * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key).
-   * `event.detail.action` contains the pressed action button.
-   *
-   * __Note:__ The target of the event differs according to how the user closed the dialog.
+   * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the Escape key).
+   * `action` is the pressed action button, it's `undefined` when closed via ESC.
    */
-  onClose?: (
-    //todo adjust this once enrichEventWithDetails forwards the native `detail`
-    event:
-      | Ui5CustomEvent<DialogDomRef, { action: undefined }>
-      | (MouseEvent & ButtonDomRef & { detail: { action: MessageBoxActionType } })
-  ) => void;
+  onClose?: (action: MessageBoxActionType | undefined, escPressed?: true) => void;
 }
 
 const getIcon = (icon, type, classes) => {
@@ -200,14 +192,13 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       props.onBeforeClose(e);
     }
     if (e.detail.escPressed) {
-      // @ts-expect-error: todo check type
-      onClose(enrichEventWithDetails(e, { action: undefined }));
+      onClose(undefined, e.detail.escPressed);
     }
   };
 
   const handleOnClose: ButtonPropTypes['onClick'] = (e) => {
     const { action } = e.currentTarget.dataset;
-    onClose(enrichEventWithDetails(e, { action }));
+    onClose(action);
   };
 
   const messageBoxId = useIsomorphicId();
