@@ -40,12 +40,16 @@ or in the [theming-base-content](https://github.com/SAP/theming-base-content/tre
 ## Scrollbars
 
 Rendering our `ThemeProvider` will apply the Fiori styles to all scrollbars on the page.
-If you want to opt-out of this behavior, you can add the `.ui5-content-native-scrollbars` class to the container to prevent the scrollbar styling from being applied.
+If you want to opt-out of this behavior, you can add the `.ui5-content-native-scrollbars` class to the respective element to prevent the scrollbar styling from being applied.
+
+<MessageStrip
+  design={MessageStripDesign.Information}
+  hideCloseButton
+  children="Due to the limited configuration options for scrollbars, you must apply this class to each scroll-container element individually."
+/>
 
 ```tsx
-<ObjectPage className="ui5-content-native-scrollbars">
-  <ObjectPageSection>{/*your content */}</ObjectPageSection>
-</ObjectPage>
+<ObjectPage className="ui5-content-native-scrollbars">{children}</ObjectPage>
 ```
 
 ## Style your own components
