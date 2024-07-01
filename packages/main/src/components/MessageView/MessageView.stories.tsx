@@ -119,7 +119,7 @@ export const MessageViewInDialog: Story = {
         </Button>
         <Dialog
           ref={dialogRef}
-          style={{ width: '400px' }}
+          style={{ width: '500px' }}
           className="contentPartNoPadding headerPartNoPadding"
           header={
             <Bar
