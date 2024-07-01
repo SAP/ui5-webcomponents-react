@@ -11,7 +11,7 @@
   "dependencies": {
     "@ui5/webcomponents": "1.24.5",
     "@ui5/webcomponents-fiori": "1.24.5",
-    "@ui5/webcomponents-react": "1.29.2",
+    "@ui5/webcomponents-react": "1.29.3",
     "@types/node": "20.14.8",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
