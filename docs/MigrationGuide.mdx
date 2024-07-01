@@ -38,6 +38,15 @@ function MyRootComponent() {
 }
 ```
 
+### Scrollbar Styling
+
+Starting with v2, the `ThemeProvider` will apply the Fiori styles to all scrollbars on the page.
+If you have previously used our global style classes `sapScrollBar` or `inheritingSapScrollBar`, you can now remove them.
+
+To opt-out of this behavior, you can add the `.ui5-content-native-scrollbars` class to the element to prevent the scrollbar styling from being applied.
+
+More details can be found in our [Styling Knowledge Base](?path=/docs/knowledge-base-styling--docs#scrollbars).
+
 ## Removed hooks
 
 ### `useResponsiveContentPadding`
