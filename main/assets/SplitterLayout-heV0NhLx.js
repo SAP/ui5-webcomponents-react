@@ -1,0 +1,56 @@
+import{j as t}from"./useIsomorphicLayoutEffect-CpdNMtv3.js";import{useMDXComponents as s}from"./index-44b7z5bc.js";import{A as m}from"./ArgTypesWithNote-Cyy0B0ZE.js";import{C as l}from"./ControlsWithNote-HCxgEYwM.js";import{D as d}from"./DocsHeader-SSnF60FI.js";import{F as a}from"./ProjectTemplate-CZprRRUh.js";import{C as h,D as i,L as c,N as x,S as o}from"./SplitterLayout.stories-DoeUfyhc.js";import"./index-DEe9W-hO.js";import"./WrappingType-CW8URInd.js";import{M as j,C as n,d as u,D as S}from"./index-BHtxiptB.js";import{S as C}from"./SubcomponentsSection-BVy4lpQe.js";import"./index-zhtl9b1L.js";import"./iframe-DS9Hdz44.js";import"../sb-preview/runtime.js";import"./UI5Element-GBezswur.js";import"./Boot-CS6Wsrzl.js";import"./EventProvider-CVfkyUHo.js";import"./CustomElementsScopeUtils-CNP7-t5L.js";import"./withWebComponent-ystZv1Rq.js";import"./utils-DQyyc3O0.js";import"./slot-_4yKMUwC.js";import"./event-Dq0fpeHi.js";import"./i18nBundle-BRH4h-L2.js";import"./decline-DXuOh8V-.js";import"./Icons-DkFvE6sF.js";import"./i18n-defaults-CXs2tJOZ.js";import"./information-7KDHAkBn.js";import"./alert-CC8GYBM5.js";import"./class-map-AxOwT-Dx.js";import"./Icon-DVdZH5Ds.js";import"./Device-RcFucVeJ.js";import"./Keys-B00bFMgT.js";import"./parameters-bundle.css-DQGkr9pp.js";import"./Button-BDXX69rx.js";import"./AriaLabelHelper-C5uDZewF.js";import"./MarkedEvents-CAur0wxK.js";import"./willShowContent-CZcfsNXp.js";import"./i18n-defaults-BHzefwI9.js";import"./TagDesign-Dou_yO3g.js";import"./index-D6UH2S5y.js";import"./utils-Clk5PNT8.js";import"./main-gIccE3pA.js";import"./index-B1UNMb2x.js";import"./Tag-L9twqo1B.js";import"./sys-help-2-Bsa8Xj43.js";import"./index-wCf1GA7T.js";import"./Popover-D7imDdfT.js";import"./Integer-DgRYWdxf.js";import"./PopupsCommon.css-D0jBQZ8g.js";import"./FocusableElements-D2BM6TGM.js";import"./isElementHidden-B4HqmI2E.js";import"./isElementClickable-0ACQ4G_A.js";import"./getEffectiveScrollbarStyle-BwuZEAK6.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-DDwTWVjk.js";import"./MediaRange-Bnzt26Xb.js";import"./style-map-BQrULRrw.js";import"./BrowserScrollbar.css-CyDwNnGM.js";import"./index-3sWKqeM9.js";import"./Link-C0ufom_G.js";import"./chunk-HLWAVYOI-RJtoeQsu.js";import"./client-BEgA9EFc.js";import"./copy-BlXZdPH6.js";import"./copy-CpBkh8z4.js";import"./index-CLdwWUG3.js";import"./clsx-B-dksMZM.js";import"./useStylesheet-B1i3sL0q.js";import"./index-D455cKCd.js";import"./i18n-defaults-CnAElpi7.js";import"./I18nContext-qX06pm-v.js";import"./index-BXes3piD.js";import"./ModalsContext-C4nEcU7T.js";import"./useIsomorphicId-CULvwDT0.js";import"./GitHub-Mark-W2HRRVtA.js";import"./TableOfContent-CCI91exc.js";import"./index-jhiEbKzu.js";import"./Label-B7GS_Fjb.js";import"./index-jYDynjsO.js";import"./addCustomCSSWithScoping-Cxt-Ii4P.js";import"./index-jBVs9cOa.js";import"./index-B4gNtF8d.js";import"./index-TK-wWvUt.js";import"./Avatar-BLWqVh2K.js";import"./employee-RhZDCU51.js";import"./useIsRTL-CMHMLISR.js";import"./directionChange-sxDj8oYs.js";import"./useCurrentTheme-BpoCfdtu.js";import"./index-CeD1K_b8.js";import"./debounce-D7W5PopO.js";import"./index-DynRcwY_.js";import"./SegmentedButton-CuyURPJT.js";import"./ItemNavigation-D-dZSClp.js";import"./_baseForOwn-DVWQo5xw.js";import"./mapValues-DXlf5GIm.js";import"./_baseUniq-BqAhPu7p.js";import"./index-Ba91SQPT.js";import"./index-DrFu-skq.js";function p(r){const e={code:"code",h2:"h2",h3:"h3",pre:"pre",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...s(),...r.components};return t.jsxs(t.Fragment,{children:[t.jsx(j,{of:h}),`
+`,t.jsx(d,{subComponents:["SplitterElement"]}),`
+`,t.jsx(e.h2,{id:"example",children:"Example"}),`
+`,t.jsx(n,{of:i}),`
+`,t.jsx(e.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(l,{of:i}),`
+`,t.jsx(e.h3,{id:"splitterlayoutoptions",children:"SplitterLayoutOptions"}),`
+`,t.jsxs(e.table,{children:[t.jsx(e.thead,{children:t.jsxs(e.tr,{children:[t.jsx(e.th,{children:"Property"}),t.jsx(e.th,{children:"Type"}),t.jsx(e.th,{children:"Description"})]})}),t.jsxs(e.tbody,{children:[t.jsxs(e.tr,{children:[t.jsx(e.td,{children:t.jsx(e.code,{children:"resetOnSizeChange"})}),t.jsx(e.td,{children:t.jsx(e.code,{children:"boolean"})}),t.jsxs(e.td,{children:["Defines whether the ",t.jsx(e.code,{children:"SplitterLayout"})," should be reset when its size changes depending on the orientation."]})]}),t.jsxs(e.tr,{children:[t.jsx(e.td,{children:t.jsx(e.code,{children:"resetOnChildrenChange"})}),t.jsx(e.td,{children:t.jsx(e.code,{children:"boolean"})}),t.jsxs(e.td,{children:["Defines whether the ",t.jsx(e.code,{children:"SplitterLayout"})," should be reset when its ",t.jsx(e.code,{children:"children"})," change."]})]}),t.jsxs(e.tr,{children:[t.jsx(e.td,{children:t.jsx(e.code,{children:"resetOnCustomDepsChange"})}),t.jsx(e.td,{children:t.jsx(e.code,{children:"React.DependencyList"})}),t.jsxs(e.td,{children:["Defines a list of dependencies that trigger a reset of the ",t.jsx(e.code,{children:"SplitterLayout"})," when they are changed."]})]})]})]}),`
+`,t.jsx(e.h2,{id:"splitterlayout-with-non-resizable-areas--areas-with-min-width",children:"SplitterLayout with non-resizable areas & areas with min-width"}),`
+`,t.jsx(n,{of:c,sourceState:"none"}),`
+`,t.jsxs("details",{children:[t.jsx("summary",{children:"Show Code"}),t.jsx(e.pre,{children:t.jsx(e.code,{className:"language-tsx",children:`function SplitterElementContent({ text, background = 'transparent' }) {
+  return (
+    <FlexBox style={{ height: '100%', width: '100%', background }} alignItems="Center" justifyContent="Center">
+      <Text>{text}</Text>
+    </FlexBox>
+  );
+}
+
+function SplitterLayoutComponent(props) {
+  return (
+    <SplitterLayout {...props}>
+      <SplitterElement size="10%">
+        <SplitterElementContent text="Content 1 - (size: 10%)" background="cadetblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 2" background="skyblue" />
+      </SplitterElement>
+      <SplitterElement minSize={200}>
+        <SplitterElementContent text="Content 3 (minSize: 200)" background="lightblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 4" background="paleturquoise" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 5" background="lightskyblue" />
+      </SplitterElement>
+      <SplitterElement resizable={false} size="150px">
+        <SplitterElementContent text="Content 6 (not resizable - size: 150px)" background="powderblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 7" background="aliceblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 8" background="lightsteelblue" />
+      </SplitterElement>
+    </SplitterLayout>
+  );
+}
+`})})]}),`
+`,t.jsx(e.h2,{id:"nested-splitterlayouts",children:"Nested SplitterLayouts"}),`
+`,t.jsx(n,{of:x}),`
+`,t.jsx(u,{children:C}),`
+`,t.jsx(e.h2,{id:"splitterelement",children:"SplitterElement"}),`
+`,t.jsx(S,{of:o}),`
+`,t.jsx(m,{of:o}),`
+`,t.jsx(a,{})]})}function me(r={}){const{wrapper:e}={...s(),...r.components};return e?t.jsx(e,{...r,children:t.jsx(p,{...r})}):p(r)}export{me as default};
