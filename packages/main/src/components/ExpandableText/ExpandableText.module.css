@@ -1,12 +1,4 @@
-.text {
-  display: inline;
-}
-
-.renderWhitespace {
-  white-space: pre-wrap;
-}
-
-.ellipsis {
+.expandableText {
   font-family: var(--sapFontFamily);
   font-size: var(--sapFontSize);
   font-weight: normal;
@@ -16,6 +8,17 @@
   white-space: pre-line;
   word-wrap: break-word;
   max-width: 100%;
+}
+
+.text {
+  display: inline;
+}
+
+.renderWhitespace {
+  white-space: pre-wrap;
+}
+
+.ellipsis {
   word-spacing: 0.125rem;
 }
 

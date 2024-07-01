@@ -68,7 +68,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
 
   return (
     <>
-      <span className={clsx(className)} {...rest} ref={ref}>
+      <span className={clsx(classNames.expandableText, className)} {...rest} ref={ref}>
         <Text className={clsx(classNames.text, renderWhitespace && classNames.renderWhitespace)}>
           {strippedChildren}
         </Text>
