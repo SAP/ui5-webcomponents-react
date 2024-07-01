@@ -1,39 +1,20 @@
 'use client';
 
-import I18nBundle, { getI18nBundle } from '@ui5/webcomponents-base/dist/i18nBundle.js';
-import { useRef } from 'react';
-import { useI18nContext } from '../context/I18nContext.js';
-import { useIsomorphicLayoutEffect } from '../hooks/index.js';
+import I18nBundle from '@ui5/webcomponents-base/dist/i18nBundle.js';
+import { useEffect } from 'react';
+import { useSyncExternalStore } from 'use-sync-external-store/shim/index.js';
+import { I18nStore } from '../stores/I18nStore.js';
 
 const defaultBundle = new I18nBundle('defaultBundle');
 
 export const useI18nBundle = (bundleName: string): I18nBundle => {
-  const i18nContext = useI18nContext();
+  const bundles = useSyncExternalStore(I18nStore.subscribe, I18nStore.getSnapshot, I18nStore.getServerSnapshot);
 
-  if (!i18nContext) {
-    throw new Error(`'useI18nBundle()' may be used only in the context of a '<ThemeProvider>' component.`);
-  }
-  const i18nRef = useRef(i18nContext);
-
-  useIsomorphicLayoutEffect(() => {
-    const { i18nBundles, setI18nBundle } = i18nRef.current;
-    let isMounted = true;
-    if (!i18nBundles.hasOwnProperty(bundleName)) {
-      getI18nBundle(bundleName).then(
-        (internalBundle) => {
-          if (isMounted) {
-            setI18nBundle(bundleName, internalBundle);
-          }
-        },
-        () => {
-          // noop
-        }
-      );
-    }
-    return () => {
-      isMounted = false;
-    };
+  useEffect(() => {
+    I18nStore.loadBundle(bundleName);
   }, [bundleName]);
 
-  return i18nContext.i18nBundles[bundleName] ?? defaultBundle;
+  console.log(`-> bundles[${bundleName}]`, bundles[bundleName]);
+
+  return bundles[bundleName] ?? defaultBundle;
 };

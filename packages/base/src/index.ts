@@ -8,5 +8,6 @@ import { ThemingParameters } from './styling/ThemingParameters.js';
 export * from './styling/CssSizeVariables.js';
 export * from './utils/index.js';
 export * from './hooks/index.js';
+export * from './stores/I18nStore.js';
 
 export { getI18nContext, I18nContext, StyleStore, ThemingParameters, Device, hooks, spacing };
