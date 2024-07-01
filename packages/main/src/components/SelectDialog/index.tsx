@@ -110,11 +110,13 @@ export interface SelectDialogPropTypes
   /**
    * This event will be fired when the reset button has been clicked in the search field or when the dialog is closed.
    */
-  onSearchReset?: (event: Ui5CustomEvent<IconDomRef, { prevValue: string }>) => void;
+  onSearchReset?: (event: Ui5CustomEvent<{ prevValue: string; nativeDetail?: number }>) => void;
   /**
    * This event will be fired when the clear button has been clicked.
    */
-  onClear?: (event: Ui5CustomEvent<ButtonDomRef, { prevSelectedItems: ListItemStandardDomRef[] }>) => void;
+  onClear?: (
+    event: Ui5CustomEvent<ButtonDomRef, { prevSelectedItems: ListItemStandardDomRef[]; nativeDetail: number }>
+  ) => void;
   /**
    * This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode.
    */

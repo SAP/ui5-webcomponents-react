@@ -38,6 +38,20 @@ function MyRootComponent() {
 }
 ```
 
+### Changes Exclusive to TypeScript
+
+- Removed `dangerouslySetInnerHTML` from general prop types since it was never intended to be used with our library.
+  If you've previously used this prop and the component didn't change with the update, then it might still work, but you'll probably need to suppress the TypeScript error.
+
+### Scrollbar Styling
+
+Starting with v2, the `ThemeProvider` will apply the Fiori styles to all scrollbars on the page.
+If you have previously used our global style classes `sapScrollBar` or `inheritingSapScrollBar`, you can now remove them.
+
+To opt-out of this behavior, you can add the `.ui5-content-native-scrollbars` class to the element to prevent the scrollbar styling from being applied.
+
+More details can be found in our [Styling Knowledge Base](?path=/docs/knowledge-base-styling--docs#scrollbars).
+
 ## Removed hooks
 
 ### `useResponsiveContentPadding`

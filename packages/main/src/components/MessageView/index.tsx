@@ -10,7 +10,7 @@ import { useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-rea
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import { Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
-import { FlexBoxDirection, GlobalStyleClasses } from '../../enums/index.js';
+import { FlexBoxDirection } from '../../enums/index.js';
 import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';
@@ -145,12 +145,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
     setListFilter(e.detail.selectedItems.at(0).dataset.key as never);
   };
 
-  const outerClasses = clsx(
-    classNames.container,
-    GlobalStyleClasses.sapScrollBar,
-    className,
-    selectedMessage && classNames.showDetails
-  );
+  const outerClasses = clsx(classNames.container, className, selectedMessage && classNames.showDetails);
 
   return (
     <div ref={componentRef} {...rest} className={outerClasses}>

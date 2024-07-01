@@ -37,26 +37,20 @@ You can change CSS Variables on any level - in the head, or on every single elem
 A full list of all supported CSS Variables can be found [here](https://github.com/SAP/ui5-webcomponents-react/blob/main/packages/base/src/styling/ThemingParameters.ts)
 or in the [theming-base-content](https://github.com/SAP/theming-base-content/tree/master/content/Base/baseLib) repo.
 
-## Reuse global style classes
+## Scrollbars
 
-The `ThemeProvider` component is offering global css classes that can be reused in your applications code to help you to achieve a Fiori look-and-feel.
-All globally available style classes are tracked in the `GlobalStyleClasses` enum which can be imported from `import { GlobalStyleClasses } from "@ui5/webcomponents-react";`.
-
-| CSS Class                | Description                                                                                                                      |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| `sapScrollBar`           | If added to an container that supports scrolling, the scrollbar will be styled according to Fiori guidelines.                    |
-| `inheritingSapScrollBar` | If added to a container, the scollbars of the container and of all of its children will be styled according to Fiori guidelines. |
+Rendering our `ThemeProvider` will apply the Fiori styles to all scrollbars on the page.
+If you want to opt-out of this behavior, you can add the `.ui5-content-native-scrollbars` class to the respective element to prevent the scrollbar styling from being applied.
 
 <MessageStrip
+  design={MessageStripDesign.Information}
   hideCloseButton
-  style={{ marginBlockEnd: '1rem' }}
-  children="With our next major release (v2.0.0), both style classes will be removed as then the SAP scrollbar will be used per
-  default for the whole application."
+  children="Due to the limited configuration options for scrollbars, you must apply this class to each scroll-container element individually."
 />
 
-### Use default browser scrollbar
-
-Some components like the `ObjectPage`, `DynamicPage` and `AnalyticalTable` use the CSS class `sapScrollBar` by default. To prevent components from using the custom scrollbar, you can pass `data-native-scrollbar` as prop.
+```tsx
+<ObjectPage className="ui5-content-native-scrollbars">{children}</ObjectPage>
+```
 
 ## Style your own components
 
