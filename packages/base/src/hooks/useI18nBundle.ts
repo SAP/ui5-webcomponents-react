@@ -14,7 +14,5 @@ export const useI18nBundle = (bundleName: string): I18nBundle => {
     I18nStore.loadBundle(bundleName);
   }, [bundleName]);
 
-  console.log(`-> bundles[${bundleName}]`, bundles[bundleName]);
-
   return bundles[bundleName] ?? defaultBundle;
 };
