@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import FCLLayout from '@ui5/webcomponents-fiori/dist/types/FCLLayout.js';
-import { spacing } from '@ui5/webcomponents-react-base';
 import { useState } from 'react';
 import { FlexBox } from '../../components/FlexBox';
 import { Toolbar } from '../../components/Toolbar';
@@ -400,7 +399,7 @@ export const WithDifferentColumns: Story = {
                 />
               }
             >
-              <div style={spacing.sapUiContentPadding}>
+              <div style={{ padding: '1rem' }}>
                 <Text>
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                   et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

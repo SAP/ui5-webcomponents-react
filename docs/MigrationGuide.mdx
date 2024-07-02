@@ -52,6 +52,92 @@ To opt-out of this behavior, you can add the `.ui5-content-native-scrollbars` cl
 
 More details can be found in our [Styling Knowledge Base](?path=/docs/knowledge-base-styling--docs#scrollbars).
 
+## Spacing
+
+The `spacing` variables of our base package (`@ui5/webcomponents-react-base`) have been removed.
+Most variables can be replaced by applying the corresponding CSS classes from the `@sap-ui/common-css` package to your element, for all others you can find the respective CSS properties and values below.
+
+**Full Documentation of Common CSS classes:**
+
+- [Margins](https://sap.github.io/fundamental-styles/?path=/docs/common-css-margins--docs)
+- [Paddings](https://sap.github.io/fundamental-styles/?path=/docs/common-css-padding--docs)
+
+### Common CSS substitute classes
+
+<details>
+    <summary>Show</summary>
+
+| Removed Variable                    | Equivalent Common CSS Class   |
+| ----------------------------------- | ----------------------------- |
+| **All Around Margins**              |                               |
+| `sapUiTinyMargin`                   | `.sap-margin-tiny`            |
+| `sapUiSmallMargin`                  | `.sap-margin-small`           |
+| `sapUiMediumMargin`                 | `.sap-margin-medium`          |
+| `sapUiLargeMargin`                  | `.sap-margin-large`           |
+| `sapUiTinyMargin`                   | `.sap-margin-tiny`            |
+| `sapUiTinyMargin`                   | `.sap-margin-tiny`            |
+| **Single Side Margins**             |                               |
+| `sapUiTinyMarginTop`                | `.sap-margin-top-tiny`        |
+| `sapUiSmallMarginTop`               | `.sap-margin-top-small`       |
+| `sapUiMediumMarginTop`              | `.sap-margin-top-medium`      |
+| `sapUiLargeMarginTop`               | `.sap-margin-top-large`       |
+| `sapUiTinyMarginBottom`             | `.sap-margin-bottom-tiny`     |
+| `sapUiSmallMarginBottom`            | `.sap-margin-bottom-small`    |
+| `sapUiMediumMarginBottom`           | `.sap-margin-bottom-medium`   |
+| `sapUiLargeMarginBottom`            | `.sap-margin-bottom-large`    |
+| `sapUiTinyMarginBegin`              | `.sap-margin-begin-tiny`      |
+| `sapUiSmallMarginBegin`             | `.sap-margin-begin-small`     |
+| `sapUiMediumMarginBegin`            | `.sap-margin-begin-medium`    |
+| `sapUiLargeMarginBegin`             | `.sap-margin-begin-large`     |
+| `sapUiTinyMarginEnd`                | `.sap-margin-end-tiny`        |
+| `sapUiSmallMarginEnd`               | `.sap-margin-end-small`       |
+| `sapUiMediumMarginEnd`              | `.sap-margin-end-medium`      |
+| `sapUiLargeMarginEnd`               | `.sap-margin-end-large`       |
+| **Horizontal Margins**              |                               |
+| `sapUiTinyMarginBeginEnd`           | `.sap-margin-x-tiny`          |
+| `sapUiSmallMarginBeginEnd`          | `.sap-margin-x-small`         |
+| `sapUiMediumMarginBeginEnd`         | `.sap-margin-x-medium`        |
+| `sapUiLargeMarginBeginEnd`          | `.sap-margin-x-large`         |
+| **Vertical Margins**                |                               |
+| `sapUiTinyMarginTopBottom`          | `.sap-margin-y-tiny`          |
+| `sapUiSmallMarginBeginEnd`          | `.sap-margin-y-small`         |
+| `sapUiMediumMarginTopBottom`        | `.sap-margin-y-medium`        |
+| `sapUiLargeMarginTopBottom`         | `.sap-margin-y-large`         |
+| **Responsive Margins**              |                               |
+| `sapUiResponsiveMargin`             | `.sap-margin-responsive`      |
+| **Negative Margins**                |                               |
+| `sapUiTinyNegativeMarginBeginEnd`   | `.sap-margin-tiny-negative`   |
+| `sapUiSmallNegativeMarginBeginEnd`  | `.sap-margin-small-negative`  |
+| `sapUiMediumNegativeMarginBeginEnd` | `.sap-margin-medium-negative` |
+| `sapUiLargeNegativeMarginBeginEnd`  | `.sap-margin-large-negative`  |
+| **All Around Padding**              |                               |
+| `sapUiContentPadding`               | `.sap-padding`                |
+| **Responsive Paddings**             |                               |
+| `sapUiResponsiveContentPadding`     | `.sap-padding-responsive`     |
+| **Horizontal Paddings**             |                               |
+| `sapUiTinyPaddingBeginEnd`          | `.sap-padding-x-tiny`         |
+| `sapUiSmallPaddingBeginEnd`         | `.sap-padding-x-small`        |
+| `sapUiMediumPaddingBeginEnd`        | `.sap-padding-x-medium`       |
+| `sapUiLargePaddingBeginEnd`         | `.sap-padding-x-large`        |
+| **No Padding**                      |                               |
+| `sapUiNoContentPadding`             | `.sap-padding-none`           |
+
+</details>
+
+### Removed variables without substitute
+
+<details>
+    <summary>Show</summary>
+
+| Removed Variable      | Property and Value             |
+| --------------------- | ------------------------------ |
+| `sapUiNoMargin`       | `margin: 0 !important;`        |
+| `sapUiNoMarginTop`    | `margin-top: 0 !important;`    |
+| `sapUiNoMarginBottom` | `margin-bottom: 0 !important;` |
+| `sapUiForceWidthAuto` | `width: auto !important;`      |
+
+</details>
+
 ## Removed hooks
 
 ### `useResponsiveContentPadding`
