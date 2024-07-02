@@ -1,12 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "baseUrl": ".",
-    "outDir": "./dist",
-    "declarationDir": "./dist",
-    "rootDir": "./src",
     "strict": true,
     "noImplicitAny": false,
     "strictNullChecks": false,
@@ -14,12 +8,11 @@
   },
   "references": [
     {
-      "path": "../base"
+      "path": "../base/tsconfig.json"
     },
     {
-      "path": "../main"
+      "path": "../main/tsconfig.json"
     }
   ],
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.cy.ts", "**/*.cy.tsx", "**/*.stories.tsx"]
+  "include": ["src/**/*"]
 }

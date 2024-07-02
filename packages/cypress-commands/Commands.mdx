@@ -1,7 +1,6 @@
-import { Footer, TableOfContent } from '@sb/components';
+import { CommandsAndQueries, Footer, TableOfContent } from '@sb/components';
 import { Meta } from '@storybook/addon-docs';
 import API from './api.json';
-import { CommandsAndQueries } from './CommandsAndQueries.tsx';
 
 <Meta title="Commands" />
 
@@ -12,7 +11,7 @@ import { CommandsAndQueries } from './CommandsAndQueries.tsx';
 Here you can find all available Commands of the `@ui5/webcomponents-cypress-commands` package.
 
 <CommandsAndQueries
-  api={API.children.find((file) => file.name === 'src/commands')?.children?.[0]?.children?.[0]?.children ?? []}
+  api={API.children.find((file) => file.name === 'commands')?.children?.[0]?.children?.[0]?.children ?? []}
 />
 
 <Footer />

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import React from 'react';
 import { Invention, TimingFigure } from './examples/Annotations.js';
 import { dummyDataSet, dummyDiscreteDataSet, inventionDataset, schedulingEDFData } from './examples/Dataset.js';
 import { TimelineChart } from './TimelineChart.js';

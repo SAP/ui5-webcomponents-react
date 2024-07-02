@@ -1,6 +1,6 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/index.js';
 import { MenuItem } from '../MenuItem/index.js';
 import { Menu } from './index.js';

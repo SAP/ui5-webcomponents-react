@@ -1,4 +1,4 @@
-import ValueState from '@ui5/webcomponents-base/dist/types/ValueState';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { expect } from 'chai';
 import { Fragment, useRef } from 'react';
 import {
@@ -15,8 +15,8 @@ import {
   Title
 } from '../index.js';
 import { useGetHeaderHeight } from '../webComponents/DynamicPage/helpers.js';
-import { flattenFragments } from './utils';
-import type { DynamicPageDomRef } from '@/packages/main/src';
+import type { DynamicPageDomRef } from '../webComponents/DynamicPage/index.js';
+import { flattenFragments } from './utils.js';
 import './DynamicPageStickyHeader.css';
 
 describe('utils', function () {
