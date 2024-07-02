@@ -14,8 +14,7 @@
       "@ui5/webcomponents-cypress-commands": ["./packages/cypress-commands/src/index.ts"],
       "@ui5/webcomponents-react": ["./packages/main/src/index.ts"],
       "@ui5/webcomponents-react-base": ["./packages/base/src/index.ts"],
-      "@ui5/webcomponents-react-charts": ["./packages/charts/src/index.ts"],
-      "@ui5/webcomponents-react/*": ["./packages/main/src/*"]
+      "@ui5/webcomponents-react-charts": ["./packages/charts/src/index.ts"]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": false,
