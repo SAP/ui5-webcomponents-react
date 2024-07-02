@@ -9,7 +9,7 @@
   },
   "references": [
     {
-      "path": "../base"
+      "path": "../base/tsconfig.json"
     }
   ],
   "include": ["src"]

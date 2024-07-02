@@ -2,22 +2,22 @@
   "extends": "./tsconfig.base.json",
   "references": [
     {
-      "path": "./packages/base"
+      "path": "./packages/base/tsconfig.json"
     },
     {
-      "path": "./packages/main"
+      "path": "./packages/main/tsconfig.json"
     },
     {
-      "path": "./packages/charts"
+      "path": "./packages/charts/tsconfig.json"
     },
     {
-      "path": "./packages/cypress-commands"
+      "path": "./packages/cypress-commands/tsconfig.json"
     },
     {
-      "path": "./packages/cli"
+      "path": "./packages/cli/tsconfig.json"
     },
     {
-      "path": "./packages/compat"
+      "path": "./packages/compat/tsconfig.json"
     },
     {
       "path": "./tsconfig.spec.json"
