@@ -23,5 +23,5 @@
       "path": "./tsconfig.spec.json"
     }
   ],
-  "files": ["vite.config.ts", ".storybook", "docs", "packages/cypress-commands/CommandsAndQueries.tsx"]
+  "files": ["vite.config.ts", ".storybook", "docs"]
 }
