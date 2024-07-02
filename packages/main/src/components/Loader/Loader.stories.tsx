@@ -6,8 +6,8 @@ import { FlexBoxDirection, LoaderType } from '../../enums/index.js';
 import { Card } from '../../webComponents/Card/index.js';
 import { CardHeader } from '../../webComponents/CardHeader/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { FlexBox } from '../FlexBox/index.js';
-import { Text } from '../Text/index.js';
 import { Loader } from './index.js';
 
 const meta = {

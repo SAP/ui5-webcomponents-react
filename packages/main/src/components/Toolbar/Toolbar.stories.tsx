@@ -15,10 +15,10 @@ import { MenuItem } from '../../webComponents/MenuItem/index.js';
 import { Select } from '../../webComponents/Select/index.js';
 import { Slider } from '../../webComponents/Slider/index.js';
 import { Switch } from '../../webComponents/Switch/index.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { ToggleButton } from '../../webComponents/ToggleButton/index.js';
 import { OverflowToolbarButton } from '../OverflowToolbarButton';
 import { OverflowToolbarToggleButton } from '../OverflowToolbarToggleButton';
-import { Text } from '../Text/index.js';
 import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import { Toolbar } from './index.js';
@@ -233,7 +233,7 @@ export const CustomOverflowButton: Story = {
           }
         >
           <Input />
-          <Text wrapping={false}>Overflow Content</Text>
+          <Text maxLines={1}>Overflow Content</Text>
         </Toolbar>
         <Toolbar
           {...args}
@@ -249,8 +249,8 @@ export const CustomOverflowButton: Story = {
             />
           }
         >
-          <Text wrapping={false}>Opening the popover is prevented</Text>
-          <Text wrapping={false}>Overflow Content</Text>
+          <Text maxLines={1}>Opening the popover is prevented</Text>
+          <Text maxLines={1}>Overflow Content</Text>
         </Toolbar>
       </>
     );

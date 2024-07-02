@@ -1,9 +1,21 @@
 .expandableText {
-    composes: text from '../Text/Text.module.css';
+  font-family: var(--sapFontFamily);
+  font-size: var(--sapFontSize);
+  font-weight: normal;
+  color: var(--sapTextColor);
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: pre-line;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .text {
   display: inline;
+}
+
+.renderWhitespace {
+  white-space: pre-wrap;
 }
 
 .ellipsis {
@@ -17,4 +29,3 @@
 .popover::part(content) {
   padding: 1rem;
 }
-

@@ -1,6 +1,6 @@
 import type { StoryObj, Meta } from '@storybook/react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { Text } from '../Text/index.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { ResponsiveGridLayout } from './index.js';
 
 const meta = {

@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ToolbarButton.js';
-import type { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
+import type { ToolbarButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/ToolbarButton.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
 import type { CSSProperties } from 'react';
@@ -24,7 +24,7 @@ interface ToolbarButtonAttributes {
    * Accepts a lowercase string value.
    * @default {}
    */
-  accessibilityAttributes?: ButtonAccessibilityAttributes;
+  accessibilityAttributes?: ToolbarButtonAccessibilityAttributes;
 
   /**
    * Defines the accessible ARIA name of the component.

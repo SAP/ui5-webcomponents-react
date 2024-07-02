@@ -48,8 +48,8 @@ import {
   SELECT_PRESS_SPACE,
   UNSELECT_PRESS_SPACE
 } from '../../i18n/i18n-defaults.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { FlexBox } from '../FlexBox/index.js';
-import { Text } from '../Text/index.js';
 import { classNames, styleData } from './AnalyticalTable.module.css.js';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer.js';
 import { DefaultColumn } from './defaults/Column/index.js';
