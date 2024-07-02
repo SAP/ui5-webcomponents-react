@@ -1,10 +1,16 @@
 'use client';
 
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
 import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/dist/theming/ThemeLoaded.js';
-import { StyleStore, useIsomorphicId, useIsomorphicLayoutEffect, useStylesheet } from '@ui5/webcomponents-react-base';
+import {
+  I18nStore,
+  StyleStore,
+  useIsomorphicId,
+  useIsomorphicLayoutEffect,
+  useStylesheet
+} from '@ui5/webcomponents-react-base';
 import type { FC, ReactNode } from 'react';
-import { I18nProvider } from '../../internal/I18nProvider.js';
 import { ModalsProvider } from '../Modals/ModalsProvider.js';
 import { styleData } from './ThemeProvider.css.js';
 
@@ -55,10 +61,17 @@ const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes
     StyleStore.setStaticCssInjected(staticCssInjected);
   }, [staticCssInjected]);
 
+  useIsomorphicLayoutEffect(() => {
+    attachLanguageChange(I18nStore.handleLanguageChange);
+    return () => {
+      detachLanguageChange(I18nStore.handleLanguageChange);
+    };
+  }, []);
+
   return (
     <>
       <ThemeProviderStyles />
-      <I18nProvider>{withoutModalsProvider ? children : <ModalsProvider>{children}</ModalsProvider>}</I18nProvider>
+      {withoutModalsProvider ? children : <ModalsProvider>{children}</ModalsProvider>}
     </>
   );
 };

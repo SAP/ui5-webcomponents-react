@@ -1,7 +1,6 @@
 import { registerI18nLoader } from '@ui5/webcomponents-base/dist/asset-registries/i18n.js';
 import { setFetchDefaultLanguage, setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
-import { mount } from 'cypress/react18';
 import { useEffect, useRef } from 'react';
 
 const TestComponent = () => {
@@ -22,6 +21,9 @@ describe('I18nProvider', () => {
     registerI18nLoader('myApp', 'en', async () => {
       return Promise.resolve({ TEST1: 'test text resource' });
     });
+    registerI18nLoader('myApp', 'de', async () => {
+      return Promise.resolve({ TEST1: 'Donaudampfschifffahrtsgesellschaft' });
+    });
     setFetchDefaultLanguage(true);
   });
   after(() => {
@@ -29,29 +31,6 @@ describe('I18nProvider', () => {
   });
   afterEach(() => {
     setLanguage('en');
-  });
-
-  // ToDo: investigate how this test can be activated again
-  it.skip('should throw error when context is not present', (done) => {
-    cy.on('uncaught:exception', (err) => {
-      if (err.message.includes(`'useI18nBundle()' may be used only in the context of a '<ThemeProvider>' component.`)) {
-        done();
-      }
-    });
-    mount(<TestComponent />).then(() => {
-      done(new Error('Should throw error'));
-    });
-  });
-
-  it('should NOT throw error when context is present', (done) => {
-    cy.on('uncaught:exception', (err) => {
-      if (err.message.includes(`'useI18nBundle()' may be used only in the context of a '<ThemeProvider>' component.`)) {
-        done(new Error('Should not throw error'));
-      }
-    });
-    cy.mount(<TestComponent />).then(() => {
-      done();
-    });
   });
 
   it('translate components', () => {
@@ -62,11 +41,24 @@ describe('I18nProvider', () => {
         <TestComponent />
         <TestComponent2 />
         <TestComponent3 />
+        <button
+          onClick={() => {
+            setLanguage('de');
+          }}
+        >
+          Switch to German
+        </button>
       </>
     );
     cy.findByText('1: test text resource');
     cy.findByText('2: test text resource');
     cy.findByText('3: test text resource');
+
+    cy.findByText('Switch to German').click();
+
+    cy.findByText('1: Donaudampfschifffahrtsgesellschaft');
+    cy.findByText('2: Donaudampfschifffahrtsgesellschaft');
+    cy.findByText('3: Donaudampfschifffahrtsgesellschaft');
   });
 
   it('Should update after changing the language', () => {
