@@ -18,7 +18,10 @@
     },
     {
       "path": "./packages/compat"
+    },
+    {
+      "path": "./tsconfig.spec.json"
     }
   ],
-  "files": []
+  "files": ["vite.config.ts", ".storybook", "docs", "packages/cypress-commands/CommandsAndQueries.tsx"]
 }
