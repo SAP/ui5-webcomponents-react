@@ -14,12 +14,7 @@ interface ModalState {
 
 declare global {
   interface Window {
-    CSSVarsPonyfill: {
-      cssVars: (options: any) => void;
-    };
-
     ['@ui5/webcomponents-react']: {
-      I18nContext?: Context<any>;
       ModalsContext?: Context<any>;
       setModal?: Dispatch<UpdateModalStateAction>;
     };
