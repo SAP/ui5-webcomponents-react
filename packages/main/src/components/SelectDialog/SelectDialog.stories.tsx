@@ -2,11 +2,11 @@ import Laptop1 from '@sb/demoImages/Laptop1.jpg';
 import Laptop2 from '@sb/demoImages/Laptop2.jpg';
 import Pc1 from '@sb/demoImages/PC1.jpg';
 import Pc2 from '@sb/demoImages/PC2.jpg';
-import { isChromatic } from '@sb/utils';
+import { isChromatic } from '@sb/utils.js';
 import type { Meta, StoryObj } from '@storybook/react';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import { useEffect, useRef, useState } from 'react';
-import { Button, FlexBox, Label, ListItemStandard, Text } from '../..';
+import { Button, FlexBox, Label, ListItemStandard, Text } from '../../index.js';
 import { SelectDialog } from './index.js';
 
 const meta = {
