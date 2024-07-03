@@ -729,7 +729,7 @@ describe('ObjectPage', () => {
     };
     cy.mount(<TestComp />);
 
-    cy.findByText('Lorem ipsum dolor sit amet').should('have.css', 'text-transform', 'uppercase');
+    cy.findByText('Lorem ipsum dolor sit amet').should('have.css', 'text-transform', 'none');
     cy.findByText('Etiam pellentesque').should('have.css', 'text-transform', 'none');
 
     cy.findByText('toggle uppercase').click();
