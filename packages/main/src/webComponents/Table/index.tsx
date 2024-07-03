@@ -10,13 +10,15 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface TableAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Identifies the element (or elements) that labels the component.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines if the loading indicator should be shown.
@@ -27,9 +29,16 @@ interface TableAttributes {
   loading?: boolean;
 
   /**
-   * Defines the text to be displayed when there are no rows in the component.
+   * Defines the delay in milliseconds, after which the loading indicator will show up for this component.
+   * @default 1000
    */
-  noDataText?: string;
+  loadingDelay?: number;
+
+  /**
+   * Defines the text to be displayed when there are no rows in the component.
+   * @default undefined
+   */
+  noDataText?: string | undefined;
 
   /**
    * Defines the mode of the <code>ui5-table</code> overflow behavior.
@@ -165,7 +174,7 @@ interface TablePropTypes
  */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
   'ui5-table',
-  ['accessibleName', 'accessibleNameRef', 'noDataText', 'overflowMode'],
+  ['accessibleName', 'accessibleNameRef', 'loadingDelay', 'noDataText', 'overflowMode'],
   ['loading'],
   ['features', 'headerRow', 'nodata'],
   ['row-click'],

@@ -434,10 +434,10 @@
       "comment": "noDataText is now noData slot",
       "changedProps": {
         "busy": "loading",
+        "busyDelay": "loadingDelay",
         "columns": "headerRow"
       },
       "removedProps": [
-        "busyDelay",
         "growing",
         "growingButtonSubtext",
         "growingButtonText",
