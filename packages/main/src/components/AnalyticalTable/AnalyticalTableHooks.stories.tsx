@@ -4,7 +4,7 @@ import dataManualSelect from '@sb/mockData/FriendsManualSelect25.json';
 import dataTree from '@sb/mockData/FriendsTree.json';
 import type { Meta, StoryObj } from '@storybook/react';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
-import React, { useReducer, useState } from 'react';
+import { useReducer, useState } from 'react';
 import { AnalyticalTableSelectionMode, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
 import { Button, CheckBox, Input, Label, ToggleButton, Text } from '../../webComponents';
 import { FlexBox } from '../FlexBox';

@@ -3,22 +3,22 @@ import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import FCLLayout from '@ui5/webcomponents-fiori/dist/types/FCLLayout.js';
 import { useState } from 'react';
-import { FlexBox } from '../../components/FlexBox';
-import { Toolbar } from '../../components/Toolbar';
-import { ToolbarSpacer } from '../../components/ToolbarSpacer';
-import { FlexBoxDirection, ToolbarDesign } from '../../enums';
-import { Text } from '../../webComponents/Text';
-import { Avatar } from '../Avatar';
-import { Button } from '../Button';
-import { Card } from '../Card';
-import { Label } from '../Label';
-import { List } from '../List';
-import { ListItemStandard } from '../ListItemStandard';
-import { RatingIndicator } from '../RatingIndicator';
-import { ShellBar } from '../ShellBar';
-import { Title } from '../Title';
-import { FlexibleColumnLayout } from './index';
-import { CardHeader } from '@ui5/webcomponents-react';
+import { FlexBox } from '../../components/FlexBox/index.js';
+import { Toolbar } from '../../components/Toolbar/index.js';
+import { ToolbarSpacer } from '../../components/ToolbarSpacer/index.js';
+import { FlexBoxDirection, ToolbarDesign } from '../../enums/index.js';
+import { Text } from '../../webComponents/Text/index.js';
+import { Avatar } from '../Avatar/index.js';
+import { Button } from '../Button/index.js';
+import { Card } from '../Card/index.js';
+import { CardHeader } from '../CardHeader/index.js';
+import { Label } from '../Label/index.js';
+import { List } from '../List/index.js';
+import { ListItemStandard } from '../ListItemStandard/index.js';
+import { RatingIndicator } from '../RatingIndicator/index.js';
+import { ShellBar } from '../ShellBar/index.js';
+import { Title } from '../Title/index.js';
+import { FlexibleColumnLayout } from './index.js';
 
 const meta = {
   title: 'Layouts & Floorplans / FlexibleColumnLayout',

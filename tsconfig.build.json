@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.base.json",
+  "references": [
+    {
+      "path": "./packages/base/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/main/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/charts/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/cypress-commands/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/cli/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/compat/tsconfig.build.json"
+    }
+  ],
+  "files": []
+}
