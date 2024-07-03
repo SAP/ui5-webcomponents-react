@@ -11,10 +11,31 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface UploadCollectionItemAttributes {
   /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
+   *
+   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
+   *
+   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   *
+   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents-fiori**.
+   * @default {}
+   */
+  accessibilityAttributes?: ListItemAccessibilityAttributes;
+
+  /**
    * Disables the delete button.
    * @default false
    */
   disableDeleteButton?: boolean;
+
+  /**
+   * Holds an instance of `File` associated with this item.
+   * @default null
+   */
+  file?: File | null | undefined;
 
   /**
    * The name of the file.
@@ -108,26 +129,7 @@ interface UploadCollectionItemAttributes {
   uploadState?: UploadState | keyof typeof UploadState;
 }
 
-interface UploadCollectionItemDomRef extends Required<UploadCollectionItemAttributes>, Ui5DomRef {
-  /**
-   * Defines the additional accessibility attributes that will be applied to the component.
-   * The following fields are supported:
-   *
-   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
-   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
-   *
-   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
-   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-   *
-   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents-fiori**.
-   */
-  accessibilityAttributes: ListItemAccessibilityAttributes;
-
-  /**
-   * Holds an instance of `File` associated with this item.
-   */
-  file: File | null | undefined;
-}
+interface UploadCollectionItemDomRef extends Required<UploadCollectionItemAttributes>, Ui5DomRef {}
 
 interface UploadCollectionItemPropTypes
   extends UploadCollectionItemAttributes,
@@ -220,7 +222,7 @@ interface UploadCollectionItemPropTypes
  */
 const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, UploadCollectionItemDomRef>(
   'ui5-upload-collection-item',
-  ['fileName', 'highlight', 'progress', 'tooltip', 'type', 'uploadState'],
+  ['accessibilityAttributes', 'file', 'fileName', 'highlight', 'progress', 'tooltip', 'type', 'uploadState'],
   [
     'disableDeleteButton',
     'fileNameClickable',

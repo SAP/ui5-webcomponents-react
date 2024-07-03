@@ -15,7 +15,7 @@ import type {
 } from 'react';
 import { useRef, useState } from 'react';
 import { Icon } from '../../../webComponents/Icon/index.js';
-import { Text } from '../../Text/index.js';
+import { Text } from '../../../webComponents/Text/index.js';
 import type { ColumnType } from '../types/ColumnType.js';
 import type { DivWithCustomScrollProp } from '../types/index.js';
 import { classNames, styleData } from './ColumnHeader.module.css.js';
@@ -33,7 +33,7 @@ export interface ColumnHeaderProps {
   dragOver: boolean;
   isDraggable: boolean;
   headerTooltip: string;
-  virtualColumn: VirtualItem;
+  virtualColumn: VirtualItem<HTMLDivElement>;
   columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
   isRtl: boolean;
   children: ReactNode | ReactNode[];
@@ -200,7 +200,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
         <div className={classNames.header} data-h-align={column.hAlign}>
           <Text
             title={tooltip}
-            wrapping={false}
+            maxLines={1}
             style={textStyle}
             className={clsx(
               classNames.text,

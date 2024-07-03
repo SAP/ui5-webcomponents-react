@@ -11,6 +11,21 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 
 interface LinkAttributes {
   /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
+   *
+   * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
+   * Accepts the following string values: `true` or `false`.
+   *
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
+   *
+   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: LinkAccessibilityAttributes;
+
+  /**
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
@@ -49,11 +64,39 @@ interface LinkAttributes {
   disabled?: boolean;
 
   /**
+   * Defines the icon, displayed as graphical element within the component after the link's text.
+   * The SAP-icons font provides numerous options.
+   *
+   * **Note:** Usage of icon-only link is not supported, the link must always have a text.
+   *
+   * **Note:** We recommend using аn icon in the beginning or the end only, and with text.
+   *
+   * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  endIcon?: string;
+
+  /**
    * Defines the component href.
    *
    * **Note:** Standard hyperlink behavior is supported.
    */
   href?: string;
+
+  /**
+   * Defines the icon, displayed as graphical element within the component before the link's text.
+   * The SAP-icons font provides numerous options.
+   *
+   * **Note:** Usage of icon-only link is not supported, the link must always have a text.
+   *
+   * **Note:** We recommend using аn icon in the beginning or the end only, and with text.
+   *
+   * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  icon?: string;
 
   /**
    * Defines the component target.
@@ -86,21 +129,7 @@ interface LinkAttributes {
   wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
-interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {
-  /**
-   * Defines the additional accessibility attributes that will be applied to the component.
-   * The following fields are supported:
-   *
-   * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
-   * Accepts the following string values: `true` or `false`.
-   *
-   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
-   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
-   *
-   * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
-   */
-  accessibilityAttributes: LinkAccessibilityAttributes;
-}
+interface LinkDomRef extends Required<LinkAttributes>, Ui5DomRef {}
 
 interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttributes | 'children' | 'onClick'> {
   /**
@@ -149,7 +178,19 @@ interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttr
  */
 const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
-  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'design', 'href', 'target', 'tooltip', 'wrappingType'],
+  [
+    'accessibilityAttributes',
+    'accessibleName',
+    'accessibleNameRef',
+    'accessibleRole',
+    'design',
+    'endIcon',
+    'href',
+    'icon',
+    'target',
+    'tooltip',
+    'wrappingType'
+  ],
   ['disabled'],
   [],
   ['click'],

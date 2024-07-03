@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
@@ -15,9 +15,8 @@ import {
   FlexBoxJustifyContent,
   TextAlign
 } from '../../enums/index.js';
-import { Button, MultiComboBox, MultiComboBoxItem, Option, Select, Tag } from '../../webComponents/index.js';
+import { Button, MultiComboBox, MultiComboBoxItem, Option, Select, Tag, Text } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox';
-import { Text } from '../Text';
 import { AnalyticalTable } from './index.js';
 
 const meta = {

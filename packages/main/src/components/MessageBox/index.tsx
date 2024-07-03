@@ -6,11 +6,11 @@ import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRo
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
-import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement } from 'react';
-import { MessageBoxActions, MessageBoxTypes } from '../../enums/index.js';
+import { MessageBoxAction, MessageBoxType } from '../../enums/index.js';
 import {
   ABORT,
   CANCEL,
@@ -27,14 +27,12 @@ import {
   WARNING,
   YES
 } from '../../i18n/i18n-defaults.js';
-import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
-import { Button, Dialog, Icon, Title } from '../../webComponents/index.js';
-import { Text } from '../Text/index.js';
+import { Button, Dialog, Icon, Text, Title } from '../../webComponents/index.js';
 import { classNames, styleData } from './MessageBox.module.css.js';
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-type MessageBoxAction = MessageBoxActions | keyof typeof MessageBoxActions | string;
+type MessageBoxActionType = MessageBoxAction | keyof typeof MessageBoxAction | string;
 
 export interface MessageBoxPropTypes
   extends Omit<
@@ -66,7 +64,7 @@ export interface MessageBoxPropTypes
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `MessageBoxAction`s (text) or the `Button` component in order to preserve the intended.
    */
-  actions?: (MessageBoxAction | ReactNode)[];
+  actions?: (MessageBoxActionType | ReactNode)[];
   /**
    * Specifies which action of the created dialog will be emphasized.
    *
@@ -74,7 +72,7 @@ export interface MessageBoxPropTypes
    *
    * @default `"OK"`
    */
-  emphasizedAction?: MessageBoxAction;
+  emphasizedAction?: MessageBoxActionType;
   /**
    * A custom icon. If not present, it will be derived from the `MessageBox` type.
    */
@@ -84,36 +82,37 @@ export interface MessageBoxPropTypes
    *
    * @default `"Confirm"`
    */
-  type?: MessageBoxTypes | keyof typeof MessageBoxTypes;
+  type?: MessageBoxType | keyof typeof MessageBoxType;
   /**
    * Defines the ID of the HTML Element or the `MessageBoxAction`, which will get the initial focus.
    */
-  initialFocus?: MessageBoxAction;
+  initialFocus?: MessageBoxActionType;
   /**
-   * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the `ESC` key). `event.detail.action` contains the pressed action button.
+   * Callback to be executed when the `MessageBox` is closed (either by pressing on one of the `actions` or by pressing the Escape key).
+   * `action` is the pressed action button, it's `undefined` when closed via ESC.
    */
-  onClose?: (event: CustomEvent<{ action: MessageBoxAction }>) => void;
+  onClose?: (action: MessageBoxActionType | undefined, escPressed?: true) => void;
 }
 
 const getIcon = (icon, type, classes) => {
   if (isValidElement(icon)) return icon;
   switch (type) {
-    case MessageBoxTypes.Confirm:
+    case MessageBoxType.Confirm:
       return <Icon name={iconSysHelp} mode={IconMode.Decorative} className={classes.confirmIcon} />;
     default:
       return null;
   }
 };
 
-const convertMessageBoxTypeToState = (type: MessageBoxTypes) => {
+const convertMessageBoxTypeToState = (type: MessageBoxType) => {
   switch (type) {
-    case MessageBoxTypes.Information:
+    case MessageBoxType.Information:
       return ValueState.Information;
-    case MessageBoxTypes.Success:
+    case MessageBoxType.Success:
       return ValueState.Positive;
-    case MessageBoxTypes.Warning:
+    case MessageBoxType.Warning:
       return ValueState.Critical;
-    case MessageBoxTypes.Error:
+    case MessageBoxType.Error:
       return ValueState.Negative;
     default:
       return ValueState.None;
@@ -124,13 +123,13 @@ const getActions = (actions, type): (string | ReactElement<ButtonPropTypes>)[] =
   if (actions && actions.length > 0) {
     return actions;
   }
-  if (type === MessageBoxTypes.Confirm) {
-    return [MessageBoxActions.OK, MessageBoxActions.Cancel];
+  if (type === MessageBoxType.Confirm) {
+    return [MessageBoxAction.OK, MessageBoxAction.Cancel];
   }
-  if (type === MessageBoxTypes.Error) {
-    return [MessageBoxActions.Close];
+  if (type === MessageBoxType.Error) {
+    return [MessageBoxAction.Close];
   }
-  return [MessageBoxActions.OK];
+  return [MessageBoxAction.OK];
 };
 
 /**
@@ -140,13 +139,13 @@ const getActions = (actions, type): (string | ReactElement<ButtonPropTypes>)[] =
 const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) => {
   const {
     open,
-    type = MessageBoxTypes.Confirm,
+    type = MessageBoxType.Confirm,
     children,
     className,
     titleText,
     icon,
     actions = [],
-    emphasizedAction = MessageBoxActions.OK,
+    emphasizedAction = MessageBoxAction.OK,
     onClose,
     initialFocus,
     ...rest
@@ -157,15 +156,15 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const actionTranslations = {
-    [MessageBoxActions.Abort]: i18nBundle.getText(ABORT),
-    [MessageBoxActions.Cancel]: i18nBundle.getText(CANCEL),
-    [MessageBoxActions.Close]: i18nBundle.getText(CLOSE),
-    [MessageBoxActions.Delete]: i18nBundle.getText(DELETE),
-    [MessageBoxActions.Ignore]: i18nBundle.getText(IGNORE),
-    [MessageBoxActions.No]: i18nBundle.getText(NO),
-    [MessageBoxActions.OK]: i18nBundle.getText(OK),
-    [MessageBoxActions.Retry]: i18nBundle.getText(RETRY),
-    [MessageBoxActions.Yes]: i18nBundle.getText(YES)
+    [MessageBoxAction.Abort]: i18nBundle.getText(ABORT),
+    [MessageBoxAction.Cancel]: i18nBundle.getText(CANCEL),
+    [MessageBoxAction.Close]: i18nBundle.getText(CLOSE),
+    [MessageBoxAction.Delete]: i18nBundle.getText(DELETE),
+    [MessageBoxAction.Ignore]: i18nBundle.getText(IGNORE),
+    [MessageBoxAction.No]: i18nBundle.getText(NO),
+    [MessageBoxAction.OK]: i18nBundle.getText(OK),
+    [MessageBoxAction.Retry]: i18nBundle.getText(RETRY),
+    [MessageBoxAction.Yes]: i18nBundle.getText(YES)
   };
 
   const titleToRender = () => {
@@ -173,25 +172,33 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       return titleText;
     }
     switch (type) {
-      case MessageBoxTypes.Confirm:
+      case MessageBoxType.Confirm:
         return i18nBundle.getText(CONFIRMATION);
-      case MessageBoxTypes.Error:
+      case MessageBoxType.Error:
         return i18nBundle.getText(ERROR);
-      case MessageBoxTypes.Information:
+      case MessageBoxType.Information:
         return i18nBundle.getText(INFORMATION);
-      case MessageBoxTypes.Success:
+      case MessageBoxType.Success:
         return i18nBundle.getText(SUCCESS);
-      case MessageBoxTypes.Warning:
+      case MessageBoxType.Warning:
         return i18nBundle.getText(WARNING);
       default:
         return null;
     }
   };
 
-  const handleOnClose = (e) => {
-    const { action } = e.target.dataset;
-    stopPropagation(e);
-    onClose(enrichEventWithDetails(e, { action }));
+  const handleDialogClose: DialogPropTypes['onBeforeClose'] = (e) => {
+    if (typeof props.onBeforeClose === 'function') {
+      props.onBeforeClose(e);
+    }
+    if (e.detail.escPressed) {
+      onClose(undefined, e.detail.escPressed);
+    }
+  };
+
+  const handleOnClose: ButtonPropTypes['onClick'] = (e) => {
+    const { action } = e.currentTarget.dataset;
+    onClose(action);
   };
 
   const messageBoxId = useIsomorphicId();
@@ -206,7 +213,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
   };
 
   // @ts-expect-error: footer, headerText and onClose are already omitted via prop types
-  const { footer: _0, headerText: _1, onClose: _2, ...restWithoutOmitted } = rest;
+  const { footer: _0, headerText: _1, onClose: _2, onBeforeClose: _3, ...restWithoutOmitted } = rest;
 
   const iconToRender = getIcon(icon, type, classNames);
   const needsCustomHeader = !props.header && !!iconToRender;
@@ -216,12 +223,12 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
       open={open}
       ref={ref}
       className={clsx(classNames.messageBox, className)}
-      onClose={open ? handleOnClose : stopPropagation}
+      onBeforeClose={handleDialogClose}
       accessibleNameRef={needsCustomHeader ? `${messageBoxId}-title ${messageBoxId}-text` : undefined}
       accessibleRole={PopupAccessibleRole.AlertDialog}
       {...restWithoutOmitted}
       headerText={titleToRender()}
-      state={convertMessageBoxTypeToState(type as MessageBoxTypes)}
+      state={convertMessageBoxTypeToState(type as MessageBoxType)}
       initialFocus={getInitialFocus()}
       data-type={type}
     >

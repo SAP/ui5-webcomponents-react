@@ -1,6 +1,6 @@
 'use client';
 
-import '@ui5/webcomponents/dist/CustomListItem.js';
+import '@ui5/webcomponents/dist/ListItemCustom.js';
 import type { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
 import type Highlight from '@ui5/webcomponents/dist/types/Highlight.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
@@ -8,7 +8,22 @@ import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
-interface CustomListItemAttributes {
+interface ListItemCustomAttributes {
+  /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
+   *
+   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
+   *
+   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   *
+   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: ListItemAccessibilityAttributes;
+
   /**
    * Defines the text alternative of the component.
    *
@@ -66,25 +81,11 @@ interface CustomListItemAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 }
 
-interface CustomListItemDomRef extends Required<CustomListItemAttributes>, Ui5DomRef {
-  /**
-   * Defines the additional accessibility attributes that will be applied to the component.
-   * The following fields are supported:
-   *
-   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
-   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
-   *
-   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
-   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-   *
-   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
-   */
-  accessibilityAttributes: ListItemAccessibilityAttributes;
-}
+interface ListItemCustomDomRef extends Required<ListItemCustomAttributes>, Ui5DomRef {}
 
-interface CustomListItemPropTypes
-  extends CustomListItemAttributes,
-    Omit<CommonProps, keyof CustomListItemAttributes | 'children' | 'deleteButton' | 'onDetailClick'> {
+interface ListItemCustomPropTypes
+  extends ListItemCustomAttributes,
+    Omit<CommonProps, keyof ListItemCustomAttributes | 'children' | 'deleteButton' | 'onDetailClick'> {
   /**
    * Defines the content of the component.
    */
@@ -108,27 +109,27 @@ interface CustomListItemPropTypes
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
-  onDetailClick?: (event: Ui5CustomEvent<CustomListItemDomRef>) => void;
+  onDetailClick?: (event: Ui5CustomEvent<ListItemCustomDomRef>) => void;
 }
 
 /**
  * A component to be used as custom list item within the `List`
- * the same way as the standard `StandardListItem`.
+ * the same way as the standard `ListItemStandard`.
  *
  * The component accepts arbitrary HTML content to allow full customization.
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
-const CustomListItem = withWebComponent<CustomListItemPropTypes, CustomListItemDomRef>(
+const ListItemCustom = withWebComponent<ListItemCustomPropTypes, ListItemCustomDomRef>(
   'ui5-li-custom',
-  ['accessibleName', 'highlight', 'tooltip', 'type'],
+  ['accessibilityAttributes', 'accessibleName', 'highlight', 'tooltip', 'type'],
   ['movable', 'navigated', 'selected'],
   ['deleteButton'],
   ['detail-click'],
-  () => import('@ui5/webcomponents/dist/CustomListItem.js')
+  () => import('@ui5/webcomponents/dist/ListItemCustom.js')
 );
 
-CustomListItem.displayName = 'CustomListItem';
+ListItemCustom.displayName = 'ListItemCustom';
 
-export { CustomListItem };
-export type { CustomListItemDomRef, CustomListItemPropTypes };
+export { ListItemCustom };
+export type { ListItemCustomDomRef, ListItemCustomPropTypes };

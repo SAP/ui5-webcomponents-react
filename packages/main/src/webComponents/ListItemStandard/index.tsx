@@ -1,6 +1,6 @@
 'use client';
 
-import '@ui5/webcomponents/dist/StandardListItem.js';
+import '@ui5/webcomponents/dist/ListItemStandard.js';
 import type { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
 import type Highlight from '@ui5/webcomponents/dist/types/Highlight.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
@@ -9,7 +9,22 @@ import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
-interface StandardListItemAttributes {
+interface ListItemStandardAttributes {
+  /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
+   *
+   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
+   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
+   *
+   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
+   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   *
+   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: ListItemAccessibilityAttributes;
+
   /**
    * Defines the text alternative of the component.
    * Note: If not provided a default text alternative will be set, if present.
@@ -108,27 +123,13 @@ interface StandardListItemAttributes {
   type?: ListItemType | keyof typeof ListItemType;
 }
 
-interface StandardListItemDomRef extends Required<StandardListItemAttributes>, Ui5DomRef {
-  /**
-   * Defines the additional accessibility attributes that will be applied to the component.
-   * The following fields are supported:
-   *
-   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
-   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
-   *
-   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
-   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
-   *
-   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
-   */
-  accessibilityAttributes: ListItemAccessibilityAttributes;
-}
+interface ListItemStandardDomRef extends Required<ListItemStandardAttributes>, Ui5DomRef {}
 
-interface StandardListItemPropTypes
-  extends StandardListItemAttributes,
+interface ListItemStandardPropTypes
+  extends ListItemStandardAttributes,
     Omit<
       CommonProps,
-      keyof StandardListItemAttributes | 'children' | 'deleteButton' | 'imageContent' | 'onDetailClick'
+      keyof ListItemStandardAttributes | 'children' | 'deleteButton' | 'imageContent' | 'onDetailClick'
     > {
   /**
    * Defines the text of the component.
@@ -158,7 +159,7 @@ interface StandardListItemPropTypes
    * design guidelines, please use the `Avatar` with it's default size - S.
    *
    * **Note:** If bigger `Avatar` needs to be used, then the size of the
-   * `StandardListItem` should be customized in order to fit.
+   * `ListItemStandard` should be customized in order to fit.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="imageContent"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -172,11 +173,11 @@ interface StandardListItemPropTypes
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
-  onDetailClick?: (event: Ui5CustomEvent<StandardListItemDomRef>) => void;
+  onDetailClick?: (event: Ui5CustomEvent<ListItemStandardDomRef>) => void;
 }
 
 /**
- * The `StandardListItem` represents the simplest type of item for a `List`.
+ * The `ListItemStandard` represents the simplest type of item for a `List`.
  *
  * This is a list item,
  * providing the most common use cases such as `text`,
@@ -184,9 +185,10 @@ interface StandardListItemPropTypes
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
-const StandardListItem = withWebComponent<StandardListItemPropTypes, StandardListItemDomRef>(
+const ListItemStandard = withWebComponent<ListItemStandardPropTypes, ListItemStandardDomRef>(
   'ui5-li',
   [
+    'accessibilityAttributes',
     'accessibleName',
     'additionalText',
     'additionalTextState',
@@ -200,10 +202,10 @@ const StandardListItem = withWebComponent<StandardListItemPropTypes, StandardLis
   ['iconEnd', 'movable', 'navigated', 'selected'],
   ['deleteButton', 'imageContent'],
   ['detail-click'],
-  () => import('@ui5/webcomponents/dist/StandardListItem.js')
+  () => import('@ui5/webcomponents/dist/ListItemStandard.js')
 );
 
-StandardListItem.displayName = 'StandardListItem';
+ListItemStandard.displayName = 'ListItemStandard';
 
-export { StandardListItem };
-export type { StandardListItemDomRef, StandardListItemPropTypes };
+export { ListItemStandard };
+export type { ListItemStandardDomRef, ListItemStandardPropTypes };

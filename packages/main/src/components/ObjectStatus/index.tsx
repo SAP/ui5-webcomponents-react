@@ -100,11 +100,9 @@ export interface ObjectStatusPropTypes extends CommonProps {
    *
    * __Note:__ This prop has no effect if `active` is not set to `true`.
    *
-   * __Note:__ In order to support legacy code, `HTMLDivElement` is still supported even though the `click` event is never fired if the component isn't `active`.
-   *
    * @since 0.16.6
    */
-  onClick?: MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementText, i18nTexts) => {
@@ -223,6 +221,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
       ref={ref}
       className={objStatusClasses}
       style={style}
+      // @ts-expect-error: onClick is only registered if the event target is a HTMLButtonElement
       onClick={active ? onClick : undefined}
       tabIndex={active ? 0 : undefined}
       data-icon-only={!children}

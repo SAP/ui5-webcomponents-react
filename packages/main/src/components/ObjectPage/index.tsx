@@ -13,7 +13,7 @@ import {
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { GlobalStyleClasses, ObjectPageMode } from '../../enums/index.js';
+import { ObjectPageMode } from '../../enums/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
@@ -549,7 +549,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const objectPageClasses = clsx(
     classNames.objectPage,
-    GlobalStyleClasses.sapScrollBar,
     className,
     mode === ObjectPageMode.IconTabBar && classNames.iconTabBarMode
   );

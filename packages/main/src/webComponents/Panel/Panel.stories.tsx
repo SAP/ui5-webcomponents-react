@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import PanelAccessibleRole from '@ui5/webcomponents/dist/types/PanelAccessibleRole.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
-import { Text } from '../../components/Text/index.js';
 import { Toolbar } from '../../components/Toolbar/index.js';
 import { ToolbarSpacer } from '../../components/ToolbarSpacer/index.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { Button } from '../Button/index.js';
 import { List } from '../List/index.js';
-import { StandardListItem } from '../StandardListItem/index.js';
+import { ListItemStandard } from '../ListItemStandard/index.js';
 import { Title } from '../Title/index.js';
 import { Panel } from './index.js';
 
@@ -62,13 +61,13 @@ export const WithCustomHeader: Story = {
     return (
       <Panel {...args}>
         <List>
-          <StandardListItem description="Language: Spanish">Argentina</StandardListItem>
-          <StandardListItem description="Language: Portuguese">Portugal</StandardListItem>
-          <StandardListItem description="Language: Spanish">Mexico</StandardListItem>
-          <StandardListItem description="Language: Portuguese">Brazil</StandardListItem>
-          <StandardListItem description="Language: German">Germany</StandardListItem>
-          <StandardListItem description="Language: English">Australia</StandardListItem>
-          <StandardListItem description="Language: German">Austria</StandardListItem>
+          <ListItemStandard description="Language: Spanish">Argentina</ListItemStandard>
+          <ListItemStandard description="Language: Portuguese">Portugal</ListItemStandard>
+          <ListItemStandard description="Language: Spanish">Mexico</ListItemStandard>
+          <ListItemStandard description="Language: Portuguese">Brazil</ListItemStandard>
+          <ListItemStandard description="Language: German">Germany</ListItemStandard>
+          <ListItemStandard description="Language: English">Australia</ListItemStandard>
+          <ListItemStandard description="Language: German">Austria</ListItemStandard>
         </List>
       </Panel>
     );

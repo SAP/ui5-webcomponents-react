@@ -1,34 +1,20 @@
 'use client';
 
-import '@ui5/webcomponents-compat/dist/TableRow.js';
-import type TableRowType from '@ui5/webcomponents-compat/dist/types/TableRowType.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableRowAttributes {
   /**
-   * Indicates if the table row is navigated.
-   *
-   * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
+   * Defines the interactive state of the row.
    * @default false
    */
-  navigated?: boolean;
+  interactive?: boolean;
 
   /**
-   * Defines the row's selected state.
-   * @default false
+   * Unique identifier of the component.
    */
-  selected?: boolean;
-
-  /**
-   * Defines the visual indication and behavior of the component.
-   *
-   * **Note:** When set to `Active`, the item will provide visual response upon press,
-   * while with type `Inactive`-will not.
-   * @default "Inactive"
-   */
-  type?: TableRowType | keyof typeof TableRowType;
+  key?: string;
 }
 
 interface TableRowDomRef extends Required<TableRowAttributes>, Ui5DomRef {}
@@ -45,15 +31,19 @@ interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof 
 /**
  * The `TableRow` component represents a row in the `Table`.
  *
+ *
+ *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
+ *
+ * @since [2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0) of __@ui5/webcomponents__.
  */
 const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   'ui5-table-row',
-  ['type'],
-  ['navigated', 'selected'],
+  ['key'],
+  ['interactive'],
   [],
   [],
-  () => import('@ui5/webcomponents-compat/dist/TableRow.js')
+  () => Promise.resolve()
 );
 
 TableRow.displayName = 'TableRow';

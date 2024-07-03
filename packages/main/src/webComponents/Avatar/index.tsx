@@ -11,6 +11,18 @@ import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.j
 
 interface AvatarAttributes {
   /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following field is supported:
+   *
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: AvatarAccessibilityAttributes;
+
+  /**
    * Defines the text alternative of the component.
    * If not provided a default text alternative will be set, if present.
    */
@@ -95,18 +107,7 @@ interface AvatarAttributes {
   size?: AvatarSize | keyof typeof AvatarSize;
 }
 
-interface AvatarDomRef extends Required<AvatarAttributes>, Ui5DomRef {
-  /**
-   * Defines the additional accessibility attributes that will be applied to the component.
-   * The following field is supported:
-   *
-   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
-   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
-   *
-   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
-   */
-  accessibilityAttributes: AvatarAccessibilityAttributes;
-}
+interface AvatarDomRef extends Required<AvatarAttributes>, Ui5DomRef {}
 
 interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof AvatarAttributes | 'badge' | 'children'> {
   /**
@@ -152,7 +153,7 @@ interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof Avat
  */
 const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
   'ui5-avatar',
-  ['accessibleName', 'colorScheme', 'fallbackIcon', 'icon', 'initials', 'shape', 'size'],
+  ['accessibilityAttributes', 'accessibleName', 'colorScheme', 'fallbackIcon', 'icon', 'initials', 'shape', 'size'],
   ['disabled', 'interactive'],
   ['badge'],
   [],

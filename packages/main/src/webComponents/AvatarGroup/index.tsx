@@ -14,14 +14,6 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface AvatarGroupAttributes {
   /**
-   * Defines the mode of the `AvatarGroup`.
-   * @default "Group"
-   */
-  type?: AvatarGroupType | keyof typeof AvatarGroupType;
-}
-
-interface AvatarGroupDomRef extends Required<AvatarGroupAttributes>, Ui5DomRef {
-  /**
    * Defines the additional accessibility attributes that will be applied to the component.
    * The following field is supported:
    *
@@ -29,9 +21,18 @@ interface AvatarGroupDomRef extends Required<AvatarGroupAttributes>, Ui5DomRef {
    * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default {}
    */
-  accessibilityAttributes: AvatarGroupAccessibilityAttributes;
+  accessibilityAttributes?: AvatarGroupAccessibilityAttributes;
 
+  /**
+   * Defines the mode of the `AvatarGroup`.
+   * @default "Group"
+   */
+  type?: AvatarGroupType | keyof typeof AvatarGroupType;
+}
+
+interface AvatarGroupDomRef extends Required<AvatarGroupAttributes>, Ui5DomRef {
   /**
    * Returns an array containing the `AvatarColorScheme` values that correspond to the avatars in the component.
    */
@@ -140,7 +141,7 @@ interface AvatarGroupPropTypes
  */
 const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(
   'ui5-avatar-group',
-  ['type'],
+  ['accessibilityAttributes', 'type'],
   [],
   ['overflowButton'],
   ['click', 'overflow'],

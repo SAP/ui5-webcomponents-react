@@ -1,7 +1,10 @@
 import { DocsContext } from '@storybook/blocks';
 import { useContext, useMemo } from 'react';
+// @ts-expect-error: storybook can handle this
 import cemFiori from './custom-element-manifests/fiori.json';
+// @ts-expect-error: storybook can handle this
 import cemMain from './custom-element-manifests/main.json';
+
 export const isChromatic = process.env.STORYBOOK_ENV === 'chromatic';
 
 export const MAPPED_THEMES = [
@@ -23,19 +26,22 @@ export const excludePropsForAbstract = ['className', 'style'];
 
 export function useGetCem() {
   const docsContext = useContext(DocsContext);
+  // @ts-expect-error: private but existing
   const { attachedCSFFiles } = docsContext;
 
-  const storyTagsSet: Set<string> | undefined = attachedCSFFiles?.size
-    ? Array.from(attachedCSFFiles).reduce((acc, cur) => {
-        const tags: string[] | undefined = cur?.meta?.tags;
-        if (tags?.length) {
-          tags.forEach((tag) => {
-            acc.add(tag);
-          });
-        }
-        return acc;
-      }, new Set<string>())
-    : undefined;
+  const storyTagsSet = new Set<string>();
+
+  if (attachedCSFFiles?.size) {
+    Array.from(attachedCSFFiles).forEach((cur) => {
+      // @ts-expect-error: private but existing
+      const tags: string[] | undefined = cur?.meta?.tags;
+      if (tags?.length) {
+        tags.forEach((tag) => {
+          storyTagsSet.add(tag);
+        });
+      }
+    });
+  }
 
   const storyTags = storyTagsSet?.size ? Array.from(storyTagsSet) : [];
   const packageAnnotation = storyTags?.find((tag) => tag.startsWith('package:'));
@@ -46,13 +52,15 @@ export function useGetCem() {
       return cemFiori;
   }
 }
+
 const replaceSubComps = {
-  ListItemBase: ['StandardListItem', 'CustomListItem', 'ListItemGroup'],
+  ListItemBase: ['ListItemStandard', 'ListItemCustom', 'ListItemGroup'],
   InputSuggestionItem: ['SuggestionItem', 'SuggestionGroupItem'],
   NotificationListItemBase: ['NotificationListItem'],
   ToolbarItem: ['ToolbarSeparatorV2', 'ToolbarSpacerV2', 'ToolbarButton', 'ToolbarSelect', 'ToolbarSelectOption'],
   TreeItemBase: ['TreeItem', 'TreeItemCustom'],
-  AvatarGroupItem: ['Avatar']
+  AvatarGroupItem: ['Avatar'],
+  TableFeature: ['TableGrowing', 'TableSelection']
 };
 
 function findSubComponentsRecursively(moduleName: string, cem: any): string[] {
@@ -82,6 +90,7 @@ function findSubComponentsRecursively(moduleName: string, cem: any): string[] {
 
   return Array.from(subComponentsSet);
 }
+
 export function useGetSubComponentsOfModule(moduleName: string) {
   const cem = useGetCem(); // Assuming useGetCem() is defined elsewhere
   return useMemo(() => {

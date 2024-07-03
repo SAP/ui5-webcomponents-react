@@ -2,12 +2,12 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import { useState } from 'react';
 import type { ListPropTypes, SelectDialogPropTypes } from '../..';
-import { Button, SelectDialog, StandardListItem } from '../..';
+import { Button, SelectDialog, ListItemStandard } from '../..';
 
 const listItems = new Array(5).fill('o_O').map((_, index) => (
-  <StandardListItem key={index} data-li={index} description={`description${index}`}>
+  <ListItemStandard key={index} data-li={index} description={`description${index}`}>
     {`Product${index}`}
-  </StandardListItem>
+  </ListItemStandard>
 ));
 
 describe('SelectDialog', () => {

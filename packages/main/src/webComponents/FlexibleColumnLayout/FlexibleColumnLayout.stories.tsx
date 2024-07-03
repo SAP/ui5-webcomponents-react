@@ -2,24 +2,23 @@ import type { Meta, StoryObj } from '@storybook/react';
 import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import FCLLayout from '@ui5/webcomponents-fiori/dist/types/FCLLayout.js';
-import { spacing } from '@ui5/webcomponents-react-base';
 import { useState } from 'react';
-import { FlexBox } from '../../components/FlexBox';
-import { Text } from '../../components/Text';
-import { Toolbar } from '../../components/Toolbar';
-import { ToolbarSpacer } from '../../components/ToolbarSpacer';
-import { FlexBoxDirection, ToolbarDesign } from '../../enums';
-import { Avatar } from '../Avatar';
-import { Button } from '../Button';
-import { Card } from '../Card';
-import { Label } from '../Label';
-import { List } from '../List';
-import { RatingIndicator } from '../RatingIndicator';
-import { ShellBar } from '../ShellBar';
-import { StandardListItem } from '../StandardListItem';
-import { Title } from '../Title';
-import { FlexibleColumnLayout } from './index';
-import { CardHeader } from '@ui5/webcomponents-react';
+import { FlexBox } from '../../components/FlexBox/index.js';
+import { Toolbar } from '../../components/Toolbar/index.js';
+import { ToolbarSpacer } from '../../components/ToolbarSpacer/index.js';
+import { FlexBoxDirection, ToolbarDesign } from '../../enums/index.js';
+import { Text } from '../../webComponents/Text/index.js';
+import { Avatar } from '../Avatar/index.js';
+import { Button } from '../Button/index.js';
+import { Card } from '../Card/index.js';
+import { CardHeader } from '../CardHeader/index.js';
+import { Label } from '../Label/index.js';
+import { List } from '../List/index.js';
+import { ListItemStandard } from '../ListItemStandard/index.js';
+import { RatingIndicator } from '../RatingIndicator/index.js';
+import { ShellBar } from '../ShellBar/index.js';
+import { Title } from '../Title/index.js';
+import { FlexibleColumnLayout } from './index.js';
 
 const meta = {
   title: 'Layouts & Floorplans / FlexibleColumnLayout',
@@ -46,23 +45,23 @@ export const Default: Story = {
         layout={args.layout}
         startColumn={
           <List headerText="Start Column List">
-            <StandardListItem>List Item 1</StandardListItem>
-            <StandardListItem>List Item 2</StandardListItem>
-            <StandardListItem>List Item 3</StandardListItem>
+            <ListItemStandard>List Item 1</ListItemStandard>
+            <ListItemStandard>List Item 2</ListItemStandard>
+            <ListItemStandard>List Item 3</ListItemStandard>
           </List>
         }
         midColumn={
           <List headerText="Mid Column List">
-            <StandardListItem>List Item 1</StandardListItem>
-            <StandardListItem>List Item 2</StandardListItem>
-            <StandardListItem>List Item 3</StandardListItem>
+            <ListItemStandard>List Item 1</ListItemStandard>
+            <ListItemStandard>List Item 2</ListItemStandard>
+            <ListItemStandard>List Item 3</ListItemStandard>
           </List>
         }
         endColumn={
           <List headerText="End Column List">
-            <StandardListItem>List Item 1</StandardListItem>
-            <StandardListItem>List Item 2</StandardListItem>
-            <StandardListItem>List Item 3</StandardListItem>
+            <ListItemStandard>List Item 1</ListItemStandard>
+            <ListItemStandard>List Item 2</ListItemStandard>
+            <ListItemStandard>List Item 3</ListItemStandard>
           </List>
         }
       />
@@ -330,9 +329,9 @@ export const WithDifferentColumns: Story = {
             />
             <List headerText="Movies" onItemClick={onStartColumnClick}>
               {movieData.map((item) => (
-                <StandardListItem description={item.genre} data-movie={item.movie} key={item.movie}>
+                <ListItemStandard description={item.genre} data-movie={item.movie} key={item.movie}>
                   {item.movie}
-                </StandardListItem>
+                </ListItemStandard>
               ))}
             </List>
           </>
@@ -370,9 +369,9 @@ export const WithDifferentColumns: Story = {
             </Toolbar>
             <List headerText="Cast" onItemClick={onMiddleColumnClick}>
               {castData.map((item) => (
-                <StandardListItem description={item.gender} data-name={item.name} key={item.name}>
+                <ListItemStandard description={item.gender} data-name={item.name} key={item.name}>
                   {item.name}
-                </StandardListItem>
+                </ListItemStandard>
               ))}
             </List>
           </>
@@ -400,7 +399,7 @@ export const WithDifferentColumns: Story = {
                 />
               }
             >
-              <div style={spacing.sapUiContentPadding}>
+              <div style={{ padding: '1rem' }}>
                 <Text>
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                   et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

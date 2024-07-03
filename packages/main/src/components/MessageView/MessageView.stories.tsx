@@ -123,7 +123,7 @@ export const MessageViewInDialog: Story = {
           Open Dialog
         </Button>
         <Dialog
-          style={{ width: '400px' }}
+          style={{ width: '500px' }}
           className="contentPartNoPadding headerPartNoPadding"
           open={open}
           onClose={() => {

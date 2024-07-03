@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 import { forwardRef } from 'react';
 import { ValueColor } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';
-import { Text } from '../Text/index.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { classNames, styleData } from './NumericSideIndicator.module.css.js';
 
 export interface NumericSideIndicatorPropTypes extends CommonProps {

@@ -22,9 +22,9 @@ import {
   Title,
   Token
 } from '../../webComponents/index.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import { FlexBox } from '../FlexBox/index.js';
-import { Text } from '../Text/index.js';
 import { VariantManagement } from '../VariantManagement/index.js';
 import { VariantItem } from '../VariantManagement/VariantItem.js';
 import { FilterBar } from './index.js';
@@ -165,7 +165,7 @@ export const WithLogic: Story = {
   render: (args) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { age, countries, currency, date, dateRange, search } = state;
-    const prevDialogOpenState = useRef();
+    const prevDialogOpenState = useRef(undefined);
 
     const handleSearch = (e) => {
       dispatch({ type: 'SET_SEARCH', payload: e.target.value });

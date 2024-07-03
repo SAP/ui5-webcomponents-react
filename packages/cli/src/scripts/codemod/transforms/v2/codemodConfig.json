@@ -11,8 +11,10 @@
       "changedProps": {
         "onAfterClose": "onClose",
         "onAfterOpen": "onOpen",
-        "placementType": "placement"
-      }
+        "placementType": "placement",
+        "showCancelButton": "hideCancelButton"
+      },
+      "removedProps": ["portalContainer"]
     },
     "Avatar": {},
     "Badge": {
@@ -79,6 +81,7 @@
       "newComponent": "ComboBoxItemGroup"
     },
     "CustomListItem": {
+      "newComponent": "ListItemCustom",
       "renamedEnums": {
         "highlight": "HighlightTypes"
       }
@@ -182,6 +185,17 @@
         "mode": "ListMode"
       }
     },
+    "ListItemCustom": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes"
+      }
+    },
+    "ListItemStandard": {
+      "renamedEnums": {
+        "highlight": "HighlightTypes",
+        "additionalTextState": "ValueState"
+      }
+    },
     "ListItemGroup": {},
     "MediaGallery": {},
     "MediaGalleryItem": {},
@@ -222,8 +236,18 @@
         "valueState": "ValueState"
       }
     },
-    "MultiComboBoxGroupItem": {},
+    "MultiComboBoxGroupItem": {
+      "newComponent": "MultiComboBoxItemGroup",
+      "changedProps": {
+        "onOpenChange": "onOpen"
+      }
+    },
     "MultiComboBoxItem": {},
+    "MultiComboBoxItemGroup": {
+      "changedProps": {
+        "onOpenChange": "onOpen"
+      }
+    },
     "MultiInput": {
       "changedProps": {
         "onSuggestionItemPreview": "onSelectionChange"
@@ -349,7 +373,8 @@
     "SideNavigationItem": {
       "changedProps": {
         "title": "tooltip"
-      }
+      },
+      "removedProps": ["wholeItemToggleable"]
     },
     "SideNavigationSubItem": {
       "changedProps": {
@@ -363,6 +388,7 @@
       "removedProps": ["activeIcon"]
     },
     "StandardListItem": {
+      "newComponent": "ListItemStandard",
       "renamedEnums": {
         "highlight": "HighlightTypes",
         "additionalTextState": "ValueState"
@@ -392,6 +418,37 @@
       "removedProps": ["fixed", "showOverflow"]
     },
     "TabSeparator": {},
+    "Table": {
+      "comment": "noDataText is now noData slot",
+      "changedProps": {
+        "busy": "loading",
+        "columns": "headerRow"
+      },
+      "removedProps": [
+        "busyDelay",
+        "growing",
+        "growingButtonSubtext",
+        "growingButtonText",
+        "mode",
+        "hideNoData",
+        "stickyColumnHeader",
+        "onLoadMore",
+        "onPopinChange",
+        "onSelectionChange"
+      ]
+    },
+    "TableCell": {},
+    "TableColumn": {
+      "newComponent": "TableHeaderCell",
+      "removedProps": ["demandPopin", "popinDisplay", "popinText"]
+    },
+    "TableRow": {
+      "comment": "type=Interactive becomes interactive=true",
+      "changedProps": {
+        "type": "interactive"
+      },
+      "removedProps": ["navigated", "selected"]
+    },
     "TextArea": {
       "changedProps": {
         "growingMaxLines": "growingMaxRows"
@@ -461,6 +518,9 @@
       }
     },
     "UploadCollectionItem": {},
+    "VariantManagement": {
+      "removedProps": ["portalContainer"]
+    },
     "ViewSettingsDialog": {},
     "Wizard": {},
     "WizardStep": {}
@@ -533,6 +593,11 @@
     "WizardContentLayout": "@ui5/webcomponents-fiori/dist/types/WizardContentLayout.js",
     "WrappingType": "@ui5/webcomponents/dist/types/WrappingType.js"
   },
+  "renamedEnums": {
+    "MessageBoxActions": "MessageBoxAction",
+    "MessageBoxTypes": "MessageBoxType",
+    "Themes": "Theme"
+  },
   "enumProperties": {
     "BusyIndicatorSize": {
       "Small": "S",
@@ -572,5 +637,14 @@
       "MultiSelect": "Multiple"
     }
   },
-  "wrappingTypeComponents": ["Badge", "CheckBox", "Label", "Link", "Title", "RadioButton", "NotificationListItem"]
+  "wrappingTypeComponents": [
+    "Badge",
+    "CheckBox",
+    "Label",
+    "Link",
+    "Title",
+    "RadioButton",
+    "NotificationListItem",
+    "Tag"
+  ]
 }

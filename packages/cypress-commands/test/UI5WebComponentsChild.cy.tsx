@@ -3,15 +3,15 @@ import {
   CheckBox,
   ComboBox,
   ComboBoxItem,
-  CustomListItem,
   Input,
   List,
+  ListItemCustom,
+  ListItemStandard,
   MultiComboBox,
   MultiComboBoxItem,
   Option,
   RadioButton,
   Select,
-  StandardListItem,
   SuggestionItem,
   Switch,
   Tab,
@@ -122,12 +122,12 @@ describe('UI5 Web Components - Child Commands', () => {
 
   it('click list item', () => {
     cy.mount(
-      <List mode="MultiSelect">
-        <StandardListItem data-testid="s">StandardListItem</StandardListItem>
-        <CustomListItem data-testid="c">CustomListItem</CustomListItem>
+      <List selectionMode="Multiple">
+        <ListItemStandard data-testid="s">ListItemStandard</ListItemStandard>
+        <ListItemCustom data-testid="c">ListItemCustom</ListItemCustom>
       </List>
     );
-    cy.findByText('StandardListItem').click();
+    cy.findByText('ListItemStandard').click();
     cy.findByTestId('c').click();
   });
 

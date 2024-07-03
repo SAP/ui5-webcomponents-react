@@ -1,0 +1,6 @@
+.card::part(root) {
+  background-color: lightgreen;
+}
+.card::part(content) {
+  transform: rotate(180deg);
+}

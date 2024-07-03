@@ -147,7 +147,10 @@ const finalConfig = tseslint.config(
     languageOptions: {
       sourceType: 'module',
       parserOptions: {
-        project: ['./tsconfig.spec.json', './tsconfig.node.json', './packages/*/tsconfig.json'],
+        EXPERIMENTAL_useProjectService: {
+          // TODO https://github.com/typescript-eslint/typescript-eslint/issues/9450
+          maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 1000
+        },
         tsconfigRootDir: import.meta.dirname,
         ecmaFeatures: {
           jsx: true

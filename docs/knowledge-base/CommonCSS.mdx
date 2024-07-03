@@ -38,9 +38,26 @@ import '@sap-ui/common-css/dist/sap-content-paddings.css';
 
 You can apply a dynamic content padding for your element by applying the following classes to your HTML:
 
-```html
-<div class="sap-container-type-inline-size">
-  <div class="sap-content-paddings-container">I will have a responsive content padding</div>
+```jsx
+<div className="sap-container-type-inline-size">
+  <div className="sap-content-paddings-container">I will have a responsive content padding</div>
+</div>
+```
+
+## Margins & Paddings
+
+Common CSS is offering classes that you can use to create some spacing between elements.
+
+**Full Documentation:**
+
+- [Margins](https://sap.github.io/fundamental-styles/?path=/docs/common-css-margins--docs)
+- [Paddings](https://sap.github.io/fundamental-styles/?path=/docs/common-css-padding--docs)
+
+```jsx
+<div className="sap-padding-x-small">
+  <button className="sap-margin-begin-small">Start Button</button>
+  <button className="sap-margin-x-small">Mid Button</button>
+  <button className="sap-margin-end-small">End Button</button>
 </div>
 ```
 
