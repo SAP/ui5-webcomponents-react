@@ -347,35 +347,6 @@ function MyComponent() {
 }
 ```
 
-### MessageBox
-
-- `onClose` is now a plain callback function and no `CustomEvent` anymore. It receives two parameters, `action` and `escPressed`.
-
-```jsx
-// v1
-// onClose?: (event: CustomEvent<{ action: MessageBoxAction }>) => void;
-
-<MessageBox
-  onClose={(event) => {
-    console.log(event.detail.action);
-  }}
->
-  {children}
-</MessageBox>
-
-// v2
-// onClose?: (action: MessageBoxActionType | undefined, escPressed?: true) => void;
-
-<MessageBox
-  onClose={(action, escPressed) => {
-    console.log(action, escPressed);
-  }}
->
-  {children}
-</MessageBox>
-
-```
-
 ### ObjectPage
 
 The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
@@ -456,6 +427,80 @@ function MyComponent() {
 The prop `portalContainer` has been removed as it is no longer needed due to the [popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) which is now used in the UI5 Web Components.
 As the underlying `Text` component has been replaced with the UI5 Web Component, some inherited props `hyphenated` and `emptyIndicator` from the `Text` component have been removed.
 You can follow this [feature request](https://github.com/SAP/ui5-webcomponents/issues/9244) for updates.
+
+### FilterGroupItem
+
+For a better aligned API, the `visible` and `visibleInFilterBar` (defaulted to `true)` props has been replaced with `hidden` and `hideInFilterBar` (`false` by default).
+You only need to apply changes to your code if `visible` or `visibleInFilterBar` have been set to `false`:
+
+```tsx
+// v1
+import { FilterBar, FilterGroupItem, Input } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return (
+    <FilterBar>
+      <FilterGroupItem visible={false}>
+        <Input />
+      </FilterGroupItem>
+      <FilterGroupItem visibleInFilterBar={false}>
+        <Input />
+      </FilterGroupItem>
+      <FilterGroupItem>
+        <Input />
+      </FilterGroupItem>
+    </FilterBar>
+  );
+}
+
+// v2
+import { FilterBar, FilterGroupItem, Input } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return (
+    <FilterBar>
+      <FilterGroupItem hidden>
+        <Input />
+      </FilterGroupItem>
+      <FilterGroupItem hideInFilterBar>
+        <Input />
+      </FilterGroupItem>
+      <FilterGroupItem>
+        <Input />
+      </FilterGroupItem>
+    </FilterBar>
+  );
+}
+```
+
+### MessageBox
+
+- `onClose` is now a plain callback function and no `CustomEvent` anymore. It receives two parameters, `action` and `escPressed`.
+
+```jsx
+// v1
+// onClose?: (event: CustomEvent<{ action: MessageBoxAction }>) => void;
+
+<MessageBox
+  onClose={(event) => {
+    console.log(event.detail.action);
+  }}
+>
+  {children}
+</MessageBox>
+
+// v2
+// onClose?: (action: MessageBoxActionType | undefined, escPressed?: true) => void;
+
+<MessageBox
+  onClose={(action, escPressed) => {
+    console.log(action, escPressed);
+  }}
+>
+  {children}
+</MessageBox>
+
+```
 
 ## Enum Changes
 
