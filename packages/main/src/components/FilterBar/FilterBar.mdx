@@ -153,7 +153,7 @@ const FilterBarComponent = (args) => {
         <FilterGroupItem label="Date" active={!!date}>
           <DatePicker value={date} onChange={handleDateChange} style={{ minWidth: 'auto' }} on />
         </FilterGroupItem>
-        <FilterGroupItem label="Date Range" active={!!dateRange} visibleInFilterBar={false}>
+        <FilterGroupItem label="Date Range" active={!!dateRange} hideInFilterBar>
           <DateRangePicker value={dateRange} onChange={handleDateRangeChange} style={{ minWidth: 'auto' }} on />
         </FilterGroupItem>
       </FilterBar>
@@ -230,12 +230,7 @@ function FilterBarWithReordering(props) {
     <FilterGroupItem key={`${uniqueId}-4`} label="Switch" orderId={`${uniqueId}-4`}>
       <Switch />
     </FilterGroupItem>,
-    <FilterGroupItem
-      key={`${uniqueId}-5`}
-      label="SELECT w/ initial selected"
-      visibleInFilterBar={false}
-      orderId={`${uniqueId}-5`}
-    >
+    <FilterGroupItem key={`${uniqueId}-5`} label="SELECT w/ initial selected" hideInFilterBar orderId={`${uniqueId}-5`}>
       <Select>
         <Option>Option 1</Option>
         <Option selected>Option 2</Option>
