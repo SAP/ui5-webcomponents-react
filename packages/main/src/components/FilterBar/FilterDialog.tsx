@@ -207,7 +207,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   const visibleChildren = () =>
     children.filter((item) => {
-      return !!item?.props && (typeof item.props.visible === 'undefined' || item?.props?.visible);
+      return !!item?.props && !item?.props?.hidden;
     });
 
   const [orderedChildren, setOrderedChildren] = useState([]);
