@@ -93,14 +93,28 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
         }
       };
       const onKeyDown = (e) => {
-        if (e.code === 'Space' || e.code === 'Enter') {
+        if (e.code === 'Enter' || e.code === 'Space') {
+          e.preventDefault();
+          if (e.code === 'Enter' && typeof webComponentsReactProperties.onRowClick === 'function') {
+            webComponentsReactProperties.onRowClick(enrichEventWithDetails(e, { row }));
+          }
+        }
+      };
+      const onKeyUp = (e) => {
+        if (e.code === 'Space') {
           e.preventDefault();
           if (typeof webComponentsReactProperties.onRowClick === 'function') {
             webComponentsReactProperties.onRowClick(enrichEventWithDetails(e, { row }));
           }
         }
       };
-      return { ...rowProps, onClick: handleClick, onKeyDown, className: webComponentsReactProperties.classes.tr };
+      return {
+        ...rowProps,
+        onClick: handleClick,
+        onKeyDown,
+        onKeyUp,
+        className: webComponentsReactProperties.classes.tr
+      };
     }
     return rowProps;
   };

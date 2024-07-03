@@ -95,12 +95,22 @@ const headerProps = (props, { instance }) => {
     };
 
     const onKeyDown = (e) => {
-      if (e.code === 'Space' || e.code === 'Enter') {
+      if (e.code === 'Enter' || e.code === 'Space') {
+        e.preventDefault();
+        if (e.code === 'Enter') {
+          onClick(e);
+        }
+      }
+    };
+
+    const onKeyUp = (e) => {
+      if (e.code === 'Space') {
         e.preventDefault();
         onClick(e);
       }
     };
-    return [props, { onClick, onKeyDown, style, title: isAllRowsSelected ? deselectAllText : selectAllText }];
+
+    return [props, { onClick, onKeyDown, onKeyUp, style, title: isAllRowsSelected ? deselectAllText : selectAllText }];
   }
   return props;
 };
