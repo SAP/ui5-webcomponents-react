@@ -1,5 +1,6 @@
 'use client';
 
+import '@ui5/webcomponents/dist/TableRow.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
@@ -15,6 +16,12 @@ interface TableRowAttributes {
    * Unique identifier of the component.
    */
   key?: string;
+
+  /**
+   * Defines the navigated state of the row.
+   * @default false
+   */
+  navigated?: boolean;
 }
 
 interface TableRowDomRef extends Required<TableRowAttributes>, Ui5DomRef {}
@@ -40,10 +47,10 @@ interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof 
 const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   'ui5-table-row',
   ['key'],
-  ['interactive'],
+  ['interactive', 'navigated'],
   [],
   [],
-  () => Promise.resolve()
+  () => import('@ui5/webcomponents/dist/TableRow.js')
 );
 
 TableRow.displayName = 'TableRow';
