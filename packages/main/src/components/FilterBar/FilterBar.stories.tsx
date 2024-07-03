@@ -56,7 +56,7 @@ export const Default: Story = {
   render: (args) => {
     return (
       <FilterBar {...args}>
-        <FilterGroupItem label="StepInput" required>
+        <FilterGroupItem label="StepInput" hiddenInFilterBar hidden>
           <StepInput required />
         </FilterGroupItem>
         <FilterGroupItem label="RatingIndicator">
@@ -80,7 +80,7 @@ export const Default: Story = {
         <FilterGroupItem label="Switch">
           <Switch />
         </FilterGroupItem>
-        <FilterGroupItem label="SELECT w/ initial selected" hideInFilterBar>
+        <FilterGroupItem label="SELECT w/ initial selected" hiddenInFilterBar>
           <Select>
             <Option>Option 1</Option>
             <Option selected>Option 2</Option>
@@ -250,7 +250,7 @@ export const WithLogic: Story = {
           <FilterGroupItem label="Date" active={!!date}>
             <DatePicker value={date} onChange={handleDateChange} style={{ minWidth: 'auto' }} />
           </FilterGroupItem>
-          <FilterGroupItem label="Date Range" active={!!dateRange} hideInFilterBar>
+          <FilterGroupItem label="Date Range" active={!!dateRange} hiddenInFilterBar>
             <DateRangePicker value={dateRange} onChange={handleDateRangeChange} style={{ minWidth: 'auto' }} />
           </FilterGroupItem>
         </FilterBar>
@@ -329,10 +329,10 @@ export const InDynamicPage: Story = {
               <FilterGroupItem label="Input">
                 <Input placeholder="Placeholder" />
               </FilterGroupItem>
-              <FilterGroupItem label="Switch" hideInFilterBar>
+              <FilterGroupItem label="Switch" hiddenInFilterBar>
                 <Switch />
               </FilterGroupItem>
-              <FilterGroupItem label="SELECT w/ initial selected" hideInFilterBar>
+              <FilterGroupItem label="SELECT w/ initial selected" hiddenInFilterBar>
                 <Select>
                   <Option>Option 1</Option>
                   <Option selected>Option 2</Option>
@@ -340,7 +340,7 @@ export const InDynamicPage: Story = {
                   <Option>Option 4</Option>
                 </Select>
               </FilterGroupItem>
-              <FilterGroupItem label="SELECT w/o initial selected" hideInFilterBar>
+              <FilterGroupItem label="SELECT w/o initial selected" hiddenInFilterBar>
                 <Select>
                   <Option data-key="Test 1" selected icon="add">
                     Test 1
@@ -359,7 +359,7 @@ export const InDynamicPage: Story = {
                   </Option>
                 </Select>
               </FilterGroupItem>
-              <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1" hideInFilterBar>
+              <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1" hiddenInFilterBar>
                 <MultiComboBox>
                   <MultiComboBoxItem text="MultiComboBoxItem 1" />
                   <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
@@ -367,7 +367,7 @@ export const InDynamicPage: Story = {
                   <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
                 </MultiComboBox>
               </FilterGroupItem>
-              <FilterGroupItem label="ComboBox w/o initial selected" groupName="Group 2" hideInFilterBar>
+              <FilterGroupItem label="ComboBox w/o initial selected" groupName="Group 2" hiddenInFilterBar>
                 <ComboBox>
                   <ComboBoxItem text="ComboBoxItem 1" />
                   <ComboBoxItem text="ComboBoxItem 2" />
@@ -429,7 +429,7 @@ export const WithReordering: Story = {
       <FilterGroupItem
         key={`${uniqueId}-5`}
         label="SELECT w/ initial selected"
-        hideInFilterBar
+        hiddenInFilterBar
         orderId={`${uniqueId}-5`}
       >
         <Select>

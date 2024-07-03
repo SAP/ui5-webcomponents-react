@@ -96,11 +96,11 @@ const getActiveFilters = (
     case 'all':
       return true;
     case 'visible':
-      return filter.props?.hideInFilterBar !== true;
+      return filter.props?.hiddenInFilterBar !== true;
     case 'active':
       return filter.props?.active;
     case 'visibleAndActive':
-      return filter.props?.hideInFilterBar !== true && filter.props?.active;
+      return filter.props?.hiddenInFilterBar !== true && filter.props?.active;
     case 'mandatory':
       return filter.props?.required;
     default:
@@ -232,7 +232,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     return filteredChildren.map((child, index) => {
       const filterBarItemRef = filterBarRefs.current[child.key];
       let isSelected =
-        child.props.hideInFilterBar !== true || child.props.required || child.type.displayName !== 'FilterGroupItem';
+        child.props.hiddenInFilterBar !== true || child.props.required || child.type.displayName !== 'FilterGroupItem';
       if (toggledFilters.hasOwnProperty(child.key)) {
         isSelected = toggledFilters[child.key];
       }

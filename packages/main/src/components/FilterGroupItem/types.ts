@@ -47,7 +47,7 @@ export interface FilterGroupItemPropTypes extends CommonProps {
   /**
    * Defines whether the filter is hidden in the `FilterBar` or only in the filter configuration dialog.
    */
-  hideInFilterBar?: boolean;
+  hiddenInFilterBar?: boolean;
   /**
    * Defines whether the `groupName` of the `FilterGroupItems` is displayed in the filter configuration dialog.
    */

@@ -136,13 +136,13 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
       if (isValidElement(item)) {
         const key = item.key as ReactKeyWithoutBigInt;
         setToggledFilters((prev) => {
-          if (!item.props.hasOwnProperty('hideInFilterBar') && prev?.[key] === undefined) {
+          if (!item.props.hasOwnProperty('hiddenInFilterBar') && prev?.[key] === undefined) {
             return { ...prev, [key]: true };
           }
-          if (item.props.hasOwnProperty('hideInFilterBar')) {
+          if (item.props.hasOwnProperty('hiddenInFilterBar')) {
             return {
               ...prev,
-              [key]: (item as ReactElement<FilterGroupItemInternalProps>).props.hideInFilterBar !== true
+              [key]: (item as ReactElement<FilterGroupItemInternalProps>).props.hiddenInFilterBar !== true
             };
           }
           return prev;
@@ -228,7 +228,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           if (toggledFilters?.[key] !== undefined) {
             // @ts-expect-error: child should always be a FilterGroupItem w/o portal
             return cloneElement<FilterGroupItemInternalProps, HTMLDivElement>(child, {
-              hideInFilterBar: !toggledFilters[key]
+              hiddenInFilterBar: !toggledFilters[key]
             });
           }
         }
@@ -252,7 +252,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         }
         return (
           (typeof item.props.hidden === 'undefined' || item?.props?.hidden !== true) &&
-          item.props?.hideInFilterBar !== true
+          item.props?.hiddenInFilterBar !== true
         );
       })
       .map((child) => {
@@ -264,7 +264,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         if (hideFilterConfiguration) {
           return cloneElement(child, { ...childProps });
         }
-        prevVisibleInFilterBarProps.current[key] = child.props.hideInFilterBar !== true;
+        prevVisibleInFilterBarProps.current[key] = child.props.hiddenInFilterBar !== true;
         let filterItemProps = {};
         if (Object.keys(dialogRefs).length > 0) {
           const dialogItemRef = dialogRefs[key];

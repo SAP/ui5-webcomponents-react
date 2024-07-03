@@ -56,7 +56,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       labelTooltip,
       required,
       hidden,
-      hideInFilterBar,
+      hiddenInFilterBar,
       children,
       loading,
       className,
@@ -143,7 +143,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       }
     }, [withReordering, currentReorderedItemOrderId, orderId, index]);
 
-    if (!required && (hidden || (inFB && hideInFilterBar))) return null;
+    if (!required && (hidden || (inFB && hiddenInFilterBar))) return null;
 
     if (!inFB) {
       return (

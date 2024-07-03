@@ -430,7 +430,7 @@ You can follow this [feature request](https://github.com/SAP/ui5-webcomponents/i
 
 ### FilterGroupItem
 
-For a better aligned API, the `visible` and `visibleInFilterBar` (defaulted to `true)` props has been replaced with `hidden` and `hideInFilterBar` (no default value).
+For a better aligned API, the `visible` and `visibleInFilterBar` (defaulted to `true)` props has been replaced with `hidden` and `hiddenInFilterBar` (no default value).
 You only need to apply changes to your code if `visible` or `visibleInFilterBar` have been set to `false`:
 
 ```tsx
@@ -462,7 +462,7 @@ function MyComponent() {
       <FilterGroupItem hidden>
         <Input />
       </FilterGroupItem>
-      <FilterGroupItem hideInFilterBar>
+      <FilterGroupItem hiddenInFilterBar>
         <Input />
       </FilterGroupItem>
       <FilterGroupItem>

@@ -632,7 +632,7 @@ describe.skip('FilterBar.cy.tsx', () => {
     cy.get('div[data-order-id]').eq(4).find('[ui5-label]').should('have.text', 'RatingIndicator');
   });
 
-  it('hidden & hideInFilterBar', () => {
+  it('hidden & hiddenInFilterBar', () => {
     cy.mount(
       <FilterBar>
         <FilterGroupItem label="undefined">
@@ -647,19 +647,19 @@ describe.skip('FilterBar.cy.tsx', () => {
         <FilterGroupItem label="undefined undefined">
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="false false" hidden hideInFilterBar>
+        <FilterGroupItem label="false false" hidden hiddenInFilterBar>
           <StepInput />
         </FilterGroupItem>
         <FilterGroupItem label="true true">
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="true false" hideInFilterBar>
+        <FilterGroupItem label="true false" hiddenInFilterBar>
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="undefined true" hideInFilterBar={false}>
+        <FilterGroupItem label="undefined true" hiddenInFilterBar={false}>
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="undefined false" hideInFilterBar>
+        <FilterGroupItem label="undefined false" hiddenInFilterBar>
           <StepInput />
         </FilterGroupItem>
       </FilterBar>
@@ -724,7 +724,7 @@ function FilterBarWithReordering(props: Partial<FilterBarPropTypes>) {
       <FilterGroupItem
         key={`${uniqueId}-5`}
         label="SELECT w/ initial selected"
-        hideInFilterBar
+        hiddenInFilterBar
         orderId={`${uniqueId}-5`}
       >
         <Select>

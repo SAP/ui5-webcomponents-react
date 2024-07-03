@@ -267,7 +267,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
             j(el)
               .find(j.JSXOpeningElement)
               .get()
-              .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('hideInFilterBar'), null));
+              .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('hiddenInFilterBar'), null));
           }
           visibleInFilterBar.remove();
           isDirty = true;
