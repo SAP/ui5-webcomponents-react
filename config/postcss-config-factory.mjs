@@ -21,7 +21,8 @@ export function postcssConfigFactory(packageName) {
 
           return `${file}_${name}_${hash}_${lineNumber}`;
         },
-        getJSON: (cssFileName, json) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        getJSON: (_cssFileName, _json) => {
           return null;
         },
         globalModulePaths: [/\/\w+(?!\.module)\.css$/]

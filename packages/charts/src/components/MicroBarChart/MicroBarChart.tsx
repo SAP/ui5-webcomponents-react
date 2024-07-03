@@ -111,7 +111,7 @@ const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref
 
   const maxValue = useMemo(() => {
     if (dataset) {
-      const maxDatasetValue = Math.max(...dataset?.map((item) => getValueByDataKey(item, measure.accessor)));
+      const maxDatasetValue = Math.max(...(dataset?.map((item) => getValueByDataKey(item, measure.accessor)) ?? []));
       return props.maxValue ?? maxDatasetValue;
     }
     return 0;

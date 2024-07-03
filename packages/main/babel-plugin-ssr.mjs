@@ -4,9 +4,7 @@ const Modes = {
   SSR: 'ssr'
 };
 
-export default function (babel) {
-  const { types: t } = babel;
-
+export default function () {
   return {
     name: 'ui5-webcomponents-ssr-plugin',
     visitor: {

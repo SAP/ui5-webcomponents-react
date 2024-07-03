@@ -90,12 +90,15 @@ describe('withWebComponent', () => {
           <>
             {true}
             not mounted
+            {/* eslint-disable-next-line no-constant-binary-expression */}
             {false && <span>not mounted</span>}
             <span>mounted</span>
             <>
+              {/* eslint-disable-next-line no-constant-binary-expression */}
               {false && <span>not mounted</span>}
               <span>mounted</span>
               <>
+                {/* eslint-disable-next-line no-constant-binary-expression */}
                 {false && <span>not mounted</span>}
                 <span>mounted</span>
                 <>
@@ -106,6 +109,7 @@ describe('withWebComponent', () => {
             <>
               <span>mounted</span>
             </>
+            {/* eslint-disable-next-line no-constant-binary-expression */}
             <>{false && <span>not mounted</span>}</>
             <>
               <span>mounted</span>

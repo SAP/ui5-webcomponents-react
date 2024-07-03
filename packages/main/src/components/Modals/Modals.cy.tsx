@@ -182,7 +182,7 @@ describe('Modals - hooks', () => {
           const { close } = hook({
             ...modalProps,
             children: [
-              ...modalProps?.children,
+              ...(modalProps?.children ?? []),
               <Button key="btn" onClick={() => close()}>
                 Close
               </Button>

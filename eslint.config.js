@@ -22,61 +22,6 @@ const compat = new FlatCompat({
   allConfig: eslint.configs.all
 });
 
-/** @type { import("eslint").Linter.FlatConfig[] } */
-const typescriptConfig = {
-  files: ['**/*.ts', '**/*.tsx'],
-  settings: {
-    languageOptions: {
-      // parser: tsParser,
-    },
-    'import/resolver': {
-      typescript: true
-    }
-  },
-  rules: {
-    // disabled some rules from the recommended preset
-    '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/no-unsafe-member-access': 'off',
-    '@typescript-eslint/no-unsafe-argument': 'off',
-    '@typescript-eslint/no-unsafe-return': 'off',
-    '@typescript-eslint/no-unsafe-assignment': 'off',
-    '@typescript-eslint/no-unsafe-call': 'off',
-    '@typescript-eslint/restrict-plus-operands': 'off',
-    '@typescript-eslint/restrict-template-expressions': 'off',
-    '@typescript-eslint/no-explicit-any': 'warn',
-
-    // consistent type exports/imports
-    '@typescript-eslint/consistent-type-exports': [
-      'error',
-      {
-        fixMixedExportsWithInlineTypeSpecifier: false
-      }
-    ],
-    '@typescript-eslint/consistent-type-imports': [
-      'error',
-      {
-        prefer: 'type-imports',
-        fixStyle: 'separate-type-imports'
-      }
-    ],
-
-    // lots of UI5 Web Components API are promised based but 'fire and forget' is sufficient for us
-    '@typescript-eslint/no-floating-promises': 'warn',
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        varsIgnorePattern: '^_'
-      }
-    ],
-
-    // Performance Improvements: https://typescript-eslint.io/linting/troubleshooting/performance-troubleshooting#eslint-plugin-import
-    'import/named': 'off',
-    'import/namespace': 'off',
-    'import/default': 'off',
-    'import/no-named-as-default-member': 'off'
-  }
-};
-
 /** @type { import("eslint").Linter.FlatConfig } */
 const webComponentsConfig = {
   files: ['packages/main/src/webComponents/*/index.tsx'],
@@ -143,6 +88,9 @@ const specialComponents = [
 ];
 
 const finalConfig = tseslint.config(
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
   {
     languageOptions: {
       sourceType: 'module',
@@ -164,14 +112,20 @@ const finalConfig = tseslint.config(
     settings: {
       react: {
         version: 'detect'
+      },
+
+      'import/resolver': {
+        typescript: true
       }
+    },
+
+    plugins: {
+      'prefer-arrow': preferArrow,
+      'react-hooks': fixupPluginRules(pluginReactHooks)
     }
   },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
   {
-    files: ['**/*.mjs', '**/CommandsAndQueries.tsx', '**/*.js'],
+    files: ['**/*.mjs', '**/*.js'],
     ...tseslint.configs.disableTypeChecked
   },
   reactRecommended,
@@ -179,6 +133,8 @@ const finalConfig = tseslint.config(
   ...fixupConfigRules(compat.extends('plugin:import/recommended')),
   {
     ignores: [
+      'packages/base/bin',
+      'packages/base/codemods',
       'packages/base/dist',
       'packages/base/types',
       'packages/charts/dist',
@@ -196,11 +152,6 @@ const finalConfig = tseslint.config(
     ]
   },
   {
-    plugins: {
-      'prefer-arrow': preferArrow,
-      'react-hooks': fixupPluginRules(pluginReactHooks)
-    },
-
     rules: {
       camelcase: [
         'error',
@@ -233,14 +184,54 @@ const finalConfig = tseslint.config(
         }
       ],
       'import/no-duplicates': 'error',
-      'import/no-unresolved': 'error',
+
+      // Performance Improvements: https://typescript-eslint.io/troubleshooting/typed-linting/performance#eslint-plugin-import
+      'import/named': 'off',
+      'import/namespace': 'off',
+      'import/default': 'off',
+      'import/no-named-as-default-member': 'off',
+      'import/no-unresolved': 'off',
 
       'no-prototype-builtins': 'off',
+
+      // disabled some rules from the recommended preset
+      '@typescript-eslint/no-empty-function': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/restrict-plus-operands': 'off',
+      '@typescript-eslint/restrict-template-expressions': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
+
+      // consistent type exports/imports
+      '@typescript-eslint/consistent-type-exports': [
+        'error',
+        {
+          fixMixedExportsWithInlineTypeSpecifier: false
+        }
+      ],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          fixStyle: 'separate-type-imports'
+        }
+      ],
+
+      // lots of UI5 Web Components API are promised based but 'fire and forget' is sufficient for us
+      '@typescript-eslint/no-floating-promises': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          varsIgnorePattern: '^_'
+        }
+      ],
 
       ...pluginReactHooks.configs.recommended.rules
     }
   },
-  typescriptConfig,
   webComponentsConfig,
   ...specialComponents,
   ...cypressConfig,
@@ -248,5 +239,4 @@ const finalConfig = tseslint.config(
   pluginPrettierRecommended
 );
 
-console.log('-> finalConfig', finalConfig);
 export default finalConfig;
