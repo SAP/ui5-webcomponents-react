@@ -52,6 +52,90 @@ To opt-out of this behavior, you can add the `.ui5-content-native-scrollbars` cl
 
 More details can be found in our [Styling Knowledge Base](?path=/docs/knowledge-base-styling--docs#scrollbars).
 
+## Spacing
+
+The `spacing` variables of our base package (`@ui5/webcomponents-react-base`) have been removed.
+Most variables can be replaced by applying the corresponding CSS classes from the `@sap-ui/common-css` package to your element, for all others you can find the respective CSS properties and values below.
+
+**Full Documentation of Common CSS classes:**
+
+- [Margins](https://sap.github.io/fundamental-styles/?path=/docs/common-css-margins--docs)
+- [Paddings](https://sap.github.io/fundamental-styles/?path=/docs/common-css-padding--docs)
+
+### Common CSS substitute classes
+
+<details>
+    <summary>Show</summary>
+
+| Removed Variable                    | Equivalent Common CSS Class   |
+| ----------------------------------- | ----------------------------- |
+| **All Around Margins**              |                               |
+| `sapUiTinyMargin`                   | `.sap-margin-tiny`            |
+| `sapUiSmallMargin`                  | `.sap-margin-small`           |
+| `sapUiMediumMargin`                 | `.sap-margin-medium`          |
+| `sapUiLargeMargin`                  | `.sap-margin-large`           |
+| **Single Side Margins**             |                               |
+| `sapUiTinyMarginTop`                | `.sap-margin-top-tiny`        |
+| `sapUiSmallMarginTop`               | `.sap-margin-top-small`       |
+| `sapUiMediumMarginTop`              | `.sap-margin-top-medium`      |
+| `sapUiLargeMarginTop`               | `.sap-margin-top-large`       |
+| `sapUiTinyMarginBottom`             | `.sap-margin-bottom-tiny`     |
+| `sapUiSmallMarginBottom`            | `.sap-margin-bottom-small`    |
+| `sapUiMediumMarginBottom`           | `.sap-margin-bottom-medium`   |
+| `sapUiLargeMarginBottom`            | `.sap-margin-bottom-large`    |
+| `sapUiTinyMarginBegin`              | `.sap-margin-begin-tiny`      |
+| `sapUiSmallMarginBegin`             | `.sap-margin-begin-small`     |
+| `sapUiMediumMarginBegin`            | `.sap-margin-begin-medium`    |
+| `sapUiLargeMarginBegin`             | `.sap-margin-begin-large`     |
+| `sapUiTinyMarginEnd`                | `.sap-margin-end-tiny`        |
+| `sapUiSmallMarginEnd`               | `.sap-margin-end-small`       |
+| `sapUiMediumMarginEnd`              | `.sap-margin-end-medium`      |
+| `sapUiLargeMarginEnd`               | `.sap-margin-end-large`       |
+| **Horizontal Margins**              |                               |
+| `sapUiTinyMarginBeginEnd`           | `.sap-margin-x-tiny`          |
+| `sapUiSmallMarginBeginEnd`          | `.sap-margin-x-small`         |
+| `sapUiMediumMarginBeginEnd`         | `.sap-margin-x-medium`        |
+| `sapUiLargeMarginBeginEnd`          | `.sap-margin-x-large`         |
+| **Vertical Margins**                |                               |
+| `sapUiTinyMarginTopBottom`          | `.sap-margin-y-tiny`          |
+| `sapUiSmallMarginBeginEnd`          | `.sap-margin-y-small`         |
+| `sapUiMediumMarginTopBottom`        | `.sap-margin-y-medium`        |
+| `sapUiLargeMarginTopBottom`         | `.sap-margin-y-large`         |
+| **Responsive Margins**              |                               |
+| `sapUiResponsiveMargin`             | `.sap-margin-responsive`      |
+| **Negative Margins**                |                               |
+| `sapUiTinyNegativeMarginBeginEnd`   | `.sap-margin-tiny-negative`   |
+| `sapUiSmallNegativeMarginBeginEnd`  | `.sap-margin-small-negative`  |
+| `sapUiMediumNegativeMarginBeginEnd` | `.sap-margin-medium-negative` |
+| `sapUiLargeNegativeMarginBeginEnd`  | `.sap-margin-large-negative`  |
+| **All Around Padding**              |                               |
+| `sapUiContentPadding`               | `.sap-padding`                |
+| **Responsive Paddings**             |                               |
+| `sapUiResponsiveContentPadding`     | `.sap-padding-responsive`     |
+| **Horizontal Paddings**             |                               |
+| `sapUiTinyPaddingBeginEnd`          | `.sap-padding-x-tiny`         |
+| `sapUiSmallPaddingBeginEnd`         | `.sap-padding-x-small`        |
+| `sapUiMediumPaddingBeginEnd`        | `.sap-padding-x-medium`       |
+| `sapUiLargePaddingBeginEnd`         | `.sap-padding-x-large`        |
+| **No Padding**                      |                               |
+| `sapUiNoContentPadding`             | `.sap-padding-none`           |
+
+</details>
+
+### Removed variables without substitute
+
+<details>
+    <summary>Show</summary>
+
+| Removed Variable      | Property and Value             |
+| --------------------- | ------------------------------ |
+| `sapUiNoMargin`       | `margin: 0 !important;`        |
+| `sapUiNoMarginTop`    | `margin-top: 0 !important;`    |
+| `sapUiNoMarginBottom` | `margin-bottom: 0 !important;` |
+| `sapUiForceWidthAuto` | `width: auto !important;`      |
+
+</details>
+
 ## Removed hooks
 
 ### `useResponsiveContentPadding`
@@ -306,6 +390,35 @@ Please use the following components instead:
 
 Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
 
+### Text
+
+The `Text` component has been replaced with the `ui5-text` Web Component.
+
+The following props have been removed:
+
+- `wrapping`
+  Can be achieved via the `maxLines` property. If `maxLines` is set to `1`, the text will not wrap, otherwise it will wrap.
+- `renderWhitespace`
+  Can be achieved by adding `white-space: pre-wrap;` via inline styles or `className` to the `Text` component.
+- `hyphenated` and `emptyIndicator`
+  These props are currently not supported by the new `ui5-text` component. You can follow this [feature request](https://github.com/SAP/ui5-webcomponents/issues/9244) for updates.
+
+```tsx
+// v1
+import { Text } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return <Text wrapping={false}>Lorem Impsum</Text>;
+}
+
+// v2
+import { Text } from '@ui5/webcomponents-react';
+
+function MyComponent() {
+  return <Text maxLines={1}>Lorem Impsum</Text>;
+}
+```
+
 ## Components with API Changes
 
 ### ActionSheet
@@ -337,6 +450,12 @@ function MyComponent() {
   );
 }
 ```
+
+### Expandable Text
+
+The prop `portalContainer` has been removed as it is no longer needed due to the [popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) which is now used in the UI5 Web Components.
+As the underlying `Text` component has been replaced with the UI5 Web Component, some inherited props `hyphenated` and `emptyIndicator` from the `Text` component have been removed.
+You can follow this [feature request](https://github.com/SAP/ui5-webcomponents/issues/9244) for updates.
 
 ## Enum Changes
 

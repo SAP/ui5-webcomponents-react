@@ -4,8 +4,8 @@ import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.j
 import ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { FlexBox } from '../../components/FlexBox';
-import { Text } from '../../components/Text';
 import { FlexBoxJustifyContent } from '../../enums';
+import { Text } from '../../webComponents/Text';
 import { ListItemCustom } from '../ListItemCustom';
 import { ListItemGroup } from '../ListItemGroup';
 import { ListItemStandard } from '../ListItemStandard';

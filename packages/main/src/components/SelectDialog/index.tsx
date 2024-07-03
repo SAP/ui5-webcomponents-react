@@ -24,7 +24,7 @@ import type {
   ListItemStandardDomRef
 } from '../../webComponents/index.js';
 import { Button, Dialog, Icon, Input, List, Title } from '../../webComponents/index.js';
-import { Text } from '../Text/index.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { Toolbar } from '../Toolbar/index.js';
 import { classNames, styleData } from './SelectDialog.module.css.js';
 

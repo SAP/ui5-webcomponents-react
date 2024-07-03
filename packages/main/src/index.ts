@@ -30,7 +30,6 @@ export * from './components/ResponsiveGridLayout/index.js';
 export * from './components/SelectDialog/index.js';
 export * from './components/SplitterElement/index.js';
 export * from './components/SplitterLayout/index.js';
-export * from './components/Text/index.js';
 export * from './components/ThemeProvider/index.js';
 export * from './components/Toolbar/index.js';
 export * from './components/ToolbarSeparator/index.js';

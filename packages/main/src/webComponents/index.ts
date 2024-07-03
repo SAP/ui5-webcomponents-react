@@ -118,6 +118,7 @@ export type {
 } from './ToolbarSpacer/index.js';
 export { Toolbar as ToolbarV2 } from './Toolbar/index.js';
 export type { ToolbarPropTypes as ToolbarV2PropTypes, ToolbarDomRef as ToolbarV2DomRef } from './Toolbar/index.js';
+export * from './Text/index.js';
 export * from './Tree/index.js';
 export * from './TreeItem/index.js';
 export * from './TreeItemCustom/index.js';

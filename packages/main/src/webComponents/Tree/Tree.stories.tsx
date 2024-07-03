@@ -5,7 +5,7 @@ import dlCloutIcon from '@ui5/webcomponents-icons/dist/download-from-cloud.js';
 import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
 import pasteIcon from '@ui5/webcomponents-icons/dist/paste.js';
 import { useState } from 'react';
-import { Text } from '../../components/Text/index.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { BusyIndicator } from '../BusyIndicator/index.js';
 import { Button } from '../Button/index.js';
 import { Icon } from '../Icon/index.js';

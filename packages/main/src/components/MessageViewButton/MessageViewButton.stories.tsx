@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import { Text } from '../../webComponents/Text/index.js';
 import { FlexBox } from '../FlexBox/index.js';
-import { Text } from '../Text/index.js';
 import { MessageViewButton } from './index.js';
 
 const meta = {
