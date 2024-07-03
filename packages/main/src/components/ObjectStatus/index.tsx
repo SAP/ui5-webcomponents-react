@@ -221,6 +221,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
       ref={ref}
       className={objStatusClasses}
       style={style}
+      // @ts-expect-error: onClick is only registered if the event target is a HTMLButtonElement
       onClick={active ? onClick : undefined}
       tabIndex={active ? 0 : undefined}
       data-icon-only={!children}
