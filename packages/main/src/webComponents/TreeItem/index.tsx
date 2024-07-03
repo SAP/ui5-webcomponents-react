@@ -29,13 +29,15 @@ interface TreeItemAttributes {
    * Defines the accessible name of the component.
    *
    * **Note:** Available since [v1.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.8.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the `additionalText`, displayed in the end of the tree item.
+   * @default undefined
    */
-  additionalText?: string;
+  additionalText?: string | undefined;
 
   /**
    * Defines the state of the `additionalText`.
@@ -72,8 +74,9 @@ interface TreeItemAttributes {
 
   /**
    * If set, an icon will be displayed before the text of the tree list item.
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Defines whether the selection of a tree node is displayed as partially selected.
@@ -118,15 +121,17 @@ interface TreeItemAttributes {
 
   /**
    * Defines the text of the tree item.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 
   /**
    * Defines the text of the tooltip that would be displayed for the list item.
    *
    * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 
   /**
    * Defines the visual indication and behavior of the list items.

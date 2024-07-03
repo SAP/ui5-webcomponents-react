@@ -13,7 +13,7 @@ interface FileUploaderAttributes {
    *
    * **Note:** Please make sure you are adding the `.` in front on the file type, e.g. `.png` in case you want to accept png's only.
    */
-  accept?: string;
+  accept?: string | undefined;
 
   /**
    * Defines whether the component is in disabled state.
@@ -39,13 +39,15 @@ interface FileUploaderAttributes {
    * Determines the name by which the component will be identified upon submission in an HTML form.
    *
    * **Note:** This property is only applicable within the context of an HTML Form element.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines a short hint intended to aid the user with data entry when the component has no value.
+   * @default undefined
    */
-  placeholder?: string;
+  placeholder?: string | undefined;
 
   /**
    * Defines the name/names of the file/files to upload.

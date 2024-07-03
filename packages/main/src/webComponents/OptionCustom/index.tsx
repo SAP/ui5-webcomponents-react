@@ -9,8 +9,9 @@ interface OptionCustomAttributes {
   /**
    * Defines the text, displayed inside the `Select` input filed
    * when the option gets selected.
+   * @default undefined
    */
-  displayText?: string;
+  displayText?: string | undefined;
 
   /**
    * Defines the selected state of the component.
@@ -20,14 +21,16 @@ interface OptionCustomAttributes {
 
   /**
    * Defines the text of the tooltip that would be displayed for the list item.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 
   /**
    * Defines the value of the `Select` inside an HTML Form element when this component is selected.
    * For more information on HTML Form support, see the `name` property of `Select`.
+   * @default undefined
    */
-  value?: string;
+  value?: string | undefined;
 }
 
 interface OptionCustomDomRef extends Required<OptionCustomAttributes>, Ui5DomRef {}

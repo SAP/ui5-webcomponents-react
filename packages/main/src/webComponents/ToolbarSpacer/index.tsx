@@ -2,7 +2,6 @@
 
 import '@ui5/webcomponents/dist/ToolbarSpacer.js';
 import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
-import type { CSSProperties } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
@@ -27,7 +26,7 @@ interface ToolbarSpacerAttributes {
    * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
    * @default undefined
    */
-  width?: CSSProperties['width'] | CSSProperties['height'];
+  width?: string | undefined;
 }
 
 interface ToolbarSpacerDomRef extends Required<ToolbarSpacerAttributes>, Ui5DomRef {}

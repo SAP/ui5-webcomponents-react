@@ -7,8 +7,9 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface MultiComboBoxItemAttributes {
   /**
    * Defines the additional text of the component.
+   * @default undefined
    */
-  additionalText?: string;
+  additionalText?: string | undefined;
 
   /**
    * Defines the selected state of the component.
@@ -18,8 +19,9 @@ interface MultiComboBoxItemAttributes {
 
   /**
    * Defines the text of the component.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 }
 
 interface MultiComboBoxItemDomRef extends Required<MultiComboBoxItemAttributes>, Ui5DomRef {}

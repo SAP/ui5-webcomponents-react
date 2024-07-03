@@ -4,20 +4,22 @@ import '@ui5/webcomponents/dist/ToolbarSelect.js';
 import type { ToolbarSelectChangeEventDetail } from '@ui5/webcomponents/dist/ToolbarSelect.js';
 import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { CSSProperties, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface ToolbarSelectAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the select.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines whether the component is in disabled state.
@@ -53,7 +55,7 @@ interface ToolbarSelectAttributes {
    * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
    * @default undefined
    */
-  width?: CSSProperties['width'] | CSSProperties['height'];
+  width?: string | undefined;
 }
 
 interface ToolbarSelectDomRef extends Required<ToolbarSelectAttributes>, Ui5DomRef {}

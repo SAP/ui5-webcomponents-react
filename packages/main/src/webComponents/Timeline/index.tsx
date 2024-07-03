@@ -11,8 +11,9 @@ interface TimelineAttributes {
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents-fiori**.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the items orientation.

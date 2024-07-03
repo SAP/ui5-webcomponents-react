@@ -8,8 +8,9 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface ComboBoxItemGroupAttributes {
   /**
    * Defines the text of the component.
+   * @default undefined
    */
-  text?: string;
+  headerText?: string | undefined;
 }
 
 interface ComboBoxItemGroupDomRef extends Required<ComboBoxItemGroupAttributes>, Ui5DomRef {}
@@ -32,7 +33,7 @@ interface ComboBoxItemGroupPropTypes
  */
 const ComboBoxItemGroup = withWebComponent<ComboBoxItemGroupPropTypes, ComboBoxItemGroupDomRef>(
   'ui5-cb-item-group',
-  ['text'],
+  ['headerText'],
   [],
   [],
   [],

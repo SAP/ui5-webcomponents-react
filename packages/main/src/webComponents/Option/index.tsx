@@ -8,8 +8,9 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface OptionAttributes {
   /**
    * Defines the `additionalText`, displayed in the end of the list item.
+   * @default undefined
    */
-  additionalText?: string;
+  additionalText?: string | undefined;
 
   /**
    * Defines the `icon` source URI.
@@ -17,8 +18,9 @@ interface OptionAttributes {
    * **Note:**
    * SAP-icons font provides numerous built-in icons. To find all the available icons, see the
    * [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Defines the selected state of the component.
@@ -30,14 +32,16 @@ interface OptionAttributes {
    * Defines the text of the tooltip that would be displayed for the list item.
    *
    * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 
   /**
    * Defines the value of the `Select` inside an HTML Form element when this component is selected.
    * For more information on HTML Form support, see the `name` property of `Select`.
+   * @default undefined
    */
-  value?: string;
+  value?: string | undefined;
 }
 
 interface OptionDomRef extends Required<OptionAttributes>, Ui5DomRef {}

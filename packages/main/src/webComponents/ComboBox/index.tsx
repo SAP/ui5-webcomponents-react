@@ -11,13 +11,15 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface ComboBoxAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the component
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines whether the component is in disabled state.
@@ -45,8 +47,9 @@ interface ComboBoxAttributes {
    * **Note:** This property is only applicable within the context of an HTML Form element.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines whether the value will be autocompleted to match an item
@@ -59,8 +62,9 @@ interface ComboBoxAttributes {
   /**
    * Defines a short hint intended to aid the user with data entry when the
    * component has no value.
+   * @default undefined
    */
-  placeholder?: string;
+  placeholder?: string | undefined;
 
   /**
    * Defines whether the component is read-only.

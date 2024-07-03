@@ -13,8 +13,9 @@ interface FilterItemOptionAttributes {
 
   /**
    * Defines the text of the component.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 }
 
 interface FilterItemOptionDomRef extends Required<FilterItemOptionAttributes>, Ui5DomRef {}

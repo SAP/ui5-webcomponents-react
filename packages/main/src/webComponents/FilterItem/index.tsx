@@ -7,13 +7,15 @@ import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.j
 interface FilterItemAttributes {
   /**
    * Defines the additional text of the component.
+   * @default undefined
    */
-  additionalText?: string;
+  additionalText?: string | undefined;
 
   /**
    * Defines the text of the component.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 }
 
 interface FilterItemDomRef extends Required<FilterItemAttributes>, Ui5DomRef {}

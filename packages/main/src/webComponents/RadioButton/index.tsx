@@ -11,15 +11,17 @@ interface RadioButtonAttributes {
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.6.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the IDs of the elements that label the component.
    *
    * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines whether the component is checked or not.
@@ -49,8 +51,9 @@ interface RadioButtonAttributes {
    * **Note:** The selection can be changed with `ARROW_UP/DOWN` and `ARROW_LEFT/RIGHT` keys between radio buttons in same group.
    *
    * **Note:** Only one radio button can be selected per group.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines whether the component is read-only.
@@ -71,8 +74,9 @@ interface RadioButtonAttributes {
 
   /**
    * Defines the text of the component.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 
   /**
    * Defines the form value of the component.

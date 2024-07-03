@@ -11,6 +11,14 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface ViewSettingsDialogAttributes {
   /**
+   * Indicates if the dialog is open.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   * @default false
+   */
+  open?: boolean;
+
+  /**
    * Defines the initial sort order.
    * @default false
    */
@@ -29,19 +37,20 @@ interface ViewSettingsDialogDomRef extends Required<ViewSettingsDialogAttributes
    * @returns {void}
    */
   setConfirmedSettings: (settings: VSDSettings) => void;
-
-  /**
-   * Shows the dialog.
-   * @returns {void}
-   */
-  show: () => void;
 }
 
 interface ViewSettingsDialogPropTypes
   extends ViewSettingsDialogAttributes,
     Omit<
       CommonProps,
-      keyof ViewSettingsDialogAttributes | 'filterItems' | 'sortItems' | 'onBeforeOpen' | 'onCancel' | 'onConfirm'
+      | keyof ViewSettingsDialogAttributes
+      | 'filterItems'
+      | 'sortItems'
+      | 'onBeforeOpen'
+      | 'onCancel'
+      | 'onClose'
+      | 'onConfirm'
+      | 'onOpen'
     > {
   /**
    * Defines the `filterItems` list.
@@ -79,9 +88,23 @@ interface ViewSettingsDialogPropTypes
   onCancel?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogCancelEventDetail>) => void;
 
   /**
+   * Fired after the dialog is closed.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   */
+  onClose?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef>) => void;
+
+  /**
    * Fired when confirmation button is activated.
    */
   onConfirm?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogConfirmEventDetail>) => void;
+
+  /**
+   * Fired after the dialog is opened.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   */
+  onOpen?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef>) => void;
 }
 
 /**
@@ -108,9 +131,9 @@ interface ViewSettingsDialogPropTypes
 const ViewSettingsDialog = withWebComponent<ViewSettingsDialogPropTypes, ViewSettingsDialogDomRef>(
   'ui5-view-settings-dialog',
   [],
-  ['sortDescending'],
+  ['open', 'sortDescending'],
   ['filterItems', 'sortItems'],
-  ['before-open', 'cancel', 'confirm'],
+  ['before-open', 'cancel', 'close', 'confirm', 'open'],
   () => import('@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js')
 );
 

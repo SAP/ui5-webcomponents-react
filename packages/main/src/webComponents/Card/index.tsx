@@ -10,13 +10,15 @@ interface CardAttributes {
    * Defines the accessible name of the component, which is used as the name of the card region and should be unique per card.
    *
    * **Note:** `accessibleName` should be always set, unless `accessibleNameRef` is set.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the IDs of the elements that label the component.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 }
 
 interface CardDomRef extends Required<CardAttributes>, Ui5DomRef {}

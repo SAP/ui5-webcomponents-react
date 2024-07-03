@@ -11,8 +11,9 @@ interface FormAttributes {
    * Defines the header text of the component.
    *
    * **Note:** The property gets overridden by the `header` slot.
+   * @default undefined
    */
-  headerText?: string;
+  headerText?: string | undefined;
 
   /**
    * Defines the vertical spacing between form items.

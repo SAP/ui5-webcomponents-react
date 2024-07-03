@@ -34,15 +34,10 @@ interface NotificationListGroupItemAttributes {
   read?: boolean;
 
   /**
-   * Defines the selected state of the component.
-   * @default false
-   */
-  selected?: boolean;
-
-  /**
    * Defines the `titleText` of the item.
+   * @default undefined
    */
-  titleText?: string;
+  titleText?: string | undefined;
 }
 
 interface NotificationListGroupItemDomRef extends Required<NotificationListGroupItemAttributes>, Ui5DomRef {}
@@ -91,7 +86,7 @@ interface NotificationListGroupItemPropTypes
 const NotificationListGroupItem = withWebComponent<NotificationListGroupItemPropTypes, NotificationListGroupItemDomRef>(
   'ui5-li-notification-group',
   ['loadingDelay', 'titleText'],
-  ['collapsed', 'loading', 'read', 'selected'],
+  ['collapsed', 'loading', 'read'],
   [],
   ['toggle'],
   () => import('@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js')

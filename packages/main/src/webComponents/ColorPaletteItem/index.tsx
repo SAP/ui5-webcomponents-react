@@ -1,7 +1,6 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ColorPaletteItem.js';
-import type { CSSProperties } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
@@ -21,9 +20,8 @@ interface ColorPaletteItemAttributes {
    * Defines the colour of the component.
    *
    * **Note:** The value should be a valid CSS color.
-   * @default undefined
    */
-  value?: CSSProperties['color'];
+  value?: string;
 }
 
 interface ColorPaletteItemDomRef extends Required<ColorPaletteItemAttributes>, Ui5DomRef {}

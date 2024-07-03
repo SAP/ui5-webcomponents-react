@@ -29,13 +29,15 @@ interface LinkAttributes {
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the input
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines the ARIA role of the component.
@@ -43,7 +45,7 @@ interface LinkAttributes {
    * **Note:** Use the <code>LinkAccessibleRole.Button</code> role in cases when navigation is not expected to occur and the href property is not defined.
    *
    * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
-   * @default "link"
+   * @default "Link"
    */
   accessibleRole?: LinkAccessibleRole | keyof typeof LinkAccessibleRole;
 
@@ -74,15 +76,17 @@ interface LinkAttributes {
    * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  endIcon?: string;
+  endIcon?: string | undefined;
 
   /**
    * Defines the component href.
    *
    * **Note:** Standard hyperlink behavior is supported.
+   * @default undefined
    */
-  href?: string;
+  href?: string | undefined;
 
   /**
    * Defines the icon, displayed as graphical element within the component before the link's text.
@@ -95,8 +99,9 @@ interface LinkAttributes {
    * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Defines the component target.
@@ -110,15 +115,17 @@ interface LinkAttributes {
    * - `_search`
    *
    * **This property must only be used when the `href` property is set.**
+   * @default undefined
    */
-  target?: string;
+  target?: string | undefined;
 
   /**
    * Defines the tooltip of the component.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 
   /**
    * Defines how the text of a component will be displayed when there is not enough space.

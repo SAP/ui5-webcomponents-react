@@ -28,8 +28,9 @@ interface BusyIndicatorAttributes {
 
   /**
    * Defines text to be displayed below the component. It can be used to inform the user of the current operation.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 
   /**
    * Defines the placement of the text.

@@ -25,8 +25,9 @@ interface TableAttributes {
    * Receives id(or many ids) of the elements that label the component.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-compat**.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines if the table is in busy state.
@@ -71,8 +72,9 @@ interface TableAttributes {
    * **Note:** This property takes effect if `growing` is set to `Button`.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-compat**.
+   * @default undefined
    */
-  growingButtonSubtext?: string;
+  growingButtonSubtext?: string | undefined;
 
   /**
    * Defines the text that will be displayed inside the growing button at the bottom of the table,
@@ -83,8 +85,9 @@ interface TableAttributes {
    * **Note:** This property takes effect if `growing` is set to `Button`.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-compat**.
+   * @default undefined
    */
-  growingButtonText?: string;
+  growingButtonText?: string | undefined;
 
   /**
    * Defines if the value of `noDataText` will be diplayed when there is no rows present in the table.
@@ -104,8 +107,9 @@ interface TableAttributes {
 
   /**
    * Defines the text that will be displayed when there is no data and `hideNoData` is not present.
+   * @default undefined
    */
-  noDataText?: string;
+  noDataText?: string | undefined;
 
   /**
    * Determines whether the column headers remain fixed at the top of the page during

@@ -11,13 +11,15 @@ interface TimelineItemAttributes {
    * SAP-icons font provides numerous options.
    *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Defines the name of the item, displayed before the `title-text`.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines if the `name` is clickable.
@@ -27,13 +29,15 @@ interface TimelineItemAttributes {
 
   /**
    * Defines the subtitle text of the component.
+   * @default undefined
    */
-  subtitleText?: string;
+  subtitleText?: string | undefined;
 
   /**
    * Defines the title text of the component.
+   * @default undefined
    */
-  titleText?: string;
+  titleText?: string | undefined;
 }
 
 interface TimelineItemDomRef extends Required<TimelineItemAttributes>, Ui5DomRef {}

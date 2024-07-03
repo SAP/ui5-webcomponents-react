@@ -8,13 +8,15 @@ import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.j
 interface ListItemGroupAttributes {
   /**
    * Defines the accessible name of the header.
+   * @default undefined
    */
-  headerAccessibleName?: string;
+  headerAccessibleName?: string | undefined;
 
   /**
    * Defines the header text of the <code>ui5-li-group</code>.
+   * @default undefined
    */
-  headerText?: string;
+  headerText?: string | undefined;
 }
 
 interface ListItemGroupDomRef extends Required<ListItemGroupAttributes>, Ui5DomRef {}

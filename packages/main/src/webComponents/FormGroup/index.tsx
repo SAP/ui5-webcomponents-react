@@ -15,8 +15,9 @@ interface FormGroupAttributes {
 
   /**
    * Defines header text of the component.
+   * @default undefined
    */
-  headerText?: string;
+  headerText?: string | undefined;
 }
 
 interface FormGroupDomRef extends Required<FormGroupAttributes>, Ui5DomRef {}

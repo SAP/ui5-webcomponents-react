@@ -48,6 +48,7 @@ export * from './MediaGallery/index.js';
 export * from './MediaGalleryItem/index.js';
 export * from './Menu/index.js';
 export * from './MenuItem/index.js';
+export * from './MenuSeparator/index.js';
 export * from './MessageStrip/index.js';
 export * from './MultiComboBox/index.js';
 export * from './MultiComboBoxItem/index.js';

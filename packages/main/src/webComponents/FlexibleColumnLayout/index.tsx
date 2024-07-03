@@ -20,12 +20,8 @@ interface FlexibleColumnLayoutAttributes {
    *  - **startColumn**: `startColumn.role` and `startColumn.name`.
    *  - **midColumn**: `midColumn.role` and `midColumn.name`.
    *  - **endColumn**: `endColumn.role` and `endColumn.name`.
-   *  - **startArrowContainer**: `startArrowContainer.role` and `startArrowContainer.name`.
-   *  - **endArrowContainer**: `endArrowContainerrole.role` and `endArrowContainer.name`.
-   *  - **startArrowLeft**: `startArrowLeft.name`.
-   *  - **startArrowRight**: `startArrowRight.name`.
-   *  - **endArrowLeft**: `endArrowLeft.name`.
-   *  - **endArrowRight**: `endArrowRight.name`.
+   *  - **startSeparator**: `startSeparator.role` and `startSeparator.name`.
+   *  - **endSeparator**: `endSeparator.role` and `endSeparator.name`.
    *
    * The accessibility attributes support the following values:
    *
@@ -41,11 +37,12 @@ interface FlexibleColumnLayoutAttributes {
   accessibilityAttributes?: FCLAccessibilityAttributes;
 
   /**
-   * Defines the visibility of the arrows,
-   * used for expanding and shrinking the columns.
+   * Specifies if the user is allowed to change the columns layout by dragging the separator between the columns.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
    * @default false
    */
-  hideArrows?: boolean;
+  disableResizing?: boolean;
 
   /**
    * Defines the columns layout and their proportion.
@@ -129,7 +126,7 @@ interface FlexibleColumnLayoutPropTypes
    */
   startColumn?: UI5WCSlotsNode;
   /**
-   * Fired when the layout changes via user interaction by clicking the arrows
+   * Fired when the layout changes via user interaction by dragging the separators
    * or by changing the component size due to resizing.
    */
   onLayoutChange?: (
@@ -139,7 +136,7 @@ interface FlexibleColumnLayoutPropTypes
 
 /**
  * The `FlexibleColumnLayout` implements the list-detail-detail paradigm by displaying up to three pages in separate columns.
- * There are several possible layouts that can be changed either with the component API, or by pressing the arrows, displayed between the columns.
+ * There are several possible layouts that can be changed either with the component API, or by dragging the column separators.
  *
  * ### Usage
  *
@@ -152,11 +149,19 @@ interface FlexibleColumnLayoutPropTypes
  * The component would display 1 column for window size smaller than 599px, up to two columns between 599px and 1023px,
  * and 3 columns for sizes bigger than 1023px.
  *
+ * **Note:** When the component displays more than one column, the minimal width of each column is 312px. Consequently, when the user drags a column separator to resize the columns, the minimal allowed width of any resized column is 312px.
+ *
  * ### Keyboard Handling
  *
  * #### Basic Navigation
  *
- * - [Space] / [Enter] or [Return] - If focus is on the layout toggle button (arrow button), once activated, it triggers the associated action (such as expand/collapse the column).
+ * When a column separator is focused,  the following keyboard
+ * shortcuts allow the user to resize the columns and change the layout:
+ *
+ * - [Shift] + [Left] or [Shift] + [Right] - Moves the separator to the left or right, which resizes the columns accordingly.
+ * - [Left] or [Right] - Moves the separator to the left or right with a bigger step, which resizes the columns accordingly.
+ * - [Home] - Moves the separator to the start position.
+ * - [End] - Moves the separator to the end position.
  * - This component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].
  * In order to use this functionality, you need to import the following module:
  * `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
@@ -173,7 +178,7 @@ interface FlexibleColumnLayoutPropTypes
 const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, FlexibleColumnLayoutDomRef>(
   'ui5-flexible-column-layout',
   ['accessibilityAttributes', 'layout'],
-  ['hideArrows'],
+  ['disableResizing'],
   ['endColumn', 'midColumn', 'startColumn'],
   ['layout-change'],
   () => import('@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js')

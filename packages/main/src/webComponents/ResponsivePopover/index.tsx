@@ -21,8 +21,9 @@ interface ResponsivePopoverAttributes {
    * Defines the IDs of the elements that label the component.
    *
    * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Allows setting a custom role.
@@ -43,8 +44,9 @@ interface ResponsivePopoverAttributes {
    * Defines the header text.
    *
    * **Note:** If `header` slot is provided, the `headerText` is ignored.
+   * @default undefined
    */
-  headerText?: string;
+  headerText?: string | undefined;
 
   /**
    * Determines whether the component arrow is hidden.
@@ -63,8 +65,9 @@ interface ResponsivePopoverAttributes {
    *
    * **Note:** If an element with `autofocus` attribute is added inside the component,
    * `initialFocus` won't take effect.
+   * @default undefined
    */
-  initialFocus?: string;
+  initialFocus?: string | undefined;
 
   /**
    * Defines whether the component should close when

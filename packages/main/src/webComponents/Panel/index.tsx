@@ -10,8 +10,9 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface PanelAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Sets the accessible ARIA role of the component.
@@ -46,8 +47,9 @@ interface PanelAttributes {
    * The text is visible in both expanded and collapsed states.
    *
    * **Note:** This property is overridden by the `header` slot.
+   * @default undefined
    */
-  headerText?: string;
+  headerText?: string | undefined;
 
   /**
    * Indicates whether the transition between the expanded and the collapsed state of the component is animated. By default the animation is enabled.
