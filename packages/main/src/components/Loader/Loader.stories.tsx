@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import activateIcon from '@ui5/webcomponents-icons/dist/activate.js';
-import { spacing } from '@ui5/webcomponents-react-base';
 import { useEffect, useRef, useState } from 'react';
 import { FlexBoxDirection, LoaderType } from '../../enums/index.js';
 import { Card } from '../../webComponents/Card/index.js';
@@ -62,7 +61,7 @@ export const WithCard: Story = {
       >
         <FlexBox direction={FlexBoxDirection.Column}>
           {loading && <Loader {...args} />}
-          <Text style={spacing.sapUiContentPadding}>{text}</Text>
+          <Text style={{ padding: '1rem' }}>{text}</Text>
         </FlexBox>
       </Card>
     );
