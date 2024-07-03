@@ -1,3 +1,4 @@
+// @ts-expect-error: storybook can load json
 import cem from '@sb/custom-element-manifests/main.json';
 import type { Meta, StoryObj } from '@storybook/react';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';

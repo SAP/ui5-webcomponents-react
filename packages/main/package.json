@@ -44,9 +44,9 @@
   "scripts": {
     "clean": "rimraf dist tmp wrappers ssr",
     "build:i18n": "node scripts/generateI18n.mjs",
-    "build:client": "babel src --out-dir dist --extensions .ts,.tsx --env-name client && tsc --declarationDir dist",
-    "build:ssr": "babel src --out-dir ssr --extensions .ts,.tsx --env-name ssr && tsc --declarationDir ssr",
-    "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --declarationDir wrappers",
+    "build:client": "babel src --out-dir dist --extensions .ts,.tsx --env-name client && tsc --project tsconfig.build.json --declarationDir dist",
+    "build:ssr": "babel src --out-dir ssr --extensions .ts,.tsx --env-name ssr && tsc --project tsconfig.build.json --declarationDir ssr",
+    "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --project tsconfig.build.json --declarationDir wrappers",
     "build:css": "postcss --base src --dir dist/css src/**/*.css",
     "build:css-bundle": "node ../../config/merge-css-modules.js",
     "watch:css": "yarn build:css --watch"
