@@ -4,19 +4,7 @@
     "lib": ["es2022", "dom"],
     "types": ["cypress", "node", "@testing-library/cypress", "cypress-real-events"],
     "moduleResolution": "Node",
-    "jsx": "react-jsx",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "jsx": "react-jsx"
   },
-  "include": [
-    "cypress/**/*.ts",
-    "cypress/**/*.tsx",
-    "**/*.cy.ts",
-    "**/*.cy.tsx",
-    "cypress.config.ts",
-    "docs/knowledge-base/*.tsx",
-    "docs/knowledgeBaseExamples/*.tsx",
-    "vite.config.ts"
-  ]
+  "include": ["cypress", "**/*.cy.ts", "**/*.cy.tsx", "cypress.config.ts"]
 }

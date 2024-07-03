@@ -48,5 +48,5 @@
       ]
     }
   },
-  "ignore": ["**/*.cy.ts", "**/*.cy.tsx", "**/CodeGen.tsx", "**/*.stories.tsx"]
+  "ignore": ["dist", "**/*.cy.ts", "**/*.cy.tsx", "**/CodeGen.tsx", "**/*.stories.tsx"]
 }

@@ -1,4 +1,4 @@
-import { ComponentType, Context, Dispatch } from 'react';
+import type { ComponentType, Context, Dispatch } from 'react';
 
 interface UpdateModalStateAction {
   type: 'set' | 'reset';
@@ -23,5 +23,19 @@ declare global {
 
 declare module '*.md' {
   const content: string;
+  export default content;
+}
+
+declare module '*.png' {
+  const content: string;
+  export default content;
+}
+declare module '*.jpg' {
+  const content: string;
+  export default content;
+}
+
+declare module '*.module.css' {
+  const content: Record<string, string>;
   export default content;
 }
