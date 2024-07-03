@@ -47,8 +47,7 @@
     "react": "19.0.0-rc-c21bcd627b-20240624",
     "react-dom": "19.0.0-rc-c21bcd627b-20240624",
     "remark-gfm": "^4.0.0",
-    "tocbot": "4.28.2",
-    "typescript-eslint": "^7.0.1"
+    "tocbot": "4.28.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
@@ -101,6 +100,7 @@
     "storybook": "8.0.10",
     "typedoc": "^0.26.0",
     "typescript": "5.5.2",
+    "typescript-eslint": "^7.0.1",
     "vite": "^5.0.0",
     "vite-plugin-istanbul": "^6.0.0",
     "vite-tsconfig-paths": "^4.0.5"
