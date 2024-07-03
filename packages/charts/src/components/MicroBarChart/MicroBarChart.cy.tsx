@@ -1,5 +1,5 @@
 import { MicroBarChart } from './MicroBarChart.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
 
 const text1 = 'January';
 const text2 = 'February';

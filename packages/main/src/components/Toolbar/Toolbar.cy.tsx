@@ -18,7 +18,7 @@ import {
   OverflowToolbarToggleButton
 } from '../..';
 import { ToolbarDesign } from '../../enums/index.js';
-import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
+import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils.js';
 
 interface PropTypes {
   onOverflowChange: (event: {

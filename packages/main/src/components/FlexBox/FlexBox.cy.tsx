@@ -2,7 +2,7 @@ import { FlexBoxJustifyContent, FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap
 import { camelToKebabCase, lowercaseFirstLetter } from '../../internal/utils.js';
 import { FlexBox } from './index.js';
 import type { FlexBoxPropTypes } from './index.js';
-import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils.js';
 
 describe('FlexBox', () => {
   Object.values(FlexBoxJustifyContent).forEach((val: FlexBoxPropTypes['justifyContent']) => {

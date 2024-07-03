@@ -16,7 +16,7 @@ import {
 } from '../..';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
-import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({

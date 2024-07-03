@@ -235,6 +235,8 @@ const finalConfig = tseslint.config(
       'import/no-duplicates': 'error',
       'import/no-unresolved': 'error',
 
+      'no-prototype-builtins': 'off',
+
       ...pluginReactHooks.configs.recommended.rules
     }
   },

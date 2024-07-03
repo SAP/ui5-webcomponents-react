@@ -7,7 +7,7 @@ import { Text } from '../../webComponents/Text/index.js';
 import { NumericSideIndicator } from '../NumericSideIndicator';
 import type { AnalyticalCardHeaderPropTypes } from './index';
 import { AnalyticalCardHeader } from './index';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
 
 const TestComp = (props: Omit<CardPropTypes, 'children'>) => {
   return (
