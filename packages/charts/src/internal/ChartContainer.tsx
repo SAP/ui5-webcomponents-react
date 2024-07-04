@@ -1,10 +1,27 @@
-import { type CommonProps, Label } from '@ui5/webcomponents-react';
+import { BusyIndicator, Label } from '@ui5/webcomponents-react';
+import type { CommonProps } from '@ui5/webcomponents-react';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ComponentType, ReactElement, ReactNode } from 'react';
 import { Component, forwardRef } from 'react';
 import { ResponsiveContainer } from 'recharts';
+// todo: same issue as with Loader import
+// import { addCustomCSSWithScoping } from '@ui5/webcomponents-react/dist/internal/addCustomCSSWithScoping.js';
+import { addCustomCSSWithScoping } from '../../../main/src/internal/addCustomCSSWithScoping.js';
 import { classNames, styleData } from './ChartContainer.module.css.js';
+
+//todo: add feature request for parts or even a fix if this turns out to be a bug
+addCustomCSSWithScoping(
+  'ui5-busy-indicator',
+  `
+:host([data-component-name="ChartContainerBusyIndicator"]) .ui5-busy-indicator-busy-area{
+    background:unset;
+},
+:host([data-component-name="ChartContainerBusyIndicator"]) .ui5-busy-indicator-busy-area:focus {
+    border-radius: 0;
+}
+`
+);
 
 export interface ContainerProps extends CommonProps {
   children: ReactElement;
@@ -43,9 +60,17 @@ const ChartContainer = forwardRef<HTMLDivElement, ContainerProps>((props, ref) =
       {dataset?.length > 0 ? (
         <>
           {/*todo replace with BusyIndicator*/}
-          {loading && 'Loading...'}
+          {loading && (
+            <BusyIndicator
+              active
+              className={classNames.busyIndicator}
+              data-component-name="ChartContainerBusyIndicator"
+            />
+          )}
           <ErrorBoundary>
-            <ResponsiveContainer debounce={resizeDebounce}>{children}</ResponsiveContainer>
+            <ResponsiveContainer debounce={resizeDebounce} className={loading && classNames.loading}>
+              {children}
+            </ResponsiveContainer>
           </ErrorBoundary>
         </>
       ) : (

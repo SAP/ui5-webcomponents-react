@@ -107,8 +107,7 @@ addCustomCSSWithScoping(
 :host([data-component-name="AnalyticalTableBusyIndicator"]) .ui5-busy-indicator-busy-area:focus {
 border-radius: 0;
 }
-
-    `
+`
 );
 
 /**
