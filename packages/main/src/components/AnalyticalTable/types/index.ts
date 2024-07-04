@@ -299,14 +299,6 @@ export interface AnalyticalTableColumnDefinition {
   //use useDragAndDrop
   /**
    * Defines if the column is reorderable by dragging and dropping columns.
-   *
-   * Defaults to: `true`
-   *
-   * @deprecated please use `disableDragAndDrop` instead.
-   */
-  canReorder?: boolean;
-  /**
-   * Defines if the column is reorderable by dragging and dropping columns.
    */
   disableDragAndDrop?: boolean;
   /**
