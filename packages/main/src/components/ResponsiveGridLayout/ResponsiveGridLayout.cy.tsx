@@ -1,6 +1,6 @@
 import type { ResponsiveGridLayoutPropTypes } from './index.js';
 import { ResponsiveGridLayout } from './index.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
 
 const TestComp = (props: ResponsiveGridLayoutPropTypes) => (
   <ResponsiveGridLayout data-testid="rgl" {...props}>

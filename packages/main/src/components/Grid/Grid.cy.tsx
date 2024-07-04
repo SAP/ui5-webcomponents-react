@@ -1,7 +1,7 @@
 import { GridPosition } from '../../enums/index.js';
 import { Grid } from './index.js';
 import type { GridPropTypes } from './index.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
 
 const style = { height: '6rem', width: '100%' };
 

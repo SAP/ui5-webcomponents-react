@@ -1,6 +1,6 @@
 import { simpleDataSet } from '../../resources/DemoProps.js';
 import { DonutChart } from './DonutChart.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
 
 const dimension = {
   accessor: 'name'

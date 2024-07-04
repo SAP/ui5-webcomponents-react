@@ -1,6 +1,6 @@
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { BarChart } from './BarChart.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
 
 const dimensions = [
   {

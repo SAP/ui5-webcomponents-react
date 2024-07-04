@@ -10,7 +10,7 @@ import type { IndicationColor } from '../../enums/index.js';
 import { INDICATION_COLOR } from '../../i18n/i18n-defaults.js';
 import { Icon } from '../../webComponents/index.js';
 import { ObjectStatus } from './index.js';
-import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
 
 const statesWithCSSVars: {
   state: ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;

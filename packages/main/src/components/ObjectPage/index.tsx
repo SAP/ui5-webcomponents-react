@@ -491,7 +491,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       const lastSubSectionOrSection = lastSubSection ?? sectionElement.target;
       if ((currentTabModeSection && !lastSubSection) || (sectionNodes.length === 1 && !lastSubSection)) {
         setSectionSpacer(0);
-      } else if (!!tabContainerContainer) {
+      } else if (tabContainerContainer) {
         setSectionSpacer(
           objectPage.getBoundingClientRect().bottom -
             tabContainerContainer.getBoundingClientRect().bottom -

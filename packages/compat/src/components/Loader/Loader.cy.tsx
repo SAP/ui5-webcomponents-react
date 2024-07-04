@@ -1,6 +1,5 @@
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
-import type { LoaderType } from '@/packages/main';
-import { Loader } from '@/packages/main';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
+import { LoaderType, Loader } from '@/packages/main';
 
 // skip until component is moved to this package
 describe.skip('Loader', () => {

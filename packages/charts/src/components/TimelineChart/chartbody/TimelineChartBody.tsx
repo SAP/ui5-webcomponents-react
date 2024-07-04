@@ -197,7 +197,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
     color: string,
     isMilestone: boolean
   ) => {
-    const { x, y, width, height } = divRef.current?.getBoundingClientRect();
+    const { x, y, width, height } = divRef.current?.getBoundingClientRect() ?? {};
     // Adjust the x and y position of the tooltip popover in order to try
     // to prevent it from being cut off by the bounds of the parent div.
     const offSetX = mouseX - x;

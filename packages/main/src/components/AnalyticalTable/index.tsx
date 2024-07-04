@@ -586,11 +586,11 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       display: 'flex',
       flexDirection: 'column'
     };
-    if (!!rowHeight) {
+    if (rowHeight) {
       tableStyles['--_ui5wcr-AnalyticalTableRowHeight'] = `${rowHeight}px`;
       tableStyles['--_ui5wcr-AnalyticalTableHeaderRowHeight'] = `${rowHeight}px`;
     }
-    if (!!headerRowHeight) {
+    if (headerRowHeight) {
       tableStyles['--_ui5wcr-AnalyticalTableHeaderRowHeight'] = `${headerRowHeight}px`;
     }
 

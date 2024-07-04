@@ -33,7 +33,7 @@ import {
   Text,
   Title
 } from '../..';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
 
 describe('ObjectPage', () => {
   it('toggle header', () => {

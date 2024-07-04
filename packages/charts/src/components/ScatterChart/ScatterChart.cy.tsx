@@ -1,6 +1,6 @@
 import { scatterComplexDataSet } from '../../resources/DemoProps.js';
 import { ScatterChart } from './ScatterChart.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils.js';
 
 const measures = [
   {

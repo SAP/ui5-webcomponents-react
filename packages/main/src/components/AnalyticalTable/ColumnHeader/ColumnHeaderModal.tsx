@@ -93,7 +93,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
           );
         }
         break;
-      case 'group':
+      case 'group': {
         const willGroup = !column.isGrouped;
         column.toggleGroupBy(willGroup);
         if (typeof onGroupBy === 'function') {
@@ -105,6 +105,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
           );
         }
         break;
+      }
     }
     setPopoverOpen(false);
   };

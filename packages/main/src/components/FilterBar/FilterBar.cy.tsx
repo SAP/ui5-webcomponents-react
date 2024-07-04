@@ -15,7 +15,7 @@ import { VariantManagement } from '../VariantManagement';
 import { VariantItem } from '../VariantManagement/VariantItem';
 import type { FilterBarPropTypes } from './index.js';
 import { FilterBar } from './index.js';
-import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils.js';
 
 const variants = (
   <VariantManagement data-testid="variantManagement">
