@@ -1,12 +1,14 @@
 'use client';
 
+import type { CommonProps } from '@ui5/webcomponents-react';
 import { deprecationNotice, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
-import { LoaderType } from '../../enums/index.js';
-import { PLEASE_WAIT } from '../../i18n/i18n-defaults.js';
-import type { CommonProps } from '../../types/index.js';
+// todo: sb won't start with this (maybe because of vite.config alias paths?)
+// import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/i18n/i18n-defaults.js';
+import { PLEASE_WAIT } from '../../../../main/src/i18n/i18n-defaults.js';
+import { LoaderType } from '../../enums/LoaderType.js';
 import { classNames, styleData } from './Loader.module.css.js';
 
 export interface LoaderPropTypes extends CommonProps {
@@ -35,12 +37,10 @@ export interface LoaderPropTypes extends CommonProps {
 }
 
 /**
- * The `Loader` signals that an operation is currently being executed. It uses as little space as possible to allow the user to interact with the UI.<br />
+ * __Note__: There is no longer a concept of a Loader component defined by the UX guidelines! To indicate a loading state, please use the `BusyIndicator` instead. For backwards compatibility, the Loader is still available in the `@ui5/webcomponents-react-compat` package, but it may lack accessibility features and no longer receives feature updates.
+ *
+ * The `Loader` signals that an operation is currently being executed. It uses as little space as possible to allow the user to interact with the UI.
  * It can be used to signal a data update on an already existing dataset, or where an expansion will happen.
- *
- * __Note:__ This component is __deprecated__ and will be removed with our next major release (v2.0.0)! Please use the [BusyIndicator](https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-busyindicator--docs) instead.
- *
- * @deprecated This component is deprecated and will be removed with our next major release (v2.0.0)! Please use the [BusyIndicator](https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-busyindicator--docs) instead.
  */
 const Loader = forwardRef<HTMLDivElement, LoaderPropTypes>((props, ref) => {
   const { className, type = LoaderType.Indeterminate, progress = '0px', slot, style, delay = 0, ...rest } = props;

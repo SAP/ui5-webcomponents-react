@@ -13,7 +13,6 @@ export * from './components/FilterBar/index.js';
 export * from './components/FilterGroupItem/index.js';
 export * from './components/FlexBox/index.js';
 export * from './components/Grid/index.js';
-export * from './components/Loader/index.js';
 export * from './components/MessageBox/index.js';
 export * from './components/MessageView/index.js';
 export * from './components/MessageView/MessageItem.js';

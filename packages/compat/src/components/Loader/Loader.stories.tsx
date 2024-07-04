@@ -1,22 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import activateIcon from '@ui5/webcomponents-icons/dist/activate.js';
+import { Card, CardHeader, FlexBox, FlexBoxDirection, Icon, Text } from '@ui5/webcomponents-react';
 import { useEffect, useRef, useState } from 'react';
-import { FlexBoxDirection, LoaderType } from '../../enums/index.js';
-import { Card } from '../../webComponents/Card/index.js';
-import { CardHeader } from '../../webComponents/CardHeader/index.js';
-import { Icon } from '../../webComponents/Icon/index.js';
-import { Text } from '../../webComponents/Text/index.js';
-import { FlexBox } from '../FlexBox/index.js';
+import { LoaderType } from '../../enums/LoaderType.js';
 import { Loader } from './index.js';
 
 const meta = {
-  title: 'User Feedback / Loader',
+  title: 'Loader',
   component: Loader,
   argTypes: {},
   args: {
     type: LoaderType.Indeterminate,
     progress: '60%'
-  }
+  },
+  tags: ['package:@ui5/webcomponents-compat']
 } satisfies Meta<typeof Loader>;
 
 export default meta;
