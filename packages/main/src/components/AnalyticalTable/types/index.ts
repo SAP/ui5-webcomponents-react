@@ -598,12 +598,6 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   renderRowSubComponent?: (row?: any) => ReactNode;
   /**
-   * Defines whether a subcomponent should be rendered as expandable container or directly at the bottom of the row.
-   *
-   * @deprecated please use `subComponentsBehavior` instead.
-   */
-  alwaysShowSubComponent?: boolean;
-  /**
    * Defines the rendering and height calculation behavior of subcomponents when `renderRowSubComponent` is used.
    *
    * - __"Expandable":__ Render subcomponents as expandable container of each row.
