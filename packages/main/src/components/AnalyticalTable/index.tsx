@@ -135,7 +135,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     selectionBehavior = AnalyticalTableSelectionBehavior.Row,
     selectionMode = AnalyticalTableSelectionMode.None,
     showOverlay,
-    sortable = true,
+    sortable,
     style,
     subComponentsBehavior = AnalyticalTableSubComponentsBehavior.Expandable,
     subRowsKey = 'subRows',
