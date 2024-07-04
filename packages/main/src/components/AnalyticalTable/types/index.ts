@@ -9,10 +9,6 @@ import type {
   AnalyticalTableSubComponentsBehavior,
   AnalyticalTableVisibleRowCountMode,
   IndicationColor,
-  TableScaleWidthMode,
-  TableSelectionBehavior,
-  TableSelectionMode,
-  TableVisibleRowCountMode,
   TextAlign,
   VerticalAlign
 } from '../../../enums/index.js';
@@ -392,10 +388,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ When `"Auto"` or `"AutoWithEmptyRows"` is enabled, we recommend using a fixed height for the parent container.
    */
-  visibleRowCountMode?:
-    | AnalyticalTableVisibleRowCountMode
-    | keyof typeof AnalyticalTableVisibleRowCountMode
-    | TableVisibleRowCountMode;
+  visibleRowCountMode?: AnalyticalTableVisibleRowCountMode | keyof typeof AnalyticalTableVisibleRowCountMode;
   /**
    * Specifies the number of additional empty rows added to the bottom of a table that is normally __non__ scrollable.
    * Use this prop if you want to ensure that the table is scrollable.
@@ -513,10 +506,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Default:__ `"Row"`
    */
-  selectionBehavior?:
-    | AnalyticalTableSelectionBehavior
-    | keyof typeof AnalyticalTableSelectionBehavior
-    | TableSelectionBehavior;
+  selectionBehavior?: AnalyticalTableSelectionBehavior | keyof typeof AnalyticalTableSelectionBehavior;
   /**
    * Defines the `SelectionMode` of the table.
    *
@@ -526,7 +516,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * @default `"None"`
    */
-  selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode | TableSelectionMode;
+  selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode;
 
   /**
    * Defines the column growing behaviour. Possible Values:
@@ -542,7 +532,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * @default `"Default"`
    *
    */
-  scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode | TableScaleWidthMode;
+  scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode;
   /**
    * Defines the number of the CSS `scaleX(sx: number)` function. `sx` is representing the abscissa of the scaling vector.
    */
