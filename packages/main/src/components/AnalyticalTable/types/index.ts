@@ -423,8 +423,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Indicates whether a loading indicator should be shown.
    *
-   * __Note:__ If the data array is not empty and loading is set to `true` a `Loader` will be displayed underneath the header, otherwise a loading placeholder will be shown.
-   * You can use your own placeholder by passing it to the `LoadingComponent` prop.
+   * __Note:__ If the data array is not empty and loading is set to `true` a `BusyIndicator` will be displayed on top of the table, otherwise a skeleton placeholder will be shown.
    */
   loading?: boolean;
   /**
@@ -710,12 +709,6 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * __Default:__ `DefaultNoDataComponent`
    */
   NoDataComponent?: ComponentType<any>;
-  /**
-   * Component that will be rendered when the table is loading and has data.
-   *
-   * __Default:__ `DefaultLoadingComponent`
-   */
-  LoadingComponent?: ComponentType<any>;
 
   /**
    * Exposes the internal table instance.
