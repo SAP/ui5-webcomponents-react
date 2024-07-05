@@ -80,6 +80,7 @@ const measureDefaults = {
 const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
   const {
     loading,
+    loadingDelay,
     dataset,
     noLegend,
     noAnimation,
@@ -166,6 +167,7 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
       dataset={dataset}
       ref={ref}
       loading={loading}
+      loadingDelay={loadingDelay}
       Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}
       className={className}

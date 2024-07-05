@@ -128,6 +128,7 @@ type AvailableChartTypes = 'primary' | 'comparison' | 'additional' | string;
 const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) => {
   const {
     loading,
+    loadingDelay,
     dataset,
     onDataPointClick,
     noLegend,
@@ -271,6 +272,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
     <ChartContainer
       ref={componentRef}
       loading={loading}
+      loadingDelay={loadingDelay}
       dataset={dataset}
       Placeholder={ChartPlaceholder ?? Placeholder}
       style={style}

@@ -90,7 +90,7 @@ const resolveColor = (index: number, color = null) => {
  * The `MicroBarChart` compares different values of the same category to each other by displaying them in a compact way.
  */
 const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref) => {
-  const { loading, dataset, onDataPointClick, style, className, slot, ChartPlaceholder, ...rest } = props;
+  const { loading, loadingDelay, dataset, onDataPointClick, style, className, slot, ChartPlaceholder, ...rest } = props;
 
   useStylesheet(styleData, MicroBarChart.displayName);
 
@@ -140,6 +140,7 @@ const MicroBarChart = forwardRef<HTMLDivElement, MicroBarChartProps>((props, ref
     <ChartContainer
       dataset={dataset}
       loading={loading}
+      loadingDelay={loadingDelay}
       Placeholder={ChartPlaceholder ?? BarChartPlaceholder}
       ref={ref}
       style={style}

@@ -142,6 +142,7 @@ type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref) => {
   const {
     loading,
+    loadingDelay,
     dataset,
     onDataPointClick,
     noLegend,
@@ -276,6 +277,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
     <ChartContainer
       ref={componentRef}
       loading={loading}
+      loadingDelay={loadingDelay}
       dataset={dataset}
       Placeholder={ChartPlaceholder ?? Placeholder}
       style={style}

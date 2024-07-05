@@ -106,6 +106,7 @@ type AvailableChartTypes = 'line' | 'bar' | string;
 const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProps>((props, ref) => {
   const {
     loading,
+    loadingDelay,
     dataset,
     style,
     className,
@@ -177,6 +178,7 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
           tooltipConfig={lineTooltipConfig}
           noAnimation={noAnimation}
           loading={loading}
+          loadingDelay={loadingDelay}
           onClick={onClick}
           syncId={syncId}
           style={{ ...style, height: `calc(${style?.height} * 0.2)` }}
@@ -201,6 +203,7 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
         noAnimation={noAnimation}
         noLegend={noLegend}
         loading={loading}
+        loadingDelay={loadingDelay}
         onClick={onClick}
         onDataPointClick={onDataPointClick}
         syncId={syncId}

@@ -7,10 +7,15 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
   /**
    * Flag whether the chart should display a loading indicator.
    *
-   * This can either be a placeholder shimmer (in case the chart has no data yet) or a small
-   * loading bar in the top of the chart (in case the chart has already some data to display).
+   * This can either be a skeleton placeholder shimmer (in case the chart has no data yet) or a `BusyIndicator` on top of the chart (in case the chart has already some data to display).
    */
   loading?: boolean;
+  /**
+   * Defines the delay in milliseconds, after which the `BusyIndicator` will be visible on the screen.
+   *
+   * @default 1000
+   */
+  loadingDelay?: number;
   /**
    * The `dataset` is an array of object which will be displayed in the chart.
    */

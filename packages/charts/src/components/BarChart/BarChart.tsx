@@ -130,6 +130,7 @@ export interface BarChartProps extends IChartBaseProps {
 const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
   const {
     loading,
+    loadingDelay,
     dataset,
     noLegend,
     noAnimation,
@@ -226,6 +227,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     <ChartContainer
       dataset={dataset}
       loading={loading}
+      loadingDelay={loadingDelay}
       Placeholder={ChartPlaceholder ?? BarChartPlaceholder}
       ref={componentRef}
       style={style}
