@@ -219,7 +219,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
               {selectedMessage && (
                 <FlexBox className={classNames.details}>
                   <Icon
-                    data-type={selectedMessage.type}
+                    data-type={selectedMessage.type ?? ValueState.Negative}
                     name={getIconNameForType(selectedMessage.type)}
                     className={classNames.detailsIcon}
                   />
