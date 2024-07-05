@@ -94,11 +94,12 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const columnHeaderRef = useRef<HTMLDivElement>(null);
 
+  const childIsString = typeof children === 'string';
   const tooltip = (() => {
     if (headerTooltip) {
       return headerTooltip;
     }
-    if (typeof children === 'string') {
+    if (childIsString) {
       return children;
     }
     return null;
@@ -163,7 +164,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
       className={clsx(classNames.thContainer, showVerticalEndBorder && classNames.verticalEndBorder)}
       style={{
         position: 'absolute',
-        top: 0,
+        insetBlockStart: 0,
         width: `${virtualColumn.size}px`,
         ...directionStyles
       }}
@@ -197,19 +198,27 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
         aria-sort={ariaSort}
         title={title}
       >
-        <div className={classNames.header} data-h-align={column.hAlign}>
-          <Text
-            title={tooltip}
-            maxLines={1}
-            style={textStyle}
-            className={clsx(
-              classNames.text,
-              columnId === '__ui5wcr__internal_selection_column' && classNames.selectAllCheckBoxContainer
-            )}
-            data-component-name={`AnalyticalTableHeaderHeaderContentContainer-${columnId}`}
-          >
-            {children}
-          </Text>
+        <div
+          className={clsx(
+            classNames.header,
+            columnId === '__ui5wcr__internal_selection_column' && classNames.selectAllCheckBoxContainer
+          )}
+          data-h-align={column.hAlign}
+          data-component-name={`AnalyticalTableHeaderContentContainer-${columnId}`}
+        >
+          {childIsString ? (
+            <Text
+              title={tooltip}
+              maxLines={1}
+              style={textStyle}
+              className={classNames.text}
+              data-component-name={`AnalyticalTableHeaderTextContentContainer-${columnId}`}
+            >
+              {children}
+            </Text>
+          ) : (
+            children
+          )}
           <div
             className={classNames.iconContainer}
             data-component-name={`AnalyticalTableHeaderIconsContainer-${columnId}`}
