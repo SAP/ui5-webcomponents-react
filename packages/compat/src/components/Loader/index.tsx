@@ -1,13 +1,11 @@
 'use client';
 
 import type { CommonProps } from '@ui5/webcomponents-react';
+import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/i18n/i18n-defaults.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
-// todo: sb won't start with this (maybe because of vite.config alias paths?)
-// import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/i18n/i18n-defaults.js';
-import { PLEASE_WAIT } from '../../../../main/src/i18n/i18n-defaults.js';
 import { LoaderType } from '../../enums/LoaderType.js';
 import { classNames, styleData } from './Loader.module.css.js';
 

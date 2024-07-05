@@ -1,13 +1,11 @@
 import { BusyIndicator, Label } from '@ui5/webcomponents-react';
 import type { CommonProps } from '@ui5/webcomponents-react';
+import { addCustomCSSWithScoping } from '@ui5/webcomponents-react/dist/internal/addCustomCSSWithScoping.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ComponentType, ReactElement, ReactNode } from 'react';
 import { Component, forwardRef } from 'react';
 import { ResponsiveContainer } from 'recharts';
-// todo: same issue as with Loader import
-// import { addCustomCSSWithScoping } from '@ui5/webcomponents-react/dist/internal/addCustomCSSWithScoping.js';
-import { addCustomCSSWithScoping } from '../../../main/src/internal/addCustomCSSWithScoping.js';
 import { classNames, styleData } from './ChartContainer.module.css.js';
 
 //todo: add feature request for parts or even a fix if this turns out to be a bug
