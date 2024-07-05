@@ -20,7 +20,7 @@ interface OptionCustomAttributes {
   selected?: boolean;
 
   /**
-   * Defines the text of the tooltip that would be displayed for the list item.
+   * Defines the tooltip of the option.
    * @default undefined
    */
   tooltip?: string | undefined;

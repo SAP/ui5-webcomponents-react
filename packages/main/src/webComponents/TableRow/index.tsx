@@ -13,15 +13,15 @@ interface TableRowAttributes {
   interactive?: boolean;
 
   /**
-   * Unique identifier of the component.
-   */
-  key?: string;
-
-  /**
    * Defines the navigated state of the row.
    * @default false
    */
   navigated?: boolean;
+
+  /**
+   * Unique identifier of the row.
+   */
+  rowKey?: string;
 }
 
 interface TableRowDomRef extends Required<TableRowAttributes>, Ui5DomRef {}
@@ -46,7 +46,7 @@ interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof 
  */
 const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   'ui5-table-row',
-  ['key'],
+  ['rowKey'],
   ['interactive', 'navigated'],
   [],
   [],

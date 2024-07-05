@@ -7,7 +7,7 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface OptionAttributes {
   /**
-   * Defines the `additionalText`, displayed in the end of the list item.
+   * Defines the `additionalText`, displayed in the end of the option.
    * @default undefined
    */
   additionalText?: string | undefined;
@@ -29,7 +29,7 @@ interface OptionAttributes {
   selected?: boolean;
 
   /**
-   * Defines the text of the tooltip that would be displayed for the list item.
+   * Defines the tooltip of the option.
    *
    * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
    * @default undefined

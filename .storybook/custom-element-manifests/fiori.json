@@ -7329,6 +7329,9 @@
             {
               "kind": "field",
               "name": "disableDeleteButton",
+              "type": {
+                "text": "boolean"
+              },
               "description": "Disables the delete button.",
               "default": "false",
               "privacy": "public",
@@ -7555,7 +7558,7 @@
               "default": "false",
               "fieldName": "disableDeleteButton",
               "type": {
-                "text": "any"
+                "text": "boolean"
               }
             },
             {

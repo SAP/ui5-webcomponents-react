@@ -15096,7 +15096,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-message-strip` component enables the embedding of app-related messages.\nIt displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Critical and Negative.\nEach message can have a Close button, so that it can be removed from the UI, if needed.\n\n### Usage\n\nFor the `ui5-message-strip` component, you can define whether it displays\nan icon in the beginning and a close button. Moreover, its size and background\ncan be controlled with CSS.\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/MessageStrip.js\";`",
+          "description": "### Overview\n\nThe ui5-message-strip component allows for the embedding of application-related messages.\nIt supports four semantic designs, each with its own color and icon: \"Information\", \"Positive\", \"Critical\", and \"Negative\".\nAdditionally, users can choose from two color sets (\"ColorSet1\" and \"ColorSet2\"), each containing 10 predefined color schemes.\nEach message shows a \"Close\" button, so that it can be removed from the UI, if needed.\n\n### Usage\n\nFor the `ui5-message-strip` component, you can define whether it displays\nan icon in the beginning and a close button. Moreover, its size and background\ncan be controlled with CSS.\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/MessageStrip.js\";`",
           "name": "MessageStrip",
           "slots": [
             {
@@ -16729,7 +16729,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the `additionalText`, displayed in the end of the list item.",
+              "description": "Defines the `additionalText`, displayed in the end of the option.",
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15",
@@ -16741,7 +16741,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "description": "Defines the tooltip of the option.",
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "1.23.0",
@@ -16779,7 +16779,7 @@
               }
             },
             {
-              "description": "Defines the `additionalText`, displayed in the end of the list item.",
+              "description": "Defines the `additionalText`, displayed in the end of the option.",
               "name": "additional-text",
               "default": "undefined",
               "fieldName": "additionalText",
@@ -16788,7 +16788,7 @@
               }
             },
             {
-              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "description": "Defines the tooltip of the option.",
               "name": "tooltip",
               "default": "undefined",
               "fieldName": "tooltip",
@@ -16890,7 +16890,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "description": "Defines the tooltip of the option.",
               "default": "undefined",
               "privacy": "public",
               "_ui5validator": "String"
@@ -16927,7 +16927,7 @@
               }
             },
             {
-              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "description": "Defines the tooltip of the option.",
               "name": "tooltip",
               "default": "undefined",
               "fieldName": "tooltip",
@@ -22992,7 +22992,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-table` component provides a set of sophisticated features for displaying and dealing with vast amounts of data in a responsive manner.\nTo render the `ui5-table`, you need to define the columns and rows. You can use the provided `ui5-table-header-row` and `ui5-table-row` components for this purpose.\n\n### Features\n\nThe `ui5-table` can be enhanced in its functionalities by applying different features.\nFeatures can be slotted into the `features` slot, to enable them in the component.\n\nThe following features are currently available:\n\n* [TableSelection](../TableSelection) - adds selection capabilities to the table\n* [TableGrowing](../TableGrowing) - provides growing capabilities to load more data\n\n### Keyboard Handling\n\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\nFurthermore, you can interact with `ui5-table` via the following keys:\n\nIf the focus is on a row, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Navigates down\n* <kbd>Up</kbd> - Navigates up\n* <kbd>Right</kbd> - Selects the first cell of the row\n* <kbd>Space</kbd> - Toggles the selection of the row\n* <kbd>Ctrl/Cmd + A</kbd> - In multi selection mode, toggles the selection of all rows\n* <kbd>Home</kbd> - Navigates to the first row, if the focus is on the first row, navigates to the header row\n* <kbd>End</kbd> - Navigates to the last row, if the focus is on the last row, navigates to the growing button\n* <kbd>Page Up</kbd> - Navigates one page up, if the focus is on the first row, navigates to the header row\n* <kbd>Page Down</kbd> - Navigates one page down, if the focus is on the last row, navigates to the growing button\n* <kbd>F2</kbd> - Focuses the first tabbable element in the row\n* <kbd>F7</kbd> - If focus position is remembered, moves focus to the corresponding focus position row, otherwise to the first tabbable element within the row\n* <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table\n\n\nIf the focus is on a cell, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Navigates down\n* <kbd>Up</kbd> - Navigates up\n* <kbd>Right</kbd> - Navigates right\n* <kbd>Left</kbd> - Navigates left, if the focus is on the first cell of the row, the focus is moved to the row.\n* <kbd>Home</kbd> - Navigates to the first cell of the current row, if the focus is on the first cell, navigates to the corresponding row\n* <kbd>End</kbd> - Navigates to the last cell of the current row, if the focus is on the last cell, navigates to the corresponding row\n* <kbd>Page Up</kbd> - Navigates one page up while keeping the focus in same column\n* <kbd>Page Down</kbd> - Navigates one page down while keeping the focus in same column\n* <kbd>F2</kbd> - Toggles the focus between the first tabbable cell content and the cell\n* <kbd>Enter</kbd> - Focuses the first tabbable cell content\n* <kbd>F7</kbd> - If the focus is on an interactive element inside a row, moves focus to the corresponding row and remembers the focus position of the element within the row\n* <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table\n\n\nIf the focus is on an interactive cell content, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Move the focus to the interactive element in the same column of the previous row, unless the focused element prevents the default\n* <kbd>Up</kbd> - Move the focus to the interactive element in the same column of the next row, unless the focused element prevents the default\n* <kbd>[Shift]Tab</kbd> - Move the focus to the element in the tab chain\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Table.js\";`\\\n`import \"@ui5/webcomponents/dist/TableRow.js\";` (`ui5-table-row`)\\\n`import \"@ui5/webcomponents/dist/TableCell.js\";` (`ui5-table-cell`)\\\n`import \"@ui5/webcomponents/dist/TableHeaderRow.js\";` (`ui5-table-header-row`)\\\n`import \"@ui5/webcomponents/dist/TableHeaderCell.js\";` (`ui5-table-header-cell`)",
+          "description": "### Overview\n\nThe `ui5-table` component provides a set of sophisticated features for displaying and dealing with vast amounts of data in a responsive manner.\nTo render the `ui5-table`, you need to define the columns and rows. You can use the provided `ui5-table-header-row` and `ui5-table-row` components for this purpose.\n\n### Features\n\nThe `ui5-table` can be enhanced in its functionalities by applying different features.\nFeatures can be slotted into the `features` slot, to enable them in the component.\nFeatures need to be imported separately, as they are not enabled by default.\n\nThe following features are currently available:\n\n* [TableSelection](../TableSelection) - adds selection capabilities to the table\n* [TableGrowing](../TableGrowing) - provides growing capabilities to load more data\n\n### Keyboard Handling\n\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\nFurthermore, you can interact with `ui5-table` via the following keys:\n\nIf the focus is on a row, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Navigates down\n* <kbd>Up</kbd> - Navigates up\n* <kbd>Right</kbd> - Selects the first cell of the row\n* <kbd>Space</kbd> - Toggles the selection of the row\n* <kbd>Ctrl/Cmd + A</kbd> - In multi selection mode, toggles the selection of all rows\n* <kbd>Home</kbd> - Navigates to the first row, if the focus is on the first row, navigates to the header row\n* <kbd>End</kbd> - Navigates to the last row, if the focus is on the last row, navigates to the growing button\n* <kbd>Page Up</kbd> - Navigates one page up, if the focus is on the first row, navigates to the header row\n* <kbd>Page Down</kbd> - Navigates one page down, if the focus is on the last row, navigates to the growing button\n* <kbd>F2</kbd> - Focuses the first tabbable element in the row\n* <kbd>F7</kbd> - If focus position is remembered, moves focus to the corresponding focus position row, otherwise to the first tabbable element within the row\n* <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table\n\n\nIf the focus is on a cell, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Navigates down\n* <kbd>Up</kbd> - Navigates up\n* <kbd>Right</kbd> - Navigates right\n* <kbd>Left</kbd> - Navigates left, if the focus is on the first cell of the row, the focus is moved to the row.\n* <kbd>Home</kbd> - Navigates to the first cell of the current row, if the focus is on the first cell, navigates to the corresponding row\n* <kbd>End</kbd> - Navigates to the last cell of the current row, if the focus is on the last cell, navigates to the corresponding row\n* <kbd>Page Up</kbd> - Navigates one page up while keeping the focus in same column\n* <kbd>Page Down</kbd> - Navigates one page down while keeping the focus in same column\n* <kbd>F2</kbd> - Toggles the focus between the first tabbable cell content and the cell\n* <kbd>Enter</kbd> - Focuses the first tabbable cell content\n* <kbd>F7</kbd> - If the focus is on an interactive element inside a row, moves focus to the corresponding row and remembers the focus position of the element within the row\n* <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table\n\n\nIf the focus is on an interactive cell content, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Move the focus to the interactive element in the same column of the previous row, unless the focused element prevents the default\n* <kbd>Up</kbd> - Move the focus to the interactive element in the same column of the next row, unless the focused element prevents the default\n* <kbd>[Shift]Tab</kbd> - Move the focus to the element in the tab chain\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Table.js\";`\\\n`import \"@ui5/webcomponents/dist/TableRow.js\";` (`ui5-table-row`)\\\n`import \"@ui5/webcomponents/dist/TableCell.js\";` (`ui5-table-cell`)\\\n`import \"@ui5/webcomponents/dist/TableHeaderRow.js\";` (`ui5-table-header-row`)\\\n`import \"@ui5/webcomponents/dist/TableHeaderCell.js\";` (`ui5-table-header-cell`)",
           "name": "Table",
           "slots": [
             {
@@ -23733,12 +23733,12 @@
           "members": [
             {
               "kind": "field",
-              "name": "key",
+              "name": "rowKey",
               "type": {
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Unique identifier of the component.",
+              "description": "Unique identifier of the row.",
               "privacy": "public",
               "_ui5validator": "String"
             },
@@ -23767,10 +23767,10 @@
           ],
           "attributes": [
             {
-              "description": "Unique identifier of the component.",
-              "name": "key",
+              "description": "Unique identifier of the row.",
+              "name": "row-key",
               "default": "\"\"",
-              "fieldName": "key",
+              "fieldName": "rowKey",
               "type": {
                 "text": "string"
               }
@@ -23862,7 +23862,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-table-selection` component is used inside the `ui5-table` ti add key-based selection capabilities to the `ui5-table`.\n\nThe component offers three selection modes:\n* Single - select a single row.\n* Multiple - select multiple rows.\n* None - no selection active.\n\nAs the selection is key-based, `ui5-table-row` components need to define a unique `key` property.\n\n### Usage\n\nThe `ui5-table-selection` component is only used inside the `ui5-table` component as a feature.\nIt has to be slotted inside the `ui5-table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<ui5-table>\n\t<ui5-table-selection mode=\"Multiple\" slot=\"features\"></ui5-table-selection>\n</ui5-table>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableSelection.js\";`",
+          "description": "### Overview\n\nThe `ui5-table-selection` component is used inside the `ui5-table` ti add key-based selection capabilities to the `ui5-table`.\n\nThe component offers three selection modes:\n* Single - select a single row.\n* Multiple - select multiple rows.\n* None - no selection active.\n\nAs the selection is key-based, `ui5-table-row` components need to define a unique `row-key` property.\n\n### Usage\n\nThe `ui5-table-selection` component is only used inside the `ui5-table` component as a feature.\nIt has to be slotted inside the `ui5-table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<ui5-table>\n\t<ui5-table-selection mode=\"Multiple\" slot=\"features\"></ui5-table-selection>\n</ui5-table>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableSelection.js\";`",
           "name": "TableSelection",
           "members": [
             {
@@ -24209,6 +24209,9 @@
             {
               "kind": "field",
               "name": "maxLines",
+              "type": {
+                "text": "number"
+              },
               "default": "Infinity",
               "description": "Defines the number of lines the text should wrap before it truncates.",
               "privacy": "public",
@@ -24273,7 +24276,7 @@
           "slots": [
             {
               "name": "valueStateMessage",
-              "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n \n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed if the component has\n`valueState` of type `Information`, `Warning` or `Error`.",
+              "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n \n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed if the component has\n`valueState` of type `Information`, `Critical` or `Negative`.",
               "_ui5since": "1.0.0-rc.7",
               "_ui5type": {
                 "text": "Array<HTMLElement>"

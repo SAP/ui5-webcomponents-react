@@ -113,6 +113,7 @@ interface TablePropTypes
  *
  * The `Table` can be enhanced in its functionalities by applying different features.
  * Features can be slotted into the `features` slot, to enable them in the component.
+ * Features need to be imported separately, as they are not enabled by default.
  *
  * The following features are currently available:
  *
