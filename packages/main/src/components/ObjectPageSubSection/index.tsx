@@ -22,7 +22,7 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
   /**
    * Defines the title of the `ObjectPageSubSection`.
    */
-  titleText?: string;
+  titleText: string;
   /**
    * Actions available for this subsection.
    *

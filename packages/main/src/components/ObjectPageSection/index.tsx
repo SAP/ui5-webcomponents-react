@@ -22,13 +22,11 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   /**
    * Defines the title of the `ObjectPageSection`.
    *
-   * @default ''
    */
-  titleText?: string;
+  titleText: string;
   /**
    * Defines whether the title is always displayed in uppercase.
    *
-   * @default true
    */
   titleTextUppercase?: boolean;
   /**
@@ -61,10 +59,10 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
  */
 const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((props, ref) => {
   const {
-    titleText = '',
+    titleText,
     id,
     children,
-    titleTextUppercase = true,
+    titleTextUppercase,
     className,
     style,
     hideTitleText,
