@@ -45,6 +45,7 @@ export function mapWebComponentTypeToPrimitive(type: string): string | null {
   switch (type) {
     case 'sap.ui.webc.base.types.Integer':
     case 'sap.ui.webc.base.types.Float':
+    case 'number':
       return 'number';
     case 'string':
       return 'string';

@@ -411,11 +411,14 @@
         "valueState": "ValueState"
       }
     },
-    "SuggestionGroupItem": {},
-    "SuggestionItem": {
-      "renamedEnums": {
-        "additionalTextState": "ValueState"
+    "SuggestionGroupItem": {
+      "newComponent": "SuggestionItemGroup",
+      "changedProps": {
+        "text": "headerText"
       }
+    },
+    "SuggestionItem": {
+      "removedProps": ["additionalTextState", "description", "icon", "iconEnd", "image", "type"]
     },
     "Switch": {},
     "Tab": {
