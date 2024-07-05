@@ -8,16 +8,12 @@
   position: relative;
 }
 
-.loading {
-  opacity: 0.4;
-}
-
 .busyIndicator {
-  /* todo: clarify if we want to use the block layer variable of ui5wc or our own approach*/
-  /*background: var(--_ui5_busy_indicator_block_layer);*/
+  background-color: color-mix(in srgb, var(--sapBackgroundColor) 45%, transparent);
   position: absolute;
   inset: 0;
   height: 100%;
+  z-index: 1;
 }
 
 :global(.has-click-handler) {
