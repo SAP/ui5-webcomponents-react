@@ -632,34 +632,34 @@ describe.skip('FilterBar.cy.tsx', () => {
     cy.get('div[data-order-id]').eq(4).find('[ui5-label]').should('have.text', 'RatingIndicator');
   });
 
-  it('visible & visibleInFilterBar', () => {
+  it('hidden & hiddenInFilterBar', () => {
     cy.mount(
       <FilterBar>
         <FilterGroupItem label="undefined">
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="false" visible={false}>
+        <FilterGroupItem label="false" hidden>
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="true" visible>
+        <FilterGroupItem label="true" hidden={false}>
           <StepInput />
         </FilterGroupItem>
         <FilterGroupItem label="undefined undefined">
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="false false" visible={false} visibleInFilterBar={false}>
+        <FilterGroupItem label="false false" hidden hiddenInFilterBar>
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="true true" visible visibleInFilterBar>
+        <FilterGroupItem label="true true">
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="true false" visible visibleInFilterBar={false}>
+        <FilterGroupItem label="true false" hiddenInFilterBar>
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="undefined true" visible visibleInFilterBar={true}>
+        <FilterGroupItem label="undefined true" hiddenInFilterBar={false}>
           <StepInput />
         </FilterGroupItem>
-        <FilterGroupItem label="undefined false" visible visibleInFilterBar={false}>
+        <FilterGroupItem label="undefined false" hiddenInFilterBar>
           <StepInput />
         </FilterGroupItem>
       </FilterBar>
@@ -724,7 +724,7 @@ function FilterBarWithReordering(props: Partial<FilterBarPropTypes>) {
       <FilterGroupItem
         key={`${uniqueId}-5`}
         label="SELECT w/ initial selected"
-        visibleInFilterBar={false}
+        hiddenInFilterBar
         orderId={`${uniqueId}-5`}
       >
         <Select>

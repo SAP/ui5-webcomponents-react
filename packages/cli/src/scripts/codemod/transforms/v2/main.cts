@@ -237,6 +237,44 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       });
     }
 
+    if (componentName === 'FilterGroupItem') {
+      jsxElements.forEach((el) => {
+        const visible = j(el).find(j.JSXAttribute, { name: { name: 'visible' } });
+        if (visible.size() > 0) {
+          const attr = visible.get();
+          if (
+            attr.value.value &&
+            ((attr.value.value.type === 'JSXAttribute' && attr.value.value === false) ||
+              (attr.value.value.type === 'JSXExpressionContainer' && attr.value.value.expression.value === false))
+          ) {
+            j(el)
+              .find(j.JSXOpeningElement)
+              .get()
+              .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('hidden'), null));
+          }
+          visible.remove();
+          isDirty = true;
+        }
+
+        const visibleInFilterBar = j(el).find(j.JSXAttribute, { name: { name: 'visibleInFilterBar' } });
+        if (visibleInFilterBar.size() > 0) {
+          const attr = visibleInFilterBar.get();
+          if (
+            attr.value.value &&
+            ((attr.value.value.type === 'JSXAttribute' && attr.value.value === false) ||
+              (attr.value.value.type === 'JSXExpressionContainer' && attr.value.value.expression.value === false))
+          ) {
+            j(el)
+              .find(j.JSXOpeningElement)
+              .get()
+              .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('hiddenInFilterBar'), null));
+          }
+          visibleInFilterBar.remove();
+          isDirty = true;
+        }
+      });
+    }
+
     if (componentName === 'Icon') {
       jsxElements.forEach((el) => {
         const interactive = j(el).find(j.JSXAttribute, { name: { name: 'interactive' } });
