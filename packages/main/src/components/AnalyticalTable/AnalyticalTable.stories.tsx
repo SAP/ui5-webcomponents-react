@@ -136,7 +136,6 @@ const meta = {
     reactTableOptions: { control: { disable: true } },
     tableHooks: { control: { disable: true } },
     NoDataComponent: { control: { disable: true } },
-    LoadingComponent: { control: { disable: true } },
     extension: { control: { disable: true } },
     tableInstance: { control: { disable: true } },
     portalContainer: { control: { disable: true } }

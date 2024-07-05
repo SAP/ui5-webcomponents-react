@@ -1,9 +1,8 @@
+import { LoaderType } from '../../enums/index.js';
+import { Loader } from './index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
-import type { LoaderType } from '@/packages/main';
-import { Loader } from '@/packages/main';
 
-// skip until component is moved to this package
-describe.skip('Loader', () => {
+describe('Loader', () => {
   it('indeterminate', () => {
     cy.mount(<Loader data-testid="loader" />);
     cy.findByTestId('loader').should('have.css', 'animation-duration', '1.2s');

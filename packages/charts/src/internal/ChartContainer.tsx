@@ -1,10 +1,25 @@
-import { type CommonProps, Label, Loader } from '@ui5/webcomponents-react';
+import { BusyIndicator, Label } from '@ui5/webcomponents-react';
+import type { CommonProps } from '@ui5/webcomponents-react';
+import { addCustomCSSWithScoping } from '@ui5/webcomponents-react/dist/internal/addCustomCSSWithScoping.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ComponentType, CSSProperties, ReactElement, ReactNode } from 'react';
+import type { ComponentType, ReactElement, ReactNode } from 'react';
 import { Component, forwardRef } from 'react';
 import { ResponsiveContainer } from 'recharts';
 import { classNames, styleData } from './ChartContainer.module.css.js';
+
+//todo: add feature request for parts or even a fix if this turns out to be a bug
+addCustomCSSWithScoping(
+  'ui5-busy-indicator',
+  `
+:host([data-component-name="ChartContainerBusyIndicator"]) .ui5-busy-indicator-busy-area{
+    background:unset;
+},
+:host([data-component-name="ChartContainerBusyIndicator"]) .ui5-busy-indicator-busy-area:focus {
+    border-radius: 0;
+}
+`
+);
 
 export interface ContainerProps extends CommonProps {
   children: ReactElement;
@@ -13,13 +28,6 @@ export interface ContainerProps extends CommonProps {
   loading?: boolean;
   resizeDebounce: number;
 }
-
-const loaderStyles: CSSProperties = {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0
-};
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { errorCount: number }> {
   state = {
@@ -49,7 +57,13 @@ const ChartContainer = forwardRef<HTMLDivElement, ContainerProps>((props, ref) =
     <div ref={ref} className={clsx(classNames.container, className)} slot={slot} {...rest}>
       {dataset?.length > 0 ? (
         <>
-          {loading && <Loader style={loaderStyles} />}
+          {loading && (
+            <BusyIndicator
+              active
+              className={classNames.busyIndicator}
+              data-component-name="ChartContainerBusyIndicator"
+            />
+          )}
           <ErrorBoundary>
             <ResponsiveContainer debounce={resizeDebounce}>{children}</ResponsiveContainer>
           </ErrorBoundary>

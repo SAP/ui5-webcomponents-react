@@ -15,7 +15,6 @@ export * from './FlexBoxJustifyContent.js';
 export * from './FlexBoxWrap.js';
 export * from './GridPosition.js';
 export * from './IndicationColor.js';
-export * from './LoaderType.js';
 export * from './MessageBoxAction.js';
 export * from './MessageBoxType.js';
 export * from './ObjectPageMode.js';

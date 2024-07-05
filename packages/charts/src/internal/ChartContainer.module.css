@@ -3,9 +3,17 @@
   color: var(--sapTextColor);
   font-family: var(--sapFontFamily);
   width: 100%;
-  /*todo remove in v2*/
   height: 400px;
+  min-height: fit-content;
   position: relative;
+}
+
+.busyIndicator {
+  background-color: color-mix(in srgb, var(--sapBackgroundColor) 45%, transparent);
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  z-index: 1;
 }
 
 :global(.has-click-handler) {
