@@ -347,6 +347,54 @@ function MyComponent() {
 }
 ```
 
+### Loader
+
+There is no longer a concept of a Loader component defined by the UX guidelines. To indicate a loading state, it is now recommended using the `BusyIndicator` instead.
+For backwards compatibility, the Loader is still available in the `@ui5/webcomponents-react-compat` package, but it may lack accessibility features and no longer receives feature updates.
+
+#### Replacing `Loader` with `BusyIndicator`
+
+Unfortunately, there is no general rule of thumb for how to replace the `Loader` component with the `BusyIndicator` component. In most cases it should be sufficient wrapping your component inside the `BusyIndicator`, as shown below:
+
+```jsx
+// v1
+
+<Card header={<CardHeader titleText="Card Header" />}>
+  <Loader />
+  <div style={{ height: '400px', padding: '1rem' }}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed felis tristique, molestie tellus id, rutrum
+    urna. Quisque mattis risus imperdiet gravida accumsan. Proin elementum efficitur diam eu interdum.
+  </div>
+</Card>
+
+// v2
+
+<Card header={<CardHeader titleText="Card Header" />}>
+  <BusyIndicator active delay={0}>
+    <div style={{ height: '400px', padding: '1rem' }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed felis tristique, molestie tellus id,
+      rutrum urna. Quisque mattis risus imperdiet gravida accumsan. Proin elementum efficitur diam eu interdum.
+    </div>
+  </BusyIndicator>
+</Card>
+```
+
+However, for components that apply complex styles such as `absolute/fixed` positioning, this might not be the case, as the `BusyIndicator` brings its own set of styles.
+In such instances, we recommend positioning the `BusyIndicator` above the element that should receive a loading indicator e.g. via `position: absolute`.
+If you encounter any issues migrating to the `BusyIndicator`, please feel free to reach out via [GitHub Discussions](https://github.com/SAP/ui5-webcomponents-react/discussions) or create an [Issue](https://github.com/SAP/ui5-webcomponents-react/issues/new/choose) if the behavior seems like a bug.
+
+#### Keep the `Loader`
+
+If you'd like to keep the `Loader` component instead of the `BusyIndicator` component, you now need to include the `@ui5/webcomponents-react-compat` package in your dependencies and adjust all import paths accordingly:
+
+```ts
+// v1
+import { Loader } from '@ui5/webcomponents-react';
+
+// v2
+import { Loader } from '@ui5/webcomponents-react-compat';
+```
+
 ### ObjectPage
 
 The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
