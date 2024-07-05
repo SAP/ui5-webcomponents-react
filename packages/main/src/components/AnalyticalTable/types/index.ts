@@ -428,6 +428,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   loading?: boolean;
   /**
    * Defines the delay in milliseconds, after which the `BusyIndicator` will be visible on the screen.
+   *
+   * @default 1000
    */
   loadingDelay?: number;
   /**
