@@ -427,6 +427,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    */
   loading?: boolean;
   /**
+   * Defines the delay in milliseconds, after which the `BusyIndicator` will be visible on the screen.
+   */
+  loadingDelay?: number;
+  /**
    * Setting this prop to `true` will show an overlay on top of the AnalyticalTable content preventing users from interacting with it.
    */
   showOverlay?: boolean;
