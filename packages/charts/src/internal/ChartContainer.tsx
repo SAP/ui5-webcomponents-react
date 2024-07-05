@@ -59,7 +59,6 @@ const ChartContainer = forwardRef<HTMLDivElement, ContainerProps>((props, ref) =
     <div ref={ref} className={clsx(classNames.container, className)} slot={slot} {...rest}>
       {dataset?.length > 0 ? (
         <>
-          {/*todo replace with BusyIndicator*/}
           {loading && (
             <BusyIndicator
               active
@@ -68,9 +67,7 @@ const ChartContainer = forwardRef<HTMLDivElement, ContainerProps>((props, ref) =
             />
           )}
           <ErrorBoundary>
-            <ResponsiveContainer debounce={resizeDebounce} className={loading && classNames.loading}>
-              {children}
-            </ResponsiveContainer>
+            <ResponsiveContainer debounce={resizeDebounce}>{children}</ResponsiveContainer>
           </ErrorBoundary>
         </>
       ) : (

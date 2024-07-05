@@ -1,7 +1,7 @@
 'use client';
 
 import type { CommonProps } from '@ui5/webcomponents-react';
-import { deprecationNotice, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
@@ -50,10 +50,6 @@ const Loader = forwardRef<HTMLDivElement, LoaderPropTypes>((props, ref) => {
 
   const loaderClasses = clsx(classNames.loader, className, classNames[`loader${type}`]);
   const backgroundSize = type !== LoaderType.Determinate ? '40%' : progress;
-
-  useEffect(() => {
-    deprecationNotice('Loader', 'The `Loader` component is deprecated. Please use the `BusyIndicator` instead.');
-  }, []);
 
   useEffect(() => {
     let timeout;

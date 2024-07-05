@@ -12,8 +12,7 @@ const meta = {
   args: {
     type: LoaderType.Indeterminate,
     progress: '60%'
-  },
-  tags: ['package:@ui5/webcomponents-compat']
+  }
 } satisfies Meta<typeof Loader>;
 
 export default meta;
