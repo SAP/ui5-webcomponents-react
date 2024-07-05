@@ -82,7 +82,13 @@ const meta = {
         type={ValueState.Critical}
         counter={3}
       />,
-      <MessageItem key={4} titleText={'Empty Message Type'} groupName={'Products'} />,
+      <MessageItem
+        key={4}
+        titleText={
+          'Long Empty Message Type (no title, no subtitle, no children/details) - The details view is only available if the `titleText` is not fully visible. It is NOT recommended to use long titles!'
+        }
+        groupName={'Products'}
+      />,
       <MessageItem
         key={5}
         titleText={'Information Message Type without subtitle'}
@@ -123,6 +129,7 @@ export const MessageViewInDialog: Story = {
           Open Dialog
         </Button>
         <Dialog
+          resizable
           style={{ width: '500px' }}
           className="contentPartNoPadding headerPartNoPadding"
           open={open}
