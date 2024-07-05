@@ -40,17 +40,14 @@ export interface FilterGroupItemPropTypes extends CommonProps {
    */
   required?: boolean;
   /**
-   * Defines whether the filter is visible.
+   * Defines whether the filter is hidden.
    *
-   * @default true
    */
-  visible?: boolean;
+  hidden?: boolean;
   /**
-   * Defines whether the filter is visible in the `FilterBar` or only in the filter configuration dialog.
-   *
-   * @default true
+   * Defines whether the filter is hidden in the `FilterBar` or only in the filter configuration dialog.
    */
-  visibleInFilterBar?: boolean;
+  hiddenInFilterBar?: boolean;
   /**
    * Defines whether the `groupName` of the `FilterGroupItems` is displayed in the filter configuration dialog.
    */

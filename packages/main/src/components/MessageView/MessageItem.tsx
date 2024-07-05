@@ -6,7 +6,7 @@ import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
-import { forwardRef, useContext } from 'react';
+import { Children, forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';
@@ -59,6 +59,9 @@ export interface MessageItemPropTypes extends CommonProps {
  */
 const MessageItem = forwardRef<ListItemCustomDomRef, MessageItemPropTypes>((props, ref) => {
   const { titleText, subtitleText, counter, type = ValueState.Negative, children, className, ...rest } = props;
+  const [isTitleTextOverflowing, setIsTitleTextIsOverflowing] = useState(false);
+  const titleTextRef = useRef<HTMLSpanElement>(null);
+  const hasDetails = !!(children || isTitleTextOverflowing);
 
   useStylesheet(styleData, MessageItem.displayName);
 
@@ -71,10 +74,10 @@ const MessageItem = forwardRef<ListItemCustomDomRef, MessageItemPropTypes>((prop
     subtitleText && classNames.withSubtitle
   );
 
-  const messageClasses = clsx(classNames.message, children && classNames.withChildren);
+  const messageClasses = clsx(classNames.message, hasDetails && classNames.withChildren);
 
   const handleListItemClick = (e) => {
-    if (children) {
+    if (hasDetails) {
       selectMessage(props);
       if (typeof rest.onClick === 'function') {
         rest.onClick(e);
@@ -90,13 +93,31 @@ const MessageItem = forwardRef<ListItemCustomDomRef, MessageItemPropTypes>((prop
       handleListItemClick(e);
     }
   };
+
+  const hasChildren = Children.count(children);
+  useEffect(() => {
+    const titleTextObserver = new ResizeObserver(([titleTextSpan]) => {
+      if (titleTextSpan.target.scrollWidth > titleTextSpan.target.clientWidth) {
+        setIsTitleTextIsOverflowing(true);
+      } else {
+        setIsTitleTextIsOverflowing(false);
+      }
+    });
+    if (!hasChildren && titleTextRef.current) {
+      titleTextObserver.observe(titleTextRef.current);
+    }
+    return () => {
+      titleTextObserver.disconnect();
+    };
+  }, [hasChildren]);
+
   return (
     <ListItemCustom
       onClick={handleListItemClick}
       onKeyDown={handleKeyDown}
       data-title={titleText}
       data-type={type}
-      type={children ? ListItemType.Active : ListItemType.Inactive}
+      type={hasDetails ? ListItemType.Active : ListItemType.Inactive}
       {...rest}
       className={listItemClasses}
       ref={ref}
@@ -109,11 +130,15 @@ const MessageItem = forwardRef<ListItemCustomDomRef, MessageItemPropTypes>((prop
           direction={FlexBoxDirection.Column}
           style={{ flex: 'auto', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
         >
-          {titleText && <span className={classNames.title}>{titleText}</span>}
-          {subtitleText && <Label className={classNames.subtitle}>{subtitleText}</Label>}
+          {titleText && (
+            <span className={classNames.title} ref={titleTextRef}>
+              {titleText}
+            </span>
+          )}
+          {titleText && subtitleText && <Label className={classNames.subtitle}>{subtitleText}</Label>}
         </FlexBox>
         {counter != null && <span className={classNames.counter}>{counter}</span>}
-        {children && <Icon className={classNames.navigation} name={iconArrowRight} />}
+        {hasDetails && <Icon className={classNames.navigation} name={iconArrowRight} />}
       </FlexBox>
     </ListItemCustom>
   );
