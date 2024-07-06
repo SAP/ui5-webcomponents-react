@@ -134,6 +134,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     infiniteScrollThreshold = 20,
     isTreeTable,
     loading,
+    loadingDelay,
     markNavigatedRow,
     minRows = 5,
     noDataText,
@@ -730,7 +731,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           </TitleBar>
         )}
         {extension && <div ref={extensionRef}>{extension}</div>}
-        <BusyIndicator active={loading} data-component-name="AnalyticalTableBusyIndicator">
+        <BusyIndicator active={loading} delay={loadingDelay} data-component-name="AnalyticalTableBusyIndicator">
           <FlexBox
             className={classNames.tableContainerWithScrollBar}
             data-component-name="AnalyticalTableContainerWithScrollbar"

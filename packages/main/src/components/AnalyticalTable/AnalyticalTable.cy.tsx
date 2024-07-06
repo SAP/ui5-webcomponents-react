@@ -1438,7 +1438,9 @@ describe('AnalyticalTable', () => {
     cy.mount(<AnalyticalTable data={[]} columns={columns} loading />);
     cy.get('[data-component-name="AnalyticalTableLoadingPlaceholder"]').should('be.visible');
     cy.mount(<AnalyticalTable data={data} columns={columns} loading />);
-    cy.get('[data-component-name="AnalyticalTableBusyIndicator"]').should('be.visible');
+    cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('be.visible');
+    cy.mount(<AnalyticalTable data={data} columns={columns} loading loadingDelay={50000} />);
+    cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('not.exist');
     cy.mount(<AnalyticalTable data={[]} columns={columns} />);
     cy.findByText('No data').should('be.visible');
     cy.mount(<AnalyticalTable data={data} columns={columns} filterable globalFilterValue="test123" />);
