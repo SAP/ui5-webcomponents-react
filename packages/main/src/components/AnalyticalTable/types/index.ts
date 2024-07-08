@@ -508,8 +508,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines the `SelectionMode` of the table.
    *
    * - __"None":__ The rows are not selectable.
-   * - __"SingleSelect":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
-   * - __"MultiSelect":__ You can select multiple rows.
+   * - __"Single":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
+   * - __"Multiple":__ You can select multiple rows.
    *
    * @default `"None"`
    */

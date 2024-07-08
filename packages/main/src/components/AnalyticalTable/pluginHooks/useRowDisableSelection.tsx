@@ -20,7 +20,7 @@ const headerProps = (
 ) => {
   if (
     props.key === 'header___ui5wcr__internal_selection_column' &&
-    selectionMode === AnalyticalTableSelectionMode.MultiSelect
+    selectionMode === AnalyticalTableSelectionMode.Multiple
   ) {
     const style = { ...props.style, cursor: 'auto' };
     return [props, { onClick: undefined, onKeyDown: undefined, title: undefined, style }];
@@ -36,13 +36,10 @@ const columns = (columns) => {
         Cell: (instance) => {
           const { webComponentsReactProperties, row } = instance;
           if (row.disableSelect === true) {
-            if (
-              row.isGrouped &&
-              webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.SingleSelect
-            ) {
+            if (row.isGrouped && webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.Single) {
               return null;
             }
-            if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.SingleSelect) {
+            if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.Single) {
               return <div onClick={undefined} data-name="internal_selection_column" />;
             }
             return (

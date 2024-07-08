@@ -224,7 +224,7 @@ describe('ObjectStatus', () => {
     });
   });
 
-  it('active', () => {
+  it('interactive', () => {
     const click = cy.spy().as('clickSpy');
     cy.mount(
       <ObjectStatus onClick={click} data-testid="os">
@@ -238,7 +238,7 @@ describe('ObjectStatus', () => {
     cy.findByText('Object Status').should('exist').and('not.be.visible');
 
     cy.mount(
-      <ObjectStatus onClick={click} active>
+      <ObjectStatus onClick={click} interactive>
         Content
       </ObjectStatus>
     );

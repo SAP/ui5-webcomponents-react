@@ -35,7 +35,7 @@ const WithFunctionParameter = () => {
     <AnalyticalTable
       data={data}
       columns={columns}
-      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+      selectionMode={AnalyticalTableSelectionMode.Multiple}
       tableHooks={[AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)]}
     />
   );
@@ -55,7 +55,7 @@ const data = [
     <AnalyticalTable
       data={data}
       columns={columns}
-      selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+      selectionMode={AnalyticalTableSelectionMode.Multiple}
       tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
     />
   );
