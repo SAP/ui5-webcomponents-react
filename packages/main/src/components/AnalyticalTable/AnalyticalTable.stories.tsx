@@ -124,7 +124,8 @@ const meta = {
     selectionMode: AnalyticalTableSelectionMode.SingleSelect,
     selectionBehavior: AnalyticalTableSelectionBehavior.Row,
     overscanCountHorizontal: 5,
-    visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed
+    visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
+    loadingDelay: 1000
   },
   argTypes: {
     data: { control: { disable: true } },
@@ -136,7 +137,6 @@ const meta = {
     reactTableOptions: { control: { disable: true } },
     tableHooks: { control: { disable: true } },
     NoDataComponent: { control: { disable: true } },
-    LoadingComponent: { control: { disable: true } },
     extension: { control: { disable: true } },
     tableInstance: { control: { disable: true } },
     portalContainer: { control: { disable: true } }

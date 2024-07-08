@@ -16,6 +16,7 @@
       },
       "removedProps": ["portalContainer"]
     },
+    "AnalyticalTable": {},
     "Avatar": {},
     "Badge": {
       "newComponent": "Tag"
@@ -611,6 +612,9 @@
   "renamedEnums": {
     "MessageBoxActions": "MessageBoxAction",
     "MessageBoxTypes": "MessageBoxType",
+    "TableScaleWidthMode": "AnalyticalTableScaleWidthMode",
+    "TableSelectionBehavior": "AnalyticalTableSelectionBehavior",
+    "TableVisibleRowCountMode": "AnalyticalTableVisibleRowCountMode",
     "Themes": "Theme"
   },
   "enumProperties": {

@@ -32,6 +32,7 @@
 }
 
 .text {
+  cursor: inherit;
   color: inherit;
   font-family: inherit;
   width: 100%;

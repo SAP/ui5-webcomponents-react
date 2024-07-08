@@ -115,6 +115,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
   const {
     dataset,
     loading,
+    loadingDelay,
     noLegend,
     noAnimation,
     tooltipConfig,
@@ -214,6 +215,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     <ChartContainer
       dataset={dataset}
       loading={loading}
+      loadingDelay={loadingDelay}
       Placeholder={ChartPlaceholder ?? LineChartPlaceholder}
       ref={componentRef}
       style={style}

@@ -9,10 +9,6 @@ import type {
   AnalyticalTableSubComponentsBehavior,
   AnalyticalTableVisibleRowCountMode,
   IndicationColor,
-  TableScaleWidthMode,
-  TableSelectionBehavior,
-  TableSelectionMode,
-  TableVisibleRowCountMode,
   TextAlign,
   VerticalAlign
 } from '../../../enums/index.js';
@@ -303,14 +299,6 @@ export interface AnalyticalTableColumnDefinition {
   //use useDragAndDrop
   /**
    * Defines if the column is reorderable by dragging and dropping columns.
-   *
-   * Defaults to: `true`
-   *
-   * @deprecated please use `disableDragAndDrop` instead.
-   */
-  canReorder?: boolean;
-  /**
-   * Defines if the column is reorderable by dragging and dropping columns.
    */
   disableDragAndDrop?: boolean;
   /**
@@ -392,10 +380,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ When `"Auto"` or `"AutoWithEmptyRows"` is enabled, we recommend using a fixed height for the parent container.
    */
-  visibleRowCountMode?:
-    | AnalyticalTableVisibleRowCountMode
-    | keyof typeof AnalyticalTableVisibleRowCountMode
-    | TableVisibleRowCountMode;
+  visibleRowCountMode?: AnalyticalTableVisibleRowCountMode | keyof typeof AnalyticalTableVisibleRowCountMode;
   /**
    * Specifies the number of additional empty rows added to the bottom of a table that is normally __non__ scrollable.
    * Use this prop if you want to ensure that the table is scrollable.
@@ -423,10 +408,15 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Indicates whether a loading indicator should be shown.
    *
-   * __Note:__ If the data array is not empty and loading is set to `true` a `Loader` will be displayed underneath the header, otherwise a loading placeholder will be shown.
-   * You can use your own placeholder by passing it to the `LoadingComponent` prop.
+   * __Note:__ If the data array is not empty and loading is set to `true` a `BusyIndicator` will be displayed on top of the table, otherwise a skeleton placeholder will be shown.
    */
   loading?: boolean;
+  /**
+   * Defines the delay in milliseconds, after which the `BusyIndicator` will be visible on the screen.
+   *
+   * @default 1000
+   */
+  loadingDelay?: number;
   /**
    * Setting this prop to `true` will show an overlay on top of the AnalyticalTable content preventing users from interacting with it.
    */
@@ -513,10 +503,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Default:__ `"Row"`
    */
-  selectionBehavior?:
-    | AnalyticalTableSelectionBehavior
-    | keyof typeof AnalyticalTableSelectionBehavior
-    | TableSelectionBehavior;
+  selectionBehavior?: AnalyticalTableSelectionBehavior | keyof typeof AnalyticalTableSelectionBehavior;
   /**
    * Defines the `SelectionMode` of the table.
    *
@@ -526,7 +513,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * @default `"None"`
    */
-  selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode | TableSelectionMode;
+  selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode;
 
   /**
    * Defines the column growing behaviour. Possible Values:
@@ -542,7 +529,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * @default `"Default"`
    *
    */
-  scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode | TableScaleWidthMode;
+  scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode;
   /**
    * Defines the number of the CSS `scaleX(sx: number)` function. `sx` is representing the abscissa of the scaling vector.
    */
@@ -615,12 +602,6 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * __Note:__ Subcomponents can affect performance, especially when used in a tree table (`isTreeTable={true}`). If you face performance issues, please try memoizing your subcomponent.
    */
   renderRowSubComponent?: (row?: any) => ReactNode;
-  /**
-   * Defines whether a subcomponent should be rendered as expandable container or directly at the bottom of the row.
-   *
-   * @deprecated please use `subComponentsBehavior` instead.
-   */
-  alwaysShowSubComponent?: boolean;
   /**
    * Defines the rendering and height calculation behavior of subcomponents when `renderRowSubComponent` is used.
    *
@@ -710,12 +691,6 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * __Default:__ `DefaultNoDataComponent`
    */
   NoDataComponent?: ComponentType<any>;
-  /**
-   * Component that will be rendered when the table is loading and has data.
-   *
-   * __Default:__ `DefaultLoadingComponent`
-   */
-  LoadingComponent?: ComponentType<any>;
 
   /**
    * Exposes the internal table instance.

@@ -92,9 +92,15 @@ describe('AnalyticalTable', () => {
   it('sorting', () => {
     const sort = cy.spy().as('onSortSpy');
     cy.mount(<AnalyticalTable data={data} columns={columns} onSort={sort} />);
+
+    cy.findByText('Name').click();
+    cy.get('[ui5-popover]').should('not.exist');
+
+    cy.mount(<AnalyticalTable data={data} columns={columns} onSort={sort} sortable />);
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', 'X');
 
     cy.findByText('Name').click();
+    cy.get('[ui5-popover]').should('be.visible');
     cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
     cy.get('@onSortSpy').should('have.been.calledWithMatch', {
       detail: { column: { id: 'name' }, sortDirection: 'asc' }
@@ -752,7 +758,7 @@ describe('AnalyticalTable', () => {
     const GroupBySelectTable = (props: PropTypes) => {
       const { onRowSelect } = props;
       const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
-      const tableInstance = useRef<Record<string, any>>();
+      const tableInstance = useRef<Record<string, any>>(null);
 
       useEffect(() => {
         if (tableInstance.current) {
@@ -804,7 +810,7 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('isSelected').should('have.text', 'true');
 
     cy.findByText('Friend Name').click();
-    cy.findByText('Group').click();
+    cy.findByText('Group').realClick();
     cy.get('[aria-rowindex="7"] > [aria-colindex="3"] > [title="Expand Node"] > [ui5-icon]').click();
 
     cy.findByText('25').click();
@@ -1438,7 +1444,9 @@ describe('AnalyticalTable', () => {
     cy.mount(<AnalyticalTable data={[]} columns={columns} loading />);
     cy.get('[data-component-name="AnalyticalTableLoadingPlaceholder"]').should('be.visible');
     cy.mount(<AnalyticalTable data={data} columns={columns} loading />);
-    cy.get('[data-component-name="Loader"]').should('be.visible');
+    cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('be.visible');
+    cy.mount(<AnalyticalTable data={data} columns={columns} loading loadingDelay={50000} />);
+    cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('not.exist');
     cy.mount(<AnalyticalTable data={[]} columns={columns} />);
     cy.findByText('No data').should('be.visible');
     cy.mount(<AnalyticalTable data={data} columns={columns} filterable globalFilterValue="test123" />);
@@ -1454,7 +1462,7 @@ describe('AnalyticalTable', () => {
   it('Alternate Row Color', () => {
     const standardRowColor = cssVarToRgb(ThemingParameters.sapList_Background);
     const alternatingRowColor = cssVarToRgb(ThemingParameters.sapList_AlternatingBackground);
-    cy.mount(<AnalyticalTable data={data} columns={columns} alternateRowColor minRows={7} />);
+    cy.mount(<AnalyticalTable data={data} columns={columns} alternateRowColor minRows={7} sortable />);
     cy.get('[data-component-name="AnalyticalTableContainer"]').should('have.css', 'background-color', standardRowColor);
 
     function testAlternateRowColor() {
@@ -1777,6 +1785,8 @@ describe('AnalyticalTable', () => {
       }
     ];
     cy.mount(<AnalyticalTable data={data} columns={columns} />);
+    cy.get('[data-column-id="name"]').should('not.have.attr', 'aria-haspopup', 'menu').click();
+    cy.mount(<AnalyticalTable data={data} columns={columns} sortable />);
     cy.get('[data-column-id="name"]').should('have.attr', 'aria-haspopup', 'menu').click();
     cy.get('[ui5-popover]').should('be.visible');
     cy.get('[data-column-id="age"]').should('not.have.attr', 'aria-haspopup');
@@ -2191,7 +2201,7 @@ describe('AnalyticalTable', () => {
 
   it("Expandable: don't scroll when expanded/collapsed", () => {
     const TestComp = () => {
-      const tableInstanceRef = useRef();
+      const tableInstanceRef = useRef<{ toggleRowExpanded?: (e: string) => void }>({});
       return (
         <>
           <button
@@ -2234,7 +2244,7 @@ describe('AnalyticalTable', () => {
 
     cy.mount(<AnalyticalTable data={[...data, ...data]} columns={columns} visibleRows={5} groupable />);
     cy.findByText('Name').click();
-    cy.findByText('Group').click();
+    cy.findByText('Group').realClick();
     cy.findByText('A (2)').trigger('keydown', {
       key: 'Enter'
     });
@@ -2537,7 +2547,7 @@ describe('AnalyticalTable', () => {
     cy.findByText('Aggregated').should('not.exist');
 
     cy.findByText('Name').click();
-    cy.findByText('Group').click();
+    cy.findByText('Group').realClick();
     cy.findByText('Simon').should('be.visible').should('have.length', 1);
     cy.findAllByText('Aggregated').should('be.visible').should('have.length', 2);
     cy.get('[ui5-icon][name="navigation-right-arrow"]').should('be.visible').should('have.length', 2);

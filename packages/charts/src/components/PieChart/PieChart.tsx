@@ -91,6 +91,7 @@ const tooltipItemDefaultStyle = { color: 'var (--sapTextColor)' };
 const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
   const {
     loading,
+    loadingDelay,
     dataset,
     noLegend,
     noAnimation,
@@ -267,6 +268,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       dataset={dataset}
       ref={ref}
       loading={loading}
+      loadingDelay={loadingDelay}
       Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}
       className={className}
