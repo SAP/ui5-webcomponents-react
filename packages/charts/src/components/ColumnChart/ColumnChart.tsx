@@ -128,6 +128,7 @@ const valueAccessor =
 const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) => {
   const {
     loading,
+    loadingDelay,
     dataset,
     noLegend,
     noAnimation,
@@ -225,6 +226,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
     <ChartContainer
       dataset={dataset}
       loading={loading}
+      loadingDelay={loadingDelay}
       Placeholder={ChartPlaceholder ?? ColumnChartPlaceholder}
       ref={componentRef}
       style={style}

@@ -17,7 +17,7 @@ interface RadialChartConfig {
 
   [rest: string]: any;
 }
-
+//todo expose `loading`
 export interface RadialChartProps extends Omit<CommonProps, 'onClick' | 'children' | 'onLegendClick'> {
   /**
    * The actual value which defines how much the ring is filled.
@@ -126,6 +126,8 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
 
   return (
     <ChartContainer
+      loading={undefined}
+      loadingDelay={undefined}
       dataset={dataset}
       ref={ref}
       Placeholder={PieChartPlaceholder}

@@ -133,6 +133,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
   const {
     dataset,
     loading,
+    loadingDelay,
     noLegend,
     noAnimation,
     tooltipConfig,
@@ -216,6 +217,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
     <ChartContainer
       dataset={dataset}
       loading={loading}
+      loadingDelay={loadingDelay}
       Placeholder={ChartPlaceholder ?? ScatterChartPlaceholder}
       ref={componentRef}
       style={style}

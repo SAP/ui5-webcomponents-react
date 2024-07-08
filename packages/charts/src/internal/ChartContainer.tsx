@@ -23,9 +23,10 @@ addCustomCSSWithScoping(
 
 export interface ContainerProps extends CommonProps {
   children: ReactElement;
-  Placeholder?: ComponentType;
+  Placeholder: ComponentType;
   dataset: unknown[];
-  loading?: boolean;
+  loading: boolean;
+  loadingDelay: number;
   resizeDebounce: number;
 }
 
@@ -49,7 +50,17 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { errorCount: num
 }
 
 const ChartContainer = forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
-  const { Placeholder, loading = false, dataset, className, slot, children, resizeDebounce, ...rest } = props;
+  const {
+    Placeholder,
+    loading = false,
+    dataset,
+    className,
+    slot,
+    children,
+    resizeDebounce,
+    loadingDelay,
+    ...rest
+  } = props;
 
   useStylesheet(styleData, ChartContainer.displayName);
 
@@ -60,6 +71,7 @@ const ChartContainer = forwardRef<HTMLDivElement, ContainerProps>((props, ref) =
           {loading && (
             <BusyIndicator
               active
+              delay={loadingDelay}
               className={classNames.busyIndicator}
               data-component-name="ChartContainerBusyIndicator"
             />
