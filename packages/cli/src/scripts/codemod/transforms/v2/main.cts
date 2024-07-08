@@ -54,7 +54,6 @@ function extractValueFromProp(
   const prop = j(el).find(j.JSXAttribute, { name: { name: propName } });
 
   if (prop.size()) {
-    const s = prop.get();
     const stringLiteral = prop.find(j.StringLiteral);
     const numericLiteral = prop.find(j.NumericLiteral);
     prop.remove();
@@ -107,6 +106,39 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
               .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('hideCancelButton'), null));
           }
           showCancelButton.remove();
+          isDirty = true;
+        }
+      });
+    }
+
+    if (componentName === 'AnalyticalTable') {
+      jsxElements.forEach((el) => {
+        const alwaysShowSubComponent = j(el).find(j.JSXAttribute, { name: { name: 'alwaysShowSubComponent' } });
+        if (alwaysShowSubComponent.size() > 0) {
+          const attr = alwaysShowSubComponent.get();
+
+          if (
+            attr.value.value === null ||
+            (attr.value.value?.type === 'JSXAttribute' && attr.value.value === true) ||
+            (attr.value.value?.type === 'JSXExpressionContainer' && attr.value.value.expression.value === true)
+          ) {
+            j(el)
+              .find(j.JSXOpeningElement)
+              .get()
+              .value.attributes.push(
+                j.jsxAttribute(j.jsxIdentifier('subComponentsBehavior'), j.stringLiteral('Visible'))
+              );
+          }
+          alwaysShowSubComponent.remove();
+          isDirty = true;
+        }
+
+        const sortable = j(el).find(j.JSXAttribute, { name: { name: 'sortable' } });
+        if (sortable.size() === 0) {
+          j(el)
+            .find(j.JSXOpeningElement)
+            .get()
+            .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('sortable'), null));
           isDirty = true;
         }
       });
