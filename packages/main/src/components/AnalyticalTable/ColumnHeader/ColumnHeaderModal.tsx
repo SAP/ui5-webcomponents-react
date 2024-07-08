@@ -9,10 +9,8 @@ import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
 import { useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
 import { FlexBoxAlignItems, TextAlign } from '../../../enums/index.js';
 import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults.js';
-import { useCanRenderPortal } from '../../../internal/ssr.js';
 import { stopPropagation } from '../../../internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '../../../internal/utils.js';
 import { Icon } from '../../../webComponents/Icon/index.js';
@@ -31,13 +29,12 @@ export interface ColumnHeaderModalProperties {
   onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
   open: boolean;
   setPopoverOpen: (open: boolean) => void;
-  portalContainer: Element;
   isRtl: boolean;
   openerRef: MutableRefObject<HTMLDivElement>;
 }
 
 export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
-  const { column, onSort, onGroupBy, open, setPopoverOpen, portalContainer, isRtl, openerRef } = props;
+  const { column, onSort, onGroupBy, open, setPopoverOpen, isRtl, openerRef } = props;
   useStylesheet(styleData, ColumnHeaderModal.displayName);
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
@@ -150,21 +147,15 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     }
   };
 
-  const canRenderPortal = useCanRenderPortal();
-
   useEffect(() => {
     if (open && ref.current && openerRef.current) {
       void customElements.whenDefined(getUi5TagWithSuffix('ui5-popover')).then(() => {
         ref.current.opener = openerRef.current;
       });
     }
-  }, [open, canRenderPortal]);
+  }, [open]);
 
-  if (!canRenderPortal) {
-    return null;
-  }
-
-  return createPortal(
+  return (
     <Popover
       open={open}
       hideArrow
@@ -218,8 +209,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
           </ListItemStandard>
         )}
       </List>
-    </Popover>,
-    portalContainer ?? document.body
+    </Popover>
   );
 };
 ColumnHeaderModal.displayName = 'ColumnHeaderModal';

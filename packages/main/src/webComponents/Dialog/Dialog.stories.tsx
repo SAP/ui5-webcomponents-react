@@ -3,21 +3,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
 import { clsx } from 'clsx';
-import { forwardRef, useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import type { DialogDomRef, DialogPropTypes } from '../index.js';
+import { useEffect, useState } from 'react';
 import { Bar, Button, Icon, List, ListItemStandard, Title } from '../index.js';
-import { Dialog as OriginalDialog } from './index';
-
-// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
-const Dialog = forwardRef<DialogDomRef, DialogPropTypes>((args, ref) =>
-  createPortal(<OriginalDialog {...args} ref={ref} />, document.body)
-);
-Dialog.displayName = 'Dialog';
+import { Dialog } from './index';
 
 const meta = {
   title: 'Modals & Popovers / Dialog',
-  component: OriginalDialog,
+  component: Dialog,
   argTypes: {
     footer: { control: { disable: true } },
     header: { control: { disable: true } }
@@ -29,7 +21,7 @@ const meta = {
     className: 'footerPartNoPadding'
   },
   tags: ['package:@ui5/webcomponents']
-} satisfies Meta<typeof OriginalDialog>;
+} satisfies Meta<typeof Dialog>;
 
 //TODO: check all "modals" for outdated info
 export default meta;
