@@ -452,7 +452,7 @@ import { ActionSheet, Button } from '@ui5/webcomponents-react';
 
 function MyComponent() {
   return (
-    <ActionSheet showCancelButton={false} accessibilityAttributes={{ a11yConfig: { role: 'menu' } }}>
+    <ActionSheet showCancelButton={false} a11yConfig={{ actionSheetMobileContent: { role: 'menu' } }}>
       <Button>Action 1</Button>
     </ActionSheet>
   );

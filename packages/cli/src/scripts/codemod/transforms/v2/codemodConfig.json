@@ -17,7 +17,11 @@
       },
       "removedProps": ["portalContainer"]
     },
-    "AnalyticalTable": {},
+    "AnalyticalTable": {
+      "renamedEnums": {
+        "selectionMode": "AnalyticalTableSelectionMode"
+      }
+    },
     "Avatar": {},
     "Badge": {
       "newComponent": "Tag"

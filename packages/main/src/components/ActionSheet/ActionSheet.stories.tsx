@@ -24,7 +24,7 @@ const meta = {
     header: {
       control: { disable: true }
     },
-    accessibilityAttributes: { table: { category: 'A11y props' } }
+    accessibilityAttributes: { table: { category: 'Accessibility props' } }
   },
   args: {
     horizontalAlign: PopoverHorizontalAlign.Center,

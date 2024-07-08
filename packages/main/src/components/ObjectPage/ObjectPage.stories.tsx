@@ -44,7 +44,7 @@ const meta = {
     footer: { control: { disable: true } },
     children: { control: { disable: true } },
     placeholder: { control: { disable: true } },
-    accessibilityAttributes: { table: { category: 'A11y props' } }
+    accessibilityAttributes: { table: { category: 'Accessibility props' } }
   },
   args: {
     mode: ObjectPageMode.Default,

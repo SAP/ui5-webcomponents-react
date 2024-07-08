@@ -138,8 +138,7 @@ const meta = {
     tableHooks: { control: { disable: true } },
     NoDataComponent: { control: { disable: true } },
     extension: { control: { disable: true } },
-    tableInstance: { control: { disable: true } },
-    portalContainer: { control: { disable: true } }
+    tableInstance: { control: { disable: true } }
   }
 } satisfies Meta<typeof AnalyticalTable>;
 export default meta;
