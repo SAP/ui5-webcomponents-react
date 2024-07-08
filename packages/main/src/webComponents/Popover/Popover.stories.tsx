@@ -6,8 +6,7 @@ import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizon
 import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
 import { clsx } from 'clsx';
-import { forwardRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useState } from 'react';
 import { Bar } from '../Bar';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
@@ -15,17 +14,11 @@ import { Label } from '../Label';
 import { List } from '../List';
 import { ListItemStandard } from '../ListItemStandard';
 import { Title } from '../Title';
-import type { PopoverDomRef, PopoverPropTypes } from './index';
-import { Popover as OriginalPopover } from './index';
-
-const Popover = forwardRef<PopoverDomRef, PopoverPropTypes>((args, ref) =>
-  createPortal(<OriginalPopover {...args} ref={ref} />, document.body)
-);
-Popover.displayName = 'Popover';
+import { Popover } from './index';
 
 const meta = {
   title: 'Modals & Popovers / Popover',
-  component: OriginalPopover,
+  component: Popover,
   argTypes: {
     footer: { control: { disable: true } },
     header: { control: { disable: true } }
@@ -39,7 +32,7 @@ const meta = {
     className: 'footerPartNoPadding'
   },
   tags: ['package:@ui5/webcomponents']
-} satisfies Meta<typeof OriginalPopover>;
+} satisfies Meta<typeof Popover>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

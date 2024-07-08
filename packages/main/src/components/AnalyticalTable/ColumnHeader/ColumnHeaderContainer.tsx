@@ -13,7 +13,6 @@ interface ColumnHeaderContainerProps {
   onGroupByChanged: (e: CustomEvent<{ column?: Record<string, unknown>; isGrouped?: boolean }>) => void;
   resizeInfo: Record<string, unknown>;
   isRtl: boolean;
-  portalContainer: Element;
   columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
   uniqueId: string;
   showVerticalEndBorder: boolean;
@@ -27,7 +26,6 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     onGroupByChanged,
     resizeInfo,
     isRtl,
-    portalContainer,
     columnVirtualizer,
     uniqueId,
     showVerticalEndBorder
@@ -86,7 +84,6 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
               virtualColumn={virtualColumn}
               columnVirtualizer={columnVirtualizer}
               isRtl={isRtl}
-              portalContainer={portalContainer}
             >
               {column.render('Header')}
             </ColumnHeader>

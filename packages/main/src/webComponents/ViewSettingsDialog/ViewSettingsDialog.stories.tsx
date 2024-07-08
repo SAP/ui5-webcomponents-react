@@ -1,15 +1,12 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import { forwardRef, useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
-import type { ViewSettingsDialogPropTypes } from '../../index';
+import { useEffect, useState } from 'react';
 import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
-import type { ViewSettingsDialogDomRef } from './index.js';
-import { ViewSettingsDialog as OriginalViewSettingsDialog } from './index.js';
+import { ViewSettingsDialog } from './index.js';
 
 const meta = {
   title: 'Modals & Popovers / ViewSettingsDialog',
-  component: OriginalViewSettingsDialog,
+  component: ViewSettingsDialog,
   argTypes: {
     filterItems: { control: { disable: true } },
     sortItems: { control: { disable: true } }
@@ -52,34 +49,36 @@ const meta = {
     chromatic: { delay: 999 }
   },
   tags: ['package:@ui5/webcomponents-fiori']
-} satisfies Meta<typeof OriginalViewSettingsDialog>;
+} satisfies Meta<typeof ViewSettingsDialog>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const ViewSettingsDialog = forwardRef<ViewSettingsDialogDomRef, ViewSettingsDialogPropTypes>((args, ref) =>
-  createPortal(<OriginalViewSettingsDialog {...args} ref={ref} />, document.body)
-);
-ViewSettingsDialog.displayName = 'ViewSettingsDialog';
-
 export const Default: Story = {
   render: (args) => {
-    const ref = useRef<ViewSettingsDialogDomRef>(null);
+    const [open, setOpen] = useState(isChromatic || args.open);
     useEffect(() => {
-      if (isChromatic) {
-        ref.current.show();
+      if (!isChromatic) {
+        setOpen(args.open);
       }
-    }, []);
+    }, [args.open, isChromatic]);
     return (
       <>
         <Button
           onClick={() => {
-            ref.current.show();
+            setOpen(true);
           }}
         >
           Show ViewSettingsDialog
         </Button>
-        <ViewSettingsDialog ref={ref} {...args} />
+        <ViewSettingsDialog
+          {...args}
+          open={open}
+          onClose={(e) => {
+            setOpen(false);
+            args.onClose(e);
+          }}
+        />
       </>
     );
   }

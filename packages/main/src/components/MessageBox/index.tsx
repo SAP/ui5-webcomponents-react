@@ -134,7 +134,6 @@ const getActions = (actions, type): (string | ReactElement<ButtonPropTypes>)[] =
 
 /**
  * The `MessageBox` component provides easier methods to create a `Dialog`, such as standard alerts, confirmation dialogs, or arbitrary message dialogs.
- * For convenience, it also provides an `open` prop, so it is not necessary to attach a `ref` to open the `MessageBox`.
  */
 const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) => {
   const {
