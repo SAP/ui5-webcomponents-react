@@ -46,7 +46,7 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
   /**
    * Defines internally used a11y properties.
    */
-  a11yConfig?: {
+  accessibilityAttributes?: {
     actionSheetMobileContent?: {
       role?: string;
     };
@@ -116,7 +116,8 @@ function ActionSheetButton(props: ActionSheetButtonPropTypes) {
  *
  */
 const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((props, ref) => {
-  const { a11yConfig, children, className, header, headerText, hideCancelButton, onOpen, open, ...rest } = props;
+  const { accessibilityAttributes, children, className, header, headerText, hideCancelButton, onOpen, open, ...rest } =
+    props;
 
   useStylesheet(styleData, ActionSheet.displayName);
 
@@ -229,7 +230,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
       <div
         className={isPhone() ? classNames.contentMobile : undefined}
         data-component-name="ActionSheetMobileContent"
-        role={a11yConfig?.actionSheetMobileContent?.role ?? 'application'}
+        role={accessibilityAttributes?.actionSheetMobileContent?.role ?? 'application'}
         onKeyDown={handleKeyDown}
         ref={actionBtnsRef}
       >

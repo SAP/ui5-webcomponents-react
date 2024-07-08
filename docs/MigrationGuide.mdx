@@ -443,8 +443,7 @@ function MyComponent() {
 ### ActionSheet
 
 The prop `portalContainer` has been removed as it is no longer needed due to the [popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) which is now used in the UI5 Web Components.
-For a better aligned API, the `showCancelButton` prop has been replaced wih the `hideCancelButton` prop and the logic has been inverted.
-You only need to apply changes to your code if `showCancelButton` has been set to `false`.
+For a better aligned API, the `showCancelButton` prop has been replaced wih the `hideCancelButton` prop and the logic has been inverted. Also, the `a11yConfig` prop has been renamed to `accessibilityAttributes`.
 
 ```tsx
 // v1
@@ -452,7 +451,7 @@ import { ActionSheet, Button } from '@ui5/webcomponents-react';
 
 function MyComponent() {
   return (
-    <ActionSheet showCancelButton={false}>
+    <ActionSheet showCancelButton={false} accessibilityAttributes={{ a11yConfig: { role: 'menu' } }}>
       <Button>Action 1</Button>
     </ActionSheet>
   );
@@ -463,7 +462,7 @@ import { ActionSheet, Button } from '@ui5/webcomponents-react';
 
 function MyComponent() {
   return (
-    <ActionSheet hideCancelButton>
+    <ActionSheet hideCancelButton accessibilityAttributes={{ actionSheetMobileContent: { role: 'menu' } }}>
       <Button>Action 1</Button>
     </ActionSheet>
   );

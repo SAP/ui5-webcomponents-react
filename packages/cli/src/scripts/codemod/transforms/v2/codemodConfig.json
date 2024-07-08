@@ -9,6 +9,7 @@
     },
     "ActionSheet": {
       "changedProps": {
+        "a11yConfig": "accessibilityAttributes",
         "onAfterClose": "onClose",
         "onAfterOpen": "onOpen",
         "placementType": "placement",
