@@ -115,45 +115,45 @@ export const InvertedObjectStatus: Story = {
           IndicationColor.Indication08
         </ObjectStatus>
         <Label style={{ gridColumn: 'span 5' }}>
-          <code>active</code> mode:
+          <code>interactive</code> mode:
         </Label>
-        <ObjectStatus active inverted state={ValueState.None}>
+        <ObjectStatus interactive inverted state={ValueState.None}>
           ValueState.None
         </ObjectStatus>
-        <ObjectStatus active inverted state={ValueState.Positive}>
+        <ObjectStatus interactive inverted state={ValueState.Positive}>
           ValueState.Positive
         </ObjectStatus>
-        <ObjectStatus active inverted state={ValueState.Critical}>
+        <ObjectStatus interactive inverted state={ValueState.Critical}>
           ValueState.Critical
         </ObjectStatus>
-        <ObjectStatus active inverted state={ValueState.Negative}>
+        <ObjectStatus interactive inverted state={ValueState.Negative}>
           ValueState.Negative
         </ObjectStatus>
-        <ObjectStatus active inverted state={ValueState.Information}>
+        <ObjectStatus interactive inverted state={ValueState.Information}>
           ValueState.Information
         </ObjectStatus>
-        <ObjectStatus active inverted state={IndicationColor.Indication01}>
+        <ObjectStatus interactive inverted state={IndicationColor.Indication01}>
           IndicationColor.Indication01
         </ObjectStatus>
-        <ObjectStatus active inverted state={IndicationColor.Indication02}>
+        <ObjectStatus interactive inverted state={IndicationColor.Indication02}>
           IndicationColor.Indication02
         </ObjectStatus>
-        <ObjectStatus active inverted state={IndicationColor.Indication03}>
+        <ObjectStatus interactive inverted state={IndicationColor.Indication03}>
           IndicationColor.Indication03
         </ObjectStatus>
-        <ObjectStatus active inverted state={IndicationColor.Indication04}>
+        <ObjectStatus interactive inverted state={IndicationColor.Indication04}>
           IndicationColor.Indication04
         </ObjectStatus>
-        <ObjectStatus active inverted state={IndicationColor.Indication05}>
+        <ObjectStatus interactive inverted state={IndicationColor.Indication05}>
           IndicationColor.Indication05
         </ObjectStatus>
-        <ObjectStatus active inverted state={IndicationColor.Indication06}>
+        <ObjectStatus interactive inverted state={IndicationColor.Indication06}>
           IndicationColor.Indication06
         </ObjectStatus>
-        <ObjectStatus active inverted state={IndicationColor.Indication07}>
+        <ObjectStatus interactive inverted state={IndicationColor.Indication07}>
           IndicationColor.Indication07
         </ObjectStatus>
-        <ObjectStatus active inverted state={IndicationColor.Indication08}>
+        <ObjectStatus interactive inverted state={IndicationColor.Indication08}>
           IndicationColor.Indication08
         </ObjectStatus>
       </div>
