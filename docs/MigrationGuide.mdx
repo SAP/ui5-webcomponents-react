@@ -479,12 +479,18 @@ function MyComponent() {
 
 **Renamed Enums:**
 
-Only the names of the following enums have changed, so it's sufficient to replace them with the new name.
+The names of the following enums have changed:
 
 - `TableScaleWidthMode` is now `AnalyticalTableScaleWidthMode`
 - `TableSelectionBehavior` is now `AnalyticalTableSelectionBehavior`
 - `TableSelectionMode` is now `AnalyticalTableSelectionMode`
 - `TableVisibleRowCountMode` is now `AnalyticalTableVisibleRowCountMode`
+
+**Changed Enums:**
+
+- The properties and values for the `AnalyticalTableSelectionMode` enum has been changed.
+  - `SingleSelect` is now `Single`
+  - `MultiSelect` is now `Multiple`.
 
 **[Column Properties](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable--docs#column-properties) Changes**
 
@@ -501,6 +507,7 @@ const columns = [{ ...otherProperties, canReorder: false }];
   scaleWidthMode={TableScaleWidthMode.Grow}
   selectionBehavior={TableSelectionBehavior.Row}
   selectionMode={TableSelectionMode.MultiSelect}
+  // selectionMode={TableSelectionMode.SingleSelect}
   visibleRowCountMode={TableVisibleRowCountMode.Interactive}
 />;
 
@@ -513,7 +520,8 @@ const columns = [{ ...otherProps, disableDragAndDrop: true }];
   subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
   scaleWidthMode={AnalyticalTableScaleWidthMode.Grow}
   selectionBehavior={AnalyticalTableSelectionBehavior.Row}
-  selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+  selectionMode={AnalyticalTableSelectionMode.Multiple}
+  // selectionMode={AnalyticalTableSelectionMode.Single}
   visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Interactive}
 />;
 ```
