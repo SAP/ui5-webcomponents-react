@@ -10,25 +10,6 @@ import * as ComponentStories from './Modals.stories';
 
 <br />
 
-## Usage Notes
-
-**In order to use these helpers, please make sure that your application is wrapped in the `<ThemeProvider />` component.**
-
-We are offering those helpers methods both as hooks and static methods:
-
-`Modals.useShowXZY`
-
-Use this hook when you are in a React context where you are allowed to use hooks.
-Calling the hook returns a memoized function, which you can execute to show the popup by passing the props and an optional container.
-**This should always be the preferred option!**
-
-`Modals.showXZY`
-
-Use this static helper in case you are not in a React context (-> you can't use hooks), e.g. in a `redux` reducer.
-You can pass the props and an optional container directly.
-
-<br />
-
 ## Dialog
 
 <Canvas of={ComponentStories.Dialog} />
@@ -38,11 +19,6 @@ You can pass the props and an optional container directly.
 ```typescript
 import { Modals } from '@ui5/webcomponents-react';
 
-// when you can use hooks
-const showDialog = Modals.useShowDialog();
-const { ref, close } = showDialog(props, container);
-
-// when you can't use hooks (e.g. inside a redux reducer)
 const { ref, close } = Modals.showDialog(props, container);
 ```
 
@@ -75,11 +51,6 @@ The `showDialog` method returns an object with the following properties:
 ```typescript
 import { Modals } from '@ui5/webcomponents-react';
 
-// when you can use hooks
-const showPopover = Modals.useShowPopover();
-const { ref, close } = showPopover(props, container);
-
-// when you can't use hooks (e.g. inside a redux reducer)
 const { ref, close } = Modals.showPopover(props, container);
 ```
 
@@ -112,11 +83,6 @@ The `showPopover` method returns an object with the following properties:
 ```typescript
 import { Modals } from '@ui5/webcomponents-react';
 
-// when you can use hooks
-const showResponsivePopover = Modals.useShowResponsivePopover();
-const { ref, close } = showResponsivePopover(props, container);
-
-// when you can't use hooks (e.g. inside a redux reducer)
 const { ref, close } = Modals.showResponsivePopover(props, container);
 ```
 
@@ -151,11 +117,6 @@ The `showResponsivePopover` method returns an object with the following properti
 ```typescript
 import { Modals } from '@ui5/webcomponents-react';
 
-// when you can use hooks
-const showMenu = Modals.useShowMenu();
-const { ref, close } = showMenu(props, container);
-
-// when you can't use hooks (e.g. inside a redux reducer)
 const { ref, close } = Modals.showMenu(props, container);
 ```
 
@@ -188,11 +149,6 @@ The `Menu` method returns an object with the following properties:
 ```typescript
 import { Modals } from '@ui5/webcomponents-react';
 
-// when you can use hooks
-const showMessageBox = Modals.useShowMessageBox();
-const { ref, close } = showMessageBox(props, container);
-
-// when you can't use hooks (e.g. inside a redux reducer)
 const { ref, close } = Modals.showMessageBox(props, container);
 ```
 
@@ -225,11 +181,6 @@ The `showMessageBox` method returns an object with the following properties:
 ```typescript
 import { Modals } from '@ui5/webcomponents-react';
 
-// when you can use hooks
-const showToast = Modals.useShowToast();
-const { ref } = showToast(props, container);
-
-// when you can't use hooks (e.g. inside a redux reducer)
 const { ref } = Modals.showToast(props, container);
 ```
 
