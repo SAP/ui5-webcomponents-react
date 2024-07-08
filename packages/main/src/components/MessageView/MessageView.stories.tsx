@@ -1,40 +1,21 @@
-import { generateMessageItems } from '@sb/mockData/generateMessageItems';
+import { generateMessageItems } from '@sb/mockData/generateMessageItems.js';
 import type { Meta, StoryObj } from '@storybook/react';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import arrowLeftIcon from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
-import { forwardRef, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums/index.js';
-import type {
-  DialogDomRef,
-  DialogPropTypes,
-  ResponsivePopoverDomRef,
-  ResponsivePopoverPropTypes
-} from '../../webComponents';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
-import { Dialog as OriginalDialog } from '../../webComponents/Dialog';
+import { Dialog } from '../../webComponents/Dialog/index.js';
 import { Link } from '../../webComponents/Link/index.js';
-import { ResponsivePopover as OriginalResponsivePopover } from '../../webComponents/ResponsivePopover';
+import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
 import { Title } from '../../webComponents/Title/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { MessageViewButton } from '../MessageViewButton/index.js';
 import { MessageItem } from './MessageItem.js';
 import { MessageView } from './index.js';
-
-// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
-const Dialog = forwardRef<DialogDomRef, DialogPropTypes>((args, ref) =>
-  createPortal(<OriginalDialog {...args} ref={ref} />, document.body)
-);
-Dialog.displayName = 'Dialog';
-
-// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
-const ResponsivePopover = forwardRef<ResponsivePopoverDomRef, ResponsivePopoverPropTypes>((args, ref) =>
-  createPortal(<OriginalResponsivePopover {...args} ref={ref} />, document.body)
-);
-ResponsivePopover.displayName = 'ResponsivePopover';
 
 // TODO: check docs for outdated info
 

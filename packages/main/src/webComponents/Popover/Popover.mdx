@@ -102,26 +102,6 @@ const PopoverComponent = () => {
 };
 ```
 
-## Using Popovers inside other components
-
-`Popovers` are often used within other components, when opened this could sometimes have unwanted side effects.
-In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `Popover` outside of the DOM hierarchy of the parent component.
-
-```jsx
-const PopoverComponent = () => {
-  const popoverRef = useRef(null);
-  const onButtonClick = (e) => {
-    popoverRef.current.showAt(e.target);
-  };
-  return (
-    <>
-      <Button onClick={onButtonClick}>Open Popover</Button>
-      {createPortal(<Popover ref={popoverRef} />, document.body)}
-    </>
-  );
-};
-```
-
 ## Closing Popovers
 
 Closing `Popovers` works in the same way as opening them.

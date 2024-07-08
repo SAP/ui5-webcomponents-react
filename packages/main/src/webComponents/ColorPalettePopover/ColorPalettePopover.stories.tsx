@@ -1,15 +1,13 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import { forwardRef, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button';
 import { ColorPaletteItem } from '../ColorPaletteItem';
-import type { ColorPalettePopoverDomRef, ColorPalettePopoverPropTypes } from './index';
-import { ColorPalettePopover as OriginalColorPalettePopover } from './index';
+import { ColorPalettePopover } from './index';
 
 const meta = {
   title: 'Modals & Popovers / ColorPalettePopover',
-  component: OriginalColorPalettePopover,
+  component: ColorPalettePopover,
   argTypes: {
     children: { control: { disable: true } },
     defaultColor: { control: { type: 'color' } }
@@ -18,14 +16,7 @@ const meta = {
     chromatic: { delay: 1000 }
   },
   tags: ['package:@ui5/webcomponents']
-} satisfies Meta<typeof OriginalColorPalettePopover>;
-
-// todo remove once portals are supported inline, or general popovers are supported w/o having to mount them to the body
-const ColorPalettePopover = forwardRef<ColorPalettePopoverDomRef, ColorPalettePopoverPropTypes>((args, ref) =>
-  createPortal(<OriginalColorPalettePopover {...args} ref={ref} />, document.body)
-);
-
-ColorPalettePopover.displayName = 'ColorPalettePopover';
+} satisfies Meta<typeof ColorPalettePopover>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

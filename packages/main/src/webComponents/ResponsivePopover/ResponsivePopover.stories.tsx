@@ -4,8 +4,7 @@ import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizon
 import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
 import { clsx } from 'clsx';
-import { forwardRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useState } from 'react';
 import { Bar } from '../Bar';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
@@ -13,19 +12,12 @@ import { Label } from '../Label';
 import { List } from '../List';
 import { ListItemStandard } from '../ListItemStandard';
 import { Title } from '../Title';
-import type { ResponsivePopoverDomRef, ResponsivePopoverPropTypes } from './index';
-import { ResponsivePopover as OriginalResponsivePopover } from './index';
+import { ResponsivePopover } from './index';
 import '@ui5/webcomponents-icons/dist/settings.js';
-
-// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
-const ResponsivePopover = forwardRef<ResponsivePopoverDomRef, ResponsivePopoverPropTypes>((args, ref) =>
-  createPortal(<OriginalResponsivePopover {...args} ref={ref} />, document.body)
-);
-ResponsivePopover.displayName = 'ResponsivePopover';
 
 const meta = {
   title: 'Modals & Popovers / ResponsivePopover',
-  component: OriginalResponsivePopover,
+  component: ResponsivePopover,
   argTypes: {
     footer: { control: { disable: true } },
     children: { control: { disable: true } },
@@ -45,7 +37,7 @@ const meta = {
     className: 'footerPartNoPadding'
   },
   tags: ['package:@ui5/webcomponents']
-} satisfies Meta<typeof OriginalResponsivePopover>;
+} satisfies Meta<typeof ResponsivePopover>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
