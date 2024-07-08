@@ -1,23 +1,14 @@
 import { isChromatic } from '@sb/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import { forwardRef, useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useEffect, useState } from 'react';
 import { MessageBoxAction } from '../../enums/MessageBoxAction';
 import { MessageBoxType } from '../../enums/MessageBoxType';
-import type { DialogDomRef } from '../../webComponents';
 import { Button } from '../../webComponents/Button/index';
-import type { MessageBoxPropTypes } from './index.js';
-import { MessageBox as OriginalMessageBox } from './index.js';
-
-// todo remove once portals are supported inline, or popovers are supported w/o having to mount them to the body
-const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((args, ref) =>
-  createPortal(<OriginalMessageBox {...args} ref={ref} />, document.body)
-);
-MessageBox.displayName = 'MessageBox';
+import { MessageBox } from './index.js';
 
 const meta = {
   title: 'Modals & Popovers / MessageBox',
-  component: OriginalMessageBox,
+  component: MessageBox,
   argTypes: {
     header: {
       control: { disable: true }
@@ -38,7 +29,7 @@ const meta = {
     chromatic: { delay: 1000 }
   },
   tags: ['package:@ui5/webcomponents', 'cem-module:Dialog']
-} satisfies Meta<typeof OriginalMessageBox>;
+} satisfies Meta<typeof MessageBox>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

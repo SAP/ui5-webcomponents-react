@@ -237,7 +237,6 @@ Below you can find two examples of typical pain points:
 In general, we recommend mounting modals like Dialogs or Popovers outside the `AnalyticalTable`.
 Still, it's possible to also render them inside a custom cell, but there are some things to consider:
 
-- Use `createPortal` to render the modal outside the `AnalyticalTable` to prevent visual issues.
 - Use conditional rendering to prevent the modal from being rendered for every cell.
 - Call `event.stopPropagation()` in the respective handler of the event if you're facing issues with focus handling (`onFocus`), keyboard navigation (i.a. `onKeyDown`), etc.
 
@@ -254,18 +253,15 @@ const columns = [
       return (
         <>
           <Button onClick={toggle}>Open</Button>
-          {createPortal(
-            <Dialog
-              open={open}
-              initialFocus={uniqueId}
-              onFocus={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              <Input placeholder="Focus me!" id={uniqueId} />
-            </Dialog>,
-            document.body
-          )}
+          <Dialog
+            open={open}
+            initialFocus={uniqueId}
+            onFocus={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <Input placeholder="Focus me!" id={uniqueId} />
+          </Dialog>
         </>
       );
     }

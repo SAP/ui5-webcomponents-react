@@ -37,7 +37,6 @@ export interface ColumnHeaderProps {
   columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
   isRtl: boolean;
   children: ReactNode | ReactNode[];
-  portalContainer: Element;
   columnId?: string;
   showVerticalEndBorder: boolean;
 
@@ -81,7 +80,6 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     visibleColumnIndex,
     onClick,
     onKeyDown,
-    portalContainer,
     isFiltered,
     title,
     'aria-label': ariaLabel,
@@ -239,7 +237,6 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
             openerRef={columnHeaderRef}
             open={popoverOpen}
             setPopoverOpen={setPopoverOpen}
-            portalContainer={portalContainer}
           />
         )}
       </div>

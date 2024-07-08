@@ -1,9 +1,25 @@
 import { Meta } from '@storybook/addon-docs';
 import { Footer, TableOfContent } from '@sb/components';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
+import { MessageStrip } from '@ui5/webcomponents-react';
 
-<Meta title="Working with Portals" />
+<Meta title="Working with Portals (v1)" />
 
-# Working with Portals
+# Working with Portals in v1
+
+<MessageStrip
+  hideCloseButton
+  design={MessageStripDesign.Critical}
+  children={
+    <>
+      Since v2, it's not necessary to use portals anymore, as all popovers and dialogs are now using the{' '}
+      <ui5-link target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Popover_API">
+        Popover API
+      </ui5-link>
+      .
+    </>
+  }
+/>
 
 This entry explains why portals are used in UI5 Web Components for React components and what you need to consider when using them.
 

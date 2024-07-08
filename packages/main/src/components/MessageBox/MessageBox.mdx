@@ -77,34 +77,6 @@ const MessageBoxComponent = () => {
 };
 ```
 
-## Using MessageBoxes inside other components
-
-`MessageBoxes` are often used within other components, when opened this could sometimes have unwanted side effects.
-In this case, we recommend using [createPortal](https://reactjs.org/docs/portals.html) to mount the `MessageBox` outside of the DOM hierarchy of the parent component.
-
-```JSX
-const MessageBoxComponent = () => {
-  const [open, setOpen] = useState(false);
-  const onButtonClick = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-  return (
-    <>
-      <Button onClick={onButtonClick}>Open Messagebox</Button>
-      {createPortal(
-        <MessageBox open={open} onClose={handleClose}>
-          Content
-        </MessageBox>,
-        document.body
-      )}
-    </>
-  );
-};
-```
-
 # More Examples
 
 <br />

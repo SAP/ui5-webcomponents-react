@@ -139,7 +139,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     noDataText,
     overscanCount,
     overscanCountHorizontal = 5,
-    portalContainer,
     retainColumnWidth,
     reactTableOptions,
     renderRowSubComponent,
@@ -768,7 +767,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                       onSort={onSort}
                       onGroupByChanged={onGroupByChanged}
                       isRtl={isRtl}
-                      portalContainer={portalContainer}
                       columnVirtualizer={columnVirtualizer}
                       uniqueId={uniqueId}
                       showVerticalEndBorder={showVerticalEndBorder}
@@ -851,7 +849,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               dispatch={dispatch}
               extensionsHeight={extensionsHeight}
               internalRowHeight={internalRowHeight}
-              portalContainer={portalContainer}
               rowsLength={rows.length}
               visibleRows={internalVisibleRowCount}
               handleOnLoadMore={handleOnLoadMore}
