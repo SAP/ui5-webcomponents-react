@@ -405,7 +405,8 @@ Please use the following components instead:
 
 **Renamed Props:**
 
-- `a11yConfig.dynamicPageAnchorBar` has been renamed to `a11yConfig.objectPageAnchorBar`
+- `a11yConfig` has been renamed to `accessibilityAttributes`
+- `a11yConfig.dynamicPageAnchorBar` has been renamed to `accessibilityAttributes.objectPageAnchorBar`
 
 Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
 
@@ -443,8 +444,7 @@ function MyComponent() {
 ### ActionSheet
 
 The prop `portalContainer` has been removed as it is no longer needed due to the [popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) which is now used in the UI5 Web Components.
-For a better aligned API, the `showCancelButton` prop has been replaced wih the `hideCancelButton` prop and the logic has been inverted.
-You only need to apply changes to your code if `showCancelButton` has been set to `false`.
+For a better aligned API, the `showCancelButton` prop has been replaced wih the `hideCancelButton` prop and the logic has been inverted. Also, the `a11yConfig` prop has been renamed to `accessibilityAttributes`.
 
 ```tsx
 // v1
@@ -452,7 +452,7 @@ import { ActionSheet, Button } from '@ui5/webcomponents-react';
 
 function MyComponent() {
   return (
-    <ActionSheet showCancelButton={false}>
+    <ActionSheet showCancelButton={false} a11yConfig={{ actionSheetMobileContent: { role: 'menu' } }}>
       <Button>Action 1</Button>
     </ActionSheet>
   );
@@ -463,7 +463,7 @@ import { ActionSheet, Button } from '@ui5/webcomponents-react';
 
 function MyComponent() {
   return (
-    <ActionSheet hideCancelButton>
+    <ActionSheet hideCancelButton accessibilityAttributes={{ actionSheetMobileContent: { role: 'menu' } }}>
       <Button>Action 1</Button>
     </ActionSheet>
   );
@@ -483,12 +483,18 @@ function MyComponent() {
 
 **Renamed Enums:**
 
-Only the names of the following enums have changed, so it's sufficient to replace them with the new name.
+Names of the following enums have changed:
 
 - `TableScaleWidthMode` is now `AnalyticalTableScaleWidthMode`
 - `TableSelectionBehavior` is now `AnalyticalTableSelectionBehavior`
 - `TableSelectionMode` is now `AnalyticalTableSelectionMode`
 - `TableVisibleRowCountMode` is now `AnalyticalTableVisibleRowCountMode`
+
+**Changed Enums:**
+
+- The properties and values for the `AnalyticalTableSelectionMode` enum has been changed.
+  - `SingleSelect` is now `Single`
+  - `MultiSelect` is now `Multiple`.
 
 **[Column Properties](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable--docs#column-properties) Changes**
 
@@ -505,6 +511,7 @@ const columns = [{ ...otherProperties, canReorder: false }];
   scaleWidthMode={TableScaleWidthMode.Grow}
   selectionBehavior={TableSelectionBehavior.Row}
   selectionMode={TableSelectionMode.MultiSelect}
+  // selectionMode={TableSelectionMode.SingleSelect}
   visibleRowCountMode={TableVisibleRowCountMode.Interactive}
 />;
 
@@ -517,7 +524,8 @@ const columns = [{ ...otherProps, disableDragAndDrop: true }];
   subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
   scaleWidthMode={AnalyticalTableScaleWidthMode.Grow}
   selectionBehavior={AnalyticalTableSelectionBehavior.Row}
-  selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+  selectionMode={AnalyticalTableSelectionMode.Multiple}
+  // selectionMode={AnalyticalTableSelectionMode.Single}
   visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Interactive}
 />;
 ```
@@ -623,6 +631,10 @@ The prop `titleText` is now required and the default value `true` has been remov
 
 The prop `titleText` is now required.
 
+### ObjectStatus
+
+For better alignment with the UI5 Web Components the `active` prop has been renamed to `interactive`.
+
 ### ThemeProvider
 
 The prop `withoutModalsProvider` has been removed.
@@ -630,7 +642,7 @@ In order to provide a place for the `Modals` helper to mount the popovers, you h
 
 ## Enum Changes
 
-For a better alignment with the UI5 Web Components, the following enums have been renamed:
+For better alignment with the UI5 Web Components, the following enums have been renamed:
 
 - `MessageBoxActions` has been renamed to `MessageBoxAction`
 - `MessageBoxTypes` has been renamed to `MessageBoxType`

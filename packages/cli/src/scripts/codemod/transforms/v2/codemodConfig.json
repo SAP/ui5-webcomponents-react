@@ -9,6 +9,7 @@
     },
     "ActionSheet": {
       "changedProps": {
+        "a11yConfig": "accessibilityAttributes",
         "onAfterClose": "onClose",
         "onAfterOpen": "onOpen",
         "placementType": "placement",
@@ -16,7 +17,11 @@
       },
       "removedProps": ["portalContainer"]
     },
-    "AnalyticalTable": {},
+    "AnalyticalTable": {
+      "renamedEnums": {
+        "selectionMode": "AnalyticalTableSelectionMode"
+      }
+    },
     "Avatar": {},
     "Badge": {
       "newComponent": "Tag"
@@ -286,7 +291,15 @@
       },
       "removedProps": ["selected"]
     },
+    "ObjectPage": {
+      "changedProps": {
+        "a11yConfig": "accessibilityAttributes"
+      }
+    },
     "ObjectStatus": {
+      "changedProps": {
+        "active": "interactive"
+      },
       "renamedEnums": {
         "state": "ValueState"
       }
@@ -621,6 +634,10 @@
     "Themes": "Theme"
   },
   "enumProperties": {
+    "AnalyticalTableSelectionMode": {
+      "SingleSelect": "Single",
+      "MultiSelect": "Multiple"
+    },
     "BusyIndicatorSize": {
       "Small": "S",
       "Medium": "M",

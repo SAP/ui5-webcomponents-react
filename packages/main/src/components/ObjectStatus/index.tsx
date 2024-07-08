@@ -35,7 +35,7 @@ export interface ObjectStatusPropTypes extends CommonProps {
    *
    * @since 0.16.6
    */
-  active?: boolean;
+  interactive?: boolean;
 
   /**
    * Defines the icon in front of the `ObjectStatus` text.
@@ -96,9 +96,9 @@ export interface ObjectStatusPropTypes extends CommonProps {
   stateAnnouncementText?: string;
 
   /**
-   * Fires when the user clicks/taps on active text.
+   * Fires when the user clicks/taps on an interactive text.
    *
-   * __Note:__ This prop has no effect if `active` is not set to `true`.
+   * __Note:__ This prop has no effect if `interactive` is not set to `true`.
    *
    * @since 0.16.6
    */
@@ -164,7 +164,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
     icon,
     className,
     style,
-    active,
+    interactive,
     inverted,
     onClick,
     emptyIndicator,
@@ -207,29 +207,29 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
     classNames.normalizeCSS,
     classNames.objectStatus,
     classNames[`${state as string}`.toLowerCase()],
-    active && classNames.active,
+    interactive && classNames.active,
     inverted && !showEmptyIndicator && classNames.inverted,
     large && classNames.large,
     className
   );
 
-  const TagName = active ? 'button' : 'div';
+  const TagName = interactive ? 'button' : 'div';
 
   return (
     <TagName
-      // @ts-expect-error: both refs are allowed (attributes, etc. of HTMLButtonElement should only be used if `active` is `true`)
+      // @ts-expect-error: both refs are allowed (attributes, etc. of HTMLButtonElement should only be used if `interactive` is `true`)
       ref={ref}
       className={objStatusClasses}
       style={style}
       // @ts-expect-error: onClick is only registered if the event target is a HTMLButtonElement
-      onClick={active ? onClick : undefined}
-      tabIndex={active ? 0 : undefined}
+      onClick={interactive ? onClick : undefined}
+      tabIndex={interactive ? 0 : undefined}
       data-icon-only={!children}
-      role={active ? 'button' : 'group'}
+      role={interactive ? 'button' : 'group'}
       {...rest}
     >
       <span className={classNames.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleDescriptionContainer">
-        {active ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : i18nBundle.getText(ARIA_OBJ_STATUS_DESC_INACTIVE)}
+        {interactive ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : i18nBundle.getText(ARIA_OBJ_STATUS_DESC_INACTIVE)}
       </span>
       {iconToRender && (
         <span className={classNames.icon} data-icon-only={!children} data-component-name="ObjectStatusIconContainer">

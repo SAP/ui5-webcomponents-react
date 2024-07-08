@@ -38,7 +38,7 @@ const getRowProps = (rowProps, { row, instance }) => {
     }
 
     // deselect other rows
-    if (selectionMode === AnalyticalTableSelectionMode.SingleSelect) {
+    if (selectionMode === AnalyticalTableSelectionMode.Single) {
       for (const selectedRow of selectedFlatRows) {
         if (selectedRow.id !== row.id) {
           toggleRowSelected(selectedRow.id, false);

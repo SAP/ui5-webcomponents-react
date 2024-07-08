@@ -47,10 +47,9 @@ const getRowProps = (rowProps, { instance, row, userProps }) => {
   const { webComponentsReactProperties } = instance;
   const { classes, selectionBehavior, selectionMode, alternateRowColor, subRowsKey } = webComponentsReactProperties;
   let className = classes.tr;
-  const rowCanBeSelected = [
-    AnalyticalTableSelectionMode.SingleSelect,
-    AnalyticalTableSelectionMode.MultiSelect
-  ].includes(selectionMode);
+  const rowCanBeSelected = [AnalyticalTableSelectionMode.Single, AnalyticalTableSelectionMode.Multiple].includes(
+    selectionMode
+  );
   if (
     row.isGrouped ||
     (instance.manualGroupBy &&

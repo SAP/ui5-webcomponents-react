@@ -121,7 +121,7 @@ const meta = {
     subRowsKey: 'subRows',
     isTreeTable: false,
     scaleWidthMode: AnalyticalTableScaleWidthMode.Default,
-    selectionMode: AnalyticalTableSelectionMode.SingleSelect,
+    selectionMode: AnalyticalTableSelectionMode.Single,
     selectionBehavior: AnalyticalTableSelectionBehavior.Row,
     overscanCountHorizontal: 5,
     visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
@@ -138,8 +138,7 @@ const meta = {
     tableHooks: { control: { disable: true } },
     NoDataComponent: { control: { disable: true } },
     extension: { control: { disable: true } },
-    tableInstance: { control: { disable: true } },
-    portalContainer: { control: { disable: true } }
+    tableInstance: { control: { disable: true } }
   }
 } satisfies Meta<typeof AnalyticalTable>;
 export default meta;
@@ -360,7 +359,7 @@ export const ResponsiveColumns: Story = {
 };
 
 export const NavigationIndicator: Story = {
-  args: { withNavigationHighlight: true, selectionMode: AnalyticalTableSelectionMode.MultiSelect, data: dataLarge },
+  args: { withNavigationHighlight: true, selectionMode: AnalyticalTableSelectionMode.Multiple, data: dataLarge },
   render: (args) => {
     const [selectedRow, setSelectedRow] = useState();
     const onRowSelect = (e) => {
