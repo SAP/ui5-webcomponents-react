@@ -293,6 +293,9 @@
       }
     },
     "ObjectStatus": {
+      "changedProps": {
+        "active": "interactive"
+      },
       "renamedEnums": {
         "state": "ValueState"
       }
