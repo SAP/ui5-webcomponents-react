@@ -6,6 +6,7 @@ import type { CSSProperties } from 'react';
 import { forwardRef } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
+import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
 import { PieChartPlaceholder } from '../PieChart/Placeholder.js';
 
@@ -17,8 +18,9 @@ interface RadialChartConfig {
 
   [rest: string]: any;
 }
-//todo expose `loading`
-export interface RadialChartProps extends Omit<CommonProps, 'onClick' | 'children' | 'onLegendClick'> {
+export interface RadialChartProps
+  extends Omit<CommonProps, 'onClick' | 'children' | 'onLegendClick'>,
+    Pick<IChartBaseProps, 'loading' | 'loadingDelay'> {
   /**
    * The actual value which defines how much the ring is filled.
    */
@@ -92,6 +94,8 @@ const defaultDisplayValueStyles = {
  */
 const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) => {
   const {
+    loading,
+    loadingDelay,
     maxValue = 100,
     value,
     displayValue,
@@ -108,7 +112,7 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
   } = props;
 
   const range = [0, maxValue];
-  const dataset = [{ value }];
+  const dataset = typeof value === 'number' ? [{ value }] : [];
 
   const onDataPointClickInternal = (payload, i, event) => {
     if (payload && onDataPointClick) {
@@ -126,8 +130,8 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
 
   return (
     <ChartContainer
-      loading={undefined}
-      loadingDelay={undefined}
+      loading={loading}
+      loadingDelay={loadingDelay}
       dataset={dataset}
       ref={ref}
       Placeholder={PieChartPlaceholder}
