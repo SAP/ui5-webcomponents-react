@@ -217,12 +217,12 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
 
   return (
     <TagName
-      // @ts-expect-error: both refs are allowed (attributes, etc. of HTMLButtonElement should only be used if `active` is `true`)
+      // @ts-expect-error: both refs are allowed (attributes, etc. of HTMLButtonElement should only be used if `interactive` is `true`)
       ref={ref}
       className={objStatusClasses}
       style={style}
       // @ts-expect-error: onClick is only registered if the event target is a HTMLButtonElement
-      onClick={active ? onClick : undefined}
+      onClick={interactive ? onClick : undefined}
       tabIndex={interactive ? 0 : undefined}
       data-icon-only={!children}
       role={interactive ? 'button' : 'group'}
