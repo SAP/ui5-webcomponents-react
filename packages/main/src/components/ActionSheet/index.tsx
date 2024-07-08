@@ -44,7 +44,7 @@ export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, '
    */
   hideCancelButton?: boolean;
   /**
-   * Defines internally used a11y properties/attributes.
+   * Defines internally used accessibility properties/attributes.
    */
   accessibilityAttributes?: {
     actionSheetMobileContent?: {

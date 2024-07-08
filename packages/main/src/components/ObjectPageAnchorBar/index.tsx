@@ -53,7 +53,7 @@ interface ObjectPageAnchorBarPropTypes extends CommonProps {
    */
   onHoverToggleButton?: (e: any) => void;
   /**
-   * Defines internally used a11y properties/attributes.
+   * Defines internally used accessibility properties/attributes.
    */
   accessibilityAttributes?: {
     objectPageAnchorBar?: {

@@ -56,7 +56,7 @@ export interface MessageBoxPropTypes
   /**
    * Defines the content of the `MessageBox`.
    *
-   * **Note:** Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design and a11y capabilities.
+   * **Note:** Although this prop accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design and accessibility capabilities.
    */
   children: ReactNode | ReactNode[];
   /**

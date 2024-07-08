@@ -147,7 +147,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   headerContentPinnable?: boolean;
   /**
-   * Defines internally used a11y properties/attributes.
+   * Defines internally used accessibility properties/attributes.
    */
   accessibilityAttributes?: {
     objectPageTopHeader?: {
