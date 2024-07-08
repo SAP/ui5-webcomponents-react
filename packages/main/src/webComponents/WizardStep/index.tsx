@@ -33,8 +33,9 @@ interface WizardStepAttributes {
    *
    * The SAP-icons font provides numerous options.
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Defines the step's `selected` state - the step that is currently active.
@@ -49,15 +50,17 @@ interface WizardStepAttributes {
    * Defines the `subtitleText` of the step.
    *
    * **Note:** the text is displayed in the `Wizard` navigation header.
+   * @default undefined
    */
-  subtitleText?: string;
+  subtitleText?: string | undefined;
 
   /**
    * Defines the `titleText` of the step.
    *
    * **Note:** The text is displayed in the `Wizard` navigation header.
+   * @default undefined
    */
-  titleText?: string;
+  titleText?: string | undefined;
 }
 
 interface WizardStepDomRef extends Required<WizardStepAttributes>, Ui5DomRef {}

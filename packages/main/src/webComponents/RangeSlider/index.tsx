@@ -9,8 +9,9 @@ interface RangeSliderAttributes {
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines whether the slider is in disabled state.
@@ -52,8 +53,9 @@ interface RangeSliderAttributes {
    * **Note:** This property is only applicable within the context of an HTML Form element.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Enables tickmarks visualization for each step.

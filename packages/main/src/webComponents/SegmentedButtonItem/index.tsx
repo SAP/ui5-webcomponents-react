@@ -16,8 +16,9 @@ interface SegmentedButtonItemAttributes {
    * Receives id(or many ids) of the elements that label the component.
    *
    * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines whether the component is disabled.
@@ -33,8 +34,9 @@ interface SegmentedButtonItemAttributes {
    *
    * Example:
    * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Determines whether the component is displayed as selected.
@@ -48,8 +50,9 @@ interface SegmentedButtonItemAttributes {
    * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 }
 
 interface SegmentedButtonItemDomRef extends Required<SegmentedButtonItemAttributes>, Ui5DomRef {}

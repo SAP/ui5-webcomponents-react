@@ -13,8 +13,9 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 interface NotificationListAttributes {
   /**
    * Defines the text that is displayed when the component contains no items.
+   * @default undefined
    */
-  noDataText?: string;
+  noDataText?: string | undefined;
 }
 
 interface NotificationListDomRef extends Required<NotificationListAttributes>, Ui5DomRef {}
@@ -69,7 +70,7 @@ interface NotificationListPropTypes
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
- * @since [2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0) of __@ui5/webcomponents-fiori__.
+ * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents-fiori__.
  */
 const NotificationList = withWebComponent<NotificationListPropTypes, NotificationListDomRef>(
   'ui5-notification-list',

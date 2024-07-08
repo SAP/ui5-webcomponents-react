@@ -8,13 +8,15 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface TextAreaAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the textarea.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Indicates whether the user can interact with the component or not.
@@ -46,13 +48,15 @@ interface TextAreaAttributes {
    * Determines the name by which the component will be identified upon submission in an HTML form.
    *
    * **Note:** This property is only applicable within the context of an HTML Form element.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines a short hint intended to aid the user with data entry when the component has no value.
+   * @default undefined
    */
-  placeholder?: string;
+  placeholder?: string | undefined;
 
   /**
    * Defines whether the component is read-only.
@@ -124,7 +128,7 @@ interface TextAreaPropTypes
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    *
    * **Note:** The `valueStateMessage` would be displayed if the component has
-   * `valueState` of type `Information`, `Warning` or `Error`.
+   * `valueState` of type `Information`, `Critical` or `Negative`.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.

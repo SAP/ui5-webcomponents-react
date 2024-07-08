@@ -8,20 +8,23 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 interface ShellBarItemAttributes {
   /**
    * Defines the count displayed in the top-right corner.
+   * @default undefined
    */
-  count?: string;
+  count?: string | undefined;
 
   /**
    * Defines the name of the item's icon.
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Defines the item text.
    *
    *   **Note:** The text is only displayed inside the overflow popover list view.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 }
 
 interface ShellBarItemDomRef extends Required<ShellBarItemAttributes>, Ui5DomRef {}

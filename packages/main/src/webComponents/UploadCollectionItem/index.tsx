@@ -35,7 +35,7 @@ interface UploadCollectionItemAttributes {
    * Holds an instance of `File` associated with this item.
    * @default null
    */
-  file?: File | null | undefined;
+  file?: File | null;
 
   /**
    * The name of the file.
@@ -102,8 +102,9 @@ interface UploadCollectionItemAttributes {
    * Defines the text of the tooltip that would be displayed for the list item.
    *
    * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents-fiori**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 
   /**
    * Defines the visual indication and behavior of the list items.

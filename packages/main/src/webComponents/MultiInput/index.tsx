@@ -12,13 +12,15 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface MultiInputAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the input.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines whether the component is in disabled state.
@@ -42,8 +44,9 @@ interface MultiInputAttributes {
    * **Note:** This property is only applicable within the context of an HTML Form element.
    * **Note:** When the component is used inside a form element,
    * the value is sent as the first element in the form data, even if it's empty.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines whether the value will be autcompleted to match an item
@@ -66,8 +69,9 @@ interface MultiInputAttributes {
   /**
    * Defines a short hint intended to aid the user with data entry when the
    * component has no value.
+   * @default undefined
    */
-  placeholder?: string;
+  placeholder?: string | undefined;
 
   /**
    * Defines whether the component is read-only.
@@ -160,13 +164,13 @@ interface MultiInputPropTypes
    * **Note:** The suggestions would be displayed only if the `showSuggestions`
    * property is set to `true`.
    *
-   * **Note:** The `<SuggestionItem>` and `<SuggestionGroupItem>` are recommended to be used as suggestion items.
+   * **Note:** The `<SuggestionItem>`, `<SuggestionItemGroup>` and `SuggestionItemCustom` are recommended to be used as suggestion items.
    *
    * **Note:** Importing the Input Suggestions Support feature:
    *
    * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
    *
-   * automatically imports the `<SuggestionItem>` and `<SuggestionGroupItem>` for your convenience.
+   * automatically imports the `<SuggestionItem>` and `<SuggestionItemGroup>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
 

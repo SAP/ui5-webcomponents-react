@@ -7,8 +7,9 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface CardHeaderAttributes {
   /**
    * Defines the additional text.
+   * @default undefined
    */
-  additionalText?: string;
+  additionalText?: string | undefined;
 
   /**
    * Defines if the component would be interactive,
@@ -19,13 +20,15 @@ interface CardHeaderAttributes {
 
   /**
    * Defines the subtitle text.
+   * @default undefined
    */
-  subtitleText?: string;
+  subtitleText?: string | undefined;
 
   /**
    * Defines the title text.
+   * @default undefined
    */
-  titleText?: string;
+  titleText?: string | undefined;
 }
 
 interface CardHeaderDomRef extends Required<CardHeaderAttributes>, Ui5DomRef {}

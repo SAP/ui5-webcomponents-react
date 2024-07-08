@@ -10,14 +10,15 @@ interface BreadcrumbsItemAttributes {
    * Defines the accessible ARIA name of the item.
    * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the link href.
    *
    * **Note:** Standard hyperlink behavior is supported.
+   * @default undefined
    */
-  href?: string;
+  href?: string | undefined;
 
   /**
    * Defines the link target.

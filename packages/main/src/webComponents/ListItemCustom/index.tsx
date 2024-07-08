@@ -28,8 +28,9 @@ interface ListItemCustomAttributes {
    * Defines the text alternative of the component.
    *
    * **Note**: If not provided a default text alternative will be set, if present.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the highlight state of the list items.
@@ -67,8 +68,9 @@ interface ListItemCustomAttributes {
    * Defines the text of the tooltip that would be displayed for the list item.
    *
    * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 
   /**
    * Defines the visual indication and behavior of the list items.

@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
-import type IllustrationMessageSize from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js';
+import type IllustrationMessageDesign from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageDesign.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
@@ -11,8 +11,9 @@ interface IllustratedMessageAttributes {
    * Receives id(or many ids) of the elements that label the component.
    *
    * **Note:** Available since [v1.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.7.0) of **@ui5/webcomponents-fiori**.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Determines which illustration breakpoint variant is used.
@@ -20,10 +21,10 @@ interface IllustratedMessageAttributes {
    * As `IllustratedMessage` adapts itself around the `Illustration`, the other
    * elements of the component are displayed differently on the different breakpoints/illustration designs.
    *
-   * **Note:** Available since [v1.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.5.0) of **@ui5/webcomponents-fiori**.
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
    * @default "Auto"
    */
-  design?: IllustrationMessageSize | keyof typeof IllustrationMessageSize;
+  design?: IllustrationMessageDesign | keyof typeof IllustrationMessageDesign;
 
   /**
    * Defines the illustration name that will be displayed in the component.
@@ -57,15 +58,17 @@ interface IllustratedMessageAttributes {
    * **Note:** Using this property, the default subtitle text of illustration will be overwritten.
    *
    * **Note:** Using `subtitle` slot, the default of this property will be overwritten.
+   * @default undefined
    */
-  subtitleText?: string;
+  subtitleText?: string | undefined;
 
   /**
    * Defines the title of the component.
    *
    * **Note:** Using this property, the default title text of illustration will be overwritten.
+   * @default undefined
    */
-  titleText?: string;
+  titleText?: string | undefined;
 }
 
 interface IllustratedMessageDomRef extends Required<IllustratedMessageAttributes>, Ui5DomRef {}

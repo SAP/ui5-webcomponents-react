@@ -40,8 +40,9 @@ interface TableColumnAttributes {
 
   /**
    * The text for the column when it pops in.
+   * @default undefined
    */
-  popinText?: string;
+  popinText?: string | undefined;
 }
 
 interface TableColumnDomRef extends Required<TableColumnAttributes>, Ui5DomRef {}

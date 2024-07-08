@@ -52,22 +52,25 @@ interface ShellBarAttributes {
   /**
    * Defines the `notificationsCount`,
    * displayed in the notification icon top-right corner.
+   * @default undefined
    */
-  notificationsCount?: string;
+  notificationsCount?: string | undefined;
 
   /**
    * Defines the `primaryTitle`.
    *
    * **Note:** The `primaryTitle` would be hidden on S screen size (less than approx. 700px).
+   * @default undefined
    */
-  primaryTitle?: string;
+  primaryTitle?: string | undefined;
 
   /**
    * Defines the `secondaryTitle`.
    *
    * **Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).
+   * @default undefined
    */
-  secondaryTitle?: string;
+  secondaryTitle?: string | undefined;
 
   /**
    * Defines, if the notification icon would be displayed.

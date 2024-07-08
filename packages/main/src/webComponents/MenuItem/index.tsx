@@ -28,8 +28,9 @@ interface MenuItemAttributes {
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.7.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the `additionalText`, displayed in the end of the menu item.
@@ -41,8 +42,9 @@ interface MenuItemAttributes {
    * sub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.
    *
    * **Note:** Available since [v1.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.8.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  additionalText?: string;
+  additionalText?: string | undefined;
 
   /**
    * Defines whether `MenuItem` is in disabled state.
@@ -68,8 +70,9 @@ interface MenuItemAttributes {
    * **Example:**
    *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
@@ -105,22 +108,18 @@ interface MenuItemAttributes {
   selected?: boolean;
 
   /**
-   * Defines whether a visual separator should be rendered before the item.
-   * @default false
-   */
-  startsSection?: boolean;
-
-  /**
    * Defines the text of the tree item.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 
   /**
    * Defines the text of the tooltip for the menu item.
    *
    * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 
   /**
    * Defines the visual indication and behavior of the list items.
@@ -141,7 +140,9 @@ interface MenuItemPropTypes
   /**
    * Defines the items of this component.
    *
-   * **Note:** If there are items added to this slot, an arrow will be displayed at the end
+   * **Note:** The slot can hold `MenuItem` and `MenuSeparator` items.
+   *
+   * If there are items added to this slot, an arrow will be displayed at the end
    * of the item in order to indicate that there are items added. In that case components added
    * to `endContent` slot or `additionalText` content will not be displayed.
    *
@@ -221,7 +222,7 @@ const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
     'tooltip',
     'type'
   ],
-  ['disabled', 'loading', 'navigated', 'selected', 'startsSection'],
+  ['disabled', 'loading', 'navigated', 'selected'],
   ['deleteButton', 'endContent'],
   ['detail-click'],
   () => import('@ui5/webcomponents/dist/MenuItem.js')

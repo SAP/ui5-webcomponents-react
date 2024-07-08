@@ -10,13 +10,15 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface ToolbarAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the input.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Indicated the direction in which the Toolbar items will be aligned.

@@ -1,7 +1,7 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
-import { SuggestionGroupItem } from '../SuggestionGroupItem';
+import { SuggestionItemGroup } from '../SuggestionItemGroup';
 import { SuggestionItem } from '../SuggestionItem';
 import * as ComponentStories from './Input.stories';
 import { excludePropsForAbstract } from '@sb/utils';
@@ -42,9 +42,9 @@ and the `showSuggestions` prop is set to `true`.
 <Description of={SuggestionItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SuggestionItem} />
 
-## SuggestionGroupItem
+## SuggestionItemGroup
 
-<Description of={SuggestionGroupItem} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SuggestionGroupItem} />
+<Description of={SuggestionItemGroup} />
+<ArgTypesWithNote of={SuggestionItemGroup} />
 
 <Footer />

@@ -9,8 +9,9 @@ import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.j
 interface TabAttributes {
   /**
    * Represents the "additionalText" text, which is displayed in the tab. In the cases when in the same time there are tabs with icons and tabs without icons, if a tab has no icon the "additionalText" is displayed larger.
+   * @default undefined
    */
-  additionalText?: string;
+  additionalText?: string | undefined;
 
   /**
    * Defines the component's design color.
@@ -38,8 +39,9 @@ interface TabAttributes {
    * Defines the icon source URI to be displayed as graphical element within the component.
    * The SAP-icons font provides numerous built-in icons.
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Specifies if the component is selected.
@@ -49,8 +51,9 @@ interface TabAttributes {
 
   /**
    * The text to be displayed for the item.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 }
 
 interface TabDomRef extends Required<TabAttributes>, Ui5DomRef {

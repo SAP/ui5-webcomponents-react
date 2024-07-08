@@ -8,8 +8,9 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface CalendarLegendItemAttributes {
   /**
    * Defines the text content of the Calendar Legend Item.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 
   /**
    * Defines the type of the Calendar Legend Item.

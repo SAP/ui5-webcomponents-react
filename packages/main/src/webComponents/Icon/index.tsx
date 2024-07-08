@@ -13,8 +13,9 @@ interface IconAttributes {
    *
    * **Note:** Every icon should have a text alternative in order to
    * calculate its accessible name.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the component semantic design.
@@ -54,8 +55,9 @@ interface IconAttributes {
    *
    * Example:
    * `name='business-suite/3d'`, `name='business-suite/1x2-grid-layout'`, `name='business-suite/4x4-grid-layout'`.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines whether the component should have a tooltip.

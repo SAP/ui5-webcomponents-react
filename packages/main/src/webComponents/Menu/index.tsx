@@ -13,8 +13,9 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.j
 interface MenuAttributes {
   /**
    * Defines the header text of the menu (displayed on mobile).
+   * @default undefined
    */
-  headerText?: string;
+  headerText?: string | undefined;
 
   /**
    * Defines if a loading indicator would be displayed inside the corresponding ui5-menu popover.
@@ -46,8 +47,9 @@ interface MenuAttributes {
    * You can only set the `opener` attribute to a DOM Reference when using JavaScript.
    *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  opener?: HTMLElement | string;
+  opener?: HTMLElement | string | undefined;
 }
 
 interface MenuDomRef extends Required<MenuAttributes>, Ui5DomRef {}
@@ -61,7 +63,7 @@ interface MenuPropTypes
   /**
    * Defines the items of this component.
    *
-   * **Note:** Use `MenuItem` for the intended design.
+   * **Note:** Use `MenuItem` and `MenuSeparator` for their intended design.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -111,9 +113,13 @@ interface MenuPropTypes
 /**
  * `Menu` component represents a hierarchical menu structure.
  *
- * ### Usage
+ * ### Structure
  *
- * `Menu` contains `MenuItem` components.
+ * The `Menu` can hold two types of entities:
+ *
+ * - `MenuItem` components
+ * - `MenuSeparator` - used to separate menu items with a line
+ *
  * An arbitrary hierarchy structure can be represented by recursively nesting menu items.
  *
  * ### Keyboard Handling

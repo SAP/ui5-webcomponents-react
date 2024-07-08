@@ -1,11 +1,11 @@
 'use client';
 
-import '@ui5/webcomponents/dist/ListItemGroup.js';
+import '@ui5/webcomponents/dist/SuggestionItemGroup.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
-interface ListItemGroupAttributes {
+interface SuggestionItemGroupAttributes {
   /**
    * Defines the accessible name of the header.
    * @default undefined
@@ -19,13 +19,13 @@ interface ListItemGroupAttributes {
   headerText?: string | undefined;
 }
 
-interface ListItemGroupDomRef extends Required<ListItemGroupAttributes>, Ui5DomRef {}
+interface SuggestionItemGroupDomRef extends Required<SuggestionItemGroupAttributes>, Ui5DomRef {}
 
-interface ListItemGroupPropTypes
-  extends ListItemGroupAttributes,
-    Omit<CommonProps, keyof ListItemGroupAttributes | 'children' | 'header'> {
+interface SuggestionItemGroupPropTypes
+  extends SuggestionItemGroupAttributes,
+    Omit<CommonProps, keyof SuggestionItemGroupAttributes | 'children' | 'header'> {
   /**
-   * Defines the items of the <code>ui5-li-group</code>.
+   * Defines the items of the <code>ui5-suggestion-item-group</code>.
    */
   children?: ReactNode | ReactNode[];
 
@@ -44,26 +44,23 @@ interface ListItemGroupPropTypes
 }
 
 /**
- * The `ListItemGroup` is a special list item, used only to create groups of list items.
- *
- * This is the item to use inside a `List`.
- *
- *
+ * The `SuggestionItemGroup` is type of suggestion item,
+ * that can be used to split the `Input` suggestions into groups.
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
  * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents__.
  */
-const ListItemGroup = withWebComponent<ListItemGroupPropTypes, ListItemGroupDomRef>(
-  'ui5-li-group',
+const SuggestionItemGroup = withWebComponent<SuggestionItemGroupPropTypes, SuggestionItemGroupDomRef>(
+  'ui5-suggestion-item-group',
   ['headerAccessibleName', 'headerText'],
   [],
   ['header'],
   [],
-  () => import('@ui5/webcomponents/dist/ListItemGroup.js')
+  () => import('@ui5/webcomponents/dist/SuggestionItemGroup.js')
 );
 
-ListItemGroup.displayName = 'ListItemGroup';
+SuggestionItemGroup.displayName = 'SuggestionItemGroup';
 
-export { ListItemGroup };
-export type { ListItemGroupDomRef, ListItemGroupPropTypes };
+export { SuggestionItemGroup };
+export type { SuggestionItemGroupDomRef, SuggestionItemGroupPropTypes };

@@ -38,12 +38,6 @@ interface NotificationListItemAttributes {
   read?: boolean;
 
   /**
-   * Defines the selected state of the component.
-   * @default false
-   */
-  selected?: boolean;
-
-  /**
    * Defines if the `Close` button would be displayed.
    * @default false
    */
@@ -57,8 +51,9 @@ interface NotificationListItemAttributes {
 
   /**
    * Defines the `titleText` of the item.
+   * @default undefined
    */
-  titleText?: string;
+  titleText?: string | undefined;
 
   /**
    * Defines if the `titleText` and `description` should wrap,
@@ -171,7 +166,7 @@ interface NotificationListItemPropTypes
 const NotificationListItem = withWebComponent<NotificationListItemPropTypes, NotificationListItemDomRef>(
   'ui5-li-notification',
   ['importance', 'loadingDelay', 'state', 'titleText', 'wrappingType'],
-  ['loading', 'read', 'selected', 'showClose'],
+  ['loading', 'read', 'showClose'],
   ['avatar', 'footnotes', 'menu'],
   ['close'],
   () => import('@ui5/webcomponents-fiori/dist/NotificationListItem.js')
