@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ListGrowingMode from '@ui5/webcomponents/dist/types/ListGrowingMode.js';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
-import ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators.js';
+import ListSeparator from '@ui5/webcomponents/dist/types/ListSeparator.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { FlexBox } from '../../components/FlexBox';
-import { FlexBoxJustifyContent } from '../../enums';
-import { Text } from '../../webComponents/Text';
-import { ListItemCustom } from '../ListItemCustom';
-import { ListItemGroup } from '../ListItemGroup';
-import { ListItemStandard } from '../ListItemStandard';
-import { ProgressIndicator } from '../ProgressIndicator';
+import { FlexBox } from '../../components/FlexBox/index.js';
+import { FlexBoxJustifyContent } from '../../enums/index.js';
+import { Text } from '../../webComponents/Text/index.js';
+import { ListItemCustom } from '../ListItemCustom/index.js';
+import { ListItemGroup } from '../ListItemGroup/index.js';
+import { ListItemStandard } from '../ListItemStandard/index.js';
+import { ProgressIndicator } from '../ProgressIndicator/index.js';
 import { List } from './index.js';
 
 const meta = {
@@ -22,7 +22,7 @@ const meta = {
   args: {
     headerText: 'List with ListItemStandard',
     selectionMode: ListSelectionMode.None,
-    separators: ListSeparators.All,
+    separators: ListSeparator.All,
     growing: ListGrowingMode.None
   },
   tags: ['package:@ui5/webcomponents']

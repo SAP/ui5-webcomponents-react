@@ -7,13 +7,15 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface ComboBoxItemAttributes {
   /**
    * Defines the additional text of the component.
+   * @default undefined
    */
-  additionalText?: string;
+  additionalText?: string | undefined;
 
   /**
    * Defines the text of the component.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 }
 
 interface ComboBoxItemDomRef extends Required<ComboBoxItemAttributes>, Ui5DomRef {}

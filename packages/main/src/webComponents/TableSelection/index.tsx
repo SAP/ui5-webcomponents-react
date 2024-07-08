@@ -37,7 +37,7 @@ interface TableSelectionPropTypes
  * * Multiple - select multiple rows.
  * * None - no selection active.
  *
- * As the selection is key-based, `TableRow` components need to define a unique `key` property.
+ * As the selection is key-based, `TableRow` components need to define a unique `row-key` property.
  *
  * ### Usage
  *

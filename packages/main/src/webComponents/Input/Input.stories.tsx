@@ -3,10 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
-import globeIcon from '@ui5/webcomponents-icons/dist/globe.js';
 import { Icon } from '../Icon/index.js';
-import { SuggestionGroupItem } from '../SuggestionGroupItem/index.js';
 import { SuggestionItem } from '../SuggestionItem/index.js';
+import { SuggestionItemGroup } from '../SuggestionItemGroup/index.js';
 import { Input } from './index.js';
 
 const meta = {
@@ -40,14 +39,16 @@ export const WithSuggestionItem: Story = {
   render: (args) => {
     return (
       <Input {...args} style={{ width: '400px' }}>
-        <SuggestionGroupItem text="A Group" />
-        <SuggestionItem icon={globeIcon} text="United States" additionalText={'USA'} description={'My Description'} />
-        <SuggestionItem icon={globeIcon} text="Bulgaria" iconEnd />
-        <SuggestionGroupItem text="Another Group Items" />
-        <SuggestionItem icon={globeIcon} text="Argentina" />
-        <SuggestionItem icon={globeIcon} text="Germany" />
-        <SuggestionItem icon={globeIcon} text="Iceland" />
-        <SuggestionItem icon={globeIcon} text="Moldova" />
+        <SuggestionItemGroup headerText="A Group">
+          <SuggestionItem text="United States" additionalText={'USA'} />
+          <SuggestionItem text="Bulgaria" />
+        </SuggestionItemGroup>
+        <SuggestionItemGroup headerText="Another Group Items">
+          <SuggestionItem text="Argentina" />
+          <SuggestionItem text="Germany" />
+          <SuggestionItem text="Iceland" />
+          <SuggestionItem text="Moldova" />
+        </SuggestionItemGroup>
       </Input>
     );
   }

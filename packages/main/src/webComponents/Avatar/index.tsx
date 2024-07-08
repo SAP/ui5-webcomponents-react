@@ -25,8 +25,9 @@ interface AvatarAttributes {
   /**
    * Defines the text alternative of the component.
    * If not provided a default text alternative will be set, if present.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the background color of the desired image.
@@ -58,6 +59,7 @@ interface AvatarAttributes {
    * `<Avatar fallback-icon="alert">`
    *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default "employee"
    */
   fallbackIcon?: string;
 
@@ -75,15 +77,17 @@ interface AvatarAttributes {
    * **Note:** If no icon or an empty one is provided, by default the "employee" icon should be displayed.
    *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Defines the displayed initials.
    *
    * Up to three Latin letters can be displayed as initials.
+   * @default undefined
    */
-  initials?: string;
+  initials?: string | undefined;
 
   /**
    * Defines if the avatar is interactive (focusable and pressable).

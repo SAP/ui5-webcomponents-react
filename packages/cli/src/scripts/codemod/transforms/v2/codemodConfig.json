@@ -79,7 +79,10 @@
       }
     },
     "ComboBoxGroupItem": {
-      "newComponent": "ComboBoxItemGroup"
+      "newComponent": "ComboBoxItemGroup",
+      "changedProps": {
+        "text": "headerText"
+      }
     },
     "CustomListItem": {
       "newComponent": "ListItemCustom",
@@ -119,6 +122,11 @@
     },
     "FilterItem": {},
     "FilterItemOption": {},
+    "FlexibleColumnLayout": {
+      "changedProps": {
+        "hideArrows": "disableResizing"
+      }
+    },
     "Form": {
       "comment": "merge labelSpan and columns props",
       "changedProps": {
@@ -212,7 +220,8 @@
       "changedProps": {
         "busy": "loading",
         "busyDelay": "loadingDelay"
-      }
+      },
+      "removedProps": ["startsSection"]
     },
     "MessageItem": {
       "renamedEnums": {
@@ -240,13 +249,15 @@
     "MultiComboBoxGroupItem": {
       "newComponent": "MultiComboBoxItemGroup",
       "changedProps": {
-        "onOpenChange": "onOpen"
+        "onOpenChange": "onOpen",
+        "text": "headerText"
       }
     },
     "MultiComboBoxItem": {},
     "MultiComboBoxItemGroup": {
       "changedProps": {
-        "onOpenChange": "onOpen"
+        "onOpenChange": "onOpen",
+        "text": "headerText"
       }
     },
     "MultiInput": {
@@ -264,7 +275,7 @@
         "busy": "loading",
         "busyDelay": "loadingDelay"
       },
-      "removedProps": ["actions", "priority", "showClose", "showCounter"]
+      "removedProps": ["actions", "priority", "showClose", "showCounter", "selected"]
     },
     "NotificationListItem": {
       "changedProps": {
@@ -272,7 +283,8 @@
         "busyDelay": "loadingDelay",
         "actions": "menu",
         "priority": "importance"
-      }
+      },
+      "removedProps": ["selected"]
     },
     "ObjectStatus": {
       "renamedEnums": {
@@ -400,11 +412,14 @@
         "valueState": "ValueState"
       }
     },
-    "SuggestionGroupItem": {},
-    "SuggestionItem": {
-      "renamedEnums": {
-        "additionalTextState": "ValueState"
+    "SuggestionGroupItem": {
+      "newComponent": "SuggestionItemGroup",
+      "changedProps": {
+        "text": "headerText"
       }
+    },
+    "SuggestionItem": {
+      "removedProps": ["additionalTextState", "description", "icon", "iconEnd", "image", "type"]
     },
     "Switch": {},
     "Tab": {
@@ -423,10 +438,10 @@
       "comment": "noDataText is now noData slot",
       "changedProps": {
         "busy": "loading",
+        "busyDelay": "loadingDelay",
         "columns": "headerRow"
       },
       "removedProps": [
-        "busyDelay",
         "growing",
         "growingButtonSubtext",
         "growingButtonText",
@@ -550,14 +565,14 @@
     "FCLLayout": "@ui5/webcomponents-fiori/dist/types/FCLLayout.js",
     "HighlightTypes": "@ui5/webcomponents/dist/types/Highlight.js",
     "IconDesign": "@ui5/webcomponents/dist/types/IconDesign.js",
-    "IllustrationMessageSize": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageSize.js",
+    "IllustrationMessageSize": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageDesign.js",
     "IllustrationMessageType": "@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js",
     "InputType": "@ui5/webcomponents/dist/types/InputType.js",
     "LinkDesign": "@ui5/webcomponents/dist/types/LinkDesign.js",
     "ListItemType": "@ui5/webcomponents/dist/types/ListItemType.js",
     "ListMode": "@ui5/webcomponents/dist/types/ListSelectionMode.js",
     "ListGrowingMode": "@ui5/webcomponents/dist/types/ListGrowingMode.js",
-    "ListSeparators": "@ui5/webcomponents/dist/types/ListSeparators.js",
+    "ListSeparators": "@ui5/webcomponents/dist/types/ListSeparator.js",
     "MediaGalleryItemLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryItemLayout.js",
     "MediaGalleryLayout": "@ui5/webcomponents-fiori/dist/types/MediaGalleryLayout.js",
     "MediaGalleryMenuHorizontalAlign": "@ui5/webcomponents-fiori/dist/types/MediaGalleryMenuHorizontalAlign.js",

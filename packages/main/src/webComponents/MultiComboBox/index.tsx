@@ -13,15 +13,17 @@ interface MultiComboBoxAttributes {
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the component.
    *
    * **Note:** Available since [v1.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.4.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines whether the component is in disabled state.
@@ -45,8 +47,9 @@ interface MultiComboBoxAttributes {
    * the value is sent as the first element in the form data, even if it's empty.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines whether the value will be autcompleted to match an item
@@ -65,8 +68,9 @@ interface MultiComboBoxAttributes {
   /**
    * Defines a short hint intended to aid the user with data entry when the
    * component has no value.
+   * @default undefined
    */
-  placeholder?: string;
+  placeholder?: string | undefined;
 
   /**
    * Defines whether the component is read-only.

@@ -29,8 +29,9 @@ interface SideNavigationItemAttributes {
    * for the `click` event should be registered.
    *
    * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents-fiori**.
+   * @default undefined
    */
-  href?: string;
+  href?: string | undefined;
 
   /**
    * Defines the icon of the item.
@@ -38,8 +39,9 @@ interface SideNavigationItemAttributes {
    * The SAP-icons font provides numerous options.
    *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Defines whether the item is selected
@@ -61,13 +63,15 @@ interface SideNavigationItemAttributes {
    * **This property must only be used when the `href` property is set.**
    *
    * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents-fiori**.
+   * @default undefined
    */
-  target?: string;
+  target?: string | undefined;
 
   /**
    * Defines the text of the item.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 
   /**
    * Defines the tooltip of the component.
@@ -75,8 +79,9 @@ interface SideNavigationItemAttributes {
    * A tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 }
 
 interface SideNavigationItemDomRef extends Required<SideNavigationItemAttributes>, Ui5DomRef {}

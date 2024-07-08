@@ -24,8 +24,9 @@ interface SideNavigationGroupAttributes {
 
   /**
    * Defines the text of the item.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 
   /**
    * Defines the tooltip of the component.
@@ -33,8 +34,9 @@ interface SideNavigationGroupAttributes {
    * A tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 }
 
 interface SideNavigationGroupDomRef extends Required<SideNavigationGroupAttributes>, Ui5DomRef {}

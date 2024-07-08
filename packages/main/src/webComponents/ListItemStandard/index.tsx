@@ -28,13 +28,15 @@ interface ListItemStandardAttributes {
   /**
    * Defines the text alternative of the component.
    * Note: If not provided a default text alternative will be set, if present.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the `additionalText`, displayed in the end of the list item.
+   * @default undefined
    */
-  additionalText?: string;
+  additionalText?: string | undefined;
 
   /**
    * Defines the state of the `additionalText`.
@@ -46,8 +48,9 @@ interface ListItemStandardAttributes {
 
   /**
    * Defines the description displayed right under the item text, if such is present.
+   * @default undefined
    */
-  description?: string;
+  description?: string | undefined;
 
   /**
    * Defines the highlight state of the list items.
@@ -64,23 +67,15 @@ interface ListItemStandardAttributes {
    * **Note:**
    * SAP-icons font provides numerous built-in icons. To find all the available icons, see the
    * [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Defines whether the `icon` should be displayed in the beginning of the list item or in the end.
-   *
-   * **Note:** If `image` is set, the `icon` would be displayed after the `image`.
    * @default false
    */
   iconEnd?: boolean;
-
-  /**
-   * Defines the `image` source URI.
-   *
-   * **Note:** The `image` would be displayed in the beginning of the list item.
-   */
-  image?: string;
 
   /**
    * Defines whether the item is movable.
@@ -109,8 +104,9 @@ interface ListItemStandardAttributes {
    * Defines the text of the tooltip that would be displayed for the list item.
    *
    * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 
   /**
    * Defines the visual indication and behavior of the list items.
@@ -127,10 +123,7 @@ interface ListItemStandardDomRef extends Required<ListItemStandardAttributes>, U
 
 interface ListItemStandardPropTypes
   extends ListItemStandardAttributes,
-    Omit<
-      CommonProps,
-      keyof ListItemStandardAttributes | 'children' | 'deleteButton' | 'imageContent' | 'onDetailClick'
-    > {
+    Omit<CommonProps, keyof ListItemStandardAttributes | 'children' | 'deleteButton' | 'image' | 'onDetailClick'> {
   /**
    * Defines the text of the component.
    *
@@ -161,15 +154,15 @@ interface ListItemStandardPropTypes
    * **Note:** If bigger `Avatar` needs to be used, then the size of the
    * `ListItemStandard` should be customized in order to fit.
    *
-   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="imageContent"`).
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="image"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-handling-slots--docs).
    *
-   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    */
-  imageContent?: UI5WCSlotsNode;
+  image?: UI5WCSlotsNode;
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    */
@@ -195,12 +188,11 @@ const ListItemStandard = withWebComponent<ListItemStandardPropTypes, ListItemSta
     'description',
     'highlight',
     'icon',
-    'image',
     'tooltip',
     'type'
   ],
   ['iconEnd', 'movable', 'navigated', 'selected'],
-  ['deleteButton', 'imageContent'],
+  ['deleteButton', 'image'],
   ['detail-click'],
   () => import('@ui5/webcomponents/dist/ListItemStandard.js')
 );

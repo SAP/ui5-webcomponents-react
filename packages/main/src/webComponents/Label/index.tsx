@@ -11,8 +11,9 @@ interface LabelAttributes {
    * Defines the labeled input by providing its ID.
    *
    * **Note:** Can be used with both `Input` and native input.
+   * @default undefined
    */
-  for?: string;
+  for?: string | undefined;
 
   /**
    * Defines whether an asterisk character is added to the component text.

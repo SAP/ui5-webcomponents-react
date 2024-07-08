@@ -13,8 +13,9 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface UploadCollectionAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * By default there will be drag and drop overlay shown over the `UploadCollection` when files
@@ -28,13 +29,15 @@ interface UploadCollectionAttributes {
 
   /**
    * Allows you to set your own text for the 'No data' description.
+   * @default undefined
    */
-  noDataDescription?: string;
+  noDataDescription?: string | undefined;
 
   /**
    * Allows you to set your own text for the 'No data' text.
+   * @default undefined
    */
-  noDataText?: string;
+  noDataText?: string | undefined;
 
   /**
    * Defines the selection mode of the `UploadCollection`.

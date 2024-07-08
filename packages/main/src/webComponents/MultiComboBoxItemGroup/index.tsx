@@ -8,8 +8,9 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface MultiComboBoxItemGroupAttributes {
   /**
    * Defines the text of the component.
+   * @default undefined
    */
-  text?: string;
+  headerText?: string | undefined;
 }
 
 interface MultiComboBoxItemGroupDomRef extends Required<MultiComboBoxItemGroupAttributes>, Ui5DomRef {}
@@ -34,7 +35,7 @@ interface MultiComboBoxItemGroupPropTypes
  */
 const MultiComboBoxItemGroup = withWebComponent<MultiComboBoxItemGroupPropTypes, MultiComboBoxItemGroupDomRef>(
   'ui5-mcb-item-group',
-  ['text'],
+  ['headerText'],
   [],
   [],
   [],

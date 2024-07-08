@@ -20,8 +20,9 @@ interface TimePickerAttributes {
    * HH:mm:ss -> 11:42:35
    * hh:mm:ss a -> 2:23:15 PM
    * mm:ss -> 12:04 (only minutes and seconds)
+   * @default undefined
    */
-  formatPattern?: string;
+  formatPattern?: string | undefined;
 
   /**
    * Determines the name by which the component will be identified upon submission in an HTML form.
@@ -29,8 +30,9 @@ interface TimePickerAttributes {
    * **Note:** This property is only applicable within the context of an HTML Form element.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines the open or closed state of the popover.
@@ -58,9 +60,8 @@ interface TimePickerAttributes {
 
   /**
    * Defines a formatted time value.
-   * @default undefined
    */
-  value?: string | undefined;
+  value?: string;
 
   /**
    * Defines the value state of the component.
@@ -73,7 +74,7 @@ interface TimePickerDomRef extends Required<TimePickerAttributes>, Ui5DomRef {
   /**
    * Currently selected time represented as JavaScript Date instance
    */
-  readonly dateValue: Date | Array<Date> | null;
+  readonly dateValue: Date | null;
 
   /**
    * Formats a Java Script date object into a string representing a locale date and time

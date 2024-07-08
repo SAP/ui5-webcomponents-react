@@ -13,8 +13,9 @@ interface SwitchAttributes {
    * Providing an `accessibleNameRef` or an `accessibleName` is mandatory in the cases when `textOn` and `textOff` properties aren't set.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the component.
@@ -23,8 +24,9 @@ interface SwitchAttributes {
    * Providing an `accessibleNameRef` or an `accessibleName` is mandatory in the cases when `textOn` and `textOff` properties aren't set.
    *
    * **Note:** Available since [v1.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.1.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines if the component is checked.
@@ -58,8 +60,9 @@ interface SwitchAttributes {
    * **Note:** This property is only applicable within the context of an HTML Form element.
    *
    * **Note:** Available since [v1.16.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.16.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines whether the component is required.
@@ -73,15 +76,17 @@ interface SwitchAttributes {
    * Defines the text, displayed when the component is not checked.
    *
    * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
+   * @default undefined
    */
-  textOff?: string;
+  textOff?: string | undefined;
 
   /**
    * Defines the text, displayed when the component is checked.
    *
    * **Note:** We recommend using short texts, up to 3 letters (larger texts would be cut off).
+   * @default undefined
    */
-  textOn?: string;
+  textOn?: string | undefined;
 
   /**
    * Defines the tooltip of the component.
@@ -89,8 +94,9 @@ interface SwitchAttributes {
    * **Note:** If applicable an external label reference should always be the preferred option to provide context to the `Switch` component over a tooltip.
    *
    * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 }
 
 interface SwitchDomRef extends Required<SwitchAttributes>, Ui5DomRef {}

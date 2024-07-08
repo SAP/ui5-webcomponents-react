@@ -10,8 +10,9 @@ interface ProgressIndicatorAttributes {
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.16.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.16.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Specifies the text value to be displayed in the bar.
@@ -20,9 +21,9 @@ interface ProgressIndicatorAttributes {
    *
    * - If there is no value provided or the value is empty, the default percentage value is shown.
    * - If `hideValue` property is `true` both the `displayValue` and `value` property values are not shown.
-   * @default null
+   * @default undefined
    */
-  displayValue?: string | null | undefined;
+  displayValue?: string | undefined;
 
   /**
    * Defines whether the component value is shown.

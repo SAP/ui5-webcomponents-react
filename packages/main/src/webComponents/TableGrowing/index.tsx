@@ -9,8 +9,9 @@ interface TableGrowingAttributes {
   /**
    * Defines the text that will be displayed below the `growingText` inside the growing button.
    * Has no effect when type is set to Scroll.
+   * @default undefined
    */
-  growingSubText?: string;
+  growingSubText?: string | undefined;
 
   /**
    * Defines the text that will be displayed inside the growing button.
@@ -18,8 +19,9 @@ interface TableGrowingAttributes {
    *
    * **Note:** When not provided and the type is set to Button, a default text is displayed, corresponding to the
    * current language.
+   * @default undefined
    */
-  growingText?: string;
+  growingText?: string | undefined;
 
   /**
    * Defines the mode of the <code>ui5-table</code> growing.

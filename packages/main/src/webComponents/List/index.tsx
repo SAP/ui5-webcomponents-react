@@ -13,7 +13,7 @@ import type ListItemBase from '@ui5/webcomponents/dist/ListItemBase.js';
 import type ListAccessibleRole from '@ui5/webcomponents/dist/types/ListAccessibleRole.js';
 import type ListGrowingMode from '@ui5/webcomponents/dist/types/ListGrowingMode.js';
 import type ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
-import type ListSeparators from '@ui5/webcomponents/dist/types/ListSeparators.js';
+import type ListSeparator from '@ui5/webcomponents/dist/types/ListSeparator.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
@@ -21,13 +21,15 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface ListAttributes {
   /**
    * Defines the accessible name of the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the IDs of the elements that label the input.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines the accessible role of the component.
@@ -37,8 +39,9 @@ interface ListAttributes {
 
   /**
    * Defines the footer text.
+   * @default undefined
    */
-  footerText?: string;
+  footerText?: string | undefined;
 
   /**
    * Defines whether the component will have growing capability either by pressing a `More` button,
@@ -58,15 +61,17 @@ interface ListAttributes {
    * **Note:** This property takes effect if the `growing` property is set to the `Button`.
    *
    * **Note:** Available since [v1.24](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  growingButtonText?: string;
+  growingButtonText?: string | undefined;
 
   /**
    * Defines the component header text.
    *
    * **Note:** If `header` is set this property is ignored.
+   * @default undefined
    */
-  headerText?: string;
+  headerText?: string | undefined;
 
   /**
    * Determines whether the component is indented.
@@ -88,8 +93,9 @@ interface ListAttributes {
 
   /**
    * Defines the text that is displayed when the component contains no items.
+   * @default undefined
    */
-  noDataText?: string;
+  noDataText?: string | undefined;
 
   /**
    * Defines the selection mode of the component.
@@ -101,7 +107,7 @@ interface ListAttributes {
    * Defines the item separator style that is used.
    * @default "All"
    */
-  separators?: ListSeparators | keyof typeof ListSeparators;
+  separators?: ListSeparator | keyof typeof ListSeparator;
 }
 
 interface ListDomRef extends Required<ListAttributes>, Ui5DomRef {

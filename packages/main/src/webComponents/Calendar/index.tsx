@@ -11,8 +11,9 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface CalendarAttributes {
   /**
    * Determines the format, displayed in the input field.
+   * @default undefined
    */
-  formatPattern?: string;
+  formatPattern?: string | undefined;
 
   /**
    * Defines the visibility of the week numbers column.
@@ -83,7 +84,8 @@ interface CalendarPropTypes
 
   /**
    * Defines the selected date or dates (depending on the `selectionMode` property)
-   * for this calendar as instances of `CalendarDate`.
+   * for this calendar as instances of `CalendarDate` or `CalendarDateRange`.
+   * Use `CalendarDate` for single or multiple selection, and `CalendarDateRange` for range selection.
    */
   children?: ReactNode | ReactNode[];
 

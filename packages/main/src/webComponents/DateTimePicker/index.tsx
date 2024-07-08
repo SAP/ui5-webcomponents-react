@@ -14,13 +14,15 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 interface DateTimePickerAttributes {
   /**
    * Defines the aria-label attribute for the component.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the component.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Determines whether the component is displayed as disabled.
@@ -30,8 +32,9 @@ interface DateTimePickerAttributes {
 
   /**
    * Determines the format, displayed in the input field.
+   * @default undefined
    */
-  formatPattern?: string;
+  formatPattern?: string | undefined;
 
   /**
    * Defines the visibility of the week numbers column.
@@ -60,8 +63,9 @@ interface DateTimePickerAttributes {
    * Determines the name by which the component will be identified upon submission in an HTML form.
    *
    * **Note:** This property is only applicable within the context of an HTML Form element.
+   * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
 
   /**
    * Defines the open or closed state of the popover.

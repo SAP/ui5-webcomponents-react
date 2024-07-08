@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
 import type { ColorPalettePopoverItemClickEventDetail } from '@ui5/webcomponents/dist/ColorPalettePopover.js';
-import type { CSSProperties, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
@@ -13,7 +13,7 @@ interface ColorPalettePopoverAttributes {
    * **Note:** The default color should be a part of the ColorPalette colors`
    * @default undefined
    */
-  defaultColor?: CSSProperties['color'];
+  defaultColor?: string | undefined;
 
   /**
    * Defines the open | closed state of the popover.

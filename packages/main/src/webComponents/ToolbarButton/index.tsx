@@ -4,7 +4,6 @@ import '@ui5/webcomponents/dist/ToolbarButton.js';
 import type { ToolbarButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/ToolbarButton.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
-import type { CSSProperties } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
@@ -34,8 +33,9 @@ interface ToolbarButtonAttributes {
 
   /**
    * Receives id(or many ids) of the elements that label the component.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines the action design.
@@ -61,16 +61,18 @@ interface ToolbarButtonAttributes {
    *
    * Example:
    * See all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  endIcon?: string;
+  endIcon?: string | undefined;
 
   /**
    * Defines the `icon` source URI.
    *
    * **Note:** SAP-icons font provides numerous buil-in icons. To find all the available icons, see the
    * [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 
   /**
    * Property used to define the access of the item to the overflow Popover. If "NeverOverflow" option is set,
@@ -88,15 +90,17 @@ interface ToolbarButtonAttributes {
 
   /**
    * Button text
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 
   /**
    * Defines the tooltip of the component.
    *
    * **Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.
+   * @default undefined
    */
-  tooltip?: string;
+  tooltip?: string | undefined;
 
   /**
    * Defines the width of the button.
@@ -104,7 +108,7 @@ interface ToolbarButtonAttributes {
    * **Note:** all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc.
    * @default undefined
    */
-  width?: CSSProperties['width'] | CSSProperties['height'];
+  width?: string | undefined;
 }
 
 interface ToolbarButtonDomRef extends Required<ToolbarButtonAttributes>, Ui5DomRef {}

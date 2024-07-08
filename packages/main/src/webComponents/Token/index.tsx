@@ -13,8 +13,9 @@ interface TokenAttributes {
 
   /**
    * Defines the text of the token.
+   * @default undefined
    */
-  text?: string;
+  text?: string | undefined;
 }
 
 interface TokenDomRef extends Required<TokenAttributes>, Ui5DomRef {}

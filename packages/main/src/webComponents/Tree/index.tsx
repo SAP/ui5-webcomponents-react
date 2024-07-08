@@ -20,39 +20,44 @@ interface TreeAttributes {
    * Defines the accessible name of the component.
    *
    * **Note:** Available since [v1.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.8.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleName?: string;
+  accessibleName?: string | undefined;
 
   /**
    * Defines the IDs of the elements that label the component.
    *
    * **Note:** Available since [v1.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.8.0) of **@ui5/webcomponents**.
+   * @default undefined
    */
-  accessibleNameRef?: string;
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines the component footer text.
+   * @default undefined
    */
-  footerText?: string;
+  footerText?: string | undefined;
 
   /**
    * Defines the component header text.
    *
    * **Note:** If the `header` slot is set, this property is ignored.
+   * @default undefined
    */
-  headerText?: string;
+  headerText?: string | undefined;
 
   /**
    * Defines the text that is displayed when the component contains no items.
+   * @default undefined
    */
-  noDataText?: string;
+  noDataText?: string | undefined;
 
   /**
    * Defines the selection mode of the component. Since the tree uses a `List` to display its structure,
    * the tree modes are exactly the same as the list modes, and are all applicable.
    * @default "None"
    */
-  selectionMode?: ListSelectionMode | keyof typeof ListSelectionMode;
+  selectionMode?: ListSelectionMode | undefined | keyof typeof ListSelectionMode;
 }
 
 interface TreeDomRef extends Required<TreeAttributes>, Ui5DomRef {

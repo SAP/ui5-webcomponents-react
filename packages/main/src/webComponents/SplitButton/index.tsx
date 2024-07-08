@@ -42,8 +42,9 @@ interface SplitButtonAttributes {
    * Example:
    *
    * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * @default undefined
    */
-  icon?: string;
+  icon?: string | undefined;
 }
 
 interface SplitButtonDomRef extends Required<SplitButtonAttributes>, Ui5DomRef {}
