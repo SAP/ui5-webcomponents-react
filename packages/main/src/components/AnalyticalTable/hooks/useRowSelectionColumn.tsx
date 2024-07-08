@@ -19,7 +19,7 @@ const Header = (instance) => {
     webComponentsReactProperties: { selectionMode }
   } = instance;
 
-  if (selectionMode === AnalyticalTableSelectionMode.SingleSelect) {
+  if (selectionMode === AnalyticalTableSelectionMode.Single) {
     return null;
   }
   const checkBoxProps = getToggleAllRowsSelectedProps();
@@ -35,7 +35,7 @@ const Header = (instance) => {
 };
 
 const Cell = ({ row, webComponentsReactProperties: { selectionMode } }) => {
-  if (selectionMode === AnalyticalTableSelectionMode.SingleSelect || row.isGrouped) {
+  if (selectionMode === AnalyticalTableSelectionMode.Single || row.isGrouped) {
     return null;
   }
 
@@ -73,7 +73,7 @@ const headerProps = (props, { instance }) => {
   const style = { ...props.style, cursor: 'pointer', display: 'flex', justifyContent: 'center' };
   if (
     props.key === 'header___ui5wcr__internal_selection_column' &&
-    selectionMode === AnalyticalTableSelectionMode.MultiSelect
+    selectionMode === AnalyticalTableSelectionMode.Multiple
   ) {
     const onClick = (e) => {
       toggleAllRowsSelected(!isAllRowsSelected);

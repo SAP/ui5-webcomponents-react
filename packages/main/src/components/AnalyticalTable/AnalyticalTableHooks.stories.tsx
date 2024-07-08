@@ -50,7 +50,7 @@ export const PluginAnnounceEmptyCells: Story = {
 export const PluginDisableRowSelection: Story = {
   args: {
     data: dataLarge.map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
-    selectionMode: AnalyticalTableSelectionMode.MultiSelect
+    selectionMode: AnalyticalTableSelectionMode.Multiple
   },
   render: (args) => {
     const disableRowFunc = (row) => row.original.age < 40;
@@ -107,7 +107,7 @@ export const PluginIndeterminateRowSelection: Story = {
           selectSubRows ? "Don't " : ''
         }Select Sub-Rows`}</ToggleButton>
         <AnalyticalTable
-          selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+          selectionMode={AnalyticalTableSelectionMode.Multiple}
           data={dataTree}
           columns={args.columns}
           isTreeTable
@@ -143,7 +143,7 @@ export const PluginManualRowSelect: Story = {
         <br />
         <br />
         <AnalyticalTable
-          selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+          selectionMode={AnalyticalTableSelectionMode.Multiple}
           data={data}
           columns={args.columns}
           tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}

@@ -67,7 +67,7 @@ const getIndeterminate = (rows, rowsById, state) => {
 };
 
 /**
- * A plugin hook that marks parent rows as indeterminate if a child row is selected in `MultiSelect` mode.
+ * A plugin hook that marks parent rows as indeterminate if a child row is selected in `Multiple` mode.
  * When using this hook, it is recommended to also select all sub-rows when selecting a row. (`reactTableOptions={{ selectSubRows: true }}`)
  *
  * __Note:__ The `indeterminate` state has a higher priority than the `selected` state. Therefore, a row can be selected and indeterminate at the same time. This can for example happen, if `selectSubRows: true` is set and a row with sub-rows is selected and then a sub-row is unselected.
@@ -129,7 +129,7 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
     useEffect(() => {
       if (
         isTreeTable &&
-        selectionMode === AnalyticalTableSelectionMode.MultiSelect &&
+        selectionMode === AnalyticalTableSelectionMode.Multiple &&
         selectionBehavior !== AnalyticalTableSelectionBehavior.RowOnly &&
         Object.keys(selectedRowIds).length &&
         Object.keys(rowsById).length !== Object.keys(selectedRowIds).length

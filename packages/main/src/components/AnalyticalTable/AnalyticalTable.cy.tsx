@@ -484,7 +484,7 @@ describe('AnalyticalTable', () => {
             }}
             data={dataTree}
             globalFilterValue={filter}
-            selectionMode="MultiSelect"
+            selectionMode="Multiple"
           />
           <div data-testid="payloadHelper">
             {JSON.stringify(relevantPayload?.selectedFlatRows?.filter(Boolean).length)}
@@ -587,7 +587,7 @@ describe('AnalyticalTable', () => {
               setAllRowsSelected(e.detail.allRowsSelected);
               onRowSelect(e);
             }}
-            selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+            selectionMode={AnalyticalTableSelectionMode.Multiple}
             selectedRowIds={selectedRowIds}
           />
           <p>
@@ -790,7 +790,7 @@ describe('AnalyticalTable', () => {
               onRowSelect(e);
             }}
             data={groupableData}
-            selectionMode="MultiSelect"
+            selectionMode="Multiple"
           />
           <div data-testid="selectedFlatRowsLength">
             {JSON.stringify(relevantPayload?.selectedFlatRows?.filter(Boolean).length)}
@@ -833,7 +833,7 @@ describe('AnalyticalTable', () => {
       return (
         <>
           <AnalyticalTable
-            selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+            selectionMode={AnalyticalTableSelectionMode.Multiple}
             data={dataTree}
             columns={columns}
             isTreeTable
@@ -947,7 +947,7 @@ describe('AnalyticalTable', () => {
     const indeterminateChange = cy.spy().as('onIndeterminateChangeSpy');
     cy.mount(
       <AnalyticalTable
-        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.Multiple}
         data={dataTree}
         columns={columns}
         isTreeTable
@@ -1086,7 +1086,7 @@ describe('AnalyticalTable', () => {
     [
       { props: {}, bothWidth: 952, onlyNameWidth: 1904, onlyAgeWidth: 1904 },
       {
-        props: { selectionMode: AnalyticalTableSelectionMode.MultiSelect },
+        props: { selectionMode: AnalyticalTableSelectionMode.Multiple },
         bothWidth: 930,
         onlyNameWidth: 1860,
         onlyAgeWidth: 1860
@@ -1107,7 +1107,7 @@ describe('AnalyticalTable', () => {
         props: {
           withNavigationHighlight: true,
           withRowHighlight: true,
-          selectionMode: AnalyticalTableSelectionMode.SingleSelect
+          selectionMode: AnalyticalTableSelectionMode.Single
         },
         bothWidth: 924,
         onlyNameWidth: 1848,
@@ -1397,9 +1397,7 @@ describe('AnalyticalTable', () => {
         accessor: 'friend.name'
       }
     ];
-    cy.mount(
-      <AnalyticalTable selectionMode="SingleSelect" data={data.slice(0, 2)} columns={columns} onRowSelect={select} />
-    );
+    cy.mount(<AnalyticalTable selectionMode="Single" data={data.slice(0, 2)} columns={columns} onRowSelect={select} />);
     cy.findAllByText('Custom Cell Button')
       .should('have.length', 2)
       .each(($cellBtn) => {
@@ -1429,7 +1427,7 @@ describe('AnalyticalTable', () => {
       }
     ];
     cy.mount(
-      <AnalyticalTable selectionMode="SingleSelect" data={data.slice(0, 2)} columns={columns2} onRowSelect={select} />
+      <AnalyticalTable selectionMode="Single" data={data.slice(0, 2)} columns={columns2} onRowSelect={select} />
     );
     cy.findAllByText('Custom Cell Button')
       .should('have.length', 2)
@@ -1536,7 +1534,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={data}
         columns={columns}
-        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.Single}
         selectionBehavior={AnalyticalTableSelectionBehavior.RowOnly}
       />
     );
@@ -1545,7 +1543,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={data}
         columns={columns}
-        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.Multiple}
         selectionBehavior={AnalyticalTableSelectionBehavior.RowOnly}
       />
     );
@@ -1572,7 +1570,7 @@ describe('AnalyticalTable', () => {
           data={data}
           columns={columns}
           withNavigationHighlight
-          selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+          selectionMode={AnalyticalTableSelectionMode.Multiple}
           markNavigatedRow={markNavigatedRow}
           onRowSelect={onRowSelect}
         />
@@ -1595,7 +1593,7 @@ describe('AnalyticalTable', () => {
     const selectedRowColor = cssVarToRgb(ThemingParameters.sapList_SelectionBackgroundColor);
     cy.mount(
       <AnalyticalTable
-        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.Single}
         data={data}
         columns={columns}
         reactTableOptions={{
@@ -1620,7 +1618,7 @@ describe('AnalyticalTable', () => {
         data={data}
         columns={columns}
         selectionBehavior={AnalyticalTableSelectionBehavior.Row}
-        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.Single}
         onRowClick={rowClick}
         onRowSelect={rowSelect}
       />
@@ -1648,7 +1646,7 @@ describe('AnalyticalTable', () => {
         data={data}
         columns={columns}
         selectionBehavior={AnalyticalTableSelectionBehavior.Row}
-        selectionMode={AnalyticalTableSelectionMode.SingleSelect}
+        selectionMode={AnalyticalTableSelectionMode.Single}
         onRowClick={rowSelectWithoutSelCell}
         onRowSelect={rowSelect}
       />
@@ -2005,7 +2003,7 @@ describe('AnalyticalTable', () => {
           columns={columns}
           onRowSelect={onRowSelect}
           onRowClick={onRowClick}
-          selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+          selectionMode={AnalyticalTableSelectionMode.Multiple}
           tableHooks={[useRowDisableSelection('disableSelection')]}
           minRows={1}
         />
@@ -2041,7 +2039,7 @@ describe('AnalyticalTable', () => {
   it('plugin hook: useManualRowSelect', () => {
     cy.mount(
       <AnalyticalTable
-        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.Multiple}
         data={manualSelectData}
         columns={columns}
         tableHooks={[useManualRowSelect('isSelected')]}
@@ -2059,7 +2057,7 @@ describe('AnalyticalTable', () => {
     const [, ...updatedManualSelectData] = manualSelectData;
     cy.mount(
       <AnalyticalTable
-        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.Multiple}
         data={[
           {
             name: 'Selected',
@@ -2096,7 +2094,7 @@ describe('AnalyticalTable', () => {
             Show Selected
           </Button>
           <AnalyticalTable
-            selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+            selectionMode={AnalyticalTableSelectionMode.Multiple}
             data={data}
             columns={columns}
             tableInstance={instance}
@@ -2388,7 +2386,7 @@ describe('AnalyticalTable', () => {
           <AnalyticalTable
             columns={columns}
             data={data}
-            selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+            selectionMode={AnalyticalTableSelectionMode.Multiple}
             onRowSelect={handleSelect}
           />
           <span data-testid="payload">{stringifiedPl}</span>
@@ -2825,7 +2823,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={columns}
-        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.Multiple}
       />
     );
 
@@ -2838,7 +2836,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={columns}
-        selectionMode={AnalyticalTableSelectionMode.MultiSelect}
+        selectionMode={AnalyticalTableSelectionMode.Multiple}
         withRowHighlight
       />
     );

@@ -9,9 +9,9 @@ export enum AnalyticalTableSelectionMode {
   /**
    * Only a single row is selectable. Clicking on another row will unselect the previously selected row.
    */
-  SingleSelect = 'SingleSelect',
+  Single = 'Single',
   /**
    * Multiple rows are selectable.
    */
-  MultiSelect = 'MultiSelect'
+  Multiple = 'Multiple'
 }

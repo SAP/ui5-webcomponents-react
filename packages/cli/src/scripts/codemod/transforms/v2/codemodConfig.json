@@ -618,6 +618,10 @@
     "Themes": "Theme"
   },
   "enumProperties": {
+    "AnalyticalTableSelectionMode": {
+      "SingleSelect": "Single",
+      "MultiSelect": "Multiple"
+    },
     "BusyIndicatorSize": {
       "Small": "S",
       "Medium": "M",

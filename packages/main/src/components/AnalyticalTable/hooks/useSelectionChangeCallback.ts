@@ -24,7 +24,7 @@ export const useSelectionChangeCallback = (hooks: ReactTableHooks) => {
             selectedRowIds
           };
 
-          if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.MultiSelect) {
+          if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.Multiple) {
             // when selecting a row on a filtered table, `preFilteredRowsById` has to be used, otherwise filtered out rows are undefined
             const tempRowsById = isFiltered ? preFilteredRowsById : rowsById;
             const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).reduce((acc, key) => {

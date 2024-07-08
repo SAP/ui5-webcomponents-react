@@ -121,7 +121,7 @@ const meta = {
     subRowsKey: 'subRows',
     isTreeTable: false,
     scaleWidthMode: AnalyticalTableScaleWidthMode.Default,
-    selectionMode: AnalyticalTableSelectionMode.SingleSelect,
+    selectionMode: AnalyticalTableSelectionMode.Single,
     selectionBehavior: AnalyticalTableSelectionBehavior.Row,
     overscanCountHorizontal: 5,
     visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
@@ -360,7 +360,7 @@ export const ResponsiveColumns: Story = {
 };
 
 export const NavigationIndicator: Story = {
-  args: { withNavigationHighlight: true, selectionMode: AnalyticalTableSelectionMode.MultiSelect, data: dataLarge },
+  args: { withNavigationHighlight: true, selectionMode: AnalyticalTableSelectionMode.Multiple, data: dataLarge },
   render: (args) => {
     const [selectedRow, setSelectedRow] = useState();
     const onRowSelect = (e) => {
