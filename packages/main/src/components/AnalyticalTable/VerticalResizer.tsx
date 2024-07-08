@@ -2,7 +2,6 @@ import { useStylesheet, useI18nBundle } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { DRAG_TO_RESIZE } from '../../i18n/i18n-defaults.js';
-import { useCanRenderPortal } from '../../internal/ssr.js';
 import { classNames, styleData } from './VerticalResizer.module.css.js';
 
 interface VerticalResizerProps {
@@ -136,11 +135,6 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
     }
     isInitial.current = false;
   }, [rowsLength, visibleRows]);
-
-  const canRenderPortal = useCanRenderPortal();
-  if (!canRenderPortal) {
-    return null;
-  }
 
   return (
     <div

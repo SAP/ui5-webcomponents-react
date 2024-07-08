@@ -11,7 +11,6 @@ import type { MutableRefObject } from 'react';
 import { useEffect, useRef } from 'react';
 import { FlexBoxAlignItems, TextAlign } from '../../../enums/index.js';
 import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults.js';
-import { useCanRenderPortal } from '../../../internal/ssr.js';
 import { stopPropagation } from '../../../internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '../../../internal/utils.js';
 import { Icon } from '../../../webComponents/Icon/index.js';
@@ -148,19 +147,13 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     }
   };
 
-  const canRenderPortal = useCanRenderPortal();
-
   useEffect(() => {
     if (open && ref.current && openerRef.current) {
       void customElements.whenDefined(getUi5TagWithSuffix('ui5-popover')).then(() => {
         ref.current.opener = openerRef.current;
       });
     }
-  }, [open, canRenderPortal]);
-
-  if (!canRenderPortal) {
-    return null;
-  }
+  }, [open]);
 
   return (
     <Popover
