@@ -53,9 +53,9 @@ interface ObjectPageAnchorBarPropTypes extends CommonProps {
    */
   onHoverToggleButton?: (e: any) => void;
   /**
-   * Defines internally used a11y properties.
+   * Defines internally used a11y properties/attributes.
    */
-  a11yConfig?: {
+  accessibilityAttributes?: {
     objectPageAnchorBar?: {
       role?: string;
     };
@@ -76,7 +76,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
     headerContentPinnable,
     headerPinned,
     style,
-    a11yConfig,
+    accessibilityAttributes,
     setHeaderPinned,
     onPinnedStateChange,
     onToggleHeaderContentVisibility,
@@ -123,7 +123,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
     <section
       data-component-name="ObjectPageAnchorBar"
       style={style}
-      role={a11yConfig?.objectPageAnchorBar?.role}
+      role={accessibilityAttributes?.objectPageAnchorBar?.role}
       className={showHideHeaderButton || headerContentPinnable ? classNames.container : null}
       ref={ref}
     >

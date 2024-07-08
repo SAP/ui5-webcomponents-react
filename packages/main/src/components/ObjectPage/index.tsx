@@ -147,9 +147,9 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   headerContentPinnable?: boolean;
   /**
-   * Defines internally used a11y properties.
+   * Defines internally used a11y properties/attributes.
    */
-  a11yConfig?: {
+  accessibilityAttributes?: {
     objectPageTopHeader?: {
       role?: string;
       ariaRoledescription?: string;
@@ -208,7 +208,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     showTitleInHeaderContent,
     headerContent,
     headerContentPinnable,
-    a11yConfig,
+    accessibilityAttributes,
     placeholder,
     onSelectedSectionChange,
     onToggleHeaderContent,
@@ -829,9 +829,9 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         onMouseLeave={onHoverToggleButton}
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
-        role={a11yConfig?.objectPageTopHeader?.role}
+        role={accessibilityAttributes?.objectPageTopHeader?.role}
         data-not-clickable={titleHeaderNotClickable}
-        aria-roledescription={a11yConfig?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
+        aria-roledescription={accessibilityAttributes?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
         className={classNames.header}
         onClick={onTitleClick}
         style={{
@@ -869,7 +869,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             headerContentPinnable={headerContentPinnable}
             showHideHeaderButton={showHideHeaderButton}
             headerPinned={headerPinned}
-            a11yConfig={a11yConfig}
+            accessibilityAttributes={accessibilityAttributes}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
             setHeaderPinned={setHeaderPinned}
             onHoverToggleButton={onHoverToggleButton}

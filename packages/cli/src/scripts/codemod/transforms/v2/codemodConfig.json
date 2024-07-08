@@ -287,6 +287,11 @@
       },
       "removedProps": ["selected"]
     },
+    "ObjectPage": {
+      "renamedEnums": {
+        "a11yConfig": "accessibilityAttributes"
+      }
+    },
     "ObjectStatus": {
       "renamedEnums": {
         "state": "ValueState"
