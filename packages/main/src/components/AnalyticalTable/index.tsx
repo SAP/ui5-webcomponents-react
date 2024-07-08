@@ -3,7 +3,6 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
 import {
   debounce,
-  deprecationNotice,
   enrichEventWithDetails,
   useI18nBundle,
   useIsomorphicId,
@@ -134,6 +133,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     infiniteScrollThreshold = 20,
     isTreeTable,
     loading,
+    loadingDelay,
     markNavigatedRow,
     minRows = 5,
     noDataText,
@@ -150,7 +150,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     selectionBehavior = AnalyticalTableSelectionBehavior.Row,
     selectionMode = AnalyticalTableSelectionMode.None,
     showOverlay,
-    sortable = true,
+    sortable,
     style,
     subComponentsBehavior = AnalyticalTableSubComponentsBehavior.Expandable,
     subRowsKey = 'subRows',
@@ -171,25 +171,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     onAutoResize,
     NoDataComponent = DefaultNoDataComponent,
     additionalEmptyRowsCount = 0,
-    alwaysShowSubComponent: _omit,
     ...rest
   } = props;
 
   useStylesheet(styleData, AnalyticalTable.displayName);
 
-  useEffect(() => {
-    if (props.alwaysShowSubComponent != undefined) {
-      deprecationNotice(
-        'alwaysShowSubComponent',
-        '`alwaysShowSubComponent` is deprecated. Please use `subComponentsBehavior` instead!'
-      );
-    }
-  }, [props.alwaysShowSubComponent]);
-
   const alwaysShowSubComponent =
     subComponentsBehavior === AnalyticalTableSubComponentsBehavior.Visible ||
-    subComponentsBehavior === AnalyticalTableSubComponentsBehavior.IncludeHeight ||
-    props.alwaysShowSubComponent;
+    subComponentsBehavior === AnalyticalTableSubComponentsBehavior.IncludeHeight;
 
   const uniqueId = useIsomorphicId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -730,7 +719,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           </TitleBar>
         )}
         {extension && <div ref={extensionRef}>{extension}</div>}
-        <BusyIndicator active={loading} data-component-name="AnalyticalTableBusyIndicator">
+        <BusyIndicator active={loading} delay={loadingDelay} data-component-name="AnalyticalTableBusyIndicator">
           <FlexBox
             className={classNames.tableContainerWithScrollBar}
             data-component-name="AnalyticalTableContainerWithScrollbar"

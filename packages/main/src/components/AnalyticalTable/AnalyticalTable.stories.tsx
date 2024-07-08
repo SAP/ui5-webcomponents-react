@@ -124,7 +124,8 @@ const meta = {
     selectionMode: AnalyticalTableSelectionMode.SingleSelect,
     selectionBehavior: AnalyticalTableSelectionBehavior.Row,
     overscanCountHorizontal: 5,
-    visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed
+    visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Fixed,
+    loadingDelay: 1000
   },
   argTypes: {
     data: { control: { disable: true } },
