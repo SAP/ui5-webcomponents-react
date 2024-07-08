@@ -1,0 +1,103 @@
+import{j as e}from"./useIsomorphicLayoutEffect-BpDYIkAV.js";import{useMDXComponents as m}from"./index-44b7z5bc.js";import{M as h}from"./index-DRz2hk48.js";import{M as r,a as i}from"./index-Bk8Ithva.js";import{T as d}from"./index-BgM2iT7f.js";import"./TagDesign-Dou_yO3g.js";import"./index-DEe9W-hO.js";import"./index-D6UH2S5y.js";import"./chunk-HLWAVYOI-Coc2dbv7.js";import"./UI5Element-Cjk_cKug.js";import"./copy-_3t6R87k.js";import"./Button-BzvkKBmq.js";import{F as u}from"./CommandsAndQueries-DfO_EoOU.js";import{T as g}from"./TableOfContent-7Ygrv8G1.js";import"./WrappingType-CW8URInd.js";import{e as x}from"./entry-preview-DypD90DR.js";import{C as j}from"./Card.stories-CD384UgV.js";import{T as s}from"./ThemingParameters-DOkJX3Ed.js";import"./iframe-0howv_Dp.js";import"../sb-preview/runtime.js";import"./_baseForOwn-DVWQo5xw.js";import"./mapValues-DXlf5GIm.js";import"./_baseUniq-BqAhPu7p.js";import"./index-Ba91SQPT.js";import"./index-DrFu-skq.js";import"./withWebComponent-ZLYt6Z72.js";import"./utils-Cjkb-4uz.js";import"./CustomElementsScopeUtils-CJFx-0ms.js";import"./slot-_4yKMUwC.js";import"./event-Dq0fpeHi.js";import"./i18nBundle-DTd686OT.js";import"./decline-CnfxIuyS.js";import"./Icons-bHVDH2o-.js";import"./i18n-defaults-eVMsPoDe.js";import"./information-Ds_NTOym.js";import"./alert-5g0GnjXW.js";import"./class-map-Dho2ozJ6.js";import"./if-defined-9iVrMyiP.js";import"./Icon-CzTkrOrA.js";import"./Device-RcFucVeJ.js";import"./Keys-pFVWso__.js";import"./parameters-bundle.css-BFbT_feV.js";import"./i18n-defaults-BPJU920w.js";import"./I18nStore-DimJQVWm.js";import"./useStylesheet-CBVvS9lW.js";import"./ModalsContext-C4nEcU7T.js";import"./useIsomorphicId-CULvwDT0.js";import"./client-BEgA9EFc.js";import"./AriaLabelHelper-C5uDZewF.js";import"./MarkedEvents-CAur0wxK.js";import"./willShowContent-CZcfsNXp.js";import"./index-ldWqkrC3.js";import"./clsx-B-dksMZM.js";import"./Popover-5eNGP7Bf.js";import"./PopupsCommon.css-C9rG7FRw.js";import"./FocusableElements-Dst-wEMC.js";import"./isElementHidden-B4HqmI2E.js";import"./isElementClickable-0ACQ4G_A.js";import"./getEffectiveScrollbarStyle-BwuZEAK6.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-BX_Vwu-f.js";import"./MediaRange-Bnzt26Xb.js";import"./style-map-ZLasDAym.js";import"./BrowserScrollbar.css-DPWlQluy.js";import"./index-BDFEWlxK.js";import"./Label-BCs7fK18.js";import"./index-B4H3qawp.js";import"./index-vgsGM25s.js";import"./Link-CoCG3JZh.js";import"./index-D3UTY3No.js";import"./addCustomCSSWithScoping-B_dl8XEe.js";import"./index-DW2xgIbK.js";import"./index-D8ggj6z5.js";import"./index-BUDWBPQn.js";import"./Avatar-DoGtfKYI.js";import"./employee-BgURwoFi.js";import"./index-DfcSCthV.js";import"./person-placeholder-BOyKEsUP.js";import"./LineChart-c_gCC_mq.js";import"./index-D8PAbW1n.js";import"./YAxisTicks-R2JGPv83.js";import"./ChartContainer-Bt0hW7ag.js";import"./throttle-B-28IFuh.js";import"./isString-C_Q1T2_B.js";import"./index-cw42yKWP.js";import"./BusyIndicator-CrHFv3Tm.js";import"./generateCategoricalChart-BWdDpt1G.js";import"./tiny-invariant-CCoILDQG.js";import"./isPlainObject-B-J9bPgK.js";import"./debounce-D7W5PopO.js";import"./useTooltipFormatter-BrymMi4P.js";import"./defaults-Vo_ZgvIV.js";import"./ChartDataLabel-Cu_k1Onq.js";import"./staticProps-DsetRNqa.js";import"./useLongestYAxisLabel-rrp2Om2Z.js";import"./react-content-loader.es-CK-1p032.js";import"./Line-CKbzzyCn.js";import"./useIsRTL-BYUEk5OL.js";import"./directionChange-Cfhpfp71.js";import"./index-C_LUjrVE.js";import"./i18n-defaults-DDljwJVu.js";import"./index-M6VOGtcx.js";import"./index-CuMKUSnR.js";import"./List-DaAu3KKm.js";import"./ItemNavigation-CcEpcKAk.js";import"./isElementInView-CjfjvN8v.js";import"./debounce-TTkz9ISH.js";import"./TabbableElements-BJJu_CDc.js";import"./RadioButton-BZDM90hQ.js";import"./ValueState-Bg0UWejw.js";import"./CheckBox-oOL93MdI.js";import"./accept-CA8_dPVT.js";import"./slim-arrow-right-BL_D7Rfe.js";import"./index-W5vU2CtH.js";const{global:y}=__STORYBOOK_MODULE_GLOBAL__,{setProjectAnnotations:Ot,composeStory:b,composeStories:f}=__STORYBOOK_MODULE_PREVIEW_API__;var{window:a}=y;a&&(a.STORYBOOK_ENV="react");function S(o,t,n,p){return b(o,t,n,x,p)}function w(o,t){return f(o,t,S)}var c;typeof module<"u"&&((c=module==null?void 0:module.hot)==null||c.decline());const{Default:C}=w(j),v=()=>e.jsx("div",{children:e.jsx(C,{className:"card"})}),T=()=>e.jsx("div",{className:"containerCustomElement",children:e.jsx("span",{style:{color:s.sapNegativeColor,fontSize:s.sapFontLargeSize},children:"My Text"})});function l(o){const t={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong","ui5-link":"ui5-link",ul:"ul",...m(),...o.components},n=t["ui5-link"];return e.jsxs(e.Fragment,{children:[e.jsx(h,{title:"Styling"}),`
+`,e.jsx(t.h1,{id:"styling",children:"Styling"}),`
+`,e.jsx(g,{}),`
+`,e.jsx(t.h2,{id:"styling-ui5-web-components-for-react-components",children:"Styling UI5 Web Components for React components"}),`
+`,e.jsxs(t.p,{children:["You can change the appearance of the Web Components by using ",e.jsx(t.a,{href:"https://www.w3schools.com/Css/css3_variables.asp",rel:"nofollow",children:"CSS Variables"}),`.
+Per default, we are injecting the Horizon theme parameters as CSS Variables into the `,e.jsx(t.code,{children:"<head>"}),`.
+For example, if you want to change the color of all texts that use the `,e.jsx(t.code,{children:"--sapTextColor"})," variable, you can create an additional ",e.jsx(t.code,{children:"style"})," tag with the following content:"]}),`
+`,e.jsx(t.pre,{children:e.jsx(t.code,{className:"language-html",children:`<style>
+  * {
+    --sapTextColor: limegreen;
+  }
+</style>
+`})}),`
+`,e.jsx(r,{hideCloseButton:!0,design:i.Critical,children:"Changing the value of a CSS Variable will affect theming capabilities, as it will be changed for all themes!"}),`
+`,e.jsxs(t.p,{children:["As a consequence, all HTML Elements in the subtree where this style was applied are now displaying their texts in ",e.jsx(t.code,{children:"limegreen"})," instead of ",e.jsx(t.code,{children:"#32363a"}),` which would be the default value for Fiori 3.
+You can change CSS Variables on any level - in the head, or on every single element by using either CSS classes or element style.`]}),`
+`,e.jsxs(t.p,{children:["A full list of all supported CSS Variables can be found ",e.jsx(t.a,{href:"https://github.com/SAP/ui5-webcomponents-react/blob/main/packages/base/src/styling/ThemingParameters.ts",rel:"nofollow",children:"here"}),`
+or in the `,e.jsx(t.a,{href:"https://github.com/SAP/theming-base-content/tree/master/content/Base/baseLib",rel:"nofollow",children:"theming-base-content"})," repo."]}),`
+`,e.jsx(t.h2,{id:"scrollbars",children:"Scrollbars"}),`
+`,e.jsxs(t.p,{children:["Rendering our ",e.jsx(t.code,{children:"ThemeProvider"}),` will apply the Fiori styles to all scrollbars on the page.
+If you want to opt-out of this behavior, you can add the `,e.jsx(t.code,{children:".ui5-content-native-scrollbars"})," class to the respective element to prevent the scrollbar styling from being applied."]}),`
+`,e.jsx(r,{design:i.Information,hideCloseButton:!0,children:"Due to the limited configuration options for scrollbars, you must apply this class to each scroll-container element individually."}),`
+`,e.jsx(t.pre,{children:e.jsx(t.code,{className:"language-tsx",children:`<ObjectPage className="ui5-content-native-scrollbars">{children}</ObjectPage>
+`})}),`
+`,e.jsx(t.h2,{id:"style-your-own-components",children:"Style your own components"}),`
+`,e.jsxs(t.p,{children:[`It's quite likely you have to create some custom components when you are building an app.
+In order to reuse our central styling approach, you can import the `,e.jsx(t.code,{children:"ThemingParameters"})," that contain the various CSS variables used in our theming, or use the CSS variables directly."]}),`
+`,e.jsx(r,{design:i.Information,hideCloseButton:!0,children:e.jsxs(e.Fragment,{children:["You can find all ",e.jsx(t.code,{children:"ThemingParameters"})," ",e.jsx(n,{href:"https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-public-utils--docs#theming-parameters",target:"_blank",children:"here"}),". If you don't want to use CSS-in-JS library, you can also just use the corresponding CSS variable."]})}),`
+`,e.jsx(t.p,{children:"You can then create a custom component by following this recipe:"}),`
+`,e.jsx(t.pre,{children:e.jsx(t.code,{className:"language-tsx",children:`import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import './MyCustomElement.css';
+
+export const MyCustomElement = () => {
+  return (
+    <div className="containerCustomElement">
+      <span style={{ color: ThemingParameters.sapNegativeColor, fontSize: ThemingParameters.sapFontLargeSize }}>
+        My Text
+      </span>
+    </div>
+  );
+};
+`})}),`
+`,e.jsx(t.pre,{children:e.jsx(t.code,{className:"language-css",children:`.containerCustomElement {
+  background-color: var(--sapBackgroundColor);
+  font-family: var(--sapFontFamily);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+`})}),`
+`,e.jsx(t.p,{children:"This would then be the result:"}),`
+`,e.jsx(d,{children:e.jsx(T,{})}),`
+`,e.jsxs(t.h2,{id:"applying-styling-via-classname-or-style",children:["Applying styling via ",e.jsx(t.code,{children:"className"})," or ",e.jsx(t.code,{children:"style"})]}),`
+`,e.jsxs(t.p,{children:["Almost all components allow setting ",e.jsx(t.code,{children:"className"})," or ",e.jsx(t.code,{children:"style"})," to style the component. For web components, this does ",e.jsx(t.strong,{children:"not"}),` mean that styles are inherited by shadow root elements per default.
+Only `,e.jsx(t.a,{href:"https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance#inherited_properties",rel:"nofollow",children:"inherited CSS properties"}),` that are not set inside the shadow root or internally passed properties will change the styles of the internal elements.
+Another special case are abstract components like the `,e.jsx(t.code,{children:"SuggestionItem"}),". The ",e.jsx(t.code,{children:"ui5-suggestion-item"})," element is mainly there to pass props to the actual component inside the shadow root and is therefore not stylable."]}),`
+`,e.jsx(t.h2,{id:"explicitly-import-css-bundles",children:"Explicitly import CSS bundles"}),`
+`,e.jsxs(t.p,{children:["By default, the ",e.jsx(t.code,{children:"ThemeProvider"})," injects the CSS of the components during runtime. If you want to import the CSS bundles explicitly, you can set the ",e.jsx(t.code,{children:"staticCssInjected"})," prop to ",e.jsx(t.code,{children:"true"}),`.
+This approach provides you with control over the order in which CSS files are injected, making it easier to override styles.`]}),`
+`,e.jsxs(t.ul,{children:[`
+`,e.jsxs(t.li,{children:[e.jsx(t.strong,{children:"main"})," package import: ",e.jsx(t.code,{children:"import '@ui5/webcomponents-react/styles.css'"})]}),`
+`,e.jsxs(t.li,{children:[e.jsx(t.strong,{children:"charts"})," package import: ",e.jsx(t.code,{children:"import '@ui5/webcomponents-react-charts/styles.css'"})]}),`
+`]}),`
+`,e.jsx(t.h2,{id:"css-shadow-parts",children:"CSS Shadow Parts"}),`
+`,e.jsxs(t.p,{children:["When using web components like the ",e.jsx(t.a,{href:"https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-table--docs",rel:"nofollow",children:"Table"}),`, you will sometimes see a "CSS Shadow Parts" section.
+One of the main advantages of the shadow root is encapsulation of parts of the DOM and styles, but since it could still be necessary for some elements to be adjusted even though they're inside the shadow root, the ui5-webcomponents offer a way to customize CSS of selected elements by attaching the `,e.jsx(t.a,{href:"https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#part",rel:"nofollow",children:"part"}),` attribute.
+With the help of this attribute it's possible styling the respective element, by using the `,e.jsxs(t.a,{href:"https://developer.mozilla.org/en-US/docs/Web/CSS/::part",rel:"nofollow",children:[e.jsx(t.code,{children:"::part"})," pseudo-element"]}),"."]}),`
+`,e.jsx(t.h3,{id:"example",children:"Example"}),`
+`,e.jsx(v,{}),`
+`,e.jsx("br",{}),`
+`,e.jsx("br",{}),`
+`,e.jsxs("details",{children:[" ",e.jsx("summary",{children:"Show Code"}),e.jsx(t.pre,{children:e.jsx(t.code,{className:"language-css",children:`.card::part(root) {
+  background-color: lightgreen;
+}
+.card::part(content) {
+  transform: rotate(180deg);
+}
+`})}),e.jsx(t.pre,{children:e.jsx(t.code,{className:"language-jsx",children:`function MyComponent() {
+  return (
+    <Card
+      header={
+        <CardHeader
+          additionalText="3 of 5"
+          avatar={<Icon name="person-placeholder" />}
+          subtitleText="Direct Reports"
+          titleText="TeamSpace"
+        />
+      }
+      className="card"
+    >
+      <List>
+        <ListItemStandard description="Software Architect">Richard Wilson</ListItemStandard>
+        <ListItemStandard description="Visual Designer">Elena Petrova</ListItemStandard>
+        <ListItemStandard description="Quality Specialist">John Miller</ListItemStandard>
+      </List>
+    </Card>
+  );
+}
+`})})]}),`
+`,e.jsx(t.h2,{id:"common-css",children:"Common CSS"}),`
+`,e.jsxs(t.p,{children:["For applying common styling blocks based on SAP Fiori Design Guidelines, we recommend using the ",e.jsx(t.a,{href:"https://www.npmjs.com/package/@sap-ui/common-css",rel:"nofollow",children:"@sap-ui/common-css"})," package. You can find out more about this ",e.jsx(t.a,{href:"?path=/docs/knowledge-base-common-css--docs",children:"here"}),"."]}),`
+`,e.jsx(u,{})]})}function Et(o={}){const{wrapper:t}={...m(),...o.components};return t?e.jsx(t,{...o,children:e.jsx(l,{...o})}):l(o)}export{Et as default};
