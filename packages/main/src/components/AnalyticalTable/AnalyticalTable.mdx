@@ -356,7 +356,7 @@ const TableWithSubcomponents = (props) => {
       data={props.data}
       columns={props.columns}
       renderRowSubComponent={renderRowSubComponent}
-      alwaysShowSubComponent={false} //default value
+      subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Expandable} //default value
     />
   );
 };
