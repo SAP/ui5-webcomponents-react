@@ -65,7 +65,7 @@ Most variables can be replaced by applying the corresponding CSS classes from th
 ### Common CSS substitute classes
 
 <details>
-    <summary>Show</summary>
+  <summary>Show</summary>
 
 | Removed Variable                    | Equivalent Common CSS Class   |
 | ----------------------------------- | ----------------------------- |
@@ -125,7 +125,7 @@ Most variables can be replaced by applying the corresponding CSS classes from th
 ### Removed variables without substitute
 
 <details>
-    <summary>Show</summary>
+  <summary>Show</summary>
 
 | Removed Variable      | Property and Value             |
 | --------------------- | ------------------------------ |
@@ -181,9 +181,9 @@ The `DynamicPage` component has been replaced with the `ui5-dynamic-page` web co
 #### Replaced Props
 
 - `backgroundDesign` is not available anymore. To set the background of the page you can use standard CSS and the respective CSS variables instead:
-  - **List:** `var(--sapGroup_ContentBackground)`
-  - **Solid:** `var(--sapBackgroundColor)`
-  - **Transparent:** `transparent`
+- **List:** `var(--sapGroup_ContentBackground)`
+- **Solid:** `var(--sapBackgroundColor)`
+- **Transparent:** `transparent`
 - `alwaysShowContentHeader` has been renamed to `headerPinned`
 - `headerCollapsed` has been renamed to `headerSnapped`
 - `headerContentPinnable` (default: `true`) has been replaced by `hidePinButton` (default: `false`)
@@ -196,37 +196,37 @@ The `DynamicPage` component has been replaced with the `ui5-dynamic-page` web co
 - `onPinnedStateChange` has been replaced by `onPinButtonToggle`.
 - `onToggleHeaderContent` has been replaced by `onTitleToggle`.
 
-  ```jsx
-  // v1
-  function DynamicPageComponent(props) {
-    const [pinned, setPinned] = useState(false);
-    const [expanded, setExpanded] = useState(true);
-    return (
-      <DynamicPage
-        {...props}
-        onPinnedStateChange={(pinned) => setPinned(pinned)}
-        onToggleHeaderContent={(visible) => {
-          setExpanded(visible);
-        }}
-      />
-    );
-  }
+```jsx
+// v1
+function DynamicPageComponent(props) {
+  const [pinned, setPinned] = useState(false);
+  const [expanded, setExpanded] = useState(true);
+  return (
+    <DynamicPage
+      {...props}
+      onPinnedStateChange={(pinned) => setPinned(pinned)}
+      onToggleHeaderContent={(visible) => {
+        setExpanded(visible);
+      }}
+    />
+  );
+}
 
-  // v2
-  function DynamicPageComponent(props) {
-    const [pinned, setPinned] = useState(false);
-    const [expanded, setExpanded] = useState(true);
-    return (
-      <DynamicPage
-        {...props}
-        onPinButtonToggle={(event) => setPinned(event.target.headerPinned)}
-        onTitleToggle={(event) => {
-          setExpanded(!event.target.headerSnapped);
-        }}
-      />
-    );
-  }
-  ```
+// v2
+function DynamicPageComponent(props) {
+  const [pinned, setPinned] = useState(false);
+  const [expanded, setExpanded] = useState(true);
+  return (
+    <DynamicPage
+      {...props}
+      onPinButtonToggle={(event) => setPinned(event.target.headerPinned)}
+      onTitleToggle={(event) => {
+        setExpanded(!event.target.headerSnapped);
+      }}
+    />
+  );
+}
+```
 
 #### Removed Props
 
@@ -250,16 +250,16 @@ Since the `ObjectPage` isn't compatible with the `DynamicPageTitle` web componen
 - `subHeader` has been renamed to `subheading` and is now a slot.
 - `header` has been renamed to `heading` and is now a `slot`. The `font-size` isn't automatically adjusted anymore, so to keep the intended design you can leverage the new `snappedHeading` prop and apply the corresponding CSS Variables yourself. (see example below)
 
-  Example:
+Example:
 
-  ```jsx
-  <DynamicPageTitle
-    heading={<Title style={{ fontSize: 'var(--sapObjectHeader_Title_FontSize)' }}>Header Title</Title>}
-    snappedHeading={
-      <Title style={{ fontSize: 'var(--sapObjectHeader_Title_SnappedFontSize)' }}>Snapped Header Title</Title>
-    }
-  />
-  ```
+```jsx
+<DynamicPageTitle
+  heading={<Title style={{ fontSize: 'var(--sapObjectHeader_Title_FontSize)' }}>Header Title</Title>}
+  snappedHeading={
+    <Title style={{ fontSize: 'var(--sapObjectHeader_Title_SnappedFontSize)' }}>Snapped Header Title</Title>
+  }
+/>
+```
 
 #### Removed Props
 
@@ -269,24 +269,24 @@ Since the `ObjectPage` isn't compatible with the `DynamicPageTitle` web componen
 - `expandedContent` is now part of the `subheading` prop, so if you've rendered a `MessageStrip` below the `subHeader` for example, you can now render the subheading and additional content both in the same slot.
 - `snappedContent` is now part of the `snappedSubheading` prop, so if you've rendered a `MessageStrip` below the `subHeader` for example, you can now render the subheading and additional content both in the same slot.
 
-  Example for combined `subHeader` and `expanded/snappedContent` in `subheading`/`snappedSubheading`:
+Example for combined `subHeader` and `expanded/snappedContent` in `subheading`/`snappedSubheading`:
 
-  ```jsx
-  <DynamicPageTitle
-    subheading={
-      <>
-        <Label>Subheader</Label>
-        <MessageStrip>Information (only visible if header content is expanded)</MessageStrip>
-      </>
-    }
-    snappedSubheading={
-      <>
-        <Label>Snapped Subheader</Label>
-        <MessageStrip>Information (only visible if header content is collapsed (snapped))</MessageStrip>
-      </>
-    }
-  />
-  ```
+```jsx
+<DynamicPageTitle
+  subheading={
+    <>
+      <Label>Subheader</Label>
+      <MessageStrip>Information (only visible if header content is expanded)</MessageStrip>
+    </>
+  }
+  snappedSubheading={
+    <>
+      <Label>Snapped Subheader</Label>
+      <MessageStrip>Information (only visible if header content is collapsed (snapped))</MessageStrip>
+    </>
+  }
+/>
+```
 
 ### Form
 
@@ -395,21 +395,6 @@ import { Loader } from '@ui5/webcomponents-react';
 import { Loader } from '@ui5/webcomponents-react-compat';
 ```
 
-### ObjectPage
-
-The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
-Please use the following components instead:
-
-- `headerContent` now only accepts the `ObjectPageHeader` component.
-- `headerTitle` now only accepts the `ObjectPageTitle` component.
-
-**Renamed Props:**
-
-- `a11yConfig` has been renamed to `accessibilityAttributes`
-- `a11yConfig.dynamicPageAnchorBar` has been renamed to `accessibilityAttributes.objectPageAnchorBar`
-
-Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
-
 ### Text
 
 The `Text` component has been replaced with the `ui5-text` Web Component.
@@ -493,8 +478,8 @@ Names of the following enums have changed:
 **Changed Enums:**
 
 - The properties and values for the `AnalyticalTableSelectionMode` enum has been changed.
-  - `SingleSelect` is now `Single`
-  - `MultiSelect` is now `Multiple`.
+- `SingleSelect` is now `Single`
+- `MultiSelect` is now `Multiple`.
 
 **[Column Properties](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable--docs#column-properties) Changes**
 
@@ -609,6 +594,28 @@ function MyComponent() {
 </MessageBox>
 
 ```
+
+### ObjectPage
+
+The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
+Please use the following components instead:
+
+- `headerContent` now only accepts the `ObjectPageHeader` component.
+- `headerTitle` now only accepts the `ObjectPageTitle` component.
+
+**Renamed Props:**
+
+- `a11yConfig` has been renamed to `accessibilityAttributes`
+- `a11yConfig.dynamicPageAnchorBar` has been renamed to `accessibilityAttributes.objectPageAnchorBar`
+- `alwaysShowContentHeader` has been renamed to `headerPinned`
+- `headerContentPinnable` has been renamed to `hidePinButton` and the logic has been inverted. The pin button is now shown by default.
+
+**Removed Props:**
+
+- `showHideHeaderButton`: Hiding the expand/collapse button is not supported by design anymore.
+- `showTitleInHeaderContent`: Showing the `headerTitle` as part of the `headerContent` is not supported by design anymore.
+
+Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
 
 ### ObjectPageSection
 

@@ -43,8 +43,7 @@ describe('ObjectPage', () => {
         headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
         headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
         onToggleHeaderContent={toggle}
-        headerContentPinnable={false}
-        showHideHeaderButton
+        hidePinButton
       >
         <ObjectPageSection id="section" titleText="Section">
           Content
@@ -81,8 +80,6 @@ describe('ObjectPage', () => {
         style={{ height: '100vh' }}
         headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
         headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-        headerContentPinnable
-        showHideHeaderButton
         onPinnedStateChange={pin}
         data-testid="op"
       >
@@ -111,7 +108,7 @@ describe('ObjectPage', () => {
     cy.findByText('ObjectPageHeader').should('not.be.visible');
   });
 
-  it('programmatically pin header (`alwaysShowContentHeader`)', () => {
+  it('programmatically pin header (`headerPinned`)', () => {
     document.body.style.margin = '0px';
     const TestComp = ({ onPinnedStateChange }: ObjectPagePropTypes) => {
       const [pinned, setPinned] = useState(false);
@@ -133,9 +130,7 @@ describe('ObjectPage', () => {
             style={{ height: '95vh' }}
             headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
             headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-            headerContentPinnable
-            showHideHeaderButton
-            alwaysShowContentHeader={pinned}
+            headerPinned={pinned}
             onPinnedStateChange={handlePinChange}
             data-testid="op"
           >
@@ -212,8 +207,6 @@ describe('ObjectPage', () => {
             <div style={{ height: '400px', width: '100%', background: 'lightyellow' }}>ObjectPageHeader</div>
           </ObjectPageHeader>
         }
-        headerContentPinnable
-        showHideHeaderButton
         data-testid="op"
       >
         <ObjectPageSection id="section" titleText="Section">
@@ -394,7 +387,6 @@ describe('ObjectPage', () => {
           headerTitle={DPTitle}
           headerContent={DPContent}
           data-testid="op"
-          showHideHeaderButton
           ref={ref}
           footer={withFooter && Footer}
           mode={mode}
@@ -492,7 +484,6 @@ describe('ObjectPage', () => {
           headerTitle={DPTitle}
           headerContent={DPContent}
           data-testid="op"
-          showHideHeaderButton
           ref={ref}
           footer={withFooter && Footer}
           mode={mode}

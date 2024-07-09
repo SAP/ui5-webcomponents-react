@@ -29,13 +29,9 @@ interface ObjectPageAnchorBarPropTypes extends CommonProps {
    */
   headerContentVisible: boolean;
   /**
-   * Determines if the header content is pinnable .
+   * Defines if the pin button is hidden.
    */
-  headerContentPinnable: boolean;
-  /**
-   * Determines if the hide header button is shown .
-   */
-  showHideHeaderButton: boolean;
+  hidePinButton: boolean;
   /**
    * Determines if the header is initially pinned .
    */
@@ -71,9 +67,8 @@ interface ObjectPageAnchorBarPropTypes extends CommonProps {
  */
 const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes>((props, ref) => {
   const {
-    showHideHeaderButton,
     headerContentVisible,
-    headerContentPinnable,
+    hidePinButton,
     headerPinned,
     style,
     accessibilityAttributes,
@@ -85,8 +80,8 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
 
   useStylesheet(styleData, ObjectPageAnchorBar.displayName);
   const showHideHeaderBtnRef = useRef<ButtonDomRef>(null);
-  const shouldRenderHeaderPinnableButton = headerContentPinnable && headerContentVisible;
-  const showBothActions = shouldRenderHeaderPinnableButton && showHideHeaderButton;
+  const shouldRenderHeaderPinnableButton = !hidePinButton && headerContentVisible;
+  const showBothActions = shouldRenderHeaderPinnableButton;
 
   const onPinHeader = useCallback(
     (e) => {
@@ -124,28 +119,26 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
       data-component-name="ObjectPageAnchorBar"
       style={style}
       role={accessibilityAttributes?.objectPageAnchorBar?.role}
-      className={showHideHeaderButton || headerContentPinnable ? classNames.container : null}
+      className={!hidePinButton ? classNames.container : null}
       ref={ref}
     >
-      {showHideHeaderButton && (
-        <Button
-          ref={showHideHeaderBtnRef}
-          icon={!headerContentVisible ? iconArrowDown : iconArrowUp}
-          data-ui5wcr-dynamic-page-header-action=""
-          className={clsx(
-            classNames.anchorBarActionButton,
-            classNames.anchorBarActionButtonExpandable,
-            showBothActions && classNames.anchorBarActionPinnableAndExpandable
-          )}
-          style={anchorButtonVariables}
-          onClick={onToggleHeaderButtonClick}
-          onMouseOver={onHoverToggleButton}
-          onMouseLeave={onHoverToggleButton}
-          tooltip={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
-          accessibleName={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
-          data-component-name="ObjectPageAnchorBarExpandBtn"
-        />
-      )}
+      <Button
+        ref={showHideHeaderBtnRef}
+        icon={!headerContentVisible ? iconArrowDown : iconArrowUp}
+        data-ui5wcr-dynamic-page-header-action=""
+        className={clsx(
+          classNames.anchorBarActionButton,
+          classNames.anchorBarActionButtonExpandable,
+          showBothActions && classNames.anchorBarActionPinnableAndExpandable
+        )}
+        style={anchorButtonVariables}
+        onClick={onToggleHeaderButtonClick}
+        onMouseOver={onHoverToggleButton}
+        onMouseLeave={onHoverToggleButton}
+        tooltip={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
+        accessibleName={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
+        data-component-name="ObjectPageAnchorBarExpandBtn"
+      />
       {shouldRenderHeaderPinnableButton && (
         <ToggleButton
           icon={headerPinned ? iconPushPinOn : iconPushPinOff}

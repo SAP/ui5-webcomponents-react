@@ -41,6 +41,7 @@
   inset-block-start: 0;
   z-index: 2;
   cursor: pointer;
+  display: grid;
 
   [data-component-name='ObjectPageTitle'] {
     grid-column: 2;
@@ -168,10 +169,6 @@
 }
 
 .subSectionPopover::part(content) {
-  padding: 0;
-}
-
-.titleInHeader {
   padding: 0;
 }
 
