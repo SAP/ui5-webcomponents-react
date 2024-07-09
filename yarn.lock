@@ -22498,7 +22498,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.32.2"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-storybook: "npm:^0.8.0"
-    glob: "npm:^10.3.10"
+    glob: "npm:^11.0.0"
     husky: "npm:^9.0.6"
     lerna: "npm:^8.0.0"
     lint-staged: "npm:^15.0.0"
