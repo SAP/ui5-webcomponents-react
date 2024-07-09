@@ -71,6 +71,28 @@ describe('ObjectPage', () => {
     cy.findByText('ObjectPageHeader').should('be.visible');
     cy.get('@toggleSpy').should('have.been.calledWith', true);
     cy.get('@toggleSpy').should('have.callCount', 4);
+
+    cy.mount(
+      <ObjectPage
+        headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+        headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
+        onToggleHeaderContent={toggle}
+        hidePinButton
+        preserveHeaderStateOnClick
+      >
+        <ObjectPageSection id="section" titleText="Section">
+          Content
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+
+    cy.findByText('Heading').click();
+    cy.findByText('ObjectPageHeader').should('be.visible');
+    cy.get('@toggleSpy').should('have.callCount', 4);
+
+    cy.get('[data-component-name="ObjectPageTitle"]').click();
+    cy.findByText('ObjectPageHeader').should('be.visible');
+    cy.get('@toggleSpy').should('have.callCount', 4);
   });
 
   it('pin header', () => {

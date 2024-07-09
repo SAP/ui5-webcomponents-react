@@ -133,6 +133,12 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   hidePinButton?: boolean;
   /**
+   * Determines whether the user can switch between the expanded/collapsed states of the `ObjectPageHeader` by clicking on the `ObjectPageTitle`.
+   *
+   * __Note:__ Per default the header is toggleable.
+   */
+  preserveHeaderStateOnClick?: boolean;
+  /**
    * Defines internally used accessibility properties/attributes.
    */
   accessibilityAttributes?: {
@@ -192,6 +198,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     headerPinned: headerPinnedProp,
     headerContent,
     hidePinButton,
+    preserveHeaderStateOnClick,
     accessibilityAttributes,
     placeholder,
     onSelectedSectionChange,
@@ -598,13 +605,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     }
   }, [isAfterScroll]);
 
-  const onTitleClick = useCallback(
-    (e) => {
-      e.stopPropagation();
+  const onTitleClick = (e) => {
+    e.stopPropagation();
+    if (!preserveHeaderStateOnClick)
       onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed }));
-    },
-    [onToggleHeaderContentVisibility, headerCollapsed]
-  );
+  };
 
   const snappedHeaderInObjPage = headerTitle && headerTitle.props.snappedContent && headerCollapsed === true && !!image;
 
@@ -743,7 +748,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
         role={accessibilityAttributes?.objectPageTopHeader?.role}
-        data-not-clickable={false}
+        data-not-clickable={!!preserveHeaderStateOnClick}
         aria-roledescription={accessibilityAttributes?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
         className={classNames.header}
         onClick={onTitleClick}
@@ -760,7 +765,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
           cloneElement(headerTitle as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
             className: clsx(headerTitle?.props?.className),
             onToggleHeaderContentVisibility: onTitleClick,
-            'data-not-clickable': false,
+            'data-not-clickable': !!preserveHeaderStateOnClick,
             'data-header-content-visible': headerContent && headerCollapsed !== true,
             'data-is-snapped-rendered-outside': snappedHeaderInObjPage
           })}
