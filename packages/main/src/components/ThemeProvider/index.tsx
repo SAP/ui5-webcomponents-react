@@ -11,7 +11,6 @@ import {
   useStylesheet
 } from '@ui5/webcomponents-react-base';
 import type { FC, ReactNode } from 'react';
-import { ModalsProvider } from '../Modals/ModalsProvider.js';
 import { styleData } from './ThemeProvider.css.js';
 
 function ThemeProviderStyles() {
@@ -22,7 +21,6 @@ function ThemeProviderStyles() {
 
 export interface ThemeProviderPropTypes {
   children: ReactNode;
-  withoutModalsProvider?: boolean;
 
   /**
    * You can set this flag to true in case you have imported our static CSS Bundle/s in your application.
@@ -37,13 +35,10 @@ export interface ThemeProviderPropTypes {
 /**
  * In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the ThemeProvider.
  *
- * __Note:__ Per default, the `ThemeProvider` adds another provider for the [Modals](https://sap.github.io/ui5-webcomponents-react/?path=/docs/user-feedback-modals--docs) API.
- * If you don't use this, you can omit it by setting the prop `withoutModalsProvider` to `true`. (With v2.0, the `Modals` provider will be offered separately to reduce overhead)
- *
  * __Note:__ Per default, the `ThemeProvider` injects the CSS for the components during runtime. If you have imported our static CSS bundle/s in your application, you can set the prop `staticCssInjected` to `true` to prevent this.
  */
 const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes) => {
-  const { children, withoutModalsProvider = false, staticCssInjected = false } = props;
+  const { children, staticCssInjected = false } = props;
 
   useIsomorphicLayoutEffect(() => {
     document.documentElement.setAttribute('data-sap-theme', getTheme());
@@ -71,7 +66,7 @@ const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes
   return (
     <>
       <ThemeProviderStyles />
-      {withoutModalsProvider ? children : <ModalsProvider>{children}</ModalsProvider>}
+      {children}
     </>
   );
 };

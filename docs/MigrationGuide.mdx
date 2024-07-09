@@ -610,6 +610,19 @@ function MyComponent() {
 
 ```
 
+### Modals
+
+All Modal helper hooks have been removed. They can be replaced with the regular methods:
+
+- `useShowDialog` --> `showDialog`
+- `useShowPopover` --> `showPopover`
+- `useShowResponsivePopover` --> `showResponsivePopover`
+- `useShowMenu` --> `showMenu`
+- `useShowMessageBox` --> `showMessageBox`
+- `useShowToast` --> `showToast`
+
+The regular methods are now general purpose, so they can be used both inside the React content (components) as well as outside of the React context (redux, redux-saga, etc.).
+
 ### ObjectPageSection
 
 The prop `titleText` is now required and the default value `true` has been removed for the `titleTextUppercase` prop to comply with the updated Fiori design guidelines.
@@ -621,6 +634,11 @@ The prop `titleText` is now required.
 ### ObjectStatus
 
 For better alignment with the UI5 Web Components the `active` prop has been renamed to `interactive`.
+
+### ThemeProvider
+
+The prop `withoutModalsProvider` has been removed.
+In order to provide a place for the `Modals` helper to mount the popovers, you have to render the new `Modals` component in your application tree.
 
 ## Enum Changes
 

@@ -19,8 +19,6 @@ describe('ThemeProvider', () => {
     cy.get('html').should('have.attr', 'data-sap-theme', 'sap_horizon');
     cy.findByText('Change Theme').click();
     cy.get('html').should('have.attr', 'data-sap-theme', 'sap_horizon_dark');
-
-    cy.window().its('@ui5/webcomponents-react').should('not.be.empty');
   });
 
   it('injects css via JS', () => {

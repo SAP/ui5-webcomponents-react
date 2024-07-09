@@ -486,6 +486,9 @@
         "valueState": "ValueState"
       }
     },
+    "ThemeProvider": {
+      "removedProps": ["withoutModalsProvider"]
+    },
     "TimePicker": {
       "renamedEnums": {
         "valueState": "ValueState"
