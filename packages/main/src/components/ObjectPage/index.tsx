@@ -73,8 +73,6 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageTitle` in order to preserve the intended design.
    *
-   * __Note:__ If not defined otherwise the prop `showSubHeaderRight` of the `ObjectPageTitle` is set to `true` by default.
-   *
    * __Note:__ When the `ObjectPageTitle` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
    */
   headerTitle?: ReactElement<ObjectPageTitlePropTypes>;
@@ -600,39 +598,15 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     }
   }, [isAfterScroll]);
 
-  const titleHeaderNotClickable = (headerPinnedProp && hidePinButton) || !headerContent || hidePinButton;
-
   const onTitleClick = useCallback(
     (e) => {
       e.stopPropagation();
-      if (!titleHeaderNotClickable) {
-        onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed }));
-      }
+      onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed }));
     },
-    [onToggleHeaderContentVisibility, headerCollapsed, titleHeaderNotClickable]
+    [onToggleHeaderContentVisibility, headerCollapsed]
   );
 
   const snappedHeaderInObjPage = headerTitle && headerTitle.props.snappedContent && headerCollapsed === true && !!image;
-
-  const renderTitleSection = () => {
-    if (headerTitle?.props && headerTitle.props?.showSubHeaderRight === undefined) {
-      return cloneElement(headerTitle as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
-        showSubHeaderRight: true,
-        className: clsx(headerTitle?.props?.className),
-        onToggleHeaderContentVisibility: onTitleClick,
-        'data-not-clickable': titleHeaderNotClickable,
-        'data-header-content-visible': headerContent && headerCollapsed !== true,
-        'data-is-snapped-rendered-outside': snappedHeaderInObjPage
-      });
-    }
-    return cloneElement(headerTitle as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
-      className: clsx(headerTitle?.props?.className),
-      onToggleHeaderContentVisibility: onTitleClick,
-      'data-not-clickable': titleHeaderNotClickable,
-      'data-header-content-visible': headerContent && headerCollapsed !== true,
-      'data-is-snapped-rendered-outside': snappedHeaderInObjPage
-    });
-  };
 
   const isInitial = useRef(true);
   useEffect(() => {
@@ -769,7 +743,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
         role={accessibilityAttributes?.objectPageTopHeader?.role}
-        data-not-clickable={titleHeaderNotClickable}
+        data-not-clickable={false}
         aria-roledescription={accessibilityAttributes?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
         className={classNames.header}
         onClick={onTitleClick}
@@ -782,7 +756,14 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         {headerTitle && image && headerCollapsed === true && (
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
         )}
-        {headerTitle && renderTitleSection()}
+        {headerTitle &&
+          cloneElement(headerTitle as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
+            className: clsx(headerTitle?.props?.className),
+            onToggleHeaderContentVisibility: onTitleClick,
+            'data-not-clickable': false,
+            'data-header-content-visible': headerContent && headerCollapsed !== true,
+            'data-is-snapped-rendered-outside': snappedHeaderInObjPage
+          })}
         {snappedHeaderInObjPage && (
           <div className={classNames.snappedContent} data-component-name="ATwithImageSnappedContentContainer">
             {headerTitle.props.snappedContent}
@@ -804,7 +785,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         >
           <ObjectPageAnchorBar
             headerContentVisible={headerContent && headerCollapsed !== true}
-            hidePinButton={hidePinButton}
+            hidePinButton={!!hidePinButton}
             headerPinned={headerPinned}
             accessibilityAttributes={accessibilityAttributes}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}

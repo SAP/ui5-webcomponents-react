@@ -65,7 +65,6 @@ const meta = {
     ),
     headerTitle: (
       <ObjectPageTitle
-        showSubHeaderRight
         header="Denise Smith"
         subHeader="Senior UI Developer"
         actions={
