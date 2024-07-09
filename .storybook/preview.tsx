@@ -4,7 +4,7 @@ import { Preview } from '@storybook/react';
 import { setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
-import { ContentDensity, ThemeProvider } from '@ui5/webcomponents-react';
+import { ContentDensity, Modals, ThemeProvider } from '@ui5/webcomponents-react';
 import { useEffect } from 'react';
 import 'tocbot/dist/tocbot.css';
 import '../packages/main/dist/Assets.js';
@@ -27,7 +27,7 @@ const preview: Preview = {
     }
   },
   decorators: [
-    (Story, { globals }) => {
+    (Story, { globals, viewMode }) => {
       const { theme, contentDensity, direction, language } = globals;
 
       useEffect(() => {
@@ -57,6 +57,7 @@ const preview: Preview = {
 
       return (
         <ThemeProvider>
+          {viewMode !== 'docs' && <Modals />}
           <Story />
         </ThemeProvider>
       );

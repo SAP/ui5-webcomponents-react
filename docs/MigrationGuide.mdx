@@ -181,9 +181,9 @@ The `DynamicPage` component has been replaced with the `ui5-dynamic-page` web co
 #### Replaced Props
 
 - `backgroundDesign` is not available anymore. To set the background of the page you can use standard CSS and the respective CSS variables instead:
-- **List:** `var(--sapGroup_ContentBackground)`
-- **Solid:** `var(--sapBackgroundColor)`
-- **Transparent:** `transparent`
+  - **List:** `var(--sapGroup_ContentBackground)`
+  - **Solid:** `var(--sapBackgroundColor)`
+  - **Transparent:** `transparent`
 - `alwaysShowContentHeader` has been renamed to `headerPinned`
 - `headerCollapsed` has been renamed to `headerSnapped`
 - `headerContentPinnable` (default: `true`) has been replaced by `hidePinButton` (default: `false`)
@@ -595,6 +595,19 @@ function MyComponent() {
 
 ```
 
+### Modals
+
+All Modal helper hooks have been removed. They can be replaced with the regular methods:
+
+- `useShowDialog` --> `showDialog`
+- `useShowPopover` --> `showPopover`
+- `useShowResponsivePopover` --> `showResponsivePopover`
+- `useShowMenu` --> `showMenu`
+- `useShowMessageBox` --> `showMessageBox`
+- `useShowToast` --> `showToast`
+
+The regular methods are now general purpose, so they can be used both inside the React content (components) as well as outside of the React context (redux, redux-saga, etc.).
+
 ### ObjectPage
 
 The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
@@ -628,6 +641,11 @@ The prop `titleText` is now required.
 ### ObjectStatus
 
 For better alignment with the UI5 Web Components the `active` prop has been renamed to `interactive`.
+
+### ThemeProvider
+
+The prop `withoutModalsProvider` has been removed.
+In order to provide a place for the `Modals` helper to mount the popovers, you have to render the new `Modals` component in your application tree.
 
 ## Enum Changes
 
