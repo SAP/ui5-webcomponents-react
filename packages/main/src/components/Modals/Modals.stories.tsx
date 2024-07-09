@@ -14,7 +14,6 @@ export const Dialog: Story = {
   render: () => {
     return (
       <>
-        <Modals />
         <Button
           onClick={() => {
             const { close } = Modals.showDialog({
@@ -35,7 +34,6 @@ export const Popover = {
   render: () => {
     return (
       <>
-        <Modals />
         <Button
           id="modals-show-popover"
           onClick={() => {
@@ -57,7 +55,6 @@ export const ResponsivePopover = {
   render: () => {
     return (
       <>
-        <Modals />
         <Button
           id="modals-show-responsive-popover"
           onClick={() => {
@@ -79,7 +76,6 @@ export const Menu = {
   render: () => {
     return (
       <>
-        <Modals />
         <Button
           id="modals-show-menu"
           onClick={() => {
@@ -106,7 +102,6 @@ export const MessageBox = {
   render: () => {
     return (
       <>
-        <Modals />
         <Button
           onClick={() => {
             Modals.showMessageBox({
@@ -126,7 +121,6 @@ export const Toast = {
   render: () => {
     return (
       <>
-        <Modals />
         <Button
           onClick={() => {
             Modals.showToast({

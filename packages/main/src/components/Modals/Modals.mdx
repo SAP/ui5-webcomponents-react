@@ -3,12 +3,31 @@ import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
 import { Dialog, Menu, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents/index';
 import { MessageBox } from '../MessageBox';
 import * as ComponentStories from './Modals.stories';
+import { Modals } from './index.tsx';
+
+<Modals />
 
 <Meta of={ComponentStories} />
 
 <DocsHeader since="0.22.2" />
 
-<br />
+## General Usage Information
+
+Only one `Modals` component (`<Modals />`) should be rendered for each application, otherwise multiple popovers or dialogs are displayed.
+
+Example for mounting the `Modals` component:
+
+```jsx
+import { Modals, ThemeProvider } from '@ui5/webcomponents-react';
+...
+const root = createRoot(document.getElementById("root"));
+root.render(
+        <ThemeProvider>
+          <Modals />
+          <App />
+        </ThemeProvider>
+);
+```
 
 ## Dialog
 
