@@ -61,10 +61,6 @@ export interface ObjectPageTitlePropTypes extends CommonProps {
    */
   navigationActions?: ReactElement | ReactElement[];
   /**
-   * Display the `subHeader` on the right instead of below the `header`.
-   */
-  showSubHeaderRight?: boolean;
-  /**
    * Use this prop to customize the "actions" `Toolbar`.
    *
    * __Note:__ It is possible to overwrite internal implementations. Please use with caution!
@@ -140,7 +136,6 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
     children,
     header,
     subHeader,
-    showSubHeaderRight,
     navigationActions,
     className,
     style,
@@ -276,11 +271,6 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
               {header}
             </div>
           )}
-          {subHeader && showSubHeaderRight && (
-            <div className={classNames.subTitle} data-component-name="ObjectPageTitleSubHeader">
-              {subHeader}
-            </div>
-          )}
           {children && (
             <div className={classNames.content} data-component-name="ObjectPageTitleContent">
               {children}
@@ -312,7 +302,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
           </Toolbar>
         )}
       </FlexBox>
-      {subHeader && !showSubHeaderRight && (
+      {subHeader && (
         <FlexBox>
           <div
             className={clsx(classNames.subTitle, classNames.subTitleBottom)}

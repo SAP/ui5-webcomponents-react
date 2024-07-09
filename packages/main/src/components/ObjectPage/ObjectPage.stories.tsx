@@ -32,7 +32,7 @@ import {
   Text,
   Title,
   ToggleButton
-} from '../..';
+} from '../../index.js';
 import { ObjectPage } from './index.js';
 
 const meta = {
@@ -48,9 +48,7 @@ const meta = {
   },
   args: {
     mode: ObjectPageMode.Default,
-    showHideHeaderButton: true,
     selectedSectionId: 'goals',
-    headerContentPinnable: true,
     imageShapeCircle: true,
     image: SampleImage,
     style: { height: '700px' },
@@ -67,7 +65,6 @@ const meta = {
     ),
     headerTitle: (
       <ObjectPageTitle
-        showSubHeaderRight
         header="Denise Smith"
         subHeader="Senior UI Developer"
         actions={
@@ -337,7 +334,6 @@ export const WithCustomOverflowButton: Story = {
       <>
         <ObjectPage
           style={{ width: '1000px' }}
-          showHideHeaderButton={false}
           headerTitle={
             <ObjectPageTitle
               {...titleProps}
@@ -351,7 +347,6 @@ export const WithCustomOverflowButton: Story = {
         />
         <ObjectPage
           style={{ width: '1400px' }}
-          showHideHeaderButton={false}
           headerTitle={
             <ObjectPageTitle
               {...titleProps}

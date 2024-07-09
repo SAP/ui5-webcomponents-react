@@ -323,6 +323,33 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       });
     }
 
+    if (componentName === 'ObjectPage') {
+      jsxElements.forEach((el) => {
+        const headerContentPinnable = j(el).find(j.JSXAttribute, { name: { name: 'headerContentPinnable' } });
+        if (headerContentPinnable.size() === 0) {
+          j(el)
+            .find(j.JSXOpeningElement)
+            .get()
+            .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('hidePinButton'), null));
+          isDirty = true;
+        } else {
+          const attr = headerContentPinnable.get();
+          if (
+            attr.value.value &&
+            ((attr.value.value.type === 'JSXAttribute' && attr.value.value === false) ||
+              (attr.value.value.type === 'JSXExpressionContainer' && attr.value.value.expression.value === false))
+          ) {
+            j(el)
+              .find(j.JSXOpeningElement)
+              .get()
+              .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('hidePinButton'), null));
+          }
+          headerContentPinnable.remove();
+          isDirty = true;
+        }
+      });
+    }
+
     if (componentName === 'Page') {
       jsxElements.forEach((el) => {
         const floatingFooter = j(el).find(j.JSXAttribute, { name: { name: 'floatingFooter' } });

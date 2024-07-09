@@ -43,8 +43,7 @@ describe('ObjectPage', () => {
         headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
         headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
         onToggleHeaderContent={toggle}
-        headerContentPinnable={false}
-        showHideHeaderButton
+        hidePinButton
       >
         <ObjectPageSection id="section" titleText="Section">
           Content
@@ -81,8 +80,6 @@ describe('ObjectPage', () => {
         style={{ height: '100vh' }}
         headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
         headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-        headerContentPinnable
-        showHideHeaderButton
         onPinnedStateChange={pin}
         data-testid="op"
       >
@@ -111,7 +108,7 @@ describe('ObjectPage', () => {
     cy.findByText('ObjectPageHeader').should('not.be.visible');
   });
 
-  it('programmatically pin header (`alwaysShowContentHeader`)', () => {
+  it('programmatically pin header (`headerPinned`)', () => {
     document.body.style.margin = '0px';
     const TestComp = ({ onPinnedStateChange }: ObjectPagePropTypes) => {
       const [pinned, setPinned] = useState(false);
@@ -133,9 +130,7 @@ describe('ObjectPage', () => {
             style={{ height: '95vh' }}
             headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
             headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-            headerContentPinnable
-            showHideHeaderButton
-            alwaysShowContentHeader={pinned}
+            headerPinned={pinned}
             onPinnedStateChange={handlePinChange}
             data-testid="op"
           >
@@ -212,8 +207,6 @@ describe('ObjectPage', () => {
             <div style={{ height: '400px', width: '100%', background: 'lightyellow' }}>ObjectPageHeader</div>
           </ObjectPageHeader>
         }
-        headerContentPinnable
-        showHideHeaderButton
         data-testid="op"
       >
         <ObjectPageSection id="section" titleText="Section">
@@ -394,7 +387,6 @@ describe('ObjectPage', () => {
           headerTitle={DPTitle}
           headerContent={DPContent}
           data-testid="op"
-          showHideHeaderButton
           ref={ref}
           footer={withFooter && Footer}
           mode={mode}
@@ -420,19 +412,19 @@ describe('ObjectPage', () => {
     };
     cy.mount(<TestComp height="2000px" mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2240}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2240}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
 
     cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2290}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2290}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
 
     cy.mount(<TestComp height="400px" mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
@@ -492,7 +484,6 @@ describe('ObjectPage', () => {
           headerTitle={DPTitle}
           headerContent={DPContent}
           data-testid="op"
-          showHideHeaderButton
           ref={ref}
           footer={withFooter && Footer}
           mode={mode}
@@ -518,19 +509,19 @@ describe('ObjectPage', () => {
     };
     cy.mount(<TestComp height="2000px" mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2240}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2240}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
 
     cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2300}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2300}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
 
     cy.mount(<TestComp height="400px" mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();

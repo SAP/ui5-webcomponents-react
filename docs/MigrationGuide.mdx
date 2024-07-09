@@ -395,21 +395,6 @@ import { Loader } from '@ui5/webcomponents-react';
 import { Loader } from '@ui5/webcomponents-react-compat';
 ```
 
-### ObjectPage
-
-The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
-Please use the following components instead:
-
-- `headerContent` now only accepts the `ObjectPageHeader` component.
-- `headerTitle` now only accepts the `ObjectPageTitle` component.
-
-**Renamed Props:**
-
-- `a11yConfig` has been renamed to `accessibilityAttributes`
-- `a11yConfig.dynamicPageAnchorBar` has been renamed to `accessibilityAttributes.objectPageAnchorBar`
-
-Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
-
 ### Text
 
 The `Text` component has been replaced with the `ui5-text` Web Component.
@@ -622,6 +607,36 @@ All Modal helper hooks have been removed. They can be replaced with the regular 
 - `useShowToast` --> `showToast`
 
 The regular methods are now general purpose, so they can be used both inside the React content (components) as well as outside of the React context (redux, redux-saga, etc.).
+
+### ObjectPage
+
+The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
+Please use the following components instead:
+
+- `headerContent` now only accepts the `ObjectPageHeader` component.
+- `headerTitle` now only accepts the `ObjectPageTitle` component.
+
+**Renamed Props:**
+
+- `a11yConfig` has been renamed to `accessibilityAttributes`
+- `a11yConfig.dynamicPageAnchorBar` has been renamed to `accessibilityAttributes.objectPageAnchorBar`
+- `alwaysShowContentHeader` has been renamed to `headerPinned`
+- `headerContentPinnable` has been renamed to `hidePinButton` and the logic has been inverted. The pin button is now shown by default.
+
+**Removed Props:**
+
+- `showHideHeaderButton`: Hiding the expand/collapse button is not supported by design anymore.
+- `showTitleInHeaderContent`: Showing the `headerTitle` as part of the `headerContent` is [not supported by design anymore](https://experience.sap.com/fiori-design-web/object-page/#dynamic-page-header-mandatory).
+
+Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
+
+### ObjectPageTitle
+
+_The `ObjectPageTitle` component is the renamed implementation of the old (React only) `DynamicPageTitle` component._
+
+**Removed Props:**
+
+- `showSubHeaderRight`: Displaying the subheader in the same line as the header is not supported by design anymore.
 
 ### ObjectPageSection
 

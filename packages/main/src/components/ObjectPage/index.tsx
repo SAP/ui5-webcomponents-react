@@ -4,7 +4,6 @@ import type { TabContainerTabSelectEventDetail } from '@ui5/webcomponents/dist/T
 import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
 import {
   debounce,
-  deprecationNotice,
   enrichEventWithDetails,
   ThemingParameters,
   useStylesheet,
@@ -22,15 +21,14 @@ import type { AvatarPropTypes, TabContainerDomRef } from '../../webComponents/in
 import { Tab, TabContainer } from '../../webComponents/index.js';
 import { ObjectPageAnchorBar } from '../ObjectPageAnchorBar/index.js';
 import type {
-  ObjectPageHeaderPropTypes,
-  InternalProps as ObjectPageHeaderPropTypesWithInternals
+  InternalProps as ObjectPageHeaderPropTypesWithInternals,
+  ObjectPageHeaderPropTypes
 } from '../ObjectPageHeader/index.js';
-import { ObjectPageHeader } from '../ObjectPageHeader/index.js';
 import type { ObjectPageSectionPropTypes } from '../ObjectPageSection/index.js';
 import type { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection/index.js';
 import type {
-  ObjectPageTitlePropTypes,
-  InternalProps as ObjectPageTitlePropTypesWithInternals
+  InternalProps as ObjectPageTitlePropTypesWithInternals,
+  ObjectPageTitlePropTypes
 } from '../ObjectPageTitle/index.js';
 import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { classNames, styleData } from './ObjectPage.module.css.js';
@@ -75,8 +73,6 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `ObjectPageTitle` in order to preserve the intended design.
    *
-   * __Note:__ If not defined otherwise the prop `showSubHeaderRight` of the `ObjectPageTitle` is set to `true` by default.
-   *
    * __Note:__ When the `ObjectPageTitle` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
    */
   headerTitle?: ReactElement<ObjectPageTitlePropTypes>;
@@ -115,15 +111,9 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   selectedSubSectionId?: string;
   /**
-   * Defines whether the `headerContent` is hidden by scrolling down.
+   * Defines whether the `headerContent` is pinned.
    */
-  alwaysShowContentHeader?: boolean;
-  /**
-   * Defines whether the title is displayed in the content section of the header or above the image.
-   *
-   * @deprecated: This feature will be removed with our next major release.
-   */
-  showTitleInHeaderContent?: boolean;
+  headerPinned?: boolean;
   /**
    * Defines whether the image should be displayed in a circle or in a square.<br />
    * __Note:__ If the `image` is not a `string`, this prop has no effect.
@@ -139,13 +129,9 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   mode?: ObjectPageMode | keyof typeof ObjectPageMode;
   /**
-   * Defines whether the pin button of the header is displayed.
+   * Defines if the pin button for the `headerContent` is hidden.
    */
-  showHideHeaderButton?: boolean;
-  /**
-   * Defines whether the `headerContent` is pinnable.
-   */
-  headerContentPinnable?: boolean;
+  hidePinButton?: boolean;
   /**
    * Defines internally used accessibility properties/attributes.
    */
@@ -201,13 +187,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     className,
     style,
     slot,
-    showHideHeaderButton,
     children,
     selectedSectionId,
-    alwaysShowContentHeader,
-    showTitleInHeaderContent,
+    headerPinned: headerPinnedProp,
     headerContent,
-    headerContentPinnable,
+    hidePinButton,
     accessibilityAttributes,
     placeholder,
     onSelectedSectionChange,
@@ -226,7 +210,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     selectedSectionId ?? firstSectionId
   );
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
-  const [headerPinned, setHeaderPinned] = useState(alwaysShowContentHeader);
+  const [headerPinned, setHeaderPinned] = useState(headerPinnedProp);
   const isProgrammaticallyScrolled = useRef(false);
   const prevSelectedSectionId = useRef<string | undefined>(undefined);
 
@@ -244,21 +228,9 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimeout = useRef(0);
-  const titleInHeader = headerTitle && showTitleInHeaderContent;
   const [sectionSpacer, setSectionSpacer] = useState(0);
   const [currentTabModeSection, setCurrentTabModeSection] = useState(null);
   const sections = mode === ObjectPageMode.IconTabBar ? currentTabModeSection : children;
-
-  const deprecationNoticeDisplayed = useRef(false);
-  useEffect(() => {
-    if (showTitleInHeaderContent && !deprecationNoticeDisplayed.current) {
-      deprecationNotice(
-        'showTitleInHeaderContent',
-        'showTitleInHeaderContent is deprecated and will be removed with the next major release.'
-      );
-      deprecationNoticeDisplayed.current = true;
-    }
-  }, [showTitleInHeaderContent]);
 
   useEffect(() => {
     const currentSection =
@@ -433,13 +405,13 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   }, [selectedSubSectionId, isProgrammaticallyScrolled.current, sectionSpacer]);
 
   useEffect(() => {
-    if (alwaysShowContentHeader !== undefined) {
-      setHeaderPinned(alwaysShowContentHeader);
+    if (headerPinnedProp !== undefined) {
+      setHeaderPinned(headerPinnedProp);
     }
-    if (alwaysShowContentHeader) {
+    if (headerPinnedProp) {
       onToggleHeaderContentVisibility({ detail: { visible: true } });
     }
-  }, [alwaysShowContentHeader]);
+  }, [headerPinnedProp]);
 
   const prevHeaderPinned = useRef(headerPinned);
   useEffect(() => {
@@ -626,48 +598,15 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     }
   }, [isAfterScroll]);
 
-  const titleHeaderNotClickable =
-    (alwaysShowContentHeader && !headerContentPinnable) ||
-    !headerContent ||
-    (!showHideHeaderButton && !headerContentPinnable);
-
   const onTitleClick = useCallback(
     (e) => {
       e.stopPropagation();
-      if (!titleHeaderNotClickable) {
-        onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed }));
-      }
+      onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed }));
     },
-    [onToggleHeaderContentVisibility, headerCollapsed, titleHeaderNotClickable]
+    [onToggleHeaderContentVisibility, headerCollapsed]
   );
 
   const snappedHeaderInObjPage = headerTitle && headerTitle.props.snappedContent && headerCollapsed === true && !!image;
-
-  const hasHeaderContent = !!headerContent;
-  const renderTitleSection = useCallback(
-    (inHeader = false) => {
-      const titleInHeaderClass = inHeader ? classNames.titleInHeader : undefined;
-
-      if (headerTitle?.props && headerTitle.props?.showSubHeaderRight === undefined) {
-        return cloneElement(headerTitle as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
-          showSubHeaderRight: true,
-          className: clsx(titleInHeaderClass, headerTitle?.props?.className),
-          onToggleHeaderContentVisibility: onTitleClick,
-          'data-not-clickable': titleHeaderNotClickable,
-          'data-header-content-visible': headerContent && headerCollapsed !== true,
-          'data-is-snapped-rendered-outside': snappedHeaderInObjPage
-        });
-      }
-      return cloneElement(headerTitle as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
-        className: clsx(titleInHeaderClass, headerTitle?.props?.className),
-        onToggleHeaderContentVisibility: onTitleClick,
-        'data-not-clickable': titleHeaderNotClickable,
-        'data-header-content-visible': headerContent && headerCollapsed !== true,
-        'data-is-snapped-rendered-outside': snappedHeaderInObjPage
-      });
-    },
-    [headerTitle, titleHeaderNotClickable, onTitleClick, headerCollapsed, snappedHeaderInObjPage, hasHeaderContent]
-  );
 
   const isInitial = useRef(true);
   useEffect(() => {
@@ -693,40 +632,14 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         children: (
           <div className={classNames.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
-            {(headerContent.props.children || titleInHeader) && (
-              <div data-component-name="ObjectPageHeaderContent">
-                {titleInHeader && renderTitleSection(true)}
-                {headerContent.props.children}
-              </div>
+            {headerContent.props.children && (
+              <div data-component-name="ObjectPageHeaderContent">{headerContent.props.children}</div>
             )}
           </div>
         )
       });
-    } else if (titleInHeader) {
-      return (
-        <ObjectPageHeader
-          topHeaderHeight={topHeaderHeight}
-          style={headerCollapsed === true ? { position: 'absolute', visibility: 'hidden' } : undefined}
-          headerPinned={headerPinned || scrolledHeaderExpanded}
-          ref={componentRefHeaderContent}
-        >
-          <div className={classNames.headerContainer} data-component-name="ObjectPageHeaderContainer">
-            {avatar}
-            <div data-component-name="ObjectPageHeaderContent">{titleInHeader && renderTitleSection(true)}</div>
-          </div>
-        </ObjectPageHeader>
-      );
     }
-  }, [
-    headerContent,
-    topHeaderHeight,
-    headerPinned,
-    scrolledHeaderExpanded,
-    titleInHeader,
-    avatar,
-    headerContentRef,
-    renderTitleSection
-  ]);
+  }, [headerContent, topHeaderHeight, headerPinned, scrolledHeaderExpanded, avatar, headerContentRef]);
 
   const onTabItemSelect = (event) => {
     if (typeof onBeforeNavigate === 'function') {
@@ -810,7 +723,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const objectPageStyles: CSSProperties = {
     ...style
   };
-  if (headerCollapsed === true && (headerContent || titleInHeader)) {
+  if (headerCollapsed === true && headerContent) {
     objectPageStyles[ObjectPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 
@@ -830,21 +743,27 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         data-component-name="ObjectPageTopHeader"
         ref={topHeaderRef}
         role={accessibilityAttributes?.objectPageTopHeader?.role}
-        data-not-clickable={titleHeaderNotClickable}
+        data-not-clickable={false}
         aria-roledescription={accessibilityAttributes?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
         className={classNames.header}
         onClick={onTitleClick}
         style={{
           gridAutoColumns: `min-content ${
             headerTitle && image && headerCollapsed === true ? `calc(100% - 3rem - 1rem)` : '100%'
-          }`,
-          display: !showTitleInHeaderContent || headerCollapsed === true ? 'grid' : 'none'
+          }`
         }}
       >
         {headerTitle && image && headerCollapsed === true && (
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
         )}
-        {headerTitle && renderTitleSection()}
+        {headerTitle &&
+          cloneElement(headerTitle as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
+            className: clsx(headerTitle?.props?.className),
+            onToggleHeaderContentVisibility: onTitleClick,
+            'data-not-clickable': false,
+            'data-header-content-visible': headerContent && headerCollapsed !== true,
+            'data-is-snapped-rendered-outside': snappedHeaderInObjPage
+          })}
         {snappedHeaderInObjPage && (
           <div className={classNames.snappedContent} data-component-name="ATwithImageSnappedContentContainer">
             {headerTitle.props.snappedContent}
@@ -866,8 +785,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         >
           <ObjectPageAnchorBar
             headerContentVisible={headerContent && headerCollapsed !== true}
-            headerContentPinnable={headerContentPinnable}
-            showHideHeaderButton={showHideHeaderButton}
+            hidePinButton={!!hidePinButton}
             headerPinned={headerPinned}
             accessibilityAttributes={accessibilityAttributes}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
