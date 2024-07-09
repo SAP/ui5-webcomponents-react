@@ -225,7 +225,7 @@ function showToastFn(props: ToastPropTypes, container?: Element | DocumentFragme
  * These static helper methods might be useful for showing e.g. Toasts or MessageBoxes after successful or failed
  * network calls.
  *
- * **In order to use these helpers, please make sure to render the `Modals` component is mounted somewhere in your application tree.**
+ * **In order to use these helpers, please make sure to render the `Modals` component somewhere in your application tree.**
  *
  * @since 0.22.2
  */
