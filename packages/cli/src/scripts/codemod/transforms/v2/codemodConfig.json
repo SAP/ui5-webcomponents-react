@@ -293,8 +293,11 @@
     },
     "ObjectPage": {
       "changedProps": {
-        "a11yConfig": "accessibilityAttributes"
-      }
+        "a11yConfig": "accessibilityAttributes",
+        "alwaysShowContentHeader": "headerPinned",
+        "headerContentPinnable": "hidePinButton"
+      },
+      "removedProps": ["showHideHeaderButton", "showTitleInHeaderContent"]
     },
     "ObjectStatus": {
       "changedProps": {
