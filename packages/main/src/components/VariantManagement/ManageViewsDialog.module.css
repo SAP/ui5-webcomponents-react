@@ -28,11 +28,11 @@
   max-width: 100%;
   display: inline-block;
   padding-inline-start: 1rem;
-  font-family: '72override', var(--_ui5_popup_header_font_family);
+  font-family: var(--_ui5wcr_popup_header_font_family);
   font-size: 1rem;
-  min-height: var(--_ui5_popup_default_header_height);
-  max-height: var(--_ui5_popup_default_header_height);
-  line-height: var(--_ui5_popup_default_header_height);
+  min-height: var(--_ui5wcr_popup_default_header_height);
+  max-height: var(--_ui5wcr_popup_default_header_height);
+  line-height: var(--_ui5wcr_popup_default_header_height);
 }
 
 .search {

@@ -23,7 +23,7 @@
 }
 
 .anchorBarActionButton {
-  --_ui5wcr_anchor-btn-center: calc((var(--_ui5_button_base_min_width) - var(--sapButton_BorderWidth)) / 2);
+  --_ui5wcr_anchor-btn-center: calc((1.5rem - var(--sapButton_BorderWidth)) / 2);
   position: absolute;
   inset-block-start: calc(-1 * var(--_ui5wcr_anchor-btn-center));
   inset-inline-start: calc(50% - var(--_ui5wcr_anchor-btn-center));
