@@ -9,13 +9,7 @@ import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet }
 import type { Dispatch, ReactElement, RefObject, SetStateAction } from 'react';
 import { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import {
-  FlexBoxDirection,
-  FlexBoxJustifyContent,
-  MessageBoxAction,
-  MessageBoxType,
-  ToolbarStyle
-} from '../../enums/index.js';
+import { FlexBoxDirection, FlexBoxJustifyContent, MessageBoxAction, MessageBoxType } from '../../enums/index.js';
 import {
   ACTIVE,
   ALL,
@@ -525,7 +519,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           }
         >
           <FlexBox direction={FlexBoxDirection.Column} className={classNames.subheaderContainer}>
-            <Toolbar className={classNames.subheader} toolbarStyle={ToolbarStyle.Clear}>
+            <Toolbar className={classNames.subheader} toolbarStyle="Clear">
               <Select
                 onChange={handleAttributeFilterChange}
                 title={fieldsByAttributeText}
