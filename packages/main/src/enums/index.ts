@@ -21,7 +21,5 @@ export * from './ObjectPageMode.js';
 export * from './Size.js';
 export * from './TextAlign.js';
 export * from './Theme.js';
-export * from './ToolbarDesign.js';
-export * from './ToolbarStyle.js';
 export * from './ValueColor.js';
 export * from './VerticalAlign.js';

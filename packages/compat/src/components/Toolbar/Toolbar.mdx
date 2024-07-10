@@ -1,15 +1,10 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
+import { MessageStrip } from '@ui5/webcomponents-react';
 import * as ComponentStories from './Toolbar.stories';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import {
-  OverflowToolbarButton,
-  OverflowToolbarToggleButton,
-  MessageStrip,
-  ToolbarSpacer,
-  ToolbarSeparator
-} from '../..';
+import { OverflowToolbarButton, OverflowToolbarToggleButton, ToolbarSpacer, ToolbarSeparator } from '../..';
 
 <Meta of={ComponentStories} />
 
@@ -140,6 +135,7 @@ You can achieve that either by leveraging the `onOverflowChange` event and retri
 
 <details>
 
+{' '}
 <summary>Set opener ID via click handler</summary>
 
 ```jsx
@@ -176,9 +172,10 @@ const ToolbarComponent = () => {
 ```
 
 </details>
-    
+
 <details>
 
+{' '}
 <summary>Set opener ID via onOverflowChange handler</summary>
 
 ```jsx
