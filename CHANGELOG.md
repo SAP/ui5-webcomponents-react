@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.4](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.3...v1.29.4) (2024-07-10)
+
+### Bug Fixes
+
+- apply correct scoping for internal ui5wc CSS vars ([#6059](https://github.com/SAP/ui5-webcomponents-react/issues/6059)) ([b7200cc](https://github.com/SAP/ui5-webcomponents-react/commit/b7200cc6218f018abf47d4be1ad38e5d219a0d0a)), closes [#6051](https://github.com/SAP/ui5-webcomponents-react/issues/6051)
+- **DynamicPage:** always show focused element when Tabbing in content ([#6003](https://github.com/SAP/ui5-webcomponents-react/issues/6003)) ([6d61f24](https://github.com/SAP/ui5-webcomponents-react/commit/6d61f245ca2664eb2e649e21ba1806bcb62eb32b)), closes [#6000](https://github.com/SAP/ui5-webcomponents-react/issues/6000)
+- **MessageViewItem:** enable details view if `titleText` is overflowing ([#6015](https://github.com/SAP/ui5-webcomponents-react/issues/6015)) ([1bd5250](https://github.com/SAP/ui5-webcomponents-react/commit/1bd5250755f4702013a998b53c34fc7db40888bb)), closes [#5990](https://github.com/SAP/ui5-webcomponents-react/issues/5990)
+
 ## [1.29.3](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.2...v1.29.3) (2024-06-28)
 
 ### Bug Fixes
