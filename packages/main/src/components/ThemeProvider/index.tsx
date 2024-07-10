@@ -20,7 +20,7 @@ import { styleData } from './ThemeProvider.css.js';
 function ThemeProviderStyles() {
   const uniqueId = useIsomorphicId();
   useStylesheet(styleData, `${ThemeProvider.displayName}-${uniqueId}`);
-  useStylesheet(wcVariablesStyleData, `${ThemeProvider.displayName}-css-vars-${uniqueId}`);
+  useStylesheet(ui5WcVariablesStyleData, `${ThemeProvider.displayName}-css-vars-${uniqueId}`);
   return null;
 }
 
@@ -33,7 +33,7 @@ const InternalUI5WCVVarNames = {
   '--_ui5wcr_popup_default_header_height': `var(${getScopedVarName('--_ui5_popup_default_header_height')})`
 };
 
-const wcVariablesStyleData: StyleDataCSP = {
+const ui5WcVariablesStyleData: StyleDataCSP = {
   content: `:root {${Object.entries(InternalUI5WCVVarNames)
     .map(([key, value]) => {
       return `${key}: ${value};`;
@@ -42,10 +42,6 @@ const wcVariablesStyleData: StyleDataCSP = {
   packageName: '@ui5/webcomponents-react',
   fileName: 'ThemeProvider'
 };
-
-// const InternalUI5WCVars = new Proxy(InternalUI5WCVVarNames, {
-//   get: (target, prop: string): string => `var(${target[prop] as string})`
-// });
 
 export interface ThemeProviderPropTypes {
   children: ReactNode;
