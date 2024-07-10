@@ -9,7 +9,6 @@ import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
-import { ToolbarDesign } from '../../enums/index.js';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
 import type {
@@ -335,7 +334,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       </div>
 
       {selectionMode === ListSelectionMode.Multiple && (!!selectedItems.length || numberOfSelectedItems > 0) && (
-        <Toolbar design={ToolbarDesign.Info} className={classNames.infoBar}>
+        <Toolbar design="Info" className={classNames.infoBar}>
           <Text>{`${i18nBundle.getText(SELECTED)}: ${numberOfSelectedItems ?? selectedItems.length}`}</Text>
         </Toolbar>
       )}

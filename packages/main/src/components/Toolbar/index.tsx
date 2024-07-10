@@ -21,7 +21,6 @@ import {
   useRef,
   useState
 } from 'react';
-import { ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
 import { SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
@@ -51,12 +50,12 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
    *
    * __Note:__ The visual styles are theme-dependent.
    */
-  toolbarStyle?: ToolbarStyle | keyof typeof ToolbarStyle;
+  toolbarStyle?: 'Clear' | 'Standard';
   /**
    * Defines the `Toolbar` design.<br />
    * <b>Note:</b> Design settings are theme-dependent.
    */
-  design?: ToolbarDesign | keyof typeof ToolbarDesign;
+  design?: 'Auto' | 'Info' | 'Solid' | 'Transparent';
   /**
    * Indicates that the whole `Toolbar` is clickable. The Press event is fired only if `active` is set to true.
    */
@@ -152,8 +151,8 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
 const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const {
     children,
-    toolbarStyle = ToolbarStyle.Standard,
-    design = ToolbarDesign.Auto,
+    toolbarStyle = 'Standard',
+    design = 'Auto',
     active = false,
     style,
     className,
@@ -184,11 +183,11 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
 
   const toolbarClasses = clsx(
     classNames.outerContainer,
-    toolbarStyle === ToolbarStyle.Clear && classNames.clear,
+    toolbarStyle === 'Clear' && classNames.clear,
     active && classNames.active,
-    design === ToolbarDesign.Solid && classNames.solid,
-    design === ToolbarDesign.Transparent && classNames.transparent,
-    design === ToolbarDesign.Info && classNames.info,
+    design === 'Solid' && classNames.solid,
+    design === 'Transparent' && classNames.transparent,
+    design === 'Info' && classNames.info,
     className
   );
   const flatChildren = useMemo(() => {

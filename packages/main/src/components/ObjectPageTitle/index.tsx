@@ -4,7 +4,7 @@ import { debounce, Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-
 import { clsx } from 'clsx';
 import type { MouseEventHandler, ReactElement, ReactNode, RefObject } from 'react';
 import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
-import { FlexBoxAlignItems, FlexBoxJustifyContent, ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
@@ -250,8 +250,8 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
               data-component-name="ObjectPageTitleNavActions"
               onOverflowChange={navigationActionsToolbarProps?.onOverflowChange}
               overflowPopoverRef={navActionsOverflowRef}
-              design={ToolbarDesign.Auto}
-              toolbarStyle={ToolbarStyle.Clear}
+              design="Auto"
+              toolbarStyle="Clear"
               active
             >
               <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
@@ -283,8 +283,8 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
             role={undefined}
             {...actionsToolbarProps}
             overflowButton={actionsToolbarProps?.overflowButton}
-            design={ToolbarDesign.Auto}
-            toolbarStyle={ToolbarStyle.Clear}
+            design="Auto"
+            toolbarStyle="Clear"
             active
             className={clsx(classNames.toolbar, actionsToolbarProps?.className)}
             onClick={handleActionsToolbarClick}
