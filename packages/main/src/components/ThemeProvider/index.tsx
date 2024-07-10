@@ -1,6 +1,8 @@
 'use client';
 
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import { getScopedVarName } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
+import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/dist/theming/ThemeLoaded.js';
 import {
   StyleStore,
@@ -18,8 +20,29 @@ import { styleData } from './ThemeProvider.css.js';
 function ThemeProviderStyles() {
   const uniqueId = useIsomorphicId();
   useStylesheet(styleData, `${ThemeProvider.displayName}-${uniqueId}`);
+  useStylesheet(ui5WcVariablesStyleData, `${ThemeProvider.displayName}-css-vars-${uniqueId}`);
   return null;
 }
+
+const InternalUI5WCVVarNames = {
+  '--_ui5wcr_card_header_focus_offset': `var(${getScopedVarName('--_ui5_card_header_focus_offset')})`,
+  '--_ui5wcr_card_header_focus_border': `var(${getScopedVarName('--_ui5_card_header_focus_border')})`,
+  '--_ui5wcr_card_header_focus_radius': `var(${getScopedVarName('--_ui5_card_header_focus_radius')})`,
+  '--_ui5wcr_card_header_focus_bottom_radius': `var(${getScopedVarName('--_ui5_card_header_focus_bottom_radius')})`,
+  '--_ui5wcr_popup_header_font_family': `var(${getScopedVarName('--_ui5_popup_header_font_family')})`,
+  '--_ui5wcr_popup_default_header_height': `var(${getScopedVarName('--_ui5_popup_default_header_height')})`,
+  '--_ui5wcr_bar_base_height': `var(${getScopedVarName('--_ui5_bar_base_height')})`
+};
+
+const ui5WcVariablesStyleData: StyleDataCSP = {
+  content: `:root {${Object.entries(InternalUI5WCVVarNames)
+    .map(([key, value]) => {
+      return `${key}: ${value};`;
+    })
+    .join(' ')}}`,
+  packageName: '@ui5/webcomponents-react',
+  fileName: 'ThemeProvider'
+};
 
 export interface ThemeProviderPropTypes {
   children: ReactNode;
