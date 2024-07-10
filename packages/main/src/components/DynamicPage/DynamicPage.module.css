@@ -15,7 +15,7 @@
 
 .dynamicPage:has([data-component-name='DynamicPageFooter']) {
   /* bar height + padding */
-  scroll-padding-block-end: calc(var(--_ui5_bar_base_height) + 1rem);
+  scroll-padding-block-end: calc(var(--_ui5wcr_bar_base_height) + 1rem);
 }
 
 .headerCollapsed {

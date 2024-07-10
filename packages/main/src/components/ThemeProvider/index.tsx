@@ -30,7 +30,8 @@ const InternalUI5WCVVarNames = {
   '--_ui5wcr_card_header_focus_radius': `var(${getScopedVarName('--_ui5_card_header_focus_radius')})`,
   '--_ui5wcr_card_header_focus_bottom_radius': `var(${getScopedVarName('--_ui5_card_header_focus_bottom_radius')})`,
   '--_ui5wcr_popup_header_font_family': `var(${getScopedVarName('--_ui5_popup_header_font_family')})`,
-  '--_ui5wcr_popup_default_header_height': `var(${getScopedVarName('--_ui5_popup_default_header_height')})`
+  '--_ui5wcr_popup_default_header_height': `var(${getScopedVarName('--_ui5_popup_default_header_height')})`,
+  '--_ui5wcr_bar_base_height': `var(${getScopedVarName('--_ui5_bar_base_height')})`
 };
 
 const ui5WcVariablesStyleData: StyleDataCSP = {
