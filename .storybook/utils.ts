@@ -57,7 +57,7 @@ const replaceSubComps = {
   ListItemBase: ['ListItemStandard', 'ListItemCustom', 'ListItemGroup'],
   InputSuggestionItem: ['SuggestionItem', 'SuggestionItemGroup'],
   NotificationListItemBase: ['NotificationListItem'],
-  ToolbarItem: ['ToolbarSeparatorV2', 'ToolbarSpacerV2', 'ToolbarButton', 'ToolbarSelect', 'ToolbarSelectOption'],
+  ToolbarItem: ['ToolbarSeparator', 'ToolbarSpacer', 'ToolbarButton', 'ToolbarSelect', 'ToolbarSelectOption'],
   TreeItemBase: ['TreeItem', 'TreeItemCustom'],
   AvatarGroupItem: ['Avatar'],
   TableFeature: ['TableGrowing', 'TableSelection']

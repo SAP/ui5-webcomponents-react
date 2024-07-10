@@ -622,6 +622,7 @@
     "TitleLevel": "@ui5/webcomponents/dist/types/TitleLevel.js",
     "ToastPlacement": "@ui5/webcomponents/dist/types/ToastPlacement.js",
     "ToolbarAlign": "@ui5/webcomponents/dist/types/ToolbarAlign.js",
+    "ToolbarDesign": "@ui5/webcomponents/dist/types/ToolbarDesign.js",
     "ToolbarItemOverflowBehavior": "@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js",
     "UploadState": "@ui5/webcomponents-fiori/dist/types/UploadState.js",
     "ValueState": "@ui5/webcomponents-base/dist/types/ValueState.js",
