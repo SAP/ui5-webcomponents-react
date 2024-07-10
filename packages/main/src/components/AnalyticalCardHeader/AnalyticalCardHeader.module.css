@@ -8,10 +8,10 @@
     outline: none;
     position: absolute;
     pointer-events: none;
-    inset: var(--_ui5_card_header_focus_offset);
-    border: var(--_ui5_card_header_focus_border);
-    border-radius: var(--_ui5_card_header_focus_radius) var(--_ui5_card_header_focus_radius)
-      var(--_ui5_card_header_focus_bottom_radius) var(--_ui5_card_header_focus_bottom_radius);
+    inset: var(--_ui5wcr_card_header_focus_offset);
+    border: var(--_ui5wcr_card_header_focus_border);
+    border-radius: var(--_ui5wcr_card_header_focus_radius) var(--_ui5wcr_card_header_focus_radius)
+      var(--_ui5wcr_card_header_focus_bottom_radius) var(--_ui5wcr_card_header_focus_bottom_radius);
   }
 
   &:focus-visible {
