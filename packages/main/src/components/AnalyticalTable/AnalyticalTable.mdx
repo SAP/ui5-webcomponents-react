@@ -57,7 +57,7 @@ import * as ComponentStories from './AnalyticalTable.stories';
           // set filter
           column.setFilter(event.detail.selectedOption.getAttribute('value'));
           // close popover
-          popoverRef.current.close();
+          popoverRef.current.open = false;
         };
         return (
           <Select
