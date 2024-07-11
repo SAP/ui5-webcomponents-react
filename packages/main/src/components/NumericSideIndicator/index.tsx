@@ -40,10 +40,10 @@ export const NumericSideIndicator = forwardRef<HTMLDivElement, NumericSideIndica
   return (
     <div ref={ref} className={clsx(classNames.numericSideIndicator, className)} {...rest}>
       <span className={classNames.title}>{titleText}</span>
-      <div className={clsx(classNames.valueContainer, Reflect.get(classNames, `state${state}`))}>
-        <Text className={classNames.number}>{number}</Text>
-        <Text className={classNames.unit}>{unit}</Text>
-      </div>
+      <Text className={clsx(classNames.value, classNames[`state${state}`])}>
+        {number}
+        {unit}
+      </Text>
     </div>
   );
 });
