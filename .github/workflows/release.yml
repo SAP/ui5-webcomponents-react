@@ -40,7 +40,7 @@ jobs:
           npm install -g npm
           yarn install --immutable
 
-      - name: publish
+      - name: version
         run: |
             ${GITHUB_WORKSPACE}/node_modules/.bin/lerna version ${{ github.event.inputs.release_type }} \
             ${{ (github.event.inputs.prerelease == 'true' && '--conventional-prerelease') || '--conventional-graduate' }} \
