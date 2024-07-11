@@ -19,9 +19,35 @@ jobs:
     uses: './.github/workflows/test.yml'
     with:
       reportCoverage: false
+  
+  release-dryrun:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+          
+      - name: Install
+        run: |
+          npm install -g npm
+          yarn install --immutable
+
+      - name: version
+        run: |
+          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna version ${{ github.event.inputs.release_type }} \
+            ${{ (github.event.inputs.prerelease == 'true' && '--conventional-prerelease') || '--conventional-graduate' }} \
+            --no-git-tag-version --no-push
 
   build-and-release:
-    needs: ['test']
+    needs: ['test', 'release-dryrun']
     runs-on: ubuntu-latest
     environment:
       name: 'npm'
