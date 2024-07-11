@@ -108,18 +108,9 @@ export * from './Tokenizer/index.js';
 export * from './ToolbarButton/index.js';
 export * from './ToolbarSelect/index.js';
 export * from './ToolbarSelectOption/index.js';
-export { ToolbarSeparator as ToolbarSeparatorV2 } from './ToolbarSeparator/index.js';
-export type {
-  ToolbarSeparatorPropTypes as ToolbarSeparatorV2PropTypes,
-  ToolbarSeparatorDomRef as ToolbarSeparatorV2DomRef
-} from './ToolbarSeparator/index.js';
-export { ToolbarSpacer as ToolbarSpacerV2 } from './ToolbarSpacer/index.js';
-export type {
-  ToolbarSpacerPropTypes as ToolbarSpacerV2PropTypes,
-  ToolbarSpacerDomRef as ToolbarSpacerV2DomRef
-} from './ToolbarSpacer/index.js';
-export { Toolbar as ToolbarV2 } from './Toolbar/index.js';
-export type { ToolbarPropTypes as ToolbarV2PropTypes, ToolbarDomRef as ToolbarV2DomRef } from './Toolbar/index.js';
+export * from './ToolbarSeparator/index.js';
+export * from './ToolbarSpacer/index.js';
+export * from './Toolbar/index.js';
 export * from './Text/index.js';
 export * from './Tree/index.js';
 export * from './TreeItem/index.js';

@@ -1,12 +1,12 @@
 'use client';
 
+import { Button } from '@ui5/webcomponents-react';
+import type { ButtonDomRef, ButtonPropTypes } from '@ui5/webcomponents-react';
 import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { useOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
-import type { ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
-import { ToggleButton } from '../../webComponents/index.js';
 
-export interface OverflowToolbarToggleButtonPropTypes extends Omit<ToggleButtonPropTypes, 'children' | 'icon'> {
+export interface OverflowToolbarButtonPropTypes extends Omit<ButtonPropTypes, 'children' | 'icon'> {
   /**
    * Defines the text of the component which is only visible in the overflow area of a `Toolbar`.
    *
@@ -22,23 +22,21 @@ export interface OverflowToolbarToggleButtonPropTypes extends Omit<ToggleButtonP
 }
 
 /**
- * The `OverflowToolbarToggleButton` represents a toggle button that shows its text only when in the overflow area of a `Toolbar`.
+ * The `OverflowToolbarButton` represents a push button that shows its text only when in the overflow area of a `Toolbar`.
  *
  * __Note:__ This component is only compatible with the `Toolbar` component and __not__ with `ToolbarV2`.
  */
-const OverflowToolbarToggleButton = forwardRef<ToggleButtonDomRef, OverflowToolbarToggleButtonPropTypes>(
-  (props, ref) => {
-    const { children, ...rest } = props;
-    const { inPopover } = useOverflowPopoverContext();
+const OverflowToolbarButton = forwardRef<ButtonDomRef, OverflowToolbarButtonPropTypes>((props, ref) => {
+  const { children, ...rest } = props;
+  const { inPopover } = useOverflowPopoverContext();
 
-    return (
-      <ToggleButton {...rest} ref={ref}>
-        {inPopover ? children : ''}
-      </ToggleButton>
-    );
-  }
-);
+  return (
+    <Button {...rest} ref={ref}>
+      {inPopover ? children : ''}
+    </Button>
+  );
+});
 
-OverflowToolbarToggleButton.displayName = 'OverflowToolbarToggleButton';
+OverflowToolbarButton.displayName = 'OverflowToolbarButton';
 
-export { OverflowToolbarToggleButton };
+export { OverflowToolbarButton };

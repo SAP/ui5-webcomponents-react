@@ -2,22 +2,18 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
+import type { PopoverDomRef } from '@ui5/webcomponents-react';
+import { Button, Input, Text, ToggleButton } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useRef, useState } from 'react';
-import type { PopoverDomRef, ToolbarPropTypes } from '../..';
-import {
-  Button,
-  Input,
-  OverflowToolbarButton,
-  Text,
-  Toolbar,
-  ToggleButton,
-  ToolbarSeparator,
-  ToolbarSpacer,
-  ToolbarStyle,
-  OverflowToolbarToggleButton
-} from '../..';
-import { ToolbarDesign } from '../../enums/index.js';
+import { ToolbarDesign } from '../../enums/ToolbarDesign.js';
+import { ToolbarStyle } from '../../enums/ToolbarStyle.js';
+import { OverflowToolbarButton } from '../OverflowToolbarButton/index.js';
+import { OverflowToolbarToggleButton } from '../OverflowToolbarToggleButton/index.js';
+import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
+import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
+import type { ToolbarPropTypes } from './index.js';
+import { Toolbar } from './index.js';
 import { cssVarToRgb, cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
 
 interface PropTypes {

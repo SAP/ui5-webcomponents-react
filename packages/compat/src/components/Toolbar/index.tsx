@@ -1,6 +1,9 @@
 'use client';
 
 import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
+import type { ButtonPropTypes, CommonProps, PopoverDomRef, ToggleButtonPropTypes } from '@ui5/webcomponents-react';
+import { SHOW_MORE } from '@ui5/webcomponents-react/dist/i18n/i18n-defaults.js';
+import { flattenFragments } from '@ui5/webcomponents-react/dist/internal/utils.js';
 import {
   debounce,
   useI18nBundle,
@@ -21,10 +24,8 @@ import {
   useRef,
   useState
 } from 'react';
-import { SHOW_MORE } from '../../i18n/i18n-defaults.js';
-import { flattenFragments } from '../../internal/utils.js';
-import type { CommonProps } from '../../types/index.js';
-import type { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
+import { ToolbarDesign } from '../../enums/ToolbarDesign.js';
+import { ToolbarStyle } from '../../enums/ToolbarStyle.js';
 import { OverflowPopover } from './OverflowPopover.js';
 import { classNames, styleData } from './Toolbar.module.css.js';
 
@@ -50,12 +51,12 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
    *
    * __Note:__ The visual styles are theme-dependent.
    */
-  toolbarStyle?: 'Clear' | 'Standard';
+  toolbarStyle?: ToolbarStyle | keyof typeof ToolbarStyle;
   /**
    * Defines the `Toolbar` design.<br />
    * <b>Note:</b> Design settings are theme-dependent.
    */
-  design?: 'Auto' | 'Info' | 'Solid' | 'Transparent';
+  design?: ToolbarDesign | keyof typeof ToolbarDesign;
   /**
    * Indicates that the whole `Toolbar` is clickable. The Press event is fired only if `active` is set to true.
    */
@@ -151,8 +152,8 @@ const OVERFLOW_BUTTON_WIDTH = 36 + 8 + 8; // width + padding end + spacing start
 const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const {
     children,
-    toolbarStyle = 'Standard',
-    design = 'Auto',
+    toolbarStyle = ToolbarStyle.Standard,
+    design = ToolbarDesign.Auto,
     active = false,
     style,
     className,
@@ -183,11 +184,11 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
 
   const toolbarClasses = clsx(
     classNames.outerContainer,
-    toolbarStyle === 'Clear' && classNames.clear,
+    toolbarStyle === ToolbarStyle.Clear && classNames.clear,
     active && classNames.active,
-    design === 'Solid' && classNames.solid,
-    design === 'Transparent' && classNames.transparent,
-    design === 'Info' && classNames.info,
+    design === ToolbarDesign.Solid && classNames.solid,
+    design === ToolbarDesign.Transparent && classNames.transparent,
+    design === ToolbarDesign.Info && classNames.info,
     className
   );
   const flatChildren = useMemo(() => {

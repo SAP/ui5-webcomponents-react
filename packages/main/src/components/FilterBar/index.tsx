@@ -6,7 +6,6 @@ import { debounce, Device, enrichEventWithDetails, useI18nBundle, useStylesheet 
 import { clsx } from 'clsx';
 import type { CSSProperties, ElementType, ReactElement } from 'react';
 import { Children, cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
-import { ToolbarStyle } from '../../enums/index.js';
 import {
   ADAPT_FILTERS,
   CLEAR,
@@ -514,7 +513,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         {...rest}
       >
         {!hideToolbar && (
-          <Toolbar className={classNames.filterBarHeader} toolbarStyle={ToolbarStyle.Clear}>
+          <Toolbar className={classNames.filterBarHeader} toolbarStyle="Clear">
             {header}
             {hasButtons && <ToolbarSpacer />}
             {ToolbarButtons}

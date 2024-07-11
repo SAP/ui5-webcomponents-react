@@ -424,6 +424,22 @@ function MyComponent() {
 }
 ```
 
+### Toolbar
+
+The `Toolbar` component has been replaced with the UI5 Web Components Toolbar component (which was previously exported in this project as `ToolbarV2`).
+The old `Toolbar` implementation has been moved to the `@ui5/webcomponents-react-compat` package with all its subcomponents:
+
+- `ToolbarSeparator`
+- `ToolbarSpacer`
+- `OverflowToolbarButton`
+- `OverflowToolbarToggleButton`
+- enum `ToolbarDesign`
+- enum `ToolbarStyle`
+
+Although the old `Toolbar` is still available in the `@ui5/webcomponents-react-compat` package, we strongly recommend to migrate to the new `Toolbar` instead.
+
+As the new `Toolbar` is a completely different component, we can't offer a proper migration guide, so it's best to check the [Toolbar documentation](?path=/docs/layouts-floorplans-toolbar--docs) and update your implementation accordingly with the new components.
+
 ## Components with API Changes
 
 ### ActionSheet

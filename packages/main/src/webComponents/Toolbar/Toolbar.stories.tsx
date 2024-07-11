@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ToolbarAlign from '@ui5/webcomponents/dist/types/ToolbarAlign.js';
-import { ToolbarButton } from '../ToolbarButton';
-import { ToolbarSelect } from '../ToolbarSelect';
-import { ToolbarSelectOption } from '../ToolbarSelectOption';
-import { ToolbarSeparator } from '../ToolbarSeparator';
-import { ToolbarSpacer } from '../ToolbarSpacer';
+import { ToolbarButton } from '../ToolbarButton/index.js';
+import { ToolbarSelect } from '../ToolbarSelect/index.js';
+import { ToolbarSelectOption } from '../ToolbarSelectOption/index.js';
+import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
+import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import { Toolbar } from './index.js';
 
 const meta = {
-  title: 'Layouts & Floorplans / ToolbarV2',
+  title: 'Layouts & Floorplans / Toolbar',
   component: Toolbar,
   argTypes: {
     children: { control: { disable: true } }
