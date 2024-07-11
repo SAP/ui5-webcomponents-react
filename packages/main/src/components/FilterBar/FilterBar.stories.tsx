@@ -56,7 +56,7 @@ export const Default: Story = {
   render: (args) => {
     return (
       <FilterBar {...args}>
-        <FilterGroupItem label="StepInput" hiddenInFilterBar hidden>
+        <FilterGroupItem label="StepInput" required>
           <StepInput required />
         </FilterGroupItem>
         <FilterGroupItem label="RatingIndicator">
