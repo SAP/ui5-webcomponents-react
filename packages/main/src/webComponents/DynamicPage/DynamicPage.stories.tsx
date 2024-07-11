@@ -24,7 +24,7 @@ import {
   Tag,
   Title,
   ToolbarButton,
-  ToolbarV2
+  Toolbar
 } from '../..';
 import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
 import { DynamicPageTitle } from '../DynamicPageTitle/index.js';
@@ -72,19 +72,19 @@ const meta = {
           </>
         }
         actionsBar={
-          <ToolbarV2>
+          <Toolbar>
             <ToolbarButton design={ButtonDesign.Emphasized} text="Edit" />
             <ToolbarButton design={ButtonDesign.Transparent} text="Delete" />
             <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
             <ToolbarButton icon={actionIcon} design={ButtonDesign.Transparent} />
-          </ToolbarV2>
+          </Toolbar>
         }
         navigationBar={
-          <ToolbarV2>
+          <Toolbar>
             <ToolbarButton icon={fullscreenIcon} design={ButtonDesign.Transparent} />
             <ToolbarButton icon={exitFSIcon} design={ButtonDesign.Transparent} />
             <ToolbarButton icon={declineIcon} design={ButtonDesign.Transparent} />
-          </ToolbarV2>
+          </Toolbar>
         }
         breadcrumbs={
           <Breadcrumbs>

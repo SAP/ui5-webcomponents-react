@@ -24,7 +24,7 @@ export interface OverflowToolbarToggleButtonPropTypes extends Omit<ToggleButtonP
 /**
  * The `OverflowToolbarToggleButton` represents a toggle button that shows its text only when in the overflow area of a `Toolbar`.
  *
- * __Note:__ This component is only compatible with the `Toolbar` component and __not__ with `ToolbarV2`.
+ * __Note:__ This component is only compatible with the `Toolbar` component from the `@ui5/webcomponents-react-compat` package.
  */
 const OverflowToolbarToggleButton = forwardRef<ToggleButtonDomRef, OverflowToolbarToggleButtonPropTypes>(
   (props, ref) => {
