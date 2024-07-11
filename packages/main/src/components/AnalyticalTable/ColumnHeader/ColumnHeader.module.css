@@ -29,6 +29,14 @@
   overflow-x: hidden;
   overflow-y: hidden;
   box-sizing: border-box;
+
+  & > span {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
 }
 
 .text {
@@ -44,6 +52,10 @@
   position: absolute;
   color: var(--sapContent_IconColor);
   inset-inline-end: 0.5rem;
+
+  & > [ui5-icon]:not(:first-child) {
+    margin-inline-start: 0.125rem;
+  }
 }
 
 .selectAllCheckBoxContainer {

@@ -69,7 +69,7 @@ const meta = {
             // set filter
             column.setFilter(event.detail.selectedOption.getAttribute('value'));
             // close popover
-            popoverRef.current.close();
+            popoverRef.current.open = false;
           };
           return (
             <Select onChange={handleChange} style={{ width: '100%' }}>
