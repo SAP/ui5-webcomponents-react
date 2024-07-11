@@ -119,7 +119,9 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
       return style;
     }
 
-    if (margin > 0) margin += 0.5;
+    if (margin > 0) {
+      margin += 0.625;
+    }
 
     style.marginInlineEnd = `${margin}rem`;
 
@@ -215,7 +217,14 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
               {children}
             </Text>
           ) : (
-            children
+            <span
+              title={tooltip}
+              style={textStyle}
+              className={classNames.text}
+              data-component-name={`AnalyticalTableHeaderContentContainer-${columnId}`}
+            >
+              {children}
+            </span>
           )}
           <div
             className={classNames.iconContainer}
