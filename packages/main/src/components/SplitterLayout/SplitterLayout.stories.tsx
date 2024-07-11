@@ -39,7 +39,7 @@ export const Default: Story = {
         </SplitterElement>
         <SplitterElement>
           <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
-            <Text>{`Content 2
+            <Text style={{ whiteSpace: 'pre-line' }}>{`Content 2
             with
             multi
             lines
