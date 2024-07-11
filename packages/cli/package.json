@@ -3,7 +3,7 @@
   "description": "CLI for UI5 Web Components for React",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "version": "1.28.2",
+  "version": "2.0.0-rc.0",
   "type": "module",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
