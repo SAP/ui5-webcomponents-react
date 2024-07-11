@@ -12,18 +12,6 @@ import { OverflowToolbarButton, OverflowToolbarToggleButton, ToolbarSpacer, Tool
   subComponents={['OverflowToolbarButton', 'OverflowToolbarToggleButton', 'ToolbarSpacer', 'ToolbarSeparator']}
 />
 
-<MessageStrip
-  design={MessageStripDesign.Critical}
-  hideCloseButton
-  children={
-    <>
-      This component may be replaced by the <code>ui5-toolbar</code> web-component (currently available as{' '}
-      <code>ToolbarV2</code>) with our next major release. If you only need to pass components supported by{' '}
-      <code>ToolbarV2</code> then please consider using <code>ToolbarV2</code> instead of this component.
-    </>
-  }
-/>
-
 ## Example
 
 <Canvas of={ComponentStories.Default} />
@@ -136,6 +124,7 @@ You can achieve that either by leveraging the `onOverflowChange` event and retri
 <details>
 
 {' '}
+
 <summary>Set opener ID via click handler</summary>
 
 ```jsx
@@ -176,6 +165,7 @@ const ToolbarComponent = () => {
 <details>
 
 {' '}
+
 <summary>Set opener ID via onOverflowChange handler</summary>
 
 ```jsx

@@ -27,7 +27,7 @@ import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import { Toolbar } from './index.js';
 
 const meta = {
-  title: 'Layouts & Floorplans / Toolbar',
+  title: 'Toolbar',
   component: Toolbar,
   argTypes: {
     children: { control: { disable: true } },
