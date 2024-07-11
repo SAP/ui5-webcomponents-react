@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { FlexBox } from '../../components/FlexBox/index.js';
 import { Toolbar } from '../../components/Toolbar/index.js';
 import { ToolbarSpacer } from '../../components/ToolbarSpacer/index.js';
-import { FlexBoxDirection, ToolbarDesign } from '../../enums/index.js';
+import { FlexBoxDirection } from '../../enums/index.js';
 import { Text } from '../../webComponents/Text/index.js';
 import { Avatar } from '../Avatar/index.js';
 import { Button } from '../Button/index.js';
@@ -338,7 +338,7 @@ export const WithDifferentColumns: Story = {
         }
         midColumn={
           <>
-            <Toolbar design={ToolbarDesign.Solid}>
+            <Toolbar design="Solid">
               <Title>{selectedMovie.movie}</Title>
               <ToolbarSpacer />
               <Button
@@ -378,7 +378,7 @@ export const WithDifferentColumns: Story = {
         }
         endColumn={
           <>
-            <Toolbar design={ToolbarDesign.Solid}>
+            <Toolbar design="Solid">
               <Title>{selectedCast.name}</Title>
               <ToolbarSpacer />
               <Button
