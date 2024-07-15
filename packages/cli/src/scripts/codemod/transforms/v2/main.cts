@@ -479,7 +479,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
         const currentImportStatementsLength = imports.length;
 
         const newImportDeclaration = j.importDeclaration(
-          [j.importSpecifier(j.identifier(enumName), j.identifier(enumName))],
+          [j.importDefaultSpecifier(j.identifier(enumName))],
           j.literal(newImport)
         );
 
