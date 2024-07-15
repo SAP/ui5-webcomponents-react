@@ -119,6 +119,30 @@
         "state": "ValueState"
       }
     },
+    "DynamicPage": {
+      "changedProps": {
+        "headerTitle": "titleArea",
+        "headerContent": "headerArea",
+        "footer": "footerArea",
+        "headerCollapsed": "headerSnapped",
+        "onPinnedStateChange": "onPinButtonToggle",
+        "onToggleHeaderContent": "onTitleToggle"
+      },
+      "removedProps": ["preserveHeaderStateOnScroll", "showHideHeaderButton"]
+    },
+    "DynamicPageTitle": {
+      "changedProps": {
+        "subHeader": "subheading",
+        "header": "heading"
+      },
+      "removedProps": [
+        "showSubHeaderRight",
+        "actionsToolbarProps",
+        "navigationActionsToolbarProps",
+        "expandedContent",
+        "snappedContent"
+      ]
+    },
     "DynamicSideContent": {},
     "FileUploader": {
       "renamedEnums": {
