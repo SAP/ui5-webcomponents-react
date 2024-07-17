@@ -23,11 +23,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - updated UI5 Web Components to v2. All [breaking changes](https://sap.github.io/ui5-webcomponents/docs/migration-guides/to-version-2/) apply to this project as well.
 - the `SuggestionGroupItem` component has been replaced by the `SuggestionItemGroup` component
-- The deprecated `Loader` component has been moved to the
-  `@ui5/webcomponents-react-compat` package. Please use the
-  `BusyIndicator` instead, as it's now the only loading indicator that is
-  supported by our UX guidelines. Please visit our [Migration
-  Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs)
+- The deprecated `Loader` component has been moved to the `@ui5/webcomponents-react-compat` package. Please use the `BusyIndicator` instead, as it's now the only loading indicator that is supported by our UX guidelines. Please visit our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs)
   for more details.
 - **ObjectPage (TypeScript):** replace `headerTitle` type
   with `ReactElement<DynamicPageTitlePropTypes>`

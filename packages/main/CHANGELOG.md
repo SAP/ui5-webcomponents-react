@@ -73,8 +73,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   shown by default.
 - **ObjectPage:** the prop `showSubHeaderRight` has been removed as it's
   not defined by design anymore.
-- **Modals:** **ThemeProvider**: the prop `withoutModalsProvider` has been removed. For more information, please refer to our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs).
-- **Modals:** the hooks `useShowDialog`, `useShowPopover`, `useShowResponsivePopover`, `useShowMenu`, `useShowMessageBox` and `useShowToast` have been removed. For more information, please refer to our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs#modals).
+- **Modals:** **ThemeProvider**: the prop `withoutModalsProvider` has been removed. For more information, please refer to our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs).
+- **Modals:** the hooks `useShowDialog`, `useShowPopover`, `useShowResponsivePopover`, `useShowMenu`, `useShowMessageBox` and `useShowToast` have been removed. For more information, please refer to our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs#modals).
 - **ActionSheet:** `a11yConfig` has been renamed to
   `accessibilityAttributes`.
 - **AnalyticalTable:** The properties and values for the
@@ -105,13 +105,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   been removed, it is now required to explicitly set this prop, if the
   table should be sortable.
 - **AnalyticalTable:** The `canReorder` [column
-  property](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable--docs#column-properties)
+  property](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/data-display-analyticaltable--docs#column-properties)
   has been removed, please use `disableDragAndDrop` instead.
 - The deprecated `Loader` component has been moved to the
   `@ui5/webcomponents-react-compat` package. Please use the
   `BusyIndicator` instead, as it's now the only loading indicator that is
   supported by our UX guidelines. Please visit our [Migration
-  Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs)
+  Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs)
   for more details.
 - **FilterGroupItem:** For a better aligned API, the `visible` and `visibleInFilterBar` (default: `true`) props have been replaced with `hidden` and `hiddenInFilterBar` (no default value).
 - **ObjectPageSection**: the prop `titleText` is now required.
@@ -121,8 +121,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   key, `onRowClick` and `onRowSelect` are now fired on `keyup` instead of
   `keydown`.
 - **ObjectStatus:** **TypeScript**: the `HTMLDivElement` type has been removed from the `onClick` handler.
-- All spacing variables have been removed. You can use common CSS classes as a substitute for most variables. For more information, please refer to our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs).
-- **Text:** the `Text` component has been replaced with the `ui5-text` web component, please visit our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs) for more details.
+- All spacing variables have been removed. You can use common CSS classes as a substitute for most variables. For more information, please refer to our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs).
+- **Text:** the `Text` component has been replaced with the `ui5-text` web component, please visit our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs) for more details.
 - **Text:** **ExpandableText**: the inherited props `hyphenated` and `emptyIndicator` from the `Text` have been removed.
 - **Text:** **ExpandableText**: the `portalContainer` prop has been removed as it's not needed anymore
 - **CommonProps - TypeScript:** `dangerouslySetInnerHTML` type has been removed
@@ -148,17 +148,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   been removed as it is no longer needed.
 - **DynamicPage & ObjectPage:** The `DynamicPage` component has been replaced with the
   `ui5-dynamic-page` UI5 Web Component, please visit our [Migration
-  Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs)
+  Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs)
   for more details.
 - **DynamicPage & ObjectPage:** The `DynamicPageHeader` component has been replaced
   with the `ui5-dynamic-page-header` UI5 Web Component, please visit our
   [Migration
-  Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs)
+  Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs)
   for more details.
 - **DynamicPage & ObjectPage:** The `DynamicPageTitle` component has been replaced with
   the `ui5-dynamic-page-title` UI5 Web Component, please visit our
   [Migration
-  Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs)
+  Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs)
   for more details.
 - **DynamicPage & ObjectPage:** **ObjectPage:** `headerTitle` now only accepts the
   `ObjectPageTitle` component instead of the `DynamicPageTitle`.
@@ -166,10 +166,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   `ObjectPageHeader` component instead of the `DynamicPageTitle`.
 - **DynamicPage & ObjectPage:** **ObjectPage:** `a11yConfig.dynamicPageAnchorBar` has
   been renamed to `a11yConfig.objectPageAnchorBar`
-- **Form:** The `Form` component has been replaced with the `ui5-form` UI5 Web Component, please visit our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs) for more details.
+- **Form:** The `Form` component has been replaced with the `ui5-form` UI5 Web Component, please visit our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs) for more details.
 - UI5 Web Components for React is no longer relying on `react-jss` internally, hence the dependency is now removed and the `react-jss` ThemeProvider is no longer rendered as part of our `ThemeProvider`. If you are relying on `react-jss` in your application, please make sure to render your own `react-jss` ThemeProvider.
-- The `useResponsiveContentPadding` has been removed. You can achieve the same look and feel by using the [responsive content padding from Common CSS](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/knowledge-base-common-css--docs#content-paddings).
-- We stopped recommending `jest` as a testing framework over a year ago, thus the `jestSetup` file is removed. We recommend using [cypress](https://sap.github.io/ui5-webcomponents-react/?path=/docs/testing-with-cypress-setup--docs) instead.
+- The `useResponsiveContentPadding` has been removed. You can achieve the same look and feel by using the [responsive content padding from Common CSS](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-common-css--docs#content-paddings).
+- We stopped recommending `jest` as a testing framework over a year ago, thus the `jestSetup` file is removed. We recommend using [cypress](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/testing-with-cypress-setup--docs) instead.
 - The `AnalyticalCard` component has been removed. Please use the `Card` component instead.
 - updated UI5 Web Components to v2. All [breaking changes](https://sap.github.io/ui5-webcomponents/nightly/docs/Migrating%20to%20version%202.0%20guide/) apply to this project as well.
 - `ActionSheet`: prop `placementType` has been renamed to `placement`, `onAfterClose` to `onClose` and `onAfterOpen` to `onOpen`

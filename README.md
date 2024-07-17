@@ -90,7 +90,7 @@ For the main part, we show how you could create a simple Movie Database UI, firs
 
 ### Examples & Templates
 
-You can find a curated list of project templates and examples on our [Project Templates & Examples page](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/project-templates-examples--docs).
+You can find a curated list of project templates and examples on our [Project Templates & Examples page](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/project-templates-examples--docs).
 
 ### Add `@ui5/webcomponents-react` to an existing app
 
