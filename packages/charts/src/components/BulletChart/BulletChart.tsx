@@ -218,8 +218,8 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
                       ? payload[key] === payload.value[1] - payload.value[0]
                       : payload[key] === payload.value && key !== 'value'
                   )[0]
-                : payload.dataKey ??
-                  Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value'),
+                : (payload.dataKey ??
+                  Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value')),
               payload: payload.payload
             })
           );
@@ -413,8 +413,8 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             stroke={referenceLine?.color ?? referenceLine?.stroke}
             y={referenceLine?.value ? (layout === 'horizontal' ? referenceLine?.value : undefined) : referenceLine?.y}
             x={referenceLine?.value ? (layout === 'vertical' ? referenceLine?.value : undefined) : referenceLine?.x}
-            yAxisId={referenceLine?.yAxisId ?? layout === 'horizontal' ? 'primary' : undefined}
-            xAxisId={referenceLine?.xAxisId ?? layout === 'vertical' ? 'primary' : undefined}
+            yAxisId={(referenceLine?.yAxisId ?? layout === 'horizontal') ? 'primary' : undefined}
+            xAxisId={(referenceLine?.xAxisId ?? layout === 'vertical') ? 'primary' : undefined}
             label={referenceLine?.label}
           />
         )}
