@@ -627,22 +627,27 @@ The regular methods are now general purpose, so they can be used both inside the
 ### ObjectPage
 
 The newly introduced `DynamicPage` web component comes with its own `DynamicPageHeader` and `DynamicPageTitle` components, which are unfortunately incompatible with our `ObjectPage` implementation.
-Please use the following components instead:
+Please use the `ObjectPageHeader` or `ObjectPageTitle` component instead.
 
-- `headerContent` now only accepts the `ObjectPageHeader` component.
-- `headerTitle` now only accepts the `ObjectPageTitle` component.
+**Removed Props:**
+
+- `showHideHeaderButton`: Hiding the expand/collapse button is not supported by design anymore.
+- `showTitleInHeaderContent`: Showing the `headerTitle` as part of the `headerContent` is [not supported by design anymore](https://experience.sap.com/fiori-design-web/object-page/#dynamic-page-header-mandatory).
+
+**Refactored Props:**
+
+- `headerContent` has been renamed to `headerArea` and now only accepts the `ObjectPageHeader` component.
+- `headerTitle` has been renamed to `titleArea` and now only accepts the `ObjectPageTitle` component.
+- `headerContentPinnable` has been renamed to `hidePinButton` and the logic has been inverted. The pin button is now shown by default.
 
 **Renamed Props:**
 
 - `a11yConfig` has been renamed to `accessibilityAttributes`
 - `a11yConfig.dynamicPageAnchorBar` has been renamed to `accessibilityAttributes.objectPageAnchorBar`
 - `alwaysShowContentHeader` has been renamed to `headerPinned`
-- `headerContentPinnable` has been renamed to `hidePinButton` and the logic has been inverted. The pin button is now shown by default.
-
-**Removed Props:**
-
-- `showHideHeaderButton`: Hiding the expand/collapse button is not supported by design anymore.
-- `showTitleInHeaderContent`: Showing the `headerTitle` as part of the `headerContent` is [not supported by design anymore](https://experience.sap.com/fiori-design-web/object-page/#dynamic-page-header-mandatory).
+- `footer` has been renamed to `footerArea`
+- `onToggleHeaderContent` has been renamed to `onToggleHeaderArea`
+- `onPinnedStateChange` has been renamed to `onPinButtonToggle`
 
 Also, the namings of internal `data-component-name` attributes have been adjusted accordingly. E.g. `data-component-name="DynamicPageTitleSubHeader"` has been renamed to `data-component-name="ObjectPageTitleSubHeader"`
 
@@ -685,8 +690,10 @@ _The `ObjectPageTitle` still offers support for the legacy `Toolbar`. You can fi
 
 // v2
 <ObjectPageTitle
-  // showSubHeaderRight has been removed without replacement
-  // You can now pass all toolbar props directly to the toolbar, making `actionsToolbarProps` and `navigationActionsToolbarProps` redundant
+  // `showSubHeaderRight` has been removed without replacement
+
+  // You can now pass all toolbar props directly to the toolbar,
+  // making `actionsToolbarProps` and `navigationActionsToolbarProps` redundant
   actionsBar={
     <Toolbar design="Transparent" style={{ background: 'red' }}>
       <ToolbarButton text="Action 1" />
