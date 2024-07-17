@@ -1,0 +1,1 @@
+const n=e=>{let t=e;return e.shadowRoot&&e.shadowRoot.activeElement&&(t=e.shadowRoot.activeElement),t},o=e=>{const t=e.getBoundingClientRect();return t.top>=0&&t.left>=0&&t.bottom<=(window.innerHeight||document.documentElement.clientHeight)&&t.right<=(window.innerWidth||document.documentElement.clientWidth)};export{o as n,n as t};
