@@ -199,7 +199,11 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
 
   return (
     <FlexBox className={containerClasses} ref={componentRef} data-component-name="ObjectPageTitle" {...rest}>
-      <span className={classNames.clickArea} onClick={onHeaderClick} />
+      <span
+        className={classNames.clickArea}
+        onClick={onHeaderClick}
+        data-component-name="ObjectPageTitleClickElement"
+      />
       {(breadcrumbs || (navigationBar && showNavigationInTopArea)) && (
         <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="ObjectPageTitleBreadcrumbs">
           {breadcrumbs && (

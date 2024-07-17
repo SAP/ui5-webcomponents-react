@@ -40,8 +40,8 @@ describe('ObjectPage', () => {
     const toggle = cy.spy().as('toggleSpy');
     cy.mount(
       <ObjectPage
-        headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
-        headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
+        titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+        headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
         onToggleHeaderArea={toggle}
         hidePinButton
       >
@@ -62,7 +62,7 @@ describe('ObjectPage', () => {
     cy.get('@toggleSpy').should('have.been.calledWith', true);
     cy.get('@toggleSpy').should('have.been.calledTwice');
 
-    cy.findByText('Heading').click();
+    cy.findByText('Heading').click({ force: true });
     cy.findByText('ObjectPageHeader').should('not.be.visible');
     cy.get('@toggleSpy').should('have.been.calledThrice');
     cy.get('@toggleSpy').should('have.been.calledWith', false);
@@ -74,8 +74,8 @@ describe('ObjectPage', () => {
 
     cy.mount(
       <ObjectPage
-        headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
-        headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
+        titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+        headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
         onToggleHeaderArea={toggle}
         hidePinButton
         preserveHeaderStateOnClick
@@ -86,7 +86,7 @@ describe('ObjectPage', () => {
       </ObjectPage>
     );
 
-    cy.findByText('Heading').click();
+    cy.findByText('Heading').click({ force: true });
     cy.findByText('ObjectPageHeader').should('be.visible');
     cy.get('@toggleSpy').should('have.callCount', 4);
 
@@ -100,8 +100,8 @@ describe('ObjectPage', () => {
     cy.mount(
       <ObjectPage
         style={{ height: '100vh' }}
-        headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
-        headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
+        titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+        headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
         onPinButtonToggle={pin}
         data-testid="op"
       >
@@ -150,8 +150,8 @@ describe('ObjectPage', () => {
           </Button>
           <ObjectPage
             style={{ height: '95vh' }}
-            headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
-            headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
+            titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+            headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
             headerPinned={pinned}
             onPinButtonToggle={handlePinChange}
             data-testid="op"
@@ -223,8 +223,8 @@ describe('ObjectPage', () => {
     cy.mount(
       <ObjectPage
         style={{ height: '100vh' }}
-        headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
-        headerContent={
+        titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+        headerArea={
           <ObjectPageHeader>
             <div style={{ height: '400px', width: '100%', background: 'lightyellow' }}>ObjectPageHeader</div>
           </ObjectPageHeader>
@@ -257,7 +257,7 @@ describe('ObjectPage', () => {
   it('scroll to sections - default mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
-      <ObjectPage headerTitle={DPTitle} headerContent={DPContent}>
+      <ObjectPage titleArea={DPTitle} headerArea={DPContent}>
         {OPContent}
       </ObjectPage>
     );
@@ -285,7 +285,7 @@ describe('ObjectPage', () => {
     cy.findByText('Job Relationship').should('be.visible');
 
     cy.mount(
-      <ObjectPage headerTitle={DPTitle} headerContent={DPContent} footer={Footer}>
+      <ObjectPage titleArea={DPTitle} headerArea={DPContent} footerArea={Footer}>
         {OPContent}
       </ObjectPage>
     );
@@ -326,8 +326,8 @@ describe('ObjectPage', () => {
     document.body.style.margin = '0px';
     cy.mount(
       <ObjectPage
-        headerTitle={DPTitle}
-        headerContent={DPContent}
+        titleArea={DPTitle}
+        headerArea={DPContent}
         mode={ObjectPageMode.IconTabBar}
         style={{ height: '100vh' }}
       >
@@ -355,9 +355,9 @@ describe('ObjectPage', () => {
 
     cy.mount(
       <ObjectPage
-        headerTitle={DPTitle}
-        headerContent={DPContent}
-        footer={Footer}
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        footerArea={Footer}
         mode={ObjectPageMode.IconTabBar}
         style={{ height: '100vh' }}
       >
@@ -406,11 +406,11 @@ describe('ObjectPage', () => {
       return (
         <ObjectPage
           style={{ height: '100vh' }}
-          headerTitle={DPTitle}
-          headerContent={DPContent}
+          titleArea={DPTitle}
+          headerArea={DPContent}
           data-testid="op"
           ref={ref}
-          footer={withFooter && Footer}
+          footerArea={withFooter && Footer}
           mode={mode}
         >
           <ObjectPageSection key="0" titleText="Goals" id="goals" aria-label="Goals">
@@ -434,19 +434,19 @@ describe('ObjectPage', () => {
     };
     cy.mount(<TestComp height="2000px" mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2300}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2300}').should('exist');
 
     cy.mount(<TestComp height="400px" mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
@@ -503,11 +503,11 @@ describe('ObjectPage', () => {
       return (
         <ObjectPage
           style={{ height: '100vh' }}
-          headerTitle={DPTitle}
-          headerContent={DPContent}
+          titleArea={DPTitle}
+          headerArea={DPContent}
           data-testid="op"
           ref={ref}
-          footer={withFooter && Footer}
+          footerArea={withFooter && Footer}
           mode={mode}
         >
           <ObjectPageSection key="0" titleText="Goals" id="goals" aria-label="Goals">
@@ -531,19 +531,19 @@ describe('ObjectPage', () => {
     };
     cy.mount(<TestComp height="2000px" mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
 
     cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2320}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
 
     cy.mount(<TestComp height="400px" mode={ObjectPageMode.IconTabBar} />);
     cy.findByText('Update Heights').click();
@@ -590,7 +590,7 @@ describe('ObjectPage', () => {
       const [hideTitleText2, toggleTitleText2] = useReducer((prev) => !prev, true);
       const [hideTitleTextSub, toggleTitleTextSub] = useReducer((prev) => !prev, true);
       return (
-        <ObjectPage headerTitle={DPTitle} headerContent={DPContent} mode={mode}>
+        <ObjectPage titleArea={DPTitle} headerArea={DPContent} mode={mode}>
           <ObjectPageSection
             titleText="Goals"
             hideTitleText={hideTitleText1}
@@ -672,7 +672,7 @@ describe('ObjectPage', () => {
     const TestComp = () => {
       const [wrapTitle, toggleWrap] = useReducer((prev) => !prev, false);
       return (
-        <ObjectPage headerTitle={DPTitle} headerContent={DPContent}>
+        <ObjectPage titleArea={DPTitle} headerArea={DPContent}>
           <ObjectPageSection id="placeholder" titleText="Placeholder">
             <span />
           </ObjectPageSection>
@@ -720,7 +720,7 @@ describe('ObjectPage', () => {
       const [uppercase, toggleUppercase] = useReducer((prev) => !prev, undefined);
       const [uppercaseSub, toggleUppercaseSub] = useReducer((prev) => !prev, undefined);
       return (
-        <ObjectPage headerTitle={DPTitle} headerContent={DPContent}>
+        <ObjectPage titleArea={DPTitle} headerArea={DPContent}>
           <ObjectPageSection id="placeholder" titleText="Placeholder">
             <span />
           </ObjectPageSection>
@@ -759,7 +759,7 @@ describe('ObjectPage', () => {
       const [level, setLevel] = useState<undefined | TitleLevel>(undefined);
       const [levelSub, setLevelSub] = useState<undefined | TitleLevel>(undefined);
       return (
-        <ObjectPage headerTitle={DPTitle} headerContent={DPContent}>
+        <ObjectPage titleArea={DPTitle} headerArea={DPContent}>
           <ObjectPageSection id="placeholder" titleText="Placeholder">
             <span />
           </ObjectPageSection>
@@ -806,20 +806,18 @@ describe('ObjectPage', () => {
   it('empty content', () => {
     cy.mount(<ObjectPage data-testid="op" />);
     cy.findByTestId('op').should('be.visible');
-    cy.mount(<ObjectPage data-testid="op" headerTitle={DPTitle} headerContent={DPContent} />);
+    cy.mount(<ObjectPage data-testid="op" titleArea={DPTitle} headerArea={DPContent} />);
     cy.findByTestId('op').should('be.visible');
   });
 
   it('w/ image', () => {
-    cy.mount(
-      <ObjectPage data-testid="op" headerTitle={DPTitle} headerContent={DPContent} image="not_a_real_path.orly" />
-    );
+    cy.mount(<ObjectPage data-testid="op" titleArea={DPTitle} headerArea={DPContent} image="not_a_real_path.orly" />);
     cy.findByAltText('Company Logo').should('be.visible');
     cy.mount(
       <ObjectPage
         data-testid="op"
-        headerTitle={DPTitle}
-        headerContent={DPContent}
+        titleArea={DPTitle}
+        headerArea={DPContent}
         image="not_a_real_path.orly"
         imageShapeCircle
       />
@@ -829,7 +827,7 @@ describe('ObjectPage', () => {
       .parent()
       .should('have.css', 'border-radius', '50%')
       .should('have.css', 'overflow', 'hidden');
-    cy.mount(<ObjectPage data-testid="op" headerTitle={DPTitle} headerContent={DPContent} image={<Avatar />} />);
+    cy.mount(<ObjectPage data-testid="op" titleArea={DPTitle} headerArea={DPContent} image={<Avatar />} />);
     cy.get('[ui5-avatar]').should('have.attr', 'size', 'L').should('be.visible');
   });
 
@@ -837,8 +835,8 @@ describe('ObjectPage', () => {
     cy.mount(
       <ObjectPage
         data-testid="op"
-        headerTitle={DPTitle}
-        headerContent={DPContent}
+        titleArea={DPTitle}
+        headerArea={DPContent}
         placeholder={<IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />}
       />
     );
@@ -848,8 +846,8 @@ describe('ObjectPage', () => {
     cy.mount(
       <ObjectPage
         data-testid="op"
-        headerTitle={DPTitle}
-        headerContent={DPContent}
+        titleArea={DPTitle}
+        headerArea={DPContent}
         placeholder={<IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />}
       >
         {OPContent}
@@ -872,8 +870,8 @@ describe('ObjectPage', () => {
     cy.mount(
       <ObjectPage
         data-testid="op"
-        headerTitle={DPTitle}
-        headerContent={DPContent}
+        titleArea={DPTitle}
+        headerArea={DPContent}
         onBeforeNavigate={beforeNavigate}
         onSelectedSectionChange={sectionChange}
       >

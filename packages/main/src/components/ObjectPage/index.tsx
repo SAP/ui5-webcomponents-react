@@ -782,7 +782,11 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
           }`
         }}
       >
-        <span className={classNames.clickArea} onClick={onTitleClick} data-op-click-element />
+        <span
+          className={classNames.clickArea}
+          onClick={onTitleClick}
+          data-component-name="ObjectPageTitleAreaClickElement"
+        />
         {titleArea && image && headerCollapsed === true && (
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
         )}
