@@ -34,7 +34,7 @@
 You can find our documentation under the following links:
 
 - [Stable Release Documentation](https://sap.github.io/ui5-webcomponents-react/)
-- [Next Release Documentation](https://sap.github.io/ui5-webcomponents-react/main/)
+- [Nightly Release Documentation](https://sap.github.io/ui5-webcomponents-react/nightly/)
 
 ## Package Overview
 
