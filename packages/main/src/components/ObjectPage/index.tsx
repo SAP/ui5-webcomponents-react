@@ -607,8 +607,9 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
 
   const onTitleClick = (e) => {
     e.stopPropagation();
-    if (!preserveHeaderStateOnClick)
+    if (!preserveHeaderStateOnClick) {
       onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: headerCollapsed }));
+    }
   };
 
   const snappedHeaderInObjPage = headerTitle && headerTitle.props.snappedContent && headerCollapsed === true && !!image;
@@ -622,7 +623,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     }
   }, [snappedHeaderInObjPage]);
 
-  const renderHeaderContentSection = useCallback(() => {
+  const renderHeaderContentSection = () => {
     if (headerContent?.props) {
       return cloneElement(headerContent as ReactElement<ObjectPageHeaderPropTypesWithInternals>, {
         ...headerContent.props,
@@ -644,7 +645,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         )
       });
     }
-  }, [headerContent, topHeaderHeight, headerPinned, scrolledHeaderExpanded, avatar, headerContentRef]);
+  };
 
   const onTabItemSelect = (event) => {
     if (typeof onBeforeNavigate === 'function') {
@@ -751,13 +752,13 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         data-not-clickable={!!preserveHeaderStateOnClick}
         aria-roledescription={accessibilityAttributes?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
         className={classNames.header}
-        onClick={onTitleClick}
         style={{
           gridAutoColumns: `min-content ${
             headerTitle && image && headerCollapsed === true ? `calc(100% - 3rem - 1rem)` : '100%'
           }`
         }}
       >
+        <span className={classNames.clickArea} onClick={onTitleClick} data-op-click-element />
         {headerTitle && image && headerCollapsed === true && (
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
         )}

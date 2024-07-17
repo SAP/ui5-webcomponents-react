@@ -40,7 +40,8 @@
 
 .titleMainSection {
   overflow-x: hidden;
-  flex: 1 1 100%;
+  /*flex: 1 1 100%;*/
+  flex: 1 1 auto;
   align-items: baseline;
 }
 
@@ -51,6 +52,7 @@
 }
 
 .title {
+  flex-shrink: 1;
   min-width: 3rem;
   overflow-x: hidden;
   font-family: var(--sapObjectHeader_Title_FontFamily);
@@ -102,27 +104,35 @@
 }
 
 .toolbar {
-  flex: 1 1.6 100%;
-  cursor: auto;
+  flex-grow: 1;
+  flex-shrink: 1.6;
+  min-width: 3rem;
+  display: flex;
+  align-items: center;
 
-  &:hover {
-    background-color: inherit;
+  > [ui5-toolbar] {
+    padding: 0;
+    border: none;
   }
 
-  & > :first-child {
-    height: 100%;
+  > [ui5-toolbar]:not(:first-child):last-child {
+    flex: 0 1;
   }
 
-  /* toolbar w/o overflow button*/
-
-  > [data-component-name='ToolbarContent']:first-child:last-child
-    > [data-component-name='ToolbarChildContainer']:last-child {
-    margin-inline-end: 0;
+  > [ui5-toolbar]:only-child {
+    flex-grow: 1;
+    flex-shrink: 0;
   }
+}
 
-  /* toolbar w/ overflow button */
+.actionsSpacer {
+  flex-shrink: 0;
+  height: var(--_ui5_dynamic_page_title_actions_separator_height);
+  width: 0.0625rem;
+  background: var(--sapToolbar_SeparatorColor);
+}
 
-  [data-component-name='ToolbarOverflowButtonContainer'] {
-    margin-inline-end: 0;
-  }
+.clickArea {
+  position: absolute;
+  inset: 0;
 }

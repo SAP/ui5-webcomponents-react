@@ -2,18 +2,13 @@
 
 import { debounce, Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { MouseEventHandler, ReactElement, ReactNode, RefObject } from 'react';
-import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
+import type { ReactElement, ReactNode } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
-import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
-import type { ButtonPropTypes, PopoverDomRef } from '../../webComponents/index.js';
+import type { ToolbarDomRef } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
-import type { ToolbarPropTypes } from '../Toolbar/index.js';
-import { Toolbar } from '../Toolbar/index.js';
-import { ToolbarSeparator } from '../ToolbarSeparator/index.js';
-import { ActionsSpacer } from './ActionsSpacer.js';
 import { classNames, styleData } from './ObjectPageTitle.module.css.js';
 
 export interface ObjectPageTitlePropTypes extends CommonProps {
@@ -61,18 +56,6 @@ export interface ObjectPageTitlePropTypes extends CommonProps {
    */
   navigationActions?: ReactElement | ReactElement[];
   /**
-   * Use this prop to customize the "actions" `Toolbar`.
-   *
-   * __Note:__ It is possible to overwrite internal implementations. Please use with caution!
-   */
-  actionsToolbarProps?: Omit<ToolbarPropTypes, 'design' | 'toolbarStyle' | 'active'>;
-  /**
-   * Use this prop to customize the "navigationActions" `Toolbar`.
-   *
-   * __Note:__ It is possible to overwrite internal implementations. Please use with caution!
-   */
-  navigationActionsToolbarProps?: Omit<ToolbarPropTypes, 'design' | 'toolbarStyle' | 'active'>;
-  /**
    * The content displayed in the `ObjectPageTitle` in expanded state.
    */
   expandedContent?: ReactNode | ReactNode[];
@@ -101,28 +84,6 @@ export interface InternalProps extends ObjectPageTitlePropTypes {
   'data-is-snapped-rendered-outside'?: boolean;
 }
 
-type ActionsType =
-  | ReactElement<{ onClick: MouseEventHandler<HTMLElement> }>
-  | ReactElement<{ onClick: MouseEventHandler<HTMLElement> }>[];
-
-const enhanceActionsWithClick = (actions: ActionsType, ref: RefObject<PopoverDomRef>) =>
-  flattenFragments(actions, Infinity).map((action) => {
-    if (isValidElement(action)) {
-      return cloneElement<ButtonPropTypes>(action, {
-        onClick: (e) => {
-          if (typeof action.props?.onClick === 'function') {
-            action.props.onClick(e);
-          }
-          // @ts-expect-error: will be replaced
-          if (ref.current?.isOpen() && !e.defaultPrevented) {
-            // @ts-expect-error: will be replaced
-            ref.current.close();
-          }
-        }
-      });
-    }
-  });
-
 /**
  * The `ObjectPageTitle` component is used to serve as title of the `ObjectPage`.
  * It can contain Breadcrumbs, Title, Subtitle, Content, KPIs and Actions.
@@ -138,10 +99,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
     subHeader,
     navigationActions,
     className,
-    style,
     onToggleHeaderContentVisibility,
-    actionsToolbarProps,
-    navigationActionsToolbarProps,
     expandedContent,
     snappedContent,
     ...rest
@@ -155,13 +113,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
     Device.getCurrentRange(dynamicPageTitleRef.current?.getBoundingClientRect().width)?.name === 'Phone'
   );
   const containerClasses = clsx(classNames.container, isPhone && classNames.phone, className);
-
-  const [actionsOverflowRef, syncedActionsOverflowRef] = useSyncRef<PopoverDomRef>(
-    actionsToolbarProps?.overflowPopoverRef ?? null
-  );
-  const [navActionsOverflowRef, syncedNavActionsOverflowRef] = useSyncRef<PopoverDomRef>(
-    navigationActionsToolbarProps?.overflowPopoverRef ?? null
-  );
+  const toolbarContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     isMounted.current = true;
@@ -170,19 +122,11 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
     };
   }, [isMounted]);
 
-  const { onClick: _0, ...propsWithoutOmitted } = rest;
-
-  const onHeaderClick = useCallback(
-    (e) => {
-      if (typeof props?.onClick === 'function') {
-        props.onClick(e);
-      }
-      if (typeof onToggleHeaderContentVisibility === 'function' && !props?.['data-not-clickable']) {
-        onToggleHeaderContentVisibility(e);
-      }
-    },
-    [props?.onClick, onToggleHeaderContentVisibility, props?.['data-not-clickable']]
-  );
+  const onHeaderClick = (e) => {
+    if (typeof onToggleHeaderContentVisibility === 'function') {
+      onToggleHeaderContentVisibility(e);
+    }
+  };
 
   useEffect(() => {
     const debouncedObserverFn = debounce(([titleContainer]: ResizeObserverEntry[]) => {
@@ -209,29 +153,42 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
     };
   }, [dynamicPageTitleRef.current, showNavigationInTopArea, isMounted]);
 
-  const handleActionsToolbarClick = (e) => {
-    stopPropagation(e);
-    if (typeof actionsToolbarProps?.onClick === 'function') {
-      actionsToolbarProps.onClick(e);
-    }
-  };
+  useEffect(() => {
+    const toolbarContainer = toolbarContainerRef.current;
 
-  const handleNavigationActionsToolbarClick = (e) => {
-    stopPropagation(e);
-    if (typeof navigationActionsToolbarProps?.onClick === 'function') {
-      navigationActionsToolbarProps.onClick(e);
+    const observer = new MutationObserver(([toolbarContainerMutation]) => {
+      if (toolbarContainerMutation.type === 'childList') {
+        const navigationToolbar: ToolbarDomRef | undefined = (
+          toolbarContainerMutation.target as HTMLDivElement
+        ).querySelector(':has(> :nth-last-child(n + 2)) > [ui5-toolbar]:last-child');
+        if (navigationToolbar) {
+          Array.from(navigationToolbar.children).forEach((item) => {
+            item.setAttribute('overflow-priority', 'NeverOverflow');
+          });
+        }
+      }
+    });
+
+    const config = { childList: true, subtree: true };
+
+    if (toolbarContainer) {
+      const navigationToolbar: ToolbarDomRef | undefined = toolbarContainer.querySelector(
+        ':has(> :nth-last-child(n + 2)) > [ui5-toolbar]:last-child'
+      );
+      Array.from(navigationToolbar.children).forEach((item) => {
+        item.setAttribute('overflow-priority', 'NeverOverflow');
+      });
+      observer.observe(toolbarContainer, config);
     }
-  };
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <FlexBox
-      className={containerClasses}
-      style={style}
-      ref={componentRef}
-      data-component-name="ObjectPageTitle"
-      onClick={onHeaderClick}
-      {...propsWithoutOmitted}
-    >
+    <FlexBox className={containerClasses} ref={componentRef} data-component-name="ObjectPageTitle" {...rest}>
+      <span className={classNames.clickArea} onClick={onHeaderClick} />
       {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
         <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="ObjectPageTitleBreadcrumbs">
           {breadcrumbs && (
@@ -239,24 +196,8 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
               {breadcrumbs}
             </div>
           )}
-          {navigationActions && showNavigationInTopArea && (
-            <Toolbar
-              tabIndex={undefined}
-              role={undefined}
-              {...navigationActionsToolbarProps}
-              overflowButton={navigationActionsToolbarProps?.overflowButton}
-              className={clsx(classNames.toolbar, navigationActionsToolbarProps?.className)}
-              onClick={handleNavigationActionsToolbarClick}
-              data-component-name="ObjectPageTitleNavActions"
-              onOverflowChange={navigationActionsToolbarProps?.onOverflowChange}
-              overflowPopoverRef={navActionsOverflowRef}
-              design="Auto"
-              toolbarStyle="Clear"
-              active
-            >
-              <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
-              {enhanceActionsWithClick(navigationActions as ActionsType, syncedNavActionsOverflowRef)}
-            </Toolbar>
+          {showNavigationInTopArea && navigationActions && (
+            <div className={classNames.toolbar}>{navigationActions}</div>
           )}
         </FlexBox>
       )}
@@ -265,9 +206,9 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
         className={classNames.middleSection}
         data-component-name="ObjectPageTitleMiddleSection"
       >
-        <FlexBox className={classNames.titleMainSection}>
+        <FlexBox className={classNames.titleMainSection} onClick={onHeaderClick}>
           {header && (
-            <div className={classNames.title} data-component-name="ObjectPageTitleHeader">
+            <div className={classNames.title} data-component-name="ObjectPageTitleHeader" /*onClick={onHeaderClick}*/>
               {header}
             </div>
           )}
@@ -278,28 +219,17 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
           )}
         </FlexBox>
         {(actions || (!showNavigationInTopArea && navigationActions)) && (
-          <Toolbar
-            tabIndex={undefined}
-            role={undefined}
-            {...actionsToolbarProps}
-            overflowButton={actionsToolbarProps?.overflowButton}
-            design="Auto"
-            toolbarStyle="Clear"
-            active
-            className={clsx(classNames.toolbar, actionsToolbarProps?.className)}
-            onClick={handleActionsToolbarClick}
-            data-component-name="ObjectPageTitleActions"
-            onOverflowChange={actionsToolbarProps?.onOverflowChange}
-            overflowPopoverRef={actionsOverflowRef}
-          >
-            <ActionsSpacer onClick={onHeaderClick} noHover={props?.['data-not-clickable']} />
-            {enhanceActionsWithClick(actions as ActionsType, syncedActionsOverflowRef)}
-            {!showNavigationInTopArea && Children.count(actions) > 0 && Children.count(navigationActions) > 0 && (
-              <ToolbarSeparator />
+          <div className={classNames.toolbar} ref={toolbarContainerRef}>
+            {actions}
+            {!showNavigationInTopArea && actions && navigationActions && (
+              <div
+                className={classNames.actionsSpacer}
+                data-component-name="ObjectPageTitleActionsSeparator"
+                aria-hidden
+              />
             )}
-            {!showNavigationInTopArea &&
-              enhanceActionsWithClick(navigationActions as ActionsType, syncedActionsOverflowRef)}
-          </Toolbar>
+            {!showNavigationInTopArea && navigationActions}
+          </div>
         )}
       </FlexBox>
       {subHeader && (

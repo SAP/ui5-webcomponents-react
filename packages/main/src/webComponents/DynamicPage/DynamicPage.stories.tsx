@@ -76,6 +76,15 @@ const meta = {
             <ToolbarButton design={ButtonDesign.Emphasized} text="Edit" />
             <ToolbarButton design={ButtonDesign.Transparent} text="Delete" />
             <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
+            <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
+            <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
+            <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
+            <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
+            <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
+            <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
+            <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
+            <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
+            <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
             <ToolbarButton icon={actionIcon} design={ButtonDesign.Transparent} />
           </Toolbar>
         }
