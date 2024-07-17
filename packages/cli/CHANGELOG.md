@@ -67,9 +67,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **AnalyticalTable:** The default value (`true`) of the `sortable` prop has
   been removed, it is now required to explicitly set this prop, if the
   table should be sortable.
-- **AnalyticalTable:** The `canReorder` [column
-  property](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable--docs#column-properties)
-  has been removed, please use `disableDragAndDrop` instead.
+- **AnalyticalTable:** The `canReorder` [column property](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/data-display-analyticaltable--docs#column-properties) has been removed, please use `disableDragAndDrop` instead.
 - **FilterGroupItem:** For a better aligned API, the `visible` and `visibleInFilterBar` (default: `true`) props have been replaced with `hidden` and `hiddenInFilterBar` (no default value).
 - **enums:** the `MessageBoxActions` enum has been renamed to `MessageBoxAction`
 - **enums:** the `MessageBoxTypes` enum has been renamed to `MessageBoxType`
@@ -89,22 +87,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   been removed as it is no longer needed.
 - **Form:** The `Form` component has been replaced with the `ui5-form` UI5 Web Component, please visit our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs) for more details.
 
-## [1.28.2](https://github.com/SAP/ui5-webcomponents-react/compare/v1.28.1...v1.28.2) (2024-05-24)
+# 1.x.x
 
-**Note:** Version bump only for package @ui5/webcomponents-react-cli
-
-# [1.27.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.26.1...v1.27.0) (2024-04-09)
-
-**Note:** Version bump only for package @ui5/webcomponents-react-cli
-
-# [1.26.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.25.1...v1.26.0) (2024-03-08)
-
-### Features
-
-- update `@ui5/webcomponents` to `~1.23.0` ([#5581](https://github.com/SAP/ui5-webcomponents-react/issues/5581)) ([602fd11](https://github.com/SAP/ui5-webcomponents-react/commit/602fd117bdba1824f4d868a9fd09ab4ff00dffec))
-
-# [1.25.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.24.0...v1.25.0) (2024-02-07)
-
-### Features
-
-- update `@ui5/webcomponents` to `~1.22.0` ([#5219](https://github.com/SAP/ui5-webcomponents-react/issues/5219)) ([250ad0d](https://github.com/SAP/ui5-webcomponents-react/commit/250ad0dd71c98eca3dab2b114b7828077101021d))
+The changelog for 1.x.x can be found [here](https://github.com/SAP/ui5-webcomponents-react/blob/v1.29.x/packages/cli/CHANGELOG.md).
