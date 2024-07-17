@@ -36,7 +36,7 @@ jobs:
       - name: Build Storybook
         run: |
           yarn build:storybook
-          yarn build:storybook-sitemap --basePath ${{ env.MAJOR_VERSION }}
+          yarn build:storybook-sitemap --basePath "v${{ env.MAJOR_VERSION }}"
         env:
           NODE_OPTIONS: '--max-old-space-size=4096'
 
@@ -45,5 +45,5 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.
-          target-folder: ${{ env.MAJOR_VERSION }}
+          target-folder: v${{ env.MAJOR_VERSION }}
           clean: true
