@@ -100,7 +100,7 @@ interface ScaleWidthModeOptions {
   /**
    * Defines the string used for internal width calculation of custom header cells (e.g. `Header: () => <Link>Click me!</Link>`).
    *
-   * You can find out more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
+   * You can find out more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
    *
    * __Note:__ This property has no effect when used with `AnalyticalTableScaleWidthMode.Default`.
    */
@@ -108,7 +108,7 @@ interface ScaleWidthModeOptions {
   /**
    * Defines the string used for internal width calculation of the longest cell inside the body of the table (e.g. `Cell: () => <Link>Click me!</Link>`).
    *
-   * You can find out more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
+   * You can find out more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
    *
    * __Note:__ This property has no effect when used with `AnalyticalTableScaleWidthMode.Default`.
    */
@@ -271,7 +271,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Allows passing a custom string for the internal width calculation of custom cells for `scaleWidthMode` `Grow` and `Smart`.
    *
-   * You can find out more about it [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
+   * You can find out more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/data-display-analyticaltable-recipes--docs#how-to-scale-custom-cells).
    *
    * __Note:__ This property has no effect when used with `AnalyticalTableScaleWidthMode.Default`.
    *
