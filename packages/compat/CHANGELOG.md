@@ -28,7 +28,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   `@ui5/webcomponents-react-compat` package. Please use the
   `BusyIndicator` instead, as it's now the only loading indicator that is
   supported by our UX guidelines. Please visit our [Migration
-  Guide](https://sap.github.io/ui5-webcomponents-react/main/?path=/docs/migration-guide--docs)
+  Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs)
   for more details.
 - the `StandardListItem` has been replaced with the
   `ListItemStandard` component
