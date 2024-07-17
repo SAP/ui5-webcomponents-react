@@ -481,6 +481,9 @@
       },
       "removedProps": ["navigated", "selected"]
     },
+    "Text": {
+      "comment": "wrapping -> maxLines"
+    },
     "TextArea": {
       "changedProps": {
         "growingMaxLines": "growingMaxRows"
