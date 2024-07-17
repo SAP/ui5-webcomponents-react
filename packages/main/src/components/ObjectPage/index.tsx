@@ -178,12 +178,21 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   onPinnedStateChange?: (pinned: boolean) => void;
 }
 
+export interface ObjectPageDomRef extends HTMLDivElement {
+  /**
+   * Toggles the `headerArea` of the `ObjectPage`.
+   *
+   * __Note:__ If no argument is passed, the header state is toggled, otherwise the respective `snapped` state is applied.
+   */
+  toggleHeaderArea: (snapped?: boolean) => void;
+}
+
 /**
  * A component that allows apps to easily display information related to a business object.
  *
  * The `ObjectPage` is composed of a header (title and content) and block content wrapped in sections and subsections that structure the information.
  */
-const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) => {
+const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref) => {
   const {
     headerTitle,
     image,
@@ -284,6 +293,21 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   useEffect(() => {
     if (typeof onToggleHeaderContent === 'function' && isToggledRef.current) {
       onToggleHeaderContent(headerCollapsed !== true);
+    }
+  }, [headerCollapsed]);
+
+  useEffect(() => {
+    const objectPageNode = objectPageRef.current;
+    if (objectPageNode) {
+      Object.assign(objectPageNode, {
+        toggleHeaderArea(snapped?: boolean) {
+          if (typeof snapped === 'boolean') {
+            onToggleHeaderContentVisibility({ detail: { visible: !snapped } });
+          } else {
+            onToggleHeaderContentVisibility({ detail: { visible: !!headerCollapsed } });
+          }
+        }
+      });
     }
   }, [headerCollapsed]);
 

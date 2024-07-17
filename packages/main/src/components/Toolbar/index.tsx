@@ -383,6 +383,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       tabIndex={active ? 0 : undefined}
       role={active ? 'button' : undefined}
       data-sap-ui-fastnavgroup="true"
+      data-component-name="Toolbar"
       {...rest}
     >
       <div className={classNames.toolbar} data-component-name="ToolbarContent" ref={contentRef}>
@@ -424,4 +425,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
 });
 
 Toolbar.displayName = 'Toolbar';
+//@ts-expect-error: private identifier
+Toolbar._displayName = 'UI5WCRToolbar';
 export { Toolbar };

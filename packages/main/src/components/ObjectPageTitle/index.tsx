@@ -3,7 +3,7 @@
 import { debounce, Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { CommonProps } from '../../types/index.js';
@@ -153,6 +153,18 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
     };
   }, [dynamicPageTitleRef.current, showNavigationInTopArea, isMounted]);
 
+  const [wcrNavToolbar, setWcrNavToolbar] = useState(null);
+  useEffect(() => {
+    //@ts-expect-error: private identifier
+    if (isValidElement(navigationActions) && navigationActions?.type?._displayName === 'UI5WCRToolbar') {
+      setWcrNavToolbar(
+        cloneElement<{ numberOfAlwaysVisibleItems: number }>(navigationActions, {
+          numberOfAlwaysVisibleItems: Infinity
+        })
+      );
+    }
+  }, [navigationActions]);
+
   useEffect(() => {
     const toolbarContainer = toolbarContainerRef.current;
 
@@ -161,7 +173,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
         const navigationToolbar: ToolbarDomRef | undefined = (
           toolbarContainerMutation.target as HTMLDivElement
         ).querySelector(':has(> :nth-last-child(n + 2)) > [ui5-toolbar]:last-child');
-        if (navigationToolbar) {
+        if (navigationToolbar?.children) {
           Array.from(navigationToolbar.children).forEach((item) => {
             item.setAttribute('overflow-priority', 'NeverOverflow');
           });
@@ -175,9 +187,11 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
       const navigationToolbar: ToolbarDomRef | undefined = toolbarContainer.querySelector(
         ':has(> :nth-last-child(n + 2)) > [ui5-toolbar]:last-child'
       );
-      Array.from(navigationToolbar.children).forEach((item) => {
-        item.setAttribute('overflow-priority', 'NeverOverflow');
-      });
+      if (navigationToolbar?.children) {
+        Array.from(navigationToolbar.children).forEach((item) => {
+          item.setAttribute('overflow-priority', 'NeverOverflow');
+        });
+      }
       observer.observe(toolbarContainer, config);
     }
 
@@ -228,7 +242,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
                 aria-hidden
               />
             )}
-            {!showNavigationInTopArea && navigationActions}
+            {!showNavigationInTopArea && (wcrNavToolbar ? wcrNavToolbar : navigationActions)}
           </div>
         )}
       </FlexBox>

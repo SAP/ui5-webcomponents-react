@@ -40,7 +40,6 @@
 
 .titleMainSection {
   overflow-x: hidden;
-  /*flex: 1 1 100%;*/
   flex: 1 1 auto;
   align-items: baseline;
 }
@@ -63,11 +62,11 @@
   hyphens: auto;
 
   > * {
-    font-family: var(--sapObjectHeader_Title_FontFamily);
-    color: var(--sapObjectHeader_Title_TextColor);
-    font-size: var(--_ui5wcr_ObjectPage_title_fontsize);
-    overflow-wrap: break-word;
-    hyphens: auto;
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+    overflow-wrap: inherit;
+    hyphens: inherit;
   }
 }
 
@@ -85,10 +84,10 @@
   padding-inline-start: 0.5rem;
 
   > * {
-    color: var(--sapObjectHeader_Subtitle_TextColor);
-    font-size: var(--sapFontSize);
-    overflow-wrap: break-word;
-    hyphens: auto;
+    color: inherit;
+    font-size: inherit;
+    overflow-wrap: inherit;
+    hyphens: inherit;
   }
 }
 
@@ -109,6 +108,7 @@
   min-width: 3rem;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 
   > [ui5-toolbar] {
     padding: 0;
@@ -117,6 +117,11 @@
 
   > [ui5-toolbar]:not(:first-child):last-child {
     flex: 0 1;
+  }
+
+  > [data-component-name='Toolbar']:not(:first-child):last-child {
+    width: unset;
+    flex-shrink: 0;
   }
 
   > [ui5-toolbar]:only-child {
