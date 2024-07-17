@@ -1,8 +1,8 @@
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
@@ -52,7 +52,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
   const inputRef = useRef(undefined);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   useStylesheet(styleData, 'SaveViewDialog');
-  const uniqueId = useIsomorphicId();
+  const uniqueId = useId();
 
   const cancelText = i18nBundle.getText(CANCEL);
   const saveText = i18nBundle.getText(SAVE);

@@ -5,7 +5,6 @@ import {
   debounce,
   enrichEventWithDetails,
   useI18nBundle,
-  useIsomorphicId,
   useIsomorphicLayoutEffect,
   useIsRTL,
   useStylesheet,
@@ -13,7 +12,7 @@ import {
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, MutableRefObject } from 'react';
-import { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
+import { forwardRef, useCallback, useEffect, useId, useMemo, useRef } from 'react';
 import {
   useColumnOrder,
   useExpanded,
@@ -179,7 +178,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     subComponentsBehavior === AnalyticalTableSubComponentsBehavior.Visible ||
     subComponentsBehavior === AnalyticalTableSubComponentsBehavior.IncludeHeight;
 
-  const uniqueId = useIsomorphicId();
+  const uniqueId = useId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const titleBarId = useRef(`titlebar-${uniqueId}`).current;
   const invalidTableTextId = useRef(`invalidTableText-${uniqueId}`).current;

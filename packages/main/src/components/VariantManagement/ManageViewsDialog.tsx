@@ -2,9 +2,9 @@ import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import TableOverflowMode from '@ui5/webcomponents/dist/types/TableOverflowMode.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactElement } from 'react';
-import { Children, isValidElement, useEffect, useRef, useState } from 'react';
+import { Children, isValidElement, useEffect, useId, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
 import {
   APPLY_AUTOMATICALLY,
@@ -67,7 +67,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     showOnlyFavorites,
     onManageViewsCancel
   } = props;
-  const uniqueId = useIsomorphicId();
+  const uniqueId = useId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const cancelText = i18nBundle.getText(CANCEL);
   const saveText = i18nBundle.getText(SAVE);

@@ -6,10 +6,10 @@ import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRo
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import iconSysHelp from '@ui5/webcomponents-icons/dist/sys-help-2.js';
-import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
-import { cloneElement, forwardRef, isValidElement } from 'react';
+import { cloneElement, forwardRef, isValidElement, useId } from 'react';
 import { MessageBoxAction, MessageBoxType } from '../../enums/index.js';
 import {
   ABORT,
@@ -200,7 +200,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
     onClose(action);
   };
 
-  const messageBoxId = useIsomorphicId();
+  const messageBoxId = useId();
   const internalActions = getActions(actions, type);
 
   const getInitialFocus = () => {

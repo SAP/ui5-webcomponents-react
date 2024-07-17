@@ -5,18 +5,13 @@ import { getScopedVarName } from '@ui5/webcomponents-base/dist/CustomElementsSco
 import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
 import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/dist/theming/ThemeLoaded.js';
-import {
-  I18nStore,
-  StyleStore,
-  useIsomorphicId,
-  useIsomorphicLayoutEffect,
-  useStylesheet
-} from '@ui5/webcomponents-react-base';
+import { I18nStore, StyleStore, useIsomorphicLayoutEffect, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { FC, ReactNode } from 'react';
+import { useId } from 'react';
 import { styleData } from './ThemeProvider.css.js';
 
 function ThemeProviderStyles() {
-  const uniqueId = useIsomorphicId();
+  const uniqueId = useId();
   useStylesheet(styleData, `${ThemeProvider.displayName}-${uniqueId}`);
   useStylesheet(ui5WcVariablesStyleData, `${ThemeProvider.displayName}-css-vars-${uniqueId}`);
   return null;

@@ -1,8 +1,8 @@
 'use client';
 
-import { ThemingParameters, useIsomorphicId } from '@ui5/webcomponents-react-base';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 import type { TooltipProps, YAxisProps } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
@@ -120,7 +120,7 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
     ...rest
   } = props;
 
-  const syncId = useIsomorphicId();
+  const syncId = useId();
 
   const chartConfig: ColumnChartWithTrendProps['chartConfig'] = {
     yAxisVisible: false,

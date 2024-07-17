@@ -2,10 +2,10 @@
 
 import iconDown from '@ui5/webcomponents-icons/dist/down.js';
 import iconUp from '@ui5/webcomponents-icons/dist/up.js';
-import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MouseEventHandler, ReactElement, ReactNode } from 'react';
-import { cloneElement, forwardRef } from 'react';
+import { cloneElement, forwardRef, useId } from 'react';
 import { DeviationIndicator, ValueColor } from '../../enums/index.js';
 import {
   ARIA_DESC_CARD_HEADER,
@@ -127,7 +127,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
-  const uniqueHeaderId = useIsomorphicId();
+  const uniqueHeaderId = useId();
   const headerId = id ?? uniqueHeaderId;
 
   const sideIndicators = flattenFragments(children) as ReactElement<NumericSideIndicatorPropTypes>[];
