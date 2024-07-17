@@ -30,7 +30,7 @@ jobs:
 
       - name: Get Major Version
         run: |
-          MAJOR_VERSION=(node -pe "/^(\d+)\./.exec(require('./lerna.json').version)[1]")
+          MAJOR_VERSION=$(node -p -e "/^(\d+)\./.exec(require('./lerna.json').version)[1]")
           echo "MAJOR_VERSION=${MAJOR_VERSION}" >> "$GITHUB_ENV"
 
       - name: Build Storybook
