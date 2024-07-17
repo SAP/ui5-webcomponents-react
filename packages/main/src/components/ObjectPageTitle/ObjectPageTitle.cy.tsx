@@ -23,8 +23,8 @@ const PageComponent = ({ titleProps = {}, pageProps = {}, childrenScrollable }: 
   const localPageProps = {
     headerTitle: (
       <ObjectPageTitle
-        actions={new Array(10).fill(<Button>Test</Button>)}
-        navigationActions={new Array(20).fill(<Button>Test</Button>)}
+        actionsBar={new Array(10).fill(<Button>Test</Button>)}
+        navigationBar={new Array(20).fill(<Button>Test</Button>)}
         actionsToolbarProps={{ overflowPopoverRef: actionsRef }}
         navigationActionsToolbarProps={{ overflowPopoverRef: navActionsRef }}
         {...titleProps}
@@ -86,7 +86,7 @@ describe('ObjectPageTitle', () => {
       <PageComponent
         titleProps={{
           header: <Title>This is a pretty long title of the ObjectPageTitle</Title>,
-          navigationActions: undefined,
+          navigationBar: undefined,
           children: <div>Content</div>
         }}
       />
@@ -101,7 +101,7 @@ describe('ObjectPageTitle', () => {
     cy.mount(
       <PageComponent
         titleProps={{
-          navigationActions: undefined,
+          navigationBar: undefined,
           breadcrumbs: (
             <Breadcrumbs data-testid="breadcrumbs">
               {new Array(14).fill(1337).map((item, index) => (

@@ -42,7 +42,7 @@ describe('ObjectPage', () => {
       <ObjectPage
         headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
         headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-        onToggleHeaderContent={toggle}
+        onToggleHeaderArea={toggle}
         hidePinButton
       >
         <ObjectPageSection id="section" titleText="Section">
@@ -76,7 +76,7 @@ describe('ObjectPage', () => {
       <ObjectPage
         headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
         headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-        onToggleHeaderContent={toggle}
+        onToggleHeaderArea={toggle}
         hidePinButton
         preserveHeaderStateOnClick
       >
@@ -102,7 +102,7 @@ describe('ObjectPage', () => {
         style={{ height: '100vh' }}
         headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
         headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-        onPinnedStateChange={pin}
+        onPinButtonToggle={pin}
         data-testid="op"
       >
         <ObjectPageSection id="section" titleText="Section">
@@ -132,10 +132,10 @@ describe('ObjectPage', () => {
 
   it('programmatically pin header (`headerPinned`)', () => {
     document.body.style.margin = '0px';
-    const TestComp = ({ onPinnedStateChange }: ObjectPagePropTypes) => {
+    const TestComp = ({ onPinButtonToggle }: ObjectPagePropTypes) => {
       const [pinned, setPinned] = useState(false);
       const handlePinChange = (pinned) => {
-        onPinnedStateChange(pinned);
+        onPinButtonToggle(pinned);
         setPinned(pinned);
       };
       return (
@@ -153,7 +153,7 @@ describe('ObjectPage', () => {
             headerTitle={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
             headerContent={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
             headerPinned={pinned}
-            onPinnedStateChange={handlePinChange}
+            onPinButtonToggle={handlePinChange}
             data-testid="op"
           >
             <ObjectPageSection id="section" titleText="Section">
@@ -164,7 +164,7 @@ describe('ObjectPage', () => {
       );
     };
     const pin = cy.spy().as('onPinSpy');
-    cy.mount(<TestComp onPinnedStateChange={pin} />);
+    cy.mount(<TestComp onPinButtonToggle={pin} />);
     cy.wait(50);
 
     cy.findByTestId('op').scrollTo(0, 500);
@@ -925,7 +925,7 @@ const DPTitle = (
   <ObjectPageTitle
     header="Denise Smith"
     subHeader="Senior UI Developer"
-    actions={
+    actionsBar={
       <>
         <Button key="1" design={ButtonDesign.Emphasized}>
           Primary Action
@@ -975,7 +975,7 @@ const OPContent = [
       titleText="Connect"
       id="personal-connect"
       aria-label="Connect"
-      actions={
+      actionsBar={
         <>
           <Button design={ButtonDesign.Emphasized} style={{ minWidth: '120px' }}>
             Custom Action

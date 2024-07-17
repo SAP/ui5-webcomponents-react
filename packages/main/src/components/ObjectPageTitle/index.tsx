@@ -13,13 +13,11 @@ import { classNames, styleData } from './ObjectPageTitle.module.css.js';
 
 export interface ObjectPageTitlePropTypes extends CommonProps {
   /**
-   * Defines the actions of the `ObjectPageTitle`.
+   * Defines the actions bar of the `ObjectPageTitle`.
    *
-   * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault()` to prevent this.
-   *
-   * __Note:__ Although this prop accepts all `ReactElements`, it is strongly recommended that you only use components that render a single element in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all `ReactElement`s, it is strongly recommended that you only use the `Toolbar` component in order to preserve the intended design.
    */
-  actions?: ReactElement | ReactElement[];
+  actionsBar?: ReactElement;
 
   /**
    * The `breadcrumbs` displayed in the `ObjectPageTitle` top-left area.
@@ -44,17 +42,16 @@ export interface ObjectPageTitlePropTypes extends CommonProps {
    */
   subHeader?: ReactNode;
   /**
-   * The `ObjectPageTitle` navigation actions.<br />
-   * *Note*: The `navigationActions` position depends on the control size.
-   * If the control size is 1280px or bigger, they are rendered right next to the actions.
-   * Otherwise, they are rendered in the top-right area, above the actions.
-   * If a large number of elements(buttons) are used, there could be visual degradations as the space for the `navigationActions` is limited.
+   * Defines navigation-actions bar of the `ObjectPageTitle`.
    *
-   * __Note:__ Although this prop accepts all `ReactElements`, it is strongly recommended that you only use components that render a single element in order to preserve the intended design.
+   * *Note*: The `navigationBar` position depends on the control size.
+   * If the control size is 1280px or bigger, they are rendered right next to the `actionsBar`.
+   * Otherwise, they are rendered in the top-right area (above the `actionsBar`).
+   * If a large number of elements(buttons) are used, there could be visual degradations as the space for the `navigationBar` is limited.
    *
-   * __Note:__ When clicking on an action in the overflow popover it closes the popover. You can use `event.preventDefault()` to prevent this.
+   * __Note:__ Although this prop accepts all `ReactElement`s, it is strongly recommended that you only use the `Toolbar` component in order to preserve the intended design.
    */
-  navigationActions?: ReactElement | ReactElement[];
+  navigationBar?: ReactElement;
   /**
    * The content displayed in the `ObjectPageTitle` in expanded state.
    */
@@ -92,12 +89,12 @@ export interface InternalProps extends ObjectPageTitlePropTypes {
  */
 const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((props, ref) => {
   const {
-    actions,
+    actionsBar,
     breadcrumbs,
     children,
     header,
     subHeader,
-    navigationActions,
+    navigationBar,
     className,
     onToggleHeaderContentVisibility,
     expandedContent,
@@ -156,14 +153,14 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
   const [wcrNavToolbar, setWcrNavToolbar] = useState(null);
   useEffect(() => {
     //@ts-expect-error: private identifier
-    if (isValidElement(navigationActions) && navigationActions?.type?._displayName === 'UI5WCRToolbar') {
+    if (isValidElement(navigationBar) && navigationBar?.type?._displayName === 'UI5WCRToolbar') {
       setWcrNavToolbar(
-        cloneElement<{ numberOfAlwaysVisibleItems: number }>(navigationActions, {
+        cloneElement<any>(navigationBar, {
           numberOfAlwaysVisibleItems: Infinity
         })
       );
     }
-  }, [navigationActions]);
+  }, [navigationBar]);
 
   useEffect(() => {
     const toolbarContainer = toolbarContainerRef.current;
@@ -203,16 +200,14 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
   return (
     <FlexBox className={containerClasses} ref={componentRef} data-component-name="ObjectPageTitle" {...rest}>
       <span className={classNames.clickArea} onClick={onHeaderClick} />
-      {(breadcrumbs || (navigationActions && showNavigationInTopArea)) && (
+      {(breadcrumbs || (navigationBar && showNavigationInTopArea)) && (
         <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} data-component-name="ObjectPageTitleBreadcrumbs">
           {breadcrumbs && (
             <div className={classNames.breadcrumbs} onClick={stopPropagation}>
               {breadcrumbs}
             </div>
           )}
-          {showNavigationInTopArea && navigationActions && (
-            <div className={classNames.toolbar}>{navigationActions}</div>
-          )}
+          {showNavigationInTopArea && navigationBar && <div className={classNames.toolbar}>{navigationBar}</div>}
         </FlexBox>
       )}
       <FlexBox
@@ -232,17 +227,17 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
             </div>
           )}
         </FlexBox>
-        {(actions || (!showNavigationInTopArea && navigationActions)) && (
+        {(actionsBar || (!showNavigationInTopArea && navigationBar)) && (
           <div className={classNames.toolbar} ref={toolbarContainerRef}>
-            {actions}
-            {!showNavigationInTopArea && actions && navigationActions && (
+            {actionsBar}
+            {!showNavigationInTopArea && actionsBar && navigationBar && (
               <div
                 className={classNames.actionsSpacer}
                 data-component-name="ObjectPageTitleActionsSeparator"
                 aria-hidden
               />
             )}
-            {!showNavigationInTopArea && (wcrNavToolbar ? wcrNavToolbar : navigationActions)}
+            {!showNavigationInTopArea && (wcrNavToolbar ? wcrNavToolbar : navigationBar)}
           </div>
         )}
       </FlexBox>

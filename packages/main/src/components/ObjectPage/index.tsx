@@ -75,7 +75,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    *
    * __Note:__ When the `ObjectPageTitle` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
    */
-  headerTitle?: ReactElement<ObjectPageTitlePropTypes>;
+  titleArea?: ReactElement<ObjectPageTitlePropTypes>;
   /**
    * Defines the `ObjectPageHeader` section of the `ObjectPage`.
    *
@@ -83,13 +83,13 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    *
    * __Note:__ When the `ObjectPageHeader` is rendered inside a custom component, it's essential to pass through all props, as otherwise the component won't function as intended!
    */
-  headerContent?: ReactElement<ObjectPageHeaderPropTypes>;
+  headerArea?: ReactElement<ObjectPageHeaderPropTypes>;
   /**
    * React element which defines the footer content.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Bar` with `design={BarDesign.FloatingFooter}` in order to preserve the intended design.
    */
-  footer?: ReactElement;
+  footerArea?: ReactElement;
   /**
    * Defines the image of the `ObjectPage`. You can pass a path to an image or an `Avatar` component.
    */
@@ -111,7 +111,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   selectedSubSectionId?: string;
   /**
-   * Defines whether the `headerContent` is pinned.
+   * Defines whether the `headerArea` is pinned.
    */
   headerPinned?: boolean;
   /**
@@ -129,7 +129,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   mode?: ObjectPageMode | keyof typeof ObjectPageMode;
   /**
-   * Defines if the pin button for the `headerContent` is hidden.
+   * Defines if the pin button for the `headerArea` is hidden.
    */
   hidePinButton?: boolean;
   /**
@@ -169,13 +169,13 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
     event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
   ) => void;
   /**
-   * Fired when the `headerContent` is expanded or collapsed.
+   * Fired when the `headerArea` is expanded or collapsed.
    */
-  onToggleHeaderContent?: (visible: boolean) => void;
+  onToggleHeaderArea?: (visible: boolean) => void;
   /**
-   * Fired when the `headerContent` changes its pinned state.
+   * Fired when the `headerArea` changes its pinned state.
    */
-  onPinnedStateChange?: (pinned: boolean) => void;
+  onPinButtonToggle?: (pinned: boolean) => void;
 }
 
 export interface ObjectPageDomRef extends HTMLDivElement {
@@ -194,9 +194,9 @@ export interface ObjectPageDomRef extends HTMLDivElement {
  */
 const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref) => {
   const {
-    headerTitle,
+    titleArea,
     image,
-    footer,
+    footerArea,
     mode = ObjectPageMode.Default,
     imageShapeCircle,
     className,
@@ -205,14 +205,14 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     children,
     selectedSectionId,
     headerPinned: headerPinnedProp,
-    headerContent,
+    headerArea,
     hidePinButton,
     preserveHeaderStateOnClick,
     accessibilityAttributes,
     placeholder,
     onSelectedSectionChange,
-    onToggleHeaderContent,
-    onPinnedStateChange,
+    onToggleHeaderArea,
+    onPinButtonToggle,
     onBeforeNavigate,
     ...rest
   } = props;
@@ -235,7 +235,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const scrollEvent = useRef(undefined);
   const prevTopHeaderHeight = useRef(0);
   // @ts-expect-error: useSyncRef will create a ref if not present
-  const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerContent?.ref);
+  const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerArea?.ref);
   const anchorBarRef = useRef<HTMLDivElement>(null);
   const objectPageContentRef = useRef<HTMLDivElement>(null);
   const selectionScrollTimeout = useRef(null);
@@ -284,15 +284,15 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       anchorBarRef,
       [headerCollapsedInternal, setHeaderCollapsedInternal],
       {
-        noHeader: !headerTitle && !headerContent,
+        noHeader: !titleArea && !headerArea,
         fixedHeader: headerPinned,
         scrollTimeout
       }
     );
 
   useEffect(() => {
-    if (typeof onToggleHeaderContent === 'function' && isToggledRef.current) {
-      onToggleHeaderContent(headerCollapsed !== true);
+    if (typeof onToggleHeaderArea === 'function' && isToggledRef.current) {
+      onToggleHeaderArea(headerCollapsed !== true);
     }
   }, [headerCollapsed]);
 
@@ -636,7 +636,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     }
   };
 
-  const snappedHeaderInObjPage = headerTitle && headerTitle.props.snappedContent && headerCollapsed === true && !!image;
+  const snappedHeaderInObjPage = titleArea && titleArea.props.snappedContent && headerCollapsed === true && !!image;
 
   const isInitial = useRef(true);
   useEffect(() => {
@@ -648,22 +648,22 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   }, [snappedHeaderInObjPage]);
 
   const renderHeaderContentSection = () => {
-    if (headerContent?.props) {
-      return cloneElement(headerContent as ReactElement<ObjectPageHeaderPropTypesWithInternals>, {
-        ...headerContent.props,
+    if (headerArea?.props) {
+      return cloneElement(headerArea as ReactElement<ObjectPageHeaderPropTypesWithInternals>, {
+        ...headerArea.props,
         topHeaderHeight,
         style:
           headerCollapsed === true
             ? { position: 'absolute', visibility: 'hidden', flexShrink: 0 }
-            : { ...headerContent.props.style, flexShrink: 0 },
+            : { ...headerArea.props.style, flexShrink: 0 },
         headerPinned: headerPinned || scrolledHeaderExpanded,
         //@ts-expect-error: todo remove me when forwardref has been replaced
         ref: componentRefHeaderContent,
         children: (
           <div className={classNames.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
-            {headerContent.props.children && (
-              <div data-component-name="ObjectPageHeaderContent">{headerContent.props.children}</div>
+            {headerArea.props.children && (
+              <div data-component-name="ObjectPageHeaderContent">{headerArea.props.children}</div>
             )}
           </div>
         )
@@ -753,7 +753,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const objectPageStyles: CSSProperties = {
     ...style
   };
-  if (headerCollapsed === true && headerContent) {
+  if (headerCollapsed === true && headerArea) {
     objectPageStyles[ObjectPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
 
@@ -778,30 +778,30 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         className={classNames.header}
         style={{
           gridAutoColumns: `min-content ${
-            headerTitle && image && headerCollapsed === true ? `calc(100% - 3rem - 1rem)` : '100%'
+            titleArea && image && headerCollapsed === true ? `calc(100% - 3rem - 1rem)` : '100%'
           }`
         }}
       >
         <span className={classNames.clickArea} onClick={onTitleClick} data-op-click-element />
-        {headerTitle && image && headerCollapsed === true && (
+        {titleArea && image && headerCollapsed === true && (
           <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
         )}
-        {headerTitle &&
-          cloneElement(headerTitle as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
-            className: clsx(headerTitle?.props?.className),
+        {titleArea &&
+          cloneElement(titleArea as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
+            className: clsx(titleArea?.props?.className),
             onToggleHeaderContentVisibility: onTitleClick,
             'data-not-clickable': !!preserveHeaderStateOnClick,
-            'data-header-content-visible': headerContent && headerCollapsed !== true,
+            'data-header-content-visible': headerArea && headerCollapsed !== true,
             'data-is-snapped-rendered-outside': snappedHeaderInObjPage
           })}
         {snappedHeaderInObjPage && (
           <div className={classNames.snappedContent} data-component-name="ATwithImageSnappedContentContainer">
-            {headerTitle.props.snappedContent}
+            {titleArea.props.snappedContent}
           </div>
         )}
       </header>
       {renderHeaderContentSection()}
-      {headerContent && headerTitle && (
+      {headerArea && titleArea && (
         <div
           data-component-name="ObjectPageAnchorBar"
           ref={anchorBarRef}
@@ -814,14 +814,14 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
           }}
         >
           <ObjectPageAnchorBar
-            headerContentVisible={headerContent && headerCollapsed !== true}
+            headerContentVisible={headerArea && headerCollapsed !== true}
             hidePinButton={!!hidePinButton}
             headerPinned={headerPinned}
             accessibilityAttributes={accessibilityAttributes}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
             setHeaderPinned={setHeaderPinned}
             onHoverToggleButton={onHoverToggleButton}
-            onPinnedStateChange={onPinnedStateChange}
+            onPinButtonToggle={onPinButtonToggle}
           />
         </div>
       )}
@@ -892,12 +892,12 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         {placeholder ? placeholder : sections}
         <div style={{ height: `${sectionSpacer}px` }} aria-hidden />
       </div>
-      {footer && mode === ObjectPageMode.IconTabBar && !sectionSpacer && (
+      {footerArea && mode === ObjectPageMode.IconTabBar && !sectionSpacer && (
         <div className={classNames.footerSpacer} data-component-name="ObjectPageFooterSpacer" aria-hidden />
       )}
-      {footer && (
+      {footerArea && (
         <footer className={classNames.footer} data-component-name="ObjectPageFooter">
-          {footer}
+          {footerArea}
         </footer>
       )}
     </div>
