@@ -47,7 +47,7 @@
       "semanticCommitType": "chore",
       "groupName": "all non-major dependencies",
       "groupSlug": "root-all-minor-patch",
-      "matchPackagePatterns": ["*"],
+      "matchFileNames": ["package.json"],
       "matchUpdateTypes": ["minor", "patch"],
       "excludePackageNames": ["react", "react-dom", "storybook", "rimraf"],
       "excludePackagePatterns": ["^@storybook/"]
