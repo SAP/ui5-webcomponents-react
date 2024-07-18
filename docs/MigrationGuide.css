@@ -1,0 +1,10 @@
+.sbdocs-content h2 {
+  margin-block-start: 5rem;
+}
+
+.sbdocs-content h3 {
+  border-start-start-radius: 3px;
+  border-end-start-radius: 3px;
+  padding-inline-start: 0.25rem;
+  background: linear-gradient(to right, var(--sapInformationColor) -500%, transparent 100%);
+}
