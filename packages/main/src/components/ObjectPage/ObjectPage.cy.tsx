@@ -31,7 +31,9 @@ import {
   ObjectPageSubSection,
   ObjectStatus,
   Text,
-  Title
+  Title,
+  Toolbar,
+  ToolbarButton
 } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
@@ -434,19 +436,19 @@ describe('ObjectPage', () => {
     };
     cy.mount(<TestComp height="2000px" mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2250}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2260}').should('exist');
 
     cy.mount(<TestComp height="2000px" withFooter mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
-    cy.findByText('{"offset":1080,"scroll":2300}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
 
     cy.findByTestId('op').scrollTo('bottom');
     cy.findByText('Update Heights').click({ force: true });
-    cy.findByText('{"offset":1080,"scroll":2300}').should('exist');
+    cy.findByText('{"offset":1080,"scroll":2310}').should('exist');
 
     cy.mount(<TestComp height="400px" mode={ObjectPageMode.Default} />);
     cy.findByText('Update Heights').click();
@@ -924,12 +926,10 @@ const DPTitle = (
     header="Denise Smith"
     subHeader="Senior UI Developer"
     actionsBar={
-      <>
-        <Button key="1" design={ButtonDesign.Emphasized}>
-          Primary Action
-        </Button>
-        <Button key="2">Action</Button>
-      </>
+      <Toolbar>
+        <ToolbarButton design={ButtonDesign.Emphasized} text="Primary Action" />
+        <ToolbarButton text="Action" />
+      </Toolbar>
     }
     breadcrumbs={
       <Breadcrumbs>
@@ -973,7 +973,7 @@ const OPContent = [
       titleText="Connect"
       id="personal-connect"
       aria-label="Connect"
-      actionsBar={
+      actions={
         <>
           <Button design={ButtonDesign.Emphasized} style={{ minWidth: '120px' }}>
             Custom Action
