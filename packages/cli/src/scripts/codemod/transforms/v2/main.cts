@@ -360,8 +360,8 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
               // remove DynamicPageHeader import only if no DynamicPage is there
               if (!componentIsImportedFromWebComponentsReact(j, root, 'DynamicPage')) {
                 const imports = root.find(j.ImportDeclaration);
-                const dptImport = imports.find(j.ImportSpecifier, { local: { name: 'DynamicPageHeader' } });
-                dptImport.remove();
+                const dphImport = imports.find(j.ImportSpecifier, { local: { name: 'DynamicPageHeader' } });
+                dphImport.remove();
               }
               if (!componentIsImportedFromWebComponentsReact(j, root, 'ObjectPageHeader')) {
                 addWebComponentsReactImport(j, root, 'ObjectPageHeader');
