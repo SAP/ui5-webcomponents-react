@@ -347,6 +347,75 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
           headerContentPinnable.remove();
           isDirty = true;
         }
+
+        const headerContent = j(el).find(j.JSXAttribute, { name: { name: 'headerContent' } });
+        if (headerContent.size() > 0) {
+          const attr = headerContent.get();
+          if (attr.value.value && attr.value.value.type === 'JSXExpressionContainer') {
+            headerContent.forEach((el) => {
+              const dynamicPageHeader = j(el).find(j.JSXElement, {
+                openingElement: { name: { name: 'DynamicPageHeader' } }
+              });
+
+              // remove DynamicPageHeader import only if no DynamicPage is there
+              if (!componentIsImportedFromWebComponentsReact(j, root, 'DynamicPage')) {
+                const imports = root.find(j.ImportDeclaration);
+                const dptImport = imports.find(j.ImportSpecifier, { local: { name: 'DynamicPageHeader' } });
+                dptImport.remove();
+              }
+              if (!componentIsImportedFromWebComponentsReact(j, root, 'ObjectPageHeader')) {
+                addWebComponentsReactImport(j, root, 'ObjectPageHeader');
+              }
+
+              // replace JSX tag (component)
+              dynamicPageHeader.forEach((innerEl) => {
+                const updatedTagName = j.jsxIdentifier('ObjectPageHeader');
+                innerEl.node.openingElement.name = updatedTagName;
+                if (innerEl.node.closingElement) {
+                  innerEl.node.closingElement.name = updatedTagName;
+                }
+              });
+
+              // replace prop name
+              headerContent.find(j.JSXIdentifier, { name: 'headerContent' }).replaceWith(j.jsxIdentifier('headerArea'));
+            });
+            isDirty = true;
+          }
+        }
+
+        const headerTitle = j(el).find(j.JSXAttribute, { name: { name: 'headerTitle' } });
+        if (headerTitle.size() > 0) {
+          const attr = headerTitle.get();
+          if (attr.value.value && attr.value.value.type === 'JSXExpressionContainer') {
+            headerTitle.forEach((el) => {
+              const dynamicPageTitle = j(el).find(j.JSXElement, {
+                openingElement: { name: { name: 'DynamicPageTitle' } }
+              });
+
+              // remove DynamicPageTitle import only if no DynamicPage is there
+              dynamicPageTitle.forEach((innerEl) => {
+                if (!componentIsImportedFromWebComponentsReact(j, root, 'DynamicPage')) {
+                  const imports = root.find(j.ImportDeclaration);
+                  const dptImport = imports.find(j.ImportSpecifier, { local: { name: 'DynamicPageTitle' } });
+                  dptImport.remove();
+                }
+                if (!componentIsImportedFromWebComponentsReact(j, root, 'ObjectPageTitle')) {
+                  addWebComponentsReactImport(j, root, 'ObjectPageTitle');
+                }
+                // replace JSX tag (component)
+                const updatedTagName = j.jsxIdentifier('ObjectPageTitle');
+                innerEl.node.openingElement.name = updatedTagName;
+                if (innerEl.node.closingElement) {
+                  innerEl.node.closingElement.name = updatedTagName;
+                }
+              });
+
+              // replace prop name
+              headerTitle.find(j.JSXIdentifier, { name: 'headerTitle' }).replaceWith(j.jsxIdentifier('titleArea'));
+            });
+            isDirty = true;
+          }
+        }
       });
     }
 

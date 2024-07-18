@@ -302,7 +302,9 @@
       },
       "removedProps": ["showHideHeaderButton", "showTitleInHeaderContent"]
     },
-    "ObjectPageTitle": {},
+    "ObjectPageTitle": {
+      "removedProps": ["showSubHeaderRight"]
+    },
     "ObjectStatus": {
       "changedProps": {
         "active": "interactive"
