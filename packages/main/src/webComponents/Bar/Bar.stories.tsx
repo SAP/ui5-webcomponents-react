@@ -40,7 +40,7 @@ export const WithCustomElements: Story = {
           <>
             <Button icon={navBackIcon} design={ButtonDesign.Transparent} />
             <img
-              src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/main/assets/Logo.png"
+              src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/main/assets/Logo-Sticker.png"
               alt="logo"
               style={{ marginLeft: '6px', width: '120px' }}
             />
