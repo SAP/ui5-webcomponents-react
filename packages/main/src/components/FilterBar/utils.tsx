@@ -19,6 +19,8 @@ export const filterValue = (ref, child) => {
   const tagName = ref.tagName;
   const tagNameWithoutSuffix = getTagNameWithoutScopingSuffix(tagName);
 
+  console.log('should never be logged');
+
   let filterItemProps = {};
   if (inputTagNames.has(tagNameWithoutSuffix)) {
     filterItemProps = { value: ref.value ?? '' };

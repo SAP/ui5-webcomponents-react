@@ -28,6 +28,7 @@ import { FlexBox } from '../FlexBox/index.js';
 import { VariantManagement } from '../VariantManagement/index.js';
 import { VariantItem } from '../VariantManagement/VariantItem.js';
 import { FilterBar } from './index.js';
+import TestComp from './Test.js';
 
 const meta = {
   title: 'Layouts & Floorplans / FilterBar',
@@ -35,7 +36,8 @@ const meta = {
   args: {
     search: <Input />,
     header: <Title>Test</Title>,
-    filterContainerWidth: '13.125rem'
+    filterContainerWidth: '13.125rem',
+    // fullyControlFilters: true
   },
   argTypes: {
     activeFiltersCount: { control: 'number' },
@@ -51,6 +53,12 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+export const Test = {
+  render() {
+    return <TestComp />;
+  }
+};
 
 export const Default: Story = {
   render: (args) => {

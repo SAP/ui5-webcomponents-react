@@ -29,7 +29,7 @@ describe.skip('FilterBar.cy.tsx', () => {
   it('Toggle FilterBar filters', () => {
     const toggle = cy.spy().as('toggleSpy');
     cy.mount(
-      <FilterBar onToggleFilters={toggle}>
+      <FilterBar fullyControlFilters onToggleFilters={toggle}>
         <FilterGroupItem label="Classification" key="classification">
           <Select>
             <Option>Option 1</Option>
@@ -57,7 +57,7 @@ describe.skip('FilterBar.cy.tsx', () => {
     cy.get('[ui5-select]').should('be.visible');
 
     cy.mount(
-      <FilterBar onToggleFilters={toggle} hideToggleFiltersButton>
+      <FilterBar fullyControlFilters onToggleFilters={toggle} hideToggleFiltersButton>
         <FilterGroupItem label="Classification" key="classification">
           <Select>
             <Option>Option 1</Option>
@@ -83,6 +83,7 @@ describe.skip('FilterBar.cy.tsx', () => {
     const restore = cy.spy().as('restoreSpy');
     cy.mount(
       <FilterBar
+        fullyControlFilters
         activeFiltersCount={42}
         showResetButton
         onAfterFiltersDialogOpen={afterOpen}
@@ -221,7 +222,7 @@ describe.skip('FilterBar.cy.tsx', () => {
   // todo selection, group + list view
   it('Dialog search', () => {
     cy.mount(
-      <FilterBar>
+      <FilterBar fullyControlFilters>
         <FilterGroupItem label="INPUT">
           <Input placeholder="Placeholder" value="123123" data-testid="INPUT" />
         </FilterGroupItem>
@@ -266,7 +267,7 @@ describe.skip('FilterBar.cy.tsx', () => {
 
   it('toolbar', () => {
     cy.mount(
-      <FilterBar header={variants} hideToolbar={false} showGoOnFB>
+      <FilterBar fullyControlFilters header={variants} hideToolbar={false} showGoOnFB>
         <FilterGroupItem label="Classification" key="classification" data-testid="SELECT">
           <Select>
             <Option>Option 1</Option>
@@ -286,7 +287,7 @@ describe.skip('FilterBar.cy.tsx', () => {
     cy.findByTestId('SELECT');
 
     cy.mount(
-      <FilterBar header={variants} hideToolbar={true} showGoOnFB>
+      <FilterBar fullyControlFilters header={variants} hideToolbar={true} showGoOnFB>
         <FilterGroupItem label="Classification" key="classification" data-testid="SELECT">
           <Select>
             <Option>Option 1</Option>
@@ -309,7 +310,7 @@ describe.skip('FilterBar.cy.tsx', () => {
 
   it('addCustomCSS', () => {
     cy.mount(
-      <FilterBar>
+      <FilterBar fullyControlFilters>
         <FilterGroupItem label="INPUT">
           <Input placeholder="Placeholder" value="123123" data-testid="INPUT" />
         </FilterGroupItem>
@@ -370,6 +371,7 @@ describe.skip('FilterBar.cy.tsx', () => {
     const onRestore = cy.spy().as('restore');
     cy.mount(
       <FilterBar
+        fullyControlFilters
         showClearOnFB
         showGoOnFB
         showRestoreOnFB
@@ -396,7 +398,7 @@ describe.skip('FilterBar.cy.tsx', () => {
   it('Dialog: search', () => {
     const onSearch = cy.spy().as('search');
     cy.mount(
-      <FilterBar onFiltersDialogSearch={onSearch} activeFiltersCount={42}>
+      <FilterBar fullyControlFilters onFiltersDialogSearch={onSearch} activeFiltersCount={42}>
         <FilterGroupItem label="A" groupName="Group1" data-testid="a">
           <Input placeholder="Placeholder" />
         </FilterGroupItem>
@@ -450,7 +452,7 @@ describe.skip('FilterBar.cy.tsx', () => {
 
   it('show no colon for empty label', () => {
     cy.mount(
-      <FilterBar>
+      <FilterBar fullyControlFilters>
         <FilterGroupItem>
           <Input />
         </FilterGroupItem>
@@ -468,7 +470,7 @@ describe.skip('FilterBar.cy.tsx', () => {
 
   it('FB search field', () => {
     cy.mount(
-      <FilterBar search={<Input />}>
+      <FilterBar fullyControlFilters search={<Input />}>
         <FilterGroupItem>
           <Input />
         </FilterGroupItem>
@@ -488,7 +490,7 @@ describe.skip('FilterBar.cy.tsx', () => {
 
   it('allow filter with single or empty children', () => {
     cy.mount(
-      <FilterBar>
+      <FilterBar fullyControlFilters>
         <FilterGroupItem label="Single Child">
           <Select>
             <Option>Option 1</Option>
@@ -507,7 +509,7 @@ describe.skip('FilterBar.cy.tsx', () => {
 
   it('reorder', () => {
     const save = cy.spy().as('saveSpy');
-    cy.mount(<FilterBarWithReordering onFiltersDialogSave={save} />);
+    cy.mount(<FilterBarWithReordering fullyControlFilters onFiltersDialogSave={save} />);
 
     cy.get('div[data-order-id]').eq(0).find('[ui5-label]').should('have.text', 'StepInput');
     cy.get('div[data-order-id]').eq(1).find('[ui5-label]').should('have.text', 'RatingIndicator');
@@ -746,7 +748,13 @@ function FilterBarWithReordering(props: Partial<FilterBarPropTypes>) {
       });
     };
     return (
-      <FilterBar {...props} onFiltersDialogSave={handleFiltersDialogSave} enableReordering showResetButton>
+      <FilterBar
+        fullyControlFilters
+        {...props}
+        onFiltersDialogSave={handleFiltersDialogSave}
+        enableReordering
+        showResetButton
+      >
         {orderedChildren}
       </FilterBar>
     );

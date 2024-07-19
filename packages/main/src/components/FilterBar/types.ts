@@ -117,6 +117,12 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   enableReordering?: boolean;
   /**
+   * Defines whether the `FilterBar` should not internally manage the state of filters when set in the filters dialog.
+   *
+   * __Note:__ With `v2` the internal state management will be removed and the behavior if `fullyControlFilters` is `true` will be the default. We therefore recommend using `fullyControlFilters` already.
+   */
+  fullyControlFilters?: boolean;
+  /**
    * Sets the components outer HTML tag.
    *
    * __Note:__ For TypeScript the types of `ref` are bound to the default tag name, if you change it you are responsible to set the respective types yourself.

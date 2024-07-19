@@ -57,7 +57,9 @@ const resizeObserverEntryWidth = (entry) => {
  * * Tablet: Collapsed by default
  * * Phone: Not displayed. Accessible through filter dialog.
  *
- *__Note:__ We recommend always fully controlling the filters, as otherwise, you may encounter discrepancies between the filters dialog and the FilterBar, especially when using complex or custom filter components.
+ * __Note:__ We recommend always fully controlling the filters, as otherwise, you may encounter discrepancies between the filters dialog and the FilterBar, especially when using complex or custom filter components.
+ *
+ * __Note:__ With `v2` of `@ui5/webcomponents-react` the `FilterBar` doesn't manage filter states internally anymore. This means it's then mandatory to fully control the filters, because of this we recommend setting `fullyControlFilters` to `true` already.
  */
 const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) => {
   const {
@@ -78,6 +80,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     slot,
     search,
     header,
+    fullyControlFilters,
     as = 'div',
     portalContainer,
     onToggleFilters,
@@ -267,7 +270,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         let filterItemProps = {};
         if (Object.keys(dialogRefs).length > 0) {
           const dialogItemRef = dialogRefs[key];
-          if (dialogItemRef) {
+          if (dialogItemRef && !fullyControlFilters) {
             filterItemProps = filterValue(dialogItemRef, child);
           }
         }
@@ -294,7 +297,9 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           const { [child.key]: _omit, ...rest } = dialogRefs;
-          setDialogRefs(rest);
+          if (!fullyControlFilters) {
+            setDialogRefs(rest);
+          }
         }
         prevChildren.current[key] = filter.props;
 
@@ -501,6 +506,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           dialogRef={dialogRef}
           enableReordering={enableReordering}
           isPhone={isPhone}
+          fullyControlFilters={fullyControlFilters}
         >
           {safeChildren()}
         </FilterDialog>

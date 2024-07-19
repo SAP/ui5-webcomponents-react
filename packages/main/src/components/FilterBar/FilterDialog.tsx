@@ -124,6 +124,7 @@ interface FilterDialogPropTypes {
   dialogRef: RefObject<DialogDomRef>;
   enableReordering?: FilterBarPropTypes['enableReordering'];
   isPhone?: boolean;
+  fullyControlFilters?: boolean;
 }
 
 export const FilterDialog = (props: FilterDialogPropTypes) => {
@@ -142,7 +143,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     portalContainer,
     dialogRef,
     enableReordering,
-    isPhone
+    isPhone,
+    fullyControlFilters
   } = props;
   useStylesheet(styleData, 'FilterBarDialog');
   const uniqueId = useId();
@@ -231,7 +233,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         isSelected = toggledFilters[child.key];
       }
 
-      const filterItemProps = filterBarItemRef ? filterValue(filterBarItemRef, child) : {};
+      const filterItemProps = filterBarItemRef && !fullyControlFilters ? filterValue(filterBarItemRef, child) : {};
 
       return cloneElement<FilterGroupItemInternalProps>(child, {
         'data-selected': isSelected,
