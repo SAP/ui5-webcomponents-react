@@ -1,9 +1,9 @@
 'use client';
 
 import LinkAccessibleRole from '@ui5/webcomponents/dist/types/LinkAccessibleRole.js';
-import { useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import { forwardRef, useState } from 'react';
+import { forwardRef, useId, useState } from 'react';
 import { CLOSE_POPOVER, SHOW_FULL_TEXT, SHOW_LESS, SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../types/index.js';
 import { Link } from '../../webComponents/index.js';
@@ -47,7 +47,7 @@ const ExpandableText = forwardRef<HTMLSpanElement, ExpandableTextPropTypes>((pro
 
   const [collapsed, setCollapsed] = useState(true);
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const uniqueId = useIsomorphicId();
+  const uniqueId = useId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const trimmedChildren = renderWhitespace ? children : children?.replace(/\s+/g, ' ').trim();
   const isOverflow = trimmedChildren?.length >= maxCharacters;

@@ -5,9 +5,9 @@ import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { Dispatch, ReactElement, RefObject, SetStateAction } from 'react';
-import { Children, cloneElement, useEffect, useReducer, useRef, useState } from 'react';
+import { Children, cloneElement, useEffect, useId, useReducer, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FlexBoxDirection, FlexBoxJustifyContent, MessageBoxAction, MessageBoxType } from '../../enums/index.js';
 import {
@@ -145,7 +145,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     isPhone
   } = props;
   useStylesheet(styleData, 'FilterBarDialog');
-  const uniqueId = useIsomorphicId();
+  const uniqueId = useId();
   const [searchString, setSearchString] = useState('');
   const [toggledFilters, setToggledFilters] = useState({});
   const dialogRefs = useRef({});

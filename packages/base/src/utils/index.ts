@@ -1,5 +1,3 @@
-import type { SyntheticEvent } from 'react';
-
 export const deprecationNotice = (component: string, message: string) => {
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
     const value = `*** ui5-webcomponents-react Deprecation Notice - ${component} ***\n`;
@@ -25,13 +23,6 @@ export const enrichEventWithDetails = <
 ): EnrichedEventType<Event, Detail> => {
   if (!event) {
     return event;
-  }
-  // todo: once we drop React 16 support, remove this
-  // the helper accepts both SyntheticEvents and browser events
-  const syntheticEventCast = event as unknown as SyntheticEvent;
-  if (typeof syntheticEventCast.persist === 'function') {
-    // if there is a persist method, it's a SyntheticEvent so we need to persist it
-    syntheticEventCast.persist();
   }
 
   // Determine if we need to create a new details object

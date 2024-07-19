@@ -56,7 +56,7 @@ You can find our documentation under the following links:
 
 ## Requirements
 
-- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**16.14.0 or higher**)
+- [React](https://www.npmjs.com/package/react) and [React-DOM](https://www.npmjs.com/package/react-dom) (**18.0.0 or higher**)
 - [Node.js](https://nodejs.org/) (**LTS version**)
 - If you're using [TypeScript](https://www.typescriptlang.org/) we recommend version **4.7** or later.
 
