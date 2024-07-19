@@ -8,3 +8,7 @@
   padding-inline-start: 0.25rem;
   background: linear-gradient(to right, var(--sapInformationColor) -500%, transparent 100%);
 }
+
+.sbdocs-content h3:dir(rtl) {
+  background: linear-gradient(to left, var(--sapInformationColor) -500%, transparent 100%);
+}
