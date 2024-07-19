@@ -1,6 +1,7 @@
+import './MigrationGuide.css';
 import { Footer, TableOfContent } from '@sb/components';
 import { Meta } from '@storybook/blocks';
-import './MigrationGuide.css';
+import { MessageStrip } from '@ui5/webcomponents-react';
 
 <Meta title="Migration Guide" />
 
@@ -14,9 +15,36 @@ or the [changelog](?path=/docs/change-log--page)._
 > This migration guide only covers breaking changes when updating from v1 to v2.
 > For migration guides for older releases, please refer to our [Migration Guide Archive](https://github.com/SAP/ui5-webcomponents-react/blob/main/docs/MigrationGuide.archive.md).
 
-<br />
-
 <TableOfContent headingSelector="h2, h3" />
+
+## Codemod
+
+To make the migration to UI5 Web Components (for React) v2 easier,
+we provide a codemod which tries to transform most of the breaking changes.
+
+<MessageStrip
+  hideCloseButton
+  design="Critical"
+  children={
+    <>
+      The codemod is a best efforts attempt to help you migrate the breaking change. Please review the generated code
+      thoroughly!
+      <br />
+      Also, there are edge cases that cannot be found by the code mod, so please keep an eye on the log output.
+      <br />
+      <strong>
+        Applying the codemod might break your code formatting, so please don't forget to run prettier and/or eslint
+        after you've applied the codemod!
+      </strong>
+    </>
+  }
+/>
+
+```shell
+npx @ui5/webcomponents-react-cli codemod --transform v2 \
+    --src ./path/to/src \
+    --typescript # only if you use TypeScript in your project, omit if you use JavaScript
+```
 
 ## General changes
 
