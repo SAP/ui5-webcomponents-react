@@ -363,9 +363,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
                 const dphImport = imports.find(j.ImportSpecifier, { local: { name: 'DynamicPageHeader' } });
                 dphImport.remove();
               }
-              if (!componentIsImportedFromWebComponentsReact(j, root, 'ObjectPageHeader')) {
-                addWebComponentsReactImport(j, root, 'ObjectPageHeader');
-              }
+              addWebComponentsReactImport(j, root, 'ObjectPageHeader');
 
               // replace JSX tag (component)
               dynamicPageHeader.forEach((innerEl) => {
@@ -399,9 +397,8 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
                   const dptImport = imports.find(j.ImportSpecifier, { local: { name: 'DynamicPageTitle' } });
                   dptImport.remove();
                 }
-                if (!componentIsImportedFromWebComponentsReact(j, root, 'ObjectPageTitle')) {
-                  addWebComponentsReactImport(j, root, 'ObjectPageTitle');
-                }
+                addWebComponentsReactImport(j, root, 'ObjectPageTitle');
+
                 // replace JSX tag (component)
                 const updatedTagName = j.jsxIdentifier('ObjectPageTitle');
                 innerEl.node.openingElement.name = updatedTagName;
