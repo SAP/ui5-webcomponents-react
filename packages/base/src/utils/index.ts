@@ -23,6 +23,9 @@ export const enrichEventWithDetails = <
   event: Event,
   payload: Detail
 ): EnrichedEventType<Event, Detail> => {
+  if (!event) {
+    return event;
+  }
   // todo: once we drop React 16 support, remove this
   // the helper accepts both SyntheticEvents and browser events
   const syntheticEventCast = event as unknown as SyntheticEvent;

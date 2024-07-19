@@ -5,7 +5,13 @@ import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
+import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
+import exitFSIcon from '@ui5/webcomponents-icons/dist/exit-full-screen.js';
+import fullscreenIcon from '@ui5/webcomponents-icons/dist/full-screen.js';
 import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
+import { useRef } from 'react';
+import { Toolbar as LegacyToolbar, ToolbarSpacer as LegacyToolbarSpacer } from '../../../../compat/src/index.js';
+import type { ObjectPageDomRef } from '../../index.js';
 import {
   Bar,
   Breadcrumbs,
@@ -31,7 +37,8 @@ import {
   ObjectStatus,
   Text,
   Title,
-  ToggleButton
+  Toolbar,
+  ToolbarButton
 } from '../../index.js';
 import { ObjectPage } from './index.js';
 
@@ -39,9 +46,9 @@ const meta = {
   title: 'Layouts & Floorplans / ObjectPage',
   component: ObjectPage,
   argTypes: {
-    headerTitle: { control: { disable: true } },
-    headerContent: { control: { disable: true } },
-    footer: { control: { disable: true } },
+    titleArea: { control: { disable: true } },
+    headerArea: { control: { disable: true } },
+    footerArea: { control: { disable: true } },
     children: { control: { disable: true } },
     placeholder: { control: { disable: true } },
     accessibilityAttributes: { table: { category: 'Accessibility props' } }
@@ -52,7 +59,7 @@ const meta = {
     imageShapeCircle: true,
     image: SampleImage,
     style: { height: '700px' },
-    footer: (
+    footerArea: (
       <Bar
         design={BarDesign.FloatingFooter}
         endContent={
@@ -63,17 +70,22 @@ const meta = {
         }
       />
     ),
-    headerTitle: (
+    titleArea: (
       <ObjectPageTitle
         header="Denise Smith"
         subHeader="Senior UI Developer"
-        actions={
-          <>
-            <Button key="1" design={ButtonDesign.Emphasized}>
-              Primary Action
-            </Button>
-            <Button key="2">Action</Button>
-          </>
+        actionsBar={
+          <Toolbar design="Transparent">
+            <ToolbarButton design={ButtonDesign.Emphasized} text="Primary Action" />
+            <ToolbarButton design={ButtonDesign.Transparent} text="Action" />
+          </Toolbar>
+        }
+        navigationBar={
+          <Toolbar design="Transparent">
+            <ToolbarButton icon={fullscreenIcon} design={ButtonDesign.Transparent} />
+            <ToolbarButton icon={exitFSIcon} design={ButtonDesign.Transparent} />
+            <ToolbarButton icon={declineIcon} design={ButtonDesign.Transparent} />
+          </Toolbar>
         }
         breadcrumbs={
           <Breadcrumbs>
@@ -88,7 +100,7 @@ const meta = {
         <ObjectStatus state={ValueState.Positive}>employed</ObjectStatus>
       </ObjectPageTitle>
     ),
-    headerContent: (
+    headerArea: (
       <ObjectPageHeader>
         <FlexBox wrap={FlexBoxWrap.Wrap} alignItems={FlexBoxAlignItems.Center}>
           <FlexBox direction={FlexBoxDirection.Column}>
@@ -280,81 +292,11 @@ export const WithIllustratedMessage: Story = {
     return (
       <ObjectPage
         image={args.image}
-        headerTitle={args.headerTitle}
-        headerContent={args.headerContent}
+        titleArea={args.titleArea}
+        headerArea={args.headerArea}
         imageShapeCircle
         placeholder={<IllustratedMessage name={IllustrationMessageType.UnableToLoad} />}
       />
-    );
-  }
-};
-
-export const WithCustomOverflowButton: Story = {
-  name: 'with custom overflow button',
-  render() {
-    const titleProps = {
-      actionsToolbarProps: {
-        overflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="navigation-down-arrow" />
-      },
-      navigationActionsToolbarProps: {
-        overflowButton: <ToggleButton design={ButtonDesign.Transparent} icon="menu2" />
-      },
-      actions: (
-        <>
-          <Button key={'edit'} design={ButtonDesign.Emphasized}>
-            Edit
-          </Button>
-          <Button key={'delete'} design={ButtonDesign.Transparent}>
-            Delete
-          </Button>
-          <Button key={'copy'} design={ButtonDesign.Transparent}>
-            Copy
-          </Button>
-          <Button key={'action'} icon="action" design={ButtonDesign.Transparent}>
-            Action
-          </Button>
-          <Button design={ButtonDesign.Transparent}>Create</Button>
-          <Button design={ButtonDesign.Transparent}>Loooooooooooooooooooooooooooooooooooong actions Button</Button>
-        </>
-      ),
-      navigationActions: (
-        <>
-          <Button key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />
-          <Button key={'exitFullscreen'} icon="exit-full-screen" design={ButtonDesign.Transparent} />
-          <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
-          <Button design={ButtonDesign.Transparent}>UI5 Web Components For React</Button>
-          <Button design={ButtonDesign.Transparent}>Navigation Actions Button</Button>
-          <Button design={ButtonDesign.Transparent}>
-            Loooooooooooooooooooooooooooooooooooong navigation actions Button
-          </Button>
-        </>
-      )
-    };
-    return (
-      <>
-        <ObjectPage
-          style={{ width: '1000px' }}
-          headerTitle={
-            <ObjectPageTitle
-              {...titleProps}
-              header={
-                <Title wrappingType="Normal">
-                  Custom overflow buttons for navigationActions and actions (width: 1000px)
-                </Title>
-              }
-            />
-          }
-        />
-        <ObjectPage
-          style={{ width: '1400px' }}
-          headerTitle={
-            <ObjectPageTitle
-              {...titleProps}
-              header={<Title>Custom overflow buttons for actions (width: 1400px)</Title>}
-            />
-          }
-        />
-      </>
     );
   }
 };
@@ -419,6 +361,64 @@ export const FullScreenSingleSection: Story = {
         </ObjectPageSection>
         <ObjectPageSection titleText="Section with Overflow" id="section3" style={{ height: '100%', overflow: 'auto' }}>
           <div style={{ height: '300%', background: 'lightyellow' }} />
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+  }
+};
+
+export const LegacyToolbarSupport: Story = {
+  render(args) {
+    const objectPageRef = useRef<ObjectPageDomRef>(null);
+    const handleToolbarClick = (e) => {
+      if (e.target.dataset.componentName === 'ToolbarContent') {
+        objectPageRef.current.toggleHeaderArea();
+      }
+    };
+    return (
+      <ObjectPage
+        {...args}
+        ref={objectPageRef}
+        titleArea={
+          <ObjectPageTitle
+            header="Legacy Toolbar Support"
+            subHeader="actions and navigation actions are rendered inside the legacy Toolbar component"
+            actionsBar={
+              <LegacyToolbar
+                design="Transparent"
+                toolbarStyle="Clear"
+                onClick={handleToolbarClick}
+                data-in-object-page-title
+              >
+                <LegacyToolbarSpacer />
+                <Button design={ButtonDesign.Emphasized}>Primary Action</Button>
+                <Button design={ButtonDesign.Transparent}>Action</Button>
+              </LegacyToolbar>
+            }
+            navigationBar={
+              <LegacyToolbar
+                design="Transparent"
+                toolbarStyle="Clear"
+                onClick={handleToolbarClick}
+                data-in-object-page-title
+              >
+                <LegacyToolbarSpacer />
+                <Button icon={fullscreenIcon} design={ButtonDesign.Transparent} />
+                <Button icon={exitFSIcon} design={ButtonDesign.Transparent} />
+                <Button icon={declineIcon} design={ButtonDesign.Transparent} />
+              </LegacyToolbar>
+            }
+          />
+        }
+      >
+        <ObjectPageSection titleText="Section 1" id="opSection1">
+          <div style={{ height: '300px', width: '100%', background: 'lightblue' }}>Section 1 Content</div>
+        </ObjectPageSection>
+        <ObjectPageSection titleText="Section 2" id="opSection2">
+          <div style={{ height: '200px', width: '100%', background: 'lightblue' }}>Section 2 Content</div>
+        </ObjectPageSection>
+        <ObjectPageSection titleText="Section 3" id="opSection3">
+          <div style={{ height: '500px', width: '100%', background: 'lightblue' }}>Section 3 Content</div>
         </ObjectPageSection>
       </ObjectPage>
     );

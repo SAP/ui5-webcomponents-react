@@ -59,7 +59,7 @@ interface ObjectPageAnchorBarPropTypes extends CommonProps {
   /**
    * Fired when the `headerContent` changes its pinned state.
    */
-  onPinnedStateChange?: (pinned: boolean) => void;
+  onPinButtonToggle?: (pinned: boolean) => void;
 }
 
 /**
@@ -73,7 +73,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
     style,
     accessibilityAttributes,
     setHeaderPinned,
-    onPinnedStateChange,
+    onPinButtonToggle,
     onToggleHeaderContentVisibility,
     onHoverToggleButton
   } = props;
@@ -92,8 +92,8 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
 
   const isInitial = useRef(true);
   useEffect(() => {
-    if (!isInitial.current && typeof onPinnedStateChange === 'function') {
-      onPinnedStateChange(headerPinned);
+    if (!isInitial.current && typeof onPinButtonToggle === 'function') {
+      onPinButtonToggle(headerPinned);
     }
     if (isInitial.current) {
       isInitial.current = false;

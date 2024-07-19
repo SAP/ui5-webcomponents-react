@@ -164,6 +164,8 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     ...rest
   } = props;
 
+  const inObjectPage = props['data-in-object-page-title'];
+
   useStylesheet(styleData, Toolbar.displayName);
   const [componentRef, outerContainer] = useSyncRef<HTMLDivElement>(ref);
   const controlMetaData = useRef([]);
@@ -317,6 +319,9 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   }, [calculateVisibleItems]);
 
   const handleToolbarClick = (e) => {
+    if (inObjectPage && typeof onClick === 'function') {
+      onClick(e);
+    }
     if (active && typeof onClick === 'function') {
       const isSpaceEnterDown = e.type === 'keydown' && (e.code === 'Enter' || e.code === 'Space');
       if (isSpaceEnterDown && e.target !== e.currentTarget) {
@@ -379,6 +384,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       tabIndex={active ? 0 : undefined}
       role={active ? 'button' : undefined}
       data-sap-ui-fastnavgroup="true"
+      data-component-name="Toolbar"
       {...rest}
     >
       <div className={classNames.toolbar} data-component-name="ToolbarContent" ref={contentRef}>
@@ -420,4 +426,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
 });
 
 Toolbar.displayName = 'Toolbar';
+//@ts-expect-error: private identifier
+Toolbar._displayName = 'UI5WCRToolbar';
 export { Toolbar };

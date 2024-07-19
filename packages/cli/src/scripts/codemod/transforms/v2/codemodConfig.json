@@ -319,9 +319,15 @@
       "changedProps": {
         "a11yConfig": "accessibilityAttributes",
         "alwaysShowContentHeader": "headerPinned",
-        "headerContentPinnable": "hidePinButton"
+        "headerContentPinnable": "hidePinButton",
+        "footer": "footerArea",
+        "onToggleHeaderContent": "onToggleHeaderArea",
+        "onPinnedStateChange": "onPinButtonToggle"
       },
       "removedProps": ["showHideHeaderButton", "showTitleInHeaderContent"]
+    },
+    "ObjectPageTitle": {
+      "removedProps": ["showSubHeaderRight"]
     },
     "ObjectStatus": {
       "changedProps": {
