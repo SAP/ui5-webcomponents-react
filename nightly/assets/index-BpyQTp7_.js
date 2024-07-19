@@ -1,1 +1,0 @@
-const s=(t,l)=>{if(!t)return t;const i=t;typeof i.persist=="function"&&i.persist();const e=t.detail===null||t.detail===void 0||typeof t.detail!="object",a=typeof t.detail=="number"?t.detail:null;return Object.defineProperty(t,"detail",{value:e?{}:t.detail,writable:!0,configurable:!0}),a&&Object.assign(t.detail,{nativeDetail:a}),Object.assign(t.detail,l),t};export{s as e};
