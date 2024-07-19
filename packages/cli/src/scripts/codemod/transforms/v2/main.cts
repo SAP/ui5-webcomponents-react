@@ -471,6 +471,29 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       });
     }
 
+    if (componentName === 'Text') {
+      jsxElements.forEach((el) => {
+        const wrapping = j(el).find(j.JSXAttribute, { name: { name: 'wrapping' } });
+        if (wrapping.size() > 0) {
+          const attr = wrapping.get();
+          if (
+            attr.value.value &&
+            ((attr.value.value.type === 'JSXAttribute' && attr.value.value === false) ||
+              (attr.value.value.type === 'JSXExpressionContainer' && attr.value.value.expression.value === false))
+          ) {
+            j(el)
+              .find(j.JSXOpeningElement)
+              .get()
+              .value.attributes.push(
+                j.jsxAttribute(j.jsxIdentifier('maxLines'), j.jsxExpressionContainer(j.numericLiteral(1)))
+              );
+          }
+          wrapping.remove();
+          isDirty = true;
+        }
+      });
+    }
+
     // before renaming any values, replace hard coded enum values
     Object.entries(changes.renamedEnums ?? {}).forEach(([propName, enumRef]) => {
       jsxElements.forEach((el) => {

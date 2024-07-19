@@ -23,6 +23,12 @@
   ],
   "packageRules": [
     {
+      "groupName": "Rimraf",
+      "extends": ["schedule:weekly"],
+      "matchPackageNames": ["rimraf"],
+      "semanticCommitType": "chore"
+    },
+    {
       "groupName": "UI5 Web Components",
       "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"]
     },
@@ -41,9 +47,9 @@
       "semanticCommitType": "chore",
       "groupName": "all non-major dependencies",
       "groupSlug": "root-all-minor-patch",
-      "matchPackagePatterns": ["*"],
+      "matchFileNames": ["package.json"],
       "matchUpdateTypes": ["minor", "patch"],
-      "excludePackageNames": ["react", "react-dom", "storybook"],
+      "excludePackageNames": ["react", "react-dom", "storybook", "rimraf"],
       "excludePackagePatterns": ["^@storybook/"]
     },
     {

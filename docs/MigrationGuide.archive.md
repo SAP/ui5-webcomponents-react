@@ -1019,7 +1019,7 @@ were only used internally and are mentioned here for the sake of completeness.
 
 #### Spinner
 
-The deprecated `Spinner` component has been removed in favor of the [BusyIndicator](https://sap.github.io/ui5-webcomponents-react/?path=/docs/ui5-web-components-busyindicator) component.
+The deprecated `Spinner` component has been removed in favor of the [BusyIndicator](https://sap.github.io/ui5-webcomponents-react/v1/?path=/docs/ui5-web-components-busyindicator) component.
 
 Migration Example:
 
@@ -1035,7 +1035,7 @@ will become
 
 #### Tokenizer
 
-The deprecated `Tokenizer` component has been removed in favor of the [MultiInput](https://sap.github.io/ui5-webcomponents-react/?path=/docs/ui5-web-components-multiinput) component.
+The deprecated `Tokenizer` component has been removed in favor of the [MultiInput](https://sap.github.io/ui5-webcomponents-react/v1/?path=/docs/ui5-web-components-multiinput) component.
 
 Migration Example:
 
