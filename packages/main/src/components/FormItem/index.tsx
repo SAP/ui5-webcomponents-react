@@ -147,7 +147,7 @@ const FormItem = (props: FormItemPropTypes) => {
 
   const calculatedGridRowStart = calculatedGridRowIndex ?? 0;
   const calculatedGridRowStartLabel =
-    labelSpan === 12 ? calculatedGridRowIndex - 1 : calculatedGridRowIndex ?? undefined;
+    labelSpan === 12 ? calculatedGridRowIndex - 1 : (calculatedGridRowIndex ?? undefined);
 
   return (
     <>
