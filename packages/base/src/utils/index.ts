@@ -21,6 +21,10 @@ export const enrichEventWithDetails = <
   event: Event,
   payload: Detail
 ): EnrichedEventType<Event, Detail> => {
+  if (!event) {
+    return event;
+  }
+  
   // Determine if we need to create a new details object
   const shouldCreateNewDetails =
     event.detail === null || event.detail === undefined || typeof event.detail !== 'object';
