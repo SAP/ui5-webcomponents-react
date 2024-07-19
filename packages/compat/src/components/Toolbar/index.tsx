@@ -70,7 +70,7 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
   /**
    * Defines where modals are rendered into via `React.createPortal`.
    *
-   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--page).
+   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-working-with-portals--page).
    *
    * Defaults to: `document.body`
    */
@@ -163,6 +163,8 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     a11yConfig,
     ...rest
   } = props;
+
+  const inObjectPage = props['data-in-object-page-title'];
 
   useStylesheet(styleData, Toolbar.displayName);
   const [componentRef, outerContainer] = useSyncRef<HTMLDivElement>(ref);
@@ -317,6 +319,9 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   }, [calculateVisibleItems]);
 
   const handleToolbarClick = (e) => {
+    if (inObjectPage && typeof onClick === 'function') {
+      onClick(e);
+    }
     if (active && typeof onClick === 'function') {
       const isSpaceEnterDown = e.type === 'keydown' && (e.code === 'Enter' || e.code === 'Space');
       if (isSpaceEnterDown && e.target !== e.currentTarget) {
@@ -379,6 +384,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       tabIndex={active ? 0 : undefined}
       role={active ? 'button' : undefined}
       data-sap-ui-fastnavgroup="true"
+      data-component-name="Toolbar"
       {...rest}
     >
       <div className={classNames.toolbar} data-component-name="ToolbarContent" ref={contentRef}>
@@ -420,4 +426,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
 });
 
 Toolbar.displayName = 'Toolbar';
+//@ts-expect-error: private identifier
+Toolbar._displayName = 'UI5WCRToolbar';
 export { Toolbar };

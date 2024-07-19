@@ -175,3 +175,8 @@
 .snappedContent {
   grid-column: 1 / span 2;
 }
+
+.clickArea {
+  position: absolute;
+  inset: 0;
+}

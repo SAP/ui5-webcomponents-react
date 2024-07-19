@@ -72,7 +72,7 @@ const meta = {
           </>
         }
         actionsBar={
-          <Toolbar>
+          <Toolbar design="Transparent">
             <ToolbarButton design={ButtonDesign.Emphasized} text="Edit" />
             <ToolbarButton design={ButtonDesign.Transparent} text="Delete" />
             <ToolbarButton design={ButtonDesign.Transparent} text="Copy" />
@@ -80,7 +80,7 @@ const meta = {
           </Toolbar>
         }
         navigationBar={
-          <Toolbar>
+          <Toolbar design="Transparent">
             <ToolbarButton icon={fullscreenIcon} design={ButtonDesign.Transparent} />
             <ToolbarButton icon={exitFSIcon} design={ButtonDesign.Transparent} />
             <ToolbarButton icon={declineIcon} design={ButtonDesign.Transparent} />

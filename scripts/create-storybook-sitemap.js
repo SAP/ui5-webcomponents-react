@@ -6,6 +6,9 @@ const options = {
   directory: {
     type: 'string',
     short: 'd'
+  },
+  basePath: {
+    type: 'string'
   }
 };
 
@@ -27,12 +30,12 @@ const lastModified = new Date().toISOString().replace(/T[\d:\.]+Z/, '');
 let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
 sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 sitemap += `    <url>\n`;
-sitemap += `        <loc>https://sap.github.io/ui5-webcomponents-react/</loc>\n`;
+sitemap += `        <loc>https://sap.github.io/ui5-webcomponents-react/${values.basePath}</loc>\n`;
 sitemap += `        <lastmod>${lastModified}</lastmod>\n`;
 sitemap += `    </url>\n`;
 for (const sitemapUrl of docs) {
   sitemap += `    <url>\n`;
-  sitemap += `        <loc>https://sap.github.io/ui5-webcomponents-react/${sitemapUrl}</loc>\n`;
+  sitemap += `        <loc>https://sap.github.io/ui5-webcomponents-react/${values.basePath}/${sitemapUrl}</loc>\n`;
   sitemap += `        <lastmod>${lastModified}</lastmod>\n`;
   sitemap += `    </url>\n`;
 }

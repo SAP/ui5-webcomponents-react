@@ -25,14 +25,6 @@ import { ObjectPageSubSection } from '../ObjectPageSubSection';
 
 <Canvas of={ComponentStories.WithIllustratedMessage} />
 
-## ObjectPage with custom actions and navigationActions overflow button
-
-The `ObjectPageTitle` offers two props (`actionsToolbarProps` and `navigationActionsToolbarProps`) to configure the props of the `actions` and `navigationActions` toolbars.
-With these objectes it's possible to e.g. configure the overflow button displayed within each toolbar by setting the `overflowButton` prop.
-`navigationActionsToolbarProps` only has an effect, if the `navigationActions` toolbar is used. (width < 1280px)
-
-<Canvas of={ComponentStories.WithCustomOverflowButton} />
-
 ## ObjectPageSection with hidden `titleText` and custom `header`
 
 <Canvas of={ComponentStories.SectionWithCustomHeader} />
@@ -52,6 +44,87 @@ To render a single section in fullscreen mode, set its height to `100%`.
   <div style={{ height: '300%', background: 'lightyellow' }} />
 </ObjectPageSection>
 ```
+
+## Legacy Toolbar Support
+
+The ObjectPage still supports the old (React-only) `Toolbar` implementation. Please only use this toolbar if your app is dependent on some features the `Toolbar` web component is currently not offering.
+Also, when using the legacy `Toolbar` there are some things to consider that work out of the box with the recommended Toolbar:
+
+- To correctly align the actions to the end, use a legacy `ToolbarSpacer` as first child of the `Toolbar`.
+- Toggling the `headerArea` by clicking on the empty space inside the legacy `Toolbar` has to be implemented on app side now. Please make sure to add the `data-in-object-page-title` prop to the toolbars, as otherwise the `click` event isn't fired. You can see an example of how to achieve this behavior below.
+
+<Canvas of={ComponentStories.LegacyToolbarSupport} sourceState="hidden" />
+
+### Code
+
+<details>
+
+<summary>Show Code</summary>
+
+```tsx
+import { useRef } from 'react';
+import { Toolbar as LegacyToolbar, ToolbarSpacer as LegacyToolbarSpacer } from '@ui5/webcomponents-react-compat';
+import { Button, ButtonDesign, ObjectPage, ObjectPageSection, ObjectPageTitle } from '@ui5/webcomponents-react';
+import type { ObjectPageDomRef } from '@ui5/webcomponents-react';
+
+function ObjectPageWithLegacyToolbar(props) {
+  const objectPageRef = useRef<ObjectPageDomRef>(null);
+  const handleToolbarClick = (e) => {
+    if (e.target.dataset.componentName === 'ToolbarContent') {
+      objectPageRef.current.toggleHeaderArea();
+    }
+  };
+  return (
+    <ObjectPage
+      {...props}
+      ref={objectPageRef}
+      titleArea={
+        <ObjectPageTitle
+          header="Legacy Toolbar Support"
+          subHeader="actions and navigation actions are rendered inside the legacy Toolbar component"
+          actionsBar={
+            <LegacyToolbar
+              design="Transparent"
+              toolbarStyle="Clear"
+              onClick={handleToolbarClick}
+              data-in-object-page-title
+            >
+              <LegacyToolbarSpacer />
+              <Button design={ButtonDesign.Emphasized}>Primary Action</Button>
+              <Button design={ButtonDesign.Transparent}>Action</Button>
+            </LegacyToolbar>
+          }
+          navigationBar={
+            <LegacyToolbar
+              design="Transparent"
+              toolbarStyle="Clear"
+              onClick={handleToolbarClick}
+              data-in-object-page-title
+            >
+              <LegacyToolbarSpacer />
+              <Button icon={'full-screen'} design={ButtonDesign.Transparent} />
+              <Button icon={'exit-full-screen'} design={ButtonDesign.Transparent} />
+              <Button icon={'decline'} design={ButtonDesign.Transparent} />
+            </LegacyToolbar>
+          }
+        />
+      }
+    >
+      <ObjectPageSection titleText="Section 1" id="opSection1">
+        <div style={{ height: '300px', width: '100%', background: 'lightblue' }}>Section 1 Content</div>
+      </ObjectPageSection>
+      <ObjectPageSection titleText="Section 2" id="opSection2">
+        <div style={{ height: '200px', width: '100%', background: 'lightblue' }}>Section 2 Content</div>
+      </ObjectPageSection>
+      <ObjectPageSection titleText="Section 3" id="opSection3">
+        <div style={{ height: '500px', width: '100%', background: 'lightblue' }}>Section 3 Content</div>
+      </ObjectPageSection>
+    </ObjectPage>
+  );
+}
+```
+
+</details>
 
 <Markdown>{SubcomponentsSection}</Markdown>
 
