@@ -51,7 +51,7 @@
   position: sticky;
   box-shadow: var(--sapContent_HeaderShadow);
   height: 1px;
-  z-index: 2;
+  z-index: 3;
 
   > section[data-component-name='DynamicPageAnchorBar'] {
     inset-block-start: 0;
