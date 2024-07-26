@@ -28,10 +28,15 @@ jobs:
         env:
           CYPRESS_INSTALL_BINARY: 0
 
+      - name: Get Major Version
+        run: |
+          MAJOR_VERSION=$(node -p -e "/^(\d+)\./.exec(require('./lerna.json').version)[1]")
+          echo "MAJOR_VERSION=${MAJOR_VERSION}" >> "$GITHUB_ENV"
+
       - name: Build Storybook
         run: |
           yarn build:storybook
-          yarn build:storybook-sitemap
+          yarn build:storybook-sitemap --basePath "v${{ env.MAJOR_VERSION }}"
         env:
           NODE_OPTIONS: '--max-old-space-size=4096'
 
@@ -40,5 +45,5 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.
+          target-folder: v${{ env.MAJOR_VERSION }}
           clean: true
-          clean-exclude: 'main'
