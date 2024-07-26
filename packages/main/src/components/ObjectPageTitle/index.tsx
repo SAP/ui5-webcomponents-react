@@ -4,7 +4,7 @@ import { debounce, Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
-import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums/index.js';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { CommonProps } from '../../types/index.js';
 import type { ToolbarDomRef } from '../../webComponents/index.js';
@@ -198,7 +198,14 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
   }, []);
 
   return (
-    <FlexBox className={containerClasses} ref={componentRef} data-component-name="ObjectPageTitle" {...rest}>
+    <FlexBox
+      className={containerClasses}
+      ref={componentRef}
+      data-component-name="ObjectPageTitle"
+      direction={FlexBoxDirection.Column}
+      justifyContent={FlexBoxJustifyContent.SpaceBetween}
+      {...rest}
+    >
       <span
         className={classNames.clickArea}
         onClick={onHeaderClick}
