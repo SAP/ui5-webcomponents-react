@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.5](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.4...v1.29.5) (2024-07-26)
+
+### Bug Fixes
+
+- **DynamicPage/ObjectPage:** increase header z-index ([#6116](https://github.com/SAP/ui5-webcomponents-react/issues/6116)) ([9379f5a](https://github.com/SAP/ui5-webcomponents-react/commit/9379f5a5a7c0329992c36ca89851f7e89b8445e5)), closes [#6107](https://github.com/SAP/ui5-webcomponents-react/issues/6107)
+- **ObjectPage:** apply correct height for collapsed header spacing div ([#6088](https://github.com/SAP/ui5-webcomponents-react/issues/6088)) ([618a42a](https://github.com/SAP/ui5-webcomponents-react/commit/618a42a2c913363ad92b00e6410bdc5e498d32eb)), closes [#6087](https://github.com/SAP/ui5-webcomponents-react/issues/6087)
+
 ## [1.29.4](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.3...v1.29.4) (2024-07-10)
 
 ### Bug Fixes
