@@ -1,0 +1,1 @@
+var i=(n=>(n.Indication01="Indication01",n.Indication02="Indication02",n.Indication03="Indication03",n.Indication04="Indication04",n.Indication05="Indication05",n.Indication06="Indication06",n.Indication07="Indication07",n.Indication08="Indication08",n))(i||{});export{i as I};
