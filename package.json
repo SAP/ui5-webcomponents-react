@@ -52,7 +52,7 @@
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "7.24.9",
-    "@babel/preset-env": "7.24.8",
+    "@babel/preset-env": "7.25.0",
     "@babel/preset-react": "7.24.7",
     "@babel/preset-typescript": "7.24.7",
     "@cypress/code-coverage": "^3.10.0",
