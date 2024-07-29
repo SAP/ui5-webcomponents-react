@@ -96,7 +96,7 @@
     "rimraf": "^6.0.0",
     "storybook": "8.0.10",
     "typedoc": "^0.26.0",
-    "typescript": "5.5.3",
+    "typescript": "5.5.4",
     "vite": "^5.0.0",
     "vite-plugin-istanbul": "^6.0.0",
     "vite-tsconfig-paths": "^4.0.5"
