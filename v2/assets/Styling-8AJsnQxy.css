@@ -1,0 +1,1 @@
+.card::part(root){background-color:#90ee90}.card::part(content){transform:rotate(180deg)}.containerCustomElement{background-color:var(--sapBackgroundColor);font-family:var(--sapFontFamily);height:50px;display:flex;justify-content:center;align-items:center}
