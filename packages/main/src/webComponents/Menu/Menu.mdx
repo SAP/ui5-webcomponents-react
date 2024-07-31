@@ -1,7 +1,6 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import * as ComponentStories from './Menu.stories';
-import { MessageStrip } from '../MessageStrip';
 import { MenuItem } from '../MenuItem';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { excludePropsForAbstract } from '@sb/utils';
@@ -22,8 +21,7 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 #### since 1.8.0
 
-We recommend opening and closing the `Menu` component in a declarative way using the `open` and `opener` prop.
-You can still use the imperative way which is outlined below.
+You can open and close the `Menu` component in a declarative way using the `open` and `opener` prop.
 
 ```jsx
 const MyComponentWithMenu = () => {
@@ -45,60 +43,6 @@ const MyComponentWithMenu = () => {
           setMenuIsOpen(false);
         }}
       />
-    </>
-  );
-};
-```
-
-**Opening a `Menu` by reference and not by `id`**
-
-This web component exposes a way to pass a reference of an element instead of an `id` to the `opener` prop. Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
-You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
-
-<MessageStrip
-  hideCloseButton
-  children="Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
-  using this approach!"
-/>
-
-```jsx
-const MenuComponent = () => {
-  const popoverRef = useRef(null);
-  const [open, setOpen] = useState(false);
-  const handleOpenerClick = (e) => {
-    if (popoverRef.current) {
-      popoverRef.current.opener = e.target;
-      setOpen((prev) => !prev);
-    }
-  };
-  return (
-    <>
-      <Button onClick={handleOpenerClick}>Opener</Button>
-      <Menu ref={popoverRef} open={open}>
-        {/* Content */}
-      </Menu>
-    </>
-  );
-};
-```
-
-#### before 1.8.0
-
-`Menu`s can be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `Menu` is to be opened_ - as parameter.
-
-```jsx
-const MenuComponent = () => {
-  const popoverRef = useRef();
-  const onButtonClick = (e) => {
-    popoverRef.current.showAt(e.target);
-  };
-  return (
-    <>
-      <Button onClick={onButtonClick}>Open Menu</Button>
-      <Menu ref={popoverRef}>
-        <MenuItem text="New File" icon="add-document" />
-        <MenuItem text="New Folder" icon="add-folder" disabled />
-      </Menu>
     </>
   );
 };
