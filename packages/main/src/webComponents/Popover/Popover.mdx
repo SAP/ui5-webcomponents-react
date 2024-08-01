@@ -19,12 +19,7 @@ import { MessageStrip } from '../MessageStrip';
 
 ## Opening Popovers
 
-<br />
-
-#### since 0.22.0
-
-We recommend opening and closing the `Popover` component in a declarative way using the `open` and `opener` prop.
-You can still use the imperative way which is outlined below.
+You can open and close the `Popover` component in a declarative way using the `open` and `opener` prop.
 
 ```jsx
 const MyComponentWithPopover = () => {
@@ -46,82 +41,6 @@ const MyComponentWithPopover = () => {
           setPopoverIsOpen(false);
         }}
       />
-    </>
-  );
-};
-```
-
-**Opening a `Popover` by reference and not by `id`**
-
-This web component exposes a way to pass a reference of an element instead of an `id` to the `opener` prop. Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
-You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
-
-<MessageStrip
-  hideCloseButton
-  children="Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
-  using this approach!"
-/>
-
-```jsx
-const PopoverComponent = () => {
-  const popoverRef = useRef(null);
-  const [open, setOpen] = useState(false);
-  const handleOpenerClick = (e) => {
-    if (popoverRef.current) {
-      popoverRef.current.opener = e.target;
-      setOpen((prev) => !prev);
-    }
-  };
-  return (
-    <>
-      <Button onClick={handleOpenerClick}>Opener</Button>
-      <Popover ref={popoverRef} open={open}>
-        {/* Content */}
-      </Popover>
-    </>
-  );
-};
-```
-
-#### before 0.22.0
-
-`Popovers` can only be opened by attaching a `ref` to the component and then calling the corresponding **`showAt`** method. The method receives the target element - _on which the `Popover` is to be opened_ - as parameter.
-
-```jsx
-const PopoverComponent = () => {
-  const popoverRef = useRef();
-  const onButtonClick = (e) => {
-    popoverRef.current.showAt(e.target);
-  };
-  return (
-    <>
-      <Button onClick={onButtonClick}>Open Popover</Button>
-      <Popover ref={popoverRef}>Some Content</Popover>
-    </>
-  );
-};
-```
-
-## Closing Popovers
-
-Closing `Popovers` works in the same way as opening them.
-You can either set the `open` prop to `false` or attaching a `ref` on which the corresponding `close` method is called.
-
-```jsx
-const PopoverComponent = () => {
-  const popoverRef = useRef(null);
-  const handleOpen = (e) => {
-    popoverRef.current.showAt(e.target);
-  };
-  const handleClose = () => {
-    popoverRef.current.close();
-  };
-  return (
-    <>
-      <Button onClick={handleOpen}>Open Popover</Button>
-      <Popover ref={popoverRef}>
-        <Button onClick={handleClose}>Close Popover</Button>
-      </Popover>
     </>
   );
 };
