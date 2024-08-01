@@ -18,24 +18,32 @@ import * as ComponentStories from './Toast.stories';
 
 ## Show a toast
 
-The `Toast` component has an imperative API for getting displayed. It will not be displayed just because it is part of the DOM.
-In order to show the Toast, you have to get a reference to the `Toast` DOM element and call the `show`-method.
-You can either access the DOM element by using a React `ref` or work with IDs.
+You can open and close the `Toaast` component in a declarative way using the `open` prop.
 
 **Example**
 
 ```jsx
-export const MyComponentWithAToast() {
-  const toast = useRef(null);
+export function MyComponentWithAToast() {
+  const [showToast, setShowToast] = useState(false);
 
-  const showToast = () => {
-    toast.current.show();
-  };
   return (
-    <ThemeProvider>
-      <Button onClick={showToast}>Show Toast</Button>
-      <Toast ref={toast}>This is my Toast!</Toast>
-    </ThemeProvider>
+    <>
+      <Button
+        onClick={() => {
+          setShowToast(true);
+        }}
+      >
+        Show Toast
+      </Button>
+      <Toast
+        open={showToast}
+        onClose={() => {
+          setShowToast(false);
+        }}
+      >
+        This is my Toast!
+      </Toast>
+    </>
   );
 }
 ```
