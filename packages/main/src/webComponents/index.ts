@@ -99,6 +99,7 @@ export * from './TableSelection/index.js';
 export * from './TextArea/index.js';
 export * from './TimePicker/index.js';
 export * from './Timeline/index.js';
+export * from './TimelineGroupItem/index.js';
 export * from './TimelineItem/index.js';
 export * from './Title/index.js';
 export * from './Toast/index.js';
