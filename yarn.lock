@@ -7155,7 +7155,7 @@ __metadata:
     use-sync-external-store: "npm:1.2.2"
   peerDependencies:
     "@types/react": "*"
-    "@ui5/webcomponents-base": ~2.0.1
+    "@ui5/webcomponents-base": ~2.0.1 || ~2.1.0
     react: ^18 || ^19
   peerDependenciesMeta:
     "@types/react":
@@ -7200,7 +7200,7 @@ __metadata:
   peerDependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
-    "@ui5/webcomponents-compat": ~2.0.1
+    "@ui5/webcomponents-compat": ~2.0.1 || ~2.1.0
     "@ui5/webcomponents-react": "workspace:~"
     react: ^18 || ^19
     react-dom: ^18 || ^19
@@ -7227,10 +7227,10 @@ __metadata:
   peerDependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
-    "@ui5/webcomponents": ~2.0.1
-    "@ui5/webcomponents-base": ~2.0.1
-    "@ui5/webcomponents-fiori": ~2.0.1
-    "@ui5/webcomponents-icons": ~2.0.1
+    "@ui5/webcomponents": ~2.0.1 || ~2.1.0
+    "@ui5/webcomponents-base": ~2.0.1 || ~2.1.0
+    "@ui5/webcomponents-fiori": ~2.0.1 || ~2.1.0
+    "@ui5/webcomponents-icons": ~2.0.1 || ~2.1.0
     react: ^18 || ^19
     react-dom: ^18 || ^19
   peerDependenciesMeta:
