@@ -52,6 +52,12 @@ interface DynamicPageTitlePropTypes
   /**
    * Defines the content of the Heading of the Dynamic Page.
    *
+   * The font size of the title within the `heading` slot can be adjusted to the recommended values using the following CSS variables:
+   *
+   * **Expanded:** `var(--sapObjectHeader_Title_FontSize)`
+   *
+   * **Collapsed:** `var(--sapObjectHeader_Title_SnappedFontSize)`
+   *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="heading"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *

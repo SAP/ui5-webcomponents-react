@@ -1,9 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ListItemGroup.js';
+import type { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ListItemGroupAttributes {
   /**
@@ -23,7 +24,7 @@ interface ListItemGroupDomRef extends Required<ListItemGroupAttributes>, Ui5DomR
 
 interface ListItemGroupPropTypes
   extends ListItemGroupAttributes,
-    Omit<CommonProps, keyof ListItemGroupAttributes | 'children' | 'header'> {
+    Omit<CommonProps, keyof ListItemGroupAttributes | 'children' | 'header' | 'onMove' | 'onMoveOver'> {
   /**
    * Defines the items of the <code>ui5-li-group</code>.
    */
@@ -41,6 +42,27 @@ interface ListItemGroupPropTypes
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
    */
   header?: UI5WCSlotsNode;
+  /**
+   * Fired when a movable list item is dropped onto a drop target.
+   *
+   * **Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents**.
+   */
+  onMove?: (event: Ui5CustomEvent<ListItemGroupDomRef, ListItemGroupMoveEventDetail>) => void;
+
+  /**
+   * Fired when a movable list item is moved over a potential drop target during a dragging operation.
+   *
+   * If the new position is valid, prevent the default action of the event using `preventDefault()`.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents**.
+   */
+  onMoveOver?: (event: Ui5CustomEvent<ListItemGroupDomRef, ListItemGroupMoveEventDetail>) => void;
 }
 
 /**
@@ -59,7 +81,7 @@ const ListItemGroup = withWebComponent<ListItemGroupPropTypes, ListItemGroupDomR
   ['headerAccessibleName', 'headerText'],
   [],
   ['header'],
-  [],
+  ['move-over', 'move'],
   () => import('@ui5/webcomponents/dist/ListItemGroup.js')
 );
 

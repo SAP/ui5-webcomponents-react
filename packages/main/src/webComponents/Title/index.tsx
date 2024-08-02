@@ -11,9 +11,18 @@ interface TitleAttributes {
   /**
    * Defines the component level.
    * Available options are: `"H6"` to `"H1"`.
+   * This property does not influence the style of the component.
+   * Use the property `size` for this purpose instead.
    * @default "H2"
    */
   level?: TitleLevel | keyof typeof TitleLevel;
+
+  /**
+   * Defines the visual appearance of the title.
+   * Available options are: `"H6"` to `"H1"`.
+   * @default "H5"
+   */
+  size?: TitleLevel | keyof typeof TitleLevel;
 
   /**
    * Defines how the text of a component will be displayed when there is not enough space.
@@ -46,7 +55,7 @@ interface TitlePropTypes extends TitleAttributes, Omit<CommonProps, keyof TitleA
  */
 const Title = withWebComponent<TitlePropTypes, TitleDomRef>(
   'ui5-title',
-  ['level', 'wrappingType'],
+  ['level', 'size', 'wrappingType'],
   [],
   [],
   [],

@@ -46,7 +46,7 @@ interface TimelineItemPropTypes
   extends TimelineItemAttributes,
     Omit<CommonProps, keyof TimelineItemAttributes | 'children' | 'onNameClick'> {
   /**
-   * Determines the description of the `TimelineItem`.
+   * Defines the content of the `TimelineItem`.
    */
   children?: ReactNode | ReactNode[];
   /**

@@ -154,6 +154,7 @@ interface MultiInputPropTypes
       | 'onClose'
       | 'onInput'
       | 'onOpen'
+      | 'onSelect'
       | 'onSelectionChange'
       | 'onTokenDelete'
       | 'onValueHelpTrigger'
@@ -203,7 +204,7 @@ interface MultiInputPropTypes
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    *
    * **Note:** The `valueStateMessage` would be displayed,
-   * when the component is in `Information`, `Warning` or `Error` value state.
+   * when the component is in `Information`, `Critical` or `Negative` value state.
    *
    * **Note:** If the component has `suggestionItems`,
    * the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
@@ -239,6 +240,13 @@ interface MultiInputPropTypes
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    */
   onOpen?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
+
+  /**
+   * Fired when some text has been selected.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onSelect?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 
   /**
    * Fired when the user navigates to a suggestion item via the ARROW keys,
@@ -279,7 +287,7 @@ const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'noTypeahead', 'open', 'readonly', 'required', 'showClearIcon', 'showSuggestions', 'showValueHelpIcon'],
   ['icon', 'tokens', 'valueStateMessage'],
-  ['change', 'close', 'input', 'open', 'selection-change', 'token-delete', 'value-help-trigger'],
+  ['change', 'close', 'input', 'open', 'select', 'selection-change', 'token-delete', 'value-help-trigger'],
   () => import('@ui5/webcomponents/dist/MultiInput.js')
 );
 
