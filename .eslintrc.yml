@@ -5,6 +5,9 @@ parserOptions:
   sourceType: module
   ecmaFeatures:
     jsx: true
+  projectService:
+    # TODO https://github.com/typescript-eslint/typescript-eslint/issues/9450
+    maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 1000
 env:
   browser: true
   es2022: true
@@ -13,12 +16,18 @@ extends:
   - plugin:react/jsx-runtime
   - plugin:react-hooks/recommended
   - plugin:import/recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:@typescript-eslint/recommended-requiring-type-checking
+  - plugin:import/typescript
   - plugin:prettier/recommended
 plugins:
   - prefer-arrow
+  - '@typescript-eslint'
 settings:
   react:
     version: detect
+  import/resolver:
+    typescript: true
 rules:
   camelcase:
     - 'error'
@@ -41,65 +50,46 @@ rules:
         order: asc
         caseInsensitive: true
   import/no-duplicates: 'error'
-  import/no-unresolved: 'off'
+
+  '@typescript-eslint/no-empty-function': 'off'
+  '@typescript-eslint/no-unsafe-member-access': 'off'
+  '@typescript-eslint/no-unsafe-argument': 'off'
+  '@typescript-eslint/no-unsafe-return': 'off'
+  '@typescript-eslint/no-unsafe-assignment': 'off'
+  '@typescript-eslint/no-unsafe-call': 'off'
+  '@typescript-eslint/restrict-plus-operands': 'off'
+  '@typescript-eslint/restrict-template-expressions': 'off'
+
+  '@typescript-eslint/no-explicit-any': 'warn'
+
+  # consistent type exports/imports
+  '@typescript-eslint/consistent-type-exports':
+    - 'error'
+    - fixMixedExportsWithInlineTypeSpecifier: false
+  '@typescript-eslint/consistent-type-imports':
+    - 'error'
+    - prefer: 'type-imports'
+      fixStyle: 'separate-type-imports'
+
+  # lots of UI5 Web Components API are promised based but 'fire and forget' is sufficient for us
+  '@typescript-eslint/no-floating-promises': 'warn'
+
+  '@typescript-eslint/no-unused-vars':
+    - 'error'
+    - varsIgnorePattern: '^_'
+
+  # Performance Improvements: https://typescript-eslint.io/linting/troubleshooting/performance-troubleshooting#eslint-plugin-import
+  'import/named': 'off'
+  'import/namespace': 'off'
+  'import/default': 'off'
+  'import/no-named-as-default-member': 'off'
+  'import/no-unresolved': 'off'
 overrides:
-  # add config for all TypeScript files
-  - files:
-      - '*.ts'
-      - '*.tsx'
-    parserOptions:
-      EXPERIMENTAL_useProjectService:
-        # TODO https://github.com/typescript-eslint/typescript-eslint/issues/9450
-        maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 1000
-    plugins:
-      - '@typescript-eslint'
-    extends:
-      - 'plugin:@typescript-eslint/recommended'
-      - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
-      - 'plugin:import/typescript'
-    settings:
-      import/resolver:
-        typescript: true
-    rules:
-      # disabled some rules from the recommended preset
-      '@typescript-eslint/no-empty-function': 'off'
-      '@typescript-eslint/no-unsafe-member-access': 'off'
-      '@typescript-eslint/no-unsafe-argument': 'off'
-      '@typescript-eslint/no-unsafe-return': 'off'
-      '@typescript-eslint/no-unsafe-assignment': 'off'
-      '@typescript-eslint/no-unsafe-call': 'off'
-      '@typescript-eslint/restrict-plus-operands': 'off'
-      '@typescript-eslint/restrict-template-expressions': 'off'
-
-      '@typescript-eslint/no-explicit-any': 'warn'
-
-      # consistent type exports/imports
-      '@typescript-eslint/consistent-type-exports':
-        - 'error'
-        - fixMixedExportsWithInlineTypeSpecifier: false
-      '@typescript-eslint/consistent-type-imports':
-        - 'error'
-        - prefer: 'type-imports'
-          fixStyle: 'separate-type-imports'
-
-      # lots of UI5 Web Components API are promised based but 'fire and forget' is sufficient for us
-      '@typescript-eslint/no-floating-promises': 'warn'
-
-      '@typescript-eslint/no-unused-vars':
-        - 'error'
-        - varsIgnorePattern: '^_'
-
-      # Performance Improvements: https://typescript-eslint.io/linting/troubleshooting/performance-troubleshooting#eslint-plugin-import
-      'import/named': 'off'
-      'import/namespace': 'off'
-      'import/default': 'off'
-      'import/no-named-as-default-member': 'off'
-
   # Generated Web Component Wrappers might contain empty interfaces
   - files:
       - 'packages/main/src/webComponents/*/index.tsx'
     rules:
-      '@typescript-eslint/no-empty-interface': 'off'
+      '@typescript-eslint/no-empty-object-type': 'off'
 
   # disable prop types check for Analytical Table Defaults (TODO might change for react-table v8)
   - files:
