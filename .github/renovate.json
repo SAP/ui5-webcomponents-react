@@ -50,7 +50,7 @@
       "matchFileNames": ["package.json"],
       "matchUpdateTypes": ["minor", "patch"],
       "excludePackageNames": ["react", "react-dom", "storybook", "rimraf"],
-      "excludePackagePatterns": ["^@storybook/"]
+      "excludePackagePatterns": ["^@storybook/", "^@ui5/"]
     },
     {
       "description": "Example & Template dependencies",
