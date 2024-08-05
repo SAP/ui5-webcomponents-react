@@ -1,3 +1,4 @@
+import { getScopedVarName } from '@ui5/webcomponents-base/CustomElementsScope.js';
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
 import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
@@ -5,7 +6,7 @@ import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
   FlexBoxAlignItems,
@@ -14,7 +15,7 @@ import {
   PopoverPlacementType,
   TextAlign
 } from '../../../enums/index.js';
-import { CLEAR_SORTING, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults.js';
+import { CLEAR_SORTING, FILTER, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../../internal/ssr.js';
 import { stopPropagation } from '../../../internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '../../../internal/utils.js';
@@ -25,6 +26,7 @@ import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
 import { Popover } from '../../../webComponents/Popover/index.js';
 import { StandardListItem } from '../../../webComponents/StandardListItem/index.js';
 import { FlexBox } from '../../FlexBox/index.js';
+import { Text } from '../../Text/index.js';
 import type { AnalyticalTableColumnDefinition } from '../types/index.js';
 import { classNames, styleData } from './ColumnHeaderModal.module.css.js';
 
@@ -58,6 +60,16 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
   const sortDescendingText = i18nBundle.getText(SORT_DESCENDING);
   const groupText = i18nBundle.getText(GROUP);
   const ungroupText = i18nBundle.getText(UNGROUP);
+  const filterText = i18nBundle.getText(FILTER);
+
+  const filterStyles = useMemo(() => {
+    if (showFilter) {
+      return {
+        iconDimensions: `var(${getScopedVarName('--_ui5_list_item_icon_size')})`,
+        fontSize: `var(${getScopedVarName('--_ui5_list_item_title_size')})`
+      };
+    }
+  }, [showFilter]);
 
   const handleSort = (e) => {
     const sortType = e.detail.item.getAttribute('data-sort');
@@ -207,10 +219,26 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
           </StandardListItem>
         )}
         {showFilter && (
-          //todo maybe need to enhance Input selection after ui5-webcomponents issue has been fixed (undefined is displayed as val)
-          <CustomListItem type={ListItemType.Inactive} onKeyDown={handleCustomLiKeyDown}>
+          <CustomListItem type={ListItemType.Inactive} onKeyDown={handleCustomLiKeyDown} accessibleName={filterText}>
             <FlexBox alignItems={FlexBoxAlignItems.Center}>
-              <Icon name={iconFilter} className={classNames.filterIcon} aria-hidden />
+              <Icon
+                name={iconFilter}
+                className={classNames.filterIcon}
+                aria-hidden
+                style={{
+                  minWidth: filterStyles.iconDimensions,
+                  minHeight: filterStyles.iconDimensions
+                }}
+              />
+              <Text
+                wrapping={false}
+                className={classNames.filterText}
+                style={{
+                  fontSize: filterStyles.fontSize
+                }}
+              >
+                {filterText}
+              </Text>
               <Filter column={column} popoverRef={ref} />
             </FlexBox>
           </CustomListItem>
