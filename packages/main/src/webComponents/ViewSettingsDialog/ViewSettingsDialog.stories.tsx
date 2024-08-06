@@ -1,7 +1,10 @@
-import { isChromatic } from '@sb/utils';
+import { isChromatic } from '@sb/utils.js';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useEffect, useState } from 'react';
-import { Button, FilterItem, FilterItemOption, SortItem } from '../../index';
+import { useState } from 'react';
+import { Button } from '../Button/index.js';
+import { FilterItem } from '../FilterItem/index.js';
+import { FilterItemOption } from '../FilterItemOption/index.js';
+import { SortItem } from '../SortItem/index.js';
 import { ViewSettingsDialog } from './index.js';
 
 const meta = {
@@ -12,6 +15,7 @@ const meta = {
     sortItems: { control: { disable: true } }
   },
   args: {
+    open: isChromatic,
     filterItems: (
       <>
         <FilterItem
@@ -56,12 +60,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args) => {
-    const [open, setOpen] = useState(isChromatic || args.open);
-    useEffect(() => {
-      if (!isChromatic) {
-        setOpen(args.open);
-      }
-    }, [args.open, isChromatic]);
+    const [open, setOpen] = useState(args.open);
     return (
       <>
         <Button

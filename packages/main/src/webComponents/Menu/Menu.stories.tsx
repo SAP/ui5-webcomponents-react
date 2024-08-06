@@ -1,8 +1,9 @@
-import { isChromatic } from '@sb/utils';
+import { isChromatic } from '@sb/utils.js';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/index.js';
 import { MenuItem } from '../MenuItem/index.js';
+import { MenuSeparator } from '../MenuSeparator/index.js';
 import { Menu } from './index.js';
 
 const meta = {
@@ -10,6 +11,9 @@ const meta = {
   component: Menu,
   argTypes: {
     children: { control: { disable: true } }
+  },
+  args: {
+    open: isChromatic
   },
   parameters: {
     chromatic: { delay: 1000 }
@@ -20,20 +24,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// TODO: remove deprecated imperative method from mdx docs
 export const Default: Story = {
   render(args) {
     const [open, setOpen] = useState(args.open);
-    const ref = useRef(null);
     const btnRef = useRef(null);
-    useEffect(() => {
-      if (isChromatic && ref.current && btnRef.current) {
-        void customElements.whenDefined('ui5-menu').then(() => {
-          ref.current.opener = btnRef.current;
-          ref.current.open = true;
-        });
-      }
-    }, []);
 
     useEffect(() => {
       setOpen(args.open);
@@ -43,7 +37,6 @@ export const Default: Story = {
         <Button
           ref={btnRef}
           onClick={(e) => {
-            ref.current.opener = e.currentTarget;
             setOpen((prev) => !prev);
           }}
         >
@@ -52,7 +45,7 @@ export const Default: Story = {
         <Menu
           {...args}
           open={open}
-          ref={ref}
+          opener={btnRef.current}
           onClose={(e) => {
             args.onClose(e);
             setOpen(false);
@@ -60,9 +53,11 @@ export const Default: Story = {
         >
           <MenuItem text="New File" icon="add-document" />
           <MenuItem text="New Folder" icon="add-folder" disabled />
-          <MenuItem text="Open" icon="open-folder" startsSection />
+          <MenuSeparator />
+          <MenuItem text="Open" icon="open-folder" />
           <MenuItem text="Close" />
-          <MenuItem text="Preferences" icon="action-settings" startsSection />
+          <MenuSeparator />
+          <MenuItem text="Preferences" icon="action-settings" />
           <MenuItem text="Exit" icon="journey-arrive" />
         </Menu>
       </>
@@ -74,16 +69,7 @@ export const WithSubMenu: Story = {
   name: 'with Submenu',
   render: (args) => {
     const [open, setOpen] = useState(args.open);
-    const ref = useRef(null);
     const btnRef = useRef(null);
-    useEffect(() => {
-      if (isChromatic && ref.current && btnRef.current) {
-        void customElements.whenDefined('ui5-menu').then(() => {
-          ref.current.opener = btnRef.current;
-          ref.current.open = true;
-        });
-      }
-    }, []);
 
     useEffect(() => {
       setOpen(args.open);
@@ -93,7 +79,6 @@ export const WithSubMenu: Story = {
         <Button
           ref={btnRef}
           onClick={(e) => {
-            ref.current.opener = e.currentTarget;
             setOpen((prev) => !prev);
           }}
         >
@@ -102,7 +87,7 @@ export const WithSubMenu: Story = {
         <Menu
           {...args}
           open={open}
-          ref={ref}
+          opener={btnRef.current}
           onClose={(e) => {
             args.onClose(e);
             setOpen(false);
@@ -110,8 +95,9 @@ export const WithSubMenu: Story = {
         >
           <MenuItem text="New File" icon="add-document" />
           <MenuItem text="New Folder" icon="add-folder" disabled />
-          <MenuItem text="Open" icon="open-folder" startsSection>
-            <MenuItem text="Open Locally" icon="open-folder" startsSection>
+          <MenuSeparator />
+          <MenuItem text="Open" icon="open-folder">
+            <MenuItem text="Open Locally" icon="open-folder">
               <MenuItem text="Open C" />
               <MenuItem text="Open D" />
               <MenuItem text="Open E" />
@@ -119,7 +105,8 @@ export const WithSubMenu: Story = {
             <MenuItem text="Open from Cloud" icon="cloud" />
           </MenuItem>
           <MenuItem text="Close" />
-          <MenuItem text="Preferences" icon="action-settings" startsSection />
+          <MenuSeparator />
+          <MenuItem text="Preferences" icon="action-settings" />
           <MenuItem text="Exit" icon="journey-arrive" />
         </Menu>
       </>
