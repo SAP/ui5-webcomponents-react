@@ -172,7 +172,7 @@ describe('VariantManagement', () => {
 
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
     cy.findAllByText('VariantItem 2').should('have.length', 2);
-    cy.get('[ui5-title]').findByText('VariantItem 2').click();
+    cy.get('[ui5-title]').contains('VariantItem 2').click();
     cy.get('[ui5-responsive-popover]').should('be.visible');
 
     cy.findAllByText('VariantItem 1').should('have.length', 1);
@@ -200,7 +200,7 @@ describe('VariantManagement', () => {
   it('Disabled', () => {
     cy.mount(<VariantManagement disabled>{TwoVariantItems}</VariantManagement>);
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
-    cy.get('[ui5-title]').findByText('VariantItem 2').should('be.visible').click();
+    cy.get('[ui5-title]').contains('VariantItem 2').should('be.visible').click();
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
     cy.get('[icon="navigation-down-arrow"]').should('have.attr', 'disabled', 'disabled').click({ force: true });
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
@@ -234,7 +234,7 @@ describe('VariantManagement', () => {
     cy.mount(<TestComp onSave={save} />);
 
     cy.findByText('*').should('be.visible');
-    cy.get('[ui5-title]').findByText('VariantItem 2').click();
+    cy.get('[ui5-title]').contains('VariantItem 2').click();
     cy.findByText('Save').click();
     cy.get('@save').should('have.been.calledOnce');
     cy.findByText('Saved Variant:VariantItem 2');
@@ -251,12 +251,12 @@ describe('VariantManagement', () => {
 
   it('Show/Hide buttons', () => {
     cy.mount(<VariantManagement>{TwoVariantItems}</VariantManagement>);
-    cy.get('[ui5-title]').findByText('VariantItem 2').click();
+    cy.get('[ui5-title]').contains('VariantItem 2').click();
     cy.findByText('Save As').should('be.visible');
     cy.findByText('Manage').should('be.visible');
 
     cy.mount(<VariantManagement hideSaveAs>{TwoVariantItems}</VariantManagement>);
-    cy.get('[ui5-title]').findByText('VariantItem 2').click();
+    cy.get('[ui5-title]').contains('VariantItem 2').click();
     cy.findByText('Save As', { timeout: 200 }).should('not.exist');
     cy.findByText('Manage').should('be.visible');
 
@@ -266,7 +266,7 @@ describe('VariantManagement', () => {
         <VariantItem selected>VariantItem 2</VariantItem>
       </VariantManagement>
     );
-    cy.get('[ui5-title]').findByText('VariantItem 2').click();
+    cy.get('[ui5-title]').contains('VariantItem 2').click();
     cy.findByText('Save As', { timeout: 200 }).should('not.exist');
     cy.findByText('Manage', { timeout: 200 }).should('not.exist');
   });
