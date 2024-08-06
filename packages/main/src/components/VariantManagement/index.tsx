@@ -37,7 +37,42 @@ import type { VariantItemPropTypes } from './VariantItem.js';
 import { classNames, styleData } from './VariantManagement.module.css.js';
 
 /**
- * The `VariantManagement` component can be used to manage variants, such as FilterBar variants or AnalyticalTable variants.
+ * The VariantManagement can be used to manage variants (views). You can use this component to create and maintain personalization changes.
+ *
+ * __Note:__ On the user interface, variants are generally referred to as "views".
+ *
+ * ### Matching header styles
+ *
+ * To ensure consistent header styles for different use-cases of the `VariantManagement`, we recommend setting the following styles to the `ui5-title` component:
+ *
+ * #### DynamicPage & ObjectPage
+ *
+ * - `font-family: var(--sapObjectHeader_Title_FontFamily);`
+ *
+ * __Header expanded__
+ *
+ * - `font-size: var(--sapObjectHeader_Title_FontSize);`
+ *
+ * __Header collapsed/snapped__
+ *
+ * - `font-size: var(--sapObjectHeader_Title_SnappedFontSize);`
+ *
+ * #### Tables
+ *
+ * - `font-size: var(--sapGroup_Title_FontSize);`
+ *
+ * #### Example
+ *
+ * ```css
+ * .variantManagement [data-component-name="VariantManagementTitle"] {
+ *     font-family: var(--sapObjectHeader_Title_FontFamily);
+ *     font-size: var(--sapObjectHeader_Title_FontSize);
+ * }
+ * ```
+ * ```jsx
+ *  <VariantManagement className="variantManagement">
+ * ```
+ *
  */
 const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>((props, ref) => {
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -47,6 +82,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     style,
     placement = PopoverPlacement.Bottom,
     level = TitleLevel.H4,
+    size = TitleLevel.H4,
     onSelect,
     closeOnItemSelect,
     disabled,
@@ -292,7 +328,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         }}
       >
         <FlexBox onClick={disabled ? undefined : handleOpenVariantManagement}>
-          <Title level={level} className={classNames.title}>
+          <Title level={level} size={size} className={classNames.title} data-component-name="VariantManagementTitle">
             {selectedVariant?.children}
           </Title>
           {dirtyState && <div className={dirtyStateClasses}>{dirtyStateText}</div>}
