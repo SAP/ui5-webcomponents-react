@@ -31,7 +31,7 @@ interface OptionAttributes {
   /**
    * Defines the tooltip of the option.
    *
-   * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   tooltip?: string | undefined;

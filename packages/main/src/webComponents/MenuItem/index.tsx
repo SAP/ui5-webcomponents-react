@@ -13,13 +13,11 @@ interface MenuItemAttributes {
    * Defines the additional accessibility attributes that will be applied to the component.
    * The following fields are supported:
    *
-   * - **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.
-   * **Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.
+   * - **ariaKeyShortcuts**: Indicated the availability of a keyboard shortcuts defined for the menu item.
    *
-   * 	- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.
-   * 	**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.
+   * - **role**: Defines the role of the menu item. If not set, menu item will have default role="menuitem".
    *
-   * **Note:** Available since [v1.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.15.0) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents**.
    * @default {}
    */
   accessibilityAttributes?: ListItemAccessibilityAttributes;

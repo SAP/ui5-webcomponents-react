@@ -25,7 +25,7 @@ interface ShellBarAttributes {
    * - **notifications** - `notifications.expanded` and `notifications.hasPopup`.
    * - **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.
    * - **product** - `product.expanded` and `product.hasPopup`.
-   * - **search** - `search.expanded` and `search.hasPopup`.
+   * - **search** - `search.hasPopup`.
    * - **overflow** - `overflow.expanded` and `overflow.hasPopup`.
    *
    * The accessibility attributes support the following values:
