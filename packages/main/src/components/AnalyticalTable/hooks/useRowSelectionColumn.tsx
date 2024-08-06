@@ -30,6 +30,7 @@ const Header = (instance) => {
       tabIndex={-1}
       onChange={undefined}
       checked={checkBoxProps.indeterminate ? true : checkBoxProps.checked}
+      aria-hidden="true"
     />
   );
 };
@@ -43,6 +44,7 @@ const Cell = ({ row, webComponentsReactProperties: { selectionMode } }) => {
     <CheckBox
       {...row.getToggleRowSelectedProps()}
       tabIndex={-1}
+      aria-hidden="true"
       style={customCheckBoxStyling}
       data-name="internal_selection_column"
     />
