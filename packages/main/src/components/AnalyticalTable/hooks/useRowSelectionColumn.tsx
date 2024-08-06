@@ -6,7 +6,8 @@ import type { ReactTableHooks } from '../types/index.js';
 
 const customCheckBoxStyling = {
   verticalAlign: 'middle',
-  pointerEvents: 'none'
+  pointerEvents: 'none',
+  display: 'block'
 } as CSSProperties;
 
 /*
@@ -78,6 +79,9 @@ const headerProps = (props, { instance }) => {
     selectionMode === AnalyticalTableSelectionMode.MultiSelect
   ) {
     const onClick = (e) => {
+      if (typeof props.onClick === 'function') {
+        props.onClick(e);
+      }
       toggleAllRowsSelected(!isAllRowsSelected);
       const isFiltered = filters?.length > 0 || !!globalFilter;
       if (typeof onRowSelect === 'function') {
@@ -97,6 +101,9 @@ const headerProps = (props, { instance }) => {
     };
 
     const onKeyDown = (e) => {
+      if (typeof props.onKeyDown === 'function') {
+        props.onKeyDown(e);
+      }
       if (e.code === 'Space' || e.code === 'Enter') {
         e.preventDefault();
         onClick(e);
