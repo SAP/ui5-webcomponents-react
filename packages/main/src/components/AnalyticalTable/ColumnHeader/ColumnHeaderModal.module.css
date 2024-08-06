@@ -8,7 +8,10 @@
 
 .filterIcon {
   padding-inline-end: 0.5rem;
-  min-width: 1rem;
-  min-height: 1rem;
   color: var(--sapContent_NonInteractiveIconColor);
+}
+
+.filterText {
+  overflow: visible;
+  padding-inline-end: 0.5rem;
 }
