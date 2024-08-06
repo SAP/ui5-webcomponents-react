@@ -3,14 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
 import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
-import { clsx } from 'clsx';
 import { useState } from 'react';
-import { Bar } from '../Bar/index.js';
 import { Button } from '../Button/index.js';
-import { Icon } from '../Icon/index.js';
 import { List } from '../List/index.js';
 import { ListItemStandard } from '../ListItemStandard/index.js';
-import { Title } from '../Title/index.js';
 import { ResponsivePopover } from './index.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
 
@@ -64,38 +60,6 @@ export const Default: Story = {
           }}
           opener="openResponsivePopoverBtn"
           open={responsivePopoverIsOpen}
-        />
-      </>
-    );
-  }
-};
-
-export const WithContent: Story = {
-  render(args) {
-    const [responsivePopoverIsOpen, setResponsivePopoverIsOpen] = useState(false);
-    const onButtonClick = () => {
-      setResponsivePopoverIsOpen(true);
-    };
-    const handleClose = () => {
-      setResponsivePopoverIsOpen(false);
-    };
-    return (
-      <>
-        <Button id="respPopoverBtn2" onClick={onButtonClick}>
-          Open Responsive Popover
-        </Button>
-        <ResponsivePopover
-          {...args}
-          className={clsx('headerPartNoPadding', args.className)}
-          opener="respPopoverBtn2"
-          open={responsivePopoverIsOpen}
-          onClose={handleClose}
-          header={
-            <Bar endContent={<Icon name="settings" />}>
-              <Title>Popover</Title>
-            </Bar>
-          }
-          footer={<Bar endContent={<Button onClick={handleClose}>Close</Button>} />}
         />
       </>
     );

@@ -22,11 +22,12 @@ You can open and close the `ResponsivePopover` component in a declarative way us
 
 ```jsx
 const MyComponentWithPopover = () => {
+  const btnRef = useRef(null);
   const [popoverIsOpen, setPopoverIsOpen] = useState(false);
   return (
     <>
       <Button
-        id={'openPopoverBtn'}
+        ref={btnRef}
         onClick={() => {
           setPopoverIsOpen(true);
         }}
@@ -34,7 +35,7 @@ const MyComponentWithPopover = () => {
         Open Popover
       </Button>
       <ResponsivePopover
-        opener={'openPopoverBtn'}
+        opener={btnRef.current}
         open={popoverIsOpen}
         onClose={() => {
           setPopoverIsOpen(false);
@@ -44,11 +45,5 @@ const MyComponentWithPopover = () => {
   );
 };
 ```
-
-# More Examples
-
-## ResponsivePopover with content
-
-<Canvas of={ComponentStories.WithContent} />
 
 <Footer />

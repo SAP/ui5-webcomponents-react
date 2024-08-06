@@ -107,7 +107,7 @@ function ActionSheetButton(props: ActionSheetButtonPropTypes) {
 /**
  * The `ActionSheet` holds a list of buttons from which the user can select to complete an action.
  *
- * The children of the action sheet should be `Button` components. Elements in the `ActionSheet` are left-aligned. Actions should be arranged in order of importance, from top to bottom.
+ * The children of the action sheet should be `Button` components. Elements in the `ActionSheet` are start-aligned. Actions should be arranged in order of importance, from top to bottom.
  *
  * ### Guidelines
  * - Always display text or text and icons for the actions. Do not use icons only.

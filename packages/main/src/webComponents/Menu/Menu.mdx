@@ -23,11 +23,12 @@ You can open and close the `Menu` component in a declarative way using the `open
 
 ```jsx
 const MyComponentWithMenu = () => {
+  const buttonRef = useRef(null);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
     <>
       <Button
-        id={'openMenuBtn'}
+        ref={buttonRef}
         onClick={() => {
           setMenuIsOpen(true);
         }}
@@ -35,7 +36,7 @@ const MyComponentWithMenu = () => {
         Open Action Sheet
       </Button>
       <Menu
-        opener={'openMenuBtn'}
+        opener={buttonRef.current}
         open={menuIsOpen}
         onClose={() => {
           setMenuIsOpen(false);

@@ -23,11 +23,12 @@ You can open and close the `Popover` component in a declarative way using the `o
 
 ```jsx
 const MyComponentWithPopover = () => {
+  const btnRef = useRef(null);
   const [popoverIsOpen, setPopoverIsOpen] = useState(false);
   return (
     <>
       <Button
-        id={'openPopoverBtn'}
+        ref={btnRef}
         onClick={() => {
           setPopoverIsOpen(true);
         }}
@@ -35,7 +36,7 @@ const MyComponentWithPopover = () => {
         Open Popover
       </Button>
       <Popover
-        opener={'openPopoverBtn'}
+        opener={btnRef.current}
         open={popoverIsOpen}
         onClose={() => {
           setPopoverIsOpen(false);
@@ -45,11 +46,5 @@ const MyComponentWithPopover = () => {
   );
 };
 ```
-
-# More Examples
-
-## Popover with content
-
-<Canvas of={ComponentStories.PopoverWithContent} />
 
 <Footer />

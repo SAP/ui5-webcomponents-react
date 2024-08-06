@@ -25,7 +25,7 @@ You can open and close the `ColorPalettePopover` component in a declarative way 
 ```jsx
 const ColorPalettePopoverComponent = () => {
   const [showPopover, setShowPopover] = useState(false);
-  const buttonRef = useRef();
+  const buttonRef = useRef(null);
   const onButtonClick = (e) => {
     setShowPopover((prev) => !prev);
   };
