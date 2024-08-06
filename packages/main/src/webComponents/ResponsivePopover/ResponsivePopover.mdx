@@ -1,6 +1,5 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Meta } from '@storybook/blocks';
-import { MessageStrip } from '../MessageStrip';
 import * as ComponentStories from './ResponsivePopover.stories';
 
 <Meta of={ComponentStories} />
@@ -19,20 +18,16 @@ import * as ComponentStories from './ResponsivePopover.stories';
 
 ## Opening ResponsivePopovers
 
-<br />
-
-#### since 0.22.0
-
-We recommend opening and closing the `ResponsivePopover` component in a declarative way using the `open` and `opener` prop.
-You can still use the imperative way which is outlined below.
+You can open and close the `ResponsivePopover` component in a declarative way using the `open` and `opener` prop.
 
 ```jsx
 const MyComponentWithPopover = () => {
+  const btnRef = useRef(null);
   const [popoverIsOpen, setPopoverIsOpen] = useState(false);
   return (
     <>
       <Button
-        id={'openPopoverBtn'}
+        ref={btnRef}
         onClick={() => {
           setPopoverIsOpen(true);
         }}
@@ -40,97 +35,15 @@ const MyComponentWithPopover = () => {
         Open Popover
       </Button>
       <ResponsivePopover
-        opener={'openPopoverBtn'}
+        opener={btnRef.current}
         open={popoverIsOpen}
         onClose={() => {
-          setResponsivePopoverIsOpen(false);
+          setPopoverIsOpen(false);
         }}
       />
     </>
   );
 };
 ```
-
-**Opening a `ResponsivePopover` by reference and not by `id`**
-
-This web component exposes a way to pass a reference of an element instead of an `id` to the `opener` prop. Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
-You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
-
-<MessageStrip
-  hideCloseButton
-  children="Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
-  using this approach!"
-/>
-
-```jsx
-const PopoverComponent = () => {
-  const popoverRef = useRef(null);
-  const [open, setOpen] = useState(false);
-  const handleOpenerClick = (e) => {
-    if (popoverRef.current) {
-      popoverRef.current.opener = e.target;
-      setOpen((prev) => !prev);
-    }
-  };
-  return (
-    <>
-      <Button onClick={handleOpenerClick}>Opener</Button>
-      <ResponsivePopover ref={popoverRef} open={open}>
-        {/* Content */}
-      </ResponsivePopover>
-    </>
-  );
-};
-```
-
-#### before 0.22.0
-
-`ResponsivePopovers` can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `ResponsivePopover` is to be opened_ - as parameter.
-
-```jsx
-  const PopoverComponent = () => {
-    const popoverRef = useRef(null);
-    const onButtonClick = (e) => {
-        popoverRef.current.showAt(e.target);
-    };
-    return (
-      <>
-        <Button onClick={onButtonClick}>Open Popover</Button>
-        <ResponsivePopover ref={popoverRef}>Some Content</ResponsivePopovers>
-      </>
-    );
-  };
-```
-
-## Closing ResponsivePopovers
-
-Closing `ResponsivePopovers` works in the same way as opening them.
-You can either set the `open` prop to `false` or attaching a `ref` on which the corresponding `close` method is called.
-
-```jsx
-const PopoverComponent = () => {
-  const popoverRef = useRef(null);
-  const handleOpen = (e) => {
-    popoverRef.current.showAt(e.target);
-  };
-  const handleClose = () => {
-    popoverRef.current.close();
-  };
-  return (
-    <>
-      <Button onClick={handleOpen}>Open Popover</Button>
-      <ResponsivePopover ref={popoverRef}>
-        <Button onClick={handleClose}>Close Popover</Button>
-      </ResponsivePopover>
-    </>
-  );
-};
-```
-
-# More Examples
-
-## ResponsivePopover with content
-
-<Canvas of={ComponentStories.WithContent} />
 
 <Footer />
