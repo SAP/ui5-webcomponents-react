@@ -20,18 +20,21 @@ import { ColorPaletteItem } from '../ColorPaletteItem';
 
 ## Opening ColorPalettePopovers
 
-`ColorPalettePopover`s can only be opened by attaching a `ref` to the component and then call the corresponding **`showAt`** method. The method receives the target element - _on which the `ColorPalettePopover` is to be opened_ - as parameter.
+You can open and close the `ColorPalettePopover` component in a declarative way using the `open` and `opener` prop.
 
 ```jsx
 const ColorPalettePopoverComponent = () => {
-  const popoverRef = useRef();
+  const [showPopover, setShowPopover] = useState(false);
+  const buttonRef = useRef(null);
   const onButtonClick = (e) => {
-    popoverRef.current.showAt(e.target);
+    setShowPopover((prev) => !prev);
   };
   return (
     <>
-      <Button onClick={onButtonClick}>Open ColorPalettePopover</Button>
-      <ColorPalettePopover ref={popoverRef}>
+      <Button ref={buttonRef} onClick={onButtonClick}>
+        Open ColorPalettePopover
+      </Button>
+      <ColorPalettePopover open={showPopover} opener={buttonRef.current}>
         <ColorPaletteItem value="pink" />
         <ColorPaletteItem value="darkblue" />
       </ColorPalettePopover>

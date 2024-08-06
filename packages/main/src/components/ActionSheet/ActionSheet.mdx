@@ -48,32 +48,24 @@ const MyComponentWithActionSheet = () => {
 };
 ```
 
-**Opening an `ActionSheet` by reference and not by `id`**
+**Opening an `ActionSheet` by reference**
 
 The `ActionSheet` exposes a way to pass a reference of an element instead of an `id` to the `opener` prop.
-Since this is not supported when passing the reference in a declarative way to a React `prop`, you have to attach the ref directly on the web component.
-You can do that by e.g. leveraging a React Ref, and then set the corresponding property there.
-
-<MessageStrip
-  hideCloseButton
-  children={`Changing properties outside of the React rendering cycle can lead to unwanted behavior, please be extra cautious when
-  using this approach!`}
-/>
+You can do that by e.g. leveraging a React Ref.
 
 ```jsx
 const ActionSheetComponent = () => {
-  const popoverRef = useRef(null);
+  const buttonRef = useRef(null);
   const [open, setOpen] = useState(false);
   const handleOpenerClick = (e) => {
-    if (popoverRef.current) {
-      popoverRef.current.opener = e.target;
-      setOpen((prev) => !prev);
-    }
+    setOpen((prev) => !prev);
   };
   return (
     <>
-      <Button onClick={handleOpenerClick}>Opener</Button>
-      <ActionSheet ref={popoverRef} open={open}>
+      <Button ref={buttonRef} onClick={handleOpenerClick}>
+        Opener
+      </Button>
+      <ActionSheet opener={buttonRef.current} open={open}>
         {/* Content */}
       </ActionSheet>
     </>

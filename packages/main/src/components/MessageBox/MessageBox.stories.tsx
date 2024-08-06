@@ -1,9 +1,9 @@
-import { isChromatic } from '@sb/utils';
+import { isChromatic } from '@sb/utils.js';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useState } from 'react';
-import { MessageBoxAction } from '../../enums/MessageBoxAction';
-import { MessageBoxType } from '../../enums/MessageBoxType';
-import { Button } from '../../webComponents/Button/index';
+import { MessageBoxAction } from '../../enums/MessageBoxAction.js';
+import { MessageBoxType } from '../../enums/MessageBoxType.js';
+import { Button } from '../../webComponents/Button/index.js';
 import { MessageBox } from './index.js';
 
 const meta = {
@@ -21,9 +21,9 @@ const meta = {
     }
   },
   args: {
-    open: false,
+    open: isChromatic,
     type: MessageBoxType.Confirm,
-    children: 'Press "Escape" to close the MessageBox.'
+    children: 'You can close the MessageBox by pressing "Escape" or selecting one of the footer buttons.'
   },
   parameters: {
     chromatic: { delay: 1000 }
@@ -36,7 +36,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render(args) {
-    const [open, setOpen] = useState(isChromatic || args.open);
+    const [open, setOpen] = useState(args.open);
     const onButtonClick = () => {
       setOpen(true);
     };
@@ -72,12 +72,12 @@ export const WithCustomActions: Story = {
     const onButtonClick = () => {
       setOpen(true);
     };
-    const handleClose = (e) => {
-      if (e.detail.action === 'Custom Action') {
+    const handleClose = (action, escPressed) => {
+      if (action === 'Custom Action') {
         // do something on "Custom Action" button click
       }
       setOpen(false);
-      args.onClose(e);
+      args.onClose(action, escPressed);
     };
     return (
       <>

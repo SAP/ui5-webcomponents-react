@@ -23,19 +23,25 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 ## Opening ViewSettingsDialog
 
-`ViewSettingsDialog`s can be opened by attaching a `ref` to the component and then calling the corresponding **`show`** method.
+You can open and close the `ViewSettingsDialog` component in a declarative way using the `open` prop.
 
 ```jsx
 const ViewSettingsDialogComponent = () => {
-  const dialogRef = useRef(null);
-  const onButtonClick = () => {
-    dialogRef.current.show();
-  };
+  const [showVSD, setShowVSD] = useState(false);
   return (
     <>
-      <Button onClick={onButtonClick}>Open ViewSettingsDialog</Button>
+      <Button
+        onClick={() => {
+          setShowVSD(true);
+        }}
+      >
+        Open ViewSettingsDialog
+      </Button>
       <ViewSettingsDialog
-        ref={dialogRef}
+        open={showVSD}
+        onClose={() => {
+          setShowVSD(false);
+        }}
         sortItems={
           <>
             <SortItem text="Name" />

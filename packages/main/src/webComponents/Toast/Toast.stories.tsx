@@ -1,4 +1,4 @@
-import { isChromatic } from '@sb/utils';
+import { isChromatic } from '@sb/utils.js';
 import type { Meta, StoryObj } from '@storybook/react';
 import ToastPlacement from '@ui5/webcomponents/dist/types/ToastPlacement.js';
 import { useEffect, useState } from 'react';

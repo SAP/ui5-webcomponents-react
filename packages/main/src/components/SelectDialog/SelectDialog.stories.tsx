@@ -2,18 +2,22 @@ import Laptop1 from '@sb/demoImages/Laptop1.jpg';
 import Laptop2 from '@sb/demoImages/Laptop2.jpg';
 import Pc1 from '@sb/demoImages/PC1.jpg';
 import Pc2 from '@sb/demoImages/PC2.jpg';
-import { isChromatic } from '@sb/utils';
+import { isChromatic } from '@sb/utils.js';
 import type { Meta, StoryObj } from '@storybook/react';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import { useEffect, useRef, useState } from 'react';
-import { Button, FlexBox, Label, ListItemStandard, Text } from '../..';
+import { Button } from '../../webComponents/Button/index.js';
+import { Label } from '../../webComponents/Label/index.js';
+import { ListItemStandard } from '../../webComponents/ListItemStandard/index.js';
+import { Text } from '../../webComponents/Text/index.js';
+import { FlexBox } from '../FlexBox/index.js';
 import { SelectDialog } from './index.js';
 
 const meta = {
   title: 'Modals & Popovers / SelectDialog',
   component: SelectDialog,
   argTypes: { children: { control: { disable: true } } },
-  args: { headerText: 'Select Product' },
+  args: { headerText: 'Select Product', open: isChromatic },
   parameters: {
     chromatic: { delay: 1000 }
   },
@@ -31,7 +35,7 @@ const listItems = [
 ];
 export const Default: Story = {
   render: (args) => {
-    const [open, setOpen] = useState<boolean | undefined>(isChromatic || args.open);
+    const [open, setOpen] = useState<boolean | undefined>(args.open);
     const onButtonClick = () => {
       setOpen(true);
     };
