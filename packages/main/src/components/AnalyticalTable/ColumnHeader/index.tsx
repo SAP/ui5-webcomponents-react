@@ -44,6 +44,7 @@ export interface ColumnHeaderProps {
   id: string;
   onClick: MouseEventHandler<HTMLDivElement> | undefined;
   onKeyDown?: KeyboardEventHandler<HTMLDivElement> | undefined;
+  onKeyUp?: KeyboardEventHandler<HTMLDivElement> | undefined;
   className: string;
   style: CSSProperties;
   column: ColumnType;
@@ -80,6 +81,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     visibleColumnIndex,
     onClick,
     onKeyDown,
+    onKeyUp,
     isFiltered,
     title,
     'aria-label': ariaLabel,
@@ -131,7 +133,9 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
 
   const handleHeaderCellClick = (e) => {
-    onClick?.(e);
+    if (typeof onClick === 'function') {
+      onClick(e);
+    }
     if (hasPopover) {
       setPopoverOpen(true);
     }
@@ -142,7 +146,9 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     : { left: 0, transform: `translateX(${virtualColumn.start}px)` };
 
   const handleHeaderCellKeyDown = (e) => {
-    onKeyDown?.(e);
+    if (typeof onKeyDown === 'function') {
+      onKeyDown(e);
+    }
     if (hasPopover && e.code === 'Enter') {
       setPopoverOpen(true);
     }
@@ -152,6 +158,9 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
   };
 
   const handleHeaderCellKeyUp = (e) => {
+    if (typeof onKeyUp === 'function') {
+      onKeyUp(e);
+    }
     if (hasPopover && e.code === 'Space' && !e.target.hasAttribute('ui5-li')) {
       setPopoverOpen(true);
     }
