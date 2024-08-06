@@ -47,6 +47,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     style,
     placement = PopoverPlacement.Bottom,
     level = TitleLevel.H4,
+    size = TitleLevel.H4,
     onSelect,
     closeOnItemSelect,
     disabled,
@@ -292,7 +293,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         }}
       >
         <FlexBox onClick={disabled ? undefined : handleOpenVariantManagement}>
-          <Title level={level} className={classNames.title}>
+          <Title level={level} className={classNames.title} size={size}>
             {selectedVariant?.children}
           </Title>
           {dirtyState && <div className={dirtyStateClasses}>{dirtyStateText}</div>}

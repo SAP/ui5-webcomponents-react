@@ -26,6 +26,8 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   children?: ReactNode | ReactNode[];
   /**
    * Determines on which side the VariantManagement popover is placed at.
+   *
+   * @default Bottom
    */
   placement?: ResponsivePopoverPropTypes['placement'];
   /**
@@ -39,9 +41,17 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
    */
   closeOnItemSelect?: boolean;
   /**
-   * Describes the `HTML Title` level of the variants.
+   * Describes the `Title` HTML level (H1 - H6) of the selected variant. This property doesn't influence the style of the component, you can use the `size` prop for this purpose.
+   *
+   * @default H4
    */
   level?: TitlePropTypes['level'];
+  /**
+   * Describes the `Title`'s `size` of the selected variant.
+   *
+   * @default H4
+   */
+  size?: TitlePropTypes['size'];
   /**
    * Defines whether the VariantManagement is disabled.
    */
@@ -54,6 +64,8 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
   dirtyState?: boolean;
   /**
    * Text for the dirty state indicator.
+   *
+   * @default *
    */
   dirtyStateText?: string;
   /**
