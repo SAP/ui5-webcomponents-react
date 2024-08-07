@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-compat",
-  "version": "2.0.0-rc.1",
+  "version": "2.0.0-rc.2",
   "description": "React Wrapper for UI5 Web Components Compat package",
   "type": "module",
   "main": "dist/index.js",
