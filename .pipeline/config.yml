@@ -4,6 +4,7 @@ general:
   buildTool: yarn
 steps:
   detectExecuteScan:
+    serverUrl: 'https://sap.blackducksoftware.com'
     projectName: 'ui5-webcomponents-react'
     groups:
       - 'ui5-webcomponents-react'
