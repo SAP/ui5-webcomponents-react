@@ -3,6 +3,11 @@ general:
   repository: ui5-webcomponents-react
   buildTool: yarn
 steps:
+  artifactPrepareVersion:
+    filePath: 'lerna.json'
+    versioningType: 'library'
+    customVersionField: 'version'
+    
   detectExecuteScan:
     serverUrl: 'https://sap.blackducksoftware.com'
     projectName: 'ui5-webcomponents-react'
