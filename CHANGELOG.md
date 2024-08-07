@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.6](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.5...v1.29.6) (2024-08-07)
+
+### Bug Fixes
+
+- **AnalyticalTable:** add "Filter" text to column popover ([#6165](https://github.com/SAP/ui5-webcomponents-react/issues/6165)) ([153f91b](https://github.com/SAP/ui5-webcomponents-react/commit/153f91b3a374e504341c3174813d4f311429b09c)), closes [#6132](https://github.com/SAP/ui5-webcomponents-react/issues/6132)
+- **AnalyticalTable:** add `aria-hidden` to multi selection checkboxes ([#6134](https://github.com/SAP/ui5-webcomponents-react/issues/6134)) ([24e5c98](https://github.com/SAP/ui5-webcomponents-react/commit/24e5c98230a25ecc632c7594dedc43c3a4e1e561)), closes [#6133](https://github.com/SAP/ui5-webcomponents-react/issues/6133)
+- **AnalyticalTable:** allow selecting all rows via keyboard ([#6168](https://github.com/SAP/ui5-webcomponents-react/issues/6168)) ([4650995](https://github.com/SAP/ui5-webcomponents-react/commit/4650995cb332e620a4bef3230dbf294830d357fd)), closes [#6110](https://github.com/SAP/ui5-webcomponents-react/issues/6110)
+- **AnalyticalTable:** fix pop-in content styles ([#6170](https://github.com/SAP/ui5-webcomponents-react/issues/6170)) ([041008f](https://github.com/SAP/ui5-webcomponents-react/commit/041008f2082d5f612c1047bcc10b78b9e7c32daa)), closes [#5977](https://github.com/SAP/ui5-webcomponents-react/issues/5977)
+- **deps:** update ui5 web components to v1.24.8 (v1.29.x) (patch) ([#6160](https://github.com/SAP/ui5-webcomponents-react/issues/6160)) ([e327161](https://github.com/SAP/ui5-webcomponents-react/commit/e32716188dfebadc053522ac2e2e372ac32a9eb7))
+- **DynamicPageHeader:** remove `width` ([#6163](https://github.com/SAP/ui5-webcomponents-react/issues/6163)) ([5a968b9](https://github.com/SAP/ui5-webcomponents-react/commit/5a968b9613872d8dd2e9fd799c59de4c1331b22a)), closes [#6135](https://github.com/SAP/ui5-webcomponents-react/issues/6135)
+- **UI5CustomEvent - TypeScript:** correctly `currentTarget` type ([#6167](https://github.com/SAP/ui5-webcomponents-react/issues/6167)) ([f41c41b](https://github.com/SAP/ui5-webcomponents-react/commit/f41c41b81de74aa86e4c5cf7e4a37dd000d38ecc)), closes [#6136](https://github.com/SAP/ui5-webcomponents-react/issues/6136)
+
 ## [1.29.5](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.4...v1.29.5) (2024-07-26)
 
 ### Bug Fixes
