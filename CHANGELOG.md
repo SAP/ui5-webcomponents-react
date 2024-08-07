@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.7](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.6...v1.29.7) (2024-08-07)
+
+### Bug Fixes
+
+- **DynamicPageHeader:** correctly apply width to header ([#6174](https://github.com/SAP/ui5-webcomponents-react/issues/6174)) ([2682277](https://github.com/SAP/ui5-webcomponents-react/commit/268227793db4b4eac4180956ea6112e47440cb1c)), closes [#6135](https://github.com/SAP/ui5-webcomponents-react/issues/6135) [#6087](https://github.com/SAP/ui5-webcomponents-react/issues/6087)
+
 ## [1.29.6](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.5...v1.29.6) (2024-08-07)
 
 ### Bug Fixes
