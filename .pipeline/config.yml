@@ -1,0 +1,16 @@
+general:
+  owner: SAP
+  repository: ui5-webcomponents-react
+  buildTool: yarn
+steps:
+  detectExecuteScan:
+    serverUrl: 'https://sap.blackducksoftware.com'
+    projectName: 'ui5-webcomponents-react'
+    groups:
+      - 'ui5-webcomponents-react'
+    npmDependencyTypesExcluded: ['DEV']
+    useDetect9: true
+    excludedPackageManagers:
+      - 'LERNA'
+    customEnvironmentVariables:
+      - 'DETECT_YARN_DEPENDENCY_TYPES_EXCLUDED=NON_PRODUCTION'

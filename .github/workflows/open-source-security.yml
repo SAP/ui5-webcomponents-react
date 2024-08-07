@@ -1,0 +1,26 @@
+name: Open Source Security
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "12 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  piper-oss:
+    name: 'Security'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: detectExecuteScan
+        uses: SAP/project-piper-action@v1.5.0
+        with:
+          step-name: detectExecuteScan
+          flags: '--token ${{ secrets.DETECT_TOKEN }}'
+
+  
