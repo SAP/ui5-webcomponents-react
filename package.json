@@ -96,7 +96,7 @@
     "typescript": "5.4.5",
     "vite": "^5.0.0",
     "vite-plugin-istanbul": "^6.0.0",
-    "vite-tsconfig-paths": "^4.0.5"
+    "vite-tsconfig-paths": "^5.0.0"
   },
   "lint-staged": {
     "*.{md,mdx,json}": [
