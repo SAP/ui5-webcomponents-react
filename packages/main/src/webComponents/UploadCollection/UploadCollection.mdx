@@ -65,9 +65,13 @@ export const UploadCollectionComponent = () => {
 const SimulateUploadComponent = () => {
   const [children, setChildren] = useState([
     <UploadCollectionItem
+      key={'0'}
       file={null}
       fileName={'file-name.txt'}
-      thumbnail={<img src="https://sap.github.io/ui5-webcomponents/images/logo.png" />}
+      uploadState={UploadState.Ready}
+      thumbnail={
+        <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents/main/docs/images/UI5_logo_water.png" />
+      }
     >
       <Text>Uploaded by: Susanne Schmitt · Uploaded On: 2019-04-20</Text>
     </UploadCollectionItem>
@@ -78,11 +82,14 @@ const SimulateUploadComponent = () => {
     files.forEach((file) => {
       setChildren((prev) => [
         ...prev,
-        <UploadCollectionItem file={file} fileName={file.name} thumbnail={<Icon name="document" />}>
-          <Text>{`
-Last
-modified: ${file.lastModifiedDate} ·
-Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
+        <UploadCollectionItem
+          key={file.name}
+          file={file}
+          fileName={file.name}
+          uploadState={UploadState.Ready}
+          thumbnail={<Icon name={documentIcon} />}
+        >
+          <Text>{`Last modified: ${file.lastModifiedDate} · Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
         </UploadCollectionItem>
       ]);
     });
