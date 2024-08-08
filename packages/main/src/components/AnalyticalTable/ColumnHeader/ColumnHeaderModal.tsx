@@ -1,4 +1,4 @@
-import { getScopedVarName } from '@ui5/webcomponents-base/CustomElementsScope.js';
+import { getScopedVarName } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
 import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
