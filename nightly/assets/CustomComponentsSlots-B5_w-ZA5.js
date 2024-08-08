@@ -1,0 +1,40 @@
+import{j as t}from"./useIsomorphicLayoutEffect-BDy32gDd.js";import{useMDXComponents as e}from"./index-D3szj05g.js";import"./chunk-HLWAVYOI-D6tgB48h.js";import{M as p}from"./index-BP0tp6sA.js";import{B as i}from"./index-B79Mbht2.js";import{B as s}from"./index-B1dq4JQQ.js";import"./index-CpjS3nZJ.js";import"./TagDesign-Dou_yO3g.js";import"./index-ClU-Tc1p.js";import"./index-C3ZJCerc.js";import"./withWebComponent--2-UXDGX.js";import"./copy-9e4iEp3h.js";import"./Button-BSGOQMBD.js";import{F as m}from"./CommandsAndQueries-C5gTxcCb.js";import"./WrappingType-CW8URInd.js";import"./iframe-BFVv-vsm.js";import"../sb-preview/runtime.js";import"./client-B23sEKGq.js";import"./_baseForOwn-CS3BKc8p.js";import"./mapValues-DmWmqx7o.js";import"./_baseUniq-DGAWXpCf.js";import"./index-BRTKD46C.js";import"./index-DrFu-skq.js";import"./slot-_4yKMUwC.js";import"./ResizeHandler-rKzABZ14.js";import"./class-map-Oct9Grst.js";import"./utils-DLW1sA5D.js";import"./if-defined-BflNsp1k.js";import"./parameters-bundle.css-DJWIHzS2.js";import"./event-Dq0fpeHi.js";import"./i18nBundle-d4QydjzH.js";import"./decline-D1QcXBrl.js";import"./Icon-uF1AIezb.js";import"./Keys-F_3Gvx0K.js";import"./i18n-defaults-CEQaAj6E.js";import"./information-DOrNCQ6l.js";import"./alert-RJboOX4N.js";import"./i18n-defaults-CY90T2oA.js";import"./AriaLabelHelper-C5uDZewF.js";import"./MarkedEvents-CAur0wxK.js";import"./willShowContent-CZcfsNXp.js";import"./index-DG6x88aM.js";import"./clsx-B-dksMZM.js";import"./useStylesheet-Dw38joME.js";import"./Popover-CQErUPF9.js";import"./PopupsCommon.css-C72k6bm-.js";import"./getEffectiveScrollbarStyle-Br73qKwi.js";import"./isElementHidden-B4HqmI2E.js";import"./isElementClickable-0ACQ4G_A.js";import"./getActiveElement-kltGt_DR.js";import"./MediaRange-Bnzt26Xb.js";import"./Title-BuvIaMNd.js";import"./style-map-_S7pHwug.js";import"./BrowserScrollbar.css-BWLGETwt.js";import"./index-CBSnUv2F.js";import"./Label-BByfo__S.js";import"./index-BbSxE2we.js";import"./Link-Mzj3wSV5.js";import"./index-XjkuyiAR.js";import"./index-CwK4hzKA.js";import"./I18nStore-DDVmdcy1.js";import"./addCustomCSSWithScoping-BAXItpVh.js";import"./index-CYSz5_f-.js";import"./BusyIndicator-B3EKab9f.js";import"./index-BJJQOsHG.js";import"./index-BpYnUsLx.js";import"./Avatar-CILPVfd6.js";import"./employee-WB48gXgq.js";import"./index-9-KpZ2S6.js";const a=()=>t.jsx("div",{children:"Start"}),c=()=>t.jsx(s,{children:"Close"}),d=()=>t.jsx(i,{startContent:t.jsx(a,{}),endContent:t.jsx(c,{}),children:t.jsx("div",{children:"Not a custom component"})}),l=n=>t.jsx("div",{slot:n.slot,children:"Start"}),h=n=>t.jsx(s,{slot:n.slot,children:"Close"}),u=()=>t.jsx(i,{startContent:t.jsx(l,{}),endContent:t.jsx(h,{}),children:t.jsx("div",{children:"Not a custom component"})});function r(n){const o={code:"code",h1:"h1",p:"p",pre:"pre",...e(),...n.components};return t.jsxs(t.Fragment,{children:[t.jsx(p,{title:"Handling Slots"}),`
+`,t.jsx(o.h1,{id:"adding-custom-components-to-slots",children:"Adding custom components to slots"}),`
+`,t.jsxs(o.p,{children:["With our wrapper we provide an easy way to consume the ",t.jsx(o.code,{children:"slots"})," of the UI5 Web Components by attaching them to a ",t.jsx(o.code,{children:"prop"}),`.
+In most cases you don't have to take anything into account, and the props can be used in a typical React way. However, there is an exception with custom components:`]}),`
+`,t.jsx(o.pre,{children:t.jsx(o.code,{className:"language-jsx",children:`const BarStart = () => {
+  return <div>Start</div>;
+};
+const BarEnd = () => {
+  return <Button>Close</Button>;
+};
+export const BarComponent = () => {
+  return (
+    <Bar startContent={<BarStart />} endContent={<BarEnd />}>
+      <div>I'm not a custom component</div>
+    </Bar>
+  );
+};
+`})}),`
+`,t.jsxs(o.p,{children:["The ",t.jsx(o.code,{children:"BarComponent"})," would compile to this:"]}),`
+`,t.jsx(d,{}),`
+`,t.jsxs(o.p,{children:[`As you can see, both custom components are not displayed in the right place.
+Our wrapper does add the `,t.jsx(o.code,{children:"slot"})," prop to the custom component, but the most outer HTML-Element/component (e.g. ",t.jsx(o.code,{children:"<div>Start</div>"}),") does not accept it and therefore cannot use it."]}),`
+`,t.jsxs(o.p,{children:["To fix this the ",t.jsx(o.code,{children:"slot"})," prop must also be passed to the outer element of the component:"]}),`
+`,t.jsx(o.pre,{children:t.jsx(o.code,{className:"language-jsx",children:`const BarStart = (props) => {
+  return <div slot={props.slot}>Start</div>;
+};
+const BarEnd = (props) => {
+  return <Button slot={props.slot}>Close</Button>;
+};
+export const BarComponent = () => {
+  return (
+    <Bar startContent={<BarStart />} endContent={<BarEnd />}>
+      <div>I'm not a custom component</div>
+    </Bar>
+  );
+};
+`})}),`
+`,t.jsxs(o.p,{children:["Now the ",t.jsx(o.code,{children:"BarComponent"})," would compile to this:"]}),`
+`,t.jsx(u,{}),`
+`,t.jsx(m,{style:{position:"fixed",bottom:0,zIndex:2}})]})}function Nt(n={}){const{wrapper:o}={...e(),...n.components};return o?t.jsx(o,{...n,children:t.jsx(r,{...n})}):r(n)}export{Nt as default};
