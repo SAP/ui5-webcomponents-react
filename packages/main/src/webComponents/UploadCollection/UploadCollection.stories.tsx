@@ -42,6 +42,7 @@ export const Default: Story = {
             file={file}
             fileName={file.name}
             thumbnail={<Icon name={documentIcon} />}
+            uploadState={UploadState.Ready}
           >
             <Text>{`Last modified: ${file.lastModifiedDate} · Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
           </UploadCollectionItem>
@@ -63,7 +64,10 @@ export const SimulateUpload: Story = {
         key={'0'}
         file={null}
         fileName={'file-name.txt'}
-        thumbnail={<img src="https://sap.github.io/ui5-webcomponents/img/logo.png" />}
+        uploadState={UploadState.Ready}
+        thumbnail={
+          <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents/main/docs/images/UI5_logo_water.png" />
+        }
       >
         <Text>Uploaded by: Susanne Schmitt · Uploaded On: 2019-04-20</Text>
       </UploadCollectionItem>
@@ -78,6 +82,7 @@ export const SimulateUpload: Story = {
             key={file.name}
             file={file}
             fileName={file.name}
+            uploadState={UploadState.Ready}
             thumbnail={<Icon name={documentIcon} />}
           >
             <Text>{`Last modified: ${file.lastModifiedDate} · Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
