@@ -1,3 +1,4 @@
+import { getScopedVarName } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useIsomorphicId, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactNode } from 'react';
@@ -16,6 +17,7 @@ import {
   VIEW
 } from '../../i18n/i18n-defaults.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
+import type { CommonProps } from '../../types/CommonProps.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { Dialog } from '../../webComponents/Dialog/index.js';
@@ -220,6 +222,11 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       onBeforeClose={handleClose}
       headerText={manageViewsText}
       initialFocus={`search-${uniqueId}`}
+      style={
+        {
+          '--_ui5wcr_popup_default_header_height': `var(${getScopedVarName('--_ui5_popup_default_header_height')})`
+        } as CommonProps['style'] & { '--_ui5wcr_popup_default_header_height': string }
+      }
       header={
         <FlexBox direction={FlexBoxDirection.Column} style={{ width: '100%' }} alignItems={FlexBoxAlignItems.Center}>
           <h2 className={classNames.headerText}>{manageViewsText}</h2>
