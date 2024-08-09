@@ -1,1 +1,0 @@
-import{b as n,o as c,c as m}from"./withWebComponent--2-UXDGX.js";import{r as t}from"./index-ClU-Tc1p.js";function f(){const[r,o]=t.useState(n());return t.useEffect(()=>{const e=s=>{o(s)};return c(e),()=>{m(e)}},[]),r}export{f as u};
