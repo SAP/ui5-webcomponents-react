@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.8](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.7...v1.29.8) (2024-08-09)
+
+### Bug Fixes
+
+- **AnalyticalTable:** correct `CustomElementsScope` import path ([#6184](https://github.com/SAP/ui5-webcomponents-react/issues/6184)) ([3d303db](https://github.com/SAP/ui5-webcomponents-react/commit/3d303db287d4ff53fc95ab41234bb6ca9845115b)), closes [#6183](https://github.com/SAP/ui5-webcomponents-react/issues/6183)
+- **VariantManagement:** apply correct header size for "Manage Views" dialog ([329c937](https://github.com/SAP/ui5-webcomponents-react/commit/329c937110f14ee8d2779b14fd93f9a1bac67f58))
+
 ## [1.29.7](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.6...v1.29.7) (2024-08-07)
 
 ### Bug Fixes
