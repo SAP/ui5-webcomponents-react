@@ -16,6 +16,7 @@ import { ObjectPageMode } from '../../enums/index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
+import { cssVarVersionInfoPrefix } from '../../internal/utils.js';
 import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
 import type { AvatarPropTypes, TabContainerDomRef } from '../../webComponents/index.js';
 import { Tab, TabContainer } from '../../webComponents/index.js';
@@ -750,8 +751,17 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     [classNames.headerHoverStyles]
   );
 
+  const getStickyHeaderHeight = useCallback(
+    (collapsedPadding = topHeaderHeight) =>
+      headerPinned || scrolledHeaderExpanded
+        ? `${topHeaderHeight + (headerCollapsed === true ? 0 : headerContentHeight)}px`
+        : `${collapsedPadding}px`,
+    [topHeaderHeight, headerCollapsed, headerContentHeight]
+  );
+
   const objectPageStyles: CSSProperties = {
-    ...style
+    ...style,
+    scrollPaddingBlockStart: `calc(${getStickyHeaderHeight()} + var(${cssVarVersionInfoPrefix}tc_header_height_text_only)`
   };
   if (headerCollapsed === true && headerArea) {
     objectPageStyles[ObjectPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
@@ -811,10 +821,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
           ref={anchorBarRef}
           className={classNames.anchorBar}
           style={{
-            top:
-              scrolledHeaderExpanded || headerPinned
-                ? `${topHeaderHeight + (headerCollapsed === true ? 0 : headerContentHeight)}px`
-                : `${topHeaderHeight + 5}px`
+            top: getStickyHeaderHeight(topHeaderHeight + 5)
           }}
         >
           <ObjectPageAnchorBar
@@ -835,10 +842,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
           className={classNames.tabContainer}
           data-component-name="ObjectPageTabContainer"
           style={{
-            top:
-              headerPinned || scrolledHeaderExpanded
-                ? `${topHeaderHeight + (headerCollapsed === true ? 0 : headerContentHeight)}px`
-                : `${topHeaderHeight}px`
+            top: getStickyHeaderHeight()
           }}
         >
           <TabContainer

@@ -28,6 +28,11 @@
   }
 }
 
+.objectPage:has([data-component-name='ObjectPageFooter']) {
+  /* bar height + padding */
+  scroll-padding-block-end: calc(var(--_ui5_bar_base_height) + 1.5rem);
+}
+
 .iconTabBarMode section[data-component-name='ObjectPageSection'] > div[role='heading'] {
   display: none;
 }
