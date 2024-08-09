@@ -70,7 +70,7 @@ export class AttributesRenderer extends AbstractRenderer {
     type = mapWebComponentTypeToTsType(type);
 
     const references = attribute.type?.references;
-    const isEnum = references != null && references?.length > 0 && attribute._ui5validator !== 'Object';
+    const isEnum = references != null && references?.length > 0 && attribute.default !== '{}';
 
     if (isEnum) {
       type += ` | keyof typeof ${type}`;

@@ -19,6 +19,22 @@ interface CardAttributes {
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
+
+  /**
+   * Defines if a loading indicator would be displayed over the card.
+   *
+   * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  loading?: boolean;
+
+  /**
+   * Defines the delay in milliseconds, after which the loading indicator will show up for this card.
+   *
+   * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents**.
+   * @default 1000
+   */
+  loadingDelay?: number;
 }
 
 interface CardDomRef extends Required<CardAttributes>, Ui5DomRef {}
@@ -59,8 +75,8 @@ interface CardPropTypes extends CardAttributes, Omit<CommonProps, keyof CardAttr
  */
 const Card = withWebComponent<CardPropTypes, CardDomRef>(
   'ui5-card',
-  ['accessibleName', 'accessibleNameRef'],
-  [],
+  ['accessibleName', 'accessibleNameRef', 'loadingDelay'],
+  ['loading'],
   ['header'],
   [],
   () => import('@ui5/webcomponents/dist/Card.js')

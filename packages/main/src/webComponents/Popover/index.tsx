@@ -217,13 +217,6 @@ interface PopoverPropTypes
  *
  *
  *
- * **Note: ** We recommend placing popup-like components (`Dialog` and `Popover`)
- * outside any other components. Preferably, the popup-like components should be placed
- * in an upper level HTML element. Otherwise, in some cases the parent HTML elements can break
- * the position and/or z-index management of the popup-like components.
- *
- * **Note:** We don't recommend nesting popup-like components (`Dialog`, `Popover`).
- *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
 const Popover = withWebComponent<PopoverPropTypes, PopoverDomRef>(

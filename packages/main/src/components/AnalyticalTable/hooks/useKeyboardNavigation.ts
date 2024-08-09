@@ -349,6 +349,9 @@ function getPayload(e, column) {
 const setHeaderProps = (headerProps, { instance: { dispatch }, column }) => {
   // resize col with keyboard
   const handleKeyDown = (e) => {
+    if (typeof headerProps.onKeyDown === 'function') {
+      headerProps.onKeyDown(e);
+    }
     if (e.nativeEvent.shiftKey) {
       if (e.key === 'ArrowRight') {
         const payload = getPayload(e, column);

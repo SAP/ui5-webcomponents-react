@@ -8,6 +8,9 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface TableHeaderRowAttributes {
   /**
    * Sticks the `TableHeaderRow` to the top of a table.
+   *
+   * Note: If used in combination with overflowMode "Scroll", the table needs a defined height
+   * or needs to be inside of a container with a defined height for the sticky header to work as expected.
    * @default false
    */
   sticky?: boolean;
@@ -36,7 +39,7 @@ interface TableHeaderRowPropTypes
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
- * @since [2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0) of __@ui5/webcomponents__.
+ * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents__.
  */
 const TableHeaderRow = withWebComponent<TableHeaderRowPropTypes, TableHeaderRowDomRef>(
   'ui5-table-header-row',

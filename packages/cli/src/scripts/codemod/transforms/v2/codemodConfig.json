@@ -512,7 +512,8 @@
       "removedProps": ["navigated", "selected"]
     },
     "Text": {
-      "comment": "wrapping -> maxLines"
+      "comment": "wrapping -> maxLines",
+      "removedProps": ["hyphenated", "emptyIndicator"]
     },
     "TextArea": {
       "changedProps": {

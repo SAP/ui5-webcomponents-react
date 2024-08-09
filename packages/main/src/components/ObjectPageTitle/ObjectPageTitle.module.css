@@ -4,9 +4,6 @@
   min-height: 3rem;
   padding-block-start: 0.5rem;
   padding-block-end: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   position: sticky;
   inset-block-start: 0;
   z-index: 2;

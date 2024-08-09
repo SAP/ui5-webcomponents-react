@@ -143,6 +143,7 @@ interface InputPropTypes
       | 'onClose'
       | 'onInput'
       | 'onOpen'
+      | 'onSelect'
       | 'onSelectionChange'
     > {
   /**
@@ -179,7 +180,7 @@ interface InputPropTypes
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    *
    * **Note:** The `valueStateMessage` would be displayed,
-   * when the component is in `Information`, `Warning` or `Error` value state.
+   * when the component is in `Information`, `Critical` or `Negative` value state.
    *
    * **Note:** If the component has `suggestionItems`,
    * the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
@@ -217,6 +218,13 @@ interface InputPropTypes
   onOpen?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
   /**
+   * Fired when some text has been selected.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   */
+  onSelect?: (event: Ui5CustomEvent<InputDomRef>) => void;
+
+  /**
    * Fired when the user navigates to a suggestion item via the ARROW keys,
    * as a preview, before the final selection.
    *
@@ -233,7 +241,7 @@ interface InputPropTypes
  *
  * The text field can be editable or read-only (`readonly` property),
  * and it can be enabled or disabled (`disabled` property).
- * To visualize semantic states, such as "error" or "warning", the `valueState` property is provided.
+ * To visualize semantic states, such as "Negative" or "Critical", the `valueState` property is provided.
  * When the user makes changes to the text, the change event is fired,
  * which enables you to react on any text change.
  *
@@ -265,7 +273,7 @@ const Input = withWebComponent<InputPropTypes, InputDomRef>(
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'noTypeahead', 'open', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
-  ['change', 'close', 'input', 'open', 'selection-change'],
+  ['change', 'close', 'input', 'open', 'select', 'selection-change'],
   () => import('@ui5/webcomponents/dist/Input.js')
 );
 

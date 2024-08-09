@@ -106,8 +106,8 @@ interface TextAreaAttributes {
    * Defines the value state of the component.
    *
    * **Note:** If `maxlength` property is set,
-   * the component turns into "Warning" state once the characters exceeds the limit.
-   * In this case, only the "Error" state is considered and can be applied.
+   * the component turns into "Critical" state once the characters exceeds the limit.
+   * In this case, only the "Negative" state is considered and can be applied.
    * @default "None"
    */
   valueState?: ValueState | keyof typeof ValueState;

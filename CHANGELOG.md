@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2024-08-07)
+
+### Bug Fixes
+
+- **AnalyticalTable:** add "Filter" text to column popover ([#6164](https://github.com/SAP/ui5-webcomponents-react/issues/6164)) ([c035703](https://github.com/SAP/ui5-webcomponents-react/commit/c0357037ae2920ecadde73feb9c85bac2cffc17a)), closes [#6132](https://github.com/SAP/ui5-webcomponents-react/issues/6132)
+- **AnalyticalTable:** add `aria-hidden` to multi selection checkboxes ([#6134](https://github.com/SAP/ui5-webcomponents-react/issues/6134)) ([082d1c0](https://github.com/SAP/ui5-webcomponents-react/commit/082d1c039d91486d90a175e72d9213434fe90a7e)), closes [#6133](https://github.com/SAP/ui5-webcomponents-react/issues/6133)
+- **AnalyticalTable:** allow selecting all rows via keyboard ([#6168](https://github.com/SAP/ui5-webcomponents-react/issues/6168)) ([65de580](https://github.com/SAP/ui5-webcomponents-react/commit/65de5801a4b2b919c09420065fe25ddfe9fb24cf)), closes [#6110](https://github.com/SAP/ui5-webcomponents-react/issues/6110)
+- **AnalyticalTable:** fix pop-in content styles ([#6170](https://github.com/SAP/ui5-webcomponents-react/issues/6170)) ([5f7d56b](https://github.com/SAP/ui5-webcomponents-react/commit/5f7d56b11b5864c22ca991b5be8ab7c36c9c573e)), closes [#5977](https://github.com/SAP/ui5-webcomponents-react/issues/5977)
+- **codemod:** improve replacements for `Text` ([#6123](https://github.com/SAP/ui5-webcomponents-react/issues/6123)) ([277120b](https://github.com/SAP/ui5-webcomponents-react/commit/277120b8c44a5f8aa227b6f84264cbd4accdd360))
+- **deps:** update dependency @tanstack/react-virtual to v3.8.4 (main) ([#6137](https://github.com/SAP/ui5-webcomponents-react/issues/6137)) ([ef1650b](https://github.com/SAP/ui5-webcomponents-react/commit/ef1650b4fe4476c22e1db97037e255df6a71aa15))
+- **ObjectPage:** increase header z-index ([#6117](https://github.com/SAP/ui5-webcomponents-react/issues/6117)) ([e9aeb63](https://github.com/SAP/ui5-webcomponents-react/commit/e9aeb6352cf148c015dd303a2ec51c3ec4810b09)), closes [#6116](https://github.com/SAP/ui5-webcomponents-react/issues/6116)
+- **ObjectPageTitle:** prevent styling race condition when using static css bundle ([#6115](https://github.com/SAP/ui5-webcomponents-react/issues/6115)) ([f4c4ebb](https://github.com/SAP/ui5-webcomponents-react/commit/f4c4ebb29a04073f76590a103b552862e3fa55da))
+- **UI5CustomEvent - TypeScript:** correctly `currentTarget` type ([#6167](https://github.com/SAP/ui5-webcomponents-react/issues/6167)) ([656ad5a](https://github.com/SAP/ui5-webcomponents-react/commit/656ad5a47d3c35669455b3a8b03bc7bd422c31d2)), closes [#6136](https://github.com/SAP/ui5-webcomponents-react/issues/6136)
+
+### Features
+
+- update to UI5 Web Components ~2.1.1 ([#6151](https://github.com/SAP/ui5-webcomponents-react/issues/6151)) ([80c9a65](https://github.com/SAP/ui5-webcomponents-react/commit/80c9a652be7eb25c3b882579666ab7c950bbc0cb)), closes [#5971](https://github.com/SAP/ui5-webcomponents-react/issues/5971)
+- **VariantManagement:** introduce `size` prop & improve docs ([#6166](https://github.com/SAP/ui5-webcomponents-react/issues/6166)) ([c0184cc](https://github.com/SAP/ui5-webcomponents-react/commit/c0184cc979daebe076768d8bc853f704d85b84b6))
+
+# [2.0.0-rc.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.0...v2.0.0-rc.1) (2024-07-19)
+
+### Bug Fixes
+
+- **codemod:** fix import statment for UI5 Web Component enums ([#6084](https://github.com/SAP/ui5-webcomponents-react/issues/6084)) ([b3a5aed](https://github.com/SAP/ui5-webcomponents-react/commit/b3a5aed8b99c31e7475c2d305d6804b9afa7275b))
+
+### Code Refactoring
+
+- drop support for React 16 & 17 ([#6095](https://github.com/SAP/ui5-webcomponents-react/issues/6095)) ([07facf3](https://github.com/SAP/ui5-webcomponents-react/commit/07facf3678c6d0432eb30ddae8c90784dd8351e6))
+
+### Features
+
+- **codemod:** basic replacements for `DynamicPage` ([#6086](https://github.com/SAP/ui5-webcomponents-react/issues/6086)) ([93819a9](https://github.com/SAP/ui5-webcomponents-react/commit/93819a9a9c7fd87d16d5bc64094890e8f8d5684a))
+- **codemod:** transform Text `wrapping` to `maxLines` ([#6085](https://github.com/SAP/ui5-webcomponents-react/issues/6085)) ([a879a9b](https://github.com/SAP/ui5-webcomponents-react/commit/a879a9b107dc50e1bc267bfd2abe32038201c30f))
+- **ObjectPage:** refactor component to support ui5wc v2 ([#6089](https://github.com/SAP/ui5-webcomponents-react/issues/6089)) ([105b2da](https://github.com/SAP/ui5-webcomponents-react/commit/105b2da44c1c2727080da8558dfb6c4ef65e2b39))
+
+### BREAKING CHANGES
+
+- the minimum required `react` and `react-dom` version is now 18.0.0
+- **ObjectPage:** `headerContent` has been renamed to `headerArea` and
+  now only accepts the `ObjectPageHeader` component.
+- **ObjectPage:** `headerTitle` has been renamed to `titleArea` and now
+  only accepts the `ObjectPageTitle` component.
+- **ObjectPage:** `footer` has been renamed to `footerArea`.
+- **ObjectPage:** `onToggleHeaderContent` has been renamed to
+  `onToggleHeaderArea`
+- **ObjectPage:** `onPinnedStateChange` has been renamed to
+  `onPinButtonToggle`
+- **ObjectPage:** **ObjectPageTitle**: `actions` has been renamed to
+  `actionsBar`. Instead of single actions, the `Toolbar` component should
+  now be passed.
+- **ObjectPage:** **ObjectPageTitle**: `navigationActions` has been
+  renamed to `navigationBar`. Instead of single actions, the `Toolbar`
+  component should now be passed.
+- **ObjectPage:** **ObjectPageTitle**: `actionsToolbarProps`: Since it's
+  now recommended passing the `Toolbar` component directly, this prop is
+  redundant.
+- **ObjectPage:** **ObjectPageTitle**: `navigationActionsToolbarProps`:
+  Since it's now recommended passing the `Toolbar` component directly,
+  this prop is redundant.
+
 # [2.0.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.2...v2.0.0-rc.0) (2024-07-11)
 
 ### Bug Fixes

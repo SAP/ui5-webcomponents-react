@@ -6,7 +6,8 @@ import type { ReactTableHooks } from '../types/index.js';
 
 const customCheckBoxStyling = {
   verticalAlign: 'middle',
-  pointerEvents: 'none'
+  pointerEvents: 'none',
+  display: 'block'
 } as CSSProperties;
 
 /*
@@ -30,6 +31,7 @@ const Header = (instance) => {
       tabIndex={-1}
       onChange={undefined}
       checked={checkBoxProps.indeterminate ? true : checkBoxProps.checked}
+      aria-hidden="true"
     />
   );
 };
@@ -43,6 +45,7 @@ const Cell = ({ row, webComponentsReactProperties: { selectionMode } }) => {
     <CheckBox
       {...row.getToggleRowSelectedProps()}
       tabIndex={-1}
+      aria-hidden="true"
       style={customCheckBoxStyling}
       data-name="internal_selection_column"
     />
@@ -76,6 +79,9 @@ const headerProps = (props, { instance }) => {
     selectionMode === AnalyticalTableSelectionMode.Multiple
   ) {
     const onClick = (e) => {
+      if (typeof props.onClick === 'function') {
+        props.onClick(e);
+      }
       toggleAllRowsSelected(!isAllRowsSelected);
       const isFiltered = filters?.length > 0 || !!globalFilter;
       if (typeof onRowSelect === 'function') {
@@ -95,6 +101,9 @@ const headerProps = (props, { instance }) => {
     };
 
     const onKeyDown = (e) => {
+      if (typeof props.onKeyDown === 'function') {
+        props.onKeyDown(e);
+      }
       if (e.code === 'Enter' || e.code === 'Space') {
         e.preventDefault();
         if (e.code === 'Enter') {
@@ -104,6 +113,9 @@ const headerProps = (props, { instance }) => {
     };
 
     const onKeyUp = (e) => {
+      if (typeof props.onKeyUp === 'function') {
+        props.onKeyUp(e);
+      }
       if (e.code === 'Space') {
         e.preventDefault();
         onClick(e);

@@ -1917,8 +1917,7 @@
               "default": "false",
               "description": "Indicates whether the dialog is open.",
               "privacy": "public",
-              "_ui5since": "1.24.0",
-              "_ui5validator": "Boolean"
+              "_ui5since": "1.24.0"
             }
           ],
           "events": [
@@ -2110,8 +2109,7 @@
               },
               "default": "false",
               "description": "Defines if the pin button is hidden.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2121,8 +2119,7 @@
               },
               "default": "false",
               "description": "Defines if the header is pinned.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2132,8 +2129,7 @@
               },
               "default": "false",
               "description": "Defines if the footer is shown.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2143,8 +2139,7 @@
               },
               "description": "Defines if the header is snapped.",
               "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             }
           ],
           "events": [
@@ -2309,7 +2304,7 @@
           "slots": [
             {
               "name": "heading",
-              "description": "Defines the content of the Heading of the Dynamic Page.",
+              "description": "Defines the content of the Heading of the Dynamic Page.\n\nThe font size of the title within the `heading` slot can be adjusted to the recommended values using the following CSS variables:\n\n**Expanded:** `var(--sapObjectHeader_Title_FontSize)`\n\n**Collapsed:** `var(--sapObjectHeader_Title_SnappedFontSize)`",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -2446,8 +2441,7 @@
               },
               "default": "false",
               "description": "Defines the visibility of the main content.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2457,8 +2451,7 @@
               },
               "default": "false",
               "description": "Defines the visibility of the side content.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2475,8 +2468,7 @@
               },
               "default": "\"End\"",
               "description": "Defines whether the side content is positioned before the main content (left side\nin LTR mode), or after the the main content (right side in LTR mode).",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2493,8 +2485,7 @@
               },
               "default": "\"ShowAboveS\"",
               "description": "Defines on which breakpoints the side content is visible.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2511,8 +2502,7 @@
               },
               "default": "\"OnMinimumWidth\"",
               "description": "Defines on which breakpoints the side content falls down below the main content.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2522,8 +2512,7 @@
               },
               "default": "false",
               "description": "Defines whether the component is in equal split mode. In this mode, the side and\nthe main content take 50:50 percent of the container on all screen sizes\nexcept for phone, where the main and side contents are switching visibility\nusing the toggle method.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "method",
@@ -2708,8 +2697,7 @@
               },
               "description": "Defines the text of the component.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2719,8 +2707,7 @@
               },
               "description": "Defines the additional text of the component.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             }
           ],
           "attributes": [
@@ -2791,8 +2778,7 @@
               },
               "description": "Defines the text of the component.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2802,8 +2788,7 @@
               },
               "default": "false",
               "description": "Defines if the component is selected.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             }
           ],
           "attributes": [
@@ -2907,8 +2892,7 @@
               },
               "default": "\"OneColumn\"",
               "description": "Defines the columns layout and their proportion.\n\n**Note:** The layout also depends on the screen size - one column for screens smaller than 599px,\ntwo columns between 599px and 1023px and three columns for sizes bigger than 1023px.\n\n**For example:** layout=`TwoColumnsStartExpanded` means the layout will display up to two columns\nin 67%/33% proportion.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -2919,8 +2903,7 @@
               "default": "false",
               "description": "Specifies if the user is allowed to change the columns layout by dragging the separator between the columns.",
               "privacy": "public",
-              "_ui5since": "2.0.0",
-              "_ui5validator": "Boolean"
+              "_ui5since": "2.0.0"
             },
             {
               "kind": "field",
@@ -2938,8 +2921,7 @@
               "default": "{}",
               "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n - **startColumn**: `startColumn.role` and `startColumn.name`.\n - **midColumn**: `midColumn.role` and `midColumn.name`.\n - **endColumn**: `endColumn.role` and `endColumn.name`.\n - **startSeparator**: `startSeparator.role` and `startSeparator.name`.\n - **endSeparator**: `endSeparator.role` and `endSeparator.name`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA landmark role of the area.\nAccepts the following values: `none`, `complementary`, `contentinfo`, `main` or `region`.\n\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
               "privacy": "public",
-              "_ui5since": "2.0.0",
-              "_ui5validator": "Object"
+              "_ui5since": "2.0.0"
             },
             {
               "kind": "field",
@@ -3106,6 +3088,15 @@
               }
             },
             {
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n - **startColumn**: `startColumn.role` and `startColumn.name`.\n - **midColumn**: `midColumn.role` and `midColumn.name`.\n - **endColumn**: `endColumn.role` and `endColumn.name`.\n - **startSeparator**: `startSeparator.role` and `startSeparator.name`.\n - **endSeparator**: `endSeparator.role` and `endSeparator.name`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA landmark role of the area.\nAccepts the following values: `none`, `complementary`, `contentinfo`, `main` or `region`.\n\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "FCLAccessibilityAttributes"
+              }
+            },
+            {
               "description": "Returns the current column layout, based on both the `layout` property and the screen size.\n\n**For example:** [\"67%\", \"33%\", 0], [\"100%\", 0, 0], [\"25%\", \"50%\", \"25%\"], etc,\nwhere the numbers represents the width of the start, middle and end columns.",
               "name": "column-layout",
               "default": "undefined",
@@ -3240,8 +3231,7 @@
               },
               "default": "\"BeforeSearch\"",
               "description": "Defines the illustration name that will be displayed in the component.\n\nExample:\n\n`name='BeforeSearch'`, `name='UnableToUpload'`, etc..\n\n**Note:** To use the TNT illustrations,\nyou need to set the `tnt` or `Tnt` prefix in front of the icon's name.\n\nExample:\n\n`name='tnt/Avatar'` or `name='TntAvatar'`.\n\n**Note:** By default the `BeforeSearch` illustration is loaded.\nWhen using an illustration type, other than the default, it should be loaded in addition:\n\n`import \"@ui5/webcomponents-fiori/dist/illustrations/NoData.js\";`\n\nFor TNT illustrations:\n\n`import \"@ui5/webcomponents-fiori/dist/illustrations/tnt/SessionExpired.js\";`",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -3259,8 +3249,7 @@
               "default": "\"Auto\"",
               "description": "Determines which illustration breakpoint variant is used.\n\nAs `IllustratedMessage` adapts itself around the `Illustration`, the other\nelements of the component are displayed differently on the different breakpoints/illustration designs.",
               "privacy": "public",
-              "_ui5since": "2.0.0",
-              "_ui5validator": "String"
+              "_ui5since": "2.0.0"
             },
             {
               "kind": "field",
@@ -3270,8 +3259,7 @@
               },
               "description": "Defines the subtitle of the component.\n\n**Note:** Using this property, the default subtitle text of illustration will be overwritten.\n\n**Note:** Using `subtitle` slot, the default of this property will be overwritten.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -3281,8 +3269,7 @@
               },
               "description": "Defines the title of the component.\n\n**Note:** Using this property, the default title text of illustration will be overwritten.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -3293,8 +3280,7 @@
               "description": "Receives id(or many ids) of the elements that label the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.7.0",
-              "_ui5validator": "String"
+              "_ui5since": "1.7.0"
             }
           ],
           "attributes": [
@@ -3415,8 +3401,7 @@
               },
               "default": "false",
               "description": "If set to `true`, all thumbnails are rendered in a scrollable container.\nIf `false`, only up to five thumbnails are rendered, followed by\nan overflow button that shows the count of the remaining thumbnails.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -3426,8 +3411,7 @@
               },
               "default": "false",
               "description": "If enabled, a `display-area-click` event is fired\nwhen the user clicks or taps on the display area.\n\nThe display area is the central area that contains\nthe enlarged content of the currently selected item.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -3444,8 +3428,7 @@
               },
               "default": "\"Auto\"",
               "description": "Determines the layout of the component.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -3462,8 +3445,7 @@
               },
               "default": "\"Left\"",
               "description": "Determines the horizontal alignment of the thumbnails menu\nvs. the central display area.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -3480,8 +3462,7 @@
               },
               "default": "\"Bottom\"",
               "description": "Determines the vertical alignment of the thumbnails menu\nvs. the central display area.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             }
           ],
           "events": [
@@ -3640,8 +3621,7 @@
               },
               "default": "false",
               "description": "Defines the selected state of the component.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -3651,8 +3631,7 @@
               },
               "default": "false",
               "description": "Defines whether the component is in disabled state.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -3669,8 +3648,7 @@
               },
               "default": "\"Square\"",
               "description": "Determines the layout of the item container.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             }
           ],
           "attributes": [
@@ -3774,8 +3752,7 @@
               },
               "description": "Defines the text that is displayed when the component contains no items.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             }
           ],
           "events": [
@@ -3911,12 +3888,12 @@
               "description": "Defines the items of the `ui5-li-notification-group`,\nusually `ui5-li-notification` items.",
               "_ui5propertyName": "items",
               "_ui5type": {
-                "text": "Array<NotificationListItemBase>",
+                "text": "Array<NotificationListItem>",
                 "references": [
                   {
-                    "name": "NotificationListItemBase",
+                    "name": "NotificationListItem",
                     "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/NotificationListItemBase.js"
+                    "module": "dist/NotificationListItem.js"
                   }
                 ]
               },
@@ -3932,8 +3909,7 @@
               },
               "default": "false",
               "description": "Defines if the group is collapsed or expanded.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -3944,7 +3920,6 @@
               "description": "Defines the `titleText` of the item.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "NotificationListItemBase",
                 "module": "dist/NotificationListItemBase.js"
@@ -3959,7 +3934,6 @@
               "default": "false",
               "description": "Defines if the `notification` is new or has been already read.\n\n**Note:** if set to `false` the `titleText` has bold font,\nif set to true - it has a normal font.",
               "privacy": "public",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "NotificationListItemBase",
                 "module": "dist/NotificationListItemBase.js"
@@ -3975,7 +3949,6 @@
               "description": "Defines if a busy indicator would be displayed over the item.",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.8",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "NotificationListItemBase",
                 "module": "dist/NotificationListItemBase.js"
@@ -3990,7 +3963,6 @@
               "default": "1000",
               "description": "Defines the delay in milliseconds, after which the busy indicator will show up for this component.",
               "privacy": "public",
-              "_ui5validator": "Number",
               "inheritedFrom": {
                 "name": "NotificationListItemBase",
                 "module": "dist/NotificationListItemBase.js"
@@ -4144,8 +4116,7 @@
               "default": "\"None\"",
               "description": "Defines if the `titleText` and `description` should wrap,\nthey truncate by default.\n\n**Note:** by default the `titleText` and `description`,\nand a `ShowMore/Less` button would be displayed.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
+              "_ui5since": "1.0.0-rc.15"
             },
             {
               "kind": "field",
@@ -4162,8 +4133,7 @@
               },
               "default": "\"None\"",
               "description": "Defines the status indicator of the item.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4173,8 +4143,7 @@
               },
               "default": "false",
               "description": "Defines if the `Close` button would be displayed.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4191,8 +4160,7 @@
               },
               "default": "\"Standard\"",
               "description": "Defines the `Important` label of the item.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4203,7 +4171,6 @@
               "description": "Defines the `titleText` of the item.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "NotificationListItemBase",
                 "module": "dist/NotificationListItemBase.js"
@@ -4218,7 +4185,6 @@
               "default": "false",
               "description": "Defines if the `notification` is new or has been already read.\n\n**Note:** if set to `false` the `titleText` has bold font,\nif set to true - it has a normal font.",
               "privacy": "public",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "NotificationListItemBase",
                 "module": "dist/NotificationListItemBase.js"
@@ -4234,7 +4200,6 @@
               "description": "Defines if a busy indicator would be displayed over the item.",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.8",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "NotificationListItemBase",
                 "module": "dist/NotificationListItemBase.js"
@@ -4249,7 +4214,6 @@
               "default": "1000",
               "description": "Defines the delay in milliseconds, after which the busy indicator will show up for this component.",
               "privacy": "public",
-              "_ui5validator": "Number",
               "inheritedFrom": {
                 "name": "NotificationListItemBase",
                 "module": "dist/NotificationListItemBase.js"
@@ -4368,8 +4332,7 @@
               },
               "description": "Defines the `titleText` of the item.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4379,8 +4342,7 @@
               },
               "default": "false",
               "description": "Defines if the `notification` is new or has been already read.\n\n**Note:** if set to `false` the `titleText` has bold font,\nif set to true - it has a normal font.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4391,8 +4353,7 @@
               "default": "false",
               "description": "Defines if a busy indicator would be displayed over the item.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8",
-              "_ui5validator": "Boolean"
+              "_ui5since": "1.0.0-rc.8"
             },
             {
               "kind": "field",
@@ -4402,8 +4363,7 @@
               },
               "default": "1000",
               "description": "Defines the delay in milliseconds, after which the busy indicator will show up for this component.",
-              "privacy": "public",
-              "_ui5validator": "Number"
+              "privacy": "public"
             }
           ],
           "superclass": {
@@ -4483,8 +4443,7 @@
               },
               "default": "\"Solid\"",
               "description": "Defines the background color of the `ui5-page`.\n\n**Note:** When a ui5-list is placed inside the page, we recommend using “List” to ensure better color contrast.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4494,8 +4453,7 @@
               },
               "default": "false",
               "description": "Disables vertical scrolling of page content.\nIf set to true, there will be no vertical scrolling at all.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4505,8 +4463,7 @@
               },
               "default": "false",
               "description": "Defines if the footer is fixed at the very bottom of the page.\n\n**Note:** When set to true the footer is fixed at the very bottom of the page, otherwise it floats over the content with a slight offset from the bottom.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4516,8 +4473,7 @@
               },
               "default": "false",
               "description": "Defines the footer visibility.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             }
           ],
           "attributes": [
@@ -4669,8 +4625,7 @@
               "description": "Defines the title of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
+              "_ui5since": "1.0.0-rc.15"
             },
             {
               "kind": "field",
@@ -4681,8 +4636,7 @@
               "description": "Defines the subtitle of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
+              "_ui5since": "1.0.0-rc.15"
             },
             {
               "kind": "field",
@@ -4692,8 +4646,7 @@
               },
               "description": "Defines the icon to be displayed as a graphical element within the component.\n\nExample:\n\n`<ui5-product-switch-item icon=\"palette\">`\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4703,8 +4656,7 @@
               },
               "description": "Defines a target where the `targetSrc` content must be open.\n\nAvailable options are:\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**Note:** By default target will be open in the same frame as it was clicked.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4714,8 +4666,7 @@
               },
               "description": "Defines the component target URI. Supports standard hyperlink behavior.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             }
           ],
           "events": [
@@ -4933,8 +4884,7 @@
               },
               "description": "Defines the `primaryTitle`.\n\n**Note:** The `primaryTitle` would be hidden on S screen size (less than approx. 700px).",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4944,8 +4894,7 @@
               },
               "description": "Defines the `secondaryTitle`.\n\n**Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4955,8 +4904,7 @@
               },
               "description": "Defines the `notificationsCount`,\ndisplayed in the notification icon top-right corner.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4966,8 +4914,7 @@
               },
               "default": "false",
               "description": "Defines, if the notification icon would be displayed.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4977,8 +4924,7 @@
               },
               "default": "false",
               "description": "Defines, if the product switch icon would be displayed.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -4988,8 +4934,7 @@
               },
               "default": "false",
               "description": "Defines, if the Search Field would be displayed when there is a valid `searchField` slot.\n\n**Note:** By default the Search Field is not displayed.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -5005,10 +4950,9 @@
                 ]
               },
               "default": "{}",
-              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n- **logo** - `logo.role` and `logo.name`.\n- **notifications** - `notifications.expanded` and `notifications.hasPopup`.\n- **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.\n- **product** - `product.expanded` and `product.hasPopup`.\n- **search** - `search.expanded` and `search.hasPopup`.\n- **overflow** - `overflow.expanded` and `overflow.hasPopup`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA role of the logo area.\nAccepts the following string values: `button` or `link`.\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n- **logo** - `logo.role` and `logo.name`.\n- **notifications** - `notifications.expanded` and `notifications.hasPopup`.\n- **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.\n- **product** - `product.expanded` and `product.hasPopup`.\n- **search** - `search.hasPopup`.\n- **overflow** - `overflow.expanded` and `overflow.hasPopup`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA role of the logo area.\nAccepts the following string values: `button` or `link`.\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
               "privacy": "public",
-              "_ui5since": "1.10.0",
-              "_ui5validator": "Object"
+              "_ui5since": "1.10.0"
             },
             {
               "kind": "method",
@@ -5285,6 +5229,15 @@
               }
             },
             {
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n- **logo** - `logo.role` and `logo.name`.\n- **notifications** - `notifications.expanded` and `notifications.hasPopup`.\n- **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.\n- **product** - `product.expanded` and `product.hasPopup`.\n- **search** - `search.hasPopup`.\n- **overflow** - `overflow.expanded` and `overflow.hasPopup`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA role of the logo area.\nAccepts the following string values: `button` or `link`.\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "ShellBarAccessibilityAttributes"
+              }
+            },
+            {
               "description": "Returns the `logo` DOM ref.",
               "name": "logo-dom-ref",
               "default": "null",
@@ -5377,8 +5330,7 @@
               },
               "description": "Defines the name of the item's icon.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -5388,8 +5340,7 @@
               },
               "description": "Defines the item text.\n \n  **Note:** The text is only displayed inside the overflow popover list view.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -5400,8 +5351,7 @@
               "description": "Defines the count displayed in the top-right corner.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6",
-              "_ui5validator": "String"
+              "_ui5since": "1.0.0-rc.6"
             }
           ],
           "events": [
@@ -5540,8 +5490,7 @@
               },
               "default": "false",
               "description": "Defines whether the `ui5-side-navigation` is expanded or collapsed.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             }
           ],
           "events": [
@@ -5655,8 +5604,7 @@
               },
               "default": "false",
               "description": "Defines if the item is expanded",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -5667,7 +5615,6 @@
               "description": "Defines the text of the item.",
               "privacy": "public",
               "default": "undefined",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -5683,7 +5630,6 @@
               "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
               "privacy": "public",
               "_ui5since": "1.19.0",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -5699,7 +5645,6 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "2.0.0",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -5822,8 +5767,7 @@
               },
               "default": "false",
               "description": "Defines if the item is expanded",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -5834,7 +5778,6 @@
               "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "privacy": "public",
               "default": "undefined",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -5849,7 +5792,6 @@
               "default": "false",
               "description": "Defines whether the item is selected",
               "privacy": "public",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -5865,7 +5807,6 @@
               "privacy": "public",
               "default": "undefined",
               "_ui5since": "1.19.0",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -5881,7 +5822,6 @@
               "privacy": "public",
               "default": "undefined",
               "_ui5since": "1.19.0",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -5896,7 +5836,6 @@
               "description": "Defines the text of the item.",
               "privacy": "public",
               "default": "undefined",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -5912,7 +5851,6 @@
               "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
               "privacy": "public",
               "_ui5since": "1.19.0",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -5928,7 +5866,6 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "2.0.0",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -6099,8 +6036,7 @@
               },
               "description": "Defines the text of the item.",
               "privacy": "public",
-              "default": "undefined",
-              "_ui5validator": "String"
+              "default": "undefined"
             },
             {
               "kind": "field",
@@ -6111,8 +6047,7 @@
               "default": "false",
               "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
               "privacy": "public",
-              "_ui5since": "1.19.0",
-              "_ui5validator": "Boolean"
+              "_ui5since": "1.19.0"
             },
             {
               "kind": "field",
@@ -6123,8 +6058,7 @@
               "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "2.0.0",
-              "_ui5validator": "String"
+              "_ui5since": "2.0.0"
             }
           ],
           "attributes": [
@@ -6195,8 +6129,7 @@
               },
               "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "privacy": "public",
-              "default": "undefined",
-              "_ui5validator": "String"
+              "default": "undefined"
             },
             {
               "kind": "field",
@@ -6206,8 +6139,7 @@
               },
               "default": "false",
               "description": "Defines whether the item is selected",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -6218,8 +6150,7 @@
               "description": "Defines the link target URI. Supports standard hyperlink behavior.\nIf a JavaScript action should be triggered,\nthis should not be set, but instead an event handler\nfor the `click` event should be registered.",
               "privacy": "public",
               "default": "undefined",
-              "_ui5since": "1.19.0",
-              "_ui5validator": "String"
+              "_ui5since": "1.19.0"
             },
             {
               "kind": "field",
@@ -6230,8 +6161,7 @@
               "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
               "privacy": "public",
               "default": "undefined",
-              "_ui5since": "1.19.0",
-              "_ui5validator": "String"
+              "_ui5since": "1.19.0"
             },
             {
               "kind": "field",
@@ -6242,7 +6172,6 @@
               "description": "Defines the text of the item.",
               "privacy": "public",
               "default": "undefined",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -6258,7 +6187,6 @@
               "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
               "privacy": "public",
               "_ui5since": "1.19.0",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -6274,7 +6202,6 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "2.0.0",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -6511,7 +6438,6 @@
               "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "privacy": "public",
               "default": "undefined",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -6526,7 +6452,6 @@
               "default": "false",
               "description": "Defines whether the item is selected",
               "privacy": "public",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -6542,7 +6467,6 @@
               "privacy": "public",
               "default": "undefined",
               "_ui5since": "1.19.0",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -6558,7 +6482,6 @@
               "privacy": "public",
               "default": "undefined",
               "_ui5since": "1.19.0",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -6573,7 +6496,6 @@
               "description": "Defines the text of the item.",
               "privacy": "public",
               "default": "undefined",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -6589,7 +6511,6 @@
               "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
               "privacy": "public",
               "_ui5since": "1.19.0",
-              "_ui5validator": "Boolean",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -6605,7 +6526,6 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "2.0.0",
-              "_ui5validator": "String",
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -6664,8 +6584,7 @@
               },
               "description": "Defines the text of the component.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -6675,8 +6594,7 @@
               },
               "default": "false",
               "description": "Defines if the component is selected.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             }
           ],
           "attributes": [
@@ -6779,8 +6697,7 @@
               "default": "\"Vertical\"",
               "description": "Defines the items orientation.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
+              "_ui5since": "1.0.0-rc.15"
             },
             {
               "kind": "field",
@@ -6791,8 +6708,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.2.0",
-              "_ui5validator": "String"
+              "_ui5since": "1.2.0"
             }
           ],
           "attributes": [
@@ -6847,6 +6763,121 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TimelineGroupItem.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nAn entry posted on the timeline.\nIt is intented to represent a group of `<ui5-timeline-item>`s.\n\n**Note**: Please do not use empty groups in order to preserve the intended design.",
+          "name": "TimelineGroupItem",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Determines the content of the `ui5-timeline-group-item`.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<ITimelineItem>",
+                "references": [
+                  {
+                    "name": "ITimelineItem",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/Timeline.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "groupName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text of the button that expands and collapses the group.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "collapsed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines if the group is collapsed or expanded.",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "toggle",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the group item is expanded or collapsed."
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the text of the button that expands and collapses the group.",
+              "name": "group-name",
+              "default": "undefined",
+              "fieldName": "groupName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Determines if the group is collapsed or expanded.",
+              "name": "collapsed",
+              "default": "false",
+              "fieldName": "collapsed",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-timeline-group-item",
+          "customElement": true,
+          "_ui5since": "2.1.0",
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "ITimelineItem",
+              "package": "@ui5/webcomponents-fiori",
+              "module": "dist/Timeline.js"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TimelineGroupItem",
+            "module": "dist/TimelineGroupItem.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-timeline-group-item",
+          "declaration": {
+            "name": "TimelineGroupItem",
+            "module": "dist/TimelineGroupItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/TimelineItem.js",
       "declarations": [
         {
@@ -6855,12 +6886,13 @@
           "name": "TimelineItem",
           "slots": [
             {
-              "description": "Determines the description of the `ui5-timeline-item`.",
               "name": "default",
-              "_ui5privacy": "public",
+              "description": "Defines the content of the `ui5-timeline-item`.",
+              "_ui5propertyName": "content",
               "_ui5type": {
                 "text": "Array<Node>"
-              }
+              },
+              "_ui5privacy": "public"
             }
           ],
           "members": [
@@ -6872,8 +6904,7 @@
               },
               "description": "Defines the icon to be displayed as graphical element within the `ui5-timeline-item`.\nSAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -6883,8 +6914,7 @@
               },
               "description": "Defines the name of the item, displayed before the `title-text`.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -6894,8 +6924,7 @@
               },
               "default": "false",
               "description": "Defines if the `name` is clickable.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -6905,8 +6934,7 @@
               },
               "description": "Defines the title text of the component.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -6916,8 +6944,7 @@
               },
               "description": "Defines the subtitle text of the component.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             }
           ],
           "events": [
@@ -7063,8 +7090,7 @@
               },
               "default": "\"None\"",
               "description": "Defines the selection mode of the `ui5-upload-collection`.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7074,8 +7100,7 @@
               },
               "description": "Allows you to set your own text for the 'No data' description.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7085,8 +7110,7 @@
               },
               "description": "Allows you to set your own text for the 'No data' text.",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7096,8 +7120,7 @@
               },
               "default": "false",
               "description": "By default there will be drag and drop overlay shown over the `ui5-upload-collection` when files\nare dragged. If you don't intend to use drag and drop, set this property.\n\n**Note:** It is up to the application developer to add handler for `drop` event and handle it.\n`ui5-upload-collection` only displays an overlay.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7108,8 +7131,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16",
-              "_ui5validator": "String"
+              "_ui5since": "1.0.0-rc.16"
             }
           ],
           "events": [
@@ -7301,7 +7323,6 @@
               "default": "null",
               "description": "Holds an instance of `File` associated with this item.",
               "privacy": "public",
-              "_ui5validator": "Object",
               "_ui5noAttribute": true
             },
             {
@@ -7312,8 +7333,7 @@
               },
               "default": "\"\"",
               "description": "The name of the file.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7323,8 +7343,7 @@
               },
               "default": "false",
               "description": "If set to `true` the file name will be clickable and it will fire `file-name-click` event upon click.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7334,8 +7353,7 @@
               },
               "description": "Disables the delete button.",
               "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7345,8 +7363,7 @@
               },
               "default": "false",
               "description": "Hides the delete button.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7356,8 +7373,7 @@
               },
               "default": "false",
               "description": "Hides the retry button when `uploadState` property is `Error`.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7367,8 +7383,7 @@
               },
               "default": "false",
               "description": "Hides the terminate button when `uploadState` property is `Uploading`.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7378,8 +7393,7 @@
               },
               "default": "0",
               "description": "The upload progress in percentage.\n\n**Note:** Expected values are in the interval [0, 100].",
-              "privacy": "public",
-              "_ui5validator": "Number"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7396,8 +7410,7 @@
               },
               "default": "\"Ready\"",
               "description": "Upload state.\n\nDepending on this property, the item displays the following:\n\n- `Ready` - progress indicator is displayed.\n- `Uploading` - progress indicator and terminate button are displayed. When the terminate button is pressed, `terminate` event is fired.\n- `Error` - progress indicator and retry button are displayed. When the retry button is pressed, `retry` event is fired.\n- `Complete` - progress indicator is not displayed.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7414,8 +7427,7 @@
               },
               "default": "\"Active\"",
               "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7433,8 +7445,7 @@
               "default": "{}",
               "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
               "privacy": "public",
-              "_ui5since": "1.15.0",
-              "_ui5validator": "Object"
+              "_ui5since": "1.15.0"
             },
             {
               "kind": "field",
@@ -7445,8 +7456,7 @@
               "default": "false",
               "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
               "privacy": "public",
-              "_ui5since": "1.10.0",
-              "_ui5validator": "Boolean"
+              "_ui5since": "1.10.0"
             },
             {
               "kind": "field",
@@ -7457,8 +7467,7 @@
               "description": "Defines the text of the tooltip that would be displayed for the list item.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.23.0",
-              "_ui5validator": "String"
+              "_ui5since": "1.23.0"
             },
             {
               "kind": "field",
@@ -7476,8 +7485,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24",
-              "_ui5validator": "String"
+              "_ui5since": "1.24"
             },
             {
               "kind": "field",
@@ -7487,8 +7495,7 @@
               },
               "description": "Defines the selected state of the component.",
               "default": "false",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             }
           ],
           "events": [
@@ -7534,6 +7541,15 @@
             }
           ],
           "attributes": [
+            {
+              "description": "Holds an instance of `File` associated with this item.",
+              "name": "file",
+              "default": "null",
+              "fieldName": "file",
+              "type": {
+                "text": "File | null"
+              }
+            },
             {
               "description": "The name of the file.",
               "name": "file-name",
@@ -7686,8 +7702,7 @@
               },
               "default": "false",
               "description": "Defines the initial sort order.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -7698,8 +7713,7 @@
               "default": "false",
               "description": "Indicates if the dialog is open.",
               "privacy": "public",
-              "_ui5since": "2.0.0",
-              "_ui5validator": "Boolean"
+              "_ui5since": "2.0.0"
             },
             {
               "kind": "method",
@@ -7975,8 +7989,7 @@
               "default": "\"MultipleSteps\"",
               "description": "Defines how the content of the `ui5-wizard` would be visualized.",
               "privacy": "public",
-              "_ui5since": "1.14.0",
-              "_ui5validator": "String"
+              "_ui5since": "1.14.0"
             }
           ],
           "events": [
@@ -8105,8 +8118,7 @@
               "description": "Defines the `titleText` of the step.\n\n**Note:** The text is displayed in the `ui5-wizard` navigation header.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
+              "_ui5since": "1.0.0-rc.15"
             },
             {
               "kind": "field",
@@ -8117,8 +8129,7 @@
               "description": "Defines the `subtitleText` of the step.\n\n**Note:** the text is displayed in the `ui5-wizard` navigation header.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
-              "_ui5validator": "String"
+              "_ui5since": "1.0.0-rc.15"
             },
             {
               "kind": "field",
@@ -8128,8 +8139,7 @@
               },
               "description": "Defines the `icon` of the step.\n\n**Note:** The icon is displayed in the `ui5-wizard` navigation header.\n\nThe SAP-icons font provides numerous options.\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "default": "undefined",
-              "privacy": "public",
-              "_ui5validator": "String"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -8139,8 +8149,7 @@
               },
               "default": "false",
               "description": "Defines if the step is `disabled`. When disabled the step is displayed,\nbut the user can't select the step by clicking or navigate to it with scrolling.\n\n**Note:** Step can't be `selected` and `disabled` at the same time.\nIn this case the `selected` property would take precedence.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -8150,8 +8159,7 @@
               },
               "default": "false",
               "description": "Defines the step's `selected` state - the step that is currently active.\n\n**Note:** Step can't be `selected` and `disabled` at the same time.\nIn this case the `selected` property would take precedence.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -8161,8 +8169,7 @@
               },
               "default": "false",
               "description": "When `branching` is enabled a dashed line would be displayed after the step,\nmeant to indicate that the next step is not yet known and depends on user choice in the current step.\n\n**Note:** It is recommended to use `branching` on the last known step\nand later add new steps when it becomes clear how the wizard flow should continue.",
-              "privacy": "public",
-              "_ui5validator": "Boolean"
+              "privacy": "public"
             }
           ],
           "attributes": [

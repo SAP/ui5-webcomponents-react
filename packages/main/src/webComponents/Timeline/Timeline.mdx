@@ -1,6 +1,7 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { TimelineGroupItem } from '../TimelineGroupItem';
 import { TimelineItem } from '../TimelineItem';
 import * as ComponentStories from './Timeline.stories';
 
@@ -20,7 +21,18 @@ import * as ComponentStories from './Timeline.stories';
 
 <br />
 
+## More Examples
+
+### Timeline with Groups
+
+<Canvas of={ComponentStories.WithGroups} />
+
 <Markdown>{SubcomponentsSection}</Markdown>
+
+## TimelineGroupItem
+
+<Description of={TimelineGroupItem} />
+<ArgTypesWithNote of={TimelineGroupItem} />
 
 ## TimelineItem
 

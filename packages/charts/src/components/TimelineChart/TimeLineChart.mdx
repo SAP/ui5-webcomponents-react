@@ -45,7 +45,7 @@ ticks and tooltip numbers.
 
 ```jsx
 export const TimingFigure = ({ arrival, period, deadline, totalDuration }) => {
-  const ref = useRef();
+  const ref = useRef(null);
   const verticalSpacing = 2;
   const halfArrowWidth = 4;
   const chartBodyCtx = useContext(TimelineChartBodyCtx);

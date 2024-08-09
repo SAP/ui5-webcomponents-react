@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2024-08-07)
+
+### Bug Fixes
+
+- **codemod:** improve replacements for `Text` ([#6123](https://github.com/SAP/ui5-webcomponents-react/issues/6123)) ([277120b](https://github.com/SAP/ui5-webcomponents-react/commit/277120b8c44a5f8aa227b6f84264cbd4accdd360))
+
+### Features
+
+- update to UI5 Web Components ~2.1.1 ([#6151](https://github.com/SAP/ui5-webcomponents-react/issues/6151)) ([80c9a65](https://github.com/SAP/ui5-webcomponents-react/commit/80c9a652be7eb25c3b882579666ab7c950bbc0cb)), closes [#5971](https://github.com/SAP/ui5-webcomponents-react/issues/5971)
+
+# [2.0.0-rc.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.0...v2.0.0-rc.1) (2024-07-19)
+
+### Bug Fixes
+
+- **codemod:** fix import statment for UI5 Web Component enums ([#6084](https://github.com/SAP/ui5-webcomponents-react/issues/6084)) ([b3a5aed](https://github.com/SAP/ui5-webcomponents-react/commit/b3a5aed8b99c31e7475c2d305d6804b9afa7275b))
+
+### Features
+
+- **codemod:** basic replacements for `DynamicPage` ([#6086](https://github.com/SAP/ui5-webcomponents-react/issues/6086)) ([93819a9](https://github.com/SAP/ui5-webcomponents-react/commit/93819a9a9c7fd87d16d5bc64094890e8f8d5684a))
+- **codemod:** transform Text `wrapping` to `maxLines` ([#6085](https://github.com/SAP/ui5-webcomponents-react/issues/6085)) ([a879a9b](https://github.com/SAP/ui5-webcomponents-react/commit/a879a9b107dc50e1bc267bfd2abe32038201c30f))
+- **ObjectPage:** refactor component to support ui5wc v2 ([#6089](https://github.com/SAP/ui5-webcomponents-react/issues/6089)) ([105b2da](https://github.com/SAP/ui5-webcomponents-react/commit/105b2da44c1c2727080da8558dfb6c4ef65e2b39))
+
+### BREAKING CHANGES
+
+- **ObjectPage:** `headerContent` has been renamed to `headerArea` and
+  now only accepts the `ObjectPageHeader` component.
+- **ObjectPage:** `headerTitle` has been renamed to `titleArea` and now
+  only accepts the `ObjectPageTitle` component.
+- **ObjectPage:** `footer` has been renamed to `footerArea`.
+- **ObjectPage:** `onToggleHeaderContent` has been renamed to
+  `onToggleHeaderArea`
+- **ObjectPage:** `onPinnedStateChange` has been renamed to
+  `onPinButtonToggle`
+- **ObjectPage:** **ObjectPageTitle**: `actions` has been renamed to
+  `actionsBar`. Instead of single actions, the `Toolbar` component should
+  now be passed.
+- **ObjectPage:** **ObjectPageTitle**: `navigationActions` has been
+  renamed to `navigationBar`. Instead of single actions, the `Toolbar`
+  component should now be passed.
+- **ObjectPage:** **ObjectPageTitle**: `actionsToolbarProps`: Since it's
+  now recommended passing the `Toolbar` component directly, this prop is
+  redundant.
+- **ObjectPage:** **ObjectPageTitle**: `navigationActionsToolbarProps`:
+  Since it's now recommended passing the `Toolbar` component directly,
+  this prop is redundant.
+
 # [2.0.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.2...v2.0.0-rc.0) (2024-07-11)
 
 ### Code Refactoring

@@ -18,7 +18,7 @@ import * as ComponentStories from './MessageBox.stories';
 
 ## Opening and Closing MessageBoxes
 
-Unlike `Popovers` or `Dialogs`, `MessageBoxes` do not need to be provided with a `ref` to be opened or closed. Instead, the `open` prop can be used for this.
+You can open and close the `MessageBox` with the `open` prop.
 
 **Note:** `onClose` is either called by clicking on one of the action buttons in the footer or by pressing the `ESC` key.
 
@@ -44,7 +44,7 @@ const MessageBoxComponent = () => {
 
 ## Accessing actions in the onClose callback
 
-To add some logic to the respective actions you can use `event.detail.action` inside `onClose` which contains the name of the clicked action.
+To add some logic to the respective actions you can use first parameter of the `onClose` event handler which contains the name of the clicked action.
 
 ```jsx
 const MessageBoxComponent = () => {
@@ -52,10 +52,13 @@ const MessageBoxComponent = () => {
   const onButtonClick = () => {
     setOpen(true);
   };
-  const handleClose = (event) => {
-    if (event.detail.action === MessageBoxAction.OK) {
+  // in case the MessageBox was closed by pressing `ESC`, `action` will be undefined and `escapedPressed` will be true.
+  const handleClose = (action, escapedPressed) => {
+    if (escapedPressed) {
+      // escape button was pressed
+    } else if (action === MessageBoxAction.OK) {
       // do something on "Ok" button click
-    } else if (event.detail.action === 'Custom Action') {
+    } else if (action === 'Custom Action') {
       // do something on "Custom Action" click
     } else {
       // do something on "Cancel" or "Abort" button click

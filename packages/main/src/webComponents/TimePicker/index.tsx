@@ -8,6 +8,22 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface TimePickerAttributes {
   /**
+   * Defines the aria-label attribute for the component.
+   *
+   * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleName?: string | undefined;
+
+  /**
+   * Receives id (or many ids) of the elements that label the component.
+   *
+   * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleNameRef?: string | undefined;
+
+  /**
    * Defines the disabled state of the comonent.
    * @default false
    */
@@ -37,7 +53,7 @@ interface TimePickerAttributes {
   /**
    * Defines the open or closed state of the popover.
    *
-   * **Note:** Available since [v2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   open?: boolean;
@@ -57,6 +73,14 @@ interface TimePickerAttributes {
    * @default false
    */
   readonly?: boolean;
+
+  /**
+   * Defines whether the component is required.
+   *
+   * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  required?: boolean;
 
   /**
    * Defines a formatted time value.
@@ -106,7 +130,7 @@ interface TimePickerPropTypes
    * **Note:** If not specified, a default text (in the respective language) will be displayed.
    *
    * **Note:** The `valueStateMessage` would be displayed,
-   * when the `TimePicker` is in `Information`, `Warning` or `Error` value state.
+   * when the `TimePicker` is in `Information`, `Critical` or `Negative` value state.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="valueStateMessage"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -198,8 +222,8 @@ interface TimePickerPropTypes
  */
 const TimePicker = withWebComponent<TimePickerPropTypes, TimePickerDomRef>(
   'ui5-time-picker',
-  ['formatPattern', 'name', 'placeholder', 'value', 'valueState'],
-  ['disabled', 'open', 'readonly'],
+  ['accessibleName', 'accessibleNameRef', 'formatPattern', 'name', 'placeholder', 'value', 'valueState'],
+  ['disabled', 'open', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'close', 'input', 'open'],
   () => import('@ui5/webcomponents/dist/TimePicker.js')

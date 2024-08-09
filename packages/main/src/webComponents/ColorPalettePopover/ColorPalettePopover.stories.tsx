@@ -1,9 +1,9 @@
-import { isChromatic } from '@sb/utils';
+import { isChromatic } from '@sb/utils.js';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useEffect, useRef, useState } from 'react';
-import { Button } from '../Button';
-import { ColorPaletteItem } from '../ColorPaletteItem';
-import { ColorPalettePopover } from './index';
+import { useRef, useState } from 'react';
+import { Button } from '../Button/index.js';
+import { ColorPaletteItem } from '../ColorPaletteItem/index.js';
+import { ColorPalettePopover } from './index.js';
 
 const meta = {
   title: 'Modals & Popovers / ColorPalettePopover',
@@ -13,7 +13,8 @@ const meta = {
     defaultColor: { control: { type: 'color' } }
   },
   parameters: {
-    chromatic: { delay: 1000 }
+    chromatic: { delay: 1000 },
+    open: isChromatic
   },
   tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof ColorPalettePopover>;
@@ -23,16 +24,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render(args) {
-    const popoverRef = useRef(null);
     const btnRef = useRef(null);
     const [open, setOpen] = useState(args.open);
-    useEffect(() => {
-      if (isChromatic) {
-        popoverRef.current.showAt(btnRef.current);
-      }
-    }, []);
     const onButtonClick = (e) => {
-      popoverRef.current.opener = e.currentTarget;
       setOpen((prev) => !prev);
     };
     return (
@@ -42,7 +36,7 @@ export const Default: Story = {
         </Button>
         <ColorPalettePopover
           {...args}
-          ref={popoverRef}
+          opener={btnRef.current}
           open={open}
           onClose={(e) => {
             args.onClose(e);
