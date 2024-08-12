@@ -49,7 +49,7 @@
       "groupSlug": "root-all-minor-patch",
       "matchFileNames": ["package.json"],
       "matchUpdateTypes": ["minor", "patch"],
-      "excludePackageNames": ["react", "react-dom", "storybook", "rimraf"],
+      "excludePackageNames": ["react", "react-dom", "storybook", "rimraf", "@joshwooding/vite-plugin-react-docgen-typescript"],
       "excludePackagePatterns": ["^@storybook/", "^@ui5/"]
     },
     {

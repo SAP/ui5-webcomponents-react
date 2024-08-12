@@ -2,13 +2,11 @@
   width: 100%;
 }
 
-.defaultCell {
-  font-family: var(--sapFontBoldFamily);
-  * {
-    font-family: var(--sapFontBoldFamily);
-  }
+.defaultCell > :first-child {
+  padding-block-start: 0.25rem;
 }
 
 .header {
+  color: var(--sapContent_LabelColor);
   height: 16px;
 }

@@ -32,14 +32,14 @@
     "sb:prepare-cem": "node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents --out ./.storybook/custom-element-manifests/main.json && node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents-fiori --out ./.storybook/custom-element-manifests/fiori.json"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "8.0.10",
-    "@storybook/addon-essentials": "8.0.10",
-    "@storybook/blocks": "8.0.10",
-    "@storybook/manager-api": "8.0.10",
-    "@storybook/preview-api": "8.0.10",
-    "@storybook/react": "8.0.10",
-    "@storybook/react-vite": "8.0.10",
-    "@storybook/theming": "8.0.10",
+    "@storybook/addon-a11y": "8.2.8",
+    "@storybook/addon-essentials": "8.2.8",
+    "@storybook/blocks": "8.2.8",
+    "@storybook/manager-api": "8.2.8",
+    "@storybook/preview-api": "8.2.8",
+    "@storybook/react": "8.2.8",
+    "@storybook/react-vite": "8.2.8",
+    "@storybook/theming": "8.2.8",
     "@ui5/webcomponents": "2.1.1",
     "@ui5/webcomponents-compat": "2.1.1",
     "@ui5/webcomponents-fiori": "2.1.1",
@@ -47,12 +47,12 @@
     "react": "19.0.0-rc-f38c22b244-20240704",
     "react-dom": "19.0.0-rc-f38c22b244-20240704",
     "remark-gfm": "^4.0.0",
-    "tocbot": "4.28.2"
+    "tocbot": "4.29.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "7.25.2",
-    "@babel/preset-env": "7.25.0",
+    "@babel/preset-env": "7.25.3",
     "@babel/preset-react": "7.24.7",
     "@babel/preset-typescript": "7.24.7",
     "@cypress/code-coverage": "^3.10.0",
@@ -69,7 +69,7 @@
     "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^11.0.0",
     "cssnano": "^7.0.0",
-    "cypress": "13.13.1",
+    "cypress": "13.13.2",
     "cypress-real-events": "^1.8.1",
     "dedent": "^1.0.0",
     "eslint": "^8.35.0",
@@ -94,12 +94,12 @@
     "postcss-nesting": "^13.0.0",
     "prettier": "^3.0.0",
     "rimraf": "^6.0.0",
-    "storybook": "8.0.10",
+    "storybook": "8.2.8",
     "typedoc": "^0.26.0",
     "typescript": "5.5.4",
     "vite": "^5.0.0",
     "vite-plugin-istanbul": "^6.0.0",
-    "vite-tsconfig-paths": "^4.0.5"
+    "vite-tsconfig-paths": "^5.0.0"
   },
   "lint-staged": {
     "*.{md,mdx,json}": [
@@ -113,7 +113,8 @@
   "resolutions": {
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
-    "tocbot": "4.28.2"
+    "tocbot": "4.29.0",
+    "@joshwooding/vite-plugin-react-docgen-typescript": "0.3.0"
   },
   "type": "module",
   "nyc": {
