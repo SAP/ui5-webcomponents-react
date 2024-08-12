@@ -47,12 +47,12 @@
     "react": "19.0.0-rc-f38c22b244-20240704",
     "react-dom": "19.0.0-rc-f38c22b244-20240704",
     "remark-gfm": "^4.0.0",
-    "tocbot": "4.28.2"
+    "tocbot": "4.29.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "7.25.2",
-    "@babel/preset-env": "7.25.0",
+    "@babel/preset-env": "7.25.3",
     "@babel/preset-react": "7.24.7",
     "@babel/preset-typescript": "7.24.7",
     "@cypress/code-coverage": "^3.10.0",
@@ -69,7 +69,7 @@
     "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^11.0.0",
     "cssnano": "^7.0.0",
-    "cypress": "13.13.1",
+    "cypress": "13.13.2",
     "cypress-real-events": "^1.8.1",
     "dedent": "^1.0.0",
     "eslint": "^8.35.0",
@@ -113,7 +113,7 @@
   "resolutions": {
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
-    "tocbot": "4.28.2",
+    "tocbot": "4.29.0",
     "@joshwooding/vite-plugin-react-docgen-typescript": "0.3.0"
   },
   "type": "module",
