@@ -3,7 +3,7 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "target": "ES2021",
-    "lib": ["ES2022", "dom"],
+    "lib": ["ESNext", "dom"],
     "jsx": "react-jsx",
     "baseUrl": "${configDir}/src",
     "rootDir": "${configDir}/src",

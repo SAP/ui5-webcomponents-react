@@ -1,7 +1,5 @@
 'use client';
 
-import BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
-import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { isMac as isMacFn } from '@ui5/webcomponents-base/dist/Device.js';
 import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
 import moveToTopIcon from '@ui5/webcomponents-icons/dist/collapse-group.js';
@@ -9,13 +7,15 @@ import moveToBottomIcon from '@ui5/webcomponents-icons/dist/expand-group.js';
 import moveDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
+import BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { clsx } from 'clsx';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import {
   DOWN_ARROW,
-  FILTER_IS_ACTIVE,
   FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_IS_ACTIVE,
   MOVE_DOWN,
   MOVE_TO_BOTTOM,
   MOVE_TO_TOP,
@@ -63,26 +63,39 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       slot,
       active,
       orderId,
+      filterKey,
       ...rest
     } = props;
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const tableRowRef = useRef<TableRowDomRef>(null);
 
-    const reactKey = props['data-react-key'];
+    // const reactKey = props['data-react-key'];
     const index = props['data-index'];
     const isomporphicReorderKey = isMac ? 'CMD' : 'CTRL';
 
     const {
       isFilterInDialog,
       isListView,
-      onReorder,
       withValues,
       enableReordering,
       showBtnsOnHover,
-      setShowBtnsOnHover,
+      currentReorderedItemOrderId,
       handleFocusFallback,
-      currentReorderedItemOrderId
+      onReorder,
+      setShowBtnsOnHover,
+      setSelectedKeys,
+      setRequiredKeys,
+      prevIsListView
     } = useContext(FilterBarDialogContext);
+
+    const listViewHasChanged = useRef(prevIsListView?.current !== isListView);
+
+    useEffect(() => {
+      if (prevIsListView?.current !== isListView) {
+        listViewHasChanged.current = true;
+      }
+    }, [isListView]);
+
     const inFB = !isFilterInDialog;
     const withReordering = enableReordering && !withValues && isListView;
     const [itemPosition, setItemPosition] = useState<undefined | 'last' | 'first'>(undefined);
@@ -143,6 +156,41 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       }
     }, [withReordering, currentReorderedItemOrderId, orderId, index]);
 
+    useEffect(() => {
+      if (!inFB && !hidden && !listViewHasChanged?.current) {
+        if (setSelectedKeys) {
+          setSelectedKeys((prev) => {
+            const keysSet = new Set(prev);
+            if (hiddenInFilterBar && !required) {
+              keysSet.delete(filterKey);
+            } else {
+              keysSet.add(filterKey);
+            }
+            return Array.from(keysSet);
+          });
+        }
+        if (setRequiredKeys) {
+          setRequiredKeys((prev) => ({ ...prev, [`${filterKey}`]: !!required }));
+        }
+      }
+      if (listViewHasChanged?.current) {
+        listViewHasChanged.current = false;
+      }
+    }, [hidden, hiddenInFilterBar, filterKey, setSelectedKeys, isListView, required]);
+
+    useEffect(() => {
+      //todo: check best way to control unmounting (conditional rendering - not list-view change)
+      return () => {
+        if (setSelectedKeys) {
+          // setSelectedKeys((prev) => {
+          //   const keysSet = new Set(prev);
+          //   keysSet.delete(filterKey);
+          //   return Array.from(keysSet);
+          // });
+        }
+      };
+    }, []);
+
     if (!required && (hidden || (inFB && hiddenInFilterBar))) return null;
 
     if (!inFB) {
@@ -150,9 +198,11 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
         //todo: disable selection for required fields when it's possible, or the table is fully controllable (https://github.com/SAP/ui5-webcomponents/issues/5662)
         <TableRow
           ref={tableRowRef}
+          rowKey={`${filterKey}`}
           data-text={label}
-          data-react-key={reactKey}
-          key={reactKey as string}
+          // todo
+          // data-react-key={reactKey}
+          // key={reactKey as string}
           data-required={required}
           data-component-name="FilterBarDialogTableRow"
           className={clsx(
@@ -169,7 +219,12 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           }
         >
           <TableCell data-component-name="FilterBarDialogTableCellFilter">
-            <FlexBox direction={FlexBoxDirection.Column} className={clsx(classNames.labelContainer)}>
+            <FlexBox
+              fitContainer
+              direction={FlexBoxDirection.Column}
+              justifyContent={FlexBoxJustifyContent.Center}
+              className={classNames.labelContainer}
+            >
               <Label
                 className={classNames.dialogCellLabel}
                 title={labelTooltip ?? label}

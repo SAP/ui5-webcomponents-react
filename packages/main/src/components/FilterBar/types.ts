@@ -15,10 +15,10 @@ interface OnToggleFiltersEvent extends Omit<MouseEvent, 'detail'> {
 
 interface OnFiltersDialogSaveEvent extends Omit<MouseEvent, 'detail'> {
   detail: {
-    elements: Record<string, HTMLElement>;
-    toggledElements?: Record<string, HTMLElement>;
-    filters: HTMLElement[];
-    search: HTMLElement;
+    /**
+     * Defines all selected filters.
+     */
+    selectedFilterKeys: Set<string>;
     orderIds: string[];
     nativeDetail: number;
   };
@@ -31,6 +31,27 @@ interface OnGoEvent extends Omit<MouseEvent, 'detail'> {
     search: HTMLElement;
     nativeDetail: number;
   };
+}
+
+interface FiltersDialogSelectionChangePayload {
+  /**
+   * Defines the toggled filter/s by `filterKey`.
+   */
+  toggledFilterKeys: Set<string>;
+  /**
+   * Defines if the filter was selected.
+   *
+   * __Note:__ For "select-all" this property is `undefined`.
+   */
+  selected: boolean | undefined;
+  /**
+   * Defines all selected filters.
+   */
+  selectedFilterKeys: Set<string>;
+  /**
+   * Defines previous selected filters.
+   */
+  previousSelectedFilterKeys: Set<string>;
 }
 
 export interface FilterBarPropTypes extends CommonProps {
@@ -129,20 +150,13 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   as?: keyof HTMLElementTagNameMap;
   /**
-   * Defines where modals are rendered into via `React.createPortal`.
-   *
-   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-working-with-portals--page).
-   *
-   * Defaults to: `document.body`
-   */
-  portalContainer?: Element;
-  /**
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
   onToggleFilters?: (event: OnToggleFiltersEvent) => void;
   /**
    * The event is fired when the "Go" button of the filter configuration dialog is clicked.
    */
+  //todo: wip & breaking
   onFiltersDialogSave?: (event: OnFiltersDialogSaveEvent) => void;
   /**
    * The event is fired when the "Cancel" button of the filter configuration dialog is clicked or when the dialog is closed by pressing the "Escape" key.
@@ -165,12 +179,8 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when a filter is selected/unselected in the filter configuration dialog.
    */
-  onFiltersDialogSelectionChange?: (
-    event: Ui5CustomEvent<
-      TableSelectionDomRef,
-      { element: TableRowDomRef; checked: boolean; selectedRows: unknown[]; previouslySelectedRows: unknown[] }
-    >
-  ) => void;
+  //todo: breaking
+  onFiltersDialogSelectionChange?: (payload: FiltersDialogSelectionChangePayload) => void;
   /**
    * The event is fired on input in the filter configuration dialog search field.
    */

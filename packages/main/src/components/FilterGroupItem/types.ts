@@ -3,6 +3,14 @@ import type { CommonProps } from '../../types/index.js';
 
 export interface FilterGroupItemPropTypes extends CommonProps {
   /**
+   * The mandatory key each `FilterGroupItem` needs to implement.
+   *
+   * __Note:__ `filterKey` needs to be unique for each `FilterGroupItem` per `FilterBar`.
+   *
+   * __Note:__ Whitespaces are not supported!
+   */
+  filterKey: string | number;
+  /**
    * Content of the `FilterGroupItem`.
    *
    * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use form elements like `Input`, `Select` or `Switch` in order to preserve the intended design.

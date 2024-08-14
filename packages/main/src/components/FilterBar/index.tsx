@@ -4,7 +4,7 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { debounce, Device, enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { CSSProperties, ElementType, ReactElement } from 'react';
+import { CSSProperties, ElementType, ReactElement, useId } from 'react';
 import { Children, cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
 import {
   ADAPT_FILTERS,
@@ -82,7 +82,6 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     header,
     fullyControlFilters,
     as = 'div',
-    portalContainer,
     onToggleFilters,
     onFiltersDialogOpen,
     onAfterFiltersDialogOpen,
@@ -111,19 +110,20 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [searchValue, setSearchValue] = useState<string>(undefined);
-  const [dialogRefs, setDialogRefs] = useState({});
-  const [toggledFilters, setToggledFilters] = useState({});
+  // const [dialogRefs, setDialogRefs] = useState({});
+  // const [toggledFilters, setToggledFilters] = useState({});
 
   const searchRef = useRef(null);
   const filterRefs = useRef({});
   const dialogRef = useRef<DialogDomRef>(null);
-  const prevVisibleInFilterBarProps = useRef({});
+  // const prevVisibleInFilterBarProps = useRef({});
   const prevSearchInputPropsValueRef = useRef<string>(undefined);
   const filterBarButtonsRef = useRef(null);
   const filterAreaRef = useRef<HTMLDivElement>(null);
   const filterBtnRef = useRef<ButtonDomRef>(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const uniqueId = useId();
 
   const clearText = i18nBundle.getText(CLEAR);
   const restoreText = i18nBundle.getText(RESTORE);
@@ -133,25 +133,25 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const searchText = i18nBundle.getText(SEARCH);
   const filtersText = !hideToolbar ? i18nBundle.getText(FILTERS) : i18nBundle.getText(ADAPT_FILTERS);
 
-  useEffect(() => {
-    Children.toArray(children).forEach((item) => {
-      if (isValidElement(item)) {
-        const key = item.key as ReactKeyWithoutBigInt;
-        setToggledFilters((prev) => {
-          if (!item.props.hasOwnProperty('hiddenInFilterBar') && prev?.[key] === undefined) {
-            return { ...prev, [key]: true };
-          }
-          if (item.props.hasOwnProperty('hiddenInFilterBar')) {
-            return {
-              ...prev,
-              [key]: (item as ReactElement<FilterGroupItemInternalProps>).props.hiddenInFilterBar !== true
-            };
-          }
-          return prev;
-        });
-      }
-    });
-  }, [children, setToggledFilters]);
+  // useEffect(() => {
+  //   Children.toArray(children).forEach((item) => {
+  //     if (isValidElement(item)) {
+  //       const key = item.key as ReactKeyWithoutBigInt;
+  //       setToggledFilters((prev) => {
+  //         if (!item.props.hasOwnProperty('hiddenInFilterBar') && prev?.[key] === undefined) {
+  //           return { ...prev, [key]: true };
+  //         }
+  //         if (item.props.hasOwnProperty('hiddenInFilterBar')) {
+  //           return {
+  //             ...prev,
+  //             [key]: (item as ReactElement<FilterGroupItemInternalProps>).props.hiddenInFilterBar !== true
+  //           };
+  //         }
+  //         return prev;
+  //       });
+  //     }
+  //   });
+  // }, [children, setToggledFilters]);
 
   useEffect(() => {
     if (filterBarCollapsed !== undefined) {
@@ -182,15 +182,16 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   };
 
   const [executeGo, setExecuteGo] = useState(false);
-  const handleDialogSave = (e, newRefs, updatedToggledFilters, orderIds) => {
-    setDialogRefs(newRefs);
+  const handleDialogSave = (e, selectionChangePayload, orderIds) => {
+    // setDialogRefs(newRefs);
     const details = {
-      elements: newRefs,
-      toggledElements: { ...toggledFilters, ...updatedToggledFilters },
-      ...getFilterElements(),
+      ...selectionChangePayload,
+      // elements: newRefs,
+      // toggledElements: { ...toggledFilters, ...updatedToggledFilters },
+      // ...getFilterElements(),
       orderIds
     };
-    setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
+    // setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
     if (onFiltersDialogSave) {
       onFiltersDialogSave(enrichEventWithDetails(e, details));
     }
@@ -223,23 +224,23 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   };
 
   const safeChildren = (() => {
-    if (Object.keys(toggledFilters).length > 0) {
-      return Children.toArray(children).map((child) => {
-        if (isValidElement(child)) {
-          const key = child.key as ReactKeyWithoutBigInt;
-          if (toggledFilters?.[key] !== undefined) {
-            // @ts-expect-error: child should always be a FilterGroupItem w/o portal
-            return cloneElement<FilterGroupItemInternalProps, HTMLDivElement>(child, {
-              hiddenInFilterBar: !toggledFilters[key]
-            });
-          }
-        }
-        return child;
-      });
-    }
+    // if (Object.keys(toggledFilters).length > 0) {
+    //   return Children.toArray(children).map((child) => {
+    //     if (isValidElement(child)) {
+    //       const key = child.key as ReactKeyWithoutBigInt;
+    //       if (toggledFilters?.[key] !== undefined) {
+    //         // @ts-expect-error: child should always be a FilterGroupItem w/o portal
+    //         return cloneElement<FilterGroupItemInternalProps, HTMLDivElement>(child, {
+    //           hiddenInFilterBar: !toggledFilters[key]
+    //         });
+    //       }
+    //     }
+    //     return child;
+    //   });
+    // }
     return Children.toArray(children);
   }) as SafeChildrenFn;
-  const prevChildren = useRef({});
+  // const prevChildren = useRef({});
 
   const renderChildren = () => {
     const childProps: Partial<FilterGroupItemInternalProps & { 'data-with-toolbar'?: boolean }> = {
@@ -254,73 +255,73 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         }
         return (
           (typeof item.props.hidden === 'undefined' || item?.props?.hidden !== true) &&
-          item.props?.hiddenInFilterBar !== true
+          (item.props?.required || item.props?.hiddenInFilterBar !== true)
         );
       })
       .map((child) => {
-        const key = child.key as ReactKeyWithoutBigInt;
+        // const key = child.key as ReactKeyWithoutBigInt;
         // necessary because of varying widths of input elements
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
         }
-        if (hideFilterConfiguration) {
-          return cloneElement(child, { ...childProps });
-        }
-        prevVisibleInFilterBarProps.current[key] = child.props.hiddenInFilterBar !== true;
-        let filterItemProps = {};
-        if (Object.keys(dialogRefs).length > 0) {
-          const dialogItemRef = dialogRefs[key];
-          if (dialogItemRef && !fullyControlFilters) {
-            filterItemProps = filterValue(dialogItemRef, child);
-          }
-        }
-        if (!child.props.children) {
-          return cloneElement(child, {
-            ...childProps
-          });
-        }
-        const filter = child.props.children as ReactElement<Record<string, any>>;
-        if (
-          prevChildren.current?.[key] &&
-          //Input
-          ((filter as ReactElement<InputPropTypes>)?.props?.value !== prevChildren.current?.[key]?.value ||
-            //Checkbox
-            (filter as ReactElement<CheckBoxPropTypes>)?.props?.checked !== prevChildren.current?.[key]?.checked ||
-            //Selectable
-            (Array.isArray((filter as ReactElement<SelectPropTypes>)?.props?.children) &&
-              (filter as ReactElement<SelectPropTypes>)?.props?.children
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore children is iterable here
-                ?.map((item) => item.props.selected)
-                .join(',') !== prevChildren?.current?.[key]?.children?.map((item) => item.props.selected).join(',')))
-        ) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          const { [child.key]: _omit, ...rest } = dialogRefs;
-          if (!fullyControlFilters) {
-            setDialogRefs(rest);
-          }
-        }
-        prevChildren.current[key] = filter.props;
+        // if (hideFilterConfiguration) {
+        return cloneElement(child, { ...childProps });
+        // }
+        // prevVisibleInFilterBarProps.current[key] = child.props.hiddenInFilterBar !== true;
+        // let filterItemProps = {};
+        // if (Object.keys(dialogRefs).length > 0) {
+        //   const dialogItemRef = dialogRefs[key];
+        //   if (dialogItemRef && !fullyControlFilters) {
+        //     filterItemProps = filterValue(dialogItemRef, child);
+        //   }
+        // }
+        // if (!child.props.children) {
+        //   return cloneElement(child, {
+        //     ...childProps
+        //   });
+        // }
+        // const filter = child.props.children as ReactElement<Record<string, any>>;
+        // if (
+        //   prevChildren.current?.[key] &&
+        //   //Input
+        //   ((filter as ReactElement<InputPropTypes>)?.props?.value !== prevChildren.current?.[key]?.value ||
+        //     //Checkbox
+        //     (filter as ReactElement<CheckBoxPropTypes>)?.props?.checked !== prevChildren.current?.[key]?.checked ||
+        //     //Selectable
+        //     (Array.isArray((filter as ReactElement<SelectPropTypes>)?.props?.children) &&
+        //       (filter as ReactElement<SelectPropTypes>)?.props?.children
+        //         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //         // @ts-ignore children is iterable here
+        //         ?.map((item) => item.props.selected)
+        //         .join(',') !== prevChildren?.current?.[key]?.children?.map((item) => item.props.selected).join(',')))
+        // ) {
+        //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //   // @ts-ignore
+        //   const { [child.key]: _omit, ...rest } = dialogRefs;
+        //   if (!fullyControlFilters) {
+        //     setDialogRefs(rest);
+        //   }
+        // }
+        // prevChildren.current[key] = filter.props;
 
-        return cloneElement(child, {
-          ...childProps,
-          children: {
-            ...filter,
-            props: {
-              ...filter.props,
-              ...filterItemProps
-            },
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            //@ts-ignore: todo check React19 support
-            ref: (node) => {
-              filterRefs.current[key] = node;
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              //@ts-ignore: todo check React19 support
-              if (!dialogOpen) syncRef(filter.ref, node);
-            }
-          }
-        });
+        // return cloneElement(child, {
+        //   ...childProps,
+        //   children: {
+        //     ...filter,
+        //     props: {
+        //       ...filter.props,
+        //       ...filterItemProps
+        //     },
+        //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //     //@ts-ignore: todo check React19 support
+        //     ref: (node) => {
+        //       filterRefs.current[key] = node;
+        //       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //       //@ts-ignore: todo check React19 support
+        //       if (!dialogOpen) syncRef(filter.ref, node);
+        //     }
+        //   }
+        // });
       });
   };
   const handleRestoreFilters = (e, source, filterElements) => {
@@ -489,28 +490,6 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const CustomTag = as as ElementType;
   return (
     <>
-      {dialogOpen && !hideFilterConfiguration && (
-        <FilterDialog
-          filterBarRefs={filterRefs}
-          open={dialogOpen}
-          handleDialogClose={handleDialogClose}
-          handleRestoreFilters={handleRestoreFilters}
-          handleSearchValueChange={setSearchValue}
-          showRestoreButton={showResetButton}
-          handleSelectionChange={onFiltersDialogSelectionChange}
-          handleDialogSave={handleDialogSave}
-          handleDialogSearch={onFiltersDialogSearch}
-          handleDialogCancel={onFiltersDialogCancel}
-          onAfterFiltersDialogOpen={onAfterFiltersDialogOpen}
-          portalContainer={portalContainer}
-          dialogRef={dialogRef}
-          enableReordering={enableReordering}
-          isPhone={isPhone}
-          fullyControlFilters={fullyControlFilters}
-        >
-          {safeChildren()}
-        </FilterDialog>
-      )}
       <CustomTag
         ref={ref}
         className={cssClasses}
@@ -533,7 +512,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
             data-component-name="FilterBarFilterArea"
           >
             {search && (
-              <FilterGroupItem data-with-toolbar={!hideToolbar}>
+              <FilterGroupItem data-with-toolbar={!hideToolbar} filterKey={`${uniqueId}-search`}>
                 <div ref={searchRef} className={classNames.searchContainer}>
                   {renderSearchWithValue(search, searchValue, {
                     placeholder: searchText,
@@ -564,6 +543,25 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           </div>
         )}
       </CustomTag>
+      {dialogOpen && !hideFilterConfiguration && (
+        <FilterDialog
+          open={dialogOpen}
+          handleDialogClose={handleDialogClose}
+          handleRestoreFilters={handleRestoreFilters}
+          handleSearchValueChange={setSearchValue}
+          showRestoreButton={showResetButton}
+          onFiltersDialogSelectionChange={onFiltersDialogSelectionChange}
+          handleDialogSave={handleDialogSave}
+          handleDialogSearch={onFiltersDialogSearch}
+          handleDialogCancel={onFiltersDialogCancel}
+          onAfterFiltersDialogOpen={onAfterFiltersDialogOpen}
+          dialogRef={dialogRef}
+          enableReordering={enableReordering}
+          isPhone={isPhone}
+        >
+          {safeChildren()}
+        </FilterDialog>
+      )}
     </>
   );
 });
