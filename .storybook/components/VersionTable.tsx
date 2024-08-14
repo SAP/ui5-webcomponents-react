@@ -34,7 +34,7 @@ export function VersionTable() {
             const nextVersion = allWCRVersions[currentWCRIndex + 1];
             const currentMajor = parseInt(wcrVersion.split('.')[0]);
             const currentMinor = parseInt(wcrVersion.split('.')[1]);
-            const wcrVersions = [`~${wcrVersion}`];
+            const wcrVersions = [`${lastEntry ? '' : '~'}${wcrVersion}`];
             if (nextVersion) {
               let minor = parseInt(nextVersion.split('.')[1]);
               for (let i = currentMinor + 1; i < minor; i++) {
@@ -45,7 +45,7 @@ export function VersionTable() {
             return (
               <tr key={wcrVersion}>
                 <td>
-                  {lastEntry ? '>= ' : ''}
+                  {lastEntry ? '^' : ''}
                   {wcrVersions.join(', ')}
                 </td>
                 <td>~{wcVersion}</td>
