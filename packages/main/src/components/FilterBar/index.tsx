@@ -20,6 +20,7 @@ import type {
   ButtonDomRef,
   CheckBoxPropTypes,
   DialogDomRef,
+  InputDomRef,
   InputPropTypes,
   SelectPropTypes
 } from '../../webComponents/index.js';
@@ -80,7 +81,6 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     slot,
     search,
     header,
-    fullyControlFilters,
     as = 'div',
     onToggleFilters,
     onFiltersDialogOpen,
@@ -113,7 +113,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   // const [dialogRefs, setDialogRefs] = useState({});
   // const [toggledFilters, setToggledFilters] = useState({});
 
-  const searchRef = useRef(null);
+  const searchRef = useRef<InputDomRef>(null);
   const filterRefs = useRef({});
   const dialogRef = useRef<DialogDomRef>(null);
   // const prevVisibleInFilterBarProps = useRef({});
@@ -324,12 +324,12 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         // });
       });
   };
-  const handleRestoreFilters = (e, source, filterElements) => {
-    if (source === 'filterBar' && showGoOnFB) {
+  const handleRestoreFilters = (payload: Parameters<FilterBarPropTypes['onRestore']>[0]) => {
+    if (payload.source === 'filterBar' && showGoOnFB) {
       setMountFilters(false);
     }
     if (onRestore) {
-      onRestore(enrichEventWithDetails(e, { source, ...filterElements }));
+      onRestore(payload);
     }
   };
 
@@ -339,8 +339,13 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     }
   }, [mountFilters]);
 
-  const handleFBRestore = (e) => {
-    handleRestoreFilters(e, 'filterBar', getFilterElements());
+  const handleFBRestore = () => {
+    handleRestoreFilters({
+      source: 'filterBar',
+      selectedFilterKeys: calculatedChildren.map((child) => `${child.props.filterKey}`),
+      previousSelectedFilterKeys: null,
+      search: searchRef.current?.querySelector(`[data-component-name="FilterBarSearch"]`)
+    });
   };
 
   const handleClear = (e) => {

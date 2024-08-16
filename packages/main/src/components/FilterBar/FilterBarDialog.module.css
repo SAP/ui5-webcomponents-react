@@ -1,9 +1,5 @@
 .tHactive {
-  width: 25%;
-
-  &::part(column) {
-    text-align: center;
-  }
+  justify-content: center;
 }
 
 .groupedTableHeader {

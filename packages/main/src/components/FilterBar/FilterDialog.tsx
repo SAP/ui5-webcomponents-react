@@ -82,6 +82,16 @@ addCustomCSSWithScoping(
 );
 
 addCustomCSSWithScoping(
+  'ui5-table',
+  `
+:host([data-component-name="FilterBarDialogTable"]) #table,
+:host([data-component-name="FilterBarDialogPanelTable"]) #table {
+   grid-template-columns: var(--_ui5wcr-CheckBoxWidthHeight) minmax(3rem, auto) minmax(3rem, 25%) !important;
+}
+`
+);
+
+addCustomCSSWithScoping(
   'ui5-table-header-row',
   `
 :host([data-component-name="FilterBarDialogGroupTableHeaderRow"]) :first-child {
@@ -116,7 +126,7 @@ interface FilterDialogPropTypes {
   handleDialogClose: (event: Ui5CustomEvent<DialogDomRef>) => void;
   children: ReactElement<FilterGroupItemInternalProps>[];
   showRestoreButton: boolean;
-  handleRestoreFilters: (e, source, filterElements) => void;
+  handleRestoreFilters: FilterBarPropTypes['onRestore'];
   handleDialogSave: (e, selectionChangePayload, orderedChildren) => void;
   handleSearchValueChange: Dispatch<SetStateAction<string>>;
   onFiltersDialogSelectionChange?: FilterBarPropTypes['onFiltersDialogSelectionChange'];
@@ -167,7 +177,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   };
   const prevIsListView = useRef(true);
   const selectionChangePayloadRef = useRef({});
-  const initialSelected = useRef(undefined);
+  const initialSelected = useRef<string[] | undefined>(undefined);
 
   const prevOderId = useRef(undefined);
   const handleFocusFallback = () => {
@@ -176,10 +186,10 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       // we have to retrigger the internal item navigation logic after reordering,
       // otherwise keyboard nav and general focus handling is not working properly
       setTimeout(() => {
-        const itemNav = tableRef.current._itemNavigation;
-        itemNav._getItems = () => Array.from(tableRef.current.querySelectorAll('[ui5-table-row]'));
-        itemNav.setCurrentItem(tableRef.current.querySelector(`[data-order-id="${orderId}"]`));
-      });
+        const itemNav = tableRef.current._tableNavigation;
+        itemNav._gridWalker.setGrid(itemNav._getNavigationItemsOfGrid());
+        tableRef.current.querySelector(`[data-order-id="${orderId}"]`).focus();
+      }, 0);
       prevOderId.current = orderId;
     }
   };
@@ -267,6 +277,9 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   const handleClose = (e) => {
     stopPropagation(e);
+    if (e.target !== e.currentTarget) {
+      return;
+    }
     if (typeof handleDialogCancel === 'function') {
       handleDialogCancel(e);
     }
@@ -291,10 +304,15 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   const handleMessageBoxClose = (action) => {
     if (action === 'OK') {
+      const payload = {
+        source: 'dialog' as const,
+        selectedFilterKeys: initialSelected.current,
+        previousSelectedFilterKeys: selectedFilters,
+        search: null
+      };
       setSelectedFilters(initialSelected.current);
       setOrderedChildren(visibleChildren());
-      //todo cb
-      // handleRestoreFilters(e, 'dialog', { filters: Array.from(dialogRef.current.querySelectorAll('ui5-table-row')) });
+      handleRestoreFilters(payload);
     }
     setMessageBoxOpen(false);
     okBtnRef.current.focus();
@@ -434,7 +452,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
               features={
                 <TableSelection
                   mode={TableSelectionMode.Multiple}
-                  //todo
                   selected={selected}
                   onChange={handleCheckBoxChange}
                 />

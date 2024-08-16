@@ -21,13 +21,19 @@ const generateFilterKey = (label, uniqueId) => `${label.replace(/\s+/g, '').toLo
 
 const TestComp = (args) => {
   const initialChildren = [
-    <FilterGroupItem key="1" label="StepInput" required filterKey={generateFilterKey('StepInput', 1)}>
+    <FilterGroupItem key="1" label="StepInput" required filterKey={generateFilterKey('StepInput', 1)} orderId={1}>
       <StepInput required />
     </FilterGroupItem>,
-    <FilterGroupItem required key="2" label="RatingIndicator" filterKey={generateFilterKey('RatingIndicator', 2)}>
+    <FilterGroupItem
+      required
+      key="2"
+      label="RatingIndicator"
+      filterKey={generateFilterKey('RatingIndicator', 2)}
+      orderId={2}
+    >
       <RatingIndicator />
     </FilterGroupItem>,
-    <FilterGroupItem key="3" label="MultiInput" active filterKey={generateFilterKey('MultiInput', 3)}>
+    <FilterGroupItem key="3" label="MultiInput" active filterKey={generateFilterKey('MultiInput', 3)} orderId={3}>
       <MultiInput
         tokens={
           <>
@@ -39,10 +45,10 @@ const TestComp = (args) => {
         }
       />
     </FilterGroupItem>,
-    <FilterGroupItem key="4" label="Input" hiddenInFilterBar filterKey={generateFilterKey('Input', 4)}>
+    <FilterGroupItem key="4" label="Input" hiddenInFilterBar filterKey={generateFilterKey('Input', 4)} orderId={4}>
       <Input placeholder="Placeholder" />
     </FilterGroupItem>,
-    <FilterGroupItem key="5" label="Switch" filterKey={generateFilterKey('Switch', 5)}>
+    <FilterGroupItem key="5" label="Switch" filterKey={generateFilterKey('Switch', 5)} orderId={5}>
       <Switch />
     </FilterGroupItem>,
     <FilterGroupItem
@@ -50,6 +56,7 @@ const TestComp = (args) => {
       label="SELECT w/ initial selected"
       hiddenInFilterBar
       filterKey={generateFilterKey('SELECTwInitialSelected', 6)}
+      orderId={6}
     >
       <Select>
         <Option>Option 1</Option>
@@ -62,6 +69,7 @@ const TestComp = (args) => {
       key="7"
       label="SELECT w/o initial selected"
       filterKey={generateFilterKey('SELECTwoInitialSelected', 7)}
+      orderId={7}
     >
       <Select>
         <Option data-key="Test 1" selected icon="add">
@@ -86,6 +94,7 @@ const TestComp = (args) => {
       label="MultBox w/ initial selected"
       groupName="Group 1"
       filterKey={generateFilterKey('MultBoxwInitialSelected', 8)}
+      orderId={8}
     >
       <MultiComboBox>
         <MultiComboBoxItem text="MultiComboBoxItem 1" />
@@ -99,6 +108,7 @@ const TestComp = (args) => {
       label="ComboBox w/o initial selected"
       groupName="Group 2"
       filterKey={generateFilterKey('ComboBoxwoInitialSelected', 9)}
+      orderId={9}
     >
       <ComboBox>
         <ComboBoxItem text="ComboBoxItem 1" />
@@ -107,28 +117,46 @@ const TestComp = (args) => {
         <ComboBoxItem text="ComboBoxItem 4" />
       </ComboBox>
     </FilterGroupItem>,
-    <FilterGroupItem key="10" label="Date Picker" groupName="Group 2" filterKey={generateFilterKey('DatePicker', 10)}>
+    <FilterGroupItem
+      key="10"
+      label="Date Picker"
+      groupName="Group 2"
+      filterKey={generateFilterKey('DatePicker', 10)}
+      orderId={10}
+    >
       <DateRangePicker style={{ minWidth: 'auto' }} />
     </FilterGroupItem>
   ];
 
-  const [children, setChildren] = useState(initialChildren.slice(0, 4));
+  const [children, setChildren] = useState(initialChildren.slice(0, 123123));
 
   const shuffleChildren = () => {
-    setChildren((prevChildren) => [...prevChildren].sort(() => Math.random() - 0.5));
+    setChildren((prevChildren) => {
+      return [...prevChildren]
+        .sort(() => Math.random() - 0.5)
+        .map((child, index) => cloneElement(child, { orderId: index + 1 }));
+    });
   };
 
   const addRandomChild = () => {
     const newChild = initialChildren[Math.floor(Math.random() * initialChildren.length)];
     const newKey = Math.random().toString(36).substr(2, 9); // Generates a random unique key
     const newFilterKey = generateFilterKey(newChild.props.label, newKey);
-    setChildren((prevChildren) => [...prevChildren, cloneElement(newChild, { key: newKey, filterKey: newFilterKey })]);
+    const newOrderId = children.length + 1;
+    setChildren((prevChildren) => [
+      ...prevChildren,
+      cloneElement(newChild, { key: newKey, filterKey: newFilterKey, orderId: newOrderId })
+    ]);
   };
 
   const removeRandomChild = () => {
     if (children.length > 0) {
       const randomIndex = Math.floor(Math.random() * children.length);
-      setChildren((prevChildren) => prevChildren.filter((_, index) => index !== randomIndex));
+      setChildren((prevChildren) =>
+        prevChildren
+          .filter((_, index) => index !== randomIndex)
+          .map((child, index) => cloneElement(child, { orderId: index + 1 }))
+      );
     }
   };
 
@@ -165,9 +193,11 @@ const TestComp = (args) => {
       </div>
       <FilterBar
         {...args}
+        enableReordering
         showResetButton
         onFiltersDialogSelectionChange={console.log}
         onFiltersDialogSave={(e) => console.log(e.detail)}
+        onRestore={console.log}
       >
         {children}
       </FilterBar>

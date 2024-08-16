@@ -33,7 +33,6 @@
 
 .dialogTableRow {
   --_ui5wcr-ActiveIconDisplayVariable: inline-block;
-
   * {
     cursor: pointer;
   }
@@ -44,22 +43,16 @@
 }
 
 .dialogActiveCell {
-  width: 25%;
-  text-align: center;
+  justify-content: center;
 }
 
 .dialogActiveIcon {
   display: var(--_ui5wcr-ActiveIconDisplayVariable);
-  flex-grow: 1;
   color: var(--sapNeutralColor);
   transform: scale(-50%);
 }
 
 .labelContainer {
-  /*  height: 100%;
-  :only-child {
-    padding-block-start: 4px;
-  }*/
   :not(:first-child) {
     width: 100%;
   }
@@ -68,17 +61,19 @@
 .withReorderBtns {
   --_ui5wcr-ReorderBtnsDisplay: none;
 
-  &[selected]::part(row):focus,
-  &[selected]::part(row):active {
+  & > [ui5-table-cell] {
+    padding-block: 0;
+  }
+
+  &[aria-selected='true']:focus,
+  &[aria-selected='true']:active {
     --_ui5wcr-ActiveIconDisplayVariable: none;
     --_ui5wcr-ReorderBtnsDisplay: flex;
-    background-color: var(--sapList_SelectionBackgroundColor);
-    border-block-end: 1px solid var(--sapList_SelectionBorderColor);
   }
 }
 
 .withReorderHoverBtns {
-  &[selected]:hover {
+  &[aria-selected='true']:hover {
     --_ui5wcr-ReorderBtnsDisplay: flex;
     --_ui5wcr-ActiveIconDisplayVariable: none;
   }

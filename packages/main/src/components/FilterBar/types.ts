@@ -3,6 +3,7 @@ import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
 import type {
   ButtonPropTypes,
   DialogPropTypes,
+  InputDomRef,
   InputPropTypes,
   TableRowDomRef,
   TableSelectionDomRef
@@ -31,6 +32,13 @@ interface OnGoEvent extends Omit<MouseEvent, 'detail'> {
     search: HTMLElement;
     nativeDetail: number;
   };
+}
+
+interface RestorePayload {
+  source: 'dialog' | 'filterBar';
+  selectedFilterKeys: string[];
+  previousSelectedFilterKeys: string[] | null;
+  search: InputDomRef | null;
 }
 
 interface FiltersDialogSelectionChangePayload {
@@ -113,6 +121,8 @@ export interface FilterBarPropTypes extends CommonProps {
   hideFilterConfiguration?: boolean;
   /**
    * Defines whether the "Reset" button is displayed in the filter configuration dialog.
+   *
+   * __Note:__
    */
   showResetButton?: boolean;
   /**
@@ -194,16 +204,10 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   onGo?: (event: OnGoEvent) => void;
   /**
-   * The event is fired when the "Reset" button is clicked.
+   * The event is fired when the "Reset" button in the filter dialog is pressed, or the "Restore" button in the FilterBar.
    */
-  onRestore?: (
-    event: CustomEvent<{
-      source: string;
-      filters: HTMLElement[] | TableRowDomRef[];
-      search?: HTMLElement;
-      nativeDetail?: number;
-    }>
-  ) => void;
+  //todo breaking
+  onRestore?: (payload: RestorePayload) => void;
 }
 
 export type ReactKeyWithoutBigInt = string | number;

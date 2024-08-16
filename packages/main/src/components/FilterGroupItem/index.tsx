@@ -31,16 +31,6 @@ import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './FilterGroupItem.module.css.js';
 import type { FilterGroupItemInternalProps, FilterGroupItemPropTypes } from './types.js';
 
-addCustomCSSWithScoping(
-  'ui5-table-row',
-  `
-/* hide navigated cell */
-:host([data-component-name="FilterBarDialogTableRow"]) .ui5-table-row-navigated {
- display:none;
-}
-`
-);
-
 const isMac = isMacFn();
 
 /**
@@ -124,6 +114,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
         index,
         direction: e.currentTarget.dataset.reorder as ReorderDirections,
         target: tableRowRef.current,
+          //todo
         orderId
       });
     };

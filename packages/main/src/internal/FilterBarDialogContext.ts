@@ -3,7 +3,12 @@ import type { Dispatch, SetStateAction, RefObject } from 'react';
 import type { TableRowDomRef } from '../webComponents/index.js';
 
 export type ReorderDirections = 'up' | 'down' | 'top' | 'bottom';
-export type OnReorderParams = { index: number; direction: ReorderDirections; target: TableRowDomRef; orderId: string };
+export type OnReorderParams = {
+  index: number;
+  direction: ReorderDirections;
+  target: TableRowDomRef;
+  filterKey: string | number;
+};
 export interface IFilterBarDialogContext {
   onReorder?: (e: OnReorderParams) => void;
   isListView?: boolean;
