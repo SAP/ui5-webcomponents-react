@@ -152,9 +152,9 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     }
   };
 
-  const handleDialogClose = () => {
-    if (onFiltersDialogClose) {
-      onFiltersDialogClose();
+  const handleDialogClose = (closeTrigger) => {
+    if (typeof onFiltersDialogClose === 'function') {
+      onFiltersDialogClose(closeTrigger ?? 'okButtonPressed');
     }
     setDialogOpen(false);
     void filterBtnRef.current?.focus();

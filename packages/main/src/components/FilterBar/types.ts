@@ -186,7 +186,7 @@ export interface FilterBarPropTypes extends CommonProps {
    * The event is fired when the filter configuration dialog is closed.
    */
   //todo: breaking
-  onFiltersDialogClose?: () => void;
+  onFiltersDialogClose?: (closeTrigger: 'cancelButtonPressed' | 'okButtonPressed' | 'escPressed') => void;
   /**
    * The event is fired when a filter is selected/unselected in the filter configuration dialog.
    */

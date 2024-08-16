@@ -256,14 +256,14 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     if (typeof handleDialogCancel === 'function') {
       handleDialogCancel(true);
     }
-    handleDialogClose();
+    handleDialogClose('escPressed');
   };
 
   const handleCancel = () => {
     if (typeof handleDialogCancel === 'function') {
       handleDialogCancel(false);
     }
-    handleDialogClose();
+    handleDialogClose('cancelButtonPressed');
   };
 
   const handleRestore = () => {
