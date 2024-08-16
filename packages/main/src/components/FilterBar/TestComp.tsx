@@ -15,7 +15,7 @@ import {
   ComboBoxItem,
   DateRangePicker,
   FilterBar
-} from '../..';
+} from '../../index.js';
 
 const generateFilterKey = (label, uniqueId) => `${label.replace(/\s+/g, '').toLowerCase()}-${uniqueId}`;
 
