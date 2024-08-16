@@ -40,7 +40,7 @@ interface RestorePayload {
    *
    * __Note:__ If the source is `filterBar` the value is `null`.
    *
-   * __Note:__ This prop doesn't take into account, if `hiddenInFilterBar` is programmatically changed while the filters dialog is open.
+   * __Note:__ This property doesn't take into account, if `hiddenInFilterBar` is programmatically changed while the filters dialog is open.
    */
   previousSelectedFilterKeys: string[] | null;
 }

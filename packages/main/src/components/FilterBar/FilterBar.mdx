@@ -34,7 +34,7 @@ This is a basic example of how the FilterBar could be used inside an app.
 
 <summary>Show Code</summary>
 
-```jsx
+```tsx
 const initialState = {
   age: 37,
   countries: {},
@@ -65,10 +65,11 @@ function reducer(state, action) {
   }
 }
 
-const FilterBarComponent = (args) => {
+function FilterBarComponent(args) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [visibleFilters, setVisibleFilters] = useState(new Set(['age', 'countries']));
   const { age, countries, currency, date, dateRange, search } = state;
-  const prevDialogOpenState = useRef();
+  const prevDialogOpenState = useRef(undefined);
 
   const handleSearch = (e) => {
     dispatch({ type: 'SET_SEARCH', payload: e.target.value });
@@ -86,7 +87,10 @@ const FilterBarComponent = (args) => {
   };
 
   const handleCurrencyChange = (e) => {
-    dispatch({ type: 'SET_CURRENCY', payload: e.detail.selectedOption.textContent });
+    dispatch({
+      type: 'SET_CURRENCY',
+      payload: e.detail.selectedOption.textContent
+    });
   };
 
   const handleDateChange = (e) => {
@@ -105,8 +109,15 @@ const FilterBarComponent = (args) => {
     prevDialogOpenState.current = state;
   };
 
-  const handleRestore = () => {
+  const handleRestore: FilterBarPropTypes['onRestore'] = (payload) => {
+    const prevDialogOpenVisibleFilters = payload.selectedFilterKeys;
     dispatch({ type: 'DIALOG_RESTORE', payload: prevDialogOpenState.current });
+    setVisibleFilters(new Set(prevDialogOpenVisibleFilters));
+  };
+
+  const handleFiltersDialogSelectionChange: FilterBarPropTypes['onFiltersDialogSelectionChange'] = (payload) => {
+    const visibleFilterKeys = payload.selectedFilterKeys;
+    setVisibleFilters(new Set(visibleFilterKeys));
   };
 
   return (
@@ -116,11 +127,23 @@ const FilterBarComponent = (args) => {
         search={<Input onInput={handleSearch} />}
         onRestore={handleRestore}
         onFiltersDialogOpen={handleFiltersDialogOpen}
+        onFiltersDialogSelectionChange={handleFiltersDialogSelectionChange}
       >
-        <FilterGroupItem label="Age" active={!!age} required>
+        <FilterGroupItem
+          filterKey="age"
+          label="Age"
+          active={!!age}
+          required
+          hiddenInFilterBar={!visibleFilters.has('age')}
+        >
           <StepInput value={age} onChange={handleAgeChange} required />
         </FilterGroupItem>
-        <FilterGroupItem label="Countries" active={Object.keys(countries).length > 0}>
+        <FilterGroupItem
+          filterKey="countries"
+          label="Countries"
+          active={Object.keys(countries).length > 0}
+          hiddenInFilterBar={!visibleFilters.has('countries')}
+        >
           <MultiComboBox onSelectionChange={handleCountriesChange}>
             <MultiComboBoxItem text="Argentina" selected={countries.argentina} />
             <MultiComboBoxItem text="Bulgaria" selected={countries.bulgaria} />
@@ -131,7 +154,12 @@ const FilterBarComponent = (args) => {
             <MultiComboBoxItem text="USA" selected={countries.usa} />
           </MultiComboBox>
         </FilterGroupItem>
-        <FilterGroupItem label="Currency" active={!!currency}>
+        <FilterGroupItem
+          filterKey="currency"
+          label="Currency"
+          active={!!currency}
+          hiddenInFilterBar={!visibleFilters.has('currency')}
+        >
           <Select onChange={handleCurrencyChange}>
             <Option additionalText="€" selected={currency === 'EUR'}>
               EUR
@@ -150,11 +178,16 @@ const FilterBarComponent = (args) => {
             </Option>
           </Select>
         </FilterGroupItem>
-        <FilterGroupItem label="Date" active={!!date}>
-          <DatePicker value={date} onChange={handleDateChange} style={{ minWidth: 'auto' }} on />
+        <FilterGroupItem filterKey="date" label="Date" active={!!date} hiddenInFilterBar={!visibleFilters.has('date')}>
+          <DatePicker value={date} onChange={handleDateChange} style={{ minWidth: 'auto' }} />
         </FilterGroupItem>
-        <FilterGroupItem label="Date Range" active={!!dateRange} hiddenInFilterBar>
-          <DateRangePicker value={dateRange} onChange={handleDateRangeChange} style={{ minWidth: 'auto' }} on />
+        <FilterGroupItem
+          filterKey="date-range"
+          label="Date Range"
+          active={!!dateRange}
+          hiddenInFilterBar={!visibleFilters.has('date-range')}
+        >
+          <DateRangePicker value={dateRange} onChange={handleDateRangeChange} style={{ minWidth: 'auto' }} />
         </FilterGroupItem>
       </FilterBar>
       <FlexBox direction={FlexBoxDirection.Column}>
@@ -182,10 +215,15 @@ const FilterBarComponent = (args) => {
           <Label showColon>Date Range</Label>
           <Text>{dateRange}</Text>
         </FlexBox>
+        <hr style={{ width: '100%' }} />
+        <FlexBox>
+          <Label showColon>Visible Filters</Label>
+          <Text>{Array.from(visibleFilters).join(', ')}</Text>
+        </FlexBox>
       </FlexBox>
     </>
   );
-};
+}
 ```
 
 </details>
