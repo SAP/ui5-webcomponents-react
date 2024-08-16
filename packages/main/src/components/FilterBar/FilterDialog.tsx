@@ -1,13 +1,12 @@
-import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
-import listIcon from '@ui5/webcomponents-icons/dist/list.js';
-import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
-import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import TableSelectionMode from '@ui5/webcomponents/dist/types/TableSelectionMode.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
-import { list } from 'postcss';
-import type { Dispatch, ReactElement, RefObject, SetStateAction } from 'react';
+import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
+import listIcon from '@ui5/webcomponents-icons/dist/list.js';
+import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
+import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
+import type { ReactElement, RefObject } from 'react';
 import { Children, cloneElement, useEffect, useId, useReducer, useRef, useState } from 'react';
 import { FlexBoxDirection, FlexBoxJustifyContent, MessageBoxAction, MessageBoxType } from '../../enums/index.js';
 import {
@@ -34,11 +33,10 @@ import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.
 import type { OnReorderParams } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
-import type { Ui5CustomEvent } from '../../types/index.js';
 import type {
   DialogDomRef,
+  InputPropTypes,
   SegmentedButtonPropTypes,
-  TableRowDomRef,
   TableSelectionDomRef
 } from '../../webComponents/index.js';
 import {
@@ -75,18 +73,12 @@ interface ForceRequiredObject {
 addCustomCSSWithScoping(
   'ui5-table',
   `
-:host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #nodata-row {
-  display: none;
-}
-`
-);
-
-addCustomCSSWithScoping(
-  'ui5-table',
-  `
 :host([data-component-name="FilterBarDialogTable"]) #table,
 :host([data-component-name="FilterBarDialogPanelTable"]) #table {
    grid-template-columns: var(--_ui5wcr-CheckBoxWidthHeight) minmax(3rem, auto) minmax(3rem, 25%) !important;
+}
+:host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #nodata-row {
+  display: none;
 }
 `
 );
@@ -123,16 +115,15 @@ const getActiveFilters = (
 
 interface FilterDialogPropTypes {
   open: boolean;
-  handleDialogClose: (event: Ui5CustomEvent<DialogDomRef>) => void;
+  handleDialogClose: FilterBarPropTypes['onFiltersDialogClose'];
   children: ReactElement<FilterGroupItemInternalProps>[];
   showRestoreButton: boolean;
   handleRestoreFilters: FilterBarPropTypes['onRestore'];
   handleDialogSave: (e, selectionChangePayload, orderedChildren) => void;
-  handleSearchValueChange: Dispatch<SetStateAction<string>>;
   onFiltersDialogSelectionChange?: FilterBarPropTypes['onFiltersDialogSelectionChange'];
-  handleDialogSearch?: (event: CustomEvent<{ value: string; element: HTMLElement }>) => void;
-  handleDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
-  onAfterFiltersDialogOpen: (event: Ui5CustomEvent<DialogDomRef>) => void;
+  handleDialogSearch?: FilterBarPropTypes['onFiltersDialogSearch'];
+  handleDialogCancel?: FilterBarPropTypes['onFiltersDialogCancel'];
+  onAfterFiltersDialogOpen: FilterBarPropTypes['onAfterFiltersDialogOpen'];
   dialogRef: RefObject<DialogDomRef>;
   enableReordering?: FilterBarPropTypes['enableReordering'];
   isPhone?: boolean;
@@ -159,43 +150,28 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const [searchString, setSearchString] = useState('');
   const [selectedFilters, setSelectedFilters] = useState<undefined | string[]>(undefined);
   const [requiredFilters, setRequiredKeys] = useState({});
-
-  // const dialogRefs = useRef({});
-  const dialogSearchRef = useRef(null);
   const [showValues, toggleValues] = useReducer((prev) => !prev, false);
   const [messageBoxOpen, setMessageBoxOpen] = useState(false);
-
   const [forceRequired, setForceRequired] = useState<ForceRequiredObject>();
   const [showBtnsOnHover, setShowBtnsOnHover] = useState(true);
   const [isListView, setIsListView] = useState(true);
   const [filteredAttribute, setFilteredAttribute] = useState<ActiveFilterAttributes>('all');
   const [currentReorderedItem, setCurrentReorderedItem] = useState<OnReorderParams | Record<string, never>>({});
+  const [orderedChildren, setOrderedChildren] = useState([]);
+  const [updatedIndex, setUpdatedIndex] = useState(undefined);
+
+  const currentReorderedItemOrderId = currentReorderedItem?.filterKey;
+  const selected = (selectedFilters ?? []).join(' ');
+
+  const dialogSearchRef = useRef(null);
   const tableRef = useRef(null);
   const okBtnRef = useRef(null);
-  const handleReorder = (e: OnReorderParams) => {
-    setCurrentReorderedItem(e);
-  };
   const prevIsListView = useRef(true);
-  const selectionChangePayloadRef = useRef({});
+  const selectionChangePayloadRef = useRef({ selectedFilterKeys: selectedFilters ?? [] });
   const initialSelected = useRef<string[] | undefined>(undefined);
-
-  const prevOderId = useRef(undefined);
-  const handleFocusFallback = () => {
-    const orderId = currentReorderedItem?.target?.dataset.orderId;
-    if (orderId && tableRef.current && orderId !== prevOderId.current) {
-      // we have to retrigger the internal item navigation logic after reordering,
-      // otherwise keyboard nav and general focus handling is not working properly
-      setTimeout(() => {
-        const itemNav = tableRef.current._tableNavigation;
-        itemNav._gridWalker.setGrid(itemNav._getNavigationItemsOfGrid());
-        tableRef.current.querySelector(`[data-order-id="${orderId}"]`).focus();
-      }, 0);
-      prevOderId.current = orderId;
-    }
-  };
+  const prevRowKey = useRef(undefined);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-
   const basicText = i18nBundle.getText(BASIC);
   const cancelText = i18nBundle.getText(CANCEL);
   const okText = i18nBundle.getText(OK);
@@ -214,12 +190,28 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const filterText = i18nBundle.getText(FILTER);
   const fieldsByAttributeText = i18nBundle.getText(FIELDS_BY_ATTRIBUTE);
 
+  const handleReorder = (e: OnReorderParams) => {
+    setCurrentReorderedItem(e);
+  };
+
+  const handleFocusFallback = () => {
+    const rowKey = currentReorderedItem?.target?.rowKey;
+    if (rowKey && tableRef.current && rowKey !== prevRowKey.current) {
+      // we have to retrigger the internal item navigation logic after reordering,
+      // otherwise keyboard nav and general focus handling is not working properly
+      setTimeout(() => {
+        const itemNav = tableRef.current._tableNavigation;
+        itemNav._gridWalker.setGrid(itemNav._getNavigationItemsOfGrid());
+        tableRef.current.querySelector(`[row-key="${rowKey}"]`).focus();
+      }, 0);
+      prevRowKey.current = rowKey;
+    }
+  };
+
   const visibleChildren = () =>
     children.filter((item) => {
       return !!item?.props && !item?.props?.hidden;
     });
-
-  const [orderedChildren, setOrderedChildren] = useState([]);
 
   useEffect(() => {
     if (children.length) {
@@ -239,39 +231,20 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         : orderedChildren;
 
     return filteredChildren.map((child, index) => {
-      // const filterBarItemRef = filterBarRefs.current[child.key];
-
-      // const filterItemProps = filterBarItemRef && !fullyControlFilters ? filterValue(filterBarItemRef, child) : {};
-
       return cloneElement<FilterGroupItemInternalProps>(child, {
-        // 'data-selected': isSelected,
-        // 'data-react-key': child.key,
         'data-index': index
-        // children: {
-        //   ...child.props.children,
-        //   props: {
-        //     ...(child.props.children.props || {}),
-        //     ...filterItemProps
-        //   },
-        //   ref: (node) => {
-        //     if (node) {
-        //       dialogRefs.current[child.key] = node;
-        //       syncRef(child.props.children.ref, node);
-        //     }
-        //   }
-        // }
       });
     });
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: Parameters<InputPropTypes['onInput']>[0]) => {
     if (typeof handleDialogSearch === 'function') {
       handleDialogSearch(enrichEventWithDetails(e, { value: e.target.value, element: e.target }));
     }
     setSearchString(e.target.value);
   };
   const handleSave = (e) => {
-    const orderedChildrenIds = enableReordering ? orderedChildren.map((child) => child.props.orderId) : [];
+    const orderedChildrenIds = enableReordering ? orderedChildren.map((child) => child.props.filterKey) : [];
     handleDialogSave(e, selectionChangePayloadRef.current, orderedChildrenIds);
   };
 
@@ -281,16 +254,16 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       return;
     }
     if (typeof handleDialogCancel === 'function') {
-      handleDialogCancel(e);
+      handleDialogCancel(true);
     }
-    handleDialogClose(e);
+    handleDialogClose();
   };
 
-  const handleCancel = (e) => {
-    if (handleDialogCancel) {
-      handleDialogCancel(e);
+  const handleCancel = () => {
+    if (typeof handleDialogCancel === 'function') {
+      handleDialogCancel(false);
     }
-    handleDialogClose(e);
+    handleDialogClose();
   };
 
   const handleRestore = () => {
@@ -307,8 +280,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       const payload = {
         source: 'dialog' as const,
         selectedFilterKeys: initialSelected.current,
-        previousSelectedFilterKeys: selectedFilters,
-        search: null
+        previousSelectedFilterKeys: selectedFilters
       };
       setSelectedFilters(initialSelected.current);
       setOrderedChildren(visibleChildren());
@@ -318,7 +290,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     okBtnRef.current.focus();
   };
 
-  const [updatedIndex, setUpdatedIndex] = useState(undefined);
   useEffect(() => {
     if (currentReorderedItem?.index != null) {
       setOrderedChildren((prev: any[]) => {
@@ -363,7 +334,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   useEffect(() => {
     if (updatedIndex != null) {
-      prevOderId.current = undefined;
+      prevRowKey.current = undefined;
     }
   }, [updatedIndex]);
 
@@ -380,10 +351,15 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         selectedFilterKeys: _selected,
         previousSelectedFilterKeys: prevSelected
       };
-      selectionChangePayloadRef.current = { selectedFilterKeys: _selected };
       onFiltersDialogSelectionChange(payload);
     }
   };
+
+  useEffect(() => {
+    if (selectedFilters?.length) {
+      selectionChangePayloadRef.current = { selectedFilterKeys: selectedFilters };
+    }
+  }, [selectedFilters]);
 
   const handleCheckBoxChange = (e) => {
     if (e.target.hasAttribute('ui5-table-selection')) {
@@ -436,10 +412,10 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       }
     });
 
-    const filterGroups = Object.keys(groups)
+    // filter groups
+    return Object.keys(groups)
       .sort((x, y) => (x === 'default' ? -1 : y === 'role' ? 1 : 0))
       .map((item, index) => {
-        // const selectedRows = groups[item].map((child) => child.props['data-react-key']).join(' ');
         return (
           <Panel
             headerText={item === 'default' ? basicText : item}
@@ -468,12 +444,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           </Panel>
         );
       });
-    return filterGroups;
   };
 
-  const currentReorderedItemOrderId = currentReorderedItem?.orderId;
-
-  const selected = (selectedFilters ?? []).join(' ');
   useEffect(() => {
     if (initialSelected.current === undefined && selected.length) {
       initialSelected.current = selectedFilters;

@@ -17,7 +17,7 @@ export interface IFilterBarDialogContext {
   enableReordering?: boolean;
   showBtnsOnHover?: boolean;
   handleFocusFallback?: () => void;
-  currentReorderedItemOrderId?: string;
+  currentReorderedItemOrderId?: string | number;
   setShowBtnsOnHover?: Dispatch<SetStateAction<boolean>>;
   setShowReorderBtnsIndex?: Dispatch<SetStateAction<number | undefined>>;
   setSelectedKeys?: Dispatch<SetStateAction<string[]>>;

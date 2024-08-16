@@ -27,7 +27,6 @@ import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { VariantManagement } from '../VariantManagement/index.js';
 import { VariantItem } from '../VariantManagement/VariantItem.js';
-import TestComp from './Test.js';
 import TestComp1 from './TestComp.js';
 import { FilterBar } from './index.js';
 
@@ -53,12 +52,6 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-
-export const Test = {
-  render() {
-    return <TestComp />;
-  }
-};
 
 export const Test2 = {
   render(args) {
@@ -180,7 +173,7 @@ function reducer(state, action) {
 }
 
 export const WithLogic: Story = {
-  render: (args) => {
+  render: () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { age, countries, currency, date, dateRange, search } = state;
     const prevDialogOpenState = useRef(undefined);

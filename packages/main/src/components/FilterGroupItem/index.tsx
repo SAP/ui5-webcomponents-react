@@ -1,5 +1,7 @@
 'use client';
 
+import BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { isMac as isMacFn } from '@ui5/webcomponents-base/dist/Device.js';
 import circleTask2Icon from '@ui5/webcomponents-icons/dist/circle-task-2.js';
 import moveToTopIcon from '@ui5/webcomponents-icons/dist/collapse-group.js';
@@ -7,8 +9,6 @@ import moveToBottomIcon from '@ui5/webcomponents-icons/dist/expand-group.js';
 import moveDownIcon from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
-import BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
-import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { clsx } from 'clsx';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
@@ -22,7 +22,6 @@ import {
   MOVE_UP,
   UP_ARROW
 } from '../../i18n/i18n-defaults.js';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import type { ReorderDirections } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
 import type { ButtonPropTypes, TableRowDomRef } from '../../webComponents/index.js';
@@ -52,7 +51,6 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       className,
       slot,
       active,
-      orderId,
       filterKey,
       ...rest
     } = props;
@@ -114,8 +112,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
         index,
         direction: e.currentTarget.dataset.reorder as ReorderDirections,
         target: tableRowRef.current,
-          //todo
-        orderId
+        filterKey
       });
     };
 
@@ -131,7 +128,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
         const direction = directionMap[e.key];
         if (direction) {
           setItemPosition(undefined);
-          onReorder({ index, direction, target: e.currentTarget, orderId });
+          onReorder({ index, direction, target: e.currentTarget, filterKey });
         }
       }
     };
@@ -140,12 +137,12 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       if (
         withReordering &&
         tableRowRef.current &&
-        currentReorderedItemOrderId === orderId &&
+        currentReorderedItemOrderId === filterKey &&
         typeof index === 'number'
       ) {
         handleFocusFallback();
       }
-    }, [withReordering, currentReorderedItemOrderId, orderId, index]);
+    }, [withReordering, currentReorderedItemOrderId, filterKey, index]);
 
     useEffect(() => {
       if (!inFB && !hidden && !listViewHasChanged?.current) {
@@ -153,9 +150,9 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           setSelectedKeys((prev) => {
             const keysSet = new Set(prev);
             if (hiddenInFilterBar && !required) {
-              keysSet.delete(filterKey);
+              keysSet.delete(`${filterKey}`);
             } else {
-              keysSet.add(filterKey);
+              keysSet.add(`${filterKey}`);
             }
             return Array.from(keysSet);
           });
@@ -167,10 +164,10 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       if (listViewHasChanged?.current) {
         listViewHasChanged.current = false;
       }
-    }, [hidden, hiddenInFilterBar, filterKey, setSelectedKeys, isListView, required]);
+    }, [inFB, hidden, hiddenInFilterBar, filterKey, setSelectedKeys, isListView, required]);
 
     useEffect(() => {
-      //todo: check best way to control unmounting (conditional rendering - not list-view change)
+      //todo: check whether this is still necessary
       return () => {
         if (setSelectedKeys) {
           // setSelectedKeys((prev) => {
@@ -191,9 +188,6 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           ref={tableRowRef}
           rowKey={`${filterKey}`}
           data-text={label}
-          // todo
-          // data-react-key={reactKey}
-          // key={reactKey as string}
           data-required={required}
           data-component-name="FilterBarDialogTableRow"
           className={clsx(
@@ -203,7 +197,6 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           )}
           onFocus={withReordering ? handleFocus : undefined}
           onKeyDown={withReordering ? handleKeyDown : undefined}
-          data-order-id={orderId}
           aria-live={withReordering ? 'polite' : undefined}
           aria-label={
             withReordering ? i18nBundle.getText(FILTER_DIALOG_REORDER_FILTERS, isomporphicReorderKey) : undefined
@@ -290,7 +283,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
     const labelWithGroupName = considerGroupName && groupName !== 'default' ? `${label} (${groupName})` : label;
 
     return (
-      <div ref={ref} slot={slot} {...rest} data-order-id={orderId} className={clsx(classNames.filterItem, className)}>
+      <div ref={ref} slot={slot} {...rest} className={clsx(classNames.filterItem, className)}>
         <div className={classNames.innerFilterItemContainer}>
           <FlexBox>
             <Label title={labelTooltip ?? label} required={required} showColon={!!label}>

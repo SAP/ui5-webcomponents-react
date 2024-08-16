@@ -64,13 +64,7 @@ export interface FilterGroupItemPropTypes extends CommonProps {
    * Defines whether the filter is displayed with a value. If it's active an indicator will be shown in the filter configuration dialog.
    */
   active?: boolean;
-  /**
-   * Defines the unique id used to identify reordered filter items.
-   *
-   * __Note:__ This prop is mandatory if `enableReordering` is set to `true` on the `FilterBar`, otherwise it has no effect.
-   *
-   */
-  orderId?: string;
+  //todo breaking: removed orderId
 }
 
 export interface FilterGroupItemInternalProps extends FilterGroupItemPropTypes {

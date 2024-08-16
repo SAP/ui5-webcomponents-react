@@ -1,11 +1,12 @@
 'use client';
 
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { debounce, Device, enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import { CSSProperties, ElementType, ReactElement, useId } from 'react';
-import { Children, cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
+import type { CSSProperties, ElementType, ReactElement } from 'react';
+import { Children, cloneElement, forwardRef, isValidElement, useEffect, useId, useRef, useState } from 'react';
 import {
   ADAPT_FILTERS,
   CLEAR,
@@ -16,14 +17,7 @@ import {
   SEARCH,
   SHOW_FILTER_BAR
 } from '../../i18n/i18n-defaults.js';
-import type {
-  ButtonDomRef,
-  CheckBoxPropTypes,
-  DialogDomRef,
-  InputDomRef,
-  InputPropTypes,
-  SelectPropTypes
-} from '../../webComponents/index.js';
+import type { ButtonDomRef, DialogDomRef } from '../../webComponents/index.js';
 import { Button, Icon } from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
@@ -31,20 +25,16 @@ import { Toolbar } from '../Toolbar/index.js';
 import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import { classNames, styleData } from './FilterBar.module.css.js';
 import { FilterDialog } from './FilterDialog.js';
-import type { FilterBarChild, FilterBarPropTypes, ReactKeyWithoutBigInt, SafeChildrenFn } from './types.js';
-import { filterValue, renderSearchWithValue, syncRef } from './utils.js';
+import type { FilterBarChild, FilterBarPropTypes, SafeChildrenFn } from './types.js';
 
 const isPhone = Device.isPhone();
 const isTablet = Device.isTablet();
 const isDesktop = Device.isDesktop();
 
 const resizeObserverEntryWidth = (entry) => {
-  if (entry.borderBoxSize) {
-    // Firefox implements `borderBoxSize` as a single content rect, rather than an array
-    return Array.isArray(entry.borderBoxSize) ? entry.borderBoxSize[0]?.inlineSize : entry.borderBoxSize?.inlineSize;
+  if (entry.borderBoxSize.length) {
+    return entry.borderBoxSize[0]?.inlineSize;
   }
-  // Safari doesn't implement `borderBoxSize`
-  return entry.target.getBoundingClientRect().width;
 };
 
 /**
@@ -57,10 +47,6 @@ const resizeObserverEntryWidth = (entry) => {
  * * Desktop: Expanded or collapsed by default
  * * Tablet: Collapsed by default
  * * Phone: Not displayed. Accessible through filter dialog.
- *
- * __Note:__ We recommend always fully controlling the filters, as otherwise, you may encounter discrepancies between the filters dialog and the FilterBar, especially when using complex or custom filter components.
- *
- * __Note:__ With `v2` of `@ui5/webcomponents-react` the `FilterBar` doesn't manage filter states internally anymore. This means it's then mandatory to fully control the filters, because of this we recommend setting `fullyControlFilters` to `true` already.
  */
 const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) => {
   const {
@@ -107,17 +93,8 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     return true;
   })();
   const [showFilters, setShowFilters] = useState(initiallyShowFilters);
-  const [mountFilters, setMountFilters] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState<string>(undefined);
-  // const [dialogRefs, setDialogRefs] = useState({});
-  // const [toggledFilters, setToggledFilters] = useState({});
-
-  const searchRef = useRef<InputDomRef>(null);
-  const filterRefs = useRef({});
   const dialogRef = useRef<DialogDomRef>(null);
-  // const prevVisibleInFilterBarProps = useRef({});
-  const prevSearchInputPropsValueRef = useRef<string>(undefined);
   const filterBarButtonsRef = useRef(null);
   const filterAreaRef = useRef<HTMLDivElement>(null);
   const filterBtnRef = useRef<ButtonDomRef>(null);
@@ -133,26 +110,6 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const searchText = i18nBundle.getText(SEARCH);
   const filtersText = !hideToolbar ? i18nBundle.getText(FILTERS) : i18nBundle.getText(ADAPT_FILTERS);
 
-  // useEffect(() => {
-  //   Children.toArray(children).forEach((item) => {
-  //     if (isValidElement(item)) {
-  //       const key = item.key as ReactKeyWithoutBigInt;
-  //       setToggledFilters((prev) => {
-  //         if (!item.props.hasOwnProperty('hiddenInFilterBar') && prev?.[key] === undefined) {
-  //           return { ...prev, [key]: true };
-  //         }
-  //         if (item.props.hasOwnProperty('hiddenInFilterBar')) {
-  //           return {
-  //             ...prev,
-  //             [key]: (item as ReactElement<FilterGroupItemInternalProps>).props.hiddenInFilterBar !== true
-  //           };
-  //         }
-  //         return prev;
-  //       });
-  //     }
-  //   });
-  // }, [children, setToggledFilters]);
-
   useEffect(() => {
     if (filterBarCollapsed !== undefined) {
       setShowFilters(!hideToolbar ? !filterBarCollapsed : true);
@@ -166,36 +123,22 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     showFilters && (!isPhone || (isPhone && hideToolbar)) ? classNames.filterAreaOpen : classNames.filterAreaClosed
   );
 
-  const getFilterElements = () => {
-    const search = searchRef.current?.querySelector(`[data-component-name="FilterBarSearch"]`);
-    return {
-      filters: filterRefs?.current ? Object.values(filterRefs.current).filter(Boolean) : [],
-      search
-    };
-  };
-
   const handleToggle = (e) => {
     if (typeof onToggleFilters === 'function') {
-      onToggleFilters(enrichEventWithDetails(e, { visible: !showFilters, ...getFilterElements() }));
+      onToggleFilters(enrichEventWithDetails(e, { visible: !showFilters }));
     }
     setShowFilters(!showFilters);
   };
 
-  const [executeGo, setExecuteGo] = useState(false);
   const handleDialogSave = (e, selectionChangePayload, orderIds) => {
-    // setDialogRefs(newRefs);
     const details = {
       ...selectionChangePayload,
-      // elements: newRefs,
-      // toggledElements: { ...toggledFilters, ...updatedToggledFilters },
-      // ...getFilterElements(),
       orderIds
     };
-    // setToggledFilters((old) => ({ ...old, ...updatedToggledFilters }));
     if (onFiltersDialogSave) {
       onFiltersDialogSave(enrichEventWithDetails(e, details));
     }
-    handleDialogClose(e);
+    handleDialogClose();
   };
 
   const handleDialogOpen = (e) => {
@@ -209,9 +152,9 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     }
   };
 
-  const handleDialogClose = (e) => {
+  const handleDialogClose = () => {
     if (onFiltersDialogClose) {
-      onFiltersDialogClose(e);
+      onFiltersDialogClose();
     }
     setDialogOpen(false);
     void filterBtnRef.current?.focus();
@@ -219,36 +162,20 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
 
   const handleGoOnFb = (e) => {
     if (typeof onGo === 'function') {
-      onGo(enrichEventWithDetails(e, { elements: filterRefs.current, ...getFilterElements() }));
+      onGo(e);
     }
   };
 
   const safeChildren = (() => {
-    // if (Object.keys(toggledFilters).length > 0) {
-    //   return Children.toArray(children).map((child) => {
-    //     if (isValidElement(child)) {
-    //       const key = child.key as ReactKeyWithoutBigInt;
-    //       if (toggledFilters?.[key] !== undefined) {
-    //         // @ts-expect-error: child should always be a FilterGroupItem w/o portal
-    //         return cloneElement<FilterGroupItemInternalProps, HTMLDivElement>(child, {
-    //           hiddenInFilterBar: !toggledFilters[key]
-    //         });
-    //       }
-    //     }
-    //     return child;
-    //   });
-    // }
     return Children.toArray(children);
   }) as SafeChildrenFn;
-  // const prevChildren = useRef({});
 
   const renderChildren = () => {
     const childProps: Partial<FilterGroupItemInternalProps & { 'data-with-toolbar'?: boolean }> = {
       considerGroupName,
       ['data-with-toolbar']: !hideToolbar
     };
-
-    return safeChildren()
+    return (Children.toArray(children) as ReactElement<FilterGroupItemInternalProps>[])
       .filter((item) => {
         if (!isValidElement(item)) {
           return false;
@@ -259,114 +186,33 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         );
       })
       .map((child) => {
-        // const key = child.key as ReactKeyWithoutBigInt;
-        // necessary because of varying widths of input elements
         if (filterContainerWidth) {
           childProps.style = { width: filterContainerWidth, ...child.props.style };
         }
-        // if (hideFilterConfiguration) {
         return cloneElement(child, { ...childProps });
-        // }
-        // prevVisibleInFilterBarProps.current[key] = child.props.hiddenInFilterBar !== true;
-        // let filterItemProps = {};
-        // if (Object.keys(dialogRefs).length > 0) {
-        //   const dialogItemRef = dialogRefs[key];
-        //   if (dialogItemRef && !fullyControlFilters) {
-        //     filterItemProps = filterValue(dialogItemRef, child);
-        //   }
-        // }
-        // if (!child.props.children) {
-        //   return cloneElement(child, {
-        //     ...childProps
-        //   });
-        // }
-        // const filter = child.props.children as ReactElement<Record<string, any>>;
-        // if (
-        //   prevChildren.current?.[key] &&
-        //   //Input
-        //   ((filter as ReactElement<InputPropTypes>)?.props?.value !== prevChildren.current?.[key]?.value ||
-        //     //Checkbox
-        //     (filter as ReactElement<CheckBoxPropTypes>)?.props?.checked !== prevChildren.current?.[key]?.checked ||
-        //     //Selectable
-        //     (Array.isArray((filter as ReactElement<SelectPropTypes>)?.props?.children) &&
-        //       (filter as ReactElement<SelectPropTypes>)?.props?.children
-        //         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //         // @ts-ignore children is iterable here
-        //         ?.map((item) => item.props.selected)
-        //         .join(',') !== prevChildren?.current?.[key]?.children?.map((item) => item.props.selected).join(',')))
-        // ) {
-        //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //   // @ts-ignore
-        //   const { [child.key]: _omit, ...rest } = dialogRefs;
-        //   if (!fullyControlFilters) {
-        //     setDialogRefs(rest);
-        //   }
-        // }
-        // prevChildren.current[key] = filter.props;
-
-        // return cloneElement(child, {
-        //   ...childProps,
-        //   children: {
-        //     ...filter,
-        //     props: {
-        //       ...filter.props,
-        //       ...filterItemProps
-        //     },
-        //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //     //@ts-ignore: todo check React19 support
-        //     ref: (node) => {
-        //       filterRefs.current[key] = node;
-        //       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //       //@ts-ignore: todo check React19 support
-        //       if (!dialogOpen) syncRef(filter.ref, node);
-        //     }
-        //   }
-        // });
       });
   };
   const handleRestoreFilters = (payload: Parameters<FilterBarPropTypes['onRestore']>[0]) => {
-    if (payload.source === 'filterBar' && showGoOnFB) {
-      setMountFilters(false);
-    }
     if (onRestore) {
       onRestore(payload);
     }
   };
 
-  useEffect(() => {
-    if (!mountFilters) {
-      setMountFilters(true);
-    }
-  }, [mountFilters]);
-
   const handleFBRestore = () => {
     handleRestoreFilters({
       source: 'filterBar',
       selectedFilterKeys: calculatedChildren.map((child) => `${child.props.filterKey}`),
-      previousSelectedFilterKeys: null,
-      search: searchRef.current?.querySelector(`[data-component-name="FilterBarSearch"]`)
+      previousSelectedFilterKeys: null
     });
   };
 
   const handleClear = (e) => {
     if (typeof onClear === 'function') {
-      onClear(enrichEventWithDetails(e, getFilterElements()));
+      onClear(e);
     }
   };
 
   const cssClasses = clsx(classNames.outerContainer, className, !hideToolbar && classNames.outerContainerWithToolbar);
-
-  useEffect(() => {
-    prevSearchInputPropsValueRef.current = search?.props?.value;
-  }, [search?.props?.value]);
-
-  const prevSearchInputPropsValue = prevSearchInputPropsValueRef.current;
-
-  useEffect(() => {
-    if (prevSearchInputPropsValue !== search?.props?.value) {
-      setSearchValue(search?.props?.value);
-    }
-  }, [prevSearchInputPropsValue, search?.props?.value]);
 
   const ToolbarButtons = (
     <>
@@ -463,15 +309,6 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
 
   const calculatedChildren = renderChildren();
 
-  useEffect(() => {
-    if (executeGo) {
-      setExecuteGo((prevEvent) => {
-        onGo(prevEvent as any);
-        return false;
-      });
-    }
-  }, [executeGo]);
-
   // calculates the number of spacers depending on the available width inside the row
   const renderSpacers = () => {
     if (firstChildWidth && filterAreaWidth && filterBarButtonsWidth) {
@@ -509,51 +346,49 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
             {ToolbarButtons}
           </Toolbar>
         )}
-        {mountFilters && (
-          <div
-            className={filterAreaClasses}
-            style={{ position: 'relative' }}
-            ref={filterAreaRef}
-            data-component-name="FilterBarFilterArea"
-          >
-            {search && (
-              <FilterGroupItem data-with-toolbar={!hideToolbar} filterKey={`${uniqueId}-search`}>
-                <div ref={searchRef} className={classNames.searchContainer}>
-                  {renderSearchWithValue(search, searchValue, {
-                    placeholder: searchText,
-                    icon: <Icon name={searchIcon} />,
-                    noTypeahead: true,
-                    showClearIcon: true
-                  })}
+        <div
+          className={filterAreaClasses}
+          style={{ position: 'relative' }}
+          ref={filterAreaRef}
+          data-component-name="FilterBarFilterArea"
+        >
+          {search && (
+            <FilterGroupItem data-with-toolbar={!hideToolbar} filterKey={`${uniqueId}-search`}>
+              <div className={classNames.searchContainer}>
+                {cloneElement(search, {
+                  placeholder: searchText,
+                  noTypeahead: true,
+                  showClearIcon: true,
+                  type: InputType.Search,
+                  icon: <Icon name={searchIcon} />
+                })}
+              </div>
+            </FilterGroupItem>
+          )}
+          {calculatedChildren}
+          {hideToolbar && (
+            <>
+              {renderSpacers()}
+              <div
+                style={{
+                  width: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
+                  minWidth: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px'
+                }}
+                className={classNames.lastSpacer}
+              >
+                <div className={classNames.filterBarButtons} ref={filterBarButtonsRef}>
+                  {ToolbarButtons}
                 </div>
-              </FilterGroupItem>
-            )}
-            {calculatedChildren}
-            {hideToolbar && (
-              <>
-                {renderSpacers()}
-                <div
-                  style={{
-                    width: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
-                    minWidth: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px'
-                  }}
-                  className={classNames.lastSpacer}
-                >
-                  <div className={classNames.filterBarButtons} ref={filterBarButtonsRef}>
-                    {ToolbarButtons}
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-        )}
+              </div>
+            </>
+          )}
+        </div>
       </CustomTag>
       {dialogOpen && !hideFilterConfiguration && (
         <FilterDialog
           open={dialogOpen}
           handleDialogClose={handleDialogClose}
           handleRestoreFilters={handleRestoreFilters}
-          handleSearchValueChange={setSearchValue}
           showRestoreButton={showResetButton}
           onFiltersDialogSelectionChange={onFiltersDialogSelectionChange}
           handleDialogSave={handleDialogSave}

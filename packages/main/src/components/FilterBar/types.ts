@@ -1,17 +1,10 @@
 import type { CSSProperties, MouseEvent, ReactElement, ReactNode } from 'react';
-import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
-import type {
-  ButtonPropTypes,
-  DialogPropTypes,
-  InputDomRef,
-  InputPropTypes,
-  TableRowDomRef,
-  TableSelectionDomRef
-} from '../../webComponents/index.js';
+import type { CommonProps } from '../../types/index.js';
+import type { ButtonPropTypes, DialogPropTypes, InputPropTypes } from '../../webComponents/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 
 interface OnToggleFiltersEvent extends Omit<MouseEvent, 'detail'> {
-  detail: { visible: boolean; filters: HTMLElement[]; search: HTMLElement; nativeDetail: number };
+  detail: { visible: boolean; nativeDetail: number };
 }
 
 interface OnFiltersDialogSaveEvent extends Omit<MouseEvent, 'detail'> {
@@ -19,26 +12,37 @@ interface OnFiltersDialogSaveEvent extends Omit<MouseEvent, 'detail'> {
     /**
      * Defines all selected filters.
      */
-    selectedFilterKeys: Set<string>;
-    orderIds: string[];
-    nativeDetail: number;
-  };
-}
-
-interface OnGoEvent extends Omit<MouseEvent, 'detail'> {
-  detail: {
-    elements: Record<string, HTMLElement>;
-    filters: HTMLElement[];
-    search: HTMLElement;
+    selectedFilterKeys: string[];
+    /**
+     * Defines the order of filters by `filterKey`.
+     *
+     * __Note:__ If `enableReordering` is falsy, the Array is empty.
+     */
+    reorderedFilterKeys: string[];
+    /**
+     * Native `detail` for `click` event.
+     */
     nativeDetail: number;
   };
 }
 
 interface RestorePayload {
+  /**
+   * Defines the source of the event.
+   */
   source: 'dialog' | 'filterBar';
+  /**
+   * Defines all selected filters.
+   */
   selectedFilterKeys: string[];
+  /**
+   * Defines the initial selected filters (defined by `hiddenInFilterBar`) when opening the filters dialog.
+   *
+   * __Note:__ If the source is `filterBar` the value is `null`.
+   *
+   * __Note:__ This prop doesn't take into account, if `hiddenInFilterBar` is programmatically changed while the filters dialog is open.
+   */
   previousSelectedFilterKeys: string[] | null;
-  search: InputDomRef | null;
 }
 
 interface FiltersDialogSelectionChangePayload {
@@ -72,7 +76,7 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines the search field rendered as first filter item.
    *
-   * __Note:__ Per default `placeholder`, `icon`, `noTypeahead` and `showClearIcon` are applied to the search input.
+   * __Note:__ Per default `placeholder`, `icon`, `noTypeahead`, `showClearIcon` and `type` are applied to the search input.
    *
    * __Note:__ The field is only available in the FilterBar not inside the filter configuration dialog.
    */
@@ -88,17 +92,19 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines whether the toolbar on top of the filter items is displayed.
    *
-   * __Note__: If set to `true`, `header`, `search` and the "Hide/Show FilterBar" button are not available and the rest of the buttons are moved to the bottom right side of the filter area.
+   * __Note__: If set to `true`, `header` and the "Hide/Show FilterBar" button are not available and the rest of the buttons are moved to the bottom right side of the filter area.
    */
   hideToolbar?: boolean;
   /**
    * Defines whether the `FilterBar` is collapsed.
+   *
+   * __Note:__ This prop has no effect if `hideToolbar` is `true`.
    */
   filterBarCollapsed?: boolean;
   /**
    * Defines the width of the `FilterGroupItems`.
    *
-   * __Note:__ If your filter elements (e.g. `DateRangePicker`) have an internal `minWidth`, please make sure to overwrite it with `minWidth:'auto'` or the corresponding `filterContainerWidth` otherwise it can lead to unintended behavior.
+   * __Note:__ If your filter elements have an internal `minWidth`, please make sure to overwrite it with `minWidth:'auto'` or the corresponding `filterContainerWidth` otherwise it can lead to unintended behavior.
    */
   filterContainerWidth?: CSSProperties['width'];
   /**
@@ -143,16 +149,8 @@ export interface FilterBarPropTypes extends CommonProps {
   showRestoreOnFB?: boolean;
   /**
    * Allow changing the order of filters in the filter configuration dialog.
-   *
-   * __Note:__ Setting the `orderId` of each `FilterGroupItem` is mandatory for this feature to work.
    */
   enableReordering?: boolean;
-  /**
-   * Defines whether the `FilterBar` should not internally manage the state of filters when set in the filters dialog.
-   *
-   * __Note:__ With `v2` the internal state management will be removed and the behavior if `fullyControlFilters` is `true` will be the default. We therefore recommend using `fullyControlFilters` already.
-   */
-  fullyControlFilters?: boolean;
   /**
    * Sets the components outer HTML tag.
    *
@@ -162,16 +160,18 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
+  //todo breaking
   onToggleFilters?: (event: OnToggleFiltersEvent) => void;
   /**
    * The event is fired when the "Go" button of the filter configuration dialog is clicked.
    */
-  //todo: wip & breaking
+  //todo: breaking
   onFiltersDialogSave?: (event: OnFiltersDialogSaveEvent) => void;
   /**
    * The event is fired when the "Cancel" button of the filter configuration dialog is clicked or when the dialog is closed by pressing the "Escape" key.
    */
-  onFiltersDialogCancel?: (event: Ui5CustomEvent) => void;
+  //todo: breaking
+  onFiltersDialogCancel?: (escPressed: boolean) => void;
   /**
    * The event is fired when the filter configuration dialog is opened.
    *
@@ -185,7 +185,8 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the filter configuration dialog is closed.
    */
-  onFiltersDialogClose?: (event: Ui5CustomEvent) => void;
+  //todo: breaking
+  onFiltersDialogClose?: () => void;
   /**
    * The event is fired when a filter is selected/unselected in the filter configuration dialog.
    */
@@ -194,19 +195,24 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired on input in the filter configuration dialog search field.
    */
-  onFiltersDialogSearch?: (event: CustomEvent<{ value: string; element: HTMLElement }>) => void;
+  // todo: breaking
+  onFiltersDialogSearch?: InputPropTypes['onInput'];
   /**
    * The event is fired when the "Clear" button is clicked.
    */
-  onClear?: (event: CustomEvent<{ filters: HTMLElement[]; search: HTMLElement }>) => void;
+  //todo breaking
+  onClear?: ButtonPropTypes['onClick'];
   /**
    * The event is fired when the "Go" button is clicked.
    */
-  onGo?: (event: OnGoEvent) => void;
+  //todo breaking
+  onGo?: ButtonPropTypes['onClick'];
   /**
    * The event is fired when the "Reset" button in the filter dialog is pressed, or the "Restore" button in the FilterBar.
    */
   //todo breaking
+  // - properties
+  // - doesn't remove filters anymore when clicked in FB and Go btn is displayed
   onRestore?: (payload: RestorePayload) => void;
 }
 
