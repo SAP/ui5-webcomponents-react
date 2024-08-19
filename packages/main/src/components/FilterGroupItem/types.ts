@@ -1,4 +1,4 @@
-import type { Key, ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import type { CommonProps } from '../../types/index.js';
 
 export interface FilterGroupItemPropTypes extends CommonProps {
@@ -68,7 +68,8 @@ export interface FilterGroupItemPropTypes extends CommonProps {
 }
 
 export interface FilterGroupItemInternalProps extends FilterGroupItemPropTypes {
-  'data-selected'?: boolean;
-  'data-react-key'?: Key;
+  /**
+   * @private
+   */
   'data-index'?: number;
 }

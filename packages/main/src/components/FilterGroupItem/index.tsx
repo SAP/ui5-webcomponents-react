@@ -56,8 +56,6 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
     } = props;
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const tableRowRef = useRef<TableRowDomRef>(null);
-
-    // const reactKey = props['data-react-key'];
     const index = props['data-index'];
     const isomporphicReorderKey = isMac ? 'CMD' : 'CTRL';
 

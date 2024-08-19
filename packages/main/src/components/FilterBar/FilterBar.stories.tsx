@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useId, useReducer, useRef, useState } from 'react';
+import { useEffect, useId, useReducer, useRef, useState } from 'react';
 import { FlexBoxDirection } from '../../enums/index.js';
 import {
   ComboBox,
@@ -37,7 +37,7 @@ const meta = {
   component: FilterBar,
   args: {
     search: <Input />,
-    header: <Title>Test</Title>,
+    header: <Title>FilterBar</Title>,
     filterContainerWidth: '13.125rem'
   },
   argTypes: {
@@ -368,10 +368,10 @@ export const InDynamicPage: Story = {
         headerArea={
           <DynamicPageHeader>
             <FilterBar {...args} hideToolbar>
-              <FilterGroupItem label="StepInput">
+              <FilterGroupItem filterKey="StepInput" label="StepInput">
                 <StepInput />
               </FilterGroupItem>
-              <FilterGroupItem label="MultiInput" active required>
+              <FilterGroupItem filterKey="MultiInput" label="MultiInput" active required>
                 <MultiInput
                   required
                   tokens={
@@ -384,13 +384,13 @@ export const InDynamicPage: Story = {
                   }
                 />
               </FilterGroupItem>
-              <FilterGroupItem label="Input">
+              <FilterGroupItem filterKey="Input" label="Input">
                 <Input placeholder="Placeholder" />
               </FilterGroupItem>
-              <FilterGroupItem label="Switch" hiddenInFilterBar>
+              <FilterGroupItem filterKey="Switch" label="Switch" hiddenInFilterBar>
                 <Switch />
               </FilterGroupItem>
-              <FilterGroupItem label="SELECT w/ initial selected" hiddenInFilterBar>
+              <FilterGroupItem filterKey="select-init-selected" label="SELECT w/ initial selected" hiddenInFilterBar>
                 <Select>
                   <Option>Option 1</Option>
                   <Option selected>Option 2</Option>
@@ -398,7 +398,7 @@ export const InDynamicPage: Story = {
                   <Option>Option 4</Option>
                 </Select>
               </FilterGroupItem>
-              <FilterGroupItem label="SELECT w/o initial selected" hiddenInFilterBar>
+              <FilterGroupItem filterKey="select-not-selected" label="SELECT w/o initial selected" hiddenInFilterBar>
                 <Select>
                   <Option data-key="Test 1" selected icon="add">
                     Test 1
@@ -417,7 +417,12 @@ export const InDynamicPage: Story = {
                   </Option>
                 </Select>
               </FilterGroupItem>
-              <FilterGroupItem label="MultBox w/ initial selected" groupName="Group 1" hiddenInFilterBar>
+              <FilterGroupItem
+                filterKey="mcb-selected"
+                label="MultBox w/ initial selected"
+                groupName="Group 1"
+                hiddenInFilterBar
+              >
                 <MultiComboBox>
                   <MultiComboBoxItem text="MultiComboBoxItem 1" />
                   <MultiComboBoxItem selected text="MultiComboBoxItem 2" />
@@ -425,7 +430,12 @@ export const InDynamicPage: Story = {
                   <MultiComboBoxItem selected text="MultiComboBoxItem 4" />
                 </MultiComboBox>
               </FilterGroupItem>
-              <FilterGroupItem label="ComboBox w/o initial selected" groupName="Group 2" hiddenInFilterBar>
+              <FilterGroupItem
+                filterKey="cb-not-selected"
+                label="ComboBox w/o initial selected"
+                groupName="Group 2"
+                hiddenInFilterBar
+              >
                 <ComboBox>
                   <ComboBoxItem text="ComboBoxItem 1" />
                   <ComboBoxItem text="ComboBoxItem 2" />
@@ -433,7 +443,7 @@ export const InDynamicPage: Story = {
                   <ComboBoxItem text="ComboBoxItem 4" />
                 </ComboBox>
               </FilterGroupItem>
-              <FilterGroupItem label="Date Picker" groupName="Group 2">
+              <FilterGroupItem filterKey="date-picker" label="Date Picker" groupName="Group 2">
                 <DateRangePicker style={{ minWidth: 'auto' }} />
               </FilterGroupItem>
             </FilterBar>
@@ -459,58 +469,113 @@ export const InDynamicPage: Story = {
 export const WithReordering: Story = {
   render(args) {
     const uniqueId = useId();
-    const [orderedChildren, setOrderedChildren] = useState([
-      <FilterGroupItem filterKey={'0'} key={`${uniqueId}-0`} label="StepInput" required orderId={`${uniqueId}-0`}>
-        <StepInput required />
-      </FilterGroupItem>,
-      <FilterGroupItem filterKey={'1'} key={`${uniqueId}-1`} label="RatingIndicator" orderId={`${uniqueId}-1`}>
-        <RatingIndicator />
-      </FilterGroupItem>,
-      <FilterGroupItem filterKey={'2'} key={`${uniqueId}-2`} label="MultiInput" active orderId={`${uniqueId}-2`}>
-        <MultiInput
-          tokens={
-            <>
-              <Token text="Argentina" selected />
-              <Token text="Bulgaria" />
-              <Token text="England" />
-              <Token text="Finland" />
-            </>
-          }
-        />
-      </FilterGroupItem>,
-      <FilterGroupItem filterKey={'3'} key={`${uniqueId}-3`} label="Input" orderId={`${uniqueId}-3`}>
-        <Input placeholder="Placeholder" />
-      </FilterGroupItem>,
-      <FilterGroupItem filterKey={'4'} key={`${uniqueId}-4`} label="Switch" orderId={`${uniqueId}-4`}>
-        <Switch />
-      </FilterGroupItem>,
-      <FilterGroupItem
-        filterKey={'5'}
-        key={`${uniqueId}-5`}
-        label="SELECT w/ initial selected"
-        hiddenInFilterBar
-        orderId={`${uniqueId}-5`}
-      >
-        <Select>
-          <Option>Option 1</Option>
-          <Option selected>Option 2</Option>
-          <Option>Option 3</Option>
-          <Option>Option 4</Option>
-        </Select>
-      </FilterGroupItem>
-    ]);
+    const [visibleChildrenByKey, setVisibleChildrenByKey] = useState<Record<string, boolean>>({
+      '0': true,
+      '1': true,
+      '2': true,
+      '3': true,
+      '5': true
+    });
+    const [orderedFilterKeys, setOrderedFilterKeys] = useState(['0', '1', '2', '3', '4', '5']);
 
-    const handleFiltersDialogSave = (e) => {
-      setOrderedChildren((prev) => {
-        return e.detail.orderIds.map((orderId) => {
-          const obj = prev.find((item) => item.props.orderId === orderId);
-          return { ...obj };
-        });
-      });
+    const toggleVisibility = (key) => {
+      setVisibleChildrenByKey((prev) => ({
+        ...prev,
+        [key]: !prev[key]
+      }));
     };
+
+    const handleFiltersDialogSave: FilterBarPropTypes['onFiltersDialogSave'] = (e) => {
+      setOrderedFilterKeys(e.detail.reorderedFilterKeys);
+      setVisibleChildrenByKey(
+        e.detail.selectedFilterKeys.reduce((acc, cur) => {
+          acc[cur] = true;
+          return acc;
+        }, {})
+      );
+    };
+
     return (
-      <FilterBar {...args} onFiltersDialogSave={handleFiltersDialogSave} enableReordering showResetButton>
-        {orderedChildren}
+      <FilterBar {...args} enableReordering showResetButton onFiltersDialogSave={handleFiltersDialogSave}>
+        {orderedFilterKeys.map((filterKey) => {
+          const isHidden = !visibleChildrenByKey[filterKey];
+          switch (filterKey) {
+            case '0':
+              return (
+                <FilterGroupItem
+                  filterKey="0"
+                  key={`${uniqueId}-0`}
+                  label="StepInput"
+                  required
+                  hiddenInFilterBar={isHidden}
+                >
+                  <StepInput required />
+                </FilterGroupItem>
+              );
+            case '1':
+              return (
+                <FilterGroupItem
+                  filterKey="1"
+                  key={`${uniqueId}-1`}
+                  label="RatingIndicator"
+                  hiddenInFilterBar={isHidden}
+                >
+                  <RatingIndicator />
+                </FilterGroupItem>
+              );
+            case '2':
+              return (
+                <FilterGroupItem
+                  filterKey="2"
+                  key={`${uniqueId}-2`}
+                  label="MultiInput"
+                  active
+                  hiddenInFilterBar={isHidden}
+                >
+                  <MultiInput
+                    tokens={
+                      <>
+                        <Token text="Argentina" selected />
+                        <Token text="Bulgaria" />
+                        <Token text="England" />
+                        <Token text="Finland" />
+                      </>
+                    }
+                  />
+                </FilterGroupItem>
+              );
+            case '3':
+              return (
+                <FilterGroupItem filterKey="3" key={`${uniqueId}-3`} label="Input" hiddenInFilterBar={isHidden}>
+                  <Input placeholder="Placeholder" />
+                </FilterGroupItem>
+              );
+            case '4':
+              return (
+                <FilterGroupItem filterKey="4" key={`${uniqueId}-4`} label="Switch" hiddenInFilterBar={isHidden}>
+                  <Switch />
+                </FilterGroupItem>
+              );
+            case '5':
+              return (
+                <FilterGroupItem
+                  filterKey="5"
+                  key={`${uniqueId}-5`}
+                  label="SELECT w/ initial selected"
+                  hiddenInFilterBar={isHidden}
+                >
+                  <Select>
+                    <Option>Option 1</Option>
+                    <Option selected>Option 2</Option>
+                    <Option>Option 3</Option>
+                    <Option>Option 4</Option>
+                  </Select>
+                </FilterGroupItem>
+              );
+            default:
+              return null;
+          }
+        })}
       </FilterBar>
     );
   }

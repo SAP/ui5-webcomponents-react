@@ -169,17 +169,17 @@ const TestComp = (args) => {
         {...args}
         enableReordering
         showResetButton
-        // onFiltersDialogSelectionChange={console.log}
-        // onFiltersDialogSave={(e) => console.log(e.detail)}
+        onFiltersDialogSelectionChange={console.log}
+        onFiltersDialogSave={(e) => console.log(e.detail)}
         onRestore={console.log}
         // onGo={console.log}
         // onClear={console.log}
         // onToggleFilters={console.log}
         // onFiltersDialogSearch={console.log}
-        // onFiltersDialogClose={() => {
-        //   console.log('closed');
-        // }}
-        onFiltersDialogCancel={console.log}
+        onFiltersDialogClose={(action) => {
+          console.log(action);
+        }}
+        // onFiltersDialogCancel={console.log}
         search={<Input onInput={(e) => console.log(e.target.value)} value="Hello there" />}
       >
         {children}

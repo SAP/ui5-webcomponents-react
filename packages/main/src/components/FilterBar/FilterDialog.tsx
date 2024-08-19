@@ -536,7 +536,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
               <Option selected={filteredAttribute === 'all'} data-id="all">
                 {allText}
               </Option>
-              {/*todo: visible doesn't work anymore*/}
               <Option selected={filteredAttribute === 'visible'} data-id="visible">
                 {visibleText}
               </Option>

@@ -230,7 +230,7 @@ function FilterBarComponent(args) {
 
 ## FilterBar with Reordering
 
-To enable the reordering feature set `enableReordering` to `true` and add a unique `orderId` prop to each `FilterGroupItem`.
+To enable the reordering feature set `enableReordering` to `true`.
 
 <Canvas of={ComponentStories.WithReordering} />
 
@@ -243,60 +243,142 @@ To enable the reordering feature set `enableReordering` to `true` and add a uniq
 ```jsx
 function FilterBarWithReordering(props) {
   const uniqueId = useId();
-  const [orderedChildren, setOrderedChildren] = useState([
-    <FilterGroupItem key={`${uniqueId}-0`} label="StepInput" required orderId={`${uniqueId}-0`}>
-      <StepInput required />
-    </FilterGroupItem>,
-    <FilterGroupItem key={`${uniqueId}-1`} label="RatingIndicator" orderId={`${uniqueId}-1`}>
-      <RatingIndicator />
-    </FilterGroupItem>,
-    <FilterGroupItem key={`${uniqueId}-2`} label="MultiInput" active orderId={`${uniqueId}-2`}>
-      <MultiInput
-        tokens={
-          <>
-            <Token text="Argentina" selected />
-            <Token text="Bulgaria" />
-            <Token text="England" />
-            <Token text="Finland" />
-          </>
-        }
-      />
-    </FilterGroupItem>,
-    <FilterGroupItem key={`${uniqueId}-3`} label="Input" orderId={`${uniqueId}-3`}>
-      <Input placeholder="Placeholder" />
-    </FilterGroupItem>,
-    <FilterGroupItem key={`${uniqueId}-4`} label="Switch" orderId={`${uniqueId}-4`}>
-      <Switch />
-    </FilterGroupItem>,
-    <FilterGroupItem
-      key={`${uniqueId}-5`}
-      label="SELECT w/ initial selected"
-      hiddenInFilterBar
-      orderId={`${uniqueId}-5`}
-    >
-      <Select>
-        <Option>Option 1</Option>
-        <Option selected>Option 2</Option>
-        <Option>Option 3</Option>
-        <Option>Option 4</Option>
-      </Select>
-    </FilterGroupItem>
+  const [visibleChildrenByKey, setVisibleChildrenByKey] = useState<
+    Record<string, boolean>
+  >({
+    "0": true,
+    "1": true,
+    "2": true,
+    "3": true,
+    "5": true,
+  });
+  const [orderedFilterKeys, setOrderedFilterKeys] = useState([
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
   ]);
 
-  const handleFiltersDialogSave = (e) => {
-    setOrderedChildren((prev) => {
-      return e.detail.reorderedItems.orderedIds.map((orderId) => {
-        const obj = prev.find((item) => item.props.orderId === orderId);
-        return { ...obj };
-      });
-    });
+  const toggleVisibility = (key) => {
+    setVisibleChildrenByKey((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   };
+
+  const handleFiltersDialogSave: FilterBarPropTypes["onFiltersDialogSave"] = (
+    e,
+  ) => {
+    setOrderedFilterKeys(e.detail.reorderedFilterKeys);
+    setVisibleChildrenByKey(
+      e.detail.selectedFilterKeys.reduce((acc, cur) => {
+        acc[cur] = true;
+        return acc;
+      }, {}),
+    );
+  };
+
   return (
-    <FilterBar {...props} onFiltersDialogSave={handleFiltersDialogSave} enableReordering showResetButton>
-      {orderedChildren}
+    <FilterBar
+      enableReordering
+      showResetButton
+      onFiltersDialogSave={handleFiltersDialogSave}
+    >
+      {orderedFilterKeys.map((filterKey) => {
+        const isHidden = !visibleChildrenByKey[filterKey];
+        switch (filterKey) {
+          case "0":
+            return (
+              <FilterGroupItem
+                filterKey="0"
+                key={`${uniqueId}-0`}
+                label="StepInput"
+                required
+                hiddenInFilterBar={isHidden}
+              >
+                <StepInput required />
+              </FilterGroupItem>
+            );
+          case "1":
+            return (
+              <FilterGroupItem
+                filterKey="1"
+                key={`${uniqueId}-1`}
+                label="RatingIndicator"
+                hiddenInFilterBar={isHidden}
+              >
+                <RatingIndicator />
+              </FilterGroupItem>
+            );
+          case "2":
+            return (
+              <FilterGroupItem
+                filterKey="2"
+                key={`${uniqueId}-2`}
+                label="MultiInput"
+                active
+                hiddenInFilterBar={isHidden}
+              >
+                <MultiInput
+                  tokens={
+                    <>
+                      <Token text="Argentina" selected />
+                      <Token text="Bulgaria" />
+                      <Token text="England" />
+                      <Token text="Finland" />
+                    </>
+                  }
+                />
+              </FilterGroupItem>
+            );
+          case "3":
+            return (
+              <FilterGroupItem
+                filterKey="3"
+                key={`${uniqueId}-3`}
+                label="Input"
+                hiddenInFilterBar={isHidden}
+              >
+                <Input placeholder="Placeholder" />
+              </FilterGroupItem>
+            );
+          case "4":
+            return (
+              <FilterGroupItem
+                filterKey="4"
+                key={`${uniqueId}-4`}
+                label="Switch"
+                hiddenInFilterBar={isHidden}
+              >
+                <Switch />
+              </FilterGroupItem>
+            );
+          case "5":
+            return (
+              <FilterGroupItem
+                filterKey="5"
+                key={`${uniqueId}-5`}
+                label="SELECT w/ initial selected"
+                hiddenInFilterBar={isHidden}
+              >
+                <Select>
+                  <Option>Option 1</Option>
+                  <Option selected>Option 2</Option>
+                  <Option>Option 3</Option>
+                  <Option>Option 4</Option>
+                </Select>
+              </FilterGroupItem>
+            );
+          default:
+            return null;
+        }
+      })}
     </FilterBar>
   );
 }
+
 ```
 
 </details>
@@ -313,6 +395,6 @@ the page is then responsible for the different views.
 ## FilterGroupItem
 
 <Description of={FilterGroupItem} />
-<ArgTypesWithNote of={FilterGroupItem} />
+<ArgTypesWithNote of={FilterGroupItem} exclude={['data-index']} />
 
 <Footer />

@@ -133,7 +133,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const handleDialogSave = (e, selectionChangePayload, orderIds) => {
     const details = {
       ...selectionChangePayload,
-      orderIds
+      reorderedFilterKeys: orderIds
     };
     if (onFiltersDialogSave) {
       onFiltersDialogSave(enrichEventWithDetails(e, details));
