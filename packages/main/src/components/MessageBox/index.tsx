@@ -190,14 +190,16 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
     if (typeof props.onBeforeClose === 'function') {
       props.onBeforeClose(e);
     }
-    if (e.detail.escPressed) {
+    if (e.detail.escPressed && typeof onClose === 'function') {
       onClose(undefined, e.detail.escPressed);
     }
   };
 
   const handleOnClose: ButtonPropTypes['onClick'] = (e) => {
     const { action } = e.currentTarget.dataset;
-    onClose(action);
+    if (typeof onClose === 'function') {
+      onClose(action);
+    }
   };
 
   const messageBoxId = useId();
