@@ -28,8 +28,6 @@ import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { VariantManagement } from '../VariantManagement/index.js';
 import { VariantItem } from '../VariantManagement/VariantItem.js';
-import TestComp1 from './TestComp.js';
-import TestComp2 from './TestComp2.js';
 import type { FilterBarPropTypes } from './index.js';
 import { FilterBar } from './index.js';
 
@@ -58,18 +56,6 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-
-export const Test2 = {
-  render(args) {
-    return <TestComp1 {...args} />;
-  }
-};
-
-export const Test3 = {
-  render(args) {
-    return <TestComp2 {...args} />;
-  }
-};
 
 export const Default: Story = {
   render: (args) => {
@@ -356,8 +342,18 @@ export const InDynamicPage: Story = {
         style={{ height: '800px', position: 'relative', zIndex: 0 }}
         titleArea={
           <DynamicPageTitle
-            style={{ minHeight: '0' }}
+            style={{ minHeight: '0px' }}
             heading={
+              <VariantManagement
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                <VariantItem>Variant 1</VariantItem>
+                <VariantItem selected>Variant 2</VariantItem>
+              </VariantManagement>
+            }
+            snappedHeading={
               <VariantManagement
                 onClick={(e) => {
                   e.stopPropagation();
