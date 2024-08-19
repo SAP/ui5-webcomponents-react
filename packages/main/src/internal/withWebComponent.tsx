@@ -6,10 +6,7 @@ import type { ComponentType, ReactElement, ReactNode, Ref } from 'react';
 import { cloneElement, forwardRef, Fragment, isValidElement, useEffect, useState, version } from 'react';
 import type { CommonProps, Ui5DomRef } from '../types/index.js';
 import { useServerSideEffect } from './ssr.js';
-import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils.js';
-
-const SEMVER_REGEX =
-  /^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
+import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase, parseSemVer } from './utils.js';
 
 const createEventPropName = (eventName: string) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
 
@@ -38,8 +35,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   eventProperties: string[],
   loader: () => Promise<unknown>
 ) => {
-  const reactMajorVersion = SEMVER_REGEX.exec(version)?.groups?.major;
-  const webComponentsSupported = parseInt(reactMajorVersion) >= 19;
+  const webComponentsSupported = parseSemVer(version).major >= 19;
   // displayName will be assigned in the individual files
   // eslint-disable-next-line react/display-name
   return forwardRef<RefType, Props & WithWebComponentPropTypes>((props, wcRef) => {

@@ -55,3 +55,18 @@ export function getTagNameWithoutScopingSuffix(tagName) {
   const tagNameSuffix = getCustomElementsScopingSuffix();
   return tagNameSuffix ? tagName.replace(`-${tagNameSuffix.toUpperCase()}`, '') : tagName;
 }
+
+const SEMVER_REGEX =
+  /^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
+
+export function parseSemVer(version: string) {
+  const parsed = SEMVER_REGEX.exec(version).groups;
+  return {
+    version,
+    major: parseInt(parsed.major),
+    minor: parseInt(parsed.minor),
+    patch: parseInt(parsed.patch),
+    prerelease: parsed.prerelease,
+    buildMetadata: parsed.buildmetadata
+  };
+}
