@@ -3,10 +3,13 @@
 import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { ComponentType, ReactElement, ReactNode, Ref } from 'react';
-import { cloneElement, forwardRef, Fragment, isValidElement, useEffect, useState } from 'react';
+import { cloneElement, forwardRef, Fragment, isValidElement, useEffect, useState, version } from 'react';
 import type { CommonProps, Ui5DomRef } from '../types/index.js';
 import { useServerSideEffect } from './ssr.js';
 import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase } from './utils.js';
+
+const SEMVER_REGEX =
+  /^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
 
 const createEventPropName = (eventName: string) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
 
@@ -35,6 +38,8 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   eventProperties: string[],
   loader: () => Promise<unknown>
 ) => {
+  const reactMajorVersion = SEMVER_REGEX.exec(version)?.groups?.major;
+  const webComponentsSupported = parseInt(reactMajorVersion) >= 19;
   // displayName will be assigned in the individual files
   // eslint-disable-next-line react/display-name
   return forwardRef<RefType, Props & WithWebComponentPropTypes>((props, wcRef) => {
@@ -61,10 +66,14 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 
     // boolean properties - only attach if they are truthy
     const booleanProps = booleanProperties.reduce((acc, name) => {
-      if (rest[name] === true || rest[name] === 'true') {
-        return { ...acc, [camelToKebabCase(name)]: true };
+      if (webComponentsSupported) {
+        return { ...acc, [camelToKebabCase(name)]: rest[name] };
+      } else {
+        if (rest[name] === true || rest[name] === 'true') {
+          return { ...acc, [camelToKebabCase(name)]: true };
+        }
+        return acc;
       }
-      return acc;
     }, {});
 
     const slots = slotProperties.reduce((acc, name) => {
@@ -119,6 +128,11 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 
     // event binding
     useIsomorphicLayoutEffect(() => {
+      if (webComponentsSupported) {
+        return () => {
+          // React can handle events
+        };
+      }
       const localRef = ref.current;
       const eventRegistry: Record<string, EventHandler> = {};
       if (!waitForDefine || isDefined) {
@@ -139,6 +153,14 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         };
       }
     }, [...eventProperties.map((eventName) => rest[createEventPropName(eventName)]), isDefined, waitForDefine]);
+
+    const eventHandlers = eventProperties.reduce((events, eventName) => {
+      const eventHandlerProp = rest[createEventPropName(eventName)];
+      if (webComponentsSupported && eventHandlerProp) {
+        events[`on${eventName}`] = eventHandlerProp;
+      }
+      return events;
+    }, {});
 
     // non web component related props, just pass them
     const nonWebComponentRelatedProps = Object.entries(rest)
@@ -185,6 +207,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         ref={componentRef}
         {...booleanProps}
         {...regularProps}
+        {...eventHandlers}
         {...nonWebComponentRelatedProps}
         class={className}
         suppressHydrationWarning
