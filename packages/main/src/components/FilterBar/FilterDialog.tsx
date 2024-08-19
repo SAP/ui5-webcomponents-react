@@ -297,15 +297,19 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       handleRestoreFilters(payload);
     }
     setMessageBoxOpen(false);
-    okBtnRef.current.focus();
+    setTimeout(() => {
+      okBtnRef.current.focus();
+    }, 50);
   };
 
   useEffect(() => {
     if (orderedChildren.length && wasReordered.current) {
-      onReorder({ reorderedFilterKeys: orderedChildren.map((item) => `${item.props.filterKey}`) });
+      if (typeof onReorder === 'function') {
+        onReorder({ reorderedFilterKeys: orderedChildren.map((item) => `${item.props.filterKey}`) });
+      }
       wasReordered.current = false;
     }
-  }, [orderedChildren]);
+  }, [orderedChildren, onReorder]);
 
   useEffect(() => {
     if (currentReorderedItem?.index != null) {

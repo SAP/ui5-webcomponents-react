@@ -478,13 +478,6 @@ export const WithReordering: Story = {
     });
     const [orderedFilterKeys, setOrderedFilterKeys] = useState(['0', '1', '2', '3', '4', '5']);
 
-    const toggleVisibility = (key) => {
-      setVisibleChildrenByKey((prev) => ({
-        ...prev,
-        [key]: !prev[key]
-      }));
-    };
-
     const handleFiltersDialogSave: FilterBarPropTypes['onFiltersDialogSave'] = (e) => {
       setOrderedFilterKeys(e.detail.reorderedFilterKeys);
       setVisibleChildrenByKey(
