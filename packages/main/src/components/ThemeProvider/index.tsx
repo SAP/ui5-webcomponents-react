@@ -93,9 +93,7 @@ const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes
 
   useEffect(() => {
     if (_versionInfoInjected) {
-      return () => {
-        // noop
-      };
+      return;
     }
     const versionInfo = getVersionInfo();
     globalThis['@ui5/webcomponents-react'] ??= {};
