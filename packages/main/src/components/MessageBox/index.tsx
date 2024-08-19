@@ -191,7 +191,9 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
   const handleOnClose = (e) => {
     const { action } = e.target.dataset;
     stopPropagation(e);
-    onClose(enrichEventWithDetails(e, { action }));
+    if (typeof onClose === 'function') {
+      onClose(enrichEventWithDetails(e, { action }));
+    }
   };
 
   const messageBoxId = useIsomorphicId();

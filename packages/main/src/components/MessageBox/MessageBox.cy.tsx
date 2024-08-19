@@ -233,4 +233,14 @@ describe('MessageBox', () => {
     cy.findByText('Confirmation').should('not.exist');
     cy.findByText('Custom Header').should('be.visible');
   });
+
+  it('#6215 - should not crash if no onClose handler is passed', () => {
+    cy.on('uncaught:exception', (err) => {
+      if (err.message.contains('onClose is not a function')) {
+        throw err;
+      }
+    });
+    cy.mount(<MessageBox open>Content</MessageBox>);
+    cy.findByText('OK').click();
+  });
 });
