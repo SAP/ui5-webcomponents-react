@@ -8,6 +8,7 @@ import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { ReactElement, RefObject } from 'react';
 import { Children, cloneElement, useEffect, useId, useReducer, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { FlexBoxDirection, FlexBoxJustifyContent, MessageBoxAction, MessageBoxType } from '../../enums/index.js';
 import {
   ACTIVE,
@@ -32,6 +33,7 @@ import {
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import type { OnReorderParams } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
+import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type {
   DialogDomRef,
@@ -127,6 +129,7 @@ interface FilterDialogPropTypes {
   dialogRef: RefObject<DialogDomRef>;
   enableReordering?: FilterBarPropTypes['enableReordering'];
   isPhone?: boolean;
+  portalContainer?: FilterBarPropTypes['portalContainer'];
 }
 
 export const FilterDialog = (props: FilterDialogPropTypes) => {
@@ -143,7 +146,8 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     onAfterFiltersDialogOpen,
     dialogRef,
     enableReordering,
-    isPhone
+    isPhone,
+    portalContainer
   } = props;
   useStylesheet(styleData, 'FilterBarDialog');
   const uniqueId = useId();
@@ -452,6 +456,11 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     }
   }, [selected]);
 
+  const canRenderPortal = useCanRenderPortal();
+  if (!canRenderPortal) {
+    return null;
+  }
+
   return (
     <FilterBarDialogContext.Provider
       value={{
@@ -469,144 +478,158 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         prevIsListView
       }}
     >
-      <Dialog
-        open={open}
-        ref={dialogRef}
-        data-component-name="FilterBarDialog"
-        data-is-phone={isPhone}
-        onClose={handleClose}
-        onOpen={onAfterFiltersDialogOpen}
-        resizable
-        draggable
-        className={classNames.dialogComponent}
-        preventFocusRestore
-        initialFocus={`${uniqueId}-fb-dialog-search`}
-        header={
-          <Bar
-            design={BarDesign.Header}
-            startContent={
-              <Title level={TitleLevel.H4} title={filtersTitle}>
-                {filtersTitle}
-              </Title>
-            }
-            endContent={
-              showRestoreButton && (
-                <Button design={ButtonDesign.Transparent} onClick={handleRestore}>
-                  {resetText}
-                </Button>
-              )
-            }
-          />
-        }
-        footer={
-          <Bar
-            design={BarDesign.Footer}
-            endContent={
-              <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classNames.footer}>
-                <Button
-                  ref={okBtnRef}
-                  onClick={handleSave}
-                  data-component-name="FilterBarDialogSaveBtn"
-                  design={ButtonDesign.Emphasized}
-                >
-                  {okText}
-                </Button>
-                <Button
-                  design={ButtonDesign.Transparent}
-                  onClick={handleCancel}
-                  data-component-name="FilterBarDialogCancelBtn"
-                >
-                  {cancelText}
-                </Button>
-              </FlexBox>
-            }
-          />
-        }
-      >
-        <FlexBox direction={FlexBoxDirection.Column} className={classNames.subheaderContainer}>
-          <FlexBox direction={FlexBoxDirection.Row}>
-            <Select
-              onChange={handleAttributeFilterChange}
-              title={fieldsByAttributeText}
-              accessibleName={fieldsByAttributeText}
-              onClose={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              <Option selected={filteredAttribute === 'all'} data-id="all">
-                {allText}
-              </Option>
-              <Option selected={filteredAttribute === 'visible'} data-id="visible">
-                {visibleText}
-              </Option>
-              <Option selected={filteredAttribute === 'active'} data-id="active">
-                {activeText}
-              </Option>
-              <Option selected={filteredAttribute === 'visibleAndActive'} data-id="visibleAndActive">
-                {visibleAndActiveText}
-              </Option>
-              <Option selected={filteredAttribute === 'mandatory'} data-id="mandatory">
-                {mandatoryText}
-              </Option>
-            </Select>
-            <span className={classNames.spacer} />
-            <Button
-              design={ButtonDesign.Transparent}
-              onClick={toggleValues}
-              aria-live="polite"
-              className={classNames.showValuesBtn}
-            >
-              {showValues ? hideValuesText : showValuesText}
-            </Button>
-            <SegmentedButton onSelectionChange={handleViewChange}>
-              <SegmentedButtonItem icon={listIcon} data-id="list" selected={isListView} accessibleName={listViewText} />
-              <SegmentedButtonItem
-                icon={group2Icon}
-                data-id="group"
-                selected={!isListView}
-                accessibleName={groupViewText}
-              />
-            </SegmentedButton>
-          </FlexBox>
-          <FlexBox className={classNames.searchInputContainer}>
-            <Input
-              id={`${uniqueId}-fb-dialog-search`}
-              noTypeahead
-              placeholder={searchForFiltersText}
-              onInput={handleSearch}
-              showClearIcon
-              icon={<Icon name={searchIcon} />}
-              ref={dialogSearchRef}
-              className={classNames.searchInput}
-              data-component-name="FilterBarDialogSearchInput"
+      {createPortal(
+        <Dialog
+          open={open}
+          ref={dialogRef}
+          data-component-name="FilterBarDialog"
+          data-is-phone={isPhone}
+          onClose={handleClose}
+          onOpen={onAfterFiltersDialogOpen}
+          resizable
+          draggable
+          className={classNames.dialogComponent}
+          preventFocusRestore
+          initialFocus={`${uniqueId}-fb-dialog-search`}
+          header={
+            <Bar
+              design={BarDesign.Header}
+              startContent={
+                <Title level={TitleLevel.H4} title={filtersTitle}>
+                  {filtersTitle}
+                </Title>
+              }
+              endContent={
+                showRestoreButton && (
+                  <Button design={ButtonDesign.Transparent} onClick={handleRestore}>
+                    {resetText}
+                  </Button>
+                )
+              }
             />
-          </FlexBox>
-        </FlexBox>
-        <Table
-          ref={tableRef}
-          className={!isListView && classNames.inactiveTable}
-          data-component-name="FilterBarDialogTable"
-          data-is-grouped={!isListView}
-          nodata={!isListView ? <span /> : undefined}
-          tabIndex={!isListView ? -1 : undefined}
-          features={
-            <>
-              <TableSelection mode={TableSelectionMode.Multiple} onChange={handleCheckBoxChange} selected={selected} />
-            </>
           }
-          headerRow={
-            <TableHeaderRow
-              data-component-name={!isListView ? 'FilterBarDialogGroupTableHeaderRow' : 'FilterBarDialogTableHeaderRow'}
-            >
-              <TableHeaderCell>{filterText}</TableHeaderCell>
-              {!showValues && <TableHeaderCell className={classNames.tHactive}>{activeText}</TableHeaderCell>}
-            </TableHeaderRow>
+          footer={
+            <Bar
+              design={BarDesign.Footer}
+              endContent={
+                <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classNames.footer}>
+                  <Button
+                    ref={okBtnRef}
+                    onClick={handleSave}
+                    data-component-name="FilterBarDialogSaveBtn"
+                    design={ButtonDesign.Emphasized}
+                  >
+                    {okText}
+                  </Button>
+                  <Button
+                    design={ButtonDesign.Transparent}
+                    onClick={handleCancel}
+                    data-component-name="FilterBarDialogCancelBtn"
+                  >
+                    {cancelText}
+                  </Button>
+                </FlexBox>
+              }
+            />
           }
         >
-          {isListView && renderChildren()}
-        </Table>
-        {!isListView && renderGroups()}
-      </Dialog>
+          <FlexBox direction={FlexBoxDirection.Column} className={classNames.subheaderContainer}>
+            <FlexBox direction={FlexBoxDirection.Row}>
+              <Select
+                onChange={handleAttributeFilterChange}
+                title={fieldsByAttributeText}
+                accessibleName={fieldsByAttributeText}
+                onClose={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                <Option selected={filteredAttribute === 'all'} data-id="all">
+                  {allText}
+                </Option>
+                <Option selected={filteredAttribute === 'visible'} data-id="visible">
+                  {visibleText}
+                </Option>
+                <Option selected={filteredAttribute === 'active'} data-id="active">
+                  {activeText}
+                </Option>
+                <Option selected={filteredAttribute === 'visibleAndActive'} data-id="visibleAndActive">
+                  {visibleAndActiveText}
+                </Option>
+                <Option selected={filteredAttribute === 'mandatory'} data-id="mandatory">
+                  {mandatoryText}
+                </Option>
+              </Select>
+              <span className={classNames.spacer} />
+              <Button
+                design={ButtonDesign.Transparent}
+                onClick={toggleValues}
+                aria-live="polite"
+                className={classNames.showValuesBtn}
+              >
+                {showValues ? hideValuesText : showValuesText}
+              </Button>
+              <SegmentedButton onSelectionChange={handleViewChange}>
+                <SegmentedButtonItem
+                  icon={listIcon}
+                  data-id="list"
+                  selected={isListView}
+                  accessibleName={listViewText}
+                />
+                <SegmentedButtonItem
+                  icon={group2Icon}
+                  data-id="group"
+                  selected={!isListView}
+                  accessibleName={groupViewText}
+                />
+              </SegmentedButton>
+            </FlexBox>
+            <FlexBox className={classNames.searchInputContainer}>
+              <Input
+                id={`${uniqueId}-fb-dialog-search`}
+                noTypeahead
+                placeholder={searchForFiltersText}
+                onInput={handleSearch}
+                showClearIcon
+                icon={<Icon name={searchIcon} />}
+                ref={dialogSearchRef}
+                className={classNames.searchInput}
+                data-component-name="FilterBarDialogSearchInput"
+              />
+            </FlexBox>
+          </FlexBox>
+          <Table
+            ref={tableRef}
+            className={!isListView && classNames.inactiveTable}
+            data-component-name="FilterBarDialogTable"
+            data-is-grouped={!isListView}
+            nodata={!isListView ? <span /> : undefined}
+            tabIndex={!isListView ? -1 : undefined}
+            features={
+              <>
+                <TableSelection
+                  mode={TableSelectionMode.Multiple}
+                  onChange={handleCheckBoxChange}
+                  selected={selected}
+                />
+              </>
+            }
+            headerRow={
+              <TableHeaderRow
+                data-component-name={
+                  !isListView ? 'FilterBarDialogGroupTableHeaderRow' : 'FilterBarDialogTableHeaderRow'
+                }
+              >
+                <TableHeaderCell>{filterText}</TableHeaderCell>
+                {!showValues && <TableHeaderCell className={classNames.tHactive}>{activeText}</TableHeaderCell>}
+              </TableHeaderRow>
+            }
+          >
+            {isListView && renderChildren()}
+          </Table>
+          {!isListView && renderGroups()}
+        </Dialog>,
+        portalContainer ?? document.body
+      )}
       {showRestoreButton && messageBoxOpen && (
         <MessageBox
           open

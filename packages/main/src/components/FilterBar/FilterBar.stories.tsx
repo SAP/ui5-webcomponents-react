@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useEffect, useId, useReducer, useRef, useState } from 'react';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import { useId, useReducer, useRef, useState } from 'react';
 import { FlexBoxDirection } from '../../enums/index.js';
 import {
   ComboBox,
@@ -37,7 +38,11 @@ const meta = {
   component: FilterBar,
   args: {
     search: <Input />,
-    header: <Title>FilterBar</Title>,
+    header: (
+      <Title level={TitleLevel.H2} size={TitleLevel.H4}>
+        FilterBar
+      </Title>
+    ),
     filterContainerWidth: '13.125rem'
   },
   argTypes: {
@@ -343,13 +348,12 @@ export const WithLogic: Story = {
   }
 };
 
-//TODO: check implementation, with rc5 it looks strange
 export const InDynamicPage: Story = {
   name: 'In DynamicPage',
   render: (args) => {
     return (
       <DynamicPage
-        style={{ height: '800px' }}
+        style={{ height: '800px', position: 'relative', zIndex: 0 }}
         titleArea={
           <DynamicPageTitle
             style={{ minHeight: '0' }}

@@ -158,6 +158,14 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   as?: keyof HTMLElementTagNameMap;
   /**
+   * Defines where modals are rendered into via React.createPortal.
+   *
+   * You can find out more about this [here](https://sap.github.io/ui5-webcomponents-react/?path=/docs/knowledge-base-working-with-portals--docs).
+   *
+   * @default `document.body`
+   */
+  portalContainer?: Element;
+  /**
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
   //todo breaking
@@ -216,6 +224,5 @@ export interface FilterBarPropTypes extends CommonProps {
   onRestore?: (payload: RestorePayload) => void;
 }
 
-export type ReactKeyWithoutBigInt = string | number;
 export type FilterBarChild = ReactElement<FilterGroupItemInternalProps> | boolean | null | undefined;
 export type SafeChildrenFn = () => ReactElement<FilterGroupItemInternalProps>[];
