@@ -79,6 +79,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     onFiltersDialogSearch,
     onGo,
     onRestore,
+    onReorder,
     portalContainer,
     ...rest
   } = props;
@@ -203,7 +204,8 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     handleRestoreFilters({
       source: 'filterBar',
       selectedFilterKeys: calculatedChildren.map((child) => `${child.props.filterKey}`),
-      previousSelectedFilterKeys: null
+      previousSelectedFilterKeys: null,
+      reorderedFilterKeys: null
     });
   };
 
@@ -400,6 +402,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           enableReordering={enableReordering}
           isPhone={isPhone}
           portalContainer={portalContainer}
+          onReorder={onReorder}
         >
           {safeChildren()}
         </FilterDialog>

@@ -130,6 +130,7 @@ interface FilterDialogPropTypes {
   enableReordering?: FilterBarPropTypes['enableReordering'];
   isPhone?: boolean;
   portalContainer?: FilterBarPropTypes['portalContainer'];
+  onReorder?: FilterBarPropTypes['onReorder'];
 }
 
 export const FilterDialog = (props: FilterDialogPropTypes) => {
@@ -138,16 +139,17 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     handleDialogClose,
     children,
     showRestoreButton,
+    dialogRef,
+    enableReordering,
+    isPhone,
+    portalContainer,
     handleRestoreFilters,
     handleDialogSave,
     onFiltersDialogSelectionChange,
     handleDialogSearch,
     handleDialogCancel,
     onAfterFiltersDialogOpen,
-    dialogRef,
-    enableReordering,
-    isPhone,
-    portalContainer
+    onReorder
   } = props;
   useStylesheet(styleData, 'FilterBarDialog');
   const uniqueId = useId();
@@ -194,7 +196,9 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const filterText = i18nBundle.getText(FILTER);
   const fieldsByAttributeText = i18nBundle.getText(FIELDS_BY_ATTRIBUTE);
 
+  const wasReordered = useRef(false);
   const handleReorder = (e: OnReorderParams) => {
+    wasReordered.current = true;
     setCurrentReorderedItem(e);
   };
 
@@ -281,18 +285,27 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   const handleMessageBoxClose = (action) => {
     if (action === 'OK') {
+      const initialChildren = visibleChildren();
       const payload = {
         source: 'dialog' as const,
         selectedFilterKeys: initialSelected.current,
-        previousSelectedFilterKeys: selectedFilters
+        previousSelectedFilterKeys: selectedFilters,
+        reorderedFilterKeys: enableReordering ? initialChildren.map((child) => `${child.props.filterKey}`) : null
       };
       setSelectedFilters(initialSelected.current);
-      setOrderedChildren(visibleChildren());
+      setOrderedChildren(initialChildren);
       handleRestoreFilters(payload);
     }
     setMessageBoxOpen(false);
     okBtnRef.current.focus();
   };
+
+  useEffect(() => {
+    if (orderedChildren.length && wasReordered.current) {
+      onReorder({ reorderedFilterKeys: orderedChildren.map((item) => `${item.props.filterKey}`) });
+      wasReordered.current = false;
+    }
+  }, [orderedChildren]);
 
   useEffect(() => {
     if (currentReorderedItem?.index != null) {
@@ -630,17 +643,20 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         </Dialog>,
         portalContainer ?? document.body
       )}
-      {showRestoreButton && messageBoxOpen && (
-        <MessageBox
-          open
-          type={MessageBoxType.Warning}
-          actions={[MessageBoxAction.OK, MessageBoxAction.Cancel]}
-          onClose={handleMessageBoxClose}
-          data-component-name="FilterBarDialogResetMessageBox"
-        >
-          {i18nBundle.getText(FILTER_DIALOG_RESET_WARNING)}
-        </MessageBox>
-      )}
+      {showRestoreButton &&
+        messageBoxOpen &&
+        createPortal(
+          <MessageBox
+            open
+            type={MessageBoxType.Warning}
+            actions={[MessageBoxAction.OK, MessageBoxAction.Cancel]}
+            onClose={handleMessageBoxClose}
+            data-component-name="FilterBarDialogResetMessageBox"
+          >
+            {i18nBundle.getText(FILTER_DIALOG_RESET_WARNING)}
+          </MessageBox>,
+          portalContainer ?? document.body
+        )}
     </FilterBarDialogContext.Provider>
   );
 };

@@ -43,6 +43,12 @@ interface RestorePayload {
    * __Note:__ This property doesn't take into account, if `hiddenInFilterBar` is programmatically changed while the filters dialog is open.
    */
   previousSelectedFilterKeys: string[] | null;
+  /**
+   * Defines the initial order of the filters inside the filters dialog.
+   *
+   * __Note:__ If the source is `filterBar` or `enableReordering` is falsy, the value is `null`.
+   */
+  reorderedFilterKeys: string[] | null;
 }
 
 interface FiltersDialogSelectionChangePayload {
@@ -195,6 +201,12 @@ export interface FilterBarPropTypes extends CommonProps {
    */
   //todo: breaking
   onFiltersDialogClose?: (closeTrigger: 'cancelButtonPressed' | 'okButtonPressed' | 'escPressed') => void;
+  /**
+   * The event is fired when a filter is reordered.
+   *
+   * __Note:__ The event is only fired if `enableReordering` is `true`.
+   */
+  onReorder?: (payload: { reorderedFilterKeys: string[] }) => void;
   /**
    * The event is fired when a filter is selected/unselected in the filter configuration dialog.
    */
