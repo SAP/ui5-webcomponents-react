@@ -91,3 +91,13 @@
   max-width: calc(var(--_ui5wcr_filter_group_item_flex_basis) * 2);
   margin-inline-end: 1rem;
 }
+
+.toolbar {
+  & > :not(ui5-toolbar) {
+    flex-shrink: 0;
+  }
+}
+
+.wcToolbar {
+  border: none;
+}

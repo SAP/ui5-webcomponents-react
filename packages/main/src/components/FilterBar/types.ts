@@ -1,6 +1,6 @@
 import type { CSSProperties, MouseEvent, ReactElement, ReactNode } from 'react';
 import type { CommonProps } from '../../types/index.js';
-import type { ButtonPropTypes, DialogPropTypes, InputPropTypes } from '../../webComponents/index.js';
+import type { DialogPropTypes, InputPropTypes, ToolbarButtonPropTypes } from '../../webComponents/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 
 interface OnToggleFiltersEvent extends Omit<MouseEvent, 'detail'> {
@@ -180,7 +180,7 @@ export interface FilterBarPropTypes extends CommonProps {
    *
    * __Note:__ By adding `event.preventDefault()` to the function body, opening the dialog is prevented and you can add your own custom component. Even though this is possible, we highly recommend using the default dialog in order to preserve the intended design.
    */
-  onFiltersDialogOpen?: ButtonPropTypes['onClick'];
+  onFiltersDialogOpen?: ToolbarButtonPropTypes['onClick'];
   /**
    * The event is fired after the filter configuration dialog has been opened.
    */
@@ -206,11 +206,11 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the "Clear" button is clicked.
    */
-  onClear?: ButtonPropTypes['onClick'];
+  onClear?: ToolbarButtonPropTypes['onClick'];
   /**
    * The event is fired when the "Go" button is clicked.
    */
-  onGo?: ButtonPropTypes['onClick'];
+  onGo?: ToolbarButtonPropTypes['onClick'];
   /**
    * The event is fired when the "Reset" button in the filter dialog is pressed, or the "Restore" button in the FilterBar.
    */

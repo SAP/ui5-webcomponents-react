@@ -899,25 +899,26 @@ export function FilterBarExample() {
   onFiltersDialogSearch?: InputPropTypes['onInput'];
   ```
 
-- `onClear`: The event is now a standard `Button` `onClick` event. The `detail` properties `filters` and `search` have been removed.
+- `onClear`: The event is now a standard `ToolbarButton` `onClick` event. The `detail` properties `filters` and `search` have been removed.
 
   ```ts
   // v1
   onClear?: (event: CustomEvent<{ filters: HTMLElement[]; search: HTMLElement }>) => void;
   // v2
-  onClear?: ButtonPropTypes['onClick'];
+  onClear?: ToolbarButtonPropTypes['onClick'];
   ```
 
-- `onGo`: The event is now a standard `Button` `onClick` event. The `detail` properties `elements`, `filters`, `search`, `nativeDetail` have been removed.
+- `onGo`: The event is now a standard `ToolbarButton` `onClick` event. The `detail` properties `elements`, `filters`, `search`, `nativeDetail` have been removed.
 
   ```ts
   // v1
   onGo?: (event: OnGoEvent) => void;
   // v2
-  onGo?: ButtonPropTypes['onClick'];
+  onGo?: ToolbarButtonPropTypes['onClick'];
   ```
 
 - `onRestore`: The event is now a callback instead of a `CustomEvent`. It implements a payload object as parameter.
+
   ```ts
   // v1
   onRestore?: (
@@ -936,6 +937,14 @@ export function FilterBarExample() {
       reorderedFilterKeys: string[] | null;
   }
   onRestore?: (payload: RestorePayload) => void;
+  ```
+
+- `onFiltersDialogOpen` (TypeScript): The target of the event is now a `ToolbarButton`.
+  ```ts
+  // v1
+  onFiltersDialogOpen?: ButtonPropTypes['onClick'];
+  // v2
+  onFiltersDialogOpen?: ToolbarButtonPropTypes['onClick'];
   ```
 
 ### FilterGroupItem

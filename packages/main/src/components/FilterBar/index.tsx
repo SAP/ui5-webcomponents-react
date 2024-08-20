@@ -2,11 +2,13 @@
 
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
+import ToolbarDesign from '@ui5/webcomponents/dist/types/ToolbarDesign.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { debounce, Device, enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ElementType, ReactElement } from 'react';
 import { Children, cloneElement, forwardRef, isValidElement, useEffect, useId, useRef, useState } from 'react';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems.js';
 import {
   ADAPT_FILTERS,
   CLEAR,
@@ -17,12 +19,11 @@ import {
   SEARCH,
   SHOW_FILTER_BAR
 } from '../../i18n/i18n-defaults.js';
-import type { ButtonDomRef, DialogDomRef } from '../../webComponents/index.js';
-import { Button, Icon } from '../../webComponents/index.js';
+import type { DialogDomRef, ToolbarButtonDomRef } from '../../webComponents/index.js';
+import { Icon, Toolbar, ToolbarButton } from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
-import { Toolbar } from '../Toolbar/index.js';
-import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
+import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './FilterBar.module.css.js';
 import { FilterDialog } from './FilterDialog.js';
 import type { FilterBarChild, FilterBarPropTypes, SafeChildrenFn } from './types.js';
@@ -98,7 +99,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const dialogRef = useRef<DialogDomRef>(null);
   const filterBarButtonsRef = useRef(null);
   const filterAreaRef = useRef<HTMLDivElement>(null);
-  const filterBtnRef = useRef<ButtonDomRef>(null);
+  const filterBtnRef = useRef<ToolbarButtonDomRef>(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const uniqueId = useId();
@@ -218,42 +219,34 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
 
   const ToolbarButtons = (
     <>
-      {showGoOnFB && (
-        <Button onClick={handleGoOnFb} design={ButtonDesign.Emphasized}>
-          {goText}
-        </Button>
-      )}
+      {showGoOnFB && <ToolbarButton text={goText} onClick={handleGoOnFb} design={ButtonDesign.Emphasized} />}
       {!hideToggleFiltersButton && !hideToolbar && !isPhone && (
-        <Button
+        <ToolbarButton
+          text={showFilters ? hideFilterBarText : showFilterBarText}
           onClick={handleToggle}
           design={ButtonDesign.Transparent}
           className={classNames.showFiltersBtn}
           aria-live="polite"
-        >
-          {showFilters ? hideFilterBarText : showFilterBarText}
-        </Button>
+        />
       )}
-      {showClearOnFB && (
-        <Button onClick={handleClear} design={ButtonDesign.Transparent}>
-          {clearText}
-        </Button>
-      )}
+      {showClearOnFB && <ToolbarButton text={clearText} onClick={handleClear} design={ButtonDesign.Transparent} />}
       {showRestoreOnFB && (
-        <Button onClick={handleFBRestore} design={ButtonDesign.Transparent}>
-          {restoreText}
-        </Button>
+        <ToolbarButton text={restoreText} onClick={handleFBRestore} design={ButtonDesign.Transparent} />
       )}
       {!hideFilterConfiguration && (
-        <Button onClick={handleDialogOpen} aria-haspopup="dialog" design={ButtonDesign.Transparent} ref={filterBtnRef}>
-          {`${filtersText}${
+        <ToolbarButton
+          text={`${filtersText}${
             activeFiltersCount && parseInt(activeFiltersCount as string, 10) > 0 ? ` (${activeFiltersCount})` : ''
           }`}
-        </Button>
+          onClick={handleDialogOpen}
+          aria-haspopup="dialog"
+          design={ButtonDesign.Transparent}
+          ref={filterBtnRef}
+        />
       )}
     </>
   );
 
-  const hasButtons = ToolbarButtons.props.children.some(Boolean);
   const [filterBarButtonsWidth, setFilterBarButtonsWidth] = useState(undefined);
 
   const [filterAreaWidth, setFilterAreaWidth] = useState(undefined);
@@ -341,13 +334,14 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         slot={slot}
         {...rest}
       >
-        {!hideToolbar && (
-          <Toolbar className={classNames.filterBarHeader} toolbarStyle="Clear">
-            {header}
-            {hasButtons && <ToolbarSpacer />}
-            {ToolbarButtons}
-          </Toolbar>
-        )}
+        <FlexBox className={classNames.toolbar} alignItems={FlexBoxAlignItems.Center}>
+          {header}
+          {!hideToolbar && (
+            <Toolbar className={classNames.wcToolbar} design={ToolbarDesign.Transparent}>
+              {ToolbarButtons}
+            </Toolbar>
+          )}
+        </FlexBox>
         <div
           className={filterAreaClasses}
           style={{ position: 'relative' }}
