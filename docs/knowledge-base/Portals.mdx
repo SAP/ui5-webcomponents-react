@@ -3,9 +3,9 @@ import { Footer, TableOfContent } from '@sb/components';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import { MessageStrip } from '@ui5/webcomponents-react';
 
-<Meta title="Working with Portals" />
+<Meta title="Working with Portals (v1)" />
 
-# Working with Portals
+# Working with Portals in v1
 
 <MessageStrip
   hideCloseButton
@@ -31,7 +31,7 @@ This entry explains why portals are used in UI5 Web Components for React compone
 
 ## Why Portals?
 
-In some cases when a React component like the `FilterBar` implements a popup component like a `Dialog`, we use a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount it outside the parents DOM hierarchy, to prevent unwanted side effects (e.g. wrong z-order).
+In most cases when a React component like the `AnalyticalTable` implements a popover like a `Dialog` or `ResponsivePopover`, we use a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount it outside the parents DOM hierarchy, to prevent unwanted side effects (wrong positioning, alignment, etc.).
 
 For example:
 
@@ -58,7 +58,7 @@ In some cases you may want to add a class or attribute that is affecting all the
 Or maybe you just don't want the popover to be mounted on the `body` element (which is the default).
 For this we offer the `portalContainer` prop. This prop is available on all components that implement a popover, and with its help you can define the container into which the popover is mounted.
 
-For example, if you want to display the `FilterBar` in compact mode, while the rest of the app stays in cozy mode, then you could achieve that like this:
+For example, if you want to display the `AnalyticalTable` in compact mode, while the rest of the app stays in cozy mode, then you could achieve that like this:
 
 Define a container somewhere in your DOM tree, where the portal should be rendered into and add the respective attribute/class/etc. to it.
 
@@ -69,10 +69,11 @@ Define a container somewhere in your DOM tree, where the portal should be render
 Then, set the `portalContainer` to the respective element.
 
 ```jsx
-<FilterBar
+<AnalyticalTable
   className="ui5-content-density-compact"
   portalContainer={document.getElementById('modalContainer')}
-  {...otherProps}
+  data={data}
+  columns={columns}
 />
 ```
 
