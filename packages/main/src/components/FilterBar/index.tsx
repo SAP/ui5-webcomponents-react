@@ -334,14 +334,14 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         slot={slot}
         {...rest}
       >
-        <FlexBox className={classNames.toolbar} alignItems={FlexBoxAlignItems.Center}>
-          {header}
-          {!hideToolbar && (
+        {!hideToolbar && (
+          <FlexBox className={classNames.toolbar} alignItems={FlexBoxAlignItems.Center}>
+            {header}
             <Toolbar className={classNames.wcToolbar} design={ToolbarDesign.Transparent}>
               {ToolbarButtons}
             </Toolbar>
-          )}
-        </FlexBox>
+          </FlexBox>
+        )}
         <div
           className={filterAreaClasses}
           style={{ position: 'relative' }}

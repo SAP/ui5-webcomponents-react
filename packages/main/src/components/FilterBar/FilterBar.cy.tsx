@@ -43,13 +43,13 @@ describe('FilterBar.cy.tsx', () => {
     cy.findByText('Classification').should('be.visible');
     cy.get('[ui5-select]').should('be.visible');
 
-    cy.findByText('Hide Filter Bar').click();
+    cy.get('[text="Hide Filter Bar"]').click({ force: true });
     cy.get('@toggleSpy').should('have.been.calledOnce');
 
     cy.findByText('Classification').should('not.be.visible');
     cy.get('[ui5-select]').should('not.be.visible');
 
-    cy.findByText('Show Filter Bar').click();
+    cy.get('[text="Show Filter Bar"]').click({ force: true });
     cy.get('@toggleSpy').should('have.been.calledTwice');
 
     cy.findByText('Classification').should('be.visible');
@@ -186,7 +186,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.findAllByTestId('SWITCH').should('have.length', 1);
     cy.findAllByTestId('SELECT').should('have.length', 1);
 
-    cy.findByText('Filters (42)').click();
+    cy.get('[text="Filters (42)"]').click({ force: true });
     cy.get('@openSpy').should('have.been.calledOnce');
     cy.get('@afterOpenSpy').should('have.been.calledOnce');
 
@@ -212,7 +212,7 @@ describe('FilterBar.cy.tsx', () => {
     ['Cancel', 'Reset', 'ESC', 'OK'].forEach((action, index) => {
       // is already open when entering loop the first time
       if (index !== 0) {
-        cy.findByText('Filters (42)').click();
+        cy.get('[text="Filters (42)"]').click({ force: true });
         cy.findByText('Show Values').click();
       }
 
@@ -319,7 +319,7 @@ describe('FilterBar.cy.tsx', () => {
       </FilterBar>
     );
 
-    cy.findByText('Filters').click();
+    cy.get('[text="Filters"]').click({ force: true });
 
     cy.findAllByText('INPUT').should('have.length', 2);
     cy.findAllByText('SWITCH').should('have.length', 2);
@@ -358,10 +358,10 @@ describe('FilterBar.cy.tsx', () => {
       </FilterBar>
     );
 
-    cy.findByText('Go');
-    cy.findByText('Filters');
-    cy.findByText('Adapt Filters').should('not.exist');
-    cy.findByText('Hide Filter Bar');
+    cy.get('[text="Go"]');
+    cy.get('[text="Filters"]');
+    cy.get('[text="Adapt Filters"]').should('not.exist');
+    cy.get('[text="Hide Filter Bar"]');
     cy.findByTestId('variantManagement');
     cy.findByTestId('SELECT');
 
@@ -378,10 +378,10 @@ describe('FilterBar.cy.tsx', () => {
       </FilterBar>
     );
 
-    cy.findByText('Go');
-    cy.findByText('Filters').should('not.exist');
-    cy.findByText('Adapt Filters');
-    cy.findByText('Hide Filter Bar').should('not.exist');
+    cy.get('[text="Go"]');
+    cy.get('[text="Filters"]').should('not.exist');
+    cy.get('[text="Adapt Filters"]');
+    cy.get('[text="Hide Filter Bar"]').should('not.exist');
     cy.findByPlaceholderText('Search').should('not.exist');
     cy.findByTestId('variantManagement').should('not.exist');
     cy.findByTestId('SELECT');
@@ -406,7 +406,7 @@ describe('FilterBar.cy.tsx', () => {
         </FilterGroupItem>
       </FilterBar>
     );
-    cy.findByText('Filters').click();
+    cy.get('[text="Filters"]').click({ force: true });
     cy.get('[accessible-name="Group View"]').click();
 
     cy.get('[data-component-name="FilterBarDialogGroupTableHeaderRow"]')
@@ -449,13 +449,13 @@ describe('FilterBar.cy.tsx', () => {
         </FilterGroupItem>
       </FilterBar>
     );
-    cy.findByText('Go').click();
+    cy.get('[text="Go"]').click({ force: true });
     cy.get('@go').should('have.been.calledOnce');
 
-    cy.findByText('Clear').click();
+    cy.get('[text="Clear"]').click({ force: true });
     cy.get('@clear').should('have.been.calledOnce');
 
-    cy.findByText('Restore').click();
+    cy.get('[text="Restore"]').click({ force: true });
     cy.get('@restore').should('have.been.calledOnce');
   });
 
@@ -475,7 +475,7 @@ describe('FilterBar.cy.tsx', () => {
       </FilterBar>
     );
 
-    cy.findByText('Filters (42)').click();
+    cy.get('[text="Filters (42)"]').click({ force: true });
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').should('have.attr', 'focused');
 
     cy.get('[ui5-table-row]').should('have.length', 3);
@@ -531,7 +531,7 @@ describe('FilterBar.cy.tsx', () => {
     );
 
     cy.get('[show-colon]').should('have.length', 1);
-    cy.findByText('Filters').click();
+    cy.get('[text="Filters"]').click({ force: true });
     cy.findByText('Show Values').click();
     cy.get('[show-colon]').should('have.length', 2);
   });
@@ -569,7 +569,7 @@ describe('FilterBar.cy.tsx', () => {
         </FilterGroupItem>
       </FilterBar>
     );
-    cy.findByText('Filters').click();
+    cy.get('[text="Filters"]').click({ force: true });
     cy.findByText('Show Values').click();
     cy.get('[ui5-select]:not([title="Show Filters by Attribute"])').should('have.length', 2);
     cy.get('[ui5-multi-combobox]').should('have.length', 2);
@@ -586,7 +586,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('[ui5-label]').eq(3).should('have.text', 'Input');
     cy.get('[ui5-label]').eq(4).should('have.text', 'Switch');
 
-    cy.findByText('Filters').realClick();
+    cy.get('[text="Filters"]').click({ force: true });
     cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.wait(200);
     cy.get('[data-text="SELECT w/ initial selected"]').as('notSelected');
@@ -745,7 +745,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.findByText('undefined true').should('be.visible');
     cy.findByText('undefined false').should('not.exist');
 
-    cy.findByText('Filters').realClick();
+    cy.get('[text="Filters"]').click({ force: true });
     cy.get('[ui5-dialog]').should('be.visible');
     cy.get('[ui5-table-row][data-text="undefined"]');
     cy.get('[ui5-table-row][data-text="undefined"]').should('have.attr', 'aria-selected', 'true');
