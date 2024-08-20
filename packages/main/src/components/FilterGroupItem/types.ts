@@ -64,7 +64,6 @@ export interface FilterGroupItemPropTypes extends CommonProps {
    * Defines whether the filter is displayed with a value. If it's active an indicator will be shown in the filter configuration dialog.
    */
   active?: boolean;
-  //todo breaking: removed orderId
 }
 
 export interface FilterGroupItemInternalProps extends FilterGroupItemPropTypes {

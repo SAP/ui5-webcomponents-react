@@ -174,17 +174,14 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the `FilterBar` is collapsed/expanded.
    */
-  //todo breaking
   onToggleFilters?: (event: OnToggleFiltersEvent) => void;
   /**
    * The event is fired when the "Go" button of the filter configuration dialog is clicked.
    */
-  //todo: breaking
   onFiltersDialogSave?: (event: OnFiltersDialogSaveEvent) => void;
   /**
    * The event is fired when the "Cancel" button of the filter configuration dialog is clicked or when the dialog is closed by pressing the "Escape" key.
    */
-  //todo: breaking
   onFiltersDialogCancel?: (escPressed: boolean) => void;
   /**
    * The event is fired when the filter configuration dialog is opened.
@@ -199,7 +196,6 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when the filter configuration dialog is closed.
    */
-  //todo: breaking
   onFiltersDialogClose?: (closeTrigger: 'cancelButtonPressed' | 'okButtonPressed' | 'escPressed') => void;
   /**
    * The event is fired when a filter is reordered.
@@ -210,29 +206,22 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * The event is fired when a filter is selected/unselected in the filter configuration dialog.
    */
-  //todo: breaking
   onFiltersDialogSelectionChange?: (payload: FiltersDialogSelectionChangePayload) => void;
   /**
    * The event is fired on input in the filter configuration dialog search field.
    */
-  // todo: breaking
   onFiltersDialogSearch?: InputPropTypes['onInput'];
   /**
    * The event is fired when the "Clear" button is clicked.
    */
-  //todo breaking
   onClear?: ButtonPropTypes['onClick'];
   /**
    * The event is fired when the "Go" button is clicked.
    */
-  //todo breaking
   onGo?: ButtonPropTypes['onClick'];
   /**
    * The event is fired when the "Reset" button in the filter dialog is pressed, or the "Restore" button in the FilterBar.
    */
-  //todo breaking
-  // - properties
-  // - doesn't remove filters anymore when clicked in FB and Go btn is displayed
   onRestore?: (payload: RestorePayload) => void;
 }
 
