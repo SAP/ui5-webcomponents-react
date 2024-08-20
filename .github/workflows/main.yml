@@ -122,6 +122,10 @@ jobs:
       - name: Install and Build
         run: |
           yarn install --immutable
+          # TODO remove as soon as https://github.com/recharts/recharts/issues/4558 is resolved
+          yarn set resolution "@types/react@npm:*" "18"
+          yarn set resolution "@types/react-dom@npm:*" "18"
+          yarn add react@18 react-dom@18
           yarn build:storybook
         env:
           NODE_OPTIONS: '--max-old-space-size=4096'
