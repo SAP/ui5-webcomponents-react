@@ -149,6 +149,11 @@
         "valueState": "ValueState"
       }
     },
+    "FilterGroupItem": {
+      "changedProps": {
+        "orderId": "filterKey"
+      }
+    },
     "FilterItem": {},
     "FilterItemOption": {},
     "FlexibleColumnLayout": {

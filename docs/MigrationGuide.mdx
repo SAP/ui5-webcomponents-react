@@ -567,7 +567,9 @@ You can follow this [feature request](https://github.com/SAP/ui5-webcomponents/i
 ### FilterGroupItem
 
 For a better aligned API, the `visible` and `visibleInFilterBar` (defaulted to `true)` props has been replaced with `hidden` and `hiddenInFilterBar` (no default value).
-You only need to apply changes to your code if `visible` or `visibleInFilterBar` have been set to `false`:
+You only need to apply changes to your code if `visible` or `visibleInFilterBar` have been set to `false`.
+
+Additionally, each `FilterGroupItem` now needs a unique `filterKey` in scope of each `FilterBar`. Since the `orderId` would then be redundant, we've removed this prop.
 
 ```tsx
 // v1
@@ -575,14 +577,14 @@ import { FilterBar, FilterGroupItem, Input } from '@ui5/webcomponents-react';
 
 function MyComponent() {
   return (
-    <FilterBar>
-      <FilterGroupItem visible={false}>
+    <FilterBar enableReordering>
+      <FilterGroupItem visible={false} orderId="0">
         <Input />
       </FilterGroupItem>
-      <FilterGroupItem visibleInFilterBar={false}>
+      <FilterGroupItem visibleInFilterBar={false} orderId="1">
         <Input />
       </FilterGroupItem>
-      <FilterGroupItem>
+      <FilterGroupItem orderId="2">
         <Input />
       </FilterGroupItem>
     </FilterBar>
@@ -594,14 +596,14 @@ import { FilterBar, FilterGroupItem, Input } from '@ui5/webcomponents-react';
 
 function MyComponent() {
   return (
-    <FilterBar>
-      <FilterGroupItem hidden>
+    <FilterBar enableReordering>
+      <FilterGroupItem hidden filterKey="0">
         <Input />
       </FilterGroupItem>
-      <FilterGroupItem hiddenInFilterBar>
+      <FilterGroupItem hiddenInFilterBar filterKey="1">
         <Input />
       </FilterGroupItem>
-      <FilterGroupItem>
+      <FilterGroupItem filterKey="2">
         <Input />
       </FilterGroupItem>
     </FilterBar>
