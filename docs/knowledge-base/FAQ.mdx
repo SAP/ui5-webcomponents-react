@@ -24,11 +24,6 @@ import { MessageStrip } from '@ui5/webcomponents-react';
 <br />
 <br />
 
-## Why is my Popover, Dialog, etc. not rendered correctly?
-
-Mounting popups, like the Popover, inside of components can lead to unwanted side-effects (wrong positioning, alignment, etc.), to prevent that we recommend either mounting it outside of the component, or mounting it with a React portal.
-You can find out more about how we use portals [here](?path=/docs/knowledge-base-working-with-portals--docs).
-
 ## Where can I find all compatible versions of `@ui5/webcomponents` and `@ui5/webcomponents-react`?
 
 All necessary `@ui5/webcomponents` packages are `peerDependencies` of `@ui5/webcomponents-react`, so if you're using npm v7 or later, then these dependencies should be auto installed when running `npm install`.
