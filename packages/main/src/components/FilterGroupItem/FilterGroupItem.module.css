@@ -1,4 +1,5 @@
 .filterItem {
+  /*todo: check if this is necessary after the popover API bug of ui5wc has been fixed*/
   position: relative;
   z-index: 0; /* reset the z-index to 0 to prevent filters from showing up above the dialog (e.g. in case the wc is leaking) */
 

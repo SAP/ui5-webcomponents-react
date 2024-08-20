@@ -80,7 +80,6 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
     onGo,
     onRestore,
     onReorder,
-    portalContainer,
     ...rest
   } = props;
   const children = props.children as FilterBarChild | FilterBarChild[];
@@ -401,7 +400,6 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           dialogRef={dialogRef}
           enableReordering={enableReordering}
           isPhone={isPhone}
-          portalContainer={portalContainer}
           onReorder={onReorder}
         >
           {safeChildren()}
