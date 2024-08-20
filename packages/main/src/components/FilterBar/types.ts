@@ -133,8 +133,6 @@ export interface FilterBarPropTypes extends CommonProps {
   hideFilterConfiguration?: boolean;
   /**
    * Defines whether the "Reset" button is displayed in the filter configuration dialog.
-   *
-   * __Note:__
    */
   showResetButton?: boolean;
   /**

@@ -32,7 +32,6 @@ import {
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import type { OnReorderParams } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
-import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type {
   DialogDomRef,
@@ -470,11 +469,6 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       initialSelected.current = selectedFilters;
     }
   }, [selected]);
-
-  const canRenderPortal = useCanRenderPortal();
-  if (!canRenderPortal) {
-    return null;
-  }
 
   return (
     <FilterBarDialogContext.Provider
