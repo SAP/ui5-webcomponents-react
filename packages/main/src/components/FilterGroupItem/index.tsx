@@ -55,9 +55,9 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       ...rest
     } = props;
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-    const tableRowRef = useRef<TableRowDomRef>(null);
     const index = props['data-index'];
     const isomporphicReorderKey = isMac ? 'CMD' : 'CTRL';
+    const tableRowRef = useRef<TableRowDomRef>(null);
 
     const {
       isFilterInDialog,
@@ -193,6 +193,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
               direction={FlexBoxDirection.Column}
               justifyContent={FlexBoxJustifyContent.Center}
               className={classNames.labelContainer}
+              data-in-filters-dialog={true}
             >
               <Label
                 className={classNames.dialogCellLabel}
@@ -269,7 +270,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
 
     return (
       <div ref={ref} slot={slot} {...rest} className={clsx(classNames.filterItem, className)}>
-        <div className={classNames.innerFilterItemContainer}>
+        <div className={classNames.innerFilterItemContainer} data-in-filter-bar={true}>
           <FlexBox>
             <Label title={labelTooltip ?? label} required={required} showColon={!!label}>
               {labelWithGroupName}

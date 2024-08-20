@@ -129,13 +129,7 @@ function FilterBarComponent(args) {
         onFiltersDialogOpen={handleFiltersDialogOpen}
         onFiltersDialogSelectionChange={handleFiltersDialogSelectionChange}
       >
-        <FilterGroupItem
-          filterKey="age"
-          label="Age"
-          active={!!age}
-          required
-          hiddenInFilterBar={!visibleFilters.has('age')}
-        >
+        <FilterGroupItem filterKey="age" label="Age" active={!!age} required>
           <StepInput value={age} onChange={handleAgeChange} required />
         </FilterGroupItem>
         <FilterGroupItem
@@ -296,7 +290,6 @@ function FilterBarWithReordering(props) {
                 key={`${uniqueId}-0`}
                 label="StepInput"
                 required
-                hiddenInFilterBar={isHidden}
               >
                 <StepInput required />
               </FilterGroupItem>
@@ -389,6 +382,30 @@ When a FilterBar is used inside e.g. a DynamicPage, `hideToolbar` should be set 
 the page is then responsible for the different views.
 
 <Canvas of={ComponentStories.InDynamicPage} />
+
+## Identify the origin of an input/filter event
+
+When filters in the FilterBar should only be updated directly within the FilterBar itself, or when a user presses 'OK' in the filters dialog,
+it's essential to determine the origin of the corresponding event (e.g., `onInput`).
+To do this, you can check the `dataset` of the `parentElement` of the `currentTarget`.
+Depending on where the user interacts with the input component, the `dataset` of the parent will indicate either `inFilterBar: "true"` or `inFiltersDialog: "true"`.
+
+### Example:
+
+```jsx
+<FilterGroupItem filterKey="0" label="Input">
+  <StepInput onInput={handleInput} />
+</FilterGroupItem>
+```
+
+```js
+const handleInput = (event) => {
+  const firedInFilterBar = !!event.currentTarget.parentElement.dataset.inFilterBar;
+  const firedInFiltersDialog = !!event.currentTarget.parentElement.dataset.inFiltersDialog;
+};
+```
+
+<Canvas of={ComponentStories.IdentifyInputEventOrigin} source />
 
 <Markdown>{SubcomponentsSection}</Markdown>
 

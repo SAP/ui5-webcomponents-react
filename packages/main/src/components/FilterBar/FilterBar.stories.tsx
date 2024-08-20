@@ -232,13 +232,7 @@ export const WithLogic: Story = {
           onFiltersDialogOpen={handleFiltersDialogOpen}
           onFiltersDialogSelectionChange={handleFiltersDialogSelectionChange}
         >
-          <FilterGroupItem
-            filterKey="age"
-            label="Age"
-            active={!!age}
-            required
-            hiddenInFilterBar={!visibleFilters.has('age')}
-          >
+          <FilterGroupItem filterKey="age" label="Age" active={!!age} required>
             <StepInput value={age} onChange={handleAgeChange} required />
           </FilterGroupItem>
           <FilterGroupItem
@@ -495,13 +489,7 @@ export const WithReordering: Story = {
           switch (filterKey) {
             case '0':
               return (
-                <FilterGroupItem
-                  filterKey="0"
-                  key={`${uniqueId}-0`}
-                  label="StepInput"
-                  required
-                  hiddenInFilterBar={isHidden}
-                >
+                <FilterGroupItem filterKey="0" key={`${uniqueId}-0`} label="StepInput" required>
                   <StepInput required />
                 </FilterGroupItem>
               );
@@ -570,6 +558,65 @@ export const WithReordering: Story = {
           }
         })}
       </FilterBar>
+    );
+  }
+};
+
+export const IdentifyInputEventOrigin: Story = {
+  parameters: {
+    docs: {
+      source: {
+        type: 'code',
+        transform: () => `
+        const InputEventOrigin = (props) => {
+  const [origin, setOrigin] = useState("");
+
+  const handleInput = (e) => {
+    if (!!e.currentTarget.parentElement.dataset.inFilterBar) {
+      setOrigin("FilterBar");
+    } else {
+      setOrigin("Filters Dialog");
+    }
+  };
+
+  return (
+    <>
+      <FilterBar {...props}>
+        <FilterGroupItem filterKey="input" label="Input">
+          <Input onInput={handleInput} />
+        </FilterGroupItem>
+      </FilterBar>
+      <br />
+      <Label>Last fired input event origin:</Label>
+      <Text>{origin}</Text>
+    </>
+  );
+};
+
+        `
+      }
+    }
+  },
+  render(args) {
+    const [origin, setOrigin] = useState('');
+    const handleInput = (e) => {
+      if (!!e.currentTarget.parentElement.dataset.inFilterBar) {
+        setOrigin('FilterBar');
+      } else {
+        setOrigin('Filters Dialog');
+      }
+    };
+    return (
+      <>
+        <FilterBar {...args}>
+          <FilterGroupItem filterKey="input" label="Input">
+            <Input onInput={handleInput} />
+          </FilterGroupItem>
+        </FilterBar>
+        <br />
+        <Label>Last fired input event origin:</Label>
+        <Text>{origin}</Text>
+      </>
     );
   }
 };
