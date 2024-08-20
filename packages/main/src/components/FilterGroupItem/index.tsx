@@ -164,19 +164,6 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       }
     }, [inFB, hidden, hiddenInFilterBar, filterKey, setSelectedKeys, isListView, required]);
 
-    useEffect(() => {
-      //todo: check whether this is still necessary
-      return () => {
-        if (setSelectedKeys) {
-          // setSelectedKeys((prev) => {
-          //   const keysSet = new Set(prev);
-          //   keysSet.delete(filterKey);
-          //   return Array.from(keysSet);
-          // });
-        }
-      };
-    }, []);
-
     if (!required && (hidden || (inFB && hiddenInFilterBar))) return null;
 
     if (!inFB) {

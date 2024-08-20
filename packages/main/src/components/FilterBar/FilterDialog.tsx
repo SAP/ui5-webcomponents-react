@@ -75,8 +75,8 @@ interface ForceRequiredObject {
 addCustomCSSWithScoping(
   'ui5-table',
   `
-:host([data-component-name="FilterBarDialogTable"]) #table,
-:host([data-component-name="FilterBarDialogPanelTable"]) #table {
+:host([data-component-name="FilterBarDialogTable"][data-with-value="false"]) #table,
+:host([data-component-name="FilterBarDialogPanelTable"][data-with-value="false"]) #table {
    grid-template-columns: var(--_ui5wcr-CheckBoxWidthHeight) minmax(3rem, auto) minmax(3rem, 25%) !important;
 }
 :host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #nodata-row {
@@ -446,6 +446,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             <Table
               className={classNames.tableInGroup}
               data-component-name="FilterBarDialogPanelTable"
+              data-with-value={showValues}
               features={
                 <TableSelection
                   mode={TableSelectionMode.Multiple}
@@ -619,6 +620,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             className={!isListView && classNames.inactiveTable}
             data-component-name="FilterBarDialogTable"
             data-is-grouped={!isListView}
+            data-with-value={`${showValues}`}
             nodata={!isListView ? <span /> : undefined}
             tabIndex={!isListView ? -1 : undefined}
             features={
