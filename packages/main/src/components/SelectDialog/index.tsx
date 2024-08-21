@@ -10,6 +10,7 @@ import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
+import { Button, Dialog, FlexBox, FlexBoxAlignItems, Icon, Input, List, Text, Title } from '../../index.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
 import type {
   ButtonDomRef,
@@ -19,12 +20,9 @@ import type {
   IconDomRef,
   InputDomRef,
   ListDomRef,
-  ListPropTypes,
-  ListItemStandardDomRef
+  ListItemStandardDomRef,
+  ListPropTypes
 } from '../../webComponents/index.js';
-import { Button, Dialog, Icon, Input, List, Title } from '../../webComponents/index.js';
-import { Text } from '../../webComponents/Text/index.js';
-import { Toolbar } from '../Toolbar/index.js';
 import { classNames, styleData } from './SelectDialog.module.css.js';
 
 interface ListDomRefWithPrivateAPIs extends ListDomRef {
@@ -334,9 +332,9 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       </div>
 
       {selectionMode === ListSelectionMode.Multiple && (!!selectedItems.length || numberOfSelectedItems > 0) && (
-        <Toolbar design="Info" className={classNames.infoBar}>
+        <FlexBox alignItems={FlexBoxAlignItems.Center} className={classNames.infoBar}>
           <Text>{`${i18nBundle.getText(SELECTED)}: ${numberOfSelectedItems ?? selectedItems.length}`}</Text>
-        </Toolbar>
+        </FlexBox>
       )}
       <List
         {...listProps}

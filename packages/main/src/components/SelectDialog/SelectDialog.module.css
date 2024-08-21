@@ -69,7 +69,12 @@
 }
 
 .infoBar {
-  padding: 0 0.5rem;
+  height: 2rem;
+  background-color: var(--sapInfobar_NonInteractive_Background);
+  color: var(--sapList_TextColor);
+  padding-inline-start: var(--_ui5wcr-CheckBoxPaddingInline);
+  border-block-end: 0.0625rem solid var(--sapGroup_TitleBorderColor);
+  overflow: hidden;
   position: sticky;
   top: 0;
   z-index: 1;
