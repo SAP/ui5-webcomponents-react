@@ -4,9 +4,6 @@
   <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/main/assets/Logo-Sticker.png" alt="UI5 Web Components for React Logo" />
 </p>
 <p align="center">
-  <a href="https://github.com/SAP/ui5-webcomponents-react/actions?query=workflow:%22build%22" target="_blank">
-    <img alt="Build Status" src="https://github.com/SAP/ui5-webcomponents-react/workflows/build/badge.svg">
-  </a>
   <a href='https://coveralls.io/github/SAP/ui5-webcomponents-react'>
     <img src='https://coveralls.io/repos/github/SAP/ui5-webcomponents-react/badge.svg' alt='Coverage Status' />
   </a>
@@ -15,12 +12,6 @@
     </a>
   <a href="https://openui5.slack.com/archives/CSQEJ2J04" target="_blank">
     <img alt="Slack Badge" src="https://badgen.net/badge/slack/webcomponents-react/orange?icon=slack">
-  </a>
-  <a href="https://github.com/prettier/prettier" target="_blank">
-    <img alt="code style: prettier" src="https://badgen.net/badge/code%20style/prettier?color=pink"> 
-  </a>
-  <a href="https://lerna.js.org" target="_blank">
-  <img alt="lerna" src="https://badgen.net/badge/maintained%20with/lerna?color=purple">
   </a>
   <a href="https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-react" target="_blank">
     <img alt="REUSE Status" src="https://api.reuse.software/badge/github.com/SAP/ui5-webcomponents-react"/>
@@ -35,20 +26,33 @@ You can find our documentation under the following links:
 
 - [Stable Release Documentation](https://sap.github.io/ui5-webcomponents-react/)
 - [Nightly Release Documentation](https://sap.github.io/ui5-webcomponents-react/nightly/)
+- [V1 Release Documentation](https://sap.github.io/ui5-webcomponents-react/v1/)
 
-## Package Overview
+## Packages Overview
 
-- [@ui5/webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main) - Fiori 3 Components<br/>
+- [@ui5/webcomponents-react](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/main) - Main Package
+
   [![](https://badgen.net/npm/v/@ui5/webcomponents-react?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react)
-  [![npm bundle size (scoped)](https://badgen.net/bundlephobia/minzip/@ui5/webcomponents-react)](https://bundlephobia.com/result?p=@ui5/webcomponents-react)
 
-- [@ui5/webcomponents-react-charts](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts) - Fiori Charts<br />
+- [@ui5/webcomponents-react-charts](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/charts) - Charts Package
+
   [![](https://badgen.net/npm/v/@ui5/webcomponents-react-charts?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react-charts)
-  [![npm bundle size (scoped)](https://badgen.net/bundlephobia/minzip/@ui5/webcomponents-react-charts)](https://bundlephobia.com/result?p=@ui5/webcomponents-react-charts)
 
-- [@ui5/webcomponents-react-base](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/base) - Utils<br />
+- [@ui5/webcomponents-react-base](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/base) - Base Package
+
   [![](https://badgen.net/npm/v/@ui5/webcomponents-react-base?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react-base)
-  [![npm bundle size (scoped)](https://badgen.net/bundlephobia/minzip/@ui5/webcomponents-react-base)](https://bundlephobia.com/result?p=@ui5/webcomponents-react-base)
+
+- [@ui5/webcomponents-react-compat](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/compat) - Legacy Components Package
+
+  [![](https://badgen.net/npm/v/@ui5/webcomponents-react-compat?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react-compat)
+
+- [@ui5/webcomponents-react-cli](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/cli) - Wrapper Generation & Code-Mod Package
+
+  [![](https://badgen.net/npm/v/@ui5/webcomponents-react-cli?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-react-cli)
+
+- [@ui5/webcomponents-cypress-commands](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/cypress-commands) - Custom Cypress Commands & Queries Package
+
+  [![](https://badgen.net/npm/v/@ui5/webcomponents-cypress-commands?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-cypress-commands)
 
 <!-- *********************************************************************** -->
 
@@ -66,7 +70,7 @@ You can find our documentation under the following links:
 
 ## Download and Installation
 
-To consume `ui5-webcomponents-react`, you need to install the npm module and required peer dependencies:
+To consume `ui5-webcomponents-react`, you need to install the npm modules and required peer dependencies:
 
 ```sh
 npm install @ui5/webcomponents-react @ui5/webcomponents @ui5/webcomponents-fiori
@@ -127,14 +131,9 @@ Then, you can use the Button in your app:
 <Button onClick={() => alert('Hello World!')}>Hello world!</Button>
 ```
 
-For Browser Support and the configuration of the UI5 Web Components, please take a look at the
-[Browser Support](https://github.com/SAP/ui5-webcomponents#browser-support) and the
-[Configure](https://github.com/SAP/ui5-webcomponents#browser-support) sections of the
-[UI5 Web Components Readme](https://github.com/SAP/ui5-webcomponents#ui5-web-components).
-
 ### Browser Support
 
-UI5 Web Components are supported by all major modern browsers, including their mobile versions.
+UI5 Web Components for React supports the same [browsers and respective versions](https://github.com/SAP/ui5-webcomponents#browser-support) as UI5 Web Components.
 
 <!-- *********************************************************************** -->
 
@@ -142,7 +141,7 @@ UI5 Web Components are supported by all major modern browsers, including their m
 
 ## Known Issues
 
-Please look at our [GitHub Issues](https://github.com/SAP/ui5-webcomponents-react/issues).
+Please take a look at our [GitHub Issues](https://github.com/SAP/ui5-webcomponents-react/issues).
 
 <!-- *********************************************************************** -->
 

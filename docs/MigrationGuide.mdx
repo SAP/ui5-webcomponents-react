@@ -46,6 +46,10 @@ npx @ui5/webcomponents-react-cli@next codemod --transform v2 \
 
 ## General changes
 
+## Minimal React Version
+
+The minimum required `react` and `react-dom` version is now `18.0.0`.
+
 ### Removed `react-jss`
 
 UI5 Web Components for React is no longer relying on `react-jss` internally, hence the dependency is now removed and the `react-jss` ThemeProvider is no longer rendered as part of our `ThemeProvider`.
@@ -64,6 +68,10 @@ function MyRootComponent() {
   );
 }
 ```
+
+### Removed `jestSetup` file
+
+We stopped recommending jest as a testing framework over a year ago, thus the `jestSetup` file is removed. We recommend using [Cypress](https://sap.github.io/ui5-webcomponents-react/?path=/docs/testing-with-cypress-setup--docs) instead.
 
 ### Changes Exclusive to TypeScript
 
@@ -170,6 +178,28 @@ Most variables can be replaced by applying the corresponding CSS classes from th
 The `useResponsiveContentPadding` hook has been removed.
 You can now apply responsive content paddings by applying the `sap-content-paddings-container` class from `@sap-ui/common-css` package to your element.
 You can find a more detailed documentation [here](?path=/docs/knowledge-base-common-css--docs#content-paddings).
+
+## Removed Components
+
+- `TableGroupRow` has been removed.
+- `NotificationAction` has been removed. You can use the `Menu` component instead.
+- `SelectMenu` and `SelectMenuOption` have been removed. The `Select` and `Option` now allow custom content.
+
+## Renamed Components
+
+With the release of UI5 Web Components v2, some component names have been renamed. Because we use these web component names (class names) as React component names, the renamings are considered breaking changes in our repository.
+
+**The list below shows only the previous and updated component names. For details on changes concerning attributes, properties, methods, etc., please refer to the [UI5 Web Components Migration Guide](https://sap.github.io/ui5-webcomponents/docs/migration-guides/to-version-2/).**
+
+**Note:** The tag name in the parenthesis is the **old** tag name.
+
+- `StandardListItem` has been renamed to `ListItemStandard` (`ui5-li`).
+- `CustomListItem` has been renamed to `ListItemCustom` (`ui5-li-custom`).
+- `MultiComboBoxGroupItem` has been renamed to `MultiComboBoxItemGroup` (`ui5-mcb-group-item`).
+- `TableColumn` has been renamed to `TableHeaderCell` (`ui5-mcb-group-item`).
+- `Badge` has been renamed to `Tag` (`ui5-tag`).
+- `ComboBoxGroupItem` has been renamed to `ComboBoxItemGroup` (`ui5-cb-group-item`).
+- `GroupHeaderListItem` has been renamed to `ListItemGroup` (`ui5-li-groupheader`).
 
 ## Replaced Components
 
@@ -1137,6 +1167,16 @@ For better alignment with the UI5 Web Components the `active` prop has been rena
 
 The prop `withoutModalsProvider` has been removed.
 In order to provide a place for the `Modals` helper to mount the popovers, you have to render the new `Modals` component in your application tree.
+
+### SelectDialog
+
+- `mode` has been renamed to `selectionMode`
+- `onAfterClose` has been renamed to `onClose`
+- `onAfterOpen` has been renamed to `onOpen`
+
+### VariantManagement
+
+The `portalContainer` prop has been removed as it is no longer needed.
 
 ## Enum Changes
 
