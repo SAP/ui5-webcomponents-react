@@ -6,9 +6,8 @@ import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
-import type { Dispatch, ReactElement, RefObject, SetStateAction } from 'react';
+import type { ReactElement, RefObject } from 'react';
 import { Children, cloneElement, useEffect, useId, useReducer, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
 import { FlexBoxDirection, FlexBoxJustifyContent, MessageBoxAction, MessageBoxType } from '../../enums/index.js';
 import {
   ACTIVE,
@@ -33,10 +32,13 @@ import {
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import type { OnReorderParams } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
-import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
-import type { Ui5CustomEvent } from '../../types/index.js';
-import type { DialogDomRef, SegmentedButtonPropTypes, TableRowDomRef } from '../../webComponents/index.js';
+import type {
+  DialogDomRef,
+  InputPropTypes,
+  SegmentedButtonPropTypes,
+  TableSelectionDomRef
+} from '../../webComponents/index.js';
 import {
   Bar,
   Button,
@@ -57,15 +59,24 @@ import {
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { MessageBox } from '../MessageBox/index.js';
-import { Toolbar } from '../Toolbar/index.js';
-import { ToolbarSpacer } from '../ToolbarSpacer/index.js';
 import { classNames, styleData } from './FilterBarDialog.module.css.js';
 import type { FilterBarPropTypes } from './types.js';
-import { filterValue, syncRef } from './utils.js';
+
+interface ForceRequiredObject {
+  required: string[];
+  target: TableSelectionDomRef;
+  selected: Set<string>;
+  prevSelected: Set<string>;
+  selectedKeys: Set<string>;
+}
 
 addCustomCSSWithScoping(
   'ui5-table',
   `
+:host([data-component-name="FilterBarDialogTable"][data-with-value="false"]) #table,
+:host([data-component-name="FilterBarDialogPanelTable"][data-with-value="false"]) #table {
+   grid-template-columns: var(--_ui5wcr-CheckBoxWidthHeight) minmax(3rem, auto) minmax(3rem, 25%) !important;
+}
 :host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #nodata-row {
   display: none;
 }
@@ -75,7 +86,7 @@ addCustomCSSWithScoping(
 addCustomCSSWithScoping(
   'ui5-table-header-row',
   `
-:host([data-component-name="FilterBarDialogTableHeaderRow"]) :first-child {
+:host([data-component-name="FilterBarDialogGroupTableHeaderRow"]) :first-child {
   visibility: hidden;
 }
 `
@@ -102,85 +113,67 @@ const getActiveFilters = (
   }
 };
 
-const compareObjects = (firstObj, secondObj) =>
-  Object.keys(firstObj).find((first) =>
-    Object.keys(secondObj).every((second) => firstObj[second] !== secondObj[first])
-  );
-
 interface FilterDialogPropTypes {
-  filterBarRefs: any;
   open: boolean;
-  handleDialogClose: (event: Ui5CustomEvent<DialogDomRef>) => void;
+  handleDialogClose: FilterBarPropTypes['onFiltersDialogClose'];
   children: ReactElement<FilterGroupItemInternalProps>[];
   showRestoreButton: boolean;
-  handleRestoreFilters: (e, source, filterElements) => void;
-  handleDialogSave: (e, newRefs, updatedToggledFilters, orderedChildren) => void;
-  handleSearchValueChange: Dispatch<SetStateAction<string>>;
-  handleSelectionChange?: FilterBarPropTypes['onFiltersDialogSelectionChange'];
-  handleDialogSearch?: (event: CustomEvent<{ value: string; element: HTMLElement }>) => void;
-  handleDialogCancel?: (event: Ui5CustomEvent<HTMLElement>) => void;
-  portalContainer: Element;
-  onAfterFiltersDialogOpen: (event: Ui5CustomEvent<DialogDomRef>) => void;
+  handleRestoreFilters: FilterBarPropTypes['onRestore'];
+  handleDialogSave: (e, selectionChangePayload, orderedChildren) => void;
+  onFiltersDialogSelectionChange?: FilterBarPropTypes['onFiltersDialogSelectionChange'];
+  handleDialogSearch?: FilterBarPropTypes['onFiltersDialogSearch'];
+  handleDialogCancel?: FilterBarPropTypes['onFiltersDialogCancel'];
+  onAfterFiltersDialogOpen: FilterBarPropTypes['onAfterFiltersDialogOpen'];
   dialogRef: RefObject<DialogDomRef>;
   enableReordering?: FilterBarPropTypes['enableReordering'];
   isPhone?: boolean;
+  onReorder?: FilterBarPropTypes['onReorder'];
 }
 
 export const FilterDialog = (props: FilterDialogPropTypes) => {
   const {
-    filterBarRefs,
     open,
     handleDialogClose,
     children,
     showRestoreButton,
+    dialogRef,
+    enableReordering,
+    isPhone,
     handleRestoreFilters,
     handleDialogSave,
-    handleSelectionChange,
+    onFiltersDialogSelectionChange,
     handleDialogSearch,
     handleDialogCancel,
     onAfterFiltersDialogOpen,
-    portalContainer,
-    dialogRef,
-    enableReordering,
-    isPhone
+    onReorder
   } = props;
   useStylesheet(styleData, 'FilterBarDialog');
   const uniqueId = useId();
   const [searchString, setSearchString] = useState('');
-  const [toggledFilters, setToggledFilters] = useState({});
-  const dialogRefs = useRef({});
-  const dialogSearchRef = useRef(null);
+  const [selectedFilters, setSelectedFilters] = useState<undefined | string[]>(undefined);
+  const [requiredFilters, setRequiredKeys] = useState({});
   const [showValues, toggleValues] = useReducer((prev) => !prev, false);
   const [messageBoxOpen, setMessageBoxOpen] = useState(false);
-
-  const [forceRequired, setForceRequired] = useState<undefined | TableRowDomRef>();
+  const [forceRequired, setForceRequired] = useState<ForceRequiredObject>();
   const [showBtnsOnHover, setShowBtnsOnHover] = useState(true);
   const [isListView, setIsListView] = useState(true);
   const [filteredAttribute, setFilteredAttribute] = useState<ActiveFilterAttributes>('all');
   const [currentReorderedItem, setCurrentReorderedItem] = useState<OnReorderParams | Record<string, never>>({});
+  const [orderedChildren, setOrderedChildren] = useState([]);
+  const [updatedIndex, setUpdatedIndex] = useState(undefined);
+
+  const currentReorderedItemOrderId = currentReorderedItem?.filterKey;
+  const selected = (selectedFilters ?? []).join(' ');
+
+  const dialogSearchRef = useRef(null);
   const tableRef = useRef(null);
   const okBtnRef = useRef(null);
-  const handleReorder = (e: OnReorderParams) => {
-    setCurrentReorderedItem(e);
-  };
-
-  const prevOderId = useRef(undefined);
-  const handleFocusFallback = () => {
-    const orderId = currentReorderedItem?.target?.dataset.orderId;
-    if (orderId && tableRef.current && orderId !== prevOderId.current) {
-      // we have to retrigger the internal item navigation logic after reordering,
-      // otherwise keyboard nav and general focus handling is not working properly
-      setTimeout(() => {
-        const itemNav = tableRef.current._itemNavigation;
-        itemNav._getItems = () => Array.from(tableRef.current.querySelectorAll('[ui5-table-row]'));
-        itemNav.setCurrentItem(tableRef.current.querySelector(`[data-order-id="${orderId}"]`));
-      });
-      prevOderId.current = orderId;
-    }
-  };
+  const prevIsListView = useRef(true);
+  const selectionChangePayloadRef = useRef({ selectedFilterKeys: selectedFilters ?? [] });
+  const initialSelected = useRef<string[] | undefined>(undefined);
+  const prevRowKey = useRef(undefined);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-
   const basicText = i18nBundle.getText(BASIC);
   const cancelText = i18nBundle.getText(CANCEL);
   const okText = i18nBundle.getText(OK);
@@ -199,12 +192,30 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   const filterText = i18nBundle.getText(FILTER);
   const fieldsByAttributeText = i18nBundle.getText(FIELDS_BY_ATTRIBUTE);
 
+  const wasReordered = useRef(false);
+  const handleReorder = (e: OnReorderParams) => {
+    wasReordered.current = true;
+    setCurrentReorderedItem(e);
+  };
+
+  const handleFocusFallback = () => {
+    const rowKey = currentReorderedItem?.target?.rowKey;
+    if (rowKey && tableRef.current && rowKey !== prevRowKey.current) {
+      // we have to retrigger the internal item navigation logic after reordering,
+      // otherwise keyboard nav and general focus handling is not working properly
+      setTimeout(() => {
+        const itemNav = tableRef.current._tableNavigation;
+        itemNav._gridWalker.setGrid(itemNav._getNavigationItemsOfGrid());
+        tableRef.current.querySelector(`[row-key="${rowKey}"]`).focus();
+      }, 0);
+      prevRowKey.current = rowKey;
+    }
+  };
+
   const visibleChildren = () =>
     children.filter((item) => {
       return !!item?.props && !item?.props?.hidden;
     });
-
-  const [orderedChildren, setOrderedChildren] = useState([]);
 
   useEffect(() => {
     if (children.length) {
@@ -224,61 +235,39 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         : orderedChildren;
 
     return filteredChildren.map((child, index) => {
-      const filterBarItemRef = filterBarRefs.current[child.key];
-      let isSelected =
-        child.props.hiddenInFilterBar !== true || child.props.required || child.type.displayName !== 'FilterGroupItem';
-      if (toggledFilters.hasOwnProperty(child.key)) {
-        isSelected = toggledFilters[child.key];
-      }
-
-      const filterItemProps = filterBarItemRef ? filterValue(filterBarItemRef, child) : {};
-
       return cloneElement<FilterGroupItemInternalProps>(child, {
-        'data-selected': isSelected,
-        'data-react-key': child.key,
-        'data-index': index,
-        children: {
-          ...child.props.children,
-          props: {
-            ...(child.props.children.props || {}),
-            ...filterItemProps
-          },
-          ref: (node) => {
-            if (node) {
-              dialogRefs.current[child.key] = node;
-              syncRef(child.props.children.ref, node);
-            }
-          }
-        }
+        'data-index': index
       });
     });
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: Parameters<InputPropTypes['onInput']>[0]) => {
     if (typeof handleDialogSearch === 'function') {
       handleDialogSearch(enrichEventWithDetails(e, { value: e.target.value, element: e.target }));
     }
     setSearchString(e.target.value);
   };
   const handleSave = (e) => {
-    const orderedChildrenIds = enableReordering ? orderedChildren.map((child) => child.props.orderId) : [];
-    handleDialogSave(e, dialogRefs.current, toggledFilters, orderedChildrenIds);
+    const orderedChildrenIds = enableReordering ? orderedChildren.map((child) => child.props.filterKey) : [];
+    handleDialogSave(e, selectionChangePayloadRef.current, orderedChildrenIds);
   };
 
   const handleClose = (e) => {
-    setToggledFilters({});
     stopPropagation(e);
-    if (typeof handleDialogCancel === 'function') {
-      handleDialogCancel(e);
+    if (e.target !== e.currentTarget) {
+      return;
     }
-    handleDialogClose(e);
+    if (typeof handleDialogCancel === 'function') {
+      handleDialogCancel(true);
+    }
+    handleDialogClose('escPressed');
   };
 
-  const handleCancel = (e) => {
-    if (handleDialogCancel) {
-      handleDialogCancel(e);
+  const handleCancel = () => {
+    if (typeof handleDialogCancel === 'function') {
+      handleDialogCancel(false);
     }
-    handleDialogClose(e);
+    handleDialogClose('cancelButtonPressed');
   };
 
   const handleRestore = () => {
@@ -286,20 +275,38 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   };
   const handleViewChange: SegmentedButtonPropTypes['onSelectionChange'] = (e) => {
     const selectedItem = e.detail.selectedItems.at(0);
+    prevIsListView.current = isListView;
     setIsListView(selectedItem.dataset.id === 'list');
   };
 
-  const handleMessageBoxClose = (e) => {
-    if (e.detail.action === 'OK') {
-      setToggledFilters({});
-      setOrderedChildren(visibleChildren());
-      handleRestoreFilters(e, 'dialog', { filters: Array.from(dialogRef.current.querySelectorAll('ui5-table-row')) });
+  const handleMessageBoxClose = (action) => {
+    if (action === 'OK') {
+      const initialChildren = visibleChildren();
+      const payload = {
+        source: 'dialog' as const,
+        selectedFilterKeys: initialSelected.current,
+        previousSelectedFilterKeys: selectedFilters,
+        reorderedFilterKeys: enableReordering ? initialChildren.map((child) => `${child.props.filterKey}`) : null
+      };
+      setSelectedFilters(initialSelected.current);
+      setOrderedChildren(initialChildren);
+      handleRestoreFilters(payload);
     }
     setMessageBoxOpen(false);
-    okBtnRef.current.focus();
+    setTimeout(() => {
+      okBtnRef.current.focus();
+    }, 50);
   };
 
-  const [updatedIndex, setUpdatedIndex] = useState(undefined);
+  useEffect(() => {
+    if (orderedChildren.length && wasReordered.current) {
+      if (typeof onReorder === 'function') {
+        onReorder({ reorderedFilterKeys: orderedChildren.map((item) => `${item.props.filterKey}`) });
+      }
+      wasReordered.current = false;
+    }
+  }, [orderedChildren, onReorder]);
+
   useEffect(() => {
     if (currentReorderedItem?.index != null) {
       setOrderedChildren((prev: any[]) => {
@@ -344,7 +351,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   useEffect(() => {
     if (updatedIndex != null) {
-      prevOderId.current = undefined;
+      prevRowKey.current = undefined;
     }
   }, [updatedIndex]);
 
@@ -352,54 +359,64 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     setFilteredAttribute(e.detail.selectedOption.dataset.id);
   };
 
-  const handleCheckBoxChange = (e) => {
-    if (e.target.hasAttribute('ui5-table')) {
-      // preventDefault should only be called if the target is the table, otherwise bubbled `selection-change` events
-      // also prevent their default behavior (e.g. the event of the MultiComboBox)
-      e.preventDefault();
-      const prevRowsByKey = e.detail.previouslySelectedRows.reduce(
-        (acc, prevSelRow) => ({ ...acc, [prevSelRow.dataset.reactKey]: prevSelRow }),
-        {}
-      );
-      const rowsByKey = e.detail.selectedRows.reduce(
-        (acc, selRow) => ({ ...acc, [selRow.dataset.reactKey]: selRow }),
-        {}
-      );
-
-      const changedRowKey =
-        e.detail.previouslySelectedRows > e.detail.selectedRows
-          ? compareObjects(prevRowsByKey, rowsByKey)
-          : compareObjects(rowsByKey, prevRowsByKey);
-
-      const element = rowsByKey[changedRowKey] || prevRowsByKey[changedRowKey];
-
-      // todo: workaround until specific rows can be disabled
-      if (element.dataset?.required === 'true') {
-        setForceRequired(element);
-        return;
-      }
-
-      if (typeof handleSelectionChange === 'function') {
-        handleSelectionChange(enrichEventWithDetails(e, { element, checked: element.selected }));
-      }
-
-      setToggledFilters((prev) => {
-        return { ...prev, [changedRowKey]: element.selected };
-      });
+  const fireOnFiltersDialogSelectionChange = (_selected, selectedKeys, prevSelected, prevent = false) => {
+    setSelectedFilters(Array.from(_selected));
+    if (!prevent && typeof onFiltersDialogSelectionChange === 'function') {
+      const payload = {
+        toggledFilterKeys: selectedKeys,
+        selected: selectedKeys.size === 1 ? _selected.has(selectedKeys.values().next().value) : undefined,
+        selectedFilterKeys: _selected,
+        previousSelectedFilterKeys: prevSelected
+      };
+      onFiltersDialogSelectionChange(payload);
     }
   };
 
   useEffect(() => {
-    if (forceRequired) {
-      forceRequired.setAttribute('selected', 'true');
+    if (selectedFilters?.length) {
+      selectionChangePayloadRef.current = { selectedFilterKeys: selectedFilters };
+    }
+  }, [selectedFilters]);
+
+  const handleCheckBoxChange = (e) => {
+    if (e.target.hasAttribute('ui5-table-selection')) {
+      const _selected: Set<string> = new Set(e.target.selected.length ? e.target.selected.split(' ') : []);
+      const prevSelected: Set<string> = new Set(selectedFilters ?? []);
+      const alwaysSelected = Object.keys(requiredFilters).filter((key) => requiredFilters[key]);
+      const selectedKeys: Set<string> = _selected.symmetricDifference(prevSelected);
+
+      // reset required filters to `true`
+      if (alwaysSelected.length) {
+        setForceRequired({
+          required: alwaysSelected,
+          target: e.target,
+          selected: _selected,
+          prevSelected,
+          selectedKeys
+        });
+        return;
+      }
+
+      fireOnFiltersDialogSelectionChange(_selected, selectedKeys, prevSelected);
+    }
+  };
+
+  useEffect(() => {
+    if (forceRequired && forceRequired.target) {
+      const { prevSelected, selectedKeys, selected: _selected, required, target } = forceRequired;
+      required.forEach((requiredString) => {
+        _selected.add(requiredString);
+      });
+
+      setTimeout(() => {
+        target.selected = Array.from(_selected).join(' ');
+        const prevent = selectedKeys.size === 1 && required.includes(selectedKeys.values().next().value);
+        fireOnFiltersDialogSelectionChange(_selected, selectedKeys, prevSelected, prevent);
+      });
+
       setForceRequired(undefined);
     }
   }, [forceRequired]);
-
-  const canRenderPortal = useCanRenderPortal();
-  if (!canRenderPortal) {
-    return null;
-  }
 
   const renderGroups = () => {
     const groups = {};
@@ -412,10 +429,10 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       }
     });
 
-    const filterGroups = Object.keys(groups)
+    // filter groups
+    return Object.keys(groups)
       .sort((x, y) => (x === 'default' ? -1 : y === 'role' ? 1 : 0))
       .map((item, index) => {
-        const selectedRows = groups[item].map((child) => child.props['data-react-key']).join(' ');
         return (
           <Panel
             headerText={item === 'default' ? basicText : item}
@@ -425,10 +442,11 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             <Table
               className={classNames.tableInGroup}
               data-component-name="FilterBarDialogPanelTable"
+              data-with-value={showValues}
               features={
                 <TableSelection
                   mode={TableSelectionMode.Multiple}
-                  selected={selectedRows}
+                  selected={selected}
                   onChange={handleCheckBoxChange}
                 />
               }
@@ -444,10 +462,13 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           </Panel>
         );
       });
-    return filterGroups;
   };
 
-  const currentReorderedItemOrderId = currentReorderedItem?.orderId;
+  useEffect(() => {
+    if (initialSelected.current === undefined && selected.length) {
+      initialSelected.current = selectedFilters;
+    }
+  }, [selected]);
 
   return (
     <FilterBarDialogContext.Provider
@@ -460,158 +481,162 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         handleFocusFallback,
         showBtnsOnHover,
         setShowBtnsOnHover,
-        currentReorderedItemOrderId
+        currentReorderedItemOrderId,
+        setSelectedKeys: setSelectedFilters,
+        setRequiredKeys,
+        prevIsListView
       }}
     >
-      {createPortal(
-        <Dialog
-          open={open}
-          ref={dialogRef}
-          data-component-name="FilterBarDialog"
-          data-is-phone={isPhone}
-          onClose={handleClose}
-          onOpen={onAfterFiltersDialogOpen}
-          resizable
-          draggable
-          className={classNames.dialogComponent}
-          preventFocusRestore
-          initialFocus={`${uniqueId}-fb-dialog-search`}
-          header={
-            <Bar
-              design={BarDesign.Header}
-              startContent={
-                <Title level={TitleLevel.H4} title={filtersTitle}>
-                  {filtersTitle}
-                </Title>
-              }
-              endContent={
-                showRestoreButton && (
-                  <Button design={ButtonDesign.Transparent} onClick={handleRestore}>
-                    {resetText}
-                  </Button>
-                )
-              }
+      <Dialog
+        open={open}
+        ref={dialogRef}
+        data-component-name="FilterBarDialog"
+        data-is-phone={isPhone}
+        onClose={handleClose}
+        onOpen={onAfterFiltersDialogOpen}
+        resizable
+        draggable
+        className={classNames.dialogComponent}
+        preventFocusRestore
+        initialFocus={`${uniqueId}-fb-dialog-search`}
+        header={
+          <Bar
+            design={BarDesign.Header}
+            startContent={
+              <Title level={TitleLevel.H4} title={filtersTitle}>
+                {filtersTitle}
+              </Title>
+            }
+            endContent={
+              showRestoreButton && (
+                <Button design={ButtonDesign.Transparent} onClick={handleRestore}>
+                  {resetText}
+                </Button>
+              )
+            }
+          />
+        }
+        footer={
+          <Bar
+            design={BarDesign.Footer}
+            endContent={
+              <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classNames.footer}>
+                <Button
+                  ref={okBtnRef}
+                  onClick={handleSave}
+                  data-component-name="FilterBarDialogSaveBtn"
+                  design={ButtonDesign.Emphasized}
+                >
+                  {okText}
+                </Button>
+                <Button
+                  design={ButtonDesign.Transparent}
+                  onClick={handleCancel}
+                  data-component-name="FilterBarDialogCancelBtn"
+                >
+                  {cancelText}
+                </Button>
+              </FlexBox>
+            }
+          />
+        }
+      >
+        <FlexBox direction={FlexBoxDirection.Column} className={classNames.subheaderContainer}>
+          <FlexBox direction={FlexBoxDirection.Row}>
+            <Select
+              onChange={handleAttributeFilterChange}
+              title={fieldsByAttributeText}
+              accessibleName={fieldsByAttributeText}
+              onClose={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              <Option selected={filteredAttribute === 'all'} data-id="all">
+                {allText}
+              </Option>
+              <Option selected={filteredAttribute === 'visible'} data-id="visible">
+                {visibleText}
+              </Option>
+              <Option selected={filteredAttribute === 'active'} data-id="active">
+                {activeText}
+              </Option>
+              <Option selected={filteredAttribute === 'visibleAndActive'} data-id="visibleAndActive">
+                {visibleAndActiveText}
+              </Option>
+              <Option selected={filteredAttribute === 'mandatory'} data-id="mandatory">
+                {mandatoryText}
+              </Option>
+            </Select>
+            <span className={classNames.spacer} />
+            <Button
+              design={ButtonDesign.Transparent}
+              onClick={toggleValues}
+              aria-live="polite"
+              className={classNames.showValuesBtn}
+            >
+              {showValues ? hideValuesText : showValuesText}
+            </Button>
+            <SegmentedButton onSelectionChange={handleViewChange}>
+              <SegmentedButtonItem icon={listIcon} data-id="list" selected={isListView} accessibleName={listViewText} />
+              <SegmentedButtonItem
+                icon={group2Icon}
+                data-id="group"
+                selected={!isListView}
+                accessibleName={groupViewText}
+              />
+            </SegmentedButton>
+          </FlexBox>
+          <FlexBox className={classNames.searchInputContainer}>
+            <Input
+              id={`${uniqueId}-fb-dialog-search`}
+              noTypeahead
+              placeholder={searchForFiltersText}
+              onInput={handleSearch}
+              showClearIcon
+              icon={<Icon name={searchIcon} />}
+              ref={dialogSearchRef}
+              className={classNames.searchInput}
+              data-component-name="FilterBarDialogSearchInput"
             />
+          </FlexBox>
+        </FlexBox>
+        <Table
+          ref={tableRef}
+          className={!isListView && classNames.inactiveTable}
+          data-component-name="FilterBarDialogTable"
+          data-is-grouped={!isListView}
+          data-with-value={`${showValues}`}
+          nodata={!isListView ? <span /> : undefined}
+          tabIndex={!isListView ? -1 : undefined}
+          features={
+            <>
+              <TableSelection mode={TableSelectionMode.Multiple} onChange={handleCheckBoxChange} selected={selected} />
+            </>
           }
-          footer={
-            <Bar
-              design={BarDesign.Footer}
-              endContent={
-                <FlexBox justifyContent={FlexBoxJustifyContent.End} className={classNames.footer}>
-                  <Button
-                    ref={okBtnRef}
-                    onClick={handleSave}
-                    data-component-name="FilterBarDialogSaveBtn"
-                    design={ButtonDesign.Emphasized}
-                  >
-                    {okText}
-                  </Button>
-                  <Button
-                    design={ButtonDesign.Transparent}
-                    onClick={handleCancel}
-                    data-component-name="FilterBarDialogCancelBtn"
-                  >
-                    {cancelText}
-                  </Button>
-                </FlexBox>
-              }
-            />
+          headerRow={
+            <TableHeaderRow
+              data-component-name={!isListView ? 'FilterBarDialogGroupTableHeaderRow' : 'FilterBarDialogTableHeaderRow'}
+            >
+              <TableHeaderCell>{filterText}</TableHeaderCell>
+              {!showValues && <TableHeaderCell className={classNames.tHactive}>{activeText}</TableHeaderCell>}
+            </TableHeaderRow>
           }
         >
-          <FlexBox direction={FlexBoxDirection.Column} className={classNames.subheaderContainer}>
-            <Toolbar className={classNames.subheader} toolbarStyle="Clear">
-              <Select
-                onChange={handleAttributeFilterChange}
-                title={fieldsByAttributeText}
-                accessibleName={fieldsByAttributeText}
-              >
-                <Option selected={filteredAttribute === 'all'} data-id="all">
-                  {allText}
-                </Option>
-                <Option selected={filteredAttribute === 'visible'} data-id="visible">
-                  {visibleText}
-                </Option>
-                <Option selected={filteredAttribute === 'active'} data-id="active">
-                  {activeText}
-                </Option>
-                <Option selected={filteredAttribute === 'visibleAndActive'} data-id="visibleAndActive">
-                  {visibleAndActiveText}
-                </Option>
-                <Option selected={filteredAttribute === 'mandatory'} data-id="mandatory">
-                  {mandatoryText}
-                </Option>
-              </Select>
-              <ToolbarSpacer />
-              <Button design={ButtonDesign.Transparent} onClick={toggleValues} aria-live="polite">
-                {showValues ? hideValuesText : showValuesText}
-              </Button>
-              <SegmentedButton onSelectionChange={handleViewChange}>
-                <SegmentedButtonItem
-                  icon={listIcon}
-                  data-id="list"
-                  selected={isListView}
-                  accessibleName={listViewText}
-                />
-                <SegmentedButtonItem
-                  icon={group2Icon}
-                  data-id="group"
-                  selected={!isListView}
-                  accessibleName={groupViewText}
-                />
-              </SegmentedButton>
-            </Toolbar>
-            <FlexBox className={classNames.searchInputContainer}>
-              <Input
-                id={`${uniqueId}-fb-dialog-search`}
-                noTypeahead
-                placeholder={searchForFiltersText}
-                onInput={handleSearch}
-                showClearIcon
-                icon={<Icon name={searchIcon} />}
-                ref={dialogSearchRef}
-                className={classNames.searchInput}
-                data-component-name="FilterBarDialogSearchInput"
-              />
-            </FlexBox>
-          </FlexBox>
-          <Table
-            ref={tableRef}
-            data-component-name="FilterBarDialogTable"
-            data-is-grouped={!isListView}
-            nodata={!isListView ? <span /> : undefined}
-            tabIndex={!isListView ? -1 : undefined}
-            features={
-              <>
-                <TableSelection mode={TableSelectionMode.Multiple} onChange={handleCheckBoxChange} />
-              </>
-            }
-            headerRow={
-              <TableHeaderRow data-component-name="FilterBarDialogTableHeaderRow">
-                <TableHeaderCell>{filterText}</TableHeaderCell>
-                {!showValues && <TableHeaderCell className={classNames.tHactive}>{activeText}</TableHeaderCell>}
-              </TableHeaderRow>
-            }
-          >
-            {isListView && renderChildren()}
-          </Table>
-          {!isListView && renderGroups()}
-        </Dialog>,
-        portalContainer ?? document.body
+          {isListView && renderChildren()}
+        </Table>
+        {!isListView && renderGroups()}
+      </Dialog>
+      {showRestoreButton && messageBoxOpen && (
+        <MessageBox
+          open
+          type={MessageBoxType.Warning}
+          actions={[MessageBoxAction.OK, MessageBoxAction.Cancel]}
+          onClose={handleMessageBoxClose}
+          data-component-name="FilterBarDialogResetMessageBox"
+        >
+          {i18nBundle.getText(FILTER_DIALOG_RESET_WARNING)}
+        </MessageBox>
       )}
-      {showRestoreButton &&
-        messageBoxOpen &&
-        createPortal(
-          <MessageBox
-            open
-            type={MessageBoxType.Warning}
-            actions={[MessageBoxAction.OK, MessageBoxAction.Cancel]}
-            onClose={handleMessageBoxClose}
-            data-component-name="FilterBarDialogResetMessageBox"
-          >
-            {i18nBundle.getText(FILTER_DIALOG_RESET_WARNING)}
-          </MessageBox>,
-          portalContainer ?? document.body
-        )}
     </FilterBarDialogContext.Provider>
   );
 };

@@ -1,9 +1,5 @@
 .tHactive {
-  width: 25%;
-
-  &::part(column) {
-    text-align: center;
-  }
+  justify-content: center;
 }
 
 .groupedTableHeader {
@@ -66,7 +62,8 @@
 }
 
 .subheaderContainer {
-  padding-block: 0;
+  padding-block-start: 0.25rem;
+  /*padding-block: 0;*/
   padding-inline: 1rem;
   box-shadow: var(--sapContent_HeaderShadow);
 }
@@ -87,4 +84,16 @@
   :not(:last-child) {
     margin-inline-end: 0.25rem;
   }
+}
+
+.showValuesBtn {
+  flex-shrink: 0; /*Show Values text should always be visible*/
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.inactiveTable {
+  pointer-events: none;
 }

@@ -14,15 +14,14 @@ import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import {
   DOWN_ARROW,
-  FILTER_IS_ACTIVE,
   FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_IS_ACTIVE,
   MOVE_DOWN,
   MOVE_TO_BOTTOM,
   MOVE_TO_TOP,
   MOVE_UP,
   UP_ARROW
 } from '../../i18n/i18n-defaults.js';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import type { ReorderDirections } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
 import type { ButtonPropTypes, TableRowDomRef } from '../../webComponents/index.js';
@@ -30,16 +29,6 @@ import { BusyIndicator, Button, Icon, Label, TableCell, TableRow } from '../../w
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './FilterGroupItem.module.css.js';
 import type { FilterGroupItemInternalProps, FilterGroupItemPropTypes } from './types.js';
-
-addCustomCSSWithScoping(
-  'ui5-table-row',
-  `
-/* hide navigated cell */
-:host([data-component-name="FilterBarDialogTableRow"]) .ui5-table-row-navigated {
- display:none;
-}
-`
-);
 
 const isMac = isMacFn();
 
@@ -62,27 +51,37 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       className,
       slot,
       active,
-      orderId,
+      filterKey,
       ...rest
     } = props;
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-    const tableRowRef = useRef<TableRowDomRef>(null);
-
-    const reactKey = props['data-react-key'];
     const index = props['data-index'];
     const isomporphicReorderKey = isMac ? 'CMD' : 'CTRL';
+    const tableRowRef = useRef<TableRowDomRef>(null);
 
     const {
       isFilterInDialog,
       isListView,
-      onReorder,
       withValues,
       enableReordering,
       showBtnsOnHover,
-      setShowBtnsOnHover,
+      currentReorderedItemOrderId,
       handleFocusFallback,
-      currentReorderedItemOrderId
+      onReorder,
+      setShowBtnsOnHover,
+      setSelectedKeys,
+      setRequiredKeys,
+      prevIsListView
     } = useContext(FilterBarDialogContext);
+
+    const listViewHasChanged = useRef(prevIsListView?.current !== isListView);
+
+    useEffect(() => {
+      if (prevIsListView?.current !== isListView) {
+        listViewHasChanged.current = true;
+      }
+    }, [isListView]);
+
     const inFB = !isFilterInDialog;
     const withReordering = enableReordering && !withValues && isListView;
     const [itemPosition, setItemPosition] = useState<undefined | 'last' | 'first'>(undefined);
@@ -111,7 +110,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
         index,
         direction: e.currentTarget.dataset.reorder as ReorderDirections,
         target: tableRowRef.current,
-        orderId
+        filterKey
       });
     };
 
@@ -127,7 +126,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
         const direction = directionMap[e.key];
         if (direction) {
           setItemPosition(undefined);
-          onReorder({ index, direction, target: e.currentTarget, orderId });
+          onReorder({ index, direction, target: e.currentTarget, filterKey });
         }
       }
     };
@@ -136,12 +135,34 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       if (
         withReordering &&
         tableRowRef.current &&
-        currentReorderedItemOrderId === orderId &&
+        currentReorderedItemOrderId === filterKey &&
         typeof index === 'number'
       ) {
         handleFocusFallback();
       }
-    }, [withReordering, currentReorderedItemOrderId, orderId, index]);
+    }, [withReordering, currentReorderedItemOrderId, filterKey, index]);
+
+    useEffect(() => {
+      if (!inFB && !hidden && !listViewHasChanged?.current) {
+        if (setSelectedKeys) {
+          setSelectedKeys((prev) => {
+            const keysSet = new Set(prev);
+            if (hiddenInFilterBar && !required) {
+              keysSet.delete(`${filterKey}`);
+            } else {
+              keysSet.add(`${filterKey}`);
+            }
+            return Array.from(keysSet);
+          });
+        }
+        if (setRequiredKeys) {
+          setRequiredKeys((prev) => ({ ...prev, [`${filterKey}`]: !!required }));
+        }
+      }
+      if (listViewHasChanged?.current) {
+        listViewHasChanged.current = false;
+      }
+    }, [inFB, hidden, hiddenInFilterBar, filterKey, setSelectedKeys, isListView, required]);
 
     if (!required && (hidden || (inFB && hiddenInFilterBar))) return null;
 
@@ -150,9 +171,8 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
         //todo: disable selection for required fields when it's possible, or the table is fully controllable (https://github.com/SAP/ui5-webcomponents/issues/5662)
         <TableRow
           ref={tableRowRef}
+          rowKey={`${filterKey}`}
           data-text={label}
-          data-react-key={reactKey}
-          key={reactKey as string}
           data-required={required}
           data-component-name="FilterBarDialogTableRow"
           className={clsx(
@@ -162,14 +182,19 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           )}
           onFocus={withReordering ? handleFocus : undefined}
           onKeyDown={withReordering ? handleKeyDown : undefined}
-          data-order-id={orderId}
           aria-live={withReordering ? 'polite' : undefined}
           aria-label={
             withReordering ? i18nBundle.getText(FILTER_DIALOG_REORDER_FILTERS, isomporphicReorderKey) : undefined
           }
         >
           <TableCell data-component-name="FilterBarDialogTableCellFilter">
-            <FlexBox direction={FlexBoxDirection.Column} className={clsx(classNames.labelContainer)}>
+            <FlexBox
+              fitContainer
+              direction={FlexBoxDirection.Column}
+              justifyContent={FlexBoxJustifyContent.Center}
+              className={classNames.labelContainer}
+              data-in-filters-dialog={true}
+            >
               <Label
                 className={classNames.dialogCellLabel}
                 title={labelTooltip ?? label}
@@ -244,8 +269,8 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
     const labelWithGroupName = considerGroupName && groupName !== 'default' ? `${label} (${groupName})` : label;
 
     return (
-      <div ref={ref} slot={slot} {...rest} data-order-id={orderId} className={clsx(classNames.filterItem, className)}>
-        <div className={classNames.innerFilterItemContainer}>
+      <div ref={ref} slot={slot} {...rest} className={clsx(classNames.filterItem, className)}>
+        <div className={classNames.innerFilterItemContainer} data-in-filter-bar={true}>
           <FlexBox>
             <Label title={labelTooltip ?? label} required={required} showColon={!!label}>
               {labelWithGroupName}

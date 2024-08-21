@@ -34,7 +34,7 @@ This is a basic example of how the FilterBar could be used inside an app.
 
 <summary>Show Code</summary>
 
-```jsx
+```tsx
 const initialState = {
   age: 37,
   countries: {},
@@ -65,10 +65,11 @@ function reducer(state, action) {
   }
 }
 
-const FilterBarComponent = (args) => {
+function FilterBarComponent(args) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [visibleFilters, setVisibleFilters] = useState(new Set(['age', 'countries']));
   const { age, countries, currency, date, dateRange, search } = state;
-  const prevDialogOpenState = useRef();
+  const prevDialogOpenState = useRef(undefined);
 
   const handleSearch = (e) => {
     dispatch({ type: 'SET_SEARCH', payload: e.target.value });
@@ -86,7 +87,10 @@ const FilterBarComponent = (args) => {
   };
 
   const handleCurrencyChange = (e) => {
-    dispatch({ type: 'SET_CURRENCY', payload: e.detail.selectedOption.textContent });
+    dispatch({
+      type: 'SET_CURRENCY',
+      payload: e.detail.selectedOption.textContent
+    });
   };
 
   const handleDateChange = (e) => {
@@ -105,8 +109,15 @@ const FilterBarComponent = (args) => {
     prevDialogOpenState.current = state;
   };
 
-  const handleRestore = () => {
+  const handleRestore: FilterBarPropTypes['onRestore'] = (payload) => {
+    const prevDialogOpenVisibleFilters = payload.selectedFilterKeys;
     dispatch({ type: 'DIALOG_RESTORE', payload: prevDialogOpenState.current });
+    setVisibleFilters(new Set(prevDialogOpenVisibleFilters));
+  };
+
+  const handleFiltersDialogSelectionChange: FilterBarPropTypes['onFiltersDialogSelectionChange'] = (payload) => {
+    const visibleFilterKeys = payload.selectedFilterKeys;
+    setVisibleFilters(new Set(visibleFilterKeys));
   };
 
   return (
@@ -116,11 +127,17 @@ const FilterBarComponent = (args) => {
         search={<Input onInput={handleSearch} />}
         onRestore={handleRestore}
         onFiltersDialogOpen={handleFiltersDialogOpen}
+        onFiltersDialogSelectionChange={handleFiltersDialogSelectionChange}
       >
-        <FilterGroupItem label="Age" active={!!age} required>
+        <FilterGroupItem filterKey="age" label="Age" active={!!age} required>
           <StepInput value={age} onChange={handleAgeChange} required />
         </FilterGroupItem>
-        <FilterGroupItem label="Countries" active={Object.keys(countries).length > 0}>
+        <FilterGroupItem
+          filterKey="countries"
+          label="Countries"
+          active={Object.keys(countries).length > 0}
+          hiddenInFilterBar={!visibleFilters.has('countries')}
+        >
           <MultiComboBox onSelectionChange={handleCountriesChange}>
             <MultiComboBoxItem text="Argentina" selected={countries.argentina} />
             <MultiComboBoxItem text="Bulgaria" selected={countries.bulgaria} />
@@ -131,7 +148,12 @@ const FilterBarComponent = (args) => {
             <MultiComboBoxItem text="USA" selected={countries.usa} />
           </MultiComboBox>
         </FilterGroupItem>
-        <FilterGroupItem label="Currency" active={!!currency}>
+        <FilterGroupItem
+          filterKey="currency"
+          label="Currency"
+          active={!!currency}
+          hiddenInFilterBar={!visibleFilters.has('currency')}
+        >
           <Select onChange={handleCurrencyChange}>
             <Option additionalText="€" selected={currency === 'EUR'}>
               EUR
@@ -150,11 +172,16 @@ const FilterBarComponent = (args) => {
             </Option>
           </Select>
         </FilterGroupItem>
-        <FilterGroupItem label="Date" active={!!date}>
-          <DatePicker value={date} onChange={handleDateChange} style={{ minWidth: 'auto' }} on />
+        <FilterGroupItem filterKey="date" label="Date" active={!!date} hiddenInFilterBar={!visibleFilters.has('date')}>
+          <DatePicker value={date} onChange={handleDateChange} style={{ minWidth: 'auto' }} />
         </FilterGroupItem>
-        <FilterGroupItem label="Date Range" active={!!dateRange} hiddenInFilterBar>
-          <DateRangePicker value={dateRange} onChange={handleDateRangeChange} style={{ minWidth: 'auto' }} on />
+        <FilterGroupItem
+          filterKey="date-range"
+          label="Date Range"
+          active={!!dateRange}
+          hiddenInFilterBar={!visibleFilters.has('date-range')}
+        >
+          <DateRangePicker value={dateRange} onChange={handleDateRangeChange} style={{ minWidth: 'auto' }} />
         </FilterGroupItem>
       </FilterBar>
       <FlexBox direction={FlexBoxDirection.Column}>
@@ -182,17 +209,22 @@ const FilterBarComponent = (args) => {
           <Label showColon>Date Range</Label>
           <Text>{dateRange}</Text>
         </FlexBox>
+        <hr style={{ width: '100%' }} />
+        <FlexBox>
+          <Label showColon>Visible Filters</Label>
+          <Text>{Array.from(visibleFilters).join(', ')}</Text>
+        </FlexBox>
       </FlexBox>
     </>
   );
-};
+}
 ```
 
 </details>
 
 ## FilterBar with Reordering
 
-To enable the reordering feature set `enableReordering` to `true` and add a unique `orderId` prop to each `FilterGroupItem`.
+To enable the reordering feature set `enableReordering` to `true`.
 
 <Canvas of={ComponentStories.WithReordering} />
 
@@ -205,60 +237,141 @@ To enable the reordering feature set `enableReordering` to `true` and add a uniq
 ```jsx
 function FilterBarWithReordering(props) {
   const uniqueId = useId();
-  const [orderedChildren, setOrderedChildren] = useState([
-    <FilterGroupItem key={`${uniqueId}-0`} label="StepInput" required orderId={`${uniqueId}-0`}>
-      <StepInput required />
-    </FilterGroupItem>,
-    <FilterGroupItem key={`${uniqueId}-1`} label="RatingIndicator" orderId={`${uniqueId}-1`}>
-      <RatingIndicator />
-    </FilterGroupItem>,
-    <FilterGroupItem key={`${uniqueId}-2`} label="MultiInput" active orderId={`${uniqueId}-2`}>
-      <MultiInput
-        tokens={
-          <>
-            <Token text="Argentina" selected />
-            <Token text="Bulgaria" />
-            <Token text="England" />
-            <Token text="Finland" />
-          </>
-        }
-      />
-    </FilterGroupItem>,
-    <FilterGroupItem key={`${uniqueId}-3`} label="Input" orderId={`${uniqueId}-3`}>
-      <Input placeholder="Placeholder" />
-    </FilterGroupItem>,
-    <FilterGroupItem key={`${uniqueId}-4`} label="Switch" orderId={`${uniqueId}-4`}>
-      <Switch />
-    </FilterGroupItem>,
-    <FilterGroupItem
-      key={`${uniqueId}-5`}
-      label="SELECT w/ initial selected"
-      hiddenInFilterBar
-      orderId={`${uniqueId}-5`}
-    >
-      <Select>
-        <Option>Option 1</Option>
-        <Option selected>Option 2</Option>
-        <Option>Option 3</Option>
-        <Option>Option 4</Option>
-      </Select>
-    </FilterGroupItem>
+  const [visibleChildrenByKey, setVisibleChildrenByKey] = useState<
+    Record<string, boolean>
+  >({
+    "0": true,
+    "1": true,
+    "2": true,
+    "3": true,
+    "5": true,
+  });
+  const [orderedFilterKeys, setOrderedFilterKeys] = useState([
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
   ]);
 
-  const handleFiltersDialogSave = (e) => {
-    setOrderedChildren((prev) => {
-      return e.detail.reorderedItems.orderedIds.map((orderId) => {
-        const obj = prev.find((item) => item.props.orderId === orderId);
-        return { ...obj };
-      });
-    });
+  const toggleVisibility = (key) => {
+    setVisibleChildrenByKey((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   };
+
+  const handleFiltersDialogSave: FilterBarPropTypes["onFiltersDialogSave"] = (
+    e,
+  ) => {
+    setOrderedFilterKeys(e.detail.reorderedFilterKeys);
+    setVisibleChildrenByKey(
+      e.detail.selectedFilterKeys.reduce((acc, cur) => {
+        acc[cur] = true;
+        return acc;
+      }, {}),
+    );
+  };
+
   return (
-    <FilterBar {...props} onFiltersDialogSave={handleFiltersDialogSave} enableReordering showResetButton>
-      {orderedChildren}
+    <FilterBar
+      enableReordering
+      showResetButton
+      onFiltersDialogSave={handleFiltersDialogSave}
+    >
+      {orderedFilterKeys.map((filterKey) => {
+        const isHidden = !visibleChildrenByKey[filterKey];
+        switch (filterKey) {
+          case "0":
+            return (
+              <FilterGroupItem
+                filterKey="0"
+                key={`${uniqueId}-0`}
+                label="StepInput"
+                required
+              >
+                <StepInput required />
+              </FilterGroupItem>
+            );
+          case "1":
+            return (
+              <FilterGroupItem
+                filterKey="1"
+                key={`${uniqueId}-1`}
+                label="RatingIndicator"
+                hiddenInFilterBar={isHidden}
+              >
+                <RatingIndicator />
+              </FilterGroupItem>
+            );
+          case "2":
+            return (
+              <FilterGroupItem
+                filterKey="2"
+                key={`${uniqueId}-2`}
+                label="MultiInput"
+                active
+                hiddenInFilterBar={isHidden}
+              >
+                <MultiInput
+                  tokens={
+                    <>
+                      <Token text="Argentina" selected />
+                      <Token text="Bulgaria" />
+                      <Token text="England" />
+                      <Token text="Finland" />
+                    </>
+                  }
+                />
+              </FilterGroupItem>
+            );
+          case "3":
+            return (
+              <FilterGroupItem
+                filterKey="3"
+                key={`${uniqueId}-3`}
+                label="Input"
+                hiddenInFilterBar={isHidden}
+              >
+                <Input placeholder="Placeholder" />
+              </FilterGroupItem>
+            );
+          case "4":
+            return (
+              <FilterGroupItem
+                filterKey="4"
+                key={`${uniqueId}-4`}
+                label="Switch"
+                hiddenInFilterBar={isHidden}
+              >
+                <Switch />
+              </FilterGroupItem>
+            );
+          case "5":
+            return (
+              <FilterGroupItem
+                filterKey="5"
+                key={`${uniqueId}-5`}
+                label="SELECT w/ initial selected"
+                hiddenInFilterBar={isHidden}
+              >
+                <Select>
+                  <Option>Option 1</Option>
+                  <Option selected>Option 2</Option>
+                  <Option>Option 3</Option>
+                  <Option>Option 4</Option>
+                </Select>
+              </FilterGroupItem>
+            );
+          default:
+            return null;
+        }
+      })}
     </FilterBar>
   );
 }
+
 ```
 
 </details>
@@ -270,11 +383,35 @@ the page is then responsible for the different views.
 
 <Canvas of={ComponentStories.InDynamicPage} />
 
+## Identify the origin of an input/filter event
+
+When filters in the FilterBar should only be updated directly within the FilterBar itself, or when a user presses 'OK' in the filters dialog,
+it's essential to determine the origin of the corresponding event (e.g., `onInput`).
+To do this, you can check the `dataset` of the `parentElement` of the `currentTarget`.
+Depending on where the user interacts with the input component, the `dataset` of the parent will indicate either `inFilterBar: "true"` or `inFiltersDialog: "true"`.
+
+### Example:
+
+```jsx
+<FilterGroupItem filterKey="0" label="Input">
+  <StepInput onInput={handleInput} />
+</FilterGroupItem>
+```
+
+```js
+const handleInput = (event) => {
+  const firedInFilterBar = !!event.currentTarget.parentElement.dataset.inFilterBar;
+  const firedInFiltersDialog = !!event.currentTarget.parentElement.dataset.inFiltersDialog;
+};
+```
+
+<Canvas of={ComponentStories.IdentifyInputEventOrigin} source />
+
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## FilterGroupItem
 
 <Description of={FilterGroupItem} />
-<ArgTypesWithNote of={FilterGroupItem} />
+<ArgTypesWithNote of={FilterGroupItem} exclude={['data-index']} />
 
 <Footer />

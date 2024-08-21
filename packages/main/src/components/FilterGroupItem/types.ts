@@ -1,7 +1,15 @@
-import type { Key, ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import type { CommonProps } from '../../types/index.js';
 
 export interface FilterGroupItemPropTypes extends CommonProps {
+  /**
+   * The mandatory key each `FilterGroupItem` needs to implement.
+   *
+   * __Note:__ `filterKey` needs to be unique for each `FilterGroupItem` per `FilterBar`.
+   *
+   * __Note:__ Whitespaces are not supported!
+   */
+  filterKey: string | number;
   /**
    * Content of the `FilterGroupItem`.
    *
@@ -56,17 +64,11 @@ export interface FilterGroupItemPropTypes extends CommonProps {
    * Defines whether the filter is displayed with a value. If it's active an indicator will be shown in the filter configuration dialog.
    */
   active?: boolean;
-  /**
-   * Defines the unique id used to identify reordered filter items.
-   *
-   * __Note:__ This prop is mandatory if `enableReordering` is set to `true` on the `FilterBar`, otherwise it has no effect.
-   *
-   */
-  orderId?: string;
 }
 
 export interface FilterGroupItemInternalProps extends FilterGroupItemPropTypes {
-  'data-selected'?: boolean;
-  'data-react-key'?: Key;
+  /**
+   * @private
+   */
   'data-index'?: number;
 }

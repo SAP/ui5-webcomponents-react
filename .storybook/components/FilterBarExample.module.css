@@ -1,0 +1,9 @@
+.filterBarDemo {
+  padding: 1rem;
+  border: var(--sapElement_BorderWidth) solid var(--sapNeutralBorderColor);
+  border-radius: var(--sapElement_BorderCornerRadius);
+}
+
+.filterBarDemo [ui5-dialog] {
+  max-height: 80vh;
+}
