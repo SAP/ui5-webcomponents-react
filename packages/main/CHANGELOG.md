@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2024-08-21)
+
+### Bug Fixes
+
+- **AnalyticalTable:** correct `CustomElementsScope` import path ([#6184](https://github.com/SAP/ui5-webcomponents-react/issues/6184)) ([de68b2d](https://github.com/SAP/ui5-webcomponents-react/commit/de68b2d733c05f0f1994ab11feedbb93a0593b59)), closes [#6183](https://github.com/SAP/ui5-webcomponents-react/issues/6183)
+- **MessageBox:** don't throw error if `onClose` is not passed ([#6226](https://github.com/SAP/ui5-webcomponents-react/issues/6226)) ([7981491](https://github.com/SAP/ui5-webcomponents-react/commit/79814918c0810214535a11a4b0e4c68324a2d1c9)), closes [#6215](https://github.com/SAP/ui5-webcomponents-react/issues/6215)
+- **VariantManagement:** apply correct header size for "Manage Views" dialog ([#6185](https://github.com/SAP/ui5-webcomponents-react/issues/6185)) ([8b01af4](https://github.com/SAP/ui5-webcomponents-react/commit/8b01af4c9c734b93bc447f2ca86dd6e0a4abe891))
+
+### Code Refactoring
+
+- **FilterBar:** remove reference copying of filter/input elements ([#6214](https://github.com/SAP/ui5-webcomponents-react/issues/6214)) ([4473118](https://github.com/SAP/ui5-webcomponents-react/commit/4473118f82031ab69216f07afa9218835268eb0c)), closes [#5652](https://github.com/SAP/ui5-webcomponents-react/issues/5652)
+- **Modals:** avoid unnecessary use of `createPortal` ([#6242](https://github.com/SAP/ui5-webcomponents-react/issues/6242)) ([a571981](https://github.com/SAP/ui5-webcomponents-react/commit/a57198133420c8befd81793948d5cb8e634f2c78))
+
+### Features
+
+- **react 19:** bind web components event handlers using react lifecycle ([#6169](https://github.com/SAP/ui5-webcomponents-react/issues/6169)) ([70f9f27](https://github.com/SAP/ui5-webcomponents-react/commit/70f9f27329a2b361f203a9911fa05e12415bc9f4))
+- register current runtime version in window ([#6222](https://github.com/SAP/ui5-webcomponents-react/issues/6222)) ([367628c](https://github.com/SAP/ui5-webcomponents-react/commit/367628c117a389b85a9b9fa977d865fdad4e7f33)), closes [#6210](https://github.com/SAP/ui5-webcomponents-react/issues/6210)
+
+### BREAKING CHANGES
+
+- **Modals:** modals are now rendered as children of the `Modals`
+  component instead of being rendered into `document.body`
+- **FilterBar:** The `FilterBar` component was completely overhauled and references of input elements aren’t copied to the filters dialog anymore, also internal logic for reordering and selection has been removed, meaning it’s necessary to control their values manually (e.g. via React state).
+- **FilterBar:** `onToggleFilters`: The `detail` property of the event now only includes `visible` and `nativeDetail` properties. `filters` and `search` have been removed.
+- **FilterBar:** `onFiltersDialogSave`: The `detail` property of the event now only includes `selectedFilterKeys`, `reorderedFilterKeys` and `nativeDetail` properties. `elements`, `toggledElements`, `filters`, `search`, `orderIds` have been removed.
+- **FilterBar:** `onFiltersDialogCancel`: The event is now a callback instead of a `Ui5CustomEvent`. It implements the `escPressed` parameter.
+- **FilterBar:** `onFiltersDialogClose`: The event is now a callback instead of a `Ui5CustomEvent`. It implements the `closeTrigger` parameter.
+- **FilterBar:** `onFiltersDialogSelectionChange`: The event is now a callback instead of a `Ui5CustomEvent`. It implements a payload object as parameter.
+- **FilterBar:** `onFiltersDialogSearch`: The event is now a standard `Input` `onInput` event. The `detail` properties `value` and `element` have been removed.
+- **FilterBar:** `onClear`: The event is now a standard `ToolbarButton` `onClick` event. The `detail` properties `filters` and `search` have been removed.
+- **FilterBar:** `onGo`: The event is now a standard `ToolbarButton` `onClick` event. The `detail` properties `elements`, `filters`, `search`, `nativeDetail` have been removed.
+- **FilterBar:** `onRestore`: The event is now a callback instead of a `CustomEvent`. It implements a payload object as parameter.
+- **FilterBar:** `onFiltersDialogOpen (TypeScript)`: The target of the event is now a `ToolbarButton`.
+- **FilterBar:** `portalContainer` has been removed as it's no longer needed due to the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) used in the `Popover` ui5 web component.
+- **FilterBar:** `FilterGroupItem`: `orderId` has been removed. Please use `filterKey` instead.
+
 # [2.0.0-rc.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2024-08-07)
 
 ### Bug Fixes
