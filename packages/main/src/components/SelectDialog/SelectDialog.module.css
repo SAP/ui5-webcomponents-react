@@ -72,7 +72,7 @@
   height: 2rem;
   background-color: var(--sapInfobar_NonInteractive_Background);
   color: var(--sapList_TextColor);
-  padding-inline-start: 0.6875rem;
+  padding-inline-start: var(--_ui5wcr-CheckBoxPaddingInline);
   border-block-end: 0.0625rem solid var(--sapGroup_TitleBorderColor);
   overflow: hidden;
   position: sticky;
