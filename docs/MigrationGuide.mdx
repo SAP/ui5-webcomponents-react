@@ -46,7 +46,7 @@ npx @ui5/webcomponents-react-cli@next codemod --transform v2 \
 
 ## General changes
 
-## Minimal React Version
+### Minimal React Version
 
 The minimum required `react` and `react-dom` version is now `18.0.0`.
 
@@ -1065,6 +1065,9 @@ All Modal helper hooks have been removed. They can be replaced with the regular 
 - `useShowToast` --> `showToast`
 
 The regular methods are now general purpose, so they can be used both inside the React content (components) as well as outside of the React context (redux, redux-saga, etc.).
+
+In order to provide a place for the `Modals` helper to mount the popovers, you have to render the new `Modals` component in your application tree.
+In addition, the modals are now rendered as children of the `<Modals>` component instead of `document.body` by default.
 
 ### ObjectPage
 
