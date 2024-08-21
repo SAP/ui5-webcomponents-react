@@ -236,11 +236,15 @@ export function Modals() {
     <>
       {modals.map((modal) => {
         if (modal?.Component) {
-          return createPortal(
-            // @ts-expect-error: ref is supported by all supported modals
-            <modal.Component {...modal.props} ref={modal.ref} key={modal.id} data-id={modal.id} />,
-            modal.container ?? document.body
-          );
+          if (modal.container) {
+            return createPortal(
+              // @ts-expect-error: ref is supported by all supported modals
+              <modal.Component {...modal.props} ref={modal.ref} key={modal.id} data-id={modal.id} />,
+              modal.container
+            );
+          }
+          // @ts-expect-error: ref is supported by all supported modals
+          return <modal.Component {...modal.props} ref={modal.ref} key={modal.id} data-id={modal.id} />;
         }
       })}
     </>
