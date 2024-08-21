@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
-import { Toolbar } from '../../components/Toolbar/index.js';
-import { ToolbarSpacer } from '../../components/ToolbarSpacer/index.js';
+import { FlexBox, FlexBoxAlignItems } from '../../index.js';
 import { Text } from '../../webComponents/Text/index.js';
 import { Button } from '../Button/index.js';
 import { List } from '../List/index.js';
@@ -48,13 +47,13 @@ export const WithCustomHeader: Story = {
   args: {
     collapsed: true,
     header: (
-      <Toolbar>
+      <FlexBox fitContainer style={{ gap: '0.25rem' }} alignItems={FlexBoxAlignItems.Center}>
         <Title level={TitleLevel.H2}>Countries</Title>
-        <ToolbarSpacer />
+        <span style={{ flexGrow: 1 }} />
         <Button>Edit</Button>
         <Button design={ButtonDesign.Negative}>Remove</Button>
         <Button design={ButtonDesign.Emphasized}>Add</Button>
-      </Toolbar>
+      </FlexBox>
     )
   },
   render(args) {
