@@ -3,11 +3,11 @@
 ## Requirements
 
 - [Yarn](https://yarnpkg.com)
-- [Node.js](https://nodejs.org/) (**version 14 or higher** ⚠️)
+- [Node.js](https://nodejs.org/) (**[LTS](https://github.com/nodejs/release?tab=readme-ov-file#release-schedule) version** ⚠️)
 
 ## Setup your local development environment
 
-Please make sure you have installed `node` 14 or higher (check by running `node -v`) and yarn v1 (check by running `yarn -v`).
+Please make sure you have installed a [LTS](https://github.com/nodejs/release?tab=readme-ov-file#release-schedule) `node` version (check by running `node -v`) and yarn v1 (check by running `yarn -v`).
 
 First, you need to clone the git repository by running
 
@@ -22,7 +22,7 @@ Then, go into that cloned directory and run `yarn install`. At this point, you a
   This starts the local storybook, so you can check if your components are rendered correctly. _If the storybook doesn't open automatically after executing the command, you can use this link: http://localhost:6006/_
 - `yarn test` <br />
   This command is running all tests in the project.
-- `yarn test:cypress:open` <br />
+- `yarn test:open` <br />
   This command is opening all cypress tests in Chrome.
 - `yarn build` <br />
   This command executes the full build of the project.
