@@ -8,9 +8,6 @@
       "path": "./packages/main/tsconfig.build.json"
     },
     {
-      "path": "./packages/charts/tsconfig.build.json"
-    },
-    {
       "path": "./packages/cypress-commands/tsconfig.build.json"
     },
     {
