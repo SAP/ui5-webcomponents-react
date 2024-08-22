@@ -235,6 +235,8 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/*// @ts-ignore:: todo not yet compatible with React19*/}
       <ColumnChartLib
         syncId={syncId}
         onClick={onClickInternal}

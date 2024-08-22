@@ -286,6 +286,8 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/*// @ts-ignore:: todo not yet compatible with React19*/}
       <ComposedChartLib
         syncId={syncId}
         onClick={onClickInternal}

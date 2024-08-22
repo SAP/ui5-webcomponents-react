@@ -175,6 +175,8 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/*// @ts-ignore:: todo not yet compatible with React19*/}
       <RadarChartLib
         onClick={onClickInternal}
         data={dataset}
