@@ -44,8 +44,8 @@
     "@ui5/webcomponents-compat": "2.1.2",
     "@ui5/webcomponents-fiori": "2.1.2",
     "@ui5/webcomponents-icons": "2.1.2",
-    "react": "19.0.0-rc-f38c22b244-20240704",
-    "react-dom": "19.0.0-rc-f38c22b244-20240704",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "remark-gfm": "^4.0.0",
     "tocbot": "4.29.0"
   },
@@ -60,8 +60,8 @@
     "@testing-library/cypress": "^10.0.0",
     "@types/jscodeshift": "^0.11.11",
     "@types/node": "^20.0.0",
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc",
+    "@types/react": "^18.3.4",
+    "@types/react-dom": "^18.3.0",
     "@types/use-sync-external-store": "^0.0.6",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
@@ -111,8 +111,6 @@
     ]
   },
   "resolutions": {
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc",
     "tocbot": "4.29.0",
     "@joshwooding/vite-plugin-react-docgen-typescript": "0.3.0"
   },

@@ -34,12 +34,12 @@ jobs:
       - name: Install
         run: yarn install --immutable
 
-      - name: Install 18
-        if: ${{ matrix.react == '18' }}
+      - name: Install 19
+        if: ${{ matrix.react == '19' }}
         run: |
-          yarn set resolution "@types/react@npm:*" "18"
-          yarn set resolution "@types/react-dom@npm:*" "18"
-          yarn add react@18 react-dom@18
+          yarn set resolution "@types/react@npm:*" "19"
+          yarn set resolution "@types/react-dom@npm:*" "19"
+          yarn add react@19 react-dom@19
 
       - name: Cypress run
         if: ${{ (matrix.react == '19' && matrix.spec == 'charts') != true }}
