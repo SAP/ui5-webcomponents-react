@@ -1,5 +1,15 @@
-const STORE_SYMBOL_LISTENERS = Symbol.for('@ui5/webcomponents-react/StyleStore/Listeners');
-const STORE_SYMBOL = Symbol.for('@ui5/webcomponents-react/StyleStore');
+import { getCurrentRuntimeIndex } from '@ui5/webcomponents-base/dist/Runtimes.js';
+
+globalThis['@ui5/webcomponents-react'] ??= {};
+const STORE_LOCATION = globalThis['@ui5/webcomponents-react'];
+
+function getStyleStoreListenersSymbol() {
+  return Symbol.for(`@ui5/webcomponents-react/StyleStore-${getCurrentRuntimeIndex()}/Listeners`);
+}
+
+function getStyleStoreSymbol() {
+  return Symbol.for(`@ui5/webcomponents-react/StyleStore-${getCurrentRuntimeIndex()}`);
+}
 
 interface IStyleStore {
   staticCssInjected: boolean;
@@ -12,8 +22,8 @@ const initialStore: IStyleStore = {
 };
 
 function getListeners(): Array<() => void> {
-  globalThis[STORE_SYMBOL_LISTENERS] ??= [];
-  return globalThis[STORE_SYMBOL_LISTENERS];
+  STORE_LOCATION[getStyleStoreListenersSymbol()] ??= [];
+  return STORE_LOCATION[getStyleStoreListenersSymbol()];
 }
 
 function emitChange() {
@@ -23,15 +33,15 @@ function emitChange() {
 }
 
 function getSnapshot(): IStyleStore {
-  globalThis[STORE_SYMBOL] ??= initialStore;
-  return globalThis[STORE_SYMBOL];
+  STORE_LOCATION[getStyleStoreSymbol()] ??= initialStore;
+  return STORE_LOCATION[getStyleStoreSymbol()];
 }
 
 function subscribe(listener: () => void) {
   const listeners = getListeners();
-  globalThis[STORE_SYMBOL_LISTENERS] = [...listeners, listener];
+  STORE_LOCATION[getStyleStoreListenersSymbol()] = [...listeners, listener];
   return () => {
-    globalThis[STORE_SYMBOL_LISTENERS] = listeners.filter((l) => l !== listener);
+    STORE_LOCATION[getStyleStoreListenersSymbol()] = listeners.filter((l) => l !== listener);
   };
 }
 
@@ -43,7 +53,7 @@ export const StyleStore = {
   },
   setStaticCssInjected: (staticCssInjected: boolean) => {
     const curr = getSnapshot();
-    globalThis[STORE_SYMBOL] = {
+    STORE_LOCATION[getStyleStoreSymbol()] = {
       ...curr,
       staticCssInjected
     };

@@ -1,7 +1,16 @@
+import { getCurrentRuntimeIndex } from '@ui5/webcomponents-base/dist/Runtimes.js';
 import type { ComponentType, RefCallback, RefObject } from 'react';
 
-const STORE_SYMBOL_LISTENERS = Symbol.for('@ui5/webcomponents-react/Modals/Listeners');
-const STORE_SYMBOL = Symbol.for('@ui5/webcomponents-react/Modals');
+globalThis['@ui5/webcomponents-react'] ??= {};
+const STORE_LOCATION = globalThis['@ui5/webcomponents-react'];
+
+function getStyleStoreListenersSymbol() {
+  return Symbol.for(`@ui5/webcomponents-react/Modals-${getCurrentRuntimeIndex()}/Listeners`);
+}
+
+function getStyleStoreSymbol() {
+  return Symbol.for(`@ui5/webcomponents-react/Modals-${getCurrentRuntimeIndex()}`);
+}
 
 type IModal = {
   Component: ComponentType;
@@ -14,8 +23,8 @@ type IModal = {
 const initialStore: IModal[] = [];
 
 function getListeners(): Array<() => void> {
-  globalThis[STORE_SYMBOL_LISTENERS] ??= [];
-  return globalThis[STORE_SYMBOL_LISTENERS];
+  STORE_LOCATION[getStyleStoreListenersSymbol()] ??= [];
+  return STORE_LOCATION[getStyleStoreListenersSymbol()];
 }
 
 function emitChange() {
@@ -25,15 +34,15 @@ function emitChange() {
 }
 
 function getSnapshot(): IModal[] {
-  globalThis[STORE_SYMBOL] ??= initialStore;
-  return globalThis[STORE_SYMBOL];
+  STORE_LOCATION[getStyleStoreSymbol()] ??= initialStore;
+  return STORE_LOCATION[getStyleStoreSymbol()];
 }
 
 function subscribe(listener: () => void) {
   const listeners = getListeners();
-  globalThis[STORE_SYMBOL_LISTENERS] = [...listeners, listener];
+  STORE_LOCATION[getStyleStoreListenersSymbol()] = [...listeners, listener];
   return () => {
-    globalThis[STORE_SYMBOL_LISTENERS] = listeners.filter((l) => l !== listener);
+    STORE_LOCATION[getStyleStoreListenersSymbol()] = listeners.filter((l) => l !== listener);
   };
 }
 
@@ -44,11 +53,11 @@ export const ModalStore = {
     return initialStore;
   },
   addModal(config: IModal) {
-    globalThis[STORE_SYMBOL] = [...getSnapshot(), config];
+    STORE_LOCATION[getStyleStoreSymbol()] = [...getSnapshot(), config];
     emitChange();
   },
   removeModal(id: string) {
-    globalThis[STORE_SYMBOL] = getSnapshot().filter((modal) => modal.id !== id);
+    STORE_LOCATION[getStyleStoreSymbol()] = getSnapshot().filter((modal) => modal.id !== id);
     emitChange();
   }
 };
