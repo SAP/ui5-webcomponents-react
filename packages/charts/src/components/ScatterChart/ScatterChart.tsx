@@ -226,7 +226,8 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
-      {/*@ts-expect-error: todo not yet compatible with React19*/}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/*// @ts-ignore:: todo not yet compatible with React19*/}
       <ScatterChartLib
         onClick={onClickInternal}
         margin={marginChart}

@@ -236,7 +236,8 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
-      {/*@ts-expect-error: todo not yet compatible with React19*/}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/*// @ts-ignore:: todo not yet compatible with React19*/}
       <BarChartLib
         syncId={syncId}
         onClick={onClickInternal}
