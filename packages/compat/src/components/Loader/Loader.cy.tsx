@@ -1,4 +1,4 @@
-import { LoaderType } from '../../enums/index.js';
+import { LoaderType } from '../../enums/LoaderType.js';
 import { Loader } from './index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 

@@ -20,6 +20,7 @@ jobs:
           - cypress-commands
           - main/src/components
           - main/src/internal
+          - compat
         react: ['18', '19']
       fail-fast: false
     steps:
