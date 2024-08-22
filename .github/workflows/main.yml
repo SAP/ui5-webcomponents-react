@@ -79,6 +79,7 @@ jobs:
           yarn set resolution "@types/react@npm:*" "npm:types-react@rc"
           yarn set resolution "@types/react-dom@npm:*" "npm:types-react-dom@rc"
           yarn add react@rc react-dom@rc
+          yarn
 
       - name: Build
         run: yarn build
