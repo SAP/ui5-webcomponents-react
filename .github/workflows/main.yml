@@ -57,6 +57,9 @@ jobs:
     needs: ['install']
     name: 'Build'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        react: ['18', '19']
     env:
       CYPRESS_INSTALL_BINARY: 0
     steps:
