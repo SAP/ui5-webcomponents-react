@@ -12,7 +12,6 @@ import { ComposedChartPlaceholder } from './components/ComposedChart/Placeholder
 import { DonutChart } from './components/DonutChart/DonutChart.js';
 import { LineChart } from './components/LineChart/LineChart.js';
 import { LineChartPlaceholder } from './components/LineChart/Placeholder.js';
-import { MicroBarChart } from './components/MicroBarChart/MicroBarChart.js';
 import { PieChart } from './components/PieChart/PieChart.js';
 import { PieChartPlaceholder } from './components/PieChart/Placeholder.js';
 import { RadarChart } from './components/RadarChart/RadarChart.js';
@@ -31,7 +30,6 @@ export {
   ComposedChart,
   DonutChart,
   LineChart,
-  MicroBarChart,
   PieChart,
   RadarChart,
   RadialChart,
