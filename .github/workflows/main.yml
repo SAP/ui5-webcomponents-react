@@ -57,9 +57,6 @@ jobs:
     needs: ['install']
     name: 'Build'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        react: ['18', '19']
     env:
       CYPRESS_INSTALL_BINARY: 0
     steps:
@@ -72,14 +69,6 @@ jobs:
 
       - name: Install
         run: yarn install --immutable
-
-      - name: Install 19
-        if: ${{ matrix.react == '19' }}
-        run: |
-          yarn set resolution "@types/react@npm:*" "npm:types-react@rc"
-          yarn set resolution "@types/react-dom@npm:*" "npm:types-react-dom@rc"
-          yarn add react@rc react-dom@rc
-          yarn
 
       - name: Build
         run: yarn build
