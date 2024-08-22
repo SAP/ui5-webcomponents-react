@@ -714,7 +714,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               delay={loadingDelay}
               data-component-name="AnalyticalTableBusyIndicator"
             >
-              {/*todo: This is necessary; otherwise, the focus behavior and overlay color will not be applied. */}
+              {/*todo: This is necessary; otherwise, the overlay bg color will not be applied. https://github.com/SAP/ui5-webcomponents/issues/9723 */}
               <span />
             </BusyIndicator>
           )}
