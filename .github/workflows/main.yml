@@ -70,6 +70,13 @@ jobs:
       - name: Install
         run: yarn install --immutable
 
+      - name: Install 19
+        if: ${{ matrix.react == '19' }}
+        run: |
+          echo "$(jq '.resolutions += {"@types/react": "npm:types-react@rc", "@types/react-dom": "npm:types-react-dom@rc" }' package.json)" > package.json
+          yarn add react@rc react-dom@rc
+          yarn
+
       - name: Build
         run: yarn build
 
