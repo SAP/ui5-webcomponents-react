@@ -224,7 +224,6 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
-      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <LineChartLib
         syncId={syncId}
         margin={marginChart}

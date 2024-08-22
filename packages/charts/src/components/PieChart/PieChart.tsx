@@ -276,7 +276,6 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
-      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <PieChartLib
         onClick={onClickInternal}
         margin={chartConfig.margin}

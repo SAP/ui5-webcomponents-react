@@ -286,7 +286,6 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
-      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <ComposedChartLib
         syncId={syncId}
         onClick={onClickInternal}

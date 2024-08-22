@@ -175,7 +175,6 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
-      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <RadarChartLib
         onClick={onClickInternal}
         data={dataset}

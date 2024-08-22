@@ -141,7 +141,6 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
       style={style}
       {...rest}
     >
-      {/*@ts-expect-error: todo not yet compatible with React19*/}
       <RadialBarChart
         onClick={onClickInternal}
         innerRadius="90%"

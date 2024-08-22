@@ -76,9 +76,9 @@ jobs:
       - name: Install 19
         if: ${{ matrix.react == '19' }}
         run: |
-          yarn set resolution "@types/react@npm:*" "19"
-          yarn set resolution "@types/react-dom@npm:*" "19"
-          yarn add react@19 react-dom@19
+          yarn set resolution "@types/react@npm:*" "npm:types-react@rc"
+          yarn set resolution "@types/react-dom@npm:*" "npm:types-react-dom@rc"
+          yarn add react@rc react-dom@rc
 
       - name: Build
         run: yarn build
