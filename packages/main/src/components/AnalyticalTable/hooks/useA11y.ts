@@ -1,6 +1,6 @@
 import type { KeyboardEventHandler } from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
 interface UpdatedCellProptypes {
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
@@ -10,7 +10,7 @@ interface UpdatedCellProptypes {
   role?: string;
 }
 
-const setCellProps = (cellProps, { cell, instance }) => {
+const setCellProps = (cellProps, { cell, instance }: { cell: TableInstance['cell']; instance: TableInstance }) => {
   const { column, row, value } = cell;
   const columnIndex = instance.visibleColumns.findIndex(({ id }) => id === column.id);
   const { alwaysShowSubComponent, renderRowSubComponent, translatableTexts, selectionMode, selectionBehavior } =
@@ -69,7 +69,10 @@ const setCellProps = (cellProps, { cell, instance }) => {
   return [cellProps, updatedCellProps];
 };
 
-const setHeaderProps = (headerProps, { column, instance }) => {
+const setHeaderProps = (
+  headerProps,
+  { column, instance }: { column: TableInstance['column']; instance: TableInstance }
+) => {
   const { translatableTexts } = instance.webComponentsReactProperties;
 
   if (!column) {

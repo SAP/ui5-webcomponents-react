@@ -1,6 +1,6 @@
 import type { ScrollToOptions } from '@tanstack/react-virtual';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { ComponentType, ReactNode, Ref } from 'react';
+import type { ComponentType, MutableRefObject, ReactNode, Ref } from 'react';
 import type {
   AnalyticalTableScaleWidthMode,
   AnalyticalTableScrollMode,
@@ -13,6 +13,211 @@ import type {
   VerticalAlign
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../types/index.js';
+
+export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> {
+  id?: string;
+  Expandable?: any;
+  Grouped?: any;
+  RepeatedValue?: () => null;
+  canFilter?: boolean;
+  canGroupBy?: boolean;
+  canResize?: boolean;
+  canSort?: boolean;
+  depth?: number;
+  filterValue?: any;
+  filteredRows?: Record<string, unknown>[];
+  getFooterProps?: (props?: any) => any;
+  getGroupByToggleProps?: (props?: any) => any;
+  getHeaderProps?: (props?: any) => any;
+  getSortByToggleProps?: (props?: any) => any;
+  getToggleHiddenProps?: (props?: any) => any;
+  groupedIndex?: number;
+  isGrouped?: boolean;
+  isResizing?: boolean;
+  isSorted?: boolean;
+  isSortedDesc?: boolean;
+  isVisible?: boolean;
+  originalWidth?: number;
+  parent?: any;
+  preFilteredRows?: Record<string, RowType>[];
+  render?: any;
+  setFilter?: (val: string) => void;
+  sortDescFirst?: boolean;
+  sortedIndex?: number;
+  toggleHidden?: (hidden?: boolean) => void;
+  totalFlexWidth?: number;
+  totalLeft?: number;
+  totalMaxWidth?: number;
+  totalMinWidth?: number;
+  totalVisibleHeaderCount?: number;
+  totalWidth?: number;
+  [key: string]: any;
+}
+
+export interface TableInstance {
+  allColumns?: ColumnType[];
+  allColumnsHidden?: boolean;
+  columns?: ColumnType[];
+  data?: Record<string, any>[];
+  defaultColumn?: Record<string, any>;
+  disableFilters?: boolean;
+  disableGlobalFilter?: boolean;
+  disableGroupBy?: boolean;
+  disableSortBy?: boolean;
+  dispatch?: (action: any) => void;
+  expandedDepth?: number;
+  expandedRows?: RowType[];
+  filteredFlatRows?: RowType[];
+  filteredRows?: RowType[];
+  filteredRowsById?: Record<string, RowType>;
+  flatHeaders?: ColumnType[];
+  flatRows?: RowType[];
+  footerGroups?: Record<string, any>[];
+  getHooks?: () => any[];
+  getRowId?: (row: RowType, index: number, parent?: any) => string;
+  getSubRows?: (row: RowType, relativeIndex?: number) => RowType[];
+  getTableBodyProps?: any;
+  getTableProps?: any;
+  getToggleAllPageRowsSelectedProps?: any;
+  getToggleAllRowsExpandedProps?: any;
+  getToggleAllRowsSelectedProps?: any;
+  getToggleHideAllColumnsProps?: any;
+  globalFilteredFlatRows?: RowType[];
+  globalFilteredRows?: RowType[];
+  globalFilteredRowsById?: Record<string, RowType>;
+  groupedFlatRows?: RowType[];
+  groupedRows?: RowType[];
+  groupedRowsById?: Record<string, RowType>;
+  headerGroups?: Record<string, any>[];
+  headers?: ColumnType[];
+  initialRows?: RowType[];
+  initialState?: Record<string, any>;
+  isAllPageRowsSelected?: boolean;
+  isAllRowsExpanded?: boolean;
+  isAllRowsSelected?: boolean;
+  nonGroupedFlatRows?: RowType[];
+  nonGroupedRowsById?: Record<string, RowType>;
+  onlyGroupedFlatRows?: RowType[];
+  onlyGroupedRowsById?: Record<string, RowType>;
+  plugins?: any[];
+  preExpandedRows?: RowType[];
+  preFilteredFlatRows?: RowType[];
+  preFilteredRows?: RowType[];
+  preFilteredRowsById?: Record<string, RowType>;
+  preGlobalFilteredFlatRows?: RowType[];
+  preGlobalFilteredRows?: RowType[];
+  preGlobalFilteredRowsById?: Record<string, RowType>;
+  preGroupedFlatRow?: RowType[];
+  preGroupedRows?: RowType[];
+  preGroupedRowsById?: Record<string, RowType>;
+  preSortedFlatRows?: RowType[];
+  preSortedRows?: RowType[];
+  prepareRow?: (row: RowType) => void;
+  resetResizing?: any;
+  rows?: RowType[];
+  rowsById?: Record<string, RowType>;
+  selectSubRows?: boolean;
+  selectedFlatRows?: RowType[];
+  setAllFilters?: (filtersObjectArray: Record<string, any>[]) => void;
+  setColumnOrder?: any;
+  setFilter?: (columnId: string, filterValue: string) => void;
+  setGlobalFilter?: (filterValue: string) => void;
+  setGroupBy?: (columnIds: string[]) => void;
+  setHiddenColumns?: (columnIds: string[]) => void;
+  setSortBy?: any;
+  sortTypes?: Record<string, any>;
+  sortedFlatRows?: Record<string, RowType>[];
+  sortedRows?: Record<string, RowType>[];
+  state?: AnalyticalTableState & Record<string, any>;
+  stateReducer?: (
+    state: TableInstance['state'],
+    action: any,
+    _prevState: TableInstance['state'],
+    instance: TableInstance
+  ) => TableInstance['state'];
+  toggleAllPageRowsSelected?: (selected?: boolean) => void;
+  toggleAllRowsExpanded?: (expanded?: boolean) => void;
+  toggleAllRowsSelected?: (selected?: boolean) => void;
+  toggleGroupBy?: (columnId: string, value: boolean) => void;
+  toggleHideAllColumns?: (hidden?: boolean) => void;
+  toggleHideColumn?: (columnId: string, hidden?: boolean) => void;
+  toggleRowExpanded?: (rowPath: string, expanded?: boolean) => void;
+  toggleRowSelected?: (rowPath: string, selected?: boolean) => void;
+  toggleSortBy?: (columnId: string, desc: boolean, multi?: boolean) => void;
+  totalColumnsMaxWidth?: number;
+  totalColumnsMinWidth?: number;
+  totalColumnsWidth?: number;
+  useControlledState?: any;
+  virtualRowsRange?: {
+    startIndex: number;
+    endIndex: number;
+  };
+  visibleColumns?: ColumnType[];
+  visibleColumnsWidth?: number[];
+  webComponentsReactProperties?: WCRPropertiesType;
+  [key: string]: any;
+}
+
+export interface WCRPropertiesType {
+  selectionMode: AnalyticalTablePropTypes['selectionMode'];
+  onRowSelect?: AnalyticalTablePropTypes['onRowSelect'];
+  translatableTexts: {
+    selectAllText: string;
+    deselectAllText: string;
+    expandA11yText: string;
+    collapseA11yText: string;
+    selectA11yText: string;
+    unselectA11yText: string;
+    expandNodeA11yText: string;
+    collapseNodeA11yText: string;
+    filteredA11yText: string;
+    groupedA11yText: string;
+  };
+  tagNamesWhichShouldNotSelectARow: Set<string>;
+  tableRef: MutableRefObject<DivWithCustomScrollProp>;
+  selectionBehavior: AnalyticalTablePropTypes['selectionBehavior'];
+  classes: Record<string, string>;
+  onAutoResize: AnalyticalTablePropTypes['onAutoResize'];
+  onRowClick: AnalyticalTablePropTypes['onRowClick'];
+  onRowExpandChange: AnalyticalTablePropTypes['onRowExpandChange'];
+  isTreeTable: AnalyticalTablePropTypes['isTreeTable'];
+  alternateRowColor: AnalyticalTablePropTypes['alternateRowColor'];
+
+  scaleWidthMode: AnalyticalTablePropTypes['scaleWidthMode'];
+  loading: AnalyticalTablePropTypes['loading'];
+  withRowHighlight: AnalyticalTablePropTypes['withRowHighlight'];
+  highlightField: AnalyticalTablePropTypes['highlightField'];
+  withNavigationHighlight: AnalyticalTablePropTypes['withNavigationHighlight'];
+  markNavigatedRow: AnalyticalTablePropTypes['markNavigatedRow'];
+  renderRowSubComponent: AnalyticalTablePropTypes['renderRowSubComponent'];
+  alwaysShowSubComponent: boolean;
+  showOverlay: AnalyticalTablePropTypes['showOverlay'];
+  uniqueId: string;
+  subRowsKey: AnalyticalTablePropTypes['subRowsKey'];
+  onColumnsReorder: AnalyticalTablePropTypes['onColumnsReorder'];
+}
+
+export interface RowType {
+  allCells: Record<string, any>[];
+  canExpand: boolean;
+  cells: Record<string, any>[];
+  depth: number;
+  getRowProps: (props?: any) => any;
+  getToggleRowExpandedProps: (userProps?: any) => void;
+  getToggleRowSelectedProps: (userProps?: any) => void;
+  id: string;
+  index: number;
+  isExpanded: boolean;
+  isSelected: boolean;
+  isSomeSelected: boolean;
+  original: Record<string, any>;
+  originalSubRows: Record<string, any>[];
+  subRows: Record<string, any>[];
+  toggleRowExpanded: (isExpanded?: boolean) => void;
+  toggleRowSelected: (isSelected?: boolean) => void;
+  values: Record<string, any>;
+  [key: string]: any;
+}
 
 export interface ScrollToRefType {
   horizontalScrollToOffset: (offset: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;
@@ -123,7 +328,7 @@ export interface AnalyticalTableColumnDefinition {
    * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`
    * __Note__: If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set.
    */
-  accessor?: string | ((row: any, rowIndex: number) => any);
+  accessor?: string | ((row: RowType, rowIndex: number) => any);
   /**
    * Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.
    *
@@ -213,7 +418,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * When attempting to group/aggregate non-primitive cell values (e.g. arrays of items) you will likely need to resolve a stable primitive value like a number or string to use in normal row aggregations. This property can be used to aggregate or simply access the value to be used in aggregations eg. count-ing the unique number of items in a cell's array value before sum-ing that count across the table.
    */
-  aggregateValue?: string | ((values, row, column) => any);
+  aggregateValue?: string | ((values, row: RowType, column) => any);
   /**
    * Disable groupBy for this column.
    */
@@ -469,7 +674,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * @default `"status"`
    */
-  highlightField?: string | ((row: Record<any, any>) => HighlightColor);
+  highlightField?: string | ((row: RowType) => HighlightColor);
   /**
    * Defines whether columns are filterable.
    *
@@ -579,7 +784,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ This prop updates the internal table state and must therefore be memoized!
    */
-  selectedRowIds?: { [key: string]: boolean };
+  selectedRowIds?: Record<string, boolean>;
   /**
    * Defines whether the table should act as tree-table.
    */
@@ -601,7 +806,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ Subcomponents can affect performance, especially when used in a tree table (`isTreeTable={true}`). If you face performance issues, please try memoizing your subcomponent.
    */
-  renderRowSubComponent?: (row?: any) => ReactNode;
+  renderRowSubComponent?: (row?: RowType) => ReactNode;
   /**
    * Defines the rendering and height calculation behavior of subcomponents when `renderRowSubComponent` is used.
    *
@@ -622,32 +827,42 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Must be memoized!__
    */
-  markNavigatedRow?: (row?: Record<any, any>) => boolean;
+  markNavigatedRow?: (row?: RowType) => boolean;
   /**
    * Fired when the sorting of the rows changes.
    */
-  onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
+  onSort?: (e: CustomEvent<{ column: ColumnType; sortDirection: string }>) => void;
   /**
    * Fired when the grouping of the rows changes.
    */
-  onGroup?: (e: CustomEvent<{ column: unknown; groupedColumns: string[] }>) => void;
+  onGroup?: (e: CustomEvent<{ column: ColumnType; groupedColumns: string[] }>) => void;
   /**
    * Fired when a row is selected or unselected.
    */
   onRowSelect?: (
     e?: CustomEvent<{
-      allRowsSelected: boolean;
-      row?: Record<string, unknown>;
+      /**
+       * Selected row object.
+       *
+       * __Note:__ If the event is invoked by select-all press, this property is not available.
+       */
+      row?: RowType;
+      /**
+       * Defines if the row is selected.
+       *
+       * __Note:__ If the event invoked by select-all press, this property is not available.
+       */
       isSelected?: boolean;
-      selectedFlatRows: Record<string, unknown>[];
-      selectedRowIds: Record<string | number, boolean>;
+      allRowsSelected: boolean;
+      rowsById: Record<string, RowType>;
+      selectedRowIds: Record<string, boolean>;
       nativeDetail: number;
     }>
   ) => void;
   /**
    * Fired when a row is clicked
    */
-  onRowClick?: OnRowClickEvent;
+  onRowClick?: (e: OnRowClickEvent) => void;
   /**
    * Fired when a row is expanded or collapsed
    */
@@ -692,5 +907,5 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * **Note**: Use this prop with care, some properties might have an impact on the internal `AnalyticalTable` implementation.
    */
-  tableInstance?: Ref<Record<string, any>>;
+  tableInstance?: Ref<TableInstance>;
 }

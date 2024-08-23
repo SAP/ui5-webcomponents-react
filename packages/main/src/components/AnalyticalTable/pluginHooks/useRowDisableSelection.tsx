@@ -1,7 +1,7 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 import { CheckBox } from '../../../webComponents/CheckBox/index.js';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, RowType, TableInstance } from '../types/index.js';
 import { getBy } from '../util/index.js';
 
 type DisableRowSelectionType = string | ((row: Record<any, any>) => boolean);
@@ -16,7 +16,7 @@ const headerProps = (
     instance: {
       webComponentsReactProperties: { selectionMode }
     }
-  }
+  }: { instance: TableInstance }
 ) => {
   if (
     props.key === 'header___ui5wcr__internal_selection_column' &&
@@ -28,7 +28,7 @@ const headerProps = (
   return props;
 };
 
-const columns = (columns) => {
+const columns = (columns: TableInstance['columns']) => {
   return columns.map((column) => {
     if (column.id === '__ui5wcr__internal_selection_column') {
       return {
@@ -80,7 +80,7 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
       ? disableRowSelection
       : (d) => getBy(d.original, disableRowSelection, undefined);
 
-  const getRowProps = (rowProps, { row, instance }) => {
+  const getRowProps = (rowProps, { row, instance }: { row: RowType; instance: TableInstance }) => {
     const { webComponentsReactProperties } = instance;
     if (disableRowAccessor(row) === true) {
       row.disableSelect = true;
@@ -120,7 +120,10 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     return [...deps, disableRowSelection];
   };
 
-  const cellProps = (cellProps, { cell: { row, column }, instance }) => {
+  const cellProps = (
+    cellProps,
+    { cell: { row, column }, instance }: { cell: TableInstance['cell']; instance: TableInstance }
+  ) => {
     const { selectionMode, selectionBehavior } = instance.webComponentsReactProperties;
     if (
       disableRowAccessor(row) === true &&
@@ -140,7 +143,7 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
     return cellProps;
   };
 
-  const toggleRowSelectedProps = (rowProps, { row }) => {
+  const toggleRowSelectedProps = (rowProps, { row }: { row: RowType }) => {
     if (disableRowAccessor(row) === true) {
       const { title: _0, ...updatedRowProps } = rowProps;
       return updatedRowProps;

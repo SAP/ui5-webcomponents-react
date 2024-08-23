@@ -1,6 +1,6 @@
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
-const getVisibleColumnsWidth = (instance) => {
+const getVisibleColumnsWidth = (instance: TableInstance) => {
   const visibleColumnsWidth = instance.visibleColumns.map((item) => item.totalWidth);
   Object.assign(instance, { visibleColumnsWidth });
 };

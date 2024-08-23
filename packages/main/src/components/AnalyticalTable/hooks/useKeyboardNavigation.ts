@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { actions } from 'react-table';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ColumnType, ReactTableHooks, TableInstance } from '../types/index.js';
 import { getLeafHeaders } from '../util/index.js';
 
 const CELL_DATA_ATTRIBUTES = ['visibleColumnIndex', 'columnIndex', 'rowIndex', 'visibleRowIndex'];
@@ -62,7 +62,10 @@ const navigateFromActiveSubCompItem = (currentlyFocusedCell, e) => {
   setFocus(currentlyFocusedCell, recursiveSubComponentElementSearch(e.target));
 };
 
-const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties, data, columns, state } }) => {
+const useGetTableProps = (
+  tableProps,
+  { instance: { webComponentsReactProperties, data, columns, state } }: { instance: TableInstance }
+) => {
   const { showOverlay, tableRef } = webComponentsReactProperties;
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
   const noData = data.length === 0;
@@ -171,7 +174,7 @@ const useGetTableProps = (tableProps, { instance: { webComponentsReactProperties
         switch (e.key) {
           case 'End': {
             e.preventDefault();
-            const visibleColumns: HTMLDivElement[] = tableRef.current.querySelector(
+            const visibleColumns = tableRef.current.querySelector(
               `div[data-component-name="AnalyticalTableHeaderRow"]`
             ).children;
 
@@ -346,7 +349,10 @@ function getPayload(e, column) {
   return { clientX, columnId, columnWidth, headerIdWidths };
 }
 
-const setHeaderProps = (headerProps, { instance: { dispatch }, column }) => {
+const setHeaderProps = (
+  headerProps,
+  { instance: { dispatch }, column }: { instance: TableInstance; column: ColumnType }
+) => {
   // resize col with keyboard
   const handleKeyDown = (e) => {
     if (typeof headerProps.onKeyDown === 'function') {

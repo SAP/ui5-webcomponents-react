@@ -1,7 +1,10 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, RowType, TableInstance } from '../types/index.js';
 
-const getToggleRowExpandedProps = (rowProps, { row, instance, userProps }) => {
+const getToggleRowExpandedProps = (
+  rowProps,
+  { row, instance, userProps }: { row: RowType; instance: TableInstance; userProps: Record<string, any> }
+) => {
   const { manualGroupBy } = instance;
   const { onRowExpandChange, isTreeTable, renderRowSubComponent, alwaysShowSubComponent } =
     instance.webComponentsReactProperties;
