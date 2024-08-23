@@ -1,8 +1,11 @@
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
-const popInVisibleColumnsDeps = (deps, { instance: { state } }) => [...deps, state.tableClientWidth];
+const popInVisibleColumnsDeps = (deps, { instance: { state } }: { instance: TableInstance }) => [
+  ...deps,
+  state.tableClientWidth
+];
 
-const popInVisibleColumns = (cols, { instance }) => {
+const popInVisibleColumns = (cols, { instance }: { instance: TableInstance }) => {
   const { state, dispatch } = instance;
 
   const tableClientWidth = state.isScrollable

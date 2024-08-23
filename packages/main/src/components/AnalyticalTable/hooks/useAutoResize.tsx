@@ -1,9 +1,9 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column/index.js';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, TableInstance } from '../types/index.js';
 import { CELL_PADDING_PX } from './useDynamicColumnWidths.js';
 
-function setResizerProps(props, { instance, header }) {
+function setResizerProps(props, { instance, header }: { instance: TableInstance; header: TableInstance['header'] }) {
   const { dispatch, virtualRowsRange, rows, webComponentsReactProperties } = instance;
   const { onAutoResize, tableRef, isTreeTable } = webComponentsReactProperties;
   const { autoResizable, id: accessor } = header;
@@ -109,7 +109,7 @@ const setCellProps = (
     cell: {
       column: { id }
     }
-  }
+  }: { cell: TableInstance['cell'] }
 ) => {
   return [props, { ['data-column-id-cell']: id }];
 };

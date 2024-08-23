@@ -1,6 +1,6 @@
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { IndicationColor } from '../../../enums/index.js';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
 const baseStyles = {
   width: '100%',
@@ -18,7 +18,7 @@ const HighlightColors = {
  */
 const Header = () => <div style={{ width: '6px' }} />;
 
-const Cell = (instance) => {
+const Cell = (instance: TableInstance) => {
   const { cell, webComponentsReactProperties } = instance;
   const styleClass = HighlightColors[cell?.value]
     ? webComponentsReactProperties.classes[HighlightColors[cell.value].toLowerCase()]
@@ -29,11 +29,17 @@ const Cell = (instance) => {
 /*
  * TABLE HOOKS
  */
-const columnsDeps = (deps, { instance: { webComponentsReactProperties } }) => {
+const columnsDeps = (deps, { instance: { webComponentsReactProperties } }: { instance: TableInstance }) => {
   return [...deps, webComponentsReactProperties.withRowHighlight, webComponentsReactProperties.highlightField];
 };
-const visibleColumnsDeps = (deps, { instance }) => [...deps, instance.webComponentsReactProperties.withRowHighlight];
-const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactProperties } }) => {
+const visibleColumnsDeps = (deps, { instance }: { instance: TableInstance }) => [
+  ...deps,
+  instance.webComponentsReactProperties.withRowHighlight
+];
+const visibleColumns = (
+  currentVisibleColumns,
+  { instance: { webComponentsReactProperties } }: { instance: TableInstance }
+) => {
   if (!webComponentsReactProperties.withRowHighlight) {
     return currentVisibleColumns.filter(({ id }) => id !== '__ui5wcr__internal_highlight_column');
   }
@@ -42,7 +48,7 @@ const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactP
   return [highlightColumn, ...currentVisibleColumns.filter(({ id }) => id !== '__ui5wcr__internal_highlight_column')];
 };
 
-const columns = (currentColumns, { instance }) => {
+const columns = (currentColumns, { instance }: { instance: TableInstance }) => {
   const { withRowHighlight, highlightField } = instance.webComponentsReactProperties;
 
   if (!withRowHighlight) {

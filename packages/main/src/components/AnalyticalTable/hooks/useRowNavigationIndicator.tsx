@@ -1,4 +1,4 @@
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
 const baseStyles = {
   width: '100%',
@@ -27,14 +27,17 @@ const Cell = (instance) => {
 /*
  * TABLE HOOKS
  */
-const columnsDeps = (deps, { instance: { webComponentsReactProperties } }) => {
+const columnsDeps = (deps, { instance: { webComponentsReactProperties } }: { instance: TableInstance }) => {
   return [...deps, webComponentsReactProperties.withNavigationHighlight];
 };
-const visibleColumnsDeps = (deps, { instance }) => [
+const visibleColumnsDeps = (deps, { instance }: { instance: TableInstance }) => [
   ...deps,
   instance.webComponentsReactProperties.withNavigationHighlight
 ];
-const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactProperties } }) => {
+const visibleColumns = (
+  currentVisibleColumns,
+  { instance: { webComponentsReactProperties } }: { instance: TableInstance }
+) => {
   if (!webComponentsReactProperties.withNavigationHighlight) {
     return currentVisibleColumns.filter(({ id }) => id !== '__ui5wcr__internal_navigation_column');
   }
@@ -43,7 +46,7 @@ const visibleColumns = (currentVisibleColumns, { instance: { webComponentsReactP
   return [...currentVisibleColumns.filter(({ id }) => id !== '__ui5wcr__internal_navigation_column'), highlightColumn];
 };
 
-const columns = (currentColumns, { instance }) => {
+const columns = (currentColumns, { instance }: { instance: TableInstance }) => {
   const { withNavigationHighlight } = instance.webComponentsReactProperties;
 
   if (!withNavigationHighlight) {

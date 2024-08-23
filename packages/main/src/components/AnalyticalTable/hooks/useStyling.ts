@@ -1,9 +1,9 @@
 import type { CSSProperties } from 'react';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ColumnType, ReactTableHooks, RowType, TableInstance } from '../types/index.js';
 import { getSubRowsByString, resolveCellAlignment } from '../util/index.js';
 
-const getHeaderGroupProps = (headerGroupProps, { instance }) => {
+const getHeaderGroupProps = (headerGroupProps, { instance }: { instance: TableInstance }) => {
   const { classes } = instance.webComponentsReactProperties;
   return [
     headerGroupProps,
@@ -13,7 +13,7 @@ const getHeaderGroupProps = (headerGroupProps, { instance }) => {
   ];
 };
 
-const getHeaderProps = (columnProps, { instance, column }) => {
+const getHeaderProps = (columnProps, { instance, column }: { instance: TableInstance; column: ColumnType }) => {
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
   const { classes } = instance.webComponentsReactProperties;
   const style: CSSProperties = {
@@ -43,11 +43,15 @@ const getHeaderProps = (columnProps, { instance, column }) => {
 
 const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
-const getRowProps = (rowProps, { instance, row, userProps }) => {
+const getRowProps = (
+  rowProps,
+  { instance, row, userProps }: { instance: TableInstance; row: RowType; userProps: Record<string, any> }
+) => {
   const { webComponentsReactProperties } = instance;
   const { classes, selectionBehavior, selectionMode, alternateRowColor, subRowsKey } = webComponentsReactProperties;
   let className = classes.tr;
   const rowCanBeSelected = [AnalyticalTableSelectionMode.Single, AnalyticalTableSelectionMode.Multiple].includes(
+    //@ts-expect-error: we know that "None" is not in the array...
     selectionMode
   );
   if (

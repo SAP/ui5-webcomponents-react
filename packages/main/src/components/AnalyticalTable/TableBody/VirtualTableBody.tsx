@@ -1,12 +1,13 @@
 import type { Virtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
-import type { MutableRefObject, ReactNode } from 'react';
+import type { MutableRefObject } from 'react';
 import { useEffect, useMemo, useRef } from 'react';
 import { AnalyticalTableSubComponentsBehavior } from '../../../enums/index.js';
 import type {
   AnalyticalTablePropTypes,
   DivWithCustomScrollProp,
   ScrollToRefType,
+  TableInstance,
   TriggerScrollState
 } from '../types/index.js';
 import { getSubRowsByString } from '../util/index.js';
@@ -16,12 +17,12 @@ import { RowSubComponent as SubComponent } from './RowSubComponent.js';
 interface VirtualTableBodyProps {
   classes: Record<string, string>;
   prepareRow: (row: unknown) => void;
-  rows: Record<string, any>[];
+  rows: TableInstance['rows'];
   isTreeTable?: AnalyticalTablePropTypes['isTreeTable'];
   internalRowHeight: number;
   alternateRowColor?: AnalyticalTablePropTypes['alternateRowColor'];
   visibleColumns: Record<string, unknown>[];
-  renderRowSubComponent: (row?: Record<string, unknown>) => ReactNode;
+  renderRowSubComponent: AnalyticalTablePropTypes['renderRowSubComponent'];
   popInRowHeight: number;
   isRtl: boolean;
   markNavigatedRow?: AnalyticalTablePropTypes['markNavigatedRow'];

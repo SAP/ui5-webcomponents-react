@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { AnalyticalTableScaleWidthMode } from '../../../enums/index.js';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column/index.js';
-import type { AnalyticalTableColumnDefinition, ReactTableHooks } from '../types/index.js';
+import type { AnalyticalTableColumnDefinition, ReactTableHooks, TableInstance } from '../types/index.js';
 
 const ROW_SAMPLE_SIZE = 20;
 const MAX_WIDTH = 700;
@@ -206,7 +206,7 @@ const smartColumns = (columns: AnalyticalTableColumnDefinition[], instance, hidd
   });
 };
 
-const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
+const columns = (columns: TableInstance['columns'], { instance }: { instance: TableInstance }) => {
   if (!instance.state || !instance.rows) {
     return columns;
   }
@@ -231,7 +231,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
       }
       return column ?? false;
     })
-    .filter(Boolean);
+    .filter(Boolean) as TableInstance['columns'];
   if (scaleWidthMode === AnalyticalTableScaleWidthMode.Smart) {
     return smartColumns(columns, instance, hiddenColumns);
   }
@@ -296,7 +296,7 @@ const columns = (columns: AnalyticalTableColumnDefinition[], { instance }) => {
         }
         return false;
       })
-      .filter(Boolean);
+      .filter(Boolean) as number[];
 
     const fixedWidth = columnsWithFixedWidth.reduce((acc, val) => acc + val, 0);
     // check if columns are visible and table has width

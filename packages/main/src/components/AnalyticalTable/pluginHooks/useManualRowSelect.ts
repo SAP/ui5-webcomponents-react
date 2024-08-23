@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
 /**
  * A plugin hook for manual row selection.
@@ -9,7 +9,13 @@ import type { ReactTableHooks } from '../types/index.js';
  * @param {string} manualRowSelectedKey - If this key is found on the original data row, and it is true, this row will be manually selected. __Defaults to `"isSelected"`__.
  */
 export const useManualRowSelect = (manualRowSelectedKey = 'isSelected') => {
-  const instanceAfterData = ({ flatRows, toggleRowSelected }) => {
+  const instanceAfterData = ({
+    flatRows,
+    toggleRowSelected
+  }: {
+    flatRows: TableInstance['flatRows'];
+    toggleRowSelected: TableInstance['toggleRowSelected'];
+  }) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       flatRows.forEach(({ id, original }) => {

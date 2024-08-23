@@ -531,10 +531,14 @@ function MyComponent() {
 
 ### AnalyticalTable
 
+**TypeScript Changes:**
+
+The internal table instance types were updated, leading to stricter types, so depending on your implementation, you might encounter ts-errors.
+
 **Renamed or Changed Props:**
 
 - `alwaysShowSubComponent` has been removed, please use `subComponentsBehavior` with `AnalyticalTableSubComponentsBehavior.Visibe` instead.
-- The default value of `sortable` (`true`) has been removed. To allow sorting in your table please set `sorting` to `true` yourself.
+- The default value of `sortable` (`true`) has been removed. To allow sorting in your table please set `sortable` to `true` yourself.
 
 **Removed Props:**
 
@@ -547,13 +551,13 @@ function MyComponent() {
 ```js
 const handleOnRowSelect = (event) => {
   const { selectedRowIds, rowsById } = event.detail;
-  const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).reduce((acc, key) => {
+  const selectedFlatRows = Object.keys(selectedRowIds).reduce((acc, key) => {
     if (selectedRowIds[key]) {
       acc.push(rowsById[key]);
     }
     return acc;
   }, []);
-  console.log(selectedRowIdsArrayMapped);
+  console.log(selectedFlatRows);
 };
 ```
 

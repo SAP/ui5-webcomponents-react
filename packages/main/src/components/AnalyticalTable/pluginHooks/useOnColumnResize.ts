@@ -2,7 +2,7 @@
 
 import { debounce } from '@ui5/webcomponents-react-base';
 import { useEffect, useRef } from 'react';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
 interface useOnColumnResizeOptions {
   /**
@@ -30,7 +30,7 @@ type useOnColumnResizeFunc = (e: { columnWidth: number; header: Record<string, a
 export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: useOnColumnResizeOptions) => {
   const debouncedEvent = debounce(callback, options?.wait ?? 100);
 
-  const useInstance = (instance) => {
+  const useInstance = (instance: TableInstance) => {
     const { state, columns } = instance;
     const { columnResizing } = state;
     const { isResizingColumn, columnWidths } = columnResizing;

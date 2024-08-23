@@ -1,9 +1,9 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
 import { getTagNameWithoutScopingSuffix } from '../../../internal/utils.js';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, RowType, TableInstance } from '../types/index.js';
 
-const getRowProps = (rowProps, { row, instance }) => {
+const getRowProps = (rowProps, { row, instance }: { row: RowType; instance: TableInstance }) => {
   const { webComponentsReactProperties, toggleRowSelected, selectedFlatRows, dispatch } = instance;
   const handleRowSelect = (e) => {
     const isSelectionCell = e.target.dataset.selectionCell === 'true';

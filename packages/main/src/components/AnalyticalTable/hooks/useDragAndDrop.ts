@@ -1,5 +1,5 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
-import type { ReactTableHooks } from '../types/index.js';
+import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
 const getColumnId = (column) => {
   return typeof column.accessor === 'string' ? column.accessor : column.id;
@@ -7,7 +7,7 @@ const getColumnId = (column) => {
 
 function getHeaderProps(
   props: Record<string, unknown>,
-  { instance: { dispatch, state, columns, setColumnOrder, webComponentsReactProperties } }
+  { instance: { dispatch, state, columns, setColumnOrder, webComponentsReactProperties } }: { instance: TableInstance }
 ) {
   const { columnOrder, columnResizing, isRtl, dndColumn } = state;
   const { onColumnsReorder } = webComponentsReactProperties;
