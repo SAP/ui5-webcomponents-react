@@ -7,7 +7,6 @@ import { WebComponentWrapper } from './WebComponentWrapper.js';
 export class ComponentRenderer extends AbstractRenderer {
   public phase = RenderingPhase.component;
 
-  private dynamicImportPath: string | undefined;
   private attributes: CEM.ClassField[] = [];
   private slots: CEM.Slot[] = [];
   private events: CEM.Event[] = [];
@@ -15,11 +14,6 @@ export class ComponentRenderer extends AbstractRenderer {
   private note: string = '';
   private isAbstract: boolean = false;
   private since: string | undefined;
-
-  setDynamicImportPath(value: string) {
-    this.dynamicImportPath = value;
-    return this;
-  }
 
   setAttributes(attrs: CEM.ClassField[]) {
     this.attributes.push(...attrs);
@@ -98,8 +92,7 @@ export class ComponentRenderer extends AbstractRenderer {
         [${this.events
           ?.map((event) => `'${event.name}'`)
           .toSorted((a, b) => a.localeCompare(b))
-          .join(', ')}],
-        () => import('${this.dynamicImportPath}') 
+          .join(', ')}]
     );
     
     ${context.componentName}.displayName = '${context.componentName}';
