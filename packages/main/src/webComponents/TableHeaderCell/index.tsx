@@ -66,8 +66,7 @@ const TableHeaderCell = withWebComponent<TableHeaderCellPropTypes, TableHeaderCe
   ['importance', 'maxWidth', 'minWidth', 'width'],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/TableHeaderCell.js')
+  []
 );
 
 TableHeaderCell.displayName = 'TableHeaderCell';

@@ -113,8 +113,7 @@ const Tag = withWebComponent<TagPropTypes, TagDomRef>(
   ['colorScheme', 'design', 'size', 'wrappingType'],
   ['hideStateIcon', 'interactive'],
   ['icon'],
-  ['click'],
-  () => import('@ui5/webcomponents/dist/Tag.js')
+  ['click']
 );
 
 Tag.displayName = 'Tag';

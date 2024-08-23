@@ -149,8 +149,7 @@ const DynamicPage = withWebComponent<DynamicPagePropTypes, DynamicPageDomRef>(
   [],
   ['headerPinned', 'headerSnapped', 'hidePinButton', 'showFooter'],
   ['footerArea', 'headerArea', 'titleArea'],
-  ['pin-button-toggle', 'title-toggle'],
-  () => import('@ui5/webcomponents-fiori/dist/DynamicPage.js')
+  ['pin-button-toggle', 'title-toggle']
 );
 
 DynamicPage.displayName = 'DynamicPage';

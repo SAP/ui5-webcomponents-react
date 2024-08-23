@@ -78,8 +78,7 @@ const Card = withWebComponent<CardPropTypes, CardDomRef>(
   ['accessibleName', 'accessibleNameRef', 'loadingDelay'],
   ['loading'],
   ['header'],
-  [],
-  () => import('@ui5/webcomponents/dist/Card.js')
+  []
 );
 
 Card.displayName = 'Card';

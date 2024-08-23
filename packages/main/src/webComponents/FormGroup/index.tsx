@@ -55,8 +55,7 @@ const FormGroup = withWebComponent<FormGroupPropTypes, FormGroupDomRef>(
   ['columnSpan', 'headerText'],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/FormGroup.js')
+  []
 );
 
 FormGroup.displayName = 'FormGroup';

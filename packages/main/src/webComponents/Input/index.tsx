@@ -273,8 +273,7 @@ const Input = withWebComponent<InputPropTypes, InputDomRef>(
   ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
   ['disabled', 'noTypeahead', 'open', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
-  ['change', 'close', 'input', 'open', 'select', 'selection-change'],
-  () => import('@ui5/webcomponents/dist/Input.js')
+  ['change', 'close', 'input', 'open', 'select', 'selection-change']
 );
 
 Input.displayName = 'Input';

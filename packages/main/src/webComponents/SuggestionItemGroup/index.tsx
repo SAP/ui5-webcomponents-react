@@ -78,8 +78,7 @@ const SuggestionItemGroup = withWebComponent<SuggestionItemGroupPropTypes, Sugge
   ['headerAccessibleName', 'headerText'],
   [],
   ['header'],
-  ['move-over', 'move'],
-  () => import('@ui5/webcomponents/dist/SuggestionItemGroup.js')
+  ['move-over', 'move']
 );
 
 SuggestionItemGroup.displayName = 'SuggestionItemGroup';

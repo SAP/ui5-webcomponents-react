@@ -62,8 +62,7 @@ const FormItem = withWebComponent<FormItemPropTypes, FormItemDomRef>(
   ['columnSpan'],
   [],
   ['labelContent'],
-  [],
-  () => import('@ui5/webcomponents/dist/FormItem.js')
+  []
 );
 
 FormItem.displayName = 'FormItem';

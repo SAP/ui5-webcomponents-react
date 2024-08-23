@@ -153,8 +153,7 @@ const ToolbarButton = withWebComponent<ToolbarButtonPropTypes, ToolbarButtonDomR
   ],
   ['disabled', 'preventOverflowClosing'],
   [],
-  ['click'],
-  () => import('@ui5/webcomponents/dist/ToolbarButton.js')
+  ['click']
 );
 
 ToolbarButton.displayName = 'ToolbarButton';

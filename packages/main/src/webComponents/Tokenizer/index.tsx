@@ -90,8 +90,7 @@ const Tokenizer = withWebComponent<TokenizerPropTypes, TokenizerDomRef>(
   ['accessibleName', 'accessibleNameRef'],
   ['disabled', 'readonly'],
   [],
-  ['selection-change', 'token-delete'],
-  () => import('@ui5/webcomponents/dist/Tokenizer.js')
+  ['selection-change', 'token-delete']
 );
 
 Tokenizer.displayName = 'Tokenizer';

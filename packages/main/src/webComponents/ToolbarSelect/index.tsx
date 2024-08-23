@@ -108,8 +108,7 @@ const ToolbarSelect = withWebComponent<ToolbarSelectPropTypes, ToolbarSelectDomR
   ['accessibleName', 'accessibleNameRef', 'overflowPriority', 'valueState', 'width'],
   ['disabled', 'preventOverflowClosing'],
   [],
-  ['change', 'close', 'open'],
-  () => import('@ui5/webcomponents/dist/ToolbarSelect.js')
+  ['change', 'close', 'open']
 );
 
 ToolbarSelect.displayName = 'ToolbarSelect';

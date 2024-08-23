@@ -99,8 +99,7 @@ const ColorPalettePopover = withWebComponent<ColorPalettePopoverPropTypes, Color
   ['defaultColor', 'opener'],
   ['open', 'showDefaultColor', 'showMoreColors', 'showRecentColors'],
   [],
-  ['close', 'item-click'],
-  () => import('@ui5/webcomponents/dist/ColorPalettePopover.js')
+  ['close', 'item-click']
 );
 
 ColorPalettePopover.displayName = 'ColorPalettePopover';

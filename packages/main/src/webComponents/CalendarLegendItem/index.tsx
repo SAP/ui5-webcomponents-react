@@ -45,8 +45,7 @@ const CalendarLegendItem = withWebComponent<CalendarLegendItemPropTypes, Calenda
   ['text', 'type'],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/CalendarLegendItem.js')
+  []
 );
 
 CalendarLegendItem.displayName = 'CalendarLegendItem';

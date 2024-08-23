@@ -73,8 +73,7 @@ const Toolbar = withWebComponent<ToolbarPropTypes, ToolbarDomRef>(
   ['accessibleName', 'accessibleNameRef', 'alignContent', 'design'],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/Toolbar.js')
+  []
 );
 
 Toolbar.displayName = 'Toolbar';

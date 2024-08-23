@@ -40,8 +40,7 @@ const SuggestionItemCustom = withWebComponent<SuggestionItemCustomPropTypes, Sug
   ['text'],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/SuggestionItemCustom.js')
+  []
 );
 
 SuggestionItemCustom.displayName = 'SuggestionItemCustom';
