@@ -1,0 +1,269 @@
+Bundled license information:
+
+use-sync-external-store/cjs/use-sync-external-store-shim.production.min.js:
+  /**
+   * @license React
+   * use-sync-external-store-shim.production.min.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+react/cjs/react-jsx-runtime.production.min.js:
+  /**
+   * @license React
+   * react-jsx-runtime.production.min.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+lit-html/lit-html.js:
+  /**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+
+lit-html/directive.js:
+  /**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+
+lit-html/directive-helpers.js:
+  /**
+   * @license
+   * Copyright 2020 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+
+lit-html/directives/repeat.js:
+  /**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+
+lit-html/directives/class-map.js:
+  /**
+   * @license
+   * Copyright 2018 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+
+@ui5/webcomponents-base/dist/renderer/directives/style-map.js:
+  /**
+   * @license
+   * Copyright 2018 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+
+lit-html/directives/if-defined.js:
+  /**
+   * @license
+   * Copyright 2018 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+
+lit-html/directives/unsafe-html.js:
+  /**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+
+lit-html/static.js:
+  /**
+   * @license
+   * Copyright 2020 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+
+@ui5/webcomponents-localization/dist/sap/base/i18n/date/TimezoneUtils.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/core/format/TimezoneUtil.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/core/date/UI5Date.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/base/assert.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/base/util/array/uniqueSort.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/base/Metadata.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/base/Object.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+  //!oObject[sMethodName] for 'lazy' loading interface methods ;-)
+
+@ui5/webcomponents-localization/dist/sap/base/util/isPlainObject.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/base/DataType.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/base/i18n/date/CalendarType.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/core/CalendarType.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/base/i18n/LanguageTag.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/core/Locale.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/base/util/_merge.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/base/util/extend.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/base/i18n/date/CalendarWeekNumbering.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/core/date/CalendarWeekNumbering.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/core/LocaleData.js:
+  /*!
+  * OpenUI5
+  * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+  */
+
+@ui5/webcomponents-localization/dist/sap/ui/core/date/CalendarUtils.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/core/date/UniversalDate.js:
+  /*!
+  * OpenUI5
+  * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+  * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+  */
+
+@ui5/webcomponents-localization/dist/sap/base/strings/formatMessage.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/base/util/deepEqual.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/core/format/DateFormat.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-localization/dist/sap/ui/core/date/Gregorian.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-base/dist/sap/base/strings/toHex.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
+
+@ui5/webcomponents-base/dist/sap/base/security/encodeXML.js:
+  /*!
+   * OpenUI5
+   * (c) Copyright 2009-2024 SAP SE or an SAP affiliate company.
+   * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+   */
