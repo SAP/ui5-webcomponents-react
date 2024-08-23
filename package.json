@@ -10,7 +10,7 @@
     "start:watcher": "lerna run watch:css",
     "start:storybook": "storybook dev -p 6006",
     "setup": "lerna run build:i18n && lerna run build:css && lerna run build:css-bundle && rimraf node_modules/@types/mocha",
-    "build": "yarn setup && tsc --build tsconfig.build.json && lerna run build:client && lerna run build:wrapper && lerna run build:ssr",
+    "build": "yarn setup && tsc --build tsconfig.build.json && lerna run build:client && lerna run build:wrapper",
     "build:storybook": "lerna run build:i18n && yarn create-cypress-commands-docs && storybook build -o .out",
     "build:storybook-sitemap": "node ./scripts/create-storybook-sitemap.js --directory .out",
     "test:prepare": "rimraf temp && lerna run build",
