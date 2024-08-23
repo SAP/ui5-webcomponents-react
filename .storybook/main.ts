@@ -22,7 +22,8 @@ const addons = [
         }
       }
     }
-  }
+  },
+  './addons/version-switch'
 ];
 if (isDevMode) {
   addons.push('@storybook/addon-a11y');
