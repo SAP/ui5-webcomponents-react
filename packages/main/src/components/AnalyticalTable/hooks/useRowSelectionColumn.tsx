@@ -61,7 +61,6 @@ function getNextSelectedRowIds(rowsById) {
 
 const headerProps = (props, { instance }) => {
   const {
-    flatRows,
     webComponentsReactProperties: {
       onRowSelect,
       selectionMode,
@@ -70,10 +69,13 @@ const headerProps = (props, { instance }) => {
     toggleAllRowsSelected,
     isAllRowsSelected,
     rowsById,
+    preFilteredRowsById,
     dispatch,
     state: { filters, globalFilter }
   } = instance;
   const style = { ...props.style, cursor: 'pointer', display: 'flex', justifyContent: 'center' };
+  const isFiltered = filters?.length > 0 || !!globalFilter;
+  const _rowsById = isFiltered ? preFilteredRowsById : rowsById;
   if (
     props.key === 'header___ui5wcr__internal_selection_column' &&
     selectionMode === AnalyticalTableSelectionMode.Multiple
@@ -83,7 +85,6 @@ const headerProps = (props, { instance }) => {
         props.onClick(e);
       }
       toggleAllRowsSelected(!isAllRowsSelected);
-      const isFiltered = filters?.length > 0 || !!globalFilter;
       if (typeof onRowSelect === 'function') {
         if (isFiltered) {
           dispatch({ type: 'SELECT_ROW_CB', payload: { event: e, row: undefined, selectAll: true, fired: true } });
@@ -91,8 +92,8 @@ const headerProps = (props, { instance }) => {
           onRowSelect(
             // cannot use instance.selectedFlatRows here as it only returns all rows on the first level
             enrichEventWithDetails(e, {
+              rowsById: _rowsById,
               allRowsSelected: !isAllRowsSelected,
-              selectedFlatRows: !isAllRowsSelected ? flatRows : [],
               selectedRowIds: !isAllRowsSelected ? getNextSelectedRowIds(rowsById) : {}
             })
           );
