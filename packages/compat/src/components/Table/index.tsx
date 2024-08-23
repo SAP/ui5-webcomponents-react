@@ -265,8 +265,7 @@ const Table = withWebComponent<TablePropTypes, TableDomRef>(
   ],
   ['busy', 'hideNoData', 'stickyColumnHeader'],
   ['columns'],
-  ['load-more', 'popin-change', 'row-click', 'selection-change'],
-  () => import('@ui5/webcomponents-compat/dist/Table.js')
+  ['load-more', 'popin-change', 'row-click', 'selection-change']
 );
 
 Table.displayName = 'Table';

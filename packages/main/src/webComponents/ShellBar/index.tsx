@@ -310,8 +310,7 @@ const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
     'product-switch-click',
     'profile-click',
     'search-button-click'
-  ],
-  () => import('@ui5/webcomponents-fiori/dist/ShellBar.js')
+  ]
 );
 
 ShellBar.displayName = 'ShellBar';

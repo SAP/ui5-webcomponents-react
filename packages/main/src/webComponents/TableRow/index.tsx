@@ -49,8 +49,7 @@ const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   ['rowKey'],
   ['interactive', 'navigated'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/TableRow.js')
+  []
 );
 
 TableRow.displayName = 'TableRow';

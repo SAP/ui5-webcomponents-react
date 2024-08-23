@@ -67,8 +67,7 @@ const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   ['additionalText', 'icon', 'tooltip', 'value'],
   ['selected'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/Option.js')
+  []
 );
 
 Option.displayName = 'Option';

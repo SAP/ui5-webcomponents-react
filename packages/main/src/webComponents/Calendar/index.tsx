@@ -206,8 +206,7 @@ const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   ['formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType', 'selectionMode'],
   ['hideWeekNumbers'],
   ['calendarLegend', 'specialDates'],
-  ['selection-change'],
-  () => import('@ui5/webcomponents/dist/Calendar.js')
+  ['selection-change']
 );
 
 Calendar.displayName = 'Calendar';

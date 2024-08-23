@@ -14,35 +14,28 @@ export const useSelectionChangeCallback = (hooks: ReactTableHooks) => {
       if (selectedRowPayload?.fired) {
         const { event: e, row: selRow, selectAll } = selectedRowPayload;
         const row = rowsById[selRow?.id];
+        // when selecting a row on a filtered table, `preFilteredRowsById` has to be used, otherwise filtered out rows are undefined
+        const _rowsById = isFiltered ? preFilteredRowsById : rowsById;
 
         if (row || selectAll) {
           const payload = {
             row: row,
+            rowsById: _rowsById,
             isSelected: row?.isSelected,
-            selectedFlatRows: row?.isSelected ? [row] : [],
             allRowsSelected: false,
             selectedRowIds
           };
 
           if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.Multiple) {
-            // when selecting a row on a filtered table, `preFilteredRowsById` has to be used, otherwise filtered out rows are undefined
-            const tempRowsById = isFiltered ? preFilteredRowsById : rowsById;
-            const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).reduce((acc, key) => {
-              if (selectedRowIds[key]) {
-                acc.push(tempRowsById[key]);
-              }
-              return acc;
-            }, []);
-
-            payload.selectedFlatRows = selectedRowIdsArrayMapped;
-            if (selectedRowIdsArrayMapped.length === Object.keys(tempRowsById).length) {
+            if (Object.keys(selectedRowIds).length === Object.keys(_rowsById).length) {
               payload.allRowsSelected = true;
             }
+
             if (selectAll) {
               dispatch({ type: 'SELECT_ROW_CB', payload: { event: e, row, selectAll: false, fired: false } });
               webComponentsReactProperties?.onRowSelect(
                 enrichEventWithDetails(e, {
-                  selectedFlatRows: payload.selectedFlatRows,
+                  rowsById: payload.rowsById,
                   allRowsSelected: payload.allRowsSelected,
                   selectedRowIds: payload.selectedRowIds
                 })

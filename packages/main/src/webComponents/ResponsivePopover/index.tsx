@@ -222,8 +222,7 @@ const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Responsiv
   ],
   ['allowTargetOverlap', 'hideArrow', 'modal', 'open', 'preventFocusRestore', 'preventInitialFocus'],
   ['footer', 'header'],
-  ['before-close', 'before-open', 'close', 'open'],
-  () => import('@ui5/webcomponents/dist/ResponsivePopover.js')
+  ['before-close', 'before-open', 'close', 'open']
 );
 
 ResponsivePopover.displayName = 'ResponsivePopover';

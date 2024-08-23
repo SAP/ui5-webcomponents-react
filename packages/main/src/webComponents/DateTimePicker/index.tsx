@@ -269,8 +269,7 @@ const DateTimePicker = withWebComponent<DateTimePickerPropTypes, DateTimePickerD
   ],
   ['disabled', 'hideWeekNumbers', 'open', 'readonly', 'required'],
   ['valueStateMessage'],
-  ['change', 'input', 'value-state-change'],
-  () => import('@ui5/webcomponents/dist/DateTimePicker.js')
+  ['change', 'input', 'value-state-change']
 );
 
 DateTimePicker.displayName = 'DateTimePicker';

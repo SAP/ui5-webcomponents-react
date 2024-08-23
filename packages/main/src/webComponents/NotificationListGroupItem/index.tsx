@@ -88,8 +88,7 @@ const NotificationListGroupItem = withWebComponent<NotificationListGroupItemProp
   ['loadingDelay', 'titleText'],
   ['collapsed', 'loading', 'read'],
   [],
-  ['toggle'],
-  () => import('@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js')
+  ['toggle']
 );
 
 NotificationListGroupItem.displayName = 'NotificationListGroupItem';

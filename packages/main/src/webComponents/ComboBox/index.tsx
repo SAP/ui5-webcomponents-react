@@ -200,8 +200,7 @@ const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(
   ['accessibleName', 'accessibleNameRef', 'filter', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'loading', 'noTypeahead', 'readonly', 'required', 'showClearIcon'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input', 'selection-change'],
-  () => import('@ui5/webcomponents/dist/ComboBox.js')
+  ['change', 'input', 'selection-change']
 );
 
 ComboBox.displayName = 'ComboBox';

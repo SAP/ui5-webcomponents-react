@@ -66,8 +66,7 @@ const SideNavigationGroup = withWebComponent<SideNavigationGroupPropTypes, SideN
   ['text', 'tooltip'],
   ['disabled', 'expanded'],
   [],
-  [],
-  () => import('@ui5/webcomponents-fiori/dist/SideNavigationGroup.js')
+  []
 );
 
 SideNavigationGroup.displayName = 'SideNavigationGroup';

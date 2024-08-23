@@ -95,8 +95,7 @@ const WizardStep = withWebComponent<WizardStepPropTypes, WizardStepDomRef>(
   ['icon', 'subtitleText', 'titleText'],
   ['branching', 'disabled', 'selected'],
   [],
-  [],
-  () => import('@ui5/webcomponents-fiori/dist/WizardStep.js')
+  []
 );
 
 WizardStep.displayName = 'WizardStep';

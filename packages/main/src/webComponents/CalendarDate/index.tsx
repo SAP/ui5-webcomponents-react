@@ -22,14 +22,7 @@ interface CalendarDatePropTypes extends CalendarDateAttributes, Omit<CommonProps
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  * @abstract
  */
-const CalendarDate = withWebComponent<CalendarDatePropTypes, CalendarDateDomRef>(
-  'ui5-date',
-  ['value'],
-  [],
-  [],
-  [],
-  () => import('@ui5/webcomponents/dist/CalendarDate.js')
-);
+const CalendarDate = withWebComponent<CalendarDatePropTypes, CalendarDateDomRef>('ui5-date', ['value'], [], [], []);
 
 CalendarDate.displayName = 'CalendarDate';
 

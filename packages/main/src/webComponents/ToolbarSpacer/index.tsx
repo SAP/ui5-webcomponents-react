@@ -47,8 +47,7 @@ const ToolbarSpacer = withWebComponent<ToolbarSpacerPropTypes, ToolbarSpacerDomR
   ['overflowPriority', 'width'],
   ['preventOverflowClosing'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/ToolbarSpacer.js')
+  []
 );
 
 ToolbarSpacer.displayName = 'ToolbarSpacer';

@@ -127,8 +127,7 @@ const ListItemCustom = withWebComponent<ListItemCustomPropTypes, ListItemCustomD
   ['accessibilityAttributes', 'accessibleName', 'highlight', 'tooltip', 'type'],
   ['movable', 'navigated', 'selected'],
   ['deleteButton'],
-  ['detail-click'],
-  () => import('@ui5/webcomponents/dist/ListItemCustom.js')
+  ['detail-click']
 );
 
 ListItemCustom.displayName = 'ListItemCustom';

@@ -84,8 +84,7 @@ const BusyIndicator = withWebComponent<BusyIndicatorPropTypes, BusyIndicatorDomR
   ['delay', 'size', 'text', 'textPlacement'],
   ['active'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/BusyIndicator.js')
+  []
 );
 
 BusyIndicator.displayName = 'BusyIndicator';

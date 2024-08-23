@@ -77,8 +77,7 @@ const Toast = withWebComponent<ToastPropTypes, ToastDomRef>(
   ['duration', 'placement'],
   ['open'],
   [],
-  ['close'],
-  () => import('@ui5/webcomponents/dist/Toast.js')
+  ['close']
 );
 
 Toast.displayName = 'Toast';

@@ -49,8 +49,7 @@ const TimelineGroupItem = withWebComponent<TimelineGroupItemPropTypes, TimelineG
   ['groupName'],
   ['collapsed'],
   [],
-  ['toggle'],
-  () => import('@ui5/webcomponents-fiori/dist/TimelineGroupItem.js')
+  ['toggle']
 );
 
 TimelineGroupItem.displayName = 'TimelineGroupItem';

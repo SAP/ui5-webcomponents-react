@@ -67,8 +67,7 @@ const TableColumn = withWebComponent<TableColumnPropTypes, TableColumnDomRef>(
   ['minWidth', 'popinDisplay', 'popinText'],
   ['demandPopin'],
   [],
-  [],
-  () => import('@ui5/webcomponents-compat/dist/TableColumn.js')
+  []
 );
 
 TableColumn.displayName = 'TableColumn';

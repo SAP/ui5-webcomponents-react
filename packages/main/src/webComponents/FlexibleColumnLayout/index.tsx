@@ -180,8 +180,7 @@ const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, Fle
   ['accessibilityAttributes', 'layout'],
   ['disableResizing'],
   ['endColumn', 'midColumn', 'startColumn'],
-  ['layout-change'],
-  () => import('@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js')
+  ['layout-change']
 );
 
 FlexibleColumnLayout.displayName = 'FlexibleColumnLayout';

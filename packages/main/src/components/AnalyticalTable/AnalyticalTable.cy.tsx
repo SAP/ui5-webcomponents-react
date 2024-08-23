@@ -470,12 +470,18 @@ describe('AnalyticalTable', () => {
             filterable
             columns={columns}
             onRowSelect={(e) => {
-              const { allRowsSelected, isSelected, row, selectedFlatRows, selectedRowIds } = e.detail;
+              const { allRowsSelected, isSelected, row, rowsById, selectedRowIds } = e.detail;
+              const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).reduce((acc, key) => {
+                if (selectedRowIds[key]) {
+                  acc.push(rowsById[key]);
+                }
+                return acc;
+              }, []);
               setRelevantPayload({
                 allRowsSelected,
                 isSelected,
                 row: row.id,
-                selectedFlatRows: selectedFlatRows.map((item) => ({
+                selectedFlatRows: selectedRowIdsArrayMapped.map((item) => ({
                   id: item?.id
                 })),
                 selectedRowIds
@@ -582,7 +588,14 @@ describe('AnalyticalTable', () => {
             columns={columns}
             globalFilterValue={globalFilterVal}
             onRowSelect={(e) => {
-              setSelectedFlatRows(e.detail.selectedFlatRows.map((item) => item.id));
+              const { selectedRowIds: _selectedRowIds, rowsById } = e.detail;
+              const selectedRowIdsArrayMapped = Object.keys(_selectedRowIds).reduce((acc, key) => {
+                if (_selectedRowIds[key]) {
+                  acc.push(rowsById[key]);
+                }
+                return acc;
+              }, []);
+              setSelectedFlatRows(selectedRowIdsArrayMapped.map((item) => item.id));
               setSelectedRowIdsCb(e.detail.selectedRowIds);
               setAllRowsSelected(e.detail.allRowsSelected);
               onRowSelect(e);
@@ -591,7 +604,8 @@ describe('AnalyticalTable', () => {
             selectedRowIds={selectedRowIds}
           />
           <p>
-            "event.detail.selectedFlatRows:"<span data-testid="payload">{JSON.stringify(selectedFlatRows)}</span>
+            "selectedFlatRows (state - not part of event):"
+            <span data-testid="payload">{JSON.stringify(selectedFlatRows)}</span>
           </p>
           <p>
             "e.detail.selectedRowIds:"<span data-testid="payloadRowsById">{JSON.stringify(selectedRowIdsCb)}</span>
@@ -610,6 +624,7 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name-1').click();
     cy.findByText('Name-5').click();
     cy.findByText('Name-5').click();
+
     cy.findByTestId('payload').should('have.text', '["0","1"]');
     cy.findByTestId('payloadRowsById').should('have.text', '{"0":true,"1":true}');
     cy.findByTestId('payloadAllRowsSelected').should('have.text', 'false');
@@ -806,12 +821,18 @@ describe('AnalyticalTable', () => {
             columns={columns}
             tableInstance={tableInstance}
             onRowSelect={(e) => {
-              const { allRowsSelected, isSelected, row, selectedFlatRows, selectedRowIds } = e.detail;
+              const { allRowsSelected, isSelected, row, rowsById, selectedRowIds } = e.detail;
+              const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).reduce((acc, key) => {
+                if (selectedRowIds[key]) {
+                  acc.push(rowsById[key]);
+                }
+                return acc;
+              }, []);
               setRelevantPayload({
                 allRowsSelected,
                 isSelected,
                 row: row.id,
-                selectedFlatRows: selectedFlatRows.map((item) => ({
+                selectedFlatRows: selectedRowIdsArrayMapped.map((item) => ({
                   id: item?.id
                 })),
                 selectedRowIds
@@ -2398,11 +2419,19 @@ describe('AnalyticalTable', () => {
     const TestComp = () => {
       const [stringifiedPl, setStringifiedPl] = useState('');
       const handleSelect = (e) => {
-        const { allRowsSelected, selectedFlatRows, selectedRowIds } = e.detail;
+        const { allRowsSelected, rowsById, selectedRowIds } = e.detail;
+
+        const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).reduce((acc, key) => {
+          if (selectedRowIds[key]) {
+            acc.push(rowsById[key]);
+          }
+          return acc;
+        }, []);
+
         setStringifiedPl(
           JSON.stringify({
             selectedRowIds,
-            selectedFlatRows: selectedFlatRows.map((item) => ({
+            selectedFlatRows: selectedRowIdsArrayMapped.map((item) => ({
               id: item?.id
             })),
             allRowsSelected

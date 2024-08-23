@@ -207,8 +207,7 @@ const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   ['accessibleName', 'accessibleNameRef', 'name', 'value', 'valueState'],
   ['disabled', 'readonly', 'required'],
   ['label', 'valueStateMessage'],
-  ['change', 'close', 'live-change', 'open'],
-  () => import('@ui5/webcomponents/dist/Select.js')
+  ['change', 'close', 'live-change', 'open']
 );
 
 Select.displayName = 'Select';

@@ -62,8 +62,7 @@ const OptionCustom = withWebComponent<OptionCustomPropTypes, OptionCustomDomRef>
   ['displayText', 'tooltip', 'value'],
   ['selected'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/OptionCustom.js')
+  []
 );
 
 OptionCustom.displayName = 'OptionCustom';

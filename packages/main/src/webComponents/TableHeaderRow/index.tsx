@@ -46,8 +46,7 @@ const TableHeaderRow = withWebComponent<TableHeaderRowPropTypes, TableHeaderRowD
   [],
   ['sticky'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/TableHeaderRow.js')
+  []
 );
 
 TableHeaderRow.displayName = 'TableHeaderRow';

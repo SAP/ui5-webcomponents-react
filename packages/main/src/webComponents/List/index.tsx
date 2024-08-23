@@ -287,8 +287,7 @@ const List = withWebComponent<ListPropTypes, ListDomRef>(
   ],
   ['indent', 'loading'],
   ['header'],
-  ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'move-over', 'move', 'selection-change'],
-  () => import('@ui5/webcomponents/dist/List.js')
+  ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'move-over', 'move', 'selection-change']
 );
 
 List.displayName = 'List';

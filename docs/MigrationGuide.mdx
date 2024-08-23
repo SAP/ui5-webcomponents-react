@@ -540,6 +540,23 @@ function MyComponent() {
 
 - `portalContainer` has been removed as it's no longer needed due to the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) used in the `Popover` ui5 web component.
 
+**Changed Events:**
+
+- `onRowSelect`: Since calculating `selectedFlatRows` was very costly, it has been removed from the `detail` event object. If you still want to use it, you can calculate it yourself:
+
+```js
+const handleOnRowSelect = (event) => {
+  const { selectedRowIds, rowsById } = event.detail;
+  const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).reduce((acc, key) => {
+    if (selectedRowIds[key]) {
+      acc.push(rowsById[key]);
+    }
+    return acc;
+  }, []);
+  console.log(selectedRowIdsArrayMapped);
+};
+```
+
 **Renamed Enums:**
 
 Names of the following enums have changed:

@@ -144,8 +144,7 @@ const DynamicPageTitle = withWebComponent<DynamicPageTitlePropTypes, DynamicPage
   [],
   [],
   ['actionsBar', 'breadcrumbs', 'heading', 'navigationBar', 'snappedHeading', 'snappedSubheading', 'subheading'],
-  [],
-  () => import('@ui5/webcomponents-fiori/dist/DynamicPageTitle.js')
+  []
 );
 
 DynamicPageTitle.displayName = 'DynamicPageTitle';

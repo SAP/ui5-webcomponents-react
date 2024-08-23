@@ -5,7 +5,6 @@ import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-
 import type { ComponentType, ReactElement, ReactNode, Ref } from 'react';
 import { cloneElement, forwardRef, Fragment, isValidElement, useEffect, useState, version } from 'react';
 import type { CommonProps, Ui5DomRef } from '../types/index.js';
-import { useServerSideEffect } from './ssr.js';
 import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase, parseSemVer } from './utils.js';
 
 const createEventPropName = (eventName: string) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
@@ -32,8 +31,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   regularProperties: string[],
   booleanProperties: string[],
   slotProperties: string[],
-  eventProperties: string[],
-  loader: () => Promise<unknown>
+  eventProperties: string[]
 ) => {
   const webComponentsSupported = parseSemVer(version).major >= 19;
   // displayName will be assigned in the individual files
@@ -47,10 +45,6 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     >;
 
     const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));
-
-    useServerSideEffect(() => {
-      void loader();
-    });
 
     // regular props (no booleans, no slots and no events)
     const regularProps = regularProperties.reduce((acc, name) => {

@@ -39,8 +39,7 @@ const SpecialCalendarDate = withWebComponent<SpecialCalendarDatePropTypes, Speci
   ['type', 'value'],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/SpecialCalendarDate.js')
+  []
 );
 
 SpecialCalendarDate.displayName = 'SpecialCalendarDate';

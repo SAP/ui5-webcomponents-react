@@ -168,8 +168,7 @@ const NotificationListItem = withWebComponent<NotificationListItemPropTypes, Not
   ['importance', 'loadingDelay', 'state', 'titleText', 'wrappingType'],
   ['loading', 'read', 'showClose'],
   ['avatar', 'footnotes', 'menu'],
-  ['close'],
-  () => import('@ui5/webcomponents-fiori/dist/NotificationListItem.js')
+  ['close']
 );
 
 NotificationListItem.displayName = 'NotificationListItem';

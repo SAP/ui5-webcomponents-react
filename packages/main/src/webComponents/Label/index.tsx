@@ -72,8 +72,7 @@ const Label = withWebComponent<LabelPropTypes, LabelDomRef>(
   ['for', 'wrappingType'],
   ['required', 'showColon'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/Label.js')
+  []
 );
 
 Label.displayName = 'Label';

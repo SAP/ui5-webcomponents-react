@@ -144,8 +144,7 @@ const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(
   ['accessibilityAttributes', 'type'],
   [],
   ['overflowButton'],
-  ['click', 'overflow'],
-  () => import('@ui5/webcomponents/dist/AvatarGroup.js')
+  ['click', 'overflow']
 );
 
 AvatarGroup.displayName = 'AvatarGroup';

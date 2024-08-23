@@ -103,8 +103,7 @@ const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, S
   ['href', 'icon', 'target', 'text', 'tooltip'],
   ['disabled', 'selected'],
   [],
-  ['click'],
-  () => import('@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js')
+  ['click']
 );
 
 SideNavigationSubItem.displayName = 'SideNavigationSubItem';

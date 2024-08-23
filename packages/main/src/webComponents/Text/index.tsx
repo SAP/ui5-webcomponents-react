@@ -47,14 +47,7 @@ interface TextPropTypes extends TextAttributes, Omit<CommonProps, keyof TextAttr
  *
  * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents__.
  */
-const Text = withWebComponent<TextPropTypes, TextDomRef>(
-  'ui5-text',
-  ['maxLines'],
-  [],
-  [],
-  [],
-  () => import('@ui5/webcomponents/dist/Text.js')
-);
+const Text = withWebComponent<TextPropTypes, TextDomRef>('ui5-text', ['maxLines'], [], [], []);
 
 Text.displayName = 'Text';
 

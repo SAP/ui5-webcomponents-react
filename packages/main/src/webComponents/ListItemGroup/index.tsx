@@ -81,8 +81,7 @@ const ListItemGroup = withWebComponent<ListItemGroupPropTypes, ListItemGroupDomR
   ['headerAccessibleName', 'headerText'],
   [],
   ['header'],
-  ['move-over', 'move'],
-  () => import('@ui5/webcomponents/dist/ListItemGroup.js')
+  ['move-over', 'move']
 );
 
 ListItemGroup.displayName = 'ListItemGroup';
