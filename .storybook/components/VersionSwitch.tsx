@@ -1,6 +1,6 @@
-import { Button } from '@storybook/components';
+import { IconButton } from '@storybook/components';
 import { addons, types } from '@storybook/manager-api';
-import { ActionSheet } from '@ui5/webcomponents-react';
+import { ActionSheet, Button } from '@ui5/webcomponents-react';
 import * as React from 'react';
 
 const ADDON_ID = 'version-switch';
@@ -8,7 +8,7 @@ const TOOL_ID = `${ADDON_ID}/toolbar`;
 
 addons.register(ADDON_ID, (api) => {
   addons.add(TOOL_ID, {
-    type: types.TOOL,
+    type: types.TOOLEXTRA,
     title: 'Version Switch',
     render: () => {
       const [open, setOpen] = React.useState(false);
@@ -19,17 +19,26 @@ addons.register(ADDON_ID, (api) => {
       };
       return (
         <>
-          <Button
+          <IconButton
+            active
             key={TOOL_ID}
             id={TOOL_ID}
             title="Version Switch"
+            style={{ order: -1 }}
             onClick={() => {
               setOpen(true);
             }}
           >
             Version
-          </Button>
-          <ActionSheet open={open} opener={TOOL_ID}>
+          </IconButton>
+          <ActionSheet
+            placement="Bottom"
+            open={open}
+            opener={TOOL_ID}
+            onClose={() => {
+              setOpen(false);
+            }}
+          >
             <Button onClick={handleVersionSelect} data-slug={'v2'}>
               Version 2
             </Button>
