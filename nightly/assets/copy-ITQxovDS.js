@@ -1,1 +1,0 @@
-import"./withWebComponent-_WQ2NUTk.js";import"./useIsomorphicLayoutEffect-dLBi2t77.js";import"./copy-Dq9dQZCS.js";const t="copy";export{t as c};
