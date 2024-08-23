@@ -9,7 +9,6 @@ import type {
   ToggleButtonPropTypes
 } from '@ui5/webcomponents-react';
 import { Popover, ToggleButton } from '@ui5/webcomponents-react';
-import { useCanRenderPortal } from '@ui5/webcomponents-react/dist/internal/ssr.js';
 import { stopPropagation } from '@ui5/webcomponents-react/dist/internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '@ui5/webcomponents-react/dist/internal/utils.js';
 import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
@@ -110,7 +109,10 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     }
   };
 
-  const canRenderPortal = useCanRenderPortal();
+  const [canRenderPortal, setCanRenderPortal] = useState(false);
+  useEffect(() => {
+    setCanRenderPortal(true);
+  }, []);
 
   const accessibleRole = (() => {
     if (a11yConfig?.overflowPopover?.contentRole) {
