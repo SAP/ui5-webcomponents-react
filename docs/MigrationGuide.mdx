@@ -551,13 +551,13 @@ The internal table instance types were updated, leading to stricter types, so de
 ```js
 const handleOnRowSelect = (event) => {
   const { selectedRowIds, rowsById } = event.detail;
-  const selectedRowIdsArrayMapped = Object.keys(selectedRowIds).reduce((acc, key) => {
+  const selectedFlatRows = Object.keys(selectedRowIds).reduce((acc, key) => {
     if (selectedRowIds[key]) {
       acc.push(rowsById[key]);
     }
     return acc;
   }, []);
-  console.log(selectedRowIdsArrayMapped);
+  console.log(selectedFlatRows);
 };
 ```
 
