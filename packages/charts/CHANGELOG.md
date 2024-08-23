@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.3...v2.0.0) (2024-08-23)
+
+### chore
+
+- **charts:** remove MicroBarChart ([#6249](https://github.com/SAP/ui5-webcomponents-react/issues/6249)) ([93439fb](https://github.com/SAP/ui5-webcomponents-react/commit/93439fb97f14db4dbc642014b3735bf3bb7a94f9))
+
+### BREAKING CHANGES
+
+- **charts:** the `MicroBarChart` component as been removed as this is a legacy component which is not covered by design specs anymore.
+
 # [2.0.0-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2024-08-21)
 
 ### Features

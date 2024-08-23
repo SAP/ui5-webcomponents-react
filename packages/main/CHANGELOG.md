@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.3...v2.0.0) (2024-08-23)
+
+### Bug Fixes
+
+- add runtime index to global Modal and Style store ([#6248](https://github.com/SAP/ui5-webcomponents-react/issues/6248)) ([8184b4e](https://github.com/SAP/ui5-webcomponents-react/commit/8184b4e98fea38ec1b1ba40a43fb31651bba8ac8))
+- **AnalyticalTable:** ensure loading indicator displays correctly across all browsers ([#6244](https://github.com/SAP/ui5-webcomponents-react/issues/6244)) ([4fb6008](https://github.com/SAP/ui5-webcomponents-react/commit/4fb600806ea9451b20f4c3478cbbd44a10214a13)), closes [#6243](https://github.com/SAP/ui5-webcomponents-react/issues/6243)
+
+### chore
+
+- remove dedicated SSR build ([#6253](https://github.com/SAP/ui5-webcomponents-react/issues/6253)) ([3f3b465](https://github.com/SAP/ui5-webcomponents-react/commit/3f3b465d7ad86ebf16ff4cb966c45e149235054c))
+
+### Code Refactoring
+
+- **AnalyticalTable:** remove `selectedFlatRows` & add `rowsById` to `onRowSelect` ([#6255](https://github.com/SAP/ui5-webcomponents-react/issues/6255)) ([ee2785c](https://github.com/SAP/ui5-webcomponents-react/commit/ee2785c349a97616c3de173c1731ee1d2b399837))
+
+### Features
+
+- **AnalyticalTable - TypeScript:** improve instance & prop types ([#6256](https://github.com/SAP/ui5-webcomponents-react/issues/6256)) ([796f7c1](https://github.com/SAP/ui5-webcomponents-react/commit/796f7c131d0719c00993fb75228e6766ec2290a8))
+
+### BREAKING CHANGES
+
+- **AnalyticalTable - TypeScript:** The internal table instance types were updated, leading
+  to stricter types, so depending on your implementation, you might
+  encounter ts-errors.
+- the dedicated build for Server Side Rendering in the `ssr` folder has been removed as the UI5 Web Components now natively support being imported in Node.js environments. You can import all components from `@ui5/webcomponents-react`.
+- **AnalyticalTable:** `selectedFlatRows` has been removed from the `detail`
+  object of `onRowSelect`.
+
 # [2.0.0-rc.3](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2024-08-21)
 
 ### Bug Fixes
