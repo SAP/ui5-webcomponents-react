@@ -76,6 +76,10 @@ To consume `ui5-webcomponents-react`, you need to install the npm modules and re
 npm install @ui5/webcomponents-react @ui5/webcomponents @ui5/webcomponents-fiori
 ```
 
+## Ongoing Support for Version 1.x
+
+We will continue to support version 1.x until the end of the year, focusing on bug fixes to ensure continuity for our existing users.
+
 <!-- *********************************************************************** -->
 
 ## Getting Started

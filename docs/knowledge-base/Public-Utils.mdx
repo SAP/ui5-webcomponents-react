@@ -75,9 +75,22 @@ The `Device` allows you to detect information about the environment where your a
 
 <Source code={`import { ThemingParameters } from '@ui5/webcomponents-react-base';`} />
 
-By using our `ThemingParameters`, you can define the look and feel of your application without the need to hard-code any
-colors. You can e.g. set `ThemingParameters.sapBackgroundColor` as a `background-color` and you'll always get the correct
-background color for your current theme.
+By using the global `--sap...` CSS variables, you can define the look and feel of your application without the need to hard-code any
+colors. The `ThemingParameters` is an JS object containing all available CSS variables mapped to their name.
+
+Example:
+
+```jsx
+<div style={{ background: ThemingParameters.sapBackgroundColor }} />
+```
+
+Is equivalent to:
+
+```jsx
+<div style={{ background: 'var(--sapBackgroundColor)' }} />
+```
+
+**Note:** We don't recommend excessive use of inline-style!
 
 <ThemeableCSSVars />
 

@@ -17,6 +17,13 @@ or the [changelog](?path=/docs/change-log--page)._
 
 <TableOfContent headingSelector="h2, h3" />
 
+## UI5 Web Components Migration Guide
+
+The breaking changes listed here only affect our codebase. Changes related solely to the underlying web component are **not** tracked here.
+For a complete list of breaking changes in UI5 Web Components, please refer to their [Migration Guide](https://sap.github.io/ui5-webcomponents/docs/migration-guides/to-version-2/).
+
+_**Note:** Our `codemod` covers changes from ui5-webcomponents as well._
+
 ## Codemod
 
 To make the migration to UI5 Web Components (for React) v2 easier,
@@ -1188,16 +1195,16 @@ The prop `titleText` is now required.
 
 For better alignment with the UI5 Web Components the `active` prop has been renamed to `interactive`.
 
-### ThemeProvider
-
-The prop `withoutModalsProvider` has been removed.
-In order to provide a place for the `Modals` helper to mount the popovers, you have to render the new `Modals` component in your application tree.
-
 ### SelectDialog
 
 - `mode` has been renamed to `selectionMode`
 - `onAfterClose` has been renamed to `onClose`
 - `onAfterOpen` has been renamed to `onOpen`
+
+### ThemeProvider
+
+The prop `withoutModalsProvider` has been removed.
+In order to provide a place for the `Modals` helper to mount the popovers, you have to render the new `Modals` component in your application tree.
 
 ### VariantManagement
 
