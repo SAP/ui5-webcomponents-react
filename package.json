@@ -14,7 +14,7 @@
     "build:storybook": "lerna run build:i18n && yarn create-cypress-commands-docs && storybook build -o .out",
     "build:storybook-sitemap": "node ./scripts/create-storybook-sitemap.js --directory .out",
     "test:prepare": "rimraf temp && lerna run build",
-    "test:open": "CYPRESS_COVERAGE=false cypress open --component --browser firefox",
+    "test:open": "CYPRESS_COVERAGE=false cypress open --component --browser chrome",
     "test": "yarn test:prepare && cypress run --component --browser chrome",
     "clean": "tsc --build --clean && tsc --build tsconfig.build.json --clean && rimraf temp .out && lerna run clean",
     "clean:remove-modules": "yarn clean && rimraf node_modules",
