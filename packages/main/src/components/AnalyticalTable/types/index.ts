@@ -18,14 +18,14 @@ export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> 
   id?: string;
   Expandable?: any;
   Grouped?: any;
-  RepeatedValue?: () => null;
+  RepeatedValue?: any;
   canFilter?: boolean;
   canGroupBy?: boolean;
   canResize?: boolean;
   canSort?: boolean;
   depth?: number;
   filterValue?: any;
-  filteredRows?: Record<string, unknown>[];
+  filteredRows?: Record<string, any>[];
   getFooterProps?: (props?: any) => any;
   getGroupByToggleProps?: (props?: any) => any;
   getHeaderProps?: (props?: any) => any;
@@ -182,7 +182,6 @@ export interface WCRPropertiesType {
   onRowExpandChange: AnalyticalTablePropTypes['onRowExpandChange'];
   isTreeTable: AnalyticalTablePropTypes['isTreeTable'];
   alternateRowColor: AnalyticalTablePropTypes['alternateRowColor'];
-
   scaleWidthMode: AnalyticalTablePropTypes['scaleWidthMode'];
   loading: AnalyticalTablePropTypes['loading'];
   withRowHighlight: AnalyticalTablePropTypes['withRowHighlight'];
@@ -203,8 +202,8 @@ export interface RowType {
   cells: Record<string, any>[];
   depth: number;
   getRowProps: (props?: any) => any;
-  getToggleRowExpandedProps: (userProps?: any) => void;
-  getToggleRowSelectedProps: (userProps?: any) => void;
+  getToggleRowExpandedProps: (userProps?: any) => any;
+  getToggleRowSelectedProps: (userProps?: any) => any;
   id: string;
   index: number;
   isExpanded: boolean;
