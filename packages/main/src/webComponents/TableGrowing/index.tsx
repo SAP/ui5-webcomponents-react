@@ -78,8 +78,7 @@ const TableGrowing = withWebComponent<TableGrowingPropTypes, TableGrowingDomRef>
   ['growingSubText', 'growingText', 'type'],
   [],
   [],
-  ['load-more'],
-  () => import('@ui5/webcomponents/dist/TableGrowing.js')
+  ['load-more']
 );
 
 TableGrowing.displayName = 'TableGrowing';

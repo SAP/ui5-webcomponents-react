@@ -37,8 +37,7 @@ const CalendarDateRange = withWebComponent<CalendarDateRangePropTypes, CalendarD
   ['endValue', 'startValue'],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/CalendarDateRange.js')
+  []
 );
 
 CalendarDateRange.displayName = 'CalendarDateRange';

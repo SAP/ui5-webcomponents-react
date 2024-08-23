@@ -139,8 +139,7 @@ const Icon = withWebComponent<IconPropTypes, IconDomRef>(
   ['accessibleName', 'design', 'mode', 'name'],
   ['showTooltip'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/Icon.js')
+  []
 );
 
 Icon.displayName = 'Icon';

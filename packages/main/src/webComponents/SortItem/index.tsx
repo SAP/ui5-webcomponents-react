@@ -31,14 +31,7 @@ interface SortItemPropTypes extends SortItemAttributes, Omit<CommonProps, keyof 
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  * @abstract
  */
-const SortItem = withWebComponent<SortItemPropTypes, SortItemDomRef>(
-  'ui5-sort-item',
-  ['text'],
-  ['selected'],
-  [],
-  [],
-  () => import('@ui5/webcomponents-fiori/dist/SortItem.js')
-);
+const SortItem = withWebComponent<SortItemPropTypes, SortItemDomRef>('ui5-sort-item', ['text'], ['selected'], [], []);
 
 SortItem.displayName = 'SortItem';
 

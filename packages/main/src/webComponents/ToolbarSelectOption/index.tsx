@@ -39,8 +39,7 @@ const ToolbarSelectOption = withWebComponent<ToolbarSelectOptionPropTypes, Toolb
   [],
   ['selected'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/ToolbarSelectOption.js')
+  []
 );
 
 ToolbarSelectOption.displayName = 'ToolbarSelectOption';

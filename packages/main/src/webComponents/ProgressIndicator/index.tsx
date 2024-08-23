@@ -69,8 +69,7 @@ const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes, ProgressI
   ['accessibleName', 'displayValue', 'value', 'valueState'],
   ['hideValue'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/ProgressIndicator.js')
+  []
 );
 
 ProgressIndicator.displayName = 'ProgressIndicator';

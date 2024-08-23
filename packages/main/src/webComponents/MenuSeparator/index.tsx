@@ -22,8 +22,7 @@ const MenuSeparator = withWebComponent<MenuSeparatorPropTypes, MenuSeparatorDomR
   [],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/MenuSeparator.js')
+  []
 );
 
 MenuSeparator.displayName = 'MenuSeparator';

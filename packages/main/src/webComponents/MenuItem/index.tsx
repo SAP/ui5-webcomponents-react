@@ -222,8 +222,7 @@ const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
   ],
   ['disabled', 'loading', 'navigated', 'selected'],
   ['deleteButton', 'endContent'],
-  ['detail-click'],
-  () => import('@ui5/webcomponents/dist/MenuItem.js')
+  ['detail-click']
 );
 
 MenuItem.displayName = 'MenuItem';

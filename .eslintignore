@@ -10,7 +10,6 @@ packages/cli/dist
 
 # build results for main package
 packages/main/dist
-packages/main/ssr
 packages/main/wrappers
 
 # i18n defaults

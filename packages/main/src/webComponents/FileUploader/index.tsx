@@ -124,8 +124,7 @@ const FileUploader = withWebComponent<FileUploaderPropTypes, FileUploaderDomRef>
   ['accept', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'hideInput', 'multiple'],
   ['valueStateMessage'],
-  ['change'],
-  () => import('@ui5/webcomponents/dist/FileUploader.js')
+  ['change']
 );
 
 FileUploader.displayName = 'FileUploader';

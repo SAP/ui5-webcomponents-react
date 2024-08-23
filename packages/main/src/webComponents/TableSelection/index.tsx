@@ -62,8 +62,7 @@ const TableSelection = withWebComponent<TableSelectionPropTypes, TableSelectionD
   ['mode', 'selected'],
   [],
   [],
-  ['change'],
-  () => import('@ui5/webcomponents/dist/TableSelection.js')
+  ['change']
 );
 
 TableSelection.displayName = 'TableSelection';

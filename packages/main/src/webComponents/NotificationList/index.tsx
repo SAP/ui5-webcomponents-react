@@ -77,8 +77,7 @@ const NotificationList = withWebComponent<NotificationListPropTypes, Notificatio
   ['noDataText'],
   [],
   [],
-  ['item-click', 'item-close', 'item-toggle'],
-  () => import('@ui5/webcomponents-fiori/dist/NotificationList.js')
+  ['item-click', 'item-close', 'item-toggle']
 );
 
 NotificationList.displayName = 'NotificationList';

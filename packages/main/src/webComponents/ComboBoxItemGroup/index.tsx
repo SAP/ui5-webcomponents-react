@@ -36,8 +36,7 @@ const ComboBoxItemGroup = withWebComponent<ComboBoxItemGroupPropTypes, ComboBoxI
   ['headerText'],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/ComboBoxItemGroup.js')
+  []
 );
 
 ComboBoxItemGroup.displayName = 'ComboBoxItemGroup';

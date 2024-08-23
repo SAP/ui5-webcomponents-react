@@ -159,8 +159,7 @@ const Form = withWebComponent<FormPropTypes, FormDomRef>(
   ['headerText', 'itemSpacing', 'labelSpan', 'layout'],
   [],
   ['header'],
-  [],
-  () => import('@ui5/webcomponents/dist/Form.js')
+  []
 );
 
 Form.displayName = 'Form';

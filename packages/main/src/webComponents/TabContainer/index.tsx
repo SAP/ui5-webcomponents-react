@@ -179,8 +179,7 @@ const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>
   ['contentBackgroundDesign', 'headerBackgroundDesign', 'overflowMode', 'tabLayout'],
   ['collapsed'],
   ['overflowButton', 'startOverflowButton'],
-  ['move-over', 'move', 'tab-select'],
-  () => import('@ui5/webcomponents/dist/TabContainer.js')
+  ['move-over', 'move', 'tab-select']
 );
 
 TabContainer.displayName = 'TabContainer';

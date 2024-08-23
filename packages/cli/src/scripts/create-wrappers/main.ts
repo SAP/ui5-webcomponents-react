@@ -63,7 +63,6 @@ export default async function createWrappers(packageName: string, outDir: string
         .setAttributes(attributes)
         .setSlots(declaration.slots ?? [])
         .setEvents(declaration.events ?? [])
-        .setDynamicImportPath(webComponentImport)
         .setNote(options.additionalComponentNote ?? '')
         .setIsAbstract(declaration._ui5abstract ?? false)
         .setSince(declaration._ui5since)

@@ -178,8 +178,7 @@ const Table = withWebComponent<TablePropTypes, TableDomRef>(
   ['accessibleName', 'accessibleNameRef', 'loadingDelay', 'noDataText', 'overflowMode'],
   ['loading'],
   ['features', 'headerRow', 'nodata'],
-  ['row-click'],
-  () => import('@ui5/webcomponents/dist/Table.js')
+  ['row-click']
 );
 
 Table.displayName = 'Table';

@@ -41,8 +41,7 @@ const MultiComboBoxItem = withWebComponent<MultiComboBoxItemPropTypes, MultiComb
   ['additionalText', 'text'],
   ['selected'],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/MultiComboBoxItem.js')
+  []
 );
 
 MultiComboBoxItem.displayName = 'MultiComboBoxItem';

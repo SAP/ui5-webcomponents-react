@@ -111,8 +111,7 @@ const UploadCollection = withWebComponent<UploadCollectionPropTypes, UploadColle
   ['accessibleName', 'noDataDescription', 'noDataText', 'selectionMode'],
   ['hideDragOverlay'],
   ['header'],
-  ['drop', 'item-delete', 'selection-change'],
-  () => import('@ui5/webcomponents-fiori/dist/UploadCollection.js')
+  ['drop', 'item-delete', 'selection-change']
 );
 
 UploadCollection.displayName = 'UploadCollection';

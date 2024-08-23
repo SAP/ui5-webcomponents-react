@@ -38,8 +38,7 @@ const MultiComboBoxItemGroup = withWebComponent<MultiComboBoxItemGroupPropTypes,
   ['headerText'],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents/dist/MultiComboBoxItemGroup.js')
+  []
 );
 
 MultiComboBoxItemGroup.displayName = 'MultiComboBoxItemGroup';

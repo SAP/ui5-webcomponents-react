@@ -200,8 +200,7 @@ const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   ],
   ['disabled'],
   [],
-  ['click'],
-  () => import('@ui5/webcomponents/dist/Link.js')
+  ['click']
 );
 
 Link.displayName = 'Link';

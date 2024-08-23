@@ -44,8 +44,7 @@ const DynamicPageHeader = withWebComponent<DynamicPageHeaderPropTypes, DynamicPa
   [],
   [],
   [],
-  [],
-  () => import('@ui5/webcomponents-fiori/dist/DynamicPageHeader.js')
+  []
 );
 
 DynamicPageHeader.displayName = 'DynamicPageHeader';
