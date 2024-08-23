@@ -17,6 +17,10 @@ addons.register(ADDON_ID, (api) => {
         const { slug } = e.target.dataset;
         window.location.href = `https://sap.github.io/ui5-webcomponents-react/${slug}/`;
       };
+
+      const activeVersionSlug =
+        window.location.pathname.replace('/ui5-webcomponents-react/', '').replaceAll('/', '') || 'nightly';
+      const activeVersion = activeVersionSlug.at(0).toUpperCase() + activeVersionSlug.slice(1);
       return (
         <>
           <IconButton
@@ -29,7 +33,7 @@ addons.register(ADDON_ID, (api) => {
               setOpen(true);
             }}
           >
-            Version
+            Version: {activeVersion}
           </IconButton>
           <ActionSheet
             placement="Bottom"
