@@ -1,6 +1,6 @@
 import { IconButton } from '@storybook/components';
 import { addons, types } from '@storybook/manager-api';
-import { ActionSheet, Button } from '@ui5/webcomponents-react';
+import { ActionSheet, Button, ThemeProvider } from '@ui5/webcomponents-react';
 import * as React from 'react';
 
 const ADDON_ID = 'version-switch';
@@ -22,7 +22,7 @@ addons.register(ADDON_ID, (api) => {
         window.location.pathname.replace('/ui5-webcomponents-react/', '').replaceAll('/', '') || 'nightly';
       const activeVersion = activeVersionSlug.at(0).toUpperCase() + activeVersionSlug.slice(1);
       return (
-        <>
+        <ThemeProvider>
           <IconButton
             active
             key={TOOL_ID}
@@ -36,10 +36,10 @@ addons.register(ADDON_ID, (api) => {
             Version: {activeVersion}
           </IconButton>
           <ActionSheet
-            placement="Bottom"
+            placementType="Bottom"
             open={open}
             opener={TOOL_ID}
-            onClose={() => {
+            onAfterClose={() => {
               setOpen(false);
             }}
           >
@@ -53,7 +53,7 @@ addons.register(ADDON_ID, (api) => {
               🚧 Nightly
             </Button>
           </ActionSheet>
-        </>
+        </ThemeProvider>
       );
     }
   });
