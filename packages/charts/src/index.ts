@@ -1,4 +1,3 @@
-import pkgJson from '../package.json';
 import { BarChart } from './components/BarChart/BarChart.js';
 import { BarChartPlaceholder } from './components/BarChart/Placeholder.js';
 import { BulletChart } from './components/BulletChart/BulletChart.js';
@@ -46,4 +45,3 @@ export {
   ColumnChartWithTrendPlaceholder,
   TimelineChartPlaceholder
 };
-export const version = pkgJson.version;
