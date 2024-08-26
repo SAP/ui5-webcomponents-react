@@ -2,7 +2,6 @@
 import { Todo } from '@/app/mockData/todos';
 import { List, ListPropTypes, ListItemStandard } from '@ui5/webcomponents-react';
 import { useRouter } from 'next/navigation';
-
 import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 
