@@ -1,4 +1,3 @@
-import pkgJson from '../package.json';
 import * as Device from './Device/index.js';
 import * as hooks from './hooks/index.js';
 import { I18nStore } from './stores/I18nStore.js';
@@ -10,4 +9,3 @@ export * from './utils/index.js';
 export * from './hooks/index.js';
 
 export { I18nStore, StyleStore, ThemingParameters, Device, hooks };
-export const version = pkgJson.version;

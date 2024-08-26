@@ -51,7 +51,7 @@
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "7.25.2",
-    "@babel/preset-env": "7.25.3",
+    "@babel/preset-env": "7.25.4",
     "@babel/preset-react": "7.24.7",
     "@babel/preset-typescript": "7.24.7",
     "@cypress/code-coverage": "^3.10.0",
@@ -121,5 +121,5 @@
       "lcov"
     ]
   },
-  "packageManager": "yarn@4.4.0"
+  "packageManager": "yarn@4.4.1"
 }

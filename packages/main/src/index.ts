@@ -1,4 +1,3 @@
-import pkgJson from '../package.json';
 import * as AnalyticalTableHooks from './components/AnalyticalTable/pluginHooks/AnalyticalTableHooks.js';
 
 export * from './components/ActionSheet/index.js';
@@ -38,4 +37,3 @@ export type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode, Nullable }
 export * from './webComponents/index.js';
 
 export { AnalyticalTableHooks };
-export const version = pkgJson.version;
