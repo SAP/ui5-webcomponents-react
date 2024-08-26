@@ -1,11 +1,11 @@
 .appShell {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .scrollContainer {
-    height: calc(100vh - 3.25rem);
-    overflow-y: auto;
-    position: relative;
+  height: calc(100vh - 3.25rem);
+  overflow-y: auto;
+  position: relative;
 }
