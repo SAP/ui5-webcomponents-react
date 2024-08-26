@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
     <>
-      <Page header={<Bar startContent={<Title>My Todos</Title>} />}>
+      <Page header={<Bar startContent={<Title wrappingType="None">My Todos</Title>} />} fixedFooter>
         <TodoList items={todoList} />
       </Page>
     </>

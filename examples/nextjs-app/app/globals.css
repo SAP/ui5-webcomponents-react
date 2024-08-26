@@ -5,6 +5,7 @@
 
 html,
 body {
+  background: var(--sapBackgroundColor);
   max-width: 100vw;
   overflow-x: hidden;
   padding: 0;
@@ -12,14 +13,14 @@ body {
 }
 
 .appShell {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .appScrollContainer {
-    height: calc(100vh - 3.25rem);
-    width: 100vw;
-    overflow-y: auto;
-    position: relative;
+  height: calc(100vh - 3.25rem);
+  width: 100vw;
+  overflow-y: auto;
+  position: relative;
 }
