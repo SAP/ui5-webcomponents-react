@@ -7,14 +7,14 @@ import {
   DynamicPage,
   DynamicPageTitle,
   List,
-  ListMode,
   ListPropTypes,
   ResponsivePopover,
-  ResponsivePopoverDomRef,
   ShellBar,
   ShellBarItem,
   ShellBarItemPropTypes,
-  StandardListItem
+  ListItemStandard,
+  ButtonDomRef,
+  Title
 } from '@ui5/webcomponents-react';
 import { useRef, useState } from 'react';
 import { Outlet, useLocation, useMatches, useNavigate } from 'react-router-dom';
@@ -22,6 +22,7 @@ import { SingleTodoHandle } from './main.tsx';
 import { Todo } from './mockImplementations/mockData.ts';
 import classes from './AppShell.module.css';
 import { getTheme, setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import ListMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 
 const THEMES = [
   { key: 'sap_horizon', value: 'Morning Horizon (Light)' },
@@ -31,7 +32,8 @@ const THEMES = [
 ];
 
 function AppShell() {
-  const popoverRef = useRef<ResponsivePopoverDomRef>(null);
+  const popoverOpenerRef = useRef<ButtonDomRef | undefined>(undefined);
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const matches = useMatches();
@@ -44,13 +46,14 @@ function AppShell() {
     navigate('/');
   };
   const handleThemeSwitchItemClick: ShellBarItemPropTypes['onClick'] = (e) => {
-    popoverRef.current?.showAt(e.detail.targetRef);
+    popoverOpenerRef.current = e.detail.targetRef as ButtonDomRef;
+    setPopoverOpen(true);
   };
   const handleThemeSwitch: ListPropTypes['onSelectionChange'] = (e) => {
     const { targetItem } = e.detail;
-    setTheme(targetItem.dataset.key!);
+    void setTheme(targetItem.dataset.key!);
     setCurrentTheme(targetItem.dataset.key!);
-    popoverRef.current!.close();
+    setPopoverOpen(false);
   };
   return (
     <>
@@ -77,22 +80,29 @@ function AppShell() {
         <ShellBarItem icon={paletteIcon} text="Change Theme" onClick={handleThemeSwitchItemClick} />
       </ShellBar>
       <DynamicPage
-        headerTitle={
+        className={classes.dynamicPage}
+        titleArea={
           <DynamicPageTitle
-            header={detailViewMatchHandle?.getTitle(detailViewMatchData) ?? 'My To-Do List'}
+            heading={<Title>{detailViewMatchHandle?.getTitle(detailViewMatchData) ?? 'My To-Do List'}</Title>}
             breadcrumbs={<Breadcrumbs>{detailViewMatchHandle?.getBreadCrumbItems(detailViewMatchData)}</Breadcrumbs>}
           />
         }
-        showHideHeaderButton={false}
       >
         <Outlet />
       </DynamicPage>
-      <ResponsivePopover ref={popoverRef} className={classes.popover}>
-        <List onSelectionChange={handleThemeSwitch} headerText="Change Theme" mode={ListMode.SingleSelect}>
+      <ResponsivePopover
+        className={classes.popover}
+        open={popoverOpen}
+        opener={popoverOpenerRef.current}
+        onClose={() => {
+          setPopoverOpen(false);
+        }}
+      >
+        <List onSelectionChange={handleThemeSwitch} headerText="Change Theme" selectionMode={ListMode.Single}>
           {THEMES.map((theme) => (
-            <StandardListItem key={theme.key} selected={currentTheme === theme.key} data-key={theme.key}>
+            <ListItemStandard key={theme.key} selected={currentTheme === theme.key} data-key={theme.key}>
               {theme.value}
-            </StandardListItem>
+            </ListItemStandard>
           ))}
         </List>
       </ResponsivePopover>

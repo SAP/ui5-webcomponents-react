@@ -1,3 +1,7 @@
 .popover::part(content) {
   padding: 0;
 }
+
+.dynamicPage {
+  height: calc(100% - 52px);
+}

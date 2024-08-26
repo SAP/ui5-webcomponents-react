@@ -30,7 +30,6 @@ const THEMES = [
 export function AppShellBar() {
   const router = useRouter();
   const pathname = usePathname();
-  const popoverRef = useRef<ResponsivePopoverDomRef | null>(null);
   const popoverOpenerRef = useRef<ButtonDomRef | undefined>(undefined);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState(getTheme);
@@ -64,7 +63,6 @@ export function AppShellBar() {
         <ShellBarItem icon={paletteIcon} text="Change Theme" onClick={handleThemeSwitchItemClick} />
       </ShellBar>
       <ResponsivePopover
-        ref={popoverRef}
         className={classes.popover}
         open={popoverOpen}
         opener={popoverOpenerRef.current}
