@@ -6,6 +6,7 @@ import { isChromatic } from './utils';
 const isDevMode = process.env.NODE_ENV === 'development';
 
 const addons = [
+  './addons/version-switch',
   {
     name: '@storybook/addon-essentials',
     options: {
