@@ -8,19 +8,10 @@ import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/di
 import { I18nStore, StyleStore, useIsomorphicLayoutEffect, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { FC, ReactNode } from 'react';
 import { useEffect, useId } from 'react';
-import pkgJson from '../../../package.json';
-import { parseSemVer } from '../../internal/utils.js';
+import VersionInfo from '../../generated/VersionInfo.js';
 import { styleData } from './ThemeProvider.css.js';
 
-let _versionInfo = null;
 let _versionInfoInjected = false;
-
-function getVersionInfo() {
-  if (!_versionInfo) {
-    _versionInfo = parseSemVer(pkgJson.version);
-  }
-  return _versionInfo;
-}
 
 function ThemeProviderStyles() {
   const uniqueId = useId();
@@ -95,15 +86,14 @@ const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes
     if (_versionInfoInjected) {
       return;
     }
-    const versionInfo = getVersionInfo();
     globalThis['@ui5/webcomponents-react'] ??= {};
     globalThis['@ui5/webcomponents-react'].Runtimes ??= [];
 
-    globalThis['@ui5/webcomponents-react'].Runtimes.push(versionInfo);
+    globalThis['@ui5/webcomponents-react'].Runtimes.push(VersionInfo);
     _versionInfoInjected = true;
     return () => {
       globalThis['@ui5/webcomponents-react'].Runtimes = globalThis['@ui5/webcomponents-react'].Runtimes.filter(
-        (info) => info !== versionInfo
+        (info) => info !== VersionInfo
       );
       _versionInfoInjected = false;
     };
