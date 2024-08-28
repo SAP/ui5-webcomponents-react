@@ -1,4 +1,5 @@
-.card {
+.cardContainer {
+  position: relative;
   width: 500px;
   height: 20rem;
   margin-block-end: 2rem;
@@ -16,4 +17,24 @@
 .template {
   width: 300px;
   height: unset;
+  .unssupportedMessage {
+    inset-block-end: 70px;
+  }
+}
+
+.overlay {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.unssupportedMessage {
+  position: absolute;
+  z-index: 1;
+  inset-block-end: 180px;
+  inset-inline-start: 5%;
+  width: 90%;
+}
+
+.popover::part(content) {
+  padding: 0.5rem;
 }

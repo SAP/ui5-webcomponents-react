@@ -1,6 +1,6 @@
 import { Footer, ProjectTemplate, TableOfContent, LabelWithWrapping } from '@sb/components';
 import { Meta } from '@storybook/blocks';
-import { FlexBox, FlexBoxJustifyContent, FlexBoxWrap, Label } from '@ui5/webcomponents-react';
+import { Link, FlexBox, FlexBoxJustifyContent, FlexBoxWrap, Label } from '@ui5/webcomponents-react';
 import NextLogo from '@sb/images/logo-nextjs.svg';
 import ViteLogo from '@sb/images/logo-vitejs.svg';
 import RemixLogo from '@sb/images/logo-remix.svg';
@@ -26,6 +26,7 @@ A curated list of minimal project templates and examples to get started using UI
     href={'https://github.com/SAP/ui5-webcomponents-react/tree/main/templates/nextjs-app'}
     isTypeScript
     isTemplate
+    showNote
   />
   <ProjectTemplate
     title={'Next.js'}
@@ -35,6 +36,7 @@ A curated list of minimal project templates and examples to get started using UI
     href={'https://github.com/SAP/ui5-webcomponents-react/tree/main/templates/nextjs-pages'}
     isTypeScript
     isTemplate
+    showUnsupportedMessage
   />
   <ProjectTemplate
     title={'Vite.js'}
@@ -59,6 +61,7 @@ A curated list of minimal project templates and examples to get started using UI
     logoAttribution={'Next.js Logo. Original Source: https://vercel.com/design/brands#next-js'}
     href={'https://github.com/SAP/ui5-webcomponents-react/tree/main/examples/nextjs-app'}
     isTypeScript
+    showNote
   >
     <ul>
       <li>
@@ -76,6 +79,7 @@ A curated list of minimal project templates and examples to get started using UI
     logoAttribution={'Next.js Logo. Original Source: https://vercel.com/design/brands#next-js'}
     href={'https://github.com/SAP/ui5-webcomponents-react/tree/main/examples/nextjs-pages'}
     isTypeScript
+    showUnsupportedMessage
   >
     <ul>
       <li>
