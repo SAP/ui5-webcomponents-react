@@ -7,13 +7,12 @@ import {
   Form,
   FormItem,
   Input,
-  Label,
   MessageStrip,
+  MessageStripDesign,
   Switch,
   TextArea
 } from '@ui5/webcomponents-react';
 import { Todo, todos } from '~/mockData/todos';
-import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const todo = await new Promise<Todo | undefined>((resolve) => {
@@ -32,22 +31,22 @@ export default function TodoDetails() {
 
   return (
     <>
-      <DynamicPage titleArea={<DynamicPageTitle heading={todo?.title} />}>
+      <DynamicPage showHideHeaderButton={false} headerTitle={<DynamicPageTitle header={todo?.title} />}>
         <MessageStrip design={MessageStripDesign.Information}>
           {`Since this is only a demo app, adjustments made here on this page won't be reflected in the todo list.`}
         </MessageStrip>
         <Form>
-          <FormItem labelContent={<Label wrappingType="None">Title</Label>}>
+          <FormItem label={'Title'}>
             <Input value={todo?.title} />
           </FormItem>
-          <FormItem labelContent={<Label wrappingType="None">Details</Label>}>
-            <TextArea value={todo?.details} growing growingMaxRows={10} />
+          <FormItem label={'Details'}>
+            <TextArea value={todo?.details} growing growingMaxLines={10} />
           </FormItem>
 
-          <FormItem labelContent={<Label wrappingType="None">Due Date</Label>}>
+          <FormItem label={'Due Date'}>
             <DatePicker />
           </FormItem>
-          <FormItem labelContent={<Label wrappingType="None">Completed</Label>}>
+          <FormItem label={'Completed'}>
             <Switch checked={todo?.completed} />
           </FormItem>
         </Form>

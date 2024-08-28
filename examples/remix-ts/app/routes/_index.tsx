@@ -24,7 +24,7 @@ export default function Index() {
     data: { todos }
   } = useLoaderData<typeof loader>();
   return (
-    <Page header={<Bar startContent={<Title wrappingType="None">My Todos</Title>} />} fixedFooter>
+    <Page header={<Bar startContent={<Title>My Todos</Title>} />}>
       <TodoList items={todos} />
     </Page>
   );

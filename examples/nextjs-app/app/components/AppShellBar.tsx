@@ -66,7 +66,7 @@ export function AppShellBar() {
         className={classes.popover}
         open={popoverOpen}
         opener={popoverOpenerRef.current}
-        onClose={() => {
+        onClose={(e) => {
           setPopoverOpen(false);
         }}
       >
