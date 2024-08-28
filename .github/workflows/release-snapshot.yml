@@ -48,7 +48,7 @@ jobs:
             --exact \
             --no-push \
             --no-git-tag-version \
-            --allow-branch ${{ env.current_branch }}
+            --allow-branch ${current_branch}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
