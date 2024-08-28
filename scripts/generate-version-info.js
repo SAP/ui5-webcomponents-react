@@ -13,15 +13,17 @@ const generate = async () => {
   const buildTime = Math.floor(new Date().getTime() / 1000);
 
   const fileContent = `const VersionInfo = {
-	version: "${version}",
-	major: ${matches[1]},
-	minor: ${matches[2]},
-	patch: ${matches[3]},
-	suffix: "${matches[4]}",
-	isNext: ${isNext ? 'true' : 'false'},
-	buildTime: ${buildTime},
+  version: '${version}',
+  major: ${matches[1]},
+  minor: ${matches[2]},
+  patch: ${matches[3]},
+  suffix: '${matches[4]}',
+  isNext: ${isNext ? 'true' : 'false'},
+  buildTime: ${buildTime}
 };
-export default VersionInfo;`;
+
+export default VersionInfo;
+`;
 
   await fs.mkdir('src/generated/', { recursive: true });
   await fs.writeFile('src/generated/VersionInfo.ts', fileContent);
