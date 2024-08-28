@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.9](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.8...v1.29.9) (2024-08-28)
+
+### Bug Fixes
+
+- **MessageBox:** don't throw error if onClose is not passed ([#6227](https://github.com/SAP/ui5-webcomponents-react/issues/6227)) ([940597d](https://github.com/SAP/ui5-webcomponents-react/commit/940597dcc611b4c30e0ade0970b3ed20850b2c5d)), closes [#6215](https://github.com/SAP/ui5-webcomponents-react/issues/6215)
+
 ## [1.29.8](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.7...v1.29.8) (2024-08-09)
 
 ### Bug Fixes
