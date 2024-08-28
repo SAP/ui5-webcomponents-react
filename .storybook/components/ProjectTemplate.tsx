@@ -82,9 +82,11 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
             >
               <Text>
                 Currently, the <code>BarcodeScannerDialog</code> web component isn't compatible with SSR environments.
-                For the Pages Router this bug crashes the whole build process, although the component isn't imported.
-                <br /> This is <b>not</b> the case for the App Router, there the build only crashes if the component is
-                used.
+                For the Next.js Pages Router and Remix, this bug crashes the entire build process, even if the component
+                isn't imported.
+                <br />
+                This is <b>not</b> the case for the Next.js App Router; there, the build only crashes if the component
+                is used.
                 <br />
                 <br />
                 You can find the corresponding GitHub issue{' '}
