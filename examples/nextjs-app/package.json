@@ -10,9 +10,8 @@
   },
   "dependencies": {
     "@ui5/webcomponents": "2.1.2",
-    "@ui5/webcomponents-base": "2.1.2",
     "@ui5/webcomponents-fiori": "2.1.2",
-    "@ui5/webcomponents-react": "2.0.1",
+    "@ui5/webcomponents-react": "2.0.2",
     "@types/node": "20.16.1",
     "@types/react": "18.3.4",
     "@types/react-dom": "18.3.0",
