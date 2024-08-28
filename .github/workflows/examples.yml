@@ -1,4 +1,4 @@
-name: Examples
+name: Examples & Templates
 
 on:
   push:
@@ -6,12 +6,14 @@ on:
       - 'main'
     paths:
       - 'examples/**/*'
+      - 'templates/**/*'
   pull_request:
     paths:
       - 'examples/**/*'
+      - 'templates/**/*'
 
 jobs:
-  ci:
+  examples:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -38,3 +40,31 @@ jobs:
       - name: Test
         run: npm run test --if-present
         working-directory: examples/${{ matrix.path }}
+
+  templates:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path:
+          - nextjs-app
+          - nextjs-pages
+          - vite-ts
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4.0.3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install
+        run: npm ci
+        working-directory: templates/${{ matrix.path }}
+
+      - name: Build
+        run: npm run build
+        working-directory: templates/${{ matrix.path }}
+
+      - name: Test
+        run: npm run test --if-present
+        working-directory: templates/${{ matrix.path }}

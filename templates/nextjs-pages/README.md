@@ -5,7 +5,7 @@ This template shows how to use the [Next.js](https://nextjs.org/) Pages Router w
 ## How to use this template
 
 ```bash
-npx degit SAP/ui5-webcomponents-react/examples/nextjs-pages#main my-project
+npx degit SAP/ui5-webcomponents-react/templates/nextjs-pages#main my-project
 cd my-project
 ```
 
