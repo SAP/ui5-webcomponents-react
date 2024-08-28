@@ -24,5 +24,6 @@ packages/cypress-commands/api.json
 
 packages/main/scripts/wrapperGeneration/json
 packages/main/tmp
+packages/*/src/generated/
 
 .nx/cache
