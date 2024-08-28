@@ -4,3 +4,7 @@ body {
   height: 100vh;
   background: var(--sapBackgroundColor);
 }
+
+#root {
+  height: 100%;
+}
