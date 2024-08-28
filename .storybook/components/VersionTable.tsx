@@ -1,9 +1,14 @@
-import { MessageStrip } from '@ui5/webcomponents-react';
+import { Button, MessageStrip } from '@ui5/webcomponents-react';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { Fragment, useState } from 'react';
 import versionInfo from '../../config/version-info.json';
+import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
+import iconArrowDown from '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 
-const allWCRVersions = Object.values(versionInfo);
+const allWCRVersions: string[] = Object.values(versionInfo);
 
 export function VersionTable() {
+  const [expanded, setExpanded] = useState(false);
   return (
     <>
       <MessageStrip hideCloseButton>
@@ -34,7 +39,8 @@ export function VersionTable() {
             const nextVersion = allWCRVersions[currentWCRIndex + 1];
             const currentMajor = parseInt(wcrVersion.split('.')[0]);
             const currentMinor = parseInt(wcrVersion.split('.')[1]);
-            const wcrVersions = [`~${wcrVersion}`];
+            const lastV1 = currentMajor === 1 && currentMinor === 27;
+            const wcrVersions = [lastV1 ? wcrVersion : `~${wcrVersion}`];
             if (nextVersion) {
               let minor = parseInt(nextVersion.split('.')[1]);
               for (let i = currentMinor + 1; i < minor; i++) {
@@ -43,13 +49,64 @@ export function VersionTable() {
             }
 
             return (
-              <tr key={wcrVersion}>
-                <td>
-                  {lastEntry ? '>= ' : ''}
-                  {wcrVersions.join(', ')}
-                </td>
-                <td>~{wcVersion}</td>
-              </tr>
+              <Fragment key={wcrVersion}>
+                {wcrVersion === '1.0.1' && (
+                  <tr>
+                    <td colSpan={2}>
+                      <Button
+                        data-ui5-compact-size
+                        icon={expanded ? iconArrowDown : iconArrowRight}
+                        design="Transparent"
+                        onClick={() => {
+                          setExpanded((prev) => !prev);
+                        }}
+                      />
+                      <span
+                        style={{
+                          fontSize: ThemingParameters.sapFontLargeSize,
+                          fontFamily: ThemingParameters.sapFontBoldFamily,
+                          marginInlineStart: '0.5rem'
+                        }}
+                      >
+                        Version 1
+                      </span>
+                    </td>
+                  </tr>
+                )}
+                {currentMajor === 1 && expanded && (
+                  <tr>
+                    <td>
+                      {lastV1 ? '^' : ''}
+                      {wcrVersions.join(', ')}
+                    </td>
+                    <td>~{wcVersion}</td>
+                  </tr>
+                )}
+                {wcrVersion === '2.0.0' && (
+                  <tr>
+                    <td colSpan={2}>
+                      <span
+                        style={{
+                          fontSize: ThemingParameters.sapFontLargeSize,
+                          fontFamily: ThemingParameters.sapFontBoldFamily,
+                          marginInlineEnd: '0.5rem'
+                        }}
+                      >
+                        Version 2
+                      </span>
+                    </td>
+                  </tr>
+                )}
+                {currentMajor === 2 && (
+                  <tr>
+                    <td>
+                      {lastEntry ? '>= ' : ''}
+                      {wcrVersions.join(', ')}
+                    </td>
+                    <td>~{wcVersion}</td>
+                  </tr>
+                )}
+              </Fragment>
             );
           })}
         </tbody>

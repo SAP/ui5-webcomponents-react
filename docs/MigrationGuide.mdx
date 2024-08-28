@@ -57,6 +57,24 @@ npx @ui5/webcomponents-react-cli codemod --transform v2 \
 
 The minimum required `react` and `react-dom` version is now `18.0.0`.
 
+### UI5 Web Components Enums are no longer exported
+
+Previously, we created enums for all props that used multiple string values to set the corresponding design, mode, etc. Since enums for web components have been exported directly by UI5 Web Components for some time, we had been proxying the imports to avoid breaking changes.
+
+With version 2, we took the opportunity to remove all proxied enums, so they must now be imported directly from `@ui5/webcomponents` or the corresponding package.
+
+**Note:** You can use our [Codemod](#codemod) to simplify the refactoring process.
+
+For example:
+
+```js
+// v1
+import { ButtonDesign } from '@ui5/webcomponents-react';
+
+// v2
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+```
+
 ### Removed `react-jss`
 
 UI5 Web Components for React is no longer relying on `react-jss` internally, hence the dependency is now removed and the `react-jss` ThemeProvider is no longer rendered as part of our `ThemeProvider`.
