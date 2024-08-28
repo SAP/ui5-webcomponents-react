@@ -69,7 +69,7 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
                   setPopoverOpen(true);
                 }}
               >
-                Show More.
+                Show more.
               </Link>
             </MessageStrip>
             <Popover
