@@ -8,7 +8,7 @@ import {
   StandardListItem,
   Title,
   ValueState
-} from '@ui5/webcomponents-react';
+} from '@ui5/webcomponents-react/ssr';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 
@@ -30,19 +30,19 @@ export default function Home({ todos }: Props) {
 
   return (
     <>
-      <Page header={<Bar startContent={<Title wrappingType="None">My Todos</Title>} />} fixedFooter>
+      <Page header={<Bar startContent={<Title>My Todos</Title>} />}>
         <List onItemClick={handleTodoClick}>
           {todos.map((todo) => {
             return (
-              <ListItemStandard
+              <StandardListItem
                 key={todo.id}
                 data-id={todo.id}
                 type={ListItemType.Navigation}
                 additionalText={`${!todo.completed ? 'Not ' : ''}Completed`}
-                additionalTextState={todo.completed ? ValueState.Positive : ValueState.None}
+                additionalTextState={todo.completed ? ValueState.Success : ValueState.None}
               >
                 {todo.title}
-              </ListItemStandard>
+              </StandardListItem>
             );
           })}
         </List>
