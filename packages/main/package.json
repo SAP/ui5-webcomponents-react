@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "type": "module",
   "main": "dist/index.js",
@@ -44,6 +44,7 @@
     "build:wrapper": "babel src --out-dir wrappers --extensions .ts,.tsx --env-name wrapper && tsc --project tsconfig.build.json --declarationDir wrappers",
     "build:css": "postcss --base src --dir dist/css src/**/*.css",
     "build:css-bundle": "node ../../config/merge-css-modules.js",
+    "build:version-info": "node ../../scripts/generate-version-info.js",
     "watch:css": "yarn build:css --watch"
   },
   "dependencies": {

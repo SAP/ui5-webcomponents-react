@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-base",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Base for ui5-webcomponents-react",
   "type": "module",
   "main": "dist/index.js",
@@ -26,7 +26,8 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "build:version-info": "node ../../scripts/generate-version-info.js"
   },
   "peerDependencies": {
     "@types/react": "*",

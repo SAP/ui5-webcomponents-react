@@ -43,15 +43,24 @@ jobs:
         run: |
           npm install -g npm
           yarn install
-          yarn build
 
-      - name: publish
+      - name: version
         run: |
           git config user.email ${{ secrets.BOT_GIT_EMAIL }}
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
 
-          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
+          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna version ${{ github.event.inputs.release_type }} \
             --dist-tag ${{ github.event.inputs.npm_tag }}
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
+
+      - name: build
+        run: yarn build
+
+      - name: publish to npm
+        run: ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish from-git
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
