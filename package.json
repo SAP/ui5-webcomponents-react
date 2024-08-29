@@ -111,7 +111,7 @@
   },
   "resolutions": {
     "tocbot": "4.29.0",
-    "@joshwooding/vite-plugin-react-docgen-typescript": "0.3.0"
+    "@joshwooding/vite-plugin-react-docgen-typescript": "0.4.0"
   },
   "type": "module",
   "nyc": {
