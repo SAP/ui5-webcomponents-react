@@ -1,6 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "baseBranches": ["main", "v1.29.x"],
   "extends": [
     "config:base",
     ":disableDependencyDashboard",
