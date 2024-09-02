@@ -6823,6 +6823,7 @@ __metadata:
     "@ui5/webcomponents-react-base": "workspace:~"
     clsx: "npm:2.1.1"
     react-table: "npm:7.8.0"
+    use-sync-external-store: "npm:1.2.2"
   peerDependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
