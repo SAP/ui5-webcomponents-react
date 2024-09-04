@@ -393,7 +393,7 @@ const columns = (columns: TableInstance['columns'], { instance }: { instance: Ta
 
         return {
           ...column,
-          width: column.width ?? targetWidth,
+          width: column.width ?? Math.min(targetWidth, MAX_WIDTH),
           minWidth: column.minWidth ?? minHeaderWidth
         };
       }
