@@ -1,6 +1,5 @@
 .objectPage {
   container: objectPage / inline-size;
-  --_ui5wcr_ObjectPage_header_display: block;
   --_ui5wcr_ObjectPage_title_fontsize: var(--sapObjectHeader_Title_FontSize);
 
   box-sizing: border-box;
@@ -16,6 +15,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
+  will-change: scroll-position;
   section[id*='ObjectPageSection-'] > div[role='heading'] {
     display: none;
   }
@@ -28,13 +28,19 @@
   }
 }
 
+.testClass::before {
+  content: '';
+  display: block;
+  height: 60px; /* Match this height to padding-top */
+  margin-top: -60px; /* Negative margin to offset the padding */
+}
+
 .iconTabBarMode section[data-component-name='ObjectPageSection'] > div[role='heading'] {
   display: none;
 }
 
 /* Header */
 .header {
-  --_ui5wcr_ObjectPage_header_display: block;
   box-sizing: border-box;
   background-color: var(--sapObjectHeader_Background);
   position: sticky;
@@ -50,7 +56,10 @@
 }
 
 .headerCollapsed {
-  --_ui5wcr_ObjectPage_header_display: none;
+  [data-component-name='ObjectPageHeader'] {
+    flex-shrink: 0;
+    visibility: hidden;
+  }
   --_ui5wcr_ObjectPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);
 }
 

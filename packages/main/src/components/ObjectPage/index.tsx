@@ -45,7 +45,6 @@ addCustomCSSWithScoping(
 );
 
 const ObjectPageCssVariables = {
-  headerDisplay: '--_ui5wcr_ObjectPage_header_display',
   titleFontSize: '--_ui5wcr_ObjectPage_title_fontsize'
 };
 
@@ -337,6 +336,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     const section = objectPageRef.current?.querySelector<HTMLElement>(
       `#${isSubSection ? 'ObjectPageSubSection' : 'ObjectPageSection'}-${CSS.escape(id)}`
     );
+    //todo
     scrollTimeout.current = performance.now() + 500;
     if (section) {
       const safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
@@ -455,6 +455,24 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     }
   }, [headerPinned, topHeaderHeight]);
 
+  // the header shouldn't be rendered if it's pinned and collapsed.
+  useEffect(() => {
+    const objectPageHeaderElement = objectPageRef.current?.querySelector("[data-component-name='ObjectPageHeader']");
+    if (headerPinned && headerCollapsedInternal && objectPageHeaderElement) {
+      console.log('A');
+      objectPageHeaderElement.style.display = 'none';
+    } else if (objectPageHeaderElement.style.display === 'none') {
+      console.log('B');
+      objectPageHeaderElement.style.display = '';
+    }
+    return () => {
+      if (objectPageHeaderElement) {
+        console.log('C');
+        objectPageHeaderElement.style.display = '';
+      }
+    };
+  }, [headerPinned, headerCollapsedInternal, headerArea]);
+
   useEffect(() => {
     setSelectedSubSectionId(props.selectedSubSectionId);
     if (props.selectedSubSectionId) {
@@ -513,18 +531,35 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     };
   }, [headerCollapsed, topHeaderHeight, headerContentHeight, currentTabModeSection, children]);
 
-  const onToggleHeaderContentVisibility = useCallback((e) => {
+  const onToggleHeaderContentVisibility = (e) => {
     isToggledRef.current = true;
+    //todo check if scrollTimeout is still needed
     scrollTimeout.current = performance.now() + 500;
-    if (!e.detail.visible) {
-      setHeaderCollapsedInternal(true);
-      objectPageRef.current?.classList.add(classNames.headerCollapsed);
-    } else {
-      setHeaderCollapsedInternal(false);
-      setScrolledHeaderExpanded(true);
-      objectPageRef.current?.classList.remove(classNames.headerCollapsed);
+    if (objectPageRef.current) {
+      const objectPageElement = objectPageRef.current;
+      if (!e.detail.visible) {
+        setHeaderCollapsedInternal(true);
+        objectPageElement.classList.add(classNames.headerCollapsed);
+        if (objectPageElement.scrollTop < headerContentHeight) {
+          //todo apply same logic if collapsed when scrolled
+          objectPageElement.scrollTo({ top: headerContentHeight, behavior: 'instant' });
+        } else {
+          objectPageElement.scrollTo({
+            top: objectPageElement.scrollTop + headerContentHeight,
+            behavior: 'instant'
+          });
+        }
+      } else {
+        setHeaderCollapsedInternal(false);
+        setScrolledHeaderExpanded(true);
+        objectPageElement.classList.remove(classNames.headerCollapsed);
+        objectPageElement.scrollTo({
+          top: objectPageElement.scrollTop - headerContentHeight,
+          behavior: 'instant'
+        });
+      }
     }
-  }, []);
+  };
 
   const handleOnSubSectionSelected = useCallback(
     (e) => {
@@ -544,7 +579,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         debouncedOnSectionChange(e, currentIndex, sectionId, sectionNodes[currentIndex]);
       }
       const subSectionId = e.detail.subSectionId;
-      scrollTimeout.current = performance.now() + 200;
       setSelectedSubSectionId(subSectionId);
     },
     [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled, children]
@@ -637,7 +671,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   };
 
   const snappedHeaderInObjPage = titleArea && titleArea.props.snappedContent && headerCollapsed === true && !!image;
-
   const isInitial = useRef(true);
   useEffect(() => {
     if (!isInitial.current) {
@@ -652,10 +685,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       return cloneElement(headerArea as ReactElement<ObjectPageHeaderPropTypesWithInternals>, {
         ...headerArea.props,
         topHeaderHeight,
-        style:
-          headerCollapsed === true
-            ? { position: 'absolute', visibility: 'hidden', flexShrink: 0 }
-            : { ...headerArea.props.style, flexShrink: 0 },
+        style: headerCollapsed === true ? { visibility: 'hidden', ...headerArea.props.style } : headerArea.props.style,
         headerPinned: headerPinned || scrolledHeaderExpanded,
         //@ts-expect-error: todo remove me when forwardref has been replaced
         ref: componentRefHeaderContent,
@@ -739,16 +769,13 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     [topHeaderHeight, headerPinned, props.onScroll, scrolledHeaderExpanded, selectedSubSectionId]
   );
 
-  const onHoverToggleButton = useCallback(
-    (e) => {
-      if (e?.type === 'mouseover') {
-        topHeaderRef.current?.classList.add(classNames.headerHoverStyles);
-      } else {
-        topHeaderRef.current?.classList.remove(classNames.headerHoverStyles);
-      }
-    },
-    [classNames.headerHoverStyles]
-  );
+  const onHoverToggleButton = (e) => {
+    if (e?.type === 'mouseover') {
+      topHeaderRef.current?.classList.add(classNames.headerHoverStyles);
+    } else {
+      topHeaderRef.current?.classList.remove(classNames.headerHoverStyles);
+    }
+  };
 
   const objectPageStyles: CSSProperties = {
     ...style
@@ -892,7 +919,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         </div>
       )}
       <div data-component-name="ObjectPageContent" className={classNames.content} ref={objectPageContentRef}>
-        <div style={{ height: headerCollapsed ? `${headerContentHeight}px` : 0 }} aria-hidden />
         {placeholder ? placeholder : sections}
         <div style={{ height: `${sectionSpacer}px` }} aria-hidden />
       </div>

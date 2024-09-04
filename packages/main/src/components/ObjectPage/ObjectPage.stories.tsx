@@ -123,11 +123,70 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const Test = {
+  render(args) {
+    return (
+      <ObjectPage
+        style={{ height: '1080px' }}
+        titleArea={
+          <ObjectPageTitle
+            header="Denise Smith"
+            subHeader="Senior UI Developer"
+            actionsBar={
+              <Toolbar>
+                <ToolbarButton design={ButtonDesign.Emphasized} text="Primary Action" />
+                <ToolbarButton text="Action" />
+              </Toolbar>
+            }
+            breadcrumbs={
+              <Breadcrumbs>
+                <BreadcrumbsItem>Manager Cockpit</BreadcrumbsItem>
+                <BreadcrumbsItem>My Team</BreadcrumbsItem>
+                <BreadcrumbsItem>Employee Details</BreadcrumbsItem>
+              </Breadcrumbs>
+            }
+          >
+            <ObjectStatus state={ValueState.Positive}>employed</ObjectStatus>
+          </ObjectPageTitle>
+        }
+        headerArea={
+          <ObjectPageHeader>
+            <FlexBox wrap={FlexBoxWrap.Wrap} alignItems={FlexBoxAlignItems.Center}>
+              <FlexBox direction={FlexBoxDirection.Column}>
+                <Link>+33 6 4512 5158</Link>
+                <Link href="mailto:ui5-webcomponents-react@sap.com">DeniseSmith@sap.com</Link>
+                <Link href="https://github.com/SAP/ui5-webcomponents-react">
+                  https://github.com/SAP/ui5-webcomponents-react
+                </Link>
+              </FlexBox>
+              <FlexBox direction={FlexBoxDirection.Column} style={{ padding: '10px' }}>
+                <Label>San Jose</Label>
+                <Label>California, USA</Label>
+              </FlexBox>
+            </FlexBox>
+          </ObjectPageHeader>
+        }
+        data-testid="op"
+        // ref={ref}
+        // footerArea={withFooter && Footer}
+        // mode={mode}
+      >
+        <ObjectPageSection key="0" titleText="Goals" id="goals" aria-label="Goals">
+          {/*<div data-testid="section 1" style={{ height: '925px', width: '100%', background: 'lightblue' }}>*/}
+          <div data-testid="section 1" style={{ height: '945px', width: '100%', background: 'lightblue' }}>
+            <Button>Update Heights</Button>
+          </div>
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+  }
+};
+
 export const Default: Story = {
   render(args) {
     return (
       <ObjectPage {...args}>
-        <ObjectPageSection titleText="Goals" id="goals" aria-label="Goals">
+        <ObjectPageSection titleText="Goals" id="goals" aria-label="Goals" style={{ height: '490px' }}>
           <Form layout="S1 M2 L3 XL3" labelSpan="S12 M12 L12 XL12">
             <FormItem labelContent={<Label showColon>Evangelize the UI framework across the company</Label>}>
               <Text>4 days overdue - Cascaded</Text>

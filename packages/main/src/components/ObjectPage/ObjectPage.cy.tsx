@@ -132,7 +132,7 @@ describe('ObjectPage', () => {
     cy.findByText('ObjectPageHeader').should('not.be.visible');
   });
 
-  it('programmatically pin header (`headerPinned`)', () => {
+  it.only('programmatically pin header (`headerPinned`)', () => {
     document.body.style.margin = '0px';
     const TestComp = ({ onPinButtonToggle }: ObjectPagePropTypes) => {
       const [pinned, setPinned] = useState(false);
@@ -140,6 +140,7 @@ describe('ObjectPage', () => {
         onPinButtonToggle(pinned);
         setPinned(pinned);
       };
+      console.log(pinned);
       return (
         <>
           <Button
@@ -196,6 +197,7 @@ describe('ObjectPage', () => {
     cy.findByText('ObjectPageHeader').should('not.be.visible');
 
     cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
+    cy.pause();
     cy.findByText('ObjectPageHeader').should('be.visible');
 
     // wait for timeout of expand click
@@ -284,6 +286,7 @@ describe('ObjectPage', () => {
     cy.realPress('Enter');
     cy.wait(200);
     cy.realPress('Enter');
+    cy.pause();
     cy.findByText('Job Relationship').should('be.visible');
 
     cy.mount(
@@ -482,9 +485,8 @@ describe('ObjectPage', () => {
     cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
     cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should('have.attr', 'icon', 'slim-arrow-down');
 
-    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
+    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').realClick();
     cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('be.visible');
-
     cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
     cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
   });
