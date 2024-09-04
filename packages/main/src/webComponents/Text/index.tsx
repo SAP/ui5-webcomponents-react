@@ -1,11 +1,20 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Text.js';
+import type EmptyIndicatorMode from '@ui5/webcomponents/dist/types/TextEmptyIndicatorMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TextAttributes {
+  /**
+   * Specifies if an empty indicator should be displayed when there is no text.
+   *
+   * **Note:** Available since [v2.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.2.0) of **@ui5/webcomponents**.
+   * @default "Off"
+   */
+  emptyIndicatorMode?: EmptyIndicatorMode | keyof typeof EmptyIndicatorMode;
+
   /**
    * Defines the number of lines the text should wrap before it truncates.
    * @default Infinity
@@ -47,7 +56,7 @@ interface TextPropTypes extends TextAttributes, Omit<CommonProps, keyof TextAttr
  *
  * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents__.
  */
-const Text = withWebComponent<TextPropTypes, TextDomRef>('ui5-text', ['maxLines'], [], [], []);
+const Text = withWebComponent<TextPropTypes, TextDomRef>('ui5-text', ['emptyIndicatorMode', 'maxLines'], [], [], []);
 
 Text.displayName = 'Text';
 
