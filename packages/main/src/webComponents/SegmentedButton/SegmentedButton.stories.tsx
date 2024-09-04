@@ -9,6 +9,7 @@ const meta = {
     children: { control: { disable: true } }
   },
   args: {
+    accessibleName: 'Segmented Button Example',
     children: (
       <>
         <SegmentedButtonItem>Button 1</SegmentedButtonItem>
