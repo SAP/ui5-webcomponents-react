@@ -1,7 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/FileUploader.js';
-import type { FileUploaderChangeEventDetail } from '@ui5/webcomponents/dist/FileUploader.js';
+import type {
+  FileUploaderChangeEventDetail,
+  FileUploaderFileSizeExceedEventDetail
+} from '@ui5/webcomponents/dist/FileUploader.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -29,6 +32,14 @@ interface FileUploaderAttributes {
    * @default false
    */
   hideInput?: boolean;
+
+  /**
+   * Defines the maximum file size in megabytes which prevents the upload if at least one file exceeds it.
+   *
+   * **Note:** Available since [v2.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.2.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  maxFileSize?: number | undefined;
 
   /**
    * Allows multiple files to be chosen.
@@ -71,7 +82,10 @@ interface FileUploaderDomRef extends Required<FileUploaderAttributes>, Ui5DomRef
 
 interface FileUploaderPropTypes
   extends FileUploaderAttributes,
-    Omit<CommonProps, keyof FileUploaderAttributes | 'children' | 'valueStateMessage' | 'onChange'> {
+    Omit<
+      CommonProps,
+      keyof FileUploaderAttributes | 'children' | 'valueStateMessage' | 'onChange' | 'onFileSizeExceed'
+    > {
   /**
    * By default the component contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.
    *
@@ -101,6 +115,13 @@ interface FileUploaderPropTypes
    * **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
    */
   onChange?: (event: Ui5CustomEvent<FileUploaderDomRef, FileUploaderChangeEventDetail>) => void;
+
+  /**
+   * Event is fired when the size of a file is above the `maxFileSize` property value.
+   *
+   * **Note:** Available since [v2.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.2.0) of **@ui5/webcomponents**.
+   */
+  onFileSizeExceed?: (event: Ui5CustomEvent<FileUploaderDomRef, FileUploaderFileSizeExceedEventDetail>) => void;
 }
 
 /**
@@ -121,10 +142,10 @@ interface FileUploaderPropTypes
  */
 const FileUploader = withWebComponent<FileUploaderPropTypes, FileUploaderDomRef>(
   'ui5-file-uploader',
-  ['accept', 'name', 'placeholder', 'value', 'valueState'],
+  ['accept', 'maxFileSize', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'hideInput', 'multiple'],
   ['valueStateMessage'],
-  ['change']
+  ['change', 'file-size-exceed']
 );
 
 FileUploader.displayName = 'FileUploader';

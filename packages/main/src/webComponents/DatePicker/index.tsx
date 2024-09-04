@@ -6,6 +6,7 @@ import type {
   DatePickerInputEventDetail,
   DatePickerValueStateChangeEventDetail
 } from '@ui5/webcomponents/dist/DatePicker.js';
+import type CalendarWeekNumbering from '@ui5/webcomponents/dist/types/CalendarWeekNumbering.js';
 import type CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -23,6 +24,15 @@ interface DatePickerAttributes {
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
+
+  /**
+   * Defines how to calculate calendar weeks and first day of the week.
+   * If not set, the calendar will be displayed according to the currently set global configuration.
+   *
+   * **Note:** Available since [v2.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.2.0) of **@ui5/webcomponents**.
+   * @default "Default"
+   */
+  calendarWeekNumbering?: CalendarWeekNumbering | keyof typeof CalendarWeekNumbering;
 
   /**
    * Determines whether the component is displayed as disabled.
@@ -275,6 +285,7 @@ const DatePicker = withWebComponent<DatePickerPropTypes, DatePickerDomRef>(
   [
     'accessibleName',
     'accessibleNameRef',
+    'calendarWeekNumbering',
     'formatPattern',
     'maxDate',
     'minDate',

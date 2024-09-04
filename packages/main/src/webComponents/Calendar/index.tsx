@@ -3,12 +3,22 @@
 import '@ui5/webcomponents/dist/Calendar.js';
 import type { CalendarSelectionChangeEventDetail } from '@ui5/webcomponents/dist/Calendar.js';
 import type CalendarSelectionMode from '@ui5/webcomponents/dist/types/CalendarSelectionMode.js';
+import type CalendarWeekNumbering from '@ui5/webcomponents/dist/types/CalendarWeekNumbering.js';
 import type CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface CalendarAttributes {
+  /**
+   * Defines how to calculate calendar weeks and first day of the week.
+   * If not set, the calendar will be displayed according to the currently set global configuration.
+   *
+   * **Note:** Available since [v2.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.2.0) of **@ui5/webcomponents**.
+   * @default "Default"
+   */
+  calendarWeekNumbering?: CalendarWeekNumbering | keyof typeof CalendarWeekNumbering;
+
   /**
    * Determines the format, displayed in the input field.
    * @default undefined
@@ -203,7 +213,15 @@ interface CalendarPropTypes
  */
 const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   'ui5-calendar',
-  ['formatPattern', 'maxDate', 'minDate', 'primaryCalendarType', 'secondaryCalendarType', 'selectionMode'],
+  [
+    'calendarWeekNumbering',
+    'formatPattern',
+    'maxDate',
+    'minDate',
+    'primaryCalendarType',
+    'secondaryCalendarType',
+    'selectionMode'
+  ],
   ['hideWeekNumbers'],
   ['calendarLegend', 'specialDates'],
   ['selection-change']

@@ -1153,6 +1153,67 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/CalendarWeekNumbering.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "CalendarWeekNumbering",
+          "description": "The <code>CalendarWeekNumbering</code> enum defines how to calculate calendar weeks. Each\nvalue defines:\n- The first day of the week,\n- The first week of the year.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.2.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The default calendar week numbering:\n\nThe framework determines the week numbering scheme; currently it is derived from the\nactive format locale. Future versions of ui5-webcomponents might select a different week numbering\nscheme.",
+              "default": "Default",
+              "name": "Default",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Official calendar week numbering in most of Europe (ISO 8601 standard):\nMonday is first day of the week, the week containing January 4th is first week of the year.",
+              "default": "ISO_8601",
+              "name": "ISO_8601",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Official calendar week numbering in much of the Middle East (Middle Eastern calendar):\nSaturday is first day of the week, the week containing January 1st is first week of the year.",
+              "default": "MiddleEastern",
+              "name": "MiddleEastern",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Official calendar week numbering in the United States, Canada, Brazil, Israel, Japan, and\nother countries (Western traditional calendar):\nSunday is first day of the week, the week containing January 1st is first week of the year.",
+              "default": "WesternTraditional",
+              "name": "WesternTraditional",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CalendarWeekNumbering",
+            "module": "dist/types/CalendarWeekNumbering.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/CarouselArrowsPlacement.js",
       "declarations": [
         {
@@ -3050,6 +3111,48 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/TextEmptyIndicatorMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "EmptyIndicatorMode",
+          "description": "Empty Indicator Mode.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Empty indicator is never rendered.",
+              "default": "Off",
+              "name": "Off",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Empty indicator is rendered always when the component's content is empty.",
+              "default": "On",
+              "name": "On",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "EmptyIndicatorMode",
+            "module": "dist/types/TextEmptyIndicatorMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/TitleLevel.js",
       "declarations": [
         {
@@ -3408,6 +3511,12 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/Assets-fetch.js",
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
@@ -4847,12 +4956,20 @@
               "name": "month-cell-selected"
             },
             {
+              "description": "Used to style the day cells in between of selected months in range.",
+              "name": "month-cell-selected-between"
+            },
+            {
               "description": "Used to style the year cells.",
               "name": "year-cell"
             },
             {
               "description": "Used to style the year cells when selected.",
               "name": "year-cell-selected"
+            },
+            {
+              "description": "Used to style the day cells in between of selected years in range.",
+              "name": "year-cell-selected-between"
             }
           ],
           "slots": [
@@ -5019,6 +5136,28 @@
                 "name": "DateComponentBase",
                 "module": "dist/DateComponentBase.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "calendarWeekNumbering",
+              "type": {
+                "text": "CalendarWeekNumbering",
+                "references": [
+                  {
+                    "name": "CalendarWeekNumbering",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarWeekNumbering.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "privacy": "public",
+              "_ui5since": "2.2.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
             }
           ],
           "events": [
@@ -5135,6 +5274,19 @@
               "fieldName": "maxDate",
               "type": {
                 "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
               },
               "inheritedFrom": {
                 "name": "DateComponentBase",
@@ -5631,6 +5783,19 @@
                 "name": "DateComponentBase",
                 "module": "dist/DateComponentBase.js"
               }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
             }
           ],
           "members": [
@@ -5716,6 +5881,28 @@
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "calendarWeekNumbering",
+              "type": {
+                "text": "CalendarWeekNumbering",
+                "references": [
+                  {
+                    "name": "CalendarWeekNumbering",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarWeekNumbering.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "privacy": "public",
+              "_ui5since": "2.2.0",
               "inheritedFrom": {
                 "name": "DateComponentBase",
                 "module": "dist/DateComponentBase.js"
@@ -7895,6 +8082,24 @@
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6"
+            },
+            {
+              "kind": "field",
+              "name": "calendarWeekNumbering",
+              "type": {
+                "text": "CalendarWeekNumbering",
+                "references": [
+                  {
+                    "name": "CalendarWeekNumbering",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarWeekNumbering.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "privacy": "public",
+              "_ui5since": "2.2.0"
             }
           ],
           "attributes": [
@@ -7941,6 +8146,15 @@
               "fieldName": "maxDate",
               "type": {
                 "text": "string"
+              }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
               }
             }
           ],
@@ -8270,6 +8484,28 @@
                 "name": "DateComponentBase",
                 "module": "dist/DateComponentBase.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "calendarWeekNumbering",
+              "type": {
+                "text": "CalendarWeekNumbering",
+                "references": [
+                  {
+                    "name": "CalendarWeekNumbering",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarWeekNumbering.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "privacy": "public",
+              "_ui5since": "2.2.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
             }
           ],
           "events": [
@@ -8544,6 +8780,19 @@
               "fieldName": "maxDate",
               "type": {
                 "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
               },
               "inheritedFrom": {
                 "name": "DateComponentBase",
@@ -8977,6 +9226,28 @@
                 "name": "DateComponentBase",
                 "module": "dist/DateComponentBase.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "calendarWeekNumbering",
+              "type": {
+                "text": "CalendarWeekNumbering",
+                "references": [
+                  {
+                    "name": "CalendarWeekNumbering",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarWeekNumbering.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "privacy": "public",
+              "_ui5since": "2.2.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
             }
           ],
           "attributes": [
@@ -9231,6 +9502,19 @@
               "fieldName": "maxDate",
               "type": {
                 "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
               },
               "inheritedFrom": {
                 "name": "DateComponentBase",
@@ -9633,6 +9917,19 @@
                 "name": "DateComponentBase",
                 "module": "dist/DateComponentBase.js"
               }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
             }
           ],
           "members": [
@@ -9977,6 +10274,28 @@
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "calendarWeekNumbering",
+              "type": {
+                "text": "CalendarWeekNumbering",
+                "references": [
+                  {
+                    "name": "CalendarWeekNumbering",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarWeekNumbering.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "privacy": "public",
+              "_ui5since": "2.2.0",
               "inheritedFrom": {
                 "name": "DateComponentBase",
                 "module": "dist/DateComponentBase.js"
@@ -10738,6 +11057,17 @@
             },
             {
               "kind": "field",
+              "name": "maxFileSize",
+              "type": {
+                "text": "number | undefined"
+              },
+              "description": "Defines the maximum file size in megabytes which prevents the upload if at least one file exceeds it.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.2.0"
+            },
+            {
+              "kind": "field",
               "name": "valueState",
               "type": {
                 "text": "ValueState",
@@ -10788,6 +11118,39 @@
                   "name": "files",
                   "_ui5privacy": "public",
                   "description": "The current files."
+                }
+              ]
+            },
+            {
+              "name": "file-size-exceed",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<FileUploaderFileSizeExceedEventDetail>",
+                "references": [
+                  {
+                    "name": "FileUploaderFileSizeExceedEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/FileUploader.js"
+                  }
+                ]
+              },
+              "description": "Event is fired when the size of a file is above the `maxFileSize` property value.",
+              "_ui5since": "2.2.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "Array<FileData>",
+                    "references": [
+                      {
+                        "name": "FileData",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/FileUploader.js"
+                      }
+                    ]
+                  },
+                  "name": "filesData",
+                  "_ui5privacy": "public",
+                  "description": "An array of `FileData` objects containing the`fileName` and `fileSize` in MB of each file that exceeds the upload limit."
                 }
               ]
             }
@@ -10854,6 +11217,15 @@
               "fieldName": "value",
               "type": {
                 "text": "string"
+              }
+            },
+            {
+              "description": "Defines the maximum file size in megabytes which prevents the upload if at least one file exceeds it.",
+              "name": "max-file-size",
+              "default": "undefined",
+              "fieldName": "maxFileSize",
+              "type": {
+                "text": "number | undefined"
               }
             },
             {
@@ -11493,6 +11865,20 @@
           "kind": "class",
           "description": "### Overview\n\nThe `ui5-input` component allows the user to enter and edit text or numeric values in one line.\n\nAdditionally, you can provide `suggestionItems`,\nthat are displayed in a popover right under the input.\n\nThe text field can be editable or read-only (`readonly` property),\nand it can be enabled or disabled (`disabled` property).\nTo visualize semantic states, such as \"Negative\" or \"Critical\", the `valueState` property is provided.\nWhen the user makes changes to the text, the change event is fired,\nwhich enables you to react on any text change.\n\n**Note:** If you are using the `ui5-input` as a single npm module,\ndon't forget to import the `InputSuggestions` module from\n\"@ui5/webcomponents/dist/features/InputSuggestions.js\"\nto enable the suggestions functionality.\n\n### Keyboard Handling\nThe `ui5-input` provides the following keyboard shortcuts:\n\n- [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.\n- [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.\n- [Down] - Focuses the next matching item in the suggestion list. Selection-change event is fired.\n- [Up] - Focuses the previous matching item in the suggestion list. Selection-change event is fired.\n- [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.\n- [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.\n- [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.\n- [Page Down] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Input.js\";`\n\n`import \"@ui5/webcomponents/dist/features/InputSuggestions.js\";` (optional - for input suggestions support)",
           "name": "Input",
+          "cssParts": [
+            {
+              "description": "Used to style the root DOM element of the Input component",
+              "name": "root"
+            },
+            {
+              "description": "Used to style the native input element",
+              "name": "input"
+            },
+            {
+              "description": "Used to style the clear icon, which can be pressed to clear user input text",
+              "name": "clear-icon"
+            }
+          ],
           "slots": [
             {
               "name": "default",
@@ -16555,7 +16941,21 @@
           "tagName": "ui5-multi-input",
           "customElement": true,
           "_ui5since": "1.0.0-rc.9",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "cssParts": [
+            {
+              "description": "Used to style the root DOM element of the Input component",
+              "name": "root"
+            },
+            {
+              "description": "Used to style the native input element",
+              "name": "input"
+            },
+            {
+              "description": "Used to style the clear icon, which can be pressed to clear user input text",
+              "name": "clear-icon"
+            }
+          ]
         }
       ],
       "exports": [
@@ -23466,13 +23866,13 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Sticks the `ui5-table-header-row` to the top of a table.\n\nNote: If used in combination with overflowMode \"Scroll\", the table needs a defined height\nor needs to be inside of a container with a defined height for the sticky header to work as expected.",
+              "description": "Sticks the `ui5-table-header-row` to the top of a table.\n\nNote: If used in combination with overflowMode \"Scroll\", the table needs a defined height for the sticky header to work as expected.",
               "privacy": "public"
             }
           ],
           "attributes": [
             {
-              "description": "Sticks the `ui5-table-header-row` to the top of a table.\n\nNote: If used in combination with overflowMode \"Scroll\", the table needs a defined height\nor needs to be inside of a container with a defined height for the sticky header to work as expected.",
+              "description": "Sticks the `ui5-table-header-row` to the top of a table.\n\nNote: If used in combination with overflowMode \"Scroll\", the table needs a defined height for the sticky header to work as expected.",
               "name": "sticky",
               "default": "false",
               "fieldName": "sticky",
@@ -24015,6 +24415,15 @@
               "_ui5type": {
                 "text": "Array<Node>"
               }
+            },
+            {
+              "name": "default",
+              "description": "Defines the text of the component.",
+              "_ui5propertyName": "text",
+              "_ui5type": {
+                "text": "Array<Node>"
+              },
+              "_ui5privacy": "public"
             }
           ],
           "members": [
@@ -24027,6 +24436,24 @@
               "default": "Infinity",
               "description": "Defines the number of lines the text should wrap before it truncates.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "emptyIndicatorMode",
+              "type": {
+                "text": "EmptyIndicatorMode",
+                "references": [
+                  {
+                    "name": "EmptyIndicatorMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TextEmptyIndicatorMode.js"
+                  }
+                ]
+              },
+              "default": "\"Off\"",
+              "description": "Specifies if an empty indicator should be displayed when there is no text.",
+              "privacy": "public",
+              "_ui5since": "2.2.0"
             }
           ],
           "attributes": [
@@ -24037,6 +24464,15 @@
               "fieldName": "maxLines",
               "type": {
                 "text": "number"
+              }
+            },
+            {
+              "description": "Specifies if an empty indicator should be displayed when there is no text.",
+              "name": "empty-indicator-mode",
+              "default": "\"Off\"",
+              "fieldName": "emptyIndicatorMode",
+              "type": {
+                "text": "\"On\" | \"Off\""
               }
             }
           ],
