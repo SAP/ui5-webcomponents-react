@@ -5,12 +5,14 @@ import postcssModules from 'postcss-modules';
 import postcssNesting from 'postcss-nesting';
 import stringHash from 'string-hash';
 import postcssCSStoESM from '../scripts/postcss-css-to-esm.mjs';
+import cssLayersPlugin from './layers-plugin.js';
 
 export function postcssConfigFactory(packageName) {
   return {
     plugins: [
       postcssImport(),
       postcssNesting(),
+      cssLayersPlugin(),
       postcssModules({
         // generateScopedName: '[name]__[local]___[hash:base64:5]',
         generateScopedName: function (name, filename, css) {
