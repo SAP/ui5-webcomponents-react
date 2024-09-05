@@ -85,7 +85,8 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "V1"
   },
   "files": [
     "dist",

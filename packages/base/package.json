@@ -42,7 +42,8 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "V1"
   },
   "bin": {
     "ui5wcr-codemod": "./bin/codemod.js"
