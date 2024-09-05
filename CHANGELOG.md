@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.10](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.9...v1.29.10) (2024-09-05)
+
+### Bug Fixes
+
+- **deps:** update ui5 web components to v1.24.9 (v1.29.x) (patch) ([#6283](https://github.com/SAP/ui5-webcomponents-react/issues/6283)) ([ff519fa](https://github.com/SAP/ui5-webcomponents-react/commit/ff519fa10cb1a90dd11021f4f3d3ed36de93c2c6))
+- scope internal style store per Web Components runtime ([#6319](https://github.com/SAP/ui5-webcomponents-react/issues/6319)) ([12d5cb6](https://github.com/SAP/ui5-webcomponents-react/commit/12d5cb6a93f4fa7afac0e7040b2c3042fa2c79b5)), closes [#6315](https://github.com/SAP/ui5-webcomponents-react/issues/6315)
+
 ## [1.29.9](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.8...v1.29.9) (2024-08-28)
 
 ### Bug Fixes
