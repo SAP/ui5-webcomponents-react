@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.2...v2.1.0) (2024-09-05)
+
+### Bug Fixes
+
+- **AnalyticalTable:** respect max-width in grow mode ([#6314](https://github.com/SAP/ui5-webcomponents-react/issues/6314)) ([98738d3](https://github.com/SAP/ui5-webcomponents-react/commit/98738d3e043a66c29be095a6f3618ebf9cfabb3b))
+- **deps:** define `use-sync-external-store` as dependency ([#6304](https://github.com/SAP/ui5-webcomponents-react/issues/6304)) ([4227642](https://github.com/SAP/ui5-webcomponents-react/commit/422764270d5fd3a3dad0c07c948f616fe7abaccf))
+
+### Features
+
+- update to UI5 Web Components ~2.2.0 ([#6312](https://github.com/SAP/ui5-webcomponents-react/issues/6312)) ([5be0319](https://github.com/SAP/ui5-webcomponents-react/commit/5be03197ff27d61921ce06c013e028a71bc704f3))
+- wrap all styles in ui5-webcomponents-react css layer ([#6306](https://github.com/SAP/ui5-webcomponents-react/issues/6306)) ([b43c1be](https://github.com/SAP/ui5-webcomponents-react/commit/b43c1be9b88a8201822859f0ad9e4fd2af613bf1)), closes [#6276](https://github.com/SAP/ui5-webcomponents-react/issues/6276)
+
 ## [2.0.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.1...v2.0.2) (2024-08-28)
 
 ### Bug Fixes
