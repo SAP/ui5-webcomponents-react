@@ -9,7 +9,6 @@
   box-sizing: border-box;
 
   &[data-splitter-vertical] {
-    cursor: col-resize;
     &:focus {
       outline-offset: -0.2rem;
       outline: var(--_ui5wcr_Splitter_BarOutline);
@@ -20,6 +19,7 @@
   }
 
   &[data-splitter-vertical='horizontal'] {
+    cursor: col-resize;
     border-inline: var(--_ui5wcr_Splitter_BarBorderStyle);
     min-width: var(--_ui5wcr-SplitterSize);
     width: var(--_ui5wcr-SplitterSize);
@@ -47,6 +47,7 @@
   }
 
   &[data-splitter-vertical='vertical'] {
+    cursor: row-resize;
     border-block: var(--_ui5wcr_Splitter_BarBorderStyle);
     min-height: var(--_ui5wcr-SplitterSize);
     height: var(--_ui5wcr-SplitterSize);
