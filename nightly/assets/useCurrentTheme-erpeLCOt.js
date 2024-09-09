@@ -1,0 +1,1 @@
+import{c as n,o as c,d as m}from"./withWebComponent-DUIvHLMA.js";import{r as t}from"./index-RYns6xqu.js";function f(){const[r,o]=t.useState(n());return t.useEffect(()=>{const e=s=>{o(s)};return c(e),()=>{m(e)}},[]),r}export{f as u};
