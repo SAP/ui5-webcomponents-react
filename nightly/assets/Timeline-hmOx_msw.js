@@ -1,0 +1,19 @@
+import{j as o}from"./useIsomorphicLayoutEffect-Dhma_bjk.js";import{useMDXComponents as x}from"./index-CcnH5Kt0.js";import{A as r}from"./ArgTypesWithNote-DxL7vgOh.js";import{C as h}from"./ControlsWithNote-CubsU3z-.js";import{D as j}from"./DocsHeader-CL9i8tko.js";import{F as l}from"./CommandsAndQueries-D6K1FQGy.js";import"./index-BKLLjRFE.js";import"./index-RYns6xqu.js";import"./WrappingType-CW8URInd.js";import"./Title-ZqK5PCI6.js";import{S as c}from"./SubcomponentsSection-BVy4lpQe.js";import{ae as f,af as m,ag as d,ah as p}from"./index-CUZO_9su.js";import{C as u,D as e,W as C,T as n,a as s}from"./Timeline.stories-DtYSkFWm.js";import"./index-CGD6y5QJ.js";import"./withWebComponent-DUIvHLMA.js";import"./utils-CKNAmS37.js";import"./slot-_4yKMUwC.js";import"./event-Dq0fpeHi.js";import"./i18nBundle-DMA-_yLC.js";import"./decline-CHk4a2e7.js";import"./Icon-C44BwzQ8.js";import"./Keys-D1SxbTOd.js";import"./parameters-bundle.css-Bga-3Zi8.js";import"./i18n-defaults-CdZCUmzZ.js";import"./information-Sy77r2nJ.js";import"./alert-cQZYHoWK.js";import"./class-map-BJErPj2t.js";import"./Button-CxQnwzDr.js";import"./AriaLabelHelper-C5uDZewF.js";import"./MarkedEvents-CAur0wxK.js";import"./willShowContent-CZcfsNXp.js";import"./Tooltips-BzCnTBef.js";import"./i18n-defaults-DTxNk1Ll.js";import"./TagDesign-Dou_yO3g.js";import"./index-sbqOYYIm.js";import"./utils-D7Ui4U-f.js";import"./main-C6oD7XT2.js";import"./index-D8yCSEP8.js";import"./Tag-CPIJx4VG.js";import"./sys-help-2-Bvq59Jti.js";import"./index-WEA3P0fF.js";import"./Popover-BePXU9v3.js";import"./PopupsCommon.css-DBrv9Ok7.js";import"./FocusableElements-19hFFt5Q.js";import"./isElementHidden-B4HqmI2E.js";import"./isElementClickable-0ACQ4G_A.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-ufE0tBOz.js";import"./MediaRange-Bnzt26Xb.js";import"./style-map-Bd8TDVwu.js";import"./getEffectiveScrollbarStyle-C9nZ6DfS.js";import"./index-DI2d1WHF.js";import"./Link-CiJW-swg.js";import"./chunk-HLWAVYOI-b95CzMTI.js";import"./iframe-DHZ6TYn-.js";import"../sb-preview/runtime.js";import"./client-BZNFO7bv.js";import"./copy-CYHXqHWb.js";import"./copy-pca8p_zU.js";import"./clsx-B-dksMZM.js";import"./GitHub-Mark-CnYostSV.js";import"./TableOfContent-J0xBpY2P.js";import"./index-Nf4awpnO.js";import"./I18nStore-B2w4xK_s.js";import"./useStylesheet-DcbwKAeb.js";import"./index-3WD7if5i.js";import"./index-D_wOg0B-.js";import"./Label-BAMwsHnp.js";import"./index-CF8fMoC4.js";import"./index-9j-aR15A.js";import"./addCustomCSSWithScoping-BRJo9-6E.js";import"./index-DhepUemJ.js";import"./BusyIndicator-BGYa7yRK.js";import"./index-BNERneIU.js";import"./index-4YU2sHPi.js";import"./Avatar-C5E79jBl.js";import"./employee-DWCutjal.js";import"./_baseUniq-DGDOfdbw.js";import"./_getPrototype-B0L0C3AT.js";import"./index-CFFTH5x_.js";import"./index-DrFu-skq.js";import"./calendar-CORTvE6N.js";import"./ToggleButton-BJC2y279.js";import"./parameters-bundle.css-By19-ehE.js";import"./ItemNavigation-BVStsdhf.js";import"./i18n-defaults-CMzKLht2.js";function a(t){const i={h2:"h2",h3:"h3",...x(),...t.components};return o.jsxs(o.Fragment,{children:[o.jsx(f,{of:u}),`
+`,o.jsx(j,{since:"0.4.0"}),`
+`,o.jsx("br",{}),`
+`,o.jsx(i.h2,{id:"example",children:"Example"}),`
+`,o.jsx(m,{of:e}),`
+`,o.jsx(i.h2,{id:"properties",children:"Properties"}),`
+`,o.jsx(h,{of:e}),`
+`,o.jsx("br",{}),`
+`,o.jsx(i.h2,{id:"more-examples",children:"More Examples"}),`
+`,o.jsx(i.h3,{id:"timeline-with-groups",children:"Timeline with Groups"}),`
+`,o.jsx(m,{of:C}),`
+`,o.jsx(d,{children:c}),`
+`,o.jsx(i.h2,{id:"timelinegroupitem",children:"TimelineGroupItem"}),`
+`,o.jsx(p,{of:n}),`
+`,o.jsx(r,{of:n}),`
+`,o.jsx(i.h2,{id:"timelineitem",children:"TimelineItem"}),`
+`,o.jsx(p,{of:s}),`
+`,o.jsx(r,{of:s}),`
+`,o.jsx(l,{})]})}function Zo(t={}){const{wrapper:i}={...x(),...t.components};return i?o.jsx(i,{...t,children:o.jsx(a,{...t})}):a(t)}export{Zo as default};
