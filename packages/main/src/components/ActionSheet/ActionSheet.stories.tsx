@@ -8,8 +8,8 @@ import deleteIcon from '@ui5/webcomponents-icons/dist/delete.js';
 import emailIcon from '@ui5/webcomponents-icons/dist/email.js';
 import forwardIcon from '@ui5/webcomponents-icons/dist/forward.js';
 import { useEffect, useRef, useState } from 'react';
-import type { ButtonDomRef } from '../../webComponents/index.js';
-import { Button } from '../../webComponents/index.js';
+import type { ButtonDomRef } from '../../index.js';
+import { Button } from '../../index.js';
 import { ActionSheet } from './index.js';
 
 const meta = {

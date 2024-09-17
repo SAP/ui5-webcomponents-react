@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 import type { Dispatch, SetStateAction, RefObject } from 'react';
-import type { TableRowDomRef } from '../webComponents/index.js';
+import type { TableRowDomRef } from '../index.js';
 
 export type ReorderDirections = 'up' | 'down' | 'top' | 'bottom';
 export type OnReorderParams = {

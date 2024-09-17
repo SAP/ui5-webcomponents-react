@@ -1,8 +1,6 @@
 import type { DialogBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Dialog.js';
 import type { ListSelectionChangeEventDetail } from '@ui5/webcomponents/dist/List.js';
 import type { ReactNode } from 'react';
-import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
-import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
 import type {
   ButtonPropTypes,
   DialogPropTypes,
@@ -10,7 +8,9 @@ import type {
   ListDomRef,
   ResponsivePopoverPropTypes,
   TitlePropTypes
-} from '../../webComponents/index.js';
+} from '../../index.js';
+import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
+import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
 
 interface UpdatedVariant extends SelectedVariant {

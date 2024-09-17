@@ -11,6 +11,7 @@ import fullscreenIcon from '@ui5/webcomponents-icons/dist/full-screen.js';
 import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
 import { useRef } from 'react';
 import { Toolbar as LegacyToolbar, ToolbarSpacer as LegacyToolbarSpacer } from '../../../../compat/src/index.js';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap, ObjectPageMode } from '../../enums/index.js';
 import type { ObjectPageDomRef } from '../../index.js';
 import {
   Bar,
@@ -20,9 +21,6 @@ import {
   ObjectPageHeader,
   ObjectPageTitle,
   FlexBox,
-  FlexBoxAlignItems,
-  FlexBoxDirection,
-  FlexBoxWrap,
   Form,
   FormGroup,
   FormItem,
@@ -31,7 +29,6 @@ import {
   Label,
   Link,
   MessageStrip,
-  ObjectPageMode,
   ObjectPageSection,
   ObjectPageSubSection,
   ObjectStatus,

@@ -22,10 +22,10 @@ import {
   MOVE_UP,
   UP_ARROW
 } from '../../i18n/i18n-defaults.js';
+import type { ButtonPropTypes, TableRowDomRef } from '../../index.js';
+import { BusyIndicator, Button, Icon, Label, TableCell, TableRow } from '../../index.js';
 import type { ReorderDirections } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
-import type { ButtonPropTypes, TableRowDomRef } from '../../webComponents/index.js';
-import { BusyIndicator, Button, Icon, Label, TableCell, TableRow } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './FilterGroupItem.module.css.js';
 import type { FilterGroupItemInternalProps, FilterGroupItemPropTypes } from './types.js';

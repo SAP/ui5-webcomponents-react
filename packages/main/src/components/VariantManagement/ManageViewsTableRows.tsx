@@ -19,8 +19,8 @@ import {
   VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   VIEW
 } from '../../i18n/i18n-defaults.js';
+import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../index.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
-import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../webComponents/index.js';
 import { Text } from '../../webComponents/Text/index.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
 

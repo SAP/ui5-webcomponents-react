@@ -3,8 +3,8 @@ import {
   setCustomElementsScopingSuffix
 } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { useReducer, useRef, useState } from 'react';
-import type { ButtonDomRef } from '../webComponents/index.js';
-import { Bar, Button, Popover, Switch } from '../webComponents/index.js';
+import type { ButtonDomRef } from '../index.js';
+import { Bar, Button, Popover, Switch } from '../index.js';
 
 describe('withWebComponent', () => {
   // reset scoping

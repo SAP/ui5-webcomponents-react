@@ -8,8 +8,8 @@ import sysEnter2Icon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef } from 'react';
-import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';
-import { Button } from '../../webComponents/index.js';
+import type { ButtonDomRef, ButtonPropTypes } from '../../index.js';
+import { Button } from '../../index.js';
 import { classNames, styleData } from './MessageViewButton.module.css.js';
 
 export interface MessageViewButtonProptypes

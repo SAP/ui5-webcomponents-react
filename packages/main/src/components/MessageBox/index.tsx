@@ -27,8 +27,8 @@ import {
   WARNING,
   YES
 } from '../../i18n/i18n-defaults.js';
-import type { ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
-import { Button, Dialog, Icon, Text, Title } from '../../webComponents/index.js';
+import type { ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../index.js';
+import { Button, Dialog, Icon, Text, Title } from '../../index.js';
 import { classNames, styleData } from './MessageBox.module.css.js';
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents

@@ -15,7 +15,7 @@ import {
   FlexBoxJustifyContent,
   TextAlign
 } from '../../enums/index.js';
-import { Button, MultiComboBox, MultiComboBoxItem, Option, Select, Tag, Text } from '../../webComponents/index.js';
+import { Button, MultiComboBox, MultiComboBoxItem, Option, Select, Tag, Text } from '../../index.js';
 import { FlexBox } from '../FlexBox';
 import { AnalyticalTable } from './index.js';
 

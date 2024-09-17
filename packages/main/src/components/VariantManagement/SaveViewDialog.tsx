@@ -15,11 +15,11 @@ import {
   VARIANT_MANAGEMENT_ERROR_DUPLICATE,
   VIEW
 } from '../../i18n/i18n-defaults.js';
+import type { ButtonDomRef, DialogDomRef, InputPropTypes } from '../../index.js';
+import { Bar, Button, CheckBox, Dialog, Input, Label } from '../../index.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
-import type { ButtonDomRef, DialogDomRef, InputPropTypes } from '../../webComponents/index.js';
-import { Bar, Button, CheckBox, Dialog, Input, Label } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './SaveViewDialog.module.css.js';
 import type { VariantManagementPropTypes } from './types.js';

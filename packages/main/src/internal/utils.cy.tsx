@@ -1,6 +1,7 @@
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { expect } from 'chai';
 import { Fragment, useRef } from 'react';
+import { FlexBoxDirection, FlexBoxWrap } from '../enums/index.js';
 import {
   Bar,
   Button,
@@ -8,8 +9,6 @@ import {
   DynamicPageHeader,
   DynamicPageTitle,
   FlexBox,
-  FlexBoxDirection,
-  FlexBoxWrap,
   Label,
   ObjectStatus,
   Title

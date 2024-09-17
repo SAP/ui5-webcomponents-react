@@ -2,18 +2,15 @@ import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useMemo, useRef, useState, version as reactVersion } from 'react';
 import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
+import { AnalyticalTable, AnalyticalTableHooks, Button, Input } from '../..';
 import {
-  AnalyticalTable,
-  AnalyticalTableHooks,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
   AnalyticalTableSelectionMode,
   AnalyticalTableSubComponentsBehavior,
   AnalyticalTableVisibleRowCountMode,
-  Button,
-  IndicationColor,
-  Input
-} from '../..';
+  IndicationColor
+} from '../../enums/index.js';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
