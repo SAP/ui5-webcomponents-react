@@ -27,6 +27,7 @@
     "declaration": true,
     "skipLibCheck": true,
     "outDir": "${configDir}/dist",
-    "declarationDir": "${configDir}/dist"
+    "declarationDir": "${configDir}/dist",
+    "noUncheckedSideEffectImports": true
   }
 }
