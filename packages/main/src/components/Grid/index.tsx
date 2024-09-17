@@ -83,6 +83,8 @@ const getIndentFromString = (indent: string, currentRange: Range) => {
 
 /**
  * A layout container component used for aligning items with various sizes in a simple grid.
+ *
+ * __Note:__ The `Grid` component is only applying grid styles only on the first level of its children. If you want to define a more complex grid, we recommend implementing a standard [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout).
  */
 const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
   const {
