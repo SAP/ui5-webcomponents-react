@@ -25,22 +25,32 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 <br />
 
-### Recipe: How to open a popover on ShellBarItem click?
+## Open a Popover on ShellBarItem click
 
-To open a popover with the `ShellBarItem` you can use the `targetRef` property of the `onClick` event.
+To open a popover with the `ShellBarItem` you can use the `detail.targetRef` property of the `onClick` event.
 
-```jsx
+```tsx
 const ShellBarComponent = () => {
-  const popoverRef = useRef(null);
-  const handleShellBarItemClick = (e) => {
-    popoverRef.current.showAt(e.detail.targetRef);
+  const popoverRef = useRef<PopoverDomRef>(null);
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const handleShellBarItemClick: ShellBarItemPropTypes['onClick'] = (e) => {
+    popoverRef.current!.opener = e.detail.targetRef;
+    setPopoverOpen(true);
   };
   return (
     <>
       <ShellBar>
         <ShellBarItem onClick={handleShellBarItemClick} icon="add" text="add" />
       </ShellBar>
-      <Popover ref={popoverRef}>Hello there!</Popover>
+      <Popover
+        ref={popoverRef}
+        open={popoverOpen}
+        onClose={() => {
+          setPopoverOpen(false);
+        }}
+      >
+        Hello there!
+      </Popover>
     </>
   );
 };
