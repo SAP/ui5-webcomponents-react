@@ -2,6 +2,8 @@ import { Meta, Markdown } from '@storybook/blocks';
 import { RegisterForm } from './knowledgeBaseExamples/formExamples';
 import { Footer, TableOfContent } from '@sb/components';
 
+[//]: # 'TODO: update this entry to be compatible with Form v2'
+
 <Meta title="Knowledge Base/Form Handling" />
 
 # Form Handling
