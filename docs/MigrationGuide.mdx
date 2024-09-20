@@ -376,8 +376,9 @@ Since the `ObjectPage` isn't compatible with the `DynamicPageTitle` web componen
 The `Form` component has been replaced with the `ui5-form` Web Component.
 You can use the new `Form` component as a feature complete replacement of the old Form component with the important differences to mention:
 
-1. You can't mix `FormGroup`s and `FormItem`s as children of the Form. Either only use `FormItem`s or only `FormGroup`s with `FormItem`s inside.
-2. Additional HTML elements between `Form / FormGroup / FormItem` are not allowed. You can still use custom React components if they render a `FormGroup` or `FormItem` as most outer element (or a fragment).
+1. The `ui5-form` web component doesn't implement the events, attributes and properties of an HTML `form` element. So, if you want these features to be available, we recommend wrapping the `Form` component inside a HTML `form` element.
+2. You can't mix `FormGroup`s and `FormItem`s as children of the Form. Either only use `FormItem`s or only `FormGroup`s with `FormItem`s inside.
+3. Additional HTML elements between `Form / FormGroup / FormItem` are not allowed. You can still use custom React components if they render a `FormGroup` or `FormItem` as most outer element (or a fragment).
 
 ```tsx
 // v1
@@ -397,6 +398,9 @@ function MyComponent() {
       columnsL={3}
       columnsXL={4}
       as={'form'}
+      onSubmit={(e) => {
+        /*handleSubmit*/
+      }}
     >
       <FormGroup titleText="My Form Group" as="h5">
         <FormItem label={'MyLabel'}>{/* FormItem Content */}</FormItem>
@@ -410,22 +414,29 @@ import { Form, FormGroup, FormItem, Label } from '@ui5/webcomponents-react';
 
 function MyComponent() {
   return (
-    // `backgroundDesign` and `as` have been removed without replacement
-    <Form
-      // `titleText` has been renamed to `headerText`
-      headerText="My Form"
-      // the `columnsX` props have been merged into the `layout` string
-      layout="S1 M2 L3 XL4"
-      // the `labelSpanX` props have been merged into the `labelSpan` string
-      labelSpan="S1 M2 L3 XL4"
+    // To implement HTML form features, use the `form` element
+    <form
+      onSubmit={(e) => {
+        /*handleSubmit*/
+      }}
     >
-      {/* `titleText` has been renamed to `headerText`, `as` has been removed */}
-      <FormGroup headerText="My Form Group">
-        {/* the `label` prop has been renamed to a `labelContent` slot.
+      {/* `backgroundDesign` and `as` have been removed without replacement */}
+      <Form
+        // `titleText` has been renamed to `headerText`
+        headerText="My Form"
+        // the `columnsX` props have been merged into the `layout` string
+        layout="S1 M2 L3 XL4"
+        // the `labelSpanX` props have been merged into the `labelSpan` string
+        labelSpan="S1 M2 L3 XL4"
+      >
+        {/* `titleText` has been renamed to `headerText`, `as` has been removed */}
+        <FormGroup headerText="My Form Group">
+          {/* the `label` prop has been renamed to a `labelContent` slot.
              It doesn't support strings anymore, it's recommended to use the `Label` component in this slot. */}
-        <FormItem labelContent={<Label>MyLabel</Label>}>{/* FormItem Content */}</FormItem>
-      </FormGroup>
-    </Form>
+          <FormItem labelContent={<Label>MyLabel</Label>}>{/* FormItem Content */}</FormItem>
+        </FormGroup>
+      </Form>
+    </form>
   );
 }
 ```
