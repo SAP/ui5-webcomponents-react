@@ -2,6 +2,7 @@
 
 import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import { createOrUpdateStyle, removeStyle } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
+import { getCurrentRuntimeIndex } from '@ui5/webcomponents-base/dist/Runtimes.js';
 import { useSyncExternalStore } from 'use-sync-external-store/shim/index.js';
 import { StyleStore } from '../stores/StyleStore.js';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect.js';
@@ -18,9 +19,11 @@ export function useStylesheet(styles: StyleDataCSP, componentName: string, optio
   );
 
   useIsomorphicLayoutEffect(() => {
+    const scopedComponentName = `${componentName}-${getCurrentRuntimeIndex()}`;
+    console.log(scopedComponentName);
     const shouldInject = options?.alwaysInject || !staticCssInjected;
     if (shouldInject) {
-      createOrUpdateStyle(styles, 'data-ui5wcr-component', componentName);
+      createOrUpdateStyle(styles, 'data-ui5wcr-component', scopedComponentName);
       StyleStore.mountComponent(componentName);
     }
 
@@ -29,7 +32,7 @@ export function useStylesheet(styles: StyleDataCSP, componentName: string, optio
         StyleStore.unmountComponent(componentName);
         const numberOfMountedComponents = componentsMap.get(componentName)!;
         if (numberOfMountedComponents <= 0) {
-          removeStyle('data-ui5wcr-component', componentName);
+          removeStyle('data-ui5wcr-component', scopedComponentName);
         }
       }
     };
