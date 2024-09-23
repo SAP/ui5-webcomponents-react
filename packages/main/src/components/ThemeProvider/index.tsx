@@ -20,7 +20,7 @@ import { styleData } from './ThemeProvider.css.js';
 function ThemeProviderStyles() {
   const uniqueId = useIsomorphicId();
   useStylesheet(styleData, `${ThemeProvider.displayName}-${uniqueId}`);
-  useStylesheet(ui5WcVariablesStyleData, `${ThemeProvider.displayName}-css-vars-${uniqueId}`);
+  useStylesheet(ui5WcVariablesStyleData, `${ThemeProvider.displayName}-css-vars-${uniqueId}`, { alwaysInject: true });
   return null;
 }
 
