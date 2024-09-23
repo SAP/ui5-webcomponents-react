@@ -11,11 +11,41 @@ interface ImportStatementPropTypes {
    */
   packageName: string;
 }
+interface DeepPath {
+  path: string;
+  moduleName: string;
+}
+interface FromPathPropTypes extends Pick<ImportStatementPropTypes, 'packageName'> {
+  deepPath?: null | undefined | DeepPath;
+}
+
+function FromPath({ packageName, deepPath }: FromPathPropTypes) {
+  return (
+    <>
+      <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>from</span>
+      <span> </span>
+      <span style={{ color: 'rgb(0, 136, 0)', fontSize: '14px' }}>
+        {deepPath ? packageName.slice(0, -1) : packageName}
+        {deepPath && deepPath.path}
+        {deepPath && "'"}
+      </span>
+      <span style={{ fontSize: '14px' }}>;</span>
+      {deepPath && <br />}
+    </>
+  );
+}
 
 export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPropTypes) => {
   if (!moduleNames) {
     return null;
   }
+  const isCompat = packageName.includes('compat');
+  const paths = isCompat
+    ? moduleNames.map((item) => {
+        return { path: `/dist/components/${item}/index.js`, moduleName: item };
+      })
+    : [null];
+
   return (
     <pre
       data-import
@@ -31,32 +61,46 @@ export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPro
       }}
     >
       <code style={{ whiteSpace: 'pre' }}>
-        <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>
-        <span style={{ fontSize: '14px' }}>
-          {' '}
-          {'{'}
-          {moduleNames.length > 2 ? (
-            <>
-              {moduleNames.map((item) => {
-                return (
-                  <Fragment key={item}>
+        {!paths[0] && <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>}
+        {paths.map((deepPath) => {
+          if (!deepPath) {
+            return (
+              <span style={{ fontSize: '14px' }}>
+                {' '}
+                {'{'}
+                {moduleNames.length > 2 ? (
+                  <>
+                    {moduleNames.map((item) => {
+                      return (
+                        <Fragment key={item}>
+                          <br />
+                          &nbsp;&nbsp;
+                          {item},
+                        </Fragment>
+                      );
+                    })}
                     <br />
-                    &nbsp;&nbsp;
-                    {item},
-                  </Fragment>
-                );
-              })}
-              <br />
-            </>
-          ) : (
-            <>&nbsp;{moduleNames.join(', ')}&nbsp;</>
-          )}
-          {'}'}{' '}
-        </span>
-        <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>from</span>
-        <span> </span>
-        <span style={{ color: 'rgb(0, 136, 0)', fontSize: '14px' }}>{packageName}</span>
-        <span style={{ fontSize: '14px' }}>;</span>
+                  </>
+                ) : (
+                  <>&nbsp;{moduleNames.join(', ')}&nbsp;</>
+                )}
+                {'}'}{' '}
+              </span>
+            );
+          } else {
+            return (
+              <>
+                <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>
+                <span style={{ fontSize: '14px' }}>
+                  {' '}
+                  {'{'}&nbsp;{deepPath.moduleName}&nbsp;{'}'}{' '}
+                </span>
+                <FromPath packageName={packageName} deepPath={deepPath} />
+              </>
+            );
+          }
+        })}
+        {!paths[0] && <FromPath packageName={packageName} />}
       </code>
     </pre>
   );
