@@ -20,7 +20,6 @@ interface FromPathPropTypes extends Pick<ImportStatementPropTypes, 'packageName'
 }
 
 function FromPath({ packageName, deepPath }: FromPathPropTypes) {
-  const semicolon = <span style={{ fontSize: '14px' }}>;</span>;
   return (
     <>
       <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>from</span>
@@ -30,8 +29,7 @@ function FromPath({ packageName, deepPath }: FromPathPropTypes) {
         {deepPath && deepPath.path}
         {deepPath && "'"}
       </span>
-      {!deepPath && semicolon}
-      {deepPath && semicolon}
+      <span style={{ fontSize: '14px' }}>;</span>
       {deepPath && <br />}
     </>
   );
