@@ -6,7 +6,7 @@ export const EmptyRow = ({
   className,
   children
 }: {
-  virtualRow: VirtualItem<HTMLDivElement>;
+  virtualRow: VirtualItem;
   className: string;
   children?: ReactNode;
 }) => {

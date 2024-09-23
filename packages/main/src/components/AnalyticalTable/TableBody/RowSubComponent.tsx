@@ -6,7 +6,7 @@ import { classNames, styleData } from './RowSubComponent.module.css.js';
 
 interface RowSubComponent {
   subComponentsHeight: Record<string, { rowId: string; subComponentHeight?: number }>;
-  virtualRow: VirtualItem<HTMLDivElement>;
+  virtualRow: VirtualItem;
   dispatch: (e: { type: string; payload?: Record<string, unknown> }) => void;
   row: Record<string, unknown>;
   rowHeight: number;
