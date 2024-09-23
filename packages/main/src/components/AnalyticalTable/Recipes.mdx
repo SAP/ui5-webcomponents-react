@@ -296,4 +296,33 @@ const columns = [
 ];
 ```
 
+## How to initially set a table state?
+
+To initially select or expand a row; reorder, filter, group, hide or sort a column you can use the `reactTableOptions.initialState` object:
+
+```jsx
+<AnalyticalTable
+  {...otherProps}
+  reactTableOptions={{
+    initialState: {
+      columnOrder: ['age', 'name'],
+      filters: [{ id: 'age', value: '27' }],
+      groupBy: ['age'],
+      hiddenColumns: ['name'],
+      selectedRowIds: { 2: true, 5: true, ['18.3']: true },
+      sortBy: [
+        {
+          id: 'age',
+          desc: true
+        }
+      ],
+      expanded: {
+        18: true,
+        18.3: true
+      }
+    }
+  }}
+/>
+```
+
 <Footer />
