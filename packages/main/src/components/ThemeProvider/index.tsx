@@ -16,7 +16,7 @@ let _versionInfoInjected = false;
 function ThemeProviderStyles() {
   const uniqueId = useId();
   useStylesheet(styleData, `${ThemeProvider.displayName}-${uniqueId}`);
-  useStylesheet(ui5WcVariablesStyleData, `${ThemeProvider.displayName}-css-vars-${uniqueId}`);
+  useStylesheet(ui5WcVariablesStyleData, `${ThemeProvider.displayName}-css-vars-${uniqueId}`, { alwaysInject: true });
   return null;
 }
 
