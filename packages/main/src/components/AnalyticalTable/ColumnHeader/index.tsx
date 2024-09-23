@@ -33,7 +33,7 @@ export interface ColumnHeaderProps {
   dragOver: boolean;
   isDraggable: boolean;
   headerTooltip: string;
-  virtualColumn: VirtualItem<HTMLDivElement>;
+  virtualColumn: VirtualItem;
   columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
   isRtl: boolean;
   children: ReactNode | ReactNode[];
