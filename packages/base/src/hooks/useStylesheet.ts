@@ -20,7 +20,6 @@ export function useStylesheet(styles: StyleDataCSP, componentName: string, optio
 
   useIsomorphicLayoutEffect(() => {
     const scopedComponentName = `${componentName}-${getCurrentRuntimeIndex()}`;
-    console.log(scopedComponentName);
     const shouldInject = options?.alwaysInject || !staticCssInjected;
     if (shouldInject) {
       createOrUpdateStyle(styles, 'data-ui5wcr-component', scopedComponentName);
