@@ -6,7 +6,11 @@ import { useSyncExternalStore } from 'use-sync-external-store/shim/index.js';
 import { StyleStore } from '../stores/StyleStore.js';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect.js';
 
-export function useStylesheet(styles: StyleDataCSP, componentName: string) {
+interface UseStyleSheetOptions {
+  alwaysInject?: boolean;
+}
+
+export function useStylesheet(styles: StyleDataCSP, componentName: string, options?: UseStyleSheetOptions) {
   const { staticCssInjected, componentsMap } = useSyncExternalStore(
     StyleStore.subscribe,
     StyleStore.getSnapshot,
@@ -14,7 +18,7 @@ export function useStylesheet(styles: StyleDataCSP, componentName: string) {
   );
 
   useIsomorphicLayoutEffect(() => {
-    const shouldInject = !staticCssInjected;
+    const shouldInject = options?.alwaysInject || !staticCssInjected;
     if (shouldInject) {
       createOrUpdateStyle(styles, 'data-ui5wcr-component', componentName);
       StyleStore.mountComponent(componentName);
