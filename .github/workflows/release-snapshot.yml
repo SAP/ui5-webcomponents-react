@@ -1,7 +1,6 @@
 name: 'Release - Snapshot'
 
-on:
-  workflow_dispatch
+on: workflow_dispatch
 
 jobs:
   test:
@@ -25,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.4
+        uses: actions/setup-node@v4.0.3
         with:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
@@ -34,34 +33,23 @@ jobs:
         run: |
           npm install -g npm
           yarn install
+          yarn build
 
-      - name: version
+      - name: publish
         run: |
           git config user.email ${{ secrets.BOT_GIT_EMAIL }}
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
 
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           current_branch=$(node -p -e "'${{ github.ref }}'.replace('refs/heads/', '')")
-          echo "current_branch=${current_branch}" >> "$GITHUB_ENV"
 
-          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna version "0.0.0-${git_hash}" \
+          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish "0.0.0-${git_hash}" \
             --exact \
             --no-push \
             --no-git-tag-version \
-            --allow-branch ${current_branch}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
-
-      - name: build
-        run: yarn build
-
-      - name: publish to npm
-        run: |
-          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish from-git \
             --pre-dist-tag dev \
-            --allow-branch ${{ env.current_branch }}
+            --allow-branch ${current_branch}
+
         env:
-          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
