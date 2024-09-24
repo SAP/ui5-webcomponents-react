@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.0...v2.1.1) (2024-09-24)
+
+### Bug Fixes
+
+- **deps:** update dependency @tanstack/react-virtual to v3.10.8 ([#6292](https://github.com/SAP/ui5-webcomponents-react/issues/6292)) ([b981202](https://github.com/SAP/ui5-webcomponents-react/commit/b9812029d373af26b4a7dfad5e2957087481f7b6))
+- ensure availability of internal CSS vars ([#6393](https://github.com/SAP/ui5-webcomponents-react/issues/6393)) ([d8a8df3](https://github.com/SAP/ui5-webcomponents-react/commit/d8a8df3054ebaa079dddd5ef4a243346824c959a))
+- **SplitterLayout:** fix cursor for vertical resize ([#6324](https://github.com/SAP/ui5-webcomponents-react/issues/6324)) ([2e0f7aa](https://github.com/SAP/ui5-webcomponents-react/commit/2e0f7aaf843b046e88919bda177d2aeb8b147df6)), closes [#6323](https://github.com/SAP/ui5-webcomponents-react/issues/6323)
+
 # [2.1.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.2...v2.1.0) (2024-09-05)
 
 ### Bug Fixes

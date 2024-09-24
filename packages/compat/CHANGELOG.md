@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.0...v2.1.1) (2024-09-24)
+
+### Bug Fixes
+
+- **compat:** allow file/deep imports for components ([#6394](https://github.com/SAP/ui5-webcomponents-react/issues/6394)) ([a5eb344](https://github.com/SAP/ui5-webcomponents-react/commit/a5eb34498fa8b566208175c7f6acafbac17ef0df)), closes [#6344](https://github.com/SAP/ui5-webcomponents-react/issues/6344)
+
 # [2.1.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.2...v2.1.0) (2024-09-05)
 
 ### Features
