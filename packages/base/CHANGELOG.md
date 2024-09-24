@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.11](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.10...v1.29.11) (2024-09-24)
+
+### Bug Fixes
+
+- ensure availability of internal CSS vars ([#6396](https://github.com/SAP/ui5-webcomponents-react/issues/6396)) ([abd9e7a](https://github.com/SAP/ui5-webcomponents-react/commit/abd9e7a059d0530fbf31f432c05a70886daecbb8))
+- **useStyleSheet:** scope component name to ui5wc runtime ([#6397](https://github.com/SAP/ui5-webcomponents-react/issues/6397)) ([5170959](https://github.com/SAP/ui5-webcomponents-react/commit/5170959a4d5b6ebc8d5317deb5becc1b87b7c2a8))
+
 ## [1.29.10](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.9...v1.29.10) (2024-09-05)
 
 ### Bug Fixes
