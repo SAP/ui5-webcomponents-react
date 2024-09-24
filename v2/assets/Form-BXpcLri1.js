@@ -1,0 +1,122 @@
+import{j as t}from"./jsx-runtime-DEdD30eg.js";import{useMDXComponents as s}from"./index-CcnH5Kt0.js";import{ae as l,af as o,ag as u,ah as r,ai as i}from"./index-B5NwerkP.js";import"./index-D7Nv88Gg.js";import"./index-BfgcrFqk.js";import{C as c}from"./ControlsWithNote-DUBcI0kn.js";import{D as h}from"./DocsHeader-C1Lh0BEV.js";import{F as I}from"./CommandsAndQueries-Mf9zQi7F.js";import"./index-RYns6xqu.js";import"./WrappingType-CW8URInd.js";import"./Title-CAqRFLM1.js";import{S as x}from"./SubcomponentsSection-BVy4lpQe.js";import{b as p,a as m}from"./index-BYBLJczc.js";import{C as y,D as a,a as F}from"./Form.stories-qPFOo8KT.js";import"./iframe-BR3ooUsv.js";import"../sb-preview/runtime.js";import"./index-sbqOYYIm.js";import"./_baseUniq-18efwtne.js";import"./index-ar2LJKLv.js";import"./index-DrFu-skq.js";import"./withWebComponent-BS26LpJo.js";import"./utils-4GUSeNxV.js";import"./useIsomorphicLayoutEffect-BErBnqdY.js";import"./slot-_4yKMUwC.js";import"./event-Dq0fpeHi.js";import"./i18nBundle-BUZJrdsA.js";import"./decline-ChPQ5Vpc.js";import"./Icon-BwGmtu7y.js";import"./Keys-D1SxbTOd.js";import"./parameters-bundle.css-Bga-3Zi8.js";import"./i18n-defaults-CdZCUmzZ.js";import"./information-C_Bqjk9j.js";import"./alert-qaECYIyO.js";import"./class-map-CcXho7vk.js";import"./Button-BoqZ1Nk6.js";import"./AriaLabelHelper-C5uDZewF.js";import"./MarkedEvents-CAur0wxK.js";import"./willShowContent-CZcfsNXp.js";import"./Tooltips-BJ6YdIbZ.js";import"./i18n-defaults-DyAOnJXW.js";import"./TagDesign-Dou_yO3g.js";import"./utils-DrSc6neY.js";import"./main-C6oD7XT2.js";import"./index-CDPCSlUD.js";import"./Tag-C2WChDcP.js";import"./sys-help-2-KG0RzPfQ.js";import"./index-Je_4VAbv.js";import"./Popover-CC4eno7O.js";import"./PopupsCommon.css-D2k_TiiU.js";import"./FocusableElements-DE2dOMez.js";import"./isElementHidden-B4HqmI2E.js";import"./isElementClickable-0ACQ4G_A.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-CmgjED1E.js";import"./MediaRange-Bnzt26Xb.js";import"./style-map-DYOeniYq.js";import"./getEffectiveScrollbarStyle-C9nZ6DfS.js";import"./index-B8rq_Cwn.js";import"./Link-DWmmrhq6.js";import"./chunk-NUUEMKO5-CqhS4cr8.js";import"./client-BzooOYO_.js";import"./copy-CLCnF9Ex.js";import"./copy-B8ijgEE_.js";import"./clsx-B-dksMZM.js";import"./GitHub-Mark-DGRwmqGf.js";import"./TableOfContent-bhM-b_eu.js";import"./index-CQaxW4xl.js";import"./I18nStore-ZvXQBe85.js";import"./useStylesheet-CIcp3lSM.js";import"./index-uL74TcGH.js";import"./index-D5w6Jnaw.js";import"./Label-DeMESwab.js";import"./index-DOubndiy.js";import"./index-CHNB8-uH.js";import"./addCustomCSSWithScoping-nMrqEq1r.js";import"./index-DYrmYIPb.js";import"./BusyIndicator-DLv3RVXJ.js";import"./index-Z34fJdHI.js";import"./index-BNw2TIlH.js";import"./Avatar-D0wBket6.js";import"./employee-BnxYOghN.js";import"./Input-hf-Vd_ud.js";import"./ValueState-Bg0UWejw.js";import"./ResponsivePopoverCommon.css-BOr3WOvu.js";import"./ValueStateMessage.css-sKGRcLml.js";import"./ResponsivePopover-DRXUZ-Yn.js";import"./Dialog-zzL9k4HV.js";import"./index-BA2Qlcr4.js";import"./index-Chq0VNNc.js";import"./index-UK0OYeGo.js";import"./Select-CfJrgJ08.js";import"./InvisibleMessage-DFQ2OWxP.js";import"./slim-arrow-down-Bkh3JwOV.js";import"./List-BLM_yTQc.js";import"./ItemNavigation-DY9WPMGj.js";import"./getNormalizedTarget-C4mxORXI.js";import"./debounce-TTkz9ISH.js";import"./TabbableElements-BJJu_CDc.js";import"./RadioButton-roj2v4D7.js";import"./CheckBox-Bh-hd90L.js";import"./accept-DENHAmCe.js";import"./slim-arrow-right-BNXaNlko.js";import"./index-B2TI7Wjv.js";import"./Option-DXhYbhH7.js";import"./index-OP7SWVWD.js";function d(n){const e={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre",strong:"strong",...s(),...n.components};return t.jsxs(t.Fragment,{children:[t.jsx(l,{of:y}),`
+`,t.jsx(h,{since:"0.7.0",subComponents:["FormGroup","FormItem"]}),`
+`,t.jsxs(e.p,{children:[t.jsx(e.strong,{children:"Note:"}),' For more detailed examples of how the form can be used or integrated with other external libraries such as "React Hook Form", you can visit our ',t.jsx(e.a,{href:"?path=/docs/knowledge-base-form-handling--docs",children:"knowledge base"}),"."]}),`
+`,t.jsx("br",{}),`
+`,t.jsx(e.h2,{id:"example",children:"Example"}),`
+`,t.jsx(o,{of:a}),`
+`,t.jsx(e.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(c,{of:a}),`
+`,t.jsx(e.h1,{id:"more-examples",children:"More Examples"}),`
+`,t.jsx(e.h2,{id:"display-only-and-edit-mode",children:"Display-Only and Edit mode"}),`
+`,t.jsx(o,{of:F,sourceState:"none"}),`
+`,t.jsx(e.h3,{id:"code",children:"Code"}),`
+`,t.jsxs("details",{children:[t.jsx("summary",{children:"Show Code"}),t.jsx(e.pre,{children:t.jsx(e.code,{className:"language-jsx",children:`const StandardField = ({ editMode, value, inputType = InputType.Text, onInput, ...rest }) => {
+  if (editMode) {
+    return <Input value={value} style={{ width: '100%' }} type={inputType} onInput={onInput} {...rest} />;
+  }
+  if (inputType === InputType.URL || inputType === InputType.Email) {
+    return (
+      <Link href={inputType === InputType.Email ? \`mailto:\${value}\` : value} target="_blank" {...rest}>
+        {value}
+      </Link>
+    );
+  }
+  return <Text {...rest}>{value}</Text>;
+};
+
+const reducer = (state, { field, value }) => {
+  return { ...state, [field]: value };
+};
+
+const FormComponent = (props) => {
+  const [editMode, toggleEditMode] = useReducer((prev) => !prev, false, undefined);
+  const [formState, dispatch] = useReducer(
+    reducer,
+    {
+      name: 'Red Point Stores',
+      street: 'Main St 1618',
+      zip: 31415,
+      city: 'Maintown',
+      country: 'Germany',
+      web: 'https://www.sap.com',
+      mail: 'john.smith@sap.com',
+      twitter: '@sap',
+      phone: '+49 1234 56789'
+    },
+    undefined
+  );
+  const { zip, city, name, street, country, web, mail, twitter, phone } = formState;
+
+  const handleInput = (e) => {
+    dispatch({ field: Object.keys(e.target.dataset)[0], value: e.target.value });
+  };
+
+  return (
+    <>
+      <Button onClick={toggleEditMode}>Toggle {editMode ? 'Display-Only Mode' : 'Edit Mode'}</Button>
+      <Form
+        {...props}
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <FormGroup titleText="Address">
+          <FormItem label="Name">
+            <StandardField editMode={editMode} value={name} onInput={handleInput} data-name />
+          </FormItem>
+          <FormItem label="Street">
+            <StandardField editMode={editMode} value={street} onInput={handleInput} data-street />
+          </FormItem>
+          <FormItem label="ZIP Code / City">
+            {editMode ? (
+              <>
+                <Input value={zip} type={InputType.Number} style={{ width: '30%' }} onInput={handleInput} data-zip />
+                <Input value={city} style={{ width: '70%' }} onInput={handleInput} data-city />
+              </>
+            ) : (
+              <Text>{\`\${zip} \${city}\`}</Text>
+            )}
+          </FormItem>
+          <FormItem label="Country">
+            <StandardField editMode={editMode} value={country} onInput={handleInput} data-country />
+          </FormItem>
+          <FormItem label="Web">
+            <StandardField editMode={editMode} value={web} inputType={InputType.URL} onInput={handleInput} data-web />
+          </FormItem>
+        </FormGroup>
+        <FormGroup titleText="Contact">
+          <FormItem label="Email">
+            <StandardField
+              editMode={editMode}
+              value={mail}
+              inputType={InputType.Email}
+              onInput={handleInput}
+              data-email
+            />
+          </FormItem>
+          <FormItem label="Twitter">
+            <StandardField editMode={editMode} value={twitter} onInput={handleInput} data-twitter />
+          </FormItem>
+          <FormItem label="Phone">
+            <StandardField
+              editMode={editMode}
+              value={phone}
+              inputType={InputType.Tel}
+              onInput={handleInput}
+              data-phone
+            />
+          </FormItem>
+        </FormGroup>
+      </Form>
+    </>
+  );
+};
+`})})]}),`
+`,t.jsx(u,{children:x}),`
+`,t.jsx(e.h2,{id:"form-group",children:"Form Group"}),`
+`,t.jsx(r,{of:p}),`
+`,t.jsx(i,{of:p}),`
+`,t.jsx(e.h2,{id:"formitem",children:"FormItem"}),`
+`,t.jsx(r,{of:m}),`
+`,t.jsx(i,{of:m}),`
+`,t.jsx(I,{})]})}function xe(n={}){const{wrapper:e}={...s(),...n.components};return e?t.jsx(e,{...n,children:t.jsx(d,{...n})}):d(n)}export{xe as default};
