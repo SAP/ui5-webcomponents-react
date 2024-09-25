@@ -1,6 +1,7 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { MessageStrip, Text } from '@ui5/webcomponents-react';
 import { TableCell } from '../TableCell';
 import { TableColumn } from '../TableColumn';
 import { TableGroupRow } from '../TableGroupRow';
@@ -11,6 +12,17 @@ import * as ComponentStories from './Table.stories';
 
 <DocsHeader />
 
+<MessageStrip
+  children={
+    <Text>
+      Combining the Table from the <code>compat</code> package and the <code>main</code> package is not supported!
+    </Text>
+  }
+  design="Critical"
+  hideCloseButton
+/>
+
+<br />
 <br />
 
 ## Example
