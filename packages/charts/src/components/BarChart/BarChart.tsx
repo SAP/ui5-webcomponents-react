@@ -299,7 +299,8 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
           dimensions.map((dimension, index) => {
             return (
               <YAxis
-                interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
+                interval={dimension?.interval ?? 'preserveStartEnd'}
+                minTickGap={isBigDataSet ? undefined : -10}
                 type="category"
                 key={dimension.reactKey}
                 dataKey={dimension.accessor}

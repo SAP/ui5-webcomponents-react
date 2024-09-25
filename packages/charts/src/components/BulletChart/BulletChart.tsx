@@ -304,7 +304,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             let AxisComponent;
             const axisProps: any = {
               dataKey: dimension.accessor,
-              interval: dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0),
+              interval: dimension?.interval ?? (isBigDataSet ? 'preserveStartEnd' : 0),
               tickLine: index < 1,
               axisLine: index < 1,
               allowDuplicatedCategory: index === 0
@@ -317,6 +317,8 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
               axisProps.width = yAxisWidth;
               AxisComponent = YAxis;
               axisProps.orientation = isRTL ? 'right' : 'left';
+              axisProps.interval = 'preserveStartEnd';
+              axisProps.minTickGap = isBigDataSet ? undefined : -10;
             } else {
               axisProps.dataKey = dimension.accessor;
               axisProps.tick = <XAxisTicks config={dimension} />;
