@@ -172,6 +172,8 @@ export interface WCRPropertiesType {
     collapseNodeA11yText: string;
     filteredA11yText: string;
     groupedA11yText: string;
+    selectAllA11yText: string;
+    deselectAllA11yText: string;
   };
   tagNamesWhichShouldNotSelectARow: Set<string>;
   tableRef: MutableRefObject<DivWithCustomScrollProp>;
