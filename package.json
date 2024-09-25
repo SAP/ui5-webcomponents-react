@@ -55,7 +55,7 @@
     "@babel/preset-react": "7.24.7",
     "@babel/preset-typescript": "7.24.7",
     "@cypress/code-coverage": "^3.10.0",
-    "@semantic-release/github": "^10.0.0",
+    "@semantic-release/github": "^11.0.0",
     "@testing-library/cypress": "^10.0.0",
     "@types/jscodeshift": "^0.11.11",
     "@types/node": "^20.0.0",
