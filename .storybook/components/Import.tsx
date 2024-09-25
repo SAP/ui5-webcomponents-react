@@ -35,6 +35,8 @@ function FromPath({ packageName, deepPath }: FromPathPropTypes) {
   );
 }
 
+FromPath.displayName = 'FromPath';
+
 export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPropTypes) => {
   if (!moduleNames) {
     return null;
@@ -65,7 +67,7 @@ export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPro
         {paths.map((deepPath) => {
           if (!deepPath) {
             return (
-              <span style={{ fontSize: '14px' }}>
+              <span style={{ fontSize: '14px' }} key="0">
                 {' '}
                 {'{'}
                 {moduleNames.length > 2 ? (
@@ -89,14 +91,14 @@ export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPro
             );
           } else {
             return (
-              <>
+              <Fragment key={deepPath.path}>
                 <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>
                 <span style={{ fontSize: '14px' }}>
                   {' '}
                   {'{'}&nbsp;{deepPath.moduleName}&nbsp;{'}'}{' '}
                 </span>
                 <FromPath packageName={packageName} deepPath={deepPath} />
-              </>
+              </Fragment>
             );
           }
         })}
@@ -105,6 +107,8 @@ export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPro
     </pre>
   );
 };
+
+ImportStatement.displayName = 'ImportStatement';
 
 interface ImportProps {
   /**
