@@ -44,7 +44,9 @@ import {
   NO_DATA_FILTERED,
   SELECT_ALL,
   SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE
 } from '../../i18n/i18n-defaults.js';
 import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
 import { Text } from '../../webComponents/Text/index.js';
@@ -202,7 +204,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           expandNodeA11yText: i18nBundle.getText(EXPAND_NODE),
           collapseNodeA11yText: i18nBundle.getText(COLLAPSE_NODE),
           filteredA11yText: i18nBundle.getText(FILTERED),
-          groupedA11yText: i18nBundle.getText(GROUPED)
+          groupedA11yText: i18nBundle.getText(GROUPED),
+          selectAllA11yText: i18nBundle.getText(SELECT_ALL_PRESS_SPACE),
+          deselectAllA11yText: i18nBundle.getText(UNSELECT_ALL_PRESS_SPACE)
         },
         tagNamesWhichShouldNotSelectARow,
         tableRef,
@@ -740,6 +744,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             aria-rowcount={rows.length}
             aria-colcount={visibleColumns.length}
             data-per-page={internalVisibleRowCount}
+            aria-multiselectable={selectionMode === AnalyticalTableSelectionMode.Multiple}
             data-component-name="AnalyticalTableContainer"
             ref={tableRef}
             className={tableClasses}
