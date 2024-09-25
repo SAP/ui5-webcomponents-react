@@ -82,6 +82,7 @@ const setHeaderProps = (
 
   const updatedProps = {};
   updatedProps['aria-label'] = column.headerLabel ??= '';
+
   if (updatedProps['aria-label']) {
     updatedProps['aria-label'] += ' ';
   }
@@ -101,7 +102,7 @@ const setHeaderProps = (
   }
 
   if (selectionMode === AnalyticalTableSelectionMode.Multiple && column.id === '__ui5wcr__internal_selection_column') {
-    updatedProps['aria-label'] = instance.isAllRowsSelected
+    updatedProps['aria-label'] += instance.isAllRowsSelected
       ? translatableTexts.deselectAllA11yText
       : translatableTexts.selectAllA11yText;
   }
