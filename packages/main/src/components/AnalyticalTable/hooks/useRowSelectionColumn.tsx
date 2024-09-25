@@ -17,7 +17,7 @@ const customCheckBoxStyling = {
 const Header = (instance: TableInstance) => {
   const {
     getToggleAllRowsSelectedProps,
-    webComponentsReactProperties: { selectionMode }
+    webComponentsReactProperties: { selectionMode, translatableTexts, classes }
   } = instance;
 
   if (selectionMode === AnalyticalTableSelectionMode.Single) {
@@ -25,14 +25,17 @@ const Header = (instance: TableInstance) => {
   }
   const checkBoxProps = getToggleAllRowsSelectedProps();
   return (
-    <CheckBox
-      {...checkBoxProps}
-      style={customCheckBoxStyling}
-      tabIndex={-1}
-      onChange={undefined}
-      checked={checkBoxProps.indeterminate ? true : checkBoxProps.checked}
-      aria-hidden="true"
-    />
+    <>
+      <CheckBox
+        {...checkBoxProps}
+        style={customCheckBoxStyling}
+        tabIndex={-1}
+        onChange={undefined}
+        checked={checkBoxProps.indeterminate ? true : checkBoxProps.checked}
+        aria-hidden="true"
+      />
+      <span className={classes.hiddenA11yText}>{translatableTexts.selectAllText}</span>
+    </>
   );
 };
 

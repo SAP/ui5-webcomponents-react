@@ -73,7 +73,7 @@ const setHeaderProps = (
   headerProps,
   { column, instance }: { column: TableInstance['column']; instance: TableInstance }
 ) => {
-  const { translatableTexts } = instance.webComponentsReactProperties;
+  const { translatableTexts, selectionMode } = instance.webComponentsReactProperties;
 
   if (!column) {
     return headerProps;
@@ -82,6 +82,7 @@ const setHeaderProps = (
 
   const updatedProps = {};
   updatedProps['aria-label'] = column.headerLabel ??= '';
+
   if (updatedProps['aria-label']) {
     updatedProps['aria-label'] += ' ';
   }
@@ -98,6 +99,12 @@ const setHeaderProps = (
     } else {
       updatedProps['aria-label'] += translatableTexts.groupedA11yText;
     }
+  }
+
+  if (selectionMode === AnalyticalTableSelectionMode.Multiple && column.id === '__ui5wcr__internal_selection_column') {
+    updatedProps['aria-label'] += instance.isAllRowsSelected
+      ? translatableTexts.deselectAllA11yText
+      : translatableTexts.selectAllA11yText;
   }
 
   return [headerProps, { isFiltered, ...updatedProps }];
