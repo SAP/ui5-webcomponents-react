@@ -17,7 +17,9 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
    */
   loadingDelay?: number;
   /**
-   * The `dataset` is an array of object which will be displayed in the chart.
+   * The `dataset` is an array of objects that contains all the measures and dimensions.
+   *
+   * __Note:__ The values for measure data points must be of type `number`.
    */
   dataset?: Record<string, unknown>[];
 
