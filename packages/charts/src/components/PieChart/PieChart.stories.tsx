@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { simpleDataSet, simpleDataSetWithSmallValues } from '../../resources/DemoProps.js';
+import { simpleDataSet, simpleDataSetWithSmallValues, tooltipConfig } from '../../resources/DemoProps.js';
 import { PieChart } from './PieChart.js';
 
 const meta = {
@@ -66,4 +66,8 @@ export const HideLabels: Story = {
     },
     dataset: simpleDataSetWithSmallValues
   }
+};
+
+export const WithCustomTooltipConfig: Story = {
+  args: tooltipConfig
 };

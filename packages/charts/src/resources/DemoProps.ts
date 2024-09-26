@@ -1,3 +1,47 @@
+import type { IChartBaseProps } from '@/interfaces/IChartBaseProps.js';
+
+export const tooltipConfig: IChartBaseProps = {
+  tooltipConfig: {
+    wrapperStyle: {
+      border: '5px solid',
+      borderImage: 'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet) 1',
+      padding: '5px',
+      borderRadius: '8px'
+    },
+    itemStyle: {
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      padding: '10px',
+      marginBlockStart: '2px'
+    },
+    contentStyle: {
+      background: 'black'
+    },
+    labelStyle: {
+      fontFamily: 'var(--sapFontBoldFamily)',
+      color: 'white'
+    },
+    cursor: { stroke: 'red', strokeWidth: 2, fill: 'transparent' },
+    separator: ':~:',
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    formatter: (value, name, props) => {
+      if (name === 'Users') {
+        return [`${value}👨‍💻`, 'Custom Name in Tooltip!'];
+      }
+      return `${value}k`;
+    },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    labelFormatter: (label, payload) => {
+      return `${label}🗓️`;
+    },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    itemSorter: (item) => {
+      return -1;
+    }
+  }
+};
+
 export const singleData = [
   {
     name: 'January',

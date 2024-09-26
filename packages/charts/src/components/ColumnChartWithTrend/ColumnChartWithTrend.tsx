@@ -49,7 +49,10 @@ interface DimensionConfig extends IChartDimension {
 }
 
 export interface ColumnChartWithTrendProps
-  extends Omit<IChartBaseProps<Omit<ICartesianChartConfig, 'secondYAxis' | 'secondYAxisConfig'>>, 'syncId'> {
+  extends Omit<
+    IChartBaseProps<Omit<ICartesianChartConfig, 'secondYAxis' | 'secondYAxisConfig'>>,
+    'syncId' | 'tooltipConfig'
+  > {
   /**
    * An array of config objects. Each object will define one dimension of the chart.
    *

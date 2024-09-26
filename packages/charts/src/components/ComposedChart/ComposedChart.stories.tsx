@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { bigDataSet, complexDataSet, simpleDataSet } from '../../resources/DemoProps.js';
+import { bigDataSet, complexDataSet, simpleDataSet, tooltipConfig } from '../../resources/DemoProps.js';
 import { ComposedChart } from './index.js';
 
 const meta = {
@@ -202,4 +202,8 @@ export const LoadingPlaceholder: Story = {
   args: {
     dataset: []
   }
+};
+
+export const WithCustomTooltipConfig: Story = {
+  args: tooltipConfig
 };
