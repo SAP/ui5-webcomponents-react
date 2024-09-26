@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { scatterColorDataSet, scatterComplexDataSet } from '../../resources/DemoProps.js';
+import { scatterColorDataSet, scatterComplexDataSet, tooltipConfig } from '../../resources/DemoProps.js';
 import { ScatterChart } from './ScatterChart.js';
 
 const meta = {
@@ -63,4 +63,8 @@ export const LoadingPlaceholder: Story = {
   args: {
     dataset: []
   }
+};
+
+export const WithCustomTooltipConfig: Story = {
+  args: tooltipConfig
 };

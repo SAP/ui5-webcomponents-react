@@ -44,8 +44,8 @@ const config: StorybookConfig = {
           titlePrefix: 'Knowledge Base'
         },
         {
-          directory: '../packages/charts',
-          files: '**/*@(.stories.tsx)',
+          directory: '../packages/charts/src/components',
+          files: '**/*.@(mdx|stories.@(mdx|tsx))',
           titlePrefix: 'Charts'
         },
         {

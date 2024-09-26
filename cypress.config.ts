@@ -13,7 +13,8 @@ export default defineConfig({
         '**/node_modules/**',
         'packages/*/src/index.ts',
         'packages/main/src/components/AnalyticalTable/types/*',
-        'packages/main/src/webComponents/**'
+        'packages/main/src/webComponents/**',
+        'packages/charts/src/resources/**'
       ]
     }
   },

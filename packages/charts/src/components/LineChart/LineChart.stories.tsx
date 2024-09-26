@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { bigDataSet, complexDataSet, secondaryDimensionDataSet, simpleDataSet } from '../../resources/DemoProps.js';
+import {
+  bigDataSet,
+  complexDataSet,
+  secondaryDimensionDataSet,
+  simpleDataSet,
+  tooltipConfig
+} from '../../resources/DemoProps.js';
 import { LineChart } from './LineChart.js';
 
 const meta = {
@@ -150,4 +156,8 @@ export const WithLinearGradient: Story = {
       }
     ]
   }
+};
+
+export const WithCustomTooltipConfig: Story = {
+  args: tooltipConfig
 };

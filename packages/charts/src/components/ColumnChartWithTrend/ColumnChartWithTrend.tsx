@@ -49,7 +49,10 @@ interface DimensionConfig extends IChartDimension {
 }
 
 export interface ColumnChartWithTrendProps
-  extends Omit<IChartBaseProps<Omit<ICartesianChartConfig, 'secondYAxis' | 'secondYAxisConfig'>>, 'syncId'> {
+  extends Omit<
+    IChartBaseProps<Omit<ICartesianChartConfig, 'secondYAxis' | 'secondYAxisConfig'>>,
+    'syncId' | 'tooltipConfig'
+  > {
   /**
    * An array of config objects. Each object will define one dimension of the chart.
    *
@@ -59,7 +62,7 @@ export interface ColumnChartWithTrendProps
    *
    * **Optional Properties**
    * - `formatter`: function will be called for each data label and allows you to format it according to your needs
-   * - `interval`: number that controls how many ticks are rendered on the x axis
+   * - `interval`: number that controls how many ticks are rendered on the x-axis
    *
    */
   dimensions: DimensionConfig[];
@@ -160,7 +163,7 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
     }
   } as TooltipProps<any, any>;
 
-  const { chartConfig: _0, dimensions: _1, measures: _2, tooltipConfig: _3, ...propsWithoutOmitted } = rest;
+  const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
 
   return (
     <div
