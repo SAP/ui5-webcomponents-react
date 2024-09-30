@@ -46,7 +46,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remark-gfm": "^4.0.0",
-    "tocbot": "4.29.0"
+    "tocbot": "4.30.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
@@ -68,7 +68,7 @@
     "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^11.0.0",
     "cssnano": "^7.0.0",
-    "cypress": "13.14.2",
+    "cypress": "13.15.0",
     "cypress-real-events": "^1.8.1",
     "dedent": "^1.0.0",
     "eslint": "^8.35.0",
@@ -80,7 +80,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-storybook": "^0.8.0",
+    "eslint-plugin-storybook": "^0.9.0",
     "glob": "^11.0.0",
     "husky": "^9.0.6",
     "lerna": "^8.0.0",
@@ -110,7 +110,7 @@
     ]
   },
   "resolutions": {
-    "tocbot": "4.29.0",
+    "tocbot": "4.30.0",
     "@joshwooding/vite-plugin-react-docgen-typescript": "0.3.0"
   },
   "type": "module",
