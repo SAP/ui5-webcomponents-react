@@ -105,7 +105,8 @@ This would then be the result:
 
 ## Applying styling via `className` or `style`
 
-Almost all components allow setting `className` or `style` to style the component. For web components, this does **not** mean that styles are inherited by shadow root elements per default.
+Almost all components allow setting `className` or `style` for custom styling. For standard elements like `div`, `span`, etc., you can easily override internal CSS properties and values, as our styles are encapsulated in a [CSS layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer).
+For web components, this does **not** mean that styles are inherited by shadow root elements per default.
 Only [inherited CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance#inherited_properties) that are not set inside the shadow root or internally passed properties will change the styles of the internal elements.
 Another special case are abstract components like the `SuggestionItem`. The `ui5-suggestion-item` element is mainly there to pass props to the actual component inside the shadow root and is therefore not stylable.
 
@@ -113,6 +114,8 @@ Another special case are abstract components like the `SuggestionItem`. The `ui5
 
 By default, the `ThemeProvider` injects the CSS of the components during runtime. If you want to import the CSS bundles explicitly, you can set the `staticCssInjected` prop to `true`.
 This approach provides you with control over the order in which CSS files are injected, making it easier to override styles.
+
+Please note that the static CSS is not wrapped inside a [CSS layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer). You can use the [`@import` CSS at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@import) to achieve that.
 
 - **main** package import: `import '@ui5/webcomponents-react/styles.css'`
 - **charts** package import: `import '@ui5/webcomponents-react-charts/styles.css'`
