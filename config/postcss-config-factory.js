@@ -15,14 +15,6 @@ export function postcssConfigFactory(packageName) {
       cssLayersPlugin(),
       postcssModules({
         // generateScopedName: '[name]__[local]___[hash:base64:5]',
-        generateScopedName: function (name, filename, css) {
-          const file = path.basename(filename, '.module.css');
-          const i = css.indexOf(`.${name}`);
-          const lineNumber = css.substring(0, i).split(/[\r\n]/).length;
-          const hash = stringHash(css).toString(36).substring(0, 5);
-
-          return `${file}_${name}_${hash}_${lineNumber}`;
-        },
         getJSON: (cssFileName, json) => {
           return null;
         },
