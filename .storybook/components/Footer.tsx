@@ -77,15 +77,11 @@ export const Footer = ({ style }) => {
       >
         <Text>
           This site is hosted by{' '}
-          <Link href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://pages.github.com/" target="_blank">
             GitHub Pages
           </Link>
           . Please see the{' '}
-          <Link
-            href="https://docs.github.com/en/github/site-policy/github-privacy-statement"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://docs.github.com/en/github/site-policy/github-privacy-statement" target="_blank">
             GitHub Privacy Statement
           </Link>{' '}
           for any information how GitHub processes your personal data.
