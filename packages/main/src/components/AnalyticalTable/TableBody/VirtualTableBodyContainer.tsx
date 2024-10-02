@@ -1,7 +1,7 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { AnalyticalTablePropTypes, TableInstance } from '../types/index.js';
+import type { AnalyticalTablePropTypes } from '../types/index.js';
 
 interface VirtualTableBodyContainerProps {
   tableBodyHeight: number;
@@ -12,7 +12,7 @@ interface VirtualTableBodyContainerProps {
   infiniteScroll?: AnalyticalTablePropTypes['infiniteScroll'];
   infiniteScrollThreshold?: AnalyticalTablePropTypes['infiniteScrollThreshold'];
   onLoadMore: AnalyticalTablePropTypes['onLoadMore'];
-  rows: TableInstance['rows'];
+  rows: Record<string, any>[];
   internalRowHeight: number;
   handleExternalScroll: AnalyticalTablePropTypes['onTableScroll'];
   visibleRows: number;
