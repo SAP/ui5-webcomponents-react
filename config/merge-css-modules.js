@@ -20,7 +20,7 @@ for (const cssModule of cssModules) {
   const componentName = basename(cssModule, '.module.css');
 
   fileContent.push(`/* ${componentName} */`);
-  fileContent.push(cssContent);
+  fileContent.push(cssContent.replace('@layer ui5-webcomponents-react{', '').replace(/}$/, ''));
   fileContent.push('');
 }
 
