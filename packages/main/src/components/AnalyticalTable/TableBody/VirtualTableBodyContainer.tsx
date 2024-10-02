@@ -1,7 +1,7 @@
 import { enrichEventWithDetails } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { AnalyticalTablePropTypes } from '../types/index.js';
+import type { AnalyticalTablePropTypes, TableInstance } from '../types/index.js';
 
 interface VirtualTableBodyContainerProps {
   tableBodyHeight: number;
@@ -12,13 +12,14 @@ interface VirtualTableBodyContainerProps {
   infiniteScroll?: AnalyticalTablePropTypes['infiniteScroll'];
   infiniteScrollThreshold?: AnalyticalTablePropTypes['infiniteScrollThreshold'];
   onLoadMore: AnalyticalTablePropTypes['onLoadMore'];
-  rows: Record<string, any>[];
+  rows: TableInstance['rows'];
   internalRowHeight: number;
   handleExternalScroll: AnalyticalTablePropTypes['onTableScroll'];
   visibleRows: number;
   popInRowHeight: number;
   rowCollapsedFlag?: boolean;
   dispatch: (e: { type: string; payload?: any }) => void;
+  isGrouped: boolean;
 }
 
 export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps) => {
@@ -37,6 +38,7 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
     visibleRows,
     popInRowHeight,
     rowCollapsedFlag,
+    isGrouped,
     dispatch
   } = props;
   const [isMounted, setIsMounted] = useState(false);
@@ -75,13 +77,19 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
       handleExternalScroll(enrichEventWithDetails(event, { rows, rowElements: event.target.children[0].children }));
       const scrollOffset = event.target.scrollTop;
       const isScrollingDown = lastScrollTop.current < scrollOffset;
-      if (isScrollingDown && infiniteScroll) {
+      const target = event.target;
+      const scrolledToBottom = target.scrollHeight - target.scrollTop === target.clientHeight;
+      // For a grouped table, it is possible that no new groups (rows) are added since new rows are added to existing groups.
+      // Because of this, the table should trigger the `onLoadMore` event every time a user scrolls to the bottom.
+      const applyGroupingLogic = scrolledToBottom && isGrouped;
+
+      if ((isScrollingDown || applyGroupingLogic) && infiniteScroll) {
         lastScrollTop.current = scrollOffset;
         const currentLastRow =
           Math.floor(scrollOffset / popInRowHeight) +
           (popInRowHeight === internalRowHeight ? visibleRows : Math.floor(tableBodyHeight / popInRowHeight));
-        if (rows.length - currentLastRow < infiniteScrollThreshold) {
-          if (!firedInfiniteLoadEvents.current.has(rows.length)) {
+        if (rows.length - currentLastRow < infiniteScrollThreshold || applyGroupingLogic) {
+          if (!firedInfiniteLoadEvents.current.has(rows.length) || applyGroupingLogic) {
             onLoadMore(event);
           }
           firedInfiniteLoadEvents.current.add(rows.length);

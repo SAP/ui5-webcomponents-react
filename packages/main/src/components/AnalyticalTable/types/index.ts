@@ -692,6 +692,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines whether columns are groupable.
    *
    * __Note:__ This prop has no effect when `isTreeTable` is true or `renderRowSubComponent` is set.
+   *
+   * __Note:__ It is not recommended to use grouping in combination with `infiniteScroll` as there is no concept for this configuration.
    */
   groupable?: boolean;
   /**
@@ -746,6 +748,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   columnOrder?: string[];
   /**
    * Defines whether infinite scroll is active.
+   *
+   * __Note:__ It is not recommended to use this prop in combination with a grouped table, as there is no concept for this configuration.
    */
   infiniteScroll?: boolean;
   /**
