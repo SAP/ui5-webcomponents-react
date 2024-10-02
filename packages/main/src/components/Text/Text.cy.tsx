@@ -44,7 +44,7 @@ describe('Text', () => {
         {longText}
       </Text>
     );
-    cy.findByTestId('text').invoke('outerHeight').should('equal', 240);
+    cy.findByTestId('text').invoke('outerHeight').should('equal', 16);
     cy.mount(
       <Text data-testid="text" style={{ width: '300px' }} maxLines={1}>
         {longText}

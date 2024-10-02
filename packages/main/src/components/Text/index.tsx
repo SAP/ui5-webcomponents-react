@@ -21,10 +21,14 @@ export interface TextPropTypes extends CommonProps {
   renderWhitespace?: boolean;
   /**
    * Defines whether the text wraps when there is not enough space.
+   *
+   * @detault true
    */
   wrapping?: boolean;
   /**
    * Limits the number of lines for wrapping texts.
+   *
+   * __Note:__ This prop only takes effect if the `wrapping` prop is set to `true`.
    */
   maxLines?: number;
   /**
@@ -64,11 +68,13 @@ const Text = forwardRef<HTMLSpanElement, TextPropTypes>((props, ref) => {
   useStylesheet(styleData, Text.displayName);
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
+  const applyMaxLines = typeof maxLines === 'number' && maxLines > 1;
+
   const classNameString = clsx(
     classNames.text,
-    wrapping === false && classNames.noWrap,
+    (wrapping === false || (typeof maxLines === 'number' && maxLines <= 1)) && classNames.noWrap,
     renderWhitespace && classNames.renderWhitespace,
-    typeof maxLines === 'number' && classNames.maxLines,
+    applyMaxLines && classNames.maxLines,
     hyphenated && classNames.hyphenated,
     className
   );
@@ -89,7 +95,12 @@ const Text = forwardRef<HTMLSpanElement, TextPropTypes>((props, ref) => {
   return (
     <span
       ref={ref}
-      style={{ '--_ui5wcr_maxLines': typeof maxLines === 'number' ? maxLines : undefined, ...style } as CSSProperties}
+      style={
+        {
+          '--_ui5wcr_maxLines': applyMaxLines ? maxLines : undefined,
+          ...style
+        } as CSSProperties
+      }
       className={classNameString}
       {...rest}
     >
