@@ -287,6 +287,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const tableState: AnalyticalTableState = tableInstanceRef.current.state;
   const { triggerScroll } = tableState;
+  const isGrouped = !!tableState.groupBy.length;
 
   const noDataTextI18n = i18nBundle.getText(LIST_NO_DATA);
   const noDataTextFiltered = i18nBundle.getText(NO_DATA_FILTERED);
@@ -796,6 +797,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 rows={rows}
                 handleExternalScroll={handleBodyScroll}
                 visibleRows={internalVisibleRowCount}
+                isGrouped={isGrouped}
               >
                 <VirtualTableBody
                   scrollContainerRef={scrollContainerRef}
