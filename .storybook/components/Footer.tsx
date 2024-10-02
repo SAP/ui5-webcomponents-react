@@ -6,12 +6,13 @@ import {
   FlexBoxWrap,
   Label,
   Link,
-  Popover
+  Popover,
+  Text
 } from '@ui5/webcomponents-react';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';
 import classes from './Footer.module.css';
@@ -19,8 +20,10 @@ import classes from './Footer.module.css';
 export const Footer = ({ style }) => {
   const popoverRef = useRef(null);
   const footerRef = useRef(null);
+  const [privacyPopoverOpen, setPPOpen] = useState(false);
   const showPrivacyPopover = (e) => {
-    popoverRef.current.showAt(e.target);
+    popoverRef.current.opener = e.target;
+    setPPOpen((prev) => !prev);
   };
 
   return createPortal(
@@ -41,7 +44,11 @@ export const Footer = ({ style }) => {
             </Label>
           </FlexBox>
           <FlexBox alignItems={FlexBoxAlignItems.Center} wrap={FlexBoxWrap.Wrap}>
-            <Button design={ButtonDesign.Transparent} onClick={showPrivacyPopover}>
+            <Button
+              design={ButtonDesign.Transparent}
+              onClick={showPrivacyPopover}
+              accessibilityAttributes={{ hasPopup: 'dialog', expanded: privacyPopoverOpen }}
+            >
               Privacy
             </Button>
             &nbsp;
@@ -59,21 +66,31 @@ export const Footer = ({ style }) => {
           </FlexBox>
         </FlexBox>
       </div>
-      {createPortal(
-        <Popover
-          headerText={'Privacy Statement'}
-          ref={popoverRef}
-          placementType={PopoverPlacement.Top}
-          data-ui5-compact-size
-          style={{ width: '360px', maxWidth: '100%' }}
-        >
-          <Label wrappingType={WrappingType.Normal}>
-            This site is hosted by <Link>GitHub Pages</Link>. Please see the <Link>GitHub Privacy Statement</Link> for
-            any information how GitHub processes your personal data.
-          </Label>
-        </Popover>,
-        document.body
-      )}
+      <Popover
+        open={privacyPopoverOpen}
+        headerText={'Privacy Statement'}
+        ref={popoverRef}
+        placement={PopoverPlacement.Top}
+        data-ui5-compact-size
+        style={{ width: '360px', maxWidth: '100%' }}
+        onClose={() => setPPOpen(false)}
+      >
+        <Text>
+          This site is hosted by{' '}
+          <Link href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">
+            GitHub Pages
+          </Link>
+          . Please see the{' '}
+          <Link
+            href="https://docs.github.com/en/github/site-policy/github-privacy-statement"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub Privacy Statement
+          </Link>{' '}
+          for any information how GitHub processes your personal data.
+        </Text>
+      </Popover>
     </footer>,
     document.getElementById('storybook-docs')
   );
