@@ -25,7 +25,7 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
 
     childrenArray.forEach((child, index) => {
       const splitterElementChild = childrenArray[index + splitterCount];
-      const splitterElementChildMinSize = splitterElementChild.props.hasOwnProperty('minSize')
+      const splitterElementChildMinSize = Object.prototype.hasOwnProperty.call(splitterElementChild.props, 'minSize')
         ? splitterElementChild.props.minSize
         : 0;
       if (

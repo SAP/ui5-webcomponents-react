@@ -45,12 +45,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "bin": {
-    "ui5wcr-codemod": "./bin/codemod.js"
-  },
   "files": [
-    "bin",
-    "codemods",
     "dist",
     "CHANGELOG.md",
     "LICENSE",

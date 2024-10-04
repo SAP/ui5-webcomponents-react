@@ -48,7 +48,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 
     // regular props (no booleans, no slots and no events)
     const regularProps = regularProperties.reduce((acc, name) => {
-      if (rest.hasOwnProperty(name) && isPrimitiveAttribute(rest[name])) {
+      if (Object.prototype.hasOwnProperty.call(rest, name) && isPrimitiveAttribute(rest[name])) {
         return { ...acc, [camelToKebabCase(name)]: rest[name] };
       }
       return acc;

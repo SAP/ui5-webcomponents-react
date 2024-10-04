@@ -197,14 +197,16 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
     color: string,
     isMilestone: boolean
   ) => {
-    const { x, y, width, height } = divRef.current?.getBoundingClientRect();
-    // Adjust the x and y position of the tooltip popover in order to try
-    // to prevent it from being cut off by the bounds of the parent div.
-    const offSetX = mouseX - x;
-    const offSetY = mouseY - y;
-    const xPos = offSetX < width - 80 ? offSetX : offSetX - 120;
-    const yPos = offSetY < height - 70 ? offSetY : offSetY - 70;
-    setState({ x: xPos, y: yPos, label, visible: true, startTime, duration, color, isMilestone });
+    if (divRef.current) {
+      const { x, y, width, height } = divRef.current.getBoundingClientRect();
+      // Adjust the x and y position of the tooltip popover in order to try
+      // to prevent it from being cut off by the bounds of the parent div.
+      const offSetX = mouseX - x;
+      const offSetY = mouseY - y;
+      const xPos = offSetX < width - 80 ? offSetX : offSetX - 120;
+      const yPos = offSetY < height - 70 ? offSetY : offSetY - 70;
+      setState({ x: xPos, y: yPos, label, visible: true, startTime, duration, color, isMilestone });
+    }
   };
 
   const onLeaveItem = () => {

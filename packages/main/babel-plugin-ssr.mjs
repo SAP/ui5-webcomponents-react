@@ -4,8 +4,9 @@ const Modes = {
   SSR: 'ssr'
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function (babel) {
-  const { types: t } = babel;
+  // const { types } = babel;
 
   return {
     name: 'ui5-webcomponents-ssr-plugin',

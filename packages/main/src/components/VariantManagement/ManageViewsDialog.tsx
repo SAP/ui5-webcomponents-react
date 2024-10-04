@@ -161,7 +161,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       prev
         .filter((item) => item.children !== e.target.dataset.children)
         .map((item) => {
-          if (changedTableRows.current.hasOwnProperty(item.children)) {
+          if (Object.prototype.hasOwnProperty.call(changedTableRows.current, item.children)) {
             return { ...item, ...changedTableRows.current[item.children] };
           }
           return item;

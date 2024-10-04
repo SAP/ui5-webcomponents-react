@@ -113,7 +113,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       setVariantNameInvalid(false);
       setInvalidVariants((prev) => {
         const invalidRows = { ...prev };
-        if (prev.hasOwnProperty(children)) {
+        if (Object.prototype.hasOwnProperty.call(prev, children)) {
           delete invalidRows[children];
         }
         return invalidRows;

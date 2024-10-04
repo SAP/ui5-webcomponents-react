@@ -676,7 +676,9 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       const selectedTabDataset = event.detail.tab.dataset;
       const sectionIndex = parseInt(selectedTabDataset.index, 10);
       const sectionId = selectedTabDataset.parentId ?? selectedTabDataset.sectionId;
-      const subSectionId = selectedTabDataset.hasOwnProperty('isSubTab') ? selectedTabDataset.sectionId : undefined;
+      const subSectionId = Object.prototype.hasOwnProperty.call(selectedTabDataset, 'isSubTab')
+        ? selectedTabDataset.sectionId
+        : undefined;
       onBeforeNavigate(
         enrichEventWithDetails(event, {
           sectionIndex,
