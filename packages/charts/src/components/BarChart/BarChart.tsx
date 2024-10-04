@@ -186,8 +186,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
     : 0;
 
-  console.log(colorSecondY);
-
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
