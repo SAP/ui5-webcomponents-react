@@ -48,7 +48,7 @@ overrides:
       - '*.ts'
       - '*.tsx'
     parserOptions:
-      EXPERIMENTAL_useProjectService:
+      projectService:
         # TODO https://github.com/typescript-eslint/typescript-eslint/issues/9450
         maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 1000
     plugins:
@@ -88,6 +88,8 @@ overrides:
       '@typescript-eslint/no-unused-vars':
         - 'error'
         - varsIgnorePattern: '^_'
+          argsIgnorePattern: '^_'
+          caughtErrorsIgnorePattern: '^_'
 
       # Performance Improvements: https://typescript-eslint.io/linting/troubleshooting/performance-troubleshooting#eslint-plugin-import
       'import/named': 'off'
@@ -98,8 +100,10 @@ overrides:
   # Generated Web Component Wrappers might contain empty interfaces
   - files:
       - 'packages/main/src/webComponents/*/index.tsx'
+      - 'packages/compat/src/components/TableCell/index.tsx'
+      - 'packages/compat/src/components/TableGroupRow/index.tsx'
     rules:
-      '@typescript-eslint/no-empty-interface': 'off'
+      '@typescript-eslint/no-empty-object-type': 'off'
 
   # disable prop types check for Analytical Table Defaults (TODO might change for react-table v8)
   - files:

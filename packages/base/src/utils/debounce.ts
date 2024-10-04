@@ -11,7 +11,7 @@ interface Cancelable {
  * function is triggered. The end of a sequence is defined by the `wait`
  * parameter.
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 const debounce = <T extends Function>(func: T, wait: number): T & Cancelable => {
   let timeout;
   let previous;

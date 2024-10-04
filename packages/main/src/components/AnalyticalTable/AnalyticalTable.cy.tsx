@@ -3111,7 +3111,9 @@ describe('AnalyticalTable', () => {
             <Button
               design="Transparent"
               onClick={() => {
-                getChildren && getChildren(parentId, currentChildrenCount);
+                if (typeof getChildren === 'function') {
+                  void getChildren(parentId, currentChildrenCount);
+                }
               }}
             >
               Load more for {parentNode.name}

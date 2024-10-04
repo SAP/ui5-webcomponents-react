@@ -1,4 +1,4 @@
-export interface Ui5DomRef extends HTMLElement {
+export interface Ui5DomRef extends Omit<HTMLElement, 'focus'> {
   /**
    * Attach a callback that will be executed whenever the component is invalidated
    *
