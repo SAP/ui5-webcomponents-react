@@ -20,6 +20,7 @@ interface DynamicPageTitlePropTypes
       | 'navigationBar'
       | 'snappedHeading'
       | 'snappedSubheading'
+      | 'snappedTitleOnMobile'
       | 'subheading'
     > {
   /**
@@ -100,6 +101,26 @@ interface DynamicPageTitlePropTypes
   snappedSubheading?: UI5WCSlotsNode;
 
   /**
+   * Defines the content of the snapped title on mobile devices.
+   *
+   * This slot is displayed only when the `DynamicPageTitle` is in the snapped state on mobile devices.
+   * It should be used to provide a simplified, single-line title that takes up less space on smaller screens.
+   *
+   * **Note:**
+   * - The content set in this slot **overrides** all other content set in the `DynamicPageTitle` slots when displayed.
+   * - The slot is intended for a single `ui5-title` component.
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="snappedTitleOnMobile"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v2.3.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.3.0) of **@ui5/webcomponents-fiori**.
+   */
+  snappedTitleOnMobile?: UI5WCSlotsNode;
+
+  /**
    * Defines the content of the title that is shown only when the header is not snapped.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="subheading"`).
@@ -143,7 +164,16 @@ const DynamicPageTitle = withWebComponent<DynamicPageTitlePropTypes, DynamicPage
   'ui5-dynamic-page-title',
   [],
   [],
-  ['actionsBar', 'breadcrumbs', 'heading', 'navigationBar', 'snappedHeading', 'snappedSubheading', 'subheading'],
+  [
+    'actionsBar',
+    'breadcrumbs',
+    'heading',
+    'navigationBar',
+    'snappedHeading',
+    'snappedSubheading',
+    'snappedTitleOnMobile',
+    'subheading'
+  ],
   []
 );
 

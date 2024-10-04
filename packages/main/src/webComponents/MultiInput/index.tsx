@@ -231,6 +231,8 @@ interface MultiInputPropTypes
   /**
    * Fired when the value of the component changes at each keystroke,
    * and when a suggestion item has been selected.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onInput?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 

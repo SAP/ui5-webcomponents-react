@@ -1,11 +1,19 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TableHeaderCell.js';
+import type TableCellHorizontalAlign from '@ui5/webcomponents/dist/types/TableCellHorizontalAlign.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableHeaderCellAttributes {
+  /**
+   * Determines the horizontal alignment of table cells.
+   * Note: All values valid for justify-content can be used not just the ones inside the enum.
+   * @default undefined
+   */
+  horizontalAlign?: TableCellHorizontalAlign | undefined | keyof typeof TableCellHorizontalAlign;
+
   /**
    * Defines the importance of the column.
    *
@@ -63,7 +71,7 @@ interface TableHeaderCellPropTypes
  */
 const TableHeaderCell = withWebComponent<TableHeaderCellPropTypes, TableHeaderCellDomRef>(
   'ui5-table-header-cell',
-  ['importance', 'maxWidth', 'minWidth', 'width'],
+  ['horizontalAlign', 'importance', 'maxWidth', 'minWidth', 'width'],
   [],
   [],
   []
