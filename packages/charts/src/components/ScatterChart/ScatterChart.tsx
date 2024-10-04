@@ -293,7 +293,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
               data={dataSet?.data}
               name={dataSet?.label}
               key={dataSet?.label}
-              fill={dataSet?.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              fill={dataSet?.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
               isAnimationActive={!noAnimation}
             />
           );

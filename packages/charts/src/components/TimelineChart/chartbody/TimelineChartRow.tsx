@@ -27,7 +27,7 @@ const TimelineChartRow = ({
   showTooltip,
   hideTooltip
 }: TimelineChartRowProps) => {
-  rowData.color = rowData.color ?? `var(--sapChart_OrderedColor_${(rowIndex % 11) + 1})`;
+  rowData.color = rowData.color ?? `var(--sapChart_OrderedColor_${(rowIndex % 12) + 1})`;
 
   return (
     <svg
