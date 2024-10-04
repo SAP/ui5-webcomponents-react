@@ -6245,8 +6245,6 @@ __metadata:
       optional: true
     "@ui5/webcomponents-base":
       optional: true
-  bin:
-    ui5wcr-codemod: ./bin/codemod.js
   languageName: unknown
   linkType: soft
 
