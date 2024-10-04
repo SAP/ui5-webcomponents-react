@@ -19,12 +19,12 @@ const TwoVariantItems = [
 describe('VariantManagement', () => {
   it('render btn with tooltip', () => {
     cy.mount(<VariantManagement />);
-    cy.get('[ui5-button]').shadow().findByTitle('Select view').should('be.visible');
+    cy.get('[ui5-button]').shadow().findByTitle('Select View').should('be.visible');
   });
 
   it('two children', () => {
     cy.mount(<VariantManagement>{TwoVariantItems}</VariantManagement>);
-    cy.get('[tooltip="Select view"]').click();
+    cy.get('[tooltip="Select View"]').click();
 
     cy.findByText('VariantItem 1').should('be.visible');
     cy.findAllByText('VariantItem 2').should('have.length', 2);
@@ -60,7 +60,7 @@ describe('VariantManagement', () => {
     cy.findAllByTitle('Unselected as Favorite').eq(0).click();
     cy.findAllByPlaceholderText('View').eq(0).shadow().find('input').type(' Updated!', { force: true });
 
-    cy.get('[accessible-name="Use as standard view"]').eq(0).click();
+    cy.get('[accessible-name="Use as Standard View"]').eq(0).click();
     cy.get('[accessible-name="Apply Automatically"]').eq(0).click();
 
     cy.findByText('Save').click();
@@ -379,7 +379,7 @@ describe('VariantManagement', () => {
     // invalid entries
     cy.get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}');
     cy.get('[ui5-input]').should('have.attr', 'value-state', ValueState.Negative);
-    cy.findByText('Please specify a view name');
+    cy.findByText('Please specify a view name.');
     cy.get('[ui5-input]').typeIntoUi5Input('VariantItem 1');
     cy.get('[ui5-input]').should('have.attr', 'value-state', ValueState.Negative);
     cy.findByText('The view name already exists. Please enter a different name.');
@@ -528,7 +528,7 @@ describe('VariantManagement', () => {
           if (global && hideDelete !== false) {
             cy.get('@row').find('[ui5-button]', { timeout: 100 }).should('not.exist');
           } else {
-            cy.get('@row').find('[ui5-button]').should('have.attr', 'tooltip', 'Delete view');
+            cy.get('@row').find('[ui5-button]').should('have.attr', 'tooltip', 'Delete View');
           }
         }
 
@@ -607,7 +607,7 @@ describe('VariantManagement', () => {
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.findByText('Manage').click();
 
-    cy.get('[ui5-button][tooltip="Delete view"]').each(($btn) => {
+    cy.get('[ui5-button][tooltip="Delete View"]').each(($btn) => {
       if ($btn[0].getAttribute('data-children') !== 'VariantItem 3') {
         cy.wrap($btn).click();
       }
