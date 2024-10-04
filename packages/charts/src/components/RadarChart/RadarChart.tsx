@@ -199,8 +199,8 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
               activeDot={{ onClick: onDataPointClickInternal } as any}
               name={element.label ?? element.accessor}
               dataKey={element.accessor}
-              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-              fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
+              fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
               fillOpacity={element.opacity}
               label={<ChartDataLabel config={element} chartType="radar" position={'outside'} />}
               isAnimationActive={!noAnimation}
