@@ -29,7 +29,10 @@ interface ProjectTemplatePropTypes {
   isTemplate?: boolean;
   stackBlitzHref?: string;
   showUnsupportedMessage?: boolean;
-  showNote?: boolean;
+  /**
+   * Either use text or text components.
+   */
+  note?: ReactNode;
 }
 
 addCustomCSSWithScoping(
@@ -50,7 +53,7 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
     isTemplate,
     stackBlitzHref,
     showUnsupportedMessage,
-    showNote
+    note
   } = props;
   const [popoverOpen, setPopoverOpen] = useState(false);
   const linkRef = useRef(null);
@@ -144,18 +147,12 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
                 </Link>
               </>
             )}
-            {showNote && (
+            {!!note && (
               <>
                 <br />
                 <span>
                   <Label showColon>Note</Label>
-                  <Text>
-                    The <code>BarcodeScannerDialog</code> component is currently{' '}
-                    <Link href="https://github.com/SAP/ui5-webcomponents/issues/9771" target="_blank">
-                      not supported
-                    </Link>
-                    .
-                  </Text>
+                  {note}
                 </span>
               </>
             )}
