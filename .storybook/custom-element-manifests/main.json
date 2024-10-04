@@ -2254,6 +2254,48 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/NotificationListGrowingMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "NotificationListGrowingMode",
+          "description": "Different notification list growing modes.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Component's \"load-more\" is fired upon pressing a \"More\" button.\nat the bottom.",
+              "default": "Button",
+              "name": "Button",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Component's growing is not enabled.",
+              "default": "None",
+              "name": "None",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NotificationListGrowingMode",
+            "module": "dist/types/NotificationListGrowingMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/OverflowMode.js",
       "declarations": [
         {
@@ -2841,6 +2883,70 @@
           "declaration": {
             "name": "TabLayout",
             "module": "dist/types/TabLayout.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/TableCellHorizontalAlign.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "TableCellHorizontalAlign",
+          "description": "Alignment of the &lt;ui5-table-cell&gt; component.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "default": "Left",
+              "name": "Left",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "default": "Start",
+              "name": "Start",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "default": "Right",
+              "name": "Right",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "default": "End",
+              "name": "End",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "default": "Center",
+              "name": "Center",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableCellHorizontalAlign",
+            "module": "dist/types/TableCellHorizontalAlign.js"
           }
         }
       ]
@@ -6250,7 +6356,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\nThe Carousel allows the user to browse through a set of items.\nThe component is mostly used for showing a gallery of images, but can hold any other HTML element.\n\nThere are several ways to perform navigation:\n\n- on desktop - the user can navigate using the navigation arrows or with keyboard shortcuts.\n- on mobile - the user can use swipe gestures.\n\n### Usage\n\n#### When to use:\n\n- The items you want to display are very different from each other.\n- You want to display the items one after the other.\n\n#### When not to use:\n\n- The items you want to display need to be visible at the same time.\n- The items you want to display are uniform and very similar.\n\n### Keyboard Handling\n\n#### Basic Navigation\nWhen the `ui5-carousel` is focused the user can navigate between the items\nwith the following keyboard shortcuts:\n\n- [Up] or [Down] - Navigates to previous and next item\n- [Left] or [Right] - Navigates to previous and next item\n\n### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Carousel.js\";`",
+          "description": "### Overview\nThe Carousel allows the user to browse through a set of items.\nThe component is mostly used for showing a gallery of images, but can hold any other HTML element.\n\nThere are several ways to perform navigation:\n\n- on desktop - the user can navigate using the navigation arrows or with keyboard shortcuts.\n- on touch devices - the user can navigate using the navigation arrows (always visible) or can use swipe gestures.\n\n### Usage\n\n#### When to use:\n\n- The items you want to display are very different from each other.\n- You want to display the items one after the other.\n\n#### When not to use:\n\n- The items you want to display need to be visible at the same time.\n- The items you want to display are uniform and very similar.\n\n### Keyboard Handling\n\n#### Basic Navigation\nWhen the `ui5-carousel` is focused the user can navigate between the items\nwith the following keyboard shortcuts:\n\n- [Up] or [Down] - Navigates to previous and next item\n- [Left] or [Right] - Navigates to previous and next item\n\n### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Carousel.js\";`",
           "name": "Carousel",
           "cssParts": [
             {
@@ -6319,7 +6425,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.\n\n**Note:** The navigation arrows are never displayed on touch devices.\nIn this case, the user can swipe to navigate through the items.",
+              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.\n\n**Note:** The navigation arrows are always displayed on touch devices.",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15"
             },
@@ -6524,7 +6630,7 @@
               }
             },
             {
-              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.\n\n**Note:** The navigation arrows are never displayed on touch devices.\nIn this case, the user can swipe to navigate through the items.",
+              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.\n\n**Note:** The navigation arrows are always displayed on touch devices.",
               "name": "hide-navigation-arrows",
               "default": "false",
               "fieldName": "hideNavigationArrows",
@@ -11297,7 +11403,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\nThe Form is a layout component that arranges labels and form fields (like input fields) pairs\ninto a specific number of columns.\n\n### Structure\n\n- **Form** (`ui5-form`) is the top-level container component, responsible for the content layout and responsiveness.\n- **FormGroup** (`ui5-form-group`) enables the grouping of the Form content.\n- **FormItem** (`ui5-form-item`) is a pair of label and form fields and can be used directly in a Form, or as part of a FormGroup.\n\nThe simplest Form (`ui5-form`) consists of a header area on top,\ndisplaying a header text (see the `headingText` property) and content below - an arbitrary number of FormItems (ui5-form-item),\nrepresenting the pairs of label and form fields.\n\nAnd, there is also \"grouping\" available to assist the implementation of richer UIs.\nThis is enabled by the FormGroup (`ui5-form-group`) component.\nIn this case, the Form is structured into FormGroups and each FormGroup consists of FormItems.\n\n ### Responsiveness\n\nThe Form component reacts and changes its layout on predefined breakpoints.\nDepending on its size, the Form content (FormGroups and FormItems) gets divided into one or more columns as follows:\n- **S** (< 600px) – 1 column is recommended (default: 1)\n- **M** (600px - 1022px) – up to 2 columns are recommended (default: 1)\n- **L** (1023px - 1439px) - up to 3 columns are recommended (default: 2)\n- **XL** (> 1439px) – up to 6 columns are recommended (default: 2)\n\nTo change the layout, use the `layout` property - f.e. layout=\"S1 M2 L3 XL6\".\n\n### Groups\n\nTo make better use of screen space, there is built-in logic to determine how many columns should a FormGroup occupy.\n\n- **Example #1** (perfect match):\n4 columns and 4 groups: each group will use 1 column.\n\n- **Example #2** (balanced distribution):\n4 columns and 2 groups: each group will use 2 columns.\n6 columns and 2 groups: each group will use 3 columns.\n\n- **Example #3** (unbalanced distribution):\n3 columns and 2 groups: the larger one will use 2 columns, the smaller 1 column.\n5 columns and 3 groups: two of the groups will use 2 columns each, the smallest 1 column.\n\n**Note:** The size of a group element is determined by the number of FormItems assigned to it.\nIn the case of equality, the first in the DOM will use more columns, and the last - fewer columns.\n\n- **Example #4** (more groups than columns):\n3 columns and 4 groups: each FormGroup uses only 1 column, the last FormGroup will wrap on the second row.\n\n### Groups Column Span\n\nTo influence the built-in group distribution, described in the previous section,\nyou can use the FormGroup's `columnSpan` property, that defines how many columns the group should expand to.\n\n### Items Column Span\n\nFormItem's columnSpan property defines how many columns the form item should expand to inside a form group or the form.\n\n### Items Label Span\n\nThe placement of the labels depends on the size of the used column.\nIf there is enough space, the labels are next to their associated fields, otherwise  - above the fields.\nBy default, the labels take 4/12 of the FormItem, leaving 8/12 parts to associated fields.\nYou can control what space the labels should take via the `labelSpan` property.\n\n**For example:** To always place the labels on top set: `labelSpan=\"S12 M12 L12 XL12\"` property.\n\n### ES6 Module Import\n\n- import @ui5/webcomponents/dist/Form.js\";\n- import @ui5/webcomponents/dist/FormGroup.js\";\n- import @ui5/webcomponents/dist/FormItem.js\";",
+          "description": "### Overview\n\nThe Form is a layout component that arranges labels and form fields (like input fields) pairs\ninto a specific number of columns.\n\n**Note:** The Form web component is a layout component, it isn't a replacement for the native `form` HTML element.\nThe Form web component does not provide any APIs for form submission.\n\n### Structure\n\n- **Form** (`ui5-form`) is the top-level container component, responsible for the content layout and responsiveness.\n- **FormGroup** (`ui5-form-group`) enables the grouping of the Form content.\n- **FormItem** (`ui5-form-item`) is a pair of label and form fields and can be used directly in a Form, or as part of a FormGroup.\n\nThe simplest Form (`ui5-form`) consists of a header area on top,\ndisplaying a header text (see the `headingText` property) and content below - an arbitrary number of FormItems (ui5-form-item),\nrepresenting the pairs of label and form fields.\n\nAnd, there is also \"grouping\" available to assist the implementation of richer UIs.\nThis is enabled by the FormGroup (`ui5-form-group`) component.\nIn this case, the Form is structured into FormGroups and each FormGroup consists of FormItems.\n\n### Responsiveness\n\nThe Form component reacts and changes its layout on predefined breakpoints.\nDepending on its size, the Form content (FormGroups and FormItems) gets divided into one or more columns as follows:\n- **S** (< 600px) – 1 column is recommended (default: 1)\n- **M** (600px - 1022px) – up to 2 columns are recommended (default: 1)\n- **L** (1023px - 1439px) - up to 3 columns are recommended (default: 2)\n- **XL** (> 1439px) – up to 6 columns are recommended (default: 2)\n\nTo change the layout, use the `layout` property - f.e. layout=\"S1 M2 L3 XL6\".\n\n### Groups\n\nTo make better use of screen space, there is built-in logic to determine how many columns should a FormGroup occupy.\n\n- **Example #1** (perfect match):\n4 columns and 4 groups: each group will use 1 column.\n\n- **Example #2** (balanced distribution):\n4 columns and 2 groups: each group will use 2 columns.\n6 columns and 2 groups: each group will use 3 columns.\n\n- **Example #3** (unbalanced distribution):\n3 columns and 2 groups: the larger one will use 2 columns, the smaller 1 column.\n5 columns and 3 groups: two of the groups will use 2 columns each, the smallest 1 column.\n\n**Note:** The size of a group element is determined by the number of FormItems assigned to it.\nIn the case of equality, the first in the DOM will use more columns, and the last - fewer columns.\n\n- **Example #4** (more groups than columns):\n3 columns and 4 groups: each FormGroup uses only 1 column, the last FormGroup will wrap on the second row.\n\n### Groups Column Span\n\nTo influence the built-in group distribution, described in the previous section,\nyou can use the FormGroup's `columnSpan` property, that defines how many columns the group should expand to.\n\n### Items Column Span\n\nFormItem's columnSpan property defines how many columns the form item should expand to inside a form group or the form.\n\n### Items Label Span\n\nThe placement of the labels depends on the size of the used column.\nIf there is enough space, the labels are next to their associated fields, otherwise  - above the fields.\nBy default, the labels take 4/12 of the FormItem, leaving 8/12 parts to associated fields.\nYou can control what space the labels should take via the `labelSpan` property.\n\n**For example:** To always place the labels on top set: `labelSpan=\"S12 M12 L12 XL12\"` property.\n\n### ES6 Module Import\n\n- import @ui5/webcomponents/dist/Form.js\";\n- import @ui5/webcomponents/dist/FormGroup.js\";\n- import @ui5/webcomponents/dist/FormItem.js\";",
           "name": "Form",
           "cssParts": [
             {
@@ -12111,7 +12217,8 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the value of the component changes at each keystroke,\nand when a suggestion item has been selected."
+              "description": "Fired when the value of the component changes at each keystroke,\nand when a suggestion item has been selected.",
+              "_ui5allowPreventDefault": true
             },
             {
               "name": "select",
@@ -12851,6 +12958,16 @@
           "kind": "class",
           "description": "### Overview\n\nThe `ui5-list` component allows displaying a list of items, advanced keyboard\nhandling support for navigating between items, and predefined modes to improve the development efficiency.\n\nThe `ui5-list` is a container for the available list items:\n\n- `ui5-li`\n- `ui5-li-custom`\n- `ui5-li-group`\n\nTo benefit from the built-in selection mechanism, you can use the available\nselection modes, such as\n`Single`, `Multiple` and `Delete`.\n\nAdditionally, the `ui5-list` provides header, footer, and customization for the list item separators.\n\n### Keyboard Handling\n\n#### Basic Navigation\nThe `ui5-list` provides advanced keyboard handling.\nWhen a list is focused the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [Up] or [Down] - Navigates up and down the items\n- [Home] - Navigates to first item\n- [End] - Navigates to the last item\n\nThe user can use the following keyboard shortcuts to perform actions (such as select, delete),\nwhen the `selectionMode` property is in use:\n\n- [Space] - Select an item (if `type` is 'Active') when `selectionMode` is selection\n- [Delete] - Delete an item if `selectionMode` property is `Delete`\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/List.js\";`\n\n`import \"@ui5/webcomponents/dist/ListItemStandard.js\";` (for `ui5-li`)\n\n`import \"@ui5/webcomponents/dist/ListItemCustom.js\";` (for `ui5-li-custom`)\n\n`import \"@ui5/webcomponents/dist/ListItemGroup.js\";` (for `ui5-li-group`)",
           "name": "List",
+          "cssParts": [
+            {
+              "description": "Used to style the button, that is used for growing of the component",
+              "name": "growing-button"
+            },
+            {
+              "description": "Used to style the button inner element",
+              "name": "growing-button-inner"
+            }
+          ],
           "slots": [
             {
               "name": "default",
@@ -16652,6 +16769,7 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the value of the component changes at each keystroke,\nand when a suggestion item has been selected.",
+              "_ui5allowPreventDefault": true,
               "inheritedFrom": {
                 "name": "Input",
                 "module": "dist/Input.js"
@@ -23453,7 +23571,7 @@
           },
           "tagName": "ui5-table",
           "customElement": true,
-          "_ui5experimental": "This Table web component is available since 2.0 and has been newly implemented to provide better screen reader and keyboard handling support.\nCurrently, it's considered experimental as its API is subject to change.\nThis Table replaces the previous Table web component, that has been part of **@ui5/webcomponents** version 1.x.\nFor compatibility reasons, we moved the previous Table implementation to the **@ui5/webcomponents-compat** package\nand will be maintained until the new Table is experimental.",
+          "_ui5experimental": "This Table web component is available since 2.0 and has been newly implemented to provide better screen reader and keyboard handling support.\nCurrently, it's considered experimental as its API is subject to change.\nThis Table replaces the previous Table web component, that has been part of **@ui5/webcomponents** version 1.x.\nFor compatibility reasons, we moved the previous Table implementation to the **@ui5/webcomponents-compat** package\nand will be maintained until the new Table is experimental.\nKeep in mind that you can use either the compat/Table, or the main/Table - you can't use them both as they both define the `ui5-table` tag name.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public"
         }
@@ -23495,6 +23613,44 @@
           "_ui5experimental": "This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public",
+          "attributes": [
+            {
+              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "name": "horizontal-align",
+              "default": "undefined",
+              "fieldName": "horizontalAlign",
+              "type": {
+                "text": "\"Start\" | \"End\" | \"Center\" | \"Left\" | \"Right\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TableCellBase",
+                "module": "dist/TableCellBase.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "horizontalAlign",
+              "type": {
+                "text": "TableCellHorizontalAlign | undefined",
+                "references": [
+                  {
+                    "name": "TableCellHorizontalAlign",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TableCellHorizontalAlign.js"
+                  }
+                ]
+              },
+              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableCellBase",
+                "module": "dist/TableCellBase.js"
+              }
+            }
+          ],
           "slots": [
             {
               "name": "default",
@@ -23505,8 +23661,7 @@
               },
               "_ui5privacy": "public"
             }
-          ],
-          "members": []
+          ]
         }
       ],
       "exports": [
@@ -23547,6 +23702,36 @@
               "_ui5privacy": "public"
             }
           ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "horizontalAlign",
+              "type": {
+                "text": "TableCellHorizontalAlign | undefined",
+                "references": [
+                  {
+                    "name": "TableCellHorizontalAlign",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TableCellHorizontalAlign.js"
+                  }
+                ]
+              },
+              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "default": "undefined",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "name": "horizontal-align",
+              "default": "undefined",
+              "fieldName": "horizontalAlign",
+              "type": {
+                "text": "\"Start\" | \"End\" | \"Center\" | \"Left\" | \"Right\" | undefined"
+              }
+            }
+          ],
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
@@ -23555,8 +23740,7 @@
           "customElement": true,
           "_ui5since": "2.0.0",
           "_ui5privacy": "public",
-          "_ui5abstract": true,
-          "members": []
+          "_ui5abstract": true
         }
       ],
       "exports": [
@@ -23750,6 +23934,27 @@
               "default": "0",
               "description": "Defines the importance of the column.\n\nThis property affects the popin behaviour.\nColumns with higher importance will move into the popin area later then less important\ncolumns.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "horizontalAlign",
+              "type": {
+                "text": "TableCellHorizontalAlign | undefined",
+                "references": [
+                  {
+                    "name": "TableCellHorizontalAlign",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TableCellHorizontalAlign.js"
+                  }
+                ]
+              },
+              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableCellBase",
+                "module": "dist/TableCellBase.js"
+              }
             }
           ],
           "attributes": [
@@ -23787,6 +23992,19 @@
               "fieldName": "importance",
               "type": {
                 "text": "number"
+              }
+            },
+            {
+              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "name": "horizontal-align",
+              "default": "undefined",
+              "fieldName": "horizontalAlign",
+              "type": {
+                "text": "\"Start\" | \"End\" | \"Center\" | \"Left\" | \"Right\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TableCellBase",
+                "module": "dist/TableCellBase.js"
               }
             }
           ],
@@ -24408,14 +24626,6 @@
           "description": "<h3>Overview</h3>\n\nThe `ui5-text` component displays text that can be used in any content area of an application.\n\n<h3>Usage</h3>\n\n- Use the `ui5-text` if you want to display text inside a form, table, or any other content area.\n- Do not use the `ui5-text` if you need to reference input type of components (use ui5-label).\n\n<h3>Responsive behavior</h3>\n\nThe `ui5-text` component is fully adaptive to all screen sizes.\nBy default, the text will wrap when the space is not enough.\nIn addition, the component supports truncation via the <code>max-lines</code> property,\nby defining the number of lines the text should wrap before start truncating.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Text\";</code>",
           "name": "Text",
           "slots": [
-            {
-              "description": "Defines the text of the component.",
-              "name": "default",
-              "_ui5privacy": "public",
-              "_ui5type": {
-                "text": "Array<Node>"
-              }
-            },
             {
               "name": "default",
               "description": "Defines the text of the component.",

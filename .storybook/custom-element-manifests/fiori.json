@@ -2319,6 +2319,22 @@
               "_ui5privacy": "public"
             },
             {
+              "name": "snappedTitleOnMobile",
+              "description": "Defines the content of the snapped title on mobile devices.\n\nThis slot is displayed only when the `DynamicPageTitle` is in the snapped state on mobile devices.\nIt should be used to provide a simplified, single-line title that takes up less space on smaller screens.\n\n**Note:**\n- The content set in this slot **overrides** all other content set in the `DynamicPageTitle` slots when displayed.\n- The slot is intended for a single `ui5-title` component.",
+              "_ui5since": "2.3.0",
+              "_ui5type": {
+                "text": "Array<Title>",
+                "references": [
+                  {
+                    "name": "Title",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Title.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
               "name": "actionsBar",
               "description": "Defines the bar with actions in the Dynamic page title.",
               "_ui5type": {
@@ -3913,6 +3929,24 @@
             },
             {
               "kind": "field",
+              "name": "growing",
+              "type": {
+                "text": "NotificationListGrowingMode",
+                "references": [
+                  {
+                    "name": "NotificationListGrowingMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/NotificationListGrowingMode.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines whether the component will have growing capability by pressing a `More` button.\nWhen button is pressed `load-more` event will be fired.",
+              "privacy": "public",
+              "_ui5since": "2.2.0"
+            },
+            {
+              "kind": "field",
               "name": "titleText",
               "type": {
                 "text": "string | undefined"
@@ -3977,6 +4011,15 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the `ui5-li-notification-group` is expanded/collapsed by user interaction."
+            },
+            {
+              "name": "load-more",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when additional items are requested.",
+              "_ui5since": "2.2.0"
             }
           ],
           "attributes": [
@@ -3987,6 +4030,15 @@
               "fieldName": "collapsed",
               "type": {
                 "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines whether the component will have growing capability by pressing a `More` button.\nWhen button is pressed `load-more` event will be fired.",
+              "name": "growing",
+              "default": "\"None\"",
+              "fieldName": "growing",
+              "type": {
+                "text": "\"Button\" | \"None\""
               }
             }
           ],
@@ -4392,7 +4444,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-page` is a container component that holds one whole screen of an application.\nThe page has three distinct areas that can hold content - a header, content area and a footer.\n### Structure\n#### Header\nThe top most area of the page is occupied by the header. The standard header includes a navigation button and a title.\n#### Content\nThe content occupies the main part of the page. Only the content area is scrollable by default.\nThis can be prevented by setting  `enableScrolling` to `false`.\n#### Footer\nThe footer is optional and occupies the part above the bottom part of the content. Alternatively, the footer can be fixed at the bottom of the page by enabling the `fixedFooter` property.\n\n**Note:** `ui5-page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure\nthat there is enough space for the `ui5-page` to be rendered.\n**Note:** In order for the `ui5-page` to be displayed, the parent element should have fixed height.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Page.js\";`",
+          "description": "### Overview\n\nThe `ui5-page` is a container component that holds one whole screen of an application.\nThe page has three distinct areas that can hold content - a header, content area and a footer.\n### Structure\n#### Header\nThe top most area of the page is occupied by the header. The standard header includes a navigation button and a title.\n#### Content\nThe content occupies the main part of the page. Only the content area is scrollable by default.\nThis can be prevented by setting `noScrolling` to `true`.\n#### Footer\nThe footer is optional and occupies the part above the bottom part of the content. Alternatively, the footer can be fixed at the bottom of the page by enabling the `fixedFooter` property.\n\n**Note:** `ui5-page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure\nthat there is enough space for the `ui5-page` to be rendered.\n**Note:** In order for the `ui5-page` to be displayed, the parent element should have fixed height.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Page.js\";`",
           "name": "Page",
           "cssParts": [
             {
@@ -8270,6 +8322,36 @@
           "declaration": {
             "name": "WizardTab",
             "module": "dist/WizardTab.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ssr-zxing-shim.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ZXing",
+            "module": "dist/ssr-zxing-shim.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ssr-zxing.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ZXing",
+            "module": "dist/ssr-zxing.js"
           }
         }
       ]

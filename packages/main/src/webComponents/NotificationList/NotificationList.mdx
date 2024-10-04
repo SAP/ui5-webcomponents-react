@@ -3,13 +3,13 @@ import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
+import { NotificationListGroupItem } from '../NotificationListGroupItem';
 import { NotificationListItem } from '../NotificationListItem';
-import * as ComponentStories from './NotificationListGroupItem.stories';
-import { excludePropsForAbstract } from '@sb/utils';
+import * as ComponentStories from './NotificationList.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.10.0" />
+<DocsHeader since="2.0.0" />
 
 <br />
 
@@ -21,21 +21,34 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 <ControlsWithNote of={ComponentStories.Default} />
 
+# More Examples
+
+<br />
+
+## With NotificationListGroupItem
+
+<Canvas of={ComponentStories.Grouped} />
+
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## NotificationListItem
 
 <Description of={NotificationListItem} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={NotificationListItem} />
+<ArgTypesWithNote hideHTMLPropsNote of={NotificationListItem} />
+
+## NotificationListGroupItem
+
+<Description of={NotificationListGroupItem} />
+<ArgTypesWithNote hideHTMLPropsNote of={NotificationListGroupItem} />
 
 ## Menu
 
 <Description of={Menu} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={Menu} />
+<ArgTypesWithNote hideHTMLPropsNote of={Menu} />
 
 ## MenuItem
 
 <Description of={MenuItem} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MenuItem} />
+<ArgTypesWithNote hideHTMLPropsNote of={MenuItem} />
 
 <Footer />

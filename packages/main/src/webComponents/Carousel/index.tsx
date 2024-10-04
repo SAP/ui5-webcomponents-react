@@ -56,8 +56,7 @@ interface CarouselAttributes {
    * Defines the visibility of the navigation arrows.
    * If set to true the navigation arrows will be hidden.
    *
-   * **Note:** The navigation arrows are never displayed on touch devices.
-   * In this case, the user can swipe to navigate through the items.
+   * **Note:** The navigation arrows are always displayed on touch devices.
    * @default false
    */
   hideNavigationArrows?: boolean;
@@ -147,7 +146,7 @@ interface CarouselPropTypes
  * There are several ways to perform navigation:
  *
  * - on desktop - the user can navigate using the navigation arrows or with keyboard shortcuts.
- * - on mobile - the user can use swipe gestures.
+ * - on touch devices - the user can navigate using the navigation arrows (always visible) or can use swipe gestures.
  *
  * ### Usage
  *

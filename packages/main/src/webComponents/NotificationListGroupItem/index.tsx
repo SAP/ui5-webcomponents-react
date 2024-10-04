@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
+import type NotificationListGrowingMode from '@ui5/webcomponents/dist/types/NotificationListGrowingMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
@@ -11,6 +12,15 @@ interface NotificationListGroupItemAttributes {
    * @default false
    */
   collapsed?: boolean;
+
+  /**
+   * Defines whether the component will have growing capability by pressing a `More` button.
+   * When button is pressed `load-more` event will be fired.
+   *
+   * **Note:** Available since [v2.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.2.0) of **@ui5/webcomponents-fiori**.
+   * @default "None"
+   */
+  growing?: NotificationListGrowingMode | keyof typeof NotificationListGrowingMode;
 
   /**
    * Defines if a busy indicator would be displayed over the item.
@@ -44,12 +54,19 @@ interface NotificationListGroupItemDomRef extends Required<NotificationListGroup
 
 interface NotificationListGroupItemPropTypes
   extends NotificationListGroupItemAttributes,
-    Omit<CommonProps, keyof NotificationListGroupItemAttributes | 'children' | 'onToggle'> {
+    Omit<CommonProps, keyof NotificationListGroupItemAttributes | 'children' | 'onLoadMore' | 'onToggle'> {
   /**
    * Defines the items of the `NotificationListGroupItem`,
    * usually `NotificationListItem` items.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired when additional items are requested.
+   *
+   * **Note:** Available since [v2.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.2.0) of **@ui5/webcomponents-fiori**.
+   */
+  onLoadMore?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef>) => void;
+
   /**
    * Fired when the `NotificationListGroupItem` is expanded/collapsed by user interaction.
    */
@@ -85,10 +102,10 @@ interface NotificationListGroupItemPropTypes
  */
 const NotificationListGroupItem = withWebComponent<NotificationListGroupItemPropTypes, NotificationListGroupItemDomRef>(
   'ui5-li-notification-group',
-  ['loadingDelay', 'titleText'],
+  ['growing', 'loadingDelay', 'titleText'],
   ['collapsed', 'loading', 'read'],
   [],
-  ['toggle']
+  ['load-more', 'toggle']
 );
 
 NotificationListGroupItem.displayName = 'NotificationListGroupItem';
