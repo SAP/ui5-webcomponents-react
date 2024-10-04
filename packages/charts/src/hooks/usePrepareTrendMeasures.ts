@@ -24,7 +24,7 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
           formatter: defaultFormatter
         });
         columnMeasures.push({
-          color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
+          color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`,
           formatter: defaultFormatter,
           ...measure
         });
@@ -32,7 +32,7 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
 
       if (measure.type === 'line') {
         lineMeasures.push({
-          color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`,
+          color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`,
           formatter: defaultFormatter,
           ...measure
         });

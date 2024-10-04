@@ -5,7 +5,7 @@ export const getCellColors = (element: Record<string, any>, data: Record<string,
   return (
     element.highlightColor?.(getValueByDataKey(data, element.accessor), element, data) ??
     element.color ??
-    `var(--sapChart_OrderedColor_${(index % 11) + 1})`
+    `var(--sapChart_OrderedColor_${(index % 12) + 1})`
   );
 };
 

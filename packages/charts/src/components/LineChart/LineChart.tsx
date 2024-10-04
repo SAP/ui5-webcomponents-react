@@ -271,18 +271,18 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             axisLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
             }}
             tick={
               <YAxisTicks
                 config={secondaryMeasure}
                 secondYAxisConfig={{
-                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
                 }}
               />
             }
             tickLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
             }}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
@@ -306,7 +306,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
               label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
               type="monotone"
               dataKey={element.accessor}
-              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
               strokeWidth={element.width}
               activeDot={{ onClick: onDataPointClickInternal }}
               isAnimationActive={!noAnimation}

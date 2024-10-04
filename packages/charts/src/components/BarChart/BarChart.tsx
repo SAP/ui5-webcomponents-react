@@ -272,18 +272,18 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
           <XAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             axisLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
             }}
             tick={
               <XAxisTicks
                 config={secondaryMeasure}
                 secondYAxisConfig={{
-                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
                 }}
               />
             }
             tickLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 11) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
             }}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
@@ -326,8 +326,8 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
                 strokeOpacity={element.opacity}
                 type="monotone"
                 dataKey={element.accessor}
-                fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
-                stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 11) + 1})`}
+                fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
+                stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
                 barSize={element.width}
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
