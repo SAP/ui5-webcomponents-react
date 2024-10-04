@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.1...v2.2.0) (2024-10-04)
+
+### Bug Fixes
+
+- **BarChart & BulletChart:** adjust y-axis label distribution ([#6406](https://github.com/SAP/ui5-webcomponents-react/issues/6406)) ([a7f3284](https://github.com/SAP/ui5-webcomponents-react/commit/a7f3284685fad96677a22ef4739f4ff6abbc71a2))
+
+### Features
+
+- **charts:** add 12th chart color ([#6444](https://github.com/SAP/ui5-webcomponents-react/issues/6444)) ([1d9f558](https://github.com/SAP/ui5-webcomponents-react/commit/1d9f558f2f9563f4038fad3bd937f2798a7f8771))
+- update @ui5/webcomponents to ~2.3.0 ([#6440](https://github.com/SAP/ui5-webcomponents-react/issues/6440)) ([7e8e805](https://github.com/SAP/ui5-webcomponents-react/commit/7e8e8055a16680048282cbee4493bfcc12c60b58)), closes [#6340](https://github.com/SAP/ui5-webcomponents-react/issues/6340)
+
 # [2.1.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.2...v2.1.0) (2024-09-05)
 
 ### Features

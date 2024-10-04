@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.1...v2.2.0) (2024-10-04)
+
+### Bug Fixes
+
+- **AnalyticalTable:** announce select-all cell for screen readers ([#6408](https://github.com/SAP/ui5-webcomponents-react/issues/6408)) ([82687e7](https://github.com/SAP/ui5-webcomponents-react/commit/82687e7642d477ca56d78f8343365ba8c365981a)), closes [#6209](https://github.com/SAP/ui5-webcomponents-react/issues/6209)
+- **AnalyticalTable:** offer limited support for `infiniteScroll` combined with a grouped table ([#6431](https://github.com/SAP/ui5-webcomponents-react/issues/6431)) ([ed48142](https://github.com/SAP/ui5-webcomponents-react/commit/ed481425ac8b130a7aeef171b30dce9e23e85b2c))
+- **BarChart & BulletChart:** adjust y-axis label distribution ([#6406](https://github.com/SAP/ui5-webcomponents-react/issues/6406)) ([a7f3284](https://github.com/SAP/ui5-webcomponents-react/commit/a7f3284685fad96677a22ef4739f4ff6abbc71a2))
+- remove CSS `[@layer](https://github.com/layer)` rule from static CSS bundle ([#6430](https://github.com/SAP/ui5-webcomponents-react/issues/6430)) ([b2942f8](https://github.com/SAP/ui5-webcomponents-react/commit/b2942f8a6ebd70c36ba1b8b44c6bd37aec6861c3))
+
+### Features
+
+- **charts:** add 12th chart color ([#6444](https://github.com/SAP/ui5-webcomponents-react/issues/6444)) ([1d9f558](https://github.com/SAP/ui5-webcomponents-react/commit/1d9f558f2f9563f4038fad3bd937f2798a7f8771))
+- **ThemingParameters:** update `ThemingParameters` to use latest CSS vars ([#6443](https://github.com/SAP/ui5-webcomponents-react/issues/6443)) ([744d72a](https://github.com/SAP/ui5-webcomponents-react/commit/744d72a5d5772f776f33d2e6483c2a7059d3216c))
+- update @ui5/webcomponents to ~2.3.0 ([#6440](https://github.com/SAP/ui5-webcomponents-react/issues/6440)) ([7e8e805](https://github.com/SAP/ui5-webcomponents-react/commit/7e8e8055a16680048282cbee4493bfcc12c60b58)), closes [#6340](https://github.com/SAP/ui5-webcomponents-react/issues/6340)
+
 ## [2.1.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.0...v2.1.1) (2024-09-24)
 
 ### Bug Fixes

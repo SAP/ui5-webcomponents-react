@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.1...v2.2.0) (2024-10-04)
+
+### Features
+
+- **ThemingParameters:** update `ThemingParameters` to use latest CSS vars ([#6443](https://github.com/SAP/ui5-webcomponents-react/issues/6443)) ([744d72a](https://github.com/SAP/ui5-webcomponents-react/commit/744d72a5d5772f776f33d2e6483c2a7059d3216c))
+- update @ui5/webcomponents to ~2.3.0 ([#6440](https://github.com/SAP/ui5-webcomponents-react/issues/6440)) ([7e8e805](https://github.com/SAP/ui5-webcomponents-react/commit/7e8e8055a16680048282cbee4493bfcc12c60b58)), closes [#6340](https://github.com/SAP/ui5-webcomponents-react/issues/6340)
+
 ## [2.1.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.0...v2.1.1) (2024-09-24)
 
 ### Bug Fixes

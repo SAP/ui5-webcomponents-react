@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.1...v2.2.0) (2024-10-04)
+
+### Bug Fixes
+
+- **AnalyticalTable:** announce select-all cell for screen readers ([#6408](https://github.com/SAP/ui5-webcomponents-react/issues/6408)) ([82687e7](https://github.com/SAP/ui5-webcomponents-react/commit/82687e7642d477ca56d78f8343365ba8c365981a)), closes [#6209](https://github.com/SAP/ui5-webcomponents-react/issues/6209)
+- **AnalyticalTable:** offer limited support for `infiniteScroll` combined with a grouped table ([#6431](https://github.com/SAP/ui5-webcomponents-react/issues/6431)) ([ed48142](https://github.com/SAP/ui5-webcomponents-react/commit/ed481425ac8b130a7aeef171b30dce9e23e85b2c))
+
+### Features
+
+- update @ui5/webcomponents to ~2.3.0 ([#6440](https://github.com/SAP/ui5-webcomponents-react/issues/6440)) ([7e8e805](https://github.com/SAP/ui5-webcomponents-react/commit/7e8e8055a16680048282cbee4493bfcc12c60b58)), closes [#6340](https://github.com/SAP/ui5-webcomponents-react/issues/6340)
+
 ## [2.1.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.0...v2.1.1) (2024-09-24)
 
 ### Bug Fixes
