@@ -51,9 +51,9 @@ describe('ExpandableText', () => {
     cy.mount(<ExpandableText data-testid="et">{longText}</ExpandableText>);
     cy.findByText('Show More').click();
     getText(
-      '             If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sentence.             Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat Show less'
+      '             If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sentence.             Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat Show Less'
     );
-    cy.findByText('Show less').click();
+    cy.findByText('Show Less').click();
     getText(
       'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent… Show More'
     );
@@ -68,10 +68,10 @@ describe('ExpandableText', () => {
     cy.findByText('Show More').should('have.attr', 'accessible-name', 'Show the full text').click();
 
     getText(
-      'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent… Show less'
+      'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent… Show Less'
     );
     cy.get('[ui5-responsive-popover]').should('have.attr', 'open');
-    cy.findByText('Show less').should('have.attr', 'accessible-name', 'Close the popover').realClick();
+    cy.findByText('Show Less').should('have.attr', 'accessible-name', 'Close the popover').realClick();
     cy.realPress('Escape');
     getText(
       'If renderWhitespace is set to true, there will be thirteen white spaces in front and after this sent… Show More'
