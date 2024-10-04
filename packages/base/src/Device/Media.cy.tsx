@@ -23,8 +23,10 @@ describe('Device - Media', () => {
   it('Attach and Detach Event', () => {
     const callback = cy.spy();
     attachMediaHandler(callback);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     expect(MediaEventProvider.isHandlerAttached('media', callback)).to.be.true;
     detachMediaHandler(callback);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     expect(MediaEventProvider.isHandlerAttached('media', callback)).to.be.false;
   });
 

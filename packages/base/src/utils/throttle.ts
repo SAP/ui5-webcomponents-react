@@ -18,7 +18,7 @@ interface Options {
  * but if you'd like to disable the execution on the leading edge, pass
  * `{leading: false}`. To disable execution on the trailing edge, ditto.
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 const throttle = <T extends Function>(
   func: T,
   wait: number,

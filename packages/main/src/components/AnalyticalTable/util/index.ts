@@ -53,7 +53,7 @@ export function getBy(obj, path, def) {
     val = pathObj.reduce((cursor, pathPart) => {
       return cursor[pathPart];
     }, obj);
-  } catch (e) {
+  } catch (_e) {
     // continue regardless of error
   }
   return typeof val !== 'undefined' ? val : def;

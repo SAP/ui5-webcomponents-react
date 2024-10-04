@@ -8,6 +8,9 @@ packages/charts/dist
 # build results for cli package
 packages/cli/dist
 
+# build results for compat package
+packages/compat/dist
+
 # build results for main package
 packages/main/dist
 packages/main/wrappers
