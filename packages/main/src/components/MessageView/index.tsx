@@ -66,7 +66,7 @@ export const resolveMessageTypes = (children: ReactElement<MessageItemPropTypes>
     .reduce(
       (acc, type) => {
         const finalType = type === ValueState.None ? ValueState.Information : type;
-        if (acc.hasOwnProperty(finalType)) {
+        if (Object.prototype.hasOwnProperty.call(acc, finalType)) {
           acc[finalType]++;
         }
         return acc;
@@ -83,7 +83,7 @@ export const resolveMessageTypes = (children: ReactElement<MessageItemPropTypes>
 export const resolveMessageGroups = (children: ReactElement<MessageItemPropTypes>[]) => {
   const groups = (children ?? []).reduce((acc, val) => {
     const groupName = val?.props?.groupName ?? '';
-    if (acc.hasOwnProperty(groupName)) {
+    if (Object.prototype.hasOwnProperty.call(acc, groupName)) {
       acc[groupName].push(val);
     } else {
       acc[groupName] = [val];

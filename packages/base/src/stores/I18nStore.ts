@@ -40,7 +40,7 @@ export const I18nStore = {
   },
   loadBundle: (bundleName: string) => {
     const bundles = getSnapshot();
-    if (!bundles.hasOwnProperty(bundleName)) {
+    if (!Object.prototype.hasOwnProperty.call(bundles, bundleName)) {
       void getI18nBundle(bundleName).then((bundle) => {
         STORE_LOCATION[STORE_SYMBOL] = {
           ...STORE_LOCATION[STORE_SYMBOL],

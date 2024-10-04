@@ -21,7 +21,7 @@ const popInVisibleColumns = (cols, { instance }: { instance: TableInstance }) =>
   return cols.filter(
     (col) =>
       !popInColumns.some((item) => item.id === (col.id ?? col.accessor)) &&
-      (col.hasOwnProperty('responsiveMinWidth')
+      (Object.prototype.hasOwnProperty.call(col, 'responsiveMinWidth')
         ? !tableClientWidth || tableClientWidth >= col.responsiveMinWidth
         : true)
   );

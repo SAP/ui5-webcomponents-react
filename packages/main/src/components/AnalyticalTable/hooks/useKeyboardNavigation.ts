@@ -103,7 +103,7 @@ const useGetTableProps = (
       const { dataset } = e.target;
       if (
         dataset.emptyRowCell === 'true' ||
-        dataset.hasOwnProperty('subcomponentActiveElement') ||
+        Object.prototype.hasOwnProperty.call(dataset, 'subcomponentActiveElement') ||
         // todo: with the new popover API of ui5wc this might not be necessary anymore
         dataset.componentName === 'ATHeaderPopoverList' ||
         dataset.componentName === 'ATHeaderPopover'
@@ -157,7 +157,10 @@ const useGetTableProps = (
   const onKeyboardNavigation = useCallback(
     (e) => {
       const { isRtl } = state;
-      const isActiveItemInSubComponent = e.target.dataset.hasOwnProperty('subcomponentActiveElement');
+      const isActiveItemInSubComponent = Object.prototype.hasOwnProperty.call(
+        e.target.dataset,
+        'subcomponentActiveElement'
+      );
       // check if target is cell and if so proceed from there
       if (
         !currentlyFocusedCell.current &&
