@@ -1,16 +1,10 @@
-import { fetchTodos, Todo } from './api/todos';
-import {
-  Bar,
-  List,
-  ListItemType,
-  ListPropTypes,
-  Page,
-  StandardListItem,
-  Title,
-  ValueState
-} from '@ui5/webcomponents-react/ssr';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import { Bar, List, ListItemStandard, ListPropTypes, Page, Title } from '@ui5/webcomponents-react';
+import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import { fetchTodos, Todo } from './api/todos';
+import classes from './index.module.css';
 
 interface Props {
   todos: Todo[];
@@ -30,19 +24,19 @@ export default function Home({ todos }: Props) {
 
   return (
     <>
-      <Page header={<Bar startContent={<Title>My Todos</Title>} />}>
+      <Page header={<Bar className={classes.pageHeader} startContent={<Title>My Todos</Title>} />}>
         <List onItemClick={handleTodoClick}>
           {todos.map((todo) => {
             return (
-              <StandardListItem
+              <ListItemStandard
                 key={todo.id}
                 data-id={todo.id}
                 type={ListItemType.Navigation}
                 additionalText={`${!todo.completed ? 'Not ' : ''}Completed`}
-                additionalTextState={todo.completed ? ValueState.Success : ValueState.None}
+                additionalTextState={todo.completed ? ValueState.Positive : ValueState.None}
               >
                 {todo.title}
-              </StandardListItem>
+              </ListItemStandard>
             );
           })}
         </List>
