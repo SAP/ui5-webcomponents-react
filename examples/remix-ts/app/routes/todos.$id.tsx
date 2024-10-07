@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs, json } from '@remix-run/node';
+import { json, LoaderFunctionArgs } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import {
   DatePicker,
@@ -7,11 +7,13 @@ import {
   Form,
   FormItem,
   Input,
+  Label,
   MessageStrip,
-  MessageStripDesign,
   Switch,
-  TextArea
+  TextArea,
+  Title
 } from '@ui5/webcomponents-react';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import { Todo, todos } from '~/mockData/todos';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
@@ -31,22 +33,22 @@ export default function TodoDetails() {
 
   return (
     <>
-      <DynamicPage showHideHeaderButton={false} headerTitle={<DynamicPageTitle header={todo?.title} />}>
+      <DynamicPage titleArea={<DynamicPageTitle heading={<Title>{todo?.title}</Title>} />}>
         <MessageStrip design={MessageStripDesign.Information}>
           {`Since this is only a demo app, adjustments made here on this page won't be reflected in the todo list.`}
         </MessageStrip>
         <Form>
-          <FormItem label={'Title'}>
+          <FormItem labelContent={<Label>Title</Label>}>
             <Input value={todo?.title} />
           </FormItem>
-          <FormItem label={'Details'}>
-            <TextArea value={todo?.details} growing growingMaxLines={10} />
+          <FormItem labelContent={<Label>Details</Label>}>
+            <TextArea value={todo?.details} growing growingMaxRows={10} />
           </FormItem>
 
-          <FormItem label={'Due Date'}>
+          <FormItem labelContent={<Label>Due Date</Label>}>
             <DatePicker />
           </FormItem>
-          <FormItem label={'Completed'}>
+          <FormItem labelContent={<Label>Completed</Label>}>
             <Switch checked={todo?.completed} />
           </FormItem>
         </Form>
