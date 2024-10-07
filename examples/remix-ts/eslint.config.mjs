@@ -8,7 +8,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['!**/.server', '!**/.client']
+    ignores: ['!**/.server', '!**/.client', 'build']
   },
   js.configs.recommended,
   {
