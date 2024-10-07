@@ -20,6 +20,7 @@ jobs:
         path:
           - nextjs-app
           - nextjs-pages
+          - remix-ts
           - vite-ts
       fail-fast: false
     steps:
@@ -39,6 +40,10 @@ jobs:
 
       - name: Test
         run: npm run test --if-present
+        working-directory: examples/${{ matrix.path }}
+
+      - name: ESLint
+        run: npm run lint --if-present
         working-directory: examples/${{ matrix.path }}
 
   templates:
@@ -67,4 +72,8 @@ jobs:
 
       - name: Test
         run: npm run test --if-present
+        working-directory: templates/${{ matrix.path }}
+
+      - name: ESLint
+        run: npm run lint --if-present
         working-directory: templates/${{ matrix.path }}
