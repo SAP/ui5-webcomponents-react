@@ -1,9 +1,9 @@
 import type { MetaFunction } from '@remix-run/node';
+import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { Bar, Page, Title } from '@ui5/webcomponents-react';
-import { Todo, todos } from '~/mockData/todos';
-import { json } from '@remix-run/node';
 import { TodoList } from '~/components/TodoList';
+import { Todo, todos } from '~/mockData/todos';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }];
@@ -24,7 +24,7 @@ export default function Index() {
     data: { todos }
   } = useLoaderData<typeof loader>();
   return (
-    <Page header={<Bar startContent={<Title>My Todos</Title>} />}>
+    <Page header={<Bar style={{ paddingInline: 0 }} startContent={<Title>My Todos</Title>} />}>
       <TodoList items={todos} />
     </Page>
   );
