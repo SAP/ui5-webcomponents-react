@@ -1,5 +1,7 @@
 import { useNavigate } from '@remix-run/react';
-import { List, ListItemType, ListPropTypes, StandardListItem, ValueState } from '@ui5/webcomponents-react';
+import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import { List, ListItemStandard, ListPropTypes } from '@ui5/webcomponents-react';
+import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import { Todo } from '~/mockData/todos';
 
 interface TodoListProps {
@@ -16,15 +18,15 @@ export function TodoList({ items }: TodoListProps) {
     <List onItemClick={handleTodoClick}>
       {items.map((todo) => {
         return (
-          <StandardListItem
+          <ListItemStandard
             key={todo.id}
             data-id={todo.id}
             type={ListItemType.Navigation}
             additionalText={`${!todo.completed ? 'Not ' : ''}Completed`}
-            additionalTextState={todo.completed ? ValueState.Success : ValueState.None}
+            additionalTextState={todo.completed ? ValueState.Positive : ValueState.None}
           >
             {todo.title}
-          </StandardListItem>
+          </ListItemStandard>
         );
       })}
     </List>
