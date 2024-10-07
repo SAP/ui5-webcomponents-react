@@ -196,7 +196,8 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
             yAxisTicksVisible: false,
             gridHorizontal: false,
             yAxisLabelsVisible: false,
-            yAxisWidth
+            yAxisWidth,
+            accessibilityLayer: chartConfig.accessibilityLayer
           }}
         />
       )}

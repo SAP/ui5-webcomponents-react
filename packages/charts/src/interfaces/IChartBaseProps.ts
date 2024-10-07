@@ -68,6 +68,7 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
    * - `legendPosition`: Vertical position of the legend. Can be one of the following: `"top"`,`"middle"`, `"bottom"` (`"middle"` is not supported for: ColumnChartWithTrend, DonutChart, PieChart)
    * - `legendHorizontalAlign`: Alignment of the legend. Can be one of the following: `"left"`, `"center"`, `"right"`
    * - `resizeDebounce`: Number that sets the amount of delay time the chart waits when resizing.
+   * - `accessibilityLayer`: Experimental property to improve accessibility. Not supported by all charts and configurations!
    *
    * Please note that depending on the chart type, the `chartConfig` prop may accept more properties.
    */
@@ -93,6 +94,17 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
      * Number that sets the amount of delay time the chart waits when resizing.
      */
     resizeDebounce?: number;
+    /**
+     * __Experimental!__
+     *
+     * Apply an accessibility layer on the chart, i.a. allowing users to focus and navigate the chart via the arrow keys.
+     *
+     * __Note:__ Currently, this feature only supports categorical and horizontal charts with tooltips!
+     * For more details, please refer to the [Recharts documentation](https://recharts.org/en-US/storybook) under the "Accessibility" section.
+     *
+     * @experimental
+     */
+    accessibilityLayer?: boolean;
   };
   /**
    * Defines the configuration object for the internally used `recharts` Tooltip popover that is displayed when hovering over data points.
