@@ -34,16 +34,16 @@ jobs:
         run: npm ci
         working-directory: examples/${{ matrix.path }}
 
+      - name: Build
+        run: npm run build
+        working-directory: examples/${{ matrix.path }}
+
       - name: Test
         run: npm run test --if-present
         working-directory: examples/${{ matrix.path }}
 
       - name: ESLint
         run: npm run lint --if-present
-        working-directory: examples/${{ matrix.path }}
-
-      - name: Build
-        run: npm run build
         working-directory: examples/${{ matrix.path }}
 
   templates:
