@@ -16,7 +16,9 @@ import {
   Switch,
   Tab,
   TabContainer,
-  TextArea
+  TextArea,
+  Toolbar,
+  ToolbarButton
 } from '@ui5/webcomponents-react';
 
 describe('UI5 Web Components - Child Commands', () => {
@@ -259,5 +261,27 @@ describe('UI5 Web Components - Child Commands', () => {
       callCounter++;
       cy.wait(200);
     });
+  });
+
+  it('findToolbarButtonByText', () => {
+    cy.mount(
+      <>
+        <Toolbar>
+          <ToolbarButton text="TBB1" />
+          <ToolbarButton text="TBB2" />
+        </Toolbar>
+        <Toolbar>
+          <ToolbarButton text="TBB3" />
+        </Toolbar>
+        <Toolbar>
+          <ToolbarButton text="TBB4" style={{ display: 'none' }} />
+        </Toolbar>
+      </>
+    );
+
+    cy.findToolbarButtonByText('TBB1').should('be.visible');
+    cy.findToolbarButtonByText('TBB2').should('be.visible');
+    cy.findToolbarButtonByText('TBB3').should('be.visible');
+    cy.findToolbarButtonByText('TBB3').should('exist').not('be.visible');
   });
 });
