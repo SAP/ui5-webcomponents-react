@@ -358,12 +358,12 @@ describe('FilterBar.cy.tsx', () => {
       </FilterBar>
     );
 
-    cy.get('[text="Go"]');
-    cy.get('[text="Filters"]');
-    cy.get('[text="Adapt Filters"]').should('not.exist');
-    cy.get('[text="Hide Filter Bar"]');
-    cy.findByTestId('variantManagement');
-    cy.findByTestId('SELECT');
+    cy.findToolbarButtonByText('Go').should('be.visible');
+    cy.findToolbarButtonByText('Filters').should('be.visible');
+    cy.findToolbarButtonByText('Adapt Filters').should('not.exist');
+    cy.findToolbarButtonByText('Hide Filter Bar').should('be.visible');
+    cy.findByTestId('variantManagement').should('be.visible');
+    cy.findByTestId('SELECT').should('be.visible');
 
     cy.mount(
       <FilterBar header={variants} hideToolbar={true} showGoOnFB>
@@ -378,13 +378,18 @@ describe('FilterBar.cy.tsx', () => {
       </FilterBar>
     );
 
-    cy.get('[text="Go"]');
-    cy.get('[text="Filters"]').should('not.exist');
-    cy.get('[text="Adapt Filters"]');
-    cy.get('[text="Hide Filter Bar"]').should('not.exist');
+    cy.findByText('Go').should('be.visible');
+    cy.findByText('Filters').should('not.exist');
+    cy.findByText('Adapt Filters').should('be.visible');
+    cy.findByText('Hide Filter Bar').should('not.exist');
     cy.findByPlaceholderText('Search').should('not.exist');
     cy.findByTestId('variantManagement').should('not.exist');
-    cy.findByTestId('SELECT');
+    cy.findByTestId('SELECT').should('be.visible');
+
+    cy.findToolbarButtonByText('Go').should('not.exist');
+    cy.findToolbarButtonByText('Filters"]').should('not.exist');
+    cy.findToolbarButtonByText('Adapt Filters"]').should('not.exist');
+    cy.findToolbarButtonByText('Hide Filter Bar"]').should('not.exist');
   });
 
   it('addCustomCSS', () => {
