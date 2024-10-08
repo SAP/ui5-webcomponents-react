@@ -231,6 +231,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
         margin={marginChart}
         data={dataset}
         onClick={onDataPointClickInternal}
+        accessibilityLayer={chartConfig.accessibilityLayer}
         className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
       >
         <CartesianGrid

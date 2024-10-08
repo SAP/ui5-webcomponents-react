@@ -181,6 +181,7 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
         onClick={onClickInternal}
         data={dataset}
         margin={chartConfig.margin}
+        accessibilityLayer={chartConfig.accessibilityLayer}
         className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
       >
         <PolarGrid gridType={chartConfig.polarGridType} />

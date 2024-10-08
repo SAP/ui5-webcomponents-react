@@ -281,6 +281,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       <PieChartLib
         onClick={onClickInternal}
         margin={chartConfig.margin}
+        accessibilityLayer={chartConfig.accessibilityLayer}
         className={clsx(
           typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined,
           classNames.piechart
