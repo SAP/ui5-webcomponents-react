@@ -22,7 +22,7 @@ import {
   Switch,
   Title,
   Token
-} from '../../webComponents/index.js';
+} from '../../index.js';
 import { Text } from '../../webComponents/Text/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import { FlexBox } from '../FlexBox/index.js';

@@ -29,16 +29,7 @@ import {
   VISIBLE,
   VISIBLE_AND_ACTIVE
 } from '../../i18n/i18n-defaults.js';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
-import type { OnReorderParams } from '../../internal/FilterBarDialogContext.js';
-import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
-import { stopPropagation } from '../../internal/stopPropagation.js';
-import type {
-  DialogDomRef,
-  InputPropTypes,
-  SegmentedButtonPropTypes,
-  TableSelectionDomRef
-} from '../../webComponents/index.js';
+import type { DialogDomRef, InputPropTypes, SegmentedButtonPropTypes, TableSelectionDomRef } from '../../index.js';
 import {
   Bar,
   Button,
@@ -55,7 +46,11 @@ import {
   TableHeaderRow,
   TableSelection,
   Title
-} from '../../webComponents/index.js';
+} from '../../index.js';
+import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
+import type { OnReorderParams } from '../../internal/FilterBarDialogContext.js';
+import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
+import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { MessageBox } from '../MessageBox/index.js';

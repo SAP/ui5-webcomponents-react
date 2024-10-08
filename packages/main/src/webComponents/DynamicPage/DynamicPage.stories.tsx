@@ -16,8 +16,6 @@ import {
   BreadcrumbsItem,
   Button,
   FlexBox,
-  FlexBoxDirection,
-  FlexBoxWrap,
   Label,
   MessageStrip,
   ObjectStatus,
@@ -26,6 +24,7 @@ import {
   ToolbarButton,
   Toolbar
 } from '../..';
+import { FlexBoxDirection, FlexBoxWrap } from '../../enums/index.js';
 import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
 import { DynamicPageTitle } from '../DynamicPageTitle/index.js';
 import { useGetHeaderHeight } from './helpers.js';

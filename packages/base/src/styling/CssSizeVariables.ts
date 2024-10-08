@@ -35,6 +35,11 @@ export const CssSizeVariables = new Proxy(CssSizeVariablesNames, {
   get: (target, prop: string): string => `var(${target[prop] as string})`
 });
 
+/**
+ * __Private__ CSS variables used for size calculation depending on content density.
+ *
+ * @private
+ */
 export const CozySizes = {
   [CssSizeVariablesNames.ui5WcrBarHeight]: `2.75rem`,
   [CssSizeVariablesNames.ui5WcrButtonTopBottomPadding]: `0.25rem 0`,
@@ -61,6 +66,11 @@ export const CozySizes = {
   [CssSizeVariablesNames.ui5WcrElementHeight]: ThemingParameters.sapElement_Height
 };
 
+/**
+ * __Private__ CSS variables used for size calculation depending on content density.
+ *
+ * @private
+ */
 export const CompactSizes = {
   [CssSizeVariablesNames.ui5WcrBarHeight]: `2.5rem`,
   [CssSizeVariablesNames.ui5WcrButtonTopBottomPadding]: `0.1875rem 0`,

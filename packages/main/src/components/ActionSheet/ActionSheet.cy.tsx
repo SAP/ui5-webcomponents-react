@@ -1,5 +1,5 @@
-import type { ButtonPropTypes } from '../../webComponents/index.js';
-import { Button, Label } from '../../webComponents/index.js';
+import type { ButtonPropTypes } from '../../index.js';
+import { Button, Label } from '../../index.js';
 import type { ActionSheetPropTypes } from './index.js';
 import { ActionSheet } from './index.js';
 

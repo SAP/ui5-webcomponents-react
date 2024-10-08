@@ -6,7 +6,8 @@ import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MouseEventHandler, ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, useId } from 'react';
-import { DeviationIndicator, ValueColor } from '../../enums/index.js';
+import { DeviationIndicator } from '../../enums/DeviationIndicator.js';
+import { ValueColor } from '../../enums/ValueColor.js';
 import {
   ARIA_DESC_CARD_HEADER,
   NUMERICCONTENT_DEVIATION_DOWN,
@@ -16,9 +17,9 @@ import {
   SEMANTIC_COLOR_GOOD,
   SEMANTIC_COLOR_NEUTRAL
 } from '../../i18n/i18n-defaults.js';
+import { Icon } from '../../index.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
-import { Icon } from '../../webComponents/index.js';
 import type { NumericSideIndicatorPropTypes } from '../NumericSideIndicator/index.js';
 import { classNames, styleData } from './AnalyticalCardHeader.module.css.js';
 

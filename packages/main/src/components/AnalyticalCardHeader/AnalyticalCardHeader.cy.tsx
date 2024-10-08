@@ -1,6 +1,6 @@
 import { getRGBColor } from '@ui5/webcomponents-base/dist/util/ColorConversion';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
-import { DeviationIndicator, ValueColor } from '../../enums';
+import { DeviationIndicator, ValueColor } from '../../enums/index.js';
 import type { CardPropTypes } from '../../webComponents/Card/index.js';
 import { Card } from '../../webComponents/Card/index.js';
 import { Text } from '../../webComponents/Text/index.js';

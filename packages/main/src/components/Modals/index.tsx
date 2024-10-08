@@ -4,8 +4,6 @@ import type { RefObject } from 'react';
 import { createRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useSyncExternalStore } from 'use-sync-external-store/shim/index.js';
-import { getRandomId } from '../../internal/getRandomId.js';
-import { ModalStore } from '../../internal/ModalStore.js';
 import type {
   DialogDomRef,
   DialogPropTypes,
@@ -17,8 +15,10 @@ import type {
   ResponsivePopoverPropTypes,
   ToastDomRef,
   ToastPropTypes
-} from '../../webComponents/index.js';
-import { Dialog, Menu, Popover, ResponsivePopover, Toast } from '../../webComponents/index.js';
+} from '../../index.js';
+import { Dialog, Menu, Popover, ResponsivePopover, Toast } from '../../index.js';
+import { getRandomId } from '../../internal/getRandomId.js';
+import { ModalStore } from '../../internal/ModalStore.js';
 import type { MessageBoxPropTypes } from '../MessageBox/index.js';
 import { MessageBox } from '../MessageBox/index.js';
 

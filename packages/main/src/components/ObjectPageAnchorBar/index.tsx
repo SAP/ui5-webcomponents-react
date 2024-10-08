@@ -9,10 +9,10 @@ import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 import { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults.js';
+import { Button, ToggleButton } from '../../index.js';
+import type { ButtonDomRef } from '../../index.js';
 import { cssVarVersionInfoPrefix, getUi5TagWithSuffix } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
-import { Button, ToggleButton } from '../../webComponents/index.js';
-import type { ButtonDomRef } from '../../webComponents/index.js';
 import { classNames, styleData } from './ObjectPageAnchorBar.module.css.js';
 
 const _buttonBaseMinWidth = `${cssVarVersionInfoPrefix}button_base_min_width`;

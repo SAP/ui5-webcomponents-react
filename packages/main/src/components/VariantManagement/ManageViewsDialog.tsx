@@ -18,13 +18,13 @@ import {
   SHARING,
   VIEW
 } from '../../i18n/i18n-defaults.js';
+import type { InputDomRef } from '../../index.js';
+import { Icon, Input } from '../../index.js';
 import type { CommonProps } from '../../types/CommonProps.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import type { DialogPropTypes } from '../../webComponents/Dialog/index.js';
 import { Dialog } from '../../webComponents/Dialog/index.js';
-import type { InputDomRef } from '../../webComponents/index.js';
-import { Icon, Input } from '../../webComponents/index.js';
 import { Table } from '../../webComponents/Table/index.js';
 import { TableHeaderCell } from '../../webComponents/TableHeaderCell/index.js';
 import { TableHeaderRow } from '../../webComponents/TableHeaderRow/index.js';

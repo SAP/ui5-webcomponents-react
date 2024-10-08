@@ -13,12 +13,12 @@ import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ObjectPageMode } from '../../enums/index.js';
+import type { AvatarPropTypes, TabContainerDomRef } from '../../index.js';
+import { Tab, TabContainer } from '../../index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
 import { useObserveHeights } from '../../internal/useObserveHeights.js';
 import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
-import type { AvatarPropTypes, TabContainerDomRef } from '../../webComponents/index.js';
-import { Tab, TabContainer } from '../../webComponents/index.js';
 import { ObjectPageAnchorBar } from '../ObjectPageAnchorBar/index.js';
 import type {
   InternalProps as ObjectPageHeaderPropTypesWithInternals,

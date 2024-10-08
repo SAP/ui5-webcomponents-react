@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { AnalyticalTableScaleWidthMode } from '../../../enums/index.js';
+import { AnalyticalTableScaleWidthMode } from '../../../index.js';
 import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column/index.js';
 import type { AnalyticalTableColumnDefinition, ReactTableHooks, TableInstance } from '../types/index.js';
 

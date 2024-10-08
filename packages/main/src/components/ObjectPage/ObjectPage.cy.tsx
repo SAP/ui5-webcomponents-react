@@ -17,16 +17,12 @@ import {
   ObjectPageHeader,
   ObjectPageTitle,
   FlexBox,
-  FlexBoxAlignItems,
-  FlexBoxDirection,
-  FlexBoxWrap,
   Icon,
   IllustratedMessage,
   Label,
   Link,
   MessageStrip,
   ObjectPage,
-  ObjectPageMode,
   ObjectPageSection,
   ObjectPageSubSection,
   ObjectStatus,
@@ -35,6 +31,7 @@ import {
   Toolbar,
   ToolbarButton
 } from '../..';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap, ObjectPageMode } from '../../enums/index.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ObjectPage', () => {

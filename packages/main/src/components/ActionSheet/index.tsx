@@ -7,16 +7,12 @@ import { clsx } from 'clsx';
 import type { ReactElement } from 'react';
 import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults.js';
+import type { ButtonPropTypes, ResponsivePopoverDomRef, ResponsivePopoverPropTypes } from '../../index.js';
+import { Button, ResponsivePopover } from '../../index.js';
 import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { flattenFragments, getUi5TagWithSuffix } from '../../internal/utils.js';
 import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
-import type {
-  ButtonPropTypes,
-  ResponsivePopoverDomRef,
-  ResponsivePopoverPropTypes
-} from '../../webComponents/index.js';
-import { Button, ResponsivePopover } from '../../webComponents/index.js';
 import { classNames, styleData } from './ActionSheet.module.css.js';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'header' | 'headerText' | 'children'> {

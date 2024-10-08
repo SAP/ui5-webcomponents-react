@@ -9,9 +9,9 @@ import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
+import { FlexBoxAlignItems } from '../../enums/index.js';
 import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
-import { Button, Dialog, FlexBox, FlexBoxAlignItems, Icon, Input, List, Text, Title } from '../../index.js';
-import type { Ui5CustomEvent } from '../../types/index.js';
+import { Button, Dialog, FlexBox, Icon, Input, List, Text, Title } from '../../index.js';
 import type {
   ButtonDomRef,
   ButtonPropTypes,
@@ -22,7 +22,8 @@ import type {
   ListDomRef,
   ListItemStandardDomRef,
   ListPropTypes
-} from '../../webComponents/index.js';
+} from '../../index.js';
+import type { Ui5CustomEvent } from '../../types/index.js';
 import { classNames, styleData } from './SelectDialog.module.css.js';
 
 interface ListDomRefWithPrivateAPIs extends ListDomRef {

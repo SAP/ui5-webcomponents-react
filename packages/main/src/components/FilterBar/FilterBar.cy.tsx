@@ -9,7 +9,7 @@ import {
   StepInput,
   Switch,
   Token
-} from '../../webComponents/index.js';
+} from '../../index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import { VariantManagement } from '../VariantManagement/index.js';
 import { VariantItem } from '../VariantManagement/VariantItem.js';

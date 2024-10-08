@@ -5,9 +5,9 @@ import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
+import type { ToolbarDomRef } from '../../index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { CommonProps } from '../../types/index.js';
-import type { ToolbarDomRef } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './ObjectPageTitle.module.css.js';
 

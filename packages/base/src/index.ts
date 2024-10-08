@@ -5,8 +5,8 @@ import { I18nStore } from './stores/I18nStore.js';
 import { StyleStore } from './stores/StyleStore.js';
 import { ThemingParameters } from './styling/ThemingParameters.js';
 
-export * from './styling/CssSizeVariables.js';
-export * from './utils/index.js';
+export { CssSizeVariables, CssSizeVariablesNames, CozySizes, CompactSizes } from './styling/CssSizeVariables.js';
+export { debounce, deprecationNotice, enrichEventWithDetails, throttle } from './utils/index.js';
 export * from './hooks/index.js';
 
 export { I18nStore, StyleStore, ThemingParameters, Device, hooks };

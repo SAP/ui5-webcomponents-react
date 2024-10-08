@@ -1,15 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
-import {
-  FlexBoxAlignItems,
-  FlexBoxDirection,
-  FlexBoxJustifyContent,
-  FlexBoxWrap,
-  Icon,
-  Input,
-  Label,
-  Title
-} from '../..';
+import { Icon, Input, Label, Title } from '../..';
+import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap } from '../../enums/index.js';
 import { FlexBox } from './index.js';
 
 const meta = {

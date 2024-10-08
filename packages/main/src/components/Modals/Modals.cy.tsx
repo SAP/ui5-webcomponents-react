@@ -1,4 +1,4 @@
-import { Bar, Button, MenuItem } from '../../webComponents/index.js';
+import { Bar, Button, MenuItem } from '../../index.js';
 import { Modals } from './index.js';
 
 describe('Modals - static helpers', () => {

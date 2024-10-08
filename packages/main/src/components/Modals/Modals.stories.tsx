@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MessageBoxType } from '../../enums/index.js';
-import { Bar, Button, MenuItem } from '../../webComponents/index.js';
+import { Bar, Button, MenuItem } from '../../index.js';
 import { Modals } from './index.js';
 
 const meta = {

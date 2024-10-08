@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import cancelIcon from '@ui5/webcomponents-icons/dist/sys-cancel.js';
-import { Icon, IndicationColor, Label } from '../..';
+import { Icon, Label } from '../..';
+import { IndicationColor } from '../../enums/index.js';
 import { ObjectStatus } from './index.js';
 
 const meta = {

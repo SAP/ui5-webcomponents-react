@@ -14,20 +14,11 @@ import { clsx } from 'clsx';
 import type { ComponentElement, ReactElement } from 'react';
 import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
 import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
+import type { ResponsivePopoverDomRef } from '../../index.js';
+import { Bar, Button, Icon, IllustratedMessage, Input, List, ResponsivePopover, Title } from '../../index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
-import type { ResponsivePopoverDomRef } from '../../webComponents/index.js';
-import {
-  Bar,
-  Button,
-  Icon,
-  IllustratedMessage,
-  Input,
-  List,
-  ResponsivePopover,
-  Title
-} from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import type { ManageViewsDialogPropTypes } from './ManageViewsDialog.js';
 import { ManageViewsDialog } from './ManageViewsDialog.js';

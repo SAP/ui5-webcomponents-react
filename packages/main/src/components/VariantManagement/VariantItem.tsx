@@ -3,8 +3,8 @@
 import { useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef, useContext, useEffect } from 'react';
+import type { InputPropTypes } from '../../index.js';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
-import type { InputPropTypes } from '../../webComponents/index.js';
 import type { ListItemStandardDomRef, ListItemStandardPropTypes } from '../../webComponents/ListItemStandard/index.js';
 import { ListItemStandard } from '../../webComponents/ListItemStandard/index.js';
 import { classNames, styleData } from './VariantItem.module.css.js';
