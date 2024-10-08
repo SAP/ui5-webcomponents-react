@@ -295,6 +295,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
         margin={marginChart}
         data={dataset}
         layout={layout}
+        accessibilityLayer={chartConfig.accessibilityLayer}
         className={
           typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
         }

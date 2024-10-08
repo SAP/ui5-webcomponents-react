@@ -231,6 +231,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
       <ScatterChartLib
         onClick={onClickInternal}
         margin={marginChart}
+        accessibilityLayer={chartConfig.accessibilityLayer}
         className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
       >
         <CartesianGrid
