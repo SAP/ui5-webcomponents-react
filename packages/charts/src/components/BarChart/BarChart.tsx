@@ -246,6 +246,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
         layout="vertical"
         data={dataset}
         barGap={chartConfig.barGap}
+        accessibilityLayer={chartConfig.accessibilityLayer}
         className={
           typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
         }

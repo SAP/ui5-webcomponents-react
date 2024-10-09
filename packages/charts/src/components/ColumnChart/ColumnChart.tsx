@@ -244,6 +244,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
         margin={marginChart}
         data={dataset}
         barGap={chartConfig.barGap}
+        accessibilityLayer={chartConfig.accessibilityLayer}
         className={
           typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
         }

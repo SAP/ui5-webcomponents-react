@@ -441,18 +441,18 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
           let isInteractive = false;
           const typeNode = type.get();
           if (typeNode.value.value.type === 'StringLiteral') {
-            isInteractive = typeNode.value.value.value === 'Interactive';
+            isInteractive = typeNode.value.value.value === 'Active';
           } else if (typeNode.value.value.type === 'JSXExpressionContainer') {
             const container = typeNode.value.value;
             if (container.expression.type === 'StringLiteral') {
-              isInteractive = typeNode.value.value.expression.value === 'Interactive';
+              isInteractive = typeNode.value.value.expression.value === 'Active';
             } else if (container.expression.type === 'MemberExpression') {
               const expr = container.expression;
-              if (expr.object.name === 'TableMode') {
-                if (expr.property.type === 'Identifier' && expr.property.name === 'Interactive') {
+              if (expr.object.name === 'TableRowType') {
+                if (expr.property.type === 'Identifier' && expr.property.name === 'Active') {
                   isInteractive = true;
                 }
-                if (expr.property.type === 'StringLiteral' && expr.property.value === 'Interactive') {
+                if (expr.property.type === 'StringLiteral' && expr.property.value === 'Active') {
                   isInteractive = true;
                 }
               }
@@ -464,9 +464,9 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
               .find(j.JSXOpeningElement)
               .get()
               .value.attributes.push(j.jsxAttribute(j.jsxIdentifier('interactive'), null));
-            type.remove();
-            isDirty = true;
           }
+          type.remove();
+          isDirty = true;
         }
       });
     }

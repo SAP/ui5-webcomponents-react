@@ -19,8 +19,8 @@ import {
   SEARCH,
   SHOW_FILTER_BAR
 } from '../../i18n/i18n-defaults.js';
-import type { DialogDomRef, ToolbarButtonDomRef } from '../../webComponents/index.js';
-import { Icon, Toolbar, ToolbarButton } from '../../webComponents/index.js';
+import type { ButtonDomRef, DialogDomRef, ToolbarButtonDomRef } from '../../webComponents/index.js';
+import { Button, Icon, Toolbar, ToolbarButton } from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 import { FlexBox } from '../FlexBox/index.js';
@@ -99,7 +99,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const dialogRef = useRef<DialogDomRef>(null);
   const filterBarButtonsRef = useRef(null);
   const filterAreaRef = useRef<HTMLDivElement>(null);
-  const filterBtnRef = useRef<ToolbarButtonDomRef>(null);
+  const filterBtnRef = useRef<ToolbarButtonDomRef | ButtonDomRef>(null);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const uniqueId = useId();
@@ -217,9 +217,21 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
 
   const cssClasses = clsx(classNames.outerContainer, className, !hideToolbar && classNames.outerContainerWithToolbar);
 
-  const ToolbarButtons = (
+  const FBButtonComponent = hideToolbar ? Button : ToolbarButton;
+  const filtersButtonText = `${filtersText}${
+    activeFiltersCount && parseInt(activeFiltersCount as string, 10) ? ` (${activeFiltersCount})` : ''
+  }`;
+  const FBButtons = (
     <>
-      {showGoOnFB && <ToolbarButton text={goText} onClick={handleGoOnFb} design={ButtonDesign.Emphasized} />}
+      {showGoOnFB && (
+        <FBButtonComponent
+          text={hideToolbar ? undefined : goText}
+          onClick={handleGoOnFb}
+          design={ButtonDesign.Emphasized}
+        >
+          {hideToolbar ? goText : undefined}
+        </FBButtonComponent>
+      )}
       {!hideToggleFiltersButton && !hideToolbar && !isPhone && (
         <ToolbarButton
           text={showFilters ? hideFilterBarText : showFilterBarText}
@@ -229,20 +241,35 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           aria-live="polite"
         />
       )}
-      {showClearOnFB && <ToolbarButton text={clearText} onClick={handleClear} design={ButtonDesign.Transparent} />}
+      {showClearOnFB && (
+        <FBButtonComponent
+          text={hideToolbar ? undefined : clearText}
+          onClick={handleClear}
+          design={ButtonDesign.Transparent}
+        >
+          {hideToolbar ? clearText : undefined}
+        </FBButtonComponent>
+      )}
       {showRestoreOnFB && (
-        <ToolbarButton text={restoreText} onClick={handleFBRestore} design={ButtonDesign.Transparent} />
+        <FBButtonComponent
+          text={hideToolbar ? undefined : restoreText}
+          onClick={handleFBRestore}
+          design={ButtonDesign.Transparent}
+        >
+          {hideToolbar ? restoreText : undefined}
+        </FBButtonComponent>
       )}
       {!hideFilterConfiguration && (
-        <ToolbarButton
-          text={`${filtersText}${
-            activeFiltersCount && parseInt(activeFiltersCount as string, 10) > 0 ? ` (${activeFiltersCount})` : ''
-          }`}
+        <FBButtonComponent
+          text={hideToolbar ? undefined : filtersButtonText}
           onClick={handleDialogOpen}
           aria-haspopup="dialog"
           design={ButtonDesign.Transparent}
+          //@ts-expect-error: both types are allowed here
           ref={filterBtnRef}
-        />
+        >
+          {hideToolbar ? filtersButtonText : undefined}
+        </FBButtonComponent>
       )}
     </>
   );
@@ -338,7 +365,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
           <FlexBox className={classNames.toolbar} alignItems={FlexBoxAlignItems.Center}>
             {header}
             <Toolbar className={classNames.wcToolbar} design={ToolbarDesign.Transparent}>
-              {ToolbarButtons}
+              {FBButtons}
             </Toolbar>
           </FlexBox>
         )}
@@ -373,7 +400,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
                 className={classNames.lastSpacer}
               >
                 <div className={classNames.filterBarButtons} ref={filterBarButtonsRef}>
-                  {ToolbarButtons}
+                  {FBButtons}
                 </div>
               </div>
             </>

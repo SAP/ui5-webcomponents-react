@@ -1,7 +1,17 @@
 import { Description, DocsContext, Subtitle, Title } from '@storybook/addon-docs';
-import copyIcon from '@ui5/webcomponents-icons/dist/copy';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import { Button, FlexBox, FlexBoxAlignItems, Label, Link, Text, ThemeProvider } from '@ui5/webcomponents-react';
+import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
+import copyIcon from '@ui5/webcomponents-icons/dist/copy.js';
+import {
+  Button,
+  FlexBox,
+  FlexBoxAlignItems,
+  Label,
+  Link,
+  MessageStrip,
+  Text,
+  ThemeProvider
+} from '@ui5/webcomponents-react';
 import { clsx } from 'clsx';
 import { useContext } from 'react';
 import { useGetSubComponentsOfModule } from '../utils';
@@ -38,6 +48,7 @@ interface InfoTableProps {
   since?: string;
   subComponents?: string[];
   mergeSubComponents?: boolean;
+  isChart?: boolean;
 }
 
 export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTableProps) => {
@@ -74,7 +85,7 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
               <Button
                 design={ButtonDesign.Transparent}
                 className={clsx('ui5-content-density-compact', classes.copyBtn)}
-                onClick={handleCopy}
+                onClick={void handleCopy}
                 icon={copyIcon}
                 tooltip="copy"
               />
@@ -102,7 +113,7 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
                 <Button
                   design={ButtonDesign.Transparent}
                   className={clsx('ui5-content-density-compact', classes.copyBtn)}
-                  onClick={handleCopy}
+                  onClick={void handleCopy}
                   icon={copyIcon}
                   tooltip="copy"
                 />
@@ -115,7 +126,7 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
   );
 };
 
-export const DocsHeader = ({ since, subComponents, mergeSubComponents }: InfoTableProps) => {
+export const DocsHeader = ({ since, subComponents, mergeSubComponents, isChart }: InfoTableProps) => {
   return (
     <ThemeProvider>
       <FlexBox alignItems={FlexBoxAlignItems.Center}>
@@ -127,6 +138,16 @@ export const DocsHeader = ({ since, subComponents, mergeSubComponents }: InfoTab
       <InfoTable since={since} subComponents={subComponents} mergeSubComponents={mergeSubComponents} />
       <TableOfContent />
       <Description />
+      {isChart && (
+        <>
+          <MessageStrip hideCloseButton design={MessageStripDesign.Critical}>
+            Charts only offer limited accessibility support with only basic built-in features, so it’s essential to
+            ensure your implementation meets the accessibility standards of your application.
+          </MessageStrip>
+          <br />
+          <br />
+        </>
+      )}
     </ThemeProvider>
   );
 };

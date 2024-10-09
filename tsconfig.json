@@ -21,7 +21,11 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./.storybook/tsconfig.json"
     }
   ],
-  "files": ["vite.config.ts", ".storybook", "docs", "types.d.ts"]
+  "files": ["vite.config.ts", "types.d.ts"],
+  "include": [".storybook", "docs"]
 }
