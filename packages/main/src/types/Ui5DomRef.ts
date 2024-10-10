@@ -1,4 +1,4 @@
-import type { PropertyValue, SlotValue } from '@ui5/webcomponents-base/UI5ElementMetadata.js';
+import type { PropertyValue, SlotValue } from '@ui5/webcomponents-base/dist/UI5ElementMetadata.js';
 
 type ChangeInfo = {
   type: 'property' | 'slot';
