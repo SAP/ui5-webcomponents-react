@@ -118,7 +118,7 @@ export const complexDataSet = [
     name: 'September',
     users: 200,
     sessions: 360,
-    volume: 879
+    volume: 1000
   },
   {
     name: 'October',
