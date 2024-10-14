@@ -1,3 +1,4 @@
+import { testZoomingTool } from '../../internal/testUtils.js';
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { ColumnChart } from './ColumnChart.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
@@ -77,6 +78,8 @@ describe('ColumnChart', () => {
     cy.get('.recharts-bar').should('not.exist');
     cy.contains('Loading...').should('exist');
   });
+
+  testZoomingTool(ColumnChart, { dataset: complexDataSet, dimensions, measures });
 
   cypressPassThroughTestsFactory(ColumnChart, { dimensions: [], measures: [] });
 });

@@ -34,7 +34,7 @@ export interface ICartesianChartConfig {
    * __Note:__ Since v2.3.0 you can also define custom props for the internal [recharts `Brush` component](https://recharts.org/en-US/api/Brush) via the`zoomingTool` prop.
    * Please keep in mind that it's possible to override internal APIs, so please use with caution!
    */
-  zoomingTool?: boolean | Omit<BrushProps, 'ref'>;
+  zoomingTool?: boolean | Partial<Omit<BrushProps, 'ref'>>;
 
   /**
    * Defines the gab between bars.

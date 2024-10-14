@@ -1,3 +1,4 @@
+import { testZoomingTool } from '../../internal/testUtils.js';
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { BulletChart } from './BulletChart.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
@@ -80,6 +81,8 @@ describe('BulletChart', () => {
     cy.get('.recharts-bar').should('not.exist');
     cy.contains('Loading...').should('exist');
   });
+
+  testZoomingTool(BulletChart, { dataset: complexDataSet, dimensions, measures });
 
   cypressPassThroughTestsFactory(BulletChart, { dimensions: [], measures: [] });
 });
