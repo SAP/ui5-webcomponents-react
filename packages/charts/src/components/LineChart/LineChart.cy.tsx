@@ -1,7 +1,6 @@
-import { testZoomingTool } from '../../internal/testUtils.js';
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { LineChart } from './LineChart.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory, testChartZoomingTool } from '@/cypress/support/utils';
 
 const dimensions = [
   {
@@ -79,7 +78,7 @@ describe('LineChart', () => {
     cy.contains('Loading...').should('exist');
   });
 
-  testZoomingTool(LineChart, { dataset: complexDataSet, dimensions, measures });
+  testChartZoomingTool(LineChart, { dataset: complexDataSet, dimensions, measures });
 
   cypressPassThroughTestsFactory(LineChart, { dimensions: [], measures: [] });
 });
