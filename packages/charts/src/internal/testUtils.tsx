@@ -1,5 +1,5 @@
 export function testZoomingTool(Component, props) {
-  it.only('zoomingTool', () => {
+  it('zoomingTool', () => {
     cy.mount(<Component {...props} chartConfig={{ zoomingTool: true }} />);
     cy.get('.recharts-brush').should('be.visible');
 
