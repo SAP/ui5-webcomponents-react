@@ -1,3 +1,4 @@
+import { testZoomingTool } from '../../internal/testUtils.js';
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { LineChart } from './LineChart.js';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
@@ -32,6 +33,7 @@ describe('LineChart', () => {
     cy.get('.recharts-responsive-container').should('be.visible');
     cy.get('.recharts-line').should('have.length', 3);
     cy.get('.recharts-line-curve').should('have.length', 3);
+    cy.get('.recharts-brush').should('not.exist');
   });
 
   it('click handlers', () => {
@@ -76,6 +78,8 @@ describe('LineChart', () => {
     cy.get('.recharts-line').should('not.exist');
     cy.contains('Loading...').should('exist');
   });
+
+  testZoomingTool(LineChart, { dataset: complexDataSet, dimensions, measures });
 
   cypressPassThroughTestsFactory(LineChart, { dimensions: [], measures: [] });
 });
