@@ -1,7 +1,6 @@
-import { testZoomingTool } from '../../internal/testUtils.js';
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { ComposedChart } from './index.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory, testChartZoomingTool } from '@/cypress/support/utils';
 
 const dimensions = [
   {
@@ -86,7 +85,7 @@ describe('ComposedChart', () => {
     cy.contains('Loading...').should('exist');
   });
 
-  testZoomingTool(ComposedChart, { dataset: complexDataSet, dimensions, measures });
+  testChartZoomingTool(ComposedChart, { dataset: complexDataSet, dimensions, measures });
 
   cypressPassThroughTestsFactory(ComposedChart, { dimensions: [], measures: [] });
 });
