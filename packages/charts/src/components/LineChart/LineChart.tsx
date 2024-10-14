@@ -345,13 +345,8 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
             {...tooltipConfig}
           />
         )}
-        {!!chartConfig.zoomingTool && (
-          <Brush
-            dataKey={primaryDimensionAccessor}
-            tickFormatter={primaryDimension?.formatter}
-            {...brushProps}
-            {...(typeof chartConfig.zoomingTool === 'object' ? chartConfig.zoomingTool : {})}
-          />
+        {chartConfig.zoomingTool && (
+          <Brush dataKey={primaryDimensionAccessor} tickFormatter={primaryDimension?.formatter} {...brushProps} />
         )}
         {children}
       </LineChartLib>

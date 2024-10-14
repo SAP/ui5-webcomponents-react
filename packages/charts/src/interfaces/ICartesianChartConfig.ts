@@ -1,4 +1,4 @@
-import type { BrushProps, ReferenceLineProps, XAxisProps, YAxisProps } from 'recharts';
+import type { ReferenceLineProps, XAxisProps, YAxisProps } from 'recharts';
 
 export interface ICartesianChartConfig {
   /**
@@ -26,15 +26,11 @@ export interface ICartesianChartConfig {
   gridVertical?: boolean;
   gridHorizontal?: boolean;
 
-  //todo: remove "Omit" once ref type has been fixed
   /**
    * Defines whether it should be possible to zoom in on the chart.
-   * If this prop is applied and doesn't have a falsy value, a range slider is displayed on top of the chart, making it possible to zoom-in/zoom-out.
-   *
-   * __Note:__ Since v2.3.0 you can also define custom props for the internal [recharts `Brush` component](https://recharts.org/en-US/api/Brush) via the`zoomingTool` prop.
-   * Please keep in mind that it's possible to override internal APIs, so please use with caution!
+   * If this prop is `true`, a range slider is displayed on top of the chart, making it possible to zoom-in/zoom-out.
    */
-  zoomingTool?: boolean | Partial<Omit<BrushProps, 'ref'>>;
+  zoomingTool?: boolean;
 
   /**
    * Defines the gab between bars.

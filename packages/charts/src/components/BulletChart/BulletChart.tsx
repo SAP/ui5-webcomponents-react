@@ -498,13 +498,8 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             </Bar>
           );
         })}
-        {!!chartConfig.zoomingTool && (
-          <Brush
-            dataKey={primaryDimensionAccessor}
-            tickFormatter={primaryDimension?.formatter}
-            {...brushProps}
-            {...(typeof chartConfig.zoomingTool === 'object' ? chartConfig.zoomingTool : {})}
-          />
+        {chartConfig.zoomingTool && (
+          <Brush dataKey={primaryDimensionAccessor} tickFormatter={primaryDimension?.formatter} {...brushProps} />
         )}
         {children}
       </ComposedChartLib>

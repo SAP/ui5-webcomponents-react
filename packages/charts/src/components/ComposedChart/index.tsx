@@ -522,13 +522,8 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             </ChartElement>
           );
         })}
-        {!!chartConfig.zoomingTool && (
-          <Brush
-            dataKey={primaryDimensionAccessor}
-            tickFormatter={primaryDimension?.formatter}
-            {...brushProps}
-            {...(typeof chartConfig.zoomingTool === 'object' ? chartConfig.zoomingTool : {})}
-          />
+        {chartConfig.zoomingTool && (
+          <Brush dataKey={primaryDimensionAccessor} tickFormatter={primaryDimension?.formatter} {...brushProps} />
         )}
         {children}
       </ComposedChartLib>
