@@ -8142,8 +8142,8 @@ __metadata:
   linkType: hard
 
 "chromatic@npm:^11.0.0":
-  version: 11.11.0
-  resolution: "chromatic@npm:11.11.0"
+  version: 11.12.5
+  resolution: "chromatic@npm:11.12.5"
   peerDependencies:
     "@chromatic-com/cypress": ^0.*.* || ^1.0.0
     "@chromatic-com/playwright": ^0.*.* || ^1.0.0
@@ -8156,7 +8156,7 @@ __metadata:
     chroma: dist/bin.js
     chromatic: dist/bin.js
     chromatic-cli: dist/bin.js
-  checksum: 10c0/fb69a07ba721624baac20122d94d449d8ae56cbcffa45931d6a1679aafa00a899e3e66e8b68b8dc24e44c7cf1356e7979a7be8088647bc76ae3a14e2fad8eeea
+  checksum: 10c0/4a083e4b12ebd0e1f04f944fef66c8345d0895e4c42e253cc4726328b13207553d860fbd5955804fbea806ae06a58d88f8ef845e6c90ce8ce2bc62f5660a3c8e
   languageName: node
   linkType: hard
 
@@ -12323,21 +12323,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:^13.20.0":
+"globals@npm:^13.20.0, globals@npm:^13.6.0, globals@npm:^13.9.0":
   version: 13.24.0
   resolution: "globals@npm:13.24.0"
   dependencies:
     type-fest: "npm:^0.20.2"
   checksum: 10c0/d3c11aeea898eb83d5ec7a99508600fbe8f83d2cf00cbb77f873dbf2bcb39428eff1b538e4915c993d8a3b3473fa71eeebfe22c9bb3a3003d1e26b1f2c8a42cd
-  languageName: node
-  linkType: hard
-
-"globals@npm:^13.6.0, globals@npm:^13.9.0":
-  version: 13.20.0
-  resolution: "globals@npm:13.20.0"
-  dependencies:
-    type-fest: "npm:^0.20.2"
-  checksum: 10c0/9a028f136f1e7a3574689f430f7d57faa0d699c4c7e92ade00b02882a892be31c314d50dff07b48e607283013117bb8a997406d03a1f7ab4a33a005eb16efd6c
   languageName: node
   linkType: hard
 
@@ -12349,9 +12340,9 @@ __metadata:
   linkType: hard
 
 "globals@npm:^15.10.0":
-  version: 15.10.0
-  resolution: "globals@npm:15.10.0"
-  checksum: 10c0/fef8f320e88f01f1492fef1b04b056908e1f6726eeaffe3bca03247237300c2d86e71585ee641b62ba71460a6eaff0d6ca7fca284e61bd1b3f833c7ad68b160a
+  version: 15.11.0
+  resolution: "globals@npm:15.11.0"
+  checksum: 10c0/861e39bb6bd9bd1b9f355c25c962e5eb4b3f0e1567cf60fa6c06e8c502b0ec8706b1cce055d69d84d0b7b8e028bec5418cf629a54e7047e116538d1c1c1a375c
   languageName: node
   linkType: hard
 
@@ -20936,10 +20927,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tocbot@npm:4.30.0":
-  version: 4.30.0
-  resolution: "tocbot@npm:4.30.0"
-  checksum: 10c0/ef338e536bf48d1d621ca6fa2cb8064749fcec1e38f5773ed6f59541b405d55c4e038fe149cc4a14dd86f28e844735ecae599dca379d7ced74bcfdc4bcc6b87a
+"tocbot@npm:4.31.0":
+  version: 4.31.0
+  resolution: "tocbot@npm:4.31.0"
+  checksum: 10c0/260ddeb37102b8eabb0354ebb017f08521e643d564e73fca70bd42a6eefd3692211486010d026446cdbf96ab455a754c4372fdea6ce3aa2c111a44f332558437
   languageName: node
   linkType: hard
 
@@ -21525,7 +21516,7 @@ __metadata:
     remark-gfm: "npm:^4.0.0"
     rimraf: "npm:^6.0.0"
     storybook: "npm:8.3.5"
-    tocbot: "npm:4.30.0"
+    tocbot: "npm:4.31.0"
     typedoc: "npm:^0.26.0"
     typescript: "npm:5.6.2"
     typescript-eslint: "npm:^8.8.0"
