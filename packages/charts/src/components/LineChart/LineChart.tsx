@@ -27,7 +27,13 @@ import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
 import { ChartDataLabel } from '../../internal/ChartDataLabel.js';
 import { defaultFormatter } from '../../internal/defaults.js';
-import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity, xAxisPadding } from '../../internal/staticProps.js';
+import {
+  brushProps,
+  tickLineConfig,
+  tooltipContentStyle,
+  tooltipFillOpacity,
+  xAxisPadding
+} from '../../internal/staticProps.js';
 import { resolvePrimaryAndSecondaryMeasures } from '../../internal/Utils.js';
 import { XAxisTicks } from '../../internal/XAxisTicks.js';
 import { YAxisTicks } from '../../internal/YAxisTicks.js';
@@ -340,14 +346,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
           />
         )}
         {chartConfig.zoomingTool && (
-          <Brush
-            y={10}
-            dataKey={primaryDimensionAccessor}
-            tickFormatter={primaryDimension?.formatter}
-            stroke={ThemingParameters.sapObjectHeader_BorderColor}
-            travellerWidth={10}
-            height={20}
-          />
+          <Brush dataKey={primaryDimensionAccessor} tickFormatter={primaryDimension?.formatter} {...brushProps} />
         )}
         {children}
       </LineChartLib>
