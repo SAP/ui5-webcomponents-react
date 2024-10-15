@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { complexDataSet, simpleDataSet, tooltipConfig } from '../../resources/DemoProps.js';
+import { complexDataSet, legendConfig, simpleDataSet, tooltipConfig } from '../../resources/DemoProps.js';
 import { RadarChart } from './RadarChart.js';
 
 const meta = {
@@ -96,4 +96,8 @@ export const LoadingPlaceholder: Story = {
 
 export const WithCustomTooltipConfig: Story = {
   args: tooltipConfig
+};
+
+export const WithCustomLegendConfig: Story = {
+  args: legendConfig
 };

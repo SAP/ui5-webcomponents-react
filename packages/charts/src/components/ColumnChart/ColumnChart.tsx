@@ -355,6 +355,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
             wrapperStyle={legendPosition}
+            {...chartConfig.legendConfig}
           />
         )}
         {referenceLine && (

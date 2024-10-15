@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import {
   bigDataSet,
   complexDataSet,
+  legendConfig,
   secondaryDimensionDataSet,
   simpleDataSet,
   tooltipConfig
@@ -160,4 +161,8 @@ export const WithLinearGradient: Story = {
 
 export const WithCustomTooltipConfig: Story = {
   args: tooltipConfig
+};
+
+export const WithCustomLegendConfig: Story = {
+  args: legendConfig
 };

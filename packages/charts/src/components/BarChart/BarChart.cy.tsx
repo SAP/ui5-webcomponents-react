@@ -1,6 +1,6 @@
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { BarChart } from './BarChart.js';
-import { cypressPassThroughTestsFactory, testChartZoomingTool } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory, testChartLegendConfig, testChartZoomingTool } from '@/cypress/support/utils';
 
 const dimensions = [
   {
@@ -87,6 +87,8 @@ describe('BarChart', () => {
     cy.get('.recharts-bar').should('not.exist');
     cy.contains('Loading...').should('exist');
   });
+
+  testChartLegendConfig(BarChart, { dataset: complexDataSet, dimensions, measures });
 
   testChartZoomingTool(BarChart, { dataset: complexDataSet, dimensions, measures });
 

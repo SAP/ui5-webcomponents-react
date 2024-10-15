@@ -330,6 +330,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
             wrapperStyle={legendWrapperStyle}
+            {...chartConfig.legendConfig}
           />
         )}
         {children}

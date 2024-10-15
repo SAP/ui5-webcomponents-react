@@ -1,6 +1,6 @@
-import { scatterComplexDataSet } from '../../resources/DemoProps.js';
+import { complexDataSet, scatterComplexDataSet } from '../../resources/DemoProps.js';
 import { ScatterChart } from './ScatterChart.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory, testChartLegendConfig } from '@/cypress/support/utils';
 
 const measures = [
   {
@@ -68,6 +68,8 @@ describe('ScatterChart', () => {
     cy.get('.recharts-scatter').should('not.exist');
     cy.contains('Loading...').should('exist');
   });
+
+  testChartLegendConfig(ScatterChart, { dataset: complexDataSet, measures });
 
   cypressPassThroughTestsFactory(ScatterChart, { measures: [] });
 });

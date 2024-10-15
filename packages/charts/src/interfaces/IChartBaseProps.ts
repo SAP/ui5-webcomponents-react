@@ -1,6 +1,6 @@
 import type { CommonProps } from '@ui5/webcomponents-react';
 import type { ComponentType, ReactNode } from 'react';
-import type { TooltipProps } from 'recharts';
+import type { LegendProps, TooltipProps } from 'recharts';
 import type { ICartesianChartConfig } from './ICartesianChartConfig.js';
 
 export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonProps, 'onClick'> {
@@ -88,12 +88,22 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
     legendPosition?: 'top' | 'bottom' | 'middle';
     /**
      * Horizontal alignment of the legend. Can be one of the following: `"left"`, `"center"`, `"right"`
+     *
+     * @deprecated Please use `legendConfig.align` instead.
      */
     legendHorizontalAlign?: 'center' | 'left' | 'right';
     /**
      * Number that sets the amount of delay time the chart waits when resizing.
      */
     resizeDebounce?: number;
+    //todo: remove "Omit" once supported
+    /**
+     * Defines the configuration object for the internally used `recharts` Legend component.
+     * You can find all possible configuration properties [here](https://recharts.org/en-US/api/Legend).
+     *
+     * __Note:__ It is possible to override internally used props, so please use with caution!
+     */
+    legendConfig?: Omit<LegendProps, 'ref'>;
     /**
      * __Experimental!__
      *
@@ -110,7 +120,7 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
    * Defines the configuration object for the internally used `recharts` Tooltip popover that is displayed when hovering over data points.
    * You can find all possible configuration properties [here](https://recharts.org/en-US/api/Tooltip).
    *
-   * __Note:__ It is possible to overwrite internally used tooltip props, so use with caution!
+   * __Note:__ It is possible to override internally used tooltip props, so please use with caution!
    */
   tooltipConfig?: TooltipProps<number | string | Array<number | string>, number | string>;
   /**

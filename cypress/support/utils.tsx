@@ -84,3 +84,19 @@ export function testChartZoomingTool(Component, props) {
     cy.get('.recharts-brush [stroke="red"]').should('be.visible');
   });
 }
+
+export function testChartLegendConfig(Component, props) {
+  it('legendConfig', () => {
+    cy.mount(
+      <Component
+        {...props}
+        chartConfig={{
+          legendConfig: {
+            formatter: (value) => <span data-testid="catval">{value}🐱</span>
+          }
+        }}
+      />
+    );
+    cy.findAllByTestId('catval').should('be.visible');
+  });
+}

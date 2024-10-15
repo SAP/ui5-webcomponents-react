@@ -1,7 +1,7 @@
 import { Text as RechartsText } from 'recharts';
-import { simpleDataSet } from '../../resources/DemoProps.js';
+import { complexDataSet, simpleDataSet } from '../../resources/DemoProps.js';
 import { PieChart } from './PieChart.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory, testChartLegendConfig } from '@/cypress/support/utils';
 
 const dimension = {
   accessor: 'name'
@@ -78,4 +78,6 @@ describe('PieChart', () => {
     );
     cy.findAllByText('CustomLabel').should('have.length', 12);
   });
+
+  testChartLegendConfig(PieChart, { dataset: complexDataSet, dimension, measure });
 });
