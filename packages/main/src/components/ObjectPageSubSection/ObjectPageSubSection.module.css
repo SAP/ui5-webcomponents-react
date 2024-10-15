@@ -18,6 +18,7 @@
 }
 
 .subSectionTitle {
+  font-family: var(--sapFontHeaderFamily);
   font-size: var(--sapFontHeader5Size);
   color: var(--sapGroup_TitleTextColor);
   flex-grow: 1;
@@ -26,7 +27,6 @@
 .subSectionContent {
   background-color: var(--_ui5wcr_ObjectPage_SubSectionBackgroundColor);
   border-radius: var(--_ui5wcr_ObjectPage_SubSectionBorderRadius);
-  padding-inline: 0.5rem;
   padding-block: 1rem;
 }
 
