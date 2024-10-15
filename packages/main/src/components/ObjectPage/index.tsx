@@ -344,7 +344,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         safeTopHeaderHeight +
         anchorBarHeight +
         TAB_CONTAINER_HEADER_HEIGHT +
-        (headerPinned ? headerContentHeight : 0) +
+        (headerPinned && !headerCollapsed ? headerContentHeight : 0) +
         'px';
       section.focus();
       section.scrollIntoView({ behavior: 'smooth' });
@@ -894,7 +894,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         </div>
       )}
       <div data-component-name="ObjectPageContent" className={classNames.content} ref={objectPageContentRef}>
-        <div style={{ height: headerCollapsed ? `${headerContentHeight}px` : 0 }} aria-hidden />
+        <div style={{ height: headerCollapsed && !headerPinned ? `${headerContentHeight}px` : 0 }} aria-hidden />
         {placeholder ? placeholder : sections}
         <div style={{ height: `${sectionSpacer}px` }} aria-hidden />
       </div>
