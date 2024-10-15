@@ -244,7 +244,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
 
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
-    if (typeof onSelectedSectionChange === 'function' && prevInternalSelectedSectionId.current !== id) {
+    if (typeof onSelectedSectionChange === 'function' && targetEvent && prevInternalSelectedSectionId.current !== id) {
       onSelectedSectionChange(
         enrichEventWithDetails(targetEvent, {
           selectedSectionIndex: parseInt(index, 10),
@@ -546,7 +546,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
 
   const { onScroll: _0, selectedSubSectionId: _1, ...propsWithoutOmitted } = rest;
 
-  const visibleSections = useRef<Set<string>>(new Set()); // Track visible sections
+  const visibleSectionIds = useRef<Set<string>>(new Set());
   useEffect(() => {
     const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     // only the sticky part of the header must be added as margin
@@ -557,17 +557,25 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         entries.forEach((entry) => {
           const sectionId = entry.target.id;
           if (entry.isIntersecting) {
-            visibleSections.current.add(sectionId);
+            visibleSectionIds.current.add(sectionId);
           } else {
-            visibleSections.current.delete(sectionId);
+            visibleSectionIds.current.delete(sectionId);
           }
 
-          const sortedVisibleSections = Array.from(sectionNodes)
-            .map((section) => section.id)
-            .filter((id) => visibleSections.current.has(id));
+          let currentIndex: undefined | number;
+          const sortedVisibleSections = Array.from(sectionNodes).filter((section, index) => {
+            const isVisibleSection = visibleSectionIds.current.has(section.id);
+            if (currentIndex === undefined && isVisibleSection) {
+              currentIndex = index;
+            }
+            return visibleSectionIds.current.has(section.id);
+          });
 
           if (sortedVisibleSections.length > 0) {
-            setInternalSelectedSectionId(sortedVisibleSections[0].slice(18));
+            const section = sortedVisibleSections[0];
+            const id = sortedVisibleSections[0].id.slice(18);
+            setInternalSelectedSectionId(id);
+            debouncedOnSectionChange(scrollEvent.current, currentIndex, id, section);
           }
         });
       },
@@ -584,7 +592,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     return () => {
       observer.disconnect();
     };
-  }, [children, totalHeaderHeight, setInternalSelectedSectionId, headerPinned]);
+  }, [children, totalHeaderHeight, setInternalSelectedSectionId, headerPinned, debouncedOnSectionChange]);
 
   const onTitleClick = (e) => {
     e.stopPropagation();
