@@ -6,6 +6,7 @@ import { ObjectPageTitle } from '../ObjectPageTitle';
 import { ObjectPageHeader } from '../ObjectPageHeader';
 import { ObjectPageSection } from '../ObjectPageSection';
 import { ObjectPageSubSection } from '../ObjectPageSubSection';
+import { CodeBlock } from '@sb/components/DomRefTable';
 
 <Meta of={ComponentStories} />
 
@@ -18,6 +19,47 @@ import { ObjectPageSubSection } from '../ObjectPageSubSection';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
+
+## Methods
+
+This component exposes public methods. You can use them directly on the instance of the component, e.g. by using React Refs.
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Parameters</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <CodeBlock>
+          <span style={{ color: 'rgb(64, 120, 242)' }}>toggleHeaderArea</span>
+          <span style={{ color: 'rgb(56, 58, 66)' }}>(</span>
+          <span style={{ color: 'rgb(56, 58, 66)' }}>snapped</span>
+          <span style={{ color: 'rgb(64, 120, 242)' }}>?</span>
+          <span style={{ color: 'rgb(64, 120, 242)' }}>: </span>
+          <span style={{ color: 'rgb(80, 161, 79)' }}>boolean</span>
+          <span style={{ color: 'rgb(56, 58, 66)' }}>)</span>
+          <span style={{ color: 'rgb(64, 120, 242)' }}>: </span>
+          <span style={{ color: 'rgb(80, 161, 79)' }}>void</span>
+        </CodeBlock>
+      </td>
+      <td>
+        <div>
+          <p style={{ fontWeight: 'bold' }}>snapped</p>
+          <p style={{ paddingInline: '1rem' }}>
+            Defines if the header should be snapped or expanded. <br /> If the argument is not provided, the header is
+            toggled.
+          </p>
+        </div>
+      </td>
+      <td>Toggles the `headerArea` of the `ObjectPage`.</td>
+    </tr>
+  </tbody>
+</table>
 
 # More Examples
 
