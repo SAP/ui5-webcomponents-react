@@ -1,11 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TableGrowingMode from '@ui5/webcomponents/dist/types/TableGrowingMode.js';
+import TableSelectionMode from '@ui5/webcomponents/dist/types/TableSelectionMode.js';
+import { SegmentedButton, SegmentedButtonItem } from '@ui5/webcomponents-react';
 import { useState } from 'react';
 import { TableCell } from '../TableCell/index.js';
 import { TableGrowing } from '../TableGrowing/index.js';
 import { TableHeaderCell } from '../TableHeaderCell/index.js';
 import { TableHeaderRow } from '../TableHeaderRow/index.js';
 import { TableRow } from '../TableRow/index.js';
+import { TableSelection } from '../TableSelection/index.js';
 import { Table } from './index.js';
 
 const meta = {
@@ -19,19 +22,19 @@ const meta = {
   args: {
     headerRow: (
       <TableHeaderRow sticky>
-        <TableHeaderCell width={'12rem'}>
+        <TableHeaderCell width={'200px'} minWidth={'200px'}>
           <span>Product</span>
         </TableHeaderCell>
-        <TableHeaderCell minWidth={'800px'}>
+        <TableHeaderCell minWidth={'200px'}>
           <span>Supplier</span>
         </TableHeaderCell>
-        <TableHeaderCell minWidth={'600px'}>
+        <TableHeaderCell minWidth={'200px'}>
           <span>Dimensions</span>
         </TableHeaderCell>
-        <TableHeaderCell minWidth={'600px'}>
+        <TableHeaderCell minWidth={'100px'} maxWidth="200px">
           <span>Weight</span>
         </TableHeaderCell>
-        <TableHeaderCell>
+        <TableHeaderCell minWidth="200px">
           <span>Price</span>
         </TableHeaderCell>
       </TableHeaderRow>
@@ -100,6 +103,12 @@ export const GrowingTable: Story = {
           <TableCell>
             <span>Placeholder 2</span>
           </TableCell>
+          <TableCell>
+            <span>Placeholder 3</span>
+          </TableCell>
+          <TableCell>
+            <span>Placeholder 4</span>
+          </TableCell>
         </TableRow>
       ));
     };
@@ -109,11 +118,67 @@ export const GrowingTable: Story = {
     };
     return (
       <div style={{ height: '250px', overflow: 'auto' }}>
-        <Table {...args}>
+        <Table {...args} features={<TableGrowing onLoadMore={onLoadMore} type={TableGrowingMode.Scroll} />}>
           {rows}
-          <TableGrowing slot="features" onLoadMore={onLoadMore} type={TableGrowingMode.Button} />
         </Table>
       </div>
+    );
+  }
+};
+
+export const WithSelection: Story = {
+  render(args) {
+    const [mode, setMode] = useState<TableSelectionMode>(TableSelectionMode.Multiple);
+    return (
+      <>
+        <SegmentedButton
+          onSelectionChange={(e) => {
+            setMode(e.detail.selectedItems[0].textContent);
+          }}
+        >
+          {Object.values(TableSelectionMode).map((selectionMode) => (
+            <SegmentedButtonItem key={selectionMode} selected={selectionMode === mode}>
+              {selectionMode}
+            </SegmentedButtonItem>
+          ))}
+        </SegmentedButton>
+        <Table {...args} features={<TableSelection mode={mode} />}>
+          <TableRow>
+            <TableCell>
+              <span>Notebook Basic</span>
+            </TableCell>
+            <TableCell>
+              <span>Very Best Screens</span>
+            </TableCell>
+            <TableCell>
+              <span>30 x 18 x 3cm</span>
+            </TableCell>
+            <TableCell>
+              <span>4.2KG</span>
+            </TableCell>
+            <TableCell>
+              <span>956EUR</span>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <span>Notebook Basic 17HT-1001</span>
+            </TableCell>
+            <TableCell>
+              <span>Very Best Screens</span>
+            </TableCell>
+            <TableCell>
+              <span>29 x 17 x 3.1cm</span>
+            </TableCell>
+            <TableCell>
+              <span>4.5KG</span>
+            </TableCell>
+            <TableCell>
+              <span>1249EUR</span>
+            </TableCell>
+          </TableRow>
+        </Table>
+      </>
     );
   }
 };
