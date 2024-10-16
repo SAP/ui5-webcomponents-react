@@ -4,6 +4,7 @@ import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import { FlexBox } from '../../components/FlexBox/index.js';
 import { FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import { ComboBoxItem } from '../ComboBoxItem/index.js';
+import { ComboBoxItemGroup } from '../ComboBoxItemGroup/index.js';
 import { Icon } from '../Icon/index.js';
 import { Label } from '../Label/index.js';
 import { ComboBox } from './index.js';
@@ -36,6 +37,24 @@ export const Default: Story = {
         <ComboBoxItem text="ComboBox Entry 3" />
         <ComboBoxItem text="ComboBox Entry 4" />
         <ComboBoxItem text="ComboBox Entry 5" />
+      </ComboBox>
+    );
+  }
+};
+
+export const WithGroups: Story = {
+  render(args) {
+    return (
+      <ComboBox {...args}>
+        <ComboBoxItemGroup headerText="Group 1">
+          <ComboBoxItem text="ComboBox Entry 1" />
+          <ComboBoxItem text="ComboBox Entry 2" />
+        </ComboBoxItemGroup>
+        <ComboBoxItemGroup headerText="Group 2">
+          <ComboBoxItem text="ComboBox Entry 3" />
+          <ComboBoxItem text="ComboBox Entry 4" />
+          <ComboBoxItem text="ComboBox Entry 5" />
+        </ComboBoxItemGroup>
       </ComboBox>
     );
   }
