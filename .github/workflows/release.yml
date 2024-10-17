@@ -54,7 +54,7 @@ jobs:
             --no-git-tag-version --no-push
 
   build-and-release:
-    needs: ['test', 'release-dryrun']
+    needs: ['test', 'release-dryrun', 'check-charts-peer-deps']
     runs-on: ubuntu-latest
     environment:
       name: 'npm'
