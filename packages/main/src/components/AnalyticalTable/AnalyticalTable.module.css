@@ -31,9 +31,9 @@
     position: absolute;
     inset-block-end: 0;
     inset-inline-start: 0;
-    height: 1px;
+    height: var(--_ui5wcr-AnalyticalTable-HeaderBorderWidth);
     width: 100%;
-    background: var(--sapList_TableFooterBorder);
+    background: var(--sapList_HeaderBorderColor);
   }
 }
 
@@ -65,7 +65,7 @@
   height: var(--_ui5wcr-AnalyticalTableHeaderRowHeight);
 
   div:first-child .th {
-    border-inline-start: 1px solid var(--sapList_BorderColor);
+    border-inline-start: 1px solid var(--_ui5wcr-AnalyticalTable-OuterBorderInline);
   }
 }
 
@@ -106,7 +106,8 @@
   border-block-start: var(--_ui5wcr-AnalyticalTable-OuterBorderBlock);
   border-block-end: var(--_ui5wcr-AnalyticalTable-HeaderBorderWidth) solid var(--sapList_HeaderBorderColor);
   border-inline-end: 1px solid var(--sapList_BorderColor);
-  padding-inline: 0.5rem;
+  padding-inline-end: 0.5rem;
+  padding-inline-start: calc(0.5rem - var(--_ui5wcr-AnalyticalTable-HeaderBorderWidth));
   text-align: start;
   box-sizing: border-box;
 
@@ -223,6 +224,9 @@
 
   &:first-child {
     border-inline-start: var(--_ui5wcr-AnalyticalTable-OuterCellBorder);
+    &[data-column-id-cell='__ui5wcr__internal_highlight_column'] {
+      border-inline: none;
+    }
   }
 
   &:last-child {
