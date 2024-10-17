@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.12](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.11...v1.29.12) (2024-10-17)
+
+### Bug Fixes
+
+- **charts:** prevent data points from being covered by `zoomingTool` ([#6490](https://github.com/SAP/ui5-webcomponents-react/issues/6490)) ([e902c1a](https://github.com/SAP/ui5-webcomponents-react/commit/e902c1a8d8c8971445ad35b0f1e3964c0a291aac))
+
 ## [1.29.10](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.9...v1.29.10) (2024-09-05)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

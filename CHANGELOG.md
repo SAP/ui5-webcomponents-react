@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.12](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.11...v1.29.12) (2024-10-17)
+
+### Bug Fixes
+
+- **AnalyticalTable:** offer limited support for `infiniteScroll` combined with a grouped table ([#6431](https://github.com/SAP/ui5-webcomponents-react/issues/6431)) ([fc05ab6](https://github.com/SAP/ui5-webcomponents-react/commit/fc05ab663f54bfa394891cf08d159b5a14b266f5))
+- **charts:** prevent data points from being covered by `zoomingTool` ([#6490](https://github.com/SAP/ui5-webcomponents-react/issues/6490)) ([e902c1a](https://github.com/SAP/ui5-webcomponents-react/commit/e902c1a8d8c8971445ad35b0f1e3964c0a291aac))
+- **FilterBar:** add tooltip for list-view SegmentedButtonItem ([#6503](https://github.com/SAP/ui5-webcomponents-react/issues/6503)) ([44ecee8](https://github.com/SAP/ui5-webcomponents-react/commit/44ecee8324cc0bca61e16a5c70b8bb1906dddb27)), closes [#6496](https://github.com/SAP/ui5-webcomponents-react/issues/6496)
+- **ObjectPage:** improve selection & scroll behavior ([#6492](https://github.com/SAP/ui5-webcomponents-react/issues/6492)) ([#6507](https://github.com/SAP/ui5-webcomponents-react/issues/6507)) ([be7444c](https://github.com/SAP/ui5-webcomponents-react/commit/be7444c70bf55a14dfcaa04dbc55e704fa12835b)), closes [#6478](https://github.com/SAP/ui5-webcomponents-react/issues/6478)
+- **ObjectPageSubSection:** update styles to latest specs ([#6502](https://github.com/SAP/ui5-webcomponents-react/issues/6502)) ([ce87a3b](https://github.com/SAP/ui5-webcomponents-react/commit/ce87a3b0e7057b1ba43747954e4c82f5f5c1afb9)), closes [#5850](https://github.com/SAP/ui5-webcomponents-react/issues/5850)
+- **Text:** only break words if text can wrap ([#6432](https://github.com/SAP/ui5-webcomponents-react/issues/6432)) ([252c2ea](https://github.com/SAP/ui5-webcomponents-react/commit/252c2eadce48e6cbc52f6a0ba79f4ac4ff262dae)), closes [#6427](https://github.com/SAP/ui5-webcomponents-react/issues/6427)
+
 ## [1.29.11](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.10...v1.29.11) (2024-09-24)
 
 ### Bug Fixes
