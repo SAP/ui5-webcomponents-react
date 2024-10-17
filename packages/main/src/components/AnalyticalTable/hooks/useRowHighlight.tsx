@@ -4,7 +4,9 @@ import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
 const baseStyles = {
   width: '100%',
-  height: '100%'
+  // border
+  height: 'calc(100% - 1px)',
+  alignSelf: 'start'
 };
 
 const HighlightColors = {
