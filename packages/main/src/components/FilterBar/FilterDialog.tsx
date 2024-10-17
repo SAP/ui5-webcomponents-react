@@ -567,12 +567,14 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
                   data-id="list"
                   pressed={isListView}
                   accessibleName={listViewText}
+                  tooltip={listViewText}
                 />
                 <SegmentedButtonItem
                   icon={group2Icon}
                   data-id="group"
                   pressed={!isListView}
                   accessibleName={groupViewText}
+                  tooltip={groupViewText}
                 />
               </SegmentedButton>
             </Toolbar>
