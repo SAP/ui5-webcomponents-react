@@ -35,7 +35,9 @@ import * as ComponentStories from './Table.stories';
 
 <Canvas of={ComponentStories.GrowingTable} />
 
-### Code
+<details>
+
+<summary>Show code</summary>
 
 ```jsx
 const createRows = (indexOffset) => {
@@ -67,13 +69,37 @@ const GrowingTable = () => {
   };
   return (
     <div style={{ height: '250px', overflow: 'auto' }}>
-      <Table {...args} features={<TableGrowing onLoadMore={onLoadMore} type={TableGrowingMode.Scroll} />}>
+      <Table
+        {...otherProps}
+        headerRow={
+          <TableHeaderRow sticky>
+            <TableHeaderCell width={'200px'} minWidth={'200px'}>
+              <span>Product</span>
+            </TableHeaderCell>
+            <TableHeaderCell minWidth={'200px'}>
+              <span>Supplier</span>
+            </TableHeaderCell>
+            <TableHeaderCell minWidth={'200px'}>
+              <span>Dimensions</span>
+            </TableHeaderCell>
+            <TableHeaderCell minWidth={'100px'} maxWidth="200px">
+              <span>Weight</span>
+            </TableHeaderCell>
+            <TableHeaderCell minWidth="200px">
+              <span>Price</span>
+            </TableHeaderCell>
+          </TableHeaderRow>
+        }
+        features={<TableGrowing onLoadMore={onLoadMore} type={TableGrowingMode.Scroll} />}
+      >
         {rows}
       </Table>
     </div>
   );
 };
 ```
+
+</details>
 
 ## Table with row selection
 
@@ -101,7 +127,29 @@ function TableWithRowSelection() {
           </SegmentedButtonItem>
         ))}
       </SegmentedButton>
-      <Table {...args} features={<TableSelection mode={mode} />}>
+      <Table
+        {...otherProps}
+        headerRow={
+          <TableHeaderRow sticky>
+            <TableHeaderCell width={'200px'} minWidth={'200px'}>
+              <span>Product</span>
+            </TableHeaderCell>
+            <TableHeaderCell minWidth={'200px'}>
+              <span>Supplier</span>
+            </TableHeaderCell>
+            <TableHeaderCell minWidth={'200px'}>
+              <span>Dimensions</span>
+            </TableHeaderCell>
+            <TableHeaderCell minWidth={'100px'} maxWidth="200px">
+              <span>Weight</span>
+            </TableHeaderCell>
+            <TableHeaderCell minWidth="200px">
+              <span>Price</span>
+            </TableHeaderCell>
+          </TableHeaderRow>
+        }
+        features={<TableSelection mode={mode} />}
+      >
         <TableRow>
           <TableCell>
             <span>Notebook Basic</span>
