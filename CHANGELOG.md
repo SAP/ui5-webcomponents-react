@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.2.0...v2.3.0) (2024-10-17)
+
+### Bug Fixes
+
+- **AnalyticalTable:** border styles ([#6506](https://github.com/SAP/ui5-webcomponents-react/issues/6506)) ([76b925b](https://github.com/SAP/ui5-webcomponents-react/commit/76b925b4859843bee355840044a1f9acf7a0df9d)), closes [#6477](https://github.com/SAP/ui5-webcomponents-react/issues/6477)
+- **codemod:** correctly replace `type` of `TableRow` ([#6468](https://github.com/SAP/ui5-webcomponents-react/issues/6468)) ([659b432](https://github.com/SAP/ui5-webcomponents-react/commit/659b4324c4500e27a0a6e7695053b2094f69a860))
+- **FilterBar:** add tooltip for list-view SegmentedButtonItem ([#6501](https://github.com/SAP/ui5-webcomponents-react/issues/6501)) ([5348750](https://github.com/SAP/ui5-webcomponents-react/commit/5348750dde72758c3dbb4d2366091669b829d63d)), closes [#6496](https://github.com/SAP/ui5-webcomponents-react/issues/6496)
+- **FilterBar:** show FilterBar buttons if `hideToolbar` is active ([#6464](https://github.com/SAP/ui5-webcomponents-react/issues/6464)) ([65d48a5](https://github.com/SAP/ui5-webcomponents-react/commit/65d48a5223d3f421f8eb24eff7ce46d9fa91c066)), closes [#6461](https://github.com/SAP/ui5-webcomponents-react/issues/6461)
+- **ObjectPage:** improve selection & scroll behavior ([#6492](https://github.com/SAP/ui5-webcomponents-react/issues/6492)) ([2e09839](https://github.com/SAP/ui5-webcomponents-react/commit/2e09839cab8f2394ce4531edb155d7717f3ff0ce)), closes [#6478](https://github.com/SAP/ui5-webcomponents-react/issues/6478)
+- **ObjectPageSubSection:** update styles to latest specs ([#6494](https://github.com/SAP/ui5-webcomponents-react/issues/6494)) ([40a180a](https://github.com/SAP/ui5-webcomponents-react/commit/40a180a1c4539d549ace8adc8121e3a6be97257c)), closes [#5850](https://github.com/SAP/ui5-webcomponents-react/issues/5850)
+- **Ui5DomRef - TypeScript:** update types ([#6471](https://github.com/SAP/ui5-webcomponents-react/issues/6471)) ([464f2fd](https://github.com/SAP/ui5-webcomponents-react/commit/464f2fd7870cd116fcb75aa31858c4d2065a921c))
+
+### Features
+
+- **charts:** allow configuring the `zoomingTool` ([#6489](https://github.com/SAP/ui5-webcomponents-react/issues/6489)) ([4d3f4fc](https://github.com/SAP/ui5-webcomponents-react/commit/4d3f4fc255024ee0f629c8cdbad67df292bb6fbc))
+- **charts:** allow configuring the internal `Legend` component ([#6493](https://github.com/SAP/ui5-webcomponents-react/issues/6493)) ([1bc98f9](https://github.com/SAP/ui5-webcomponents-react/commit/1bc98f91c638b60fb05ab45b5d1dd30532eccd77)), closes [#5777](https://github.com/SAP/ui5-webcomponents-react/issues/5777)
+- **charts:** allow rechart's `accessibilityLayer` prop ([#6459](https://github.com/SAP/ui5-webcomponents-react/issues/6459)) ([6de7aa7](https://github.com/SAP/ui5-webcomponents-react/commit/6de7aa71102ed46471607e67c46f413fcde0fd42)), closes [#6446](https://github.com/SAP/ui5-webcomponents-react/issues/6446)
+- **cypress-commands:** add `findToolbarButtonByText ` query ([#6463](https://github.com/SAP/ui5-webcomponents-react/issues/6463)) ([d16a334](https://github.com/SAP/ui5-webcomponents-react/commit/d16a33480c55e9bfae7eb968d3722b0af8b1d968))
+
 # [2.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.1...v2.2.0) (2024-10-04)
 
 ### Bug Fixes
