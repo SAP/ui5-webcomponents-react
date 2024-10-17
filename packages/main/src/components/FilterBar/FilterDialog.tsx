@@ -577,12 +577,19 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
               {showValues ? hideValuesText : showValuesText}
             </Button>
             <SegmentedButton onSelectionChange={handleViewChange}>
-              <SegmentedButtonItem icon={listIcon} data-id="list" selected={isListView} accessibleName={listViewText} />
+              <SegmentedButtonItem
+                icon={listIcon}
+                data-id="list"
+                selected={isListView}
+                accessibleName={listViewText}
+                tooltip={listViewText}
+              />
               <SegmentedButtonItem
                 icon={group2Icon}
                 data-id="group"
                 selected={!isListView}
                 accessibleName={groupViewText}
+                tooltip={groupViewText}
               />
             </SegmentedButton>
           </FlexBox>
