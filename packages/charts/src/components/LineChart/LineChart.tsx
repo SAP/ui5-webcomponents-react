@@ -329,6 +329,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
             wrapperStyle={legendPosition}
+            {...chartConfig.legendConfig}
           />
         )}
         {referenceLine && (

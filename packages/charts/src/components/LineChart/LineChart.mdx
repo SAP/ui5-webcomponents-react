@@ -2,6 +2,7 @@ import { Canvas, Meta } from '@storybook/addon-docs';
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import TooltipStory from '../../resources/TooltipConfig.mdx';
 import * as ComponentStories from './LineChart.stories';
+import LegendStory from '../../resources/LegendConfig.mdx';
 
 <Meta of={ComponentStories} />
 
@@ -91,5 +92,10 @@ export const LineChartWithLinearGradient = () => {
 ```
 
 <TooltipStory of={ComponentStories.WithCustomTooltipConfig} />
+
+<LegendStory of={ComponentStories.WithCustomLegendConfig} />
+
+<br />
+<br />
 
 <Footer />

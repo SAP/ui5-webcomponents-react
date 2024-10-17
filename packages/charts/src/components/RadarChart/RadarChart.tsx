@@ -225,6 +225,7 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
+            {...chartConfig.legendConfig}
           />
         )}
         {children}

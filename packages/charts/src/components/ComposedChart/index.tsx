@@ -444,6 +444,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
             wrapperStyle={legendPosition}
+            {...chartConfig.legendConfig}
           />
         )}
         {measures?.map((element, index) => {

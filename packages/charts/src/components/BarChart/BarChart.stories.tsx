@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { complexDataSet, secondaryDimensionDataSet, simpleDataSet, tooltipConfig } from '../../resources/DemoProps.js';
+import {
+  complexDataSet,
+  legendConfig,
+  secondaryDimensionDataSet,
+  simpleDataSet,
+  tooltipConfig
+} from '../../resources/DemoProps.js';
 import { BarChart } from './BarChart.js';
 
 const meta = {
@@ -155,4 +161,8 @@ export const WithHighlightedMeasure: Story = {
 
 export const WithCustomTooltipConfig: Story = {
   args: tooltipConfig
+};
+
+export const WithCustomLegendConfig: Story = {
+  args: legendConfig
 };

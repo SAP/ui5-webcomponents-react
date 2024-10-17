@@ -1,6 +1,6 @@
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { ColumnChart } from './ColumnChart.js';
-import { cypressPassThroughTestsFactory, testChartZoomingTool } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory, testChartLegendConfig, testChartZoomingTool } from '@/cypress/support/utils';
 
 const dimensions = [
   {
@@ -79,6 +79,8 @@ describe('ColumnChart', () => {
   });
 
   testChartZoomingTool(ColumnChart, { dataset: complexDataSet, dimensions, measures });
+
+  testChartLegendConfig(ColumnChart, { dataset: complexDataSet, dimensions, measures });
 
   cypressPassThroughTestsFactory(ColumnChart, { dimensions: [], measures: [] });
 });

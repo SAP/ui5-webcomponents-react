@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { complexDataSet } from '../../resources/DemoProps.js';
+import { complexDataSet, legendConfig } from '../../resources/DemoProps.js';
 import { ColumnChartWithTrend } from './ColumnChartWithTrend.js';
 
 const meta = {
@@ -39,4 +39,8 @@ export const LoadingPlaceholder: Story = {
   args: {
     dataset: []
   }
+};
+
+export const WithCustomLegendConfig: Story = {
+  args: legendConfig
 };

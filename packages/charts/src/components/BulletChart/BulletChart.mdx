@@ -1,6 +1,7 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Meta } from '@storybook/addon-docs';
 import TooltipStory from '../../resources/TooltipConfig.mdx';
+import LegendStory from '../../resources/LegendConfig.mdx';
 import * as ComponentStories from './BulletChart.stories';
 
 <Meta of={ComponentStories} />
@@ -66,5 +67,10 @@ You can do this via the `measures` array:
 <Canvas of={ComponentStories.LoadingPlaceholder} />
 
 <TooltipStory of={ComponentStories.WithCustomTooltipConfig} />
+
+<LegendStory of={ComponentStories.WithCustomLegendConfig} />
+
+<br />
+<br />
 
 <Footer />

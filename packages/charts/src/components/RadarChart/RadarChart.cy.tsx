@@ -1,6 +1,6 @@
 import { complexDataSet } from '../../resources/DemoProps.js';
 import { RadarChart } from './RadarChart.js';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { cypressPassThroughTestsFactory, testChartLegendConfig } from '@/cypress/support/utils';
 
 const dimensions = [
   {
@@ -68,6 +68,8 @@ describe('RadarChart', () => {
     cy.get('.recharts-radar').should('not.exist');
     cy.contains('Loading...').should('exist');
   });
+
+  testChartLegendConfig(RadarChart, { dataset: complexDataSet, dimensions, measures });
 
   cypressPassThroughTestsFactory(RadarChart, { dimensions: [], measures: [] });
 });
