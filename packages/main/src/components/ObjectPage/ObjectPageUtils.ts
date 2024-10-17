@@ -6,8 +6,3 @@ export const getSectionById = (sections, id) => {
     return isValidElement(objectPageSection) && objectPageSection.props?.id === id;
   });
 };
-
-export const extractSectionIdFromHtmlId = (id: string) => {
-  if (!id) return null;
-  return id.replace(/^ObjectPageSection-/, '');
-};
