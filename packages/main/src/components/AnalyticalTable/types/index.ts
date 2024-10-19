@@ -541,8 +541,8 @@ interface OnAutoResizeMouseEvent extends Omit<MouseEvent, 'detail'> {
   detail: { columnId: string; width: number; nativeDetail: 2 };
 }
 
-interface OnRowClickEvent extends Omit<MouseEvent, 'detail'> {
-  detail: { detail: { row: unknown; nativeDetail: number } };
+interface OnRowClickEvent extends Omit<UIEvent, 'detail'> {
+  detail: { row: unknown; nativeDetail: number };
 }
 
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
