@@ -91,6 +91,10 @@ Then take a look at our [Tutorial Mission](https://developers.sap.com/mission.re
 There you get a first glimpse at how easy it is to create an Application with UI5 Web Components for React.<br />
 In about an hour you will create a business dashboard from scratch and get familiar with some React basics in case you don't know them already.
 
+### SAP Devtoberfest 2024 session
+
+In the [SAP Devtoberfest 2024](https://www.youtube.com/watch?v=lvpN3eK39h8) session, we showcased the most prominent new features in version 2 of UI5 Web Components and UI5 Web Components for React, and provided an example of how to migrate from version 1 to version 2 using our [Codemod](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs#codemod).
+
 ### SAP Devtoberfest 2023 session
 
 [Here](https://www.youtube.com/watch?v=zyOxgjoSnGw) you can find the video of our session for the SAP Devtoberfest 2023 (aired Sep 29, 2023). There we briefly explain why UI5 Web Components for React exist at all, where the project fits into the SAP UI stack and what advantages our wrapper has over implementations that use pure ui5-webcomponents.
