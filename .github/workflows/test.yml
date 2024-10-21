@@ -21,6 +21,7 @@ jobs:
           - main/src/components
           - main/src/internal
           - compat
+          - main/src/components/ObjectPage
         react: ['18', '19']
       fail-fast: false
     steps:

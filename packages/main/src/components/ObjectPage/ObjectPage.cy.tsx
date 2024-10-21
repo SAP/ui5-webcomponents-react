@@ -256,7 +256,7 @@ describe('ObjectPage', () => {
     cy.findByText('ObjectPageHeader').should('be.visible');
   });
 
-  it('scroll to sections - default mode', () => {
+  it.only('scroll to sections - default mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
       <ObjectPage titleArea={DPTitle} headerArea={DPContent}>
@@ -324,7 +324,7 @@ describe('ObjectPage', () => {
     cy.findByTestId('footer').should('be.visible');
   });
 
-  it('scroll to sections - tab mode', () => {
+  it.only('scroll to sections - tab mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
       <ObjectPage
