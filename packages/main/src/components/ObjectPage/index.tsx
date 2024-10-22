@@ -334,8 +334,16 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         TAB_CONTAINER_HEADER_HEIGHT +
         (headerPinned && !headerCollapsed ? headerContentHeight : 0) +
         'px';
+
       section.focus();
-      section.scrollIntoView({ behavior: 'smooth' });
+      // in iframes, scroll-behavior: smooth doesn't fully scroll
+      if (window && window.self !== window.top) {
+        objectPageRef.current.style.scrollBehavior = 'auto';
+        section.scrollIntoView();
+        objectPageRef.current.style.scrollBehavior = '';
+      } else {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
       section.style.scrollMarginBlockStart = '0px';
     }
   };
