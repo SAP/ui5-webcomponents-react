@@ -193,7 +193,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             onOpen={handleAfterOpen}
             hideArrow
             accessibleRole={accessibleRole}
-            //todo translation
             accessibleName={i18nBundle.getText(WITH_X_ITEMS, filteredChildrenArray.length)}
           >
             <div
