@@ -7,10 +7,13 @@ import { ObjectPageHeader } from '../ObjectPageHeader';
 import { ObjectPageSection } from '../ObjectPageSection';
 import { ObjectPageSubSection } from '../ObjectPageSubSection';
 import { CodeBlock } from '@sb/components/DomRefTable';
+import { MessageStrip } from '@ui5/webcomponents-react';
 
 <Meta of={ComponentStories} />
 
 <DocsHeader subComponents={['ObjectPageTitle', 'ObjectPageHeader', 'ObjectPageSection', 'ObjectPageSubSection']} />
+
+<MessageStrip hideCloseButton children={'In iframes, smooth scrolling is disabled!'} />
 
 ## Example
 

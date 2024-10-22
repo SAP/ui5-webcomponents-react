@@ -334,8 +334,10 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         TAB_CONTAINER_HEADER_HEIGHT +
         (headerPinned && !headerCollapsed ? headerContentHeight : 0) +
         'px';
-      section.focus();
-      section.scrollIntoView({ behavior: 'smooth' });
+      if (isSubSection) {
+        section.focus();
+      }
+      section.scrollIntoView();
       section.style.scrollMarginBlockStart = '0px';
     }
   };
@@ -345,7 +347,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       return;
     }
     if (firstSectionId === sectionId) {
-      objectPageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+      objectPageRef.current?.scrollTo({ top: 0 });
     } else {
       scrollToSectionById(sectionId);
     }
@@ -729,6 +731,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       style={objectPageStyles}
       ref={componentRef}
       onScroll={onObjectPageScroll}
+      data-in-iframe={window && window.self !== window.top}
       {...propsWithoutOmitted}
     >
       <header
