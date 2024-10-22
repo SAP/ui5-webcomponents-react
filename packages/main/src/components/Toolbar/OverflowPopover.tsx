@@ -5,7 +5,7 @@ import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 
 import { isValidElement, cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign, PopoverPlacementType, PopupAccessibleRole } from '../../enums/index.js';
-import { SHOW_MORE, X_OF_Y } from '../../i18n/i18n-defaults.js';
+import { WITH_X_ITEMS, SHOW_MORE, X_OF_Y } from '../../i18n/i18n-defaults.js';
 import { getOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
@@ -190,7 +190,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             hideArrow
             accessibleRole={accessibleRole}
             //todo translation
-            accessibleName={`with ${filteredChildrenArray.length} items`}
+            accessibleName={i18nBundle.getText(WITH_X_ITEMS, filteredChildrenArray.length)}
           >
             <div
               className={classes.popoverContent}
