@@ -16,6 +16,9 @@
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
+  &[data-in-iframe='true'] {
+    scroll-behavior: auto;
+  }
   section[id*='ObjectPageSection-'] > div[role='heading'] {
     display: none;
   }
