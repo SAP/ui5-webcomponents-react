@@ -156,8 +156,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     })
     .filter(Boolean);
 
-  console.log(filteredChildrenArray);
-
   return (
     <OverflowPopoverContextProvider value={{ inPopover: true }}>
       {overflowButton ? (
