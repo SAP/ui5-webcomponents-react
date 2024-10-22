@@ -14,7 +14,7 @@ import { stopPropagation } from '@ui5/webcomponents-react/dist/internal/stopProp
 import { getUi5TagWithSuffix } from '@ui5/webcomponents-react/dist/internal/utils.js';
 import { Device, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
+import type { Dispatch, FC, HTMLAttributes, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
 import { isValidElement, cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { getOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
@@ -126,7 +126,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   let startIndex = null;
   const filteredChildrenArray = children
     .map((item, index, arr) => {
-      if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
+      if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1 && isValidElement(item)) {
         if (startIndex === null) {
           startIndex = index;
         }
@@ -135,10 +135,8 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         if (item?.props?.[labelProp]) {
           labelVal += ' ' + item.props[labelProp];
         }
-        // @ts-expect-error: if props is not defined, it doesn't have an id (is not a ReactElement)
         if (item?.props?.id) {
-          // @ts-expect-error: item is ReactElement
-          return cloneElement(item, {
+          return cloneElement<HTMLAttributes<HTMLElement>>(item, {
             id: `${item.props.id}-overflow`,
             [labelProp]: labelVal
           });
@@ -152,11 +150,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
               width: '100%'
             },
             'aria-label': labelVal
-          });
-        }
-        if (isValidElement(item)) {
-          return cloneElement(item, {
-            [labelProp]: labelVal
           });
         }
       }
