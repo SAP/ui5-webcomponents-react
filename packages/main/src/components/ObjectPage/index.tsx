@@ -342,7 +342,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         section.scrollIntoView();
         objectPageRef.current.style.scrollBehavior = '';
       } else {
-        section.scrollIntoView({ behavior: 'smooth' });
+        section.scrollIntoView();
       }
       section.style.scrollMarginBlockStart = '0px';
     }

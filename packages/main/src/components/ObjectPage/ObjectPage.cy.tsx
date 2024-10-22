@@ -259,7 +259,7 @@ describe('ObjectPage', () => {
   it.only('scroll to sections - default mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
-      <ObjectPage titleArea={DPTitle} headerArea={DPContent}>
+      <ObjectPage titleArea={DPTitle} headerArea={DPContent} style={{ height: '100vh', scrollBehavior: 'auto' }}>
         {OPContent}
       </ObjectPage>
     );
@@ -331,7 +331,7 @@ describe('ObjectPage', () => {
         titleArea={DPTitle}
         headerArea={DPContent}
         mode={ObjectPageMode.IconTabBar}
-        style={{ height: '100vh' }}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
       >
         {OPContent}
       </ObjectPage>
@@ -361,7 +361,7 @@ describe('ObjectPage', () => {
         headerArea={DPContent}
         footerArea={Footer}
         mode={ObjectPageMode.IconTabBar}
-        style={{ height: '100vh' }}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
       >
         {OPContent}
       </ObjectPage>
