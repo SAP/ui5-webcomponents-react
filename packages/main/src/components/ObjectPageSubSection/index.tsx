@@ -95,7 +95,7 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
           <div
             role="heading"
             aria-level={parseInt(titleTextLevel.slice(1))}
-            className={clsx(classNames.subSectionTitle, titleTextUppercase && classNames.uppercase, titleText)}
+            className={clsx(classNames.subSectionTitle, titleTextUppercase && classNames.uppercase)}
             data-component-name="ObjectPageSubSectionTitleText"
           >
             {titleText}

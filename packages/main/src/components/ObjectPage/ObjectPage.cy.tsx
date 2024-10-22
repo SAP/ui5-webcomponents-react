@@ -256,7 +256,7 @@ describe('ObjectPage', () => {
     cy.findByText('ObjectPageHeader').should('be.visible');
   });
 
-  it.only('scroll to sections - default mode', () => {
+  it('scroll to sections - default mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
       <ObjectPage titleArea={DPTitle} headerArea={DPContent} style={{ height: '100vh', scrollBehavior: 'auto' }}>
@@ -286,45 +286,50 @@ describe('ObjectPage', () => {
     cy.realPress('Enter');
     cy.findByText('Job Relationship').should('be.visible');
 
-    // cy.mount(
-    //   <ObjectPage titleArea={DPTitle} headerArea={DPContent} footerArea={Footer}>
-    //     {OPContent}
-    //   </ObjectPage>
-    // );
-    //
-    // cy.findByText('Employment').should('not.be.visible');
-    // cy.findByText('Test').should('be.visible');
-    // cy.findByTestId('footer').should('be.visible');
-    //
-    // // Select Employment tab
-    // cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
-    // cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
-    // cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
-    // cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
-    // cy.get('[ui5-tabcontainer]').realPress('Enter');
-    //
-    // cy.wait(200);
-    // //fallback click
-    // cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
-    // cy.findByTestId('footer').should('be.visible');
-    // cy.findByText('Employment').should('be.visible');
-    //
-    // cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
-    // cy.findByText('Test').should('be.visible');
-    // cy.findByTestId('footer').should('be.visible');
-    //
-    // cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
-    // cy.realPress('ArrowDown');
-    // cy.wait(500);
-    // cy.realPress('ArrowDown');
-    // cy.realPress('ArrowDown');
-    // cy.realPress('Enter');
-    // cy.findByText('Job Relationship').should('be.visible');
-    //
-    // cy.findByTestId('footer').should('be.visible');
+    cy.mount(
+      <ObjectPage
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        footerArea={Footer}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
+      >
+        {OPContent}
+      </ObjectPage>
+    );
+
+    cy.findByText('Employment').should('not.be.visible');
+    cy.findByText('Test').should('be.visible');
+    cy.findByTestId('footer').should('be.visible');
+
+    // Select Employment tab
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+    cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
+    cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
+    cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
+    cy.get('[ui5-tabcontainer]').realPress('Enter');
+
+    cy.wait(200);
+    //fallback click
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
+    cy.findByTestId('footer').should('be.visible');
+    cy.findByText('Employment').should('be.visible');
+
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+    cy.findByText('Test').should('be.visible');
+    cy.findByTestId('footer').should('be.visible');
+
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
+    cy.realPress('ArrowDown');
+    cy.wait(500);
+    cy.realPress('ArrowDown');
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
+    cy.findByText('Job Relationship').should('be.visible');
+
+    cy.findByTestId('footer').should('be.visible');
   });
 
-  it.only('scroll to sections - tab mode', () => {
+  it('scroll to sections - tab mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
       <ObjectPage
