@@ -9,7 +9,7 @@ import type {
   ToggleButtonPropTypes
 } from '@ui5/webcomponents-react';
 import { Popover, ToggleButton } from '@ui5/webcomponents-react';
-import { SHOW_MORE, X_OF_Y } from '@ui5/webcomponents-react/dist/i18n/i18n-defaults.js';
+import { WITH_X_ITEMS, SHOW_MORE, X_OF_Y } from '@ui5/webcomponents-react/dist/i18n/i18n-defaults.js';
 import { stopPropagation } from '@ui5/webcomponents-react/dist/internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '@ui5/webcomponents-react/dist/internal/utils.js';
 import { Device, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
@@ -194,7 +194,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             hideArrow
             accessibleRole={accessibleRole}
             //todo translation
-            accessibleName={`with ${filteredChildrenArray.length} items`}
+            accessibleName={i18nBundle.getText(WITH_X_ITEMS, filteredChildrenArray.length)}
           >
             <div
               className={classes.popoverContent}
