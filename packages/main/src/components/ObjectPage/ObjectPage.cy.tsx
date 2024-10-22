@@ -242,7 +242,7 @@ describe('ObjectPage', () => {
   it('scroll to sections - default mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
-      <ObjectPage headerTitle={DPTitle} headerContent={DPContent}>
+      <ObjectPage headerTitle={DPTitle} headerContent={DPContent} style={{ height: '100vh', scrollBehavior: 'auto' }}>
         {OPContent}
       </ObjectPage>
     );
@@ -267,7 +267,12 @@ describe('ObjectPage', () => {
     cy.findByText('Job Relationship').should('be.visible');
 
     cy.mount(
-      <ObjectPage headerTitle={DPTitle} headerContent={DPContent} footer={Footer}>
+      <ObjectPage
+        headerTitle={DPTitle}
+        headerContent={DPContent}
+        footer={Footer}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
+      >
         {OPContent}
       </ObjectPage>
     );
@@ -311,7 +316,7 @@ describe('ObjectPage', () => {
         headerTitle={DPTitle}
         headerContent={DPContent}
         mode={ObjectPageMode.IconTabBar}
-        style={{ height: '100vh' }}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
       >
         {OPContent}
       </ObjectPage>
@@ -341,7 +346,7 @@ describe('ObjectPage', () => {
         headerContent={DPContent}
         footer={Footer}
         mode={ObjectPageMode.IconTabBar}
-        style={{ height: '100vh' }}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
       >
         {OPContent}
       </ObjectPage>

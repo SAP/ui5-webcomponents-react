@@ -6,10 +6,13 @@ import { DynamicPageTitle } from '../DynamicPageTitle';
 import { DynamicPageHeader } from '../DynamicPageHeader';
 import { ObjectPageSection } from '../ObjectPageSection';
 import { ObjectPageSubSection } from '../ObjectPageSubSection';
+import { MessageStrip } from '@ui5/webcomponents-react';
 
 <Meta of={ComponentStories} />
 
 <DocsHeader subComponents={['DynamicPageTitle', 'DynamicPageHeader', 'ObjectPageSection', 'ObjectPageSubSection']} />
+
+<MessageStrip hideCloseButton children={'In iframes, smooth scrolling is disabled!'} />
 
 ## Example
 
