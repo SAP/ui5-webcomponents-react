@@ -152,6 +152,9 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             'aria-label': labelVal
           });
         }
+        return cloneElement<HTMLAttributes<HTMLElement>>(item, {
+          [labelProp]: labelVal
+        });
       }
       return null;
     })
