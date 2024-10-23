@@ -135,8 +135,13 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         if (item?.props?.[labelProp]) {
           labelVal += ' ' + item.props[labelProp];
         }
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore: React 19
         if (item?.props?.id) {
           return cloneElement<HTMLAttributes<HTMLElement>>(item, {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore: React 19
             id: `${item.props.id}-overflow`,
             [labelProp]: labelVal
           });
@@ -144,6 +149,8 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
         // @ts-expect-error: if type is not defined, it's not a spacer
         if (item.type?.displayName === 'ToolbarSeparator') {
           return cloneElement(item as ReactElement, {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore: React 19
             style: {
               height: '0.0625rem',
               margin: '0.375rem 0.1875rem',
