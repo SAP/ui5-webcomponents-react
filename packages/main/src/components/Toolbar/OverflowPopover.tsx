@@ -1,10 +1,11 @@
 import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
-import { Device, useSyncRef } from '@ui5/webcomponents-react-base';
+import { Device, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { Dispatch, FC, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
-import { cloneElement, useEffect, useRef, useState } from 'react';
+import type { Dispatch, FC, HTMLAttributes, ReactElement, ReactNode, Ref, SetStateAction } from 'react';
+import { isValidElement, cloneElement, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ButtonDesign, PopoverPlacementType, PopupAccessibleRole } from '../../enums/index.js';
+import { WITH_X_ITEMS, SHOW_MORE, X_OF_Y } from '../../i18n/i18n-defaults.js';
 import { getOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';
 import { useCanRenderPortal } from '../../internal/ssr.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
@@ -25,7 +26,6 @@ interface OverflowPopoverProps {
   portalContainer: Element;
   overflowContentRef: Ref<HTMLDivElement>;
   numberOfAlwaysVisibleItems?: number;
-  showMoreText: string;
   overflowPopoverRef?: Ref<PopoverDomRef>;
   overflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
   setIsMounted: Dispatch<SetStateAction<boolean>>;
@@ -42,7 +42,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     portalContainer,
     overflowContentRef,
     numberOfAlwaysVisibleItems,
-    showMoreText,
     overflowButton,
     overflowPopoverRef,
     setIsMounted,
@@ -51,6 +50,8 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   const [pressed, setPressed] = useState(false);
   const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
   const [componentRef, popoverRef] = useSyncRef(overflowPopoverRef);
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const showMoreText = i18nBundle.getText(SHOW_MORE);
 
   useEffect(() => {
     setIsMounted(true);
@@ -118,6 +119,43 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const OverflowPopoverContextProvider = getOverflowPopoverContext().Provider;
 
+  let startIndex = null;
+  const filteredChildrenArray = children
+    .map((item, index, arr) => {
+      if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1 && isValidElement(item)) {
+        if (startIndex === null) {
+          startIndex = index;
+        }
+        const labelProp = item?.props?.['data-accessible-name'] ? 'accessibleName' : 'aria-label';
+        let labelVal = i18nBundle.getText(X_OF_Y, index + 1 - startIndex, arr.length - startIndex);
+        if (item?.props?.[labelProp]) {
+          labelVal += ' ' + item.props[labelProp];
+        }
+        if (item?.props?.id) {
+          return cloneElement<HTMLAttributes<HTMLElement>>(item, {
+            id: `${item.props.id}-overflow`,
+            [labelProp]: labelVal
+          });
+        }
+        // @ts-expect-error: if type is not defined, it's not a spacer
+        if (item.type?.displayName === 'ToolbarSeparator') {
+          return cloneElement(item as ReactElement, {
+            style: {
+              height: '0.0625rem',
+              margin: '0.375rem 0.1875rem',
+              width: '100%'
+            },
+            'aria-label': labelVal
+          });
+        }
+        return cloneElement<HTMLAttributes<HTMLElement>>(item, {
+          [labelProp]: labelVal
+        });
+      }
+      return null;
+    })
+    .filter(Boolean);
+
   return (
     <OverflowPopoverContextProvider value={{ inPopover: true }}>
       {overflowButton ? (
@@ -147,6 +185,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             onAfterOpen={handleAfterOpen}
             hideArrow
             accessibleRole={accessibleRole}
+            accessibleName={i18nBundle.getText(WITH_X_ITEMS, filteredChildrenArray.length)}
           >
             <div
               className={classes.popoverContent}
@@ -154,27 +193,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
               role={a11yConfig?.overflowPopover?.contentRole}
               data-component-name="ToolbarOverflowPopoverContent"
             >
-              {children.map((item, index) => {
-                if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1) {
-                  // @ts-expect-error: if props is not defined, it doesn't have an id (is not a ReactElement)
-                  if (item?.props?.id) {
-                    // @ts-expect-error: item is ReactElement
-                    return cloneElement(item, { id: `${item.props.id}-overflow` });
-                  }
-                  // @ts-expect-error: if type is not defined, it's not a spacer
-                  if (item.type?.displayName === 'ToolbarSeparator') {
-                    return cloneElement(item as ReactElement, {
-                      style: {
-                        height: '0.0625rem',
-                        margin: '0.375rem 0.1875rem',
-                        width: '100%'
-                      }
-                    });
-                  }
-                  return item;
-                }
-                return null;
-              })}
+              {filteredChildrenArray}
             </div>
           </Popover>,
           portalContainer ?? document.body

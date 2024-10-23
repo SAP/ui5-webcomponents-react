@@ -537,6 +537,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           <FlexBox direction={FlexBoxDirection.Column} className={classNames.subheaderContainer}>
             <Toolbar className={classNames.subheader} toolbarStyle={ToolbarStyle.Clear}>
               <Select
+                data-accessible-name
                 onChange={handleAttributeFilterChange}
                 title={fieldsByAttributeText}
                 accessibleName={fieldsByAttributeText}
@@ -558,10 +559,10 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
                 </Option>
               </Select>
               <ToolbarSpacer />
-              <Button design={ButtonDesign.Transparent} onClick={toggleValues} aria-live="polite">
+              <Button data-accessible-name design={ButtonDesign.Transparent} onClick={toggleValues} aria-live="polite">
                 {showValues ? hideValuesText : showValuesText}
               </Button>
-              <SegmentedButton onSelectionChange={handleViewChange}>
+              <SegmentedButton data-accessible-name onSelectionChange={handleViewChange}>
                 <SegmentedButtonItem
                   icon={listIcon}
                   data-id="list"

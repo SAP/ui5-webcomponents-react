@@ -340,12 +340,13 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const ToolbarButtons = (
     <>
       {showGoOnFB && (
-        <Button onClick={handleGoOnFb} design={ButtonDesign.Emphasized}>
+        <Button data-accessible-name onClick={handleGoOnFb} design={ButtonDesign.Emphasized}>
           {goText}
         </Button>
       )}
       {!hideToggleFiltersButton && !hideToolbar && !isPhone && (
         <Button
+          data-accessible-name
           onClick={handleToggle}
           design={ButtonDesign.Transparent}
           className={classNames.showFiltersBtn}
@@ -355,17 +356,23 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
         </Button>
       )}
       {showClearOnFB && (
-        <Button onClick={handleClear} design={ButtonDesign.Transparent}>
+        <Button data-accessible-name onClick={handleClear} design={ButtonDesign.Transparent}>
           {clearText}
         </Button>
       )}
       {showRestoreOnFB && (
-        <Button onClick={handleFBRestore} design={ButtonDesign.Transparent}>
+        <Button data-accessible-name onClick={handleFBRestore} design={ButtonDesign.Transparent}>
           {restoreText}
         </Button>
       )}
       {!hideFilterConfiguration && (
-        <Button onClick={handleDialogOpen} aria-haspopup="dialog" design={ButtonDesign.Transparent} ref={filterBtnRef}>
+        <Button
+          data-accessible-name
+          onClick={handleDialogOpen}
+          aria-haspopup="dialog"
+          design={ButtonDesign.Transparent}
+          ref={filterBtnRef}
+        >
           {`${filtersText}${
             activeFiltersCount && parseInt(activeFiltersCount as string, 10) > 0 ? ` (${activeFiltersCount})` : ''
           }`}

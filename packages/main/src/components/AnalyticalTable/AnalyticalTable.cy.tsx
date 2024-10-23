@@ -2159,13 +2159,13 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
       'have.attr',
       'aria-label',
-      'Name A Grouped, To expand the row, press the spacebar'
+      'Name A Grouped, To expand the row, press the spacebar.'
     );
     cy.get('[name="navigation-right-arrow"]').click();
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
       'have.attr',
       'aria-label',
-      'Name A Grouped, To collapse the row, press the spacebar'
+      'Name A Grouped, To collapse the row, press the spacebar.'
     );
     cy.findByText('Name').click();
     cy.findByText('Ungroup').shadow().findByRole('listitem').click({ force: true });

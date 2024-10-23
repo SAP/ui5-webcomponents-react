@@ -60,23 +60,23 @@ const meta = {
       <DynamicPageTitle
         actions={
           <>
-            <Button key={'edit'} design={ButtonDesign.Emphasized}>
+            <Button data-accessible-name key={'edit'} design={ButtonDesign.Emphasized}>
               Edit
             </Button>
-            <Button key={'delete'} design={ButtonDesign.Transparent}>
+            <Button data-accessible-name key={'delete'} design={ButtonDesign.Transparent}>
               Delete
             </Button>
-            <Button key={'copy'} design={ButtonDesign.Transparent}>
+            <Button data-accessible-name key={'copy'} design={ButtonDesign.Transparent}>
               Copy
             </Button>
-            <Button key={'action'} icon={actionIcon} design={ButtonDesign.Transparent} />
+            <Button data-accessible-name key={'action'} icon={actionIcon} design={ButtonDesign.Transparent} />
           </>
         }
         navigationActions={
           <>
-            <Button key={'fullscreen'} icon={fullscreenIcon} design={ButtonDesign.Transparent} />
-            <Button key={'exitFullscreen'} icon={exitFSIcon} design={ButtonDesign.Transparent} />
-            <Button key={'decline'} icon={declineIcon} design={ButtonDesign.Transparent} />
+            <Button data-accessible-name key={'fullscreen'} icon={fullscreenIcon} design={ButtonDesign.Transparent} />
+            <Button data-accessible-name key={'exitFullscreen'} icon={exitFSIcon} design={ButtonDesign.Transparent} />
+            <Button data-accessible-name key={'decline'} icon={declineIcon} design={ButtonDesign.Transparent} />
           </>
         }
         breadcrumbs={
@@ -158,10 +158,10 @@ export const WithVariants: Story = {
       <Button key={'decline'} icon={declineIcon} design={ButtonDesign.Transparent} />
     ]);
     const [actionItems, setActionItems] = useState([
-      <Button key={'edit'} design={ButtonDesign.Emphasized}>
+      <Button data-accessible-name key={'edit'} design={ButtonDesign.Emphasized}>
         Edit
       </Button>,
-      <Button key={'delete'} design={ButtonDesign.Transparent}>
+      <Button data-accessible-name key={'delete'} design={ButtonDesign.Transparent}>
         Delete
       </Button>
     ]);
@@ -171,27 +171,37 @@ export const WithVariants: Story = {
       setNavigationItems(
         selectedVariant === 'Header Variant 2'
           ? [
-              <Button key={'fullscreen'} icon={fullscreenIcon} design={ButtonDesign.Transparent} />,
-              <Button key={'exitFullscreen'} icon={exitFSIcon} design={ButtonDesign.Transparent} />,
-              <Button key={'decline'} icon={declineIcon} design={ButtonDesign.Transparent} />
+              <Button
+                data-accessible-name
+                key={'fullscreen'}
+                icon={fullscreenIcon}
+                design={ButtonDesign.Transparent}
+              />,
+              <Button
+                data-accessible-name
+                key={'exitFullscreen'}
+                icon={exitFSIcon}
+                design={ButtonDesign.Transparent}
+              />,
+              <Button data-accessible-name key={'decline'} icon={declineIcon} design={ButtonDesign.Transparent} />
             ]
-          : [<Button key={'decline'} icon={declineIcon} design={ButtonDesign.Transparent} />]
+          : [<Button data-accessible-name key={'decline'} icon={declineIcon} design={ButtonDesign.Transparent} />]
       );
       setActionItems(
         selectedVariant === 'Header Variant 1'
           ? [
-              <Button key={'edit'} design={ButtonDesign.Emphasized}>
+              <Button data-accessible-name key={'edit'} design={ButtonDesign.Emphasized}>
                 Edit
               </Button>,
-              <Button key={'delete'} design={ButtonDesign.Transparent}>
+              <Button data-accessible-name key={'delete'} design={ButtonDesign.Transparent}>
                 Delete
               </Button>
             ]
           : [
-              <Button key={'copy'} design={ButtonDesign.Transparent}>
+              <Button data-accessible-name key={'copy'} design={ButtonDesign.Transparent}>
                 Copy
               </Button>,
-              <Button key={'action'} icon={actionIcon} design={ButtonDesign.Transparent} />
+              <Button data-accessible-name key={'action'} icon={actionIcon} design={ButtonDesign.Transparent} />
             ]
       );
     };
@@ -287,30 +297,38 @@ export const WithCustomOverflowButton: Story = {
       },
       actions: (
         <>
-          <Button key={'edit'} design={ButtonDesign.Emphasized}>
+          <Button data-accessible-name key={'edit'} design={ButtonDesign.Emphasized}>
             Edit
           </Button>
-          <Button key={'delete'} design={ButtonDesign.Transparent}>
+          <Button data-accessible-name key={'delete'} design={ButtonDesign.Transparent}>
             Delete
           </Button>
-          <Button key={'copy'} design={ButtonDesign.Transparent}>
+          <Button data-accessible-name key={'copy'} design={ButtonDesign.Transparent}>
             Copy
           </Button>
-          <Button key={'action'} icon={actionIcon} design={ButtonDesign.Transparent}>
+          <Button data-accessible-name key={'action'} icon={actionIcon} design={ButtonDesign.Transparent}>
             Action
           </Button>
-          <Button design={ButtonDesign.Transparent}>Create</Button>
-          <Button design={ButtonDesign.Transparent}>Loooooong actions Button</Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Create
+          </Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Loooooong actions Button
+          </Button>
         </>
       ),
       navigationActions: (
         <>
-          <Button key={'fullscreen'} icon={fullscreenIcon} design={ButtonDesign.Transparent} />
-          <Button key={'exitFullscreen'} icon={exitFSIcon} design={ButtonDesign.Transparent} />
-          <Button key={'decline'} icon={declineIcon} design={ButtonDesign.Transparent} />
-          <Button design={ButtonDesign.Transparent}>UI5 Web Components For React</Button>
-          <Button design={ButtonDesign.Transparent}>Navigation Actions Button</Button>
-          <Button design={ButtonDesign.Transparent}>
+          <Button data-accessible-name key={'fullscreen'} icon={fullscreenIcon} design={ButtonDesign.Transparent} />
+          <Button data-accessible-name key={'exitFullscreen'} icon={exitFSIcon} design={ButtonDesign.Transparent} />
+          <Button data-accessible-name key={'decline'} icon={declineIcon} design={ButtonDesign.Transparent} />
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            UI5 Web Components For React
+          </Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Navigation Actions Button
+          </Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
             Loooooooooooooooooooooooooooooooooooong navigation actions Button
           </Button>
         </>

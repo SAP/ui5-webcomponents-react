@@ -72,10 +72,12 @@ const meta = {
         subHeader="Senior UI Developer"
         actions={
           <>
-            <Button key="1" design={ButtonDesign.Emphasized}>
+            <Button data-accessible-name key="1" design={ButtonDesign.Emphasized}>
               Primary Action
             </Button>
-            <Button key="2">Action</Button>
+            <Button data-accessible-name key="2">
+              Action
+            </Button>
           </>
         }
         breadcrumbs={
@@ -146,11 +148,16 @@ export const Default: Story = {
             aria-label="Connect"
             actions={
               <>
-                <Button design={ButtonDesign.Emphasized} style={{ minWidth: '120px' }}>
+                <Button data-accessible-name design={ButtonDesign.Emphasized} style={{ minWidth: '120px' }}>
                   Custom Action
                 </Button>
-                <Button design={ButtonDesign.Transparent} icon="action-settings" tooltip="settings" />
-                <Button design={ButtonDesign.Transparent} icon="download" tooltip="download" />
+                <Button
+                  data-accessible-name
+                  design={ButtonDesign.Transparent}
+                  icon="action-settings"
+                  tooltip="settings"
+                />
+                <Button data-accessible-name design={ButtonDesign.Transparent} icon="download" tooltip="download" />
               </>
             }
           >
@@ -314,30 +321,43 @@ export const WithCustomOverflowButton: Story = {
       },
       actions: (
         <>
-          <Button key={'edit'} design={ButtonDesign.Emphasized}>
+          <Button data-accessible-name key={'edit'} design={ButtonDesign.Emphasized}>
             Edit
           </Button>
-          <Button key={'delete'} design={ButtonDesign.Transparent}>
+          <Button data-accessible-name key={'delete'} design={ButtonDesign.Transparent}>
             Delete
           </Button>
-          <Button key={'copy'} design={ButtonDesign.Transparent}>
+          <Button data-accessible-name key={'copy'} design={ButtonDesign.Transparent}>
             Copy
           </Button>
-          <Button key={'action'} icon="action" design={ButtonDesign.Transparent}>
+          <Button data-accessible-name key={'action'} icon="action" design={ButtonDesign.Transparent}>
             Action
           </Button>
-          <Button design={ButtonDesign.Transparent}>Create</Button>
-          <Button design={ButtonDesign.Transparent}>Loooooooooooooooooooooooooooooooooooong actions Button</Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Create
+          </Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Loooooooooooooooooooooooooooooooooooong actions Button
+          </Button>
         </>
       ),
       navigationActions: (
         <>
-          <Button key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />
-          <Button key={'exitFullscreen'} icon="exit-full-screen" design={ButtonDesign.Transparent} />
-          <Button key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
-          <Button design={ButtonDesign.Transparent}>UI5 Web Components For React</Button>
-          <Button design={ButtonDesign.Transparent}>Navigation Actions Button</Button>
-          <Button design={ButtonDesign.Transparent}>
+          <Button data-accessible-name key={'fullscreen'} icon="full-screen" design={ButtonDesign.Transparent} />
+          <Button
+            data-accessible-name
+            key={'exitFullscreen'}
+            icon="exit-full-screen"
+            design={ButtonDesign.Transparent}
+          />
+          <Button data-accessible-name key={'decline'} icon="decline" design={ButtonDesign.Transparent} />
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            UI5 Web Components For React
+          </Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Navigation Actions Button
+          </Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
             Loooooooooooooooooooooooooooooooooooong navigation actions Button
           </Button>
         </>

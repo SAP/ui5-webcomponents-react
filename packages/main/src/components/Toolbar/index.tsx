@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  debounce,
-  useI18nBundle,
-  useIsomorphicLayoutEffect,
-  useStylesheet,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import { debounce, useIsomorphicLayoutEffect, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ElementType, HTMLAttributes, ReactElement, ReactNode, Ref, RefObject } from 'react';
 import {
@@ -22,7 +16,6 @@ import {
 } from 'react';
 import type { PopupAccessibleRole } from '../../enums/index.js';
 import { ToolbarDesign, ToolbarStyle } from '../../enums/index.js';
-import { SHOW_MORE } from '../../i18n/i18n-defaults.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
 import type { ButtonPropTypes, PopoverDomRef, ToggleButtonPropTypes } from '../../webComponents/index.js';
@@ -178,9 +171,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const overflowContentRef = useRef(null);
   const overflowBtnRef = useRef(null);
   const [minWidth, setMinWidth] = useState('0');
-
-  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const showMoreText = i18nBundle.getText(SHOW_MORE);
 
   const toolbarClasses = clsx(
     classNames.outerContainer,
@@ -411,7 +401,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
             portalContainer={portalContainer}
             overflowContentRef={overflowContentRef}
             numberOfAlwaysVisibleItems={numberOfAlwaysVisibleItems}
-            showMoreText={showMoreText}
             overflowButton={overflowButton}
             setIsMounted={setIsPopoverMounted}
             a11yConfig={a11yConfig}
