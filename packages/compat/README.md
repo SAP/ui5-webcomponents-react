@@ -17,7 +17,7 @@ npm install @ui5/webcomponents-react-compat
 ## Importing Components
 
 As the v1 `ui5-table` (`Table`) component is part of this package and some custom element names are equal to the new v2 `ui5-table`, importing components from the root (`import { Table } from "@ui5/webcomponents-react-compat"`) is discouraged.
-The primary reason is that tree-shaking capabilities are limited in the default configurations of most bundlers. As a result, custom elements for the v1 table will still be defined, even if only the `Toolbar` is imported. This can cause unexpected behavior if the v2 table is also used in the same app.
+The primary reason is that tree-shaking capabilities are limited in the default configurations of most bundlers in dev mode. As a result, custom elements for the v1 table will still be defined, even if only the `Toolbar` is imported. This can cause unexpected behavior if the v2 table is also used in the same app.
 
 **Please only import components from the file path!**
 
