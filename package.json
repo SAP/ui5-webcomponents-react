@@ -50,10 +50,10 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
-    "@babel/core": "7.25.8",
-    "@babel/preset-env": "7.25.8",
-    "@babel/preset-react": "7.25.7",
-    "@babel/preset-typescript": "7.25.7",
+    "@babel/core": "7.25.9",
+    "@babel/preset-env": "7.25.9",
+    "@babel/preset-react": "7.25.9",
+    "@babel/preset-typescript": "7.25.9",
     "@cypress/code-coverage": "^3.10.0",
     "@eslint/js": "^9.11.1",
     "@semantic-release/github": "^11.0.0",
@@ -79,7 +79,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "beta",
-    "eslint-plugin-storybook": "0.10.0--canary.156.ce8985b.0",
+    "eslint-plugin-storybook": "0.10.1",
     "glob": "^11.0.0",
     "globals": "^15.10.0",
     "husky": "^9.0.6",
@@ -121,5 +121,5 @@
       "lcov"
     ]
   },
-  "packageManager": "yarn@4.5.0"
+  "packageManager": "yarn@4.5.1"
 }
