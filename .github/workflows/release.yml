@@ -20,12 +20,12 @@ jobs:
     with:
       reportCoverage: false
 
-  check-charts-peer-deps:
+  check-charts-compat-peer-deps:
     runs-on: ubuntu-latest
     environment: charts-peer-deps-approval
     steps:
       - name: No-op
-        run: echo "Did you update the peer dependencies of the chart package?"
+        run: echo "Did you update the peer dependencies of the charts and compat package?"
 
   release-dryrun:
     runs-on: ubuntu-latest
