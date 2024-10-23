@@ -20,6 +20,24 @@ import { OverflowToolbarButton, OverflowToolbarToggleButton, ToolbarSpacer, Tool
 
 <ControlsWithNote of={ComponentStories.Default} />
 
+## Announce number of items in overflow popover
+
+To set the `aria-label` correctly it's necessary to add the `data-accessible-name` data-attribute for each web component that relies on `accessibleName` instead of `aria-label`.
+
+E.g.:
+
+```jsx
+<Toolbar>
+  <Text>Toolbar</Text>
+  <Button data-accessible-name design={ButtonDesign.Transparent}>
+    Button One
+  </Button>
+  <button>Button Two</button>
+  <Input data-accessible-name />
+  <input />
+</Toolbar>
+```
+
 ## Prevent event bubbling of Toolbar items
 
 Per default, if the `active` prop is "true" and an actionable element like a button is clicked, the `onClick` event of the `Toolbar` is also fired.

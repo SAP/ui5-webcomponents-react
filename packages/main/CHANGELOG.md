@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.1...v2.3.2) (2024-10-23)
+
+### Bug Fixes
+
+- **ObjectPage:** support section selection in iframe ([#6535](https://github.com/SAP/ui5-webcomponents-react/issues/6535)) ([ca82fcb](https://github.com/SAP/ui5-webcomponents-react/commit/ca82fcb69c1b753202d490f35405ca88d6dce36c))
+
 ## [2.3.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.0...v2.3.1) (2024-10-17)
 
 ### Bug Fixes

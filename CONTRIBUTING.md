@@ -15,11 +15,15 @@ If you find a bug or some other issue with any part of the library, please [subm
 - Your explanation is clear and complete.
 - You provide example code (preferably by forking this [StackBlitz template](https://stackblitz.com/github/SAP/ui5-webcomponents-react/tree/main/templates/vite-ts?file=src%2FApp.tsx)) and optionally screenshots.
 
-If you meet the above criteria, you can submit issues with our [GitHub issue tracker](https://github.com/SAP/ui5-webcomponents-react/issues/new/choose). Please use [labels](#usage-of-labels) to categorize your issue.
+**For accessibility issues:**
+
+- You follow the "[Testing Accessibility](https://sap.github.io/ui5-webcomponents/docs/advanced/accessibility/#testing-accessibility)" guidelines and include all relevant information.
+
+If you meet the above criteria, you can submit issues with our [GitHub issue tracker](https://github.com/SAP/ui5-webcomponents-react/issues/new/choose).
 
 ## Feature Requests
 
-You can also use the issue tracker to request a new feature or enhancement. Even if you want to implement the feature yourself, please first submit an issue detailing your proposal so that we may discuss it with you and the community before moving forward. Please use [labels](#usage-of-labels) when creating feature requests.
+You can also use the issue tracker to request a new feature or enhancement. Even if you want to implement the feature yourself, please first submit an issue detailing your proposal so that we may discuss it with you and the community before moving forward.
 
 ### Usage of Labels
 
@@ -36,7 +40,7 @@ Status of open issues:
 - `(no label)`: The default status.
 - `contribution welcome`: The fix or enhancement is approved and you are invited to contribute to it.
 
-_It may happen that we add more labels to individual issues. These are used to describe the issue more granularly, but you don't need to worry about that._
+_It may happen that we add more labels to individual issues. These are used to describe the issue more granular, but you don't need to worry about that._
 
 ## Contribute Code
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.1...v2.3.2) (2024-10-23)
+
+### Bug Fixes
+
+- **compat:** update `@ui5/webcomponents-react` peer-dep ([#6541](https://github.com/SAP/ui5-webcomponents-react/issues/6541)) ([f6db6f7](https://github.com/SAP/ui5-webcomponents-react/commit/f6db6f7aa626da78a481d926396f8aeb7fed7729)), closes [#6540](https://github.com/SAP/ui5-webcomponents-react/issues/6540)
+- **ObjectPage:** support section selection in iframe ([#6535](https://github.com/SAP/ui5-webcomponents-react/issues/6535)) ([ca82fcb](https://github.com/SAP/ui5-webcomponents-react/commit/ca82fcb69c1b753202d490f35405ca88d6dce36c))
+- **Toolbar - compat:** announce number of items in overflow popover ([#6545](https://github.com/SAP/ui5-webcomponents-react/issues/6545)) ([60411d6](https://github.com/SAP/ui5-webcomponents-react/commit/60411d65ddc97d28fb444b320f6c26651a1aa467)), closes [#5926](https://github.com/SAP/ui5-webcomponents-react/issues/5926)
+
 ## [2.3.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.0...v2.3.1) (2024-10-17)
 
 ### Bug Fixes
