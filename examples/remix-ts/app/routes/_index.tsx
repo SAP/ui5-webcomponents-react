@@ -16,7 +16,7 @@ export const loader = async () => {
     }, 1500);
   });
 
-  return json({ data: { todos } });
+  return json({ data: { todos: todoList } });
 };
 
 export default function Index() {
