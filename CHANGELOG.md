@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.13](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.12...v1.29.13) (2024-10-23)
+
+### Bug Fixes
+
+- **ObjectPage:** support section selection in iframe ([#6535](https://github.com/SAP/ui5-webcomponents-react/issues/6535)) ([#6542](https://github.com/SAP/ui5-webcomponents-react/issues/6542)) ([6fc5199](https://github.com/SAP/ui5-webcomponents-react/commit/6fc5199f2b03fe64db0689d1572605e729d33b98))
+- **Toolbar:** announce number of items in overflow popover ([#6544](https://github.com/SAP/ui5-webcomponents-react/issues/6544)) ([1679be3](https://github.com/SAP/ui5-webcomponents-react/commit/1679be3405eb4a61f4b82b38b158059e1731e2c2)), closes [#5926](https://github.com/SAP/ui5-webcomponents-react/issues/5926)
+
 ## [1.29.12](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.11...v1.29.12) (2024-10-17)
 
 ### Bug Fixes
