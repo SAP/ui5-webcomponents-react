@@ -329,7 +329,15 @@ export interface AnalyticalTableColumnDefinition {
    * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`
    * __Note__: If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set.
    */
-  accessor?: string | ((originalRow: Record<string, any>, rowIndex: number, row: RowType, parentRows: RowType[], data: Record<string, any>[]) => any);
+  accessor?:
+    | string
+    | ((
+        originalRow: Record<string, any>,
+        rowIndex: number,
+        row: RowType,
+        parentRows: RowType[],
+        data: Record<string, any>[]
+      ) => any);
   /**
    * Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.
    *
