@@ -1,8 +1,11 @@
 'use client';
 
 import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
-import type { ButtonPropTypes, CommonProps, PopoverDomRef, ToggleButtonPropTypes } from '@ui5/webcomponents-react';
 import { flattenFragments } from '@ui5/webcomponents-react/dist/internal/utils.js';
+import type { CommonProps } from '@ui5/webcomponents-react/dist/types/CommonProps.js';
+import type { ButtonPropTypes } from '@ui5/webcomponents-react/dist/webComponents/Button/index.js';
+import type { PopoverDomRef } from '@ui5/webcomponents-react/dist/webComponents/Popover/index.js';
+import type { ToggleButtonPropTypes } from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
 import { debounce, useIsomorphicLayoutEffect, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ElementType, HTMLAttributes, ReactElement, ReactNode, Ref, RefObject } from 'react';
