@@ -329,7 +329,15 @@ export interface AnalyticalTableColumnDefinition {
    * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`
    * __Note__: If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set.
    */
-  accessor?: string | ((row: RowType, rowIndex: number) => any);
+  accessor?:
+    | string
+    | ((
+        originalRow: Record<string, any>,
+        rowIndex: number,
+        row: RowType,
+        parentRows: RowType[],
+        data: Record<string, any>[]
+      ) => any);
   /**
    * Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.
    *
@@ -541,8 +549,8 @@ interface OnAutoResizeMouseEvent extends Omit<MouseEvent, 'detail'> {
   detail: { columnId: string; width: number; nativeDetail: 2 };
 }
 
-interface OnRowClickEvent extends Omit<MouseEvent, 'detail'> {
-  detail: { detail: { row: unknown; nativeDetail: number } };
+interface OnRowClickEvent extends Omit<UIEvent, 'detail'> {
+  detail: { row: RowType; nativeDetail: number };
 }
 
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
