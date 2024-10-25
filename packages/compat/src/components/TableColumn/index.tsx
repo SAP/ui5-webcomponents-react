@@ -2,8 +2,9 @@
 
 import '@ui5/webcomponents-compat/dist/TableColumn.js';
 import type TableColumnPopinDisplay from '@ui5/webcomponents-compat/dist/types/TableColumnPopinDisplay.js';
-import { withWebComponent } from '@ui5/webcomponents-react';
-import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/internal/withWebComponent.js';
+import type { CommonProps } from '@ui5/webcomponents-react/dist/types/CommonProps.js';
+import type { Ui5DomRef } from '@ui5/webcomponents-react/dist/types/Ui5DomRef.js';
 import type { ReactNode } from 'react';
 
 interface TableColumnAttributes {

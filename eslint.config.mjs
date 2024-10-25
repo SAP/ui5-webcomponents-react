@@ -25,9 +25,11 @@ const ignorePatterns = {
     '**/scripts',
     '**/shared',
     '**/examples',
-    '**/templates'
+    '**/templates',
+    '**/*.module.css.ts'
   ]
 };
+
 const config = tseslint.config(
   ignorePatterns,
   eslint.configs.recommended,
@@ -221,6 +223,25 @@ const config = tseslint.config(
       'react/prop-types': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
       'react/no-unescaped-entities': 'off'
+    }
+  },
+
+  // no-restricted-imports rule for compat package
+  {
+    files: ['packages/compat/**/*.{js,jsx,ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: '@ui5/webcomponents-react',
+              message:
+                "Please use deep imports from @ui5/webcomponents-react. Example: import { Button } from '@ui5/webcomponents-react/dist/webComponents/Button/index.js';"
+            }
+          ]
+        }
+      ]
     }
   },
 

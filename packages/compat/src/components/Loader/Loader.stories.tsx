@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import activateIcon from '@ui5/webcomponents-icons/dist/activate.js';
-import { Card, CardHeader, FlexBox, FlexBoxDirection, Icon, Text } from '@ui5/webcomponents-react';
+import { FlexBox } from '@ui5/webcomponents-react/dist/components/FlexBox/index.js';
+import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/enums/FlexBoxDirection.js';
+import { Card } from '@ui5/webcomponents-react/dist/webComponents/Card/index.js';
+import { CardHeader } from '@ui5/webcomponents-react/dist/webComponents/CardHeader/index.js';
+import { Icon } from '@ui5/webcomponents-react/dist/webComponents/Icon/index.js';
+import { Text } from '@ui5/webcomponents-react/dist/webComponents/Text/index.js';
 import { useEffect, useRef, useState } from 'react';
 import { LoaderType } from '../../enums/LoaderType.js';
 import { Loader } from './index.js';

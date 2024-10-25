@@ -2,16 +2,17 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
 import iconOverflow from '@ui5/webcomponents-icons/dist/overflow.js';
-import type {
-  ButtonPropTypes,
-  PopoverDomRef,
-  ToggleButtonDomRef,
-  ToggleButtonPropTypes
-} from '@ui5/webcomponents-react';
-import { Popover, ToggleButton } from '@ui5/webcomponents-react';
 import { WITH_X_ITEMS, SHOW_MORE, X_OF_Y } from '@ui5/webcomponents-react/dist/i18n/i18n-defaults.js';
 import { stopPropagation } from '@ui5/webcomponents-react/dist/internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '@ui5/webcomponents-react/dist/internal/utils.js';
+import type { ButtonPropTypes } from '@ui5/webcomponents-react/dist/webComponents/Button/index.js';
+import type { PopoverDomRef } from '@ui5/webcomponents-react/dist/webComponents/Popover/index.js';
+import { Popover } from '@ui5/webcomponents-react/dist/webComponents/Popover/index.js';
+import type {
+  ToggleButtonDomRef,
+  ToggleButtonPropTypes
+} from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
+import { ToggleButton } from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
 import { Device, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { Dispatch, FC, HTMLAttributes, ReactElement, ReactNode, Ref, SetStateAction } from 'react';

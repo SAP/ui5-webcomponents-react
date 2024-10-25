@@ -4,19 +4,17 @@ import downloadIcon from '@ui5/webcomponents-icons/dist/download.js';
 import editIcon from '@ui5/webcomponents-icons/dist/edit.js';
 import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
-import {
-  Button,
-  DatePicker,
-  Icon,
-  Input,
-  Menu,
-  MenuItem,
-  Select,
-  Slider,
-  Switch,
-  Text,
-  ToggleButton
-} from '@ui5/webcomponents-react';
+import { Button } from '@ui5/webcomponents-react/dist/webComponents/Button/index.js';
+import { DatePicker } from '@ui5/webcomponents-react/dist/webComponents/DatePicker/index.js';
+import { Icon } from '@ui5/webcomponents-react/dist/webComponents/Icon/index.js';
+import { Input } from '@ui5/webcomponents-react/dist/webComponents/Input/index.js';
+import { Menu } from '@ui5/webcomponents-react/dist/webComponents/Menu/index.js';
+import { MenuItem } from '@ui5/webcomponents-react/dist/webComponents/MenuItem/index.js';
+import { Select } from '@ui5/webcomponents-react/dist/webComponents/Select/index.js';
+import { Slider } from '@ui5/webcomponents-react/dist/webComponents/Slider/index.js';
+import { Switch } from '@ui5/webcomponents-react/dist/webComponents/Switch/index.js';
+import { Text } from '@ui5/webcomponents-react/dist/webComponents/Text/index.js';
+import { ToggleButton } from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
 import { useState } from 'react';
 import { ToolbarDesign } from '../../enums/ToolbarDesign.js';
 import { ToolbarStyle } from '../../enums/ToolbarStyle.js';
