@@ -1,0 +1,94 @@
+import { ControlsWithNote, DocsHeader, Footer, ArgTypesWithNote } from '@sb/components';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import * as ComponentStories from './Tokenizer.stories';
+import { Token } from '../Token/index.tsx';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+
+<Meta of={ComponentStories} />
+
+[//]: # 'todo: check why subcomponents are not displayed via CEM'
+
+<DocsHeader subComponents={['Token']} />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+## More examples
+
+## Tokenizer with selection & delete logic
+
+<Canvas of={ComponentStories.WithLogic} />
+
+<details>
+
+    <summary>Show Code</summary>
+
+```tsx
+function TokenizerComponent(props) {
+  const [countries, setCountries] = useState([
+    'Andorra',
+    'Bulgaria',
+    'Canada',
+    'Denmark',
+    'Estonia',
+    'Fiji',
+    'Ghana',
+    'India',
+    'Japan',
+    'Kenya',
+    'Luxembourg',
+    'Mexico',
+    'Nepal',
+    'Qatar',
+    'Uganda'
+  ]);
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
+  const handleTokenDelete: TokenizerPropTypes['onTokenDelete'] = (e) => {
+    const { tokens } = e.detail;
+    if (tokens) {
+      const tokensToDelete = tokens.map((token) => token.text);
+      setCountries((prev) => prev.filter((country) => !tokensToDelete.includes(country)));
+      setSelectedCountries([]);
+    }
+  };
+  const handleSelectionChange: TokenizerPropTypes['onSelectionChange'] = (e) => {
+    const { tokens } = e.detail;
+    if (tokens) {
+      const selectedTokens = tokens.map((token) => token.text);
+      setSelectedCountries(selectedTokens);
+    }
+  };
+  return (
+    <>
+      <Tokenizer {...props} onTokenDelete={handleTokenDelete} onSelectionChange={handleSelectionChange}>
+        {countries.map((country) => (
+          <Token key={country} text={country} />
+        ))}
+      </Tokenizer>
+      <br />
+      <div style={{ display: 'flex', gap: '0.2rem' }}>
+        <Label showColon>Selected countries</Label>
+        <Text>{selectedCountries.join(', ')}</Text>
+      </div>
+    </>
+  );
+}
+```
+
+</details>
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## Token
+
+<Description of={Token} />
+<ArgTypesWithNote of={Token} />
+
+<Footer />
