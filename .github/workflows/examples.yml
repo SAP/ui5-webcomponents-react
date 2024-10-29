@@ -43,7 +43,7 @@ jobs:
         working-directory: examples/${{ matrix.path }}
 
       - name: ESLint
-        if: ${{ matrix.path }} != 'remix-ts'
+        if: ${{ matrix.path  != 'remix-ts'}}
         run: npm run lint --if-present
         working-directory: examples/${{ matrix.path }}
 
