@@ -7,6 +7,5 @@ export interface SelectedVariant extends VariantItemPropTypes {
 }
 
 export const VariantManagementContext = createContext({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   selectVariantItem: (_selectedVariant: SelectedVariant) => {}
 });

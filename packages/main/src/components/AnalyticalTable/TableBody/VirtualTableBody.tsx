@@ -191,7 +191,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             : rowVirtualizer.measureElement;
 
         return (
-          // eslint-disable-next-line react/jsx-key
           <div
             key={key}
             {...rowProps}
@@ -271,7 +270,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               }
 
               return (
-                // eslint-disable-next-line react/jsx-key
                 <div
                   key={key}
                   {...allCellProps}
