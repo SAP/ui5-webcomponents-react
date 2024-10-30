@@ -1,5 +1,5 @@
 import type { BrushProps, ReferenceLineProps, XAxisProps, YAxisProps } from 'recharts';
-
+//todo: remove ref Omit once types are fixed
 export interface ICartesianChartConfig {
   /**
    * Defines whether the `YAxis` should be visible.
@@ -26,7 +26,6 @@ export interface ICartesianChartConfig {
   gridVertical?: boolean;
   gridHorizontal?: boolean;
 
-  //todo: remove "Omit" once ref type has been fixed
   /**
    * Defines whether it should be possible to zoom in on the chart.
    * If this prop is applied and doesn't have a falsy value, a range slider is displayed on top of the chart, making it possible to zoom-in/zoom-out.
@@ -56,29 +55,29 @@ export interface ICartesianChartConfig {
   referenceLine?: {
     value?: number;
     color?: string;
-  } & ReferenceLineProps;
+  } & Omit<ReferenceLineProps, 'ref'>;
   /**
    * Defines possible configurations for the `YAxis`.
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  yAxisConfig?: Omit<YAxisProps, 'mirror'>;
+  yAxisConfig?: Omit<YAxisProps, 'mirror' | 'ref'>;
   /**
    * Defines possible configurations for the `XAxis`.
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  xAxisConfig?: Omit<XAxisProps, 'mirror'>;
+  xAxisConfig?: Omit<XAxisProps, 'mirror' | 'ref'>;
   /**
    * Defines possible configurations for the second `YAxis`.
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  secondYAxisConfig?: Omit<YAxisProps, 'mirror'>;
+  secondYAxisConfig?: Omit<YAxisProps, 'mirror' | 'ref'>;
   /**
    * Defines possible configurations for the second `YAxis`.
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  secondXAxisConfig?: Omit<XAxisProps, 'mirror'>;
+  secondXAxisConfig?: Omit<XAxisProps, 'mirror' | 'ref'>;
 }
