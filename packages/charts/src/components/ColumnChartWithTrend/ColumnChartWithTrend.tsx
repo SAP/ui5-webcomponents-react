@@ -155,7 +155,6 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
         (currLine) => currLine.type === 'line' && currLine.accessor === tooltipProps.dataKey
       );
       if (line) {
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         return line.formatter(tooltipProps.payload[`__${line.accessor}`]);
       }
       const column = columnMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);

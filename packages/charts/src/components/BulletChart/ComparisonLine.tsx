@@ -11,7 +11,6 @@ interface ComparisonLine {
   layout: 'vertical' | 'horizontal';
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const ComparisonLine = (props: ComparisonLine) => {
   const { x, y, width, height, index, fill, strokeWidth, layout } = props;
 

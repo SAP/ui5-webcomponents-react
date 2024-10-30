@@ -600,7 +600,7 @@ export const IdentifyInputEventOrigin: Story = {
   render(args) {
     const [origin, setOrigin] = useState('');
     const handleInput = (e) => {
-      if (!!e.currentTarget.parentElement.dataset.inFilterBar) {
+      if (e.currentTarget.parentElement.dataset.inFilterBar) {
         setOrigin('FilterBar');
       } else {
         setOrigin('Filters Dialog');
