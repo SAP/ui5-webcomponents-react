@@ -13,7 +13,8 @@ import {
   ThemeProvider
 } from '@ui5/webcomponents-react';
 import { clsx } from 'clsx';
-import { ReactNode, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
+import { useRef, useState } from 'react';
 import { addCustomCSSWithScoping } from '../../packages/main/src/internal/addCustomCSSWithScoping';
 import classes from './ProjectTemplate.module.css';
 
@@ -84,9 +85,9 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
               }}
             >
               <Text>
-                Currently, the <code>BarcodeScannerDialog</code> web component isn't compatible with SSR environments.
-                For the Next.js Pages Router and Remix, this bug crashes the entire build process, even if the component
-                isn't imported.
+                Currently, the <code>BarcodeScannerDialog</code> web component isn&apos;t compatible with SSR
+                environments. For the Next.js Pages Router and Remix, this bug crashes the entire build process, even if
+                the component isn&apos;t imported.
                 <br />
                 This is <b>not</b> the case for the Next.js App Router; there, the build only crashes if the component
                 is used.
@@ -129,19 +130,16 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
         >
           <div className={classes.cardContent}>
             {deprecationNotice && (
-              <MessageStrip
-                hideCloseButton
-                design={MessageStripDesign.Critical}
-                children={deprecationNotice}
-                className={classes.deprecationNotice}
-              />
+              <MessageStrip hideCloseButton design={MessageStripDesign.Critical} className={classes.deprecationNotice}>
+                {deprecationNotice}
+              </MessageStrip>
             )}
             <Link design={LinkDesign.Emphasized} href={href}>
-              View Example
+              View{isTemplate ? ' Template' : ' Example'}
             </Link>
             {stackBlitzHref && (
               <>
-                |
+                <span className={classes.verticalLine}>|</span>
                 <Link design={LinkDesign.Emphasized} href={stackBlitzHref}>
                   View in StackBlitz
                 </Link>
