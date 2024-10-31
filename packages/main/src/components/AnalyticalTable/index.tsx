@@ -82,7 +82,8 @@ import type {
   AnalyticalTableDomRef,
   AnalyticalTablePropTypes,
   AnalyticalTableState,
-  DivWithCustomScrollProp
+  DivWithCustomScrollProp,
+  TableInstance
 } from './types/index.js';
 import { getRowHeight, getSubRowsByString, tagNamesWhichShouldNotSelectARow } from './util/index.js';
 import { VerticalResizer } from './VerticalResizer.js';
@@ -178,7 +179,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const getSubRows = useCallback((row) => getSubRowsByString(subRowsKey, row) || [], [subRowsKey]);
 
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
-  const tableInstanceRef = useRef<Record<string, any>>(null);
+  const tableInstanceRef = useRef<TableInstance>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   tableInstanceRef.current = useTable(
@@ -208,29 +209,31 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           selectAllA11yText: i18nBundle.getText(SELECT_ALL_PRESS_SPACE),
           deselectAllA11yText: i18nBundle.getText(UNSELECT_ALL_PRESS_SPACE)
         },
-        tagNamesWhichShouldNotSelectARow,
-        tableRef,
-        selectionMode,
-        selectionBehavior,
-        classes: classNames,
-        onAutoResize,
-        onRowSelect: onRowSelect,
-        onRowClick,
-        onRowExpandChange,
-        isTreeTable,
         alternateRowColor,
-        scaleWidthMode,
-        loading,
-        withRowHighlight,
+        alwaysShowSubComponent,
+        classes: classNames,
         highlightField,
-        withNavigationHighlight,
+        isTreeTable,
+        loading,
         markNavigatedRow,
         renderRowSubComponent,
-        alwaysShowSubComponent,
+        scaleWidthMode,
+        selectionBehavior,
+        selectionMode,
         showOverlay,
-        uniqueId,
         subRowsKey,
-        onColumnsReorder
+        tableRef,
+        tagNamesWhichShouldNotSelectARow,
+        uniqueId,
+        withNavigationHighlight,
+        withRowHighlight,
+        onAutoResize,
+        onColumnsReorder,
+        onGroup,
+        onRowClick,
+        onRowExpandChange,
+        onRowSelect: onRowSelect,
+        onSort
       },
       ...reactTableOptions
     },
@@ -542,28 +545,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     width: totalColumnsWidth ? `${totalColumnsWidth}px` : '100%'
   };
 
-  const onGroupByChanged = useCallback(
-    (e) => {
-      const { column, isGrouped } = e.detail;
-      let groupedColumns;
-      if (isGrouped) {
-        groupedColumns = [...tableState.groupBy, column.id];
-      } else {
-        groupedColumns = tableState.groupBy.filter((group) => group !== column.id);
-      }
-      setGroupBy(groupedColumns);
-      if (typeof onGroup === 'function') {
-        onGroup(
-          enrichEventWithDetails(e, {
-            column,
-            groupedColumns
-          })
-        );
-      }
-    },
-    [tableState.groupBy, onGroup, setGroupBy]
-  );
-
   useEffect(() => {
     if (columnOrder?.length > 0) {
       setColumnOrder(columnOrder);
@@ -771,8 +752,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     resizeInfo={tableState.columnResizing}
                     headerProps={headerProps}
                     headerGroup={headerGroup}
-                    onSort={onSort}
-                    onGroupByChanged={onGroupByChanged}
                     isRtl={isRtl}
                     columnVirtualizer={columnVirtualizer}
                     uniqueId={uniqueId}

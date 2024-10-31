@@ -1,8 +1,14 @@
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useMemo, useRef, useState, version as reactVersion } from 'react';
-import type { AnalyticalTableDomRef, AnalyticalTablePropTypes } from '../..';
+import type {
+  AnalyticalTableColumnDefinition,
+  AnalyticalTableDomRef,
+  AnalyticalTablePropTypes,
+  PopoverDomRef
+} from '../..';
 import {
+  Popover,
   AnalyticalTable,
   AnalyticalTableHooks,
   AnalyticalTableScaleWidthMode,
@@ -17,6 +23,7 @@ import {
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import { getUi5TagWithSuffix } from '@/packages/main/src/internal/utils.js';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -3231,6 +3238,62 @@ describe('AnalyticalTable', () => {
       'Custom Label  Empty'
     );
     cy.get('[data-visible-row-index="2"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name A ');
+  });
+
+  it('custom header popover', () => {
+    const columns: AnalyticalTableColumnDefinition[] = [
+      { Header: 'Name', accessor: 'name' },
+      {
+        Header: 'Custom Popover',
+        accessor: 'age',
+        Popover: (instance) => {
+          const ref = useRef<PopoverDomRef>(null);
+          const { popoverProps } = instance;
+          const { setOpen, openerRef } = popoverProps;
+
+          useEffect(() => {
+            if (ref.current && openerRef.current) {
+              void customElements.whenDefined(getUi5TagWithSuffix('ui5-popover')).then(() => {
+                ref.current.opener = openerRef.current;
+                ref.current.open = true;
+              });
+            }
+          }, []);
+
+          return (
+            <Popover
+              ref={ref}
+              data-testid="popover"
+              onClose={() => {
+                setOpen(false);
+              }}
+            >
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpen(false);
+                }}
+              >
+                Close Popover
+              </button>
+            </Popover>
+          );
+        }
+      }
+    ];
+    cy.mount(<AnalyticalTable data={groupableData} columns={columns} sortable />);
+
+    cy.findByText('Name').click();
+    cy.get('[data-component-name="ATHeaderPopover"]').should('be.visible');
+    cy.findByTestId('popover').should('not.exist');
+
+    cy.findByText('Custom Popover').click();
+    cy.get('[data-component-name="ATHeaderPopover"]').should('not.exist');
+    cy.findByTestId('popover').should('be.visible');
+
+    cy.findByText('Close Popover').click();
+    cy.findByTestId('popover').should('not.exist');
+    cy.get('[data-component-name="ATHeaderPopover"]').should('not.exist');
   });
 
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });

@@ -9,8 +9,6 @@ interface ColumnHeaderContainerProps {
   headerProps: Record<string, any>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headerGroup: Record<string, any>;
-  onSort: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
-  onGroupByChanged: (e: CustomEvent<{ column?: Record<string, unknown>; isGrouped?: boolean }>) => void;
   resizeInfo: Record<string, unknown>;
   isRtl: boolean;
   columnVirtualizer: Virtualizer<DivWithCustomScrollProp, Element>;
@@ -19,17 +17,7 @@ interface ColumnHeaderContainerProps {
 }
 
 export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderContainerProps>((props, ref) => {
-  const {
-    headerProps,
-    headerGroup,
-    onSort,
-    onGroupByChanged,
-    resizeInfo,
-    isRtl,
-    columnVirtualizer,
-    uniqueId,
-    showVerticalEndBorder
-  } = props;
+  const { headerProps, headerGroup, resizeInfo, isRtl, columnVirtualizer, uniqueId, showVerticalEndBorder } = props;
 
   useStylesheet(styleData, 'Resizer');
 
@@ -77,8 +65,6 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
               id={`${uniqueId}${rest?.id ?? ''}`}
               columnId={rest.id}
               visibleColumnIndex={index}
-              onSort={onSort}
-              onGroupBy={onGroupByChanged}
               headerTooltip={column.headerTooltip}
               isDraggable={!column.disableDragAndDrop && !resizeInfo.isResizingColumn}
               virtualColumn={virtualColumn}

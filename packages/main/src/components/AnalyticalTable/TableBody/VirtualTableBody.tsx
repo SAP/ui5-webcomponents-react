@@ -16,7 +16,7 @@ import { RowSubComponent as SubComponent } from './RowSubComponent.js';
 
 interface VirtualTableBodyProps {
   classes: Record<string, string>;
-  prepareRow: (row: unknown) => void;
+  prepareRow: TableInstance['prepareRow'];
   rows: TableInstance['rows'];
   isTreeTable?: AnalyticalTablePropTypes['isTreeTable'];
   internalRowHeight: number;

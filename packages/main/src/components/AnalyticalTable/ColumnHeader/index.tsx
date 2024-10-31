@@ -16,15 +16,11 @@ import type {
 import { useRef, useState } from 'react';
 import { Icon } from '../../../webComponents/Icon/index.js';
 import { Text } from '../../../webComponents/Text/index.js';
-import type { ColumnType } from '../types/ColumnType.js';
-import type { DivWithCustomScrollProp } from '../types/index.js';
+import type { ColumnType, DivWithCustomScrollProp } from '../types/index.js';
 import { classNames, styleData } from './ColumnHeader.module.css.js';
-import { ColumnHeaderModal } from './ColumnHeaderModal.js';
 
 export interface ColumnHeaderProps {
   visibleColumnIndex: number;
-  onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
-  onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
   onDragStart: DragEventHandler<HTMLDivElement>;
   onDragOver: DragEventHandler<HTMLDivElement>;
   onDrop: DragEventHandler<HTMLDivElement>;
@@ -64,8 +60,6 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     columnId,
     className,
     style,
-    onSort,
-    onGroupBy,
     onDragEnter,
     onDragOver,
     onDragStart,
@@ -110,7 +104,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     const style: CSSProperties = {};
 
     if (column.hAlign) {
-      style.textAlign = column.hAlign.toLowerCase() as any;
+      style.textAlign = column.hAlign.toLowerCase();
     }
 
     if (column.isSorted) margin++;
@@ -246,17 +240,15 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
             {column.isGrouped && <Icon name={iconGroup} aria-hidden />}
           </div>
         </div>
-        {hasPopover && popoverOpen && (
-          <ColumnHeaderModal
-            isRtl={isRtl}
-            column={column}
-            onSort={onSort}
-            onGroupBy={onGroupBy}
-            openerRef={columnHeaderRef}
-            open={popoverOpen}
-            setPopoverOpen={setPopoverOpen}
-          />
-        )}
+        {hasPopover &&
+          popoverOpen &&
+          // render the popover and add the props to the table instance
+          column.render('Popover', {
+            popoverProps: {
+              openerRef: columnHeaderRef,
+              setOpen: setPopoverOpen
+            }
+          })}
       </div>
     </div>
   );

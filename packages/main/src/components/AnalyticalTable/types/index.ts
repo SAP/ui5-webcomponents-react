@@ -1,6 +1,6 @@
 import type { ScrollToOptions } from '@tanstack/react-virtual';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { ComponentType, MutableRefObject, ReactNode, Ref } from 'react';
+import type { ComponentType, Dispatch, MutableRefObject, ReactNode, Ref, SetStateAction } from 'react';
 import type {
   AnalyticalTableScaleWidthMode,
   AnalyticalTableScrollMode,
@@ -19,6 +19,7 @@ export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> 
   Expandable?: any;
   Grouped?: any;
   RepeatedValue?: any;
+  Popover?: any;
   canFilter?: boolean;
   canGroupBy?: boolean;
   canResize?: boolean;
@@ -182,6 +183,8 @@ export interface WCRPropertiesType {
   onAutoResize: AnalyticalTablePropTypes['onAutoResize'];
   onRowClick: AnalyticalTablePropTypes['onRowClick'];
   onRowExpandChange: AnalyticalTablePropTypes['onRowExpandChange'];
+  onSort: AnalyticalTablePropTypes['onSort'];
+  onGroup: AnalyticalTablePropTypes['onGroup'];
   isTreeTable: AnalyticalTablePropTypes['isTreeTable'];
   alternateRowColor: AnalyticalTablePropTypes['alternateRowColor'];
   scaleWidthMode: AnalyticalTablePropTypes['scaleWidthMode'];
@@ -321,6 +324,21 @@ interface ScaleWidthModeOptions {
   cellString?: string;
 }
 
+interface PopoverProps {
+  /**
+   * Set the state of the popover. If set to `false` the component is unmounted.
+   */
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  /**
+   * React Ref that holds the reference to the respective table header element.
+   */
+  openerRef: MutableRefObject<HTMLDivElement>;
+}
+
+export interface TableInstanceWithPopoverProps extends TableInstance {
+  popoverProps: PopoverProps;
+}
+
 export interface AnalyticalTableColumnDefinition {
   // base properties
   /**
@@ -384,6 +402,18 @@ export interface AnalyticalTableColumnDefinition {
    * Maximum with of the column, e.g. used for resizing.
    */
   maxWidth?: number;
+  /**
+   * Custom header Popover renderer. If set, this component replaces the internal header Popover.
+   *
+   * The table instance is passed as a prop, which includes the `popoverProps` object containing:
+   * - `openerRef`: A reference to the header cell that opens the popover.
+   * - `setOpen`: A React state setter to control the popover's open state. (The component will be unmounted if set to `false`)
+   *
+   * __Note:__ Since the component unmounts when closing the popover, the `open` prop of `Popover` components doesn't need to be controlled directly and can be set to `true`.
+   */
+  Popover?:
+    | ComponentType<{ instance: TableInstanceWithPopoverProps }>
+    | ((props?: { instance: TableInstanceWithPopoverProps }) => ReactNode);
 
   // useFilters
   /**
