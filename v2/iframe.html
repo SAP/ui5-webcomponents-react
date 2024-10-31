@@ -509,8 +509,15 @@
   }
 </script>
 <style>
+  html[data-sap-theme]:not([data-sap-theme*='hc']),
+  /*fallback*/
+  html:not([data-sap-theme]) {
+    forced-color-adjust: none;
+  }
+
   body {
     font-family: var(--sapFontFamily);
+    color: var(--sapTextColor);
     background-color: var(--sapBackgroundColor);
   }
 
@@ -579,7 +586,7 @@
   }
 
   .dynamicPageStickyContent::part(fit-content) {
-      position: static;
+    position: static;
   }
 
   /* TODO remove this workaround as soon as https://github.com/storybookjs/storybook/issues/20497 is fixed */
@@ -594,7 +601,7 @@
   }
 </script>
 
-    <script type="module" crossorigin src="./assets/iframe-B9Ld4u74.js"></script>
+    <script type="module" crossorigin src="./assets/iframe-CVuKwduR.js"></script>
   </head>
 
   <body>
