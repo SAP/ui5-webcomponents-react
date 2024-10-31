@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.3](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.2...v2.3.3) (2024-10-31)
+
+### Bug Fixes
+
+- **AnalyticalTable - TypeScript:** correct typing for `onRowClick` and accessor function ([#6520](https://github.com/SAP/ui5-webcomponents-react/issues/6520)) ([c838d80](https://github.com/SAP/ui5-webcomponents-react/commit/c838d80c34b7a8295e2948b97a97175462b26f66)), closes [#6519](https://github.com/SAP/ui5-webcomponents-react/issues/6519)
+- **AnalyticalTable:** calculate column width correctly when grouping ([#6568](https://github.com/SAP/ui5-webcomponents-react/issues/6568)) ([1a5a024](https://github.com/SAP/ui5-webcomponents-react/commit/1a5a024e0735a515d1f9f2c314995386ebff3324)), closes [#6534](https://github.com/SAP/ui5-webcomponents-react/issues/6534)
+- **compat:** use deep import paths for `main` imports ([#6554](https://github.com/SAP/ui5-webcomponents-react/issues/6554)) ([d432c5e](https://github.com/SAP/ui5-webcomponents-react/commit/d432c5e54b3f216e3252584f6cae8cec1720bdfb))
+- **deps:** update dependency recharts to v2.13.1 ([#6482](https://github.com/SAP/ui5-webcomponents-react/issues/6482)) ([8d4b364](https://github.com/SAP/ui5-webcomponents-react/commit/8d4b3648a23315b5f8237dbe129bfbeb575a7746))
+- **deps:** update dependency recharts to v2.13.2 ([#6574](https://github.com/SAP/ui5-webcomponents-react/issues/6574)) ([fcd3ee2](https://github.com/SAP/ui5-webcomponents-react/commit/fcd3ee2a976777c6a7fd701ac8425b887ebb37e1))
+
 ## [2.3.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.1...v2.3.2) (2024-10-23)
 
 ### Bug Fixes

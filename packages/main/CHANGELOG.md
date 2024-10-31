@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.3](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.2...v2.3.3) (2024-10-31)
+
+### Bug Fixes
+
+- **AnalyticalTable - TypeScript:** correct typing for `onRowClick` and accessor function ([#6520](https://github.com/SAP/ui5-webcomponents-react/issues/6520)) ([c838d80](https://github.com/SAP/ui5-webcomponents-react/commit/c838d80c34b7a8295e2948b97a97175462b26f66)), closes [#6519](https://github.com/SAP/ui5-webcomponents-react/issues/6519)
+- **AnalyticalTable:** calculate column width correctly when grouping ([#6568](https://github.com/SAP/ui5-webcomponents-react/issues/6568)) ([1a5a024](https://github.com/SAP/ui5-webcomponents-react/commit/1a5a024e0735a515d1f9f2c314995386ebff3324)), closes [#6534](https://github.com/SAP/ui5-webcomponents-react/issues/6534)
+
 ## [2.3.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.1...v2.3.2) (2024-10-23)
 
 ### Bug Fixes
