@@ -14,6 +14,18 @@ import type {
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../types/index.js';
 
+export enum RenderColumnTypes {
+  Filter = 'Filter',
+  Grouped = 'Grouped',
+  Cell = 'Cell',
+  Expandable = 'Expandable',
+  RepeatedValue = 'RepeatedValue',
+  PopIn = 'PopIn',
+  Popover = 'Popover',
+  Header = 'Header',
+  Aggregated = 'Aggregated'
+}
+
 export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> {
   id?: string;
   Expandable?: any;
@@ -41,7 +53,12 @@ export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> 
   originalWidth?: number;
   parent?: any;
   preFilteredRows?: Record<string, RowType>[];
-  render?: any;
+  /**
+   * Renders the component with the given column type
+   * @param type
+   * @param props The props are added to the table instance
+   */
+  render?: (type: RenderColumnTypes | keyof typeof RenderColumnTypes, props: Record<string, any>) => ReactNode;
   setFilter?: (val: string) => void;
   sortDescFirst?: boolean;
   sortedIndex?: number;

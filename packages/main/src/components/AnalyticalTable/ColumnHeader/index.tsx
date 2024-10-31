@@ -17,6 +17,7 @@ import { useRef, useState } from 'react';
 import { Icon } from '../../../webComponents/Icon/index.js';
 import { Text } from '../../../webComponents/Text/index.js';
 import type { ColumnType, DivWithCustomScrollProp } from '../types/index.js';
+import { RenderColumnTypes } from '../types/index.js';
 import { classNames, styleData } from './ColumnHeader.module.css.js';
 
 export interface ColumnHeaderProps {
@@ -243,7 +244,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
         {hasPopover &&
           popoverOpen &&
           // render the popover and add the props to the table instance
-          column.render('Popover', {
+          column.render(RenderColumnTypes.Popover, {
             popoverProps: {
               openerRef: columnHeaderRef,
               setOpen: setPopoverOpen

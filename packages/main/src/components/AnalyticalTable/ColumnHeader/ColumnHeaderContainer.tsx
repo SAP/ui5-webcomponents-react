@@ -2,6 +2,7 @@ import type { Virtualizer } from '@tanstack/react-virtual';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { forwardRef, Fragment } from 'react';
 import type { DivWithCustomScrollProp } from '../types/index.js';
+import { RenderColumnTypes } from '../types/index.js';
 import { classNames, styleData } from './Resizer.module.css.js';
 import { ColumnHeader } from './index.js';
 
@@ -71,7 +72,7 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
               columnVirtualizer={columnVirtualizer}
               isRtl={isRtl}
             >
-              {column.render('Header')}
+              {column.render(RenderColumnTypes.Header)}
             </ColumnHeader>
           </Fragment>
         );

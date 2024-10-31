@@ -3,6 +3,7 @@ import { makeRenderer } from 'react-table';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../../../enums/index.js';
 import { Text } from '../../../../webComponents/Text/index.js';
 import { FlexBox } from '../../../FlexBox/index.js';
+import { RenderColumnTypes } from '../../types/index.js';
 import { classNames, styleData } from './PopIn.module.css.js';
 
 export const PopIn = (instance) => {
@@ -13,7 +14,7 @@ export const PopIn = (instance) => {
     <FlexBox direction={FlexBoxDirection.Column} className={classNames.container}>
       <FlexBox
         alignItems={
-          contentToRender !== 'Grouped' && contentToRender !== 'Expandable'
+          contentToRender !== RenderColumnTypes.Grouped && contentToRender !== RenderColumnTypes.Expandable
             ? FlexBoxAlignItems.Start
             : FlexBoxAlignItems.Center
         }
@@ -25,7 +26,7 @@ export const PopIn = (instance) => {
       >
         {cell.render(contentToRender)}
       </FlexBox>
-      {contentToRender !== 'Grouped' &&
+      {contentToRender !== RenderColumnTypes.Grouped &&
         state.popInColumns?.map((item) => {
           const popInInstanceProps = row.allCells.find((cell) => cell.column.id === item.id);
           const renderHeader = () => {
