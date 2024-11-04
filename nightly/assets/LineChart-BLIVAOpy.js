@@ -1,0 +1,64 @@
+import{j as r}from"./jsx-runtime-DEdD30eg.js";import{useMDXComponents as m}from"./index-CcnH5Kt0.js";import"./chunk-NUUEMKO5-lBoQAoxJ.js";import{ae as s,af as i}from"./index-DgAJ4ugB.js";import"./index-DTeI0hvp.js";import"./index-XCIzDjT0.js";import{C as p}from"./ControlsWithNote-BI5n79_p.js";import{D as a}from"./DocsHeader-CzJ7GcKI.js";import{F as d}from"./CommandsAndQueries-CYDbXtez.js";import"./index-RYns6xqu.js";import"./WrappingType-CW8URInd.js";import"./Title-CbLKT2ZM.js";import{M as c}from"./TooltipConfig-CrmQqKpE.js";import{C as h,D as e,W as l,a as x,b as f,c as j,L as u,d as C,e as g,f as L,g as W}from"./LineChart.stories-BkeLl8Ko.js";import{M as b}from"./LegendConfig-DScZ2yDM.js";import"./iframe-CfI_C6JA.js";import"../sb-preview/runtime.js";import"./client-BzooOYO_.js";import"./index-sbqOYYIm.js";import"./_baseUniq-18efwtne.js";import"./index-ar2LJKLv.js";import"./index-DrFu-skq.js";import"./withWebComponent-m_Fq5lNf.js";import"./utils-DzvJSare.js";import"./useIsomorphicLayoutEffect-Dm78g2BF.js";import"./slot-_4yKMUwC.js";import"./event-Dq0fpeHi.js";import"./i18n-DEVDpFvK.js";import"./decline-C1nyYXx8.js";import"./Icon-CqlVqIII.js";import"./Keys-DoZifIQ_.js";import"./parameters-bundle.css-BOSi_lPd.js";import"./i18n-defaults-CzsryEvw.js";import"./information-BCemT9Q2.js";import"./alert-RTfmNTjg.js";import"./class-map-De2mf49U.js";import"./Button-D-clZqqQ.js";import"./AriaLabelHelper-C5uDZewF.js";import"./MarkedEvents-CAur0wxK.js";import"./willShowContent-CZcfsNXp.js";import"./Tooltips-RVqvTAYx.js";import"./i18n-defaults-BOjDFSS8.js";import"./TagDesign-Dou_yO3g.js";import"./utils-CWM8NohN.js";import"./main-r7D-Vqmb.js";import"./index-D1wQpcsi.js";import"./Tag-C7VVIUe2.js";import"./sys-help-2-TCPa0dFt.js";import"./index-DRQZYbIB.js";import"./Popover-CSyvOuD4.js";import"./PopupsCommon.css-C0UbsxGP.js";import"./FocusableElements-3aC5Xvwv.js";import"./isElementHidden-B4HqmI2E.js";import"./isElementClickable-0ACQ4G_A.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-DIO-YqVA.js";import"./MediaRange-Bnzt26Xb.js";import"./style-map-TzMr6uTh.js";import"./getEffectiveScrollbarStyle-C9nZ6DfS.js";import"./index-Cg3b7YA_.js";import"./Link-CHy7h4h1.js";import"./copy-Bps3bwPx.js";import"./copy-9aGvoyGQ.js";import"./clsx-B-dksMZM.js";import"./GitHub-Mark-DGRwmqGf.js";import"./TableOfContent-TNI-4ed_.js";import"./index-wo-k7izz.js";import"./I18nStore-C2pCP-g5.js";import"./useStylesheet-DPBS0l4j.js";import"./index-DwKqG2yd.js";import"./index-BoCz3Ejb.js";import"./Label-CILeKjmV.js";import"./index-CFCIjETS.js";import"./index-DlCwds3V.js";import"./addCustomCSSWithScoping-D6Q9hDjm.js";import"./index-BKGkUclu.js";import"./BusyIndicator-DiGmt9EG.js";import"./index-DQ1nU61M.js";import"./index-BVLWJSIa.js";import"./Avatar-DQMXMvsK.js";import"./employee-q-Be_VIK.js";import"./DemoProps-zTw_Q8Fu.js";import"./LineChart-Bum7PEL6.js";import"./ThemingParameters-B358vlzA.js";import"./index-C-Zfmu7Z.js";import"./YAxisTicks-CoMq4gBi.js";import"./ChartContainer-CD8F2Q9z.js";import"./debounce-BNez58WF.js";import"./tiny-invariant-CCoILDQG.js";import"./index-rNTiGNI1.js";import"./index-HjmA4HRT.js";import"./debounce-D7W5PopO.js";import"./useTooltipFormatter-B4QUyPW8.js";import"./staticProps-COwCb3Vc.js";import"./ChartDataLabel-XNqsIUEe.js";import"./useLongestYAxisLabel-D8toxJd-.js";import"./react-content-loader.es-BcmDwNEo.js";import"./Line-C-JsACMF.js";import"./useIsRTL-C5iQ0Bor.js";import"./directionChange--DIZy0nx.js";function n(t){const o={a:"a",code:"code",h2:"h2",h3:"h3",h4:"h4",p:"p",pre:"pre",...m(),...t.components};return r.jsxs(r.Fragment,{children:[r.jsx(s,{of:h}),`
+`,r.jsx(a,{isChart:!0}),`
+`,r.jsx(o.h2,{id:"example",children:"Example"}),`
+`,r.jsx(i,{of:e}),`
+`,r.jsx(o.h2,{id:"properties",children:"Properties"}),`
+`,r.jsx(p,{of:e}),`
+`,r.jsx("br",{}),`
+`,r.jsx("br",{}),`
+`,r.jsx(o.h2,{id:"more-examples",children:"More Examples"}),`
+`,r.jsx(o.h3,{id:"with-custom-color",children:"With Custom Color"}),`
+`,r.jsx(i,{of:l}),`
+`,r.jsx(o.h3,{id:"with-secondary-dimension",children:"With Secondary Dimension"}),`
+`,r.jsx(i,{of:x}),`
+`,r.jsx(o.h3,{id:"with-data-labels",children:"With Data Labels"}),`
+`,r.jsx(i,{of:f}),`
+`,r.jsx(o.h3,{id:"with-formatter",children:"With Formatter"}),`
+`,r.jsx(i,{of:j}),`
+`,r.jsx(o.h3,{id:"loading-placeholder",children:"Loading Placeholder"}),`
+`,r.jsx(i,{of:u}),`
+`,r.jsx(o.h3,{id:"with-reference-line",children:"With Reference Line"}),`
+`,r.jsxs(o.p,{children:["You can set a reference line to any value by using the ",r.jsx(o.code,{children:"referenceLine"})," ",r.jsx(o.code,{children:"chartConfig"})," property. ",r.jsx(o.code,{children:"referenceLine"})," accepts all properties described ",r.jsx(o.a,{href:"https://recharts.org/en-US/api/ReferenceLine",rel:"nofollow",children:"here"}),", but it's recommended to only use ",r.jsx(o.code,{children:"label"}),",",r.jsx(o.code,{children:"value"})," and ",r.jsx(o.code,{children:"color"})," to preserve the intended design."]}),`
+`,r.jsx(o.pre,{children:r.jsx(o.code,{className:"language-jsx",children:`<LineChart
+  {...props}
+  chartConfig={{
+    referenceLine: {
+      color: 'red',
+      label: 'MAX',
+      value: 650
+    }
+  }}
+/>
+`})}),`
+`,r.jsx(i,{of:C}),`
+`,r.jsx(o.h3,{id:"with-linear-gradient",children:"With Linear Gradient"}),`
+`,r.jsx(i,{of:g}),`
+`,r.jsx(o.h4,{id:"code",children:"Code"}),`
+`,r.jsx(o.pre,{children:r.jsx(o.code,{className:"language-jsx",children:`export const LineChartWithLinearGradient = () => {
+  return (
+    <LineChart
+      dataset={bigDataSet}
+      dimensions={[{ accessor: 'name' }]}
+      measures={[
+        {
+          accessor: 'users',
+          width: 2,
+          color: 'url(#colorUsers)'
+        }
+      ]}
+    >
+      <defs>
+        <linearGradient id="colorUsers" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="red" />
+          <stop offset="100%" stopColor="green" />
+        </linearGradient>
+      </defs>
+    </LineChart>
+  );
+};
+`})}),`
+`,r.jsx(c,{of:L}),`
+`,r.jsx(b,{of:W}),`
+`,r.jsx("br",{}),`
+`,r.jsx("br",{}),`
+`,r.jsx(d,{})]})}function jo(t={}){const{wrapper:o}={...m(),...t.components};return o?r.jsx(o,{...t,children:r.jsx(n,{...t})}):n(t)}export{jo as default};
