@@ -51,7 +51,6 @@ export const Expandable = (props) => {
               title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
               style={{ ...rowProps.style, paddingInlineStart: paddingLeft }}
               className={classNames.container}
-              aria-expanded={row.isExpanded}
               aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
             >
               {shouldRenderButton ? (
