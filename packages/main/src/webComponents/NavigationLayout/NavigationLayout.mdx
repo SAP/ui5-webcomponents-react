@@ -19,21 +19,19 @@ import { SideNavigationSubItem } from '../SideNavigationSubItem/index';
 
 <details>
 <summary>Show static code</summary>
-    
+
 ```tsx
 function NavigationLayoutComponent(props) {
-  const [selectedContent, setSelectedContent] = useState("Home");
+  const [selectedContent, setSelectedContent] = useState('Home');
   const [collapsed, setCollapsed] = useState(false);
-  const handleSelectionChange: SideNavigationPropTypes["onSelectionChange"] = (
-    e,
-  ) => {
+  const handleSelectionChange: SideNavigationPropTypes['onSelectionChange'] = (e) => {
     setSelectedContent(e.detail.item.text);
   };
   useEffect(() => {
     setCollapsed(props.sideCollapsed);
   }, [props.sideCollapsed]);
   return (
-    <div style={{ position: "relative", height: "800px" }}>
+    <div style={{ position: 'relative', height: '800px' }}>
       <NavigationLayout
         {...props}
         sideCollapsed={collapsed}
@@ -42,7 +40,7 @@ function NavigationLayoutComponent(props) {
             startButton={
               <Button
                 icon={menuIcon}
-                tooltip={`${collapsed ? "Expand" : "Collapse"} Side-Bar`}
+                tooltip={`${collapsed ? 'Expand' : 'Collapse'} Side-Bar`}
                 onClick={() => {
                   setCollapsed((prev) => !prev);
                 }}
@@ -53,10 +51,7 @@ function NavigationLayoutComponent(props) {
           />
         }
         sideContent={
-          <SideNavigation
-            slot="sideContent"
-            onSelectionChange={handleSelectionChange}
-          >
+          <SideNavigation slot="sideContent" onSelectionChange={handleSelectionChange}>
             <SideNavigationItem text="Home" icon="home" />
             <SideNavigationGroup text="Group 1" expanded>
               <SideNavigationItem text="Item 1" icon="locate-me" expanded>
@@ -67,11 +62,7 @@ function NavigationLayoutComponent(props) {
                 <SideNavigationSubItem text="Sub Item 3" />
                 <SideNavigationSubItem text="Sub Item 4" />
               </SideNavigationItem>
-              <SideNavigationItem
-                text="Item 3"
-                icon="activity-assigned-to-goal"
-                expanded
-              >
+              <SideNavigationItem text="Item 3" icon="activity-assigned-to-goal" expanded>
                 <SideNavigationSubItem text="Sub Item 5" />
                 <SideNavigationSubItem text="Sub Item 6" />
               </SideNavigationItem>
@@ -105,18 +96,16 @@ function NavigationLayoutComponent(props) {
           </SideNavigation>
         }
       >
-        <div style={{ padding: "1rem" }}>
+        <div style={{ padding: '1rem' }}>
           <div>
             <Title>{selectedContent}</Title>
             <br />
             <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum.
             </Text>
           </div>
         </div>
@@ -125,6 +114,7 @@ function NavigationLayoutComponent(props) {
   );
 }
 ```
+
 </details>
 
 ## Properties
