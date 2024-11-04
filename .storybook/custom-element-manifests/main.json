@@ -3221,7 +3221,7 @@
       "declarations": [
         {
           "kind": "enum",
-          "name": "EmptyIndicatorMode",
+          "name": "TextEmptyIndicatorMode",
           "description": "Empty Indicator Mode.",
           "_ui5privacy": "public",
           "members": [
@@ -3251,7 +3251,7 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "EmptyIndicatorMode",
+            "name": "TextEmptyIndicatorMode",
             "module": "dist/types/TextEmptyIndicatorMode.js"
           }
         }
@@ -4056,6 +4056,9 @@
                 ]
               },
               "description": "Fired when the component is activated either with a\nclick/tap or by using the Enter or Space key.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.11",
               "_ui5parameters": [
                 {
@@ -4083,6 +4086,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the count of visible `ui5-avatar` elements in the\ncomponent has changed",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.13"
             }
           ],
@@ -4332,7 +4338,9 @@
                 ]
               },
               "description": "Fires when a `BreadcrumbsItem` is clicked.\n\n**Note:** You can prevent browser location change by calling `event.preventDefault()`.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -4885,7 +4893,10 @@
               "type": {
                 "text": "Event"
               },
-              "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`."
+              "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -5281,7 +5292,9 @@
                 ]
               },
               "description": "Fired when the selected dates change.\n\n**Note:** If you call `preventDefault()` for this event, the component will not\ncreate instances of `ui5-date` for the newly selected dates. In that case you should do this manually.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -6279,7 +6292,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the component is activated by mouse/tap or by using the Enter or Space key.\n\n**Note:** The event would be fired only if the `interactive` property is set to true."
+              "description": "Fired when the component is activated by mouse/tap or by using the Enter or Space key.\n\n**Note:** The event would be fired only if the `interactive` property is set to true.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -6579,6 +6595,9 @@
                 ]
               },
               "description": "Fired whenever the page changes due to user interaction,\nwhen the user clicks on the navigation arrows or while resizing,\nbased on the `items-per-page` property.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.7",
               "_ui5parameters": [
                 {
@@ -6905,7 +6924,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the component checked state changes.",
-              "_ui5allowPreventDefault": true
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -7094,6 +7115,9 @@
                 ]
               },
               "description": "Fired when the user selects a color.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.15",
               "_ui5parameters": [
                 {
@@ -7331,6 +7355,9 @@
                 ]
               },
               "description": "Fired when the user selects a color.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -7349,6 +7376,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the `ui5-color-palette-popover` is closed due to user interaction.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.21.0"
             }
           ],
@@ -7476,7 +7506,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the the selected color is changed"
+              "description": "Fired when the the selected color is changed",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -7746,7 +7779,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the input operation has finished by pressing Enter, focusout or an item is selected."
+              "description": "Fired when the input operation has finished by pressing Enter, focusout or an item is selected.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "input",
@@ -7754,7 +7790,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when typing in input or clear icon is pressed.\n\n**Note:** filterValue property is updated, input is changed."
+              "description": "Fired when typing in input or clear icon is pressed.\n\n**Note:** filterValue property is updated, input is changed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "selection-change",
@@ -7770,6 +7809,9 @@
                 ]
               },
               "description": "Fired when selection is changed by user interaction",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -8629,7 +8671,9 @@
                 ]
               },
               "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -8663,7 +8707,9 @@
                 ]
               },
               "description": "Fired when the value of the component is changed at each key stroke.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -8697,7 +8743,9 @@
                 ]
               },
               "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -8716,6 +8764,30 @@
                   "description": "Indicator if the value is in correct format pattern and in valid range."
                 }
               ]
+            },
+            {
+              "name": "open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired after the value-help dialog of the component is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.4.0"
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired after the value-help dialog of the component is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.4.0"
             }
           ],
           "attributes": [
@@ -9652,7 +9724,9 @@
                 ]
               },
               "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -9690,7 +9764,9 @@
                 ]
               },
               "description": "Fired when the value of the component is changed at each key stroke.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -9728,7 +9804,9 @@
                 ]
               },
               "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -9747,6 +9825,38 @@
                   "description": "Indicator if the value is in correct format pattern and in valid range."
                 }
               ],
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "name": "open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired after the value-help dialog of the component is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.4.0",
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired after the value-help dialog of the component is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.4.0",
               "inheritedFrom": {
                 "name": "DatePicker",
                 "module": "dist/DatePicker.js"
@@ -10423,7 +10533,9 @@
                 ]
               },
               "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -10461,7 +10573,9 @@
                 ]
               },
               "description": "Fired when the value of the component is changed at each key stroke.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -10499,7 +10613,9 @@
                 ]
               },
               "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -10518,6 +10634,38 @@
                   "description": "Indicator if the value is in correct format pattern and in valid range."
                 }
               ],
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "name": "open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired after the value-help dialog of the component is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.4.0",
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired after the value-help dialog of the component is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.4.0",
               "inheritedFrom": {
                 "name": "DatePicker",
                 "module": "dist/DatePicker.js"
@@ -10962,8 +11110,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**",
+              "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -10975,7 +11125,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component is opened. **This event does not bubble.**",
+              "description": "Fired after the component is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -10994,8 +11147,10 @@
                   }
                 ]
               },
-              "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**",
+              "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -11017,7 +11172,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component is closed. **This event does not bubble.**",
+              "description": "Fired after the component is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -11216,6 +11374,9 @@
                 ]
               },
               "description": "Event is fired when the value of the file path has been changed.\n\n**Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -11241,6 +11402,9 @@
                 ]
               },
               "description": "Event is fired when the size of a file is above the `maxFileSize` property value.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.2.0",
               "_ui5parameters": [
                 {
@@ -11403,7 +11567,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\nThe Form is a layout component that arranges labels and form fields (like input fields) pairs\ninto a specific number of columns.\n\n**Note:** The Form web component is a layout component, it isn't a replacement for the native `form` HTML element.\nThe Form web component does not provide any APIs for form submission.\n\n### Structure\n\n- **Form** (`ui5-form`) is the top-level container component, responsible for the content layout and responsiveness.\n- **FormGroup** (`ui5-form-group`) enables the grouping of the Form content.\n- **FormItem** (`ui5-form-item`) is a pair of label and form fields and can be used directly in a Form, or as part of a FormGroup.\n\nThe simplest Form (`ui5-form`) consists of a header area on top,\ndisplaying a header text (see the `headingText` property) and content below - an arbitrary number of FormItems (ui5-form-item),\nrepresenting the pairs of label and form fields.\n\nAnd, there is also \"grouping\" available to assist the implementation of richer UIs.\nThis is enabled by the FormGroup (`ui5-form-group`) component.\nIn this case, the Form is structured into FormGroups and each FormGroup consists of FormItems.\n\n### Responsiveness\n\nThe Form component reacts and changes its layout on predefined breakpoints.\nDepending on its size, the Form content (FormGroups and FormItems) gets divided into one or more columns as follows:\n- **S** (< 600px) – 1 column is recommended (default: 1)\n- **M** (600px - 1022px) – up to 2 columns are recommended (default: 1)\n- **L** (1023px - 1439px) - up to 3 columns are recommended (default: 2)\n- **XL** (> 1439px) – up to 6 columns are recommended (default: 2)\n\nTo change the layout, use the `layout` property - f.e. layout=\"S1 M2 L3 XL6\".\n\n### Groups\n\nTo make better use of screen space, there is built-in logic to determine how many columns should a FormGroup occupy.\n\n- **Example #1** (perfect match):\n4 columns and 4 groups: each group will use 1 column.\n\n- **Example #2** (balanced distribution):\n4 columns and 2 groups: each group will use 2 columns.\n6 columns and 2 groups: each group will use 3 columns.\n\n- **Example #3** (unbalanced distribution):\n3 columns and 2 groups: the larger one will use 2 columns, the smaller 1 column.\n5 columns and 3 groups: two of the groups will use 2 columns each, the smallest 1 column.\n\n**Note:** The size of a group element is determined by the number of FormItems assigned to it.\nIn the case of equality, the first in the DOM will use more columns, and the last - fewer columns.\n\n- **Example #4** (more groups than columns):\n3 columns and 4 groups: each FormGroup uses only 1 column, the last FormGroup will wrap on the second row.\n\n### Groups Column Span\n\nTo influence the built-in group distribution, described in the previous section,\nyou can use the FormGroup's `columnSpan` property, that defines how many columns the group should expand to.\n\n### Items Column Span\n\nFormItem's columnSpan property defines how many columns the form item should expand to inside a form group or the form.\n\n### Items Label Span\n\nThe placement of the labels depends on the size of the used column.\nIf there is enough space, the labels are next to their associated fields, otherwise  - above the fields.\nBy default, the labels take 4/12 of the FormItem, leaving 8/12 parts to associated fields.\nYou can control what space the labels should take via the `labelSpan` property.\n\n**For example:** To always place the labels on top set: `labelSpan=\"S12 M12 L12 XL12\"` property.\n\n### ES6 Module Import\n\n- import @ui5/webcomponents/dist/Form.js\";\n- import @ui5/webcomponents/dist/FormGroup.js\";\n- import @ui5/webcomponents/dist/FormItem.js\";",
+          "description": "### Overview\n\nThe Form is a layout component that arranges labels and form fields (like input fields) pairs\ninto a specific number of columns.\n\n**Note:** The Form web component is a layout component, it isn't a replacement for the native `form` HTML element.\nThe Form web component does not provide any APIs for form submission.\n\n### Structure\n\n- **Form** (`ui5-form`) is the top-level container component, responsible for the content layout and responsiveness.\n- **FormGroup** (`ui5-form-group`) enables the grouping of the Form content.\n- **FormItem** (`ui5-form-item`) is a pair of label and form fields and can be used directly in a Form, or as part of a FormGroup.\n\nThe simplest Form (`ui5-form`) consists of a header area on top,\ndisplaying a header text (see the `headingText` property) and content below - an arbitrary number of FormItems (ui5-form-item),\nrepresenting the pairs of label and form fields.\n\nAnd, there is also \"grouping\" available to assist the implementation of richer UIs.\nThis is enabled by the FormGroup (`ui5-form-group`) component.\nIn this case, the Form is structured into FormGroups and each FormGroup consists of FormItems.\n\n### Responsiveness\n\nThe Form component reacts and changes its layout on predefined breakpoints.\nDepending on its size, the Form content (FormGroups and FormItems) gets divided into one or more columns as follows:\n- **S** (< 600px) – 1 column is recommended (default: 1)\n- **M** (600px - 1022px) – up to 2 columns are recommended (default: 1)\n- **L** (1023px - 1439px) - up to 3 columns are recommended (default: 2)\n- **XL** (> 1439px) – up to 6 columns are recommended (default: 3)\n\nTo change the layout, use the `layout` property - f.e. layout=\"S1 M2 L3 XL6\".\n\n### Groups\n\nTo make better use of screen space, there is built-in logic to determine how many columns should a FormGroup occupy.\n\n- **Example #1** (perfect match):\n4 columns and 4 groups: each group will use 1 column.\n\n- **Example #2** (balanced distribution):\n4 columns and 2 groups: each group will use 2 columns.\n6 columns and 2 groups: each group will use 3 columns.\n\n- **Example #3** (unbalanced distribution):\n3 columns and 2 groups: the larger one will use 2 columns, the smaller 1 column.\n5 columns and 3 groups: two of the groups will use 2 columns each, the smallest 1 column.\n\n**Note:** The size of a group element is determined by the number of FormItems assigned to it.\nIn the case of equality, the first in the DOM will use more columns, and the last - fewer columns.\n\n- **Example #4** (more groups than columns):\n3 columns and 4 groups: each FormGroup uses only 1 column, the last FormGroup will wrap on the second row.\n\n### Groups Column Span\n\nTo influence the built-in group distribution, described in the previous section,\nyou can use the FormGroup's `columnSpan` property, that defines how many columns the group should expand to.\n\n### Items Column Span\n\nFormItem's columnSpan property defines how many columns the form item should expand to inside a form group or the form.\n\n### Items Label Span\n\nThe placement of the labels depends on the size of the used column.\nIf there is enough space, the labels are next to their associated fields, otherwise  - above the fields.\nBy default, the labels take 4/12 of the FormItem, leaving 8/12 parts to associated fields.\nYou can control what space the labels should take via the `labelSpan` property.\n\n**For example:** To always place the labels on top set: `labelSpan=\"S12 M12 L12 XL12\"` property.\n\n### ES6 Module Import\n\n- import @ui5/webcomponents/dist/Form.js\";\n- import @ui5/webcomponents/dist/FormGroup.js\";\n- import @ui5/webcomponents/dist/FormItem.js\";",
           "name": "Form",
           "cssParts": [
             {
@@ -11452,8 +11616,8 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"S1 M1 L2 XL2\"",
-              "description": "Defines the number of columns to distribute the form content by breakpoint.\n\nSupported values:\n- `S` - 1 column by default (1 column is recommended)\n- `M` - 1 column by default (up to 2 columns are recommended)\n- `L` - 2 columns by default (up to 3 columns are recommended)\n- `XL` - 2 columns by default (up to 6 columns  are recommended)",
+              "default": "\"S1 M1 L2 XL3\"",
+              "description": "Defines the number of columns to distribute the form content by breakpoint.\n\nSupported values:\n- `S` - 1 column by default (1 column is recommended)\n- `M` - 1 column by default (up to 2 columns are recommended)\n- `L` - 2 columns by default (up to 3 columns are recommended)\n- `XL` - 3 columns by default (up to 6 columns  are recommended)",
               "privacy": "public"
             },
             {
@@ -11496,9 +11660,9 @@
           ],
           "attributes": [
             {
-              "description": "Defines the number of columns to distribute the form content by breakpoint.\n\nSupported values:\n- `S` - 1 column by default (1 column is recommended)\n- `M` - 1 column by default (up to 2 columns are recommended)\n- `L` - 2 columns by default (up to 3 columns are recommended)\n- `XL` - 2 columns by default (up to 6 columns  are recommended)",
+              "description": "Defines the number of columns to distribute the form content by breakpoint.\n\nSupported values:\n- `S` - 1 column by default (1 column is recommended)\n- `M` - 1 column by default (up to 2 columns are recommended)\n- `L` - 2 columns by default (up to 3 columns are recommended)\n- `XL` - 3 columns by default (up to 6 columns  are recommended)",
               "name": "layout",
-              "default": "\"S1 M1 L2 XL2\"",
+              "default": "\"S1 M1 L2 XL3\"",
               "fieldName": "layout",
               "type": {
                 "text": "string"
@@ -12209,7 +12373,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the input operation has finished by pressing Enter or on focusout."
+              "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "input",
@@ -12218,7 +12385,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the value of the component changes at each keystroke,\nand when a suggestion item has been selected.",
-              "_ui5allowPreventDefault": true
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true
             },
             {
               "name": "select",
@@ -12227,6 +12396,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when some text has been selected.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0"
             },
             {
@@ -12243,6 +12415,9 @@
                 ]
               },
               "description": "Fired when the user navigates to a suggestion item via the ARROW keys,\nas a preview, before the final selection.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0",
               "_ui5parameters": [
                 {
@@ -12262,6 +12437,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the suggestions picker is open.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0"
             },
             {
@@ -12271,6 +12449,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the suggestions picker is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0"
             }
           ],
@@ -12774,7 +12955,9 @@
                 ]
               },
               "description": "Fired when the component is triggered either with a mouse/tap\nor by using the Enter key.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -13187,7 +13370,9 @@
                 ]
               },
               "description": "Fired when an item is activated, unless the item's `type` property\nis set to `Inactive`.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -13213,6 +13398,9 @@
                 ]
               },
               "description": "Fired when the `Close` button of any item is clicked\n\n**Note:** This event is only applicable to list items that can be closed (such as notification list items),\nnot to be confused with `item-delete`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.8",
               "_ui5parameters": [
                 {
@@ -13239,6 +13427,9 @@
                 ]
               },
               "description": "Fired when the `Toggle` button of any item is clicked.\n\n**Note:** This event is only applicable to list items that can be toggled (such as notification group list items).",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.8",
               "_ui5parameters": [
                 {
@@ -13265,6 +13456,9 @@
                 ]
               },
               "description": "Fired when the Delete button of any item is pressed.\n\n**Note:** A Delete button is displayed on each item,\nwhen the component `selectionMode` property is set to `Delete`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -13290,7 +13484,9 @@
                 ]
               },
               "description": "Fired when selection is changed by user interaction\nin `Single`, `SingleStart`, `SingleEnd` and `Multiple` selection modes.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -13331,6 +13527,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the user scrolls to the bottom of the list.\n\n**Note:** The event is fired when the `growing='Scroll'` property is enabled.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.6"
             },
             {
@@ -13347,7 +13546,9 @@
                 ]
               },
               "description": "Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0",
               "_ui5parameters": [
                 {
@@ -13382,7 +13583,9 @@
                 ]
               },
               "description": "Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.",
-              "_ui5allowPreventDefault": true,
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -13680,7 +13883,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the user clicks on the detail button when type is `Detail`."
+              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -14097,6 +14303,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
@@ -14208,7 +14417,9 @@
                 ]
               },
               "description": "Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5since": "2.1.0",
               "_ui5parameters": [
                 {
@@ -14243,7 +14454,9 @@
                 ]
               },
               "description": "Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.",
-              "_ui5allowPreventDefault": true,
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.1.0",
               "_ui5parameters": [
                 {
@@ -14767,6 +14980,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
@@ -14897,7 +15113,9 @@
                 ]
               },
               "description": "Fired when an item is being clicked.\n\n**Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.",
-              "_ui5allowPreventDefault": true,
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -14931,7 +15149,9 @@
                 ]
               },
               "description": "Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.**\n\n**Note:** Since 1.14.0 the event is also fired before a sub-menu opens.",
-              "_ui5allowPreventDefault": true,
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.10.0",
               "_ui5parameters": [
                 {
@@ -14952,6 +15172,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired after the menu is opened. **This event does not bubble.**",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.10.0"
             },
             {
@@ -14968,7 +15191,9 @@
                 ]
               },
               "description": "Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. **This event does not bubble.**",
-              "_ui5allowPreventDefault": true,
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.10.0",
               "_ui5parameters": [
                 {
@@ -14988,6 +15213,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired after the menu is closed. **This event does not bubble.**",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.10.0"
             }
           ],
@@ -15471,6 +15699,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
@@ -15636,7 +15867,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the close button is pressed either with a\nclick/tap or by using the Enter or Space key."
+              "description": "Fired when the close button is pressed either with a\nclick/tap or by using the Enter or Space key.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -15967,7 +16201,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the input operation has finished by pressing Enter or on focusout."
+              "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "input",
@@ -15975,7 +16212,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the value of the component changes at each keystroke or clear icon is pressed."
+              "description": "Fired when the value of the component changes at each keystroke or clear icon is pressed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "open",
@@ -15984,6 +16224,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the dropdown is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0"
             },
             {
@@ -15993,6 +16236,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the dropdown is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0"
             },
             {
@@ -16009,7 +16255,9 @@
                 ]
               },
               "description": "Fired when selection is changed by user interaction.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -16723,7 +16971,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the value help icon is pressed\nand F4 or ALT/OPTION + ARROW_UP/ARROW_DOWN keyboard keys are used."
+              "description": "Fired when the value help icon is pressed\nand F4 or ALT/OPTION + ARROW_UP/ARROW_DOWN keyboard keys are used.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "token-delete",
@@ -16739,6 +16990,9 @@
                 ]
               },
               "description": "Fired when tokens are being deleted.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -16757,6 +17011,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Input",
                 "module": "dist/Input.js"
@@ -16769,7 +17026,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the value of the component changes at each keystroke,\nand when a suggestion item has been selected.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Input",
                 "module": "dist/Input.js"
@@ -16782,6 +17041,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when some text has been selected.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0",
               "inheritedFrom": {
                 "name": "Input",
@@ -16802,6 +17064,9 @@
                 ]
               },
               "description": "Fired when the user navigates to a suggestion item via the ARROW keys,\nas a preview, before the final selection.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0",
               "_ui5parameters": [
                 {
@@ -16825,6 +17090,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the suggestions picker is open.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0",
               "inheritedFrom": {
                 "name": "Input",
@@ -16838,6 +17106,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the suggestions picker is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0",
               "inheritedFrom": {
                 "name": "Input",
@@ -17559,7 +17830,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the component is expanded/collapsed by user interaction."
+              "description": "Fired when the component is expanded/collapsed by user interaction.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -18127,8 +18401,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**",
+              "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -18140,7 +18416,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component is opened. **This event does not bubble.**",
+              "description": "Fired after the component is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -18159,8 +18438,10 @@
                   }
                 ]
               },
-              "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**",
+              "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -18182,7 +18463,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component is closed. **This event does not bubble.**",
+              "description": "Fired after the component is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -18333,8 +18617,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**",
-              "_ui5allowPreventDefault": true
+              "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true
             },
             {
               "name": "open",
@@ -18342,7 +18628,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component is opened. **This event does not bubble.**"
+              "description": "Fired after the component is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "before-close",
@@ -18357,8 +18646,10 @@
                   }
                 ]
               },
-              "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**",
+              "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -18376,7 +18667,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component is closed. **This event does not bubble.**"
+              "description": "Fired after the component is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -18777,6 +19071,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the component checked state changes.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.15"
             }
           ],
@@ -19073,6 +19370,20 @@
             },
             {
               "kind": "field",
+              "name": "editableTooltip",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "\nIndicates whether input fields should be used as tooltips for the handles.\n\n**Note:** Setting this option to true will only work if showTooltip is set to true.\n**Note:** In order for the component to comply with the accessibility standard, it is recommended to set the editableTooltip property to true.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SliderBase",
+                "module": "dist/SliderBase.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "disabled",
               "type": {
                 "text": "boolean"
@@ -19212,6 +19523,19 @@
               }
             },
             {
+              "description": "\nIndicates whether input fields should be used as tooltips for the handles.\n\n**Note:** Setting this option to true will only work if showTooltip is set to true.\n**Note:** In order for the component to comply with the accessibility standard, it is recommended to set the editableTooltip property to true.",
+              "name": "editable-tooltip",
+              "default": "false",
+              "fieldName": "editableTooltip",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SliderBase",
+                "module": "dist/SliderBase.js"
+              }
+            },
+            {
               "description": "Defines whether the slider is in disabled state.",
               "name": "disabled",
               "default": "false",
@@ -19255,6 +19579,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the value changes and the user has finished interacting with the slider.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "SliderBase",
                 "module": "dist/SliderBase.js"
@@ -19267,6 +19594,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "SliderBase",
                 "module": "dist/SliderBase.js"
@@ -19396,7 +19726,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "The event is fired when the value changes."
+              "description": "The event is fired when the value changes.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -20002,8 +20335,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**",
+              "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -20015,7 +20350,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component is opened. **This event does not bubble.**",
+              "description": "Fired after the component is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -20034,8 +20372,10 @@
                   }
                 ]
               },
-              "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**",
+              "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -20057,7 +20397,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component is closed. **This event does not bubble.**",
+              "description": "Fired after the component is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -20209,6 +20552,9 @@
                 ]
               },
               "description": "Fired when the selected item changes.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -20474,6 +20820,12 @@
       "path": "dist/Select.js",
       "declarations": [
         {
+          "kind": "interface",
+          "name": "IOption",
+          "description": "Interface for components that may be slotted inside `ui5-select` as options",
+          "_ui5privacy": "public"
+        },
+        {
           "kind": "class",
           "description": "### Overview\n\nThe `ui5-select` component is used to create a drop-down list.\n\n### Usage\n\nThere are two main usages of the `ui5-select>`.\n\n1. With Option (`ui5-option`) web component:\n\nThe available options of the Select are defined by using the Option component.\nThe Option comes with predefined design and layout, including `icon`, `text` and `additional-text`.\n\n2. With OptionCustom (`ui5-option-custom`) web component.\n\nOptions with custom content are defined by using the OptionCustom component\nThe OptionCustom component comes with no predefined layout and it expects consumers to define it.\n\n### Keyboard Handling\nThe `ui5-select` provides advanced keyboard handling.\n\n- [F4] / [Alt] + [Up] / [Alt] + [Down] / [Space] or [Enter] - Opens/closes the drop-down.\n- [Up] or [Down] - If the drop-down is closed - changes selection to the next or the previous option. If the drop-down is opened - moves focus to the next or the previous option.\n- [Space], [Enter] - If the drop-down is opened - selects the focused option.\n- [Escape] - Closes the drop-down without changing the selection.\n- [Home] - Navigates to first option\n- [End] - Navigates to the last option\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/Select\";`\n\n`import \"@ui5/webcomponents/dist/Option\";`\n`import \"@ui5/webcomponents/dist/OptionCustom\";`",
           "name": "Select",
@@ -20648,7 +21000,9 @@
                 ]
               },
               "description": "Fired when the selected option changes.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -20681,6 +21035,9 @@
                 ]
               },
               "description": "Fired when the user navigates through the options, but the selection is not finalized,\nor when pressing the ESC key to revert the current selection.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.17.0",
               "_ui5parameters": [
                 {
@@ -20706,7 +21063,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component's dropdown menu opens."
+              "description": "Fired after the component's dropdown menu opens.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "close",
@@ -20714,7 +21074,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component's dropdown menu closes."
+              "description": "Fired after the component's dropdown menu closes.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -20966,6 +21329,20 @@
             },
             {
               "kind": "field",
+              "name": "editableTooltip",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "\nIndicates whether input fields should be used as tooltips for the handles.\n\n**Note:** Setting this option to true will only work if showTooltip is set to true.\n**Note:** In order for the component to comply with the accessibility standard, it is recommended to set the editableTooltip property to true.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SliderBase",
+                "module": "dist/SliderBase.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "disabled",
               "type": {
                 "text": "boolean"
@@ -21096,6 +21473,19 @@
               }
             },
             {
+              "description": "\nIndicates whether input fields should be used as tooltips for the handles.\n\n**Note:** Setting this option to true will only work if showTooltip is set to true.\n**Note:** In order for the component to comply with the accessibility standard, it is recommended to set the editableTooltip property to true.",
+              "name": "editable-tooltip",
+              "default": "false",
+              "fieldName": "editableTooltip",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SliderBase",
+                "module": "dist/SliderBase.js"
+              }
+            },
+            {
               "description": "Defines whether the slider is in disabled state.",
               "name": "disabled",
               "default": "false",
@@ -21139,6 +21529,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the value changes and the user has finished interacting with the slider.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "SliderBase",
                 "module": "dist/SliderBase.js"
@@ -21151,6 +21544,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "SliderBase",
                 "module": "dist/SliderBase.js"
@@ -21260,6 +21656,16 @@
             },
             {
               "kind": "field",
+              "name": "editableTooltip",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "\nIndicates whether input fields should be used as tooltips for the handles.\n\n**Note:** Setting this option to true will only work if showTooltip is set to true.\n**Note:** In order for the component to comply with the accessibility standard, it is recommended to set the editableTooltip property to true.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
               "name": "disabled",
               "type": {
                 "text": "boolean"
@@ -21287,7 +21693,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the value changes and the user has finished interacting with the slider."
+              "description": "Fired when the value changes and the user has finished interacting with the slider.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "input",
@@ -21295,7 +21704,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging."
+              "description": "Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -21358,6 +21770,15 @@
               "name": "show-tooltip",
               "default": "false",
               "fieldName": "showTooltip",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "\nIndicates whether input fields should be used as tooltips for the handles.\n\n**Note:** Setting this option to true will only work if showTooltip is set to true.\n**Note:** In order for the component to comply with the accessibility standard, it is recommended to set the editableTooltip property to true.",
+              "name": "editable-tooltip",
+              "default": "false",
+              "fieldName": "editableTooltip",
               "type": {
                 "text": "boolean"
               }
@@ -21575,7 +21996,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the user clicks on the default action."
+              "description": "Fired when the user clicks on the default action.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "arrow-click",
@@ -21583,7 +22007,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the user clicks on the arrow action."
+              "description": "Fired when the user clicks on the arrow action.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -21829,7 +22256,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the input operation has finished by pressing Enter or on focusout."
+              "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "value-state-change",
@@ -21845,7 +22275,9 @@
                 ]
               },
               "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5since": "1.23.0",
               "_ui5parameters": [
                 {
@@ -22306,7 +22738,9 @@
                 ]
               },
               "description": "Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5since": "2.1.0",
               "_ui5parameters": [
                 {
@@ -22345,7 +22779,9 @@
                 ]
               },
               "description": "Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.",
-              "_ui5allowPreventDefault": true,
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.1.0",
               "_ui5parameters": [
                 {
@@ -22563,7 +22999,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the component checked state changes.",
-              "_ui5allowPreventDefault": true
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -23086,7 +23524,9 @@
                 ]
               },
               "description": "Fired when a tab is selected.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0",
               "_ui5parameters": [
                 {
@@ -23128,7 +23568,9 @@
                 ]
               },
               "description": "Fired when element is being moved over the tab container.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0",
               "_ui5parameters": [
                 {
@@ -23163,7 +23605,9 @@
                 ]
               },
               "description": "Fired when element is moved to the tab container.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.",
-              "_ui5allowPreventDefault": true,
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -23489,6 +23933,9 @@
                 ]
               },
               "description": "Fired when an interactive row is clicked.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -23615,7 +24062,7 @@
           "_ui5privacy": "public",
           "attributes": [
             {
-              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
               "name": "horizontal-align",
               "default": "undefined",
               "fieldName": "horizontalAlign",
@@ -23642,7 +24089,7 @@
                   }
                 ]
               },
-              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
               "default": "undefined",
               "privacy": "public",
               "inheritedFrom": {
@@ -23716,14 +24163,14 @@
                   }
                 ]
               },
-              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
               "default": "undefined",
               "privacy": "public"
             }
           ],
           "attributes": [
             {
-              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
               "name": "horizontal-align",
               "default": "undefined",
               "fieldName": "horizontalAlign",
@@ -23823,7 +24270,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the growing button is pressed or the user scrolls to the end of the table."
+              "description": "Fired when the growing button is pressed or the user scrolls to the end of the table.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -23948,7 +24398,7 @@
                   }
                 ]
               },
-              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
               "default": "undefined",
               "privacy": "public",
               "inheritedFrom": {
@@ -23995,7 +24445,7 @@
               }
             },
             {
-              "description": "Determines the horizontal alignment of table cells.\nNote: All values valid for justify-content can be used not just the ones inside the enum.",
+              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
               "name": "horizontal-align",
               "default": "undefined",
               "fieldName": "horizontalAlign",
@@ -24338,7 +24788,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when selection is changed by user interaction."
+              "description": "Fired when selection is changed by user interaction.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -24528,6 +24981,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the user clicks on an interactive tag.\n\n**Note:** The event will be fired if the `interactive` property is `true`",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.22.0"
             }
           ],
@@ -24651,10 +25107,10 @@
               "kind": "field",
               "name": "emptyIndicatorMode",
               "type": {
-                "text": "EmptyIndicatorMode",
+                "text": "TextEmptyIndicatorMode",
                 "references": [
                   {
-                    "name": "EmptyIndicatorMode",
+                    "name": "TextEmptyIndicatorMode",
                     "package": "@ui5/webcomponents",
                     "module": "dist/types/TextEmptyIndicatorMode.js"
                   }
@@ -24903,7 +25359,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the text has changed and the focus leaves the component."
+              "description": "Fired when the text has changed and the focus leaves the component.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "input",
@@ -24912,6 +25371,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the value of the component changes at each keystroke or when\nsomething is pasted.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.5"
             },
             {
@@ -24921,6 +25383,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when some text has been selected.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.23.0"
             },
             {
@@ -24930,6 +25395,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when textarea is scrolled.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.23.0"
             }
           ],
@@ -25304,6 +25772,9 @@
                 ]
               },
               "description": "Fired when the input operation has finished by clicking the \"OK\" button or\nwhen the text in the input field has changed and the focus leaves the input field.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -25337,6 +25808,9 @@
                 ]
               },
               "description": "Fired when the value of the `ui5-time-picker` is changed at each key stroke.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -25363,6 +25837,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired after the value-help dialog of the component is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0"
             },
             {
@@ -25372,6 +25849,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired after the value-help dialog of the component is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0"
             }
           ],
@@ -25770,6 +26250,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired after the component is auto closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0"
             }
           ],
@@ -26212,6 +26695,9 @@
                 "text": "Event"
               },
               "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Button",
                 "module": "dist/Button.js"
@@ -26441,6 +26927,9 @@
                 ]
               },
               "description": "Fired when tokens are being deleted (delete icon, delete or backspace is pressed)",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -26465,7 +26954,10 @@
                   }
                 ]
               },
-              "description": "Fired when token selection is changed by user interaction"
+              "description": "Fired when token selection is changed by user interaction",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -26865,7 +27357,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`."
+              "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -27237,7 +27732,9 @@
                 ]
               },
               "description": "Fired when the selected option changes.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -27255,7 +27752,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component's dropdown menu opens."
+              "description": "Fired after the component's dropdown menu opens.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "close",
@@ -27263,7 +27763,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the component's dropdown menu closes."
+              "description": "Fired after the component's dropdown menu closes.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -27818,7 +28321,9 @@
                 ]
               },
               "description": "Fired when a tree item is expanded or collapsed.\n\n**Note:** You can call `preventDefault()` on the event object to suppress the event, if needed.\nThis may be handy for example if you want to dynamically load tree items upon the user expanding a node.\nEven if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -27844,6 +28349,9 @@
                 ]
               },
               "description": "Fired when the mouse cursor enters the tree item borders.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.16",
               "_ui5parameters": [
                 {
@@ -27870,6 +28378,9 @@
                 ]
               },
               "description": "Fired when the mouse cursor leaves the tree item borders.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.0.0-rc.16",
               "_ui5parameters": [
                 {
@@ -27896,7 +28407,9 @@
                 ]
               },
               "description": "Fired when a tree item is activated.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -27922,6 +28435,9 @@
                 ]
               },
               "description": "Fired when the Delete button of any tree item is pressed.\n\n**Note:** A Delete button is displayed on each item,\nwhen the component `selectionMode` property is set to `Delete`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -27947,6 +28463,9 @@
                 ]
               },
               "description": "Fired when selection is changed by user interaction\nin `Single`, `SingleStart`, `SingleEnd` and `Multiple` modes.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -28545,6 +29064,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
@@ -29010,6 +29532,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
@@ -29535,6 +30060,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"

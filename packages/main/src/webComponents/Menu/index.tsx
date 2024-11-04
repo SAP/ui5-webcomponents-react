@@ -69,8 +69,6 @@ interface MenuPropTypes
   /**
    * Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. **This event does not bubble.**
    *
-   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
-   *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    */
   onBeforeClose?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeCloseEventDetail>) => void;
@@ -79,8 +77,6 @@ interface MenuPropTypes
    * Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.**
    *
    * **Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
-   *
-   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    */
@@ -97,8 +93,6 @@ interface MenuPropTypes
    * Fired when an item is being clicked.
    *
    * **Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.
-   *
-   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
 

@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Text.js';
-import type EmptyIndicatorMode from '@ui5/webcomponents/dist/types/TextEmptyIndicatorMode.js';
+import type TextEmptyIndicatorMode from '@ui5/webcomponents/dist/types/TextEmptyIndicatorMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef } from '../../types/index.js';
@@ -13,7 +13,7 @@ interface TextAttributes {
    * **Note:** Available since [v2.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.2.0) of **@ui5/webcomponents**.
    * @default "Off"
    */
-  emptyIndicatorMode?: EmptyIndicatorMode | keyof typeof EmptyIndicatorMode;
+  emptyIndicatorMode?: TextEmptyIndicatorMode | keyof typeof TextEmptyIndicatorMode;
 
   /**
    * Defines the number of lines the text should wrap before it truncates.

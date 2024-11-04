@@ -47,8 +47,6 @@ interface SuggestionItemGroupPropTypes
    *
    * **Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.
    *
-   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
-   *
    * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents**.
    */
   onMove?: (event: Ui5CustomEvent<SuggestionItemGroupDomRef, ListItemGroupMoveEventDetail>) => void;

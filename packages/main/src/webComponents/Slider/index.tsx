@@ -20,6 +20,16 @@ interface SliderAttributes {
   disabled?: boolean;
 
   /**
+   *
+   * Indicates whether input fields should be used as tooltips for the handles.
+   *
+   * **Note:** Setting this option to true will only work if showTooltip is set to true.
+   * **Note:** In order for the component to comply with the accessibility standard, it is recommended to set the editableTooltip property to true.
+   * @default false
+   */
+  editableTooltip?: boolean;
+
+  /**
    * Displays a label with a value on every N-th step.
    *
    * **Note:** The step and tickmarks properties must be enabled.
@@ -141,7 +151,7 @@ interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, keyof Slid
 const Slider = withWebComponent<SliderPropTypes, SliderDomRef>(
   'ui5-slider',
   ['accessibleName', 'labelInterval', 'max', 'min', 'name', 'step', 'value'],
-  ['disabled', 'showTickmarks', 'showTooltip'],
+  ['disabled', 'editableTooltip', 'showTickmarks', 'showTooltip'],
   [],
   ['change', 'input']
 );

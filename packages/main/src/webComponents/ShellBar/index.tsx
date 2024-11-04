@@ -239,6 +239,8 @@ interface ShellBarPropTypes
    * Fired, when a menu item is activated
    *
    * **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onMenuItemClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarMenuItemClickEventDetail>) => void;
 
