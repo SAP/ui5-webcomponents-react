@@ -1,0 +1,46 @@
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import * as ComponentStories from './NavigationLayout.stories';
+import { SideNavigation } from '../SideNavigation/index';
+import { SideNavigationItem } from '../SideNavigationItem/index';
+import { SideNavigationGroup } from '../SideNavigationGroup/index';
+import { SideNavigationSubItem } from '../SideNavigationSubItem/index';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## SideNavigation
+
+<Description of={SideNavigation} />
+<ArgTypesWithNote of={SideNavigation} />
+
+## SideNavigationItem
+
+<Description of={SideNavigationItem} />
+<ArgTypesWithNote of={SideNavigationItem} />
+
+## SideNavigationSubItem
+
+<Description of={SideNavigationSubItem} />
+<ArgTypesWithNote of={SideNavigationSubItem} />
+
+## SideNavigationGroup
+
+<Description of={SideNavigationGroup} />
+<ArgTypesWithNote of={SideNavigationGroup} />
+
+<Footer />
