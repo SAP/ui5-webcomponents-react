@@ -13,7 +13,7 @@ import '@ui5/webcomponents-icons/dist/chain-link.js';
 import '@ui5/webcomponents-icons/dist/document-text.js';
 import '@ui5/webcomponents-icons/dist/compare.js';
 import '@ui5/webcomponents-icons/dist/locked.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../Button/index.js';
 import { ShellBar } from '../ShellBar/index.js';
 import type { SideNavigationPropTypes } from '../SideNavigation/index.js';
@@ -43,16 +43,31 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => {
     const [selectedContent, setSelectedContent] = useState('Home');
+    const [collapsed, setCollapsed] = useState(false);
     const handleSelectionChange: SideNavigationPropTypes['onSelectionChange'] = (e) => {
       setSelectedContent(e.detail.item.text);
     };
+
+    useEffect(() => {
+      setCollapsed(args.sideCollapsed);
+    }, [args.sideCollapsed]);
+
     return (
       <div style={{ position: 'relative', height: '800px' }}>
         <NavigationLayout
           {...args}
+          sideCollapsed={collapsed}
           header={
             <ShellBar
-              startButton={<Button icon={menuIcon} tooltip="" />}
+              startButton={
+                <Button
+                  icon={menuIcon}
+                  tooltip={`${collapsed ? 'Expand' : 'Collapse'} Side-Bar`}
+                  onClick={() => {
+                    setCollapsed((prev) => !prev);
+                  }}
+                />
+              }
               primaryTitle="UI5 Web Components for React"
               secondaryTitle="The Best Run SAP"
             />
