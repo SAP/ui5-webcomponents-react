@@ -9,7 +9,7 @@ import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 interface TableHeaderCellAttributes {
   /**
    * Determines the horizontal alignment of table cells.
-   * Note: All values valid for justify-content can be used not just the ones inside the enum.
+   * **Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.
    * @default undefined
    */
   horizontalAlign?: TableCellHorizontalAlign | undefined | keyof typeof TableCellHorizontalAlign;

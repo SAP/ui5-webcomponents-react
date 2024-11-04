@@ -78,7 +78,9 @@ interface ViewSettingsDialogPropTypes
    */
   sortItems?: UI5WCSlotsNode;
   /**
-   * Fired before the component is opened. **This event does not bubble.**
+   * Fired before the component is opened.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onBeforeOpen?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef>) => void;
 

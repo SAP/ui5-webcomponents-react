@@ -171,26 +171,26 @@ interface DialogPropTypes
    */
   header?: UI5WCSlotsNode;
   /**
-   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
+   * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onBeforeClose?: (event: Ui5CustomEvent<DialogDomRef, PopupBeforeCloseEventDetail>) => void;
 
   /**
-   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
+   * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 
   /**
-   * Fired after the component is closed. **This event does not bubble.**
+   * Fired after the component is closed.
    */
   onClose?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 
   /**
-   * Fired after the component is opened. **This event does not bubble.**
+   * Fired after the component is opened.
    */
   onOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }

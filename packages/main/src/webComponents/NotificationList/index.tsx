@@ -36,11 +36,15 @@ interface NotificationListPropTypes
 
   /**
    * Fired when the `Close` button of any item is clicked.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onItemClose?: (event: Ui5CustomEvent<NotificationListDomRef, NotificationItemCloseEventDetail>) => void;
 
   /**
    * Fired when an item is toggled.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onItemToggle?: (event: Ui5CustomEvent<NotificationListDomRef, NotificationItemToggleEventDetail>) => void;
 }

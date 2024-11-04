@@ -166,7 +166,13 @@ interface DateTimePickerPropTypes
   extends DateTimePickerAttributes,
     Omit<
       CommonProps,
-      keyof DateTimePickerAttributes | 'valueStateMessage' | 'onChange' | 'onInput' | 'onValueStateChange'
+      | keyof DateTimePickerAttributes
+      | 'valueStateMessage'
+      | 'onChange'
+      | 'onClose'
+      | 'onInput'
+      | 'onOpen'
+      | 'onValueStateChange'
     > {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
@@ -191,11 +197,25 @@ interface DateTimePickerPropTypes
   onChange?: (event: Ui5CustomEvent<DateTimePickerDomRef, DatePickerChangeEventDetail>) => void;
 
   /**
+   * Fired after the value-help dialog of the component is closed.
+   *
+   * **Note:** Available since [v2.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.4.0) of **@ui5/webcomponents**.
+   */
+  onClose?: (event: Ui5CustomEvent<DateTimePickerDomRef>) => void;
+
+  /**
    * Fired when the value of the component is changed at each key stroke.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    */
   onInput?: (event: Ui5CustomEvent<DateTimePickerDomRef, DatePickerInputEventDetail>) => void;
+
+  /**
+   * Fired after the value-help dialog of the component is opened.
+   *
+   * **Note:** Available since [v2.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.4.0) of **@ui5/webcomponents**.
+   */
+  onOpen?: (event: Ui5CustomEvent<DateTimePickerDomRef>) => void;
 
   /**
    * Fired before the value state of the component is updated internally.
@@ -280,7 +300,7 @@ const DateTimePicker = withWebComponent<DateTimePickerPropTypes, DateTimePickerD
   ],
   ['disabled', 'hideWeekNumbers', 'open', 'readonly', 'required'],
   ['valueStateMessage'],
-  ['change', 'input', 'value-state-change']
+  ['change', 'close', 'input', 'open', 'value-state-change']
 );
 
 DateTimePicker.displayName = 'DateTimePicker';

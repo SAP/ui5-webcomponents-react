@@ -60,7 +60,8 @@ const replaceSubComps = {
   ToolbarItem: ['ToolbarSeparator', 'ToolbarSpacer', 'ToolbarButton', 'ToolbarSelect', 'ToolbarSelectOption'],
   TreeItemBase: ['TreeItem', 'TreeItemCustom'],
   AvatarGroupItem: ['Avatar'],
-  TableFeature: ['TableGrowing', 'TableSelection']
+  TableFeature: ['TableGrowing', 'TableSelection'],
+  SideNavigationItemBase: ['SideNavigationItem', 'SideNavigationGroup', 'SideNavigationSubItem']
 };
 
 function findSubComponentsRecursively(moduleName: string, cem: any): string[] {
