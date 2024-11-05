@@ -48,8 +48,7 @@ jobs:
             --no-push \
             --no-git-tag-version \
             --pre-dist-tag dev \
-            --allow-branch ${current_branch} \
-            --force-publish
+            --allow-branch ${current_branch}
 
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
