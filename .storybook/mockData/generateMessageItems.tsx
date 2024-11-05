@@ -24,22 +24,6 @@ const informationMessageItems = (count) => {
   ));
 };
 
-const successMessageItems = (count) => {
-  if (!count) {
-    return [];
-  }
-  return new Array(count).fill('').map((_, index) => (
-    <MessageItem
-      key={`SuccessMessage${index}`}
-      titleText={'Success Message'}
-      type={ValueState.Success}
-      groupName={`Group${index}`}
-    >
-      {LoremIpsum}
-    </MessageItem>
-  ));
-};
-
 const warningMessageItems = (count) => {
   if (!count) {
     return [];
@@ -75,6 +59,5 @@ const errorMessageItems = (count) => {
 export const generateMessageItems = (numberOfMessageTypes) => [
   ...informationMessageItems(numberOfMessageTypes.information),
   ...warningMessageItems(numberOfMessageTypes.warning),
-  ...successMessageItems(numberOfMessageTypes.success),
   ...errorMessageItems(numberOfMessageTypes.error)
 ];
