@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.3...v2.4.0) (2024-11-05)
+
+### Bug Fixes
+
+- **AnalyticalTable:** remove unnecessary `aria-expanded` ([#6587](https://github.com/SAP/ui5-webcomponents-react/issues/6587)) ([a74ffbc](https://github.com/SAP/ui5-webcomponents-react/commit/a74ffbcecb54ca376775b1d50e80c3c82d99b17b)), closes [#6516](https://github.com/SAP/ui5-webcomponents-react/issues/6516)
+
+### Features
+
+- **AnalyticalTable:** allow passing custom header popovers ([#6576](https://github.com/SAP/ui5-webcomponents-react/issues/6576)) ([03d973e](https://github.com/SAP/ui5-webcomponents-react/commit/03d973e344e4552b1c320731cb65ffa1c68c9426))
+- update @ui5/webcomponents to ~2.4.0 ([#6585](https://github.com/SAP/ui5-webcomponents-react/issues/6585)) ([2a4049c](https://github.com/SAP/ui5-webcomponents-react/commit/2a4049c1d5686e443a569f01d94331aa13a66c88))
+
 ## [2.3.3](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.2...v2.3.3) (2024-10-31)
 
 ### Bug Fixes
