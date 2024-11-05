@@ -152,10 +152,10 @@ import * as ComponentStories from './AnalyticalTable.stories';
 
 **Required Attributes**
 
-| Attribute  | Type                                              | Description                                                                                                                                                                                                                    |
-| ---------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `accessor` | `string OR ((row: any, rowIndex: number) => any)` | This `string`/`function` is used to build the data model for your column.<br /><br />**Note**: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`<br />                    |
-| `id`       | `string`                                          | Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.<br /><br />**Note:** If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set. |
+| Attribute  | Type                                                                                                                                                      | Description                                                                                                                                                                                                                    |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accessor` | `string` OR <br />`(originalRow: Record<string, any>, rowIndex: number, row: RowType,` <br />`parentRows: RowType[], data: Record<string, any>[]) => any` | This `string`/`function` is used to build the data model for your column.<br /><br />**Note**: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`.<br />                   |
+| `id`       | `string`                                                                                                                                                  | Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering, etc.<br /><br />**Note:** If no `accessor` is set, or the `accessor` is a function, the `id` property is mandatory. |
 
 **Optional Properties**
 

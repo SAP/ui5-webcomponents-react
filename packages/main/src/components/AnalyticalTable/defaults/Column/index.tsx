@@ -1,6 +1,7 @@
 import { VerticalAlign } from '../../../../enums/index.js';
 import { DefaultFilterComponent } from '../FilterComponent/index.js';
 import { Cell } from './Cell.js';
+import { ColumnHeaderModal } from './ColumnHeaderModal.js';
 import { Expandable } from './Expandable.js';
 import { Grouped } from './Grouped.js';
 import { PopIn } from './PopIn.js';
@@ -16,5 +17,6 @@ export const DefaultColumn = {
   Cell: Cell,
   Expandable: Expandable,
   RepeatedValue: RepeatedValue,
-  PopIn: PopIn
+  PopIn: PopIn,
+  Popover: ColumnHeaderModal
 };

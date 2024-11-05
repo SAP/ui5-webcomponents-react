@@ -8,35 +8,36 @@ import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
-import type { MutableRefObject } from 'react';
 import { useEffect, useMemo, useRef } from 'react';
-import { FlexBoxAlignItems, TextAlign } from '../../../enums/index.js';
-import { CLEAR_SORTING, FILTER, GROUP, SORT_ASCENDING, SORT_DESCENDING, UNGROUP } from '../../../i18n/i18n-defaults.js';
-import { stopPropagation } from '../../../internal/stopPropagation.js';
-import { getUi5TagWithSuffix } from '../../../internal/utils.js';
-import { Icon } from '../../../webComponents/Icon/index.js';
-import { List } from '../../../webComponents/List/index.js';
-import { ListItemCustom } from '../../../webComponents/ListItemCustom/index.js';
-import { ListItemStandard } from '../../../webComponents/ListItemStandard/index.js';
-import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
-import { Popover } from '../../../webComponents/Popover/index.js';
-import { Text } from '../../../webComponents/Text/index.js';
-import { FlexBox } from '../../FlexBox/index.js';
-import type { AnalyticalTableColumnDefinition } from '../types/index.js';
+import { FlexBoxAlignItems } from '../../../../enums/FlexBoxAlignItems.js';
+import { TextAlign } from '../../../../enums/TextAlign.js';
+import {
+  CLEAR_SORTING,
+  FILTER,
+  GROUP,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  UNGROUP
+} from '../../../../i18n/i18n-defaults.js';
+import { stopPropagation } from '../../../../internal/stopPropagation.js';
+import { getUi5TagWithSuffix } from '../../../../internal/utils.js';
+import { Icon } from '../../../../webComponents/Icon/index.js';
+import { List } from '../../../../webComponents/List/index.js';
+import { ListItemCustom } from '../../../../webComponents/ListItemCustom/index.js';
+import { ListItemStandard } from '../../../../webComponents/ListItemStandard/index.js';
+import type { PopoverDomRef } from '../../../../webComponents/Popover/index.js';
+import { Popover } from '../../../../webComponents/Popover/index.js';
+import { Text } from '../../../../webComponents/Text/index.js';
+import { FlexBox } from '../../../FlexBox/index.js';
+import type { TableInstance } from '../../types/index.js';
 import { classNames, styleData } from './ColumnHeaderModal.module.css.js';
 
-export interface ColumnHeaderModalProperties {
-  column: AnalyticalTableColumnDefinition;
-  onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
-  onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
-  open: boolean;
-  setPopoverOpen: (open: boolean) => void;
-  isRtl: boolean;
-  openerRef: MutableRefObject<HTMLDivElement>;
-}
+export const ColumnHeaderModal = (instance: TableInstance) => {
+  const { setOpen, openerRef } = instance.popoverProps;
+  const { column, state, webComponentsReactProperties } = instance;
+  const { isRtl, groupBy } = state;
+  const { onGroup, onSort } = webComponentsReactProperties;
 
-export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
-  const { column, onSort, onGroupBy, open, setPopoverOpen, isRtl, openerRef } = props;
   useStylesheet(styleData, ColumnHeaderModal.displayName);
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
@@ -44,7 +45,6 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
 
   const ref = useRef<PopoverDomRef>(null);
   const listRef = useRef(null);
-
   const { Filter } = column;
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -105,10 +105,17 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
       case 'group': {
         const willGroup = !column.isGrouped;
         column.toggleGroupBy(willGroup);
-        if (typeof onGroupBy === 'function') {
-          onGroupBy(
+        let groupedColumns;
+        if (willGroup) {
+          groupedColumns = [...groupBy, column.id];
+        } else {
+          groupedColumns = groupBy.filter((group) => group !== column.id);
+        }
+        if (typeof onGroup === 'function') {
+          onGroup(
             enrichEventWithDetails(e, {
               column,
+              groupedColumns,
               isGrouped: willGroup
             })
           );
@@ -116,7 +123,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
         break;
       }
     }
-    setPopoverOpen(false);
+    setOpen(false);
   };
 
   const isSortedAscending = column.isSorted && column.isSortedDesc === false;
@@ -124,7 +131,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
 
   const onAfterClose = (e) => {
     stopPropagation(e);
-    setPopoverOpen(false);
+    setOpen(false);
   };
 
   const onAfterOpen = () => {
@@ -150,7 +157,7 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
 
   const handleCustomLiKeyDown = (e) => {
     if (e.key === 'Enter') {
-      setPopoverOpen(false);
+      setOpen(false);
     }
   };
 
@@ -164,13 +171,13 @@ export const ColumnHeaderModal = (props: ColumnHeaderModalProperties) => {
     if (open && ref.current && openerRef.current) {
       void customElements.whenDefined(getUi5TagWithSuffix('ui5-popover')).then(() => {
         ref.current.opener = openerRef.current;
+        ref.current.open = true;
       });
     }
   }, [open]);
 
   return (
     <Popover
-      open={open}
       hideArrow
       horizontalAlign={horizontalAlign}
       placement={PopoverPlacement.Bottom}

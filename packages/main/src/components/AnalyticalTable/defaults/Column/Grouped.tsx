@@ -3,6 +3,7 @@ import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-ar
 import type { CSSProperties } from 'react';
 import { TextAlign } from '../../../../enums/index.js';
 import { Icon } from '../../../../webComponents/index.js';
+import { RenderColumnTypes } from '../../types/index.js';
 
 const tableGroupExpandCollapseIcon = {
   color: 'var(--sapContent_IconColor)',
@@ -29,7 +30,7 @@ export const Grouped = (props) => {
       >
         <Icon name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow} style={tableGroupExpandCollapseIcon} />
       </span>
-      {cell.render('Cell')}
+      {cell.render(RenderColumnTypes.Cell)}
     </>
   );
 };
