@@ -50,7 +50,7 @@ jobs:
           git config user.name ${{ secrets.BOT_GIT_USERNAME }}
 
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna version ${{ github.event.inputs.release_type }} \
-            --dist-tag ${{ github.event.inputs.npm_tag }}
+            --dist-tag ${{ github.event.inputs.npm_tag }} --force-publish
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
