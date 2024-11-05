@@ -8,7 +8,8 @@
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
-      "message": "chore(release): publish %s [ci skip]"
+      "message": "chore(release): publish %s [ci skip]",
+      "forcePublish": true
     },
     "publish": {
       "allowBranch": "main",
