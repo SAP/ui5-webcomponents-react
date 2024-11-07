@@ -710,6 +710,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               <span />
             </BusyIndicator>
           )}
+          {/*todo: use global CSS once --sapBlockLayer_Opacity is available*/}
           {showOverlay && (
             <>
               <span id={invalidTableTextId} className={classNames.hiddenA11yText} aria-hidden>
@@ -727,7 +728,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           <div
             aria-labelledby={titleBarId}
             {...getTableProps()}
-            tabIndex={showOverlay ? -1 : 0}
+            tabIndex={loading || showOverlay ? -1 : 0}
             role="grid"
             aria-rowcount={rows.length}
             aria-colcount={visibleColumns.length}

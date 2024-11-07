@@ -92,13 +92,14 @@ const meta = {
         disableSortBy: true,
         Cell: (instance) => {
           const { cell, row, webComponentsReactProperties } = instance;
-          // disable buttons if overlay is active to prevent focus
-          const isOverlay = webComponentsReactProperties.showOverlay;
+          const { loading, isOverlay } = webComponentsReactProperties;
+          // disable buttons if overlay is active or the table is loading, to prevent focus
+          const disabled = loading || isOverlay;
           // console.log('This is your row data', row.original);
           return (
             <FlexBox>
-              <Button icon="edit" disabled={isOverlay} />
-              <Button icon="delete" disabled={isOverlay} />
+              <Button icon="edit" disabled={disabled} />
+              <Button icon="delete" disabled={disabled} />
             </FlexBox>
           );
         },
