@@ -53884,7 +53884,7 @@ Fr();
 var are = J(Ui(), 1), zo = J(tre(), 1);
 
 // src/manager-api/version.ts
-var rre = "8.3.6";
+var rre = "8.3.7";
 
 // src/manager-api/modules/versions.ts
 var { VERSIONCHECK: uze } = Ae, nre = (0, are.default)(1)(() => {
