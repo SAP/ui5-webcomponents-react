@@ -27,3 +27,4 @@ packages/main/tmp
 packages/*/src/generated/
 
 .nx/cache
+.nx/workspace-data
