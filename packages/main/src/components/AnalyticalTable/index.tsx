@@ -699,7 +699,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           className={classNames.tableContainerWithScrollBar}
           data-component-name="AnalyticalTableContainerWithScrollbar"
         >
-          {loading && (
+          {loading && !!rows.length && (
             <BusyIndicator
               className={classNames.busyIndicator}
               active={true}
