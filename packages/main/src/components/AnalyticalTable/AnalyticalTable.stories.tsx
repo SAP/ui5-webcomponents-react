@@ -6,6 +6,7 @@ import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
+  AnalyticalTablePopinDisplay,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
   AnalyticalTableSelectionMode,
@@ -15,8 +16,15 @@ import {
   FlexBoxJustifyContent,
   TextAlign
 } from '../../enums/index.js';
-import { Button, MultiComboBox, MultiComboBoxItem, Option, Select, Tag, Text } from '../../webComponents/index.js';
-import { FlexBox } from '../FlexBox';
+import { Button } from '../../webComponents/Button/index.js';
+import { Label } from '../../webComponents/Label/index.js';
+import { MultiComboBox } from '../../webComponents/MultiComboBox/index.js';
+import { MultiComboBoxItem } from '../../webComponents/MultiComboBoxItem/index.js';
+import { Option } from '../../webComponents/Option/index.js';
+import { Select } from '../../webComponents/Select/index.js';
+import { Tag } from '../../webComponents/Tag/index.js';
+import { Text } from '../../webComponents/Text/index.js';
+import { FlexBox } from '../FlexBox/index.js';
 import { AnalyticalTable } from './index.js';
 
 const meta = {
@@ -325,6 +333,16 @@ export const ResponsiveColumns: Story = {
             </FlexBox>
           );
         }
+      },
+      {
+        id: 'popinDisplay',
+        Header: 'PopinDisplay Modes',
+        responsivePopIn: true,
+        responsiveMinWidth: 801,
+        popinDisplay: AnalyticalTablePopinDisplay.Block,
+        Cell: () => {
+          return <Text maxLines={1}>Using popinDisplay: 'Block'</Text>;
+        }
       }
     ]
   },
@@ -336,19 +354,52 @@ export const ResponsiveColumns: Story = {
         type: 'radio'
       },
       description:
-        'Select an option to change the width of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
+        'Select an option to change the width of the surrounding container of the table (in `px`). <br /> __Note__: This is not a prop of the table.'
     }
   },
   render: (args) => {
+    const [columns, setColumns] = useState(args.columns);
+    const [popinDisplay, setPopinDisplay] = useState(AnalyticalTablePopinDisplay.Block);
+
+    useEffect(() => {
+      setColumns((prev) => {
+        return [
+          ...prev.slice(0, -1),
+          {
+            id: 'popinDisplay',
+            Header: 'PopinDisplay Modes',
+            responsivePopIn: true,
+            responsiveMinWidth: 801,
+            popinDisplay: popinDisplay,
+            Cell: () => {
+              return <Text maxLines={1}>Using popinDisplay: {popinDisplay}</Text>;
+            }
+          }
+        ];
+      });
+    }, [popinDisplay]);
+
     return (
       <div
         style={{
           width: args.containerWidth && typeof args.containerWidth === 'number' ? `${args.containerWidth}px` : 'auto'
         }}
       >
+        <Label showColon style={{ marginInlineEnd: '0.5rem' }}>
+          Change <code>popinDisplay</code> of last column
+        </Label>
+        <Select
+          onChange={(e) => {
+            setPopinDisplay(e.detail.selectedOption.textContent);
+          }}
+        >
+          <Option selected={popinDisplay === AnalyticalTablePopinDisplay.Block}>Block</Option>
+          <Option selected={popinDisplay === AnalyticalTablePopinDisplay.Inline}>Inline</Option>
+          <Option selected={popinDisplay === AnalyticalTablePopinDisplay.WithoutHeader}>WithoutHeader</Option>
+        </Select>
         <AnalyticalTable
           data={args.data}
-          columns={args.columns}
+          columns={columns}
           visibleRows={5}
           adjustTableHeightOnPopIn={args.adjustTableHeightOnPopIn}
           header={`Current width: ${args.containerWidth}`}

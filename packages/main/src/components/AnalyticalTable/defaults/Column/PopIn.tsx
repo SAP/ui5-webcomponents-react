@@ -1,15 +1,19 @@
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { makeRenderer } from 'react-table';
-import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../../../enums/index.js';
+import { AnalyticalTablePopinDisplay } from '../../../../enums/AnalyticalTablePopinDisplay.js';
+import { FlexBoxAlignItems } from '../../../../enums/FlexBoxAlignItems.js';
+import { FlexBoxDirection } from '../../../../enums/FlexBoxDirection.js';
+import { FlexBoxWrap } from '../../../../enums/FlexBoxWrap.js';
 import { Text } from '../../../../webComponents/Text/index.js';
 import { FlexBox } from '../../../FlexBox/index.js';
+import type { TableInstance } from '../../types/index.js';
 import { RenderColumnTypes } from '../../types/index.js';
 import { classNames, styleData } from './PopIn.module.css.js';
 
-export const PopIn = (instance) => {
+export const PopIn = (instance: TableInstance) => {
   const { state, contentToRender, cell, row, internalRowHeight } = instance;
-
   useStylesheet(styleData, PopIn.displayName);
+
   return (
     <FlexBox direction={FlexBoxDirection.Column} className={classNames.container}>
       <FlexBox
@@ -28,20 +32,21 @@ export const PopIn = (instance) => {
       </FlexBox>
       {contentToRender !== RenderColumnTypes.Grouped &&
         state.popInColumns?.map((item) => {
+          const { popinDisplay, id, column } = item;
           const popInInstanceProps = row.allCells.find((cell) => cell.column.id === item.id);
           const renderHeader = () => {
-            if (item.column.PopInHeader) {
-              return typeof item.column.PopInHeader === 'function'
-                ? item.column.PopInHeader({ ...instance, ...popInInstanceProps })
-                : item.column.PopInHeader;
+            if (column.PopInHeader) {
+              return typeof column.PopInHeader === 'function'
+                ? column.PopInHeader({ ...instance, ...popInInstanceProps })
+                : column.PopInHeader;
             }
-            return typeof item.column.Header === 'function'
-              ? makeRenderer({ ...instance, ...popInInstanceProps }, item.column)(item.column.Header)
-              : item.column.Header;
+            return typeof column.Header === 'function'
+              ? makeRenderer({ ...instance, ...popInInstanceProps }, column)(column.Header)
+              : column.Header;
           };
           const renderCell = () => {
-            if (item.column?.Cell) {
-              const cell = item.column.Cell;
+            if (column?.Cell) {
+              const cell = column.Cell;
               if (typeof cell === 'string') {
                 return (
                   <Text maxLines={1} title={cell}>
@@ -49,7 +54,7 @@ export const PopIn = (instance) => {
                   </Text>
                 );
               }
-              return makeRenderer({ ...instance, ...popInInstanceProps, isPopIn: true }, item.column)(item.column.Cell);
+              return makeRenderer({ ...instance, ...popInInstanceProps, isPopIn: true }, column)(column.Cell);
             }
             return popInInstanceProps?.value ? (
               <Text maxLines={1} title={popInInstanceProps.value}>
@@ -58,8 +63,16 @@ export const PopIn = (instance) => {
             ) : null;
           };
           return (
-            <FlexBox direction={FlexBoxDirection.Column} key={item.id}>
-              {item.column?.Header && <div className={classNames.header}>{renderHeader()}:</div>}
+            <FlexBox
+              direction={
+                popinDisplay === AnalyticalTablePopinDisplay.Inline ? FlexBoxDirection.Row : FlexBoxDirection.Column
+              }
+              className={popinDisplay === AnalyticalTablePopinDisplay.Inline ? classNames.gap : undefined}
+              key={id}
+            >
+              {popinDisplay !== AnalyticalTablePopinDisplay.WithoutHeader && column?.Header && (
+                <div className={classNames.header}>{renderHeader()}:</div>
+              )}
               <div style={{ height: internalRowHeight }}>{popInInstanceProps && renderCell()}</div>
             </FlexBox>
           );
