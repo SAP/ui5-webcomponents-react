@@ -71,7 +71,9 @@ export const PopIn = (instance: TableInstance) => {
               key={id}
             >
               {popinDisplay !== AnalyticalTablePopinDisplay.WithoutHeader && column?.Header && (
-                <div className={classNames.header}>{renderHeader()}:</div>
+                <div className={classNames.header} data-component-name="AnalyticalTablePopinHeaderContainer">
+                  {renderHeader()}:
+                </div>
               )}
               <div style={{ height: internalRowHeight }}>{popInInstanceProps && renderCell()}</div>
             </FlexBox>
