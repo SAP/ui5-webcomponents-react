@@ -337,6 +337,15 @@ describe('VariantManagement', () => {
     cy.get('[text="Apply Automatically"]').should('be.visible');
     cy.get('[ui5-checkbox]').should('have.length', 3);
 
+    cy.realPress('Escape');
+
+    cy.get('[icon="navigation-down-arrow"]').click();
+    cy.findByText('Manage').click();
+    cy.get('[ui5-table]').contains('Apply Automatically').should('be.visible');
+    cy.get('[ui5-table]').contains('Default').should('be.visible');
+    cy.get('[ui5-table]').contains('Sharing').should('be.visible');
+    cy.get('[ui5-table]').contains('Created By').should('be.visible');
+
     cy.mount(
       <VariantManagement hideApplyAutomatically hideSetAsDefault hideShare hideCreatedBy>
         {TwoVariantItems}
@@ -348,6 +357,15 @@ describe('VariantManagement', () => {
     cy.get('[text="Public"]', { timeout: 50 }).should('not.exist');
     cy.get('[text="Apply Automatically"]', { timeout: 50 }).should('not.exist');
     cy.get('[ui5-checkbox]').should('not.exist');
+
+    cy.realPress('Escape');
+
+    cy.get('[icon="navigation-down-arrow"]').click();
+    cy.findByText('Manage').click();
+    cy.get('[ui5-table]').contains('Apply Automatically').should('not.exist');
+    cy.get('[ui5-table]').contains('Default').should('not.exist');
+    cy.get('[ui5-table]').contains('Sharing').should('not.exist');
+    cy.get('[ui5-table]').contains('Created By').should('not.exist');
   });
 
   it('Save As', () => {
