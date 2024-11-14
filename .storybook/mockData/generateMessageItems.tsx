@@ -1,5 +1,5 @@
-import { MessageItem, Text } from '@ui5/webcomponents-react';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import { MessageItem, Text } from '@ui5/webcomponents-react';
 
 const LoremIpsum = (
   <Text>
@@ -18,22 +18,6 @@ const informationMessageItems = (count) => {
       key={`InformationMessage${index}`}
       titleText={'Information Message'}
       type={ValueState.Information}
-      groupName={`Group${index}`}
-    >
-      {LoremIpsum}
-    </MessageItem>
-  ));
-};
-
-const successMessageItems = (count) => {
-  if (!count) {
-    return [];
-  }
-  return new Array(count).fill('').map((_, index) => (
-    <MessageItem
-      key={`SuccessMessage${index}`}
-      titleText={'Success Message'}
-      type={ValueState.Positive}
       groupName={`Group${index}`}
     >
       {LoremIpsum}
@@ -76,6 +60,5 @@ const errorMessageItems = (count) => {
 export const generateMessageItems = (numberOfMessageTypes) => [
   ...informationMessageItems(numberOfMessageTypes.information),
   ...warningMessageItems(numberOfMessageTypes.warning),
-  ...successMessageItems(numberOfMessageTypes.success),
   ...errorMessageItems(numberOfMessageTypes.error)
 ];

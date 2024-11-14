@@ -9,7 +9,6 @@ import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums/index.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { Dialog } from '../../webComponents/Dialog/index.js';
-import { Link } from '../../webComponents/Link/index.js';
 import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
 import { Title } from '../../webComponents/Title/index.js';
 import { FlexBox } from '../FlexBox/index.js';
@@ -45,16 +44,6 @@ const meta = {
         groupName={'Products'}
       >
         First Error Message Description.
-      </MessageItem>,
-      <MessageItem
-        key={2}
-        titleText={'Success Message Type'}
-        subtitleText={'You can also use subtitles'}
-        type={ValueState.Positive}
-        counter={2}
-      >
-        This is a success message! You can even use{' '}
-        <Link href={'https://github.com/SAP/ui5-webcomponents-react'}>links here</Link>.
       </MessageItem>,
       <MessageItem
         key={3}
