@@ -76,8 +76,8 @@ export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> 
 export interface TableInstance {
   allColumns?: ColumnType[];
   allColumnsHidden?: boolean;
-  columns?: ColumnType[];
-  data?: Record<string, any>[];
+  columns: ColumnType[];
+  data: Record<string, any>[];
   defaultColumn?: Record<string, any>;
   disableFilters?: boolean;
   disableGlobalFilter?: boolean;
@@ -133,7 +133,7 @@ export interface TableInstance {
   preSortedRows?: RowType[];
   prepareRow?: (row: RowType) => void;
   resetResizing?: any;
-  rows?: RowType[];
+  rows: RowType[];
   rowsById?: Record<string, RowType>;
   selectSubRows?: boolean;
   selectedFlatRows?: RowType[];
@@ -147,7 +147,7 @@ export interface TableInstance {
   sortTypes?: Record<string, any>;
   sortedFlatRows?: Record<string, RowType>[];
   sortedRows?: Record<string, RowType>[];
-  state?: AnalyticalTableState & Record<string, any>;
+  state: AnalyticalTableState & Record<string, any>;
   stateReducer?: (
     state: TableInstance['state'],
     action: any,
@@ -171,9 +171,9 @@ export interface TableInstance {
     startIndex: number;
     endIndex: number;
   };
-  visibleColumns?: ColumnType[];
+  visibleColumns: ColumnType[];
   visibleColumnsWidth?: number[];
-  webComponentsReactProperties?: WCRPropertiesType;
+  webComponentsReactProperties: WCRPropertiesType;
   [key: string]: any;
 }
 
@@ -397,7 +397,7 @@ export interface AnalyticalTableColumnDefinition {
    */
   Popover?:
     | ComponentType<{ instance: TableInstanceWithPopoverProps }>
-    | ((props?: { instance: TableInstanceWithPopoverProps }) => ReactNode);
+    | ((instance: TableInstanceWithPopoverProps) => ReactNode);
 
   // useFilters
   /**
