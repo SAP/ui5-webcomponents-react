@@ -4,10 +4,11 @@ import alertIcon from '@ui5/webcomponents-icons/dist/alert.js';
 import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
 import informationIcon from '@ui5/webcomponents-icons/dist/information.js';
 import sysEnter2Icon from '@ui5/webcomponents-icons/dist/sys-enter-2.js';
-import { useStylesheet } from '@ui5/webcomponents-react-base';
+import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef } from 'react';
 import { ValueState } from '../../enums/index.js';
+import { ERROR_TYPE, WARNING_TYPE, INFORMATION_TYPE, SUCCESS_TYPE } from '../../i18n/i18n-defaults.js';
 import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';
 import { Button } from '../../webComponents/index.js';
 import { classNames, styleData } from './MessageViewButton.module.css.js';
@@ -28,16 +29,21 @@ export interface MessageViewButtonProptypes
   counter?: number;
 }
 
-const getIcon = (type) => {
+interface Types {
+  icon: string;
+  i18nLabel: { key: string; defaultText: string };
+}
+
+const getTypes = (type: MessageViewButtonProptypes['type']): Types => {
   switch (type) {
     case ValueState.Error:
-      return errorIcon;
+      return { icon: errorIcon, i18nLabel: ERROR_TYPE };
     case ValueState.Success:
-      return sysEnter2Icon;
+      return { icon: sysEnter2Icon, i18nLabel: WARNING_TYPE };
     case ValueState.Warning:
-      return alertIcon;
+      return { icon: alertIcon, i18nLabel: INFORMATION_TYPE };
     default:
-      return informationIcon;
+      return { icon: informationIcon, i18nLabel: SUCCESS_TYPE };
   }
 };
 
@@ -45,13 +51,23 @@ const getIcon = (type) => {
  * The `MessageViewButton` can be used for opening a `Popover` containing the `MessageView` component. It should always reflect the message `type` with the highest severity.
  */
 const MessageViewButton = forwardRef<ButtonDomRef, MessageViewButtonProptypes>((props, ref) => {
-  const { type = ValueState.Error, counter, className, ...rest } = props;
+  const { type = ValueState.Error, counter, className, tooltip, accessibleName, ...rest } = props;
   useStylesheet(styleData, MessageViewButton.displayName);
   const classes = clsx(classNames.btn, className);
-  const icon = getIcon(type);
+  const { icon, i18nLabel } = getTypes(type);
 
+  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
+  const label = i18nBundle.getText(i18nLabel);
   return (
-    <Button ref={ref} className={classes} icon={icon} {...rest} data-type={type}>
+    <Button
+      ref={ref}
+      className={classes}
+      icon={icon}
+      {...rest}
+      data-type={type}
+      tooltip={tooltip ?? label}
+      accessibleName={accessibleName ?? label}
+    >
       {counter > 1 && counter}
     </Button>
   );
