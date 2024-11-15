@@ -187,6 +187,10 @@ interface MenuItemPropTypes
   endContent?: UI5WCSlotsNode;
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onDetailClick?: (event: Ui5CustomEvent<MenuItemDomRef>) => void;
 }

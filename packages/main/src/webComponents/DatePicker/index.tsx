@@ -193,6 +193,10 @@ interface DatePickerPropTypes
    * Fired when the input operation has finished by pressing Enter or on focusout.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onChange?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerChangeEventDetail>) => void;
 
@@ -200,6 +204,10 @@ interface DatePickerPropTypes
    * Fired after the value-help dialog of the component is closed.
    *
    * **Note:** Available since [v2.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.4.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<DatePickerDomRef>) => void;
 
@@ -207,6 +215,10 @@ interface DatePickerPropTypes
    * Fired when the value of the component is changed at each key stroke.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onInput?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerInputEventDetail>) => void;
 
@@ -214,6 +226,10 @@ interface DatePickerPropTypes
    * Fired after the value-help dialog of the component is opened.
    *
    * **Note:** Available since [v2.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.4.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOpen?: (event: Ui5CustomEvent<DatePickerDomRef>) => void;
 
@@ -223,6 +239,10 @@ interface DatePickerPropTypes
    * prevented, the component will not update the value state.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onValueStateChange?: (event: Ui5CustomEvent<DatePickerDomRef, DatePickerValueStateChangeEventDetail>) => void;
 }

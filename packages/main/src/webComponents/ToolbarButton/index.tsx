@@ -122,6 +122,10 @@ interface ToolbarButtonPropTypes
    *
    * **Note:** The event will not be fired if the `disabled`
    * property is set to `true`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClick?: (event: Ui5CustomEvent<ToolbarButtonDomRef>) => void;
 }

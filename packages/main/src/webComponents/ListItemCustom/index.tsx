@@ -110,6 +110,10 @@ interface ListItemCustomPropTypes
   deleteButton?: UI5WCSlotsNode;
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onDetailClick?: (event: Ui5CustomEvent<ListItemCustomDomRef>) => void;
 }

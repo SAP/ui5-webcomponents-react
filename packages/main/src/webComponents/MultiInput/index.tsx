@@ -218,6 +218,10 @@ interface MultiInputPropTypes
   valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 
@@ -225,6 +229,10 @@ interface MultiInputPropTypes
    * Fired when the suggestions picker is closed.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 
@@ -233,6 +241,10 @@ interface MultiInputPropTypes
    * and when a suggestion item has been selected.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onInput?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 
@@ -240,6 +252,10 @@ interface MultiInputPropTypes
    * Fired when the suggestions picker is open.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOpen?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 
@@ -247,6 +263,10 @@ interface MultiInputPropTypes
    * Fired when some text has been selected.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelect?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 
@@ -255,17 +275,29 @@ interface MultiInputPropTypes
    * as a preview, before the final selection.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<MultiInputDomRef, InputSelectionChangeEventDetail>) => void;
 
   /**
    * Fired when tokens are being deleted.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onTokenDelete?: (event: Ui5CustomEvent<MultiInputDomRef, MultiInputTokenDeleteEventDetail>) => void;
 
   /**
    * Fired when the value help icon is pressed
    * and F4 or ALT/OPTION + ARROW_UP/ARROW_DOWN keyboard keys are used.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onValueHelpTrigger?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 }

@@ -170,6 +170,10 @@ interface MultiComboBoxPropTypes
   valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
 
@@ -177,11 +181,19 @@ interface MultiComboBoxPropTypes
    * Fired when the dropdown is closed.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
 
   /**
    * Fired when the value of the component changes at each keystroke or clear icon is pressed.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onInput?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
 
@@ -189,6 +201,10 @@ interface MultiComboBoxPropTypes
    * Fired when the dropdown is opened.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOpen?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
 
@@ -196,6 +212,10 @@ interface MultiComboBoxPropTypes
    * Fired when selection is changed by user interaction.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<MultiComboBoxDomRef, MultiComboBoxSelectionChangeEventDetail>) => void;
 }

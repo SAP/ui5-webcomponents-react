@@ -78,6 +78,10 @@ interface RatingIndicatorPropTypes
     Omit<CommonProps, keyof RatingIndicatorAttributes | 'onChange'> {
   /**
    * The event is fired when the value changes.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<RatingIndicatorDomRef>) => void;
 }

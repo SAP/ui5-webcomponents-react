@@ -81,11 +81,19 @@ interface ViewSettingsDialogPropTypes
    * Fired before the component is opened.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onBeforeOpen?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef>) => void;
 
   /**
    * Fired when cancel button is activated.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onCancel?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogCancelEventDetail>) => void;
 
@@ -93,11 +101,19 @@ interface ViewSettingsDialogPropTypes
    * Fired after the dialog is closed.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef>) => void;
 
   /**
    * Fired when confirmation button is activated.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onConfirm?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef, ViewSettingsDialogConfirmEventDetail>) => void;
 
@@ -105,6 +121,10 @@ interface ViewSettingsDialogPropTypes
    * Fired after the dialog is opened.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOpen?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef>) => void;
 }

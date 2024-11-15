@@ -60,11 +60,19 @@ interface SplitButtonPropTypes
   children?: ReactNode | ReactNode[];
   /**
    * Fired when the user clicks on the arrow action.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onArrowClick?: (event: Ui5CustomEvent<SplitButtonDomRef>) => void;
 
   /**
    * Fired when the user clicks on the default action.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClick?: (event: Ui5CustomEvent<SplitButtonDomRef>) => void;
 }

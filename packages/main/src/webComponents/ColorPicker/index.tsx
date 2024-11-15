@@ -31,6 +31,10 @@ interface ColorPickerPropTypes
     Omit<CommonProps, keyof ColorPickerAttributes | 'onChange'> {
   /**
    * Fired when the the selected color is changed
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<ColorPickerDomRef>) => void;
 }

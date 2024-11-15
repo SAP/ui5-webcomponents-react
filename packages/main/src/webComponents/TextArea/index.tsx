@@ -139,12 +139,20 @@ interface TextAreaPropTypes
   valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the text has changed and the focus leaves the component.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
 
   /**
    * Fired when the value of the component changes at each keystroke or when
    * something is pasted.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onInput?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
 
@@ -152,6 +160,10 @@ interface TextAreaPropTypes
    * Fired when textarea is scrolled.
    *
    * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onScroll?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
 
@@ -159,6 +171,10 @@ interface TextAreaPropTypes
    * Fired when some text has been selected.
    *
    * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelect?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
 }

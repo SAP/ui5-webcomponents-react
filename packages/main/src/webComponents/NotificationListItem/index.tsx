@@ -123,6 +123,10 @@ interface NotificationListItemPropTypes
   menu?: UI5WCSlotsNode;
   /**
    * Fired when the `Close` button is pressed.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<NotificationListItemDomRef, NotificationListItemCloseEventDetail>) => void;
 }

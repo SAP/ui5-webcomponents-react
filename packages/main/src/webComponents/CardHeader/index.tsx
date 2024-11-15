@@ -61,6 +61,10 @@ interface CardHeaderPropTypes
    * Fired when the component is activated by mouse/tap or by using the Enter or Space key.
    *
    * **Note:** The event would be fired only if the `interactive` property is set to true.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClick?: (event: Ui5CustomEvent<CardHeaderDomRef>) => void;
 }

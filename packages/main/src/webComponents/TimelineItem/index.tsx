@@ -55,6 +55,10 @@ interface TimelineItemPropTypes
    *
    * **Note:** The event will not be fired if the `name-clickable`
    * attribute is not set.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onNameClick?: (event: Ui5CustomEvent<TimelineItemDomRef>) => void;
 }

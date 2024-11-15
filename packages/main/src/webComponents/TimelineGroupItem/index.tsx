@@ -30,6 +30,10 @@ interface TimelineGroupItemPropTypes
   children?: ReactNode | ReactNode[];
   /**
    * Fired when the group item is expanded or collapsed.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onToggle?: (event: Ui5CustomEvent<TimelineGroupItemDomRef>) => void;
 }

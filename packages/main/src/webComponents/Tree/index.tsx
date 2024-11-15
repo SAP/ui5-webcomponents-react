@@ -107,6 +107,10 @@ interface TreePropTypes
    * Fired when a tree item is activated.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onItemClick?: (event: Ui5CustomEvent<TreeDomRef, TreeItemClickEventDetail>) => void;
 
@@ -115,16 +119,28 @@ interface TreePropTypes
    *
    * **Note:** A Delete button is displayed on each item,
    * when the component `selectionMode` property is set to `Delete`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onItemDelete?: (event: Ui5CustomEvent<TreeDomRef, TreeItemDeleteEventDetail>) => void;
 
   /**
    * Fired when the mouse cursor leaves the tree item borders.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onItemMouseout?: (event: Ui5CustomEvent<TreeDomRef, TreeItemMouseoutEventDetail>) => void;
 
   /**
    * Fired when the mouse cursor enters the tree item borders.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onItemMouseover?: (event: Ui5CustomEvent<TreeDomRef, TreeItemMouseoverEventDetail>) => void;
 
@@ -136,12 +152,20 @@ interface TreePropTypes
    * Even if you prevented the event's default behavior, you can always manually call `toggle()` on a tree item.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onItemToggle?: (event: Ui5CustomEvent<TreeDomRef, TreeItemToggleEventDetail>) => void;
 
   /**
    * Fired when selection is changed by user interaction
    * in `Single`, `SingleStart`, `SingleEnd` and `Multiple` modes.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<TreeDomRef, TreeSelectionChangeEventDetail>) => void;
 }

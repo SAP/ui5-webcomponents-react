@@ -84,11 +84,19 @@ interface DynamicPagePropTypes
   titleArea?: UI5WCSlotsNode;
   /**
    * Fired when the pin header button is toggled.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onPinButtonToggle?: (event: Ui5CustomEvent<DynamicPageDomRef>) => void;
 
   /**
    * Fired when the expand/collapse area of the title is toggled.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onTitleToggle?: (event: Ui5CustomEvent<DynamicPageDomRef>) => void;
 }
