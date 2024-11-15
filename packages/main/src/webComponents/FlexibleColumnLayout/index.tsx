@@ -128,6 +128,10 @@ interface FlexibleColumnLayoutPropTypes
   /**
    * Fired when the layout changes via user interaction by dragging the separators
    * or by changing the component size due to resizing.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onLayoutChange?: (
     event: Ui5CustomEvent<FlexibleColumnLayoutDomRef, FlexibleColumnLayoutLayoutChangeEventDetail>

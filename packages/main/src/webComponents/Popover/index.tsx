@@ -175,6 +175,10 @@ interface PopoverPropTypes
    * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onBeforeClose?: (event: Ui5CustomEvent<PopoverDomRef, PopupBeforeCloseEventDetail>) => void;
 
@@ -182,16 +186,28 @@ interface PopoverPropTypes
    * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onBeforeOpen?: (event: Ui5CustomEvent<PopoverDomRef>) => void;
 
   /**
    * Fired after the component is closed.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<PopoverDomRef>) => void;
 
   /**
    * Fired after the component is opened.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOpen?: (event: Ui5CustomEvent<PopoverDomRef>) => void;
 }

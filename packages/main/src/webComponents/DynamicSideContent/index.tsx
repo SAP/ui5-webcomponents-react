@@ -79,6 +79,10 @@ interface DynamicSideContentPropTypes
   sideContent?: UI5WCSlotsNode;
   /**
    * Fires when the current breakpoint has been changed.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onLayoutChange?: (event: Ui5CustomEvent<DynamicSideContentDomRef, DynamicSideContentLayoutChangeEventDetail>) => void;
 }

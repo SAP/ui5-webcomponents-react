@@ -144,6 +144,10 @@ interface ToggleButtonPropTypes
    *
    * **Note:** The event will not be fired if the `disabled`
    * property is set to `true`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClick?: MouseEventHandler<ToggleButtonDomRef>;
 }

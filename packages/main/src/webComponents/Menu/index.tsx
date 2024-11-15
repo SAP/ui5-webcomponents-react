@@ -70,6 +70,10 @@ interface MenuPropTypes
    * Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. **This event does not bubble.**
    *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onBeforeClose?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeCloseEventDetail>) => void;
 
@@ -79,6 +83,10 @@ interface MenuPropTypes
    * **Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
    *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
 
@@ -86,6 +94,10 @@ interface MenuPropTypes
    * Fired after the menu is closed. **This event does not bubble.**
    *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<MenuDomRef>) => void;
 
@@ -93,6 +105,10 @@ interface MenuPropTypes
    * Fired when an item is being clicked.
    *
    * **Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
 
@@ -100,6 +116,10 @@ interface MenuPropTypes
    * Fired after the menu is opened. **This event does not bubble.**
    *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOpen?: (event: Ui5CustomEvent<MenuDomRef>) => void;
 }

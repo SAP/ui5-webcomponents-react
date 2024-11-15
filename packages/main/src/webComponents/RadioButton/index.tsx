@@ -107,6 +107,10 @@ interface RadioButtonPropTypes
     Omit<CommonProps, keyof RadioButtonAttributes | 'onChange'> {
   /**
    * Fired when the component checked state changes.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<RadioButtonDomRef>) => void;
 }

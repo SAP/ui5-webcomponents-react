@@ -106,6 +106,10 @@ interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, keyof Swit
    * Fired when the component checked state changes.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onChange?: (event: Ui5CustomEvent<SwitchDomRef>) => void;
 }

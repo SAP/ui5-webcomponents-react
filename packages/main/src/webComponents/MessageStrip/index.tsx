@@ -69,6 +69,10 @@ interface MessageStripPropTypes
   /**
    * Fired when the close button is pressed either with a
    * click/tap or by using the Enter or Space key.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<MessageStripDomRef>) => void;
 }

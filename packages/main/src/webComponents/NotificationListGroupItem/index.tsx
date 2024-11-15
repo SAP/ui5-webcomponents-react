@@ -64,11 +64,19 @@ interface NotificationListGroupItemPropTypes
    * Fired when additional items are requested.
    *
    * **Note:** Available since [v2.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.2.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onLoadMore?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef>) => void;
 
   /**
    * Fired when the `NotificationListGroupItem` is expanded/collapsed by user interaction.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onToggle?: (event: Ui5CustomEvent<NotificationListGroupItemDomRef>) => void;
 }

@@ -79,17 +79,29 @@ interface UploadCollectionPropTypes
    * Fired when an element is dropped inside the drag and drop overlay.
    *
    * **Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `UploadCollection`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onDrop?: DragEventHandler<UploadCollectionDomRef>;
 
   /**
    * Fired when the delete button of any item is pressed.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onItemDelete?: (event: Ui5CustomEvent<UploadCollectionDomRef, UploadCollectionItemDeleteEventDetail>) => void;
 
   /**
    * Fired when selection is changed by user interaction
    * in `Single` and `Multiple` modes.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelectionChange?: (
     event: Ui5CustomEvent<UploadCollectionDomRef, UploadCollectionSelectionChangeEventDetail>

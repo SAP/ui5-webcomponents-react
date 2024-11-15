@@ -146,11 +146,19 @@ interface SelectPropTypes
    * Fired when the selected option changes.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onChange?: (event: Ui5CustomEvent<SelectDomRef, SelectChangeEventDetail>) => void;
 
   /**
    * Fired after the component's dropdown menu closes.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<SelectDomRef>) => void;
 
@@ -159,11 +167,19 @@ interface SelectPropTypes
    * or when pressing the ESC key to revert the current selection.
    *
    * **Note:** Available since [v1.17.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.17.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onLiveChange?: (event: Ui5CustomEvent<SelectDomRef, SelectLiveChangeEventDetail>) => void;
 
   /**
    * Fired after the component's dropdown menu opens.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOpen?: (event: Ui5CustomEvent<SelectDomRef>) => void;
 }

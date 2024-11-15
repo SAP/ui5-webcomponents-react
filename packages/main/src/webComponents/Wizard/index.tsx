@@ -31,6 +31,10 @@ interface WizardPropTypes
   /**
    * Fired when the step is changed by user interaction - either with scrolling,
    * or by clicking on the steps within the component header.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onStepChange?: (event: Ui5CustomEvent<WizardDomRef, WizardStepChangeEventDetail>) => void;
 }

@@ -25,6 +25,10 @@ interface TableSelectionPropTypes
     Omit<CommonProps, keyof TableSelectionAttributes | 'onChange'> {
   /**
    * Fired when selection is changed by user interaction.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<TableSelectionDomRef>) => void;
 }
@@ -56,6 +60,7 @@ interface TableSelectionPropTypes
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
  * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents__.
+ * @experimental This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.
  */
 const TableSelection = withWebComponent<TableSelectionPropTypes, TableSelectionDomRef>(
   'ui5-table-selection',

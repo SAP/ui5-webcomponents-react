@@ -45,6 +45,10 @@ interface ToastPropTypes extends ToastAttributes, Omit<CommonProps, keyof ToastA
    * Fired after the component is auto closed.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<ToastDomRef>) => void;
 }

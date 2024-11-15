@@ -95,11 +95,19 @@ interface SliderDomRef extends Required<SliderAttributes>, Ui5DomRef {}
 interface SliderPropTypes extends SliderAttributes, Omit<CommonProps, keyof SliderAttributes | 'onChange' | 'onInput'> {
   /**
    * Fired when the value changes and the user has finished interacting with the slider.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<SliderDomRef>) => void;
 
   /**
    * Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onInput?: (event: Ui5CustomEvent<SliderDomRef>) => void;
 }

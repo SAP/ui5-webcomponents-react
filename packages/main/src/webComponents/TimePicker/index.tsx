@@ -142,6 +142,10 @@ interface TimePickerPropTypes
   /**
    * Fired when the input operation has finished by clicking the "OK" button or
    * when the text in the input field has changed and the focus leaves the input field.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerChangeEventDetail>) => void;
 
@@ -149,11 +153,19 @@ interface TimePickerPropTypes
    * Fired after the value-help dialog of the component is closed.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<TimePickerDomRef>) => void;
 
   /**
    * Fired when the value of the `TimePicker` is changed at each key stroke.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onInput?: (event: Ui5CustomEvent<TimePickerDomRef, TimePickerInputEventDetail>) => void;
 
@@ -161,6 +173,10 @@ interface TimePickerPropTypes
    * Fired after the value-help dialog of the component is opened.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOpen?: (event: Ui5CustomEvent<TimePickerDomRef>) => void;
 }

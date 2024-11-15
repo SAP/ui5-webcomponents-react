@@ -181,6 +181,10 @@ interface UploadCollectionItemPropTypes
   thumbnail?: UI5WCSlotsNode;
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onDetailClick?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
 
@@ -188,6 +192,10 @@ interface UploadCollectionItemPropTypes
    * Fired when the file name is clicked.
    *
    * **Note:** This event is only available when `fileNameClickable` property is `true`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onFileNameClick?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
 
@@ -196,6 +204,10 @@ interface UploadCollectionItemPropTypes
    *
    * **Note:** An edit button is displayed on each item,
    * when the `UploadCollectionItem` `type` property is set to `Detail`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onRename?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
 
@@ -203,6 +215,10 @@ interface UploadCollectionItemPropTypes
    * Fired when the retry button is pressed.
    *
    * **Note:** Retry button is displayed when `uploadState` property is set to `Error`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onRetry?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
 
@@ -210,6 +226,10 @@ interface UploadCollectionItemPropTypes
    * Fired when the terminate button is pressed.
    *
    * **Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onTerminate?: (event: Ui5CustomEvent<UploadCollectionItemDomRef>) => void;
 }

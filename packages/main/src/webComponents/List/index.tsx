@@ -160,6 +160,10 @@ interface ListPropTypes
    * is set to `Inactive`.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onItemClick?: (event: Ui5CustomEvent<ListDomRef, ListItemClickEventDetail>) => void;
 
@@ -168,6 +172,10 @@ interface ListPropTypes
    *
    * **Note:** This event is only applicable to list items that can be closed (such as notification list items),
    * not to be confused with `item-delete`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onItemClose?: (event: Ui5CustomEvent<ListDomRef, ListItemCloseEventDetail>) => void;
 
@@ -176,6 +184,10 @@ interface ListPropTypes
    *
    * **Note:** A Delete button is displayed on each item,
    * when the component `selectionMode` property is set to `Delete`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onItemDelete?: (event: Ui5CustomEvent<ListDomRef, ListItemDeleteEventDetail>) => void;
 
@@ -183,6 +195,10 @@ interface ListPropTypes
    * Fired when the `Toggle` button of any item is clicked.
    *
    * **Note:** This event is only applicable to list items that can be toggled (such as notification group list items).
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onItemToggle?: (event: Ui5CustomEvent<ListDomRef, ListItemToggleEventDetail>) => void;
 
@@ -190,6 +206,10 @@ interface ListPropTypes
    * Fired when the user scrolls to the bottom of the list.
    *
    * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onLoadMore?: (event: Ui5CustomEvent<ListDomRef>) => void;
 
@@ -197,6 +217,10 @@ interface ListPropTypes
    * Fired when a movable list item is dropped onto a drop target.
    *
    * **Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onMove?: (event: Ui5CustomEvent<ListDomRef, ListMoveEventDetail>) => void;
 
@@ -208,6 +232,10 @@ interface ListPropTypes
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onMoveOver?: (event: Ui5CustomEvent<ListDomRef, ListMoveEventDetail>) => void;
 
@@ -216,6 +244,10 @@ interface ListPropTypes
    * in `Single`, `SingleStart`, `SingleEnd` and `Multiple` selection modes.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<ListDomRef, ListSelectionChangeEventDetail>) => void;
 }

@@ -232,6 +232,10 @@ interface ShellBarPropTypes
   startButton?: UI5WCSlotsNode;
   /**
    * Fired, when the logo is activated.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onLogoClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarLogoClickEventDetail>) => void;
 
@@ -241,6 +245,10 @@ interface ShellBarPropTypes
    * **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onMenuItemClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarMenuItemClickEventDetail>) => void;
 
@@ -248,6 +256,10 @@ interface ShellBarPropTypes
    * Fired, when the notification icon is activated.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onNotificationsClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarNotificationsClickEventDetail>) => void;
 
@@ -257,11 +269,19 @@ interface ShellBarPropTypes
    * **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onProductSwitchClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarProductSwitchClickEventDetail>) => void;
 
   /**
    * Fired, when the profile slot is present.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onProfileClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarProfileClickEventDetail>) => void;
 
@@ -271,6 +291,10 @@ interface ShellBarPropTypes
    * **Note:** You can prevent expanding/collapsing of the search field by calling `event.preventDefault()`.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onSearchButtonClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarSearchButtonEventDetail>) => void;
 }

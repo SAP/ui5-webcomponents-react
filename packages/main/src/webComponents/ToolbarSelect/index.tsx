@@ -76,16 +76,28 @@ interface ToolbarSelectPropTypes
    * Fired when the selected option changes.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onChange?: (event: Ui5CustomEvent<ToolbarSelectDomRef, ToolbarSelectChangeEventDetail>) => void;
 
   /**
    * Fired after the component's dropdown menu closes.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<ToolbarSelectDomRef>) => void;
 
   /**
    * Fired after the component's dropdown menu opens.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOpen?: (event: Ui5CustomEvent<ToolbarSelectDomRef>) => void;
 }
