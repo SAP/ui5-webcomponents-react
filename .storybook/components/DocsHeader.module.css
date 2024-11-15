@@ -35,3 +35,17 @@
 .infoTable td[data-import-cell='true'] {
   padding-inline-end: 2.5rem;
 }
+
+.titleRow {
+  padding-block-end: 0.5rem;
+}
+
+.titleRow :global(.sbdocs-title) {
+  margin-bottom: 0;
+}
+
+.experimentalLabel {
+  font-size: var(--sapObjectHeader_Title_SnappedFontSize);
+  margin-inline-start: 0.25rem;
+  align-self: flex-end;
+}

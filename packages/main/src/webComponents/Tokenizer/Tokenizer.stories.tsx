@@ -7,7 +7,7 @@ import type { TokenizerPropTypes } from './index.js';
 import { Tokenizer } from './index.js';
 
 const meta = {
-  title: 'Inputs / Tokenizer (experimental)',
+  title: 'Inputs / Tokenizer',
   component: Tokenizer,
   args: { style: { width: '250px' } },
   tags: ['package:@ui5/webcomponents']

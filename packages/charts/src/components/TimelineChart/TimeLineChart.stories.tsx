@@ -6,7 +6,7 @@ import { TimelineChart } from './TimelineChart.js';
 import { TimelineChartAnnotation } from './TimelineChartAnnotation.js';
 
 const meta = {
-  title: 'TimelineChart (experimental)',
+  title: 'TimelineChart',
   component: TimelineChart,
   argTypes: {
     dataset: {
