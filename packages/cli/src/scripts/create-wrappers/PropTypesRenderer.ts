@@ -114,6 +114,12 @@ export class PropTypesRenderer extends AbstractRenderer {
             descriptionParts.push(` * @deprecated`);
           }
         }
+        if (event._ui5Bubbles || event._ui5Cancelable) {
+          descriptionParts.push(` *`);
+          descriptionParts.push(`* | cancelable | bubbles |`);
+          descriptionParts.push(`* | :--------: | :-----: |`);
+          descriptionParts.push(`* | ${event._ui5Cancelable ? '✅' : '❌'}|${event._ui5Bubbles ? '✅' : '❌'}|`);
+        }
 
         const domRef = `${context.componentName}DomRef`;
         let eventType = '(event: unknown) => void;';

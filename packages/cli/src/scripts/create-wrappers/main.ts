@@ -66,6 +66,7 @@ export default async function createWrappers(packageName: string, outDir: string
         .setNote(options.additionalComponentNote ?? '')
         .setIsAbstract(declaration._ui5abstract ?? false)
         .setSince(declaration._ui5since)
+        .setIsExperimental(declaration._ui5experimental)
     );
     wrapper.addRenderer(new ExportsRenderer());
 

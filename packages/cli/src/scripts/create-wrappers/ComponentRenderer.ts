@@ -14,6 +14,7 @@ export class ComponentRenderer extends AbstractRenderer {
   private note: string = '';
   private isAbstract: boolean = false;
   private since: string | undefined;
+  private isExperimental: boolean | string | undefined = false;
 
   setAttributes(attrs: CEM.ClassField[]) {
     this.attributes.push(...attrs);
@@ -50,6 +51,11 @@ export class ComponentRenderer extends AbstractRenderer {
     return this;
   }
 
+  setIsExperimental(value?: boolean | string) {
+    this.isExperimental = value;
+    return this;
+  }
+
   prepare(context: WebComponentWrapper) {
     context.exportSet.add(context.componentName);
   }
@@ -64,10 +70,13 @@ export class ComponentRenderer extends AbstractRenderer {
       comment += ` *\n`;
       comment += ` * @since [${this.since}](https://github.com/SAP/ui5-webcomponents/releases/tag/v${this.since}) of __${context.packageName}__.\n`;
     }
-
     if (this.isAbstract) {
       comment += ' * @abstract\n';
     }
+    if (this.isExperimental) {
+      comment += ` * @experimental${typeof this.isExperimental === 'string' ? ` ${this.isExperimental}` : ''}\n`;
+    }
+
     comment += '*/';
 
     const component = dedent`

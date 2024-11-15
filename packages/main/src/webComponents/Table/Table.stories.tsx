@@ -12,7 +12,7 @@ import { TableSelection } from '../TableSelection/index.js';
 import { Table } from './index.js';
 
 const meta = {
-  title: 'Data Display / Table',
+  title: 'Data Display / Table (experimental)',
   component: Table,
   argTypes: {
     headerRow: { control: { disable: true } },

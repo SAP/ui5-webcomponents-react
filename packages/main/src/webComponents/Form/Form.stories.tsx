@@ -7,7 +7,7 @@ import { FormItem } from '../FormItem/index.js';
 import { Form } from './index.js';
 
 const meta = {
-  title: 'Layouts & Floorplans / Form',
+  title: 'Layouts & Floorplans / Form (experimental)',
   component: Form,
   argTypes: {
     children: { control: { disable: true } }
