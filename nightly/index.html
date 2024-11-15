@@ -117,6 +117,15 @@
   input:not(:checked) ~ span:first-of-type {
     background-color: transparent !important;
   }
+
+  /*experimental components */
+  #data-display-table::after,
+  #inputs-tokenizer::after,
+  #layouts-floorplans-form::after,
+  #charts-timelinechart::after {
+    content: '(experimental)';
+    overflow: hidden;
+  }
 </style>
 
 <script data-ui5-config type="application/json">
