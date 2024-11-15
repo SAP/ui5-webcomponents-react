@@ -114,7 +114,10 @@ export class PropTypesRenderer extends AbstractRenderer {
             descriptionParts.push(` * @deprecated`);
           }
         }
-        if (event._ui5Bubbles || event._ui5Cancelable) {
+        if (
+          Object.prototype.hasOwnProperty.call(event, '_ui5Bubbles') ||
+          Object.prototype.hasOwnProperty.call(event, '_ui5Cancelable')
+        ) {
           descriptionParts.push(` *`);
           descriptionParts.push(`* | cancelable | bubbles |`);
           descriptionParts.push(`* | :--------: | :-----: |`);
