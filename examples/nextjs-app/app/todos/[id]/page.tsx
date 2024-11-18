@@ -14,7 +14,8 @@ import {
 } from '@ui5/webcomponents-react';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 
-export default async function TodoDetails({ params }: { params: { id: string } }) {
+export default async function TodoDetails(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   // this is a very simple mock which mimics data fetching
   const todo = await new Promise<Todo | undefined>((resolve) => {
     setTimeout(() => {
