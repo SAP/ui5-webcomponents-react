@@ -103,7 +103,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
           {defaultHeaderText}
         </TableHeaderCell>
       )}
-      {TableHeaderCell && (
+      {showApplyAutomatically && (
         <TableHeaderCell minWidth={hasApplyAutomaticallyText ? '25rem' : '5rem'}>
           {applyAutomaticallyHeaderText}
         </TableHeaderCell>
