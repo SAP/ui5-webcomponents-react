@@ -109,9 +109,9 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
       style.textAlign = column.hAlign.toLowerCase();
     }
 
-    if (column.isSorted) margin += 0.8;
-    if (column.isGrouped) margin += 0.8;
-    if (isFiltered) margin += 0.8;
+    if (column.isSorted) margin += 0.8125;
+    if (column.isGrouped) margin += 0.8125;
+    if (isFiltered) margin += 0.8125;
 
     if (margin === 0) {
       return style;
