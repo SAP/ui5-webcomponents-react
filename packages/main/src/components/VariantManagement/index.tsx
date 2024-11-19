@@ -12,7 +12,17 @@ import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ComponentElement, ReactElement } from 'react';
-import { Children, cloneElement, forwardRef, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  Children,
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  version as reactVersion
+} from 'react';
 import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
@@ -32,7 +42,7 @@ import { FlexBox } from '../FlexBox/index.js';
 import type { ManageViewsDialogPropTypes } from './ManageViewsDialog.js';
 import { ManageViewsDialog } from './ManageViewsDialog.js';
 import { SaveViewDialog } from './SaveViewDialog.js';
-import type { VariantManagementPropTypes } from './types.js';
+import type { SelectedVariantWithStringBool, VariantManagementPropTypes } from './types.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
 import { classNames, styleData } from './VariantManagement.module.css.js';
 
@@ -117,7 +127,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [manageViewsDialogOpen, setManageViewsDialogOpen] = useState(false);
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
-  const [selectedVariant, setSelectedVariant] = useState<SelectedVariant | undefined>(() => {
+  const [selectedVariant, setSelectedVariantState] = useState<SelectedVariant | undefined>(() => {
     const currentSelectedVariant = safeChildren.find(
       (item) => isValidElement(item) && (item as ReactElement<VariantItemPropTypes>).props.selected
     ) as ComponentElement<any, any>;
@@ -125,6 +135,45 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
       return { ...currentSelectedVariant.props, variantItem: currentSelectedVariant.ref };
     }
   });
+  const setSelectedVariant = (variant: SelectedVariantWithStringBool) => {
+    if (variant) {
+      const booleanProps = {
+        favorite: true,
+        global: true,
+        isDefault: true,
+        labelReadOnly: true,
+        applyAutomatically: true,
+        readOnly: true,
+        hideDelete: true
+      };
+      const stringToBoolVariant = Object.entries(variant).reduce((acc, [key, val]) => {
+        if (booleanProps[key]) {
+          if (typeof val === 'boolean') {
+            acc[key] = val;
+            return acc;
+          }
+          if (val === 'false') {
+            acc[key] = false;
+            return acc;
+          }
+          if (val === 'true') {
+            acc[key] = true;
+            return acc;
+          }
+          if (reactVersion.startsWith('19') && val === '') {
+            acc[key] = true;
+            return acc;
+          }
+        }
+        acc[key] = val;
+        return acc;
+      }, {}) as SelectedVariant;
+      setSelectedVariantState(stringToBoolVariant);
+    } else {
+      setSelectedVariantState(variant as SelectedVariant);
+    }
+  };
+
   const [selectedSaveViewInputProps, setSelectedSaveViewInputProps] = useState(
     selectedVariant?.saveViewInputProps ?? {}
   );
@@ -317,13 +366,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     }
   }, [safeChildrenWithFavorites]);
 
-  //todo: selectedVariant type needs to be enhanced for React19 (data attributes: true => "", false => "false")
-  const showSaveBtn =
-    dirtyState &&
-    selectedVariant &&
-    (typeof selectedVariant?.readOnly === 'string'
-      ? selectedVariant.readOnly !== '' && selectedVariant.readOnly === 'false'
-      : !selectedVariant.readOnly);
+  const showSaveBtn = dirtyState && selectedVariant && !selectedVariant.readOnly;
 
   return (
     <div className={variantManagementClasses} style={style} {...rest} ref={ref}>

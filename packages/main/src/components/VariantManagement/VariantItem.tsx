@@ -30,6 +30,8 @@ export interface VariantItemPropTypes extends Pick<ListItemStandardPropTypes, 'a
   global?: boolean;
   /**
    * Indicator if it's the default variant.
+   *
+   * __Note:__ There should only be __one__ default variant.
    */
   isDefault?: boolean;
   /**

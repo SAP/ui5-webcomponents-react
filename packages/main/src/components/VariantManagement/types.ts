@@ -13,6 +13,20 @@ import type {
 } from '../../webComponents/index.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
 
+export interface SelectedVariantWithStringBool
+  extends Omit<
+    SelectedVariant,
+    'favorite' | 'global' | 'isDefault' | 'labelReadOnly' | 'applyAutomatically' | 'readOnly' | 'hideDelete'
+  > {
+  favorite?: boolean | string;
+  global?: boolean | string;
+  isDefault?: boolean | string;
+  labelReadOnly?: boolean | string;
+  applyAutomatically?: boolean | string;
+  readOnly?: boolean | string;
+  hideDelete?: boolean | string;
+}
+
 interface UpdatedVariant extends SelectedVariant {
   prevVariant?: VariantItemPropTypes;
 }
