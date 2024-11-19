@@ -317,7 +317,13 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     }
   }, [safeChildrenWithFavorites]);
 
-  const showSaveBtn = dirtyState && selectedVariant && !selectedVariant.readOnly;
+  //todo: selectedVariant type needs to be enhanced for React19 (data attributes: true => "", false => "false")
+  const showSaveBtn =
+    dirtyState &&
+    selectedVariant &&
+    (typeof selectedVariant?.readOnly === 'string'
+      ? selectedVariant.readOnly !== '' && selectedVariant.readOnly === 'false'
+      : !selectedVariant.readOnly);
 
   return (
     <div className={variantManagementClasses} style={style} {...rest} ref={ref}>
