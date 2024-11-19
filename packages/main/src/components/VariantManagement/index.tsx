@@ -46,6 +46,16 @@ import type { SelectedVariantWithStringBool, VariantManagementPropTypes } from '
 import type { VariantItemPropTypes } from './VariantItem.js';
 import { classNames, styleData } from './VariantManagement.module.css.js';
 
+const booleanProps = {
+  favorite: true,
+  global: true,
+  isDefault: true,
+  labelReadOnly: true,
+  applyAutomatically: true,
+  readOnly: true,
+  hideDelete: true
+};
+
 /**
  * The VariantManagement can be used to manage variants (views). You can use this component to create and maintain personalization changes.
  *
@@ -137,15 +147,6 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   });
   const setSelectedVariant = (variant: SelectedVariantWithStringBool) => {
     if (variant) {
-      const booleanProps = {
-        favorite: true,
-        global: true,
-        isDefault: true,
-        labelReadOnly: true,
-        applyAutomatically: true,
-        readOnly: true,
-        hideDelete: true
-      };
       const stringToBoolVariant = Object.entries(variant).reduce((acc, [key, val]) => {
         if (booleanProps[key]) {
           if (typeof val === 'boolean') {
