@@ -1,0 +1,56 @@
+import{j as t}from"./jsx-runtime-D6fbYt3N.js";import{useMDXComponents as s}from"./index-DyCphG7h.js";import{A as l}from"./ArgTypesWithNote-C0PkgG0u.js";import{C as m}from"./ControlsWithNote-OJY3ApgN.js";import{D as d}from"./DocsHeader-DtRPHVch.js";import{F as a}from"./CommandsAndQueries-Dqo_7eaF.js";import"./index-DQAUbQX2.js";import"./index-DysCNOs_.js";import"./WrappingType-CW8URInd.js";import"./Title-CfsRC4A5.js";import{ae as h,af as r,ag as c,ai as x}from"./index-DyC8OgQF.js";import{C as j,D as i,L as u,N as S,S as o}from"./SplitterLayout.stories-lYGiuk8z.js";import{S as C}from"./SubcomponentsSection-BVy4lpQe.js";import"./index-CCF_Nqfq.js";import"./withWebComponent-De1aKRdZ.js";import"./utils-D0KbkLTK.js";import"./useIsomorphicLayoutEffect-m1Y1SyRb.js";import"./slot-_4yKMUwC.js";import"./event-BX8i4Y_x.js";import"./i18n-DEVDpFvK.js";import"./decline-BQlFLB9d.js";import"./Icon-D5-_6Id1.js";import"./Keys-DoZifIQ_.js";import"./parameters-bundle.css-R51uC6BG.js";import"./i18n-defaults-neJWcM66.js";import"./information-jop4MMmq.js";import"./alert-DvgF7qhQ.js";import"./class-map-Bnbjx3OQ.js";import"./Button-KJt5TdaB.js";import"./AriaLabelHelper-C5uDZewF.js";import"./willShowContent-CZcfsNXp.js";import"./Tooltips-BtcFvs45.js";import"./i18n-defaults-CMHHS2wK.js";import"./TagDesign-Dou_yO3g.js";import"./index-C4cLd1FO.js";import"./utils-GCkngmJq.js";import"./main-Dcm2jhNK.js";import"./index-5MeDKPL8.js";import"./Tag-MITF22Wo.js";import"./sys-help-2-dTYFqJDl.js";import"./index-RaHuZLhN.js";import"./Popover-CjT0D3fA.js";import"./PopupsCommon.css-Bz-EF7PV.js";import"./FocusableElements-CRBMDNv2.js";import"./isElementHidden-B4HqmI2E.js";import"./isElementClickable-0ACQ4G_A.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-BehhMu6Y.js";import"./MediaRange-Bnzt26Xb.js";import"./style-map-D6VK90q7.js";import"./getEffectiveScrollbarStyle-C9nZ6DfS.js";import"./index-ARMOpZ_f.js";import"./Link-Dgxh_lXY.js";import"./chunk-NUUEMKO5-NGLC8OsO.js";import"./iframe-DBH6tgYy.js";import"../sb-preview/runtime.js";import"./client-CqEfiX9M.js";import"./copy-DbIR3NTj.js";import"./copy-DL61w25d.js";import"./clsx-B-dksMZM.js";import"./GitHub-Mark-DLtQKbjK.js";import"./TableOfContent-DRym89KV.js";import"./index-DGiQ5c1w.js";import"./I18nStore-QcXEI0Jp.js";import"./useStylesheet-9EPR2ucC.js";import"./index-CGY3gg1J.js";import"./index-D2qI6nMR.js";import"./Label-VsV_UpQE.js";import"./index-xyP6IZJI.js";import"./index-ZkmNu-JV.js";import"./addCustomCSSWithScoping-BPWKraku.js";import"./index-CIk6P_fC.js";import"./BusyIndicator-DW1-q5Ls.js";import"./index-CAmAWMmr.js";import"./index-D8X14Ybw.js";import"./Avatar-Kl9ImEjS.js";import"./employee-BzTDAMVi.js";import"./index-BcsOxL0D.js";import"./index-DrFu-skq.js";import"./vertical-grip-CINietx4.js";import"./i18n-defaults-DRf_ur_y.js";import"./useIsRTL-CzXG5O-D.js";import"./directionChange-Bkv_TH6A.js";import"./useCurrentTheme-BK1jLnqJ.js";import"./index-D9RFSTf4.js";import"./debounce-D7W5PopO.js";import"./index-mgz5ORT3.js";import"./SegmentedButton-B3KHcSjK.js";import"./ItemNavigation-Dk_Ce4oG.js";function p(n){const e={code:"code",h2:"h2",h3:"h3",pre:"pre",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...s(),...n.components};return t.jsxs(t.Fragment,{children:[t.jsx(h,{of:j}),`
+`,t.jsx(d,{subComponents:["SplitterElement"]}),`
+`,t.jsx(e.h2,{id:"example",children:"Example"}),`
+`,t.jsx(r,{of:i}),`
+`,t.jsx(e.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(m,{of:i}),`
+`,t.jsx(e.h3,{id:"splitterlayoutoptions",children:"SplitterLayoutOptions"}),`
+`,t.jsxs(e.table,{children:[t.jsx(e.thead,{children:t.jsxs(e.tr,{children:[t.jsx(e.th,{children:"Property"}),t.jsx(e.th,{children:"Type"}),t.jsx(e.th,{children:"Description"})]})}),t.jsxs(e.tbody,{children:[t.jsxs(e.tr,{children:[t.jsx(e.td,{children:t.jsx(e.code,{children:"resetOnSizeChange"})}),t.jsx(e.td,{children:t.jsx(e.code,{children:"boolean"})}),t.jsxs(e.td,{children:["Defines whether the ",t.jsx(e.code,{children:"SplitterLayout"})," should be reset when its size changes depending on the orientation."]})]}),t.jsxs(e.tr,{children:[t.jsx(e.td,{children:t.jsx(e.code,{children:"resetOnChildrenChange"})}),t.jsx(e.td,{children:t.jsx(e.code,{children:"boolean"})}),t.jsxs(e.td,{children:["Defines whether the ",t.jsx(e.code,{children:"SplitterLayout"})," should be reset when its ",t.jsx(e.code,{children:"children"})," change."]})]}),t.jsxs(e.tr,{children:[t.jsx(e.td,{children:t.jsx(e.code,{children:"resetOnCustomDepsChange"})}),t.jsx(e.td,{children:t.jsx(e.code,{children:"React.DependencyList"})}),t.jsxs(e.td,{children:["Defines a list of dependencies that trigger a reset of the ",t.jsx(e.code,{children:"SplitterLayout"})," when they are changed."]})]})]})]}),`
+`,t.jsx(e.h2,{id:"splitterlayout-with-non-resizable-areas--areas-with-min-width",children:"SplitterLayout with non-resizable areas & areas with min-width"}),`
+`,t.jsx(r,{of:u,sourceState:"none"}),`
+`,t.jsxs("details",{children:[t.jsx("summary",{children:"Show Code"}),t.jsx(e.pre,{children:t.jsx(e.code,{className:"language-tsx",children:`function SplitterElementContent({ text, background = 'transparent' }) {
+  return (
+    <FlexBox style={{ height: '100%', width: '100%', background }} alignItems="Center" justifyContent="Center">
+      <Text>{text}</Text>
+    </FlexBox>
+  );
+}
+
+function SplitterLayoutComponent(props) {
+  return (
+    <SplitterLayout {...props}>
+      <SplitterElement size="10%">
+        <SplitterElementContent text="Content 1 - (size: 10%)" background="cadetblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 2" background="skyblue" />
+      </SplitterElement>
+      <SplitterElement minSize={200}>
+        <SplitterElementContent text="Content 3 (minSize: 200)" background="lightblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 4" background="paleturquoise" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 5" background="lightskyblue" />
+      </SplitterElement>
+      <SplitterElement resizable={false} size="150px">
+        <SplitterElementContent text="Content 6 (not resizable - size: 150px)" background="powderblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 7" background="aliceblue" />
+      </SplitterElement>
+      <SplitterElement>
+        <SplitterElementContent text="Content 8" background="lightsteelblue" />
+      </SplitterElement>
+    </SplitterLayout>
+  );
+}
+`})})]}),`
+`,t.jsx(e.h2,{id:"nested-splitterlayouts",children:"Nested SplitterLayouts"}),`
+`,t.jsx(r,{of:S}),`
+`,t.jsx(c,{children:C}),`
+`,t.jsx(e.h2,{id:"splitterelement",children:"SplitterElement"}),`
+`,t.jsx(x,{of:o}),`
+`,t.jsx(l,{of:o}),`
+`,t.jsx(a,{})]})}function te(n={}){const{wrapper:e}={...s(),...n.components};return e?t.jsx(e,{...n,children:t.jsx(p,{...n})}):p(n)}export{te as default};
