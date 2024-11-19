@@ -324,7 +324,7 @@ export const WithFilterBarImplementation: Story = {
             </VariantManagement>
           }
         >
-          <FilterGroupItem label="Countries">
+          <FilterGroupItem label="Countries" filterKey={0}>
             <Select onChange={handleSelectChange}>
               <Option selected={selectedCountry === 'Indonesia'}>Indonesia</Option>
               <Option selected={selectedCountry === 'Costa Rica'}>Costa Rica</Option>
@@ -336,10 +336,10 @@ export const WithFilterBarImplementation: Story = {
               <Option selected={selectedCountry === 'Austria'}>Austria</Option>
             </Select>
           </FilterGroupItem>
-          <FilterGroupItem label="Date">
+          <FilterGroupItem label="Date" filterKey={1}>
             <DatePicker value={date} onChange={handleDateChange} />
           </FilterGroupItem>
-          <FilterGroupItem label="Company Code">
+          <FilterGroupItem label="Company Code" filterKey={2}>
             <MultiComboBox onSelectionChange={handleSelectedCodesChange}>
               <MultiComboBoxItem text="001" selected={selectedCodes['001']} data-code="001" />
               <MultiComboBoxItem text="002" selected={selectedCodes['002']} data-code="002" />
@@ -349,18 +349,20 @@ export const WithFilterBarImplementation: Story = {
             </MultiComboBox>
           </FilterGroupItem>
         </FilterBar>
-        <Form style={{ marginBlockStart: '2rem' }} layout={'S1 M1 L1 XL1'} labelSpan={'M2 L2 XL2'}>
-          <FormItem labelContent={<Label>Current View</Label>}>
-            <Text>{selectedVariant}</Text>
-          </FormItem>
+        <Form style={{ marginBlockStart: '2rem' }} layout={'S1 M1 L1 XL1'} labelSpan={'S3 M3 L3 XL3'}>
+          <FormGroup headerText="Variant">
+            <FormItem labelContent={<Label showColon>Current View</Label>}>
+              <Text>{selectedVariant}</Text>
+            </FormItem>
+          </FormGroup>
           <FormGroup headerText="Filters">
-            <FormItem labelContent={<Label>Selected Country</Label>}>
+            <FormItem labelContent={<Label showColon>Selected Country</Label>}>
               <Text>{selectedCountry}</Text>
             </FormItem>
-            <FormItem labelContent={<Label>Selected Date</Label>}>
+            <FormItem labelContent={<Label showColon>Selected Date</Label>}>
               <Text>{date}</Text>
             </FormItem>
-            <FormItem labelContent={<Label>Selected Company Codes</Label>}>
+            <FormItem labelContent={<Label showColon>Selected Company Codes</Label>}>
               <Text>{Object.keys(selectedCodes).join(', ')}</Text>
             </FormItem>
           </FormGroup>

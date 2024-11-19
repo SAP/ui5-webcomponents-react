@@ -268,11 +268,11 @@ function FilterBarWithVariantManagement() {
       const hasChanged = Object.entries(initialVariantValues.current[selectedVariant]).some(([key, val]) => {
         if (key === 'selectedCodes') {
           const selectedCodesLength = Object.keys(filters.selectedCodes).length;
-          if (selectedCodesLength > 0 && Object.keys(val).length !== selectedCodesLength) {
+          if (Object.keys(val).length !== selectedCodesLength) {
             return true;
           }
           return Object.entries(filters.selectedCodes).some(([code, bool]) => {
-            return val[code] !== bool;
+            return val?.[code] !== bool;
           });
         }
         return filters[key] !== val;
@@ -319,7 +319,7 @@ function FilterBarWithVariantManagement() {
           </VariantManagement>
         }
       >
-        <FilterGroupItem label="Countries">
+        <FilterGroupItem label="Countries" filterKey={0}>
           <Select onChange={handleSelectChange}>
             <Option selected={selectedCountry === 'Indonesia'}>Indonesia</Option>
             <Option selected={selectedCountry === 'Costa Rica'}>Costa Rica</Option>
@@ -331,10 +331,10 @@ function FilterBarWithVariantManagement() {
             <Option selected={selectedCountry === 'Austria'}>Austria</Option>
           </Select>
         </FilterGroupItem>
-        <FilterGroupItem label="Date">
+        <FilterGroupItem label="Date" filterKey={1}>
           <DatePicker value={date} onChange={handleDateChange} />
         </FilterGroupItem>
-        <FilterGroupItem label="Company Code">
+        <FilterGroupItem label="Company Code" filterKey={2}>
           <MultiComboBox onSelectionChange={handleSelectedCodesChange}>
             <MultiComboBoxItem text="001" selected={selectedCodes['001']} data-code="001" />
             <MultiComboBoxItem text="002" selected={selectedCodes['002']} data-code="002" />
@@ -344,27 +344,20 @@ function FilterBarWithVariantManagement() {
           </MultiComboBox>
         </FilterGroupItem>
       </FilterBar>
-      <Form
-        style={{ marginBlockStart: '2rem' }}
-        columnsS={1}
-        columnsM={1}
-        columnsL={1}
-        columnsXL={1}
-        labelSpanM={2}
-        labelSpanL={2}
-        labelSpanXL={2}
-      >
-        <FormItem label="Current View">
-          <Text>{selectedVariant}</Text>
-        </FormItem>
-        <FormGroup titleText="Filters">
-          <FormItem label="Selected Country">
+      <Form style={{ marginBlockStart: '2rem' }} layout={'S1 M1 L1 XL1'} labelSpan={'S3 M3 L3 XL3'}>
+        <FormGroup headerText="Variant">
+          <FormItem labelContent={<Label showColon>Current View</Label>}>
+            <Text>{selectedVariant}</Text>
+          </FormItem>
+        </FormGroup>
+        <FormGroup headerText="Filters">
+          <FormItem labelContent={<Label showColon>Selected Country</Label>}>
             <Text>{selectedCountry}</Text>
           </FormItem>
-          <FormItem label="Selected Date">
+          <FormItem labelContent={<Label showColon>Selected Date</Label>}>
             <Text>{date}</Text>
           </FormItem>
-          <FormItem label="Selected Company Codes">
+          <FormItem labelContent={<Label showColon>Selected Company Codes</Label>}>
             <Text>{Object.keys(selectedCodes).join(', ')}</Text>
           </FormItem>
         </FormGroup>

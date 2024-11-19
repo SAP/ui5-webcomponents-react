@@ -1,4 +1,5 @@
 import type { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
+import IconDesign from '@ui5/webcomponents/dist/types/IconDesign.js';
 import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
@@ -108,16 +109,16 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
       style.textAlign = column.hAlign.toLowerCase();
     }
 
-    if (column.isSorted) margin++;
-    if (column.isGrouped) margin++;
-    if (isFiltered) margin++;
+    if (column.isSorted) margin += 0.8125;
+    if (column.isGrouped) margin += 0.8125;
+    if (isFiltered) margin += 0.8125;
 
     if (margin === 0) {
       return style;
     }
 
     if (margin > 0) {
-      margin += 0.625;
+      margin += 0.75;
     }
 
     style.marginInlineEnd = `${margin}rem`;
@@ -234,11 +235,20 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
             className={classNames.iconContainer}
             data-component-name={`AnalyticalTableHeaderIconsContainer-${columnId}`}
           >
-            {isFiltered && <Icon name={iconFilter} aria-hidden />}
-            {column.isSorted && (
-              <Icon name={column.isSortedDesc ? iconSortDescending : iconSortAscending} aria-hidden />
+            {isFiltered && (
+              <Icon design={IconDesign.NonInteractive} name={iconFilter} aria-hidden className={classNames.icon} />
             )}
-            {column.isGrouped && <Icon name={iconGroup} aria-hidden />}
+            {column.isSorted && (
+              <Icon
+                design={IconDesign.NonInteractive}
+                name={column.isSortedDesc ? iconSortDescending : iconSortAscending}
+                aria-hidden
+                className={classNames.icon}
+              />
+            )}
+            {column.isGrouped && (
+              <Icon design={IconDesign.NonInteractive} name={iconGroup} aria-hidden className={classNames.icon} />
+            )}
           </div>
         </div>
         {hasPopover &&
