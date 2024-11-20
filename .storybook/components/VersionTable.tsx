@@ -1,9 +1,9 @@
+import iconArrowDown from '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
+import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
 import { Button, MessageStrip } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { Fragment, useState } from 'react';
 import versionInfo from '../../config/version-info.json';
-import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
-import iconArrowDown from '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 
 const allWCRVersions: string[] = Object.values(versionInfo);
 
@@ -12,11 +12,17 @@ export function VersionTable() {
   return (
     <>
       <MessageStrip hideCloseButton>
-        In order to allow patching releases of UI5 Web Components by yourself, <code>@ui5/webcomponents</code> and
-        &nbsp;
-        <code>@ui5/webcomponents-fiori</code> are peer dependencies of <code>@ui5/webcomponents-react</code>. The
-        following table gives an overview of the required peer dependencies per version:
+        Starting with version <code>2.4.0</code> of <code>@ui5/webcomponents-react</code>, all packages now align their{' '}
+        <b>minor</b> version with <code>@ui5/webcomponents</code>!
       </MessageStrip>
+      <p>
+        <b>
+          In order to allow patching releases of UI5 Web Components by yourself, <code>@ui5/webcomponents</code> and
+          &nbsp;
+          <code>@ui5/webcomponents-fiori</code> are peer dependencies of <code>@ui5/webcomponents-react</code>. The
+          following table gives an overview of the required peer dependencies per version:
+        </b>
+      </p>
       <table>
         <thead>
           <tr>
@@ -29,8 +35,7 @@ export function VersionTable() {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(versionInfo).map(([wcVersion, wcrVersion], index, arr) => {
-            const lastEntry = index + 1 === arr.length;
+          {Object.entries(versionInfo).map(([wcVersion, wcrVersion]: [string, string]) => {
             if (wcrVersion.startsWith('0')) {
               return null;
             }
@@ -42,7 +47,7 @@ export function VersionTable() {
             const lastV1 = currentMajor === 1 && currentMinor === 27;
             const wcrVersions = [lastV1 ? wcrVersion : `~${wcrVersion}`];
             if (nextVersion) {
-              let minor = parseInt(nextVersion.split('.')[1]);
+              const minor = parseInt(nextVersion.split('.')[1]);
               for (let i = currentMinor + 1; i < minor; i++) {
                 wcrVersions.push(`~${currentMajor}.${i}.0`);
               }
@@ -99,10 +104,7 @@ export function VersionTable() {
                 )}
                 {currentMajor === 2 && (
                   <tr>
-                    <td>
-                      {lastEntry ? '>= ' : ''}
-                      {wcrVersions.join(', ')}
-                    </td>
+                    <td>{wcrVersions.join(', ')}</td>
                     <td>~{wcVersion}</td>
                   </tr>
                 )}

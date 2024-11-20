@@ -4,19 +4,17 @@ import downloadIcon from '@ui5/webcomponents-icons/dist/download.js';
 import editIcon from '@ui5/webcomponents-icons/dist/edit.js';
 import favoriteIcon from '@ui5/webcomponents-icons/dist/favorite.js';
 import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
-import {
-  Button,
-  DatePicker,
-  Icon,
-  Input,
-  Menu,
-  MenuItem,
-  Select,
-  Slider,
-  Switch,
-  Text,
-  ToggleButton
-} from '@ui5/webcomponents-react';
+import { Button } from '@ui5/webcomponents-react/dist/webComponents/Button/index.js';
+import { DatePicker } from '@ui5/webcomponents-react/dist/webComponents/DatePicker/index.js';
+import { Icon } from '@ui5/webcomponents-react/dist/webComponents/Icon/index.js';
+import { Input } from '@ui5/webcomponents-react/dist/webComponents/Input/index.js';
+import { Menu } from '@ui5/webcomponents-react/dist/webComponents/Menu/index.js';
+import { MenuItem } from '@ui5/webcomponents-react/dist/webComponents/MenuItem/index.js';
+import { Select } from '@ui5/webcomponents-react/dist/webComponents/Select/index.js';
+import { Slider } from '@ui5/webcomponents-react/dist/webComponents/Slider/index.js';
+import { Switch } from '@ui5/webcomponents-react/dist/webComponents/Switch/index.js';
+import { Text } from '@ui5/webcomponents-react/dist/webComponents/Text/index.js';
+import { ToggleButton } from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
 import { useState } from 'react';
 import { ToolbarDesign } from '../../enums/ToolbarDesign.js';
 import { ToolbarStyle } from '../../enums/ToolbarStyle.js';
@@ -51,11 +49,15 @@ export const Default: Story = {
     return (
       <Toolbar {...args}>
         <Text>Toolbar</Text>
-        <Button design={ButtonDesign.Transparent}>Button One</Button>
-        <Button design={ButtonDesign.Transparent}>Button Two</Button>
-        <Input />
-        <DatePicker />
-        <Switch />
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Button One
+        </Button>
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Button Two
+        </Button>
+        <Input data-accessible-name />
+        <DatePicker data-accessible-name />
+        <Switch data-accessible-name />
       </Toolbar>
     );
   }
@@ -67,9 +69,11 @@ export const RightAlignedItems: Story = {
     return (
       <Toolbar {...args}>
         <ToolbarSpacer />
-        <Button design={ButtonDesign.Transparent}>Button</Button>
-        <Icon name={settingsIcon} />
-        <Icon name={downloadIcon} />
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Button
+        </Button>
+        <Icon data-accessible-name accessibleName="Settings" name={settingsIcon} />
+        <Icon data-accessible-name accessibleName="Download" name={downloadIcon} />
       </Toolbar>
     );
   }
@@ -82,11 +86,13 @@ export const EvenlyAlignedItems: Story = {
       <Toolbar {...args}>
         <Text>Left</Text>
         <ToolbarSpacer />
-        <Button design={ButtonDesign.Transparent}>Center</Button>
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Center
+        </Button>
         <ToolbarSpacer />
         <Text>Right</Text>
-        <Icon name={settingsIcon} />
-        <Icon name={downloadIcon} />
+        <Icon data-accessible-name accessibleName="Settings" name={settingsIcon} />
+        <Icon data-accessible-name accessibleName="Download" name={downloadIcon} />
       </Toolbar>
     );
   }
@@ -97,16 +103,30 @@ export const WithSeparator: Story = {
   render(args) {
     return (
       <Toolbar {...args}>
-        <Button design={ButtonDesign.Transparent}>Item1</Button>
-        <Button design={ButtonDesign.Transparent}>Item2</Button>
-        <Button design={ButtonDesign.Transparent}>Item3</Button>
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Item1
+        </Button>
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Item2
+        </Button>
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Item3
+        </Button>
         <ToolbarSeparator />
-        <Button design={ButtonDesign.Transparent}>Item4</Button>
-        <Button design={ButtonDesign.Transparent}>Item5</Button>
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Item4
+        </Button>
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Item5
+        </Button>
         <ToolbarSeparator />
-        <Button design={ButtonDesign.Transparent}>Item6</Button>
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Item6
+        </Button>
         <ToolbarSeparator />
-        <Button design={ButtonDesign.Transparent}>Item7</Button>
+        <Button data-accessible-name design={ButtonDesign.Transparent}>
+          Item7
+        </Button>
       </Toolbar>
     );
   }
@@ -125,9 +145,18 @@ export const PopoverInOverflowPopover: Story = {
       <>
         <Toolbar {...args} style={{ width: '400px' }}>
           <Text>Toolbar</Text>
-          <Button design={ButtonDesign.Transparent}>Button One</Button>
-          <Button design={ButtonDesign.Transparent}>Button Two</Button>
-          <Button design={ButtonDesign.Transparent} id="openMenuBtn" onClick={handlePopoverOpenerClick}>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Button One
+          </Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Button Two
+          </Button>
+          <Button
+            data-accessible-name
+            design={ButtonDesign.Transparent}
+            id="openMenuBtn"
+            onClick={handlePopoverOpenerClick}
+          >
             Open Popover (Menu)
           </Button>
         </Toolbar>
@@ -158,15 +187,25 @@ export const WithOverflowButton: Story = {
         <Slider onInput={handleInput} value={value} />
         <Toolbar {...args} style={{ width: `calc(100% * ${value / 100})` }}>
           <Text>Toolbar</Text>
-          <Button design={ButtonDesign.Transparent}>Button One</Button>
-          <Button design={ButtonDesign.Transparent} icon="accept" />
-          <Button design={ButtonDesign.Transparent}>Button Two</Button>
-          <Select style={{ width: 'auto' }} />
-          <Switch />
-          <Button design={ButtonDesign.Transparent}>Button Three</Button>
-          <Button design={ButtonDesign.Transparent}>Button Four</Button>
-          <OverflowToolbarButton icon={editIcon}>Edit</OverflowToolbarButton>
-          <OverflowToolbarToggleButton design={ButtonDesign.Transparent} icon={favoriteIcon}>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Button One
+          </Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent} icon="accept" />
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Button Two
+          </Button>
+          <Select data-accessible-name style={{ width: 'auto' }} />
+          <Switch data-accessible-name />
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Button Three
+          </Button>
+          <Button data-accessible-name design={ButtonDesign.Transparent}>
+            Button Four
+          </Button>
+          <OverflowToolbarButton data-accessible-name icon={editIcon}>
+            Edit
+          </OverflowToolbarButton>
+          <OverflowToolbarToggleButton data-accessible-name design={ButtonDesign.Transparent} icon={favoriteIcon}>
             Favorite
           </OverflowToolbarToggleButton>
         </Toolbar>
@@ -180,32 +219,54 @@ export const OverflowBtns: Story = {
   render(args) {
     return (
       <Toolbar {...args} style={{ width: '500px', ...args.style }}>
-        <Button design={ButtonDesign.Transparent} icon={editIcon} tooltip="Text always visible">
+        <Button data-accessible-name design={ButtonDesign.Transparent} icon={editIcon} tooltip="Text always visible">
           Default Button
         </Button>
-        <OverflowToolbarButton design={ButtonDesign.Transparent} icon={editIcon} tooltip="Text only visible in popover">
+        <OverflowToolbarButton
+          data-accessible-name
+          design={ButtonDesign.Transparent}
+          icon={editIcon}
+          tooltip="Text only visible in popover"
+        >
           OverflowToolbarButton (only visible in popover)
         </OverflowToolbarButton>
-        <ToggleButton design={ButtonDesign.Transparent} icon={favoriteIcon} tooltip="Text always visible">
+        <ToggleButton
+          data-accessible-name
+          design={ButtonDesign.Transparent}
+          icon={favoriteIcon}
+          tooltip="Text always visible"
+        >
           Default ToggleButton
         </ToggleButton>
         <OverflowToolbarToggleButton
+          data-accessible-name
           design={ButtonDesign.Transparent}
           icon={favoriteIcon}
           tooltip="Text only visible in popover"
         >
           OverflowToolbarToggleButton (only visible in popover)
         </OverflowToolbarToggleButton>
-        <Button design={ButtonDesign.Transparent} icon={editIcon} tooltip="Text always visible">
+        <Button data-accessible-name design={ButtonDesign.Transparent} icon={editIcon} tooltip="Text always visible">
           Default Button
         </Button>
-        <OverflowToolbarButton design={ButtonDesign.Transparent} icon={editIcon} tooltip="Text only visible in popover">
+        <OverflowToolbarButton
+          data-accessible-name
+          design={ButtonDesign.Transparent}
+          icon={editIcon}
+          tooltip="Text only visible in popover"
+        >
           OverflowToolbarButton (only visible in popover)
         </OverflowToolbarButton>
-        <ToggleButton design={ButtonDesign.Transparent} icon={favoriteIcon} tooltip="Text always visible">
+        <ToggleButton
+          data-accessible-name
+          design={ButtonDesign.Transparent}
+          icon={favoriteIcon}
+          tooltip="Text always visible"
+        >
           Default ToggleButton
         </ToggleButton>
         <OverflowToolbarToggleButton
+          data-accessible-name
           design={ButtonDesign.Transparent}
           icon={favoriteIcon}
           tooltip="Text only visible in popover"

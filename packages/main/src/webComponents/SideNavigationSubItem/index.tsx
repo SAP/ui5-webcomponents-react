@@ -85,6 +85,10 @@ interface SideNavigationSubItemPropTypes
   /**
    * Fired when the component is activated either with a
    * click/tap or by using the [Enter] or [Space] keys.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClick?: (event: Ui5CustomEvent<SideNavigationSubItemDomRef>) => void;
 }

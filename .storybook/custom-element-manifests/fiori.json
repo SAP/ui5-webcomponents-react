@@ -1907,6 +1907,26 @@
           "kind": "class",
           "description": "### Overview\n\nThe `BarcodeScannerDialog` component provides barcode scanning functionality for all devices that support the `MediaDevices.getUserMedia()` native API.\nOpening the dialog launches the device camera and scans for known barcode formats.\n\nA `scanSuccess` event fires whenever a barcode is identified\nand a `scanError` event fires when the scan failed (for example, due to missing permisions).\n\nInternally, the component  uses the zxing-js/library third party OSS.\n\nFor a list of supported barcode formats, see the [zxing-js/library](https://github.com/zxing-js/library) documentation.",
           "name": "BarcodeScannerDialog",
+          "slots": [
+            {
+              "name": "header",
+              "description": "Defines the header HTML Element.\n\n**Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer.\n`accessibleName` should be used.",
+              "_ui5since": "2.4.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "footer",
+              "description": "Defines the footer HTML Element.\n\n**Note:** When you provide custom content for the `footer` slot, the default close button is not rendered.\nThis means you need to include your own mechanism within the custom `footer` to close the dialog,\nsuch as a button with an event listener that closes the dialog.\n\n**Note:** If the `footer` slot is not provided, a default footer with a close button is rendered automatically,\nallowing users to close the dialog without any additional implementation.",
+              "_ui5since": "2.4.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -1927,7 +1947,11 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the user closes the component."
+              "description": "Fired when the user closes the component.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.0.0"
             },
             {
               "name": "scan-success",
@@ -1943,6 +1967,9 @@
                 ]
               },
               "description": "Fires when the scan is completed successfuuly.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -1976,6 +2003,9 @@
                 ]
               },
               "description": "Fires when the scan fails with error.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -2149,7 +2179,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the pin header button is toggled."
+              "description": "Fired when the pin header button is toggled.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "title-toggle",
@@ -2157,7 +2190,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the expand/collapse area of the title is toggled."
+              "description": "Fired when the expand/collapse area of the title is toggled.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -2557,6 +2593,9 @@
                 ]
               },
               "description": "Fires when the current breakpoint has been changed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -3017,6 +3056,9 @@
                 ]
               },
               "description": "Fired when the layout changes via user interaction by dragging the separators\nor by changing the component size due to resizing.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -3496,6 +3538,9 @@
                 ]
               },
               "description": "Fired when selection is changed by user interaction.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -3513,7 +3558,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the thumbnails overflow button is clicked."
+              "description": "Fired when the thumbnails overflow button is clicked.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "display-area-click",
@@ -3521,7 +3569,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the display area is clicked.\nThe display area is the central area that contains\nthe enlarged content of the currently selected item."
+              "description": "Fired when the display area is clicked.\nThe display area is the central area that contains\nthe enlarged content of the currently selected item.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -3735,6 +3786,101 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/NavigationLayout.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn desktop and tablet devices, the side navigation remains visible and can\nbe expanded or collapsed using the `sideCollapsed` property. On phone devices, the side navigation\nis hidden by default but can be displayed using the same `sideCollapsed` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`",
+          "name": "NavigationLayout",
+          "slots": [
+            {
+              "name": "header",
+              "description": "Defines the header.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "sideContent",
+              "description": "Defines the side content.",
+              "_ui5type": {
+                "text": "Array<SideNavigation>",
+                "references": [
+                  {
+                    "name": "SideNavigation",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SideNavigation.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "default",
+              "description": "Defines the content.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "sideCollapsed",
+              "description": "Indicates whether the side navigation is collapsed.",
+              "default": "false",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Indicates whether the side navigation is collapsed.",
+              "name": "side-collapsed",
+              "default": "false",
+              "fieldName": "sideCollapsed",
+              "type": {
+                "text": "any"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-navigation-layout",
+          "customElement": true,
+          "_ui5since": "2.4.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NavigationLayout",
+            "module": "dist/NavigationLayout.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-navigation-layout",
+          "declaration": {
+            "name": "NavigationLayout",
+            "module": "dist/NavigationLayout.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/NotificationList.js",
       "declarations": [
         {
@@ -3786,7 +3932,9 @@
                 ]
               },
               "description": "Fired when an item is clicked.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -3812,6 +3960,9 @@
                 ]
               },
               "description": "Fired when the `Close` button of any item is clicked.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -3837,6 +3988,9 @@
                 ]
               },
               "description": "Fired when an item is toggled.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -4010,7 +4164,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the `ui5-li-notification-group` is expanded/collapsed by user interaction."
+              "description": "Fired when the `ui5-li-notification-group` is expanded/collapsed by user interaction.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "load-more",
@@ -4019,6 +4176,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when additional items are requested.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.2.0"
             }
           ],
@@ -4287,6 +4447,9 @@
                 ]
               },
               "description": "Fired when the `Close` button is pressed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -4728,7 +4891,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the `ui5-product-switch-item` is activated either with a\nclick/tap or by using the Enter or Space key."
+              "description": "Fired when the `ui5-product-switch-item` is activated either with a\nclick/tap or by using the Enter or Space key.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -5093,7 +5259,9 @@
                 ]
               },
               "description": "Fired, when the notification icon is activated.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -5119,6 +5287,9 @@
                 ]
               },
               "description": "Fired, when the profile slot is present.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -5144,7 +5315,9 @@
                 ]
               },
               "description": "Fired, when the product switch icon is activated.\n\n**Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -5170,6 +5343,9 @@
                 ]
               },
               "description": "Fired, when the logo is activated.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "0.10",
               "_ui5parameters": [
                 {
@@ -5196,6 +5372,9 @@
                 ]
               },
               "description": "Fired, when a menu item is activated\n\n**Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5since": "0.10",
               "_ui5parameters": [
                 {
@@ -5222,7 +5401,9 @@
                 ]
               },
               "description": "Fired, when the search button is activated.\n\n**Note:** You can prevent expanding/collapsing of the search field by calling `event.preventDefault()`.",
-              "_ui5allowPreventDefault": true
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -5421,7 +5602,9 @@
                 ]
               },
               "description": "Fired, when the item is pressed.",
-              "_ui5allowPreventDefault": true
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -5560,7 +5743,9 @@
                 ]
               },
               "description": "Fired when the selection has changed via user interaction",
+              "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -6044,6 +6229,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the component is activated either with a\nclick/tap or by using the [Enter] or [Space] keys.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -6267,7 +6455,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the component is activated either with a\nclick/tap or by using the [Enter] or [Space] keys."
+              "description": "Fired when the component is activated either with a\nclick/tap or by using the [Enter] or [Space] keys.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -6592,6 +6783,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the component is activated either with a\nclick/tap or by using the [Enter] or [Space] keys.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -6868,7 +7062,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the group item is expanded or collapsed."
+              "description": "Fired when the group item is expanded or collapsed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -7006,7 +7203,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the item name is pressed either with a\nclick/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `name-clickable`\nattribute is not set."
+              "description": "Fired when the item name is pressed either with a\nclick/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `name-clickable`\nattribute is not set.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -7193,7 +7393,10 @@
               "type": {
                 "text": "Event"
               },
-              "description": "Fired when an element is dropped inside the drag and drop overlay.\n\n**Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `ui5-upload-collection`."
+              "description": "Fired when an element is dropped inside the drag and drop overlay.\n\n**Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `ui5-upload-collection`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "item-delete",
@@ -7209,6 +7412,9 @@
                 ]
               },
               "description": "Fired when the delete button of any item is pressed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -7234,6 +7440,9 @@
                 ]
               },
               "description": "Fired when selection is changed by user interaction\nin `Single` and `Multiple` modes.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -7557,7 +7766,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the file name is clicked.\n\n**Note:** This event is only available when `fileNameClickable` property is `true`."
+              "description": "Fired when the file name is clicked.\n\n**Note:** This event is only available when `fileNameClickable` property is `true`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "rename",
@@ -7565,7 +7777,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the `fileName` property gets changed.\n\n**Note:** An edit button is displayed on each item,\nwhen the `ui5-upload-collection-item` `type` property is set to `Detail`."
+              "description": "Fired when the `fileName` property gets changed.\n\n**Note:** An edit button is displayed on each item,\nwhen the `ui5-upload-collection-item` `type` property is set to `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "terminate",
@@ -7573,7 +7788,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the terminate button is pressed.\n\n**Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`."
+              "description": "Fired when the terminate button is pressed.\n\n**Note:** Terminate button is displayed when `uploadState` property is set to `Uploading`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "retry",
@@ -7581,7 +7799,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the retry button is pressed.\n\n**Note:** Retry button is displayed when `uploadState` property is set to `Error`."
+              "description": "Fired when the retry button is pressed.\n\n**Note:** Retry button is displayed when `uploadState` property is set to `Error`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             },
             {
               "name": "detail-click",
@@ -7589,7 +7810,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the user clicks on the detail button when type is `Detail`."
+              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -7811,6 +8035,9 @@
                 ]
               },
               "description": "Fired when confirmation button is activated.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -7868,6 +8095,9 @@
                 ]
               },
               "description": "Fired when cancel button is activated.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -7917,7 +8147,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired before the component is opened. **This event does not bubble.**"
+              "description": "Fired before the component is opened.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true
             },
             {
               "name": "open",
@@ -7926,6 +8159,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired after the dialog is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0"
             },
             {
@@ -7935,6 +8171,9 @@
                 "text": "CustomEvent"
               },
               "description": "Fired after the dialog is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.0.0"
             }
           ],
@@ -8059,6 +8298,9 @@
                 ]
               },
               "description": "Fired when the step is changed by user interaction - either with scrolling,\nor by clicking on the steps within the component header.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {

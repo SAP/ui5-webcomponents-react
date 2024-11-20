@@ -1,6 +1,6 @@
 import type { ScrollToOptions } from '@tanstack/react-virtual';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { ComponentType, MutableRefObject, ReactNode, Ref } from 'react';
+import type { ComponentType, Dispatch, MutableRefObject, ReactNode, Ref, SetStateAction } from 'react';
 import type {
   AnalyticalTableScaleWidthMode,
   AnalyticalTableScrollMode,
@@ -14,11 +14,24 @@ import type {
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../types/index.js';
 
+export enum RenderColumnTypes {
+  Filter = 'Filter',
+  Grouped = 'Grouped',
+  Cell = 'Cell',
+  Expandable = 'Expandable',
+  RepeatedValue = 'RepeatedValue',
+  PopIn = 'PopIn',
+  Popover = 'Popover',
+  Header = 'Header',
+  Aggregated = 'Aggregated'
+}
+
 export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> {
   id?: string;
   Expandable?: any;
   Grouped?: any;
   RepeatedValue?: any;
+  Popover?: any;
   canFilter?: boolean;
   canGroupBy?: boolean;
   canResize?: boolean;
@@ -40,7 +53,12 @@ export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> 
   originalWidth?: number;
   parent?: any;
   preFilteredRows?: Record<string, RowType>[];
-  render?: any;
+  /**
+   * Renders the component with the given column type
+   * @param type
+   * @param props The props are added to the table instance
+   */
+  render?: (type: RenderColumnTypes | keyof typeof RenderColumnTypes, props: Record<string, any>) => ReactNode;
   setFilter?: (val: string) => void;
   sortDescFirst?: boolean;
   sortedIndex?: number;
@@ -182,6 +200,8 @@ export interface WCRPropertiesType {
   onAutoResize: AnalyticalTablePropTypes['onAutoResize'];
   onRowClick: AnalyticalTablePropTypes['onRowClick'];
   onRowExpandChange: AnalyticalTablePropTypes['onRowExpandChange'];
+  onSort: AnalyticalTablePropTypes['onSort'];
+  onGroup: AnalyticalTablePropTypes['onGroup'];
   isTreeTable: AnalyticalTablePropTypes['isTreeTable'];
   alternateRowColor: AnalyticalTablePropTypes['alternateRowColor'];
   scaleWidthMode: AnalyticalTablePropTypes['scaleWidthMode'];
@@ -321,6 +341,21 @@ interface ScaleWidthModeOptions {
   cellString?: string;
 }
 
+interface PopoverProps {
+  /**
+   * Set the state of the popover. If set to `false` the component is unmounted.
+   */
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  /**
+   * React Ref that holds the reference to the respective table header element.
+   */
+  openerRef: MutableRefObject<HTMLDivElement>;
+}
+
+export interface TableInstanceWithPopoverProps extends TableInstance {
+  popoverProps: PopoverProps;
+}
+
 export interface AnalyticalTableColumnDefinition {
   // base properties
   /**
@@ -329,7 +364,15 @@ export interface AnalyticalTableColumnDefinition {
    * __Note__: You can also specify deeply nested values with accessors like `info.hobby` or even `address[0].street`
    * __Note__: If no `accessor` is set, or the `accessor` is a function, the `id` property has to be set.
    */
-  accessor?: string | ((row: RowType, rowIndex: number) => any);
+  accessor?:
+    | string
+    | ((
+        originalRow: Record<string, any>,
+        rowIndex: number,
+        row: RowType,
+        parentRows: RowType[],
+        data: Record<string, any>[]
+      ) => any);
   /**
    * Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.
    *
@@ -376,6 +419,18 @@ export interface AnalyticalTableColumnDefinition {
    * Maximum with of the column, e.g. used for resizing.
    */
   maxWidth?: number;
+  /**
+   * Custom header Popover renderer. If set, this component replaces the internal header Popover.
+   *
+   * The table instance is passed as a prop, which includes the `popoverProps` object containing:
+   * - `openerRef`: A reference to the header cell that opens the popover.
+   * - `setOpen`: A React state setter to control the popover's open state. (The component will be unmounted if set to `false`)
+   *
+   * __Note:__ Since the component unmounts when closing the popover, the `open` prop of `Popover` components doesn't need to be controlled directly and can be set to `true`.
+   */
+  Popover?:
+    | ComponentType<{ instance: TableInstanceWithPopoverProps }>
+    | ((props?: { instance: TableInstanceWithPopoverProps }) => ReactNode);
 
   // useFilters
   /**
@@ -541,8 +596,8 @@ interface OnAutoResizeMouseEvent extends Omit<MouseEvent, 'detail'> {
   detail: { columnId: string; width: number; nativeDetail: 2 };
 }
 
-interface OnRowClickEvent extends Omit<MouseEvent, 'detail'> {
-  detail: { detail: { row: unknown; nativeDetail: number } };
+interface OnRowClickEvent extends Omit<UIEvent, 'detail'> {
+  detail: { row: RowType; nativeDetail: number };
 }
 
 export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {

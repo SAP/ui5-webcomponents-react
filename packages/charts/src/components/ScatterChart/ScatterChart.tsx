@@ -62,7 +62,8 @@ interface IScatterChartConfig extends ICartesianChartConfig {
   referenceLineX?: {
     value?: number;
     color?: string;
-  } & ReferenceLineProps;
+    //todo: remove "Omit" once ref type has been fixed
+  } & Omit<ReferenceLineProps, 'ref'>;
 }
 
 export interface ScatterChartProps extends Omit<IChartBaseProps<IScatterChartConfig>, 'dataset'> {
@@ -305,6 +306,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
             wrapperStyle={legendPosition}
+            {...chartConfig.legendConfig}
           />
         )}
         {referenceLine && (

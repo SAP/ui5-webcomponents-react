@@ -1,7 +1,6 @@
 .cardContainer {
   position: relative;
   width: 500px;
-  height: 20rem;
   margin-block-end: 2rem;
   flex-shrink: 0;
 }
@@ -37,4 +36,8 @@
 
 .popover::part(content) {
   padding: 0.5rem;
+}
+
+.verticalLine {
+  padding-inline: 0.1rem;
 }

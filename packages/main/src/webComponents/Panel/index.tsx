@@ -91,6 +91,10 @@ interface PanelPropTypes
   header?: UI5WCSlotsNode;
   /**
    * Fired when the component is expanded/collapsed by user interaction.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onToggle?: (event: Ui5CustomEvent<PanelDomRef>) => void;
 }

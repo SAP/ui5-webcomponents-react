@@ -69,16 +69,28 @@ interface MediaGalleryPropTypes
    * Fired when the display area is clicked.
    * The display area is the central area that contains
    * the enlarged content of the currently selected item.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onDisplayAreaClick?: (event: Ui5CustomEvent<MediaGalleryDomRef>) => void;
 
   /**
    * Fired when the thumbnails overflow button is clicked.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOverflowClick?: (event: Ui5CustomEvent<MediaGalleryDomRef>) => void;
 
   /**
    * Fired when selection is changed by user interaction.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<MediaGalleryDomRef, MediaGallerySelectionChangeEventDetail>) => void;
 }

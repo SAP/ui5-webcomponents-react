@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.3...v2.4.0) (2024-11-05)
+
+### Features
+
+- update @ui5/webcomponents to ~2.4.0 ([#6585](https://github.com/SAP/ui5-webcomponents-react/issues/6585)) ([2a4049c](https://github.com/SAP/ui5-webcomponents-react/commit/2a4049c1d5686e443a569f01d94331aa13a66c88))
+
+## [2.3.3](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.2...v2.3.3) (2024-10-31)
+
+### Bug Fixes
+
+- **compat:** use deep import paths for `main` imports ([#6554](https://github.com/SAP/ui5-webcomponents-react/issues/6554)) ([d432c5e](https://github.com/SAP/ui5-webcomponents-react/commit/d432c5e54b3f216e3252584f6cae8cec1720bdfb))
+
+## [2.3.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.1...v2.3.2) (2024-10-23)
+
+### Bug Fixes
+
+- **compat:** update `@ui5/webcomponents-react` peer-dep ([#6541](https://github.com/SAP/ui5-webcomponents-react/issues/6541)) ([f6db6f7](https://github.com/SAP/ui5-webcomponents-react/commit/f6db6f7aa626da78a481d926396f8aeb7fed7729)), closes [#6540](https://github.com/SAP/ui5-webcomponents-react/issues/6540)
+- **Toolbar - compat:** announce number of items in overflow popover ([#6545](https://github.com/SAP/ui5-webcomponents-react/issues/6545)) ([60411d6](https://github.com/SAP/ui5-webcomponents-react/commit/60411d65ddc97d28fb444b320f6c26651a1aa467)), closes [#5926](https://github.com/SAP/ui5-webcomponents-react/issues/5926)
+
+# [2.3.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.2.0...v2.3.0) (2024-10-17)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-compat
+
 # [2.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.1...v2.2.0) (2024-10-04)
 
 ### Features

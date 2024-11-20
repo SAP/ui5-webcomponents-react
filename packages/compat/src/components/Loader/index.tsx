@@ -1,7 +1,7 @@
 'use client';
 
-import type { CommonProps } from '@ui5/webcomponents-react';
 import { PLEASE_WAIT } from '@ui5/webcomponents-react/dist/i18n/i18n-defaults.js';
+import type { CommonProps } from '@ui5/webcomponents-react/dist/types/CommonProps.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';

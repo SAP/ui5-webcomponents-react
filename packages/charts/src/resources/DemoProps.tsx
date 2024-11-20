@@ -1,5 +1,28 @@
 import type { IChartBaseProps } from '@/interfaces/IChartBaseProps.js';
 
+export const legendConfig: IChartBaseProps = {
+  chartConfig: {
+    legendConfig: {
+      align: 'right',
+      iconSize: 20,
+      iconType: 'diamond',
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      formatter: (value, entry, index) => {
+        if (value === 'Users') {
+          return <span>{value}🐱</span>;
+        }
+        return value;
+      },
+      wrapperStyle: {
+        border: '5px solid',
+        borderImage: 'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet) 1',
+        padding: '5px',
+        borderRadius: '8px'
+      }
+    }
+  }
+};
+
 export const tooltipConfig: IChartBaseProps = {
   tooltipConfig: {
     wrapperStyle: {
@@ -118,7 +141,7 @@ export const complexDataSet = [
     name: 'September',
     users: 200,
     sessions: 360,
-    volume: 879
+    volume: 1000
   },
   {
     name: 'October',

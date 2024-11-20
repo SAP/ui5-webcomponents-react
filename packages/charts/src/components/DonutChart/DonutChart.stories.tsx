@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { simpleDataSet, simpleDataSetWithSmallValues, tooltipConfig } from '../../resources/DemoProps.js';
+import { legendConfig, simpleDataSet, simpleDataSetWithSmallValues, tooltipConfig } from '../../resources/DemoProps.js';
 import { DonutChart } from './DonutChart.js';
 
 const meta = {
@@ -98,4 +98,8 @@ export const HideLabels: Story = {
 
 export const WithCustomTooltipConfig: Story = {
   args: tooltipConfig
+};
+
+export const WithCustomLegendConfig: Story = {
+  args: legendConfig
 };

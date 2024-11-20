@@ -8,8 +8,11 @@ import type {
 import type { TableRowClickEventDetail } from '@ui5/webcomponents-compat/dist/TableRow.js';
 import type TableGrowingMode from '@ui5/webcomponents-compat/dist/types/TableGrowingMode.js';
 import type TableMode from '@ui5/webcomponents-compat/dist/types/TableMode.js';
-import { withWebComponent } from '@ui5/webcomponents-react';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react';
+import { withWebComponent } from '@ui5/webcomponents-react/dist/internal/withWebComponent.js';
+import type { CommonProps } from '@ui5/webcomponents-react/dist/types/CommonProps.js';
+import type { UI5WCSlotsNode } from '@ui5/webcomponents-react/dist/types/index.js';
+import type { Ui5CustomEvent } from '@ui5/webcomponents-react/dist/types/Ui5CustomEvent.js';
+import type { Ui5DomRef } from '@ui5/webcomponents-react/dist/types/Ui5DomRef.js';
 import type { ReactNode } from 'react';
 
 interface TableAttributes {
@@ -172,6 +175,10 @@ interface TablePropTypes
    * **Note:** The event will be fired if `growing` is set to `Button` or `Scroll`.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-compat**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onLoadMore?: (event: Ui5CustomEvent<TableDomRef>) => void;
 
@@ -179,11 +186,19 @@ interface TablePropTypes
    * Fired when `TableColumn` is shown as a pop-in instead of hiding it.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-compat**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onPopinChange?: (event: Ui5CustomEvent<TableDomRef, TablePopinChangeEventDetail>) => void;
 
   /**
    * Fired when a row in `Active` mode is clicked or `Enter` key is pressed.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
 
@@ -192,6 +207,10 @@ interface TablePropTypes
    * in `SingleSelect` and `MultiSelect` modes.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-compat**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<TableDomRef, TableSelectionChangeEventDetail>) => void;
 }

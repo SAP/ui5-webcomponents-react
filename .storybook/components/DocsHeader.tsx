@@ -49,6 +49,7 @@ interface InfoTableProps {
   subComponents?: string[];
   mergeSubComponents?: boolean;
   isChart?: boolean;
+  experimental?: boolean;
 }
 
 export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTableProps) => {
@@ -85,7 +86,8 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
               <Button
                 design={ButtonDesign.Transparent}
                 className={clsx('ui5-content-density-compact', classes.copyBtn)}
-                onClick={void handleCopy}
+                // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                onClick={handleCopy}
                 icon={copyIcon}
                 tooltip="copy"
               />
@@ -113,7 +115,8 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
                 <Button
                   design={ButtonDesign.Transparent}
                   className={clsx('ui5-content-density-compact', classes.copyBtn)}
-                  onClick={void handleCopy}
+                  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                  onClick={handleCopy}
                   icon={copyIcon}
                   tooltip="copy"
                 />
@@ -126,11 +129,12 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
   );
 };
 
-export const DocsHeader = ({ since, subComponents, mergeSubComponents, isChart }: InfoTableProps) => {
+export const DocsHeader = ({ since, subComponents, mergeSubComponents, isChart, experimental }: InfoTableProps) => {
   return (
     <ThemeProvider>
-      <FlexBox alignItems={FlexBoxAlignItems.Center}>
+      <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.titleRow}>
         <Title />
+        {experimental && <Label className={classes.experimentalLabel}>experimental</Label>}
         <span style={{ flexGrow: 1 }} />
         <Links />
       </FlexBox>

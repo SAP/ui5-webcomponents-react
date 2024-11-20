@@ -118,6 +118,10 @@ interface CalendarPropTypes
    * create instances of `CalendarDate` for the newly selected dates. In that case you should do this manually.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<CalendarDomRef, CalendarSelectionChangeEventDetail>) => void;
 }

@@ -1,4 +1,4 @@
-import type { CommonProps } from '@ui5/webcomponents-react';
+import type { CommonProps } from '@ui5/webcomponents-react/dist/types/CommonProps.js';
 import { forwardRef } from 'react';
 
 export type ToolbarSpacerPropTypes = CommonProps;

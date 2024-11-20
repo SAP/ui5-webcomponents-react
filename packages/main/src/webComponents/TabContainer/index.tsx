@@ -117,7 +117,9 @@ interface TabContainerPropTypes
    *
    * **Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.
    *
-   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onMove?: (event: Ui5CustomEvent<TabContainerDomRef, TabContainerMoveEventDetail>) => void;
 
@@ -129,6 +131,10 @@ interface TabContainerPropTypes
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onMoveOver?: (event: Ui5CustomEvent<TabContainerDomRef, TabContainerMoveEventDetail>) => void;
 
@@ -138,6 +144,10 @@ interface TabContainerPropTypes
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onTabSelect?: (event: Ui5CustomEvent<TabContainerDomRef, TabContainerTabSelectEventDetail>) => void;
 }

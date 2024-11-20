@@ -227,6 +227,10 @@ describe('VariantManagement', () => {
             <VariantItem>VariantItem 1</VariantItem>
             <VariantItem selected>VariantItem 2</VariantItem>
             <VariantItem readOnly>VariantItem 3</VariantItem>
+            <VariantItem readOnly={false}>VariantItem 4</VariantItem>
+            <VariantItem readOnly={true}>VariantItem 5</VariantItem>
+            <VariantItem readOnly={null}>VariantItem 6</VariantItem>
+            <VariantItem readOnly={undefined}>VariantItem 7</VariantItem>
           </VariantManagement>
         </>
       );
@@ -242,6 +246,14 @@ describe('VariantManagement', () => {
     cy.findByText('VariantItem 3').click();
     cy.findByText('Save', { timeout: 200 }).should('not.exist');
     cy.findByText('VariantItem 1').click();
+    cy.findByText('Save').should('be.visible');
+    cy.findByText('VariantItem 4').click();
+    cy.findByText('Save').should('be.visible');
+    cy.findByText('VariantItem 5').click();
+    cy.findByText('Save', { timeout: 200 }).should('not.exist');
+    cy.findByText('VariantItem 6').click();
+    cy.findByText('Save').should('be.visible');
+    cy.findByText('VariantItem 7').click();
     cy.findByText('Save').should('be.visible');
 
     cy.mount(<TestComp onSave={save} dirtyStateText="Dirty state" />);
@@ -337,6 +349,15 @@ describe('VariantManagement', () => {
     cy.get('[text="Apply Automatically"]').should('be.visible');
     cy.get('[ui5-checkbox]').should('have.length', 3);
 
+    cy.realPress('Escape');
+
+    cy.get('[icon="navigation-down-arrow"]').click();
+    cy.findByText('Manage').click();
+    cy.get('[ui5-table]').contains('Apply Automatically').should('be.visible');
+    cy.get('[ui5-table]').contains('Default').should('be.visible');
+    cy.get('[ui5-table]').contains('Sharing').should('be.visible');
+    cy.get('[ui5-table]').contains('Created By').should('be.visible');
+
     cy.mount(
       <VariantManagement hideApplyAutomatically hideSetAsDefault hideShare hideCreatedBy>
         {TwoVariantItems}
@@ -348,6 +369,15 @@ describe('VariantManagement', () => {
     cy.get('[text="Public"]', { timeout: 50 }).should('not.exist');
     cy.get('[text="Apply Automatically"]', { timeout: 50 }).should('not.exist');
     cy.get('[ui5-checkbox]').should('not.exist');
+
+    cy.realPress('Escape');
+
+    cy.get('[icon="navigation-down-arrow"]').click();
+    cy.findByText('Manage').click();
+    cy.get('[ui5-table]').contains('Apply Automatically').should('not.exist');
+    cy.get('[ui5-table]').contains('Default').should('not.exist');
+    cy.get('[ui5-table]').contains('Sharing').should('not.exist');
+    cy.get('[ui5-table]').contains('Created By').should('not.exist');
   });
 
   it('Save As', () => {
@@ -433,6 +463,18 @@ describe('VariantManagement', () => {
           global: true,
           applyAutomatically: true,
           author: 'bla'
+        }
+      },
+      {
+        rowId: 'All props false',
+        props: {
+          labelReadOnly: false,
+          favorite: false,
+          isDefault: false,
+          hideDelete: false,
+          global: false,
+          applyAutomatically: false,
+          author: 'All false'
         }
       }
     ];
@@ -557,7 +599,7 @@ describe('VariantManagement', () => {
     cy.findByText('Save').click();
     cy.get('@saveView').should('have.been.calledOnce');
     cy.findByText(
-      '{"nativeDetail":1,"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}]}'
+      '{"nativeDetail":1,"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}]}'
     );
 
     cy.mount(<TestComp onSaveManageViews={onSaveView} showOnlyFavorites />);
@@ -568,7 +610,7 @@ describe('VariantManagement', () => {
     cy.findByText('Save').click();
     cy.get('@saveView').should('have.been.calledTwice');
     cy.findByText(
-      '{"nativeDetail":1,"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"}]}'
+      '{"nativeDetail":1,"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}]}'
     );
   });
 

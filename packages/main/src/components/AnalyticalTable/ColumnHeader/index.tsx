@@ -1,4 +1,5 @@
 import type { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
+import IconDesign from '@ui5/webcomponents/dist/types/IconDesign.js';
 import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
@@ -16,15 +17,12 @@ import type {
 import { useRef, useState } from 'react';
 import { Icon } from '../../../webComponents/Icon/index.js';
 import { Text } from '../../../webComponents/Text/index.js';
-import type { ColumnType } from '../types/ColumnType.js';
-import type { DivWithCustomScrollProp } from '../types/index.js';
+import type { ColumnType, DivWithCustomScrollProp } from '../types/index.js';
+import { RenderColumnTypes } from '../types/index.js';
 import { classNames, styleData } from './ColumnHeader.module.css.js';
-import { ColumnHeaderModal } from './ColumnHeaderModal.js';
 
 export interface ColumnHeaderProps {
   visibleColumnIndex: number;
-  onSort?: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
-  onGroupBy?: (e: CustomEvent<{ column: unknown; isGrouped: boolean }>) => void;
   onDragStart: DragEventHandler<HTMLDivElement>;
   onDragOver: DragEventHandler<HTMLDivElement>;
   onDrop: DragEventHandler<HTMLDivElement>;
@@ -64,8 +62,6 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     columnId,
     className,
     style,
-    onSort,
-    onGroupBy,
     onDragEnter,
     onDragOver,
     onDragStart,
@@ -110,19 +106,19 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     const style: CSSProperties = {};
 
     if (column.hAlign) {
-      style.textAlign = column.hAlign.toLowerCase() as any;
+      style.textAlign = column.hAlign.toLowerCase();
     }
 
-    if (column.isSorted) margin++;
-    if (column.isGrouped) margin++;
-    if (isFiltered) margin++;
+    if (column.isSorted) margin += 0.8125;
+    if (column.isGrouped) margin += 0.8125;
+    if (isFiltered) margin += 0.8125;
 
     if (margin === 0) {
       return style;
     }
 
     if (margin > 0) {
-      margin += 0.625;
+      margin += 0.75;
     }
 
     style.marginInlineEnd = `${margin}rem`;
@@ -239,24 +235,31 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
             className={classNames.iconContainer}
             data-component-name={`AnalyticalTableHeaderIconsContainer-${columnId}`}
           >
-            {isFiltered && <Icon name={iconFilter} aria-hidden />}
-            {column.isSorted && (
-              <Icon name={column.isSortedDesc ? iconSortDescending : iconSortAscending} aria-hidden />
+            {isFiltered && (
+              <Icon design={IconDesign.NonInteractive} name={iconFilter} aria-hidden className={classNames.icon} />
             )}
-            {column.isGrouped && <Icon name={iconGroup} aria-hidden />}
+            {column.isSorted && (
+              <Icon
+                design={IconDesign.NonInteractive}
+                name={column.isSortedDesc ? iconSortDescending : iconSortAscending}
+                aria-hidden
+                className={classNames.icon}
+              />
+            )}
+            {column.isGrouped && (
+              <Icon design={IconDesign.NonInteractive} name={iconGroup} aria-hidden className={classNames.icon} />
+            )}
           </div>
         </div>
-        {hasPopover && popoverOpen && (
-          <ColumnHeaderModal
-            isRtl={isRtl}
-            column={column}
-            onSort={onSort}
-            onGroupBy={onGroupBy}
-            openerRef={columnHeaderRef}
-            open={popoverOpen}
-            setPopoverOpen={setPopoverOpen}
-          />
-        )}
+        {hasPopover &&
+          popoverOpen &&
+          // render the popover and add the props to the table instance
+          column.render(RenderColumnTypes.Popover, {
+            popoverProps: {
+              openerRef: columnHeaderRef,
+              setOpen: setPopoverOpen
+            }
+          })}
       </div>
     </div>
   );

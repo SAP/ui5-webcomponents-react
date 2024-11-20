@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.3...v2.4.0) (2024-11-05)
+
+### Features
+
+- update @ui5/webcomponents to ~2.4.0 ([#6585](https://github.com/SAP/ui5-webcomponents-react/issues/6585)) ([2a4049c](https://github.com/SAP/ui5-webcomponents-react/commit/2a4049c1d5686e443a569f01d94331aa13a66c88))
+
+## [2.3.3](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.2...v2.3.3) (2024-10-31)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-cli
+
+# [2.3.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.2.0...v2.3.0) (2024-10-17)
+
+### Bug Fixes
+
+- **codemod:** correctly replace `type` of `TableRow` ([#6468](https://github.com/SAP/ui5-webcomponents-react/issues/6468)) ([659b432](https://github.com/SAP/ui5-webcomponents-react/commit/659b4324c4500e27a0a6e7695053b2094f69a860))
+
 # [2.0.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.0.0-rc.3...v2.0.0) (2024-08-23)
 
 ### chore

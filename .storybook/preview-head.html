@@ -1,6 +1,13 @@
 <style>
+  html[data-sap-theme]:not([data-sap-theme*='hc']),
+  /*fallback*/
+  html:not([data-sap-theme]) {
+    forced-color-adjust: none;
+  }
+
   body {
     font-family: var(--sapFontFamily);
+    color: var(--sapTextColor);
     background-color: var(--sapBackgroundColor);
   }
 
@@ -12,6 +19,10 @@
     .sbdocs-wrapper {
       justify-content: flex-start !important;
     }
+  }
+
+  .docs-story {
+    background-color: var(--sapBackgroundColor);
   }
 
   .sbdocs-wrapper {
@@ -69,7 +80,28 @@
   }
 
   .dynamicPageStickyContent::part(fit-content) {
-      position: static;
+    position: static;
+  }
+
+  /* table in props description (table in ArgsTable) */
+  .docblock-argstable-body table {
+    max-width: 10rem;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    text-align: center;
+  }
+  .docblock-argstable-body table th {
+    background-color: #eceff1;
+    color: #2e3438 !important;
+    border: 1px solid #dededf !important;
+    padding: 0px !important;
+    padding-block: 0.125rem !important;
+  }
+  .docblock-argstable-body table td {
+    border: 1px solid #dededf !important;
+    padding: 0px !important;
+    padding-block: 0.125rem !important;
   }
 
   /* TODO remove this workaround as soon as https://github.com/storybookjs/storybook/issues/20497 is fixed */

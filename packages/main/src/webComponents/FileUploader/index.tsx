@@ -113,6 +113,10 @@ interface FileUploaderPropTypes
    * Event is fired when the value of the file path has been changed.
    *
    * **Note:** Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<FileUploaderDomRef, FileUploaderChangeEventDetail>) => void;
 
@@ -120,6 +124,10 @@ interface FileUploaderPropTypes
    * Event is fired when the size of a file is above the `maxFileSize` property value.
    *
    * **Note:** Available since [v2.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.2.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onFileSizeExceed?: (event: Ui5CustomEvent<FileUploaderDomRef, FileUploaderFileSizeExceedEventDetail>) => void;
 }

@@ -188,7 +188,13 @@ interface DateRangePickerPropTypes
   extends DateRangePickerAttributes,
     Omit<
       CommonProps,
-      keyof DateRangePickerAttributes | 'valueStateMessage' | 'onChange' | 'onInput' | 'onValueStateChange'
+      | keyof DateRangePickerAttributes
+      | 'valueStateMessage'
+      | 'onChange'
+      | 'onClose'
+      | 'onInput'
+      | 'onOpen'
+      | 'onValueStateChange'
     > {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
@@ -209,15 +215,45 @@ interface DateRangePickerPropTypes
    * Fired when the input operation has finished by pressing Enter or on focusout.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onChange?: (event: Ui5CustomEvent<DateRangePickerDomRef, DatePickerChangeEventDetail>) => void;
+
+  /**
+   * Fired after the value-help dialog of the component is closed.
+   *
+   * **Note:** Available since [v2.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.4.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onClose?: (event: Ui5CustomEvent<DateRangePickerDomRef>) => void;
 
   /**
    * Fired when the value of the component is changed at each key stroke.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onInput?: (event: Ui5CustomEvent<DateRangePickerDomRef, DatePickerInputEventDetail>) => void;
+
+  /**
+   * Fired after the value-help dialog of the component is opened.
+   *
+   * **Note:** Available since [v2.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.4.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onOpen?: (event: Ui5CustomEvent<DateRangePickerDomRef>) => void;
 
   /**
    * Fired before the value state of the component is updated internally.
@@ -225,6 +261,10 @@ interface DateRangePickerPropTypes
    * prevented, the component will not update the value state.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onValueStateChange?: (event: Ui5CustomEvent<DateRangePickerDomRef, DatePickerValueStateChangeEventDetail>) => void;
 }
@@ -273,7 +313,7 @@ const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePick
   ],
   ['disabled', 'hideWeekNumbers', 'open', 'readonly', 'required'],
   ['valueStateMessage'],
-  ['change', 'input', 'value-state-change']
+  ['change', 'close', 'input', 'open', 'value-state-change']
 );
 
 DateRangePicker.displayName = 'DateRangePicker';

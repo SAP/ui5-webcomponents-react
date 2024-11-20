@@ -149,6 +149,10 @@ interface ComboBoxPropTypes
   valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the input operation has finished by pressing Enter, focusout or an item is selected.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<ComboBoxDomRef>) => void;
 
@@ -156,11 +160,19 @@ interface ComboBoxPropTypes
    * Fired when typing in input or clear icon is pressed.
    *
    * **Note:** filterValue property is updated, input is changed.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onInput?: (event: Ui5CustomEvent<ComboBoxDomRef>) => void;
 
   /**
    * Fired when selection is changed by user interaction
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<ComboBoxDomRef, ComboBoxSelectionChangeEventDetail>) => void;
 }

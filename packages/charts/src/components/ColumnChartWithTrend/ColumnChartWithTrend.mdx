@@ -1,6 +1,7 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Meta } from '@storybook/addon-docs';
 import * as ComponentStories from './ColumnChartWithTrend.stories';
+import LegendStory from '../../resources/LegendConfig.mdx';
 
 <Meta of={ComponentStories} />
 
@@ -15,5 +16,10 @@ import * as ComponentStories from './ColumnChartWithTrend.stories';
 ### Loading Placeholder
 
 <Canvas of={ComponentStories.LoadingPlaceholder} />
+
+<LegendStory of={ComponentStories.WithCustomLegendConfig} />
+
+<br />
+<br />
 
 <Footer />

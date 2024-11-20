@@ -46,11 +46,19 @@ interface TokenizerPropTypes
     Omit<CommonProps, keyof TokenizerAttributes | 'onSelectionChange' | 'onTokenDelete'> {
   /**
    * Fired when token selection is changed by user interaction
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<TokenizerDomRef, TokenizerSelectionChangeEventDetail>) => void;
 
   /**
    * Fired when tokens are being deleted (delete icon, delete or backspace is pressed)
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onTokenDelete?: (event: Ui5CustomEvent<TokenizerDomRef, TokenizerTokenDeleteEventDetail>) => void;
 }
@@ -84,6 +92,7 @@ interface TokenizerPropTypes
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
  * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents__.
+ * @experimental This component is availabe since 2.0 under an experimental flag and its API and behaviour are subject to change.
  */
 const Tokenizer = withWebComponent<TokenizerPropTypes, TokenizerDomRef>(
   'ui5-tokenizer',

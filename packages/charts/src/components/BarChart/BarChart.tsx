@@ -33,7 +33,7 @@ import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
 import { ChartDataLabel } from '../../internal/ChartDataLabel.js';
 import { defaultFormatter } from '../../internal/defaults.js';
-import { tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps.js';
+import { brushProps, tickLineConfig, tooltipContentStyle, tooltipFillOpacity } from '../../internal/staticProps.js';
 import { getCellColors, resolvePrimaryAndSecondaryMeasures } from '../../internal/Utils.js';
 import { XAxisTicks } from '../../internal/XAxisTicks.js';
 import { YAxisTicks } from '../../internal/YAxisTicks.js';
@@ -362,6 +362,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
             wrapperStyle={legendPosition}
+            {...chartConfig.legendConfig}
           />
         )}
         {referenceLine && (
@@ -382,14 +383,12 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             {...tooltipConfig}
           />
         )}
-        {chartConfig.zoomingTool && (
+        {!!chartConfig.zoomingTool && (
           <Brush
-            y={10}
             dataKey={primaryDimensionAccessor}
             tickFormatter={primaryDimension?.formatter}
-            stroke={ThemingParameters.sapObjectHeader_BorderColor}
-            travellerWidth={10}
-            height={20}
+            {...brushProps}
+            {...(typeof chartConfig.zoomingTool === 'object' ? chartConfig.zoomingTool : {})}
           />
         )}
         {children}

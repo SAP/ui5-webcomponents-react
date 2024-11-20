@@ -135,6 +135,10 @@ interface CarouselPropTypes
    * Fired whenever the page changes due to user interaction,
    * when the user clicks on the navigation arrows or while resizing,
    * based on the `items-per-page` property.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onNavigate?: (event: Ui5CustomEvent<CarouselDomRef, CarouselNavigateEventDetail>) => void;
 }

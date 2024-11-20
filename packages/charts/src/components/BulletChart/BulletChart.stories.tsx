@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { complexBulletDataset, tooltipConfig } from '../../resources/DemoProps.js';
+import { complexBulletDataset, legendConfig, tooltipConfig } from '../../resources/DemoProps.js';
 import { BulletChart } from './BulletChart.js';
 
 const meta = {
@@ -119,4 +119,8 @@ export const LoadingPlaceholder: Story = {
 
 export const WithCustomTooltipConfig: Story = {
   args: tooltipConfig
+};
+
+export const WithCustomLegendConfig: Story = {
+  args: legendConfig
 };

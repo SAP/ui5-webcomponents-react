@@ -36,6 +36,10 @@ interface ShellBarItemPropTypes
    * Fired, when the item is pressed.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onClick?: (event: Ui5CustomEvent<ShellBarItemDomRef, ShellBarItemClickEventDetail>) => void;
 }

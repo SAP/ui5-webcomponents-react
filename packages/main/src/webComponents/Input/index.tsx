@@ -194,6 +194,10 @@ interface InputPropTypes
   valueStateMessage?: UI5WCSlotsNode;
   /**
    * Fired when the input operation has finished by pressing Enter or on focusout.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
@@ -201,6 +205,10 @@ interface InputPropTypes
    * Fired when the suggestions picker is closed.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
@@ -209,6 +217,10 @@ interface InputPropTypes
    * and when a suggestion item has been selected.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onInput?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
@@ -216,6 +228,10 @@ interface InputPropTypes
    * Fired when the suggestions picker is open.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onOpen?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
@@ -223,6 +239,10 @@ interface InputPropTypes
    * Fired when some text has been selected.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelect?: (event: Ui5CustomEvent<InputDomRef>) => void;
 
@@ -231,6 +251,10 @@ interface InputPropTypes
    * as a preview, before the final selection.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<InputDomRef, InputSelectionChangeEventDetail>) => void;
 }

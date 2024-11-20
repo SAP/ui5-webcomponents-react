@@ -17,6 +17,10 @@ interface ColorPalettePropTypes extends ColorPaletteAttributes, Omit<CommonProps
   children?: ReactNode | ReactNode[];
   /**
    * Fired when the user selects a color.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onItemClick?: (event: Ui5CustomEvent<ColorPaletteDomRef, ColorPaletteItemClickEventDetail>) => void;
 }

@@ -67,11 +67,19 @@ interface ColorPalettePopoverPropTypes
    * Fired when the `ColorPalettePopover` is closed due to user interaction.
    *
    * **Note:** Available since [v1.21.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.21.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClose?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef>) => void;
 
   /**
    * Fired when the user selects a color.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onItemClick?: (event: Ui5CustomEvent<ColorPalettePopoverDomRef, ColorPalettePopoverItemClickEventDetail>) => void;
 }

@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.3...v2.4.0) (2024-11-05)
+
+### Bug Fixes
+
+- **AnalyticalTable:** remove unnecessary `aria-expanded` ([#6587](https://github.com/SAP/ui5-webcomponents-react/issues/6587)) ([a74ffbc](https://github.com/SAP/ui5-webcomponents-react/commit/a74ffbcecb54ca376775b1d50e80c3c82d99b17b)), closes [#6516](https://github.com/SAP/ui5-webcomponents-react/issues/6516)
+- **deps:** update dependency recharts to v2.13.3 ([#6582](https://github.com/SAP/ui5-webcomponents-react/issues/6582)) ([96096c7](https://github.com/SAP/ui5-webcomponents-react/commit/96096c7e5b0b1fc5864da864ee1270f2b20445dc))
+
+### Features
+
+- **AnalyticalTable:** allow passing custom header popovers ([#6576](https://github.com/SAP/ui5-webcomponents-react/issues/6576)) ([03d973e](https://github.com/SAP/ui5-webcomponents-react/commit/03d973e344e4552b1c320731cb65ffa1c68c9426))
+- update @ui5/webcomponents to ~2.4.0 ([#6585](https://github.com/SAP/ui5-webcomponents-react/issues/6585)) ([2a4049c](https://github.com/SAP/ui5-webcomponents-react/commit/2a4049c1d5686e443a569f01d94331aa13a66c88))
+
+### Reverts
+
+- Revert "chore: lerna force-publish" ([e947895](https://github.com/SAP/ui5-webcomponents-react/commit/e9478956b79d2a8399fd911c13f38267b5c5b1b2))
+
+## [2.3.3](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.2...v2.3.3) (2024-10-31)
+
+### Bug Fixes
+
+- **AnalyticalTable - TypeScript:** correct typing for `onRowClick` and accessor function ([#6520](https://github.com/SAP/ui5-webcomponents-react/issues/6520)) ([c838d80](https://github.com/SAP/ui5-webcomponents-react/commit/c838d80c34b7a8295e2948b97a97175462b26f66)), closes [#6519](https://github.com/SAP/ui5-webcomponents-react/issues/6519)
+- **AnalyticalTable:** calculate column width correctly when grouping ([#6568](https://github.com/SAP/ui5-webcomponents-react/issues/6568)) ([1a5a024](https://github.com/SAP/ui5-webcomponents-react/commit/1a5a024e0735a515d1f9f2c314995386ebff3324)), closes [#6534](https://github.com/SAP/ui5-webcomponents-react/issues/6534)
+- **compat:** use deep import paths for `main` imports ([#6554](https://github.com/SAP/ui5-webcomponents-react/issues/6554)) ([d432c5e](https://github.com/SAP/ui5-webcomponents-react/commit/d432c5e54b3f216e3252584f6cae8cec1720bdfb))
+- **deps:** update dependency recharts to v2.13.1 ([#6482](https://github.com/SAP/ui5-webcomponents-react/issues/6482)) ([8d4b364](https://github.com/SAP/ui5-webcomponents-react/commit/8d4b3648a23315b5f8237dbe129bfbeb575a7746))
+- **deps:** update dependency recharts to v2.13.2 ([#6574](https://github.com/SAP/ui5-webcomponents-react/issues/6574)) ([fcd3ee2](https://github.com/SAP/ui5-webcomponents-react/commit/fcd3ee2a976777c6a7fd701ac8425b887ebb37e1))
+
+## [2.3.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.1...v2.3.2) (2024-10-23)
+
+### Bug Fixes
+
+- **compat:** update `@ui5/webcomponents-react` peer-dep ([#6541](https://github.com/SAP/ui5-webcomponents-react/issues/6541)) ([f6db6f7](https://github.com/SAP/ui5-webcomponents-react/commit/f6db6f7aa626da78a481d926396f8aeb7fed7729)), closes [#6540](https://github.com/SAP/ui5-webcomponents-react/issues/6540)
+- **ObjectPage:** support section selection in iframe ([#6535](https://github.com/SAP/ui5-webcomponents-react/issues/6535)) ([ca82fcb](https://github.com/SAP/ui5-webcomponents-react/commit/ca82fcb69c1b753202d490f35405ca88d6dce36c))
+- **Toolbar - compat:** announce number of items in overflow popover ([#6545](https://github.com/SAP/ui5-webcomponents-react/issues/6545)) ([60411d6](https://github.com/SAP/ui5-webcomponents-react/commit/60411d65ddc97d28fb444b320f6c26651a1aa467)), closes [#5926](https://github.com/SAP/ui5-webcomponents-react/issues/5926)
+
+## [2.3.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.0...v2.3.1) (2024-10-17)
+
+### Bug Fixes
+
+- **charts:** update `@ui5/webcomponents-react` peer-dependencies ([#6509](https://github.com/SAP/ui5-webcomponents-react/issues/6509)) ([21f1d39](https://github.com/SAP/ui5-webcomponents-react/commit/21f1d396fc69f11af522b160906ffbcf4734e64d))
+- export all ui5 web components from root ([#6512](https://github.com/SAP/ui5-webcomponents-react/issues/6512)) ([36b4652](https://github.com/SAP/ui5-webcomponents-react/commit/36b4652b0126c2fea942cdf684822a226ab93af5))
+
+# [2.3.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.2.0...v2.3.0) (2024-10-17)
+
+### Bug Fixes
+
+- **AnalyticalTable:** border styles ([#6506](https://github.com/SAP/ui5-webcomponents-react/issues/6506)) ([76b925b](https://github.com/SAP/ui5-webcomponents-react/commit/76b925b4859843bee355840044a1f9acf7a0df9d)), closes [#6477](https://github.com/SAP/ui5-webcomponents-react/issues/6477)
+- **codemod:** correctly replace `type` of `TableRow` ([#6468](https://github.com/SAP/ui5-webcomponents-react/issues/6468)) ([659b432](https://github.com/SAP/ui5-webcomponents-react/commit/659b4324c4500e27a0a6e7695053b2094f69a860))
+- **FilterBar:** add tooltip for list-view SegmentedButtonItem ([#6501](https://github.com/SAP/ui5-webcomponents-react/issues/6501)) ([5348750](https://github.com/SAP/ui5-webcomponents-react/commit/5348750dde72758c3dbb4d2366091669b829d63d)), closes [#6496](https://github.com/SAP/ui5-webcomponents-react/issues/6496)
+- **FilterBar:** show FilterBar buttons if `hideToolbar` is active ([#6464](https://github.com/SAP/ui5-webcomponents-react/issues/6464)) ([65d48a5](https://github.com/SAP/ui5-webcomponents-react/commit/65d48a5223d3f421f8eb24eff7ce46d9fa91c066)), closes [#6461](https://github.com/SAP/ui5-webcomponents-react/issues/6461)
+- **ObjectPage:** improve selection & scroll behavior ([#6492](https://github.com/SAP/ui5-webcomponents-react/issues/6492)) ([2e09839](https://github.com/SAP/ui5-webcomponents-react/commit/2e09839cab8f2394ce4531edb155d7717f3ff0ce)), closes [#6478](https://github.com/SAP/ui5-webcomponents-react/issues/6478)
+- **ObjectPageSubSection:** update styles to latest specs ([#6494](https://github.com/SAP/ui5-webcomponents-react/issues/6494)) ([40a180a](https://github.com/SAP/ui5-webcomponents-react/commit/40a180a1c4539d549ace8adc8121e3a6be97257c)), closes [#5850](https://github.com/SAP/ui5-webcomponents-react/issues/5850)
+- **Ui5DomRef - TypeScript:** update types ([#6471](https://github.com/SAP/ui5-webcomponents-react/issues/6471)) ([464f2fd](https://github.com/SAP/ui5-webcomponents-react/commit/464f2fd7870cd116fcb75aa31858c4d2065a921c))
+
+### Features
+
+- **charts:** allow configuring the `zoomingTool` ([#6489](https://github.com/SAP/ui5-webcomponents-react/issues/6489)) ([4d3f4fc](https://github.com/SAP/ui5-webcomponents-react/commit/4d3f4fc255024ee0f629c8cdbad67df292bb6fbc))
+- **charts:** allow configuring the internal `Legend` component ([#6493](https://github.com/SAP/ui5-webcomponents-react/issues/6493)) ([1bc98f9](https://github.com/SAP/ui5-webcomponents-react/commit/1bc98f91c638b60fb05ab45b5d1dd30532eccd77)), closes [#5777](https://github.com/SAP/ui5-webcomponents-react/issues/5777)
+- **charts:** allow rechart's `accessibilityLayer` prop ([#6459](https://github.com/SAP/ui5-webcomponents-react/issues/6459)) ([6de7aa7](https://github.com/SAP/ui5-webcomponents-react/commit/6de7aa71102ed46471607e67c46f413fcde0fd42)), closes [#6446](https://github.com/SAP/ui5-webcomponents-react/issues/6446)
+- **cypress-commands:** add `findToolbarButtonByText ` query ([#6463](https://github.com/SAP/ui5-webcomponents-react/issues/6463)) ([d16a334](https://github.com/SAP/ui5-webcomponents-react/commit/d16a33480c55e9bfae7eb968d3722b0af8b1d968))
+
 # [2.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.1...v2.2.0) (2024-10-04)
 
 ### Bug Fixes

@@ -317,8 +317,13 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     }
   }, [safeChildrenWithFavorites]);
 
-  // todo: this applies if `readOnly` is set to `false` as well since the value is read via data-attribute and is therefore a string not a boolean
-  const showSaveBtn = dirtyState && !Object.prototype.hasOwnProperty.call(selectedVariant, 'readOnly');
+  //todo: selectedVariant type needs to be enhanced for React19 (data attributes: true => "", false => "false")
+  const showSaveBtn =
+    dirtyState &&
+    selectedVariant &&
+    (typeof selectedVariant?.readOnly === 'string'
+      ? selectedVariant.readOnly !== '' && selectedVariant.readOnly === 'false'
+      : !selectedVariant.readOnly);
 
   return (
     <div className={variantManagementClasses} style={style} {...rest} ref={ref}>

@@ -1,6 +1,6 @@
 'use client';
 
-import type { CommonProps } from '@ui5/webcomponents-react';
+import type { CommonProps } from '@ui5/webcomponents-react/dist/types/CommonProps.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef } from 'react';

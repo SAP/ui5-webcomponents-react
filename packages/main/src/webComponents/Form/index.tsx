@@ -45,8 +45,8 @@ interface FormAttributes {
    * - `S` - 1 column by default (1 column is recommended)
    * - `M` - 1 column by default (up to 2 columns are recommended)
    * - `L` - 2 columns by default (up to 3 columns are recommended)
-   * - `XL` - 2 columns by default (up to 6 columns  are recommended)
-   * @default "S1 M1 L2 XL2"
+   * - `XL` - 3 columns by default (up to 6 columns  are recommended)
+   * @default "S1 M1 L2 XL3"
    */
   layout?: string;
 }
@@ -104,7 +104,7 @@ interface FormPropTypes extends FormAttributes, Omit<CommonProps, keyof FormAttr
  * - **S** (< 600px) – 1 column is recommended (default: 1)
  * - **M** (600px - 1022px) – up to 2 columns are recommended (default: 1)
  * - **L** (1023px - 1439px) - up to 3 columns are recommended (default: 2)
- * - **XL** (> 1439px) – up to 6 columns are recommended (default: 2)
+ * - **XL** (> 1439px) – up to 6 columns are recommended (default: 3)
  *
  * To change the layout, use the `layout` property - f.e. layout="S1 M2 L3 XL6".
  *
@@ -156,6 +156,7 @@ interface FormPropTypes extends FormAttributes, Omit<CommonProps, keyof FormAttr
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
  * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents__.
+ * @experimental This component is availabe since 2.0 under an experimental flag and its API and behaviour are subject to change.
  */
 const Form = withWebComponent<FormPropTypes, FormDomRef>(
   'ui5-form',

@@ -1,0 +1,34 @@
+import { Canvas } from '@storybook/addon-docs';
+
+### With Custom Legend Config
+
+Via the `chartConfig.legendConfig` property you can override the configuration object for the internally used `recharts` Legend component.
+You can find all possible configuration properties [here](https://recharts.org/en-US/api/Legend).
+
+<Canvas of={props.of} />
+
+<details>
+
+<summary>Show example `legendConfig`</summary>
+
+```js
+legendConfig: {
+  align: 'right',
+  iconSize: 20,
+  iconType: 'diamond',
+  formatter: (value, entry, index) => {
+    if (value === 'Users') {
+      return <span>{value}🐱</span>;
+    }
+    return value;
+  },
+  wrapperStyle: {
+    border: '5px solid',
+    borderImage: 'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet) 1',
+    padding: '5px',
+    borderRadius: '8px'
+  }
+}
+```
+
+</details>

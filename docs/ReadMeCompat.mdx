@@ -1,0 +1,11 @@
+import { Footer, TableOfContent } from '@sb/components';
+import { Markdown, Meta } from '@storybook/blocks';
+import ReadMe from '../packages/compat/README.md?raw';
+
+<Meta title="Legacy Components / Docs" />
+
+<TableOfContent />
+
+<Markdown>{ReadMe.split('## Documentation')[0].trim()}</Markdown>
+
+<Footer />

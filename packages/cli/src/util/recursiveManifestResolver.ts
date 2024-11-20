@@ -24,7 +24,8 @@ const EXCLUDED_MEMBERS = new Set([
   'onEnterDOM',
   'onExitDOM',
   'onInvalidation',
-  'getStaticAreaItemDomRef'
+  'getStaticAreaItemDomRef',
+  'fireDecoratorEvent'
 ]);
 
 function mergeArraysWithoutDuplicates(currentValues: any[], newValue: any) {

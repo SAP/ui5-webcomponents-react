@@ -1,6 +1,7 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Meta } from '@storybook/addon-docs';
 import TooltipStory from '../../resources/TooltipConfig.mdx';
+import LegendStory from '../../resources/LegendConfig.mdx';
 import * as ComponentStories from './ColumnChart.stories';
 
 <Meta of={ComponentStories} />
@@ -63,5 +64,10 @@ You can set a reference line to any value by using the `referenceLine` `chartCon
 <Canvas of={ComponentStories.WithHighlightedMeasure} />
 
 <TooltipStory of={ComponentStories.WithCustomTooltipConfig} />;
+
+<LegendStory of={ComponentStories.WithCustomLegendConfig} />
+
+<br />
+<br />
 
 <Footer />

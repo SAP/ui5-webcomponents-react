@@ -11,8 +11,3 @@ export const getSectionById = (sections, id) => {
     );
   });
 };
-
-export const extractSectionIdFromHtmlId = (id: string) => {
-  if (!id) return null;
-  return id.replace(/^ObjectPageSection-/, '');
-};

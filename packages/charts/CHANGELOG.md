@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.3...v2.4.0) (2024-11-05)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.13.3 ([#6582](https://github.com/SAP/ui5-webcomponents-react/issues/6582)) ([96096c7](https://github.com/SAP/ui5-webcomponents-react/commit/96096c7e5b0b1fc5864da864ee1270f2b20445dc))
+
+### Features
+
+- update @ui5/webcomponents to ~2.4.0 ([#6585](https://github.com/SAP/ui5-webcomponents-react/issues/6585)) ([2a4049c](https://github.com/SAP/ui5-webcomponents-react/commit/2a4049c1d5686e443a569f01d94331aa13a66c88))
+
+## [2.3.3](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.2...v2.3.3) (2024-10-31)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.13.1 ([#6482](https://github.com/SAP/ui5-webcomponents-react/issues/6482)) ([8d4b364](https://github.com/SAP/ui5-webcomponents-react/commit/8d4b3648a23315b5f8237dbe129bfbeb575a7746))
+- **deps:** update dependency recharts to v2.13.2 ([#6574](https://github.com/SAP/ui5-webcomponents-react/issues/6574)) ([fcd3ee2](https://github.com/SAP/ui5-webcomponents-react/commit/fcd3ee2a976777c6a7fd701ac8425b887ebb37e1))
+
+## [2.3.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.0...v2.3.1) (2024-10-17)
+
+### Bug Fixes
+
+- **charts:** update `@ui5/webcomponents-react` peer-dependencies ([#6509](https://github.com/SAP/ui5-webcomponents-react/issues/6509)) ([21f1d39](https://github.com/SAP/ui5-webcomponents-react/commit/21f1d396fc69f11af522b160906ffbcf4734e64d))
+
+# [2.3.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.2.0...v2.3.0) (2024-10-17)
+
+### Features
+
+- **charts:** allow configuring the `zoomingTool` ([#6489](https://github.com/SAP/ui5-webcomponents-react/issues/6489)) ([4d3f4fc](https://github.com/SAP/ui5-webcomponents-react/commit/4d3f4fc255024ee0f629c8cdbad67df292bb6fbc))
+- **charts:** allow configuring the internal `Legend` component ([#6493](https://github.com/SAP/ui5-webcomponents-react/issues/6493)) ([1bc98f9](https://github.com/SAP/ui5-webcomponents-react/commit/1bc98f91c638b60fb05ab45b5d1dd30532eccd77)), closes [#5777](https://github.com/SAP/ui5-webcomponents-react/issues/5777)
+- **charts:** allow rechart's `accessibilityLayer` prop ([#6459](https://github.com/SAP/ui5-webcomponents-react/issues/6459)) ([6de7aa7](https://github.com/SAP/ui5-webcomponents-react/commit/6de7aa71102ed46471607e67c46f413fcde0fd42)), closes [#6446](https://github.com/SAP/ui5-webcomponents-react/issues/6446)
+
 # [2.2.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.1.1...v2.2.0) (2024-10-04)
 
 ### Bug Fixes

@@ -20,6 +20,16 @@ interface RangeSliderAttributes {
   disabled?: boolean;
 
   /**
+   *
+   * Indicates whether input fields should be used as tooltips for the handles.
+   *
+   * **Note:** Setting this option to true will only work if showTooltip is set to true.
+   * **Note:** In order for the component to comply with the accessibility standard, it is recommended to set the editableTooltip property to true.
+   * @default false
+   */
+  editableTooltip?: boolean;
+
+  /**
    * Defines end point of a selection - position of a second handle on the slider.
    * @default 100
    */
@@ -93,11 +103,19 @@ interface RangeSliderPropTypes
     Omit<CommonProps, keyof RangeSliderAttributes | 'onChange' | 'onInput'> {
   /**
    * Fired when the value changes and the user has finished interacting with the slider.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<RangeSliderDomRef>) => void;
 
   /**
    * Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onInput?: (event: Ui5CustomEvent<RangeSliderDomRef>) => void;
 }
@@ -149,7 +167,7 @@ interface RangeSliderPropTypes
 const RangeSlider = withWebComponent<RangeSliderPropTypes, RangeSliderDomRef>(
   'ui5-range-slider',
   ['accessibleName', 'endValue', 'labelInterval', 'max', 'min', 'name', 'startValue', 'step'],
-  ['disabled', 'showTickmarks', 'showTooltip'],
+  ['disabled', 'editableTooltip', 'showTickmarks', 'showTooltip'],
   [],
   ['change', 'input']
 );

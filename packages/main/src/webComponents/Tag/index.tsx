@@ -87,6 +87,10 @@ interface TagPropTypes extends TagAttributes, Omit<CommonProps, keyof TagAttribu
    * **Note:** The event will be fired if the `interactive` property is `true`
    *
    * **Note:** Available since [v1.22.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.22.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClick?: (event: Ui5CustomEvent<TagDomRef>) => void;
 }

@@ -44,7 +44,7 @@ switch (command) {
     const createWrapperModule = await import('../scripts/create-wrappers/main.js');
 
     const outDir = resolve(process.cwd(), values.out!);
-    // eslint-disable-next-line @typescript-eslint/await-thenable
+
     await createWrapperModule.default(packageName!, outDir, { additionalComponentNote });
     break;
   }
@@ -117,7 +117,7 @@ switch (command) {
       process.exit(1);
     }
     const codemod = await import('../scripts/codemod/main.js');
-    await codemod.default(values.transform!, values.src!, values.typescript!);
+    await codemod.default(values.transform!, values.src!, values.typescript);
     break;
   }
   default:

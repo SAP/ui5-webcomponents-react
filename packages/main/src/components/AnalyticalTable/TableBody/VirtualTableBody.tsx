@@ -10,13 +10,14 @@ import type {
   TableInstance,
   TriggerScrollState
 } from '../types/index.js';
+import { RenderColumnTypes } from '../types/index.js';
 import { getSubRowsByString } from '../util/index.js';
 import { EmptyRow } from './EmptyRow.js';
 import { RowSubComponent as SubComponent } from './RowSubComponent.js';
 
 interface VirtualTableBodyProps {
   classes: Record<string, string>;
-  prepareRow: (row: unknown) => void;
+  prepareRow: TableInstance['prepareRow'];
   rows: TableInstance['rows'];
   isTreeTable?: AnalyticalTablePropTypes['isTreeTable'];
   internalRowHeight: number;
@@ -191,7 +192,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             : rowVirtualizer.measureElement;
 
         return (
-          // eslint-disable-next-line react/jsx-key
           <div
             key={key}
             {...rowProps}
@@ -245,15 +245,15 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   ...directionStyles
                 }
               };
-              let contentToRender;
+              let contentToRender: RenderColumnTypes;
               if (
                 cell.column.id === '__ui5wcr__internal_highlight_column' ||
                 cell.column.id === '__ui5wcr__internal_selection_column' ||
                 cell.column.id === '__ui5wcr__internal_navigation_column'
               ) {
-                contentToRender = 'Cell';
+                contentToRender = RenderColumnTypes.Cell;
               } else if (isTreeTable || (!alwaysShowSubComponent && RowSubComponent)) {
-                contentToRender = 'Expandable';
+                contentToRender = RenderColumnTypes.Expandable;
               } else if (
                 cell.isGrouped ||
                 (manualGroupBy &&
@@ -261,24 +261,23 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   getSubRowsByString(subRowsKey, row.original) != null &&
                   cell.value !== undefined)
               ) {
-                contentToRender = 'Grouped';
+                contentToRender = RenderColumnTypes.Grouped;
               } else if (cell.isAggregated) {
-                contentToRender = 'Aggregated';
+                contentToRender = RenderColumnTypes.Aggregated;
               } else if (cell.isPlaceholder) {
-                contentToRender = 'RepeatedValue';
+                contentToRender = RenderColumnTypes.RepeatedValue;
               } else {
-                contentToRender = 'Cell';
+                contentToRender = RenderColumnTypes.Cell;
               }
 
               return (
-                // eslint-disable-next-line react/jsx-key
                 <div
                   key={key}
                   {...allCellProps}
                   data-selection-cell={cell.column.id === '__ui5wcr__internal_selection_column'}
                 >
                   {popInRowHeight !== internalRowHeight && popInColumn.id === cell.column.id
-                    ? cell.render('PopIn', { contentToRender, internalRowHeight })
+                    ? cell.render(RenderColumnTypes.PopIn, { contentToRender, internalRowHeight })
                     : cell.render(contentToRender, isNavigatedCell === true ? { isNavigatedCell } : {})}
                 </div>
               );

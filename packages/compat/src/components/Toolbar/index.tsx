@@ -1,16 +1,12 @@
 'use client';
 
 import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
-import type { ButtonPropTypes, CommonProps, PopoverDomRef, ToggleButtonPropTypes } from '@ui5/webcomponents-react';
-import { SHOW_MORE } from '@ui5/webcomponents-react/dist/i18n/i18n-defaults.js';
 import { flattenFragments } from '@ui5/webcomponents-react/dist/internal/utils.js';
-import {
-  debounce,
-  useI18nBundle,
-  useIsomorphicLayoutEffect,
-  useStylesheet,
-  useSyncRef
-} from '@ui5/webcomponents-react-base';
+import type { CommonProps } from '@ui5/webcomponents-react/dist/types/CommonProps.js';
+import type { ButtonPropTypes } from '@ui5/webcomponents-react/dist/webComponents/Button/index.js';
+import type { PopoverDomRef } from '@ui5/webcomponents-react/dist/webComponents/Popover/index.js';
+import type { ToggleButtonPropTypes } from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
+import { debounce, useIsomorphicLayoutEffect, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ElementType, HTMLAttributes, ReactElement, ReactNode, Ref, RefObject } from 'react';
 import {
@@ -175,9 +171,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const overflowContentRef = useRef(null);
   const overflowBtnRef = useRef(null);
   const [minWidth, setMinWidth] = useState('0');
-
-  const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
-  const showMoreText = i18nBundle.getText(SHOW_MORE);
 
   const toolbarClasses = clsx(
     classNames.outerContainer,
@@ -412,7 +405,6 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
             portalContainer={portalContainer}
             overflowContentRef={overflowContentRef}
             numberOfAlwaysVisibleItems={numberOfAlwaysVisibleItems}
-            showMoreText={showMoreText}
             overflowButton={overflowButton}
             setIsMounted={setIsPopoverMounted}
             a11yConfig={a11yConfig}

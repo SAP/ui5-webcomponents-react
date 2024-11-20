@@ -60,6 +60,10 @@ interface ProductSwitchItemPropTypes
   /**
    * Fired when the `ProductSwitchItem` is activated either with a
    * click/tap or by using the Enter or Space key.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onClick?: (event: Ui5CustomEvent<ProductSwitchItemDomRef>) => void;
 }

@@ -50,6 +50,10 @@ interface SegmentedButtonPropTypes
   children?: ReactNode | ReactNode[];
   /**
    * Fired when the selected item changes.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
    */
   onSelectionChange?: (event: Ui5CustomEvent<SegmentedButtonDomRef, SegmentedButtonSelectionChangeEventDetail>) => void;
 }

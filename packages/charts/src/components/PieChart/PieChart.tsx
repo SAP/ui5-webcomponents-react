@@ -240,7 +240,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       const hideDataLabel =
         typeof measure.hideDataLabel === 'function' ? measure.hideDataLabel(props) : measure.hideDataLabel;
       if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
-      return Pie.renderLabelLineItem({}, props);
+      return Pie.renderLabelLineItem({}, props, undefined);
     },
     [chartConfig.activeSegment, measure.hideDataLabel]
   );
@@ -330,6 +330,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
             wrapperStyle={legendWrapperStyle}
+            {...chartConfig.legendConfig}
           />
         )}
         {children}

@@ -150,6 +150,10 @@ interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttr
    * or by using the Enter key.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
    */
   onClick?: (event: Ui5CustomEvent<LinkDomRef, LinkClickEventDetail>) => void;
 }

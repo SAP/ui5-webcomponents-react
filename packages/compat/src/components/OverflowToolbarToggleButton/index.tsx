@@ -1,7 +1,10 @@
 'use client';
 
-import type { ToggleButtonDomRef, ToggleButtonPropTypes } from '@ui5/webcomponents-react';
-import { ToggleButton } from '@ui5/webcomponents-react';
+import { ToggleButton } from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
+import type {
+  ToggleButtonDomRef,
+  ToggleButtonPropTypes
+} from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
 import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { useOverflowPopoverContext } from '../../internal/OverflowPopoverContext.js';

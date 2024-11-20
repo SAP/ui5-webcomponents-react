@@ -5,6 +5,7 @@ import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-ar
 import { CssSizeVariables, useCurrentTheme, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { Button, Icon } from '../../../../webComponents/index.js';
+import { RenderColumnTypes } from '../../types/index.js';
 import { classNames, styleData } from './Expandable.module.css.js';
 
 const getPadding = (level) => {
@@ -51,7 +52,6 @@ export const Expandable = (props) => {
               title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
               style={{ ...rowProps.style, paddingInlineStart: paddingLeft }}
               className={classNames.container}
-              aria-expanded={row.isExpanded}
               aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
             >
               {shouldRenderButton ? (
@@ -85,7 +85,7 @@ export const Expandable = (props) => {
           )}
         </>
       )}
-      {cell.render('Cell')}
+      {cell.render(RenderColumnTypes.Cell)}
     </>
   );
 };
