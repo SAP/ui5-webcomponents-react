@@ -61,6 +61,8 @@ const booleanProps = {
  *
  * __Note:__ On the user interface, variants are generally referred to as "views".
  *
+ * __Note:__ Each `VariantManagement` component can only have one default and one selected variant.
+ *
  * ### Matching header styles
  *
  * To ensure consistent header styles for different use-cases of the `VariantManagement`, we recommend setting the following styles to the `ui5-title` component:
