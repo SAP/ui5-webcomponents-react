@@ -27,17 +27,17 @@ import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } 
 import { stopPropagation } from '../../internal/stopPropagation.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
-import type { ResponsivePopoverDomRef } from '../../webComponents/index.js';
-import {
-  Bar,
-  Button,
-  Icon,
-  IllustratedMessage,
-  Input,
-  List,
-  ResponsivePopover,
-  Title
-} from '../../webComponents/index.js';
+import { Bar } from '../../webComponents/Bar/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import { IllustratedMessage } from '../../webComponents/IllustratedMessage/index.js';
+import { Input } from '../../webComponents/Input/index.js';
+import type { ListPropTypes } from '../../webComponents/List/index.js';
+import { List } from '../../webComponents/List/index.js';
+import type { ListItemStandardDomRef } from '../../webComponents/ListItemStandard/index.js';
+import type { ResponsivePopoverDomRef } from '../../webComponents/ResponsivePopover/index.js';
+import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
+import { Title } from '../../webComponents/Title/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import type { ManageViewsDialogPropTypes } from './ManageViewsDialog.js';
 import { ManageViewsDialog } from './ManageViewsDialog.js';
@@ -310,8 +310,13 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     setSelectedSaveViewInputProps(selectedChild?.props.saveViewInputProps ?? {});
   }, [selectedVariant, safeChildren]);
 
-  const handleVariantItemSelect = (e) => {
-    setSelectedVariant({ ...e.detail.selectedItems[0].dataset, variantItem: e.detail.selectedItems[0] });
+  const handleVariantItemSelect: ListPropTypes['onSelectionChange'] = (e) => {
+    const targetItem = e.detail.targetItem as unknown as ListItemStandardDomRef;
+    const dataset = targetItem.dataset as unknown as SelectedVariantWithStringBool;
+    setSelectedVariant({
+      ...dataset,
+      variantItem: targetItem
+    });
     selectVariantEventRef.current = e;
     if (closeOnItemSelect) {
       handleClose();
@@ -375,7 +380,8 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     <div className={variantManagementClasses} style={style} {...rest} ref={ref}>
       <VariantManagementContext.Provider
         value={{
-          selectVariantItem: setSelectedVariant
+          selectVariantItem: setSelectedVariant,
+          selectedVariant
         }}
       >
         <FlexBox onClick={disabled ? undefined : handleOpenVariantManagement}>

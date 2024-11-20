@@ -4,7 +4,7 @@ import { useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef, useContext, useEffect } from 'react';
 import { VariantManagementContext } from '../../internal/VariantManagementContext.js';
-import type { InputPropTypes } from '../../webComponents/index.js';
+import type { InputPropTypes } from '../../webComponents/Input/index.js';
 import type { ListItemStandardDomRef, ListItemStandardPropTypes } from '../../webComponents/ListItemStandard/index.js';
 import { ListItemStandard } from '../../webComponents/ListItemStandard/index.js';
 import { classNames, styleData } from './VariantItem.module.css.js';
@@ -12,6 +12,8 @@ import { classNames, styleData } from './VariantItem.module.css.js';
 export interface VariantItemPropTypes extends Pick<ListItemStandardPropTypes, 'accessibleName' | 'selected'> {
   /**
    * The name of the variant.
+   *
+   * __Note:__ Variant names must be unique.
    */
   children: string;
   /**
@@ -92,7 +94,7 @@ const VariantItem = forwardRef<ListItemStandardDomRef, VariantItemPropTypes>((pr
 
   useStylesheet(styleData, VariantItem.displayName);
 
-  const { selectVariantItem } = useContext(VariantManagementContext);
+  const { selectVariantItem, selectedVariant } = useContext(VariantManagementContext);
   const [componentRef, consolidatedRef] = useSyncRef<ListItemStandardDomRef>(ref);
   useEffect(() => {
     if (selected) {
@@ -118,6 +120,7 @@ const VariantItem = forwardRef<ListItemStandardDomRef, VariantItemPropTypes>((pr
       data-read-only={readOnly}
       data-children={children}
       data-hide-delete={hideDelete}
+      selected={selectedVariant?.children === children}
     />
   );
 });

@@ -168,7 +168,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
 
     useEffect(() => {
       if (waitForDefine && !isDefined) {
-        customElements.whenDefined(Component as unknown as string).then(() => {
+        void customElements.whenDefined(Component as unknown as string).then(() => {
           setIsDefined(true);
           definedWebComponents.add(Component);
         });
