@@ -7,7 +7,6 @@ import {
   List,
   ListPropTypes,
   ResponsivePopover,
-  ResponsivePopoverDomRef,
   ShellBar,
   ShellBarItem,
   ShellBarItemPropTypes,
@@ -66,7 +65,7 @@ export function AppShellBar() {
         className={classes.popover}
         open={popoverOpen}
         opener={popoverOpenerRef.current}
-        onClose={(e) => {
+        onClose={() => {
           setPopoverOpen(false);
         }}
       >
