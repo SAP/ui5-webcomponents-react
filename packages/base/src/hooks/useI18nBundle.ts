@@ -1,8 +1,7 @@
 'use client';
 
 import I18nBundle from '@ui5/webcomponents-base/dist/i18nBundle.js';
-import { useEffect } from 'react';
-import { useSyncExternalStore } from 'use-sync-external-store/shim/index.js';
+import { useEffect, useSyncExternalStore } from 'react';
 import { I18nStore } from '../stores/I18nStore.js';
 
 const defaultBundle = new I18nBundle('defaultBundle');

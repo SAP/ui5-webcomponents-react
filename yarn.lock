@@ -5499,13 +5499,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/use-sync-external-store@npm:^0.0.6":
-  version: 0.0.6
-  resolution: "@types/use-sync-external-store@npm:0.0.6"
-  checksum: 10c0/77c045a98f57488201f678b181cccd042279aff3da34540ad242f893acc52b358bd0a8207a321b8ac09adbcef36e3236944390e2df4fcedb556ce7bb2a88f2a8
-  languageName: node
-  linkType: hard
-
 "@types/uuid@npm:^9.0.1":
   version: 9.0.7
   resolution: "@types/uuid@npm:9.0.7"
@@ -5932,8 +5925,6 @@ __metadata:
 "@ui5/webcomponents-react-base@workspace:packages/base, @ui5/webcomponents-react-base@workspace:~":
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react-base@workspace:packages/base"
-  dependencies:
-    use-sync-external-store: "npm:1.2.2"
   peerDependencies:
     "@types/react": "*"
     "@ui5/webcomponents-base": ~2.4.0
@@ -21223,7 +21214,6 @@ __metadata:
     "@types/node": "npm:^22.0.0"
     "@types/react": "npm:^18.3.4"
     "@types/react-dom": "npm:^18.3.0"
-    "@types/use-sync-external-store": "npm:^0.0.6"
     "@ui5/webcomponents": "npm:2.4.0"
     "@ui5/webcomponents-compat": "npm:2.4.0"
     "@ui5/webcomponents-fiori": "npm:2.4.0"

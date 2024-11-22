@@ -1,9 +1,8 @@
 'use client';
 
 import type { RefObject } from 'react';
-import { createRef } from 'react';
+import { createRef, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
-import { useSyncExternalStore } from 'use-sync-external-store/shim/index.js';
 import { getRandomId } from '../../internal/getRandomId.js';
 import { ModalStore } from '../../internal/ModalStore.js';
 import type {
