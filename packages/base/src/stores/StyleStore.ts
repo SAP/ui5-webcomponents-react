@@ -39,9 +39,14 @@ function getSnapshot(): IStyleStore {
 
 function subscribe(listener: () => void) {
   const listeners = getListeners();
-  STORE_LOCATION[getStyleStoreListenersSymbol()] = [...listeners, listener];
+  listeners.push(listener);
+
   return () => {
-    STORE_LOCATION[getStyleStoreListenersSymbol()] = listeners.filter((l) => l !== listener);
+    const updatedListeners = getListeners();
+    const index = updatedListeners.indexOf(listener);
+    if (index !== -1) {
+      updatedListeners.splice(index, 1);
+    }
   };
 }
 
