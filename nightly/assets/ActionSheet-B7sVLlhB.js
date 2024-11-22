@@ -1,0 +1,55 @@
+import{j as t}from"./jsx-runtime-D6fbYt3N.js";import{useMDXComponents as i}from"./index-DyCphG7h.js";import{ae as p,af as m}from"./index-BONqOCaG.js";import"./index-CCF_Nqfq.js";import"./index-BhaByJkE.js";import{C as s}from"./ControlsWithNote-CcF6JAss.js";import{D as c}from"./DocsHeader-DUikn_Nq.js";import{F as a}from"./CommandsAndQueries-CNQmhHYv.js";import"./index-DysCNOs_.js";import"./WrappingType-CW8URInd.js";import"./Title-CfsRC4A5.js";import{C as h,D as e}from"./ActionSheet.stories-CHNW2Xru.js";import"./iframe-CTs8Pz9c.js";import"../sb-preview/runtime.js";import"./index-C4cLd1FO.js";import"./index-BcsOxL0D.js";import"./index-DrFu-skq.js";import"./withWebComponent-De1aKRdZ.js";import"./utils-D0KbkLTK.js";import"./useIsomorphicLayoutEffect-m1Y1SyRb.js";import"./slot-_4yKMUwC.js";import"./event-BX8i4Y_x.js";import"./i18n-DEVDpFvK.js";import"./decline-BQlFLB9d.js";import"./Icon-D5-_6Id1.js";import"./Keys-DoZifIQ_.js";import"./parameters-bundle.css-R51uC6BG.js";import"./i18n-defaults-neJWcM66.js";import"./information-jop4MMmq.js";import"./alert-DvgF7qhQ.js";import"./class-map-Bnbjx3OQ.js";import"./Button-KJt5TdaB.js";import"./AriaLabelHelper-C5uDZewF.js";import"./willShowContent-CZcfsNXp.js";import"./Tooltips-BtcFvs45.js";import"./i18n-defaults-CMHHS2wK.js";import"./TagDesign-Dou_yO3g.js";import"./utils-QKZ-mxNl.js";import"./main-Dcm2jhNK.js";import"./index-5MeDKPL8.js";import"./Tag-MITF22Wo.js";import"./sys-help-2-dTYFqJDl.js";import"./index-DU6jDF7S.js";import"./Popover-CjT0D3fA.js";import"./PopupsCommon.css-Bz-EF7PV.js";import"./FocusableElements-CRBMDNv2.js";import"./isElementHidden-B4HqmI2E.js";import"./isElementClickable-0ACQ4G_A.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-BehhMu6Y.js";import"./MediaRange-Bnzt26Xb.js";import"./style-map-D6VK90q7.js";import"./getEffectiveScrollbarStyle-C9nZ6DfS.js";import"./index-ARMOpZ_f.js";import"./Link-Dgxh_lXY.js";import"./chunk-NUUEMKO5-C6dgnm8E.js";import"./client-CqEfiX9M.js";import"./copy-DbIR3NTj.js";import"./copy-DL61w25d.js";import"./clsx-B-dksMZM.js";import"./GitHub-Mark-DLtQKbjK.js";import"./TableOfContent-DRym89KV.js";import"./index-B909JfrX.js";import"./I18nStore-QcXEI0Jp.js";import"./useStylesheet-BMLFWDRT.js";import"./index-1INTtoj2.js";import"./index-D2qI6nMR.js";import"./Label-VsV_UpQE.js";import"./index-BwHAVSFf.js";import"./index-ZkmNu-JV.js";import"./addCustomCSSWithScoping-BPWKraku.js";import"./index-CIk6P_fC.js";import"./BusyIndicator-DW1-q5Ls.js";import"./index-CAmAWMmr.js";import"./index-D8X14Ybw.js";import"./Avatar-Kl9ImEjS.js";import"./employee-BzTDAMVi.js";import"./accept-PVFuYmDa.js";import"./decline-CPcwsXc0.js";import"./delete-oYWhfq3O.js";import"./i18n-defaults-BSOEW30O.js";import"./index-9K_HSZx-.js";import"./ResponsivePopover-DwtnX3dS.js";import"./Dialog-DUHeHLP-.js";import"./ValueState-Bg0UWejw.js";function r(n){const o={code:"code",h2:"h2",p:"p",pre:"pre",strong:"strong",...i(),...n.components};return t.jsxs(t.Fragment,{children:[t.jsx(p,{of:h}),`
+`,t.jsx(c,{subComponents:["Button"]}),`
+`,t.jsx("br",{}),`
+`,t.jsx(o.h2,{id:"example",children:"Example"}),`
+`,t.jsx(m,{of:e}),`
+`,t.jsx(o.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(s,{of:e}),`
+`,t.jsx(o.h2,{id:"opening-actionsheets",children:"Opening ActionSheets"}),`
+`,t.jsx("br",{}),`
+`,t.jsxs(o.p,{children:["You can open and close the ",t.jsx(o.code,{children:"ActionSheet"})," component in a declarative way using the ",t.jsx(o.code,{children:"open"})," and ",t.jsx(o.code,{children:"opener"})," prop."]}),`
+`,t.jsx(o.pre,{children:t.jsx(o.code,{className:"language-tsx",children:`const MyComponentWithActionSheet = () => {
+  const [actionSheetIsOpen, setActionSheetIsOpen] = useState(false);
+  return (
+    <>
+      <Button
+        id={'openActionSheetBtn'}
+        onClick={() => {
+          setActionSheetIsOpen(true);
+        }}
+      >
+        Open Action Sheet
+      </Button>
+      <ActionSheet
+        opener={'openActionSheetBtn'}
+        open={actionSheetIsOpen}
+        onClose={() => {
+          setActionSheetIsOpen(false);
+        }}
+      />
+    </>
+  );
+};
+`})}),`
+`,t.jsx(o.p,{children:t.jsxs(o.strong,{children:["Opening an ",t.jsx(o.code,{children:"ActionSheet"})," by reference"]})}),`
+`,t.jsxs(o.p,{children:["The ",t.jsx(o.code,{children:"ActionSheet"})," exposes a way to pass a reference of an element instead of an ",t.jsx(o.code,{children:"id"})," to the ",t.jsx(o.code,{children:"opener"}),` prop.
+You can do that by e.g. leveraging a React Ref.`]}),`
+`,t.jsx(o.pre,{children:t.jsx(o.code,{className:"language-jsx",children:`const ActionSheetComponent = () => {
+  const buttonRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const handleOpenerClick = (e) => {
+    setOpen((prev) => !prev);
+  };
+  return (
+    <>
+      <Button ref={buttonRef} onClick={handleOpenerClick}>
+        Opener
+      </Button>
+      <ActionSheet opener={buttonRef.current} open={open}>
+        {/* Content */}
+      </ActionSheet>
+    </>
+  );
+};
+`})}),`
+`,t.jsx(a,{})]})}function Tt(n={}){const{wrapper:o}={...i(),...n.components};return o?t.jsx(o,{...n,children:t.jsx(r,{...n})}):r(n)}export{Tt as default};
