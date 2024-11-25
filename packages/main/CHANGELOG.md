@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.14](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.13...v1.29.14) (2024-11-25)
+
+### Bug Fixes
+
+- **AnalyticalTable:** update column header icons to align with latest spec ([#6598](https://github.com/SAP/ui5-webcomponents-react/issues/6598)) ([b630a80](https://github.com/SAP/ui5-webcomponents-react/commit/b630a80fa08a0306eb852d9aebbda9a81a3f31ac))
+- **MessageViewButton:** add default tooltip & aria-label ([#6597](https://github.com/SAP/ui5-webcomponents-react/issues/6597)) ([5127134](https://github.com/SAP/ui5-webcomponents-react/commit/5127134df7e426dba88857c9f2d43ec0d00f0f0f)), closes [#6594](https://github.com/SAP/ui5-webcomponents-react/issues/6594)
+
 ## [1.29.13](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.12...v1.29.13) (2024-10-23)
 
 ### Bug Fixes

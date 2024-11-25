@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.14](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.13...v1.29.14) (2024-11-25)
+
+### Bug Fixes
+
+- **StyleStore:** fix stale reference leading to memory leak ([#6651](https://github.com/SAP/ui5-webcomponents-react/issues/6651)) ([b51cb24](https://github.com/SAP/ui5-webcomponents-react/commit/b51cb2465f48fc63fe3ecf68615f54699d023c86)), closes [#6649](https://github.com/SAP/ui5-webcomponents-react/issues/6649)
+
 ## [1.29.11](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.10...v1.29.11) (2024-09-24)
 
 ### Bug Fixes
