@@ -2442,8 +2442,8 @@ __metadata:
   linkType: hard
 
 "@cypress/code-coverage@npm:^3.10.0":
-  version: 3.13.6
-  resolution: "@cypress/code-coverage@npm:3.13.6"
+  version: 3.13.7
+  resolution: "@cypress/code-coverage@npm:3.13.7"
   dependencies:
     "@cypress/webpack-preprocessor": "npm:^6.0.0"
     chalk: "npm:4.1.2"
@@ -2460,7 +2460,7 @@ __metadata:
     babel-loader: ^8.3 || ^9
     cypress: "*"
     webpack: ^4 || ^5
-  checksum: 10c0/2b4407c7edcbf6a8e83d963ebf5c99b6506c2c96f62e18df6cd0addae54b0b4f9abfc180e720b673cd0ad6ba5dbaa4e03dda0ec9b36035bcf2d338979a312511
+  checksum: 10c0/a69fd76a3686763ac26f5991168f06f942780fd9edd16ab53c3e22c276b79321079a5a43efcb26b574f9e2029e9eb40f44432c4b7402b60a7d81e12b7c7bde44
   languageName: node
   linkType: hard
 
@@ -5295,20 +5295,20 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:^22.0.0":
-  version: 22.9.0
-  resolution: "@types/node@npm:22.9.0"
+  version: 22.9.3
+  resolution: "@types/node@npm:22.9.3"
   dependencies:
     undici-types: "npm:~6.19.8"
-  checksum: 10c0/3f46cbe0a49bab4ba30494025e4c8a6e699b98ac922857aa1f0209ce11a1313ee46e6808b8f13fe5b8b960a9d7796b77c8d542ad4e9810e85ef897d5593b5d51
+  checksum: 10c0/954ec72bf29436ea62425a9563914a9c1e93f97b18194acd51d74d13998a701977547ed2985ed3a0e97211b785436d28377116e5f613bfcf3182d9bd81d784dc
   languageName: node
   linkType: hard
 
 "@types/node@npm:^18.0.0":
-  version: 18.19.64
-  resolution: "@types/node@npm:18.19.64"
+  version: 18.19.65
+  resolution: "@types/node@npm:18.19.65"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/a54009cd222f5751c903e5f4889a0f12e3d3755a1f87ce919455eeaf00a9ba0c9215c4a92bc3d8df585a894fa3e4cf218e5afccced355688624133e1a4b88235
+  checksum: 10c0/9c093f13749dccd16a3e9cd17080db057d1e94cb5205a871d2818ad51ec19d7d392a7c12a11661c6a6f4404cbd85b19d09ab6c564a4763cab2ff5bb0e198617d
   languageName: node
   linkType: hard
 
@@ -10624,16 +10624,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-storybook@npm:0.11.0":
-  version: 0.11.0
-  resolution: "eslint-plugin-storybook@npm:0.11.0"
+"eslint-plugin-storybook@npm:0.11.1":
+  version: 0.11.1
+  resolution: "eslint-plugin-storybook@npm:0.11.1"
   dependencies:
     "@storybook/csf": "npm:^0.1.11"
     "@typescript-eslint/utils": "npm:^8.8.1"
     ts-dedent: "npm:^2.2.0"
   peerDependencies:
     eslint: ">=6"
-  checksum: 10c0/e132d67942fe9f826dbeda5023f8483a71d59dea135d53196dc20132c405aba0155f7dca51f443ed05097287864294f7c9b332771d123e7f6609a0571440b61e
+  checksum: 10c0/0520018311c6da25fe2d0db24a59e99ecefe74c4cadd4eba42ce3b1b0ce2c3cc6f88d48680389374f99e10151a7ef3da52386853d9d5a4058c41ae72e2184549
   languageName: node
   linkType: hard
 
@@ -12626,11 +12626,11 @@ __metadata:
   linkType: hard
 
 "husky@npm:^9.0.6":
-  version: 9.1.6
-  resolution: "husky@npm:9.1.6"
+  version: 9.1.7
+  resolution: "husky@npm:9.1.7"
   bin:
     husky: bin.js
-  checksum: 10c0/705673db4a247c1febd9c5df5f6a3519106cf0335845027bb50a15fba9b1f542cb2610932ede96fd08008f6d9f49db0f15560509861808b0031cdc0e7c798bac
+  checksum: 10c0/35bb110a71086c48906aa7cd3ed4913fb913823715359d65e32e0b964cb1e255593b0ae8014a5005c66a68e6fa66c38dcfa8056dbbdfb8b0187c0ffe7ee3a58f
   languageName: node
   linkType: hard
 
@@ -21232,7 +21232,7 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.2.1"
     eslint-plugin-react: "npm:^7.37.1"
     eslint-plugin-react-hooks: "npm:beta"
-    eslint-plugin-storybook: "npm:0.11.0"
+    eslint-plugin-storybook: "npm:0.11.1"
     glob: "npm:^11.0.0"
     globals: "npm:^15.10.0"
     husky: "npm:^9.0.6"
@@ -21732,8 +21732,8 @@ __metadata:
   linkType: hard
 
 "vite-tsconfig-paths@npm:^5.0.0":
-  version: 5.1.2
-  resolution: "vite-tsconfig-paths@npm:5.1.2"
+  version: 5.1.3
+  resolution: "vite-tsconfig-paths@npm:5.1.3"
   dependencies:
     debug: "npm:^4.1.1"
     globrex: "npm:^0.1.2"
@@ -21743,7 +21743,7 @@ __metadata:
   peerDependenciesMeta:
     vite:
       optional: true
-  checksum: 10c0/7db445b6b1f48e7b89f39f5eb8cf4ea645994f581fcc7c9fac721e0c36f8203c0770007ec27825caa6e2566e3127b2b1bfe8be28ca05cd0e9fb67a2943dcdec5
+  checksum: 10c0/fb7480efa31fd50439f4a12c91bc953e5cc09d69fdc7eeb6ffff7cc796bc2c1f2c617c3abfdcbf5d7414848076cea9deb60bc002142f93b6e3131e5458760710
   languageName: node
   linkType: hard
 
