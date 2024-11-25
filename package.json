@@ -79,7 +79,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "beta",
-    "eslint-plugin-storybook": "0.11.0",
+    "eslint-plugin-storybook": "0.11.1",
     "glob": "^11.0.0",
     "globals": "^15.10.0",
     "husky": "^9.0.6",
@@ -121,5 +121,5 @@
       "lcov"
     ]
   },
-  "packageManager": "yarn@4.5.1"
+  "packageManager": "yarn@4.5.2"
 }
