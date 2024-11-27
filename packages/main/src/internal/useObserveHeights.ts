@@ -101,7 +101,7 @@ export const useObserveHeights = (
       headerContentResizeObserver.disconnect();
     };
   }, [isIntersecting]);
-  const anchorBarHeight = anchorBarRef?.current?.offsetHeight ?? 33;
+  const anchorBarHeight = anchorBarRef?.current?.offsetHeight ?? 0;
   const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
 
   return { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight, headerCollapsed };
