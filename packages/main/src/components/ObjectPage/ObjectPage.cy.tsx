@@ -289,10 +289,11 @@ describe('ObjectPage', () => {
     cy.realPress('ArrowDown');
     cy.wait(500);
     cy.realPress('ArrowDown');
+    cy.wait(500);
     cy.realPress('ArrowDown');
+    cy.wait(500);
     cy.realPress('Enter');
-    cy.wait(200);
-    cy.realPress('Enter');
+    cy.wait(500);
     cy.findByText('Job Relationship').should('be.visible');
 
     cy.mount(
@@ -366,8 +367,12 @@ describe('ObjectPage', () => {
     cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
     cy.wait(500);
     cy.realPress('ArrowDown');
+    cy.wait(500);
     cy.realPress('ArrowDown');
+    cy.wait(1000);
+
     cy.realPress('Enter');
+    cy.wait(500);
     cy.findByText('Job Relationship').should('be.visible');
     cy.findByText('Job Information').should('not.be.visible');
 
