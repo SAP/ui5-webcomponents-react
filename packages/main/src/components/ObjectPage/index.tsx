@@ -207,7 +207,12 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   } = props;
 
   useStylesheet(styleData, ObjectPage.displayName);
-  const childrenArray = safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children);
+
+  // memo necessary due to side effects triggered on each update
+  const childrenArray = useMemo(
+    () => safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children),
+    [children]
+  );
   const firstSectionId: string | undefined = childrenArray[0]?.props?.id;
 
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState<string | undefined>(
@@ -320,7 +325,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     }
   }, [image, classNames.headerImage, classNames.image, imageShapeCircle]);
 
-  const scrollToSectionById = (id?: string, isSubSection = false) => {
+  const scrollToSectionById = (id: string | undefined, isSubSection = false) => {
     const section = objectPageRef.current?.querySelector<HTMLElement>(
       `#${isSubSection ? 'ObjectPageSubSection' : 'ObjectPageSection'}-${CSS.escape(id)}`
     );
@@ -495,7 +500,8 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
           objectPage.getBoundingClientRect().bottom -
             tabContainerContainer.getBoundingClientRect().bottom -
             lastSubSectionOrSection.getBoundingClientRect().height -
-            TAB_CONTAINER_HEADER_HEIGHT
+            // padding
+            8
         );
       }
     });
@@ -522,29 +528,24 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     }
   }, []);
 
-  const handleOnSubSectionSelected = useCallback(
-    (e) => {
-      isProgrammaticallyScrolled.current = true;
-      if (mode === ObjectPageMode.IconTabBar) {
-        const sectionId = e.detail.sectionId;
-        setInternalSelectedSectionId(sectionId);
-        const sectionNodes = objectPageRef.current?.querySelectorAll(
-          'section[data-component-name="ObjectPageSection"]'
+  const handleOnSubSectionSelected = (e) => {
+    isProgrammaticallyScrolled.current = true;
+    if (mode === ObjectPageMode.IconTabBar) {
+      const sectionId = e.detail.sectionId;
+      setInternalSelectedSectionId(sectionId);
+      const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+      const currentIndex = childrenArray.findIndex((objectPageSection) => {
+        return (
+          isValidElement(objectPageSection) &&
+          (objectPageSection as ReactElement<ObjectPagePropTypes>).props?.id === sectionId
         );
-        const currentIndex = childrenArray.findIndex((objectPageSection) => {
-          return (
-            isValidElement(objectPageSection) &&
-            (objectPageSection as ReactElement<ObjectPagePropTypes>).props?.id === sectionId
-          );
-        });
-        debouncedOnSectionChange(e, currentIndex, sectionId, sectionNodes[currentIndex]);
-      }
-      const subSectionId = e.detail.subSectionId;
-      scrollTimeout.current = performance.now() + 200;
-      setSelectedSubSectionId(subSectionId);
-    },
-    [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled, children]
-  );
+      });
+      debouncedOnSectionChange(e, currentIndex, sectionId, sectionNodes[currentIndex]);
+    }
+    const subSectionId = e.detail.subSectionId;
+    scrollTimeout.current = performance.now() + 200;
+    setSelectedSubSectionId(subSectionId);
+  };
 
   const objectPageClasses = clsx(
     classNames.objectPage,
