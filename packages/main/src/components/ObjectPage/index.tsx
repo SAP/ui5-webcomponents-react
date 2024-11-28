@@ -496,12 +496,13 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       if ((currentTabModeSection && !lastSubSection) || (sectionNodes.length === 1 && !lastSubSection)) {
         setSectionSpacer(0);
       } else if (tabContainerContainer) {
+        const isTabBarMode = mode === ObjectPageMode.IconTabBar;
+        const paddingWithTabBar = isTabBarMode ? 8 : TAB_CONTAINER_HEADER_HEIGHT + 8;
         setSectionSpacer(
           objectPage.getBoundingClientRect().bottom -
             tabContainerContainer.getBoundingClientRect().bottom -
             lastSubSectionOrSection.getBoundingClientRect().height -
-            // padding
-            8
+            paddingWithTabBar
         );
       }
     });
@@ -513,7 +514,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     return () => {
       observer.disconnect();
     };
-  }, [headerCollapsed, topHeaderHeight, headerContentHeight, currentTabModeSection, children]);
+  }, [headerCollapsed, topHeaderHeight, headerContentHeight, currentTabModeSection, children, mode]);
 
   const onToggleHeaderContentVisibility = useCallback((e) => {
     isToggledRef.current = true;
