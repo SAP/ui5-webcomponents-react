@@ -434,6 +434,7 @@ describe('ObjectPage', () => {
 
     cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
     cy.get('[ui5-list]').should('be.visible');
+    cy.wait(200);
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
     cy.realPress('Enter');
