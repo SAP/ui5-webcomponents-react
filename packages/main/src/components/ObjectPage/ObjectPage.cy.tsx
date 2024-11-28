@@ -47,6 +47,78 @@ import {
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ObjectPage', () => {
+  it('dynamic children selection', () => {
+    const TestComp = () => {
+      const [state, setState] = useState<boolean>(false);
+      const [sections, add] = useReducer(
+        (prev) => [
+          ...prev,
+          <ObjectPageSection key={prev.length + 1} id={`${prev.length + 1}`} titleText={`Section ${prev.length + 1}`}>
+            <div style={{ height: `${(prev.length + 1) * 50}px` }}>Content {prev.length + 1}</div>
+          </ObjectPageSection>
+        ],
+        []
+      );
+      return (
+        <>
+          <button onClick={add}>Add</button>
+          <ObjectPage
+            data-testid="op"
+            style={{ height: '800px', scrollBehavior: 'auto' }}
+            titleArea={DPTitle}
+            headerArea={DPContent}
+            onSelectedSectionChange={() => {
+              setState(!state);
+            }}
+          >
+            {OPContent}
+            {sections}
+          </ObjectPage>
+        </>
+      );
+    };
+
+    cy.mount(<TestComp />);
+
+    cy.wait(100);
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
+    cy.findByText('Job Information').should('be.visible');
+
+    // add 15 sections
+    for (let i = 0; i < 15; i++) {
+      cy.findByText('Add').click();
+    }
+
+    //TabContainer overflow btn
+    cy.get('[data-ui5-stable="overflow-end"]').realClick();
+    cy.get('[ui5-list]').should('be.visible');
+    cy.wait(500);
+    // select "Section 15"
+    cy.realPress('PageDown');
+    cy.wait(500);
+    cy.realPress('Enter');
+    cy.get('[ui5-list]').should('not.be.visible');
+
+    cy.findByText('Content 15').should('be.visible');
+    cy.wait(100);
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 15').should('have.attr', 'aria-selected', 'true');
+
+    cy.findByTestId('op').scrollTo(0, 4660);
+
+    cy.findByText('Content 7').should('be.visible');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 7').should('have.attr', 'aria-selected', 'true');
+
+    cy.mount(<TestComp />);
+    // add 15 sections
+    for (let i = 0; i < 15; i++) {
+      cy.findByText('Add').click();
+    }
+    cy.findByTestId('op').scrollTo(0, 4660);
+
+    cy.findByText('Content 7').should('be.visible');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 7').should('have.attr', 'aria-selected', 'true');
+  });
+
   it('toggle header', () => {
     const toggle = cy.spy().as('toggleSpy');
     cy.mount(
@@ -963,76 +1035,6 @@ describe('ObjectPage', () => {
     cy.findByText('Content2').should('be.visible');
     cy.get('[ui5-tabcontainer]').findUi5TabByText('test2').should('have.attr', 'aria-selected', 'true');
     cy.get('[ui5-tabcontainer]').findUi5TabByText('test1').should('have.attr', 'aria-selected', 'false');
-  });
-
-  it('Dynamic children selection', () => {
-    const TestComp = () => {
-      const [state, setState] = useState<boolean>(false);
-      const [sections, add] = useReducer(
-        (prev) => [
-          ...prev,
-          <ObjectPageSection key={prev.length + 1} id={`${prev.length + 1}`} titleText={`Section ${prev.length + 1}`}>
-            <div style={{ height: `${(prev.length + 1) * 50}px` }}>Content {prev.length + 1}</div>
-          </ObjectPageSection>
-        ],
-        []
-      );
-      return (
-        <>
-          <button onClick={add}>Add</button>
-          <ObjectPage
-            data-testid="op"
-            style={{ height: '800px' }}
-            titleArea={DPTitle}
-            headerArea={DPContent}
-            onSelectedSectionChange={() => {
-              setState(!state);
-            }}
-          >
-            {OPContent}
-            {sections}
-          </ObjectPage>
-        </>
-      );
-    };
-
-    cy.mount(<TestComp />);
-    cy.wait(100);
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
-    cy.findByText('Job Information').should('be.visible');
-
-    // add 15 sections
-    for (let i = 0; i < 15; i++) {
-      cy.findByText('Add').click();
-    }
-
-    //TabContainer overflow btn
-    cy.get('[data-ui5-stable="overflow-end"]').realClick();
-    cy.wait(400);
-
-    // select "Section 15"
-    cy.realPress('PageDown');
-    cy.wait(200);
-    cy.realPress('Enter');
-    // fallback
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 15').realClick();
-    cy.findByText('Content 15').should('be.visible');
-    cy.wait(100);
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 15').should('have.attr', 'aria-selected', 'true');
-
-    cy.findByTestId('op').scrollTo(0, 4660);
-
-    cy.findByText('Content 7').should('be.visible');
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 7').should('have.attr', 'aria-selected', 'true');
-
-    cy.mount(<TestComp />);
-    // add 15 sections
-    for (let i = 0; i < 15; i++) {
-      cy.findByText('Add').click();
-    }
-    cy.findByTestId('op').scrollTo(0, 4660);
-    cy.findByText('Content 7').should('be.visible');
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 7').should('have.attr', 'aria-selected', 'true');
   });
 
   it('header spacer', () => {
