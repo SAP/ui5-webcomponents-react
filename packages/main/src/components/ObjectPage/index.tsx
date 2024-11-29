@@ -497,7 +497,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         setSectionSpacer(0);
       } else if (tabContainerContainer) {
         const footerHeight =
-          objectPageRef.current.querySelector<HTMLDivElement | undefined>('[data-component-name="ObjectPageFooter"]')
+          objectPage.querySelector<HTMLDivElement | undefined>('[data-component-name="ObjectPageFooter"]')
             ?.offsetHeight ?? 0;
 
         setSectionSpacer(
