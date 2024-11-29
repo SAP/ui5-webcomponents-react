@@ -496,13 +496,17 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       if ((currentTabModeSection && !lastSubSection) || (sectionNodes.length === 1 && !lastSubSection)) {
         setSectionSpacer(0);
       } else if (tabContainerContainer) {
-        const isTabBarMode = mode === ObjectPageMode.IconTabBar;
-        const paddingWithTabBar = isTabBarMode ? 8 : TAB_CONTAINER_HEADER_HEIGHT + 8;
+        const footerHeight =
+          objectPageRef.current.querySelector<HTMLDivElement | undefined>('[data-component-name="ObjectPageFooter"]')
+            ?.offsetHeight ?? 0;
+
         setSectionSpacer(
           objectPage.getBoundingClientRect().bottom -
             tabContainerContainer.getBoundingClientRect().bottom -
             lastSubSectionOrSection.getBoundingClientRect().height -
-            paddingWithTabBar
+            footerHeight -
+            // section padding
+            8
         );
       }
     });
