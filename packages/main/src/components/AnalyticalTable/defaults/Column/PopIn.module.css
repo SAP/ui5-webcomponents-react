@@ -10,3 +10,7 @@
   color: var(--sapContent_LabelColor);
   height: 16px;
 }
+
+.gap {
+  gap: 0.5rem;
+}

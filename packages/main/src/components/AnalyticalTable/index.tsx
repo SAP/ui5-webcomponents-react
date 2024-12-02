@@ -25,6 +25,7 @@ import {
   useTable
 } from 'react-table';
 import {
+  AnalyticalTablePopinDisplay,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableSelectionBehavior,
   AnalyticalTableSelectionMode,
@@ -43,10 +44,10 @@ import {
   LIST_NO_DATA,
   NO_DATA_FILTERED,
   SELECT_ALL,
-  SELECT_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE,
   SELECT_ALL_PRESS_SPACE,
-  UNSELECT_ALL_PRESS_SPACE
+  SELECT_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE
 } from '../../i18n/i18n-defaults.js';
 import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
 import { Text } from '../../webComponents/Text/index.js';
@@ -278,7 +279,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   } = tableInstanceRef.current;
 
   const tableState: AnalyticalTableState = tableInstanceRef.current.state;
-  const { triggerScroll } = tableState;
+  const { popInColumns, triggerScroll } = tableState;
   const isGrouped = !!tableState.groupBy.length;
 
   const noDataTextI18n = i18nBundle.getText(LIST_NO_DATA);
@@ -344,10 +345,19 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const internalRowHeight = getRowHeight(rowHeight, tableRef);
   const internalHeaderRowHeight = headerRowHeight ?? internalRowHeight;
-  const popInRowHeight =
-    tableState?.popInColumns?.length > 0
-      ? internalRowHeight + tableState.popInColumns.length * (internalRowHeight + 16)
-      : internalRowHeight;
+  const popInRowHeight = (() => {
+    if (popInColumns?.length) {
+      return popInColumns.reduce(
+        (acc, cur) =>
+          cur.popinDisplay === AnalyticalTablePopinDisplay.Block
+            ? acc + internalRowHeight + 16 // 16px for Header
+            : acc + internalRowHeight,
+        internalRowHeight
+      );
+    } else {
+      return internalRowHeight;
+    }
+  })();
 
   const internalVisibleRowCount = tableState.visibleRows ?? visibleRows;
 

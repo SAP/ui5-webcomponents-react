@@ -1,20 +1,28 @@
-import type { ReactTableHooks, TableInstance } from '../types/index.js';
+import { AnalyticalTablePopinDisplay } from '../../../enums/AnalyticalTablePopinDisplay.js';
+import type { AnalyticalTableState, ReactTableHooks } from '../types/index.js';
 
-const popInVisibleColumnsDeps = (deps, { instance: { state } }: { instance: TableInstance }) => [
+const popInVisibleColumnsDeps: ReactTableHooks['visibleColumnsDeps'][0] = (deps, { instance: { state } }) => [
   ...deps,
   state.tableClientWidth
 ];
 
-const popInVisibleColumns = (cols, { instance }: { instance: TableInstance }) => {
+const popInVisibleColumns: ReactTableHooks['visibleColumns'][0] = (cols, { instance }) => {
   const { state, dispatch } = instance;
 
   const tableClientWidth = state.isScrollable
     ? state?.tableClientWidth + 13 /*scrollbar width*/
     : state?.tableClientWidth;
 
-  const popInColumns = cols
-    .filter((item) => item.responsivePopIn && tableClientWidth < item.responsiveMinWidth)
-    .map((item) => ({ id: item.id ?? item.accessor, column: item }));
+  const popInColumns: AnalyticalTableState['popInColumns'] = cols
+    .filter((item) => {
+      return item.responsivePopIn && tableClientWidth < item.responsiveMinWidth;
+    })
+    .map((item) => ({
+      id: item.id ?? item.accessor,
+      column: item,
+      // initially visibleColumns don't include the defaults
+      popinDisplay: item.popinDisplay || AnalyticalTablePopinDisplay.Block
+    }));
 
   dispatch({ type: 'SET_POPIN_COLUMNS', payload: popInColumns });
 
@@ -31,3 +39,5 @@ export const usePopIn = (hooks: ReactTableHooks) => {
   hooks.visibleColumns.push(popInVisibleColumns);
   hooks.visibleColumnsDeps.push(popInVisibleColumnsDeps);
 };
+
+usePopIn.pluginName = 'usePopIn';

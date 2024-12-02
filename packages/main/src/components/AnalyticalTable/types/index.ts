@@ -1,7 +1,8 @@
 import type { ScrollToOptions } from '@tanstack/react-virtual';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { ComponentType, Dispatch, MutableRefObject, ReactNode, Ref, SetStateAction } from 'react';
+import type { ComponentType, DependencyList, Dispatch, MutableRefObject, ReactNode, Ref, SetStateAction } from 'react';
 import type {
+  AnalyticalTablePopinDisplay,
   AnalyticalTableScaleWidthMode,
   AnalyticalTableScrollMode,
   AnalyticalTableSelectionBehavior,
@@ -75,8 +76,8 @@ export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> 
 export interface TableInstance {
   allColumns?: ColumnType[];
   allColumnsHidden?: boolean;
-  columns?: ColumnType[];
-  data?: Record<string, any>[];
+  columns: ColumnType[];
+  data: Record<string, any>[];
   defaultColumn?: Record<string, any>;
   disableFilters?: boolean;
   disableGlobalFilter?: boolean;
@@ -132,7 +133,7 @@ export interface TableInstance {
   preSortedRows?: RowType[];
   prepareRow?: (row: RowType) => void;
   resetResizing?: any;
-  rows?: RowType[];
+  rows: RowType[];
   rowsById?: Record<string, RowType>;
   selectSubRows?: boolean;
   selectedFlatRows?: RowType[];
@@ -146,7 +147,7 @@ export interface TableInstance {
   sortTypes?: Record<string, any>;
   sortedFlatRows?: Record<string, RowType>[];
   sortedRows?: Record<string, RowType>[];
-  state?: AnalyticalTableState & Record<string, any>;
+  state: AnalyticalTableState & Record<string, any>;
   stateReducer?: (
     state: TableInstance['state'],
     action: any,
@@ -170,9 +171,9 @@ export interface TableInstance {
     startIndex: number;
     endIndex: number;
   };
-  visibleColumns?: ColumnType[];
+  visibleColumns: ColumnType[];
   visibleColumnsWidth?: number[];
-  webComponentsReactProperties?: WCRPropertiesType;
+  webComponentsReactProperties: WCRPropertiesType;
   [key: string]: any;
 }
 
@@ -247,50 +248,16 @@ export interface ScrollToRefType {
   scrollToOffset: (item: number, options: Omit<ScrollToOptions, 'smoothScroll'>) => void;
 }
 
-export interface ReactTableHooks {
-  useOptions: any[];
-  stateReducers: any[];
-  useControlledState: any[];
-  columns: any[];
-  columnsDeps: any[];
-  allColumns: any[];
-  allColumnsDeps: any[];
-  accessValue: any[];
-  materializedColumns: any[];
-  materializedColumnsDeps: any[];
-  useInstanceAfterData: any[];
-  visibleColumns: any[];
-  visibleColumnsDeps: any[];
-  headerGroups: any[];
-  headerGroupsDeps: any[];
-  useInstanceBeforeDimensions: any[];
-  useInstance: any[];
-  prepareRow: any[];
-  getTableProps: any[];
-  getTableBodyProps: any[];
-  getHeaderGroupProps: any[];
-  getFooterGroupProps: any[];
-  getHeaderProps: any[];
-  getFooterProps: any[];
-  getRowProps: any[];
-  getCellProps: any[];
-  useFinalInstance: any[];
-  getToggleHiddenProps: any[];
-  getToggleHideAllColumnsProps: any[];
-  getGroupByToggleProps: any[];
-  getSortByToggleProps: any[];
-  getToggleAllRowsExpandedProps: any[];
-  getToggleRowExpandedProps: any[];
-  getToggleRowSelectedProps: any[];
-  getToggleAllRowsSelectedProps: any[];
-  getToggleAllPageRowsSelectedProps: any[];
-  getResizerProps: any[];
-}
-
 export interface TriggerScrollState {
   type: 'offset' | 'item';
   direction: 'vertical' | 'horizontal';
   args: [number, Omit<ScrollToOptions, 'behavior'>?];
+}
+
+interface PopInColumnsState {
+  id: string;
+  column: ColumnType;
+  popinDisplay: AnalyticalTableColumnDefinition['popinDisplay'];
 }
 
 export interface AnalyticalTableState {
@@ -305,7 +272,7 @@ export interface AnalyticalTableState {
   globalFilter?: string;
   tableClientWidth?: number;
   dndColumn?: string;
-  popInColumns?: Record<string | number, any>[];
+  popInColumns?: PopInColumnsState[];
   isRtl?: boolean;
   isScrollable?: boolean;
   subComponentsHeight?: Record<string | number, any>;
@@ -430,7 +397,7 @@ export interface AnalyticalTableColumnDefinition {
    */
   Popover?:
     | ComponentType<{ instance: TableInstanceWithPopoverProps }>
-    | ((props?: { instance: TableInstanceWithPopoverProps }) => ReactNode);
+    | ((instance: TableInstanceWithPopoverProps) => ReactNode);
 
   // useFilters
   /**
@@ -556,6 +523,13 @@ export interface AnalyticalTableColumnDefinition {
    * Custom pop-in header renderer. If set, the table will call that component for every column that is "popped-in" and pass the table instance as prop.
    */
   PopInHeader?: string | ComponentType<any> | ((props?: any) => ReactNode);
+  /**
+   * Defines the display of `AnalyticalTable` pop-ins.
+   *
+   * @default AnalyticalTablePopinDisplay.Block
+   * @since 2.5.0
+   */
+  popinDisplay?: AnalyticalTablePopinDisplay | keyof typeof AnalyticalTablePopinDisplay;
 
   //use useDragAndDrop
   /**
@@ -968,4 +942,48 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * **Note**: Use this prop with care, some properties might have an impact on the internal `AnalyticalTable` implementation.
    */
   tableInstance?: Ref<TableInstance>;
+}
+
+interface ConfigParam {
+  instance: TableInstance;
+}
+
+export interface ReactTableHooks {
+  useOptions: any[];
+  stateReducers: any[];
+  useControlledState: any[];
+  columns: ((columns: ColumnType[], config: ConfigParam) => ColumnType[])[];
+  columnsDeps: ((deps: DependencyList, config: ConfigParam) => DependencyList)[];
+  allColumns: any[];
+  allColumnsDeps: any[];
+  accessValue: any[];
+  materializedColumns: any[];
+  materializedColumnsDeps: any[];
+  useInstanceAfterData: any[];
+  visibleColumns: ((columns: ColumnType[], config: ConfigParam) => ColumnType[])[];
+  visibleColumnsDeps: ((deps: DependencyList, config: ConfigParam) => DependencyList)[];
+  headerGroups: any[];
+  headerGroupsDeps: any[];
+  useInstanceBeforeDimensions: any[];
+  useInstance: any[];
+  prepareRow: any[];
+  getTableProps: any[];
+  getTableBodyProps: any[];
+  getHeaderGroupProps: any[];
+  getFooterGroupProps: any[];
+  getHeaderProps: any[];
+  getFooterProps: any[];
+  getRowProps: any[];
+  getCellProps: any[];
+  useFinalInstance: any[];
+  getToggleHiddenProps: any[];
+  getToggleHideAllColumnsProps: any[];
+  getGroupByToggleProps: any[];
+  getSortByToggleProps: any[];
+  getToggleAllRowsExpandedProps: any[];
+  getToggleRowExpandedProps: any[];
+  getToggleRowSelectedProps: any[];
+  getToggleAllRowsSelectedProps: any[];
+  getToggleAllPageRowsSelectedProps: any[];
+  getResizerProps: any[];
 }

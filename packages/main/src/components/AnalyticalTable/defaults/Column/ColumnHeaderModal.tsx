@@ -29,10 +29,10 @@ import type { PopoverDomRef } from '../../../../webComponents/Popover/index.js';
 import { Popover } from '../../../../webComponents/Popover/index.js';
 import { Text } from '../../../../webComponents/Text/index.js';
 import { FlexBox } from '../../../FlexBox/index.js';
-import type { TableInstance } from '../../types/index.js';
+import type { TableInstanceWithPopoverProps } from '../../types/index.js';
 import { classNames, styleData } from './ColumnHeaderModal.module.css.js';
 
-export const ColumnHeaderModal = (instance: TableInstance) => {
+export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
   const { setOpen, openerRef } = instance.popoverProps;
   const { column, state, webComponentsReactProperties } = instance;
   const { isRtl, groupBy } = state;
