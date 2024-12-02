@@ -95,7 +95,7 @@ describe('FilterBar.cy.tsx', () => {
         onAfterFiltersDialogOpen(e);
       };
 
-      const handleSelectionChange = (e) => {
+      const handleSelectionChange: FilterBarPropTypes['onFiltersDialogSelectionChange'] = (e) => {
         setSelectedFilters(Array.from(e.selectedFilterKeys).join(' '));
         onFiltersDialogSelectionChange(e);
       };
