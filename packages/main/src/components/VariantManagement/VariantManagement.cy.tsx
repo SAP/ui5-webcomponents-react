@@ -1,6 +1,7 @@
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { useState } from 'react';
+import type { VariantItemPropTypes } from './VariantItem';
 import { VariantItem } from './VariantItem';
 import { WithCustomValidation as WithCustomValidationStory } from './VariantManagement.stories';
 import type { VariantManagementPropTypes } from './index.js';
@@ -434,7 +435,7 @@ describe('VariantManagement', () => {
   });
 
   it('Manage Views - render variants', () => {
-    const variantItems = [
+    const variantItems: VariantItemPropTypes[] = [
       { rowId: 'Default VariantItem', props: {} },
       { rowId: 'LabelReadOnly', props: { labelReadOnly: true } },
       { rowId: 'Favorite', props: { favorite: true } },
@@ -687,6 +688,63 @@ describe('VariantManagement', () => {
     cy.get('[data-id="VariantItem 3"] [ui5-input]').typeIntoUi5Input('C');
     cy.findByText('Save').click();
     cy.get('@saveView').should('have.been.calledOnce');
+  });
+
+  it('Programatically change selection', () => {
+    const TestComp = () => {
+      const [selected, setSelected] = useState('Item1');
+      return (
+        <>
+          <VariantManagement
+            onSelect={(e) => {
+              setSelected(e.detail.selectedVariant.children);
+            }}
+          >
+            <VariantItem selected={selected === 'Item1'}>Item1</VariantItem>
+            <VariantItem selected={selected === 'Item2'}>Item2</VariantItem>
+            <VariantItem selected={selected === 'Item3'}>Item3</VariantItem>
+            <VariantItem selected={selected === 'Item4'}>Item4</VariantItem>
+            <VariantItem selected={selected === 'Item5'}>Item5</VariantItem>
+          </VariantManagement>
+          <button
+            onClick={() => {
+              setSelected('Item3');
+            }}
+          >
+            Select Item3
+          </button>
+          <button
+            onClick={() => {
+              setSelected('Item5');
+            }}
+          >
+            Select Item5
+          </button>
+          <button
+            onClick={() => {
+              setSelected('Item1');
+            }}
+          >
+            Select Item1
+          </button>
+        </>
+      );
+    };
+    cy.mount(<TestComp />);
+
+    cy.get('[ui5-title]').contains('Item1').should('be.visible');
+    cy.findByText('Select Item3').click();
+    cy.get('[ui5-title]').contains('Item3').should('be.visible').click();
+    cy.get('[ui5-responsive-popover]').should('be.visible');
+    cy.get('[ui5-list]').contains('Item3').should('have.attr', 'selected', 'selected');
+    cy.findByText('Item1').click();
+    cy.get('[ui5-list]').contains('Item3').should('not.have.attr', 'selected');
+    cy.get('[ui5-list]').contains('Item1').should('have.attr', 'selected', 'selected');
+    cy.realPress('Escape');
+    cy.findByText('Select Item5').click();
+    cy.get('[ui5-title]').contains('Item5').should('be.visible').click();
+    cy.get('[ui5-list]').contains('Item1').should('not.have.attr', 'selected');
+    cy.get('[ui5-list]').contains('Item5').should('have.attr', 'selected', 'selected');
   });
 
   cypressPassThroughTestsFactory(VariantManagement);
