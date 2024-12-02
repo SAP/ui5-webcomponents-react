@@ -152,54 +152,6 @@
   }
 }
 
-.large {
-  font-size: 1.5rem;
-  font-family: var(--sapFontLightFamily);
-
-  [ui5-icon],
-  .icon {
-    height: 1.5rem;
-    width: 1.5rem;
-  }
-
-  .icon {
-    vertical-align: middle;
-  }
-
-  .text {
-    line-height: normal;
-    vertical-align: middle;
-  }
-
-  &.inverted {
-    font-size: 1.25rem;
-    font-family: var(--sapFontSemiboldDuplexFamily);
-    padding: 0.125rem 0.25rem;
-
-    [ui5-icon],
-    .icon {
-      height: 1.25rem;
-      width: 1.25rem;
-    }
-
-    &[data-icon-only='true'] {
-      padding: 0 0.25rem;
-      min-width: 1.75rem;
-      height: auto;
-    }
-
-    [data-icon-only='true'] {
-      height: 1.5rem;
-      width: 1.5rem;
-
-      [ui5-icon] {
-        height: 1.5rem;
-        width: 1.5rem;
-      }
-    }
-  }
-}
-
 .active {
   cursor: pointer;
 
@@ -264,6 +216,54 @@
 
   &.active:focus {
     outline: var(--sapContent_FocusColor) var(--sapContent_FocusStyle) var(--sapContent_FocusWidth);
+  }
+}
+
+.large {
+  font-size: 1.5rem;
+  font-family: var(--sapFontLightFamily);
+
+  [ui5-icon],
+  .icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .icon {
+    vertical-align: middle;
+  }
+
+  .text {
+    line-height: normal;
+    vertical-align: middle;
+  }
+
+  &.inverted {
+    font-size: 1.25rem;
+    font-family: var(--sapFontSemiboldDuplexFamily);
+    padding: 0.125rem 0.25rem;
+
+    [ui5-icon],
+    .icon {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+
+    &[data-icon-only='true'] {
+      padding: 0 0.25rem;
+      min-width: 1.75rem;
+      height: auto;
+    }
+
+    [data-icon-only='true'] {
+      height: 1.5rem;
+      width: 1.5rem;
+
+      [ui5-icon] {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
   }
 }
 
