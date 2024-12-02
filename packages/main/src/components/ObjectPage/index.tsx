@@ -38,7 +38,7 @@ const ObjectPageCssVariables = {
   titleFontSize: '--_ui5wcr_ObjectPage_title_fontsize'
 };
 
-const TAB_CONTAINER_HEADER_HEIGHT = 48;
+const TAB_CONTAINER_HEADER_HEIGHT = 44;
 
 type ObjectPageSectionType = ReactElement<ObjectPageSectionPropTypes> | boolean;
 
@@ -208,8 +208,12 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
 
   useStylesheet(styleData, ObjectPage.displayName);
 
-  const firstSectionId: string | undefined =
-    safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children)[0]?.props?.id;
+  // memo necessary due to side effects triggered on each update
+  const childrenArray = useMemo(
+    () => safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children),
+    [children]
+  );
+  const firstSectionId: string | undefined = childrenArray[0]?.props?.id;
 
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState<string | undefined>(
     selectedSectionId ?? firstSectionId
@@ -321,24 +325,33 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     }
   }, [image, classNames.headerImage, classNames.image, imageShapeCircle]);
 
-  const scrollToSectionById = (id?: string, isSubSection = false) => {
+  const scrollToSectionById = (id: string | undefined, isSubSection = false) => {
     const section = objectPageRef.current?.querySelector<HTMLElement>(
       `#${isSubSection ? 'ObjectPageSubSection' : 'ObjectPageSection'}-${CSS.escape(id)}`
     );
     scrollTimeout.current = performance.now() + 500;
     if (section) {
       const safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
-      section.style.scrollMarginBlockStart =
+
+      const scrollMargin =
+        -1 /* reduce margin-block so that intersection observer detects correct section*/ +
         safeTopHeaderHeight +
         anchorBarHeight +
         TAB_CONTAINER_HEADER_HEIGHT +
-        (headerPinned && !headerCollapsed ? headerContentHeight : 0) +
-        'px';
+        (headerPinned && !headerCollapsed ? headerContentHeight : 0);
+      section.style.scrollMarginBlockStart = scrollMargin + 'px';
       if (isSubSection) {
         section.focus();
       }
-      section.scrollIntoView();
-      section.style.scrollMarginBlockStart = '0px';
+
+      const sectionRect = section.getBoundingClientRect();
+      const objectPageElement = objectPageRef.current;
+      const objectPageRect = objectPageElement.getBoundingClientRect();
+
+      // Calculate the top position of the section relative to the container
+      objectPageElement.scrollTop = sectionRect.top - objectPageRect.top + objectPageElement.scrollTop - scrollMargin;
+
+      section.style.scrollMarginBlockStart = '';
     }
   };
 
@@ -362,11 +375,8 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       setInternalSelectedSectionId(currentId);
       prevSelectedSectionId.current = currentId;
       const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
-      const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-        return (
-          isValidElement(objectPageSection) &&
-          (objectPageSection as ReactElement<ObjectPageSectionPropTypes>).props?.id === currentId
-        );
+      const currentIndex = childrenArray.findIndex((objectPageSection) => {
+        return isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
       });
       fireOnSelectedChangedEvent({}, currentIndex, currentId, sectionNodes[0]);
     }
@@ -400,6 +410,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const handleOnSectionSelected = (targetEvent, newSelectionSectionId, index, section) => {
     isProgrammaticallyScrolled.current = true;
     debouncedOnSectionChange.cancel();
+    setSelectedSubSectionId(undefined);
     setInternalSelectedSectionId((prevSelectedSection) => {
       if (prevSelectedSection === newSelectionSectionId) {
         scrollToSection(newSelectionSectionId);
@@ -451,7 +462,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       isProgrammaticallyScrolled.current = true;
       if (mode === ObjectPageMode.IconTabBar) {
         let sectionId;
-        safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children).forEach((section) => {
+        childrenArray.forEach((section) => {
           if (isValidElement(section) && section.props && section.props.children) {
             safeGetChildrenArray(section.props.children).forEach((subSection) => {
               if (
@@ -469,7 +480,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         }
       }
     }
-  }, [props.selectedSubSectionId, children, mode]);
+  }, [props.selectedSubSectionId, childrenArray, mode]);
 
   const tabContainerContainerRef = useRef(null);
   useEffect(() => {
@@ -485,11 +496,17 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       if ((currentTabModeSection && !lastSubSection) || (sectionNodes.length === 1 && !lastSubSection)) {
         setSectionSpacer(0);
       } else if (tabContainerContainer) {
+        const footerHeight =
+          objectPage.querySelector<HTMLDivElement | undefined>('[data-component-name="ObjectPageFooter"]')
+            ?.offsetHeight ?? 0;
+
         setSectionSpacer(
           objectPage.getBoundingClientRect().bottom -
             tabContainerContainer.getBoundingClientRect().bottom -
             lastSubSectionOrSection.getBoundingClientRect().height -
-            TAB_CONTAINER_HEADER_HEIGHT
+            footerHeight -
+            // section padding
+            8
         );
       }
     });
@@ -501,7 +518,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     return () => {
       observer.disconnect();
     };
-  }, [headerCollapsed, topHeaderHeight, headerContentHeight, currentTabModeSection, children]);
+  }, [headerCollapsed, topHeaderHeight, headerContentHeight, currentTabModeSection, children, mode]);
 
   const onToggleHeaderContentVisibility = useCallback((e) => {
     isToggledRef.current = true;
@@ -516,29 +533,24 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     }
   }, []);
 
-  const handleOnSubSectionSelected = useCallback(
-    (e) => {
-      isProgrammaticallyScrolled.current = true;
-      if (mode === ObjectPageMode.IconTabBar) {
-        const sectionId = e.detail.sectionId;
-        setInternalSelectedSectionId(sectionId);
-        const sectionNodes = objectPageRef.current?.querySelectorAll(
-          'section[data-component-name="ObjectPageSection"]'
+  const handleOnSubSectionSelected = (e) => {
+    isProgrammaticallyScrolled.current = true;
+    if (mode === ObjectPageMode.IconTabBar) {
+      const sectionId = e.detail.sectionId;
+      setInternalSelectedSectionId(sectionId);
+      const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
+      const currentIndex = childrenArray.findIndex((objectPageSection) => {
+        return (
+          isValidElement(objectPageSection) &&
+          (objectPageSection as ReactElement<ObjectPagePropTypes>).props?.id === sectionId
         );
-        const currentIndex = safeGetChildrenArray(children).findIndex((objectPageSection) => {
-          return (
-            isValidElement(objectPageSection) &&
-            (objectPageSection as ReactElement<ObjectPagePropTypes>).props?.id === sectionId
-          );
-        });
-        debouncedOnSectionChange(e, currentIndex, sectionId, sectionNodes[currentIndex]);
-      }
-      const subSectionId = e.detail.subSectionId;
-      scrollTimeout.current = performance.now() + 200;
-      setSelectedSubSectionId(subSectionId);
-    },
-    [mode, setInternalSelectedSectionId, setSelectedSubSectionId, isProgrammaticallyScrolled, children]
-  );
+      });
+      debouncedOnSectionChange(e, currentIndex, sectionId, sectionNodes[currentIndex]);
+    }
+    const subSectionId = e.detail.subSectionId;
+    scrollTimeout.current = performance.now() + 200;
+    setSelectedSubSectionId(subSectionId);
+  };
 
   const objectPageClasses = clsx(
     classNames.objectPage,
@@ -594,7 +606,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     return () => {
       observer.disconnect();
     };
-  }, [children, totalHeaderHeight, setInternalSelectedSectionId, headerPinned, debouncedOnSectionChange]);
+  }, [totalHeaderHeight, headerPinned, headerCollapsed, topHeaderHeight, childrenArray.length]);
 
   const onTitleClick = (e) => {
     e.stopPropagation();
@@ -621,7 +633,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         topHeaderHeight,
         style:
           headerCollapsed === true
-            ? { position: 'absolute', visibility: 'hidden', flexShrink: 0 }
+            ? { ...headerArea.props.style, position: 'absolute', visibility: 'hidden', flexShrink: 0, insetInline: 0 }
             : { ...headerArea.props.style, flexShrink: 0 },
         headerPinned: headerPinned || scrolledHeaderExpanded,
         //@ts-expect-error: todo remove me when forwardref has been replaced
@@ -662,7 +674,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     if (isSubTab !== undefined) {
       handleOnSubSectionSelected(enrichEventWithDetails(event, { sectionId: parentId, subSectionId: sectionId }));
     } else {
-      const section = safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children).find((el) => {
+      const section = childrenArray.find((el) => {
         return el.props.id == sectionId;
       });
       handleOnSectionSelected(event, section?.props?.id, index, section);
@@ -814,7 +826,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
             data-component-name="ObjectPageTabContainer"
             className={classNames.tabContainerComponent}
           >
-            {safeGetChildrenArray<ReactElement<ObjectPageSectionPropTypes>>(children).map((section, index) => {
+            {childrenArray.map((section, index) => {
               if (!isValidElement(section) || !section.props) return null;
               const subTabs = safeGetChildrenArray<ReactElement<ObjectPageSubSectionPropTypes>>(
                 section.props.children

@@ -2,6 +2,7 @@ import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
@@ -9,6 +10,14 @@ import type { CSSProperties } from 'react';
 import { useEffect, useReducer, useRef, useState } from 'react';
 import type { ObjectPagePropTypes } from '../..';
 import {
+  CheckBox,
+  Form,
+  FormGroup,
+  FormItem,
+  Input,
+  Option,
+  Select,
+  TextArea,
   Avatar,
   Bar,
   Breadcrumbs,
@@ -38,6 +47,78 @@ import {
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ObjectPage', () => {
+  it('dynamic children selection', () => {
+    const TestComp = () => {
+      const [state, setState] = useState<boolean>(false);
+      const [sections, add] = useReducer(
+        (prev) => [
+          ...prev,
+          <ObjectPageSection key={prev.length + 1} id={`${prev.length + 1}`} titleText={`Section ${prev.length + 1}`}>
+            <div style={{ height: `${(prev.length + 1) * 50}px` }}>Content {prev.length + 1}</div>
+          </ObjectPageSection>
+        ],
+        []
+      );
+      return (
+        <>
+          <button onClick={add}>Add</button>
+          <ObjectPage
+            data-testid="op"
+            style={{ height: '800px', scrollBehavior: 'auto' }}
+            titleArea={DPTitle}
+            headerArea={DPContent}
+            onSelectedSectionChange={() => {
+              setState(!state);
+            }}
+          >
+            {OPContent}
+            {sections}
+          </ObjectPage>
+        </>
+      );
+    };
+
+    cy.mount(<TestComp />);
+
+    cy.wait(100);
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
+    cy.findByText('Job Information').should('be.visible');
+
+    // add 15 sections
+    for (let i = 0; i < 15; i++) {
+      cy.findByText('Add').click();
+    }
+
+    //TabContainer overflow btn
+    cy.get('[data-ui5-stable="overflow-end"]').realClick();
+    cy.get('[ui5-list]').should('be.visible');
+    cy.wait(500);
+    // select "Section 15"
+    cy.realPress('PageDown');
+    cy.wait(500);
+    cy.realPress('Enter');
+    cy.get('[ui5-list]').should('not.be.visible');
+
+    cy.findByText('Content 15').should('be.visible');
+    cy.wait(100);
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 15').should('have.attr', 'aria-selected', 'true');
+
+    cy.findByTestId('op').scrollTo(0, 4660);
+
+    cy.findByText('Content 7').should('be.visible');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 7').should('have.attr', 'aria-selected', 'true');
+
+    cy.mount(<TestComp />);
+    // add 15 sections
+    for (let i = 0; i < 15; i++) {
+      cy.findByText('Add').click();
+    }
+    cy.findByTestId('op').scrollTo(0, 4660);
+
+    cy.findByText('Content 7').should('be.visible');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 7').should('have.attr', 'aria-selected', 'true');
+  });
+
   it('toggle header', () => {
     const toggle = cy.spy().as('toggleSpy');
     cy.mount(
@@ -278,11 +359,8 @@ describe('ObjectPage', () => {
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
     cy.realPress('ArrowDown');
-    cy.wait(500);
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
-    cy.realPress('Enter');
-    cy.wait(200);
     cy.realPress('Enter');
     cy.findByText('Job Relationship').should('be.visible');
 
@@ -324,6 +402,8 @@ describe('ObjectPage', () => {
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
     cy.realPress('Enter');
+    // wait for scroll
+    cy.wait(200);
     cy.findByText('Job Relationship').should('be.visible');
 
     cy.findByTestId('footer').should('be.visible');
@@ -353,10 +433,12 @@ describe('ObjectPage', () => {
     cy.findByTestId('section 1').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
-    cy.wait(500);
+    cy.get('[ui5-list]').should('be.visible');
+    cy.wait(200);
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
     cy.realPress('Enter');
+    cy.wait(500);
     cy.findByText('Job Relationship').should('be.visible');
     cy.findByText('Job Information').should('not.be.visible');
 
@@ -923,6 +1005,57 @@ describe('ObjectPage', () => {
     cy.get('@cb').should('not.been.called');
   });
 
+  it('onSelectedSectionChange: React state update', () => {
+    const TestComp = () => {
+      const [state, setState] = useState(false);
+      return (
+        <ObjectPage
+          // increase test speed by setting scroll behavior to instant
+          style={{ height: '800px', scrollBehavior: 'auto' }}
+          onSelectedSectionChange={() => {
+            setState(!state);
+          }}
+        >
+          <ObjectPageSection id={'test1'} titleText={'test1'}>
+            <div style={{ height: '900px' }}>
+              <div style={{ height: '30%' }}>Content1</div>
+            </div>
+          </ObjectPageSection>
+          <ObjectPageSection id={'test2'} titleText={'test2'}>
+            <div style={{ height: '900px' }}>
+              <div style={{ height: '30%' }}>Content2</div>
+            </div>
+          </ObjectPageSection>
+        </ObjectPage>
+      );
+    };
+
+    cy.mount(<TestComp />);
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('test2').realClick();
+    cy.findByText('Content1').should('not.be.visible');
+    cy.findByText('Content2').should('be.visible');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('test2').should('have.attr', 'aria-selected', 'true');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('test1').should('have.attr', 'aria-selected', 'false');
+  });
+
+  it('header spacer', () => {
+    const TestComp = () => {
+      return (
+        <ObjectPage data-testid="op" style={{ height: '95vh' }} titleArea={DPTitle} headerArea={HeaderWithLargeForm}>
+          <ObjectPageSection id="first" titleText="First">
+            <div>First Content</div>
+          </ObjectPageSection>
+          {OPContent}
+        </ObjectPage>
+      );
+    };
+    cy.mount(<TestComp />);
+    cy.findByTestId('op').scrollTo(0, 649);
+
+    cy.wait(500);
+    cy.findByText('First Content').should('be.visible');
+  });
+
   cypressPassThroughTestsFactory(ObjectPage);
 });
 
@@ -1010,6 +1143,68 @@ const OPContent = [
     </ObjectPageSubSection>
   </ObjectPageSection>
 ];
+
+const HeaderWithLargeForm = (
+  <ObjectPageHeader>
+    <Form layout="S1 M2 L2 XL2">
+      <FormGroup headerText="Personal Data">
+        <FormItem labelContent={<Label>Name</Label>}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem labelContent={<Label>Address</Label>}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem labelContent={<Label>Country</Label>}>
+          <Select>
+            <Option>Germany</Option>
+            <Option>France</Option>
+            <Option>Italy</Option>
+          </Select>
+        </FormItem>
+        <FormItem labelContent={<Label>Additional Comment</Label>} className="formAlignLabelStart">
+          <TextArea
+            rows={5}
+            placeholder="The label is aligned to start by setting `<class>::part(label){  align-self: start; }` "
+          />
+        </FormItem>
+        <FormItem labelContent={<Label>Home address</Label>}>
+          <CheckBox checked />
+        </FormItem>
+      </FormGroup>
+      <FormGroup headerText="Company Data">
+        <FormItem labelContent={<Label>Company Name</Label>}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem labelContent={<Label>Company Address</Label>}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem labelContent={<Label>Company City</Label>}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem labelContent={<Label>Company Country</Label>}>
+          <Input type={InputType.Text} />
+        </FormItem>
+        <FormItem labelContent={<Label>Number of Employees</Label>}>
+          <Input type={InputType.Number} value="5000" disabled />
+        </FormItem>
+        <FormItem labelContent={<Label>Member of Partner Network</Label>}>
+          <CheckBox checked />
+        </FormItem>
+      </FormGroup>
+      <FormGroup headerText="Marketing Data">
+        <FormItem labelContent={<Label>Email</Label>}>
+          <Input type={InputType.Email} />
+        </FormItem>
+        <FormItem labelContent={<Label>Company Email</Label>}>
+          <Input type={InputType.Email} />
+        </FormItem>
+        <FormItem labelContent={<Label>I want to receive the newsletter</Label>}>
+          <CheckBox />
+        </FormItem>
+      </FormGroup>
+    </Form>
+  </ObjectPageHeader>
+);
 
 const Footer = (
   <Bar
