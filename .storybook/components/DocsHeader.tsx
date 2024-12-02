@@ -31,8 +31,8 @@ const Links = () => {
   const packageName = `@ui5/webcomponents-react${isChart ? '-charts' : ''}`;
   return (
     <>
-      <Link href={`https://www.npmjs.com/package/${packageName}`}>
-        <img alt="npm badge" src={`https://badgen.net/npm/v/${packageName}?icon=npm&label=&color=blue`} />
+      <Link href={`https://www.npmjs.com/package/${packageName}?activeTab=versions`}>
+        <img alt="npm badge" src={`https://badgen.net/npm/v/${packageName}/v1?icon=npm&label=&color=blue`} />
       </Link>
       &nbsp; &nbsp;
       <Link title={'View On GitHub'} href={githubUrl}>
@@ -56,7 +56,7 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
   const wcSubComponents = useGetSubComponentsOfModule(moduleName.replace('V2', ''));
   const subComps = mergeSubComponents
     ? [...(subComponents ?? []), ...(wcSubComponents ?? [])]
-    : subComponents ?? wcSubComponents;
+    : (subComponents ?? wcSubComponents);
 
   const supportsClipboardApi = typeof ClipboardItem !== 'undefined';
 
