@@ -61,23 +61,23 @@ export interface ICartesianChartConfig {
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  yAxisConfig?: Omit<YAxisProps, 'mirror' | 'ref'>;
+  yAxisConfig?: Omit<YAxisProps, 'mirror'>;
   /**
    * Defines possible configurations for the `XAxis`.
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  xAxisConfig?: Omit<XAxisProps, 'mirror' | 'ref'>;
+  xAxisConfig?: Omit<XAxisProps, 'mirror'>;
   /**
    * Defines possible configurations for the second `YAxis`.
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  secondYAxisConfig?: Omit<YAxisProps, 'mirror' | 'ref'>;
+  secondYAxisConfig?: Omit<YAxisProps, 'mirror'>;
   /**
    * Defines possible configurations for the second `YAxis`.
    *
    * __Note:__ It is possible to overwrite internally used props. Please use with caution!
    */
-  secondXAxisConfig?: Omit<XAxisProps, 'mirror' | 'ref'>;
+  secondXAxisConfig?: Omit<XAxisProps, 'mirror'>;
 }
