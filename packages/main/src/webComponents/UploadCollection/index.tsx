@@ -6,7 +6,7 @@ import type {
   UploadCollectionItemDeleteEventDetail,
   UploadCollectionSelectionChangeEventDetail
 } from '@ui5/webcomponents-fiori/dist/UploadCollection.js';
-import type { DragEventHandler, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
@@ -50,10 +50,7 @@ interface UploadCollectionDomRef extends Required<UploadCollectionAttributes>, U
 
 interface UploadCollectionPropTypes
   extends UploadCollectionAttributes,
-    Omit<
-      CommonProps,
-      keyof UploadCollectionAttributes | 'children' | 'header' | 'onDrop' | 'onItemDelete' | 'onSelectionChange'
-    > {
+    Omit<CommonProps, keyof UploadCollectionAttributes | 'children' | 'header' | 'onItemDelete' | 'onSelectionChange'> {
   /**
    * Defines the items of the `UploadCollection`.
    *
@@ -79,15 +76,6 @@ interface UploadCollectionPropTypes
    * Fired when an element is dropped inside the drag and drop overlay.
    *
    * **Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `UploadCollection`.
-   *
-   * | cancelable | bubbles |
-   * | :--------: | :-----: |
-   * | ❌|✅|
-   */
-  onDrop?: DragEventHandler<UploadCollectionDomRef>;
-
-  /**
-   * Fired when the delete button of any item is pressed.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
@@ -123,7 +111,7 @@ const UploadCollection = withWebComponent<UploadCollectionPropTypes, UploadColle
   ['accessibleName', 'noDataDescription', 'noDataText', 'selectionMode'],
   ['hideDragOverlay'],
   ['header'],
-  ['drop', 'item-delete', 'selection-change']
+  ['item-delete', 'selection-change']
 );
 
 UploadCollection.displayName = 'UploadCollection';
