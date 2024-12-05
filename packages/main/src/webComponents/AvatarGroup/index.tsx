@@ -77,7 +77,7 @@ interface AvatarGroupPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClick?: (event: Ui5CustomEvent<AvatarGroupDomRef, AvatarGroupClickEventDetail>) => void;
 
@@ -87,7 +87,7 @@ interface AvatarGroupPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onOverflow?: (event: Ui5CustomEvent<AvatarGroupDomRef>) => void;
 }

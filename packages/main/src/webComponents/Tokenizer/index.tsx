@@ -30,6 +30,14 @@ interface TokenizerAttributes {
   disabled?: boolean;
 
   /**
+   * Defines whether tokens are displayed on multiple lines.
+   *
+   * **Note:** The `multiLine` property is in an experimental state and is a subject to change.
+   * @default false
+   */
+  multiLine?: boolean;
+
+  /**
    * Defines whether the component is read-only.
    *
    * **Note:** A read-only component is not editable,
@@ -37,6 +45,14 @@ interface TokenizerAttributes {
    * @default false
    */
   readonly?: boolean;
+
+  /**
+   * Defines whether "Clear All" button is present. Ensure `multiLine` is enabled, otherwise `showClearAll` will have no effect.
+   *
+   * **Note:** The `showClearAll` property is in an experimental state and is a subject to change.
+   * @default false
+   */
+  showClearAll?: boolean;
 }
 
 interface TokenizerDomRef extends Required<TokenizerAttributes>, Ui5DomRef {}
@@ -97,7 +113,7 @@ interface TokenizerPropTypes
 const Tokenizer = withWebComponent<TokenizerPropTypes, TokenizerDomRef>(
   'ui5-tokenizer',
   ['accessibleName', 'accessibleNameRef'],
-  ['disabled', 'readonly'],
+  ['disabled', 'multiLine', 'readonly', 'showClearAll'],
   [],
   ['selection-change', 'token-delete']
 );

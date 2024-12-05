@@ -13,7 +13,7 @@ interface CardHeaderAttributes {
 
   /**
    * Defines if the component would be interactive,
-   * e.g gets hover effect, gets focus outline and `click` event is fired, when pressed.
+   * e.g gets hover effect and `click` event is fired, when pressed.
    * @default false
    */
   interactive?: boolean;

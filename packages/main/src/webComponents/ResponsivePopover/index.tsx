@@ -178,7 +178,7 @@ interface ResponsivePopoverPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ✅|✅|
+   * | ✅|❌|
    */
   onBeforeClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef, PopupBeforeCloseEventDetail>) => void;
 
@@ -189,7 +189,7 @@ interface ResponsivePopoverPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ✅|✅|
+   * | ✅|❌|
    */
   onBeforeOpen?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
 
@@ -198,7 +198,7 @@ interface ResponsivePopoverPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
 
@@ -207,7 +207,7 @@ interface ResponsivePopoverPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onOpen?: (event: Ui5CustomEvent<ResponsivePopoverDomRef>) => void;
 }

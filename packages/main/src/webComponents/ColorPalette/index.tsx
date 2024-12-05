@@ -20,7 +20,7 @@ interface ColorPalettePropTypes extends ColorPaletteAttributes, Omit<CommonProps
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onItemClick?: (event: Ui5CustomEvent<ColorPaletteDomRef, ColorPaletteItemClickEventDetail>) => void;
 }

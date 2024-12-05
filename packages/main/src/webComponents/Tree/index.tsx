@@ -17,6 +17,22 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface TreeAttributes {
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Defines the IDs of the elements that describe the component.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the accessible name of the component.
    *
    * **Note:** Available since [v1.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.8.0) of **@ui5/webcomponents**.
@@ -209,7 +225,16 @@ interface TreePropTypes
  */
 const Tree = withWebComponent<TreePropTypes, TreeDomRef>(
   'ui5-tree',
-  ['accessibleName', 'accessibleNameRef', 'footerText', 'headerText', 'noDataText', 'selectionMode'],
+  [
+    'accessibleDescription',
+    'accessibleDescriptionRef',
+    'accessibleName',
+    'accessibleNameRef',
+    'footerText',
+    'headerText',
+    'noDataText',
+    'selectionMode'
+  ],
   [],
   ['header'],
   ['item-click', 'item-delete', 'item-mouseout', 'item-mouseover', 'item-toggle', 'selection-change']
