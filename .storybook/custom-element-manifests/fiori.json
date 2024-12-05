@@ -5403,7 +5403,25 @@
               "description": "Fired, when the search button is activated.\n\n**Note:** You can prevent expanding/collapsing of the search field by calling `event.preventDefault()`.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "targetRef",
+                  "_ui5privacy": "public",
+                  "description": "dom ref of the activated element"
+                },
+                {
+                  "type": {
+                    "text": "Boolean"
+                  },
+                  "name": "searchFieldVisible",
+                  "_ui5privacy": "public",
+                  "description": "whether the search field is visible"
+                }
+              ]
             }
           ],
           "attributes": [
@@ -5604,7 +5622,17 @@
               "description": "Fired, when the item is pressed.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "targetRef",
+                  "_ui5privacy": "public",
+                  "description": "DOM ref of the clicked element"
+                }
+              ]
             }
           ],
           "attributes": [
@@ -5672,12 +5700,12 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `SideNavigation` is used as a standard menu in applications.\nIt consists of three containers: header (top-aligned), main navigation section (top-aligned) and the secondary section (bottom-aligned).\n\n - The header is meant for displaying user related information - profile data, avatar, etc.\n - The main navigation section is related to the user’s current work context\n - The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on).\n\n### Usage\n\nUse the available `ui5-side-navigation-group`, `ui5-side-navigation-item`\nand `ui5-side-navigation-sub-item` components to build your menu.\nThe items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all items on one level.\nYou must not combine entries with and without icons on the same level. We strongly recommend that you do not use icons on the second level.\n\n### Keyboard Handling\n\n### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigation.js\"`\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationGroup.js\";` (for `ui5-side-navigation-group`)\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationItem.js\";` (for `ui5-side-navigation-item`)\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js\";` (for `ui5-side-navigation-sub-item`)",
+          "description": "### Overview\n\nThe `SideNavigation` is used as a standard menu in applications.\nIt consists of three containers: header (top-aligned), main navigation section (top-aligned) and the secondary section (bottom-aligned).\n\n - The header is meant for displaying user related information - profile data, avatar, etc.\n - The main navigation section is related to the user’s current work context\n - The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on).\n\n### Usage\n\nUse the available `ui5-side-navigation-group`, `ui5-side-navigation-item`\nand `ui5-side-navigation-sub-item` components to build your menu.\nThe items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all items on one level.\nYou must not combine entries with and without icons on the same level. We strongly recommend that you do not use icons on the second level.\n\nThe `ui5-side-navigation` component is intended for use within an `ui5-navigation-layout` component.\nWhile it can function independently, it is recommended to use it with\nthe `ui5-navigation-layout` for optimal user experience.\n\n### Keyboard Handling\n\n### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigation.js\"`\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationGroup.js\";` (for `ui5-side-navigation-group`)\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationItem.js\";` (for `ui5-side-navigation-item`)\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js\";` (for `ui5-side-navigation-sub-item`)",
           "name": "SideNavigation",
           "slots": [
             {
               "name": "default",
-              "description": "Defines the main items of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component\nfor the top-level items, and the `ui5-side-navigation-sub-item` component for second-level items, nested\ninside the items.",
+              "description": "Defines the main items of the component.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<SideNavigationItemBase>",
@@ -5693,7 +5721,7 @@
             },
             {
               "name": "fixedItems",
-              "description": "Defines the fixed items at the bottom of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component\nfor the fixed items, and optionally the `ui5-side-navigation-sub-item` component to provide second-level items inside them.\n\n**Note:** In order to achieve the best user experience, it is recommended that you keep the fixed items \"flat\" (do not pass sub-items)",
+              "description": "Defines the fixed items at the bottom of the component.\n\n**Note:** In order to achieve the best user experience, it is recommended that you keep the fixed items \"flat\" (do not pass sub-items)",
               "_ui5type": {
                 "text": "Array<SideNavigationItemBase>",
                 "references": [
@@ -7388,17 +7416,6 @@
           ],
           "events": [
             {
-              "name": "drop",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "Event"
-              },
-              "description": "Fired when an element is dropped inside the drag and drop overlay.\n\n**Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `ui5-upload-collection`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
-            },
-            {
               "name": "item-delete",
               "_ui5privacy": "public",
               "type": {
@@ -7411,18 +7428,18 @@
                   }
                 ]
               },
-              "description": "Fired when the delete button of any item is pressed.",
+              "description": "Fired when an element is dropped inside the drag and drop overlay.\n\n**Note:** The `drop` event is fired only when elements are dropped within the drag and drop overlay and ignored for the other parts of the `ui5-upload-collection`.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
-                    "text": "HTMLElement"
+                    "text": "DataTransfer"
                   },
-                  "name": "item",
+                  "name": "dataTransfer",
                   "_ui5privacy": "public",
-                  "description": "The `ui5-upload-collection-item` which was deleted."
+                  "description": "The `drop` event operation data."
                 }
               ]
             },
@@ -7931,6 +7948,749 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/UserMenu.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-user-menu` is an SAP Fiori specific web component that is used in `ui5-shellbar`\nand allows the user to easily see information and settings for the current user and all other logged in accounts.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UserMenu.js\";`\n\n`import \"@ui5/webcomponents-fiori/dist/UserMenuItem.js\";` (for `ui5-user-menu-item`)",
+          "name": "UserMenu",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the menu items.",
+              "_ui5propertyName": "menuItems",
+              "_ui5type": {
+                "text": "Array<UserMenuItem>",
+                "references": [
+                  {
+                    "name": "UserMenuItem",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserMenuItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "accounts",
+              "description": "Defines the user accounts.\n\n**Note:** If one item is used, it will be shown as the selected one. If more than one item is used, the first one will be shown as selected unless\nthere is an item with `selected` property set to `true`.",
+              "_ui5type": {
+                "text": "Array<UserMenuAccount>",
+                "references": [
+                  {
+                    "name": "UserMenuAccount",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserMenuAccount.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines if the User Menu is opened.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "opener",
+              "type": {
+                "text": "HTMLElement | string | undefined"
+              },
+              "description": "Defines the ID or DOM Reference of the element at which the user menu is shown.\nWhen using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.\nYou can only set the `opener` attribute to a DOM Reference when using JavaScript.",
+              "privacy": "public",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "showManageAccount",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines if the User Menu shows the Manage Account option.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "showOtherAccounts",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines if the User Menu shows the Other Accounts option.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "showAddAccount",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines if the User Menu shows the Add Account option.",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "avatar-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the account avatar is selected.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false
+            },
+            {
+              "name": "manage-account-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the \"Manage Account\" button is selected.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false
+            },
+            {
+              "name": "add-account-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the \"Add Account\" button is selected.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false
+            },
+            {
+              "name": "change-account",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<UserMenuOtherAccountClickEventDetail>",
+                "references": [
+                  {
+                    "name": "UserMenuOtherAccountClickEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserMenu.js"
+                  }
+                ]
+              },
+              "description": "Fired when the account is switched to a different one.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": false,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "UserMenuAccount",
+                    "references": [
+                      {
+                        "name": "UserMenuAccount",
+                        "package": "@ui5/webcomponents-fiori",
+                        "module": "dist/UserMenuAccount.js"
+                      }
+                    ]
+                  },
+                  "name": "prevSelectedAccount",
+                  "_ui5privacy": "public",
+                  "description": "The previously selected account."
+                },
+                {
+                  "type": {
+                    "text": "UserMenuAccount",
+                    "references": [
+                      {
+                        "name": "UserMenuAccount",
+                        "package": "@ui5/webcomponents-fiori",
+                        "module": "dist/UserMenuAccount.js"
+                      }
+                    ]
+                  },
+                  "name": "selectedAccount",
+                  "_ui5privacy": "public",
+                  "description": "The selected account."
+                }
+              ]
+            },
+            {
+              "name": "item-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<UserMenuItemClickEventDetail>",
+                "references": [
+                  {
+                    "name": "UserMenuItemClickEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserMenu.js"
+                  }
+                ]
+              },
+              "description": "Fired when a menu item is selected.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": false,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "UserMenuItem",
+                    "references": [
+                      {
+                        "name": "UserMenuItem",
+                        "package": "@ui5/webcomponents-fiori",
+                        "module": "dist/UserMenuItem.js"
+                      }
+                    ]
+                  },
+                  "name": "item",
+                  "_ui5privacy": "public",
+                  "description": "The selected `user menu item`."
+                }
+              ]
+            },
+            {
+              "name": "sign-out-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the \"Sign Out\" button is selected.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": false
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines if the User Menu is opened.",
+              "name": "open",
+              "default": "false",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the ID or DOM Reference of the element at which the user menu is shown.\nWhen using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.\nYou can only set the `opener` attribute to a DOM Reference when using JavaScript.",
+              "name": "opener",
+              "default": "undefined",
+              "fieldName": "opener",
+              "type": {
+                "text": "string | HTMLElement | undefined"
+              }
+            },
+            {
+              "description": "Defines if the User Menu shows the Manage Account option.",
+              "name": "show-manage-account",
+              "default": "false",
+              "fieldName": "showManageAccount",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines if the User Menu shows the Other Accounts option.",
+              "name": "show-other-accounts",
+              "default": "false",
+              "fieldName": "showOtherAccounts",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines if the User Menu shows the Add Account option.",
+              "name": "show-add-account",
+              "default": "false",
+              "fieldName": "showAddAccount",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-user-menu",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.5.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserMenu",
+            "module": "dist/UserMenu.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-user-menu",
+          "declaration": {
+            "name": "UserMenu",
+            "module": "dist/UserMenu.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserMenuAccount.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-user-menu-account` represents an account in the `ui5-user-menu`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UserMenuAccount.js\";`",
+          "name": "UserMenuAccount",
+          "members": [
+            {
+              "kind": "field",
+              "name": "avatarSrc",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the avatar image url of the user.",
+              "default": "\"\"",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "avatarInitials",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the avatar initials of the user.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "titleText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the title text of the user.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "subtitleText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines additional text of the user.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines description of the user.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines if the user is selected.",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the avatar image url of the user.",
+              "name": "avatar-src",
+              "default": "\"\"",
+              "fieldName": "avatarSrc",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the avatar initials of the user.",
+              "name": "avatar-initials",
+              "default": "undefined",
+              "fieldName": "avatarInitials",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the title text of the user.",
+              "name": "title-text",
+              "default": "\"\"",
+              "fieldName": "titleText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines additional text of the user.",
+              "name": "subtitle-text",
+              "default": "\"\"",
+              "fieldName": "subtitleText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines description of the user.",
+              "name": "description",
+              "default": "\"\"",
+              "fieldName": "description",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines if the user is selected.",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-user-menu-account",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.5.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserMenuAccount",
+            "module": "dist/UserMenuAccount.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-user-menu-account",
+          "declaration": {
+            "name": "UserMenuAccount",
+            "module": "dist/UserMenuAccount.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserMenuItem.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\n`ui5-user-menu-item` is the item to use inside a `ui5-user-menu`.\nAn arbitrary hierarchy structure can be represented by recursively nesting menu items.\n\n### Usage\n\n`ui5-user-menu-item` represents a node in a `ui5-user-menu`. The user menu itself is rendered as a list,\nand each `ui5-menu-item` is represented by a menu item in that menu. Therefore, you should only use\n`ui5-user-menu-item` directly in your apps. The `ui5-menu` menu item is internal for the menu, and not intended for public use.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/UserMenuItem.js\";`",
+          "name": "UserMenuItem",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the items of this component.\n\n**Note:** Use `ui5-user-menu-item` for the intended design.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<UserMenuItem>",
+                "references": [
+                  {
+                    "name": "UserMenuItem",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserMenuItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "endContent",
+              "description": "Defines the components that should be displayed at the end of the menu item.\n\n**Note:** It is highly recommended to slot only components of type `ui5-button`,`ui5-link`\nor `ui5-icon` in order to preserve the intended design. If there are components added to this slot,\nand there is text set in `additionalText`, it will not be displayed. If there are items added to `items` slot,\nnether `additionalText` nor components added to this slot would be displayed.\n\nThe priority of what will be displayed at the end of the menu item is as follows:\nsub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.",
+              "_ui5since": "2.0.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "deleteButton",
+              "description": "Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.",
+              "_ui5since": "1.9.0",
+              "_ui5type": {
+                "text": "Array<IButton>",
+                "references": [
+                  {
+                    "name": "IButton",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "superclass": {
+            "name": "MenuItem",
+            "package": "@ui5/webcomponents",
+            "module": "dist/MenuItem.js"
+          },
+          "tagName": "ui5-user-menu-item",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.5.0",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text of the tree item.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "additionalText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the `additionalText`, displayed in the end of the menu item.\n\n**Note:** The additional text will not be displayed if there are items added in `items` slot or there are\ncomponents added to `endContent` slot.\n\nThe priority of what will be displayed at the end of the menu item is as follows:\nsub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.8.0"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\n**Example:**\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether `ui5-menu-item` is in disabled state.\n\n**Note:** A disabled `ui5-menu-item` is noninteractive.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.\n\n**Note:** If set to `true` a `ui5-busy-indicator` component will be displayed into the related one to the current `ui5-menu-item` sub-menu popover.",
+              "privacy": "public",
+              "_ui5since": "1.13.0"
+            },
+            {
+              "kind": "field",
+              "name": "loadingDelay",
+              "type": {
+                "text": "number"
+              },
+              "default": "1000",
+              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.",
+              "privacy": "public",
+              "_ui5since": "1.13.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.7.0"
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text of the tooltip for the menu item.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "ListItemAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "ListItemAccessibilityAttributes",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItem.js"
+                  }
+                ]
+              },
+              "default": "{}",
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaKeyShortcuts**: Indicated the availability of a keyboard shortcuts defined for the menu item.\n\n- **role**: Defines the role of the menu item. If not set, menu item will have default role=\"menuitem\".",
+              "privacy": "public",
+              "_ui5since": "2.1.0",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "ListItemType",
+                "references": [
+                  {
+                    "name": "ListItemType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ListItemType.js"
+                  }
+                ]
+              },
+              "default": "\"Active\"",
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "navigated",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
+              "privacy": "public",
+              "_ui5since": "1.10.0",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "highlight",
+              "type": {
+                "text": "Highlight",
+                "references": [
+                  {
+                    "name": "Highlight",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/Highlight.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "privacy": "public",
+              "_ui5since": "1.24",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Defines the selected state of the component.",
+              "default": "false",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "detail-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserMenuItem",
+            "module": "dist/UserMenuItem.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-user-menu-item",
+          "declaration": {
+            "name": "UserMenuItem",
+            "module": "dist/UserMenuItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ViewSettingsDialog.js",
       "declarations": [
         {
@@ -8150,7 +8910,7 @@
               "description": "Fired before the component is opened.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": false
             },
             {
               "name": "open",
