@@ -1,3 +1,5 @@
+import type UI5Element from '@ui5/webcomponents-base/dist/UI5Element.js';
+
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
@@ -9,12 +11,14 @@ declare global {
        * @example cy.get('[ui5-input]').typeIntoUi5Input('Hello World');
        */
       typeIntoUi5Input(text: string, options?: Partial<TypeOptions>): Chainable<Element>;
+
       /**
        * Clears a value from ui5-webcomponent that offers a typeable input field.
        *
        * @example cy.get('[ui5-input]').clearUi5Input();
        */
       clearUi5Input(options?: Partial<ClearOptions>): Chainable<Element>;
+
       /**
        * Types a value with a delay into an ui5-webcomponent that offers a typeable input field.
        *
@@ -207,12 +211,9 @@ Cypress.Commands.add('clickDropdownMenuItemByText', { prevSubject: 'element' }, 
 });
 
 Cypress.Commands.add('clickDropdownMenuItem', { prevSubject: 'element' }, (subject, options = {}) => {
-  cy.wrap(subject).then(($option) => {
-    // @ts-expect-error: ui5-webcomponent types are not bundled in
-    const domRef = $option.get(0).getDomRef();
-    cy.wrap(domRef)
-      .find('li')
-      .click({ force: true, ...options });
+  cy.wrap(subject).then(([$option]) => {
+    const domRef = ($option as UI5Element).getDomRef();
+    cy.wrap(domRef).click(options);
   });
 });
 

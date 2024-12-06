@@ -230,36 +230,47 @@ describe('UI5 Web Components - Child Commands', () => {
     });
   });
 
-  it('clickDropDownMenuItem', () => {
+  describe('clickDropDownMenuItem', () => {
     const selectItemText = 'Select me';
-    const changeSpy = cy.spy().as('change');
-    let callCounter = 1;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    let changeSpy = (e: unknown) => {};
+    const handler = (e: unknown) => {
+      changeSpy(e);
+    };
     const components = [
-      <ComboBox key="ui5-combobox" onSelectionChange={changeSpy}>
+      <Select key="ui5-select" onChange={handler}>
+        {...new Array(5).fill(<Option value="Item">Value</Option>)}
+        <Option value={selectItemText} data-testid="selectItem">
+          {selectItemText}
+        </Option>
+      </Select>,
+      <ComboBox key="ui5-combobox" onSelectionChange={handler}>
         {...new Array(5).fill(<ComboBoxItem text="Item" />)}
         <ComboBoxItem text={selectItemText} data-testid="selectItem" />
       </ComboBox>,
-      <MultiComboBox key="ui5-multi-combobox" onSelectionChange={changeSpy}>
+      <MultiComboBox key="ui5-multi-combobox" onSelectionChange={handler}>
         {...new Array(5).fill(<MultiComboBoxItem text="Item" />)}
         <MultiComboBoxItem text={selectItemText} data-testid="selectItem" />
       </MultiComboBox>
     ];
 
     components.forEach((component) => {
-      cy.mount(component);
-      cy.get(`[${component.key}]`).openDropDownByClick();
-      cy.get('[ui5-responsive-popover][open]').should('be.visible');
-      cy.get(`[data-testid="selectItem"]`).clickDropdownMenuItem();
+      it(component.key, () => {
+        changeSpy = cy.spy().as('change');
+        cy.mount(component);
+        cy.get(`[${component.key}]`).openDropDownByClick();
+        cy.get('[ui5-responsive-popover][open]').should('exist');
+        cy.get(`[data-testid="selectItem"]`).clickDropdownMenuItem();
 
-      if (component.key === 'ui5-combobox') {
-        cy.get(`[${component.key}]`).should('have.value', selectItemText);
-      } else if (component.key === 'ui5-multi-combobox') {
-        cy.get(`[${component.key}]`).find('[ui5-token]').contains(selectItemText);
-      }
+        if (component.key === 'ui5-combobox' || component.key === 'ui5-select') {
+          cy.get(`[${component.key}]`).should('have.value', selectItemText);
+        } else if (component.key === 'ui5-multi-combobox') {
+          cy.get(`[${component.key}]`).find('[ui5-token]').contains(selectItemText);
+        }
 
-      cy.get('@change').should('have.callCount', callCounter);
-      callCounter++;
-      cy.wait(200);
+        cy.get('@change').should('have.been.calledOnce');
+        cy.wait(200);
+      });
     });
   });
 
