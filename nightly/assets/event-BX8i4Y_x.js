@@ -1,1 +1,0 @@
-const l=(b,a={})=>e=>{Object.prototype.hasOwnProperty.call(e,"metadata")||(e.metadata={});const t=e.metadata;t.events||(t.events={});const c=t.events;c[b]||(a.bubbles=!!a.bubbles,a.cancelable=!!a.cancelable,c[b]=a)};export{l as b};
