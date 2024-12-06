@@ -1,6 +1,6 @@
 'use client';
 
-import { enrichEventWithDetails, useStylesheet } from '@ui5/webcomponents-react-base';
+import { enrichEventWithDetails, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 import { cloneElement, forwardRef, isValidElement, useCallback, useMemo } from 'react';
@@ -108,6 +108,8 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
   } = props;
 
   useStylesheet(styleData, PieChart.displayName);
+  const [componentRef, chartRef] = useSyncRef(ref);
+  const isDonutChart = props['data-component-name'] === 'DonutChart';
 
   const chartConfig = {
     margin: { right: 30, left: 30, bottom: 30, top: 30, ...(props.chartConfig?.margin ?? {}) },
@@ -192,12 +194,23 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       const ex = mx + (cos >= 0 ? 1 : -1) * 22;
       const ey = my;
       const textAnchor = cos >= 0 ? 'start' : 'end';
+      const activeLegendItem = chartRef.current?.querySelector<HTMLLIElement>(
+        `.legend-item-${chartConfig.activeSegment}`
+      );
+      if (!activeLegendItem?.dataset.activeLegend) {
+        const allLegendItems = chartRef.current?.querySelectorAll('.recharts-legend-item');
+
+        allLegendItems.forEach((item) => item.removeAttribute('data-active-legend'));
+        activeLegendItem.setAttribute('data-active-legend', 'true');
+      }
 
       return (
         <g>
-          <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-            {payload.name}
-          </text>
+          {isDonutChart && (
+            <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+              {payload.name}
+            </text>
+          )}
           <Sector
             cx={cx}
             cy={cy}
@@ -231,7 +244,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
         </g>
       );
     },
-    [showActiveSegmentDataLabel]
+    [showActiveSegmentDataLabel, chartConfig.activeSegment, isDonutChart]
   );
 
   const renderLabelLine = useCallback(
@@ -248,11 +261,11 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     if (chartConfig.activeSegment != null && showActiveSegmentDataLabel) {
       if (chartConfig.legendPosition === 'bottom') {
         return {
-          paddingTop: '30px'
+          paddingBlockStart: '30px'
         };
       } else if (chartConfig.legendPosition === 'top') {
         return {
-          paddingBottom: '30px'
+          paddingBlockEnd: '30px'
         };
       }
     }
@@ -265,7 +278,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
   return (
     <ChartContainer
       dataset={dataset}
-      ref={ref}
+      ref={componentRef}
       loading={loading}
       Placeholder={ChartPlaceholder ?? PieChartPlaceholder}
       style={style}
@@ -296,6 +309,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
           label={dataLabel}
           activeIndex={chartConfig.activeSegment}
           activeShape={chartConfig.activeSegment != null && renderActiveShape}
+          rootTabIndex={-1}
         >
           {centerLabel && <RechartsLabel position="center">{centerLabel}</RechartsLabel>}
           {dataset &&
