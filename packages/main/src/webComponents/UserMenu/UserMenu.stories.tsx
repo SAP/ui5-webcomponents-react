@@ -11,7 +11,11 @@ const meta = {
   title: 'Modals & Popovers / UserMenu',
   component: UserMenu,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
+    opener: { control: { disable: true } },
+    accounts: { control: { disable: true } },
+    //todo: enable again once `close` event is exposed and the story is adjusted accordingly
+    open: { control: { disable: true } }
   },
   args: {
     accounts: (
@@ -22,6 +26,18 @@ const meta = {
           subtitleText="aliana.chevalier@sap.com"
           description="Delivery Manager, SAP SE"
           selected
+        ></UserMenuAccount>
+        <UserMenuAccount
+          avatarSrc="https://sap.github.io/ui5-webcomponents/images/avatars/woman_avatar_3.png"
+          titleText="Alaina Chevalier I"
+          subtitleText="aliana.chevalier1@sap.com"
+          description="Delivery Manager, SAP SE"
+        ></UserMenuAccount>
+        <UserMenuAccount
+          avatarSrc="https://sap.github.io/ui5-webcomponents/images/avatars/woman_avatar_3.png"
+          titleText="Alaina Chevalier II"
+          subtitleText="aliana.chevalier2@sap.com"
+          description="Delivery Manager, SAP SE"
         ></UserMenuAccount>
       </>
     ),
