@@ -1,9 +1,11 @@
 'use client';
 
+import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
 import type { RefObject } from 'react';
 import { createRef, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { getRandomId } from '../../internal/getRandomId.js';
+import type { IModal } from '../../internal/ModalStore.js';
 import { ModalStore } from '../../internal/ModalStore.js';
 import type {
   DialogDomRef,
@@ -72,7 +74,6 @@ function showPopoverFn(
     Component: Popover,
     props: {
       ...props,
-
       open: true,
       onClose: (event) => {
         if (typeof props.onClose === 'function') {
@@ -218,6 +219,22 @@ function showToastFn(props: ToastPropTypes, container?: Element | DocumentFragme
   };
 }
 
+function ModalComponent({ modal }: { modal: IModal }) {
+  useIsomorphicLayoutEffect(() => {
+    const modalElement = modal.ref.current as PopoverDomRef;
+    if (modalElement) {
+      requestAnimationFrame(() => {
+        modalElement.open = true;
+      });
+    }
+  }, []);
+
+  const { open: _0, ...props } = modal.props;
+
+  // @ts-expect-error: ref is supported by all supported modals
+  return <modal.Component {...props} ref={modal.ref} data-id={modal.id} />;
+}
+
 /**
  * Utility class for opening modals in an imperative way.
  *
@@ -238,14 +255,9 @@ export function Modals() {
       {modals.map((modal) => {
         if (modal?.Component) {
           if (modal.container) {
-            return createPortal(
-              // @ts-expect-error: ref is supported by all supported modals
-              <modal.Component {...modal.props} ref={modal.ref} key={modal.id} data-id={modal.id} />,
-              modal.container
-            );
+            return createPortal(<ModalComponent modal={modal} key={modal.id} />, modal.container);
           }
-          // @ts-expect-error: ref is supported by all supported modals
-          return <modal.Component {...modal.props} ref={modal.ref} key={modal.id} data-id={modal.id} />;
+          return <ModalComponent modal={modal} key={modal.id} />;
         }
       })}
     </>
