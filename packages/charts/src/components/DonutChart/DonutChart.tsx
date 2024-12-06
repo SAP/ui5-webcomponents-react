@@ -17,7 +17,7 @@ const DonutChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     ...props.chartConfig
   };
 
-  return <PieChart {...props} ref={ref} chartConfig={chartConfig} />;
+  return <PieChart {...props} ref={ref} chartConfig={chartConfig} data-component-name="DonutChart" />;
 });
 
 DonutChart.displayName = 'DonutChart';

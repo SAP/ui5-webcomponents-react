@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useEffect, useState } from 'react';
 import { legendConfig, simpleDataSet, simpleDataSetWithSmallValues, tooltipConfig } from '../../resources/DemoProps.js';
 import { PieChart } from './PieChart.js';
 
@@ -51,6 +52,41 @@ export const WithFormatter: Story = {
       activeSegment: 1,
       showActiveSegmentDataLabel: true
     }
+  },
+  render(args) {
+    const [activeSegment, setActiveSegment] = useState(1);
+    const handleChartClick = (e) => {
+      const { dataIndex } = e.detail;
+      if (dataIndex != null) {
+        setActiveSegment(dataIndex);
+      }
+    };
+
+    return <PieChart {...args} chartConfig={{ ...args.chartConfig, activeSegment }} onClick={handleChartClick} />;
+  }
+};
+
+export const WithActiveShape: Story = {
+  args: {
+    chartConfig: {
+      activeSegment: 1,
+      showActiveSegmentDataLabel: true
+    }
+  },
+  render(args) {
+    const [activeSegment, setActiveSegment] = useState(args.chartConfig.activeSegment);
+    const handleChartClick = (e) => {
+      const { dataIndex } = e.detail;
+      if (dataIndex != null) {
+        setActiveSegment(dataIndex);
+      }
+    };
+
+    useEffect(() => {
+      setActiveSegment(args.chartConfig.activeSegment);
+    }, [args.chartConfig.activeSegment]);
+
+    return <PieChart {...args} chartConfig={{ ...args.chartConfig, activeSegment }} onClick={handleChartClick} />;
   }
 };
 
