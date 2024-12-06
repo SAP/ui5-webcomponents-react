@@ -23,7 +23,7 @@ const meta = {
     children: <span>Center Content</span>,
     endContent: <span>End Content</span>
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Bar>;
 
 export default meta;

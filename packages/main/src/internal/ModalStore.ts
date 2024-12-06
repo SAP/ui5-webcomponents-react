@@ -12,7 +12,7 @@ function getStyleStoreSymbol() {
   return Symbol.for(`@ui5/webcomponents-react/Modals-${getCurrentRuntimeIndex()}`);
 }
 
-type IModal = {
+export type IModal = {
   Component: ComponentType;
   props: Record<string, unknown>;
   ref: RefObject<unknown> | RefCallback<unknown>;

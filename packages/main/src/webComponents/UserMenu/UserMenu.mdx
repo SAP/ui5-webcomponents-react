@@ -1,0 +1,34 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { UserMenuAccount } from '../UserMenuAccount/index';
+import { UserMenuItem } from '../UserMenuItem/index';
+import * as ComponentStories from './UserMenu.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader experimental />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## UserMenuAccount
+
+<Description of={UserMenuAccount} />
+<ArgTypes of={UserMenuAccount} />
+
+## UserMenuItem
+
+<Description of={UserMenuItem} />
+<ArgTypes of={UserMenuItem} />
+
+<Footer />

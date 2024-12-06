@@ -88,7 +88,7 @@ interface ToolbarSelectPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<ToolbarSelectDomRef>) => void;
 

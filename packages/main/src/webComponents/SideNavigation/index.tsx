@@ -20,15 +20,12 @@ interface SideNavigationPropTypes
   extends SideNavigationAttributes,
     Omit<CommonProps, keyof SideNavigationAttributes | 'children' | 'fixedItems' | 'header' | 'onSelectionChange'> {
   /**
-   * Defines the main items of the `SideNavigation`. Use the `SideNavigationItem` component
-   * for the top-level items, and the `SideNavigationSubItem` component for second-level items, nested
-   * inside the items.
+   * Defines the main items of the component.
    */
   children?: ReactNode | ReactNode[];
 
   /**
-   * Defines the fixed items at the bottom of the `SideNavigation`. Use the `SideNavigationItem` component
-   * for the fixed items, and optionally the `SideNavigationSubItem` component to provide second-level items inside them.
+   * Defines the fixed items at the bottom of the component.
    *
    * **Note:** In order to achieve the best user experience, it is recommended that you keep the fixed items "flat" (do not pass sub-items)
    *
@@ -78,6 +75,10 @@ interface SideNavigationPropTypes
  * and `SideNavigationSubItem` components to build your menu.
  * The items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all items on one level.
  * You must not combine entries with and without icons on the same level. We strongly recommend that you do not use icons on the second level.
+ *
+ * The `SideNavigation` component is intended for use within an `NavigationLayout` component.
+ * While it can function independently, it is recommended to use it with
+ * the `NavigationLayout` for optimal user experience.
  *
  * ### Keyboard Handling
  *

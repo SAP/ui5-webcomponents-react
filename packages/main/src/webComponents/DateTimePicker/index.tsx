@@ -201,13 +201,13 @@ interface DateTimePickerPropTypes
   onChange?: (event: Ui5CustomEvent<DateTimePickerDomRef, DatePickerChangeEventDetail>) => void;
 
   /**
-   * Fired after the value-help dialog of the component is closed.
+   * Fired after the component's picker is closed.
    *
    * **Note:** Available since [v2.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.4.0) of **@ui5/webcomponents**.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<DateTimePickerDomRef>) => void;
 
@@ -223,13 +223,13 @@ interface DateTimePickerPropTypes
   onInput?: (event: Ui5CustomEvent<DateTimePickerDomRef, DatePickerInputEventDetail>) => void;
 
   /**
-   * Fired after the value-help dialog of the component is opened.
+   * Fired after the component's picker is opened.
    *
    * **Note:** Available since [v2.4.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.4.0) of **@ui5/webcomponents**.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onOpen?: (event: Ui5CustomEvent<DateTimePickerDomRef>) => void;
 

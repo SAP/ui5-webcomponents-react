@@ -1,5 +1,5 @@
-import type { StorybookConfig } from '@storybook/react-vite';
 import { dirname, join } from 'path';
+import type { StorybookConfig } from '@storybook/react-vite';
 import remarkGfm from 'remark-gfm';
 import { isChromatic } from './utils';
 

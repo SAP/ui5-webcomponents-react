@@ -29,6 +29,14 @@ interface ButtonAttributes {
   accessibilityAttributes?: ButtonAccessibilityAttributes;
 
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
    * Defines the accessible ARIA name of the component.
    * @default undefined
    */
@@ -170,6 +178,7 @@ const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
   'ui5-button',
   [
     'accessibilityAttributes',
+    'accessibleDescription',
     'accessibleName',
     'accessibleNameRef',
     'accessibleRole',

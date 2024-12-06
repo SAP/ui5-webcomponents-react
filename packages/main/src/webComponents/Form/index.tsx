@@ -8,6 +8,21 @@ import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.j
 
 interface FormAttributes {
   /**
+   * Defines the number of cells that are empty at the end of each form item, configurable by breakpoint.
+   *
+   * By default, a form item spans 12 cells, fully divided between its label (4 cells) and field (8 cells), with no empty space at the end.
+   * The `emptySpan` provides additional layout flexibility by defining empty space at the form item’s end.
+   *
+   * **Note:**
+   * - The maximum allowable empty space is 10 cells. At least 1 cell each must remain for the label and the field.
+   * - When `emptySpan` is specified (greater than 0), ensure that the combined value of `emptySpan` and `labelSpan` does not exceed 11. This guarantees a minimum of 1 cell for the field.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
+   * @default "S0 M0 L0 XL0"
+   */
+  emptySpan?: string;
+
+  /**
    * Defines the header text of the component.
    *
    * **Note:** The property gets overridden by the `header` slot.
@@ -26,7 +41,7 @@ interface FormAttributes {
   itemSpacing?: FormItemSpacing | keyof typeof FormItemSpacing;
 
   /**
-   * Defines the width proportion of the labels and fields of a FormItem by breakpoint.
+   * Defines the width proportion of the labels and fields of a form item by breakpoint.
    *
    * By default, the labels take 4/12 (or 1/3) of the form item in M,L and XL sizes,
    * and 12/12 in S size, e.g in S the label is on top of its associated field.
@@ -147,6 +162,63 @@ interface FormPropTypes extends FormAttributes, Omit<CommonProps, keyof FormAttr
  *
  * **For example:** To always place the labels on top set: `labelSpan="S12 M12 L12 XL12"` property.
  *
+ * ### Items Empty Span
+ *
+ * By default, a form item spans 12 cells, fully divided between its label and field, with no empty space at the end:
+ * - **Label:** occupies 4 cells.
+ * - **Field:** occupies 8 cells.
+ *
+ * The `emptySpan` property provides additional layout flexibility by defining empty space at the form item’s end.
+ *
+ * **For example:** Setting "S0 M0 L3 XL3" (or just "L3 XL3") adjusts the layout as follows:
+ * - **Label:** remains 4 cells.
+ * - **Field:** is reduced to 5 cells.
+ * - **Empty space:** 3 cells are added at the end.
+ *
+ * Greater values increase the empty space at the end of the form item, reducing the space available for the label and its field.
+ * However, setting `emptySpan` to 1 cell is recommended and typically sufficient to achieve a balanced layout.
+ *
+ * ### Navigation flow
+ *
+ * The Form component supports two layout options for keyboard navigation:
+ *
+ * #### Simple form
+ *
+ * In this "simple form" layout, each `FormItem` acts as a standalone group
+ * with one item, so focus moves horizontally across the grid from one `FormItem` to the next.
+ * This layout is ideal for simpler forms and supports custom arrangements, e.g.,
+ *
+ * ```
+ * | 1 | 2 |
+ * |   3   |
+ * | 4 | 5 |
+ * ```
+ *
+ * #### Complex form
+ *
+ * In this layout, items are grouped into `FormGroup` elements, allowing more complex configurations:
+ *
+ * - **Single-Column Group**: Focus moves vertically down from one item to the next.
+ *   ```
+ *   | 1 |
+ *   | 2 |
+ *   | 3 |
+ *   ```
+ *
+ * - **Multi-Column Group**: Focus moves horizontally within each row, advancing to the next row after completing the current one.
+ *   ```
+ *   | 1 | 4 |
+ *   | 2 | 5 |
+ *   | 3 | 6 |
+ *   ```
+ *
+ * ### Keyboard Handling
+ *
+ * - [Tab] - Moves the focus to the next interactive element within the Form/FormGroup (if available) or to the next element in the tab chain outside the Form
+ * - [Shift] + [Tab] - Moves the focus to the previous interactive element within the Form/FormGroup (if available) or to the previous element in the tab chain outside the Form
+ * - [F6] - Moves the focus to the first interactive element of the next FormGroup (if available) or to the next element in the tab chain outside the Form
+ * - [Shift] + [F6] - Moves the focus to the first interactive element of the previous FormGroup (if available) or to the previous element in the tab chain outside the Form
+ *
  * ### ES6 Module Import
  *
  * - import @ui5/webcomponents/dist/Form.js";
@@ -160,7 +232,7 @@ interface FormPropTypes extends FormAttributes, Omit<CommonProps, keyof FormAttr
  */
 const Form = withWebComponent<FormPropTypes, FormDomRef>(
   'ui5-form',
-  ['headerText', 'itemSpacing', 'labelSpan', 'layout'],
+  ['emptySpan', 'headerText', 'itemSpacing', 'labelSpan', 'layout'],
   [],
   ['header'],
   []

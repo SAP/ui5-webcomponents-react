@@ -4058,7 +4058,7 @@
               "description": "Fired when the component is activated either with a\nclick/tap or by using the Enter or Space key.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "1.0.0-rc.11",
               "_ui5parameters": [
                 {
@@ -4088,7 +4088,7 @@
               "description": "Fired when the count of visible `ui5-avatar` elements in the\ncomponent has changed",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "1.0.0-rc.13"
             }
           ],
@@ -4172,6 +4172,18 @@
             {
               "description": "Used to style the wrapper of the content of the component",
               "name": "bar"
+            },
+            {
+              "description": "Used to style the wrapper of the start content of the component",
+              "name": "startContent"
+            },
+            {
+              "description": "Used to style the wrapper of the middle content of the component",
+              "name": "midContent"
+            },
+            {
+              "description": "Used to style the wrapper of the end content of the component",
+              "name": "endContent"
             }
           ],
           "slots": [
@@ -4851,6 +4863,17 @@
             },
             {
               "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.5.0"
+            },
+            {
+              "kind": "field",
               "name": "type",
               "type": {
                 "text": "ButtonType",
@@ -4980,6 +5003,15 @@
               "fieldName": "accessibilityAttributes",
               "type": {
                 "text": "ButtonAccessibilityAttributes"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
               }
             },
             {
@@ -6281,7 +6313,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines if the component would be interactive,\ne.g gets hover effect, gets focus outline and `click` event is fired, when pressed.",
+              "description": "Defines if the component would be interactive,\ne.g gets hover effect and `click` event is fired, when pressed.",
               "privacy": "public"
             }
           ],
@@ -6327,7 +6359,7 @@
               }
             },
             {
-              "description": "Defines if the component would be interactive,\ne.g gets hover effect, gets focus outline and `click` event is fired, when pressed.",
+              "description": "Defines if the component would be interactive,\ne.g gets hover effect and `click` event is fired, when pressed.",
               "name": "interactive",
               "default": "false",
               "fieldName": "interactive",
@@ -7117,7 +7149,7 @@
               "description": "Fired when the user selects a color.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "1.0.0-rc.15",
               "_ui5parameters": [
                 {
@@ -7497,6 +7529,17 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "2.0.0"
+            },
+            {
+              "kind": "field",
+              "name": "simplified",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When set to `true`, the alpha slider and inputs for RGB values will not be displayed.",
+              "privacy": "public",
+              "_ui5since": "2.5.0"
             }
           ],
           "events": [
@@ -7529,6 +7572,15 @@
               "fieldName": "name",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "When set to `true`, the alpha slider and inputs for RGB values will not be displayed.",
+              "name": "simplified",
+              "default": "false",
+              "fieldName": "simplified",
+              "type": {
+                "text": "boolean"
               }
             }
           ],
@@ -8032,14 +8084,13 @@
             }
           ],
           "superclass": {
-            "name": "UI5Element",
-            "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "name": "ListItemBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ListItemBase.js"
           },
           "tagName": "ui5-cb-item",
           "customElement": true,
           "_ui5privacy": "public",
-          "_ui5abstract": true,
           "_ui5implements": [
             {
               "name": "IComboBoxItem",
@@ -8082,45 +8133,37 @@
               "description": "Defines the items of the <code>ui5-cb-item-group</code>.",
               "_ui5propertyName": "items",
               "_ui5type": {
-                "text": "Array<IComboBoxItem>",
+                "text": "Array<ComboBoxItem>",
                 "references": [
                   {
-                    "name": "IComboBoxItem",
+                    "name": "ComboBoxItem",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/ComboBox.js"
+                    "module": "dist/ComboBoxItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "header",
+              "description": "Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.",
+              "_ui5type": {
+                "text": "Array<ListItemBase>",
+                "references": [
+                  {
+                    "name": "ListItemBase",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItemBase.js"
                   }
                 ]
               },
               "_ui5privacy": "public"
             }
           ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "headerText",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Defines the text of the component.",
-              "default": "undefined",
-              "privacy": "public"
-            }
-          ],
-          "attributes": [
-            {
-              "description": "Defines the text of the component.",
-              "name": "header-text",
-              "default": "undefined",
-              "fieldName": "headerText",
-              "type": {
-                "text": "string | undefined"
-              }
-            }
-          ],
           "superclass": {
-            "name": "UI5Element",
-            "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "name": "ListItemGroup",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ListItemGroup.js"
           },
           "tagName": "ui5-cb-item-group",
           "customElement": true,
@@ -8132,6 +8175,154 @@
               "name": "IComboBoxItem",
               "package": "@ui5/webcomponents",
               "module": "dist/ComboBox.js"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the header text of the <code>ui5-li-group</code>.",
+              "name": "header-text",
+              "default": "undefined",
+              "fieldName": "headerText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Defines the accessible name of the header.",
+              "name": "header-accessible-name",
+              "default": "undefined",
+              "fieldName": "headerAccessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "headerText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the header text of the <code>ui5-li-group</code>.",
+              "privacy": "public",
+              "default": "undefined",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "headerAccessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible name of the header.",
+              "privacy": "public",
+              "default": "undefined",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "move-over",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<ListItemGroupMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "ListItemGroupMoveEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItemGroup.js"
+                  }
+                ]
+              },
+              "description": "Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.1.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the moved element under `element` property."
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                }
+              ],
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "name": "move",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<ListItemGroupMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "ListItemGroupMoveEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItemGroup.js"
+                  }
+                ]
+              },
+              "description": "Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.1.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the moved element under `element` property."
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                }
+              ],
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Used to style the header item of the group",
+              "name": "header"
             }
           ]
         }
@@ -8771,10 +8962,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the value-help dialog of the component is opened.",
+              "description": "Fired after the component's picker is opened.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.4.0"
             },
             {
@@ -8783,10 +8974,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the value-help dialog of the component is closed.",
+              "description": "Fired after the component's picker is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.4.0"
             }
           ],
@@ -9836,10 +10027,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the value-help dialog of the component is opened.",
+              "description": "Fired after the component's picker is opened.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.4.0",
               "inheritedFrom": {
                 "name": "DatePicker",
@@ -9852,10 +10043,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the value-help dialog of the component is closed.",
+              "description": "Fired after the component's picker is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.4.0",
               "inheritedFrom": {
                 "name": "DatePicker",
@@ -10645,10 +10836,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the value-help dialog of the component is opened.",
+              "description": "Fired after the component's picker is opened.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.4.0",
               "inheritedFrom": {
                 "name": "DatePicker",
@@ -10661,10 +10852,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the value-help dialog of the component is closed.",
+              "description": "Fired after the component's picker is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.4.0",
               "inheritedFrom": {
                 "name": "DatePicker",
@@ -10725,7 +10916,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\nThe `ui5-dialog` component is used to temporarily display some information in a\nsize-limited window in front of the regular app screen.\nIt is used to prompt the user for an action or a confirmation.\nThe `ui5-dialog` interrupts the current app processing as it is the only focused UI element and\nthe main screen is dimmed/blocked.\nThe dialog combines concepts known from other technologies where the windows have\nnames such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box.\n\nThe `ui5-dialog` is modal, which means that a user action is required before it is possible to return to the parent window.\nTo open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other.\nThe content of the `ui5-dialog` is fully customizable.\n\n### Structure\nA `ui5-dialog` consists of a header, content, and a footer for action buttons.\nThe `ui5-dialog` is usually displayed at the center of the screen.\nIts position can be changed by the user. To enable this, you need to set the property `draggable` accordingly.\n\n\n### Responsive Behavior\nThe `stretch` property can be used to stretch the\n`ui5-dialog` on full screen.\n\n**Note:** When a `ui5-bar` is used in the header or in the footer, you should remove the default dialog's paddings.\n\nFor more information see the sample \"Bar in Header/Footer\".\n\n### Keyboard Handling\n\n#### Basic Navigation\nWhen the `ui5-dialog` has the `draggable` property set to `true` and the header is focused, the user can move the dialog\nwith the following keyboard shortcuts:\n\n- [Up] or [Down] arrow keys - Move the dialog up/down.\n- [Left] or [Right] arrow keys - Move the dialog left/right.\n\n#### Resizing\nWhen the `ui5-dialog` has the `resizable` property set to `true` and the header is focused, the user can change the size of the dialog\nwith the following keyboard shortcuts:\n\n- [Shift] + [Up] or [Down] - Decrease/Increase the height of the dialog.\n- [Shift] + [Left] or [Right] - Decrease/Increase the width of the dialog.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Dialog\";`",
+          "description": "### Overview\nThe `ui5-dialog` component is used to temporarily display some information in a\nsize-limited window in front of the regular app screen.\nIt is used to prompt the user for an action or a confirmation.\nThe `ui5-dialog` interrupts the current app processing as it is the only focused UI element and\nthe main screen is dimmed/blocked.\nThe dialog combines concepts known from other technologies where the windows have\nnames such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box.\n\nThe `ui5-dialog` is modal, which means that a user action is required before it is possible to return to the parent window.\nTo open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other.\nThe content of the `ui5-dialog` is fully customizable.\n\n### Structure\nA `ui5-dialog` consists of a header, content, and a footer for action buttons.\nThe `ui5-dialog` is usually displayed at the center of the screen.\nIts position can be changed by the user. To enable this, you need to set the property `draggable` accordingly.\n\n\n### Responsive Behavior\nThe `stretch` property can be used to stretch the `ui5-dialog` to full screen. For better usability, it's recommended to stretch the dialog to full screen on phone devices.\n\n**Note:** When a `ui5-bar` is used in the header or in the footer, you should remove the default dialog's paddings.\n\nFor more information see the sample \"Bar in Header/Footer\".\n\n### Keyboard Handling\n\n#### Basic Navigation\nWhen the `ui5-dialog` has the `draggable` property set to `true` and the header is focused, the user can move the dialog\nwith the following keyboard shortcuts:\n\n- [Up] or [Down] arrow keys - Move the dialog up/down.\n- [Left] or [Right] arrow keys - Move the dialog left/right.\n\n#### Resizing\nWhen the `ui5-dialog` has the `resizable` property set to `true` and the header is focused, the user can change the size of the dialog\nwith the following keyboard shortcuts:\n\n- [Shift] + [Up] or [Down] - Decrease/Increase the height of the dialog.\n- [Shift] + [Left] or [Right] - Decrease/Increase the width of the dialog.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Dialog\";`",
           "name": "Dialog",
           "cssParts": [
             {
@@ -10786,7 +10977,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Determines whether the component should be stretched to fullscreen.\n\n**Note:** The component will be stretched to approximately\n90% of the viewport.",
+              "description": "Determines if the dialog will be stretched to full screen on mobile. On desktop,\nthe dialog will be stretched to approximately 90% of the viewport.\n\n**Note:** For better usability of the component it is recommended to set this property to \"true\" when the dialog is opened on phone.",
               "privacy": "public"
             },
             {
@@ -10968,7 +11159,7 @@
               }
             },
             {
-              "description": "Determines whether the component should be stretched to fullscreen.\n\n**Note:** The component will be stretched to approximately\n90% of the viewport.",
+              "description": "Determines if the dialog will be stretched to full screen on mobile. On desktop,\nthe dialog will be stretched to approximately 90% of the viewport.\n\n**Note:** For better usability of the component it is recommended to set this property to \"true\" when the dialog is opened on phone.",
               "name": "stretch",
               "default": "false",
               "fieldName": "stretch",
@@ -11113,7 +11304,7 @@
               "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -11128,7 +11319,7 @@
               "description": "Fired after the component is opened.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -11150,7 +11341,7 @@
               "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5parameters": [
                 {
                   "type": {
@@ -11175,7 +11366,7 @@
               "description": "Fired after the component is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -11567,7 +11758,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\nThe Form is a layout component that arranges labels and form fields (like input fields) pairs\ninto a specific number of columns.\n\n**Note:** The Form web component is a layout component, it isn't a replacement for the native `form` HTML element.\nThe Form web component does not provide any APIs for form submission.\n\n### Structure\n\n- **Form** (`ui5-form`) is the top-level container component, responsible for the content layout and responsiveness.\n- **FormGroup** (`ui5-form-group`) enables the grouping of the Form content.\n- **FormItem** (`ui5-form-item`) is a pair of label and form fields and can be used directly in a Form, or as part of a FormGroup.\n\nThe simplest Form (`ui5-form`) consists of a header area on top,\ndisplaying a header text (see the `headingText` property) and content below - an arbitrary number of FormItems (ui5-form-item),\nrepresenting the pairs of label and form fields.\n\nAnd, there is also \"grouping\" available to assist the implementation of richer UIs.\nThis is enabled by the FormGroup (`ui5-form-group`) component.\nIn this case, the Form is structured into FormGroups and each FormGroup consists of FormItems.\n\n### Responsiveness\n\nThe Form component reacts and changes its layout on predefined breakpoints.\nDepending on its size, the Form content (FormGroups and FormItems) gets divided into one or more columns as follows:\n- **S** (< 600px) – 1 column is recommended (default: 1)\n- **M** (600px - 1022px) – up to 2 columns are recommended (default: 1)\n- **L** (1023px - 1439px) - up to 3 columns are recommended (default: 2)\n- **XL** (> 1439px) – up to 6 columns are recommended (default: 3)\n\nTo change the layout, use the `layout` property - f.e. layout=\"S1 M2 L3 XL6\".\n\n### Groups\n\nTo make better use of screen space, there is built-in logic to determine how many columns should a FormGroup occupy.\n\n- **Example #1** (perfect match):\n4 columns and 4 groups: each group will use 1 column.\n\n- **Example #2** (balanced distribution):\n4 columns and 2 groups: each group will use 2 columns.\n6 columns and 2 groups: each group will use 3 columns.\n\n- **Example #3** (unbalanced distribution):\n3 columns and 2 groups: the larger one will use 2 columns, the smaller 1 column.\n5 columns and 3 groups: two of the groups will use 2 columns each, the smallest 1 column.\n\n**Note:** The size of a group element is determined by the number of FormItems assigned to it.\nIn the case of equality, the first in the DOM will use more columns, and the last - fewer columns.\n\n- **Example #4** (more groups than columns):\n3 columns and 4 groups: each FormGroup uses only 1 column, the last FormGroup will wrap on the second row.\n\n### Groups Column Span\n\nTo influence the built-in group distribution, described in the previous section,\nyou can use the FormGroup's `columnSpan` property, that defines how many columns the group should expand to.\n\n### Items Column Span\n\nFormItem's columnSpan property defines how many columns the form item should expand to inside a form group or the form.\n\n### Items Label Span\n\nThe placement of the labels depends on the size of the used column.\nIf there is enough space, the labels are next to their associated fields, otherwise  - above the fields.\nBy default, the labels take 4/12 of the FormItem, leaving 8/12 parts to associated fields.\nYou can control what space the labels should take via the `labelSpan` property.\n\n**For example:** To always place the labels on top set: `labelSpan=\"S12 M12 L12 XL12\"` property.\n\n### ES6 Module Import\n\n- import @ui5/webcomponents/dist/Form.js\";\n- import @ui5/webcomponents/dist/FormGroup.js\";\n- import @ui5/webcomponents/dist/FormItem.js\";",
+          "description": "### Overview\n\nThe Form is a layout component that arranges labels and form fields (like input fields) pairs\ninto a specific number of columns.\n\n**Note:** The Form web component is a layout component, it isn't a replacement for the native `form` HTML element.\nThe Form web component does not provide any APIs for form submission.\n\n### Structure\n\n- **Form** (`ui5-form`) is the top-level container component, responsible for the content layout and responsiveness.\n- **FormGroup** (`ui5-form-group`) enables the grouping of the Form content.\n- **FormItem** (`ui5-form-item`) is a pair of label and form fields and can be used directly in a Form, or as part of a FormGroup.\n\nThe simplest Form (`ui5-form`) consists of a header area on top,\ndisplaying a header text (see the `headingText` property) and content below - an arbitrary number of FormItems (ui5-form-item),\nrepresenting the pairs of label and form fields.\n\nAnd, there is also \"grouping\" available to assist the implementation of richer UIs.\nThis is enabled by the FormGroup (`ui5-form-group`) component.\nIn this case, the Form is structured into FormGroups and each FormGroup consists of FormItems.\n\n### Responsiveness\n\nThe Form component reacts and changes its layout on predefined breakpoints.\nDepending on its size, the Form content (FormGroups and FormItems) gets divided into one or more columns as follows:\n- **S** (< 600px) – 1 column is recommended (default: 1)\n- **M** (600px - 1022px) – up to 2 columns are recommended (default: 1)\n- **L** (1023px - 1439px) - up to 3 columns are recommended (default: 2)\n- **XL** (> 1439px) – up to 6 columns are recommended (default: 3)\n\nTo change the layout, use the `layout` property - f.e. layout=\"S1 M2 L3 XL6\".\n\n### Groups\n\nTo make better use of screen space, there is built-in logic to determine how many columns should a FormGroup occupy.\n\n- **Example #1** (perfect match):\n4 columns and 4 groups: each group will use 1 column.\n\n- **Example #2** (balanced distribution):\n4 columns and 2 groups: each group will use 2 columns.\n6 columns and 2 groups: each group will use 3 columns.\n\n- **Example #3** (unbalanced distribution):\n3 columns and 2 groups: the larger one will use 2 columns, the smaller 1 column.\n5 columns and 3 groups: two of the groups will use 2 columns each, the smallest 1 column.\n\n**Note:** The size of a group element is determined by the number of FormItems assigned to it.\nIn the case of equality, the first in the DOM will use more columns, and the last - fewer columns.\n\n- **Example #4** (more groups than columns):\n3 columns and 4 groups: each FormGroup uses only 1 column, the last FormGroup will wrap on the second row.\n\n### Groups Column Span\n\nTo influence the built-in group distribution, described in the previous section,\nyou can use the FormGroup's `columnSpan` property, that defines how many columns the group should expand to.\n\n### Items Column Span\n\nFormItem's columnSpan property defines how many columns the form item should expand to inside a form group or the form.\n\n### Items Label Span\n\nThe placement of the labels depends on the size of the used column.\nIf there is enough space, the labels are next to their associated fields, otherwise  - above the fields.\nBy default, the labels take 4/12 of the FormItem, leaving 8/12 parts to associated fields.\nYou can control what space the labels should take via the `labelSpan` property.\n\n**For example:** To always place the labels on top set: `labelSpan=\"S12 M12 L12 XL12\"` property.\n\n### Items Empty Span\n\nBy default, a form item spans 12 cells, fully divided between its label and field, with no empty space at the end:\n- **Label:** occupies 4 cells.\n- **Field:** occupies 8 cells.\n\nThe `emptySpan` property provides additional layout flexibility by defining empty space at the form item’s end.\n\n**For example:** Setting \"S0 M0 L3 XL3\" (or just \"L3 XL3\") adjusts the layout as follows:\n- **Label:** remains 4 cells.\n- **Field:** is reduced to 5 cells.\n- **Empty space:** 3 cells are added at the end.\n\nGreater values increase the empty space at the end of the form item, reducing the space available for the label and its field.\nHowever, setting `emptySpan` to 1 cell is recommended and typically sufficient to achieve a balanced layout.\n\n### Navigation flow\n\nThe Form component supports two layout options for keyboard navigation:\n\n#### Simple form\n\nIn this \"simple form\" layout, each `ui5-form-item` acts as a standalone group\nwith one item, so focus moves horizontally across the grid from one `ui5-form-item` to the next.\nThis layout is ideal for simpler forms and supports custom arrangements, e.g.,\n\n```\n| 1 | 2 |\n|   3   |\n| 4 | 5 |\n```\n\n#### Complex form\n\nIn this layout, items are grouped into `ui5-form-group` elements, allowing more complex configurations:\n\n- **Single-Column Group**: Focus moves vertically down from one item to the next.\n  ```\n  | 1 |\n  | 2 |\n  | 3 |\n  ```\n\n- **Multi-Column Group**: Focus moves horizontally within each row, advancing to the next row after completing the current one.\n  ```\n  | 1 | 4 |\n  | 2 | 5 |\n  | 3 | 6 |\n  ```\n\n### Keyboard Handling\n\n- [Tab] - Moves the focus to the next interactive element within the Form/FormGroup (if available) or to the next element in the tab chain outside the Form\n- [Shift] + [Tab] - Moves the focus to the previous interactive element within the Form/FormGroup (if available) or to the previous element in the tab chain outside the Form\n- [F6] - Moves the focus to the first interactive element of the next FormGroup (if available) or to the next element in the tab chain outside the Form\n- [Shift] + [F6] - Moves the focus to the first interactive element of the previous FormGroup (if available) or to the previous element in the tab chain outside the Form\n\n### ES6 Module Import\n\n- import @ui5/webcomponents/dist/Form.js\";\n- import @ui5/webcomponents/dist/FormGroup.js\";\n- import @ui5/webcomponents/dist/FormItem.js\";",
           "name": "Form",
           "cssParts": [
             {
@@ -11627,8 +11818,19 @@
                 "text": "string"
               },
               "default": "\"S12 M4 L4 XL4\"",
-              "description": "Defines the width proportion of the labels and fields of a FormItem by breakpoint.\n\nBy default, the labels take 4/12 (or 1/3) of the form item in M,L and XL sizes,\nand 12/12 in S size, e.g in S the label is on top of its associated field.\n\nThe supported values are between 1 and 12. Greater the number, more space the label will use.\n\n**Note:** If \"12\" is set, the label will be displayed on top of its assosiated field.",
+              "description": "Defines the width proportion of the labels and fields of a form item by breakpoint.\n\nBy default, the labels take 4/12 (or 1/3) of the form item in M,L and XL sizes,\nand 12/12 in S size, e.g in S the label is on top of its associated field.\n\nThe supported values are between 1 and 12. Greater the number, more space the label will use.\n\n**Note:** If \"12\" is set, the label will be displayed on top of its assosiated field.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "emptySpan",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"S0 M0 L0 XL0\"",
+              "description": "Defines the number of cells that are empty at the end of each form item, configurable by breakpoint.\n\nBy default, a form item spans 12 cells, fully divided between its label (4 cells) and field (8 cells), with no empty space at the end.\nThe `emptySpan` provides additional layout flexibility by defining empty space at the form item’s end.\n\n**Note:**\n- The maximum allowable empty space is 10 cells. At least 1 cell each must remain for the label and the field.\n- When `emptySpan` is specified (greater than 0), ensure that the combined value of `emptySpan` and `labelSpan` does not exceed 11. This guarantees a minimum of 1 cell for the field.",
+              "privacy": "public",
+              "_ui5since": "2.5.0"
             },
             {
               "kind": "field",
@@ -11669,10 +11871,19 @@
               }
             },
             {
-              "description": "Defines the width proportion of the labels and fields of a FormItem by breakpoint.\n\nBy default, the labels take 4/12 (or 1/3) of the form item in M,L and XL sizes,\nand 12/12 in S size, e.g in S the label is on top of its associated field.\n\nThe supported values are between 1 and 12. Greater the number, more space the label will use.\n\n**Note:** If \"12\" is set, the label will be displayed on top of its assosiated field.",
+              "description": "Defines the width proportion of the labels and fields of a form item by breakpoint.\n\nBy default, the labels take 4/12 (or 1/3) of the form item in M,L and XL sizes,\nand 12/12 in S size, e.g in S the label is on top of its associated field.\n\nThe supported values are between 1 and 12. Greater the number, more space the label will use.\n\n**Note:** If \"12\" is set, the label will be displayed on top of its assosiated field.",
               "name": "label-span",
               "default": "\"S12 M4 L4 XL4\"",
               "fieldName": "labelSpan",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the number of cells that are empty at the end of each form item, configurable by breakpoint.\n\nBy default, a form item spans 12 cells, fully divided between its label (4 cells) and field (8 cells), with no empty space at the end.\nThe `emptySpan` provides additional layout flexibility by defining empty space at the form item’s end.\n\n**Note:**\n- The maximum allowable empty space is 10 cells. At least 1 cell each must remain for the label and the field.\n- When `emptySpan` is specified (greater than 0), ensure that the combined value of `emptySpan` and `labelSpan` does not exceed 11. This guarantees a minimum of 1 cell for the field.",
+              "name": "empty-span",
+              "default": "\"S0 M0 L0 XL0\"",
+              "fieldName": "emptySpan",
               "type": {
                 "text": "string"
               }
@@ -11962,7 +12173,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-icon` component represents an SVG icon.\nThere are two main scenarios how the `ui5-icon` component is used:\nas a purely decorative element,\nor as an interactive element that can be focused and clicked.\n\n### Usage\n\n1. **Get familiar with the icons collections.**\n\nBefore displaying an icon, you need to explore the icons collections to find and import the desired icon.\n\nCurrently there are 3 icons collection, available as 3 npm packages:\n\n- [@ui5/webcomponents-icons](https://www.npmjs.com/package/@ui5/webcomponents-icons) represents the \"SAP-icons\" collection and includes the following\n[icons](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons).\n- [@ui5/webcomponents-icons-tnt](https://www.npmjs.com/package/@ui5/webcomponents-icons-tnt) represents the \"tnt\" collection and includes the following\n[icons](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons-TNT).\n- [@ui5/webcomponents-icons-icons-business-suite](https://www.npmjs.com/package/@ui5/webcomponents-icons-business-suite) represents the \"business-suite\" collection and includes the following\n[icons](https://ui5.sap.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/BusinessSuiteInAppSymbols).\n\n2. **After exploring the icons collections, add one or more of the packages as dependencies to your project.**\n\n`npm i @ui5/webcomponents-icons`\n`npm i @ui5/webcomponents-icons-tnt`\n`npm i @ui5/webcomponents-icons-business-suite`\n\n3. **Then, import the desired icon**.\n\n`import \"@ui5/\\{package_name\\}/dist/\\{icon_name\\}.js\";`\n\n**For Example**:\n\nFor the standard \"SAP-icons\" icon collection, import an icon from the `@ui5/webcomponents-icons` package:\n\n`import \"@ui5/webcomponents-icons/dist/employee.js\";`\n\nFor the \"tnt\" (SAP Fiori Tools) icon collection, import an icon from the `@ui5/webcomponents-icons-tnt` package:\n\n`import \"@ui5/webcomponents-icons-tnt/dist/antenna.js\";`\n\nFor the \"business-suite\" (SAP Business Suite) icon collection, import an icon from the `@ui5/webcomponents-icons-business-suite` package:\n\n`import \"@ui5/webcomponents-icons-business-suite/dist/ab-testing.js\";`\n\n4. **Display the icon using the `ui5-icon` web component.**\nSet the icon collection (\"SAP-icons\", \"tnt\" or \"business-suite\" - \"SAP-icons\" is the default icon collection and can be skipped)\nand the icon name to the `name` property.\n\n`<ui5-icon name=\"employee\"></ui5-icon>`\n`<ui5-icon name=\"tnt/antenna\"></ui5-icon>`\n`<ui5-icon name=\"business-suite/ab-testing\"></ui5-icon>`\n\n### Keyboard Handling\n\n- [Space] / [Enter] or [Return] - Fires the `click` event if the `mode` property is set to `Interactive`.\n- [Shift] - If [Space] / [Enter] or [Return] is pressed, pressing [Shift] releases the ui5-icon without triggering the click event.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Icon.js\";`",
+          "description": "### Overview\n\nThe `ui5-icon` component represents an SVG icon.\nThere are two main scenarios how the `ui5-icon` component is used:\nas a purely decorative element,\nor as an interactive element that can be focused and clicked.\n\n### Usage\n\n1. **Get familiar with the icons collections.**\n\nBefore displaying an icon, you need to explore the icons collections to find and import the desired icon.\n\nCurrently there are 3 icons collection, available as 3 npm packages:\n\n- [@ui5/webcomponents-icons](https://www.npmjs.com/package/@ui5/webcomponents-icons) represents the \"SAP-icons\" collection and includes the following\n[icons](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons).\n- [@ui5/webcomponents-icons-tnt](https://www.npmjs.com/package/@ui5/webcomponents-icons-tnt) represents the \"tnt\" collection and includes the following\n[icons](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons-TNT).\n- [@ui5/webcomponents-icons-business-suite](https://www.npmjs.com/package/@ui5/webcomponents-icons-business-suite) represents the \"business-suite\" collection and includes the following\n[icons](https://ui5.sap.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/BusinessSuiteInAppSymbols).\n\n2. **After exploring the icons collections, add one or more of the packages as dependencies to your project.**\n\n`npm i @ui5/webcomponents-icons`\n`npm i @ui5/webcomponents-icons-tnt`\n`npm i @ui5/webcomponents-icons-business-suite`\n\n3. **Then, import the desired icon**.\n\n`import \"@ui5/\\{package_name\\}/dist/\\{icon_name\\}.js\";`\n\n**For Example**:\n\nFor the standard \"SAP-icons\" icon collection, import an icon from the `@ui5/webcomponents-icons` package:\n\n`import \"@ui5/webcomponents-icons/dist/employee.js\";`\n\nFor the \"tnt\" (SAP Fiori Tools) icon collection, import an icon from the `@ui5/webcomponents-icons-tnt` package:\n\n`import \"@ui5/webcomponents-icons-tnt/dist/antenna.js\";`\n\nFor the \"business-suite\" (SAP Business Suite) icon collection, import an icon from the `@ui5/webcomponents-icons-business-suite` package:\n\n`import \"@ui5/webcomponents-icons-business-suite/dist/ab-testing.js\";`\n\n4. **Display the icon using the `ui5-icon` web component.**\nSet the icon collection (\"SAP-icons\", \"tnt\" or \"business-suite\" - \"SAP-icons\" is the default icon collection and can be skipped)\nand the icon name to the `name` property.\n\n`<ui5-icon name=\"employee\"></ui5-icon>`\n`<ui5-icon name=\"tnt/antenna\"></ui5-icon>`\n`<ui5-icon name=\"business-suite/ab-testing\"></ui5-icon>`\n\n### Keyboard Handling\n\n- [Space] / [Enter] or [Return] - Fires the `click` event if the `mode` property is set to `Interactive`.\n- [Shift] - If [Space] / [Enter] or [Return] is pressed, pressing [Shift] releases the ui5-icon without triggering the click event.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Icon.js\";`",
           "name": "Icon",
           "cssParts": [
             {
@@ -12919,6 +13130,17 @@
             },
             {
               "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.5.0"
+            },
+            {
+              "kind": "field",
               "name": "icon",
               "type": {
                 "text": "string | undefined"
@@ -13083,6 +13305,15 @@
               "fieldName": "accessibilityAttributes",
               "type": {
                 "text": "LinkAccessibilityAttributes"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
               }
             },
             {
@@ -13312,10 +13543,32 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the IDs of the elements that label the input.",
+              "description": "Defines the IDs of the elements that label the component.",
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.5.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the IDs of the elements that describe the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.5.0"
             },
             {
               "kind": "field",
@@ -13707,10 +13960,28 @@
               }
             },
             {
-              "description": "Defines the IDs of the elements that label the input.",
+              "description": "Defines the IDs of the elements that label the component.",
               "name": "accessible-name-ref",
               "default": "undefined",
               "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the IDs of the elements that describe the component.",
+              "name": "accessible-description-ref",
+              "default": "undefined",
+              "fieldName": "accessibleDescriptionRef",
               "type": {
                 "text": "string | undefined"
               }
@@ -15115,7 +15386,7 @@
               "description": "Fired when an item is being clicked.\n\n**Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5parameters": [
                 {
                   "type": {
@@ -15151,7 +15422,7 @@
               "description": "Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.**\n\n**Note:** Since 1.14.0 the event is also fired before a sub-menu opens.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "1.10.0",
               "_ui5parameters": [
                 {
@@ -15160,8 +15431,7 @@
                   },
                   "name": "item",
                   "_ui5privacy": "public",
-                  "description": "The `ui5-menu-item` that triggers opening of the sub-menu or undefined when fired upon root menu opening.",
-                  "_ui5since": "1.14.0"
+                  "description": "The `ui5-menu-item` that triggers opening of the sub-menu or undefined when fired upon root menu opening."
                 }
               ]
             },
@@ -15174,7 +15444,7 @@
               "description": "Fired after the menu is opened. **This event does not bubble.**",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "1.10.0"
             },
             {
@@ -15193,7 +15463,7 @@
               "description": "Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. **This event does not bubble.**",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "1.10.0",
               "_ui5parameters": [
                 {
@@ -15215,7 +15485,7 @@
               "description": "Fired after the menu is closed. **This event does not bubble.**",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "1.10.0"
             }
           ],
@@ -16238,7 +16508,7 @@
               "description": "Fired when the dropdown is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.0.0"
             },
             {
@@ -16538,7 +16808,6 @@
           "tagName": "ui5-mcb-item",
           "customElement": true,
           "_ui5privacy": "public",
-          "_ui5abstract": true,
           "_ui5implements": [
             {
               "name": "IMultiComboBoxItem",
@@ -16591,6 +16860,65 @@
                 ]
               },
               "_ui5privacy": "public"
+            },
+            {
+              "name": "header",
+              "description": "Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.",
+              "_ui5type": {
+                "text": "Array<ListItemBase>",
+                "references": [
+                  {
+                    "name": "ListItemBase",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItemBase.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "superclass": {
+            "name": "ComboBoxItemGroup",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ComboBoxItemGroup.js"
+          },
+          "tagName": "ui5-mcb-item-group",
+          "customElement": true,
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IMultiComboBoxItem",
+              "package": "@ui5/webcomponents",
+              "module": "dist/MultiComboBox.js"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the header text of the <code>ui5-li-group</code>.",
+              "name": "header-text",
+              "default": "undefined",
+              "fieldName": "headerText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Defines the accessible name of the header.",
+              "name": "header-accessible-name",
+              "default": "undefined",
+              "fieldName": "headerAccessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
             }
           ],
           "members": [
@@ -16600,37 +16928,117 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the text of the component.",
+              "description": "Defines the header text of the <code>ui5-li-group</code>.",
+              "privacy": "public",
               "default": "undefined",
-              "privacy": "public"
-            }
-          ],
-          "attributes": [
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
             {
-              "description": "Defines the text of the component.",
-              "name": "header-text",
-              "default": "undefined",
-              "fieldName": "headerText",
+              "kind": "field",
+              "name": "headerAccessibleName",
               "type": {
                 "text": "string | undefined"
+              },
+              "description": "Defines the accessible name of the header.",
+              "privacy": "public",
+              "default": "undefined",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
               }
             }
           ],
-          "superclass": {
-            "name": "UI5Element",
-            "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
-          },
-          "tagName": "ui5-mcb-item-group",
-          "customElement": true,
-          "_ui5since": "2.0.0",
-          "_ui5privacy": "public",
-          "_ui5abstract": true,
-          "_ui5implements": [
+          "events": [
             {
-              "name": "IMultiComboBoxItem",
-              "package": "@ui5/webcomponents",
-              "module": "dist/MultiComboBox.js"
+              "name": "move-over",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<ListItemGroupMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "ListItemGroupMoveEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItemGroup.js"
+                  }
+                ]
+              },
+              "description": "Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.1.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the moved element under `element` property."
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                }
+              ],
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "name": "move",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<ListItemGroupMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "ListItemGroupMoveEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItemGroup.js"
+                  }
+                ]
+              },
+              "description": "Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.1.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the moved element under `element` property."
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                }
+              ],
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Used to style the header item of the group",
+              "name": "header"
             }
           ]
         }
@@ -18404,7 +18812,7 @@
               "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -18419,7 +18827,7 @@
               "description": "Fired after the component is opened.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -18441,7 +18849,7 @@
               "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5parameters": [
                 {
                   "type": {
@@ -18466,7 +18874,7 @@
               "description": "Fired after the component is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -18620,7 +19028,7 @@
               "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": false
             },
             {
               "name": "open",
@@ -18631,7 +19039,7 @@
               "description": "Fired after the component is opened.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": false
             },
             {
               "name": "before-close",
@@ -18649,7 +19057,7 @@
               "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5parameters": [
                 {
                   "type": {
@@ -18670,7 +19078,7 @@
               "description": "Fired after the component is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": false
             }
           ],
           "attributes": [
@@ -18949,7 +19357,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the component is read-only.\n\n**Note:** A read-only component is not editable,\nbut still provides visual feedback upon user interaction.",
+              "description": "Defines whether the component is read-only.\n\n**Note:** A read-only component isn't editable or selectable.\nHowever, because it's focusable, it still provides visual feedback upon user interaction.",
               "privacy": "public"
             },
             {
@@ -18970,7 +19378,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the component is checked or not.\n\n**Note:** The property value can be changed with user interaction,\neither by clicking/tapping on the component,\nor by using the Space or Enter key.",
+              "description": "Defines whether the component is checked or not.\n\n**Note:** The property value can be changed with user interaction,\neither by clicking/tapping on the component,\nor by using the Space or Enter key.\n\n**Note:** Only enabled radio buttons can be checked.\nRead-only radio buttons are not selectable, and therefore are always unchecked.",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15",
               "_ui5formProperty": true,
@@ -19088,7 +19496,7 @@
               }
             },
             {
-              "description": "Defines whether the component is read-only.\n\n**Note:** A read-only component is not editable,\nbut still provides visual feedback upon user interaction.",
+              "description": "Defines whether the component is read-only.\n\n**Note:** A read-only component isn't editable or selectable.\nHowever, because it's focusable, it still provides visual feedback upon user interaction.",
               "name": "readonly",
               "default": "false",
               "fieldName": "readonly",
@@ -19106,7 +19514,7 @@
               }
             },
             {
-              "description": "Defines whether the component is checked or not.\n\n**Note:** The property value can be changed with user interaction,\neither by clicking/tapping on the component,\nor by using the Space or Enter key.",
+              "description": "Defines whether the component is checked or not.\n\n**Note:** The property value can be changed with user interaction,\neither by clicking/tapping on the component,\nor by using the Space or Enter key.\n\n**Note:** Only enabled radio buttons can be checked.\nRead-only radio buttons are not selectable, and therefore are always unchecked.",
               "name": "checked",
               "default": "false",
               "fieldName": "checked",
@@ -20338,7 +20746,7 @@
               "description": "Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -20353,7 +20761,7 @@
               "description": "Fired after the component is opened.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -20375,7 +20783,7 @@
               "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5parameters": [
                 {
                   "type": {
@@ -20400,7 +20808,7 @@
               "description": "Fired after the component is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "inheritedFrom": {
                 "name": "Popup",
                 "module": "dist/Popup.js"
@@ -20569,8 +20977,7 @@
                   },
                   "name": "selectedItems",
                   "_ui5privacy": "public",
-                  "description": "an array of selected items.",
-                  "_ui5since": "1.14.0"
+                  "description": "an array of selected items. Since: 1.14.0"
                 }
               ]
             }
@@ -21077,7 +21484,7 @@
               "description": "Fired after the component's dropdown menu closes.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": false
             }
           ],
           "attributes": [
@@ -24634,6 +25041,16 @@
             },
             {
               "kind": "field",
+              "name": "position",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1",
+              "description": "Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
               "name": "interactive",
               "type": {
                 "text": "boolean"
@@ -24661,6 +25078,15 @@
               "fieldName": "rowKey",
               "type": {
                 "text": "string"
+              }
+            },
+            {
+              "description": "Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.",
+              "name": "position",
+              "default": "-1",
+              "fieldName": "position",
+              "type": {
+                "text": "number"
               }
             },
             {
@@ -24850,6 +25276,154 @@
       "path": "dist/TableUtils.js",
       "declarations": [],
       "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableVirtualizer.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table-virtualizer` component is used inside the `ui5-table` to virtualize the table rows, if the `overflowMode` property of the table is set to 'Scroll'.\nIt is responsible for rendering only the rows that are visible in the viewport and updating them on scroll.\nThis allows large numbers of rows to exist, but maintain high performance by only paying the cost for those that are currently visible.\n\n**Note:** The maximum number of virtualized rows is limited by browser constraints, specifically the maximum supported height for a DOM element.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/TableVirtualizer.js\";`",
+          "name": "TableVirtualizer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rowHeight",
+              "type": {
+                "text": "number"
+              },
+              "default": "45",
+              "description": "Defines the height of the rows in the table.\n\n**Note:** This property is mandatory for the virtualization to work properly.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "rowCount",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "description": "Defines the total count of rows in the table.\n\n**Note:** This property is mandatory for the virtualization to work properly.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "extraRows",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Defines the count of extra rows to be rendered at the top and bottom of the table.\n\n**Note:** This property is experimental and may be changed or deleted in the future.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "reset",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Resets the virtualizer to its initial state and triggers the `range-change` event.",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "range-change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<RangeChangeEventDetail>",
+                "references": [
+                  {
+                    "name": "RangeChangeEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/TableVirtualizer.js"
+                  }
+                ]
+              },
+              "description": "Fired when the virtualizer is changed by user interaction e.g. on scrolling.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "number"
+                  },
+                  "name": "first",
+                  "_ui5privacy": "public",
+                  "description": "The 0-based index of the first children currently rendered"
+                },
+                {
+                  "type": {
+                    "text": "number"
+                  },
+                  "name": "last",
+                  "_ui5privacy": "public",
+                  "description": "The 0-based index of the last children currently rendered"
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the height of the rows in the table.\n\n**Note:** This property is mandatory for the virtualization to work properly.",
+              "name": "row-height",
+              "default": "45",
+              "fieldName": "rowHeight",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "description": "Defines the total count of rows in the table.\n\n**Note:** This property is mandatory for the virtualization to work properly.",
+              "name": "row-count",
+              "default": "100",
+              "fieldName": "rowCount",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "description": "Defines the count of extra rows to be rendered at the top and bottom of the table.\n\n**Note:** This property is experimental and may be changed or deleted in the future.",
+              "name": "extra-rows",
+              "default": "0",
+              "fieldName": "extraRows",
+              "type": {
+                "text": "number"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-table-virtualizer",
+          "customElement": true,
+          "_ui5experimental": "This component is not intended to be used in a productive enviroment. The API is under development and may be changed in the future.",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableVirtualizer",
+            "module": "dist/TableVirtualizer.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-virtualizer",
+          "declaration": {
+            "name": "TableVirtualizer",
+            "module": "dist/TableVirtualizer.js"
+          }
+        }
+      ]
     },
     {
       "kind": "javascript-module",
@@ -26481,6 +27055,21 @@
             },
             {
               "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.5.0",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "type",
               "type": {
                 "text": "ButtonType",
@@ -26646,6 +27235,19 @@
               "fieldName": "accessibilityAttributes",
               "type": {
                 "text": "ButtonAccessibilityAttributes"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
               },
               "inheritedFrom": {
                 "name": "Button",
@@ -26883,6 +27485,26 @@
             },
             {
               "kind": "field",
+              "name": "multiLine",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether tokens are displayed on multiple lines.\n\n**Note:** The `multiLine` property is in an experimental state and is a subject to change.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "showClearAll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether \"Clear All\" button is present. Ensure `multiLine` is enabled, otherwise `showClearAll` will have no effect.\n\n**Note:** The `showClearAll` property is in an experimental state and is a subject to change.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
               "name": "disabled",
               "type": {
                 "text": "boolean"
@@ -26957,7 +27579,24 @@
               "description": "Fired when token selection is changed by user interaction",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "Array<Token>",
+                    "references": [
+                      {
+                        "name": "Token",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/Token.js"
+                      }
+                    ]
+                  },
+                  "name": "tokens",
+                  "_ui5privacy": "public",
+                  "description": "An array of the selected items."
+                }
+              ]
             }
           ],
           "attributes": [
@@ -26966,6 +27605,24 @@
               "name": "readonly",
               "default": "false",
               "fieldName": "readonly",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines whether tokens are displayed on multiple lines.\n\n**Note:** The `multiLine` property is in an experimental state and is a subject to change.",
+              "name": "multi-line",
+              "default": "false",
+              "fieldName": "multiLine",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines whether \"Clear All\" button is present. Ensure `multiLine` is enabled, otherwise `showClearAll` will have no effect.\n\n**Note:** The `showClearAll` property is in an experimental state and is a subject to change.",
+              "name": "show-clear-all",
+              "default": "false",
+              "fieldName": "showClearAll",
               "type": {
                 "text": "boolean"
               }
@@ -27358,8 +28015,8 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true
             }
           ],
@@ -27766,7 +28423,7 @@
               "description": "Fired after the component's dropdown menu closes.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": false
             }
           ],
           "attributes": [
@@ -28278,6 +28935,28 @@
               "_ui5since": "1.8.0"
             },
             {
+              "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.5.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the IDs of the elements that describe the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.5.0"
+            },
+            {
               "kind": "method",
               "name": "walk",
               "return": {
@@ -28545,6 +29224,24 @@
               "name": "accessible-name-ref",
               "default": "undefined",
               "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the IDs of the elements that describe the component.",
+              "name": "accessible-description-ref",
+              "default": "undefined",
+              "fieldName": "accessibleDescriptionRef",
               "type": {
                 "text": "string | undefined"
               }

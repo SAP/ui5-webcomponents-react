@@ -84,7 +84,7 @@ interface ViewSettingsDialogPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ✅|✅|
+   * | ✅|❌|
    */
   onBeforeOpen?: (event: Ui5CustomEvent<ViewSettingsDialogDomRef>) => void;
 

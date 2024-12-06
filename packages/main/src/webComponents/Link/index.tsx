@@ -26,6 +26,14 @@ interface LinkAttributes {
   accessibilityAttributes?: LinkAccessibilityAttributes;
 
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
@@ -191,6 +199,7 @@ const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
   'ui5-link',
   [
     'accessibilityAttributes',
+    'accessibleDescription',
     'accessibleName',
     'accessibleNameRef',
     'accessibleRole',
