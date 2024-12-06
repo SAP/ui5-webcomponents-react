@@ -193,26 +193,23 @@ Cypress.Commands.add('clickUi5SelectOption', { prevSubject: 'element' }, (subjec
 });
 
 Cypress.Commands.add('clickDropdownMenuItemByText', { prevSubject: 'element' }, (subject, text, options = {}) => {
-  cy.wrap(subject)
-    .find('[ui5-responsive-popover]')
-    .then(($popover) => {
-      cy.wrap($popover).should('have.attr', 'open');
-      // necessary as otherwise focusing the ui5-li is flaky
-      cy.wait(300);
-      cy.wrap($popover)
-        .contains(text)
-        .then(($li) => {
-          $li.get(0).focus();
-          cy.wrap($li)
-            .find('li')
-            .click({ force: true, ...options });
-        });
-    });
+  cy.wrap(subject).find('[ui5-responsive-popover]').should('have.attr', 'open');
+  cy.wrap(subject).then(([$dropdown]) => {
+    switch (true) {
+      case $dropdown.hasAttribute('ui5-select'):
+        cy.wrap($dropdown).contains(text).clickDropdownMenuItem(options);
+        break;
+      default:
+        cy.wrap($dropdown).get(`[text="${text}"]`).clickDropdownMenuItem(options);
+        break;
+    }
+  });
 });
 
 Cypress.Commands.add('clickDropdownMenuItem', { prevSubject: 'element' }, (subject, options = {}) => {
   cy.wrap(subject).then(([$option]) => {
     const domRef = ($option as UI5Element).getDomRef();
+    cy.wrap(domRef).focus();
     cy.wrap(domRef).click(options);
   });
 });
