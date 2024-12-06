@@ -1,6 +1,7 @@
 import { useStylesheet, useI18nBundle } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { DRAG_TO_RESIZE } from '../../i18n/i18n-defaults.js';
 import { classNames, styleData } from './VerticalResizer.module.css.js';
 
@@ -136,6 +137,14 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
     isInitial.current = false;
   }, [rowsLength, visibleRows]);
 
+  const [allowed, setAllowed] = useState(false);
+  useEffect(() => {
+    setAllowed(true);
+  }, []);
+  if (!allowed) {
+    return null;
+  }
+
   return (
     <div
       className={classNames.container}
@@ -145,12 +154,15 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
       role="separator"
       title={i18nBundle.getText(DRAG_TO_RESIZE)}
     >
-      {resizerPosition && isDragging && (
-        <div
-          className={classNames.resizer}
-          style={{ top: resizerPosition.top, left: resizerPosition.left, width: resizerPosition.width }}
-        />
-      )}
+      {resizerPosition &&
+        isDragging &&
+        createPortal(
+          <div
+            className={classNames.resizer}
+            style={{ top: resizerPosition.top, left: resizerPosition.left, width: resizerPosition.width }}
+          />,
+          document.body
+        )}
     </div>
   );
 };

@@ -16,130 +16,67 @@ import * as ComponentStories from './AnalyticalTable.stories';
 
 <details>
 
-<summary>Show Code</summary>
+<summary>Show shortened Code</summary>
 
 ```jsx
-<AnalyticalTable
-  columns={[
-    {
-      Header: 'Name',
-      accessor: 'name',
-      headerTooltip: 'Full Name'
+const columns = [
+  {
+    Header: 'Name',
+    accessor: 'name'
+  },
+  {
+    Header: 'Age',
+    accessor: 'age'
+  },
+  {
+    Header: 'Friend Name',
+    accessor: 'friend.name'
+  },
+  {
+    Header: 'Friend Age',
+    accessor: 'friend.age'
+  }
+];
+
+const data = [
+  {
+    age: 80,
+    friend: {
+      age: 68,
+      name: 'Carver Vance'
     },
-    {
-      Header: 'Age',
-      accessor: 'age',
-      className: 'superCustomClass',
-      disableFilters: false,
-      disableGroupBy: true,
-      disableSortBy: false,
-      hAlign: 'End'
+    name: 'Allen Best',
+    status: 'Positive'
+  },
+  {
+    age: 31,
+    friend: {
+      age: 70,
+      name: 'Strickland Gallegos'
     },
-    {
-      Header: 'Friend Name',
-      accessor: 'friend.name'
-    },
-    {
-      accessor: 'friend.age',
-      hAlign: 'End',
-      Header: () => <span>Friend Age</span>,
-      filter: (rows, accessor, filterValue) => {
-        if (filterValue === 'all') {
-          return rows;
-        }
-        if (filterValue === 'true') {
-          return rows.filter((row) => row.values[accessor] >= 21);
-        }
-        return rows.filter((row) => row.values[accessor] < 21);
-      },
-      Filter: ({ column, popoverRef }) => {
-        const handleChange = (event) => {
-          // set filter
-          column.setFilter(event.detail.selectedOption.getAttribute('value'));
-          // close popover
-          popoverRef.current.open = false;
-        };
-        return (
-          <Select
-            onChange={handleChange}
-            style={{ width: '100%' }}
-            value={column.filterValue ? column.filterValue : 'all'}
-          >
-            <Option value="all">Show All</Option>
-            <Option value="true">Can Drink</Option>
-            <Option value="false">Can't Drink</Option>
-          </Select>
-        );
-      }
-    },
-    {
-      Cell: (instance) => {
-        const { cell, row, webComponentsReactProperties } = instance;
-        // disable buttons if overlay is active to prevent focus
-        const isOverlay = webComponentsReactProperties.showOverlay;
-        // console.log('This is your row data', row.original);
-        return (
-          <FlexBox>
-            <Button icon="edit" disabled={isOverlay} />
-            <Button icon="delete" disabled={isOverlay} />
-          </FlexBox>
-        );
-      },
-      cellLabel: ({ cell }) => {
-        // `cell.cellLabel` contains the internal `aria-label` of the respective cell
-        return `${cell.cellLabel} press TAB to focus active elements inside this cell`;
-      },
-      Header: 'Actions',
-      accessor: '.',
-      disableFilters: true,
-      disableGroupBy: true,
-      disableResizing: true,
-      disableSortBy: true,
-      id: 'actions',
-      width: 100
-    }
-  ]}
-  data={[
-    {
-      age: 80,
-      friend: {
-        age: 68,
-        name: 'Carver Vance'
-      },
-      name: 'Allen Best',
-      status: 'Success'
-    },
-    {
-      age: 31,
-      friend: {
-        age: 70,
-        name: 'Strickland Gallegos'
-      },
-      name: 'Combs Fleming',
-      status: 'None'
-    }
-    // shortened for readability
-  ]}
-  filterable
-  groupBy={[]}
-  groupable
-  header="Table Title"
-  infiniteScroll
-  onColumnsReorder={() => {}}
-  onGroup={() => {}}
-  onLoadMore={() => {}}
-  onRowClick={() => {}}
-  onRowExpandChange={() => {}}
-  onRowSelect={() => {}}
-  onSort={() => {}}
-  onTableScroll={() => {}}
-  rowHeight={44}
-  selectedRowIds={{
-    3: true
-  }}
-  selectionMode="Single"
-  withRowHighlight
-/>
+    name: 'Combs Fleming',
+    status: 'None'
+  }
+  // shortened for readability
+];
+
+const TableComp = () => {
+  return (
+    <AnalyticalTable
+      columns={columns}
+      data={data}
+      onAutoResize={() => {}}
+      onColumnsReorder={() => {}}
+      onGroup={() => {}}
+      onLoadMore={() => {}}
+      onRowClick={() => {}}
+      onRowExpandChange={() => {}}
+      onRowSelect={() => {}}
+      onSort={() => {}}
+      onTableScroll={() => {}}
+    />
+  );
+};
 ```
 
 </details>
@@ -616,6 +553,135 @@ const TableComponent = () => {
         // }}
       />
     </ThemeProvider>
+  );
+};
+```
+
+</details>
+
+## Kitchen Sink
+
+<Canvas of={ComponentStories.KitchenSink} />
+
+### Code
+
+<details>
+
+<summary>Show shortened Code</summary>
+
+```jsx
+const data = [
+  {
+    age: 80,
+    friend: {
+      age: 68,
+      name: 'Carver Vance'
+    },
+    name: 'Allen Best',
+    status: 'Positive'
+  },
+  {
+    age: 31,
+    friend: {
+      age: 70,
+      name: 'Strickland Gallegos'
+    },
+    name: 'Combs Fleming',
+    status: 'None'
+  }
+  // shortened for readability
+];
+
+const columns = [
+  {
+    Header: 'Name',
+    accessor: 'name',
+    autoResizable: true,
+    headerTooltip: 'Full Name'
+  },
+  {
+    Header: 'Age',
+    accessor: 'age',
+    autoResizable: true,
+    className: 'superCustomClass',
+    disableFilters: false,
+    disableGroupBy: true,
+    disableSortBy: false,
+    hAlign: 'End'
+  },
+  {
+    Header: 'Friend Name',
+    accessor: 'friend.name',
+    autoResizable: true
+  },
+  {
+    Filter: () => {},
+    Header: () => {},
+    accessor: 'friend.age',
+    autoResizable: true,
+    filter: () => {},
+    hAlign: 'End',
+    headerLabel: 'Friend Age'
+  },
+  {
+    Cell: () => {},
+    Header: 'Actions',
+    accessor: '.',
+    cellLabel: () => {},
+    disableFilters: true,
+    disableGroupBy: true,
+    disableResizing: true,
+    disableSortBy: true,
+    id: 'actions',
+    minWidth: 100,
+    width: 100
+  }
+];
+
+const TestComp2 = () => {
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      alternateRowColor
+      columnOrder={['friend.name', 'friend.age', 'name']}
+      extension={
+        <FlexBox justifyContent="End">
+          <Button accessibleName="edit" design="Transparent" icon="edit" />
+        </FlexBox>
+      }
+      filterable
+      groupable
+      header="Table Title"
+      headerRowHeight={60}
+      highlightField="status"
+      infiniteScroll
+      infiniteScrollThreshold={20}
+      loadingDelay={1000}
+      minRows={5}
+      noDataText="Custom 'noDataText' message"
+      overscanCountHorizontal={5}
+      scaleWidthMode="Smart"
+      selectedRowIds={{
+        3: true
+      }}
+      selectionBehavior="Row"
+      selectionMode="Single"
+      sortable
+      subRowsKey="subRows"
+      visibleRowCountMode="Interactive"
+      visibleRows={5}
+      withRowHighlight
+      onAutoResize={() => {}}
+      onColumnsReorder={() => {}}
+      onGroup={() => {}}
+      onLoadMore={() => {}}
+      onRowClick={() => {}}
+      onRowExpandChange={() => {}}
+      onRowSelect={() => {}}
+      onSort={() => {}}
+      onTableScroll={() => {}}
+    />
   );
 };
 ```
