@@ -60,7 +60,7 @@ const replaceSubComps = {
   ToolbarItem: ['ToolbarSeparator', 'ToolbarSpacer', 'ToolbarButton', 'ToolbarSelect', 'ToolbarSelectOption'],
   TreeItemBase: ['TreeItem', 'TreeItemCustom'],
   AvatarGroupItem: ['Avatar'],
-  TableFeature: ['TableGrowing', 'TableSelection'],
+  TableFeature: ['TableGrowing', 'TableSelection', 'TableVirtualizer'],
   SideNavigationItemBase: ['SideNavigationItem', 'SideNavigationGroup', 'SideNavigationSubItem']
 };
 
