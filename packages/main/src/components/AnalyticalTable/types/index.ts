@@ -600,7 +600,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * The minimum number of rows that are displayed. If the data contains fewer entries than `minRows`, it will be filled with empty rows.
    *
-   * @default `5`
+   * @default 5
    */
   minRows?: number;
   /**
@@ -702,7 +702,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ `IndicationColor`s are available since `v1.26.0`.
    *
-   * @default `"status"`
+   * @default "status"
    */
   highlightField?: string | ((row: RowType) => HighlightColor);
   /**
@@ -748,7 +748,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"Single":__ You can select only one row at once. Clicking on another row will unselect the previously selected row.
    * - __"Multiple":__ You can select multiple rows.
    *
-   * @default `"None"`
+   * @default "None"
    */
   selectionMode?: AnalyticalTableSelectionMode | keyof typeof AnalyticalTableSelectionMode;
 
@@ -763,7 +763,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note:__ For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
    *
-   * @default `"Default"`
+   * @default "Default"
    *
    */
   scaleWidthMode?: AnalyticalTableScaleWidthMode | keyof typeof AnalyticalTableScaleWidthMode;
@@ -802,7 +802,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * You can use this prop to add custom hooks to the table.
    *
-   * @default `[]`
+   * @default []
    */
   tableHooks?: ((hooks: ReactTableHooks) => void)[];
   /**
@@ -810,7 +810,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * __Note__: You can also specify deeply nested sub-rows with accessors like `values.subRows`.
    *
-   * @default `"subRows"`
+   * @default "subRows"
    */
   subRowsKey?: string;
   /**
@@ -826,7 +826,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * The amount of columns to load both behind and ahead of the current window range.
    *
-   * @default `5`
+   * @default 5
    */
   overscanCountHorizontal?: number;
   /**
@@ -849,7 +849,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - __"IncludeHeight":__ Render subcomponents below each row. The height of each initially visible subcomponent (defined by `visibleRows`) is taken into account when defining the body height of the table.
    * - __"IncludeHeightExpandable":__ Render subcomponents as expandable container of each row. The height of each expanded subcomponent of visible rows (defined by `visibleRows`) is taken into account when defining the body height of the table, so that the height of the table changes when a subcomponent is expanded/collapsed. (since: v1.23.0)
    *
-   * @default `"Expandable"`
+   * @default "Expandable"
    *
    * @since 1.19.0
    */
