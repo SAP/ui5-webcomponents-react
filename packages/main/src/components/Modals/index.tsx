@@ -219,6 +219,7 @@ function showToastFn(props: ToastPropTypes, container?: Element | DocumentFragme
   };
 }
 
+// todo: remove this once it's possible initializing popovers with `open=true` again
 function ModalComponent({ modal }: { modal: IModal }) {
   useIsomorphicLayoutEffect(() => {
     const modalElement = modal.ref.current as PopoverDomRef;
