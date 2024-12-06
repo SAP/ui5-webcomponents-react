@@ -16,6 +16,14 @@ interface ColorPickerAttributes {
   name?: string | undefined;
 
   /**
+   * When set to `true`, the alpha slider and inputs for RGB values will not be displayed.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  simplified?: boolean;
+
+  /**
    * Defines the currently selected color of the component.
    *
    * **Note**: use HEX, RGB, RGBA, HSV formats or a CSS color name when modifying this property.
@@ -60,7 +68,7 @@ interface ColorPickerPropTypes
 const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(
   'ui5-color-picker',
   ['name', 'value'],
-  [],
+  ['simplified'],
   [],
   ['change']
 );

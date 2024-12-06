@@ -73,7 +73,7 @@ interface MenuPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onBeforeClose?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeCloseEventDetail>) => void;
 
@@ -86,7 +86,7 @@ interface MenuPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onBeforeOpen?: (event: Ui5CustomEvent<MenuDomRef, MenuBeforeOpenEventDetail>) => void;
 
@@ -97,7 +97,7 @@ interface MenuPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<MenuDomRef>) => void;
 
@@ -108,7 +108,7 @@ interface MenuPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onItemClick?: (event: Ui5CustomEvent<MenuDomRef, MenuItemClickEventDetail>) => void;
 
@@ -119,7 +119,7 @@ interface MenuPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onOpen?: (event: Ui5CustomEvent<MenuDomRef>) => void;
 }

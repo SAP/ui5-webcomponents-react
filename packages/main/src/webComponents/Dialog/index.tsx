@@ -106,10 +106,10 @@ interface DialogAttributes {
   state?: ValueState | keyof typeof ValueState;
 
   /**
-   * Determines whether the component should be stretched to fullscreen.
+   * Determines if the dialog will be stretched to full screen on mobile. On desktop,
+   * the dialog will be stretched to approximately 90% of the viewport.
    *
-   * **Note:** The component will be stretched to approximately
-   * 90% of the viewport.
+   * **Note:** For better usability of the component it is recommended to set this property to "true" when the dialog is opened on phone.
    * @default false
    */
   stretch?: boolean;
@@ -177,7 +177,7 @@ interface DialogPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ✅|✅|
+   * | ✅|❌|
    */
   onBeforeClose?: (event: Ui5CustomEvent<DialogDomRef, PopupBeforeCloseEventDetail>) => void;
 
@@ -188,7 +188,7 @@ interface DialogPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ✅|✅|
+   * | ✅|❌|
    */
   onBeforeOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 
@@ -197,7 +197,7 @@ interface DialogPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 
@@ -206,7 +206,7 @@ interface DialogPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onOpen?: (event: Ui5CustomEvent<DialogDomRef>) => void;
 }
@@ -231,8 +231,7 @@ interface DialogPropTypes
  *
  *
  * ### Responsive Behavior
- * The `stretch` property can be used to stretch the
- * `Dialog` on full screen.
+ * The `stretch` property can be used to stretch the `Dialog` to full screen. For better usability, it's recommended to stretch the dialog to full screen on phone devices.
  *
  * **Note:** When a `Bar` is used in the header or in the footer, you should remove the default dialog's paddings.
  *

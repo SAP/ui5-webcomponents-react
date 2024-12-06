@@ -19,6 +19,12 @@ interface TableRowAttributes {
   navigated?: boolean;
 
   /**
+   * Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.
+   * @default -1
+   */
+  position?: number;
+
+  /**
    * Unique identifier of the row.
    */
   rowKey?: string;
@@ -47,7 +53,7 @@ interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof 
  */
 const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   'ui5-table-row',
-  ['rowKey'],
+  ['position', 'rowKey'],
   ['interactive', 'navigated'],
   [],
   []

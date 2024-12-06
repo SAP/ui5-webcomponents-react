@@ -158,7 +158,7 @@ interface SelectPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<SelectDomRef>) => void;
 

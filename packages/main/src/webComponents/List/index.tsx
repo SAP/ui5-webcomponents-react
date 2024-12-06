@@ -20,13 +20,29 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../
 
 interface ListAttributes {
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Defines the IDs of the elements that describe the component.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the accessible name of the component.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
-   * Defines the IDs of the elements that label the input.
+   * Defines the IDs of the elements that label the component.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
@@ -303,6 +319,8 @@ interface ListPropTypes
 const List = withWebComponent<ListPropTypes, ListDomRef>(
   'ui5-list',
   [
+    'accessibleDescription',
+    'accessibleDescriptionRef',
     'accessibleName',
     'accessibleNameRef',
     'accessibleRole',
