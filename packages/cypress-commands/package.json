@@ -23,7 +23,17 @@
     "clean": "rimraf dist api.json"
   },
   "peerDependencies": {
+    "@ui5/webcomponents": "~2.5.0",
+    "@ui5/webcomponents-base": "~2.5.0",
     "cypress": "^12.0.0 || ^13.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@ui5/webcomponents": {
+      "optional": true
+    },
+    "@ui5/webcomponents-base": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"

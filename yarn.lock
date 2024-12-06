@@ -5567,7 +5567,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-cypress-commands@workspace:packages/cypress-commands"
   peerDependencies:
+    "@ui5/webcomponents": ~2.5.0
+    "@ui5/webcomponents-base": ~2.5.0
     cypress: ^12.0.0 || ^13.0.0
+  peerDependenciesMeta:
+    "@ui5/webcomponents":
+      optional: true
+    "@ui5/webcomponents-base":
+      optional: true
   languageName: unknown
   linkType: soft
 
