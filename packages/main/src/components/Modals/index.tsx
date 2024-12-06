@@ -1,7 +1,7 @@
 'use client';
 
-import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
-import type { RefObject } from 'react';
+import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-base';
+import type { MutableRefObject } from 'react';
 import { createRef, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { getRandomId } from '../../internal/getRandomId.js';
@@ -24,7 +24,7 @@ import type { MessageBoxPropTypes } from '../MessageBox/index.js';
 import { MessageBox } from '../MessageBox/index.js';
 
 type ModalReturnType<DomRef> = {
-  ref: RefObject<DomRef>;
+  ref: MutableRefObject<DomRef>;
 };
 
 type ClosableModalReturnType<DomRef> = ModalReturnType<DomRef> & {
@@ -221,8 +221,9 @@ function showToastFn(props: ToastPropTypes, container?: Element | DocumentFragme
 
 // todo: remove this once it's possible initializing popovers with `open=true` again
 function ModalComponent({ modal }: { modal: IModal }) {
+  const [componentRef, modalsRef] = useSyncRef(modal.ref);
   useIsomorphicLayoutEffect(() => {
-    const modalElement = modal.ref.current as PopoverDomRef;
+    const modalElement = modalsRef.current as PopoverDomRef;
     if (modalElement) {
       requestAnimationFrame(() => {
         modalElement.open = true;
@@ -233,7 +234,7 @@ function ModalComponent({ modal }: { modal: IModal }) {
   const { open: _0, ...props } = modal.props;
 
   // @ts-expect-error: ref is supported by all supported modals
-  return <modal.Component {...props} ref={modal.ref} data-id={modal.id} />;
+  return <modal.Component {...props} ref={componentRef} data-id={modal.id} />;
 }
 
 /**
