@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.4.0...v2.5.0) (2024-12-09)
+
+### Bug Fixes
+
+- **StyleStore:** fix stale reference leading to memory leak ([#6649](https://github.com/SAP/ui5-webcomponents-react/issues/6649)) ([4aaf4f9](https://github.com/SAP/ui5-webcomponents-react/commit/4aaf4f9ce446333678ea669f7e5a41516a74e5c7)), closes [#6646](https://github.com/SAP/ui5-webcomponents-react/issues/6646)
+- **StyleStore:** replace `useSyncExternalStore` shim with `react` import ([#6650](https://github.com/SAP/ui5-webcomponents-react/issues/6650)) ([af15a8c](https://github.com/SAP/ui5-webcomponents-react/commit/af15a8cbea51c55cd440d1da8b410a7e928fe4c4))
+
+### Features
+
+- update to UI5 Web Components 2.5.0 ([#6696](https://github.com/SAP/ui5-webcomponents-react/issues/6696)) ([19a29aa](https://github.com/SAP/ui5-webcomponents-react/commit/19a29aac347a42e5caa3bc85a540bbe5bc4b3cbd))
+
 # [2.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.3...v2.4.0) (2024-11-05)
 
 ### Features

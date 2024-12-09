@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.4.0...v2.5.0) (2024-12-09)
+
+### Bug Fixes
+
+- **AnalyticalTable:** block interaction during loading ([#6602](https://github.com/SAP/ui5-webcomponents-react/issues/6602)) ([de3c96d](https://github.com/SAP/ui5-webcomponents-react/commit/de3c96d32718298d612be97e0a8b296e4908ef40))
+- **AnalyticalTable:** only show `BusyIndicator` if table has data ([#6614](https://github.com/SAP/ui5-webcomponents-react/issues/6614)) ([36aa447](https://github.com/SAP/ui5-webcomponents-react/commit/36aa4477688efbb481089dd29d6032895220f033))
+- **AnalyticalTable:** show vertical resizer while dragging ([#6694](https://github.com/SAP/ui5-webcomponents-react/issues/6694)) ([0715e49](https://github.com/SAP/ui5-webcomponents-react/commit/0715e49a715d8dc9344cd76e282674b11688dc72))
+- **AnalyticalTable:** update column header icons to align with latest specs ([#6593](https://github.com/SAP/ui5-webcomponents-react/issues/6593)) ([b5859ed](https://github.com/SAP/ui5-webcomponents-react/commit/b5859ed5978894ecdc704403d942475ff2ce47b3))
+- **cli:** improve description for events & outline experimental components ([#6625](https://github.com/SAP/ui5-webcomponents-react/issues/6625)) ([799e0dc](https://github.com/SAP/ui5-webcomponents-react/commit/799e0dccf94c86365cbc6d95cb506fd0a0815e55))
+- **deps:** update dependency @tanstack/react-virtual to ~3.11.0 ([#6702](https://github.com/SAP/ui5-webcomponents-react/issues/6702)) ([2d9dbe4](https://github.com/SAP/ui5-webcomponents-react/commit/2d9dbe4d5cd8041e6c19c1d4ad013eb8a351f46e))
+- **deps:** update dependency @tanstack/react-virtual to v3.10.9 ([#6605](https://github.com/SAP/ui5-webcomponents-react/issues/6605)) ([4f76c5d](https://github.com/SAP/ui5-webcomponents-react/commit/4f76c5d9b6d25c0df6cafe6628ffbdc29a003c19))
+- **deps:** update dependency recharts to v2.14.1 ([#6684](https://github.com/SAP/ui5-webcomponents-react/issues/6684)) ([4ce15b0](https://github.com/SAP/ui5-webcomponents-react/commit/4ce15b0a8b6eab78827e62e151e1353519817b30))
+- **deps:** update nextjs monorepo to v15 (major) ([#6538](https://github.com/SAP/ui5-webcomponents-react/issues/6538)) ([6ca32ce](https://github.com/SAP/ui5-webcomponents-react/commit/6ca32ce0c12a30b2733ba891742e5171c31210ff))
+- **MessageViewButton:** add default tooltip & aria-label ([#6595](https://github.com/SAP/ui5-webcomponents-react/issues/6595)) ([d924cbf](https://github.com/SAP/ui5-webcomponents-react/commit/d924cbf4e27437659fa05d7266e407fa79ede310)), closes [#6594](https://github.com/SAP/ui5-webcomponents-react/issues/6594)
+- **NavigationLayout:** add root export ([#6657](https://github.com/SAP/ui5-webcomponents-react/issues/6657)) ([6954d95](https://github.com/SAP/ui5-webcomponents-react/commit/6954d956fbf8413e1d4b8fa93795e1ea505a117b))
+- **ObjectPage:** fix selection & header scroll behavior ([#6663](https://github.com/SAP/ui5-webcomponents-react/issues/6663)) ([62eb7e0](https://github.com/SAP/ui5-webcomponents-react/commit/62eb7e0f66c669c5a52cd05472d84cbfca711117)), closes [#6600](https://github.com/SAP/ui5-webcomponents-react/issues/6600) [#6648](https://github.com/SAP/ui5-webcomponents-react/issues/6648)
+- **ObjectStatus:** fix icon alignment in large & inverted mode ([#6676](https://github.com/SAP/ui5-webcomponents-react/issues/6676)) ([7aebe5f](https://github.com/SAP/ui5-webcomponents-react/commit/7aebe5f6781332b2718dde2552b4f56c4f28add1)), closes [#6668](https://github.com/SAP/ui5-webcomponents-react/issues/6668)
+- **Pie- & DonutChart:** improve `activeSegment` handling & fix focus behavior ([#6686](https://github.com/SAP/ui5-webcomponents-react/issues/6686)) ([d5b612d](https://github.com/SAP/ui5-webcomponents-react/commit/d5b612db5f84550ab83174ba0782f5518b93b94d)), closes [#6683](https://github.com/SAP/ui5-webcomponents-react/issues/6683)
+- **StyleStore:** fix stale reference leading to memory leak ([#6649](https://github.com/SAP/ui5-webcomponents-react/issues/6649)) ([4aaf4f9](https://github.com/SAP/ui5-webcomponents-react/commit/4aaf4f9ce446333678ea669f7e5a41516a74e5c7)), closes [#6646](https://github.com/SAP/ui5-webcomponents-react/issues/6646)
+- **StyleStore:** replace `useSyncExternalStore` shim with `react` import ([#6650](https://github.com/SAP/ui5-webcomponents-react/issues/6650)) ([af15a8c](https://github.com/SAP/ui5-webcomponents-react/commit/af15a8cbea51c55cd440d1da8b410a7e928fe4c4))
+- **VariantManagement:** fix `hideApplyAutomatically` ([#6624](https://github.com/SAP/ui5-webcomponents-react/issues/6624)) ([06a88f5](https://github.com/SAP/ui5-webcomponents-react/commit/06a88f56b43e06d719ce87e4e493eeb1eaa80ad2)), closes [#6618](https://github.com/SAP/ui5-webcomponents-react/issues/6618)
+- **VariantManagement:** fix boolean prop handling ([#6641](https://github.com/SAP/ui5-webcomponents-react/issues/6641)) ([69ed3e0](https://github.com/SAP/ui5-webcomponents-react/commit/69ed3e0cbb24ca02b856580e63c15604e216d750)), closes [#6616](https://github.com/SAP/ui5-webcomponents-react/issues/6616)
+- **VariantManagement:** fix dirty-state and `readOnly` behavior ([#6628](https://github.com/SAP/ui5-webcomponents-react/issues/6628)) ([fe389bc](https://github.com/SAP/ui5-webcomponents-react/commit/fe389bcd439bbd6dd68c51bd6217872eaf7d259f)), closes [#6622](https://github.com/SAP/ui5-webcomponents-react/issues/6622) [#6617](https://github.com/SAP/ui5-webcomponents-react/issues/6617)
+- **VariantManagement:** support React 19 ([#6639](https://github.com/SAP/ui5-webcomponents-react/issues/6639)) ([1b4c37d](https://github.com/SAP/ui5-webcomponents-react/commit/1b4c37d265d6569dc57697ed5a7edc881058779d))
+
+### Features
+
+- **AnalyticalTable:** introduce `popinDisplay` column option ([#6619](https://github.com/SAP/ui5-webcomponents-react/issues/6619)) ([cc2bca7](https://github.com/SAP/ui5-webcomponents-react/commit/cc2bca78ba18dd2d96cfa4a9ab583a349ef8dd04)), closes [#5972](https://github.com/SAP/ui5-webcomponents-react/issues/5972)
+- update to UI5 Web Components 2.5.0 ([#6696](https://github.com/SAP/ui5-webcomponents-react/issues/6696)) ([19a29aa](https://github.com/SAP/ui5-webcomponents-react/commit/19a29aac347a42e5caa3bc85a540bbe5bc4b3cbd))
+
 # [2.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.3...v2.4.0) (2024-11-05)
 
 ### Bug Fixes

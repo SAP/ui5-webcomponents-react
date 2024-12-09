@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.4.0...v2.5.0) (2024-12-09)
+
+### Bug Fixes
+
+- **cli:** improve description for events & outline experimental components ([#6625](https://github.com/SAP/ui5-webcomponents-react/issues/6625)) ([799e0dc](https://github.com/SAP/ui5-webcomponents-react/commit/799e0dccf94c86365cbc6d95cb506fd0a0815e55))
+- **deps:** update dependency recharts to v2.14.1 ([#6684](https://github.com/SAP/ui5-webcomponents-react/issues/6684)) ([4ce15b0](https://github.com/SAP/ui5-webcomponents-react/commit/4ce15b0a8b6eab78827e62e151e1353519817b30))
+- **Pie- & DonutChart:** improve `activeSegment` handling & fix focus behavior ([#6686](https://github.com/SAP/ui5-webcomponents-react/issues/6686)) ([d5b612d](https://github.com/SAP/ui5-webcomponents-react/commit/d5b612db5f84550ab83174ba0782f5518b93b94d)), closes [#6683](https://github.com/SAP/ui5-webcomponents-react/issues/6683)
+
+### Features
+
+- update to UI5 Web Components 2.5.0 ([#6696](https://github.com/SAP/ui5-webcomponents-react/issues/6696)) ([19a29aa](https://github.com/SAP/ui5-webcomponents-react/commit/19a29aac347a42e5caa3bc85a540bbe5bc4b3cbd))
+
 # [2.4.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.3.3...v2.4.0) (2024-11-05)
 
 ### Bug Fixes
