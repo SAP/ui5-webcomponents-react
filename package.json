@@ -32,14 +32,14 @@
     "sb:prepare-cem": "node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents --out ./.storybook/custom-element-manifests/main.json && node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents-fiori --out ./.storybook/custom-element-manifests/fiori.json"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "8.4.5",
-    "@storybook/addon-essentials": "8.4.5",
-    "@storybook/blocks": "8.4.5",
-    "@storybook/manager-api": "8.4.5",
-    "@storybook/preview-api": "8.4.5",
-    "@storybook/react": "8.4.5",
-    "@storybook/react-vite": "8.4.5",
-    "@storybook/theming": "8.4.5",
+    "@storybook/addon-a11y": "8.4.7",
+    "@storybook/addon-essentials": "8.4.7",
+    "@storybook/blocks": "8.4.7",
+    "@storybook/manager-api": "8.4.7",
+    "@storybook/preview-api": "8.4.7",
+    "@storybook/react": "8.4.7",
+    "@storybook/react-vite": "8.4.7",
+    "@storybook/theming": "8.4.7",
     "@ui5/webcomponents": "2.5.0",
     "@ui5/webcomponents-compat": "2.5.0",
     "@ui5/webcomponents-fiori": "2.5.0",
@@ -47,7 +47,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remark-gfm": "^4.0.0",
-    "storybook": "8.4.5",
+    "storybook": "8.4.7",
     "tocbot": "4.32.2"
   },
   "devDependencies": {
