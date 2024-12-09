@@ -14,6 +14,7 @@ import type {
   VerticalAlign
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../types/index.js';
+import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
 
 export enum RenderColumnTypes {
   Filter = 'Filter',
@@ -60,7 +61,12 @@ export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> 
    * @param props The props are added to the table instance
    */
   render?: (type: RenderColumnTypes | keyof typeof RenderColumnTypes, props: Record<string, any>) => ReactNode;
-  setFilter?: (val: string) => void;
+  /**
+   * Set the filter value for the current column.
+   *
+   * __Note:__ If set to `undefined`, the filter is removed.
+   */
+  setFilter?: (val: string | undefined) => void;
   sortDescFirst?: boolean;
   sortedIndex?: number;
   toggleHidden?: (hidden?: boolean) => void;
@@ -139,7 +145,12 @@ export interface TableInstance {
   selectedFlatRows?: RowType[];
   setAllFilters?: (filtersObjectArray: Record<string, any>[]) => void;
   setColumnOrder?: any;
-  setFilter?: (columnId: string, filterValue: string) => void;
+  /**
+   * Set the filter value for the defined column.
+   *
+   * __Note:__ If set to `undefined`, the filter is removed.
+   */
+  setFilter?: (columnId: string, filterValue: string | undefined) => void;
   setGlobalFilter?: (filterValue: string) => void;
   setGroupBy?: (columnIds: string[]) => void;
   setHiddenColumns?: (columnIds: string[]) => void;
@@ -323,6 +334,11 @@ export interface TableInstanceWithPopoverProps extends TableInstance {
   popoverProps: PopoverProps;
 }
 
+export interface FilterProps {
+  column: ColumnType;
+  popoverRef: MutableRefObject<PopoverDomRef>;
+}
+
 export interface AnalyticalTableColumnDefinition {
   // base properties
   /**
@@ -403,7 +419,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Filter Component to be rendered in the Header.
    */
-  Filter?: string | ComponentType<any> | ((props?: any) => ReactNode);
+  Filter?: ComponentType<FilterProps> | ((props: FilterProps) => ReactNode);
   /**
    * Disable filters for this column.
    */
@@ -420,8 +436,10 @@ export interface AnalyticalTableColumnDefinition {
    * * `exactText`
    * * `exactTextCase`
    * * `equals`
+   *
+   * __Note:__ When the standard `Filter` component is used, the filter function is not triggered if the `filterValue` is empty, as the filter is then removed.
    */
-  filter?: string | ((rows: any[], columnIds: string[], filterValue: string) => any);
+  filter?: string | ((rows: RowType[], columnIds: string[], filterValue: string) => RowType[]);
 
   // useGlobalFilter
   /**
