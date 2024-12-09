@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ui5/webcomponents": "2.4.0",
-    "@ui5/webcomponents-fiori": "2.4.0",
-    "@ui5/webcomponents-react": "2.4.0",
+    "@ui5/webcomponents": "2.5.0",
+    "@ui5/webcomponents-fiori": "2.5.0",
+    "@ui5/webcomponents-react": "2.5.0",
     "@types/node": "22.10.1",
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
