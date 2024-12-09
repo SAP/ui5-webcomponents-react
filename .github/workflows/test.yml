@@ -38,8 +38,7 @@ jobs:
       - name: Install 19
         if: ${{ matrix.react == '19' }}
         run: |
-          yarn set resolution "@types/react@npm:*" "npm:types-react@19"
-          yarn set resolution "@types/react-dom@npm:*" "npm:types-react-dom@19"
+          yarn add "@types/react@19" "@types/react-dom@19" --dev
           yarn add react@19 react-dom@19
 
       - name: Cypress run
