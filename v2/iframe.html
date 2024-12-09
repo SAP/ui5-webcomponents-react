@@ -525,10 +525,18 @@
     padding: 1rem;
   }
 
+  details {
+    cursor: pointer;
+  }
+
   @media (min-width: 1330px) and (max-width: 1520px) {
     .sbdocs-wrapper {
       justify-content: flex-start !important;
     }
+  }
+
+  .docs-story {
+    background-color: var(--sapBackgroundColor);
   }
 
   .sbdocs-wrapper {
@@ -589,6 +597,27 @@
     position: static;
   }
 
+  /* table in props description (table in ArgsTable) */
+  .docblock-argstable-body table {
+    max-width: 10rem;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    text-align: center;
+  }
+  .docblock-argstable-body table th {
+    background-color: #eceff1;
+    color: #2e3438 !important;
+    border: 1px solid #dededf !important;
+    padding: 0px !important;
+    padding-block: 0.125rem !important;
+  }
+  .docblock-argstable-body table td {
+    border: 1px solid #dededf !important;
+    padding: 0px !important;
+    padding-block: 0.125rem !important;
+  }
+
   /* TODO remove this workaround as soon as https://github.com/storybookjs/storybook/issues/20497 is fixed */
   .docs-story > div > div[scale] {
     min-height: 20px;
@@ -601,7 +630,7 @@
   }
 </script>
 
-    <script type="module" crossorigin src="./assets/iframe-W-e108NS.js"></script>
+    <script type="module" crossorigin src="./assets/iframe-BrSuG4Kv.js"></script>
   </head>
 
   <body>
@@ -700,7 +729,7 @@
         <strong>Missing Context/Providers</strong>: You can use decorators to supply specific
         contexts or providers, which are sometimes necessary for components to render correctly. For
         detailed instructions on using decorators, please visit the
-        <a href="https://storybook.js.org/docs/react/writing-stories/decorators"
+        <a href="https://storybook.js.org/docs/writing-stories/decorators"
           >Decorators documentation</a
         >.
       </li>
