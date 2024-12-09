@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.15](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.14...v1.29.15) (2024-12-09)
+
+### Bug Fixes
+
+- **Pie- & DonutChart:** improve `activeSegment` handling & fix focus behavior ([#6695](https://github.com/SAP/ui5-webcomponents-react/issues/6695)) ([1949db6](https://github.com/SAP/ui5-webcomponents-react/commit/1949db6d60502d50eb8ec04abf0e9d16a81d6a65)), closes [#6683](https://github.com/SAP/ui5-webcomponents-react/issues/6683)
+
 ## [1.29.12](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.11...v1.29.12) (2024-10-17)
 
 ### Bug Fixes

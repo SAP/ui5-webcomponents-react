@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.15](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.14...v1.29.15) (2024-12-09)
+
+### Bug Fixes
+
+- **ObjectStatus:** fix icon alignment in large & inverted mode ([#6677](https://github.com/SAP/ui5-webcomponents-react/issues/6677)) ([2f32377](https://github.com/SAP/ui5-webcomponents-react/commit/2f32377c83f7db0554782cb8b48929d165a3d727)), closes [#6668](https://github.com/SAP/ui5-webcomponents-react/issues/6668)
+
 ## [1.29.14](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.13...v1.29.14) (2024-11-25)
 
 ### Bug Fixes
