@@ -1,20 +1,25 @@
-import type { FC } from 'react';
 import { useCallback } from 'react';
 import { stopPropagation } from '../../../../internal/stopPropagation.js';
+import type { InputPropTypes } from '../../../../webComponents/Input/index.js';
 import { Input } from '../../../../webComponents/Input/index.js';
+import type { FilterProps } from '../../types/index.js';
 
-export const DefaultFilterComponent: FC<any> = ({ column }) => {
-  const handleChange = useCallback(
+export const DefaultFilterComponent = ({ column }: FilterProps) => {
+  const handleInput: InputPropTypes['onInput'] = useCallback(
     (e) => {
+      // Setting the filter to `undefined` removes it
       column.setFilter(e.target.value || undefined);
     },
     [column.setFilter]
   );
-  const handleKeyDown = (e) => {
+
+  const handleKeyDown: InputPropTypes['onKeyDown'] = (e) => {
     if (e.key !== 'Enter') {
       stopPropagation(e);
     }
   };
-  // todo remove "undefined" check if wc issue has been fixed (https://github.com/SAP/ui5-webcomponents/issues/2616)
-  return <Input onInput={handleChange} value={column.filterValue ?? ''} showClearIcon onKeyDown={handleKeyDown} />;
+
+  return <Input onInput={handleInput} value={column.filterValue} showClearIcon onKeyDown={handleKeyDown} />;
 };
+
+DefaultFilterComponent.displayName = 'DefaultFilterComponent';
