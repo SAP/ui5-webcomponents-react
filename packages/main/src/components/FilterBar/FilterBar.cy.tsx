@@ -298,6 +298,60 @@ describe('FilterBar.cy.tsx', () => {
     });
   });
 
+  it('select-all without required', () => {
+    const TestComp = (props) => {
+      const [selectedFilters, setSelectedFilters] = useState('');
+      const [savedVisibleFilters, setSavedVisibleFilters] = useState('');
+
+      const handleSelectionChange: FilterBarPropTypes['onFiltersDialogSelectionChange'] = (e) => {
+        setSelectedFilters(Array.from(e.selectedFilterKeys).join(' '));
+      };
+      const handleSave: FilterBarPropTypes['onFiltersDialogSave'] = (e) => {
+        setSavedVisibleFilters(e.detail.selectedFilterKeys.join(' '));
+      };
+      return (
+        <>
+          <FilterBar {...props} onFiltersDialogSelectionChange={handleSelectionChange} onFiltersDialogSave={handleSave}>
+            <FilterGroupItem label="INPUT" filterKey="0">
+              <Input placeholder="Placeholder" value="123123" data-testid="INPUT" />
+            </FilterGroupItem>
+            <FilterGroupItem label="SWITCH" filterKey="1">
+              <Switch checked={true} data-testid="SWITCH" />
+            </FilterGroupItem>
+            <FilterGroupItem label="SELECT" filterKey="2">
+              <Select data-testid="SELECT">
+                <Option selected={true}>Option 1</Option>
+                <Option>Option 2</Option>
+                <Option>Option 3</Option>
+                <Option>Option 4</Option>
+              </Select>
+            </FilterGroupItem>
+          </FilterBar>
+          <hr />
+          <span>Selected: </span>
+          <span data-testid="selected">{selectedFilters}</span>
+          <br />
+          <span>Saved: </span>
+          <span data-testid="saved">{savedVisibleFilters}</span>
+        </>
+      );
+    };
+
+    cy.mount(<TestComp />);
+
+    cy.findByTestId('selected', '0 1 2');
+    cy.get('[text="Filters"]').click({ force: true });
+    cy.get('[ui5-checkbox]').first().click();
+    cy.findByTestId('selected', '');
+    cy.get('[ui5-checkbox]').eq(1).click();
+    cy.findByTestId('selected', '0');
+    cy.get('[ui5-checkbox]').first().click();
+    cy.get('[ui5-checkbox]').first().click();
+
+    cy.findByText('OK').click();
+    cy.findByTestId('selected', '');
+  });
+
   // todo selection, group + list view
   it('Dialog search', () => {
     cy.mount(
