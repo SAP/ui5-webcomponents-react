@@ -46,7 +46,7 @@ export function AppShellBar() {
     <>
       <ShellBar
         primaryTitle={'UI5 Web Components for React Examples'}
-        secondaryTitle={'Remix.run App'}
+        secondaryTitle={'React Router Example'}
         startButton={
           pathname !== '/' && (
             <Button

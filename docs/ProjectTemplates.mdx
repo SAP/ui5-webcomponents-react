@@ -1,9 +1,9 @@
-import { Footer, ProjectTemplate, TableOfContent, LabelWithWrapping } from '@sb/components';
-import { Meta } from '@storybook/blocks';
-import { Link, FlexBox, FlexBoxJustifyContent, FlexBoxWrap, Label } from '@ui5/webcomponents-react';
+import { Footer, LabelWithWrapping, ProjectTemplate, TableOfContent } from '@sb/components';
 import NextLogo from '@sb/images/logo-nextjs.svg';
+import ReactRouterLogo from '@sb/images/logo-react-router.svg';
 import ViteLogo from '@sb/images/logo-vitejs.svg';
-import RemixLogo from '@sb/images/logo-remix.svg';
+import { Meta } from '@storybook/blocks';
+import { FlexBox, FlexBoxJustifyContent, FlexBoxWrap, Label } from '@ui5/webcomponents-react';
 
 <Meta title="Project Templates & Examples" />
 
@@ -98,7 +98,9 @@ A curated list of minimal project templates and examples to get started using UI
   >
     <ul>
       <li>
-        <LabelWithWrapping>Routing and Data Fetching using the createBrowserRouter of React Router</LabelWithWrapping>
+        <LabelWithWrapping>
+          Routing and Data Fetching using the <code>createBrowserRouter</code> of React Router
+        </LabelWithWrapping>
       </li>
       <li>
         <Label>Cypress Component Test setup</Label>
@@ -112,17 +114,16 @@ A curated list of minimal project templates and examples to get started using UI
     </ul>
   </ProjectTemplate>
   <ProjectTemplate
-    title={'Remix'}
-    logo={RemixLogo}
-    logoAttribution={'Remix.run Logo. Original Source: https://remix.run'}
-    href={'https://github.com/SAP/ui5-webcomponents-react/tree/main/examples/remix-ts'}
+    title={'React Router v7'}
+    subtitle={'Previously: Remix Template'}
+    logo={ReactRouterLogo}
+    logoAttribution={'React Router Logo. Original Source: https://reactrouter.com'}
+    href={'https://github.com/SAP/ui5-webcomponents-react/tree/main/examples/react-router-ts'}
     isTypeScript
   >
     <ul>
       <li>
-        <Label>
-          Remix template using <code>remix-island</code>
-        </Label>
+        <Label>{`React Router v7 with server side rendering`}</Label>
       </li>
       <li>
         <Label>Theming</Label>
