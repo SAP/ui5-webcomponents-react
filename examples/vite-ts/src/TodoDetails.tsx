@@ -9,7 +9,7 @@ import {
   Switch,
   TextArea
 } from '@ui5/webcomponents-react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router';
 import { Todo } from './mockImplementations/mockData.ts';
 import classes from './TodoDetails.module.css';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';

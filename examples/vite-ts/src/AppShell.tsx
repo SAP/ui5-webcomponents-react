@@ -17,7 +17,7 @@ import {
   Title
 } from '@ui5/webcomponents-react';
 import { useRef, useState } from 'react';
-import { Outlet, useLocation, useMatches, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useMatches, useNavigate } from 'react-router';
 import { SingleTodoHandle } from './main.tsx';
 import { Todo } from './mockImplementations/mockData.ts';
 import classes from './AppShell.module.css';
