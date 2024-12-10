@@ -349,7 +349,12 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('[ui5-checkbox]').first().click();
 
     cy.findByText('OK').click();
-    cy.findByTestId('selected', '');
+    cy.findByTestId('saved', '');
+
+    cy.get('[text="Filters"]').click({ force: true });
+    cy.get('[ui5-checkbox]').first().click();
+    cy.findByText('OK').click();
+    cy.findByTestId('saved', '0 1 2');
   });
 
   // todo selection, group + list view
