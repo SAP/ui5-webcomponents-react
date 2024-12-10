@@ -3,7 +3,8 @@ import ErrorScreenIllustration from '@ui5/webcomponents-fiori/dist/illustrations
 import { BreadcrumbsItem, IllustratedMessage, ThemeProvider } from '@ui5/webcomponents-react';
 import { ReactNode, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, defer, LoaderFunctionArgs, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, LoaderFunctionArgs } from 'react-router';
+import { RouterProvider } from 'react-router/dom';
 import './index.css';
 import AppShell from './AppShell.tsx';
 import { fetchToDos } from './mockImplementations/mockAPIs.ts';
@@ -19,7 +20,7 @@ export interface SingleTodoHandle {
 // To simulate a slow loader increase the `delay`, to simulate a failed request set `shouldThrow` to `true`
 async function toDosLoader() {
   const todosPromise = fetchToDos({ delay: 500, shouldThrow: false });
-  return defer({ todos: todosPromise });
+  return { todos: todosPromise };
 }
 
 async function singleToDoLoader({ params }: LoaderFunctionArgs) {
