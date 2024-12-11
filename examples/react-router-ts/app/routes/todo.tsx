@@ -1,5 +1,3 @@
-import { json, LoaderFunctionArgs } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
 import {
   DatePicker,
   DynamicPage,
@@ -15,21 +13,20 @@ import {
 } from '@ui5/webcomponents-react';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import { Todo, todos } from '~/mockData/todos';
+import type { Route } from './+types/todo';
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export async function loader({ params }: Route.LoaderArgs) {
   const todo = await new Promise<Todo | undefined>((resolve) => {
     setTimeout(() => {
       resolve(todos.at(Number(params.id)));
     }, 500);
   });
 
-  return json({ data: { todo } });
-};
+  return todo;
+}
 
-export default function TodoDetails() {
-  const {
-    data: { todo }
-  } = useLoaderData<typeof loader>();
+export default function TodoDetails({ loaderData }: Route.ComponentProps) {
+  const todo = loaderData;
 
   return (
     <>

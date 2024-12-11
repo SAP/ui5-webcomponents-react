@@ -1,41 +1,41 @@
 {
-  "name": "remix-ts",
+  "name": "react-router-ts",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix vite:build",
-    "dev": "remix vite:dev",
+    "build": "react-router build",
+    "dev": "react-router dev",
     "lint": "eslint .",
-    "start": "remix-serve ./build/server/index.js",
-    "typecheck": "tsc"
+    "start": "cross-env NODE_ENV=production react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@remix-run/node": "^2.9.1",
-    "@remix-run/react": "^2.9.1",
-    "@remix-run/serve": "^2.9.1",
+    "@react-router/node": "^7.0.0",
+    "@react-router/serve": "^7.0.0",
     "@ui5/webcomponents": "^2.0.0",
     "@ui5/webcomponents-fiori": "^2.0.0",
     "@ui5/webcomponents-react": "^2.0.0",
-    "isbot": "^5.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "remix-island": "^0.2.0"
+    "cross-env": "7.0.3",
+    "isbot": "^5.1.17",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.0.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.9.1",
-    "@types/react": "^18.2.20",
-    "@types/react-dom": "^18.2.7",
+    "@react-router/dev": "^7.0.0",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
     "eslint": "^9.15.0",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
-    "typescript": "^5.1.6",
     "globals": "^15.10.0",
+    "typescript": "^5.1.6",
     "typescript-eslint": "^8.15.0",
-    "vite": "^5.1.0",
+    "vite": "^5.4.11",
     "vite-tsconfig-paths": "^5.0.0"
   },
   "engines": {

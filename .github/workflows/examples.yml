@@ -20,7 +20,7 @@ jobs:
         path:
           - nextjs-app
           - nextjs-pages
-          - remix-ts
+          - react-router-ts
           - vite-ts
       fail-fast: false
     steps:

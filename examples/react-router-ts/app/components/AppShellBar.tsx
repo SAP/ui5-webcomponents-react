@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from '@remix-run/react';
+import { useLocation, useNavigate } from 'react-router';
 import { getTheme, setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';
 import paletteIcon from '@ui5/webcomponents-icons/dist/palette.js';
@@ -46,7 +46,7 @@ export function AppShellBar() {
     <>
       <ShellBar
         primaryTitle={'UI5 Web Components for React Examples'}
-        secondaryTitle={'Remix.run App'}
+        secondaryTitle={'React Router Example'}
         startButton={
           pathname !== '/' && (
             <Button
