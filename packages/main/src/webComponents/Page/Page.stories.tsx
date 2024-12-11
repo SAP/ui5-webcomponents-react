@@ -26,7 +26,6 @@ const meta = {
       <div>
         <Bar
           design={BarDesign.FloatingFooter}
-          startContent={<Button icon="home" title="Go Home" />}
           endContent={
             <>
               <Button design={ButtonDesign.Positive}>Accept</Button>
