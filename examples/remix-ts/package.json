@@ -35,7 +35,7 @@
     "typescript": "^5.1.6",
     "globals": "^15.10.0",
     "typescript-eslint": "^8.15.0",
-    "vite": "^5.1.0",
+    "vite": "^6.0.0",
     "vite-tsconfig-paths": "^5.0.0"
   },
   "engines": {
