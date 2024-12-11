@@ -23,17 +23,19 @@ const meta = {
       </Bar>
     ),
     footer: (
-      <Bar
-        design={BarDesign.FloatingFooter}
-        startContent={<Button icon="home" title="Go Home" />}
-        endContent={
-          <>
-            <Button design={ButtonDesign.Positive}>Accept</Button>
-            <Button design={ButtonDesign.Negative}>Decline</Button>
-            <Button design={ButtonDesign.Transparent}>Cancel</Button>
-          </>
-        }
-      />
+      <div>
+        <Bar
+          design={BarDesign.FloatingFooter}
+          startContent={<Button icon="home" title="Go Home" />}
+          endContent={
+            <>
+              <Button design={ButtonDesign.Positive}>Accept</Button>
+              <Button design={ButtonDesign.Negative}>Decline</Button>
+              <Button design={ButtonDesign.Transparent}>Cancel</Button>
+            </>
+          }
+        />
+      </div>
     )
   },
   argTypes: {
