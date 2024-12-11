@@ -16,8 +16,8 @@ const meta = {
     header: (
       <Bar
         design={BarDesign.Header}
-        startContent={<Button icon="home" title="Go Home" />}
-        endContent={<Button icon="settings" title="Go to Settings" />}
+        startContent={<Button icon="home" title="Go Home" accessibleName="Home" />}
+        endContent={<Button icon="settings" title="Go to Settings" accessibleName="Settings" />}
       >
         <Label>Title</Label>
       </Bar>
