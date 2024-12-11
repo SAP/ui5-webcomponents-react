@@ -16,24 +16,25 @@ const meta = {
     header: (
       <Bar
         design={BarDesign.Header}
-        startContent={<Button icon="home" title="Go Home" />}
-        endContent={<Button icon="settings" title="Go to Settings" />}
+        startContent={<Button icon="home" title="Go Home" accessibleName="Home" />}
+        endContent={<Button icon="settings" title="Go to Settings" accessibleName="Settings" />}
       >
         <Label>Title</Label>
       </Bar>
     ),
     footer: (
-      <Bar
-        design={BarDesign.FloatingFooter}
-        startContent={<Button icon="home" title="Go Home" />}
-        endContent={
-          <>
-            <Button design={ButtonDesign.Positive}>Accept</Button>
-            <Button design={ButtonDesign.Negative}>Decline</Button>
-            <Button design={ButtonDesign.Transparent}>Cancel</Button>
-          </>
-        }
-      />
+      <div>
+        <Bar
+          design={BarDesign.FloatingFooter}
+          endContent={
+            <>
+              <Button design={ButtonDesign.Positive}>Accept</Button>
+              <Button design={ButtonDesign.Negative}>Decline</Button>
+              <Button design={ButtonDesign.Transparent}>Cancel</Button>
+            </>
+          }
+        />
+      </div>
     )
   },
   argTypes: {
