@@ -1,6 +1,6 @@
 import { CommandsAndQueries, Footer, TableOfContent } from '@sb/components';
 import { Meta } from '@storybook/addon-docs';
-import API from './api.json';
+import API from './api-queries.json';
 
 <Meta title="Queries" />
 
@@ -10,8 +10,6 @@ import API from './api.json';
 
 Here you can find all available Queries of the `@ui5/webcomponents-cypress-commands` package.
 
-<CommandsAndQueries
-  api={API.children.find((file) => file.name === 'queries')?.children?.[0]?.children?.[0]?.children ?? []}
-/>
+<CommandsAndQueries api={API} />
 
 <Footer />

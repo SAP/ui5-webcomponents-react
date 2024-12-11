@@ -1,171 +1,256 @@
 import { Heading, Markdown } from '@storybook/blocks';
+import dedent from 'dedent';
 import { Fragment } from 'react';
 
-interface CommandsAndQueries {
-  id: number;
+// Note: these types may be incomplete or faulty. If an error is thrown, first check if the interfaces have to be extended.
+interface TextNode {
+  type: 'text';
+  value: string;
+}
+
+interface StrongNode {
+  type: 'strong';
+  children: TextNode[];
+}
+
+interface InlineCodeNode {
+  type: 'inlineCode';
+  value: string;
+}
+
+interface ParagraphNode {
+  type: 'paragraph';
+  children: Array<TextNode | StrongNode | InlineCodeNode>;
+}
+
+interface RootNode {
+  type: 'root';
+  children: ParagraphNode[];
+}
+
+interface TypeExpression {
+  type: 'NameExpression' | 'OptionalType' | 'TypeApplication';
+  name?: string;
+  expression?: TypeExpression;
+  applications?: TypeExpression[];
+}
+
+interface Tag {
+  title: string;
+  description?: string | RootNode;
+  lineNumber: number;
+  type?: TypeExpression;
+  name?: string;
+  default?: string;
+}
+
+interface Loc {
+  start: {
+    line: number;
+    column: number;
+    index: number;
+  };
+  end: {
+    line: number;
+    column: number;
+    index: number;
+  };
+}
+
+interface Context {
+  loc: Loc;
+  file: string;
+}
+
+interface Example {
+  description: string;
+}
+
+interface Param {
+  title: string;
   name: string;
-  kind: number;
-  kindString: string;
-  flags: CommandsAndQueriesFlags;
-  sources: Source[];
-  signatures: Signature[];
+  lineNumber: number;
+  description: RootNode;
+  type: TypeExpression;
+  default?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface CommandsAndQueriesFlags {}
+interface Return {
+  title: string;
+  type: TypeExpression;
+}
 
-interface Signature {
-  id: number;
+interface Path {
   name: string;
-  kind: number;
-  kindString: string;
-  flags: CommandsAndQueriesFlags;
-  comment: SignatureComment;
-  parameters: Parameter[];
-  type: Type;
-}
-
-interface SignatureComment {
-  summary: Summary[];
-  blockTags: BlockTag[];
-}
-
-interface BlockTag {
-  tag: string;
-  content: Summary[];
-}
-
-interface Summary {
   kind: string;
-  text: string;
+  scope: string;
 }
 
-interface Parameter {
-  id: number;
+interface Members {
+  global: any[];
+  inner: any[];
+  instance: any[];
+  events: any[];
+  static: any[];
+}
+
+interface FunctionMetadata {
+  description: RootNode;
+  tags: Tag[];
+  loc: Loc;
+  context: Context;
+  augments: any[];
+  examples: Example[];
+  implements: any[];
+  params: Param[];
+  properties: any[];
+  returns: Return[];
+  sees: any[];
+  throws: any[];
+  todos: any[];
+  yields: any[];
   name: string;
-  kind: number;
-  kindString: string;
-  flags: ParameterFlags;
-  comment?: ParameterComment;
-  type: Type;
+  kind: 'function';
+  memberof: string;
+  scope: 'instance';
+  members: Members;
+  path: Path[];
+  namespace: string;
 }
 
-interface ParameterComment {
-  summary: Summary[];
+function generateMdCodeBlock(codeStr: string) {
+  return dedent`
+\`\`\`ts
+${codeStr}
+\`\`\`
+    
+`;
 }
 
-interface ParameterFlags {
-  isOptional?: boolean;
-}
+function generateGenericType(typeExpression: TypeExpression) {
+  if (typeExpression) {
+    const { expression, applications } = typeExpression;
 
-interface Type {
-  type: string;
-  name: string;
-  typeArguments?: Type[];
-  qualifiedName?: string;
-  package?: string;
-}
-
-interface Source {
-  fileName: string;
-  line: number;
-  character: number;
-  url: string;
-}
-
-function typeArgumentsString(typeArguments: Type[] | undefined) {
-  if (!typeArguments) {
-    return '';
-  }
-  return typeArguments.map((args, index, arr) => {
-    let str = args.name;
-    if (arr.length > 1 && index + 1 !== arr.length) {
-      str += ', ';
+    if (typeof typeExpression?.name === 'string') {
+      return typeExpression.name;
     }
-    return str;
-  });
+    return `${expression.name}<${applications
+      ?.map((app) => {
+        return app.name;
+      })
+      .join(', ')}>`;
+  }
+  return '';
 }
 
-export const CommandsAndQueries = ({ api }: { api: CommandsAndQueries[] }) => {
-  return api.map((item) => {
-    const { signatures } = item;
-    const { parameters } = signatures[0];
+function generateParamTypes(type: Param['type']) {
+  if (type?.name) {
+    return type.name;
+  }
+  return generateGenericType(type.expression);
+}
+
+function generateExample(tags: FunctionMetadata['tags']) {
+  const example = tags.find((tag) => tag.title === 'example');
+  if (example && typeof example.description === 'string') {
     return (
-      <Fragment key={item.name}>
-        <Heading>{item.name}</Heading>
-        <code>
-          {item.name}(
-          {parameters
-            ?.map(
-              (param) =>
-                `${param.name}:${param.type.name}${
-                  param.type?.typeArguments?.length ? `<${typeArgumentsString(param.type.typeArguments)}>` : ''
-                }`
-            )
-            .join(', ')}
-          ):
-          {signatures[0]?.type?.name}
-          {`<${typeArgumentsString(signatures[0].type?.typeArguments)}>`}
-        </code>
-        <div>
-          <Markdown>
-            {signatures[0]?.comment.summary.reduce((acc, cur) => `${acc}${cur.text.replaceAll('\n', '<br>')}`, '')}
-          </Markdown>
-          {signatures[0]?.comment?.blockTags
-            ?.filter((blockTag) => {
-              return blockTag.tag === '@example';
-            })
-            .map((example, index) => {
-              return (
-                <Fragment key={`${example.tag}${index}`}>
-                  {index === 0 && <b>Example</b>}
-                  <Markdown>{example.content.reduce((acc, cur) => `${acc}${cur.text}`, '')}</Markdown>
-                </Fragment>
-              );
+      <>
+        <Markdown>### Example</Markdown>
+        <Markdown>{generateMdCodeBlock(example.description)}</Markdown>
+      </>
+    );
+  }
+  return null;
+}
+
+function formatText(text: ParagraphNode['children'][0]) {
+  switch (text.type) {
+    case 'text':
+      return text.value;
+    case 'strong':
+      return `**${text.children.reduce((acc, cur) => {
+        acc += cur.value;
+        return acc;
+      }, '')}**`;
+    case 'inlineCode':
+      return `\`${text.value}\``;
+    default:
+      if (typeof text.value === 'string') {
+        return text.value;
+      }
+      console.warn('Unknown text type!');
+      return '';
+  }
+}
+
+function generateDescription(description: RootNode) {
+  return description.children.reduce((acc, descriptionNode) => {
+    if (descriptionNode.type === 'paragraph') {
+      acc += descriptionNode.children.reduce((acc, p) => {
+        acc += formatText(p);
+        return acc;
+      }, '');
+      acc += '\n\n';
+      return acc;
+    }
+  }, '');
+}
+
+export const CommandsAndQueries = ({ api }: { api: FunctionMetadata[] }) => {
+  return api
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((item) => {
+      return (
+        <Fragment key={item.name}>
+          <Heading>{item.name}</Heading>
+          <code>
+            {item.name}(
+            {item.params
+              ?.map((param) => {
+                return `${param.name}${param.type.type === 'OptionalType' ? '?' : ''}:${generateParamTypes(param.type)}`;
+              })
+              .join(', ')}
+            ):
+            {item.returns.map(({ type }) => {
+              return generateGenericType(type);
             })}
-          {parameters?.length && (
+          </code>
+          <Markdown>{generateDescription(item.description)}</Markdown>
+          {generateExample(item.tags)}
+          {!!item.params.length && (
             <>
-              <b>Parameters</b>
+              <Markdown>### Parameters</Markdown>
               <table>
                 <thead>
                   <tr>
-                    <td>Name</td>
-                    <td>Type</td>
-                    <td>Description</td>
+                    <td>
+                      <b>Name</b>
+                    </td>
+                    <td>
+                      <b>Type</b>
+                    </td>
+                    <td>
+                      <b>Description</b>
+                    </td>
                   </tr>
                 </thead>
                 <tbody>
-                  {parameters?.map((param) => (
-                    <tr key={param.name}>
-                      <td>
-                        {param.name}
-                        {param.flags?.isOptional && '?'}
-                      </td>
-                      <td>
-                        <code>
-                          {param.type?.name}
-                          {param.type?.typeArguments &&
-                            `<${param.type?.typeArguments && typeArgumentsString(param.type.typeArguments)}>`}
-                        </code>
-                      </td>
-                      <td>
-                        {param.comment?.summary.reduce((acc, cur) => `${acc}${cur.text.replaceAll('\n', '<br>')}`, '')}
-                      </td>
-                    </tr>
-                  ))}
+                  {item.params.map((param) => {
+                    return (
+                      <tr key={param.name}>
+                        <td>{param.type.type === 'OptionalType' ? <i>{param.name}?</i> : param.name}</td>
+                        <td>{generateParamTypes(param.type)}</td>
+                        <td>{param?.description ? generateDescription(param.description) : '-'}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </>
           )}
-          <p>
-            <b>Source:</b> <a href={item.sources[0].url}>{`${item.sources[0].fileName}:${item.sources[0].line}`}</a>
-          </p>
-        </div>
-        <br />
-        <br />
-      </Fragment>
-    );
-  });
+        </Fragment>
+      );
+    });
 };
 
 CommandsAndQueries.displayName = 'CommandsAndQueries';
