@@ -373,7 +373,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
   };
 
   useEffect(() => {
-    if (selectedFilters?.length) {
+    if (selectedFilters) {
       selectionChangePayloadRef.current = { selectedFilterKeys: selectedFilters };
     }
   }, [selectedFilters]);
