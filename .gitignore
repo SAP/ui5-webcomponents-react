@@ -20,7 +20,8 @@ lerna-debug.log
 !.yarn/sdks
 !.yarn/versions
 
-packages/cypress-commands/api.json
+packages/cypress-commands/api-commands.json
+packages/cypress-commands/api-queries.json
 
 packages/main/scripts/wrapperGeneration/json
 packages/main/tmp

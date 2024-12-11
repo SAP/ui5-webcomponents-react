@@ -28,7 +28,7 @@
     "create-webcomponents-wrapper-compat": "(cd packages/cli && tsc) && yarn run wrappers:compat && yarn run sb:prepare-cem && eslint --fix ./packages/compat/src/components/*/index.tsx",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
     "postinstall": "husky && yarn setup",
-    "create-cypress-commands-docs": "typedoc && rimraf temp/typedoc",
+    "create-cypress-commands-docs": "documentation build ./packages/cypress-commands/src/commands.ts -f json -o ./packages/cypress-commands/api-commands.json && documentation build ./packages/cypress-commands/src/queries.ts -f json -o ./packages/cypress-commands/api-queries.json",
     "sb:prepare-cem": "node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents --out ./.storybook/custom-element-manifests/main.json && node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents-fiori --out ./.storybook/custom-element-manifests/fiori.json"
   },
   "dependencies": {
@@ -72,6 +72,7 @@
     "cypress": "13.16.1",
     "cypress-real-events": "^1.8.1",
     "dedent": "^1.0.0",
+    "documentation": "14.0.3",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.3",
@@ -94,7 +95,6 @@
     "postcss-nesting": "^13.0.0",
     "prettier": "^3.0.0",
     "rimraf": "^6.0.0",
-    "typedoc": "0.26.11",
     "typescript": "5.7.2",
     "typescript-eslint": "^8.8.0",
     "vite": "^5.0.0",
