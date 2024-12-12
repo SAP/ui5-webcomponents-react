@@ -6,7 +6,8 @@ import { isChromatic } from './utils';
 const isDevMode = process.env.NODE_ENV === 'development';
 
 const addons = [
-  './addons/version-switch',
+  // todo: enable again once https://github.com/storybookjs/storybook/pull/30003 is published
+  // './addons/version-switch',
   {
     name: '@storybook/addon-essentials',
     options: {
