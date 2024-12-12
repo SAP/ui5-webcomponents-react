@@ -35,14 +35,13 @@ jobs:
       - name: Install
         run: yarn install --immutable
 
-      - name: Install 19
-        if: ${{ matrix.react == '19' }}
+      - name: Install 18
+        if: ${{ matrix.react == '18' }}
         run: |
-          yarn add "@types/react@19" "@types/react-dom@19" --dev
-          yarn add react@19 react-dom@19
+          yarn add "@types/react@18" "@types/react-dom@18" --dev
+          yarn add react@18 react-dom@18
 
       - name: Cypress run
-        if: ${{ (matrix.react == '19') }}
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
