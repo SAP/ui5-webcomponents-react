@@ -18,6 +18,47 @@ import * as ComponentStories from './Toolbar.stories';
 
 <ControlsWithNote of={ComponentStories.Default} />
 
+## Opening Popovers via ToolbarButton
+
+Since the `ToolbarButton` is an [abstract UI5 web component](?path=/docs/knowledge-base-faq--docs#what-are-abstract-ui5-web-components), the opener of the `Popover` needs the DOM reference of the actual element to position the popover correctly.
+Starting with v2.5.0 of `@ui5/webcomponents(-react)`, the `detail` property of the `ToolbarButton`'s click handler now includes a `targetRef` property, which can be used as the opener.
+
+<Canvas of={ComponentStories.OpenPopover} />
+
+### Example Code
+
+```tsx
+function ToolbarWithPopover() {
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const popoverRef = useRef<PopoverDomRef>(null);
+  return (
+    <>
+      <Toolbar>
+        <ToolbarButton
+          onClick={(e) => {
+            const { targetRef } = e.detail;
+            if (popoverRef.current) {
+              popoverRef.current.opener = targetRef;
+              setPopoverOpen(true);
+            }
+          }}
+          text="Open Popover"
+        />
+      </Toolbar>
+      <Popover
+        open={popoverOpen}
+        ref={popoverRef}
+        onClose={() => {
+          setPopoverOpen(false);
+        }}
+      >
+        Content
+      </Popover>
+    </>
+  );
+}
+```
+
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## ToolbarButton

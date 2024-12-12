@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ToolbarAlign from '@ui5/webcomponents/dist/types/ToolbarAlign.js';
+import { useRef, useState } from 'react';
+import { Popover } from '../Popover/index.js';
+import type { PopoverDomRef } from '../Popover/index.js';
 import { ToolbarButton } from '../ToolbarButton/index.js';
 import { ToolbarSelect } from '../ToolbarSelect/index.js';
 import { ToolbarSelectOption } from '../ToolbarSelectOption/index.js';
@@ -42,4 +45,37 @@ export const Default: Story = {
       </ToolbarSelect>
     </Toolbar>
   )
+};
+
+export const OpenPopover: Story = {
+  name: 'Opening Popovers via ToolbarButton',
+  render(args) {
+    const [popoverOpen, setPopoverOpen] = useState(false);
+    const popoverRef = useRef<PopoverDomRef>(null);
+    return (
+      <>
+        <Toolbar {...args}>
+          <ToolbarButton
+            onClick={(e) => {
+              const { targetRef } = e.detail;
+              if (popoverRef.current) {
+                popoverRef.current.opener = targetRef;
+                setPopoverOpen(true);
+              }
+            }}
+            text="Open Popover"
+          />
+        </Toolbar>
+        <Popover
+          open={popoverOpen}
+          ref={popoverRef}
+          onClose={() => {
+            setPopoverOpen(false);
+          }}
+        >
+          Content
+        </Popover>
+      </>
+    );
+  }
 };
