@@ -14,9 +14,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ui5/webcomponents": "2.5.0",
-    "@ui5/webcomponents-fiori": "2.5.0",
-    "@ui5/webcomponents-icons": "2.5.0",
+    "@ui5/webcomponents": "2.5.1",
+    "@ui5/webcomponents-fiori": "2.5.1",
+    "@ui5/webcomponents-icons": "2.5.1",
     "@ui5/webcomponents-react": "2.5.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
