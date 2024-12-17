@@ -12,7 +12,8 @@ const meta = {
     dataset: {
       control: { disable: true }
     }
-  }
+  },
+  args: { dataset: dummyDiscreteDataSet }
 } satisfies Meta<typeof TimelineChart>;
 
 export default meta;
@@ -20,7 +21,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    dataset: dummyDiscreteDataSet,
     totalDuration: 36,
     isDiscrete: true,
     start: 1,
