@@ -20,7 +20,7 @@ import {
 import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error.js';
 import { classNames, styleData } from './util/TimelineChart.module.css.js';
 
-interface TimelineChartProps extends CommonProps {
+export interface TimelineChartProps extends CommonProps {
   /**
    * The data is an array of objects that is displayed on the chart.
    */

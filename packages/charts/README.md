@@ -1,16 +1,22 @@
 # @ui5/webcomponents-react-charts
 
-Chart library for ui5-webcomponents-react.
+Chart library built on top of [recharts](https://recharts.org/) for ui5-webcomponents-react.
 
-## Usage
-
-### Installation
+## Installation
 
 ```bash
 npm install @ui5/webcomponents-react-charts
 ```
 
-### Documentation
+## Accessibility
+
+Charts only offer limited accessibility support with only basic built-in features, so it’s essential to ensure your implementation meets the accessibility standards of your application.
+
+## React 19 support
+
+To use this library with React 19 you have to override your `react-is` version to match your React version!
+
+## Documentation
 
 You can find an interactive documentation in our [Storybook](https://sap.github.io/ui5-webcomponents-react/).
 

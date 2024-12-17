@@ -1,0 +1,50 @@
+import { Footer, TableOfContent } from '@sb/components';
+import { Markdown, Meta, Story } from '@storybook/blocks';
+import ReadMe from '../packages/charts/README.md?raw';
+import { StoryCarousel } from '@sb/components/StoryCarousel.tsx';
+import { Default as BarDefault } from '../packages/charts/src/components/BarChart/BarChart.stories.tsx';
+import { Default as BulletDefault } from '../packages/charts/src/components/BulletChart/BulletChart.stories.tsx';
+import { Default as ColumnDefault } from '../packages/charts/src/components/ColumnChart/ColumnChart.stories.tsx';
+import { Default as ColumnTrendDefault } from '../packages/charts/src/components/ColumnChartWithTrend/ColumnChartWithTrend.stories.tsx';
+import { Default as ComposedDefault } from '../packages/charts/src/components/ComposedChart/ComposedChart.stories.tsx';
+import { Default as DonutDefault } from '../packages/charts/src/components/DonutChart/DonutChart.stories.tsx';
+import { Default as LineDefault } from '../packages/charts/src/components/LineChart/LineChart.stories.tsx';
+import { Default as PieDefault } from '../packages/charts/src/components/PieChart/PieChart.stories.tsx';
+import { Default as RadarDefault } from '../packages/charts/src/components/RadarChart/RadarChart.stories.tsx';
+import { Default as RadialDefault } from '../packages/charts/src/components/RadialChart/RadialChart.stories.tsx';
+import { Default as ScatterDefault } from '../packages/charts/src/components/ScatterChart/ScatterChart.stories.tsx';
+import { Title } from '@ui5/webcomponents-react';
+
+<Meta title="Charts / Docs" />
+
+<TableOfContent />
+
+<Markdown>{ReadMe.split('## Documentation')[0].trim()}</Markdown>
+
+## Charts
+
+<StoryCarousel>
+  {[
+    { name: 'BarChart', component: BarDefault },
+    { name: 'BulletChart', component: BulletDefault },
+    { name: 'ColumnChart', component: ColumnDefault },
+    { name: 'ColumnChartWithTrend', component: ColumnTrendDefault },
+    { name: 'ComposedChart', component: ComposedDefault },
+    { name: 'DonutChart', component: DonutDefault },
+    { name: 'LineChart', component: LineDefault },
+    { name: 'PieChart', component: PieDefault },
+    { name: 'RadarChart', component: RadarDefault },
+    { name: 'RadialChart', component: RadialDefault },
+    { name: 'ScatterChart', component: ScatterDefault }
+    //TimelineChart doesn't render in `Story` here
+  ].map((chart) => {
+    return (
+      <div style={{ width: '100%' }} key={chart.name}>
+        <Title>{chart.name}</Title>
+        <Story of={chart.component} />
+      </div>
+    );
+  })}
+</StoryCarousel>
+
+<Footer />
