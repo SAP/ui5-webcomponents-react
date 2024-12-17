@@ -111,7 +111,8 @@
     ]
   },
   "resolutions": {
-    "tocbot": "4.32.2"
+    "tocbot": "4.32.2",
+    "react-is": "^19"
   },
   "type": "module",
   "nyc": {
