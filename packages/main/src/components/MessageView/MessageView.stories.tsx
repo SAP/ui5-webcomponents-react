@@ -48,7 +48,7 @@ const meta = {
       <MessageItem
         key={3}
         titleText={'Warning Message Type'}
-        subtitleText={'Warnign without details'}
+        subtitleText={'Warning without details'}
         type={ValueState.Critical}
         counter={3}
       />,
