@@ -1,12 +1,11 @@
 import type { Virtualizer } from '@tanstack/react-virtual';
-import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { forwardRef, Fragment } from 'react';
-import type { DivWithCustomScrollProp } from '../types/index.js';
+import type { ClassNames, DivWithCustomScrollProp } from '../types/index.js';
 import { RenderColumnTypes } from '../types/index.js';
-import { classNames, styleData } from './Resizer.module.css.js';
 import { ColumnHeader } from './index.js';
 
 interface ColumnHeaderContainerProps {
+  classNames: ClassNames;
   headerProps: Record<string, any>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headerGroup: Record<string, any>;
@@ -18,10 +17,16 @@ interface ColumnHeaderContainerProps {
 }
 
 export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderContainerProps>((props, ref) => {
-  const { headerProps, headerGroup, resizeInfo, isRtl, columnVirtualizer, uniqueId, showVerticalEndBorder } = props;
-
-  useStylesheet(styleData, 'Resizer');
-
+  const {
+    headerProps,
+    headerGroup,
+    resizeInfo,
+    isRtl,
+    columnVirtualizer,
+    uniqueId,
+    showVerticalEndBorder,
+    classNames
+  } = props;
   const { key, ...reactTableHeaderProps } = headerProps;
 
   return (
@@ -71,6 +76,7 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
               virtualColumn={virtualColumn}
               columnVirtualizer={columnVirtualizer}
               isRtl={isRtl}
+              classNames={classNames}
             >
               {column.render(RenderColumnTypes.Header)}
             </ColumnHeader>

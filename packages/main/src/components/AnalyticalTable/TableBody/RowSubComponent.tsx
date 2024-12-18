@@ -1,8 +1,7 @@
 import type { VirtualItem } from '@tanstack/react-virtual';
-import { useStylesheet } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
-import { classNames, styleData } from './RowSubComponent.module.css.js';
+import type { ClassNames } from '../types/index.js';
 
 interface RowSubComponent {
   subComponentsHeight: Record<string, { rowId: string; subComponentHeight?: number }>;
@@ -14,6 +13,7 @@ interface RowSubComponent {
   rows: Record<string, unknown>[];
   alwaysShowSubComponent: boolean;
   rowIndex: number;
+  classNames: ClassNames;
 }
 
 export const RowSubComponent = (props: RowSubComponent) => {
@@ -26,11 +26,10 @@ export const RowSubComponent = (props: RowSubComponent) => {
     children,
     rows,
     alwaysShowSubComponent,
-    rowIndex
+    rowIndex,
+    classNames
   } = props;
   const subComponentRef = useRef(null);
-
-  useStylesheet(styleData, RowSubComponent.displayName);
 
   useEffect(() => {
     const subComponentHeightObserver = new ResizeObserver((entries) => {

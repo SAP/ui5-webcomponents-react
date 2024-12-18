@@ -1,9 +1,9 @@
-import { useStylesheet, useI18nBundle } from '@ui5/webcomponents-react-base';
+import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import type { MutableRefObject } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { DRAG_TO_RESIZE } from '../../i18n/i18n-defaults.js';
-import { classNames, styleData } from './VerticalResizer.module.css.js';
+import type { ClassNames } from './types/index.js';
 
 interface VerticalResizerProps {
   analyticalTableRef: MutableRefObject<any>;
@@ -15,6 +15,7 @@ interface VerticalResizerProps {
   rowsLength: number;
   visibleRows: number;
   handleOnLoadMore: (e: Event) => void;
+  classNames: ClassNames;
 }
 
 const isTouchEvent = (e, touchEvent) => {
@@ -34,10 +35,9 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
     popInRowHeight,
     rowsLength,
     visibleRows,
-    handleOnLoadMore
+    handleOnLoadMore,
+    classNames
   } = props;
-
-  useStylesheet(styleData, VerticalResizer.displayName);
 
   const startY = useRef(null);
   const verticalResizerRef = useRef(null);
@@ -147,7 +147,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
 
   return (
     <div
-      className={classNames.container}
+      className={classNames.verticalResizerContainer}
       ref={verticalResizerRef}
       onMouseDown={handleResizeStart}
       onTouchStart={handleResizeStart}
@@ -158,7 +158,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
         isDragging &&
         createPortal(
           <div
-            className={classNames.resizer}
+            className={classNames.verticalResizer}
             style={{ top: resizerPosition.top, left: resizerPosition.left, width: resizerPosition.width }}
           />,
           document.body

@@ -4,7 +4,7 @@ import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
-import { ThemingParameters, useStylesheet } from '@ui5/webcomponents-react-base';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type {
   AriaAttributes,
@@ -17,9 +17,8 @@ import type {
 import { useRef, useState } from 'react';
 import { Icon } from '../../../webComponents/Icon/index.js';
 import { Text } from '../../../webComponents/Text/index.js';
-import type { ColumnType, DivWithCustomScrollProp } from '../types/index.js';
+import type { ClassNames, ColumnType, DivWithCustomScrollProp } from '../types/index.js';
 import { RenderColumnTypes } from '../types/index.js';
-import { classNames, styleData } from './ColumnHeader.module.css.js';
 
 export interface ColumnHeaderProps {
   visibleColumnIndex: number;
@@ -37,6 +36,7 @@ export interface ColumnHeaderProps {
   children: ReactNode | ReactNode[];
   columnId?: string;
   showVerticalEndBorder: boolean;
+  classNames: ClassNames;
 
   //getHeaderProps()
   id: string;
@@ -54,7 +54,6 @@ export interface ColumnHeaderProps {
 }
 
 export const ColumnHeader = (props: ColumnHeaderProps) => {
-  useStylesheet(styleData, ColumnHeader.displayName);
   const {
     id,
     children,
@@ -82,7 +81,8 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     title,
     'aria-label': ariaLabel,
     'aria-sort': ariaSort,
-    showVerticalEndBorder
+    showVerticalEndBorder,
+    classNames
   } = props;
 
   const columnIndex = virtualColumn.index;

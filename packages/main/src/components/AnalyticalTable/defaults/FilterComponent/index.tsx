@@ -19,7 +19,7 @@ export const DefaultFilterComponent = ({ column }: FilterProps) => {
     }
   };
 
-  return <Input onInput={handleInput} value={column.filterValue} showClearIcon onKeyDown={handleKeyDown} />;
+  return <Input onInput={handleInput} value={column.filterValue ?? ''} showClearIcon onKeyDown={handleKeyDown} />;
 };
 
 DefaultFilterComponent.displayName = 'DefaultFilterComponent';

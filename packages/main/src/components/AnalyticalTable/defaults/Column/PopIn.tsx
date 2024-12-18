@@ -1,4 +1,3 @@
-import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { makeRenderer } from 'react-table';
 import { AnalyticalTablePopinDisplay } from '../../../../enums/AnalyticalTablePopinDisplay.js';
 import { FlexBoxAlignItems } from '../../../../enums/FlexBoxAlignItems.js';
@@ -8,14 +7,19 @@ import { Text } from '../../../../webComponents/Text/index.js';
 import { FlexBox } from '../../../FlexBox/index.js';
 import type { TableInstance } from '../../types/index.js';
 import { RenderColumnTypes } from '../../types/index.js';
-import { classNames, styleData } from './PopIn.module.css.js';
 
 export const PopIn = (instance: TableInstance) => {
-  const { state, contentToRender, cell, row, internalRowHeight } = instance;
-  useStylesheet(styleData, PopIn.displayName);
+  const {
+    state,
+    contentToRender,
+    cell,
+    row,
+    internalRowHeight,
+    webComponentsReactProperties: { classes: classNames }
+  } = instance;
 
   return (
-    <FlexBox direction={FlexBoxDirection.Column} className={classNames.container}>
+    <FlexBox direction={FlexBoxDirection.Column} className={classNames.popInContainer}>
       <FlexBox
         alignItems={
           contentToRender !== RenderColumnTypes.Grouped && contentToRender !== RenderColumnTypes.Expandable
@@ -71,7 +75,7 @@ export const PopIn = (instance: TableInstance) => {
               key={id}
             >
               {popinDisplay !== AnalyticalTablePopinDisplay.WithoutHeader && column?.Header && (
-                <div className={classNames.header} data-component-name="AnalyticalTablePopinHeaderContainer">
+                <div className={classNames.popInHeader} data-component-name="AnalyticalTablePopinHeaderContainer">
                   {renderHeader()}:
                 </div>
               )}

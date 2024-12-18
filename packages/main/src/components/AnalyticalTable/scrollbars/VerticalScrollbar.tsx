@@ -1,10 +1,10 @@
-import { ThemingParameters, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
+import { ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MutableRefObject, RefObject } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import { FlexBoxDirection } from '../../../enums/index.js';
 import { FlexBox } from '../../FlexBox/index.js';
-import { classNames, styleData } from './VerticalScrollbar.module.css.js';
+import type { ClassNames } from '../types/index.js';
 
 interface VerticalScrollbarProps {
   internalRowHeight: number;
@@ -14,6 +14,7 @@ interface VerticalScrollbarProps {
   scrollContainerRef: MutableRefObject<HTMLDivElement>;
   parentRef: MutableRefObject<HTMLDivElement>;
   nativeScrollbar: boolean;
+  classNames: ClassNames;
 }
 
 export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarProps>((props, ref) => {
@@ -24,11 +25,11 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
     tableBodyHeight,
     scrollContainerRef,
     nativeScrollbar,
-    parentRef
+    parentRef,
+    classNames
   } = props;
   const [componentRef, containerRef] = useSyncRef(ref);
   const scrollElementRef = useRef(null);
-  useStylesheet(styleData, VerticalScrollbar.displayName);
 
   const hasHorizontalScrollbar = tableRef?.current?.offsetWidth !== tableRef?.current?.scrollWidth;
 

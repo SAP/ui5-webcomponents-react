@@ -2,11 +2,10 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
-import { CssSizeVariables, useCurrentTheme, useStylesheet } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, useCurrentTheme } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { Button, Icon } from '../../../../webComponents/index.js';
 import { RenderColumnTypes } from '../../types/index.js';
-import { classNames, styleData } from './Expandable.module.css.js';
 
 const getPadding = (level) => {
   switch (level) {
@@ -25,9 +24,13 @@ const getPadding = (level) => {
 
 export const Expandable = (props) => {
   const { cell, row, column, visibleColumns: columns, webComponentsReactProperties } = props;
-  const { renderRowSubComponent, alwaysShowSubComponent, translatableTexts } = webComponentsReactProperties;
+  const {
+    renderRowSubComponent,
+    alwaysShowSubComponent,
+    translatableTexts,
+    classes: classNames
+  } = webComponentsReactProperties;
   const currentTheme = useCurrentTheme();
-  useStylesheet(styleData, Expandable.displayName);
   const shouldRenderButton = currentTheme === 'sap_horizon' || currentTheme === 'sap_horizon_dark';
   const tableColumns = columns.filter(
     ({ id }) =>
@@ -69,7 +72,7 @@ export const Expandable = (props) => {
                   mode={IconMode.Interactive}
                   name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
                   data-component-name="AnalyticalTableExpandIcon"
-                  className={classNames.icon}
+                  className={classNames.expandableIcon}
                 />
               )}
             </span>

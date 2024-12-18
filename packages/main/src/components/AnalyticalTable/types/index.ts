@@ -15,6 +15,9 @@ import type {
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../types/index.js';
 import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
+import type { classNames } from '../AnalyticalTable.module.css.js';
+
+export type ClassNames = typeof classNames;
 
 export enum RenderColumnTypes {
   Filter = 'Filter',
@@ -208,7 +211,7 @@ export interface WCRPropertiesType {
   tagNamesWhichShouldNotSelectARow: Set<string>;
   tableRef: MutableRefObject<DivWithCustomScrollProp>;
   selectionBehavior: AnalyticalTablePropTypes['selectionBehavior'];
-  classes: Record<string, string>;
+  classes: ClassNames;
   onAutoResize: AnalyticalTablePropTypes['onAutoResize'];
   onRowClick: AnalyticalTablePropTypes['onRowClick'];
   onRowExpandChange: AnalyticalTablePropTypes['onRowExpandChange'];

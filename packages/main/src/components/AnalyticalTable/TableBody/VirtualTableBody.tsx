@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { AnalyticalTableSubComponentsBehavior } from '../../../enums/index.js';
 import type {
   AnalyticalTablePropTypes,
+  ClassNames,
   DivWithCustomScrollProp,
   ScrollToRefType,
   TableInstance,
@@ -16,7 +17,7 @@ import { EmptyRow } from './EmptyRow.js';
 import { RowSubComponent as SubComponent } from './RowSubComponent.js';
 
 interface VirtualTableBodyProps {
-  classes: Record<string, string>;
+  classes: ClassNames;
   prepareRow: TableInstance['prepareRow'];
   rows: TableInstance['rows'];
   isTreeTable?: AnalyticalTablePropTypes['isTreeTable'];
@@ -214,6 +215,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 rows={rows}
                 alwaysShowSubComponent={alwaysShowSubComponent}
                 rowIndex={visibleRowIndex + 1}
+                classNames={classes}
               >
                 {RowSubComponent}
               </SubComponent>

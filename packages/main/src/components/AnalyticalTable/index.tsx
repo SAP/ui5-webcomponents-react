@@ -767,6 +767,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     columnVirtualizer={columnVirtualizer}
                     uniqueId={uniqueId}
                     showVerticalEndBorder={showVerticalEndBorder}
+                    classNames={classNames}
                   />
                 )
               );
@@ -836,6 +837,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               scrollContainerRef={scrollContainerRef}
               parentRef={parentRef}
               nativeScrollbar={className?.includes('ui5-content-native-scrollbars')}
+              classNames={classNames}
             />
           )}
         </FlexBox>
@@ -850,6 +852,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             rowsLength={rows.length}
             visibleRows={internalVisibleRowCount}
             handleOnLoadMore={handleOnLoadMore}
+            classNames={classNames}
           />
         )}
       </div>
