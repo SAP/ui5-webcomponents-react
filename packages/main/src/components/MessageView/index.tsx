@@ -92,8 +92,14 @@ export const resolveMessageGroups = (children: ReactElement<MessageItemPropTypes
     return acc;
   }, {});
 
-  return Object.entries<ReactElement<MessageItemPropTypes>[]>(groups).sort((a, b) => {
-    return a[0].localeCompare(b[0]);
+  return Object.entries<ReactElement<MessageItemPropTypes>[]>(groups).sort(([keyA], [keyB]) => {
+    if (keyA === '' && keyB !== '') {
+      return -1;
+    }
+    if (keyA !== '' && keyB === '') {
+      return 1;
+    }
+    return 0;
   });
 };
 
