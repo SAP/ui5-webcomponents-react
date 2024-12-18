@@ -4,6 +4,7 @@ import {
   legendConfig,
   secondaryDimensionDataSet,
   simpleDataSet,
+  stackedNormalizedConfig,
   tooltipConfig
 } from '../../resources/DemoProps.js';
 import { ColumnChart } from './ColumnChart.js';
@@ -84,6 +85,10 @@ export const WithStacks: Story = {
     ],
     dataset: complexDataSet
   }
+};
+
+export const WithNormalizedStacks: Story = {
+  args: stackedNormalizedConfig
 };
 
 export const WithFormatter: Story = {

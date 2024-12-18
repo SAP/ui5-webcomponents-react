@@ -1,0 +1,28 @@
+import { Canvas } from '@storybook/addon-docs';
+
+### Normalized stacked chart
+
+By transforming the `dataset`, a stacked chart can be normalized.
+
+<Canvas of={props.of} />
+
+#### Example normalize function
+
+```ts
+function normalizeData(data: Record<string, number | string>[]) {
+  return data.map((item) => {
+    const total = Object.values(item).reduce((acc: number, cur) => {
+      return typeof cur === 'number' ? acc + cur : acc;
+    }, 0);
+
+    const normalizedItem = Object.entries(item).map(([key, val]) => {
+      if (typeof val === 'number') {
+        return [key, total ? (val / total) * 100 : 0];
+      }
+      return [key, val];
+    });
+
+    return Object.fromEntries(normalizedItem);
+  });
+}
+```

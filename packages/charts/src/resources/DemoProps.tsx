@@ -602,3 +602,41 @@ export const complexBulletDataset = [
     volume: 320
   }
 ];
+
+const percentFormatter = (val) => `${val.toFixed(1)}%`;
+function normalizeData(data: Record<string, number | string>[]) {
+  return data.map((item) => {
+    const total = Object.values(item).reduce((acc: number, cur) => {
+      return typeof cur === 'number' ? acc + cur : acc;
+    }, 0) as number;
+
+    const normalizedItem = Object.entries(item).map(([key, val]) => {
+      if (typeof val === 'number') {
+        return [key, total ? (val / total) * 100 : 0];
+      }
+      return [key, val];
+    });
+
+    return Object.fromEntries(normalizedItem);
+  });
+}
+export const stackedNormalizedConfig = {
+  measures: [
+    {
+      accessor: 'users',
+      stackId: 'A',
+      formatter: percentFormatter
+    },
+    {
+      accessor: 'sessions',
+      stackId: 'A',
+      formatter: percentFormatter
+    },
+    {
+      accessor: 'volume',
+      stackId: 'A',
+      formatter: percentFormatter
+    }
+  ],
+  dataset: normalizeData(complexDataSet)
+};

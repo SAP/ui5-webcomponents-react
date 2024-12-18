@@ -4,6 +4,7 @@ import {
   legendConfig,
   secondaryDimensionDataSet,
   simpleDataSet,
+  stackedNormalizedConfig,
   tooltipConfig
 } from '../../resources/DemoProps.js';
 import { BarChart } from './BarChart.js';
@@ -157,6 +158,10 @@ export const WithHighlightedMeasure: Story = {
       }
     ]
   }
+};
+
+export const WithNormalizedStacks: Story = {
+  args: stackedNormalizedConfig
 };
 
 export const WithCustomTooltipConfig: Story = {
