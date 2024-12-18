@@ -1,4 +1,5 @@
 .listItem {
+  min-height: 0;
   height: var(--_ui5wcr-MessageViewListItemHeightSingle);
 }
 

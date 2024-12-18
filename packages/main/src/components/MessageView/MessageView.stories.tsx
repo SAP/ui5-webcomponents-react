@@ -73,7 +73,8 @@ const meta = {
         groupName={'Employees'}
       >
         Informative message
-      </MessageItem>
+      </MessageItem>,
+      <MessageItem key={7} titleText={'Error Message Type'} type={ValueState.Negative} counter={3} />
     ]
   }
 } satisfies Meta<typeof MessageView>;
