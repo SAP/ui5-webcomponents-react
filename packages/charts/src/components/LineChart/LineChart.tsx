@@ -230,8 +230,6 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
       resizeDebounce={chartConfig.resizeDebounce}
       {...propsWithoutOmitted}
     >
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/*// @ts-ignore:: todo not yet compatible with React19*/}
       <LineChartLib
         syncId={syncId}
         margin={marginChart}
