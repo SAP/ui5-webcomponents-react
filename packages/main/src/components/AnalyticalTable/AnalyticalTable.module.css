@@ -333,3 +333,256 @@
   min-width: unset;
   padding: 0;
 }
+
+/* ==========================================================================
+   Header styles
+   ========================================================================== */
+
+.thContainer {
+  &:first-child > [role='columnheader'] {
+    border-inline-start: var(--_ui5wcr-AnalyticalTable-OuterCellBorder);
+  }
+
+  &:last-child > [role='columnheader'] {
+    border-inline-end: var(--_ui5wcr-AnalyticalTable-OuterCellBorder);
+  }
+}
+
+.verticalEndBorder:last-child > [role='columnheader'] {
+  border-inline-end: 1px solid var(--sapList_BorderColor);
+}
+
+.header {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: start;
+  font-family: var(--_ui5wcr-AnalyticalTable-HeaderFontFamily);
+  font-size: var(--sapFontSize);
+  font-weight: normal;
+  color: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  box-sizing: border-box;
+
+  & > span {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+
+.text {
+  cursor: inherit;
+  color: inherit;
+  font-family: inherit;
+  width: 100%;
+  text-align: start;
+}
+
+.iconContainer {
+  display: flex;
+  position: absolute;
+  color: var(--sapContent_IconColor);
+  inset-inline-end: 0.5rem;
+
+  & > [ui5-icon]:not(:first-child) {
+    margin-inline-start: 0.125rem;
+  }
+}
+
+.selectAllCheckBoxContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
+  height: 0.8125rem;
+  width: 0.8125rem;
+}
+
+/* ==========================================================================
+   Resizer styles
+   ========================================================================== */
+
+.resizer {
+  display: inline-block;
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  inset-block-end: 0;
+  inset-block-start: 0;
+  z-index: 1;
+  cursor: col-resize;
+
+  &:hover,
+  &:active {
+    background-color: var(--sapContent_DragAndDropActiveColor);
+  }
+}
+
+/* ==========================================================================
+   ColumnHeaderModal styles
+   ========================================================================== */
+
+.popover {
+  font-weight: normal;
+
+  &::part(content) {
+    padding: 0;
+  }
+}
+
+.filterIcon {
+  padding-inline-end: 0.5rem;
+  color: var(--sapContent_NonInteractiveIconColor);
+}
+
+.filterText {
+  overflow: visible;
+  padding-inline-end: 0.5rem;
+}
+
+/* ==========================================================================
+   Expandable styles
+   ========================================================================== */
+
+.container {
+  height: var(--_ui5wcr-AnalyticalTableExpandButtonHeight);
+  margin-inline-end: 0.125rem;
+  flex-shrink: 0;
+}
+
+.expandableIcon {
+  color: var(--sapContent_IconColor);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  &::part(root) {
+    padding: 0.375rem;
+    width: var(--_ui5wcr-AnalyticalTableExpandIconHeight);
+    height: var(--_ui5wcr-AnalyticalTableExpandIconHeight);
+  }
+}
+
+.button {
+  color: var(--sapTextColor);
+  height: 100%;
+  font-size: 0.75rem;
+}
+
+.nonExpandableCellSpacer {
+  width: var(--_ui5wcr-AnalyticalTableExpandIndicatorWidth);
+  flex-shrink: 0;
+}
+
+.withExpandableButton {
+  margin-inline-end: 0.5rem;
+}
+
+/* ==========================================================================
+   PopIn styles
+   ========================================================================== */
+
+.popInContainer {
+  width: 100%;
+}
+
+.defaultCell > :first-child {
+  padding-block-start: 0.25rem;
+}
+
+.popInHeader {
+  color: var(--sapContent_LabelColor);
+  height: 16px;
+}
+
+.gap {
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   SubComponent styles
+   ========================================================================== */
+
+.subcomponent {
+  position: absolute;
+  width: 100%;
+  &:focus {
+    outline-offset: calc(-1 * var(--sapContent_FocusWidth));
+    outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+  }
+}
+
+/* ==========================================================================
+   VerticalResizer styles
+   ========================================================================== */
+
+.verticalResizerContainer {
+  overflow: hidden;
+  position: relative;
+  height: 5px;
+  text-align: center;
+  cursor: row-resize;
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: var(--sapContent_DragAndDropActiveColor);
+    color: var(--sapHighlightTextColor);
+  }
+
+  &:before {
+    font-size: 10px;
+    font-family: var(--sapFontFamily);
+    inset-block-start: 0;
+    position: absolute;
+    content: '⦁⦁⦁⦁';
+    line-height: 5px;
+    pointer-events: none;
+  }
+}
+
+.verticalResizer {
+  position: absolute;
+  opacity: 0.5;
+  background-color: var(--sapContent_DragAndDropActiveColor);
+  height: 5px;
+}
+
+/* ==========================================================================
+   VerticalScrollbar styles
+   ========================================================================== */
+
+.headerSection {
+  box-sizing: border-box;
+  border-block-start: var(--_ui5wcr-AnalyticalTable-OuterBorderBlock);
+  border-inline-end: var(--_ui5wcr-AnalyticalTable-OuterBorderInline);
+  border-block-end: var(--_ui5wcr-AnalyticalTable-HeaderBorderWidth) solid var(--sapList_HeaderBorderColor);
+  background-color: var(--sapList_HeaderBackground);
+  border-inline-start: 1px solid var(--sapList_BorderColor);
+  margin-inline-start: -1px;
+  width: calc(var(--sapScrollBar_Dimension) + 2px);
+}
+.scrollbar {
+  overflow-y: auto;
+  border-inline-end: var(--_ui5wcr-AnalyticalTable-OuterBorderInline);
+  border-block-end: 1px solid var(--sapList_TableFooterBorder);
+  border-inline-start: 1px solid var(--sapList_BorderColor);
+  margin-inline-start: -1px;
+  box-sizing: border-box;
+}
+
+.bottomSection {
+  flex-grow: 1;
+  background-color: var(--sapList_FooterBackground);
+  box-sizing: border-box;
+  border-inline-end: var(--_ui5wcr-AnalyticalTable-OuterBorderInline);
+}
