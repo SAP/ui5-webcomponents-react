@@ -39,11 +39,11 @@ const getTypes = (type: MessageViewButtonProptypes['type']): Types => {
     case ValueState.Negative:
       return { icon: errorIcon, i18nLabel: ERROR_TYPE };
     case ValueState.Positive:
-      return { icon: sysEnter2Icon, i18nLabel: WARNING_TYPE };
+      return { icon: sysEnter2Icon, i18nLabel: SUCCESS_TYPE };
     case ValueState.Critical:
-      return { icon: alertIcon, i18nLabel: INFORMATION_TYPE };
+      return { icon: alertIcon, i18nLabel: WARNING_TYPE };
     default:
-      return { icon: informationIcon, i18nLabel: SUCCESS_TYPE };
+      return { icon: informationIcon, i18nLabel: INFORMATION_TYPE };
   }
 };
 
