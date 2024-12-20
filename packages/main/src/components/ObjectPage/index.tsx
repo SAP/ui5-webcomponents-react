@@ -218,7 +218,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState<string | undefined>(
     selectedSectionId ?? firstSectionId
   );
-  const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
+  const [selectedSubSectionId, setSelectedSubSectionId] = useState(undefined);
   const [headerPinned, setHeaderPinned] = useState(headerPinnedProp);
   const isProgrammaticallyScrolled = useRef(false);
   const [isMounted, setIsMounted] = useState(false);
