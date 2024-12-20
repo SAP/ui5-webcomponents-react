@@ -1056,6 +1056,64 @@ describe('ObjectPage', () => {
     cy.findByText('First Content').should('be.visible');
   });
 
+  it('programmatic prop selection', () => {
+    const TestComp = (props: ObjectPagePropTypes) => {
+      const [selectedSection, setSelectedSection] = useState(props.selectedSectionId);
+      const [selectedSubSection, setSelectedSubSection] = useState(props.selectedSubSectionId);
+
+      return (
+        <>
+          <button
+            onClick={() => {
+              setSelectedSection('goals');
+            }}
+          >
+            Select Goals
+          </button>
+          <button
+            onClick={() => {
+              setSelectedSubSection('personal-payment-information');
+            }}
+          >
+            Select Payment Information
+          </button>
+          <ObjectPage
+            {...props}
+            selectedSubSectionId={selectedSubSection}
+            selectedSectionId={selectedSection}
+            style={{ height: '1000px', scrollBehavior: 'auto' }}
+          >
+            {OPContent}
+          </ObjectPage>
+        </>
+      );
+    };
+
+    [{ titleArea: DPTitle, headerArea: DPContent }, { titleArea: DPTitle }, { headerArea: DPContent }, {}].forEach(
+      (props: ObjectPagePropTypes) => {
+        cy.mount(<TestComp {...props} selectedSubSectionId={`employment-job-relationship`} />);
+        cy.findByText('employment-job-relationship-content').should('be.visible');
+        cy.findByText('Job Information').should('not.be.visible');
+        cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').should('have.attr', 'aria-selected', 'true');
+
+        cy.mount(<TestComp {...props} selectedSectionId={`personal`} />);
+        cy.findByText('personal-connect-content').should('be.visible');
+        cy.findByText('test-content').should('not.be.visible');
+        cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
+
+        cy.findByText('Select Goals').click();
+        cy.findByText('goals-content').should('be.visible');
+        cy.findByText('personal-connect-content').should('not.be.visible');
+        cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').should('have.attr', 'aria-selected', 'true');
+
+        cy.findByText('Select Payment Information').click();
+        cy.findByText('personal-payment-information-content').should('be.visible');
+        cy.findByText('personal-connect-content').should('not.be.visible');
+        cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
+      }
+    );
+  });
+
   cypressPassThroughTestsFactory(ObjectPage);
 });
 
@@ -1073,7 +1131,7 @@ const DPTitle = (
       <Breadcrumbs>
         <BreadcrumbsItem>Manager Cockpit</BreadcrumbsItem>
         <BreadcrumbsItem>My Team</BreadcrumbsItem>
-        <BreadcrumbsItem>Employee Details</BreadcrumbsItem>
+        <BreadcrumbsItem>Employee Details (Denise Smith)</BreadcrumbsItem>
       </Breadcrumbs>
     }
   >
@@ -1101,10 +1159,14 @@ const DPContent = (
 
 const OPContent = [
   <ObjectPageSection key="0" titleText="Goals" id="goals" aria-label="Goals">
-    <div data-testid="section 1" style={{ height: '400px', width: '100%', background: 'lightblue' }} />
+    <div data-testid="section 1" style={{ height: '400px', width: '100%', background: 'lightblue' }}>
+      <span data-testid="goals-content">goals-content</span>
+    </div>
   </ObjectPageSection>,
   <ObjectPageSection key="1" titleText="Test" id="test" aria-label="Test">
-    <div data-testid="section 2" style={{ height: '1200px', width: '100%', background: 'lightyellow' }}></div>
+    <div data-testid="section 2" style={{ height: '1200px', width: '100%', background: 'lightyellow' }}>
+      <span data-testid="test-content">test-content</span>
+    </div>
   </ObjectPageSection>,
   <ObjectPageSection key="2" titleText="Personal" id="personal" aria-label="Personal">
     <ObjectPageSubSection
@@ -1121,25 +1183,35 @@ const OPContent = [
         </>
       }
     >
-      <div style={{ height: '400px', width: '100%', background: 'black' }} />
+      <div style={{ height: '400px', width: '100%', background: 'black' }}>
+        <span data-testid="personal-connect-content">personal-connect-content</span>
+      </div>
     </ObjectPageSubSection>
     <ObjectPageSubSection
       titleText="Payment Information"
       id="personal-payment-information"
       aria-label="Payment Information"
     >
-      <div style={{ height: '400px', width: '100%', background: 'blue' }} />
+      <div style={{ height: '400px', width: '100%', background: 'blue' }}>
+        <span data-testid="personal-payment-information-content">personal-payment-information-content</span>
+      </div>
     </ObjectPageSubSection>
   </ObjectPageSection>,
   <ObjectPageSection key="3" titleText="Employment" id={`~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`} aria-label="Employment">
     <ObjectPageSubSection titleText="Job Information" id="employment-job-information" aria-label="Job Information">
-      <div style={{ height: '100px', width: '100%', background: 'orange' }}></div>
+      <div style={{ height: '100px', width: '100%', background: 'orange' }}>
+        <span data-testid="employment-job-information-content">employment-job-information-content</span>
+      </div>
     </ObjectPageSubSection>
     <ObjectPageSubSection titleText="Employee Details" id="employment-employee-details" aria-label="Employee Details">
-      <div style={{ height: '100px', width: '100%', background: 'cadetblue' }}></div>
+      <div style={{ height: '100px', width: '100%', background: 'cadetblue' }}>
+        <span data-testid="employment-employee-details-content">employment-employee-details-content</span>
+      </div>
     </ObjectPageSubSection>
     <ObjectPageSubSection titleText="Job Relationship" id="employment-job-relationship" aria-label="Job Relationship">
-      <div style={{ height: '100px', width: '100%', background: 'lightgrey' }}></div>
+      <div style={{ height: '100px', width: '100%', background: 'lightgrey' }}>
+        <span data-testid="employment-job-relationship-content">employment-job-relationship-content</span>
+      </div>
     </ObjectPageSubSection>
   </ObjectPageSection>
 ];
