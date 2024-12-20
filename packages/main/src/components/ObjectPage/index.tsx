@@ -31,7 +31,7 @@ import type {
 } from '../ObjectPageTitle/index.js';
 import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { classNames, styleData } from './ObjectPage.module.css.js';
-import { getSectionById } from './ObjectPageUtils.js';
+import { getSectionById, getSectionElementById } from './ObjectPageUtils.js';
 
 const ObjectPageCssVariables = {
   headerDisplay: '--_ui5wcr_ObjectPage_header_display',
@@ -221,7 +221,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const [selectedSubSectionId, setSelectedSubSectionId] = useState(props.selectedSubSectionId);
   const [headerPinned, setHeaderPinned] = useState(headerPinnedProp);
   const isProgrammaticallyScrolled = useRef(false);
-  const prevSelectedSectionId = useRef<string | undefined>(undefined);
+  const [isMounted, setIsMounted] = useState(false);
 
   const [componentRef, objectPageRef] = useSyncRef(ref);
   const topHeaderRef = useRef<HTMLDivElement>(null);
@@ -326,9 +326,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   }, [image, classNames.headerImage, classNames.image, imageShapeCircle]);
 
   const scrollToSectionById = (id: string | undefined, isSubSection = false) => {
-    const section = objectPageRef.current?.querySelector<HTMLElement>(
-      `#${isSubSection ? 'ObjectPageSubSection' : 'ObjectPageSection'}-${CSS.escape(id)}`
-    );
+    const section = getSectionElementById(objectPageRef.current, isSubSection, id);
     scrollTimeout.current = performance.now() + 500;
     if (section) {
       const safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
@@ -367,45 +365,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     isProgrammaticallyScrolled.current = false;
   };
 
-  const programmaticallySetSection = () => {
-    const currentId = selectedSectionId ?? firstSectionId;
-    if (currentId !== prevSelectedSectionId.current) {
-      debouncedOnSectionChange.cancel();
-      isProgrammaticallyScrolled.current = true;
-      setInternalSelectedSectionId(currentId);
-      prevSelectedSectionId.current = currentId;
-      const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
-      const currentIndex = childrenArray.findIndex((objectPageSection) => {
-        return isValidElement(objectPageSection) && objectPageSection.props?.id === currentId;
-      });
-      fireOnSelectedChangedEvent({}, currentIndex, currentId, sectionNodes[0]);
-    }
-  };
-
-  // change selected section when prop is changed (external change)
-  const [timeStamp, setTimeStamp] = useState(0);
-  const requestAnimationFrameRef = useRef<undefined | number>(undefined);
-  useEffect(() => {
-    if (selectedSectionId) {
-      if (mode === ObjectPageMode.Default) {
-        // wait for DOM draw, otherwise initial scroll won't work as intended
-        if (timeStamp < 750 && timeStamp !== undefined) {
-          requestAnimationFrameRef.current = requestAnimationFrame((internalTimestamp) => {
-            setTimeStamp(internalTimestamp);
-          });
-        } else {
-          setTimeStamp(undefined);
-          programmaticallySetSection();
-        }
-      } else {
-        programmaticallySetSection();
-      }
-    }
-    return () => {
-      cancelAnimationFrame(requestAnimationFrameRef.current);
-    };
-  }, [timeStamp, selectedSectionId, firstSectionId, debouncedOnSectionChange]);
-
   // section was selected by clicking on the tab bar buttons
   const handleOnSectionSelected = (targetEvent, newSelectionSectionId, index, section) => {
     isProgrammaticallyScrolled.current = true;
@@ -421,12 +380,24 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
   };
 
+  useEffect(() => {
+    if (selectedSectionId) {
+      const selectedSection = getSectionElementById(objectPageRef.current, false, selectedSectionId);
+      if (selectedSection) {
+        const selectedSectionIndex = Array.from(
+          selectedSection.parentElement.querySelectorAll(':scope > [data-component-name="ObjectPageSection"]')
+        ).indexOf(selectedSection);
+        handleOnSectionSelected({}, selectedSectionId, selectedSectionIndex, selectedSection);
+      }
+    }
+  }, [selectedSectionId]);
+
   // do internal scrolling
   useEffect(() => {
     if (mode === ObjectPageMode.Default && isProgrammaticallyScrolled.current === true && !selectedSubSectionId) {
       scrollToSection(internalSelectedSectionId);
     }
-  }, [internalSelectedSectionId, mode, isProgrammaticallyScrolled, scrollToSection, selectedSubSectionId]);
+  }, [internalSelectedSectionId, mode, selectedSubSectionId]);
 
   // Scrolling for Sub Section Selection
   useEffect(() => {
@@ -457,11 +428,15 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   }, [headerPinned, topHeaderHeight]);
 
   useEffect(() => {
+    if (!isMounted) {
+      setIsMounted(true);
+      return;
+    }
     setSelectedSubSectionId(props.selectedSubSectionId);
     if (props.selectedSubSectionId) {
       isProgrammaticallyScrolled.current = true;
       if (mode === ObjectPageMode.IconTabBar) {
-        let sectionId;
+        let sectionId: string;
         childrenArray.forEach((section) => {
           if (isValidElement(section) && section.props && section.props.children) {
             safeGetChildrenArray(section.props.children).forEach((subSection) => {
@@ -480,7 +455,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         }
       }
     }
-  }, [props.selectedSubSectionId, childrenArray, mode]);
+  }, [props.selectedSubSectionId, isMounted]);
 
   const tabContainerContainerRef = useRef(null);
   useEffect(() => {
