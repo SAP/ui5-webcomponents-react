@@ -1,0 +1,121 @@
+import{j as t}from"./jsx-runtime-BjG_zV1W.js";import{useMDXComponents as l}from"./index-BxVt_j7t.js";import{ae as s,af as o,ag as u,ai as r,ah as i}from"./index-CRGSefsN.js";import"./index-C009Ii_l.js";import"./index-Dh3MgZEn.js";import{C as c}from"./ControlsWithNote-BHmDva__.js";import{D as h}from"./DocsHeader-B9Z01XrJ.js";import{F as I}from"./CommandsAndQueries-CO6_sN_S.js";import"./index-B7gF9TUu.js";import"./WrappingType-CW8URInd.js";import"./Title-1rDkpSXf.js";import{S as y}from"./SubcomponentsSection-BVy4lpQe.js";import{a as p,b as m}from"./index-D8-pzXVH.js";import{C as x,D as a,a as F}from"./Form.stories-DcJ0OhLQ.js";import"./iframe-ALXExQej.js";import"../sb-preview/runtime.js";import"./index-CE_NGgsP.js";import"./index-DHaMx3uI.js";import"./index-DrFu-skq.js";import"./withWebComponent-CEvNJu7C.js";import"./utils-BPMdnTU-.js";import"./useIsomorphicLayoutEffect-BE7Iif4x.js";import"./slot-_4yKMUwC.js";import"./event-strict-DgQLNDEV.js";import"./i18n-DEVDpFvK.js";import"./decline-D0Sq_J--.js";import"./Icon-Cf72TZgw.js";import"./Keys-CAuuEE_3.js";import"./parameters-bundle.css-DY1ryZJt.js";import"./i18n-defaults-neJWcM66.js";import"./information-Dy9R6tRZ.js";import"./alert-C1M-4Vvc.js";import"./class-map-CFjQlWtw.js";import"./Button-C6xYvRbu.js";import"./AccessibilityTextsHelper-Beeze-lh.js";import"./willShowContent-CZcfsNXp.js";import"./Tooltips-XZ46U0Ql.js";import"./i18n-defaults-DteWAmDn.js";import"./TagDesign-Dou_yO3g.js";import"./utils-D3KWfWMS.js";import"./main-BwlHOnYP.js";import"./index-EUzft9Z_.js";import"./Tag-xKaXZN0c.js";import"./sys-help-2-C1sMmkr1.js";import"./index-ClFOKzxg.js";import"./Popover-B0GOUfMQ.js";import"./PopupsCommon.css-BerD7w9b.js";import"./FocusableElements-DA0BaiCm.js";import"./isElementHidden-B4HqmI2E.js";import"./isElementClickable-0ACQ4G_A.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-CJRte1-9.js";import"./MediaRange-Bnzt26Xb.js";import"./style-map-g8foa4rA.js";import"./getEffectiveScrollbarStyle-C9nZ6DfS.js";import"./index-NbVlvM4j.js";import"./Link-2s4hefKa.js";import"./chunk-NUUEMKO5-Dj_LSyL_.js";import"./client-DPlujwLe.js";import"./copy-BJtGExJZ.js";import"./copy-C7Fphd8b.js";import"./clsx-B-dksMZM.js";import"./GitHub-Mark-D5efYGjp.js";import"./TableOfContent-DCqtbPc-.js";import"./index-DYWfCYkb.js";import"./I18nStore-DnWKAes0.js";import"./useStylesheet-DVp2Y5Uf.js";import"./index-vaKWw58t.js";import"./index-CUd5UQ0Z.js";import"./Label-S_BgfXUY.js";import"./index-Yz8_Wo9H.js";import"./index-D8L7QTA6.js";import"./Text-CTrlD69_.js";import"./addCustomCSSWithScoping-B_vnxDyr.js";import"./index-BBLdTHsH.js";import"./BusyIndicator-CTFEFSn6.js";import"./index-7rUfxUBv.js";import"./index-D6lFKeEV.js";import"./Avatar-DMTAeY6x.js";import"./employee-B31iqtd8.js";import"./Input-FIPxtu1o.js";import"./ValueState-Bg0UWejw.js";import"./ResponsivePopoverCommon.css-BKVe1mOp.js";import"./ValueStateMessage.css-C_FQVeG2.js";import"./Suggestions.css-BhYkj5sk.js";import"./ResponsivePopover-JS6adhSh.js";import"./Dialog-7o0SsYjd.js";import"./index-BI5TPgCJ.js";import"./index-D0rdue_7.js";import"./index-CDtumSQK.js";import"./Select-Cu7lYkbv.js";import"./InvisibleMessage-B2Ebl_Ws.js";import"./slim-arrow-down-BTWcGT7M.js";import"./List-BeOyiQ4g.js";import"./ItemNavigation-DWbUprUI.js";import"./getNormalizedTarget-C4mxORXI.js";import"./debounce-TTkz9ISH.js";import"./TabbableElements-BJJu_CDc.js";import"./RadioButton-2y34RTmJ.js";import"./CheckBox-BN3CQ6El.js";import"./accept-W9Dxcudv.js";import"./slim-arrow-right-BHycGIJI.js";import"./index-B1UQwy7U.js";import"./Option-Dl0i6Rfv.js";import"./index-BOJ8UWef.js";function d(n){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",pre:"pre",...l(),...n.components};return t.jsxs(t.Fragment,{children:[t.jsx(s,{of:x}),`
+`,t.jsx(h,{subComponents:["FormGroup","FormItem"],experimental:!0}),`
+`,t.jsx("br",{}),`
+`,t.jsx(e.h2,{id:"example",children:"Example"}),`
+`,t.jsx(o,{of:a}),`
+`,t.jsx(e.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(c,{of:a}),`
+`,t.jsx(e.h1,{id:"more-examples",children:"More Examples"}),`
+`,t.jsx(e.h2,{id:"display-only-and-edit-mode",children:"Display-Only and Edit mode"}),`
+`,t.jsx(o,{of:F,sourceState:"none"}),`
+`,t.jsx(e.h3,{id:"code",children:"Code"}),`
+`,t.jsxs("details",{children:[t.jsx("summary",{children:"Show Code"}),t.jsx(e.pre,{children:t.jsx(e.code,{className:"language-jsx",children:`const StandardField = ({ editMode, value, inputType = InputType.Text, onInput, ...rest }) => {
+  if (editMode) {
+    return <Input value={value} style={{ width: '100%' }} type={inputType} onInput={onInput} {...rest} />;
+  }
+  if (inputType === InputType.URL || inputType === InputType.Email) {
+    return (
+      <Link href={inputType === InputType.Email ? \`mailto:\${value}\` : value} target="_blank" {...rest}>
+        {value}
+      </Link>
+    );
+  }
+  return <Text {...rest}>{value}</Text>;
+};
+
+const reducer = (state, { field, value }) => {
+  return { ...state, [field]: value };
+};
+
+const FormComponent = (props) => {
+  const [editMode, toggleEditMode] = useReducer((prev) => !prev, false, undefined);
+  const [formState, dispatch] = useReducer(
+    reducer,
+    {
+      name: 'Red Point Stores',
+      street: 'Main St 1618',
+      zip: 31415,
+      city: 'Maintown',
+      country: 'Germany',
+      web: 'https://www.sap.com',
+      mail: 'john.smith@sap.com',
+      twitter: '@sap',
+      phone: '+49 1234 56789'
+    },
+    undefined
+  );
+  const { zip, city, name, street, country, web, mail, twitter, phone } = formState;
+
+  const handleInput = (e) => {
+    dispatch({ field: Object.keys(e.target.dataset)[0], value: e.target.value });
+  };
+
+  return (
+    <>
+      <Button onClick={toggleEditMode}>Toggle {editMode ? 'Display-Only Mode' : 'Edit Mode'}</Button>
+      <Form
+        {...props}
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <FormGroup titleText="Address">
+          <FormItem label="Name">
+            <StandardField editMode={editMode} value={name} onInput={handleInput} data-name />
+          </FormItem>
+          <FormItem label="Street">
+            <StandardField editMode={editMode} value={street} onInput={handleInput} data-street />
+          </FormItem>
+          <FormItem label="ZIP Code / City">
+            {editMode ? (
+              <>
+                <Input value={zip} type={InputType.Number} style={{ width: '30%' }} onInput={handleInput} data-zip />
+                <Input value={city} style={{ width: '70%' }} onInput={handleInput} data-city />
+              </>
+            ) : (
+              <Text>{\`\${zip} \${city}\`}</Text>
+            )}
+          </FormItem>
+          <FormItem label="Country">
+            <StandardField editMode={editMode} value={country} onInput={handleInput} data-country />
+          </FormItem>
+          <FormItem label="Web">
+            <StandardField editMode={editMode} value={web} inputType={InputType.URL} onInput={handleInput} data-web />
+          </FormItem>
+        </FormGroup>
+        <FormGroup titleText="Contact">
+          <FormItem label="Email">
+            <StandardField
+              editMode={editMode}
+              value={mail}
+              inputType={InputType.Email}
+              onInput={handleInput}
+              data-email
+            />
+          </FormItem>
+          <FormItem label="Twitter">
+            <StandardField editMode={editMode} value={twitter} onInput={handleInput} data-twitter />
+          </FormItem>
+          <FormItem label="Phone">
+            <StandardField
+              editMode={editMode}
+              value={phone}
+              inputType={InputType.Tel}
+              onInput={handleInput}
+              data-phone
+            />
+          </FormItem>
+        </FormGroup>
+      </Form>
+    </>
+  );
+};
+`})})]}),`
+`,t.jsx(u,{children:y}),`
+`,t.jsx(e.h2,{id:"form-group",children:"Form Group"}),`
+`,t.jsx(r,{of:p}),`
+`,t.jsx(i,{of:p}),`
+`,t.jsx(e.h2,{id:"formitem",children:"FormItem"}),`
+`,t.jsx(r,{of:m}),`
+`,t.jsx(i,{of:m}),`
+`,t.jsx(I,{})]})}function ye(n={}){const{wrapper:e}={...l(),...n.components};return e?t.jsx(e,{...n,children:t.jsx(d,{...n})}):d(n)}export{ye as default};
