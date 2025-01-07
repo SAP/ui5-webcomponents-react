@@ -55,7 +55,7 @@ export const Default: Story = {
             return (
               <ListItemStandard
                 selected={index === 1}
-                image={currentProduct.img}
+                image={<img src={currentProduct.img} alt="Example Image" />}
                 description={`${currentProduct.description}${index}`}
                 key={`${currentProduct.text}${index}`}
               >
@@ -156,7 +156,7 @@ export const MultiSelect: Story = {
               }
               return (
                 <ListItemStandard
-                  image={currentProduct.img}
+                  image={<img src={currentProduct.img} alt="Example Image" />}
                   description={`${currentProduct.description}${index}`}
                   data-description={`${currentProduct.description}${index}`}
                   key={`${currentProduct.text}${index}`}
