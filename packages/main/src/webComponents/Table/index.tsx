@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Table.js';
-import type { TableRowClickEventDetail } from '@ui5/webcomponents/dist/Table.js';
+import type { TableRowClickEventDetail, TableTableMoveEventDetail } from '@ui5/webcomponents/dist/Table.js';
 import type TableOverflowMode from '@ui5/webcomponents/dist/types/TableOverflowMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -116,7 +116,7 @@ interface TablePropTypes
    * | :--------: | :-----: |
    * | ❌|✅|
    */
-  onMove?: (event: Ui5CustomEvent<TableDomRef, TableMoveEventDetail>) => void;
+  onMove?: (event: Ui5CustomEvent<TableDomRef, TableTableMoveEventDetail>) => void;
 
   /**
    * Fired when a movable item is moved over a potential drop target during a dragging operation.
@@ -132,7 +132,7 @@ interface TablePropTypes
    * | :--------: | :-----: |
    * | ✅|✅|
    */
-  onMoveOver?: (event: Ui5CustomEvent<TableDomRef, TableMoveEventDetail>) => void;
+  onMoveOver?: (event: Ui5CustomEvent<TableDomRef, TableTableMoveEventDetail>) => void;
 
   /**
    * Fired when an interactive row is clicked.
