@@ -1358,6 +1358,48 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/ExpandableTextOverflowMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "ExpandableTextOverflowMode",
+          "description": "Overflow Mode.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Overflowing text is appended in-place.",
+              "default": "InPlace",
+              "name": "InPlace",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Full text is displayed in a popover.",
+              "default": "Popover",
+              "name": "Popover",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ExpandableTextOverflowMode",
+            "module": "dist/types/ExpandableTextOverflowMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/FormItemSpacing.js",
       "declarations": [
         {
@@ -2679,6 +2721,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/RatingIndicatorSize.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "RatingIndicatorSize",
+          "description": "Types of icon sizes used in the RatingIndicator.\nProvides predefined size categories to ensure consistent scaling and spacing of icons.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.6.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Small size for compact layouts.",
+              "default": "S",
+              "name": "S",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Medium size, used as the default option.\nOffers a balanced appearance for most scenarios.",
+              "default": "M",
+              "name": "M",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Large size for prominent or spacious layouts.",
+              "default": "L",
+              "name": "L",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "RatingIndicatorSize",
+            "module": "dist/types/RatingIndicatorSize.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/SegmentedButtonSelectionMode.js",
       "declarations": [
         {
@@ -3886,7 +3980,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-avatar",
           "customElement": true,
@@ -4133,7 +4227,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-avatar-group",
           "customElement": true,
@@ -4246,7 +4340,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-bar",
           "customElement": true,
@@ -4420,7 +4514,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-breadcrumbs",
           "customElement": true,
@@ -4530,7 +4624,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-breadcrumbs-item",
           "customElement": true,
@@ -4693,7 +4787,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-busy-indicator",
           "customElement": true,
@@ -4911,14 +5005,14 @@
           ],
           "events": [
             {
-              "name": "click",
+              "name": "active-state-change",
               "_ui5privacy": "public",
               "type": {
                 "text": "Event"
               },
               "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true
             }
           ],
@@ -5036,7 +5130,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-button",
           "customElement": true,
@@ -5208,7 +5302,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -5229,7 +5323,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -5509,7 +5603,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-date",
           "customElement": true,
@@ -5596,7 +5690,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-date-range",
           "customElement": true,
@@ -5740,7 +5834,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-calendar-legend",
           "customElement": true,
@@ -5827,7 +5921,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-calendar-legend-item",
           "customElement": true,
@@ -5959,7 +6053,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -5980,7 +6074,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -6205,7 +6299,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-card",
           "customElement": true,
@@ -6371,7 +6465,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-card-header",
           "customElement": true,
@@ -6473,7 +6567,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.\n\n**Note:** The navigation arrows are always displayed on touch devices.",
+              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15"
             },
@@ -6681,7 +6775,7 @@
               }
             },
             {
-              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.\n\n**Note:** The navigation arrows are always displayed on touch devices.",
+              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.",
               "name": "hide-navigation-arrows",
               "default": "false",
               "fieldName": "hideNavigationArrows",
@@ -6756,7 +6850,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-carousel",
           "customElement": true,
@@ -6912,7 +7006,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -7074,7 +7168,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-checkbox",
           "customElement": true,
@@ -7166,13 +7260,12 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-color-palette",
           "customElement": true,
           "_ui5since": "1.0.0-rc.12",
-          "_ui5privacy": "public",
-          "members": []
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -7248,7 +7341,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-color-palette-item",
           "customElement": true,
@@ -7473,7 +7566,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-color-palette-popover",
           "customElement": true,
@@ -7587,7 +7680,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-color-picker",
           "customElement": true,
@@ -7735,7 +7828,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -8005,7 +8098,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-combobox",
           "customElement": true,
@@ -8364,7 +8457,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -8381,7 +8474,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -8500,7 +8593,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "customElement": true,
           "_ui5privacy": "public",
@@ -8559,7 +8652,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -8746,7 +8839,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -8767,7 +8860,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -9290,7 +9383,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -9518,7 +9611,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -9539,7 +9632,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -10365,7 +10458,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -10608,7 +10701,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -10629,7 +10722,7 @@
                   {
                     "name": "CalendarType",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/CalendarType.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -11011,7 +11104,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -11411,6 +11504,138 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ExpandableText.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-expandable-text` component allows displaying a large body of text in a small space. It provides an \"expand/collapse\" functionality, which shows/hides potentially truncated text.\n\n### Usage\n\n#### When to use:\n- To accommodate long texts in limited space, for example in list items, table cell texts, or forms\n\n#### When not to use:\n- The content is critical for the user. In this case use short descriptions that can fit in\n- Strive to provide short and meaningful texts to avoid excessive number of \"Show More\" links on the page\n\n### Responsive Behavior\n\nOn phones, if the component is configured to display the full text in a popover, the popover will appear in full screen.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/ExpandableText\";`",
+          "name": "ExpandableText",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Text of the component.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "maxCharacters",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "description": "Maximum number of characters to be displayed initially. If the text length exceeds this limit, the text will be truncated with an ellipsis, and the \"More\" link will be displayed.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "overflowMode",
+              "type": {
+                "text": "ExpandableTextOverflowMode",
+                "references": [
+                  {
+                    "name": "ExpandableTextOverflowMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ExpandableTextOverflowMode.js"
+                  }
+                ]
+              },
+              "default": "\"InPlace\"",
+              "description": "Determines how the full text will be displayed.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "emptyIndicatorMode",
+              "type": {
+                "text": "TextEmptyIndicatorMode",
+                "references": [
+                  {
+                    "name": "TextEmptyIndicatorMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TextEmptyIndicatorMode.js"
+                  }
+                ]
+              },
+              "default": "\"Off\"",
+              "description": "Specifies if an empty indicator should be displayed when there is no text.",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Text of the component.",
+              "name": "text",
+              "default": "undefined",
+              "fieldName": "text",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Maximum number of characters to be displayed initially. If the text length exceeds this limit, the text will be truncated with an ellipsis, and the \"More\" link will be displayed.",
+              "name": "max-characters",
+              "default": "100",
+              "fieldName": "maxCharacters",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "description": "Determines how the full text will be displayed.",
+              "name": "overflow-mode",
+              "default": "\"InPlace\"",
+              "fieldName": "overflowMode",
+              "type": {
+                "text": "\"InPlace\" | \"Popover\""
+              }
+            },
+            {
+              "description": "Specifies if an empty indicator should be displayed when there is no text.",
+              "name": "empty-indicator-mode",
+              "default": "\"Off\"",
+              "fieldName": "emptyIndicatorMode",
+              "type": {
+                "text": "\"On\" | \"Off\""
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "@ui5/webcomponents-base"
+          },
+          "tagName": "ui5-expandable-text",
+          "customElement": true,
+          "_ui5since": "2.6.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ExpandableText",
+            "module": "dist/ExpandableText.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-expandable-text",
+          "declaration": {
+            "name": "ExpandableText",
+            "module": "dist/ExpandableText.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/FileUploader.js",
       "declarations": [
         {
@@ -11530,7 +11755,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -11711,7 +11936,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-file-uploader",
           "customElement": true,
@@ -11910,7 +12135,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-form",
           "customElement": true,
@@ -12009,7 +12234,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-form-group",
           "customElement": true,
@@ -12111,7 +12336,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-form-item",
           "customElement": true,
@@ -12299,7 +12524,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-icon",
           "customElement": true,
@@ -12493,7 +12718,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -12806,7 +13031,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-input",
           "customElement": true,
@@ -12940,7 +13165,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-label",
           "customElement": true,
@@ -13338,7 +13563,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-link",
           "customElement": true,
@@ -13793,8 +14018,8 @@
                 "references": [
                   {
                     "name": "ListMoveEventDetail",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/List.js"
+                    "package": "@ui5/webcomponents-base",
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -13830,8 +14055,8 @@
                 "references": [
                   {
                     "name": "ListMoveEventDetail",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/List.js"
+                    "package": "@ui5/webcomponents-base",
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -14008,7 +14233,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-list",
           "customElement": true,
@@ -14248,12 +14473,11 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "customElement": true,
           "_ui5privacy": "public",
-          "_ui5abstract": true,
-          "members": []
+          "_ui5abstract": true
         }
       ],
       "exports": [
@@ -14772,7 +14996,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-li-group",
           "customElement": true,
@@ -14951,7 +15175,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -15539,7 +15763,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-menu",
           "customElement": true,
@@ -16022,8 +16246,7 @@
               "package": "@ui5/webcomponents",
               "module": "dist/Menu.js"
             }
-          ],
-          "members": []
+          ]
         }
       ],
       "exports": [
@@ -16184,7 +16407,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-message-strip",
           "customElement": true,
@@ -16363,7 +16586,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -16496,7 +16719,7 @@
               "description": "Fired when the dropdown is opened.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.0.0"
             },
             {
@@ -16687,7 +16910,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-multi-combobox",
           "customElement": true,
@@ -17270,7 +17493,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -18321,7 +18544,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-panel",
           "customElement": true,
@@ -19149,7 +19372,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "customElement": true,
           "_ui5privacy": "public"
@@ -19235,7 +19458,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -19294,7 +19517,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-progress-indicator",
           "customElement": true,
@@ -19403,7 +19626,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -19589,7 +19812,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-radio-button",
           "customElement": true,
@@ -20064,6 +20287,24 @@
             },
             {
               "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "RatingIndicatorSize",
+                "references": [
+                  {
+                    "name": "RatingIndicatorSize",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/RatingIndicatorSize.js"
+                  }
+                ]
+              },
+              "default": "\"M\"",
+              "description": "Defines the size of the component.",
+              "privacy": "public",
+              "_ui5since": "2.6.0"
+            },
+            {
+              "kind": "field",
               "name": "disabled",
               "type": {
                 "text": "boolean"
@@ -20160,6 +20401,15 @@
               }
             },
             {
+              "description": "Defines the size of the component.",
+              "name": "size",
+              "default": "\"M\"",
+              "fieldName": "size",
+              "type": {
+                "text": "\"S\" | \"M\" | \"L\""
+              }
+            },
+            {
               "description": "Defines whether the component is disabled.\n\n**Note:** A disabled component is completely noninteractive.",
               "name": "disabled",
               "default": "false",
@@ -20217,7 +20467,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-rating-indicator",
           "customElement": true,
@@ -21014,7 +21264,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-segmented-button",
           "customElement": true,
@@ -21184,7 +21434,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-segmented-button-item",
           "customElement": true,
@@ -21307,7 +21557,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -21573,7 +21823,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-select",
           "customElement": true,
@@ -22212,7 +22462,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "customElement": true,
           "_ui5privacy": "public"
@@ -22289,7 +22539,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-special-date",
           "customElement": true,
@@ -22343,7 +22593,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\n\nSee all available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "default": "undefined",
               "privacy": "public"
             },
@@ -22422,7 +22672,7 @@
           ],
           "attributes": [
             {
-              "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\n\nSee all available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "name": "icon",
               "default": "undefined",
               "fieldName": "icon",
@@ -22470,7 +22720,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-split-button",
           "customElement": true,
@@ -22565,7 +22815,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -22667,6 +22917,18 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true
+            },
+            {
+              "name": "input",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the value of the component changes at each keystroke.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.6.0"
             },
             {
               "name": "value-state-change",
@@ -22828,7 +23090,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-step-input",
           "customElement": true,
@@ -23506,7 +23768,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-switch",
           "customElement": true,
@@ -23707,7 +23969,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-tab",
           "customElement": true,
@@ -24094,7 +24356,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-tabcontainer",
           "customElement": true,
@@ -24144,7 +24406,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-tab-separator",
           "customElement": true,
@@ -24360,6 +24622,94 @@
                   "description": "The row instance"
                 }
               ]
+            },
+            {
+              "name": "move-over",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<TableMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "TableMoveEventDetail",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "@ui5/webcomponents-base"
+                  }
+                ]
+              },
+              "description": "Fired when a movable item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n\n**Note:** If the dragging operation is a cross-browser operation or files are moved to a potential drop target,\nthe `source` parameter will be `null`.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "Event"
+                  },
+                  "name": "originalEvent",
+                  "_ui5privacy": "public",
+                  "description": "The original `dragover` event"
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "The source object"
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "The destination object"
+                }
+              ]
+            },
+            {
+              "name": "move",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<TableMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "TableMoveEventDetail",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "@ui5/webcomponents-base"
+                  }
+                ]
+              },
+              "description": "Fired when a movable list item is dropped onto a drop target.\n\n**Notes:**\n\nThe `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\nIf the dragging operation is a cross-browser operation or files are moved to a potential drop target,\nthe `source` parameter will be `null`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "Event"
+                  },
+                  "name": "originalEvent",
+                  "_ui5privacy": "public",
+                  "description": "The original `drop` event"
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "The source object"
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "The destination object"
+                }
+              ]
             }
           ],
           "attributes": [
@@ -24421,7 +24771,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-table",
           "customElement": true,
@@ -24589,7 +24939,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "customElement": true,
           "_ui5since": "2.0.0",
@@ -24604,6 +24954,21 @@
           "declaration": {
             "name": "TableCellBase",
             "module": "dist/TableCellBase.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableDragAndDrop.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableDragAndDrop",
+            "module": "dist/TableDragAndDrop.js"
           }
         }
       ]
@@ -24715,7 +25080,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-table-growing",
           "customElement": true,
@@ -24769,7 +25134,7 @@
                 "text": "string"
               },
               "default": "\"auto\"",
-              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode, the column will move into the popin when\nwhen the minimum width does not fit anymore.",
+              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode and the minimum width does not fit anymore,\nthe column will move into the popin.\n\n**Note:** If `minWidth` has the `auto` value, the table ensures that the column is wider than at least `3rem`.",
               "privacy": "public"
             },
             {
@@ -24825,7 +25190,7 @@
               }
             },
             {
-              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode, the column will move into the popin when\nwhen the minimum width does not fit anymore.",
+              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode and the minimum width does not fit anymore,\nthe column will move into the popin.\n\n**Note:** If `minWidth` has the `auto` value, the table ensures that the column is wider than at least `3rem`.",
               "name": "min-width",
               "default": "\"auto\"",
               "fieldName": "minWidth",
@@ -25047,7 +25412,8 @@
               },
               "default": "-1",
               "description": "Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.",
-              "privacy": "public"
+              "privacy": "public",
+              "_ui5since": "2.5.0"
             },
             {
               "kind": "field",
@@ -25068,6 +25434,17 @@
               "default": "false",
               "description": "Defines the navigated state of the row.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "movable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the row is movable.",
+              "privacy": "public",
+              "_ui5since": "2.6.0"
             }
           ],
           "attributes": [
@@ -25103,6 +25480,15 @@
               "name": "navigated",
               "default": "false",
               "fieldName": "navigated",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines whether the row is movable.",
+              "name": "movable",
+              "default": "false",
+              "fieldName": "movable",
               "type": {
                 "text": "boolean"
               }
@@ -25150,13 +25536,12 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "customElement": true,
           "_ui5since": "2.0.0",
           "_ui5privacy": "public",
-          "_ui5abstract": true,
-          "members": []
+          "_ui5abstract": true
         }
       ],
       "exports": [
@@ -25243,7 +25628,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-table-selection",
           "customElement": true,
@@ -25398,11 +25783,12 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-table-virtualizer",
           "customElement": true,
           "_ui5experimental": "This component is not intended to be used in a productive enviroment. The API is under development and may be changed in the future.",
+          "_ui5since": "2.5.0",
           "_ui5privacy": "public"
         }
       ],
@@ -25620,7 +26006,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-tag",
           "customElement": true,
@@ -25719,7 +26105,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-text",
           "customElement": true,
@@ -25834,7 +26220,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -26106,7 +26492,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-textarea",
           "customElement": true,
@@ -26184,7 +26570,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -26542,7 +26928,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-time-picker",
           "customElement": true,
@@ -26732,7 +27118,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-title",
           "customElement": true,
@@ -26862,7 +27248,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-toast",
           "customElement": true,
@@ -27291,14 +27677,14 @@
           "_ui5privacy": "public",
           "events": [
             {
-              "name": "click",
+              "name": "active-state-change",
               "_ui5privacy": "public",
               "type": {
                 "text": "Event"
               },
               "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "Button",
@@ -27430,7 +27816,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-token",
           "customElement": true,
@@ -27491,7 +27877,8 @@
               },
               "default": "false",
               "description": "Defines whether tokens are displayed on multiple lines.\n\n**Note:** The `multiLine` property is in an experimental state and is a subject to change.",
-              "privacy": "public"
+              "privacy": "public",
+              "_ui5since": "2.5.0"
             },
             {
               "kind": "field",
@@ -27501,7 +27888,8 @@
               },
               "default": "false",
               "description": "Defines whether \"Clear All\" button is present. Ensure `multiLine` is enabled, otherwise `showClearAll` will have no effect.\n\n**Note:** The `showClearAll` property is in an experimental state and is a subject to change.",
-              "privacy": "public"
+              "privacy": "public",
+              "_ui5since": "2.5.0"
             },
             {
               "kind": "field",
@@ -27658,7 +28046,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-tokenizer",
           "customElement": true,
@@ -27821,7 +28209,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-toolbar",
           "customElement": true,
@@ -28229,7 +28617,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "customElement": true,
           "_ui5since": "1.17.0",
@@ -28300,7 +28688,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -28575,7 +28963,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-toolbar-select-option",
           "customElement": true,
@@ -29250,7 +29638,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-tree",
           "customElement": true,
@@ -29402,7 +29790,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -29929,7 +30317,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -30407,7 +30795,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },

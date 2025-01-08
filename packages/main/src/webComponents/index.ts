@@ -30,6 +30,7 @@ export * from './DynamicPage/index.js';
 export * from './DynamicPageHeader/index.js';
 export * from './DynamicPageTitle/index.js';
 export * from './DynamicSideContent/index.js';
+export * from './ExpandableText/index.js';
 export * from './FileUploader/index.js';
 export * from './FilterItem/index.js';
 export * from './FilterItemOption/index.js';

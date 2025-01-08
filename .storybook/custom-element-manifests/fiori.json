@@ -1346,6 +1346,57 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/NavigationLayoutMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "NavigationLayoutMode",
+          "description": "Specifies the navigation layout mode.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Automatically calculates the navigation layout mode based on the screen device type.\n`Expanded` on desktop and `Collapsed` on tablet and phone.",
+              "default": "Auto",
+              "name": "Auto",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Collapsed side navigation.",
+              "default": "Collapsed",
+              "name": "Collapsed",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Expanded side navigation.",
+              "default": "Expanded",
+              "name": "Expanded",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NavigationLayoutMode",
+            "module": "dist/types/NavigationLayoutMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/NotificationListItemImportance.js",
       "declarations": [
         {
@@ -2032,7 +2083,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-barcode-scanner-dialog",
           "customElement": true,
@@ -2237,7 +2288,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-dynamic-page",
           "customElement": true,
@@ -2286,13 +2337,12 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-dynamic-page-header",
           "customElement": true,
           "_ui5since": "2.0.0",
-          "_ui5privacy": "public",
-          "members": []
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -2364,7 +2414,7 @@
                   {
                     "name": "Title",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/Title.js"
+                    "module": "@ui5/webcomponents"
                   }
                 ]
               },
@@ -2387,7 +2437,7 @@
                   {
                     "name": "Toolbar",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/Toolbar.js"
+                    "module": "@ui5/webcomponents"
                   }
                 ]
               },
@@ -2430,13 +2480,12 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-dynamic-page-title",
           "customElement": true,
           "_ui5since": "2.0.0",
-          "_ui5privacy": "public",
-          "members": []
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -2567,6 +2616,24 @@
               "privacy": "public"
             },
             {
+              "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "DynamicSideContentAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "DynamicSideContentAccessibilityAttributes",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/DynamicSideContent.js"
+                  }
+                ]
+              },
+              "default": "{}",
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields:\n\n - **mainContent**: `mainContent.ariaLabel` defines the aria-label of the main content area. Accepts any string.\n - **sideContent**: `sideContent.ariaLabel` defines the aria-label of the side content area. Accepts any string.",
+              "privacy": "public",
+              "_ui5since": "2.6.0"
+            },
+            {
               "kind": "method",
               "name": "toggleContents",
               "return": {
@@ -2686,12 +2753,21 @@
               "type": {
                 "text": "boolean"
               }
+            },
+            {
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields:\n\n - **mainContent**: `mainContent.ariaLabel` defines the aria-label of the main content area. Accepts any string.\n - **sideContent**: `sideContent.ariaLabel` defines the aria-label of the side content area. Accepts any string.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "DynamicSideContentAccessibilityAttributes"
+              }
             }
           ],
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-dynamic-side-content",
           "customElement": true,
@@ -2788,7 +2864,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-filter-item",
           "customElement": true,
@@ -2869,7 +2945,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-filter-item-option",
           "customElement": true,
@@ -3203,7 +3279,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-flexible-column-layout",
           "customElement": true,
@@ -3273,7 +3349,7 @@
                   {
                     "name": "IButton",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/Button.js"
+                    "module": "@ui5/webcomponents"
                   }
                 ]
               },
@@ -3391,7 +3467,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-illustrated-message",
           "customElement": true,
@@ -3625,7 +3701,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-media-gallery",
           "customElement": true,
@@ -3750,7 +3826,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-media-gallery-item",
           "customElement": true,
@@ -3790,7 +3866,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn desktop and tablet devices, the side navigation remains visible and can\nbe expanded or collapsed using the `sideCollapsed` property. On phone devices, the side navigation\nis hidden by default but can be displayed using the same `sideCollapsed` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`",
+          "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn desktop and tablet devices, the side navigation is visible\nby default and can be expanded or collapsed using the `mode` property.\nOn phone devices, the side navigation is hidden by default and can\nbe displayed using the `mode` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`",
           "name": "NavigationLayout",
           "slots": [
             {
@@ -3829,30 +3905,48 @@
           "members": [
             {
               "kind": "field",
-              "name": "sideCollapsed",
-              "description": "Indicates whether the side navigation is collapsed.",
-              "default": "false",
-              "privacy": "public",
+              "name": "mode",
               "type": {
-                "text": "boolean"
-              }
+                "text": "NavigationLayoutMode",
+                "references": [
+                  {
+                    "name": "NavigationLayoutMode",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/types/NavigationLayoutMode.js"
+                  }
+                ]
+              },
+              "default": "\"Auto\"",
+              "description": "Specifies the navigation layout mode.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "isSideCollapsed",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Gets whether the side navigation is collapsed.",
+              "privacy": "public"
             }
           ],
           "attributes": [
             {
-              "description": "Indicates whether the side navigation is collapsed.",
-              "name": "side-collapsed",
-              "default": "false",
-              "fieldName": "sideCollapsed",
+              "description": "Specifies the navigation layout mode.",
+              "name": "mode",
+              "default": "\"Auto\"",
+              "fieldName": "mode",
               "type": {
-                "text": "any"
+                "text": "\"Auto\" | \"Collapsed\" | \"Expanded\""
               }
             }
           ],
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-navigation-layout",
           "customElement": true,
@@ -4017,7 +4111,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-notification-list",
           "customElement": true,
@@ -4090,7 +4184,7 @@
                   {
                     "name": "NotificationListGrowingMode",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/types/NotificationListGrowingMode.js"
+                    "module": "@ui5/webcomponents"
                   }
                 ]
               },
@@ -4321,7 +4415,7 @@
                   {
                     "name": "WrappingType",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/types/WrappingType.js"
+                    "module": "@ui5/webcomponents"
                   }
                 ]
               },
@@ -4339,7 +4433,7 @@
                   {
                     "name": "ValueState",
                     "package": "@ui5/webcomponents-base",
-                    "module": "dist/types/ValueState.js"
+                    "module": "@ui5/webcomponents-base"
                   }
                 ]
               },
@@ -4584,7 +4678,7 @@
           "superclass": {
             "name": "ListItemBase",
             "package": "@ui5/webcomponents",
-            "module": "dist/ListItemBase.js"
+            "module": "@ui5/webcomponents"
           },
           "_ui5since": "1.0.0-rc.8",
           "_ui5privacy": "public"
@@ -4732,7 +4826,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-page",
           "customElement": true,
@@ -4794,13 +4888,12 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-product-switch",
           "customElement": true,
           "_ui5since": "1.0.0-rc.5",
-          "_ui5privacy": "public",
-          "members": []
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -4947,7 +5040,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-product-switch-item",
           "customElement": true,
@@ -5006,7 +5099,7 @@
                   {
                     "name": "IButton",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/Button.js"
+                    "module": "@ui5/webcomponents"
                   }
                 ]
               },
@@ -5056,7 +5149,7 @@
                   {
                     "name": "ListItemBase",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/ListItemBase.js"
+                    "module": "@ui5/webcomponents"
                   }
                 ]
               },
@@ -5071,7 +5164,7 @@
                   {
                     "name": "Input",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/Input.js"
+                    "module": "@ui5/webcomponents"
                   }
                 ]
               },
@@ -5086,7 +5179,7 @@
                   {
                     "name": "IButton",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/Button.js"
+                    "module": "@ui5/webcomponents"
                   }
                 ]
               },
@@ -5537,7 +5630,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-shellbar",
           "customElement": true,
@@ -5667,7 +5760,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-shellbar-item",
           "customElement": true,
@@ -5807,7 +5900,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-side-navigation",
           "customElement": true,
@@ -6361,7 +6454,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "customElement": true,
           "_ui5since": "1.19.0",
@@ -6894,7 +6987,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-sort-item",
           "customElement": true,
@@ -7008,7 +7101,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-timeline",
           "customElement": true,
@@ -7119,7 +7212,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-timeline-group-item",
           "customElement": true,
@@ -7287,7 +7380,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-timeline-item",
           "customElement": true,
@@ -7522,7 +7615,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-upload-collection",
           "customElement": true,
@@ -7571,22 +7664,6 @@
               "description": "A thumbnail, which will be shown in the beginning of the `ui5-upload-collection-item`.\n\n**Note:** Use `ui5-icon` or `img` for the intended design.",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "deleteButton",
-              "description": "Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.",
-              "_ui5since": "1.9.0",
-              "_ui5type": {
-                "text": "Array<IButton>",
-                "references": [
-                  {
-                    "name": "IButton",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/Button.js"
-                  }
-                ]
               },
               "_ui5privacy": "public"
             }
@@ -7689,91 +7766,6 @@
               "default": "\"Ready\"",
               "description": "Upload state.\n\nDepending on this property, the item displays the following:\n\n- `Ready` - progress indicator is displayed.\n- `Uploading` - progress indicator and terminate button are displayed. When the terminate button is pressed, `terminate` event is fired.\n- `Error` - progress indicator and retry button are displayed. When the retry button is pressed, `retry` event is fired.\n- `Complete` - progress indicator is not displayed.",
               "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "ListItemType",
-                "references": [
-                  {
-                    "name": "ListItemType",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ListItemType.js"
-                  }
-                ]
-              },
-              "default": "\"Active\"",
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "accessibilityAttributes",
-              "type": {
-                "text": "ListItemAccessibilityAttributes",
-                "references": [
-                  {
-                    "name": "ListItemAccessibilityAttributes",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/ListItem.js"
-                  }
-                ]
-              },
-              "default": "{}",
-              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
-              "privacy": "public",
-              "_ui5since": "1.15.0"
-            },
-            {
-              "kind": "field",
-              "name": "navigated",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
-              "privacy": "public",
-              "_ui5since": "1.10.0"
-            },
-            {
-              "kind": "field",
-              "name": "tooltip",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Defines the text of the tooltip that would be displayed for the list item.",
-              "default": "undefined",
-              "privacy": "public",
-              "_ui5since": "1.23.0"
-            },
-            {
-              "kind": "field",
-              "name": "highlight",
-              "type": {
-                "text": "Highlight",
-                "references": [
-                  {
-                    "name": "Highlight",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/Highlight.js"
-                  }
-                ]
-              },
-              "default": "\"None\"",
-              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
-              "privacy": "public",
-              "_ui5since": "1.24"
-            },
-            {
-              "kind": "field",
-              "name": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines the selected state of the component.",
-              "default": "false",
-              "privacy": "public"
             }
           ],
           "events": [
@@ -7817,17 +7809,6 @@
                 "text": "CustomEvent"
               },
               "description": "Fired when the retry button is pressed.\n\n**Note:** Retry button is displayed when `uploadState` property is set to `Error`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
-            },
-            {
-              "name": "detail-click",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true
@@ -7919,7 +7900,7 @@
           "superclass": {
             "name": "ListItem",
             "package": "@ui5/webcomponents",
-            "module": "dist/ListItem.js"
+            "module": "@ui5/webcomponents"
           },
           "tagName": "ui5-upload-collection-item",
           "customElement": true,
@@ -8159,6 +8140,30 @@
               ]
             },
             {
+              "name": "open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when a user menu is open.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5since": "2.6.0"
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when a user menu is close.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5since": "2.6.0"
+            },
+            {
               "name": "sign-out-click",
               "_ui5privacy": "public",
               "type": {
@@ -8167,7 +8172,8 @@
               "description": "Fired when the \"Sign Out\" button is selected.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": false
+              "_ui5Bubbles": false,
+              "_ui5since": "2.6.0"
             }
           ],
           "attributes": [
@@ -8220,7 +8226,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-user-menu",
           "customElement": true,
@@ -8377,7 +8383,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-user-menu-account",
           "customElement": true,
@@ -8429,245 +8435,18 @@
                 ]
               },
               "_ui5privacy": "public"
-            },
-            {
-              "name": "endContent",
-              "description": "Defines the components that should be displayed at the end of the menu item.\n\n**Note:** It is highly recommended to slot only components of type `ui5-button`,`ui5-link`\nor `ui5-icon` in order to preserve the intended design. If there are components added to this slot,\nand there is text set in `additionalText`, it will not be displayed. If there are items added to `items` slot,\nnether `additionalText` nor components added to this slot would be displayed.\n\nThe priority of what will be displayed at the end of the menu item is as follows:\nsub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.",
-              "_ui5since": "2.0.0",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "deleteButton",
-              "description": "Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.",
-              "_ui5since": "1.9.0",
-              "_ui5type": {
-                "text": "Array<IButton>",
-                "references": [
-                  {
-                    "name": "IButton",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/Button.js"
-                  }
-                ]
-              },
-              "_ui5privacy": "public"
             }
           ],
           "superclass": {
             "name": "MenuItem",
             "package": "@ui5/webcomponents",
-            "module": "dist/MenuItem.js"
+            "module": "@ui5/webcomponents"
           },
           "tagName": "ui5-user-menu-item",
           "customElement": true,
           "_ui5experimental": true,
           "_ui5since": "2.5.0",
-          "_ui5privacy": "public",
-          "members": [
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Defines the text of the tree item.",
-              "default": "undefined",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "additionalText",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Defines the `additionalText`, displayed in the end of the menu item.\n\n**Note:** The additional text will not be displayed if there are items added in `items` slot or there are\ncomponents added to `endContent` slot.\n\nThe priority of what will be displayed at the end of the menu item is as follows:\nsub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.",
-              "default": "undefined",
-              "privacy": "public",
-              "_ui5since": "1.8.0"
-            },
-            {
-              "kind": "field",
-              "name": "icon",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\n**Example:**\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
-              "default": "undefined",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Defines whether `ui5-menu-item` is in disabled state.\n\n**Note:** A disabled `ui5-menu-item` is noninteractive.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "loading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.\n\n**Note:** If set to `true` a `ui5-busy-indicator` component will be displayed into the related one to the current `ui5-menu-item` sub-menu popover.",
-              "privacy": "public",
-              "_ui5since": "1.13.0"
-            },
-            {
-              "kind": "field",
-              "name": "loadingDelay",
-              "type": {
-                "text": "number"
-              },
-              "default": "1000",
-              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.",
-              "privacy": "public",
-              "_ui5since": "1.13.0"
-            },
-            {
-              "kind": "field",
-              "name": "accessibleName",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Defines the accessible ARIA name of the component.",
-              "default": "undefined",
-              "privacy": "public",
-              "_ui5since": "1.7.0"
-            },
-            {
-              "kind": "field",
-              "name": "tooltip",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Defines the text of the tooltip for the menu item.",
-              "default": "undefined",
-              "privacy": "public",
-              "_ui5since": "1.23.0",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "accessibilityAttributes",
-              "type": {
-                "text": "ListItemAccessibilityAttributes",
-                "references": [
-                  {
-                    "name": "ListItemAccessibilityAttributes",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/ListItem.js"
-                  }
-                ]
-              },
-              "default": "{}",
-              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaKeyShortcuts**: Indicated the availability of a keyboard shortcuts defined for the menu item.\n\n- **role**: Defines the role of the menu item. If not set, menu item will have default role=\"menuitem\".",
-              "privacy": "public",
-              "_ui5since": "2.1.0",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "ListItemType",
-                "references": [
-                  {
-                    "name": "ListItemType",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ListItemType.js"
-                  }
-                ]
-              },
-              "default": "\"Active\"",
-              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "navigated",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
-              "privacy": "public",
-              "_ui5since": "1.10.0",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "highlight",
-              "type": {
-                "text": "Highlight",
-                "references": [
-                  {
-                    "name": "Highlight",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/Highlight.js"
-                  }
-                ]
-              },
-              "default": "\"None\"",
-              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
-              "privacy": "public",
-              "_ui5since": "1.24",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Defines the selected state of the component.",
-              "default": "false",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            }
-          ],
-          "events": [
-            {
-              "name": "detail-click",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            }
-          ]
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -8960,7 +8739,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-view-settings-dialog",
           "customElement": true,
@@ -9117,7 +8896,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-wizard",
           "customElement": true,
@@ -9285,7 +9064,7 @@
           "superclass": {
             "name": "UI5Element",
             "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
+            "module": "@ui5/webcomponents-base"
           },
           "tagName": "ui5-wizard-step",
           "customElement": true,
