@@ -1,6 +1,5 @@
 'use client';
 
-import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import { createOrUpdateStyle, removeStyle } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import { getCurrentRuntimeIndex } from '@ui5/webcomponents-base/dist/Runtimes.js';
 import { useSyncExternalStore } from 'react';
@@ -11,7 +10,7 @@ interface UseStyleSheetOptions {
   alwaysInject?: boolean;
 }
 
-export function useStylesheet(styles: StyleDataCSP, componentName: string, options?: UseStyleSheetOptions) {
+export function useStylesheet(styles: string, componentName: string, options?: UseStyleSheetOptions) {
   const { staticCssInjected, componentsMap } = useSyncExternalStore(
     StyleStore.subscribe,
     StyleStore.getSnapshot,

@@ -3,7 +3,6 @@
 import { getTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import { getScopedVarName } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import { attachLanguageChange, detachLanguageChange } from '@ui5/webcomponents-base/dist/locale/languageChange.js';
-import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/ManagedStyles.js';
 import { attachThemeLoaded, detachThemeLoaded } from '@ui5/webcomponents-base/dist/theming/ThemeLoaded.js';
 import { I18nStore, StyleStore, useIsomorphicLayoutEffect, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { FC, ReactNode } from 'react';
@@ -13,13 +12,6 @@ import { styleData } from './ThemeProvider.css.js';
 
 let _versionInfoInjected = false;
 
-function ThemeProviderStyles() {
-  const uniqueId = useId();
-  useStylesheet(styleData, `${ThemeProvider.displayName}-${uniqueId}`);
-  useStylesheet(ui5WcVariablesStyleData, `${ThemeProvider.displayName}-css-vars-${uniqueId}`, { alwaysInject: true });
-  return null;
-}
-
 const InternalUI5WCVVarNames = {
   '--_ui5wcr_card_header_focus_offset': `var(${getScopedVarName('--_ui5_card_header_focus_offset')})`,
   '--_ui5wcr_card_header_focus_border': `var(${getScopedVarName('--_ui5_card_header_focus_border')})`,
@@ -28,15 +20,18 @@ const InternalUI5WCVVarNames = {
   '--_ui5wcr_popup_header_font_family': `var(${getScopedVarName('--_ui5_popup_header_font_family')})`
 };
 
-const ui5WcVariablesStyleData: StyleDataCSP = {
-  content: `:root {${Object.entries(InternalUI5WCVVarNames)
-    .map(([key, value]) => {
-      return `${key}: ${value};`;
-    })
-    .join(' ')}}`,
-  packageName: '@ui5/webcomponents-react',
-  fileName: 'ThemeProvider'
-};
+const ui5WcVariablesStyle = `:root {${Object.entries(InternalUI5WCVVarNames)
+  .map(([key, value]) => {
+    return `${key}: ${value};`;
+  })
+  .join(' ')}}`;
+
+function ThemeProviderStyles() {
+  const uniqueId = useId();
+  useStylesheet(styleData, `${ThemeProvider.displayName}-${uniqueId}`);
+  useStylesheet(ui5WcVariablesStyle, `${ThemeProvider.displayName}-css-vars-${uniqueId}`, { alwaysInject: true });
+  return null;
+}
 
 export interface ThemeProviderPropTypes {
   children: ReactNode;

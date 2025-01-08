@@ -1,4 +1,3 @@
-// copied from https://github.com/SAP/ui5-webcomponents/blob/main/packages/tools/lib/postcss-css-to-esm/index.js
 import versionInfo from '@ui5/webcomponents-base/dist/generated/VersionInfo.js';
 import fs from 'node:fs';
 import path, { basename } from 'node:path';
@@ -14,23 +13,22 @@ function scopeVariables(cssText, packageJSON) {
 }
 
 const getTSContent = (targetFile, packageName, css, exportTokens) => {
-  const typeImport = `import type { StyleDataCSP } from '@ui5/webcomponents-base/dist/types.js';`;
-
   // tabs are intentionally mixed to have proper identation in the produced file
-  return `${typeImport}
-export const styleData: StyleDataCSP = {packageName:'${packageName}',fileName:'${basename(targetFile)}',content:${css}};
+  return `export const styleData = \`${css}\`;
 
 export const classNames = ${JSON.stringify(exportTokens)} as const;
 `;
 };
 
+// strips the unnecessary theming data coming from @sap-theming/theming-base-content and leaves only the css parameters
+// & scope variables
 const proccessCSS = (css) => {
   css = css.replace(/\.sapThemeMeta[\s\S]*?:root/, ':root');
   css = css.replace(/\.background-image.*{.*}/, '');
   css = css.replace(/\.sapContrast[ ]*:root[\s\S]*?}/, '');
   css = css.replace(/--sapFontUrl.*\);?/, '');
   css = scopeVariables(css, versionInfo);
-  return JSON.stringify(css);
+  return css;
 };
 
 function cssToEsmPostcssPlugin(opts) {
