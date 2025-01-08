@@ -1,19 +1,26 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/NavigationLayout.js';
+import type NavigationLayoutMode from '@ui5/webcomponents-fiori/dist/types/NavigationLayoutMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface NavigationLayoutAttributes {
   /**
-   * Indicates whether the side navigation is collapsed.
-   * @default false
+   * Specifies the navigation layout mode.
+   * @default "Auto"
    */
-  sideCollapsed?: boolean;
+  mode?: NavigationLayoutMode | keyof typeof NavigationLayoutMode;
 }
 
-interface NavigationLayoutDomRef extends Required<NavigationLayoutAttributes>, Ui5DomRef {}
+interface NavigationLayoutDomRef extends Required<NavigationLayoutAttributes>, Ui5DomRef {
+  /**
+   * Gets whether the side navigation is collapsed.
+   * @returns {boolean}
+   */
+  isSideCollapsed: () => boolean;
+}
 
 interface NavigationLayoutPropTypes
   extends NavigationLayoutAttributes,
@@ -56,9 +63,10 @@ interface NavigationLayoutPropTypes
  *
  * ### Responsive Behavior
  *
- * On desktop and tablet devices, the side navigation remains visible and can
- * be expanded or collapsed using the `sideCollapsed` property. On phone devices, the side navigation
- * is hidden by default but can be displayed using the same `sideCollapsed` property.
+ * On desktop and tablet devices, the side navigation is visible
+ * by default and can be expanded or collapsed using the `mode` property.
+ * On phone devices, the side navigation is hidden by default and can
+ * be displayed using the `mode` property.
  *
  *
  *
@@ -68,8 +76,8 @@ interface NavigationLayoutPropTypes
  */
 const NavigationLayout = withWebComponent<NavigationLayoutPropTypes, NavigationLayoutDomRef>(
   'ui5-navigation-layout',
+  ['mode'],
   [],
-  ['sideCollapsed'],
   ['header', 'sideContent'],
   []
 );

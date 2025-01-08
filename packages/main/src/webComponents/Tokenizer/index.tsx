@@ -33,6 +33,8 @@ interface TokenizerAttributes {
    * Defines whether tokens are displayed on multiple lines.
    *
    * **Note:** The `multiLine` property is in an experimental state and is a subject to change.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
    * @default false
    */
   multiLine?: boolean;
@@ -50,6 +52,8 @@ interface TokenizerAttributes {
    * Defines whether "Clear All" button is present. Ensure `multiLine` is enabled, otherwise `showClearAll` will have no effect.
    *
    * **Note:** The `showClearAll` property is in an experimental state and is a subject to change.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
    * @default false
    */
   showClearAll?: boolean;

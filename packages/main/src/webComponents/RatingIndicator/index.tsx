@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/RatingIndicator.js';
+import type RatingIndicatorSize from '@ui5/webcomponents/dist/types/RatingIndicatorSize.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
@@ -49,6 +50,14 @@ interface RatingIndicatorAttributes {
    * @default false
    */
   required?: boolean;
+
+  /**
+   * Defines the size of the component.
+   *
+   * **Note:** Available since [v2.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.6.0) of **@ui5/webcomponents**.
+   * @default "M"
+   */
+  size?: RatingIndicatorSize | keyof typeof RatingIndicatorSize;
 
   /**
    * Defines the tooltip of the component.
@@ -115,7 +124,7 @@ interface RatingIndicatorPropTypes
  */
 const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicatorDomRef>(
   'ui5-rating-indicator',
-  ['accessibleName', 'accessibleNameRef', 'max', 'tooltip', 'value'],
+  ['accessibleName', 'accessibleNameRef', 'max', 'size', 'tooltip', 'value'],
   ['disabled', 'readonly', 'required'],
   [],
   ['change']

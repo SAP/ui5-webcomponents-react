@@ -204,7 +204,7 @@ interface MultiComboBoxPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onOpen?: (event: Ui5CustomEvent<MultiComboBoxDomRef>) => void;
 

@@ -96,7 +96,7 @@ interface StepInputDomRef extends Required<StepInputAttributes>, Ui5DomRef {}
 
 interface StepInputPropTypes
   extends StepInputAttributes,
-    Omit<CommonProps, keyof StepInputAttributes | 'valueStateMessage' | 'onChange' | 'onValueStateChange'> {
+    Omit<CommonProps, keyof StepInputAttributes | 'valueStateMessage' | 'onChange' | 'onInput' | 'onValueStateChange'> {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
    *
@@ -120,6 +120,19 @@ interface StepInputPropTypes
    * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<StepInputDomRef>) => void;
+
+  /**
+   * Fired when the value of the component changes at each keystroke.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v2.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.6.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
+   */
+  onInput?: (event: Ui5CustomEvent<StepInputDomRef>) => void;
 
   /**
    * Fired before the value state of the component is updated internally.
@@ -186,7 +199,7 @@ const StepInput = withWebComponent<StepInputPropTypes, StepInputDomRef>(
   ],
   ['disabled', 'readonly', 'required'],
   ['valueStateMessage'],
-  ['change', 'value-state-change']
+  ['change', 'input', 'value-state-change']
 );
 
 StepInput.displayName = 'StepInput';

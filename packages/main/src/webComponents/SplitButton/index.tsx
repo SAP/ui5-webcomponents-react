@@ -41,7 +41,7 @@ interface SplitButtonAttributes {
    *
    * Example:
    *
-   * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
+   * See all available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
    * @default undefined
    */
   icon?: string | undefined;
