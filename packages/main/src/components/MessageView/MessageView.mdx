@@ -47,15 +47,18 @@ to get back to the list view.
 
 Sample Code: _(Button and Dialog opening are omitted here)_
 
-```jsx
+```tsx
 function MyComponent() {
-  const messageViewRef = useRef(null);
+  const messageViewRef = useRef<MessageViewDomRef>(null);
   const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
   return (
     <Dialog
       resizable
       style={{ width: '500px' }}
       className="modal-without-padding"
+      onClose={() => {
+        messageViewRef.current.navigateBack();
+      }}
       header={
         <Bar
           startContent={
