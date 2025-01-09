@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.5.0...v2.6.0) (2025-01-09)
+
+### Bug Fixes
+
+- **AnalyticalTable - TypeScript:** adjust column types for filtering ([#6715](https://github.com/SAP/ui5-webcomponents-react/issues/6715)) ([ee6e748](https://github.com/SAP/ui5-webcomponents-react/commit/ee6e7489018655d48013dc4b97f71e3acd8ac27b))
+- **AnalyticalTable:** use single stylesheet ([#6763](https://github.com/SAP/ui5-webcomponents-react/issues/6763)) ([1c5b596](https://github.com/SAP/ui5-webcomponents-react/commit/1c5b5969870ab0b76b0e8dc8855d8d06b5551de3))
+- **charts:** support React19 ([#6742](https://github.com/SAP/ui5-webcomponents-react/issues/6742)) ([857d6b5](https://github.com/SAP/ui5-webcomponents-react/commit/857d6b5add84ec1af22ab252493fcac1b58e750d))
+- **deps:** update dependency @tanstack/react-virtual to v3.11.1 ([#6716](https://github.com/SAP/ui5-webcomponents-react/issues/6716)) ([d17c922](https://github.com/SAP/ui5-webcomponents-react/commit/d17c9223560cef80531d16ad0d7154ba7751db4a))
+- **deps:** update dependency @tanstack/react-virtual to v3.11.2 ([#6751](https://github.com/SAP/ui5-webcomponents-react/issues/6751)) ([381e0bc](https://github.com/SAP/ui5-webcomponents-react/commit/381e0bcab051c5d97015e3eb2f38e4551f195943))
+- **deps:** update ui5 web components to v2.5.1 (patch) ([#6753](https://github.com/SAP/ui5-webcomponents-react/issues/6753)) ([2d4d04a](https://github.com/SAP/ui5-webcomponents-react/commit/2d4d04a3e69acab55a92fb9547d28283d9114087))
+- **FilterBar:** correct callback values for `onFiltersDialogSelectionChange` ([#6724](https://github.com/SAP/ui5-webcomponents-react/issues/6724)) ([0e289fa](https://github.com/SAP/ui5-webcomponents-react/commit/0e289fadfdba3c258f6161d2c8b08fbfcd0c740a)), closes [#6720](https://github.com/SAP/ui5-webcomponents-react/issues/6720)
+- **MessageViewButton:** correct tooltips ([#6766](https://github.com/SAP/ui5-webcomponents-react/issues/6766)) ([de4608f](https://github.com/SAP/ui5-webcomponents-react/commit/de4608fef7dadac147dafcdd7bb45dafd079e368)), closes [#6594](https://github.com/SAP/ui5-webcomponents-react/issues/6594)
+- **MessageView:** fix group order ([#6760](https://github.com/SAP/ui5-webcomponents-react/issues/6760)) ([4d7c8e1](https://github.com/SAP/ui5-webcomponents-react/commit/4d7c8e1de3059374d6eeb1e24429c4fe3a8f66fd)), closes [#6750](https://github.com/SAP/ui5-webcomponents-react/issues/6750)
+- **ObjectPage:** scroll to section when programmatically selected ([#6768](https://github.com/SAP/ui5-webcomponents-react/issues/6768)) ([ad9937a](https://github.com/SAP/ui5-webcomponents-react/commit/ad9937a6892864ec7cbc0fa84faa4845a38b948c)), closes [#6765](https://github.com/SAP/ui5-webcomponents-react/issues/6765)
+- **SelectDialog:** set search input type to `"search"` ([#6791](https://github.com/SAP/ui5-webcomponents-react/issues/6791)) ([9919542](https://github.com/SAP/ui5-webcomponents-react/commit/9919542c0bde8ab8f146829cd916c4908b8539b0))
+
+### Features
+
+- update to UI5 Web Components 2.6.2 ([#6792](https://github.com/SAP/ui5-webcomponents-react/issues/6792)) ([c147bf7](https://github.com/SAP/ui5-webcomponents-react/commit/c147bf7b4d30e606ffab67ed0cbece6c202a8e1c))
+
 # [2.5.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.4.0...v2.5.0) (2024-12-09)
 
 ### Bug Fixes
