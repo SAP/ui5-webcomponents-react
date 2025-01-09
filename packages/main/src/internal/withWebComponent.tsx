@@ -205,8 +205,8 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
           {...restRegularProps}
           {...eventHandlers}
           {...nonWebComponentRelatedProps}
-          // @ts-expect-error: overflowMode is available
-          overflowMode={overflowMode ?? (showOverflowInPopover ? 'Popover' : 'InPlace')}
+          overflow-mode={overflowMode ?? (showOverflowInPopover ? 'Popover' : 'InPlace')}
+          // @ts-expect-error: text is available
           text={text ?? children}
           class={className}
           suppressHydrationWarning
