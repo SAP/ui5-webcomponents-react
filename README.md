@@ -78,7 +78,7 @@ npm install @ui5/webcomponents-react @ui5/webcomponents @ui5/webcomponents-fiori
 
 ## Ongoing Support for Version 1.x
 
-We will continue to support version 1.x until the end of the year, focusing on bug fixes to ensure continuity for our existing users.
+We will continue to support version 1.x until end of June 2025, focusing on bug fixes to ensure continuity for our existing users.
 
 <!-- *********************************************************************** -->
 
