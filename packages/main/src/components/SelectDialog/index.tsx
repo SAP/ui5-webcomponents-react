@@ -2,6 +2,7 @@
 
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
+import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
 import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
@@ -306,6 +307,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
           placeholder={i18nBundle.getText(SEARCH)}
           onInput={handleSearchInput}
           onKeyUp={handleSearchSubmit}
+          type={InputType.Search}
           icon={
             <>
               {searchValue && (
