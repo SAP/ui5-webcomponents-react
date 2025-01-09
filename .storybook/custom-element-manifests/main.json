@@ -14019,8 +14019,8 @@
                 "references": [
                   {
                     "name": "ListMoveEventDetail",
-                    "package": "@ui5/webcomponents-base",
-                    "module": "dist/util/dragAndDrop/DragRegistry.js"
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/List.js"
                   }
                 ]
               },
@@ -14056,8 +14056,8 @@
                 "references": [
                   {
                     "name": "ListMoveEventDetail",
-                    "package": "@ui5/webcomponents-base",
-                    "module": "dist/util/dragAndDrop/DragRegistry.js"
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/List.js"
                   }
                 ]
               },
@@ -24634,8 +24634,8 @@
                 "references": [
                   {
                     "name": "TableMoveEventDetail",
-                    "package": "@ui5/webcomponents-base",
-                    "module": "dist/util/dragAndDrop/DragRegistry.js"
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Table.js"
                   }
                 ]
               },
@@ -24678,8 +24678,8 @@
                 "references": [
                   {
                     "name": "TableMoveEventDetail",
-                    "package": "@ui5/webcomponents-base",
-                    "module": "dist/util/dragAndDrop/DragRegistry.js"
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Table.js"
                   }
                 ]
               },
