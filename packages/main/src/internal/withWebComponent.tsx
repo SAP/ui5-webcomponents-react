@@ -226,9 +226,6 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         {...nonWebComponentRelatedProps}
         class={className}
         suppressHydrationWarning
-        data-render-whitespace={
-          tagName === 'ui5-expandable-text' && nonWebComponentRelatedProps['renderWhitespace'] ? true : undefined
-        }
       >
         {slots}
         {children}
