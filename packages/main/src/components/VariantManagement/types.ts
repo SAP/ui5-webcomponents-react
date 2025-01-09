@@ -1,5 +1,5 @@
-import type { DialogBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Dialog.js';
 import type { ListSelectionChangeEventDetail } from '@ui5/webcomponents/dist/List.js';
+import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.js';
 import type { ReactNode } from 'react';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
@@ -172,7 +172,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
       detail: {
         invalidVariants: Record<string, InputDomRef>;
         nativeDetail?: number;
-      } & Partial<DialogBeforeCloseEventDetail>;
+      } & Partial<PopupBeforeCloseEventDetail>;
     }
   ) => void;
   /**
@@ -184,7 +184,7 @@ export interface VariantManagementPropTypes extends Omit<CommonProps, 'onSelect'
       | Parameters<NonNullable<DialogPropTypes['onBeforeClose']>>[0]
     ) & {
       detail: SelectedVariant & { nativeDetail?: number };
-      isInvalid?: boolean & Partial<DialogBeforeCloseEventDetail>;
+      isInvalid?: boolean & Partial<PopupBeforeCloseEventDetail>;
     }
   ) => void;
 }

@@ -18,6 +18,9 @@ function resolveReferenceImport(reference: CEM.Reference | undefined): Reference
 
   // find module
   const resolvedModule = customElementManifest.modules.find((mod) => mod.path === modulePath);
+  if (!resolvedModule) {
+    console.warn('Resolved Module not found for:', reference.name, 'in', pkgName);
+  }
 
   if (resolvedModule) {
     const exportDeclaration = resolvedModule.exports?.find((exp) => exp.declaration.name === name);

@@ -77,6 +77,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const handleBeforeOpen = () => {
     if (toggleBtnRef.current) {
+      //@ts-expect-error: for some reason these optional attributes are mandatory which is not expected
       toggleBtnRef.current.accessibilityAttributes = { expanded: true, hasPopup: 'menu' };
     }
   };
@@ -86,6 +87,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const handleClose = (e) => {
     if (toggleBtnRef.current) {
+      //@ts-expect-error: for some reason these optional attributes are mandatory which is not expected
       toggleBtnRef.current.accessibilityAttributes = { expanded: false, hasPopup: 'menu' };
     }
     stopPropagation(e);
@@ -96,6 +98,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     const tagName = getUi5TagWithSuffix('ui5-toggle-button');
     void customElements.whenDefined(tagName).then(() => {
       if (toggleBtnRef.current) {
+        //@ts-expect-error: for some reason these optional attributes are mandatory which is not expected
         toggleBtnRef.current.accessibilityAttributes = { expanded: pressed, hasPopup: 'menu' };
       }
     });

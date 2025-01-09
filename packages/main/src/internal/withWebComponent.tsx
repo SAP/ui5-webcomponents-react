@@ -192,6 +192,31 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       return null;
     }
 
+    // compatibility wrapper for ExpandableText - remove in v3
+    if (tagName === 'ui5-expandable-text') {
+      const renderWhiteSpace = nonWebComponentRelatedProps['renderWhitespace'] ? true : undefined;
+      // @ts-expect-error: overflowMode is available
+      const { ['overflow-mode']: overflowMode, text, ...restRegularProps } = regularProps;
+      const showOverflowInPopover = nonWebComponentRelatedProps['showOverflowInPopover'];
+      return (
+        <Component
+          ref={componentRef}
+          {...booleanProps}
+          {...restRegularProps}
+          {...eventHandlers}
+          {...nonWebComponentRelatedProps}
+          overflow-mode={overflowMode ?? (showOverflowInPopover ? 'Popover' : 'InPlace')}
+          // @ts-expect-error: text is available
+          text={text ?? children}
+          class={className}
+          suppressHydrationWarning
+          data-_render-whitespace={renderWhiteSpace}
+        >
+          {slots}
+        </Component>
+      );
+    }
+
     return (
       <Component
         ref={componentRef}

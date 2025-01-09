@@ -1358,6 +1358,48 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/ExpandableTextOverflowMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "ExpandableTextOverflowMode",
+          "description": "Overflow Mode.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Overflowing text is appended in-place.",
+              "default": "InPlace",
+              "name": "InPlace",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Full text is displayed in a popover.",
+              "default": "Popover",
+              "name": "Popover",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ExpandableTextOverflowMode",
+            "module": "dist/types/ExpandableTextOverflowMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/FormItemSpacing.js",
       "declarations": [
         {
@@ -2673,6 +2715,58 @@
           "declaration": {
             "name": "Priority",
             "module": "dist/types/Priority.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/RatingIndicatorSize.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "RatingIndicatorSize",
+          "description": "Types of icon sizes used in the RatingIndicator.\nProvides predefined size categories to ensure consistent scaling and spacing of icons.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.6.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Small size for compact layouts.",
+              "default": "S",
+              "name": "S",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Medium size, used as the default option.\nOffers a balanced appearance for most scenarios.",
+              "default": "M",
+              "name": "M",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Large size for prominent or spacious layouts.",
+              "default": "L",
+              "name": "L",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "RatingIndicatorSize",
+            "module": "dist/types/RatingIndicatorSize.js"
           }
         }
       ]
@@ -6473,7 +6567,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.\n\n**Note:** The navigation arrows are always displayed on touch devices.",
+              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15"
             },
@@ -6681,7 +6775,7 @@
               }
             },
             {
-              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.\n\n**Note:** The navigation arrows are always displayed on touch devices.",
+              "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.",
               "name": "hide-navigation-arrows",
               "default": "false",
               "fieldName": "hideNavigationArrows",
@@ -11405,6 +11499,138 @@
           "declaration": {
             "name": "DropIndicator",
             "module": "dist/DropIndicator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ExpandableText.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-expandable-text` component allows displaying a large body of text in a small space. It provides an \"expand/collapse\" functionality, which shows/hides potentially truncated text.\n\n### Usage\n\n#### When to use:\n- To accommodate long texts in limited space, for example in list items, table cell texts, or forms\n\n#### When not to use:\n- The content is critical for the user. In this case use short descriptions that can fit in\n- Strive to provide short and meaningful texts to avoid excessive number of \"Show More\" links on the page\n\n### Responsive Behavior\n\nOn phones, if the component is configured to display the full text in a popover, the popover will appear in full screen.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/ExpandableText\";`",
+          "name": "ExpandableText",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Text of the component.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "maxCharacters",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "description": "Maximum number of characters to be displayed initially. If the text length exceeds this limit, the text will be truncated with an ellipsis, and the \"More\" link will be displayed.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "overflowMode",
+              "type": {
+                "text": "ExpandableTextOverflowMode",
+                "references": [
+                  {
+                    "name": "ExpandableTextOverflowMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ExpandableTextOverflowMode.js"
+                  }
+                ]
+              },
+              "default": "\"InPlace\"",
+              "description": "Determines how the full text will be displayed.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "emptyIndicatorMode",
+              "type": {
+                "text": "TextEmptyIndicatorMode",
+                "references": [
+                  {
+                    "name": "TextEmptyIndicatorMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TextEmptyIndicatorMode.js"
+                  }
+                ]
+              },
+              "default": "\"Off\"",
+              "description": "Specifies if an empty indicator should be displayed when there is no text.",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Text of the component.",
+              "name": "text",
+              "default": "undefined",
+              "fieldName": "text",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Maximum number of characters to be displayed initially. If the text length exceeds this limit, the text will be truncated with an ellipsis, and the \"More\" link will be displayed.",
+              "name": "max-characters",
+              "default": "100",
+              "fieldName": "maxCharacters",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "description": "Determines how the full text will be displayed.",
+              "name": "overflow-mode",
+              "default": "\"InPlace\"",
+              "fieldName": "overflowMode",
+              "type": {
+                "text": "\"InPlace\" | \"Popover\""
+              }
+            },
+            {
+              "description": "Specifies if an empty indicator should be displayed when there is no text.",
+              "name": "empty-indicator-mode",
+              "default": "\"Off\"",
+              "fieldName": "emptyIndicatorMode",
+              "type": {
+                "text": "\"On\" | \"Off\""
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-expandable-text",
+          "customElement": true,
+          "_ui5since": "2.6.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ExpandableText",
+            "module": "dist/ExpandableText.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-expandable-text",
+          "declaration": {
+            "name": "ExpandableText",
+            "module": "dist/ExpandableText.js"
           }
         }
       ]
@@ -16496,7 +16722,7 @@
               "description": "Fired when the dropdown is opened.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.0.0"
             },
             {
@@ -20064,6 +20290,24 @@
             },
             {
               "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "RatingIndicatorSize",
+                "references": [
+                  {
+                    "name": "RatingIndicatorSize",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/RatingIndicatorSize.js"
+                  }
+                ]
+              },
+              "default": "\"M\"",
+              "description": "Defines the size of the component.",
+              "privacy": "public",
+              "_ui5since": "2.6.0"
+            },
+            {
+              "kind": "field",
               "name": "disabled",
               "type": {
                 "text": "boolean"
@@ -20157,6 +20401,15 @@
               "fieldName": "max",
               "type": {
                 "text": "number"
+              }
+            },
+            {
+              "description": "Defines the size of the component.",
+              "name": "size",
+              "default": "\"M\"",
+              "fieldName": "size",
+              "type": {
+                "text": "\"S\" | \"M\" | \"L\""
               }
             },
             {
@@ -22343,7 +22596,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\n\nSee all available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "default": "undefined",
               "privacy": "public"
             },
@@ -22422,7 +22675,7 @@
           ],
           "attributes": [
             {
-              "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\n\nSee all available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "name": "icon",
               "default": "undefined",
               "fieldName": "icon",
@@ -22667,6 +22920,18 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true
+            },
+            {
+              "name": "input",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the value of the component changes at each keystroke.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.6.0"
             },
             {
               "name": "value-state-change",
@@ -24360,6 +24625,94 @@
                   "description": "The row instance"
                 }
               ]
+            },
+            {
+              "name": "move-over",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<TableMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "TableMoveEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Table.js"
+                  }
+                ]
+              },
+              "description": "Fired when a movable item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n\n**Note:** If the dragging operation is a cross-browser operation or files are moved to a potential drop target,\nthe `source` parameter will be `null`.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "Event"
+                  },
+                  "name": "originalEvent",
+                  "_ui5privacy": "public",
+                  "description": "The original `dragover` event"
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "The source object"
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "The destination object"
+                }
+              ]
+            },
+            {
+              "name": "move",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<TableMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "TableMoveEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Table.js"
+                  }
+                ]
+              },
+              "description": "Fired when a movable list item is dropped onto a drop target.\n\n**Notes:**\n\nThe `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\nIf the dragging operation is a cross-browser operation or files are moved to a potential drop target,\nthe `source` parameter will be `null`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "Event"
+                  },
+                  "name": "originalEvent",
+                  "_ui5privacy": "public",
+                  "description": "The original `drop` event"
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "The source object"
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "The destination object"
+                }
+              ]
             }
           ],
           "attributes": [
@@ -24610,6 +24963,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TableDragAndDrop.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableDragAndDrop",
+            "module": "dist/TableDragAndDrop.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/TableExtension.js",
       "declarations": [],
       "exports": [
@@ -24769,7 +25137,7 @@
                 "text": "string"
               },
               "default": "\"auto\"",
-              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode, the column will move into the popin when\nwhen the minimum width does not fit anymore.",
+              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode and the minimum width does not fit anymore,\nthe column will move into the popin.\n\n**Note:** If `minWidth` has the `auto` value, the table ensures that the column is wider than at least `3rem`.",
               "privacy": "public"
             },
             {
@@ -24825,7 +25193,7 @@
               }
             },
             {
-              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode, the column will move into the popin when\nwhen the minimum width does not fit anymore.",
+              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode and the minimum width does not fit anymore,\nthe column will move into the popin.\n\n**Note:** If `minWidth` has the `auto` value, the table ensures that the column is wider than at least `3rem`.",
               "name": "min-width",
               "default": "\"auto\"",
               "fieldName": "minWidth",
@@ -25047,7 +25415,8 @@
               },
               "default": "-1",
               "description": "Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.",
-              "privacy": "public"
+              "privacy": "public",
+              "_ui5since": "2.5.0"
             },
             {
               "kind": "field",
@@ -25068,6 +25437,17 @@
               "default": "false",
               "description": "Defines the navigated state of the row.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "movable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the row is movable.",
+              "privacy": "public",
+              "_ui5since": "2.6.0"
             }
           ],
           "attributes": [
@@ -25103,6 +25483,15 @@
               "name": "navigated",
               "default": "false",
               "fieldName": "navigated",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines whether the row is movable.",
+              "name": "movable",
+              "default": "false",
+              "fieldName": "movable",
               "type": {
                 "text": "boolean"
               }
@@ -25403,6 +25792,7 @@
           "tagName": "ui5-table-virtualizer",
           "customElement": true,
           "_ui5experimental": "This component is not intended to be used in a productive enviroment. The API is under development and may be changed in the future.",
+          "_ui5since": "2.5.0",
           "_ui5privacy": "public"
         }
       ],
@@ -27491,7 +27881,8 @@
               },
               "default": "false",
               "description": "Defines whether tokens are displayed on multiple lines.\n\n**Note:** The `multiLine` property is in an experimental state and is a subject to change.",
-              "privacy": "public"
+              "privacy": "public",
+              "_ui5since": "2.5.0"
             },
             {
               "kind": "field",
@@ -27501,7 +27892,8 @@
               },
               "default": "false",
               "description": "Defines whether \"Clear All\" button is present. Ensure `multiLine` is enabled, otherwise `showClearAll` will have no effect.\n\n**Note:** The `showClearAll` property is in an experimental state and is a subject to change.",
-              "privacy": "public"
+              "privacy": "public",
+              "_ui5since": "2.5.0"
             },
             {
               "kind": "field",

@@ -1,7 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Table.js';
-import type { TableRowClickEventDetail } from '@ui5/webcomponents/dist/Table.js';
+import type { TableMoveEventDetail, TableRowClickEventDetail } from '@ui5/webcomponents/dist/Table.js';
 import type TableOverflowMode from '@ui5/webcomponents/dist/types/TableOverflowMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -57,7 +57,10 @@ interface TableDomRef extends Required<TableAttributes>, Ui5DomRef {}
 
 interface TablePropTypes
   extends TableAttributes,
-    Omit<CommonProps, keyof TableAttributes | 'children' | 'features' | 'headerRow' | 'nodata' | 'onRowClick'> {
+    Omit<
+      CommonProps,
+      keyof TableAttributes | 'children' | 'features' | 'headerRow' | 'nodata' | 'onMove' | 'onMoveOver' | 'onRowClick'
+    > {
   /**
    * Defines the rows of the component.
    *
@@ -99,6 +102,38 @@ interface TablePropTypes
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
    */
   nodata?: UI5WCSlotsNode;
+  /**
+   * Fired when a movable list item is dropped onto a drop target.
+   *
+   * **Notes:**
+   *
+   * The `move` event is fired only if there was a preceding `move-over` with prevented default action.
+   *
+   * If the dragging operation is a cross-browser operation or files are moved to a potential drop target,
+   * the `source` parameter will be `null`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onMove?: (event: Ui5CustomEvent<TableDomRef, TableMoveEventDetail>) => void;
+
+  /**
+   * Fired when a movable item is moved over a potential drop target during a dragging operation.
+   *
+   * If the new position is valid, prevent the default action of the event using `preventDefault()`.
+   *
+   * **Note:** If the dragging operation is a cross-browser operation or files are moved to a potential drop target,
+   * the `source` parameter will be `null`.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
+   */
+  onMoveOver?: (event: Ui5CustomEvent<TableDomRef, TableMoveEventDetail>) => void;
+
   /**
    * Fired when an interactive row is clicked.
    *
@@ -188,7 +223,7 @@ const Table = withWebComponent<TablePropTypes, TableDomRef>(
   ['accessibleName', 'accessibleNameRef', 'loadingDelay', 'noDataText', 'overflowMode'],
   ['loading'],
   ['features', 'headerRow', 'nodata'],
-  ['row-click']
+  ['move-over', 'move', 'row-click']
 );
 
 Table.displayName = 'Table';

@@ -1346,6 +1346,57 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/NavigationLayoutMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "NavigationLayoutMode",
+          "description": "Specifies the navigation layout mode.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Automatically calculates the navigation layout mode based on the screen device type.\n`Expanded` on desktop and `Collapsed` on tablet and phone.",
+              "default": "Auto",
+              "name": "Auto",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Collapsed side navigation.",
+              "default": "Collapsed",
+              "name": "Collapsed",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Expanded side navigation.",
+              "default": "Expanded",
+              "name": "Expanded",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NavigationLayoutMode",
+            "module": "dist/types/NavigationLayoutMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/NotificationListItemImportance.js",
       "declarations": [
         {
@@ -2567,6 +2618,24 @@
               "privacy": "public"
             },
             {
+              "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "DynamicSideContentAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "DynamicSideContentAccessibilityAttributes",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/DynamicSideContent.js"
+                  }
+                ]
+              },
+              "default": "{}",
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields:\n\n - **mainContent**: `mainContent.ariaLabel` defines the aria-label of the main content area. Accepts any string.\n - **sideContent**: `sideContent.ariaLabel` defines the aria-label of the side content area. Accepts any string.",
+              "privacy": "public",
+              "_ui5since": "2.6.0"
+            },
+            {
               "kind": "method",
               "name": "toggleContents",
               "return": {
@@ -2685,6 +2754,15 @@
               "fieldName": "equalSplit",
               "type": {
                 "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields:\n\n - **mainContent**: `mainContent.ariaLabel` defines the aria-label of the main content area. Accepts any string.\n - **sideContent**: `sideContent.ariaLabel` defines the aria-label of the side content area. Accepts any string.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "DynamicSideContentAccessibilityAttributes"
               }
             }
           ],
@@ -3790,7 +3868,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn desktop and tablet devices, the side navigation remains visible and can\nbe expanded or collapsed using the `sideCollapsed` property. On phone devices, the side navigation\nis hidden by default but can be displayed using the same `sideCollapsed` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`",
+          "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn desktop and tablet devices, the side navigation is visible\nby default and can be expanded or collapsed using the `mode` property.\nOn phone devices, the side navigation is hidden by default and can\nbe displayed using the `mode` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`",
           "name": "NavigationLayout",
           "slots": [
             {
@@ -3829,23 +3907,41 @@
           "members": [
             {
               "kind": "field",
-              "name": "sideCollapsed",
-              "description": "Indicates whether the side navigation is collapsed.",
-              "default": "false",
-              "privacy": "public",
+              "name": "mode",
               "type": {
-                "text": "boolean"
-              }
+                "text": "NavigationLayoutMode",
+                "references": [
+                  {
+                    "name": "NavigationLayoutMode",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/types/NavigationLayoutMode.js"
+                  }
+                ]
+              },
+              "default": "\"Auto\"",
+              "description": "Specifies the navigation layout mode.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "isSideCollapsed",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Gets whether the side navigation is collapsed.",
+              "privacy": "public"
             }
           ],
           "attributes": [
             {
-              "description": "Indicates whether the side navigation is collapsed.",
-              "name": "side-collapsed",
-              "default": "false",
-              "fieldName": "sideCollapsed",
+              "description": "Specifies the navigation layout mode.",
+              "name": "mode",
+              "default": "\"Auto\"",
+              "fieldName": "mode",
               "type": {
-                "text": "any"
+                "text": "\"Auto\" | \"Collapsed\" | \"Expanded\""
               }
             }
           ],
@@ -8159,6 +8255,30 @@
               ]
             },
             {
+              "name": "open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when a user menu is open.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5since": "2.6.0"
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when a user menu is close.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5since": "2.6.0"
+            },
+            {
               "name": "sign-out-click",
               "_ui5privacy": "public",
               "type": {
@@ -8167,7 +8287,8 @@
               "description": "Fired when the \"Sign Out\" button is selected.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
-              "_ui5Bubbles": false
+              "_ui5Bubbles": false,
+              "_ui5since": "2.6.0"
             }
           ],
           "attributes": [

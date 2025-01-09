@@ -55,8 +55,10 @@ interface UserMenuPropTypes
       | 'onAddAccountClick'
       | 'onAvatarClick'
       | 'onChangeAccount'
+      | 'onClose'
       | 'onItemClick'
       | 'onManageAccountClick'
+      | 'onOpen'
       | 'onSignOutClick'
     > {
   /**
@@ -107,6 +109,17 @@ interface UserMenuPropTypes
   onChangeAccount?: (event: Ui5CustomEvent<UserMenuDomRef, UserMenuOtherAccountClickEventDetail>) => void;
 
   /**
+   * Fired when a user menu is close.
+   *
+   * **Note:** Available since [v2.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.6.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|❌|
+   */
+  onClose?: (event: Ui5CustomEvent<UserMenuDomRef>) => void;
+
+  /**
    * Fired when a menu item is selected.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
@@ -127,9 +140,22 @@ interface UserMenuPropTypes
   onManageAccountClick?: (event: Ui5CustomEvent<UserMenuDomRef>) => void;
 
   /**
+   * Fired when a user menu is open.
+   *
+   * **Note:** Available since [v2.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.6.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|❌|
+   */
+  onOpen?: (event: Ui5CustomEvent<UserMenuDomRef>) => void;
+
+  /**
    * Fired when the "Sign Out" button is selected.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v2.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.6.0) of **@ui5/webcomponents-fiori**.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
@@ -156,7 +182,16 @@ const UserMenu = withWebComponent<UserMenuPropTypes, UserMenuDomRef>(
   ['opener'],
   ['open', 'showAddAccount', 'showManageAccount', 'showOtherAccounts'],
   ['accounts'],
-  ['add-account-click', 'avatar-click', 'change-account', 'item-click', 'manage-account-click', 'sign-out-click']
+  [
+    'add-account-click',
+    'avatar-click',
+    'change-account',
+    'close',
+    'item-click',
+    'manage-account-click',
+    'open',
+    'sign-out-click'
+  ]
 );
 
 UserMenu.displayName = 'UserMenu';

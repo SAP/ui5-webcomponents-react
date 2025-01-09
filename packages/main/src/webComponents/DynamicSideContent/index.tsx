@@ -1,7 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
-import type { DynamicSideContentLayoutChangeEventDetail } from '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
+import type {
+  DynamicSideContentAccessibilityAttributes,
+  DynamicSideContentLayoutChangeEventDetail
+} from '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 import type SideContentFallDown from '@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js';
 import type SideContentPosition from '@ui5/webcomponents-fiori/dist/types/SideContentPosition.js';
 import type SideContentVisibility from '@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js';
@@ -10,6 +13,19 @@ import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface DynamicSideContentAttributes {
+  /**
+   * Defines additional accessibility attributes on different areas of the component.
+   *
+   * The accessibilityAttributes object has the following fields:
+   *
+   *  - **mainContent**: `mainContent.ariaLabel` defines the aria-label of the main content area. Accepts any string.
+   *  - **sideContent**: `sideContent.ariaLabel` defines the aria-label of the side content area. Accepts any string.
+   *
+   * **Note:** Available since [v2.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.6.0) of **@ui5/webcomponents-fiori**.
+   * @default {}
+   */
+  accessibilityAttributes?: DynamicSideContentAccessibilityAttributes;
+
   /**
    * Defines whether the component is in equal split mode. In this mode, the side and
    * the main content take 50:50 percent of the container on all screen sizes
@@ -154,7 +170,7 @@ interface DynamicSideContentPropTypes
  */
 const DynamicSideContent = withWebComponent<DynamicSideContentPropTypes, DynamicSideContentDomRef>(
   'ui5-dynamic-side-content',
-  ['sideContentFallDown', 'sideContentPosition', 'sideContentVisibility'],
+  ['accessibilityAttributes', 'sideContentFallDown', 'sideContentPosition', 'sideContentVisibility'],
   ['equalSplit', 'hideMainContent', 'hideSideContent'],
   ['sideContent'],
   ['layout-change']

@@ -13,6 +13,14 @@ interface TableRowAttributes {
   interactive?: boolean;
 
   /**
+   * Defines whether the row is movable.
+   *
+   * **Note:** Available since [v2.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.6.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  movable?: boolean;
+
+  /**
    * Defines the navigated state of the row.
    * @default false
    */
@@ -20,6 +28,8 @@ interface TableRowAttributes {
 
   /**
    * Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.
+   *
+   * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
    * @default -1
    */
   position?: number;
@@ -54,7 +64,7 @@ interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof 
 const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   'ui5-table-row',
   ['position', 'rowKey'],
-  ['interactive', 'navigated'],
+  ['interactive', 'movable', 'navigated'],
   [],
   []
 );
