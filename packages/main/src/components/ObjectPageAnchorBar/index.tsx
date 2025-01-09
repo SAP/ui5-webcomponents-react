@@ -105,6 +105,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
     const showHideHeaderBtn = showHideHeaderBtnRef.current;
     customElements.whenDefined(tagName).then(() => {
       if (showHideHeaderBtn) {
+        //@ts-expect-error: for some reason these optional attributes are mandatory which is not expected
         showHideHeaderBtn.accessibilityAttributes = { expanded: !!headerContentVisible };
       }
     });
