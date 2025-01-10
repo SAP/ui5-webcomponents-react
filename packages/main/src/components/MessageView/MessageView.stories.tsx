@@ -14,6 +14,7 @@ import { Title } from '../../webComponents/Title/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { MessageViewButton } from '../MessageViewButton/index.js';
 import { MessageItem } from './MessageItem.js';
+import type { MessageViewDomRef } from './index.js';
 import { MessageView } from './index.js';
 
 // TODO: check docs for outdated info
@@ -88,7 +89,7 @@ export const MessageViewInDialog: Story = {
   name: 'MessageView in Dialog',
   render(args) {
     const [open, setOpen] = useState(false);
-    const messageViewRef = useRef(null);
+    const messageViewRef = useRef<MessageViewDomRef>(null);
     const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
     return (
       <>
@@ -106,6 +107,7 @@ export const MessageViewInDialog: Story = {
           open={open}
           onClose={() => {
             setOpen(false);
+            messageViewRef.current.navigateBack();
           }}
           header={
             <Bar
@@ -165,7 +167,7 @@ export const WithMessageViewButton: Story = {
   name: 'with MessageViewButton & Popover',
   render() {
     const ref = useRef(null);
-    const messageViewRef = useRef(null);
+    const messageViewRef = useRef<MessageViewDomRef>(null);
     const [isOnDetailsPage, setIsOnDetailsPage] = useState(false);
     const [open, setOpen] = useState(false);
     const numberOfItems = {
@@ -190,6 +192,7 @@ export const WithMessageViewButton: Story = {
           headerText="Messages"
           className="contentPartNoPadding headerPartNoPadding"
           onClose={() => {
+            messageViewRef.current.navigateBack();
             setOpen(false);
           }}
           header={
