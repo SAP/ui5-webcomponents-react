@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.16](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.15...v1.29.16) (2025-01-10)
+
+### Bug Fixes
+
+- **MessageViewButton:** correct tooltips ([#6766](https://github.com/SAP/ui5-webcomponents-react/issues/6766)) ([b54966e](https://github.com/SAP/ui5-webcomponents-react/commit/b54966eb6704f874a6211a38399d8f0fc5a31ef5)), closes [#6594](https://github.com/SAP/ui5-webcomponents-react/issues/6594)
+- **MessageView:** fix group order ([#6760](https://github.com/SAP/ui5-webcomponents-react/issues/6760)) ([6c095de](https://github.com/SAP/ui5-webcomponents-react/commit/6c095de6770e0069b80c0613f77fd1bcffb78103)), closes [#6750](https://github.com/SAP/ui5-webcomponents-react/issues/6750)
+
 ## [1.29.15](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.14...v1.29.15) (2024-12-09)
 
 ### Bug Fixes
