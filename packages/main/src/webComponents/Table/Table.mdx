@@ -113,7 +113,7 @@ const GrowingTable = () => {
     <summary>Show code</summary>
 
 ```jsx
-function TableWithRowSelection() {
+function TableWithRowSelection(props) {
   const [mode, setMode] = useState(TableSelectionMode.Multiple);
   return (
     <>
@@ -129,7 +129,7 @@ function TableWithRowSelection() {
         ))}
       </SegmentedButton>
       <Table
-        {...otherProps}
+        {...props}
         headerRow={
           <TableHeaderRow sticky>
             <TableHeaderCell width={'200px'} minWidth={'200px'}>
@@ -187,6 +187,74 @@ function TableWithRowSelection() {
         </TableRow>
       </Table>
     </>
+  );
+}
+```
+
+</details>
+
+## Table with virtualized rows
+
+`Table` with virtualization feature (`<TableVirtualizer {...props) />`):
+
+<Canvas of={ComponentStories.VirtualizedTableRows} />
+
+<details>
+
+    <summary>Show code</summary>
+
+```tsx
+// enrich data with `position` (if not already available)
+const dataLargeWithPosition = dataLarge.map((item, index) => ({
+  ...item,
+  position: index
+}));
+
+function VirtualizedTable(props) {
+  const [data, setData] = useState(dataLargeWithPosition.slice(0, 9));
+
+  const handleRangeChange: TableVirtualizerPropTypes['onRangeChange'] = (e) => {
+    const { first, last } = e.detail;
+
+    // render two rows before and after the visible area of the table body container
+    const overscanCountStart = Math.max(first - 2, 0);
+    const overscanCountEnd = Math.min(last + 2, dataLargeWithPosition.length);
+    setData(dataLargeWithPosition.slice(overscanCountStart, overscanCountEnd));
+  };
+  return (
+    <Table
+      {...props}
+      // headerRow + 8 visible rows:
+      // 9 * 44px = 396px (content-density: Cozy)
+      // 9 * 32px = 288px (content-density: Compact)
+      style={{ height: '396px' }}
+      headerRow={
+        <TableHeaderRow sticky>
+          <TableHeaderCell>Name</TableHeaderCell>
+          <TableHeaderCell>Age</TableHeaderCell>
+          <TableHeaderCell>Friend Name</TableHeaderCell>
+          <TableHeaderCell>Friend Age</TableHeaderCell>
+        </TableHeaderRow>
+      }
+      features={<TableVirtualizer rowCount={500} rowHeight={44} onRangeChange={handleRangeChange} />}
+    >
+      {data.map((row) => (
+        <TableRow key={row.position} position={row.position}>
+          <TableCell>
+            <span>{row.name}</span>
+          </TableCell>
+          <TableCell>
+            <span>{row.age}</span>
+          </TableCell>
+          <TableCell>
+            <span>{row.friend.name}</span>
+          </TableCell>
+          <TableCell>
+            <span>{row.friend.age}</span>
+          </TableCell>
+        </TableRow>
+      ))}
+    </Table>
   );
 }
 ```
