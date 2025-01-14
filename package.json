@@ -74,7 +74,7 @@
     "dedent": "^1.0.0",
     "documentation": "14.0.3",
     "eslint": "^9.11.1",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.0.0",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-no-only-tests": "^3.3.0",
