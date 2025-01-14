@@ -14,6 +14,7 @@ export default defineConfig(() => {
     resolve: {
       alias: {
         '@sb': fileURLToPath(new URL('./.storybook', import.meta.url)),
+        '@ui5/webcomponents-react-base/dist': fileURLToPath(new URL('./packages/base/src', import.meta.url)),
         '@ui5/webcomponents-react-base': fileURLToPath(new URL('./packages/base/src/index.ts', import.meta.url)),
         '@ui5/webcomponents-react-charts': fileURLToPath(new URL('./packages/charts/src/index.ts', import.meta.url)),
         '@ui5/webcomponents-react/dist': fileURLToPath(new URL('./packages/main/src/', import.meta.url)),
