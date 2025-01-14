@@ -46,6 +46,43 @@ function Name(props: CEM.ClassMember) {
   );
 }
 
+export function ShadowPartsTable({ componentName, cssParts }: { componentName: string; cssParts: CEM.CssPart[] }) {
+  return (
+    <>
+      <Heading>CSS Shadow Parts</Heading>
+      <p>
+        <Link target={'_blank'} href={'https://developer.mozilla.org/en-US/docs/Web/CSS/::part'}>
+          CSS Shadow Parts
+        </Link>{' '}
+        allow developers to style elements inside the Shadow DOM.
+      </p>
+      <p>
+        The <code>{componentName}</code> exposes the following CSS Shadow Parts:
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cssParts.map((part) => (
+            <tr key={part.name}>
+              <td>
+                <b>{part.name}</b>
+              </td>
+              <td>{part.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+}
+
+ShadowPartsTable.displayName = 'ShadowPartsTable';
+
 export function DomRefTable() {
   const docsContext = useContext(DocsContext);
   const storyTags: string[] = docsContext.attachedCSFFile?.meta?.tags;
@@ -146,38 +183,7 @@ export function DomRefTable() {
         </>
       ) : null}
 
-      {cssParts.length > 0 ? (
-        <>
-          <Heading>CSS Shadow Parts</Heading>
-          <p>
-            <Link target={'_blank'} href={'https://developer.mozilla.org/en-US/docs/Web/CSS/::part'}>
-              CSS Shadow Parts
-            </Link>{' '}
-            allow developers to style elements inside the Shadow DOM.
-          </p>
-          <p>
-            The <code>{componentName}</code> exposes the following CSS Shadow Parts:
-          </p>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cssParts.map((part) => (
-                <tr key={part.name}>
-                  <td>
-                    <b>{part.name}</b>
-                  </td>
-                  <td>{part.description}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
-      ) : null}
+      {cssParts.length > 0 ? <ShadowPartsTable cssParts={cssParts} /> : null}
     </>
   );
 }

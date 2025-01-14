@@ -10,6 +10,7 @@ import {
   ToolbarSpacer,
   ToolbarSeparator
 } from '../..';
+import { ShadowPartsTable } from '@sb/components/DomRefTable';
 
 <Meta of={ComponentStories} />
 
@@ -254,11 +255,27 @@ const ToolbarComponent = () => {
 
 <ArgTypesWithNote of={OverflowToolbarButton} />
 
+<ShadowPartsTable
+  componentName="OverflowToolbarButton"
+  cssParts={[
+    { name: 'button', description: 'Used to style the native button element' },
+    { name: 'icon', description: 'Used to style the ui5-icon element' }
+  ]}
+/>
+
 ## OverflowToolbarToggleButton
 
 <Description of={OverflowToolbarToggleButton} />
 
 <ArgTypesWithNote of={OverflowToolbarToggleButton} />
+
+<ShadowPartsTable
+  componentName="OverflowToolbarToggleButton"
+  cssParts={[
+    { name: 'button', description: 'Used to style the native button element' },
+    { name: 'icon', description: 'Used to style the ui5-icon element' }
+  ]}
+/>
 
 ## ToolbarSpacer
 
