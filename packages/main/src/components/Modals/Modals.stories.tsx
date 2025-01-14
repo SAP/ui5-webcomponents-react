@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { FlexBox, FlexBoxJustifyContent } from '@ui5/webcomponents-react';
 import { MessageBoxType } from '../../enums/index.js';
-import { Bar, Button, MenuItem } from '../../webComponents/index.js';
+import { Button, MenuItem } from '../../webComponents/index.js';
 import { Modals } from './index.js';
 
 const meta = {
@@ -19,7 +20,11 @@ export const Dialog: Story = {
             const { close } = Modals.showDialog({
               headerText: 'Dialog Title',
               children: "I'm a Dialog!",
-              footer: <Bar endContent={<Button onClick={() => close()}>Close</Button>} />
+              footer: (
+                <FlexBox justifyContent={FlexBoxJustifyContent.End} fitContainer style={{ paddingBlock: '0.25rem' }}>
+                  <Button onClick={() => close()}>Close</Button>{' '}
+                </FlexBox>
+              )
             });
           }}
         >

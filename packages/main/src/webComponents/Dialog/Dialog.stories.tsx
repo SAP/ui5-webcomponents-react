@@ -1,10 +1,8 @@
 import { isChromatic } from '@sb/utils.js';
 import type { Meta, StoryObj } from '@storybook/react';
-import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
-import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
-import { clsx } from 'clsx';
+import { FlexBox, FlexBoxJustifyContent } from '@ui5/webcomponents-react';
 import { useEffect, useState } from 'react';
-import { Bar, Button, Icon, List, ListItemStandard, Title } from '../index.js';
+import { Button, List, ListItemStandard } from '../index.js';
 import { Dialog } from './index.js';
 
 const meta = {
@@ -23,8 +21,7 @@ const meta = {
       </List>
     ),
     headerText: 'Dialog Header',
-    open: isChromatic,
-    className: 'footerPartNoPadding'
+    open: isChromatic
   },
   tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Dialog>;
@@ -55,18 +52,15 @@ export const Default: Story = {
             setDialogOpen(false);
           }}
           footer={
-            <Bar
-              design={BarDesign.Footer}
-              endContent={
-                <Button
-                  onClick={() => {
-                    setDialogOpen(false);
-                  }}
-                >
-                  Close
-                </Button>
-              }
-            />
+            <FlexBox justifyContent={FlexBoxJustifyContent.End} fitContainer style={{ paddingBlock: '0.25rem' }}>
+              <Button
+                onClick={() => {
+                  setDialogOpen(false);
+                }}
+              >
+                Close
+              </Button>
+            </FlexBox>
           }
         />
       </>
