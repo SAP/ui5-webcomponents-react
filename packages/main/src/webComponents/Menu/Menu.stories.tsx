@@ -36,7 +36,7 @@ export const Default: Story = {
       <>
         <Button
           ref={btnRef}
-          onClick={(e) => {
+          onClick={() => {
             setOpen((prev) => !prev);
           }}
         >
@@ -78,7 +78,7 @@ export const WithSubMenu: Story = {
       <>
         <Button
           ref={btnRef}
-          onClick={(e) => {
+          onClick={() => {
             setOpen((prev) => !prev);
           }}
         >

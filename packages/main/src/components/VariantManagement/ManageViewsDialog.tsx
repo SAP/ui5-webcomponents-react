@@ -177,7 +177,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         deletedRows: deletedTableRows.current
       });
     } else {
-      Object.values(invalidVariants)[0].focus();
+      void Object.values(invalidVariants)[0].focus();
     }
   };
 

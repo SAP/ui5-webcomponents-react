@@ -6,7 +6,7 @@ describe('ThemeProvider', () => {
       return (
         <button
           onClick={() => {
-            setTheme('sap_horizon_dark');
+            void setTheme('sap_horizon_dark');
           }}
         >
           Change Theme

@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import FCLLayout from '@ui5/webcomponents-fiori/dist/types/FCLLayout.js';
 import { useState } from 'react';
 import { FlexBox } from '../../components/FlexBox/index.js';
