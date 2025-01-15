@@ -4,6 +4,7 @@ import type { ColumnDef } from '@tanstack/react-table';
 import { Button } from '@ui5/webcomponents-react';
 import { AnalyticalTableV2 } from './index.js';
 
+//todo: any
 const columns: ColumnDef<any>[] = [
   { header: 'Name', accessorKey: 'name' },
   { header: 'Age', accessorKey: 'age' },
