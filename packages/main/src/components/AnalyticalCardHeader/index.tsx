@@ -20,7 +20,7 @@ import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
 import { Icon } from '../../webComponents/index.js';
 import type { NumericSideIndicatorPropTypes } from '../NumericSideIndicator/index.js';
-import { classNames, styleData } from './AnalyticalCardHeader.module.css.js';
+import { classNames, content } from './AnalyticalCardHeader.module.css.js';
 
 export interface AnalyticalCardHeaderPropTypes extends CommonProps {
   /**
@@ -113,7 +113,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
     id,
     ...rest
   } = props;
-  useStylesheet(styleData, AnalyticalCardHeader.displayName);
+  useStylesheet(content, AnalyticalCardHeader.displayName);
 
   const headerClasses = clsx(classNames.cardHeader, onClick && classNames.cardHeaderClickable, className);
 

@@ -17,6 +17,7 @@ const getTSContent = (targetFile, packageName, css, exportTokens) => {
   return `export const styleData = \`${css}\`;
 
 export const classNames = ${JSON.stringify(exportTokens)} as const;
+export { styleData as content };
 `;
 };
 
