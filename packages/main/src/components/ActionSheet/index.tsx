@@ -17,7 +17,7 @@ import type {
   ResponsivePopoverPropTypes
 } from '../../webComponents/index.js';
 import { Button, ResponsivePopover } from '../../webComponents/index.js';
-import { classNames, styleData } from './ActionSheet.module.css.js';
+import { classNames, content } from './ActionSheet.module.css.js';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'header' | 'headerText' | 'children'> {
   /**
@@ -119,7 +119,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const { accessibilityAttributes, children, className, header, headerText, hideCancelButton, onOpen, open, ...rest } =
     props;
 
-  useStylesheet(styleData, ActionSheet.displayName);
+  useStylesheet(content, ActionSheet.displayName);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const actionBtnsRef = useRef(null);
