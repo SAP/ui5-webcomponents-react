@@ -103,7 +103,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
   useEffect(() => {
     const tagName = getUi5TagWithSuffix('ui5-button');
     const showHideHeaderBtn = showHideHeaderBtnRef.current;
-    customElements.whenDefined(tagName).then(() => {
+    void customElements.whenDefined(tagName).then(() => {
       if (showHideHeaderBtn) {
         //@ts-expect-error: for some reason these optional attributes are mandatory which is not expected
         showHideHeaderBtn.accessibilityAttributes = { expanded: !!headerContentVisible };

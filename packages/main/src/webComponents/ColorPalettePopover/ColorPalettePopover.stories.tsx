@@ -26,7 +26,7 @@ export const Default: Story = {
   render(args) {
     const btnRef = useRef(null);
     const [open, setOpen] = useState(args.open);
-    const onButtonClick = (e) => {
+    const onButtonClick = () => {
       setOpen((prev) => !prev);
     };
     return (
