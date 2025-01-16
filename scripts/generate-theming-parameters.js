@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs';
-import ThemingParameters from '@sap-theming/theming-base-content/content/Base/baseLib/sap_horizon/variables.json' assert { type: 'json' };
+import ThemingParameters from '@sap-theming/theming-base-content/content/Base/baseLib/sap_horizon/variables.json' with { type: 'json' };
 import PATHS from '../config/paths.js';
 import path from 'path';
 import prettier from 'prettier';
