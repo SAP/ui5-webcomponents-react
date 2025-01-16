@@ -1,46 +1,41 @@
-import { Column, flexRender, getCoreRowModel, Row, useReactTable } from '@tanstack/react-table';
-import { useVirtualizer } from '@tanstack/react-virtual';
-import { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react';
+import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import { CssSizeVariables, useStylesheet } from '@ui5/webcomponents-react-base';
+import { clsx } from 'clsx';
+import type { CSSProperties, ReactElement } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { classNames, styleData } from './AnalyticalTableV2.module.css.js';
+import { Cell } from './core/Cell.js';
+import { Row } from './core/Row.js';
+import { useRowVirtualizer } from '@/packages/main/src/components/AnalyticalTableV2/useRowVirtualizer.js';
 
 interface AnalyticalTableV2Props {
   data?: any[];
   columns?: any[];
+  rowHeight?: number;
+  visibleRows?: number;
 }
 
-const ROW_HEIGHT = 44;
+interface CSSPropertiesWithVars extends CSSProperties {
+  '--_ui5WcrAnalyticalTableControlledRowHeight': string;
+  '--_ui5WcrAnalyticalTableHeaderGroups': number;
+  '--_ui5WcrAnalyticalTableTopRows': number;
+  '--_ui5WcrAnalyticalTableBottomRows': number;
+}
 
-const getCommonPinningStyles = (column: Column<any>): CSSProperties => {
-  const isPinned = column.getIsPinned();
-  const isLastLeftPinnedColumn = isPinned === 'left' && column.getIsLastColumn('left');
-  const isFirstRightPinnedColumn = isPinned === 'right' && column.getIsFirstColumn('right');
-
-  return {
-    boxShadow: isLastLeftPinnedColumn
-      ? '-4px 0 4px -4px gray inset'
-      : isFirstRightPinnedColumn
-        ? '4px 0 4px -4px gray inset'
-        : undefined,
-    left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
-    right: isPinned === 'right' ? `${column.getAfter('right')}px` : undefined,
-    opacity: isPinned ? 0.95 : 1,
-    position: isPinned ? 'sticky' : 'relative',
-    width: column.getSize(),
-    zIndex: isPinned ? 1 : 0,
-    background: isPinned ? 'lightgreen' : 'transparent'
-  };
-};
+const ROW_HEIGHT_VAR = 'var(--_ui5WcrAnalyticalTableControlledRowHeight)';
 
 //todo forwardRef or React19? --> prob forwardRef
-function AnalyticalTableV2(props: AnalyticalTableV2Props): JSX.Element {
-  const { columns, data } = props;
+function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<AnalyticalTableV2Props, 'div'> {
+  const { columns, data, rowHeight, visibleRows = 15 } = props;
+  useStylesheet(styleData, AnalyticalTableV2.displayName);
   const tableContainerRef = useRef<HTMLDivElement>(null);
-  const [tableWidth, setTableWidth] = useState(0);
+  const [_tableWidth, setTableWidth] = useState(0);
 
   useEffect(() => {
     const tableContainer = tableContainerRef.current;
 
     const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         if (entry.borderBoxSize) {
           const borderBoxWidth = entry.borderBoxSize[0].inlineSize;
           setTableWidth(borderBoxWidth);
@@ -80,207 +75,128 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): JSX.Element {
     enableRowPinning: true
   });
 
-  // not pinned
+  const headerGroups = reactTable.getHeaderGroups();
+  const topRows = reactTable.getTopRows();
   const centerRows = reactTable.getCenterRows();
   const bottomRows = reactTable.getBottomRows();
-  const topRows = reactTable.getTopRows();
-  const headerGroups = reactTable.getHeaderGroups();
 
-  console.log(topRows);
+  const rowVirtualizer = useRowVirtualizer<HTMLDivElement>(rowHeight, tableContainerRef, { count: centerRows.length });
 
-  //todo: fixed height - can be updated to use dynamic height => implement virtualizer so it can be extended
-  const rowVirtualizer = useVirtualizer({
-    count: centerRows.length,
-    getScrollElement: () => tableContainerRef.current,
-    estimateSize: () => ROW_HEIGHT,
-    overscan: 5
-    // paddingStart: topRows.length ? topRows.length * ROW_HEIGHT : 0
-    // paddingEnd: bottomRows.length ? bottomRows.length * ROW_HEIGHT : 0
-  });
-
-  console.log(rowVirtualizer.getTotalSize());
-
-  const virtualizedContainerHeight = rowVirtualizer.getSize();
-  const tableHeight = 11 * ROW_HEIGHT;
-
-  const { rows } = reactTable.getRowModel();
+  // const { rows } = reactTable.getRowModel();
 
   return (
     <>
       <div
         ref={tableContainerRef}
-        style={{
-          overflow: 'auto', //our scrollable table container
-          position: 'relative',
-          height: `${11 * ROW_HEIGHT}px`, // todo: 10 rows + single header --> adjust if multiple headers are rendered
-          background: 'lightblue'
-        }}
+        style={
+          {
+            '--_ui5WcrAnalyticalTableControlledRowHeight':
+              typeof rowHeight === 'number' ? `${rowHeight}px` : CssSizeVariables.ui5WcrAnalyticalTableRowHeight,
+            '--_ui5WcrAnalyticalTableHeaderGroups': headerGroups.length,
+            '--_ui5WcrAnalyticalTableTopRows': topRows.length,
+            '--_ui5WcrAnalyticalTableBottomRows': bottomRows.length,
+            height: `calc(${headerGroups.length} * ${ROW_HEIGHT_VAR} + ${visibleRows} * ${ROW_HEIGHT_VAR})`
+          } as CSSPropertiesWithVars
+        }
+        className={classNames.tableContainer}
       >
-        <div style={{ display: 'grid' }} role="grid">
-          <div
-            style={{
-              display: 'grid',
-              position: 'sticky',
-              insetBlockStart: 0,
-              zIndex: 1
-            }}
-            role="rowgroup"
-          >
+        <div className={classNames.tableBodyContainer} role="grid">
+          <div className={clsx(classNames.sticky, classNames.headerGroups)} role="rowgroup">
             {headerGroups.map((headerGroup) => {
               return (
-                <div
-                  role="row"
+                <Row
                   key={headerGroup.id}
-                  style={{ display: 'flex', width: '100%', height: `${ROW_HEIGHT}px`, background: 'lightgrey' }}
+                  className={classNames.headerRow}
+                  data-component-name="AnalyticalTableV2HeaderRow"
                 >
                   {headerGroup.headers.map((header) => {
                     return (
-                      <div
-                        role="columnheader"
+                      <Cell
                         key={header.id}
-                        style={{
-                          display: 'flex',
-                          width: header.getSize(),
-                          //todo: sticky cols
-                          ...getCommonPinningStyles(header.column)
-                        }}
-                      >
-                        {flexRender(header.column.columnDef.header, header.getContext())}
-                      </div>
+                        role="columnheader"
+                        style={{ width: header.getSize() }}
+                        renderable={header.column.columnDef.header}
+                        cell={header}
+                      />
                     );
                   })}
-                </div>
+                </Row>
               );
             })}
           </div>
           {topRows.length > 0 && (
-            <div
-              role="rowgroup"
-              style={{
-                background: 'lightyellow',
-                position: 'sticky',
-                zIndex: 1,
-                insetBlockStart: headerGroups.length * ROW_HEIGHT,
-                height: topRows.length * ROW_HEIGHT + 'px'
-              }}
-            >
-              {topRows.map((row, index, arr) => {
+            <div role="rowgroup" className={clsx(classNames.sticky, classNames.topRowsGroup)}>
+              {topRows.map((row) => {
                 return (
-                  <div
-                    key={row.id}
-                    role="row"
-                    style={{
-                      display: 'flex',
-                      width: '100%',
-                      height: `${ROW_HEIGHT}px`
-                    }}
-                  >
+                  <Row key={row.id} data-component-name="AnalyticalTableV2TopRow">
                     {row.getVisibleCells().map((cell) => {
                       return (
-                        <div
+                        <Cell
                           key={cell.id}
                           role="gridcell"
-                          style={{
-                            display: 'flex',
-                            width: cell.column.getSize(),
-                            //todo: sticky cols
-                            ...getCommonPinningStyles(cell.column)
-                          }}
-                        >
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                        </div>
+                          renderable={cell.column.columnDef.cell}
+                          cell={cell}
+                          // style={{ width: cell.column.getSize() }}
+                        />
                       );
                     })}
-                  </div>
+                  </Row>
                 );
               })}
             </div>
           )}
-          {/*  todo: if only the table body should be scrolled (scrollbar not over header) then we can't use this approach*/}
           <div
             role="rowgroup"
             style={{
-              display: 'grid',
-              height: `${rowVirtualizer.getTotalSize()}px`, //tells scrollbar how big the table is
+              height: `${rowVirtualizer.getTotalSize()}px`,
               position: 'relative'
               // Do NOT add overflow:hidden here
             }}
           >
             {rowVirtualizer.getVirtualItems().map((virtualRow) => {
-              const row = centerRows[virtualRow.index] as Row<any>; //todo: check if type can be inferred from `data`
+              const row = centerRows[virtualRow.index];
               return (
-                <div
-                  role="row"
+                <Row
                   key={row.id}
-                  data-index={virtualRow.index} //needed for dynamic row height measurement
+                  data-index={virtualRow.index}
                   style={{
-                    display: 'flex',
-                    position: 'absolute',
-                    transform: `translateY(${virtualRow.start}px)`, //this should always be a `style` as it changes on scroll
-                    height: `${virtualRow.size}px`,
-                    width: '100%',
-                    insetInlineStart: 0,
-                    insetBlockStart: 0
+                    transform: `translateY(${virtualRow.start}px)` //this should always be a `style` as it changes on scroll
+                    // height: `${virtualRow.size}px`
                   }}
+                  className={classNames.virtualizedRow}
                 >
                   {row.getVisibleCells().map((cell) => {
                     return (
-                      <div
-                        role="gridcell"
+                      <Cell
                         key={cell.id}
-                        style={{
-                          display: 'flex',
-                          width: cell.column.getSize(),
-                          //todo: sticky cols
-                          ...getCommonPinningStyles(cell.column)
-                        }}
-                      >
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      </div>
+                        role="gridcell"
+                        renderable={cell.column.columnDef.cell}
+                        cell={cell}
+                        style={{ width: cell.column.getSize() }}
+                      />
                     );
                   })}
-                </div>
+                </Row>
               );
             })}
           </div>
           {bottomRows.length > 0 && (
-            <div
-              role="rowgroup"
-              style={{
-                background: 'lightyellow',
-                position: 'sticky',
-                insetBlockEnd: 0,
-                height: bottomRows.length * ROW_HEIGHT + 'px'
-              }}
-            >
+            <div role="rowgroup" className={clsx(classNames.sticky, classNames.bottomRowsGroup)}>
               {bottomRows.map((row) => {
                 return (
-                  <div
-                    key={row.id}
-                    role="row"
-                    style={{
-                      display: 'flex',
-                      width: '100%',
-                      height: `${ROW_HEIGHT}px`
-                    }}
-                  >
+                  <Row key={row.id} data-component-name="AnalyticalTableV2BottomRow">
                     {row.getVisibleCells().map((cell) => {
                       return (
-                        <div
+                        <Cell
                           key={cell.id}
                           role="gridcell"
-                          style={{
-                            display: 'flex',
-                            width: cell.column.getSize(),
-                            //todo: sticky cols
-                            ...getCommonPinningStyles(cell.column)
-                          }}
-                        >
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                        </div>
+                          renderable={cell.column.columnDef.cell}
+                          cell={cell}
+                          style={{ width: cell.column.getSize() }}
+                        />
                       );
                     })}
-                  </div>
+                  </Row>
                 );
               })}
             </div>
@@ -290,6 +206,8 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): JSX.Element {
     </>
   );
 }
+
+AnalyticalTableV2.displayName = 'AnalyticalTableV2';
 
 export type { AnalyticalTableV2Props };
 export { AnalyticalTableV2 };

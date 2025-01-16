@@ -1,0 +1,97 @@
+/*todo scroll margin for interactive elements (scroll into view when focused)*/
+.sticky {
+  position: sticky;
+  z-index: 1;
+}
+
+.cell {
+  display: flex;
+  background-color: var(--sapList_Background);
+}
+
+/* ============================================================= */
+/*                         Container                             */
+/* ============================================================= */
+
+.tableContainer {
+  overflow: auto;
+  position: relative;
+  background-color: var(--sapList_Background);
+  font-size: var(--sapFontSize);
+}
+
+/* ============================================================= */
+/*                      Table Body Container                           */
+/* ============================================================= */
+
+.tableBodyContainer {
+  /*todo check if we really require grid here*/
+  display: grid;
+}
+
+/* ============================================================= */
+/*                          RowGroup                             */
+/* ============================================================= */
+
+.headerGroups {
+  inset-block-start: 0;
+  font-family: var(--_ui5wcr-AnalyticalTable-HeaderFontFamily);
+  z-index: 2;
+
+  > [data-component-name='AnalyticalTableV2HeaderRow']:last-child {
+    /*todo: box shadow or border --> specs*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.topRowsGroup {
+  inset-block-start: calc(var(--_ui5WcrAnalyticalTableHeaderGroups) * var(--_ui5WcrAnalyticalTableControlledRowHeight));
+  height: calc(var(--_ui5WcrAnalyticalTableTopRows) * var(--_ui5WcrAnalyticalTableControlledRowHeight));
+
+  > [data-component-name='AnalyticalTableV2TopRow']:last-child {
+    /*todo: box shadow or border --> specs*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.bottomRowsGroup {
+  inset-block-end: 0;
+  height: calc(var(--_ui5WcrAnalyticalTableBottomRows) * var(--_ui5WcrAnalyticalTableControlledRowHeight));
+
+  > [data-component-name='AnalyticalTableV2BottomRow']:first-child {
+    /*todo: box shadow or border --> specs*/
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ============================================================= */
+/*                            Row                                */
+/* ============================================================= */
+
+.row {
+  display: flex;
+  width: 100%;
+  height: var(--_ui5WcrAnalyticalTableControlledRowHeight);
+}
+
+/* ============================================================= */
+/*                          Header                               */
+/* ============================================================= */
+
+/*.headerCell {*/
+/*  display: flex;*/
+/*}*/
+
+.headerRow {
+  background-color: var(--sapList_HeaderBackground);
+}
+
+/* ============================================================= */
+/*                            Body                               */
+/* ============================================================= */
+
+.virtualizedRow {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0;
+}
