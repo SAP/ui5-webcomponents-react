@@ -28,7 +28,13 @@ const OTHERS = Object.entries(ThemingParameters).filter(([key, value]) => {
     COLORS.push([key, value]);
     return false;
   }
-  if (key.includes('Space')) {
+  if (
+    key.includes('Space') ||
+    key.includes('Margin') ||
+    key.includes('Padding') ||
+    key.includes('Gap') ||
+    key.includes('Breakpoint')
+  ) {
     SPACING.push([key, value]);
     return false;
   }
