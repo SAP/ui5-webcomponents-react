@@ -6,6 +6,7 @@ import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
 import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
+import { addCustomCSSWithScoping } from '@ui5/webcomponents-react-base/dist/utils/addCustomCSSWithScoping.js';
 import type { ReactElement, RefObject } from 'react';
 import { Children, cloneElement, useEffect, useId, useReducer, useRef, useState } from 'react';
 import { FlexBoxDirection, FlexBoxJustifyContent, MessageBoxAction, MessageBoxType } from '../../enums/index.js';
@@ -29,7 +30,6 @@ import {
   VISIBLE,
   VISIBLE_AND_ACTIVE
 } from '../../i18n/i18n-defaults.js';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import type { OnReorderParams } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
