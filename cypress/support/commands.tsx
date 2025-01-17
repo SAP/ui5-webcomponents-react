@@ -1,8 +1,8 @@
-import type { MountOptions, MountReturn } from 'cypress/react18';
-import { mount } from 'cypress/react18';
-import type { ReactNode } from 'react';
 import type { ThemeProviderPropTypes } from '@ui5/webcomponents-react';
 import { ThemeProvider } from '@ui5/webcomponents-react';
+import type { MountOptions, MountReturn } from 'cypress/react';
+import { mount } from 'cypress/react';
+import type { ReactNode } from 'react';
 
 declare global {
   namespace Cypress {
