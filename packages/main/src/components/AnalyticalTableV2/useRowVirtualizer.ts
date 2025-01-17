@@ -3,6 +3,7 @@ import type { RefObject } from 'react';
 import { useRef, useEffect } from 'react';
 import { useComputedCssVariable } from './utils/useComputedCssVariable.js';
 
+//todo check if overscan and scroll container are alright.
 export function useRowVirtualizer<T extends HTMLElement>(
   rowHeight: number | undefined,
   containerRef: RefObject<T>,
@@ -15,8 +16,7 @@ export function useRowVirtualizer<T extends HTMLElement>(
 ) {
   const { count, overscan = 5 } = virtualizerOptions;
   const computedRowHeight = useComputedCssVariable(containerRef, '--_ui5WcrAnalyticalTableControlledRowHeight');
-  //todo parse int
-  const appliedRowHeight = rowHeight ?? computedRowHeight;
+  const appliedRowHeight = rowHeight ?? computedRowHeight ?? 32;
 
   const rowVirtualizer = useVirtualizer({
     count,
@@ -28,11 +28,10 @@ export function useRowVirtualizer<T extends HTMLElement>(
   });
 
   const prevAppliedRowHeight = useRef<number | null>(null);
-
   useEffect(() => {
     if (prevAppliedRowHeight.current !== appliedRowHeight) {
       if (prevAppliedRowHeight.current !== null) {
-        console.log('measure');
+        // remeasure if rowHeight changes
         rowVirtualizer.measure();
       } else {
         prevAppliedRowHeight.current = appliedRowHeight;

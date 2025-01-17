@@ -55,10 +55,11 @@ const meta = {
   title: 'Data Display / AnalyticalTableV2',
   component: AnalyticalTableV2,
   args: {
-    rowHeight: 200,
     data: dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })),
-    columns
-  }
+    columns,
+    visibleRows: 5
+  },
+  argTypes: { data: { control: { disable: true } }, columns: { control: { disable: true } } }
 } satisfies Meta<typeof AnalyticalTableV2>;
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -1,4 +1,5 @@
 /*todo scroll margin for interactive elements (scroll into view when focused)*/
+/*todo: use will-change: transform?*/
 .sticky {
   position: sticky;
   z-index: 1;
@@ -18,6 +19,8 @@
   position: relative;
   background-color: var(--sapList_Background);
   font-size: var(--sapFontSize);
+  box-sizing: border-box;
+  overscroll-behavior: none;
 }
 
 /* ============================================================= */

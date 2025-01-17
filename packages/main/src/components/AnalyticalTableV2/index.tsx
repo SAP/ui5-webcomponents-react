@@ -2,11 +2,12 @@ import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { CssSizeVariables, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { classNames, styleData } from './AnalyticalTableV2.module.css.js';
 import { Cell } from './core/Cell.js';
 import { Row } from './core/Row.js';
-import { useRowVirtualizer } from '@/packages/main/src/components/AnalyticalTableV2/useRowVirtualizer.js';
+import { useRowVirtualizer } from './useRowVirtualizer.js';
+import { useTableContainerResizeObserver } from './utils/useTableContainerResizeObserver.js';
 
 interface AnalyticalTableV2Props {
   data?: any[];
@@ -29,30 +30,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
   const { columns, data, rowHeight, visibleRows = 15 } = props;
   useStylesheet(styleData, AnalyticalTableV2.displayName);
   const tableContainerRef = useRef<HTMLDivElement>(null);
-  const [_tableWidth, setTableWidth] = useState(0);
-
-  useEffect(() => {
-    const tableContainer = tableContainerRef.current;
-
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.borderBoxSize) {
-          const borderBoxWidth = entry.borderBoxSize[0].inlineSize;
-          setTableWidth(borderBoxWidth);
-        }
-      }
-    });
-
-    if (tableContainer) {
-      resizeObserver.observe(tableContainer, { box: 'border-box' });
-    }
-
-    return () => {
-      if (tableContainer) {
-        resizeObserver.unobserve(tableContainer);
-      }
-    };
-  }, []);
+  const { tableWidth: _tableWidth, horizontalScrollbarHeight } = useTableContainerResizeObserver(tableContainerRef);
 
   const reactTable = useReactTable({
     data,
@@ -95,7 +73,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
             '--_ui5WcrAnalyticalTableHeaderGroups': headerGroups.length,
             '--_ui5WcrAnalyticalTableTopRows': topRows.length,
             '--_ui5WcrAnalyticalTableBottomRows': bottomRows.length,
-            height: `calc(${headerGroups.length} * ${ROW_HEIGHT_VAR} + ${visibleRows} * ${ROW_HEIGHT_VAR})`
+            height: `calc(${headerGroups.length} * ${ROW_HEIGHT_VAR} + ${visibleRows} * ${ROW_HEIGHT_VAR} + ${horizontalScrollbarHeight}px)`
           } as CSSPropertiesWithVars
         }
         className={classNames.tableContainer}
