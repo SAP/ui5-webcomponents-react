@@ -25,12 +25,12 @@ describe('useStyleSheet', () => {
       </>
     );
     cy.findAllByText('Content').should('be.visible').and('have.length', 2);
-    cy.findAllByText('Object Status').should('not.be.visible');
+    cy.findAllByText('Object Status').should('have.css', 'font-size', '0px');
     cy.findAllByText('Object Status').should('have.length', 2);
 
     cy.findByTestId('btn-1').click();
     cy.findAllByText('Content').should('be.visible').and('have.length', 1);
-    cy.findAllByText('Object Status').should('not.be.visible');
+    cy.findAllByText('Object Status').should('have.css', 'font-size', '0px');
     cy.findAllByText('Object Status').should('have.length', 1);
   });
 });
