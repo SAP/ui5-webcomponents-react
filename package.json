@@ -70,7 +70,7 @@
     "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^11.0.0",
     "cssnano": "^7.0.0",
-    "cypress": "13.17.0",
+    "cypress": "14.0.0",
     "cypress-real-events": "^1.8.1",
     "dedent": "^1.0.0",
     "documentation": "14.0.3",
