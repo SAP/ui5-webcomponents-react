@@ -1938,7 +1938,7 @@ describe('AnalyticalTable', () => {
         subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
       />
     );
-
+    cy.wait(300);
     // ToDo: with Cypress 14 the "not.be.visible" assertion is false here, check if this is still the case for next updates
     // cy.findByText('SubComponent 1').should('exist').and('not.be.visible');
     cy.findByText('SubComponent 1')
@@ -1946,7 +1946,7 @@ describe('AnalyticalTable', () => {
       .then(($sub) => {
         const [sub] = $sub;
         const container = document.querySelector('[data-component-name="AnalyticalTableBody"]');
-        const isNotVisible = container.getBoundingClientRect().bottom < sub.getBoundingClientRect().bottom;
+        const isNotVisible = container.getBoundingClientRect().bottom < sub.getBoundingClientRect().top;
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(isNotVisible).to.be.true;
       });
