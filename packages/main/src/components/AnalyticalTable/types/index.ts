@@ -69,7 +69,7 @@ export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> 
    *
    * __Note:__ If set to `undefined`, the filter is removed.
    */
-  setFilter?: (val: string | undefined) => void;
+  setFilter?: (val: string | string[] | undefined) => void;
   sortDescFirst?: boolean;
   sortedIndex?: number;
   toggleHidden?: (hidden?: boolean) => void;
@@ -153,7 +153,7 @@ export interface TableInstance {
    *
    * __Note:__ If set to `undefined`, the filter is removed.
    */
-  setFilter?: (columnId: string, filterValue: string | undefined) => void;
+  setFilter?: (columnId: string, filterValue: string | string[] | undefined) => void;
   setGlobalFilter?: (filterValue: string) => void;
   setGroupBy?: (columnIds: string[]) => void;
   setHiddenColumns?: (columnIds: string[]) => void;
