@@ -1,0 +1,1 @@
+import"./Menu-BMgKVafh.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const o=e("ui5-menu",["headerText","loadingDelay","opener"],["loading","open"],[],["before-close","before-open","close","item-click","open"]);o.displayName="Menu";export{o as M};

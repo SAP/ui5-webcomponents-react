@@ -1,0 +1,1 @@
+import"./CheckBox-DnHecQN2.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const a=e("ui5-checkbox",["accessibleName","accessibleNameRef","name","text","valueState","wrappingType"],["checked","disabled","displayOnly","indeterminate","readonly","required"],[],["change"]);a.displayName="CheckBox";export{a as C};

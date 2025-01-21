@@ -1,0 +1,1 @@
+import"./Link-C6yBf8L4.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const i=e("ui5-link",["accessibilityAttributes","accessibleDescription","accessibleName","accessibleNameRef","accessibleRole","design","endIcon","href","icon","target","tooltip","wrappingType"],["disabled"],[],["click"]);i.displayName="Link";export{i as L};

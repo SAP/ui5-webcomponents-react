@@ -1,0 +1,1 @@
+import"./ListItemCustom-DWSZQ4xn.js";import{w as t}from"./withWebComponent-DfVDXLfc.js";const e=t("ui5-li-custom",["accessibilityAttributes","accessibleName","highlight","tooltip","type"],["movable","navigated","selected"],["deleteButton"],["detail-click"]);e.displayName="ListItemCustom";export{e as L};

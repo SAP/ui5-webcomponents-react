@@ -1,0 +1,1 @@
+import"./Button-Bn6Q5CAy.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const i=e("ui5-button",["accessibilityAttributes","accessibleDescription","accessibleName","accessibleNameRef","accessibleRole","design","endIcon","icon","tooltip","type"],["disabled","submits"],[],["click"]);i.displayName="Button";export{i as B};

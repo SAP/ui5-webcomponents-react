@@ -1,0 +1,1 @@
+import"./BusyIndicator-DpBDtyrv.js";import{w as t}from"./withWebComponent-DfVDXLfc.js";const e=t("ui5-busy-indicator",["delay","size","text","textPlacement"],["active"],[],[]);e.displayName="BusyIndicator";export{e as B};

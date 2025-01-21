@@ -1,0 +1,1 @@
+import"./Slider-C66AxB6s.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const i=e("ui5-slider",["accessibleName","labelInterval","max","min","name","step","value"],["disabled","editableTooltip","showTickmarks","showTooltip"],[],["change","input"]);i.displayName="Slider";export{i as S};

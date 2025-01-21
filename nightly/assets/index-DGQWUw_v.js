@@ -1,0 +1,1 @@
+import"./Select-BJ9lD5gr.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const a=e("ui5-select",["accessibleName","accessibleNameRef","name","value","valueState"],["disabled","readonly","required"],["label","valueStateMessage"],["change","close","live-change","open"]);a.displayName="Select";export{a as S};

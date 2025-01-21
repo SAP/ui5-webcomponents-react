@@ -1,0 +1,1 @@
+import"./RadioButton-lJWCrQxa.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const a=e("ui5-radio-button",["accessibleName","accessibleNameRef","name","text","value","valueState","wrappingType"],["checked","disabled","readonly","required"],[],["change"]);a.displayName="RadioButton";export{a as R};

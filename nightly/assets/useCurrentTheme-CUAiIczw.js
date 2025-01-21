@@ -1,1 +1,0 @@
-import{h as s,k as h,l as m}from"./withWebComponent-BAC46Qgl.js";import{r as t}from"./index-CjmQ2z5u.js";function u(){const[r,a]=t.useState(s());return t.useEffect(()=>{const e=o=>{a(o)};return h(e),()=>{m(e)}},[]),r}export{u};

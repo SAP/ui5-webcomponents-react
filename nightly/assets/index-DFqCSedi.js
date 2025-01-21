@@ -1,0 +1,1 @@
+import"./Icon-DVzRT9Bg.js";import{w as o}from"./withWebComponent-DfVDXLfc.js";const e=o("ui5-icon",["accessibleName","design","mode","name"],["showTooltip"],[],[]);e.displayName="Icon";export{e as I};
