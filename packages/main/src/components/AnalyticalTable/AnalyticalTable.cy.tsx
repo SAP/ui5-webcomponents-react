@@ -26,7 +26,6 @@ import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { getUi5TagWithSuffix } from '@/packages/main/src/internal/utils.js';
-import { expect } from 'chai';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -1939,11 +1938,15 @@ describe('AnalyticalTable', () => {
       />
     );
     cy.wait(300);
+
     // ToDo: with Cypress 14 the "not.be.visible" assertion is false here, check if this is still the case for next updates
     // cy.findByText('SubComponent 1').should('exist').and('not.be.visible');
     cy.findByText('SubComponent 1')
       .should('exist')
       .then(($sub) => {
+        if (!$sub.is(':visible')) {
+          throw new Error('Remove workaround for visibility check in "AnalyticalTable - render subcomponents" test!');
+        }
         const [sub] = $sub;
         const container = document.querySelector('[data-component-name="AnalyticalTableBody"]');
         const isNotVisible = container.getBoundingClientRect().bottom < sub.getBoundingClientRect().top;
