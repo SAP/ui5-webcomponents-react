@@ -26,6 +26,7 @@ import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import { getUi5TagWithSuffix } from '@/packages/main/src/internal/utils.js';
+import { expect } from 'chai';
 
 const generateMoreData = (count) => {
   return new Array(count).fill('').map((item, index) => ({
@@ -1938,7 +1939,18 @@ describe('AnalyticalTable', () => {
       />
     );
 
-    cy.findByText('SubComponent 1').should('exist').and('not.be.visible');
+    // ToDo: with Cypress 14 the "not.be.visible" assertion is false here, check if this is still the case for next updates
+    // cy.findByText('SubComponent 1').should('exist').and('not.be.visible');
+    cy.findByText('SubComponent 1')
+      .should('exist')
+      .then(($sub) => {
+        const [sub] = $sub;
+        const container = document.querySelector('[data-component-name="AnalyticalTableBody"]');
+        const isNotVisible = container.getBoundingClientRect().bottom < sub.getBoundingClientRect().bottom;
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        expect(isNotVisible).to.be.true;
+      });
+
     cy.findByTitle('Expand Node').should('not.exist');
     cy.findByTitle('Collapse Node').should('not.exist');
 
