@@ -529,7 +529,7 @@ export const CustomFilter: Story = {
       }
       return rows;
     }, []);
-    const columns = useMemo(
+    const columns: AnalyticalTableColumnDefinition[] = useMemo(
       () => [
         {
           Header: 'Custom Column Filter',
