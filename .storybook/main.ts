@@ -1,3 +1,4 @@
+import path from 'node:path';
 import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 import remarkGfm from 'remark-gfm';
@@ -72,7 +73,10 @@ const config: StorybookConfig = {
     autodocs: true
   },
   typescript: {
-    reactDocgen: 'react-docgen-typescript'
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      tsconfigPath: path.resolve(__dirname, './../tsconfig.json')
+    }
   },
   staticDirs: [isDevMode && 'images-dev', 'images'].filter(Boolean)
 };
