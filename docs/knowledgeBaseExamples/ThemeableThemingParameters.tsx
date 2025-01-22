@@ -1,9 +1,9 @@
 import { getTheme, setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
+import { FlexBox, FlexBoxDirection, Label, Option, Panel, Select, Text, ThemeProvider } from '@ui5/webcomponents-react';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useEffect, useReducer, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { MAPPED_THEMES } from '../../.storybook/utils';
-import { FlexBox, FlexBoxDirection, Label, Option, Panel, Select, Text, ThemeProvider } from '@ui5/webcomponents-react';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const containerStyles = {
   display: 'grid',
@@ -14,6 +14,7 @@ const containerStyles = {
 
 const FONTS = [];
 const COLORS = [];
+const SPACING = [];
 const OTHERS = Object.entries(ThemingParameters).filter(([key, value]) => {
   if (key.includes('Font')) {
     if (key.includes('FontUrl')) {
@@ -27,6 +28,16 @@ const OTHERS = Object.entries(ThemingParameters).filter(([key, value]) => {
     COLORS.push([key, value]);
     return false;
   }
+  if (
+    key.includes('Space') ||
+    key.includes('Margin') ||
+    key.includes('Padding') ||
+    key.includes('Gap') ||
+    key.includes('Breakpoint')
+  ) {
+    SPACING.push([key, value]);
+    return false;
+  }
   return true;
 });
 
@@ -37,7 +48,7 @@ const getStyleFonts = (val) => {
   } else if (val.includes('Size')) {
     style.fontSize = val;
   } else if (val.includes('Weight')) {
-    style.fontWeight;
+    style.fontWeight = val;
   }
   return style;
 };
@@ -158,6 +169,13 @@ export const ThemeableCSSVars = () => {
                   theme={currentTheme}
                 />
               );
+            })}
+          </div>
+        </Panel>
+        <Panel headerText="Spacing" collapsed>
+          <div style={containerStyles}>
+            {SPACING.map(([key, value]) => {
+              return <Variables key={key} varKey={key} value={value} theme={currentTheme} />;
             })}
           </div>
         </Panel>

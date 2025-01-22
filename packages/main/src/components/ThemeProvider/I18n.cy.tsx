@@ -30,7 +30,7 @@ describe('I18nProvider', () => {
     setFetchDefaultLanguage(false);
   });
   afterEach(() => {
-    setLanguage('en');
+    void setLanguage('en');
   });
 
   it('translate components', () => {
@@ -43,7 +43,7 @@ describe('I18nProvider', () => {
         <TestComponent3 />
         <button
           onClick={() => {
-            setLanguage('de');
+            void setLanguage('de');
           }}
         >
           Switch to German
@@ -80,13 +80,13 @@ describe('I18nProvider', () => {
     cy.findByTestId('counter').should('have.text', 1);
     cy.findByText('Please wait')
       .then(() => {
-        setLanguage('de');
+        void setLanguage('de');
       })
       .then(() => {
         cy.findByTestId('counter').should('have.text', 2);
         cy.findByText('Bitte warten')
           .then(() => {
-            setLanguage('de');
+            void setLanguage('de');
           })
           .then(() => {
             // should not rerender again

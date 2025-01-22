@@ -176,7 +176,6 @@ const meta = {
       description:
         'Defines the columns array where you can define the configuration for each column.<br />Please refer to the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.<br /><br /><b>Must be memoized!</b>'
     },
-    reactTableOptions: { control: { disable: true } },
     tableHooks: { control: { disable: true } },
     NoDataComponent: { control: { disable: true } },
     extension: { control: { disable: true } },
@@ -220,7 +219,8 @@ export const InfiniteScrolling: Story = {
     infiniteScroll: true,
     infiniteScrollThreshold: 10,
     loadingDelay: 500,
-    header: 'Scroll to load more data'
+    header: 'Scroll to load more data',
+    reactTableOptions: { autoResetSelectedRows: false }
   },
   render: (args, context) => {
     const [data, setData] = useState(args.data.slice(0, 50));
@@ -529,7 +529,7 @@ export const CustomFilter: Story = {
       }
       return rows;
     }, []);
-    const columns = useMemo(
+    const columns: AnalyticalTableColumnDefinition[] = useMemo(
       () => [
         {
           Header: 'Custom Column Filter',

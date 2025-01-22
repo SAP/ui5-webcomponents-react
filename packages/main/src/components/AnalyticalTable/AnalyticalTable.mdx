@@ -177,6 +177,8 @@ In this example the default key for sub row detection is used (`subRows`), you c
 
 The table initially contains 50 rows, when the last 10 rows are reached the table will load more data.
 
+**Note:** To prevent the table state from resetting when the data is updated, please see [this recipe](?path=/docs/data-display-analyticaltable-recipes--docs#how-to-stop-the-table-state-from-automatically-resetting-when-the-data-changes).
+
 <Canvas sourceState="none" of={ComponentStories.InfiniteScrolling} />
 
 ### Code
@@ -211,6 +213,7 @@ const InfiniteScrollTable = (props) => {
       header="Scroll to load more data"
       onLoadMore={onLoadMore}
       loading={loading}
+      reactTableOptions: {{ autoResetSelectedRows: false }}
     />
   );
 };

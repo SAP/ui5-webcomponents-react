@@ -1,3 +1,5 @@
+import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/CustomElementsScope.js';
+
 export const deprecationNotice = (component: string, message: string) => {
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
     const value = `*** ui5-webcomponents-react Deprecation Notice - ${component} ***\n`;
@@ -45,6 +47,11 @@ export const enrichEventWithDetails = <
 
   return event as EnrichedEventType<Event, Detail>;
 };
+
+export function getUi5TagWithSuffix(baseTagName: string) {
+  const tagNameSuffix: string | undefined = getEffectiveScopingSuffixForTag(baseTagName);
+  return tagNameSuffix ? `${baseTagName}-${tagNameSuffix}` : baseTagName;
+}
 
 export { debounce } from './debounce.js';
 export { throttle } from './throttle.js';

@@ -3,11 +3,11 @@
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { isPhone } from '@ui5/webcomponents-base/dist/Device.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
+import { addCustomCSSWithScoping } from '@ui5/webcomponents-react-base/dist/utils/addCustomCSSWithScoping.js';
 import { clsx } from 'clsx';
 import type { ReactElement } from 'react';
 import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
 import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults.js';
-import { addCustomCSSWithScoping } from '../../internal/addCustomCSSWithScoping.js';
 import { flattenFragments, getUi5TagWithSuffix } from '../../internal/utils.js';
 import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
@@ -17,7 +17,7 @@ import type {
   ResponsivePopoverPropTypes
 } from '../../webComponents/index.js';
 import { Button, ResponsivePopover } from '../../webComponents/index.js';
-import { classNames, styleData } from './ActionSheet.module.css.js';
+import { classNames, content } from './ActionSheet.module.css.js';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'header' | 'headerText' | 'children'> {
   /**
@@ -119,7 +119,7 @@ const ActionSheet = forwardRef<ResponsivePopoverDomRef, ActionSheetPropTypes>((p
   const { accessibilityAttributes, children, className, header, headerText, hideCancelButton, onOpen, open, ...rest } =
     props;
 
-  useStylesheet(styleData, ActionSheet.displayName);
+  useStylesheet(content, ActionSheet.displayName);
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const actionBtnsRef = useRef(null);

@@ -1,3 +1,4 @@
+import path from 'node:path';
 import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 import remarkGfm from 'remark-gfm';
@@ -6,8 +7,7 @@ import { isChromatic } from './utils';
 const isDevMode = process.env.NODE_ENV === 'development';
 
 const addons = [
-  // todo: enable again once https://github.com/storybookjs/storybook/pull/30003 is published
-  // './addons/version-switch',
+  './addons/version-switch',
   {
     name: '@storybook/addon-essentials',
     options: {
@@ -72,7 +72,10 @@ const config: StorybookConfig = {
     autodocs: true
   },
   typescript: {
-    reactDocgen: 'react-docgen-typescript'
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      tsconfigPath: path.resolve(__dirname, './../tsconfig.json')
+    }
   },
   staticDirs: [isDevMode && 'images-dev', 'images'].filter(Boolean)
 };
