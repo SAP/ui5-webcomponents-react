@@ -163,6 +163,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   } = props;
 
   useStylesheet(styleData, AnalyticalTable.displayName);
+  const isInitial = useRef(false);
 
   const alwaysShowSubComponent =
     subComponentsBehavior === AnalyticalTableSubComponentsBehavior.Visible ||
@@ -301,6 +302,15 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     // necessary as otherwise values are rounded which leads to wrong total width calculation leading to unnecessary scrollbar
     measureElement: !scaleXFactor || scaleXFactor === 1 ? (el) => el.getBoundingClientRect().width : undefined
   });
+  // force re-measure if `visibleColumns` change
+  useEffect(() => {
+    if (isInitial.current && visibleColumns.length) {
+      columnVirtualizer.measure();
+    } else {
+      isInitial.current = true;
+    }
+  }, [visibleColumns.length]);
+
   const [analyticalTableRef, scrollToRef] = useTableScrollHandles(updatedRef, dispatch);
 
   if (parentRef.current) {
