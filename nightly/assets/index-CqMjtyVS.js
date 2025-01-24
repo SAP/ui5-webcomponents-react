@@ -1,1 +1,0 @@
-import"./IllustratedMessage-8Du4RL5n.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const t=e("ui5-illustrated-message",["accessibleNameRef","design","name","subtitleText","titleText"],[],["subtitle","title"],[]);t.displayName="IllustratedMessage";export{t as I};

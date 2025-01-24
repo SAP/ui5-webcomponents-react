@@ -1,1 +1,0 @@
-import"./Tag-PldDXJ8h.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const i=e("ui5-tag",["colorScheme","design","size","wrappingType"],["hideStateIcon","interactive"],["icon"],["click"]);i.displayName="Tag";export{i as T};

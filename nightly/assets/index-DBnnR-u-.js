@@ -1,1 +1,0 @@
-import"./MenuItem-Cv90UPrs.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const t=e("ui5-menu-item",["accessibilityAttributes","accessibleName","additionalText","highlight","icon","loadingDelay","text","tooltip","type"],["disabled","loading","navigated","selected"],["deleteButton","endContent"],["detail-click"]);t.displayName="MenuItem";export{t as M};

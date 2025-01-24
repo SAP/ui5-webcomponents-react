@@ -1,1 +1,0 @@
-import"./ProgressIndicator-CEc-vob6.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const a=e("ui5-progress-indicator",["accessibleName","displayValue","value","valueState"],["hideValue"],[],[]);a.displayName="ProgressIndicator";export{a as P};

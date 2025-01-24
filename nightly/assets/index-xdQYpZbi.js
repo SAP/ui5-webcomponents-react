@@ -1,1 +1,0 @@
-import"./ListItemStandard-C37PlgD0.js";import{w as t}from"./withWebComponent-DfVDXLfc.js";const i=t("ui5-li",["accessibilityAttributes","accessibleName","additionalText","additionalTextState","description","highlight","icon","tooltip","type"],["iconEnd","movable","navigated","selected"],["deleteButton","image"],["detail-click"]);i.displayName="ListItemStandard";export{i as L};

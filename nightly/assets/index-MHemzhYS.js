@@ -1,1 +1,0 @@
-import"./ToggleButton-CkyyxGkw.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const s=e("ui5-toggle-button",["accessibilityAttributes","accessibleDescription","accessibleName","accessibleNameRef","accessibleRole","design","endIcon","icon","tooltip","type"],["disabled","pressed","submits"],[],["click"]);s.displayName="ToggleButton";export{s as T};

@@ -1,1 +1,0 @@
-import"./Option-oow41Q0t.js";import{w as o}from"./withWebComponent-DfVDXLfc.js";const t=o("ui5-option",["additionalText","icon","tooltip","value"],["selected"],[],[]);t.displayName="Option";export{t as O};

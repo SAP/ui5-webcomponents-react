@@ -1,1 +1,0 @@
-import"./List-DgtIRlaK.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const o=e("ui5-li-group",["headerAccessibleName","headerText"],[],["header"],["move-over","move"]);o.displayName="ListItemGroup";export{o as L};

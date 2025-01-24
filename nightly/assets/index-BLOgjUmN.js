@@ -1,1 +1,0 @@
-import"./Panel-DZS10XkI.js";import{w as e}from"./withWebComponent-DfVDXLfc.js";const a=e("ui5-panel",["accessibleName","accessibleRole","headerLevel","headerText"],["collapsed","fixed","noAnimation","stickyHeader"],["header"],["toggle"]);a.displayName="Panel";export{a as P};
