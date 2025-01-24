@@ -2,7 +2,7 @@
 
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ElementType, ReactNode } from 'react';
+import type { CSSProperties, ElementType, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent, FlexBoxWrap } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';
@@ -10,13 +10,15 @@ import { classNames, styleData } from './FlexBox.module.css.js';
 
 export interface FlexBoxPropTypes extends CommonProps {
   /**
-   * Controls the alignment of items on the Cross Axis.<br />
-   * <b>Note:</b> Corresponds to `align-items`.
+   * Controls the alignment of items on the Cross Axis.
+   *
+   * __Note:__ Corresponds to `align-items`.
    */
   alignItems?: FlexBoxAlignItems | keyof typeof FlexBoxAlignItems;
   /**
-   * Controls how the items are placed in the `FlexBox`.<br />
-   * <b>Note:</b> Corresponds to `flex-direction`.
+   * Controls how the items are placed in the `FlexBox`.
+   *
+   * __Note:__ Corresponds to `flex-direction`.
    */
   direction?: FlexBoxDirection | keyof typeof FlexBoxDirection;
   /**
@@ -30,15 +32,23 @@ export interface FlexBoxPropTypes extends CommonProps {
    */
   fitContainer?: boolean;
   /**
-   * Defines how the browser distributes space between and around items along the main-axis.<br />
-   * <b>Note:</b> Corresponds to `justify-content`.
+   * Defines how the browser distributes space between and around items along the main-axis.
+   *
+   * __Note:__ Corresponds to `justify-content`.
    */
   justifyContent?: FlexBoxJustifyContent | keyof typeof FlexBoxJustifyContent;
   /**
-   * Determines whether the `FlexBox` should wrap, when there is not enough space to display all items in one line.<br />
-   * <b>Note:</b> Corresponds to `flex-wrap`.
+   * Determines whether the `FlexBox` should wrap, when there is not enough space to display all items in one line.
+   *
+   * __Note:__ Corresponds to `flex-wrap`.
    */
   wrap?: FlexBoxWrap | keyof typeof FlexBoxWrap;
+  /**
+   * Define the gap (gutters) between flex items and flex lines.
+   *
+   * __Note:__ Corresponds to the `gap` CSS Property.
+   */
+  gap?: CSSProperties['gap'];
   /**
    * Content of the `FlexBox`.
    */
@@ -64,7 +74,9 @@ const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
     wrap = FlexBoxWrap.NoWrap,
     className,
     fitContainer,
+    gap,
     as = 'div',
+    style,
     ...rest
   } = props;
 
@@ -82,7 +94,7 @@ const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
 
   const CustomTag = as as ElementType;
   return (
-    <CustomTag ref={ref} className={flexBoxClasses} {...rest}>
+    <CustomTag ref={ref} className={flexBoxClasses} style={{ gap, ...style }} {...rest}>
       {children}
     </CustomTag>
   );
