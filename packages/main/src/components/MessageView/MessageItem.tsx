@@ -103,7 +103,7 @@ const MessageItem = forwardRef<ListItemCustomDomRef, MessageItemPropTypes>((prop
       let isChildOverflowing = false;
 
       if (!isTargetOverflowing) {
-        const firstChild = child.shadowRoot?.firstChild as HTMLAnchorElement;
+        const firstChild = child?.shadowRoot?.firstChild as HTMLAnchorElement | undefined;
         if (firstChild) {
           isChildOverflowing = firstChild.scrollWidth > firstChild.clientWidth;
         }
