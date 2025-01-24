@@ -99,7 +99,7 @@ export const MultiSelect: Story = {
     };
     // select/unselect
     const handleItemClick = (e) => {
-      const itemDescription = e.detail.item.dataset.description;
+      const itemDescription = e.detail.targetItem.dataset.description;
       setSelectedItems((prev) => {
         if (prev[itemDescription]) {
           const { [itemDescription]: _omit, ...rest } = prev;
@@ -129,7 +129,7 @@ export const MultiSelect: Story = {
           open={dialogOpen}
           selectionMode={ListSelectionMode.Multiple}
           numberOfSelectedItems={Object.keys(selectedItems).length}
-          listProps={{ onItemClick: handleItemClick }}
+          listProps={{ onSelectionChange: handleItemClick }}
           showClearButton
           rememberSelections
           onClear={handleClear}
