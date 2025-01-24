@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import { Link } from './index.js';
 
 const meta = {
@@ -10,6 +11,7 @@ const meta = {
   },
   args: {
     design: LinkDesign.Default,
+    wrappingType: WrappingType.None,
     children: 'Link Text'
   },
   tags: ['package:@ui5/webcomponents']

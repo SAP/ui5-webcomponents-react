@@ -1,4 +1,6 @@
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import { Link } from '@ui5/webcomponents-react';
 import { useRef } from 'react';
 import { MessageItem } from './MessageItem';
 import { MessageView } from './index.js';
@@ -168,5 +170,47 @@ describe('MessageView', () => {
     cy.get('[name="slim-arrow-right"]').should('be.visible').click();
     cy.findByText('SubtitleText').should('not.exist');
     cy.findByText('1337').should('not.exist');
+  });
+
+  it('MessageItem - titleText overflow', () => {
+    const selectSpy = cy.spy().as('select');
+    cy.mount(
+      <MessageView style={{ width: '500px' }} showDetailsPageHeader onItemSelect={selectSpy}>
+        <MessageItem
+          data-testid="item1"
+          titleText={
+            <Link wrappingType={WrappingType.None}>
+              Long Error Message Type without children/details including a Link as `titleText` which has
+              wrappingType="None" applied. - The details view is only available if the `titleText` is not fully visible.
+              It is NOT recommended to use long titles!
+            </Link>
+          }
+          type={ValueState.Negative}
+          counter={3}
+        />
+        <MessageItem
+          data-testid="item2"
+          titleText={
+            'Long Empty Message Type (no title, no subtitle, no children/details) - The details view is only available if the `titleText` is not fully visible. It is NOT recommended to use long titles!'
+          }
+          groupName={'Products'}
+        />
+        <MessageItem data-testid="item3" titleText="Error" type={ValueState.Negative} groupName="Group1" />
+      </MessageView>
+    );
+
+    cy.get('[name="slim-arrow-right"]').should('be.visible').and('have.length', 2);
+
+    cy.findByTestId('item1').click();
+    cy.get('@select').should('have.been.calledOnce');
+    cy.get('[name="slim-arrow-left"]').should('be.visible').and('have.length', 1).click();
+
+    cy.findByTestId('item2').click();
+    cy.get('@select').should('have.been.calledTwice');
+    cy.get('[name="slim-arrow-left"]').should('be.visible').and('have.length', 1).click();
+
+    cy.findByTestId('item3').click();
+    cy.get('@select').should('have.been.calledTwice');
+    cy.get('[name="slim-arrow-left"]').should('not.exist');
   });
 });

@@ -2,6 +2,7 @@ import { generateMessageItems } from '@sb/mockData/generateMessageItems.js';
 import type { Meta, StoryObj } from '@storybook/react';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import arrowLeftIcon from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
 import { useRef, useState } from 'react';
@@ -9,6 +10,7 @@ import { FlexBoxAlignItems, FlexBoxJustifyContent } from '../../enums/index.js';
 import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { Dialog } from '../../webComponents/Dialog/index.js';
+import { Link } from '../../webComponents/Link/index.js';
 import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
 import { Title } from '../../webComponents/Title/index.js';
 import { FlexBox } from '../FlexBox/index.js';
@@ -16,8 +18,6 @@ import { MessageViewButton } from '../MessageViewButton/index.js';
 import { MessageItem } from './MessageItem.js';
 import type { MessageViewDomRef } from './index.js';
 import { MessageView } from './index.js';
-
-// TODO: check docs for outdated info
 
 const meta = {
   title: 'User Feedback / MessageView',
@@ -75,7 +75,19 @@ const meta = {
       >
         Informative message
       </MessageItem>,
-      <MessageItem key={7} titleText={'Error Message Type'} type={ValueState.Negative} counter={3} />
+      <MessageItem key={7} titleText={'Error Message Type'} type={ValueState.Negative} counter={3} />,
+      <MessageItem
+        key={8}
+        titleText={
+          <Link wrappingType={WrappingType.None}>
+            Long Error Message Type without children/details including a Link as `titleText` which has
+            wrappingType="None" applied. - The details view is only available if the `titleText` is not fully visible.
+            It is NOT recommended to use long titles!
+          </Link>
+        }
+        type={ValueState.Negative}
+        counter={3}
+      />
     ]
   }
 } satisfies Meta<typeof MessageView>;
