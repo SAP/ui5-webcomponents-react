@@ -49,7 +49,7 @@ jobs:
           spec: packages/${{ matrix.spec }}
           install: false
 
-      - uses: coverallsapp/github-action@v2.3.4
+      - uses: coverallsapp/github-action@v2.3.6
         if: ${{ inputs.reportCoverage && matrix.react == '19' }}
         with:
           file: temp/cypress-coverage/lcov.info
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls
-        uses: coverallsapp/github-action@v2.3.4
+        uses: coverallsapp/github-action@v2.3.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
