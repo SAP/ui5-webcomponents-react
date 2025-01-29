@@ -9,9 +9,11 @@ You want to contribute to `ui5-webcomponents-react`? Welcome! Please read this d
 
 If you find a bug or some other issue with any part of the library, please [submit an issue](https://github.com/SAP/ui5-webcomponents-react/issues). Before doing so, please make sure that:
 
-- The issue is not a duplicate issue.
+- The issue is not a duplicate.
 - The issue has not been fixed in a newer release of the library.
 - The issue is reproducible.
+- You're following our issue template.
+- The issue title is short and concise. E.g.: "AnalyticalTable: wrong background color"
 - Your explanation is clear and complete.
 - You provide example code (preferably by forking this [StackBlitz template](https://stackblitz.com/github/SAP/ui5-webcomponents-react/tree/main/templates/vite-ts?file=src%2FApp.tsx)) and optionally screenshots.
 
@@ -25,22 +27,9 @@ If you meet the above criteria, you can submit issues with our [GitHub issue tra
 
 You can also use the issue tracker to request a new feature or enhancement. Even if you want to implement the feature yourself, please first submit an issue detailing your proposal so that we may discuss it with you and the community before moving forward.
 
-### Usage of Labels
+### Usage of Labels or Types
 
-GitHub offers labels to categorize issues. You can use the following labels:
-
-Labels for issue categories:
-
-- `bug`: Something isn't working / Issues in the code.
-- `documentation`: Issues with the documentation (repo and website documentation).
-- `feature-request`: New feature or enhancement requests.
-
-Status of open issues:
-
-- `(no label)`: The default status.
-- `contribution welcome`: The fix or enhancement is approved and you are invited to contribute to it.
-
-_It may happen that we add more labels to individual issues. These are used to describe the issue more granular, but you don't need to worry about that._
+You don’t need to worry about adding labels or types. They’re either set automatically by the template or defined by us to better categorize and classify the issue.
 
 ## Contribute Code
 
