@@ -42,10 +42,10 @@
     "@storybook/react-vite": "8.5.0",
     "@storybook/theming": "8.5.0",
     "@tanstack/react-table": "^8.20.6",
-    "@ui5/webcomponents": "2.6.2",
-    "@ui5/webcomponents-compat": "2.6.2",
-    "@ui5/webcomponents-fiori": "2.6.2",
-    "@ui5/webcomponents-icons": "2.6.2",
+    "@ui5/webcomponents": "2.6.3",
+    "@ui5/webcomponents-compat": "2.6.3",
+    "@ui5/webcomponents-fiori": "2.6.3",
+    "@ui5/webcomponents-icons": "2.6.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remark-gfm": "^4.0.0",
@@ -67,7 +67,7 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
-    "@ui5/webcomponents-tools": "2.6.2",
+    "@ui5/webcomponents-tools": "2.6.3",
     "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^11.0.0",
     "cssnano": "^7.0.0",
@@ -114,7 +114,8 @@
   },
   "resolutions": {
     "tocbot": "4.32.2",
-    "react-is": "^19"
+    "react-is": "^19",
+    "@joshwooding/vite-plugin-react-docgen-typescript": "0.3.0"
   },
   "type": "module",
   "nyc": {

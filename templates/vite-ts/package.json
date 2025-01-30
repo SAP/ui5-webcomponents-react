@@ -12,15 +12,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ui5/webcomponents": "2.6.2",
-    "@ui5/webcomponents-fiori": "2.6.2",
-    "@ui5/webcomponents-icons": "2.6.2",
+    "@ui5/webcomponents": "2.6.3",
+    "@ui5/webcomponents-fiori": "2.6.3",
+    "@ui5/webcomponents-icons": "2.6.3",
     "@ui5/webcomponents-react": "2.6.0",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "@types/react": "19.0.7",
+    "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
     "@vitejs/plugin-react": "^4.3.2",
     "@ui5/webcomponents-cypress-commands": "2.6.0",

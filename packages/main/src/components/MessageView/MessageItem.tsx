@@ -22,7 +22,7 @@ export interface MessageItemPropTypes extends CommonProps {
   /**
    * Specifies the title of the message
    *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use text or `Link` in order to preserve the intended design.
+   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use text or `Link` (with `wrappingType="None"`) in order to preserve the intended design.
    */
   titleText: ReactNode;
 
@@ -96,12 +96,20 @@ const MessageItem = forwardRef<ListItemCustomDomRef, MessageItemPropTypes>((prop
 
   const hasChildren = Children.count(children);
   useEffect(() => {
-    const titleTextObserver = new ResizeObserver(([titleTextSpan]) => {
-      if (titleTextSpan.target.scrollWidth > titleTextSpan.target.clientWidth) {
-        setIsTitleTextIsOverflowing(true);
-      } else {
-        setIsTitleTextIsOverflowing(false);
+    const titleTextObserver = new ResizeObserver(([titleTextSpanEntry]) => {
+      const child = titleTextSpanEntry.target.children[0];
+      const target = titleTextSpanEntry.target;
+      const isTargetOverflowing = target.scrollWidth > target.clientWidth;
+      let isChildOverflowing = false;
+
+      if (!isTargetOverflowing) {
+        const firstChild = child?.shadowRoot?.firstChild as HTMLAnchorElement | undefined;
+        if (firstChild) {
+          isChildOverflowing = firstChild.scrollWidth > firstChild.clientWidth;
+        }
       }
+
+      setIsTitleTextIsOverflowing(isTargetOverflowing || isChildOverflowing);
     });
     if (!hasChildren && titleTextRef.current) {
       titleTextObserver.observe(titleTextRef.current);
