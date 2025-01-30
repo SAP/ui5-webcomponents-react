@@ -3456,7 +3456,7 @@ describe('AnalyticalTable', () => {
             }}
           />
           <span data-testid="sel">{JSON.stringify(selected)}</span>
-          <span data-testid="btn-was-clicked">{JSON.stringify(selected)}</span>
+          <span data-testid="btn-was-clicked" />
         </>
       );
     };
