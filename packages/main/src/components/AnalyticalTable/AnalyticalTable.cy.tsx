@@ -3461,6 +3461,8 @@ describe('AnalyticalTable', () => {
       );
     };
     cy.mount(<TestComp />);
+    // for some reason only required for React18
+    cy.wait(300);
 
     // Pressing SPACE inside input components should work
     // Focus: (1,0) -> (col, row)
