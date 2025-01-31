@@ -264,21 +264,23 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
       aria-label={i18nBundle.getText(PRESS_ARROW_KEYS_TO_MOVE)}
     >
       <div className={classNames.lineBefore} />
-      {isHighContrast ? (
-        <Button
-          className={classNames.gripButton}
-          tabIndex={-1}
-          icon={vertical ? horizontalGripIcon : verticalGripIcon}
-          design={ButtonDesign.Transparent}
-          data-component-name="SplitterLayoutSplitterGrip"
-        />
-      ) : (
-        <Icon
-          className={classNames.icon}
-          name={vertical ? horizontalGripIcon : verticalGripIcon}
-          data-component-name="SplitterLayoutSplitterGrip"
-        />
-      )}
+      <div className={classNames.gripContainer}>
+        {isHighContrast ? (
+          <Button
+            className={classNames.gripButton}
+            tabIndex={-1}
+            icon={vertical ? horizontalGripIcon : verticalGripIcon}
+            design={ButtonDesign.Transparent}
+            data-component-name="SplitterLayoutSplitterGrip"
+          />
+        ) : (
+          <Icon
+            className={classNames.icon}
+            name={vertical ? horizontalGripIcon : verticalGripIcon}
+            data-component-name="SplitterLayoutSplitterGrip"
+          />
+        )}
+      </div>
       <div className={classNames.lineAfter} />
     </div>
   );
