@@ -57,7 +57,9 @@ You can define the command for example in the `commands.ts/js` file:
 <summary>Example file</summary>
 
 ```tsx
-import { mount } from 'cypress/react18';
+import { mount } from 'cypress/react';
+// if you are using Cypress v12 or v13, you need to import the mount command from 'cypress/react18'
+// import { mount } from 'cypress/react18';
 import { ThemeProvider } from '@ui5/webcomponents-react';
 
 declare global {

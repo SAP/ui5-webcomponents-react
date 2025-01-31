@@ -210,7 +210,7 @@ describe('ObjectStatus', () => {
           </ObjectStatus>
         );
         if (stateObj.hiddenText) {
-          cy.findByText(stateObj.hiddenText).should('exist').and('not.be.visible');
+          cy.findByText(stateObj.hiddenText).should('exist').and('have.css', 'font-size', '0px');
         }
         if (!item.inverted) {
           cy.findByText('Content').should('have.css', 'color', rgbValColorString);
@@ -235,7 +235,7 @@ describe('ObjectStatus', () => {
     cy.findByText('Content').click();
     cy.get('@clickSpy').should('not.be.called');
     cy.findByRole('button').should('not.exist');
-    cy.findByText('Object Status').should('exist').and('not.be.visible');
+    cy.findByText('Object Status').should('exist').and('have.css', 'font-size', '0px');
 
     cy.mount(
       <ObjectStatus onClick={click} interactive>
@@ -249,7 +249,7 @@ describe('ObjectStatus', () => {
     cy.get('@clickSpy').should('have.been.calledTwice');
     cy.findByText('Content').realPress('Space');
     cy.get('@clickSpy').should('have.been.calledThrice');
-    cy.findByText('Object Status Button').should('exist').and('not.be.visible');
+    cy.findByText('Object Status Button').should('exist').and('have.css', 'font-size', '0px');
   });
 
   it('emptyIndicator', () => {
@@ -267,7 +267,7 @@ describe('ObjectStatus', () => {
       </ObjectStatus>
     );
     cy.findByText(VALUE_STATE_ERROR.defaultText).should('not.exist');
-    cy.findByText('Custom Text').should('exist').and('not.be.visible');
+    cy.findByText('Custom Text').should('exist').and('have.css', 'font-size', '0px');
   });
 
   it('large', () => {
