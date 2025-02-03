@@ -94,6 +94,18 @@ describe('FlexBox', () => {
       .should('have.css', 'height', '200px');
   });
 
+  it('gap', () => {
+    cy.mount(
+      <FlexBox gap="1337px" data-testid="fb">
+        <div>Item 1</div>
+        <div>Item 2</div>
+        <div>Item 3</div>
+        <div>Item 4</div>
+      </FlexBox>
+    );
+    cy.findByTestId('fb').should('have.css', 'gap', '1337px');
+  });
+
   mountWithCustomTagName<FlexBoxPropTypes>(FlexBox, { children: <span>Test 1</span> });
   cypressPassThroughTestsFactory(FlexBox);
 });
