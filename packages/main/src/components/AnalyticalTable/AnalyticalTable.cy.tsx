@@ -1938,8 +1938,23 @@ describe('AnalyticalTable', () => {
         subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
       />
     );
+    cy.wait(300);
 
-    cy.findByText('SubComponent 1').should('exist').and('not.be.visible');
+    // ToDo: with Cypress 14 the "not.be.visible" assertion is false here, check if this is still the case for next updates
+    // cy.findByText('SubComponent 1').should('exist').and('not.be.visible');
+    cy.findByText('SubComponent 1')
+      .should('exist')
+      .then(($sub) => {
+        if (!$sub.is(':visible')) {
+          throw new Error('Remove workaround for visibility check in "AnalyticalTable - render subcomponents" test!');
+        }
+        const [sub] = $sub;
+        const container = document.querySelector('[data-component-name="AnalyticalTableBody"]');
+        const isNotVisible = container.getBoundingClientRect().bottom < sub.getBoundingClientRect().top;
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        expect(isNotVisible).to.be.true;
+      });
+
     cy.findByTitle('Expand Node').should('not.exist');
     cy.findByTitle('Collapse Node').should('not.exist');
 
