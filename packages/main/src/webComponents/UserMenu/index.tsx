@@ -31,6 +31,14 @@ interface UserMenuAttributes {
   showAddAccount?: boolean;
 
   /**
+   * Defines if the User menu shows edit button.
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents-fiori**.
+   * @default false
+   */
+  showEditButton?: boolean;
+
+  /**
    * Defines if the User Menu shows the Manage Account option.
    * @default false
    */
@@ -180,7 +188,7 @@ interface UserMenuPropTypes
 const UserMenu = withWebComponent<UserMenuPropTypes, UserMenuDomRef>(
   'ui5-user-menu',
   ['opener'],
-  ['open', 'showAddAccount', 'showManageAccount', 'showOtherAccounts'],
+  ['open', 'showAddAccount', 'showEditButton', 'showManageAccount', 'showOtherAccounts'],
   ['accounts'],
   [
     'add-account-click',

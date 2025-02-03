@@ -4,18 +4,24 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "dist/features/ColorPaletteMoreColors.js",
+      "path": "dist/colorpicker-utils/ColorValue.js",
       "declarations": [],
       "exports": [
         {
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "ColorPaletteMoreColors",
-            "module": "dist/features/ColorPaletteMoreColors.js"
+            "name": "ColorValue",
+            "module": "dist/colorpicker-utils/ColorValue.js"
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/features/ColorPaletteMoreColors.js",
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
@@ -720,6 +726,58 @@
           "declaration": {
             "name": "ButtonAccessibleRole",
             "module": "dist/types/ButtonAccessibleRole.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/ButtonBadgeDesign.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "ButtonBadgeDesign",
+          "description": "Determines where the badge will be placed and how it will be styled.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.7.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The badge is displayed after the text, inside the button.",
+              "default": "InlineText",
+              "name": "InlineText",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The badge is displayed at the top-end corner of the button.\n\n**Note:** It's highly recommended to use the OverlayText design mode only in cozy density.",
+              "default": "OverlayText",
+              "name": "OverlayText",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The badge is displayed as an attention dot.",
+              "default": "AttentionDot",
+              "name": "AttentionDot",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ButtonBadgeDesign",
+            "module": "dist/types/ButtonBadgeDesign.js"
           }
         }
       ]
@@ -3068,7 +3126,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "Scroll to load more data.",
+              "description": "Scroll to load more data.\n\n**Note:** If the table is not scrollable, a growing button will be rendered instead to ensure growing functionality.",
               "default": "Scroll",
               "name": "Scroll",
               "readonly": true
@@ -4832,6 +4890,14 @@
             {
               "description": "Used to style the native button element",
               "name": "button"
+            },
+            {
+              "description": "Used to style the icon in the native button element",
+              "name": "icon"
+            },
+            {
+              "description": "Used to style the end icon in the native button element",
+              "name": "endIcon"
             }
           ],
           "slots": [
@@ -4841,6 +4907,22 @@
               "_ui5propertyName": "text",
               "_ui5type": {
                 "text": "Array<Node>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "badge",
+              "description": "Adds a badge to the button.",
+              "_ui5since": "2.7.0",
+              "_ui5type": {
+                "text": "Array<ButtonBadge>",
+                "references": [
+                  {
+                    "name": "ButtonBadge",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ButtonBadge.js"
+                  }
+                ]
               },
               "_ui5privacy": "public"
             }
@@ -5159,6 +5241,95 @@
           "declaration": {
             "name": "Button",
             "module": "dist/Button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ButtonBadge.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `ui5-button-badge` component defines a badge that appears in the `ui5-button`.\n\n * ### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/ButtonBadge.js\";`",
+          "name": "ButtonBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "design",
+              "type": {
+                "text": "ButtonBadgeDesign",
+                "references": [
+                  {
+                    "name": "ButtonBadgeDesign",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ButtonBadgeDesign.js"
+                  }
+                ]
+              },
+              "default": "\"AttentionDot\"",
+              "description": "Determines where the badge should be placed and how it should be styled.",
+              "privacy": "public",
+              "_ui5since": "2.7.0"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the text of the component.\n\n**Note:** Text is not needed when the `design` property is set to `AttentionDot`.",
+              "privacy": "public",
+              "_ui5since": "2.7.0"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Determines where the badge should be placed and how it should be styled.",
+              "name": "design",
+              "default": "\"AttentionDot\"",
+              "fieldName": "design",
+              "type": {
+                "text": "\"InlineText\" | \"OverlayText\" | \"AttentionDot\""
+              }
+            },
+            {
+              "description": "Defines the text of the component.\n\n**Note:** Text is not needed when the `design` property is set to `AttentionDot`.",
+              "name": "text",
+              "default": "\"\"",
+              "fieldName": "text",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-button-badge",
+          "customElement": true,
+          "_ui5since": "2.7.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ButtonBadge",
+            "module": "dist/ButtonBadge.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-button-badge",
+          "declaration": {
+            "name": "ButtonBadge",
+            "module": "dist/ButtonBadge.js"
           }
         }
       ]
@@ -7420,7 +7591,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the user can choose a custom color from a component.\n\n**Note:** In order to use this property you need to import the following module: `\"@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js\"`",
+              "description": "Defines whether the user can choose a custom color from a component.",
               "privacy": "public"
             },
             {
@@ -7519,7 +7690,7 @@
               }
             },
             {
-              "description": "Defines whether the user can choose a custom color from a component.\n\n**Note:** In order to use this property you need to import the following module: `\"@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js\"`",
+              "description": "Defines whether the user can choose a custom color from a component.",
               "name": "show-more-colors",
               "default": "false",
               "fieldName": "showMoreColors",
@@ -10182,6 +10353,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/DateTimeInput.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DateTimeInput",
+            "module": "dist/DateTimeInput.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/DateTimePicker.js",
       "declarations": [
         {
@@ -11978,7 +12164,6 @@
           "kind": "interface",
           "name": "IFormItem",
           "description": "Interface for components that can be slotted inside `ui5-form` as items.",
-          "_ui5experimental": true,
           "_ui5privacy": "public",
           "_ui5since": "2.0.0"
         },
@@ -12140,7 +12325,6 @@
           },
           "tagName": "ui5-form",
           "customElement": true,
-          "_ui5experimental": "This component is availabe since 2.0 under an experimental flag and its API and behaviour are subject to change.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public"
         }
@@ -12239,7 +12423,6 @@
           },
           "tagName": "ui5-form-group",
           "customElement": true,
-          "_ui5experimental": "This component is availabe since 2.0 under an experimental flag and its API and behaviour are subject to change.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public",
           "_ui5implements": [
@@ -12341,7 +12524,6 @@
           },
           "tagName": "ui5-form-item",
           "customElement": true,
-          "_ui5experimental": "This component is availabe since 2.0 under an experimental flag and its API and behaviour are subject to change.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public",
           "_ui5implements": [
@@ -12570,7 +12752,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-input` component allows the user to enter and edit text or numeric values in one line.\n\nAdditionally, you can provide `suggestionItems`,\nthat are displayed in a popover right under the input.\n\nThe text field can be editable or read-only (`readonly` property),\nand it can be enabled or disabled (`disabled` property).\nTo visualize semantic states, such as \"Negative\" or \"Critical\", the `valueState` property is provided.\nWhen the user makes changes to the text, the change event is fired,\nwhich enables you to react on any text change.\n\n**Note:** If you are using the `ui5-input` as a single npm module,\ndon't forget to import the `InputSuggestions` module from\n\"@ui5/webcomponents/dist/features/InputSuggestions.js\"\nto enable the suggestions functionality.\n\n### Keyboard Handling\nThe `ui5-input` provides the following keyboard shortcuts:\n\n- [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.\n- [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.\n- [Down] - Focuses the next matching item in the suggestion list. Selection-change event is fired.\n- [Up] - Focuses the previous matching item in the suggestion list. Selection-change event is fired.\n- [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.\n- [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.\n- [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.\n- [Page Down] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Input.js\";`\n\n`import \"@ui5/webcomponents/dist/features/InputSuggestions.js\";` (optional - for input suggestions support)",
+          "description": "### Overview\n\nThe `ui5-input` component allows the user to enter and edit text or numeric values in one line.\n\nAdditionally, you can provide `suggestionItems`,\nthat are displayed in a popover right under the input.\n\nThe text field can be editable or read-only (`readonly` property),\nand it can be enabled or disabled (`disabled` property).\nTo visualize semantic states, such as \"Negative\" or \"Critical\", the `valueState` property is provided.\nWhen the user makes changes to the text, the change event is fired,\nwhich enables you to react on any text change.\n\n### Keyboard Handling\nThe `ui5-input` provides the following keyboard shortcuts:\n\n- [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.\n- [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.\n- [Down] - Focuses the next matching item in the suggestion list. Selection-change event is fired.\n- [Up] - Focuses the previous matching item in the suggestion list. Selection-change event is fired.\n- [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.\n- [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.\n- [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.\n- [Page Down] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Input.js\";`",
           "name": "Input",
           "cssParts": [
             {
@@ -12589,7 +12771,7 @@
           "slots": [
             {
               "name": "default",
-              "description": "Defines the suggestion items.\n\n**Note:** The suggestions would be displayed only if the `showSuggestions`\nproperty is set to `true`.\n\n**Note:** The `<ui5-suggestion-item>`, `<ui5-suggestion-item-group>` and `ui5-suggestion-item-custom` are recommended to be used as suggestion items.\n\n**Note:** Importing the Input Suggestions Support feature:\n\n`import \"@ui5/webcomponents/dist/features/InputSuggestions.js\";`\n\nautomatically imports the `<ui5-suggestion-item>` and `<ui5-suggestion-item-group>` for your convenience.",
+              "description": "Defines the suggestion items.\n\n**Note:** The suggestions would be displayed only if the `showSuggestions`\nproperty is set to `true`.\n\n**Note:** The `<ui5-suggestion-item>`, `<ui5-suggestion-item-group>` and `ui5-suggestion-item-custom` are recommended to be used as suggestion items.",
               "_ui5propertyName": "suggestionItems",
               "_ui5type": {
                 "text": "Array<IInputSuggestionItem>",
@@ -12744,7 +12926,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the component should show suggestions, if such are present.\n\n**Note:** You need to import the `InputSuggestions` module\nfrom `\"@ui5/webcomponents/dist/features/InputSuggestions.js\"` to enable this functionality.",
+              "description": "Defines whether the component should show suggestions, if such are present.",
               "privacy": "public"
             },
             {
@@ -12975,7 +13157,7 @@
               }
             },
             {
-              "description": "Defines whether the component should show suggestions, if such are present.\n\n**Note:** You need to import the `InputSuggestions` module\nfrom `\"@ui5/webcomponents/dist/features/InputSuggestions.js\"` to enable this functionality.",
+              "description": "Defines whether the component should show suggestions, if such are present.",
               "name": "show-suggestions",
               "default": "false",
               "fieldName": "showSuggestions",
@@ -13848,7 +14030,7 @@
                   }
                 ]
               },
-              "description": "Fired when an item is activated, unless the item's `type` property\nis set to `Inactive`.",
+              "description": "Fired when an item is activated, unless the item's `type` property\nis set to `Inactive`.\n\n**Note**: This event is not triggered by interactions with selection components such as the checkboxes and radio buttons,\nassociated with non-default `selectionMode` values, or if any other **interactive** component\n(such as a button or input) within the list item is directly clicked.",
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true,
@@ -15519,7 +15701,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\n`ui5-menu` component represents a hierarchical menu structure.\n\n### Structure\n\nThe `ui5-menu` can hold two types of entities:\n\n- `ui5-menu-item` components\n- `ui5-menu-separator` - used to separate menu items with a line\n\nAn arbitrary hierarchy structure can be represented by recursively nesting menu items.\n\n### Keyboard Handling\n\nThe `ui5-menu` provides advanced keyboard handling.\nThe user can use the following keyboard shortcuts in order to navigate trough the tree:\n\n- `Arrow Up` / `Arrow Down` - Navigates up and down the menu items that are currently visible.\n- `Arrow Right`, `Space` or `Enter` - Opens a sub-menu if there are menu items nested\nin the currently clicked menu item.\n- `Arrow Left` or `Escape` - Closes the currently opened sub-menu.\n\nNote: if the text ditrection is set to Right-to-left (RTL), `Arrow Right` and `Arrow Left` functionality is swapped.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Menu.js\";`",
+          "description": "### Overview\n\n`ui5-menu` component represents a hierarchical menu structure.\n\n### Structure\n\nThe `ui5-menu` can hold two types of entities:\n\n- `ui5-menu-item` components\n- `ui5-menu-separator` - used to separate menu items with a line\n\nAn arbitrary hierarchy structure can be represented by recursively nesting menu items.\n\n### Keyboard Handling\n\nThe `ui5-menu` provides advanced keyboard handling.\nThe user can use the following keyboard shortcuts in order to navigate trough the tree:\n\n- `Arrow Up` / `Arrow Down` - Navigates up and down the menu items that are currently visible.\n- `Arrow Right`, `Space` or `Enter` - Opens a sub-menu if there are menu items nested\nin the currently clicked menu item.\n- `Arrow Left` or `Escape` - Closes the currently opened sub-menu.\n\nwhen there is `endContent` :\n- `Arrow Left` or `ArrowRight` - Navigate between the menu item actions and the menu item itself\n- `Arrow Up` / `Arrow Down` - Navigates up and down the currently visible menu items\n\nNote: if the text ditrection is set to Right-to-left (RTL), `Arrow Right` and `Arrow Left` functionality is swapped.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Menu.js\";`",
           "name": "Menu",
           "slots": [
             {
@@ -15610,8 +15792,8 @@
                 ]
               },
               "description": "Fired when an item is being clicked.\n\n**Note:** Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
               "_ui5Bubbles": false,
               "_ui5parameters": [
                 {
@@ -15645,10 +15827,10 @@
                   }
                 ]
               },
-              "description": "Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. **This event does not bubble.**\n\n**Note:** Since 1.14.0 the event is also fired before a sub-menu opens.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false,
+              "description": "Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening.\n\n**Note:** Since 1.14.0 the event is also fired before a sub-menu opens.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5since": "1.10.0",
               "_ui5parameters": [
                 {
@@ -15667,10 +15849,10 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the menu is opened. **This event does not bubble.**",
+              "description": "Fired after the menu is opened.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false,
+              "_ui5Bubbles": true,
               "_ui5since": "1.10.0"
             },
             {
@@ -15686,10 +15868,10 @@
                   }
                 ]
               },
-              "description": "Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. **This event does not bubble.**",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false,
+              "description": "Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
               "_ui5since": "1.10.0",
               "_ui5parameters": [
                 {
@@ -15708,7 +15890,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired after the menu is closed. **This event does not bubble.**",
+              "description": "Fired after the menu is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": false,
@@ -16028,6 +16210,104 @@
               }
             }
           ],
+          "events": [
+            {
+              "name": "before-open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<MenuBeforeOpenEventDetail>",
+                "references": [
+                  {
+                    "name": "MenuBeforeOpenEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/MenuItem.js"
+                  }
+                ]
+              },
+              "description": "Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening.\n\n**Note:** Since 1.14.0 the event is also fired before a sub-menu opens.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": false,
+              "_ui5since": "1.10.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "item",
+                  "_ui5privacy": "public",
+                  "description": "The `ui5-menu-item` that triggers opening of the sub-menu or undefined when fired upon root menu opening."
+                }
+              ]
+            },
+            {
+              "name": "open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired after the menu is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false
+            },
+            {
+              "name": "before-close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<MenuBeforeCloseEventDetail>",
+                "references": [
+                  {
+                    "name": "MenuBeforeCloseEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/MenuItem.js"
+                  }
+                ]
+              },
+              "description": "Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": false,
+              "_ui5since": "1.10.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "escPressed",
+                  "_ui5privacy": "public",
+                  "description": "Indicates that `ESC` key has triggered the event."
+                }
+              ]
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired after the menu is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5since": "1.10.0"
+            },
+            {
+              "name": "detail-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            }
+          ],
           "attributes": [
             {
               "description": "Defines the text of the tree item.",
@@ -16185,23 +16465,6 @@
               "name": "IMenuItem",
               "package": "@ui5/webcomponents",
               "module": "dist/Menu.js"
-            }
-          ],
-          "events": [
-            {
-              "name": "detail-click",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
             }
           ]
         }
@@ -16366,7 +16629,7 @@
               "description": "Fired when the close button is pressed either with a\nclick/tap or by using the Enter or Space key.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": false
             }
           ],
           "attributes": [
@@ -17314,7 +17577,7 @@
             },
             {
               "name": "default",
-              "description": "Defines the suggestion items.\n\n**Note:** The suggestions would be displayed only if the `showSuggestions`\nproperty is set to `true`.\n\n**Note:** The `<ui5-suggestion-item>`, `<ui5-suggestion-item-group>` and `ui5-suggestion-item-custom` are recommended to be used as suggestion items.\n\n**Note:** Importing the Input Suggestions Support feature:\n\n`import \"@ui5/webcomponents/dist/features/InputSuggestions.js\";`\n\nautomatically imports the `<ui5-suggestion-item>` and `<ui5-suggestion-item-group>` for your convenience.",
+              "description": "Defines the suggestion items.\n\n**Note:** The suggestions would be displayed only if the `showSuggestions`\nproperty is set to `true`.\n\n**Note:** The `<ui5-suggestion-item>`, `<ui5-suggestion-item-group>` and `ui5-suggestion-item-custom` are recommended to be used as suggestion items.",
               "_ui5propertyName": "suggestionItems",
               "_ui5type": {
                 "text": "Array<IInputSuggestionItem>",
@@ -17515,7 +17778,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the component should show suggestions, if such are present.\n\n**Note:** You need to import the `InputSuggestions` module\nfrom `\"@ui5/webcomponents/dist/features/InputSuggestions.js\"` to enable this functionality.",
+              "description": "Defines whether the component should show suggestions, if such are present.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "Input",
@@ -17878,7 +18141,7 @@
               }
             },
             {
-              "description": "Defines whether the component should show suggestions, if such are present.\n\n**Note:** You need to import the `InputSuggestions` module\nfrom `\"@ui5/webcomponents/dist/features/InputSuggestions.js\"` to enable this functionality.",
+              "description": "Defines whether the component should show suggestions, if such are present.",
               "name": "show-suggestions",
               "default": "false",
               "fieldName": "showSuggestions",
@@ -17996,36 +18259,6 @@
           "declaration": {
             "name": "MultiInput",
             "module": "dist/MultiInput.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/NavigationMenu.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "NavigationMenu",
-            "module": "dist/NavigationMenu.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/NavigationMenuItem.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "NavigationMenuItem",
-            "module": "dist/NavigationMenuItem.js"
           }
         }
       ]
@@ -22578,6 +22811,20 @@
           "kind": "class",
           "description": "### Overview\n\n`ui5-split-button` enables users to trigger actions. It is constructed of two separate actions -\ndefault action and arrow action that can be activated by clicking or tapping, or by\npressing certain keyboard keys - `Space` or `Enter` for default action,\nand `Arrow Down` or `Arrow Up` for arrow action.\n\n### Usage\n\n`ui5-split-button` consists two separate buttons:\n\n- for the first one (default action) you can define some `text` or an `icon`, or both.\n- the second one (arrow action) contains only `slim-arrow-down` icon.\n\nYou can choose a `design` from a set of predefined types (the same as for ui5-button) that offer\ndifferent styling to correspond to the triggered action. Both text and arrow actions have the same design.\n\nYou can set the `ui5-split-button` as enabled or disabled. Both parts of an enabled\n`ui5-split-button` can be pressed by clicking or tapping it, or by certain keys, which changes\nthe style to provide visual feedback to the user that it is pressed or hovered over with\nthe mouse cursor. A disabled `ui5-split-button` appears inactive and any of the two buttons\ncannot be pressed.\n\n### Keyboard Handling\n\n- `Space` or `Enter` - triggers the default action\n- `Shift` or `Escape` - if `Space` is pressed, releases the default action button without triggering the click event.\n- `Arrow Down`, `Arrow Up`, `Alt`+`Arrow Down`, `Alt`+`Arrow Up`, or `F4` - triggers the arrow action\nThere are separate events that are fired on activating of `ui5-split-button` parts:\n\n- `click` for the first button (default action)\n- `arrow-click` for the second button (arrow action)\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/SplitButton.js\";`",
           "name": "SplitButton",
+          "cssParts": [
+            {
+              "description": "Used to style the native button element",
+              "name": "button"
+            },
+            {
+              "description": "Used to style the icon in the native button element",
+              "name": "icon"
+            },
+            {
+              "description": "Used to style the end icon in the native button element",
+              "name": "endIcon"
+            }
+          ],
           "slots": [
             {
               "name": "default",
@@ -24450,14 +24697,14 @@
         {
           "kind": "interface",
           "name": "ITableFeature",
-          "description": "Interface for components that can be slotted inside the <code>features</code> slot of the <code>ui5-table</code>.",
+          "description": "Interface for components that can be slotted inside the `features` slot of the `ui5-table`.",
           "_ui5experimental": true,
           "_ui5privacy": "public"
         },
         {
           "kind": "interface",
           "name": "ITableGrowing",
-          "description": "Interface for components that can be slotted inside the <code>features</code> slot of the <code>ui5-table</code>\nand provide growing/data loading functionality.",
+          "description": "Interface for components that can be slotted inside the `features` slot of the `ui5-table`\nand provide growing/data loading functionality.",
           "_ui5experimental": true,
           "_ui5privacy": "public"
         },
@@ -24468,7 +24715,7 @@
           "slots": [
             {
               "name": "default",
-              "description": "Defines the rows of the component.\n\nNote: Use <code>ui5-table-row</code> for the intended design.",
+              "description": "Defines the rows of the component.\n\n**Note:** Use `ui5-table-row` for the intended design.",
               "_ui5propertyName": "rows",
               "_ui5type": {
                 "text": "Array<TableRow>",
@@ -24484,7 +24731,7 @@
             },
             {
               "name": "headerRow",
-              "description": "Defines the header row of the component.\n\nNote: Use <code>ui5-table-header-row</code> for the intended design.",
+              "description": "Defines the header row of the component.\n\n**Note:** Use `ui5-table-header-row` for the intended design.",
               "_ui5type": {
                 "text": "Array<TableHeaderRow>",
                 "references": [
@@ -24576,7 +24823,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines if the loading indicator should be shown.\n\n<b>Note:</b> When the component is loading, it is non-interactive.",
+              "description": "Defines if the loading indicator should be shown.\n\n**Note:** When the component is loading, it is not interactive.",
               "privacy": "public"
             },
             {
@@ -24588,6 +24835,17 @@
               "default": "1000",
               "description": "Defines the delay in milliseconds, after which the loading indicator will show up for this component.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "rowActionCount",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Defines the maximum number of row actions that is displayed, which determines the width of the row action column.\n\n**Note:** It is recommended to use a maximum of 3 row actions, as exceeding this limit may take up too much space on smaller screens.",
+              "privacy": "public",
+              "_ui5since": "2.7.0"
             }
           ],
           "events": [
@@ -24607,7 +24865,7 @@
               "description": "Fired when an interactive row is clicked.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5parameters": [
                 {
                   "type": {
@@ -24713,6 +24971,42 @@
                   "description": "The destination object"
                 }
               ]
+            },
+            {
+              "name": "row-action-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<TableRowActionClickEventDetail>",
+                "references": [
+                  {
+                    "name": "TableRowActionClickEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Table.js"
+                  }
+                ]
+              },
+              "description": "Fired when a row action is clicked.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5since": "2.6.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "TableRowActionBase",
+                    "references": [
+                      {
+                        "name": "TableRowActionBase",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRowActionBase.js"
+                      }
+                    ]
+                  },
+                  "name": "action",
+                  "_ui5privacy": "public",
+                  "description": "The row action instance"
+                }
+              ]
             }
           ],
           "attributes": [
@@ -24753,7 +25047,7 @@
               }
             },
             {
-              "description": "Defines if the loading indicator should be shown.\n\n<b>Note:</b> When the component is loading, it is non-interactive.",
+              "description": "Defines if the loading indicator should be shown.\n\n**Note:** When the component is loading, it is not interactive.",
               "name": "loading",
               "default": "false",
               "fieldName": "loading",
@@ -24766,6 +25060,15 @@
               "name": "loading-delay",
               "default": "1000",
               "fieldName": "loadingDelay",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "description": "Defines the maximum number of row actions that is displayed, which determines the width of the row action column.\n\n**Note:** It is recommended to use a maximum of 3 row actions, as exceeding this limit may take up too much space on smaller screens.",
+              "name": "row-action-count",
+              "default": "0",
+              "fieldName": "rowActionCount",
               "type": {
                 "text": "number"
               }
@@ -24822,7 +25125,7 @@
           "_ui5privacy": "public",
           "attributes": [
             {
-              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
+              "description": "Determines the horizontal alignment of table cells.",
               "name": "horizontal-align",
               "default": "undefined",
               "fieldName": "horizontalAlign",
@@ -24849,7 +25152,7 @@
                   }
                 ]
               },
-              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
+              "description": "Determines the horizontal alignment of table cells.",
               "default": "undefined",
               "privacy": "public",
               "inheritedFrom": {
@@ -24923,14 +25226,14 @@
                   }
                 ]
               },
-              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
+              "description": "Determines the horizontal alignment of table cells.",
               "default": "undefined",
               "privacy": "public"
             }
           ],
           "attributes": [
             {
-              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
+              "description": "Determines the horizontal alignment of table cells.",
               "name": "horizontal-align",
               "default": "undefined",
               "fieldName": "horizontalAlign",
@@ -24997,7 +25300,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-table-growing` component is used inside the `ui5-table` to add a growing/data loading functionalities\nto the table.\n\nThe component offers two options:\n* Button - a More button is displayed, clicking it will load more data.\n* Scroll - additional data is loaded automatically when the user scrolls to the end of the table.\n\n### Usage\n\nThe `ui5-table-growing` component is only used inside the `ui5-table` component as a feature.\nIt has to be slotted inside the `ui5-table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<ui5-table>\n\t<ui5-table-growing type=\"Button\" growing-text=\"More\" slot=\"features\"></ui5-table-growing>\n</ui5-table>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableGrowing.js\";`",
+          "description": "### Overview\n\nThe `ui5-table-growing` component is used inside the `ui5-table` to add a growing/data loading functionalities\nto the table.\n\nThe component offers two options:\n* Button - a More button is displayed, clicking it will load more data.\n* Scroll - additional data is loaded automatically when the user scrolls to the end of the table.\n\n### Usage\n\nThe `ui5-table-growing` component is only used inside the `ui5-table` component as a feature.\nIt has to be slotted inside the `ui5-table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<ui5-table>\n\t<ui5-table-growing type=\"Button\" growing-text=\"More\" slot=\"features\"></ui5-table-growing>\n</ui5-table>\n```\n\n**Notes**:\n* When the `ui5-table-growing` component is used with the `Scroll` type and the table is currently not scrollable,\nthe component will render a growing button instead to ensure growing capabilities until the table becomes scrollable.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableGrowing.js\";`",
           "name": "TableGrowing",
           "members": [
             {
@@ -25014,7 +25317,7 @@
                 ]
               },
               "default": "\"Button\"",
-              "description": "Defines the mode of the <code>ui5-table</code> growing.\n\nAvailable options are:\n\nButton - Shows a More button at the bottom of the table, pressing it will load more rows.\n\nScroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable, this option is the same as the Button.",
+              "description": "Defines the mode of the <code>ui5-table</code> growing.\n\nAvailable options are:\n\nButton - Shows a More button at the bottom of the table, pressing it will load more rows.\n\nScroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable,\na growing button will be rendered instead to ensure growing functionality.",
               "privacy": "public"
             },
             {
@@ -25053,7 +25356,7 @@
           ],
           "attributes": [
             {
-              "description": "Defines the mode of the <code>ui5-table</code> growing.\n\nAvailable options are:\n\nButton - Shows a More button at the bottom of the table, pressing it will load more rows.\n\nScroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable, this option is the same as the Button.",
+              "description": "Defines the mode of the <code>ui5-table</code> growing.\n\nAvailable options are:\n\nButton - Shows a More button at the bottom of the table, pressing it will load more rows.\n\nScroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable,\na growing button will be rendered instead to ensure growing functionality.",
               "name": "type",
               "default": "\"Button\"",
               "fieldName": "type",
@@ -25162,6 +25465,17 @@
             },
             {
               "kind": "field",
+              "name": "popinText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The text for the column when it pops in.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.7.0"
+            },
+            {
+              "kind": "field",
               "name": "horizontalAlign",
               "type": {
                 "text": "TableCellHorizontalAlign | undefined",
@@ -25173,7 +25487,7 @@
                   }
                 ]
               },
-              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
+              "description": "Determines the horizontal alignment of table cells.",
               "default": "undefined",
               "privacy": "public",
               "inheritedFrom": {
@@ -25220,7 +25534,16 @@
               }
             },
             {
-              "description": "Determines the horizontal alignment of table cells.\n**Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.",
+              "description": "The text for the column when it pops in.",
+              "name": "popin-text",
+              "default": "undefined",
+              "fieldName": "popinText",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Determines the horizontal alignment of table cells.",
               "name": "horizontal-align",
               "default": "undefined",
               "fieldName": "horizontalAlign",
@@ -25394,6 +25717,22 @@
                 ]
               },
               "_ui5privacy": "public"
+            },
+            {
+              "name": "actions",
+              "description": "Defines the actions of the component.\n\n**Note:** Use `ui5-table-row-action` or `ui5-table-row-action-navigation` for the intended design.",
+              "_ui5since": "2.7.0",
+              "_ui5type": {
+                "text": "Array<TableRowActionBase>",
+                "references": [
+                  {
+                    "name": "TableRowActionBase",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/TableRowActionBase.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
             }
           ],
           "members": [
@@ -25414,7 +25753,7 @@
                 "text": "number"
               },
               "default": "-1",
-              "description": "Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.",
+              "description": "Defines the position of the row respect to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
               "privacy": "public",
               "_ui5since": "2.5.0"
             },
@@ -25461,7 +25800,7 @@
               }
             },
             {
-              "description": "Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.",
+              "description": "Defines the position of the row respect to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
               "name": "position",
               "default": "-1",
               "fieldName": "position",
@@ -25524,6 +25863,273 @@
           "declaration": {
             "name": "TableRow",
             "module": "dist/TableRow.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableRowAction.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `TableRowAction` class defines a row action for table rows.",
+          "name": "TableRowAction",
+          "members": [
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the icon of the row action.\n\n**Note:** For row actions to work properly, this property is mandatory.\n\n**Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the text of the row action.\n\n**Note:** For row actions to work properly, this property is mandatory.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines the disabled state of the row action.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "invisible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines the visibility of the row action.\n\n**Note:** Invisible row actions still take up space, allowing to hide the action while maintaining its position.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableRowActionBase",
+                "module": "dist/TableRowActionBase.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the icon of the row action.\n\n**Note:** For row actions to work properly, this property is mandatory.\n\n**Note:** SAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "name": "icon",
+              "default": "\"\"",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the text of the row action.\n\n**Note:** For row actions to work properly, this property is mandatory.",
+              "name": "text",
+              "default": "\"\"",
+              "fieldName": "text",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the disabled state of the row action.",
+              "name": "disabled",
+              "default": "false",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the visibility of the row action.\n\n**Note:** Invisible row actions still take up space, allowing to hide the action while maintaining its position.",
+              "name": "invisible",
+              "default": "false",
+              "fieldName": "invisible",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "TableRowActionBase",
+                "module": "dist/TableRowActionBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "TableRowActionBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TableRowActionBase.js"
+          },
+          "tagName": "ui5-table-row-action",
+          "customElement": true,
+          "_ui5since": "2.7.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableRowAction",
+            "module": "dist/TableRowAction.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-row-action",
+          "declaration": {
+            "name": "TableRowAction",
+            "module": "dist/TableRowAction.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableRowActionBase.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `TableRowActionBase` class serves as a foundation for table row actions.",
+          "name": "TableRowActionBase",
+          "members": [
+            {
+              "kind": "field",
+              "name": "invisible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines the visibility of the row action.\n\n**Note:** Invisible row actions still take up space, allowing to hide the action while maintaining its position.",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the visibility of the row action.\n\n**Note:** Invisible row actions still take up space, allowing to hide the action while maintaining its position.",
+              "name": "invisible",
+              "default": "false",
+              "fieldName": "invisible",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "customElement": true,
+          "_ui5since": "2.7.0",
+          "_ui5privacy": "public",
+          "_ui5abstract": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableRowActionBase",
+            "module": "dist/TableRowActionBase.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableRowActionNavigation.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `TableRowActionNavigation` class defines a navigation actio‚n for table rows.",
+          "name": "TableRowActionNavigation",
+          "members": [
+            {
+              "kind": "field",
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines the interactive state of the navigation action.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "invisible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines the visibility of the row action.\n\n**Note:** Invisible row actions still take up space, allowing to hide the action while maintaining its position.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableRowActionBase",
+                "module": "dist/TableRowActionBase.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the interactive state of the navigation action.",
+              "name": "interactive",
+              "default": "false",
+              "fieldName": "interactive",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the visibility of the row action.\n\n**Note:** Invisible row actions still take up space, allowing to hide the action while maintaining its position.",
+              "name": "invisible",
+              "default": "false",
+              "fieldName": "invisible",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "TableRowActionBase",
+                "module": "dist/TableRowActionBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "TableRowActionBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TableRowActionBase.js"
+          },
+          "tagName": "ui5-table-row-action-navigation",
+          "customElement": true,
+          "_ui5since": "2.7.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableRowActionNavigation",
+            "module": "dist/TableRowActionNavigation.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-row-action-navigation",
+          "declaration": {
+            "name": "TableRowActionNavigation",
+            "module": "dist/TableRowActionNavigation.js"
           }
         }
       ]
@@ -25682,7 +26288,7 @@
                 "text": "number"
               },
               "default": "45",
-              "description": "Defines the height of the rows in the table.\n\n**Note:** This property is mandatory for the virtualization to work properly.",
+              "description": "Defines the height of the rows in the table.\n\n**Note:** For virtualization to work properly, this property is mandatory.",
               "privacy": "public"
             },
             {
@@ -25692,7 +26298,7 @@
                 "text": "number"
               },
               "default": "100",
-              "description": "Defines the total count of rows in the table.\n\n**Note:** This property is mandatory for the virtualization to work properly.",
+              "description": "Defines the total count of rows in the table.\n\n**Note:** For virtualization to work properly, this property is mandatory.",
               "privacy": "public"
             },
             {
@@ -25757,7 +26363,7 @@
           ],
           "attributes": [
             {
-              "description": "Defines the height of the rows in the table.\n\n**Note:** This property is mandatory for the virtualization to work properly.",
+              "description": "Defines the height of the rows in the table.\n\n**Note:** For virtualization to work properly, this property is mandatory.",
               "name": "row-height",
               "default": "45",
               "fieldName": "rowHeight",
@@ -25766,7 +26372,7 @@
               }
             },
             {
-              "description": "Defines the total count of rows in the table.\n\n**Note:** This property is mandatory for the virtualization to work properly.",
+              "description": "Defines the total count of rows in the table.\n\n**Note:** For virtualization to work properly, this property is mandatory.",
               "name": "row-count",
               "default": "100",
               "fieldName": "rowCount",
@@ -25823,6 +26429,12 @@
           "kind": "class",
           "description": "### Overview\n\nThe `ui5-tag` is a component which serves\nthe purpose to attract the user attention to some piece\nof information (state, quantity, condition, etc.).\nIt can contain icon and text information, and its design can be chosen from specific design types.\n\n### Usage Guidelines\n\n- If the text is longer than the width of the component, it can wrap, or it can show ellipsis, depending on the `wrappingType` property.\n- Colors can be semantic or not semantic.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Tag.js\";`",
           "name": "Tag",
+          "cssParts": [
+            {
+              "description": "Used to style the root element.",
+              "name": "root"
+            }
+          ],
           "slots": [
             {
               "name": "default",
@@ -27705,12 +28317,36 @@
                 "text": "Array<Node>"
               },
               "_ui5privacy": "public"
+            },
+            {
+              "name": "badge",
+              "description": "Adds a badge to the button.",
+              "_ui5since": "2.7.0",
+              "_ui5type": {
+                "text": "Array<ButtonBadge>",
+                "references": [
+                  {
+                    "name": "ButtonBadge",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ButtonBadge.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
             }
           ],
           "cssParts": [
             {
               "description": "Used to style the native button element",
               "name": "button"
+            },
+            {
+              "description": "Used to style the icon in the native button element",
+              "name": "icon"
+            },
+            {
+              "description": "Used to style the end icon in the native button element",
+              "name": "endIcon"
             }
           ]
         }

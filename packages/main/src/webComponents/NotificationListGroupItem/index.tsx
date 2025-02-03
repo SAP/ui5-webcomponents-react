@@ -92,7 +92,7 @@ interface NotificationListGroupItemPropTypes
  * - Items of the group
  *
  * ### Usage
- * The component can be used in a standard `ui5-list`.
+ * The component should be used inside a `NotificationList`.
  *
  * ### Keyboard Handling
  * The `NotificationListGroupItem` provides advanced keyboard handling.

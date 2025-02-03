@@ -1,7 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Table.js';
-import type { TableMoveEventDetail, TableRowClickEventDetail } from '@ui5/webcomponents/dist/Table.js';
+import type {
+  TableMoveEventDetail,
+  TableRowActionClickEventDetail,
+  TableRowClickEventDetail
+} from '@ui5/webcomponents/dist/Table.js';
 import type TableOverflowMode from '@ui5/webcomponents/dist/types/TableOverflowMode.js';
 import type { ReactNode } from 'react';
 import { withWebComponent } from '../../internal/withWebComponent.js';
@@ -23,7 +27,7 @@ interface TableAttributes {
   /**
    * Defines if the loading indicator should be shown.
    *
-   * <b>Note:</b> When the component is loading, it is non-interactive.
+   * **Note:** When the component is loading, it is not interactive.
    * @default false
    */
   loading?: boolean;
@@ -51,6 +55,16 @@ interface TableAttributes {
    * @default "Scroll"
    */
   overflowMode?: TableOverflowMode | keyof typeof TableOverflowMode;
+
+  /**
+   * Defines the maximum number of row actions that is displayed, which determines the width of the row action column.
+   *
+   * **Note:** It is recommended to use a maximum of 3 row actions, as exceeding this limit may take up too much space on smaller screens.
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents**.
+   * @default 0
+   */
+  rowActionCount?: number;
 }
 
 interface TableDomRef extends Required<TableAttributes>, Ui5DomRef {}
@@ -59,12 +73,20 @@ interface TablePropTypes
   extends TableAttributes,
     Omit<
       CommonProps,
-      keyof TableAttributes | 'children' | 'features' | 'headerRow' | 'nodata' | 'onMove' | 'onMoveOver' | 'onRowClick'
+      | keyof TableAttributes
+      | 'children'
+      | 'features'
+      | 'headerRow'
+      | 'nodata'
+      | 'onMove'
+      | 'onMoveOver'
+      | 'onRowActionClick'
+      | 'onRowClick'
     > {
   /**
    * Defines the rows of the component.
    *
-   * Note: Use <code>ui5-table-row</code> for the intended design.
+   * **Note:** Use `TableRow` for the intended design.
    */
   children?: ReactNode | ReactNode[];
 
@@ -82,7 +104,7 @@ interface TablePropTypes
   /**
    * Defines the header row of the component.
    *
-   * Note: Use <code>ui5-table-header-row</code> for the intended design.
+   * **Note:** Use `TableHeaderRow` for the intended design.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="headerRow"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
@@ -135,11 +157,22 @@ interface TablePropTypes
   onMoveOver?: (event: Ui5CustomEvent<TableDomRef, TableMoveEventDetail>) => void;
 
   /**
+   * Fired when a row action is clicked.
+   *
+   * **Note:** Available since [v2.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.6.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|❌|
+   */
+  onRowActionClick?: (event: Ui5CustomEvent<TableDomRef, TableRowActionClickEventDetail>) => void;
+
+  /**
    * Fired when an interactive row is clicked.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
 }
@@ -220,10 +253,10 @@ Keep in mind that you can use either the compat/Table, or the main/Table - you c
 */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
   'ui5-table',
-  ['accessibleName', 'accessibleNameRef', 'loadingDelay', 'noDataText', 'overflowMode'],
+  ['accessibleName', 'accessibleNameRef', 'loadingDelay', 'noDataText', 'overflowMode', 'rowActionCount'],
   ['loading'],
   ['features', 'headerRow', 'nodata'],
-  ['move-over', 'move', 'row-click']
+  ['move-over', 'move', 'row-action-click', 'row-click']
 );
 
 Table.displayName = 'Table';
