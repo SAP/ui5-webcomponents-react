@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.17](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.16...v1.29.17) (2025-02-04)
+
+### Bug Fixes
+
+- **AnalyticalTable:** apply correct column width when hiding columns ([#6853](https://github.com/SAP/ui5-webcomponents-react/issues/6853)) ([8354630](https://github.com/SAP/ui5-webcomponents-react/commit/83546309413a9b9c12e6c20c935c7862d6eda5f0))
+- **MessageItem:** enable details view if Link overflows ([#6893](https://github.com/SAP/ui5-webcomponents-react/issues/6893)) ([e02a6fc](https://github.com/SAP/ui5-webcomponents-react/commit/e02a6fc59efd07be0015d382c872941e9172cdd9))
+- **SplitterLayout:** implement latest design specs ([#6894](https://github.com/SAP/ui5-webcomponents-react/issues/6894)) ([bfe245a](https://github.com/SAP/ui5-webcomponents-react/commit/bfe245a959df6e75bf3acaf8615dcfbfba6c9ba5)), closes [#6885](https://github.com/SAP/ui5-webcomponents-react/issues/6885)
+
 ## [1.29.16](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.15...v1.29.16) (2025-01-10)
 
 ### Bug Fixes
