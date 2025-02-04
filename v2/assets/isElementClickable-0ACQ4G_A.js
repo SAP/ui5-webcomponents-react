@@ -1,1 +1,0 @@
-const n=/^(?:a|area)$/i,a=/^(?:input|select|textarea|button)$/i,r=t=>{if(t.disabled)return!1;const e=t.getAttribute("tabindex");return e!=null?parseInt(e)>=0:a.test(t.nodeName)||n.test(t.nodeName)&&!!t.href};export{r};
