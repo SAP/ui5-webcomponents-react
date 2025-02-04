@@ -1,6 +1,6 @@
 import { isChromatic } from '@sb/utils.js';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../Button/index.js';
 import { FilterItem } from '../FilterItem/index.js';
 import { FilterItemOption } from '../FilterItemOption/index.js';
@@ -61,6 +61,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => {
     const [open, setOpen] = useState(args.open);
+
+    useEffect(() => {
+      setOpen(args.open);
+    }, [args.open]);
+
     return (
       <>
         <Button

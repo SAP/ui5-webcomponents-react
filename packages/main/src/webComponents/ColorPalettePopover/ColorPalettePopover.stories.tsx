@@ -1,6 +1,6 @@
 import { isChromatic } from '@sb/utils.js';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/index.js';
 import { ColorPaletteItem } from '../ColorPaletteItem/index.js';
 import { ColorPalettePopover } from './index.js';
@@ -29,6 +29,11 @@ export const Default: Story = {
     const onButtonClick = () => {
       setOpen((prev) => !prev);
     };
+
+    useEffect(() => {
+      setOpen(args.open);
+    }, [args.open]);
+
     return (
       <>
         <Button onClick={onButtonClick} ref={btnRef}>
