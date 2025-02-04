@@ -51,8 +51,11 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
 }
 
 /**
- * Second-level information container of an `ObjectPage`.<br />
+ * Second-level information container of an `ObjectPage`.
+ *
  * __Note:__ This component should only be used inside an `ObjectPageSection` component.
+ *
+ * __Note:__ Only use subsections if more than one is available. Otherwise, add the content of the section directly as `child` of the `ObjectPageSection`.
  */
 const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionPropTypes>((props, ref) => {
   const {

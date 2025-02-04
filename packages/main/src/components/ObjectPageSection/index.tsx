@@ -17,6 +17,8 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   id: string;
   /**
    * Defines the content of the `ObjectPageSection`.
+   *
+   * __Note:__ Only use subsections if more than one is available. Otherwise, add the content of the section directly as `child`.
    */
   children: ReactNode | ReactNode[];
   /**
