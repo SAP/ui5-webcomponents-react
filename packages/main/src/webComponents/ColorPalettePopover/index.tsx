@@ -41,8 +41,6 @@ interface ColorPalettePopoverAttributes {
 
   /**
    * Defines whether the user can choose a custom color from a component.
-   *
-   * **Note:** In order to use this property you need to import the following module: `"@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js"`
    * @default false
    */
   showMoreColors?: boolean;

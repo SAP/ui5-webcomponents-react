@@ -1,10 +1,36 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
+import type { SideNavigationItemAccessibilityAttributes } from '@ui5/webcomponents-fiori/dist/SideNavigationSelectableItemBase.js';
+import type SideNavigationItemDesign from '@ui5/webcomponents-fiori/dist/types/SideNavigationItemDesign.js';
 import { withWebComponent } from '../../internal/withWebComponent.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface SideNavigationSubItemAttributes {
+  /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The following fields are supported:
+   *
+   * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+   * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
+   *
+   * **Note:** Do not use it on parent items, as it will be overridden if the item is in the overflow menu.
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents-fiori**.
+   * @default {}
+   */
+  accessibilityAttributes?: SideNavigationItemAccessibilityAttributes;
+
+  /**
+   * Item design.
+   *
+   * **Note:** Items with "Action" design must not have sub-items.
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents-fiori**.
+   * @default "Default"
+   */
+  design?: SideNavigationItemDesign | keyof typeof SideNavigationItemDesign;
+
   /**
    * Defines whether the component is disabled.
    * A disabled component can't be pressed or
@@ -75,6 +101,22 @@ interface SideNavigationSubItemAttributes {
    * @default undefined
    */
   tooltip?: string | undefined;
+
+  /**
+   * Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.
+   *
+   * When a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.
+   * To improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.
+   *
+   *
+   * **Guidelines**:
+   * - External links should be unselectable.
+   * - Items that trigger actions (with design "Action") should be unselectable.
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents-fiori**.
+   * @default false
+   */
+  unselectable?: boolean;
 }
 
 interface SideNavigationSubItemDomRef extends Required<SideNavigationSubItemAttributes>, Ui5DomRef {}
@@ -83,8 +125,7 @@ interface SideNavigationSubItemPropTypes
   extends SideNavigationSubItemAttributes,
     Omit<CommonProps, keyof SideNavigationSubItemAttributes | 'onClick'> {
   /**
-   * Fired when the component is activated either with a
-   * click/tap or by using the [Enter] or [Space] keys.
+   * Fired when the component is activated either with a click/tap or by using the [Enter] or [Space] keys.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
@@ -104,8 +145,8 @@ interface SideNavigationSubItemPropTypes
  */
 const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, SideNavigationSubItemDomRef>(
   'ui5-side-navigation-sub-item',
-  ['href', 'icon', 'target', 'text', 'tooltip'],
-  ['disabled', 'selected'],
+  ['accessibilityAttributes', 'design', 'href', 'icon', 'target', 'text', 'tooltip'],
+  ['disabled', 'selected', 'unselectable'],
   [],
   ['click']
 );

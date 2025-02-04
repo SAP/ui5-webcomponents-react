@@ -175,6 +175,10 @@ interface ListPropTypes
    * Fired when an item is activated, unless the item's `type` property
    * is set to `Inactive`.
    *
+   * **Note**: This event is not triggered by interactions with selection components such as the checkboxes and radio buttons,
+   * associated with non-default `selectionMode` values, or if any other **interactive** component
+   * (such as a button or input) within the list item is directly clicked.
+   *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    *
    * | cancelable | bubbles |
