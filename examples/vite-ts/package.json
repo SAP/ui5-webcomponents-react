@@ -27,7 +27,7 @@
     "@types/react-dom": "19.0.3",
     "@ui5/webcomponents-cypress-commands": "2.7.0",
     "@vitejs/plugin-react": "^4.3.2",
-    "cypress": "^13.0.0",
+    "cypress": "^14.0.0",
     "eslint": "^9.12.0",
     "eslint-plugin-react-hooks": "5.1.0",
     "eslint-plugin-react-refresh": "^0.4.12",

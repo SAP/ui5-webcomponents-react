@@ -794,7 +794,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
             top:
               scrolledHeaderExpanded || headerPinned
                 ? `${topHeaderHeight + (headerCollapsed === true ? 0 : headerContentHeight)}px`
-                : `${topHeaderHeight + 5}px`
+                : `${topHeaderHeight}px`
           }}
         >
           <ObjectPageAnchorBar
