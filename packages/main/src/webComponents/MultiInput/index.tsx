@@ -98,9 +98,6 @@ interface MultiInputAttributes {
 
   /**
    * Defines whether the component should show suggestions, if such are present.
-   *
-   * **Note:** You need to import the `InputSuggestions` module
-   * from `"@ui5/webcomponents/dist/features/InputSuggestions.js"` to enable this functionality.
    * @default false
    */
   showSuggestions?: boolean;
@@ -166,12 +163,6 @@ interface MultiInputPropTypes
    * property is set to `true`.
    *
    * **Note:** The `<SuggestionItem>`, `<SuggestionItemGroup>` and `SuggestionItemCustom` are recommended to be used as suggestion items.
-   *
-   * **Note:** Importing the Input Suggestions Support feature:
-   *
-   * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
-   *
-   * automatically imports the `<SuggestionItem>` and `<SuggestionItemGroup>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
 

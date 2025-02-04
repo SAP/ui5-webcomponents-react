@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents-fiori/dist/UserMenuItem.js';
 import type { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
+import type { MenuBeforeCloseEventDetail, MenuBeforeOpenEventDetail } from '@ui5/webcomponents/dist/MenuItem.js';
 import type Highlight from '@ui5/webcomponents/dist/types/Highlight.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import type { ReactNode } from 'react';
@@ -134,7 +135,18 @@ interface UserMenuItemDomRef extends Required<UserMenuItemAttributes>, Ui5DomRef
 
 interface UserMenuItemPropTypes
   extends UserMenuItemAttributes,
-    Omit<CommonProps, keyof UserMenuItemAttributes | 'children' | 'deleteButton' | 'endContent' | 'onDetailClick'> {
+    Omit<
+      CommonProps,
+      | keyof UserMenuItemAttributes
+      | 'children'
+      | 'deleteButton'
+      | 'endContent'
+      | 'onBeforeClose'
+      | 'onBeforeOpen'
+      | 'onClose'
+      | 'onDetailClick'
+      | 'onOpen'
+    > {
   /**
    * Defines the items of this component.
    *
@@ -179,6 +191,45 @@ interface UserMenuItemPropTypes
    */
   endContent?: UI5WCSlotsNode;
   /**
+   * Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|❌|
+   */
+  onBeforeClose?: (event: Ui5CustomEvent<UserMenuItemDomRef, MenuBeforeCloseEventDetail>) => void;
+
+  /**
+   * Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening.
+   *
+   * **Note:** Since 1.14.0 the event is also fired before a sub-menu opens.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|❌|
+   */
+  onBeforeOpen?: (event: Ui5CustomEvent<UserMenuItemDomRef, MenuBeforeOpenEventDetail>) => void;
+
+  /**
+   * Fired after the menu is closed.
+   *
+   * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|❌|
+   */
+  onClose?: (event: Ui5CustomEvent<UserMenuItemDomRef>) => void;
+
+  /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    *
    * | cancelable | bubbles |
@@ -186,6 +237,15 @@ interface UserMenuItemPropTypes
    * | ❌|✅|
    */
   onDetailClick?: (event: Ui5CustomEvent<UserMenuItemDomRef>) => void;
+
+  /**
+   * Fired after the menu is opened.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|❌|
+   */
+  onOpen?: (event: Ui5CustomEvent<UserMenuItemDomRef>) => void;
 }
 
 /**
@@ -220,7 +280,7 @@ const UserMenuItem = withWebComponent<UserMenuItemPropTypes, UserMenuItemDomRef>
   ],
   ['disabled', 'loading', 'navigated', 'selected'],
   ['deleteButton', 'endContent'],
-  ['detail-click']
+  ['before-close', 'before-open', 'close', 'detail-click', 'open']
 );
 
 UserMenuItem.displayName = 'UserMenuItem';

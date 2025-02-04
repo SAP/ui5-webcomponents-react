@@ -42,13 +42,13 @@ describe('withWebComponent', () => {
     };
     cy.mount(<TestComp />);
 
-    cy.findByTestId('switch').click();
+    cy.findByTestId('switch').realClick();
     cy.findByText('Btn').click();
     cy.get('@custom').should('have.been.calledOnce');
     cy.get('@native').should('have.been.calledOnce');
     cy.get('@nativePassedThrough').should('have.been.calledOnce');
     cy.findByText('Update handler').click();
-    cy.findByTestId('switch').click();
+    cy.findByTestId('switch').realClick();
     cy.findByText('Btn').click();
     cy.get('@custom').should('have.been.calledOnce');
     cy.get('@native').should('have.been.calledOnce');

@@ -72,7 +72,7 @@ interface MessageStripPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<MessageStripDomRef>) => void;
 }

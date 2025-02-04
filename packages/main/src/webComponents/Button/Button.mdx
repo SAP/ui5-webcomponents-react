@@ -1,6 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
-import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import * as ComponentStories from './Button.stories';
+import { ButtonBadge } from '../ButtonBadge';
 
 <Meta of={ComponentStories} />
 
@@ -15,5 +17,18 @@ import * as ComponentStories from './Button.stories';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
+
+## Button with ButtonBadge
+
+**Note:** `ButtonBadgeDesign.InlineText` is intended to be used with `ContentDensity` `"Compact"` and `ButtonBadgeDesign.OverlayText` with `ContentDensity` `"Cozy"`.
+
+<Canvas of={ComponentStories.WithBadge} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## ButtonBadge
+
+<Description of={ButtonBadge} />
+<ArgTypesWithNote of={ButtonBadge} />
 
 <Footer />
