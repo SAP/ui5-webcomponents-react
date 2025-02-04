@@ -94,12 +94,19 @@ const MessageItem = forwardRef<CustomListItemDomRef, MessageItemPropTypes>((prop
 
   const hasChildren = Children.count(children);
   useEffect(() => {
-    const titleTextObserver = new ResizeObserver(([titleTextSpan]) => {
-      if (titleTextSpan.target.scrollWidth > titleTextSpan.target.clientWidth) {
-        setIsTitleTextIsOverflowing(true);
-      } else {
-        setIsTitleTextIsOverflowing(false);
+    const titleTextObserver = new ResizeObserver(([titleTextSpanEntry]) => {
+      const child = titleTextSpanEntry.target.children[0];
+      const target = titleTextSpanEntry.target;
+      const isTargetOverflowing = target.scrollWidth > target.clientWidth;
+      let isChildOverflowing = false;
+
+      if (!isTargetOverflowing) {
+        const firstChild = child?.shadowRoot?.firstElementChild as HTMLAnchorElement | undefined;
+        if (firstChild) {
+          isChildOverflowing = firstChild.scrollWidth > firstChild.clientWidth;
+        }
       }
+      setIsTitleTextIsOverflowing(isTargetOverflowing || isChildOverflowing);
     });
     if (!hasChildren && titleTextRef.current) {
       titleTextObserver.observe(titleTextRef.current);
