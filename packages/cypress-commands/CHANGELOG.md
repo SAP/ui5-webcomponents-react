@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.6.0...v2.7.0) (2025-02-04)
+
+### Features
+
+- **cypress-commands:** support cypress v14 ([#6828](https://github.com/SAP/ui5-webcomponents-react/issues/6828)) ([cc7f950](https://github.com/SAP/ui5-webcomponents-react/commit/cc7f950beee4d74329bc077f773c941680cac0ea))
+- update to UI5 Web Components 2.7.0 ([#6890](https://github.com/SAP/ui5-webcomponents-react/issues/6890)) ([1b85eb3](https://github.com/SAP/ui5-webcomponents-react/commit/1b85eb3522a9bfc6d0fb6ae1e6e5237f95df7b56))
+
 # [2.6.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.5.0...v2.6.0) (2025-01-09)
 
 ### Features
