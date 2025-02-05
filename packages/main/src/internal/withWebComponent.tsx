@@ -188,7 +188,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       });
     }, [Component, ...propsToApply]);
 
-    if (waitForDefine && !isDefined) {
+    if ((waitForDefine && !isDefined) || typeof window === 'undefined') {
       return null;
     }
 
