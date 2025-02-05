@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.0...v2.7.1) (2025-02-05)
+
+### Bug Fixes
+
+- **base:** correct `getEffectiveScopingSuffixForTag` import path ([#6901](https://github.com/SAP/ui5-webcomponents-react/issues/6901)) ([59a3324](https://github.com/SAP/ui5-webcomponents-react/commit/59a3324ae067bd73bd906468d4e3b77ff94f45d3)), closes [#6900](https://github.com/SAP/ui5-webcomponents-react/issues/6900)
+
 # [2.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.6.0...v2.7.0) (2025-02-04)
 
 ### Bug Fixes
