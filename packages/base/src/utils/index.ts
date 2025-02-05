@@ -1,4 +1,4 @@
-import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/CustomElementsScope.js';
+import { getEffectiveScopingSuffixForTag } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 
 export const deprecationNotice = (component: string, message: string) => {
   if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
