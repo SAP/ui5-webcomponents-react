@@ -5,7 +5,7 @@ import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-
 import type { ComponentType, ReactElement, ReactNode, Ref } from 'react';
 import { cloneElement, forwardRef, Fragment, isValidElement, useEffect, useState, version } from 'react';
 import type { CommonProps, Ui5DomRef } from '../types/index.js';
-import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase, parseSemVer } from './utils.ts';
+import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase, parseSemVer } from './utils.js';
 
 const createEventPropName = (eventName: string) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
 
