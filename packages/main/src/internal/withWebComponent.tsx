@@ -45,6 +45,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     >;
 
     const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));
+    const [isClient, setIsClient] = useState(typeof window === 'undefined');
 
     // regular props (no booleans, no slots and no events)
     const regularProps = regularProperties.reduce((acc, name) => {
@@ -188,7 +189,11 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       });
     }, [Component, ...propsToApply]);
 
-    if ((waitForDefine && !isDefined) || typeof window === 'undefined') {
+    useEffect(() => {
+      setIsClient(true);
+    }, []);
+
+    if (waitForDefine && !isDefined) {
       return null;
     }
 
@@ -203,7 +208,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
           ref={componentRef}
           {...booleanProps}
           {...restRegularProps}
-          {...eventHandlers}
+          {...(isClient ? eventHandlers : {})}
           {...nonWebComponentRelatedProps}
           overflow-mode={overflowMode ?? (showOverflowInPopover ? 'Popover' : 'InPlace')}
           // @ts-expect-error: text is available
@@ -222,7 +227,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         ref={componentRef}
         {...booleanProps}
         {...regularProps}
-        {...eventHandlers}
+        {...(isClient ? eventHandlers : {})}
         {...nonWebComponentRelatedProps}
         class={className}
         suppressHydrationWarning
