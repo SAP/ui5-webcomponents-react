@@ -48,7 +48,13 @@
       "groupSlug": "root-all-minor-patch",
       "matchFileNames": ["package.json"],
       "matchUpdateTypes": ["minor", "patch"],
-      "excludePackageNames": ["react", "react-dom", "storybook", "rimraf", "@joshwooding/vite-plugin-react-docgen-typescript"],
+      "excludePackageNames": [
+        "react",
+        "react-dom",
+        "storybook",
+        "rimraf",
+        "@joshwooding/vite-plugin-react-docgen-typescript"
+      ],
       "excludePackagePatterns": ["^@storybook/", "^@ui5/"]
     },
     {
@@ -71,6 +77,14 @@
         "https://github.com/SAP/ui5-webcomponents",
         "https://github.com/SAP/ui5-webcomponents-react"
       ],
+      "semanticCommitType": "chore"
+    },
+    {
+      "description": "UI5 Web Components in root",
+      "groupName": "UI5 Web Components (root)",
+      "groupSlug": "root-ui5-webcomponents",
+      "matchFileNames": ["package.json"],
+      "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"],
       "semanticCommitType": "chore"
     }
   ]
