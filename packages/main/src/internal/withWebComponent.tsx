@@ -5,7 +5,7 @@ import { useIsomorphicLayoutEffect, useSyncRef } from '@ui5/webcomponents-react-
 import type { ComponentType, ReactElement, ReactNode, Ref } from 'react';
 import { cloneElement, forwardRef, Fragment, isValidElement, useEffect, useState, version } from 'react';
 import type { CommonProps, Ui5DomRef } from '../types/index.js';
-import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase, parseSemVer } from './utils.js';
+import { camelToKebabCase, capitalizeFirstLetter, kebabToCamelCase, parseSemVer } from './utils.ts';
 
 const createEventPropName = (eventName: string) => `on${capitalizeFirstLetter(kebabToCamelCase(eventName))}`;
 
@@ -43,10 +43,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     const Component = (tagNameSuffix ? `${tagName}-${tagNameSuffix}` : tagName) as unknown as ComponentType<
       CommonProps & { class?: string; ref?: Ref<RefType> }
     >;
-
     const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));
-    const [isClient, setIsClient] = useState(typeof window !== 'undefined');
-
     // regular props (no booleans, no slots and no events)
     const regularProps = regularProperties.reduce((acc, name) => {
       if (Object.prototype.hasOwnProperty.call(rest, name) && isPrimitiveAttribute(rest[name])) {
@@ -153,6 +150,9 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       return events;
     }, {});
 
+    // In React 19 events aren't correctly attached after hydration
+    const [attachEvents, setAttachEvents] = useState(!webComponentsSupported || !Object.keys(eventHandlers).length); // apply workaround only for React19 and if event props are defined
+
     // non web component related props, just pass them
     const nonWebComponentRelatedProps = Object.entries(rest)
       .filter(([key]) => !regularProperties.includes(key))
@@ -190,7 +190,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     }, [Component, ...propsToApply]);
 
     useEffect(() => {
-      setIsClient(true);
+      setAttachEvents(true);
     }, []);
 
     if (waitForDefine && !isDefined) {
@@ -208,7 +208,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
           ref={componentRef}
           {...booleanProps}
           {...restRegularProps}
-          {...(isClient ? eventHandlers : {})}
+          {...(attachEvents ? eventHandlers : {})}
           {...nonWebComponentRelatedProps}
           overflow-mode={overflowMode ?? (showOverflowInPopover ? 'Popover' : 'InPlace')}
           // @ts-expect-error: text is available
@@ -227,7 +227,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
         ref={componentRef}
         {...booleanProps}
         {...regularProps}
-        {...(isClient ? eventHandlers : {})}
+        {...(attachEvents ? eventHandlers : {})}
         {...nonWebComponentRelatedProps}
         class={className}
         suppressHydrationWarning
