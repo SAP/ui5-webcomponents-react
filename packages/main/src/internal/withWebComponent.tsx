@@ -45,7 +45,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
     >;
 
     const [isDefined, setIsDefined] = useState(definedWebComponents.has(Component));
-    const [isClient, setIsClient] = useState(typeof window === 'undefined');
+    const [isClient, setIsClient] = useState(typeof window !== 'undefined');
 
     // regular props (no booleans, no slots and no events)
     const regularProps = regularProperties.reduce((acc, name) => {
