@@ -754,7 +754,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "description": "The badge is displayed at the top-end corner of the button.\n\n**Note:** It's highly recommended to use the OverlayText design mode only in cozy density.",
+              "description": "The badge is displayed at the top-end corner of the button.\n\n**Note:** According to design guidance, the OverlayText design mode is best used in cozy density to avoid potential visual issues in compact.",
               "default": "OverlayText",
               "name": "OverlayText",
               "readonly": true
@@ -5251,7 +5251,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The `ui5-button-badge` component defines a badge that appears in the `ui5-button`.\n\n * ### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/ButtonBadge.js\";`",
+          "description": "The `ui5-button-badge` component defines a badge that appears in the `ui5-button`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/ButtonBadge.js\";`",
           "name": "ButtonBadge",
           "members": [
             {
@@ -5268,7 +5268,7 @@
                 ]
               },
               "default": "\"AttentionDot\"",
-              "description": "Determines where the badge should be placed and how it should be styled.",
+              "description": "Defines the badge placement and appearance.\n- **InlineText** - displayed inside the button after its text, and recommended for **compact** density.\n- **OverlayText** - displayed at the top-end corner of the button, and recommended for **cozy** density.\n- **AttentionDot** - displayed at the top-end corner of the button as a dot, and suitable for both **cozy** and **compact** densities.",
               "privacy": "public",
               "_ui5since": "2.7.0"
             },
@@ -5279,14 +5279,14 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Defines the text of the component.\n\n**Note:** Text is not needed when the `design` property is set to `AttentionDot`.",
+              "description": "Defines the text of the component.\n\n**Note:** Text is not applied when the `design` property is set to `AttentionDot`.",
               "privacy": "public",
               "_ui5since": "2.7.0"
             }
           ],
           "attributes": [
             {
-              "description": "Determines where the badge should be placed and how it should be styled.",
+              "description": "Defines the badge placement and appearance.\n- **InlineText** - displayed inside the button after its text, and recommended for **compact** density.\n- **OverlayText** - displayed at the top-end corner of the button, and recommended for **cozy** density.\n- **AttentionDot** - displayed at the top-end corner of the button as a dot, and suitable for both **cozy** and **compact** densities.",
               "name": "design",
               "default": "\"AttentionDot\"",
               "fieldName": "design",
@@ -5295,7 +5295,7 @@
               }
             },
             {
-              "description": "Defines the text of the component.\n\n**Note:** Text is not needed when the `design` property is set to `AttentionDot`.",
+              "description": "Defines the text of the component.\n\n**Note:** Text is not applied when the `design` property is set to `AttentionDot`.",
               "name": "text",
               "default": "\"\"",
               "fieldName": "text",

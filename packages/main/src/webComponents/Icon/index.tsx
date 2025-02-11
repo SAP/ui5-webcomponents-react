@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/Icon.js';
 import type IconDesign from '@ui5/webcomponents/dist/types/IconDesign.js';
 import type IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface IconAttributes {
   /**

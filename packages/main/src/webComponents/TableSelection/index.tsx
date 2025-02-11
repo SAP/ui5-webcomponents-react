@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/TableSelection.js';
 import type TableSelectionMode from '@ui5/webcomponents/dist/types/TableSelectionMode.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface TableSelectionAttributes {
   /**

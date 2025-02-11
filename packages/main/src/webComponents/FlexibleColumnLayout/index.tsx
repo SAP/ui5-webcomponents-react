@@ -7,8 +7,8 @@ import type {
   FlexibleColumnLayoutLayoutChangeEventDetail
 } from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import type FCLLayout from '@ui5/webcomponents-fiori/dist/types/FCLLayout.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 
 interface FlexibleColumnLayoutAttributes {
   /**

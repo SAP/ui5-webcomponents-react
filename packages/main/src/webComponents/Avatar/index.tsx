@@ -5,9 +5,9 @@ import type { AvatarAccessibilityAttributes } from '@ui5/webcomponents/dist/Avat
 import type AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
 import type AvatarShape from '@ui5/webcomponents/dist/types/AvatarShape.js';
 import type AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
+import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface AvatarAttributes {
   /**

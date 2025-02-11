@@ -6,9 +6,9 @@ import type {
   UploadCollectionItemDeleteEventDetail,
   UploadCollectionSelectionChangeEventDetail
 } from '@ui5/webcomponents-fiori/dist/UploadCollection.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface UploadCollectionAttributes {
   /**

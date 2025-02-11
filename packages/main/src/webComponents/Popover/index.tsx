@@ -6,9 +6,9 @@ import type PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHo
 import type PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
 import type PopoverVerticalAlign from '@ui5/webcomponents/dist/types/PopoverVerticalAlign.js';
 import type PopupAccessibleRole from '@ui5/webcomponents/dist/types/PopupAccessibleRole.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface PopoverAttributes {
   /**
