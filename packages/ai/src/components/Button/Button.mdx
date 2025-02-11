@@ -3,10 +3,11 @@ import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import * as ComponentStories from './Button.stories';
 import { ButtonState } from '../ButtonState/index.tsx';
+import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader experimental />
 
 <br />
 
@@ -122,7 +123,7 @@ import { ButtonState } from '../ButtonState/index.tsx';
 ## ButtonState
 
 <Description of={ButtonState} />
-<ArgTypesWithNote of={ButtonState} />
+<ArgTypesWithNote of={ButtonState} hideHTMLPropsNote exclude={excludePropsForAbstract} />
 
 <Footer />
 ```

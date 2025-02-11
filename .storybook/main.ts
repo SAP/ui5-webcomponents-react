@@ -61,14 +61,14 @@ const config: StorybookConfig = {
         '../packages/main/**/*.mdx',
         '../packages/main/**/*.stories.@(tsx|jsx)',
         {
-          directory: '../packages/compat',
-          files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
-          titlePrefix: 'Legacy Components'
-        },
-        {
           directory: '../packages/ai',
           files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
           titlePrefix: 'AI'
+        },
+        {
+          directory: '../packages/compat',
+          files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
+          titlePrefix: 'Legacy Components'
         }
       ],
   addons,
