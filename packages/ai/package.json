@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "@ui5/webcomponents-ai-react",
   "version": "2.7.1",
   "description": "React wrapper for `@ui5/webcomponents-ai` web components.",
