@@ -695,7 +695,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     ),
     overscan,
     measureElement,
-    indexAttribute: 'data-virtual-row-index'
+    indexAttribute: 'data-virtual-row-index',
+    useAnimationFrameWithResizeObserver: true
   });
   // add range to instance for `useAutoResize` plugin hook
   tableInstanceRef.current.virtualRowsRange = rowVirtualizer.range;
