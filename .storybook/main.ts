@@ -64,6 +64,11 @@ const config: StorybookConfig = {
           directory: '../packages/compat',
           files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
           titlePrefix: 'Legacy Components'
+        },
+        {
+          directory: '../packages/ai',
+          files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
+          titlePrefix: 'AI'
         }
       ],
   addons,

@@ -18,6 +18,9 @@
     },
     {
       "path": "./packages/compat/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/ai/tsconfig.build.json"
     }
   ],
   "files": []

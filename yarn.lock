@@ -6104,6 +6104,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ui5/webcomponents-ai-react@workspace:packages/ai":
+  version: 0.0.0-use.local
+  resolution: "@ui5/webcomponents-ai-react@workspace:packages/ai"
+  dependencies:
+    "@ui5/webcomponents-react-base": "workspace:~"
+  peerDependencies:
+    "@ui5/webcomponents-ai": ~2.7.2
+    react: ^18 || ^19
+  languageName: unknown
+  linkType: soft
+
+"@ui5/webcomponents-ai@npm:2.7.2":
+  version: 2.7.2
+  resolution: "@ui5/webcomponents-ai@npm:2.7.2"
+  dependencies:
+    "@ui5/webcomponents": "npm:2.7.2"
+    "@ui5/webcomponents-base": "npm:2.7.2"
+    "@ui5/webcomponents-icons": "npm:2.7.2"
+    "@ui5/webcomponents-theming": "npm:2.7.2"
+  checksum: 10c0/f0f3afe7db22df3ec01afc69ef07acc785b6deaf67fe3240dddfc2fe85dcbcf4433f9c772bfecfd84c3bc3791eef90fe92981c3479fa4d3871bda0b55b7ff49e
+  languageName: node
+  linkType: hard
+
 "@ui5/webcomponents-base@npm:2.7.2":
   version: 2.7.2
   resolution: "@ui5/webcomponents-base@npm:2.7.2"
@@ -23518,6 +23541,7 @@ __metadata:
     "@types/react": "npm:^19.0.1"
     "@types/react-dom": "npm:^19.0.1"
     "@ui5/webcomponents": "npm:2.7.2"
+    "@ui5/webcomponents-ai": "npm:2.7.2"
     "@ui5/webcomponents-compat": "npm:2.7.2"
     "@ui5/webcomponents-fiori": "npm:2.7.2"
     "@ui5/webcomponents-icons": "npm:2.7.2"

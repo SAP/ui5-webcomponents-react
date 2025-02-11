@@ -24,12 +24,14 @@
     "wrappers:main": "node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents --out ./packages/main/src/webComponents --additionalComponentNote 'This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)'",
     "wrappers:fiori": "node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents-fiori --out ./packages/main/src/webComponents --additionalComponentNote 'This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)'",
     "wrappers:compat": "WITH_WEB_COMPONENT_IMPORT_PATH='@ui5/webcomponents-react-base/dist/wrapper/withWebComponent.js' node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents-compat --out ./packages/compat/src/components --additionalComponentNote 'This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)' && prettier --log-level silent --write ./packages/compat/src/components",
+    "wrappers:ai": "node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents-ai --out ./packages/ai/src/components --additionalComponentNote 'This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)' && prettier --log-level silent --write ./packages/ai/src/components",
     "create-webcomponents-wrapper": "(cd packages/cli && tsc) && yarn run wrappers:main && yarn run wrappers:fiori && prettier --log-level silent --write ./packages/main/src/webComponents && eslint --fix ./packages/main/src/webComponents/*/index.tsx && yarn run sb:prepare-cem",
     "create-webcomponents-wrapper-compat": "(cd packages/cli && tsc) && yarn run wrappers:compat && yarn run sb:prepare-cem && eslint --fix ./packages/compat/src/components/*/index.tsx",
+    "create-webcomponents-wrapper-ai": "(cd packages/cli && tsc) && yarn run wrappers:ai && yarn run sb:prepare-cem && eslint --fix ./packages/ai/src/components/*/index.tsx",
     "chromatic": "cross-env STORYBOOK_ENV=chromatic npx chromatic --build-script-name build:storybook",
     "postinstall": "husky && yarn setup",
     "create-cypress-commands-docs": "documentation build ./packages/cypress-commands/src/commands.ts -f json -o ./packages/cypress-commands/api-commands.json && documentation build ./packages/cypress-commands/src/queries.ts -f json -o ./packages/cypress-commands/api-queries.json",
-    "sb:prepare-cem": "node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents --out ./.storybook/custom-element-manifests/main.json && node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents-fiori --out ./.storybook/custom-element-manifests/fiori.json",
+    "sb:prepare-cem": "node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents --out ./.storybook/custom-element-manifests/main.json && node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents-fiori --out ./.storybook/custom-element-manifests/fiori.json && node packages/cli/dist/bin/index.js resolve-cem --packageName @ui5/webcomponents-ai --out ./.storybook/custom-element-manifests/ai.json",
     "create-theming-parameters": "node scripts/generate-theming-parameters.js"
   },
   "dependencies": {
@@ -42,6 +44,7 @@
     "@storybook/react-vite": "8.5.0",
     "@storybook/theming": "8.5.0",
     "@ui5/webcomponents": "2.7.2",
+    "@ui5/webcomponents-ai": "2.7.2",
     "@ui5/webcomponents-compat": "2.7.2",
     "@ui5/webcomponents-fiori": "2.7.2",
     "@ui5/webcomponents-icons": "2.7.2",
