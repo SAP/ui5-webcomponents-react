@@ -153,7 +153,7 @@ export class PropTypesRenderer extends AbstractRenderer {
   }
 
   prepare(context: WebComponentWrapper) {
-    const interfacesImportPath = process.env.INTERFACES_IMPORT_PATH ?? '@ui5/webcomponents-react';
+    const interfacesImportPath = process.env.INTERFACES_IMPORT_PATH ?? '@ui5/webcomponents-react-base';
 
     context.addTypeImport(interfacesImportPath, 'CommonProps');
     context.typeExportSet.add(`${context.componentName}PropTypes`);
