@@ -1,0 +1,1 @@
+import{e as c}from"./index-CwpH1SbG.js";import{r as n}from"./index-D23YZj_x.js";const u=e=>n.useCallback((t,s)=>{var r,i;typeof e=="function"&&e(c(s,{payload:(i=(r=t==null?void 0:t.activePayload)==null?void 0:r[0])==null?void 0:i.payload,activePayloads:t==null?void 0:t.activePayload}))},[e]);export{u};
