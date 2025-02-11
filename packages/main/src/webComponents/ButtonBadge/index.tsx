@@ -2,12 +2,15 @@
 
 import '@ui5/webcomponents/dist/ButtonBadge.js';
 import type ButtonBadgeDesign from '@ui5/webcomponents/dist/types/ButtonBadgeDesign.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface ButtonBadgeAttributes {
   /**
-   * Determines where the badge should be placed and how it should be styled.
+   * Defines the badge placement and appearance.
+   * - **InlineText** - displayed inside the button after its text, and recommended for **compact** density.
+   * - **OverlayText** - displayed at the top-end corner of the button, and recommended for **cozy** density.
+   * - **AttentionDot** - displayed at the top-end corner of the button as a dot, and suitable for both **cozy** and **compact** densities.
    *
    * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents**.
    * @default "AttentionDot"
@@ -17,7 +20,7 @@ interface ButtonBadgeAttributes {
   /**
    * Defines the text of the component.
    *
-   * **Note:** Text is not needed when the `design` property is set to `AttentionDot`.
+   * **Note:** Text is not applied when the `design` property is set to `AttentionDot`.
    *
    * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents**.
    */
@@ -31,7 +34,7 @@ interface ButtonBadgePropTypes extends ButtonBadgeAttributes, Omit<CommonProps, 
 /**
  * The `ButtonBadge` component defines a badge that appears in the `Button`.
  *
- *  *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *

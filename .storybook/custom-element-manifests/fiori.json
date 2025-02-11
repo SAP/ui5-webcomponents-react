@@ -1721,7 +1721,44 @@
     {
       "kind": "javascript-module",
       "path": "dist/types/TimelineGrowingMode.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "TimelineGrowingMode",
+          "description": "Timeline growing modes.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.7.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Event `load-more` is fired\nupon pressing a \"More\" button at the end.",
+              "default": "Button",
+              "name": "Button",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Event `load-more` is fired upon scroll.",
+              "default": "Scroll",
+              "name": "Scroll",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The growing feature is not enabled.",
+              "default": "None",
+              "name": "None",
+              "readonly": true
+            }
+          ]
+        }
+      ],
       "exports": [
         {
           "kind": "js",

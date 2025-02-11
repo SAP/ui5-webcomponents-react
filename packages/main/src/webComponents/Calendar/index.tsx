@@ -5,9 +5,9 @@ import type { CalendarSelectionChangeEventDetail } from '@ui5/webcomponents/dist
 import type CalendarSelectionMode from '@ui5/webcomponents/dist/types/CalendarSelectionMode.js';
 import type CalendarWeekNumbering from '@ui5/webcomponents/dist/types/CalendarWeekNumbering.js';
 import type CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface CalendarAttributes {
   /**

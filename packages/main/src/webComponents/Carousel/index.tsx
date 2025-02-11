@@ -6,9 +6,9 @@ import type BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesig
 import type BorderDesign from '@ui5/webcomponents/dist/types/BorderDesign.js';
 import type CarouselArrowsPlacement from '@ui5/webcomponents/dist/types/CarouselArrowsPlacement.js';
 import type CarouselPageIndicatorType from '@ui5/webcomponents/dist/types/CarouselPageIndicatorType.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface CarouselAttributes {
   /**
