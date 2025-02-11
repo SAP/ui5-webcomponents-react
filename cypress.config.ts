@@ -14,7 +14,8 @@ export default defineConfig({
         'packages/*/src/index.ts',
         'packages/main/src/components/AnalyticalTable/types/*',
         'packages/main/src/webComponents/**',
-        'packages/charts/src/resources/**'
+        'packages/charts/src/resources/**',
+        '**/dist/**'
       ]
     }
   },
