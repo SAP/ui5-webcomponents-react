@@ -3,9 +3,6 @@
   "references": [
     {
       "path": "../base/tsconfig.build.json"
-    },
-    {
-      "path": "../main/tsconfig.build.json"
     }
   ],
   "exclude": ["node_modules", "**/*.cy.ts", "**/*.cy.tsx", "**/*.stories.tsx"]
