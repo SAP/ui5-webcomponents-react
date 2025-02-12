@@ -21,7 +21,6 @@ jobs:
           - main/src/components
           - main/src/internal
           - compat
-        react: ['18', '19']
       fail-fast: false
     steps:
       - name: Checkout
@@ -35,12 +34,6 @@ jobs:
       - name: Install
         run: yarn install --immutable
 
-      - name: Install 18
-        if: ${{ matrix.react == '18' }}
-        run: |
-          yarn add "@types/react@18" "@types/react-dom@18" --dev
-          yarn add react@18 react-dom@18
-
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
@@ -50,7 +43,6 @@ jobs:
           install: false
 
       - uses: coverallsapp/github-action@v2.3.6
-        if: ${{ inputs.reportCoverage && matrix.react == '19' }}
         with:
           file: temp/cypress-coverage/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -65,6 +57,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Coveralls
         uses: coverallsapp/github-action@v2.3.6
         with:
