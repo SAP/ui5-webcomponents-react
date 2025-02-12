@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/CalendarLegendItem.js';
 import type CalendarLegendItemType from '@ui5/webcomponents/dist/types/CalendarLegendItemType.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../types/index.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface CalendarLegendItemAttributes {
   /**

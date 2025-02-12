@@ -5,9 +5,9 @@ import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import type { NotificationListItemCloseEventDetail } from '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 import type NotificationListItemImportance from '@ui5/webcomponents-fiori/dist/types/NotificationListItemImportance.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface NotificationListItemAttributes {
   /**

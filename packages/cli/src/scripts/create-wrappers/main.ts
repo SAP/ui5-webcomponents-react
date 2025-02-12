@@ -11,7 +11,7 @@ import { ImportsRenderer } from './ImportsRenderer.js';
 import { PropTypesRenderer } from './PropTypesRenderer.js';
 import { WebComponentWrapper } from './WebComponentWrapper.js';
 
-const WITH_WEB_COMPONENT_IMPORT_PATH = process.env.WITH_WEB_COMPONENT_IMPORT_PATH ?? '@ui5/webcomponents-react';
+const WITH_WEB_COMPONENT_IMPORT_PATH = process.env.WITH_WEB_COMPONENT_IMPORT_PATH ?? '@ui5/webcomponents-react-base';
 
 function filterAttributes(member: CEM.ClassField | CEM.ClassMethod): member is CEM.ClassField {
   return member.kind === 'field' && member.privacy === 'public' && !member.readonly && !member.static;

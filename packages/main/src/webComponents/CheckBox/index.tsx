@@ -3,8 +3,8 @@
 import '@ui5/webcomponents/dist/CheckBox.js';
 import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface CheckBoxAttributes {
   /**

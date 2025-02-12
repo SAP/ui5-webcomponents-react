@@ -1,9 +1,8 @@
 'use client';
 
 import '@ui5/webcomponents-compat/dist/TableCell.js';
-import { withWebComponent } from '@ui5/webcomponents-react/dist/internal/withWebComponent.js';
-import type { CommonProps } from '@ui5/webcomponents-react/dist/types/CommonProps.js';
-import type { Ui5DomRef } from '@ui5/webcomponents-react/dist/types/Ui5DomRef.js';
+import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
+import { withWebComponent } from '@ui5/webcomponents-react-base/dist/wrapper/withWebComponent.js';
 import type { ReactNode } from 'react';
 
 interface TableCellAttributes {}

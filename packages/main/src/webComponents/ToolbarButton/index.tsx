@@ -4,8 +4,8 @@ import '@ui5/webcomponents/dist/ToolbarButton.js';
 import type { ToolbarButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/ToolbarButton.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ToolbarItemOverflowBehavior from '@ui5/webcomponents/dist/types/ToolbarItemOverflowBehavior.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
 
 interface ToolbarButtonAttributes {
   /**

@@ -5,9 +5,9 @@ import type {
   UserMenuItemClickEventDetail,
   UserMenuOtherAccountClickEventDetail
 } from '@ui5/webcomponents-fiori/dist/UserMenu.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface UserMenuAttributes {
   /**

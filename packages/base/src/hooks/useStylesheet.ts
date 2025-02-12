@@ -28,7 +28,7 @@ export function useStylesheet(styles: string, componentName: string, options?: U
     return () => {
       if (shouldInject) {
         StyleStore.unmountComponent(componentName);
-        const numberOfMountedComponents = componentsMap.get(componentName)!;
+        const numberOfMountedComponents = componentsMap.get(componentName);
         if (numberOfMountedComponents <= 0) {
           removeStyle('data-ui5wcr-component', scopedComponentName);
         }

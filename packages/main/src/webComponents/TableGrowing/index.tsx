@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/TableGrowing.js';
 import type TableGrowingMode from '@ui5/webcomponents/dist/types/TableGrowingMode.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface TableGrowingAttributes {
   /**

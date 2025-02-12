@@ -23,7 +23,7 @@ export const enrichEventWithDetails = <
   payload: Detail
 ): EnrichedEventType<Event, Detail> => {
   if (!event) {
-    return event;
+    return event as EnrichedEventType<Event, Detail>;
   }
 
   // Determine if we need to create a new details object
@@ -41,9 +41,9 @@ export const enrichEventWithDetails = <
   });
 
   if (nativeDetail) {
-    Object.assign(event.detail!, { nativeDetail });
+    Object.assign(event.detail, { nativeDetail });
   }
-  Object.assign(event.detail!, payload);
+  Object.assign(event.detail, payload);
 
   return event as EnrichedEventType<Event, Detail>;
 };
@@ -55,3 +55,23 @@ export function getUi5TagWithSuffix(baseTagName: string) {
 
 export { debounce } from './debounce.js';
 export { throttle } from './throttle.js';
+
+export const capitalizeFirstLetter = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+export const lowercaseFirstLetter = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
+export const camelToKebabCase = (s: string) => s.replace(/([A-Z])/g, (a, b: string) => `-${b.toLowerCase()}`);
+export const kebabToCamelCase = (str: string) => str.replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
+
+const SEMVER_REGEX =
+  /^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
+
+export function parseSemVer(version: string) {
+  const parsed = SEMVER_REGEX.exec(version).groups;
+  return {
+    version,
+    major: parseInt(parsed.major),
+    minor: parseInt(parsed.minor),
+    patch: parseInt(parsed.patch),
+    prerelease: parsed.prerelease,
+    buildMetadata: parsed.buildmetadata
+  };
+}

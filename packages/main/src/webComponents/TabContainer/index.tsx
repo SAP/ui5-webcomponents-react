@@ -9,9 +9,9 @@ import type {
 import type BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
 import type OverflowMode from '@ui5/webcomponents/dist/types/OverflowMode.js';
 import type TabLayout from '@ui5/webcomponents/dist/types/TabLayout.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface TabContainerAttributes {
   /**
