@@ -49,13 +49,19 @@ jobs:
           spec: packages/${{ matrix.spec }}
           install: false
 
+      - uses: actions/github-script@v7
+        id: transform-path
+        with:
+          script: return "${{ matrix.spec }}".replaceAll("/", "-")
+          result-encoding: string
+
       - uses: coverallsapp/github-action@v2.3.6
         if: ${{ inputs.reportCoverage && matrix.react == '19' }}
         with:
           file: temp/cypress-coverage/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
-          flag-name: ${{ matrix.spec }}
+          flag-name: ${{ steps.transform-path.outputs.result }}
 
   coveralls:
     if: ${{ always() && inputs.reportCoverage }}
@@ -68,4 +74,4 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
-          carryforward: 'base,charts,cypress-commands,main/src/components,main/src/internal,compat'
+          carryforward: 'base,charts,cypress-commands,main-src-components,main-src-internal,compat'
