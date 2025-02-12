@@ -68,7 +68,6 @@ jobs:
       - name: Coveralls
         uses: coverallsapp/github-action@v2.3.6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
           debug: true
           carryforward: 'base,charts,cypress-commands,main/src/components,main/src/internal'
