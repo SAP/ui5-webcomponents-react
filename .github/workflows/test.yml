@@ -58,8 +58,8 @@ jobs:
           flag-name: ${{ matrix.spec }}
 
   coveralls:
-    if: ${{ always() && inputs.reportCoverage }}
     needs: ['cypress']
+    if: ${{ always() && inputs.reportCoverage }}
     name: 'Combine Coverage'
     runs-on: ubuntu-latest
     steps:
