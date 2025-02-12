@@ -10,15 +10,18 @@ on:
 
 jobs:
   cypress:
-    env:
-      COVERALLS_PARALLEL: true
     name: Cypress
     runs-on: ubuntu-latest
     strategy:
       matrix:
         spec:
+          - base
+          - charts
+          - cypress-commands
           - main/src/components
-
+          - main/src/internal
+          - compat
+        react: ['18', '19']
       fail-fast: false
     steps:
       - name: Checkout
@@ -32,15 +35,37 @@ jobs:
       - name: Install
         run: yarn install --immutable
 
+      - name: Install 18
+        if: ${{ matrix.react == '18' }}
+        run: |
+          yarn add "@types/react@18" "@types/react-dom@18" --dev
+          yarn add react@18 react-dom@18
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
           component: true
-          spec: packages/main/src/components
+          spec: packages/${{ matrix.spec }}
           install: false
 
       - uses: coverallsapp/github-action@v2.3.6
+        if: ${{ inputs.reportCoverage && matrix.react == '19' }}
+        with:
+          file: temp/cypress-coverage/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
+          flag-name: ${{ matrix.spec }}
+
+  coveralls:
+    if: ${{ always() && inputs.reportCoverage }}
+    needs: ['cypress']
+    name: 'Combine Coverage'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2.3.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          file: temp/cypress-coverage/lcov.info
+          parallel-finished: true
+          carryforward: 'base,charts,cypress-commands,main/src/components,main/src/internal,compat'
