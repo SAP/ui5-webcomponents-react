@@ -10,6 +10,8 @@ on:
 
 jobs:
   cypress:
+    env:
+      COVERALLS_PARALLEL: true
     name: Cypress
     runs-on: ubuntu-latest
     strategy:
@@ -51,7 +53,7 @@ jobs:
 
   coveralls:
     needs: ['cypress']
-    if: ${{ always() && inputs.reportCoverage }}
+    if: ${{ always() }}
     name: 'Combine Coverage'
     runs-on: ubuntu-latest
     steps:
