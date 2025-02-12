@@ -63,6 +63,8 @@ jobs:
     name: 'Combine Coverage'
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Coveralls
         uses: coverallsapp/github-action@v2.3.6
         with:

@@ -27,7 +27,8 @@ export default defineConfig({
     devServer: {
       framework: 'react',
       bundler: 'vite'
-    }
+    },
+    excludeSpecPattern: '**/e2e/**'
   },
   includeShadowDom: true,
   viewportWidth: 1920,
