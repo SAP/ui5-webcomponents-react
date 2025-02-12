@@ -1,0 +1,5 @@
+/LICENSE
+/NOTICE.txt
+/dist
+
+src/**/*.css.ts
