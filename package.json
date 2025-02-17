@@ -33,14 +33,14 @@
     "create-theming-parameters": "node scripts/generate-theming-parameters.js"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "8.5.0",
-    "@storybook/addon-essentials": "8.5.0",
-    "@storybook/blocks": "8.5.0",
-    "@storybook/manager-api": "8.5.0",
-    "@storybook/preview-api": "8.5.0",
-    "@storybook/react": "8.5.0",
-    "@storybook/react-vite": "8.5.0",
-    "@storybook/theming": "8.5.0",
+    "@storybook/addon-a11y": "8.5.6",
+    "@storybook/addon-essentials": "8.5.6",
+    "@storybook/blocks": "8.5.6",
+    "@storybook/manager-api": "8.5.6",
+    "@storybook/preview-api": "8.5.6",
+    "@storybook/react": "8.5.6",
+    "@storybook/react-vite": "8.5.6",
+    "@storybook/theming": "8.5.6",
     "@ui5/webcomponents": "2.7.3",
     "@ui5/webcomponents-compat": "2.7.3",
     "@ui5/webcomponents-fiori": "2.7.3",
@@ -48,7 +48,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remark-gfm": "^4.0.0",
-    "storybook": "8.5.0",
+    "storybook": "8.5.6",
     "tocbot": "4.35.0"
   },
   "devDependencies": {
