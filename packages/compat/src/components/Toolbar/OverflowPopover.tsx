@@ -124,9 +124,9 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
   })();
 
   const OverflowPopoverContextProvider = getOverflowPopoverContext().Provider;
+  const visibleChildren = lastVisibleIndex === -1 ? children : children.slice(lastVisibleIndex + 1);
 
-  const visibleChildren = (children as ReactElement[])
-    .slice(lastVisibleIndex)
+  const filteredChildren = (visibleChildren as ReactElement[])
     // @ts-expect-error: if type is not defined, it's not a spacer
     .filter((child) => child.type?.displayName !== 'ToolbarSpacer' && isValidElement(child))
     .map((item, index, arr) => {
@@ -193,7 +193,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             onOpen={handleAfterOpen}
             hideArrow
             accessibleRole={accessibleRole}
-            accessibleName={i18nBundle.getText(WITH_X_ITEMS, visibleChildren.length)}
+            accessibleName={i18nBundle.getText(WITH_X_ITEMS, filteredChildren.length)}
           >
             <div
               className={classes.popoverContent}
@@ -201,7 +201,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
               role={a11yConfig?.overflowPopover?.contentRole}
               data-component-name="ToolbarOverflowPopoverContent"
             >
-              {visibleChildren}
+              {filteredChildren}
             </div>
           </Popover>,
           portalContainer ?? document.body
