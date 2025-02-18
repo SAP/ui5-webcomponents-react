@@ -113,8 +113,9 @@ The overflow popover can be closed programmatically by using the `overflowPopove
 const ToolbarComponent = () => {
   const overflowPopoverRef = useRef(null);
   const handlePopoverClose = () => {
-    if (overflowPopoverRef.current.isOpen()) {
-      overflowPopoverRef.current.close();
+    const overflowPopover = overflowPopoverRef.current;
+    if (overflowPopover?.open) {
+      overflowPopover.open = false;
     }
   };
   return (
