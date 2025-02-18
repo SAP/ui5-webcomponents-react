@@ -400,11 +400,10 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
         >
           <OverflowPopover
             overflowPopoverRef={overflowPopoverRef}
-            lastVisibleIndex={lastVisibleIndex}
+            lastVisibleIndex={Math.max(lastVisibleIndex, numberOfAlwaysVisibleItems - 1)}
             classes={classNames}
             portalContainer={portalContainer}
             overflowContentRef={overflowContentRef}
-            numberOfAlwaysVisibleItems={numberOfAlwaysVisibleItems}
             overflowButton={overflowButton}
             setIsMounted={setIsPopoverMounted}
             a11yConfig={a11yConfig}

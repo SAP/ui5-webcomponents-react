@@ -27,7 +27,6 @@ interface OverflowPopoverProps {
   children: ReactNode[];
   portalContainer: Element;
   overflowContentRef: Ref<HTMLDivElement>;
-  numberOfAlwaysVisibleItems?: number;
   overflowPopoverRef?: Ref<PopoverDomRef>;
   overflowButton?: ReactElement<ToggleButtonPropTypes> | ReactElement<ButtonPropTypes>;
   setIsMounted: Dispatch<SetStateAction<boolean>>;
@@ -43,7 +42,6 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     children,
     portalContainer,
     overflowContentRef,
-    numberOfAlwaysVisibleItems,
     overflowButton,
     overflowPopoverRef,
     setIsMounted,
@@ -127,49 +125,44 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
 
   const OverflowPopoverContextProvider = getOverflowPopoverContext().Provider;
 
-  let startIndex = null;
-  const filteredChildrenArray = children
+  const visibleChildren = (children as ReactElement[])
+    .slice(lastVisibleIndex)
+    // @ts-expect-error: if type is not defined, it's not a spacer
+    .filter((child) => child.type?.displayName !== 'ToolbarSpacer' && isValidElement(child))
     .map((item, index, arr) => {
-      if (index > lastVisibleIndex && index > numberOfAlwaysVisibleItems - 1 && isValidElement(item)) {
-        if (startIndex === null) {
-          startIndex = index;
-        }
-        const labelProp = item?.props?.['data-accessible-name'] ? 'accessibleName' : 'aria-label';
-        let labelVal = i18nBundle.getText(X_OF_Y, index + 1 - startIndex, arr.length - startIndex);
-        if (item?.props?.[labelProp]) {
-          labelVal += ' ' + item.props[labelProp];
-        }
+      const labelProp = item?.props?.['data-accessible-name'] ? 'accessibleName' : 'aria-label';
+      let labelVal = i18nBundle.getText(X_OF_Y, index + 1, arr.length);
+      if (item?.props?.[labelProp]) {
+        labelVal += ' ' + item.props[labelProp];
+      }
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore: React 19
-        if (item?.props?.id) {
-          return cloneElement<HTMLAttributes<HTMLElement>>(item, {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore: React 19
-            id: `${item.props.id}-overflow`,
-            [labelProp]: labelVal
-          });
-        }
-        // @ts-expect-error: if type is not defined, it's not a spacer
-        if (item.type?.displayName === 'ToolbarSeparator') {
-          return cloneElement(item as ReactElement, {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore: React 19
-            style: {
-              height: '0.0625rem',
-              margin: '0.375rem 0.1875rem',
-              width: '100%'
-            },
-            'aria-label': labelVal
-          });
-        }
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore: React 19
+      if (item?.props?.id) {
         return cloneElement<HTMLAttributes<HTMLElement>>(item, {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore: React 19
+          id: `${item.props.id}-overflow`,
           [labelProp]: labelVal
         });
       }
-      return null;
-    })
-    .filter(Boolean);
+      // @ts-expect-error: if type is not defined, it's not a separator
+      if (item.type?.displayName === 'ToolbarSeparator') {
+        return cloneElement(item, {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore: React 19
+          style: {
+            height: '0.0625rem',
+            margin: '0.375rem 0.1875rem',
+            width: '100%'
+          },
+          'aria-label': labelVal
+        });
+      }
+      return cloneElement<HTMLAttributes<HTMLElement>>(item, {
+        [labelProp]: labelVal
+      });
+    });
 
   return (
     <OverflowPopoverContextProvider value={{ inPopover: true }}>
@@ -200,7 +193,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
             onOpen={handleAfterOpen}
             hideArrow
             accessibleRole={accessibleRole}
-            accessibleName={i18nBundle.getText(WITH_X_ITEMS, filteredChildrenArray.length)}
+            accessibleName={i18nBundle.getText(WITH_X_ITEMS, visibleChildren.length)}
           >
             <div
               className={classes.popoverContent}
@@ -208,7 +201,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
               role={a11yConfig?.overflowPopover?.contentRole}
               data-component-name="ToolbarOverflowPopoverContent"
             >
-              {filteredChildrenArray}
+              {visibleChildren}
             </div>
           </Popover>,
           portalContainer ?? document.body
