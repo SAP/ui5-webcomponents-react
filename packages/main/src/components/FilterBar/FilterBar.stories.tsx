@@ -27,6 +27,7 @@ import { FlexBox } from '../FlexBox/index.js';
 import { Text } from '../Text/index.js';
 import { VariantManagement } from '../VariantManagement/index.js';
 import { VariantItem } from '../VariantManagement/VariantItem.js';
+import type { FilterBarPropTypes } from './index.js';
 import { FilterBar } from './index.js';
 
 const meta = {
@@ -137,7 +138,8 @@ const initialState = {
   currency: 'USD',
   date: '',
   dateRange: '',
-  search: ''
+  search: '',
+  selectedFiltersByLabel: ['Age', 'Countries', 'Currency', 'Date']
 };
 
 function reducer(state, action) {
@@ -154,6 +156,16 @@ function reducer(state, action) {
       return { ...state, dateRange: action.payload };
     case 'SET_SEARCH':
       return { ...state, search: action.payload };
+    case 'SHOW_FILTER': {
+      const updatedFilters = new Set(state.selectedFiltersByLabel);
+      updatedFilters.add(action.payload);
+      return { ...state, selectedFiltersByLabel: Array.from(updatedFilters) };
+    }
+    case 'HIDE_FILTER': {
+      const updatedFilters = new Set(state.selectedFiltersByLabel);
+      updatedFilters.delete(action.payload);
+      return { ...state, selectedFiltersByLabel: Array.from(updatedFilters) };
+    }
     case 'DIALOG_RESTORE':
       return action.payload;
     default:
@@ -164,7 +176,7 @@ function reducer(state, action) {
 export const WithLogic: Story = {
   render: (args) => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { age, countries, currency, date, dateRange, search } = state;
+    const { age, countries, currency, date, dateRange, search, selectedFiltersByLabel } = state;
     const prevDialogOpenState = useRef();
 
     const handleSearch = (e) => {
@@ -206,6 +218,15 @@ export const WithLogic: Story = {
       dispatch({ type: 'DIALOG_RESTORE', payload: prevDialogOpenState.current });
     };
 
+    const handleFilterSelectionChange: FilterBarPropTypes['onFiltersDialogSelectionChange'] = (e) => {
+      const { checked, element } = e.detail;
+      if (checked) {
+        dispatch({ type: 'SHOW_FILTER', payload: element.dataset.text });
+      } else {
+        dispatch({ type: 'HIDE_FILTER', payload: element.dataset.text });
+      }
+    };
+
     return (
       <>
         <FilterBar
@@ -213,11 +234,16 @@ export const WithLogic: Story = {
           search={<Input onInput={handleSearch} />}
           onRestore={handleRestore}
           onFiltersDialogOpen={handleFiltersDialogOpen}
+          onFiltersDialogSelectionChange={handleFilterSelectionChange}
         >
           <FilterGroupItem label="Age" active={!!age} required>
             <StepInput value={age} onChange={handleAgeChange} required />
           </FilterGroupItem>
-          <FilterGroupItem label="Countries" active={Object.keys(countries).length > 0}>
+          <FilterGroupItem
+            label="Countries"
+            active={Object.keys(countries).length > 0}
+            visibleInFilterBar={selectedFiltersByLabel.includes('Countries')}
+          >
             <MultiComboBox onSelectionChange={handleCountriesChange}>
               <MultiComboBoxItem text="Argentina" selected={countries.argentina} />
               <MultiComboBoxItem text="Bulgaria" selected={countries.bulgaria} />
@@ -228,7 +254,11 @@ export const WithLogic: Story = {
               <MultiComboBoxItem text="USA" selected={countries.usa} />
             </MultiComboBox>
           </FilterGroupItem>
-          <FilterGroupItem label="Currency" active={!!currency}>
+          <FilterGroupItem
+            label="Currency"
+            active={!!currency}
+            visibleInFilterBar={selectedFiltersByLabel.includes('Currency')}
+          >
             <Select onChange={handleCurrencyChange}>
               <Option additionalText="€" selected={currency === 'EUR'}>
                 EUR
@@ -247,11 +277,15 @@ export const WithLogic: Story = {
               </Option>
             </Select>
           </FilterGroupItem>
-          <FilterGroupItem label="Date" active={!!date}>
-            <DatePicker value={date} onChange={handleDateChange} style={{ minWidth: 'auto' }} on />
+          <FilterGroupItem label="Date" active={!!date} visibleInFilterBar={selectedFiltersByLabel.includes('Date')}>
+            <DatePicker value={date} onChange={handleDateChange} style={{ minWidth: 'auto' }} />
           </FilterGroupItem>
-          <FilterGroupItem label="Date Range" active={!!dateRange} visibleInFilterBar={false}>
-            <DateRangePicker value={dateRange} onChange={handleDateRangeChange} style={{ minWidth: 'auto' }} on />
+          <FilterGroupItem
+            label="Date Range"
+            active={!!dateRange}
+            visibleInFilterBar={selectedFiltersByLabel.includes('Date Range')}
+          >
+            <DateRangePicker value={dateRange} onChange={handleDateRangeChange} style={{ minWidth: 'auto' }} />
           </FilterGroupItem>
         </FilterBar>
         <FlexBox direction={FlexBoxDirection.Column}>
