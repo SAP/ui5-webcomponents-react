@@ -245,8 +245,6 @@ function ModalComponent({ modal }: { modal: IModal }) {
  *
  * **In order to use these helpers, please make sure to render the `Modals` component somewhere in your application tree.**
  *
- * __Note:__ The `Toast` component does not currently use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API), which may cause issues like incorrect positioning or alignment. If that's the case, please mount the `Modals` component after all other components, or define a custom container via the `container` parameter.
- *
  * @since 0.22.2
  */
 export function Modals() {
@@ -273,7 +271,4 @@ Modals.showPopover = showPopoverFn;
 Modals.showResponsivePopover = showResponsivePopoverFn;
 Modals.showMenu = showMenuFn;
 Modals.showMessageBox = showMessageBoxFn;
-/**
- * __Note:__ The `Toast` component does not currently use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API), which may cause issues like incorrect positioning or alignment. If that's the case, please mount the `Modals` component after all other components, or define a custom container via the `container` parameter.
- */
 Modals.showToast = showToastFn;
