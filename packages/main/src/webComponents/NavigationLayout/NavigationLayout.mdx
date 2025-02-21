@@ -23,26 +23,34 @@ import { SideNavigationSubItem } from '../SideNavigationSubItem/index';
 ```tsx
 function NavigationLayoutComponent(props) {
   const [selectedContent, setSelectedContent] = useState('Home');
-  const [collapsed, setCollapsed] = useState(false);
+  const [mode, setMode] = useState(props.mode);
+  const navigationLayoutRef = useRef<NavigationLayoutDomRef>(null);
+
   const handleSelectionChange: SideNavigationPropTypes['onSelectionChange'] = (e) => {
     setSelectedContent(e.detail.item.text);
   };
+
   useEffect(() => {
-    setCollapsed(props.sideCollapsed);
-  }, [props.sideCollapsed]);
+    setMode(props.mode);
+  }, [props.mode]);
+
   return (
     <div style={{ position: 'relative', height: '800px' }}>
       <NavigationLayout
         {...props}
-        sideCollapsed={collapsed}
+        ref={navigationLayoutRef}
+        mode={mode}
         header={
           <ShellBar
             startButton={
               <Button
                 icon={menuIcon}
-                tooltip={`${collapsed ? 'Expand' : 'Collapse'} Side-Bar`}
                 onClick={() => {
-                  setCollapsed((prev) => !prev);
+                  if (navigationLayoutRef.current?.isSideCollapsed()) {
+                    setMode(NavigationLayoutMode.Expanded);
+                  } else {
+                    setMode(NavigationLayoutMode.Collapsed);
+                  }
                 }}
               />
             }
@@ -72,6 +80,7 @@ function NavigationLayoutComponent(props) {
               <SideNavigationItem text="Item 5" icon="source-code" />
               <SideNavigationItem text="Item 6" icon="background" />
             </SideNavigationGroup>
+
             <SideNavigationItem
               slot="fixedItems"
               text="Legal"

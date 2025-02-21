@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import NavigationLayoutMode from '@ui5/webcomponents-fiori/dist/types/NavigationLayoutMode.js';
 import menuIcon from '@ui5/webcomponents-icons/dist/menu.js';
 import '@ui5/webcomponents-icons/dist/home.js';
 import '@ui5/webcomponents-icons/dist/group.js';
@@ -13,7 +14,7 @@ import '@ui5/webcomponents-icons/dist/chain-link.js';
 import '@ui5/webcomponents-icons/dist/document-text.js';
 import '@ui5/webcomponents-icons/dist/compare.js';
 import '@ui5/webcomponents-icons/dist/locked.js';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/index.js';
 import { ShellBar } from '../ShellBar/index.js';
 import type { SideNavigationPropTypes } from '../SideNavigation/index.js';
@@ -23,6 +24,7 @@ import { SideNavigationItem } from '../SideNavigationItem/index.js';
 import { SideNavigationSubItem } from '../SideNavigationSubItem/index.js';
 import { Text } from '../Text/index.js';
 import { Title } from '../Title/index.js';
+import type { NavigationLayoutDomRef } from './index.js';
 import { NavigationLayout } from './index.js';
 
 const meta = {
@@ -33,7 +35,9 @@ const meta = {
     sideContent: { control: { disable: true } },
     children: { control: { disable: true } }
   },
-  args: {},
+  args: {
+    mode: NavigationLayoutMode.Auto
+  },
   tags: ['package:@ui5/webcomponents-fiori']
 } satisfies Meta<typeof NavigationLayout>;
 
@@ -43,28 +47,33 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => {
     const [selectedContent, setSelectedContent] = useState('Home');
-    const [collapsed, setCollapsed] = useState(false);
+    const [mode, setMode] = useState(args.mode);
+    const navigationLayoutRef = useRef<NavigationLayoutDomRef>(null);
     const handleSelectionChange: SideNavigationPropTypes['onSelectionChange'] = (e) => {
       setSelectedContent(e.detail.item.text);
     };
 
     useEffect(() => {
-      setCollapsed(args.sideCollapsed);
-    }, [args.sideCollapsed]);
+      setMode(args.mode);
+    }, [args.mode]);
 
     return (
       <div style={{ position: 'relative', height: '800px' }}>
         <NavigationLayout
           {...args}
-          sideCollapsed={collapsed}
+          ref={navigationLayoutRef}
+          mode={mode}
           header={
             <ShellBar
               startButton={
                 <Button
                   icon={menuIcon}
-                  tooltip={`${collapsed ? 'Expand' : 'Collapse'} Side-Bar`}
                   onClick={() => {
-                    setCollapsed((prev) => !prev);
+                    if (navigationLayoutRef.current?.isSideCollapsed()) {
+                      setMode(NavigationLayoutMode.Expanded);
+                    } else {
+                      setMode(NavigationLayoutMode.Collapsed);
+                    }
                   }}
                 />
               }
