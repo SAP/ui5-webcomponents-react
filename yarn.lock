@@ -6358,6 +6358,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react@workspace:packages/main"
   dependencies:
+    "@tanstack/react-table": "npm:^8.20.6"
     "@tanstack/react-virtual": "npm:~3.13.0"
     "@ui5/webcomponents-react-base": "workspace:~"
     clsx: "npm:2.1.1"
@@ -23655,7 +23656,6 @@ __metadata:
     "@storybook/react": "npm:8.5.6"
     "@storybook/react-vite": "npm:8.5.6"
     "@storybook/theming": "npm:8.5.6"
-    "@tanstack/react-table": "npm:^8.20.6"
     "@testing-library/cypress": "npm:^10.0.0"
     "@types/eslint__js": "npm:^8.42.3"
     "@types/jscodeshift": "npm:^0.12.0"

@@ -41,7 +41,6 @@
     "@storybook/react": "8.5.6",
     "@storybook/react-vite": "8.5.6",
     "@storybook/theming": "8.5.6",
-    "@tanstack/react-table": "^8.20.6",
     "@ui5/webcomponents": "2.7.3",
     "@ui5/webcomponents-compat": "2.7.3",
     "@ui5/webcomponents-fiori": "2.7.3",
