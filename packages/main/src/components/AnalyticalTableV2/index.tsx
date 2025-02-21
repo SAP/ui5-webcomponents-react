@@ -2,10 +2,12 @@ import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { CssSizeVariables, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement } from 'react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { classNames, styleData } from './AnalyticalTableV2.module.css.js';
 import { Cell } from './core/Cell.js';
 import { Row } from './core/Row.js';
+import { DensityFeature, ColumnModesFeature } from './features/exampleFeature.js';
+import { useColumnWidths } from './useColumnMode.js';
 import { useRowVirtualizer } from './useRowVirtualizer.js';
 import { useTableContainerResizeObserver } from './utils/useTableContainerResizeObserver.js';
 
@@ -14,6 +16,12 @@ interface AnalyticalTableV2Props {
   columns?: any[];
   rowHeight?: number;
   visibleRows?: number;
+  // todo: fka scaleWidthMode
+  columnMode?: string;
+
+  //todo: check if this should be controllable, if so add respective checks otherwise the table-option won't do anything
+  enableRowPinning?: boolean;
+  enableColumnPinning?: boolean;
 }
 
 interface CSSPropertiesWithVars extends CSSProperties {
@@ -27,31 +35,60 @@ const ROW_HEIGHT_VAR = 'var(--_ui5WcrAnalyticalTableControlledRowHeight)';
 
 //todo forwardRef or React19? --> prob forwardRef
 function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<AnalyticalTableV2Props, 'div'> {
-  const { columns, data, rowHeight, visibleRows = 15 } = props;
+  const { columns, data, rowHeight, visibleRows = 15, enableRowPinning, enableColumnPinning, columnMode } = props;
   useStylesheet(styleData, AnalyticalTableV2.displayName);
   const tableContainerRef = useRef<HTMLDivElement>(null);
-  const { tableWidth: _tableWidth, horizontalScrollbarHeight } = useTableContainerResizeObserver(tableContainerRef);
-
+  const { tableWidth, horizontalScrollbarHeight, verticalScrollbarWidth } =
+    useTableContainerResizeObserver(tableContainerRef);
+  const [columnSizing, setColumnSizing] = useState({});
+  //const setColumnSizing = useColumnWidths(tableWidth, reactTable.getAllLeafColumns().map((item) => item.columnDef)
   const reactTable = useReactTable({
+    _features: [DensityFeature, ColumnModesFeature],
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     //todo: remove
     debugTable: true,
     //todo: optional
-    enableColumnPinning: true,
-    initialState: {
-      columnPinning: {
-        left: ['c_pinned'],
-        right: ['friend_age']
-      },
-      rowPinning: {
-        bottom: ['0', '1'],
-        top: ['499', '498']
-      }
+    // enableColumnPinning: false,
+    // enableRowPinning: false,
+    state: {
+      columnSizing,
+      //todo: add types & clarify how to inject types (declare module '@tanstack/react-table' is probably not the best approach - probably we have to cast a lot...)
+      //ColumnModesFeature
+      tableWidth,
+
+      //DensityFeature
+      density: 'md'
     },
-    enableRowPinning: true
+    // initialState: {
+    //   columnPinning: {
+    //     left: ['c_pinned'],
+    //     right: ['friend_age']
+    //   },
+    //   rowPinning: {
+    //     bottom: ['0', '1'],
+    //     top: ['499', '498']
+    //   }
+    // }
+    // column sizing
+    defaultColumn: {
+      size: 0,
+      minSize: 60
+    },
+    //ColumnModesFeature
+    columnMode,
+    onColumnSizingChange: setColumnSizing
   });
+  console.log(enableRowPinning, enableColumnPinning);
+
+  useColumnWidths(
+    tableWidth,
+    //todo: refactor to use getAllLeafColumns directly, or use the `columns` array?
+    reactTable.getAllLeafColumns().map((item) => item.columnDef),
+    setColumnSizing,
+    verticalScrollbarWidth
+  );
 
   const headerGroups = reactTable.getHeaderGroups();
   const topRows = reactTable.getTopRows();
@@ -68,6 +105,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
         ref={tableContainerRef}
         style={
           {
+            visibility: tableWidth === 0 ? 'hidden' : undefined,
             '--_ui5WcrAnalyticalTableControlledRowHeight':
               typeof rowHeight === 'number' ? `${rowHeight}px` : CssSizeVariables.ui5WcrAnalyticalTableRowHeight,
             '--_ui5WcrAnalyticalTableHeaderGroups': headerGroups.length,

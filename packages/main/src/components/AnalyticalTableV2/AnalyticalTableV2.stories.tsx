@@ -4,50 +4,70 @@ import type { ColumnDef } from '@tanstack/react-table';
 import { Button } from '@ui5/webcomponents-react';
 import { AnalyticalTableV2 } from './index.js';
 
+//todo make id mandatory, or take this into account for custom implementations: https://tanstack.com/table/latest/docs/api/core/column-def --> imo id mandatory is the easiest way
+
 //todo: any
 const columns: ColumnDef<any>[] = [
-  { header: 'Name', accessorKey: 'name' },
-  { header: 'Age', accessorKey: 'age' },
-  { header: 'Friend Name', accessorKey: 'friend.name' },
-  { header: 'Friend Age', accessorKey: 'friend.age' },
   {
-    header: 'Column Pinned',
-    id: 'c_pinned',
-    cell: ({ row }) => {
-      return 'Pinned';
-    }
+    header: 'Person',
+    id: 'A',
+    columns: [
+      { header: 'Name', accessorKey: 'name', id: 'B' },
+      { header: 'Age', accessorKey: 'age', id: 'C' }
+    ]
   },
   {
-    header: 'Pin Row',
-    id: 'r_pinned',
-    size: 300,
-    cell: ({ row }) => {
-      return (
-        <>
-          <Button
-            onClick={() => {
-              row.pin('top');
-            }}
-          >
-            Pin Top
-          </Button>
-          <Button
-            onClick={() => {
-              row.pin('bottom');
-            }}
-          >
-            Pin Bottom
-          </Button>
-          <Button
-            onClick={() => {
-              row.pin(false);
-            }}
-          >
-            Reset Pin
-          </Button>
-        </>
-      );
-    }
+    id: 'D',
+    header: 'Friend',
+    columns: [
+      { header: 'Friend Name', accessorKey: 'friend.name', id: 'E' },
+      { header: 'Friend Age', accessorKey: 'friend.age', id: 'F' }
+    ]
+  },
+  {
+    id: 'G',
+    header: 'Pinnable',
+    columns: [
+      {
+        header: 'Column Pinned',
+        id: 'c_pinned',
+        cell: ({ row }) => {
+          return 'Pinned';
+        }
+      },
+      {
+        header: 'Pin Row',
+        id: 'r_pinned',
+        size: 300,
+        cell: ({ row }) => {
+          return (
+            <>
+              <Button
+                onClick={() => {
+                  row.pin('top');
+                }}
+              >
+                Pin Top
+              </Button>
+              <Button
+                onClick={() => {
+                  row.pin('bottom');
+                }}
+              >
+                Pin Bottom
+              </Button>
+              <Button
+                onClick={() => {
+                  row.pin(false);
+                }}
+              >
+                Reset Pin
+              </Button>
+            </>
+          );
+        }
+      }
+    ]
   }
 ];
 
@@ -55,7 +75,7 @@ const meta = {
   title: 'Data Display / AnalyticalTableV2',
   component: AnalyticalTableV2,
   args: {
-    data: dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })),
+    data: dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })).slice(0),
     columns,
     visibleRows: 5
   },

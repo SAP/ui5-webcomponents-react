@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 export const useTableContainerResizeObserver = (tableContainerRef: RefObject<HTMLDivElement>) => {
   const [tableWidth, setTableWidth] = useState(0);
   const [horizontalScrollbarHeight, setHorizontalScrollbarHeight] = useState(0);
+  const [verticalScrollbarWidth, setVerticalScrollbarWidth] = useState(0);
 
   useEffect(() => {
     const tableContainer = tableContainerRef.current;
@@ -14,13 +15,21 @@ export const useTableContainerResizeObserver = (tableContainerRef: RefObject<HTM
           const { borderBoxSize, contentBoxSize } = entry;
           const borderBoxHeight = borderBoxSize[0].blockSize;
           const contentBoxHeight = contentBoxSize[0].blockSize;
+          const borderBoxWidth = borderBoxSize[0].inlineSize;
+          const contentBoxWidth = contentBoxSize[0].inlineSize;
+
           if (borderBoxHeight > contentBoxHeight) {
             setHorizontalScrollbarHeight(borderBoxHeight - contentBoxHeight);
           } else {
             setHorizontalScrollbarHeight(0);
           }
 
-          const borderBoxWidth = borderBoxSize[0].inlineSize;
+          if (borderBoxWidth > contentBoxWidth) {
+            setVerticalScrollbarWidth(borderBoxWidth - contentBoxWidth);
+          } else {
+            setVerticalScrollbarWidth(0);
+          }
+
           setTableWidth(borderBoxWidth);
         }
       }
@@ -37,5 +46,5 @@ export const useTableContainerResizeObserver = (tableContainerRef: RefObject<HTM
     };
   }, [tableContainerRef]);
 
-  return { tableWidth, horizontalScrollbarHeight };
+  return { tableWidth, horizontalScrollbarHeight, verticalScrollbarWidth };
 };

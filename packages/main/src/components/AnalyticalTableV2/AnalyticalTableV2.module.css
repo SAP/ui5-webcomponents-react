@@ -6,8 +6,12 @@
 }
 
 .cell {
+  box-sizing: border-box;
   display: flex;
   background-color: var(--sapList_Background);
+  overflow: hidden;
+  /*todo: dev*/
+  border-inline: solid 1px black;
 }
 
 /* ============================================================= */
