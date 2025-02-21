@@ -14,9 +14,9 @@ import type ListAccessibleRole from '@ui5/webcomponents/dist/types/ListAccessibl
 import type ListGrowingMode from '@ui5/webcomponents/dist/types/ListGrowingMode.js';
 import type ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import type ListSeparator from '@ui5/webcomponents/dist/types/ListSeparator.js';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ListAttributes {
   /**
@@ -174,6 +174,10 @@ interface ListPropTypes
   /**
    * Fired when an item is activated, unless the item's `type` property
    * is set to `Inactive`.
+   *
+   * **Note**: This event is not triggered by interactions with selection components such as the checkboxes and radio buttons,
+   * associated with non-default `selectionMode` values, or if any other **interactive** component
+   * (such as a button or input) within the list item is directly clicked.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
    *

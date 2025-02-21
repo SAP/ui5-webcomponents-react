@@ -2,14 +2,13 @@
 
 import '@ui5/webcomponents/dist/TableHeaderCell.js';
 import type TableCellHorizontalAlign from '@ui5/webcomponents/dist/types/TableCellHorizontalAlign.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableHeaderCellAttributes {
   /**
    * Determines the horizontal alignment of table cells.
-   * **Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.
    * @default undefined
    */
   horizontalAlign?: TableCellHorizontalAlign | undefined | keyof typeof TableCellHorizontalAlign;
@@ -40,6 +39,14 @@ interface TableHeaderCellAttributes {
    * @default "auto"
    */
   minWidth?: string;
+
+  /**
+   * The text for the column when it pops in.
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  popinText?: string | undefined;
 
   /**
    * Defines the width of column.
@@ -74,7 +81,7 @@ interface TableHeaderCellPropTypes
  */
 const TableHeaderCell = withWebComponent<TableHeaderCellPropTypes, TableHeaderCellDomRef>(
   'ui5-table-header-cell',
-  ['horizontalAlign', 'importance', 'maxWidth', 'minWidth', 'width'],
+  ['horizontalAlign', 'importance', 'maxWidth', 'minWidth', 'popinText', 'width'],
   [],
   [],
   []

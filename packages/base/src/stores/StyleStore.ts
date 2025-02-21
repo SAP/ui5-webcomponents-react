@@ -67,7 +67,7 @@ export const StyleStore = {
   mountComponent: (componentName: string) => {
     const { componentsMap } = getSnapshot();
     if (componentsMap.has(componentName)) {
-      componentsMap.set(componentName, componentsMap.get(componentName)! + 1);
+      componentsMap.set(componentName, componentsMap.get(componentName) + 1);
     } else {
       componentsMap.set(componentName, 1);
     }
@@ -76,7 +76,7 @@ export const StyleStore = {
   unmountComponent: (componentName: string) => {
     const { componentsMap } = getSnapshot();
     if (componentsMap.has(componentName)) {
-      componentsMap.set(componentName, componentsMap.get(componentName)! - 1);
+      componentsMap.set(componentName, componentsMap.get(componentName) - 1);
     }
     emitChange();
   }

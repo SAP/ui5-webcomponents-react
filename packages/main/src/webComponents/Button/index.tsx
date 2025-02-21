@@ -5,9 +5,9 @@ import type { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Butt
 import type ButtonAccessibleRole from '@ui5/webcomponents/dist/types/ButtonAccessibleRole.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
+import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface ButtonAttributes {
   /**
@@ -131,7 +131,22 @@ interface ButtonAttributes {
 
 interface ButtonDomRef extends Required<ButtonAttributes>, Ui5DomRef {}
 
-interface ButtonPropTypes extends ButtonAttributes, Omit<CommonProps, keyof ButtonAttributes | 'children' | 'onClick'> {
+interface ButtonPropTypes
+  extends ButtonAttributes,
+    Omit<CommonProps, keyof ButtonAttributes | 'badge' | 'children' | 'onClick'> {
+  /**
+   * Adds a badge to the button.
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="badge"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents**.
+   */
+  badge?: UI5WCSlotsNode;
+
   /**
    * Defines the text of the component.
    *
@@ -189,7 +204,7 @@ const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
     'type'
   ],
   ['disabled', 'submits'],
-  [],
+  ['badge'],
   ['click']
 );
 

@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "2.6.0",
+  "version": "2.7.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "type": "module",
   "main": "dist/index.js",
@@ -49,7 +49,7 @@
     "watch:css": "yarn build:css --watch"
   },
   "dependencies": {
-    "@tanstack/react-virtual": "~3.11.0",
+    "@tanstack/react-virtual": "~3.13.0",
     "@ui5/webcomponents-react-base": "workspace:~",
     "clsx": "2.1.1",
     "react-table": "7.8.0"
@@ -57,10 +57,10 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~2.6.2",
-    "@ui5/webcomponents-base": "~2.6.2",
-    "@ui5/webcomponents-fiori": "~2.6.2",
-    "@ui5/webcomponents-icons": "~2.6.2",
+    "@ui5/webcomponents": "~2.7.0",
+    "@ui5/webcomponents-base": "~2.7.0",
+    "@ui5/webcomponents-fiori": "~2.7.0",
+    "@ui5/webcomponents-icons": "~2.7.0",
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19"
   },

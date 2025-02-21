@@ -13,9 +13,6 @@
       outline-offset: -0.2rem;
       outline: var(--_ui5wcr_Splitter_BarOutline);
     }
-    .icon {
-      z-index: 1;
-    }
   }
 
   &[data-splitter-vertical='horizontal'] {
@@ -43,6 +40,14 @@
     }
     .lineAfter {
       background-image: linear-gradient(to bottom, var(--_ui5wcr_Splitter_ContentBorderColor), transparent);
+    }
+    .gripContainer {
+      height: 2rem;
+      width: 1.5rem;
+    }
+    .gripButton {
+      min-width: 1.5rem;
+      height: 1.625rem;
     }
   }
 
@@ -78,6 +83,14 @@
         background-image: linear-gradient(to left, var(--_ui5wcr_Splitter_ContentBorderColor), transparent);
       }
     }
+    .gripContainer {
+      height: 1.5rem;
+      width: 2rem;
+    }
+    .gripButton {
+      height: 1.5rem;
+      min-width: 1.625rem;
+    }
   }
 
   &:hover {
@@ -89,10 +102,15 @@
   }
 }
 
-.gripButton {
-  min-width: 1.5rem !important;
-  height: 1.625rem;
+.gripContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 1;
+}
+
+.gripButton {
+  cursor: inherit;
 
   &:active {
     z-index: 2;

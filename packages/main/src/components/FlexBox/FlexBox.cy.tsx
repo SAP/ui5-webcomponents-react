@@ -1,5 +1,5 @@
+import { camelToKebabCase, lowercaseFirstLetter } from '@ui5/webcomponents-react-base';
 import { FlexBoxJustifyContent, FlexBoxAlignItems, FlexBoxDirection, FlexBoxWrap } from '../../enums/index.js';
-import { camelToKebabCase, lowercaseFirstLetter } from '../../internal/utils.js';
 import { FlexBox } from './index.js';
 import type { FlexBoxPropTypes } from './index.js';
 import { cypressPassThroughTestsFactory, mountWithCustomTagName } from '@/cypress/support/utils';
@@ -92,6 +92,18 @@ describe('FlexBox', () => {
       .should('have.css', 'display', 'inline-flex')
       .should('have.css', 'width', '200px')
       .should('have.css', 'height', '200px');
+  });
+
+  it('gap', () => {
+    cy.mount(
+      <FlexBox gap="1337px" data-testid="fb">
+        <div>Item 1</div>
+        <div>Item 2</div>
+        <div>Item 3</div>
+        <div>Item 4</div>
+      </FlexBox>
+    );
+    cy.findByTestId('fb').should('have.css', 'gap', '1337px');
   });
 
   mountWithCustomTagName<FlexBoxPropTypes>(FlexBox, { children: <span>Test 1</span> });

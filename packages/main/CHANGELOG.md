@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.1...v2.7.2) (2025-02-13)
+
+### Bug Fixes
+
+- **AnalyticalTable:** update virtualizer in animation frame ([#6923](https://github.com/SAP/ui5-webcomponents-react/issues/6923)) ([d87c06e](https://github.com/SAP/ui5-webcomponents-react/commit/d87c06ed8dd56cef03bdd17a4cfb1fca58b3523d))
+- **deps:** update dependency @tanstack/react-virtual to v3.13.0 ([#6913](https://github.com/SAP/ui5-webcomponents-react/issues/6913)) ([280afa9](https://github.com/SAP/ui5-webcomponents-react/commit/280afa994b90b39fd9c45218af58b03911640837))
+- export all components on root ([#6942](https://github.com/SAP/ui5-webcomponents-react/issues/6942)) ([90b7bb6](https://github.com/SAP/ui5-webcomponents-react/commit/90b7bb64a2468f6d7fb14a5cc3cf1075f698cbf7)), closes [#6941](https://github.com/SAP/ui5-webcomponents-react/issues/6941)
+- suppress hydration warning ([#6910](https://github.com/SAP/ui5-webcomponents-react/issues/6910)) ([376e118](https://github.com/SAP/ui5-webcomponents-react/commit/376e118ff3fa31f21b2f4422016536c77a8c91c1))
+
+## [2.7.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.0...v2.7.1) (2025-02-05)
+
+### Bug Fixes
+
+- mount ui5 web components only on the client ([#6902](https://github.com/SAP/ui5-webcomponents-react/issues/6902)) ([93830e9](https://github.com/SAP/ui5-webcomponents-react/commit/93830e92b989047ee68c37b40def7b755a5a3e9a))
+- **ObjectPage:** position expand/collapse buttons correctly ([#6897](https://github.com/SAP/ui5-webcomponents-react/issues/6897)) ([70745c6](https://github.com/SAP/ui5-webcomponents-react/commit/70745c6cbf6022f43969e68c320e4bf9d4e182bf)), closes [#6867](https://github.com/SAP/ui5-webcomponents-react/issues/6867)
+
+# [2.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.6.0...v2.7.0) (2025-02-04)
+
+### Bug Fixes
+
+- **AnalyticalTable - TypeScript:** fix incorrect `setFilter` type ([#6842](https://github.com/SAP/ui5-webcomponents-react/issues/6842)) ([4a21ffb](https://github.com/SAP/ui5-webcomponents-react/commit/4a21ffbb506489782066f43a9d9a231add59c4f2))
+- **AnalyticalTable:** allow typing SPACE in custom cell content ([#6881](https://github.com/SAP/ui5-webcomponents-react/issues/6881)) ([35e1420](https://github.com/SAP/ui5-webcomponents-react/commit/35e142023b76c19813490a8b4cb288d630f54655))
+- **AnalyticalTable:** apply correct column width when hiding columns ([#6848](https://github.com/SAP/ui5-webcomponents-react/issues/6848)) ([16e1803](https://github.com/SAP/ui5-webcomponents-react/commit/16e18034a742fe753a1520e94258f6d5e5921539)), closes [#5938](https://github.com/SAP/ui5-webcomponents-react/issues/5938)
+- **deps:** update dependency @tanstack/react-virtual to ~3.12.0 ([#6888](https://github.com/SAP/ui5-webcomponents-react/issues/6888)) ([87b27ff](https://github.com/SAP/ui5-webcomponents-react/commit/87b27fff4ce9b413afc9851c17c9aa8a204486d9))
+- **MessageItem:** enable details view if Link overflows ([#6859](https://github.com/SAP/ui5-webcomponents-react/issues/6859)) ([88e1398](https://github.com/SAP/ui5-webcomponents-react/commit/88e13984782deddebcf5869ef7333fcf78317fd7)), closes [#6857](https://github.com/SAP/ui5-webcomponents-react/issues/6857)
+- **ObjectPage:** fix scroll-to/selection behavior ([#6879](https://github.com/SAP/ui5-webcomponents-react/issues/6879)) ([2b658d8](https://github.com/SAP/ui5-webcomponents-react/commit/2b658d8e4e51ed0262964082606c9aa4d6ef6c57)), closes [#6798](https://github.com/SAP/ui5-webcomponents-react/issues/6798)
+- **SplitterLayout:** implement latest design specs ([#6885](https://github.com/SAP/ui5-webcomponents-react/issues/6885)) ([567a1b3](https://github.com/SAP/ui5-webcomponents-react/commit/567a1b30a19cf21376570889ddcb39318a426b88))
+
+### Features
+
+- **cypress-commands:** support cypress v14 ([#6828](https://github.com/SAP/ui5-webcomponents-react/issues/6828)) ([cc7f950](https://github.com/SAP/ui5-webcomponents-react/commit/cc7f950beee4d74329bc077f773c941680cac0ea))
+- **FlexBox:** introduce `gap` prop ([#6849](https://github.com/SAP/ui5-webcomponents-react/issues/6849)) ([10bf5ac](https://github.com/SAP/ui5-webcomponents-react/commit/10bf5ac076ba97143ad1257718e498b9b3da6445)), closes [#6832](https://github.com/SAP/ui5-webcomponents-react/issues/6832)
+- update to UI5 Web Components 2.7.0 ([#6890](https://github.com/SAP/ui5-webcomponents-react/issues/6890)) ([1b85eb3](https://github.com/SAP/ui5-webcomponents-react/commit/1b85eb3522a9bfc6d0fb6ae1e6e5237f95df7b56))
+
 # [2.6.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.5.0...v2.6.0) (2025-01-09)
 
 ### Bug Fixes

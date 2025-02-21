@@ -17,7 +17,7 @@ import { ThemeProvider } from '@ui5/webcomponents-react';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-import { mount } from 'cypress/react18';
+import { mount } from 'cypress/react';
 // Import commands.js using ES2015 syntax:
 import './commands';
 

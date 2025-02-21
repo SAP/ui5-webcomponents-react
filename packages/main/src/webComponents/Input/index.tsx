@@ -4,9 +4,9 @@ import '@ui5/webcomponents/dist/Input.js';
 import type { InputSelectionChangeEventDetail } from '@ui5/webcomponents/dist/Input.js';
 import type InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface InputAttributes {
   /**
@@ -95,9 +95,6 @@ interface InputAttributes {
 
   /**
    * Defines whether the component should show suggestions, if such are present.
-   *
-   * **Note:** You need to import the `InputSuggestions` module
-   * from `"@ui5/webcomponents/dist/features/InputSuggestions.js"` to enable this functionality.
    * @default false
    */
   showSuggestions?: boolean;
@@ -153,12 +150,6 @@ interface InputPropTypes
    * property is set to `true`.
    *
    * **Note:** The `<SuggestionItem>`, `<SuggestionItemGroup>` and `SuggestionItemCustom` are recommended to be used as suggestion items.
-   *
-   * **Note:** Importing the Input Suggestions Support feature:
-   *
-   * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";`
-   *
-   * automatically imports the `<SuggestionItem>` and `<SuggestionItemGroup>` for your convenience.
    */
   children?: ReactNode | ReactNode[];
 
@@ -271,11 +262,6 @@ interface InputPropTypes
  * When the user makes changes to the text, the change event is fired,
  * which enables you to react on any text change.
  *
- * **Note:** If you are using the `Input` as a single npm module,
- * don't forget to import the `InputSuggestions` module from
- * "@ui5/webcomponents/dist/features/InputSuggestions.js"
- * to enable the suggestions functionality.
- *
  * ### Keyboard Handling
  * The `Input` provides the following keyboard shortcuts:
  *
@@ -289,8 +275,6 @@ interface InputPropTypes
  * - [Page Down] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.
  *
  *
- *
- * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";` (optional - for input suggestions support)
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */

@@ -8,6 +8,8 @@ import { TableRow } from '../TableRow';
 import { TableGrowing } from '../TableGrowing';
 import { TableSelection } from '../TableSelection';
 import { TableVirtualizer } from '../TableVirtualizer';
+import { TableRowActionNavigation } from '../TableRowActionNavigation';
+import { TableRowAction } from '../TableRowAction';
 import * as ComponentStories from './Table.stories';
 
 <Meta of={ComponentStories} />
@@ -261,6 +263,94 @@ function VirtualizedTable(props) {
 
 </details>
 
+## Table with row actions
+
+The `TableRowAction` & `TableRowActionNavigation` component lets you incorporate interactive elements into table rows, enabling users to take actions directly related to each row.
+The `rowActionCount` prop of the `Table` component determines the width of the row action column. A maximum value of 3 is recommended, as exceeding this limit may take up too much space on smaller screens. If the number of row actions exceeds the `rowActionCount`, an overflow button will appear, providing access to the additional actions.
+
+The `invisible` prop of row actions allows you to hide specific row actions while preserving their space. This can be useful for consistent alignment of row actions across several rows.
+
+<Canvas of={ComponentStories.withRowActions} />
+
+## Drag and rop table rows
+
+Enable drag-and-drop by using the `onMoveOver` and `onMove` event in combination with the `movable` prop on the `TableRow`.
+
+<Canvas of={ComponentStories.dragAndDropRows} />
+
+<details>
+
+    <summary>Show static code</summary>
+
+    ```tsx
+    function DragAndDropTableRows(props) {
+      const [rows, setRows] = useState(dataLargeWithPosition.slice(0, 10));
+
+      const handleMove: TablePropTypes["onMove"] = (e) => {
+        const { source, destination } = e.detail;
+
+        setRows((prevRows) => {
+          const sourceIndex = prevRows.findIndex(
+            (row) => `${row.position}` === source.element.dataset.id,
+          );
+          const destinationIndex = prevRows.findIndex(
+            (row) => `${row.position}` === destination.element.dataset.id,
+          );
+
+          if (sourceIndex === -1 || destinationIndex === -1) {
+            return prevRows;
+          }
+
+          const updatedRows = [...prevRows];
+          const [movedRow] = updatedRows.splice(sourceIndex, 1);
+
+          if (destination.placement === "Before") {
+            updatedRows.splice(destinationIndex, 0, movedRow);
+          } else if (destination.placement === "After") {
+            updatedRows.splice(destinationIndex + 1, 0, movedRow);
+          }
+
+          return updatedRows;
+        });
+      };
+
+      const handleMoveOver: TablePropTypes["onMoveOver"] = (e) => {
+        const { source, destination } = e.detail;
+
+        if (
+          source.element.hasAttribute("ui5-table-row") &&
+          destination.element.hasAttribute("ui5-table-row") &&
+          destination.placement !== "On"
+        ) {
+          e.preventDefault();
+        }
+      };
+
+      return (
+        <Table {...props} onMove={handleMove} onMoveOver={handleMoveOver}>
+          {rows.map((row) => (
+            <TableRow key={row.position} movable data-id={row.position}>
+              <TableCell>
+                <span>{row.name}</span>
+              </TableCell>
+              <TableCell>
+                <span>{row.age}</span>
+              </TableCell>
+              <TableCell>
+                <span>{row.friend.name}</span>
+              </TableCell>
+              <TableCell>
+                <span>{row.friend.age}</span>
+              </TableCell>
+            </TableRow>
+          ))}
+        </Table>
+      );
+    }
+    ```
+
+</details>
+
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## TableHeaderRow
@@ -297,5 +387,15 @@ function VirtualizedTable(props) {
 
 <Description of={TableVirtualizer} />
 <ArgTypes of={TableVirtualizer} />
+
+## TableRowAction
+
+<Description of={TableRowAction} />
+<ArgTypes of={TableRowAction} />
+
+## TableRowActionNavigation
+
+<Description of={TableRowActionNavigation} />
+<ArgTypes of={TableRowActionNavigation} />
 
 <Footer />

@@ -65,7 +65,9 @@ const getRowProps = (rowProps, { row, instance }: { row: RowType; instance: Tabl
       }
       handleRowSelect(e);
     }
-    if (e.code === 'Space') {
+
+    // only prevent the default behavior if event was invoked in cell (not e.g. Input)
+    if (e.code === 'Space' && e.target.role === 'gridcell') {
       e.preventDefault();
     }
   };

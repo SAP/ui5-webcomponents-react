@@ -1,10 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/Timeline.js';
+import type TimelineGrowingMode from '@ui5/webcomponents-fiori/dist/types/TimelineGrowingMode.js';
 import type TimelineLayout from '@ui5/webcomponents-fiori/dist/types/TimelineLayout.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TimelineAttributes {
   /**
@@ -16,19 +17,64 @@ interface TimelineAttributes {
   accessibleName?: string | undefined;
 
   /**
+   * Defines whether the Timeline will have growing capability either by pressing a "More" button,
+   * or via user scroll. In both cases a `load-more` event is fired.
+   *
+   * Available options:
+   *
+   * `Button` - Displays a button at the end of the Timeline, which when pressed triggers the `load-more` event.
+   *
+   * `Scroll` -Triggers the `load-more` event when the user scrolls to the end of the Timeline.
+   *
+   * `None` (default) - The growing functionality is off.
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents-fiori**.
+   * @default "None"
+   */
+  growing?: TimelineGrowingMode | keyof typeof TimelineGrowingMode;
+
+  /**
    * Defines the items orientation.
    * @default "Vertical"
    */
   layout?: TimelineLayout | keyof typeof TimelineLayout;
+
+  /**
+   * Defines if the component should display a loading indicator over the Timeline.
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents-fiori**.
+   * @default false
+   */
+  loading?: boolean;
+
+  /**
+   * Defines the delay in milliseconds, after which the loading indicator will show up for this component.
+   * @default 1000
+   */
+  loadingDelay?: number;
 }
 
 interface TimelineDomRef extends Required<TimelineAttributes>, Ui5DomRef {}
 
-interface TimelinePropTypes extends TimelineAttributes, Omit<CommonProps, keyof TimelineAttributes | 'children'> {
+interface TimelinePropTypes
+  extends TimelineAttributes,
+    Omit<CommonProps, keyof TimelineAttributes | 'children' | 'onLoadMore'> {
   /**
    * Determines the content of the `Timeline`.
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired when the user presses the `More` button or scrolls to the Timeline's end.
+   *
+   * **Note:** The event will be fired if `growing` is set to `Button` or `Scroll`.
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onLoadMore?: (event: Ui5CustomEvent<TimelineDomRef>) => void;
 }
 
 /**
@@ -42,10 +88,10 @@ interface TimelinePropTypes extends TimelineAttributes, Omit<CommonProps, keyof 
  */
 const Timeline = withWebComponent<TimelinePropTypes, TimelineDomRef>(
   'ui5-timeline',
-  ['accessibleName', 'layout'],
+  ['accessibleName', 'growing', 'layout', 'loadingDelay'],
+  ['loading'],
   [],
-  [],
-  []
+  ['load-more']
 );
 
 Timeline.displayName = 'Timeline';

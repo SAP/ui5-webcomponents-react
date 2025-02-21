@@ -2,8 +2,8 @@
 
 import '@ui5/webcomponents/dist/TableGrowing.js';
 import type TableGrowingMode from '@ui5/webcomponents/dist/types/TableGrowingMode.js';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface TableGrowingAttributes {
   /**
@@ -30,7 +30,8 @@ interface TableGrowingAttributes {
    *
    * Button - Shows a More button at the bottom of the table, pressing it will load more rows.
    *
-   * Scroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable, this option is the same as the Button.
+   * Scroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable,
+   * a growing button will be rendered instead to ensure growing functionality.
    * @default "Button"
    */
   type?: TableGrowingMode | keyof typeof TableGrowingMode;
@@ -70,6 +71,10 @@ interface TableGrowingPropTypes
  * 	<TableGrowing type="Button" growing-text="More" slot="features"></TableGrowing>
  * </Table>
  * ```
+ *
+ * **Notes**:
+ * * When the `TableGrowing` component is used with the `Scroll` type and the table is currently not scrollable,
+ * the component will render a growing button instead to ensure growing capabilities until the table becomes scrollable.
  *
  *
  *

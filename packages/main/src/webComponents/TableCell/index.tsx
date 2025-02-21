@@ -2,14 +2,13 @@
 
 import '@ui5/webcomponents/dist/TableCell.js';
 import type TableCellHorizontalAlign from '@ui5/webcomponents/dist/types/TableCellHorizontalAlign.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5DomRef } from '../../types/index.js';
 
 interface TableCellAttributes {
   /**
    * Determines the horizontal alignment of table cells.
-   * **Note:** All values valid for justify-content can be used, not just the ones inside the enumeration.
    * @default undefined
    */
   horizontalAlign?: TableCellHorizontalAlign | undefined | keyof typeof TableCellHorizontalAlign;

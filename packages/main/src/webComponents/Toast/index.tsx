@@ -2,9 +2,9 @@
 
 import '@ui5/webcomponents/dist/Toast.js';
 import type ToastPlacement from '@ui5/webcomponents/dist/types/ToastPlacement.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface ToastAttributes {
   /**
@@ -73,7 +73,6 @@ interface ToastPropTypes extends ToastAttributes, Omit<CommonProps, keyof ToastA
  * - You want users to be able to copy some part of the message text.
  *
  *
- * __Note:__ The `Toast` component does not currently use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API), which may cause issues like incorrect positioning or alignment. To avoid these side effects, we recommend mounting the `Toast` outside the parents' DOM hierarchy, either directly or by using `React.createPortal`, until the Popover API is integrated into this component as well.
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */

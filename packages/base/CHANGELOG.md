@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.1...v2.7.2) (2025-02-13)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-base
+
+## [2.7.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.0...v2.7.1) (2025-02-05)
+
+### Bug Fixes
+
+- **base:** correct `getEffectiveScopingSuffixForTag` import path ([#6901](https://github.com/SAP/ui5-webcomponents-react/issues/6901)) ([59a3324](https://github.com/SAP/ui5-webcomponents-react/commit/59a3324ae067bd73bd906468d4e3b77ff94f45d3)), closes [#6900](https://github.com/SAP/ui5-webcomponents-react/issues/6900)
+
+# [2.7.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.6.0...v2.7.0) (2025-02-04)
+
+### Bug Fixes
+
+- **ThemingParameters:** update css vars ([#6823](https://github.com/SAP/ui5-webcomponents-react/issues/6823)) ([a2cc7bd](https://github.com/SAP/ui5-webcomponents-react/commit/a2cc7bd4cd4aa6bc7fcdf02db64c9130aef1b02b))
+
+### Features
+
+- **cypress-commands:** support cypress v14 ([#6828](https://github.com/SAP/ui5-webcomponents-react/issues/6828)) ([cc7f950](https://github.com/SAP/ui5-webcomponents-react/commit/cc7f950beee4d74329bc077f773c941680cac0ea))
+- update to UI5 Web Components 2.7.0 ([#6890](https://github.com/SAP/ui5-webcomponents-react/issues/6890)) ([1b85eb3](https://github.com/SAP/ui5-webcomponents-react/commit/1b85eb3522a9bfc6d0fb6ae1e6e5237f95df7b56))
+
 # [2.6.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.5.0...v2.6.0) (2025-01-09)
 
 ### Features

@@ -233,6 +233,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const objectPageContentRef = useRef<HTMLDivElement>(null);
   const selectionScrollTimeout = useRef(null);
   const isToggledRef = useRef(false);
+  const isInitial = useRef(true);
   const [headerCollapsedInternal, setHeaderCollapsedInternal] = useState<undefined | boolean>(undefined);
   const [scrolledHeaderExpanded, setScrolledHeaderExpanded] = useState(false);
   const scrollTimeout = useRef(0);
@@ -366,7 +367,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   };
 
   // section was selected by clicking on the tab bar buttons
-  const handleOnSectionSelected = (targetEvent, newSelectionSectionId, index, section) => {
+  const handleOnSectionSelected = (targetEvent, newSelectionSectionId, index: number | string, section) => {
     isProgrammaticallyScrolled.current = true;
     debouncedOnSectionChange.cancel();
     setSelectedSubSectionId(undefined);
@@ -458,42 +459,67 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   }, [props.selectedSubSectionId, isMounted]);
 
   const tabContainerContainerRef = useRef(null);
+  const isHeaderPinnedAndExpanded = headerPinned && !headerCollapsed;
   useEffect(() => {
     const objectPage = objectPageRef.current;
-    const sectionNodes = objectPage.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSection"]');
-    const lastSectionNode = sectionNodes[sectionNodes.length - 1];
     const tabContainerContainer = tabContainerContainerRef.current;
 
-    const observer = new ResizeObserver(([sectionElement]) => {
+    if (!objectPage || !tabContainerContainer) {
+      return;
+    }
+
+    const footerElement = objectPage.querySelector<HTMLDivElement>('[data-component-name="ObjectPageFooter"]');
+    const topHeaderElement = objectPage.querySelector('[data-component-name="ObjectPageTopHeader"]');
+
+    const calculateSpacer = ([lastSectionNodeEntry]: ResizeObserverEntry[]) => {
+      const lastSectionNode = lastSectionNodeEntry?.target;
+
+      if (!lastSectionNode) {
+        setSectionSpacer(0);
+        return;
+      }
+
       const subSections = lastSectionNode.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSubSection"]');
       const lastSubSection = subSections[subSections.length - 1];
-      const lastSubSectionOrSection = lastSubSection ?? sectionElement.target;
+      const lastSubSectionOrSection = lastSubSection ?? lastSectionNode;
+
       if ((currentTabModeSection && !lastSubSection) || (sectionNodes.length === 1 && !lastSubSection)) {
         setSectionSpacer(0);
-      } else if (tabContainerContainer) {
-        const footerHeight =
-          objectPage.querySelector<HTMLDivElement | undefined>('[data-component-name="ObjectPageFooter"]')
-            ?.offsetHeight ?? 0;
-
-        setSectionSpacer(
-          objectPage.getBoundingClientRect().bottom -
-            tabContainerContainer.getBoundingClientRect().bottom -
-            lastSubSectionOrSection.getBoundingClientRect().height -
-            footerHeight -
-            // section padding
-            8
-        );
+        return;
       }
-    });
 
-    if (objectPage && lastSectionNode) {
+      // batching DOM-reads together minimizes reflow
+      const footerHeight = footerElement?.offsetHeight ?? 0;
+      const objectPageRect = objectPage.getBoundingClientRect();
+      const tabContainerContainerRect = tabContainerContainer.getBoundingClientRect();
+      const lastSubSectionOrSectionRect = lastSubSectionOrSection.getBoundingClientRect();
+
+      let stickyHeaderBottom = 0;
+      if (!isHeaderPinnedAndExpanded) {
+        const topHeaderBottom = topHeaderElement?.getBoundingClientRect().bottom ?? 0;
+        stickyHeaderBottom = topHeaderBottom + tabContainerContainerRect.height;
+      } else {
+        stickyHeaderBottom = tabContainerContainerRect.bottom;
+      }
+
+      const spacer = Math.ceil(
+        objectPageRect.bottom - stickyHeaderBottom - lastSubSectionOrSectionRect.height - footerHeight // section padding (8px) not included, so that the intersection observer is triggered correctly
+      );
+      setSectionSpacer(Math.max(spacer, 0));
+    };
+
+    const observer = new ResizeObserver(calculateSpacer);
+    const sectionNodes = objectPage.querySelectorAll<HTMLDivElement>('[id^="ObjectPageSection"]');
+    const lastSectionNode = sectionNodes[sectionNodes.length - 1];
+
+    if (lastSectionNode) {
       observer.observe(lastSectionNode, { box: 'border-box' });
     }
 
     return () => {
       observer.disconnect();
     };
-  }, [headerCollapsed, topHeaderHeight, headerContentHeight, currentTabModeSection, children, mode]);
+  }, [topHeaderHeight, headerContentHeight, currentTabModeSection, children, mode, isHeaderPinnedAndExpanded]);
 
   const onToggleHeaderContentVisibility = useCallback((e) => {
     isToggledRef.current = true;
@@ -592,7 +618,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
 
   const snappedHeaderInObjPage = titleArea && titleArea.props.snappedContent && headerCollapsed === true && !!image;
 
-  const isInitial = useRef(true);
   useEffect(() => {
     if (!isInitial.current) {
       scrollTimeout.current = performance.now() + 200;
@@ -646,6 +671,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     }
     event.preventDefault();
     const { sectionId, index, isSubTab, parentId } = event.detail.tab.dataset;
+
     if (isSubTab !== undefined) {
       handleOnSubSectionSelected(enrichEventWithDetails(event, { sectionId: parentId, subSectionId: sectionId }));
     } else {
@@ -768,7 +794,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
             top:
               scrolledHeaderExpanded || headerPinned
                 ? `${topHeaderHeight + (headerCollapsed === true ? 0 : headerContentHeight)}px`
-                : `${topHeaderHeight + 5}px`
+                : `${topHeaderHeight}px`
           }}
         >
           <ObjectPageAnchorBar

@@ -2,9 +2,9 @@
 
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
 import type { ColorPalettePopoverItemClickEventDetail } from '@ui5/webcomponents/dist/ColorPalettePopover.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '../../types/index.js';
 
 interface ColorPalettePopoverAttributes {
   /**
@@ -41,8 +41,6 @@ interface ColorPalettePopoverAttributes {
 
   /**
    * Defines whether the user can choose a custom color from a component.
-   *
-   * **Note:** In order to use this property you need to import the following module: `"@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js"`
    * @default false
    */
   showMoreColors?: boolean;

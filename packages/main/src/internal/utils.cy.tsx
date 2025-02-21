@@ -114,22 +114,22 @@ describe('utils', function () {
     cy.findByText('Sticky Header')
       .as('sticky1')
       .should(($el) => {
-        expect($el[0].getBoundingClientRect().top).to.approximately(216, 1);
+        expect($el[0].getBoundingClientRect().top).to.approximately(184, 1);
       });
     cy.findByText('Content1')
       .as('content1')
       .should(($el) => {
-        expect($el[0].getBoundingClientRect().top).to.approximately(280, 1);
+        expect($el[0].getBoundingClientRect().top).to.approximately(248, 1);
       });
     cy.findByText('Sticky Header 2')
       .as('sticky2')
       .should(($el) => {
-        expect($el[0].getBoundingClientRect().top).to.approximately(520, 1);
+        expect($el[0].getBoundingClientRect().top).to.approximately(488, 1);
       });
     cy.findByText('End Content')
       .as('endContent')
       .should(($el) => {
-        expect($el[0].getBoundingClientRect().top).to.approximately(2648, 1);
+        expect($el[0].getBoundingClientRect().top).to.approximately(2616, 1);
       });
 
     cy.get('.ui5-dynamic-page-scroll-container').scrollTo('bottom');

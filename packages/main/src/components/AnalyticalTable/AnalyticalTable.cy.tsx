@@ -25,6 +25,7 @@ import {
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import type { RowType } from '@/packages/main/src/components/AnalyticalTable/types/index.js';
 import { getUi5TagWithSuffix } from '@/packages/main/src/internal/utils.js';
 
 const generateMoreData = (count) => {
@@ -1937,6 +1938,7 @@ describe('AnalyticalTable', () => {
         subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
       />
     );
+    cy.wait(300);
 
     cy.findByText('SubComponent 1').should('exist').and('not.be.visible');
     cy.findByTitle('Expand Node').should('not.exist');
@@ -3414,6 +3416,78 @@ describe('AnalyticalTable', () => {
     cy.findByText('Close Popover').click();
     cy.findByTestId('popover').should('not.exist');
     cy.get('[data-component-name="ATHeaderPopover"]').should('not.exist');
+  });
+
+  it('Interactive Cell content', () => {
+    const columns: AnalyticalTableColumnDefinition[] = [
+      { Header: 'Name', accessor: 'name' },
+      {
+        Header: 'Custom',
+        id: 'custom',
+        Cell: ({ row }: { row: RowType }) => {
+          switch (row.index) {
+            case 0:
+              return <Input />;
+            case 1:
+              return (
+                <Button
+                  onClick={() => {
+                    document.querySelector('[data-testid="btn-was-clicked"]').textContent = 'true';
+                  }}
+                >
+                  Click
+                </Button>
+              );
+            default:
+              return <Input />;
+          }
+        }
+      }
+    ];
+    const TestComp = () => {
+      const [selected, setSelected] = useState({});
+      return (
+        <>
+          <AnalyticalTable
+            data={data}
+            columns={columns}
+            selectionMode="Multiple"
+            onRowSelect={(e) => {
+              setSelected(e.detail.selectedRowIds);
+            }}
+          />
+          <span data-testid="sel">{JSON.stringify(selected)}</span>
+          <span data-testid="btn-was-clicked" />
+        </>
+      );
+    };
+    cy.mount(<TestComp />);
+    // for some reason only required for React18
+    cy.wait(300);
+
+    // Pressing SPACE inside input components should work
+    // Focus: (1,0) -> (col, row)
+    cy.realPress('Tab');
+    // (1,1)
+    cy.realPress('ArrowDown');
+    cy.focused().realPress('Space');
+    cy.findByTestId('sel').should('have.text', '{"0":true}');
+    // (2,1)
+    cy.realPress('ArrowRight');
+    cy.focused().realPress('Space');
+    cy.findByTestId('sel').should('have.text', '{}');
+    // Focus: Input (2,1)
+    cy.realPress('Tab');
+    cy.focused().type('3Spaces   2Spaces  ');
+    cy.focused().should('have.value', '3Spaces   2Spaces  ');
+    cy.findByTestId('sel').should('have.text', '{}');
+    // (2,2)
+    cy.realPress('ArrowDown');
+    // Focus: Button (2,2)
+    cy.realPress('Tab');
+    cy.focused().realPress('Space');
+    cy.findByTestId('sel').should('have.text', '{}');
+    cy.findByTestId('btn-was-clicked').should('have.text', 'true');
   });
 
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });

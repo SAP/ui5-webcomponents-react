@@ -3,6 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import type {
   ShellBarAccessibilityAttributes,
+  ShellBarContentItemVisibilityChangeEventDetail,
   ShellBarLogoClickEventDetail,
   ShellBarMenuItemClickEventDetail,
   ShellBarNotificationsClickEventDetail,
@@ -10,9 +11,9 @@ import type {
   ShellBarProfileClickEventDetail,
   ShellBarSearchButtonEventDetail
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
-import { withWebComponent } from '../../internal/withWebComponent.js';
-import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '../../types/index.js';
 
 interface ShellBarAttributes {
   /**
@@ -134,11 +135,13 @@ interface ShellBarPropTypes
       | keyof ShellBarAttributes
       | 'assistant'
       | 'children'
+      | 'content'
       | 'logo'
       | 'menuItems'
       | 'profile'
       | 'searchField'
       | 'startButton'
+      | 'onContentItemVisibilityChange'
       | 'onLogoClick'
       | 'onMenuItemClick'
       | 'onNotificationsClick'
@@ -168,6 +171,20 @@ interface ShellBarPropTypes
   children?: ReactNode | ReactNode[];
 
   /**
+   * Define the items displayed in the additional content area.
+   * **Note:** The `content` slot is in an experimental state and is a subject to change.
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="content"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents-fiori**.
+   */
+  content?: UI5WCSlotsNode;
+
+  /**
    * Defines the logo of the `ShellBar`.
    * For example, you can use `ui5-avatar` or `img` elements as logo.
    *
@@ -180,7 +197,7 @@ interface ShellBarPropTypes
   logo?: UI5WCSlotsNode;
 
   /**
-   * Defines the items displayed in menu after a click on the primary title.
+   * Defines the items displayed in menu after a click on a start button.
    *
    * **Note:** You can use the  `<ui5-li></ui5-li>` and its ancestors.
    *
@@ -220,7 +237,7 @@ interface ShellBarPropTypes
 
   /**
    * Defines a `ui5-button` in the bar that will be placed in the beginning.
-   * We encourage this slot to be used for a back or home button.
+   * We encourage this slot to be used for a menu button.
    * It gets overstyled to match ShellBar's styling.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="startButton"`).
@@ -230,6 +247,20 @@ interface ShellBarPropTypes
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
    */
   startButton?: UI5WCSlotsNode;
+  /**
+   * Fired, when an item from the content slot is hidden or shown.
+   * **Note:** The `content-item-visibility-change` event is in an experimental state and is a subject to change.
+   *
+   * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onContentItemVisibilityChange?: (
+    event: Ui5CustomEvent<ShellBarDomRef, ShellBarContentItemVisibilityChangeEventDetail>
+  ) => void;
+
   /**
    * Fired, when the logo is activated.
    *
@@ -328,8 +359,9 @@ const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',
   ['accessibilityAttributes', 'notificationsCount', 'primaryTitle', 'secondaryTitle'],
   ['showNotifications', 'showProductSwitch', 'showSearchField'],
-  ['assistant', 'logo', 'menuItems', 'profile', 'searchField', 'startButton'],
+  ['assistant', 'content', 'logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   [
+    'content-item-visibility-change',
     'logo-click',
     'menu-item-click',
     'notifications-click',

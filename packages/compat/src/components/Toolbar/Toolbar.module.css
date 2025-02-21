@@ -134,4 +134,8 @@
 
 .childContainer {
   display: flex;
+
+  &:empty {
+    margin: 0 !important;
+  }
 }

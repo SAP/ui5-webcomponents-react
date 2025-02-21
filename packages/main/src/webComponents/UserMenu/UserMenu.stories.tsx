@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Avatar } from '../Avatar/index.js';
 import { ShellBar } from '../ShellBar/index.js';
 import { UserMenuAccount } from '../UserMenuAccount/index.js';
@@ -13,9 +13,7 @@ const meta = {
   argTypes: {
     children: { control: { disable: true } },
     opener: { control: { disable: true } },
-    accounts: { control: { disable: true } },
-    //todo: enable again once `close` event is exposed and the story is adjusted accordingly
-    open: { control: { disable: true } }
+    accounts: { control: { disable: true } }
   },
   args: {
     accounts: (
@@ -60,6 +58,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render(args) {
     const userMenuRef = useRef<UserMenuDomRef>(null);
+    const [open, setOpen] = useState(args.open);
+
+    useEffect(() => {
+      setOpen(args.open);
+    }, [args.open]);
     return (
       <>
         <ShellBar
@@ -76,9 +79,17 @@ export const Default: Story = {
           onProfileClick={(event) => {
             userMenuRef.current.opener = event.detail.targetRef;
             userMenuRef.current.open = true;
+            setOpen(true);
           }}
         />
-        <UserMenu ref={userMenuRef} {...args} />
+        <UserMenu
+          ref={userMenuRef}
+          {...args}
+          open={open}
+          onClose={() => {
+            setOpen(false);
+          }}
+        />
       </>
     );
   }

@@ -2,9 +2,9 @@ import {
   setCustomElementsScopingRules,
   setCustomElementsScopingSuffix
 } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
+import type { ButtonDomRef } from '@ui5/webcomponents-react';
+import { Bar, Button, Popover, Switch } from '@ui5/webcomponents-react';
 import { useReducer, useRef, useState } from 'react';
-import type { ButtonDomRef } from '../webComponents/index.js';
-import { Bar, Button, Popover, Switch } from '../webComponents/index.js';
 
 describe('withWebComponent', () => {
   // reset scoping
@@ -42,13 +42,13 @@ describe('withWebComponent', () => {
     };
     cy.mount(<TestComp />);
 
-    cy.findByTestId('switch').click();
+    cy.findByTestId('switch').realClick();
     cy.findByText('Btn').click();
     cy.get('@custom').should('have.been.calledOnce');
     cy.get('@native').should('have.been.calledOnce');
     cy.get('@nativePassedThrough').should('have.been.calledOnce');
     cy.findByText('Update handler').click();
-    cy.findByTestId('switch').click();
+    cy.findByTestId('switch').realClick();
     cy.findByText('Btn').click();
     cy.get('@custom').should('have.been.calledOnce');
     cy.get('@native').should('have.been.calledOnce');
