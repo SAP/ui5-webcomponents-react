@@ -149,6 +149,8 @@ const preview: Preview = {
           'Layouts & Floorplans',
           'Modals & Popovers',
           'User Feedback',
+          'AI',
+          ['Docs'],
           'Legacy Components'
         ]
       }
