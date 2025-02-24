@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: preactjs/compressed-size-action@2.7.0
+      - uses: preactjs/compressed-size-action@2.8.0
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           pattern: 'packages/**/dist/**/*.{js,css}'
@@ -127,7 +127,7 @@ jobs:
           NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.7.2
+        uses: JamesIves/github-pages-deploy-action@v4.7.3
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.

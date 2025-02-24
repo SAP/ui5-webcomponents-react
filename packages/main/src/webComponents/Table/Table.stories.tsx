@@ -2,7 +2,9 @@ import dataLarge from '@sb/mockData/Friends500.json';
 import type { Meta, StoryObj } from '@storybook/react';
 import TableGrowingMode from '@ui5/webcomponents/dist/types/TableGrowingMode.js';
 import TableSelectionMode from '@ui5/webcomponents/dist/types/TableSelectionMode.js';
-import type { TableVirtualizerPropTypes } from '@ui5/webcomponents-react';
+import editIcon from '@ui5/webcomponents-icons/dist/edit.js';
+import saveIcon from '@ui5/webcomponents-icons/dist/save.js';
+import type { TablePropTypes, TableVirtualizerPropTypes } from '@ui5/webcomponents-react';
 import { SegmentedButton, SegmentedButtonItem } from '@ui5/webcomponents-react';
 import { useEffect, useState } from 'react';
 import { TableCell } from '../TableCell/index.js';
@@ -10,9 +12,40 @@ import { TableGrowing } from '../TableGrowing/index.js';
 import { TableHeaderCell } from '../TableHeaderCell/index.js';
 import { TableHeaderRow } from '../TableHeaderRow/index.js';
 import { TableRow } from '../TableRow/index.js';
+import { TableRowAction } from '../TableRowAction/index.js';
+import { TableRowActionNavigation } from '../TableRowActionNavigation/index.js';
 import { TableSelection } from '../TableSelection/index.js';
 import { TableVirtualizer } from '../TableVirtualizer/index.js';
 import { Table } from './index.js';
+
+const popInColumns = (
+  <TableHeaderRow sticky>
+    <TableHeaderCell width={'200px'} minWidth={'200px'}>
+      <span>Product</span>
+    </TableHeaderCell>
+    <TableHeaderCell minWidth={'200px'}>
+      <span>Supplier</span>
+    </TableHeaderCell>
+    <TableHeaderCell minWidth={'200px'}>
+      <span>Dimensions</span>
+    </TableHeaderCell>
+    <TableHeaderCell minWidth={'100px'} maxWidth="200px">
+      <span>Weight</span>
+    </TableHeaderCell>
+    <TableHeaderCell minWidth="200px">
+      <span>Price</span>
+    </TableHeaderCell>
+  </TableHeaderRow>
+);
+
+const columns = (
+  <TableHeaderRow sticky>
+    <TableHeaderCell>Name</TableHeaderCell>
+    <TableHeaderCell>Age</TableHeaderCell>
+    <TableHeaderCell>Friend Name</TableHeaderCell>
+    <TableHeaderCell>Friend Age</TableHeaderCell>
+  </TableHeaderRow>
+);
 
 const meta = {
   title: 'Data Display / Table',
@@ -23,25 +56,7 @@ const meta = {
     children: { control: { disable: true } }
   },
   args: {
-    headerRow: (
-      <TableHeaderRow sticky>
-        <TableHeaderCell width={'200px'} minWidth={'200px'}>
-          <span>Product</span>
-        </TableHeaderCell>
-        <TableHeaderCell minWidth={'200px'}>
-          <span>Supplier</span>
-        </TableHeaderCell>
-        <TableHeaderCell minWidth={'200px'}>
-          <span>Dimensions</span>
-        </TableHeaderCell>
-        <TableHeaderCell minWidth={'100px'} maxWidth="200px">
-          <span>Weight</span>
-        </TableHeaderCell>
-        <TableHeaderCell minWidth="200px">
-          <span>Price</span>
-        </TableHeaderCell>
-      </TableHeaderRow>
-    )
+    headerRow: popInColumns
   },
   tags: ['package:@ui5/webcomponents']
 } satisfies Meta<typeof Table>;
@@ -189,7 +204,7 @@ export const WithSelection: Story = {
 const dataLargeWithPosition = dataLarge.map((item, index) => ({ ...item, position: index }));
 
 export const VirtualizedTableRows: Story = {
-  args: { className: 'tableHeightContentDensity' },
+  args: { className: 'tableHeightContentDensity', headerRow: columns },
   render(args) {
     const [data, setData] = useState(dataLargeWithPosition.slice(0, 9));
     const [isCozy, setIsCozy] = useState(true);
@@ -224,18 +239,114 @@ export const VirtualizedTableRows: Story = {
     return (
       <Table
         {...args}
-        headerRow={
-          <TableHeaderRow sticky>
-            <TableHeaderCell>Name</TableHeaderCell>
-            <TableHeaderCell>Age</TableHeaderCell>
-            <TableHeaderCell>Friend Name</TableHeaderCell>
-            <TableHeaderCell>Friend Age</TableHeaderCell>
-          </TableHeaderRow>
-        }
         features={<TableVirtualizer rowCount={500} rowHeight={isCozy ? 44 : 32} onRangeChange={handleRangeChange} />}
       >
         {data.map((row) => (
           <TableRow key={row.position} position={row.position}>
+            <TableCell>
+              <span>{row.name}</span>
+            </TableCell>
+            <TableCell>
+              <span>{row.age}</span>
+            </TableCell>
+            <TableCell>
+              <span>{row.friend.name}</span>
+            </TableCell>
+            <TableCell>
+              <span>{row.friend.age}</span>
+            </TableCell>
+          </TableRow>
+        ))}
+      </Table>
+    );
+  }
+};
+
+export const withRowActions: Story = {
+  args: { headerRow: columns, rowActionCount: 3 },
+  render(args) {
+    return (
+      <Table {...args}>
+        {dataLarge.slice(0, 10).map((row, index) => (
+          <TableRow
+            key={`${row.name}-${row.age}`}
+            actions={
+              <>
+                <TableRowAction icon={editIcon}>Edit</TableRowAction>
+                <TableRowAction icon={saveIcon} disabled>
+                  Save
+                </TableRowAction>
+                <TableRowActionNavigation interactive={!!(index % 2)} />
+              </>
+            }
+          >
+            <TableCell>
+              <span>{row.name}</span>
+            </TableCell>
+            <TableCell>
+              <span>{row.age}</span>
+            </TableCell>
+            <TableCell>
+              <span>{row.friend.name}</span>
+            </TableCell>
+            <TableCell>
+              <span>{row.friend.age}</span>
+            </TableCell>
+          </TableRow>
+        ))}
+      </Table>
+    );
+  }
+};
+
+export const dragAndDropRows: Story = {
+  args: { headerRow: columns },
+  render(args) {
+    const [rows, setRows] = useState(dataLargeWithPosition.slice(0, 10));
+
+    const handleMove: TablePropTypes['onMove'] = (e) => {
+      const { source, destination } = e.detail;
+      // enabling this causes the Storybook to freeze due to the number of logs
+      // args.onMove(e);
+
+      setRows((prevRows) => {
+        const sourceIndex = prevRows.findIndex((row) => `${row.position}` === source.element.dataset.id);
+        const destinationIndex = prevRows.findIndex((row) => `${row.position}` === destination.element.dataset.id);
+
+        if (sourceIndex === -1 || destinationIndex === -1) {
+          return prevRows;
+        }
+
+        const updatedRows = [...prevRows];
+        const [movedRow] = updatedRows.splice(sourceIndex, 1);
+
+        if (destination.placement === 'Before') {
+          updatedRows.splice(destinationIndex, 0, movedRow);
+        } else if (destination.placement === 'After') {
+          updatedRows.splice(destinationIndex + 1, 0, movedRow);
+        }
+
+        return updatedRows;
+      });
+    };
+
+    const handleMoveOver: TablePropTypes['onMoveOver'] = (e) => {
+      const { source, destination } = e.detail;
+      // args.onMoveOver(e);
+
+      if (
+        source.element.hasAttribute('ui5-table-row') &&
+        destination.element.hasAttribute('ui5-table-row') &&
+        destination.placement !== 'On'
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    return (
+      <Table {...args} onMove={handleMove} onMoveOver={handleMoveOver}>
+        {rows.map((row) => (
+          <TableRow key={row.position} movable data-id={row.position}>
             <TableCell>
               <span>{row.name}</span>
             </TableCell>

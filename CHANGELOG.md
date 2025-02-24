@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.1...v2.7.2) (2025-02-13)
+
+### Bug Fixes
+
+- **AnalyticalTable:** update virtualizer in animation frame ([#6923](https://github.com/SAP/ui5-webcomponents-react/issues/6923)) ([d87c06e](https://github.com/SAP/ui5-webcomponents-react/commit/d87c06ed8dd56cef03bdd17a4cfb1fca58b3523d))
+- **deps:** update dependency @tanstack/react-virtual to v3.13.0 ([#6913](https://github.com/SAP/ui5-webcomponents-react/issues/6913)) ([280afa9](https://github.com/SAP/ui5-webcomponents-react/commit/280afa994b90b39fd9c45218af58b03911640837))
+- export all components on root ([#6942](https://github.com/SAP/ui5-webcomponents-react/issues/6942)) ([90b7bb6](https://github.com/SAP/ui5-webcomponents-react/commit/90b7bb64a2468f6d7fb14a5cc3cf1075f698cbf7)), closes [#6941](https://github.com/SAP/ui5-webcomponents-react/issues/6941)
+- suppress hydration warning ([#6910](https://github.com/SAP/ui5-webcomponents-react/issues/6910)) ([376e118](https://github.com/SAP/ui5-webcomponents-react/commit/376e118ff3fa31f21b2f4422016536c77a8c91c1))
+
 ## [2.7.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.0...v2.7.1) (2025-02-05)
 
 ### Bug Fixes
