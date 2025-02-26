@@ -905,6 +905,75 @@ describe('ObjectPage', () => {
     cy.get('@cb').should('not.been.called');
   });
 
+  it('programmatic prop selection', () => {
+    const TestComp = (props: ObjectPagePropTypes) => {
+      const [selectedSection, setSelectedSection] = useState(props.selectedSectionId);
+      const [selectedSubSection, setSelectedSubSection] = useState(props.selectedSubSectionId);
+
+      return (
+        <>
+          <button
+            onClick={() => {
+              setSelectedSection('goals');
+            }}
+          >
+            Select Goals
+          </button>
+          <button
+            onClick={() => {
+              setSelectedSubSection('personal-payment-information');
+            }}
+          >
+            Select Payment Information
+          </button>
+          <ObjectPage
+            {...props}
+            selectedSubSectionId={selectedSubSection}
+            selectedSectionId={selectedSection}
+            style={{ height: '1000px', scrollBehavior: 'auto' }}
+          >
+            {[
+              ...OPContent.slice(0, 1),
+              <ObjectPageSection key="0.5" titleText="Test2" id="test2" aria-label="Test2">
+                <div data-testid="section 1.5" style={{ height: '1200px', width: '100%', background: 'lightyellow' }}>
+                  <span data-testid="test-content">test-content</span>
+                </div>
+              </ObjectPageSection>,
+              ...OPContent.slice(1)
+            ]}
+          </ObjectPage>
+        </>
+      );
+    };
+
+    [
+      { headerTitle: DPTitle, headerContent: DPContent },
+      { headerTitle: DPTitle },
+      { headerContent: DPContent },
+      {}
+    ].forEach((props: ObjectPagePropTypes) => {
+      cy.mount(<TestComp {...props} selectedSubSectionId={`employment-job-relationship`} />);
+      cy.findByText('employment-job-relationship-content').should('be.visible');
+      cy.findByText('Job Information').should('not.be.visible');
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').should('have.attr', 'aria-selected', 'true');
+
+      cy.mount(<TestComp {...props} selectedSectionId={`personal`} />);
+      cy.findByText('personal-connect-content').should('be.visible');
+      cy.findByText('test-content').should('not.be.visible');
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
+
+      cy.findByText('Select Goals').click();
+      cy.findByText('goals-content').should('be.visible');
+      cy.findByText('personal-connect-content').should('not.be.visible');
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').should('have.attr', 'aria-selected', 'true');
+
+      cy.findByText('Select Payment Information').click();
+      cy.findByText('personal-payment-information-content').should('be.visible');
+      cy.findByText('personal-connect-content').should('not.be.visible');
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
+    });
+  });
+
   cypressPassThroughTestsFactory(ObjectPage);
 });
 
@@ -952,7 +1021,9 @@ const DPContent = (
 
 const OPContent = [
   <ObjectPageSection key="0" titleText="Goals" id="goals" aria-label="Goals">
-    <div data-testid="section 1" style={{ height: '400px', width: '100%', background: 'lightblue' }} />
+    <div data-testid="section 1" style={{ height: '400px', width: '100%', background: 'lightblue' }}>
+      <span>goals-content</span>
+    </div>
   </ObjectPageSection>,
   <ObjectPageSection key="1" titleText="Test" id="test" aria-label="Test">
     <div data-testid="section 2" style={{ height: '1200px', width: '100%', background: 'lightyellow' }}></div>
@@ -972,14 +1043,18 @@ const OPContent = [
         </>
       }
     >
-      <div style={{ height: '400px', width: '100%', background: 'black' }} />
+      <div style={{ height: '400px', width: '100%', background: 'black' }}>
+        <span>personal-connect-content</span>
+      </div>
     </ObjectPageSubSection>
     <ObjectPageSubSection
       titleText="Payment Information"
       id="personal-payment-information"
       aria-label="Payment Information"
     >
-      <div style={{ height: '400px', width: '100%', background: 'blue' }} />
+      <div style={{ height: '400px', width: '100%', background: 'blue' }}>
+        <span>personal-payment-information-content</span>
+      </div>
     </ObjectPageSubSection>
   </ObjectPageSection>,
   <ObjectPageSection key="3" titleText="Employment" id={`~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`} aria-label="Employment">
@@ -990,7 +1065,9 @@ const OPContent = [
       <div style={{ height: '100px', width: '100%', background: 'cadetblue' }}></div>
     </ObjectPageSubSection>
     <ObjectPageSubSection titleText="Job Relationship" id="employment-job-relationship" aria-label="Job Relationship">
-      <div style={{ height: '100px', width: '100%', background: 'lightgrey' }}></div>
+      <div style={{ height: '100px', width: '100%', background: 'lightgrey' }}>
+        <span>employment-job-relationship-content</span>
+      </div>
     </ObjectPageSubSection>
   </ObjectPageSection>
 ];
