@@ -20,8 +20,8 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "@types/react": "19.0.9",
-    "@types/react-dom": "19.0.3",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "@vitejs/plugin-react": "^4.3.2",
     "@ui5/webcomponents-cypress-commands": "2.7.2",
     "cypress": "^14.0.0",
