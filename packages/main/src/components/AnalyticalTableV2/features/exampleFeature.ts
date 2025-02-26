@@ -121,7 +121,7 @@ export const ColumnModesFeature: TableFeature<any> = {
   // createCell: <TData extends RowData>(cell, column, row, table): void => {},
   // if you need to add column instance APIs...
   createColumn: <TData extends RowData>(column, table): void => {
-    console.log(column);
+    // console.log(column);
     // console.log(column);
     // column.columnDef.size = 2000;
     // console.log(column, table.getState());

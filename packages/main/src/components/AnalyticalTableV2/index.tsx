@@ -61,16 +61,16 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
       //DensityFeature
       density: 'md'
     },
-    // initialState: {
-    //   columnPinning: {
-    //     left: ['c_pinned'],
-    //     right: ['friend_age']
-    //   },
-    //   rowPinning: {
-    //     bottom: ['0', '1'],
-    //     top: ['499', '498']
-    //   }
-    // }
+    initialState: {
+      columnPinning: {
+        left: ['c_pinned'],
+        right: ['F']
+      }
+      //   rowPinning: {
+      //     bottom: ['0', '1'],
+      //     top: ['499', '498']
+      //   }
+    },
     // column sizing
     defaultColumn: {
       size: 0,
@@ -98,7 +98,6 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
   const rowVirtualizer = useRowVirtualizer<HTMLDivElement>(rowHeight, tableContainerRef, { count: centerRows.length });
 
   // const { rows } = reactTable.getRowModel();
-
   return (
     <>
       <div
@@ -118,12 +117,13 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
       >
         <div className={classNames.tableBodyContainer} role="grid">
           <div className={clsx(classNames.sticky, classNames.headerGroups)} role="rowgroup">
-            {headerGroups.map((headerGroup) => {
+            {headerGroups.map((headerGroup, index) => {
               return (
                 <Row
                   key={headerGroup.id}
                   className={classNames.headerRow}
                   data-component-name="AnalyticalTableV2HeaderRow"
+                  startIndex={index}
                 >
                   {headerGroup.headers.map((header) => {
                     return (
@@ -142,9 +142,13 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
           </div>
           {topRows.length > 0 && (
             <div role="rowgroup" className={clsx(classNames.sticky, classNames.topRowsGroup)}>
-              {topRows.map((row) => {
+              {topRows.map((row, index) => {
                 return (
-                  <Row key={row.id} data-component-name="AnalyticalTableV2TopRow">
+                  <Row
+                    key={row.id}
+                    data-component-name="AnalyticalTableV2TopRow"
+                    startIndex={headerGroups.length + index}
+                  >
                     {row.getVisibleCells().map((cell) => {
                       return (
                         <Cell
@@ -174,7 +178,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
               return (
                 <Row
                   key={row.id}
-                  data-index={virtualRow.index}
+                  startIndex={headerGroups.length + topRows.length + virtualRow.index}
                   style={{
                     transform: `translateY(${virtualRow.start}px)` //this should always be a `style` as it changes on scroll
                     // height: `${virtualRow.size}px`
@@ -198,9 +202,13 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
           </div>
           {bottomRows.length > 0 && (
             <div role="rowgroup" className={clsx(classNames.sticky, classNames.bottomRowsGroup)}>
-              {bottomRows.map((row) => {
+              {bottomRows.map((row, index) => {
                 return (
-                  <Row key={row.id} data-component-name="AnalyticalTableV2BottomRow">
+                  <Row
+                    key={row.id}
+                    data-component-name="AnalyticalTableV2BottomRow"
+                    startIndex={headerGroups.length + topRows.length + centerRows.length + index}
+                  >
                     {row.getVisibleCells().map((cell) => {
                       return (
                         <Cell

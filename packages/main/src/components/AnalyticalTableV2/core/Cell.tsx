@@ -35,6 +35,7 @@ interface CellProps<TData, TValue> {
 
 export function Cell<TData, TValue>(props: CellProps<TData, TValue>) {
   const { style = {}, role, cell, renderable } = props;
+  const cellContext = cell.getContext();
 
   return (
     <div
@@ -45,7 +46,7 @@ export function Cell<TData, TValue>(props: CellProps<TData, TValue>) {
       }}
       className={classNames.cell}
     >
-      {flexRender(renderable, cell.getContext())}
+      {flexRender(renderable, cellContext)}
     </div>
   );
 }
