@@ -224,7 +224,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const [sectionSpacer, setSectionSpacer] = useState(0);
   const [currentTabModeSection, setCurrentTabModeSection] = useState(null);
   const sections = mode === ObjectPageMode.IconTabBar ? currentTabModeSection : children;
-  const isScrolling = useRef<number | null>(null);
+  const isScrolling = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const deprecationNoticeDisplayed = useRef(false);
   useEffect(() => {
