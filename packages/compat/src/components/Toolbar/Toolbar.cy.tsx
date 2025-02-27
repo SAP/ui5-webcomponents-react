@@ -79,6 +79,7 @@ const OverflowTestComponent = (props: PropTypes) => {
         <Text data-testid="toolbar-item" style={{ width: '200px' }}>
           Item1
         </Text>
+        {/*not rendered in overflow popover*/}
         <ToolbarSpacer data-testid="spacer1" />
         <Text data-testid="toolbar-item2" style={{ width: '200px' }}>
           Item2
@@ -143,7 +144,7 @@ describe('Toolbar', () => {
     cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />);
     cy.get('@overflowChangeSpy').should('have.been.calledOnce');
     cy.findByTestId('toolbarElements').should('have.text', 2);
-    cy.findByTestId('overflowElements').should('have.text', 4);
+    cy.findByTestId('overflowElements').should('have.text', 3);
     cy.findByText('Item1').should('be.visible');
     cy.get('[data-testid="toolbar-item2"]').should('not.be.visible');
     cy.get('[data-testid="toolbar-item3"]').should('not.be.visible');
@@ -156,14 +157,14 @@ describe('Toolbar', () => {
 
     cy.viewport(500, 500);
 
-    // fuzzy - remount component instead
+    // flaky - remount component instead
     // cy.get(`[ui5-toggle-button]`).click();
     cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />);
     cy.get('[ui5-popover]').should('not.have.attr', 'open');
 
     cy.get('@overflowChangeSpy').should('have.callCount', 2);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 2);
 
     cy.findByTestId('input').shadow().find('input').type('100');
     cy.findByTestId('input').trigger('change');
@@ -171,7 +172,7 @@ describe('Toolbar', () => {
 
     cy.get('@overflowChangeSpy').should('have.callCount', 3);
     cy.findByTestId('toolbarElements').should('have.text', 0);
-    cy.findByTestId('overflowElements').should('have.text', 6);
+    cy.findByTestId('overflowElements').should('have.text', 4);
 
     cy.get('[data-testid="toolbar-item"]').should('not.be.visible');
     cy.get('[data-testid="toolbar-item2"]').should('not.be.visible');
@@ -193,13 +194,13 @@ describe('Toolbar', () => {
 
     cy.get('@overflowChangeSpy').should('have.callCount', 5);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 2);
 
     cy.findByText('Add').click();
 
     cy.get('@overflowChangeSpy').should('have.callCount', 6);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 4);
+    cy.findByTestId('overflowElements').should('have.text', 3);
 
     cy.findByText('Add').click();
     cy.findByText('Add').click();
@@ -209,13 +210,13 @@ describe('Toolbar', () => {
 
     cy.get('@overflowChangeSpy').should('have.callCount', 11);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 9);
+    cy.findByTestId('overflowElements').should('have.text', 8);
 
     cy.findByText('Remove').click();
 
     cy.get('@overflowChangeSpy').should('have.callCount', 12);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 8);
+    cy.findByTestId('overflowElements').should('have.text', 7);
 
     cy.findByText('Remove').click();
     cy.findByText('Remove').click();
@@ -225,14 +226,14 @@ describe('Toolbar', () => {
 
     cy.get('@overflowChangeSpy').should('have.callCount', 17);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 2);
 
     cy.get(`[ui5-toggle-button]`).click();
 
-    // ToolbarSpacers should not be visible in the popover
+    // ToolbarSpacers should not be rendered in the popover
     cy.get('[data-component-name="ToolbarOverflowPopover"]')
       .findByTestId('spacer2')
-      .should('not.be.visible', { timeout: 100 });
+      .should('not.exist', { timeout: 100 });
     cy.findByTestId('spacer1').should('exist');
 
     // ToolbarSeparator should be displayed with horizontal line
