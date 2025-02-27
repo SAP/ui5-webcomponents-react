@@ -1,5 +1,5 @@
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import { CssSizeVariables, useStylesheet } from '@ui5/webcomponents-react-base';
+import { CssSizeVariables, useIsRTL, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement } from 'react';
 import { useRef, useState } from 'react';
@@ -8,6 +8,7 @@ import { Cell } from './core/Cell.js';
 import { Row } from './core/Row.js';
 import { DensityFeature, ColumnModesFeature } from './features/exampleFeature.js';
 import { useColumnWidths } from './useColumnMode.js';
+import { handleKeyboardNavigation } from './useKeyboardNavigation.js';
 import { useRowVirtualizer } from './useRowVirtualizer.js';
 import { useTableContainerResizeObserver } from './utils/useTableContainerResizeObserver.js';
 
@@ -38,6 +39,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
   const { columns, data, rowHeight, visibleRows = 15, enableRowPinning, enableColumnPinning, columnMode } = props;
   useStylesheet(styleData, AnalyticalTableV2.displayName);
   const tableContainerRef = useRef<HTMLDivElement>(null);
+  const isRTL = useIsRTL(tableContainerRef);
   const { tableWidth, horizontalScrollbarHeight, verticalScrollbarWidth } =
     useTableContainerResizeObserver(tableContainerRef);
   const [columnSizing, setColumnSizing] = useState({});
@@ -49,6 +51,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
     getCoreRowModel: getCoreRowModel(),
     //todo: remove
     debugTable: true,
+    columnResizeDirection: isRTL ? 'rtl' : 'ltr',
     //todo: optional
     // enableColumnPinning: false,
     // enableRowPinning: false,
@@ -94,7 +97,9 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
   const topRows = reactTable.getTopRows();
   const centerRows = reactTable.getCenterRows();
   const bottomRows = reactTable.getBottomRows();
-  const rowCount = reactTable.getRowCount();
+  const bodyRowCount = reactTable.getRowCount();
+  const totalRowCount = bodyRowCount + headerGroups.length;
+  const visibleLeafColumns = reactTable.getVisibleLeafColumns();
 
   const rowVirtualizer = useRowVirtualizer<HTMLDivElement>(rowHeight, tableContainerRef, { count: centerRows.length });
 
@@ -116,17 +121,23 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
         }
         className={classNames.tableContainer}
       >
-        <div className={classNames.tableBodyContainer} role="grid" aria-rowcount={rowCount + headerGroups.length}>
+        <div
+          data-component-name="AnalyticalTableV2Table"
+          className={classNames.table}
+          role="grid"
+          aria-rowcount={totalRowCount}
+          onKeyDown={(e) => handleKeyboardNavigation(e, totalRowCount, visibleLeafColumns.length, isRTL)}
+        >
           <div className={clsx(classNames.sticky, classNames.headerGroups)} role="rowgroup">
-            {headerGroups.map((headerGroup, index) => {
+            {headerGroups.map((headerGroup, groupIndex) => {
               return (
                 <Row
                   key={headerGroup.id}
                   className={classNames.headerRow}
                   data-component-name="AnalyticalTableV2HeaderRow"
-                  startIndex={index}
+                  startIndex={groupIndex}
                 >
-                  {headerGroup.headers.map((header) => {
+                  {headerGroup.headers.map((header, index) => {
                     return (
                       <Cell
                         key={header.id}
@@ -134,6 +145,9 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                         style={{ width: header.getSize() }}
                         renderable={header.column.columnDef.header}
                         cell={header}
+                        //todo: using index does not work for group headers
+                        startIndex={index}
+                        isFirstFocusableCell={groupIndex === 0 && index === 0}
                       />
                     );
                   })}
@@ -150,13 +164,14 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                     data-component-name="AnalyticalTableV2TopRow"
                     startIndex={headerGroups.length + index}
                   >
-                    {row.getVisibleCells().map((cell) => {
+                    {row.getVisibleCells().map((cell, index) => {
                       return (
                         <Cell
                           key={cell.id}
                           role="gridcell"
                           renderable={cell.column.columnDef.cell}
                           cell={cell}
+                          startIndex={index}
                           // style={{ width: cell.column.getSize() }}
                         />
                       );
@@ -186,7 +201,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                   }}
                   className={classNames.virtualizedRow}
                 >
-                  {row.getVisibleCells().map((cell) => {
+                  {row.getVisibleCells().map((cell, index) => {
                     return (
                       <Cell
                         key={cell.id}
@@ -194,6 +209,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                         renderable={cell.column.columnDef.cell}
                         cell={cell}
                         style={{ width: cell.column.getSize() }}
+                        startIndex={index}
                       />
                     );
                   })}
@@ -210,7 +226,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                     data-component-name="AnalyticalTableV2BottomRow"
                     startIndex={headerGroups.length + topRows.length + centerRows.length + index}
                   >
-                    {row.getVisibleCells().map((cell) => {
+                    {row.getVisibleCells().map((cell, index) => {
                       return (
                         <Cell
                           key={cell.id}
@@ -218,6 +234,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                           renderable={cell.column.columnDef.cell}
                           cell={cell}
                           style={{ width: cell.column.getSize() }}
+                          startIndex={index}
                         />
                       );
                     })}

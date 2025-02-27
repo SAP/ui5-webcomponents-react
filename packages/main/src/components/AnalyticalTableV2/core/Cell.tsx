@@ -31,12 +31,13 @@ interface CellProps<TData, TValue> {
   cell: CoreCell<TData, TValue> | CoreHeader<TData, TValue>;
   //todo type
   renderable: any;
+  startIndex: number;
+  isFirstFocusableCell?: boolean;
 }
 
 export function Cell<TData, TValue>(props: CellProps<TData, TValue>) {
-  const { style = {}, role, cell, renderable } = props;
+  const { style = {}, role, cell, renderable, startIndex, isFirstFocusableCell } = props;
   const cellContext = cell.getContext();
-
   return (
     <div
       role={role}
@@ -45,6 +46,9 @@ export function Cell<TData, TValue>(props: CellProps<TData, TValue>) {
         ...style
       }}
       className={classNames.cell}
+      aria-colindex={startIndex + 1}
+      data-cell={true}
+      tabIndex={isFirstFocusableCell ? 0 : undefined}
     >
       {flexRender(renderable, cellContext)}
     </div>

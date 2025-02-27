@@ -28,10 +28,10 @@
 }
 
 /* ============================================================= */
-/*                      Table Body Container                           */
+/*                      Table                           */
 /* ============================================================= */
 
-.tableBodyContainer {
+.table {
   /*todo check if we really require grid here*/
   display: grid;
 }

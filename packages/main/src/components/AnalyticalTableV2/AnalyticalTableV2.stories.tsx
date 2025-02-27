@@ -1,7 +1,7 @@
 import dataLarge from '@sb/mockData/Friends500.json';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ColumnDef } from '@tanstack/react-table';
-import { Button } from '@ui5/webcomponents-react';
+import { Button, Input } from '@ui5/webcomponents-react';
 import { AnalyticalTableV2 } from './index.js';
 
 //todo make id mandatory, or take this into account for custom implementations: https://tanstack.com/table/latest/docs/api/core/column-def --> imo id mandatory is the easiest way
@@ -66,7 +66,8 @@ const columns: ColumnDef<any>[] = [
             </>
           );
         }
-      }
+      },
+      { header: 'Input', cell: () => <Input />, id: 'input' }
     ]
   }
 ];
@@ -75,7 +76,7 @@ const meta = {
   title: 'Data Display / AnalyticalTableV2',
   component: AnalyticalTableV2,
   args: {
-    data: dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })).slice(0),
+    data: dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })).slice(0, 15),
     columns,
     visibleRows: 5
   },
