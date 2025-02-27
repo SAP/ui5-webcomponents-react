@@ -86,6 +86,19 @@
       "matchFileNames": ["package.json"],
       "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"],
       "semanticCommitType": "chore"
+    },
+    {
+      "description": "V1 UI5WC/R dependency updates",
+      "matchBaseBranches": ["v1.29.x"],
+      "groupName": "Legacy Branch Updates",
+      "groupSlug": "legacy-branch-updates",
+      "matchSourceUrlPrefixes": [
+        "https://github.com/SAP/ui5-webcomponents",
+        "https://github.com/SAP/ui5-webcomponents-react"
+      ],
+      "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "chore",
+      "schedule": ["weekly"]
     }
   ]
 }
