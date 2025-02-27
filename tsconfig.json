@@ -20,6 +20,9 @@
       "path": "./packages/compat/tsconfig.json"
     },
     {
+      "path": "./packages/ai/tsconfig.json"
+    },
+    {
       "path": "./tsconfig.spec.json"
     },
     {

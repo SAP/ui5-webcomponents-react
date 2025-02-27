@@ -54,6 +54,10 @@ You can find our documentation under the following links:
 
   [![](https://badgen.net/npm/v/@ui5/webcomponents-cypress-commands?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-cypress-commands)
 
+- [@ui5/webcomponents-ai-react](https://github.com/SAP/ui5-webcomponents-react/tree/main/packages/ai) - React wrapper for the `@ui5/webcomponents-ai` Package
+
+  [![](https://badgen.net/npm/v/@ui5/webcomponents-ai-react?icon=npm)](https://www.npmjs.com/package/@ui5/webcomponents-ai-react)
+
 <!-- *********************************************************************** -->
 
 <a name="requirements"></a>
