@@ -88,6 +88,7 @@
       "semanticCommitType": "chore"
     },
     {
+      "extends": ["schedule:weekly"],
       "description": "V1 UI5WC/R dependency updates",
       "matchBaseBranches": ["v1.29.x"],
       "groupName": "Legacy Branch Updates",
@@ -97,8 +98,7 @@
         "https://github.com/SAP/ui5-webcomponents-react"
       ],
       "matchUpdateTypes": ["patch"],
-      "semanticCommitType": "chore",
-      "schedule": ["weekly"]
+      "semanticCommitType": "chore"
     }
   ]
 }
