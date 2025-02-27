@@ -75,7 +75,7 @@ const meta = {
   title: 'Data Display / AnalyticalTableV2',
   component: AnalyticalTableV2,
   args: {
-    data: dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })).slice(0, 1),
+    data: dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })).slice(0),
     columns,
     visibleRows: 5
   },

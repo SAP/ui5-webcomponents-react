@@ -82,9 +82,9 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
   });
   console.log(enableRowPinning, enableColumnPinning);
 
+  //todo: refactor to use getAllLeafColumns directly, or use the `columns` array?
   useColumnWidths(
     tableWidth,
-    //todo: refactor to use getAllLeafColumns directly, or use the `columns` array?
     reactTable.getAllLeafColumns().map((item) => item.columnDef),
     setColumnSizing,
     verticalScrollbarWidth
@@ -94,6 +94,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
   const topRows = reactTable.getTopRows();
   const centerRows = reactTable.getCenterRows();
   const bottomRows = reactTable.getBottomRows();
+  const rowCount = reactTable.getRowCount();
 
   const rowVirtualizer = useRowVirtualizer<HTMLDivElement>(rowHeight, tableContainerRef, { count: centerRows.length });
 
@@ -115,7 +116,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
         }
         className={classNames.tableContainer}
       >
-        <div className={classNames.tableBodyContainer} role="grid">
+        <div className={classNames.tableBodyContainer} role="grid" aria-rowcount={rowCount + headerGroups.length}>
           <div className={clsx(classNames.sticky, classNames.headerGroups)} role="rowgroup">
             {headerGroups.map((headerGroup, index) => {
               return (
