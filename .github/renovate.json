@@ -97,6 +97,7 @@
         "https://github.com/SAP/ui5-webcomponents-react"
       ],
       "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "chore",
       "schedule": ["weekly"]
     }
   ]
