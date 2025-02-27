@@ -80,6 +80,14 @@
       "semanticCommitType": "chore"
     },
     {
+      "description": "UI5 Web Components in root",
+      "groupName": "UI5 Web Components (root)",
+      "groupSlug": "root-ui5-webcomponents",
+      "matchFileNames": ["package.json"],
+      "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"],
+      "semanticCommitType": "chore"
+    },
+    {
       "description": "V1 UI5WC/R dependency updates",
       "matchBaseBranches": ["v1.29.x"],
       "groupName": "Legacy Branch Updates",
