@@ -57,7 +57,7 @@ const meta = {
     mode: ObjectPageMode.Default,
     selectedSectionId: 'goals',
     imageShapeCircle: true,
-    // image: SampleImage,
+    image: SampleImage,
     style: { height: '700px' },
     footerArea: (
       <Bar
@@ -102,13 +102,19 @@ const meta = {
     ),
     headerArea: (
       <ObjectPageHeader>
-        <div style={{ width: '100%' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </div>
+        <FlexBox wrap={FlexBoxWrap.Wrap} alignItems={FlexBoxAlignItems.Center}>
+          <FlexBox direction={FlexBoxDirection.Column}>
+            <Link>+33 6 4512 5158</Link>
+            <Link href="mailto:ui5-webcomponents-react@sap.com">DeniseSmith@sap.com</Link>
+            <Link href="https://github.com/SAP/ui5-webcomponents-react">
+              https://github.com/SAP/ui5-webcomponents-react
+            </Link>
+          </FlexBox>
+          <FlexBox direction={FlexBoxDirection.Column} style={{ padding: '10px' }}>
+            <Label>San Jose</Label>
+            <Label>California, USA</Label>
+          </FlexBox>
+        </FlexBox>
       </ObjectPageHeader>
     )
   }
