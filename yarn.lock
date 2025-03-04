@@ -6188,7 +6188,7 @@ __metadata:
   dependencies:
     "@ui5/webcomponents-react-base": "workspace:~"
   peerDependencies:
-    "@ui5/webcomponents-ai": ~2.7.2
+    "@ui5/webcomponents-ai": ~2.8.0
     react: ^18 || ^19
   languageName: unknown
   linkType: soft
