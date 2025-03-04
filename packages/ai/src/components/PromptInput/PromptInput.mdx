@@ -1,14 +1,13 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
-import { SuggestionItemGroup } from '../SuggestionItemGroup';
-import { SuggestionItem } from '../SuggestionItem';
-import * as ComponentStories from './Input.stories';
+import { SuggestionItem, SuggestionItemGroup } from '@ui5/webcomponents-react';
+import * as ComponentStories from './PromptInput.stories.tsx';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader experimental />
 
 <br />
 
@@ -19,21 +18,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## Properties
 
 <ControlsWithNote of={ComponentStories.Default} />
-
-<br />
-
-# More Examples
-
-<br />
-
-## Input with customizable SuggestionItem
-
-The `SuggestionItem` represents the suggestion item of the `Input`
-
-**Note:** `SuggestionItems` will only be displayed if the required module has been imported (`import '@ui5/webcomponents/dist/features/InputSuggestions.js';`)
-and the `showSuggestions` prop is set to `true`.
-
-<Canvas of={ComponentStories.WithSuggestionItem} />
 
 <Markdown>{SubcomponentsSection}</Markdown>
 
