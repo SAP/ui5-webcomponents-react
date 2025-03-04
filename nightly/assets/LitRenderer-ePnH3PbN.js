@@ -1,0 +1,21 @@
+import{L as E,x as S,b as m,n as g,Z as L,y as U}from"./CustomElementsScope-DUj-UV8m.js";/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */const b={ATTRIBUTE:1,CHILD:2},M=e=>(...s)=>({_$litDirective$:e,values:s});class T{constructor(s){}get _$AU(){return this._$AM._$AU}_$AT(s,t,i){this._$Ct=s,this._$AM=t,this._$Ci=i}_$AS(s,t){return this.update(s,t)}update(s,t){return this.render(...t)}}/**
+ * @license
+ * Copyright 2020 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */const{I:C}=E,P=()=>document.createComment(""),_=(e,s,t)=>{var i;const r=e._$AA.parentNode,n=s===void 0?e._$AB:s._$AA;if(t===void 0){const l=r.insertBefore(P(),n),a=r.insertBefore(P(),n);t=new C(l,a,e,e.options)}else{const l=t._$AB.nextSibling,a=t._$AM,p=a!==e;if(p){let c;(i=t._$AQ)===null||i===void 0||i.call(t,e),t._$AM=e,t._$AP!==void 0&&(c=e._$AU)!==a._$AU&&t._$AP(c)}if(l!==n||p){let c=t._$AA;for(;c!==l;){const $=c.nextSibling;r.insertBefore(c,n),c=$}}}return t},v=(e,s,t=e)=>(e._$AI(s,t),e),H={},k=(e,s=H)=>e._$AH=s,D=e=>e._$AH,y=e=>{var s;(s=e._$AP)===null||s===void 0||s.call(e,!1,!0);let t=e._$AA;const i=e._$AB.nextSibling;for(;t!==i;){const r=t.nextSibling;t.remove(),t=r}};/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */const B=(e,s,t)=>{const i=new Map;for(let r=s;r<=t;r++)i.set(e[r],r);return i},O=M(class extends T{constructor(e){if(super(e),e.type!==b.CHILD)throw Error("repeat() can only be used in text expressions")}ht(e,s,t){let i;t===void 0?t=s:s!==void 0&&(i=s);const r=[],n=[];let l=0;for(const a of e)r[l]=i?i(a,l):l,n[l]=t(a,l),l++;return{values:n,keys:r}}render(e,s,t){return this.ht(e,s,t).values}update(e,[s,t,i]){var r;const n=D(e),{values:l,keys:a}=this.ht(s,t,i);if(!Array.isArray(n))return this.ut=a,l;const p=(r=this.ut)!==null&&r!==void 0?r:this.ut=[],c=[];let $,w,o=0,h=n.length-1,u=0,d=l.length-1;for(;o<=h&&u<=d;)if(n[o]===null)o++;else if(n[h]===null)h--;else if(p[o]===a[u])c[u]=v(n[o],l[u]),o++,u++;else if(p[h]===a[d])c[d]=v(n[h],l[d]),h--,d--;else if(p[o]===a[d])c[d]=v(n[o],l[d]),_(e,c[d+1],n[o]),o++,d--;else if(p[h]===a[u])c[u]=v(n[h],l[u]),_(e,n[o],n[h]),h--,u++;else if($===void 0&&($=B(a,u,d),w=B(p,o,h)),$.has(p[o]))if($.has(p[h])){const f=w.get(a[u]),A=f!==void 0?n[f]:null;if(A===null){const x=_(e,n[o]);v(x,l[u]),c[u]=x}else c[u]=v(A,l[u]),_(e,n[o],A),n[f]=null;u++}else y(n[h]),h--;else y(n[o]),o++;for(;u<=d;){const f=_(e,c[d+1]);v(f,l[u]),c[u++]=f}for(;o<=h;){const f=n[o++];f!==null&&y(f)}return this.ut=a,k(e,c),S}});class N extends T{constructor(s){var t;if(super(s),s.type!==b.ATTRIBUTE||s.name!=="style"||((t=s.strings)===null||t===void 0?void 0:t.length)>2)throw new Error("The `styleMap` directive must be used in the `style` attribute and must be the only part in the attribute.")}render(s){return""}update(s,[t]){const{style:i}=s.element;if(this._previousStyleProperties===void 0){this._previousStyleProperties=new Set;for(const r in t)this._previousStyleProperties.add(r)}this._previousStyleProperties.forEach(r=>{t[r]==null&&(this._previousStyleProperties.delete(r),r.includes("-")?i.removeProperty(r):i[r]="")});for(const r in t){const n=t[r];n!=null&&(this._previousStyleProperties.add(r),r.includes("-")?i.setProperty(r,n):i[r]=n)}return S}}const Q=M(N);/**
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */const Z=e=>e??m;/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */class I extends T{constructor(s){if(super(s),this.it=m,s.type!==b.CHILD)throw Error(this.constructor.directiveName+"() can only be used in child bindings")}render(s){if(s===m||s==null)return this._t=void 0,this.it=s;if(s===S)return s;if(typeof s!="string")throw Error(this.constructor.directiveName+"() called with a non-string value");if(s===this.it)return this._t;this.it=s;const t=[s];return t.raw=t,this._t={_$litType$:this.constructor.resultType,strings:t,values:[]}}}I.directiveName="unsafeHTML",I.resultType=1;const R=(e,...s)=>{const t=g("LitStatic");return(t?t.html:U)(e,...s)},q=(e,s)=>{let t=e.render();const i=g("OpenUI5Enablement");i&&(t=i.wrapTemplateResultInBusyMarkup(R,e,t)),L(t,s,{host:e})},z=(e,s,t)=>{const i=g("LitStatic");if(i)return i.unsafeStatic((s||[]).includes(e)?`${e}-${t}`:e)};export{q as a,O as c,M as e,z as f,T as i,Z as l,R as m,Q as s,b as t};

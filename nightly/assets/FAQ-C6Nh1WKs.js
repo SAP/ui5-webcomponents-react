@@ -1,0 +1,39 @@
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as i}from"./index-zdXs1Etw.js";import"./DocsRenderer-CFRXHY34-DU6ywN0k.js";import{M as s}from"./index-o1C7E52r.js";import{M as a}from"./index-BSyUicdy.js";import"./index-CzSYMmQB.js";import"./TagDesign-Ga50IS6u.js";import"./index-C--kS4iy.js";import"./index-DJcrgQOn.js";import"./Button-ByA1SsYZ.js";import"./jsx-runtime-D97XV8sh.js";import"./copy-DTrJKJyj.js";import{F as c}from"./CommandsAndQueries-CSzQ_44E.js";import{T as m}from"./TableOfContent-Bzt3eeAv.js";import"./WrappingType-BBpR8qCJ.js";import"./Title-BOwCdWYi.js";import"./iframe-DsB57b17.js";import"./react-18-CYWbi7Zg.js";import"./index-B-pEBbkX.js";import"./index-CXQShRbs.js";import"./index-DrFu-skq.js";import"./slot-_4yKMUwC.js";import"./event-strict-DgQLNDEV.js";import"./i18n-oG4QvOAt.js";import"./Icon-BCDdExWr.js";import"./ManagedStyles-BCO68z9u.js";import"./CustomElementsScope-DUj-UV8m.js";import"./Keys-DjLYsotv.js";import"./parameters-bundle.css-Ct2Rzfjz.js";import"./decline-B6jD48Ye.js";import"./i18n-defaults-DCrxyi3I.js";import"./information-DV2AGhUW.js";import"./information-B_fD0mel.js";import"./sys-enter-2-8yiHyFC4.js";import"./sys-enter-2-3FJ7denB.js";import"./i18n-defaults-CmQf_FFT.js";import"./withWebComponent-BfnST9Sw.js";import"./AccessibilityTextsHelper-4hgGqLyb.js";import"./willShowContent-CZcfsNXp.js";import"./Tooltips-CYRaZPq9.js";import"./toLowercaseEnumValue-C_8o5td_.js";import"./EventProvider-ChtD9rRX.js";import"./Popover-RfvVyLvj.js";import"./PopupsCommon.css-CWTNNGZS.js";import"./FocusableElements-GjzXbghM.js";import"./isElementHidden-B4HqmI2E.js";import"./isElementClickable-J9tSIEDW.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-pRnz8BGg.js";import"./MediaRange-Bnzt26Xb.js";import"./getEffectiveScrollbarStyle-C9nZ6DfS.js";import"./index-tta-8L6d.js";import"./clsx-B-dksMZM.js";import"./useStylesheet-D5Lehdk0.js";import"./index-BBE5vJrD.js";import"./Label-B_yE8MRJ.js";import"./index-Dno20kSL.js";import"./index-DygVgSN6.js";import"./Link-DksYOIa5.js";import"./index-BtffljRr.js";import"./index-B5cMioGG.js";import"./Text-DVHHInte.js";import"./addCustomCSSWithScoping-CDsicyAT.js";import"./index-aJHEJiAx.js";import"./BusyIndicator-CjR-E_fs.js";import"./index-BsfhEIY9.js";import"./index-C0zzG69g.js";import"./AvatarSize-BtKTMFJ5.js";import"./employee-Boc3Tmse.js";import"./index-CImbSc_0.js";import"./I18nStore-SPUtoouk.js";function n(t){const o={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre","ui5-link":"ui5-link",...i(),...t.components},r=o["ui5-link"];return e.jsxs(e.Fragment,{children:[e.jsx(s,{title:"FAQ"}),`
+`,e.jsx(m,{}),`
+`,e.jsx(o.h1,{id:"faq",children:"FAQ"}),`
+`,e.jsx(a,{hideCloseButton:!0,children:e.jsxs(e.Fragment,{children:["Please also take a look at the FAQ of"," ",e.jsx(r,{href:"https://sap.github.io/ui5-webcomponents/playground/?path=/docs/docs-faq",children:"UI5 Web Components"}),"."]})}),`
+`,e.jsx("br",{}),`
+`,e.jsx("br",{}),`
+`,e.jsxs(o.h2,{id:"where-can-i-find-all-compatible-versions-of-ui5webcomponents-and-ui5webcomponents-react",children:["Where can I find all compatible versions of ",e.jsx(o.code,{children:"@ui5/webcomponents"})," and ",e.jsx(o.code,{children:"@ui5/webcomponents-react"}),"?"]}),`
+`,e.jsxs(o.p,{children:["All necessary ",e.jsx(o.code,{children:"@ui5/webcomponents"})," packages are ",e.jsx(o.code,{children:"peerDependencies"})," of ",e.jsx(o.code,{children:"@ui5/webcomponents-react"}),", so if you're using npm v7 or later, then these dependencies should be auto installed when running ",e.jsx(o.code,{children:"npm install"}),`.
+If you want to check which versions are compatible you can find a compatibility table `,e.jsx(o.a,{href:"?path=/docs/getting-started--docs#add-ui5webcomponents-react-to-an-existing-app",children:"here"}),"."]}),`
+`,e.jsx(o.h2,{id:"what-are-abstract-ui5-web-components",children:'What are "abstract" UI5 Web Components?'}),`
+`,e.jsx(o.p,{children:"Abstract UI5 Web Components are mainly there to pass props to the actual component inside the shadow root. Therefore, all attributes passed to the element, will have no effect on the actual component."}),`
+`,e.jsx(o.h3,{id:"example",children:"Example"}),`
+`,e.jsxs(o.p,{children:["Rendering a ",e.jsx(o.code,{children:"ComboBoxItem"})," with some custom HTML attributes..."]}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-jsx",children:`<ComboBox>
+  <ComboBoxItem text="ComboBoxItem1" title="Hello" style={{ backgroundColor: 'red' }} />
+</ComboBox>
+`})}),`
+`,e.jsx(o.p,{children:"...will result in an element that looks like this:"}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-html",children:`<ui5-cb-item
+  text="ComboBoxItem1"
+  title="Hello"
+  style="background-color: red;"
+  _ui5rt0=""
+  _ui5host=""
+  ui5-cb-item=""
+></ui5-cb-item>
+`})}),`
+`,e.jsxs(o.p,{children:["As you can see, both ",e.jsx(o.code,{children:"title"})," and ",e.jsx(o.code,{children:"style"})," are correctly applied, but since the item doesn't have children, nor a shadow root the attributes don't have an effect on the component."]}),`
+`,e.jsx(o.h2,{id:"how-can-i-style-elements-inside-the-shadow-root-of-a-web-component",children:"How can I style elements inside the shadow root of a web component?"}),`
+`,e.jsxs(o.p,{children:["Styling elements inside the shadow root is only supported by leveraging the ",e.jsxs(o.a,{href:"https://developer.mozilla.org/en-US/docs/Web/CSS/::part",rel:"nofollow",children:[e.jsx(o.code,{children:"::part"})," pseudo-element"]}),". You can find out more about this ",e.jsx(o.a,{href:"?path=/docs/knowledge-base-styling--docs#css-shadow-parts",children:"here"}),"."]}),`
+`,e.jsx(o.h2,{id:"how-can-i-reuse-or-change-colors-fonts-etc-of-ui5-web-components-for-react",children:"How can I reuse or change colors, fonts, etc. of UI5 Web Components for React?"}),`
+`,e.jsxs(o.p,{children:["UI5 Web Components for React comes with a ",e.jsx(o.a,{href:"https://github.com/SAP/theming-base-content",rel:"nofollow",children:"publicly available"})," set of CSS variables that ensure the same look and feel across applications. Changing these values is not recommended, if you still need to customize them, you can find out more about this ",e.jsx(o.a,{href:"?path=/docs/knowledge-base-styling--docs#styling-ui5-web-components-for-react-components",children:"here"}),"."]}),`
+`,e.jsxs(o.p,{children:["To reuse these styles, you can either use the CSS variable, or use our ",e.jsx(o.a,{href:"?path=/docs/knowledge-base-public-utils--docs#theming-parameters",children:"Theming Parameters"}),"."]}),`
+`,e.jsx(o.h2,{id:"why-is-changing-the-theme-not-working",children:"Why is changing the theme not working?"}),`
+`,e.jsxs(o.p,{children:["You have to ensure to import the ",e.jsx(o.code,{children:"Assets"})," with the different themes, otherwise only the default theme will be used."]}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-ts",children:`import '@ui5/webcomponents-react/dist/Assets';
+`})}),`
+`,e.jsxs(o.p,{children:["Further information about theming can be found in our and the UI5 Web Components ",e.jsx(o.a,{href:"?path=/docs/getting-started--docs#theming",children:"Theming documentation"}),"."]}),`
+`,e.jsx(c,{})]})}function We(t={}){const{wrapper:o}={...i(),...t.components};return o?e.jsx(o,{...t,children:e.jsx(n,{...t})}):n(t)}export{We as default};
