@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/Link.js';
 import type { LinkAccessibilityAttributes, LinkClickEventDetail } from '@ui5/webcomponents/dist/Link.js';
+import type InteractiveAreaSize from '@ui5/webcomponents/dist/types/InteractiveAreaSize.js';
 import type LinkAccessibleRole from '@ui5/webcomponents/dist/types/LinkAccessibleRole.js';
 import type LinkDesign from '@ui5/webcomponents/dist/types/LinkDesign.js';
 import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
@@ -112,6 +113,20 @@ interface LinkAttributes {
   icon?: string | undefined;
 
   /**
+   * Defines the target area size of the link:
+   * - **InteractiveAreaSize.Normal**: The default target area size.
+   * - **InteractiveAreaSize.Large**: The target area size is enlarged to 24px in height.
+   *
+   * **Note:**The property is designed to make links easier to activate and helps meet the WCAG 2.2 Target Size requirement. It is applicable only for the SAP Horizon themes.
+   * **Note:**To improve <code>ui5-link</code>'s reliability and usability, it is recommended to use the <code>InteractiveAreaSize.Large</code> value in scenarios where the <code>ui5-link</code> component is placed inside another interactive component, such as a list item or a table cell.
+   * Setting the <code>interactiveAreaSize</code> property to <code>InteractiveAreaSize.Large</code> increases the <code>ui5-link</code>'s invisible touch area. As a result, the user's intended one-time selection command is more likely to activate the desired <code>ui5-link</code>, with minimal chance of unintentionally activating the underlying component.
+   *
+   * **Note:** Available since [v2.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.8.0) of **@ui5/webcomponents**.
+   * @default "Normal"
+   */
+  interactiveAreaSize?: InteractiveAreaSize | keyof typeof InteractiveAreaSize;
+
+  /**
    * Defines the component target.
    *
    * **Notes:**
@@ -207,6 +222,7 @@ const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
     'endIcon',
     'href',
     'icon',
+    'interactiveAreaSize',
     'target',
     'tooltip',
     'wrappingType'

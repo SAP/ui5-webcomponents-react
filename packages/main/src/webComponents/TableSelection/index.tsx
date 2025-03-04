@@ -24,7 +24,7 @@ interface TableSelectionPropTypes
   extends TableSelectionAttributes,
     Omit<CommonProps, keyof TableSelectionAttributes | 'onChange'> {
   /**
-   * Fired when selection is changed by user interaction.
+   * Fired when the selection is changed by user interaction.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
@@ -34,7 +34,7 @@ interface TableSelectionPropTypes
 }
 
 /**
- * The `TableSelection` component is used inside the `Table` ti add key-based selection capabilities to the `Table`.
+ * The `TableSelection` component is used inside the `Table` to add key-based selection capabilities to the `Table`.
  *
  * The component offers three selection modes:
  * * Single - select a single row.

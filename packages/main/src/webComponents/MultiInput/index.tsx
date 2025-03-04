@@ -223,7 +223,7 @@ interface MultiInputPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<MultiInputDomRef>) => void;
 

@@ -27,11 +27,14 @@ interface TableRowActionNavigationPropTypes
     Omit<CommonProps, keyof TableRowActionNavigationAttributes> {}
 
 /**
- * The `TableRowActionNavigation` class defines a navigation actio‚n for table rows.
+ * The `TableRowActionNavigation` component defines a navigation action for table rows.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
  * @since [2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of __@ui5/webcomponents__.
+ * @experimental
  */
 const TableRowActionNavigation = withWebComponent<TableRowActionNavigationPropTypes, TableRowActionNavigationDomRef>(
   'ui5-table-row-action-navigation',
