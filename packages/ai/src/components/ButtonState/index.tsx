@@ -57,8 +57,8 @@ interface ButtonStatePropTypes extends ButtonStateAttributes, Omit<CommonProps, 
  *
  * ### Usage
  *
- * `ui5-si-button-state` is an abstract element, representing a state of `Button`. It is meant to be used in the `states` slot
- * of `Button` and should be used as standalone component.
+ * `ButtonState` is an abstract element, representing a state of `Button`. It is meant to be used in the `default` slot
+ * of `Button` and should not be used as standalone component.
  *
  *
  *
@@ -66,7 +66,7 @@ interface ButtonStatePropTypes extends ButtonStateAttributes, Omit<CommonProps, 
  *
  * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents-ai__.
  * @abstract
- * @experimental The Button and ButtonState web components are availabe since 2.0 under an experimental flag and their API and behaviour are subject to change.
+ * @experimental The Button and ButtonState web components are available since 2.0 under an experimental flag and their API and behaviour are subject to change.
  */
 const ButtonState = withWebComponent<ButtonStatePropTypes, ButtonStateDomRef>(
   'ui5-ai-button-state',

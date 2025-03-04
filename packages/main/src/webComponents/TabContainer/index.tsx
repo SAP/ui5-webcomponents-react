@@ -37,6 +37,17 @@ interface TabContainerAttributes {
   headerBackgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
 
   /**
+   * Defines if automatic tab selection is deactivated.
+   *
+   * **Note:** By default, if none of the child tabs have the `selected` property set, the first tab will be automatically selected.
+   * Setting this property to `true` allows preventing this behavior.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  noAutoSelection?: boolean;
+
+  /**
    * Defines the overflow mode of the header (the tab strip). If you have a large number of tabs, only the tabs that can fit on screen will be visible.
    * All other tabs that can 't fit on the screen are available in an overflow tab "More".
    *
@@ -187,7 +198,7 @@ interface TabContainerPropTypes
 const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>(
   'ui5-tabcontainer',
   ['contentBackgroundDesign', 'headerBackgroundDesign', 'overflowMode', 'tabLayout'],
-  ['collapsed'],
+  ['collapsed', 'noAutoSelection'],
   ['overflowButton', 'startOverflowButton'],
   ['move-over', 'move', 'tab-select']
 );

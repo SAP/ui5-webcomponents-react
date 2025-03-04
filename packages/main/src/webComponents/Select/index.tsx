@@ -54,6 +54,14 @@ interface SelectAttributes {
   required?: boolean;
 
   /**
+   * Defines the tooltip of the select.
+   *
+   * **Note:** Available since [v2.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.8.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  tooltip?: string | undefined;
+
+  /**
    * Defines the value of the component:
    *
    * - when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.
@@ -179,7 +187,7 @@ interface SelectPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onOpen?: (event: Ui5CustomEvent<SelectDomRef>) => void;
 }
@@ -220,7 +228,7 @@ interface SelectPropTypes
  */
 const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   'ui5-select',
-  ['accessibleName', 'accessibleNameRef', 'name', 'value', 'valueState'],
+  ['accessibleName', 'accessibleNameRef', 'name', 'tooltip', 'value', 'valueState'],
   ['disabled', 'readonly', 'required'],
   ['label', 'valueStateMessage'],
   ['change', 'close', 'live-change', 'open']

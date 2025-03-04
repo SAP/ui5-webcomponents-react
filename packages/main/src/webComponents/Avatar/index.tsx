@@ -134,7 +134,10 @@ interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof Avat
   /**
    * Receives the desired `<img>` tag
    *
-   * **Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:
+   * **Note:** If you experience flickering of the provided image, you can hide the component until it is defined with the following CSS:<br/>
+   * `ui5-avatar:not(:defined) {`<br/>
+   * &nbsp;&nbsp;&nbsp;&nbsp;`visibility: hidden;`<br/>
+   * `}`
    */
   children?: ReactNode | ReactNode[];
 }

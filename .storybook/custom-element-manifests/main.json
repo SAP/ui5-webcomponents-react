@@ -1801,6 +1801,49 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/InteractiveAreaSize.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "InteractiveAreaSize",
+          "description": "Defines the area size around the component that the user can select.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.8.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The default target area size (the area taken by the component itself without any extra invisible touch area).",
+              "default": "Normal",
+              "name": "Normal",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Enlarged target area size (up to 24px in height) provides users with an enhanced dedicated space to interact with the component.",
+              "default": "Large",
+              "name": "Large",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "InteractiveAreaSize",
+            "module": "dist/types/InteractiveAreaSize.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/LinkAccessibleRole.js",
       "declarations": [
         {
@@ -3047,6 +3090,7 @@
           "kind": "enum",
           "name": "TableCellHorizontalAlign",
           "description": "Alignment of the &lt;ui5-table-cell&gt; component.",
+          "_ui5experimental": true,
           "_ui5privacy": "public",
           "members": [
             {
@@ -3111,6 +3155,7 @@
           "kind": "enum",
           "name": "TableGrowingMode",
           "description": "Growing mode of the &lt;ui5-table&gt; component.",
+          "_ui5experimental": true,
           "_ui5privacy": "public",
           "members": [
             {
@@ -3153,6 +3198,7 @@
           "kind": "enum",
           "name": "TableOverflowMode",
           "description": "Column mode of the &lt;ui5-table&gt; component.",
+          "_ui5experimental": true,
           "_ui5privacy": "public",
           "members": [
             {
@@ -3195,7 +3241,9 @@
           "kind": "enum",
           "name": "TableSelectionMode",
           "description": "Selection modes of the &lt;ui5-table&gt; component.",
+          "_ui5experimental": true,
           "_ui5privacy": "public",
+          "deprecated": "This component is deprecated and will be removed in future releases. Use the `ui5-table-selection-single` or `ui5-table-selection-multi` components instead.",
           "members": [
             {
               "kind": "field",
@@ -3793,7 +3841,7 @@
           "slots": [
             {
               "name": "default",
-              "description": "Receives the desired `<img>` tag\n\n**Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:",
+              "description": "Receives the desired `<img>` tag\n\n**Note:** If you experience flickering of the provided image, you can hide the component until it is defined with the following CSS:<br/>\n`ui5-avatar:not(:defined) {`<br/>\n&nbsp;&nbsp;&nbsp;&nbsp;`visibility: hidden;`<br/>\n`}`",
               "_ui5since": "1.0.0-rc.15",
               "_ui5propertyName": "image",
               "_ui5type": {
@@ -5279,7 +5327,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Defines the text of the component.\n\n**Note:** Text is not applied when the `design` property is set to `AttentionDot`.",
+              "description": "Defines the text of the component.\n\n**Note:** Text is not applied when the `design` property is set to `AttentionDot`.\n\n**Note:** The badge component only accepts numeric values and the \"+\" symbol. Using other characters or formats may result in unpredictable behavior, which is not guaranteed or supported.",
               "privacy": "public",
               "_ui5since": "2.7.0"
             }
@@ -5295,7 +5343,7 @@
               }
             },
             {
-              "description": "Defines the text of the component.\n\n**Note:** Text is not applied when the `design` property is set to `AttentionDot`.",
+              "description": "Defines the text of the component.\n\n**Note:** Text is not applied when the `design` property is set to `AttentionDot`.\n\n**Note:** The badge component only accepts numeric values and the \"+\" symbol. Using other characters or formats may result in unpredictable behavior, which is not guaranteed or supported.",
               "name": "text",
               "default": "\"\"",
               "fieldName": "text",
@@ -13070,7 +13118,7 @@
               "description": "Fired when the suggestions picker is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.0.0"
             }
           ],
@@ -13463,6 +13511,24 @@
             },
             {
               "kind": "field",
+              "name": "interactiveAreaSize",
+              "type": {
+                "text": "InteractiveAreaSize",
+                "references": [
+                  {
+                    "name": "InteractiveAreaSize",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/InteractiveAreaSize.js"
+                  }
+                ]
+              },
+              "default": "\"Normal\"",
+              "description": "Defines the target area size of the link:\n- **InteractiveAreaSize.Normal**: The default target area size.\n- **InteractiveAreaSize.Large**: The target area size is enlarged to 24px in height.\n\n**Note:**The property is designed to make links easier to activate and helps meet the WCAG 2.2 Target Size requirement. It is applicable only for the SAP Horizon themes.\n**Note:**To improve <code>ui5-link</code>'s reliability and usability, it is recommended to use the <code>InteractiveAreaSize.Large</code> value in scenarios where the <code>ui5-link</code> component is placed inside another interactive component, such as a list item or a table cell.\nSetting the <code>interactiveAreaSize</code> property to <code>InteractiveAreaSize.Large</code> increases the <code>ui5-link</code>'s invisible touch area. As a result, the user's intended one-time selection command is more likely to activate the desired <code>ui5-link</code>, with minimal chance of unintentionally activating the underlying component.",
+              "privacy": "public",
+              "_ui5since": "2.8.0"
+            },
+            {
+              "kind": "field",
               "name": "wrappingType",
               "type": {
                 "text": "WrappingType",
@@ -13668,6 +13734,15 @@
               "fieldName": "design",
               "type": {
                 "text": "\"Default\" | \"Emphasized\" | \"Subtle\""
+              }
+            },
+            {
+              "description": "Defines the target area size of the link:\n- **InteractiveAreaSize.Normal**: The default target area size.\n- **InteractiveAreaSize.Large**: The target area size is enlarged to 24px in height.\n\n**Note:**The property is designed to make links easier to activate and helps meet the WCAG 2.2 Target Size requirement. It is applicable only for the SAP Horizon themes.\n**Note:**To improve <code>ui5-link</code>'s reliability and usability, it is recommended to use the <code>InteractiveAreaSize.Large</code> value in scenarios where the <code>ui5-link</code> component is placed inside another interactive component, such as a list item or a table cell.\nSetting the <code>interactiveAreaSize</code> property to <code>InteractiveAreaSize.Large</code> increases the <code>ui5-link</code>'s invisible touch area. As a result, the user's intended one-time selection command is more likely to activate the desired <code>ui5-link</code>, with minimal chance of unintentionally activating the underlying component.",
+              "name": "interactive-area-size",
+              "default": "\"Normal\"",
+              "fieldName": "interactiveAreaSize",
+              "type": {
+                "text": "\"Normal\" | \"Large\""
               }
             },
             {
@@ -18005,7 +18080,7 @@
               "description": "Fired when the suggestions picker is closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.0.0",
               "inheritedFrom": {
                 "name": "Input",
@@ -21847,6 +21922,17 @@
             },
             {
               "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the tooltip of the select.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.8.0"
+            },
+            {
+              "kind": "field",
               "name": "value",
               "description": "Defines the value of the component:\n\n- when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.\n\n- when set - selects the option with matching `value` property or text content.\n\n**Note:** If the given value does not match any existing option,\nthe first option will get selected.",
               "privacy": "public",
@@ -21959,7 +22045,7 @@
               "description": "Fired after the component's dropdown menu opens.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
+              "_ui5Bubbles": false
             },
             {
               "name": "close",
@@ -22033,6 +22119,15 @@
               "name": "accessible-name-ref",
               "default": "undefined",
               "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the select.",
+              "name": "tooltip",
+              "default": "undefined",
+              "fieldName": "tooltip",
               "type": {
                 "text": "string | undefined"
               }
@@ -24411,6 +24506,17 @@
             },
             {
               "kind": "field",
+              "name": "noAutoSelection",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines if automatic tab selection is deactivated.\n\n**Note:** By default, if none of the child tabs have the `selected` property set, the first tab will be automatically selected.\nSetting this property to `true` allows preventing this behavior.",
+              "privacy": "public",
+              "_ui5since": "2.9.0"
+            },
+            {
+              "kind": "field",
               "name": "allItems",
               "type": {
                 "text": "Array<ITab>",
@@ -24591,6 +24697,15 @@
               "fieldName": "contentBackgroundDesign",
               "type": {
                 "text": "\"Transparent\" | \"Solid\" | \"Translucent\""
+              }
+            },
+            {
+              "description": "Defines if automatic tab selection is deactivated.\n\n**Note:** By default, if none of the child tabs have the `selected` property set, the first tab will be automatically selected.\nSetting this property to `true` allows preventing this behavior.",
+              "name": "no-auto-selection",
+              "default": "false",
+              "fieldName": "noAutoSelection",
+              "type": {
+                "text": "boolean"
               }
             },
             {
@@ -25005,6 +25120,21 @@
                   "name": "action",
                   "_ui5privacy": "public",
                   "description": "The row action instance"
+                },
+                {
+                  "type": {
+                    "text": "TableRow",
+                    "references": [
+                      {
+                        "name": "TableRow",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRow.js"
+                      }
+                    ]
+                  },
+                  "name": "row",
+                  "_ui5privacy": "public",
+                  "description": "The row instance"
                 }
               ]
             }
@@ -25422,6 +25552,33 @@
           "kind": "class",
           "description": "### Overview\n\nThe `ui5-table-header-cell` component represents a column in the `ui5-table`.\n\nAs it is tightly coupled to the `ui5-table`, it should only be used in the `ui5-table-header-row`\nto ensure correct layout and design.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableHeaderCell.js\";`",
           "name": "TableHeaderCell",
+          "slots": [
+            {
+              "name": "action",
+              "description": "Defines the action of the column.\n\n**Note:** While multiple actions are technically possible, this is not supported.",
+              "_ui5since": "2.8.0",
+              "_ui5type": {
+                "text": "Array<TableHeaderCellActionBase>",
+                "references": [
+                  {
+                    "name": "TableHeaderCellActionBase",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/TableHeaderCellActionBase.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "default",
+              "description": "Defines the content of the component.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<Node>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -25473,6 +25630,35 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "2.7.0"
+            },
+            {
+              "kind": "field",
+              "name": "sortIndicator",
+              "type": {
+                "text": "SortOrder",
+                "references": [
+                  {
+                    "name": "SortOrder",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/SortOrder.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines the sort indicator of the column.",
+              "privacy": "public",
+              "_ui5since": "2.8.0"
+            },
+            {
+              "kind": "field",
+              "name": "popinHidden",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines if the column is hidden in the popin.\n\n**Note:** Please be aware that hiding the column in the popin might lead to accessibility issues as\nusers might not be able to access the content of the column on small screens.",
+              "privacy": "public",
+              "_ui5since": "2.8.0"
             },
             {
               "kind": "field",
@@ -25543,6 +25729,24 @@
               }
             },
             {
+              "description": "Defines the sort indicator of the column.",
+              "name": "sort-indicator",
+              "default": "\"None\"",
+              "fieldName": "sortIndicator",
+              "type": {
+                "text": "\"None\" | \"Ascending\" | \"Descending\""
+              }
+            },
+            {
+              "description": "Defines if the column is hidden in the popin.\n\n**Note:** Please be aware that hiding the column in the popin might lead to accessibility issues as\nusers might not be able to access the content of the column on small screens.",
+              "name": "popin-hidden",
+              "default": "false",
+              "fieldName": "popinHidden",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
               "description": "Determines the horizontal alignment of table cells.",
               "name": "horizontal-align",
               "default": "undefined",
@@ -25565,18 +25769,7 @@
           "customElement": true,
           "_ui5experimental": "This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.",
           "_ui5since": "2.0.0",
-          "_ui5privacy": "public",
-          "slots": [
-            {
-              "name": "default",
-              "description": "Defines the content of the component.",
-              "_ui5propertyName": "content",
-              "_ui5type": {
-                "text": "Array<Node>"
-              },
-              "_ui5privacy": "public"
-            }
-          ]
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
@@ -25594,6 +25787,143 @@
           "declaration": {
             "name": "TableHeaderCell",
             "module": "dist/TableHeaderCell.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableHeaderCellActionAI.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table-header-cell-action-ai` component defines a dedicated AI action for the table column.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableHeaderCellActionAI.js\";`",
+          "name": "TableHeaderCellActionAI",
+          "superclass": {
+            "name": "TableHeaderCellActionBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TableHeaderCellActionBase.js"
+          },
+          "tagName": "ui5-table-header-cell-action-ai",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.8.0",
+          "_ui5privacy": "public",
+          "events": [
+            {
+              "name": "click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<TableHeaderCellActionClickEventDetail>",
+                "references": [
+                  {
+                    "name": "TableHeaderCellActionClickEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/TableHeaderCellActionBase.js"
+                  }
+                ]
+              },
+              "description": "Fired when a header cell action is clicked.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5since": "2.8.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "targetRef",
+                  "_ui5privacy": "public",
+                  "description": "The reference to the element that triggered the event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "TableHeaderCellActionBase",
+                "module": "dist/TableHeaderCellActionBase.js"
+              }
+            }
+          ],
+          "members": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableHeaderCellActionAI",
+            "module": "dist/TableHeaderCellActionAI.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-header-cell-action-ai",
+          "declaration": {
+            "name": "TableHeaderCellActionAI",
+            "module": "dist/TableHeaderCellActionAI.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableHeaderCellActionBase.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `TableHeaderCellActionBase` class serves as a foundation for table header cell actions.",
+          "name": "TableHeaderCellActionBase",
+          "events": [
+            {
+              "name": "click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<TableHeaderCellActionClickEventDetail>",
+                "references": [
+                  {
+                    "name": "TableHeaderCellActionClickEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/TableHeaderCellActionBase.js"
+                  }
+                ]
+              },
+              "description": "Fired when a header cell action is clicked.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5since": "2.8.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "targetRef",
+                  "_ui5privacy": "public",
+                  "description": "The reference to the element that triggered the event"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "customElement": true,
+          "_ui5since": "2.8.0",
+          "_ui5privacy": "public",
+          "_ui5abstract": true,
+          "members": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableHeaderCellActionBase",
+            "module": "dist/TableHeaderCellActionBase.js"
           }
         }
       ]
@@ -25740,10 +26070,10 @@
               "kind": "field",
               "name": "rowKey",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "\"\"",
-              "description": "Unique identifier of the row.",
+              "description": "Unique identifier of the row.\n\n**Note:** For selection features to work properly, this property is mandatory, and its value must not contain spaces.",
+              "default": "undefined",
               "privacy": "public"
             },
             {
@@ -25753,7 +26083,7 @@
                 "text": "number"
               },
               "default": "-1",
-              "description": "Defines the position of the row respect to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
+              "description": "Defines the position of the row related to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
               "privacy": "public",
               "_ui5since": "2.5.0"
             },
@@ -25791,16 +26121,16 @@
           ],
           "attributes": [
             {
-              "description": "Unique identifier of the row.",
+              "description": "Unique identifier of the row.\n\n**Note:** For selection features to work properly, this property is mandatory, and its value must not contain spaces.",
               "name": "row-key",
-              "default": "\"\"",
+              "default": "undefined",
               "fieldName": "rowKey",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               }
             },
             {
-              "description": "Defines the position of the row respect to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
+              "description": "Defines the position of the row related to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
               "name": "position",
               "default": "-1",
               "fieldName": "position",
@@ -25873,7 +26203,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The `TableRowAction` class defines a row action for table rows.",
+          "description": "### Overview\n\nThe `ui5-table-row-action` component defines an action for table rows.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableRowAction.js\";`",
           "name": "TableRowAction",
           "members": [
             {
@@ -25894,16 +26224,6 @@
               },
               "default": "\"\"",
               "description": "Defines the text of the row action.\n\n**Note:** For row actions to work properly, this property is mandatory.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Defines the disabled state of the row action.",
               "privacy": "public"
             },
             {
@@ -25941,15 +26261,6 @@
               }
             },
             {
-              "description": "Defines the disabled state of the row action.",
-              "name": "disabled",
-              "default": "false",
-              "fieldName": "disabled",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
               "description": "Defines the visibility of the row action.\n\n**Note:** Invisible row actions still take up space, allowing to hide the action while maintaining its position.",
               "name": "invisible",
               "default": "false",
@@ -25970,6 +26281,7 @@
           },
           "tagName": "ui5-table-row-action",
           "customElement": true,
+          "_ui5experimental": true,
           "_ui5since": "2.7.0",
           "_ui5privacy": "public"
         }
@@ -26052,7 +26364,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The `TableRowActionNavigation` class defines a navigation actio‚n for table rows.",
+          "description": "### Overview\n\nThe `ui5-table-row-action-navigation` component defines a navigation action for table rows.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableRowActionNavigation.js\";`",
           "name": "TableRowActionNavigation",
           "members": [
             {
@@ -26111,6 +26423,7 @@
           },
           "tagName": "ui5-table-row-action-navigation",
           "customElement": true,
+          "_ui5experimental": true,
           "_ui5since": "2.7.0",
           "_ui5privacy": "public"
         }
@@ -26171,7 +26484,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-table-selection` component is used inside the `ui5-table` ti add key-based selection capabilities to the `ui5-table`.\n\nThe component offers three selection modes:\n* Single - select a single row.\n* Multiple - select multiple rows.\n* None - no selection active.\n\nAs the selection is key-based, `ui5-table-row` components need to define a unique `row-key` property.\n\n### Usage\n\nThe `ui5-table-selection` component is only used inside the `ui5-table` component as a feature.\nIt has to be slotted inside the `ui5-table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<ui5-table>\n\t<ui5-table-selection mode=\"Multiple\" slot=\"features\"></ui5-table-selection>\n</ui5-table>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableSelection.js\";`",
+          "description": "### Overview\n\nThe `ui5-table-selection` component is used inside the `ui5-table` to add key-based selection capabilities to the `ui5-table`.\n\nThe component offers three selection modes:\n* Single - select a single row.\n* Multiple - select multiple rows.\n* None - no selection active.\n\nAs the selection is key-based, `ui5-table-row` components need to define a unique `row-key` property.\n\n### Usage\n\nThe `ui5-table-selection` component is only used inside the `ui5-table` component as a feature.\nIt has to be slotted inside the `ui5-table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<ui5-table>\n\t<ui5-table-selection mode=\"Multiple\" slot=\"features\"></ui5-table-selection>\n</ui5-table>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableSelection.js\";`",
           "name": "TableSelection",
           "members": [
             {
@@ -26209,7 +26522,7 @@
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when selection is changed by user interaction.",
+              "description": "Fired when the selection is changed by user interaction.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true
@@ -26240,6 +26553,7 @@
             "package": "@ui5/webcomponents-base",
             "module": "dist/UI5Element.js"
           },
+          "deprecated": "This component is deprecated and will be removed in future releases. Use the `ui5-table-selection-single` or `ui5-table-selection-multi` components instead.",
           "tagName": "ui5-table-selection",
           "customElement": true,
           "_ui5experimental": "This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.",
@@ -26262,6 +26576,714 @@
           "declaration": {
             "name": "TableSelection",
             "module": "dist/TableSelection.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableSelectionBase.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `TableSelectionBase` class serves as a foundation for table selections.",
+          "name": "TableSelectionBase",
+          "members": [
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the selected elements of the component.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "getRowKey",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "row",
+                  "type": {
+                    "text": "TableRow",
+                    "references": [
+                      {
+                        "name": "TableRow",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRow.js"
+                      }
+                    ]
+                  },
+                  "description": "The row instance",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Returns the unique key associated with the table row.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "getRowByKey",
+              "return": {
+                "type": {
+                  "text": "TableRow | undefined",
+                  "references": [
+                    {
+                      "name": "TableRow",
+                      "package": "@ui5/webcomponents",
+                      "module": "dist/TableRow.js"
+                    }
+                  ]
+                }
+              },
+              "parameters": [
+                {
+                  "name": "rowKey",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "The row key",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Returns the table row instance for the given row key.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "isSelected",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "row",
+                  "type": {
+                    "text": "TableRowBase",
+                    "references": [
+                      {
+                        "name": "TableRowBase",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRowBase.js"
+                      }
+                    ]
+                  },
+                  "description": "The row instance",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Determines whether the specified table row is currently selected.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "setSelected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "row",
+                  "type": {
+                    "text": "TableRowBase",
+                    "references": [
+                      {
+                        "name": "TableRowBase",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRowBase.js"
+                      }
+                    ]
+                  },
+                  "description": "The row instance",
+                  "_ui5privacy": "public"
+                },
+                {
+                  "name": "selected",
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "description": "Whether the row is selected",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Sets the selected state of the specified table row.",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the selection is changed by user interaction.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the selected elements of the component.",
+              "name": "selected",
+              "default": "undefined",
+              "fieldName": "selected",
+              "type": {
+                "text": "string | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "customElement": true,
+          "_ui5since": "2.8.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableSelectionBase",
+            "module": "dist/TableSelectionBase.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableSelectionMulti.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table-selection-multi` component is used inside the `ui5-table` to add multi-selection capabilities to the `ui5-table`.\nSince selection is key-based, each `ui5-table-row` must define a unique `row-key` property.\n\n### Usage\n\nThe `ui5-table-selection-multi` component is a feature designed exclusively for use within the `ui5-table` component.\nIt must be placed inside the `features` slot of `ui5-table`.\nThis component is not intended for standalone use.\n\n```html\n<ui5-table>\n\t<ui5-table-selection-multi slot=\"features\" selected=\"Row1 Row3\"></ui5-table-selection-multi>\n</ui5-table>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableSelectionMulti.js\";`",
+          "name": "TableSelectionMulti",
+          "members": [
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the `row-key` values of selected rows, with each value separated by a space.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getSelectedRows",
+              "return": {
+                "type": {
+                  "text": "Array<TableRow>",
+                  "references": [
+                    {
+                      "name": "TableRow",
+                      "package": "@ui5/webcomponents",
+                      "module": "dist/TableRow.js"
+                    }
+                  ]
+                }
+              },
+              "description": "Returns an array of the selected rows.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "areAllRowsSelected",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Determines whether all rows are selected.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "getSelectedAsSet",
+              "return": {
+                "type": {
+                  "text": "Set<string>"
+                }
+              },
+              "description": "Returns the `selected` property as a set of unique `row-key` values.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "setSelectedAsSet",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "selectedSet",
+                  "type": {
+                    "text": "Set<string>"
+                  },
+                  "description": "A set of `row-key` values",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Sets the `selected` property using the provided set of unique `row-key` values.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "getRowKey",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "row",
+                  "type": {
+                    "text": "TableRow",
+                    "references": [
+                      {
+                        "name": "TableRow",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRow.js"
+                      }
+                    ]
+                  },
+                  "description": "The row instance",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Returns the unique key associated with the table row.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getRowByKey",
+              "return": {
+                "type": {
+                  "text": "TableRow | undefined",
+                  "references": [
+                    {
+                      "name": "TableRow",
+                      "package": "@ui5/webcomponents",
+                      "module": "dist/TableRow.js"
+                    }
+                  ]
+                }
+              },
+              "parameters": [
+                {
+                  "name": "rowKey",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "The row key",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Returns the table row instance for the given row key.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isSelected",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "row",
+                  "type": {
+                    "text": "TableRowBase",
+                    "references": [
+                      {
+                        "name": "TableRowBase",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRowBase.js"
+                      }
+                    ]
+                  },
+                  "description": "The row instance",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Determines whether the specified table row is currently selected.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setSelected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "row",
+                  "type": {
+                    "text": "TableRowBase",
+                    "references": [
+                      {
+                        "name": "TableRowBase",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRowBase.js"
+                      }
+                    ]
+                  },
+                  "description": "The row instance",
+                  "_ui5privacy": "public"
+                },
+                {
+                  "name": "selected",
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "description": "Whether the row is selected",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Sets the selected state of the specified table row.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the `row-key` values of selected rows, with each value separated by a space.",
+              "name": "selected",
+              "default": "undefined",
+              "fieldName": "selected",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "TableSelectionBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TableSelectionBase.js"
+          },
+          "tagName": "ui5-table-selection-multi",
+          "customElement": true,
+          "_ui5since": "2.8.0",
+          "_ui5privacy": "public",
+          "events": [
+            {
+              "name": "change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the selection is changed by user interaction.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableSelectionMulti",
+            "module": "dist/TableSelectionMulti.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-selection-multi",
+          "declaration": {
+            "name": "TableSelectionMulti",
+            "module": "dist/TableSelectionMulti.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableSelectionSingle.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-table-selection-single` component is used inside the `ui5-table` to add single selection capabilities to the `ui5-table`.\nSince selection is key-based, each `ui5-table-row` must define a unique `row-key` property.\n\n### Usage\n\nThe `ui5-table-selection-single` component is a feature designed exclusively for use within the `ui5-table` component.\nIt must be placed inside the `features` slot of `ui5-table`.\nThis component is not intended for standalone use.\n\n```html\n<ui5-table>\n\t<ui5-table-selection-single slot=\"features\" selected=\"Row1\"></ui5-table-selection-single>\n</ui5-table>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableSelectionSingle.js\";`",
+          "name": "TableSelectionSingle",
+          "members": [
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the `row-key` value of the selected row.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getSelectedRow",
+              "return": {
+                "type": {
+                  "text": "TableRow | undefined",
+                  "references": [
+                    {
+                      "name": "TableRow",
+                      "package": "@ui5/webcomponents",
+                      "module": "dist/TableRow.js"
+                    }
+                  ]
+                }
+              },
+              "description": "Returns the selected row.",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "getRowKey",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "row",
+                  "type": {
+                    "text": "TableRow",
+                    "references": [
+                      {
+                        "name": "TableRow",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRow.js"
+                      }
+                    ]
+                  },
+                  "description": "The row instance",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Returns the unique key associated with the table row.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getRowByKey",
+              "return": {
+                "type": {
+                  "text": "TableRow | undefined",
+                  "references": [
+                    {
+                      "name": "TableRow",
+                      "package": "@ui5/webcomponents",
+                      "module": "dist/TableRow.js"
+                    }
+                  ]
+                }
+              },
+              "parameters": [
+                {
+                  "name": "rowKey",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "The row key",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Returns the table row instance for the given row key.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isSelected",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "row",
+                  "type": {
+                    "text": "TableRowBase",
+                    "references": [
+                      {
+                        "name": "TableRowBase",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRowBase.js"
+                      }
+                    ]
+                  },
+                  "description": "The row instance",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Determines whether the specified table row is currently selected.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setSelected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "row",
+                  "type": {
+                    "text": "TableRowBase",
+                    "references": [
+                      {
+                        "name": "TableRowBase",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/TableRowBase.js"
+                      }
+                    ]
+                  },
+                  "description": "The row instance",
+                  "_ui5privacy": "public"
+                },
+                {
+                  "name": "selected",
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "description": "Whether the row is selected",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Sets the selected state of the specified table row.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the `row-key` value of the selected row.",
+              "name": "selected",
+              "default": "undefined",
+              "fieldName": "selected",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "TableSelectionBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TableSelectionBase.js"
+          },
+          "tagName": "ui5-table-selection-single",
+          "customElement": true,
+          "_ui5since": "2.8.0",
+          "_ui5privacy": "public",
+          "events": [
+            {
+              "name": "change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the selection is changed by user interaction.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableSelectionSingle",
+            "module": "dist/TableSelectionSingle.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-table-selection-single",
+          "declaration": {
+            "name": "TableSelectionSingle",
+            "module": "dist/TableSelectionSingle.js"
           }
         }
       ]

@@ -171,7 +171,11 @@ interface ShellBarPropTypes
   children?: ReactNode | ReactNode[];
 
   /**
-   * Define the items displayed in the additional content area.
+   * Define the items displayed in the content area.
+   *
+   * Use the `data-hide-order` attribute with numeric value to specify the order of the items to be hidden when the space is not enough.
+   * Lower values will be hidden first.
+   *
    * **Note:** The `content` slot is in an experimental state and is a subject to change.
    *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="content"`).

@@ -62,7 +62,8 @@ const replaceSubComps = {
   AvatarGroupItem: ['Avatar'],
   TableFeature: ['TableGrowing', 'TableSelection', 'TableVirtualizer'],
   SideNavigationItemBase: ['SideNavigationItem', 'SideNavigationGroup', 'SideNavigationSubItem'],
-  TableRowActionBase: ['TableRowAction', 'TableRowActionNavigation']
+  TableRowActionBase: ['TableRowAction', 'TableRowActionNavigation'],
+  TableHeaderCellActionBase: ['TableHeaderCellActionAI']
 };
 
 function findSubComponentsRecursively(moduleName: string, cem: any): string[] {

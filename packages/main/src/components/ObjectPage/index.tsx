@@ -314,6 +314,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         <span
           className={classNames.headerImage}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
+          data-component-name="ObjectPageHeaderImage"
         >
           <img src={image} className={classNames.image} alt="Company Logo" />
         </span>
@@ -321,10 +322,11 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     } else {
       return cloneElement(image, {
         size: AvatarSize.L,
-        className: clsx(classNames.headerImage, image.props?.className)
+        className: clsx(classNames.headerImage, image.props?.className),
+        'data-component-name': 'ObjectPageHeaderImage'
       } as AvatarPropTypes);
     }
-  }, [image, classNames.headerImage, classNames.image, imageShapeCircle]);
+  }, [image, imageShapeCircle]);
 
   const scrollToSectionById = (id: string | undefined, isSubSection = false) => {
     const section = getSectionElementById(objectPageRef.current, isSubSection, id);

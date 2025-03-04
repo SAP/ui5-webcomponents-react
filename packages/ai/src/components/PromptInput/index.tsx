@@ -175,9 +175,7 @@ interface PromptInputPropTypes
  *
  * **Note:** The web component is in an experimental state
  *
- * ### ES6 Module Import
  *
- * `import "@ui5/webcomponents-ai/dist/PromptInput.js
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  * @experimental The **@ui5/webcomponents-ai** package is under development and considered experimental - components' APIs are subject to change.
