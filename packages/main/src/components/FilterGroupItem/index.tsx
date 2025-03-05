@@ -56,6 +56,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
     } = props;
     const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
     const index = props['data-index'];
+    const filtersCount = props['data-filters-count'];
     const isomporphicReorderKey = isMac ? 'CMD' : 'CTRL';
     const tableRowRef = useRef<TableRowDomRef>(null);
 
@@ -99,8 +100,10 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
 
     useEffect(() => {
       if (index === 0) {
-        // fallback
         setItemPosition('first');
+      }
+      if (index === filtersCount - 1) {
+        setItemPosition('last');
       }
     }, [index]);
 

@@ -185,8 +185,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.findAllByTestId('INPUT').should('have.length', 1);
     cy.findAllByTestId('SWITCH').should('have.length', 1);
     cy.findAllByTestId('SELECT').should('have.length', 1);
-
-    cy.get('[text="Filters (42)"]').click({ force: true });
+    cy.findToolbarButtonByText('Filters (42)').click();
     cy.get('@openSpy').should('have.been.calledOnce');
     cy.get('@afterOpenSpy').should('have.been.calledOnce');
 
@@ -650,7 +649,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('[ui5-label]').eq(3).should('have.text', 'Input');
     cy.get('[ui5-label]').eq(4).should('have.text', 'Switch');
 
-    cy.get('[text="Filters"]').click({ force: true });
+    cy.findToolbarButtonByText('Filters').click();
     cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.wait(200);
     cy.get('[data-text="SELECT w/ initial selected"]').as('notSelected');

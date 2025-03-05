@@ -66,9 +66,16 @@ export interface FilterGroupItemPropTypes extends CommonProps {
   active?: boolean;
 }
 
+/**
+ * @private
+ */
 export interface FilterGroupItemInternalProps extends FilterGroupItemPropTypes {
   /**
    * @private
    */
   'data-index'?: number;
+  /**
+   * @private
+   */
+  'data-filters-count'?: number;
 }
