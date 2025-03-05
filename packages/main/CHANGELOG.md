@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.18](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.17...v1.29.18) (2025-03-05)
+
+### Bug Fixes
+
+- **ObjectPage:** scroll to section when programmatically selected ([#7002](https://github.com/SAP/ui5-webcomponents-react/issues/7002)) ([8d14571](https://github.com/SAP/ui5-webcomponents-react/commit/8d145712da7c1b45aa1ed9503ee98fb518dccf61)), closes [#6765](https://github.com/SAP/ui5-webcomponents-react/issues/6765)
+- **Toolbar:** exclude spacer from overflow popover ([#7041](https://github.com/SAP/ui5-webcomponents-react/issues/7041)) ([85f0282](https://github.com/SAP/ui5-webcomponents-react/commit/85f0282700ab23cb7cea96fe13df1432c34ddafa)), closes [#6933](https://github.com/SAP/ui5-webcomponents-react/issues/6933) [#6962](https://github.com/SAP/ui5-webcomponents-react/issues/6962)
+- **Toolbar:** remove margin from empty items ([#6953](https://github.com/SAP/ui5-webcomponents-react/issues/6953)) ([9600d36](https://github.com/SAP/ui5-webcomponents-react/commit/9600d3630756e60289ad639b8c8f8b4176aaec6e))
+
 ## [1.29.17](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.16...v1.29.17) (2025-02-04)
 
 ### Bug Fixes
