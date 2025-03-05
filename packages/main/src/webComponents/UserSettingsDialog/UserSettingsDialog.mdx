@@ -1,0 +1,34 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import { UserSettingsItem } from '../UserSettingsItem/index';
+import { UserSettingsView } from '../UserSettingsView/index';
+import * as ComponentStories from './UserSettingsDialog.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader experimental mergeSubComponents subComponents={['UserSettingsItem', 'UserSettingsView']} />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+<Markdown>{SubcomponentsSection}</Markdown>
+
+## UserSettingsItem
+
+<Description of={UserSettingsItem} />
+<ArgTypes of={UserSettingsItem} />
+
+## UserSettingsView
+
+<Description of={UserSettingsView} />
+<ArgTypes of={UserSettingsView} />
+
+<Footer />

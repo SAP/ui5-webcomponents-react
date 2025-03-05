@@ -22,6 +22,8 @@ interface ButtonBadgeAttributes {
    *
    * **Note:** Text is not applied when the `design` property is set to `AttentionDot`.
    *
+   * **Note:** The badge component only accepts numeric values and the "+" symbol. Using other characters or formats may result in unpredictable behavior, which is not guaranteed or supported.
+   *
    * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents**.
    */
   text?: string;

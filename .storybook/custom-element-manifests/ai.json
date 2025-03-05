@@ -184,7 +184,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\n`ui5-ai-button-state` is the item to use for defining states of `ui5-ai-button` components.\n\n### Usage\n\n`ui5-si-button-state` is an abstract element, representing a state of `ui5-ai-button`. It is meant to be used in the `states` slot\nof `ui5-ai-button` and should be used as standalone component.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/AiButtonState.js\";`",
+          "description": "### Overview\n\n`ui5-ai-button-state` is the item to use for defining states of `ui5-ai-button` components.\n\n### Usage\n\n`ui5-ai-button-state` is an abstract element, representing a state of `ui5-ai-button`. It is meant to be used in the `default` slot\nof `ui5-ai-button` and should not be used as standalone component.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/AiButtonState.js\";`",
           "name": "ButtonState",
           "members": [
             {
@@ -293,7 +293,7 @@
           },
           "tagName": "ui5-ai-button-state",
           "customElement": true,
-          "_ui5experimental": "The Button and ButtonState web components are availabe since 2.0 under an experimental flag and their API and behaviour are subject to change.",
+          "_ui5experimental": "The Button and ButtonState web components are available since 2.0 under an experimental flag and their API and behaviour are subject to change.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public",
           "_ui5abstract": true
@@ -324,7 +324,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-ai-prompt-input` component allows the user to write custom instructions in natural language, so that AI is guided to generate content tailored to user needs.\n\n**Note:** The web component is in an experimental state\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-ai/dist/PromptInput.js",
+          "description": "### Overview\n\nThe `ui5-ai-prompt-input` component allows the user to write custom instructions in natural language, so that AI is guided to generate content tailored to user needs.\n\n**Note:** The web component is in an experimental state\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-ai/dist/PromptInput.js\"`",
           "name": "PromptInput",
           "slots": [
             {

@@ -1506,6 +1506,48 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/SearchMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "SearchMode",
+          "description": "Search mode options.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Search field with default appearance.",
+              "default": "Default",
+              "name": "Default",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Search field with additional scope select.",
+              "default": "Scoped",
+              "name": "Scoped",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchMode",
+            "module": "dist/types/SearchMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/SideContentFallDown.js",
       "declarations": [
         {
@@ -5222,6 +5264,96 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SearchField.js",
+      "declarations": [
+        {
+          "kind": "interface",
+          "name": "ISearchFieldScopeOption",
+          "description": "Interface for components that may be slotted inside a `ui5-search`",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchField",
+            "module": "dist/SearchField.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchFieldScopeOption.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `ui5-search-scope-option` represents the options for the scope in `ui5-search`.",
+          "name": "SearchFieldScopeOption",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the component.",
+              "default": "\"\"",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the text of the component.",
+              "name": "text",
+              "default": "\"\"",
+              "fieldName": "text",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-search-field-scope-option",
+          "customElement": true,
+          "_ui5privacy": "public",
+          "_ui5abstract": true,
+          "_ui5implements": [
+            {
+              "name": "ISearchFieldScopeOption",
+              "package": "@ui5/webcomponents-fiori",
+              "module": "dist/SearchField.js"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchFieldScopeOption",
+            "module": "dist/SearchFieldScopeOption.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-search-field-scope-option",
+          "declaration": {
+            "name": "SearchFieldScopeOption",
+            "module": "dist/SearchFieldScopeOption.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ShellBar.js",
       "declarations": [
         {
@@ -5333,7 +5465,7 @@
             },
             {
               "name": "content",
-              "description": "Define the items displayed in the additional content area.\n**Note:** The `content` slot is in an experimental state and is a subject to change.",
+              "description": "Define the items displayed in the content area.\n\nUse the `data-hide-order` attribute with numeric value to specify the order of the items to be hidden when the space is not enough.\nLower values will be hidden first.\n\n**Note:** The `content` slot is in an experimental state and is a subject to change.",
               "_ui5since": "2.7.0",
               "_ui5type": {
                 "text": "Array<UI5Element>",
@@ -8330,8 +8462,8 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Disables the delete button.",
               "default": "false",
+              "description": "Disables the delete button.",
               "privacy": "public"
             },
             {
@@ -8731,12 +8863,12 @@
             },
             {
               "kind": "field",
-              "name": "showAddAccount",
+              "name": "showEditAccounts",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines if the User Menu shows the Add Account option.",
+              "description": "Defines if the User Menu shows the Edit Accounts option.",
               "privacy": "public"
             },
             {
@@ -8775,12 +8907,12 @@
               "_ui5Bubbles": false
             },
             {
-              "name": "add-account-click",
+              "name": "edit-accounts-click",
               "_ui5privacy": "public",
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Fired when the \"Add Account\" button is selected.",
+              "description": "Fired when the \"Edit Accounts\" button is selected.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": false
@@ -8945,10 +9077,10 @@
               }
             },
             {
-              "description": "Defines if the User Menu shows the Add Account option.",
-              "name": "show-add-account",
+              "description": "Defines if the User Menu shows the Edit Accounts option.",
+              "name": "show-edit-accounts",
               "default": "false",
-              "fieldName": "showAddAccount",
+              "fieldName": "showEditAccounts",
               "type": {
                 "text": "boolean"
               }
@@ -9512,6 +9644,604 @@
           "declaration": {
             "name": "UserMenuItem",
             "module": "dist/UserMenuItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserSettingsDialog.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-user-settings-dialog` is an SAP Fiori-specific web component used in the `ui5-profile-menu`.\nIt allows the user to easily view information and settings for an account.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UserSettingsDialog.js\";`",
+          "name": "UserSettingsDialog",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the user settings items.\n\n**Note:**  If no setting item is set as `selected`, the first one will be selected.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<UserSettingsItem>",
+                "references": [
+                  {
+                    "name": "UserSettingsItem",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserSettingsItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "fixedItems",
+              "description": "Defines the fixed user settings items.",
+              "_ui5type": {
+                "text": "Array<UserSettingsItem>",
+                "references": [
+                  {
+                    "name": "UserSettingsItem",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserSettingsItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines, if the User Settings Dialog is opened.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "headerText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the headerText of the item.",
+              "privacy": "public",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "showSearchField",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines if the Search Field would be displayed.\n\n**Note:** By default the Search Field is not displayed.",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "selection-change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<UserSettingsItemSelectEventDetail>",
+                "references": [
+                  {
+                    "name": "UserSettingsItemSelectEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserSettingsDialog.js"
+                  }
+                ]
+              },
+              "description": "Fired when an item is selected.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": false,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "UserSettingsItem",
+                    "references": [
+                      {
+                        "name": "UserSettingsItem",
+                        "package": "@ui5/webcomponents-fiori",
+                        "module": "dist/UserSettingsItem.js"
+                      }
+                    ]
+                  },
+                  "name": "item",
+                  "_ui5privacy": "public",
+                  "description": "The selected `user settings item`."
+                }
+              ]
+            },
+            {
+              "name": "open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when a settings dialog is open.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false
+            },
+            {
+              "name": "before-close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired before the settings dialog is closed.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": false
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when a settings dialog is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines, if the User Settings Dialog is opened.",
+              "name": "open",
+              "default": "false",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the headerText of the item.",
+              "name": "header-text",
+              "default": "undefined",
+              "fieldName": "headerText",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines if the Search Field would be displayed.\n\n**Note:** By default the Search Field is not displayed.",
+              "name": "show-search-field",
+              "default": "false",
+              "fieldName": "showSearchField",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-user-settings-dialog",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.8.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsDialog",
+            "module": "dist/UserSettingsDialog.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-user-settings-dialog",
+          "declaration": {
+            "name": "UserSettingsDialog",
+            "module": "dist/UserSettingsDialog.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserSettingsItem.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-user-settings-item` represents an item in the `ui5-user-settings-dialog`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UserSettingsItem.js\";`\n\nYou can disable the <code>UserSettingsItem</code> by setting the <code>enabled</code> property to <code>false</code>,\nor use the <code>UserSettingsItem</code> in read-only mode by setting the <code>editable</code> property to false.\n\n<b>Note:</b> Disabled and read-only states shouldn't be used together.",
+          "name": "UserSettingsItem",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the tab views of the user settings item.\n\nThe tab views are displayed by default if there is no selected page view.",
+              "_ui5propertyName": "tabs",
+              "_ui5type": {
+                "text": "Array<UserSettingsView>",
+                "references": [
+                  {
+                    "name": "UserSettingsView",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserSettingsView.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "pages",
+              "description": "Defines the page views of the user settings item.\n\nIf there are no tab views, the first page view will be shown unless there is selected one. If there is selected page\nview it will be shown no matter if there are tab views.",
+              "_ui5type": {
+                "text": "Array<UserSettingsView>",
+                "references": [
+                  {
+                    "name": "UserSettingsView",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserSettingsView.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the text of the user settings item.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided to represent the meaning or function when the component is collapsed and only the icon is visible.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "headerText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the headerText of the item.",
+              "privacy": "public",
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Shows item tab.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the component is in disabled state.\n\n**Note:** A disabled component is completely noninteractive.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether a loading indicator should be shown.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "loadingReason",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Indicates why the control is in loading state.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"globe\"",
+              "description": "Defines the icon of the component.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "default": "undefined",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "selection-change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<UserSettingsItemViewSelectEventDetail>",
+                "references": [
+                  {
+                    "name": "UserSettingsItemViewSelectEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/UserSettingsItem.js"
+                  }
+                ]
+              },
+              "description": "Fired when a selected view changed.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": false,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "UserSettingsView",
+                    "references": [
+                      {
+                        "name": "UserSettingsView",
+                        "package": "@ui5/webcomponents-fiori",
+                        "module": "dist/UserSettingsView.js"
+                      }
+                    ]
+                  },
+                  "name": "view",
+                  "_ui5privacy": "public",
+                  "description": "The selected `view`."
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the text of the user settings item.",
+              "name": "text",
+              "default": "\"\"",
+              "fieldName": "text",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided to represent the meaning or function when the component is collapsed and only the icon is visible.",
+              "name": "tooltip",
+              "default": "\"\"",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the headerText of the item.",
+              "name": "header-text",
+              "default": "\"\"",
+              "fieldName": "headerText",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Shows item tab.",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines whether the component is in disabled state.\n\n**Note:** A disabled component is completely noninteractive.",
+              "name": "disabled",
+              "default": "false",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Indicates whether a loading indicator should be shown.",
+              "name": "loading",
+              "default": "false",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Indicates why the control is in loading state.",
+              "name": "loading-reason",
+              "default": "undefined",
+              "fieldName": "loadingReason",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the icon of the component.",
+              "name": "icon",
+              "default": "\"globe\"",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the accessible ARIA name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-user-settings-item",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.8.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsItem",
+            "module": "dist/UserSettingsItem.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-user-settings-item",
+          "declaration": {
+            "name": "UserSettingsItem",
+            "module": "dist/UserSettingsItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserSettingsView.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-user-settings-view` represents a view displayed in the `ui5-user-settings-item`.",
+          "name": "UserSettingsView",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the content of the view.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the title text of the user settings view.",
+              "privacy": "public",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the view is selected. There can be just one selected view at a time.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "secondary",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether the view is secondary. It is relevant only if the view is used in `pages` slot of `ui5-user-settings-item`\nand controls the visibility of the back button.",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the title text of the user settings view.",
+              "name": "text",
+              "default": "undefined",
+              "fieldName": "text",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines whether the view is selected. There can be just one selected view at a time.",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Indicates whether the view is secondary. It is relevant only if the view is used in `pages` slot of `ui5-user-settings-item`\nand controls the visibility of the back button.",
+              "name": "secondary",
+              "default": "false",
+              "fieldName": "secondary",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-user-settings-view",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.8.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsView",
+            "module": "dist/UserSettingsView.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-user-settings-view",
+          "declaration": {
+            "name": "UserSettingsView",
+            "module": "dist/UserSettingsView.js"
           }
         }
       ]

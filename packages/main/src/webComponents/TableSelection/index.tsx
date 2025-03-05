@@ -24,7 +24,7 @@ interface TableSelectionPropTypes
   extends TableSelectionAttributes,
     Omit<CommonProps, keyof TableSelectionAttributes | 'onChange'> {
   /**
-   * Fired when selection is changed by user interaction.
+   * Fired when the selection is changed by user interaction.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
@@ -34,7 +34,7 @@ interface TableSelectionPropTypes
 }
 
 /**
- * The `TableSelection` component is used inside the `Table` ti add key-based selection capabilities to the `Table`.
+ * The `TableSelection` component is used inside the `Table` to add key-based selection capabilities to the `Table`.
  *
  * The component offers three selection modes:
  * * Single - select a single row.
@@ -61,6 +61,8 @@ interface TableSelectionPropTypes
  *
  * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents__.
  * @experimental This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.
+ *
+ * @deprecated
  */
 const TableSelection = withWebComponent<TableSelectionPropTypes, TableSelectionDomRef>(
   'ui5-table-selection',

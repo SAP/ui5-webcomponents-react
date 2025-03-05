@@ -60,9 +60,10 @@ const replaceSubComps = {
   ToolbarItem: ['ToolbarSeparator', 'ToolbarSpacer', 'ToolbarButton', 'ToolbarSelect', 'ToolbarSelectOption'],
   TreeItemBase: ['TreeItem', 'TreeItemCustom'],
   AvatarGroupItem: ['Avatar'],
-  TableFeature: ['TableGrowing', 'TableSelection', 'TableVirtualizer'],
+  TableFeature: ['TableGrowing', 'TableSelection', 'TableVirtualizer', 'TableSelectionMulti', 'TableSelectionSingle'],
   SideNavigationItemBase: ['SideNavigationItem', 'SideNavigationGroup', 'SideNavigationSubItem'],
-  TableRowActionBase: ['TableRowAction', 'TableRowActionNavigation']
+  TableRowActionBase: ['TableRowAction', 'TableRowActionNavigation'],
+  TableHeaderCellActionBase: ['TableHeaderCellActionAI']
 };
 
 function findSubComponentsRecursively(moduleName: string, cem: any): string[] {
