@@ -224,6 +224,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   const [sectionSpacer, setSectionSpacer] = useState(0);
   const [currentTabModeSection, setCurrentTabModeSection] = useState(null);
   const sections = mode === ObjectPageMode.IconTabBar ? currentTabModeSection : children;
+  const isScrolling = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const deprecationNoticeDisplayed = useRef(false);
   useEffect(() => {
@@ -336,7 +337,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     } else {
       scrollToSectionById(sectionId);
     }
-    isProgrammaticallyScrolled.current = false;
   };
 
   const programmaticallySetSection = () => {
@@ -388,6 +388,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       }
       return newSelectionSectionId;
     });
+    prevSelectedSectionId.current = newSelectionSectionId;
     scrollEvent.current = targetEvent;
     fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
   };
@@ -448,6 +449,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         });
         if (sectionId) {
           setInternalSelectedSectionId(sectionId);
+          prevSelectedSectionId.current = sectionId;
         }
       }
     }
@@ -504,6 +506,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
       if (mode === ObjectPageMode.IconTabBar) {
         const sectionId = e.detail.sectionId;
         setInternalSelectedSectionId(sectionId);
+        prevSelectedSectionId.current = sectionId;
         const sectionNodes = objectPageRef.current?.querySelectorAll(
           'section[data-component-name="ObjectPageSection"]'
         );
@@ -552,11 +555,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
             }
             return visibleSectionIds.current.has(section.id);
           });
-
-          if (sortedVisibleSections.length > 0) {
+          if (sortedVisibleSections.length > 0 && !isProgrammaticallyScrolled.current) {
             const section = sortedVisibleSections[0];
             const id = sortedVisibleSections[0].id.slice(18);
             setInternalSelectedSectionId(id);
+            prevSelectedSectionId.current = id;
             debouncedOnSectionChange(scrollEvent.current, currentIndex, id, section);
           }
         });
@@ -707,40 +710,46 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
   };
 
   const prevScrollTop = useRef();
-  const onObjectPageScroll = useCallback(
-    (e) => {
-      if (!isToggledRef.current) {
-        isToggledRef.current = true;
-      }
-      if (scrollTimeout.current >= performance.now()) {
+  const onObjectPageScroll = (e) => {
+    if (!isToggledRef.current) {
+      isToggledRef.current = true;
+    }
+    if (isScrolling.current) {
+      clearTimeout(isScrolling.current);
+    }
+
+    isScrolling.current = setTimeout(() => {
+      console.log('end scroll');
+      isProgrammaticallyScrolled.current = false;
+    }, 300);
+
+    if (scrollTimeout.current >= performance.now()) {
+      return;
+    }
+    scrollEvent.current = e;
+    if (typeof props.onScroll === 'function') {
+      props.onScroll(e);
+    }
+    if (selectedSubSectionId) {
+      setSelectedSubSectionId(undefined);
+    }
+    if (selectionScrollTimeout.current) {
+      clearTimeout(selectionScrollTimeout.current);
+    }
+    if (!headerPinned || e.target.scrollTop === 0) {
+      objectPageRef.current?.classList.remove(classNames.headerCollapsed);
+    }
+    if (scrolledHeaderExpanded && e.target.scrollTop !== prevScrollTop.current) {
+      if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
         return;
       }
-      scrollEvent.current = e;
-      if (typeof props.onScroll === 'function') {
-        props.onScroll(e);
+      prevScrollTop.current = e.target.scrollTop;
+      if (!headerPinned) {
+        setHeaderCollapsedInternal(true);
       }
-      if (selectedSubSectionId) {
-        setSelectedSubSectionId(undefined);
-      }
-      if (selectionScrollTimeout.current) {
-        clearTimeout(selectionScrollTimeout.current);
-      }
-      if (!headerPinned || e.target.scrollTop === 0) {
-        objectPageRef.current?.classList.remove(classNames.headerCollapsed);
-      }
-      if (scrolledHeaderExpanded && e.target.scrollTop !== prevScrollTop.current) {
-        if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
-          return;
-        }
-        prevScrollTop.current = e.target.scrollTop;
-        if (!headerPinned) {
-          setHeaderCollapsedInternal(true);
-        }
-        setScrolledHeaderExpanded(false);
-      }
-    },
-    [topHeaderHeight, headerPinned, props.onScroll, scrolledHeaderExpanded, selectedSubSectionId]
-  );
+      setScrolledHeaderExpanded(false);
+    }
+  };
 
   const onHoverToggleButton = useCallback(
     (e) => {
