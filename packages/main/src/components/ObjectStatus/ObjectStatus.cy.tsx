@@ -238,7 +238,7 @@ describe('ObjectStatus', () => {
     cy.findByText('Object Status').should('exist').and('have.css', 'font-size', '0px');
 
     cy.mount(
-      <ObjectStatus onClick={click} interactive>
+      <ObjectStatus onClick={click} interactive data-testid="os">
         Content
       </ObjectStatus>
     );
@@ -249,7 +249,7 @@ describe('ObjectStatus', () => {
     cy.get('@clickSpy').should('have.been.calledTwice');
     cy.findByText('Content').realPress('Space');
     cy.get('@clickSpy').should('have.been.calledThrice');
-    cy.findByText('Object Status Button').should('exist').and('have.css', 'font-size', '0px');
+    cy.findByTestId('os').should('have.attr', 'aria-roledescription', 'Object Status Button');
   });
 
   it('emptyIndicator', () => {
