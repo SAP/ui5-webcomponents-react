@@ -165,30 +165,27 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
   useEffect(() => {
     const toolbarContainer = toolbarContainerRef.current;
 
-    const observer = new MutationObserver(([toolbarContainerMutation]) => {
-      if (toolbarContainerMutation.type === 'childList') {
-        const navigationToolbar: ToolbarDomRef | undefined = (
-          toolbarContainerMutation.target as HTMLDivElement
-        ).querySelector(':has(> :nth-last-child(n + 2)) > [ui5-toolbar]:last-child');
-        if (navigationToolbar?.children) {
-          Array.from(navigationToolbar.children).forEach((item) => {
+    const updateNavigationToolbar = (container: HTMLDivElement) => {
+      if (container.children.length >= 2) {
+        const lastChild = container.lastElementChild as ToolbarDomRef;
+        if (lastChild && lastChild.matches('[ui5-toolbar]')) {
+          Array.from(lastChild.children).forEach((item) => {
             item.setAttribute('overflow-priority', 'NeverOverflow');
           });
         }
+      }
+    };
+
+    const observer = new MutationObserver(([toolbarContainerMutation]) => {
+      if (toolbarContainerMutation.type === 'childList') {
+        updateNavigationToolbar(toolbarContainerMutation.target as HTMLDivElement);
       }
     });
 
     const config = { childList: true, subtree: true };
 
     if (toolbarContainer) {
-      const navigationToolbar: ToolbarDomRef | undefined = toolbarContainer.querySelector(
-        ':has(> :nth-last-child(n + 2)) > [ui5-toolbar]:last-child'
-      );
-      if (navigationToolbar?.children) {
-        Array.from(navigationToolbar.children).forEach((item) => {
-          item.setAttribute('overflow-priority', 'NeverOverflow');
-        });
-      }
+      updateNavigationToolbar(toolbarContainer);
       observer.observe(toolbarContainer, config);
     }
 
@@ -243,7 +240,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
             {actionsBar}
             {!showNavigationInTopArea && actionsBar && navigationBar && (
               <div
-                className={classNames.actionsSpacer}
+                className={classNames.actionsSeparator}
                 data-component-name="ObjectPageTitleActionsSeparator"
                 aria-hidden
               />
