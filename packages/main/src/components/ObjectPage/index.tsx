@@ -295,6 +295,7 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         <span
           className={classNames.headerImage}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
+          data-component-name="ObjectPageHeaderImage"
         >
           <img src={image} className={classNames.image} alt="Company Logo" />
         </span>
@@ -302,10 +303,11 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     } else {
       return cloneElement(image, {
         size: AvatarSize.L,
-        className: clsx(classNames.headerImage, image.props?.className)
+        className: clsx(classNames.headerImage, image.props?.className),
+        'data-component-name': 'ObjectPageHeaderImage'
       } as AvatarPropTypes);
     }
-  }, [image, classNames.headerImage, classNames.image, imageShapeCircle]);
+  }, [image, imageShapeCircle]);
 
   const scrollToSectionById = (id?: string, isSubSection = false) => {
     const section = objectPageRef.current?.querySelector<HTMLElement>(
@@ -643,7 +645,10 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
         headerPinned: headerPinned || scrolledHeaderExpanded,
         ref: componentRefHeaderContent,
         children: (
-          <div className={classNames.headerContainer} data-component-name="ObjectPageHeaderContainer">
+          <div
+            className={clsx(classNames.headerContainer, avatar && classNames.hasAvatar)}
+            data-component-name="ObjectPageHeaderContainer"
+          >
             {avatar}
             {(headerContent.props.children || titleInHeader) && (
               <div data-component-name="ObjectPageHeaderContent">
