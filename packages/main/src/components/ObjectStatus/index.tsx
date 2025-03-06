@@ -170,6 +170,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
     emptyIndicator,
     stateAnnouncementText,
     large,
+    'aria-roledescription': ariaRoleDescription,
     ...rest
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -214,6 +215,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
   );
 
   const TagName = interactive ? 'button' : 'div';
+  const roleDesc = `${ariaRoleDescription ? `${ariaRoleDescription} ` : ''}${interactive ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : ''}`;
 
   return (
     <TagName
@@ -226,7 +228,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
       tabIndex={interactive ? 0 : undefined}
       data-icon-only={!children}
       role={interactive ? undefined : 'group'}
-      aria-roledescription={interactive ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : undefined}
+      aria-roledescription={roleDesc || undefined}
       {...rest}
     >
       {!interactive && (
