@@ -225,12 +225,18 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
       onClick={interactive ? onClick : undefined}
       tabIndex={interactive ? 0 : undefined}
       data-icon-only={!children}
-      role={interactive ? 'button' : 'group'}
+      role={interactive ? undefined : 'group'}
+      aria-roledescription={interactive ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : undefined}
       {...rest}
     >
-      <span className={classNames.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleDescriptionContainer">
-        {interactive ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : i18nBundle.getText(ARIA_OBJ_STATUS_DESC_INACTIVE)}
-      </span>
+      {!interactive && (
+        <span
+          className={classNames.pseudoInvisibleText}
+          data-component-name="ObjectStatusInvisibleDescriptionContainer"
+        >
+          {i18nBundle.getText(ARIA_OBJ_STATUS_DESC_INACTIVE)}
+        </span>
+      )}
       {iconToRender && (
         <span className={classNames.icon} data-icon-only={!children} data-component-name="ObjectStatusIconContainer">
           {iconToRender}
