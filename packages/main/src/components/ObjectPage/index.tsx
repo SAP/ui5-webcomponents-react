@@ -314,7 +314,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         <span
           className={classNames.headerImage}
           style={{ borderRadius: imageShapeCircle ? '50%' : 0, overflow: 'hidden' }}
-          data-component-name="ObjectPageHeaderImage"
         >
           <img src={image} className={classNames.image} alt="Company Logo" />
         </span>
@@ -322,11 +321,10 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     } else {
       return cloneElement(image, {
         size: AvatarSize.L,
-        className: clsx(classNames.headerImage, image.props?.className),
-        'data-component-name': 'ObjectPageHeaderImage'
+        className: clsx(classNames.headerImage, image.props?.className)
       } as AvatarPropTypes);
     }
-  }, [image, imageShapeCircle]);
+  }, [image, classNames.headerImage, classNames.image, imageShapeCircle]);
 
   const scrollToSectionById = (id: string | undefined, isSubSection = false) => {
     const section = getSectionElementById(objectPageRef.current, isSubSection, id);
@@ -641,10 +639,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         //@ts-expect-error: todo remove me when forwardref has been replaced
         ref: componentRefHeaderContent,
         children: (
-          <div
-            className={clsx(classNames.headerContainer, avatar && classNames.hasAvatar)}
-            data-component-name="ObjectPageHeaderContainer"
-          >
+          <div className={classNames.headerContainer} data-component-name="ObjectPageHeaderContainer">
             {avatar}
             {headerArea.props.children && (
               <div data-component-name="ObjectPageHeaderContent">{headerArea.props.children}</div>
