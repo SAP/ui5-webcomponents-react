@@ -127,7 +127,7 @@
   }
 }
 
-.actionsSpacer {
+.actionsSeparator {
   flex-shrink: 0;
   height: var(--_ui5_dynamic_page_title_actions_separator_height);
   width: 0.0625rem;
