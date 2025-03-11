@@ -8,7 +8,9 @@ declare global {
   namespace Cypress {
     interface Chainable {
       /**
-       * Cypress mount with ThemeProvider
+       * Cypress mount with ThemeProvider.
+       *
+       * __Note:__ Per default `options.strict` is enabled
        */
       mount: (
         jsx: ReactNode,
@@ -43,7 +45,7 @@ declare global {
  * Cypress mount with ThemeProvider
  */
 Cypress.Commands.add('mount', (component, { themeProviderProps = {}, ...options } = {}) => {
-  return mount(<ThemeProvider {...themeProviderProps}>{component}</ThemeProvider>, options);
+  return mount(<ThemeProvider {...themeProviderProps}>{component}</ThemeProvider>, { ...options, strict: true });
 });
 
 // copied from https://github.com/cypress-io/cypress/discussions/21150#discussioncomment-2620947 and edited slightly
