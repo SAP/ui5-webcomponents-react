@@ -45,7 +45,7 @@ declare global {
  * Cypress mount with ThemeProvider
  */
 Cypress.Commands.add('mount', (component, { themeProviderProps = {}, ...options } = {}) => {
-  return mount(<ThemeProvider {...themeProviderProps}>{component}</ThemeProvider>, { ...options, strict: true });
+  return mount(<ThemeProvider {...themeProviderProps}>{component}</ThemeProvider>, { strict: true, ...options });
 });
 
 // copied from https://github.com/cypress-io/cypress/discussions/21150#discussioncomment-2620947 and edited slightly
