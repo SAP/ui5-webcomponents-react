@@ -17,7 +17,7 @@ declare global {
        *
        * @example cy.get('[ui5-input]').clearUi5Input();
        */
-      clearUi5Input(options?: Partial<ClearOptions>): Chainable<Element>;
+      clearUi5Input(options?: Partial<CheckClearOptions>): Chainable<Element>;
 
       /**
        * Types a value with a delay into an ui5-webcomponent that offers a typeable input field.
