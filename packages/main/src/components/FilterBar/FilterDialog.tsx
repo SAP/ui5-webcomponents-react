@@ -310,12 +310,14 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   useEffect(() => {
     if (currentReorderedItem?.index != null) {
-      setOrderedChildren((prev: any[]) => {
-        const { index, direction } = currentReorderedItem;
+      const { index, direction } = currentReorderedItem;
+      setOrderedChildren((prevChildren: ReactElement<FilterGroupItemInternalProps>[]) => {
+        const prev = [...prevChildren];
         switch (direction) {
           case 'up':
             if (index > 0) {
               setUpdatedIndex(index - 1);
+
               const temp = prev[index];
               prev[index] = prev[index - 1];
               prev[index - 1] = temp;
@@ -344,7 +346,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             }
             break;
         }
-        return [...prev];
+        return prev;
       });
       void currentReorderedItem.target.focus();
     }
