@@ -37,7 +37,9 @@
       "excludePackageNames": ["@storybook/react-vite"]
     },
     {
-      "extends": ["group:storybookMonorepo", "schedule:weekly"],
+      "extends": ["schedule:weekly"],
+      "groupName": "storybook monorepo",
+      "matchSourceUrls": ["https://github.com/storybookjs/storybook"],
       "semanticCommitType": "chore"
     },
     {
@@ -89,6 +91,7 @@
     },
     {
       "extends": ["schedule:weekly"],
+      "baseBranches": ["v1.29.x"],
       "description": "V1 UI5WC/R dependency updates",
       "matchBaseBranches": ["v1.29.x"],
       "groupName": "Legacy Branch Updates",
