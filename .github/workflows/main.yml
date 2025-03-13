@@ -106,7 +106,6 @@ jobs:
 
   deploy-next-docs:
     needs: ['build']
-    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     env:
       CYPRESS_INSTALL_BINARY: 0
@@ -128,6 +127,7 @@ jobs:
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.7.3
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.
