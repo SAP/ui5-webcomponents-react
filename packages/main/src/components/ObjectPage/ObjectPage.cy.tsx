@@ -270,13 +270,15 @@ describe('ObjectPage', () => {
     cy.findByText('ObjectPageHeader').should('not.be.visible');
 
     cy.findByTestId('btn').click();
+    cy.get('@onPinSpy').should('have.callCount', 3);
     cy.findByTestId('op').scrollTo(0, 500);
     cy.findByText('ObjectPageHeader').should('be.visible');
-
+    cy.wait(200);
     cy.findByTestId('btn').click();
     cy.findByText('ObjectPageHeader').should('not.be.visible');
 
     cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
+    cy.get('@onPinSpy').should('have.callCount', 4);
     cy.findByText('ObjectPageHeader').should('be.visible');
 
     // wait for timeout of expand click
@@ -294,6 +296,7 @@ describe('ObjectPage', () => {
     cy.findByTestId('op').scrollTo(0, 500);
     cy.wait(500);
     cy.findByTestId('btn').click();
+    cy.get('@onPinSpy').should('have.callCount', 6);
     cy.findByText('ObjectPageHeader').should('not.be.visible');
 
     cy.findByTestId('btn').click();
