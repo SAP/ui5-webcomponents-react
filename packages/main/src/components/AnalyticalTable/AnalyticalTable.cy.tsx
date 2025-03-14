@@ -3016,17 +3016,22 @@ describe('AnalyticalTable', () => {
     cy.focused().parent().should('have.attr', 'ui5-button');
 
     cy.mount(
-      <AnalyticalTable
-        data={generateMoreData(50)}
-        columns={columns}
-        selectionMode={AnalyticalTableSelectionMode.Multiple}
-      />
+      <>
+        <AnalyticalTable
+          data={generateMoreData(50)}
+          columns={columns}
+          selectionMode={AnalyticalTableSelectionMode.Multiple}
+        />
+        <button>Interactive Element</button>
+      </>
     );
 
     cy.findByText('Name-0').should('be.visible');
     cy.window().focus();
     cy.realPress('Tab');
     cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.text', 'Interactive Element');
 
     cy.mount(
       <AnalyticalTable
