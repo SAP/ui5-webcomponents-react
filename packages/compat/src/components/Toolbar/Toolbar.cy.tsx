@@ -141,7 +141,7 @@ describe('Toolbar', () => {
   it('overflow menu', () => {
     const onOverflowChange = cy.spy().as('overflowChangeSpy');
     cy.viewport(300, 500);
-    cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />);
+    cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />, { strict: false });
     cy.get('@overflowChangeSpy').should('have.been.calledOnce');
     cy.findByTestId('toolbarElements').should('have.text', 2);
     cy.findByTestId('overflowElements').should('have.text', 3);
@@ -159,7 +159,7 @@ describe('Toolbar', () => {
 
     // flaky - remount component instead
     // cy.get(`[ui5-toggle-button]`).click();
-    cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />);
+    cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />, { strict: false });
     cy.get('[ui5-popover]').should('not.have.attr', 'open');
 
     cy.get('@overflowChangeSpy').should('have.callCount', 2);
@@ -324,7 +324,8 @@ describe('Toolbar', () => {
         <Toolbar data-testid="tb" design={design}>
           <Text>Item1</Text>
           <Text>Item2</Text>
-        </Toolbar>
+        </Toolbar>,
+        { strict: false }
       );
       let height = '44px'; //2.75rem
       let background = 'rgba(0, 0, 0, 0)'; // transparent
@@ -371,7 +372,8 @@ describe('Toolbar', () => {
         <Text data-testid="tbi" style={{ width: '100px' }}>
           Item3
         </Text>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
     cy.wait(200);
     cy.findAllByTestId('tbi').each(($el) => {
@@ -395,7 +397,8 @@ describe('Toolbar', () => {
         <Text data-testid="tbi" style={{ width: '100px' }}>
           Item3
         </Text>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
     cy.wait(200);
     cy.findAllByTestId('tbiV').each(($el) => {
@@ -529,7 +532,7 @@ describe('Toolbar', () => {
       );
     };
     const overflowChange = cy.spy().as('overflowChange');
-    cy.mount(<TestComp onOverflowChange={overflowChange} style={{ width: '200px' }} />);
+    cy.mount(<TestComp onOverflowChange={overflowChange} style={{ width: '200px' }} />, { strict: false });
 
     cy.get('[ui5-toggle-button]').should('not.exist');
     cy.findByText('add').click();
@@ -573,7 +576,8 @@ describe('Toolbar', () => {
         <div id="1">Text1</div>
         <div>Text2 no id</div>
         <Button id="3">Text4</Button>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
 
     cy.get('#1').should('have.length', 1);
@@ -590,7 +594,8 @@ describe('Toolbar', () => {
         <div>Text1</div>
         <div>Text2</div>
         <Button>Text4</Button>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
     cy.get('section[role="alertdialog"]').should('exist');
 
@@ -599,7 +604,8 @@ describe('Toolbar', () => {
         <div>Text1</div>
         <div>Text2</div>
         <Button>Text4</Button>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
     cy.get('section').should('not.have.attr', 'role');
     cy.get('[data-component-name="ToolbarOverflowPopoverContent"]').should('have.attr', 'role', 'menu');
@@ -609,7 +615,8 @@ describe('Toolbar', () => {
         <div>Text1</div>
         <div>Text2</div>
         <Button>Text4</Button>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
     cy.get('section').should('not.have.attr', 'role');
     cy.get('[data-component-name="ToolbarOverflowPopoverContent"]').should('have.attr', 'role', 'menu');

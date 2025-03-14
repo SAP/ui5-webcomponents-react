@@ -5,7 +5,7 @@ import { setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';
 import { ContentDensity, Modals, ThemeProvider } from '@ui5/webcomponents-react';
-import { useEffect } from 'react';
+import { StrictMode, useEffect } from 'react';
 import 'tocbot/dist/tocbot.css';
 import '../packages/main/dist/Assets.js';
 import languages from './components/languageCodes.json';
@@ -56,10 +56,12 @@ const preview: Preview = {
       }, [theme]);
 
       return (
-        <ThemeProvider>
-          {viewMode !== 'docs' && <Modals />}
-          <Story />
-        </ThemeProvider>
+        <StrictMode>
+          <ThemeProvider>
+            {viewMode !== 'docs' && <Modals />}
+            <Story />
+          </ThemeProvider>
+        </StrictMode>
       );
     }
   ],

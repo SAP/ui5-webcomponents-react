@@ -76,7 +76,8 @@ describe('I18nProvider', () => {
         </>
       );
     };
-    cy.mount(<TranslationComponent />);
+    // strict mode disabled, otherwise counter is incremented twice on each render
+    cy.mount(<TranslationComponent />, { strict: false });
     cy.findByTestId('counter').should('have.text', 1);
     cy.findByText('Please wait')
       .then(() => {

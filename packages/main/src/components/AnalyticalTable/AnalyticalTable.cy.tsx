@@ -813,13 +813,15 @@ describe('AnalyticalTable', () => {
       const { onRowSelect } = props;
       const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
       const tableInstance = useRef<Record<string, any>>(null);
+      // strict mode
+      const hasRun = useRef(false);
 
       useEffect(() => {
-        if (tableInstance.current) {
-          tableInstance.current.setGroupBy(['name']);
+        if (tableInstance.current && !hasRun.current) {
           setTimeout(() => {
-            tableInstance.current.toggleAllRowsExpanded();
+            tableInstance.current.toggleAllRowsExpanded(true);
           }, 100);
+          hasRun.current = true;
         }
       }, []);
 
@@ -850,6 +852,7 @@ describe('AnalyticalTable', () => {
               onRowSelect(e);
             }}
             data={groupableData}
+            reactTableOptions={{ initialState: { groupBy: ['name'] } }}
             selectionMode="Multiple"
           />
           <div data-testid="selectedFlatRowsLength">
