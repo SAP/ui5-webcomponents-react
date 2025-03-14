@@ -68,6 +68,7 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
         onScroll={handleVerticalScrollBarScroll}
         className={clsx(classNames.scrollbar, nativeScrollbar && 'ui5-content-native-scrollbars')}
         data-component-name="AnalyticalTableVerticalScrollbar"
+        tabIndex={-1}
       >
         <div
           ref={scrollElementRef}
