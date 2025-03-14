@@ -155,7 +155,8 @@ const meta = {
       },
       {
         Header: 'Age',
-        accessor: 'age'
+        accessor: 'age',
+        hAlign: 'End'
       },
       {
         Header: 'Friend Name',
@@ -163,7 +164,8 @@ const meta = {
       },
       {
         Header: 'Friend Age',
-        accessor: 'friend.age'
+        accessor: 'friend.age',
+        hAlign: 'End'
       }
     ],
     highlightField: 'status',

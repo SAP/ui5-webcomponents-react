@@ -139,17 +139,17 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
   const horizontalAlign = (() => {
     switch (column.hAlign) {
       case TextAlign.Begin:
-        return isRtl ? PopoverHorizontalAlign.End : PopoverHorizontalAlign.Start;
-      case TextAlign.End:
-        return isRtl ? PopoverHorizontalAlign.Start : PopoverHorizontalAlign.End;
-      case TextAlign.Left:
         return PopoverHorizontalAlign.Start;
-      case TextAlign.Right:
+      case TextAlign.End:
         return PopoverHorizontalAlign.End;
+      case TextAlign.Left:
+        return isRtl ? PopoverHorizontalAlign.End : PopoverHorizontalAlign.Start;
+      case TextAlign.Right:
+        return isRtl ? PopoverHorizontalAlign.Start : PopoverHorizontalAlign.End;
       case TextAlign.Center:
         return PopoverHorizontalAlign.Center;
       default:
-        return isRtl ? PopoverHorizontalAlign.End : PopoverHorizontalAlign.Start;
+        return PopoverHorizontalAlign.Start;
     }
   })();
 
