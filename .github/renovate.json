@@ -1,5 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "baseBranches": ["main", "v1.29.x"],
   "extends": [
     "config:base",
     ":disableDependencyDashboard",
@@ -25,22 +26,26 @@
       "groupName": "Rimraf",
       "extends": ["schedule:weekly"],
       "matchPackageNames": ["rimraf"],
-      "semanticCommitType": "chore"
+      "semanticCommitType": "chore",
+      "matchBaseBranches": ["main"]
     },
     {
       "groupName": "UI5 Web Components",
-      "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"]
+      "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"],
+      "matchBaseBranches": ["main"]
     },
     {
       "groupName": "vite & plugins",
       "matchPackagePatterns": ["vite"],
-      "excludePackageNames": ["@storybook/react-vite"]
+      "excludePackageNames": ["@storybook/react-vite"],
+      "matchBaseBranches": ["main"]
     },
     {
       "extends": ["schedule:weekly"],
       "groupName": "storybook monorepo",
       "matchSourceUrls": ["https://github.com/storybookjs/storybook"],
-      "semanticCommitType": "chore"
+      "semanticCommitType": "chore",
+      "matchBaseBranches": ["main"]
     },
     {
       "description": "root package dependencies",
@@ -57,7 +62,8 @@
         "rimraf",
         "@joshwooding/vite-plugin-react-docgen-typescript"
       ],
-      "excludePackagePatterns": ["^@storybook/", "^@ui5/"]
+      "excludePackagePatterns": ["^@storybook/", "^@ui5/"],
+      "matchBaseBranches": ["main"]
     },
     {
       "description": "Example & Template dependencies",
@@ -68,7 +74,8 @@
       "groupSlug": "examples-all-minor-patch",
       "matchPackagePatterns": ["*"],
       "excludePackagePatterns": ["^@ui5/"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchBaseBranches": ["main"]
     },
     {
       "description": "UI5 Web Components (for React) in all examples & templates",
@@ -79,7 +86,8 @@
         "https://github.com/SAP/ui5-webcomponents",
         "https://github.com/SAP/ui5-webcomponents-react"
       ],
-      "semanticCommitType": "chore"
+      "semanticCommitType": "chore",
+      "matchBaseBranches": ["main"]
     },
     {
       "description": "UI5 Web Components in root",
@@ -87,11 +95,11 @@
       "groupSlug": "root-ui5-webcomponents",
       "matchFileNames": ["package.json"],
       "matchSourceUrlPrefixes": ["https://github.com/SAP/ui5-webcomponents"],
-      "semanticCommitType": "chore"
+      "semanticCommitType": "chore",
+      "matchBaseBranches": ["main"]
     },
     {
       "extends": ["schedule:weekly"],
-      "baseBranches": ["v1.29.x"],
       "description": "V1 UI5WC/R dependency updates",
       "matchBaseBranches": ["v1.29.x"],
       "groupName": "Legacy Branch Updates",
@@ -102,6 +110,10 @@
       ],
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "chore"
+    },
+    {
+      "matchPackageNames": ["*"],
+      "matchBaseBranches": ["main"]
     }
   ]
 }
