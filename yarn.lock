@@ -3522,13 +3522,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nolyfill/is-core-module@npm:1.0.39":
-  version: 1.0.39
-  resolution: "@nolyfill/is-core-module@npm:1.0.39"
-  checksum: 10c0/34ab85fdc2e0250879518841f74a30c276bca4f6c3e13526d2d1fe515e1adf6d46c25fcd5989d22ea056d76f7c39210945180b4859fc83b050e2da411aa86289
-  languageName: node
-  linkType: hard
-
 "@npmcli/agent@npm:^2.0.0":
   version: 2.2.0
   resolution: "@npmcli/agent@npm:2.2.0"
@@ -11452,15 +11445,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-typescript@npm:^3.6.3":
-  version: 3.9.1
-  resolution: "eslint-import-resolver-typescript@npm:3.9.1"
+"eslint-import-resolver-typescript@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "eslint-import-resolver-typescript@npm:4.0.0"
   dependencies:
-    "@nolyfill/is-core-module": "npm:1.0.39"
     debug: "npm:^4.4.0"
     get-tsconfig: "npm:^4.10.0"
     is-bun-module: "npm:^1.3.0"
-    rspack-resolver: "npm:^1.1.0"
+    rspack-resolver: "npm:^1.1.2"
     stable-hash: "npm:^0.0.5"
     tinyglobby: "npm:^0.2.12"
   peerDependencies:
@@ -11472,7 +11464,7 @@ __metadata:
       optional: true
     eslint-plugin-import-x:
       optional: true
-  checksum: 10c0/6bcc5d74719dc51e20602c5b3a30ca5682dd6db4a5828697cf1485b19dd3aef4dff7cb1f434da48df26a35d9c362e834d4ea1adc1218d77dfd84cf6ce65f4662
+  checksum: 10c0/51ef239645a1be31cee66206590c7dddbf95a47885a497b4511474fcc4a139a5bc636776ca12391b8d14ddf2fe0a2e0ea4b27172670ab337df13f17e8c3b9ad6
   languageName: node
   linkType: hard
 
@@ -21512,7 +21504,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rspack-resolver@npm:^1.1.0":
+"rspack-resolver@npm:^1.1.2":
   version: 1.1.2
   resolution: "rspack-resolver@npm:1.1.2"
   dependencies:
@@ -23770,7 +23762,7 @@ __metadata:
     documentation: "npm:14.0.3"
     eslint: "npm:^9.11.1"
     eslint-config-prettier: "npm:^10.0.0"
-    eslint-import-resolver-typescript: "npm:^3.6.3"
+    eslint-import-resolver-typescript: "npm:^4.0.0"
     eslint-plugin-import: "npm:^2.31.0"
     eslint-plugin-no-only-tests: "npm:^3.3.0"
     eslint-plugin-prettier: "npm:^5.2.1"
