@@ -52,7 +52,7 @@
     "react-dom": "^19.0.0",
     "remark-gfm": "^4.0.0",
     "storybook": "8.6.6",
-    "tocbot": "4.35.0"
+    "tocbot": "4.35.2"
   },
   "devDependencies": {
     "@babel/cli": "7.26.4",
@@ -115,7 +115,7 @@
     ]
   },
   "resolutions": {
-    "tocbot": "4.35.0",
+    "tocbot": "4.35.2",
     "react-is": "^19"
   },
   "type": "module",
