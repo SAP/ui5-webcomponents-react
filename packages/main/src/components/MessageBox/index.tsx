@@ -259,7 +259,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
           if (typeof action === 'string') {
             return (
               <Button
-                id={`${messageBoxId}-action-${action}`}
+                id={`${messageBoxId}-action-${index}`}
                 key={`${action}-${index}`}
                 design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
                 onClick={handleOnClose}
