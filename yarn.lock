@@ -8732,6 +8732,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cli-table3@npm:~0.6.5":
+  version: 0.6.5
+  resolution: "cli-table3@npm:0.6.5"
+  dependencies:
+    "@colors/colors": "npm:1.5.0"
+    string-width: "npm:^4.2.0"
+  dependenciesMeta:
+    "@colors/colors":
+      optional: true
+  checksum: 10c0/d7cc9ed12212ae68241cc7a3133c52b844113b17856e11f4f81308acc3febcea7cc9fd298e70933e294dd642866b29fd5d113c2c098948701d0c35f09455de78
+  languageName: node
+  linkType: hard
+
 "cli-truncate@npm:^2.1.0":
   version: 2.1.0
   resolution: "cli-truncate@npm:2.1.0"
@@ -9522,9 +9535,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:14.1.0":
-  version: 14.1.0
-  resolution: "cypress@npm:14.1.0"
+"cypress@npm:14.2.0":
+  version: 14.2.0
+  resolution: "cypress@npm:14.2.0"
   dependencies:
     "@cypress/request": "npm:^3.0.7"
     "@cypress/xvfb": "npm:^1.2.4"
@@ -9539,7 +9552,7 @@ __metadata:
     check-more-types: "npm:^2.24.0"
     ci-info: "npm:^4.1.0"
     cli-cursor: "npm:^3.1.0"
-    cli-table3: "npm:~0.6.1"
+    cli-table3: "npm:~0.6.5"
     commander: "npm:^6.2.1"
     common-tags: "npm:^1.8.0"
     dayjs: "npm:^1.10.4"
@@ -9571,7 +9584,7 @@ __metadata:
     yauzl: "npm:^2.10.0"
   bin:
     cypress: bin/cypress
-  checksum: 10c0/d746c2ff86f0b37671f85d6da272a4e6b6627603ebe2d345ca5b2071ebace1b7e1a138086b0e00af6a0244d204fa73b7ca3d08d0cfe6b9f4f20e888e6c611435
+  checksum: 10c0/70d9ca4bf5154f542a51665e19484828cbb52c2e618fb41aff5b6d37eaf1530d71aca794edd4d58c5823c3b83d03efb207d41e78d843103688fb47fe2eeaee93
   languageName: node
   linkType: hard
 
@@ -15702,8 +15715,8 @@ __metadata:
   linkType: hard
 
 "lint-staged@npm:^15.0.0":
-  version: 15.4.3
-  resolution: "lint-staged@npm:15.4.3"
+  version: 15.5.0
+  resolution: "lint-staged@npm:15.5.0"
   dependencies:
     chalk: "npm:^5.4.1"
     commander: "npm:^13.1.0"
@@ -15717,7 +15730,7 @@ __metadata:
     yaml: "npm:^2.7.0"
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: 10c0/c1f71f2273bcbd992af929620f5acc6b9f6899da4b395e780e0b3ab33a0d725c239eb961873067c8c842e057c585c71dd4d44c0dc8b25539d3c2e97a3bdd6f30
+  checksum: 10c0/393b24d85d705a36e6556dc9d9b710594163be60f7789a2ca71bbf8f31debc10f7fde9cd0e868466ac2b7c154661983602decd7abbb6c685b21007bc70dbbdd6
   languageName: node
   linkType: hard
 
@@ -23756,7 +23769,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:^4.2.0"
     chromatic: "npm:^11.0.0"
     cssnano: "npm:^7.0.0"
-    cypress: "npm:14.1.0"
+    cypress: "npm:14.2.0"
     cypress-real-events: "npm:^1.8.1"
     dedent: "npm:^1.0.0"
     documentation: "npm:14.0.3"
