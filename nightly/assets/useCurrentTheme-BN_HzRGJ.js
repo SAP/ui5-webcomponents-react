@@ -1,1 +1,0 @@
-import{r as s,o as m,n as u}from"./jsx-runtime-TYk6ziax.js";import{r as t}from"./index-C--kS4iy.js";function f(){const[r,o]=t.useState(s());return t.useEffect(()=>{const e=n=>{o(n)};return m(e),()=>{u(e)}},[]),r}export{f as u};
