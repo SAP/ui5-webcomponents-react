@@ -206,9 +206,9 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
   const internalActions = getActions(actions, type);
 
   const getInitialFocus = () => {
-    const actionToFocus = internalActions.find((action) => action === initialFocus);
-    if (typeof actionToFocus === 'string') {
-      return `${messageBoxId}-action-${actionToFocus}`;
+    const index = internalActions.findIndex((action) => action === initialFocus);
+    if (index !== -1 && typeof internalActions[index] === 'string') {
+      return `${messageBoxId}-action-${index}`;
     }
     return initialFocus;
   };
@@ -259,7 +259,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
           if (typeof action === 'string') {
             return (
               <Button
-                id={`${messageBoxId}-action-${action}`}
+                id={`${messageBoxId}-action-${index}`}
                 key={`${action}-${index}`}
                 design={emphasizedAction === action ? ButtonDesign.Emphasized : ButtonDesign.Transparent}
                 onClick={handleOnClose}
