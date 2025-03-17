@@ -79,7 +79,7 @@
     "documentation": "14.0.3",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^10.0.0",
-    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-import-resolver-typescript": "^4.0.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-no-only-tests": "^3.3.0",
     "eslint-plugin-prettier": "^5.2.1",
