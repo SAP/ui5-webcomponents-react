@@ -35,14 +35,14 @@
     "create-theming-parameters": "node scripts/generate-theming-parameters.js"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "8.6.4",
-    "@storybook/addon-essentials": "8.6.4",
-    "@storybook/blocks": "8.6.4",
-    "@storybook/manager-api": "8.6.4",
-    "@storybook/preview-api": "8.6.4",
-    "@storybook/react": "8.6.4",
-    "@storybook/react-vite": "8.6.4",
-    "@storybook/theming": "8.6.4",
+    "@storybook/addon-a11y": "8.6.6",
+    "@storybook/addon-essentials": "8.6.6",
+    "@storybook/blocks": "8.6.6",
+    "@storybook/manager-api": "8.6.6",
+    "@storybook/preview-api": "8.6.6",
+    "@storybook/react": "8.6.6",
+    "@storybook/react-vite": "8.6.6",
+    "@storybook/theming": "8.6.6",
     "@ui5/webcomponents": "2.8.0",
     "@ui5/webcomponents-ai": "2.8.0",
     "@ui5/webcomponents-compat": "2.8.0",
@@ -51,8 +51,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remark-gfm": "^4.0.0",
-    "storybook": "8.6.4",
-    "tocbot": "4.35.0"
+    "storybook": "8.6.6",
+    "tocbot": "4.35.2"
   },
   "devDependencies": {
     "@babel/cli": "7.26.4",
@@ -73,13 +73,13 @@
     "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^11.0.0",
     "cssnano": "^7.0.0",
-    "cypress": "14.1.0",
+    "cypress": "14.2.0",
     "cypress-real-events": "^1.8.1",
     "dedent": "^1.0.0",
     "documentation": "14.0.3",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^10.0.0",
-    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-import-resolver-typescript": "^4.0.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-no-only-tests": "^3.3.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -115,7 +115,7 @@
     ]
   },
   "resolutions": {
-    "tocbot": "4.35.0",
+    "tocbot": "4.35.2",
     "react-is": "^19"
   },
   "type": "module",

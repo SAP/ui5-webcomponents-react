@@ -512,11 +512,11 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Horizontal alignment of the cell.
    */
-  hAlign?: TextAlign;
+  hAlign?: TextAlign | keyof typeof TextAlign;
   /**
    * Vertical alignment of the cell.
    */
-  vAlign?: VerticalAlign;
+  vAlign?: VerticalAlign | keyof typeof VerticalAlign;
   /**
    * Allows passing a custom string for the internal width calculation of custom cells for `scaleWidthMode` `Grow` and `Smart`.
    *
