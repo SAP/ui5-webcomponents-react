@@ -558,7 +558,8 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const objectPageClasses = clsx(
     classNames.objectPage,
     className,
-    mode === ObjectPageMode.IconTabBar && classNames.iconTabBarMode
+    mode === ObjectPageMode.IconTabBar && classNames.iconTabBarMode,
+    footerArea && classNames.withFooter
   );
 
   const { onScroll: _0, selectedSubSectionId: _1, ...propsWithoutOmitted } = rest;

@@ -17,7 +17,6 @@
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
-  scroll-padding-block-end: calc(var(--_ui5wcr-BarHeight) + 0.5rem);
 
   &[data-in-iframe='true'] {
     scroll-behavior: auto;
@@ -32,6 +31,10 @@
   section[id*='ObjectPageSection-'] ~ section[id*='ObjectPageSection-'] > div[role='heading'] {
     display: block;
   }
+}
+
+.withFooter {
+  scroll-padding-block-end: calc(var(--_ui5wcr-BarHeight) + 0.5rem);
 }
 
 .iconTabBarMode section[data-component-name='ObjectPageSection'] > div[role='heading'] {
