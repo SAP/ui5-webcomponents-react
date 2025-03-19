@@ -13,9 +13,12 @@
   white-space: normal;
   font-family: var(--sapFontFamily);
   background-color: var(--sapBackgroundColor);
+
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
+  scroll-padding-block-end: calc(var(--_ui5wcr-BarHeight) + 0.5rem);
+
   &[data-in-iframe='true'] {
     scroll-behavior: auto;
   }

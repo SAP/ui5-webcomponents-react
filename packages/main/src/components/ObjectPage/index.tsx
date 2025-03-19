@@ -735,7 +735,8 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   );
 
   const objectPageStyles: CSSProperties = {
-    ...style
+    ...style,
+    scrollPaddingBlockStart: `${Math.ceil(topHeaderHeight + TAB_CONTAINER_HEADER_HEIGHT)}px`
   };
   if (headerCollapsed === true && headerArea) {
     objectPageStyles[ObjectPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
