@@ -1037,6 +1037,8 @@ describe('ObjectPage', () => {
     };
 
     cy.mount(<TestComp />);
+    cy.wait(200);
+
     cy.get('[ui5-tabcontainer]').findUi5TabByText('test2').realClick();
     cy.findByText('Content1').should('not.be.visible');
     cy.findByText('Content2').should('be.visible');
