@@ -72,13 +72,10 @@ const config: StorybookConfig = {
         }
       ],
   addons,
-  docs: {
-    autodocs: true
-  },
   typescript: {
     reactDocgen: 'react-docgen-typescript'
   },
-  staticDirs: [isDevMode && 'images-dev', 'images'].filter(Boolean)
+  staticDirs: [isDevMode && 'images-dev', !isDevMode && 'images'].filter(Boolean)
 };
 
 export default config;
