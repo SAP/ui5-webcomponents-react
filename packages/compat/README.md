@@ -28,13 +28,13 @@ E.g.:
 - `import { Table } from '@ui5/webcomponents-react-compat/dist/components/Table/index.js';`
 - `import { Toolbar } from '@ui5/webcomponents-react-compat/dist/components/Toolbar/index.js';`
 
-In case you're still facing issues with the custom element definitions of the `Table` in dev envs, you can add the web component import before any other component import in your application.
+In case you're still facing issues with the custom element definitions of the `Table` in development environments, you can add the web component import before any other component import in your application.
 
 Following are the imports of duplicate custom element names:
 
 - `Table` (`ui5-table`): `import '@ui5/webcomponents-compat/dist/Table.js';`
-- `TableCell` (`ui5-table-cell`): `import "@ui5/webcomponents/dist/TableCell.js";`
-- `TableRow` (`ui5-table-row`): `import "@ui5/webcomponents/dist/TableRow.js";`
+- `TableCell` (`ui5-table-cell`): `import "@ui5/webcomponents-compat/dist/TableCell.js";`
+- `TableRow` (`ui5-table-row`): `import "@ui5/webcomponents-compat/dist/TableRow.js";`
 
 ## Documentation
 
