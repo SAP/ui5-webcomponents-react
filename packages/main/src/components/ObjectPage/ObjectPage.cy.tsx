@@ -348,16 +348,18 @@ describe('ObjectPage', () => {
       </ObjectPage>
     );
 
+    cy.wait(200);
+
     cy.findByText('Goals').should('not.be.visible');
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
-    //fallback
-    cy.wait(50);
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
     cy.findByText('Employment').should('be.visible');
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+
+    cy.wait(200);
+
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').realClick();
     cy.findByText('Test').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
@@ -377,6 +379,7 @@ describe('ObjectPage', () => {
         {OPContent}
       </ObjectPage>
     );
+    cy.wait(100);
 
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
