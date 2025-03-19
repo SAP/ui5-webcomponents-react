@@ -151,7 +151,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
           lastNonEmptyRow.current = row;
         }
         prepareRow(row);
-        const rowProps = row.getRowProps({
+        const { key, ...rowProps } = row.getRowProps({
           'aria-rowindex': virtualRow.index + 1,
           'data-virtual-row-index': virtualRow.index
         });
@@ -190,8 +190,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             : rowVirtualizer.measureElement;
 
         return (
-          // eslint-disable-next-line react/jsx-key
           <div
+            key={key}
             {...rowProps}
             ref={measureRef}
             style={{
@@ -227,7 +227,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               if (!cell) {
                 return null;
               }
-              const cellProps = cell.getCellProps();
+              const { key, ...cellProps } = cell.getCellProps();
               const allCellProps = {
                 ...cellProps,
                 ['data-visible-column-index']: visibleColumnIndex,
@@ -269,8 +269,11 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               }
 
               return (
-                // eslint-disable-next-line react/jsx-key
-                <div {...allCellProps} data-selection-cell={cell.column.id === '__ui5wcr__internal_selection_column'}>
+                <div
+                  key={key}
+                  {...allCellProps}
+                  data-selection-cell={cell.column.id === '__ui5wcr__internal_selection_column'}
+                >
                   {popInRowHeight !== internalRowHeight && popInColumn.id === cell.column.id
                     ? cell.render('PopIn', { contentToRender, internalRowHeight })
                     : cell.render(contentToRender, isNavigatedCell === true ? { isNavigatedCell } : {})}
