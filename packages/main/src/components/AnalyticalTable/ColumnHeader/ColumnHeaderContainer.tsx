@@ -6,8 +6,7 @@ import { classNames, styleData } from './Resizer.module.css.js';
 import { ColumnHeader } from './index.js';
 
 interface ColumnHeaderContainerProps {
-  headerProps: Record<string, unknown>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  headerProps: Record<string, any>;
   headerGroup: Record<string, any>;
   onSort: (e: CustomEvent<{ column: unknown; sortDirection: string }>) => void;
   onGroupByChanged: (e: CustomEvent<{ column?: Record<string, unknown>; isGrouped?: boolean }>) => void;
@@ -32,12 +31,14 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     uniqueId,
     showVerticalEndBorder
   } = props;
+  const { key, ...reactTableHeaderProps } = headerProps;
 
   useStylesheet(styleData, 'Resizer');
 
   return (
     <div
-      {...headerProps}
+      key={key}
+      {...reactTableHeaderProps}
       style={{ width: `${columnVirtualizer.getTotalSize()}px` }}
       ref={ref}
       data-component-name="AnalyticalTableHeaderRow"
