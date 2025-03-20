@@ -60,6 +60,8 @@
   margin-block-end: 0.25rem;
   background-color: var(--sapObjectHeader_Background);
   display: grid;
+}
+.hasAvatar {
   grid-auto-columns: min-content calc(100% - 5rem - 2rem);
 
   [data-component-name='ObjectPageHeaderContent'] {
