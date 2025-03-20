@@ -13,9 +13,11 @@
   white-space: normal;
   font-family: var(--sapFontFamily);
   background-color: var(--sapBackgroundColor);
+
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
+
   &[data-in-iframe='true'] {
     scroll-behavior: auto;
   }
@@ -29,6 +31,10 @@
   section[id*='ObjectPageSection-'] ~ section[id*='ObjectPageSection-'] > div[role='heading'] {
     display: block;
   }
+}
+
+.withFooter {
+  scroll-padding-block-end: calc(var(--_ui5wcr-BarHeight) + 0.5rem);
 }
 
 .iconTabBarMode section[data-component-name='ObjectPageSection'] > div[role='heading'] {

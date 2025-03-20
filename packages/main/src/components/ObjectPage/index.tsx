@@ -558,7 +558,8 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const objectPageClasses = clsx(
     classNames.objectPage,
     className,
-    mode === ObjectPageMode.IconTabBar && classNames.iconTabBarMode
+    mode === ObjectPageMode.IconTabBar && classNames.iconTabBarMode,
+    footerArea && classNames.withFooter
   );
 
   const { onScroll: _0, selectedSubSectionId: _1, ...propsWithoutOmitted } = rest;
@@ -735,7 +736,8 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   );
 
   const objectPageStyles: CSSProperties = {
-    ...style
+    ...style,
+    scrollPaddingBlockStart: `${Math.ceil(topHeaderHeight + TAB_CONTAINER_HEADER_HEIGHT + (!headerCollapsed && headerPinned ? headerContentHeight : 0))}px`
   };
   if (headerCollapsed === true && headerArea) {
     objectPageStyles[ObjectPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
