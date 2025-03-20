@@ -60,7 +60,7 @@ export const WithCustomIcon: Story = {
 };
 
 export const WithIconOnly: Story = {
-  args: { icon: <Icon name={cancelIcon} mode={IconMode.Decorative} />, children: null }
+  args: { icon: <Icon name={cancelIcon} mode={IconMode.Decorative} />, children: null, title: 'Cancel' }
 };
 
 export const InvertedObjectStatus: Story = {
