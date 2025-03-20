@@ -724,7 +724,6 @@ const ObjectPage = forwardRef<HTMLDivElement, ObjectPagePropTypes>((props, ref) 
     }
 
     isScrolling.current = setTimeout(() => {
-      console.log('end scroll');
       isProgrammaticallyScrolled.current = false;
     }, 300);
 
