@@ -126,7 +126,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render(args) {
     return (
-      <ObjectPage {...args}>
+      // `onBeforeNavigate` has to be called like this, otherwise it's invoked two times for some reason.
+      <ObjectPage {...args} onBeforeNavigate={args.onBeforeNavigate}>
         <ObjectPageSection titleText="Goals" id="goals" aria-label="Goals">
           <Form layout="S1 M2 L3 XL3" labelSpan="S12 M12 L12 XL12">
             <FormItem labelContent={<Label showColon>Evangelize the UI framework across the company</Label>}>
@@ -305,7 +306,7 @@ export const SectionWithCustomHeader: Story = {
   name: 'section with custom header',
   render(args) {
     return (
-      <ObjectPage {...args}>
+      <ObjectPage {...args} onBeforeNavigate={args.onBeforeNavigate}>
         <ObjectPageSection
           titleText="Goals"
           hideTitleText
@@ -349,7 +350,7 @@ export const FullScreenSingleSection: Story = {
   name: 'with fullscreen section',
   render(args) {
     return (
-      <ObjectPage {...args} mode={ObjectPageMode.IconTabBar}>
+      <ObjectPage {...args} mode={ObjectPageMode.IconTabBar} onBeforeNavigate={args.onBeforeNavigate}>
         <ObjectPageSection titleText="Section 1" id="section1" style={{ height: '100%' }}>
           <div style={{ height: '100%', background: 'lightblue' }}>
             It is recommended to only use fullscreen sections in TabBar mode, otherwise your layout will most probably
@@ -378,6 +379,7 @@ export const LegacyToolbarSupport: Story = {
     return (
       <ObjectPage
         {...args}
+        onBeforeNavigate={args.onBeforeNavigate}
         ref={objectPageRef}
         titleArea={
           <ObjectPageTitle

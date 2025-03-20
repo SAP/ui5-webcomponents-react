@@ -156,7 +156,8 @@ const preview: Preview = {
       }
     },
     chromatic: { pauseAnimationAtEnd: true }
-  }
+  },
+  tags: ['autodocs']
 };
 
 export default preview;
