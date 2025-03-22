@@ -48,20 +48,21 @@ describe('MessageView', () => {
     });
     cy.get('[data-title="Success"]')
       .next()
-      .should('have.text', 'Information')
+      // Information and None don't have a status screen reader announcement
+      .should('have.text', 'Information. Has Details')
       .next()
       .should('have.attr', 'header-text', 'Group1')
       .children()
       .first()
-      .should('have.text', 'Error')
+      .should('have.text', 'Error. Has Details. Error')
       .next()
-      .should('have.text', 'Warning')
+      .should('have.text', 'Warning. Has Details. Warning')
       .parent()
       .next()
       .should('have.attr', 'header-text', 'Group2')
       .children()
       .first()
-      .should('have.text', 'None');
+      .should('have.text', 'None. Has Details');
 
     ['error', 'alert', 'sys-enter-2', 'information'].forEach((btn, index, arr) => {
       cy.log(`SegmentedButton click - ${btn}`);
@@ -181,7 +182,7 @@ describe('MessageView', () => {
           titleText={
             <Link wrappingType={WrappingType.None}>
               Long Error Message Type without children/details including a Link as `titleText` which has
-              wrappingType="None" applied. - The details view is only available if the `titleText` is not fully visible.
+              wrappingType='None' applied. - The details view is only available if the `titleText` is not fully visible.
               It is NOT recommended to use long titles!
             </Link>
           }
@@ -200,14 +201,23 @@ describe('MessageView', () => {
     );
 
     cy.get('[name="slim-arrow-right"]').should('be.visible').and('have.length', 2);
-
     cy.findByTestId('item1').click();
     cy.get('@select').should('have.been.calledOnce');
-    cy.get('[name="slim-arrow-left"]').should('be.visible').and('have.length', 1).click();
 
+    cy.get('[name="slim-arrow-left"]').should('be.visible').and('have.length', 1);
+    cy.focused().should('have.attr', 'aria-label', 'Navigate Back').click();
+
+    cy.focused()
+      .parent()
+      .should(
+        'have.attr',
+        'data-title',
+        `Long Error Message Type without children/details including a Link as \`titleText\` which has wrappingType='None' applied. - The details view is only available if the \`titleText\` is not fully visible. It is NOT recommended to use long titles!`
+      );
     cy.findByTestId('item2').click();
     cy.get('@select').should('have.been.calledTwice');
-    cy.get('[name="slim-arrow-left"]').should('be.visible').and('have.length', 1).click();
+    cy.get('[name="slim-arrow-left"]').should('be.visible').and('have.length', 1);
+    cy.get('[accessible-name="Navigate Back"]').should('be.focused').click();
 
     cy.findByTestId('item3').click();
     cy.get('@select').should('have.been.calledTwice');
