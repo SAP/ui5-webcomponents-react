@@ -11,6 +11,12 @@
   vertical-align: top;
   width: fit-content;
   text-shadow: var(--sapContent_TextShadow);
+
+  color: var(--sapNeutralTextColor);
+
+  [ui5-icon] {
+    color: var(--sapNeutralElementColor);
+  }
 }
 
 .icon {
@@ -80,14 +86,6 @@
   }
 }
 
-.none {
-  color: var(--sapNeutralTextColor);
-
-  [ui5-icon] {
-    color: var(--sapNeutralElementColor);
-  }
-}
-
 .indication01 {
   color: var(--sapIndicationColor_1);
 
@@ -149,6 +147,22 @@
 
   [ui5-icon] {
     color: var(--sapIndicationColor_8);
+  }
+}
+
+.indication09 {
+  color: var(--sapIndicationColor_9);
+
+  [ui5-icon] {
+    color: var(--sapIndicationColor_9);
+  }
+}
+
+.indication10 {
+  color: var(--sapIndicationColor_10);
+
+  [ui5-icon] {
+    color: var(--sapIndicationColor_10);
   }
 }
 
@@ -476,6 +490,149 @@
   --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_8_Active_BorderColor);
 }
 
+.objectStatus:is(.inverted.indication09) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_9_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_9_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_9_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_9_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_9_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_9_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_9_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication10) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_10_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_10_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_10_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_10_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_10_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_10_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_10_Active_BorderColor);
+}
+.objectStatus:is(.inverted.indication11) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_1b_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_1b_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_1b_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_1b_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_1_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_1_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_1_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication12) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_2b_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_2b_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_2b_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_2b_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_2_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_2_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_2_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication13) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_3b_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_3b_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_3b_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_3b_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_3_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_3_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_3_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication14) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_4b_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_4b_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_4b_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_4b_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_4_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_4_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_4_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication15) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_5b_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_5b_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_5b_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_5b_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_5_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_5_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_5_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication16) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_6b_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_6b_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_6b_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_6b_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_6_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_6_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_6_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication17) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_7b_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_7b_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_7b_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_7b_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_7_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_7_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_7_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication18) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_8b_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_8b_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_8b_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_8b_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_8_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_8_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_8_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication19) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_9b_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_9b_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_9b_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_9b_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_9_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_9_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_9_Active_BorderColor);
+}
+
+.objectStatus:is(.inverted.indication20) {
+  --_ui5wcr-ObjectStatus-inverted-indication-text-color: var(--sapIndicationColor_10b_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-background-color: var(--sapIndicationColor_10b_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-border-color: var(--sapIndicationColor_10b_BorderColor);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-hover-background-color: var(--sapIndicationColor_10b_Hover_Background);
+
+  --_ui5wcr-ObjectStatus-inverted-indication-active-text-color: var(--sapIndicationColor_10_Active_TextColor);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-background-color: var(--sapIndicationColor_10_Active_Background);
+  --_ui5wcr-ObjectStatus-inverted-indication-active-border-color: var(--sapIndicationColor_10_Active_BorderColor);
+}
+
 .objectStatus:is(.inverted):is(
     .indication01,
     .indication02,
@@ -484,7 +641,19 @@
     .indication05,
     .indication06,
     .indication07,
-    .indication08
+    .indication08,
+    .indication09,
+    .indication10,
+    .indication11,
+    .indication12,
+    .indication13,
+    .indication14,
+    .indication15,
+    .indication16,
+    .indication17,
+    .indication18,
+    .indication19,
+    .indication20
   ) {
   text-shadow: var(--sapContent_ContrastTextShadow);
   color: var(--_ui5wcr-ObjectStatus-inverted-indication-text-color);
@@ -509,4 +678,20 @@
       color: var(--_ui5wcr-ObjectStatus-inverted-indication-active-text-color);
     }
   }
+}
+
+.objectStatus:is(.inverted):is(
+    .indication11,
+    .indication12,
+    .indication13,
+    .indication14,
+    .indication15,
+    .indication16,
+    .indication17,
+    .indication18,
+    .indication19,
+    .indication20
+  /* increase specificity */
+  ):not(#noop) {
+  text-shadow: var(--sapContent_TextShadow);
 }
