@@ -115,6 +115,11 @@
         "https://github.com/SAP/ui5-webcomponents{/,}**",
         "https://github.com/SAP/ui5-webcomponents-react{/,}**"
       ]
+    },
+    {
+      "groupName": "Typescript",
+      "description": "Typescript dependency update",
+      "matchPackageNames": ["typescript"]
     }
   ]
 }
