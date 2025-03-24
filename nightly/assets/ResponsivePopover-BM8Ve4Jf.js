@@ -1,0 +1,34 @@
+import{j as o}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as m}from"./index-Ddg-oX0k.js";import{M as n,C as e}from"./index-C5IZdHoL.js";import"./index-CB2NJyj5.js";import"./index-Cnzd2XK2.js";import{C as s}from"./ControlsWithNote-Co4E2rdR.js";import{D as c}from"./DocsHeader-e3KIZtm4.js";import{F as a}from"./CommandsAndQueries-CF6zmgeu.js";import"./index-Bi_W_Jd4.js";import"./WrappingType-BBpR8qCJ.js";import"./Title-Dw2clFwJ.js";import{C as d,D as p}from"./ResponsivePopover.stories-B8eS6Ee2.js";import"./iframe-CJpRZXeS.js";import"./index-C1S0AQHK.js";import"./index-C2EHZYIs.js";import"./index-CXQShRbs.js";import"./index-DrFu-skq.js";import"./jsx-runtime-ByLklLy6.js";import"./CustomElementsScope-BJCkQSHf.js";import"./EventProvider-ChtD9rRX.js";import"./slot-_4yKMUwC.js";import"./event-strict-DgQLNDEV.js";import"./i18n-CjR4HGlq.js";import"./Button-CVhFbCad.js";import"./Keys-B3oBAe0t.js";import"./AccessibilityTextsHelper-4hgGqLyb.js";import"./Icon-CGby3L9v.js";import"./parameters-bundle.css-DHLNbl9v.js";import"./willShowContent-CZcfsNXp.js";import"./Tooltips-CFLTQoOV.js";import"./toLowercaseEnumValue-C_8o5td_.js";import"./i18n-defaults-BXUwkpCs.js";import"./decline-U8TXFXmv.js";import"./i18n-defaults-BJtDw6Mf.js";import"./information-CmvYYEtw.js";import"./information-DWKEhq3n.js";import"./sys-enter-2-DfvUZ16A.js";import"./sys-enter-2-DLBOjKNS.js";import"./TagDesign-Ga50IS6u.js";import"./utils-UElmU1SS.js";import"./main-BZcY5MQX.js";import"./index-BlfpT5Yv.js";import"./Tag-B3GqqYCx.js";import"./sys-help-2-Cui80jVv.js";import"./index-DZZKhZ35.js";import"./Link-7OPDvJp0.js";import"./index-V9E_9yBg.js";import"./Popover-BgaZr5c3.js";import"./PopupsCommon.css-D4-KdmWM.js";import"./FocusableElements-Bof-Jfi5.js";import"./isElementHidden-B4HqmI2E.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-D-iSdYn6.js";import"./MediaRange-Bnzt26Xb.js";import"./getEffectiveScrollbarStyle-C9nZ6DfS.js";import"./copy-C0TcgQvK.js";import"./copy-BPa3OsAo.js";import"./clsx-B-dksMZM.js";import"./GitHub-Mark-k522kM_X.js";import"./TableOfContent-rwZqpKzI.js";import"./index-B0BiYi8X.js";import"./I18nStore-BuTcnDwi.js";import"./useStylesheet-jv87nE5t.js";import"./index-B1xYitIu.js";import"./index-CtYzPxrt.js";import"./Label-42unHoL8.js";import"./index-q_xBifsn.js";import"./index-D1NZoOym.js";import"./Text-BYHe0rMB.js";import"./preview-CXBJ1RbI.js";import"./DocsRenderer-CFRXHY34-C_cNKpUt.js";import"./react-18-B98GjGe7.js";import"./addCustomCSSWithScoping-CRaJDqw6.js";import"./index-sxpf8z2p.js";import"./BusyIndicator-cXtbXcMV.js";import"./index-D-QlfT-1.js";import"./index-BBw2fVoz.js";import"./AvatarSize-BtKTMFJ5.js";import"./employee-DP6pBYCZ.js";import"./index-C9PWDxiW.js";import"./List-tC_sBijc.js";import"./ItemNavigation-DkXbeD0_.js";import"./handleDrop-DBhvwkYi.js";import"./DropIndicator-C61opNKl.js";import"./getNormalizedTarget-C4mxORXI.js";import"./debounce-TTkz9ISH.js";import"./ListItemGroup-DkPsliH9.js";import"./TabbableElements-XzXYKyvZ.js";import"./index-BVnFB9i2.js";import"./ListItemStandard-Cp1eitWQ.js";import"./ListItemTemplate-uLmtgV1d.js";import"./edit-DnrxsCWC.js";import"./ListItemAdditionalText.css-BHHJ96Za.js";import"./slim-arrow-right-BMo7GX2U.js";import"./RadioButton-aUUR-yd5.js";import"./ValueState-Bg0UWejw.js";import"./CheckBox-BqnF_2VA.js";import"./accept-M2YmBe7V.js";import"./index-BYwO7YEm.js";import"./ResponsivePopover-loEtlXj6.js";import"./Dialog-CRHAE-yP.js";import"./settings-DWqWlfaW.js";function i(t){const r={code:"code",h2:"h2",p:"p",pre:"pre",...m(),...t.components};return o.jsxs(o.Fragment,{children:[o.jsx(n,{of:d}),`
+`,o.jsx(c,{since:"0.9.0"}),`
+`,o.jsx("br",{}),`
+`,o.jsx(r.h2,{id:"example",children:"Example"}),`
+`,o.jsx(e,{of:p}),`
+`,o.jsx(r.h2,{id:"properties",children:"Properties"}),`
+`,o.jsx(s,{of:p}),`
+`,o.jsx(r.h2,{id:"opening-responsivepopovers",children:"Opening ResponsivePopovers"}),`
+`,o.jsxs(r.p,{children:["You can open and close the ",o.jsx(r.code,{children:"ResponsivePopover"})," component in a declarative way using the ",o.jsx(r.code,{children:"open"})," and ",o.jsx(r.code,{children:"opener"})," prop."]}),`
+`,o.jsx(r.pre,{children:o.jsx(r.code,{className:"language-jsx",children:`const MyComponentWithPopover = () => {
+  const btnRef = useRef(null);
+  const [popoverIsOpen, setPopoverIsOpen] = useState(false);
+  return (
+    <>
+      <Button
+        ref={btnRef}
+        onClick={() => {
+          setPopoverIsOpen(true);
+        }}
+      >
+        Open Popover
+      </Button>
+      <ResponsivePopover
+        opener={btnRef.current}
+        open={popoverIsOpen}
+        onClose={() => {
+          setPopoverIsOpen(false);
+        }}
+      />
+    </>
+  );
+};
+`})}),`
+`,o.jsx(a,{})]})}function er(t={}){const{wrapper:r}={...m(),...t.components};return r?o.jsx(r,{...t,children:o.jsx(i,{...t})}):i(t)}export{er as default};
