@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.0...v2.8.1) (2025-03-24)
+
+### Bug Fixes
+
+- **AnalyticalTable:** align column popover based on `hAlign` ([#7081](https://github.com/SAP/ui5-webcomponents-react/issues/7081)) ([eb7dddc](https://github.com/SAP/ui5-webcomponents-react/commit/eb7dddc28ee614d5ddbf637851c1b8c1e74cbe68)), closes [#7080](https://github.com/SAP/ui5-webcomponents-react/issues/7080)
+- **AnalyticalTable:** fix focus behavior when tabbing ([#7063](https://github.com/SAP/ui5-webcomponents-react/issues/7063)) ([8be0e35](https://github.com/SAP/ui5-webcomponents-react/commit/8be0e35f7e837c4ad17d2ebd18f48a9760b398e0)), closes [#7062](https://github.com/SAP/ui5-webcomponents-react/issues/7062)
+- **deps:** update dependency @tanstack/react-virtual to v3.13.4 ([#7071](https://github.com/SAP/ui5-webcomponents-react/issues/7071)) ([cf721e5](https://github.com/SAP/ui5-webcomponents-react/commit/cf721e57de5d0192546ca1aa149d756471d278ca))
+- **FilterBar:** fix reordering in `StrictMode` ([#7060](https://github.com/SAP/ui5-webcomponents-react/issues/7060)) ([7f0f4e6](https://github.com/SAP/ui5-webcomponents-react/commit/7f0f4e6c966dadda85bf4d52bd7743dec19ed68b)), closes [#7013](https://github.com/SAP/ui5-webcomponents-react/issues/7013)
+- **MessageBox:** always create valid id for `String` action button ([#7091](https://github.com/SAP/ui5-webcomponents-react/issues/7091)) ([57b9b54](https://github.com/SAP/ui5-webcomponents-react/commit/57b9b5412a527d6e628407c02bb3f807e6adc837))
+- **ObjectPage:** always show focused elements in content ([#7104](https://github.com/SAP/ui5-webcomponents-react/issues/7104)) ([c8bea19](https://github.com/SAP/ui5-webcomponents-react/commit/c8bea19e005815770d359503614019b66a0075fa)), closes [#7057](https://github.com/SAP/ui5-webcomponents-react/issues/7057) [#7010](https://github.com/SAP/ui5-webcomponents-react/issues/7010)
+- **ObjectPage:** fire `onPinButtonToggle` only when required ([#7064](https://github.com/SAP/ui5-webcomponents-react/issues/7064)) ([16c0453](https://github.com/SAP/ui5-webcomponents-react/commit/16c04536d85c77a34afc99befeab5308d80f232c))
+- **ObjectPage:** use full width for header content if no `image` is set ([#7046](https://github.com/SAP/ui5-webcomponents-react/issues/7046)) ([41f0dc9](https://github.com/SAP/ui5-webcomponents-react/commit/41f0dc948748c56b12dcedfd1b7ae9f427fffabc)), closes [#7025](https://github.com/SAP/ui5-webcomponents-react/issues/7025)
+- **ObjectStatus:** screen readers announce "button" only once ([#7047](https://github.com/SAP/ui5-webcomponents-react/issues/7047)) ([c03e359](https://github.com/SAP/ui5-webcomponents-react/commit/c03e359fdbb69bb0f90e9854ed2b24d8304c745f)), closes [#7039](https://github.com/SAP/ui5-webcomponents-react/issues/7039)
+- **ObjectStatus:** use `IconMode.Decorative` instead of `aria-hidden` ([#7110](https://github.com/SAP/ui5-webcomponents-react/issues/7110)) ([45664cf](https://github.com/SAP/ui5-webcomponents-react/commit/45664cf7e442ea5aa07703fe7d19109595372c52))
+- **renovate:** fix warnings ([#7075](https://github.com/SAP/ui5-webcomponents-react/issues/7075)) ([b2c79ea](https://github.com/SAP/ui5-webcomponents-react/commit/b2c79eae7d62417cab7db006375ffe2361908a4e))
+- **VariantManagement:** allow quotes in `VariantItem` name ([#7108](https://github.com/SAP/ui5-webcomponents-react/issues/7108)) ([eafca89](https://github.com/SAP/ui5-webcomponents-react/commit/eafca89e4bea54fd765453f15270ea76f5be7441)), closes [#7106](https://github.com/SAP/ui5-webcomponents-react/issues/7106)
+
 # [2.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.2...v2.8.0) (2025-03-05)
 
 ### Bug Fixes
