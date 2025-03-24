@@ -1,0 +1,40 @@
+version = 1
+SPDX-PackageName = "UI5 Web Components for React"
+SPDX-PackageSupplier = "ui5-webcomponents-react@sap.com"
+SPDX-PackageDownloadLocation = "https://github.com/SAP/ui5-webcomponents-react"
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2019-2023 SAP SE or an SAP affiliate company and UI5 Web Components for React contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "/packages/charts/src/components/PieChart/PieChart.tsx"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2016-2020 Recharts Group"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "packages/base/src/hooks/useIsomorphicLayoutEffect.ts"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2019 Tanner Linsley"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "packages/base/src/utils/debounce.ts"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2009-2021 Jeremy Ashkenas, Julian Gonggrijp, and DocumentCloud and Investigative Reporters & Editors"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "packages/base/src/utils/throttle.ts"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2009-2021 Jeremy Ashkenas, Julian Gonggrijp, and DocumentCloud and Investigative Reporters & Editors"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "packages/main/src/internal/safeGetChildrenArray.ts"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 Adobe Inc."
+SPDX-License-Identifier = "Apache-2.0"
