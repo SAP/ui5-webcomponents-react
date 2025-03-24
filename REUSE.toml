@@ -6,13 +6,13 @@ SPDX-PackageDownloadLocation = "https://github.com/SAP/ui5-webcomponents-react"
 [[annotations]]
 path = "**"
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2019-2023 SAP SE or an SAP affiliate company and UI5 Web Components for React contributors"
+SPDX-FileCopyrightText = "2019-2025 SAP SE or an SAP affiliate company and UI5 Web Components for React contributors"
 SPDX-License-Identifier = "Apache-2.0"
 
 [[annotations]]
 path = "/packages/charts/src/components/PieChart/PieChart.tsx"
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2016-2020 Recharts Group"
+SPDX-FileCopyrightText = "2016-2025 Recharts Group"
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
