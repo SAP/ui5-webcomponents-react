@@ -182,6 +182,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     [onDataPointClick]
   );
 
+  // REUSE: part of this function is copied from: https://github.com/recharts/recharts/blob/411e57a3c206a1425ff33a7e63cacf40a844e551/storybook/stories/Examples/Pie/CustomActiveShapePieChart.stories.tsx#L22-L44
   const renderActiveShape = useCallback(
     (props) => {
       const RADIAN = Math.PI / 180;
