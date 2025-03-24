@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.19](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.18...v1.29.19) (2025-03-24)
+
+### Bug Fixes
+
+- **AnalyticalTable:** align column popover based on `hAlign` ([#7101](https://github.com/SAP/ui5-webcomponents-react/issues/7101)) ([7f3bbaf](https://github.com/SAP/ui5-webcomponents-react/commit/7f3bbaf1f08864cd055c38cbfcaf9a44898e9214)), closes [#7080](https://github.com/SAP/ui5-webcomponents-react/issues/7080)
+- **AnalyticalTable:** fix React `key` warning ([#7100](https://github.com/SAP/ui5-webcomponents-react/issues/7100)) ([da3c19e](https://github.com/SAP/ui5-webcomponents-react/commit/da3c19e870e4f75bb811b33798d3404baacd3cdd)), closes [#7093](https://github.com/SAP/ui5-webcomponents-react/issues/7093)
+- **FilterBar:** fix reordering in `StrictMode` ([#7112](https://github.com/SAP/ui5-webcomponents-react/issues/7112)) ([9e3054e](https://github.com/SAP/ui5-webcomponents-react/commit/9e3054ede2bfca4e9e28fa42b4ec894c83ada14d))
+- **MessageBox:** always create valid id for `String` action button ([#7113](https://github.com/SAP/ui5-webcomponents-react/issues/7113)) ([e0e636b](https://github.com/SAP/ui5-webcomponents-react/commit/e0e636b76f8cf1e00da20ecb738a88a3ea2aa344))
+- **ObjectPage:** use full width for header content if no image is set ([#7111](https://github.com/SAP/ui5-webcomponents-react/issues/7111)) ([c44217e](https://github.com/SAP/ui5-webcomponents-react/commit/c44217ef59315057048f1d2696388e55c5c07902))
+- **VariantManagement:** allow quotes in VariantItem name ([#7114](https://github.com/SAP/ui5-webcomponents-react/issues/7114)) ([f19762b](https://github.com/SAP/ui5-webcomponents-react/commit/f19762bdff9d44fa5d4475d2f9d6b4c87dde983f))
+
 ## [1.29.18](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.17...v1.29.18) (2025-03-05)
 
 ### Bug Fixes
