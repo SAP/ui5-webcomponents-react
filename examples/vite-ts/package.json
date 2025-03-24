@@ -23,7 +23,7 @@
     "react-router": "7.3.0"
   },
   "devDependencies": {
-    "@types/react": "19.0.10",
+    "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
     "@ui5/webcomponents-cypress-commands": "2.8.0",
     "@vitejs/plugin-react": "^4.3.2",
