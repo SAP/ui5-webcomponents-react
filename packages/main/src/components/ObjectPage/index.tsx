@@ -576,7 +576,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         className,
         mode === ObjectPageMode.IconTabBar && classNames.iconTabBarMode
       )}
-      style={style}
+      style={objectPageStyles}
       onScroll={onObjectPageScroll}
       data-in-iframe={window && window.self !== window.top}
       {...propsWithoutOmitted}
