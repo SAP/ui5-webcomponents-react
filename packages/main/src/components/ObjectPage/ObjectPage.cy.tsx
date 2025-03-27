@@ -343,7 +343,12 @@ describe('ObjectPage', () => {
   it('scroll to sections - default mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
-      <ObjectPage titleArea={DPTitle} headerArea={DPContent} style={{ height: '100vh', scrollBehavior: 'auto' }}>
+      <ObjectPage
+        data-testid="op"
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
+      >
         {OPContent}
       </ObjectPage>
     );
@@ -362,6 +367,16 @@ describe('ObjectPage', () => {
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').realClick();
     cy.findByText('Test').should('be.visible');
 
+    // no scroll when focusing something in the header area
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
+    cy.findByText('Job Information').should('be.visible');
+    cy.findByTestId('op').invoke('scrollTop').as('scrollTop');
+    cy.wait(100);
+    cy.realPress('ArrowLeft');
+    cy.get('@scrollTop').then((scrollTop) => {
+      cy.findByTestId('op').invoke('scrollTop').should('equal', scrollTop);
+    });
+
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
@@ -371,6 +386,7 @@ describe('ObjectPage', () => {
 
     cy.mount(
       <ObjectPage
+        data-testid
         titleArea={DPTitle}
         headerArea={DPContent}
         footerArea={Footer}
@@ -394,9 +410,10 @@ describe('ObjectPage', () => {
 
     cy.wait(200);
     //fallback click
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
     cy.findByTestId('footer').should('be.visible');
     cy.findByText('Employment').should('be.visible');
+    cy.findByText('Job Information').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('Test').should('be.visible');
@@ -419,6 +436,7 @@ describe('ObjectPage', () => {
     document.body.style.margin = '0px';
     cy.mount(
       <ObjectPage
+        data-testid="op"
         titleArea={DPTitle}
         headerArea={DPContent}
         mode={ObjectPageMode.IconTabBar}
@@ -430,9 +448,16 @@ describe('ObjectPage', () => {
     cy.findByText('Job Information').should('not.exist');
     cy.findByTestId('section 1').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
     cy.findByText('Job Information').should('be.visible');
     cy.findByTestId('section 1').should('not.exist');
+    // no scroll when focusing something in the header area
+    cy.findByTestId('op').invoke('scrollTop').as('scrollTop');
+    cy.wait(100);
+    cy.realPress('ArrowLeft');
+    cy.get('@scrollTop').then((scrollTop) => {
+      cy.findByTestId('op').invoke('scrollTop').should('equal', scrollTop);
+    });
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('section 2').should('not.exist');
