@@ -73,12 +73,6 @@ export interface InternalProps extends ObjectPageTitlePropTypes {
    */
   'data-header-content-visible'?: boolean;
   /**
-   * Defines if the `snappedContent` should be rendered by the `ObjectPageTitle`
-   *
-   * @private
-   */
-  'data-is-snapped-rendered-outside'?: boolean;
-  /**
    * @private
    */
   _snappedAvatar?: ReactElement<CollapsedAvatarPropTypes>;

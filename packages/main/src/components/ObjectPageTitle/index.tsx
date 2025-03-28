@@ -197,11 +197,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
           )}
         </FlexBox>
       </FlexBox>
-      {props?.['data-header-content-visible']
-        ? expandedContent
-        : props['data-is-snapped-rendered-outside']
-          ? undefined
-          : snappedContent}
+      {props?.['data-header-content-visible'] ? expandedContent : snappedContent}
     </FlexBox>
   );
 });
