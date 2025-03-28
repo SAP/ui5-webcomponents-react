@@ -67,6 +67,10 @@
   }
 }
 
+.snappedAvatarContainer:has([data-component-name='ObjectPageCollapsedAvatar']) {
+  flex-shrink: 0;
+}
+
 @container (min-width: 600px) and (max-width: 1023px) {
   .title {
     padding-block-start: 0.6875rem;
@@ -91,6 +95,11 @@
 .subTitleBottom {
   margin-block-start: 0.25rem;
   padding-inline-start: 0;
+}
+
+.contentContainer {
+  flex-basis: 100%;
+  flex-grow: 1;
 }
 
 .content {

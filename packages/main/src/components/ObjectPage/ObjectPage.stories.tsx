@@ -94,8 +94,16 @@ const meta = {
             <BreadcrumbsItem>Employee Details</BreadcrumbsItem>
           </Breadcrumbs>
         }
-        expandedContent={<MessageStrip>Information (only visible if header content is expanded)</MessageStrip>}
-        snappedContent={<MessageStrip>Information (only visible if header content is collapsed/snapped)</MessageStrip>}
+        expandedContent={
+          <MessageStrip style={{ paddingBlockStart: '0.5rem' }}>
+            Information (only visible if header content is expanded)
+          </MessageStrip>
+        }
+        snappedContent={
+          <MessageStrip style={{ paddingBlockStart: '0.5rem' }}>
+            Information (only visible if header content is collapsed/snapped)
+          </MessageStrip>
+        }
       >
         <ObjectStatus state={ValueState.Positive}>employed</ObjectStatus>
       </ObjectPageTitle>
