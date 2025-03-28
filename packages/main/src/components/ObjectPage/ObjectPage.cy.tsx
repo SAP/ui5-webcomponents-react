@@ -448,6 +448,7 @@ describe('ObjectPage', () => {
     cy.findByText('Job Information').should('not.exist');
     cy.findByTestId('section 1').should('be.visible');
 
+    cy.wait(100);
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
     cy.findByText('Job Information').should('be.visible');
     cy.findByTestId('section 1').should('not.exist');

@@ -9,7 +9,7 @@ import type { ObjectPageSectionPropTypes } from '../../ObjectPageSection/index.j
 import type {
   InternalProps as ObjectPageTitlePropTypesWithInternals,
   ObjectPageTitlePropTypes
-} from '../../ObjectPageTitle/index.js';
+} from '../../ObjectPageTitle/types/index.js';
 
 type ObjectPageSectionType = ReactElement<ObjectPageSectionPropTypes> | boolean;
 
