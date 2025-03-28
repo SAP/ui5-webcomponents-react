@@ -592,7 +592,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
             'data-not-clickable': !!preserveHeaderStateOnClick,
             'data-header-content-visible': headerArea && headerCollapsed !== true,
             _snappedAvatar:
-              titleArea && image && headerCollapsed === true ? (
+              !headerArea || (titleArea && image && headerCollapsed === true) ? (
                 <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
               ) : null
           })}
