@@ -50,11 +50,6 @@
   grid-auto-columns: 100%;
 }
 
-/*:has cannot be nested*/
-.header:has([data-component-name='ATwithImageSnappedContentContainer']) [data-component-name='ObjectPageTitle'] {
-  padding-block-end: 0;
-}
-
 .headerCollapsed {
   --_ui5wcr_ObjectPage_header_display: none;
   --_ui5wcr_ObjectPage_title_fontsize: var(--sapObjectHeader_Title_SnappedFontSize);
@@ -178,10 +173,6 @@
 
 .subSectionPopover::part(content) {
   padding: 0;
-}
-
-.snappedContent {
-  padding-block-end: 0.5rem;
 }
 
 .clickArea {
