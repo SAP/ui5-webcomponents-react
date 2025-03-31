@@ -24,7 +24,7 @@ import type { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection/inde
 import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { classNames, styleData } from './ObjectPage.module.css.js';
 import { getSectionById, getSectionElementById } from './ObjectPageUtils.js';
-import type { ObjectPageTitlePropsWithDataAttributes, ObjectPagePropTypes, ObjectPageDomRef } from './types/index.js';
+import type { ObjectPageDomRef, ObjectPagePropTypes, ObjectPageTitlePropsWithDataAttributes } from './types/index.js';
 import { useHandleTabSelect } from './useHandleTabSelect.js';
 
 const ObjectPageCssVariables = {
@@ -188,30 +188,38 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   }, [image, imageShapeCircle]);
 
   const scrollToSectionById = (id: string | undefined, isSubSection = false) => {
-    const section = getSectionElementById(objectPageRef.current, isSubSection, id);
-    scrollTimeout.current = performance.now() + 500;
-    if (section) {
-      const safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
+    const scroll = () => {
+      const section = getSectionElementById(objectPageRef.current, isSubSection, id);
+      scrollTimeout.current = performance.now() + 500;
+      if (section) {
+        const safeTopHeaderHeight = topHeaderHeight || prevTopHeaderHeight.current;
 
-      const scrollMargin =
-        -1 /* reduce margin-block so that intersection observer detects correct section*/ +
-        safeTopHeaderHeight +
-        anchorBarHeight +
-        TAB_CONTAINER_HEADER_HEIGHT +
-        (headerPinned && !headerCollapsed ? headerContentHeight : 0);
-      section.style.scrollMarginBlockStart = scrollMargin + 'px';
-      if (isSubSection) {
-        section.focus();
+        const scrollMargin =
+          -1 /* reduce margin-block so that intersection observer detects correct section*/ +
+          safeTopHeaderHeight +
+          anchorBarHeight +
+          TAB_CONTAINER_HEADER_HEIGHT +
+          (headerPinned && !headerCollapsed ? headerContentHeight : 0);
+        section.style.scrollMarginBlockStart = scrollMargin + 'px';
+        if (isSubSection) {
+          section.focus();
+        }
+
+        const sectionRect = section.getBoundingClientRect();
+        const objectPageElement = objectPageRef.current;
+        const objectPageRect = objectPageElement.getBoundingClientRect();
+
+        // Calculate the top position of the section relative to the container
+        objectPageElement.scrollTop = sectionRect.top - objectPageRect.top + objectPageElement.scrollTop - scrollMargin;
+
+        section.style.scrollMarginBlockStart = '';
       }
-
-      const sectionRect = section.getBoundingClientRect();
-      const objectPageElement = objectPageRef.current;
-      const objectPageRect = objectPageElement.getBoundingClientRect();
-
-      // Calculate the top position of the section relative to the container
-      objectPageElement.scrollTop = sectionRect.top - objectPageRect.top + objectPageElement.scrollTop - scrollMargin;
-
-      section.style.scrollMarginBlockStart = '';
+    };
+    // In TabBar mode the section is only rendered when selected: delay scroll for subsection
+    if (mode === ObjectPageMode.IconTabBar && isSubSection) {
+      setTimeout(scroll, 300);
+    } else {
+      scroll();
     }
   };
 
@@ -263,7 +271,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
 
   // Scrolling for Sub Section Selection
   useEffect(() => {
-    if (selectedSubSectionId && isProgrammaticallyScrolled.current === true && sectionSpacer) {
+    if (selectedSubSectionId && isProgrammaticallyScrolled.current === true) {
       scrollToSectionById(selectedSubSectionId, true);
       isProgrammaticallyScrolled.current = false;
     }

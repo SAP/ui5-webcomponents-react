@@ -430,10 +430,87 @@ describe('ObjectPage', () => {
     cy.findByText('Job Relationship').should('be.visible');
 
     cy.findByTestId('footer').should('be.visible');
+
+    cy.mount(
+      <ObjectPage
+        data-testid
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        footerArea={Footer}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
+      >
+        {OPContent}
+        <ObjectPageSection aria-label="Long Section" id="long-section" titleText="Long Section">
+          <ObjectPageSubSection aria-label="Long Subsection 1" id="sub1" titleText="Long Subsection 1">
+            <FlexBox style={{ height: '2000px' }} direction="Column" justifyContent="SpaceBetween">
+              <span>Start SubSection1</span>
+              <span>End SubSection1</span>
+            </FlexBox>
+          </ObjectPageSubSection>
+          <ObjectPageSubSection aria-label="Long Subsection 2" id="sub2" titleText="Long Subsection 2">
+            <FlexBox style={{ height: '1000px' }} direction="Column" justifyContent="SpaceBetween">
+              <span>Start SubSection2</span>
+              <span>End SubSection2</span>
+            </FlexBox>
+          </ObjectPageSubSection>
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+    cy.wait(100);
+
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Long Section').focus();
+    cy.realPress('ArrowDown');
+    cy.get('[ui5-responsive-popover]').should('be.visible');
+    cy.realPress('ArrowDown');
+    cy.wait(50);
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
+    // wait for scroll
+    cy.wait(200);
+    cy.findByText('Start SubSection2').should('be.visible');
   });
 
   it('scroll to sections - tab mode', () => {
     document.body.style.margin = '0px';
+
+    cy.mount(
+      <ObjectPage
+        data-testid
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        footerArea={Footer}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
+      >
+        {OPContent}
+        <ObjectPageSection aria-label="Long Section" id="long-section" titleText="Long Section">
+          <ObjectPageSubSection aria-label="Long Subsection 1" id="sub1" titleText="Long Subsection 1">
+            <FlexBox style={{ height: '2000px' }} direction="Column" justifyContent="SpaceBetween">
+              <span>Start SubSection1</span>
+              <span>End SubSection1</span>
+            </FlexBox>
+          </ObjectPageSubSection>
+          <ObjectPageSubSection aria-label="Long Subsection 2" id="sub2" titleText="Long Subsection 2">
+            <FlexBox style={{ height: '1000px' }} direction="Column" justifyContent="SpaceBetween">
+              <span>Start SubSection2</span>
+              <span>End SubSection2</span>
+            </FlexBox>
+          </ObjectPageSubSection>
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+    cy.wait(100);
+
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Long Section').focus();
+    cy.realPress('ArrowDown');
+    cy.get('[ui5-responsive-popover]').should('be.visible');
+    cy.realPress('ArrowDown');
+    cy.wait(50);
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
+    // wait for scroll
+    cy.wait(200);
+    cy.findByText('Start SubSection2').should('be.visible');
+
     cy.mount(
       <ObjectPage
         data-testid="op"
