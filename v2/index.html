@@ -121,12 +121,9 @@
   }
 
   /*experimental components */
-  #ai-promptinput::after,
-  #ai-button::after,
   #data-display-table::after,
   #inputs-tokenizer::after,
   #modals-popovers-usermenu::after,
-  #modals-popovers-usersettingsdialog::after,
   #charts-timelinechart::after {
     content: '(experimental)';
     overflow: hidden;
@@ -174,7 +171,7 @@
         
           window['DOCS_OPTIONS'] = {
   "defaultName": "Docs",
-  "autodocs": "tag"
+  "autodocs": true
 };
         
       
@@ -245,5 +242,9 @@
       
       import './sb-manager/runtime.js';
     </script>
+
+    
+    <link href="./sb-preview/runtime.js" rel="prefetch" as="script" />
+    
   </body>
 </html>

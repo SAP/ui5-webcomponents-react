@@ -1,1 +1,0 @@
-var a;(function(t){t.Contrast="Contrast",t.Critical="Critical",t.Default="Default",t.Information="Information",t.Negative="Negative",t.Neutral="Neutral",t.NonInteractive="NonInteractive",t.Positive="Positive"})(a||(a={}));export{a as I};
