@@ -4,7 +4,7 @@
   "npmClient": "yarn",
   "command": {
     "version": {
-      "allowBranch": "main",
+      "allowBranch": "v2.7.x",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
@@ -12,7 +12,7 @@
       "forceConventionalGraduate": true
     },
     "publish": {
-      "allowBranch": "main",
+      "allowBranch": "v2.7.x",
       "conventionalCommits": true,
       "yes": true,
       "preid": "rc",
