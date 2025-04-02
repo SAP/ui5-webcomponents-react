@@ -11,6 +11,22 @@ import type { ReactNode } from 'react';
 
 interface MultiInputAttributes {
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Receives id(or many ids) of the elements that describe the input.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the accessible ARIA name of the component.
    * @default undefined
    */
@@ -309,7 +325,18 @@ interface MultiInputPropTypes
  */
 const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
   'ui5-multi-input',
-  ['accessibleName', 'accessibleNameRef', 'maxlength', 'name', 'placeholder', 'type', 'value', 'valueState'],
+  [
+    'accessibleDescription',
+    'accessibleDescriptionRef',
+    'accessibleName',
+    'accessibleNameRef',
+    'maxlength',
+    'name',
+    'placeholder',
+    'type',
+    'value',
+    'valueState'
+  ],
   ['disabled', 'noTypeahead', 'open', 'readonly', 'required', 'showClearIcon', 'showSuggestions', 'showValueHelpIcon'],
   ['icon', 'tokens', 'valueStateMessage'],
   ['change', 'close', 'input', 'open', 'select', 'selection-change', 'token-delete', 'value-help-trigger']

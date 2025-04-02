@@ -70,6 +70,15 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
+              "_ui5since": "2.9.0",
+              "default": "Auto",
+              "name": "Auto",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
               "default": "Accent1",
               "name": "Accent1",
               "readonly": true
@@ -1713,6 +1722,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/InputKeyHint.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "InputKeyHint",
+            "module": "dist/types/InputKeyHint.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/InputType.js",
       "declarations": [
         {
@@ -2874,6 +2898,57 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/SearchPopupMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "SearchPopupMode",
+          "description": "Defines the content visualisation of ui5-search popup.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Defines the content visualisation of ui5-search popup as illustrated message.",
+              "default": "Illustration",
+              "name": "Illustration",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Defines the content visualisation of ui5-search popup as list of items.",
+              "default": "List",
+              "name": "List",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Defines the content visualisation of ui5-search popup as loading spinner.",
+              "default": "Loading",
+              "name": "Loading",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchPopupMode",
+            "module": "dist/types/SearchPopupMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/SegmentedButtonSelectionMode.js",
       "declarations": [
         {
@@ -3957,8 +4032,8 @@
                   }
                 ]
               },
-              "default": "\"Accent6\"",
-              "description": "Defines the background color of the desired image.",
+              "default": "\"Auto\"",
+              "description": "Defines the background color of the desired image.\nIf `colorScheme` is set to `Auto`, the avatar will be displayed with the `Accent6` color.",
               "privacy": "public"
             },
             {
@@ -4056,12 +4131,12 @@
               }
             },
             {
-              "description": "Defines the background color of the desired image.",
+              "description": "Defines the background color of the desired image.\nIf `colorScheme` is set to `Auto`, the avatar will be displayed with the `Accent6` color.",
               "name": "color-scheme",
-              "default": "\"Accent6\"",
+              "default": "\"Auto\"",
               "fieldName": "colorScheme",
               "type": {
-                "text": "\"Accent1\" | \"Accent2\" | \"Accent3\" | \"Accent4\" | \"Accent5\" | \"Accent6\" | \"Accent7\" | \"Accent8\" | \"Accent9\" | \"Accent10\" | \"Placeholder\""
+                "text": "\"Auto\" | \"Accent1\" | \"Accent2\" | \"Accent3\" | \"Accent4\" | \"Accent5\" | \"Accent6\" | \"Accent7\" | \"Accent8\" | \"Accent9\" | \"Accent10\" | \"Placeholder\""
               }
             },
             {
@@ -6175,93 +6250,6 @@
           "kind": "class",
           "description": "Abstract base class for Calendar, DayPicker, MonthPicker and YearPicker that adds support for:\n - common properties (timestamp, selectedDates): declarations and methods that operate on them\n - other common code",
           "name": "CalendarPart",
-          "superclass": {
-            "name": "DateComponentBase",
-            "package": "@ui5/webcomponents",
-            "module": "dist/DateComponentBase.js"
-          },
-          "customElement": true,
-          "_ui5privacy": "public",
-          "attributes": [
-            {
-              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
-              "name": "primary-calendar-type",
-              "default": "undefined",
-              "fieldName": "primaryCalendarType",
-              "type": {
-                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            },
-            {
-              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
-              "name": "secondary-calendar-type",
-              "default": "undefined",
-              "fieldName": "secondaryCalendarType",
-              "type": {
-                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            },
-            {
-              "description": "Determines the format, displayed in the input field.",
-              "name": "format-pattern",
-              "default": "undefined",
-              "fieldName": "formatPattern",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            },
-            {
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
-              "name": "min-date",
-              "default": "\"\"",
-              "fieldName": "minDate",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            },
-            {
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
-              "name": "max-date",
-              "default": "\"\"",
-              "fieldName": "maxDate",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            },
-            {
-              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
-              "name": "calendar-week-numbering",
-              "default": "\"Default\"",
-              "fieldName": "calendarWeekNumbering",
-              "type": {
-                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            }
-          ],
           "members": [
             {
               "kind": "field",
@@ -6367,6 +6355,93 @@
               "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
               "privacy": "public",
               "_ui5since": "2.2.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "DateComponentBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/DateComponentBase.js"
+          },
+          "customElement": true,
+          "_ui5privacy": "public",
+          "attributes": [
+            {
+              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+              "name": "primary-calendar-type",
+              "default": "undefined",
+              "fieldName": "primaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+              "name": "secondary-calendar-type",
+              "default": "undefined",
+              "fieldName": "secondaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.",
+              "name": "format-pattern",
+              "default": "undefined",
+              "fieldName": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "name": "min-date",
+              "default": "\"\"",
+              "fieldName": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "name": "max-date",
+              "default": "\"\"",
+              "fieldName": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
+              },
               "inheritedFrom": {
                 "name": "DateComponentBase",
                 "module": "dist/DateComponentBase.js"
@@ -8135,6 +8210,17 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether the items picker is open.",
+              "privacy": "public",
+              "_ui5since": "2.9.0"
             }
           ],
           "events": [
@@ -8148,6 +8234,30 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true
+            },
+            {
+              "name": "open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the dropdown is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.9.0"
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the dropdown is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5since": "2.9.0"
             },
             {
               "name": "input",
@@ -8313,6 +8423,15 @@
               "type": {
                 "text": "string | undefined"
               }
+            },
+            {
+              "description": "Indicates whether the items picker is open.",
+              "name": "open",
+              "default": "false",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
             }
           ],
           "superclass": {
@@ -8455,7 +8574,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
             },
             {
               "name": "header",
@@ -8470,48 +8593,7 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
-            }
-          ],
-          "superclass": {
-            "name": "ListItemGroup",
-            "package": "@ui5/webcomponents",
-            "module": "dist/ListItemGroup.js"
-          },
-          "tagName": "ui5-cb-item-group",
-          "customElement": true,
-          "_ui5since": "1.0.0-rc.15",
-          "_ui5privacy": "public",
-          "_ui5abstract": true,
-          "_ui5implements": [
-            {
-              "name": "IComboBoxItem",
-              "package": "@ui5/webcomponents",
-              "module": "dist/ComboBox.js"
-            }
-          ],
-          "attributes": [
-            {
-              "description": "Defines the header text of the <code>ui5-li-group</code>.",
-              "name": "header-text",
-              "default": "undefined",
-              "fieldName": "headerText",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "ListItemGroup",
-                "module": "dist/ListItemGroup.js"
-              }
-            },
-            {
-              "description": "Defines the accessible name of the header.",
-              "name": "header-accessible-name",
-              "default": "undefined",
-              "fieldName": "headerAccessibleName",
-              "type": {
-                "text": "string | undefined"
-              },
+              "_ui5privacy": "public",
               "inheritedFrom": {
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
@@ -8542,6 +8624,61 @@
               "description": "Defines the accessible name of the header.",
               "privacy": "public",
               "default": "undefined",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ListItemGroup",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ListItemGroup.js"
+          },
+          "tagName": "ui5-cb-item-group",
+          "customElement": true,
+          "_ui5since": "1.0.0-rc.15",
+          "_ui5privacy": "public",
+          "_ui5abstract": true,
+          "_ui5implements": [
+            {
+              "name": "IComboBoxItem",
+              "package": "@ui5/webcomponents",
+              "module": "dist/ComboBox.js"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Used to style the header item of the group",
+              "name": "header",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the header text of the <code>ui5-li-group</code>.",
+              "name": "header-text",
+              "default": "undefined",
+              "fieldName": "headerText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Defines the accessible name of the header.",
+              "name": "header-accessible-name",
+              "default": "undefined",
+              "fieldName": "headerAccessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
               "inheritedFrom": {
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
@@ -8630,12 +8767,6 @@
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
               }
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Used to style the header item of the group",
-              "name": "header"
             }
           ]
         }
@@ -9551,10 +9682,14 @@
               "type": {
                 "text": "Date | null"
               },
+              "readonly": true,
               "description": "**Note:** The getter method is inherited and not supported. If called it will return an empty value.",
               "privacy": "public",
               "default": "null",
-              "readonly": true
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
             },
             {
               "kind": "field",
@@ -9577,6 +9712,36 @@
               "privacy": "public",
               "default": "null",
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "isValid",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks if a value is valid against the current date format of the DatePicker.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isInValidRange",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Checks if a date is between the minimum and maximum date.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
             },
             {
               "kind": "field",
@@ -9741,56 +9906,6 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15",
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "isValid",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "value",
-                  "type": {
-                    "text": "string"
-                  },
-                  "description": "A value to be tested against the current date format",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Checks if a value is valid against the current date format of the DatePicker.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "isInValidRange",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "value",
-                  "type": {
-                    "text": "string"
-                  },
-                  "description": "A value to be checked",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Checks if a date is between the minimum and maximum date.",
-              "privacy": "public",
               "inheritedFrom": {
                 "name": "DatePicker",
                 "module": "dist/DatePicker.js"
@@ -10213,6 +10328,21 @@
           "customElement": true,
           "_ui5since": "1.0.0-rc.8",
           "_ui5privacy": "public",
+          "slots": [
+            {
+              "name": "valueStateMessage",
+              "description": "Defines the value state message that will be displayed as pop up under the component.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.",
+              "_ui5since": "1.0.0-rc.7",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            }
+          ],
           "events": [
             {
               "name": "change",
@@ -10366,17 +10496,6 @@
                 "module": "dist/DatePicker.js"
               }
             }
-          ],
-          "slots": [
-            {
-              "name": "valueStateMessage",
-              "description": "Defines the value state message that will be displayed as pop up under the component.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.",
-              "_ui5since": "1.0.0-rc.7",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            }
           ]
         }
       ],
@@ -10422,251 +10541,6 @@
           "kind": "class",
           "description": "### Overview\nThe `DateTimePicker` component alows users to select both date (day, month and year) and time (hours, minutes and seconds)\nand for the purpose it consists of input field and Date/Time picker.\n\n### Usage\n\nUse the `DateTimePicker` if you need a combined date and time input component.\nDon't use it if you want to use either date, or time value.\nIn this case, use the `DatePicker` or the `TimePicker` components instead.\n\nThe user can set date/time by:\n\n- using the calendar and the time selectors\n- typing in the input field\n\nProgrammatically, to set date/time for the `DateTimePicker`, use the `value` property\n\n### Formatting\n\nThe value entered by typing into the input field must fit to the used date/time format.\n\nSupported format options are pattern-based on Unicode LDML Date Format notation.\nFor more information, see [UTS #35: Unicode Locale Data Markup Language](https://unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).\n\n**Example:** the following format `dd/MM/yyyy, hh:mm:ss aa`\ncorresponds the `13/04/2020, 03:16:16 AM` value.\n\nThe small 'h' defines \"12\" hours format and the \"aa\" symbols - \"AM/PM\" time periods.\n\n**Example:** the following format `dd/MM/yyyy, HH:mm:ss`\ncorresponds the `13/04/2020, 15:16:16` value.\n\nThe capital 'H' indicates \"24\" hours format.\n\n**Note:** If the `formatPattern` does NOT include time,\nthe `DateTimePicker` will fallback to the default time format according to the locale.\n\n**Note:** If no placeholder is set to the `DateTimePicker`,\nthe current `formatPattern` is displayed as a placeholder.\nIf another placeholder is needed, it must be set or in case no placeholder is needed - it can be set to an empty string.\n\n**Note:** If the user input does NOT match the `formatPattern`,\nthe `DateTimePicker` makes an attempt to parse it based on the\nlocale settings.\n\n### Responsive behavior\n\nThe `DateTimePicker` is responsive and fully adapts to all devices.\nFor larger screens, such as tablet or desktop, it is displayed as a popover, while\non phone devices, it is displayed full screen.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/DateTimePicker.js\";`",
           "name": "DateTimePicker",
-          "superclass": {
-            "name": "DatePicker",
-            "package": "@ui5/webcomponents",
-            "module": "dist/DatePicker.js"
-          },
-          "tagName": "ui5-datetime-picker",
-          "customElement": true,
-          "_ui5since": "1.0.0-rc.7",
-          "_ui5privacy": "public",
-          "attributes": [
-            {
-              "description": "Defines a formatted date value.",
-              "name": "value",
-              "default": "\"\"",
-              "fieldName": "value",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Defines the value state of the component.",
-              "name": "value-state",
-              "default": "\"None\"",
-              "fieldName": "valueState",
-              "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Defines whether the component is required.",
-              "name": "required",
-              "default": "false",
-              "fieldName": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Determines whether the component is displayed as disabled.",
-              "name": "disabled",
-              "default": "false",
-              "fieldName": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Determines whether the component is displayed as read-only.",
-              "name": "readonly",
-              "default": "false",
-              "fieldName": "readonly",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Defines a short hint, intended to aid the user with data entry when the\ncomponent has no value.\n\n**Note:** When no placeholder is set, the format pattern is displayed as a placeholder.\nPassing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.",
-              "name": "placeholder",
-              "default": "undefined",
-              "fieldName": "placeholder",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Determines the name by which the component will be identified upon submission in an HTML form.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
-              "name": "name",
-              "default": "undefined",
-              "fieldName": "name",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Defines the visibility of the week numbers column.\n\n**Note:** For calendars other than Gregorian,\nthe week numbers are not displayed regardless of what is set.",
-              "name": "hide-week-numbers",
-              "default": "false",
-              "fieldName": "hideWeekNumbers",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Defines the open or closed state of the popover.",
-              "name": "open",
-              "default": "false",
-              "fieldName": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Defines the aria-label attribute for the component.",
-              "name": "accessible-name",
-              "default": "undefined",
-              "fieldName": "accessibleName",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Receives id(or many ids) of the elements that label the component.",
-              "name": "accessible-name-ref",
-              "default": "undefined",
-              "fieldName": "accessibleNameRef",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Currently selected date represented as a Local JavaScript Date instance.",
-              "name": "date-value",
-              "default": "null",
-              "fieldName": "dateValue",
-              "type": {
-                "text": "any"
-              },
-              "inheritedFrom": {
-                "name": "DatePicker",
-                "module": "dist/DatePicker.js"
-              }
-            },
-            {
-              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
-              "name": "primary-calendar-type",
-              "default": "undefined",
-              "fieldName": "primaryCalendarType",
-              "type": {
-                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            },
-            {
-              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
-              "name": "secondary-calendar-type",
-              "default": "undefined",
-              "fieldName": "secondaryCalendarType",
-              "type": {
-                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            },
-            {
-              "description": "Determines the format, displayed in the input field.",
-              "name": "format-pattern",
-              "default": "undefined",
-              "fieldName": "formatPattern",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            },
-            {
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
-              "name": "min-date",
-              "default": "\"\"",
-              "fieldName": "minDate",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            },
-            {
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
-              "name": "max-date",
-              "default": "\"\"",
-              "fieldName": "maxDate",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            },
-            {
-              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
-              "name": "calendar-week-numbering",
-              "default": "\"Default\"",
-              "fieldName": "calendarWeekNumbering",
-              "type": {
-                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
-              },
-              "inheritedFrom": {
-                "name": "DateComponentBase",
-                "module": "dist/DateComponentBase.js"
-              }
-            }
-          ],
           "members": [
             {
               "kind": "field",
@@ -11037,6 +10911,266 @@
               }
             }
           ],
+          "superclass": {
+            "name": "DatePicker",
+            "package": "@ui5/webcomponents",
+            "module": "dist/DatePicker.js"
+          },
+          "tagName": "ui5-datetime-picker",
+          "customElement": true,
+          "_ui5since": "1.0.0-rc.7",
+          "_ui5privacy": "public",
+          "slots": [
+            {
+              "name": "valueStateMessage",
+              "description": "Defines the value state message that will be displayed as pop up under the component.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.",
+              "_ui5since": "1.0.0-rc.7",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines a formatted date value.",
+              "name": "value",
+              "default": "\"\"",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Defines the value state of the component.",
+              "name": "value-state",
+              "default": "\"None\"",
+              "fieldName": "valueState",
+              "type": {
+                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Defines whether the component is required.",
+              "name": "required",
+              "default": "false",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Determines whether the component is displayed as disabled.",
+              "name": "disabled",
+              "default": "false",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Determines whether the component is displayed as read-only.",
+              "name": "readonly",
+              "default": "false",
+              "fieldName": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Defines a short hint, intended to aid the user with data entry when the\ncomponent has no value.\n\n**Note:** When no placeholder is set, the format pattern is displayed as a placeholder.\nPassing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.",
+              "name": "placeholder",
+              "default": "undefined",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Determines the name by which the component will be identified upon submission in an HTML form.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
+              "name": "name",
+              "default": "undefined",
+              "fieldName": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Defines the visibility of the week numbers column.\n\n**Note:** For calendars other than Gregorian,\nthe week numbers are not displayed regardless of what is set.",
+              "name": "hide-week-numbers",
+              "default": "false",
+              "fieldName": "hideWeekNumbers",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Defines the open or closed state of the popover.",
+              "name": "open",
+              "default": "false",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Defines the aria-label attribute for the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that label the component.",
+              "name": "accessible-name-ref",
+              "default": "undefined",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Currently selected date represented as a Local JavaScript Date instance.",
+              "name": "date-value",
+              "default": "null",
+              "fieldName": "dateValue",
+              "type": {
+                "text": "any"
+              },
+              "inheritedFrom": {
+                "name": "DatePicker",
+                "module": "dist/DatePicker.js"
+              }
+            },
+            {
+              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+              "name": "primary-calendar-type",
+              "default": "undefined",
+              "fieldName": "primaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+              "name": "secondary-calendar-type",
+              "default": "undefined",
+              "fieldName": "secondaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.",
+              "name": "format-pattern",
+              "default": "undefined",
+              "fieldName": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "name": "min-date",
+              "default": "\"\"",
+              "fieldName": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "name": "max-date",
+              "default": "\"\"",
+              "fieldName": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            }
+          ],
           "events": [
             {
               "name": "change",
@@ -11190,17 +11324,6 @@
                 "module": "dist/DatePicker.js"
               }
             }
-          ],
-          "slots": [
-            {
-              "name": "valueStateMessage",
-              "description": "Defines the value state message that will be displayed as pop up under the component.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.",
-              "_ui5since": "1.0.0-rc.7",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            }
           ]
         }
       ],
@@ -11284,7 +11407,11 @@
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
             }
           ],
           "members": [
@@ -12699,7 +12826,7 @@
                   }
                 ]
               },
-              "default": "\"Image\"",
+              "default": "\"Decorative\"",
               "description": "Defines the mode of the component.",
               "privacy": "public",
               "_ui5since": "2.0.0"
@@ -12745,7 +12872,7 @@
             {
               "description": "Defines the mode of the component.",
               "name": "mode",
-              "default": "\"Image\"",
+              "default": "\"Decorative\"",
               "fieldName": "mode",
               "type": {
                 "text": "\"Image\" | \"Decorative\" | \"Interactive\""
@@ -13012,6 +13139,28 @@
             },
             {
               "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.9.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that describe the input.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.9.0"
+            },
+            {
+              "kind": "field",
               "name": "showClearIcon",
               "type": {
                 "text": "boolean"
@@ -13236,6 +13385,24 @@
               "name": "accessible-name-ref",
               "default": "undefined",
               "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that describe the input.",
+              "name": "accessible-description-ref",
+              "default": "undefined",
+              "fieldName": "accessibleDescriptionRef",
               "type": {
                 "text": "string | undefined"
               }
@@ -14625,9 +14792,13 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
-              "privacy": "public"
+              "description": "Defines the selected state of the component.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
             }
           ],
           "events": [
@@ -14807,7 +14978,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             }
           ],
           "members": [
@@ -14820,7 +14995,11 @@
               "default": "false",
               "description": "Defines whether the item is movable.",
               "privacy": "public",
-              "_ui5since": "2.0.0"
+              "_ui5since": "2.0.0",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
             },
             {
               "kind": "field",
@@ -14831,7 +15010,11 @@
               "description": "Defines the text alternative of the component.\n\n**Note**: If not provided a default text alternative will be set, if present.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0-rc.15",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             },
             {
               "kind": "field",
@@ -14934,12 +15117,12 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
+              "description": "Defines the selected state of the component.",
               "privacy": "public",
               "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
               }
             }
           ],
@@ -15379,7 +15562,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             }
           ],
           "members": [
@@ -15452,7 +15639,11 @@
               "default": "false",
               "description": "Defines whether the item is movable.",
               "privacy": "public",
-              "_ui5since": "2.0.0"
+              "_ui5since": "2.0.0",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
             },
             {
               "kind": "field",
@@ -15463,7 +15654,11 @@
               "description": "Defines the text alternative of the component.\nNote: If not provided a default text alternative will be set, if present.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0-rc.15",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             },
             {
               "kind": "field",
@@ -15566,12 +15761,12 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
+              "description": "Defines the selected state of the component.",
               "privacy": "public",
               "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
               }
             }
           ],
@@ -16097,7 +16292,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             }
           ],
           "members": [
@@ -16140,7 +16339,11 @@
               },
               "default": "false",
               "description": "Defines whether `ui5-menu-item` is in disabled state.\n\n**Note:** A disabled `ui5-menu-item` is noninteractive.",
-              "privacy": "public"
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
             },
             {
               "kind": "field",
@@ -16173,7 +16376,11 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.7.0"
+              "_ui5since": "1.7.0",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             },
             {
               "kind": "field",
@@ -16194,12 +16401,12 @@
               "kind": "field",
               "name": "accessibilityAttributes",
               "type": {
-                "text": "ListItemAccessibilityAttributes",
+                "text": "MenuItemAccessibilityAttributes",
                 "references": [
                   {
-                    "name": "ListItemAccessibilityAttributes",
+                    "name": "MenuItemAccessibilityAttributes",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/ListItem.js"
+                    "module": "dist/MenuItem.js"
                   }
                 ]
               },
@@ -16276,12 +16483,12 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
+              "description": "Defines the selected state of the component.",
               "privacy": "public",
               "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
               }
             }
           ],
@@ -16466,7 +16673,7 @@
               "default": "{}",
               "fieldName": "accessibilityAttributes",
               "type": {
-                "text": "ListItemAccessibilityAttributes"
+                "text": "MenuItemAccessibilityAttributes"
               },
               "inheritedFrom": {
                 "name": "ListItem",
@@ -17022,10 +17229,10 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.",
               "default": "false",
+              "description": "Indicates whether the items picker is open.",
               "privacy": "public",
-              "readonly": true
+              "_ui5since": "2.9.0"
             }
           ],
           "events": [
@@ -17239,12 +17446,12 @@
               }
             },
             {
-              "description": "Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.",
+              "description": "Indicates whether the items picker is open.",
               "name": "open",
               "default": "false",
               "fieldName": "open",
               "type": {
-                "text": "any"
+                "text": "boolean"
               }
             }
           ],
@@ -17293,9 +17500,13 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
-              "privacy": "public"
+              "description": "Defines the selected state of the component.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
             },
             {
               "kind": "field",
@@ -17423,7 +17634,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
             },
             {
               "name": "header",
@@ -17438,47 +17653,7 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
-            }
-          ],
-          "superclass": {
-            "name": "ComboBoxItemGroup",
-            "package": "@ui5/webcomponents",
-            "module": "dist/ComboBoxItemGroup.js"
-          },
-          "tagName": "ui5-mcb-item-group",
-          "customElement": true,
-          "_ui5since": "2.0.0",
-          "_ui5privacy": "public",
-          "_ui5implements": [
-            {
-              "name": "IMultiComboBoxItem",
-              "package": "@ui5/webcomponents",
-              "module": "dist/MultiComboBox.js"
-            }
-          ],
-          "attributes": [
-            {
-              "description": "Defines the header text of the <code>ui5-li-group</code>.",
-              "name": "header-text",
-              "default": "undefined",
-              "fieldName": "headerText",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "ListItemGroup",
-                "module": "dist/ListItemGroup.js"
-              }
-            },
-            {
-              "description": "Defines the accessible name of the header.",
-              "name": "header-accessible-name",
-              "default": "undefined",
-              "fieldName": "headerAccessibleName",
-              "type": {
-                "text": "string | undefined"
-              },
+              "_ui5privacy": "public",
               "inheritedFrom": {
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
@@ -17509,6 +17684,60 @@
               "description": "Defines the accessible name of the header.",
               "privacy": "public",
               "default": "undefined",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ComboBoxItemGroup",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ComboBoxItemGroup.js"
+          },
+          "tagName": "ui5-mcb-item-group",
+          "customElement": true,
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IMultiComboBoxItem",
+              "package": "@ui5/webcomponents",
+              "module": "dist/MultiComboBox.js"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Used to style the header item of the group",
+              "name": "header",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the header text of the <code>ui5-li-group</code>.",
+              "name": "header-text",
+              "default": "undefined",
+              "fieldName": "headerText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Defines the accessible name of the header.",
+              "name": "header-accessible-name",
+              "default": "undefined",
+              "fieldName": "headerAccessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
               "inheritedFrom": {
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
@@ -17598,12 +17827,6 @@
                 "module": "dist/ListItemGroup.js"
               }
             }
-          ],
-          "cssParts": [
-            {
-              "description": "Used to style the header item of the group",
-              "name": "header"
-            }
           ]
         }
       ],
@@ -17664,7 +17887,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
             },
             {
               "name": "icon",
@@ -17679,7 +17906,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
             },
             {
               "name": "valueStateMessage",
@@ -17688,7 +17919,11 @@
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
             }
           ],
           "members": [
@@ -17900,6 +18135,36 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.15",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.9.0",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that describe the input.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.9.0",
               "inheritedFrom": {
                 "name": "Input",
                 "module": "dist/Input.js"
@@ -18268,6 +18533,32 @@
               }
             },
             {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that describe the input.",
+              "name": "accessible-description-ref",
+              "default": "undefined",
+              "fieldName": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
               "description": "Defines whether the clear icon of the input will be shown.",
               "name": "show-clear-icon",
               "default": "false",
@@ -18306,15 +18597,27 @@
           "cssParts": [
             {
               "description": "Used to style the root DOM element of the Input component",
-              "name": "root"
+              "name": "root",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
             },
             {
               "description": "Used to style the native input element",
-              "name": "input"
+              "name": "input",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
             },
             {
               "description": "Used to style the clear icon, which can be pressed to clear user input text",
-              "name": "clear-icon"
+              "name": "clear-icon",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
             }
           ]
         }
@@ -18406,9 +18709,13 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
-              "privacy": "public"
+              "description": "Defines the selected state of the component.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
             }
           ],
           "attributes": [
@@ -18505,7 +18812,7 @@
           "slots": [
             {
               "name": "default",
-              "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
+              "description": "Defines the content of the component.",
               "_ui5propertyName": "content",
               "_ui5type": {
                 "text": "Array<Node>"
@@ -18550,9 +18857,13 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
-              "privacy": "public"
+              "description": "Defines the selected state of the component.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
             }
           ],
           "attributes": [
@@ -18927,7 +19238,11 @@
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
             }
           ],
           "members": [
@@ -20816,220 +21131,26 @@
           "cssParts": [
             {
               "description": "Used to style the header of the component",
-              "name": "header"
+              "name": "header",
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
             },
             {
               "description": "Used to style the content of the component",
-              "name": "content"
+              "name": "content",
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
             },
             {
               "description": "Used to style the footer of the component",
-              "name": "footer"
-            }
-          ],
-          "superclass": {
-            "name": "Popover",
-            "package": "@ui5/webcomponents",
-            "module": "dist/Popover.js"
-          },
-          "tagName": "ui5-responsive-popover",
-          "customElement": true,
-          "_ui5since": "1.0.0-rc.6",
-          "_ui5privacy": "public",
-          "attributes": [
-            {
-              "description": "Defines the header text.\n\n**Note:** If `header` slot is provided, the `headerText` is ignored.",
-              "name": "header-text",
-              "default": "undefined",
-              "fieldName": "headerText",
-              "type": {
-                "text": "string | undefined"
-              },
+              "name": "footer",
               "inheritedFrom": {
                 "name": "Popover",
                 "module": "dist/Popover.js"
-              }
-            },
-            {
-              "description": "Determines on which side the component is placed at.",
-              "name": "placement",
-              "default": "\"End\"",
-              "fieldName": "placement",
-              "type": {
-                "text": "\"Top\" | \"Bottom\" | \"Start\" | \"End\""
-              },
-              "inheritedFrom": {
-                "name": "Popover",
-                "module": "dist/Popover.js"
-              }
-            },
-            {
-              "description": "Determines the horizontal alignment of the component.",
-              "name": "horizontal-align",
-              "default": "\"Center\"",
-              "fieldName": "horizontalAlign",
-              "type": {
-                "text": "\"Start\" | \"End\" | \"Center\" | \"Stretch\""
-              },
-              "inheritedFrom": {
-                "name": "Popover",
-                "module": "dist/Popover.js"
-              }
-            },
-            {
-              "description": "Determines the vertical alignment of the component.",
-              "name": "vertical-align",
-              "default": "\"Center\"",
-              "fieldName": "verticalAlign",
-              "type": {
-                "text": "\"Top\" | \"Bottom\" | \"Center\" | \"Stretch\""
-              },
-              "inheritedFrom": {
-                "name": "Popover",
-                "module": "dist/Popover.js"
-              }
-            },
-            {
-              "description": "Defines whether the component should close when\nclicking/tapping outside of the popover.\nIf enabled, it blocks any interaction with the background.",
-              "name": "modal",
-              "default": "false",
-              "fieldName": "modal",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "Popover",
-                "module": "dist/Popover.js"
-              }
-            },
-            {
-              "description": "Determines whether the component arrow is hidden.",
-              "name": "hide-arrow",
-              "default": "false",
-              "fieldName": "hideArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "Popover",
-                "module": "dist/Popover.js"
-              }
-            },
-            {
-              "description": "Determines if there is no enough space, the component can be placed\nover the target.",
-              "name": "allow-target-overlap",
-              "default": "false",
-              "fieldName": "allowTargetOverlap",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "Popover",
-                "module": "dist/Popover.js"
-              }
-            },
-            {
-              "description": "Defines the ID or DOM Reference of the element at which the popover is shown.\nWhen using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.\nYou can only set the `opener` attribute to a DOM Reference when using JavaScript.",
-              "name": "opener",
-              "default": "undefined",
-              "fieldName": "opener",
-              "type": {
-                "text": "any"
-              },
-              "inheritedFrom": {
-                "name": "Popover",
-                "module": "dist/Popover.js"
-              }
-            },
-            {
-              "description": "Defines the ID of the HTML Element, which will get the initial focus.\n\n**Note:** If an element with `autofocus` attribute is added inside the component,\n`initialFocus` won't take effect.",
-              "name": "initial-focus",
-              "default": "undefined",
-              "fieldName": "initialFocus",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "Popup",
-                "module": "dist/Popup.js"
-              }
-            },
-            {
-              "description": "Defines if the focus should be returned to the previously focused element,\nwhen the popup closes.",
-              "name": "prevent-focus-restore",
-              "default": "false",
-              "fieldName": "preventFocusRestore",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "Popup",
-                "module": "dist/Popup.js"
-              }
-            },
-            {
-              "description": "Defines the accessible name of the component.",
-              "name": "accessible-name",
-              "default": "undefined",
-              "fieldName": "accessibleName",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "Popup",
-                "module": "dist/Popup.js"
-              }
-            },
-            {
-              "description": "Defines the IDs of the elements that label the component.",
-              "name": "accessible-name-ref",
-              "default": "undefined",
-              "fieldName": "accessibleNameRef",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "Popup",
-                "module": "dist/Popup.js"
-              }
-            },
-            {
-              "description": "Allows setting a custom role.",
-              "name": "accessible-role",
-              "default": "\"Dialog\"",
-              "fieldName": "accessibleRole",
-              "type": {
-                "text": "\"None\" | \"Dialog\" | \"AlertDialog\""
-              },
-              "inheritedFrom": {
-                "name": "Popup",
-                "module": "dist/Popup.js"
-              }
-            },
-            {
-              "description": "Indicates whether initial focus should be prevented.",
-              "name": "prevent-initial-focus",
-              "default": "false",
-              "fieldName": "preventInitialFocus",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "Popup",
-                "module": "dist/Popup.js"
-              }
-            },
-            {
-              "description": "Indicates if the element is open",
-              "name": "open",
-              "default": "false",
-              "fieldName": "open",
-              "type": {
-                "text": "any"
-              },
-              "inheritedFrom": {
-                "name": "Popup",
-                "module": "dist/Popup.js"
               }
             }
           ],
@@ -21297,6 +21418,251 @@
               }
             }
           ],
+          "superclass": {
+            "name": "Popover",
+            "package": "@ui5/webcomponents",
+            "module": "dist/Popover.js"
+          },
+          "tagName": "ui5-responsive-popover",
+          "customElement": true,
+          "_ui5since": "1.0.0-rc.6",
+          "_ui5privacy": "public",
+          "slots": [
+            {
+              "name": "header",
+              "description": "Defines the header HTML Element.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "name": "footer",
+              "description": "Defines the footer HTML Element.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "name": "default",
+              "description": "Defines the content of the Popup.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the header text.\n\n**Note:** If `header` slot is provided, the `headerText` is ignored.",
+              "name": "header-text",
+              "default": "undefined",
+              "fieldName": "headerText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "description": "Determines on which side the component is placed at.",
+              "name": "placement",
+              "default": "\"End\"",
+              "fieldName": "placement",
+              "type": {
+                "text": "\"Top\" | \"Bottom\" | \"Start\" | \"End\""
+              },
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "description": "Determines the horizontal alignment of the component.",
+              "name": "horizontal-align",
+              "default": "\"Center\"",
+              "fieldName": "horizontalAlign",
+              "type": {
+                "text": "\"Start\" | \"End\" | \"Center\" | \"Stretch\""
+              },
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "description": "Determines the vertical alignment of the component.",
+              "name": "vertical-align",
+              "default": "\"Center\"",
+              "fieldName": "verticalAlign",
+              "type": {
+                "text": "\"Top\" | \"Bottom\" | \"Center\" | \"Stretch\""
+              },
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "description": "Defines whether the component should close when\nclicking/tapping outside of the popover.\nIf enabled, it blocks any interaction with the background.",
+              "name": "modal",
+              "default": "false",
+              "fieldName": "modal",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "description": "Determines whether the component arrow is hidden.",
+              "name": "hide-arrow",
+              "default": "false",
+              "fieldName": "hideArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "description": "Determines if there is no enough space, the component can be placed\nover the target.",
+              "name": "allow-target-overlap",
+              "default": "false",
+              "fieldName": "allowTargetOverlap",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "description": "Defines the ID or DOM Reference of the element at which the popover is shown.\nWhen using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.\nYou can only set the `opener` attribute to a DOM Reference when using JavaScript.",
+              "name": "opener",
+              "default": "undefined",
+              "fieldName": "opener",
+              "type": {
+                "text": "any"
+              },
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "description": "Defines the ID of the HTML Element, which will get the initial focus.\n\n**Note:** If an element with `autofocus` attribute is added inside the component,\n`initialFocus` won't take effect.",
+              "name": "initial-focus",
+              "default": "undefined",
+              "fieldName": "initialFocus",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Defines if the focus should be returned to the previously focused element,\nwhen the popup closes.",
+              "name": "prevent-focus-restore",
+              "default": "false",
+              "fieldName": "preventFocusRestore",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Defines the accessible name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Defines the IDs of the elements that label the component.",
+              "name": "accessible-name-ref",
+              "default": "undefined",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Allows setting a custom role.",
+              "name": "accessible-role",
+              "default": "\"Dialog\"",
+              "fieldName": "accessibleRole",
+              "type": {
+                "text": "\"None\" | \"Dialog\" | \"AlertDialog\""
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Indicates whether initial focus should be prevented.",
+              "name": "prevent-initial-focus",
+              "default": "false",
+              "fieldName": "preventInitialFocus",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Indicates if the element is open",
+              "name": "open",
+              "default": "false",
+              "fieldName": "open",
+              "type": {
+                "text": "any"
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            }
+          ],
           "events": [
             {
               "name": "before-open",
@@ -21374,33 +21740,6 @@
                 "name": "Popup",
                 "module": "dist/Popup.js"
               }
-            }
-          ],
-          "slots": [
-            {
-              "name": "header",
-              "description": "Defines the header HTML Element.",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "footer",
-              "description": "Defines the footer HTML Element.",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
-            },
-            {
-              "name": "default",
-              "description": "Defines the content of the Popup.",
-              "_ui5propertyName": "content",
-              "_ui5type": {
-                "text": "Array<HTMLElement>"
-              },
-              "_ui5privacy": "public"
             }
           ]
         }
@@ -21795,7 +22134,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-select` component is used to create a drop-down list.\n\n### Usage\n\nThere are two main usages of the `ui5-select>`.\n\n1. With Option (`ui5-option`) web component:\n\nThe available options of the Select are defined by using the Option component.\nThe Option comes with predefined design and layout, including `icon`, `text` and `additional-text`.\n\n2. With OptionCustom (`ui5-option-custom`) web component.\n\nOptions with custom content are defined by using the OptionCustom component\nThe OptionCustom component comes with no predefined layout and it expects consumers to define it.\n\n### Keyboard Handling\nThe `ui5-select` provides advanced keyboard handling.\n\n- [F4] / [Alt] + [Up] / [Alt] + [Down] / [Space] or [Enter] - Opens/closes the drop-down.\n- [Up] or [Down] - If the drop-down is closed - changes selection to the next or the previous option. If the drop-down is opened - moves focus to the next or the previous option.\n- [Space], [Enter] - If the drop-down is opened - selects the focused option.\n- [Escape] - Closes the drop-down without changing the selection.\n- [Home] - Navigates to first option\n- [End] - Navigates to the last option\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/Select\";`\n\n`import \"@ui5/webcomponents/dist/Option\";`\n`import \"@ui5/webcomponents/dist/OptionCustom\";`",
+          "description": "### Overview\n\nThe `ui5-select` component is used to create a drop-down list.\n\n### Usage\n\nThere are two main usages of the `ui5-select>`.\n\n- With Option (`ui5-option`) web component:\n\nThe available options of the Select are defined by using the Option component.\nThe Option comes with predefined design and layout, including `icon`, `text` and `additional-text`.\n\n- With OptionCustom (`ui5-option-custom`) web component.\n\nOptions with custom content are defined by using the OptionCustom component.\nThe OptionCustom component comes with no predefined layout and it expects consumers to define it.\n\n### Selection\n\nThe options can be selected via user interaction (click or with the use of the Space and Enter keys)\nand programmatically - the Select component supports two distinct selection APIs, though mixing them is not supported:\n- The \"value\" property of the Select component\n- The \"selected\" property on individual options\n\n**Note:** If the \"value\" property is set but does not match any option,\nno option will be selected and the Select component will be displayed as empty.\n\n**Note:** when both \"value\" and \"selected\" are both used (although discouraged),\nthe \"value\" property will take precedence.\n\n### Keyboard Handling\n\nThe `ui5-select` provides advanced keyboard handling.\n\n- [F4] / [Alt] + [Up] / [Alt] + [Down] / [Space] or [Enter] - Opens/closes the drop-down.\n- [Up] or [Down] - If the drop-down is closed - changes selection to the next or the previous option. If the drop-down is opened - moves focus to the next or the previous option.\n- [Space], [Enter] - If the drop-down is opened - selects the focused option.\n- [Escape] - Closes the drop-down without changing the selection.\n- [Home] - Navigates to first option\n- [End] - Navigates to the last option\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Select\";`\n\n`import \"@ui5/webcomponents/dist/Option\";`\n`import \"@ui5/webcomponents/dist/OptionCustom\";`",
           "name": "Select",
           "cssParts": [
             {
@@ -21934,14 +22273,13 @@
             {
               "kind": "field",
               "name": "value",
-              "description": "Defines the value of the component:\n\n- when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.\n\n- when set - selects the option with matching `value` property or text content.\n\n**Note:** If the given value does not match any existing option,\nthe first option will get selected.",
+              "description": "Defines the value of the component:\n\n- when get - returns the value of the component or the value/text content of the selected option.\n- when set - selects the option with matching `value` property or text content.\n\n**Note:** Use either the Select's value or the Options' selected property.\nMixed usage could result in unexpected behavior.\n\n**Note:** If the given value does not match any existing option,\nno option will be selected and the Select component will be displayed as empty.",
               "privacy": "public",
               "default": "\"\"",
               "type": {
                 "text": "string"
               },
               "_ui5since": "1.20.0",
-              "_ui5noAttribute": true,
               "_ui5formProperty": true,
               "_ui5formEvents": "change,liveChange"
             },
@@ -22133,7 +22471,7 @@
               }
             },
             {
-              "description": "Defines the value of the component:\n\n- when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.\n\n- when set - selects the option with matching `value` property or text content.\n\n**Note:** If the given value does not match any existing option,\nthe first option will get selected.",
+              "description": "Defines the value of the component:\n\n- when get - returns the value of the component or the value/text content of the selected option.\n- when set - selects the option with matching `value` property or text content.\n\n**Note:** Use either the Select's value or the Options' selected property.\nMixed usage could result in unexpected behavior.\n\n**Note:** If the given value does not match any existing option,\nno option will be selected and the Select component will be displayed as empty.",
               "name": "value",
               "default": "\"\"",
               "fieldName": "value",
@@ -22211,10 +22549,14 @@
                 "text": "number"
               },
               "default": "0",
-              "description": "Current value of the slider",
               "privacy": "public",
+              "description": "Current value of the slider",
               "_ui5formProperty": true,
-              "_ui5formEvents": "change,input"
+              "_ui5formEvents": "change,input",
+              "inheritedFrom": {
+                "name": "SliderBase",
+                "module": "dist/SliderBase.js"
+              }
             },
             {
               "kind": "field",
@@ -23652,7 +23994,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
             },
             {
               "name": "header",
@@ -23667,7 +24013,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
             }
           ],
           "superclass": {
@@ -23679,6 +24029,16 @@
           "customElement": true,
           "_ui5since": "2.0.0",
           "_ui5privacy": "public",
+          "cssParts": [
+            {
+              "description": "Used to style the header item of the group",
+              "name": "header",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            }
+          ],
           "attributes": [
             {
               "description": "Defines the header text of the <code>ui5-li-group</code>.",
@@ -23819,12 +24179,6 @@
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
               }
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Used to style the header item of the group",
-              "name": "header"
             }
           ]
         }
@@ -24928,7 +25282,7 @@
                 ]
               },
               "default": "\"Scroll\"",
-              "description": "Defines the mode of the <code>ui5-table</code> overflow behavior.\n\nAvailable options are:\n\n<code>Scroll</code> - Columns are shown as regular columns and horizontal scrolling is enabled.\n\n<code>Popin</code> - Columns are shown as pop-ins instead of regular columns.",
+              "description": "Defines the mode of the <code>ui5-table</code> overflow behavior.\n\nAvailable options are:\n\n<code>Scroll</code> - Columns are shown as regular columns and horizontal scrolling is enabled.\n<code>Popin</code> - Columns are shown as pop-ins instead of regular columns.",
               "privacy": "public"
             },
             {
@@ -24980,7 +25334,7 @@
               "description": "Fired when an interactive row is clicked.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false,
+              "_ui5Bubbles": true,
               "_ui5parameters": [
                 {
                   "type": {
@@ -25103,7 +25457,7 @@
               "description": "Fired when a row action is clicked.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.6.0",
               "_ui5parameters": [
                 {
@@ -25168,7 +25522,7 @@
               }
             },
             {
-              "description": "Defines the mode of the <code>ui5-table</code> overflow behavior.\n\nAvailable options are:\n\n<code>Scroll</code> - Columns are shown as regular columns and horizontal scrolling is enabled.\n\n<code>Popin</code> - Columns are shown as pop-ins instead of regular columns.",
+              "description": "Defines the mode of the <code>ui5-table</code> overflow behavior.\n\nAvailable options are:\n\n<code>Scroll</code> - Columns are shown as regular columns and horizontal scrolling is enabled.\n<code>Popin</code> - Columns are shown as pop-ins instead of regular columns.",
               "name": "overflow-mode",
               "default": "\"Scroll\"",
               "fieldName": "overflowMode",
@@ -25243,31 +25597,6 @@
           "kind": "class",
           "description": "### Overview\n\nThe `ui5-table-cell` represents a cell inside of a `ui5-table`.\nIt is tightly coupled to the `ui5-table` and thus should only be used in the table component.\n\n### ES6 Module Import\n\n`import @ui5/webcomponents/dist/TableCell.js;`",
           "name": "TableCell",
-          "superclass": {
-            "name": "TableCellBase",
-            "package": "@ui5/webcomponents",
-            "module": "dist/TableCellBase.js"
-          },
-          "tagName": "ui5-table-cell",
-          "customElement": true,
-          "_ui5experimental": "This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.",
-          "_ui5since": "2.0.0",
-          "_ui5privacy": "public",
-          "attributes": [
-            {
-              "description": "Determines the horizontal alignment of table cells.",
-              "name": "horizontal-align",
-              "default": "undefined",
-              "fieldName": "horizontalAlign",
-              "type": {
-                "text": "\"Start\" | \"End\" | \"Center\" | \"Left\" | \"Right\" | undefined"
-              },
-              "inheritedFrom": {
-                "name": "TableCellBase",
-                "module": "dist/TableCellBase.js"
-              }
-            }
-          ],
           "members": [
             {
               "kind": "field",
@@ -25291,6 +25620,16 @@
               }
             }
           ],
+          "superclass": {
+            "name": "TableCellBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TableCellBase.js"
+          },
+          "tagName": "ui5-table-cell",
+          "customElement": true,
+          "_ui5experimental": "This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.",
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public",
           "slots": [
             {
               "name": "default",
@@ -25299,7 +25638,26 @@
               "_ui5type": {
                 "text": "Array<Node>"
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "TableCellBase",
+                "module": "dist/TableCellBase.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Determines the horizontal alignment of table cells.",
+              "name": "horizontal-align",
+              "default": "undefined",
+              "fieldName": "horizontalAlign",
+              "type": {
+                "text": "\"Start\" | \"End\" | \"Center\" | \"Left\" | \"Right\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TableCellBase",
+                "module": "dist/TableCellBase.js"
+              }
             }
           ]
         }
@@ -25576,7 +25934,11 @@
               "_ui5type": {
                 "text": "Array<Node>"
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "TableCellBase",
+                "module": "dist/TableCellBase.js"
+              }
             }
           ],
           "members": [
@@ -25826,7 +26188,7 @@
               "description": "Fired when a header cell action is clicked.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.8.0",
               "_ui5parameters": [
                 {
@@ -25891,7 +26253,7 @@
               "description": "Fired when a header cell action is clicked.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false,
+              "_ui5Bubbles": true,
               "_ui5since": "2.8.0",
               "_ui5parameters": [
                 {
@@ -26080,10 +26442,10 @@
               "kind": "field",
               "name": "position",
               "type": {
-                "text": "number"
+                "text": "number | undefined"
               },
-              "default": "-1",
               "description": "Defines the position of the row related to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
+              "default": "undefined",
               "privacy": "public",
               "_ui5since": "2.5.0"
             },
@@ -26132,10 +26494,10 @@
             {
               "description": "Defines the position of the row related to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
               "name": "position",
-              "default": "-1",
+              "default": "undefined",
               "fieldName": "position",
               "type": {
-                "text": "number"
+                "text": "number | undefined"
               }
             },
             {
@@ -26730,7 +27092,7 @@
               "description": "Fired when the selection is changed by user interaction.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false
+              "_ui5Bubbles": true
             }
           ],
           "attributes": [
@@ -26782,6 +27144,36 @@
               },
               "description": "Defines the `row-key` values of selected rows, with each value separated by a space.",
               "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isSelected",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Determines whether the specified table row is currently selected.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setSelected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Sets the selected state of the specified table row.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "TableSelectionBase",
@@ -26912,78 +27304,6 @@
                 "name": "TableSelectionBase",
                 "module": "dist/TableSelectionBase.js"
               }
-            },
-            {
-              "kind": "method",
-              "name": "isSelected",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "row",
-                  "type": {
-                    "text": "TableRowBase",
-                    "references": [
-                      {
-                        "name": "TableRowBase",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/TableRowBase.js"
-                      }
-                    ]
-                  },
-                  "description": "The row instance",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Determines whether the specified table row is currently selected.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "TableSelectionBase",
-                "module": "dist/TableSelectionBase.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "setSelected",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "row",
-                  "type": {
-                    "text": "TableRowBase",
-                    "references": [
-                      {
-                        "name": "TableRowBase",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/TableRowBase.js"
-                      }
-                    ]
-                  },
-                  "description": "The row instance",
-                  "_ui5privacy": "public"
-                },
-                {
-                  "name": "selected",
-                  "type": {
-                    "text": "boolean"
-                  },
-                  "description": "Whether the row is selected",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Sets the selected state of the specified table row.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "TableSelectionBase",
-                "module": "dist/TableSelectionBase.js"
-              }
             }
           ],
           "attributes": [
@@ -27020,7 +27340,7 @@
               "description": "Fired when the selection is changed by user interaction.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "TableSelectionBase",
                 "module": "dist/TableSelectionBase.js"
@@ -27065,6 +27385,36 @@
               },
               "description": "Defines the `row-key` value of the selected row.",
               "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isSelected",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Determines whether the specified table row is currently selected.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setSelected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Sets the selected state of the specified table row.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "TableSelectionBase",
@@ -27152,78 +27502,6 @@
                 "name": "TableSelectionBase",
                 "module": "dist/TableSelectionBase.js"
               }
-            },
-            {
-              "kind": "method",
-              "name": "isSelected",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "row",
-                  "type": {
-                    "text": "TableRowBase",
-                    "references": [
-                      {
-                        "name": "TableRowBase",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/TableRowBase.js"
-                      }
-                    ]
-                  },
-                  "description": "The row instance",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Determines whether the specified table row is currently selected.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "TableSelectionBase",
-                "module": "dist/TableSelectionBase.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "setSelected",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "row",
-                  "type": {
-                    "text": "TableRowBase",
-                    "references": [
-                      {
-                        "name": "TableRowBase",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/TableRowBase.js"
-                      }
-                    ]
-                  },
-                  "description": "The row instance",
-                  "_ui5privacy": "public"
-                },
-                {
-                  "name": "selected",
-                  "type": {
-                    "text": "boolean"
-                  },
-                  "description": "Whether the row is selected",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Sets the selected state of the specified table row.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "TableSelectionBase",
-                "module": "dist/TableSelectionBase.js"
-              }
             }
           ],
           "attributes": [
@@ -27260,7 +27538,7 @@
               "description": "Fired when the selection is changed by user interaction.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "TableSelectionBase",
                 "module": "dist/TableSelectionBase.js"
@@ -29313,23 +29591,6 @@
           "tagName": "ui5-toggle-button",
           "customElement": true,
           "_ui5privacy": "public",
-          "events": [
-            {
-              "name": "click",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "Event"
-              },
-              "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
-              "inheritedFrom": {
-                "name": "Button",
-                "module": "dist/Button.js"
-              }
-            }
-          ],
           "slots": [
             {
               "name": "default",
@@ -29338,7 +29599,11 @@
               "_ui5type": {
                 "text": "Array<Node>"
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
             },
             {
               "name": "badge",
@@ -29354,21 +29619,54 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
             }
           ],
           "cssParts": [
             {
               "description": "Used to style the native button element",
-              "name": "button"
+              "name": "button",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
             },
             {
               "description": "Used to style the icon in the native button element",
-              "name": "icon"
+              "name": "icon",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
             },
             {
               "description": "Used to style the end icon in the native button element",
-              "name": "endIcon"
+              "name": "endIcon",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "Event"
+              },
+              "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
             }
           ]
         }
@@ -30661,6 +30959,43 @@
           "kind": "class",
           "description": "### Overview\nThe `ui5-toolbar-separator` is an element, used for visual separation between two elements.\nIt takes no space in calculating toolbar items width.",
           "name": "ToolbarSeparator",
+          "members": [
+            {
+              "kind": "field",
+              "name": "overflowPriority",
+              "type": {
+                "text": "ToolbarItemOverflowBehavior",
+                "references": [
+                  {
+                    "name": "ToolbarItemOverflowBehavior",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ToolbarItemOverflowBehavior.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Property used to define the access of the item to the overflow Popover. If \"NeverOverflow\" option is set,\nthe item never goes in the Popover, if \"AlwaysOverflow\" - it never comes out of it.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "preventOverflowClosing",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            }
+          ],
           "superclass": {
             "name": "ToolbarItem",
             "package": "@ui5/webcomponents",
@@ -30693,43 +31028,6 @@
               "type": {
                 "text": "boolean"
               },
-              "inheritedFrom": {
-                "name": "ToolbarItem",
-                "module": "dist/ToolbarItem.js"
-              }
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "overflowPriority",
-              "type": {
-                "text": "ToolbarItemOverflowBehavior",
-                "references": [
-                  {
-                    "name": "ToolbarItemOverflowBehavior",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/ToolbarItemOverflowBehavior.js"
-                  }
-                ]
-              },
-              "default": "\"Default\"",
-              "description": "Property used to define the access of the item to the overflow Popover. If \"NeverOverflow\" option is set,\nthe item never goes in the Popover, if \"AlwaysOverflow\" - it never comes out of it.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "ToolbarItem",
-                "module": "dist/ToolbarItem.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "preventOverflowClosing",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
-              "privacy": "public",
               "inheritedFrom": {
                 "name": "ToolbarItem",
                 "module": "dist/ToolbarItem.js"
@@ -31410,8 +31708,8 @@
               "privacy": "public",
               "_ui5since": "2.0.0",
               "inheritedFrom": {
-                "name": "TreeItemBase",
-                "module": "dist/TreeItemBase.js"
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
               }
             },
             {
@@ -31425,8 +31723,8 @@
               "privacy": "public",
               "_ui5since": "1.1.0",
               "inheritedFrom": {
-                "name": "TreeItemBase",
-                "module": "dist/TreeItemBase.js"
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
               }
             },
             {
@@ -31476,8 +31774,8 @@
               "privacy": "public",
               "_ui5since": "1.8.0",
               "inheritedFrom": {
-                "name": "TreeItemBase",
-                "module": "dist/TreeItemBase.js"
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
               }
             },
             {
@@ -31596,12 +31894,12 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
+              "description": "Defines the selected state of the component.",
               "privacy": "public",
               "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
               }
             }
           ],
@@ -31803,23 +32101,6 @@
           "customElement": true,
           "_ui5since": "1.0.0-rc.8",
           "_ui5privacy": "public",
-          "events": [
-            {
-              "name": "detail-click",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            }
-          ],
           "slots": [
             {
               "name": "default",
@@ -31835,7 +32116,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "TreeItemBase",
+                "module": "dist/TreeItemBase.js"
+              }
             },
             {
               "name": "deleteButton",
@@ -31851,7 +32136,28 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "detail-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             }
           ]
         }
@@ -31914,7 +32220,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             }
           ],
           "members": [
@@ -31947,7 +32257,11 @@
               "default": "false",
               "description": "Defines whether the item is movable.",
               "privacy": "public",
-              "_ui5since": "2.0.0"
+              "_ui5since": "2.0.0",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
             },
             {
               "kind": "field",
@@ -31958,7 +32272,11 @@
               "description": "Defines whether the selection of a tree node is displayed as partially selected.\n\n**Note:** The indeterminate state can be set only programmatically and can’t be achieved by user\ninteraction, meaning that the resulting visual state depends on the values of the `indeterminate`\nand `selected` properties:\n\n-  If a tree node has both `selected` and `indeterminate` set to `true`, it is displayed as partially selected.\n-  If a tree node has `selected` set to `true` and `indeterminate` set to `false`, it is displayed as selected.\n-  If a tree node has `selected` set to `false`, it is displayed as not selected regardless of the value of the `indeterminate` property.\n\n**Note:** This property takes effect only when the `ui5-tree` is in `Multiple` mode.",
               "default": "false",
               "privacy": "public",
-              "_ui5since": "1.1.0"
+              "_ui5since": "1.1.0",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             },
             {
               "kind": "field",
@@ -31997,7 +32315,11 @@
               "description": "Defines the accessible name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.8.0"
+              "_ui5since": "1.8.0",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             },
             {
               "kind": "method",
@@ -32111,9 +32433,26 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
+              "description": "Defines the selected state of the component.",
               "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "detail-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
@@ -32270,24 +32609,7 @@
           },
           "customElement": true,
           "_ui5privacy": "public",
-          "_ui5abstract": true,
-          "events": [
-            {
-              "name": "detail-click",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
-              "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
-              }
-            }
-          ]
+          "_ui5abstract": true
         }
       ],
       "exports": [
@@ -32346,7 +32668,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "TreeItemBase",
+                "module": "dist/TreeItemBase.js"
+              }
             },
             {
               "name": "deleteButton",
@@ -32362,7 +32688,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             }
           ],
           "members": [
@@ -32415,8 +32745,8 @@
               "privacy": "public",
               "_ui5since": "2.0.0",
               "inheritedFrom": {
-                "name": "TreeItemBase",
-                "module": "dist/TreeItemBase.js"
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
               }
             },
             {
@@ -32430,8 +32760,8 @@
               "privacy": "public",
               "_ui5since": "1.1.0",
               "inheritedFrom": {
-                "name": "TreeItemBase",
-                "module": "dist/TreeItemBase.js"
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
               }
             },
             {
@@ -32481,8 +32811,8 @@
               "privacy": "public",
               "_ui5since": "1.8.0",
               "inheritedFrom": {
-                "name": "TreeItemBase",
-                "module": "dist/TreeItemBase.js"
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
               }
             },
             {
@@ -32601,12 +32931,12 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
+              "description": "Defines the selected state of the component.",
               "privacy": "public",
               "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
               }
             }
           ],

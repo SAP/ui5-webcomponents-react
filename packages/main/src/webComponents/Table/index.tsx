@@ -50,7 +50,6 @@ interface TableAttributes {
    * Available options are:
    *
    * <code>Scroll</code> - Columns are shown as regular columns and horizontal scrolling is enabled.
-   *
    * <code>Popin</code> - Columns are shown as pop-ins instead of regular columns.
    * @default "Scroll"
    */
@@ -163,7 +162,7 @@ interface TablePropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|❌|
+   * | ❌|✅|
    */
   onRowActionClick?: (event: Ui5CustomEvent<TableDomRef, TableRowActionClickEventDetail>) => void;
 
@@ -172,7 +171,7 @@ interface TablePropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|❌|
+   * | ❌|✅|
    */
   onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
 }

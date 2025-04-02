@@ -29,7 +29,7 @@ interface IconAttributes {
    * Defines the mode of the component.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
-   * @default "Image"
+   * @default "Decorative"
    */
   mode?: IconMode | keyof typeof IconMode;
 

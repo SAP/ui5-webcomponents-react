@@ -17,7 +17,7 @@ interface TableHeaderCellActionAIPropTypes extends TableHeaderCellActionAIAttrib
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|❌|
+   * | ❌|✅|
    */
   onClick?: (event: Ui5CustomEvent<TableHeaderCellActionAIDomRef, TableHeaderCellActionClickEventDetail>) => void;
 }
