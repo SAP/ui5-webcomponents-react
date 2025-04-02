@@ -1,20 +1,24 @@
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { MessageViewButton } from './index.js';
 
+const testCases: [ValueState | undefined, string, string, string][] = [
+  [ValueState.Negative, 'error', 'Error Type', 'Error'],
+  [ValueState.Positive, 'sys-enter-2', 'Success Type', 'Success'],
+  [ValueState.Critical, 'alert', 'Warning Type', 'Warning'],
+  [ValueState.Information, 'information', 'Information Type', 'Information'],
+  [ValueState.None, 'information', 'Information Type', 'Information'],
+  [undefined, 'error', 'Error Type', 'Error']
+];
+
 describe('MessageViewButton', () => {
-  [
-    [ValueState.Negative, 'error'],
-    [ValueState.Positive, 'sys-enter-2'],
-    [ValueState.Critical, 'alert'],
-    [ValueState.Information, 'information'],
-    [ValueState.None, 'information'],
-    [undefined, 'error']
-  ].forEach(([type, icon]: [ValueState, string]) => {
+  testCases.forEach(([type, icon, label, tooltip]) => {
     it(`type ${type}`, () => {
       cy.mount(<MessageViewButton type={type} data-testid={type ?? 'undefined'} />);
       cy.findByTestId(type ?? 'undefined')
         .should('have.attr', 'icon', icon)
-        .should('be.visible');
+        .and('have.attr', 'accessible-name', label)
+        .and('have.attr', 'tooltip', tooltip)
+        .and('be.visible');
     });
   });
   it('counter', () => {
