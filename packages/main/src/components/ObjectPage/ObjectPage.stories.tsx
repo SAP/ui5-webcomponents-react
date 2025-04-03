@@ -72,7 +72,7 @@ const meta = {
     ),
     titleArea: (
       <ObjectPageTitle
-        header="Denise Smith"
+        header={<Title level="H2">Denise Smith</Title>}
         subHeader="Senior UI Developer"
         actionsBar={
           <Toolbar design="Transparent">
