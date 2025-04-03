@@ -879,12 +879,12 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         </div>
       )}
       <div data-component-name="ObjectPageContent" className={classNames.content} ref={objectPageContentRef}>
-        <div style={{ height: headerCollapsed && !headerPinned ? `${headerContentHeight}px` : 0 }} aria-hidden />
+        <div style={{ height: headerCollapsed && !headerPinned ? `${headerContentHeight}px` : 0 }} aria-hidden="true" />
         {placeholder ? placeholder : sections}
-        <div style={{ height: `${sectionSpacer}px` }} aria-hidden />
+        <div style={{ height: `${sectionSpacer}px` }} aria-hidden="true" />
       </div>
       {footerArea && mode === ObjectPageMode.IconTabBar && !sectionSpacer && (
-        <div className={classNames.footerSpacer} data-component-name="ObjectPageFooterSpacer" aria-hidden />
+        <div className={classNames.footerSpacer} data-component-name="ObjectPageFooterSpacer" aria-hidden="true" />
       )}
       {footerArea && (
         <footer className={classNames.footer} data-component-name="ObjectPageFooter">

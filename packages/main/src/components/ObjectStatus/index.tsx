@@ -197,7 +197,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
   const showEmptyIndicator = emptyIndicator && !children;
   const computedChildren = showEmptyIndicator ? (
     <span
-      aria-hidden={showEmptyIndicator}
+      aria-hidden={showEmptyIndicator ? 'true' : undefined}
       data-component-name="ObjectStatusEmptyIndicator"
       className={classNames.emptyIndicator}
     >
