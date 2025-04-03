@@ -33,10 +33,6 @@
   }
 }
 
-.withFooter {
-  scroll-padding-block-end: calc(var(--_ui5wcr-BarHeight) + 0.5rem);
-}
-
 .iconTabBarMode section[data-component-name='ObjectPageSection'] > div[role='heading'] {
   display: none;
 }
