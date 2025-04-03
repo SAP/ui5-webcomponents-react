@@ -43,6 +43,8 @@ import {
   INVALID_TABLE,
   LIST_NO_DATA,
   NO_DATA_FILTERED,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
   SELECT_ALL,
   SELECT_ALL_PRESS_SPACE,
   SELECT_PRESS_SPACE,
@@ -209,7 +211,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           filteredA11yText: i18nBundle.getText(FILTERED),
           groupedA11yText: i18nBundle.getText(GROUPED),
           selectAllA11yText: i18nBundle.getText(SELECT_ALL_PRESS_SPACE),
-          deselectAllA11yText: i18nBundle.getText(UNSELECT_ALL_PRESS_SPACE)
+          deselectAllA11yText: i18nBundle.getText(UNSELECT_ALL_PRESS_SPACE),
+          rowExpandedAnnouncementText: i18nBundle.getText(ROW_EXPANDED),
+          rowCollapsedAnnouncementText: i18nBundle.getText(ROW_COLLAPSED)
         },
         alternateRowColor,
         alwaysShowSubComponent,
