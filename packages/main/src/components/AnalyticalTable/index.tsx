@@ -734,7 +734,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           {/*todo: use global CSS once --sapBlockLayer_Opacity is available*/}
           {showOverlay && (
             <>
-              <span id={invalidTableTextId} className={classNames.hiddenA11yText} aria-hidden>
+              <span id={invalidTableTextId} className={classNames.hiddenA11yText} aria-hidden="true">
                 {invalidTableA11yText}
               </span>
               <div
@@ -750,7 +750,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             aria-labelledby={titleBarId}
             {...getTableProps()}
             tabIndex={loading || showOverlay ? -1 : 0}
-            role="grid"
+            role={isTreeTable ? 'treegrid' : 'grid'}
             aria-rowcount={rows.length}
             aria-colcount={visibleColumns.length}
             data-per-page={internalVisibleRowCount}

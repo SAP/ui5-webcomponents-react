@@ -218,7 +218,7 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
               <Icon
                 name={iconFilter}
                 className={classNames.filterIcon}
-                aria-hidden
+                aria-hidden="true"
                 style={{
                   minWidth: filterStyles.iconDimensions,
                   minHeight: filterStyles.iconDimensions

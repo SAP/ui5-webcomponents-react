@@ -236,18 +236,28 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
             data-component-name={`AnalyticalTableHeaderIconsContainer-${columnId}`}
           >
             {isFiltered && (
-              <Icon design={IconDesign.NonInteractive} name={iconFilter} aria-hidden className={classNames.icon} />
+              <Icon
+                design={IconDesign.NonInteractive}
+                name={iconFilter}
+                aria-hidden="true"
+                className={classNames.icon}
+              />
             )}
             {column.isSorted && (
               <Icon
                 design={IconDesign.NonInteractive}
                 name={column.isSortedDesc ? iconSortDescending : iconSortAscending}
-                aria-hidden
+                aria-hidden="true"
                 className={classNames.icon}
               />
             )}
             {column.isGrouped && (
-              <Icon design={IconDesign.NonInteractive} name={iconGroup} aria-hidden className={classNames.icon} />
+              <Icon
+                design={IconDesign.NonInteractive}
+                name={iconGroup}
+                aria-hidden="true"
+                className={classNames.icon}
+              />
             )}
           </div>
         </div>
