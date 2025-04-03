@@ -763,8 +763,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             ref={tableRef}
             className={tableClasses}
           >
-            <div className={classNames.tableHeaderBackgroundElement} />
-            <div className={classNames.tableBodyBackgroundElement} />
+            <div className={classNames.tableHeaderBackgroundElement} aria-hidden="true" />
+            <div className={classNames.tableBodyBackgroundElement} aria-hidden="true" />
             {headerGroups.map((headerGroup) => {
               let headerProps: Record<string, unknown> = {};
               if (headerGroup.getHeaderGroupProps) {
