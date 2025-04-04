@@ -207,6 +207,8 @@ export interface WCRPropertiesType {
     groupedA11yText: string;
     selectAllA11yText: string;
     deselectAllA11yText: string;
+    rowExpandedAnnouncementText: string;
+    rowCollapsedAnnouncementText: string;
   };
   tagNamesWhichShouldNotSelectARow: Set<string>;
   tableRef: MutableRefObject<DivWithCustomScrollProp>;

@@ -143,7 +143,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                     key={`${visibleRowIndex}-${emptyRowCellProps.key}`}
                     data-empty-row-cell="true"
                     tabIndex={-1}
-                    aria-hidden
+                    aria-hidden="true"
                     style={{ ...emptyRowCellProps.style, cursor: 'unset', width: item.size }}
                   />
                 );

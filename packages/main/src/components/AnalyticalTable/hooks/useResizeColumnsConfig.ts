@@ -1,9 +1,11 @@
+import type { MouseEvent } from 'react';
 import type { ReactTableHooks } from '../types/index.js';
 
 const useGetResizerProps = (props) => {
   return {
     ...props,
-    onMouseDown: (e) => {
+    'aria-hidden': 'true',
+    onMouseDown: (e: MouseEvent<HTMLDivElement>) => {
       e.preventDefault();
       props.onMouseDown(e);
     }
