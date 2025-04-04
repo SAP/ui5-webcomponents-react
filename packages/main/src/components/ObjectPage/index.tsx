@@ -138,6 +138,9 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
     objectPageAnchorBar?: {
       role?: string;
     };
+    objectPageFooterArea?: {
+      role?: string;
+    };
   };
   /**
    * If set, only the specified placeholder will be displayed as content of the `ObjectPage`, no sections or sub-sections will be rendered.
@@ -887,7 +890,11 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         <div className={classNames.footerSpacer} data-component-name="ObjectPageFooterSpacer" aria-hidden />
       )}
       {footerArea && (
-        <footer className={classNames.footer} data-component-name="ObjectPageFooter">
+        <footer
+          role={accessibilityAttributes?.objectPageFooterArea?.role}
+          className={classNames.footer}
+          data-component-name="ObjectPageFooter"
+        >
           {footerArea}
         </footer>
       )}
