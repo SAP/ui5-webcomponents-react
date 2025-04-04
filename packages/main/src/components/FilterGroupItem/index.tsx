@@ -259,7 +259,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
               )}
               {active && (
                 <>
-                  <Icon name={circleTask2Icon} className={classNames.dialogActiveIcon} aria-hidden />
+                  <Icon name={circleTask2Icon} className={classNames.dialogActiveIcon} aria-hidden="true" />
                   <span className={classNames.pseudoInvisibleText}>{i18nBundle.getText(FILTER_IS_ACTIVE)}</span>
                 </>
               )}

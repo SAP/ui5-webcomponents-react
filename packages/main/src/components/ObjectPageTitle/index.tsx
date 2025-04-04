@@ -242,7 +242,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
               <div
                 className={classNames.actionsSeparator}
                 data-component-name="ObjectPageTitleActionsSeparator"
-                aria-hidden
+                aria-hidden="true"
               />
             )}
             {!showNavigationInTopArea && (wcrNavToolbar ? wcrNavToolbar : navigationBar)}
