@@ -80,8 +80,7 @@ export function DomRefTable() {
             component, e.g. by using React Refs.
           </p>
           <MessageStrip hideCloseButton style={{ marginBlockEnd: '10px' }}>
-            This table is showing <b>additional</b> properties and methods which are not available as props (HTML
-            attributes). <br />
+            This table is showing <b>additional</b> properties and methods which are not available as props. <br />
             All props (without event handlers, children, and slots) are available as properties on the DOM ref as well.
           </MessageStrip>
           <table>
