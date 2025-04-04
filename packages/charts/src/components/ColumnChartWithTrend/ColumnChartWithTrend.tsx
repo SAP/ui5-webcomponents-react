@@ -1,6 +1,7 @@
 'use client';
 
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters, useStylesheet } from '@ui5/webcomponents-react-base';
+import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 import { forwardRef, useId } from 'react';
 import type { TooltipProps, YAxisProps } from 'recharts';
@@ -13,6 +14,7 @@ import type { IChartDimension } from '../../interfaces/IChartDimension.js';
 import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { defaultFormatter } from '../../internal/defaults.js';
 import { ComposedChart } from '../ComposedChart/index.js';
+import { classNames, content } from './ColumnChartWithTrend.module.css.js';
 import { ColumnChartWithTrendPlaceholder } from './Placeholder.js';
 
 interface MeasureConfig extends IChartMeasure {
@@ -111,9 +113,7 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
     loading,
     loadingDelay,
     dataset,
-    style,
     className,
-    slot,
     onClick,
     noLegend,
     noAnimation,
@@ -122,8 +122,9 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
     ChartPlaceholder,
     ...rest
   } = props;
-
   const syncId = useId();
+
+  useStylesheet(content, ColumnChartWithTrend.displayName);
 
   const chartConfig: ColumnChartWithTrendProps['chartConfig'] = {
     yAxisVisible: false,
@@ -165,25 +166,19 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
   const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
 
   return (
-    <div
-      ref={ref}
-      style={{ display: 'flex', flexDirection: 'column', height: style?.height, width: style?.width, ...style }}
-      className={className}
-      slot={slot}
-      {...propsWithoutOmitted}
-    >
+    <div ref={ref} className={clsx(className, classNames.container)} {...propsWithoutOmitted}>
       {dataset?.length !== 0 && (
         <ComposedChart
-          className={
-            typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
-          }
+          className={clsx(
+            typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined,
+            classNames.trendContainer
+          )}
           tooltipConfig={lineTooltipConfig}
           noAnimation={noAnimation}
           loading={loading}
           loadingDelay={loadingDelay}
           onClick={onClick}
           syncId={syncId}
-          style={{ ...style, height: `calc(${style?.height} * 0.2)` }}
           dataset={dataset}
           measures={lineMeasures}
           dimensions={dimensions}
@@ -201,6 +196,10 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
         />
       )}
       <ComposedChart
+        className={clsx(
+          typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined,
+          classNames.chartContainer
+        )}
         onLegendClick={onLegendClick}
         tooltipConfig={columnTooltipConfig}
         noAnimation={noAnimation}
@@ -215,10 +214,6 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
         measures={columnMeasures}
         dimensions={dimensions}
         chartConfig={chartConfig}
-        style={{ ...style, height: `calc(${style?.height} * ${dataset?.length !== 0 ? 0.8 : 1})` }}
-        className={
-          typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined
-        }
       />
     </div>
   );
