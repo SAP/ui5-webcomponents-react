@@ -33,11 +33,13 @@ export interface ObjectPageTitlePropTypes extends CommonProps {
 
   /**
    * The `header` is positioned in the `ObjectPageTitle` left area.
+   *
    * Use this prop to display a `Title` (or any other component that serves as a heading).
    */
   header?: ReactNode;
   /**
    * The `subHeader` is positioned in the `ObjectPageTitle` left area below the `header`.
+   *
    * Use this aggregation to display a component like `Label` or any other component that serves as sub header.
    */
   subHeader?: ReactNode;
@@ -225,7 +227,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
       >
         <FlexBox className={classNames.titleMainSection} onClick={onHeaderClick}>
           {header && (
-            <div className={classNames.title} data-component-name="ObjectPageTitleHeader" /*onClick={onHeaderClick}*/>
+            <div className={classNames.title} data-component-name="ObjectPageTitleHeader">
               {header}
             </div>
           )}

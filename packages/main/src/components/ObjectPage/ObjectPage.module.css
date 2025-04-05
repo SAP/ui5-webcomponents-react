@@ -21,15 +21,18 @@
   &[data-in-iframe='true'] {
     scroll-behavior: auto;
   }
-  section[id*='ObjectPageSection-'] > div[role='heading'] {
-    display: none;
-  }
 
-  /* explanation why first-child selector is not sufficient here:
-   https://stackoverflow.com/questions/7128406/css-select-the-first-child-from-elements-with-particular-attribute
-   */
-  section[id*='ObjectPageSection-'] ~ section[id*='ObjectPageSection-'] > div[role='heading'] {
-    display: block;
+  /*invisible first heading*/
+  section[id*='ObjectPageSection-']:first-of-type > div[role='heading'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
   }
 }
 
