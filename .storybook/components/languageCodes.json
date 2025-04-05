@@ -5,198 +5,198 @@
   },
   {
     "id": "ar",
-    "language": "Arabic (Standard)"
+    "language": "Arabic (ar)"
   },
   {
     "id": "bg",
-    "language": "Bulgarian"
+    "language": "Bulgarian (bg)"
   },
   {
     "id": "ca",
-    "language": "Catalan"
+    "language": "Catalan (ca)"
   },
   {
     "id": "cnr",
-    "language": "Montenegrin"
+    "language": "Montenegrin (cnr)"
   },
   {
     "id": "cs",
-    "language": "Czech"
+    "language": "Czech (cs)"
   },
   {
     "id": "cy",
-    "language": "Welsh"
+    "language": "Welsh (cy)"
   },
   {
     "id": "da",
-    "language": "Danish"
+    "language": "Danish (da)"
   },
   {
     "id": "de",
-    "language": "German (Standard)"
+    "language": "German (de)"
   },
   {
     "id": "el",
-    "language": "Greek"
+    "language": "Greek (el)"
   },
   {
     "id": "en",
-    "language": "English"
+    "language": "English (en)"
   },
   {
     "id": "en_GB",
-    "language": "British English"
+    "language": "British English (en_GB)"
   },
   {
     "id": "es",
-    "language": "Spanish"
+    "language": "Spanish (es)"
   },
   {
     "id": "es_MX",
-    "language": "Mexican Spanish"
+    "language": "Mexican Spanish (es_MX)"
   },
   {
     "id": "et",
-    "language": "Estonian"
+    "language": "Estonian (et)"
   },
   {
     "id": "fi",
-    "language": "Finnish"
+    "language": "Finnish (fi)"
   },
   {
     "id": "fr",
-    "language": "French (Standard)"
+    "language": "French (fr)"
   },
   {
     "id": "fr_CA",
-    "language": "Canadian French"
+    "language": "Canadian French (fr_CA)"
   },
   {
     "id": "hi",
-    "language": "Hindi"
+    "language": "Hindi (hi)"
   },
   {
     "id": "hr",
-    "language": "Croatian"
+    "language": "Croatian (hr)"
   },
   {
     "id": "hu",
-    "language": "Hungarian"
+    "language": "Hungarian (hu)"
   },
   {
-    "id": "in",
-    "language": "Indonesian"
+    "id": "id",
+    "language": "Indonesian (id)"
   },
   {
     "id": "it",
-    "language": "Italian (Standard)"
+    "language": "Italian (it)"
   },
   {
     "id": "iw",
-    "language": "Hebrew"
+    "language": "Hebrew (iw)"
   },
   {
     "id": "ja",
-    "language": "Japanese"
+    "language": "Japanese (ja)"
   },
   {
     "id": "kk",
-    "language": "Kazakh"
+    "language": "Kazakh (kk)"
   },
   {
     "id": "ko",
-    "language": "Korean"
+    "language": "Korean (ko)"
   },
   {
     "id": "lt",
-    "language": "Lithuanian"
+    "language": "Lithuanian (lt)"
   },
   {
     "id": "lv",
-    "language": "Latvian"
+    "language": "Latvian (lv)"
   },
   {
     "id": "mk",
-    "language": "Macedonian"
+    "language": "Macedonian (mk)"
   },
   {
     "id": "ms",
-    "language": "Malay"
+    "language": "Malay (ms)"
   },
   {
     "id": "nl",
-    "language": "Dutch (Standard)"
+    "language": "Dutch (nl)"
   },
   {
     "id": "no",
-    "language": "Norwegian"
+    "language": "Norwegian (no)"
   },
   {
     "id": "pl",
-    "language": "Polish"
+    "language": "Polish (pl)"
   },
   {
     "id": "pt_PT",
-    "language": "Portuguese (Portugal)"
+    "language": "Portuguese (Portugal) (pt_PT)"
   },
   {
     "id": "pt",
-    "language": "Portuguese"
+    "language": "Portuguese (pt)"
   },
   {
     "id": "ro",
-    "language": "Romanian"
+    "language": "Romanian (ro)"
   },
   {
     "id": "ru",
-    "language": "Russian"
+    "language": "Russian (ru)"
   },
   {
     "id": "sh",
-    "language": "Serbo-Croatian"
+    "language": "Serbo-Croatian (sh)"
   },
   {
     "id": "sk",
-    "language": "Slovak"
+    "language": "Slovak (sk)"
   },
   {
     "id": "sl",
-    "language": "Slovenian"
+    "language": "Slovenian (sl)"
   },
   {
     "id": "sr",
-    "language": "Serbian"
+    "language": "Serbian (sr)"
   },
   {
     "id": "sv",
-    "language": "Swedish"
+    "language": "Swedish (sv)"
   },
   {
     "id": "th",
-    "language": "Thai"
+    "language": "Thai (th)"
   },
   {
     "id": "tr",
-    "language": "Turkish"
+    "language": "Turkish (tr)"
   },
   {
     "id": "uk",
-    "language": "Ukrainian"
+    "language": "Ukrainian (uk)"
   },
   {
     "id": "vi",
-    "language": "Vietnamese"
+    "language": "Vietnamese (vi)"
   },
   {
     "id": "zh_CN",
-    "language": "Chinese - Simplified"
+    "language": "Chinese - Simplified (zh_CN)"
   },
   {
     "id": "zh_TW",
-    "language": "Chinese - Traditional"
+    "language": "Chinese - Traditional (zh_TW)"
   },
   {
     "id": "en_US_sappsd",
-    "language": "Pseudo Translations"
+    "language": "Pseudo Translations (en_US_sappsd)"
   }
 ]
