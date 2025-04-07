@@ -1,5 +1,6 @@
 import type { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import IconDesign from '@ui5/webcomponents/dist/types/IconDesign.js';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
@@ -236,18 +237,28 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
             data-component-name={`AnalyticalTableHeaderIconsContainer-${columnId}`}
           >
             {isFiltered && (
-              <Icon design={IconDesign.NonInteractive} name={iconFilter} aria-hidden className={classNames.icon} />
+              <Icon
+                design={IconDesign.NonInteractive}
+                name={iconFilter}
+                className={classNames.icon}
+                mode={IconMode.Decorative}
+              />
             )}
             {column.isSorted && (
               <Icon
                 design={IconDesign.NonInteractive}
                 name={column.isSortedDesc ? iconSortDescending : iconSortAscending}
-                aria-hidden
                 className={classNames.icon}
+                mode={IconMode.Decorative}
               />
             )}
             {column.isGrouped && (
-              <Icon design={IconDesign.NonInteractive} name={iconGroup} aria-hidden className={classNames.icon} />
+              <Icon
+                design={IconDesign.NonInteractive}
+                name={iconGroup}
+                className={classNames.icon}
+                mode={IconMode.Decorative}
+              />
             )}
           </div>
         </div>

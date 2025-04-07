@@ -147,6 +147,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
 
   return (
     <div
+      aria-hidden="true"
       className={classNames.verticalResizerContainer}
       ref={verticalResizerRef}
       onMouseDown={handleResizeStart}
