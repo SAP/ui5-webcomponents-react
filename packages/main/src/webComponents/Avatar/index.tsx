@@ -31,7 +31,8 @@ interface AvatarAttributes {
 
   /**
    * Defines the background color of the desired image.
-   * @default "Accent6"
+   * If `colorScheme` is set to `Auto`, the avatar will be displayed with the `Accent6` color.
+   * @default "Auto"
    */
   colorScheme?: AvatarColorScheme | keyof typeof AvatarColorScheme;
 

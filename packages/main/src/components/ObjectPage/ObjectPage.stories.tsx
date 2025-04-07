@@ -72,7 +72,7 @@ const meta = {
     ),
     titleArea: (
       <ObjectPageTitle
-        header="Denise Smith"
+        header={<Title level="H2">Denise Smith</Title>}
         subHeader="Senior UI Developer"
         actionsBar={
           <Toolbar design="Transparent">
@@ -94,8 +94,16 @@ const meta = {
             <BreadcrumbsItem>Employee Details</BreadcrumbsItem>
           </Breadcrumbs>
         }
-        expandedContent={<MessageStrip>Information (only visible if header content is expanded)</MessageStrip>}
-        snappedContent={<MessageStrip>Information (only visible if header content is collapsed/snapped)</MessageStrip>}
+        expandedContent={
+          <MessageStrip style={{ paddingBlockStart: '0.5rem' }}>
+            Information (only visible if header content is expanded)
+          </MessageStrip>
+        }
+        snappedContent={
+          <MessageStrip style={{ paddingBlockStart: '0.5rem' }}>
+            Information (only visible if header content is collapsed/snapped)
+          </MessageStrip>
+        }
       >
         <ObjectStatus state={ValueState.Positive}>employed</ObjectStatus>
       </ObjectPageTitle>

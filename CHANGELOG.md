@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.1...v2.8.2) (2025-04-07)
+
+### Bug Fixes
+
+- **deps:** update dependency @tanstack/react-virtual to v3.13.5 (main) ([#7133](https://github.com/SAP/ui5-webcomponents-react/issues/7133)) ([51ebd52](https://github.com/SAP/ui5-webcomponents-react/commit/51ebd52957f9567c4718384bac4af0a392550eea))
+- **deps:** update dependency @tanstack/react-virtual to v3.13.6 (main) ([#7161](https://github.com/SAP/ui5-webcomponents-react/issues/7161)) ([a7feb21](https://github.com/SAP/ui5-webcomponents-react/commit/a7feb21a7de697c566019c436bbede629c75320b))
+- **deps:** update dependency recharts to v2.15.2 (main) ([#7184](https://github.com/SAP/ui5-webcomponents-react/issues/7184)) ([707c926](https://github.com/SAP/ui5-webcomponents-react/commit/707c92669ff0f64e5ae256b8797872d77297a0df))
+- **deps:** update react monorepo to v19.1.0 (main) (minor) ([#7154](https://github.com/SAP/ui5-webcomponents-react/issues/7154)) ([287ae70](https://github.com/SAP/ui5-webcomponents-react/commit/287ae70e75eb952933601e8c8e4232d40aaed1b9))
+- **i18n:** update french translation of cancel ([#7146](https://github.com/SAP/ui5-webcomponents-react/issues/7146)) ([ea676c8](https://github.com/SAP/ui5-webcomponents-react/commit/ea676c838c2bf18dd5e635644db743f73946a782)), closes [#7141](https://github.com/SAP/ui5-webcomponents-react/issues/7141)
+- **ObjectPage:** announce first section heading with screen readers ([#7186](https://github.com/SAP/ui5-webcomponents-react/issues/7186)) ([8c49573](https://github.com/SAP/ui5-webcomponents-react/commit/8c49573405cf35fa44e584560b7d3f42dec4c671)), closes [#7043](https://github.com/SAP/ui5-webcomponents-react/issues/7043)
+- **ObjectPage:** correct position of snapped `image` ([#7151](https://github.com/SAP/ui5-webcomponents-react/issues/7151)) ([e99a24f](https://github.com/SAP/ui5-webcomponents-react/commit/e99a24fa31e95e9b57d2b9123a7e90526078069e))
+- **ObjectPage:** improve focus and scroll behavior ([#7150](https://github.com/SAP/ui5-webcomponents-react/issues/7150)) ([1516a82](https://github.com/SAP/ui5-webcomponents-react/commit/1516a8244e96d7b2f7c10e1418fba050507ef902)), closes [#5783](https://github.com/SAP/ui5-webcomponents-react/issues/5783) [#7155](https://github.com/SAP/ui5-webcomponents-react/issues/7155)
+
 ## [2.8.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.0...v2.8.1) (2025-03-24)
 
 ### Bug Fixes

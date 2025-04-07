@@ -1,0 +1,23 @@
+.container {
+  /*ChartContainer styles*/
+  font-size: var(--sapFontSmallSize);
+  color: var(--sapTextColor);
+  font-family: var(--sapFontFamily);
+  width: 100%;
+  height: 400px;
+  min-height: fit-content;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.trendContainer {
+  height: auto;
+  flex: 0 0 20%;
+}
+
+.chartContainer {
+  height: auto;
+  flex-grow: 1;
+}

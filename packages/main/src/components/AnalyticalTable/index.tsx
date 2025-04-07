@@ -209,7 +209,12 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           filteredA11yText: i18nBundle.getText(FILTERED),
           groupedA11yText: i18nBundle.getText(GROUPED),
           selectAllA11yText: i18nBundle.getText(SELECT_ALL_PRESS_SPACE),
-          deselectAllA11yText: i18nBundle.getText(UNSELECT_ALL_PRESS_SPACE)
+          deselectAllA11yText: i18nBundle.getText(UNSELECT_ALL_PRESS_SPACE),
+          //todo: use translations once they are available
+          // rowExpandedAnnouncementText: i18nBundle.getText(ROW_EXPANDED),
+          // rowCollapsedAnnouncementText: i18nBundle.getText(ROW_COLLAPSED)
+          rowExpandedAnnouncementText: 'Row expanded',
+          rowCollapsedAnnouncementText: 'Row collapsed'
         },
         alternateRowColor,
         alwaysShowSubComponent,
@@ -734,7 +739,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           {/*todo: use global CSS once --sapBlockLayer_Opacity is available*/}
           {showOverlay && (
             <>
-              <span id={invalidTableTextId} className={classNames.hiddenA11yText} aria-hidden>
+              <span id={invalidTableTextId} className={classNames.hiddenA11yText} aria-hidden="true">
                 {invalidTableA11yText}
               </span>
               <div
@@ -750,7 +755,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             aria-labelledby={titleBarId}
             {...getTableProps()}
             tabIndex={loading || showOverlay ? -1 : 0}
-            role="grid"
+            role={isTreeTable ? 'treegrid' : 'grid'}
             aria-rowcount={rows.length}
             aria-colcount={visibleColumns.length}
             data-per-page={internalVisibleRowCount}
@@ -759,8 +764,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
             ref={tableRef}
             className={tableClasses}
           >
-            <div className={classNames.tableHeaderBackgroundElement} />
-            <div className={classNames.tableBodyBackgroundElement} />
+            <div className={classNames.tableHeaderBackgroundElement} aria-hidden="true" />
+            <div className={classNames.tableBodyBackgroundElement} aria-hidden="true" />
             {headerGroups.map((headerGroup) => {
               let headerProps: Record<string, unknown> = {};
               if (headerGroup.getHeaderGroupProps) {

@@ -22,6 +22,14 @@ interface UserMenuAccountAttributes {
   description?: string;
 
   /**
+   * Indicates whether a loading indicator should be shown.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents-fiori**.
+   * @default false
+   */
+  loading?: boolean;
+
+  /**
    * Defines if the user is selected.
    * @default false
    */
@@ -57,7 +65,7 @@ interface UserMenuAccountPropTypes
 const UserMenuAccount = withWebComponent<UserMenuAccountPropTypes, UserMenuAccountDomRef>(
   'ui5-user-menu-account',
   ['avatarInitials', 'avatarSrc', 'description', 'subtitleText', 'titleText'],
-  ['selected'],
+  ['loading', 'selected'],
   [],
   []
 );

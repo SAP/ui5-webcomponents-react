@@ -5264,11 +5264,434 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/Search.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nA `ui5-search` is an input with suggestions, used for user search.\n\nThe `ui5-search` consists of several elements parts:\n- Scope - displays a select in the beggining of the component, used for filtering results by their scope.\n- Input field - for user input value\n- Clear button - gives the possibility for deleting the entered value\n- Search button - a primary button for performing search, when the user has entered a search term\n- Suggestions - a list with available search suggestions\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/fiori/dist/Search.js\";`",
+          "name": "Search",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the Search suggestion items.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<SearchItem | SearchItemGroup>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "action",
+              "description": "Defines the popup footer action button.",
+              "_ui5type": {
+                "text": "Array<Button>",
+                "references": [
+                  {
+                    "name": "Button",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "illustration",
+              "description": "Defines the illustrated message to be shown in the popup.",
+              "_ui5type": {
+                "text": "Array<IllustratedMessage>",
+                "references": [
+                  {
+                    "name": "IllustratedMessage",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/IllustratedMessage.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "messageArea",
+              "description": "Defines the illustrated message to be shown in the popup.",
+              "_ui5type": {
+                "text": "Array<SearchMessageArea>",
+                "references": [
+                  {
+                    "name": "SearchMessageArea",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SearchMessageArea.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "scopes",
+              "description": "Defines the component scope options.",
+              "_ui5type": {
+                "text": "Array<ISearchScope>",
+                "references": [
+                  {
+                    "name": "ISearchScope",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SearchField.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether a loading indicator should be shown in the popup.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "noTypeahead",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the value will be autcompleted to match an item.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether the items picker is open.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "showClearIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the clear icon of the search will be shown.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "collapsed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the component is collapsed.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the value of the component.\n\n**Note:** The property is updated upon typing.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines a short hint intended to aid the user with data entry when the\ncomponent has no value.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "privacy": "public",
+              "default": "undefined",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "searchIconTooltip",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the tooltip of the search icon component.",
+              "privacy": "public",
+              "default": "undefined",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the popup is opened.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the popup is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false
+            },
+            {
+              "name": "input",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when typing in input or clear icon is pressed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "name": "scope-change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<SearchFieldScopeSelectionChangeDetails>",
+                "references": [
+                  {
+                    "name": "SearchFieldScopeSelectionChangeDetails",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SearchField.js"
+                  }
+                ]
+              },
+              "description": "Fired when the scope has changed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "scope",
+                  "_ui5privacy": "public",
+                  "description": "The newly selected scope"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "name": "search",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user has triggered search with Enter key or Search Button press.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Indicates whether a loading indicator should be shown in the popup.",
+              "name": "loading",
+              "default": "false",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines whether the value will be autcompleted to match an item.",
+              "name": "no-typeahead",
+              "default": "false",
+              "fieldName": "noTypeahead",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Indicates whether the items picker is open.",
+              "name": "open",
+              "default": "false",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines whether the clear icon of the search will be shown.",
+              "name": "show-clear-icon",
+              "default": "false",
+              "fieldName": "showClearIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines whether the component is collapsed.",
+              "name": "collapsed",
+              "default": "false",
+              "fieldName": "collapsed",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines the value of the component.\n\n**Note:** The property is updated upon typing.",
+              "name": "value",
+              "default": "\"\"",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines a short hint intended to aid the user with data entry when the\ncomponent has no value.",
+              "name": "placeholder",
+              "default": "undefined",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines the accessible ARIA name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the search icon component.",
+              "name": "search-icon-tooltip",
+              "default": "undefined",
+              "fieldName": "searchIconTooltip",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "SearchField",
+            "package": "@ui5/webcomponents-fiori",
+            "module": "dist/SearchField.js"
+          },
+          "tagName": "ui5-search",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.9.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Search",
+            "module": "dist/Search.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-search",
+          "declaration": {
+            "name": "Search",
+            "module": "dist/Search.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SearchField.js",
       "declarations": [
         {
           "kind": "interface",
-          "name": "ISearchFieldScopeOption",
+          "name": "ISearchScope",
           "description": "Interface for components that may be slotted inside a `ui5-search`",
           "_ui5privacy": "public"
         }
@@ -5286,12 +5709,401 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/SearchFieldScopeOption.js",
+      "path": "dist/SearchItem.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "The `ui5-search-scope-option` represents the options for the scope in `ui5-search`.",
-          "name": "SearchFieldScopeOption",
+          "description": "### Overview\n\nA `ui5-search-item` is a list item, used for displaying search suggestions\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/fiori/dist/SearchItem.js\";`",
+          "name": "SearchItem",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the heading text of the search item.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the icon name of the search item.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the search item is selected.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "scopeName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the scope of the search item",
+              "default": "false",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "delete",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when delete button is pressed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the heading text of the search item.",
+              "name": "text",
+              "default": "\"\"",
+              "fieldName": "text",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines the icon name of the search item.",
+              "name": "icon",
+              "default": "\"\"",
+              "fieldName": "icon",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Defines whether the search item is selected.",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the scope of the search item",
+              "name": "scope-name",
+              "default": "false",
+              "fieldName": "scopeName",
+              "type": {
+                "text": "string | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ListItemBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ListItemBase.js"
+          },
+          "tagName": "ui5-search-item",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.9.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchItem",
+            "module": "dist/SearchItem.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-search-item",
+          "declaration": {
+            "name": "SearchItem",
+            "module": "dist/SearchItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchItemGroup.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `ui5-search-item-group` is type of suggestion item,\nthat can be used to split the `ui5-search-item` suggestions into groups.",
+          "name": "SearchItemGroup",
+          "superclass": {
+            "name": "ListItemGroup",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ListItemGroup.js"
+          },
+          "tagName": "ui5-search-item-group",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.9.0",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "name": "headerText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the header text of the <code>ui5-li-group</code>.",
+              "privacy": "public",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "headerAccessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible name of the header.",
+              "privacy": "public",
+              "default": "undefined"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the items of the <code>ui5-li-group</code>.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<ListItemBase>",
+                "references": [
+                  {
+                    "name": "ListItemBase",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItemBase.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "header",
+              "description": "Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.",
+              "_ui5type": {
+                "text": "Array<ListItemBase>",
+                "references": [
+                  {
+                    "name": "ListItemBase",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItemBase.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "move-over",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<ListItemGroupMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "ListItemGroupMoveEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItemGroup.js"
+                  }
+                ]
+              },
+              "description": "Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.1.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the moved element under `element` property."
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                }
+              ]
+            },
+            {
+              "name": "move",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<ListItemGroupMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "ListItemGroupMoveEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItemGroup.js"
+                  }
+                ]
+              },
+              "description": "Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.1.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the moved element under `element` property."
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                }
+              ]
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Used to style the header item of the group",
+              "name": "header"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchItemGroup",
+            "module": "dist/SearchItemGroup.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-search-item-group",
+          "declaration": {
+            "name": "SearchItemGroup",
+            "module": "dist/SearchItemGroup.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchMessageArea.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`import \"@ui5/webcomponents-fiori/dist/SearchMessageArea.js\";`",
+          "name": "SearchMessageArea",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text to be displayed.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the description text to be displayed.",
+              "default": "undefined",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the text to be displayed.",
+              "name": "text",
+              "default": "undefined",
+              "fieldName": "text",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the description text to be displayed.",
+              "name": "description",
+              "default": "undefined",
+              "fieldName": "description",
+              "type": {
+                "text": "string | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-search-message-area",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.9.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchMessageArea",
+            "module": "dist/SearchMessageArea.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-search-message-area",
+          "declaration": {
+            "name": "SearchMessageArea",
+            "module": "dist/SearchMessageArea.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchScope.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `ui5-search-scope` represents the options for the scope in `ui5-search`.",
+          "name": "SearchScope",
           "members": [
             {
               "kind": "field",
@@ -5301,6 +6113,16 @@
               },
               "description": "Defines the text of the component.",
               "default": "\"\"",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Indicates whether the item is selected",
+              "default": "false",
               "privacy": "public"
             }
           ],
@@ -5313,6 +6135,15 @@
               "type": {
                 "text": "string"
               }
+            },
+            {
+              "description": "Indicates whether the item is selected",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
             }
           ],
           "superclass": {
@@ -5320,13 +6151,15 @@
             "package": "@ui5/webcomponents-base",
             "module": "dist/UI5Element.js"
           },
-          "tagName": "ui5-search-field-scope-option",
+          "tagName": "ui5-search-scope",
           "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.9.0",
           "_ui5privacy": "public",
           "_ui5abstract": true,
           "_ui5implements": [
             {
-              "name": "ISearchFieldScopeOption",
+              "name": "ISearchScope",
               "package": "@ui5/webcomponents-fiori",
               "module": "dist/SearchField.js"
             }
@@ -5338,16 +6171,16 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "SearchFieldScopeOption",
-            "module": "dist/SearchFieldScopeOption.js"
+            "name": "SearchScope",
+            "module": "dist/SearchScope.js"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "ui5-search-field-scope-option",
+          "name": "ui5-search-scope",
           "declaration": {
-            "name": "SearchFieldScopeOption",
-            "module": "dist/SearchFieldScopeOption.js"
+            "name": "SearchScope",
+            "module": "dist/SearchScope.js"
           }
         }
       ]
@@ -6019,6 +6852,24 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6"
+            },
+            {
+              "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "ShellBarItemAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "ShellBarItemAccessibilityAttributes",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/ShellBarItem.js"
+                  }
+                ]
+              },
+              "default": "{}",
+              "description": "Defines additional accessibility attributes on Shellbar Items.\n\nThe accessibility attributes support the following values:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\n- **controls**: Identifies the element (or elements) whose contents\nor presence are controlled by the component.\nAccepts a lowercase string value, referencing the ID of the element it controls.",
+              "privacy": "public",
+              "_ui5since": "2.9.0"
             }
           ],
           "events": [
@@ -6077,6 +6928,15 @@
               "fieldName": "count",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines additional accessibility attributes on Shellbar Items.\n\nThe accessibility attributes support the following values:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\n- **controls**: Identifies the element (or elements) whose contents\nor presence are controlled by the component.\nAccepts a lowercase string value, referencing the ID of the element it controls.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "ShellBarItemAccessibilityAttributes"
               }
             }
           ],
@@ -6210,6 +7070,17 @@
               "default": "false",
               "description": "Defines whether the `ui5-side-navigation` is expanded or collapsed.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.9.0"
             }
           ],
           "events": [
@@ -6257,6 +7128,15 @@
               "fieldName": "collapsed",
               "type": {
                 "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the accessible ARIA name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
               }
             }
           ],
@@ -7224,148 +8104,6 @@
           "kind": "class",
           "description": "### Overview\nRepresents a single navigation action within `ui5-side-navigation-item`.\nThe `ui5-side-navigation-sub-item` is intended to be used inside a `ui5-side-navigation-item` only.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js\";`",
           "name": "SideNavigationSubItem",
-          "superclass": {
-            "name": "SideNavigationSelectableItemBase",
-            "package": "@ui5/webcomponents-fiori",
-            "module": "dist/SideNavigationSelectableItemBase.js"
-          },
-          "tagName": "ui5-side-navigation-sub-item",
-          "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
-          "_ui5privacy": "public",
-          "_ui5abstract": true,
-          "attributes": [
-            {
-              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
-              "name": "icon",
-              "default": "undefined",
-              "fieldName": "icon",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "SideNavigationSelectableItemBase",
-                "module": "dist/SideNavigationSelectableItemBase.js"
-              }
-            },
-            {
-              "description": "Defines whether the item is selected",
-              "name": "selected",
-              "default": "false",
-              "fieldName": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "SideNavigationSelectableItemBase",
-                "module": "dist/SideNavigationSelectableItemBase.js"
-              }
-            },
-            {
-              "description": "Defines the link target URI. Supports standard hyperlink behavior.\nIf a JavaScript action should be triggered,\nthis should not be set, but instead an event handler\nfor the `click` event should be registered.",
-              "name": "href",
-              "default": "undefined",
-              "fieldName": "href",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "SideNavigationSelectableItemBase",
-                "module": "dist/SideNavigationSelectableItemBase.js"
-              }
-            },
-            {
-              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
-              "name": "target",
-              "default": "undefined",
-              "fieldName": "target",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "SideNavigationSelectableItemBase",
-                "module": "dist/SideNavigationSelectableItemBase.js"
-              }
-            },
-            {
-              "description": "Item design.\n\n**Note:** Items with \"Action\" design must not have sub-items.",
-              "name": "design",
-              "default": "\"Default\"",
-              "fieldName": "design",
-              "type": {
-                "text": "\"Default\" | \"Action\""
-              },
-              "inheritedFrom": {
-                "name": "SideNavigationSelectableItemBase",
-                "module": "dist/SideNavigationSelectableItemBase.js"
-              }
-            },
-            {
-              "description": "Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- External links should be unselectable.\n- Items that trigger actions (with design \"Action\") should be unselectable.",
-              "name": "unselectable",
-              "default": "false",
-              "fieldName": "unselectable",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "SideNavigationSelectableItemBase",
-                "module": "dist/SideNavigationSelectableItemBase.js"
-              }
-            },
-            {
-              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n\n**Note:** Do not use it on parent items, as it will be overridden if the item is in the overflow menu.",
-              "name": "accessibility-attributes",
-              "default": "{}",
-              "fieldName": "accessibilityAttributes",
-              "type": {
-                "text": "SideNavigationItemAccessibilityAttributes"
-              },
-              "inheritedFrom": {
-                "name": "SideNavigationSelectableItemBase",
-                "module": "dist/SideNavigationSelectableItemBase.js"
-              }
-            },
-            {
-              "description": "Defines the text of the item.",
-              "name": "text",
-              "default": "undefined",
-              "fieldName": "text",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "SideNavigationItemBase",
-                "module": "dist/SideNavigationItemBase.js"
-              }
-            },
-            {
-              "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
-              "name": "disabled",
-              "default": "false",
-              "fieldName": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "SideNavigationItemBase",
-                "module": "dist/SideNavigationItemBase.js"
-              }
-            },
-            {
-              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
-              "name": "tooltip",
-              "default": "undefined",
-              "fieldName": "tooltip",
-              "type": {
-                "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "SideNavigationItemBase",
-                "module": "dist/SideNavigationItemBase.js"
-              }
-            }
-          ],
           "members": [
             {
               "kind": "field",
@@ -7523,6 +8261,148 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "2.0.0",
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "SideNavigationSelectableItemBase",
+            "package": "@ui5/webcomponents-fiori",
+            "module": "dist/SideNavigationSelectableItemBase.js"
+          },
+          "tagName": "ui5-side-navigation-sub-item",
+          "customElement": true,
+          "_ui5since": "1.0.0-rc.8",
+          "_ui5privacy": "public",
+          "_ui5abstract": true,
+          "attributes": [
+            {
+              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "name": "icon",
+              "default": "undefined",
+              "fieldName": "icon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationSelectableItemBase",
+                "module": "dist/SideNavigationSelectableItemBase.js"
+              }
+            },
+            {
+              "description": "Defines whether the item is selected",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationSelectableItemBase",
+                "module": "dist/SideNavigationSelectableItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the link target URI. Supports standard hyperlink behavior.\nIf a JavaScript action should be triggered,\nthis should not be set, but instead an event handler\nfor the `click` event should be registered.",
+              "name": "href",
+              "default": "undefined",
+              "fieldName": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationSelectableItemBase",
+                "module": "dist/SideNavigationSelectableItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
+              "name": "target",
+              "default": "undefined",
+              "fieldName": "target",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationSelectableItemBase",
+                "module": "dist/SideNavigationSelectableItemBase.js"
+              }
+            },
+            {
+              "description": "Item design.\n\n**Note:** Items with \"Action\" design must not have sub-items.",
+              "name": "design",
+              "default": "\"Default\"",
+              "fieldName": "design",
+              "type": {
+                "text": "\"Default\" | \"Action\""
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationSelectableItemBase",
+                "module": "dist/SideNavigationSelectableItemBase.js"
+              }
+            },
+            {
+              "description": "Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- External links should be unselectable.\n- Items that trigger actions (with design \"Action\") should be unselectable.",
+              "name": "unselectable",
+              "default": "false",
+              "fieldName": "unselectable",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationSelectableItemBase",
+                "module": "dist/SideNavigationSelectableItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n\n**Note:** Do not use it on parent items, as it will be overridden if the item is in the overflow menu.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "SideNavigationItemAccessibilityAttributes"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationSelectableItemBase",
+                "module": "dist/SideNavigationSelectableItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the text of the item.",
+              "name": "text",
+              "default": "undefined",
+              "fieldName": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
+              "name": "disabled",
+              "default": "false",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SideNavigationItemBase",
+                "module": "dist/SideNavigationItemBase.js"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
+              "name": "tooltip",
+              "default": "undefined",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string | undefined"
+              },
               "inheritedFrom": {
                 "name": "SideNavigationItemBase",
                 "module": "dist/SideNavigationItemBase.js"
@@ -8604,9 +9484,13 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
-              "privacy": "public"
+              "description": "Defines the selected state of the component.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
             }
           ],
           "events": [
@@ -9194,6 +10078,17 @@
               "default": "false",
               "description": "Defines if the user is selected.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether a loading indicator should be shown.",
+              "privacy": "public",
+              "_ui5since": "2.9.0"
             }
           ],
           "attributes": [
@@ -9247,6 +10142,15 @@
               "name": "selected",
               "default": "false",
               "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Indicates whether a loading indicator should be shown.",
+              "name": "loading",
+              "default": "false",
+              "fieldName": "loading",
               "type": {
                 "text": "boolean"
               }
@@ -9331,7 +10235,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             }
           ],
           "superclass": {
@@ -9384,7 +10292,11 @@
               },
               "default": "false",
               "description": "Defines whether `ui5-menu-item` is in disabled state.\n\n**Note:** A disabled `ui5-menu-item` is noninteractive.",
-              "privacy": "public"
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
             },
             {
               "kind": "field",
@@ -9417,7 +10329,11 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.7.0"
+              "_ui5since": "1.7.0",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
             },
             {
               "kind": "field",
@@ -9438,12 +10354,12 @@
               "kind": "field",
               "name": "accessibilityAttributes",
               "type": {
-                "text": "ListItemAccessibilityAttributes",
+                "text": "MenuItemAccessibilityAttributes",
                 "references": [
                   {
-                    "name": "ListItemAccessibilityAttributes",
+                    "name": "MenuItemAccessibilityAttributes",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/ListItem.js"
+                    "module": "dist/MenuItem.js"
                   }
                 ]
               },
@@ -9520,12 +10436,12 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Defines the selected state of the component.",
               "default": "false",
+              "description": "Defines the selected state of the component.",
               "privacy": "public",
               "inheritedFrom": {
-                "name": "ListItem",
-                "module": "dist/ListItem.js"
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
               }
             }
           ],
@@ -9654,7 +10570,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-user-settings-dialog` is an SAP Fiori-specific web component used in the `ui5-profile-menu`.\nIt allows the user to easily view information and settings for an account.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UserSettingsDialog.js\";`",
+          "description": "### Overview\n\nThe `ui5-user-settings-dialog` is an SAP Fiori-specific web component used in the `ui5-user-menu`.\nIt allows the user to easily view information and settings for an account.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UserSettingsDialog.js\";`",
           "name": "UserSettingsDialog",
           "slots": [
             {

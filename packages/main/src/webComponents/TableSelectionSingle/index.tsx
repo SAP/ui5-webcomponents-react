@@ -2,7 +2,6 @@
 
 import '@ui5/webcomponents/dist/TableSelectionSingle.js';
 import type TableRow from '@ui5/webcomponents/dist/TableRow.js';
-import type TableRowBase from '@ui5/webcomponents/dist/TableRowBase.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
@@ -23,32 +22,10 @@ interface TableSelectionSingleDomRef extends Required<TableSelectionSingleAttrib
   getRowByKey: (rowKey: string) => TableRow | undefined;
 
   /**
-   * Returns the unique key associated with the table row.
-   * @param {TableRow} row - The row instance
-   * @returns {string}
-   */
-  getRowKey: (row: TableRow) => string;
-
-  /**
    * Returns the selected row.
    * @returns {TableRow | undefined}
    */
   getSelectedRow: () => TableRow | undefined;
-
-  /**
-   * Determines whether the specified table row is currently selected.
-   * @param {TableRowBase} row - The row instance
-   * @returns {boolean}
-   */
-  isSelected: (row: TableRowBase) => boolean;
-
-  /**
-   * Sets the selected state of the specified table row.
-   * @param {TableRowBase} row - The row instance
-   * @param {boolean} selected - Whether the row is selected
-   * @returns {void}
-   */
-  setSelected: (row: TableRowBase, selected: boolean) => void;
 }
 
 interface TableSelectionSinglePropTypes
@@ -59,7 +36,7 @@ interface TableSelectionSinglePropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|❌|
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<TableSelectionSingleDomRef>) => void;
 }

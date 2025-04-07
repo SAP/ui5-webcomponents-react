@@ -5,29 +5,33 @@ import ListSeparator from '@ui5/webcomponents/dist/types/ListSeparator.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import announce from '@ui5/webcomponents-base/dist/util/InvisibleMessage.js';
 import iconSlimArrowLeft from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
+import type { Ui5DomRef } from '@ui5/webcomponents-react-base';
 import { useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
-import { Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
+import { useRef, Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
 import { FlexBoxDirection } from '../../enums/index.js';
-import { ALL, LIST_NO_DATA } from '../../i18n/i18n-defaults.js';
+import { ALL, LIST_NO_DATA, NAVIGATE_BACK, MESSAGE_DETAILS, MESSAGE_TYPES } from '../../i18n/i18n-defaults.js';
+import type { SelectedMessage } from '../../internal/MessageViewContext.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';
 import type { CommonProps } from '../../types/index.js';
 import { Bar } from '../../webComponents/Bar/index.js';
+import type { ButtonDomRef } from '../../webComponents/Button/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
-import type { ListPropTypes } from '../../webComponents/List/index.js';
+import type { ListDomRef, ListPropTypes } from '../../webComponents/List/index.js';
 import { List } from '../../webComponents/List/index.js';
 import { ListItemGroup } from '../../webComponents/ListItemGroup/index.js';
-import type { SegmentedButtonPropTypes } from '../../webComponents/SegmentedButton/index.js';
 import { SegmentedButton } from '../../webComponents/SegmentedButton/index.js';
+import type { SegmentedButtonPropTypes } from '../../webComponents/SegmentedButton/index.js';
 import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem/index.js';
 import { Title } from '../../webComponents/Title/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import type { MessageItemPropTypes } from './MessageItem.js';
 import { classNames, styleData } from './MessageView.module.css.js';
-import { getIconNameForType } from './utils.js';
+import { getIconNameForType, getValueStateMap } from './utils.js';
 
 export interface MessageViewDomRef extends HTMLDivElement {
   /**
@@ -107,6 +111,10 @@ export const resolveMessageGroups = (children: ReactElement<MessageItemPropTypes
  */
 const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, ref) => {
   const { children, groupItems, showDetailsPageHeader, className, onItemSelect, ...rest } = props;
+  const navBtnRef = useRef<ButtonDomRef>(null);
+  const listRef = useRef<ListDomRef>(null);
+  const transitionTrigger = useRef<'btn' | 'list' | null>(null);
+  const prevSelectedMessage = useRef<SelectedMessage>(null);
 
   useStylesheet(styleData, MessageView.displayName);
 
@@ -115,7 +123,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
   const [listFilter, setListFilter] = useState<ValueState | 'All'>('All');
-  const [selectedMessage, setSelectedMessage] = useState<MessageItemPropTypes>(null);
+  const [selectedMessage, setSelectedMessage] = useState<SelectedMessage>(null);
 
   const childrenArray = Children.toArray(children);
   const messageTypes = resolveMessageTypes(childrenArray as ReactElement<MessageItemPropTypes>[]);
@@ -138,8 +146,10 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
   const groupedMessages = resolveMessageGroups(filteredChildren as ReactElement<MessageItemPropTypes>[]);
 
   const navigateBack = useCallback(() => {
+    transitionTrigger.current = 'btn';
+    prevSelectedMessage.current = selectedMessage;
     setSelectedMessage(null);
-  }, [setSelectedMessage]);
+  }, [setSelectedMessage, selectedMessage]);
 
   useEffect(() => {
     if (internalRef.current) {
@@ -151,10 +161,37 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
     setListFilter(e.detail.selectedItems.at(0).dataset.key as never);
   };
 
-  const outerClasses = clsx(classNames.container, className, selectedMessage && classNames.showDetails);
+  const handleTransitionEnd: MessageViewPropTypes['onTransitionEnd'] = (e) => {
+    if (typeof props?.onTransitionEnd === 'function') {
+      props.onTransitionEnd(e);
+    }
+    if (showDetailsPageHeader && transitionTrigger.current === 'list') {
+      requestAnimationFrame(() => {
+        void navBtnRef.current?.focus();
+      });
+      setTimeout(() => {
+        announce(i18nBundle.getText(MESSAGE_DETAILS), 'Polite');
+      }, 300);
+    }
+    if (transitionTrigger.current === 'btn') {
+      requestAnimationFrame(() => {
+        const selectedItem = listRef.current.querySelector<Ui5DomRef>(
+          `[data-title="${CSS.escape(prevSelectedMessage.current.titleTextStr)}"]`
+        );
+        void selectedItem.focus();
+      });
+    }
+    transitionTrigger.current = null;
+  };
 
+  const handleListItemClick: ListPropTypes['onItemClick'] = (e) => {
+    transitionTrigger.current = 'list';
+    onItemSelect(e);
+  };
+
+  const outerClasses = clsx(classNames.container, className, selectedMessage && classNames.showDetails);
   return (
-    <div ref={componentRef} {...rest} className={outerClasses}>
+    <div ref={componentRef} {...rest} className={outerClasses} onTransitionEnd={handleTransitionEnd}>
       <MessageViewContext.Provider
         value={{
           selectMessage: setSelectedMessage
@@ -166,7 +203,10 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
               {filledTypes > 1 && (
                 <Bar
                   startContent={
-                    <SegmentedButton onSelectionChange={handleListFilterChange}>
+                    <SegmentedButton
+                      onSelectionChange={handleListFilterChange}
+                      accessibleName={i18nBundle.getText(MESSAGE_TYPES)}
+                    >
                       <SegmentedButtonItem data-key="All" selected={listFilter === 'All'}>
                         {i18nBundle.getText(ALL)}
                       </SegmentedButtonItem>
@@ -182,6 +222,8 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                             selected={listFilter === valueState}
                             icon={getIconNameForType(valueState)}
                             className={classNames.button}
+                            tooltip={getValueStateMap(i18nBundle)[valueState]}
+                            accessibleName={getValueStateMap(i18nBundle)[valueState]}
                           >
                             {count}
                           </SegmentedButtonItem>
@@ -192,7 +234,8 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                 />
               )}
               <List
-                onItemClick={onItemSelect}
+                ref={listRef}
+                onItemClick={handleListItemClick}
                 noDataText={i18nBundle.getText(LIST_NO_DATA)}
                 separators={ListSeparator.Inner}
               >
@@ -212,13 +255,21 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
             </>
           )}
         </div>
-        <div className={classNames.detailsContainer}>
+        <div className={classNames.detailsContainer} data-component-name="MessageViewDetailsContainer">
           {childrenArray.length > 0 ? (
             <>
               {showDetailsPageHeader && selectedMessage && (
                 <Bar
                   startContent={
-                    <Button design={ButtonDesign.Transparent} icon={iconSlimArrowLeft} onClick={navigateBack} />
+                    <Button
+                      ref={navBtnRef}
+                      design={ButtonDesign.Transparent}
+                      icon={iconSlimArrowLeft}
+                      onClick={navigateBack}
+                      tooltip={i18nBundle.getText(NAVIGATE_BACK)}
+                      accessibleName={i18nBundle.getText(NAVIGATE_BACK)}
+                      data-component-name="MessageViewDetailsNavBackBtn"
+                    />
                   }
                 />
               )}

@@ -2,7 +2,6 @@
 
 import '@ui5/webcomponents/dist/TableSelectionMulti.js';
 import type TableRow from '@ui5/webcomponents/dist/TableRow.js';
-import type TableRowBase from '@ui5/webcomponents/dist/TableRowBase.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
@@ -16,24 +15,11 @@ interface TableSelectionMultiAttributes {
 
 interface TableSelectionMultiDomRef extends Required<TableSelectionMultiAttributes>, Ui5DomRef {
   /**
-   * Determines whether all rows are selected.
-   * @returns {boolean}
-   */
-  areAllRowsSelected: () => boolean;
-
-  /**
    * Returns the table row instance for the given row key.
    * @param {string} rowKey - The row key
    * @returns {TableRow | undefined}
    */
   getRowByKey: (rowKey: string) => TableRow | undefined;
-
-  /**
-   * Returns the unique key associated with the table row.
-   * @param {TableRow} row - The row instance
-   * @returns {string}
-   */
-  getRowKey: (row: TableRow) => string;
 
   /**
    * Returns the `selected` property as a set of unique `row-key` values.
@@ -46,21 +32,6 @@ interface TableSelectionMultiDomRef extends Required<TableSelectionMultiAttribut
    * @returns {Array<TableRow>}
    */
   getSelectedRows: () => Array<TableRow>;
-
-  /**
-   * Determines whether the specified table row is currently selected.
-   * @param {TableRowBase} row - The row instance
-   * @returns {boolean}
-   */
-  isSelected: (row: TableRowBase) => boolean;
-
-  /**
-   * Sets the selected state of the specified table row.
-   * @param {TableRowBase} row - The row instance
-   * @param {boolean} selected - Whether the row is selected
-   * @returns {void}
-   */
-  setSelected: (row: TableRowBase, selected: boolean) => void;
 
   /**
    * Sets the `selected` property using the provided set of unique `row-key` values.
@@ -78,7 +49,7 @@ interface TableSelectionMultiPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|❌|
+   * | ❌|✅|
    */
   onChange?: (event: Ui5CustomEvent<TableSelectionMultiDomRef>) => void;
 }

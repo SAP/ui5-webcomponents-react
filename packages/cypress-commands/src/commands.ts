@@ -99,6 +99,8 @@ declare global {
        *
        * __Note:__ The popover must be visible, otherwise it can lead to unwanted side effects.
        *
+       * __Note:__ Currently `Select` doesn't support `cy.click()` on `ui5-options` (or elements in the shadow root), because of this the option is now selected via "Enter" press.
+       *
        * @param text text of the item inside the popover that should be clicked
        * @param options Cypress.ClickOptions
        * @example cy.get('[ui5-select]').clickDropdownMenuItemByText('Option2');
@@ -110,6 +112,8 @@ declare global {
        * Click on a chained option of "select-like" components. Currently supported components are `ui5-option`, `ui5-mcb-item` and `ui5-cb-item` (since v1.24.3 of `@ui5/webcomponents`).
        *
        * __Note:__ The popover must be visible, otherwise it can lead to unwanted side effects.
+       *
+       * __Note:__ Currently `Select` doesn't support `cy.click()` on `ui5-options` (or elements in the shadow root), because of this the option is now selected via "Enter" press.
        *
        * @example cy.get('[ui5-option]').clickDropdownMenuItem();
        */
@@ -210,7 +214,12 @@ Cypress.Commands.add('clickDropdownMenuItem', { prevSubject: 'element' }, (subje
   cy.wrap(subject).then(([$option]) => {
     const domRef = ($option as UI5Element).getDomRef();
     cy.wrap(domRef).focus();
-    cy.wrap(domRef).click(options);
+    if ($option.hasAttribute('ui5-option')) {
+      //todo: check if this can be refactored to use `click()` again.
+      cy.wrap(domRef).type('{enter}');
+    } else {
+      cy.wrap(domRef).click(options);
+    }
   });
 });
 

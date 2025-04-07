@@ -26,7 +26,8 @@ const ignorePatterns = {
     '**/shared',
     '**/examples',
     '**/templates',
-    '**/*.module.css.ts'
+    '**/*.module.css.ts',
+    '.yarn'
   ]
 };
 
