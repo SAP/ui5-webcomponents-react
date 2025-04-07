@@ -24,6 +24,7 @@ type ObjectPageTabSelectEventDetail = TabContainerTabSelectEventDetail & BeforeN
 export type ObjectPageTitlePropsWithDataAttributes = ObjectPageTitlePropTypesWithInternals & {
   'data-not-clickable': boolean;
   'data-header-content-visible': boolean;
+  'data-is-snapped-rendered-outside': boolean;
 };
 
 export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
