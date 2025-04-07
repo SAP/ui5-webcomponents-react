@@ -178,6 +178,7 @@ describe('FilterBar.cy.tsx', () => {
         onRestore={restore}
       />
     );
+    cy.wait(100);
 
     cy.findAllByText('INPUT').should('have.length', 1);
     cy.findAllByText('SWITCH').should('have.length', 1);
@@ -479,7 +480,7 @@ describe('FilterBar.cy.tsx', () => {
 
     cy.get('[data-component-name="FilterBarDialogTable"][data-is-grouped]')
       .shadow()
-      .find('#nodata-row')
+      .find('#no-data-row')
       .should('have.css', 'display', 'none');
 
     cy.get('[data-component-name="FilterBarDialogTable"]')
@@ -550,7 +551,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('[ui5-table-row]').should('have.length', 1);
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('a');
-    cy.get('[ui5-table-row]').should('have.id', 'nodata-row').should('have.length', 1);
+    cy.get('[ui5-table-row]').should('have.id', 'no-data-row').should('have.length', 1);
     cy.get('@search').should('have.callCount', 3);
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('{selectall}{backspace}');
@@ -560,21 +561,21 @@ describe('FilterBar.cy.tsx', () => {
 
     cy.get('[accessible-name="Group View"]').click();
     cy.get('[ui5-table-row]').should('have.length', 2);
-    cy.get('[ui5-table-row]').eq(0).should('have.id', 'nodata-row');
+    cy.get('[ui5-table-row]').eq(0).should('have.id', 'no-data-row');
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('{selectall}{backspace}');
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('a');
     cy.get('[ui5-table-row]').should('have.length', 3);
-    cy.get('[ui5-table-row]').eq(0).should('have.id', 'nodata-row');
+    cy.get('[ui5-table-row]').eq(0).should('have.id', 'no-data-row');
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('A');
     cy.get('[ui5-table-row]').should('have.length', 2);
-    cy.get('[ui5-table-row]').eq(0).should('have.id', 'nodata-row');
+    cy.get('[ui5-table-row]').eq(0).should('have.id', 'no-data-row');
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('a');
     cy.get('[ui5-table-row]').should('have.length', 1);
-    cy.get('[ui5-table-row]').eq(0).should('have.id', 'nodata-row');
+    cy.get('[ui5-table-row]').eq(0).should('have.id', 'no-data-row');
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('{selectall}{backspace}');
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('b');

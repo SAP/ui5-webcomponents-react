@@ -7,23 +7,6 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-
 
 interface TableGrowingAttributes {
   /**
-   * Defines the text that will be displayed below the `growingText` inside the growing button.
-   * Has no effect when type is set to Scroll.
-   * @default undefined
-   */
-  growingSubText?: string | undefined;
-
-  /**
-   * Defines the text that will be displayed inside the growing button.
-   * Has no effect when type is set to `Scroll`.
-   *
-   * **Note:** When not provided and the type is set to Button, a default text is displayed, corresponding to the
-   * current language.
-   * @default undefined
-   */
-  growingText?: string | undefined;
-
-  /**
    * Defines the mode of the <code>ui5-table</code> growing.
    *
    * Available options are:
@@ -34,7 +17,24 @@ interface TableGrowingAttributes {
    * a growing button will be rendered instead to ensure growing functionality.
    * @default "Button"
    */
-  type?: TableGrowingMode | keyof typeof TableGrowingMode;
+  mode?: TableGrowingMode | keyof typeof TableGrowingMode;
+
+  /**
+   * Defines the text that will be displayed below the `text` inside the growing button.
+   * Has no effect when mode is set to Scroll.
+   * @default undefined
+   */
+  subtext?: string | undefined;
+
+  /**
+   * Defines the text that will be displayed inside the growing button.
+   * Has no effect when mode is set to `Scroll`.
+   *
+   * **Note:** When not provided and the mode is set to Button, a default text is displayed, corresponding to the
+   * current language.
+   * @default undefined
+   */
+  text?: string | undefined;
 }
 
 interface TableGrowingDomRef extends Required<TableGrowingAttributes>, Ui5DomRef {}
@@ -68,12 +68,12 @@ interface TableGrowingPropTypes
  *
  * ```html
  * <Table>
- * 	<TableGrowing type="Button" growing-text="More" slot="features"></TableGrowing>
+ * 	<TableGrowing mode="Button" text="More" slot="features"></TableGrowing>
  * </Table>
  * ```
  *
  * **Notes**:
- * * When the `TableGrowing` component is used with the `Scroll` type and the table is currently not scrollable,
+ * * When the `TableGrowing` component is used with the `Scroll` mode and the table is currently not scrollable,
  * the component will render a growing button instead to ensure growing capabilities until the table becomes scrollable.
  *
  *
@@ -85,7 +85,7 @@ interface TableGrowingPropTypes
  */
 const TableGrowing = withWebComponent<TableGrowingPropTypes, TableGrowingDomRef>(
   'ui5-table-growing',
-  ['growingSubText', 'growingText', 'type'],
+  ['mode', 'subtext', 'text'],
   [],
   [],
   ['load-more']

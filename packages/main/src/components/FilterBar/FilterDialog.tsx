@@ -77,7 +77,7 @@ addCustomCSSWithScoping(
 :host([data-component-name="FilterBarDialogPanelTable"][data-with-value="false"]) #table {
    grid-template-columns: var(--_ui5wcr-CheckBoxWidthHeight) minmax(3rem, auto) minmax(3rem, 25%) !important;
 }
-:host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #nodata-row {
+:host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #no-data-row {
   display: none;
 }
 `
@@ -611,7 +611,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           data-component-name="FilterBarDialogTable"
           data-is-grouped={!isListView}
           data-with-value={`${showValues}`}
-          nodata={!isListView ? <span /> : undefined}
+          noData={!isListView ? <span /> : undefined}
           tabIndex={!isListView ? -1 : undefined}
           features={
             <>

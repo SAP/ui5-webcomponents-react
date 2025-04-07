@@ -30,9 +30,9 @@ interface TableRowAttributes {
    * Defines the position of the row related to the total number of rows within the table when the `TableVirtualizer` feature is used.
    *
    * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
-   * @default -1
+   * @default undefined
    */
-  position?: number;
+  position?: number | undefined;
 
   /**
    * Unique identifier of the row.

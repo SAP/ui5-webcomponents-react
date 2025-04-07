@@ -101,7 +101,7 @@ interface UserSettingsDialogPropTypes
 }
 
 /**
- * The `UserSettingsDialog` is an SAP Fiori-specific web component used in the `ui5-profile-menu`.
+ * The `UserSettingsDialog` is an SAP Fiori-specific web component used in the `UserMenu`.
  * It allows the user to easily view information and settings for an account.
  *
  *

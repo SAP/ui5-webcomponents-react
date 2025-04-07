@@ -1219,7 +1219,6 @@ describe('ObjectPage', () => {
     const TestComp = (props: ObjectPagePropTypes) => {
       const [selectedSection, setSelectedSection] = useState(props.selectedSectionId);
       const [selectedSubSection, setSelectedSubSection] = useState(props.selectedSubSectionId);
-
       return (
         <>
           <button
@@ -1251,6 +1250,7 @@ describe('ObjectPage', () => {
     [{ titleArea: DPTitle, headerArea: DPContent }, { titleArea: DPTitle }, { headerArea: DPContent }, {}].forEach(
       (props: ObjectPagePropTypes) => {
         cy.mount(<TestComp {...props} selectedSubSectionId={`employment-job-relationship`} />);
+
         cy.findByText('employment-job-relationship-content').should('be.visible');
         cy.findByText('Job Information').should('not.be.visible');
         cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').should('have.attr', 'aria-selected', 'true');
@@ -1260,8 +1260,10 @@ describe('ObjectPage', () => {
         cy.findByText('test-content').should('not.be.visible');
         cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
 
+        cy.wait(100);
         cy.findByText('Select Goals').click();
         cy.findByText('goals-content').should('be.visible');
+
         cy.findByText('personal-connect-content').should('not.be.visible');
         cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').should('have.attr', 'aria-selected', 'true');
 

@@ -64,12 +64,14 @@ interface SelectAttributes {
   /**
    * Defines the value of the component:
    *
-   * - when get - returns the value of the component, e.g. the `value` property of the selected option or its text content.
-   *
+   * - when get - returns the value of the component or the value/text content of the selected option.
    * - when set - selects the option with matching `value` property or text content.
    *
+   * **Note:** Use either the Select's value or the Options' selected property.
+   * Mixed usage could result in unexpected behavior.
+   *
    * **Note:** If the given value does not match any existing option,
-   * the first option will get selected.
+   * no option will be selected and the Select component will be displayed as empty.
    *
    * **Note:** Available since [v1.20.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.20.0) of **@ui5/webcomponents**.
    */
@@ -199,17 +201,31 @@ interface SelectPropTypes
  *
  * There are two main usages of the `ui5-select>`.
  *
- * 1. With Option (`Option`) web component:
+ * - With Option (`Option`) web component:
  *
  * The available options of the Select are defined by using the Option component.
  * The Option comes with predefined design and layout, including `icon`, `text` and `additional-text`.
  *
- * 2. With OptionCustom (`OptionCustom`) web component.
+ * - With OptionCustom (`OptionCustom`) web component.
  *
- * Options with custom content are defined by using the OptionCustom component
+ * Options with custom content are defined by using the OptionCustom component.
  * The OptionCustom component comes with no predefined layout and it expects consumers to define it.
  *
+ * ### Selection
+ *
+ * The options can be selected via user interaction (click or with the use of the Space and Enter keys)
+ * and programmatically - the Select component supports two distinct selection APIs, though mixing them is not supported:
+ * - The "value" property of the Select component
+ * - The "selected" property on individual options
+ *
+ * **Note:** If the "value" property is set but does not match any option,
+ * no option will be selected and the Select component will be displayed as empty.
+ *
+ * **Note:** when both "value" and "selected" are both used (although discouraged),
+ * the "value" property will take precedence.
+ *
  * ### Keyboard Handling
+ *
  * The `Select` provides advanced keyboard handling.
  *
  * - [F4] / [Alt] + [Up] / [Alt] + [Down] / [Space] or [Enter] - Opens/closes the drop-down.

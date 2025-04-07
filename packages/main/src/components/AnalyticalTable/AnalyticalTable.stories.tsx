@@ -33,6 +33,7 @@ const kitchenSinkArgs = {
   columns: [
     {
       Header: 'Name',
+      width: 500,
       headerTooltip: 'Full Name', // A more extensive description!
       accessor: 'name', // String-based value accessors!
       autoResizable: true // Double clicking the resize bar auto resizes the column!
@@ -40,6 +41,7 @@ const kitchenSinkArgs = {
     {
       Header: 'Age',
       accessor: 'age',
+      width: 100,
       autoResizable: true,
       hAlign: TextAlign.End,
       disableGroupBy: true,
@@ -50,6 +52,7 @@ const kitchenSinkArgs = {
     {
       Header: 'Friend Name',
       accessor: 'friend.name',
+      width: 300,
       autoResizable: true
     },
     {

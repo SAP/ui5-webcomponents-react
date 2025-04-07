@@ -8,6 +8,14 @@ import type { ReactNode } from 'react';
 
 interface SideNavigationAttributes {
   /**
+   * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents-fiori**.
+   * @default undefined
+   */
+  accessibleName?: string | undefined;
+
+  /**
    * Defines whether the `SideNavigation` is expanded or collapsed.
    * @default false
    */
@@ -100,7 +108,7 @@ interface SideNavigationPropTypes
  */
 const SideNavigation = withWebComponent<SideNavigationPropTypes, SideNavigationDomRef>(
   'ui5-side-navigation',
-  [],
+  ['accessibleName'],
   ['collapsed'],
   ['fixedItems', 'header'],
   ['selection-change']
