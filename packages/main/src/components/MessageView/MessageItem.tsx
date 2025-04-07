@@ -22,7 +22,7 @@ import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './MessageItem.module.css.js';
 import { getIconNameForType, getValueStateMap } from './utils.js';
 
-export interface MessageItemPropTypes extends CommonProps {
+export interface MessageItemPropTypes extends Pick<ListItemCustomPropTypes, 'accessibleName' | 'tooltip'>, CommonProps {
   /**
    * Specifies the title of the message
    *
