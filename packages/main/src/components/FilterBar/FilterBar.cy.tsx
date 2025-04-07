@@ -178,6 +178,7 @@ describe('FilterBar.cy.tsx', () => {
         onRestore={restore}
       />
     );
+    cy.wait(100);
 
     cy.findAllByText('INPUT').should('have.length', 1);
     cy.findAllByText('SWITCH').should('have.length', 1);
