@@ -74,14 +74,15 @@ export function DomRefTable() {
     <>
       {rows.length > 0 ? (
         <>
-          <Heading>Attributes & Methods</Heading>
+          <Heading>DOM Properties & Methods</Heading>
           <p>
-            This component exposes public attributes and methods. You can use them directly on the instance of the
+            This component exposes public properties and methods. You can use them directly on the instance of the
             component, e.g. by using React Refs.
           </p>
           <MessageStrip hideCloseButton style={{ marginBlockEnd: '10px' }}>
-            This table is showing <b>additional</b> attributes and methods which are not available as props. <br />
-            All props (without event handlers, children, and slots) are available as attributes on the DOM ref as well.
+            This table is showing <b>additional</b> DOM properties and methods which are not available as React props.
+            <br />
+            All props (without event handlers, children, and slots) are available as properties on the DOM ref as well.
           </MessageStrip>
           <table>
             <thead>
