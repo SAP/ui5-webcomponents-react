@@ -355,7 +355,12 @@ describe('ObjectPage', () => {
 
     cy.wait(200);
 
-    cy.findByText('Goals').should('not.be.visible');
+    // first titleText should never be displayed (not.be.visible doesn't work here - only invisible for sighted users)
+    cy.findByText('Goals')
+      .parent()
+      .should('have.css', 'width', '1px')
+      .and('have.css', 'margin', '-1px')
+      .and('have.css', 'position', 'absolute');
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
 
