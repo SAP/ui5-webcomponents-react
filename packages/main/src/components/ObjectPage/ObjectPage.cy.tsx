@@ -355,7 +355,12 @@ describe('ObjectPage', () => {
 
     cy.wait(200);
 
-    cy.findByText('Goals').should('not.be.visible');
+    // first titleText should never be displayed (not.be.visible doesn't work here - only invisible for sighted users)
+    cy.findByText('Goals')
+      .parent()
+      .should('have.css', 'width', '1px')
+      .and('have.css', 'margin', '-1px')
+      .and('have.css', 'position', 'absolute');
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
 
@@ -819,6 +824,7 @@ describe('ObjectPage', () => {
     cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
     cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
   });
+
   it('ObjectPageSection/SubSection: Custom header & hideTitleText', () => {
     document.body.style.margin = '0px';
     const TestComp = ({ mode }: ObjectPagePropTypes) => {
@@ -880,8 +886,12 @@ describe('ObjectPage', () => {
       cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
       cy.findByText('Custom Header Section One').should('be.visible');
       cy.findByText('toggle titleText1').click({ scrollBehavior: false, force: true });
-      // first titleText should never be displayed
-      cy.findByText('Goals').should('not.be.visible');
+      // first titleText should never be displayed (not.be.visible doesn't work here - only invisible for sighted users)
+      cy.findByText('Goals')
+        .parent()
+        .should('have.css', 'width', '1px')
+        .and('have.css', 'margin', '-1px')
+        .and('have.css', 'position', 'absolute');
       cy.findByText('Custom Header Section One').should('be.visible');
 
       cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').click();
