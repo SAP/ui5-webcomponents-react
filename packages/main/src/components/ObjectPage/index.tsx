@@ -298,9 +298,10 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
 
   useEffect(() => {
     if (!isMounted) {
-      setIsMounted(true);
+      requestAnimationFrame(() => setIsMounted(true));
       return;
     }
+
     setSelectedSubSectionId(props.selectedSubSectionId);
     if (props.selectedSubSectionId) {
       isProgrammaticallyScrolled.current = true;
