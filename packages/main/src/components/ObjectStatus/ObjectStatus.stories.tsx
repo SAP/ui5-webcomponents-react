@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import cancelIcon from '@ui5/webcomponents-icons/dist/sys-cancel.js';
 import { Icon, IndicationColor, Label } from '../..';
@@ -55,11 +56,11 @@ export const WithDefaultIcons: Story = {
 };
 
 export const WithCustomIcon: Story = {
-  args: { icon: <Icon name={cancelIcon} /> }
+  args: { icon: <Icon name={cancelIcon} mode={IconMode.Decorative} /> }
 };
 
 export const WithIconOnly: Story = {
-  args: { icon: <Icon name={cancelIcon} />, children: null }
+  args: { icon: <Icon name={cancelIcon} mode={IconMode.Decorative} />, children: null, title: 'Cancel' }
 };
 
 export const InvertedObjectStatus: Story = {

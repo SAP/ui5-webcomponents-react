@@ -35,14 +35,14 @@
     "create-theming-parameters": "node scripts/generate-theming-parameters.js"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "8.6.6",
-    "@storybook/addon-essentials": "8.6.6",
-    "@storybook/blocks": "8.6.6",
-    "@storybook/manager-api": "8.6.6",
-    "@storybook/preview-api": "8.6.6",
-    "@storybook/react": "8.6.6",
-    "@storybook/react-vite": "8.6.6",
-    "@storybook/theming": "8.6.6",
+    "@storybook/addon-a11y": "8.6.11",
+    "@storybook/addon-essentials": "8.6.11",
+    "@storybook/blocks": "8.6.11",
+    "@storybook/manager-api": "8.6.11",
+    "@storybook/preview-api": "8.6.11",
+    "@storybook/react": "8.6.11",
+    "@storybook/react-vite": "8.6.11",
+    "@storybook/theming": "8.6.11",
     "@ui5/webcomponents": "2.8.0",
     "@ui5/webcomponents-ai": "2.8.0",
     "@ui5/webcomponents-compat": "2.8.0",
@@ -51,21 +51,21 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remark-gfm": "^4.0.0",
-    "storybook": "8.6.6",
-    "tocbot": "4.35.2"
+    "storybook": "8.6.11",
+    "tocbot": "4.35.3"
   },
   "devDependencies": {
-    "@babel/cli": "7.26.4",
+    "@babel/cli": "7.27.0",
     "@babel/core": "7.26.10",
     "@babel/preset-env": "7.26.9",
     "@babel/preset-react": "7.26.3",
-    "@babel/preset-typescript": "7.26.0",
+    "@babel/preset-typescript": "7.27.0",
     "@cypress/code-coverage": "^3.10.0",
     "@eslint/js": "^9.11.1",
     "@semantic-release/github": "^11.0.0",
     "@testing-library/cypress": "^10.0.0",
     "@types/eslint__js": "^8.42.3",
-    "@types/jscodeshift": "^0.12.0",
+    "@types/jscodeshift": "^17.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
@@ -73,7 +73,7 @@
     "@vitejs/plugin-react": "^4.2.0",
     "chromatic": "^11.0.0",
     "cssnano": "^7.0.0",
-    "cypress": "14.2.0",
+    "cypress": "14.2.1",
     "cypress-real-events": "^1.8.1",
     "dedent": "^1.0.0",
     "documentation": "14.0.3",
@@ -85,7 +85,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "beta",
-    "eslint-plugin-storybook": "0.11.4",
+    "eslint-plugin-storybook": "0.12.0",
     "glob": "^11.0.0",
     "globals": "^16.0.0",
     "husky": "^9.0.6",
@@ -115,7 +115,7 @@
     ]
   },
   "resolutions": {
-    "tocbot": "4.35.2",
+    "tocbot": "4.35.3",
     "react-is": "^19"
   },
   "type": "module",
@@ -126,5 +126,5 @@
       "lcov"
     ]
   },
-  "packageManager": "yarn@4.7.0"
+  "packageManager": "yarn@4.8.1"
 }

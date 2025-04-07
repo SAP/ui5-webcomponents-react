@@ -343,22 +343,44 @@ describe('ObjectPage', () => {
   it('scroll to sections - default mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
-      <ObjectPage titleArea={DPTitle} headerArea={DPContent} style={{ height: '100vh', scrollBehavior: 'auto' }}>
+      <ObjectPage
+        data-testid="op"
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
+      >
         {OPContent}
       </ObjectPage>
     );
 
-    cy.findByText('Goals').should('not.be.visible');
+    cy.wait(200);
+
+    // first titleText should never be displayed (not.be.visible doesn't work here - only invisible for sighted users)
+    cy.findByText('Goals')
+      .parent()
+      .should('have.css', 'width', '1px')
+      .and('have.css', 'margin', '-1px')
+      .and('have.css', 'position', 'absolute');
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
-    //fallback
-    cy.wait(50);
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
     cy.findByText('Employment').should('be.visible');
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+
+    cy.wait(200);
+
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').realClick();
     cy.findByText('Test').should('be.visible');
+
+    // no scroll when focusing something in the header area
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
+    cy.findByText('Job Information').should('be.visible');
+    cy.findByTestId('op').invoke('scrollTop').as('scrollTop');
+    cy.wait(100);
+    cy.realPress('ArrowLeft');
+    cy.get('@scrollTop').then((scrollTop) => {
+      cy.findByTestId('op').invoke('scrollTop').should('equal', scrollTop);
+    });
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').focus();
     cy.realPress('ArrowDown');
@@ -369,6 +391,7 @@ describe('ObjectPage', () => {
 
     cy.mount(
       <ObjectPage
+        data-testid
         titleArea={DPTitle}
         headerArea={DPContent}
         footerArea={Footer}
@@ -377,6 +400,7 @@ describe('ObjectPage', () => {
         {OPContent}
       </ObjectPage>
     );
+    cy.wait(100);
 
     cy.findByText('Employment').should('not.be.visible');
     cy.findByText('Test').should('be.visible');
@@ -391,9 +415,10 @@ describe('ObjectPage', () => {
 
     cy.wait(200);
     //fallback click
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
     cy.findByTestId('footer').should('be.visible');
     cy.findByText('Employment').should('be.visible');
+    cy.findByText('Job Information').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('Test').should('be.visible');
@@ -410,12 +435,128 @@ describe('ObjectPage', () => {
     cy.findByText('Job Relationship').should('be.visible');
 
     cy.findByTestId('footer').should('be.visible');
+
+    cy.mount(
+      <ObjectPage
+        data-testid
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        footerArea={Footer}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
+      >
+        {OPContent}
+        <ObjectPageSection aria-label="Long Section" id="long-section" titleText="Long Section">
+          <ObjectPageSubSection aria-label="Long Subsection 1" id="sub1" titleText="Long Subsection 1">
+            <FlexBox style={{ height: '2000px' }} direction="Column" justifyContent="SpaceBetween">
+              <span>Start SubSection1</span>
+              <span>End SubSection1</span>
+            </FlexBox>
+          </ObjectPageSubSection>
+          <ObjectPageSubSection aria-label="Long Subsection 2" id="sub2" titleText="Long Subsection 2">
+            <FlexBox style={{ height: '1000px' }} direction="Column" justifyContent="SpaceBetween">
+              <span>Start SubSection2</span>
+              <span>End SubSection2</span>
+            </FlexBox>
+          </ObjectPageSubSection>
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+    cy.wait(100);
+
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Long Section').focus();
+    cy.realPress('ArrowDown');
+    cy.get('[ui5-responsive-popover]').should('be.visible');
+    cy.realPress('ArrowDown');
+    cy.wait(50);
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
+    // wait for scroll
+    cy.wait(200);
+    cy.findByText('Start SubSection2').should('be.visible');
   });
 
   it('scroll to sections - tab mode', () => {
     document.body.style.margin = '0px';
+
     cy.mount(
       <ObjectPage
+        data-testid
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        footerArea={Footer}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
+      >
+        {OPContent}
+        <ObjectPageSection aria-label="Long Section" id="long-section" titleText="Long Section">
+          <ObjectPageSubSection aria-label="Long Subsection 1" id="sub1" titleText="Long Subsection 1">
+            <FlexBox style={{ height: '2000px' }} direction="Column" justifyContent="SpaceBetween">
+              <span>Start SubSection1</span>
+              <span>End SubSection1</span>
+            </FlexBox>
+          </ObjectPageSubSection>
+          <ObjectPageSubSection aria-label="Long Subsection 2" id="sub2" titleText="Long Subsection 2">
+            <FlexBox style={{ height: '1000px' }} direction="Column" justifyContent="SpaceBetween">
+              <span>Start SubSection2</span>
+              <span>End SubSection2</span>
+            </FlexBox>
+          </ObjectPageSubSection>
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+    cy.wait(100);
+
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Long Section').focus();
+    cy.realPress('ArrowDown');
+    cy.get('[ui5-responsive-popover]').should('be.visible');
+    cy.realPress('ArrowDown');
+    cy.wait(50);
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
+    // wait for scroll
+    cy.wait(200);
+    cy.findByText('Start SubSection2').should('be.visible');
+
+    cy.mount(
+      <ObjectPage
+        data-testid="op"
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        footerArea={Footer}
+        style={{ height: '100vh', scrollBehavior: 'auto' }}
+      >
+        {OPContent}
+        <ObjectPageSection aria-label="Long Section" id="long-section" titleText="Long Section">
+          <ObjectPageSubSection aria-label="Long Subsection 1" id="sub1" titleText="Long Subsection 1">
+            <FlexBox style={{ height: '2000px' }} direction="Column" justifyContent="SpaceBetween">
+              <span>Start SubSection1</span>
+              <span>End SubSection1</span>
+            </FlexBox>
+          </ObjectPageSubSection>
+          <ObjectPageSubSection aria-label="Long Subsection 2" id="sub2" titleText="Long Subsection 2">
+            <FlexBox style={{ height: '1000px' }} direction="Column" justifyContent="SpaceBetween">
+              <span>Start SubSection2</span>
+              <span>End SubSection2</span>
+            </FlexBox>
+          </ObjectPageSubSection>
+        </ObjectPageSection>
+      </ObjectPage>
+    );
+    cy.wait(100);
+
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Long Section').focus();
+    cy.realPress('ArrowDown');
+    cy.get('[ui5-responsive-popover]').should('be.visible');
+    cy.realPress('ArrowDown');
+    cy.wait(50);
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
+    // wait for scroll
+    cy.wait(200);
+    cy.findByText('Start SubSection2').should('be.visible');
+
+    cy.mount(
+      <ObjectPage
+        data-testid="op"
         titleArea={DPTitle}
         headerArea={DPContent}
         mode={ObjectPageMode.IconTabBar}
@@ -427,9 +568,17 @@ describe('ObjectPage', () => {
     cy.findByText('Job Information').should('not.exist');
     cy.findByTestId('section 1').should('be.visible');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').click();
+    cy.wait(100);
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
     cy.findByText('Job Information').should('be.visible');
     cy.findByTestId('section 1').should('not.exist');
+    // no scroll when focusing something in the header area
+    cy.findByTestId('op').invoke('scrollTop').as('scrollTop');
+    cy.wait(100);
+    cy.realPress('ArrowLeft');
+    cy.get('@scrollTop').then((scrollTop) => {
+      cy.findByTestId('op').invoke('scrollTop').should('equal', scrollTop);
+    });
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.findByText('section 2').should('not.exist');
@@ -675,6 +824,7 @@ describe('ObjectPage', () => {
     cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
     cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
   });
+
   it('ObjectPageSection/SubSection: Custom header & hideTitleText', () => {
     document.body.style.margin = '0px';
     const TestComp = ({ mode }: ObjectPagePropTypes) => {
@@ -736,8 +886,12 @@ describe('ObjectPage', () => {
       cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
       cy.findByText('Custom Header Section One').should('be.visible');
       cy.findByText('toggle titleText1').click({ scrollBehavior: false, force: true });
-      // first titleText should never be displayed
-      cy.findByText('Goals').should('not.be.visible');
+      // first titleText should never be displayed (not.be.visible doesn't work here - only invisible for sighted users)
+      cy.findByText('Goals')
+        .parent()
+        .should('have.css', 'width', '1px')
+        .and('have.css', 'margin', '-1px')
+        .and('have.css', 'position', 'absolute');
       cy.findByText('Custom Header Section One').should('be.visible');
 
       cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').click();
@@ -1034,6 +1188,8 @@ describe('ObjectPage', () => {
     };
 
     cy.mount(<TestComp />);
+    cy.wait(200);
+
     cy.get('[ui5-tabcontainer]').findUi5TabByText('test2').realClick();
     cy.findByText('Content1').should('not.be.visible');
     cy.findByText('Content2').should('be.visible');

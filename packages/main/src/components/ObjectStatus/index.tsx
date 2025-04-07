@@ -6,6 +6,7 @@ import {
   VALUE_STATE_SUCCESS,
   VALUE_STATE_WARNING
 } from '@ui5/webcomponents/dist/generated/i18n/i18n-defaults.js';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import alertIcon from '@ui5/webcomponents-icons/dist/alert.js';
 import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
@@ -40,7 +41,7 @@ export interface ObjectStatusPropTypes extends CommonProps {
   /**
    * Defines the icon in front of the `ObjectStatus` text.
    *
-   * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use `Icon` in order to preserve the intended design.
+   * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use the `Icon` component with `mode="Decorative"` in order to preserve the intended design.
    */
   icon?: ReactNode;
 
@@ -117,7 +118,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
     switch (state) {
       case ValueState.Negative:
         if (renderDefaultIcon) {
-          icon = <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
+          icon = <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" mode={IconMode.Decorative} />;
         }
         if (!invisibleText) {
           invisibleText = errorStateText;
@@ -125,7 +126,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Positive:
         if (renderDefaultIcon) {
-          icon = <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
+          icon = <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" mode={IconMode.Decorative} />;
         }
         if (!invisibleText) {
           invisibleText = successStateText;
@@ -133,7 +134,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Critical:
         if (renderDefaultIcon) {
-          icon = <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
+          icon = <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" mode={IconMode.Decorative} />;
         }
         if (!invisibleText) {
           invisibleText = warningStateText;
@@ -141,7 +142,9 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Information:
         if (renderDefaultIcon) {
-          icon = <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
+          icon = (
+            <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" mode={IconMode.Decorative} />
+          );
         }
         if (!invisibleText) {
           invisibleText = informationStateText;

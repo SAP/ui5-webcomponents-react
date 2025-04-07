@@ -19,14 +19,22 @@ npm install @ui5/webcomponents-react-compat
 As the v1 `ui5-table` (`Table`) component is part of this package and some custom element names are equal to the new v2 `ui5-table`, importing components from the root (`import { Table } from "@ui5/webcomponents-react-compat"`) is discouraged.
 The primary reason is that tree-shaking capabilities are limited in the default configurations of most bundlers in dev mode. As a result, custom elements for the v1 table will still be defined, even if only the `Toolbar` is imported. This can cause unexpected behavior if the v2 table is also used in the same app.
 
-**Please only import components from the file path!**
+> ⚠️ **Warning:** It is not supported using the v1 `Table` and the v2 `Table` in the same application!
+
+> ⚠️ **Warning:** Please only import components from this package via the file path!
 
 E.g.:
 
 - `import { Table } from '@ui5/webcomponents-react-compat/dist/components/Table/index.js';`
 - `import { Toolbar } from '@ui5/webcomponents-react-compat/dist/components/Toolbar/index.js';`
 
-**It is not supported using the v1 `Table` and the v2 `Table` in the same application!**
+In case you're still facing issues with the custom element definitions of the `Table` in development environments, you can add the web component import before any other component import in your application.
+
+Following are the imports of duplicate custom element names:
+
+- `Table` (`ui5-table`): `import '@ui5/webcomponents-compat/dist/Table.js';`
+- `TableCell` (`ui5-table-cell`): `import "@ui5/webcomponents-compat/dist/TableCell.js";`
+- `TableRow` (`ui5-table-row`): `import "@ui5/webcomponents-compat/dist/TableRow.js";`
 
 ## Documentation
 
