@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react",
-  "version": "2.8.1",
+  "version": "2.8.2",
   "description": "React Wrapper for UI5 Web Components and additional components",
   "type": "module",
   "main": "dist/index.js",

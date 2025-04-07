@@ -158,10 +158,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
           >
             <FlexBox className={classNames.titleMainSection} onClick={onHeaderClick}>
               {header && (
-                <div
-                  className={classNames.title}
-                  data-component-name="ObjectPageTitleHeader" /*onClick={onHeaderClick}*/
-                >
+                <div className={classNames.title} data-component-name="ObjectPageTitleHeader">
                   {header}
                 </div>
               )}
