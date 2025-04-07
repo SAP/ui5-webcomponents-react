@@ -611,7 +611,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           data-component-name="FilterBarDialogTable"
           data-is-grouped={!isListView}
           data-with-value={`${showValues}`}
-          nodata={!isListView ? <span /> : undefined}
+          noData={!isListView ? <span /> : undefined}
           tabIndex={!isListView ? -1 : undefined}
           features={
             <>

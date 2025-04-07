@@ -75,7 +75,7 @@ export const Expandable = (props: ExpandableProps) => {
                   design={ButtonDesign.Transparent}
                   className={classNames.button}
                   onClick={rowProps.onClick}
-                  accessibilityAttributes={{ expanded: row.isExpanded, hasPopup: false, controls: undefined }}
+                  accessibilityAttributes={{ expanded: row.isExpanded }}
                   onFocus={(e: FocusEvent<ButtonDomRef>) => {
                     e.target.accessibleName = row.isExpanded
                       ? translatableTexts.collapseNodeA11yText
