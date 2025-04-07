@@ -166,6 +166,40 @@ const statesWithCSSVars: {
       iconColor: ThemingParameters.sapIndicationColor_8_TextColor
     },
     hiddenText: `${INDICATION_COLOR.defaultText} 8`
+  },
+  {
+    state: 'Indication09',
+    color: ThemingParameters.sapIndicationColor_9,
+    iconColor: ThemingParameters.sapIndicationColor_9,
+    inverted: {
+      color: ThemingParameters.sapIndicationColor_9_TextColor,
+      backgroundColor: ThemingParameters.sapIndicationColor_9_Background,
+      iconColor: ThemingParameters.sapIndicationColor_9_TextColor
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 9`
+  },
+  {
+    state: 'Indication10',
+    color: ThemingParameters.sapIndicationColor_10,
+    iconColor: ThemingParameters.sapIndicationColor_10,
+    inverted: {
+      color: ThemingParameters.sapIndicationColor_10_TextColor,
+      backgroundColor: ThemingParameters.sapIndicationColor_10_Background,
+      iconColor: ThemingParameters.sapIndicationColor_10_TextColor
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 10`
+  },
+  {
+    state: 'Indication11',
+    // fallback to "None" colors for non-inverted indication colors > 10
+    color: ThemingParameters.sapNeutralTextColor,
+    iconColor: ThemingParameters.sapNeutralElementColor,
+    inverted: {
+      color: ThemingParameters.sapIndicationColor_1b_TextColor,
+      backgroundColor: ThemingParameters.sapIndicationColor_1b_Background,
+      iconColor: ThemingParameters.sapIndicationColor_1b_TextColor
+    },
+    hiddenText: `${INDICATION_COLOR.defaultText} 11`
   }
 ];
 

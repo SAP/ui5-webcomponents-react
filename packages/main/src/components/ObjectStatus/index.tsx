@@ -71,6 +71,8 @@ export interface ObjectStatusPropTypes extends CommonProps {
    *
    * Since version 0.17.0 the state property also accepts values from enum `IndicationColor`.
    *
+   * __Note:__ Only the `inverted` `ObjectStatus` supports `IndicationColor`s 11-20. For non-inverted `ObjectStatus`, these colors default to the `"None"` `state` color and should __not__ be used.
+   *
    * @default `"None"`
    */
   state?: ValueState | keyof typeof ValueState | IndicationColor | keyof typeof IndicationColor;
@@ -112,7 +114,8 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
   const renderDefaultIcon = showDefaultIcon && !icon;
   let invisibleText = stateAnnouncementText;
   if (!invisibleText && state.startsWith('Indication')) {
-    invisibleText = `${indicationColorText} ${state.substring(state.indexOf('0') + 1)}`;
+    const indicationNumber = parseInt(state.replace('Indication', ''), 10);
+    invisibleText = `${indicationColorText} ${indicationNumber}`;
   }
   if (!invisibleText || renderDefaultIcon) {
     switch (state) {
