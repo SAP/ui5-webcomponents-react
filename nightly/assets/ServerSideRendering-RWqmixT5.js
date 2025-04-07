@@ -1,0 +1,33 @@
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as n}from"./index-B5Ip8tK9.js";import{M as i}from"./index-mpYuzhGm.js";import{M as s,a as p}from"./index-BgnWomVF.js";import"./index-O2IkRYlf.js";import"./TagDesign-Ga50IS6u.js";import"./index-U0ga5oGA.js";import"./index-B8m469-U.js";import{F as m}from"./CommandsAndQueries-C3sOnzIN.js";import"./Button-BlFaFbRM.js";import"./jsx-runtime-BhvuzFo7.js";import"./copy-bdWnQ-6t.js";import{T as a}from"./TableOfContent-lIiVb8Ys.js";import"./WrappingType-BBpR8qCJ.js";import"./Title-MRVfrrA9.js";import"./iframe-DhtGNhdV.js";import"./index-CXQShRbs.js";import"./index-DrFu-skq.js";import"./slot-_4yKMUwC.js";import"./event-strict-DgQLNDEV.js";import"./i18n-CjR4HGlq.js";import"./Icon-C0UcZWk2.js";import"./CustomElementsScope-Bim9ocLE.js";import"./Keys-B3oBAe0t.js";import"./parameters-bundle.css-DHLNbl9v.js";import"./decline-DYSKo6LW.js";import"./i18n-defaults-BJtDw6Mf.js";import"./information-CnxOfLPM.js";import"./information-DbtMcSD6.js";import"./sys-enter-2-CTMCSnyQ.js";import"./sys-enter-2-Ciletl9c.js";import"./i18n-defaults-BXUwkpCs.js";import"./index-BVR6w1bU.js";import"./preview-bY4ekSqu.js";import"./DocsRenderer-CFRXHY34-DwiHAlrB.js";import"./react-18-SRpBHcoT.js";import"./Popover-CrUg6BDL.js";import"./PopupsCommon.css-CkrnA4gF.js";import"./FocusableElements-DCoyCYrA.js";import"./isElementHidden-B4HqmI2E.js";import"./AccessibilityTextsHelper-4hgGqLyb.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-B16Uz3cm.js";import"./MediaRange-Bnzt26Xb.js";import"./toLowercaseEnumValue-C_8o5td_.js";import"./getEffectiveScrollbarStyle-C9nZ6DfS.js";import"./index-DoR-amcW.js";import"./clsx-B-dksMZM.js";import"./useStylesheet-BbE0XC0n.js";import"./index-faMqGfAS.js";import"./Label-Iv8Am_pm.js";import"./index-n4YNqY3D.js";import"./index--i6RZyza.js";import"./Link-BveVQiXd.js";import"./index-DgC-Wkyw.js";import"./index-j5LXKHzi.js";import"./Text-fxG8xjHY.js";import"./willShowContent-CZcfsNXp.js";import"./addCustomCSSWithScoping-Cgfw5Re6.js";import"./index-ThksJ1V-.js";import"./BusyIndicator-DQ6Oocfo.js";import"./index-CnihKeIw.js";import"./index-DDwnn4pC.js";import"./AvatarSize-BtKTMFJ5.js";import"./employee-ba84kQhl.js";import"./index-DFuXTc70.js";import"./I18nStore-BFRjgGfw.js";import"./Tooltips-v50zrNfc.js";import"./EventProvider-ChtD9rRX.js";function d(){return e.jsx(s,{design:p.Information,hideCloseButton:!0,children:e.jsxs(e.Fragment,{children:[e.jsx("strong",{children:"Known Limitations"}),e.jsxs("ul",{children:[e.jsx("li",{children:"As custom elements need to be defined on the client, UI5 Web Components for React is only rendering the outer markup of the UI5 Web Component on the server. The rendering of the Web Component is still happening on the client."}),e.jsxs("li",{children:["The Next.js ",e.jsx("code",{children:"app"})," directory shows some hydration warnings on the client. These warnings seem not to affect the runtime."]})]})]})})}function r(o){const t={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",h4:"h4",p:"p",pre:"pre",strong:"strong",...n(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{title:"Server Side Rendering"}),`
+`,e.jsx(a,{}),`
+`,e.jsx(t.h1,{id:"server-side-rendering",children:"Server Side Rendering"}),`
+`,e.jsxs(t.p,{children:["We're happy to announce that starting from ",e.jsx(t.strong,{children:"v1.17.0"}),", UI5 Web Components for React is supporting Server Side Rendering Frameworks like ",e.jsx(t.a,{href:"https://nextjs.org/",rel:"nofollow",children:"Next.js"})," 🎉."]}),`
+`,e.jsx(d,{}),`
+`,e.jsx("br",{}),`
+`,e.jsx("br",{}),`
+`,e.jsx(t.h2,{id:"nextjs",children:"Next.js"}),`
+`,e.jsx(t.h3,{id:"create-a-new-project",children:"Create a new project"}),`
+`,e.jsxs(t.p,{children:["The best way to start using UI5 Web Components in Next.js is using one of our ",e.jsx(t.a,{href:"?path=/docs/project-templates-examples--docs#templates",children:"templates"}),`.
+We have templates available for both the pages and the app router.`]}),`
+`,e.jsx(t.h3,{id:"add-to-existing-project",children:"Add to existing project"}),`
+`,e.jsxs(t.p,{children:["In case you already have an existing Next.js project and want to add UI5 Web Components for React to it, you first need to follow our ",e.jsx(t.a,{href:"?path=/docs/getting-started--docs#add-ui5webcomponents-react-to-an-existing-app",children:"general Getting Started Guide"}),"."]}),`
+`,e.jsxs(t.p,{children:["For a better SSR support, we recommend importing our stylesheet bundle inside the ",e.jsx(t.code,{children:"_app"})," file or the root layout (depending on whether you are using the pages or the app router) and set the ",e.jsx(t.code,{children:"staticCssInjected"})," prop on our ",e.jsx(t.code,{children:"ThemeProvider"}),":"]}),`
+`,e.jsx(t.pre,{children:e.jsx(t.code,{className:"language-tsx",children:`import '@ui5/webcomponents-react/styles.css';
+
+export default function AppOrRootLayout() {
+  // ...
+  return (
+    // ...
+    <ThemeProvider staticCssInjected>{/* your app content */}</ThemeProvider>
+  );
+}
+`})}),`
+`,e.jsx(t.h3,{id:"common-pitfalls",children:"Common Pitfalls"}),`
+`,e.jsx(t.h4,{id:"icon-and-feature-imports-in-server-components",children:"Icon and Feature Imports in Server Components"}),`
+`,e.jsxs(t.p,{children:[`Some UI5 Web Component features rely on the registration of a component during runtime on the client.
+The most common of these are icon imports (e.g. `,e.jsx(t.code,{children:"import '@ui5/webcomponents-icons/dist/add.js';"}),"), feature imports (e.g. ",e.jsx(t.code,{children:"import '@ui5/webcomponents/dist/features/FormSupport.js';"})," and asset imports (e.g. ",e.jsx(t.code,{children:"import '@ui5/webcomponents-react/dist/Assets.js';"}),")."]}),`
+`,e.jsxs(t.p,{children:["In order to fulfill their purpose in your application, you must ensure that these imports are only used in client components (the file or a parent component must contain the ",e.jsx(t.code,{children:"'use client';"}),` directive).
+If they are imported into server components, these imports will do nothing and you'll notice that some features or icons are not available in your application.`]}),`
+`,e.jsx(t.h2,{id:"other-frameworks",children:"Other frameworks"}),`
+`,e.jsxs(t.p,{children:["Your favorite framework is missing here? Feel free to ",e.jsx(t.a,{href:"https://github.com/SAP/ui5-webcomponents-react/blob/main/docs/knowledge-base/ServerSideRendering.mdx",rel:"nofollow",children:"edit this page"})," and submit a pull request to get it added!"]}),`
+`,e.jsx(m,{})]})}function Re(o={}){const{wrapper:t}={...n(),...o.components};return t?e.jsx(t,{...o,children:e.jsx(r,{...o})}):r(o)}export{Re as default};
