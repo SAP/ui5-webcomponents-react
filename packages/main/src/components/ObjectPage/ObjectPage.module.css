@@ -50,16 +50,7 @@
   z-index: 4;
   cursor: pointer;
   display: grid;
-
-  [data-component-name='ObjectPageTitle'] {
-    grid-column: 2;
-    padding-inline: 0;
-  }
-}
-
-/*:has cannot be nested*/
-.header:has([data-component-name='ATwithImageSnappedContentContainer']) [data-component-name='ObjectPageTitle'] {
-  padding-block-end: 0;
+  grid-auto-columns: 100%;
 }
 
 .headerCollapsed {
@@ -185,11 +176,6 @@
 
 .subSectionPopover::part(content) {
   padding: 0;
-}
-
-.snappedContent {
-  grid-column: 1 / span 2;
-  padding-block-end: 0.5rem;
 }
 
 .clickArea {

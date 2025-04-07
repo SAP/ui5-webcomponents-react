@@ -87,7 +87,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const objectPageContentRef = useRef<HTMLDivElement>(null);
   const selectionScrollTimeout = useRef(null);
   const isToggledRef = useRef(false);
-  const isInitial = useRef(true);
   const scrollTimeout = useRef(0);
 
   const [selectedSubSectionId, setSelectedSubSectionId] = useState<undefined | string>(undefined);
@@ -468,16 +467,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     }
   };
 
-  const snappedHeaderInObjPage = titleArea && titleArea.props.snappedContent && headerCollapsed === true && !!image;
-
-  useEffect(() => {
-    if (!isInitial.current) {
-      scrollTimeout.current = performance.now() + 200;
-    } else {
-      isInitial.current = false;
-    }
-  }, [snappedHeaderInObjPage]);
-
   const renderHeaderContentSection = () => {
     if (headerArea?.props) {
       return cloneElement(headerArea as ReactElement<ObjectPageHeaderPropTypesWithInternals>, {
@@ -598,33 +587,23 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         data-not-clickable={!!preserveHeaderStateOnClick}
         aria-roledescription={accessibilityAttributes?.objectPageTopHeader?.ariaRoledescription ?? 'Object Page header'}
         className={classNames.header}
-        style={{
-          gridAutoColumns: `min-content ${
-            titleArea && image && headerCollapsed === true ? `calc(100% - 3rem - 1rem)` : '100%'
-          }`
-        }}
       >
         <span
           className={classNames.clickArea}
           onClick={onTitleClick}
           data-component-name="ObjectPageTitleAreaClickElement"
         />
-        {titleArea && image && headerCollapsed === true && (
-          <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
-        )}
         {titleArea &&
           cloneElement(titleArea as ReactElement<ObjectPageTitlePropsWithDataAttributes>, {
             className: clsx(titleArea?.props?.className),
             onToggleHeaderContentVisibility: onTitleClick,
             'data-not-clickable': !!preserveHeaderStateOnClick,
             'data-header-content-visible': headerArea && headerCollapsed !== true,
-            'data-is-snapped-rendered-outside': snappedHeaderInObjPage
+            _snappedAvatar:
+              !headerArea || (titleArea && image && headerCollapsed === true) ? (
+                <CollapsedAvatar image={image} imageShapeCircle={imageShapeCircle} />
+              ) : null
           })}
-        {snappedHeaderInObjPage && (
-          <div className={classNames.snappedContent} data-component-name="ATwithImageSnappedContentContainer">
-            {titleArea.props.snappedContent}
-          </div>
-        )}
       </header>
       {renderHeaderContentSection()}
       {headerArea && titleArea && (
