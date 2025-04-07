@@ -109,6 +109,9 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
     objectPageAnchorBar?: {
       role?: string;
     };
+    objectPageFooterArea?: {
+      role?: string;
+    };
   };
   /**
    * If set, only the specified placeholder will be displayed as content of the `ObjectPage`, no sections or sub-sections will be rendered.

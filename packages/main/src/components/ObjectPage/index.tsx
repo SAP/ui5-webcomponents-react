@@ -726,7 +726,11 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         <div className={classNames.footerSpacer} data-component-name="ObjectPageFooterSpacer" aria-hidden />
       )}
       {footerArea && (
-        <footer className={classNames.footer} data-component-name="ObjectPageFooter">
+        <footer
+          role={accessibilityAttributes?.objectPageFooterArea?.role}
+          className={classNames.footer}
+          data-component-name="ObjectPageFooter"
+        >
           {footerArea}
         </footer>
       )}

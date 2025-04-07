@@ -34,9 +34,9 @@ import * as ComponentStories from './ObjectStatus.stories';
 
 <Canvas of={ComponentStories.WithIconOnly} />
 
-## Inverted Object Status
+## All ObjectStatus states
 
-The Object Status has an inverted visualisation, which is used in cases when the information is crucial for the user’s actions and needs to stand out visually.
+**Note:** Only the `inverted` `ObjectStatus` supports `IndicationColor`s 11-20. For non-inverted `ObjectStatus`, these colors default to the `"None"` `state` color and should **not** be used.
 
 <Canvas of={ComponentStories.InvertedObjectStatus} />
 
