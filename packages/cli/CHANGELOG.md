@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.2...v2.9.0) (2025-04-07)
+
+### Features
+
+- **cli:** add deprecation notice of components in wrapper script ([#7178](https://github.com/SAP/ui5-webcomponents-react/issues/7178)) ([b923669](https://github.com/SAP/ui5-webcomponents-react/commit/b92366919ae13630d11077a01c299875bbea91f6))
+
 ## [2.8.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.1...v2.8.2) (2025-04-07)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-cli

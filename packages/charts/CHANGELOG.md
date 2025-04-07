@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.2...v2.9.0) (2025-04-07)
+
+### Bug Fixes
+
+- **ColumnChartWithTrend:** correct height calculation ([#7172](https://github.com/SAP/ui5-webcomponents-react/issues/7172)) ([5f98e64](https://github.com/SAP/ui5-webcomponents-react/commit/5f98e64bd3035104b78abd1125b9b8a6a3fcf48d)), closes [#6204](https://github.com/SAP/ui5-webcomponents-react/issues/6204)
+
+### Features
+
+- update to UI5 Web Components 2.9.0 ([#7203](https://github.com/SAP/ui5-webcomponents-react/issues/7203)) ([04fecc4](https://github.com/SAP/ui5-webcomponents-react/commit/04fecc454fbd633c7d0213054e1097ab3b9b069a))
+
 ## [2.8.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.1...v2.8.2) (2025-04-07)
 
 ### Bug Fixes

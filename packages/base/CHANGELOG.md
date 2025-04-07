@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.2...v2.9.0) (2025-04-07)
+
+### Features
+
+- update to UI5 Web Components 2.9.0 ([#7203](https://github.com/SAP/ui5-webcomponents-react/issues/7203)) ([04fecc4](https://github.com/SAP/ui5-webcomponents-react/commit/04fecc454fbd633c7d0213054e1097ab3b9b069a))
+
 ## [2.8.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.1...v2.8.2) (2025-04-07)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-base

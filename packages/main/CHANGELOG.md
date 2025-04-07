@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.2...v2.9.0) (2025-04-07)
+
+### Bug Fixes
+
+- **AnalyticalTable:** improve accessibility ([#7181](https://github.com/SAP/ui5-webcomponents-react/issues/7181)) ([8d652b4](https://github.com/SAP/ui5-webcomponents-react/commit/8d652b4c729771115f948b78a51913dc59ff6262)), closes [#6515](https://github.com/SAP/ui5-webcomponents-react/issues/6515) [#7147](https://github.com/SAP/ui5-webcomponents-react/issues/7147)
+- **MessageViewButton:** adjust default tooltip ([#7162](https://github.com/SAP/ui5-webcomponents-react/issues/7162)) ([65e033d](https://github.com/SAP/ui5-webcomponents-react/commit/65e033d79fcbf0034f34ef4d6d9d507f452900cd))
+- **MessageView:** improve accessibility ([#7098](https://github.com/SAP/ui5-webcomponents-react/issues/7098)) ([ee114c5](https://github.com/SAP/ui5-webcomponents-react/commit/ee114c5fa6042699eb4d95890d631d8918aa3627)), closes [#7076](https://github.com/SAP/ui5-webcomponents-react/issues/7076) [#7087](https://github.com/SAP/ui5-webcomponents-react/issues/7087) [#7059](https://github.com/SAP/ui5-webcomponents-react/issues/7059)
+
+### Features
+
+- **cli:** add deprecation notice of components in wrapper script ([#7178](https://github.com/SAP/ui5-webcomponents-react/issues/7178)) ([b923669](https://github.com/SAP/ui5-webcomponents-react/commit/b92366919ae13630d11077a01c299875bbea91f6))
+- **MessageItem:** allow customizing `accessibleName` and `tooltip` ([#7099](https://github.com/SAP/ui5-webcomponents-react/issues/7099)) ([43fcb35](https://github.com/SAP/ui5-webcomponents-react/commit/43fcb35783abd7d97380fc0924546447809a574c))
+- **ObjectPage:** allow customizing `role` of `footerArea` container ([#7187](https://github.com/SAP/ui5-webcomponents-react/issues/7187)) ([3b2e248](https://github.com/SAP/ui5-webcomponents-react/commit/3b2e2488d05297e04a8b56311f411e2ee3335701)), closes [#7173](https://github.com/SAP/ui5-webcomponents-react/issues/7173)
+- **ObjectStatus:** add latest `Indication` `state`s ([#7120](https://github.com/SAP/ui5-webcomponents-react/issues/7120)) ([5fc96da](https://github.com/SAP/ui5-webcomponents-react/commit/5fc96dacc50744f1f515994db1fa651e6216c9b2))
+- update to UI5 Web Components 2.9.0 ([#7203](https://github.com/SAP/ui5-webcomponents-react/issues/7203)) ([04fecc4](https://github.com/SAP/ui5-webcomponents-react/commit/04fecc454fbd633c7d0213054e1097ab3b9b069a))
+
 ## [2.8.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.1...v2.8.2) (2025-04-07)
 
 ### Bug Fixes
