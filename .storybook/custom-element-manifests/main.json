@@ -2898,57 +2898,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/types/SearchPopupMode.js",
-      "declarations": [
-        {
-          "kind": "enum",
-          "name": "SearchPopupMode",
-          "description": "Defines the content visualisation of ui5-search popup.",
-          "_ui5privacy": "public",
-          "members": [
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Defines the content visualisation of ui5-search popup as illustrated message.",
-              "default": "Illustration",
-              "name": "Illustration",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Defines the content visualisation of ui5-search popup as list of items.",
-              "default": "List",
-              "name": "List",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "static": true,
-              "privacy": "public",
-              "description": "Defines the content visualisation of ui5-search popup as loading spinner.",
-              "default": "Loading",
-              "name": "Loading",
-              "readonly": true
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "SearchPopupMode",
-            "module": "dist/types/SearchPopupMode.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "dist/types/SegmentedButtonSelectionMode.js",
       "declarations": [
         {
@@ -9721,6 +9670,16 @@
                   "text": "boolean"
                 }
               },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "A value to be tested against the current date format",
+                  "_ui5privacy": "public"
+                }
+              ],
               "description": "Checks if a value is valid against the current date format of the DatePicker.",
               "privacy": "public",
               "inheritedFrom": {
@@ -9736,6 +9695,16 @@
                   "text": "boolean"
                 }
               },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "A value to be checked",
+                  "_ui5privacy": "public"
+                }
+              ],
               "description": "Checks if a date is between the minimum and maximum date.",
               "privacy": "public",
               "inheritedFrom": {
@@ -25214,7 +25183,7 @@
               "_ui5privacy": "public"
             },
             {
-              "name": "nodata",
+              "name": "noData",
               "description": "Defines the custom visualization if there is no data available.",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
@@ -25788,12 +25757,12 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-table-growing` component is used inside the `ui5-table` to add a growing/data loading functionalities\nto the table.\n\nThe component offers two options:\n* Button - a More button is displayed, clicking it will load more data.\n* Scroll - additional data is loaded automatically when the user scrolls to the end of the table.\n\n### Usage\n\nThe `ui5-table-growing` component is only used inside the `ui5-table` component as a feature.\nIt has to be slotted inside the `ui5-table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<ui5-table>\n\t<ui5-table-growing type=\"Button\" growing-text=\"More\" slot=\"features\"></ui5-table-growing>\n</ui5-table>\n```\n\n**Notes**:\n* When the `ui5-table-growing` component is used with the `Scroll` type and the table is currently not scrollable,\nthe component will render a growing button instead to ensure growing capabilities until the table becomes scrollable.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableGrowing.js\";`",
+          "description": "### Overview\n\nThe `ui5-table-growing` component is used inside the `ui5-table` to add a growing/data loading functionalities\nto the table.\n\nThe component offers two options:\n* Button - a More button is displayed, clicking it will load more data.\n* Scroll - additional data is loaded automatically when the user scrolls to the end of the table.\n\n### Usage\n\nThe `ui5-table-growing` component is only used inside the `ui5-table` component as a feature.\nIt has to be slotted inside the `ui5-table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<ui5-table>\n\t<ui5-table-growing mode=\"Button\" text=\"More\" slot=\"features\"></ui5-table-growing>\n</ui5-table>\n```\n\n**Notes**:\n* When the `ui5-table-growing` component is used with the `Scroll` mode and the table is currently not scrollable,\nthe component will render a growing button instead to ensure growing capabilities until the table becomes scrollable.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TableGrowing.js\";`",
           "name": "TableGrowing",
           "members": [
             {
               "kind": "field",
-              "name": "type",
+              "name": "mode",
               "type": {
                 "text": "TableGrowingMode",
                 "references": [
@@ -25810,21 +25779,21 @@
             },
             {
               "kind": "field",
-              "name": "growingText",
+              "name": "text",
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the text that will be displayed inside the growing button.\nHas no effect when type is set to `Scroll`.\n\n**Note:** When not provided and the type is set to Button, a default text is displayed, corresponding to the\ncurrent language.",
+              "description": "Defines the text that will be displayed inside the growing button.\nHas no effect when mode is set to `Scroll`.\n\n**Note:** When not provided and the mode is set to Button, a default text is displayed, corresponding to the\ncurrent language.",
               "default": "undefined",
               "privacy": "public"
             },
             {
               "kind": "field",
-              "name": "growingSubText",
+              "name": "subtext",
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the text that will be displayed below the `growingText` inside the growing button.\nHas no effect when type is set to Scroll.",
+              "description": "Defines the text that will be displayed below the `text` inside the growing button.\nHas no effect when mode is set to Scroll.",
               "default": "undefined",
               "privacy": "public"
             }
@@ -25845,27 +25814,27 @@
           "attributes": [
             {
               "description": "Defines the mode of the <code>ui5-table</code> growing.\n\nAvailable options are:\n\nButton - Shows a More button at the bottom of the table, pressing it will load more rows.\n\nScroll - The rows are loaded automatically by scrolling to the bottom of the table. If the table is not scrollable,\na growing button will be rendered instead to ensure growing functionality.",
-              "name": "type",
+              "name": "mode",
               "default": "\"Button\"",
-              "fieldName": "type",
+              "fieldName": "mode",
               "type": {
                 "text": "\"Button\" | \"Scroll\""
               }
             },
             {
-              "description": "Defines the text that will be displayed inside the growing button.\nHas no effect when type is set to `Scroll`.\n\n**Note:** When not provided and the type is set to Button, a default text is displayed, corresponding to the\ncurrent language.",
-              "name": "growing-text",
+              "description": "Defines the text that will be displayed inside the growing button.\nHas no effect when mode is set to `Scroll`.\n\n**Note:** When not provided and the mode is set to Button, a default text is displayed, corresponding to the\ncurrent language.",
+              "name": "text",
               "default": "undefined",
-              "fieldName": "growingText",
+              "fieldName": "text",
               "type": {
                 "text": "string | undefined"
               }
             },
             {
-              "description": "Defines the text that will be displayed below the `growingText` inside the growing button.\nHas no effect when type is set to Scroll.",
-              "name": "growing-sub-text",
+              "description": "Defines the text that will be displayed below the `text` inside the growing button.\nHas no effect when mode is set to Scroll.",
+              "name": "subtext",
               "default": "undefined",
-              "fieldName": "growingSubText",
+              "fieldName": "subtext",
               "type": {
                 "text": "string | undefined"
               }
@@ -26645,7 +26614,25 @@
           "customElement": true,
           "_ui5experimental": true,
           "_ui5since": "2.7.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "events": [
+            {
+              "name": "click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when a row action is clicked.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.9.0",
+              "inheritedFrom": {
+                "name": "TableRowActionBase",
+                "module": "dist/TableRowActionBase.js"
+              }
+            }
+          ]
         }
       ],
       "exports": [
@@ -26685,6 +26672,20 @@
               "default": "false",
               "description": "Defines the visibility of the row action.\n\n**Note:** Invisible row actions still take up space, allowing to hide the action while maintaining its position.",
               "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when a row action is clicked.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.9.0"
             }
           ],
           "attributes": [
@@ -26787,7 +26788,25 @@
           "customElement": true,
           "_ui5experimental": true,
           "_ui5since": "2.7.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "events": [
+            {
+              "name": "click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when a row action is clicked.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.9.0",
+              "inheritedFrom": {
+                "name": "TableRowActionBase",
+                "module": "dist/TableRowActionBase.js"
+              }
+            }
+          ]
         }
       ],
       "exports": [
@@ -26963,34 +26982,6 @@
             },
             {
               "kind": "method",
-              "name": "getRowKey",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "row",
-                  "type": {
-                    "text": "TableRow",
-                    "references": [
-                      {
-                        "name": "TableRow",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/TableRow.js"
-                      }
-                    ]
-                  },
-                  "description": "The row instance",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Returns the unique key associated with the table row.",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
               "name": "getRowByKey",
               "return": {
                 "type": {
@@ -27015,70 +27006,6 @@
                 }
               ],
               "description": "Returns the table row instance for the given row key.",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "isSelected",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "row",
-                  "type": {
-                    "text": "TableRowBase",
-                    "references": [
-                      {
-                        "name": "TableRowBase",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/TableRowBase.js"
-                      }
-                    ]
-                  },
-                  "description": "The row instance",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Determines whether the specified table row is currently selected.",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "setSelected",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "row",
-                  "type": {
-                    "text": "TableRowBase",
-                    "references": [
-                      {
-                        "name": "TableRowBase",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/TableRowBase.js"
-                      }
-                    ]
-                  },
-                  "description": "The row instance",
-                  "_ui5privacy": "public"
-                },
-                {
-                  "name": "selected",
-                  "type": {
-                    "text": "boolean"
-                  },
-                  "description": "Whether the row is selected",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Sets the selected state of the specified table row.",
               "privacy": "public"
             }
           ],
@@ -27152,36 +27079,6 @@
             },
             {
               "kind": "method",
-              "name": "isSelected",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "description": "Determines whether the specified table row is currently selected.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "TableSelectionBase",
-                "module": "dist/TableSelectionBase.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "setSelected",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Sets the selected state of the specified table row.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "TableSelectionBase",
-                "module": "dist/TableSelectionBase.js"
-              }
-            },
-            {
-              "kind": "method",
               "name": "getSelectedRows",
               "return": {
                 "type": {
@@ -27196,17 +27093,6 @@
                 }
               },
               "description": "Returns an array of the selected rows.",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "areAllRowsSelected",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "description": "Determines whether all rows are selected.",
               "privacy": "public"
             },
             {
@@ -27240,38 +27126,6 @@
               ],
               "description": "Sets the `selected` property using the provided set of unique `row-key` values.",
               "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "getRowKey",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "row",
-                  "type": {
-                    "text": "TableRow",
-                    "references": [
-                      {
-                        "name": "TableRow",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/TableRow.js"
-                      }
-                    ]
-                  },
-                  "description": "The row instance",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Returns the unique key associated with the table row.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "TableSelectionBase",
-                "module": "dist/TableSelectionBase.js"
-              }
             },
             {
               "kind": "method",
@@ -27393,36 +27247,6 @@
             },
             {
               "kind": "method",
-              "name": "isSelected",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "description": "Determines whether the specified table row is currently selected.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "TableSelectionBase",
-                "module": "dist/TableSelectionBase.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "setSelected",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Sets the selected state of the specified table row.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "TableSelectionBase",
-                "module": "dist/TableSelectionBase.js"
-              }
-            },
-            {
-              "kind": "method",
               "name": "getSelectedRow",
               "return": {
                 "type": {
@@ -27438,38 +27262,6 @@
               },
               "description": "Returns the selected row.",
               "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "getRowKey",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "row",
-                  "type": {
-                    "text": "TableRow",
-                    "references": [
-                      {
-                        "name": "TableRow",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/TableRow.js"
-                      }
-                    ]
-                  },
-                  "description": "The row instance",
-                  "_ui5privacy": "public"
-                }
-              ],
-              "description": "Returns the unique key associated with the table row.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "TableSelectionBase",
-                "module": "dist/TableSelectionBase.js"
-              }
             },
             {
               "kind": "method",

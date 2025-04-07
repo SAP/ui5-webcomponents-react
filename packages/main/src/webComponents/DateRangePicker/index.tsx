@@ -166,15 +166,17 @@ interface DateRangePickerDomRef extends Required<DateRangePickerAttributes>, Ui5
 
   /**
    * Checks if a date is between the minimum and maximum date.
+   * @param {string} value - A value to be checked
    * @returns {boolean}
    */
-  isInValidRange: () => boolean;
+  isInValidRange: (value: string) => boolean;
 
   /**
    * Checks if a value is valid against the current date format of the DatePicker.
+   * @param {string} value - A value to be tested against the current date format
    * @returns {boolean}
    */
-  isValid: () => boolean;
+  isValid: (value: string) => boolean;
 
   /**
    * Returns the start date of the currently selected range as JavaScript Date instance.

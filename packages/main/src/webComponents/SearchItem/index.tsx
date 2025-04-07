@@ -6,11 +6,6 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-
 
 interface SearchItemAttributes {
   /**
-   * Defines the heading text of the search item.
-   */
-  headingText?: string;
-
-  /**
    * Defines the icon name of the search item.
    */
   icon?: string;
@@ -26,6 +21,11 @@ interface SearchItemAttributes {
    * @default false
    */
   selected?: boolean;
+
+  /**
+   * Defines the heading text of the search item.
+   */
+  text?: string;
 }
 
 interface SearchItemDomRef extends Required<SearchItemAttributes>, Ui5DomRef {}
@@ -53,7 +53,7 @@ interface SearchItemPropTypes extends SearchItemAttributes, Omit<CommonProps, ke
  */
 const SearchItem = withWebComponent<SearchItemPropTypes, SearchItemDomRef>(
   'ui5-search-item',
-  ['headingText', 'icon', 'scopeName'],
+  ['icon', 'scopeName', 'text'],
   ['selected'],
   [],
   ['delete']

@@ -22,29 +22,10 @@ interface TableSelectionSingleDomRef extends Required<TableSelectionSingleAttrib
   getRowByKey: (rowKey: string) => TableRow | undefined;
 
   /**
-   * Returns the unique key associated with the table row.
-   * @param {TableRow} row - The row instance
-   * @returns {string}
-   */
-  getRowKey: (row: TableRow) => string;
-
-  /**
    * Returns the selected row.
    * @returns {TableRow | undefined}
    */
   getSelectedRow: () => TableRow | undefined;
-
-  /**
-   * Determines whether the specified table row is currently selected.
-   * @returns {boolean}
-   */
-  isSelected: () => boolean;
-
-  /**
-   * Sets the selected state of the specified table row.
-   * @returns {void}
-   */
-  setSelected: () => void;
 }
 
 interface TableSelectionSinglePropTypes

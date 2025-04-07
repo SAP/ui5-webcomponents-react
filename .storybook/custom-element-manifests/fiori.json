@@ -5268,7 +5268,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nA `ui5-search` is an input with suggestions, used for user search.\n\nThe `ui5-search` consists of several elements parts:\n- Scope - displays a select in the beggining of the component, used for filtering results by their scope.\n- Input field - for user input value\n- Clear button - gives the possibility for deleting the entered value\n- Search button - a primary button for performing search, when the user has entered a search term\n- Expand/Collapse button - when there is no search term, the search button behaves as an expand/collapse button for the `ui5-search` component\n- Suggestions - a list with available search suggestions\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/fiori/dist/Search.js\";`",
+          "description": "### Overview\n\nA `ui5-search` is an input with suggestions, used for user search.\n\nThe `ui5-search` consists of several elements parts:\n- Scope - displays a select in the beggining of the component, used for filtering results by their scope.\n- Input field - for user input value\n- Clear button - gives the possibility for deleting the entered value\n- Search button - a primary button for performing search, when the user has entered a search term\n- Suggestions - a list with available search suggestions\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/fiori/dist/Search.js\";`",
           "name": "Search",
           "slots": [
             {
@@ -5276,12 +5276,20 @@
               "description": "Defines the Search suggestion items.",
               "_ui5propertyName": "items",
               "_ui5type": {
-                "text": "Array<SearchItem>",
+                "text": "Array<SearchItem | SearchItemGroup>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "action",
+              "description": "Defines the popup footer action button.",
+              "_ui5type": {
+                "text": "Array<Button>",
                 "references": [
                   {
-                    "name": "SearchItem",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/SearchItem.js"
+                    "name": "Button",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
                   }
                 ]
               },
@@ -5291,18 +5299,40 @@
               "name": "illustration",
               "description": "Defines the illustrated message to be shown in the popup.",
               "_ui5type": {
-                "text": "HTMLElement"
+                "text": "Array<IllustratedMessage>",
+                "references": [
+                  {
+                    "name": "IllustratedMessage",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/IllustratedMessage.js"
+                  }
+                ]
               },
               "_ui5privacy": "public"
             },
             {
-              "name": "scopeOptions",
-              "description": "Defines the component scope options.",
+              "name": "messageArea",
+              "description": "Defines the illustrated message to be shown in the popup.",
               "_ui5type": {
-                "text": "Array<ISearchFieldScopeOption>",
+                "text": "Array<SearchMessageArea>",
                 "references": [
                   {
-                    "name": "ISearchFieldScopeOption",
+                    "name": "SearchMessageArea",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SearchMessageArea.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "scopes",
+              "description": "Defines the component scope options.",
+              "_ui5type": {
+                "text": "Array<ISearchScope>",
+                "references": [
+                  {
+                    "name": "ISearchScope",
                     "package": "@ui5/webcomponents-fiori",
                     "module": "dist/SearchField.js"
                   }
@@ -5318,19 +5348,12 @@
           "members": [
             {
               "kind": "field",
-              "name": "popupMode",
+              "name": "loading",
               "type": {
-                "text": "SearchPopupMode",
-                "references": [
-                  {
-                    "name": "SearchPopupMode",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/types/SearchPopupMode.js"
-                  }
-                ]
+                "text": "boolean"
               },
-              "default": "\"List\"",
-              "description": "Defines the visualisation mode of the search component.",
+              "default": "false",
+              "description": "Indicates whether a loading indicator should be shown in the popup.",
               "privacy": "public"
             },
             {
@@ -5345,46 +5368,6 @@
             },
             {
               "kind": "field",
-              "name": "headerText",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Defines the header text to be placed in the search suggestions popup.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "subheaderText",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Defines the subheader text to be placed in the search suggestions popup.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "showPopupAction",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Defines whether the popup footer action button is shown.\nNote: The footer action button is displayed only when the `popupMode` is set to `List`.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "popupActionText",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Defines the popup footer action button text.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
               "name": "open",
               "type": {
                 "text": "boolean"
@@ -5392,27 +5375,6 @@
               "default": "false",
               "description": "Indicates whether the items picker is open.",
               "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "mode",
-              "type": {
-                "text": "SearchMode",
-                "references": [
-                  {
-                    "name": "SearchMode",
-                    "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/types/SearchMode.js"
-                  }
-                ]
-              },
-              "default": "\"Default\"",
-              "description": "Defines the mode of the component.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "SearchField",
-                "module": "dist/SearchField.js"
-              }
             },
             {
               "kind": "field",
@@ -5430,26 +5392,12 @@
             },
             {
               "kind": "field",
-              "name": "expanded",
+              "name": "collapsed",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the component is expanded.",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "SearchField",
-                "module": "dist/SearchField.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "fixed",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Determines whether the component is in a fixed state that is not\nexpandable/collapsible by user interaction.",
+              "description": "Defines whether the component is collapsed.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "SearchField",
@@ -5497,20 +5445,23 @@
                 "name": "SearchField",
                 "module": "dist/SearchField.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "searchIconTooltip",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the tooltip of the search icon component.",
+              "privacy": "public",
+              "default": "undefined",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
             }
           ],
           "events": [
-            {
-              "name": "popup-action-press",
-              "_ui5privacy": "public",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when load more button is pressed.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": false
-            },
             {
               "name": "open",
               "_ui5privacy": "public",
@@ -5598,12 +5549,12 @@
           ],
           "attributes": [
             {
-              "description": "Defines the visualisation mode of the search component.",
-              "name": "popup-mode",
-              "default": "\"List\"",
-              "fieldName": "popupMode",
+              "description": "Indicates whether a loading indicator should be shown in the popup.",
+              "name": "loading",
+              "default": "false",
+              "fieldName": "loading",
               "type": {
-                "text": "\"List\" | \"Illustration\" | \"Loading\""
+                "text": "boolean"
               }
             },
             {
@@ -5616,61 +5567,12 @@
               }
             },
             {
-              "description": "Defines the header text to be placed in the search suggestions popup.",
-              "name": "header-text",
-              "default": "\"\"",
-              "fieldName": "headerText",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines the subheader text to be placed in the search suggestions popup.",
-              "name": "subheader-text",
-              "default": "\"\"",
-              "fieldName": "subheaderText",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines whether the popup footer action button is shown.\nNote: The footer action button is displayed only when the `popupMode` is set to `List`.",
-              "name": "show-popup-action",
-              "default": "false",
-              "fieldName": "showPopupAction",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines the popup footer action button text.",
-              "name": "popup-action-text",
-              "default": "\"\"",
-              "fieldName": "popupActionText",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
               "description": "Indicates whether the items picker is open.",
               "name": "open",
               "default": "false",
               "fieldName": "open",
               "type": {
                 "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines the mode of the component.",
-              "name": "mode",
-              "default": "\"Default\"",
-              "fieldName": "mode",
-              "type": {
-                "text": "\"Default\" | \"Scoped\""
-              },
-              "inheritedFrom": {
-                "name": "SearchField",
-                "module": "dist/SearchField.js"
               }
             },
             {
@@ -5687,23 +5589,10 @@
               }
             },
             {
-              "description": "Defines whether the component is expanded.",
-              "name": "expanded",
+              "description": "Defines whether the component is collapsed.",
+              "name": "collapsed",
               "default": "false",
-              "fieldName": "expanded",
-              "type": {
-                "text": "boolean"
-              },
-              "inheritedFrom": {
-                "name": "SearchField",
-                "module": "dist/SearchField.js"
-              }
-            },
-            {
-              "description": "Determines whether the component is in a fixed state that is not\nexpandable/collapsible by user interaction.",
-              "name": "fixed",
-              "default": "false",
-              "fieldName": "fixed",
+              "fieldName": "collapsed",
               "type": {
                 "text": "boolean"
               },
@@ -5750,6 +5639,19 @@
                 "name": "SearchField",
                 "module": "dist/SearchField.js"
               }
+            },
+            {
+              "description": "Defines the tooltip of the search icon component.",
+              "name": "search-icon-tooltip",
+              "default": "undefined",
+              "fieldName": "searchIconTooltip",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
             }
           ],
           "superclass": {
@@ -5789,7 +5691,7 @@
       "declarations": [
         {
           "kind": "interface",
-          "name": "ISearchFieldScopeOption",
+          "name": "ISearchScope",
           "description": "Interface for components that may be slotted inside a `ui5-search`",
           "_ui5privacy": "public"
         }
@@ -5807,76 +5709,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/SearchFieldScopeOption.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "The `ui5-search-scope-option` represents the options for the scope in `ui5-search`.",
-          "name": "SearchFieldScopeOption",
-          "members": [
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string"
-              },
-              "description": "Defines the text of the component.",
-              "default": "\"\"",
-              "privacy": "public"
-            }
-          ],
-          "attributes": [
-            {
-              "description": "Defines the text of the component.",
-              "name": "text",
-              "default": "\"\"",
-              "fieldName": "text",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "UI5Element",
-            "package": "@ui5/webcomponents-base",
-            "module": "dist/UI5Element.js"
-          },
-          "tagName": "ui5-search-field-scope-option",
-          "customElement": true,
-          "_ui5experimental": true,
-          "_ui5since": "2.9.0",
-          "_ui5privacy": "public",
-          "_ui5abstract": true,
-          "_ui5implements": [
-            {
-              "name": "ISearchFieldScopeOption",
-              "package": "@ui5/webcomponents-fiori",
-              "module": "dist/SearchField.js"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "SearchFieldScopeOption",
-            "module": "dist/SearchFieldScopeOption.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ui5-search-field-scope-option",
-          "declaration": {
-            "name": "SearchFieldScopeOption",
-            "module": "dist/SearchFieldScopeOption.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "dist/SearchItem.js",
       "declarations": [
         {
@@ -5886,7 +5718,7 @@
           "members": [
             {
               "kind": "field",
-              "name": "headingText",
+              "name": "text",
               "type": {
                 "text": "string"
               },
@@ -5941,9 +5773,9 @@
           "attributes": [
             {
               "description": "Defines the heading text of the search item.",
-              "name": "heading-text",
+              "name": "text",
               "default": "\"\"",
-              "fieldName": "headingText",
+              "fieldName": "text",
               "type": {
                 "text": "string"
               }
@@ -6179,6 +6011,176 @@
           "declaration": {
             "name": "SearchItemGroup",
             "module": "dist/SearchItemGroup.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchMessageArea.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`import \"@ui5/webcomponents-fiori/dist/SearchMessageArea.js\";`",
+          "name": "SearchMessageArea",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text to be displayed.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the description text to be displayed.",
+              "default": "undefined",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the text to be displayed.",
+              "name": "text",
+              "default": "undefined",
+              "fieldName": "text",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the description text to be displayed.",
+              "name": "description",
+              "default": "undefined",
+              "fieldName": "description",
+              "type": {
+                "text": "string | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-search-message-area",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.9.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchMessageArea",
+            "module": "dist/SearchMessageArea.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-search-message-area",
+          "declaration": {
+            "name": "SearchMessageArea",
+            "module": "dist/SearchMessageArea.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchScope.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `ui5-search-scope` represents the options for the scope in `ui5-search`.",
+          "name": "SearchScope",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Defines the text of the component.",
+              "default": "\"\"",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Indicates whether the item is selected",
+              "default": "false",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the text of the component.",
+              "name": "text",
+              "default": "\"\"",
+              "fieldName": "text",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "description": "Indicates whether the item is selected",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-search-scope",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.9.0",
+          "_ui5privacy": "public",
+          "_ui5abstract": true,
+          "_ui5implements": [
+            {
+              "name": "ISearchScope",
+              "package": "@ui5/webcomponents-fiori",
+              "module": "dist/SearchField.js"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchScope",
+            "module": "dist/SearchScope.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-search-scope",
+          "declaration": {
+            "name": "SearchScope",
+            "module": "dist/SearchScope.js"
           }
         }
       ]

@@ -1,9 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/Search.js';
-import type SearchPopupMode from '@ui5/webcomponents/dist/types/SearchPopupMode.js';
 import type { SearchFieldScopeSelectionChangeDetails } from '@ui5/webcomponents-fiori/dist/SearchField.js';
-import type SearchMode from '@ui5/webcomponents-fiori/dist/types/SearchMode.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
@@ -16,28 +14,16 @@ interface SearchAttributes {
   accessibleName?: string | undefined;
 
   /**
-   * Defines whether the component is expanded.
+   * Defines whether the component is collapsed.
    * @default false
    */
-  expanded?: boolean;
+  collapsed?: boolean;
 
   /**
-   * Determines whether the component is in a fixed state that is not
-   * expandable/collapsible by user interaction.
+   * Indicates whether a loading indicator should be shown in the popup.
    * @default false
    */
-  fixed?: boolean;
-
-  /**
-   * Defines the header text to be placed in the search suggestions popup.
-   */
-  headerText?: string;
-
-  /**
-   * Defines the mode of the component.
-   * @default "Default"
-   */
-  mode?: SearchMode | keyof typeof SearchMode;
+  loading?: boolean;
 
   /**
    * Defines whether the value will be autcompleted to match an item.
@@ -59,33 +45,16 @@ interface SearchAttributes {
   placeholder?: string | undefined;
 
   /**
-   * Defines the popup footer action button text.
+   * Defines the tooltip of the search icon component.
+   * @default undefined
    */
-  popupActionText?: string;
-
-  /**
-   * Defines the visualisation mode of the search component.
-   * @default "List"
-   */
-  popupMode?: SearchPopupMode | keyof typeof SearchPopupMode;
+  searchIconTooltip?: string | undefined;
 
   /**
    * Defines whether the clear icon of the search will be shown.
    * @default false
    */
   showClearIcon?: boolean;
-
-  /**
-   * Defines whether the popup footer action button is shown.
-   * Note: The footer action button is displayed only when the `popupMode` is set to `List`.
-   * @default false
-   */
-  showPopupAction?: boolean;
-
-  /**
-   * Defines the subheader text to be placed in the search suggestions popup.
-   */
-  subheaderText?: string;
 
   /**
    * Defines the value of the component.
@@ -102,16 +71,28 @@ interface SearchPropTypes
     Omit<
       CommonProps,
       | keyof SearchAttributes
+      | 'action'
       | 'children'
       | 'illustration'
-      | 'scopeOptions'
+      | 'messageArea'
+      | 'scopes'
       | 'onClose'
       | 'onInput'
       | 'onOpen'
-      | 'onPopupActionPress'
       | 'onScopeChange'
       | 'onSearch'
     > {
+  /**
+   * Defines the popup footer action button.
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="action"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   */
+  action?: UI5WCSlotsNode;
+
   /**
    * Defines the Search suggestion items.
    */
@@ -129,15 +110,26 @@ interface SearchPropTypes
   illustration?: UI5WCSlotsNode;
 
   /**
-   * Defines the component scope options.
+   * Defines the illustrated message to be shown in the popup.
    *
-   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="scopeOptions"`).
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="messageArea"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  scopeOptions?: UI5WCSlotsNode;
+  messageArea?: UI5WCSlotsNode;
+
+  /**
+   * Defines the component scope options.
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="scopes"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   */
+  scopes?: UI5WCSlotsNode;
   /**
    * Fired when the popup is closed.
    *
@@ -164,15 +156,6 @@ interface SearchPropTypes
    * | ❌|❌|
    */
   onOpen?: (event: Ui5CustomEvent<SearchDomRef>) => void;
-
-  /**
-   * Fired when load more button is pressed.
-   *
-   * | cancelable | bubbles |
-   * | :--------: | :-----: |
-   * | ❌|❌|
-   */
-  onPopupActionPress?: (event: Ui5CustomEvent<SearchDomRef>) => void;
 
   /**
    * Fired when the scope has changed.
@@ -203,7 +186,6 @@ interface SearchPropTypes
  * - Input field - for user input value
  * - Clear button - gives the possibility for deleting the entered value
  * - Search button - a primary button for performing search, when the user has entered a search term
- * - Expand/Collapse button - when there is no search term, the search button behaves as an expand/collapse button for the `Search` component
  * - Suggestions - a list with available search suggestions
  *
  *
@@ -215,10 +197,10 @@ interface SearchPropTypes
  */
 const Search = withWebComponent<SearchPropTypes, SearchDomRef>(
   'ui5-search',
-  ['accessibleName', 'headerText', 'mode', 'placeholder', 'popupActionText', 'popupMode', 'subheaderText', 'value'],
-  ['expanded', 'fixed', 'noTypeahead', 'open', 'showClearIcon', 'showPopupAction'],
-  ['illustration', 'scopeOptions'],
-  ['close', 'input', 'open', 'popup-action-press', 'scope-change', 'search']
+  ['accessibleName', 'placeholder', 'searchIconTooltip', 'value'],
+  ['collapsed', 'loading', 'noTypeahead', 'open', 'showClearIcon'],
+  ['action', 'illustration', 'messageArea', 'scopes'],
+  ['close', 'input', 'open', 'scope-change', 'search']
 );
 
 Search.displayName = 'Search';

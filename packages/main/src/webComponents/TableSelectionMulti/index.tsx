@@ -15,24 +15,11 @@ interface TableSelectionMultiAttributes {
 
 interface TableSelectionMultiDomRef extends Required<TableSelectionMultiAttributes>, Ui5DomRef {
   /**
-   * Determines whether all rows are selected.
-   * @returns {boolean}
-   */
-  areAllRowsSelected: () => boolean;
-
-  /**
    * Returns the table row instance for the given row key.
    * @param {string} rowKey - The row key
    * @returns {TableRow | undefined}
    */
   getRowByKey: (rowKey: string) => TableRow | undefined;
-
-  /**
-   * Returns the unique key associated with the table row.
-   * @param {TableRow} row - The row instance
-   * @returns {string}
-   */
-  getRowKey: (row: TableRow) => string;
 
   /**
    * Returns the `selected` property as a set of unique `row-key` values.
@@ -45,18 +32,6 @@ interface TableSelectionMultiDomRef extends Required<TableSelectionMultiAttribut
    * @returns {Array<TableRow>}
    */
   getSelectedRows: () => Array<TableRow>;
-
-  /**
-   * Determines whether the specified table row is currently selected.
-   * @returns {boolean}
-   */
-  isSelected: () => boolean;
-
-  /**
-   * Sets the selected state of the specified table row.
-   * @returns {void}
-   */
-  setSelected: () => void;
 
   /**
    * Sets the `selected` property using the provided set of unique `row-key` values.

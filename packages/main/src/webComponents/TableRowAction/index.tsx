@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/TableRowAction.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
-import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface TableRowActionAttributes {
   /**
@@ -33,7 +33,20 @@ interface TableRowActionAttributes {
 
 interface TableRowActionDomRef extends Required<TableRowActionAttributes>, Ui5DomRef {}
 
-interface TableRowActionPropTypes extends TableRowActionAttributes, Omit<CommonProps, keyof TableRowActionAttributes> {}
+interface TableRowActionPropTypes
+  extends TableRowActionAttributes,
+    Omit<CommonProps, keyof TableRowActionAttributes | 'onClick'> {
+  /**
+   * Fired when a row action is clicked.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onClick?: (event: Ui5CustomEvent<TableRowActionDomRef>) => void;
+}
 
 /**
  * The `TableRowAction` component defines an action for table rows.
@@ -50,7 +63,7 @@ const TableRowAction = withWebComponent<TableRowActionPropTypes, TableRowActionD
   ['icon', 'text'],
   ['invisible'],
   [],
-  []
+  ['click']
 );
 
 TableRowAction.displayName = 'TableRowAction';
