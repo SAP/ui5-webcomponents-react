@@ -1,2 +1,0 @@
-import{p as e,d as o}from"./jsx-runtime-BhvuzFo7.js";import{d as t}from"./parameters-bundle.css-DHLNbl9v.js";e("@ui5/webcomponents-theming","sap_horizon",async()=>o);e("@ui5/webcomponents","sap_horizon",async()=>t);const n=`.ui5-li-additional-text{margin:0 .25rem;color:var(--sapNeutralTextColor);font-size:var(--sapFontSize);min-width:3.75rem;text-align:end;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-`;export{n as l};
