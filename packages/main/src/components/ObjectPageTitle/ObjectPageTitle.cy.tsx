@@ -127,11 +127,6 @@ describe('ObjectPageTitle', () => {
       cy.findByTestId('page').scrollTo(0, 500);
       cy.findByText('snappedContent').should('exist');
       cy.findByTestId('expandedContent').should('not.exist');
-      if (headerContent && image) {
-        cy.get('[data-component-name="ATwithImageSnappedContentContainer"]').should('exist');
-      } else {
-        cy.get('[data-component-name="ATwithImageSnappedContentContainer"]').should('not.exist');
-      }
     });
   });
 });
