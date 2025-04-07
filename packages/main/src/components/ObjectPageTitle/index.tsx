@@ -2,84 +2,13 @@
 
 import { debounce, Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
-import type { CommonProps } from '../../types/index.js';
 import type { ToolbarDomRef } from '../../webComponents/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './ObjectPageTitle.module.css.js';
-
-export interface ObjectPageTitlePropTypes extends CommonProps {
-  /**
-   * Defines the actions bar of the `ObjectPageTitle`.
-   *
-   * __Note:__ Although this prop accepts all `ReactElement`s, it is strongly recommended that you only use the `Toolbar` component in order to preserve the intended design.
-   */
-  actionsBar?: ReactElement;
-
-  /**
-   * The `breadcrumbs` displayed in the `ObjectPageTitle` top-left area.
-   *
-   * __Note:__ Although this prop accepts all HTML Elements, it is strongly recommended that you only use `Breadcrumbs` in order to preserve the intended design.
-   */
-  breadcrumbs?: ReactNode | ReactNode[];
-
-  /**
-   * The content is positioned in the `ObjectPageTitle` middle area
-   */
-  children?: ReactNode | ReactNode[];
-
-  /**
-   * The `header` is positioned in the `ObjectPageTitle` left area.
-   * Use this prop to display a `Title` (or any other component that serves as a heading).
-   */
-  header?: ReactNode;
-  /**
-   * The `subHeader` is positioned in the `ObjectPageTitle` left area below the `header`.
-   * Use this aggregation to display a component like `Label` or any other component that serves as sub header.
-   */
-  subHeader?: ReactNode;
-  /**
-   * Defines navigation-actions bar of the `ObjectPageTitle`.
-   *
-   * *Note*: The `navigationBar` position depends on the control size.
-   * If the control size is 1280px or bigger, they are rendered right next to the `actionsBar`.
-   * Otherwise, they are rendered in the top-right area (above the `actionsBar`).
-   * If a large number of elements(buttons) are used, there could be visual degradations as the space for the `navigationBar` is limited.
-   *
-   * __Note:__ Although this prop accepts all `ReactElement`s, it is strongly recommended that you only use the `Toolbar` component in order to preserve the intended design.
-   */
-  navigationBar?: ReactElement;
-  /**
-   * The content displayed in the `ObjectPageTitle` in expanded state.
-   */
-  expandedContent?: ReactNode | ReactNode[];
-  /**
-   * The content displayed in the `ObjectPageTitle` in collapsed (snapped) state.
-   */
-  snappedContent?: ReactNode | ReactNode[];
-}
-
-export interface InternalProps extends ObjectPageTitlePropTypes {
-  /**
-   * The onToggleHeaderContentVisibility show or hide the header section
-   */
-  onToggleHeaderContentVisibility?: (e: any) => void;
-  /**
-   * Defines whether the content area can be toggled
-   */
-  'data-not-clickable'?: boolean;
-  /**
-   * Defines whether the content area is visible
-   */
-  'data-header-content-visible'?: boolean;
-  /**
-   * Defines if the `snappedContent` should be rendered by the `ObjectPageTitle`
-   */
-  'data-is-snapped-rendered-outside'?: boolean;
-}
+import type { InternalProps, ObjectPageTitlePropTypes } from './types/index.js';
 
 /**
  * The `ObjectPageTitle` component is used to serve as title of the `ObjectPage`.
@@ -99,6 +28,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
     onToggleHeaderContentVisibility,
     expandedContent,
     snappedContent,
+    _snappedAvatar,
     ...rest
   } = props as InternalProps;
 
@@ -218,52 +148,53 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
           {showNavigationInTopArea && navigationBar && <div className={classNames.toolbar}>{navigationBar}</div>}
         </FlexBox>
       )}
-      <FlexBox
-        alignItems={FlexBoxAlignItems.Center}
-        className={classNames.middleSection}
-        data-component-name="ObjectPageTitleMiddleSection"
-      >
-        <FlexBox className={classNames.titleMainSection} onClick={onHeaderClick}>
-          {header && (
-            <div className={classNames.title} data-component-name="ObjectPageTitleHeader" /*onClick={onHeaderClick}*/>
-              {header}
-            </div>
-          )}
-          {children && (
-            <div className={classNames.content} data-component-name="ObjectPageTitleContent">
-              {children}
-            </div>
-          )}
-        </FlexBox>
-        {(actionsBar || (!showNavigationInTopArea && navigationBar)) && (
-          <div className={classNames.toolbar} ref={toolbarContainerRef}>
-            {actionsBar}
-            {!showNavigationInTopArea && actionsBar && navigationBar && (
-              <div
-                className={classNames.actionsSeparator}
-                data-component-name="ObjectPageTitleActionsSeparator"
-                aria-hidden
-              />
-            )}
-            {!showNavigationInTopArea && (wcrNavToolbar ? wcrNavToolbar : navigationBar)}
-          </div>
-        )}
-      </FlexBox>
-      {subHeader && (
-        <FlexBox>
-          <div
-            className={clsx(classNames.subTitle, classNames.subTitleBottom)}
-            data-component-name="ObjectPageTitleSubHeader"
+      <FlexBox alignItems={FlexBoxAlignItems.End}>
+        <div className={classNames.snappedAvatarContainer}>{_snappedAvatar}</div>
+        <FlexBox direction={FlexBoxDirection.Column} className={classNames.contentContainer}>
+          <FlexBox
+            alignItems={FlexBoxAlignItems.Center}
+            className={classNames.middleSection}
+            data-component-name="ObjectPageTitleMiddleSection"
           >
-            {subHeader}
-          </div>
+            <FlexBox className={classNames.titleMainSection} onClick={onHeaderClick}>
+              {header && (
+                <div className={classNames.title} data-component-name="ObjectPageTitleHeader">
+                  {header}
+                </div>
+              )}
+              {children && (
+                <div className={classNames.content} data-component-name="ObjectPageTitleContent">
+                  {children}
+                </div>
+              )}
+            </FlexBox>
+            {(actionsBar || (!showNavigationInTopArea && navigationBar)) && (
+              <div className={classNames.toolbar} ref={toolbarContainerRef}>
+                {actionsBar}
+                {!showNavigationInTopArea && actionsBar && navigationBar && (
+                  <div
+                    className={classNames.actionsSeparator}
+                    data-component-name="ObjectPageTitleActionsSeparator"
+                    aria-hidden
+                  />
+                )}
+                {!showNavigationInTopArea && (wcrNavToolbar ? wcrNavToolbar : navigationBar)}
+              </div>
+            )}
+          </FlexBox>
+          {subHeader && (
+            <FlexBox id="sub">
+              <div
+                className={clsx(classNames.subTitle, classNames.subTitleBottom)}
+                data-component-name="ObjectPageTitleSubHeader"
+              >
+                {subHeader}
+              </div>
+            </FlexBox>
+          )}
         </FlexBox>
-      )}
-      {props?.['data-header-content-visible']
-        ? expandedContent
-        : props['data-is-snapped-rendered-outside']
-          ? undefined
-          : snappedContent}
+      </FlexBox>
+      {props?.['data-header-content-visible'] ? expandedContent : snappedContent}
     </FlexBox>
   );
 });
@@ -271,3 +202,4 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
 ObjectPageTitle.displayName = 'ObjectPageTitle';
 
 export { ObjectPageTitle };
+export type { ObjectPageTitlePropTypes };

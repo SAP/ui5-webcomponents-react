@@ -10,11 +10,12 @@ export class ComponentRenderer extends AbstractRenderer {
   private attributes: CEM.ClassField[] = [];
   private slots: CEM.Slot[] = [];
   private events: CEM.Event[] = [];
-  private description: string = '';
+  private description: CEM.ClassLike['description'] = '';
   private note: string = '';
   private isAbstract: boolean = false;
-  private since: string | undefined;
-  private isExperimental: boolean | string | undefined = false;
+  private since: CEM.ClassLike['_ui5since'];
+  private isExperimental: CEM.ClassLike['_ui5experimental'] = false;
+  private isDeprecated: CEM.ClassLike['deprecated'];
 
   setAttributes(attrs: CEM.ClassField[]) {
     this.attributes.push(...attrs);
@@ -56,6 +57,11 @@ export class ComponentRenderer extends AbstractRenderer {
     return this;
   }
 
+  setIsDeprecated(value?: CEM.ClassField['deprecated']) {
+    this.isDeprecated = value;
+    return this;
+  }
+
   prepare(context: WebComponentWrapper) {
     context.exportSet.add(context.componentName);
   }
@@ -75,6 +81,10 @@ export class ComponentRenderer extends AbstractRenderer {
     }
     if (this.isExperimental) {
       comment += ` * @experimental${typeof this.isExperimental === 'string' ? ` ${this.isExperimental}` : ''}\n`;
+    }
+
+    if (this.isDeprecated) {
+      comment += ` * @deprecated${typeof this.isDeprecated === 'string' ? ` ${summaryFormatter(this.isDeprecated)}` : ''}\n`;
     }
 
     comment += '*/';
