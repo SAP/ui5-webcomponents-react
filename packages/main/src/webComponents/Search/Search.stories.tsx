@@ -33,9 +33,6 @@ const scopeData = [
 ];
 
 export const WithScopeAndItems: Story = {
-  parameters: {
-    docs: { description: { story: 'A `Search` component with enabled scope, items and filtering by scope.' } }
-  },
   args: {
     showClearIcon: true,
     placeholder: 'Search Apps, Products',
