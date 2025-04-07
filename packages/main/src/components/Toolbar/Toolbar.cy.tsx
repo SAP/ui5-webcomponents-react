@@ -615,6 +615,45 @@ describe('Toolbar', () => {
     cy.get('[data-component-name="ToolbarOverflowPopoverContent"]').should('have.attr', 'role', 'menu');
   });
 
+  it('no overflow button for spacer- or separator-only children', () => {
+    cy.mount(
+      <Toolbar style={{ width: '0px' }}>
+        <ToolbarSpacer />
+        <Button>Button</Button>
+        <ToolbarSeparator />
+      </Toolbar>,
+      { strict: false }
+    );
+    cy.get('[data-component-name="ToolbarOverflowButtonContainer"]').should('exist');
+
+    cy.mount(
+      <Toolbar style={{ width: '0px' }}>
+        <ToolbarSpacer />
+        <ToolbarSeparator />
+      </Toolbar>,
+      { strict: false }
+    );
+    cy.get('[data-component-name="ToolbarOverflowButtonContainer"]').should('not.exist');
+    cy.mount(
+      <Toolbar style={{ width: '0px' }}>
+        <ToolbarSpacer />
+        <ToolbarSpacer />
+        <ToolbarSpacer />
+      </Toolbar>,
+      { strict: false }
+    );
+    cy.get('[data-component-name="ToolbarOverflowButtonContainer"]').should('not.exist');
+    cy.mount(
+      <Toolbar style={{ width: '0px' }}>
+        <ToolbarSeparator />
+        <ToolbarSeparator />
+        <ToolbarSeparator />
+      </Toolbar>,
+      { strict: false }
+    );
+    cy.get('[data-component-name="ToolbarOverflowButtonContainer"]').should('not.exist');
+  });
+
   mountWithCustomTagName(Toolbar);
   cypressPassThroughTestsFactory(Toolbar);
 });
