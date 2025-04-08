@@ -315,6 +315,16 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       isInitial.current = true;
     }
   }, [visibleColumns.length]);
+  // force re-measure if `state.groupBy` or `state.columnOrder` changes
+  useEffect(() => {
+    if (isInitial.current && (tableState.groupBy || tableState.columnOrder)) {
+      setTimeout(() => {
+        columnVirtualizer.measure();
+      }, 100);
+    } else {
+      isInitial.current = true;
+    }
+  }, [tableState.groupBy, tableState.columnOrder]);
 
   const [analyticalTableRef, scrollToRef] = useTableScrollHandles(updatedRef, dispatch);
 
