@@ -96,6 +96,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   })();
   const [showFilters, setShowFilters] = useState(initiallyShowFilters);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [delayedDialogOpen, setDelayedDialog] = useState(false);
   const dialogRef = useRef<DialogDomRef>(null);
   const filterBarButtonsRef = useRef(null);
   const filterAreaRef = useRef<HTMLDivElement>(null);
@@ -117,6 +118,13 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
       setShowFilters(!hideToolbar ? !filterBarCollapsed : true);
     }
   }, [setShowFilters, hideToolbar, filterBarCollapsed]);
+
+  //todo: remove state again after https://github.com/SAP/ui5-webcomponents/issues/11281 has been fixed
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      setDelayedDialog(dialogOpen);
+    });
+  }, [dialogOpen]);
 
   useStylesheet(styleData, FilterBar.displayName);
 
@@ -409,7 +417,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
       </CustomTag>
       {dialogOpen && !hideFilterConfiguration && (
         <FilterDialog
-          open={dialogOpen}
+          open={delayedDialogOpen}
           handleDialogClose={handleDialogClose}
           handleRestoreFilters={handleRestoreFilters}
           showRestoreButton={showResetButton}
