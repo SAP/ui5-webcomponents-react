@@ -1,21 +1,25 @@
 import dataLarge from '@sb/mockData/Friends500.json';
 import type { Meta, StoryObj } from '@storybook/react';
 import TableGrowingMode from '@ui5/webcomponents/dist/types/TableGrowingMode.js';
-import TableSelectionMode from '@ui5/webcomponents/dist/types/TableSelectionMode.js';
 import editIcon from '@ui5/webcomponents-icons/dist/edit.js';
 import saveIcon from '@ui5/webcomponents-icons/dist/save.js';
-import type { TablePropTypes, TableVirtualizerPropTypes } from '@ui5/webcomponents-react';
-import { SegmentedButton, SegmentedButtonItem } from '@ui5/webcomponents-react';
 import { useEffect, useState } from 'react';
+import { Label } from '../Label/index.js';
+import { SegmentedButton } from '../SegmentedButton/index.js';
+import { SegmentedButtonItem } from '../SegmentedButtonItem/index.js';
 import { TableCell } from '../TableCell/index.js';
+import type { TableGrowingPropTypes } from '../TableGrowing/index.js';
 import { TableGrowing } from '../TableGrowing/index.js';
 import { TableHeaderCell } from '../TableHeaderCell/index.js';
 import { TableHeaderRow } from '../TableHeaderRow/index.js';
 import { TableRow } from '../TableRow/index.js';
 import { TableRowAction } from '../TableRowAction/index.js';
 import { TableRowActionNavigation } from '../TableRowActionNavigation/index.js';
-import { TableSelection } from '../TableSelection/index.js';
+import { TableSelectionMulti } from '../TableSelectionMulti/index.js';
+import { TableSelectionSingle } from '../TableSelectionSingle/index.js';
+import type { TableVirtualizerPropTypes } from '../TableVirtualizer/index.js';
 import { TableVirtualizer } from '../TableVirtualizer/index.js';
+import type { TablePropTypes } from './index.js';
 import { Table } from './index.js';
 
 const popInColumns = (
@@ -109,6 +113,7 @@ export const Default: Story = {
 
 export const GrowingTable: Story = {
   render: (args) => {
+    const [mode, setMode] = useState<TableGrowingPropTypes['mode']>(TableGrowingMode.Button);
     const createRows = (indexOffset) => {
       return new Array(25).fill('').map((_, index) => (
         <TableRow key={`${index + indexOffset}-row`}>
@@ -135,32 +140,52 @@ export const GrowingTable: Story = {
       setRows((prev) => [...prev, ...createRows(prev.length + 1)]);
     };
     return (
-      <div style={{ height: '250px', overflow: 'auto' }}>
-        <Table {...args} features={<TableGrowing onLoadMore={onLoadMore} type={TableGrowingMode.Scroll} />}>
-          {rows}
-        </Table>
-      </div>
+      <>
+        <Label showColon style={{ marginInlineEnd: '0.5rem' }}>
+          Growing <code>mode</code>
+        </Label>
+        <SegmentedButton
+          style={{ marginBlockEnd: '0.5rem' }}
+          onSelectionChange={(e) => {
+            setMode(e.detail.selectedItems[0].textContent as TableGrowingPropTypes['mode']);
+          }}
+        >
+          <SegmentedButtonItem selected={mode === TableGrowingMode.Scroll}>Scroll</SegmentedButtonItem>
+          <SegmentedButtonItem selected={mode === TableGrowingMode.Button}>Button</SegmentedButtonItem>
+        </SegmentedButton>
+        <div style={{ height: '250px', overflow: 'auto' }}>
+          <Table {...args} features={<TableGrowing onLoadMore={onLoadMore} mode={mode} />}>
+            {rows}
+          </Table>
+        </div>
+      </>
     );
   }
 };
 
 export const WithSelection: Story = {
   render(args) {
-    const [mode, setMode] = useState<TableSelectionMode>(TableSelectionMode.Multiple);
+    const [mode, setMode] = useState<'Single' | 'Multi' | 'None'>('Single');
     return (
       <>
         <SegmentedButton
           onSelectionChange={(e) => {
-            setMode(e.detail.selectedItems[0].textContent);
+            setMode(e.detail.selectedItems[0].textContent as 'Single' | 'Multi' | 'None');
           }}
         >
-          {Object.values(TableSelectionMode).map((selectionMode) => (
-            <SegmentedButtonItem key={selectionMode} selected={selectionMode === mode}>
-              {selectionMode}
-            </SegmentedButtonItem>
-          ))}
+          <SegmentedButtonItem selected={'None' === mode}>None</SegmentedButtonItem>
+          <SegmentedButtonItem selected={'Single' === mode}>Single</SegmentedButtonItem>
+          <SegmentedButtonItem selected={'Multi' === mode}>Multi</SegmentedButtonItem>
         </SegmentedButton>
-        <Table {...args} features={<TableSelection mode={mode} />}>
+        <Table
+          {...args}
+          features={
+            <>
+              {'Single' === mode && <TableSelectionSingle />}
+              {'Multi' === mode && <TableSelectionMulti />}
+            </>
+          }
+        >
           <TableRow>
             <TableCell>
               <span>Notebook Basic</span>
@@ -273,9 +298,7 @@ export const withRowActions: Story = {
             actions={
               <>
                 <TableRowAction icon={editIcon}>Edit</TableRowAction>
-                <TableRowAction icon={saveIcon} disabled>
-                  Save
-                </TableRowAction>
+                <TableRowAction icon={saveIcon}>Save</TableRowAction>
                 <TableRowActionNavigation interactive={!!(index % 2)} />
               </>
             }
