@@ -251,6 +251,10 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
 
   useEffect(() => {
     if (selectedSectionId) {
+      if (mode === ObjectPageMode.IconTabBar) {
+        setInternalSelectedSectionId(selectedSectionId);
+        return;
+      }
       const selectedSection = getSectionElementById(objectPageRef.current, false, selectedSectionId);
       if (selectedSection) {
         const selectedSectionIndex = Array.from(
@@ -259,7 +263,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         handleOnSectionSelected({}, selectedSectionId, selectedSectionIndex, selectedSection);
       }
     }
-  }, [selectedSectionId]);
+  }, [selectedSectionId, mode]);
 
   // do internal scrolling
   useEffect(() => {
@@ -415,6 +419,10 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
 
   const visibleSectionIds = useRef<Set<string>>(new Set());
   useEffect(() => {
+    // section observers are not required in TabBar mode
+    if (mode === ObjectPageMode.IconTabBar) {
+      return;
+    }
     const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
     // only the sticky part of the header must be added as margin
     const rootMargin = `-${((headerPinned && !headerCollapsed) || scrolledHeaderExpanded ? totalHeaderHeight : topHeaderHeight) + TAB_CONTAINER_HEADER_HEIGHT}px 0px 0px 0px`;
@@ -459,7 +467,15 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     return () => {
       observer.disconnect();
     };
-  }, [totalHeaderHeight, headerPinned, headerCollapsed, topHeaderHeight, childrenArray.length, scrolledHeaderExpanded]);
+  }, [
+    totalHeaderHeight,
+    headerPinned,
+    headerCollapsed,
+    topHeaderHeight,
+    childrenArray.length,
+    scrolledHeaderExpanded,
+    mode
+  ]);
 
   const onTitleClick = (e) => {
     e.stopPropagation();

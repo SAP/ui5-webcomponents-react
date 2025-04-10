@@ -37,15 +37,15 @@ import * as ComponentStories from './Table.stories';
 
 ## Growing Table
 
-`Table` with growing feature (`<TableGrowing onLoadMore={onLoadMore} type={TableGrowingMode.Scroll} />`):
+`Table` with growing feature (`<TableGrowing onLoadMore={onLoadMore} mode={TableGrowingMode.Scroll} />`):
 
 <Canvas of={ComponentStories.GrowingTable} />
 
 <details>
 
-<summary>Show code</summary>
+<summary>Show static code</summary>
 
-```jsx
+```tsx
 const createRows = (indexOffset) => {
   return new Array(25).fill('').map((_, index) => (
     <TableRow key={`${index + indexOffset}-row`}>
@@ -68,39 +68,32 @@ const createRows = (indexOffset) => {
   ));
 };
 
-const GrowingTable = () => {
+const GrowingTable = (props) => {
+  const [mode, setMode] = useState<TableGrowingPropTypes['mode']>(TableGrowingMode.Button);
   const [rows, setRows] = useState(createRows(1));
   const onLoadMore = () => {
     setRows((prev) => [...prev, ...createRows(prev.length + 1)]);
   };
   return (
-    <div style={{ height: '250px', overflow: 'auto' }}>
-      <Table
-        {...otherProps}
-        headerRow={
-          <TableHeaderRow sticky>
-            <TableHeaderCell width={'200px'} minWidth={'200px'}>
-              <span>Product</span>
-            </TableHeaderCell>
-            <TableHeaderCell minWidth={'200px'}>
-              <span>Supplier</span>
-            </TableHeaderCell>
-            <TableHeaderCell minWidth={'200px'}>
-              <span>Dimensions</span>
-            </TableHeaderCell>
-            <TableHeaderCell minWidth={'100px'} maxWidth="200px">
-              <span>Weight</span>
-            </TableHeaderCell>
-            <TableHeaderCell minWidth="200px">
-              <span>Price</span>
-            </TableHeaderCell>
-          </TableHeaderRow>
-        }
-        features={<TableGrowing onLoadMore={onLoadMore} type={TableGrowingMode.Scroll} />}
+    <>
+      <Label showColon style={{ marginInlineEnd: '0.5rem' }}>
+        Growing <code>mode</code>
+      </Label>
+      <SegmentedButton
+        style={{ marginBlockEnd: '0.5rem' }}
+        onSelectionChange={(e) => {
+          setMode(e.detail.selectedItems[0].textContent as TableGrowingPropTypes['mode']);
+        }}
       >
-        {rows}
-      </Table>
-    </div>
+        <SegmentedButtonItem selected={mode === TableGrowingMode.Scroll}>Scroll</SegmentedButtonItem>
+        <SegmentedButtonItem selected={mode === TableGrowingMode.Button}>Button</SegmentedButtonItem>
+      </SegmentedButton>
+      <div style={{ height: '250px', overflow: 'auto' }}>
+        <Table {...props} features={<TableGrowing onLoadMore={onLoadMore} mode={mode} />}>
+          {rows}
+        </Table>
+      </div>
+    </>
   );
 };
 ```
@@ -109,52 +102,36 @@ const GrowingTable = () => {
 
 ## Table with row selection
 
-`Table` with selection feature (`<TableSelection mode="Multiple" />`):
+`Table` with selection features (`<TableSelectionSingle />` & `<TableSelectionMulti />`)
 
 <Canvas of={ComponentStories.WithSelection} />
 
 <details>
 
-    <summary>Show code</summary>
+    <summary>Show static code</summary>
 
-```jsx
+```tsx
 function TableWithRowSelection(props) {
-  const [mode, setMode] = useState(TableSelectionMode.Multiple);
+  const [mode, setMode] = useState<'Single' | 'Multi' | 'None'>('Single');
   return (
     <>
       <SegmentedButton
         onSelectionChange={(e) => {
-          setMode(e.detail.selectedItems[0].textContent);
+          setMode(e.detail.selectedItems[0].textContent as 'Single' | 'Multi' | 'None');
         }}
       >
-        {Object.values(TableSelectionMode).map((selectionMode) => (
-          <SegmentedButtonItem key={selectionMode} selected={selectionMode === mode}>
-            {selectionMode}
-          </SegmentedButtonItem>
-        ))}
+        <SegmentedButtonItem selected={'None' === mode}>None</SegmentedButtonItem>
+        <SegmentedButtonItem selected={'Single' === mode}>Single</SegmentedButtonItem>
+        <SegmentedButtonItem selected={'Multi' === mode}>Multi</SegmentedButtonItem>
       </SegmentedButton>
       <Table
         {...props}
-        headerRow={
-          <TableHeaderRow sticky>
-            <TableHeaderCell width={'200px'} minWidth={'200px'}>
-              <span>Product</span>
-            </TableHeaderCell>
-            <TableHeaderCell minWidth={'200px'}>
-              <span>Supplier</span>
-            </TableHeaderCell>
-            <TableHeaderCell minWidth={'200px'}>
-              <span>Dimensions</span>
-            </TableHeaderCell>
-            <TableHeaderCell minWidth={'100px'} maxWidth="200px">
-              <span>Weight</span>
-            </TableHeaderCell>
-            <TableHeaderCell minWidth="200px">
-              <span>Price</span>
-            </TableHeaderCell>
-          </TableHeaderRow>
+        features={
+          <>
+            {'Single' === mode && <TableSelectionSingle />}
+            {'Multi' === mode && <TableSelectionMulti />}
+          </>
         }
-        features={<TableSelection mode={mode} />}
       >
         <TableRow>
           <TableCell>
@@ -206,7 +183,7 @@ function TableWithRowSelection(props) {
 
 <details>
 
-    <summary>Show code</summary>
+    <summary>Show static code</summary>
 
 ```tsx
 // enrich data with `position` (if not already available)
@@ -401,21 +378,17 @@ Enable drag-and-drop by using the `onMoveOver` and `onMove` event in combination
 <Description of={TableVirtualizer} />
 <ArgTypes of={TableVirtualizer} />
 
-## TableVirtualizer
-
-<Description of={TableVirtualizer} />
-<ArgTypes of={TableVirtualizer} />
-
-## TableVirtualizer
+## TableSelectionMulti
 
 <Description of={TableSelectionMulti} />
 <ArgTypes of={TableSelectionMulti} />
-## TableVirtualizer
+
+## TableSelectionSingle
 
 <Description of={TableSelectionSingle} />
 <ArgTypes of={TableSelectionSingle} />
 
-## TableSelection
+## TableSelection (deprecated)
 
 **Deprecated!**
 
