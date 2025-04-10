@@ -47,297 +47,314 @@ import {
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 describe('ObjectPage', () => {
-  it('dynamic children selection', () => {
-    const TestComp = () => {
-      const [state, setState] = useState<boolean>(false);
-      const [sections, add] = useReducer(
-        (prev) => [
-          ...prev,
-          <ObjectPageSection key={prev.length + 1} id={`${prev.length + 1}`} titleText={`Section ${prev.length + 1}`}>
-            <div style={{ height: `${(prev.length + 1) * 50}px` }}>Content {prev.length + 1}</div>
-          </ObjectPageSection>
-        ],
-        []
-      );
-      return (
-        <>
-          <button onClick={add}>Add</button>
-          <ObjectPage
-            data-testid="op"
-            style={{ height: '800px', scrollBehavior: 'auto' }}
-            titleArea={DPTitle}
-            headerArea={DPContent}
-            onSelectedSectionChange={() => {
-              setState(!state);
-            }}
-          >
-            {OPContent}
-            {sections}
-          </ObjectPage>
-        </>
-      );
-    };
-
-    cy.mount(<TestComp />);
-
-    cy.wait(100);
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
-    cy.findByText('Job Information').should('be.visible');
-
-    // add 15 sections
-    for (let i = 0; i < 15; i++) {
-      cy.findByText('Add').click();
-    }
-
-    //TabContainer overflow btn
-    cy.get('[data-ui5-stable="overflow-end"]').realClick();
-    cy.get('[ui5-list]').should('be.visible');
-    cy.wait(500);
-    // select "Section 15"
-    cy.realPress('PageDown');
-    cy.wait(500);
-    cy.realPress('Enter');
-    cy.get('[ui5-list]').should('not.be.visible');
-
-    cy.findByText('Content 15').should('be.visible');
-    cy.wait(100);
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 15').should('have.attr', 'aria-selected', 'true');
-
-    cy.findByTestId('op').scrollTo(0, 4660);
-
-    cy.findByText('Content 7').should('be.visible');
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 7').should('have.attr', 'aria-selected', 'true');
-
-    cy.mount(<TestComp />);
-    // add 15 sections
-    for (let i = 0; i < 15; i++) {
-      cy.findByText('Add').click();
-    }
-    cy.findByTestId('op').scrollTo(0, 4660);
-
-    cy.findByText('Content 7').should('be.visible');
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 7').should('have.attr', 'aria-selected', 'true');
-  });
-
-  it('toggle header', () => {
-    const toggle = cy.spy().as('toggleSpy');
-    cy.mount(
-      <ObjectPage
-        titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
-        headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-        onToggleHeaderArea={toggle}
-        hidePinButton
-      >
-        <ObjectPageSection id="section" titleText="Section">
-          Content
-        </ObjectPageSection>
-      </ObjectPage>
-    );
-    cy.findByText('ObjectPageHeader').should('be.visible');
-
-    cy.get('[data-component-name="ObjectPageAnchorBar"] > [ui5-button]').click();
-    cy.findByText('ObjectPageHeader').should('not.be.visible');
-    cy.get('@toggleSpy').should('have.been.calledOnce');
-    cy.get('@toggleSpy').should('have.been.calledWith', false);
-
-    cy.get('[data-component-name="ObjectPageAnchorBar"] > [ui5-button]').click();
-    cy.findByText('ObjectPageHeader').should('be.visible');
-    cy.get('@toggleSpy').should('have.been.calledWith', true);
-    cy.get('@toggleSpy').should('have.been.calledTwice');
-
-    cy.findByText('Heading').click({ force: true });
-    cy.findByText('ObjectPageHeader').should('not.be.visible');
-    cy.get('@toggleSpy').should('have.been.calledThrice');
-    cy.get('@toggleSpy').should('have.been.calledWith', false);
-
-    cy.get('[data-component-name="ObjectPageTitle"]').click();
-    cy.findByText('ObjectPageHeader').should('be.visible');
-    cy.get('@toggleSpy').should('have.been.calledWith', true);
-    cy.get('@toggleSpy').should('have.callCount', 4);
-
-    cy.mount(
-      <ObjectPage
-        titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
-        headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-        onToggleHeaderArea={toggle}
-        hidePinButton
-        preserveHeaderStateOnClick
-      >
-        <ObjectPageSection id="section" titleText="Section">
-          Content
-        </ObjectPageSection>
-      </ObjectPage>
-    );
-
-    cy.findByText('Heading').click({ force: true });
-    cy.findByText('ObjectPageHeader').should('be.visible');
-    cy.get('@toggleSpy').should('have.callCount', 4);
-
-    cy.get('[data-component-name="ObjectPageTitle"]').click();
-    cy.findByText('ObjectPageHeader').should('be.visible');
-    cy.get('@toggleSpy').should('have.callCount', 4);
-  });
-
-  it('pin header', () => {
-    const pin = cy.spy().as('onPinSpy');
-    cy.mount(
-      <ObjectPage
-        style={{ height: '100vh' }}
-        titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
-        headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-        onPinButtonToggle={pin}
-        data-testid="op"
-      >
-        <ObjectPageSection id="section" titleText="Section">
-          <div style={{ height: '2000px' }} />
-        </ObjectPageSection>
-      </ObjectPage>
-    );
-    cy.wait(50);
-
-    cy.findByTestId('op').scrollTo(0, 500);
-    cy.findByText('ObjectPageHeader').should('not.be.visible');
-
-    cy.findByTestId('op').scrollTo('top');
-
-    cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').click();
-    cy.get('@onPinSpy').should('have.been.calledOnce');
-    cy.get('@onPinSpy').should('have.been.calledWith', true);
-
-    cy.findByTestId('op').scrollTo(0, 500);
-    cy.findByText('ObjectPageHeader').should('be.visible');
-
-    cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').click();
-    cy.get('@onPinSpy').should('have.been.calledTwice');
-    cy.get('@onPinSpy').should('have.been.calledWith', false);
-    cy.findByText('ObjectPageHeader').should('not.be.visible');
-  });
-
-  it('programmatically pin header (`headerPinned`)', () => {
-    document.body.style.margin = '0px';
-    const TestComp = ({ onPinButtonToggle }: ObjectPagePropTypes) => {
-      const [pinned, setPinned] = useState(false);
-      const handlePinChange = (pinned) => {
-        onPinButtonToggle(pinned);
-        setPinned(pinned);
-      };
-      return (
-        <>
-          <Button
-            data-testid="btn"
-            onClick={() => {
-              setPinned((prev) => !prev);
-            }}
-          >
-            toggle {`${!pinned}`}
-          </Button>
-          <ObjectPage
-            style={{ height: '95vh' }}
-            titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
-            headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
-            headerPinned={pinned}
-            onPinButtonToggle={handlePinChange}
-            data-testid="op"
-          >
-            <ObjectPageSection id="section" titleText="Section">
-              <div style={{ height: '2000px' }} />
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`dynamic children selection (mode: ${mode})`, () => {
+      const TestComp = () => {
+        const [state, setState] = useState<boolean>(false);
+        const [sections, add] = useReducer(
+          (prev) => [
+            ...prev,
+            <ObjectPageSection key={prev.length + 1} id={`${prev.length + 1}`} titleText={`Section ${prev.length + 1}`}>
+              <div style={{ height: `${(prev.length + 1) * 50}px` }}>Content {prev.length + 1}</div>
             </ObjectPageSection>
-          </ObjectPage>
-        </>
-      );
-    };
-    const pin = cy.spy().as('onPinSpy');
-    cy.mount(<TestComp onPinButtonToggle={pin} />);
-    cy.wait(50);
+          ],
+          []
+        );
+        return (
+          <>
+            <button onClick={add}>Add</button>
+            <ObjectPage
+              data-testid="op"
+              style={{ height: '800px', scrollBehavior: 'auto' }}
+              titleArea={DPTitle}
+              headerArea={DPContent}
+              onSelectedSectionChange={() => {
+                setState(!state);
+              }}
+              mode={mode}
+            >
+              {OPContent}
+              {sections}
+            </ObjectPage>
+          </>
+        );
+      };
 
-    cy.findByTestId('op').scrollTo(0, 500);
-    cy.findByText('ObjectPageHeader').should('not.be.visible');
+      cy.mount(<TestComp />);
 
-    cy.findByTestId('btn').click();
-    cy.get('@onPinSpy').should('have.been.calledOnce');
-    cy.get('@onPinSpy').should('have.been.calledWith', true);
-    cy.findByText('ObjectPageHeader').should('be.visible');
+      cy.wait(100);
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
+      cy.findByText('Job Information').should('be.visible');
 
-    cy.findByTestId('op').scrollTo(0, 0);
-    cy.findByText('ObjectPageHeader').should('be.visible');
+      // add 15 sections
+      for (let i = 0; i < 15; i++) {
+        cy.findByText('Add').click();
+      }
 
-    cy.findByTestId('op').scrollTo(0, 800);
-    cy.findByText('ObjectPageHeader').should('be.visible');
+      //TabContainer overflow btn
+      cy.get('[data-ui5-stable="overflow-end"]').realClick();
+      cy.get('[ui5-list]').should('be.visible');
+      cy.wait(500);
+      // select "Section 15"
+      cy.realPress('PageDown');
+      cy.wait(500);
+      cy.realPress('Enter');
+      cy.get('[ui5-list]').should('not.be.visible');
 
-    cy.findByTestId('btn').click();
-    cy.get('@onPinSpy').should('have.been.calledTwice');
-    cy.get('@onPinSpy').should('have.been.calledWith', false);
-    cy.findByText('ObjectPageHeader').should('not.be.visible');
+      cy.findByText('Content 15').should('be.visible');
+      cy.wait(100);
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 15').should('have.attr', 'aria-selected', 'true');
 
-    cy.findByTestId('btn').click();
-    cy.get('@onPinSpy').should('have.callCount', 3);
-    cy.findByTestId('op').scrollTo(0, 500);
-    cy.findByText('ObjectPageHeader').should('be.visible');
-    cy.wait(200);
-    cy.findByTestId('btn').click();
-    cy.findByText('ObjectPageHeader').should('not.be.visible');
+      if (mode === ObjectPageMode.Default) {
+        cy.findByTestId('op').scrollTo(0, 4660);
 
-    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
-    cy.get('@onPinSpy').should('have.callCount', 4);
-    cy.findByText('ObjectPageHeader').should('be.visible');
+        cy.findByText('Content 7').should('be.visible');
+        cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 7').should('have.attr', 'aria-selected', 'true');
 
-    // wait for timeout of expand click
-    cy.wait(500);
+        cy.mount(<TestComp />);
+        // add 15 sections
+        for (let i = 0; i < 15; i++) {
+          cy.findByText('Add').click();
+        }
+        cy.findByTestId('op').scrollTo(0, 4660);
 
-    cy.findByTestId('op').scrollTo(0, 501);
-    cy.findByText('ObjectPageHeader').should('not.be.visible');
-
-    cy.findByTestId('op').scrollTo(0, 30);
-    cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').click();
-    cy.get('@onPinSpy').should('have.callCount', 5);
-    cy.findByTestId('btn').should('have.text', 'toggle false');
-    cy.findByText('ObjectPageHeader').should('be.visible');
-
-    cy.findByTestId('op').scrollTo(0, 500);
-    cy.wait(500);
-    cy.findByTestId('btn').click();
-    cy.get('@onPinSpy').should('have.callCount', 6);
-    cy.findByText('ObjectPageHeader').should('not.be.visible');
-
-    cy.findByTestId('btn').click();
-    cy.findByText('ObjectPageHeader').should('be.visible');
-    cy.get('@onPinSpy').should('have.callCount', 7);
+        cy.findByText('Content 7').should('be.visible');
+        cy.get('[ui5-tabcontainer]').findUi5TabByText('Section 7').should('have.attr', 'aria-selected', 'true');
+      }
+    });
   });
 
-  it('collapse header when partially visible', () => {
-    cy.viewport(1440, 1080);
-    cy.mount(
-      <ObjectPage
-        style={{ height: '100vh' }}
-        titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
-        headerArea={
-          <ObjectPageHeader>
-            <div style={{ height: '400px', width: '100%', background: 'lightyellow' }}>ObjectPageHeader</div>
-          </ObjectPageHeader>
-        }
-        data-testid="op"
-      >
-        <ObjectPageSection id="section" titleText="Section">
-          <div style={{ height: '2000px' }} />
-        </ObjectPageSection>
-      </ObjectPage>
-    );
-    cy.wait(50);
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`toggle header (mode: ${mode})`, () => {
+      const toggle = cy.spy().as('toggleSpy');
+      cy.mount(
+        <ObjectPage
+          titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+          headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
+          onToggleHeaderArea={toggle}
+          hidePinButton
+          mode={mode}
+        >
+          <ObjectPageSection id="section" titleText="Section">
+            Content
+          </ObjectPageSection>
+        </ObjectPage>
+      );
+      cy.findByText('ObjectPageHeader').should('be.visible');
 
-    cy.findByTestId('op').scrollTo(0, 400);
-    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
-    cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').should('not.exist');
-    cy.findByText('ObjectPageHeader').should('not.be.visible');
+      cy.get('[data-component-name="ObjectPageAnchorBar"] > [ui5-button]').click();
+      cy.findByText('ObjectPageHeader').should('not.be.visible');
+      cy.get('@toggleSpy').should('have.been.calledOnce');
+      cy.get('@toggleSpy').should('have.been.calledWith', false);
 
-    // wait for timeout of expand click
-    cy.wait(500);
+      cy.get('[data-component-name="ObjectPageAnchorBar"] > [ui5-button]').click();
+      cy.findByText('ObjectPageHeader').should('be.visible');
+      cy.get('@toggleSpy').should('have.been.calledWith', true);
+      cy.get('@toggleSpy').should('have.been.calledTwice');
 
-    cy.findByTestId('op').scrollTo(0, 1);
-    cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').should('not.exist');
-    cy.wait(50);
-    cy.findByTestId('op').scrollTo(0, 0);
-    cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').should('be.visible');
-    cy.findByText('ObjectPageHeader').should('be.visible');
+      cy.findByText('Heading').click({ force: true });
+      cy.findByText('ObjectPageHeader').should('not.be.visible');
+      cy.get('@toggleSpy').should('have.been.calledThrice');
+      cy.get('@toggleSpy').should('have.been.calledWith', false);
+
+      cy.get('[data-component-name="ObjectPageTitle"]').click();
+      cy.findByText('ObjectPageHeader').should('be.visible');
+      cy.get('@toggleSpy').should('have.been.calledWith', true);
+      cy.get('@toggleSpy').should('have.callCount', 4);
+
+      cy.mount(
+        <ObjectPage
+          titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+          headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
+          onToggleHeaderArea={toggle}
+          hidePinButton
+          preserveHeaderStateOnClick
+          mode={mode}
+        >
+          <ObjectPageSection id="section" titleText="Section">
+            Content
+          </ObjectPageSection>
+        </ObjectPage>
+      );
+
+      cy.findByText('Heading').click({ force: true });
+      cy.findByText('ObjectPageHeader').should('be.visible');
+      cy.get('@toggleSpy').should('have.callCount', 4);
+
+      cy.get('[data-component-name="ObjectPageTitle"]').click();
+      cy.findByText('ObjectPageHeader').should('be.visible');
+      cy.get('@toggleSpy').should('have.callCount', 4);
+    });
+  });
+
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`pin header (mode: ${mode})`, () => {
+      const pin = cy.spy().as('onPinSpy');
+      cy.mount(
+        <ObjectPage
+          style={{ height: '100vh' }}
+          titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+          headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
+          onPinButtonToggle={pin}
+          data-testid="op"
+        >
+          <ObjectPageSection id="section" titleText="Section">
+            <div style={{ height: '2000px' }} />
+          </ObjectPageSection>
+        </ObjectPage>
+      );
+      cy.wait(50);
+
+      cy.findByTestId('op').scrollTo(0, 500);
+      cy.findByText('ObjectPageHeader').should('not.be.visible');
+
+      cy.findByTestId('op').scrollTo('top');
+
+      cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').click();
+      cy.get('@onPinSpy').should('have.been.calledOnce');
+      cy.get('@onPinSpy').should('have.been.calledWith', true);
+
+      cy.findByTestId('op').scrollTo(0, 500);
+      cy.findByText('ObjectPageHeader').should('be.visible');
+
+      cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').click();
+      cy.get('@onPinSpy').should('have.been.calledTwice');
+      cy.get('@onPinSpy').should('have.been.calledWith', false);
+      cy.findByText('ObjectPageHeader').should('not.be.visible');
+    });
+  });
+
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`programmatically pin header (headerPinned) (mode: ${mode})`, () => {
+      document.body.style.margin = '0px';
+      const TestComp = ({ onPinButtonToggle }: ObjectPagePropTypes) => {
+        const [pinned, setPinned] = useState(false);
+        const handlePinChange = (pinned) => {
+          onPinButtonToggle(pinned);
+          setPinned(pinned);
+        };
+        return (
+          <>
+            <Button
+              data-testid="btn"
+              onClick={() => {
+                setPinned((prev) => !prev);
+              }}
+            >
+              toggle {`${!pinned}`}
+            </Button>
+            <ObjectPage
+              style={{ height: '95vh' }}
+              titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+              headerArea={<ObjectPageHeader>ObjectPageHeader</ObjectPageHeader>}
+              headerPinned={pinned}
+              onPinButtonToggle={handlePinChange}
+              data-testid="op"
+              mode={mode}
+            >
+              <ObjectPageSection id="section" titleText="Section">
+                <div style={{ height: '2000px' }} />
+              </ObjectPageSection>
+            </ObjectPage>
+          </>
+        );
+      };
+      const pin = cy.spy().as('onPinSpy');
+      cy.mount(<TestComp onPinButtonToggle={pin} />);
+      cy.wait(50);
+
+      cy.findByTestId('op').scrollTo(0, 500);
+      cy.findByText('ObjectPageHeader').should('not.be.visible');
+
+      cy.findByTestId('btn').click();
+      cy.get('@onPinSpy').should('have.been.calledOnce');
+      cy.get('@onPinSpy').should('have.been.calledWith', true);
+      cy.findByText('ObjectPageHeader').should('be.visible');
+
+      cy.findByTestId('op').scrollTo(0, 0);
+      cy.findByText('ObjectPageHeader').should('be.visible');
+
+      cy.findByTestId('op').scrollTo(0, 800);
+      cy.findByText('ObjectPageHeader').should('be.visible');
+
+      cy.findByTestId('btn').click();
+      cy.get('@onPinSpy').should('have.been.calledTwice');
+      cy.get('@onPinSpy').should('have.been.calledWith', false);
+      cy.findByText('ObjectPageHeader').should('not.be.visible');
+
+      cy.findByTestId('btn').click();
+      cy.get('@onPinSpy').should('have.callCount', 3);
+      cy.findByTestId('op').scrollTo(0, 500);
+      cy.findByText('ObjectPageHeader').should('be.visible');
+      cy.wait(200);
+      cy.findByTestId('btn').click();
+      cy.findByText('ObjectPageHeader').should('not.be.visible');
+
+      cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
+      cy.get('@onPinSpy').should('have.callCount', 4);
+      cy.findByText('ObjectPageHeader').should('be.visible');
+
+      // wait for timeout of expand click
+      cy.wait(500);
+
+      cy.findByTestId('op').scrollTo(0, 501);
+      cy.findByText('ObjectPageHeader').should('not.be.visible');
+
+      cy.findByTestId('op').scrollTo(0, 30);
+      cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').click();
+      cy.get('@onPinSpy').should('have.callCount', 5);
+      cy.findByTestId('btn').should('have.text', 'toggle false');
+      cy.findByText('ObjectPageHeader').should('be.visible');
+
+      cy.findByTestId('op').scrollTo(0, 500);
+      cy.wait(500);
+      cy.findByTestId('btn').click();
+      cy.get('@onPinSpy').should('have.callCount', 6);
+      cy.findByText('ObjectPageHeader').should('not.be.visible');
+
+      cy.findByTestId('btn').click();
+      cy.findByText('ObjectPageHeader').should('be.visible');
+      cy.get('@onPinSpy').should('have.callCount', 7);
+    });
+  });
+
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`collapse header when partially visible (mode: ${mode})`, () => {
+      cy.viewport(1440, 1080);
+      cy.mount(
+        <ObjectPage
+          style={{ height: '100vh' }}
+          titleArea={<ObjectPageTitle header="Heading" subHeader="SubHeading" />}
+          headerArea={
+            <ObjectPageHeader>
+              <div style={{ height: '400px', width: '100%', background: 'lightyellow' }}>ObjectPageHeader</div>
+            </ObjectPageHeader>
+          }
+          data-testid="op"
+          mode={mode}
+        >
+          <ObjectPageSection id="section" titleText="Section">
+            <div style={{ height: '2000px' }} />
+          </ObjectPageSection>
+        </ObjectPage>
+      );
+      cy.wait(50);
+
+      cy.findByTestId('op').scrollTo(0, 400);
+      cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
+      cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').should('not.exist');
+      cy.findByText('ObjectPageHeader').should('not.be.visible');
+
+      // wait for timeout of expand click
+      cy.wait(500);
+
+      cy.findByTestId('op').scrollTo(0, 1);
+      cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').should('not.exist');
+      cy.wait(50);
+      cy.findByTestId('op').scrollTo(0, 0);
+      cy.get('[data-component-name="ObjectPageAnchorBarPinBtn"]').should('be.visible');
+      cy.findByText('ObjectPageHeader').should('be.visible');
+    });
   });
 
   it('scroll to sections - default mode', () => {
@@ -824,58 +841,58 @@ describe('ObjectPage', () => {
     cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').click();
     cy.findByText('https://github.com/SAP/ui5-webcomponents-react').should('not.be.visible');
   });
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`ObjectPageSection/SubSection: Custom header & hideTitleText (mode: ${mode})`, () => {
+      document.body.style.margin = '0px';
+      const TestComp = ({ mode }: ObjectPagePropTypes) => {
+        const [hideTitleText1, toggleTitleText1] = useReducer((prev) => !prev, true);
+        const [hideTitleText2, toggleTitleText2] = useReducer((prev) => !prev, true);
+        const [hideTitleTextSub, toggleTitleTextSub] = useReducer((prev) => !prev, true);
+        return (
+          <ObjectPage titleArea={DPTitle} headerArea={DPContent} mode={mode}>
+            <ObjectPageSection
+              titleText="Goals"
+              hideTitleText={hideTitleText1}
+              id="goals"
+              aria-label="Goals"
+              header={<Title>Custom Header Section One</Title>}
+            >
+              <div style={{ width: '100%', height: '200px', background: 'cadetblue' }} />
+              <Button onClick={toggleTitleText1}>toggle titleText1</Button>
+              <ObjectPageSubSection id={'goals2'} titleText="Goals 2" hideTitleText={hideTitleTextSub}>
+                <div style={{ width: '100%', height: '200px', background: 'lightblue' }} />
+                <Button onClick={toggleTitleTextSub}>toggle titleTextSub</Button>
+              </ObjectPageSubSection>
+            </ObjectPageSection>
+            <ObjectPageSection
+              titleText="Personal"
+              hideTitleText={hideTitleText2}
+              id="personal"
+              aria-label="Personal"
+              header={<MessageStrip hideCloseButton>Custom Header Section Two</MessageStrip>}
+            >
+              <div style={{ width: '100%', height: '1200px', background: 'cadetblue' }} />
+              <Button onClick={toggleTitleText2}>toggle titleText2</Button>
+            </ObjectPageSection>
+            <ObjectPageSection
+              titleText="Employment"
+              hideTitleText
+              id="employment"
+              aria-label="Employment"
+              header={
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Icon name={'general-leave-request'} style={{ marginInlineEnd: '2rem' }} />
+                  <Text>Custom Header Section Three</Text>
+                  <Icon name={'general-leave-request'} style={{ marginInlineStart: '2rem' }} />
+                </div>
+              }
+            >
+              <div style={{ width: '100%', height: '300px', background: 'cadetblue' }} />
+            </ObjectPageSection>
+          </ObjectPage>
+        );
+      };
 
-  it('ObjectPageSection/SubSection: Custom header & hideTitleText', () => {
-    document.body.style.margin = '0px';
-    const TestComp = ({ mode }: ObjectPagePropTypes) => {
-      const [hideTitleText1, toggleTitleText1] = useReducer((prev) => !prev, true);
-      const [hideTitleText2, toggleTitleText2] = useReducer((prev) => !prev, true);
-      const [hideTitleTextSub, toggleTitleTextSub] = useReducer((prev) => !prev, true);
-      return (
-        <ObjectPage titleArea={DPTitle} headerArea={DPContent} mode={mode}>
-          <ObjectPageSection
-            titleText="Goals"
-            hideTitleText={hideTitleText1}
-            id="goals"
-            aria-label="Goals"
-            header={<Title>Custom Header Section One</Title>}
-          >
-            <div style={{ width: '100%', height: '200px', background: 'cadetblue' }} />
-            <Button onClick={toggleTitleText1}>toggle titleText1</Button>
-            <ObjectPageSubSection id={'goals2'} titleText="Goals 2" hideTitleText={hideTitleTextSub}>
-              <div style={{ width: '100%', height: '200px', background: 'lightblue' }} />
-              <Button onClick={toggleTitleTextSub}>toggle titleTextSub</Button>
-            </ObjectPageSubSection>
-          </ObjectPageSection>
-          <ObjectPageSection
-            titleText="Personal"
-            hideTitleText={hideTitleText2}
-            id="personal"
-            aria-label="Personal"
-            header={<MessageStrip hideCloseButton>Custom Header Section Two</MessageStrip>}
-          >
-            <div style={{ width: '100%', height: '1200px', background: 'cadetblue' }} />
-            <Button onClick={toggleTitleText2}>toggle titleText2</Button>
-          </ObjectPageSection>
-          <ObjectPageSection
-            titleText="Employment"
-            hideTitleText
-            id="employment"
-            aria-label="Employment"
-            header={
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Icon name={'general-leave-request'} style={{ marginInlineEnd: '2rem' }} />
-                <Text>Custom Header Section Three</Text>
-                <Icon name={'general-leave-request'} style={{ marginInlineStart: '2rem' }} />
-              </div>
-            }
-          >
-            <div style={{ width: '100%', height: '300px', background: 'cadetblue' }} />
-          </ObjectPageSection>
-        </ObjectPage>
-      );
-    };
-    [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
       cy.mount(<TestComp mode={mode} />);
       cy.wait(50);
 
@@ -1049,11 +1066,13 @@ describe('ObjectPage', () => {
     cy.findByText('Etiam pellentesque').should('have.attr', 'aria-level', '6');
   });
 
-  it('empty content', () => {
-    cy.mount(<ObjectPage data-testid="op" />);
-    cy.findByTestId('op').should('be.visible');
-    cy.mount(<ObjectPage data-testid="op" titleArea={DPTitle} headerArea={DPContent} />);
-    cy.findByTestId('op').should('be.visible');
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`empty content (mode: ${mode})`, () => {
+      cy.mount(<ObjectPage data-testid="op" mode={mode} />);
+      cy.findByTestId('op').should('be.visible');
+      cy.mount(<ObjectPage data-testid="op" mode={mode} titleArea={DPTitle} headerArea={DPContent} />);
+      cy.findByTestId('op').should('be.visible');
+    });
   });
 
   it('w/ image', () => {
@@ -1077,69 +1096,79 @@ describe('ObjectPage', () => {
     cy.get('[ui5-avatar]').should('have.attr', 'size', 'L').should('be.visible');
   });
 
-  it('with IllustratedMessage', () => {
-    cy.mount(
-      <ObjectPage
-        data-testid="op"
-        titleArea={DPTitle}
-        headerArea={DPContent}
-        placeholder={<IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />}
-      />
-    );
-    cy.get('[ui5-illustrated-message]').should('be.visible');
-    cy.get('[ui5-tabcontainer]').should('not.exist');
-    cy.get('[data-component-name="ObjectPageAnchorBar"]').should('not.be.visible');
-    cy.mount(
-      <ObjectPage
-        data-testid="op"
-        titleArea={DPTitle}
-        headerArea={DPContent}
-        placeholder={<IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />}
-      >
-        {OPContent}
-      </ObjectPage>
-    );
-    cy.get('[ui5-illustrated-message]').should('be.visible');
-    cy.get('[ui5-tabcontainer]').should('not.exist');
-    cy.get('[data-component-name="ObjectPageAnchorBar"]').should('not.be.visible');
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`with IllustratedMessage (mode: ${mode})`, () => {
+      cy.mount(
+        <ObjectPage
+          data-testid="op"
+          titleArea={DPTitle}
+          headerArea={DPContent}
+          placeholder={<IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />}
+          mode={mode}
+        />
+      );
+      cy.get('[ui5-illustrated-message]').should('be.visible');
+      cy.get('[ui5-tabcontainer]').should('not.exist');
+      cy.get('[data-component-name="ObjectPageAnchorBar"]').should('not.be.visible');
+      cy.mount(
+        <ObjectPage
+          data-testid="op"
+          titleArea={DPTitle}
+          headerArea={DPContent}
+          placeholder={<IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />}
+          mode={mode}
+        >
+          {OPContent}
+        </ObjectPage>
+      );
+      cy.get('[ui5-illustrated-message]').should('be.visible');
+      cy.get('[ui5-tabcontainer]').should('not.exist');
+      cy.get('[data-component-name="ObjectPageAnchorBar"]').should('not.be.visible');
+    });
   });
 
-  it('onBeforeNavigate', () => {
-    const beforeNavigateHandlerDefaultPrevented = (e) => {
-      // deleted as not relevant for the test
-      delete e.detail.tab;
-      delete e.detail.tabIndex;
-      e.preventDefault();
-    };
-    const beforeNavigate = cy.spy(beforeNavigateHandlerDefaultPrevented).as('beforeNavigateSpy');
-    const sectionChange = cy.spy().as('sectionChangeSpy');
-    cy.mount(
-      <ObjectPage
-        data-testid="op"
-        titleArea={DPTitle}
-        headerArea={DPContent}
-        onBeforeNavigate={beforeNavigate}
-        onSelectedSectionChange={sectionChange}
-      >
-        {OPContent}
-      </ObjectPage>
-    );
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').click();
-    cy.get('@beforeNavigateSpy')
-      .should('have.been.calledOnce')
-      .its('firstCall.args[0].detail')
-      .should('deep.equal', { sectionIndex: 2, sectionId: 'personal', subSectionId: undefined });
-    cy.get('@sectionChangeSpy').should('not.have.been.called');
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`onBeforeNavigate (mode: ${mode})`, () => {
+      const beforeNavigateHandlerDefaultPrevented = (e) => {
+        // deleted as not relevant for the test
+        delete e.detail.tab;
+        delete e.detail.tabIndex;
+        e.preventDefault();
+      };
+      const beforeNavigate = cy.spy(beforeNavigateHandlerDefaultPrevented).as('beforeNavigateSpy');
+      const sectionChange = cy.spy().as('sectionChangeSpy');
+      cy.mount(
+        <ObjectPage
+          data-testid="op"
+          titleArea={DPTitle}
+          headerArea={DPContent}
+          onBeforeNavigate={beforeNavigate}
+          onSelectedSectionChange={sectionChange}
+          mode={mode}
+        >
+          {OPContent}
+        </ObjectPage>
+      );
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').click();
+      cy.get('@beforeNavigateSpy')
+        .should('have.been.calledOnce')
+        .its('firstCall.args[0].detail')
+        .should('deep.equal', { sectionIndex: 2, sectionId: 'personal', subSectionId: undefined });
+      cy.get('@sectionChangeSpy').should('not.have.been.called');
 
-    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
-    cy.wait(500);
-    cy.realPress('Enter');
-    cy.get('@beforeNavigateSpy').should('have.been.calledTwice').its('secondCall.args[0].detail').should('deep.equal', {
-      sectionIndex: 3,
-      sectionId: `~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`,
-      subSectionId: 'employment-job-information'
+      cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+      cy.wait(500);
+      cy.realPress('Enter');
+      cy.get('@beforeNavigateSpy')
+        .should('have.been.calledTwice')
+        .its('secondCall.args[0].detail')
+        .should('deep.equal', {
+          sectionIndex: 3,
+          sectionId: `~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`,
+          subSectionId: 'employment-job-information'
+        });
+      cy.get('@sectionChangeSpy').should('not.have.been.called');
     });
-    cy.get('@sectionChangeSpy').should('not.have.been.called');
   });
 
   it('IconTabBar mode: only mount single section', () => {
@@ -1162,39 +1191,46 @@ describe('ObjectPage', () => {
     cy.get('@cb').should('not.been.called');
   });
 
-  it('onSelectedSectionChange: React state update', () => {
-    const TestComp = () => {
-      const [state, setState] = useState(false);
-      return (
-        <ObjectPage
-          // increase test speed by setting scroll behavior to instant
-          style={{ height: '800px', scrollBehavior: 'auto' }}
-          onSelectedSectionChange={() => {
-            setState(!state);
-          }}
-        >
-          <ObjectPageSection id={'test1'} titleText={'test1'}>
-            <div style={{ height: '900px' }}>
-              <div style={{ height: '30%' }}>Content1</div>
-            </div>
-          </ObjectPageSection>
-          <ObjectPageSection id={'test2'} titleText={'test2'}>
-            <div style={{ height: '900px' }}>
-              <div style={{ height: '30%' }}>Content2</div>
-            </div>
-          </ObjectPageSection>
-        </ObjectPage>
-      );
-    };
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`onSelectedSectionChange: React state update (mode: ${mode})`, () => {
+      const TestComp = () => {
+        const [state, setState] = useState(false);
+        return (
+          <ObjectPage
+            // increase test speed by setting scroll behavior to instant
+            style={{ height: '800px', scrollBehavior: 'auto' }}
+            onSelectedSectionChange={() => {
+              setState(!state);
+            }}
+            mode={mode}
+          >
+            <ObjectPageSection id={'test1'} titleText={'test1'}>
+              <div style={{ height: '900px' }}>
+                <div style={{ height: '30%' }}>Content1</div>
+              </div>
+            </ObjectPageSection>
+            <ObjectPageSection id={'test2'} titleText={'test2'}>
+              <div style={{ height: '900px' }}>
+                <div style={{ height: '30%' }}>Content2</div>
+              </div>
+            </ObjectPageSection>
+          </ObjectPage>
+        );
+      };
 
-    cy.mount(<TestComp />);
-    cy.wait(200);
+      cy.mount(<TestComp />);
+      cy.wait(200);
 
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('test2').realClick();
-    cy.findByText('Content1').should('not.be.visible');
-    cy.findByText('Content2').should('be.visible');
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('test2').should('have.attr', 'aria-selected', 'true');
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('test1').should('have.attr', 'aria-selected', 'false');
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('test2').realClick();
+      if (mode === ObjectPageMode.IconTabBar) {
+        cy.findByText('Content1').should('not.exist');
+      } else {
+        cy.findByText('Content1').should('not.be.visible');
+      }
+      cy.findByText('Content2').should('be.visible');
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('test2').should('have.attr', 'aria-selected', 'true');
+      cy.get('[ui5-tabcontainer]').findUi5TabByText('test1').should('have.attr', 'aria-selected', 'false');
+    });
   });
 
   it('header spacer', () => {
@@ -1215,64 +1251,67 @@ describe('ObjectPage', () => {
     cy.findByText('First Content').should('be.visible');
   });
 
-  it('programmatic prop selection', () => {
-    const TestComp = (props: ObjectPagePropTypes) => {
-      const [selectedSection, setSelectedSection] = useState(props.selectedSectionId);
-      const [selectedSubSection, setSelectedSubSection] = useState(props.selectedSubSectionId);
-      return (
-        <>
-          <button
-            onClick={() => {
-              setSelectedSection('goals');
-            }}
-          >
-            Select Goals
-          </button>
-          <button
-            onClick={() => {
-              setSelectedSubSection('personal-payment-information');
-            }}
-          >
-            Select Payment Information
-          </button>
-          <ObjectPage
-            {...props}
-            selectedSubSectionId={selectedSubSection}
-            selectedSectionId={selectedSection}
-            style={{ height: '1000px', scrollBehavior: 'auto' }}
-          >
-            {OPContent}
-          </ObjectPage>
-        </>
+  [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
+    it(`programmatic prop selection (mode: ${mode})`, () => {
+      const TestComp = (props: ObjectPagePropTypes) => {
+        const [selectedSection, setSelectedSection] = useState(props.selectedSectionId);
+        const [selectedSubSection, setSelectedSubSection] = useState(props.selectedSubSectionId);
+
+        return (
+          <>
+            <button
+              onClick={() => {
+                setSelectedSection('goals');
+              }}
+            >
+              Select Goals
+            </button>
+            <button
+              onClick={() => {
+                setSelectedSubSection('personal-payment-information');
+              }}
+            >
+              Select Payment Information
+            </button>
+            <ObjectPage
+              {...props}
+              selectedSubSectionId={selectedSubSection}
+              selectedSectionId={selectedSection}
+              style={{ height: '1000px', scrollBehavior: 'auto' }}
+            >
+              {OPContent}
+            </ObjectPage>
+          </>
+        );
+      };
+
+      [{ titleArea: DPTitle, headerArea: DPContent }, { titleArea: DPTitle }, { headerArea: DPContent }, {}].forEach(
+        (props: ObjectPagePropTypes) => {
+          cy.mount(<TestComp {...props} mode={mode} selectedSubSectionId={`employment-job-relationship`} />);
+
+          cy.findByText('employment-job-relationship-content').should('be.visible');
+          cy.findByText('Job Information').should('not.be.visible');
+          cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').should('have.attr', 'aria-selected', 'true');
+
+          cy.mount(<TestComp {...props} selectedSectionId={`personal`} />);
+          cy.findByText('personal-connect-content').should('be.visible');
+          cy.findByText('test-content').should('not.be.visible');
+          cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
+
+          cy.wait(100);
+          cy.findByText('Select Goals').click();
+          cy.findByText('goals-content').should('be.visible');
+
+          cy.findByText('personal-connect-content').should('not.be.visible');
+          cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').should('have.attr', 'aria-selected', 'true');
+
+          cy.findByText('Select Payment Information').click();
+          cy.findByText('personal-payment-information-content').should('be.visible');
+          cy.findByText('personal-connect-content').should('not.be.visible');
+          cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
+        }
       );
-    };
-
-    [{ titleArea: DPTitle, headerArea: DPContent }, { titleArea: DPTitle }, { headerArea: DPContent }, {}].forEach(
-      (props: ObjectPagePropTypes) => {
-        cy.mount(<TestComp {...props} selectedSubSectionId={`employment-job-relationship`} />);
-
-        cy.findByText('employment-job-relationship-content').should('be.visible');
-        cy.findByText('Job Information').should('not.be.visible');
-        cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').should('have.attr', 'aria-selected', 'true');
-
-        cy.mount(<TestComp {...props} selectedSectionId={`personal`} />);
-        cy.findByText('personal-connect-content').should('be.visible');
-        cy.findByText('test-content').should('not.be.visible');
-        cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
-
-        cy.wait(100);
-        cy.findByText('Select Goals').click();
-        cy.findByText('goals-content').should('be.visible');
-
-        cy.findByText('personal-connect-content').should('not.be.visible');
-        cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').should('have.attr', 'aria-selected', 'true');
-
-        cy.findByText('Select Payment Information').click();
-        cy.findByText('personal-payment-information-content').should('be.visible');
-        cy.findByText('personal-connect-content').should('not.be.visible');
-        cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
-      }
-    );
+    });
   });
 
   cypressPassThroughTestsFactory(ObjectPage);
