@@ -190,7 +190,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
       });
     }, [Component, ...propsToApply]);
 
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       setAttachEvents(true);
     }, []);
 
