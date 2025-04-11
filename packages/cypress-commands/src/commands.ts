@@ -105,7 +105,7 @@ declare global {
        * Therefore, for `ui5-select`, the `options` parameter only accepts `TypeOptions`.
        *
        * @param text The text of the item inside the popover that should be clicked.
-       * @param options `Cypress.ClickOptions`. For `ui5-select`, use `Cypress.TypeOptions` (you can use the generic type to adjust accordingly).
+       * @param options Default:`Cypress.ClickOptions`. For `ui5-select`, use `Cypress.TypeOptions` (you can use the generic type to adjust accordingly).
        *
        * @example
        * cy.get('[ui5-select]').clickDropdownMenuItemByText<Cypress.TypeOptions>('Option2');
@@ -123,6 +123,8 @@ declare global {
        * __Note:__ `ui5-select` currently does not support `cy.click()` on `ui5-options` (or elements in the shadow root).
        * Instead, the `ui5-option` is selected via an "Enter" press (`.type`).
        * Therefore, for `ui5-option`, the `options` parameter only accepts `TypeOptions`.
+       *
+       * @param options Default: `Cypress.ClickOptions`. For `ui5-option`, use `Cypress.TypeOptions` (you can use the generic type to adjust accordingly).
        *
        * @example
        * cy.get('[ui5-option]').clickDropdownMenuItem<Cypress.TypeOptions>();
