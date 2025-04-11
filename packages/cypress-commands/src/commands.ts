@@ -101,14 +101,14 @@ declare global {
        * __Note:__ The popover must be visible, otherwise it can lead to unwanted side effects.
        *
        * __Note:__ `ui5-select` currently does not support `cy.click()` on `ui5-options` (or elements in the shadow root).
-       * Instead, the `ui5-option` is selected via an "Enter" press (`.type`).
-       * Therefore, for `ui5-select`, the `options` parameter only accepts `TypeOptions`.
+       * Instead, the `ui5-option` is selected via an "Enter" press (`.trigger`).
+       * Therefore, for `ui5-select`, the `options` parameter only accepts `TriggerOptions`.
        *
        * @param text The text of the item inside the popover that should be clicked.
-       * @param options Default:`Cypress.ClickOptions`. For `ui5-select`, use `Cypress.TypeOptions` (you can use the generic type to adjust accordingly).
+       * @param options Default:`Cypress.ClickOptions`. For `ui5-select`, use `Cypress.TriggerOptions` (you can use the generic type to adjust accordingly).
        *
        * @example
-       * cy.get('[ui5-select]').clickDropdownMenuItemByText<Cypress.TypeOptions>('Option2');
+       * cy.get('[ui5-select]').clickDropdownMenuItemByText<Cypress.TriggerOptions>('Option2');
        * cy.get('[ui5-multi-combobox]').clickDropdownMenuItemByText('Option2');
        *
        */
@@ -121,13 +121,13 @@ declare global {
        * __Note:__ The popover must be visible, otherwise it can lead to unwanted side effects.
        *
        * __Note:__ `ui5-select` currently does not support `cy.click()` on `ui5-options` (or elements in the shadow root).
-       * Instead, the `ui5-option` is selected via an "Enter" press (`.type`).
-       * Therefore, for `ui5-option`, the `options` parameter only accepts `TypeOptions`.
+       * Instead, the `ui5-option` is selected via an "Enter" press (`.trigger`).
+       * Therefore, for `ui5-option`, the `options` parameter only accepts `TriggerOptions`.
        *
-       * @param options Default: `Cypress.ClickOptions`. For `ui5-option`, use `Cypress.TypeOptions` (you can use the generic type to adjust accordingly).
+       * @param options Default: `Cypress.ClickOptions`. For `ui5-option`, use `Cypress.TriggerOptions` (you can use the generic type to adjust accordingly).
        *
        * @example
-       * cy.get('[ui5-option]').clickDropdownMenuItem<Cypress.TypeOptions>();
+       * cy.get('[ui5-option]').clickDropdownMenuItem<Cypress.TriggerOptions>();
        * cy.get('[ui5-mcb-item]').clickDropdownMenuItem();
        */
       clickDropdownMenuItem<T = ClickOptions>(options?: Partial<T>): Chainable<Element>;
@@ -229,7 +229,14 @@ Cypress.Commands.add('clickDropdownMenuItem', { prevSubject: 'element' }, (subje
     cy.wrap(domRef).focus();
     if ($option.hasAttribute('ui5-option')) {
       //todo: check if this can be refactored to use `click()` again.
-      cy.wrap(domRef).type('{enter}', { force: true, ...options });
+      cy.wrap(domRef).trigger('keydown', {
+        force: true,
+        ...options,
+        key: 'Enter',
+        code: 'Enter',
+        which: 13,
+        keyCode: 13
+      });
     } else {
       cy.wrap(domRef).click(options);
     }
