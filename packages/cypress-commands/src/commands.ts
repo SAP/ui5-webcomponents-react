@@ -95,29 +95,42 @@ declare global {
       clickUi5SelectOption(options?: Partial<ClickOptions>): Chainable<Element>;
 
       /**
-       * Click on an option of "select-like" components by text. Currently supported components are `ui5-select`, `ui5-combobox` and `ui5-multi-combobox`.
+       * Click on an option of "select-like" components by text.
+       * Currently supported components: `ui5-select`, `ui5-combobox` and `ui5-multi-combobox`.
        *
        * __Note:__ The popover must be visible, otherwise it can lead to unwanted side effects.
        *
-       * __Note:__ Currently `Select` doesn't support `cy.click()` on `ui5-options` (or elements in the shadow root), because of this the option is now selected via "Enter" press.
+       * __Note:__ `ui5-select` currently does not support `cy.click()` on `ui5-options` (or elements in the shadow root).
+       * Instead, the `ui5-option` is selected via an "Enter" press (`.trigger`).
+       * Therefore, for `ui5-select`, the `options` parameter only accepts `TriggerOptions`.
        *
-       * @param text text of the item inside the popover that should be clicked
-       * @param options Cypress.ClickOptions
-       * @example cy.get('[ui5-select]').clickDropdownMenuItemByText('Option2');
+       * @param text The text of the item inside the popover that should be clicked.
+       * @param options Default:`Cypress.ClickOptions`. For `ui5-select`, use `Cypress.TriggerOptions` (you can use the generic type to adjust accordingly).
+       *
+       * @example
+       * cy.get('[ui5-select]').clickDropdownMenuItemByText<Cypress.TriggerOptions>('Option2');
+       * cy.get('[ui5-multi-combobox]').clickDropdownMenuItemByText('Option2');
        *
        */
-      clickDropdownMenuItemByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
+      clickDropdownMenuItemByText<T = ClickOptions>(text: string, options?: Partial<T>): Chainable<Element>;
 
       /**
-       * Click on a chained option of "select-like" components. Currently supported components are `ui5-option`, `ui5-mcb-item` and `ui5-cb-item` (since v1.24.3 of `@ui5/webcomponents`).
+       * Click on a chained option of "select-like" components.
+       * Currently supported components: `ui5-option`, `ui5-mcb-item` and `ui5-cb-item` (since v1.24.3 of `@ui5/webcomponents`).
        *
        * __Note:__ The popover must be visible, otherwise it can lead to unwanted side effects.
        *
-       * __Note:__ Currently `Select` doesn't support `cy.click()` on `ui5-options` (or elements in the shadow root), because of this the option is now selected via "Enter" press.
+       * __Note:__ `ui5-select` currently does not support `cy.click()` on `ui5-options` (or elements in the shadow root).
+       * Instead, the `ui5-option` is selected via an "Enter" press (`.trigger`).
+       * Therefore, for `ui5-option`, the `options` parameter only accepts `TriggerOptions`.
        *
-       * @example cy.get('[ui5-option]').clickDropdownMenuItem();
+       * @param options Default: `Cypress.ClickOptions`. For `ui5-option`, use `Cypress.TriggerOptions` (you can use the generic type to adjust accordingly).
+       *
+       * @example
+       * cy.get('[ui5-option]').clickDropdownMenuItem<Cypress.TriggerOptions>();
+       * cy.get('[ui5-mcb-item]').clickDropdownMenuItem();
        */
-      clickDropdownMenuItem(options?: Partial<ClickOptions>): Chainable<Element>;
+      clickDropdownMenuItem<T = ClickOptions>(options?: Partial<T>): Chainable<Element>;
 
       /**
        * Click on the open button in "select-like" components to open the popover. Currently supported components are `ui5-select`, `ui5-combobox` and `ui5-multi-combobox`.
@@ -201,7 +214,7 @@ Cypress.Commands.add('clickDropdownMenuItemByText', { prevSubject: 'element' }, 
   cy.wrap(subject).then(([$dropdown]) => {
     switch (true) {
       case $dropdown.hasAttribute('ui5-select'):
-        cy.wrap($dropdown).contains(text).clickDropdownMenuItem(options);
+        cy.wrap($dropdown).contains(text).clickDropdownMenuItem<Cypress.TypeOptions>(options);
         break;
       default:
         cy.wrap($dropdown).get(`[text="${text}"]`).clickDropdownMenuItem(options);
@@ -216,7 +229,14 @@ Cypress.Commands.add('clickDropdownMenuItem', { prevSubject: 'element' }, (subje
     cy.wrap(domRef).focus();
     if ($option.hasAttribute('ui5-option')) {
       //todo: check if this can be refactored to use `click()` again.
-      cy.wrap(domRef).type('{enter}');
+      cy.wrap(domRef).trigger('keydown', {
+        force: true,
+        ...options,
+        key: 'Enter',
+        code: 'Enter',
+        which: 13,
+        keyCode: 13
+      });
     } else {
       cy.wrap(domRef).click(options);
     }

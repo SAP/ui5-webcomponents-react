@@ -60,7 +60,7 @@
 }
 
 .solid {
-  background-color: var(--sapToolbar_Background);
+  background-color: var(--sapList_HeaderBackground);
 }
 
 .transparent {

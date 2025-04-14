@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.0...v2.9.1) (2025-04-10)
+
+### Bug Fixes
+
+- attach ui5-webcomponents event handlers before browser paint ([#7218](https://github.com/SAP/ui5-webcomponents-react/issues/7218)) ([94416ae](https://github.com/SAP/ui5-webcomponents-react/commit/94416aecefef132e41e44e538bdb8aea0cbe28cc)), closes [#7217](https://github.com/SAP/ui5-webcomponents-react/issues/7217)
+- **ObjectPage:** fix programmatic section selection in `IconTabBar` `mode` ([#7219](https://github.com/SAP/ui5-webcomponents-react/issues/7219)) ([5d0d37b](https://github.com/SAP/ui5-webcomponents-react/commit/5d0d37bd005956cc06ee0e8fc93cdf4899869d54)), closes [#7215](https://github.com/SAP/ui5-webcomponents-react/issues/7215)
+
 # [2.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.2...v2.9.0) (2025-04-07)
 
 ### Bug Fixes
