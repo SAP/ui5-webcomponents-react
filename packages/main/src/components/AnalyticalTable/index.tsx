@@ -163,7 +163,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   } = props;
 
   useStylesheet(styleData, AnalyticalTable.displayName);
-  const isInitial = useRef(false);
+  const isInitialized = useRef(false);
 
   const alwaysShowSubComponent =
     subComponentsBehavior === AnalyticalTableSubComponentsBehavior.Visible ||
@@ -309,20 +309,20 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   });
   // force re-measure if `visibleColumns` change
   useEffect(() => {
-    if (isInitial.current && visibleColumns.length) {
+    if (isInitialized.current && visibleColumns.length) {
       columnVirtualizer.measure();
     } else {
-      isInitial.current = true;
+      isInitialized.current = true;
     }
   }, [visibleColumns.length]);
   // force re-measure if `state.groupBy` or `state.columnOrder` changes
   useEffect(() => {
-    if (isInitial.current && (tableState.groupBy || tableState.columnOrder)) {
+    if (isInitialized.current && (tableState.groupBy || tableState.columnOrder)) {
       setTimeout(() => {
         columnVirtualizer.measure();
       }, 100);
     } else {
-      isInitial.current = true;
+      isInitialized.current = true;
     }
   }, [tableState.groupBy, tableState.columnOrder]);
 
