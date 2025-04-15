@@ -109,7 +109,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
     if (typeof onSelectedSectionChange === 'function' && targetEvent && prevInternalSelectedSectionId.current !== id) {
-      console.log('FIRE!!!');
       onSelectedSectionChange(
         enrichEventWithDetails(targetEvent, {
           selectedSectionIndex: parseInt(index, 10),
