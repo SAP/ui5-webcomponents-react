@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.1...v2.9.2) (2025-04-15)
+
+### Bug Fixes
+
+- **Toolbar - compat:** apply same bg colors as ui5-webcomponents Toolbar ([#7221](https://github.com/SAP/ui5-webcomponents-react/issues/7221)) ([f3dab01](https://github.com/SAP/ui5-webcomponents-react/commit/f3dab01755ede98d86c590af4f496ecdbd3b1d50)), closes [#7220](https://github.com/SAP/ui5-webcomponents-react/issues/7220)
+
 ## [2.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.0...v2.9.1) (2025-04-10)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-compat

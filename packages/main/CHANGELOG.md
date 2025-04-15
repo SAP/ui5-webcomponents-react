@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.1...v2.9.2) (2025-04-15)
+
+### Bug Fixes
+
+- **AnalyticalTable:** improve `"Default"` `scaleWidthMode` calculation ([#7214](https://github.com/SAP/ui5-webcomponents-react/issues/7214)) ([3afa357](https://github.com/SAP/ui5-webcomponents-react/commit/3afa3572dc05a88bc73b30ad3e4fcd9850a1adf3)), closes [#7072](https://github.com/SAP/ui5-webcomponents-react/issues/7072) [#4971](https://github.com/SAP/ui5-webcomponents-react/issues/4971)
+- **AnalyticalTable:** update column widths correctly when grouped or reordered ([#7210](https://github.com/SAP/ui5-webcomponents-react/issues/7210)) ([b5c3c2b](https://github.com/SAP/ui5-webcomponents-react/commit/b5c3c2b2dfaf586f87bb70e18eaa1233ec1f4b42))
+- **ObjectPage:** correct spacing when `image` is not present ([#7238](https://github.com/SAP/ui5-webcomponents-react/issues/7238)) ([554b88d](https://github.com/SAP/ui5-webcomponents-react/commit/554b88d68327ce2badd117bd0356f5dcf2076453))
+- **ObjectPage:** fire onSelectedSectionChange correctly in IconTabBar `mode` ([#7240](https://github.com/SAP/ui5-webcomponents-react/issues/7240)) ([1d4c4fe](https://github.com/SAP/ui5-webcomponents-react/commit/1d4c4feaaae88dfb5da1b42158932856fd1dac69)), closes [#7235](https://github.com/SAP/ui5-webcomponents-react/issues/7235)
+
 ## [2.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.0...v2.9.1) (2025-04-10)
 
 ### Bug Fixes

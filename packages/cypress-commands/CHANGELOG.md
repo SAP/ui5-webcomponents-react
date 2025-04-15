@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.1...v2.9.2) (2025-04-15)
+
+### Bug Fixes
+
+- **cypress-commands:** force "Enter" press for `clickDropdownMenuItem` (for `ui5-select`) ([#7223](https://github.com/SAP/ui5-webcomponents-react/issues/7223)) ([3c25985](https://github.com/SAP/ui5-webcomponents-react/commit/3c259859f3e8979bf651e9bdfb0b203166d82cf5))
+
 ## [2.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.0...v2.9.1) (2025-04-10)
 
 **Note:** Version bump only for package @ui5/webcomponents-cypress-commands
