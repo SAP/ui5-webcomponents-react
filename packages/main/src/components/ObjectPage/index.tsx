@@ -5,6 +5,7 @@ import {
   debounce,
   enrichEventWithDetails,
   ThemingParameters,
+  useIsomorphicLayoutEffect,
   useStylesheet,
   useSyncRef
 } from '@ui5/webcomponents-react-base';
@@ -108,6 +109,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const prevInternalSelectedSectionId = useRef(internalSelectedSectionId);
   const fireOnSelectedChangedEvent = (targetEvent, index, id, section) => {
     if (typeof onSelectedSectionChange === 'function' && targetEvent && prevInternalSelectedSectionId.current !== id) {
+      console.log('FIRE!!!');
       onSelectedSectionChange(
         enrichEventWithDetails(targetEvent, {
           selectedSectionIndex: parseInt(index, 10),
@@ -249,18 +251,23 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
   };
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (selectedSectionId) {
+      const fireSelectEvent = () => {
+        const selectedSection = getSectionElementById(objectPageRef.current, false, selectedSectionId);
+        if (selectedSection) {
+          const selectedSectionIndex = Array.from(
+            selectedSection.parentElement.querySelectorAll(':scope > [data-component-name="ObjectPageSection"]')
+          ).indexOf(selectedSection);
+          handleOnSectionSelected({}, selectedSectionId, selectedSectionIndex, selectedSection);
+        }
+      };
       if (mode === ObjectPageMode.IconTabBar) {
         setInternalSelectedSectionId(selectedSectionId);
-        return;
-      }
-      const selectedSection = getSectionElementById(objectPageRef.current, false, selectedSectionId);
-      if (selectedSection) {
-        const selectedSectionIndex = Array.from(
-          selectedSection.parentElement.querySelectorAll(':scope > [data-component-name="ObjectPageSection"]')
-        ).indexOf(selectedSection);
-        handleOnSectionSelected({}, selectedSectionId, selectedSectionIndex, selectedSection);
+        // In TabBar mode the section is only rendered when selected, therefore delay firing the event until the section is available in the DOM
+        setTimeout(fireSelectEvent);
+      } else {
+        fireSelectEvent();
       }
     }
   }, [selectedSectionId, mode]);
@@ -300,6 +307,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     }
   }, [headerPinned, topHeaderHeight]);
 
+  const isInitialTabBarMode = useRef(true);
   useEffect(() => {
     if (!isMounted) {
       requestAnimationFrame(() => setIsMounted(true));
@@ -311,7 +319,9 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       isProgrammaticallyScrolled.current = true;
       if (mode === ObjectPageMode.IconTabBar) {
         let sectionId: string;
-        childrenArray.forEach((section) => {
+        let curSection: ReactElement;
+        let sectionIndex: number = -1;
+        childrenArray.forEach((section, index) => {
           if (isValidElement(section) && section.props && section.props.children) {
             safeGetChildrenArray(section.props.children).forEach((subSection) => {
               if (
@@ -319,16 +329,23 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
                 subSection.props &&
                 (subSection as ReactElement<ObjectPageSubSectionPropTypes>).props.id === props.selectedSubSectionId
               ) {
+                curSection = section;
                 sectionId = section.props?.id;
+                sectionIndex = index;
               }
             });
           }
         });
         if (sectionId) {
+          if (!isInitialTabBarMode.current) {
+            //In TabBar mode the section is often not scrolled when subsection changes, thus the onSelectedSectionChange isn't fired
+            debouncedOnSectionChange({}, sectionIndex, sectionId, curSection);
+          }
           setInternalSelectedSectionId(sectionId);
         }
       }
     }
+    isInitialTabBarMode.current = false;
   }, [props.selectedSubSectionId, isMounted]);
 
   const tabContainerContainerRef = useRef(null);
