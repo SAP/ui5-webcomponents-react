@@ -1284,31 +1284,75 @@ describe('ObjectPage', () => {
           </>
         );
       };
-
+      const changeSpy = cy.spy().as('change');
+      let callCount = 1;
       [{ titleArea: DPTitle, headerArea: DPContent }, { titleArea: DPTitle }, { headerArea: DPContent }, {}].forEach(
         (props: ObjectPagePropTypes) => {
-          cy.mount(<TestComp {...props} mode={mode} selectedSubSectionId={`employment-job-relationship`} />);
+          cy.mount(
+            <TestComp
+              {...props}
+              mode={mode}
+              selectedSubSectionId={`employment-job-relationship`}
+              onSelectedSectionChange={changeSpy}
+            />
+          );
 
           cy.findByText('employment-job-relationship-content').should('be.visible');
           cy.findByText('Job Information').should('not.be.visible');
           cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').should('have.attr', 'aria-selected', 'true');
 
-          cy.mount(<TestComp {...props} selectedSectionId={`personal`} />);
+          cy.mount(
+            <TestComp {...props} mode={mode} selectedSectionId={`personal`} onSelectedSectionChange={changeSpy} />
+          );
           cy.findByText('personal-connect-content').should('be.visible');
-          cy.findByText('test-content').should('not.be.visible');
+
+          if (mode === 'IconTabBar') {
+            cy.findByText('test-content').should('not.exist');
+          } else {
+            cy.findByText('test-content').should('not.be.visible');
+          }
           cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
 
           cy.wait(100);
           cy.findByText('Select Goals').click();
           cy.findByText('goals-content').should('be.visible');
-
-          cy.findByText('personal-connect-content').should('not.be.visible');
+          cy.get('@change').should('have.callCount', callCount);
+          callCount++;
+          if (mode === 'IconTabBar') {
+            cy.findByText('personal-connect-content').should('not.exist');
+          } else {
+            cy.findByText('personal-connect-content').should('not.be.visible');
+          }
           cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').should('have.attr', 'aria-selected', 'true');
+
+          cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').click();
+          if (mode === 'IconTabBar') {
+            cy.findByText('test-content').should('not.exist');
+          } else {
+            cy.findByText('test-content').should('not.be.visible');
+          }
+          cy.findByText('personal-connect-content').should('be.visible');
+          cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
+          cy.get('@change').should('have.callCount', callCount);
+          callCount++;
+
+          cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+          if (mode === 'IconTabBar') {
+            cy.findByText('personal-connect-content').should('not.exist');
+          } else {
+            cy.findByText('personal-connect-content').should('not.be.visible');
+          }
+          cy.findByText('goals-content').should('be.visible');
+          cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').should('have.attr', 'aria-selected', 'true');
+          cy.get('@change').should('have.callCount', callCount);
+          callCount++;
 
           cy.findByText('Select Payment Information').click();
           cy.findByText('personal-payment-information-content').should('be.visible');
           cy.findByText('personal-connect-content').should('not.be.visible');
           cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
+          cy.get('@change').should('have.callCount', callCount);
+          callCount++;
         }
       );
     });
