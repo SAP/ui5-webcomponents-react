@@ -34,7 +34,7 @@ interface CSSPropertiesWithVars extends CSSProperties {
 
 const ROW_HEIGHT_VAR = 'var(--_ui5WcrAnalyticalTableControlledRowHeight)';
 
-//todo forwardRef or React19? --> prob forwardRef
+//todo forwardRef or React19 prop? --> prob forwardRef
 function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<AnalyticalTableV2Props, 'div'> {
   const { columns, data, rowHeight, visibleRows = 15, enableRowPinning, enableColumnPinning, columnMode } = props;
   useStylesheet(styleData, AnalyticalTableV2.displayName);
@@ -48,6 +48,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
     _features: [DensityFeature, ColumnModesFeature],
     data,
     columns,
+    //todo: check feasibility to use only row models that are implementing features used by the implementation
     getCoreRowModel: getCoreRowModel(),
     //todo: remove
     debugTable: true,

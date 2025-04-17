@@ -49,7 +49,7 @@
     "watch:css": "yarn build:css --watch"
   },
   "dependencies": {
-    "@tanstack/react-table": "^8.20.6",
+    "@tanstack/react-table": "^8.21.3",
     "@tanstack/react-virtual": "~3.13.0",
     "@ui5/webcomponents-react-base": "workspace:~",
     "clsx": "2.1.1",
