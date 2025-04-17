@@ -1,33 +1,36 @@
 import type { ColumnDef } from '@tanstack/react-table';
 import { useEffect } from 'react';
 
-function calculateDefaultColumnWidths(tableWidth: number, columns: ColumnDef<any>[], verticalScrollbarWidth) {
-  // columns with external size
+//todo: share function between AT & ATV2
+function calculateDefaultColumnWidths(tableWidth: number, columns: ColumnDef<any>[], verticalScrollbarWidth: number) {
+  // Columns w/ external size property
   const fixed = [];
+  // Columns w/o external size property
   const dynamic = [];
   let fixedTotal = 0;
 
-  // separate fixed and dynamic columns
+  // Separate fixed and dynamic columns
   for (const col of columns) {
     const minSize = col.minSize ?? 0;
-    const maxSize = col.maxSize;
-    // external `size` defined
-    if (col.size !== 0) {
-      let width = col.size;
-      if (width < minSize) {
-        width = minSize;
+    const maxSize = col.maxSize ?? Infinity;
+
+    // External `size` defined
+    if (col.size !== undefined) {
+      let size = col.size;
+      if (size < minSize) {
+        size = minSize;
       }
-      if (width > maxSize) {
-        width = maxSize;
+      if (size > maxSize) {
+        size = maxSize;
       }
-      fixedTotal += width;
-      fixed.push({ col, width });
+      fixedTotal += size;
+      fixed.push({ col, size });
     } else {
-      dynamic.push({ col, width: 0 });
+      dynamic.push({ col, size: 0 });
     }
   }
 
-  // Determine remaining width for dynamic columns
+  // Determine remaining size for dynamic columns
   const remaining = tableWidth - fixedTotal - verticalScrollbarWidth;
 
   // Calc total min-width required by dynamic columns
@@ -39,36 +42,43 @@ function calculateDefaultColumnWidths(tableWidth: number, columns: ColumnDef<any
   if (remaining < totalFlexibleMin) {
     // Not enough space - assign each dynamic column its `minSize`
     for (const dc of dynamic) {
-      dc.width = dc.col.minSize ?? 0;
+      dc.size = dc.col.minSize ?? 0;
     }
   } else if (dynamic.length) {
-    // grant same space for each dynamic column
+    // Grant same space for each dynamic column
     const initialShare = remaining / dynamic.length;
     for (const dc of dynamic) {
       const minSize = dc.col.minSize ?? 0;
-      const maxSize = dc.col.maxSize;
-      let width = initialShare;
-      if (width < minSize) {
-        width = minSize;
+      const maxSize = dc.col.maxSize ?? Infinity;
+      let size = initialShare;
+      if (size < minSize) {
+        size = minSize;
       }
-      if (width > maxSize) {
-        width = maxSize;
+      if (size > maxSize) {
+        size = maxSize;
       }
-      dc.width = width;
+      dc.size = size;
     }
 
-    // Calc assigned width and remaining space
+    // Calc assigned size and remaining space
     let assigned = 0;
-    for (const { width } of dynamic) {
-      assigned += width;
+    for (const { size } of dynamic) {
+      assigned += size ?? 0;
     }
+
+    /**
+     * - negative: table overflows
+     * - positive: table has white-space between last column and borderInlineEnd
+     */
     let remainingSpace = remaining - assigned;
 
-    // Share remaining space among columns that can grow
+    // Grow or shrink columns that are still dynamic
+
+    // Grow columns
     while (remainingSpace > 0) {
       let expandableCount = 0;
-      for (const { col, width } of dynamic) {
-        if (width < col.maxSize) {
+      for (const { col, size } of dynamic) {
+        if (size < (col.maxSize ?? Infinity)) {
           expandableCount++;
         }
       }
@@ -78,14 +88,14 @@ function calculateDefaultColumnWidths(tableWidth: number, columns: ColumnDef<any
       const extra = remainingSpace / expandableCount;
       let used = 0;
       for (const dc of dynamic) {
-        const { maxSize } = dc.col;
-        if (dc.width < maxSize) {
-          const potential = dc.width + extra;
+        const maxSize = dc.col.maxSize ?? Infinity;
+        if (dc.size < maxSize) {
+          const potential = dc.size + extra;
           if (potential > maxSize) {
-            used += maxSize - dc.width;
-            dc.width = maxSize;
+            used += maxSize - dc.size;
+            dc.size = maxSize;
           } else {
-            dc.width = potential;
+            dc.size = potential;
             used += extra;
           }
         }
@@ -95,12 +105,46 @@ function calculateDefaultColumnWidths(tableWidth: number, columns: ColumnDef<any
         break;
       }
     }
+
+    // Shrink columns
+    while (remainingSpace < 0) {
+      let shrinkableCount = 0;
+      for (const { col, size } of dynamic) {
+        const min = col.minSize ?? 0;
+        if (size > min) {
+          shrinkableCount++;
+        }
+      }
+      if (shrinkableCount === 0) {
+        break;
+      }
+      const reduction = Math.abs(remainingSpace) / shrinkableCount;
+      let used = 0;
+      for (const dc of dynamic) {
+        const min = dc.col.minSize ?? 0;
+        if (dc.size > min) {
+          const potential = dc.size - reduction;
+          if (potential < min) {
+            used += dc.size - min;
+            dc.size = min;
+          } else {
+            dc.size = potential;
+            used += reduction;
+          }
+        }
+      }
+      remainingSpace += used;
+      if (used === 0) {
+        break;
+      }
+    }
   }
 
   const result = {};
-  for (const { col, width } of [...fixed, ...dynamic]) {
+  for (const { col, size } of [...fixed, ...dynamic]) {
+    // todo: accessorKey sufficient here?
     const key = col.id ?? col.accessorKey;
-    result[key] = width;
+    result[key] = size;
   }
   return result;
 }
@@ -118,7 +162,6 @@ export function useColumnWidths(
     if (!tableWidth) {
       return;
     }
-
     setColumnSizing(calculateDefaultColumnWidths(tableWidth, columnDefs, verticalScrollbarWidth));
     //todo: check deps
   }, [tableWidth, columnDefs.length, verticalScrollbarWidth]);

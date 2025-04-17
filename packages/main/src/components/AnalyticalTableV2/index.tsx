@@ -77,7 +77,8 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
     },
     // column sizing
     defaultColumn: {
-      size: 0,
+      // need to overwrite default size for dynamic column widths
+      size: undefined,
       minSize: 60
     },
     //ColumnModesFeature

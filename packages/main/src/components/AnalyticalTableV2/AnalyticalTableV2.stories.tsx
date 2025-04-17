@@ -12,7 +12,7 @@ const columns: ColumnDef<any>[] = [
     header: 'Person',
     id: 'A',
     columns: [
-      { header: 'Name', accessorKey: 'name', id: 'B' },
+      { header: 'Name', accessorKey: 'name', id: 'B', minSize: 1000 },
       { header: 'Age', accessorKey: 'age', id: 'C' }
     ]
   },
@@ -29,6 +29,7 @@ const columns: ColumnDef<any>[] = [
     header: 'Pinnable',
     columns: [
       {
+        maxSize: 100,
         header: 'Column Pinned',
         id: 'c_pinned',
         cell: ({ row }) => {
