@@ -2,6 +2,7 @@ import dataLarge from '@sb/mockData/Friends500.json';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ColumnDef } from '@tanstack/react-table';
 import { Button, Input } from '@ui5/webcomponents-react';
+import { useReducer } from 'react';
 import { AnalyticalTableV2 } from './index.js';
 
 //todo make id mandatory, or take this into account for custom implementations: https://tanstack.com/table/latest/docs/api/core/column-def --> imo id mandatory is the easiest way
@@ -12,7 +13,7 @@ const columns: ColumnDef<any>[] = [
     header: 'Person',
     id: 'A',
     columns: [
-      { header: 'Name', accessorKey: 'name', id: 'B', minSize: 1000 },
+      { header: 'Name', accessorKey: 'name', id: 'B' },
       { header: 'Age', accessorKey: 'age', id: 'C' }
     ]
   },
@@ -77,7 +78,7 @@ const meta = {
   title: 'Data Display / AnalyticalTableV2',
   component: AnalyticalTableV2,
   args: {
-    data: dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })).slice(0, 15),
+    data: dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })).slice(0),
     columns,
     visibleRows: 5
   },
@@ -88,10 +89,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render(args) {
+    const [sortable, toggleSortable] = useReducer((prev) => !prev, false);
     return (
       <>
         <div style={{ height: '300px' }}></div>
-        <AnalyticalTableV2 {...args} />
+        <button onClick={toggleSortable}>toggle sortable</button>
+        <AnalyticalTableV2 {...args} sortable={sortable} />
       </>
     );
   }

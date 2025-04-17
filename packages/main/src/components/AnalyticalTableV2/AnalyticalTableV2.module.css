@@ -93,6 +93,12 @@
   background-color: var(--sapList_HeaderBackground);
 }
 
+.headerInteractive {
+  cursor: pointer;
+  /*  todo:remove*/
+  background: lightgrey;
+}
+
 /* ============================================================= */
 /*                            Body                               */
 /* ============================================================= */
