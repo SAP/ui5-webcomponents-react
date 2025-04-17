@@ -13,21 +13,26 @@
   white-space: normal;
   font-family: var(--sapFontFamily);
   background-color: var(--sapBackgroundColor);
+
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
+
   &[data-in-iframe='true'] {
     scroll-behavior: auto;
   }
-  section[id*='ObjectPageSection-'] > div[role='heading'] {
-    display: none;
-  }
 
-  /* explanation why first-child selector is not sufficient here:
-   https://stackoverflow.com/questions/7128406/css-select-the-first-child-from-elements-with-particular-attribute
-   */
-  section[id*='ObjectPageSection-'] ~ section[id*='ObjectPageSection-'] > div[role='heading'] {
-    display: block;
+  /*invisible first heading*/
+  section[id*='ObjectPageSection-']:first-of-type > div[role='heading'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
   }
 }
 
@@ -45,16 +50,7 @@
   z-index: 4;
   cursor: pointer;
   display: grid;
-
-  [data-component-name='ObjectPageTitle'] {
-    grid-column: 2;
-    padding-inline: 0;
-  }
-}
-
-/*:has cannot be nested*/
-.header:has([data-component-name='ATwithImageSnappedContentContainer']) [data-component-name='ObjectPageTitle'] {
-  padding-block-end: 0;
+  grid-auto-columns: 100%;
 }
 
 .headerCollapsed {
@@ -66,6 +62,8 @@
   margin-block-end: 0.25rem;
   background-color: var(--sapObjectHeader_Background);
   display: grid;
+}
+.hasAvatar {
   grid-auto-columns: min-content calc(100% - 5rem - 2rem);
 
   [data-component-name='ObjectPageHeaderContent'] {
@@ -178,11 +176,6 @@
 
 .subSectionPopover::part(content) {
   padding: 0;
-}
-
-.snappedContent {
-  grid-column: 1 / span 2;
-  padding-block-end: 0.5rem;
 }
 
 .clickArea {

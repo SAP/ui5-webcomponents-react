@@ -61,19 +61,21 @@ const config: StorybookConfig = {
         '../packages/main/**/*.mdx',
         '../packages/main/**/*.stories.@(tsx|jsx)',
         {
+          directory: '../packages/ai',
+          files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
+          titlePrefix: 'AI'
+        },
+        {
           directory: '../packages/compat',
           files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
           titlePrefix: 'Legacy Components'
         }
       ],
   addons,
-  docs: {
-    autodocs: true
-  },
   typescript: {
     reactDocgen: 'react-docgen-typescript'
   },
-  staticDirs: [isDevMode && 'images-dev', 'images'].filter(Boolean)
+  staticDirs: [isDevMode && 'images-dev', !isDevMode && 'images'].filter(Boolean)
 };
 
 export default config;

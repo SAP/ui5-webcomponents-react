@@ -3,7 +3,7 @@
   "description": "Cypress Custom Commands and Queries for UI5 Web Components",
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
-  "version": "2.7.2",
+  "version": "2.9.2",
   "type": "module",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -23,8 +23,8 @@
     "clean": "rimraf dist api-commands.json api-queries.json"
   },
   "peerDependencies": {
-    "@ui5/webcomponents": "~2.7.0",
-    "@ui5/webcomponents-base": "~2.7.0",
+    "@ui5/webcomponents": "~2.9.0",
+    "@ui5/webcomponents-base": "~2.9.0",
     "cypress": "^12 || ^13 || ^14"
   },
   "peerDependenciesMeta": {

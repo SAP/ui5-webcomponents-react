@@ -813,13 +813,15 @@ describe('AnalyticalTable', () => {
       const { onRowSelect } = props;
       const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
       const tableInstance = useRef<Record<string, any>>(null);
+      // strict mode
+      const hasRun = useRef(false);
 
       useEffect(() => {
-        if (tableInstance.current) {
-          tableInstance.current.setGroupBy(['name']);
+        if (tableInstance.current && !hasRun.current) {
           setTimeout(() => {
-            tableInstance.current.toggleAllRowsExpanded();
+            tableInstance.current.toggleAllRowsExpanded(true);
           }, 100);
+          hasRun.current = true;
         }
       }, []);
 
@@ -850,6 +852,7 @@ describe('AnalyticalTable', () => {
               onRowSelect(e);
             }}
             data={groupableData}
+            reactTableOptions={{ initialState: { groupBy: ['name'] } }}
             selectionMode="Multiple"
           />
           <div data-testid="selectedFlatRowsLength">
@@ -3013,17 +3016,22 @@ describe('AnalyticalTable', () => {
     cy.focused().parent().should('have.attr', 'ui5-button');
 
     cy.mount(
-      <AnalyticalTable
-        data={generateMoreData(50)}
-        columns={columns}
-        selectionMode={AnalyticalTableSelectionMode.Multiple}
-      />
+      <>
+        <AnalyticalTable
+          data={generateMoreData(50)}
+          columns={columns}
+          selectionMode={AnalyticalTableSelectionMode.Multiple}
+        />
+        <button>Interactive Element</button>
+      </>
     );
 
     cy.findByText('Name-0').should('be.visible');
     cy.window().focus();
     cy.realPress('Tab');
     cy.focused().should('have.attr', 'data-row-index', '0').should('have.attr', 'data-column-index', '1');
+    cy.realPress('Tab');
+    cy.focused().should('have.text', 'Interactive Element');
 
     cy.mount(
       <AnalyticalTable
@@ -3488,6 +3496,205 @@ describe('AnalyticalTable', () => {
     cy.focused().realPress('Space');
     cy.findByTestId('sel').should('have.text', '{}');
     cy.findByTestId('btn-was-clicked').should('have.text', 'true');
+  });
+
+  [5, 2].forEach((visibleRows) => {
+    const withVertScrollbar = visibleRows === 2;
+    it(`scaleWidthMode: Default (w/${withVertScrollbar ? '' : 'o'} vertical scrollbar)`, () => {
+      const _data = [
+        {
+          age: 80,
+          friend: {
+            age: 68,
+            name: 'Carver Vance'
+          },
+          name: 'Allen Best'
+        },
+        {
+          age: 31,
+          friend: {
+            age: 70,
+            name: 'Strickland Gallegos'
+          },
+          name: 'Combs Fleming'
+        },
+        {
+          age: 31,
+          friend: {
+            age: 70,
+            name: 'Strickland Gallegos'
+          },
+          name: 'Combs Fleming'
+        },
+        {
+          age: 31,
+          friend: {
+            age: 70,
+            name: 'Strickland Gallegos'
+          },
+          name: 'Combs Fleming'
+        }
+      ];
+      const _columns = [
+        {
+          Header: 'Name',
+          accessor: 'name',
+          headerTooltip: 'Full Name'
+        },
+        {
+          Header: 'Age',
+          accessor: 'age',
+          hAlign: 'End',
+          maxWidth: 192
+        },
+        {
+          Header: 'Friend Name',
+          accessor: 'friend.name',
+          maxWidth: 160
+        },
+        {
+          accessor: 'friend.age',
+          maxWidth: 160,
+          hAlign: 'End'
+        },
+        {
+          Header: 'Actions',
+          id: 'actions1',
+          maxWidth: 192,
+          hAlign: 'End'
+        },
+        {
+          Header: 'Actions',
+          id: 'actions2',
+          hAlign: 'End'
+        },
+        {
+          Header: 'Actions',
+          id: 'actions3',
+          maxWidth: 160,
+          hAlign: 'End'
+        }
+      ];
+      document.body.style.margin = '0px';
+      cy.viewport(1306, 1080);
+      cy.mount(<AnalyticalTable data={_data} columns={_columns} visibleRows={visibleRows} />);
+      cy.get('[data-component-name="AnalyticalTableContainer"]').should(
+        'have.css',
+        'width',
+        withVertScrollbar ? '1293px' : '1306px'
+      );
+      cy.get('[data-component-name="AnalyticalTableBody"]').should(
+        'have.css',
+        'width',
+        withVertScrollbar ? '1293px' : '1306px'
+      );
+
+      const _data2 = [
+        {
+          age: 80,
+          friend: {
+            age: 68,
+            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
+          },
+          name: 'Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best',
+          status: 'Positive'
+        },
+        {
+          age: 80,
+          friend: {
+            age: 68,
+            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
+          },
+          name: 'Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best',
+          status: 'Positive'
+        },
+        {
+          age: 80,
+          friend: {
+            age: 68,
+            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
+          },
+          name: 'Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best',
+          status: 'Positive'
+        },
+        {
+          age: 80,
+          friend: {
+            age: 68,
+            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
+          },
+          name: 'Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best',
+          status: 'Positive'
+        }
+      ];
+      const _columns2 = [
+        {
+          Header: 'Name',
+          accessor: 'name',
+          minWidth: 400
+        },
+        {
+          Header: 'Age',
+          accessor: 'age',
+          minWidth: 100
+        },
+        {
+          Header: 'Friend Name',
+          accessor: 'friend.name',
+          minWidth: 100
+        },
+        {
+          Header: 'Friend Age',
+          accessor: 'friend.age',
+          minWidth: 300
+        }
+      ];
+      cy.mount(<AnalyticalTable data={_data2} columns={_columns2} visibleRows={visibleRows} />);
+      cy.get('[data-component-name="AnalyticalTableContainer"]').should(
+        'have.css',
+        'width',
+        withVertScrollbar ? '1293px' : '1306px'
+      );
+      cy.get('[data-component-name="AnalyticalTableBody"]').should(
+        'have.css',
+        'width',
+        withVertScrollbar ? '1293px' : '1306px'
+      );
+
+      cy.mount(<AnalyticalTable data={data} columns={columns} visibleRows={visibleRows} />);
+      cy.get('[data-component-name="AnalyticalTableContainer"]').should(
+        'have.css',
+        'width',
+        withVertScrollbar ? '1293px' : '1306px'
+      );
+      cy.get('[data-component-name="AnalyticalTableBody"]').should(
+        'have.css',
+        'width',
+        withVertScrollbar ? '1293px' : '1306px'
+      );
+
+      const _columns3 = [...columns, { id: 'long', Header: 'Long', width: 2000, Cell: 'Long' }];
+      cy.mount(<AnalyticalTable data={data} columns={_columns3} visibleRows={visibleRows} />);
+      cy.get('[data-component-name="AnalyticalTableContainer"]').should(
+        'have.css',
+        'width',
+        withVertScrollbar ? '1293px' : '1306px'
+      );
+      cy.get('[data-component-name="AnalyticalTableBody"]').should('have.css', 'width', '2240px'); // 4 * 60 (minWidth) + 2000
+
+      const _columns4 = [
+        ...columns,
+        { id: 'long', Header: 'Long', width: 2000, Cell: 'Long', maxWidth: 1000 },
+        { id: 'minWidth', Header: 'minWidth', minWidth: 200, Cell: 'minWidth', maxWidth: 1000 }
+      ];
+      cy.mount(<AnalyticalTable data={data} columns={_columns4} visibleRows={visibleRows} />);
+      cy.get('[data-component-name="AnalyticalTableContainer"]').should(
+        'have.css',
+        'width',
+        withVertScrollbar ? '1293px' : '1306px'
+      );
+      cy.get('[data-component-name="AnalyticalTableBody"]').should('have.css', 'width', '1440px'); // 4 * 60 (minWidth) + 1000 (maxWidth) + 200
+    });
   });
 
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });

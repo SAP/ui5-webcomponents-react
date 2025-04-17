@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.1...v2.9.2) (2025-04-15)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+## [2.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.0...v2.9.1) (2025-04-10)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+# [2.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.2...v2.9.0) (2025-04-07)
+
+### Bug Fixes
+
+- **ColumnChartWithTrend:** correct height calculation ([#7172](https://github.com/SAP/ui5-webcomponents-react/issues/7172)) ([5f98e64](https://github.com/SAP/ui5-webcomponents-react/commit/5f98e64bd3035104b78abd1125b9b8a6a3fcf48d)), closes [#6204](https://github.com/SAP/ui5-webcomponents-react/issues/6204)
+
+### Features
+
+- update to UI5 Web Components 2.9.0 ([#7203](https://github.com/SAP/ui5-webcomponents-react/issues/7203)) ([04fecc4](https://github.com/SAP/ui5-webcomponents-react/commit/04fecc454fbd633c7d0213054e1097ab3b9b069a))
+
+## [2.8.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.1...v2.8.2) (2025-04-07)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.15.2 (main) ([#7184](https://github.com/SAP/ui5-webcomponents-react/issues/7184)) ([707c926](https://github.com/SAP/ui5-webcomponents-react/commit/707c92669ff0f64e5ae256b8797872d77297a0df))
+
+## [2.8.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.0...v2.8.1) (2025-03-24)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-charts
+
+# [2.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.2...v2.8.0) (2025-03-05)
+
+### Features
+
+- update to UI5 Web Components 2.8.0 ([#7035](https://github.com/SAP/ui5-webcomponents-react/issues/7035)) ([5a406c3](https://github.com/SAP/ui5-webcomponents-react/commit/5a406c31d5808ed41a99d47d3e07af21bb2a9262))
+
 ## [2.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.1...v2.7.2) (2025-02-13)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

@@ -6,6 +6,7 @@ import {
   VALUE_STATE_SUCCESS,
   VALUE_STATE_WARNING
 } from '@ui5/webcomponents/dist/generated/i18n/i18n-defaults.js';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import alertIcon from '@ui5/webcomponents-icons/dist/alert.js';
 import errorIcon from '@ui5/webcomponents-icons/dist/error.js';
@@ -40,7 +41,7 @@ export interface ObjectStatusPropTypes extends CommonProps {
   /**
    * Defines the icon in front of the `ObjectStatus` text.
    *
-   * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use `Icon` in order to preserve the intended design.
+   * __Note:__ Although this slot accepts HTML Elements, it is strongly recommended that you only use the `Icon` component with `mode="Decorative"` in order to preserve the intended design.
    */
   icon?: ReactNode;
 
@@ -69,6 +70,8 @@ export interface ObjectStatusPropTypes extends CommonProps {
    * Defines the value state of the `ObjectStatus`.
    *
    * Since version 0.17.0 the state property also accepts values from enum `IndicationColor`.
+   *
+   * __Note:__ Only the `inverted` `ObjectStatus` supports `IndicationColor`s 11-20. For non-inverted `ObjectStatus`, these colors default to the `"None"` `state` color and should __not__ be used.
    *
    * @default `"None"`
    */
@@ -111,13 +114,14 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
   const renderDefaultIcon = showDefaultIcon && !icon;
   let invisibleText = stateAnnouncementText;
   if (!invisibleText && state.startsWith('Indication')) {
-    invisibleText = `${indicationColorText} ${state.substring(state.indexOf('0') + 1)}`;
+    const indicationNumber = parseInt(state.replace('Indication', ''), 10);
+    invisibleText = `${indicationColorText} ${indicationNumber}`;
   }
   if (!invisibleText || renderDefaultIcon) {
     switch (state) {
       case ValueState.Negative:
         if (renderDefaultIcon) {
-          icon = <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
+          icon = <Icon name={errorIcon} data-component-name="ObjectStatusDefaultIcon" mode={IconMode.Decorative} />;
         }
         if (!invisibleText) {
           invisibleText = errorStateText;
@@ -125,7 +129,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Positive:
         if (renderDefaultIcon) {
-          icon = <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
+          icon = <Icon name={successIcon} data-component-name="ObjectStatusDefaultIcon" mode={IconMode.Decorative} />;
         }
         if (!invisibleText) {
           invisibleText = successStateText;
@@ -133,7 +137,7 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Critical:
         if (renderDefaultIcon) {
-          icon = <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
+          icon = <Icon name={alertIcon} data-component-name="ObjectStatusDefaultIcon" mode={IconMode.Decorative} />;
         }
         if (!invisibleText) {
           invisibleText = warningStateText;
@@ -141,7 +145,9 @@ const getStateSpecifics = (state, showDefaultIcon, userIcon, stateAnnouncementTe
         break;
       case ValueState.Information:
         if (renderDefaultIcon) {
-          icon = <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" aria-hidden />;
+          icon = (
+            <Icon name={informationIcon} data-component-name="ObjectStatusDefaultIcon" mode={IconMode.Decorative} />
+          );
         }
         if (!invisibleText) {
           invisibleText = informationStateText;
@@ -170,6 +176,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
     emptyIndicator,
     stateAnnouncementText,
     large,
+    'aria-roledescription': ariaRoleDescription,
     ...rest
   } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -193,7 +200,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
   const showEmptyIndicator = emptyIndicator && !children;
   const computedChildren = showEmptyIndicator ? (
     <span
-      aria-hidden={showEmptyIndicator}
+      aria-hidden={showEmptyIndicator ? 'true' : undefined}
       data-component-name="ObjectStatusEmptyIndicator"
       className={classNames.emptyIndicator}
     >
@@ -214,6 +221,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
   );
 
   const TagName = interactive ? 'button' : 'div';
+  const roleDesc = `${ariaRoleDescription ? `${ariaRoleDescription} ` : ''}${interactive ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : ''}`;
 
   return (
     <TagName
@@ -225,12 +233,18 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
       onClick={interactive ? onClick : undefined}
       tabIndex={interactive ? 0 : undefined}
       data-icon-only={!children}
-      role={interactive ? 'button' : 'group'}
+      role={interactive ? undefined : 'group'}
+      aria-roledescription={roleDesc || undefined}
       {...rest}
     >
-      <span className={classNames.pseudoInvisibleText} data-component-name="ObjectStatusInvisibleDescriptionContainer">
-        {interactive ? i18nBundle.getText(ARIA_OBJ_STATUS_DESC) : i18nBundle.getText(ARIA_OBJ_STATUS_DESC_INACTIVE)}
-      </span>
+      {!interactive && (
+        <span
+          className={classNames.pseudoInvisibleText}
+          data-component-name="ObjectStatusInvisibleDescriptionContainer"
+        >
+          {i18nBundle.getText(ARIA_OBJ_STATUS_DESC_INACTIVE)}
+        </span>
+      )}
       {iconToRender && (
         <span className={classNames.icon} data-icon-only={!children} data-component-name="ObjectStatusIconContainer">
           {iconToRender}

@@ -50,7 +50,6 @@ interface TableAttributes {
    * Available options are:
    *
    * <code>Scroll</code> - Columns are shown as regular columns and horizontal scrolling is enabled.
-   *
    * <code>Popin</code> - Columns are shown as pop-ins instead of regular columns.
    * @default "Scroll"
    */
@@ -77,7 +76,7 @@ interface TablePropTypes
       | 'children'
       | 'features'
       | 'headerRow'
-      | 'nodata'
+      | 'noData'
       | 'onMove'
       | 'onMoveOver'
       | 'onRowActionClick'
@@ -117,13 +116,13 @@ interface TablePropTypes
   /**
    * Defines the custom visualization if there is no data available.
    *
-   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="nodata"`).
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="noData"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
    */
-  nodata?: UI5WCSlotsNode;
+  noData?: UI5WCSlotsNode;
   /**
    * Fired when a movable list item is dropped onto a drop target.
    *
@@ -163,7 +162,7 @@ interface TablePropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|❌|
+   * | ❌|✅|
    */
   onRowActionClick?: (event: Ui5CustomEvent<TableDomRef, TableRowActionClickEventDetail>) => void;
 
@@ -172,7 +171,7 @@ interface TablePropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|❌|
+   * | ❌|✅|
    */
   onRowClick?: (event: Ui5CustomEvent<TableDomRef, TableRowClickEventDetail>) => void;
 }
@@ -255,7 +254,7 @@ const Table = withWebComponent<TablePropTypes, TableDomRef>(
   'ui5-table',
   ['accessibleName', 'accessibleNameRef', 'loadingDelay', 'noDataText', 'overflowMode', 'rowActionCount'],
   ['loading'],
-  ['features', 'headerRow', 'nodata'],
+  ['features', 'headerRow', 'noData'],
   ['move-over', 'move', 'row-action-click', 'row-click']
 );
 

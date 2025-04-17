@@ -4,7 +4,11 @@ import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arro
 import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import { CssSizeVariables, useCurrentTheme } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import { Button, Icon } from '../../../../webComponents/index.js';
+import type { FocusEvent } from 'react';
+import type { ButtonDomRef } from '../../../../webComponents/Button/index.js';
+import { Button } from '../../../../webComponents/Button/index.js';
+import { Icon } from '../../../../webComponents/Icon/index.js';
+import type { ColumnType, RowType, WCRPropertiesType } from '../../types/index.js';
 import { RenderColumnTypes } from '../../types/index.js';
 
 const getPadding = (level) => {
@@ -22,7 +26,15 @@ const getPadding = (level) => {
   }
 };
 
-export const Expandable = (props) => {
+interface ExpandableProps {
+  cell: Record<string, any>;
+  row: RowType;
+  column: ColumnType;
+  visibleColumns: ColumnType[];
+  webComponentsReactProperties: WCRPropertiesType;
+}
+
+export const Expandable = (props: ExpandableProps) => {
   const { cell, row, column, visibleColumns: columns, webComponentsReactProperties } = props;
   const {
     renderRowSubComponent,
@@ -55,24 +67,37 @@ export const Expandable = (props) => {
               title={row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText}
               style={{ ...rowProps.style, paddingInlineStart: paddingLeft }}
               className={classNames.container}
-              aria-label={row.isExpanded ? translatableTexts.collapseA11yText : translatableTexts.expandA11yText}
             >
               {shouldRenderButton ? (
                 <Button
                   tabIndex={-1}
                   icon={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
                   design={ButtonDesign.Transparent}
-                  onClick={rowProps.onClick}
                   className={classNames.button}
+                  onClick={rowProps.onClick}
+                  accessibilityAttributes={{ expanded: row.isExpanded }}
+                  onFocus={(e: FocusEvent<ButtonDomRef>) => {
+                    e.target.accessibleName = row.isExpanded
+                      ? translatableTexts.collapseNodeA11yText
+                      : translatableTexts.expandNodeA11yText;
+                  }}
+                  onBlur={(e: FocusEvent<ButtonDomRef>) => {
+                    e.target.accessibleName = '';
+                  }}
                 />
               ) : (
                 <Icon
+                  aria-hidden="true"
                   tabIndex={-1}
                   onClick={rowProps.onClick}
                   mode={IconMode.Interactive}
                   name={row.isExpanded ? iconNavDownArrow : iconNavRightArrow}
+                  aria-expanded={`${row.isExpanded}`}
                   data-component-name="AnalyticalTableExpandIcon"
                   className={classNames.expandableIcon}
+                  accessibleName={
+                    row.isExpanded ? translatableTexts.collapseNodeA11yText : translatableTexts.expandNodeA11yText
+                  }
                 />
               )}
             </span>
@@ -84,6 +109,14 @@ export const Expandable = (props) => {
                 classNames.nonExpandableCellSpacer,
                 shouldRenderButton && classNames.withExpandableButton
               )}
+              onFocus={(e: FocusEvent<ButtonDomRef>) => {
+                e.target.accessibleName = row.isExpanded
+                  ? translatableTexts.collapseNodeA11yText
+                  : translatableTexts.expandNodeA11yText;
+              }}
+              onBlur={(e: FocusEvent<ButtonDomRef>) => {
+                e.target.accessibleName = '';
+              }}
             />
           )}
         </>

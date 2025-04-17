@@ -228,7 +228,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
           const castChild = child as ReactElement<VariantItemPropTypes>;
           let updatedProps: Omit<SelectedVariant, 'children' | 'variantItem'> = {};
           const currentVariant = popoverRef.current.querySelector(
-            `ui5-li[data-children="${castChild.props.children}"]`
+            `ui5-li[data-children="${CSS.escape(castChild.props.children)}"]`
           );
           callbackProperties.prevVariants.push(castChild.props);
           if (defaultView) {

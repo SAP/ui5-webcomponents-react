@@ -220,7 +220,7 @@ describe('UI5 Web Components - Child Commands', () => {
     ];
 
     components.forEach((component) => {
-      it(component.key, () => {
+      it(component.key!, () => {
         changeSpy = cy.spy().as('change');
         cy.mount(component);
         cy.get(`[${component.key}]`).openDropDownByClick();
@@ -267,7 +267,7 @@ describe('UI5 Web Components - Child Commands', () => {
     ];
 
     components.forEach((component) => {
-      it(component.key, () => {
+      it(component.key!, () => {
         changeSpy = cy.spy().as('change');
         cy.mount(component);
         cy.get(`[${component.key}]`).openDropDownByClick();

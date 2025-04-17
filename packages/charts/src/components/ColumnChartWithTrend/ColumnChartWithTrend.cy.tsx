@@ -85,6 +85,29 @@ describe('ColumnChartWithTrend', () => {
     cy.contains('Loading...').should('exist');
   });
 
+  it('in Grid', () => {
+    cy.mount(
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '500px',
+          gridTemplateRows: '500px'
+        }}
+      >
+        <ColumnChartWithTrend
+          dataset={complexDataSet}
+          dimensions={dimensions}
+          measures={measures}
+          style={{ height: '100%' }}
+          data-testid="ccwt"
+        />
+      </div>
+    );
+
+    cy.findByTestId('ccwt').should('be.visible').invoke('prop', 'offsetHeight').should('eq', 500);
+    cy.findByTestId('ccwt').invoke('prop', 'offsetWidth').should('eq', 500);
+  });
+
   testChartZoomingTool(ColumnChartWithTrend, { dataset: complexDataSet, dimensions, measures });
 
   testChartLegendConfig(ColumnChartWithTrend, { dataset: complexDataSet, dimensions, measures });

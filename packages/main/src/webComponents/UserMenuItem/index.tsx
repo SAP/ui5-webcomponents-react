@@ -1,8 +1,11 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/UserMenuItem.js';
-import type { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
-import type { MenuBeforeCloseEventDetail, MenuBeforeOpenEventDetail } from '@ui5/webcomponents/dist/MenuItem.js';
+import type {
+  MenuBeforeCloseEventDetail,
+  MenuBeforeOpenEventDetail,
+  MenuItemAccessibilityAttributes
+} from '@ui5/webcomponents/dist/MenuItem.js';
 import type Highlight from '@ui5/webcomponents/dist/types/Highlight.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
@@ -21,7 +24,7 @@ interface UserMenuItemAttributes {
    * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents-fiori**.
    * @default {}
    */
-  accessibilityAttributes?: ListItemAccessibilityAttributes;
+  accessibilityAttributes?: MenuItemAccessibilityAttributes;
 
   /**
    * Defines the accessible ARIA name of the component.

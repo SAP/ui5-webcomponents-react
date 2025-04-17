@@ -1,6 +1,8 @@
 import { DocsContext } from '@storybook/blocks';
 import { useContext, useMemo } from 'react';
 // @ts-expect-error: storybook can handle this
+import cemAi from './custom-element-manifests/ai.json';
+// @ts-expect-error: storybook can handle this
 import cemFiori from './custom-element-manifests/fiori.json';
 // @ts-expect-error: storybook can handle this
 import cemMain from './custom-element-manifests/main.json';
@@ -16,10 +18,6 @@ export const MAPPED_THEMES = [
   { value: 'sap_fiori_3_dark', title: 'Quartz Dark' },
   { value: 'sap_fiori_3_hcb', title: 'Quartz High Contrast Black' },
   { value: 'sap_fiori_3_hcw', title: 'Quartz High Contrast White' }
-  // deprecated
-  // { value: 'sap_belize', title: 'Belize' },
-  // { value: 'sap_belize_hcb', title: 'Belize High Contrast Black' },
-  // { value: 'sap_belize_hcw', title: 'Belize High Contrast White' }
 ];
 
 export const excludePropsForAbstract = ['className', 'style'];
@@ -50,6 +48,8 @@ export function useGetCem() {
       return cemMain;
     case 'package:@ui5/webcomponents-fiori':
       return cemFiori;
+    case 'package:@ui5/webcomponents-ai':
+      return cemAi;
   }
 }
 
@@ -60,9 +60,10 @@ const replaceSubComps = {
   ToolbarItem: ['ToolbarSeparator', 'ToolbarSpacer', 'ToolbarButton', 'ToolbarSelect', 'ToolbarSelectOption'],
   TreeItemBase: ['TreeItem', 'TreeItemCustom'],
   AvatarGroupItem: ['Avatar'],
-  TableFeature: ['TableGrowing', 'TableSelection', 'TableVirtualizer'],
+  TableFeature: ['TableGrowing', 'TableSelection', 'TableVirtualizer', 'TableSelectionMulti', 'TableSelectionSingle'],
   SideNavigationItemBase: ['SideNavigationItem', 'SideNavigationGroup', 'SideNavigationSubItem'],
-  TableRowActionBase: ['TableRowAction', 'TableRowActionNavigation']
+  TableRowActionBase: ['TableRowAction', 'TableRowActionNavigation'],
+  TableHeaderCellActionBase: ['TableHeaderCellActionAI']
 };
 
 function findSubComponentsRecursively(moduleName: string, cem: any): string[] {

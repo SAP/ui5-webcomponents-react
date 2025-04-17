@@ -178,6 +178,7 @@ describe('FilterBar.cy.tsx', () => {
         onRestore={restore}
       />
     );
+    cy.wait(100);
 
     cy.findAllByText('INPUT').should('have.length', 1);
     cy.findAllByText('SWITCH').should('have.length', 1);
@@ -185,8 +186,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.findAllByTestId('INPUT').should('have.length', 1);
     cy.findAllByTestId('SWITCH').should('have.length', 1);
     cy.findAllByTestId('SELECT').should('have.length', 1);
-
-    cy.get('[text="Filters (42)"]').click({ force: true });
+    cy.findToolbarButtonByText('Filters (42)').click();
     cy.get('@openSpy').should('have.been.calledOnce');
     cy.get('@afterOpenSpy').should('have.been.calledOnce');
 
@@ -480,7 +480,7 @@ describe('FilterBar.cy.tsx', () => {
 
     cy.get('[data-component-name="FilterBarDialogTable"][data-is-grouped]')
       .shadow()
-      .find('#nodata-row')
+      .find('#no-data-row')
       .should('have.css', 'display', 'none');
 
     cy.get('[data-component-name="FilterBarDialogTable"]')
@@ -551,7 +551,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('[ui5-table-row]').should('have.length', 1);
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('a');
-    cy.get('[ui5-table-row]').should('have.id', 'nodata-row').should('have.length', 1);
+    cy.get('[ui5-table-row]').should('have.id', 'no-data-row').should('have.length', 1);
     cy.get('@search').should('have.callCount', 3);
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('{selectall}{backspace}');
@@ -561,21 +561,21 @@ describe('FilterBar.cy.tsx', () => {
 
     cy.get('[accessible-name="Group View"]').click();
     cy.get('[ui5-table-row]').should('have.length', 2);
-    cy.get('[ui5-table-row]').eq(0).should('have.id', 'nodata-row');
+    cy.get('[ui5-table-row]').eq(0).should('have.id', 'no-data-row');
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('{selectall}{backspace}');
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('a');
     cy.get('[ui5-table-row]').should('have.length', 3);
-    cy.get('[ui5-table-row]').eq(0).should('have.id', 'nodata-row');
+    cy.get('[ui5-table-row]').eq(0).should('have.id', 'no-data-row');
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('A');
     cy.get('[ui5-table-row]').should('have.length', 2);
-    cy.get('[ui5-table-row]').eq(0).should('have.id', 'nodata-row');
+    cy.get('[ui5-table-row]').eq(0).should('have.id', 'no-data-row');
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('a');
     cy.get('[ui5-table-row]').should('have.length', 1);
-    cy.get('[ui5-table-row]').eq(0).should('have.id', 'nodata-row');
+    cy.get('[ui5-table-row]').eq(0).should('have.id', 'no-data-row');
 
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('{selectall}{backspace}');
     cy.get('[data-component-name="FilterBarDialogSearchInput"]').typeIntoUi5Input('b');
@@ -650,7 +650,7 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('[ui5-label]').eq(3).should('have.text', 'Input');
     cy.get('[ui5-label]').eq(4).should('have.text', 'Switch');
 
-    cy.get('[text="Filters"]').click({ force: true });
+    cy.findToolbarButtonByText('Filters').click();
     cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.wait(200);
     cy.get('[data-text="SELECT w/ initial selected"]').as('notSelected');

@@ -1,0 +1,70 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './Search.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader experimental />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+## More Examples
+
+### Search with Scope and SearchItems
+
+A `Search` component with enabled scope, items and filtering by scope.
+
+<Canvas of={ComponentStories.WithScopeAndItems} />
+
+<details>
+
+    <summary>Show static code</summary>
+
+```tsx
+const scopeData = [
+  { name: 'Laptop', scope: 'products' },
+  { name: 'Leave Requests', scope: 'apps' },
+  { name: 'Log work', scope: 'apps' },
+  { name: 'Manage Products', scope: 'apps' },
+  { name: 'Mobile Phones', scope: 'products' },
+  { name: 'Tablet', scope: 'products' }
+];
+
+function SearchComponent(props) {
+  const [filterData, setFilterData] = useState(scopeData);
+
+  const handleScopeChange: SearchPropTypes['onScopeChange'] = (e) => {
+    props.onScopeChange(e);
+    const { scope } = e.detail;
+    if (scope.text === 'All') {
+      setFilterData(scopeData);
+    } else {
+      setFilterData(
+        scopeData.filter((item) => {
+          return item.scope === scope.text.toLowerCase();
+        })
+      );
+    }
+  };
+
+  return (
+    <Search {...props} onScopeChange={handleScopeChange}>
+      {filterData.map((item) => {
+        return <SearchItem key={item.name} text={item.name} scopeName={item.scope} />;
+      })}
+    </Search>
+  );
+}
+```
+
+</details>
+
+<Footer />

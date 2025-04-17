@@ -3,6 +3,87 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.1...v2.9.2) (2025-04-15)
+
+### Bug Fixes
+
+- **AnalyticalTable:** improve `"Default"` `scaleWidthMode` calculation ([#7214](https://github.com/SAP/ui5-webcomponents-react/issues/7214)) ([3afa357](https://github.com/SAP/ui5-webcomponents-react/commit/3afa3572dc05a88bc73b30ad3e4fcd9850a1adf3)), closes [#7072](https://github.com/SAP/ui5-webcomponents-react/issues/7072) [#4971](https://github.com/SAP/ui5-webcomponents-react/issues/4971)
+- **AnalyticalTable:** update column widths correctly when grouped or reordered ([#7210](https://github.com/SAP/ui5-webcomponents-react/issues/7210)) ([b5c3c2b](https://github.com/SAP/ui5-webcomponents-react/commit/b5c3c2b2dfaf586f87bb70e18eaa1233ec1f4b42))
+- **cypress-commands:** force "Enter" press for `clickDropdownMenuItem` (for `ui5-select`) ([#7223](https://github.com/SAP/ui5-webcomponents-react/issues/7223)) ([3c25985](https://github.com/SAP/ui5-webcomponents-react/commit/3c259859f3e8979bf651e9bdfb0b203166d82cf5))
+- **ObjectPage:** correct spacing when `image` is not present ([#7238](https://github.com/SAP/ui5-webcomponents-react/issues/7238)) ([554b88d](https://github.com/SAP/ui5-webcomponents-react/commit/554b88d68327ce2badd117bd0356f5dcf2076453))
+- **ObjectPage:** fire onSelectedSectionChange correctly in IconTabBar `mode` ([#7240](https://github.com/SAP/ui5-webcomponents-react/issues/7240)) ([1d4c4fe](https://github.com/SAP/ui5-webcomponents-react/commit/1d4c4feaaae88dfb5da1b42158932856fd1dac69)), closes [#7235](https://github.com/SAP/ui5-webcomponents-react/issues/7235)
+- **Toolbar - compat:** apply same bg colors as ui5-webcomponents Toolbar ([#7221](https://github.com/SAP/ui5-webcomponents-react/issues/7221)) ([f3dab01](https://github.com/SAP/ui5-webcomponents-react/commit/f3dab01755ede98d86c590af4f496ecdbd3b1d50)), closes [#7220](https://github.com/SAP/ui5-webcomponents-react/issues/7220)
+
+## [2.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.0...v2.9.1) (2025-04-10)
+
+### Bug Fixes
+
+- attach ui5-webcomponents event handlers before browser paint ([#7218](https://github.com/SAP/ui5-webcomponents-react/issues/7218)) ([94416ae](https://github.com/SAP/ui5-webcomponents-react/commit/94416aecefef132e41e44e538bdb8aea0cbe28cc)), closes [#7217](https://github.com/SAP/ui5-webcomponents-react/issues/7217)
+- **ObjectPage:** fix programmatic section selection in `IconTabBar` `mode` ([#7219](https://github.com/SAP/ui5-webcomponents-react/issues/7219)) ([5d0d37b](https://github.com/SAP/ui5-webcomponents-react/commit/5d0d37bd005956cc06ee0e8fc93cdf4899869d54)), closes [#7215](https://github.com/SAP/ui5-webcomponents-react/issues/7215)
+
+# [2.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.2...v2.9.0) (2025-04-07)
+
+### Bug Fixes
+
+- **AnalyticalTable:** improve accessibility ([#7181](https://github.com/SAP/ui5-webcomponents-react/issues/7181)) ([8d652b4](https://github.com/SAP/ui5-webcomponents-react/commit/8d652b4c729771115f948b78a51913dc59ff6262)), closes [#6515](https://github.com/SAP/ui5-webcomponents-react/issues/6515) [#7147](https://github.com/SAP/ui5-webcomponents-react/issues/7147)
+- **ColumnChartWithTrend:** correct height calculation ([#7172](https://github.com/SAP/ui5-webcomponents-react/issues/7172)) ([5f98e64](https://github.com/SAP/ui5-webcomponents-react/commit/5f98e64bd3035104b78abd1125b9b8a6a3fcf48d)), closes [#6204](https://github.com/SAP/ui5-webcomponents-react/issues/6204)
+- **MessageViewButton:** adjust default tooltip ([#7162](https://github.com/SAP/ui5-webcomponents-react/issues/7162)) ([65e033d](https://github.com/SAP/ui5-webcomponents-react/commit/65e033d79fcbf0034f34ef4d6d9d507f452900cd))
+- **MessageView:** improve accessibility ([#7098](https://github.com/SAP/ui5-webcomponents-react/issues/7098)) ([ee114c5](https://github.com/SAP/ui5-webcomponents-react/commit/ee114c5fa6042699eb4d95890d631d8918aa3627)), closes [#7076](https://github.com/SAP/ui5-webcomponents-react/issues/7076) [#7087](https://github.com/SAP/ui5-webcomponents-react/issues/7087) [#7059](https://github.com/SAP/ui5-webcomponents-react/issues/7059)
+- **Toolbar - compat:** prevent empty overflow popover ([#7185](https://github.com/SAP/ui5-webcomponents-react/issues/7185)) ([1773d9d](https://github.com/SAP/ui5-webcomponents-react/commit/1773d9d227e6e4e921358884f3977adc1233bec4))
+
+### Features
+
+- **cli:** add deprecation notice of components in wrapper script ([#7178](https://github.com/SAP/ui5-webcomponents-react/issues/7178)) ([b923669](https://github.com/SAP/ui5-webcomponents-react/commit/b92366919ae13630d11077a01c299875bbea91f6))
+- **MessageItem:** allow customizing `accessibleName` and `tooltip` ([#7099](https://github.com/SAP/ui5-webcomponents-react/issues/7099)) ([43fcb35](https://github.com/SAP/ui5-webcomponents-react/commit/43fcb35783abd7d97380fc0924546447809a574c))
+- **ObjectPage:** allow customizing `role` of `footerArea` container ([#7187](https://github.com/SAP/ui5-webcomponents-react/issues/7187)) ([3b2e248](https://github.com/SAP/ui5-webcomponents-react/commit/3b2e2488d05297e04a8b56311f411e2ee3335701)), closes [#7173](https://github.com/SAP/ui5-webcomponents-react/issues/7173)
+- **ObjectStatus:** add latest `Indication` `state`s ([#7120](https://github.com/SAP/ui5-webcomponents-react/issues/7120)) ([5fc96da](https://github.com/SAP/ui5-webcomponents-react/commit/5fc96dacc50744f1f515994db1fa651e6216c9b2))
+- update to UI5 Web Components 2.9.0 ([#7203](https://github.com/SAP/ui5-webcomponents-react/issues/7203)) ([04fecc4](https://github.com/SAP/ui5-webcomponents-react/commit/04fecc454fbd633c7d0213054e1097ab3b9b069a))
+
+## [2.8.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.1...v2.8.2) (2025-04-07)
+
+### Bug Fixes
+
+- **deps:** update dependency @tanstack/react-virtual to v3.13.5 (main) ([#7133](https://github.com/SAP/ui5-webcomponents-react/issues/7133)) ([51ebd52](https://github.com/SAP/ui5-webcomponents-react/commit/51ebd52957f9567c4718384bac4af0a392550eea))
+- **deps:** update dependency @tanstack/react-virtual to v3.13.6 (main) ([#7161](https://github.com/SAP/ui5-webcomponents-react/issues/7161)) ([a7feb21](https://github.com/SAP/ui5-webcomponents-react/commit/a7feb21a7de697c566019c436bbede629c75320b))
+- **deps:** update dependency recharts to v2.15.2 (main) ([#7184](https://github.com/SAP/ui5-webcomponents-react/issues/7184)) ([707c926](https://github.com/SAP/ui5-webcomponents-react/commit/707c92669ff0f64e5ae256b8797872d77297a0df))
+- **deps:** update react monorepo to v19.1.0 (main) (minor) ([#7154](https://github.com/SAP/ui5-webcomponents-react/issues/7154)) ([287ae70](https://github.com/SAP/ui5-webcomponents-react/commit/287ae70e75eb952933601e8c8e4232d40aaed1b9))
+- **i18n:** update french translation of cancel ([#7146](https://github.com/SAP/ui5-webcomponents-react/issues/7146)) ([ea676c8](https://github.com/SAP/ui5-webcomponents-react/commit/ea676c838c2bf18dd5e635644db743f73946a782)), closes [#7141](https://github.com/SAP/ui5-webcomponents-react/issues/7141)
+- **ObjectPage:** announce first section heading with screen readers ([#7186](https://github.com/SAP/ui5-webcomponents-react/issues/7186)) ([8c49573](https://github.com/SAP/ui5-webcomponents-react/commit/8c49573405cf35fa44e584560b7d3f42dec4c671)), closes [#7043](https://github.com/SAP/ui5-webcomponents-react/issues/7043)
+- **ObjectPage:** correct position of snapped `image` ([#7151](https://github.com/SAP/ui5-webcomponents-react/issues/7151)) ([e99a24f](https://github.com/SAP/ui5-webcomponents-react/commit/e99a24fa31e95e9b57d2b9123a7e90526078069e))
+- **ObjectPage:** improve focus and scroll behavior ([#7150](https://github.com/SAP/ui5-webcomponents-react/issues/7150)) ([1516a82](https://github.com/SAP/ui5-webcomponents-react/commit/1516a8244e96d7b2f7c10e1418fba050507ef902)), closes [#5783](https://github.com/SAP/ui5-webcomponents-react/issues/5783) [#7155](https://github.com/SAP/ui5-webcomponents-react/issues/7155)
+
+## [2.8.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.0...v2.8.1) (2025-03-24)
+
+### Bug Fixes
+
+- **AnalyticalTable:** align column popover based on `hAlign` ([#7081](https://github.com/SAP/ui5-webcomponents-react/issues/7081)) ([eb7dddc](https://github.com/SAP/ui5-webcomponents-react/commit/eb7dddc28ee614d5ddbf637851c1b8c1e74cbe68)), closes [#7080](https://github.com/SAP/ui5-webcomponents-react/issues/7080)
+- **AnalyticalTable:** fix focus behavior when tabbing ([#7063](https://github.com/SAP/ui5-webcomponents-react/issues/7063)) ([8be0e35](https://github.com/SAP/ui5-webcomponents-react/commit/8be0e35f7e837c4ad17d2ebd18f48a9760b398e0)), closes [#7062](https://github.com/SAP/ui5-webcomponents-react/issues/7062)
+- **deps:** update dependency @tanstack/react-virtual to v3.13.4 ([#7071](https://github.com/SAP/ui5-webcomponents-react/issues/7071)) ([cf721e5](https://github.com/SAP/ui5-webcomponents-react/commit/cf721e57de5d0192546ca1aa149d756471d278ca))
+- **FilterBar:** fix reordering in `StrictMode` ([#7060](https://github.com/SAP/ui5-webcomponents-react/issues/7060)) ([7f0f4e6](https://github.com/SAP/ui5-webcomponents-react/commit/7f0f4e6c966dadda85bf4d52bd7743dec19ed68b)), closes [#7013](https://github.com/SAP/ui5-webcomponents-react/issues/7013)
+- **MessageBox:** always create valid id for `String` action button ([#7091](https://github.com/SAP/ui5-webcomponents-react/issues/7091)) ([57b9b54](https://github.com/SAP/ui5-webcomponents-react/commit/57b9b5412a527d6e628407c02bb3f807e6adc837))
+- **ObjectPage:** always show focused elements in content ([#7104](https://github.com/SAP/ui5-webcomponents-react/issues/7104)) ([c8bea19](https://github.com/SAP/ui5-webcomponents-react/commit/c8bea19e005815770d359503614019b66a0075fa)), closes [#7057](https://github.com/SAP/ui5-webcomponents-react/issues/7057) [#7010](https://github.com/SAP/ui5-webcomponents-react/issues/7010)
+- **ObjectPage:** fire `onPinButtonToggle` only when required ([#7064](https://github.com/SAP/ui5-webcomponents-react/issues/7064)) ([16c0453](https://github.com/SAP/ui5-webcomponents-react/commit/16c04536d85c77a34afc99befeab5308d80f232c))
+- **ObjectPage:** use full width for header content if no `image` is set ([#7046](https://github.com/SAP/ui5-webcomponents-react/issues/7046)) ([41f0dc9](https://github.com/SAP/ui5-webcomponents-react/commit/41f0dc948748c56b12dcedfd1b7ae9f427fffabc)), closes [#7025](https://github.com/SAP/ui5-webcomponents-react/issues/7025)
+- **ObjectStatus:** screen readers announce "button" only once ([#7047](https://github.com/SAP/ui5-webcomponents-react/issues/7047)) ([c03e359](https://github.com/SAP/ui5-webcomponents-react/commit/c03e359fdbb69bb0f90e9854ed2b24d8304c745f)), closes [#7039](https://github.com/SAP/ui5-webcomponents-react/issues/7039)
+- **ObjectStatus:** use `IconMode.Decorative` instead of `aria-hidden` ([#7110](https://github.com/SAP/ui5-webcomponents-react/issues/7110)) ([45664cf](https://github.com/SAP/ui5-webcomponents-react/commit/45664cf7e442ea5aa07703fe7d19109595372c52))
+- **renovate:** fix warnings ([#7075](https://github.com/SAP/ui5-webcomponents-react/issues/7075)) ([b2c79ea](https://github.com/SAP/ui5-webcomponents-react/commit/b2c79eae7d62417cab7db006375ffe2361908a4e))
+- **VariantManagement:** allow quotes in `VariantItem` name ([#7108](https://github.com/SAP/ui5-webcomponents-react/issues/7108)) ([eafca89](https://github.com/SAP/ui5-webcomponents-react/commit/eafca89e4bea54fd765453f15270ea76f5be7441)), closes [#7106](https://github.com/SAP/ui5-webcomponents-react/issues/7106)
+
+# [2.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.2...v2.8.0) (2025-03-05)
+
+### Bug Fixes
+
+- **deps:** update dependency @tanstack/react-virtual to v3.13.1 ([#6995](https://github.com/SAP/ui5-webcomponents-react/issues/6995)) ([1b51f0b](https://github.com/SAP/ui5-webcomponents-react/commit/1b51f0b16baf66c17da490e4a2b1e3c28b944c02))
+- **deps:** update dependency @tanstack/react-virtual to v3.13.2 ([#6998](https://github.com/SAP/ui5-webcomponents-react/issues/6998)) ([aee6c53](https://github.com/SAP/ui5-webcomponents-react/commit/aee6c53f3c8c43e5cc1e4bc77d02d61d45f1beb9))
+- **FilterBar:** disable "down" reorder btns on last row ([#7040](https://github.com/SAP/ui5-webcomponents-react/issues/7040)) ([a20770a](https://github.com/SAP/ui5-webcomponents-react/commit/a20770af948cb9fbbe7aa54658883f82569bbefb))
+- **Toolbar (compat):** exclude spacer from overflow popover ([#6962](https://github.com/SAP/ui5-webcomponents-react/issues/6962)) ([44bcdd7](https://github.com/SAP/ui5-webcomponents-react/commit/44bcdd7ce6c874df0bb334196b1f6634add5a6a9)), closes [#6933](https://github.com/SAP/ui5-webcomponents-react/issues/6933)
+- **Toolbar (compat):** remove `margin` from empty items ([#6952](https://github.com/SAP/ui5-webcomponents-react/issues/6952)) ([eac4baf](https://github.com/SAP/ui5-webcomponents-react/commit/eac4baf9b34ca8e8cae7df0fec2e4357ed969852))
+
+### Features
+
+- introduce AI package (`@ui5/webcomponents-ai-react`) ([#6928](https://github.com/SAP/ui5-webcomponents-react/issues/6928)) ([b6e1c8f](https://github.com/SAP/ui5-webcomponents-react/commit/b6e1c8f61d83bbde0d0cb7a2d40625ab15d32c06))
+- update to UI5 Web Components 2.8.0 ([#7035](https://github.com/SAP/ui5-webcomponents-react/issues/7035)) ([5a406c3](https://github.com/SAP/ui5-webcomponents-react/commit/5a406c31d5808ed41a99d47d3e07af21bb2a9262))
+
 ## [2.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.1...v2.7.2) (2025-02-13)
 
 ### Bug Fixes

@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents/dist/TableRowActionNavigation.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
-import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface TableRowActionNavigationAttributes {
   /**
@@ -24,21 +24,35 @@ interface TableRowActionNavigationDomRef extends Required<TableRowActionNavigati
 
 interface TableRowActionNavigationPropTypes
   extends TableRowActionNavigationAttributes,
-    Omit<CommonProps, keyof TableRowActionNavigationAttributes> {}
+    Omit<CommonProps, keyof TableRowActionNavigationAttributes | 'onClick'> {
+  /**
+   * Fired when a row action is clicked.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onClick?: (event: Ui5CustomEvent<TableRowActionNavigationDomRef>) => void;
+}
 
 /**
- * The `TableRowActionNavigation` class defines a navigation actio‚n for table rows.
+ * The `TableRowActionNavigation` component defines a navigation action for table rows.
+ *
+ *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
  * @since [2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of __@ui5/webcomponents__.
+ * @experimental
  */
 const TableRowActionNavigation = withWebComponent<TableRowActionNavigationPropTypes, TableRowActionNavigationDomRef>(
   'ui5-table-row-action-navigation',
   [],
   ['interactive', 'invisible'],
   [],
-  []
+  ['click']
 );
 
 TableRowActionNavigation.displayName = 'TableRowActionNavigation';

@@ -25,10 +25,10 @@ interface UserMenuAttributes {
   opener?: HTMLElement | string | undefined;
 
   /**
-   * Defines if the User Menu shows the Add Account option.
+   * Defines if the User Menu shows the Edit Accounts option.
    * @default false
    */
-  showAddAccount?: boolean;
+  showEditAccounts?: boolean;
 
   /**
    * Defines if the User menu shows edit button.
@@ -60,10 +60,10 @@ interface UserMenuPropTypes
       | keyof UserMenuAttributes
       | 'accounts'
       | 'children'
-      | 'onAddAccountClick'
       | 'onAvatarClick'
       | 'onChangeAccount'
       | 'onClose'
+      | 'onEditAccountsClick'
       | 'onItemClick'
       | 'onManageAccountClick'
       | 'onOpen'
@@ -87,15 +87,6 @@ interface UserMenuPropTypes
    * Defines the menu items.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Fired when the "Add Account" button is selected.
-   *
-   * | cancelable | bubbles |
-   * | :--------: | :-----: |
-   * | ❌|❌|
-   */
-  onAddAccountClick?: (event: Ui5CustomEvent<UserMenuDomRef>) => void;
-
   /**
    * Fired when the account avatar is selected.
    *
@@ -126,6 +117,15 @@ interface UserMenuPropTypes
    * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<UserMenuDomRef>) => void;
+
+  /**
+   * Fired when the "Edit Accounts" button is selected.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|❌|
+   */
+  onEditAccountsClick?: (event: Ui5CustomEvent<UserMenuDomRef>) => void;
 
   /**
    * Fired when a menu item is selected.
@@ -188,13 +188,13 @@ interface UserMenuPropTypes
 const UserMenu = withWebComponent<UserMenuPropTypes, UserMenuDomRef>(
   'ui5-user-menu',
   ['opener'],
-  ['open', 'showAddAccount', 'showEditButton', 'showManageAccount', 'showOtherAccounts'],
+  ['open', 'showEditAccounts', 'showEditButton', 'showManageAccount', 'showOtherAccounts'],
   ['accounts'],
   [
-    'add-account-click',
     'avatar-click',
     'change-account',
     'close',
+    'edit-accounts-click',
     'item-click',
     'manage-account-click',
     'open',

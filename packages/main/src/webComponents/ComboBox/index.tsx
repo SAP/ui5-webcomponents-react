@@ -60,6 +60,14 @@ interface ComboBoxAttributes {
   noTypeahead?: boolean;
 
   /**
+   * Indicates whether the items picker is open.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  open?: boolean;
+
+  /**
    * Defines a short hint intended to aid the user with data entry when the
    * component has no value.
    * @default undefined
@@ -112,7 +120,9 @@ interface ComboBoxPropTypes
       | 'icon'
       | 'valueStateMessage'
       | 'onChange'
+      | 'onClose'
       | 'onInput'
+      | 'onOpen'
       | 'onSelectionChange'
     > {
   /**
@@ -157,6 +167,17 @@ interface ComboBoxPropTypes
   onChange?: (event: Ui5CustomEvent<ComboBoxDomRef>) => void;
 
   /**
+   * Fired when the dropdown is closed.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|❌|
+   */
+  onClose?: (event: Ui5CustomEvent<ComboBoxDomRef>) => void;
+
+  /**
    * Fired when typing in input or clear icon is pressed.
    *
    * **Note:** filterValue property is updated, input is changed.
@@ -166,6 +187,17 @@ interface ComboBoxPropTypes
    * | ❌|✅|
    */
   onInput?: (event: Ui5CustomEvent<ComboBoxDomRef>) => void;
+
+  /**
+   * Fired when the dropdown is opened.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onOpen?: (event: Ui5CustomEvent<ComboBoxDomRef>) => void;
 
   /**
    * Fired when selection is changed by user interaction
@@ -210,9 +242,9 @@ interface ComboBoxPropTypes
 const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(
   'ui5-combobox',
   ['accessibleName', 'accessibleNameRef', 'filter', 'name', 'placeholder', 'value', 'valueState'],
-  ['disabled', 'loading', 'noTypeahead', 'readonly', 'required', 'showClearIcon'],
+  ['disabled', 'loading', 'noTypeahead', 'open', 'readonly', 'required', 'showClearIcon'],
   ['icon', 'valueStateMessage'],
-  ['change', 'input', 'selection-change']
+  ['change', 'close', 'input', 'open', 'selection-change']
 );
 
 ComboBox.displayName = 'ComboBox';

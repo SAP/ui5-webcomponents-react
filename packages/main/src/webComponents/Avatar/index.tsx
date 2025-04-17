@@ -31,7 +31,8 @@ interface AvatarAttributes {
 
   /**
    * Defines the background color of the desired image.
-   * @default "Accent6"
+   * If `colorScheme` is set to `Auto`, the avatar will be displayed with the `Accent6` color.
+   * @default "Auto"
    */
   colorScheme?: AvatarColorScheme | keyof typeof AvatarColorScheme;
 
@@ -134,7 +135,10 @@ interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof Avat
   /**
    * Receives the desired `<img>` tag
    *
-   * **Note:** If you experience flickering of the provided image, you can hide the component until it is being defined with the following CSS:
+   * **Note:** If you experience flickering of the provided image, you can hide the component until it is defined with the following CSS:<br/>
+   * `ui5-avatar:not(:defined) {`<br/>
+   * &nbsp;&nbsp;&nbsp;&nbsp;`visibility: hidden;`<br/>
+   * `}`
    */
   children?: ReactNode | ReactNode[];
 }

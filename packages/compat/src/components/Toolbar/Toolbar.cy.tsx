@@ -79,6 +79,7 @@ const OverflowTestComponent = (props: PropTypes) => {
         <Text data-testid="toolbar-item" style={{ width: '200px' }}>
           Item1
         </Text>
+        {/*not rendered in overflow popover*/}
         <ToolbarSpacer data-testid="spacer1" />
         <Text data-testid="toolbar-item2" style={{ width: '200px' }}>
           Item2
@@ -140,10 +141,10 @@ describe('Toolbar', () => {
   it('overflow menu', () => {
     const onOverflowChange = cy.spy().as('overflowChangeSpy');
     cy.viewport(300, 500);
-    cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />);
+    cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />, { strict: false });
     cy.get('@overflowChangeSpy').should('have.been.calledOnce');
     cy.findByTestId('toolbarElements').should('have.text', 2);
-    cy.findByTestId('overflowElements').should('have.text', 4);
+    cy.findByTestId('overflowElements').should('have.text', 3);
     cy.findByText('Item1').should('be.visible');
     cy.get('[data-testid="toolbar-item2"]').should('not.be.visible');
     cy.get('[data-testid="toolbar-item3"]').should('not.be.visible');
@@ -156,14 +157,14 @@ describe('Toolbar', () => {
 
     cy.viewport(500, 500);
 
-    // fuzzy - remount component instead
+    // flaky - remount component instead
     // cy.get(`[ui5-toggle-button]`).click();
-    cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />);
+    cy.mount(<OverflowTestComponent onOverflowChange={onOverflowChange} />, { strict: false });
     cy.get('[ui5-popover]').should('not.have.attr', 'open');
 
     cy.get('@overflowChangeSpy').should('have.callCount', 2);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 2);
 
     cy.findByTestId('input').shadow().find('input').type('100');
     cy.findByTestId('input').trigger('change');
@@ -171,7 +172,7 @@ describe('Toolbar', () => {
 
     cy.get('@overflowChangeSpy').should('have.callCount', 3);
     cy.findByTestId('toolbarElements').should('have.text', 0);
-    cy.findByTestId('overflowElements').should('have.text', 6);
+    cy.findByTestId('overflowElements').should('have.text', 4);
 
     cy.get('[data-testid="toolbar-item"]').should('not.be.visible');
     cy.get('[data-testid="toolbar-item2"]').should('not.be.visible');
@@ -193,13 +194,13 @@ describe('Toolbar', () => {
 
     cy.get('@overflowChangeSpy').should('have.callCount', 5);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 2);
 
     cy.findByText('Add').click();
 
     cy.get('@overflowChangeSpy').should('have.callCount', 6);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 4);
+    cy.findByTestId('overflowElements').should('have.text', 3);
 
     cy.findByText('Add').click();
     cy.findByText('Add').click();
@@ -209,13 +210,13 @@ describe('Toolbar', () => {
 
     cy.get('@overflowChangeSpy').should('have.callCount', 11);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 9);
+    cy.findByTestId('overflowElements').should('have.text', 8);
 
     cy.findByText('Remove').click();
 
     cy.get('@overflowChangeSpy').should('have.callCount', 12);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 8);
+    cy.findByTestId('overflowElements').should('have.text', 7);
 
     cy.findByText('Remove').click();
     cy.findByText('Remove').click();
@@ -225,14 +226,14 @@ describe('Toolbar', () => {
 
     cy.get('@overflowChangeSpy').should('have.callCount', 17);
     cy.findByTestId('toolbarElements').should('have.text', 3);
-    cy.findByTestId('overflowElements').should('have.text', 3);
+    cy.findByTestId('overflowElements').should('have.text', 2);
 
     cy.get(`[ui5-toggle-button]`).click();
 
-    // ToolbarSpacers should not be visible in the popover
+    // ToolbarSpacers should not be rendered in the popover
     cy.get('[data-component-name="ToolbarOverflowPopover"]')
       .findByTestId('spacer2')
-      .should('not.be.visible', { timeout: 100 });
+      .should('not.exist', { timeout: 100 });
     cy.findByTestId('spacer1').should('exist');
 
     // ToolbarSeparator should be displayed with horizontal line
@@ -323,7 +324,8 @@ describe('Toolbar', () => {
         <Toolbar data-testid="tb" design={design}>
           <Text>Item1</Text>
           <Text>Item2</Text>
-        </Toolbar>
+        </Toolbar>,
+        { strict: false }
       );
       let height = '44px'; //2.75rem
       let background = 'rgba(0, 0, 0, 0)'; // transparent
@@ -370,7 +372,8 @@ describe('Toolbar', () => {
         <Text data-testid="tbi" style={{ width: '100px' }}>
           Item3
         </Text>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
     cy.wait(200);
     cy.findAllByTestId('tbi').each(($el) => {
@@ -394,7 +397,8 @@ describe('Toolbar', () => {
         <Text data-testid="tbi" style={{ width: '100px' }}>
           Item3
         </Text>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
     cy.wait(200);
     cy.findAllByTestId('tbiV').each(($el) => {
@@ -528,7 +532,7 @@ describe('Toolbar', () => {
       );
     };
     const overflowChange = cy.spy().as('overflowChange');
-    cy.mount(<TestComp onOverflowChange={overflowChange} style={{ width: '200px' }} />);
+    cy.mount(<TestComp onOverflowChange={overflowChange} style={{ width: '200px' }} />, { strict: false });
 
     cy.get('[ui5-toggle-button]').should('not.exist');
     cy.findByText('add').click();
@@ -572,7 +576,8 @@ describe('Toolbar', () => {
         <div id="1">Text1</div>
         <div>Text2 no id</div>
         <Button id="3">Text4</Button>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
 
     cy.get('#1').should('have.length', 1);
@@ -589,7 +594,8 @@ describe('Toolbar', () => {
         <div>Text1</div>
         <div>Text2</div>
         <Button>Text4</Button>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
     cy.get('section[role="alertdialog"]').should('exist');
 
@@ -598,7 +604,8 @@ describe('Toolbar', () => {
         <div>Text1</div>
         <div>Text2</div>
         <Button>Text4</Button>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
     cy.get('section').should('not.have.attr', 'role');
     cy.get('[data-component-name="ToolbarOverflowPopoverContent"]').should('have.attr', 'role', 'menu');
@@ -608,10 +615,50 @@ describe('Toolbar', () => {
         <div>Text1</div>
         <div>Text2</div>
         <Button>Text4</Button>
-      </Toolbar>
+      </Toolbar>,
+      { strict: false }
     );
     cy.get('section').should('not.have.attr', 'role');
     cy.get('[data-component-name="ToolbarOverflowPopoverContent"]').should('have.attr', 'role', 'menu');
+  });
+
+  it('no overflow button for spacer- or separator-only children', () => {
+    cy.mount(
+      <Toolbar style={{ width: '0px' }}>
+        <ToolbarSpacer />
+        <Button>Button</Button>
+        <ToolbarSeparator />
+      </Toolbar>,
+      { strict: false }
+    );
+    cy.get('[data-component-name="ToolbarOverflowButtonContainer"]').should('exist');
+
+    cy.mount(
+      <Toolbar style={{ width: '0px' }}>
+        <ToolbarSpacer />
+        <ToolbarSeparator />
+      </Toolbar>,
+      { strict: false }
+    );
+    cy.get('[data-component-name="ToolbarOverflowButtonContainer"]').should('not.exist');
+    cy.mount(
+      <Toolbar style={{ width: '0px' }}>
+        <ToolbarSpacer />
+        <ToolbarSpacer />
+        <ToolbarSpacer />
+      </Toolbar>,
+      { strict: false }
+    );
+    cy.get('[data-component-name="ToolbarOverflowButtonContainer"]').should('not.exist');
+    cy.mount(
+      <Toolbar style={{ width: '0px' }}>
+        <ToolbarSeparator />
+        <ToolbarSeparator />
+        <ToolbarSeparator />
+      </Toolbar>,
+      { strict: false }
+    );
+    cy.get('[data-component-name="ToolbarOverflowButtonContainer"]').should('not.exist');
   });
 
   mountWithCustomTagName(Toolbar);

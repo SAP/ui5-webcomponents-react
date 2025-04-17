@@ -7,36 +7,6 @@
   body {
     font-family: var(--sapFontFamily);
   }
-  #storybook-explorer-searchfield {
-    font-size: var(--sapFontSize);
-    box-sizing: border-box;
-    border: 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    height: var(--sapElement_Height);
-    min-height: var(--sapElement_Height);
-    border-radius: var(--sapField_BorderCornerRadius);
-    padding-inline-end: 0.625rem;
-    box-shadow: var(--sapField_Shadow);
-    color: var(--sapField_TextColor);
-    background: var(--sapField_BackgroundStyle, var(--sapField_BackgroundStyle));
-    background-color: var(--sapField_Background, var(--sapField_Background));
-    border: var(--sapField_BorderWidth) var(--sapField_BorderStyle) var(--sapField_BorderColor);
-  }
-
-  #storybook-explorer-searchfield:hover {
-    background: var(--sapField_Hover_BackgroundStyle, var(--sapField_Hover_BackgroundStyle));
-    background-color: var(--sapField_Hover_Background, var(--sapField_Hover_Background));
-    border-color: var(--sapField_Hover_BorderColor);
-    box-shadow: var(--sapField_Hover_Shadow);
-  }
-
-  #storybook-explorer-searchfield:focus {
-    background: var(--sapField_Focus_Background, var(--sapField_Focus_Background));
-    outline: var(--sapField_Active_BorderColor) var(--sapContent_FocusStyle) var(--sapContent_FocusWidth);
-    outline-offset: -0.125rem;
-    box-shadow: none;
-  }
 
   .docblock-argstable-body label[title] {
     background: #fff !important;
@@ -52,9 +22,13 @@
   }
 
   /*experimental components */
+  #ai-promptinput::after,
+  #ai-button::after,
   #data-display-table::after,
   #inputs-tokenizer::after,
+  #inputs-search::after,
   #modals-popovers-usermenu::after,
+  #modals-popovers-usersettingsdialog::after,
   #charts-timelinechart::after {
     content: '(experimental)';
     overflow: hidden;

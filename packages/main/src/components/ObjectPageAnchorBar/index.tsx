@@ -4,15 +4,17 @@ import iconPushPinOff from '@ui5/webcomponents-icons/dist/pushpin-off.js';
 import iconPushPinOn from '@ui5/webcomponents-icons/dist/pushpin-on.js';
 import iconArrowDown from '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import iconArrowUp from '@ui5/webcomponents-icons/dist/slim-arrow-up.js';
-import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
+import { debounce, enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { CSSProperties } from 'react';
-import { forwardRef, useCallback, useEffect, useRef } from 'react';
+import type { CSSProperties, Dispatch, MouseEvent, SetStateAction } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 import { COLLAPSE_HEADER, EXPAND_HEADER, PIN_HEADER, UNPIN_HEADER } from '../../i18n/i18n-defaults.js';
 import { cssVarVersionInfoPrefix, getUi5TagWithSuffix } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
-import { Button, ToggleButton } from '../../webComponents/index.js';
-import type { ButtonDomRef } from '../../webComponents/index.js';
+import type { ButtonDomRef } from '../../webComponents/Button/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import type { ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents/ToggleButton/index.js';
+import { ToggleButton } from '../../webComponents/ToggleButton/index.js';
 import { classNames, styleData } from './ObjectPageAnchorBar.module.css.js';
 
 const _buttonBaseMinWidth = `${cssVarVersionInfoPrefix}button_base_min_width`;
@@ -39,7 +41,7 @@ interface ObjectPageAnchorBarPropTypes extends CommonProps {
   /**
    * Set the header to the state pinned.
    */
-  setHeaderPinned?: (payload: any) => void;
+  setHeaderPinned?: Dispatch<SetStateAction<boolean>>;
   /**
    * Toggles the header content to be hidden or visible .
    */
@@ -47,7 +49,7 @@ interface ObjectPageAnchorBarPropTypes extends CommonProps {
   /**
    * Highlight title when hovered.
    */
-  onHoverToggleButton?: (e: any) => void;
+  onHoverToggleButton?: (e: MouseEvent<ToggleButtonDomRef>) => void;
   /**
    * Defines internally used accessibility properties/attributes.
    */
@@ -83,21 +85,28 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
   const shouldRenderHeaderPinnableButton = !hidePinButton && headerContentVisible;
   const showBothActions = shouldRenderHeaderPinnableButton;
 
-  const onPinHeader = useCallback(
-    (e) => {
-      setHeaderPinned(e.target.pressed);
-    },
-    [setHeaderPinned]
-  );
+  const onPinHeader: ToggleButtonPropTypes['onClick'] = (e) => {
+    const target = e.target as ToggleButtonDomRef;
+    setHeaderPinned(target.pressed);
+  };
+
+  // debounced because of StrictMode
+  const debouncedOnPinButtonToggle = debounce((pinned: boolean) => {
+    onPinButtonToggle(pinned);
+  }, 300);
 
   const isInitial = useRef(true);
   useEffect(() => {
-    if (!isInitial.current && typeof onPinButtonToggle === 'function') {
-      onPinButtonToggle(headerPinned);
+    if (!isInitial.current && typeof onPinButtonToggle === 'function' && headerPinned != null) {
+      debouncedOnPinButtonToggle(headerPinned);
     }
     if (isInitial.current) {
       isInitial.current = false;
     }
+
+    return () => {
+      debouncedOnPinButtonToggle.cancel();
+    };
   }, [headerPinned]);
 
   useEffect(() => {
@@ -105,8 +114,11 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
     const showHideHeaderBtn = showHideHeaderBtnRef.current;
     void customElements.whenDefined(tagName).then(() => {
       if (showHideHeaderBtn) {
-        //@ts-expect-error: for some reason these optional attributes are mandatory which is not expected
-        showHideHeaderBtn.accessibilityAttributes = { expanded: !!headerContentVisible };
+        showHideHeaderBtn.accessibilityAttributes = {
+          expanded: !!headerContentVisible,
+          hasPopup: undefined,
+          controls: undefined
+        };
       }
     });
   }, [!!headerContentVisible]);

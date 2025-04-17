@@ -27,17 +27,20 @@ interface TableRowAttributes {
   navigated?: boolean;
 
   /**
-   * Defines the position of the row respect to the total number of rows within the table when the `TableVirtualizer` feature is used.
+   * Defines the position of the row related to the total number of rows within the table when the `TableVirtualizer` feature is used.
    *
    * **Note:** Available since [v2.5.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.5.0) of **@ui5/webcomponents**.
-   * @default -1
+   * @default undefined
    */
-  position?: number;
+  position?: number | undefined;
 
   /**
    * Unique identifier of the row.
+   *
+   * **Note:** For selection features to work properly, this property is mandatory, and its value must not contain spaces.
+   * @default undefined
    */
-  rowKey?: string;
+  rowKey?: string | undefined;
 }
 
 interface TableRowDomRef extends Required<TableRowAttributes>, Ui5DomRef {}

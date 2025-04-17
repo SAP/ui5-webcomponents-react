@@ -122,6 +122,8 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
         width: `${totalColumnsWidth}px`
       }}
       data-component-name="AnalyticalTableBody"
+      tabIndex={-1}
+      role="rowgroup"
     >
       {isMounted && children}
     </div>

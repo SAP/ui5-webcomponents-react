@@ -66,6 +66,14 @@ interface MultiComboBoxAttributes {
   noValidation?: boolean;
 
   /**
+   * Indicates whether the items picker is open.
+   *
+   * **Note:** Available since [v2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  open?: boolean;
+
+  /**
    * Defines a short hint intended to aid the user with data entry when the
    * component has no value.
    * @default undefined
@@ -115,12 +123,7 @@ interface MultiComboBoxAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface MultiComboBoxDomRef extends Required<MultiComboBoxAttributes>, Ui5DomRef {
-  /**
-   * Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.
-   */
-  readonly open: boolean;
-}
+interface MultiComboBoxDomRef extends Required<MultiComboBoxAttributes>, Ui5DomRef {}
 
 interface MultiComboBoxPropTypes
   extends MultiComboBoxAttributes,
@@ -256,7 +259,7 @@ interface MultiComboBoxPropTypes
 const MultiComboBox = withWebComponent<MultiComboBoxPropTypes, MultiComboBoxDomRef>(
   'ui5-multi-combobox',
   ['accessibleName', 'accessibleNameRef', 'filter', 'name', 'placeholder', 'value', 'valueState'],
-  ['disabled', 'noTypeahead', 'noValidation', 'readonly', 'required', 'showClearIcon', 'showSelectAll'],
+  ['disabled', 'noTypeahead', 'noValidation', 'open', 'readonly', 'required', 'showClearIcon', 'showSelectAll'],
   ['icon', 'valueStateMessage'],
   ['change', 'close', 'input', 'open', 'selection-change']
 );

@@ -38,7 +38,7 @@ const meta = {
     children: [
       <MessageItem
         key={1}
-        titleText={'Error Message Type'}
+        titleText={'Error Message Type (1)'}
         subtitleText={'Some bad error occurred'}
         type={ValueState.Negative}
         counter={1}
@@ -75,11 +75,16 @@ const meta = {
       >
         Informative message
       </MessageItem>,
-      <MessageItem key={7} titleText={'Error Message Type'} type={ValueState.Negative} counter={3} />,
+      <MessageItem key={7} titleText={'Error Message Type (2)'} type={ValueState.Negative} counter={3} />,
       <MessageItem
         key={8}
         titleText={
-          <Link wrappingType={WrappingType.None}>
+          <Link
+            wrappingType={WrappingType.None}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
             Long Error Message Type without children/details including a Link as `titleText` which has
             wrappingType="None" applied. - The details view is only available if the `titleText` is not fully visible.
             It is NOT recommended to use long titles!

@@ -1,7 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import cancelIcon from '@ui5/webcomponents-icons/dist/sys-cancel.js';
-import { Icon, IndicationColor, Label } from '../..';
+import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { IndicationColor } from '../../enums/IndicationColor.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import { Label } from '../../webComponents/Label/index.js';
+import { Text } from '../../webComponents/Text/index.js';
+import type { ObjectStatusPropTypes } from './index.js';
 import { ObjectStatus } from './index.js';
 
 const meta = {
@@ -55,16 +61,35 @@ export const WithDefaultIcons: Story = {
 };
 
 export const WithCustomIcon: Story = {
-  args: { icon: <Icon name={cancelIcon} /> }
+  args: { icon: <Icon name={cancelIcon} mode={IconMode.Decorative} /> }
 };
 
 export const WithIconOnly: Story = {
-  args: { icon: <Icon name={cancelIcon} />, children: null }
+  args: { icon: <Icon name={cancelIcon} mode={IconMode.Decorative} />, children: null, title: 'Cancel' }
 };
 
+const States = { ...ValueState, ...IndicationColor };
 export const InvertedObjectStatus: Story = {
-  name: 'Inverted ObjectStatus',
+  name: 'All States',
   render() {
+    const renderStatuses = (interactive = false, inverted = false) => {
+      return Object.values(States).map((state: ObjectStatusPropTypes['state']) => {
+        const indicationNumber = parseInt(state.replace('Indication', ''), 10);
+        if (!inverted && !isNaN(indicationNumber) && indicationNumber > 10) {
+          return null;
+        }
+        return (
+          <ObjectStatus
+            key={`${state}-${interactive ? 'interactive' : ''}-${inverted ? 'inverted' : ''}`}
+            interactive={interactive}
+            inverted={inverted}
+            state={state}
+          >
+            {state}
+          </ObjectStatus>
+        );
+      });
+    };
     return (
       <div
         style={{
@@ -75,87 +100,35 @@ export const InvertedObjectStatus: Story = {
         }}
       >
         <Label style={{ gridColumn: 'span 5' }}>Standard mode:</Label>
-        <ObjectStatus inverted state={ValueState.None}>
-          ValueState.None
-        </ObjectStatus>
-        <ObjectStatus inverted state={ValueState.Positive}>
-          ValueState.Positive
-        </ObjectStatus>
-        <ObjectStatus inverted state={ValueState.Critical}>
-          ValueState.Critical
-        </ObjectStatus>
-        <ObjectStatus inverted state={ValueState.Negative}>
-          ValueState.Negative
-        </ObjectStatus>
-        <ObjectStatus inverted state={ValueState.Information}>
-          ValueState.Information
-        </ObjectStatus>
-        <ObjectStatus inverted state={IndicationColor.Indication01}>
-          IndicationColor.Indication01
-        </ObjectStatus>
-        <ObjectStatus inverted state={IndicationColor.Indication02}>
-          IndicationColor.Indication02
-        </ObjectStatus>
-        <ObjectStatus inverted state={IndicationColor.Indication03}>
-          IndicationColor.Indication03
-        </ObjectStatus>
-        <ObjectStatus inverted state={IndicationColor.Indication04}>
-          IndicationColor.Indication04
-        </ObjectStatus>
-        <ObjectStatus inverted state={IndicationColor.Indication05}>
-          IndicationColor.Indication05
-        </ObjectStatus>
-        <ObjectStatus inverted state={IndicationColor.Indication06}>
-          IndicationColor.Indication06
-        </ObjectStatus>
-        <ObjectStatus inverted state={IndicationColor.Indication07}>
-          IndicationColor.Indication07
-        </ObjectStatus>
-        <ObjectStatus inverted state={IndicationColor.Indication08}>
-          IndicationColor.Indication08
-        </ObjectStatus>
+        {renderStatuses()}
         <Label style={{ gridColumn: 'span 5' }}>
           <code>interactive</code> mode:
         </Label>
-        <ObjectStatus interactive inverted state={ValueState.None}>
-          ValueState.None
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={ValueState.Positive}>
-          ValueState.Positive
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={ValueState.Critical}>
-          ValueState.Critical
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={ValueState.Negative}>
-          ValueState.Negative
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={ValueState.Information}>
-          ValueState.Information
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={IndicationColor.Indication01}>
-          IndicationColor.Indication01
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={IndicationColor.Indication02}>
-          IndicationColor.Indication02
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={IndicationColor.Indication03}>
-          IndicationColor.Indication03
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={IndicationColor.Indication04}>
-          IndicationColor.Indication04
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={IndicationColor.Indication05}>
-          IndicationColor.Indication05
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={IndicationColor.Indication06}>
-          IndicationColor.Indication06
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={IndicationColor.Indication07}>
-          IndicationColor.Indication07
-        </ObjectStatus>
-        <ObjectStatus interactive inverted state={IndicationColor.Indication08}>
-          IndicationColor.Indication08
-        </ObjectStatus>
+        {renderStatuses(true)}
+        <div style={{ gridColumn: 'span 5', borderBlockStart: `1px solid ${ThemingParameters.sapList_BorderColor}` }} />
+        <Text
+          style={{
+            gridColumn: 'span 5',
+            fontFamily: ThemingParameters.sapFontBoldFamily,
+            fontSize: ThemingParameters.sapFontLargeSize
+          }}
+        >
+          Inverted
+        </Text>
+        <Label
+          style={{
+            gridColumn: 'span 5'
+          }}
+        >
+          The ObjectStatus has an inverted visualisation, which is used in cases when the information is crucial for the
+          user’s actions and needs to stand out visually.
+        </Label>
+        <Label style={{ gridColumn: 'span 5' }}>Standard mode:</Label>
+        {renderStatuses(false, true)}
+        <Label style={{ gridColumn: 'span 5' }}>
+          <code>interactive</code> mode:
+        </Label>
+        {renderStatuses(true, true)}
       </div>
     );
   }

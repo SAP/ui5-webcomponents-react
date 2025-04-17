@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4.2.0
+      - uses: actions/setup-node@v4.4.0
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
@@ -65,7 +65,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4.2.0
+      - uses: actions/setup-node@v4.4.0
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
@@ -91,7 +91,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4.2.0
+      - uses: actions/setup-node@v4.4.0
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
@@ -106,7 +106,6 @@ jobs:
 
   deploy-next-docs:
     needs: ['build']
-    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     env:
       CYPRESS_INSTALL_BINARY: 0
@@ -114,7 +113,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4.2.0
+        uses: actions/setup-node@v4.4.0
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
@@ -128,6 +127,7 @@ jobs:
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.7.3
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.

@@ -1,6 +1,5 @@
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import TableSelectionMode from '@ui5/webcomponents/dist/types/TableSelectionMode.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import group2Icon from '@ui5/webcomponents-icons/dist/group-2.js';
 import listIcon from '@ui5/webcomponents-icons/dist/list.js';
@@ -37,7 +36,8 @@ import type {
   DialogDomRef,
   InputPropTypes,
   SegmentedButtonPropTypes,
-  TableSelectionDomRef
+  TableSelectionMultiDomRef,
+  TableSelectionMultiPropTypes
 } from '../../webComponents/index.js';
 import {
   Bar,
@@ -53,7 +53,7 @@ import {
   Table,
   TableHeaderCell,
   TableHeaderRow,
-  TableSelection,
+  TableSelectionMulti,
   Title
 } from '../../webComponents/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
@@ -64,7 +64,7 @@ import type { FilterBarPropTypes } from './types.js';
 
 interface ForceRequiredObject {
   required: string[];
-  target: TableSelectionDomRef;
+  target: TableSelectionMultiDomRef;
   selected: Set<string>;
   prevSelected: Set<string>;
   selectedKeys: Set<string>;
@@ -77,7 +77,7 @@ addCustomCSSWithScoping(
 :host([data-component-name="FilterBarDialogPanelTable"][data-with-value="false"]) #table {
    grid-template-columns: var(--_ui5wcr-CheckBoxWidthHeight) minmax(3rem, auto) minmax(3rem, 25%) !important;
 }
-:host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #nodata-row {
+:host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #no-data-row {
   display: none;
 }
 `
@@ -234,9 +234,10 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           )
         : orderedChildren;
 
-    return filteredChildren.map((child, index) => {
+    return filteredChildren.map((child, index, arr) => {
       return cloneElement<FilterGroupItemInternalProps>(child, {
-        'data-index': index
+        'data-index': index,
+        'data-filters-count': arr.length
       });
     });
   };
@@ -309,12 +310,14 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
 
   useEffect(() => {
     if (currentReorderedItem?.index != null) {
-      setOrderedChildren((prev: any[]) => {
-        const { index, direction } = currentReorderedItem;
+      const { index, direction } = currentReorderedItem;
+      setOrderedChildren((prevChildren: ReactElement<FilterGroupItemInternalProps>[]) => {
+        const prev = [...prevChildren];
         switch (direction) {
           case 'up':
             if (index > 0) {
               setUpdatedIndex(index - 1);
+
               const temp = prev[index];
               prev[index] = prev[index - 1];
               prev[index - 1] = temp;
@@ -343,7 +346,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
             }
             break;
         }
-        return [...prev];
+        return prev;
       });
       void currentReorderedItem.target.focus();
     }
@@ -378,9 +381,10 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     }
   }, [selectedFilters]);
 
-  const handleCheckBoxChange = (e) => {
-    if (e.target.hasAttribute('ui5-table-selection')) {
-      const _selected: Set<string> = new Set(e.target.selected.length ? e.target.selected.split(' ') : []);
+  const handleCheckBoxChange: TableSelectionMultiPropTypes['onChange'] = (e) => {
+    const selectionFeature = e.target;
+    if (selectionFeature.hasAttribute('ui5-table-selection-multi')) {
+      const _selected: Set<string> = selectionFeature.getSelectedAsSet();
       const prevSelected: Set<string> = new Set(selectedFilters ?? []);
       const alwaysSelected = Object.keys(requiredFilters).filter((key) => requiredFilters[key]);
       const selectedKeys: Set<string> = _selected.symmetricDifference(prevSelected);
@@ -389,7 +393,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
       if (alwaysSelected.length) {
         setForceRequired({
           required: alwaysSelected,
-          target: e.target,
+          target: selectionFeature,
           selected: _selected,
           prevSelected,
           selectedKeys
@@ -443,13 +447,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
               className={classNames.tableInGroup}
               data-component-name="FilterBarDialogPanelTable"
               data-with-value={showValues}
-              features={
-                <TableSelection
-                  mode={TableSelectionMode.Multiple}
-                  selected={selected}
-                  onChange={handleCheckBoxChange}
-                />
-              }
+              features={<TableSelectionMulti selected={selected} onChange={handleCheckBoxChange} />}
               headerRow={
                 <TableHeaderRow className={classNames.groupedTableHeader}>
                   <TableHeaderCell>{filterText}</TableHeaderCell>
@@ -613,11 +611,11 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           data-component-name="FilterBarDialogTable"
           data-is-grouped={!isListView}
           data-with-value={`${showValues}`}
-          nodata={!isListView ? <span /> : undefined}
+          noData={!isListView ? <span /> : undefined}
           tabIndex={!isListView ? -1 : undefined}
           features={
             <>
-              <TableSelection mode={TableSelectionMode.Multiple} onChange={handleCheckBoxChange} selected={selected} />
+              <TableSelectionMulti onChange={handleCheckBoxChange} selected={selected} />
             </>
           }
           headerRow={

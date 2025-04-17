@@ -32,6 +32,8 @@ export interface ToolbarPropTypes extends Omit<CommonProps, 'onClick' | 'childre
    * __Note:__ Although this prop accepts all `ReactNode` types, it is strongly recommended to not pass `string`, `number` or a React Portal to it.
    *
    * __Note:__ Only components displayed inside the Toolbar are supported as children, i.e. elements positioned outside the normal flow of the document (like dialogs or popovers), can cause undesired behavior.
+   *
+   * __Note:__ If only `ToolbarSpacer`s or `ToolbarSeparator`s are added to the Toolbar, the components will not be rendered.
    */
   children?: ReactNode | ReactNode[];
   /**
@@ -188,14 +190,20 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
   const childrenWithRef = useMemo(() => {
     controlMetaData.current = [];
 
-    return flatChildren.map((item, index) => {
+    let hasOnlySpacersOrSeparators = true;
+    const enrichedChildren = flatChildren.map((item, index) => {
       const itemRef: RefObject<HTMLDivElement> = createRef();
       // @ts-expect-error: if type is not defined, it's not a spacer
       const isSpacer = item?.type?.displayName === 'ToolbarSpacer';
+      // @ts-expect-error: if type is not defined, it's not a separator
+      const isSeparator = item?.type?.displayName === 'ToolbarSeparator';
       controlMetaData.current.push({
         ref: itemRef,
         isSpacer
       });
+      if (!isSpacer && !isSeparator) {
+        hasOnlySpacersOrSeparators = false;
+      }
       if (isSpacer) {
         return item;
       }
@@ -210,7 +218,15 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
         </div>
       );
     });
-  }, [flatChildren, controlMetaData, classNames.childContainer]);
+
+    if (hasOnlySpacersOrSeparators) {
+      return enrichedChildren.filter(
+        // @ts-expect-error: if type is not defined, it's not a separator or spacer
+        (item) => item?.type?.displayName !== 'ToolbarSpacer' && item?.type?.displayName === 'ToolbarSeparator'
+      );
+    }
+    return enrichedChildren;
+  }, [flatChildren, controlMetaData]);
 
   const overflowNeeded =
     (lastVisibleIndex || lastVisibleIndex === 0) &&
@@ -400,11 +416,10 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
         >
           <OverflowPopover
             overflowPopoverRef={overflowPopoverRef}
-            lastVisibleIndex={lastVisibleIndex}
+            lastVisibleIndex={Math.max(lastVisibleIndex, numberOfAlwaysVisibleItems - 1)}
             classes={classNames}
             portalContainer={portalContainer}
             overflowContentRef={overflowContentRef}
-            numberOfAlwaysVisibleItems={numberOfAlwaysVisibleItems}
             overflowButton={overflowButton}
             setIsMounted={setIsPopoverMounted}
             a11yConfig={a11yConfig}

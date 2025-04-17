@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.1...v2.9.2) (2025-04-15)
+
+### Bug Fixes
+
+- **Toolbar - compat:** apply same bg colors as ui5-webcomponents Toolbar ([#7221](https://github.com/SAP/ui5-webcomponents-react/issues/7221)) ([f3dab01](https://github.com/SAP/ui5-webcomponents-react/commit/f3dab01755ede98d86c590af4f496ecdbd3b1d50)), closes [#7220](https://github.com/SAP/ui5-webcomponents-react/issues/7220)
+
+## [2.9.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.0...v2.9.1) (2025-04-10)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-compat
+
+# [2.9.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.2...v2.9.0) (2025-04-07)
+
+### Bug Fixes
+
+- **Toolbar - compat:** prevent empty overflow popover ([#7185](https://github.com/SAP/ui5-webcomponents-react/issues/7185)) ([1773d9d](https://github.com/SAP/ui5-webcomponents-react/commit/1773d9d227e6e4e921358884f3977adc1233bec4))
+
+### Features
+
+- update to UI5 Web Components 2.9.0 ([#7203](https://github.com/SAP/ui5-webcomponents-react/issues/7203)) ([04fecc4](https://github.com/SAP/ui5-webcomponents-react/commit/04fecc454fbd633c7d0213054e1097ab3b9b069a))
+
+## [2.8.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.1...v2.8.2) (2025-04-07)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-compat
+
+## [2.8.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.8.0...v2.8.1) (2025-03-24)
+
+**Note:** Version bump only for package @ui5/webcomponents-react-compat
+
+# [2.8.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.2...v2.8.0) (2025-03-05)
+
+### Bug Fixes
+
+- **Toolbar (compat):** exclude spacer from overflow popover ([#6962](https://github.com/SAP/ui5-webcomponents-react/issues/6962)) ([44bcdd7](https://github.com/SAP/ui5-webcomponents-react/commit/44bcdd7ce6c874df0bb334196b1f6634add5a6a9)), closes [#6933](https://github.com/SAP/ui5-webcomponents-react/issues/6933)
+- **Toolbar (compat):** remove `margin` from empty items ([#6952](https://github.com/SAP/ui5-webcomponents-react/issues/6952)) ([eac4baf](https://github.com/SAP/ui5-webcomponents-react/commit/eac4baf9b34ca8e8cae7df0fec2e4357ed969852))
+
+### Features
+
+- update to UI5 Web Components 2.8.0 ([#7035](https://github.com/SAP/ui5-webcomponents-react/issues/7035)) ([5a406c3](https://github.com/SAP/ui5-webcomponents-react/commit/5a406c31d5808ed41a99d47d3e07af21bb2a9262))
+
 ## [2.7.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.7.1...v2.7.2) (2025-02-13)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-compat
