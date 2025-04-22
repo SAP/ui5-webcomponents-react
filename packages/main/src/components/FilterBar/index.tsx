@@ -48,6 +48,8 @@ const resizeObserverEntryWidth = (entry) => {
  * * Desktop: Expanded or collapsed by default
  * * Tablet: Collapsed by default
  * * Phone: Not displayed. Accessible through filter dialog.
+ *
+ * __Note:__ When `hideToolbar` is set to `true`, filters are always visible.
  */
 const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) => {
   const {

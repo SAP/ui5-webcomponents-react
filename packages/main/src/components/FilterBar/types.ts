@@ -98,7 +98,7 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines whether the toolbar on top of the filter items is displayed.
    *
-   * __Note__: If set to `true`, `header` and the "Hide/Show FilterBar" button are not available and the rest of the buttons are moved to the bottom right side of the filter area.
+   * __Note:__ If set to `true`, `header` and the "Hide/Show FilterBar" button are not available, the `filterBarCollapsed` prop has no effect and the rest of the buttons are moved to the bottom right side of the filter area.
    */
   hideToolbar?: boolean;
   /**
