@@ -172,7 +172,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
       id={headerId}
       data-sap-ui-fastnavgroup="true"
       tabIndex={0}
-      role="heading"
+      role="group"
       aria-roledescription={i18nBundle.getText(ARIA_DESC_CARD_HEADER)}
       aria-labelledby={cardLabelledBy}
       {...rest}
