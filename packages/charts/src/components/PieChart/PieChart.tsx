@@ -199,7 +199,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       const activeLegendItem = chartRef.current?.querySelector<HTMLLIElement>(
         `.legend-item-${chartConfig.activeSegment}`
       );
-      if (!activeLegendItem?.dataset.activeLegend) {
+      if (activeLegendItem && !activeLegendItem?.dataset.activeLegend) {
         const allLegendItems = chartRef.current?.querySelectorAll('.recharts-legend-item');
 
         allLegendItems.forEach((item) => item.removeAttribute('data-active-legend'));
