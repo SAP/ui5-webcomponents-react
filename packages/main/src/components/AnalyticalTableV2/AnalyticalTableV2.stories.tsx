@@ -2,7 +2,7 @@ import dataLarge from '@sb/mockData/Friends500.json';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ColumnDef } from '@tanstack/react-table';
 import { Button, Input } from '@ui5/webcomponents-react';
-import { useReducer } from 'react';
+import { Profiler, useReducer } from 'react';
 import { AnalyticalTableV2 } from './index.js';
 
 //todo make id mandatory, or take this into account for custom implementations: https://tanstack.com/table/latest/docs/api/core/column-def --> imo id mandatory is the easiest way
@@ -74,13 +74,32 @@ const columns: ColumnDef<any>[] = [
   }
 ];
 
+const data = dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })).slice(0);
+const data5k = [
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge
+];
+const data20k = [...data5k, ...data5k, ...data5k, ...data5k];
+const data100k = [...data20k, ...data20k, ...data20k, ...data20k, ...data20k];
+
+const data500k = [...data100k, ...data100k, ...data100k, ...data100k, ...data100k];
+console.log(data20k.length);
 const meta = {
   title: 'Data Display / AnalyticalTableV2',
   component: AnalyticalTableV2,
   args: {
-    data: dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })).slice(0),
+    data: data100k,
     columns,
-    visibleRows: 5
+    visibleRows: 5,
+    selectionMode: 'Single'
   },
   argTypes: { data: { control: { disable: true } }, columns: { control: { disable: true } } }
 } satisfies Meta<typeof AnalyticalTableV2>;
@@ -89,12 +108,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render(args) {
-    const [sortable, toggleSortable] = useReducer((prev) => !prev, false);
+    const [sortable, toggleSortable] = useReducer((prev) => !prev, true);
     return (
       <>
         <div style={{ height: '300px' }}></div>
         <button onClick={toggleSortable}>toggle sortable</button>
+        {/*<Profiler id="content" onRender={console.log}>*/}
         <AnalyticalTableV2 {...args} sortable={sortable} />
+        {/*</Profiler>*/}
       </>
     );
   }

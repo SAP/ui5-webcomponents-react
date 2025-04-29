@@ -38,18 +38,31 @@ interface CellProps<TData, TValue> {
   startIndex: number;
   isFirstFocusableCell?: boolean;
   isSortable?: boolean;
+  isSelectionCell: boolean;
+  isSelectableCell?: boolean;
 }
 
 //todo: create own component for header cells or handle this via props?
 export function Cell<TData, TValue>(props: CellProps<TData, TValue>) {
-  const { style = {}, role, cell, renderable, startIndex, isFirstFocusableCell, isSortable, ...rest } = props;
+  const {
+    style = {},
+    role,
+    cell,
+    renderable,
+    startIndex,
+    isFirstFocusableCell,
+    isSortable,
+    isSelectionCell,
+    isSelectableCell,
+    ...rest
+  } = props;
   const cellContext = cell.getContext();
   const isInteractive = isSortable;
   const openerId = `${useId()}-opener`;
 
   const [popoverOpen, setPopoverOpen] = useState(false);
 
-  const openPopover = (e) => {
+  const openPopover = () => {
     setPopoverOpen(true);
   };
 
@@ -65,10 +78,12 @@ export function Cell<TData, TValue>(props: CellProps<TData, TValue>) {
         }}
         className={clsx(classNames.cell, isInteractive && classNames.headerInteractive)}
         aria-colindex={startIndex + 1}
-        data-cell={true}
+        data-cell={'true'}
         tabIndex={isFirstFocusableCell ? 0 : undefined}
         //todo: keydown (Enter) keyup(Space) required as well
         onClick={isInteractive ? openPopover : undefined}
+        data-selection-cell={isSelectionCell ? 'true' : undefined}
+        data-selectable-cell={isSelectableCell ? 'true' : undefined}
       >
         {flexRender(renderable, cellContext)}
       </div>

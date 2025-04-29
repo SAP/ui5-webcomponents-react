@@ -2,13 +2,16 @@ import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { CssSizeVariables, useIsRTL, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, ReactElement } from 'react';
-import { useRef, useState } from 'react';
-import { classNames, styleData } from './AnalyticalTableV2.module.css.js';
+import { useMemo, useRef, useState } from 'react';
+import { classNames, content } from './AnalyticalTableV2.module.css.js';
 import { Cell } from './core/Cell.js';
 import { Row } from './core/Row.js';
+import { createRowProps } from './factories/index.js';
 import { DensityFeature } from './features/exampleFeature.js';
+import type { FeaturesList } from './types/index.js';
 import { useColumnWidths } from './useColumnMode.js';
 import { handleKeyboardNavigation } from './useKeyboardNavigation.js';
+import { useRowSelection } from './useRowSelection.js';
 import { useRowVirtualizer } from './useRowVirtualizer.js';
 import { useSorting } from './useSorting.js';
 import { useTableContainerResizeObserver } from './utils/useTableContainerResizeObserver.js';
@@ -25,6 +28,10 @@ interface AnalyticalTableV2Props {
   //todo: check if this should be controllable, if so add respective checks otherwise the table-option won't do anything
   enableRowPinning?: boolean;
   enableColumnPinning?: boolean;
+
+  //todo: enum
+  selectionMode?: 'None' | 'Single' | 'Multiple';
+  selectionBehavior?: 'Row' | 'RowOnly' | 'RowSelector';
 }
 
 interface CSSPropertiesWithVars extends CSSProperties {
@@ -46,53 +53,51 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
     enableRowPinning,
     enableColumnPinning,
     columnMode,
-    sortable
+    sortable,
+    selectionMode = 'None',
+    selectionBehavior = 'Row'
   } = props;
-  useStylesheet(styleData, AnalyticalTableV2.displayName);
+  useStylesheet(content, AnalyticalTableV2.displayName);
   const tableContainerRef = useRef<HTMLDivElement>(null);
   const isRTL = useIsRTL(tableContainerRef);
   const { tableWidth, horizontalScrollbarHeight, verticalScrollbarWidth } =
     useTableContainerResizeObserver(tableContainerRef);
   const [columnSizing, setColumnSizing] = useState({});
 
+  //todo: refactor overload
+  //@ts-expect-error: fix type later
   const [sortingOptions, sortingState] = useSorting(sortable);
-
-  console.log(sortingOptions, sortingState);
+  const [selectionOptions, selectionState] = useRowSelection(selectionMode, selectionBehavior, columns);
 
   //const setColumnSizing = useColumnWidths(tableWidth, reactTable.getAllLeafColumns().map((item) => item.columnDef)
   const reactTable = useReactTable({
-    _features: [DensityFeature /*ColumnModesFeature*/],
+    _features: [DensityFeature /*SelectionFeature*/],
     data,
     columns,
     //todo: check feasibility to use only row models that are implementing features used by the implementation
     getCoreRowModel: getCoreRowModel(),
     ...sortingOptions,
+    ...selectionOptions,
     //todo: remove
-    debugTable: true,
+    // debugTable: true,
     columnResizeDirection: isRTL ? 'rtl' : 'ltr',
-    //todo: optional
-    // enableColumnPinning: false,
-    // enableRowPinning: false,
+    //todo: `false` doesn't disable pinning --> use `.getCanPin()`
+    enableColumnPinning,
+    enableRowPinning,
     state: {
       columnSizing,
       //todo: add types & clarify how to inject types (declare module '@tanstack/react-table' is probably not the best approach - probably we have to cast a lot...)
       //ColumnModesFeature
+      //todo: type
+      //@ts-expect-error: fix type later
       tableWidth,
 
       //DensityFeature
       density: 'md',
-      ...sortingState
+      ...sortingState,
+      ...selectionState
     },
-    initialState: {
-      columnPinning: {
-        left: ['c_pinned'],
-        right: ['F']
-      }
-      //   rowPinning: {
-      //     bottom: ['0', '1'],
-      //     top: ['499', '498']
-      //   }
-    },
+    initialState: {},
     // column sizing
     defaultColumn: {
       // need to overwrite default size for dynamic column widths
@@ -103,7 +108,14 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
     columnMode,
     onColumnSizingChange: setColumnSizing
   });
-  console.log(enableRowPinning, enableColumnPinning);
+
+  //todo: remove test
+  const activeFeatures: FeaturesList = useMemo(
+    () => [selectionMode !== 'None' ? 'selection' : undefined, 'test'].filter(Boolean),
+    [selectionMode]
+  );
+  const renderSelectionCell = selectionMode !== 'None' && selectionBehavior !== 'RowOnly';
+  // console.log(enableRowPinning, enableColumnPinning);
 
   //todo: refactor to use getAllLeafColumns directly, or use the `columns` array?
   useColumnWidths(
@@ -159,6 +171,8 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                 >
                   {headerGroup.headers.map((header, index) => {
                     const isSortable = sortable && header.column.getCanSort();
+                    //todo outsource to factory?
+                    const isSelectionCell = renderSelectionCell && header.id === '_ui5wcr_selection_col';
                     return (
                       <Cell
                         key={header.id}
@@ -173,6 +187,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                         startIndex={index}
                         isFirstFocusableCell={groupIndex === 0 && index === 0}
                         isSortable={isSortable}
+                        isSelectionCell={isSelectionCell}
                       />
                     );
                   })}
@@ -183,13 +198,20 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
           {topRows.length > 0 && (
             <div role="rowgroup" className={clsx(classNames.sticky, classNames.topRowsGroup)}>
               {topRows.map((row, index) => {
+                const featureProps = createRowProps(activeFeatures, row);
                 return (
                   <Row
                     key={row.id}
                     data-component-name="AnalyticalTableV2TopRow"
                     startIndex={headerGroups.length + index}
+                    {...featureProps}
                   >
                     {row.getVisibleCells().map((cell, index) => {
+                      //todo outsource to factory?
+                      const isSelectionCell = renderSelectionCell && cell.id === '_ui5wcr_selection_col';
+                      const isSelectableCell =
+                        selectionMode !== 'None' && selectionBehavior === 'RowSelector' ? isSelectionCell : true;
+
                       return (
                         <Cell
                           key={cell.id}
@@ -197,6 +219,8 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                           renderable={cell.column.columnDef.cell}
                           cell={cell}
                           startIndex={index}
+                          isSelectionCell={isSelectionCell}
+                          isSelectableCell={isSelectableCell}
                           // style={{ width: cell.column.getSize() }}
                         />
                       );
@@ -216,6 +240,7 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
           >
             {rowVirtualizer.getVirtualItems().map((virtualRow) => {
               const row = centerRows[virtualRow.index];
+              const { className, ...featureProps } = createRowProps(activeFeatures, row);
               return (
                 <Row
                   key={row.id}
@@ -224,9 +249,17 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                     transform: `translateY(${virtualRow.start}px)` //this should always be a `style` as it changes on scroll
                     // height: `${virtualRow.size}px`
                   }}
-                  className={classNames.virtualizedRow}
+                  className={clsx(classNames.virtualizedRow, className)}
+                  //todo: will only work if SelectionFeature is activated again
+                  //{...row.getRowProps()}
+                  {...featureProps}
                 >
                   {row.getVisibleCells().map((cell, index) => {
+                    //todo outsource to factory?
+                    const isSelectionCell = renderSelectionCell && cell.id === '_ui5wcr_selection_col';
+                    const isSelectableCell =
+                      selectionMode !== 'None' && selectionBehavior === 'RowSelector' ? isSelectionCell : true;
+
                     return (
                       <Cell
                         key={cell.id}
@@ -235,6 +268,8 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                         cell={cell}
                         style={{ width: cell.column.getSize() }}
                         startIndex={index}
+                        isSelectionCell={isSelectionCell}
+                        isSelectableCell={isSelectableCell}
                       />
                     );
                   })}
@@ -245,13 +280,20 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
           {bottomRows.length > 0 && (
             <div role="rowgroup" className={clsx(classNames.sticky, classNames.bottomRowsGroup)}>
               {bottomRows.map((row, index) => {
+                const featureProps = createRowProps(activeFeatures, row);
                 return (
                   <Row
                     key={row.id}
                     data-component-name="AnalyticalTableV2BottomRow"
                     startIndex={headerGroups.length + topRows.length + centerRows.length + index}
+                    {...featureProps}
                   >
                     {row.getVisibleCells().map((cell, index) => {
+                      //todo outsource to factory?
+                      const isSelectionCell = renderSelectionCell && cell.id === '_ui5wcr_selection_col';
+                      const isSelectableCell =
+                        selectionMode !== 'None' && selectionBehavior === 'RowSelector' ? isSelectionCell : true;
+
                       return (
                         <Cell
                           key={cell.id}
@@ -260,6 +302,8 @@ function AnalyticalTableV2(props: AnalyticalTableV2Props): ReactElement<Analytic
                           cell={cell}
                           style={{ width: cell.column.getSize() }}
                           startIndex={index}
+                          isSelectionCell={isSelectionCell}
+                          isSelectableCell={isSelectableCell}
                         />
                       );
                     })}

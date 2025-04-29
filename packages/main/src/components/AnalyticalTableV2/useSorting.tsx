@@ -1,9 +1,10 @@
 import type { RowModel, SortingState, Table } from '@tanstack/react-table';
 import { getSortedRowModel } from '@tanstack/react-table';
 import type { Dispatch, SetStateAction } from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 interface SortingTableOptions {
+  //todo: type
   getSortedRowModel: (table: Table<unknown>) => () => RowModel<unknown>;
   onSortingChange: Dispatch<SetStateAction<SortingState>>;
 }
@@ -21,8 +22,17 @@ export function useSorting(sortable: false | undefined): [EmptyObject, EmptyObje
 export function useSorting(sortable?: boolean): [SortingTableOptions, SortingTableState] | [EmptyObject, EmptyObject] {
   const [sorting, setSorting] = useState<SortingState>([]);
 
-  if (!sortable) {
-    return [{}, {}];
-  }
-  return [{ getSortedRowModel: getSortedRowModel(), onSortingChange: setSorting }, { sorting }];
+  return useMemo(() => {
+    if (!sortable) {
+      return [{}, {}] as [EmptyObject, EmptyObject];
+    }
+
+    return [
+      {
+        getSortedRowModel: getSortedRowModel(),
+        onSortingChange: setSorting
+      },
+      { sorting }
+    ] as [SortingTableOptions, SortingTableState];
+  }, [sortable, sorting]);
 }
