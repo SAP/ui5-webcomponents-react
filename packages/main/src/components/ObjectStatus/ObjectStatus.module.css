@@ -3,6 +3,9 @@
 }
 
 .objectStatus {
+  --_ui5wcr-ObjectStatus-focs-outline: 0.125rem var(--sapContent_FocusColor);
+  --_ui5wcr-ObjectStatus-focs-background: var(--sapContent_FocusColor);
+
   font-family: var(--sapFontFamily);
   font-size: var(--sapFontSize);
   font-weight: normal;
@@ -17,6 +20,14 @@
   [ui5-icon] {
     color: var(--sapNeutralElementColor);
   }
+}
+
+/*deltas*/
+[data-sap-theme^='sap_'][data-sap-theme$='_hcw'] .objectStatus,
+[data-sap-theme^='sap_'][data-sap-theme$='_hcb'] .objectStatus {
+  --_ui5wcr-ObjectStatus-focs-outline: var(--sapContent_FocusColor) var(--sapContent_FocusStyle)
+    var(--sapContent_FocusWidth);
+  --_ui5wcr-ObjectStatus-focs-background: transparent;
 }
 
 .icon {
@@ -183,11 +194,10 @@
 
     &:focus {
       text-shadow: none;
-      background: var(--sapContent_FocusColor);
+      background: var(--_ui5wcr-ObjectStatus-focs-background);
       color: var(--sapContent_ContrastTextColor);
       border-radius: 0.125rem;
-      outline: 0.125rem var(--sapContent_FocusColor);
-
+      outline: var(--_ui5wcr-ObjectStatus-focs-outline);
       [ui5-icon] {
         color: var(--sapContent_ContrastTextColor);
       }
