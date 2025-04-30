@@ -243,6 +243,14 @@
 }
 
 .noDataContainer {
+  box-sizing: border-box;
+  &:focus {
+    outline-offset: -3px;
+    outline: var(--sapContent_FocusColor) solid 0.125rem;
+  }
+}
+
+.noData {
   display: flex;
   justify-content: center;
   align-items: center;

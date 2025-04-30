@@ -1,6 +1,11 @@
-export const DefaultNoDataComponent = ({ noDataText, className, style }) => {
+interface NoDataComponentProps {
+  noDataText: string;
+  className: string;
+}
+
+export const DefaultNoDataComponent = ({ noDataText, className }: NoDataComponentProps) => {
   return (
-    <div className={className} style={style}>
+    <div className={className} data-component-name="AnalyticalTableNoData" role="gridcell">
       {noDataText}
     </div>
   );

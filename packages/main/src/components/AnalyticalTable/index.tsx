@@ -801,11 +801,15 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               <TablePlaceholder columns={visibleColumns} rows={minRows} style={noDataStyles} />
             )}
             {!loading && rows?.length === 0 && (
-              <NoDataComponent
-                noDataText={noDataTextLocal}
-                className={classNames.noDataContainer}
+              <div
                 style={noDataStyles}
-              />
+                data-component-name="AnalyticalTableNoDataContainer"
+                role="row"
+                tabIndex={0}
+                className={classNames.noDataContainer}
+              >
+                <NoDataComponent noDataText={noDataTextLocal} className={classNames.noData} />
+              </div>
             )}
             {rows?.length > 0 && tableRef.current && (
               <VirtualTableBodyContainer
