@@ -43,6 +43,7 @@ import {
   INVALID_TABLE,
   LIST_NO_DATA,
   NO_DATA_FILTERED,
+  PLEASE_WAIT,
   ROW_COLLAPSED,
   ROW_EXPANDED,
   SELECT_ALL,
@@ -797,10 +798,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 )
               );
             })}
-            {loading && rows?.length === 0 && (
-              <TablePlaceholder columns={visibleColumns} rows={minRows} style={noDataStyles} />
-            )}
-            {!loading && rows?.length === 0 && (
+            {rows?.length === 0 && (
               <div
                 style={noDataStyles}
                 data-component-name="AnalyticalTableNoDataContainer"
@@ -808,7 +806,16 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 tabIndex={0}
                 className={classNames.noDataContainer}
               >
-                <NoDataComponent noDataText={noDataTextLocal} className={classNames.noData} />
+                {loading ? (
+                  <TablePlaceholder
+                    columns={visibleColumns}
+                    rows={minRows}
+                    style={noDataStyles}
+                    pleaseWaitText={i18nBundle.getText(PLEASE_WAIT)}
+                  />
+                ) : (
+                  <NoDataComponent noDataText={noDataTextLocal} className={classNames.noData} />
+                )}
               </div>
             )}
             {rows?.length > 0 && tableRef.current && (
