@@ -84,6 +84,7 @@ export const InvertedObjectStatus: Story = {
             interactive={interactive}
             inverted={inverted}
             state={state}
+            showDefaultIcon
           >
             {state}
           </ObjectStatus>
