@@ -50,12 +50,6 @@ export const AllColors: Story = {
             colorScheme: "{index + 1}"
           </Tag>
         ))}
-        <Text style={{ flexGrow: 1, width: '100%' }}>Set2:</Text>
-        {new Array(10).fill('').map((_, index) => (
-          <Tag key={index} design="Set3" colorScheme={`${index + 1}`}>
-            colorScheme: "{index + 1}"
-          </Tag>
-        ))}
       </FlexBox>
     );
   }
