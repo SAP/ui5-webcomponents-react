@@ -18365,9 +18365,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-run-all2@npm:^7.0.0":
-  version: 7.0.2
-  resolution: "npm-run-all2@npm:7.0.2"
+"npm-run-all2@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "npm-run-all2@npm:8.0.0"
   dependencies:
     ansi-styles: "npm:^6.2.1"
     cross-spawn: "npm:^7.0.6"
@@ -18382,7 +18382,7 @@ __metadata:
     npm-run-all2: bin/npm-run-all/index.js
     run-p: bin/run-p/index.js
     run-s: bin/run-s/index.js
-  checksum: 10c0/4606c0cdaad9dc7dbe5a6ae432b1aabea25e2ffd541f959307e5c34247d0658952f98352b8ce45f925241af304c6718b2198b425f234e0e9fbc30b342cedb121
+  checksum: 10c0/50ce762c55b11f8d7ae4512f6750088787b9918848ce866a630c262a46add005489596bf67a117d324d9bf61b4f232b0447046b132bbe41d8ce804d51bcddb96
   languageName: node
   linkType: hard
 
@@ -23773,7 +23773,7 @@ __metadata:
     husky: "npm:^9.0.6"
     lerna: "npm:^8.0.0"
     lint-staged: "npm:^15.0.0"
-    npm-run-all2: "npm:^7.0.0"
+    npm-run-all2: "npm:^8.0.0"
     postcss: "npm:^8.4.25"
     postcss-cli: "npm:^11.0.0"
     postcss-import: "npm:^16.0.0"
