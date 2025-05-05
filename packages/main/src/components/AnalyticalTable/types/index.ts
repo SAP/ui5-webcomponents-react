@@ -1,6 +1,15 @@
 import type { ScrollToOptions } from '@tanstack/react-virtual';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import type { ComponentType, DependencyList, Dispatch, MutableRefObject, ReactNode, Ref, SetStateAction } from 'react';
+import type {
+  ComponentType,
+  DependencyList,
+  Dispatch,
+  MutableRefObject,
+  ReactNode,
+  Ref,
+  RefObject,
+  SetStateAction
+} from 'react';
 import type {
   AnalyticalTablePopinDisplay,
   AnalyticalTableScaleWidthMode,
@@ -341,7 +350,14 @@ export interface TableInstanceWithPopoverProps extends TableInstance {
 
 export interface FilterProps {
   column: ColumnType;
-  popoverRef: MutableRefObject<PopoverDomRef>;
+  /**
+   * `Popover` DOM RefObject
+   */
+  popoverRef: RefObject<PopoverDomRef>;
+  /**
+   * `accessibleNameRef` for filter `Input`
+   */
+  accessibleNameRef: string;
 }
 
 export interface AnalyticalTableColumnDefinition {

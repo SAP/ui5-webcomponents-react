@@ -4,7 +4,7 @@ import type { InputPropTypes } from '../../../../webComponents/Input/index.js';
 import { Input } from '../../../../webComponents/Input/index.js';
 import type { FilterProps } from '../../types/index.js';
 
-export const DefaultFilterComponent = ({ column }: FilterProps) => {
+export const DefaultFilterComponent = ({ column, accessibleNameRef }: FilterProps) => {
   const handleInput: InputPropTypes['onInput'] = useCallback(
     (e) => {
       // Setting the filter to `undefined` removes it
@@ -19,7 +19,15 @@ export const DefaultFilterComponent = ({ column }: FilterProps) => {
     }
   };
 
-  return <Input onInput={handleInput} value={column.filterValue ?? ''} showClearIcon onKeyDown={handleKeyDown} />;
+  return (
+    <Input
+      onInput={handleInput}
+      value={column.filterValue ?? ''}
+      showClearIcon
+      onKeyDown={handleKeyDown}
+      accessibleNameRef={accessibleNameRef}
+    />
+  );
 };
 
 DefaultFilterComponent.displayName = 'DefaultFilterComponent';
