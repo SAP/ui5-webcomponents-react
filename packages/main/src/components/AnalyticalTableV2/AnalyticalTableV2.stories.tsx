@@ -1,0 +1,122 @@
+import dataLarge from '@sb/mockData/Friends500.json';
+import type { Meta, StoryObj } from '@storybook/react';
+import type { ColumnDef } from '@tanstack/react-table';
+import { Button, Input } from '@ui5/webcomponents-react';
+import { Profiler, useReducer } from 'react';
+import { AnalyticalTableV2 } from './index.js';
+
+//todo make id mandatory, or take this into account for custom implementations: https://tanstack.com/table/latest/docs/api/core/column-def --> imo id mandatory is the easiest way
+
+//todo: any
+const columns: ColumnDef<any>[] = [
+  {
+    header: 'Person',
+    id: 'A',
+    columns: [
+      { header: 'Name', accessorKey: 'name', id: 'B' },
+      { header: 'Age', accessorKey: 'age', id: 'C' }
+    ]
+  },
+  {
+    id: 'D',
+    header: 'Friend',
+    columns: [
+      { header: 'Friend Name', accessorKey: 'friend.name', id: 'E' },
+      { header: 'Friend Age', accessorKey: 'friend.age', id: 'F' }
+    ]
+  },
+  {
+    id: 'G',
+    header: 'Pinnable',
+    columns: [
+      {
+        maxSize: 100,
+        header: 'Column Pinned',
+        id: 'c_pinned',
+        cell: ({ row }) => {
+          return 'Pinned';
+        }
+      },
+      {
+        header: 'Pin Row',
+        id: 'r_pinned',
+        size: 300,
+        cell: ({ row }) => {
+          return (
+            <>
+              <Button
+                onClick={() => {
+                  row.pin('top');
+                }}
+              >
+                Pin Top
+              </Button>
+              <Button
+                onClick={() => {
+                  row.pin('bottom');
+                }}
+              >
+                Pin Bottom
+              </Button>
+              <Button
+                onClick={() => {
+                  row.pin(false);
+                }}
+              >
+                Reset Pin
+              </Button>
+            </>
+          );
+        }
+      },
+      { header: 'Input', cell: () => <Input />, id: 'input' }
+    ]
+  }
+];
+
+const data = dataLarge.map((item, index) => ({ ...item, friend: { ...item.friend, age: index } })).slice(0);
+const data5k = [
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge,
+  ...dataLarge
+];
+const data20k = [...data5k, ...data5k, ...data5k, ...data5k];
+const data100k = [...data20k, ...data20k, ...data20k, ...data20k, ...data20k];
+
+const data500k = [...data100k, ...data100k, ...data100k, ...data100k, ...data100k];
+console.log(data20k.length);
+const meta = {
+  title: 'Data Display / AnalyticalTableV2',
+  component: AnalyticalTableV2,
+  args: {
+    data: data100k,
+    columns,
+    visibleRows: 5,
+    selectionMode: 'Single'
+  },
+  argTypes: { data: { control: { disable: true } }, columns: { control: { disable: true } } }
+} satisfies Meta<typeof AnalyticalTableV2>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render(args) {
+    const [sortable, toggleSortable] = useReducer((prev) => !prev, true);
+    return (
+      <>
+        <div style={{ height: '300px' }}></div>
+        <button onClick={toggleSortable}>toggle sortable</button>
+        {/*<Profiler id="content" onRender={console.log}>*/}
+        <AnalyticalTableV2 {...args} sortable={sortable} />
+        {/*</Profiler>*/}
+      </>
+    );
+  }
+};
