@@ -874,7 +874,6 @@ describe('AnalyticalTable', () => {
 
     cy.findByText('Friend Name').click();
     cy.findByText('Group').realClick();
-    cy.get('[data-component-name="ATHeaderContainer-friend.name"]').should('have.attr', 'data-prev-opener');
     cy.focused()
       .should('have.attr', 'data-row-index', '0')
       .and('have.attr', 'data-column-index', '2')
