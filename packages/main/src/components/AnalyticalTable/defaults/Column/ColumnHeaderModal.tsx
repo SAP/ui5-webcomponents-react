@@ -26,7 +26,7 @@ import { Icon } from '../../../../webComponents/Icon/index.js';
 import { List } from '../../../../webComponents/List/index.js';
 import { ListItemCustom } from '../../../../webComponents/ListItemCustom/index.js';
 import { ListItemStandard } from '../../../../webComponents/ListItemStandard/index.js';
-import type { PopoverDomRef } from '../../../../webComponents/Popover/index.js';
+import type { PopoverDomRef, PopoverPropTypes } from '../../../../webComponents/Popover/index.js';
 import { Popover } from '../../../../webComponents/Popover/index.js';
 import { Text } from '../../../../webComponents/Text/index.js';
 import { FlexBox } from '../../../FlexBox/index.js';
@@ -128,7 +128,10 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
   const isSortedAscending = column.isSorted && column.isSortedDesc === false;
   const isSortedDescending = column.isSorted && column.isSortedDesc === true;
 
-  const onAfterClose = (e) => {
+  const onAfterClose: PopoverPropTypes['onClose'] = (e) => {
+    if (column.isGrouped) {
+      (e.currentTarget.opener as HTMLDivElement).setAttribute('data-prev-opener', column.id);
+    }
     stopPropagation(e);
     setOpen(false);
   };
@@ -167,13 +170,13 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
   };
 
   useEffect(() => {
-    if (open && ref.current && openerRef.current) {
+    if (ref.current && openerRef.current) {
       void customElements.whenDefined(getUi5TagWithSuffix('ui5-popover')).then(() => {
         ref.current.opener = openerRef.current;
         ref.current.open = true;
       });
     }
-  }, [open]);
+  }, []);
 
   return (
     <Popover
