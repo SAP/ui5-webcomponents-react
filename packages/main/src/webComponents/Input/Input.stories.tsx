@@ -1,4 +1,3 @@
-import '@ui5/webcomponents/dist/features/InputSuggestions.js';
 import type { Meta, StoryObj } from '@storybook/react';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
