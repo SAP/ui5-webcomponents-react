@@ -233,6 +233,7 @@ export interface WCRPropertiesType {
   uniqueId: string;
   subRowsKey: AnalyticalTablePropTypes['subRowsKey'];
   onColumnsReorder: AnalyticalTablePropTypes['onColumnsReorder'];
+  onFilter: AnalyticalTablePropTypes['onFilter'];
 }
 
 export interface RowType {
@@ -280,7 +281,7 @@ export interface AnalyticalTableState {
   columnOrder: string[];
   columnResizing: Record<string, any>;
   expanded: Record<string | number, any>;
-  filters: Record<string | number, any>[];
+  filters: Filter[];
   groupBy: string[];
   hiddenColumns: string[];
   selectedRowIds: Record<string | number, any>;
@@ -298,6 +299,11 @@ export interface AnalyticalTableState {
   interactiveRowsHavePopIn?: boolean;
   tableColResized?: true;
   triggerScroll?: TriggerScrollState;
+}
+
+interface Filter {
+  id: number | string;
+  value: string;
 }
 
 interface CellLabelParam {
@@ -950,6 +956,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * __Note:__ Auto-resize is only available on columns that have the `autoResizable` option set to `true`.
    */
   onAutoResize?: (e?: OnAutoResizeMouseEvent) => void;
+  /**
+   * Fired when a filter is applied to a column.
+   */
+  onFilter?: (e: OnFilterParam) => void;
   // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.
@@ -967,6 +977,12 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * **Note**: Use this prop with care, some properties might have an impact on the internal `AnalyticalTable` implementation.
    */
   tableInstance?: Ref<TableInstance>;
+}
+
+interface OnFilterParam {
+  filters: Filter[];
+  value: string | undefined;
+  columnId: string | number;
 }
 
 interface ConfigParam {

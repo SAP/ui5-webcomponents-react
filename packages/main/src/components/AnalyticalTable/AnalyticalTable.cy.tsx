@@ -468,6 +468,7 @@ describe('AnalyticalTable', () => {
   });
 
   it('tree selection & filtering', () => {
+    const filterSpy = cy.spy().as('filter');
     const TreeSelectFilterTable = (props: PropTypes) => {
       const [filter, setFilter] = useState('');
       const [relevantPayload, setRelevantPayload] = useState<Record<string, any>>({});
@@ -501,6 +502,7 @@ describe('AnalyticalTable', () => {
             data={dataTree}
             globalFilterValue={filter}
             selectionMode="Multiple"
+            onFilter={filterSpy}
           />
           <div data-testid="payloadHelper">
             {JSON.stringify(relevantPayload?.selectedFlatRows?.filter(Boolean).length)}
@@ -553,6 +555,12 @@ describe('AnalyticalTable', () => {
     // column filter + select
     cy.findByText('Name').click();
     cy.get(`[ui5-input][show-clear-icon]`).typeIntoUi5Input('Flowers Mcfarland', { force: true });
+    cy.get('@filter').should('have.callCount', 17);
+    cy.get('@filter').should('have.been.calledWithMatch', {
+      value: 'Flowers Mcfarland',
+      columnId: 'name',
+      filters: [{ id: 'name', value: 'Flowers Mcfarland' }]
+    });
     cy.findByText('Robin Moreno').should('not.exist', { timeout: 100 });
     cy.findByText('Judith Mathews').should('not.exist', { timeout: 100 });
     cy.findByText('Katy Bradshaw').should('not.exist', { timeout: 100 });
@@ -576,6 +584,8 @@ describe('AnalyticalTable', () => {
         }
       }
     ];
+
+    const filterSpy = cy.spy().as('filter');
     const TestComp = ({ onRowSelect }: PropTypes) => {
       const [selectedRowIds, setSelectedRowIds] = useState({});
       const [selectedFlatRows, setSelectedFlatRows] = useState([]);
@@ -610,6 +620,7 @@ describe('AnalyticalTable', () => {
               setAllRowsSelected(e.detail.allRowsSelected);
               onRowSelect(e);
             }}
+            onFilter={filterSpy}
             selectionMode={AnalyticalTableSelectionMode.Multiple}
             selectedRowIds={selectedRowIds}
           />
@@ -696,6 +707,12 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name-5').click();
     cy.findByText('Name').click();
     cy.get('[ui5-li-custom]').shadow().get('[ui5-input]').typeIntoUi5Input('7{enter}');
+    cy.get('@filter').should('have.callCount', 1);
+    cy.get('@filter').should('have.been.calledWithMatch', {
+      value: '7',
+      columnId: 'name',
+      filters: [{ id: 'name', value: '7' }]
+    });
     cy.findByTestId('payload').should('have.text', '["0","1","5"]');
     cy.findByTestId('payloadRowsById').should('have.text', '{"0":true,"1":true,"5":true}');
     cy.findByTestId('payloadAllRowsSelected').should('have.text', 'false');
@@ -708,10 +725,18 @@ describe('AnalyticalTable', () => {
 
     cy.findByText('Name').click();
     cy.get('[ui5-li-custom]').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
+    cy.get('@filter').should('have.callCount', 2);
+    cy.get('@filter').should('have.been.calledWithMatch', {
+      value: undefined,
+      columnId: 'name',
+      filters: []
+    });
+
     cy.get('[data-row-index="0"][data-column-index="0"]').click();
     cy.findByText('Name-17').click({ force: true });
     cy.findByText('Name').click();
     cy.get('[ui5-li-custom]').shadow().get('[ui5-input]').typeIntoUi5Input('7{enter}');
+    cy.get('@filter').should('have.callCount', 3);
     cy.findByTestId('payload').should(
       'have.text',
       '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","18","19","20"]'
@@ -734,6 +759,7 @@ describe('AnalyticalTable', () => {
 
     cy.findByText('Name').click();
     cy.get('[ui5-li-custom]').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
+    cy.get('@filter').should('have.callCount', 4);
 
     cy.findByText('Name-17').click({ force: true });
     cy.findByTestId('input').type('7{enter}');
