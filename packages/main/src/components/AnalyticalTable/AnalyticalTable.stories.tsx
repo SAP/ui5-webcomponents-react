@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
+import NoDataIllustration from '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import {
   AnalyticalTablePopinDisplay,
@@ -17,10 +18,14 @@ import {
   TextAlign
 } from '../../enums/index.js';
 import { Button } from '../../webComponents/Button/index.js';
+import { IllustratedMessage } from '../../webComponents/IllustratedMessage/index.js';
 import { Label } from '../../webComponents/Label/index.js';
 import { MultiComboBox } from '../../webComponents/MultiComboBox/index.js';
 import { MultiComboBoxItem } from '../../webComponents/MultiComboBoxItem/index.js';
 import { Option } from '../../webComponents/Option/index.js';
+import type { SegmentedButtonPropTypes } from '../../webComponents/SegmentedButton/index.js';
+import { SegmentedButton } from '../../webComponents/SegmentedButton/index.js';
+import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem/index.js';
 import { Select } from '../../webComponents/Select/index.js';
 import { Tag } from '../../webComponents/Tag/index.js';
 import { Text } from '../../webComponents/Text/index.js';
@@ -568,6 +573,49 @@ export const CustomFilter: Story = {
       <AnalyticalTable {...args} columns={columns} />
     ) : (
       <ToggleableTable {...args} columns={columns} />
+    );
+  }
+};
+
+export const NoData: Story = {
+  args: { visibleRows: 5 },
+  render(args, context) {
+    const [selected, setSelected] = useState('noData');
+    const handleChange: SegmentedButtonPropTypes['onSelectionChange'] = (e) => {
+      setSelected(e.detail.selectedItems[0].dataset.key);
+    };
+
+    return (
+      <>
+        <SegmentedButton onSelectionChange={handleChange} accessibleName="Select data view mode">
+          <SegmentedButtonItem selected={selected === 'noData'} data-key="noData">
+            Default NoData Component
+          </SegmentedButtonItem>
+          <SegmentedButtonItem selected={selected === 'illustratedMessage'} data-key="illustratedMessage">
+            IllustratedMessage NoData Component
+          </SegmentedButtonItem>
+          <SegmentedButtonItem selected={selected === 'data'} data-key="data">
+            With Data
+          </SegmentedButtonItem>
+        </SegmentedButton>
+        {context.viewMode === 'story' ? (
+          <AnalyticalTable
+            {...args}
+            data={selected === 'data' ? args.data : []}
+            NoDataComponent={
+              selected === 'noData' ? undefined : () => <IllustratedMessage role="gridcell" name={NoDataIllustration} />
+            }
+          />
+        ) : (
+          <ToggleableTable
+            {...args}
+            data={selected === 'data' ? args.data : []}
+            NoDataComponent={
+              selected === 'noData' ? undefined : () => <IllustratedMessage role="gridcell" name={NoDataIllustration} />
+            }
+          />
+        )}
+      </>
     );
   }
 };

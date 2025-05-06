@@ -106,7 +106,8 @@ const useGetTableProps = (
         Object.prototype.hasOwnProperty.call(dataset, 'subcomponentActiveElement') ||
         // todo: with the new popover API of ui5wc this might not be necessary anymore
         dataset.componentName === 'ATHeaderPopoverList' ||
-        dataset.componentName === 'ATHeaderPopover'
+        dataset.componentName === 'ATHeaderPopover' ||
+        dataset.componentName === 'AnalyticalTableNoDataContainer'
       ) {
         return;
       }

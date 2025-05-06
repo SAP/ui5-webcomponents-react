@@ -7,6 +7,10 @@
   }
 }
 
+.container {
+  background: var(--sapList_Background);
+}
+
 .animation {
   animation-duration: 2s;
   animation-fill-mode: forwards;
