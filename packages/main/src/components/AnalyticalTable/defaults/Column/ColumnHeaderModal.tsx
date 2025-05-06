@@ -9,7 +9,7 @@ import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
 import { enrichEventWithDetails, useI18nBundle } from '@ui5/webcomponents-react-base';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useId, useMemo, useRef } from 'react';
 import { FlexBoxAlignItems } from '../../../../enums/FlexBoxAlignItems.js';
 import { TextAlign } from '../../../../enums/TextAlign.js';
 import {
@@ -31,12 +31,14 @@ import { Popover } from '../../../../webComponents/Popover/index.js';
 import { Text } from '../../../../webComponents/Text/index.js';
 import { FlexBox } from '../../../FlexBox/index.js';
 import type { TableInstanceWithPopoverProps } from '../../types/index.js';
+import { RenderColumnTypes } from '../../types/index.js';
 
 export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
   const { setOpen, openerRef } = instance.popoverProps;
   const { column, state, webComponentsReactProperties } = instance;
   const { isRtl, groupBy } = state;
   const { onGroup, onSort, classes: classNames } = webComponentsReactProperties;
+  const uniqueId = useId();
 
   const showFilter = column.canFilter;
   const showGroup = column.canGroupBy;
@@ -44,7 +46,6 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
 
   const ref = useRef<PopoverDomRef>(null);
   const listRef = useRef(null);
-  const { Filter } = column;
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
 
@@ -231,10 +232,14 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
                 style={{
                   fontSize: filterStyles.fontSize
                 }}
+                id={`${uniqueId}-filter-text`}
               >
                 {filterText}
               </Text>
-              <Filter column={column} popoverRef={ref} />
+              {column.render(RenderColumnTypes.Filter, {
+                accessibleNameRef: `${uniqueId}-filter-text`,
+                popoverRef: ref
+              })}
             </FlexBox>
           </ListItemCustom>
         )}
