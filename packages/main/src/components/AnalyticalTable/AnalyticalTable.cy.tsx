@@ -899,7 +899,6 @@ describe('AnalyticalTable', () => {
       .should('have.attr', 'data-row-index', '0')
       .and('have.attr', 'data-column-index', '3')
       .and('have.text', 'Friend Name');
-    cy.get('[data-component-name="ATHeaderContainer-friend.name"]').should('not.have.attr', 'data-prev-opener');
   });
 
   it('useIndeterminateRowSelection - select subRows', () => {

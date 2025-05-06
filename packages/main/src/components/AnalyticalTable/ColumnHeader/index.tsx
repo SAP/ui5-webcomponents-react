@@ -163,15 +163,15 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     }
   };
 
-  // restore focus to an ungrouped header column
-  // ungrouping causes reordering thus unmounting the header cell -> losing focus
+  // restore focus after grouping to header cell
+  const prevIsGrouped = useRef(null);
   useIsomorphicLayoutEffect(() => {
     const prevOpener = columnHeaderRef.current;
-    if (column.canGroupBy && prevOpener?.dataset.prevOpener === columnId) {
+    if (column.canGroupBy && prevIsGrouped.current && !popoverOpen && prevOpener) {
       (prevOpener.children[0] as HTMLDivElement).focus();
     }
-    prevOpener?.removeAttribute('data-prev-opener');
-  }, []);
+    prevIsGrouped.current = column.isGrouped;
+  }, [popoverOpen]);
 
   if (!column) return null;
   return (

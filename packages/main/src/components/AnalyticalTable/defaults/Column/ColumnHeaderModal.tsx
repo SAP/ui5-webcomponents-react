@@ -129,9 +129,6 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
   const isSortedDescending = column.isSorted && column.isSortedDesc === true;
 
   const onAfterClose: PopoverPropTypes['onClose'] = (e) => {
-    if (column.isGrouped) {
-      (e.currentTarget.opener as HTMLDivElement).setAttribute('data-prev-opener', column.id);
-    }
     stopPropagation(e);
     setOpen(false);
   };
