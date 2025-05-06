@@ -5,7 +5,7 @@ import iconFilter from '@ui5/webcomponents-icons/dist/filter.js';
 import iconGroup from '@ui5/webcomponents-icons/dist/group-2.js';
 import iconSortAscending from '@ui5/webcomponents-icons/dist/sort-ascending.js';
 import iconSortDescending from '@ui5/webcomponents-icons/dist/sort-descending.js';
-import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import { ThemingParameters, useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type {
   AriaAttributes,
@@ -163,6 +163,16 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     }
   };
 
+  // restore focus after grouping to header cell
+  const prevIsGrouped = useRef(null);
+  useIsomorphicLayoutEffect(() => {
+    const prevOpener = columnHeaderRef.current;
+    if (column.canGroupBy && prevIsGrouped.current && !popoverOpen && prevOpener) {
+      (prevOpener.children[0] as HTMLDivElement).focus();
+    }
+    prevIsGrouped.current = column.isGrouped;
+  }, [popoverOpen]);
+
   if (!column) return null;
   return (
     <div
@@ -174,6 +184,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
         width: `${virtualColumn.size}px`,
         ...directionStyles
       }}
+      data-component-name={`ATHeaderContainer-${columnId}`}
     >
       <div
         ref={columnVirtualizer.measureElement}

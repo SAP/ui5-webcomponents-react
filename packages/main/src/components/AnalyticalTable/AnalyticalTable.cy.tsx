@@ -874,6 +874,11 @@ describe('AnalyticalTable', () => {
 
     cy.findByText('Friend Name').click();
     cy.findByText('Group').realClick();
+    cy.focused()
+      .should('have.attr', 'data-row-index', '0')
+      .and('have.attr', 'data-column-index', '2')
+      .and('have.text', 'Friend Name');
+
     cy.get('[aria-rowindex="7"] > [aria-colindex="3"] > [title="Expand Node"] > [ui5-icon]').click();
 
     cy.findByText('25').click();
@@ -887,6 +892,13 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('selectedFlatRowsLength').should('have.text', '1');
     cy.findByTestId('selectedRowIds').should('have.text', '{"2":true}');
     cy.findByTestId('isSelected').should('have.text', 'false');
+
+    cy.findByText('Friend Name').click();
+    cy.findByText('Ungroup').realClick();
+    cy.focused()
+      .should('have.attr', 'data-row-index', '0')
+      .and('have.attr', 'data-column-index', '3')
+      .and('have.text', 'Friend Name');
   });
 
   it('useIndeterminateRowSelection - select subRows', () => {
