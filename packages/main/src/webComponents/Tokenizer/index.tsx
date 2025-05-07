@@ -7,6 +7,7 @@ import type {
 } from '@ui5/webcomponents/dist/Tokenizer.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
+import type { ReactNode } from 'react';
 
 interface TokenizerAttributes {
   /**
@@ -63,7 +64,11 @@ interface TokenizerDomRef extends Required<TokenizerAttributes>, Ui5DomRef {}
 
 interface TokenizerPropTypes
   extends TokenizerAttributes,
-    Omit<CommonProps, keyof TokenizerAttributes | 'onSelectionChange' | 'onTokenDelete'> {
+    Omit<CommonProps, keyof TokenizerAttributes | 'children' | 'onSelectionChange' | 'onTokenDelete'> {
+  /**
+   * Defines the tokens to be displayed.
+   */
+  children?: ReactNode | ReactNode[];
   /**
    * Fired when token selection is changed by user interaction
    *

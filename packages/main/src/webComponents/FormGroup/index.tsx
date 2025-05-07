@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/FormGroup.js';
+import type TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
@@ -12,6 +13,15 @@ interface FormGroupAttributes {
    * @default undefined
    */
   columnSpan?: number | undefined;
+
+  /**
+   * Defines the compoennt heading level,
+   * set by the `headerText`.
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents**.
+   * @default "H3"
+   */
+  headerLevel?: TitleLevel | keyof typeof TitleLevel;
 
   /**
    * Defines header text of the component.
@@ -52,7 +62,7 @@ interface FormGroupPropTypes extends FormGroupAttributes, Omit<CommonProps, keyo
  */
 const FormGroup = withWebComponent<FormGroupPropTypes, FormGroupDomRef>(
   'ui5-form-group',
-  ['columnSpan', 'headerText'],
+  ['columnSpan', 'headerLevel', 'headerText'],
   [],
   [],
   []

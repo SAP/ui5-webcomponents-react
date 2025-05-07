@@ -102,7 +102,8 @@ interface SideNavigationItemAttributes {
   /**
    * Defines the tooltip of the component.
    *
-   * A tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).
+   * A tooltip attribute should be provided, in order to represent meaning/function,
+   * when the component is collapsed ("icon only" design is visualized) or the item text is truncated.
    *
    * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents-fiori**.
    * @default undefined

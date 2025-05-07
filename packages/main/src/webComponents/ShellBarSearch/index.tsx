@@ -1,12 +1,12 @@
 'use client';
 
-import '@ui5/webcomponents-fiori/dist/Search.js';
+import '@ui5/webcomponents-fiori/dist/ShellBarSearch.js';
 import type { SearchFieldScopeSelectionChangeDetails } from '@ui5/webcomponents-fiori/dist/SearchField.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 
-interface SearchAttributes {
+interface ShellBarSearchAttributes {
   /**
    * Defines the accessible ARIA description of the field.
    * @default undefined
@@ -58,13 +58,13 @@ interface SearchAttributes {
   value?: string;
 }
 
-interface SearchDomRef extends Required<SearchAttributes>, Ui5DomRef {}
+interface ShellBarSearchDomRef extends Required<ShellBarSearchAttributes>, Ui5DomRef {}
 
-interface SearchPropTypes
-  extends SearchAttributes,
+interface ShellBarSearchPropTypes
+  extends ShellBarSearchAttributes,
     Omit<
       CommonProps,
-      | keyof SearchAttributes
+      | keyof ShellBarSearchAttributes
       | 'action'
       | 'children'
       | 'illustration'
@@ -131,7 +131,7 @@ interface SearchPropTypes
    * | :--------: | :-----: |
    * | ❌|❌|
    */
-  onClose?: (event: Ui5CustomEvent<SearchDomRef>) => void;
+  onClose?: (event: Ui5CustomEvent<ShellBarSearchDomRef>) => void;
 
   /**
    * Fired when typing in input or clear icon is pressed.
@@ -140,7 +140,7 @@ interface SearchPropTypes
    * | :--------: | :-----: |
    * | ❌|✅|
    */
-  onInput?: (event: Ui5CustomEvent<SearchDomRef>) => void;
+  onInput?: (event: Ui5CustomEvent<ShellBarSearchDomRef>) => void;
 
   /**
    * Fired when the popup is opened.
@@ -149,7 +149,7 @@ interface SearchPropTypes
    * | :--------: | :-----: |
    * | ❌|❌|
    */
-  onOpen?: (event: Ui5CustomEvent<SearchDomRef>) => void;
+  onOpen?: (event: Ui5CustomEvent<ShellBarSearchDomRef>) => void;
 
   /**
    * Fired when the scope has changed.
@@ -158,7 +158,7 @@ interface SearchPropTypes
    * | :--------: | :-----: |
    * | ❌|✅|
    */
-  onScopeChange?: (event: Ui5CustomEvent<SearchDomRef, SearchFieldScopeSelectionChangeDetails>) => void;
+  onScopeChange?: (event: Ui5CustomEvent<ShellBarSearchDomRef, SearchFieldScopeSelectionChangeDetails>) => void;
 
   /**
    * Fired when the user has triggered search with Enter key or Search Button press.
@@ -169,35 +169,26 @@ interface SearchPropTypes
    * | :--------: | :-----: |
    * | ✅|✅|
    */
-  onSearch?: (event: Ui5CustomEvent<SearchDomRef>) => void;
+  onSearch?: (event: Ui5CustomEvent<ShellBarSearchDomRef>) => void;
 }
 
 /**
- * A `Search` is an input with suggestions, used for user search.
- *
- * The `Search` consists of several elements parts:
- * - Scope - displays a select in the beggining of the component, used for filtering results by their scope.
- * - Input field - for user input value
- * - Clear button - gives the possibility for deleting the entered value
- * - Search button - a primary button for performing search, when the user has entered a search term
- * - Suggestions - a list with available search suggestions
- *
- *
+ * Search field for the ShellBar component.
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
- * @since [2.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.9.0) of __@ui5/webcomponents-fiori__.
+ * @since [2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of __@ui5/webcomponents-fiori__.
  * @experimental
  */
-const Search = withWebComponent<SearchPropTypes, SearchDomRef>(
-  'ui5-search',
+const ShellBarSearch = withWebComponent<ShellBarSearchPropTypes, ShellBarSearchDomRef>(
+  'ui5-shellbar-search',
   ['accessibleDescription', 'accessibleName', 'placeholder', 'value'],
   ['loading', 'noTypeahead', 'open', 'showClearIcon'],
   ['action', 'illustration', 'messageArea', 'scopes'],
   ['close', 'input', 'open', 'scope-change', 'search']
 );
 
-Search.displayName = 'Search';
+ShellBarSearch.displayName = 'ShellBarSearch';
 
-export { Search };
-export type { SearchDomRef, SearchPropTypes };
+export { ShellBarSearch };
+export type { ShellBarSearchDomRef, ShellBarSearchPropTypes };

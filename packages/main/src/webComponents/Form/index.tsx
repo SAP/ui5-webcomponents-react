@@ -2,11 +2,20 @@
 
 import '@ui5/webcomponents/dist/Form.js';
 import type FormItemSpacing from '@ui5/webcomponents/dist/types/FormItemSpacing.js';
+import type TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 
 interface FormAttributes {
+  /**
+   * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleName?: string | undefined;
+
   /**
    * Defines the number of cells that are empty at the end of each form item, configurable by breakpoint.
    *
@@ -21,6 +30,15 @@ interface FormAttributes {
    * @default "S0 M0 L0 XL0"
    */
   emptySpan?: string;
+
+  /**
+   * Defines the compoennt heading level,
+   * set by the `headerText`.
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents**.
+   * @default "H2"
+   */
+  headerLevel?: TitleLevel | keyof typeof TitleLevel;
 
   /**
    * Defines the header text of the component.
@@ -231,7 +249,7 @@ interface FormPropTypes extends FormAttributes, Omit<CommonProps, keyof FormAttr
  */
 const Form = withWebComponent<FormPropTypes, FormDomRef>(
   'ui5-form',
-  ['emptySpan', 'headerText', 'itemSpacing', 'labelSpan', 'layout'],
+  ['accessibleName', 'emptySpan', 'headerLevel', 'headerText', 'itemSpacing', 'labelSpan', 'layout'],
   [],
   ['header'],
   []

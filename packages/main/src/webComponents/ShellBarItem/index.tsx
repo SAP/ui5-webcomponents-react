@@ -45,7 +45,7 @@ interface ShellBarItemAttributes {
   /**
    * Defines the item text.
    *
-   *   **Note:** The text is only displayed inside the overflow popover list view.
+   * **Note:** The text is only displayed inside the overflow popover list view.
    * @default undefined
    */
   text?: string | undefined;

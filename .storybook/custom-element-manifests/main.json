@@ -40,6 +40,12 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/features/ListItemStandardExpandableText.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/popup-utils/OpenedPopupsRegistry.js",
       "declarations": [],
       "exports": []
@@ -1464,6 +1470,12 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/ExpandableTextTemplateParams.js",
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
@@ -5162,12 +5174,62 @@
               "name": "click",
               "_ui5privacy": "public",
               "type": {
-                "text": "Event"
+                "text": "CustomEvent<ButtonClickEventDetail>",
+                "references": [
+                  {
+                    "name": "ButtonClickEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
               },
-              "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
+              "description": "Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled` property is set to `true`.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.10.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "Event"
+                  },
+                  "name": "originalEvent",
+                  "_ui5privacy": "public",
+                  "description": "Returns original event that comes from user's **click** interaction"
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "altKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"ALT\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "ctrlKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"CTRL\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "metaKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"META\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "shiftKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"SHIFT\" key was pressed when the event was triggered."
+                }
+              ]
             }
           ],
           "attributes": [
@@ -7203,7 +7265,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the component is required.",
+              "description": "Defines whether the component is required.\n\n**Note:** We advise against using the text property of the checkbox when there is a\nlabel associated with it to avoid having two required asterisks.",
               "privacy": "public",
               "_ui5since": "1.3.0"
             },
@@ -7345,7 +7407,7 @@
               }
             },
             {
-              "description": "Defines whether the component is required.",
+              "description": "Defines whether the component is required.\n\n**Note:** We advise against using the text property of the checkbox when there is a\nlabel associated with it to avoid having two required asterisks.",
               "name": "required",
               "default": "false",
               "fieldName": "required",
@@ -12358,6 +12420,17 @@
           "members": [
             {
               "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.10.0"
+            },
+            {
+              "kind": "field",
               "name": "layout",
               "type": {
                 "text": "string"
@@ -12399,6 +12472,24 @@
             },
             {
               "kind": "field",
+              "name": "headerLevel",
+              "type": {
+                "text": "TitleLevel",
+                "references": [
+                  {
+                    "name": "TitleLevel",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TitleLevel.js"
+                  }
+                ]
+              },
+              "default": "\"H2\"",
+              "description": "Defines the compoennt heading level,\nset by the `headerText`.",
+              "privacy": "public",
+              "_ui5since": "2.10.0"
+            },
+            {
+              "kind": "field",
               "name": "itemSpacing",
               "type": {
                 "text": "FormItemSpacing",
@@ -12416,6 +12507,15 @@
             }
           ],
           "attributes": [
+            {
+              "description": "Defines the accessible ARIA name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
             {
               "description": "Defines the number of columns to distribute the form content by breakpoint.\n\nSupported values:\n- `S` - 1 column by default (1 column is recommended)\n- `M` - 1 column by default (up to 2 columns are recommended)\n- `L` - 2 columns by default (up to 3 columns are recommended)\n- `XL` - 3 columns by default (up to 6 columns  are recommended)",
               "name": "layout",
@@ -12450,6 +12550,15 @@
               "fieldName": "headerText",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the compoennt heading level,\nset by the `headerText`.",
+              "name": "header-level",
+              "default": "\"H2\"",
+              "fieldName": "headerLevel",
+              "type": {
+                "text": "\"H1\" | \"H2\" | \"H3\" | \"H4\" | \"H5\" | \"H6\""
               }
             },
             {
@@ -12531,6 +12640,24 @@
             },
             {
               "kind": "field",
+              "name": "headerLevel",
+              "type": {
+                "text": "TitleLevel",
+                "references": [
+                  {
+                    "name": "TitleLevel",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TitleLevel.js"
+                  }
+                ]
+              },
+              "default": "\"H3\"",
+              "description": "Defines the compoennt heading level,\nset by the `headerText`.",
+              "privacy": "public",
+              "_ui5since": "2.10.0"
+            },
+            {
+              "kind": "field",
               "name": "columnSpan",
               "type": {
                 "text": "number | undefined"
@@ -12548,6 +12675,15 @@
               "fieldName": "headerText",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the compoennt heading level,\nset by the `headerText`.",
+              "name": "header-level",
+              "default": "\"H3\"",
+              "fieldName": "headerLevel",
+              "type": {
+                "text": "\"H1\" | \"H2\" | \"H3\" | \"H4\" | \"H5\" | \"H6\""
               }
             },
             {
@@ -15501,7 +15637,7 @@
           ],
           "slots": [
             {
-              "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
+              "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design. <br/>\n**Note:** Deprecated since version `2.10.0`. Use the `text` property instead. <br/>\nOnly use the default slot if you need to apply custom text formatting with HTML elements (like `<b>`, `<i>`, etc.).",
               "name": "default",
               "_ui5privacy": "public",
               "_ui5type": {
@@ -15539,6 +15675,17 @@
             }
           ],
           "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.10.0"
+            },
             {
               "kind": "field",
               "name": "description",
@@ -15628,6 +15775,24 @@
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "wrappingType",
+              "type": {
+                "text": "WrappingType",
+                "references": [
+                  {
+                    "name": "WrappingType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/WrappingType.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "privacy": "public",
+              "_ui5since": "2.10.0"
             },
             {
               "kind": "field",
@@ -15741,6 +15906,15 @@
           ],
           "attributes": [
             {
+              "description": "Defines the text of the component.",
+              "name": "text",
+              "default": "undefined",
+              "fieldName": "text",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
               "description": "Defines the description displayed right under the item text, if such is present.",
               "name": "description",
               "default": "undefined",
@@ -15801,6 +15975,15 @@
               "fieldName": "accessibleName",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "name": "wrapping-type",
+              "default": "\"None\"",
+              "fieldName": "wrappingType",
+              "type": {
+                "text": "\"None\" | \"Normal\""
               }
             },
             {
@@ -15978,9 +16161,26 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Indicates if the menu is open",
+              "description": "Indicates if the menu is open.",
               "privacy": "public",
               "_ui5since": "1.10.0"
+            },
+            {
+              "kind": "field",
+              "name": "horizontalAlign",
+              "type": {
+                "text": "PopoverHorizontalAlign",
+                "references": [
+                  {
+                    "name": "PopoverHorizontalAlign",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/PopoverHorizontalAlign.js"
+                  }
+                ]
+              },
+              "default": "\"Start\"",
+              "description": "Determines the horizontal alignment of the menu relative to its opener control.",
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -16000,7 +16200,7 @@
                 "text": "number"
               },
               "default": "1000",
-              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover..",
+              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.",
               "privacy": "public",
               "_ui5since": "1.13.0"
             },
@@ -16147,12 +16347,21 @@
               }
             },
             {
-              "description": "Indicates if the menu is open",
+              "description": "Indicates if the menu is open.",
               "name": "open",
               "default": "false",
               "fieldName": "open",
               "type": {
                 "text": "boolean"
+              }
+            },
+            {
+              "description": "Determines the horizontal alignment of the menu relative to its opener control.",
+              "name": "horizontal-align",
+              "default": "\"Start\"",
+              "fieldName": "horizontalAlign",
+              "type": {
+                "text": "\"Center\" | \"Start\" | \"End\" | \"Stretch\""
               }
             },
             {
@@ -16165,7 +16374,7 @@
               }
             },
             {
-              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover..",
+              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.",
               "name": "loading-delay",
               "default": "1000",
               "fieldName": "loadingDelay",
@@ -19471,7 +19680,7 @@
               "default": "\"Center\"",
               "fieldName": "horizontalAlign",
               "type": {
-                "text": "\"Start\" | \"End\" | \"Center\" | \"Stretch\""
+                "text": "\"Center\" | \"Start\" | \"End\" | \"Stretch\""
               }
             },
             {
@@ -21468,7 +21677,7 @@
               "default": "\"Center\"",
               "fieldName": "horizontalAlign",
               "type": {
-                "text": "\"Start\" | \"End\" | \"Center\" | \"Stretch\""
+                "text": "\"Center\" | \"Start\" | \"End\" | \"Stretch\""
               },
               "inheritedFrom": {
                 "name": "Popover",
@@ -25621,7 +25830,7 @@
               "default": "undefined",
               "fieldName": "horizontalAlign",
               "type": {
-                "text": "\"Start\" | \"End\" | \"Center\" | \"Left\" | \"Right\" | undefined"
+                "text": "\"Center\" | \"Start\" | \"End\" | \"Left\" | \"Right\" | undefined"
               },
               "inheritedFrom": {
                 "name": "TableCellBase",
@@ -25695,7 +25904,7 @@
               "default": "undefined",
               "fieldName": "horizontalAlign",
               "type": {
-                "text": "\"Start\" | \"End\" | \"Center\" | \"Left\" | \"Right\" | undefined"
+                "text": "\"Center\" | \"Start\" | \"End\" | \"Left\" | \"Right\" | undefined"
               }
             }
           ],
@@ -25915,31 +26124,21 @@
               "kind": "field",
               "name": "width",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "\"auto\"",
-              "description": "Defines the width of column.",
+              "description": "Defines the width of the column.\n\nBy default, the column will grow and shrink according to the available space.\nThis will distribute the space proportionally among all columns with no specific width set.\n\nSee [\\<length\\>](https://developer.mozilla.org/en-US/docs/Web/CSS/length) and\n[\\<percentage\\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) for possible width values.",
+              "default": "undefined",
               "privacy": "public"
             },
             {
               "kind": "field",
               "name": "minWidth",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "\"auto\"",
-              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode and the minimum width does not fit anymore,\nthe column will move into the popin.\n\n**Note:** If `minWidth` has the `auto` value, the table ensures that the column is wider than at least `3rem`.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "maxWidth",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"auto\"",
-              "description": "Defines the maximum width of the column.",
-              "privacy": "public"
+              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode and the minimum width does not fit anymore,\nthe column will move into the popin.\n\nBy default, the table prevents the column from becoming too small.\nChanging this value to a small value might lead to accessibility issues.\n\n**Note:** This property only takes effect for columns with a [\\<percentage\\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) value\nor the default width.",
+              "privacy": "public",
+              "default": "undefined"
             },
             {
               "kind": "field",
@@ -26015,30 +26214,21 @@
           ],
           "attributes": [
             {
-              "description": "Defines the width of column.",
+              "description": "Defines the width of the column.\n\nBy default, the column will grow and shrink according to the available space.\nThis will distribute the space proportionally among all columns with no specific width set.\n\nSee [\\<length\\>](https://developer.mozilla.org/en-US/docs/Web/CSS/length) and\n[\\<percentage\\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) for possible width values.",
               "name": "width",
-              "default": "\"auto\"",
+              "default": "undefined",
               "fieldName": "width",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               }
             },
             {
-              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode and the minimum width does not fit anymore,\nthe column will move into the popin.\n\n**Note:** If `minWidth` has the `auto` value, the table ensures that the column is wider than at least `3rem`.",
+              "description": "Defines the minimum width of the column.\n\nIf the table is in `Popin` mode and the minimum width does not fit anymore,\nthe column will move into the popin.\n\nBy default, the table prevents the column from becoming too small.\nChanging this value to a small value might lead to accessibility issues.\n\n**Note:** This property only takes effect for columns with a [\\<percentage\\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) value\nor the default width.",
               "name": "min-width",
-              "default": "\"auto\"",
+              "default": "undefined",
               "fieldName": "minWidth",
               "type": {
-                "text": "string"
-              }
-            },
-            {
-              "description": "Defines the maximum width of the column.",
-              "name": "max-width",
-              "default": "\"auto\"",
-              "fieldName": "maxWidth",
-              "type": {
-                "text": "string"
+                "text": "string | undefined"
               }
             },
             {
@@ -26083,7 +26273,7 @@
               "default": "undefined",
               "fieldName": "horizontalAlign",
               "type": {
-                "text": "\"Start\" | \"End\" | \"Center\" | \"Left\" | \"Right\" | undefined"
+                "text": "\"Center\" | \"Start\" | \"End\" | \"Left\" | \"Right\" | undefined"
               },
               "inheritedFrom": {
                 "name": "TableCellBase",
@@ -29449,12 +29639,62 @@
               "name": "click",
               "_ui5privacy": "public",
               "type": {
-                "text": "Event"
+                "text": "CustomEvent<ButtonClickEventDetail>",
+                "references": [
+                  {
+                    "name": "ButtonClickEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
               },
-              "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
+              "description": "Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled` property is set to `true`.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true,
+              "_ui5since": "2.10.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "Event"
+                  },
+                  "name": "originalEvent",
+                  "_ui5privacy": "public",
+                  "description": "Returns original event that comes from user's **click** interaction"
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "altKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"ALT\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "ctrlKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"CTRL\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "metaKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"META\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "shiftKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"SHIFT\" key was pressed when the event was triggered."
+                }
+              ],
               "inheritedFrom": {
                 "name": "Button",
                 "module": "dist/Button.js"
@@ -29610,6 +29850,24 @@
           "kind": "class",
           "description": "### Overview\n\nA `ui5-tokenizer` is an invisible container for `ui5-token`s that supports keyboard navigation and token selection.\n\nThe `ui5-tokenizer` consists of two parts:\n- Tokens - displays the available tokens.\n- N-more indicator - contains the number of the remaining tokens that cannot be displayed due to the limited space.\n\n### Keyboard Handling\n\n#### Basic Navigation\nThe `ui5-tokenizer` provides advanced keyboard handling.\nWhen a token is focused the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [Left] or [Right] / [Up] or [Down] - Navigates left and right through the tokens.\n- [Home] - Navigates to the first token.\n- [End] - Navigates to the last token.\n\nThe user can use the following keyboard shortcuts to perform actions (such as select, delete):\n\n- [Space] - Selects a token.\n- [Backspace] / [Delete] - Deletes a token.\n**Note:** The deletion of a token is handled by the application with the use of the `token-delete` event.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Tokenizer.js\";`",
           "name": "Tokenizer",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the tokens to be displayed.",
+              "_ui5propertyName": "tokens",
+              "_ui5type": {
+                "text": "Array<Token>",
+                "references": [
+                  {
+                    "name": "Token",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Token.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -31915,6 +32173,19 @@
               }
             },
             {
+              "name": "image",
+              "description": "**Note:** While the slot allows option for setting custom avatar, to match the\ndesign guidelines, please use the `ui5-avatar` with size XS.\n\n**Note:** If bigger `ui5-avatar` needs to be used, then the size of the\n`ui5-tree-item` should be customized in order to fit.",
+              "_ui5since": "2.10.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "TreeItemBase",
+                "module": "dist/TreeItemBase.js"
+              }
+            },
+            {
               "name": "deleteButton",
               "description": "Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.",
               "_ui5since": "1.9.0",
@@ -31995,6 +32266,15 @@
                     "module": "dist/TreeItemBase.js"
                   }
                 ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "image",
+              "description": "**Note:** While the slot allows option for setting custom avatar, to match the\ndesign guidelines, please use the `ui5-avatar` with size XS.\n\n**Note:** If bigger `ui5-avatar` needs to be used, then the size of the\n`ui5-tree-item` should be customized in order to fit.",
+              "_ui5since": "2.10.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
               },
               "_ui5privacy": "public"
             },
@@ -32459,6 +32739,19 @@
                     "module": "dist/TreeItemBase.js"
                   }
                 ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "TreeItemBase",
+                "module": "dist/TreeItemBase.js"
+              }
+            },
+            {
+              "name": "image",
+              "description": "**Note:** While the slot allows option for setting custom avatar, to match the\ndesign guidelines, please use the `ui5-avatar` with size XS.\n\n**Note:** If bigger `ui5-avatar` needs to be used, then the size of the\n`ui5-tree-item` should be customized in order to fit.",
+              "_ui5since": "2.10.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
               },
               "_ui5privacy": "public",
               "inheritedFrom": {

@@ -9,7 +9,8 @@ import type {
   ShellBarNotificationsClickEventDetail,
   ShellBarProductSwitchClickEventDetail,
   ShellBarProfileClickEventDetail,
-  ShellBarSearchButtonEventDetail
+  ShellBarSearchButtonEventDetail,
+  ShellBarSearchFieldToggleEventDetail
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
@@ -28,6 +29,7 @@ interface ShellBarAttributes {
    * - **product** - `product.expanded` and `product.hasPopup`.
    * - **search** - `search.hasPopup`.
    * - **overflow** - `overflow.expanded` and `overflow.hasPopup`.
+   * - **branding** - `branding.name`.
    *
    * The accessibility attributes support the following values:
    *
@@ -49,6 +51,22 @@ interface ShellBarAttributes {
    * @default {}
    */
   accessibilityAttributes?: ShellBarAccessibilityAttributes;
+
+  /**
+   * Disables the automatic search field expansion/collapse when the available space is not enough.
+   *
+   * **Note:** The `disableSearchCollapse` property is in an experimental state and is a subject to change.
+   * @default false
+   */
+  disableSearchCollapse?: boolean;
+
+  /**
+   * Defines the visibility state of the search button.
+   *
+   * **Note:** The `hideSearchButton` property is in an experimental state and is a subject to change.
+   * @default false
+   */
+  hideSearchButton?: boolean;
 
   /**
    * Defines the `notificationsCount`,
@@ -103,6 +121,14 @@ interface ShellBarDomRef extends Required<ShellBarAttributes>, Ui5DomRef {
   closeOverflow: () => void;
 
   /**
+   * Returns the `search` icon DOM ref.
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents-fiori**.
+   * @returns {Promise<HTMLElement | null>} - The search icon DOM ref
+   */
+  getSearchButtonDomRef: () => Promise<HTMLElement | null>;
+
+  /**
    * Returns the `logo` DOM ref.
    */
   readonly logoDomRef: HTMLElement | null;
@@ -148,6 +174,7 @@ interface ShellBarPropTypes
       | 'onProductSwitchClick'
       | 'onProfileClick'
       | 'onSearchButtonClick'
+      | 'onSearchFieldToggle'
     > {
   /**
    * Defines the assistant slot.
@@ -332,6 +359,17 @@ interface ShellBarPropTypes
    * | ✅|✅|
    */
   onSearchButtonClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarSearchButtonEventDetail>) => void;
+
+  /**
+   * Fired, when the search field is expanded or collapsed.
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onSearchFieldToggle?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarSearchFieldToggleEventDetail>) => void;
 }
 
 /**
@@ -362,7 +400,7 @@ interface ShellBarPropTypes
 const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',
   ['accessibilityAttributes', 'notificationsCount', 'primaryTitle', 'secondaryTitle'],
-  ['showNotifications', 'showProductSwitch', 'showSearchField'],
+  ['disableSearchCollapse', 'hideSearchButton', 'showNotifications', 'showProductSwitch', 'showSearchField'],
   ['assistant', 'content', 'logo', 'menuItems', 'profile', 'searchField', 'startButton'],
   [
     'content-item-visibility-change',
@@ -371,7 +409,8 @@ const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
     'notifications-click',
     'product-switch-click',
     'profile-click',
-    'search-button-click'
+    'search-button-click',
+    'search-field-toggle'
   ]
 );
 
