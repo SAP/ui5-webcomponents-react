@@ -69,7 +69,7 @@ describe('SelectDialog', () => {
             rememberSelections={rememberSelections}
             open={open}
             onConfirm={(e) => {
-              setItems(e.detail.selectedItems.map((item) => item.textContent));
+              setItems(e.detail.selectedItems.map((item) => item.text));
               confirm(e);
             }}
             onClose={(e) => {
@@ -89,7 +89,6 @@ describe('SelectDialog', () => {
     cy.clickUi5ListItemByText('Product1');
     cy.get('[ui5-dialog]').should('not.be.visible');
     cy.findByText('Last Selected Item: Product1').should('be.visible');
-
     cy.findByText('Open').click();
     cy.get('[ui5-li]').each(($li) => {
       cy.wrap($li).should('not.have.attr', 'selected');
@@ -102,7 +101,7 @@ describe('SelectDialog', () => {
     cy.findByText('Last Selected Item: Product1').should('be.visible');
     cy.findByText('Open').click();
     cy.get('[ui5-li]').each(($li) => {
-      if ($li.text() === 'Product1') {
+      if ($li.attr('text') === 'Product1') {
         cy.wrap($li).should('have.attr', 'selected');
       } else {
         cy.wrap($li).should('not.have.attr', 'selected');
@@ -143,7 +142,7 @@ describe('SelectDialog', () => {
     cy.findByText('Select').click();
     cy.findByText('Last Selected Item: Product1Product3').should('be.visible');
     cy.get('[ui5-li]').each(($li) => {
-      if ($li.text() === 'Product1' || $li.text() === 'Product3') {
+      if ($li.attr('text') === 'Product1' || $li.attr('text') === 'Product3') {
         cy.wrap($li).should('have.attr', 'selected');
       } else {
         cy.wrap($li).should('not.have.attr', 'selected');
