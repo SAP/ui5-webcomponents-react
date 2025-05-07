@@ -37,9 +37,9 @@ export const Default: Story = {
   render: (args) => {
     return (
       <List {...args}>
-        <ListItemStandard additionalText="3">List Item 1</ListItemStandard>
-        <ListItemStandard additionalText="2">List Item 2</ListItemStandard>
-        <ListItemStandard additionalText="1">List Item 3</ListItemStandard>
+        <ListItemStandard additionalText="3" text="List Item 1" />
+        <ListItemStandard additionalText="2" text="List Item 2" />
+        <ListItemStandard additionalText="1" text="List Item 3" />
       </List>
     );
   }
@@ -79,11 +79,11 @@ export const ListItemGroupStory: Story = {
     return (
       <List {...args}>
         <ListItemGroup headerText="ListItemGroup 1">
-          <ListItemStandard>List Item</ListItemStandard>
-          <ListItemStandard>List Item</ListItemStandard>
+          <ListItemStandard text="List Item" />
+          <ListItemStandard text="List Item" />
         </ListItemGroup>
         <ListItemGroup headerText="ListItemGroup 2">
-          <ListItemStandard>List Item</ListItemStandard>
+          <ListItemStandard text="List Item" />
         </ListItemGroup>
       </List>
     );

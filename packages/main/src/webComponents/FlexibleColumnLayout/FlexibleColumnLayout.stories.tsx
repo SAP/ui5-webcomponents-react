@@ -44,23 +44,23 @@ export const Default: Story = {
         layout={args.layout}
         startColumn={
           <List headerText="Start Column List">
-            <ListItemStandard>List Item 1</ListItemStandard>
-            <ListItemStandard>List Item 2</ListItemStandard>
-            <ListItemStandard>List Item 3</ListItemStandard>
+            <ListItemStandard text="List Item 1" />
+            <ListItemStandard text="List Item 2" />
+            <ListItemStandard text="List Item 3" />
           </List>
         }
         midColumn={
           <List headerText="Mid Column List">
-            <ListItemStandard>List Item 1</ListItemStandard>
-            <ListItemStandard>List Item 2</ListItemStandard>
-            <ListItemStandard>List Item 3</ListItemStandard>
+            <ListItemStandard text="List Item 1" />
+            <ListItemStandard text="List Item 2" />
+            <ListItemStandard text="List Item 3" />
           </List>
         }
         endColumn={
           <List headerText="End Column List">
-            <ListItemStandard>List Item 1</ListItemStandard>
-            <ListItemStandard>List Item 2</ListItemStandard>
-            <ListItemStandard>List Item 3</ListItemStandard>
+            <ListItemStandard text="List Item 1" />
+            <ListItemStandard text="List Item 2" />
+            <ListItemStandard text="List Item 3" />
           </List>
         }
       />
@@ -95,9 +95,7 @@ export const WithDifferentColumns: Story = {
             />
             <List headerText="Movies" onItemClick={onStartColumnClick}>
               {movieData.map((item) => (
-                <ListItemStandard description={item.genre} data-movie={item.movie} key={item.movie}>
-                  {item.movie}
-                </ListItemStandard>
+                <ListItemStandard description={item.genre} data-movie={item.movie} key={item.movie} text={item.movie} />
               ))}
             </List>
           </>
@@ -138,9 +136,7 @@ export const WithDifferentColumns: Story = {
             </FlexBox>
             <List headerText="Cast" onItemClick={onMiddleColumnClick}>
               {castData.map((item) => (
-                <ListItemStandard description={item.gender} data-name={item.name} key={item.name}>
-                  {item.name}
-                </ListItemStandard>
+                <ListItemStandard description={item.gender} data-name={item.name} key={item.name} text={item.name} />
               ))}
             </List>
           </>

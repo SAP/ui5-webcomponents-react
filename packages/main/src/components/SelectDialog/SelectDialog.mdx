@@ -34,9 +34,7 @@ const MyComponentWithSelectDialog = () => {
         Open SelectDialog
       </Button>
       <SelectDialog open={dialogIsOpen} headerText="Select Product">
-        <ListItemStandard image="pathToImg" description="description">
-          Product
-        </ListItemStandard>
+        <ListItemStandard image="pathToImg" description="description" text="Product" />
       </SelectDialog>
     </>
   );
@@ -154,9 +152,8 @@ const MultiSelectDialog = () => {
                 data-description={`${currentProduct.description}${index}`}
                 key={`${currentProduct.text}${index}`}
                 selected={selectedItems[description]}
-              >
-                {currentProduct.text}
-              </ListItemStandard>
+                text={currentProduct.text}
+              />
             );
           })
           .filter(Boolean)}

@@ -25,9 +25,9 @@ const meta = {
     ),
     menuItems: (
       <>
-        <ListItemStandard data-key="1">Menu Item 1</ListItemStandard>
-        <ListItemStandard data-key="2">Menu Item 2</ListItemStandard>
-        <ListItemStandard data-key="3">Menu Item 3</ListItemStandard>
+        <ListItemStandard data-key="1" text="Menu Item 1" />
+        <ListItemStandard data-key="2" text="Menu Item 2" />
+        <ListItemStandard data-key="3" text="Menu Item 3" />
       </>
     ),
     searchField: <Input showClearIcon icon={<Icon name={searchIcon} />} />,

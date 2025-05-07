@@ -102,12 +102,14 @@ const VariantItem = forwardRef<ListItemStandardDomRef, VariantItemPropTypes>((pr
     }
   }, [selected]);
 
+  // ToDo: rename `children` to `text` in next major release (check `ListItemStandard`)
   // inputProps are passed through to input components used in the configuration dialogs
-  const { manageViewsInputProps: _0, saveViewInputProps: _1, ...rest } = props;
+  const { manageViewsInputProps: _0, saveViewInputProps: _1, children: _2, ...rest } = props;
 
   return (
     <ListItemStandard
       {...rest}
+      text={children}
       ref={componentRef}
       className={clsx(classNames.variantItem)}
       data-is-default={isDefault}

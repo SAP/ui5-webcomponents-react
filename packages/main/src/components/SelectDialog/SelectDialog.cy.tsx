@@ -4,11 +4,11 @@ import { useState } from 'react';
 import type { ListPropTypes, SelectDialogPropTypes } from '../..';
 import { Button, SelectDialog, ListItemStandard } from '../..';
 
-const listItems = new Array(5).fill('o_O').map((_, index) => (
-  <ListItemStandard key={index} data-li={index} description={`description${index}`}>
-    {`Product${index}`}
-  </ListItemStandard>
-));
+const listItems = new Array(5)
+  .fill('o_O')
+  .map((_, index) => (
+    <ListItemStandard key={index} data-li={index} description={`description${index}`} text={`Product${index}`} />
+  ));
 
 describe('SelectDialog', () => {
   it('Basic', () => {
