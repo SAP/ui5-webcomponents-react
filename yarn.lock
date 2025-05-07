@@ -6302,7 +6302,7 @@ __metadata:
   dependencies:
     "@ui5/webcomponents-react-base": "workspace:~"
   peerDependencies:
-    "@ui5/webcomponents-ai": ~2.9.0
+    "@ui5/webcomponents-ai": ~2.9.0 || ~2.10.0
     react: ^18 || ^19
   languageName: unknown
   linkType: soft
@@ -6345,8 +6345,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-cypress-commands@workspace:packages/cypress-commands"
   peerDependencies:
-    "@ui5/webcomponents": ~2.9.0
-    "@ui5/webcomponents-base": ~2.9.0
+    "@ui5/webcomponents": ~2.9.0 || ~2.10.0
+    "@ui5/webcomponents-base": ~2.9.0 || ~2.10.0
     cypress: ^12 || ^13 || ^14
   peerDependenciesMeta:
     "@ui5/webcomponents":
@@ -6411,7 +6411,7 @@ __metadata:
   resolution: "@ui5/webcomponents-react-base@workspace:packages/base"
   peerDependencies:
     "@types/react": "*"
-    "@ui5/webcomponents-base": ~2.9.0
+    "@ui5/webcomponents-base": ~2.9.0 || ~2.10.0
     react: ^18 || ^19
   peerDependenciesMeta:
     "@types/react":
@@ -6453,7 +6453,7 @@ __metadata:
   peerDependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
-    "@ui5/webcomponents-compat": ~2.9.0
+    "@ui5/webcomponents-compat": ~2.9.0 || ~2.10.0
     "@ui5/webcomponents-react": ~2.9.0
     react: ^18 || ^19
     react-dom: ^18 || ^19
@@ -6480,10 +6480,10 @@ __metadata:
   peerDependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
-    "@ui5/webcomponents": ~2.9.0
-    "@ui5/webcomponents-base": ~2.9.0
-    "@ui5/webcomponents-fiori": ~2.9.0
-    "@ui5/webcomponents-icons": ~2.9.0
+    "@ui5/webcomponents": ~2.9.0 || ~2.10.0
+    "@ui5/webcomponents-base": ~2.9.0 || ~2.10.0
+    "@ui5/webcomponents-fiori": ~2.9.0 || ~2.10.0
+    "@ui5/webcomponents-icons": ~2.9.0 || ~2.10.0
     react: ^18 || ^19
     react-dom: ^18 || ^19
   peerDependenciesMeta:
