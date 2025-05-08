@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.2...v2.10.0) (2025-05-08)
+
+### Bug Fixes
+
+- **AnalyticalCardHeader:** fix `role` ([#7259](https://github.com/SAP/ui5-webcomponents-react/issues/7259)) ([4803abb](https://github.com/SAP/ui5-webcomponents-react/commit/4803abbd120e0e323c83e17abab3e57a7ce2c7ef)), closes [#7253](https://github.com/SAP/ui5-webcomponents-react/issues/7253)
+- **AnalyticalTable:** allow focusing "no-data" & placeholder components ([#7286](https://github.com/SAP/ui5-webcomponents-react/issues/7286)) ([e8b3e14](https://github.com/SAP/ui5-webcomponents-react/commit/e8b3e14c203b175097e33c26a489950d384a49d9)), closes [#7282](https://github.com/SAP/ui5-webcomponents-react/issues/7282)
+- **AnalyticalTable:** improve screen reader announcement for filter input ([#7300](https://github.com/SAP/ui5-webcomponents-react/issues/7300)) ([377f4c2](https://github.com/SAP/ui5-webcomponents-react/commit/377f4c213e5b5f5e396f499a324a853471ea2c3a)), closes [#7298](https://github.com/SAP/ui5-webcomponents-react/issues/7298)
+- **AnalyticalTable:** restore focus when ungrouping a column ([#7299](https://github.com/SAP/ui5-webcomponents-react/issues/7299)) ([980449e](https://github.com/SAP/ui5-webcomponents-react/commit/980449e2e8e6b702ad7eb44b1545d10ef4288973)), closes [#7284](https://github.com/SAP/ui5-webcomponents-react/issues/7284)
+- **ObjectPage:** fix scroll-into-view behavior for Chromium browsers ([#7266](https://github.com/SAP/ui5-webcomponents-react/issues/7266)) ([16e0f49](https://github.com/SAP/ui5-webcomponents-react/commit/16e0f49a695a63f82a8bee6814cdc47dd9410e87)), closes [#7057](https://github.com/SAP/ui5-webcomponents-react/issues/7057)
+- **ObjectPage:** safeguard DOM node access in focus handlers ([#7313](https://github.com/SAP/ui5-webcomponents-react/issues/7313)) ([0872213](https://github.com/SAP/ui5-webcomponents-react/commit/0872213526da9fb245922c52135f164bc4cbb9bd))
+- **ObjectStatus:** implement focus deltas for hc theme ([#7283](https://github.com/SAP/ui5-webcomponents-react/issues/7283)) ([9061974](https://github.com/SAP/ui5-webcomponents-react/commit/90619746055c0c5ab884e2469aee1bf30c5a8320)), closes [#7280](https://github.com/SAP/ui5-webcomponents-react/issues/7280)
+
+### Features
+
+- **AnalyticalCardHeader:** allow customizing the `aria-level` of `titleText` ([#7260](https://github.com/SAP/ui5-webcomponents-react/issues/7260)) ([79c6ce6](https://github.com/SAP/ui5-webcomponents-react/commit/79c6ce6e27c9139cd2948b04193907124147423a))
+- **AnalyticalTable:** introduce `onFilter` callback prop ([#7304](https://github.com/SAP/ui5-webcomponents-react/issues/7304)) ([a728467](https://github.com/SAP/ui5-webcomponents-react/commit/a728467f7565c1de16409088cff570df80d297fd)), closes [#6562](https://github.com/SAP/ui5-webcomponents-react/issues/6562)
+- update to UI5 Web Components 2.10.0 ([#7308](https://github.com/SAP/ui5-webcomponents-react/issues/7308)) ([b85b54d](https://github.com/SAP/ui5-webcomponents-react/commit/b85b54d4ddbce317e14629dcb4cf5ff3e99bbe9c))
+
 ## [2.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.1...v2.9.2) (2025-04-15)
 
 ### Bug Fixes

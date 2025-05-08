@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.2...v2.10.0) (2025-05-08)
+
+### Features
+
+- **cypress-commands:** allow `clickUi5ListItemByText` to be chained ([#7312](https://github.com/SAP/ui5-webcomponents-react/issues/7312)) ([5be7e83](https://github.com/SAP/ui5-webcomponents-react/commit/5be7e831033b2b40017c2bc6fc5a0eb282788bbe))
+- update to UI5 Web Components 2.10.0 ([#7308](https://github.com/SAP/ui5-webcomponents-react/issues/7308)) ([b85b54d](https://github.com/SAP/ui5-webcomponents-react/commit/b85b54d4ddbce317e14629dcb4cf5ff3e99bbe9c))
+
 ## [2.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.1...v2.9.2) (2025-04-15)
 
 ### Bug Fixes

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.2...v2.10.0) (2025-05-08)
+
+### Bug Fixes
+
+- **deps:** update dependency recharts to v2.15.3 (main) ([#7247](https://github.com/SAP/ui5-webcomponents-react/issues/7247)) ([d9dcffd](https://github.com/SAP/ui5-webcomponents-react/commit/d9dcffd3e4cf561b638fc102a2967aeeb77e4b13))
+- **PieChart & DonutChart:** support active segment without displaying legend ([#7279](https://github.com/SAP/ui5-webcomponents-react/issues/7279)) ([9c675d5](https://github.com/SAP/ui5-webcomponents-react/commit/9c675d53e960dda2bdf976b9967572de940c8157))
+
+### Features
+
+- update to UI5 Web Components 2.10.0 ([#7308](https://github.com/SAP/ui5-webcomponents-react/issues/7308)) ([b85b54d](https://github.com/SAP/ui5-webcomponents-react/commit/b85b54d4ddbce317e14629dcb4cf5ff3e99bbe9c))
+
 ## [2.9.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.1...v2.9.2) (2025-04-15)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts
