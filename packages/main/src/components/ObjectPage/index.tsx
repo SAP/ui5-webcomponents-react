@@ -731,12 +731,16 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         ref={objectPageContentRef}
         // prevent content scroll when elements outside the content are focused
         onFocus={() => {
-          // 12px or 0.75rem margin for ui5wc border and input margins
-          objectPageRef.current.style.scrollPaddingBlock = `${Math.ceil(12 + topHeaderHeight + TAB_CONTAINER_HEADER_HEIGHT + (!headerCollapsed && headerPinned ? headerContentHeight : 0))}px ${footerArea ? 'calc(var(--_ui5wcr-BarHeight) + 1.25rem)' : 0}`;
+          const opNode = objectPageRef.current;
+          if (opNode) {
+            // 12px or 0.75rem margin for ui5wc border and input margins
+            opNode.style.scrollPaddingBlock = `${Math.ceil(12 + topHeaderHeight + TAB_CONTAINER_HEADER_HEIGHT + (!headerCollapsed && headerPinned ? headerContentHeight : 0))}px ${footerArea ? 'calc(var(--_ui5wcr-BarHeight) + 1.25rem)' : 0}`;
+          }
         }}
         onBlur={(e) => {
-          if (!e.currentTarget.contains(e.relatedTarget as Node)) {
-            objectPageRef.current.style.scrollPaddingBlock = '0px';
+          const opNode = objectPageRef.current;
+          if (opNode && !e.currentTarget.contains(e.relatedTarget as Node)) {
+            opNode.style.scrollPaddingBlock = '0px';
           }
         }}
       >
