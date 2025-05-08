@@ -64,11 +64,17 @@ declare global {
       closeUi5PopupWithEsc(): Chainable<Element>;
 
       /**
-       * Click on a list item of the `List` component by text.
+       * Click on a list item of the `ui5-list` component by text.
+       *
+       * __Note:__ Chaining this command to a `ui5-list` selector is recommended.
+       *
        * @param {string} text The text of the list item that should be clicked.
-       * @example cy.clickUi5ListItemByText("List Item")
+       * @param options ClickOptions
+       * @example
+       * cy.get('[ui5-list]').clickUi5ListItemByText("List Item")
+       * cy.clickUi5ListItemByText("List Item")
        */
-      clickUi5ListItemByText(text: string): Chainable<Element>;
+      clickUi5ListItemByText(text: string, options: Partial<ClickOptions>): Chainable<Element>;
 
       /**
        * Click on an `ui5-option` of the `ui5-select` component by text.
@@ -188,8 +194,17 @@ Cypress.Commands.add('closeUi5PopupWithEsc', () => {
   cy.get('body').type('{esc}', { force: true });
 });
 
-Cypress.Commands.add('clickUi5ListItemByText', (text) => {
-  cy.contains(text).find('li').click({ force: true });
+Cypress.Commands.add('clickUi5ListItemByText', { prevSubject: 'optional' }, (subject, text) => {
+  cy.document().then((doc) => {
+    const _subject = (subject as Cypress.JQueryWithSelector<UI5Element>)?.[0] || doc;
+    const li = _subject.querySelector(`[text="${text}"]`);
+
+    if (li) {
+      cy.wrap(li).click();
+    } else {
+      cy.wrap(_subject).contains(text).click();
+    }
+  });
 });
 
 Cypress.Commands.add('clickUi5SelectOptionByText', { prevSubject: 'element' }, (subject, text, options = {}) => {
