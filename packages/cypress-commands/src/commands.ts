@@ -74,7 +74,7 @@ declare global {
        * cy.get('[ui5-list]').clickUi5ListItemByText("List Item")
        * cy.clickUi5ListItemByText("List Item")
        */
-      clickUi5ListItemByText(text: string, options: Partial<ClickOptions>): Chainable<Element>;
+      clickUi5ListItemByText(text: string, options?: Partial<ClickOptions>): Chainable<Element>;
 
       /**
        * Click on an `ui5-option` of the `ui5-select` component by text.
@@ -194,15 +194,15 @@ Cypress.Commands.add('closeUi5PopupWithEsc', () => {
   cy.get('body').type('{esc}', { force: true });
 });
 
-Cypress.Commands.add('clickUi5ListItemByText', { prevSubject: 'optional' }, (subject, text) => {
+Cypress.Commands.add('clickUi5ListItemByText', { prevSubject: 'optional' }, (subject, text, options = {}) => {
   cy.document().then((doc) => {
     const _subject = (subject as Cypress.JQueryWithSelector<UI5Element>)?.[0] || doc;
     const li = _subject.querySelector(`[text="${text}"]`);
 
     if (li) {
-      cy.wrap(li).click();
+      cy.wrap(li).click(options);
     } else {
-      cy.wrap(_subject).contains(text).click();
+      cy.wrap(_subject).contains(text).click(options);
     }
   });
 });
