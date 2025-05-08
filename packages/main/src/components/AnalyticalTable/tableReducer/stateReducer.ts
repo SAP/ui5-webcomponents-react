@@ -1,8 +1,8 @@
 import { actions } from 'react-table';
+import type { TableInstance } from '../types/index.js';
 
-export const stateReducer = (state, action, _prevState, instance) => {
+export const stateReducer = (state, action, _prevState, instance: TableInstance) => {
   const { payload } = action;
-
   if (state.isRtl && action.type === actions.columnResizing) {
     const { clientX } = action;
     const { startX, columnWidth, headerIdWidths } = state.columnResizing;
@@ -28,6 +28,13 @@ export const stateReducer = (state, action, _prevState, instance) => {
     };
   }
   switch (action.type) {
+    case 'setFilter':
+      instance.webComponentsReactProperties.onFilter({
+        filters: state.filters,
+        value: action.filterValue,
+        columnId: action.columnId
+      });
+      return state;
     case 'toggleRowExpanded':
       // this flag disables scrolling to the top of the table if a table is collapsed
       if (!state.expanded[action.id]) {

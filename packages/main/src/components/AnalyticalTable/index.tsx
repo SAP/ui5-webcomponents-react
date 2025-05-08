@@ -160,6 +160,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     onSort,
     onTableScroll,
     onAutoResize,
+    onFilter,
     NoDataComponent = DefaultNoDataComponent,
     additionalEmptyRowsCount = 0,
     ...rest
@@ -186,6 +187,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const invalidTableA11yText = i18nBundle.getText(INVALID_TABLE);
   const tableInstanceRef = useRef<TableInstance>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const dedupedOnFilter = useMemo(() => debounce(onFilter, 0), [onFilter]);
+  useEffect(
+    () => () => {
+      dedupedOnFilter.cancel();
+    },
+    [dedupedOnFilter]
+  );
 
   tableInstanceRef.current = useTable(
     {
@@ -239,8 +248,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         onGroup,
         onRowClick,
         onRowExpandChange,
-        onRowSelect: onRowSelect,
-        onSort
+        onRowSelect,
+        onSort,
+        onFilter: dedupedOnFilter
       },
       ...reactTableOptions
     },
