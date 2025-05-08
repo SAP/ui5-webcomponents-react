@@ -4,7 +4,7 @@ import iconDown from '@ui5/webcomponents-icons/dist/down.js';
 import iconUp from '@ui5/webcomponents-icons/dist/up.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { MouseEventHandler, ReactElement, ReactNode } from 'react';
+import type { HTMLAttributes, MouseEventHandler, ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, useId } from 'react';
 import { DeviationIndicator, ValueColor } from '../../enums/index.js';
 import {
@@ -27,6 +27,14 @@ export interface AnalyticalCardHeaderPropTypes extends CommonProps {
    * The title of the card
    */
   titleText?: string;
+  /**
+   * Determines the ARIA level of the `titleText`.
+   *
+   * __Note:__ Defining a `titleTextLevel` will apply the `aria-level` attribute with a value from 1 to 6.
+   *
+   * @default 3
+   */
+  titleTextLevel?: HTMLAttributes<HTMLSpanElement>['aria-level'];
   /**
    * The subtitle of the card
    */
@@ -98,6 +106,7 @@ const deviationMap = new Map<AnalyticalCardHeaderPropTypes['trend'], any>([
 export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHeaderPropTypes>((props, ref) => {
   const {
     titleText,
+    titleTextLevel = 3,
     subtitleText,
     value,
     scale,
@@ -182,7 +191,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
       <div>
         <div className={classNames.headerTitles}>
           <div className={classNames.headerFirstLine}>
-            <span role="heading" aria-level={3} className={classNames.headerText} id={`${headerId}-title`}>
+            <span role="heading" aria-level={titleTextLevel} className={classNames.headerText} id={`${headerId}-title`}>
               {titleText}
             </span>
             {status && <span className={classNames.status}>{status}</span>}
