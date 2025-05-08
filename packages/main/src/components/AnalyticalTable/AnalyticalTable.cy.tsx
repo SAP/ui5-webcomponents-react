@@ -111,21 +111,21 @@ describe('AnalyticalTable', () => {
 
     cy.findByText('Name').click();
     cy.get('[ui5-popover]').should('be.visible');
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
     cy.get('@onSortSpy').should('have.been.calledWithMatch', {
       detail: { column: { id: 'name' }, sortDirection: 'asc' }
     });
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', 'C');
 
     cy.findByText('Name').click();
-    cy.findByText('Clear Sorting').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Clear Sorting');
     cy.get('@onSortSpy').should('have.been.calledWithMatch', {
       detail: { column: { id: 'name' }, sortDirection: 'clear' }
     });
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', 'X');
 
     cy.findByText('Name').click();
-    cy.findByText('Sort Descending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Descending');
     cy.get('@onSortSpy').should('have.been.calledWithMatch', {
       detail: { column: { id: 'name' }, sortDirection: 'desc' }
     });
@@ -873,7 +873,7 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('isSelected').should('have.text', 'true');
 
     cy.findByText('Friend Name').click();
-    cy.findByText('Group').realClick();
+    cy.get('[ui5-list]').clickUi5ListItemByText('Group');
     cy.focused()
       .should('have.attr', 'data-row-index', '0')
       .and('have.attr', 'data-column-index', '2')
@@ -894,7 +894,7 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('isSelected').should('have.text', 'false');
 
     cy.findByText('Friend Name').click();
-    cy.findByText('Ungroup').realClick();
+    cy.get('[ui5-list]').clickUi5ListItemByText('Ungroup');
     cy.focused()
       .should('have.attr', 'data-row-index', '0')
       .and('have.attr', 'data-column-index', '3')
@@ -1560,7 +1560,7 @@ describe('AnalyticalTable', () => {
 
     testAlternateRowColor();
     cy.findByText('Name').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
     testAlternateRowColor();
   });
 
@@ -2336,22 +2336,22 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.attr', 'aria-label', 'Age 40 ');
 
     cy.findByText('Name').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
     cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'ascending');
     cy.findByText('Name').click();
-    cy.findByText('Clear Sorting').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Clear Sorting');
     cy.get('[data-column-id="name"]').should('not.have.attr', 'aria-sort');
     cy.findByText('Name').click();
-    cy.findByText('Sort Descending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Descending');
     cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending');
     cy.findByText('Name').click();
-    cy.findByText('Sort Ascending').shadow().get('[ui5-input]').typeIntoUi5Input('A{enter}');
+    cy.get('[text="Sort Ascending"]').shadow().get('[ui5-input]').typeIntoUi5Input('A{enter}');
     cy.get('[data-column-id="name"]')
       .should('have.attr', 'aria-sort', 'descending')
       .and('have.attr', 'aria-label', 'Filtered');
 
     cy.findByText('Name').click();
-    cy.findByText('Group').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Group');
     cy.get('[data-column-id="name"]')
       .should('have.attr', 'aria-sort', 'descending')
       .and('have.attr', 'aria-label', 'Filtered Grouped');
@@ -2367,14 +2367,14 @@ describe('AnalyticalTable', () => {
       'Name A Grouped, To collapse the row, press the spacebar.'
     );
     cy.findByText('Name').click();
-    cy.findByText('Ungroup').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Ungroup');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name A ');
     cy.get('[data-column-id="name"]')
       .should('have.attr', 'aria-sort', 'descending')
       .and('have.attr', 'aria-label', 'Filtered');
 
     cy.findByText('Name').click();
-    cy.findByText('Sort Ascending').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
+    cy.get('[text="Sort Ascending"]').shadow().get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}{enter}');
     cy.get('[data-column-id="name"]').should('have.attr', 'aria-sort', 'descending').and('have.attr', 'aria-label', '');
 
     cy.get('[data-column-id="friend.age"]').should('have.attr', 'aria-label', 'Custom Label ');
@@ -2436,7 +2436,7 @@ describe('AnalyticalTable', () => {
 
     cy.mount(<AnalyticalTable data={[...data, ...data]} columns={columns} visibleRows={5} groupable />);
     cy.findByText('Name').click();
-    cy.findByText('Group').realClick();
+    cy.get('[ui5-list]').clickUi5ListItemByText('Group');
     cy.findByText('A (2)').trigger('keydown', {
       key: 'Enter'
     });
@@ -2522,9 +2522,9 @@ describe('AnalyticalTable', () => {
 
     //sort both Name and Age (multi-sort enabled)
     cy.findByText('Name').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
     cy.findByText('Age').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
 
     cy.get('[data-column-index="0"][data-row-index="1"]').children().should('have.text', 'A');
     cy.get('[data-column-index="1"][data-row-index="1"]').children().should('have.text', '30');
@@ -2545,7 +2545,7 @@ describe('AnalyticalTable', () => {
 
     //only sort Name2
     cy.findByText('Name 2').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
 
     cy.get('[data-column-index="0"][data-row-index="1"]').children().should('have.text', 'B');
     cy.get('[data-column-index="1"][data-row-index="1"]').children().should('have.text', '60');
@@ -2753,7 +2753,7 @@ describe('AnalyticalTable', () => {
     cy.findByText('Aggregated').should('not.exist');
 
     cy.findByText('Name').click();
-    cy.findByText('Group').realClick();
+    cy.get('[ui5-list]').clickUi5ListItemByText('Group');
     cy.findByText('Simon').should('be.visible').should('have.length', 1);
     cy.findAllByText('Aggregated').should('be.visible').should('have.length', 2);
     cy.get('[ui5-icon][name="navigation-right-arrow"]').should('be.visible').should('have.length', 2);
@@ -2815,9 +2815,9 @@ describe('AnalyticalTable', () => {
 
     cy.mount(<TestComponent orderedIds={['name', 'name2', 'age', 'age2']} />);
     cy.findByText('Age').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
     cy.findByText('Name').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
 
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Graham');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '40');
@@ -2825,7 +2825,7 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '20');
 
     cy.findByText('Name 2').click();
-    cy.findByText('Sort Descending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Descending');
 
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Graham');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '62');
@@ -2835,7 +2835,7 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="5"][data-visible-column-index="2"]').should('have.text', 'Willis');
 
     cy.findByText('Name 2').click();
-    cy.findByText('Clear Sorting').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Clear Sorting');
 
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Graham');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '40');
@@ -2844,9 +2844,9 @@ describe('AnalyticalTable', () => {
 
     cy.mount(<TestComponent orderedIds={['name2']} />);
     cy.findByText('Age').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
     cy.findByText('Name').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
 
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Kristen');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '20');
@@ -2854,7 +2854,7 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="5"][data-visible-column-index="1"]').should('have.text', '40');
 
     cy.findByText('Age 2').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
 
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Kristen');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '20');
@@ -2864,7 +2864,7 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="5"][data-visible-column-index="3"]').should('have.text', '18');
 
     cy.findByText('Name 2').click();
-    cy.findByText('Sort Ascending').shadow().findByRole('listitem').click({ force: true });
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should('have.text', 'Kristen');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.text', '20');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="2"]').should('have.text', 'Alissa');

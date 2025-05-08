@@ -142,10 +142,10 @@ export const Default: Story = {
           <UserSettingsItem icon="palette" text="Appearance" tooltip="Appearance" headerText="Appearance">
             <UserSettingsView text="Themes">
               <List separators="Inner">
-                <ListItemStandard icon="palette">SAP Morning Horizon</ListItemStandard>
-                <ListItemStandard icon="palette">SAP Evening Horizon</ListItemStandard>
-                <ListItemStandard icon="palette">SAP High Contrast Black (SAP Horizon)</ListItemStandard>
-                <ListItemStandard icon="palette">SAP High Contrast White (SAP Horizon)</ListItemStandard>
+                <ListItemStandard icon="palette" text="SAP Morning Horizon" />
+                <ListItemStandard icon="palette" text="SAP Evening Horizon" />
+                <ListItemStandard icon="palette" text="SAP High Contrast Black (SAP Horizon)" />
+                <ListItemStandard icon="palette" text="SAP High Contrast White (SAP Horizon)" />
               </List>
               <Button className="save-btn" design="Emphasized">
                 Save

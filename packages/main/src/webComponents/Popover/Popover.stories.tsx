@@ -21,9 +21,9 @@ const meta = {
   args: {
     children: (
       <List>
-        <ListItemStandard additionalText="Fruits">Apples</ListItemStandard>
-        <ListItemStandard additionalText="Fruits">Bananas</ListItemStandard>
-        <ListItemStandard additionalText="Vegetables">Potato</ListItemStandard>
+        <ListItemStandard additionalText="Fruits" text="Apples" />
+        <ListItemStandard additionalText="Fruits" text="Bananas" />
+        <ListItemStandard additionalText="Vegetables" text="Potato" />
       </List>
     ),
     headerText: 'Popover Header',

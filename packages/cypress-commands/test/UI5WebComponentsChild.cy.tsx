@@ -125,7 +125,7 @@ describe('UI5 Web Components - Child Commands', () => {
   it('click list item', () => {
     cy.mount(
       <List selectionMode="Multiple">
-        <ListItemStandard data-testid="s">ListItemStandard</ListItemStandard>
+        <ListItemStandard data-testid="s" text="ListItemStandard" />
         <ListItemCustom data-testid="c">ListItemCustom</ListItemCustom>
       </List>
     );

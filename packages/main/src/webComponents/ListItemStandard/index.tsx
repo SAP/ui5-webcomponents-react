@@ -4,9 +4,10 @@ import '@ui5/webcomponents/dist/ListItemStandard.js';
 import type { ListItemAccessibilityAttributes } from '@ui5/webcomponents/dist/ListItem.js';
 import type Highlight from '@ui5/webcomponents/dist/types/Highlight.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
+import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 
 interface ListItemStandardAttributes {
@@ -101,6 +102,14 @@ interface ListItemStandardAttributes {
   selected?: boolean;
 
   /**
+   * Defines the text of the component.
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  text?: string | undefined;
+
+  /**
    * Defines the text of the tooltip that would be displayed for the list item.
    *
    * **Note:** Available since [v1.23.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.23.0) of **@ui5/webcomponents**.
@@ -117,6 +126,24 @@ interface ListItemStandardAttributes {
    * @default "Active"
    */
   type?: ListItemType | keyof typeof ListItemType;
+
+  /**
+   * Defines if the text of the component should wrap when it's too long.
+   * When set to "Normal", the content (title, description) will be wrapped
+   * using the `ExpandableText` component.<br/>
+   *
+   * The text can wrap up to 100 characters on small screens (size S) and
+   * up to 300 characters on larger screens (size M and above). When text exceeds
+   * these limits, it truncates with an ellipsis followed by a text expansion trigger.
+   *
+   * Available options are:
+   * - `None` (default) - The text will truncate with an ellipsis.
+   * - `Normal` - The text will wrap (without truncation).
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents**.
+   * @default "None"
+   */
+  wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
 interface ListItemStandardDomRef extends Required<ListItemStandardAttributes>, Ui5DomRef {}
@@ -127,7 +154,9 @@ interface ListItemStandardPropTypes
   /**
    * Defines the text of the component.
    *
-   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
+   * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design. <br/>
+   * **Note:** Deprecated since version `2.10.0`. Use the `text` property instead. <br/>
+   * Only use the default slot if you need to apply custom text formatting with HTML elements (like `<b>`, `<i>`, etc.).
    */
   children?: ReactNode | ReactNode[];
 
@@ -192,8 +221,10 @@ const ListItemStandard = withWebComponent<ListItemStandardPropTypes, ListItemSta
     'description',
     'highlight',
     'icon',
+    'text',
     'tooltip',
-    'type'
+    'type',
+    'wrappingType'
   ],
   ['iconEnd', 'movable', 'navigated', 'selected'],
   ['deleteButton', 'image'],

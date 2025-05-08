@@ -94,12 +94,12 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         {viewHeaderText}
       </TableHeaderCell>
       {showShare && (
-        <TableHeaderCell minWidth="7.5rem" maxWidth="8rem">
+        <TableHeaderCell minWidth="7.5rem" width="8rem">
           {sharingHeaderText}
         </TableHeaderCell>
       )}
       {showSetAsDefault && (
-        <TableHeaderCell minWidth="8rem" maxWidth="8rem">
+        <TableHeaderCell minWidth="8rem" width="8rem">
           {defaultHeaderText}
         </TableHeaderCell>
       )}

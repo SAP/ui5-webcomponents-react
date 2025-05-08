@@ -39,9 +39,9 @@ export const Default: Story = {
     return (
       <Card {...args}>
         <List>
-          <ListItemStandard description="Software Architect">Richard Wilson</ListItemStandard>
-          <ListItemStandard description="Visual Designer">Elena Petrova</ListItemStandard>
-          <ListItemStandard description="Quality Specialist">John Miller</ListItemStandard>
+          <ListItemStandard description="Software Architect" text="Richard Wilson" />
+          <ListItemStandard description="Visual Designer" text="Elena Petrova" />
+          <ListItemStandard description="Quality Specialist" text="John Miller" />
         </List>
       </Card>
     );

@@ -46,15 +46,9 @@ const onSelectionChange = (event) => {
 };
 
 <List mode={ListSelectionMode.MultiSelect} onSelectionChange={onSelectionChange}>
-  <ListItemStandard additionalText="3" data-custom="custom value of list item 1">
-    List Item 1
-  </ListItemStandard>
-  <ListItemStandard additionalText="2" data-custom="custom value of list item 2">
-    List Item 2
-  </ListItemStandard>
-  <ListItemStandard additionalText="1" data-custom="custom value of list item 3">
-    List Item 3
-  </ListItemStandard>
+  <ListItemStandard additionalText="3" data-custom="custom value of list item 1" text="List Item 1" />
+  <ListItemStandard additionalText="2" data-custom="custom value of list item 2" text="List Item 2" />
+  <ListItemStandard additionalText="1" data-custom="custom value of list item 3" text="List Item 3" />
 </List>;
 ```
 

@@ -86,7 +86,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
   const showBothActions = shouldRenderHeaderPinnableButton;
 
   const onPinHeader: ToggleButtonPropTypes['onClick'] = (e) => {
-    const target = e.target as ToggleButtonDomRef;
+    const target = e.target;
     setHeaderPinned(target.pressed);
   };
 

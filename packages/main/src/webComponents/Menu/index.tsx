@@ -6,6 +6,7 @@ import type {
   MenuBeforeOpenEventDetail,
   MenuItemClickEventDetail
 } from '@ui5/webcomponents/dist/Menu.js';
+import type PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
@@ -18,6 +19,12 @@ interface MenuAttributes {
   headerText?: string | undefined;
 
   /**
+   * Determines the horizontal alignment of the menu relative to its opener control.
+   * @default "Start"
+   */
+  horizontalAlign?: PopoverHorizontalAlign | keyof typeof PopoverHorizontalAlign;
+
+  /**
    * Defines if a loading indicator would be displayed inside the corresponding ui5-menu popover.
    *
    * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
@@ -26,7 +33,7 @@ interface MenuAttributes {
   loading?: boolean;
 
   /**
-   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover..
+   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
    *
    * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
    * @default 1000
@@ -34,7 +41,7 @@ interface MenuAttributes {
   loadingDelay?: number;
 
   /**
-   * Indicates if the menu is open
+   * Indicates if the menu is open.
    *
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    * @default false
@@ -166,7 +173,7 @@ interface MenuPropTypes
  */
 const Menu = withWebComponent<MenuPropTypes, MenuDomRef>(
   'ui5-menu',
-  ['headerText', 'loadingDelay', 'opener'],
+  ['headerText', 'horizontalAlign', 'loadingDelay', 'opener'],
   ['loading', 'open'],
   [],
   ['before-close', 'before-open', 'close', 'item-click', 'open']

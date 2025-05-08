@@ -25,21 +25,19 @@ interface TableHeaderCellAttributes {
   importance?: number;
 
   /**
-   * Defines the maximum width of the column.
-   * @default "auto"
-   */
-  maxWidth?: string;
-
-  /**
    * Defines the minimum width of the column.
    *
    * If the table is in `Popin` mode and the minimum width does not fit anymore,
    * the column will move into the popin.
    *
-   * **Note:** If `minWidth` has the `auto` value, the table ensures that the column is wider than at least `3rem`.
-   * @default "auto"
+   * By default, the table prevents the column from becoming too small.
+   * Changing this value to a small value might lead to accessibility issues.
+   *
+   * **Note:** This property only takes effect for columns with a [\<percentage\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) value
+   * or the default width.
+   * @default undefined
    */
-  minWidth?: string;
+  minWidth?: string | undefined;
 
   /**
    * Defines if the column is hidden in the popin.
@@ -69,10 +67,16 @@ interface TableHeaderCellAttributes {
   sortIndicator?: SortOrder | keyof typeof SortOrder;
 
   /**
-   * Defines the width of column.
-   * @default "auto"
+   * Defines the width of the column.
+   *
+   * By default, the column will grow and shrink according to the available space.
+   * This will distribute the space proportionally among all columns with no specific width set.
+   *
+   * See [\<length\>](https://developer.mozilla.org/en-US/docs/Web/CSS/length) and
+   * [\<percentage\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) for possible width values.
+   * @default undefined
    */
-  width?: string;
+  width?: string | undefined;
 }
 
 interface TableHeaderCellDomRef extends Required<TableHeaderCellAttributes>, Ui5DomRef {}
@@ -116,7 +120,7 @@ interface TableHeaderCellPropTypes
  */
 const TableHeaderCell = withWebComponent<TableHeaderCellPropTypes, TableHeaderCellDomRef>(
   'ui5-table-header-cell',
-  ['horizontalAlign', 'importance', 'maxWidth', 'minWidth', 'popinText', 'sortIndicator', 'width'],
+  ['horizontalAlign', 'importance', 'minWidth', 'popinText', 'sortIndicator', 'width'],
   ['popinHidden'],
   ['action'],
   []

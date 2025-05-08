@@ -58,9 +58,8 @@ export const Default: Story = {
                 image={<img src={currentProduct.img} alt="Example Image" />}
                 description={`${currentProduct.description}${index}`}
                 key={`${currentProduct.text}${index}`}
-              >
-                {currentProduct.text}
-              </ListItemStandard>
+                text={currentProduct.text}
+              />
             );
           })}
         </SelectDialog>
@@ -161,9 +160,8 @@ export const MultiSelect: Story = {
                   data-description={`${currentProduct.description}${index}`}
                   key={`${currentProduct.text}${index}`}
                   selected={selectedItems[description]}
-                >
-                  {currentProduct.text}
-                </ListItemStandard>
+                  text={currentProduct.text}
+                />
               );
             })
             .filter(Boolean)}

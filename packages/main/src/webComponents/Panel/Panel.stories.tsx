@@ -60,13 +60,13 @@ export const WithCustomHeader: Story = {
     return (
       <Panel {...args}>
         <List>
-          <ListItemStandard description="Language: Spanish">Argentina</ListItemStandard>
-          <ListItemStandard description="Language: Portuguese">Portugal</ListItemStandard>
-          <ListItemStandard description="Language: Spanish">Mexico</ListItemStandard>
-          <ListItemStandard description="Language: Portuguese">Brazil</ListItemStandard>
-          <ListItemStandard description="Language: German">Germany</ListItemStandard>
-          <ListItemStandard description="Language: English">Australia</ListItemStandard>
-          <ListItemStandard description="Language: German">Austria</ListItemStandard>
+          <ListItemStandard description="Language: Spanish" text="Argentina" />
+          <ListItemStandard description="Language: Portuguese" text="Portugal" />
+          <ListItemStandard description="Language: Spanish" text="Mexico" />
+          <ListItemStandard description="Language: Portuguese" text="Brazil" />
+          <ListItemStandard description="Language: German" text="Germany" />
+          <ListItemStandard description="Language: English" text="Australia" />
+          <ListItemStandard description="Language: German" text="Austria" />
         </List>
       </Panel>
     );
