@@ -195,24 +195,26 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
         data-component-name="ATHeaderPopoverList"
       >
         {isSortedAscending && (
-          <ListItemStandard type={ListItemType.Active} icon={iconDecline} data-sort="clear">
-            {clearSortingText}
-          </ListItemStandard>
+          <ListItemStandard type={ListItemType.Active} icon={iconDecline} data-sort="clear" text={clearSortingText} />
         )}
         {showSort && !isSortedAscending && (
-          <ListItemStandard type={ListItemType.Active} icon={iconSortAscending} data-sort="asc">
-            {sortAscendingText}
-          </ListItemStandard>
+          <ListItemStandard
+            type={ListItemType.Active}
+            icon={iconSortAscending}
+            data-sort="asc"
+            text={sortAscendingText}
+          />
         )}
         {showSort && !isSortedDescending && (
-          <ListItemStandard type={ListItemType.Active} icon={iconSortDescending} data-sort="desc">
-            {sortDescendingText}
-          </ListItemStandard>
+          <ListItemStandard
+            type={ListItemType.Active}
+            icon={iconSortDescending}
+            data-sort="desc"
+            text={sortDescendingText}
+          />
         )}
         {isSortedDescending && (
-          <ListItemStandard type={ListItemType.Active} icon={iconDecline} data-sort="clear">
-            {clearSortingText}
-          </ListItemStandard>
+          <ListItemStandard type={ListItemType.Active} icon={iconDecline} data-sort="clear" text={clearSortingText} />
         )}
         {showFilter && (
           <ListItemCustom type={ListItemType.Inactive} onKeyDown={handleCustomLiKeyDown} accessibleName={filterText}>
@@ -244,9 +246,12 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
           </ListItemCustom>
         )}
         {showGroup && (
-          <ListItemStandard type={ListItemType.Active} icon={iconGroup} data-sort={'group'}>
-            {column.isGrouped ? ungroupText : groupText}
-          </ListItemStandard>
+          <ListItemStandard
+            type={ListItemType.Active}
+            icon={iconGroup}
+            data-sort={'group'}
+            text={column.isGrouped ? ungroupText : groupText}
+          />
         )}
       </List>
     </Popover>

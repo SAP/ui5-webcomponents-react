@@ -148,7 +148,10 @@ interface TreeItemCustomDomRef extends Required<TreeItemCustomAttributes>, Ui5Do
 
 interface TreeItemCustomPropTypes
   extends TreeItemCustomAttributes,
-    Omit<CommonProps, keyof TreeItemCustomAttributes | 'children' | 'content' | 'deleteButton' | 'onDetailClick'> {
+    Omit<
+      CommonProps,
+      keyof TreeItemCustomAttributes | 'children' | 'content' | 'deleteButton' | 'image' | 'onDetailClick'
+    > {
   /**
    * Defines the items of the component.
    *
@@ -182,6 +185,23 @@ interface TreeItemCustomPropTypes
    * **Note:** Available since [v1.9.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
    */
   deleteButton?: UI5WCSlotsNode;
+
+  /**
+   * **Note:** While the slot allows option for setting custom avatar, to match the
+   * design guidelines, please use the `Avatar` with size XS.
+   *
+   * **Note:** If bigger `Avatar` needs to be used, then the size of the
+   * `TreeItem` should be customized in order to fit.
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="image"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents**.
+   */
+  image?: UI5WCSlotsNode;
   /**
    * Fired when the user clicks on the detail button when type is `Detail`.
    *
@@ -210,7 +230,7 @@ const TreeItemCustom = withWebComponent<TreeItemCustomPropTypes, TreeItemCustomD
   'ui5-tree-item-custom',
   ['accessibilityAttributes', 'accessibleName', 'additionalTextState', 'highlight', 'icon', 'tooltip', 'type'],
   ['expanded', 'hasChildren', 'hideSelectionElement', 'indeterminate', 'movable', 'navigated', 'selected'],
-  ['content', 'deleteButton'],
+  ['content', 'deleteButton', 'image'],
   ['detail-click']
 );
 

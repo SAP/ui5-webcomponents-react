@@ -1,13 +1,13 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Button.js';
-import type { ButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/Button.js';
+import type { ButtonAccessibilityAttributes, ButtonClickEventDetail } from '@ui5/webcomponents/dist/Button.js';
 import type ButtonAccessibleRole from '@ui5/webcomponents/dist/types/ButtonAccessibleRole.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import type ButtonType from '@ui5/webcomponents/dist/types/ButtonType.js';
-import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
-import type { MouseEventHandler, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface ButtonAttributes {
   /**
@@ -154,17 +154,19 @@ interface ButtonPropTypes
    */
   children?: ReactNode | ReactNode[];
   /**
-   * Fired when the component is activated either with a
-   * mouse/tap or by using the Enter or Space key.
+   * Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.
    *
-   * **Note:** The event will not be fired if the `disabled`
-   * property is set to `true`.
+   * **Note:** The event will not be fired if the `disabled` property is set to `true`.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents**.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ✅|✅|
    */
-  onClick?: MouseEventHandler<ButtonDomRef>;
+  onClick?: (event: Ui5CustomEvent<ButtonDomRef, ButtonClickEventDetail>) => void;
 }
 
 /**

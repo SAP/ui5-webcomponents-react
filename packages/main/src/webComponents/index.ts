@@ -84,6 +84,7 @@ export * from './SegmentedButtonItem/index.js';
 export * from './Select/index.js';
 export * from './ShellBar/index.js';
 export * from './ShellBarItem/index.js';
+export * from './ShellBarSearch/index.js';
 export * from './ShellBarSpacer/index.js';
 export * from './SideNavigation/index.js';
 export * from './SideNavigationGroup/index.js';

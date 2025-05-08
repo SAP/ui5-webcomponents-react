@@ -16,6 +16,16 @@ interface IllustratedMessageAttributes {
   accessibleNameRef?: string | undefined;
 
   /**
+   * Defines whether the illustration is decorative.
+   *
+   * When set to `true`, the attributes `role="presentation"` and `aria-hidden="true"` are applied to the SVG element.
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents-fiori**.
+   * @default false
+   */
+  decorative?: boolean;
+
+  /**
    * Determines which illustration breakpoint variant is used.
    *
    * As `IllustratedMessage` adapts itself around the `Illustration`, the other
@@ -147,7 +157,7 @@ interface IllustratedMessagePropTypes
 const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, IllustratedMessageDomRef>(
   'ui5-illustrated-message',
   ['accessibleNameRef', 'design', 'name', 'subtitleText', 'titleText'],
-  [],
+  ['decorative'],
   ['subtitle', 'title'],
   []
 );

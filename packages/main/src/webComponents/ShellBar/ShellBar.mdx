@@ -3,6 +3,7 @@ import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { ShellBarItem } from '../ShellBarItem/index';
 import { ShellBarSpacer } from '../ShellBarSpacer/index';
+import { ShellBarSearch } from '../ShellBarSearch/index';
 import * as ComponentStories from './ShellBar.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -68,5 +69,10 @@ const ShellBarComponent = () => {
 
 <Description of={ShellBarSpacer} />
 <ArgTypes hideHTMLPropsNote exclude={excludePropsForAbstract} of={ShellBarSpacer} />
+
+## ShellBarSearch (experimental)
+
+<Description of={ShellBarSearch} />
+<ArgTypes hideHTMLPropsNote of={ShellBarSearch} />
 
 <Footer />

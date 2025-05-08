@@ -27,8 +27,9 @@ describe('VariantManagement', () => {
     cy.mount(<VariantManagement>{TwoVariantItems}</VariantManagement>);
     cy.get('[tooltip="Select View"]').click();
 
-    cy.findByText('VariantItem 1').should('be.visible');
-    cy.findAllByText('VariantItem 2').should('have.length', 2);
+    cy.get('[ui5-li][text="VariantItem 1"]').should('be.visible');
+    cy.get('[ui5-li][text="VariantItem 2"]').should('be.visible');
+    cy.findByText('VariantItem 2').should('be.visible');
   });
 
   it('Headings customization', () => {
@@ -37,8 +38,8 @@ describe('VariantManagement', () => {
         {TwoVariantItems}
       </VariantManagement>
     );
-    cy.contains('VariantItem 2').should('have.attr', 'level', TitleLevel.H1);
-    cy.contains('VariantItem 2').click();
+
+    cy.findByText('VariantItem 2').should('have.attr', 'level', TitleLevel.H1).click();
     cy.get('[role="dialog"]').contains('Popover Heading').should('be.visible');
   });
 
@@ -104,7 +105,7 @@ describe('VariantManagement', () => {
   it('saveViewInputProps & manageViewsInputProps', () => {
     // manageViewsInputProps
     cy.mount(<WithCustomValidation />);
-    cy.contains('Max 12 chars').click();
+    cy.findByText('Max 12 chars').click();
     cy.findByText('Manage').click();
     cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.findByTestId('12chars').typeIntoUi5Input('A');
@@ -114,13 +115,13 @@ describe('VariantManagement', () => {
     cy.get('body').click({ force: true });
     cy.realPress('Escape');
     cy.get('[ui5-dialog]').should('not.exist');
-    cy.contains('Max 12 chars').click();
+    cy.findByText('Max 12 chars').click();
     cy.findByText('Manage').click();
     cy.findByTestId('12chars').should('have.attr', 'value-state', 'None');
     cy.findByTestId('12chars').typeIntoUi5Input('A');
     cy.findByTestId('12chars').should('have.attr', 'value-state', ValueState.Negative);
     cy.findByText('Cancel').click();
-    cy.contains('Max 12 chars').click();
+    cy.findByText('Max 12 chars').click();
     cy.findByText('Manage').click();
     cy.findByTestId('12chars').should('have.attr', 'value-state', 'None');
     cy.findByTestId('12chars').typeIntoUi5Input('A');
@@ -133,12 +134,12 @@ describe('VariantManagement', () => {
     cy.findByText('Save').click();
     cy.findByTestId('12chars').should('not.exist');
     cy.get('[ui5-dialog]').should('not.exist');
-    cy.contains('Max 12 charB').should('be.visible');
+    cy.findByText('Max 12 charB').should('be.visible');
 
     //saveViewInputProps
     // @ts-expect-error: not a real prop, just for testing
     cy.mount(<WithCustomValidation selectedByIndex={0} />);
-    cy.contains('Only alphanumeric chars in Save View input').click();
+    cy.findByText('Only alphanumeric chars in Save View input').click();
     cy.findByText('Save As').click();
     cy.get('[ui5-dialog]').should('have.attr', 'open');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
@@ -147,13 +148,13 @@ describe('VariantManagement', () => {
     cy.get('[text="Apply Automatically"]').realClick();
     cy.realPress('Escape');
     cy.get('[ui5-dialog]').should('not.exist');
-    cy.contains('Only alphanumeric chars in Save View input').click();
+    cy.findByText('Only alphanumeric chars in Save View input').click();
     cy.findByText('Save As').click();
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'None');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', ValueState.Negative);
     cy.findByText('Cancel').click();
-    cy.contains('Only alphanumeric chars in Save View input').click();
+    cy.findByText('Only alphanumeric chars in Save View input').click();
     cy.findByText('Save As').click();
     cy.findByTestId('alphanumeric').should('have.attr', 'value-state', 'None');
     cy.findByTestId('alphanumeric').typeIntoUi5Input('$');
@@ -173,14 +174,18 @@ describe('VariantManagement', () => {
     cy.mount(<VariantManagement onSelect={select}>{TwoVariantItems}</VariantManagement>);
 
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
-    cy.findAllByText('VariantItem 2').should('have.length', 2);
+    cy.get('[ui5-li][text="VariantItem 2"]').should('exist');
+    cy.findByText('VariantItem 2').should('be.visible');
     cy.get('[ui5-title]').contains('VariantItem 2').click();
     cy.get('[ui5-responsive-popover]').should('be.visible');
 
-    cy.findAllByText('VariantItem 1').should('have.length', 1);
-    cy.findByText('VariantItem 1').click();
-    cy.findAllByText('VariantItem 1').should('have.length', 2);
-    cy.findAllByText('VariantItem 2').should('have.length', 1);
+    cy.get('[ui5-li][text="VariantItem 1"]').should('be.visible');
+    cy.findByText('VariantItem 1').should('not.exist');
+    cy.get('[ui5-list]').clickUi5ListItemByText('VariantItem 1');
+    cy.get('[ui5-li][text="VariantItem 1"]').should('be.visible');
+    cy.findByText('VariantItem 1').should('be.visible');
+    cy.get('[ui5-li][text="VariantItem 2"]').should('be.visible');
+    cy.findByText('VariantItem 2').should('not.exist');
 
     cy.get('@select').should('have.been.calledOnce');
 
@@ -193,7 +198,7 @@ describe('VariantManagement', () => {
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.get('[ui5-responsive-popover]').should('be.visible');
-    cy.findByText('VariantItem 1').click();
+    cy.get('[ui5-list]').clickUi5ListItemByText('VariantItem 1');
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
 
     cy.get('@select').should('have.been.calledTwice');
@@ -245,17 +250,17 @@ describe('VariantManagement', () => {
     cy.get('@save').should('have.been.calledOnce');
     cy.findByText('Saved Variant:VariantItem 2');
 
-    cy.findByText('VariantItem 3').click();
+    cy.get('[ui5-list]').clickUi5ListItemByText('VariantItem 3');
     cy.findByText('Save', { timeout: 200 }).should('not.exist');
-    cy.findByText('VariantItem 1').click();
+    cy.get('[ui5-list]').clickUi5ListItemByText('VariantItem 1');
     cy.findByText('Save').should('be.visible');
-    cy.findByText('VariantItem 4').click();
+    cy.get('[ui5-list]').clickUi5ListItemByText('VariantItem 4');
     cy.findByText('Save').should('be.visible');
-    cy.findByText('VariantItem 5').click();
+    cy.get('[ui5-list]').clickUi5ListItemByText('VariantItem 5');
     cy.findByText('Save', { timeout: 200 }).should('not.exist');
-    cy.findByText('VariantItem 6').click();
+    cy.get('[ui5-list]').clickUi5ListItemByText('VariantItem 6');
     cy.findByText('Save').should('be.visible');
-    cy.findByText('VariantItem 7').click();
+    cy.get('[ui5-list]').clickUi5ListItemByText('VariantItem 7');
     cy.findByText('Save').should('be.visible');
 
     cy.mount(<TestComp onSave={save} dirtyStateText="Dirty state" />);
@@ -309,7 +314,7 @@ describe('VariantManagement', () => {
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.get('[ui5-li]').should('have.length', 11);
     cy.findByPlaceholderText('Search').typeIntoUi5Input('VariantItem 10');
-    cy.get('[ui5-li]').should('have.length', 1).should('have.text', 'VariantItem 10');
+    cy.get('[ui5-li]').should('have.length', 1).should('have.attr', 'text', 'VariantItem 10');
     cy.get('.ui5-input-clear-icon').click();
     cy.get('[ui5-li]').should('have.length', 11);
 
@@ -338,8 +343,9 @@ describe('VariantManagement', () => {
     );
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.findByText('VariantItem 1', { timeout: 200 }).should('not.exist');
-    cy.findAllByText('Favorite VariantItem').should('have.length', 2);
-    cy.findByText('Default VariantItem').should('be.visible');
+    cy.get('[ui5-li][text="Favorite VariantItem"]').should('be.visible');
+    cy.findByText('Favorite VariantItem').should('be.visible');
+    cy.get('[ui5-li][text="Default VariantItem"]').should('be.visible');
   });
 
   it('Hide variant props', () => {
@@ -529,13 +535,14 @@ describe('VariantManagement', () => {
         if (showOnlyFavorites) {
           if (labelReadOnly) {
             if (favorite || isDefault) {
-              cy.findAllByText(rowId).should('have.length', 2);
+              cy.findAllByText(rowId).should('be.visible');
+              cy.get(`[ui5-li][text="${rowId}"]`).should('exist').and('not.be.visible');
             } else {
               cy.findAllByText(rowId).should('have.length', 1);
             }
           } else {
             if (favorite || isDefault) {
-              cy.findAllByText(rowId).should('have.length', 1);
+              cy.get(`[ui5-li][text="${rowId}"]`).should('exist').and('not.be.visible');
               cy.get('@row').find('[ui5-input]').findShadowInput().should('have.value', rowId);
             } else {
               cy.findByText(rowId, { timeout: 100 }).should('not.exist');
@@ -544,9 +551,10 @@ describe('VariantManagement', () => {
           }
         } else {
           if (labelReadOnly) {
-            cy.findAllByText(rowId).should('have.length', 2);
+            cy.findAllByText(rowId).should('be.visible');
+            cy.get(`[ui5-li][text="${rowId}"]`).should('exist').and('not.be.visible');
           } else {
-            cy.findAllByText(rowId).should('have.length', 1);
+            cy.get(`[ui5-li][text="${rowId}"]`).should('exist').and('not.be.visible');
             cy.get('@row').find('[ui5-input]').findShadowInput().should('have.value', rowId);
           }
         }
@@ -737,15 +745,15 @@ describe('VariantManagement', () => {
     cy.findByText('Select Item3').click();
     cy.get('[ui5-title]').contains('Item3').should('be.visible').click();
     cy.get('[ui5-responsive-popover]').should('be.visible');
-    cy.get('[ui5-list]').contains('Item3').should('have.attr', 'selected', 'selected');
-    cy.findByText('Item1').click();
-    cy.get('[ui5-list]').contains('Item3').should('not.have.attr', 'selected');
-    cy.get('[ui5-list]').contains('Item1').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-li][text="Item3"]').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-list]').clickUi5ListItemByText('Item1');
+    cy.get('[ui5-li][text="Item3"]').should('not.have.attr', 'selected');
+    cy.get('[ui5-li][text="Item1"]').should('have.attr', 'selected', 'selected');
     cy.realPress('Escape');
     cy.findByText('Select Item5').click();
     cy.get('[ui5-title]').contains('Item5').should('be.visible').click();
-    cy.get('[ui5-list]').contains('Item1').should('not.have.attr', 'selected');
-    cy.get('[ui5-list]').contains('Item5').should('have.attr', 'selected', 'selected');
+    cy.get('[ui5-li][text="Item1"]').should('not.have.attr', 'selected');
+    cy.get('[ui5-li][text="Item5"]').should('have.attr', 'selected', 'selected');
   });
 
   cypressPassThroughTestsFactory(VariantManagement);
