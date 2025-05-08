@@ -196,7 +196,7 @@ Cypress.Commands.add('closeUi5PopupWithEsc', () => {
 
 Cypress.Commands.add('clickUi5ListItemByText', { prevSubject: 'optional' }, (subject, text) => {
   cy.document().then((doc) => {
-    const _subject = subject?.[0] || doc;
+    const _subject = (subject as Cypress.JQueryWithSelector<UI5Element>)?.[0] || doc;
     const li = _subject.querySelector(`[text="${text}"]`);
 
     if (li) {
