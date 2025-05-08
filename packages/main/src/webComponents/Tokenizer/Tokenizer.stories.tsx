@@ -77,7 +77,6 @@ export const WithLogic = {
         setSelectedCountries(selectedTokens);
       }
     };
-    console.log(selectedCountries);
     return (
       <>
         <Tokenizer {...args} onTokenDelete={handleTokenDelete} onSelectionChange={handleSelectionChange}>
