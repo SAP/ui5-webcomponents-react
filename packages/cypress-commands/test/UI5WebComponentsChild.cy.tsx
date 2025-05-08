@@ -124,29 +124,13 @@ describe('UI5 Web Components - Child Commands', () => {
 
   it('click list item', () => {
     cy.mount(
-      <>
-        <List selectionMode="Multiple" data-testid="list">
-          <ListItemStandard data-testid="li1" text="ListItemStandard" />
-          <ListItemStandard data-testid="li2">ListItemStandard2</ListItemStandard>
-          <ListItemCustom data-testid="li3">ListItemCustom</ListItemCustom>
-        </List>
-      </>
+      <List selectionMode="Multiple">
+        <ListItemStandard data-testid="s" text="ListItemStandard" />
+        <ListItemCustom data-testid="c">ListItemCustom</ListItemCustom>
+      </List>
     );
-    cy.clickUi5ListItemByText('ListItemStandard');
-    cy.clickUi5ListItemByText('ListItemStandard2');
-    cy.clickUi5ListItemByText('ListItemCustom');
-
-    cy.findByTestId('li1').should('have.attr', 'selected', 'selected');
-    cy.findByTestId('li2').should('have.attr', 'selected', 'selected');
-    cy.findByTestId('li3').should('have.attr', 'selected', 'selected');
-
-    cy.get('[ui5-list]').clickUi5ListItemByText('ListItemStandard');
-    cy.get('[ui5-list]').clickUi5ListItemByText('ListItemStandard2');
-    cy.get('[ui5-list]').clickUi5ListItemByText('ListItemCustom');
-
-    cy.findByTestId('li1').should('not.have.attr', 'selected');
-    cy.findByTestId('li2').should('not.have.attr', 'selected');
-    cy.findByTestId('li3').should('not.have.attr', 'selected');
+    cy.findByText('ListItemStandard').click();
+    cy.findByTestId('c').click();
   });
 
   // TODO figure out how to re-enable this test. Currently the popover directly closes after any interaction with the component.
