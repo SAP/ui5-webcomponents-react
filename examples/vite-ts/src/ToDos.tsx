@@ -31,9 +31,8 @@ function ToDos() {
                     type={ListItemType.Navigation}
                     additionalText={`${!todo.completed ? 'Not ' : ''}Completed`}
                     additionalTextState={todo.completed ? ValueState.Positive : ValueState.None}
-                  >
-                    {todo.title}
-                  </ListItemStandard>
+                    text={todo.title}
+                  />
                 );
               })}
             </List>
