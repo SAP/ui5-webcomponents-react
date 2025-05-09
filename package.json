@@ -64,7 +64,7 @@
     "@eslint/js": "^9.11.1",
     "@semantic-release/github": "^11.0.0",
     "@testing-library/cypress": "^10.0.0",
-    "@types/eslint__js": "^8.42.3",
+    "@types/eslint__js": "^9.0.0",
     "@types/jscodeshift": "^17.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.1",
