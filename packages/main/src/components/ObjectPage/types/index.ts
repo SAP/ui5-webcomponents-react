@@ -122,7 +122,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
   /**
    * Fired when a section is selected via the tab bar, before navigation occurs. To cancel navigation, call `event.preventDefault()` within the event handler.
    *
-   * __Note:__ This event is triggered every time a user selects a section, even if the section is already selected.
+   * __Note:__ This event is fired every time a user selects a section, even if the section is already selected.
    */
   onBeforeNavigate?: (event: Ui5CustomEvent<TabContainerDomRef, ObjectPageTabSelectEventDetail>) => void;
   /**
