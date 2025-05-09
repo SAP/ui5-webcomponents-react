@@ -120,7 +120,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   placeholder?: ReactNode;
   /**
-   * Fired when a section is selected via the tab bar. To cancel navigation, call `event.preventDefault()` within the event handler.
+   * Fired when a section is selected via the tab bar, before navigation occurs. To cancel navigation, call `event.preventDefault()` within the event handler.
    *
    * __Note:__ This event is triggered every time a user selects a section, even if the section is already selected.
    */
