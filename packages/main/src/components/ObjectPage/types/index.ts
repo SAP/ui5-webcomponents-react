@@ -120,9 +120,9 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    */
   placeholder?: ReactNode;
   /**
-   * The event is fired before the selected section is changed using the navigation. It can be aborted by the application with `preventDefault()`, which means that there will be no navigation.
+   * Fired when a section is selected via the tab bar. To cancel navigation, call `event.preventDefault()` within the event handler.
    *
-   * __Note:__ This event is only fired when navigating via tab-bar.
+   * __Note:__ This event is triggered every time a user selects a section, even if the section is already selected.
    */
   onBeforeNavigate?: (event: Ui5CustomEvent<TabContainerDomRef, ObjectPageTabSelectEventDetail>) => void;
   /**
