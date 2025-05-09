@@ -100,9 +100,12 @@ function AppShell() {
       >
         <List onSelectionChange={handleThemeSwitch} headerText="Change Theme" selectionMode={ListMode.Single}>
           {THEMES.map((theme) => (
-            <ListItemStandard key={theme.key} selected={currentTheme === theme.key} data-key={theme.key}>
-              {theme.value}
-            </ListItemStandard>
+            <ListItemStandard
+              key={theme.key}
+              selected={currentTheme === theme.key}
+              data-key={theme.key}
+              text={theme.value}
+            />
           ))}
         </List>
       </ResponsivePopover>
