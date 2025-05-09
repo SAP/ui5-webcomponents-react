@@ -71,6 +71,17 @@
       ]
     },
     {
+      "description": "root package React versions",
+      "extends": ["schedule:weekly"],
+      "semanticCommitType": "chore",
+      "groupName": "non-major React dependencies",
+      "groupSlug": "root-react-update",
+      "matchFileNames": ["package.json"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchBaseBranches": ["main"],
+      "matchPackageNames": ["react", "react-dom"]
+    },
+    {
       "description": "Example & Template dependencies",
       "extends": ["schedule:weekly"],
       "matchFileNames": ["examples/**", "templates/**"],
@@ -103,7 +114,6 @@
       "matchSourceUrls": ["https://github.com/SAP/ui5-webcomponents{/,}**"]
     },
     {
-      "extends": ["schedule:weekly"],
       "description": "V1 UI5WC/R dependency updates",
       "matchBaseBranches": ["v1.29.x"],
       "groupName": "Legacy Branch Updates",
