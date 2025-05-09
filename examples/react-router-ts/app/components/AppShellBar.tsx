@@ -63,9 +63,12 @@ export function AppShellBar() {
       <ResponsivePopover ref={popoverRef} className={classes.popover}>
         <List onSelectionChange={handleThemeSwitch} headerText="Change Theme" selectionMode={ListSelectionMode.Single}>
           {THEMES.map((theme) => (
-            <ListItemStandard key={theme.key} selected={currentTheme === theme.key} data-key={theme.key}>
-              {theme.value}
-            </ListItemStandard>
+            <ListItemStandard
+              key={theme.key}
+              selected={currentTheme === theme.key}
+              data-key={theme.key}
+              text={theme.value}
+            />
           ))}
         </List>
       </ResponsivePopover>
