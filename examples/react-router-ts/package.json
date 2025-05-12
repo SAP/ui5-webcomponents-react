@@ -11,8 +11,8 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@react-router/node": "^7.0.0",
-    "@react-router/serve": "^7.0.0",
+    "@react-router/node": "7.5.3",
+    "@react-router/serve": "7.5.3",
     "@ui5/webcomponents": "^2.10.0",
     "@ui5/webcomponents-base": "2.10.0",
     "@ui5/webcomponents-fiori": "^2.10.0",
@@ -21,10 +21,10 @@
     "isbot": "^5.1.17",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.0.0"
+    "react-router": "7.5.3"
   },
   "devDependencies": {
-    "@react-router/dev": "^7.0.0",
+    "@react-router/dev": "7.5.3",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "eslint": "^9.15.0",
