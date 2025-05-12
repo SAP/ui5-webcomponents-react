@@ -21,7 +21,7 @@
     "@ui5/webcomponents-react": "2.10.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-router": "7.5.3"
+    "react-router": "7.6.0"
   },
   "devDependencies": {
     "@types/react": "19.1.3",
