@@ -7,7 +7,7 @@ import type { Route } from './+types/index';
 export const meta: MetaFunction = () => {
   return [
     { title: 'UI5 Web Components React - React Router Example' },
-    { name: 'description', content: 'Welcome to this example!' }
+    { name: 'description', content: 'Welcome to this example!' },
   ];
 };
 

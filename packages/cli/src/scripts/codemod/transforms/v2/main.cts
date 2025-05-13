@@ -32,7 +32,7 @@ function addWebComponentsReactImport(j: JSCodeshift, root: Collection, importNam
 
   const importStatement = j.importDeclaration(
     [j.importSpecifier(j.identifier(importName), j.identifier(importName))],
-    j.literal('@ui5/webcomponents-react')
+    j.literal('@ui5/webcomponents-react'),
   );
 
   if (n) {
@@ -49,7 +49,7 @@ function extractValueFromProp(
   j: JSCodeshift,
   el: ASTPath<JSXElement>,
   componentName: string,
-  propName: string
+  propName: string,
 ): string | null {
   const prop = j(el).find(j.JSXAttribute, { name: { name: propName } });
 
@@ -126,7 +126,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
               .find(j.JSXOpeningElement)
               .get()
               .value.attributes.push(
-                j.jsxAttribute(j.jsxIdentifier('subComponentsBehavior'), j.stringLiteral('Visible'))
+                j.jsxAttribute(j.jsxIdentifier('subComponentsBehavior'), j.stringLiteral('Visible')),
               );
           }
           alwaysShowSubComponent.remove();
@@ -164,7 +164,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
         const sizeValues: string[] = [
           ['S', 'itemsPerPageS'],
           ['M', 'itemsPerPageM'],
-          ['L', 'itemsPerPageL']
+          ['L', 'itemsPerPageL'],
         ]
           .map(([key, prop]) => {
             const val = extractValueFromProp(j, el, componentName, prop);
@@ -180,7 +180,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
             .find(j.JSXOpeningElement)
             .get()
             .value.attributes.push(
-              j.jsxAttribute(j.jsxIdentifier('itemsPerPage'), j.stringLiteral(sizeValues.join(' ')))
+              j.jsxAttribute(j.jsxIdentifier('itemsPerPage'), j.stringLiteral(sizeValues.join(' '))),
             );
           isDirty = true;
         }
@@ -193,7 +193,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
           ['S', 'labelSpanS'],
           ['M', 'labelSpanM'],
           ['L', 'labelSpanL'],
-          ['XL', 'labelSpanXL']
+          ['XL', 'labelSpanXL'],
         ]
           .map(([key, prop]) => {
             const val = extractValueFromProp(j, el, componentName, prop);
@@ -216,7 +216,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
           ['S', 'columnsS'],
           ['M', 'columnsM'],
           ['L', 'columnsL'],
-          ['XL', 'columnsXL']
+          ['XL', 'columnsXL'],
         ]
           .map(([key, prop]) => {
             const val = extractValueFromProp(j, el, componentName, prop);
@@ -258,10 +258,10 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
             const labelComponent = j.jsxElement(
               j.jsxOpeningElement(j.jsxIdentifier('Label'), [], false),
               j.jsxClosingElement(j.jsxIdentifier('Label')),
-              [j.jsxText(value)]
+              [j.jsxText(value)],
             );
             label.replaceWith(
-              j.jsxAttribute(j.jsxIdentifier('labelContent'), j.jsxExpressionContainer(labelComponent))
+              j.jsxAttribute(j.jsxIdentifier('labelContent'), j.jsxExpressionContainer(labelComponent)),
             );
             isDirty = true;
           }
@@ -354,7 +354,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
           if (attr.value.value && attr.value.value.type === 'JSXExpressionContainer') {
             headerContent.forEach((el) => {
               const dynamicPageHeader = j(el).find(j.JSXElement, {
-                openingElement: { name: { name: 'DynamicPageHeader' } }
+                openingElement: { name: { name: 'DynamicPageHeader' } },
               });
 
               // remove DynamicPageHeader import only if no DynamicPage is there
@@ -387,7 +387,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
           if (attr.value.value && attr.value.value.type === 'JSXExpressionContainer') {
             headerTitle.forEach((el) => {
               const dynamicPageTitle = j(el).find(j.JSXElement, {
-                openingElement: { name: { name: 'DynamicPageTitle' } }
+                openingElement: { name: { name: 'DynamicPageTitle' } },
               });
 
               // remove DynamicPageTitle import only if no DynamicPage is there
@@ -485,7 +485,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
               .find(j.JSXOpeningElement)
               .get()
               .value.attributes.push(
-                j.jsxAttribute(j.jsxIdentifier('maxLines'), j.jsxExpressionContainer(j.numericLiteral(1)))
+                j.jsxAttribute(j.jsxIdentifier('maxLines'), j.jsxExpressionContainer(j.numericLiteral(1))),
               );
           }
           wrapping.remove();
@@ -549,7 +549,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       const importedFrom = importSpecifier.get().parentPath.parentPath.value.source.value;
       if (importedFrom === '@ui5/webcomponents-react') {
         importSpecifier.replaceWith(
-          j.importSpecifier(j.identifier(changes.newComponent), j.identifier(changes.newComponent))
+          j.importSpecifier(j.identifier(changes.newComponent), j.identifier(changes.newComponent)),
         );
       }
       isDirty = true;
@@ -569,7 +569,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
 
         const newImportDeclaration = j.importDeclaration(
           [j.importDefaultSpecifier(j.identifier(enumName))],
-          j.literal(newImport)
+          j.literal(newImport),
         );
 
         if (currentImportStatementsLength) {
@@ -602,7 +602,7 @@ export default function transform(file: FileInfo, api: API, options?: Options): 
       const enumValueToReplace = root
         .find(j.MemberExpression, {
           object: { name: changedEnum },
-          property: { name: oldValue }
+          property: { name: oldValue },
         })
         .find(j.Identifier, { name: oldValue });
 

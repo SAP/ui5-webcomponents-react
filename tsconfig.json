@@ -30,5 +30,5 @@
     }
   ],
   "files": ["vite.config.ts", "types.d.ts", "prettier.config.js"],
-  "include": [".storybook", "docs"]
+  "include": [".storybook", "docs", "config"]
 }

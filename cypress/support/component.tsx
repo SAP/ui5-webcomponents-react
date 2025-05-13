@@ -18,5 +18,5 @@ Cypress.on(
     if (resizeObserverLoopErrRe.test(err.message)) {
       return false;
     }
-  }
+  },
 );

@@ -60,5 +60,5 @@ const errorMessageItems = (count) => {
 export const generateMessageItems = (numberOfMessageTypes) => [
   ...informationMessageItems(numberOfMessageTypes.information),
   ...warningMessageItems(numberOfMessageTypes.warning),
-  ...errorMessageItems(numberOfMessageTypes.error)
+  ...errorMessageItems(numberOfMessageTypes.error),
 ];

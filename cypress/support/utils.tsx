@@ -15,7 +15,7 @@ export function cypressPassThroughTestsFactory(Component: ComponentType, props?:
         title="Tooltip"
         customattribute="true"
         {...props}
-      />
+      />,
     );
 
     cy.findByTitle('Tooltip').should('exist');
@@ -44,7 +44,7 @@ interface MountWithCustomTagNameOptions {
 export function mountWithCustomTagName<P extends { as?: keyof HTMLElementTagNameMap }>(
   Component: ComponentType<P>,
   props?: P,
-  options: MountWithCustomTagNameOptions = {}
+  options: MountWithCustomTagNameOptions = {},
 ) {
   const { testTitle = 'mount with custom tag name', defaultTagName, only, wrapperComponent } = options;
   const test = only ? it.only : it;
@@ -56,7 +56,7 @@ export function mountWithCustomTagName<P extends { as?: keyof HTMLElementTagName
       cy.mount(
         <Wrapper>
           <Component as={as} data-testid={testId} {...props} />
-        </Wrapper>
+        </Wrapper>,
       );
     } else {
       cy.mount(<Component as={as} data-testid={testId} {...props} />);
@@ -92,10 +92,10 @@ export function testChartLegendConfig(Component, props) {
         {...props}
         chartConfig={{
           legendConfig: {
-            formatter: (value) => <span data-testid="catval">{value}🐱</span>
-          }
+            formatter: (value) => <span data-testid="catval">{value}🐱</span>,
+          },
         }}
-      />
+      />,
     );
     cy.findAllByTestId('catval').should('be.visible');
   });

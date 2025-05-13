@@ -2,6 +2,8 @@ import { addons } from '@storybook/manager-api';
 import { Fiori4ReactTheme } from './theme';
 
 addons.setConfig({
+  //todo: check error
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   theme: Fiori4ReactTheme,
   /**
    * show story component as full screen
@@ -50,10 +52,10 @@ addons.setConfig({
     filters: {
       patterns: (item) => {
         return !item.tags.includes('excludeFromSidebar');
-      }
-    }
+      },
+    },
   },
   toolbar: {
-    'storybook/viewport': { hidden: true }
-  }
+    'storybook/viewport': { hidden: true },
+  },
 });

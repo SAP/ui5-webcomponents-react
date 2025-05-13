@@ -1,5 +1,11 @@
 *.module.css.ts
 *.css.ts
-yarn.lock
 
-/.nx/cache
+yarn.lock
+.next
+dist
+temp
+.out
+
+.nx/cache
+.nx/workspace-data

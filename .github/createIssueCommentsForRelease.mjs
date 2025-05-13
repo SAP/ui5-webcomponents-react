@@ -1,5 +1,5 @@
-import { success as issueCommenter } from '@semantic-release/github';
 import { readFileSync } from 'node:fs';
+import { success as issueCommenter } from '@semantic-release/github';
 
 const commitShaRegExp = /commit\/(?<sha>\w{40})/gm;
 
@@ -16,7 +16,7 @@ export default async function run({ github, context }) {
   const { data: release } = await github.request('GET /repos/{owner}/{repo}/releases/tags/{tag}', {
     owner: context.repo.owner,
     repo: context.repo.repo,
-    tag: `v${version}`
+    tag: `v${version}`,
   });
   release.url = release.html_url;
 
@@ -32,21 +32,21 @@ export default async function run({ github, context }) {
 
   const semanticReleaseContext = {
     options: {
-      repositoryUrl: `https://github.com/${context.repo.owner}/${context.repo.repo}`
+      repositoryUrl: `https://github.com/${context.repo.owner}/${context.repo.repo}`,
     },
     commits,
     nextRelease: {
-      version: `v${version}` // new release version
+      version: `v${version}`, // new release version
     },
     releases: [release], // current GitHub release
     logger: console,
-    env: process.env
+    env: process.env,
   };
 
   const Octokit = new Proxy(class {}, {
-    construct(target, argArray, newTarget) {
+    construct() {
       return github;
-    }
+    },
   });
 
   await issueCommenter({}, semanticReleaseContext, { Octokit });

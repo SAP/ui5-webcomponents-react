@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
         path: '/',
         element: <ToDos />,
         errorElement: <IllustratedMessage name={ErrorScreenIllustration} />,
-        loader: toDosLoader
+        loader: toDosLoader,
       },
       {
         path: 'todo/:id',
@@ -62,11 +62,11 @@ export const router = createBrowserRouter([
                 </BreadcrumbsItem>
               </>
             );
-          }
-        }
-      }
-    ]
-  }
+          },
+        },
+      },
+    ],
+  },
 ]);
 
 createRoot(document.getElementById('root') as HTMLElement).render(
@@ -74,5 +74,5 @@ createRoot(document.getElementById('root') as HTMLElement).render(
     <ThemeProvider>
       <RouterProvider router={router} />
     </ThemeProvider>
-  </StrictMode>
+  </StrictMode>,
 );

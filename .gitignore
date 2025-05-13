@@ -8,7 +8,6 @@ yarn-error.log
 .cache
 .out
 lerna-debug.log
-.awcache
 /temp
 *.tsbuildinfo
 

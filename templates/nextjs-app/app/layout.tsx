@@ -12,8 +12,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              theme: 'sap_horizon'
-            })
+              theme: 'sap_horizon',
+            }),
           }}
         />
       </head>

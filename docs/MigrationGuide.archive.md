@@ -858,8 +858,8 @@ import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles((context) => ({
   myClass: {
-    color: context.parameters.sapContent_LabelColor
-  }
+    color: context.parameters.sapContent_LabelColor,
+  },
 }));
 ```
 
@@ -871,16 +871,16 @@ import { ThemingParameters } from '@ui5/webcomponents-react-base';
 
 const useStyles = createUseStyles((context) => ({
   myClass: {
-    color: context.sapContent_LabelColor
-  }
+    color: context.sapContent_LabelColor,
+  },
 }));
 
 // as the `context` is now static and will always have the values from `ThemingParameters`,
 // you can also omit the function completely and use the `ThemingParameters` directly:
 const useStyles = createUseStyles({
   myClass: {
-    color: ThemingParameters.sapContent_LabelColor
-  }
+    color: ThemingParameters.sapContent_LabelColor,
+  },
 });
 ```
 
@@ -1089,7 +1089,7 @@ If you have the following `FilterItem` in your codebase
 <FilterItem
   filterItems={[
     { text: 'Text 1', key: '1' },
-    { text: 'Text 2', key: '2' }
+    { text: 'Text 2', key: '2' },
   ]}
   label="My Filter Item"
   key="filter_item"
@@ -1208,13 +1208,13 @@ const MyComponent = () => {
       datasets={[
         {
           label: 'Existing Customers',
-          data: [65, 59, 80]
+          data: [65, 59, 80],
         },
 
         {
           label: 'New Customers',
-          data: [5, 9, 8]
-        }
+          data: [5, 9, 8],
+        },
       ]}
     />
   );
@@ -1232,35 +1232,35 @@ const MyComponent = () => {
     <BarChart
       dimensions={[
         {
-          accessor: 'month'
-        }
+          accessor: 'month',
+        },
       ]}
       measures={[
         {
           accessor: 'existingCustomers',
-          label: 'Existing Customers'
+          label: 'Existing Customers',
         },
         {
           accessor: 'newCustomers',
-          label: 'New Customers'
-        }
+          label: 'New Customers',
+        },
       ]}
       dataset={[
         {
           month: 'January',
           existingCustomers: 65,
-          newCustomers: 5
+          newCustomers: 5,
         },
         {
           month: 'February',
           existingCustomers: 59,
-          newCustomers: 9
+          newCustomers: 9,
         },
         {
           month: 'March',
           existingCustomers: 80,
-          newCustomers: 8
-        }
+          newCustomers: 8,
+        },
       ]}
     />
   );

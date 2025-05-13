@@ -1,3 +1,6 @@
+import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
+import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import {
   Button,
   FlexBox,
@@ -7,11 +10,8 @@ import {
   Label,
   Link,
   Popover,
-  Text
+  Text,
 } from '@ui5/webcomponents-react';
-import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
-import PopoverPlacement from '@ui5/webcomponents/dist/types/PopoverPlacement.js';
-import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import BestRunLogo from '../../assets/SAP_Best_R_grad_blk_scrn.png';
@@ -88,6 +88,6 @@ export const Footer = ({ style }) => {
         </Text>
       </Popover>
     </footer>,
-    document.getElementById('storybook-docs')
+    document.getElementById('storybook-docs'),
   );
 };

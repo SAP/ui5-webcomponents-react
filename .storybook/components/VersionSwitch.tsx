@@ -74,6 +74,6 @@ addons.register(ADDON_ID, () => {
           </ui5-menu>
         </>
       );
-    }
+    },
   });
 });

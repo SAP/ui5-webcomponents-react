@@ -17,7 +17,7 @@ export const MAPPED_THEMES = [
   { value: 'sap_fiori_3', title: 'Quartz Light' },
   { value: 'sap_fiori_3_dark', title: 'Quartz Dark' },
   { value: 'sap_fiori_3_hcb', title: 'Quartz High Contrast Black' },
-  { value: 'sap_fiori_3_hcw', title: 'Quartz High Contrast White' }
+  { value: 'sap_fiori_3_hcw', title: 'Quartz High Contrast White' },
 ];
 
 export const excludePropsForAbstract = ['className', 'style'];
@@ -63,7 +63,7 @@ const replaceSubComps = {
   TableFeature: ['TableGrowing', 'TableSelection', 'TableVirtualizer', 'TableSelectionMulti', 'TableSelectionSingle'],
   SideNavigationItemBase: ['SideNavigationItem', 'SideNavigationGroup', 'SideNavigationSubItem'],
   TableRowActionBase: ['TableRowAction', 'TableRowActionNavigation'],
-  TableHeaderCellActionBase: ['TableHeaderCellActionAI']
+  TableHeaderCellActionBase: ['TableHeaderCellActionAI'],
 };
 
 function findSubComponentsRecursively(moduleName: string, cem: any): string[] {
