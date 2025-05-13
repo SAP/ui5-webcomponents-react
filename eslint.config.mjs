@@ -12,7 +12,7 @@ import tseslint from 'typescript-eslint';
 
 const ignorePatterns = {
   ignores: [
-    'generated',
+    'packages/ai/dist',
     'packages/base/dist',
     'packages/base/types',
     'packages/charts/dist',
@@ -23,6 +23,7 @@ const ignorePatterns = {
     'packages/main/src/i18n/i18n-defaults.ts',
     'packages/main/src/generated',
     'packages/cypress-commands/dist',
+    '**/generated',
     '**/scripts',
     '**/shared',
     '**/examples',
