@@ -50,7 +50,7 @@
     "@ui5/webcomponents-icons": "2.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "remark-gfm": "^4.0.0",
+    "remark-gfm": "4.0.1",
     "storybook": "8.6.12",
     "tocbot": "4.36.3"
   },
