@@ -6,7 +6,8 @@
     ":disableDependencyDashboard",
     ":automergePatch",
     ":enableVulnerabilityAlerts",
-    ":semanticCommits"
+    ":semanticCommits",
+    ":pinAllExceptPeerDependencies"
   ],
   "automerge": true,
   "platformAutomerge": true,
