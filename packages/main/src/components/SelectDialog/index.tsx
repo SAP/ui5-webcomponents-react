@@ -37,8 +37,16 @@ interface ListDomRefWithPrivateAPIs extends ListDomRef {
 }
 
 export interface SelectDialogPropTypes
-  extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children' | 'state'>,
+  extends Omit<DialogPropTypes, 'header' | 'headerText' | 'footer' | 'children' | 'state' | 'accessibleName'>,
     Pick<ListPropTypes, 'growing' | 'onLoadMore'> {
+  /**
+   * Defines the accessible name of the component.
+   *
+   * __Note:__ If not set, the dialog uses the `headerText` for its accessible name.
+   *
+   * @default undefined
+   */
+  accessibleName?: DialogPropTypes['accessibleName'];
   /**
    * Defines the list items of the component.
    *
@@ -132,6 +140,7 @@ export interface SelectDialogPropTypes
  */
 const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref) => {
   const {
+    accessibleName,
     open,
     children,
     className,
@@ -279,6 +288,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       onBeforeOpen={handleBeforeOpen}
       onOpen={handleAfterOpen}
       onBeforeClose={handleBeforeClose}
+      accessibleName={accessibleName ?? headerText}
     >
       <div className={classNames.headerContent} slot="header">
         {showClearButton && headerTextAlignCenter && (
