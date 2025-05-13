@@ -1,7 +1,7 @@
 const Modes = {
   CLIENT: 'client',
   WRAPPER: 'wrapper',
-  SSR: 'ssr'
+  SSR: 'ssr',
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -43,7 +43,7 @@ export default function (babel) {
             path.node.arguments = path.node.arguments.filter((item) => item.type !== 'ArrowFunctionExpression');
           }
         }
-      }
-    }
+      },
+    },
   };
 }

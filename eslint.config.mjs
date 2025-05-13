@@ -12,6 +12,7 @@ import tseslint from 'typescript-eslint';
 
 const ignorePatterns = {
   ignores: [
+    'generated',
     'packages/base/dist',
     'packages/base/types',
     'packages/charts/dist',
@@ -27,8 +28,8 @@ const ignorePatterns = {
     '**/examples',
     '**/templates',
     '**/*.module.css.ts',
-    '.yarn'
-  ]
+    '.yarn',
+  ],
 };
 
 const config = tseslint.config(
@@ -46,14 +47,14 @@ const config = tseslint.config(
   // eslint-plugin-react-hooks
   {
     plugins: {
-      'react-hooks': reactHooksPlugin
+      'react-hooks': reactHooksPlugin,
     },
-    rules: reactHooksPlugin.configs.recommended.rules
+    rules: reactHooksPlugin.configs.recommended.rules,
   },
   {
     languageOptions: {
       globals: {
-        ...globals.browser
+        ...globals.browser,
       },
 
       ecmaVersion: 'latest',
@@ -63,15 +64,15 @@ const config = tseslint.config(
         projectService: {
           allowDefaultProject: ['packages/*/postcss.config.mjs'],
           // eslint-disable-next-line camelcase
-          maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 1000
-        }
-      }
+          maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 1000,
+        },
+      },
     },
 
     settings: {
       react: {
-        version: 'detect'
-      }
+        version: 'detect',
+      },
     },
 
     rules: {
@@ -89,9 +90,9 @@ const config = tseslint.config(
             'sap_horizon',
             'sap_horizon_dark',
             'sap_horizon_hcb',
-            'sap_horizon_hcw'
-          ]
-        }
+            'sap_horizon_hcw',
+          ],
+        },
       ],
 
       'import/order': [
@@ -101,25 +102,25 @@ const config = tseslint.config(
 
           alphabetize: {
             order: 'asc',
-            caseInsensitive: true
-          }
-        }
+            caseInsensitive: true,
+          },
+        },
       ],
 
       'import/no-duplicates': 'error',
       'import/no-unresolved': 'off',
 
       // recommended eslint rules
-      'no-extra-boolean-cast': 'warn'
-    }
+      'no-extra-boolean-cast': 'warn',
+    },
   },
   {
     files: ['**/*.ts', '**/*.tsx'],
 
     settings: {
       'import/resolver': {
-        typescript: true
-      }
+        typescript: true,
+      },
     },
 
     rules: {
@@ -136,16 +137,16 @@ const config = tseslint.config(
       '@typescript-eslint/consistent-type-exports': [
         'error',
         {
-          fixMixedExportsWithInlineTypeSpecifier: false
-        }
+          fixMixedExportsWithInlineTypeSpecifier: false,
+        },
       ],
 
       '@typescript-eslint/consistent-type-imports': [
         'error',
         {
           prefer: 'type-imports',
-          fixStyle: 'separate-type-imports'
-        }
+          fixStyle: 'separate-type-imports',
+        },
       ],
 
       '@typescript-eslint/no-floating-promises': 'warn',
@@ -155,55 +156,55 @@ const config = tseslint.config(
         {
           varsIgnorePattern: '^_',
           argsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_'
-        }
+          caughtErrorsIgnorePattern: '^_',
+        },
       ],
 
       'import/named': 'off',
       'import/namespace': 'off',
       'import/default': 'off',
-      'import/no-named-as-default-member': 'off'
-    }
+      'import/no-named-as-default-member': 'off',
+    },
   },
   {
     files: ['**/*.mjs'],
-    ...tseslint.configs.disableTypeChecked
+    ...tseslint.configs.disableTypeChecked,
   },
   {
     files: [
       'packages/main/src/webComponents/*/index.tsx',
       'packages/compat/src/components/TableCell/index.tsx',
-      'packages/compat/src/components/TableGroupRow/index.tsx'
+      'packages/compat/src/components/TableGroupRow/index.tsx',
     ],
 
     rules: {
-      '@typescript-eslint/no-empty-object-type': 'off'
-    }
+      '@typescript-eslint/no-empty-object-type': 'off',
+    },
   },
   {
     files: [
       'packages/main/src/components/AnalyticalTable/defaults/**/*.tsx',
       'packages/main/src/components/AnalyticalTable/hooks/*.ts',
       'packages/main/src/components/AnalyticalTable/hooks/*.tsx',
-      'packages/main/src/components/AnalyticalTable/TableBody/VirtualTableBodyContainer.tsx'
+      'packages/main/src/components/AnalyticalTable/TableBody/VirtualTableBodyContainer.tsx',
     ],
 
     rules: {
-      'react/prop-types': 'off'
-    }
+      'react/prop-types': 'off',
+    },
   },
   {
     files: ['cypress/**/*'],
 
     rules: {
-      '@typescript-eslint/no-namespace': 'off'
-    }
+      '@typescript-eslint/no-namespace': 'off',
+    },
   },
   {
     files: ['**/*.cy.ts', '**/*.cy.tsx'],
 
     plugins: {
-      'no-only-tests': noOnlyTests
+      'no-only-tests': noOnlyTests,
     },
 
     rules: {
@@ -212,8 +213,8 @@ const config = tseslint.config(
       'react/no-unescaped-entities': 'off',
       '@typescript-eslint/unbound-method': 'warn',
       'react/display-name': 'off',
-      'no-only-tests/no-only-tests': 'error'
-    }
+      'no-only-tests/no-only-tests': 'error',
+    },
   },
 
   // Storybook
@@ -223,8 +224,8 @@ const config = tseslint.config(
     rules: {
       'react/prop-types': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
-      'react/no-unescaped-entities': 'off'
-    }
+      'react/no-unescaped-entities': 'off',
+    },
   },
 
   // no-restricted-imports rule for compat package
@@ -238,16 +239,16 @@ const config = tseslint.config(
             {
               name: '@ui5/webcomponents-react',
               message:
-                "Please use deep imports from @ui5/webcomponents-react. Example: import { Button } from '@ui5/webcomponents-react/dist/webComponents/Button/index.js';"
-            }
-          ]
-        }
-      ]
-    }
+                "Please use deep imports from @ui5/webcomponents-react. Example: import { Button } from '@ui5/webcomponents-react/dist/webComponents/Button/index.js';",
+            },
+          ],
+        },
+      ],
+    },
   },
 
   // prettier plugin must be the last entry in the config!
-  prettierPlugin
+  prettierPlugin,
 );
 
 export default config;
