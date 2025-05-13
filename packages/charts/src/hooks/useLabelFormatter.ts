@@ -8,6 +8,6 @@ export const useLabelFormatter = (primaryDimension) => {
       }
       return name;
     },
-    [primaryDimension]
+    [primaryDimension],
   );
 };

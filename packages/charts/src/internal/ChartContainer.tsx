@@ -18,7 +18,7 @@ addCustomCSSWithScoping(
 :host([data-component-name="ChartContainerBusyIndicator"]) .ui5-busy-indicator-busy-area:focus {
     border-radius: 0;
 }
-`
+`,
 );
 
 export interface ContainerProps extends CommonProps {
@@ -32,7 +32,7 @@ export interface ContainerProps extends CommonProps {
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { errorCount: number }> {
   state = {
-    errorCount: 0
+    errorCount: 0,
   };
 
   componentDidCatch() {

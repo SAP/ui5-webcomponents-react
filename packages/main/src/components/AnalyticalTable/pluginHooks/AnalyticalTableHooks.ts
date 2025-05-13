@@ -11,5 +11,5 @@ export {
   useManualRowSelect,
   useOnColumnResize,
   useOrderedMultiSort,
-  useRowDisableSelection
+  useRowDisableSelection,
 };

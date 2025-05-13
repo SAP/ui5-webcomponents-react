@@ -21,5 +21,5 @@ export const DefaultColumn: AnalyticalTableColumnDefinition = {
   RepeatedValue: RepeatedValue,
   PopIn: PopIn,
   Popover: ColumnHeaderModal,
-  popinDisplay: AnalyticalTablePopinDisplay.Block
+  popinDisplay: AnalyticalTablePopinDisplay.Block,
 };

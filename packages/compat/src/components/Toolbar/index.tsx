@@ -18,7 +18,7 @@ import {
   useEffect,
   useMemo,
   useRef,
-  useState
+  useState,
 } from 'react';
 import { ToolbarDesign } from '../../enums/ToolbarDesign.js';
 import { ToolbarStyle } from '../../enums/ToolbarStyle.js';
@@ -181,7 +181,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     design === ToolbarDesign.Solid && classNames.solid,
     design === ToolbarDesign.Transparent && classNames.transparent,
     design === ToolbarDesign.Info && classNames.info,
-    className
+    className,
   );
   const flatChildren = useMemo(() => {
     return flattenFragments(children, 10);
@@ -199,7 +199,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       const isSeparator = item?.type?.displayName === 'ToolbarSeparator';
       controlMetaData.current.push({
         ref: itemRef,
-        isSpacer
+        isSpacer,
       });
       if (!isSpacer && !isSeparator) {
         hasOnlySpacersOrSeparators = false;
@@ -222,7 +222,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
     if (hasOnlySpacersOrSeparators) {
       return enrichedChildren.filter(
         // @ts-expect-error: if type is not defined, it's not a separator or spacer
-        (item) => item?.type?.displayName !== 'ToolbarSpacer' && item?.type?.displayName === 'ToolbarSeparator'
+        (item) => item?.type?.displayName !== 'ToolbarSpacer' && item?.type?.displayName === 'ToolbarSeparator',
       );
     }
     return enrichedChildren;
@@ -241,13 +241,13 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       const isRtl = outerContainer.current?.matches(':dir(rtl)');
       if (isRtl) {
         setMinWidth(
-          `${lastElement.offsetParent.offsetWidth - lastElement.offsetLeft + OVERFLOW_BUTTON_WIDTH - spacerWidth}px`
+          `${lastElement.offsetParent.offsetWidth - lastElement.offsetLeft + OVERFLOW_BUTTON_WIDTH - spacerWidth}px`,
         );
       } else {
         setMinWidth(
           `${
             lastElement.offsetLeft + lastElement.getBoundingClientRect().width + OVERFLOW_BUTTON_WIDTH - spacerWidth
-          }px`
+          }px`,
         );
       }
     }, 200);
@@ -370,7 +370,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
       debouncedOverflowChange.current({
         toolbarElements,
         overflowElements,
-        target: outerContainer.current
+        target: outerContainer.current,
       });
     }
     return () => {
@@ -401,7 +401,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarPropTypes>((props, ref) => {
           Children.map(childrenWithRef, (item, index) => {
             if (index >= lastVisibleIndex + 1 && index > numberOfAlwaysVisibleItems - 1) {
               return cloneElement(item as ReactElement<CommonProps>, {
-                style: { visibility: 'hidden', position: 'absolute', pointerEvents: 'none' }
+                style: { visibility: 'hidden', position: 'absolute', pointerEvents: 'none' },
               });
             }
             return item;

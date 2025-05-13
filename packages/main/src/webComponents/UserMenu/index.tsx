@@ -3,7 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/UserMenu.js';
 import type {
   UserMenuItemClickEventDetail,
-  UserMenuOtherAccountClickEventDetail
+  UserMenuOtherAccountClickEventDetail,
 } from '@ui5/webcomponents-fiori/dist/UserMenu.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
@@ -198,8 +198,8 @@ const UserMenu = withWebComponent<UserMenuPropTypes, UserMenuDomRef>(
     'item-click',
     'manage-account-click',
     'open',
-    'sign-out-click'
-  ]
+    'sign-out-click',
+  ],
 );
 
 UserMenu.displayName = 'UserMenu';

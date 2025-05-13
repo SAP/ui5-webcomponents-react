@@ -8,5 +8,5 @@ export const brushProps = {
   y: 4,
   stroke: ThemingParameters.sapObjectHeader_BorderColor,
   travellerWidth: 10,
-  height: 20
+  height: 20,
 };

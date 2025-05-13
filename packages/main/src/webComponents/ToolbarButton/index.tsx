@@ -155,11 +155,11 @@ const ToolbarButton = withWebComponent<ToolbarButtonPropTypes, ToolbarButtonDomR
     'overflowPriority',
     'text',
     'tooltip',
-    'width'
+    'width',
   ],
   ['disabled', 'preventOverflowClosing'],
   [],
-  ['click']
+  ['click'],
 );
 
 ToolbarButton.displayName = 'ToolbarButton';

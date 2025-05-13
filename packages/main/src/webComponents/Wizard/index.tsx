@@ -120,7 +120,7 @@ const Wizard = withWebComponent<WizardPropTypes, WizardDomRef>(
   ['contentLayout'],
   [],
   [],
-  ['step-change']
+  ['step-change'],
 );
 
 Wizard.displayName = 'Wizard';

@@ -17,7 +17,7 @@ import {
   HIDE_FILTER_BAR,
   RESTORE,
   SEARCH,
-  SHOW_FILTER_BAR
+  SHOW_FILTER_BAR,
 } from '../../i18n/i18n-defaults.js';
 import type { ButtonDomRef, DialogDomRef, ToolbarButtonDomRef } from '../../webComponents/index.js';
 import { Button, Icon, Toolbar, ToolbarButton } from '../../webComponents/index.js';
@@ -124,7 +124,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
 
   const filterAreaClasses = clsx(
     classNames.filterArea,
-    showFilters && (!isPhone || (isPhone && hideToolbar)) ? classNames.filterAreaOpen : classNames.filterAreaClosed
+    showFilters && (!isPhone || (isPhone && hideToolbar)) ? classNames.filterAreaOpen : classNames.filterAreaClosed,
   );
 
   const handleToggle = (e) => {
@@ -137,7 +137,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const handleDialogSave = (e, selectionChangePayload, orderIds) => {
     const details = {
       ...selectionChangePayload,
-      reorderedFilterKeys: orderIds
+      reorderedFilterKeys: orderIds,
     };
     if (onFiltersDialogSave) {
       onFiltersDialogSave(enrichEventWithDetails(e, details));
@@ -177,7 +177,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
   const renderChildren = () => {
     const childProps: Partial<FilterGroupItemInternalProps & { 'data-with-toolbar'?: boolean }> = {
       considerGroupName,
-      ['data-with-toolbar']: !hideToolbar
+      ['data-with-toolbar']: !hideToolbar,
     };
     return (Children.toArray(children) as ReactElement<FilterGroupItemInternalProps>[])
       .filter((item) => {
@@ -207,7 +207,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
       source: 'filterBar',
       selectedFilterKeys: calculatedChildren.map((child) => `${child.props.filterKey}`),
       previousSelectedFilterKeys: null,
-      reorderedFilterKeys: null
+      reorderedFilterKeys: null,
     });
   };
 
@@ -385,7 +385,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
                   noTypeahead: true,
                   showClearIcon: true,
                   type: InputType.Search,
-                  icon: <Icon name={searchIcon} />
+                  icon: <Icon name={searchIcon} />,
                 })}
               </div>
             </FilterGroupItem>
@@ -397,7 +397,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
               <div
                 style={{
                   width: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
-                  minWidth: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px'
+                  minWidth: filterBarButtonsWidth ? `${filterBarButtonsWidth}px` : '120px',
                 }}
                 className={classNames.lastSpacer}
               >

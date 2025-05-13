@@ -10,7 +10,7 @@ import type {
   ShellBarProductSwitchClickEventDetail,
   ShellBarProfileClickEventDetail,
   ShellBarSearchButtonEventDetail,
-  ShellBarSearchFieldToggleEventDetail
+  ShellBarSearchFieldToggleEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
@@ -289,7 +289,7 @@ interface ShellBarPropTypes
    * | ❌|✅|
    */
   onContentItemVisibilityChange?: (
-    event: Ui5CustomEvent<ShellBarDomRef, ShellBarContentItemVisibilityChangeEventDetail>
+    event: Ui5CustomEvent<ShellBarDomRef, ShellBarContentItemVisibilityChangeEventDetail>,
   ) => void;
 
   /**
@@ -410,8 +410,8 @@ const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
     'product-switch-click',
     'profile-click',
     'search-button-click',
-    'search-field-toggle'
-  ]
+    'search-field-toggle',
+  ],
 );
 
 ShellBar.displayName = 'ShellBar';

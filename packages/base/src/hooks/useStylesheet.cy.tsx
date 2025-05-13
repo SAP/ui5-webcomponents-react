@@ -22,7 +22,7 @@ describe('useStyleSheet', () => {
       <>
         <CondRenderComp testid="1" />
         <CondRenderComp testid="2" />
-      </>
+      </>,
     );
     cy.findAllByText('Content').should('be.visible').and('have.length', 2);
     cy.findAllByText('Object Status').should('have.css', 'font-size', '0px');

@@ -25,7 +25,7 @@ const EXCLUDED_MEMBERS = new Set([
   'onExitDOM',
   'onInvalidation',
   'getStaticAreaItemDomRef',
-  'fireDecoratorEvent'
+  'fireDecoratorEvent',
 ]);
 
 function mergeArraysWithoutDuplicates(currentValues: any[], newValue: any) {
@@ -45,7 +45,7 @@ function getSuperClassDeclaration(declaration: CEM.ClassDeclaration) {
     if (mod) {
       return (
         (mod.declarations?.find(
-          (decl) => decl.name === declaration.superclass!.name
+          (decl) => decl.name === declaration.superclass!.name,
         ) as CEM.CustomElementDeclaration) ?? null
       );
     }
@@ -72,7 +72,7 @@ function resolveModule(mod: CEM.JavaScriptModule) {
         if (superClassFields) {
           customElementDeclaration[field] = superClassFields.reduce(
             mergeArraysWithoutDuplicates,
-            customElementDeclaration[field] ?? []
+            customElementDeclaration[field] ?? [],
           );
         }
       }

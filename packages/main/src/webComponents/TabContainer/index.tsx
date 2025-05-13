@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/TabContainer.js';
 import type {
   ITab,
   TabContainerMoveEventDetail,
-  TabContainerTabSelectEventDetail
+  TabContainerTabSelectEventDetail,
 } from '@ui5/webcomponents/dist/TabContainer.js';
 import type BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
 import type OverflowMode from '@ui5/webcomponents/dist/types/OverflowMode.js';
@@ -200,7 +200,7 @@ const TabContainer = withWebComponent<TabContainerPropTypes, TabContainerDomRef>
   ['contentBackgroundDesign', 'headerBackgroundDesign', 'overflowMode', 'tabLayout'],
   ['collapsed', 'noAutoSelection'],
   ['overflowButton', 'startOverflowButton'],
-  ['move-over', 'move', 'tab-select']
+  ['move-over', 'move', 'tab-select'],
 );
 
 TabContainer.displayName = 'TabContainer';

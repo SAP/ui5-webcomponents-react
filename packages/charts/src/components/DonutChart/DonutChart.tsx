@@ -14,7 +14,7 @@ const DonutChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     legendPosition: 'bottom',
     paddingAngle: 0,
     innerRadius: '50%',
-    ...props.chartConfig
+    ...props.chartConfig,
   };
 
   return <PieChart {...props} ref={ref} chartConfig={chartConfig} data-component-name="DonutChart" />;

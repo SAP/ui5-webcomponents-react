@@ -39,7 +39,7 @@ const ToolbarSelectOption = withWebComponent<ToolbarSelectOptionPropTypes, Toolb
   [],
   ['selected'],
   [],
-  []
+  [],
 );
 
 ToolbarSelectOption.displayName = 'ToolbarSelectOption';

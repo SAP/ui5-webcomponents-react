@@ -30,9 +30,9 @@ export enum CustomVariables {
   ToolbarFocusOutline = '--_ui5wcr_Toolbar_FocusOutline',
   ToolbarFocusShadow = '--_ui5wcr_Toolbar_FocusShadow',
   ScrollbarBorder = '--_ui5wcr_Scrollbar_Border',
-  ScrollbarBorderRadius = '--_ui5wcr_Scrollbar_BorderRadius'
+  ScrollbarBorderRadius = '--_ui5wcr_Scrollbar_BorderRadius',
 }
 
 export const CustomThemingParameters = new Proxy(CustomVariables, {
-  get: (target, prop: string): string => `var(${target[prop] as string})`
+  get: (target, prop: string): string => `var(${target[prop] as string})`,
 });

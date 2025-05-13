@@ -61,7 +61,7 @@ const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes, BreadcrumbsIt
   ['accessibleName', 'href', 'target'],
   [],
   [],
-  []
+  [],
 );
 
 BreadcrumbsItem.displayName = 'BreadcrumbsItem';

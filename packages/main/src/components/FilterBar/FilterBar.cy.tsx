@@ -8,7 +8,7 @@ import {
   Select,
   StepInput,
   Switch,
-  Token
+  Token,
 } from '../../webComponents/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import { VariantManagement } from '../VariantManagement/index.js';
@@ -37,7 +37,7 @@ describe('FilterBar.cy.tsx', () => {
             <Option>Option 4</Option>
           </Select>
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
 
     cy.findByText('Classification').should('be.visible');
@@ -65,7 +65,7 @@ describe('FilterBar.cy.tsx', () => {
             <Option>Option 4</Option>
           </Select>
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
 
     cy.findByText('Hide Filter Bar').should('not.exist');
@@ -84,7 +84,7 @@ describe('FilterBar.cy.tsx', () => {
         onFiltersDialogClose,
         onFiltersDialogCancel,
         onFiltersDialogSave,
-        onRestore
+        onRestore,
       } = props;
 
       const handleDialogOpen = (e) => {
@@ -176,7 +176,7 @@ describe('FilterBar.cy.tsx', () => {
         onFiltersDialogCancel={cancel}
         onFiltersDialogSave={save}
         onRestore={restore}
-      />
+      />,
     );
     cy.wait(100);
 
@@ -375,7 +375,7 @@ describe('FilterBar.cy.tsx', () => {
             <Option>Option 4</Option>
           </Select>
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
 
     cy.get('[text="Filters"]').click({ force: true });
@@ -414,7 +414,7 @@ describe('FilterBar.cy.tsx', () => {
             <Option>Option 4</Option>
           </Select>
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
 
     cy.findToolbarButtonByText('Go').should('be.visible');
@@ -434,7 +434,7 @@ describe('FilterBar.cy.tsx', () => {
             <Option>Option 4</Option>
           </Select>
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
 
     cy.findByText('Go').should('be.visible');
@@ -468,7 +468,7 @@ describe('FilterBar.cy.tsx', () => {
             <Option>Option 4</Option>
           </Select>
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
     cy.get('[text="Filters"]').click({ force: true });
     cy.get('[accessible-name="Group View"]').click();
@@ -511,7 +511,7 @@ describe('FilterBar.cy.tsx', () => {
         <FilterGroupItem label="Filter1" groupName="Group1" filterKey="0">
           <Input placeholder="Placeholder" />
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
     cy.get('[text="Go"]').click({ force: true });
     cy.get('@go').should('have.been.calledOnce');
@@ -536,7 +536,7 @@ describe('FilterBar.cy.tsx', () => {
         <FilterGroupItem label="B" data-testid="b" filterKey="0">
           <Input placeholder="Placeholder" />
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
 
     cy.get('[text="Filters (42)"]').click({ force: true });
@@ -591,7 +591,7 @@ describe('FilterBar.cy.tsx', () => {
         <FilterGroupItem label="Input" filterKey="0">
           <Input placeholder="Placeholder" />
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
 
     cy.get('[show-colon]').should('have.length', 1);
@@ -609,7 +609,7 @@ describe('FilterBar.cy.tsx', () => {
         <FilterGroupItem label="Input" filterKey="1">
           <Input placeholder="Placeholder" />
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
     cy.get('[ui5-input]').each(($el, index) => {
       if (index === 0) {
@@ -631,7 +631,7 @@ describe('FilterBar.cy.tsx', () => {
         <FilterGroupItem label="Empty Children" filterKey="1">
           <MultiComboBox />
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
     cy.get('[text="Filters"]').click({ force: true });
     cy.findByText('Show Values').click();
@@ -804,7 +804,7 @@ describe('FilterBar.cy.tsx', () => {
         <FilterGroupItem label="undefined false" hiddenInFilterBar filterKey="7">
           <StepInput />
         </FilterGroupItem>
-      </FilterBar>
+      </FilterBar>,
     );
 
     cy.findByText('undefined').should('be.visible');

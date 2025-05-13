@@ -2,14 +2,14 @@ import { usePrepareDimensionsAndMeasures } from './usePrepareDimensionsAndMeasur
 
 const dimensions = [
   {
-    accessor: 'a'
-  }
+    accessor: 'a',
+  },
 ];
 
 const measures = [
   {
-    accessor: 'b'
-  }
+    accessor: 'b',
+  },
 ];
 
 // eslint-disable-next-line react/prop-types
@@ -28,15 +28,15 @@ describe('useLabelFormatter', () => {
       dimensions: [
         {
           accessor: 'a',
-          reactKey: 'a'
-        }
+          reactKey: 'a',
+        },
       ],
       measures: [
         {
           accessor: 'b',
-          reactKey: 'b'
-        }
-      ]
+          reactKey: 'b',
+        },
+      ],
     });
   });
 
@@ -47,7 +47,7 @@ describe('useLabelFormatter', () => {
         onHookResult={result}
         dimensionOptions={{ dimensionDefault: true }}
         measureOptions={{ measureDefault: true }}
-      />
+      />,
     );
 
     cy.get('@result').should('have.been.calledWith', {
@@ -55,16 +55,16 @@ describe('useLabelFormatter', () => {
         {
           accessor: 'a',
           dimensionDefault: true,
-          reactKey: 'a'
-        }
+          reactKey: 'a',
+        },
       ],
       measures: [
         {
           accessor: 'b',
           measureDefault: true,
-          reactKey: 'b'
-        }
-      ]
+          reactKey: 'b',
+        },
+      ],
     });
   });
 
@@ -75,10 +75,10 @@ describe('useLabelFormatter', () => {
         onHookResult={result}
         dimensionOptions={{
           dimensionDefault: true,
-          accessor: 'I should not be in the result'
+          accessor: 'I should not be in the result',
         }}
         measureOptions={{ measureDefault: true, accessor: 'I should not be in the result' }}
-      />
+      />,
     );
 
     cy.get('@result').should('have.been.calledWith', {
@@ -86,16 +86,16 @@ describe('useLabelFormatter', () => {
         {
           accessor: 'a',
           dimensionDefault: true,
-          reactKey: 'a'
-        }
+          reactKey: 'a',
+        },
       ],
       measures: [
         {
           accessor: 'b',
           measureDefault: true,
-          reactKey: 'b'
-        }
-      ]
+          reactKey: 'b',
+        },
+      ],
     });
   });
 });

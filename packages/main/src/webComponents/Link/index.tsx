@@ -225,11 +225,11 @@ const Link = withWebComponent<LinkPropTypes, LinkDomRef>(
     'interactiveAreaSize',
     'target',
     'tooltip',
-    'wrappingType'
+    'wrappingType',
   ],
   ['disabled'],
   [],
-  ['click']
+  ['click'],
 );
 
 Link.displayName = 'Link';

@@ -20,7 +20,7 @@ import {
   UserSettingsView,
   CheckBox,
   Title,
-  RadioButton
+  RadioButton,
 } from '@ui5/webcomponents-react';
 import { useEffect, useRef, useState } from 'react';
 import { UserSettingsDialog } from './index.js';
@@ -30,9 +30,9 @@ const meta = {
   component: UserSettingsDialog,
   argTypes: {
     children: { control: { disable: true } },
-    fixedItems: { control: { disable: true } }
+    fixedItems: { control: { disable: true } },
   },
-  args: {}
+  args: {},
 } satisfies Meta<typeof UserSettingsDialog>;
 type Story = StoryObj<typeof meta>;
 export default meta;
@@ -243,5 +243,5 @@ export const Default: Story = {
         </UserSettingsDialog>
       </>
     );
-  }
+  },
 };

@@ -31,7 +31,7 @@ function resolveReferenceImport(reference: CEM.Reference | undefined): Reference
       isDefault: isDefaultExport,
       isType: exportedName === undefined,
       named: !isDefaultExport && exportedName !== undefined ? exportedName : false,
-      importSpecifier: `${reference.package}/${reference.module}`
+      importSpecifier: `${reference.package}/${reference.module}`,
     };
   }
   return null;

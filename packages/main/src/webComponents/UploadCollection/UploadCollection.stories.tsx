@@ -17,12 +17,12 @@ const meta = {
   component: UploadCollection,
   argTypes: {
     children: { control: { disable: true } },
-    header: { control: { disable: true } }
+    header: { control: { disable: true } },
   },
   args: {
-    selectionMode: ListSelectionMode.None
+    selectionMode: ListSelectionMode.None,
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof UploadCollection>;
 
 export default meta;
@@ -45,7 +45,7 @@ export const Default: Story = {
             uploadState={UploadState.Ready}
           >
             <Text>{`Last modified: ${file.lastModifiedDate} · Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
-          </UploadCollectionItem>
+          </UploadCollectionItem>,
         ]);
       });
     };
@@ -54,7 +54,7 @@ export const Default: Story = {
         {children}
       </UploadCollection>
     );
-  }
+  },
 };
 
 export const SimulateUpload: Story = {
@@ -70,7 +70,7 @@ export const SimulateUpload: Story = {
         }
       >
         <Text>Uploaded by: Susanne Schmitt · Uploaded On: 2019-04-20</Text>
-      </UploadCollectionItem>
+      </UploadCollectionItem>,
     ]);
     const handleDrop = (e) => {
       e.preventDefault();
@@ -86,7 +86,7 @@ export const SimulateUpload: Story = {
             thumbnail={<Icon name={documentIcon} />}
           >
             <Text>{`Last modified: ${file.lastModifiedDate} · Size: ${(file.size / 1000).toFixed(2)}KB`}</Text>
-          </UploadCollectionItem>
+          </UploadCollectionItem>,
         ]);
       });
     };
@@ -103,7 +103,7 @@ export const SimulateUpload: Story = {
                     const updatedChildren = [...prev];
                     updatedChildren[index] = cloneElement(prev[index], {
                       uploadState: UploadState.Uploading,
-                      progress: Math.min(progress, 100)
+                      progress: Math.min(progress, 100),
                     });
                     return updatedChildren;
                   });
@@ -113,13 +113,13 @@ export const SimulateUpload: Story = {
                     setChildren((prev) => {
                       const updatedChildren = [...prev];
                       updatedChildren[index] = cloneElement(prev[index], {
-                        uploadState: UploadState.Complete
+                        uploadState: UploadState.Complete,
                       });
                       return updatedChildren;
                     });
                   }
                 },
-                Math.floor(Math.random() * (1000 - 100 + 1)) + 100
+                Math.floor(Math.random() * (1000 - 100 + 1)) + 100,
               );
             };
             recTimeout();
@@ -140,5 +140,5 @@ export const SimulateUpload: Story = {
         {children}
       </UploadCollection>
     );
-  }
+  },
 };

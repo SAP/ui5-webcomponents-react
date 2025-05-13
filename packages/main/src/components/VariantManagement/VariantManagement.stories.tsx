@@ -24,8 +24,8 @@ const meta = {
   component: VariantManagement,
   args: {
     placement: PopoverPlacement.Bottom,
-    level: TitleLevel.H4
-  }
+    level: TitleLevel.H4,
+  },
 } satisfies Meta<typeof VariantManagement>;
 export default meta;
 
@@ -62,7 +62,7 @@ export const Default: Story = {
         </VariantItem>
       </VariantManagement>
     );
-  }
+  },
 };
 
 export const WithCustomValidation: Story = {
@@ -130,7 +130,7 @@ export const WithCustomValidation: Story = {
             ) : undefined,
             onInput: handleSaveViewInput,
             // @ts-expect-error: data- attributes are allowed on Input
-            'data-testid': 'alphanumeric'
+            'data-testid': 'alphanumeric',
           }}
         >
           {values[1]}
@@ -144,14 +144,14 @@ export const WithCustomValidation: Story = {
             valueStateMessage: valueStateManageViews ? <div>No more than 12 characters allowed!</div> : undefined,
             onInput: handleManageViewInput,
             // @ts-expect-error: data- attributes are allowed on Input
-            'data-testid': '12chars'
+            'data-testid': '12chars',
           }}
         >
           {values[2]}
         </VariantItem>
       </VariantManagement>
     );
-  }
+  },
 };
 
 export const WithFilterBarImplementation: Story = {
@@ -168,8 +168,8 @@ export const WithFilterBarImplementation: Story = {
       Standard: {
         selectedCountry: 'Indonesia',
         date: '',
-        selectedCodes: {}
-      }
+        selectedCodes: {},
+      },
     });
 
     const filterReducer = (state, action) => {
@@ -206,7 +206,7 @@ export const WithFilterBarImplementation: Story = {
         payload: e.detail.items.reduce((acc, cur) => {
           acc[cur.dataset.code] = true;
           return acc;
-        }, {})
+        }, {}),
       });
     };
 
@@ -263,7 +263,7 @@ export const WithFilterBarImplementation: Story = {
       const privateSelectedVariant = e.detail.selectedVariant.children;
       dispatchFiltersChange({
         type: 'changeVariant',
-        payload: initialVariantValues.current[privateSelectedVariant]
+        payload: initialVariantValues.current[privateSelectedVariant],
       });
       setSelectedVariant(privateSelectedVariant);
     };
@@ -369,5 +369,5 @@ export const WithFilterBarImplementation: Story = {
         </Form>
       </>
     );
-  }
+  },
 };

@@ -6,13 +6,13 @@ const meta = {
   title: 'Data Display / Title',
   component: Title,
   argTypes: {
-    children: { control: 'text' }
+    children: { control: 'text' },
   },
   args: {
     level: TitleLevel.H2,
-    children: 'Title Text'
+    children: 'Title Text',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Title>;
 
 export default meta;

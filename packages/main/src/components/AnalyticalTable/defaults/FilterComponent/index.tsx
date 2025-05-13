@@ -10,7 +10,7 @@ export const DefaultFilterComponent = ({ column, accessibleNameRef }: FilterProp
       // Setting the filter to `undefined` removes it
       column.setFilter(e.target.value || undefined);
     },
-    [column.setFilter]
+    [column.setFilter],
   );
 
   const handleKeyDown: InputPropTypes['onKeyDown'] = (e) => {

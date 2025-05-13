@@ -36,7 +36,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
     rowsLength,
     visibleRows,
     handleOnLoadMore,
-    classNames
+    classNames,
   } = props;
 
   const startY = useRef(null);
@@ -55,17 +55,17 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
       setMountTouchEvents(touchEvent);
       setIsDragging(true);
     },
-    [startY.current, setIsDragging]
+    [startY.current, setIsDragging],
   );
 
   const handleMove = useCallback(
     (e) => {
       setResizerPosition((prev) => ({
         ...prev,
-        top: isTouchEvent(e, 'touchmove') ? Math.round(e.touches[0].pageY) : e.pageY
+        top: isTouchEvent(e, 'touchmove') ? Math.round(e.touches[0].pageY) : e.pageY,
       }));
     },
-    [setResizerPosition]
+    [setResizerPosition],
   );
   const handleResizeEnd = useCallback(
     (e) => {
@@ -76,17 +76,17 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
           startY.current -
           extensionsHeight -
           5) /*resizer height*/ /
-          popInRowHeight
+          popInRowHeight,
       );
       if (hasPopInColumns) {
         dispatch({ type: 'INTERACTIVE_ROWS_HAVE_POPIN', payload: true });
       }
       dispatch({
         type: 'VISIBLE_ROWS',
-        payload: { visibleRows: rowCount }
+        payload: { visibleRows: rowCount },
       });
     },
-    [analyticalTableRef.current?.clientHeight, startY.current, extensionsHeight, internalRowHeight, dispatch]
+    [analyticalTableRef.current?.clientHeight, startY.current, extensionsHeight, internalRowHeight, dispatch],
   );
   useEffect(() => {
     const removeEventListeners = () => {
@@ -162,7 +162,7 @@ export const VerticalResizer = (props: VerticalResizerProps) => {
             className={classNames.verticalResizer}
             style={{ top: resizerPosition.top, left: resizerPosition.left, width: resizerPosition.width }}
           />,
-          document.body
+          document.body,
         )}
     </div>
   );

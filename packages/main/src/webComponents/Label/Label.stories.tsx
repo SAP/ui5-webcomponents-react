@@ -5,12 +5,12 @@ const meta = {
   title: 'Data Display / Label',
   component: Label,
   argTypes: {
-    children: { control: 'text' }
+    children: { control: 'text' },
   },
   args: {
-    children: 'Label Text'
+    children: 'Label Text',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Label>;
 
 export default meta;

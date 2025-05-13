@@ -224,11 +224,11 @@ const ListItemStandard = withWebComponent<ListItemStandardPropTypes, ListItemSta
     'text',
     'tooltip',
     'type',
-    'wrappingType'
+    'wrappingType',
   ],
   ['iconEnd', 'movable', 'navigated', 'selected'],
   ['deleteButton', 'image'],
-  ['detail-click']
+  ['detail-click'],
 );
 
 ListItemStandard.displayName = 'ListItemStandard';

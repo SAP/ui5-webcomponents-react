@@ -3,10 +3,10 @@ import { DonutChart } from './DonutChart.js';
 import { cypressPassThroughTestsFactory, testChartLegendConfig } from '@/cypress/support/utils';
 
 const dimension = {
-  accessor: 'name'
+  accessor: 'name',
 };
 const measure = {
-  accessor: 'users'
+  accessor: 'users',
 };
 
 describe('DonutChart', () => {
@@ -28,7 +28,7 @@ describe('DonutChart', () => {
         onDataPointClick={onClick}
         onLegendClick={onLegendClick}
         noAnimation
-      />
+      />,
     );
 
     cy.get('[name="January"]').eq(0).click({ force: true, waitForAnimations: true });
@@ -38,9 +38,9 @@ describe('DonutChart', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: Cypress.sinon.match({
-            payload: simpleDataSet[0]
-          })
-        })
+            payload: simpleDataSet[0],
+          }),
+        }),
       );
 
     cy.contains('January').click();
@@ -48,9 +48,9 @@ describe('DonutChart', () => {
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          dataKey: 'users'
-        })
-      })
+          dataKey: 'users',
+        }),
+      }),
     );
   });
 

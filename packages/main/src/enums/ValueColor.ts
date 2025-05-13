@@ -19,5 +19,5 @@ export enum ValueColor {
    * None value color.
    * _Note_: The None value color is set to prevent the display of tooltip 'Neutral' for numeric content.
    */
-  None = 'None'
+  None = 'None',
 }

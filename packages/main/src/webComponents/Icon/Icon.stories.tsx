@@ -19,18 +19,18 @@ const meta = {
   component: Icon,
   argTypes: {},
   args: {
-    name: employeeIcon
+    name: employeeIcon,
   },
   parameters: {
     docs: {
       description: {
         component:
           iconSummaryFormatter(description) +
-          '\n__Note:__ This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)'
-      }
-    }
+          '\n__Note:__ This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/playground/)',
+      },
+    },
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Icon>;
 
 export default meta;

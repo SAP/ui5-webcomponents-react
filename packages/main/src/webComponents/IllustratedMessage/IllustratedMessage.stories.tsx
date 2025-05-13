@@ -7,16 +7,16 @@ const meta = {
   title: 'User Feedback / IllustratedMessage',
   component: IllustratedMessage,
   args: {
-    name: IllustrationMessageType.BeforeSearch
+    name: IllustrationMessageType.BeforeSearch,
   },
   argTypes: {
     children: { control: false },
     subtitle: { control: false },
     name: {
       control: 'select',
-      options: Object.values(IllustrationMessageType)
-    }
-  }
+      options: Object.values(IllustrationMessageType),
+    },
+  },
 } satisfies Meta<typeof IllustratedMessage>;
 
 export default meta;

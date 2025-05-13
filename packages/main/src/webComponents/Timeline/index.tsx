@@ -91,7 +91,7 @@ const Timeline = withWebComponent<TimelinePropTypes, TimelineDomRef>(
   ['accessibleName', 'growing', 'layout', 'loadingDelay'],
   ['loading'],
   [],
-  ['load-more']
+  ['load-more'],
 );
 
 Timeline.displayName = 'Timeline';

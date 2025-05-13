@@ -195,11 +195,11 @@ const StepInput = withWebComponent<StepInputPropTypes, StepInputDomRef>(
     'step',
     'value',
     'valuePrecision',
-    'valueState'
+    'valueState',
   ],
   ['disabled', 'readonly', 'required'],
   ['valueStateMessage'],
-  ['change', 'input', 'value-state-change']
+  ['change', 'input', 'value-state-change'],
 );
 
 StepInput.displayName = 'StepInput';

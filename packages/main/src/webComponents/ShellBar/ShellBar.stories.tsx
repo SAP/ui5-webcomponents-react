@@ -14,7 +14,7 @@ const meta = {
     menuItems: { control: { disable: true } },
     profile: { control: { disable: true } },
     searchField: { control: { disable: true } },
-    startButton: { control: { disable: true } }
+    startButton: { control: { disable: true } },
   },
   args: {
     logo: <img src="https://sap.github.io/ui5-webcomponents/images/sap-logo-svg.svg" alt="SAP Logo" />,
@@ -36,9 +36,9 @@ const meta = {
     secondaryTitle: 'Secondary Title',
     showNotifications: true,
     showProductSwitch: true,
-    children: <ShellBarItem count="3" text={'ShellBarItem'} icon={addIcon} />
+    children: <ShellBarItem count="3" text={'ShellBarItem'} icon={addIcon} />,
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof ShellBar>;
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -84,7 +84,7 @@ const SuggestionItemGroup = withWebComponent<SuggestionItemGroupPropTypes, Sugge
   ['headerAccessibleName', 'headerText'],
   [],
   ['header'],
-  ['move-over', 'move']
+  ['move-over', 'move'],
 );
 
 SuggestionItemGroup.displayName = 'SuggestionItemGroup';

@@ -10,7 +10,7 @@ export function getCEM(packageName: string) {
     const customElementManifestPath = require.resolve(`${packageName}/dist/custom-elements-internal.json`);
 
     const customElementManifest: CEM.Package = JSON.parse(
-      readFileSync(customElementManifestPath, { encoding: 'utf-8' })
+      readFileSync(customElementManifestPath, { encoding: 'utf-8' }),
     );
     cache.set(packageName, customElementManifest);
   }

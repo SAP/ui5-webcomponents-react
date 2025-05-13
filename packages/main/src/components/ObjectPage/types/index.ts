@@ -8,7 +8,7 @@ import type { ObjectPageHeaderPropTypes } from '../../ObjectPageHeader/index.js'
 import type { ObjectPageSectionPropTypes } from '../../ObjectPageSection/index.js';
 import type {
   InternalProps as ObjectPageTitlePropTypesWithInternals,
-  ObjectPageTitlePropTypes
+  ObjectPageTitlePropTypes,
 } from '../../ObjectPageTitle/types/index.js';
 
 type ObjectPageSectionType = ReactElement<ObjectPageSectionPropTypes> | boolean;
@@ -129,7 +129,7 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
    * Fired when the selected section changes.
    */
   onSelectedSectionChange?: (
-    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>
+    event: CustomEvent<{ selectedSectionIndex: number; selectedSectionId: string; section: HTMLDivElement }>,
   ) => void;
   /**
    * Fired when the `headerArea` is expanded or collapsed.

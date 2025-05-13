@@ -8,7 +8,7 @@ const meta = {
   component: BarcodeScannerDialog,
   argTypes: {},
   args: {},
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof BarcodeScannerDialog>;
 
 export default meta;
@@ -41,5 +41,5 @@ export const Default: Story = {
         />
       </>
     );
-  }
+  },
 };

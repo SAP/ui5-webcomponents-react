@@ -7,7 +7,7 @@ const getColumnId = (column) => {
 
 function getHeaderProps(
   props: Record<string, unknown>,
-  { instance: { dispatch, state, columns, setColumnOrder, webComponentsReactProperties } }: { instance: TableInstance }
+  { instance: { dispatch, state, columns, setColumnOrder, webComponentsReactProperties } }: { instance: TableInstance },
 ) {
   const { columnOrder, columnResizing, isRtl, dndColumn } = state;
   const { onColumnsReorder } = webComponentsReactProperties;
@@ -54,8 +54,8 @@ function getHeaderProps(
       onColumnsReorder(
         enrichEventWithDetails(e, {
           columnsNewOrder,
-          column: columns[draggedColIdx]
-        })
+          column: columns[draggedColIdx],
+        }),
       );
     }
   };
@@ -68,8 +68,8 @@ function getHeaderProps(
       onDragOver: handleDragOver,
       onDragEnd: handleOnDragEnd,
       onDrop: handleOnDrop,
-      dragOver: dndColumn === props.id
-    }
+      dragOver: dndColumn === props.id,
+    },
   ];
 }
 

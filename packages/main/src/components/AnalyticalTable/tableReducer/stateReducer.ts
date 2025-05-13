@@ -22,9 +22,9 @@ export const stateReducer = (state, action, _prevState, instance: TableInstance)
         ...state.columnResizing,
         columnWidths: {
           ...state.columnResizing.columnWidths,
-          ...newColumnWidths
-        }
-      }
+          ...newColumnWidths,
+        },
+      },
     };
   }
   switch (action.type) {
@@ -32,7 +32,7 @@ export const stateReducer = (state, action, _prevState, instance: TableInstance)
       instance.webComponentsReactProperties.onFilter({
         filters: state.filters,
         value: action.filterValue,
-        columnId: action.columnId
+        columnId: action.columnId,
       });
       return state;
     case 'toggleRowExpanded':
@@ -40,7 +40,7 @@ export const stateReducer = (state, action, _prevState, instance: TableInstance)
       if (!state.expanded[action.id]) {
         instance.dispatch({
           type: 'ROW_COLLAPSED_FLAG',
-          payload: true
+          payload: true,
         });
       }
       return state;
@@ -81,9 +81,9 @@ export const stateReducer = (state, action, _prevState, instance: TableInstance)
           ...state.columnResizing,
           columnWidths: {
             ...state.columnResizing.columnWidths,
-            ...payload
-          }
-        }
+            ...payload,
+          },
+        },
       };
     default:
       return state;

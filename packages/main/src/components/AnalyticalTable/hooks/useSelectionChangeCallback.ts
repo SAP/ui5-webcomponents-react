@@ -23,7 +23,7 @@ export const useSelectionChangeCallback = (hooks: ReactTableHooks) => {
             rowsById: _rowsById,
             isSelected: row?.isSelected,
             allRowsSelected: false,
-            selectedRowIds
+            selectedRowIds,
           };
 
           if (webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.Multiple) {
@@ -37,8 +37,8 @@ export const useSelectionChangeCallback = (hooks: ReactTableHooks) => {
                 enrichEventWithDetails(e, {
                   rowsById: payload.rowsById,
                   allRowsSelected: payload.allRowsSelected,
-                  selectedRowIds: payload.selectedRowIds
-                })
+                  selectedRowIds: payload.selectedRowIds,
+                }),
               );
               return;
             }

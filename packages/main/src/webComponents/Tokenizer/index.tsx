@@ -3,7 +3,7 @@
 import '@ui5/webcomponents/dist/Tokenizer.js';
 import type {
   TokenizerSelectionChangeEventDetail,
-  TokenizerTokenDeleteEventDetail
+  TokenizerTokenDeleteEventDetail,
 } from '@ui5/webcomponents/dist/Tokenizer.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
@@ -124,7 +124,7 @@ const Tokenizer = withWebComponent<TokenizerPropTypes, TokenizerDomRef>(
   ['accessibleName', 'accessibleNameRef'],
   ['disabled', 'multiLine', 'readonly', 'showClearAll'],
   [],
-  ['selection-change', 'token-delete']
+  ['selection-change', 'token-delete'],
 );
 
 Tokenizer.displayName = 'Tokenizer';

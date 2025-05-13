@@ -108,7 +108,7 @@ const ResponsiveGridLayout = forwardRef<HTMLDivElement, ResponsiveGridLayoutProp
           '--_ui5wcr-rgl-column-span-m': columnSpanM,
           '--_ui5wcr-rgl-column-span-l': columnSpanL,
           '--_ui5wcr-rgl-column-span-xl': columnSpanXL,
-          ...style
+          ...style,
         } as CSSProperties
       }
       {...rest}

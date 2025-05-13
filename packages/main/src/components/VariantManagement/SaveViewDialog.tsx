@@ -13,7 +13,7 @@ import {
   SET_AS_DEFAULT,
   SPECIFY_VIEW_NAME,
   VARIANT_MANAGEMENT_ERROR_DUPLICATE,
-  VIEW
+  VIEW,
 } from '../../i18n/i18n-defaults.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
@@ -46,7 +46,7 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
     showSetAsDefault,
     variantNames,
     saveViewInputProps,
-    onSaveViewCancel
+    onSaveViewCancel,
   } = props;
   const saveViewDialogRef = useRef<DialogDomRef | null>(null);
   const inputRef = useRef(undefined);
@@ -121,8 +121,8 @@ export const SaveViewDialog = (props: SaveViewDialogPropTypes) => {
           isDefault,
           global: isPublic,
           applyAutomatically,
-          isInvalid
-        })
+          isInvalid,
+        }),
       );
     }
     setIsInvalid(false);

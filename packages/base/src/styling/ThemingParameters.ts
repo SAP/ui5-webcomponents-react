@@ -1528,5 +1528,5 @@ export const ThemingParameters = {
   sapBreakpoint_S_Min: 'var(--sapBreakpoint_S_Min)',
   sapBreakpoint_M_Min: 'var(--sapBreakpoint_M_Min)',
   sapBreakpoint_L_Min: 'var(--sapBreakpoint_L_Min)',
-  sapBreakpoint_XL_Min: 'var(--sapBreakpoint_XL_Min)'
+  sapBreakpoint_XL_Min: 'var(--sapBreakpoint_XL_Min)',
 };

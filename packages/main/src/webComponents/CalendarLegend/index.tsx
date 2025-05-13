@@ -58,7 +58,7 @@ const CalendarLegend = withWebComponent<CalendarLegendPropTypes, CalendarLegendD
   [],
   ['hideNonWorkingDay', 'hideSelectedDay', 'hideToday', 'hideWorkingDay'],
   [],
-  []
+  [],
 );
 
 CalendarLegend.displayName = 'CalendarLegend';

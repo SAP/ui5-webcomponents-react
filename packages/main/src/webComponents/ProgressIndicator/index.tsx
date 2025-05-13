@@ -69,7 +69,7 @@ const ProgressIndicator = withWebComponent<ProgressIndicatorPropTypes, ProgressI
   ['accessibleName', 'displayValue', 'value', 'valueState'],
   ['hideValue'],
   [],
-  []
+  [],
 );
 
 ProgressIndicator.displayName = 'ProgressIndicator';

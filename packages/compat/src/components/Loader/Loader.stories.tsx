@@ -16,8 +16,8 @@ const meta = {
   argTypes: {},
   args: {
     type: LoaderType.Indeterminate,
-    progress: '60%'
-  }
+    progress: '60%',
+  },
 } satisfies Meta<typeof Loader>;
 
 export default meta;
@@ -66,5 +66,5 @@ export const WithCard: Story = {
         </FlexBox>
       </Card>
     );
-  }
+  },
 };

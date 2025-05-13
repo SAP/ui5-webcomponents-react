@@ -117,7 +117,7 @@ const Tag = withWebComponent<TagPropTypes, TagDomRef>(
   ['colorScheme', 'design', 'size', 'wrappingType'],
   ['hideStateIcon', 'interactive'],
   ['icon'],
-  ['click']
+  ['click'],
 );
 
 Tag.displayName = 'Tag';

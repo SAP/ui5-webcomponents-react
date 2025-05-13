@@ -41,7 +41,7 @@ export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: use
         const currentHeader = columns.find((item) => item.id === isResizingColumn);
         debouncedEvent({
           columnWidth: columnWidths[isResizingColumn],
-          header: currentHeader
+          header: currentHeader,
         });
       }
     }, [columnResizing, options?.liveUpdate, columns]);
@@ -61,7 +61,7 @@ export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: use
         if (!isResizingColumn && prevHeaderIsResizing.current) {
           callback({
             columnWidth: columnWidths[prevHeaderIsResizing.current],
-            header: currentHeader
+            header: currentHeader,
           });
         }
       }

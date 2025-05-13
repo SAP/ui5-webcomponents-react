@@ -13,5 +13,5 @@ export {
   useSyncRef,
   useViewportRange,
   useStylesheet,
-  useCurrentTheme
+  useCurrentTheme,
 };

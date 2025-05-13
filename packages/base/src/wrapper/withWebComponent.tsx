@@ -32,7 +32,7 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
   regularProperties: string[],
   booleanProperties: string[],
   slotProperties: string[],
-  eventProperties: string[]
+  eventProperties: string[],
 ) => {
   const webComponentsSupported = parseSemVer(version).major >= 19;
   // displayName will be assigned in the individual files
@@ -98,8 +98,8 @@ export const withWebComponent = <Props extends Record<string, any>, RefType = Ui
           slottedChildren.push(
             cloneElement<Partial<HTMLElement>>(element, {
               key: element.key ?? `${name}-${index}`,
-              slot: name
-            })
+              slot: name,
+            }),
           );
           index++;
         }

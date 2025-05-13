@@ -32,7 +32,7 @@ const ComboBoxItem = withWebComponent<ComboBoxItemPropTypes, ComboBoxItemDomRef>
   ['additionalText', 'text'],
   [],
   [],
-  []
+  [],
 );
 
 ComboBoxItem.displayName = 'ComboBoxItem';

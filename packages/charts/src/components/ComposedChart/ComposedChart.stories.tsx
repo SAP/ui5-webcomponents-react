@@ -7,11 +7,11 @@ const meta = {
   component: ComposedChart,
   argTypes: {
     dataset: {
-      control: { disable: true }
+      control: { disable: true },
     },
     children: {
-      control: { disable: true }
-    }
+      control: { disable: true },
+    },
   },
   args: {
     dataset: complexDataSet,
@@ -19,29 +19,29 @@ const meta = {
       {
         accessor: 'name',
         formatter: (d) => `${d} 2019`,
-        interval: 0
-      }
+        interval: 0,
+      },
     ],
     measures: [
       {
         accessor: 'sessions',
         label: 'Active Sessions',
-        type: 'bar'
+        type: 'bar',
       },
       {
         accessor: 'users',
         label: 'Users',
         formatter: (val) => val.toLocaleString(),
-        type: 'area'
+        type: 'area',
       },
       {
         accessor: 'volume',
         label: 'Vol.',
         formatter: (val) => `${val} sessions`,
-        type: 'line'
-      }
-    ]
-  }
+        type: 'line',
+      },
+    ],
+  },
 } satisfies Meta<typeof ComposedChart>;
 
 export default meta;
@@ -53,8 +53,8 @@ export const WithCustomColor: Story = {
   args: {
     dataset: simpleDataSet,
     dimensions: [{ accessor: 'name' }],
-    measures: [{ accessor: 'users', color: 'red', type: 'bar' }]
-  }
+    measures: [{ accessor: 'users', color: 'red', type: 'bar' }],
+  },
 };
 
 export const WithDataLabels: Story = {
@@ -62,25 +62,25 @@ export const WithDataLabels: Story = {
     measures: [
       {
         accessor: 'users',
-        type: 'area'
+        type: 'area',
       },
       {
         accessor: 'sessions',
         type: 'bar',
-        opacity: 0.6
+        opacity: 0.6,
       },
       {
         accessor: 'volume',
-        type: 'line'
-      }
+        type: 'line',
+      },
     ],
     chartConfig: {
       zoomingTool: true,
       secondYAxis: {
-        dataKey: 'sessions'
-      }
-    }
-  }
+        dataKey: 'sessions',
+      },
+    },
+  },
 };
 
 export const WithFormatter: Story = {
@@ -93,21 +93,21 @@ export const WithFormatter: Story = {
         type: 'bar',
         label: 'number of users',
         stackId: 'A',
-        width: 30
+        width: 30,
       },
       {
         accessor: 'sessions',
         type: 'bar',
         stackId: 'A',
-        width: 30
+        width: 30,
       },
       {
         accessor: 'volume',
         type: 'line',
-        width: 2
-      }
-    ]
-  }
+        width: 2,
+      },
+    ],
+  },
 };
 
 export const WithReferenceLine: Story = {
@@ -117,26 +117,26 @@ export const WithReferenceLine: Story = {
       referenceLine: {
         color: 'red',
         label: 'MAX',
-        value: 650
-      }
+        value: 650,
+      },
     },
     dataset: bigDataSet,
     measures: [
       {
         accessor: 'users',
         type: 'bar',
-        width: 2
+        width: 2,
       },
       {
         accessor: 'sessions',
-        type: 'line'
+        type: 'line',
       },
       {
         accessor: 'volume',
-        type: 'line'
-      }
-    ]
-  }
+        type: 'line',
+      },
+    ],
+  },
 };
 
 export const WithHighlightedMeasures: Story = {
@@ -145,8 +145,8 @@ export const WithHighlightedMeasures: Story = {
       {
         accessor: 'name',
         formatter: (d) => `${d} 2019`,
-        interval: 0
-      }
+        interval: 0,
+      },
     ],
     measures: [
       {
@@ -157,22 +157,22 @@ export const WithHighlightedMeasures: Story = {
           if (value > 400) {
             return 'red';
           }
-        }
+        },
       },
       {
         accessor: 'users',
         label: 'Users',
         formatter: (val) => val.toLocaleString(),
-        type: 'area'
+        type: 'area',
       },
       {
         accessor: 'volume',
         label: 'Vol.',
         formatter: (val) => `${val} sessions`,
-        type: 'line'
-      }
-    ]
-  }
+        type: 'line',
+      },
+    ],
+  },
 };
 
 export const WithFormattedSecondaryAxis: Story = {
@@ -180,34 +180,34 @@ export const WithFormattedSecondaryAxis: Story = {
     measures: [
       {
         accessor: 'volume',
-        type: 'line'
+        type: 'line',
       },
       {
         accessor: 'sessions',
         type: 'bar',
         opacity: 0.6,
-        formatter: (e) => '$' + e
-      }
+        formatter: (e) => '$' + e,
+      },
     ],
     chartConfig: {
       zoomingTool: true,
       secondYAxis: {
-        dataKey: 'sessions'
-      }
-    }
-  }
+        dataKey: 'sessions',
+      },
+    },
+  },
 };
 
 export const LoadingPlaceholder: Story = {
   args: {
-    dataset: []
-  }
+    dataset: [],
+  },
 };
 
 export const WithCustomTooltipConfig: Story = {
-  args: tooltipConfig
+  args: tooltipConfig,
 };
 
 export const WithCustomLegendConfig: Story = {
-  args: legendConfig
+  args: legendConfig,
 };

@@ -7,16 +7,16 @@ import { getBy } from '../util/index.js';
 type DisableRowSelectionType = string | ((row: Record<any, any>) => boolean);
 
 const customCheckBoxStyling = {
-  verticalAlign: 'middle'
+  verticalAlign: 'middle',
 };
 
 const headerProps = (
   props,
   {
     instance: {
-      webComponentsReactProperties: { selectionMode }
-    }
-  }: { instance: TableInstance }
+      webComponentsReactProperties: { selectionMode },
+    },
+  }: { instance: TableInstance },
 ) => {
   if (
     props.key === 'header___ui5wcr__internal_selection_column' &&
@@ -54,7 +54,7 @@ const columns = (columns: TableInstance['columns']) => {
           }
           return column.Cell(instance);
         },
-        Header: () => null
+        Header: () => null,
       };
     }
     return column;
@@ -110,7 +110,7 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
         onClick: handleClick,
         onKeyDown,
         onKeyUp,
-        className: webComponentsReactProperties.classes.tr
+        className: webComponentsReactProperties.classes.tr,
       };
     }
     return rowProps;
@@ -122,7 +122,7 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
 
   const cellProps = (
     cellProps,
-    { cell: { row, column }, instance }: { cell: TableInstance['cell']; instance: TableInstance }
+    { cell: { row, column }, instance }: { cell: TableInstance['cell']; instance: TableInstance },
   ) => {
     const { selectionMode, selectionBehavior } = instance.webComponentsReactProperties;
     if (

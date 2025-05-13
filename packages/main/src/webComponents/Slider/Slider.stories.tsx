@@ -5,10 +5,10 @@ const meta = {
   title: 'Inputs / Slider',
   component: Slider,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {},
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Slider>;
 
 export default meta;

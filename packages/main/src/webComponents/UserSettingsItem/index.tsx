@@ -120,7 +120,7 @@ const UserSettingsItem = withWebComponent<UserSettingsItemPropTypes, UserSetting
   ['accessibleName', 'headerText', 'icon', 'loadingReason', 'text', 'tooltip'],
   ['disabled', 'loading', 'selected'],
   ['pages'],
-  ['selection-change']
+  ['selection-change'],
 );
 
 UserSettingsItem.displayName = 'UserSettingsItem';

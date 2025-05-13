@@ -38,7 +38,7 @@ const FilterItemOption = withWebComponent<FilterItemOptionPropTypes, FilterItemO
   ['text'],
   ['selected'],
   [],
-  []
+  [],
 );
 
 FilterItemOption.displayName = 'FilterItemOption';

@@ -306,11 +306,11 @@ const Input = withWebComponent<InputPropTypes, InputDomRef>(
     'placeholder',
     'type',
     'value',
-    'valueState'
+    'valueState',
   ],
   ['disabled', 'noTypeahead', 'open', 'readonly', 'required', 'showClearIcon', 'showSuggestions'],
   ['icon', 'valueStateMessage'],
-  ['change', 'close', 'input', 'open', 'select', 'selection-change']
+  ['change', 'close', 'input', 'open', 'select', 'selection-change'],
 );
 
 Input.displayName = 'Input';

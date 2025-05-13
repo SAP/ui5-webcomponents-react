@@ -1,7 +1,7 @@
 import {
   getCustomElementsScopingSuffix,
   getEffectiveScopingSuffixForTag,
-  getScopedVarName
+  getScopedVarName,
 } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import type { ReactNode } from 'react';
 import { Children, cloneElement, Fragment } from 'react';

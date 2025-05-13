@@ -14,7 +14,7 @@ describe('useTooltipFormatter', () => {
         value={100}
         name={'value'}
         options={{ dataKey: 'test' }}
-      />
+      />,
     );
     cy.findByText('100').should('be.visible');
   });
@@ -26,7 +26,7 @@ describe('useTooltipFormatter', () => {
         value={100}
         name={'value'}
         options={{ dataKey: 'test' }}
-      />
+      />,
     );
     cy.findByText('100').should('be.visible');
   });
@@ -38,7 +38,7 @@ describe('useTooltipFormatter', () => {
         value={100}
         name={'value'}
         options={{ dataKey: 'test' }}
-      />
+      />,
     );
     cy.findByText('10').should('be.visible');
   });

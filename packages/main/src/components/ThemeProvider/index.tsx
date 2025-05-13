@@ -17,7 +17,7 @@ const InternalUI5WCVVarNames = {
   '--_ui5wcr_card_header_focus_border': `var(${getScopedVarName('--_ui5_card_header_focus_border')})`,
   '--_ui5wcr_card_header_focus_radius': `var(${getScopedVarName('--_ui5_card_header_focus_radius')})`,
   '--_ui5wcr_card_header_focus_bottom_radius': `var(${getScopedVarName('--_ui5_card_header_focus_bottom_radius')})`,
-  '--_ui5wcr_popup_header_font_family': `var(${getScopedVarName('--_ui5_popup_header_font_family')})`
+  '--_ui5wcr_popup_header_font_family': `var(${getScopedVarName('--_ui5_popup_header_font_family')})`,
 };
 
 const ui5WcVariablesStyle = `:root {${Object.entries(InternalUI5WCVVarNames)
@@ -88,7 +88,7 @@ const ThemeProvider: FC<ThemeProviderPropTypes> = (props: ThemeProviderPropTypes
     _versionInfoInjected = true;
     return () => {
       globalThis['@ui5/webcomponents-react'].Runtimes = globalThis['@ui5/webcomponents-react'].Runtimes.filter(
-        (info) => info !== VersionInfo
+        (info) => info !== VersionInfo,
       );
       _versionInfoInjected = false;
     };

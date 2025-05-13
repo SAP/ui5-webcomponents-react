@@ -7,7 +7,7 @@ import type {
   ListItemDeleteEventDetail,
   ListItemToggleEventDetail,
   ListMoveEventDetail,
-  ListSelectionChangeEventDetail
+  ListSelectionChangeEventDetail,
 } from '@ui5/webcomponents/dist/List.js';
 import type ListItemBase from '@ui5/webcomponents/dist/ListItemBase.js';
 import type ListAccessibleRole from '@ui5/webcomponents/dist/types/ListAccessibleRole.js';
@@ -335,11 +335,11 @@ const List = withWebComponent<ListPropTypes, ListDomRef>(
     'loadingDelay',
     'noDataText',
     'selectionMode',
-    'separators'
+    'separators',
   ],
   ['indent', 'loading'],
   ['header'],
-  ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'move-over', 'move', 'selection-change']
+  ['item-click', 'item-close', 'item-delete', 'item-toggle', 'load-more', 'move-over', 'move', 'selection-change'],
 );
 
 List.displayName = 'List';

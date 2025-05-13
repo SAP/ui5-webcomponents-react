@@ -93,8 +93,8 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
       rowProps,
       {
         indeterminate: indeterminate,
-        checked: indeterminate ? true : rowProps.checked
-      }
+        checked: indeterminate ? true : rowProps.checked,
+      },
     ];
   };
 
@@ -104,7 +104,7 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
       if (action.payload === 'reset') {
         return {
           ...newState,
-          indeterminateRows: {}
+          indeterminateRows: {},
         };
       }
 
@@ -112,7 +112,7 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
 
       return {
         ...newState,
-        indeterminateRows: indeterminateRowsById
+        indeterminateRows: indeterminateRowsById,
       };
     }
   };
@@ -123,7 +123,7 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
       dispatch,
       rowsById,
       state: { selectedRowIds, indeterminateRows },
-      webComponentsReactProperties: { selectionMode, selectionBehavior, isTreeTable }
+      webComponentsReactProperties: { selectionMode, selectionBehavior, isTreeTable },
     } = instance;
 
     useEffect(() => {

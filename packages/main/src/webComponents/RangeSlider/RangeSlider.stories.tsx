@@ -5,10 +5,10 @@ const meta = {
   title: 'Inputs / RangeSlider',
   component: RangeSlider,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {},
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof RangeSlider>;
 
 export default meta;

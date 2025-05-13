@@ -42,7 +42,7 @@ const ColorPalette = withWebComponent<ColorPalettePropTypes, ColorPaletteDomRef>
   [],
   [],
   [],
-  ['item-click']
+  ['item-click'],
 );
 
 ColorPalette.displayName = 'ColorPalette';

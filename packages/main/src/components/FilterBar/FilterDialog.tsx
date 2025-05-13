@@ -27,7 +27,7 @@ import {
   SEARCH_FOR_FILTERS,
   SHOW_VALUES,
   VISIBLE,
-  VISIBLE_AND_ACTIVE
+  VISIBLE_AND_ACTIVE,
 } from '../../i18n/i18n-defaults.js';
 import type { OnReorderParams } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
@@ -37,7 +37,7 @@ import type {
   InputPropTypes,
   SegmentedButtonPropTypes,
   TableSelectionMultiDomRef,
-  TableSelectionMultiPropTypes
+  TableSelectionMultiPropTypes,
 } from '../../webComponents/index.js';
 import {
   Bar,
@@ -54,7 +54,7 @@ import {
   TableHeaderCell,
   TableHeaderRow,
   TableSelectionMulti,
-  Title
+  Title,
 } from '../../webComponents/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 import { FlexBox } from '../FlexBox/index.js';
@@ -80,7 +80,7 @@ addCustomCSSWithScoping(
 :host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #no-data-row {
   display: none;
 }
-`
+`,
 );
 
 addCustomCSSWithScoping(
@@ -89,13 +89,13 @@ addCustomCSSWithScoping(
 :host([data-component-name="FilterBarDialogGroupTableHeaderRow"]) :first-child {
   visibility: hidden;
 }
-`
+`,
 );
 
 type ActiveFilterAttributes = 'all' | 'visible' | 'active' | 'visibleAndActive' | 'mandatory';
 const getActiveFilters = (
   activeFilterAttribute: ActiveFilterAttributes,
-  filter: ReactElement<FilterGroupItemInternalProps>
+  filter: ReactElement<FilterGroupItemInternalProps>,
 ) => {
   switch (activeFilterAttribute) {
     case 'all':
@@ -145,7 +145,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
     handleDialogSearch,
     handleDialogCancel,
     onAfterFiltersDialogOpen,
-    onReorder
+    onReorder,
   } = props;
   useStylesheet(styleData, 'FilterBarDialog');
   const uniqueId = useId();
@@ -230,14 +230,14 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         ? orderedChildren.filter(
             (item) =>
               (searchStringLower === '' || item.props.label?.toLowerCase().includes(searchStringLower)) &&
-              getActiveFilters(filteredAttribute, item)
+              getActiveFilters(filteredAttribute, item),
           )
         : orderedChildren;
 
     return filteredChildren.map((child, index, arr) => {
       return cloneElement<FilterGroupItemInternalProps>(child, {
         'data-index': index,
-        'data-filters-count': arr.length
+        'data-filters-count': arr.length,
       });
     });
   };
@@ -287,7 +287,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         source: 'dialog' as const,
         selectedFilterKeys: initialSelected.current,
         previousSelectedFilterKeys: selectedFilters,
-        reorderedFilterKeys: enableReordering ? initialChildren.map((child) => `${child.props.filterKey}`) : null
+        reorderedFilterKeys: enableReordering ? initialChildren.map((child) => `${child.props.filterKey}`) : null,
       };
       setSelectedFilters(initialSelected.current);
       setOrderedChildren(initialChildren);
@@ -369,7 +369,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         toggledFilterKeys: selectedKeys,
         selected: selectedKeys.size === 1 ? _selected.has(selectedKeys.values().next().value) : undefined,
         selectedFilterKeys: _selected,
-        previousSelectedFilterKeys: prevSelected
+        previousSelectedFilterKeys: prevSelected,
       };
       onFiltersDialogSelectionChange(payload);
     }
@@ -396,7 +396,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           target: selectionFeature,
           selected: _selected,
           prevSelected,
-          selectedKeys
+          selectedKeys,
         });
         return;
       }
@@ -482,7 +482,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         currentReorderedItemOrderId,
         setSelectedKeys: setSelectedFilters,
         setRequiredKeys,
-        prevIsListView
+        prevIsListView,
       }}
     >
       <Dialog

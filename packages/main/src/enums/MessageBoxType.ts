@@ -3,5 +3,5 @@ export enum MessageBoxType {
   Error = 'Error',
   Information = 'Information',
   Success = 'Success',
-  Warning = 'Warning'
+  Warning = 'Warning',
 }

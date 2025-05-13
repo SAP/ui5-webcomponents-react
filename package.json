@@ -18,7 +18,7 @@
     "test": "yarn test:prepare && cypress run --component --browser chrome",
     "clean": "tsc --build --clean && tsc --build tsconfig.build.json --clean && rimraf temp .out && lerna run clean",
     "clean:remove-modules": "yarn clean && rimraf node_modules",
-    "prettier:all": "prettier --write --config ./prettier.config.cjs \"packages/**/*.{js,jsx,ts,tsx,mdx,json,md}\"",
+    "prettier:all": "prettier --write --config ./prettier.config.js \"packages/**/*.{js,jsx,ts,tsx,mdx,json,md}\"",
     "lint": "eslint packages",
     "lerna:version-dryrun": "lerna version --conventional-graduate --no-git-tag-version --no-push",
     "wrappers:main": "node packages/cli/dist/bin/index.js create-wrappers --packageName @ui5/webcomponents --out ./packages/main/src/webComponents --additionalComponentNote 'This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)'",

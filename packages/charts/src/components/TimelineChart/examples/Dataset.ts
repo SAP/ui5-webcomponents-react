@@ -14,9 +14,9 @@ export const dummyDataSet: ITimelineChartRow[] = [
         connections: [
           {
             itemId: 'TR-20',
-            type: TimelineChartConnection.Finish_To_Start
-          }
-        ]
+            type: TimelineChartConnection.Finish_To_Start,
+          },
+        ],
       },
       {
         id: 'TR-01',
@@ -27,12 +27,12 @@ export const dummyDataSet: ITimelineChartRow[] = [
         connections: [
           {
             itemId: 'TR-10',
-            type: TimelineChartConnection.Start_To_Start
-          }
-        ]
-      }
+            type: TimelineChartConnection.Start_To_Start,
+          },
+        ],
+      },
     ],
-    milestones: []
+    milestones: [],
   },
   {
     label: 'Row 1',
@@ -47,9 +47,9 @@ export const dummyDataSet: ITimelineChartRow[] = [
         connections: [
           {
             itemId: 'TR-20',
-            type: TimelineChartConnection.Finish_To_Finish
-          }
-        ]
+            type: TimelineChartConnection.Finish_To_Finish,
+          },
+        ],
       },
       {
         id: 'TR-11',
@@ -58,16 +58,16 @@ export const dummyDataSet: ITimelineChartRow[] = [
         duration: 5,
         connections: [
           {
-            itemId: 'MS-20'
+            itemId: 'MS-20',
           },
           {
             itemId: 'TR-21',
-            type: TimelineChartConnection.Start_To_Start
-          }
-        ]
-      }
+            type: TimelineChartConnection.Start_To_Start,
+          },
+        ],
+      },
     ],
-    milestones: []
+    milestones: [],
   },
   {
     label: 'Row 2',
@@ -77,13 +77,13 @@ export const dummyDataSet: ITimelineChartRow[] = [
         id: 'TR-20',
         label: 'Item 5',
         start: 35,
-        duration: 15
+        duration: 15,
       },
       {
         id: 'TR-21',
         start: 75,
-        duration: 25
-      }
+        duration: 25,
+      },
     ],
     milestones: [
       {
@@ -93,12 +93,12 @@ export const dummyDataSet: ITimelineChartRow[] = [
         connections: [
           {
             itemId: 'TR-01',
-            type: TimelineChartConnection.Finish_To_Finish
-          }
-        ]
-      }
-    ]
-  }
+            type: TimelineChartConnection.Finish_To_Finish,
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const dummyDiscreteDataSet: ITimelineChartRow[] = [
@@ -112,11 +112,11 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         duration: 5,
         connections: [
           {
-            itemId: 'TR-20X'
-          }
-        ]
-      }
-    ]
+            itemId: 'TR-20X',
+          },
+        ],
+      },
+    ],
   },
   {
     label: 'Branding Exploration',
@@ -128,11 +128,11 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         duration: 5,
         connections: [
           {
-            itemId: 'MS-30X'
-          }
-        ]
-      }
-    ]
+            itemId: 'MS-30X',
+          },
+        ],
+      },
+    ],
   },
   {
     label: 'Content Review',
@@ -143,11 +143,11 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         duration: 5,
         connections: [
           {
-            itemId: 'TR-10X'
-          }
-        ]
-      }
-    ]
+            itemId: 'TR-10X',
+          },
+        ],
+      },
+    ],
   },
   {
     label: '',
@@ -158,14 +158,14 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         start: 16,
         connections: [
           {
-            itemId: 'TR-40X'
+            itemId: 'TR-40X',
           },
           {
-            itemId: 'TR-50X'
-          }
-        ]
-      }
-    ]
+            itemId: 'TR-50X',
+          },
+        ],
+      },
+    ],
   },
   {
     label: 'Website Design',
@@ -176,11 +176,11 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         duration: 9,
         connections: [
           {
-            itemId: 'MS-60X'
-          }
-        ]
-      }
-    ]
+            itemId: 'MS-60X',
+          },
+        ],
+      },
+    ],
   },
   {
     label: 'Database Setup',
@@ -191,11 +191,11 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         duration: 4,
         connections: [
           {
-            itemId: 'MS-60X'
-          }
-        ]
-      }
-    ]
+            itemId: 'MS-60X',
+          },
+        ],
+      },
+    ],
   },
   {
     label: '',
@@ -204,10 +204,10 @@ export const dummyDiscreteDataSet: ITimelineChartRow[] = [
         id: 'MS-60X',
         label: 'Completed',
         start: 35,
-        color: 'red'
-      }
-    ]
-  }
+        color: 'red',
+      },
+    ],
+  },
 ];
 
 export const schedulingEDFData: ITimelineChartRow[] = [
@@ -216,58 +216,58 @@ export const schedulingEDFData: ITimelineChartRow[] = [
     tasks: [
       {
         start: 0,
-        duration: 1
+        duration: 1,
       },
       {
         start: 4,
-        duration: 1
+        duration: 1,
       },
       {
         start: 8,
-        duration: 1
+        duration: 1,
       },
       {
         start: 12,
-        duration: 1
-      }
-    ]
+        duration: 1,
+      },
+    ],
   },
   {
     label: 'T2 (4, 2)',
     tasks: [
       {
         start: 5,
-        duration: 2
+        duration: 2,
       },
       {
         start: 10,
-        duration: 2
-      }
-    ]
+        duration: 2,
+      },
+    ],
   },
   {
     label: 'T3 (7, 2)',
     tasks: [
       {
         start: 1,
-        duration: 2
+        duration: 2,
       },
       {
         start: 7,
-        duration: 1
+        duration: 1,
       },
       {
         start: 9,
-        duration: 1
-      }
-    ]
-  }
+        duration: 1,
+      },
+    ],
+  },
 ];
 
 export const inventionDataset: ITimelineChartRow[] = [
   {
-    label: 'Inventions'
-  }
+    label: 'Inventions',
+  },
 ];
 
 export const illegalConnDataset: ITimelineChartRow[] = [
@@ -279,11 +279,11 @@ export const illegalConnDataset: ITimelineChartRow[] = [
         duration: 5,
         connections: [
           {
-            itemId: 'id2'
-          }
-        ]
-      }
-    ]
+            itemId: 'id2',
+          },
+        ],
+      },
+    ],
   },
   {
     label: 'row2',
@@ -291,10 +291,10 @@ export const illegalConnDataset: ITimelineChartRow[] = [
       {
         id: 'id2',
         start: 5,
-        duration: 5
-      }
-    ]
-  }
+        duration: 5,
+      },
+    ],
+  },
 ];
 
 export const illegalConnDataset2: ITimelineChartRow[] = [
@@ -305,11 +305,11 @@ export const illegalConnDataset2: ITimelineChartRow[] = [
         start: 2,
         connections: [
           {
-            itemId: 'id2'
-          }
-        ]
-      }
-    ]
+            itemId: 'id2',
+          },
+        ],
+      },
+    ],
   },
   {
     label: 'row2',
@@ -317,8 +317,8 @@ export const illegalConnDataset2: ITimelineChartRow[] = [
       {
         id: 'id2',
         start: 5,
-        duration: 5
-      }
-    ]
-  }
+        duration: 5,
+      },
+    ],
+  },
 ];

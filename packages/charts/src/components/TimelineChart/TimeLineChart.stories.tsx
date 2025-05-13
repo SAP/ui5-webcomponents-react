@@ -10,10 +10,10 @@ const meta = {
   component: TimelineChart,
   argTypes: {
     dataset: {
-      control: { disable: true }
-    }
+      control: { disable: true },
+    },
   },
-  args: { dataset: dummyDiscreteDataSet }
+  args: { dataset: dummyDiscreteDataSet },
 } satisfies Meta<typeof TimelineChart>;
 
 export default meta;
@@ -24,8 +24,8 @@ export const Default: Story = {
     totalDuration: 36,
     isDiscrete: true,
     start: 1,
-    showConnection: true
-  }
+    showConnection: true,
+  },
 };
 
 export const WithAnnotations: Story = {
@@ -36,7 +36,7 @@ export const WithAnnotations: Story = {
     showAnnotation: true,
     rowHeight: 35,
     unit: 'ms',
-    valueFormat: (x) => x.toFixed(2)
+    valueFormat: (x) => x.toFixed(2),
   },
   render(props) {
     return (
@@ -63,7 +63,7 @@ export const WithAnnotations: Story = {
         }
       />
     );
-  }
+  },
 };
 
 export const WithAnnotationsOnly: Story = {
@@ -72,7 +72,7 @@ export const WithAnnotationsOnly: Story = {
     totalDuration: 6000,
     showAnnotation: true,
     rowHeight: 80,
-    valueFormat: (x) => x.toFixed(1)
+    valueFormat: (x) => x.toFixed(1),
   },
   render(props) {
     return (
@@ -154,7 +154,7 @@ export const WithAnnotationsOnly: Story = {
         }
       />
     );
-  }
+  },
 };
 
 export const WithMoreCustomization: Story = {
@@ -163,12 +163,12 @@ export const WithMoreCustomization: Story = {
     totalDuration: 150,
     showConnection: true,
     showAnnotation: true,
-    unit: 'ms'
-  }
+    unit: 'ms',
+  },
 };
 
 export const LoadingPlaceholder: Story = {
   render() {
     return <TimelineChart />;
-  }
+  },
 };

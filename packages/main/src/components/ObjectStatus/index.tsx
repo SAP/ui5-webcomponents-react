@@ -4,7 +4,7 @@ import {
   VALUE_STATE_ERROR,
   VALUE_STATE_INFORMATION,
   VALUE_STATE_SUCCESS,
-  VALUE_STATE_WARNING
+  VALUE_STATE_WARNING,
 } from '@ui5/webcomponents/dist/generated/i18n/i18n-defaults.js';
 import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
@@ -21,7 +21,7 @@ import {
   ARIA_OBJ_STATUS_DESC,
   ARIA_OBJ_STATUS_DESC_INACTIVE,
   EMPTY_VALUE,
-  INDICATION_COLOR
+  INDICATION_COLOR,
 } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../types/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
@@ -194,7 +194,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
     errorStateText,
     warningStateText,
     informationStateText,
-    successStateText
+    successStateText,
   });
 
   const showEmptyIndicator = emptyIndicator && !children;
@@ -217,7 +217,7 @@ const ObjectStatus = forwardRef<HTMLDivElement | HTMLButtonElement, ObjectStatus
     interactive && classNames.active,
     inverted && !showEmptyIndicator && classNames.inverted,
     large && classNames.large,
-    className
+    className,
   );
 
   const TagName = interactive ? 'button' : 'div';

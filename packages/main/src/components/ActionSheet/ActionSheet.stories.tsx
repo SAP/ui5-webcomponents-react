@@ -17,26 +17,26 @@ const meta = {
   component: ActionSheet,
   argTypes: {
     children: {
-      control: { disable: true }
+      control: { disable: true },
     },
     footer: {
-      control: { disable: true }
+      control: { disable: true },
     },
     header: {
-      control: { disable: true }
+      control: { disable: true },
     },
-    accessibilityAttributes: { table: { category: 'Accessibility props' } }
+    accessibilityAttributes: { table: { category: 'Accessibility props' } },
   },
   args: {
     horizontalAlign: PopoverHorizontalAlign.Center,
     placement: PopoverPlacement.End,
     verticalAlign: PopoverVerticalAlign.Center,
-    open: false
+    open: false,
   },
   parameters: {
-    chromatic: { disableSnapshot: true }
+    chromatic: { disableSnapshot: true },
   },
-  tags: ['package:@ui5/webcomponents', 'cem-module:ResponsivePopover']
+  tags: ['package:@ui5/webcomponents', 'cem-module:ResponsivePopover'],
 } satisfies Meta<typeof ActionSheet>;
 
 export default meta;
@@ -77,5 +77,5 @@ export const Default: Story = {
         </ActionSheet>
       </>
     );
-  }
+  },
 };

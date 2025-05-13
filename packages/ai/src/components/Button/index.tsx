@@ -100,7 +100,7 @@ const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
   ['design', 'state'],
   ['arrowButtonPressed', 'disabled'],
   [],
-  ['arrow-button-click', 'click']
+  ['arrow-button-click', 'click'],
 );
 
 Button.displayName = 'Button';

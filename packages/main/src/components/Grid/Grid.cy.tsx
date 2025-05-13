@@ -11,28 +11,28 @@ const GridContent = (
       data-testid="grid-item"
       style={{
         ...style,
-        backgroundColor: 'cadetblue'
+        backgroundColor: 'cadetblue',
       }}
     />
     <div
       data-testid="grid-item"
       style={{
         ...style,
-        backgroundColor: 'lightblue'
+        backgroundColor: 'lightblue',
       }}
     />
     <div
       data-testid="grid-item"
       style={{
         ...style,
-        backgroundColor: 'skyblue'
+        backgroundColor: 'skyblue',
       }}
     />
     <div
       data-testid="grid-item"
       style={{
         ...style,
-        backgroundColor: 'cornflowerblue'
+        backgroundColor: 'cornflowerblue',
       }}
     />
   </>
@@ -44,7 +44,7 @@ const CustomItems = (
       data-testid="custom-span"
       style={{
         ...style,
-        backgroundColor: 'tomato'
+        backgroundColor: 'tomato',
       }}
       data-layout-span="XL12 L12 M12 S12"
     />
@@ -52,7 +52,7 @@ const CustomItems = (
       data-testid="custom-indent"
       style={{
         ...style,
-        backgroundColor: 'blanchedalmond'
+        backgroundColor: 'blanchedalmond',
       }}
       data-layout-indent="XL1 L1 M1 S1"
     />
@@ -66,14 +66,14 @@ describe('Grid', () => {
       { vp: 599, defaultSpan: 12, defaultIndent: 0, customSpan: 1, customIndent: 7 },
       { vp: 1023, defaultSpan: 6, defaultIndent: 0, customSpan: 2, customIndent: 6 },
       { vp: 1439, defaultSpan: 3, defaultIndent: 0, customSpan: 3, customIndent: 5 },
-      { vp: 1920, defaultSpan: 3, defaultIndent: 0, customSpan: 4, customIndent: 4 }
+      { vp: 1920, defaultSpan: 3, defaultIndent: 0, customSpan: 4, customIndent: 4 },
     ].forEach((range) => {
       cy.viewport(range.vp, 1080);
       cy.mount(
         <Grid>
           {GridContent}
           {CustomItems}
-        </Grid>
+        </Grid>,
       );
       cy.findAllByTestId('grid-item').parent().should('have.css', 'grid-column', `span ${range.defaultSpan}`);
       cy.findByTestId('custom-span').parent().should('have.css', 'grid-column', `span 12`);
@@ -84,7 +84,7 @@ describe('Grid', () => {
         <Grid defaultSpan="XL4 L3 M2 S1" defaultIndent="XL4 L5 M6 S7">
           {GridContent}
           {CustomItems}
-        </Grid>
+        </Grid>,
       );
       cy.findAllByTestId('grid-item').parent().should('have.css', 'grid-column', `span ${range.customSpan}`);
       cy.findByTestId('custom-span').parent().should('have.css', 'grid-column', `span 12`);
@@ -105,7 +105,7 @@ describe('Grid', () => {
       <Grid data-testid="grid" hSpacing="7px" vSpacing="42px">
         {GridContent}
         {CustomItems}
-      </Grid>
+      </Grid>,
     );
     cy.findByTestId('grid').should('have.css', 'grid-row-gap', '42px').should('have.css', 'grid-column-gap', '7px');
   });
@@ -116,7 +116,7 @@ describe('Grid', () => {
           <Grid data-testid="grid" position={pos} style={{ width: '200px' }}>
             {GridContent}
           </Grid>
-        </div>
+        </div>,
       );
       switch (pos) {
         case 'Center':

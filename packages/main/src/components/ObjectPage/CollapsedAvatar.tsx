@@ -35,7 +35,7 @@ export const CollapsedAvatar = (props: CollapsedAvatarPropTypes) => {
         size: AvatarSize.S,
         className: image.props?.className
           ? `${classNames.imageContainer} ${image.props?.className}`
-          : classNames.imageContainer
+          : classNames.imageContainer,
       } as unknown);
     }
   }, [image, imageShapeCircle]);

@@ -11,15 +11,15 @@ switch (command) {
   case 'create-wrappers': {
     const wrapperOptions = {
       packageName: {
-        type: 'string' as const
+        type: 'string' as const,
       },
       out: {
         type: 'string' as const,
-        short: 'o'
+        short: 'o',
       },
       additionalComponentNote: {
-        type: 'string' as const
-      }
+        type: 'string' as const,
+      },
     };
     const { values } = parseArgs({ options: wrapperOptions, allowPositionals: true });
     const { packageName, out, additionalComponentNote } = values;
@@ -52,12 +52,12 @@ switch (command) {
   case 'resolve-cem': {
     const cemOptions = {
       packageName: {
-        type: 'string' as const
+        type: 'string' as const,
       },
       out: {
         type: 'string' as const,
-        short: 'o'
-      }
+        short: 'o',
+      },
     };
     const { values } = parseArgs({ options: cemOptions, allowPositionals: true });
     const { packageName, out } = values;
@@ -88,15 +88,15 @@ switch (command) {
   case 'codemod': {
     const codemodOptions = {
       transform: {
-        type: 'string' as const
+        type: 'string' as const,
       },
       src: {
-        type: 'string' as const
+        type: 'string' as const,
       },
       typescript: {
         type: 'boolean' as const,
-        default: false
-      }
+        default: false,
+      },
     };
     const { values } = parseArgs({ options: codemodOptions, allowPositionals: true });
     const missingParameters = [];

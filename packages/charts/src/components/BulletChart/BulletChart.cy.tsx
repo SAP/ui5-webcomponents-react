@@ -5,28 +5,28 @@ import { cypressPassThroughTestsFactory, testChartLegendConfig, testChartZooming
 const dimensions = [
   {
     accessor: 'name',
-    interval: 0
-  }
+    interval: 0,
+  },
 ];
 const measures = [
   {
     accessor: 'users',
     label: 'Users',
     formatter: (val: number) => val.toLocaleString('en'),
-    type: 'primary'
+    type: 'primary',
   },
   {
     accessor: 'sessions',
     label: 'Active Sessions',
     formatter: (val) => `${val} sessions`,
     hideDataLabel: true,
-    type: 'comparison'
+    type: 'comparison',
   },
   {
     accessor: 'volume',
     label: 'Vol.',
-    type: 'additional'
-  }
+    type: 'additional',
+  },
 ];
 
 describe('BulletChart', () => {
@@ -47,7 +47,7 @@ describe('BulletChart', () => {
         measures={measures}
         onClick={onClick}
         onLegendClick={onLegendClick}
-      />
+      />,
     );
 
     cy.findByText('January').click();
@@ -59,9 +59,9 @@ describe('BulletChart', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: Cypress.sinon.match({
-            payload: complexDataSet[0]
-          })
-        })
+            payload: complexDataSet[0],
+          }),
+        }),
       );
 
     cy.contains('Users').click();
@@ -69,9 +69,9 @@ describe('BulletChart', () => {
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          dataKey: 'users'
-        })
-      })
+          dataKey: 'users',
+        }),
+      }),
     );
   });
 

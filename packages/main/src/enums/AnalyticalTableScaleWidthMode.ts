@@ -20,5 +20,5 @@ export enum AnalyticalTableScaleWidthMode {
    *
    * __Note:__ This mode adds a calculated `minWidth` to each column. If the internally calculated `minWidth` is larger than the `width` set in the column options, it can lead to an unwanted scrollbar. To prevent this, you can set the `minWidth` in the column options yourself.
    */
-  Grow = 'Grow'
+  Grow = 'Grow',
 }

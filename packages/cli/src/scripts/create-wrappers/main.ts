@@ -33,13 +33,13 @@ export default async function createWrappers(packageName: string, outDir: string
       }
       return map;
     },
-    {} as Record<string, string>
+    {} as Record<string, string>,
   );
   setGlobalTagNameMap(tagNameToComponentName);
 
   for (const module of customElementManifest.modules) {
     const declaration = module.declarations?.find(
-      (decl) => 'customElement' in decl && decl.customElement
+      (decl) => 'customElement' in decl && decl.customElement,
     ) as CEM.CustomElementDeclaration;
     const webComponentImport = `${packageName}/${module.path}`;
 
@@ -67,7 +67,7 @@ export default async function createWrappers(packageName: string, outDir: string
         .setIsAbstract(declaration._ui5abstract ?? false)
         .setSince(declaration._ui5since)
         .setIsExperimental(declaration._ui5experimental)
-        .setIsDeprecated(declaration.deprecated)
+        .setIsDeprecated(declaration.deprecated),
     );
     wrapper.addRenderer(new ExportsRenderer());
 

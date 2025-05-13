@@ -6,7 +6,7 @@ const meta = {
   component: Switch,
   argTypes: {},
   args: {},
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Switch>;
 
 export default meta;

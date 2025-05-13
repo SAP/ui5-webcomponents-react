@@ -87,7 +87,7 @@ export const tagNamesWhichShouldNotSelectARow = new Set([
   'UI5-TEXT-AREA',
   'UI5-TIME-PICKER',
   'UI5-TOGGLE-BUTTON',
-  'UI5-UPLOAD-COLLECTION'
+  'UI5-UPLOAD-COLLECTION',
 ]);
 
 export const resolveCellAlignment = (column) => {
@@ -141,7 +141,8 @@ export function getRowHeight(rowHeight: number, tableRef: RefObject<any>) {
 
   if (typeof document !== 'undefined') {
     return parseInt(
-      getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--_ui5wcr-AnalyticalTableRowHeight') || '44'
+      getComputedStyle(tableRef.current ?? document.body).getPropertyValue('--_ui5wcr-AnalyticalTableRowHeight') ||
+        '44',
     );
   }
 

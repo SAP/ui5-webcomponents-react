@@ -246,11 +246,11 @@ const Popover = withWebComponent<PopoverPropTypes, PopoverDomRef>(
     'initialFocus',
     'opener',
     'placement',
-    'verticalAlign'
+    'verticalAlign',
   ],
   ['allowTargetOverlap', 'hideArrow', 'modal', 'open', 'preventFocusRestore', 'preventInitialFocus'],
   ['footer', 'header'],
-  ['before-close', 'before-open', 'close', 'open']
+  ['before-close', 'before-open', 'close', 'open'],
 );
 
 Popover.displayName = 'Popover';

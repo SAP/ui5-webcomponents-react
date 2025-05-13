@@ -9,14 +9,14 @@ const meta = {
   component: DynamicSideContent,
   argTypes: {
     children: { control: { disable: true } },
-    sideContent: { control: { disable: true } }
+    sideContent: { control: { disable: true } },
   },
   args: {
     sideContentFallDown: SideContentFallDown.OnMinimumWidth,
     sideContentPosition: SideContentPosition.End,
-    sideContentVisibility: SideContentVisibility.ShowAboveS
+    sideContentVisibility: SideContentVisibility.ShowAboveS,
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof DynamicSideContent>;
 
 export default meta;
@@ -53,5 +53,5 @@ export const Default: Story = {
         </p>
       </DynamicSideContent>
     );
-  }
+  },
 };

@@ -251,10 +251,10 @@ const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, Upl
     'hideRetryButton',
     'hideTerminateButton',
     'navigated',
-    'selected'
+    'selected',
   ],
   ['deleteButton', 'thumbnail'],
-  ['detail-click', 'file-name-click', 'rename', 'retry', 'terminate']
+  ['detail-click', 'file-name-click', 'rename', 'retry', 'terminate'],
 );
 
 UploadCollectionItem.displayName = 'UploadCollectionItem';

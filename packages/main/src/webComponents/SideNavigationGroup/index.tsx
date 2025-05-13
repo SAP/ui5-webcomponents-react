@@ -67,7 +67,7 @@ const SideNavigationGroup = withWebComponent<SideNavigationGroupPropTypes, SideN
   ['text', 'tooltip'],
   ['disabled', 'expanded'],
   [],
-  []
+  [],
 );
 
 SideNavigationGroup.displayName = 'SideNavigationGroup';

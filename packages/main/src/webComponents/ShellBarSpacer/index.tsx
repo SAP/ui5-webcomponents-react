@@ -24,7 +24,7 @@ const ShellBarSpacer = withWebComponent<ShellBarSpacerPropTypes, ShellBarSpacerD
   [],
   [],
   [],
-  []
+  [],
 );
 
 ShellBarSpacer.displayName = 'ShellBarSpacer';

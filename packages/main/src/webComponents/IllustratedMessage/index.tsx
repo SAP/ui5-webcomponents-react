@@ -159,7 +159,7 @@ const IllustratedMessage = withWebComponent<IllustratedMessagePropTypes, Illustr
   ['accessibleNameRef', 'design', 'name', 'subtitleText', 'titleText'],
   ['decorative'],
   ['subtitle', 'title'],
-  []
+  [],
 );
 
 IllustratedMessage.displayName = 'IllustratedMessage';

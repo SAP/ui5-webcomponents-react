@@ -2,7 +2,7 @@ import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
 const baseStyles = {
   width: '100%',
-  height: '100%'
+  height: '100%',
 };
 
 /*
@@ -32,11 +32,11 @@ const columnsDeps = (deps, { instance: { webComponentsReactProperties } }: { ins
 };
 const visibleColumnsDeps = (deps, { instance }: { instance: TableInstance }) => [
   ...deps,
-  instance.webComponentsReactProperties.withNavigationHighlight
+  instance.webComponentsReactProperties.withNavigationHighlight,
 ];
 const visibleColumns = (
   currentVisibleColumns,
-  { instance: { webComponentsReactProperties } }: { instance: TableInstance }
+  { instance: { webComponentsReactProperties } }: { instance: TableInstance },
 ) => {
   if (!webComponentsReactProperties.withNavigationHighlight) {
     return currentVisibleColumns.filter(({ id }) => id !== '__ui5wcr__internal_navigation_column');
@@ -65,8 +65,8 @@ const columns = (currentColumns, { instance }: { instance: TableInstance }) => {
       minWidth: 6,
       maxWidth: 6,
       Header,
-      Cell
-    }
+      Cell,
+    },
   ];
 };
 

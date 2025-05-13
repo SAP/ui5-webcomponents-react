@@ -160,7 +160,7 @@ const SideNavigationItem = withWebComponent<SideNavigationItemPropTypes, SideNav
   ['accessibilityAttributes', 'design', 'href', 'icon', 'target', 'text', 'tooltip'],
   ['disabled', 'expanded', 'selected', 'unselectable'],
   [],
-  ['click']
+  ['click'],
 );
 
 SideNavigationItem.displayName = 'SideNavigationItem';

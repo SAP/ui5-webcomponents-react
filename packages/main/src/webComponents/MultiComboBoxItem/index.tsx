@@ -40,7 +40,7 @@ const MultiComboBoxItem = withWebComponent<MultiComboBoxItemPropTypes, MultiComb
   ['additionalText', 'text'],
   ['selected'],
   [],
-  []
+  [],
 );
 
 MultiComboBoxItem.displayName = 'MultiComboBoxItem';

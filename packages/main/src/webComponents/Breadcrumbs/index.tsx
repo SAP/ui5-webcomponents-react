@@ -80,7 +80,7 @@ const Breadcrumbs = withWebComponent<BreadcrumbsPropTypes, BreadcrumbsDomRef>(
   ['design', 'separators'],
   [],
   [],
-  ['item-click']
+  ['item-click'],
 );
 
 Breadcrumbs.displayName = 'Breadcrumbs';

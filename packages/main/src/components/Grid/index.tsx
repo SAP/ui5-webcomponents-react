@@ -106,7 +106,7 @@ const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
     classNames.grid,
     GridPosition.Center === position && classNames.positionCenter,
     GridPosition.Right === position && classNames.positionRight,
-    className
+    className,
   );
 
   return (
@@ -128,7 +128,7 @@ const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
         const childrenWithGridLayout = [
           <div className={childClass} key={child.key}>
             {child}
-          </div>
+          </div>,
         ];
 
         const indentSpan = getIndentFromString(child.props['data-layout-indent'] ?? defaultIndent, currentRange);
@@ -139,7 +139,7 @@ const Grid = forwardRef<HTMLDivElement, GridPropTypes>((props, ref) => {
               key={`${child.key}-indent`}
               data-component-name="GridIndentSpacer"
               aria-hidden="true"
-            />
+            />,
           );
         }
         return childrenWithGridLayout;

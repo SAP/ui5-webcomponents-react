@@ -15,13 +15,13 @@ const meta = {
   component: ObjectStatus,
   argTypes: {
     children: { control: 'text' },
-    icon: { control: { disable: true } }
+    icon: { control: { disable: true } },
   },
   args: {
     state: ValueState.None,
     children: 'ObjectStatus',
-    showDefaultIcon: true
-  }
+    showDefaultIcon: true,
+  },
 } satisfies Meta<typeof ObjectStatus>;
 
 export default meta;
@@ -37,7 +37,7 @@ export const WithDefaultIcons: Story = {
           display: 'grid',
           gridTemplateColumns: 'repeat(5, minmax(0, 1fr)',
           rowGap: '1rem',
-          columnGap: '1rem'
+          columnGap: '1rem',
         }}
       >
         <ObjectStatus showDefaultIcon state={ValueState.None}>
@@ -57,15 +57,15 @@ export const WithDefaultIcons: Story = {
         </ObjectStatus>
       </div>
     );
-  }
+  },
 };
 
 export const WithCustomIcon: Story = {
-  args: { icon: <Icon name={cancelIcon} mode={IconMode.Decorative} /> }
+  args: { icon: <Icon name={cancelIcon} mode={IconMode.Decorative} /> },
 };
 
 export const WithIconOnly: Story = {
-  args: { icon: <Icon name={cancelIcon} mode={IconMode.Decorative} />, children: null, title: 'Cancel' }
+  args: { icon: <Icon name={cancelIcon} mode={IconMode.Decorative} />, children: null, title: 'Cancel' },
 };
 
 const States = { ...ValueState, ...IndicationColor };
@@ -97,7 +97,7 @@ export const InvertedObjectStatus: Story = {
           display: 'grid',
           gridTemplateColumns: 'repeat(5, minmax(0, 1fr)',
           rowGap: '1rem',
-          columnGap: '1rem'
+          columnGap: '1rem',
         }}
       >
         <Label style={{ gridColumn: 'span 5' }}>Standard mode:</Label>
@@ -111,14 +111,14 @@ export const InvertedObjectStatus: Story = {
           style={{
             gridColumn: 'span 5',
             fontFamily: ThemingParameters.sapFontBoldFamily,
-            fontSize: ThemingParameters.sapFontLargeSize
+            fontSize: ThemingParameters.sapFontLargeSize,
           }}
         >
           Inverted
         </Text>
         <Label
           style={{
-            gridColumn: 'span 5'
+            gridColumn: 'span 5',
           }}
         >
           The ObjectStatus has an inverted visualisation, which is used in cases when the information is crucial for the
@@ -132,5 +132,5 @@ export const InvertedObjectStatus: Story = {
         {renderStatuses(true, true)}
       </div>
     );
-  }
+  },
 };

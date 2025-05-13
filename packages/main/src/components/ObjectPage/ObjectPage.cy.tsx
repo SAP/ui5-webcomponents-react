@@ -42,7 +42,7 @@ import {
   Text,
   Title,
   Toolbar,
-  ToolbarButton
+  ToolbarButton,
 } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
@@ -56,9 +56,9 @@ describe('ObjectPage', () => {
             ...prev,
             <ObjectPageSection key={prev.length + 1} id={`${prev.length + 1}`} titleText={`Section ${prev.length + 1}`}>
               <div style={{ height: `${(prev.length + 1) * 50}px` }}>Content {prev.length + 1}</div>
-            </ObjectPageSection>
+            </ObjectPageSection>,
           ],
-          []
+          [],
         );
         return (
           <>
@@ -138,7 +138,7 @@ describe('ObjectPage', () => {
           <ObjectPageSection id="section" titleText="Section">
             Content
           </ObjectPageSection>
-        </ObjectPage>
+        </ObjectPage>,
       );
       cy.findByText('ObjectPageHeader').should('be.visible');
 
@@ -174,7 +174,7 @@ describe('ObjectPage', () => {
           <ObjectPageSection id="section" titleText="Section">
             Content
           </ObjectPageSection>
-        </ObjectPage>
+        </ObjectPage>,
       );
 
       cy.findByText('Heading').click({ force: true });
@@ -201,7 +201,7 @@ describe('ObjectPage', () => {
           <ObjectPageSection id="section" titleText="Section">
             <div style={{ height: '2000px' }} />
           </ObjectPageSection>
-        </ObjectPage>
+        </ObjectPage>,
       );
       cy.wait(50);
 
@@ -336,7 +336,7 @@ describe('ObjectPage', () => {
           <ObjectPageSection id="section" titleText="Section">
             <div style={{ height: '2000px' }} />
           </ObjectPageSection>
-        </ObjectPage>
+        </ObjectPage>,
       );
       cy.wait(50);
 
@@ -367,7 +367,7 @@ describe('ObjectPage', () => {
         style={{ height: '100vh', scrollBehavior: 'auto' }}
       >
         {OPContent}
-      </ObjectPage>
+      </ObjectPage>,
     );
 
     cy.wait(200);
@@ -415,7 +415,7 @@ describe('ObjectPage', () => {
         style={{ height: '100vh', scrollBehavior: 'auto' }}
       >
         {OPContent}
-      </ObjectPage>
+      </ObjectPage>,
     );
     cy.wait(100);
 
@@ -476,7 +476,7 @@ describe('ObjectPage', () => {
             </FlexBox>
           </ObjectPageSubSection>
         </ObjectPageSection>
-      </ObjectPage>
+      </ObjectPage>,
     );
     cy.wait(100);
 
@@ -518,7 +518,7 @@ describe('ObjectPage', () => {
             </FlexBox>
           </ObjectPageSubSection>
         </ObjectPageSection>
-      </ObjectPage>
+      </ObjectPage>,
     );
     cy.wait(100);
 
@@ -556,7 +556,7 @@ describe('ObjectPage', () => {
             </FlexBox>
           </ObjectPageSubSection>
         </ObjectPageSection>
-      </ObjectPage>
+      </ObjectPage>,
     );
     cy.wait(100);
 
@@ -580,7 +580,7 @@ describe('ObjectPage', () => {
         style={{ height: '100vh', scrollBehavior: 'auto' }}
       >
         {OPContent}
-      </ObjectPage>
+      </ObjectPage>,
     );
     cy.findByText('Job Information').should('not.exist');
     cy.findByTestId('section 1').should('be.visible');
@@ -620,7 +620,7 @@ describe('ObjectPage', () => {
         style={{ height: '100vh', scrollBehavior: 'auto' }}
       >
         {OPContent}
-      </ObjectPage>
+      </ObjectPage>,
     );
 
     cy.findByText('Job Information').should('not.exist');
@@ -653,7 +653,7 @@ describe('ObjectPage', () => {
     const TestComp = ({
       mode,
       height,
-      withFooter
+      withFooter,
     }: {
       height: CSSProperties['height'];
       withFooter?: boolean;
@@ -678,7 +678,7 @@ describe('ObjectPage', () => {
                   setShowCurrentHeights({
                     // rounding offset/scroll-height differs from browser to browser and maybe even from headless tests
                     offset: Math.floor(ref.current?.offsetHeight / 10) * 10,
-                    scroll: Math.floor(ref.current?.scrollHeight / 10) * 10
+                    scroll: Math.floor(ref.current?.scrollHeight / 10) * 10,
                   });
                 }}
               >
@@ -750,7 +750,7 @@ describe('ObjectPage', () => {
     const TestComp = ({
       mode,
       height,
-      withFooter
+      withFooter,
     }: {
       height: CSSProperties['height'];
       withFooter?: boolean;
@@ -775,7 +775,7 @@ describe('ObjectPage', () => {
                   setShowCurrentHeights({
                     // rounding offset/scroll-height differs from browser to browser and maybe even from headless tests
                     offset: Math.floor(ref.current?.offsetHeight / 10) * 10,
-                    scroll: Math.floor(ref.current?.scrollHeight / 10) * 10
+                    scroll: Math.floor(ref.current?.scrollHeight / 10) * 10,
                   });
                 }}
               >
@@ -965,16 +965,16 @@ describe('ObjectPage', () => {
     cy.mount(<TestComp />);
 
     cy.findByText(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla at id ex.'
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla at id ex.',
     ).should('have.css', 'white-space', 'nowrap');
 
     cy.findByText(
-      'Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend neque. Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend neque.'
+      'Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend neque. Etiam pellentesque lorem sed sagittis aliquam. Quisque semper orci risus, vel efficitur dui euismod aliquet. Morbi sapien sapien, rhoncus et rutrum nec, rhoncus id nisl. Cras non tincidunt enim, id eleifend neque.',
     ).should('have.css', 'white-space', 'normal');
 
     cy.findByText('toggle wrap').click();
     cy.findByText(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla at id ex.'
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, elementum et ante commodo, semper sollicitudin magna. Sed dapibus ut tortor quis varius. Sed luctus sem at nunc porta vulputate. Suspendisse lobortis arcu est, quis ultrices ipsum fermentum a. Vestibulum a ipsum placerat ligula gravida fringilla at id ex.',
     ).should('have.css', 'white-space', 'normal');
   });
 
@@ -1085,7 +1085,7 @@ describe('ObjectPage', () => {
         headerArea={DPContent}
         image="not_a_real_path.orly"
         imageShapeCircle
-      />
+      />,
     );
     cy.findByAltText('Company Logo')
       .should('be.visible')
@@ -1105,7 +1105,7 @@ describe('ObjectPage', () => {
           headerArea={DPContent}
           placeholder={<IllustratedMessage data-testid="no-data" name={IllustrationMessageType.NoData} />}
           mode={mode}
-        />
+        />,
       );
       cy.get('[ui5-illustrated-message]').should('be.visible');
       cy.get('[ui5-tabcontainer]').should('not.exist');
@@ -1119,7 +1119,7 @@ describe('ObjectPage', () => {
           mode={mode}
         >
           {OPContent}
-        </ObjectPage>
+        </ObjectPage>,
       );
       cy.get('[ui5-illustrated-message]').should('be.visible');
       cy.get('[ui5-tabcontainer]').should('not.exist');
@@ -1147,7 +1147,7 @@ describe('ObjectPage', () => {
           mode={mode}
         >
           {OPContent}
-        </ObjectPage>
+        </ObjectPage>,
       );
       cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').click();
       cy.get('@beforeNavigateSpy')
@@ -1165,7 +1165,7 @@ describe('ObjectPage', () => {
         .should('deep.equal', {
           sectionIndex: 3,
           sectionId: `~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`,
-          subSectionId: 'employment-job-information'
+          subSectionId: 'employment-job-information',
         });
       cy.get('@sectionChangeSpy').should('not.have.been.called');
     });
@@ -1185,7 +1185,7 @@ describe('ObjectPage', () => {
         <ObjectPageSection id="2">
           <CallBackComp />
         </ObjectPageSection>
-      </ObjectPage>
+      </ObjectPage>,
     );
     cy.findByText('Dummy').should('be.visible');
     cy.get('@cb').should('not.been.called');
@@ -1294,7 +1294,7 @@ describe('ObjectPage', () => {
               mode={mode}
               selectedSubSectionId={`employment-job-relationship`}
               onSelectedSectionChange={changeSpy}
-            />
+            />,
           );
 
           cy.findByText('employment-job-relationship-content').should('be.visible');
@@ -1302,7 +1302,7 @@ describe('ObjectPage', () => {
           cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').should('have.attr', 'aria-selected', 'true');
 
           cy.mount(
-            <TestComp {...props} mode={mode} selectedSectionId={`personal`} onSelectedSectionChange={changeSpy} />
+            <TestComp {...props} mode={mode} selectedSectionId={`personal`} onSelectedSectionChange={changeSpy} />,
           );
           cy.findByText('personal-connect-content').should('be.visible');
 
@@ -1353,7 +1353,7 @@ describe('ObjectPage', () => {
           cy.get('[ui5-tabcontainer]').findUi5TabByText('Personal').should('have.attr', 'aria-selected', 'true');
           cy.get('@change').should('have.callCount', callCount);
           callCount++;
-        }
+        },
       );
     });
   });
@@ -1457,7 +1457,7 @@ const OPContent = [
         <span data-testid="employment-job-relationship-content">employment-job-relationship-content</span>
       </div>
     </ObjectPageSubSection>
-  </ObjectPageSection>
+  </ObjectPageSection>,
 ];
 
 const HeaderWithLargeForm = (

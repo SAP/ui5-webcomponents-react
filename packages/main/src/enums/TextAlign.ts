@@ -4,5 +4,5 @@ export enum TextAlign {
   Left = 'Left',
   Right = 'Right',
   Center = 'Center',
-  Initial = 'Initial'
+  Initial = 'Initial',
 }

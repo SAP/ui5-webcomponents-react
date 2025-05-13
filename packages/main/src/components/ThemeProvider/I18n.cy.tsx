@@ -48,7 +48,7 @@ describe('I18nProvider', () => {
         >
           Switch to German
         </button>
-      </>
+      </>,
     );
     cy.findByText('1: test text resource');
     cy.findByText('2: test text resource');

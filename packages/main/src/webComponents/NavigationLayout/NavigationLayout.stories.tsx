@@ -33,12 +33,12 @@ const meta = {
   argTypes: {
     header: { control: { disable: true } },
     sideContent: { control: { disable: true } },
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
-    mode: NavigationLayoutMode.Auto
+    mode: NavigationLayoutMode.Auto,
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof NavigationLayout>;
 
 export default meta;
@@ -144,5 +144,5 @@ export const Default: Story = {
         </NavigationLayout>
       </div>
     );
-  }
+  },
 };

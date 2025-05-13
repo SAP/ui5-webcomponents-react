@@ -39,7 +39,7 @@ const SpecialCalendarDate = withWebComponent<SpecialCalendarDatePropTypes, Speci
   ['type', 'value'],
   [],
   [],
-  []
+  [],
 );
 
 SpecialCalendarDate.displayName = 'SpecialCalendarDate';

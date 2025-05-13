@@ -18,5 +18,5 @@ export enum FlexBoxDirection {
    * Items are placed right to left in `ltr` and left to right in `rtl`.<br />
    * <b>Note:</b> Corresponds to `row-reverse`.
    */
-  RowReverse = 'RowReverse'
+  RowReverse = 'RowReverse',
 }

@@ -16,10 +16,10 @@ const meta = {
   title: 'Data Display / NotificationList',
   component: NotificationList,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {},
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof NotificationList>;
 
 export default meta;
@@ -85,7 +85,7 @@ export const Default: Story = {
         </NotificationListItem>
       </NotificationList>
     );
-  }
+  },
 };
 
 export const Grouped: Story = {
@@ -149,5 +149,5 @@ export const Grouped: Story = {
         </NotificationListGroupItem>
       </NotificationList>
     );
-  }
+  },
 };

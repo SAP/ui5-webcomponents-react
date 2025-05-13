@@ -65,7 +65,7 @@ const FormGroup = withWebComponent<FormGroupPropTypes, FormGroupDomRef>(
   ['columnSpan', 'headerLevel', 'headerText'],
   [],
   [],
-  []
+  [],
 );
 
 FormGroup.displayName = 'FormGroup';

@@ -10,14 +10,14 @@ const meta = {
   component: Button,
   argTypes: {
     children: { control: 'text' },
-    badge: { control: { disable: true } }
+    badge: { control: { disable: true } },
   },
   args: {
     design: ButtonDesign.Default,
     icon: employeeIcon,
-    children: 'Button Text'
+    children: 'Button Text',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -40,5 +40,5 @@ export const WithBadge: Story = {
         </Button>
       </>
     );
-  }
+  },
 };

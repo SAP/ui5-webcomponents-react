@@ -18,7 +18,7 @@ import {
   GROUP,
   SORT_ASCENDING,
   SORT_DESCENDING,
-  UNGROUP
+  UNGROUP,
 } from '../../../../i18n/i18n-defaults.js';
 import { stopPropagation } from '../../../../internal/stopPropagation.js';
 import { getUi5TagWithSuffix } from '../../../../internal/utils.js';
@@ -60,7 +60,7 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
     if (showFilter) {
       return {
         iconDimensions: `var(${getScopedVarName('--_ui5_list_item_icon_size')})`,
-        fontSize: `var(${getScopedVarName('--_ui5_list_item_title_size')})`
+        fontSize: `var(${getScopedVarName('--_ui5_list_item_title_size')})`,
       };
     }
   }, [showFilter]);
@@ -75,8 +75,8 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
           onSort(
             enrichEventWithDetails(e, {
               column,
-              sortDirection: sortType
-            })
+              sortDirection: sortType,
+            }),
           );
         }
         break;
@@ -86,8 +86,8 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
           onSort(
             enrichEventWithDetails(e, {
               column,
-              sortDirection: sortType
-            })
+              sortDirection: sortType,
+            }),
           );
         }
         break;
@@ -97,8 +97,8 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
           onSort(
             enrichEventWithDetails(e, {
               column,
-              sortDirection: sortType
-            })
+              sortDirection: sortType,
+            }),
           );
         }
         break;
@@ -116,8 +116,8 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
             enrichEventWithDetails(e, {
               column,
               groupedColumns,
-              isGrouped: willGroup
-            })
+              isGrouped: willGroup,
+            }),
           );
         }
         break;
@@ -225,14 +225,14 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
                 mode={IconMode.Decorative}
                 style={{
                   minWidth: filterStyles.iconDimensions,
-                  minHeight: filterStyles.iconDimensions
+                  minHeight: filterStyles.iconDimensions,
                 }}
               />
               <Text
                 maxLines={1}
                 className={classNames.filterText}
                 style={{
-                  fontSize: filterStyles.fontSize
+                  fontSize: filterStyles.fontSize,
                 }}
                 id={`${uniqueId}-filter-text`}
               >
@@ -240,7 +240,7 @@ export const ColumnHeaderModal = (instance: TableInstanceWithPopoverProps) => {
               </Text>
               {column.render(RenderColumnTypes.Filter, {
                 accessibleNameRef: `${uniqueId}-filter-text`,
-                popoverRef: ref
+                popoverRef: ref,
               })}
             </FlexBox>
           </ListItemCustom>

@@ -72,7 +72,7 @@ const Label = withWebComponent<LabelPropTypes, LabelDomRef>(
   ['for', 'wrappingType'],
   ['required', 'showColon'],
   [],
-  []
+  [],
 );
 
 Label.displayName = 'Label';

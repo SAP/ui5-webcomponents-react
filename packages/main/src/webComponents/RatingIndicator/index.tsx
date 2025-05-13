@@ -127,7 +127,7 @@ const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicat
   ['accessibleName', 'accessibleNameRef', 'max', 'size', 'tooltip', 'value'],
   ['disabled', 'readonly', 'required'],
   [],
-  ['change']
+  ['change'],
 );
 
 RatingIndicator.displayName = 'RatingIndicator';

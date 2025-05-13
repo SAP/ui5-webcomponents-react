@@ -3,7 +3,7 @@ import type { AnalyticalTableState, ReactTableHooks } from '../types/index.js';
 
 const popInVisibleColumnsDeps: ReactTableHooks['visibleColumnsDeps'][0] = (deps, { instance: { state } }) => [
   ...deps,
-  state.tableClientWidth
+  state.tableClientWidth,
 ];
 
 const popInVisibleColumns: ReactTableHooks['visibleColumns'][0] = (cols, { instance }) => {
@@ -21,7 +21,7 @@ const popInVisibleColumns: ReactTableHooks['visibleColumns'][0] = (cols, { insta
       id: item.id ?? item.accessor,
       column: item,
       // initially visibleColumns don't include the defaults
-      popinDisplay: item.popinDisplay || AnalyticalTablePopinDisplay.Block
+      popinDisplay: item.popinDisplay || AnalyticalTablePopinDisplay.Block,
     }));
 
   dispatch({ type: 'SET_POPIN_COLUMNS', payload: popInColumns });
@@ -31,7 +31,7 @@ const popInVisibleColumns: ReactTableHooks['visibleColumns'][0] = (cols, { insta
       !popInColumns.some((item) => item.id === (col.id ?? col.accessor)) &&
       (Object.prototype.hasOwnProperty.call(col, 'responsiveMinWidth')
         ? !tableClientWidth || tableClientWidth >= col.responsiveMinWidth
-        : true)
+        : true),
   );
 };
 

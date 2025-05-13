@@ -18,12 +18,12 @@ const meta = {
   component: Tree,
   argTypes: {
     children: { control: { disable: true } },
-    header: { control: { disable: true } }
+    header: { control: { disable: true } },
   },
   args: {
-    selectionMode: ListSelectionMode.None
+    selectionMode: ListSelectionMode.None,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Tree>;
 
 export default meta;
@@ -64,7 +64,7 @@ export const Default: Story = {
         />
       </Tree>
     );
-  }
+  },
 };
 
 export const LazyLoading: Story = {
@@ -81,7 +81,7 @@ export const LazyLoading: Story = {
             <>
               <TreeItem text="Tree 3.1" />
               <TreeItem text="Tree 3.2" />
-            </>
+            </>,
           );
           e.detail.item.toggle();
         }, 3000);
@@ -101,5 +101,5 @@ export const LazyLoading: Story = {
         </Tree>
       </BusyIndicator>
     );
-  }
+  },
 };

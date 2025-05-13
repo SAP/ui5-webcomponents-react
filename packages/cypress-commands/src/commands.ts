@@ -168,7 +168,7 @@ Cypress.Commands.add(
       .findShadowInput()
       .wait(delay)
       .type(text, { force: true, ...options });
-  }
+  },
 );
 
 Cypress.Commands.add('typeIntoUi5TextArea', { prevSubject: 'element' }, (subject, text, options = {}) => {
@@ -250,7 +250,7 @@ Cypress.Commands.add('clickDropdownMenuItem', { prevSubject: 'element' }, (subje
         key: 'Enter',
         code: 'Enter',
         which: 13,
-        keyCode: 13
+        keyCode: 13,
       });
     } else {
       cy.wrap(domRef).click(options);

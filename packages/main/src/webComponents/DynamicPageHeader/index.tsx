@@ -44,7 +44,7 @@ const DynamicPageHeader = withWebComponent<DynamicPageHeaderPropTypes, DynamicPa
   [],
   [],
   [],
-  []
+  [],
 );
 
 DynamicPageHeader.displayName = 'DynamicPageHeader';

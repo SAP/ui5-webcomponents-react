@@ -11,14 +11,14 @@ const meta = {
     tokens: { control: { disable: true } },
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
-    valueStateMessage: { control: { disable: true } }
+    valueStateMessage: { control: { disable: true } },
   },
   args: {
     type: InputType.Text,
     valueState: ValueState.None,
-    style: { width: '400px' }
+    style: { width: '400px' },
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof MultiInput>;
 
 export default meta;
@@ -47,5 +47,5 @@ export const Default: Story = {
         }
       />
     );
-  }
+  },
 };

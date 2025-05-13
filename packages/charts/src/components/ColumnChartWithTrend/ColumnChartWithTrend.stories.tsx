@@ -11,23 +11,23 @@ const meta = {
     dimensions: [
       {
         accessor: 'name',
-        formatter: (d) => `${d} 2019`
-      }
+        formatter: (d) => `${d} 2019`,
+      },
     ],
     measures: [
       {
         accessor: 'users',
         label: 'Users',
         formatter: (val) => val.toLocaleString(),
-        type: 'line'
+        type: 'line',
       },
       {
         accessor: 'sessions',
         label: 'Active Sessions',
-        type: 'bar'
-      }
-    ]
-  }
+        type: 'bar',
+      },
+    ],
+  },
 } satisfies Meta<typeof ColumnChartWithTrend>;
 
 export default meta;
@@ -37,10 +37,10 @@ export const Default: Story = {};
 
 export const LoadingPlaceholder: Story = {
   args: {
-    dataset: []
-  }
+    dataset: [],
+  },
 };
 
 export const WithCustomLegendConfig: Story = {
-  args: legendConfig
+  args: legendConfig,
 };

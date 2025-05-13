@@ -83,7 +83,7 @@ const ComboBoxItemGroup = withWebComponent<ComboBoxItemGroupPropTypes, ComboBoxI
   ['headerAccessibleName', 'headerText'],
   [],
   ['header'],
-  ['move-over', 'move']
+  ['move-over', 'move'],
 );
 
 ComboBoxItemGroup.displayName = 'ComboBoxItemGroup';

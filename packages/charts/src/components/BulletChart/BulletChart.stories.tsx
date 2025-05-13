@@ -7,11 +7,11 @@ const meta = {
   component: BulletChart,
   argTypes: {
     dataset: {
-      control: { disable: true }
+      control: { disable: true },
     },
     children: {
-      control: { disable: true }
-    }
+      control: { disable: true },
+    },
   },
   args: {
     dataset: complexBulletDataset,
@@ -20,28 +20,28 @@ const meta = {
       {
         accessor: 'name',
         formatter: (d) => `${d} 2019`,
-        interval: 0
-      }
+        interval: 0,
+      },
     ],
     measures: [
       {
         accessor: 'sessions',
         label: 'Active Sessions',
-        type: 'primary'
+        type: 'primary',
       },
       {
         accessor: 'users',
         label: 'Users',
-        type: 'additional'
+        type: 'additional',
       },
       {
         accessor: 'volume',
         label: 'Volume',
         formatter: (val) => val.toLocaleString(),
-        type: 'comparison'
-      }
-    ]
-  }
+        type: 'comparison',
+      },
+    ],
+  },
 } satisfies Meta<typeof BulletChart>;
 
 export default meta;
@@ -59,21 +59,21 @@ export const WithCustomSize: Story = {
         formatter: (element) => `${element / 10}`,
         type: 'additional',
         label: 'Number of users',
-        width: 10
+        width: 10,
       },
       {
         accessor: 'sessions',
         type: 'primary',
         width: 10,
-        opacity: 0.5
+        opacity: 0.5,
       },
       {
         accessor: 'volume',
         type: 'comparison',
-        width: 10
-      }
-    ]
-  }
+        width: 10,
+      },
+    ],
+  },
 };
 
 export const WithHighlightedMeasures: Story = {
@@ -82,14 +82,14 @@ export const WithHighlightedMeasures: Story = {
       {
         accessor: 'name',
         formatter: (d) => `${d} 2019`,
-        interval: 0
-      }
+        interval: 0,
+      },
     ],
     measures: [
       {
         accessor: 'sessions',
         label: 'Active Sessions',
-        type: 'primary'
+        type: 'primary',
       },
       {
         accessor: 'users',
@@ -99,28 +99,28 @@ export const WithHighlightedMeasures: Story = {
           if (value > 100) {
             return 'red';
           }
-        }
+        },
       },
       {
         accessor: 'volume',
         label: 'Volume',
         formatter: (val) => val.toLocaleString(),
-        type: 'comparison'
-      }
-    ]
-  }
+        type: 'comparison',
+      },
+    ],
+  },
 };
 
 export const LoadingPlaceholder: Story = {
   args: {
-    dataset: []
-  }
+    dataset: [],
+  },
 };
 
 export const WithCustomTooltipConfig: Story = {
-  args: tooltipConfig
+  args: tooltipConfig,
 };
 
 export const WithCustomLegendConfig: Story = {
-  args: legendConfig
+  args: legendConfig,
 };

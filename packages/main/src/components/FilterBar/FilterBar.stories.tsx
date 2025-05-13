@@ -21,7 +21,7 @@ import {
   StepInput,
   Switch,
   Title,
-  Token
+  Token,
 } from '../../webComponents/index.js';
 import { Text } from '../../webComponents/Text/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
@@ -41,7 +41,7 @@ const meta = {
         FilterBar
       </Title>
     ),
-    filterContainerWidth: '13.125rem'
+    filterContainerWidth: '13.125rem',
   },
   argTypes: {
     activeFiltersCount: { control: 'number' },
@@ -49,8 +49,8 @@ const meta = {
     header: { control: { disable: true } },
     children: { control: { disable: true } },
     filterContainerWidth: { control: 'text' },
-    as: { control: { disable: true } }
-  }
+    as: { control: { disable: true } },
+  },
 } satisfies Meta<typeof FilterBar>;
 
 export default meta;
@@ -137,7 +137,7 @@ export const Default: Story = {
         </FilterGroupItem>
       </FilterBar>
     );
-  }
+  },
 };
 
 const initialState = {
@@ -146,7 +146,7 @@ const initialState = {
   currency: 'USD',
   date: '',
   dateRange: '',
-  search: ''
+  search: '',
 };
 
 function reducer(state, action) {
@@ -325,7 +325,7 @@ export const WithLogic: Story = {
         </FlexBox>
       </>
     );
-  }
+  },
 };
 
 export const InDynamicPage: Story = {
@@ -450,14 +450,14 @@ export const InDynamicPage: Story = {
             height: '200px',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
           }}
         >
           <Text style={{ color: 'white' }}>Content</Text>
         </div>
       </DynamicPage>
     );
-  }
+  },
 };
 
 export const WithReordering: Story = {
@@ -468,7 +468,7 @@ export const WithReordering: Story = {
       '1': true,
       '2': true,
       '3': true,
-      '5': true
+      '5': true,
     });
     const [orderedFilterKeys, setOrderedFilterKeys] = useState(['0', '1', '2', '3', '4', '5']);
 
@@ -478,7 +478,7 @@ export const WithReordering: Story = {
         e.detail.selectedFilterKeys.reduce((acc, cur) => {
           acc[cur] = true;
           return acc;
-        }, {})
+        }, {}),
       );
     };
 
@@ -559,7 +559,7 @@ export const WithReordering: Story = {
         })}
       </FilterBar>
     );
-  }
+  },
 };
 
 export const IdentifyInputEventOrigin: Story = {
@@ -593,9 +593,9 @@ export const IdentifyInputEventOrigin: Story = {
   );
 };
 
-        `
-      }
-    }
+        `,
+      },
+    },
   },
   render(args) {
     const [origin, setOrigin] = useState('');
@@ -618,5 +618,5 @@ export const IdentifyInputEventOrigin: Story = {
         <Text>{origin}</Text>
       </>
     );
-  }
+  },
 };

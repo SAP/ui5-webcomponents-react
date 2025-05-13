@@ -12,7 +12,7 @@ export const usePrepareDimensionsAndMeasures = <DimensionConfig = any, MeasureCo
   rawDimensions,
   rawMeasures,
   dimensionDefaults = {},
-  measureDefaults = {}
+  measureDefaults = {},
 ) => {
   const dimensions: DimensionConfig = useMemo(
     () =>
@@ -20,10 +20,10 @@ export const usePrepareDimensionsAndMeasures = <DimensionConfig = any, MeasureCo
         return {
           ...dimensionDefaults,
           ...dimension,
-          reactKey: getAccessorReactKey(dimension)
+          reactKey: getAccessorReactKey(dimension),
         };
       }),
-    [rawDimensions, dimensionDefaults]
+    [rawDimensions, dimensionDefaults],
   );
 
   const measures: MeasureConfig = useMemo(
@@ -32,10 +32,10 @@ export const usePrepareDimensionsAndMeasures = <DimensionConfig = any, MeasureCo
         return {
           ...measureDefaults,
           ...measure,
-          reactKey: getAccessorReactKey(measure)
+          reactKey: getAccessorReactKey(measure),
         };
       }),
-    [rawMeasures, measureDefaults]
+    [rawMeasures, measureDefaults],
   );
 
   return { dimensions, measures };

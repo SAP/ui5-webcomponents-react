@@ -335,11 +335,11 @@ const MultiInput = withWebComponent<MultiInputPropTypes, MultiInputDomRef>(
     'placeholder',
     'type',
     'value',
-    'valueState'
+    'valueState',
   ],
   ['disabled', 'noTypeahead', 'open', 'readonly', 'required', 'showClearIcon', 'showSuggestions', 'showValueHelpIcon'],
   ['icon', 'tokens', 'valueStateMessage'],
-  ['change', 'close', 'input', 'open', 'select', 'selection-change', 'token-delete', 'value-help-trigger']
+  ['change', 'close', 'input', 'open', 'select', 'selection-change', 'token-delete', 'value-help-trigger'],
 );
 
 MultiInput.displayName = 'MultiInput';

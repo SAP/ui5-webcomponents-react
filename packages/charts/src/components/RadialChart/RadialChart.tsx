@@ -61,7 +61,7 @@ export interface RadialChartProps
       activePayloads: Record<string, unknown>[];
       dataIndex: number;
       value: number;
-    }>
+    }>,
   ) => void;
   /**
    * `noAnimation` disables all chart animations when set to `true`.
@@ -86,7 +86,7 @@ const radialBarBackground = { fill: ThemingParameters.sapContent_ImagePlaceholde
 const defaultDisplayValueStyles = {
   fontSize: '1.25rem',
   fill: ThemingParameters.sapTextColor,
-  fontFamily: ThemingParameters.sapFontFamily
+  fontFamily: ThemingParameters.sapFontFamily,
 };
 /**
  * Displays a ring chart highlighting a current status.
@@ -120,8 +120,8 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
         enrichEventWithDetails(event, {
           value: payload.value,
           payload: payload.payload,
-          dataIndex: i
-        })
+          dataIndex: i,
+        }),
       );
     }
   };

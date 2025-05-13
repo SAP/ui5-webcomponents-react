@@ -231,7 +231,7 @@ const TreeItemCustom = withWebComponent<TreeItemCustomPropTypes, TreeItemCustomD
   ['accessibilityAttributes', 'accessibleName', 'additionalTextState', 'highlight', 'icon', 'tooltip', 'type'],
   ['expanded', 'hasChildren', 'hideSelectionElement', 'indeterminate', 'movable', 'navigated', 'selected'],
   ['content', 'deleteButton', 'image'],
-  ['detail-click']
+  ['detail-click'],
 );
 
 TreeItemCustom.displayName = 'TreeItemCustom';

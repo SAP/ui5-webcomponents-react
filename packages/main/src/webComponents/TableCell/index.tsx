@@ -39,7 +39,7 @@ const TableCell = withWebComponent<TableCellPropTypes, TableCellDomRef>(
   ['horizontalAlign'],
   [],
   [],
-  []
+  [],
 );
 
 TableCell.displayName = 'TableCell';

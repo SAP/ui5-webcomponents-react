@@ -5,25 +5,25 @@ import { cypressPassThroughTestsFactory, testChartLegendConfig } from '@/cypress
 const dimensions = [
   {
     accessor: 'name',
-    interval: 0
-  }
+    interval: 0,
+  },
 ];
 const measures = [
   {
     accessor: 'users',
     label: 'Users',
-    formatter: (val: number) => val.toLocaleString('en')
+    formatter: (val: number) => val.toLocaleString('en'),
   },
   {
     accessor: 'sessions',
     label: 'Active Sessions',
     formatter: (val) => `${val} sessions`,
-    hideDataLabel: true
+    hideDataLabel: true,
   },
   {
     accessor: 'volume',
-    label: 'Vol.'
-  }
+    label: 'Vol.',
+  },
 ];
 
 describe('RadarChart', () => {
@@ -44,7 +44,7 @@ describe('RadarChart', () => {
         measures={measures}
         onClick={onClick}
         onLegendClick={onLegendClick}
-      />
+      />,
     );
 
     cy.contains('January').click();
@@ -57,9 +57,9 @@ describe('RadarChart', () => {
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          dataKey: 'users'
-        })
-      })
+          dataKey: 'users',
+        }),
+      }),
     );
   });
 

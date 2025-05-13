@@ -16,7 +16,7 @@ import {
   ERROR,
   SUCCESS,
   WARNING,
-  INFORMATION
+  INFORMATION,
 } from '../../i18n/i18n-defaults.js';
 import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';
 import { Button } from '../../webComponents/index.js';

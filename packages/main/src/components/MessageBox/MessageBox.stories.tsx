@@ -11,24 +11,24 @@ const meta = {
   component: MessageBox,
   argTypes: {
     header: {
-      control: { disable: true }
+      control: { disable: true },
     },
     actions: {
-      control: { disable: true }
+      control: { disable: true },
     },
     icon: {
-      control: { disable: true }
-    }
+      control: { disable: true },
+    },
   },
   args: {
     open: isChromatic,
     type: MessageBoxType.Confirm,
-    children: 'You can close the MessageBox by pressing "Escape" or selecting one of the footer buttons.'
+    children: 'You can close the MessageBox by pressing "Escape" or selecting one of the footer buttons.',
   },
   parameters: {
-    chromatic: { delay: 1000 }
+    chromatic: { delay: 1000 },
   },
-  tags: ['package:@ui5/webcomponents', 'cem-module:Dialog']
+  tags: ['package:@ui5/webcomponents', 'cem-module:Dialog'],
 } satisfies Meta<typeof MessageBox>;
 
 export default meta;
@@ -53,7 +53,7 @@ export const Default: Story = {
         <MessageBox {...args} open={open} onClose={handleClose} />
       </>
     );
-  }
+  },
 };
 
 export const WithCustomActions: Story = {
@@ -64,8 +64,8 @@ export const WithCustomActions: Story = {
       MessageBoxAction.Cancel,
       <Button key="0" id="custom-action">
         Custom Button
-      </Button>
-    ]
+      </Button>,
+    ],
   },
   render(args) {
     const [open, setOpen] = useState(false);
@@ -85,5 +85,5 @@ export const WithCustomActions: Story = {
         <MessageBox {...args} open={open} onClose={handleClose} />
       </>
     );
-  }
+  },
 };

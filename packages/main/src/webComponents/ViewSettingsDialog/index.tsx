@@ -4,7 +4,7 @@ import '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
 import type {
   ViewSettingsDialogCancelEventDetail,
   ViewSettingsDialogConfirmEventDetail,
-  VSDSettings
+  VSDSettings,
 } from '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
@@ -155,7 +155,7 @@ const ViewSettingsDialog = withWebComponent<ViewSettingsDialogPropTypes, ViewSet
   [],
   ['open', 'sortDescending'],
   ['filterItems', 'sortItems'],
-  ['before-open', 'cancel', 'close', 'confirm', 'open']
+  ['before-open', 'cancel', 'close', 'confirm', 'open'],
 );
 
 ViewSettingsDialog.displayName = 'ViewSettingsDialog';

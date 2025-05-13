@@ -34,12 +34,12 @@ describe('AnalyticalCardHeader', () => {
     [ValueColor.Error, ThemingParameters.sapNegativeTextColor],
     [ValueColor.Critical, ThemingParameters.sapCriticalTextColor],
     [ValueColor.Good, ThemingParameters.sapPositiveTextColor],
-    [ValueColor.Neutral, ThemingParameters.sapNeutralTextColor]
+    [ValueColor.Neutral, ThemingParameters.sapNeutralTextColor],
   ].forEach(([color, cssVar]: [AnalyticalCardHeaderPropTypes['state'], string]) => {
     it(`Header: ValueColor: ${color}`, () => {
       const cssVarValue = getComputedStyle(document.documentElement).getPropertyValue(cssVar.match(/(--)[^)]+/)[0]);
       cy.mount(
-        <TestComp header={<AnalyticalCardHeader trend={DeviationIndicator.Down} value="123" state={color} />} />
+        <TestComp header={<AnalyticalCardHeader trend={DeviationIndicator.Down} value="123" state={color} />} />,
       );
       const rgbVal = getRGBColor(cssVarValue);
       const rgbValString = `rgb(${rgbVal.r}, ${rgbVal.g}, ${rgbVal.b})`;
@@ -62,7 +62,7 @@ describe('AnalyticalCardHeader', () => {
             <NumericSideIndicator titleText="Deviation" number={50} state={ValueColor.Error} />
           </AnalyticalCardHeader>
         }
-      />
+      />,
     );
     cy.findByText('Title').should('be.visible');
     cy.findByText('Subtitle').should('be.visible');

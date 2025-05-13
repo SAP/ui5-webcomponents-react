@@ -95,7 +95,7 @@ const WizardStep = withWebComponent<WizardStepPropTypes, WizardStepDomRef>(
   ['icon', 'subtitleText', 'titleText'],
   ['branching', 'disabled', 'selected'],
   [],
-  []
+  [],
 );
 
 WizardStep.displayName = 'WizardStep';

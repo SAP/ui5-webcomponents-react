@@ -63,7 +63,7 @@ const TableRowAction = withWebComponent<TableRowActionPropTypes, TableRowActionD
   ['icon', 'text'],
   ['invisible'],
   [],
-  ['click']
+  ['click'],
 );
 
 TableRowAction.displayName = 'TableRowAction';

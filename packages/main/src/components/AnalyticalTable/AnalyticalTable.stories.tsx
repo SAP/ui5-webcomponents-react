@@ -15,7 +15,7 @@ import {
   FlexBoxAlignItems,
   FlexBoxDirection,
   FlexBoxJustifyContent,
-  TextAlign
+  TextAlign,
 } from '../../enums/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { IllustratedMessage } from '../../webComponents/IllustratedMessage/index.js';
@@ -41,7 +41,7 @@ const kitchenSinkArgs = {
       width: 500,
       headerTooltip: 'Full Name', // A more extensive description!
       accessor: 'name', // String-based value accessors!
-      autoResizable: true // Double clicking the resize bar auto resizes the column!
+      autoResizable: true, // Double clicking the resize bar auto resizes the column!
     },
     {
       Header: 'Age',
@@ -52,13 +52,13 @@ const kitchenSinkArgs = {
       disableGroupBy: true,
       disableSortBy: false,
       disableFilters: false,
-      className: 'superCustomClass'
+      className: 'superCustomClass',
     },
     {
       Header: 'Friend Name',
       accessor: 'friend.name',
       width: 300,
-      autoResizable: true
+      autoResizable: true,
     },
     {
       Header: () => <span>Friend Age</span>,
@@ -89,7 +89,7 @@ const kitchenSinkArgs = {
             <Option value="false">Can't Drink</Option>
           </Select>
         );
-      }
+      },
     },
     {
       id: 'actions',
@@ -116,8 +116,8 @@ const kitchenSinkArgs = {
       },
       cellLabel: ({ cell }) => {
         return `${cell.cellLabel} press TAB to focus active elements inside this cell`;
-      }
-    }
+      },
+    },
   ],
   filterable: true,
   alternateRowColor: true,
@@ -145,46 +145,46 @@ const kitchenSinkArgs = {
   subRowsKey: 'subRows',
   visibleRowCountMode: AnalyticalTableVisibleRowCountMode.Interactive,
   visibleRows: 5,
-  withRowHighlight: true
+  withRowHighlight: true,
 };
 
 const meta = {
   title: 'Data Display / AnalyticalTable',
   component: AnalyticalTable,
   parameters: {
-    chromatic: { disableSnapshot: true }
+    chromatic: { disableSnapshot: true },
   },
   args: {
     data: dataLarge,
     columns: [
       {
         Header: 'Name',
-        accessor: 'name'
+        accessor: 'name',
       },
       {
         Header: 'Age',
         accessor: 'age',
-        hAlign: 'End'
+        hAlign: 'End',
       },
       {
         Header: 'Friend Name',
-        accessor: 'friend.name'
+        accessor: 'friend.name',
       },
       {
         Header: 'Friend Age',
         accessor: 'friend.age',
-        hAlign: 'End'
-      }
+        hAlign: 'End',
+      },
     ],
     highlightField: 'status',
-    subRowsKey: 'subRows'
+    subRowsKey: 'subRows',
   },
   argTypes: {
     data: { control: { disable: true } },
     columns: {
       control: { disable: true },
       description:
-        'Defines the columns array where you can define the configuration for each column.<br />Please refer to the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.<br /><br /><b>Must be memoized!</b>'
+        'Defines the columns array where you can define the configuration for each column.<br />Please refer to the [AnalyticalTableColumnDefinition interface](#column-properties) for a full list of options.<br /><br /><b>Must be memoized!</b>',
     },
     tableHooks: { control: { disable: true } },
     NoDataComponent: { control: { disable: true } },
@@ -192,11 +192,11 @@ const meta = {
     tableInstance: { control: { disable: true } },
     header: { control: { disable: true } },
     highlightField: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     groupBy: { control: { disable: true } },
-    columnOrder: { control: { disable: true } }
-  }
+    columnOrder: { control: { disable: true } },
+  },
 } satisfies Meta<typeof AnalyticalTable>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -216,12 +216,12 @@ export const Default: Story = {};
 export const TreeTable: Story = {
   args: {
     data: dataTree,
-    isTreeTable: true
+    isTreeTable: true,
   },
   render(args, context) {
     const { viewMode } = context;
     return viewMode === 'story' ? <AnalyticalTable {...args} /> : <ToggleableTable {...args} />;
-  }
+  },
 };
 
 export const InfiniteScrolling: Story = {
@@ -230,7 +230,7 @@ export const InfiniteScrolling: Story = {
     infiniteScrollThreshold: 10,
     loadingDelay: 500,
     header: 'Scroll to load more data',
-    reactTableOptions: { autoResetSelectedRows: false }
+    reactTableOptions: { autoResetSelectedRows: false },
   },
   render: (args, context) => {
     const [data, setData] = useState(args.data.slice(0, 50));
@@ -253,7 +253,7 @@ export const InfiniteScrolling: Story = {
     ) : (
       <ToggleableTable {...args} data={data} onLoadMore={onLoadMore} loading={loading} />
     );
-  }
+  },
 };
 
 export const Subcomponents: Story = {
@@ -311,7 +311,7 @@ export const Subcomponents: Story = {
     ) : (
       <ToggleableTable {...args} renderRowSubComponent={renderRowSubComponent} />
     );
-  }
+  },
 };
 
 export const DynamicRowCount = {
@@ -320,11 +320,11 @@ export const DynamicRowCount = {
     containerHeight: {
       options: [250, 500, 750, 1000],
       control: {
-        type: 'radio'
+        type: 'radio',
       },
       description:
-        'Select an option to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.'
-    }
+        'Select an option to change the height of the surrounding container of the table (in `px`). <br /> __Note__: This is not an actual prop of the table.',
+    },
   },
   render: (args, context) => {
     const [data, setData] = useState(args.data);
@@ -362,7 +362,7 @@ export const DynamicRowCount = {
         </div>
       </>
     );
-  }
+  },
 };
 
 export const ResponsiveColumns: Story = {
@@ -376,7 +376,7 @@ export const ResponsiveColumns: Story = {
     columns: [
       {
         Header: 'Name',
-        accessor: 'name'
+        accessor: 'name',
       },
       {
         disableSortBy: true,
@@ -384,7 +384,7 @@ export const ResponsiveColumns: Story = {
         responsiveMinWidth: 601,
         PopInHeader: 'Custom Header Text (age)',
         Header: 'Age',
-        accessor: 'age'
+        accessor: 'age',
       },
       {
         disableSortBy: true,
@@ -394,7 +394,7 @@ export const ResponsiveColumns: Story = {
         PopInHeader: (instance) => {
           return <div style={{ color: 'red' }}>Friend Name (custom)</div>;
         },
-        accessor: 'friend.name'
+        accessor: 'friend.name',
       },
       { disableSortBy: true, responsiveMinWidth: 401, Header: 'Friend Age', accessor: 'friend.age' },
       {
@@ -412,7 +412,7 @@ export const ResponsiveColumns: Story = {
               <Button icon="delete" />
             </FlexBox>
           );
-        }
+        },
       },
       {
         id: 'popinDisplay',
@@ -422,25 +422,25 @@ export const ResponsiveColumns: Story = {
         popinDisplay: AnalyticalTablePopinDisplay.Block,
         Cell: () => {
           return <Text maxLines={1}>Using popinDisplay: 'Block'</Text>;
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
   argTypes: {
     // @ts-expect-error: custom prop for the controls table
     containerWidth: {
       options: [400, 600, 800, 'auto'],
       control: {
-        type: 'radio'
+        type: 'radio',
       },
       description:
-        'Select an option to change the width of the surrounding container of the table (in `px`). <br /> __Note__: This is not a prop of the table.'
-    }
+        'Select an option to change the width of the surrounding container of the table (in `px`). <br /> __Note__: This is not a prop of the table.',
+    },
   },
   render: (args, context) => {
     const [columns, setColumns] = useState(args.columns);
     const [popinDisplay, setPopinDisplay] = useState<AnalyticalTableColumnDefinition['popinDisplay']>(
-      AnalyticalTablePopinDisplay.Block
+      AnalyticalTablePopinDisplay.Block,
     );
     const { containerWidth: _0, ...tableArgs } = args;
 
@@ -456,8 +456,8 @@ export const ResponsiveColumns: Story = {
             popinDisplay: popinDisplay,
             Cell: () => {
               return <Text maxLines={1}>Using popinDisplay: {popinDisplay}</Text>;
-            }
-          }
+            },
+          },
         ];
       });
     }, [popinDisplay]);
@@ -465,7 +465,7 @@ export const ResponsiveColumns: Story = {
     return (
       <div
         style={{
-          width: args.containerWidth && typeof args.containerWidth === 'number' ? `${args.containerWidth}px` : 'auto'
+          width: args.containerWidth && typeof args.containerWidth === 'number' ? `${args.containerWidth}px` : 'auto',
         }}
       >
         <Label showColon style={{ marginInlineEnd: '0.5rem' }}>
@@ -500,7 +500,7 @@ export const ResponsiveColumns: Story = {
         )}
       </div>
     );
-  }
+  },
 };
 
 export const NavigationIndicator: Story = {
@@ -514,20 +514,20 @@ export const NavigationIndicator: Story = {
       (row) => {
         return selectedRow?.id === row.id;
       },
-      [selectedRow]
+      [selectedRow],
     );
     return context.viewMode === 'story' ? (
       <AnalyticalTable {...args} markNavigatedRow={markNavigatedRow} onRowSelect={onRowSelect} />
     ) : (
       <ToggleableTable {...args} markNavigatedRow={markNavigatedRow} onRowSelect={onRowSelect} />
     );
-  }
+  },
 };
 
 export const CustomFilter: Story = {
   args: {
     data: dataLarge,
-    filterable: true
+    filterable: true,
   },
   render: (args, context) => {
     const filterFn = useCallback((rows, accessor, filterValue) => {
@@ -560,21 +560,21 @@ export const CustomFilter: Story = {
                 })}
               </MultiComboBox>
             );
-          }
+          },
         },
         {
           Header: 'Age',
-          accessor: 'age'
-        }
+          accessor: 'age',
+        },
       ],
-      []
+      [],
     );
     return context.viewMode === 'story' ? (
       <AnalyticalTable {...args} columns={columns} />
     ) : (
       <ToggleableTable {...args} columns={columns} />
     );
-  }
+  },
 };
 
 export const NoData: Story = {
@@ -617,12 +617,12 @@ export const NoData: Story = {
         )}
       </>
     );
-  }
+  },
 };
 
 export const KitchenSink: Story = {
   args: kitchenSinkArgs,
   render(args, context) {
     return context.viewMode === 'story' ? <AnalyticalTable {...args} /> : <ToggleableTable {...args} />;
-  }
+  },
 };

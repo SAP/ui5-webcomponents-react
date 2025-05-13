@@ -169,7 +169,7 @@ const RangeSlider = withWebComponent<RangeSliderPropTypes, RangeSliderDomRef>(
   ['accessibleName', 'endValue', 'labelInterval', 'max', 'min', 'name', 'startValue', 'step'],
   ['disabled', 'editableTooltip', 'showTickmarks', 'showTooltip'],
   [],
-  ['change', 'input']
+  ['change', 'input'],
 );
 
 RangeSlider.displayName = 'RangeSlider';

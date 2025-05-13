@@ -88,7 +88,7 @@ const TableGrowing = withWebComponent<TableGrowingPropTypes, TableGrowingDomRef>
   ['mode', 'subtext', 'text'],
   [],
   [],
-  ['load-more']
+  ['load-more'],
 );
 
 TableGrowing.displayName = 'TableGrowing';

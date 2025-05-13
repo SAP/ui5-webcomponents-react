@@ -33,7 +33,7 @@ const SuggestionItem = withWebComponent<SuggestionItemPropTypes, SuggestionItemD
   ['additionalText', 'text'],
   [],
   [],
-  []
+  [],
 );
 
 SuggestionItem.displayName = 'SuggestionItem';

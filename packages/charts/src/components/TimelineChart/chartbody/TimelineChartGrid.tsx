@@ -25,7 +25,7 @@ const TimelineChartGrid = ({
   rowHeight,
   totalDuration,
   width,
-  unscaledWidth
+  unscaledWidth,
 }: TimelineChartGridProps) => {
   const verticalSegmentWidth = unscaledWidth / DEFAULT_CHART_VERTICAL_COLS;
   return (
@@ -57,7 +57,7 @@ const generateHGridLines = (numOfSegments: number, rowHeight: number): ReactElem
         y2={`${segmentOffset}`}
         key={`${segmentOffset}gridh`}
         strokeWidth="1px"
-      />
+      />,
     );
   }
   return gridLineArray;
@@ -82,7 +82,7 @@ const generateDiscreteVGridLines = (numOfSegments: number): ReactElement[] => {
         x2={`${segmentOffset}%`}
         y2="100%"
         key={`${segmentOffset}gridv`}
-      />
+      />,
     );
   }
   return gridLineArray;
@@ -109,7 +109,7 @@ const generateNonDiscreteVGridLines = (width: number, verticalSegmentWidth: numb
         x2={`${covered}`}
         y2="100%"
         key={`${covered}gridv`}
-      />
+      />,
     );
     covered += verticalSegmentWidth;
     remaining -= verticalSegmentWidth;

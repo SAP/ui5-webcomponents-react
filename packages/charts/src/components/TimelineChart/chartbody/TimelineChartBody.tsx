@@ -46,7 +46,7 @@ const TimelineChartBody = ({
   unscaledWidth,
   onScale,
   valueFormat,
-  resetScroll
+  resetScroll,
 }: TimelineChartBodyProps) => {
   useStylesheet(styleData, TimelineChartBody.displayName);
 
@@ -65,7 +65,7 @@ const TimelineChartBody = ({
 
   const style: CSSProperties = {
     width: `${width}px`,
-    height: `${numOfItems * rowHeight}px`
+    height: `${numOfItems * rowHeight}px`,
   };
 
   const showTooltipOnHover = (
@@ -75,7 +75,7 @@ const TimelineChartBody = ({
     startTime: number,
     duration: number,
     color: string,
-    isMilestone: boolean
+    isMilestone: boolean,
   ) => {
     tooltipRef.current?.onHoverItem(mouseX, mouseY, label, startTime, duration, color, isMilestone);
   };
@@ -159,7 +159,7 @@ interface TimelineTooltipHandle {
     startTime: number,
     duration: number,
     color: string,
-    isMilestone: boolean
+    isMilestone: boolean,
   ) => void;
   onLeaveItem: () => void;
 }
@@ -171,7 +171,7 @@ interface TimelineTooltipChartProps {
 
 const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipChartProps>(function TimelineChartTooltip(
   { unit, valueFormat },
-  ref
+  ref,
 ) {
   const [state, setState] = useState({
     x: 0,
@@ -181,7 +181,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
     startTime: 0,
     duration: 0,
     color: 'black',
-    isMilestone: false
+    isMilestone: false,
   });
   const divRef = useRef<HTMLDivElement>(null);
   const popupRef = useRef<HTMLSpanElement>(null);
@@ -195,7 +195,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
     startTime: number,
     duration: number,
     color: string,
-    isMilestone: boolean
+    isMilestone: boolean,
   ) => {
     if (divRef.current) {
       const { x, y, width, height } = divRef.current.getBoundingClientRect();
@@ -215,7 +215,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
 
   useImperativeHandle(ref, () => ({
     onHoverItem: onHoverItem,
-    onLeaveItem: onLeaveItem
+    onLeaveItem: onLeaveItem,
   }));
 
   return (
@@ -227,7 +227,7 @@ const TimelineChartTooltip = forwardRef<TimelineTooltipHandle, TimelineTooltipCh
           ref={popupRef}
           style={{
             insetInlineStart: state.x,
-            insetBlockStart: state.y
+            insetBlockStart: state.y,
           }}
         >
           <span className={classNames.tooltipLabel}>

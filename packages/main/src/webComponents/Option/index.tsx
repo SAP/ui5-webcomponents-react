@@ -67,7 +67,7 @@ const Option = withWebComponent<OptionPropTypes, OptionDomRef>(
   ['additionalText', 'icon', 'tooltip', 'value'],
   ['selected'],
   [],
-  []
+  [],
 );
 
 Option.displayName = 'Option';

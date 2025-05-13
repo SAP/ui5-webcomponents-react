@@ -13,5 +13,5 @@ export enum AnalyticalTableSelectionMode {
   /**
    * Multiple rows are selectable.
    */
-  Multiple = 'Multiple'
+  Multiple = 'Multiple',
 }

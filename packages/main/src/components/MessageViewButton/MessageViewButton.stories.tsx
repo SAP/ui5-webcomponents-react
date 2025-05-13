@@ -8,7 +8,7 @@ const meta = {
   title: 'Inputs / MessageViewButton',
   component: MessageViewButton,
   argTypes: {},
-  args: {}
+  args: {},
 } satisfies Meta<typeof MessageViewButton>;
 
 export default meta;
@@ -29,5 +29,5 @@ export const Severities: Story = {
         </FlexBox>
       </>
     );
-  }
+  },
 };

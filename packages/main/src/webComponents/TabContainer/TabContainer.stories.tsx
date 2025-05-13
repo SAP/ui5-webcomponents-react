@@ -15,14 +15,14 @@ const meta = {
   component: TabContainer,
   argTypes: {
     children: { control: { disable: true } },
-    overflowButton: { control: { disable: true } }
+    overflowButton: { control: { disable: true } },
   },
   args: {
     tabLayout: TabLayout.Standard,
     contentBackgroundDesign: BackgroundDesign.Solid,
-    headerBackgroundDesign: BackgroundDesign.Solid
+    headerBackgroundDesign: BackgroundDesign.Solid,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof TabContainer>;
 
 export default meta;
@@ -49,7 +49,7 @@ export const Default: Story = {
         </Tab>
       </TabContainer>
     );
-  }
+  },
 };
 
 export const WithTabSeparator: Story = {
@@ -66,7 +66,7 @@ export const WithTabSeparator: Story = {
         </Tab>
       </TabContainer>
     );
-  }
+  },
 };
 
 export const WithNestedTabs: Story = {
@@ -101,5 +101,5 @@ export const WithNestedTabs: Story = {
         />
       </TabContainer>
     );
-  }
+  },
 };

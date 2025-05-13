@@ -15,5 +15,5 @@ export enum AnalyticalTablePopinDisplay {
   /*
    *Inside the table popin, only the cell content will be visible.
    */
-  WithoutHeader = 'WithoutHeader'
+  WithoutHeader = 'WithoutHeader',
 }

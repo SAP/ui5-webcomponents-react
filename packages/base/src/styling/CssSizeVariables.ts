@@ -23,7 +23,7 @@ export enum CssSizeVariablesNames {
   ui5WcrMessageItemTitleFontSize = '--_ui5wcr-MessageItemTitleFontSize',
   ui5WcrDialogHeaderHeight = '--_ui5wcr-DialogHeaderHeight',
   ui5WcrDialogSubHeaderHeight = '--_ui5wcr-DialogSubHeaderHeight',
-  ui5WcrElementHeight = '--_ui5wcr-ElementHeight'
+  ui5WcrElementHeight = '--_ui5wcr-ElementHeight',
 }
 
 /**
@@ -32,7 +32,7 @@ export enum CssSizeVariablesNames {
  * @private
  */
 export const CssSizeVariables = new Proxy(CssSizeVariablesNames, {
-  get: (target, prop: string): string => `var(${target[prop] as string})`
+  get: (target, prop: string): string => `var(${target[prop] as string})`,
 });
 
 export const CozySizes = {
@@ -58,7 +58,7 @@ export const CozySizes = {
   [CssSizeVariablesNames.ui5WcrMessageItemTitleFontSize]: ThemingParameters.sapFontHeader5Size,
   [CssSizeVariablesNames.ui5WcrDialogHeaderHeight]: '2.75rem',
   [CssSizeVariablesNames.ui5WcrDialogSubHeaderHeight]: '3rem',
-  [CssSizeVariablesNames.ui5WcrElementHeight]: ThemingParameters.sapElement_Height
+  [CssSizeVariablesNames.ui5WcrElementHeight]: ThemingParameters.sapElement_Height,
 };
 
 export const CompactSizes = {
@@ -84,5 +84,5 @@ export const CompactSizes = {
   [CssSizeVariablesNames.ui5WcrMessageItemTitleFontSize]: ThemingParameters.sapFontHeader6Size,
   [CssSizeVariablesNames.ui5WcrDialogHeaderHeight]: '2.5rem',
   [CssSizeVariablesNames.ui5WcrDialogSubHeaderHeight]: '2.25rem',
-  [CssSizeVariablesNames.ui5WcrElementHeight]: ThemingParameters.sapElement_Compact_Height
+  [CssSizeVariablesNames.ui5WcrElementHeight]: ThemingParameters.sapElement_Compact_Height,
 };

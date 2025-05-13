@@ -72,7 +72,7 @@ const MediaGalleryItem = withWebComponent<MediaGalleryItemPropTypes, MediaGaller
   ['layout'],
   ['disabled', 'selected'],
   ['thumbnail'],
-  []
+  [],
 );
 
 MediaGalleryItem.displayName = 'MediaGalleryItem';

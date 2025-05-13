@@ -24,7 +24,7 @@ const verticalPositionInfo = {
   positionRect: 'y',
   size: 'height',
   min: 'minHeight',
-  offset: 'offsetY'
+  offset: 'offsetY',
 };
 
 const horizontalPositionInfo = {
@@ -35,7 +35,7 @@ const horizontalPositionInfo = {
   positionRect: 'x',
   size: 'width',
   min: 'minWidth',
-  offset: 'offsetX'
+  offset: 'offsetX',
 };
 
 const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {

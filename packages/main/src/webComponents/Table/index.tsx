@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/Table.js';
 import type {
   TableMoveEventDetail,
   TableRowActionClickEventDetail,
-  TableRowClickEventDetail
+  TableRowClickEventDetail,
 } from '@ui5/webcomponents/dist/Table.js';
 import type TableOverflowMode from '@ui5/webcomponents/dist/types/TableOverflowMode.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
@@ -255,7 +255,7 @@ const Table = withWebComponent<TablePropTypes, TableDomRef>(
   ['accessibleName', 'accessibleNameRef', 'loadingDelay', 'noDataText', 'overflowMode', 'rowActionCount'],
   ['loading'],
   ['features', 'headerRow', 'noData'],
-  ['move-over', 'move', 'row-action-click', 'row-click']
+  ['move-over', 'move', 'row-action-click', 'row-click'],
 );
 
 Table.displayName = 'Table';

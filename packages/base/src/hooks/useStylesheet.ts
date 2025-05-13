@@ -14,7 +14,7 @@ export function useStylesheet(styles: string, componentName: string, options?: U
   const { staticCssInjected, componentsMap } = useSyncExternalStore(
     StyleStore.subscribe,
     StyleStore.getSnapshot,
-    StyleStore.getServerSnapshot
+    StyleStore.getServerSnapshot,
   );
 
   useIsomorphicLayoutEffect(() => {

@@ -10,12 +10,12 @@ const meta = {
   argTypes: {
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
-    valueStateMessage: { control: { disable: true } }
+    valueStateMessage: { control: { disable: true } },
   },
   args: {
-    valueState: ValueState.None
+    valueState: ValueState.None,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof MultiComboBox>;
 
 export default meta;
@@ -32,7 +32,7 @@ export const Default: Story = {
         <MultiComboBoxItem text="Item 5" />
       </MultiComboBox>
     );
-  }
+  },
 };
 
 export const Grouping: Story = {
@@ -59,5 +59,5 @@ export const Grouping: Story = {
         </MultiComboBoxItemGroup>
       </MultiComboBox>
     );
-  }
+  },
 };

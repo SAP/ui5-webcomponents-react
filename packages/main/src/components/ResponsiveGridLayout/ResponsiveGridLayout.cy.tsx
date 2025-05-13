@@ -32,7 +32,7 @@ describe('ResponsiveGridLayout', () => {
     cy.findByTestId('rgl').should(
       'have.css',
       'grid-template-columns',
-      `81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px`
+      `81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px 81.5px`,
     );
 
     cy.viewport(1439, 1080);
@@ -40,14 +40,14 @@ describe('ResponsiveGridLayout', () => {
     cy.findByTestId('rgl').should(
       'have.css',
       'grid-template-columns',
-      `111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px`
+      `111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px 111.25px`,
     );
     cy.viewport(1023, 1080);
     cy.mount(<TestComp />);
     cy.findByTestId('rgl').should(
       'have.css',
       'grid-template-columns',
-      `118.875px 118.875px 118.875px 118.875px 118.875px 118.875px 118.875px 118.875px`
+      `118.875px 118.875px 118.875px 118.875px 118.875px 118.875px 118.875px 118.875px`,
     );
     cy.viewport(599, 1080);
     cy.mount(<TestComp />);
@@ -63,7 +63,7 @@ describe('ResponsiveGridLayout', () => {
         columnSpanL={5}
         columnSpanM={5}
         columnSpanS={5}
-      />
+      />,
     );
 
     cy.findByTestId('rgl').then(($el) => {
@@ -91,7 +91,7 @@ describe('ResponsiveGridLayout', () => {
         <div style={{ height: '100px', background: 'lightblue', gridColumn: 'span 2' }} data-testid={'0'} />
         <div style={{ height: '100px', background: 'cadetblue', gridColumn: 'span 5' }} data-testid={'1'} />
         <div style={{ height: '100px', background: 'skyblue' }} data-testid={'2'} />
-      </ResponsiveGridLayout>
+      </ResponsiveGridLayout>,
     );
     cy.findByTestId('0').should('have.css', 'grid-column', 'span 2');
     cy.findByTestId('1').should('have.css', 'grid-column', 'span 5');

@@ -30,5 +30,5 @@ export enum AnalyticalTableVisibleRowCountMode {
    * Adds a resizer to the bottom of the table to dynamically add or remove visible rows.
    * The initial number of rows is defined by the `visibleRows` prop.
    */
-  Interactive = 'Interactive'
+  Interactive = 'Interactive',
 }

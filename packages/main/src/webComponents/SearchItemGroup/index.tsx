@@ -85,7 +85,7 @@ const SearchItemGroup = withWebComponent<SearchItemGroupPropTypes, SearchItemGro
   ['headerAccessibleName', 'headerText'],
   [],
   ['header'],
-  ['move-over', 'move']
+  ['move-over', 'move'],
 );
 
 SearchItemGroup.displayName = 'SearchItemGroup';

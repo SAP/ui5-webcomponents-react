@@ -22,7 +22,7 @@ interface Options {
 const throttle = <T extends Function>(
   func: T,
   wait: number,
-  options: Options = { leading: true, trailing: true }
+  options: Options = { leading: true, trailing: true },
 ): T & Cancelable => {
   let timeout;
   let context;

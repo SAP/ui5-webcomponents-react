@@ -13,5 +13,5 @@ export enum FlexBoxWrap {
    * Items will wrap onto multiple lines. (bottom to top)<br />
    * <b>Note:</b> Corresponds to `wrap-reverse`.
    */
-  WrapReverse = 'WrapReverse'
+  WrapReverse = 'WrapReverse',
 }

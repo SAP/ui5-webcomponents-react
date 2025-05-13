@@ -39,7 +39,7 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
     popInRowHeight,
     rowCollapsedFlag,
     isGrouped,
-    dispatch
+    dispatch,
   } = props;
   const [isMounted, setIsMounted] = useState(false);
 
@@ -61,7 +61,7 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
       if (rowCollapsedFlag) {
         dispatch({
           type: 'ROW_COLLAPSED_FLAG',
-          payload: false
+          payload: false,
         });
       } else {
         firedInfiniteLoadEvents.current.clear();
@@ -106,8 +106,8 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
       lastScrollTop,
       handleExternalScroll,
       popInRowHeight,
-      tableBodyHeight
-    ]
+      tableBodyHeight,
+    ],
   );
 
   return (
@@ -119,7 +119,7 @@ export const VirtualTableBodyContainer = (props: VirtualTableBodyContainerProps)
         position: 'relative',
         overflowY: 'auto',
         height: `${tableBodyHeight}px`,
-        width: `${totalColumnsWidth}px`
+        width: `${totalColumnsWidth}px`,
       }}
       data-component-name="AnalyticalTableBody"
       tabIndex={-1}

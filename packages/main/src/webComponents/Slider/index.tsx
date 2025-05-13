@@ -161,7 +161,7 @@ const Slider = withWebComponent<SliderPropTypes, SliderDomRef>(
   ['accessibleName', 'labelInterval', 'max', 'min', 'name', 'step', 'value'],
   ['disabled', 'editableTooltip', 'showTickmarks', 'showTooltip'],
   [],
-  ['change', 'input']
+  ['change', 'input'],
 );
 
 Slider.displayName = 'Slider';

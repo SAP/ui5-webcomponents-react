@@ -12,7 +12,7 @@ import {
   PieChart as PieChartLib,
   Sector,
   Text as RechartsText,
-  Tooltip
+  Tooltip,
 } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
@@ -120,7 +120,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     outerRadius: '80%',
     resizeDebounce: 250,
     tooltipItemStyle: tooltipItemDefaultStyle,
-    ...props.chartConfig
+    ...props.chartConfig,
   };
 
   const showActiveSegmentDataLabel = chartConfig.showActiveSegmentDataLabel ?? true;
@@ -128,17 +128,17 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
   const dimension: IChartDimension = useMemo(
     () => ({
       formatter: defaultFormatter,
-      ...props.dimension
+      ...props.dimension,
     }),
-    [props.dimension]
+    [props.dimension],
   );
 
   const measure: MeasureConfig = useMemo(
     () => ({
       formatter: defaultFormatter,
-      ...props.measure
+      ...props.measure,
     }),
-    [props.measure]
+    [props.measure],
   );
 
   const dataLabel = (props) => {
@@ -159,7 +159,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
 
   const tooltipValueFormatter = useCallback(
     (value, name) => [measure.formatter(value), dimension.formatter(name)],
-    [measure.formatter, dimension.formatter]
+    [measure.formatter, dimension.formatter],
   );
 
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
@@ -174,12 +174,12 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
             dataKey: payload.tooltipPayload?.[0]?.dataKey,
             name: payload.name,
             payload: payload.payload,
-            dataIndex
-          })
+            dataIndex,
+          }),
         );
       }
     },
-    [onDataPointClick]
+    [onDataPointClick],
   );
 
   // REUSE: part of this function is copied from: https://github.com/recharts/recharts/blob/411e57a3c206a1425ff33a7e63cacf40a844e551/storybook/stories/Examples/Pie/CustomActiveShapePieChart.stories.tsx#L22-L44
@@ -197,7 +197,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       const ey = my;
       const textAnchor = cos >= 0 ? 'start' : 'end';
       const activeLegendItem = chartRef.current?.querySelector<HTMLLIElement>(
-        `.legend-item-${chartConfig.activeSegment}`
+        `.legend-item-${chartConfig.activeSegment}`,
       );
       if (activeLegendItem && !activeLegendItem?.dataset.activeLegend) {
         const allLegendItems = chartRef.current?.querySelectorAll('.recharts-legend-item');
@@ -246,7 +246,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
         </g>
       );
     },
-    [showActiveSegmentDataLabel, chartConfig.activeSegment, isDonutChart]
+    [showActiveSegmentDataLabel, chartConfig.activeSegment, isDonutChart],
   );
 
   const renderLabelLine = useCallback(
@@ -256,18 +256,18 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
       if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
       return Pie.renderLabelLineItem({}, props, undefined);
     },
-    [chartConfig.activeSegment, measure.hideDataLabel]
+    [chartConfig.activeSegment, measure.hideDataLabel],
   );
 
   const legendWrapperStyle = useMemo(() => {
     if (chartConfig.activeSegment != null && showActiveSegmentDataLabel) {
       if (chartConfig.legendPosition === 'bottom') {
         return {
-          paddingBlockStart: '30px'
+          paddingBlockStart: '30px',
         };
       } else if (chartConfig.legendPosition === 'top') {
         return {
-          paddingBlockEnd: '30px'
+          paddingBlockEnd: '30px',
         };
       }
     }
@@ -296,7 +296,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
         accessibilityLayer={chartConfig.accessibilityLayer}
         className={clsx(
           typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined,
-          classNames.piechart
+          classNames.piechart,
         )}
       >
         <Pie

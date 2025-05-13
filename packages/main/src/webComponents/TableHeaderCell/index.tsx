@@ -123,7 +123,7 @@ const TableHeaderCell = withWebComponent<TableHeaderCellPropTypes, TableHeaderCe
   ['horizontalAlign', 'importance', 'minWidth', 'popinText', 'sortIndicator', 'width'],
   ['popinHidden'],
   ['action'],
-  []
+  [],
 );
 
 TableHeaderCell.displayName = 'TableHeaderCell';

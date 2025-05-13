@@ -5,5 +5,5 @@ export type {
   Nullable,
   CommonProps,
   Ui5CustomEvent,
-  Ui5DomRef
+  Ui5DomRef,
 } from '@ui5/webcomponents-react-base';

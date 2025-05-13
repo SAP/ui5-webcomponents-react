@@ -247,7 +247,7 @@ const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   ['accessibleName', 'accessibleNameRef', 'name', 'tooltip', 'value', 'valueState'],
   ['disabled', 'readonly', 'required'],
   ['label', 'valueStateMessage'],
-  ['change', 'close', 'live-change', 'open']
+  ['change', 'close', 'live-change', 'open'],
 );
 
 Select.displayName = 'Select';

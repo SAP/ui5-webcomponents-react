@@ -56,7 +56,7 @@ const SearchItem = withWebComponent<SearchItemPropTypes, SearchItemDomRef>(
   ['icon', 'scopeName', 'text'],
   ['selected'],
   [],
-  ['delete']
+  ['delete'],
 );
 
 SearchItem.displayName = 'SearchItem';

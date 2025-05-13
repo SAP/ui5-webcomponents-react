@@ -10,7 +10,7 @@ const tableGroupExpandCollapseIcon = {
   height: '0.75rem',
   width: '0.75rem',
   padding: '0.625rem',
-  display: 'block'
+  display: 'block',
 };
 
 export const Grouped = (props) => {

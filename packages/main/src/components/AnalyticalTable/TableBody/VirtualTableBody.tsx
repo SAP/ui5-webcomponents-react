@@ -9,7 +9,7 @@ import type {
   DivWithCustomScrollProp,
   ScrollToRefType,
   TableInstance,
-  TriggerScrollState
+  TriggerScrollState,
 } from '../types/index.js';
 import { RenderColumnTypes } from '../types/index.js';
 import { getSubRowsByString } from '../util/index.js';
@@ -64,7 +64,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     scrollContainerRef,
     subComponentsBehavior,
     triggerScroll,
-    rowVirtualizer
+    rowVirtualizer,
   } = props;
 
   const rowHeight = popInRowHeight !== internalRowHeight ? popInRowHeight : internalRowHeight;
@@ -73,7 +73,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
   scrollToRef.current = {
     ...scrollToRef.current,
     scrollToOffset: rowVirtualizer.scrollToOffset,
-    scrollToIndex: rowVirtualizer.scrollToIndex
+    scrollToIndex: rowVirtualizer.scrollToIndex,
   };
 
   useEffect(() => {
@@ -92,9 +92,9 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         (item) =>
           item.id !== '__ui5wcr__internal_highlight_column' &&
           item.id !== '__ui5wcr__internal_selection_column' &&
-          item.id !== '__ui5wcr__internal_navigation_column'
+          item.id !== '__ui5wcr__internal_navigation_column',
       )[0],
-    [visibleColumns]
+    [visibleColumns],
   );
   return (
     <div
@@ -103,7 +103,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
       style={{
         position: 'relative',
         height: `${rowVirtualizer.getTotalSize()}px`,
-        width: `${columnVirtualizer.getTotalSize()}px`
+        width: `${columnVirtualizer.getTotalSize()}px`,
       }}
     >
       {rowVirtualizer.getVirtualItems().map((virtualRow, visibleRowIndex) => {
@@ -156,7 +156,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         prepareRow(row);
         const { key, ...rowProps } = row.getRowProps({
           'aria-rowindex': virtualRow.index + 1,
-          'data-virtual-row-index': virtualRow.index
+          'data-virtual-row-index': virtualRow.index,
         });
         const isNavigatedCell = typeof markNavigatedRow === 'function' ? markNavigatedRow(row) : false;
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
@@ -172,8 +172,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
             type: 'SUB_COMPONENTS_HEIGHT',
             payload: {
               ...subComponentsHeight,
-              [virtualRow.index]: { subComponentHeight: 0, rowId: row.id }
-            }
+              [virtualRow.index]: { subComponentHeight: 0, rowId: row.id },
+            },
           });
         }
         let updatedHeight = rowHeight;
@@ -202,7 +202,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               transform: `translateY(${virtualRow.start}px)`,
               position: 'absolute',
               boxSizing: 'border-box',
-              height: `${updatedHeight}px`
+              height: `${updatedHeight}px`,
             }}
           >
             {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
@@ -225,7 +225,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               const directionStyles = isRtl
                 ? {
                     transform: `translateX(-${virtualColumn.start}px)`,
-                    insertInlineStart: 0
+                    insertInlineStart: 0,
                   }
                 : { transform: `translateX(${virtualColumn.start}px)`, insertInlineStart: 0 };
               if (!cell) {
@@ -244,8 +244,8 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                   width: `${virtualColumn.size}px`,
                   top: 0,
                   height: `${rowHeight}px`,
-                  ...directionStyles
-                }
+                  ...directionStyles,
+                },
               };
               let contentToRender: RenderColumnTypes;
               if (

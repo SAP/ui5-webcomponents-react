@@ -8,10 +8,10 @@ export const useOnClickInternal = (onClick) =>
         onClick(
           enrichEventWithDetails(event, {
             payload: payload?.activePayload?.[0]?.payload,
-            activePayloads: payload?.activePayload
-          })
+            activePayloads: payload?.activePayload,
+          }),
         );
       }
     },
-    [onClick]
+    [onClick],
   );

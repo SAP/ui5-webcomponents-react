@@ -101,7 +101,7 @@ const Tab = withWebComponent<TabPropTypes, TabDomRef>(
   ['additionalText', 'design', 'icon', 'text'],
   ['disabled', 'selected'],
   ['items'],
-  []
+  [],
 );
 
 Tab.displayName = 'Tab';

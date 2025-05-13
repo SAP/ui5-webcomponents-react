@@ -197,7 +197,7 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
   const { tableClientWidth: totalWidth } = state;
 
   const visibleColumns = columns.filter(
-    (column) => (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor)
+    (column) => (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor),
   );
 
   const columnMeta: Record<string, IColumnMeta> = visibleColumns.reduce(
@@ -210,7 +210,7 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
       ) {
         metadata[columnIdOrAccessor] = {
           headerPx: column.width || column.minWidth || 60,
-          contentPxAvg: 0
+          contentPxAvg: 0,
         };
         return metadata;
       }
@@ -228,7 +228,7 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
         headerPx = Math.max(
           stringToPx(column.scaleWidthModeOptions.headerString, webComponentsReactProperties.uniqueId, true) +
             CELL_PADDING_PX,
-          60
+          60,
         );
       } else {
         headerPx =
@@ -239,11 +239,11 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
 
       metadata[columnIdOrAccessor] = {
         headerPx,
-        contentPxAvg
+        contentPxAvg,
       };
       return metadata;
     },
-    {}
+    {},
   );
 
   let totalContentPxAvgPrio1 = 0;
@@ -290,7 +290,7 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
       }
       return {
         ...column,
-        nextWidth: targetWidth || headerPx
+        nextWidth: targetWidth || headerPx,
       };
     }
     return column;
@@ -307,12 +307,12 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
       }
       return {
         ...column,
-        width: targetWidth
+        width: targetWidth,
       };
     } else {
       return {
         ...column,
-        width: Math.max(column.width || 0, 60, headerPx)
+        width: Math.max(column.width || 0, 60, headerPx),
       };
     }
   });
@@ -320,7 +320,7 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
 
 const columnsDeps = (
   deps,
-  { instance: { state, webComponentsReactProperties, visibleColumns, data, rows, columns } }
+  { instance: { state, webComponentsReactProperties, visibleColumns, data, rows, columns } },
 ) => {
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
   const hasRows = rows?.length > 0;
@@ -331,7 +331,7 @@ const columnsDeps = (
         (col) =>
           col.id !== '__ui5wcr__internal_selection_column' &&
           col.id !== '__ui5wcr__internal_highlight_column' &&
-          col.id !== '__ui5wcr__internal_navigation_column'
+          col.id !== '__ui5wcr__internal_navigation_column',
       )
       .every((visCol) => {
         const id = visCol.id ?? visCol.accessor;
@@ -349,7 +349,7 @@ const columnsDeps = (
     !state.tableColResized && state.tableClientWidth,
     state.hiddenColumns.length,
     webComponentsReactProperties.scaleWidthMode,
-    isLoadingPlaceholder
+    isLoadingPlaceholder,
   ];
 };
 
@@ -410,21 +410,21 @@ const columns = (columns: TableInstance['columns'], { instance }: { instance: Ta
     ) {
       acc[columnIdOrAccessor] = {
         minHeaderWidth: column.width,
-        fullWidth: column.width
+        fullWidth: column.width,
       };
       return acc;
     }
 
     const smartWidth = findLongestString(
       column.scaleWidthModeOptions?.headerString,
-      column.scaleWidthModeOptions?.cellString
+      column.scaleWidthModeOptions?.cellString,
     );
 
     if (smartWidth) {
       const width = Math.max(stringToPx(smartWidth, uniqueId) + CELL_PADDING_PX, 60);
       acc[columnIdOrAccessor] = {
         minHeaderWidth: width,
-        fullWidth: width
+        fullWidth: width,
       };
       return acc;
     }
@@ -436,7 +436,7 @@ const columns = (columns: TableInstance['columns'], { instance }: { instance: Ta
 
     acc[columnIdOrAccessor] = {
       minHeaderWidth,
-      fullWidth: Math.max(minHeaderWidth, getContentPxAvg(rowSample, columnIdOrAccessor, uniqueId))
+      fullWidth: Math.max(minHeaderWidth, getContentPxAvg(rowSample, columnIdOrAccessor, uniqueId)),
     };
     return acc;
   }, {});
@@ -471,7 +471,7 @@ const columns = (columns: TableInstance['columns'], { instance }: { instance: Ta
         return {
           ...column,
           width: column.width ?? Math.min(targetWidth, MAX_WIDTH),
-          minWidth: column.minWidth ?? minHeaderWidth
+          minWidth: column.minWidth ?? minHeaderWidth,
         };
       }
       return column;
@@ -486,7 +486,7 @@ const columns = (columns: TableInstance['columns'], { instance }: { instance: Ta
       return {
         ...column,
         width: column.width ?? fullWidth,
-        maxWidth: column.maxWidth ?? MAX_WIDTH
+        maxWidth: column.maxWidth ?? MAX_WIDTH,
       };
     }
     return column;

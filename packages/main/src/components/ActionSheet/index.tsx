@@ -14,7 +14,7 @@ import type { UI5WCSlotsNode } from '../../types/index.js';
 import type {
   ButtonPropTypes,
   ResponsivePopoverDomRef,
-  ResponsivePopoverPropTypes
+  ResponsivePopoverPropTypes,
 } from '../../webComponents/index.js';
 import { Button, ResponsivePopover } from '../../webComponents/index.js';
 import { classNames, content } from './ActionSheet.module.css.js';
@@ -75,7 +75,7 @@ if (isPhone()) {
     text-shadow: none;
     text-align: start !important;
   }
-  `
+  `,
   );
 }
 

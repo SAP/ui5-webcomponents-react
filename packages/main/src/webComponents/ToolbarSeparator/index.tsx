@@ -41,7 +41,7 @@ const ToolbarSeparator = withWebComponent<ToolbarSeparatorPropTypes, ToolbarSepa
   ['overflowPriority'],
   ['preventOverflowClosing'],
   [],
-  []
+  [],
 );
 
 ToolbarSeparator.displayName = 'ToolbarSeparator';

@@ -8,8 +8,8 @@ const getHeaderGroupProps = (headerGroupProps, { instance }: { instance: TableIn
   return [
     headerGroupProps,
     {
-      className: classes.tableHeaderRow
-    }
+      className: classes.tableHeaderRow,
+    },
   ];
 };
 
@@ -17,7 +17,7 @@ const getHeaderProps = (columnProps, { instance, column }: { instance: TableInst
   const hasPopover = column.canGroupBy || column.canSort || column.canFilter;
   const { classes } = instance.webComponentsReactProperties;
   const style: CSSProperties = {
-    width: column.totalWidth
+    width: column.totalWidth,
   };
 
   if (
@@ -36,8 +36,8 @@ const getHeaderProps = (columnProps, { instance, column }: { instance: TableInst
       className: classes.th,
       column,
       style: style,
-      id: column.id
-    }
+      id: column.id,
+    },
   ];
 };
 
@@ -45,14 +45,14 @@ const ROW_SELECTION_ATTRIBUTE = 'data-is-selected';
 
 const getRowProps = (
   rowProps,
-  { instance, row, userProps }: { instance: TableInstance; row: RowType; userProps: Record<string, any> }
+  { instance, row, userProps }: { instance: TableInstance; row: RowType; userProps: Record<string, any> },
 ) => {
   const { webComponentsReactProperties } = instance;
   const { classes, selectionBehavior, selectionMode, alternateRowColor, subRowsKey } = webComponentsReactProperties;
   let className = classes.tr;
   const rowCanBeSelected = [AnalyticalTableSelectionMode.Single, AnalyticalTableSelectionMode.Multiple].includes(
     //@ts-expect-error: we know that "None" is not in the array...
-    selectionMode
+    selectionMode,
   );
   if (
     row.isGrouped ||
@@ -68,7 +68,7 @@ const getRowProps = (
 
   const newRowProps = {
     className,
-    role: 'row'
+    role: 'row',
   };
 
   if (rowCanBeSelected) {
@@ -105,8 +105,8 @@ const getCellProps = (cellProps, { cell: { column }, instance }) => {
     {
       className,
       style,
-      tabIndex: -1
-    }
+      tabIndex: -1,
+    },
   ];
 };
 

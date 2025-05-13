@@ -11,9 +11,9 @@ const meta = {
   args: {
     size: BusyIndicatorSize.M,
     delay: 1000,
-    active: true
+    active: true,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof BusyIndicator>;
 export default meta;
 
@@ -41,5 +41,5 @@ export const WithChildren: Story = {
         </BusyIndicator>
       </>
     );
-  }
+  },
 };

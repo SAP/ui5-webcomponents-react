@@ -113,7 +113,7 @@ const NotificationListGroupItem = withWebComponent<NotificationListGroupItemProp
   ['growing', 'loadingDelay', 'titleText'],
   ['collapsed', 'loading', 'read'],
   [],
-  ['load-more', 'toggle']
+  ['load-more', 'toggle'],
 );
 
 NotificationListGroupItem.displayName = 'NotificationListGroupItem';

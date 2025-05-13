@@ -47,7 +47,7 @@ const FilterItem = withWebComponent<FilterItemPropTypes, FilterItemDomRef>(
   ['additionalText', 'text'],
   [],
   ['values'],
-  []
+  [],
 );
 
 FilterItem.displayName = 'FilterItem';

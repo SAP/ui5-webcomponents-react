@@ -8,7 +8,7 @@ import {
   useIsomorphicLayoutEffect,
   useIsRTL,
   useStylesheet,
-  useSyncRef
+  useSyncRef,
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties, MutableRefObject } from 'react';
@@ -22,7 +22,7 @@ import {
   useResizeColumns,
   useRowSelect,
   useSortBy,
-  useTable
+  useTable,
 } from 'react-table';
 import {
   AnalyticalTablePopinDisplay,
@@ -30,7 +30,7 @@ import {
   AnalyticalTableSelectionBehavior,
   AnalyticalTableSelectionMode,
   AnalyticalTableSubComponentsBehavior,
-  AnalyticalTableVisibleRowCountMode
+  AnalyticalTableVisibleRowCountMode,
 } from '../../enums/index.js';
 import {
   COLLAPSE_NODE,
@@ -50,7 +50,7 @@ import {
   SELECT_ALL_PRESS_SPACE,
   SELECT_PRESS_SPACE,
   UNSELECT_ALL_PRESS_SPACE,
-  UNSELECT_PRESS_SPACE
+  UNSELECT_PRESS_SPACE,
 } from '../../i18n/i18n-defaults.js';
 import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
 import { Text } from '../../webComponents/Text/index.js';
@@ -87,14 +87,14 @@ import type {
   AnalyticalTablePropTypes,
   AnalyticalTableState,
   DivWithCustomScrollProp,
-  TableInstance
+  TableInstance,
 } from './types/index.js';
 import { getRowHeight, getSubRowsByString, tagNamesWhichShouldNotSelectARow } from './util/index.js';
 import { VerticalResizer } from './VerticalResizer.js';
 
 // When a sorted column is removed from the visible columns array (e.g. when "popped-in"), it doesn't clean up the sorted columns leading to an undefined `sortType`.
 const sortTypesFallback = {
-  undefined: () => undefined
+  undefined: () => undefined,
 };
 
 const measureElement = (el: HTMLElement) => {
@@ -193,7 +193,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     () => () => {
       dedupedOnFilter.cancel();
     },
-    [dedupedOnFilter]
+    [dedupedOnFilter],
   );
 
   tableInstanceRef.current = useTable(
@@ -223,7 +223,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           selectAllA11yText: i18nBundle.getText(SELECT_ALL_PRESS_SPACE),
           deselectAllA11yText: i18nBundle.getText(UNSELECT_ALL_PRESS_SPACE),
           rowExpandedAnnouncementText: i18nBundle.getText(ROW_EXPANDED),
-          rowCollapsedAnnouncementText: i18nBundle.getText(ROW_COLLAPSED)
+          rowCollapsedAnnouncementText: i18nBundle.getText(ROW_COLLAPSED),
         },
         alternateRowColor,
         alwaysShowSubComponent,
@@ -250,9 +250,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         onRowExpandChange,
         onRowSelect,
         onSort,
-        onFilter: dedupedOnFilter
+        onFilter: dedupedOnFilter,
       },
-      ...reactTableOptions
+      ...reactTableOptions,
     },
     useFilters,
     useGlobalFilter,
@@ -277,7 +277,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     useVisibleColumnsWidth,
     useKeyboardNavigation,
     useColumnDragAndDrop,
-    ...tableHooks
+    ...tableHooks,
   );
 
   const {
@@ -291,7 +291,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     visibleColumns,
     visibleColumnsWidth,
     setGroupBy,
-    setGlobalFilter
+    setGlobalFilter,
   } = tableInstanceRef.current;
 
   const tableState: AnalyticalTableState = tableInstanceRef.current.state;
@@ -315,7 +315,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     overscan: isRtl ? Infinity : overscanCountHorizontal,
     indexAttribute: 'data-column-index',
     // necessary as otherwise values are rounded which leads to wrong total width calculation leading to unnecessary scrollbar
-    measureElement: !scaleXFactor || scaleXFactor === 1 ? (el) => el.getBoundingClientRect().width : undefined
+    measureElement: !scaleXFactor || scaleXFactor === 1 ? (el) => el.getBoundingClientRect().width : undefined,
   });
   // force re-measure if `visibleColumns` change
   useEffect(() => {
@@ -342,7 +342,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     scrollToRef.current = {
       ...scrollToRef.current,
       horizontalScrollToOffset: columnVirtualizer.scrollToOffset,
-      horizontalScrollToIndex: columnVirtualizer.scrollToIndex
+      horizontalScrollToIndex: columnVirtualizer.scrollToIndex,
     };
   }
   useEffect(() => {
@@ -387,7 +387,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           cur.popinDisplay === AnalyticalTablePopinDisplay.Block
             ? acc + internalRowHeight + 16 // 16px for Header
             : acc + internalRowHeight,
-        internalRowHeight
+        internalRowHeight,
       );
     } else {
       return internalRowHeight;
@@ -404,8 +404,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           tableClientWidth:
             !scaleXFactor || scaleXFactor === 1
               ? tableRef.current.getBoundingClientRect().width
-              : tableRef.current.clientWidth
-        }
+              : tableRef.current.clientWidth,
+        },
       });
     }
   }, [tableRef.current, scaleXFactor]);
@@ -446,13 +446,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         }
         dispatch({
           type: 'VISIBLE_ROWS',
-          payload: { visibleRows: Math.max(1, subCompsRowCount) }
+          payload: { visibleRows: Math.max(1, subCompsRowCount) },
         });
       } else {
         const rowCount = Math.max(1, Math.floor(bodyHeight / popInRowHeight));
         dispatch({
           type: 'VISIBLE_ROWS',
-          payload: { visibleRows: rowCount }
+          payload: { visibleRows: rowCount },
         });
       }
     }
@@ -463,7 +463,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     popInRowHeight,
     visibleRowCountMode,
     includeSubCompRowHeight,
-    tableState.subComponentsHeight
+    tableState.subComponentsHeight,
   ]);
 
   useEffect(() => {
@@ -504,7 +504,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     if (tableState.visibleRows !== undefined && visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Fixed) {
       dispatch({
         type: 'VISIBLE_ROWS',
-        payload: { visibleRows: undefined }
+        payload: { visibleRows: undefined },
       });
     }
   }, [visibleRowCountMode, tableState.visibleRows]);
@@ -568,7 +568,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     adjustTableHeightOnPopIn,
     includeSubCompRowHeight,
     tableState.subComponentsHeight,
-    tableState.bodyHeight
+    tableState.bodyHeight,
   ]);
 
   // scroll bar detection
@@ -578,7 +578,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     if (popInRowHeight !== internalRowHeight) {
       dispatch({
         type: 'TABLE_SCROLLING_ENABLED',
-        payload: { isScrollable: visibleRowCount * popInRowHeight > tableBodyHeight || rows.length > visibleRowCount }
+        payload: { isScrollable: visibleRowCount * popInRowHeight > tableBodyHeight || rows.length > visibleRowCount },
       });
     } else {
       dispatch({ type: 'TABLE_SCROLLING_ENABLED', payload: { isScrollable: rows.length > visibleRowCount } });
@@ -587,7 +587,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const noDataStyles = {
     height: `${tableBodyHeight}px`,
-    width: totalColumnsWidth ? `${totalColumnsWidth}px` : '100%'
+    width: totalColumnsWidth ? `${totalColumnsWidth}px` : '100%',
   };
 
   useEffect(() => {
@@ -601,7 +601,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       maxWidth: '100%',
       overflowX: 'auto',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
     };
     if (rowHeight) {
       tableStyles['--_ui5wcr-AnalyticalTableRowHeight'] = `${rowHeight}px`;
@@ -614,13 +614,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     if (tableState.tableClientWidth > 0) {
       return {
         ...tableStyles,
-        ...style
+        ...style,
       } as CSSProperties;
     }
     return {
       ...tableStyles,
       ...style,
-      visibility: 'hidden'
+      visibility: 'hidden',
     } as CSSProperties;
   }, [tableState.tableClientWidth, style, rowHeight, headerRowHeight]);
 
@@ -669,7 +669,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     tableState.columnOrder,
     tableState.columnResizing?.isResizingColumn,
     columns,
-    tableState.groupBy
+    tableState.groupBy,
   ]);
 
   const totalSize = columnVirtualizer.getTotalSize();
@@ -679,7 +679,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     classNames.table,
     withNavigationHighlight && classNames.hasNavigationIndicator,
     showVerticalEndBorder && classNames.showVerticalEndBorder,
-    className?.includes('ui5-content-native-scrollbars') && 'ui5-content-native-scrollbars'
+    className?.includes('ui5-content-native-scrollbars') && 'ui5-content-native-scrollbars',
   );
 
   const handleOnLoadMore = (e) => {
@@ -687,8 +687,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     onLoadMore(
       enrichEventWithDetails(e, {
         rowCount: rootNodes.length,
-        totalRowCount: rows.length
-      })
+        totalRowCount: rows.length,
+      }),
     );
   };
 
@@ -699,7 +699,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     Math.max(
       minRows,
       rows.length,
-      visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows ? internalVisibleRowCount : 0
+      visibleRowCountMode === AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows ? internalVisibleRowCount : 0,
     ) + (!tableState.isScrollable ? additionalEmptyRowsCount : 0);
 
   const rowVirtualizer = useVirtualizer({
@@ -716,12 +716,12 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         }
         return rHeight;
       },
-      [rHeight, rows, renderRowSubComponent, alwaysShowSubComponent, tableState.subComponentsHeight]
+      [rHeight, rows, renderRowSubComponent, alwaysShowSubComponent, tableState.subComponentsHeight],
     ),
     overscan,
     measureElement,
     indexAttribute: 'data-virtual-row-index',
-    useAnimationFrameWithResizeObserver: true
+    useAnimationFrameWithResizeObserver: true,
   });
   // add range to instance for `useAutoResize` plugin hook
   tableInstanceRef.current.virtualRowsRange = rowVirtualizer.range;
@@ -929,5 +929,5 @@ export type {
   AnalyticalTableColumnDefinition,
   AnalyticalTableDomRef,
   AnalyticalTablePropTypes,
-  DivWithCustomScrollProp
+  DivWithCustomScrollProp,
 };

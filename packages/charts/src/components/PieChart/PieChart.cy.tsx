@@ -4,10 +4,10 @@ import { PieChart } from './PieChart.js';
 import { cypressPassThroughTestsFactory, testChartLegendConfig } from '@/cypress/support/utils';
 
 const dimension = {
-  accessor: 'name'
+  accessor: 'name',
 };
 const measure = {
-  accessor: 'users'
+  accessor: 'users',
 };
 
 describe('PieChart', () => {
@@ -29,7 +29,7 @@ describe('PieChart', () => {
         onDataPointClick={onClick}
         onLegendClick={onLegendClick}
         noAnimation
-      />
+      />,
     );
 
     cy.get('[name="January"]').eq(0).click({ force: true });
@@ -39,9 +39,9 @@ describe('PieChart', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: Cypress.sinon.match({
-            payload: simpleDataSet[0]
-          })
-        })
+            payload: simpleDataSet[0],
+          }),
+        }),
       );
 
     cy.contains('January').click();
@@ -49,9 +49,9 @@ describe('PieChart', () => {
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          dataKey: 'users'
-        })
-      })
+          dataKey: 'users',
+        }),
+      }),
     );
   });
 
@@ -72,9 +72,9 @@ describe('PieChart', () => {
         dimension={dimension}
         measure={{
           accessor: 'users',
-          DataLabel: <CustomDataLabel />
+          DataLabel: <CustomDataLabel />,
         }}
-      />
+      />,
     );
     cy.findAllByText('CustomLabel').should('have.length', 12);
   });

@@ -81,7 +81,7 @@ const TableSelectionMulti = withWebComponent<TableSelectionMultiPropTypes, Table
   ['selected'],
   [],
   [],
-  ['change']
+  ['change'],
 );
 
 TableSelectionMulti.displayName = 'TableSelectionMulti';

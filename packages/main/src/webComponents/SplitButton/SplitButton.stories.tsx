@@ -7,14 +7,14 @@ const meta = {
   title: 'Inputs / SplitButton',
   component: SplitButton,
   argTypes: {
-    children: { control: { type: 'text' } }
+    children: { control: { type: 'text' } },
   },
   args: {
     design: ButtonDesign.Default,
     icon: employeeIcon,
-    children: 'SplitButton'
+    children: 'SplitButton',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof SplitButton>;
 
 export default meta;

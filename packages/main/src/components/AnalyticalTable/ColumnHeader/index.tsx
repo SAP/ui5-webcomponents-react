@@ -13,7 +13,7 @@ import type {
   DragEventHandler,
   KeyboardEventHandler,
   MouseEventHandler,
-  ReactNode
+  ReactNode,
 } from 'react';
 import { useRef, useState } from 'react';
 import { Icon } from '../../../webComponents/Icon/index.js';
@@ -83,7 +83,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
     'aria-label': ariaLabel,
     'aria-sort': ariaSort,
     showVerticalEndBorder,
-    classNames
+    classNames,
   } = props;
 
   const columnIndex = virtualColumn.index;
@@ -182,7 +182,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
         position: 'absolute',
         insetBlockStart: 0,
         width: `${virtualColumn.size}px`,
-        ...directionStyles
+        ...directionStyles,
       }}
       data-component-name={`ATHeaderContainer-${columnId}`}
     >
@@ -197,7 +197,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
         className={className}
         style={{
           ...style,
-          borderInlineStart: dragOver ? `3px solid ${ThemingParameters.sapSelectedColor}` : undefined
+          borderInlineStart: dragOver ? `3px solid ${ThemingParameters.sapSelectedColor}` : undefined,
         }}
         aria-haspopup={hasPopover ? 'menu' : undefined}
         role={role}
@@ -218,7 +218,7 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
         <div
           className={clsx(
             classNames.header,
-            columnId === '__ui5wcr__internal_selection_column' && classNames.selectAllCheckBoxContainer
+            columnId === '__ui5wcr__internal_selection_column' && classNames.selectAllCheckBoxContainer,
           )}
           data-h-align={column.hAlign}
           data-component-name={`AnalyticalTableHeaderContentContainer-${columnId}`}
@@ -279,8 +279,8 @@ export const ColumnHeader = (props: ColumnHeaderProps) => {
           column.render(RenderColumnTypes.Popover, {
             popoverProps: {
               openerRef: columnHeaderRef,
-              setOpen: setPopoverOpen
-            }
+              setOpen: setPopoverOpen,
+            },
           })}
       </div>
     </div>

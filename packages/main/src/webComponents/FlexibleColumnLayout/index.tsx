@@ -4,7 +4,7 @@ import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import type {
   FCLAccessibilityAttributes,
   FlexibleColumnLayoutColumnLayout,
-  FlexibleColumnLayoutLayoutChangeEventDetail
+  FlexibleColumnLayoutLayoutChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
 import type FCLLayout from '@ui5/webcomponents-fiori/dist/types/FCLLayout.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
@@ -134,7 +134,7 @@ interface FlexibleColumnLayoutPropTypes
    * | ❌|✅|
    */
   onLayoutChange?: (
-    event: Ui5CustomEvent<FlexibleColumnLayoutDomRef, FlexibleColumnLayoutLayoutChangeEventDetail>
+    event: Ui5CustomEvent<FlexibleColumnLayoutDomRef, FlexibleColumnLayoutLayoutChangeEventDetail>,
   ) => void;
 }
 
@@ -184,7 +184,7 @@ const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, Fle
   ['accessibilityAttributes', 'layout'],
   ['disableResizing'],
   ['endColumn', 'midColumn', 'startColumn'],
-  ['layout-change']
+  ['layout-change'],
 );
 
 FlexibleColumnLayout.displayName = 'FlexibleColumnLayout';

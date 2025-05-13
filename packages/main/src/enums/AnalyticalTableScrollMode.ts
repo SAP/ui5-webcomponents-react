@@ -6,5 +6,5 @@ export enum AnalyticalTableScrollMode {
   // Align the item to the end of the list (the bottom for vertical lists or the right for horizontal lists).
   end = 'end',
   // Align the item to the beginning of the list (the top for vertical lists or the left for horizontal lists)
-  start = 'start'
+  start = 'start',
 }

@@ -60,7 +60,7 @@ const OptionCustom = withWebComponent<OptionCustomPropTypes, OptionCustomDomRef>
   ['displayText', 'tooltip', 'value'],
   ['selected'],
   [],
-  []
+  [],
 );
 
 OptionCustom.displayName = 'OptionCustom';

@@ -7,7 +7,7 @@ const testCases: [ValueState | undefined, string, string, string][] = [
   [ValueState.Critical, 'alert', 'Warning Type', 'Warning'],
   [ValueState.Information, 'information', 'Information Type', 'Information'],
   [ValueState.None, 'information', 'Information Type', 'Information'],
-  [undefined, 'error', 'Error Type', 'Error']
+  [undefined, 'error', 'Error Type', 'Error'],
 ];
 
 describe('MessageViewButton', () => {

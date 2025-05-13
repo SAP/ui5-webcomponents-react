@@ -6,7 +6,7 @@ const meta = {
   component: ColorPicker,
   argTypes: {},
   args: {},
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof ColorPicker>;
 
 export default meta;

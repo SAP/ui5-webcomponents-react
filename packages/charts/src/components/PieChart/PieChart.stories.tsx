@@ -8,18 +8,18 @@ const meta = {
   component: PieChart,
   args: {
     dimension: {
-      accessor: 'name'
+      accessor: 'name',
     },
     measure: {
-      accessor: 'users'
+      accessor: 'users',
     },
-    dataset: simpleDataSet
+    dataset: simpleDataSet,
   },
   argTypes: {
     dataset: {
-      control: { disable: true }
-    }
-  }
+      control: { disable: true },
+    },
+  },
 } satisfies Meta<typeof PieChart>;
 
 export default meta;
@@ -31,27 +31,27 @@ export const WithCustomColor: Story = {
   args: {
     measure: {
       accessor: 'users',
-      colors: ['#f00', 'green', 'var(--sapNegativeColor)']
-    }
-  }
+      colors: ['#f00', 'green', 'var(--sapNegativeColor)'],
+    },
+  },
 };
 
 export const LoadingPlaceholder: Story = {
   args: {
-    dataset: []
-  }
+    dataset: [],
+  },
 };
 
 export const WithFormatter: Story = {
   args: {
     measure: {
       accessor: 'users',
-      formatter: (d) => (d > 200 ? 'over 200' : 'lower')
+      formatter: (d) => (d > 200 ? 'over 200' : 'lower'),
     },
     chartConfig: {
       activeSegment: 1,
-      showActiveSegmentDataLabel: true
-    }
+      showActiveSegmentDataLabel: true,
+    },
   },
   render(args) {
     const [activeSegment, setActiveSegment] = useState(1);
@@ -63,15 +63,15 @@ export const WithFormatter: Story = {
     };
 
     return <PieChart {...args} chartConfig={{ ...args.chartConfig, activeSegment }} onClick={handleChartClick} />;
-  }
+  },
 };
 
 export const WithActiveShape: Story = {
   args: {
     chartConfig: {
       activeSegment: 1,
-      showActiveSegmentDataLabel: true
-    }
+      showActiveSegmentDataLabel: true,
+    },
   },
   render(args) {
     const [activeSegment, setActiveSegment] = useState(args.chartConfig.activeSegment);
@@ -87,7 +87,7 @@ export const WithActiveShape: Story = {
     }, [args.chartConfig.activeSegment]);
 
     return <PieChart {...args} chartConfig={{ ...args.chartConfig, activeSegment }} onClick={handleChartClick} />;
-  }
+  },
 };
 
 export const HideLabels: Story = {
@@ -98,16 +98,16 @@ export const HideLabels: Story = {
         if (chartConfig.percent < 0.01) {
           return true;
         }
-      }
+      },
     },
-    dataset: simpleDataSetWithSmallValues
-  }
+    dataset: simpleDataSetWithSmallValues,
+  },
 };
 
 export const WithCustomTooltipConfig: Story = {
-  args: tooltipConfig
+  args: tooltipConfig,
 };
 
 export const WithCustomLegendConfig: Story = {
-  args: legendConfig
+  args: legendConfig,
 };

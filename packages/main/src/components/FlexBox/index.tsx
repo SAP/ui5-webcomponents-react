@@ -89,7 +89,7 @@ const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
     classNames[`flexWrap${wrap}`],
     displayInline && classNames.flexBoxDisplayInline,
     fitContainer && classNames.fitContainer,
-    className
+    className,
   );
 
   const CustomTag = as as ElementType;

@@ -7,5 +7,5 @@ export enum MessageBoxAction {
   No = 'No',
   OK = 'OK',
   Retry = 'Retry',
-  Yes = 'Yes'
+  Yes = 'Yes',
 }

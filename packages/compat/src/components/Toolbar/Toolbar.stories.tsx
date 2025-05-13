@@ -30,15 +30,15 @@ const meta = {
   argTypes: {
     children: { control: { disable: true } },
     as: { control: { disable: true } },
-    overflowButton: { control: { disable: true } }
+    overflowButton: { control: { disable: true } },
   },
   args: {
     design: ToolbarDesign.Auto,
-    toolbarStyle: ToolbarStyle.Standard
+    toolbarStyle: ToolbarStyle.Standard,
   },
   parameters: {
-    chromatic: { delay: 1000 }
-  }
+    chromatic: { delay: 1000 },
+  },
 } satisfies Meta<typeof Toolbar>;
 
 export default meta;
@@ -60,7 +60,7 @@ export const Default: Story = {
         <Switch data-accessible-name />
       </Toolbar>
     );
-  }
+  },
 };
 
 export const RightAlignedItems: Story = {
@@ -76,7 +76,7 @@ export const RightAlignedItems: Story = {
         <Icon data-accessible-name accessibleName="Download" name={downloadIcon} />
       </Toolbar>
     );
-  }
+  },
 };
 
 export const EvenlyAlignedItems: Story = {
@@ -95,7 +95,7 @@ export const EvenlyAlignedItems: Story = {
         <Icon data-accessible-name accessibleName="Download" name={downloadIcon} />
       </Toolbar>
     );
-  }
+  },
 };
 
 export const WithSeparator: Story = {
@@ -129,7 +129,7 @@ export const WithSeparator: Story = {
         </Button>
       </Toolbar>
     );
-  }
+  },
 };
 
 export const PopoverInOverflowPopover: Story = {
@@ -172,7 +172,7 @@ export const PopoverInOverflowPopover: Story = {
         </Menu>
       </>
     );
-  }
+  },
 };
 
 export const WithOverflowButton: Story = {
@@ -211,7 +211,7 @@ export const WithOverflowButton: Story = {
         </Toolbar>
       </>
     );
-  }
+  },
 };
 
 export const OverflowBtns: Story = {
@@ -275,7 +275,7 @@ export const OverflowBtns: Story = {
         </OverflowToolbarToggleButton>
       </Toolbar>
     );
-  }
+  },
 };
 
 export const CustomOverflowButton: Story = {
@@ -318,5 +318,5 @@ export const CustomOverflowButton: Story = {
         </Toolbar>
       </>
     );
-  }
+  },
 };

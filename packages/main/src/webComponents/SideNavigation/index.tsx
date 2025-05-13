@@ -111,7 +111,7 @@ const SideNavigation = withWebComponent<SideNavigationPropTypes, SideNavigationD
   ['accessibleName'],
   ['collapsed'],
   ['fixedItems', 'header'],
-  ['selection-change']
+  ['selection-change'],
 );
 
 SideNavigation.displayName = 'SideNavigation';

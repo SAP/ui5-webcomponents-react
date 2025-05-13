@@ -7,8 +7,8 @@ const meta = {
   title: 'Layouts & Floorplans / ResponsiveGridLayout',
   component: ResponsiveGridLayout,
   argTypes: {
-    children: { control: { disable: true } }
-  }
+    children: { control: { disable: true } },
+  },
 } satisfies Meta<typeof ResponsiveGridLayout>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -91,6 +91,6 @@ export const Default: Story = {
           <Text>Item 16</Text>
         </div>
       </>
-    )
-  }
+    ),
+  },
 };

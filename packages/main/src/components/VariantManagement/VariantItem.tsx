@@ -89,7 +89,7 @@ const VariantItem = forwardRef<ListItemStandardDomRef, VariantItemPropTypes>((pr
     readOnly,
     selected,
     children,
-    hideDelete
+    hideDelete,
   } = props;
 
   useStylesheet(styleData, VariantItem.displayName);

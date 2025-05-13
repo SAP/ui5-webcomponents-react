@@ -35,7 +35,7 @@ const SearchScope = withWebComponent<SearchScopePropTypes, SearchScopeDomRef>(
   ['text'],
   ['selected'],
   [],
-  []
+  [],
 );
 
 SearchScope.displayName = 'SearchScope';

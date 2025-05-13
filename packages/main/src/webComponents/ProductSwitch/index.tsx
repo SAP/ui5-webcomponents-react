@@ -40,7 +40,7 @@ const ProductSwitch = withWebComponent<ProductSwitchPropTypes, ProductSwitchDomR
   [],
   [],
   [],
-  []
+  [],
 );
 
 ProductSwitch.displayName = 'ProductSwitch';

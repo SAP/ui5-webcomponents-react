@@ -11,7 +11,7 @@ describe('Modals - static helpers', () => {
             onClick={() => {
               const { close } = Modals.showDialog({
                 children: 'Dialog Content',
-                footer: <Bar endContent={<Button onClick={() => close()}>Close</Button>} />
+                footer: <Bar endContent={<Button onClick={() => close()}>Close</Button>} />,
               });
             }}
           >
@@ -39,7 +39,7 @@ describe('Modals - static helpers', () => {
               const { close } = Modals.showPopover({
                 opener: 'modals-show-popover',
                 children: 'Popover Content',
-                footer: <Bar endContent={<Button onClick={() => close()}>Close</Button>} />
+                footer: <Bar endContent={<Button onClick={() => close()}>Close</Button>} />,
               });
             }}
           >
@@ -68,7 +68,7 @@ describe('Modals - static helpers', () => {
               const { close } = Modals.showResponsivePopover({
                 opener: 'modals-show-popover',
                 children: 'Popover Content',
-                footer: <Bar endContent={<Button onClick={() => close()}>Close</Button>} />
+                footer: <Bar endContent={<Button onClick={() => close()}>Close</Button>} />,
               });
             }}
           >
@@ -96,7 +96,7 @@ describe('Modals - static helpers', () => {
             onClick={() => {
               Modals.showMenu({
                 opener: 'modals-show-popover',
-                children: <MenuItem text="MenuItem" />
+                children: <MenuItem text="MenuItem" />,
               });
             }}
           >
@@ -122,7 +122,7 @@ describe('Modals - static helpers', () => {
           <Button
             onClick={() => {
               Modals.showMessageBox({
-                children: 'MessageBox Content'
+                children: 'MessageBox Content',
               });
             }}
           >
@@ -149,9 +149,9 @@ describe('Modals - static helpers', () => {
               onClick={() => {
                 Modals.showToast(
                   {
-                    children: 'Toast Content'
+                    children: 'Toast Content',
                   },
-                  document.getElementById('container')
+                  document.getElementById('container'),
                 );
               }}
             >

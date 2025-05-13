@@ -11,7 +11,7 @@ const getRowProps = (rowProps, { row, instance }: { row: RowType; instance: Tabl
       e.target?.dataset?.name !== 'internal_selection_column' &&
       !(e.markerAllowTableRowSelection === true || e.nativeEvent?.markerAllowTableRowSelection === true) &&
       webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(
-        getTagNameWithoutScopingSuffix(e.target.tagName)
+        getTagNameWithoutScopingSuffix(e.target.tagName),
       )
     ) {
       return;
@@ -58,7 +58,7 @@ const getRowProps = (rowProps, { row, instance }: { row: RowType; instance: Tabl
     if ((!e.target.hasAttribute('aria-expanded') || (e.shiftKey && e.code === 'Space')) && e.code === 'Enter') {
       if (
         !webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(
-          getTagNameWithoutScopingSuffix(e.target.tagName)
+          getTagNameWithoutScopingSuffix(e.target.tagName),
         )
       ) {
         e.preventDefault();
@@ -76,7 +76,7 @@ const getRowProps = (rowProps, { row, instance }: { row: RowType; instance: Tabl
     if (!e.target.hasAttribute('aria-expanded') && !e.shiftKey && e.code === 'Space') {
       if (
         !webComponentsReactProperties.tagNamesWhichShouldNotSelectARow.has(
-          getTagNameWithoutScopingSuffix(e.target.tagName)
+          getTagNameWithoutScopingSuffix(e.target.tagName),
         )
       ) {
         e.preventDefault();
@@ -90,8 +90,8 @@ const getRowProps = (rowProps, { row, instance }: { row: RowType; instance: Tabl
     {
       onKeyDown: handleKeyDown,
       onKeyUp: handleKeyUp,
-      onClick: handleRowSelect
-    }
+      onClick: handleRowSelect,
+    },
   ];
 };
 

@@ -3,7 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 import type {
   ShellBarItemAccessibilityAttributes,
-  ShellBarItemClickEventDetail
+  ShellBarItemClickEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
@@ -82,7 +82,7 @@ const ShellBarItem = withWebComponent<ShellBarItemPropTypes, ShellBarItemDomRef>
   ['accessibilityAttributes', 'count', 'icon', 'text'],
   [],
   [],
-  ['click']
+  ['click'],
 );
 
 ShellBarItem.displayName = 'ShellBarItem';

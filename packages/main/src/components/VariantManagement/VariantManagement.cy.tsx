@@ -14,7 +14,7 @@ const TwoVariantItems = [
   <VariantItem key="0">VariantItem 1</VariantItem>,
   <VariantItem selected key="1">
     VariantItem 2
-  </VariantItem>
+  </VariantItem>,
 ];
 
 describe('VariantManagement', () => {
@@ -36,7 +36,7 @@ describe('VariantManagement', () => {
     cy.mount(
       <VariantManagement titleText="Popover Heading" level={TitleLevel.H1}>
         {TwoVariantItems}
-      </VariantManagement>
+      </VariantManagement>,
     );
 
     cy.findByText('VariantItem 2').should('have.attr', 'level', TitleLevel.H1).click();
@@ -51,10 +51,10 @@ describe('VariantManagement', () => {
           ...TwoVariantItems,
           <VariantItem isDefault key="2">
             VariantItem 3
-          </VariantItem>
+          </VariantItem>,
         ]}
       </VariantManagement>,
-      { strict: false }
+      { strict: false },
     );
 
     cy.contains('VariantItem 2').click();
@@ -78,19 +78,19 @@ describe('VariantManagement', () => {
               children: 'VariantItem 1 Updated!',
               isDefault: true,
               favorite: true,
-              applyAutomatically: true
+              applyAutomatically: true,
             }),
-            Cypress.sinon.match.object
+            Cypress.sinon.match.object,
           ],
           variants: [
             Cypress.sinon.match.object,
             Cypress.sinon.match.object,
             Cypress.sinon.match({
-              isDefault: false
-            })
-          ]
-        })
-      })
+              isDefault: false,
+            }),
+          ],
+        }),
+      }),
     );
 
     cy.findByText('Manage Views').should('not.exist');
@@ -192,7 +192,7 @@ describe('VariantManagement', () => {
     cy.mount(
       <VariantManagement onSelect={select} closeOnItemSelect>
         {TwoVariantItems}
-      </VariantManagement>
+      </VariantManagement>,
     );
 
     cy.get('[ui5-responsive-popover]').should('not.be.visible');
@@ -217,7 +217,7 @@ describe('VariantManagement', () => {
     const save = cy.spy().as('save');
     const TestComp = ({
       onSave,
-      dirtyStateText
+      dirtyStateText,
     }: {
       onSave: VariantManagementPropTypes['onSave'];
       dirtyStateText?: VariantManagementPropTypes['dirtyStateText'];
@@ -283,7 +283,7 @@ describe('VariantManagement', () => {
       <VariantManagement hideSaveAs hideManageVariants>
         <VariantItem>VariantItem 1</VariantItem>
         <VariantItem selected>VariantItem 2</VariantItem>
-      </VariantManagement>
+      </VariantManagement>,
     );
     cy.get('[ui5-title]').contains('VariantItem 2').click();
     cy.findByText('Save As', { timeout: 200 }).should('not.exist');
@@ -295,7 +295,7 @@ describe('VariantManagement', () => {
       <VariantManagement inErrorState>
         <VariantItem>VariantItem 1</VariantItem>
         <VariantItem selected>VariantItem 2</VariantItem>
-      </VariantManagement>
+      </VariantManagement>,
     );
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.get('[ui5-illustrated-message]').should('be.visible');
@@ -309,7 +309,7 @@ describe('VariantManagement', () => {
         {...new Array(9)
           .fill(':)')
           .map((_, index) => <VariantItem key={index + 3}>{`VariantItem ${index + 3}`}</VariantItem>)}
-      </VariantManagement>
+      </VariantManagement>,
     );
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.get('[ui5-li]').should('have.length', 11);
@@ -324,7 +324,7 @@ describe('VariantManagement', () => {
         {new Array(8).fill(':)').map((_, index) => (
           <VariantItem key={index + 3}>{`VariantItem ${index + 3}`}</VariantItem>
         ))}
-      </VariantManagement>
+      </VariantManagement>,
     );
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.get('[ui5-li]').should('have.length', 10);
@@ -339,7 +339,7 @@ describe('VariantManagement', () => {
           Favorite VariantItem
         </VariantItem>
         <VariantItem isDefault>Default VariantItem</VariantItem>
-      </VariantManagement>
+      </VariantManagement>,
     );
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.findByText('VariantItem 1', { timeout: 200 }).should('not.exist');
@@ -369,7 +369,7 @@ describe('VariantManagement', () => {
     cy.mount(
       <VariantManagement hideApplyAutomatically hideSetAsDefault hideShare hideCreatedBy>
         {TwoVariantItems}
-      </VariantManagement>
+      </VariantManagement>,
     );
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.findByText('Save As').click();
@@ -426,7 +426,7 @@ describe('VariantManagement', () => {
     cy.get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}Updated!');
     cy.findByText('Save').click();
     cy.findByText(
-      '{"nativeDetail":1,"selected":true,"children":"Updated!","isDefault":true,"global":true,"applyAutomatically":true}'
+      '{"nativeDetail":1,"selected":true,"children":"Updated!","isDefault":true,"global":true,"applyAutomatically":true}',
     );
     cy.get('@saveAs').should('have.been.calledOnce');
 
@@ -436,7 +436,7 @@ describe('VariantManagement', () => {
     cy.get('[ui5-input]').typeIntoUi5Input('{selectall}{backspace}Updated again!');
     cy.findByText('Cancel').click();
     cy.findByText(
-      '{"nativeDetail":1,"selected":true,"children":"Updated!","isDefault":true,"global":true,"applyAutomatically":true}'
+      '{"nativeDetail":1,"selected":true,"children":"Updated!","isDefault":true,"global":true,"applyAutomatically":true}',
     );
     cy.get('@saveAs').should('have.been.calledOnce');
   });
@@ -454,11 +454,11 @@ describe('VariantManagement', () => {
       { rowId: 'Apply Automatically (List item)', props: { applyAutomatically: true } },
       {
         rowId: 'Apply Automatically with text',
-        props: { applyAutomatically: true, applyAutomaticallyText: 'applyAutomaticallyText' }
+        props: { applyAutomatically: true, applyAutomaticallyText: 'applyAutomaticallyText' },
       },
       {
         rowId: 'Apply Automatically (false) with text',
-        props: { applyAutomatically: false, applyAutomaticallyText: 'applyAutomaticallyText' }
+        props: { applyAutomatically: false, applyAutomaticallyText: 'applyAutomaticallyText' },
       },
       { rowId: 'Author', props: { author: 'author' } },
       {
@@ -470,8 +470,8 @@ describe('VariantManagement', () => {
           hideDelete: true,
           global: true,
           applyAutomatically: true,
-          author: 'bla'
-        }
+          author: 'bla',
+        },
       },
       {
         rowId: 'All props false',
@@ -482,13 +482,13 @@ describe('VariantManagement', () => {
           hideDelete: false,
           global: false,
           applyAutomatically: false,
-          author: 'All false'
-        }
-      }
+          author: 'All false',
+        },
+      },
     ];
     const TestComp = ({
       onSaveManageViews,
-      showOnlyFavorites
+      showOnlyFavorites,
     }: {
       onSaveManageViews: VariantManagementPropTypes['onSaveManageViews'];
       showOnlyFavorites?: VariantManagementPropTypes['showOnlyFavorites'];
@@ -501,7 +501,7 @@ describe('VariantManagement', () => {
           variants: e.detail.variants.map((item) => {
             const { variantItem: _0, ...rest } = item;
             return rest;
-          })
+          }),
         });
       };
       return (
@@ -528,7 +528,7 @@ describe('VariantManagement', () => {
           global,
           applyAutomatically,
           applyAutomaticallyText,
-          author
+          author,
         } = props;
 
         cy.get(`[ui5-table-row][data-id="${rowId}"]`).as('row');
@@ -609,7 +609,7 @@ describe('VariantManagement', () => {
     cy.findByText('Save').click();
     cy.get('@saveView').should('have.been.calledOnce');
     cy.findByText(
-      '{"nativeDetail":1,"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}]}'
+      '{"nativeDetail":1,"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}]}',
     );
 
     cy.mount(<TestComp onSaveManageViews={onSaveView} showOnlyFavorites />);
@@ -620,13 +620,13 @@ describe('VariantManagement', () => {
     cy.findByText('Save').click();
     cy.get('@saveView').should('have.been.calledTwice');
     cy.findByText(
-      '{"nativeDetail":1,"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}]}'
+      '{"nativeDetail":1,"deletedVariants":[],"prevVariants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}],"updatedVariants":[],"variants":[{"children":"Default VariantItem"},{"labelReadOnly":true,"children":"LabelReadOnly"},{"favorite":true,"children":"Favorite"},{"favorite":true,"isDefault":true,"children":"Favorite & isDefault"},{"isDefault":true,"children":"IsDefault"},{"hideDelete":true,"children":"HideDelete"},{"hideDelete":false,"global":true,"children":"HideDelete - false & global - true"},{"global":true,"children":"Global"},{"applyAutomatically":true,"children":"Apply Automatically (List item)"},{"applyAutomatically":true,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically with text"},{"applyAutomatically":false,"applyAutomaticallyText":"applyAutomaticallyText","children":"Apply Automatically (false) with text"},{"author":"author","children":"Author"},{"labelReadOnly":true,"favorite":true,"isDefault":true,"hideDelete":true,"global":true,"applyAutomatically":true,"author":"bla","children":"All props"},{"labelReadOnly":false,"favorite":false,"isDefault":false,"hideDelete":false,"global":false,"applyAutomatically":false,"author":"All false","children":"All props false"}]}',
     );
   });
 
   it('Delete variants', () => {
     const TestComp = ({
-      onSaveManageViews
+      onSaveManageViews,
     }: {
       onSaveManageViews: VariantManagementPropTypes['onSaveManageViews'];
     }) => {
@@ -638,7 +638,7 @@ describe('VariantManagement', () => {
           variants: e.detail.variants.map((item) => {
             const { variantItem: _0, ...rest } = item;
             return rest;
-          })
+          }),
         });
       };
       return (
@@ -667,7 +667,7 @@ describe('VariantManagement', () => {
     cy.findByText('Save').click();
     cy.get('@saveView').should('have.been.calledOnce');
     cy.findByText(
-      '{"nativeDetail":1,"deletedVariants":[{"children":"VariantItem 1"},{"selected":true,"children":"VariantItem 2"}],"prevVariants":[{"children":"VariantItem 1"},{"selected":true,"children":"VariantItem 2"},{"isDefault":true,"children":"VariantItem 3"}],"updatedVariants":[],"variants":[{"isDefault":true,"children":"VariantItem 3"}]}'
+      '{"nativeDetail":1,"deletedVariants":[{"children":"VariantItem 1"},{"selected":true,"children":"VariantItem 2"}],"prevVariants":[{"children":"VariantItem 1"},{"selected":true,"children":"VariantItem 2"},{"isDefault":true,"children":"VariantItem 3"}],"updatedVariants":[],"variants":[{"isDefault":true,"children":"VariantItem 3"}]}',
     );
   });
 
@@ -679,7 +679,7 @@ describe('VariantManagement', () => {
         <VariantItem isDefault key="2">
           VariantItem 3
         </VariantItem>
-      </VariantManagement>
+      </VariantManagement>,
     );
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.findByText('Manage').click();

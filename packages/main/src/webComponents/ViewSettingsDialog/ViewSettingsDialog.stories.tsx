@@ -12,7 +12,7 @@ const meta = {
   component: ViewSettingsDialog,
   argTypes: {
     filterItems: { control: { disable: true } },
-    sortItems: { control: { disable: true } }
+    sortItems: { control: { disable: true } },
   },
   args: {
     open: isChromatic,
@@ -47,12 +47,12 @@ const meta = {
         <SortItem text="Company" />
         <SortItem text="Department" />
       </>
-    )
+    ),
   },
   parameters: {
-    chromatic: { delay: 999 }
+    chromatic: { delay: 999 },
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof ViewSettingsDialog>;
 
 export default meta;
@@ -85,5 +85,5 @@ export const Default: Story = {
         />
       </>
     );
-  }
+  },
 };

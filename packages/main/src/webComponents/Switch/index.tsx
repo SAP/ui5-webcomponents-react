@@ -136,7 +136,7 @@ const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(
   ['accessibleName', 'accessibleNameRef', 'design', 'name', 'textOff', 'textOn', 'tooltip'],
   ['checked', 'disabled', 'required'],
   [],
-  ['change']
+  ['change'],
 );
 
 Switch.displayName = 'Switch';

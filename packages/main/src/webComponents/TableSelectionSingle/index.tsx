@@ -68,7 +68,7 @@ const TableSelectionSingle = withWebComponent<TableSelectionSinglePropTypes, Tab
   ['selected'],
   [],
   [],
-  ['change']
+  ['change'],
 );
 
 TableSelectionSingle.displayName = 'TableSelectionSingle';

@@ -47,7 +47,7 @@ const ButtonBadge = withWebComponent<ButtonBadgePropTypes, ButtonBadgeDomRef>(
   ['design', 'text'],
   [],
   [],
-  []
+  [],
 );
 
 ButtonBadge.displayName = 'ButtonBadge';

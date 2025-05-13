@@ -194,7 +194,7 @@ const Search = withWebComponent<SearchPropTypes, SearchDomRef>(
   ['accessibleDescription', 'accessibleName', 'placeholder', 'value'],
   ['loading', 'noTypeahead', 'open', 'showClearIcon'],
   ['action', 'illustration', 'messageArea', 'scopes'],
-  ['close', 'input', 'open', 'scope-change', 'search']
+  ['close', 'input', 'open', 'scope-change', 'search'],
 );
 
 Search.displayName = 'Search';

@@ -12,7 +12,7 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
@@ -32,7 +32,7 @@ import {
   tickLineConfig,
   tooltipContentStyle,
   tooltipFillOpacity,
-  xAxisPadding
+  xAxisPadding,
 } from '../../internal/staticProps.js';
 import { resolvePrimaryAndSecondaryMeasures } from '../../internal/Utils.js';
 import { XAxisTicks } from '../../internal/XAxisTicks.js';
@@ -105,13 +105,13 @@ export interface LineChartProps extends IChartBaseProps {
 }
 
 const dimensionDefaults = {
-  formatter: defaultFormatter
+  formatter: defaultFormatter,
 };
 
 const measureDefaults = {
   formatter: defaultFormatter,
   width: 1,
-  opacity: 1
+  opacity: 1,
 };
 
 /**
@@ -151,14 +151,14 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     yAxisConfig: {},
     xAxisConfig: {},
     secondYAxisConfig: {},
-    ...props.chartConfig
+    ...props.chartConfig,
   };
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
     props.measures,
     dimensionDefaults,
-    measureDefaults
+    measureDefaults,
   );
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
@@ -166,7 +166,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
   const primaryDimension = dimensions[0];
   const { primaryMeasure, secondaryMeasure } = resolvePrimaryAndSecondaryMeasures(
     measures,
-    chartConfig?.secondYAxis?.dataKey
+    chartConfig?.secondYAxis?.dataKey,
   );
 
   const labelFormatter = useLabelFormatter(primaryDimension);
@@ -189,22 +189,22 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
             value: eventOrIndex.value,
             dataKey: eventOrIndex.dataKey,
             dataIndex: eventOrIndex.index,
-            payload: eventOrIndex.payload
-          })
+            payload: eventOrIndex.payload,
+          }),
         );
       } else if (typeof onClick === 'function' && preventOnClickCall.current === 0) {
         onClick(
           enrichEventWithDetails(eventOrIndex, {
             payload: payload?.activePayload?.[0]?.payload,
-            activePayloads: payload?.activePayload
-          })
+            activePayloads: payload?.activePayload,
+          }),
         );
       }
       if (preventOnClickCall.current > 0) {
         preventOnClickCall.current -= 1;
       }
     },
-    [onDataPointClick, preventOnClickCall.current]
+    [onDataPointClick, preventOnClickCall.current],
   );
 
   const isBigDataSet = dataset?.length > 30;
@@ -276,18 +276,18 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             axisLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
             tick={
               <YAxisTicks
                 config={secondaryMeasure}
                 secondYAxisConfig={{
-                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
               />
             }
             tickLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore

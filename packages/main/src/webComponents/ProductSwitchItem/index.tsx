@@ -90,7 +90,7 @@ const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes, ProductSw
   ['icon', 'subtitleText', 'target', 'targetSrc', 'titleText'],
   [],
   [],
-  ['click']
+  ['click'],
 );
 
 ProductSwitchItem.displayName = 'ProductSwitchItem';

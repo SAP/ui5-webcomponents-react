@@ -17,15 +17,15 @@ const meta = {
   component: List,
   argTypes: {
     children: { control: { disable: true } },
-    header: { control: { disable: true } }
+    header: { control: { disable: true } },
   },
   args: {
     headerText: 'List with ListItemStandard',
     selectionMode: ListSelectionMode.None,
     separators: ListSeparator.All,
-    growing: ListGrowingMode.None
+    growing: ListGrowingMode.None,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof List>;
 
 // TODO: check why subcomponents aren't showing up in table in docs
@@ -42,13 +42,13 @@ export const Default: Story = {
         <ListItemStandard additionalText="1" text="List Item 3" />
       </List>
     );
-  }
+  },
 };
 
 export const ListItemCustomStory: Story = {
   name: 'ListItemCustom',
   args: {
-    headerText: 'List with a ListItemCustom'
+    headerText: 'List with a ListItemCustom',
   },
   render: (args) => {
     return (
@@ -67,13 +67,13 @@ export const ListItemCustomStory: Story = {
         </ListItemCustom>
       </List>
     );
-  }
+  },
 };
 
 export const ListItemGroupStory: Story = {
   name: 'ListItemGroup',
   args: {
-    headerText: 'List with a ListItemGroup'
+    headerText: 'List with a ListItemGroup',
   },
   render: (args) => {
     return (
@@ -87,5 +87,5 @@ export const ListItemGroupStory: Story = {
         </ListItemGroup>
       </List>
     );
-  }
+  },
 };

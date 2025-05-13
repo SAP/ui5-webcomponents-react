@@ -7,7 +7,7 @@ import type { ReactTableHooks, TableInstance } from '../types/index.js';
 const customCheckBoxStyling = {
   verticalAlign: 'middle',
   pointerEvents: 'none',
-  display: 'block'
+  display: 'block',
 } as CSSProperties;
 
 /*
@@ -17,7 +17,7 @@ const customCheckBoxStyling = {
 const Header = (instance: TableInstance) => {
   const {
     getToggleAllRowsSelectedProps,
-    webComponentsReactProperties: { selectionMode, translatableTexts, classes }
+    webComponentsReactProperties: { selectionMode, translatableTexts, classes },
   } = instance;
 
   if (selectionMode === AnalyticalTableSelectionMode.Single) {
@@ -67,14 +67,14 @@ const headerProps = (props, { instance }: { instance: TableInstance }) => {
     webComponentsReactProperties: {
       onRowSelect,
       selectionMode,
-      translatableTexts: { selectAllText, deselectAllText }
+      translatableTexts: { selectAllText, deselectAllText },
     },
     toggleAllRowsSelected,
     isAllRowsSelected,
     rowsById,
     preFilteredRowsById,
     dispatch,
-    state: { filters, globalFilter }
+    state: { filters, globalFilter },
   } = instance;
   const style = { ...props.style, cursor: 'pointer', display: 'flex', justifyContent: 'center' };
   const isFiltered = filters?.length > 0 || !!globalFilter;
@@ -97,8 +97,8 @@ const headerProps = (props, { instance }: { instance: TableInstance }) => {
             enrichEventWithDetails(e, {
               rowsById: _rowsById,
               allRowsSelected: !isAllRowsSelected,
-              selectedRowIds: !isAllRowsSelected ? getNextSelectedRowIds(rowsById) : {}
-            })
+              selectedRowIds: !isAllRowsSelected ? getNextSelectedRowIds(rowsById) : {},
+            }),
           );
         }
       }
@@ -138,12 +138,12 @@ const columnDeps = (deps, { instance: { webComponentsReactProperties } }: { inst
 const visibleColumnsDeps = (deps, { instance }: { instance: TableInstance }) => [
   ...deps,
   instance.webComponentsReactProperties.selectionMode,
-  instance.webComponentsReactProperties.selectionBehavior
+  instance.webComponentsReactProperties.selectionBehavior,
 ];
 
 const visibleColumns = (
   currentVisibleColumns,
-  { instance: { webComponentsReactProperties } }: { instance: TableInstance }
+  { instance: { webComponentsReactProperties } }: { instance: TableInstance },
 ) => {
   if (
     webComponentsReactProperties.selectionMode === AnalyticalTableSelectionMode.None ||
@@ -169,9 +169,9 @@ const columns = (currentColumns, { instance }: { instance: TableInstance }) => {
     tableRef.current &&
     parseInt(
       getComputedStyle(tableRef.current).getPropertyValue(
-        CssSizeVariablesNames.ui5WcrAnalyticalTableSelectionColumnWidth
+        CssSizeVariablesNames.ui5WcrAnalyticalTableSelectionColumnWidth,
       ),
-      10
+      10,
     );
   const selectionColumnWidth = !isNaN(tableSelectionColumnWidth) ? tableSelectionColumnWidth : 47;
 
@@ -187,9 +187,9 @@ const columns = (currentColumns, { instance }: { instance: TableInstance }) => {
       minWidth: selectionColumnWidth,
       maxWidth: selectionColumnWidth,
       Header,
-      Cell
+      Cell,
     },
-    ...currentColumns
+    ...currentColumns,
   ];
 };
 
@@ -203,7 +203,7 @@ const getCellProps = (props, { cell }: { cell: TableInstance['cell'] }) => {
 
 const setToggleAllRowsSelectedProps = (
   props,
-  { instance: { webComponentsReactProperties } }: { instance: TableInstance }
+  { instance: { webComponentsReactProperties } }: { instance: TableInstance },
 ) => {
   const { classes } = webComponentsReactProperties;
   return [props, { className: classes.checkBox, title: undefined }];

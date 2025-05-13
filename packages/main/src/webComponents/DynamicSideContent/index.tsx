@@ -3,7 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 import type {
   DynamicSideContentAccessibilityAttributes,
-  DynamicSideContentLayoutChangeEventDetail
+  DynamicSideContentLayoutChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
 import type SideContentFallDown from '@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js';
 import type SideContentPosition from '@ui5/webcomponents-fiori/dist/types/SideContentPosition.js';
@@ -173,7 +173,7 @@ const DynamicSideContent = withWebComponent<DynamicSideContentPropTypes, Dynamic
   ['accessibilityAttributes', 'sideContentFallDown', 'sideContentPosition', 'sideContentVisibility'],
   ['equalSplit', 'hideMainContent', 'hideSideContent'],
   ['sideContent'],
-  ['layout-change']
+  ['layout-change'],
 );
 
 DynamicSideContent.displayName = 'DynamicSideContent';

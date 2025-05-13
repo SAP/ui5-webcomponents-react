@@ -21,9 +21,9 @@ describe('RadialChart', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: Cypress.sinon.match({
-            payload: { value: 67 }
-          })
-        })
+            payload: { value: 67 },
+          }),
+        }),
       );
   });
 

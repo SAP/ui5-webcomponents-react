@@ -30,7 +30,7 @@ const TableGroupRow = withWebComponent<TableGroupRowPropTypes, TableGroupRowDomR
   [],
   [],
   [],
-  []
+  [],
 );
 
 TableGroupRow.displayName = 'TableGroupRow';

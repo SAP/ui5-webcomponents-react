@@ -25,7 +25,7 @@ import {
   RETRY,
   SUCCESS,
   WARNING,
-  YES
+  YES,
 } from '../../i18n/i18n-defaults.js';
 import type { ButtonPropTypes, DialogDomRef, DialogPropTypes } from '../../webComponents/index.js';
 import { Button, Dialog, Icon, Text, Title } from '../../webComponents/index.js';
@@ -163,7 +163,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
     [MessageBoxAction.No]: i18nBundle.getText(NO),
     [MessageBoxAction.OK]: i18nBundle.getText(OK),
     [MessageBoxAction.Retry]: i18nBundle.getText(RETRY),
-    [MessageBoxAction.Yes]: i18nBundle.getText(YES)
+    [MessageBoxAction.Yes]: i18nBundle.getText(YES),
   };
 
   const titleToRender = () => {
@@ -253,7 +253,7 @@ const MessageBox = forwardRef<DialogDomRef, MessageBoxPropTypes>((props, ref) =>
                     handleOnClose(e);
                   }
                 : handleOnClose,
-              'data-action': action?.props?.['data-action'] ?? `${index}: custom action`
+              'data-action': action?.props?.['data-action'] ?? `${index}: custom action`,
             });
           }
           if (typeof action === 'string') {

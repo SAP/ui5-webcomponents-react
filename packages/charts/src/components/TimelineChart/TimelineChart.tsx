@@ -15,7 +15,7 @@ import {
   MOUSE_CURSOR_AUTO,
   MOUSE_CURSOR_GRAB,
   MOUSE_CURSOR_GRABBING,
-  ROW_TITLE_WIDTH
+  ROW_TITLE_WIDTH,
 } from './util/constants.js';
 import { IllegalConnectionError, InvalidDiscreteLabelError } from './util/error.js';
 import { classNames, styleData } from './util/TimelineChart.module.css.js';
@@ -144,7 +144,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
       valueFormat = (x: number) => x.toFixed(1),
       ...rest
     },
-    fRef
+    fRef,
   ) => {
     const numOfRows = dataset?.length ?? 0;
     const height = rowHeight * numOfRows + COLUMN_HEADER_HEIGHT;
@@ -152,7 +152,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
     const style: CSSProperties = {
       height: `${height}px`,
       width: width,
-      gridTemplateColumns: `${ROW_TITLE_WIDTH}px auto`
+      gridTemplateColumns: `${ROW_TITLE_WIDTH}px auto`,
     };
 
     const ref = useRef(null);
@@ -161,7 +161,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
       width: 0,
       height: 0,
       chartWidth: 0,
-      chartHeight: 0
+      chartHeight: 0,
     });
     const [chartBodyScale, setChartBodyScale] = useState(1);
     const [isGrabbed, setIsGrabbed] = useState(false);
@@ -178,7 +178,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
             width: width,
             height: height,
             chartWidth: width - ROW_TITLE_WIDTH,
-            chartHeight: height - COLUMN_HEADER_HEIGHT
+            chartHeight: height - COLUMN_HEADER_HEIGHT,
           });
           setChartBodyScale(1);
         });
@@ -260,7 +260,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
             style={{
               width: unscaledBodyWidth,
               height: height,
-              cursor: getCursor()
+              cursor: getCursor(),
             }}
             onMouseDown={onMouseDown}
             onMouseUp={onMouseUp}
@@ -271,7 +271,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
               style={{
                 width: unscaledBodyWidth,
                 height: COLUMN_HEADER_HEIGHT / 2,
-                lineHeight: `${COLUMN_HEADER_HEIGHT / 2}px`
+                lineHeight: `${COLUMN_HEADER_HEIGHT / 2}px`,
               }}
             >
               {columnTitle} {unit != null ? `(${unit})` : ''}
@@ -310,7 +310,7 @@ const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 TimelineChart.displayName = 'TimelineChart';

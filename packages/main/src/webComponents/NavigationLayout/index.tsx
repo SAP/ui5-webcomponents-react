@@ -79,7 +79,7 @@ const NavigationLayout = withWebComponent<NavigationLayoutPropTypes, NavigationL
   ['mode'],
   [],
   ['header', 'sideContent'],
-  []
+  [],
 );
 
 NavigationLayout.displayName = 'NavigationLayout';

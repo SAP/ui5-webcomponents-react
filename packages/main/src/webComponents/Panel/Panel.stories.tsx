@@ -14,12 +14,12 @@ const meta = {
   component: Panel,
   argTypes: {
     children: { control: { disable: true } },
-    header: { control: { disable: true } }
+    header: { control: { disable: true } },
   },
   args: {
-    headerText: 'Panel'
+    headerText: 'Panel',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Panel>;
 
 export default meta;
@@ -40,7 +40,7 @@ export const Default: Story = {
         </Text>
       </Panel>
     );
-  }
+  },
 };
 
 export const WithCustomHeader: Story = {
@@ -54,7 +54,7 @@ export const WithCustomHeader: Story = {
         <Button design={ButtonDesign.Negative}>Remove</Button>
         <Button design={ButtonDesign.Emphasized}>Add</Button>
       </FlexBox>
-    )
+    ),
   },
   render(args) {
     return (
@@ -70,5 +70,5 @@ export const WithCustomHeader: Story = {
         </List>
       </Panel>
     );
-  }
+  },
 };

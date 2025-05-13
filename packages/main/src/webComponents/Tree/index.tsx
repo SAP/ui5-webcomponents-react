@@ -8,7 +8,7 @@ import type {
   TreeItemMouseoverEventDetail,
   TreeItemToggleEventDetail,
   TreeSelectionChangeEventDetail,
-  WalkCallback
+  WalkCallback,
 } from '@ui5/webcomponents/dist/Tree.js';
 import type ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
@@ -233,11 +233,11 @@ const Tree = withWebComponent<TreePropTypes, TreeDomRef>(
     'footerText',
     'headerText',
     'noDataText',
-    'selectionMode'
+    'selectionMode',
   ],
   [],
   ['header'],
-  ['item-click', 'item-delete', 'item-mouseout', 'item-mouseover', 'item-toggle', 'selection-change']
+  ['item-click', 'item-delete', 'item-mouseout', 'item-mouseover', 'item-toggle', 'selection-change'],
 );
 
 Tree.displayName = 'Tree';

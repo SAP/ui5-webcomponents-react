@@ -6,7 +6,7 @@ import { Modals } from './index.js';
 
 const meta = {
   title: 'User Feedback / Modals',
-  component: Modals
+  component: Modals,
 } satisfies Meta<typeof Modals>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -24,7 +24,7 @@ export const Dialog: Story = {
                 <FlexBox justifyContent={FlexBoxJustifyContent.End} fitContainer style={{ paddingBlock: '0.25rem' }}>
                   <Button onClick={() => close()}>Close</Button>{' '}
                 </FlexBox>
-              )
+              ),
             });
           }}
         >
@@ -32,7 +32,7 @@ export const Dialog: Story = {
         </Button>
       </>
     );
-  }
+  },
 };
 
 export const Popover = {
@@ -45,7 +45,7 @@ export const Popover = {
             Modals.showPopover({
               opener: 'modals-show-popover',
               headerText: 'Popover Title',
-              children: "I'm a Popover!"
+              children: "I'm a Popover!",
             });
           }}
         >
@@ -53,7 +53,7 @@ export const Popover = {
         </Button>
       </>
     );
-  }
+  },
 };
 
 export const ResponsivePopover = {
@@ -66,7 +66,7 @@ export const ResponsivePopover = {
             Modals.showResponsivePopover({
               opener: 'modals-show-responsive-popover',
               headerText: 'Responsive Popover Title',
-              children: "I'm a Responsive Popover!"
+              children: "I'm a Responsive Popover!",
             });
           }}
         >
@@ -74,7 +74,7 @@ export const ResponsivePopover = {
         </Button>
       </>
     );
-  }
+  },
 };
 
 export const Menu = {
@@ -92,7 +92,7 @@ export const Menu = {
                   <MenuItem text="New File" icon="add-document" />
                   <MenuItem text="New Folder" icon="add-folder" disabled />
                 </>
-              )
+              ),
             });
           }}
         >
@@ -100,7 +100,7 @@ export const Menu = {
         </Button>
       </>
     );
-  }
+  },
 };
 
 export const MessageBox = {
@@ -111,7 +111,7 @@ export const MessageBox = {
           onClick={() => {
             Modals.showMessageBox({
               type: MessageBoxType.Confirm,
-              children: 'Can you see this MessageBox?'
+              children: 'Can you see this MessageBox?',
             });
           }}
         >
@@ -119,7 +119,7 @@ export const MessageBox = {
         </Button>
       </>
     );
-  }
+  },
 };
 
 export const Toast = {
@@ -129,7 +129,7 @@ export const Toast = {
         <Button
           onClick={() => {
             Modals.showToast({
-              children: "I'm a Message Toast!"
+              children: "I'm a Message Toast!",
             });
           }}
         >
@@ -137,5 +137,5 @@ export const Toast = {
         </Button>
       </>
     );
-  }
+  },
 };

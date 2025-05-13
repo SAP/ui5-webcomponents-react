@@ -83,5 +83,5 @@ export enum IndicationColor {
   /**
    * Grey (second color set)
    */
-  Indication20 = 'Indication20'
+  Indication20 = 'Indication20',
 }

@@ -38,6 +38,6 @@ export const resolvePrimaryAndSecondaryMeasures = (measures: IChartMeasure[], se
 
   return {
     primaryMeasure,
-    secondaryMeasure
+    secondaryMeasure,
   };
 };

@@ -120,7 +120,7 @@ const ToolbarSelect = withWebComponent<ToolbarSelectPropTypes, ToolbarSelectDomR
   ['accessibleName', 'accessibleNameRef', 'overflowPriority', 'valueState', 'width'],
   ['disabled', 'preventOverflowClosing'],
   [],
-  ['change', 'close', 'open']
+  ['change', 'close', 'open'],
 );
 
 ToolbarSelect.displayName = 'ToolbarSelect';

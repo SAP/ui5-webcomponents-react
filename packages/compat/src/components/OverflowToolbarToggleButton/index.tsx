@@ -3,7 +3,7 @@
 import { ToggleButton } from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
 import type {
   ToggleButtonDomRef,
-  ToggleButtonPropTypes
+  ToggleButtonPropTypes,
 } from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
 import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
@@ -39,7 +39,7 @@ const OverflowToolbarToggleButton = forwardRef<ToggleButtonDomRef, OverflowToolb
         {inPopover ? children : ''}
       </ToggleButton>
     );
-  }
+  },
 );
 
 OverflowToolbarToggleButton.displayName = 'OverflowToolbarToggleButton';

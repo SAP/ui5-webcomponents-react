@@ -40,7 +40,7 @@ const ColorPaletteItem = withWebComponent<ColorPaletteItemPropTypes, ColorPalett
   ['value'],
   ['selected'],
   [],
-  []
+  [],
 );
 
 ColorPaletteItem.displayName = 'ColorPaletteItem';

@@ -81,7 +81,7 @@ const Toast = withWebComponent<ToastPropTypes, ToastDomRef>(
   ['duration', 'placement'],
   ['open'],
   [],
-  ['close']
+  ['close'],
 );
 
 Toast.displayName = 'Toast';

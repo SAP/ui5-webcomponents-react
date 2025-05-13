@@ -200,11 +200,11 @@ const TextArea = withWebComponent<TextAreaPropTypes, TextAreaDomRef>(
     'placeholder',
     'rows',
     'value',
-    'valueState'
+    'valueState',
   ],
   ['disabled', 'growing', 'readonly', 'required', 'showExceededText'],
   ['valueStateMessage'],
-  ['change', 'input', 'scroll', 'select']
+  ['change', 'input', 'scroll', 'select'],
 );
 
 TextArea.displayName = 'TextArea';

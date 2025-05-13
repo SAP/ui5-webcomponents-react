@@ -86,7 +86,7 @@ const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   ['position', 'rowKey'],
   ['interactive', 'movable', 'navigated'],
   ['actions'],
-  []
+  [],
 );
 
 TableRow.displayName = 'TableRow';

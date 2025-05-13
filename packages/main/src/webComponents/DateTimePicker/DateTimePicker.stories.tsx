@@ -12,13 +12,13 @@ const meta = {
   title: 'Inputs / DateTimePicker',
   component: DateTimePicker,
   argTypes: {
-    valueStateMessage: { control: { disable: true } }
+    valueStateMessage: { control: { disable: true } },
   },
   args: {
     primaryCalendarType: CalendarType.Gregorian,
-    valueState: ValueState.None
+    valueState: ValueState.None,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof DateTimePicker>;
 
 export default meta;

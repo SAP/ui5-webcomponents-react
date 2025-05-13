@@ -6,7 +6,7 @@ const meta = {
   title: 'Inputs / SegmentedButton',
   component: SegmentedButton,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
     accessibleName: 'Segmented Button Example',
@@ -16,9 +16,9 @@ const meta = {
         <SegmentedButtonItem selected>Button 2</SegmentedButtonItem>
         <SegmentedButtonItem>Button 3</SegmentedButtonItem>
       </>
-    )
+    ),
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof SegmentedButton>;
 
 export default meta;

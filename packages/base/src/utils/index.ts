@@ -17,10 +17,10 @@ type EnrichedEventType<Event, Detail> = Event & {
 
 export const enrichEventWithDetails = <
   Event extends { detail?: number | Record<string, unknown> | null },
-  Detail extends Record<string, unknown>
+  Detail extends Record<string, unknown>,
 >(
   event: Event,
-  payload: Detail
+  payload: Detail,
 ): EnrichedEventType<Event, Detail> => {
   if (!event) {
     return event as EnrichedEventType<Event, Detail>;
@@ -37,7 +37,7 @@ export const enrichEventWithDetails = <
   Object.defineProperty<Event>(event, 'detail', {
     value: shouldCreateNewDetails ? {} : event.detail,
     writable: true,
-    configurable: true
+    configurable: true,
   });
 
   if (nativeDetail) {
@@ -72,6 +72,6 @@ export function parseSemVer(version: string) {
     minor: parseInt(parsed.minor),
     patch: parseInt(parsed.patch),
     prerelease: parsed.prerelease,
-    buildMetadata: parsed.buildmetadata
+    buildMetadata: parsed.buildmetadata,
   };
 }

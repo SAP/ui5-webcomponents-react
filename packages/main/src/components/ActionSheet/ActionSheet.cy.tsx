@@ -41,7 +41,7 @@ describe('ActionSheet', () => {
     cy.mount(
       <TestComp>
         <Label>I should not crash</Label>
-      </TestComp>
+      </TestComp>,
     );
     cy.findByText('I should not crash').should('be.visible');
   });
@@ -52,7 +52,7 @@ describe('ActionSheet', () => {
         {new Array(15).fill('O.o').map((_, index) => (
           <Button key={index}>{`Button${index}`}</Button>
         ))}
-      </TestComp>
+      </TestComp>,
     );
     cy.wait(500);
     cy.focused().parent().should('have.text', 'Button0');

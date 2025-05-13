@@ -131,7 +131,7 @@ const ListItemCustom = withWebComponent<ListItemCustomPropTypes, ListItemCustomD
   ['accessibilityAttributes', 'accessibleName', 'highlight', 'tooltip', 'type'],
   ['movable', 'navigated', 'selected'],
   ['deleteButton'],
-  ['detail-click']
+  ['detail-click'],
 );
 
 ListItemCustom.displayName = 'ListItemCustom';

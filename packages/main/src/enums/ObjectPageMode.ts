@@ -8,5 +8,5 @@ export enum ObjectPageMode {
    * All `ObjectPageSections` are displayed on separate pages.
    * Selecting tabs will lead to the corresponding page.
    */
-  IconTabBar = 'IconTabBar'
+  IconTabBar = 'IconTabBar',
 }

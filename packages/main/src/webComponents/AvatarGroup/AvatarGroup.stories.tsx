@@ -8,12 +8,12 @@ const meta = {
   component: AvatarGroup,
   argTypes: {
     children: { control: { disable: true } },
-    overflowButton: { control: { disable: true } }
+    overflowButton: { control: { disable: true } },
   },
   args: {
-    type: AvatarGroupType.Group
+    type: AvatarGroupType.Group,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof AvatarGroup>;
 
 export default meta;
@@ -33,5 +33,5 @@ export const Default: Story = {
         </Avatar>
       </AvatarGroup>
     );
-  }
+  },
 };
