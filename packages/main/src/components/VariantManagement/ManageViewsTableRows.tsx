@@ -17,7 +17,7 @@ import {
   SPECIFY_VIEW_NAME,
   UNSELECTED_AS_FAVORITE,
   VARIANT_MANAGEMENT_ERROR_DUPLICATE,
-  VIEW
+  VIEW,
 } from '../../i18n/i18n-defaults.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
 import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../webComponents/index.js';
@@ -63,7 +63,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     author,
     setInvalidVariants,
     hideDelete,
-    showOnlyFavorites
+    showOnlyFavorites,
   } = props;
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -147,7 +147,7 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
       return (
         <Text
           style={{
-            fontFamily: isDefault ? ThemingParameters.sapFontBoldFamily : ThemingParameters.sapFontFamily
+            fontFamily: isDefault ? ThemingParameters.sapFontBoldFamily : ThemingParameters.sapFontFamily,
           }}
         >
           {children}

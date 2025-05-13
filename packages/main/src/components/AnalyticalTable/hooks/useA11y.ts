@@ -24,7 +24,7 @@ const setCellProps = (cellProps, { cell, instance }: { cell: TableInstance['cell
     ({ id }) =>
       id !== '__ui5wcr__internal_selection_column' &&
       id !== '__ui5wcr__internal_highlight_column' &&
-      id !== '__ui5wcr__internal_navigation_column'
+      id !== '__ui5wcr__internal_navigation_column',
   );
 
   const isFirstUserCol = userCols[0]?.id === column.id || userCols[0]?.accessor === column.accessor;
@@ -71,7 +71,7 @@ const setCellProps = (cellProps, { cell, instance }: { cell: TableInstance['cell
 
 const setHeaderProps = (
   headerProps,
-  { column, instance }: { column: TableInstance['column']; instance: TableInstance }
+  { column, instance }: { column: TableInstance['column']; instance: TableInstance },
 ) => {
   const { translatableTexts, selectionMode } = instance.webComponentsReactProperties;
 

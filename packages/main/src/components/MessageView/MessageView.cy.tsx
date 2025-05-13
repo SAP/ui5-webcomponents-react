@@ -34,7 +34,7 @@ describe('MessageView', () => {
           <MessageItem titleText="None" type={ValueState.None} groupName="Group2">
             None
           </MessageItem>
-        </MessageView>
+        </MessageView>,
       );
       getAllTextsVisible();
       cy.get('[ui5-icon][name="error"]').should('have.length', 2).should('be.visible');
@@ -143,7 +143,7 @@ describe('MessageView', () => {
         <MessageItem titleText="Error" type={ValueState.Negative} key={2}>
           Error
         </MessageItem>
-      </>
+      </>,
     ].forEach((children) => {
       cy.mount(<MessageView>{children}</MessageView>);
       cy.findByText('All').should('not.exist');
@@ -163,7 +163,7 @@ describe('MessageView', () => {
         >
           Message
         </MessageItem>
-      </MessageView>
+      </MessageView>,
     );
     // remaining props were already tested
     cy.findByText('SubtitleText').should('be.visible');
@@ -197,7 +197,7 @@ describe('MessageView', () => {
           groupName={'Products'}
         />
         <MessageItem data-testid="item3" titleText="Error" type={ValueState.Negative} groupName="Group1" />
-      </MessageView>
+      </MessageView>,
     );
 
     cy.get('[name="slim-arrow-right"]').should('be.visible').and('have.length', 2);
@@ -212,7 +212,7 @@ describe('MessageView', () => {
       .should(
         'have.attr',
         'data-title',
-        `Long Error Message Type without children/details including a Link as \`titleText\` which has wrappingType='None' applied. - The details view is only available if the \`titleText\` is not fully visible. It is NOT recommended to use long titles!`
+        `Long Error Message Type without children/details including a Link as \`titleText\` which has wrappingType='None' applied. - The details view is only available if the \`titleText\` is not fully visible. It is NOT recommended to use long titles!`,
       );
     cy.findByTestId('item2').click();
     cy.get('@select').should('have.been.calledTwice');

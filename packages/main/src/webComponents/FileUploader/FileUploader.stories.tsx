@@ -8,12 +8,12 @@ const meta = {
   component: FileUploader,
   argTypes: {
     children: { control: { disable: true } },
-    valueStateMessage: { control: { disable: true } }
+    valueStateMessage: { control: { disable: true } },
   },
   args: {
-    valueState: ValueState.None
+    valueState: ValueState.None,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof FileUploader>;
 
 export default meta;
@@ -28,7 +28,7 @@ export const WithButton: Story = {
         <Button>Upload single file</Button>
       </FileUploader>
     );
-  }
+  },
 };
 
 export const WithHiddenInput: Story = {
@@ -38,5 +38,5 @@ export const WithHiddenInput: Story = {
         <Button>Upload single file</Button>
       </FileUploader>
     );
-  }
+  },
 };

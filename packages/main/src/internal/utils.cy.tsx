@@ -12,7 +12,7 @@ import {
   FlexBoxWrap,
   Label,
   ObjectStatus,
-  Title
+  Title,
 } from '../index.js';
 import { useGetHeaderHeight } from '../webComponents/DynamicPage/helpers.js';
 import type { DynamicPageDomRef } from '../webComponents/DynamicPage/index.js';
@@ -31,7 +31,7 @@ describe('utils', function () {
       <>
         <span>Hello World!</span>
         <span>Hello World 2</span>
-      </>
+      </>,
     );
     expect(result).to.have.length(2);
     expect(result[0]).to.property('type', 'span');
@@ -54,7 +54,7 @@ describe('utils', function () {
           </>
         </>
       </>,
-      1
+      1,
     );
 
     expect(result).to.have.length(4);
@@ -97,9 +97,9 @@ describe('utils', function () {
               </>
             </>
           </>
-        </>
+        </>,
       ],
-      Infinity
+      Infinity,
     );
     expect(result).to.have.length(12);
     result.forEach((r) => {
@@ -203,7 +203,7 @@ function DynamicPageWithStickyContentHeaders() {
             width: '100%',
             height: '4rem',
             background: 'lightgreen',
-            insetBlockStart: `${headerHeight}px`
+            insetBlockStart: `${headerHeight}px`,
           }}
         >
           Sticky Header
@@ -215,7 +215,7 @@ function DynamicPageWithStickyContentHeaders() {
             width: '100%',
             height: '8rem',
             background: 'lightgreen',
-            insetBlockStart: `calc(${headerHeight}px + 4rem)`
+            insetBlockStart: `calc(${headerHeight}px + 4rem)`,
           }}
         >
           Sticky Header 2
@@ -224,7 +224,7 @@ function DynamicPageWithStickyContentHeaders() {
           style={{
             background: 'lightblue',
             height: '2000px',
-            width: '100%'
+            width: '100%',
           }}
         >
           Content 2

@@ -10,13 +10,13 @@ const meta = {
   component: ColorPalettePopover,
   argTypes: {
     children: { control: { disable: true } },
-    defaultColor: { control: { type: 'color' } }
+    defaultColor: { control: { type: 'color' } },
   },
   parameters: {
     chromatic: { delay: 1000 },
-    open: isChromatic
+    open: isChromatic,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof ColorPalettePopover>;
 
 export default meta;
@@ -63,5 +63,5 @@ export const Default: Story = {
         </ColorPalettePopover>
       </>
     );
-  }
+  },
 };

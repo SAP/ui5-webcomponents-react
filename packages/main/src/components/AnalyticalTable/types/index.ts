@@ -8,7 +8,7 @@ import type {
   ReactNode,
   Ref,
   RefObject,
-  SetStateAction
+  SetStateAction,
 } from 'react';
 import type {
   AnalyticalTablePopinDisplay,
@@ -20,7 +20,7 @@ import type {
   AnalyticalTableVisibleRowCountMode,
   IndicationColor,
   TextAlign,
-  VerticalAlign
+  VerticalAlign,
 } from '../../../enums/index.js';
 import type { CommonProps } from '../../../types/index.js';
 import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
@@ -37,7 +37,7 @@ export enum RenderColumnTypes {
   PopIn = 'PopIn',
   Popover = 'Popover',
   Header = 'Header',
-  Aggregated = 'Aggregated'
+  Aggregated = 'Aggregated',
 }
 
 export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> {
@@ -175,7 +175,7 @@ export interface TableInstance {
     state: TableInstance['state'],
     action: any,
     _prevState: TableInstance['state'],
-    instance: TableInstance
+    instance: TableInstance,
   ) => TableInstance['state'];
   toggleAllPageRowsSelected?: (selected?: boolean) => void;
   toggleAllRowsExpanded?: (expanded?: boolean) => void;
@@ -381,7 +381,7 @@ export interface AnalyticalTableColumnDefinition {
         rowIndex: number,
         row: RowType,
         parentRows: RowType[],
-        data: Record<string, any>[]
+        data: Record<string, any>[],
       ) => any);
   /**
    * Defines the unique ID for the column. It is used by reference in things like sorting, grouping, filtering etc.
@@ -601,11 +601,11 @@ export interface AnalyticalTableDomRef extends Omit<HTMLDivElement, 'scrollTo'> 
   scrollTo: (scrollOffset: number, align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode) => void; // overrides native scrollTo function
   horizontalScrollTo: (
     scrollOffset: number,
-    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode
+    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode,
   ) => void;
   horizontalScrollToItem: (
     index: number,
-    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode
+    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode,
   ) => void;
 }
 
@@ -938,7 +938,7 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
       rowsById: Record<string, RowType>;
       selectedRowIds: Record<string, boolean>;
       nativeDetail: number;
-    }>
+    }>,
   ) => void;
   /**
    * Fired when a row is clicked

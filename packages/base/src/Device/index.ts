@@ -21,12 +21,12 @@ const rInputTagRegex = /INPUT|TEXTAREA|SELECT/;
 
 const internalWindowSize: IWindowSize = {
   height: 0,
-  width: 0
+  width: 0,
 };
 
 const internalOrientation: IOrientation = {
   landscape: false,
-  portrait: false
+  portrait: false,
 };
 
 // PRIVATE API
@@ -72,7 +72,7 @@ const handleOrientationChange = () => {
   setOrientationInfo();
   OrientationEventProvider.fireEvent('orientation', {
     landscape: internalOrientation.landscape,
-    portrait: internalOrientation.portrait
+    portrait: internalOrientation.portrait,
   });
 };
 
@@ -139,7 +139,7 @@ const handleResizeChange = () => {
   setResizeInfo();
   ResizeEventProvider.fireEvent('resize', {
     height: internalWindowSize.height,
-    width: internalWindowSize.width
+    width: internalWindowSize.width,
   });
 };
 

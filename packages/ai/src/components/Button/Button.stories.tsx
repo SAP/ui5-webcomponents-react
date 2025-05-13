@@ -14,12 +14,12 @@ const meta = {
   title: 'Button',
   component: Button,
   argTypes: {
-    children: { control: 'text' }
+    children: { control: 'text' },
   },
   args: {
-    design: ButtonDesign.Default
+    design: ButtonDesign.Default,
   },
-  tags: ['package:@ui5/webcomponents-ai']
+  tags: ['package:@ui5/webcomponents-ai'],
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -106,5 +106,5 @@ export const Default: Story = {
         )}
       </>
     );
-  }
+  },
 };

@@ -59,7 +59,7 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
         const resetSafariStyles = Device.isSafari() ? { width: 'unset' } : {};
         setFlexStyles({
           flex: `0 0 ${element.target.getBoundingClientRect()[vertical ? 'height' : 'width']}px`,
-          ...resetSafariStyles
+          ...resetSafariStyles,
         });
         setFlexBasisApplied(true);
       }
@@ -97,7 +97,7 @@ const SplitterElement = forwardRef<HTMLDivElement, SplitterElementPropTypes>((pr
         minHeight: vertical && minSize ? `${minSize}px` : undefined,
         minWidth: !vertical && minSize ? `${minSize}px` : undefined,
         ...flexStyles,
-        ...style
+        ...style,
       }}
       {...rest}
       data-min-size={minSize}

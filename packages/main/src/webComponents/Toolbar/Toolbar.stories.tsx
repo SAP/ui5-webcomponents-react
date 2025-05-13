@@ -14,12 +14,12 @@ const meta = {
   title: 'Layouts & Floorplans / Toolbar',
   component: Toolbar,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
-    alignContent: ToolbarAlign.Start
+    alignContent: ToolbarAlign.Start,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Toolbar>;
 
 export default meta;
@@ -44,7 +44,7 @@ export const Default: Story = {
         <ToolbarSelectOption>Option 3</ToolbarSelectOption>
       </ToolbarSelect>
     </Toolbar>
-  )
+  ),
 };
 
 export const OpenPopover: Story = {
@@ -77,5 +77,5 @@ export const OpenPopover: Story = {
         </Popover>
       </>
     );
-  }
+  },
 };

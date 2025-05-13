@@ -21,12 +21,12 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
           hide: true,
           hideDataLabel: true,
           showDot: false,
-          formatter: defaultFormatter
+          formatter: defaultFormatter,
         });
         columnMeasures.push({
           color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`,
           formatter: defaultFormatter,
-          ...measure
+          ...measure,
         });
       }
 
@@ -34,14 +34,14 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
         lineMeasures.push({
           color: measure.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`,
           formatter: defaultFormatter,
-          ...measure
+          ...measure,
         });
         columnMeasures.push({
           ...measure,
           opacity: 0,
           hideDataLabel: true,
           showDot: false,
-          formatter: defaultFormatter
+          formatter: defaultFormatter,
         });
       }
     });
@@ -58,7 +58,7 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
 
       columnDataset.push({
         ...data,
-        ...reducedLineValues
+        ...reducedLineValues,
       });
     });
 

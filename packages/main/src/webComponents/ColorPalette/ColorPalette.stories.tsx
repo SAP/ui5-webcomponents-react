@@ -7,10 +7,10 @@ const meta = {
   title: 'Data Display / ColorPalette',
   component: ColorPalette,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {},
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof ColorPalette>;
 
 export default meta;
@@ -34,5 +34,5 @@ export const Default: Story = {
         <ColorPaletteItem value="#ff6699" />
       </ColorPalette>
     );
-  }
+  },
 };

@@ -29,6 +29,6 @@
       "path": "./.storybook/tsconfig.json"
     }
   ],
-  "files": ["vite.config.ts", "types.d.ts"],
+  "files": ["vite.config.ts", "types.d.ts", "prettier.config.js"],
   "include": [".storybook", "docs"]
 }

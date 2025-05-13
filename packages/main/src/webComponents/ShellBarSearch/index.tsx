@@ -185,7 +185,7 @@ const ShellBarSearch = withWebComponent<ShellBarSearchPropTypes, ShellBarSearchD
   ['accessibleDescription', 'accessibleName', 'placeholder', 'value'],
   ['loading', 'noTypeahead', 'open', 'showClearIcon'],
   ['action', 'illustration', 'messageArea', 'scopes'],
-  ['close', 'input', 'open', 'scope-change', 'search']
+  ['close', 'input', 'open', 'scope-change', 'search'],
 );
 
 ShellBarSearch.displayName = 'ShellBarSearch';

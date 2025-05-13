@@ -8,9 +8,9 @@ const meta = {
   argTypes: {},
   args: {
     valueState: ValueState.None,
-    value: 50
+    value: 50,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof ProgressIndicator>;
 
 export default meta;

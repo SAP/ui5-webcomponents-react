@@ -7,7 +7,7 @@ describe('Device - Media', () => {
     expect(getCurrentRange()).to.deep.equal({
       from: 1440,
       name: 'LargeDesktop',
-      unit: 'px'
+      unit: 'px',
     });
   });
 
@@ -16,7 +16,7 @@ describe('Device - Media', () => {
       from: 0,
       name: 'Phone',
       to: 599,
-      unit: 'px'
+      unit: 'px',
     });
   });
 

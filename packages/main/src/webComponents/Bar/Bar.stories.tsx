@@ -15,15 +15,15 @@ const meta = {
   argTypes: {
     startContent: { control: { disable: true } },
     children: { control: { disable: true } },
-    endContent: { control: { disable: true } }
+    endContent: { control: { disable: true } },
   },
   args: {
     design: BarDesign.Header,
     startContent: <span>Start Content</span>,
     children: <span>Center Content</span>,
-    endContent: <span>End Content</span>
+    endContent: <span>End Content</span>,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Bar>;
 
 export default meta;
@@ -58,5 +58,5 @@ export const WithCustomElements: Story = {
         <Title>Bar</Title>
       </Bar>
     );
-  }
+  },
 };

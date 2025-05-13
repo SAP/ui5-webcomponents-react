@@ -25,7 +25,7 @@ const TimelineChartRow = ({
   totalDuration,
   timelineStart,
   showTooltip,
-  hideTooltip
+  hideTooltip,
 }: TimelineChartRowProps) => {
   rowData.color = rowData.color ?? `var(--sapChart_OrderedColor_${(rowIndex % 12) + 1})`;
 
@@ -118,7 +118,7 @@ interface TimelineTaskProps {
     startTime: number,
     duration: number,
     color: string,
-    isMilestone: boolean
+    isMilestone: boolean,
   ) => void;
 
   hideTooltip: () => void;
@@ -133,7 +133,7 @@ const TimelineTask = ({
   color,
   timelineStart,
   showTooltip,
-  hideTooltip
+  hideTooltip,
 }: TimelineTaskProps) => {
   const [opacity, setOpacity] = useState(NORMAL_OPACITY);
   const onMouseLeave = (evt: ReactMouseEvent<SVGRectElement, MouseEvent>) => {
@@ -210,7 +210,7 @@ interface TimelineMilestoneProps {
     startTime: number,
     duration: number,
     color: string,
-    isMilestone: boolean
+    isMilestone: boolean,
   ) => void;
 
   hideTooltip: () => void;
@@ -224,7 +224,7 @@ const TimelineMilestone = ({
   color = '#007D00',
   timelineStart,
   showTooltip,
-  hideTooltip
+  hideTooltip,
 }: TimelineMilestoneProps) => {
   const milestoneRef = useRef<SVGRectElement>(null);
 
@@ -248,7 +248,7 @@ const TimelineMilestone = ({
         ${(rhombusDiagonal - rhombusSideLength) / 2}) 
       rotate(45, ${rhombusSideLength / 2}, 
         ${rhombusSideLength / 2}
-      )`
+      )`,
     );
   }, []);
 
@@ -312,7 +312,7 @@ const TimelineChartRowGroup = ({
   timelineStart,
   showTooltip,
   hideTooltip,
-  postRender
+  postRender,
 }: TimelineChartRowGroupProps) => {
   useEffect(() => {
     postRender();

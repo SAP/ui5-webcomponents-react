@@ -201,11 +201,11 @@ const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>
     'endIcon',
     'icon',
     'tooltip',
-    'type'
+    'type',
   ],
   ['disabled', 'pressed', 'submits'],
   ['badge'],
-  ['click']
+  ['click'],
 );
 
 ToggleButton.displayName = 'ToggleButton';

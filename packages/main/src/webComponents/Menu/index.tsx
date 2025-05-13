@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/Menu.js';
 import type {
   MenuBeforeCloseEventDetail,
   MenuBeforeOpenEventDetail,
-  MenuItemClickEventDetail
+  MenuItemClickEventDetail,
 } from '@ui5/webcomponents/dist/Menu.js';
 import type PopoverHorizontalAlign from '@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
@@ -176,7 +176,7 @@ const Menu = withWebComponent<MenuPropTypes, MenuDomRef>(
   ['headerText', 'horizontalAlign', 'loadingDelay', 'opener'],
   ['loading', 'open'],
   [],
-  ['before-close', 'before-open', 'close', 'item-click', 'open']
+  ['before-close', 'before-open', 'close', 'item-click', 'open'],
 );
 
 Menu.displayName = 'Menu';

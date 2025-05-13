@@ -5,7 +5,7 @@ import type {
   AnalyticalTableColumnDefinition,
   AnalyticalTableDomRef,
   AnalyticalTablePropTypes,
-  PopoverDomRef
+  PopoverDomRef,
 } from '../..';
 import {
   AnalyticalTable,
@@ -20,7 +20,7 @@ import {
   IndicationColor,
   Input,
   Popover,
-  Text
+  Text,
 } from '../..';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
@@ -34,8 +34,8 @@ const generateMoreData = (count) => {
     age: index,
     friend: {
       name: `FriendName-${index}`,
-      age: index + 10
-    }
+      age: index + 10,
+    },
   }));
 };
 
@@ -45,21 +45,21 @@ const columns = [
   {
     Header: 'Name',
     headerTooltip: 'Full Name',
-    accessor: 'name'
+    accessor: 'name',
   },
   {
     Header: 'Age',
-    accessor: 'age'
+    accessor: 'age',
   },
   {
     Header: 'Friend Name',
-    accessor: 'friend.name' // Custom value accessors!
+    accessor: 'friend.name', // Custom value accessors!
   },
   {
     Header: () => <span>Friend Age</span>, // Custom header components!
     accessor: 'friend.age',
-    headerLabel: 'Custom Label'
-  }
+    headerLabel: 'Custom Label',
+  },
 ];
 const data = [
   {
@@ -67,35 +67,35 @@ const data = [
     age: 40,
     friend: {
       name: 'Lorem',
-      age: 28
+      age: 28,
     },
     status: ValueState.Positive,
-    navigation: ValueState.Negative
+    navigation: ValueState.Negative,
   },
   {
     name: 'B',
     age: 20,
     friend: {
       name: 'Ipsum',
-      age: 50
-    }
+      age: 50,
+    },
   },
   {
     name: 'X',
     age: 17,
     friend: {
       name: 'Dolor',
-      age: 42
-    }
+      age: 42,
+    },
   },
   {
     name: 'C',
     age: 79,
     friend: {
       name: 'Sit',
-      age: 50
-    }
-  }
+      age: 50,
+    },
+  },
 ];
 
 describe('AnalyticalTable', () => {
@@ -113,21 +113,21 @@ describe('AnalyticalTable', () => {
     cy.get('[ui5-popover]').should('be.visible');
     cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
     cy.get('@onSortSpy').should('have.been.calledWithMatch', {
-      detail: { column: { id: 'name' }, sortDirection: 'asc' }
+      detail: { column: { id: 'name' }, sortDirection: 'asc' },
     });
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', 'C');
 
     cy.findByText('Name').click();
     cy.get('[ui5-list]').clickUi5ListItemByText('Clear Sorting');
     cy.get('@onSortSpy').should('have.been.calledWithMatch', {
-      detail: { column: { id: 'name' }, sortDirection: 'clear' }
+      detail: { column: { id: 'name' }, sortDirection: 'clear' },
     });
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', 'X');
 
     cy.findByText('Name').click();
     cy.get('[ui5-list]').clickUi5ListItemByText('Sort Descending');
     cy.get('@onSortSpy').should('have.been.calledWithMatch', {
-      detail: { column: { id: 'name' }, sortDirection: 'desc' }
+      detail: { column: { id: 'name' }, sortDirection: 'desc' },
     });
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', 'B');
   });
@@ -143,13 +143,13 @@ describe('AnalyticalTable', () => {
               visibleRowCountMode={visibleRowCountMode}
               overscanCount={10}
             />
-          </div>
+          </div>,
         );
         cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
         cy.findByText('X').should('be.visible');
         cy.findByText('C').should('not.be.visible');
         cy.get('[data-empty-row]').should('not.be.visible').should('have.length', 1);
-      }
+      },
     );
     [AnalyticalTableVisibleRowCountMode.Auto, AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows].forEach(
       (visibleRowCountMode) => {
@@ -159,13 +159,13 @@ describe('AnalyticalTable', () => {
             data={generateMoreData(200)}
             columns={columns}
             visibleRowCountMode={visibleRowCountMode}
-          />
+          />,
         );
         cy.findByRole('grid').should('have.attr', 'data-per-page', '99'); //rows(99*44) + header(44) = 4400
         cy.findByText('Name-98').should('be.visible');
         cy.findByText('Name-99').should('not.be.visible');
         cy.get('[data-empty-row]').should('not.exist');
-      }
+      },
     );
 
     [AnalyticalTableVisibleRowCountMode.Auto, AnalyticalTableVisibleRowCountMode.AutoWithEmptyRows].forEach(
@@ -176,14 +176,14 @@ describe('AnalyticalTable', () => {
             data={data}
             columns={columns}
             visibleRowCountMode={visibleRowCountMode}
-          />
+          />,
         );
         if (visibleRowCountMode === AnalyticalTableVisibleRowCountMode.Auto) {
           cy.get('[data-empty-row]').should('be.visible').should('have.length', 1);
         } else {
           cy.get('[data-empty-row]').should('be.visible').should('have.length', 95);
         }
-      }
+      },
     );
 
     //test if visibleRows prop is ignored when row-count-mode is "Auto" or "AutoWithEmptyRows"
@@ -196,12 +196,12 @@ describe('AnalyticalTable', () => {
             columns={columns}
             visibleRowCountMode={visibleRowCountMode}
             visibleRows={1337}
-          />
+          />,
         );
         cy.findByRole('grid').should('have.attr', 'data-per-page', '3');
         cy.findByText('X').should('be.visible');
         cy.findByText('C').should('not.be.visible');
-      }
+      },
     );
 
     //test default visibleRow count
@@ -210,7 +210,7 @@ describe('AnalyticalTable', () => {
         data={generateMoreData(50)}
         columns={columns}
         visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Fixed}
-      />
+      />,
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '15');
     cy.findByText('Name-14').should('be.visible');
@@ -222,7 +222,7 @@ describe('AnalyticalTable', () => {
         columns={columns}
         visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Fixed}
         visibleRows={20}
-      />
+      />,
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '20');
     cy.findByText('Name-19').should('be.visible');
@@ -234,7 +234,7 @@ describe('AnalyticalTable', () => {
         columns={columns}
         visibleRowCountMode={AnalyticalTableVisibleRowCountMode.Interactive}
         visibleRows={10}
-      />
+      />,
     );
     cy.findByRole('grid').should('have.attr', 'data-per-page', '10');
     cy.findByText('Name-9').should('be.visible');
@@ -275,7 +275,7 @@ describe('AnalyticalTable', () => {
           resizeSpy(e);
           e.preventDefault();
         }}
-      />
+      />,
     );
     cy.wait(100);
 
@@ -315,7 +315,7 @@ describe('AnalyticalTable', () => {
         infiniteScroll={true}
         infiniteScrollThreshold={0}
         onAutoResize={resizeSpy}
-      />
+      />,
     );
 
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
@@ -356,7 +356,7 @@ describe('AnalyticalTable', () => {
         columns={resizeColumns}
         renderRowSubComponent={renderRowSubComponent}
         onAutoResize={resizeSpy}
-      />
+      />,
     );
     cy.wait(100);
     cy.get('@resizer2').should('be.visible').dblclick();
@@ -493,9 +493,9 @@ describe('AnalyticalTable', () => {
                 isSelected,
                 row: row.id,
                 selectedFlatRows: selectedRowIdsArrayMapped.map((item) => ({
-                  id: item?.id
+                  id: item?.id,
                 })),
-                selectedRowIds
+                selectedRowIds,
               });
               props.onRowSelect(e);
             }}
@@ -530,12 +530,12 @@ describe('AnalyticalTable', () => {
     // select
     cy.findByText('Robin Moreno').click();
     cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
-      detail: { isSelected: true }
+      detail: { isSelected: true },
     });
     cy.findByTestId('payloadHelper').should('have.text', '1{"0.2":true}');
     cy.findByText('Judith Mathews').click();
     cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
-      detail: { isSelected: true }
+      detail: { isSelected: true },
     });
     cy.findByTestId('payloadHelper').should('have.text', '2{"0.2":true,"0.2.0":true}');
 
@@ -545,7 +545,7 @@ describe('AnalyticalTable', () => {
     cy.findByText('Judith Mathews').should('not.exist', { timeout: 100 });
     cy.findByText('Katy Bradshaw').click();
     cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
-      detail: { isSelected: true }
+      detail: { isSelected: true },
     });
     cy.get('@onRowSelectSpy').should('have.been.calledThrice');
     cy.findByTestId('payloadHelper').should('have.text', '3{"1":true,"0.2":true,"0.2.0":true}');
@@ -559,14 +559,14 @@ describe('AnalyticalTable', () => {
     cy.get('@filter').should('have.been.calledWithMatch', {
       value: 'Flowers Mcfarland',
       columnId: 'name',
-      filters: [{ id: 'name', value: 'Flowers Mcfarland' }]
+      filters: [{ id: 'name', value: 'Flowers Mcfarland' }],
     });
     cy.findByText('Robin Moreno').should('not.exist', { timeout: 100 });
     cy.findByText('Judith Mathews').should('not.exist', { timeout: 100 });
     cy.findByText('Katy Bradshaw').should('not.exist', { timeout: 100 });
     cy.findByText('Flowers Mcfarland').click({ force: true });
     cy.get('@onRowSelectSpy').should('have.been.calledWithMatch', {
-      detail: { isSelected: true }
+      detail: { isSelected: true },
     });
     cy.get('@onRowSelectSpy').should('have.callCount', 4);
     cy.findByTestId('payloadHelper').should('have.text', '4{"0":true,"1":true,"0.2":true,"0.2.0":true}');
@@ -580,9 +580,9 @@ describe('AnalyticalTable', () => {
         age: 22,
         friend: {
           name: `FriendName-X`,
-          age: 22 + 10
-        }
-      }
+          age: 22 + 10,
+        },
+      },
     ];
 
     const filterSpy = cy.spy().as('filter');
@@ -665,11 +665,11 @@ describe('AnalyticalTable', () => {
     cy.get('@onRowSelectSpy').should('have.callCount', 6);
     cy.findByTestId('payload').should(
       'have.text',
-      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]'
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]',
     );
     cy.findByTestId('payloadRowsById').should(
       'have.text',
-      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}'
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}',
     );
     cy.findByTestId('payloadAllRowsSelected').should('have.text', 'true');
 
@@ -692,11 +692,11 @@ describe('AnalyticalTable', () => {
     cy.get('@onRowSelectSpy').should('have.callCount', 9);
     cy.findByTestId('payload').should(
       'have.text',
-      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]'
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]',
     );
     cy.findByTestId('payloadRowsById').should(
       'have.text',
-      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}'
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}',
     );
     cy.findByTestId('payloadAllRowsSelected').should('have.text', 'true');
 
@@ -711,7 +711,7 @@ describe('AnalyticalTable', () => {
     cy.get('@filter').should('have.been.calledWithMatch', {
       value: '7',
       columnId: 'name',
-      filters: [{ id: 'name', value: '7' }]
+      filters: [{ id: 'name', value: '7' }],
     });
     cy.findByTestId('payload').should('have.text', '["0","1","5"]');
     cy.findByTestId('payloadRowsById').should('have.text', '{"0":true,"1":true,"5":true}');
@@ -729,7 +729,7 @@ describe('AnalyticalTable', () => {
     cy.get('@filter').should('have.been.calledWithMatch', {
       value: undefined,
       columnId: 'name',
-      filters: []
+      filters: [],
     });
 
     cy.get('[data-row-index="0"][data-column-index="0"]').click();
@@ -739,21 +739,21 @@ describe('AnalyticalTable', () => {
     cy.get('@filter').should('have.callCount', 3);
     cy.findByTestId('payload').should(
       'have.text',
-      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","18","19","20"]'
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","18","19","20"]',
     );
     cy.findByTestId('payloadRowsById').should(
       'have.text',
-      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"18":true,"19":true,"20":true}'
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"18":true,"19":true,"20":true}',
     );
     cy.findByTestId('payloadAllRowsSelected').should('have.text', 'false');
     cy.findByText('Name-17').click();
     cy.findByTestId('payload').should(
       'have.text',
-      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]'
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]',
     );
     cy.findByTestId('payloadRowsById').should(
       'have.text',
-      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}'
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}',
     );
     cy.findByTestId('payloadAllRowsSelected').should('have.text', 'true');
 
@@ -765,21 +765,21 @@ describe('AnalyticalTable', () => {
     cy.findByTestId('input').type('7{enter}');
     cy.findByTestId('payload').should(
       'have.text',
-      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","18","19","20"]'
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","18","19","20"]',
     );
     cy.findByTestId('payloadRowsById').should(
       'have.text',
-      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"18":true,"19":true,"20":true}'
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"18":true,"19":true,"20":true}',
     );
     cy.findByTestId('payloadAllRowsSelected').should('have.text', 'false');
     cy.findByText('Name-17').click();
     cy.findByTestId('payload').should(
       'have.text',
-      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]'
+      '["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]',
     );
     cy.findByTestId('payloadRowsById').should(
       'have.text',
-      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}'
+      '{"0":true,"1":true,"2":true,"3":true,"4":true,"5":true,"6":true,"7":true,"8":true,"9":true,"10":true,"11":true,"12":true,"13":true,"14":true,"15":true,"16":true,"17":true,"18":true,"19":true,"20":true}',
     );
     cy.findByTestId('payloadAllRowsSelected').should('have.text', 'true');
     cy.get('@onRowSelectSpy').should('have.callCount', 19);
@@ -871,9 +871,9 @@ describe('AnalyticalTable', () => {
                 isSelected,
                 row: row.id,
                 selectedFlatRows: selectedRowIdsArrayMapped.map((item) => ({
-                  id: item?.id
+                  id: item?.id,
                 })),
-                selectedRowIds
+                selectedRowIds,
               });
               onRowSelect(e);
             }}
@@ -955,7 +955,7 @@ describe('AnalyticalTable', () => {
     cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
     cy.findByTestId('selectedRows').should(
       'have.text',
-      '{"0":true,"1":true,"0.0":true,"0.0.0":true,"0.0.0.0":true,"0.0.0.1":true,"0.0.0.2":true,"0.0.0.3":true,"0.0.1":true,"0.0.1.0":true,"0.0.1.1":true,"0.0.1.2":true,"0.0.1.3":true,"0.0.2":true,"0.0.2.0":true,"0.0.2.1":true,"0.0.2.2":true,"0.0.2.3":true,"0.0.3":true,"0.0.3.0":true,"0.0.3.1":true,"0.0.3.2":true,"0.0.3.3":true,"0.1":true,"0.1.0":true,"0.1.0.0":true,"0.1.0.1":true,"0.1.0.2":true,"0.1.0.3":true,"0.1.1":true,"0.1.1.0":true,"0.1.1.1":true,"0.1.1.2":true,"0.1.1.3":true,"0.1.2":true,"0.1.2.0":true,"0.1.2.1":true,"0.1.2.2":true,"0.1.2.3":true,"0.1.3":true,"0.1.3.0":true,"0.1.3.1":true,"0.1.3.2":true,"0.1.3.3":true,"0.2":true,"0.2.0":true,"0.2.0.0":true,"0.2.0.1":true,"0.2.0.2":true,"0.2.0.3":true,"0.2.1":true,"0.2.1.0":true,"0.2.1.1":true,"0.2.1.2":true,"0.2.1.3":true,"0.2.2":true,"0.2.2.0":true,"0.2.2.1":true,"0.2.2.2":true,"0.2.2.3":true,"0.2.3":true,"0.2.3.0":true,"0.2.3.1":true,"0.2.3.2":true,"0.2.3.3":true,"0.3":true,"0.3.0":true,"0.3.0.0":true,"0.3.0.1":true,"0.3.0.2":true,"0.3.0.3":true,"0.3.1":true,"0.3.1.0":true,"0.3.1.1":true,"0.3.1.2":true,"0.3.1.3":true,"0.3.2":true,"0.3.2.0":true,"0.3.2.1":true,"0.3.2.2":true,"0.3.2.3":true,"0.3.3":true,"0.3.3.0":true,"0.3.3.1":true,"0.3.3.2":true,"0.3.3.3":true,"1.0":true,"1.0.0":true,"1.0.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true,"1.0.1":true,"1.0.1.0":true,"1.0.1.1":true,"1.0.1.2":true,"1.0.1.3":true,"1.0.2":true,"1.0.2.0":true,"1.0.2.1":true,"1.0.2.2":true,"1.0.2.3":true,"1.0.3":true,"1.0.3.0":true,"1.0.3.1":true,"1.0.3.2":true,"1.0.3.3":true,"1.1":true,"1.1.0":true,"1.1.0.0":true,"1.1.0.1":true,"1.1.0.2":true,"1.1.0.3":true,"1.1.1":true,"1.1.1.0":true,"1.1.1.1":true,"1.1.1.2":true,"1.1.1.3":true,"1.1.2":true,"1.1.2.0":true,"1.1.2.1":true,"1.1.2.2":true,"1.1.2.3":true,"1.1.3":true,"1.1.3.0":true,"1.1.3.1":true,"1.1.3.2":true,"1.1.3.3":true,"1.2":true,"1.2.0":true,"1.2.0.0":true,"1.2.0.1":true,"1.2.0.2":true,"1.2.0.3":true,"1.2.1":true,"1.2.1.0":true,"1.2.1.1":true,"1.2.1.2":true,"1.2.1.3":true,"1.2.2":true,"1.2.2.0":true,"1.2.2.1":true,"1.2.2.2":true,"1.2.2.3":true,"1.2.3":true,"1.2.3.0":true,"1.2.3.1":true,"1.2.3.2":true,"1.2.3.3":true,"1.3":true,"1.3.0":true,"1.3.0.0":true,"1.3.0.1":true,"1.3.0.2":true,"1.3.0.3":true,"1.3.1":true,"1.3.1.0":true,"1.3.1.1":true,"1.3.1.2":true,"1.3.1.3":true,"1.3.2":true,"1.3.2.0":true,"1.3.2.1":true,"1.3.2.2":true,"1.3.2.3":true,"1.3.3":true,"1.3.3.0":true,"1.3.3.1":true,"1.3.3.2":true,"1.3.3.3":true}'
+      '{"0":true,"1":true,"0.0":true,"0.0.0":true,"0.0.0.0":true,"0.0.0.1":true,"0.0.0.2":true,"0.0.0.3":true,"0.0.1":true,"0.0.1.0":true,"0.0.1.1":true,"0.0.1.2":true,"0.0.1.3":true,"0.0.2":true,"0.0.2.0":true,"0.0.2.1":true,"0.0.2.2":true,"0.0.2.3":true,"0.0.3":true,"0.0.3.0":true,"0.0.3.1":true,"0.0.3.2":true,"0.0.3.3":true,"0.1":true,"0.1.0":true,"0.1.0.0":true,"0.1.0.1":true,"0.1.0.2":true,"0.1.0.3":true,"0.1.1":true,"0.1.1.0":true,"0.1.1.1":true,"0.1.1.2":true,"0.1.1.3":true,"0.1.2":true,"0.1.2.0":true,"0.1.2.1":true,"0.1.2.2":true,"0.1.2.3":true,"0.1.3":true,"0.1.3.0":true,"0.1.3.1":true,"0.1.3.2":true,"0.1.3.3":true,"0.2":true,"0.2.0":true,"0.2.0.0":true,"0.2.0.1":true,"0.2.0.2":true,"0.2.0.3":true,"0.2.1":true,"0.2.1.0":true,"0.2.1.1":true,"0.2.1.2":true,"0.2.1.3":true,"0.2.2":true,"0.2.2.0":true,"0.2.2.1":true,"0.2.2.2":true,"0.2.2.3":true,"0.2.3":true,"0.2.3.0":true,"0.2.3.1":true,"0.2.3.2":true,"0.2.3.3":true,"0.3":true,"0.3.0":true,"0.3.0.0":true,"0.3.0.1":true,"0.3.0.2":true,"0.3.0.3":true,"0.3.1":true,"0.3.1.0":true,"0.3.1.1":true,"0.3.1.2":true,"0.3.1.3":true,"0.3.2":true,"0.3.2.0":true,"0.3.2.1":true,"0.3.2.2":true,"0.3.2.3":true,"0.3.3":true,"0.3.3.0":true,"0.3.3.1":true,"0.3.3.2":true,"0.3.3.3":true,"1.0":true,"1.0.0":true,"1.0.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true,"1.0.1":true,"1.0.1.0":true,"1.0.1.1":true,"1.0.1.2":true,"1.0.1.3":true,"1.0.2":true,"1.0.2.0":true,"1.0.2.1":true,"1.0.2.2":true,"1.0.2.3":true,"1.0.3":true,"1.0.3.0":true,"1.0.3.1":true,"1.0.3.2":true,"1.0.3.3":true,"1.1":true,"1.1.0":true,"1.1.0.0":true,"1.1.0.1":true,"1.1.0.2":true,"1.1.0.3":true,"1.1.1":true,"1.1.1.0":true,"1.1.1.1":true,"1.1.1.2":true,"1.1.1.3":true,"1.1.2":true,"1.1.2.0":true,"1.1.2.1":true,"1.1.2.2":true,"1.1.2.3":true,"1.1.3":true,"1.1.3.0":true,"1.1.3.1":true,"1.1.3.2":true,"1.1.3.3":true,"1.2":true,"1.2.0":true,"1.2.0.0":true,"1.2.0.1":true,"1.2.0.2":true,"1.2.0.3":true,"1.2.1":true,"1.2.1.0":true,"1.2.1.1":true,"1.2.1.2":true,"1.2.1.3":true,"1.2.2":true,"1.2.2.0":true,"1.2.2.1":true,"1.2.2.2":true,"1.2.2.3":true,"1.2.3":true,"1.2.3.0":true,"1.2.3.1":true,"1.2.3.2":true,"1.2.3.3":true,"1.3":true,"1.3.0":true,"1.3.0.0":true,"1.3.0.1":true,"1.3.0.2":true,"1.3.0.3":true,"1.3.1":true,"1.3.1.0":true,"1.3.1.1":true,"1.3.1.2":true,"1.3.1.3":true,"1.3.2":true,"1.3.2.0":true,"1.3.2.1":true,"1.3.2.2":true,"1.3.2.3":true,"1.3.3":true,"1.3.3.0":true,"1.3.3.1":true,"1.3.3.2":true,"1.3.3.3":true}',
     );
 
     // expand
@@ -968,7 +968,7 @@ describe('AnalyticalTable', () => {
     cy.get('@onIndeterminateChangeSpy').should('have.callCount', 1);
     cy.findByTestId('selectedRows').should(
       'have.text',
-      '{"0":true,"1":true,"0.0":true,"0.0.0":true,"0.0.0.0":true,"0.0.0.1":true,"0.0.0.2":true,"0.0.0.3":true,"0.0.1":true,"0.0.1.0":true,"0.0.1.1":true,"0.0.1.2":true,"0.0.1.3":true,"0.0.2":true,"0.0.2.0":true,"0.0.2.1":true,"0.0.2.2":true,"0.0.2.3":true,"0.0.3":true,"0.0.3.0":true,"0.0.3.1":true,"0.0.3.2":true,"0.0.3.3":true,"0.1":true,"0.1.0":true,"0.1.0.0":true,"0.1.0.1":true,"0.1.0.2":true,"0.1.0.3":true,"0.1.1":true,"0.1.1.0":true,"0.1.1.1":true,"0.1.1.2":true,"0.1.1.3":true,"0.1.2":true,"0.1.2.0":true,"0.1.2.1":true,"0.1.2.2":true,"0.1.2.3":true,"0.1.3":true,"0.1.3.0":true,"0.1.3.1":true,"0.1.3.2":true,"0.1.3.3":true,"0.2":true,"0.2.0":true,"0.2.0.0":true,"0.2.0.1":true,"0.2.0.2":true,"0.2.0.3":true,"0.2.1":true,"0.2.1.0":true,"0.2.1.1":true,"0.2.1.2":true,"0.2.1.3":true,"0.2.2":true,"0.2.2.0":true,"0.2.2.1":true,"0.2.2.2":true,"0.2.2.3":true,"0.2.3":true,"0.2.3.0":true,"0.2.3.1":true,"0.2.3.2":true,"0.2.3.3":true,"0.3":true,"0.3.0":true,"0.3.0.0":true,"0.3.0.1":true,"0.3.0.2":true,"0.3.0.3":true,"0.3.1":true,"0.3.1.0":true,"0.3.1.1":true,"0.3.1.2":true,"0.3.1.3":true,"0.3.2":true,"0.3.2.0":true,"0.3.2.1":true,"0.3.2.2":true,"0.3.2.3":true,"0.3.3":true,"0.3.3.0":true,"0.3.3.1":true,"0.3.3.2":true,"0.3.3.3":true,"1.0":true,"1.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true,"1.0.1":true,"1.0.1.0":true,"1.0.1.1":true,"1.0.1.2":true,"1.0.1.3":true,"1.0.2":true,"1.0.2.0":true,"1.0.2.1":true,"1.0.2.2":true,"1.0.2.3":true,"1.0.3":true,"1.0.3.0":true,"1.0.3.1":true,"1.0.3.2":true,"1.0.3.3":true,"1.1":true,"1.1.0":true,"1.1.0.0":true,"1.1.0.1":true,"1.1.0.2":true,"1.1.0.3":true,"1.1.1":true,"1.1.1.0":true,"1.1.1.1":true,"1.1.1.2":true,"1.1.1.3":true,"1.1.2":true,"1.1.2.0":true,"1.1.2.1":true,"1.1.2.2":true,"1.1.2.3":true,"1.1.3":true,"1.1.3.0":true,"1.1.3.1":true,"1.1.3.2":true,"1.1.3.3":true,"1.2":true,"1.2.0":true,"1.2.0.0":true,"1.2.0.1":true,"1.2.0.2":true,"1.2.0.3":true,"1.2.1":true,"1.2.1.0":true,"1.2.1.1":true,"1.2.1.2":true,"1.2.1.3":true,"1.2.2":true,"1.2.2.0":true,"1.2.2.1":true,"1.2.2.2":true,"1.2.2.3":true,"1.2.3":true,"1.2.3.0":true,"1.2.3.1":true,"1.2.3.2":true,"1.2.3.3":true,"1.3":true,"1.3.0":true,"1.3.0.0":true,"1.3.0.1":true,"1.3.0.2":true,"1.3.0.3":true,"1.3.1":true,"1.3.1.0":true,"1.3.1.1":true,"1.3.1.2":true,"1.3.1.3":true,"1.3.2":true,"1.3.2.0":true,"1.3.2.1":true,"1.3.2.2":true,"1.3.2.3":true,"1.3.3":true,"1.3.3.0":true,"1.3.3.1":true,"1.3.3.2":true,"1.3.3.3":true}'
+      '{"0":true,"1":true,"0.0":true,"0.0.0":true,"0.0.0.0":true,"0.0.0.1":true,"0.0.0.2":true,"0.0.0.3":true,"0.0.1":true,"0.0.1.0":true,"0.0.1.1":true,"0.0.1.2":true,"0.0.1.3":true,"0.0.2":true,"0.0.2.0":true,"0.0.2.1":true,"0.0.2.2":true,"0.0.2.3":true,"0.0.3":true,"0.0.3.0":true,"0.0.3.1":true,"0.0.3.2":true,"0.0.3.3":true,"0.1":true,"0.1.0":true,"0.1.0.0":true,"0.1.0.1":true,"0.1.0.2":true,"0.1.0.3":true,"0.1.1":true,"0.1.1.0":true,"0.1.1.1":true,"0.1.1.2":true,"0.1.1.3":true,"0.1.2":true,"0.1.2.0":true,"0.1.2.1":true,"0.1.2.2":true,"0.1.2.3":true,"0.1.3":true,"0.1.3.0":true,"0.1.3.1":true,"0.1.3.2":true,"0.1.3.3":true,"0.2":true,"0.2.0":true,"0.2.0.0":true,"0.2.0.1":true,"0.2.0.2":true,"0.2.0.3":true,"0.2.1":true,"0.2.1.0":true,"0.2.1.1":true,"0.2.1.2":true,"0.2.1.3":true,"0.2.2":true,"0.2.2.0":true,"0.2.2.1":true,"0.2.2.2":true,"0.2.2.3":true,"0.2.3":true,"0.2.3.0":true,"0.2.3.1":true,"0.2.3.2":true,"0.2.3.3":true,"0.3":true,"0.3.0":true,"0.3.0.0":true,"0.3.0.1":true,"0.3.0.2":true,"0.3.0.3":true,"0.3.1":true,"0.3.1.0":true,"0.3.1.1":true,"0.3.1.2":true,"0.3.1.3":true,"0.3.2":true,"0.3.2.0":true,"0.3.2.1":true,"0.3.2.2":true,"0.3.2.3":true,"0.3.3":true,"0.3.3.0":true,"0.3.3.1":true,"0.3.3.2":true,"0.3.3.3":true,"1.0":true,"1.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true,"1.0.1":true,"1.0.1.0":true,"1.0.1.1":true,"1.0.1.2":true,"1.0.1.3":true,"1.0.2":true,"1.0.2.0":true,"1.0.2.1":true,"1.0.2.2":true,"1.0.2.3":true,"1.0.3":true,"1.0.3.0":true,"1.0.3.1":true,"1.0.3.2":true,"1.0.3.3":true,"1.1":true,"1.1.0":true,"1.1.0.0":true,"1.1.0.1":true,"1.1.0.2":true,"1.1.0.3":true,"1.1.1":true,"1.1.1.0":true,"1.1.1.1":true,"1.1.1.2":true,"1.1.1.3":true,"1.1.2":true,"1.1.2.0":true,"1.1.2.1":true,"1.1.2.2":true,"1.1.2.3":true,"1.1.3":true,"1.1.3.0":true,"1.1.3.1":true,"1.1.3.2":true,"1.1.3.3":true,"1.2":true,"1.2.0":true,"1.2.0.0":true,"1.2.0.1":true,"1.2.0.2":true,"1.2.0.3":true,"1.2.1":true,"1.2.1.0":true,"1.2.1.1":true,"1.2.1.2":true,"1.2.1.3":true,"1.2.2":true,"1.2.2.0":true,"1.2.2.1":true,"1.2.2.2":true,"1.2.2.3":true,"1.2.3":true,"1.2.3.0":true,"1.2.3.1":true,"1.2.3.2":true,"1.2.3.3":true,"1.3":true,"1.3.0":true,"1.3.0.0":true,"1.3.0.1":true,"1.3.0.2":true,"1.3.0.3":true,"1.3.1":true,"1.3.1.0":true,"1.3.1.1":true,"1.3.1.2":true,"1.3.1.3":true,"1.3.2":true,"1.3.2.0":true,"1.3.2.1":true,"1.3.2.2":true,"1.3.2.3":true,"1.3.3":true,"1.3.3.0":true,"1.3.3.1":true,"1.3.3.2":true,"1.3.3.3":true}',
     );
 
     cy.get('[aria-rowindex="4"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate');
@@ -976,7 +976,7 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate');
     cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
       'have.attr',
-      'indeterminate'
+      'indeterminate',
     );
 
     // deselect all
@@ -994,7 +994,7 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate');
     cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
       'have.attr',
-      'indeterminate'
+      'indeterminate',
     );
 
     // deselect all
@@ -1015,7 +1015,7 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate');
     cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
       'have.attr',
-      'indeterminate'
+      'indeterminate',
     );
 
     // deselect all
@@ -1034,12 +1034,12 @@ describe('AnalyticalTable', () => {
       cy.findByTestId('selectedRows').should(
         'have.text',
         // '{"1.0.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true,"1.0.0":true}'
-        '{"1.0.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true}'
+        '{"1.0.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true}',
       );
     } else {
       cy.findByTestId('selectedRows').should(
         'have.text',
-        '{"1.0.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true,"1.0.0":true}'
+        '{"1.0.0.0":true,"1.0.0.1":true,"1.0.0.2":true,"1.0.0.3":true,"1.0.0":true}',
       );
     }
   });
@@ -1053,7 +1053,7 @@ describe('AnalyticalTable', () => {
         columns={columns}
         isTreeTable
         tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection(indeterminateChange)]}
-      />
+      />,
     );
     // select all
     cy.get('[data-column-id="__ui5wcr__internal_selection_column"]').click();
@@ -1072,7 +1072,7 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate');
     cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
       'have.attr',
-      'indeterminate'
+      'indeterminate',
     );
 
     // deselect all
@@ -1089,7 +1089,7 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate');
     cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
       'have.attr',
-      'indeterminate'
+      'indeterminate',
     );
 
     // deselect all
@@ -1110,7 +1110,7 @@ describe('AnalyticalTable', () => {
     cy.get('[aria-rowindex="2"] > [aria-colindex="1"] [ui5-checkbox]').should('have.attr', 'indeterminate');
     cy.get('[data-column-id="__ui5wcr__internal_selection_column"] [ui5-checkbox]').should(
       'have.attr',
-      'indeterminate'
+      'indeterminate',
     );
   });
 
@@ -1121,8 +1121,8 @@ describe('AnalyticalTable', () => {
       const [columns, setColumns] = useState<{ Header: string; accessor: string; maxWidth?: number }[]>([
         {
           Header: headerText,
-          accessor: 'name'
-        }
+          accessor: 'name',
+        },
       ]);
       return (
         <>
@@ -1132,8 +1132,8 @@ describe('AnalyticalTable', () => {
                 {
                   Header: headerText,
                   accessor: 'name',
-                  maxWidth: Infinity
-                }
+                  maxWidth: Infinity,
+                },
               ]);
             }}
           >
@@ -1159,7 +1159,7 @@ describe('AnalyticalTable', () => {
             onClick={() => {
               setColumns([
                 { accessor: 'name', Header: 'Name' },
-                { accessor: 'age', Header: 'Age' }
+                { accessor: 'age', Header: 'Age' },
               ]);
             }}
           >
@@ -1190,30 +1190,30 @@ describe('AnalyticalTable', () => {
         props: { selectionMode: AnalyticalTableSelectionMode.Multiple },
         bothWidth: 930,
         onlyNameWidth: 1860,
-        onlyAgeWidth: 1860
+        onlyAgeWidth: 1860,
       },
       {
         props: { withRowHighlight: true },
         bothWidth: 949,
         onlyNameWidth: 1898,
-        onlyAgeWidth: 1898
+        onlyAgeWidth: 1898,
       },
       {
         props: { withNavigationHighlight: true },
         bothWidth: 949,
         onlyNameWidth: 1898,
-        onlyAgeWidth: 1898
+        onlyAgeWidth: 1898,
       },
       {
         props: {
           withNavigationHighlight: true,
           withRowHighlight: true,
-          selectionMode: AnalyticalTableSelectionMode.Single
+          selectionMode: AnalyticalTableSelectionMode.Single,
         },
         bothWidth: 924,
         onlyNameWidth: 1848,
-        onlyAgeWidth: 1848
-      }
+        onlyAgeWidth: 1848,
+      },
     ].forEach((item) => {
       cy.mount(<TestComp data={data} {...item.props} />);
 
@@ -1255,7 +1255,7 @@ describe('AnalyticalTable', () => {
             data-testid="at"
             tableInstance={tableInstanceRef}
             reactTableOptions={{
-              autoResetHiddenColumns: false
+              autoResetHiddenColumns: false,
             }}
           />
         </>
@@ -1270,7 +1270,7 @@ describe('AnalyticalTable', () => {
       '[data-column-id="name"]',
       '[data-column-id="age"]',
       '[data-column-id="friend\\.name"]',
-      '[data-column-id="friend\\.age"]'
+      '[data-column-id="friend\\.age"]',
     ].forEach((col) => {
       cy.get(col).invoke('outerWidth').should('equal', 300);
     });
@@ -1279,7 +1279,7 @@ describe('AnalyticalTable', () => {
     ['[data-column-id="name"]', '[data-column-id="friend\\.name"]', '[data-column-id="friend\\.age"]'].forEach(
       (col) => {
         cy.get(col).invoke('outerWidth').should('equal', 400);
-      }
+      },
     );
     cy.get('[data-column-id="age"]').should('not.exist', { timeout: 100 });
   });
@@ -1486,17 +1486,17 @@ describe('AnalyticalTable', () => {
     const columns = [
       {
         Header: 'Name',
-        accessor: 'name'
+        accessor: 'name',
       },
       {
         Header: 'Age',
         accessor: 'age',
-        Cell: () => <Button onClick={cellClick}>Custom Cell Button</Button>
+        Cell: () => <Button onClick={cellClick}>Custom Cell Button</Button>,
       },
       {
         Header: () => <Button onClick={headerClick}>Custom Header Button</Button>,
-        accessor: 'friend.name'
-      }
+        accessor: 'friend.name',
+      },
     ];
     cy.mount(<AnalyticalTable selectionMode="Single" data={data.slice(0, 2)} columns={columns} onRowSelect={select} />);
     cy.findAllByText('Custom Cell Button')
@@ -1515,20 +1515,20 @@ describe('AnalyticalTable', () => {
     const columns2 = [
       {
         Header: 'Name',
-        accessor: 'name'
+        accessor: 'name',
       },
       {
         Header: 'Age',
         accessor: 'age',
-        Cell: () => <Button onClick={cellClick2}>Custom Cell Button</Button>
+        Cell: () => <Button onClick={cellClick2}>Custom Cell Button</Button>,
       },
       {
         Header: () => <Button onClick={headerClick}>Custom Header Button</Button>,
-        accessor: 'friend.name'
-      }
+        accessor: 'friend.name',
+      },
     ];
     cy.mount(
-      <AnalyticalTable selectionMode="Single" data={data.slice(0, 2)} columns={columns2} onRowSelect={select} />
+      <AnalyticalTable selectionMode="Single" data={data.slice(0, 2)} columns={columns2} onRowSelect={select} />,
     );
     cy.findAllByText('Custom Cell Button')
       .should('have.length', 2)
@@ -1599,7 +1599,7 @@ describe('AnalyticalTable', () => {
           data={data}
           columns={columns}
           columnOrder={['age', 'friend.age', 'friend.name', 'name']}
-        />
+        />,
       );
       cy.wait(50);
       cy.get('[data-column-id]').each(($col, index) => {
@@ -1617,7 +1617,7 @@ describe('AnalyticalTable', () => {
       const dataTransfereById = (colId) => ({
         getData: () => {
           return colId;
-        }
+        },
       });
 
       cy.get('[data-column-id="name"]')
@@ -1638,7 +1638,7 @@ describe('AnalyticalTable', () => {
         columns={columns}
         selectionMode={AnalyticalTableSelectionMode.Single}
         selectionBehavior={AnalyticalTableSelectionBehavior.RowOnly}
-      />
+      />,
     );
     cy.get('[data-selection-cell="true"]', { timeout: 100 }).should('not.exist');
     cy.mount(
@@ -1647,7 +1647,7 @@ describe('AnalyticalTable', () => {
         columns={columns}
         selectionMode={AnalyticalTableSelectionMode.Multiple}
         selectionBehavior={AnalyticalTableSelectionBehavior.RowOnly}
-      />
+      />,
     );
     cy.get('[data-selection-cell="true"]', { timeout: 100 }).should('not.exist');
     cy.mount(<AnalyticalTable data={data} columns={columns} />);
@@ -1665,7 +1665,7 @@ describe('AnalyticalTable', () => {
         (row) => {
           return selectedRow?.id === row.id;
         },
-        [selectedRow]
+        [selectedRow],
       );
       return (
         <AnalyticalTable
@@ -1701,12 +1701,12 @@ describe('AnalyticalTable', () => {
         reactTableOptions={{
           getRowId: (row, relativeIndex) => {
             return `${row.name ?? relativeIndex}`;
-          }
+          },
         }}
         selectedRowIds={{
-          ['A']: true
+          ['A']: true,
         }}
-      />
+      />,
     );
     cy.get('[aria-rowindex="1"]').should('be.visible').should('have.css', 'background-color', selectedRowColor);
   });
@@ -1723,7 +1723,7 @@ describe('AnalyticalTable', () => {
         selectionMode={AnalyticalTableSelectionMode.Single}
         onRowClick={rowClick}
         onRowSelect={rowSelect}
-      />
+      />,
     );
     cy.get('[data-selection-cell="true"]')
       .should('have.length', 4)
@@ -1751,7 +1751,7 @@ describe('AnalyticalTable', () => {
         selectionMode={AnalyticalTableSelectionMode.Single}
         onRowClick={rowSelectWithoutSelCell}
         onRowSelect={rowSelect}
-      />
+      />,
     );
     cy.get('[data-selection-cell="true"]')
       .should('have.length', 4)
@@ -1792,7 +1792,7 @@ describe('AnalyticalTable', () => {
         columns={columns}
         withRowHighlight
         highlightField="highlight"
-      />
+      />,
     );
     cy.get('[data-component-name="AnalyticalTableHighlightCell"]')
       .should('have.length', 4)
@@ -1839,7 +1839,7 @@ describe('AnalyticalTable', () => {
               return ValueState.None;
           }
         }}
-      />
+      />,
     );
 
     cy.get('[data-component-name="AnalyticalTableHighlightCell"]')
@@ -1856,14 +1856,14 @@ describe('AnalyticalTable', () => {
             cy.wrap($highlightCell).should(
               'have.css',
               'background-color',
-              cssVarToRgb(ThemingParameters.sapIndicationColor_1)
+              cssVarToRgb(ThemingParameters.sapIndicationColor_1),
             );
             break;
           case 3:
             cy.wrap($highlightCell).should(
               'have.css',
               'background-color',
-              cssVarToRgb(ThemingParameters.sapIndicationColor_8)
+              cssVarToRgb(ThemingParameters.sapIndicationColor_8),
             );
             break;
         }
@@ -1874,15 +1874,15 @@ describe('AnalyticalTable', () => {
     const columns = [
       {
         Header: 'Name',
-        accessor: 'name'
+        accessor: 'name',
       },
       {
         Header: 'Age',
         accessor: 'age',
         disableGroupBy: true,
         disableFilters: true,
-        disableSortBy: true
-      }
+        disableSortBy: true,
+      },
     ];
     cy.mount(<AnalyticalTable data={data} columns={columns} />);
     cy.get('[data-column-id="name"]').should('not.have.attr', 'aria-haspopup', 'menu').click();
@@ -1952,7 +1952,7 @@ describe('AnalyticalTable', () => {
         columns={columns}
         renderRowSubComponent={renderRowSubComponent}
         subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
-      />
+      />,
     );
     cy.findAllByText('SubComponent').should('be.visible').should('have.length', 4);
     cy.findByTitle('Expand Node').should('not.exist');
@@ -1964,7 +1964,7 @@ describe('AnalyticalTable', () => {
         columns={columns}
         renderRowSubComponent={onlyFirstRowWithSubcomponent}
         subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
-      />
+      />,
     );
     cy.findByText('SingleSubComponent').should('be.visible').should('have.length', 1);
     cy.findByTitle('Expand Node').should('not.exist');
@@ -1977,7 +1977,7 @@ describe('AnalyticalTable', () => {
         renderRowSubComponent={renderRowSubComponentLarge}
         visibleRows={3}
         subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
-      />
+      />,
     );
     cy.wait(300);
 
@@ -1992,7 +1992,7 @@ describe('AnalyticalTable', () => {
         renderRowSubComponent={renderRowSubComponentLarge}
         visibleRows={3}
         subComponentsBehavior={AnalyticalTableSubComponentsBehavior.IncludeHeight}
-      />
+      />,
     );
     cy.findByText('SubComponent 1').should('be.visible');
     cy.findByText('SubComponent 2').should('be.visible');
@@ -2010,7 +2010,7 @@ describe('AnalyticalTable', () => {
         renderRowSubComponent={renderRowSubComponentLarge}
         visibleRows={3}
         subComponentsBehavior={AnalyticalTableSubComponentsBehavior.IncludeHeightExpandable}
-      />
+      />,
     );
     cy.findByText('A').should('be.visible');
     cy.findByText('X').should('be.visible');
@@ -2092,11 +2092,11 @@ describe('AnalyticalTable', () => {
                     Popin Cell
                   </Text>
                 );
-              }
-            }
+              },
+            },
           ]}
           dir={dir}
-        />
+        />,
       );
       cy.findAllByText('PopinDisplay Modes:').as('popinHeader').should('be.exist');
       //popinDisplay: Row
@@ -2120,11 +2120,11 @@ describe('AnalyticalTable', () => {
                     Popin Cell
                   </Text>
                 );
-              }
-            }
+              },
+            },
           ]}
           dir={dir}
-        />
+        />,
       );
       //popinDisplay: WithoutHeader
       cy.findAllByText('PopinDisplay Modes:').should('not.exist');
@@ -2173,12 +2173,12 @@ describe('AnalyticalTable', () => {
                   Popin Cell
                 </Text>
               );
-            }
-          }
+            },
+          },
         ]}
         data-testid="table"
         adjustTableHeightOnPopIn
-      />
+      />,
     );
     cy.findAllByTestId('popinCell').should('be.visible');
     cy.findByTestId('table').should('have.css', 'height', '1684px');
@@ -2200,12 +2200,12 @@ describe('AnalyticalTable', () => {
                   Popin Cell
                 </Text>
               );
-            }
-          }
+            },
+          },
         ]}
         data-testid="table"
         adjustTableHeightOnPopIn
-      />
+      />,
     );
     cy.findAllByTestId('popinCell').should('be.visible');
     cy.findByTestId('table').should('have.css', 'height', '1684px');
@@ -2263,7 +2263,7 @@ describe('AnalyticalTable', () => {
         data={manualSelectData}
         columns={columns}
         tableHooks={[useManualRowSelect('isSelected')]}
-      />
+      />,
     );
     // header row included
     cy.findAllByRole('row').each(($row, index) => {
@@ -2284,15 +2284,15 @@ describe('AnalyticalTable', () => {
             age: 40,
             friend: {
               name: 'MAR',
-              age: 28
+              age: 28,
             },
-            isSelected: false
+            isSelected: false,
           },
-          ...updatedManualSelectData
+          ...updatedManualSelectData,
         ]}
         columns={columns}
         tableHooks={[useManualRowSelect('isSelected')]}
-      />
+      />,
     );
     // header row included
     cy.findAllByRole('row').each(($row) => {
@@ -2333,7 +2333,7 @@ describe('AnalyticalTable', () => {
         columns={columns}
         isTreeTable
         reactTableOptions={{ initialState: { expanded: { 1: true } } }}
-      />
+      />,
     );
     cy.get('[data-empty-row="true"]').should('not.exist');
     cy.mount(<AnalyticalTable data={data} columns={columns} minRows={15} />);
@@ -2354,7 +2354,7 @@ describe('AnalyticalTable', () => {
       Header: 'Custom',
       id: 'custom',
       Cell: () => 'Custom Content',
-      cellLabel: ({ cell }) => `${cell.cellLabel} custom aria-label`
+      cellLabel: ({ cell }) => `${cell.cellLabel} custom aria-label`,
     };
     cy.mount(<AnalyticalTable columns={[...columns, customCellColumn]} data={data} groupable filterable sortable />);
 
@@ -2384,13 +2384,13 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
       'have.attr',
       'aria-label',
-      'Name A Grouped, To expand the row, press the spacebar.'
+      'Name A Grouped, To expand the row, press the spacebar.',
     );
     cy.get('[name="navigation-right-arrow"]').click();
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
       'have.attr',
       'aria-label',
-      'Name A Grouped, To collapse the row, press the spacebar.'
+      'Name A Grouped, To collapse the row, press the spacebar.',
     );
     cy.findByText('Name').click();
     cy.get('[ui5-list]').clickUi5ListItemByText('Ungroup');
@@ -2408,12 +2408,12 @@ describe('AnalyticalTable', () => {
     cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should(
       'have.attr',
       'aria-label',
-      'Custom Label 42 '
+      'Custom Label 42 ',
     );
     cy.get('[data-visible-row-index="1"][data-visible-column-index="4"]').should(
       'have.attr',
       'aria-label',
-      'Custom  custom aria-label'
+      'Custom  custom aria-label',
     );
   });
 
@@ -2436,7 +2436,7 @@ describe('AnalyticalTable', () => {
               ...dataTree,
               { name: 'toggle', subRows: [{ name: 'toggled' }] },
               ...dataTree,
-              ...dataTree
+              ...dataTree,
             ]}
             columns={columns}
             isTreeTable
@@ -2448,15 +2448,15 @@ describe('AnalyticalTable', () => {
     };
     cy.mount(<AnalyticalTable data={[...dataTree, ...dataTree]} columns={columns} isTreeTable visibleRows={5} />);
     cy.findAllByText('Katy Bradshaw').eq(1).trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.findByText('Carol Perez').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').should('not.equal', 0);
     cy.findByText('Carol Perez').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
 
@@ -2464,19 +2464,19 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name').click();
     cy.get('[ui5-list]').clickUi5ListItemByText('Group');
     cy.findByText('A (2)').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
     });
     cy.findByText('B (2)').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.findByText('C (2)').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.findByText('C (2)').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
 
@@ -2489,21 +2489,21 @@ describe('AnalyticalTable', () => {
     };
     cy.mount(<AnalyticalTable data={data} columns={columns} renderRowSubComponent={renderRowSubComponent} />);
     cy.findByText('A').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
     });
     cy.findByText('B').trigger('keydown', {
-      key: 'Enter'
+      key: 'Enter',
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.findByText('X').trigger('keydown', {
       key: 'Enter',
-      force: true
+      force: true,
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
     cy.findByText('X').trigger('keydown', {
       key: 'Enter',
-      force: true
+      force: true,
     });
     cy.get('[data-component-name="AnalyticalTableBody"]').invoke('scrollTop').should('not.equal', 0);
 
@@ -2523,17 +2523,17 @@ describe('AnalyticalTable', () => {
       {
         Header: 'Name',
         accessor: 'name',
-        enableMultiSort: true
+        enableMultiSort: true,
       },
       {
         Header: 'Age',
         accessor: 'age',
-        enableMultiSort: true
+        enableMultiSort: true,
       },
       {
         Header: 'Name 2',
-        accessor: 'name2'
-      }
+        accessor: 'name2',
+      },
     ];
     const data = [
       { name: 'A', age: 40, name2: 'Y', age2: 18 },
@@ -2542,7 +2542,7 @@ describe('AnalyticalTable', () => {
       { name: 'A', age: 70, name2: 'Z', age2: 15 },
       { name: 'B', age: 60, name2: 'Q', age2: 80 },
       { name: 'B', age: 20, name2: 'Y', age2: 80 },
-      { name: 'C', age: 40, name2: 'Y', age2: 80 }
+      { name: 'C', age: 40, name2: 'Y', age2: 80 },
     ];
     cy.mount(<AnalyticalTable columns={columns} data={data} sortable />);
 
@@ -2602,10 +2602,10 @@ describe('AnalyticalTable', () => {
           JSON.stringify({
             selectedRowIds,
             selectedFlatRows: selectedRowIdsArrayMapped.map((item) => ({
-              id: item?.id
+              id: item?.id,
             })),
-            allRowsSelected
-          })
+            allRowsSelected,
+          }),
         );
         select(e);
       };
@@ -2636,25 +2636,25 @@ describe('AnalyticalTable', () => {
     cy.get('@selAll').should('have.attr', 'title', 'Deselect All');
     cy.findByTestId('payload').should(
       'have.text',
-      '{"selectedRowIds":{"0":true,"1":true,"2":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"2"},{"id":"3"}],"allRowsSelected":true}'
+      '{"selectedRowIds":{"0":true,"1":true,"2":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"2"},{"id":"3"}],"allRowsSelected":true}',
     );
     cy.findByText('X').click();
     cy.get('@selectSpy').should('have.been.calledTwice');
     cy.findByTestId('payload').should(
       'have.text',
-      '{"selectedRowIds":{"0":true,"1":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"3"}],"allRowsSelected":false}'
+      '{"selectedRowIds":{"0":true,"1":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"3"}],"allRowsSelected":false}',
     );
     cy.get('@selAll').should('have.attr', 'title', 'Select All').click();
     cy.get('@selectSpy').should('have.been.calledThrice');
     cy.findByTestId('payload').should(
       'have.text',
-      '{"selectedRowIds":{"0":true,"1":true,"2":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"2"},{"id":"3"}],"allRowsSelected":true}'
+      '{"selectedRowIds":{"0":true,"1":true,"2":true,"3":true},"selectedFlatRows":[{"id":"0"},{"id":"1"},{"id":"2"},{"id":"3"}],"allRowsSelected":true}',
     );
     cy.get('@selAll').click();
     cy.get('@selectSpy').should('have.callCount', 4);
     cy.findByTestId('payload').should(
       'have.text',
-      '{"selectedRowIds":{},"selectedFlatRows":[],"allRowsSelected":false}'
+      '{"selectedRowIds":{},"selectedFlatRows":[],"allRowsSelected":false}',
     );
   });
 
@@ -2676,20 +2676,20 @@ describe('AnalyticalTable', () => {
             return instance.value;
           }
           return null;
-        }
+        },
       },
-      { accessor: 'values.age', Header: 'Age' }
+      { accessor: 'values.age', Header: 'Age' },
     ];
 
     const SERVER_DATA = [
       { values: { name: 'Simon', age: '72', children: undefined } },
       { values: { name: 'Peter', age: '25', children: [] } },
-      { values: { name: 'Martha', age: '30', children: [] } }
+      { values: { name: 'Martha', age: '30', children: [] } },
     ];
     const SERVER_DATA_AGGREGATED = [
       { values: { name: 'Simon', age: '72', children: undefined } },
       { values: { name: 'Peter', age: 'Aggregated', children: [] } },
-      { values: { name: 'Martha', age: 'Aggregated', children: [] } }
+      { values: { name: 'Martha', age: 'Aggregated', children: [] } },
     ];
     const SERVER_DATA_PETER = [
       { values: { name: 'Simon', age: '72', children: undefined } },
@@ -2702,11 +2702,11 @@ describe('AnalyticalTable', () => {
             { values: { age: '25' } },
             { values: { age: '30' } },
             { values: { age: '30' } },
-            { values: { age: '30' } }
-          ]
-        }
+            { values: { age: '30' } },
+          ],
+        },
       },
-      { values: { name: 'Martha', age: 'Aggregated', children: [] } }
+      { values: { name: 'Martha', age: 'Aggregated', children: [] } },
     ];
 
     const SERVER_DATA_MARTHA = [
@@ -2719,10 +2719,10 @@ describe('AnalyticalTable', () => {
           children: [
             { values: { name: 'Martha', age: '30' } },
             { values: { name: 'Martha', age: '25' } },
-            { values: { name: 'Martha', age: '25' } }
-          ]
-        }
-      }
+            { values: { name: 'Martha', age: '25' } },
+          ],
+        },
+      },
     ];
     const TestComp = () => {
       const [groupedCols, setGroupedCols] = useState([]);
@@ -2763,7 +2763,7 @@ describe('AnalyticalTable', () => {
           reactTableOptions={{
             autoResetGroupBy: false,
             autoResetExpanded: false,
-            manualGroupBy: true
+            manualGroupBy: true,
           }}
           // only use subRowsKey --> can't use subRows as it's always an array (not undefined - internal logic will fail)
           subRowsKey="values.children"
@@ -2798,23 +2798,23 @@ describe('AnalyticalTable', () => {
         {
           Header: 'Name',
           accessor: 'name',
-          enableMultiSort: true
+          enableMultiSort: true,
         },
         {
           Header: 'Age',
           accessor: 'age',
-          enableMultiSort: true
+          enableMultiSort: true,
         },
         {
           Header: 'Name 2',
           accessor: 'name2',
-          enableMultiSort: true
+          enableMultiSort: true,
         },
         {
           Header: 'Age 2',
           accessor: 'age2',
-          enableMultiSort: true
-        }
+          enableMultiSort: true,
+        },
       ];
       const data = [
         { name: 'Peter', age: 40, name2: 'Alissa', age2: 18 },
@@ -2827,7 +2827,7 @@ describe('AnalyticalTable', () => {
         { name: 'Peter', age: 65, name2: 'Rose', age2: 26 },
         { name: 'Graham', age: 65, name2: 'Rose', age2: 26 },
         { name: 'Graham', age: 65, name2: 'Willis', age2: 26 },
-        { name: 'Graham', age: 62, name2: 'Willis', age2: 26 }
+        { name: 'Graham', age: 62, name2: 'Willis', age2: 26 },
       ];
       return (
         <AnalyticalTable
@@ -2949,7 +2949,7 @@ describe('AnalyticalTable', () => {
       <AnalyticalTable
         data={generateMoreData(50)}
         columns={[...columns.slice(0, 2), { id: 'button', Cell: () => <Button>Button</Button> }]}
-      />
+      />,
     );
 
     cy.findByText('Name-0').should('be.visible');
@@ -2980,7 +2980,7 @@ describe('AnalyticalTable', () => {
         columns={columns.slice(0, 2)}
         subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
         renderRowSubComponent={renderSubComp}
-      />
+      />,
     );
     cy.findByText('Name-0').should('be.visible');
     cy.window().focus();
@@ -3024,7 +3024,7 @@ describe('AnalyticalTable', () => {
         columns={columns.slice(0, 2)}
         subComponentsBehavior={AnalyticalTableSubComponentsBehavior.Visible}
         renderRowSubComponent={renderSubComp2}
-      />
+      />,
     );
     cy.findByText('Name-0').should('be.visible');
     cy.window().focus();
@@ -3061,7 +3061,7 @@ describe('AnalyticalTable', () => {
           selectionMode={AnalyticalTableSelectionMode.Multiple}
         />
         <button>Interactive Element</button>
-      </>
+      </>,
     );
 
     cy.findByText('Name-0').should('be.visible');
@@ -3077,7 +3077,7 @@ describe('AnalyticalTable', () => {
         columns={columns}
         selectionMode={AnalyticalTableSelectionMode.Multiple}
         withRowHighlight
-      />
+      />,
     );
 
     cy.findByText('Name-0').should('be.visible');
@@ -3147,7 +3147,7 @@ describe('AnalyticalTable', () => {
           data={generateMoreData(500)}
           columns={[
             ...columns,
-            ...new Array(100).fill('').map((_, index) => ({ id: `${index}`, Header: () => index }))
+            ...new Array(100).fill('').map((_, index) => ({ id: `${index}`, Header: () => index })),
           ]}
           ref={tableRef}
         />
@@ -3191,24 +3191,24 @@ describe('AnalyticalTable', () => {
         displayId: '1337',
         name: 'root1',
         nodeId: 'root1',
-        parentId: null
+        parentId: null,
       },
       {
         displayId: '1337',
         name: 'root2',
         nodeId: 'root2',
-        parentId: null
-      }
+        parentId: null,
+      },
     ];
 
     const columns = [
       {
         Header: 'Test',
-        accessor: 'name'
+        accessor: 'name',
       },
       {
-        accessor: 'displayId'
-      }
+        accessor: 'displayId',
+      },
     ];
 
     /**
@@ -3230,9 +3230,9 @@ describe('AnalyticalTable', () => {
               displayId: `1337`,
               name: `${nodeId}-${names.current[0]}`,
               nodeId: `${nodeId}-${names.current[0]}`,
-              parentId: nodeId
-            }
-          ]
+              parentId: nodeId,
+            },
+          ],
         });
       };
 
@@ -3243,7 +3243,7 @@ describe('AnalyticalTable', () => {
             setRaw([...raw, ...result.value]);
           });
         },
-        [raw]
+        [raw],
       );
 
       const handleRowExpandChange = useCallback(
@@ -3253,7 +3253,7 @@ describe('AnalyticalTable', () => {
             void getChildren(row.original.nodeId, row.original.subRows?.length || 0);
           }
         },
-        [getChildren]
+        [getChildren],
       );
 
       // render "Load more" button
@@ -3280,7 +3280,7 @@ describe('AnalyticalTable', () => {
           <div
             style={{
               paddingBottom: '0.25rem',
-              paddingInlineStart: `calc(var(--_ui5wcr-AnalyticalTableTreePaddingLevel${row.depth}) + ${arrowWidth}px)`
+              paddingInlineStart: `calc(var(--_ui5wcr-AnalyticalTableTreePaddingLevel${row.depth}) + ${arrowWidth}px)`,
             }}
           >
             <Button
@@ -3310,18 +3310,18 @@ describe('AnalyticalTable', () => {
           const newItem = { ...item };
           rowById.current[newItem.nodeId] = {
             ...(rowById[newItem.node] || {}),
-            ...newItem
+            ...newItem,
           };
           if (!newItem.parentId) {
             rowById.current[newItem.nodeId] = {
               ...newItem,
-              ...(rowById.current[newItem.nodeId] || {})
+              ...(rowById.current[newItem.nodeId] || {}),
             };
           } else {
             if (!rowById.current[newItem.parentId]) {
               rowById.current[newItem.parentId] = {
                 nodeId: newItem.parentId,
-                subRows: []
+                subRows: [],
               };
             } else if (!rowById.current[newItem.parentId].subRows) {
               rowById.current[newItem.parentId].subRows = [];
@@ -3340,7 +3340,7 @@ describe('AnalyticalTable', () => {
           isTreeTable
           onRowExpandChange={handleRowExpandChange}
           reactTableOptions={{
-            autoResetExpanded: false
+            autoResetExpanded: false,
           }}
           renderRowSubComponent={renderLoadMore}
           subComponentsBehavior={'IncludeHeight'}
@@ -3367,17 +3367,17 @@ describe('AnalyticalTable', () => {
       age: 0,
       friend: {
         name: null,
-        age: undefined
-      }
+        age: undefined,
+      },
     },
     {
       name: 'A',
       age: 1337,
       friend: {
         name: 'B',
-        age: -2
-      }
-    }
+        age: -2,
+      },
+    },
   ];
   it('useAnnounceEmptyCells', () => {
     cy.mount(<AnalyticalTable data={dataWithEmptyFields} columns={columns} />);
@@ -3387,23 +3387,23 @@ describe('AnalyticalTable', () => {
         data={dataWithEmptyFields}
         columns={columns}
         tableHooks={[AnalyticalTableHooks.useAnnounceEmptyCells]}
-      />
+      />,
     );
     cy.get('[data-visible-row-index="1"][data-visible-column-index="0"]').should(
       'have.attr',
       'aria-label',
-      'Name  Empty'
+      'Name  Empty',
     );
     cy.get('[data-visible-row-index="1"][data-visible-column-index="1"]').should('have.attr', 'aria-label', 'Age 0 ');
     cy.get('[data-visible-row-index="1"][data-visible-column-index="2"]').should(
       'have.attr',
       'aria-label',
-      'Friend Name  Empty'
+      'Friend Name  Empty',
     );
     cy.get('[data-visible-row-index="1"][data-visible-column-index="3"]').should(
       'have.attr',
       'aria-label',
-      'Custom Label  Empty'
+      'Custom Label  Empty',
     );
     cy.get('[data-visible-row-index="2"][data-visible-column-index="0"]').should('have.attr', 'aria-label', 'Name A ');
   });
@@ -3446,8 +3446,8 @@ describe('AnalyticalTable', () => {
               </button>
             </Popover>
           );
-        }
-      }
+        },
+      },
     ];
     cy.mount(<AnalyticalTable data={groupableData} columns={columns} sortable />);
 
@@ -3487,8 +3487,8 @@ describe('AnalyticalTable', () => {
             default:
               return <Input />;
           }
-        }
-      }
+        },
+      },
     ];
     const TestComp = () => {
       const [selected, setSelected] = useState({});
@@ -3544,74 +3544,74 @@ describe('AnalyticalTable', () => {
           age: 80,
           friend: {
             age: 68,
-            name: 'Carver Vance'
+            name: 'Carver Vance',
           },
-          name: 'Allen Best'
+          name: 'Allen Best',
         },
         {
           age: 31,
           friend: {
             age: 70,
-            name: 'Strickland Gallegos'
+            name: 'Strickland Gallegos',
           },
-          name: 'Combs Fleming'
+          name: 'Combs Fleming',
         },
         {
           age: 31,
           friend: {
             age: 70,
-            name: 'Strickland Gallegos'
+            name: 'Strickland Gallegos',
           },
-          name: 'Combs Fleming'
+          name: 'Combs Fleming',
         },
         {
           age: 31,
           friend: {
             age: 70,
-            name: 'Strickland Gallegos'
+            name: 'Strickland Gallegos',
           },
-          name: 'Combs Fleming'
-        }
+          name: 'Combs Fleming',
+        },
       ];
       const _columns = [
         {
           Header: 'Name',
           accessor: 'name',
-          headerTooltip: 'Full Name'
+          headerTooltip: 'Full Name',
         },
         {
           Header: 'Age',
           accessor: 'age',
           hAlign: 'End',
-          maxWidth: 192
+          maxWidth: 192,
         },
         {
           Header: 'Friend Name',
           accessor: 'friend.name',
-          maxWidth: 160
+          maxWidth: 160,
         },
         {
           accessor: 'friend.age',
           maxWidth: 160,
-          hAlign: 'End'
+          hAlign: 'End',
         },
         {
           Header: 'Actions',
           id: 'actions1',
           maxWidth: 192,
-          hAlign: 'End'
+          hAlign: 'End',
         },
         {
           Header: 'Actions',
           id: 'actions2',
-          hAlign: 'End'
+          hAlign: 'End',
         },
         {
           Header: 'Actions',
           id: 'actions3',
           maxWidth: 160,
-          hAlign: 'End'
-        }
+          hAlign: 'End',
+        },
       ];
       document.body.style.margin = '0px';
       cy.viewport(1306, 1080);
@@ -3619,12 +3619,12 @@ describe('AnalyticalTable', () => {
       cy.get('[data-component-name="AnalyticalTableContainer"]').should(
         'have.css',
         'width',
-        withVertScrollbar ? '1293px' : '1306px'
+        withVertScrollbar ? '1293px' : '1306px',
       );
       cy.get('[data-component-name="AnalyticalTableBody"]').should(
         'have.css',
         'width',
-        withVertScrollbar ? '1293px' : '1306px'
+        withVertScrollbar ? '1293px' : '1306px',
       );
 
       const _data2 = [
@@ -3632,83 +3632,83 @@ describe('AnalyticalTable', () => {
           age: 80,
           friend: {
             age: 68,
-            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
+            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
           },
           name: 'Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best',
-          status: 'Positive'
+          status: 'Positive',
         },
         {
           age: 80,
           friend: {
             age: 68,
-            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
+            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
           },
           name: 'Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best',
-          status: 'Positive'
+          status: 'Positive',
         },
         {
           age: 80,
           friend: {
             age: 68,
-            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
+            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
           },
           name: 'Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best',
-          status: 'Positive'
+          status: 'Positive',
         },
         {
           age: 80,
           friend: {
             age: 68,
-            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
+            name: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
           },
           name: 'Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best Allen Best',
-          status: 'Positive'
-        }
+          status: 'Positive',
+        },
       ];
       const _columns2 = [
         {
           Header: 'Name',
           accessor: 'name',
-          minWidth: 400
+          minWidth: 400,
         },
         {
           Header: 'Age',
           accessor: 'age',
-          minWidth: 100
+          minWidth: 100,
         },
         {
           Header: 'Friend Name',
           accessor: 'friend.name',
-          minWidth: 100
+          minWidth: 100,
         },
         {
           Header: 'Friend Age',
           accessor: 'friend.age',
-          minWidth: 300
-        }
+          minWidth: 300,
+        },
       ];
       cy.mount(<AnalyticalTable data={_data2} columns={_columns2} visibleRows={visibleRows} />);
       cy.get('[data-component-name="AnalyticalTableContainer"]').should(
         'have.css',
         'width',
-        withVertScrollbar ? '1293px' : '1306px'
+        withVertScrollbar ? '1293px' : '1306px',
       );
       cy.get('[data-component-name="AnalyticalTableBody"]').should(
         'have.css',
         'width',
-        withVertScrollbar ? '1293px' : '1306px'
+        withVertScrollbar ? '1293px' : '1306px',
       );
 
       cy.mount(<AnalyticalTable data={data} columns={columns} visibleRows={visibleRows} />);
       cy.get('[data-component-name="AnalyticalTableContainer"]').should(
         'have.css',
         'width',
-        withVertScrollbar ? '1293px' : '1306px'
+        withVertScrollbar ? '1293px' : '1306px',
       );
       cy.get('[data-component-name="AnalyticalTableBody"]').should(
         'have.css',
         'width',
-        withVertScrollbar ? '1293px' : '1306px'
+        withVertScrollbar ? '1293px' : '1306px',
       );
 
       const _columns3 = [...columns, { id: 'long', Header: 'Long', width: 2000, Cell: 'Long' }];
@@ -3716,20 +3716,20 @@ describe('AnalyticalTable', () => {
       cy.get('[data-component-name="AnalyticalTableContainer"]').should(
         'have.css',
         'width',
-        withVertScrollbar ? '1293px' : '1306px'
+        withVertScrollbar ? '1293px' : '1306px',
       );
       cy.get('[data-component-name="AnalyticalTableBody"]').should('have.css', 'width', '2240px'); // 4 * 60 (minWidth) + 2000
 
       const _columns4 = [
         ...columns,
         { id: 'long', Header: 'Long', width: 2000, Cell: 'Long', maxWidth: 1000 },
-        { id: 'minWidth', Header: 'minWidth', minWidth: 200, Cell: 'minWidth', maxWidth: 1000 }
+        { id: 'minWidth', Header: 'minWidth', minWidth: 200, Cell: 'minWidth', maxWidth: 1000 },
       ];
       cy.mount(<AnalyticalTable data={data} columns={_columns4} visibleRows={visibleRows} />);
       cy.get('[data-component-name="AnalyticalTableContainer"]').should(
         'have.css',
         'width',
-        withVertScrollbar ? '1293px' : '1306px'
+        withVertScrollbar ? '1293px' : '1306px',
       );
       cy.get('[data-component-name="AnalyticalTableBody"]').should('have.css', 'width', '1440px'); // 4 * 60 (minWidth) + 1000 (maxWidth) + 200
     });
@@ -3818,32 +3818,32 @@ const mockNames = [
   'Wyatt',
   'Ximena',
   'Yannick',
-  'Zara'
+  'Zara',
 ];
 
 const columnsWithPopIn = [
   {
     Header: 'Name',
     headerTooltip: 'Full Name',
-    accessor: 'name'
+    accessor: 'name',
   },
   {
     responsiveMinWidth: 601,
     Header: 'Age',
-    accessor: 'age'
+    accessor: 'age',
   },
   {
     responsivePopIn: true,
     responsiveMinWidth: 801,
     Header: 'Friend Name',
-    accessor: 'friend.name'
+    accessor: 'friend.name',
   },
   {
     responsivePopIn: true,
     responsiveMinWidth: 801,
     Header: () => <span>Custom original Header1</span>,
     PopInHeader: 'Custom Header 1',
-    accessor: 'friend.age'
+    accessor: 'friend.age',
   },
   {
     responsivePopIn: true,
@@ -3853,7 +3853,7 @@ const columnsWithPopIn = [
       return 'Custom Header 2';
     },
     id: 'custom1',
-    Cell: 'Custom Cell 2'
+    Cell: 'Custom Cell 2',
   },
   {
     responsivePopIn: true,
@@ -3865,7 +3865,7 @@ const columnsWithPopIn = [
         return 'pop-in content';
       }
       return 'original content';
-    }
+    },
   },
   {
     id: 'popinDisplay',
@@ -3879,8 +3879,8 @@ const columnsWithPopIn = [
           Popin Cell
         </Text>
       );
-    }
-  }
+    },
+  },
 ];
 
 const manualSelectData = [
@@ -3889,27 +3889,27 @@ const manualSelectData = [
     age: 40,
     friend: {
       name: 'MAR',
-      age: 28
+      age: 28,
     },
-    isSelected: true
+    isSelected: true,
   },
   {
     name: 'Not selected',
     age: 20,
     friend: {
       name: 'Nei',
-      age: 50
+      age: 50,
     },
-    isSelected: false
+    isSelected: false,
   },
   {
     name: 'Not selected2',
     age: 20,
     friend: {
       name: 'Nei',
-      age: 50
-    }
-  }
+      age: 50,
+    },
+  },
 ];
 
 const groupableData = [
@@ -3918,65 +3918,65 @@ const groupableData = [
     age: 25,
     friend: {
       name: 'Peter',
-      age: 42
-    }
+      age: 42,
+    },
   },
   {
     name: 'GroupMe',
     age: 56,
     friend: {
       name: 'ASD',
-      age: 42
-    }
+      age: 42,
+    },
   },
   {
     name: 'GroupMe',
     age: 13,
     friend: {
       name: 'QWE',
-      age: 42
-    }
+      age: 42,
+    },
   },
   {
     name: 'GroupMe',
     age: 25,
     friend: {
       name: 'ZXC',
-      age: 42
-    }
+      age: 42,
+    },
   },
   {
     name: 'GroupMe2',
     age: 25,
     friend: {
       name: 'Peter',
-      age: 42
-    }
+      age: 42,
+    },
   },
   {
     name: 'GroupMe2',
     age: 25,
     friend: {
       name: 'ASD',
-      age: 42
-    }
+      age: 42,
+    },
   },
   {
     name: 'GroupMe2',
     age: 55,
     friend: {
       name: 'Peter',
-      age: 42
-    }
+      age: 42,
+    },
   },
   {
     name: 'GroupMe2',
     age: 55,
     friend: {
       name: 'ZXC',
-      age: 42
-    }
-  }
+      age: 42,
+    },
+  },
 ];
 
 const dataTree = [
@@ -3985,7 +3985,7 @@ const dataTree = [
     age: 82,
     friend: {
       name: 'Gardner Chang',
-      age: 38
+      age: 38,
     },
 
     subRows: [
@@ -3994,7 +3994,7 @@ const dataTree = [
         age: 35,
         friend: {
           name: 'Mcmillan Bray',
-          age: 85
+          age: 85,
         },
 
         subRows: [
@@ -4003,7 +4003,7 @@ const dataTree = [
             age: 42,
             friend: {
               name: 'Meghan Talley',
-              age: 40
+              age: 40,
             },
 
             subRows: [
@@ -4012,41 +4012,41 @@ const dataTree = [
                 age: 24,
                 friend: {
                   name: 'Gallegos Morin',
-                  age: 77
-                }
+                  age: 77,
+                },
               },
               {
                 name: 'Marquez Fletcher',
                 age: 51,
                 friend: {
                   name: 'Mia Conway',
-                  age: 37
-                }
+                  age: 37,
+                },
               },
               {
                 name: 'Holman Shannon',
                 age: 75,
                 friend: {
                   name: 'Cleo Newman',
-                  age: 77
-                }
+                  age: 77,
+                },
               },
               {
                 name: 'Letitia Blackburn',
                 age: 46,
                 friend: {
                   name: 'Helena Johnson',
-                  age: 37
-                }
-              }
-            ]
+                  age: 37,
+                },
+              },
+            ],
           },
           {
             name: 'Rose Lancaster',
             age: 32,
             friend: {
               name: 'Valarie Tanner',
-              age: 61
+              age: 61,
             },
 
             subRows: [
@@ -4055,41 +4055,41 @@ const dataTree = [
                 age: 55,
                 friend: {
                   name: 'Bartlett Craft',
-                  age: 37
-                }
+                  age: 37,
+                },
               },
               {
                 name: 'Holder Gilmore',
                 age: 59,
                 friend: {
                   name: 'Perry William',
-                  age: 64
-                }
+                  age: 64,
+                },
               },
               {
                 name: 'Eve Burke',
                 age: 36,
                 friend: {
                   name: 'Rhonda Hurley',
-                  age: 26
-                }
+                  age: 26,
+                },
               },
               {
                 name: 'Lilia Raymond',
                 age: 32,
                 friend: {
                   name: 'Leach Spence',
-                  age: 60
-                }
-              }
-            ]
+                  age: 60,
+                },
+              },
+            ],
           },
           {
             name: 'Kerry Murray',
             age: 65,
             friend: {
               name: 'Madeleine Brown',
-              age: 84
+              age: 84,
             },
 
             subRows: [
@@ -4098,41 +4098,41 @@ const dataTree = [
                 age: 64,
                 friend: {
                   name: 'Gail Hawkins',
-                  age: 62
-                }
+                  age: 62,
+                },
               },
               {
                 name: 'Stevens Valencia',
                 age: 66,
                 friend: {
                   name: 'Keller Woods',
-                  age: 42
-                }
+                  age: 42,
+                },
               },
               {
                 name: 'Wilkerson Solis',
                 age: 26,
                 friend: {
                   name: 'Wynn Carney',
-                  age: 22
-                }
+                  age: 22,
+                },
               },
               {
                 name: 'Booker Hyde',
                 age: 21,
                 friend: {
                   name: 'Ginger Obrien',
-                  age: 47
-                }
-              }
-            ]
+                  age: 47,
+                },
+              },
+            ],
           },
           {
             name: 'Graves Larson',
             age: 45,
             friend: {
               name: 'Reid Harrington',
-              age: 30
+              age: 30,
             },
 
             subRows: [
@@ -4141,43 +4141,43 @@ const dataTree = [
                 age: 65,
                 friend: {
                   name: 'Bobbi Osborn',
-                  age: 35
-                }
+                  age: 35,
+                },
               },
               {
                 name: 'Nona Holt',
                 age: 56,
                 friend: {
                   name: 'Meadows Beach',
-                  age: 33
-                }
+                  age: 33,
+                },
               },
               {
                 name: 'Whitney Castro',
                 age: 80,
                 friend: {
                   name: 'Nichole Roberson',
-                  age: 47
-                }
+                  age: 47,
+                },
               },
               {
                 name: 'Lisa Salinas',
                 age: 51,
                 friend: {
                   name: 'Leona Short',
-                  age: 81
-                }
-              }
-            ]
-          }
-        ]
+                  age: 81,
+                },
+              },
+            ],
+          },
+        ],
       },
       {
         name: 'Fleming Cote',
         age: 64,
         friend: {
           name: 'York Buckner',
-          age: 60
+          age: 60,
         },
 
         subRows: [
@@ -4186,7 +4186,7 @@ const dataTree = [
             age: 52,
             friend: {
               name: 'Blankenship Clarke',
-              age: 52
+              age: 52,
             },
 
             subRows: [
@@ -4195,41 +4195,41 @@ const dataTree = [
                 age: 80,
                 friend: {
                   name: 'Harris Skinner',
-                  age: 17
-                }
+                  age: 17,
+                },
               },
               {
                 name: 'Patrick Boyle',
                 age: 31,
                 friend: {
                   name: 'Latasha Fitzpatrick',
-                  age: 51
-                }
+                  age: 51,
+                },
               },
               {
                 name: 'Kathy Chambers',
                 age: 41,
                 friend: {
                   name: 'Gwen Russo',
-                  age: 61
-                }
+                  age: 61,
+                },
               },
               {
                 name: 'Waters Huff',
                 age: 35,
                 friend: {
                   name: 'Cook Norton',
-                  age: 58
-                }
-              }
-            ]
+                  age: 58,
+                },
+              },
+            ],
           },
           {
             name: 'Kate Horne',
             age: 30,
             friend: {
               name: 'Kidd Mays',
-              age: 17
+              age: 17,
             },
 
             subRows: [
@@ -4238,41 +4238,41 @@ const dataTree = [
                 age: 61,
                 friend: {
                   name: 'Margarita Gallagher',
-                  age: 16
-                }
+                  age: 16,
+                },
               },
               {
                 name: 'Molly Sargent',
                 age: 64,
                 friend: {
                   name: 'Geraldine Bird',
-                  age: 25
-                }
+                  age: 25,
+                },
               },
               {
                 name: 'Boone Clayton',
                 age: 83,
                 friend: {
                   name: 'Dawn Dorsey',
-                  age: 84
-                }
+                  age: 84,
+                },
               },
               {
                 name: 'Terra Sawyer',
                 age: 67,
                 friend: {
                   name: 'Lessie Barnes',
-                  age: 36
-                }
-              }
-            ]
+                  age: 36,
+                },
+              },
+            ],
           },
           {
             name: 'Nadia Jacobs',
             age: 35,
             friend: {
               name: 'Pratt Vazquez',
-              age: 36
+              age: 36,
             },
 
             subRows: [
@@ -4281,41 +4281,41 @@ const dataTree = [
                 age: 49,
                 friend: {
                   name: 'Burke Reese',
-                  age: 57
-                }
+                  age: 57,
+                },
               },
               {
                 name: 'Bridget Meadows',
                 age: 74,
                 friend: {
                   name: 'Monroe Sparks',
-                  age: 79
-                }
+                  age: 79,
+                },
               },
               {
                 name: 'Morse Justice',
                 age: 60,
                 friend: {
                   name: 'Lily Petty',
-                  age: 66
-                }
+                  age: 66,
+                },
               },
               {
                 name: 'Mckinney Riley',
                 age: 47,
                 friend: {
                   name: 'Brandy Garrison',
-                  age: 33
-                }
-              }
-            ]
+                  age: 33,
+                },
+              },
+            ],
           },
           {
             name: 'Lilian Horn',
             age: 52,
             friend: {
               name: 'Levy Buck',
-              age: 74
+              age: 74,
             },
 
             subRows: [
@@ -4324,43 +4324,43 @@ const dataTree = [
                 age: 67,
                 friend: {
                   name: 'Young Welch',
-                  age: 52
-                }
+                  age: 52,
+                },
               },
               {
                 name: 'Ingrid Becker',
                 age: 30,
                 friend: {
                   name: 'Adrian Burnett',
-                  age: 41
-                }
+                  age: 41,
+                },
               },
               {
                 name: 'Harding Norman',
                 age: 73,
                 friend: {
                   name: 'Maribel Watson',
-                  age: 71
-                }
+                  age: 71,
+                },
               },
               {
                 name: 'Sparks Mccullough',
                 age: 52,
                 friend: {
                   name: 'Agnes Bowen',
-                  age: 34
-                }
-              }
-            ]
-          }
-        ]
+                  age: 34,
+                },
+              },
+            ],
+          },
+        ],
       },
       {
         name: 'Robin Moreno',
         age: 62,
         friend: {
           name: 'Kristin Warner',
-          age: 24
+          age: 24,
         },
 
         subRows: [
@@ -4369,7 +4369,7 @@ const dataTree = [
             age: 44,
             friend: {
               name: 'Norton Guzman',
-              age: 67
+              age: 67,
             },
 
             subRows: [
@@ -4378,41 +4378,41 @@ const dataTree = [
                 age: 72,
                 friend: {
                   name: 'Ashley Rutledge',
-                  age: 57
-                }
+                  age: 57,
+                },
               },
               {
                 name: 'Gates Potts',
                 age: 28,
                 friend: {
                   name: 'Marsh Whitney',
-                  age: 38
-                }
+                  age: 38,
+                },
               },
               {
                 name: 'Shannon Bean',
                 age: 43,
                 friend: {
                   name: 'Gabriela Heath',
-                  age: 77
-                }
+                  age: 77,
+                },
               },
               {
                 name: 'Lorna Mcmahon',
                 age: 21,
                 friend: {
                   name: 'Leah Pearson',
-                  age: 69
-                }
-              }
-            ]
+                  age: 69,
+                },
+              },
+            ],
           },
           {
             name: 'Randall Nieves',
             age: 22,
             friend: {
               name: 'Juliette Kline',
-              age: 55
+              age: 55,
             },
 
             subRows: [
@@ -4421,41 +4421,41 @@ const dataTree = [
                 age: 66,
                 friend: {
                   name: 'Madden Johnston',
-                  age: 19
-                }
+                  age: 19,
+                },
               },
               {
                 name: 'Michael Contreras',
                 age: 56,
                 friend: {
                   name: 'Sonya Frost',
-                  age: 34
-                }
+                  age: 34,
+                },
               },
               {
                 name: 'Hays Coleman',
                 age: 64,
                 friend: {
                   name: 'Leta Winters',
-                  age: 54
-                }
+                  age: 54,
+                },
               },
               {
                 name: 'Sara Adams',
                 age: 46,
                 friend: {
                   name: 'Jocelyn Paul',
-                  age: 83
-                }
-              }
-            ]
+                  age: 83,
+                },
+              },
+            ],
           },
           {
             name: 'Ivy Harvey',
             age: 78,
             friend: {
               name: 'Esperanza Morgan',
-              age: 65
+              age: 65,
             },
 
             subRows: [
@@ -4464,41 +4464,41 @@ const dataTree = [
                 age: 19,
                 friend: {
                   name: 'Mitzi Alford',
-                  age: 47
-                }
+                  age: 47,
+                },
               },
               {
                 name: 'Jamie Phillips',
                 age: 79,
                 friend: {
                   name: 'Ava Watkins',
-                  age: 69
-                }
+                  age: 69,
+                },
               },
               {
                 name: 'Irene Perry',
                 age: 62,
                 friend: {
                   name: 'Crawford Whitfield',
-                  age: 50
-                }
+                  age: 50,
+                },
               },
               {
                 name: 'Letha Peterson',
                 age: 44,
                 friend: {
                   name: 'Brianna Carver',
-                  age: 51
-                }
-              }
-            ]
+                  age: 51,
+                },
+              },
+            ],
           },
           {
             name: 'Bessie Parrish',
             age: 34,
             friend: {
               name: 'Payne Mcdowell',
-              age: 36
+              age: 36,
             },
 
             subRows: [
@@ -4507,43 +4507,43 @@ const dataTree = [
                 age: 61,
                 friend: {
                   name: 'Imelda Avery',
-                  age: 72
-                }
+                  age: 72,
+                },
               },
               {
                 name: 'Janna Page',
                 age: 41,
                 friend: {
                   name: 'Vicky Webster',
-                  age: 85
-                }
+                  age: 85,
+                },
               },
               {
                 name: 'Gretchen Maynard',
                 age: 68,
                 friend: {
                   name: 'Cora Powers',
-                  age: 20
-                }
+                  age: 20,
+                },
               },
               {
                 name: 'Kelsey Wade',
                 age: 18,
                 friend: {
                   name: 'Mills Crosby',
-                  age: 50
-                }
-              }
-            ]
-          }
-        ]
+                  age: 50,
+                },
+              },
+            ],
+          },
+        ],
       },
       {
         name: 'Schmidt Mullins',
         age: 27,
         friend: {
           name: 'Erma Tucker',
-          age: 52
+          age: 52,
         },
 
         subRows: [
@@ -4552,7 +4552,7 @@ const dataTree = [
             age: 21,
             friend: {
               name: 'Vaughn Chaney',
-              age: 85
+              age: 85,
             },
 
             subRows: [
@@ -4561,41 +4561,41 @@ const dataTree = [
                 age: 56,
                 friend: {
                   name: 'Melody Cobb',
-                  age: 50
-                }
+                  age: 50,
+                },
               },
               {
                 name: 'Robbins Strickland',
                 age: 79,
                 friend: {
                   name: 'Cleveland Stokes',
-                  age: 49
-                }
+                  age: 49,
+                },
               },
               {
                 name: 'Patterson Bernard',
                 age: 43,
                 friend: {
                   name: 'Gamble Knox',
-                  age: 53
-                }
+                  age: 53,
+                },
               },
               {
                 name: 'Rose Hammond',
                 age: 48,
                 friend: {
                   name: 'James Zamora',
-                  age: 39
-                }
-              }
-            ]
+                  age: 39,
+                },
+              },
+            ],
           },
           {
             name: 'Deleon Edwards',
             age: 31,
             friend: {
               name: 'Petty Roach',
-              age: 64
+              age: 64,
             },
 
             subRows: [
@@ -4604,41 +4604,41 @@ const dataTree = [
                 age: 70,
                 friend: {
                   name: 'Miles Shaffer',
-                  age: 25
-                }
+                  age: 25,
+                },
               },
               {
                 name: 'Autumn Wilkins',
                 age: 84,
                 friend: {
                   name: 'Yvette Savage',
-                  age: 44
-                }
+                  age: 44,
+                },
               },
               {
                 name: 'Jillian Richard',
                 age: 74,
                 friend: {
                   name: 'Tabatha Morrison',
-                  age: 32
-                }
+                  age: 32,
+                },
               },
               {
                 name: 'Evangeline Adkins',
                 age: 63,
                 friend: {
                   name: 'Eugenia Wright',
-                  age: 79
-                }
-              }
-            ]
+                  age: 79,
+                },
+              },
+            ],
           },
           {
             name: 'Underwood Tyler',
             age: 44,
             friend: {
               name: 'Irwin Santos',
-              age: 31
+              age: 31,
             },
 
             subRows: [
@@ -4647,41 +4647,41 @@ const dataTree = [
                 age: 81,
                 friend: {
                   name: 'Glenn Hall',
-                  age: 17
-                }
+                  age: 17,
+                },
               },
               {
                 name: 'Alana Charles',
                 age: 41,
                 friend: {
                   name: 'Heidi Greer',
-                  age: 33
-                }
+                  age: 33,
+                },
               },
               {
                 name: 'Noreen Henderson',
                 age: 81,
                 friend: {
                   name: 'Marla Lane',
-                  age: 23
-                }
+                  age: 23,
+                },
               },
               {
                 name: 'Rebecca Ashley',
                 age: 79,
                 friend: {
                   name: 'Cathy Gray',
-                  age: 84
-                }
-              }
-            ]
+                  age: 84,
+                },
+              },
+            ],
           },
           {
             name: 'Chrystal Barron',
             age: 80,
             friend: {
               name: 'Potter Mack',
-              age: 53
+              age: 53,
             },
 
             subRows: [
@@ -4690,45 +4690,45 @@ const dataTree = [
                 age: 81,
                 friend: {
                   name: 'Giles Conner',
-                  age: 64
-                }
+                  age: 64,
+                },
               },
               {
                 name: 'Randi Hester',
                 age: 81,
                 friend: {
                   name: 'Evangelina Hobbs',
-                  age: 85
-                }
+                  age: 85,
+                },
               },
               {
                 name: 'Earlene Bell',
                 age: 20,
                 friend: {
                   name: 'Dorthy Franco',
-                  age: 21
-                }
+                  age: 21,
+                },
               },
               {
                 name: 'Lila Smith',
                 age: 51,
                 friend: {
                   name: 'Stone Marsh',
-                  age: 58
-                }
-              }
-            ]
-          }
-        ]
-      }
-    ]
+                  age: 58,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     name: 'Katy Bradshaw',
     age: 74,
     friend: {
       name: 'Griffin Carpenter',
-      age: 39
+      age: 39,
     },
 
     subRows: [
@@ -4737,7 +4737,7 @@ const dataTree = [
         age: 36,
         friend: {
           name: 'Esther Mendoza',
-          age: 77
+          age: 77,
         },
 
         subRows: [
@@ -4746,7 +4746,7 @@ const dataTree = [
             age: 47,
             friend: {
               name: 'Georgette Osborne',
-              age: 74
+              age: 74,
             },
 
             subRows: [
@@ -4755,41 +4755,41 @@ const dataTree = [
                 age: 35,
                 friend: {
                   name: 'Ruth Pittman',
-                  age: 25
-                }
+                  age: 25,
+                },
               },
               {
                 name: 'Herring Flores',
                 age: 68,
                 friend: {
                   name: 'Kirkland Suarez',
-                  age: 76
-                }
+                  age: 76,
+                },
               },
               {
                 name: 'Allen Kidd',
                 age: 82,
                 friend: {
                   name: 'Mclaughlin Langley',
-                  age: 78
-                }
+                  age: 78,
+                },
               },
               {
                 name: 'Selma Kaufman',
                 age: 62,
                 friend: {
                   name: 'Hughes Vang',
-                  age: 80
-                }
-              }
-            ]
+                  age: 80,
+                },
+              },
+            ],
           },
           {
             name: 'Rios Moran',
             age: 16,
             friend: {
               name: 'Alexis Todd',
-              age: 41
+              age: 41,
             },
 
             subRows: [
@@ -4798,41 +4798,41 @@ const dataTree = [
                 age: 18,
                 friend: {
                   name: 'Medina Abbott',
-                  age: 50
-                }
+                  age: 50,
+                },
               },
               {
                 name: 'Flores Ortiz',
                 age: 24,
                 friend: {
                   name: 'Latonya Lara',
-                  age: 57
-                }
+                  age: 57,
+                },
               },
               {
                 name: 'Fanny Hernandez',
                 age: 77,
                 friend: {
                   name: 'Mays Kim',
-                  age: 42
-                }
+                  age: 42,
+                },
               },
               {
                 name: 'Lillian Moore',
                 age: 26,
                 friend: {
                   name: 'Tania Rivas',
-                  age: 18
-                }
-              }
-            ]
+                  age: 18,
+                },
+              },
+            ],
           },
           {
             name: 'Anderson Pena',
             age: 23,
             friend: {
               name: 'Ortega Rich',
-              age: 62
+              age: 62,
             },
 
             subRows: [
@@ -4841,41 +4841,41 @@ const dataTree = [
                 age: 16,
                 friend: {
                   name: 'Lottie Henson',
-                  age: 85
-                }
+                  age: 85,
+                },
               },
               {
                 name: 'Margret Ferguson',
                 age: 45,
                 friend: {
                   name: 'Rosalie Anderson',
-                  age: 83
-                }
+                  age: 83,
+                },
               },
               {
                 name: 'Hewitt Glass',
                 age: 73,
                 friend: {
                   name: 'Carlson French',
-                  age: 39
-                }
+                  age: 39,
+                },
               },
               {
                 name: 'Alyson Rosa',
                 age: 85,
                 friend: {
                   name: 'Vincent Allison',
-                  age: 83
-                }
-              }
-            ]
+                  age: 83,
+                },
+              },
+            ],
           },
           {
             name: 'Burnett Nichols',
             age: 74,
             friend: {
               name: 'Mckay Banks',
-              age: 76
+              age: 76,
             },
 
             subRows: [
@@ -4884,43 +4884,43 @@ const dataTree = [
                 age: 59,
                 friend: {
                   name: 'Johnnie Bishop',
-                  age: 64
-                }
+                  age: 64,
+                },
               },
               {
                 name: 'Alicia Hicks',
                 age: 46,
                 friend: {
                   name: 'Clarice Palmer',
-                  age: 75
-                }
+                  age: 75,
+                },
               },
               {
                 name: 'Fry Maldonado',
                 age: 28,
                 friend: {
                   name: 'Moran Acosta',
-                  age: 78
-                }
+                  age: 78,
+                },
               },
               {
                 name: 'Rowena Webb',
                 age: 79,
                 friend: {
                   name: 'Gaines Poole',
-                  age: 59
-                }
-              }
-            ]
-          }
-        ]
+                  age: 59,
+                },
+              },
+            ],
+          },
+        ],
       },
       {
         name: 'Sanchez Duran',
         age: 19,
         friend: {
           name: 'Myers Brennan',
-          age: 70
+          age: 70,
         },
 
         subRows: [
@@ -4929,7 +4929,7 @@ const dataTree = [
             age: 57,
             friend: {
               name: 'Lucile Chapman',
-              age: 32
+              age: 32,
             },
 
             subRows: [
@@ -4938,41 +4938,41 @@ const dataTree = [
                 age: 73,
                 friend: {
                   name: 'Sharpe Dyer',
-                  age: 33
-                }
+                  age: 33,
+                },
               },
               {
                 name: 'Ilene Hampton',
                 age: 29,
                 friend: {
                   name: 'Rogers Mckenzie',
-                  age: 70
-                }
+                  age: 70,
+                },
               },
               {
                 name: 'Sally Walsh',
                 age: 25,
                 friend: {
                   name: 'Huber Jones',
-                  age: 55
-                }
+                  age: 55,
+                },
               },
               {
                 name: 'Jami Solomon',
                 age: 68,
                 friend: {
                   name: 'Mara Haley',
-                  age: 19
-                }
-              }
-            ]
+                  age: 19,
+                },
+              },
+            ],
           },
           {
             name: 'Randolph Casey',
             age: 54,
             friend: {
               name: 'Norman Olsen',
-              age: 82
+              age: 82,
             },
 
             subRows: [
@@ -4981,41 +4981,41 @@ const dataTree = [
                 age: 75,
                 friend: {
                   name: 'Kari Holcomb',
-                  age: 77
-                }
+                  age: 77,
+                },
               },
               {
                 name: 'Delores Hahn',
                 age: 47,
                 friend: {
                   name: 'Conley Hoover',
-                  age: 84
-                }
+                  age: 84,
+                },
               },
               {
                 name: 'Bridgette Rowland',
                 age: 32,
                 friend: {
                   name: 'Wheeler Bates',
-                  age: 63
-                }
+                  age: 63,
+                },
               },
               {
                 name: 'Harriet Orr',
                 age: 82,
                 friend: {
                   name: 'Carroll Navarro',
-                  age: 34
-                }
-              }
-            ]
+                  age: 34,
+                },
+              },
+            ],
           },
           {
             name: 'Queen Cline',
             age: 55,
             friend: {
               name: 'Norma Fowler',
-              age: 70
+              age: 70,
             },
 
             subRows: [
@@ -5024,41 +5024,41 @@ const dataTree = [
                 age: 62,
                 friend: {
                   name: 'Adams Bradley',
-                  age: 38
-                }
+                  age: 38,
+                },
               },
               {
                 name: 'Debra Moses',
                 age: 79,
                 friend: {
                   name: 'Rivas Maxwell',
-                  age: 24
-                }
+                  age: 24,
+                },
               },
               {
                 name: 'Bradley Bauer',
                 age: 29,
                 friend: {
                   name: 'Ida Park',
-                  age: 72
-                }
+                  age: 72,
+                },
               },
               {
                 name: 'Church Wilson',
                 age: 24,
                 friend: {
                   name: 'Krystal Harmon',
-                  age: 81
-                }
-              }
-            ]
+                  age: 81,
+                },
+              },
+            ],
           },
           {
             name: 'Kathrine Greene',
             age: 81,
             friend: {
               name: 'Carey Cleveland',
-              age: 43
+              age: 43,
             },
 
             subRows: [
@@ -5067,43 +5067,43 @@ const dataTree = [
                 age: 33,
                 friend: {
                   name: 'Polly Lucas',
-                  age: 43
-                }
+                  age: 43,
+                },
               },
               {
                 name: 'Jan Austin',
                 age: 57,
                 friend: {
                   name: 'Angelina Jefferson',
-                  age: 18
-                }
+                  age: 18,
+                },
               },
               {
                 name: 'Jayne Rojas',
                 age: 78,
                 friend: {
                   name: 'Rae Morales',
-                  age: 50
-                }
+                  age: 50,
+                },
               },
               {
                 name: 'Coffey Hart',
                 age: 19,
                 friend: {
                   name: 'Joyce Jimenez',
-                  age: 19
-                }
-              }
-            ]
-          }
-        ]
+                  age: 19,
+                },
+              },
+            ],
+          },
+        ],
       },
       {
         name: 'Teresa Sheppard',
         age: 41,
         friend: {
           name: 'Crane Gordon',
-          age: 22
+          age: 22,
         },
 
         subRows: [
@@ -5112,7 +5112,7 @@ const dataTree = [
             age: 59,
             friend: {
               name: 'Margaret Miranda',
-              age: 36
+              age: 36,
             },
 
             subRows: [
@@ -5121,41 +5121,41 @@ const dataTree = [
                 age: 69,
                 friend: {
                   name: 'Hart Franklin',
-                  age: 46
-                }
+                  age: 46,
+                },
               },
               {
                 name: 'Molina Baird',
                 age: 63,
                 friend: {
                   name: 'Maryellen Hill',
-                  age: 19
-                }
+                  age: 19,
+                },
               },
               {
                 name: 'Merrill Estes',
                 age: 35,
                 friend: {
                   name: 'Deanne Pace',
-                  age: 65
-                }
+                  age: 65,
+                },
               },
               {
                 name: 'Martinez Elliott',
                 age: 61,
                 friend: {
                   name: 'Tia Alston',
-                  age: 59
-                }
-              }
-            ]
+                  age: 59,
+                },
+              },
+            ],
           },
           {
             name: 'Janice Dale',
             age: 47,
             friend: {
               name: 'Glass Figueroa',
-              age: 36
+              age: 36,
             },
 
             subRows: [
@@ -5164,41 +5164,41 @@ const dataTree = [
                 age: 38,
                 friend: {
                   name: 'Lorena Holloway',
-                  age: 69
-                }
+                  age: 69,
+                },
               },
               {
                 name: 'Lilly Sharp',
                 age: 17,
                 friend: {
                   name: 'Allison Kelley',
-                  age: 81
-                }
+                  age: 81,
+                },
               },
               {
                 name: 'Amanda Irwin',
                 age: 59,
                 friend: {
                   name: 'Mandy Randall',
-                  age: 28
-                }
+                  age: 28,
+                },
               },
               {
                 name: 'Lynch Stevens',
                 age: 62,
                 friend: {
                   name: 'Larson Oconnor',
-                  age: 58
-                }
-              }
-            ]
+                  age: 58,
+                },
+              },
+            ],
           },
           {
             name: 'Wilda Gilliam',
             age: 41,
             friend: {
               name: 'Brady Williamson',
-              age: 61
+              age: 61,
             },
 
             subRows: [
@@ -5207,41 +5207,41 @@ const dataTree = [
                 age: 40,
                 friend: {
                   name: 'Rachel Juarez',
-                  age: 23
-                }
+                  age: 23,
+                },
               },
               {
                 name: 'Mullins Rodriquez',
                 age: 19,
                 friend: {
                   name: 'Estelle Kirby',
-                  age: 59
-                }
+                  age: 59,
+                },
               },
               {
                 name: 'Maxwell Sampson',
                 age: 42,
                 friend: {
                   name: 'Estela Gallegos',
-                  age: 47
-                }
+                  age: 47,
+                },
               },
               {
                 name: 'Vance Stewart',
                 age: 77,
                 friend: {
                   name: 'Higgins Rollins',
-                  age: 41
-                }
-              }
-            ]
+                  age: 41,
+                },
+              },
+            ],
           },
           {
             name: 'French Trevino',
             age: 33,
             friend: {
               name: 'Rich Romero',
-              age: 78
+              age: 78,
             },
 
             subRows: [
@@ -5250,43 +5250,43 @@ const dataTree = [
                 age: 62,
                 friend: {
                   name: 'Terrie Mccray',
-                  age: 41
-                }
+                  age: 41,
+                },
               },
               {
                 name: 'Tanner Christensen',
                 age: 63,
                 friend: {
                   name: 'Garrett Blair',
-                  age: 34
-                }
+                  age: 34,
+                },
               },
               {
                 name: 'Sasha Mitchell',
                 age: 22,
                 friend: {
                   name: 'Gale Stein',
-                  age: 78
-                }
+                  age: 78,
+                },
               },
               {
                 name: 'Ann Blanchard',
                 age: 66,
                 friend: {
                   name: 'Aurelia Bonner',
-                  age: 84
-                }
-              }
-            ]
-          }
-        ]
+                  age: 84,
+                },
+              },
+            ],
+          },
+        ],
       },
       {
         name: 'Carol Perez',
         age: 66,
         friend: {
           name: 'Cheri Valenzuela',
-          age: 80
+          age: 80,
         },
 
         subRows: [
@@ -5295,7 +5295,7 @@ const dataTree = [
             age: 69,
             friend: {
               name: 'Amber Reynolds',
-              age: 52
+              age: 52,
             },
 
             subRows: [
@@ -5304,41 +5304,41 @@ const dataTree = [
                 age: 18,
                 friend: {
                   name: 'Dona Kinney',
-                  age: 66
-                }
+                  age: 66,
+                },
               },
               {
                 name: 'Lawanda Nguyen',
                 age: 27,
                 friend: {
                   name: 'Karen Hancock',
-                  age: 36
-                }
+                  age: 36,
+                },
               },
               {
                 name: 'Sherrie Serrano',
                 age: 27,
                 friend: {
                   name: 'Stacie Cardenas',
-                  age: 43
-                }
+                  age: 43,
+                },
               },
               {
                 name: 'Chavez Holmes',
                 age: 48,
                 friend: {
                   name: 'Jeannette Hopkins',
-                  age: 45
-                }
-              }
-            ]
+                  age: 45,
+                },
+              },
+            ],
           },
           {
             name: 'Jackie Chase',
             age: 34,
             friend: {
               name: 'Ollie Baker',
-              age: 27
+              age: 27,
             },
 
             subRows: [
@@ -5347,41 +5347,41 @@ const dataTree = [
                 age: 74,
                 friend: {
                   name: 'Katie Knight',
-                  age: 59
-                }
+                  age: 59,
+                },
               },
               {
                 name: 'Gutierrez Mcintyre',
                 age: 30,
                 friend: {
                   name: 'Good Patterson',
-                  age: 75
-                }
+                  age: 75,
+                },
               },
               {
                 name: 'Jody Mann',
                 age: 48,
                 friend: {
                   name: 'Ellis Jenkins',
-                  age: 70
-                }
+                  age: 70,
+                },
               },
               {
                 name: 'Edith Hubbard',
                 age: 38,
                 friend: {
                   name: 'Webb Kent',
-                  age: 72
-                }
-              }
-            ]
+                  age: 72,
+                },
+              },
+            ],
           },
           {
             name: 'Wendi Norris',
             age: 48,
             friend: {
               name: 'Whitfield House',
-              age: 20
+              age: 20,
             },
 
             subRows: [
@@ -5390,41 +5390,41 @@ const dataTree = [
                 age: 33,
                 friend: {
                   name: 'Mclean Stevenson',
-                  age: 65
-                }
+                  age: 65,
+                },
               },
               {
                 name: 'Maldonado Rose',
                 age: 84,
                 friend: {
                   name: 'Cooper Cash',
-                  age: 64
-                }
+                  age: 64,
+                },
               },
               {
                 name: 'Osborne Graham',
                 age: 18,
                 friend: {
                   name: 'Peck Guthrie',
-                  age: 76
-                }
+                  age: 76,
+                },
               },
               {
                 name: 'Drake Hartman',
                 age: 41,
                 friend: {
                   name: 'Stanton Durham',
-                  age: 21
-                }
-              }
-            ]
+                  age: 21,
+                },
+              },
+            ],
           },
           {
             name: 'Ferrell Baldwin',
             age: 26,
             friend: {
               name: 'Mcgowan Waller',
-              age: 57
+              age: 57,
             },
 
             subRows: [
@@ -5433,37 +5433,37 @@ const dataTree = [
                 age: 55,
                 friend: {
                   name: 'Meagan Mcintosh',
-                  age: 44
-                }
+                  age: 44,
+                },
               },
               {
                 name: 'Hamilton Hooper',
                 age: 40,
                 friend: {
                   name: 'Welch Harris',
-                  age: 29
-                }
+                  age: 29,
+                },
               },
               {
                 name: 'Schneider Dunlap',
                 age: 53,
                 friend: {
                   name: 'Darla Wallace',
-                  age: 18
-                }
+                  age: 18,
+                },
               },
               {
                 name: 'Marian Hess',
                 age: 69,
                 friend: {
                   name: 'Fields Wilcox',
-                  age: 22
-                }
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+                  age: 22,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];

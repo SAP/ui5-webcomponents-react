@@ -14,7 +14,7 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
 } from 'recharts';
 import type { YAxisProps } from 'recharts';
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
@@ -40,12 +40,12 @@ import { YAxisTicks } from '../../internal/YAxisTicks.js';
 import { BarChartPlaceholder } from './Placeholder.js';
 
 const dimensionDefaults = {
-  formatter: defaultFormatter
+  formatter: defaultFormatter,
 };
 
 const measureDefaults = {
   formatter: defaultFormatter,
-  opacity: 1
+  opacity: 1,
 };
 
 const valueAccessor =
@@ -162,7 +162,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     yAxisConfig: {},
     xAxisConfig: {},
     secondXAxisConfig: {},
-    ...props.chartConfig
+    ...props.chartConfig,
   };
   const referenceLine = chartConfig.referenceLine;
 
@@ -170,7 +170,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     props.dimensions,
     props.measures,
     dimensionDefaults,
-    measureDefaults
+    measureDefaults,
   );
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
@@ -178,7 +178,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
   const primaryDimension = dimensions[0];
   const { primaryMeasure, secondaryMeasure } = resolvePrimaryAndSecondaryMeasures(
     measures,
-    chartConfig?.secondYAxis?.dataKey
+    chartConfig?.secondYAxis?.dataKey,
   );
 
   const dataKeys = measures.map(({ accessor }) => accessor);
@@ -202,12 +202,12 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
               .find((key) => payload[key] === value),
             value,
             payload: payload.payload,
-            dataIndex: i
-          })
+            dataIndex: i,
+          }),
         );
       }
     },
-    [onDataPointClick]
+    [onDataPointClick],
   );
 
   const onClickInternal = useOnClickInternal(onClick);
@@ -271,18 +271,18 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
           <XAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             axisLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
             tick={
               <XAxisTicks
                 config={secondaryMeasure}
                 secondYAxisConfig={{
-                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
               />
             }
             tickLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore

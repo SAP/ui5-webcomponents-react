@@ -24,5 +24,5 @@ export enum AnalyticalTableSubComponentsBehavior {
    *
    * @since 1.23.0
    */
-  IncludeHeightExpandable = 'IncludeHeightExpandable'
+  IncludeHeightExpandable = 'IncludeHeightExpandable',
 }

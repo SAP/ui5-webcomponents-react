@@ -224,11 +224,11 @@ const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
     'minDate',
     'primaryCalendarType',
     'secondaryCalendarType',
-    'selectionMode'
+    'selectionMode',
   ],
   ['hideWeekNumbers'],
   ['calendarLegend', 'specialDates'],
-  ['selection-change']
+  ['selection-change'],
 );
 
 Calendar.displayName = 'Calendar';

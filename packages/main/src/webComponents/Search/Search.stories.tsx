@@ -13,9 +13,9 @@ const meta = {
     illustration: { control: { disable: true } },
     scopes: { control: { disable: true } },
     messageArea: { control: { disable: true } },
-    action: { control: { disable: true } }
+    action: { control: { disable: true } },
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof Search>;
 
 export default meta;
@@ -29,7 +29,7 @@ const scopeData = [
   { name: 'Log work', scope: 'apps' },
   { name: 'Manage Products', scope: 'apps' },
   { name: 'Mobile Phones', scope: 'products' },
-  { name: 'Tablet', scope: 'products' }
+  { name: 'Tablet', scope: 'products' },
 ];
 
 export const WithScopeAndItems: Story = {
@@ -42,7 +42,7 @@ export const WithScopeAndItems: Story = {
         <SearchScope text="Apps" />
         <SearchScope text="Products" />
       </>
-    )
+    ),
   },
   render(args) {
     const [filterData, setFilterData] = useState(scopeData);
@@ -56,7 +56,7 @@ export const WithScopeAndItems: Story = {
         setFilterData(
           scopeData.filter((item) => {
             return item.scope === scope.text.toLowerCase();
-          })
+          }),
         );
       }
     };
@@ -68,5 +68,5 @@ export const WithScopeAndItems: Story = {
         })}
       </Search>
     );
-  }
+  },
 };

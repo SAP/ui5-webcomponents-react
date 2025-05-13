@@ -38,7 +38,7 @@ import {
   Text,
   Title,
   Toolbar,
-  ToolbarButton
+  ToolbarButton,
 } from '../../index.js';
 import { ObjectPage } from './index.js';
 
@@ -51,7 +51,7 @@ const meta = {
     footerArea: { control: { disable: true } },
     children: { control: { disable: true } },
     placeholder: { control: { disable: true } },
-    accessibilityAttributes: { table: { category: 'Accessibility props' } }
+    accessibilityAttributes: { table: { category: 'Accessibility props' } },
   },
   args: {
     mode: ObjectPageMode.Default,
@@ -124,8 +124,8 @@ const meta = {
           </FlexBox>
         </FlexBox>
       </ObjectPageHeader>
-    )
-  }
+    ),
+  },
 } satisfies Meta<typeof ObjectPage>;
 
 export default meta;
@@ -292,7 +292,7 @@ export const Default: Story = {
         </ObjectPageSection>
       </ObjectPage>
     );
-  }
+  },
 };
 
 export const WithIllustratedMessage: Story = {
@@ -307,7 +307,7 @@ export const WithIllustratedMessage: Story = {
         placeholder={<IllustratedMessage name={IllustrationMessageType.UnableToLoad} />}
       />
     );
-  }
+  },
 };
 
 export const SectionWithCustomHeader: Story = {
@@ -350,7 +350,7 @@ export const SectionWithCustomHeader: Story = {
         </ObjectPageSection>
       </ObjectPage>
     );
-  }
+  },
 };
 
 export const FullScreenSingleSection: Story = {
@@ -373,7 +373,7 @@ export const FullScreenSingleSection: Story = {
         </ObjectPageSection>
       </ObjectPage>
     );
-  }
+  },
 };
 
 export const LegacyToolbarSupport: Story = {
@@ -432,5 +432,5 @@ export const LegacyToolbarSupport: Story = {
         </ObjectPageSection>
       </ObjectPage>
     );
-  }
+  },
 };

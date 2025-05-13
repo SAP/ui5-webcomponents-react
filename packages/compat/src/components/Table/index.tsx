@@ -3,7 +3,7 @@
 import '@ui5/webcomponents-compat/dist/Table.js';
 import type {
   TablePopinChangeEventDetail,
-  TableSelectionChangeEventDetail
+  TableSelectionChangeEventDetail,
 } from '@ui5/webcomponents-compat/dist/Table.js';
 import type { TableRowClickEventDetail } from '@ui5/webcomponents-compat/dist/TableRow.js';
 import type TableGrowingMode from '@ui5/webcomponents-compat/dist/types/TableGrowingMode.js';
@@ -277,11 +277,11 @@ const Table = withWebComponent<TablePropTypes, TableDomRef>(
     'growingButtonSubtext',
     'growingButtonText',
     'mode',
-    'noDataText'
+    'noDataText',
   ],
   ['busy', 'hideNoData', 'stickyColumnHeader'],
   ['columns'],
-  ['load-more', 'popin-change', 'row-click', 'selection-change']
+  ['load-more', 'popin-change', 'row-click', 'selection-change'],
 );
 
 Table.displayName = 'Table';

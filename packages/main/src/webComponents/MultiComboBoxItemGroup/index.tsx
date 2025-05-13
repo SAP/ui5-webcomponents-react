@@ -84,7 +84,7 @@ const MultiComboBoxItemGroup = withWebComponent<MultiComboBoxItemGroupPropTypes,
   ['headerAccessibleName', 'headerText'],
   [],
   ['header'],
-  ['move-over', 'move']
+  ['move-over', 'move'],
 );
 
 MultiComboBoxItemGroup.displayName = 'MultiComboBoxItemGroup';

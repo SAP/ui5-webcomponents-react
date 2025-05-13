@@ -116,7 +116,7 @@ const UserSettingsDialog = withWebComponent<UserSettingsDialogPropTypes, UserSet
   ['headerText'],
   ['open', 'showSearchField'],
   ['fixedItems'],
-  ['before-close', 'close', 'open', 'selection-change']
+  ['before-close', 'close', 'open', 'selection-change'],
 );
 
 UserSettingsDialog.displayName = 'UserSettingsDialog';

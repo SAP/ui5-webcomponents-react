@@ -10,7 +10,7 @@ describe('FlexBox', () => {
       cy.mount(
         <FlexBox justifyContent={val} data-testid="flexbox">
           <span>Test 1</span>
-        </FlexBox>
+        </FlexBox>,
       );
       let cssVal;
       switch (val) {
@@ -32,7 +32,7 @@ describe('FlexBox', () => {
       cy.mount(
         <FlexBox alignItems={val} data-testid="flexbox">
           <span>Test 1</span>
-        </FlexBox>
+        </FlexBox>,
       );
       let cssVal;
       switch (val) {
@@ -54,7 +54,7 @@ describe('FlexBox', () => {
       cy.mount(
         <FlexBox direction={val} data-testid="flexbox">
           <span>Test 1</span>
-        </FlexBox>
+        </FlexBox>,
       );
       const cssVal = camelToKebabCase(lowercaseFirstLetter(val));
       cy.findByTestId('flexbox').should('have.css', 'flex-direction', cssVal);
@@ -66,7 +66,7 @@ describe('FlexBox', () => {
       cy.mount(
         <FlexBox wrap={val} data-testid="flexbox">
           <span>Test 1</span>
-        </FlexBox>
+        </FlexBox>,
       );
       const cssVal = camelToKebabCase(lowercaseFirstLetter(val));
       cy.findByTestId('flexbox').should('have.css', 'flex-wrap', cssVal === 'no-wrap' ? 'nowrap' : cssVal);
@@ -77,7 +77,7 @@ describe('FlexBox', () => {
     cy.mount(
       <FlexBox data-testid="flexbox">
         <span>Test 1</span>
-      </FlexBox>
+      </FlexBox>,
     );
     cy.findByTestId('flexbox').should('have.css', 'display', 'flex');
 
@@ -86,7 +86,7 @@ describe('FlexBox', () => {
         <FlexBox data-testid="flexbox" fitContainer displayInline>
           <span>Test 1</span>
         </FlexBox>
-      </div>
+      </div>,
     );
     cy.findByTestId('flexbox')
       .should('have.css', 'display', 'inline-flex')
@@ -101,7 +101,7 @@ describe('FlexBox', () => {
         <div>Item 2</div>
         <div>Item 3</div>
         <div>Item 4</div>
-      </FlexBox>
+      </FlexBox>,
     );
     cy.findByTestId('fb').should('have.css', 'gap', '1337px');
   });

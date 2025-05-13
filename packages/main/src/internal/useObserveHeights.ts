@@ -13,13 +13,13 @@ export const useObserveHeights = (
     noHeader,
     fixedHeader = false,
     scrollTimeout = { current: 0 },
-    preserveHeaderStateOnScroll
+    preserveHeaderStateOnScroll,
   }: {
     noHeader: boolean;
     fixedHeader?: boolean;
     scrollTimeout?: MutableRefObject<number>;
     preserveHeaderStateOnScroll?: boolean;
-  }
+  },
 ) => {
   const [topHeaderHeight, setTopHeaderHeight] = useState(0);
   const [headerContentHeight, setHeaderContentHeight] = useState(0);
@@ -46,7 +46,7 @@ export const useObserveHeights = (
         setHeaderCollapsed(false);
       }
     },
-    [headerContentHeight, topHeaderHeight, headerCollapsed]
+    [headerContentHeight, topHeaderHeight, headerCollapsed],
   );
 
   useEffect(() => {

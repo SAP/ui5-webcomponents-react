@@ -18,7 +18,7 @@ import {
   TabContainer,
   TextArea,
   Toolbar,
-  ToolbarButton
+  ToolbarButton,
 } from '@ui5/webcomponents-react';
 
 describe('UI5 Web Components - Child Commands', () => {
@@ -31,7 +31,7 @@ describe('UI5 Web Components - Child Commands', () => {
         <Tab data-testId="tab2" text={'Tab 2'}>
           <div>Tab 2</div>
         </Tab>
-      </TabContainer>
+      </TabContainer>,
     );
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Tab 2').click();
@@ -59,7 +59,7 @@ describe('UI5 Web Components - Child Commands', () => {
         >
           Tab 2
         </Tab>
-      </TabContainer>
+      </TabContainer>,
     );
     cy.findByTestId('tabContainer').findUi5TabOpenPopoverButtonByText('Tab 2').click();
     cy.findByTestId('tabContainer').shadow().get('[ui5-list]').findByText('Tab 2.2').should('be.visible');
@@ -89,7 +89,7 @@ describe('UI5 Web Components - Child Commands', () => {
       <>
         <div data-testid="div" />
         <CheckBox data-testId="checkbox" />
-      </>
+      </>,
     );
 
     cy.findByTestId('checkbox').toggleUi5Checkbox();
@@ -111,7 +111,7 @@ describe('UI5 Web Components - Child Commands', () => {
       <>
         <RadioButton data-testId="a" text="A" name="Group1" /> <RadioButton text="B" name="Group1" />{' '}
         <RadioButton data-testId="c" text="C" name="Group1" />
-      </>
+      </>,
     );
 
     cy.findByTestId('a').clickUi5RadioButton();
@@ -130,7 +130,7 @@ describe('UI5 Web Components - Child Commands', () => {
           <ListItemStandard data-testid="li2">ListItemStandard2</ListItemStandard>
           <ListItemCustom data-testid="li3">ListItemCustom</ListItemCustom>
         </List>
-      </>
+      </>,
     );
     cy.clickUi5ListItemByText('ListItemStandard');
     cy.clickUi5ListItemByText('ListItemStandard2');
@@ -156,7 +156,7 @@ describe('UI5 Web Components - Child Commands', () => {
         <ComboBoxItem text="Item 1" />
         <ComboBoxItem text="Item 2" />
         <ComboBoxItem text="Other item 1" />
-      </ComboBox>
+      </ComboBox>,
     );
     cy.get(`[data-testid="CB"]`).typeIntoUi5InputWithDelay('i');
     cy.get('ui5-responsive-popover').should('have.attr', 'open');
@@ -167,7 +167,7 @@ describe('UI5 Web Components - Child Commands', () => {
       <MultiComboBox data-testid="MCB" key={1}>
         <MultiComboBoxItem text="Item 1"></MultiComboBoxItem>
         <MultiComboBoxItem text="Item 2"></MultiComboBoxItem>
-      </MultiComboBox>
+      </MultiComboBox>,
     );
     cy.get(`[data-testid="MCB"]`).typeIntoUi5InputWithDelay('i');
     cy.get('ui5-responsive-popover').should('have.attr', 'open');
@@ -178,7 +178,7 @@ describe('UI5 Web Components - Child Commands', () => {
       <Input showSuggestions data-testid="Input" key={2}>
         <SuggestionItem text="Item 1" />
         <SuggestionItem text="Item 2" />
-      </Input>
+      </Input>,
     );
     cy.get(`[data-testid="Input"]`).typeIntoUi5InputWithDelay('i');
     cy.get('ui5-responsive-popover').should('have.attr', 'open');
@@ -193,7 +193,7 @@ describe('UI5 Web Components - Child Commands', () => {
         <Option>Test3</Option>
         <Option data-testid="4">Test4</Option>
         <Option data-testid="5">Test5</Option>
-      </Select>
+      </Select>,
     );
     cy.get('[ui5-select]').click();
     cy.get('[ui5-select]').clickUi5SelectOptionByText('Test2');
@@ -232,7 +232,7 @@ describe('UI5 Web Components - Child Commands', () => {
       <MultiComboBox key="ui5-multi-combobox" onSelectionChange={handler}>
         {...new Array(30).fill(<MultiComboBoxItem text="Item" />)}
         <MultiComboBoxItem text={selectItemText} />
-      </MultiComboBox>
+      </MultiComboBox>,
     ];
 
     components.forEach((component) => {
@@ -279,7 +279,7 @@ describe('UI5 Web Components - Child Commands', () => {
       <MultiComboBox key="ui5-multi-combobox" onSelectionChange={handler}>
         {...new Array(5).fill(<MultiComboBoxItem text="Item" />)}
         <MultiComboBoxItem text={selectItemText} data-testid="selectItem" />
-      </MultiComboBox>
+      </MultiComboBox>,
     ];
 
     components.forEach((component) => {
@@ -315,7 +315,7 @@ describe('UI5 Web Components - Child Commands', () => {
         <Toolbar>
           <ToolbarButton text="TBB4" style={{ display: 'none' }} />
         </Toolbar>
-      </>
+      </>,
     );
 
     cy.findToolbarButtonByText('TBB1').should('be.visible');

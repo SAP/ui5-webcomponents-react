@@ -18,12 +18,12 @@ const TimelineChartRowLabels = ({ width, height, rowHeight, dataset }: TimelineC
   const rowLabels = dataset.map((data) => data.label);
   const style: CSSProperties = {
     width: width,
-    height: `${rowLabels.length * rowHeight}px`
+    height: `${rowLabels.length * rowHeight}px`,
   };
 
   const itemStyle: CSSProperties = {
     height: `${rowHeight}px`,
-    lineHeight: `${rowHeight}px`
+    lineHeight: `${rowHeight}px`,
   };
 
   return (
@@ -65,7 +65,7 @@ const TimelineChartColumnLabel = ({
   columnLabels,
   start,
   unscaledWidth,
-  valueFormat
+  valueFormat,
 }: TimelineChartColumnLabelProps) => {
   useStylesheet(styleData, TimelineChartColumnLabel.displayName);
 
@@ -81,7 +81,7 @@ const TimelineChartColumnLabel = ({
 
   const style: CSSProperties = {
     width: width,
-    height: height
+    height: height,
   };
 
   const halfHeaderHeight = 0.5 * height;
@@ -93,7 +93,7 @@ const TimelineChartColumnLabel = ({
         className={classNames.columnTitlePlaceHolder}
         style={{
           height: `${halfHeaderHeight}px`,
-          lineHeight: `${halfHeaderHeight}px`
+          lineHeight: `${halfHeaderHeight}px`,
         }}
       ></div>
       {isDiscrete ? (
@@ -102,7 +102,7 @@ const TimelineChartColumnLabel = ({
           style={{
             height: `${halfHeaderHeight}px`,
             gridTemplateColumns: `repeat(${totalDuration}, 1fr)`,
-            lineHeight: `${halfHeaderHeight}px`
+            lineHeight: `${halfHeaderHeight}px`,
           }}
         >
           {labelArray.map((label, index) => {
@@ -141,7 +141,7 @@ const TimelineChartColumnLabel = ({
               TICK_LENGTH,
               verticalSegmentWidth,
               SPACING,
-              valueFormat
+              valueFormat,
             )}
           </>
         </svg>
@@ -160,7 +160,7 @@ const generateIntermediateTicks = (
   tickLength: number,
   verticalSegmentWidth: number,
   spacing: number,
-  valueFormat?: (value: number) => string
+  valueFormat?: (value: number) => string,
 ): ReactElement => {
   let covered = verticalSegmentWidth;
   let remaining = width;
@@ -177,7 +177,7 @@ const generateIntermediateTicks = (
         stroke={ThemingParameters.sapList_BorderColor}
         strokeWidth="2"
         key={`${covered}tickline`}
-      />
+      />,
     );
     const val = (covered / width) * totalDuration;
     textArray.push(
@@ -190,7 +190,7 @@ const generateIntermediateTicks = (
         key={`${covered}tickval`}
       >
         {valueFormat != null ? valueFormat(start + val) : start + val}
-      </text>
+      </text>,
     );
     covered += verticalSegmentWidth;
     remaining -= verticalSegmentWidth;
@@ -215,7 +215,7 @@ const TimelineChartRowTitle = ({ width, height, rowTitle }: TimelineChartRowTitl
   const style: CSSProperties = {
     width: width,
     height: height,
-    color: ThemingParameters.sapTitleColor
+    color: ThemingParameters.sapTitleColor,
   };
   return (
     <div className={classNames.onlyOutline} style={style}>

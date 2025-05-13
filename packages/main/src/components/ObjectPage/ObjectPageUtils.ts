@@ -14,6 +14,6 @@ export const getSectionById = (sections, id) => {
 
 export const getSectionElementById = (objectPage: HTMLDivElement, isSubSection: boolean, id: string | undefined) => {
   return objectPage?.querySelector<HTMLElement>(
-    `#${isSubSection ? 'ObjectPageSubSection' : 'ObjectPageSection'}-${CSS.escape(id)}`
+    `#${isSubSection ? 'ObjectPageSubSection' : 'ObjectPageSection'}-${CSS.escape(id)}`,
   );
 };

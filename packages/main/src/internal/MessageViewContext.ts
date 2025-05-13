@@ -8,5 +8,5 @@ interface MessageViewContextType {
 }
 
 export const MessageViewContext = createContext<MessageViewContextType>({
-  selectMessage: (_message: SelectedMessage) => {}
+  selectMessage: (_message: SelectedMessage) => {},
 });

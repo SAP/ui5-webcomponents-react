@@ -4,7 +4,7 @@ import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 import type UploadCollectionSelectionMode from '@ui5/webcomponents-fiori/dist/types/UploadCollectionSelectionMode.js';
 import type {
   UploadCollectionItemDeleteEventDetail,
-  UploadCollectionSelectionChangeEventDetail
+  UploadCollectionSelectionChangeEventDetail,
 } from '@ui5/webcomponents-fiori/dist/UploadCollection.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
@@ -92,7 +92,7 @@ interface UploadCollectionPropTypes
    * | ❌|✅|
    */
   onSelectionChange?: (
-    event: Ui5CustomEvent<UploadCollectionDomRef, UploadCollectionSelectionChangeEventDetail>
+    event: Ui5CustomEvent<UploadCollectionDomRef, UploadCollectionSelectionChangeEventDetail>,
   ) => void;
 }
 
@@ -111,7 +111,7 @@ const UploadCollection = withWebComponent<UploadCollectionPropTypes, UploadColle
   ['accessibleName', 'noDataDescription', 'noDataText', 'selectionMode'],
   ['hideDragOverlay'],
   ['header'],
-  ['item-delete', 'selection-change']
+  ['item-delete', 'selection-change'],
 );
 
 UploadCollection.displayName = 'UploadCollection';

@@ -57,12 +57,12 @@ const meta = {
   argTypes: {
     headerRow: { control: { disable: true } },
     features: { control: { disable: true } },
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
-    headerRow: popInColumns
+    headerRow: popInColumns,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Table>;
 
 export default meta;
@@ -108,7 +108,7 @@ export const Default: Story = {
         </TableRow>
       </Table>
     );
-  }
+  },
 };
 
 export const GrowingTable: Story = {
@@ -160,7 +160,7 @@ export const GrowingTable: Story = {
         </div>
       </>
     );
-  }
+  },
 };
 
 export const WithSelection: Story = {
@@ -223,7 +223,7 @@ export const WithSelection: Story = {
         </Table>
       </>
     );
-  }
+  },
 };
 
 const dataLargeWithPosition = dataLarge.map((item, index) => ({ ...item, position: index }));
@@ -284,7 +284,7 @@ export const VirtualizedTableRows: Story = {
         ))}
       </Table>
     );
-  }
+  },
 };
 
 export const withRowActions: Story = {
@@ -319,7 +319,7 @@ export const withRowActions: Story = {
         ))}
       </Table>
     );
-  }
+  },
 };
 
 export const dragAndDropRows: Story = {
@@ -386,5 +386,5 @@ export const dragAndDropRows: Story = {
         ))}
       </Table>
     );
-  }
+  },
 };

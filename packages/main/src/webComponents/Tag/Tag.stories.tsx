@@ -12,13 +12,13 @@ const meta = {
   component: Tag,
   argTypes: {
     children: { control: 'text' },
-    icon: { control: { disable: true } }
+    icon: { control: { disable: true } },
   },
   args: {
     children: 'Tag Text',
-    icon: <Icon name={employeeIcon} />
+    icon: <Icon name={employeeIcon} />,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Tag>;
 
 export default meta;
@@ -52,5 +52,5 @@ export const AllColors: Story = {
         ))}
       </FlexBox>
     );
-  }
+  },
 };

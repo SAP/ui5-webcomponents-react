@@ -12,7 +12,7 @@ const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
   ) {
     const rowElements = target.querySelector('[data-component-name="AnalyticalTableBodyScrollableContainer"]').children;
     const middleRowCell = target.querySelector(
-      `div[data-visible-column-index="0"][data-visible-row-index="${Math.round(rowElements.length / 2)}"]`
+      `div[data-visible-column-index="0"][data-visible-row-index="${Math.round(rowElements.length / 2)}"]`,
     );
     middleRowCell?.focus({ preventScroll: true });
   } else {
@@ -64,7 +64,7 @@ const navigateFromActiveSubCompItem = (currentlyFocusedCell, e) => {
 
 const useGetTableProps = (
   tableProps,
-  { instance: { webComponentsReactProperties, data, columns, state } }: { instance: TableInstance }
+  { instance: { webComponentsReactProperties, data, columns, state } }: { instance: TableInstance },
 ) => {
   const { showOverlay, tableRef } = webComponentsReactProperties;
   const currentlyFocusedCell = useRef<HTMLDivElement>(null);
@@ -135,7 +135,7 @@ const useGetTableProps = (
           }
         } else if (isFirstCellAvailable) {
           const firstCell = e.target.querySelector(
-            'div[data-column-index]:not([data-column-id^="__ui5wcr__internal"][data-row-index="0"])'
+            'div[data-column-index]:not([data-column-id^="__ui5wcr__internal"][data-row-index="0"])',
           );
           firstCell.tabIndex = 0;
           firstCell.focus({ preventScroll: true });
@@ -152,7 +152,7 @@ const useGetTableProps = (
         }
       }
     },
-    [currentlyFocusedCell.current, tableRef.current, noData]
+    [currentlyFocusedCell.current, tableRef.current, noData],
   );
 
   const onKeyboardNavigation = useCallback(
@@ -160,7 +160,7 @@ const useGetTableProps = (
       const { isRtl } = state;
       const isActiveItemInSubComponent = Object.prototype.hasOwnProperty.call(
         e.target.dataset,
-        'subcomponentActiveElement'
+        'subcomponentActiveElement',
       );
       // check if target is cell and if so proceed from there
       if (
@@ -173,13 +173,13 @@ const useGetTableProps = (
         const columnIndex = parseInt(currentlyFocusedCell.current.dataset.columnIndex ?? '0', 10);
         const rowIndex = parseInt(
           currentlyFocusedCell.current.dataset.rowIndex ?? currentlyFocusedCell.current.dataset.subcomponentRowIndex,
-          10
+          10,
         );
         switch (e.key) {
           case 'End': {
             e.preventDefault();
             const visibleColumns = tableRef.current.querySelector(
-              `div[data-component-name="AnalyticalTableHeaderRow"]`
+              `div[data-component-name="AnalyticalTableHeaderRow"]`,
             ).children;
 
             const lastVisibleColumn = Array.from(visibleColumns)
@@ -194,7 +194,7 @@ const useGetTableProps = (
               }, 0);
 
             const newElement = tableRef.current.querySelector(
-              `div[data-visible-column-index="${lastVisibleColumn}"][data-row-index="${rowIndex}"]`
+              `div[data-visible-column-index="${lastVisibleColumn}"][data-row-index="${rowIndex}"]`,
             );
             setFocus(currentlyFocusedCell, newElement);
             break;
@@ -202,7 +202,7 @@ const useGetTableProps = (
           case 'Home': {
             e.preventDefault();
             const newElement = tableRef.current.querySelector(
-              `div[data-visible-column-index="0"][data-row-index="${rowIndex}"]`
+              `div[data-visible-column-index="0"][data-row-index="${rowIndex}"]`,
             );
             setFocus(currentlyFocusedCell, newElement);
             break;
@@ -211,14 +211,14 @@ const useGetTableProps = (
             e.preventDefault();
             if (currentlyFocusedCell.current.dataset.rowIndex === '0') {
               const newElement = tableRef.current.querySelector(
-                `div[data-column-index="${columnIndex}"][data-row-index="${rowIndex + 1}"]`
+                `div[data-column-index="${columnIndex}"][data-row-index="${rowIndex + 1}"]`,
               );
               setFocus(currentlyFocusedCell, newElement);
             } else {
               const lastVisibleRow = tableRef.current.querySelector(`div[data-component-name="AnalyticalTableBody"]`)
                 ?.children?.[0].children.length;
               const newElement = tableRef.current.querySelector(
-                `div[data-column-index="${columnIndex}"][data-visible-row-index="${lastVisibleRow}"]`
+                `div[data-column-index="${columnIndex}"][data-visible-row-index="${lastVisibleRow}"]`,
               );
               setFocus(currentlyFocusedCell, newElement);
             }
@@ -228,12 +228,12 @@ const useGetTableProps = (
             e.preventDefault();
             if (currentlyFocusedCell.current.dataset.rowIndex <= '1') {
               const newElement = tableRef.current.querySelector(
-                `div[data-column-index="${columnIndex}"][data-row-index="0"]`
+                `div[data-column-index="${columnIndex}"][data-row-index="0"]`,
               );
               setFocus(currentlyFocusedCell, newElement);
             } else {
               const newElement = tableRef.current.querySelector(
-                `div[data-column-index="${columnIndex}"][data-visible-row-index="1"]`
+                `div[data-column-index="${columnIndex}"][data-visible-row-index="1"]`,
               );
               setFocus(currentlyFocusedCell, newElement);
             }
@@ -246,7 +246,7 @@ const useGetTableProps = (
               return;
             }
             const newElement = tableRef.current.querySelector(
-              `div[data-column-index="${columnIndex + (isRtl ? -1 : 1)}"][data-row-index="${rowIndex}"]`
+              `div[data-column-index="${columnIndex + (isRtl ? -1 : 1)}"][data-row-index="${rowIndex}"]`,
             );
             if (newElement) {
               setFocus(currentlyFocusedCell, newElement);
@@ -262,7 +262,7 @@ const useGetTableProps = (
               return;
             }
             const newElement = tableRef.current.querySelector(
-              `div[data-column-index="${columnIndex - (isRtl ? -1 : 1)}"][data-row-index="${rowIndex}"]`
+              `div[data-column-index="${columnIndex - (isRtl ? -1 : 1)}"][data-row-index="${rowIndex}"]`,
             );
             if (newElement) {
               setFocus(currentlyFocusedCell, newElement);
@@ -281,7 +281,7 @@ const useGetTableProps = (
             const firstChildOfParent = parent?.children?.[0] as HTMLDivElement;
             const hasSubcomponent = firstChildOfParent?.dataset?.subcomponent;
             const newElement = tableRef.current.querySelector(
-              `div[data-column-index="${columnIndex}"][data-row-index="${rowIndex + 1}"]`
+              `div[data-column-index="${columnIndex}"][data-row-index="${rowIndex + 1}"]`,
             );
             if (hasSubcomponent && !currentlyFocusedCell.current?.dataset?.subcomponent) {
               currentlyFocusedCell.current.tabIndex = -1;
@@ -307,7 +307,7 @@ const useGetTableProps = (
               prevRowIndex++;
             }
             const previousRowCell = tableRef.current.querySelector(
-              `div[data-column-index="${columnIndex}"][data-row-index="${prevRowIndex}"]`
+              `div[data-column-index="${columnIndex}"][data-row-index="${prevRowIndex}"]`,
             );
             const firstChildPrevRow = previousRowCell?.parentElement.children[0] as HTMLDivElement;
             const hasSubcomponent = firstChildPrevRow?.dataset?.subcomponent;
@@ -327,7 +327,7 @@ const useGetTableProps = (
         }
       }
     },
-    [currentlyFocusedCell.current, tableRef.current, state?.isRtl]
+    [currentlyFocusedCell.current, tableRef.current, state?.isRtl],
   );
   if (showOverlay) {
     return tableProps;
@@ -337,8 +337,8 @@ const useGetTableProps = (
     {
       onFocus: onTableFocus,
       onKeyDown: onKeyboardNavigation,
-      onBlur: onTableBlur
-    }
+      onBlur: onTableBlur,
+    },
   ];
 };
 
@@ -355,7 +355,7 @@ function getPayload(e, column) {
 
 const setHeaderProps = (
   headerProps,
-  { instance: { dispatch }, column }: { instance: TableInstance; column: ColumnType }
+  { instance: { dispatch }, column }: { instance: TableInstance; column: ColumnType },
 ) => {
   // resize col with keyboard
   const handleKeyDown = (e) => {

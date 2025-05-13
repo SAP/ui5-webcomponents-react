@@ -9,11 +9,11 @@ interface ScrollToMethods {
   scrollToItem: (index: number, align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode) => void;
   horizontalScrollTo: (
     offset: number,
-    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode
+    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode,
   ) => void;
   horizontalScrollToItem: (
     index: number,
-    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode
+    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode,
   ) => void;
 }
 
@@ -40,7 +40,7 @@ export const useTableScrollHandles = (ref, dispatch) => {
           } else {
             dispatch({
               type: 'TRIGGER_PROG_SCROLL',
-              payload: { direction: 'vertical', type: 'offset', args: [offset, { align }] }
+              payload: { direction: 'vertical', type: 'offset', args: [offset, { align }] },
             });
           }
         },
@@ -50,7 +50,7 @@ export const useTableScrollHandles = (ref, dispatch) => {
           } else {
             dispatch({
               type: 'TRIGGER_PROG_SCROLL',
-              payload: { direction: 'vertical', type: 'item', args: [index, { align }] }
+              payload: { direction: 'vertical', type: 'item', args: [index, { align }] },
             });
           }
         },
@@ -60,7 +60,7 @@ export const useTableScrollHandles = (ref, dispatch) => {
           } else {
             dispatch({
               type: 'TRIGGER_PROG_SCROLL',
-              payload: { direction: 'horizontal', type: 'offset', args: [offset, { align }] }
+              payload: { direction: 'horizontal', type: 'offset', args: [offset, { align }] },
             });
           }
         },
@@ -70,10 +70,10 @@ export const useTableScrollHandles = (ref, dispatch) => {
           } else {
             dispatch({
               type: 'TRIGGER_PROG_SCROLL',
-              payload: { direction: 'horizontal', type: 'item', args: [index, { align }] }
+              payload: { direction: 'horizontal', type: 'item', args: [index, { align }] },
             });
           }
-        }
+        },
       });
     }
   }, []);

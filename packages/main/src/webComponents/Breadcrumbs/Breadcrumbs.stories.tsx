@@ -8,13 +8,13 @@ const meta = {
   title: 'Layouts & Floorplans / Breadcrumbs',
   component: Breadcrumbs,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
     design: BreadcrumbsDesign.Standard,
-    separators: BreadcrumbsSeparatorStyle.Slash
+    separators: BreadcrumbsSeparatorStyle.Slash,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Breadcrumbs>;
 
 export default meta;
@@ -29,5 +29,5 @@ export const Default: Story = {
         <BreadcrumbsItem>Notebooks</BreadcrumbsItem>
       </Breadcrumbs>
     );
-  }
+  },
 };

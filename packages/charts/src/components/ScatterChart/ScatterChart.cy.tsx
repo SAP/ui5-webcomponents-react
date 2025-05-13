@@ -6,17 +6,17 @@ const measures = [
   {
     accessor: 'users',
     label: 'Number',
-    axis: 'x' as const
+    axis: 'x' as const,
   },
   {
     accessor: 'sessions',
     label: 'Sessions',
-    axis: 'y' as const
+    axis: 'y' as const,
   },
   {
     accessor: 'volume',
-    axis: 'z' as const
-  }
+    axis: 'z' as const,
+  },
 ];
 
 describe('ScatterChart', () => {
@@ -37,7 +37,7 @@ describe('ScatterChart', () => {
         onDataPointClick={onClick}
         onLegendClick={onLegendClick}
         noAnimation
-      />
+      />,
     );
 
     cy.get('[name="Users"]').eq(0).click();
@@ -47,9 +47,9 @@ describe('ScatterChart', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: Cypress.sinon.match({
-            payload: scatterComplexDataSet[0].data[0]
-          })
-        })
+            payload: scatterComplexDataSet[0].data[0],
+          }),
+        }),
       );
 
     cy.contains('Users').click();
@@ -57,9 +57,9 @@ describe('ScatterChart', () => {
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          value: 'Users'
-        })
-      })
+          value: 'Users',
+        }),
+      }),
     );
   });
 

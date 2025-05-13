@@ -157,7 +157,7 @@ const DynamicPage = withWebComponent<DynamicPagePropTypes, DynamicPageDomRef>(
   [],
   ['headerPinned', 'headerSnapped', 'hidePinButton', 'showFooter'],
   ['footerArea', 'headerArea', 'titleArea'],
-  ['pin-button-toggle', 'title-toggle']
+  ['pin-button-toggle', 'title-toggle'],
 );
 
 DynamicPage.displayName = 'DynamicPage';

@@ -185,7 +185,7 @@ const PromptInput = withWebComponent<PromptInputPropTypes, PromptInputDomRef>(
   ['label', 'maxlength', 'placeholder', 'value', 'valueState'],
   ['disabled', 'readonly', 'showClearIcon', 'showExceededText', 'showSuggestions'],
   ['valueStateMessage'],
-  ['change', 'input', 'submit']
+  ['change', 'input', 'submit'],
 );
 
 PromptInput.displayName = 'PromptInput';

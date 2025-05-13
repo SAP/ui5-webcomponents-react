@@ -25,12 +25,12 @@ const meta = {
   argTypes: {
     endColumn: { control: { disable: true } },
     midColumn: { control: { disable: true } },
-    startColumn: { control: { disable: true } }
+    startColumn: { control: { disable: true } },
   },
   args: {
-    layout: FCLLayout.ThreeColumnsMidExpanded
+    layout: FCLLayout.ThreeColumnsMidExpanded,
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof FlexibleColumnLayout>;
 
 export default meta;
@@ -65,7 +65,7 @@ export const Default: Story = {
         }
       />
     );
-  }
+  },
 };
 
 export const WithDifferentColumns: Story = {
@@ -189,240 +189,240 @@ export const WithDifferentColumns: Story = {
         }
       />
     );
-  }
+  },
 };
 
 const movieData = [
   {
     movie: 'Shanghai',
     genre: 'Crime|Thriller',
-    country: 'Russia'
+    country: 'Russia',
   },
   {
     movie: 'Punk Syndrome, The (Kovasikajuttu)',
     genre: 'Documentary',
-    country: 'Poland'
+    country: 'Poland',
   },
   {
     movie: 'Corridors of Blood',
     genre: 'Crime|Drama|Horror|Thriller',
-    country: 'Germany'
+    country: 'Germany',
   },
   {
     movie: 'Three Faces East',
     genre: 'Drama|Mystery|War',
-    country: 'Russia'
+    country: 'Russia',
   },
   {
     movie: 'Grave Secrets (Silent Screams)',
     genre: 'Horror',
-    country: 'Russia'
+    country: 'Russia',
   },
   {
     movie: 'Dead Outside, The',
     genre: 'Horror|Mystery|Thriller',
-    country: 'Poland'
+    country: 'Poland',
   },
   {
     movie: 'Cosmos',
     genre: 'Documentary',
-    country: 'Russia'
+    country: 'Russia',
   },
   {
     movie: 'UHF',
     genre: 'Comedy',
-    country: 'Mexico'
+    country: 'Mexico',
   },
   {
     movie: 'Superweib, Das',
     genre: 'Comedy',
-    country: 'Poland'
+    country: 'Poland',
   },
   {
     movie: "It's Good to Be Alive",
     genre: 'Drama',
-    country: 'Belarus'
+    country: 'Belarus',
   },
   {
     movie: 'Last Action Hero',
     genre: 'Action|Adventure|Comedy|Fantasy',
-    country: 'Russia'
+    country: 'Russia',
   },
   {
     movie: "Nibelungen: Kriemhild's Revenge, Die (Die Nibelungen: Kriemhilds Rache)",
     genre: 'Adventure|Drama|Fantasy',
-    country: 'Russia'
+    country: 'Russia',
   },
   {
     movie: 'Roller Boogie',
     genre: 'Drama',
-    country: 'Brazil'
+    country: 'Brazil',
   },
   {
     movie: "Amore (L'Amore)",
     genre: 'Drama',
-    country: 'Poland'
+    country: 'Poland',
   },
   {
     movie: 'Dust of Time, The',
     genre: 'Drama',
-    country: 'Poland'
+    country: 'Poland',
   },
   {
     movie: 'Far Side of the Moon, The (Face cachée de la lune, La)',
     genre: 'Drama',
-    country: 'Brazil'
+    country: 'Brazil',
   },
   {
     movie: 'Take Care of Your Scarf, Tatiana (Pidä huivista kiinni, Tatjana)',
     genre: 'Comedy',
-    country: 'Poland'
+    country: 'Poland',
   },
   {
     movie: 'Trail Beyond, The',
     genre: 'Action|Adventure|Western',
-    country: 'Russia'
+    country: 'Russia',
   },
   {
     movie: "Mood Indigo (L'écume des jours)",
     genre: 'Drama|Fantasy',
-    country: 'Russia'
+    country: 'Russia',
   },
   {
     movie: 'Alpha and Omega',
     genre: 'Adventure|Animation|Children|Comedy|Romance',
-    country: 'France'
+    country: 'France',
   },
   {
     movie: 'Battleship Potemkin',
     genre: 'Drama|War',
-    country: 'United Kingdom'
+    country: 'United Kingdom',
   },
   {
     movie: 'Rites of May, The (Itim) ',
     genre: 'Drama|Horror|Thriller',
-    country: 'Brazil'
+    country: 'Brazil',
   },
   {
     movie: "Black Waters of Echo's Pond, The",
     genre: 'Fantasy|Horror|Thriller',
-    country: 'France'
+    country: 'France',
   },
   {
     movie: 'Speed',
     genre: 'Action|Romance|Thriller',
-    country: 'Brazil'
+    country: 'Brazil',
   },
   {
     movie: 'Ladybird Ladybird',
     genre: 'Drama',
-    country: 'Poland'
+    country: 'Poland',
   },
   {
     movie: 'War, Inc.',
     genre: 'Comedy|Crime|Thriller',
-    country: 'Brazil'
+    country: 'Brazil',
   },
   {
     movie: 'Company of Heroes',
     genre: 'Action|War',
-    country: 'United States'
+    country: 'United States',
   },
   {
     movie: 'Secret Glory, The',
     genre: 'Documentary',
-    country: 'Poland'
+    country: 'Poland',
   },
   {
     movie: 'Three Musketeers, The',
     genre: 'Action|Adventure|Romance',
-    country: 'France'
+    country: 'France',
   },
   {
     movie: 'Secrets of the Heart (Secretos del Corazón)',
     genre: 'Drama',
-    country: 'Japan'
-  }
+    country: 'Japan',
+  },
 ];
 const castData = [
   {
     name: 'Clywd Gimeno',
-    gender: 'Male'
+    gender: 'Male',
   },
   {
     name: 'Essie Gadson',
-    gender: 'Female'
+    gender: 'Female',
   },
   {
     name: 'Claresta Greger',
-    gender: 'Female'
+    gender: 'Female',
   },
   {
     name: 'Susanne Pinson',
-    gender: 'Female'
+    gender: 'Female',
   },
   {
     name: 'Gardener Cutford',
-    gender: 'Male'
+    gender: 'Male',
   },
   {
     name: 'Red Swyer-Sexey',
-    gender: 'Male'
+    gender: 'Male',
   },
   {
     name: 'Alyson Bachellier',
-    gender: 'Female'
+    gender: 'Female',
   },
   {
     name: 'Amata Penke',
-    gender: 'Female'
+    gender: 'Female',
   },
   {
     name: 'Ancell Aprahamian',
-    gender: 'Male'
+    gender: 'Male',
   },
   {
     name: 'Kimmy Sworne',
-    gender: 'Female'
+    gender: 'Female',
   },
   {
     name: 'Liam Umpleby',
-    gender: 'Male'
+    gender: 'Male',
   },
   {
     name: 'Caleb Trathen',
-    gender: 'Male'
+    gender: 'Male',
   },
   {
     name: 'Starlin Kibard',
-    gender: 'Female'
+    gender: 'Female',
   },
   {
     name: 'Keefe Brammall',
-    gender: 'Male'
+    gender: 'Male',
   },
   {
     name: 'Terrill Reeme',
-    gender: 'Male'
+    gender: 'Male',
   },
   {
     name: 'Gerianne Maciejak',
-    gender: 'Female'
+    gender: 'Female',
   },
   {
     name: 'Wilhelmine Cutmare',
-    gender: 'Female'
+    gender: 'Female',
   },
   {
     name: 'Rodie Breukelman',
-    gender: 'Female'
+    gender: 'Female',
   },
   {
     name: 'Eduard Berk',
-    gender: 'Male'
+    gender: 'Male',
   },
   {
     name: 'Phil Koppens',
-    gender: 'Female'
-  }
+    gender: 'Female',
+  },
 ];

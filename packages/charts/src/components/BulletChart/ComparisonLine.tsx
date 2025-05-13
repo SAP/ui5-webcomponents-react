@@ -16,12 +16,12 @@ export const ComparisonLine = (props: ComparisonLine) => {
 
   const horizontalCalc = {
     x1: strokeWidth ? x + (width - strokeWidth) / 2 - 1 : x - 3,
-    x2: strokeWidth ? x + strokeWidth + (width - strokeWidth) / 2 : x + width + 3
+    x2: strokeWidth ? x + strokeWidth + (width - strokeWidth) / 2 : x + width + 3,
   };
 
   const verticalCalc = {
     y1: strokeWidth ? y + (height - strokeWidth) / 2 - 1 : y - 3,
-    y2: strokeWidth ? y + strokeWidth + (height - strokeWidth) / 2 : y + height + 3
+    y2: strokeWidth ? y + strokeWidth + (height - strokeWidth) / 2 : y + height + 3,
   };
 
   if (layout === 'horizontal') {

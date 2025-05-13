@@ -7,14 +7,14 @@ const meta = {
   title: 'Data Display / Link',
   component: Link,
   argTypes: {
-    children: { control: 'text' }
+    children: { control: 'text' },
   },
   args: {
     design: LinkDesign.Default,
     wrappingType: WrappingType.None,
-    children: 'Link Text'
+    children: 'Link Text',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Link>;
 
 export default meta;

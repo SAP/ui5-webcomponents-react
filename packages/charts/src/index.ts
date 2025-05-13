@@ -44,6 +44,6 @@ export {
   PieChartPlaceholder,
   ScatterChartPlaceholder,
   ColumnChartWithTrendPlaceholder,
-  TimelineChartPlaceholder
+  TimelineChartPlaceholder,
 };
 export const version = VersionInfo.version;

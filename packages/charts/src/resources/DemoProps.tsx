@@ -17,10 +17,10 @@ export const legendConfig: IChartBaseProps = {
         border: '5px solid',
         borderImage: 'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet) 1',
         padding: '5px',
-        borderRadius: '8px'
-      }
-    }
-  }
+        borderRadius: '8px',
+      },
+    },
+  },
 };
 
 export const tooltipConfig: IChartBaseProps = {
@@ -29,21 +29,21 @@ export const tooltipConfig: IChartBaseProps = {
       border: '5px solid',
       borderImage: 'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet) 1',
       padding: '5px',
-      borderRadius: '8px'
+      borderRadius: '8px',
     },
     itemStyle: {
       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
       backgroundColor: 'white',
       borderRadius: '8px',
       padding: '10px',
-      marginBlockStart: '2px'
+      marginBlockStart: '2px',
     },
     contentStyle: {
-      background: 'black'
+      background: 'black',
     },
     labelStyle: {
       fontFamily: 'var(--sapFontBoldFamily)',
-      color: 'white'
+      color: 'white',
     },
     cursor: { stroke: 'red', strokeWidth: 2, fill: 'transparent' },
     separator: ':~:',
@@ -61,31 +61,31 @@ export const tooltipConfig: IChartBaseProps = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     itemSorter: (item) => {
       return -1;
-    }
-  }
+    },
+  },
 };
 
 export const singleData = [
   {
     name: 'January',
     data: 100,
-    users: 120
+    users: 120,
   },
   {
     name: 'February',
     data: 300,
-    users: 40
+    users: 40,
   },
   {
     name: 'March',
     data: 530,
-    users: 20
+    users: 20,
   },
   {
     name: 'April',
     data: 200,
-    users: 30
-  }
+    users: 30,
+  },
 ];
 
 export const complexDataSet = [
@@ -93,224 +93,224 @@ export const complexDataSet = [
     name: 'January',
     users: 100,
     sessions: 300,
-    volume: 756
+    volume: 756,
   },
   {
     name: 'February',
     users: 230,
     sessions: 330,
-    volume: 880
+    volume: 880,
   },
   {
     name: 'March',
     users: 240,
     sessions: 404,
-    volume: 700
+    volume: 700,
   },
   {
     name: 'April',
     users: 280,
     sessions: 80,
-    volume: 604
+    volume: 604,
   },
   {
     name: 'May',
     users: 100,
     sessions: 300,
-    volume: 756
+    volume: 756,
   },
   {
     name: 'June',
     users: 230,
     sessions: 330,
-    volume: 880
+    volume: 880,
   },
   {
     name: 'July',
     users: 20,
     sessions: 470,
-    volume: 450
+    volume: 450,
   },
   {
     name: 'August',
     users: 220,
     sessions: 180,
-    volume: 104
+    volume: 104,
   },
   {
     name: 'September',
     users: 200,
     sessions: 360,
-    volume: 1000
+    volume: 1000,
   },
   {
     name: 'October',
     users: 250,
     sessions: 500,
-    volume: 200
+    volume: 200,
   },
   {
     name: 'November',
     users: 240,
     sessions: 404,
-    volume: 700
+    volume: 700,
   },
   {
     name: 'December',
     users: 280,
     sessions: 80,
-    volume: 604
-  }
+    volume: 604,
+  },
 ];
 
 export const simpleDataSet = [
   {
     name: 'January',
-    users: 100
+    users: 100,
   },
   {
     name: 'February',
-    users: 230
+    users: 230,
   },
   {
     name: 'March',
-    users: 240
+    users: 240,
   },
   {
     name: 'April',
-    users: 280
+    users: 280,
   },
   {
     name: 'May',
-    users: 100
+    users: 100,
   },
   {
     name: 'June',
-    users: 230
+    users: 230,
   },
   {
     name: 'July',
-    users: 20
+    users: 20,
   },
   {
     name: 'August',
-    users: 220
+    users: 220,
   },
   {
     name: 'September',
-    users: 200
+    users: 200,
   },
   {
     name: 'October',
-    users: 250
+    users: 250,
   },
   {
     name: 'November',
-    users: 240
+    users: 240,
   },
   {
     name: 'December',
-    users: 280
-  }
+    users: 280,
+  },
 ];
 
 export const simpleDataSetWithSmallValues = [
   {
     name: 'January / Month',
-    users: 100
+    users: 100,
   },
   {
     name: 'February / Month',
-    users: 10
+    users: 10,
   },
   {
     name: 'March / Month',
-    users: 240
+    users: 240,
   },
   {
     name: 'April / Month',
-    users: 5
+    users: 5,
   },
   {
     name: 'May / Month',
-    users: 34
+    users: 34,
   },
   {
     name: 'June / Month',
-    users: 230
+    users: 230,
   },
   {
     name: 'July / Month',
-    users: 20
+    users: 20,
   },
   {
     name: 'August / Month',
-    users: 220
+    users: 220,
   },
   {
     name: 'September / Month',
-    users: 27
+    users: 27,
   },
   {
     name: 'October / Month',
-    users: 250
+    users: 250,
   },
   {
     name: 'November / Month',
-    users: 240
+    users: 240,
   },
   {
     name: 'December / Month',
-    users: 280
-  }
+    users: 280,
+  },
 ];
 
 export const secondaryDimensionDataSet = [
   {
     name: 'January / Month',
     users: 100,
-    dimension: 'C4S Components'
+    dimension: 'C4S Components',
   },
   {
     name: 'February / Month',
     users: 230,
-    dimension: 'C4S Components'
+    dimension: 'C4S Components',
   },
   {
     name: 'March / Month',
     users: 240,
-    dimension: 'C4S Components'
+    dimension: 'C4S Components',
   },
   {
     name: 'January / Month',
     users: 20,
-    dimension: 'Harmnony Insight'
+    dimension: 'Harmnony Insight',
   },
   {
     name: 'Februar / Month',
     users: 220,
-    dimension: 'Harmnony Insight'
+    dimension: 'Harmnony Insight',
   },
   {
     name: 'March / Month',
     users: 200,
-    dimension: 'Harmnony Insight'
+    dimension: 'Harmnony Insight',
   },
   {
     name: 'January / Month',
     users: 250,
-    dimension: 'Intelligent Workplace'
+    dimension: 'Intelligent Workplace',
   },
   {
     name: 'February / Month',
     users: 240,
-    dimension: 'Intelligent Workplace'
+    dimension: 'Intelligent Workplace',
   },
   {
     name: 'March / Month',
     users: 280,
-    dimension: 'Intelligent Workplace'
-  }
+    dimension: 'Intelligent Workplace',
+  },
 ];
 
 export const scatterComplexDataSet = [
@@ -320,64 +320,64 @@ export const scatterComplexDataSet = [
       {
         users: 120,
         sessions: 330,
-        volume: 744
+        volume: 744,
       },
       {
         users: 213,
         sessions: 313,
-        volume: 881
+        volume: 881,
       },
       {
         users: 241,
         sessions: 424,
-        volume: 670
+        volume: 670,
       },
       {
         users: 328,
         sessions: 83,
-        volume: 630
+        volume: 630,
       },
       {
         users: 102,
         sessions: 302,
-        volume: 126
+        volume: 126,
       },
       {
         users: 233,
         sessions: 304,
-        volume: 880
+        volume: 880,
       },
       {
         users: 202,
         sessions: 47,
-        volume: 452
+        volume: 452,
       },
       {
         users: 222,
         sessions: 18,
-        volume: 500
+        volume: 500,
       },
       {
         users: 210,
         sessions: 362,
-        volume: 892
+        volume: 892,
       },
       {
         users: 215,
         sessions: 510,
-        volume: 2022
+        volume: 2022,
       },
       {
         users: 242,
         sessions: 402,
-        volume: 70
+        volume: 70,
       },
       {
         users: 20,
         sessions: 10,
-        volume: 60
-      }
-    ]
+        volume: 60,
+      },
+    ],
   },
   {
     label: 'APJ',
@@ -386,65 +386,65 @@ export const scatterComplexDataSet = [
       {
         users: 100,
         sessions: 300,
-        volume: 756
+        volume: 756,
       },
       {
         users: 230,
         sessions: 330,
-        volume: 880
+        volume: 880,
       },
       {
         users: 240,
         sessions: 404,
-        volume: 700
+        volume: 700,
       },
       {
         users: 280,
         sessions: 80,
-        volume: 604
+        volume: 604,
       },
       {
         users: 100,
         sessions: 300,
-        volume: 756
+        volume: 756,
       },
       {
         users: 230,
         sessions: 330,
-        volume: 880
+        volume: 880,
       },
       {
         users: 20,
         sessions: 470,
-        volume: 450
+        volume: 450,
       },
       {
         users: 220,
         sessions: 180,
-        volume: 5000
+        volume: 5000,
       },
       {
         users: 200,
         sessions: 360,
-        volume: 879
+        volume: 879,
       },
       {
         users: 250,
         sessions: 500,
-        volume: 200
+        volume: 200,
       },
       {
         users: 240,
         sessions: 404,
-        volume: 700
+        volume: 700,
       },
       {
         users: 280,
         sessions: 80,
-        volume: 604
-      }
-    ]
-  }
+        volume: 604,
+      },
+    ],
+  },
 ];
 
 export const scatterColorDataSet = [
@@ -455,65 +455,65 @@ export const scatterColorDataSet = [
       {
         users: 120,
         sessions: 330,
-        volume: 744
+        volume: 744,
       },
       {
         users: 213,
         sessions: 313,
-        volume: 881
+        volume: 881,
       },
       {
         users: 241,
         sessions: 424,
-        volume: 670
+        volume: 670,
       },
       {
         users: 328,
         sessions: 83,
-        volume: 630
+        volume: 630,
       },
       {
         users: 102,
         sessions: 302,
-        volume: 126
+        volume: 126,
       },
       {
         users: 233,
         sessions: 304,
-        volume: 880
+        volume: 880,
       },
       {
         users: 202,
         sessions: 47,
-        volume: 452
+        volume: 452,
       },
       {
         users: 222,
         sessions: 18,
-        volume: 500
+        volume: 500,
       },
       {
         users: 210,
         sessions: 362,
-        volume: 892
+        volume: 892,
       },
       {
         users: 215,
         sessions: 510,
-        volume: 2022
+        volume: 2022,
       },
       {
         users: 242,
         sessions: 402,
-        volume: 70
+        volume: 70,
       },
       {
         users: 20,
         sessions: 10,
-        volume: 60
-      }
-    ]
-  }
+        volume: 60,
+      },
+    ],
+  },
 ];
 
 const concatYear = (array, year) => array.map((item) => ({ ...item, name: `${item.name} ${year}` }));
@@ -525,7 +525,7 @@ export const bigDataSet = [
   ...concatYear(complexDataSet, 2019),
   ...concatYear(complexDataSet, 2020),
   ...concatYear(complexDataSet, 2021),
-  ...concatYear(complexDataSet, 2022)
+  ...concatYear(complexDataSet, 2022),
 ];
 
 export const complexBulletDataset = [
@@ -533,74 +533,74 @@ export const complexBulletDataset = [
     name: 'January',
     users: 100,
     sessions: 300,
-    volume: 350
+    volume: 350,
   },
   {
     name: 'February',
     users: 90,
     sessions: 330,
-    volume: 370
+    volume: 370,
   },
   {
     name: 'March',
     users: 0,
     sessions: 404,
-    volume: 446
+    volume: 446,
   },
   {
     name: 'April',
     users: 0,
     sessions: 80,
-    volume: 250
+    volume: 250,
   },
   {
     name: 'May',
     users: 0,
     sessions: 300,
-    volume: 450
+    volume: 450,
   },
   {
     name: 'June',
     users: 0,
     sessions: 330,
-    volume: 500
+    volume: 500,
   },
   {
     name: 'July',
     users: 65,
     sessions: 300,
-    volume: 300
+    volume: 300,
   },
   {
     name: 'August',
     users: 12,
     sessions: 180,
-    volume: 104
+    volume: 104,
   },
   {
     name: 'September',
     users: 99,
     sessions: 360,
-    volume: 300
+    volume: 300,
   },
   {
     name: 'October',
     users: 120,
     sessions: 500,
-    volume: 200
+    volume: 200,
   },
   {
     name: 'November',
     users: 130,
     sessions: 404,
-    volume: 600
+    volume: 600,
   },
   {
     name: 'December',
     users: 100,
     sessions: 80,
-    volume: 320
-  }
+    volume: 320,
+  },
 ];
 
 const percentFormatter = (val) => `${val.toFixed(1)}%`;
@@ -625,18 +625,18 @@ export const stackedNormalizedConfig = {
     {
       accessor: 'users',
       stackId: 'A',
-      formatter: percentFormatter
+      formatter: percentFormatter,
     },
     {
       accessor: 'sessions',
       stackId: 'A',
-      formatter: percentFormatter
+      formatter: percentFormatter,
     },
     {
       accessor: 'volume',
       stackId: 'A',
-      formatter: percentFormatter
-    }
+      formatter: percentFormatter,
+    },
   ],
-  dataset: normalizeData(complexDataSet)
+  dataset: normalizeData(complexDataSet),
 };

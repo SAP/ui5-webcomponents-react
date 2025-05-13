@@ -5,26 +5,26 @@ import { cypressPassThroughTestsFactory, testChartLegendConfig, testChartZooming
 const dimensions = [
   {
     accessor: 'name',
-    interval: 0
-  }
+    interval: 0,
+  },
 ];
 
 const measures = [
   {
     accessor: (data) => data.users,
     label: 'Users',
-    formatter: (val: number) => val.toLocaleString('en')
+    formatter: (val: number) => val.toLocaleString('en'),
   },
   {
     accessor: (data) => data.sessions,
     label: 'Active Sessions',
     formatter: (val) => `${val} sessions`,
-    hideDataLabel: true
+    hideDataLabel: true,
   },
   {
     accessor: 'volume',
-    label: 'Vol.'
-  }
+    label: 'Vol.',
+  },
 ];
 
 describe('BarChart', () => {
@@ -45,7 +45,7 @@ describe('BarChart', () => {
         measures={measures}
         onClick={onClick}
         onLegendClick={onLegendClick}
-      />
+      />,
     );
 
     cy.findByText('January').click();
@@ -57,9 +57,9 @@ describe('BarChart', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: Cypress.sinon.match({
-            payload: complexDataSet[0]
-          })
-        })
+            payload: complexDataSet[0],
+          }),
+        }),
       );
 
     cy.contains('Users').click();
@@ -67,18 +67,18 @@ describe('BarChart', () => {
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          value: 'Users'
-        })
-      })
+          value: 'Users',
+        }),
+      }),
     );
     cy.contains('Vol.').click();
     cy.get('@onLegendClick').should(
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          dataKey: 'volume'
-        })
-      })
+          dataKey: 'volume',
+        }),
+      }),
     );
   });
 

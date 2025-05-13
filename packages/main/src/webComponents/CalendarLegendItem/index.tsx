@@ -45,7 +45,7 @@ const CalendarLegendItem = withWebComponent<CalendarLegendItemPropTypes, Calenda
   ['text', 'type'],
   [],
   [],
-  []
+  [],
 );
 
 CalendarLegendItem.displayName = 'CalendarLegendItem';

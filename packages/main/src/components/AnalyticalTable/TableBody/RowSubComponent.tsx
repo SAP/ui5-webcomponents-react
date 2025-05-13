@@ -27,7 +27,7 @@ export const RowSubComponent = (props: RowSubComponent) => {
     rows,
     alwaysShowSubComponent,
     rowIndex,
-    classNames
+    classNames,
   } = props;
   const subComponentRef = useRef(null);
 
@@ -52,7 +52,7 @@ export const RowSubComponent = (props: RowSubComponent) => {
               }, {});
 
               const mostUsedHeight = Object.keys(objGroupedByHeight).reduce((a, b) =>
-                objGroupedByHeight[a] > objGroupedByHeight[b] ? a : b
+                objGroupedByHeight[a] > objGroupedByHeight[b] ? a : b,
               );
               const estimatedHeights = rows.reduce((acc, cur, index) => {
                 acc[index] = { subComponentHeight: parseInt(mostUsedHeight), rowId: cur.id };
@@ -60,15 +60,15 @@ export const RowSubComponent = (props: RowSubComponent) => {
               }, {});
               dispatch({
                 type: 'SUB_COMPONENTS_HEIGHT',
-                payload: { ...estimatedHeights, ...subComponentsHeight }
+                payload: { ...estimatedHeights, ...subComponentsHeight },
               });
             } else {
               dispatch({
                 type: 'SUB_COMPONENTS_HEIGHT',
                 payload: {
                   ...subComponentsHeight,
-                  [virtualRow.index]: { subComponentHeight: subCompHeight, rowId: row.id }
-                }
+                  [virtualRow.index]: { subComponentHeight: subCompHeight, rowId: row.id },
+                },
               });
             }
           }
@@ -81,8 +81,8 @@ export const RowSubComponent = (props: RowSubComponent) => {
               type: 'SUB_COMPONENTS_HEIGHT',
               payload: {
                 ...subComponentsHeight,
-                [virtualRow.index]: { subComponentHeight: subCompHeight, rowId: row.id }
-              }
+                [virtualRow.index]: { subComponentHeight: subCompHeight, rowId: row.id },
+              },
             });
           }
         }
@@ -99,7 +99,7 @@ export const RowSubComponent = (props: RowSubComponent) => {
     subComponentsHeight,
     row.id,
     subComponentsHeight?.[virtualRow.index]?.subComponentHeight,
-    virtualRow.index
+    virtualRow.index,
   ]);
 
   return (
@@ -110,7 +110,7 @@ export const RowSubComponent = (props: RowSubComponent) => {
       tabIndex={-1}
       style={{
         boxSizing: 'border-box',
-        transform: `translateY(${rowHeight}px)`
+        transform: `translateY(${rowHeight}px)`,
       }}
       className={classNames.subcomponent}
     >

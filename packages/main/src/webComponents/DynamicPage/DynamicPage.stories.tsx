@@ -24,7 +24,7 @@ import {
   Tag,
   Title,
   ToolbarButton,
-  Toolbar
+  Toolbar,
 } from '../..';
 import { DynamicPageHeader } from '../DynamicPageHeader/index.js';
 import { DynamicPageTitle } from '../DynamicPageTitle/index.js';
@@ -37,17 +37,17 @@ const meta = {
   component: DynamicPage,
   argTypes: {
     children: {
-      control: { disable: true }
+      control: { disable: true },
     },
     titleArea: {
-      control: { disable: true }
+      control: { disable: true },
     },
     headerArea: {
-      control: { disable: true }
+      control: { disable: true },
     },
     footerArea: {
-      control: { disable: true }
-    }
+      control: { disable: true },
+    },
   },
   args: {
     style: { height: '600px' },
@@ -126,9 +126,9 @@ const meta = {
           </>
         }
       />
-    )
+    ),
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof DynamicPage>;
 
 export default meta;
@@ -141,7 +141,7 @@ export const Default: Story = {
         <ProductsTable />
       </DynamicPage>
     );
-  }
+  },
 };
 
 export const StickyContentHeaders: Story = {
@@ -158,7 +158,7 @@ export const StickyContentHeaders: Story = {
               width: '100%',
               height: '4rem',
               background: 'lightgreen',
-              insetBlockStart: `${headerHeight}px`
+              insetBlockStart: `${headerHeight}px`,
             }}
           >
             Sticky Header
@@ -170,7 +170,7 @@ export const StickyContentHeaders: Story = {
               width: '100%',
               height: '8rem',
               background: 'lightgreen',
-              insetBlockStart: `calc(${headerHeight}px + 4rem)`
+              insetBlockStart: `calc(${headerHeight}px + 4rem)`,
             }}
           >
             Sticky Header 2
@@ -179,5 +179,5 @@ export const StickyContentHeaders: Story = {
         </>
       </DynamicPage>
     );
-  }
+  },
 };

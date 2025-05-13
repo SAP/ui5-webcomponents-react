@@ -29,8 +29,8 @@ const meta = {
     children: {
       description: `A list with message items. If only one item is provided, the initial page will be the details page for the item.\n\n
 **Note:** Although this prop accepts all HTML Elements, it is strongly recommended that you only use \`Message\` in order to preserve the intended design.`,
-      control: { disable: true }
-    }
+      control: { disable: true },
+    },
   },
   args: {
     showDetailsPageHeader: true,
@@ -92,9 +92,9 @@ const meta = {
         }
         type={ValueState.Negative}
         counter={3}
-      />
-    ]
-  }
+      />,
+    ],
+  },
 } satisfies Meta<typeof MessageView>;
 
 export default meta;
@@ -152,7 +152,7 @@ export const MessageViewInDialog: Story = {
               justifyContent={FlexBoxJustifyContent.End}
               style={{
                 width: '100%',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
               }}
             >
               <Button
@@ -177,7 +177,7 @@ export const MessageViewInDialog: Story = {
         </Dialog>
       </>
     );
-  }
+  },
 };
 
 export const WithMessageViewButton: Story = {
@@ -191,7 +191,7 @@ export const WithMessageViewButton: Story = {
       information: 2,
       warning: 5,
       success: 3,
-      error: 3
+      error: 3,
     };
     return (
       <>
@@ -239,7 +239,7 @@ export const WithMessageViewButton: Story = {
               style={{
                 paddingBlock: '0.25rem',
                 width: '100%',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
               }}
             >
               <Button
@@ -267,5 +267,5 @@ export const WithMessageViewButton: Story = {
         </ResponsivePopover>
       </>
     );
-  }
+  },
 };

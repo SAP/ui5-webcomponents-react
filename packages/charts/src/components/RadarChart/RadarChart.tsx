@@ -10,7 +10,7 @@ import {
   PolarRadiusAxis,
   Radar,
   RadarChart as RadarChartLib,
-  Tooltip
+  Tooltip,
 } from 'recharts';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
@@ -66,12 +66,12 @@ export interface RadarChartProps extends IChartBaseProps {
 }
 
 const dimensionDefaults = {
-  formatter: (d) => d
+  formatter: (d) => d,
 };
 
 const measureDefaults = {
   formatter: defaultFormatter,
-  opacity: 0.5
+  opacity: 0.5,
 };
 
 /**
@@ -105,14 +105,14 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
     dataLabel: true,
     polarGridType: 'circle',
     resizeDebounce: 250,
-    ...props.chartConfig
+    ...props.chartConfig,
   };
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
     props.measures,
     dimensionDefaults,
-    measureDefaults
+    measureDefaults,
   );
 
   const tooltipValueFormatter = useTooltipFormatter(measures);
@@ -131,15 +131,15 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
         onClick(
           enrichEventWithDetails(event, {
             payload: payload?.activePayload?.[0]?.payload,
-            activePayloads: payload?.activePayload
-          })
+            activePayloads: payload?.activePayload,
+          }),
         );
       }
       if (preventOnClickCall.current) {
         preventOnClickCall.current = false;
       }
     },
-    [onClick, preventOnClickCall.current]
+    [onClick, preventOnClickCall.current],
   );
 
   const onDataPointClickInternal = useCallback(
@@ -151,13 +151,13 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
             dataKey: eventOrIndex.dataKey,
             name: eventOrIndex.payload.label,
             dataIndex: eventOrIndex.index,
-            payload: eventOrIndex.payload
-          })
+            payload: eventOrIndex.payload,
+          }),
         );
         preventOnClickCall.current = true;
       }
     },
-    [onDataPointClick, preventOnClickCall.current]
+    [onDataPointClick, preventOnClickCall.current],
   );
 
   const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
@@ -187,7 +187,7 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
           dataKey={primaryDimensionAccessor}
           tickFormatter={primaryDimension?.formatter}
           tick={{
-            fill: ThemingParameters.sapContent_LabelColor
+            fill: ThemingParameters.sapContent_LabelColor,
           }}
         />
         <PolarRadiusAxis />

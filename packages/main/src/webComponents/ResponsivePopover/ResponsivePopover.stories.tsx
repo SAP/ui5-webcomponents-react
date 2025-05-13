@@ -16,7 +16,7 @@ const meta = {
   argTypes: {
     footer: { control: { disable: true } },
     children: { control: { disable: true } },
-    header: { control: { disable: true } }
+    header: { control: { disable: true } },
   },
   args: {
     children: (
@@ -32,9 +32,9 @@ const meta = {
     verticalAlign: PopoverVerticalAlign.Center,
     opener: 'openPopoverBtn',
     className: 'footerPartNoPadding',
-    open: isChromatic
+    open: isChromatic,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof ResponsivePopover>;
 
 export default meta;
@@ -68,5 +68,5 @@ export const Default: Story = {
         />
       </>
     );
-  }
+  },
 };

@@ -22,7 +22,7 @@ const MenuSeparator = withWebComponent<MenuSeparatorPropTypes, MenuSeparatorDomR
   [],
   [],
   [],
-  []
+  [],
 );
 
 MenuSeparator.displayName = 'MenuSeparator';

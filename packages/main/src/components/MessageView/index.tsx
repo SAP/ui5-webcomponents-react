@@ -79,8 +79,8 @@ export const resolveMessageTypes = (children: ReactElement<MessageItemPropTypes>
         [ValueState.Negative]: 0,
         [ValueState.Critical]: 0,
         [ValueState.Positive]: 0,
-        [ValueState.Information]: 0
-      }
+        [ValueState.Information]: 0,
+      },
     );
 };
 
@@ -176,7 +176,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
     if (transitionTrigger.current === 'btn') {
       requestAnimationFrame(() => {
         const selectedItem = listRef.current.querySelector<Ui5DomRef>(
-          `[data-title="${CSS.escape(prevSelectedMessage.current.titleTextStr)}"]`
+          `[data-title="${CSS.escape(prevSelectedMessage.current.titleTextStr)}"]`,
         );
         void selectedItem.focus();
       });
@@ -194,7 +194,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
     <div ref={componentRef} {...rest} className={outerClasses} onTransitionEnd={handleTransitionEnd}>
       <MessageViewContext.Provider
         value={{
-          selectMessage: setSelectedMessage
+          selectMessage: setSelectedMessage,
         }}
       >
         <div style={{ visibility: selectedMessage ? 'hidden' : 'visible' }} className={classNames.messagesContainer}>

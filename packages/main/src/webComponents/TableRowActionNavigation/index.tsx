@@ -52,7 +52,7 @@ const TableRowActionNavigation = withWebComponent<TableRowActionNavigationPropTy
   [],
   ['interactive', 'invisible'],
   [],
-  ['click']
+  ['click'],
 );
 
 TableRowActionNavigation.displayName = 'TableRowActionNavigation';

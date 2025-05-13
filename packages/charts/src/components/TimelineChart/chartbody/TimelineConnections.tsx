@@ -124,7 +124,7 @@ const generateF2SArrow = (
   finishX: number,
   finishY: number,
   color: string,
-  halfRowHeight: number
+  halfRowHeight: number,
 ): ReactElement => {
   return (
     <>
@@ -162,7 +162,7 @@ const generateS2FArrow = (
   finishX: number,
   finishY: number,
   color: string,
-  halfRowHeight: number
+  halfRowHeight: number,
 ): ReactElement => {
   return (
     <>
@@ -199,7 +199,7 @@ const generateS2SArrow = (
   startY: number,
   finishX: number,
   finishY: number,
-  color: string
+  color: string,
 ): ReactElement => {
   return (
     <>
@@ -223,7 +223,7 @@ const generateF2FArrow = (
   startY: number,
   finishX: number,
   finishY: number,
-  color: string
+  color: string,
 ): ReactElement => {
   return (
     <>
@@ -273,7 +273,7 @@ const generateEndFacingHead = (finishX: number, finishY: number, color: string):
 const generateConnectionData = (
   activities: ITimelineChartTask[] | ITimelineChartMileStone[],
   bodyRect: DOMRect,
-  connectionDataArray: ConnectionData[]
+  connectionDataArray: ConnectionData[],
 ) => {
   for (let i = 0; i < activities.length; i++) {
     const activity = activities[i];
@@ -321,7 +321,7 @@ const generateConnectionData = (
         startY,
         endX,
         endY,
-        connection: item.type
+        connection: item.type,
       });
     });
   }

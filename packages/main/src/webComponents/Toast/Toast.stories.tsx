@@ -11,15 +11,15 @@ const meta = {
   args: {
     placement: ToastPlacement.BottomCenter,
     children: 'Toast Text',
-    open: isChromatic
+    open: isChromatic,
   },
   argTypes: {
-    children: { control: 'text' }
+    children: { control: 'text' },
   },
   parameters: {
-    chromatic: { delay: 1000 }
+    chromatic: { delay: 1000 },
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Toast>;
 export default meta;
 
@@ -48,5 +48,5 @@ export const Default: Story = {
         <Button onClick={showToast}>Show Toast</Button>
       </div>
     );
-  }
+  },
 };

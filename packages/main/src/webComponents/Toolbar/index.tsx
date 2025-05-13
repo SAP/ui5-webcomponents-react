@@ -73,7 +73,7 @@ const Toolbar = withWebComponent<ToolbarPropTypes, ToolbarDomRef>(
   ['accessibleName', 'accessibleNameRef', 'alignContent', 'design'],
   [],
   [],
-  []
+  [],
 );
 
 Toolbar.displayName = 'Toolbar';

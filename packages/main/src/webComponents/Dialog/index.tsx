@@ -262,7 +262,7 @@ const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'headerText', 'initialFocus', 'state'],
   ['draggable', 'open', 'preventFocusRestore', 'preventInitialFocus', 'resizable', 'stretch'],
   ['footer', 'header'],
-  ['before-close', 'before-open', 'close', 'open']
+  ['before-close', 'before-open', 'close', 'open'],
 );
 
 Dialog.displayName = 'Dialog';

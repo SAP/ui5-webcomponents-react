@@ -105,7 +105,7 @@ const ColorPalettePopover = withWebComponent<ColorPalettePopoverPropTypes, Color
   ['defaultColor', 'opener'],
   ['open', 'showDefaultColor', 'showMoreColors', 'showRecentColors'],
   [],
-  ['close', 'item-click']
+  ['close', 'item-click'],
 );
 
 ColorPalettePopover.displayName = 'ColorPalettePopover';

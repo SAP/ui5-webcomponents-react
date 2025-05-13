@@ -3,7 +3,7 @@ import {
   attachOrientationChangeHandler,
   attachResizeHandler,
   detachOrientationChangeHandler,
-  detachResizeHandler
+  detachResizeHandler,
 } from './index';
 
 function ResizeTestComponent({ onChange }: { onChange: (event: { width: number; height: number }) => void }) {
@@ -23,7 +23,7 @@ function ResizeTestComponent({ onChange }: { onChange: (event: { width: number; 
 }
 
 function OrientationChangeComponent({
-  onChange
+  onChange,
 }: {
   onChange: (event: { portrait: boolean; landscape: boolean }) => void;
 }) {
@@ -50,7 +50,7 @@ describe('Device', () => {
     cy.viewport(200, 1080);
     cy.get('@resize').should('have.been.calledOnce').and('have.been.calledWith', {
       height: 1080,
-      width: 200
+      width: 200,
     });
 
     cy.findByText('Unregister').click();
@@ -67,12 +67,12 @@ describe('Device', () => {
     cy.viewport('iphone-x', 'landscape');
     cy.get('@orientation').should('have.been.calledOnce').and('have.been.calledWith', {
       landscape: true,
-      portrait: false
+      portrait: false,
     });
     cy.viewport('iphone-x', 'portrait');
     cy.get('@orientation').should('have.been.calledTwice').and('have.been.calledWith', {
       landscape: true,
-      portrait: false
+      portrait: false,
     });
 
     cy.findByText('Unregister').click();

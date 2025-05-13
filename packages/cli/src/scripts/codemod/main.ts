@@ -35,6 +35,6 @@ export default async function runCodemod(transform: string, inputDir: string, us
   // eslint-disable-next-line no-console
   console.log(`Executing 'npx jscodeshift ${jscodeshiftOptions.join(' ')} ${inputDir}'`);
   childProcess.spawnSync('npx', ['jscodeshift', ...jscodeshiftOptions, inputDir], {
-    stdio: 'inherit'
+    stdio: 'inherit',
   });
 }

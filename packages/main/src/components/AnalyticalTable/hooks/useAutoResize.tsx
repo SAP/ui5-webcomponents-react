@@ -24,8 +24,8 @@ function setResizerProps(props, { instance, header }: { instance: TableInstance;
         onAutoResize(
           enrichEventWithDetails(e, {
             columnId: accessor,
-            width: largest
-          })
+            width: largest,
+          }),
         );
       }
       if (e.defaultPrevented) {
@@ -33,9 +33,9 @@ function setResizerProps(props, { instance, header }: { instance: TableInstance;
       }
       dispatch({
         type: 'AUTO_RESIZE',
-        payload: { [accessor]: largest }
+        payload: { [accessor]: largest },
       });
-    }
+    },
   };
 }
 
@@ -99,7 +99,7 @@ function getMeasureMax(accessor, virtualRowsRange, tableNode, isTreeTable): numb
   }
 
   return Math.ceil(
-    calculateContentWidth(cellWithMaxWidthContent) + CELL_PADDING_PX + 2 /* account for rounding error and border */
+    calculateContentWidth(cellWithMaxWidthContent) + CELL_PADDING_PX + 2 /* account for rounding error and border */,
   );
 }
 
@@ -107,9 +107,9 @@ const setCellProps = (
   props,
   {
     cell: {
-      column: { id }
-    }
-  }: { cell: TableInstance['cell'] }
+      column: { id },
+    },
+  }: { cell: TableInstance['cell'] },
 ) => {
   return [props, { ['data-column-id-cell']: id }];
 };

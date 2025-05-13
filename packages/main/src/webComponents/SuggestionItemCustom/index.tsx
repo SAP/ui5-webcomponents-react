@@ -40,7 +40,7 @@ const SuggestionItemCustom = withWebComponent<SuggestionItemCustomPropTypes, Sug
   ['text'],
   [],
   [],
-  []
+  [],
 );
 
 SuggestionItemCustom.displayName = 'SuggestionItemCustom';

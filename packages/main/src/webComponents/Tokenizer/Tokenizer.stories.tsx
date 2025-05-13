@@ -10,7 +10,7 @@ const meta = {
   title: 'Inputs / Tokenizer',
   component: Tokenizer,
   args: { style: { width: '250px' } },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Tokenizer>;
 
 export default meta;
@@ -37,7 +37,7 @@ export const Default: Story = {
         <Token text="Uganda" />
       </Tokenizer>
     );
-  }
+  },
 };
 
 export const WithLogic = {
@@ -57,7 +57,7 @@ export const WithLogic = {
       'Mexico',
       'Nepal',
       'Qatar',
-      'Uganda'
+      'Uganda',
     ]);
     const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
     const handleTokenDelete: TokenizerPropTypes['onTokenDelete'] = (e) => {
@@ -91,5 +91,5 @@ export const WithLogic = {
         </div>
       </>
     );
-  }
+  },
 };

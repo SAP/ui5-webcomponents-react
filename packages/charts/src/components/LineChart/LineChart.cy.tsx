@@ -5,25 +5,25 @@ import { cypressPassThroughTestsFactory, testChartLegendConfig, testChartZooming
 const dimensions = [
   {
     accessor: 'name',
-    interval: 0
-  }
+    interval: 0,
+  },
 ];
 const measures = [
   {
     accessor: 'users',
     label: 'Users',
-    formatter: (val: number) => val.toLocaleString('en')
+    formatter: (val: number) => val.toLocaleString('en'),
   },
   {
     accessor: 'sessions',
     label: 'Active Sessions',
     formatter: (val) => `${val} sessions`,
-    hideDataLabel: true
+    hideDataLabel: true,
   },
   {
     accessor: 'volume',
-    label: 'Vol.'
-  }
+    label: 'Vol.',
+  },
 ];
 
 describe('LineChart', () => {
@@ -46,7 +46,7 @@ describe('LineChart', () => {
         onClick={onClick}
         onLegendClick={onLegendClick}
         noAnimation
-      />
+      />,
     );
 
     cy.get('.recharts-line-dot[name="Users"]').eq(0).click({ force: true });
@@ -56,9 +56,9 @@ describe('LineChart', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: Cypress.sinon.match({
-            payload: complexDataSet[0]
-          })
-        })
+            payload: complexDataSet[0],
+          }),
+        }),
       );
 
     cy.contains('Users').click();
@@ -66,9 +66,9 @@ describe('LineChart', () => {
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          dataKey: 'users'
-        })
-      })
+          dataKey: 'users',
+        }),
+      }),
     );
   });
 

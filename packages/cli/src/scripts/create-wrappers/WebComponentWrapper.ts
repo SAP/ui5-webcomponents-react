@@ -100,7 +100,7 @@ export class WebComponentWrapper {
         typeOnlyDefault: false,
         named: new Set(),
         types: new Set(),
-        importUnassinged: false
+        importUnassinged: false,
       });
     }
     return this.importMap.get(pkgName)!;

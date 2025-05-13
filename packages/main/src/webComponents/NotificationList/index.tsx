@@ -4,7 +4,7 @@ import '@ui5/webcomponents-fiori/dist/NotificationList.js';
 import type {
   NotificationItemClickEventDetail,
   NotificationItemCloseEventDetail,
-  NotificationItemToggleEventDetail
+  NotificationItemToggleEventDetail,
 } from '@ui5/webcomponents-fiori/dist/NotificationList.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
@@ -93,7 +93,7 @@ const NotificationList = withWebComponent<NotificationListPropTypes, Notificatio
   ['noDataText'],
   [],
   [],
-  ['item-click', 'item-close', 'item-toggle']
+  ['item-click', 'item-close', 'item-toggle'],
 );
 
 NotificationList.displayName = 'NotificationList';

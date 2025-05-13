@@ -16,7 +16,7 @@ import {
   SAVE,
   SEARCH,
   SHARING,
-  VIEW
+  VIEW,
 } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../types/CommonProps.js';
 import { Bar } from '../../webComponents/Bar/index.js';
@@ -45,7 +45,7 @@ export interface ManageViewsDialogPropTypes {
       updatedRows: any;
       defaultView: string;
       deletedRows: any;
-    }
+    },
   ) => void;
   showShare: boolean;
   showApplyAutomatically: boolean;
@@ -67,7 +67,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     showCreatedBy,
     variantNames,
     showOnlyFavorites,
-    onManageViewsCancel
+    onManageViewsCancel,
   } = props;
   const uniqueId = useId();
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -119,7 +119,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         return {};
       }
       return child.props;
-    })
+    }),
   );
 
   useEffect(() => {
@@ -133,7 +133,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
           _hasApplyAutomaticallyText = true;
         }
         return child.props;
-      })
+      }),
     );
     setHasApplyAutomaticallyText(_hasApplyAutomaticallyText);
   }, [children]);
@@ -150,7 +150,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     if (payload) {
       changedTableRows.current[payload.currentVariant] = {
         ...(changedTableRows.current[payload.currentVariant] ?? {}),
-        ...payload
+        ...payload,
       };
     }
   };
@@ -165,7 +165,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
             return { ...item, ...changedTableRows.current[item.children] };
           }
           return item;
-        })
+        }),
     );
   };
 
@@ -174,7 +174,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       handleSaveManageViews(e, {
         updatedRows: changedTableRows.current,
         defaultView,
-        deletedRows: deletedTableRows.current
+        deletedRows: deletedTableRows.current,
       });
     } else {
       void Object.values(invalidVariants)[0].focus();
@@ -193,8 +193,8 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     if (typeof onManageViewsCancel === 'function') {
       onManageViewsCancel(
         enrichEventWithDetails(e, {
-          invalidVariants
-        })
+          invalidVariants,
+        }),
       );
     }
     setInvalidVariants((prev) => {
@@ -211,8 +211,8 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     setFilteredProps(
       childrenProps.filter(
         (item) =>
-          item.children?.toLowerCase()?.includes(lowerCaseVal) || item.author?.toLowerCase()?.includes(lowerCaseVal)
-      )
+          item.children?.toLowerCase()?.includes(lowerCaseVal) || item.author?.toLowerCase()?.includes(lowerCaseVal),
+      ),
     );
   };
 
@@ -227,7 +227,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
       initialFocus={`search-${uniqueId}`}
       style={
         {
-          '--_ui5wcr_popup_default_header_height': `var(${getScopedVarName('--_ui5_popup_default_header_height')})`
+          '--_ui5wcr_popup_default_header_height': `var(${getScopedVarName('--_ui5_popup_default_header_height')})`,
         } as CommonProps['style'] & { '--_ui5wcr_popup_default_header_height': string }
       }
       header={

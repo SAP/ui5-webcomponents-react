@@ -11,9 +11,9 @@ const meta = {
   title: 'Inputs / ProductSwitch',
   component: ProductSwitch,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof ProductSwitch>;
 
 export default meta;
@@ -39,5 +39,5 @@ export const Default: Story = {
         <ProductSwitchItem titleText="Travel & Expense" subtitleText="Concur" icon={flightIcon} />
       </ProductSwitch>
     );
-  }
+  },
 };

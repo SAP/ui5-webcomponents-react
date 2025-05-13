@@ -6,13 +6,13 @@ const baseStyles = {
   width: '100%',
   // border
   height: 'calc(100% - 1px)',
-  alignSelf: 'start'
+  alignSelf: 'start',
 };
 
 const HighlightColors = {
   ...ValueState,
   ...IndicationColor,
-  None: undefined
+  None: undefined,
 };
 
 /*
@@ -36,11 +36,11 @@ const columnsDeps = (deps, { instance: { webComponentsReactProperties } }: { ins
 };
 const visibleColumnsDeps = (deps, { instance }: { instance: TableInstance }) => [
   ...deps,
-  instance.webComponentsReactProperties.withRowHighlight
+  instance.webComponentsReactProperties.withRowHighlight,
 ];
 const visibleColumns = (
   currentVisibleColumns,
-  { instance: { webComponentsReactProperties } }: { instance: TableInstance }
+  { instance: { webComponentsReactProperties } }: { instance: TableInstance },
 ) => {
   if (!webComponentsReactProperties.withRowHighlight) {
     return currentVisibleColumns.filter(({ id }) => id !== '__ui5wcr__internal_highlight_column');
@@ -69,9 +69,9 @@ const columns = (currentColumns, { instance }: { instance: TableInstance }) => {
       minWidth: 6,
       maxWidth: 6,
       Header,
-      Cell
+      Cell,
     },
-    ...currentColumns
+    ...currentColumns,
   ];
 };
 

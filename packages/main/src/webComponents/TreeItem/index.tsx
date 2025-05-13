@@ -225,11 +225,11 @@ const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
     'icon',
     'text',
     'tooltip',
-    'type'
+    'type',
   ],
   ['expanded', 'hasChildren', 'indeterminate', 'movable', 'navigated', 'selected'],
   ['deleteButton', 'image'],
-  ['detail-click']
+  ['detail-click'],
 );
 
 TreeItem.displayName = 'TreeItem';

@@ -13,7 +13,7 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis
+  ZAxis,
 } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
@@ -119,7 +119,7 @@ export interface ScatterChartProps extends Omit<IChartBaseProps<IScatterChartCon
 }
 
 const measureDefaults = {
-  formatter: defaultFormatter
+  formatter: defaultFormatter,
 };
 
 /**
@@ -158,7 +158,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
     legendHorizontalAlign: 'left',
     zoomingTool: false,
     resizeDebounce: 250,
-    ...props.chartConfig
+    ...props.chartConfig,
   };
   const { referenceLine, referenceLineX } = chartConfig;
 
@@ -174,15 +174,15 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
         onClick(
           enrichEventWithDetails(event, {
             payload: payload?.activePayload?.[0]?.payload,
-            activePayloads: payload?.activePayload
-          })
+            activePayloads: payload?.activePayload,
+          }),
         );
       }
       if (preventOnClickCall.current) {
         preventOnClickCall.current = false;
       }
     },
-    [onClick, preventOnClickCall.current]
+    [onClick, preventOnClickCall.current],
   );
 
   const onDataPointClickInternal = useCallback(
@@ -193,13 +193,13 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
             value: payload.node,
             dataKey: payload.zAxis.dataKey,
             dataIndex: eventOrIndex,
-            payload: payload.payload
-          })
+            payload: payload.payload,
+          }),
         );
         preventOnClickCall.current = true;
       }
     },
-    [onDataPointClick, preventOnClickCall.current]
+    [onDataPointClick, preventOnClickCall.current],
   );
   const isBigDataSet = dataset?.length > 30;
 

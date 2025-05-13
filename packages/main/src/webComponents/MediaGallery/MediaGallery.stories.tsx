@@ -11,14 +11,14 @@ const meta = {
   title: 'Layouts & Floorplans / MediaGallery',
   component: MediaGallery,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
     layout: MediaGalleryLayout.Auto,
     menuHorizontalAlign: MediaGalleryMenuHorizontalAlign.Left,
-    menuVerticalAlign: MediaGalleryMenuVerticalAlign.Bottom
+    menuVerticalAlign: MediaGalleryMenuVerticalAlign.Bottom,
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof MediaGallery>;
 
 export default meta;
@@ -48,7 +48,7 @@ export const Default: Story = {
         </MediaGalleryItem>
       </MediaGallery>
     );
-  }
+  },
 };
 
 export const CustomThumbnail: Story = {
@@ -63,7 +63,7 @@ export const CustomThumbnail: Story = {
         </MediaGalleryItem>
       </MediaGallery>
     );
-  }
+  },
 };
 
 export const InteractiveDisplayArea: Story = {
@@ -85,5 +85,5 @@ export const InteractiveDisplayArea: Story = {
         </MediaGallery>
       </>
     );
-  }
+  },
 };

@@ -149,7 +149,7 @@ const SideNavigationSubItem = withWebComponent<SideNavigationSubItemPropTypes, S
   ['accessibilityAttributes', 'design', 'href', 'icon', 'target', 'text', 'tooltip'],
   ['disabled', 'selected', 'unselectable'],
   [],
-  ['click']
+  ['click'],
 );
 
 SideNavigationSubItem.displayName = 'SideNavigationSubItem';

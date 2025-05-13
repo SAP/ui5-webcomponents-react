@@ -62,7 +62,7 @@ const FormItem = withWebComponent<FormItemPropTypes, FormItemDomRef>(
   ['columnSpan'],
   [],
   ['labelContent'],
-  []
+  [],
 );
 
 FormItem.displayName = 'FormItem';

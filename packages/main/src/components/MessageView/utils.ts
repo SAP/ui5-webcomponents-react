@@ -27,5 +27,5 @@ export const getValueStateMap = (i18nBundle: I18nBundle) => ({
   [ValueState.Critical]: i18nBundle.getText(WARNING),
   [ValueState.Positive]: i18nBundle.getText(SUCCESS),
   [ValueState.Information]: i18nBundle.getText(INFORMATION),
-  [ValueState.None]: i18nBundle.getText(INFORMATION)
+  [ValueState.None]: i18nBundle.getText(INFORMATION),
 });

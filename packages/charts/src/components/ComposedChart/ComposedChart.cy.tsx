@@ -5,27 +5,27 @@ import { cypressPassThroughTestsFactory, testChartLegendConfig, testChartZooming
 const dimensions = [
   {
     accessor: 'name',
-    interval: 0
-  }
+    interval: 0,
+  },
 ];
 const measures = [
   {
     accessor: 'users',
     label: 'Users',
     formatter: (val: number) => val.toLocaleString('en'),
-    type: 'line'
+    type: 'line',
   },
   {
     accessor: 'sessions',
     label: 'Active Sessions',
     formatter: (val) => `${val} sessions`,
-    type: 'bar'
+    type: 'bar',
   },
   {
     accessor: 'volume',
     label: 'Vol.',
-    type: 'area'
-  }
+    type: 'area',
+  },
 ];
 
 describe('ComposedChart', () => {
@@ -51,7 +51,7 @@ describe('ComposedChart', () => {
         measures={measures}
         onClick={onClick}
         onLegendClick={onLegendClick}
-      />
+      />,
     );
 
     cy.findByText('January').click();
@@ -63,9 +63,9 @@ describe('ComposedChart', () => {
         'have.been.calledWith',
         Cypress.sinon.match({
           detail: Cypress.sinon.match({
-            payload: complexDataSet[0]
-          })
-        })
+            payload: complexDataSet[0],
+          }),
+        }),
       );
 
     cy.contains('Users').click();
@@ -73,9 +73,9 @@ describe('ComposedChart', () => {
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          dataKey: 'users'
-        })
-      })
+          dataKey: 'users',
+        }),
+      }),
     );
   });
 

@@ -8,9 +8,9 @@ const meta = {
   argTypes: {},
   args: {
     valueState: ValueState.None,
-    text: 'CheckBox'
+    text: 'CheckBox',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof CheckBox>;
 
 export default meta;
@@ -33,5 +33,5 @@ export const CheckBoxStates: Story = {
         <CheckBox text="Warning readonly" readonly valueState={ValueState.Critical} checked />
       </>
     );
-  }
+  },
 };

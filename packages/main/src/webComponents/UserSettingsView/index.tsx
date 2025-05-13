@@ -50,7 +50,7 @@ const UserSettingsView = withWebComponent<UserSettingsViewPropTypes, UserSetting
   ['text'],
   ['secondary', 'selected'],
   [],
-  []
+  [],
 );
 
 UserSettingsView.displayName = 'UserSettingsView';

@@ -23,7 +23,7 @@ describe('SelectDialog', () => {
     cy.mount(
       <SelectDialog headerText="Select Dialog" open>
         {listItems}
-      </SelectDialog>
+      </SelectDialog>,
     );
     cy.findByText('Select Dialog')
       .should('have.css', 'grid-column-start', 'titleStart')
@@ -31,7 +31,7 @@ describe('SelectDialog', () => {
     cy.mount(
       <SelectDialog headerText="Select Dialog" headerTextAlignCenter open>
         {listItems}
-      </SelectDialog>
+      </SelectDialog>,
     );
     cy.findByText('Select Dialog').should('have.css', 'grid-area', 'titleCenter');
   });
@@ -45,7 +45,7 @@ describe('SelectDialog', () => {
       change,
       confirm,
       rememberSelections,
-      mode
+      mode,
     }: {
       close: SelectDialogPropTypes['onClose'];
       change: ListPropTypes['onSelectionChange'];
@@ -134,7 +134,7 @@ describe('SelectDialog', () => {
     });
 
     cy.mount(
-      <TestComp close={close} change={change} confirm={confirm} mode={ListSelectionMode.Multiple} rememberSelections />
+      <TestComp close={close} change={change} confirm={confirm} mode={ListSelectionMode.Multiple} rememberSelections />,
     );
     cy.clickUi5ListItemByText('Product1');
     cy.clickUi5ListItemByText('Product3');
@@ -161,7 +161,7 @@ describe('SelectDialog', () => {
     const TestComp = ({
       search,
       input,
-      reset
+      reset,
     }: {
       search: SelectDialogPropTypes['onSearch'];
       input: SelectDialogPropTypes['onSearchInput'];
@@ -223,7 +223,7 @@ describe('SelectDialog', () => {
         confirmButtonText="Exterminate"
         onConfirm={confirm}
         open
-      />
+      />,
     );
     cy.get('[ui5-dialog]').should('be.visible');
     cy.findByText('Exterminate').click();
@@ -240,7 +240,7 @@ describe('SelectDialog', () => {
     const cancel = cy.spy().as('cancel');
     const TestComp = ({
       cancel,
-      mode
+      mode,
     }: {
       cancel: SelectDialogPropTypes['onCancel'];
       mode: SelectDialogPropTypes['selectionMode'];
@@ -290,7 +290,7 @@ describe('SelectDialog', () => {
         confirmButtonProps={{ disabled: true, design: ButtonDesign.Negative, 'data-testid': 'confirmBtn' }}
         open
         selectionMode={ListSelectionMode.Multiple}
-      />
+      />,
     );
     cy.findByTestId('confirmBtn').should('be.visible').and('have.attr', 'disabled');
     cy.findByTestId('confirmBtn').should('have.attr', 'design', 'Emphasized');

@@ -46,7 +46,7 @@ const TableHeaderRow = withWebComponent<TableHeaderRowPropTypes, TableHeaderRowD
   [],
   ['sticky'],
   [],
-  []
+  [],
 );
 
 TableHeaderRow.displayName = 'TableHeaderRow';

@@ -19,14 +19,14 @@ const meta = {
   title: 'Layouts & Floorplans / Wizard',
   component: Wizard,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
     style: {
-      height: '400px'
-    }
+      height: '400px',
+    },
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof Wizard>;
 
 export default meta;
@@ -146,5 +146,5 @@ export const Default: Story = {
         </WizardStep>
       </Wizard>
     );
-  }
+  },
 };

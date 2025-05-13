@@ -68,7 +68,7 @@ const TableSelection = withWebComponent<TableSelectionPropTypes, TableSelectionD
   ['mode', 'selected'],
   [],
   [],
-  ['change']
+  ['change'],
 );
 
 TableSelection.displayName = 'TableSelection';

@@ -67,7 +67,7 @@ const UserMenuAccount = withWebComponent<UserMenuAccountPropTypes, UserMenuAccou
   ['avatarInitials', 'avatarSrc', 'description', 'subtitleText', 'titleText'],
   ['loading', 'selected'],
   [],
-  []
+  [],
 );
 
 UserMenuAccount.displayName = 'UserMenuAccount';

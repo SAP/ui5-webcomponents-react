@@ -82,7 +82,7 @@ const TimelineItem = withWebComponent<TimelineItemPropTypes, TimelineItemDomRef>
   ['icon', 'name', 'state', 'subtitleText', 'titleText'],
   ['nameClickable'],
   [],
-  ['name-click']
+  ['name-click'],
 );
 
 TimelineItem.displayName = 'TimelineItem';

@@ -6,7 +6,7 @@ import { getTextWidth } from '../internal/Utils.js';
 export const useLongestYAxisLabel = (
   dataset: unknown[],
   elements,
-  legendPosition: 'top' | 'bottom' | 'middle'
+  legendPosition: 'top' | 'bottom' | 'middle',
 ): [number, object] =>
   useMemo(() => {
     let labelLength = 0;
@@ -15,7 +15,7 @@ export const useLongestYAxisLabel = (
     if (dataset instanceof Array && primaryElement) {
       const resolveAllMeasureLabels = (item): string[] => {
         return elements.map((elementConfig) =>
-          primaryElement.formatter(getValueByDataKey(item, elementConfig.accessor, ''))
+          primaryElement.formatter(getValueByDataKey(item, elementConfig.accessor, '')),
         );
       };
       labelLength = Math.max(...dataset.map(resolveAllMeasureLabels).flat().map(getTextWidth));

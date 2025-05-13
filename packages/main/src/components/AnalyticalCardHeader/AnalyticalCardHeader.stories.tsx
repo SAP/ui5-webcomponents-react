@@ -8,24 +8,24 @@ import { AnalyticalCardHeader } from './index';
 const simpleDataSet = [
   {
     name: 'January',
-    users: 76
+    users: 76,
   },
   {
     name: 'February',
-    users: 230
+    users: 230,
   },
   {
     name: 'March',
-    users: 240
+    users: 240,
   },
   {
     name: 'April',
-    users: 280
+    users: 280,
   },
   {
     name: 'May',
-    users: 100
-  }
+    users: 100,
+  },
 ];
 
 const meta = {
@@ -33,8 +33,8 @@ const meta = {
   component: AnalyticalCardHeader,
   argTypes: {
     children: {
-      control: { disable: true }
-    }
+      control: { disable: true },
+    },
   },
   args: {
     children: (
@@ -50,8 +50,8 @@ const meta = {
     value: '65.34',
     state: ValueColor.Error,
     scale: 'K',
-    description: 'Q1, 2018'
-  }
+    description: 'Q1, 2018',
+  },
 } satisfies Meta<typeof AnalyticalCardHeader>;
 
 export default meta;
@@ -70,5 +70,5 @@ export const Default: Story = {
         />
       </Card>
     );
-  }
+  },
 };

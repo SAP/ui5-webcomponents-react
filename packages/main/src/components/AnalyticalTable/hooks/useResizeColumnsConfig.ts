@@ -8,7 +8,7 @@ const useGetResizerProps = (props) => {
     onMouseDown: (e: MouseEvent<HTMLDivElement>) => {
       e.preventDefault();
       props.onMouseDown(e);
-    }
+    },
   };
 };
 

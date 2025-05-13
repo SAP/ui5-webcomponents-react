@@ -9,7 +9,7 @@ const debouncedAnnounce = debounce((announcement: string) => {
 
 const getToggleRowExpandedProps = (
   rowProps,
-  { row, instance, userProps }: { row: RowType; instance: TableInstance; userProps: Record<string, any> }
+  { row, instance, userProps }: { row: RowType; instance: TableInstance; userProps: Record<string, any> },
 ) => {
   const { manualGroupBy } = instance;
   const { onRowExpandChange, isTreeTable, renderRowSubComponent, alwaysShowSubComponent, translatableTexts } =
@@ -32,15 +32,15 @@ const getToggleRowExpandedProps = (
       onRowExpandChange(
         enrichEventWithDetails(e, {
           row,
-          column
-        })
+          column,
+        }),
       );
     }
     row.toggleRowExpanded();
     // cannot use ROW_X_COLLAPSED/ROW_X_EXPANDED here,
     // as retrieving the index of the row is not easily possible here and has performance implications
     debouncedAnnounce(
-      !row.isExpanded ? translatableTexts.rowExpandedAnnouncementText : translatableTexts.rowCollapsedAnnouncementText
+      !row.isExpanded ? translatableTexts.rowExpandedAnnouncementText : translatableTexts.rowCollapsedAnnouncementText,
     );
   };
   const onKeyDown = (e) => {
@@ -61,8 +61,8 @@ const getToggleRowExpandedProps = (
     toggleRowPropsWithoutTitle,
     {
       onClick,
-      onKeyDown
-    }
+      onKeyDown,
+    },
   ];
 };
 

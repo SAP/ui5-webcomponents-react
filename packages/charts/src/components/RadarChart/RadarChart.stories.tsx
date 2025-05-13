@@ -9,33 +9,33 @@ const meta = {
     dimensions: [
       {
         accessor: 'name',
-        formatter: (d) => `${d} 2019`
-      }
+        formatter: (d) => `${d} 2019`,
+      },
     ],
     measures: [
       {
         accessor: 'users',
         label: 'Users',
-        formatter: (val) => val.toLocaleString()
+        formatter: (val) => val.toLocaleString(),
       },
       {
         accessor: 'sessions',
         label: 'Active Sessions',
         formatter: (val) => `${val} sessions`,
-        hideDataLabel: true
+        hideDataLabel: true,
       },
       {
         accessor: 'volume',
-        label: 'Vol.'
-      }
+        label: 'Vol.',
+      },
     ],
-    dataset: complexDataSet
+    dataset: complexDataSet,
   },
   argTypes: {
     dataset: {
-      control: { disable: true }
-    }
-  }
+      control: { disable: true },
+    },
+  },
 } satisfies Meta<typeof RadarChart>;
 
 export default meta;
@@ -47,8 +47,8 @@ export const WithCustomColor: Story = {
   args: {
     dimensions: [{ accessor: 'name' }],
     measures: [{ accessor: 'users', color: 'red' }],
-    dataset: simpleDataSet
-  }
+    dataset: simpleDataSet,
+  },
 };
 
 export const WithDataLabels: Story = {
@@ -56,16 +56,16 @@ export const WithDataLabels: Story = {
     dimensions: [{ accessor: 'name' }],
     measures: [
       {
-        accessor: 'users'
+        accessor: 'users',
       },
       {
-        accessor: 'sessions'
+        accessor: 'sessions',
       },
       {
-        accessor: 'volume'
-      }
-    ]
-  }
+        accessor: 'volume',
+      },
+    ],
+  },
 };
 
 export const Polygon: Story = {
@@ -75,29 +75,29 @@ export const Polygon: Story = {
       {
         accessor: 'users',
         formatter: (element) => `${element / 10}`,
-        label: 'number of users'
+        label: 'number of users',
       },
       {
-        accessor: 'sessions'
+        accessor: 'sessions',
       },
       {
-        accessor: 'volume'
-      }
+        accessor: 'volume',
+      },
     ],
-    chartConfig: { polarGridType: 'polygon' }
-  }
+    chartConfig: { polarGridType: 'polygon' },
+  },
 };
 
 export const LoadingPlaceholder: Story = {
   args: {
-    dataset: []
-  }
+    dataset: [],
+  },
 };
 
 export const WithCustomTooltipConfig: Story = {
-  args: tooltipConfig
+  args: tooltipConfig,
 };
 
 export const WithCustomLegendConfig: Story = {
-  args: legendConfig
+  args: legendConfig,
 };

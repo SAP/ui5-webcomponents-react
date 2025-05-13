@@ -78,7 +78,7 @@ const Card = withWebComponent<CardPropTypes, CardDomRef>(
   ['accessibleName', 'accessibleNameRef', 'loadingDelay'],
   ['loading'],
   ['header'],
-  []
+  [],
 );
 
 Card.displayName = 'Card';

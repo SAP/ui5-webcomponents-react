@@ -17,7 +17,7 @@ import type {
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes,
   ToastDomRef,
-  ToastPropTypes
+  ToastPropTypes,
 } from '../../webComponents/index.js';
 import { Dialog, Menu, Popover, ResponsivePopover, Toast } from '../../webComponents/index.js';
 import type { MessageBoxPropTypes } from '../MessageBox/index.js';
@@ -33,7 +33,7 @@ type ClosableModalReturnType<DomRef> = ModalReturnType<DomRef> & {
 
 function showDialogFn(
   props: DialogPropTypes,
-  container?: Element | DocumentFragment
+  container?: Element | DocumentFragment,
 ): ClosableModalReturnType<DialogDomRef> {
   const id = getRandomId();
   const ref = createRef<DialogDomRef>();
@@ -47,11 +47,11 @@ function showDialogFn(
           props.onClose(event);
         }
         ModalStore.removeModal(id);
-      }
+      },
     },
     ref,
     container,
-    id
+    id,
   });
 
   return {
@@ -60,13 +60,13 @@ function showDialogFn(
       if (ref.current) {
         ref.current.open = false;
       }
-    }
+    },
   };
 }
 
 function showPopoverFn(
   props: PopoverPropTypes,
-  container?: Element | DocumentFragment
+  container?: Element | DocumentFragment,
 ): ClosableModalReturnType<PopoverDomRef> {
   const id = getRandomId();
   const ref = createRef<PopoverDomRef>();
@@ -80,11 +80,11 @@ function showPopoverFn(
           props.onClose(event);
         }
         ModalStore.removeModal(id);
-      }
+      },
     },
     ref,
     container,
-    id
+    id,
   });
 
   return {
@@ -93,13 +93,13 @@ function showPopoverFn(
       if (ref.current) {
         ref.current.open = false;
       }
-    }
+    },
   };
 }
 
 function showResponsivePopoverFn(
   props: ResponsivePopoverPropTypes,
-  container?: Element | DocumentFragment
+  container?: Element | DocumentFragment,
 ): ClosableModalReturnType<ResponsivePopoverDomRef> {
   const id = getRandomId();
   const ref = createRef<ResponsivePopoverDomRef>();
@@ -113,11 +113,11 @@ function showResponsivePopoverFn(
           props.onClose(event);
         }
         ModalStore.removeModal(id);
-      }
+      },
     },
     ref,
     container,
-    id
+    id,
   });
 
   return {
@@ -126,7 +126,7 @@ function showResponsivePopoverFn(
       if (ref.current) {
         ref.current.open = false;
       }
-    }
+    },
   };
 }
 
@@ -143,11 +143,11 @@ function showMenuFn(props: MenuPropTypes, container?: Element | DocumentFragment
           props.onClose(event);
         }
         ModalStore.removeModal(id);
-      }
+      },
     },
     ref,
     container,
-    id
+    id,
   });
 
   return {
@@ -156,13 +156,13 @@ function showMenuFn(props: MenuPropTypes, container?: Element | DocumentFragment
       if (ref.current) {
         ref.current.open = false;
       }
-    }
+    },
   };
 }
 
 function showMessageBoxFn(
   props: MessageBoxPropTypes,
-  container?: Element | DocumentFragment
+  container?: Element | DocumentFragment,
 ): ClosableModalReturnType<DialogDomRef> {
   const id = getRandomId();
   const ref = createRef<DialogDomRef>();
@@ -177,11 +177,11 @@ function showMessageBoxFn(
           props.onClose(event);
         }
         ModalStore.removeModal(id);
-      }
+      },
     },
     ref,
     container,
-    id
+    id,
   });
 
   return {
@@ -190,7 +190,7 @@ function showMessageBoxFn(
       if (ref.current) {
         ref.current.open = false;
       }
-    }
+    },
   };
 }
 
@@ -207,15 +207,15 @@ function showToastFn(props: ToastPropTypes, container?: Element | DocumentFragme
           props.onClose(event);
         }
         ModalStore.removeModal(id);
-      }
+      },
     },
     ref,
     container,
-    id
+    id,
   });
 
   return {
-    ref
+    ref,
   };
 }
 

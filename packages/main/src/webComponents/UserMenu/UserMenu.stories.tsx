@@ -13,7 +13,7 @@ const meta = {
   argTypes: {
     children: { control: { disable: true } },
     opener: { control: { disable: true } },
-    accounts: { control: { disable: true } }
+    accounts: { control: { disable: true } },
   },
   args: {
     accounts: (
@@ -48,8 +48,8 @@ const meta = {
           <UserMenuItem icon="accelerated" text="Terms of Use" data-id="terms-of-use"></UserMenuItem>
         </UserMenuItem>
       </>
-    )
-  }
+    ),
+  },
 } satisfies Meta<typeof UserMenu>;
 
 export default meta;
@@ -92,5 +92,5 @@ export const Default: Story = {
         />
       </>
     );
-  }
+  },
 };

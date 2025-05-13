@@ -5,22 +5,22 @@ import { cypressPassThroughTestsFactory, testChartLegendConfig, testChartZooming
 const dimensions = [
   {
     accessor: 'name',
-    interval: 0
-  }
+    interval: 0,
+  },
 ];
 const measures = [
   {
     accessor: 'users',
     label: 'Users',
     formatter: (val: number) => val.toLocaleString('en'),
-    type: 'line'
+    type: 'line',
   },
   {
     accessor: 'sessions',
     label: 'Active Sessions',
     formatter: (val) => `${val} sessions`,
-    type: 'bar'
-  }
+    type: 'bar',
+  },
 ];
 
 describe('ColumnChartWithTrend', () => {
@@ -44,7 +44,7 @@ describe('ColumnChartWithTrend', () => {
         onClick={onClick}
         onLegendClick={onLegendClick}
         noAnimation
-      />
+      />,
     );
 
     cy.findByText('January').click();
@@ -61,10 +61,10 @@ describe('ColumnChartWithTrend', () => {
               users: 1,
               sessions: 300,
               volume: 756,
-              __users: 100
-            }
-          })
-        })
+              __users: 100,
+            },
+          }),
+        }),
       );
 
     cy.get('.recharts-legend-item-text').contains('Users').click();
@@ -72,9 +72,9 @@ describe('ColumnChartWithTrend', () => {
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          dataKey: 'users'
-        })
-      })
+          dataKey: 'users',
+        }),
+      }),
     );
   });
 
@@ -91,7 +91,7 @@ describe('ColumnChartWithTrend', () => {
         style={{
           display: 'grid',
           gridTemplateColumns: '500px',
-          gridTemplateRows: '500px'
+          gridTemplateRows: '500px',
         }}
       >
         <ColumnChartWithTrend
@@ -101,7 +101,7 @@ describe('ColumnChartWithTrend', () => {
           style={{ height: '100%' }}
           data-testid="ccwt"
         />
-      </div>
+      </div>,
     );
 
     cy.findByTestId('ccwt').should('be.visible').invoke('prop', 'offsetHeight').should('eq', 500);

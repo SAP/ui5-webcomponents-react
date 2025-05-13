@@ -3,7 +3,7 @@ import ThemingParameters from '@sap-theming/theming-base-content/content/Base/ba
 import PATHS from '../config/paths.js';
 import path from 'path';
 import prettier from 'prettier';
-import prettierConfig from '../prettier.config.cjs';
+import prettierConfig from '../prettier.config.js';
 
 let fileContent = `/* eslint-disable camelcase */
 
@@ -23,5 +23,5 @@ fileContent += '}\n';
 
 writeFileSync(
   path.join(PATHS.packages, 'base', 'src', 'styling', 'ThemingParameters.ts'),
-  await prettier.format(fileContent, { ...prettierConfig, parser: 'typescript' })
+  await prettier.format(fileContent, { ...prettierConfig, parser: 'typescript' }),
 );

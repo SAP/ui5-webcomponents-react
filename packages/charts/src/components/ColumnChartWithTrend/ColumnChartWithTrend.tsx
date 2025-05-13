@@ -93,12 +93,12 @@ export interface ColumnChartWithTrendProps
 }
 
 const dimensionDefaults = {
-  formatter: defaultFormatter
+  formatter: defaultFormatter,
 };
 
 const measureDefaults = {
   formatter: defaultFormatter,
-  opacity: 1
+  opacity: 1,
 };
 
 const lineTooltipConfig = { wrapperStyle: { visibility: 'hidden' } } as TooltipProps<any, any>;
@@ -137,14 +137,14 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
     barGap: 3,
     zoomingTool: false,
     resizeDebounce: 250,
-    ...props.chartConfig
+    ...props.chartConfig,
   };
 
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
     props.measures,
     dimensionDefaults,
-    measureDefaults
+    measureDefaults,
   );
 
   const { lineMeasures, columnMeasures, columnDataset } = usePrepareTrendMeasures(measures, dataset);
@@ -153,14 +153,14 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
   const columnTooltipConfig = {
     formatter: (value, name, tooltipProps) => {
       const line = lineMeasures.find(
-        (currLine) => currLine.type === 'line' && currLine.accessor === tooltipProps.dataKey
+        (currLine) => currLine.type === 'line' && currLine.accessor === tooltipProps.dataKey,
       );
       if (line) {
         return line.formatter(tooltipProps.payload[`__${line.accessor}`]);
       }
       const column = columnMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
       return column.formatter(value, name, tooltipProps);
-    }
+    },
   } as TooltipProps<any, any>;
 
   const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
@@ -171,7 +171,7 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
         <ComposedChart
           className={clsx(
             typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined,
-            classNames.trendContainer
+            classNames.trendContainer,
           )}
           tooltipConfig={lineTooltipConfig}
           noAnimation={noAnimation}
@@ -191,14 +191,14 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
             gridHorizontal: false,
             yAxisLabelsVisible: false,
             yAxisWidth,
-            accessibilityLayer: chartConfig.accessibilityLayer
+            accessibilityLayer: chartConfig.accessibilityLayer,
           }}
         />
       )}
       <ComposedChart
         className={clsx(
           typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined,
-          classNames.chartContainer
+          classNames.chartContainer,
         )}
         onLegendClick={onLegendClick}
         tooltipConfig={columnTooltipConfig}

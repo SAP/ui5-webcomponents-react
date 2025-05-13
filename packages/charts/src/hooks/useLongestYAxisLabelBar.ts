@@ -11,7 +11,7 @@ export const useLongestYAxisLabelBar = (dataset: unknown[], elements, legendPosi
     if (dataset instanceof Array && elements) {
       const resolveAllMeasureLabels = (item): string[] => {
         return elements.map((elementConfig) =>
-          elementConfig.formatter(getValueByDataKey(item, elementConfig.accessor, ''))
+          elementConfig.formatter(getValueByDataKey(item, elementConfig.accessor, '')),
         );
       };
 

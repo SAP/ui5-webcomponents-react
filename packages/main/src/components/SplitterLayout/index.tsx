@@ -66,7 +66,7 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
     children: children ?? [],
     width: style?.width,
     height: style?.height,
-    vertical
+    vertical,
   });
 
   useStylesheet(styleData, SplitterLayout.displayName);
@@ -97,7 +97,7 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
             prevSize.current.height = containerRect.height;
             setReset(true);
           }
-        }, 60)
+        }, 60),
       );
 
       layoutObserver.observe(sLRef.current);
@@ -120,7 +120,7 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
         style={
           {
             flexDirection: vertical ? 'column' : 'row',
-            ...style
+            ...style,
           } as CSSProperties
         }
         title={title}

@@ -6,7 +6,7 @@ import { RadialChart } from './RadialChart.js';
 const meta = {
   title: 'RadialChart',
   component: RadialChart,
-  args: { displayValue: '50%', value: 50, maxValue: 100 }
+  args: { displayValue: '50%', value: 50, maxValue: 100 },
 } satisfies Meta<typeof RadialChart>;
 
 export default meta;
@@ -16,8 +16,8 @@ export const Default: Story = {};
 
 export const WithCustomColor: Story = {
   args: {
-    color: '#f0ab00'
-  }
+    color: '#f0ab00',
+  },
 };
 
 export const MicroRadialCharts: Story = {
@@ -31,7 +31,7 @@ export const MicroRadialCharts: Story = {
           displayValue={'50%'}
           displayValueStyle={{
             fontSize: ThemingParameters.sapFontSmallSize,
-            fill: ThemingParameters.sapChart_OrderedColor_1
+            fill: ThemingParameters.sapChart_OrderedColor_1,
           }}
         />
         <FlexBox alignItems={FlexBoxAlignItems.Center}>
@@ -52,5 +52,5 @@ export const MicroRadialCharts: Story = {
         </FlexBox>
       </FlexBox>
     );
-  }
+  },
 };

@@ -3,7 +3,7 @@
 import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
 import type {
   BarcodeScannerDialogScanErrorEventDetail,
-  BarcodeScannerDialogScanSuccessEventDetail
+  BarcodeScannerDialogScanSuccessEventDetail,
 } from '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
@@ -89,7 +89,7 @@ interface BarcodeScannerDialogPropTypes
    * | ❌|✅|
    */
   onScanSuccess?: (
-    event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanSuccessEventDetail>
+    event: Ui5CustomEvent<BarcodeScannerDialogDomRef, BarcodeScannerDialogScanSuccessEventDetail>,
   ) => void;
 }
 
@@ -111,7 +111,7 @@ const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, Bar
   [],
   ['open'],
   ['footer', 'header'],
-  ['close', 'scan-error', 'scan-success']
+  ['close', 'scan-error', 'scan-success'],
 );
 
 BarcodeScannerDialog.displayName = 'BarcodeScannerDialog';

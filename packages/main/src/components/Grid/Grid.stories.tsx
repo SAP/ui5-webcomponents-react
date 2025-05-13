@@ -8,9 +8,9 @@ const meta = {
     defaultSpan: 'XL3 L3 M6 S12',
     defaultIndent: 'XL0 L0 M0 S0',
     vSpacing: '1rem',
-    hSpacing: '1rem'
+    hSpacing: '1rem',
   },
-  argTypes: { children: { control: { disable: true } } }
+  argTypes: { children: { control: { disable: true } } },
 } satisfies Meta<typeof Grid>;
 
 export default meta;
@@ -29,6 +29,6 @@ export const Default: Story = {
         <div style={{ backgroundColor: '#8ca19e' }}>Div 5</div>
         <div style={{ backgroundColor: '#838f8c' }}>Div 6</div>
       </>
-    )
-  }
+    ),
+  },
 };

@@ -7,7 +7,7 @@ import {
   MOUSE_CURSOR_AUTO,
   MOUSE_CURSOR_GRAB,
   MOUSE_CURSOR_GRABBING,
-  NORMAL_OPACITY
+  NORMAL_OPACITY,
 } from './util/constants.js';
 
 describe('TimeLineChart', () => {
@@ -27,7 +27,7 @@ describe('TimeLineChart', () => {
         dataset={dummyDataSet}
         totalDuration={150}
         valueFormat={(x: number) => `${Math.round(x)}-formatted`}
-      />
+      />,
     );
     for (let i = 0; i <= 150; i += 30) {
       cy.findByText(`${i}-formatted`).should('be.visible');
@@ -105,7 +105,7 @@ describe('TimeLineChart', () => {
       }
     });
     cy.mount(
-      <TimelineChart dataset={schedulingEDFData} totalDuration={15} discreteLabels={['label1', 'label2']} isDiscrete />
+      <TimelineChart dataset={schedulingEDFData} totalDuration={15} discreteLabels={['label1', 'label2']} isDiscrete />,
     );
 
     cy.wait(1000).then(() => {
@@ -163,7 +163,7 @@ describe('TimeLineChart', () => {
         totalDuration={150}
         annotations={<TimelineChartAnnotation rowIndex={2} rowHeight={20} figure={<div></div>} />}
         showAnnotation
-      />
+      />,
     );
     cy.get('[data-component-name="TimelineChartAnnotation"]').should('have.css', 'inset-block-start', '40px');
   });
@@ -240,7 +240,7 @@ describe('TimeLineChart', () => {
         showConnection
         annotations={<TimelineChartAnnotation rowIndex={2} rowHeight={20} figure={<div></div>} />}
         showAnnotation
-      />
+      />,
     );
     cy.get('[data-component-name="TimelineChartGridLayer"]')
       .should('have.css', 'pointer-events', 'none')
@@ -267,7 +267,7 @@ describe('TimeLineChart', () => {
         totalDuration={10}
         width="500px"
         valueFormat={(x: number) => `${Math.round(x)}`}
-      />
+      />,
     );
     for (let i = 0; i <= 10; i += 2) {
       cy.findByText(i).should('be.visible');
@@ -280,7 +280,7 @@ describe('TimeLineChart', () => {
         width="500px"
         valueFormat={(x: number) => `${Math.round(x)}`}
         isDiscrete
-      />
+      />,
     );
     for (let i = 0; i <= 9; i++) {
       cy.findByText(i).should('be.visible');
@@ -294,7 +294,7 @@ describe('TimeLineChart', () => {
         valueFormat={(x: number) => `${Math.round(x)}`}
         isDiscrete
         discreteLabels={['one', 'two', ...new Array(8).fill('label')]}
-      />
+      />,
     );
     cy.findAllByText('label').should('have.length', 8).should('be.visible');
     cy.findByText('one').should('be.visible');
@@ -314,7 +314,7 @@ describe('TimeLineChart', () => {
         unit="unit"
         rowTitle="rowTitle"
         columnTitle="columnTitle"
-      />
+      />,
     );
     cy.findByText('Activities').should('not.exist');
     cy.findByText('Duration').should('not.exist');
@@ -330,7 +330,7 @@ describe('TimeLineChart', () => {
         totalDuration={10}
         start={5}
         valueFormat={(x: number) => `${Math.round(x)}`}
-      />
+      />,
     );
     for (let i = 5; i <= 15; i += 2) {
       cy.findByText(i).should('be.visible');

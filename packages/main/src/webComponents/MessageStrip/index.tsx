@@ -105,7 +105,7 @@ const MessageStrip = withWebComponent<MessageStripPropTypes, MessageStripDomRef>
   ['colorScheme', 'design'],
   ['hideCloseButton', 'hideIcon'],
   ['icon'],
-  ['close']
+  ['close'],
 );
 
 MessageStrip.displayName = 'MessageStrip';

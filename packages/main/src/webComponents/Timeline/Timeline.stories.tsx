@@ -11,10 +11,10 @@ const meta = {
   title: 'Data Display / Timeline',
   component: Timeline,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {},
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof Timeline>;
 
 export default meta;
@@ -30,7 +30,7 @@ export const Default: Story = {
         </TimelineItem>
       </Timeline>
     );
-  }
+  },
 };
 
 export const WithGroups: Story = {
@@ -78,5 +78,5 @@ export const WithGroups: Story = {
         </TimelineGroupItem>
       </Timeline>
     );
-  }
+  },
 };

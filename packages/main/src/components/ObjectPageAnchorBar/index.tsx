@@ -22,7 +22,7 @@ const _buttonBaseHeight = `${cssVarVersionInfoPrefix}button_base_height`;
 
 const anchorButtonVariables = {
   [_buttonBaseMinWidth]: '1.5rem',
-  [_buttonBaseHeight]: '1.5rem'
+  [_buttonBaseHeight]: '1.5rem',
 } as CSSProperties;
 
 interface ObjectPageAnchorBarPropTypes extends CommonProps {
@@ -77,7 +77,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
     setHeaderPinned,
     onPinButtonToggle,
     onToggleHeaderContentVisibility,
-    onHoverToggleButton
+    onHoverToggleButton,
   } = props;
 
   useStylesheet(styleData, ObjectPageAnchorBar.displayName);
@@ -117,7 +117,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
         showHideHeaderBtn.accessibilityAttributes = {
           expanded: !!headerContentVisible,
           hasPopup: undefined,
-          controls: undefined
+          controls: undefined,
         };
       }
     });
@@ -142,7 +142,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
         className={clsx(
           classNames.anchorBarActionButton,
           classNames.anchorBarActionButtonExpandable,
-          showBothActions && classNames.anchorBarActionPinnableAndExpandable
+          showBothActions && classNames.anchorBarActionPinnableAndExpandable,
         )}
         style={anchorButtonVariables}
         onClick={onToggleHeaderButtonClick}

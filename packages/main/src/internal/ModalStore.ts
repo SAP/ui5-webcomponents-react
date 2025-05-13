@@ -59,5 +59,5 @@ export const ModalStore = {
   removeModal(id: string) {
     STORE_LOCATION[getStyleStoreSymbol()] = getSnapshot().filter((modal) => modal.id !== id);
     emitChange();
-  }
+  },
 };

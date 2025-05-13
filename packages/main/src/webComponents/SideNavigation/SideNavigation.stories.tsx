@@ -16,7 +16,7 @@ const meta = {
   argTypes: {
     children: { control: { disable: true } },
     fixedItems: { control: { disable: true } },
-    header: { control: { disable: true } }
+    header: { control: { disable: true } },
   },
   args: {
     fixedItems: (
@@ -29,9 +29,9 @@ const meta = {
         />
         <SideNavigationItem text="History" icon={historyIcon} />
       </>
-    )
+    ),
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof SideNavigation>;
 
 export default meta;
@@ -53,7 +53,7 @@ export const Default: Story = {
         </SideNavigationItem>
       </SideNavigation>
     );
-  }
+  },
 };
 
 export const Grouped: Story = {
@@ -76,5 +76,5 @@ export const Grouped: Story = {
         </SideNavigationGroup>
       </SideNavigation>
     );
-  }
+  },
 };

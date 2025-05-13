@@ -139,7 +139,7 @@ const Icon = withWebComponent<IconPropTypes, IconDomRef>(
   ['accessibleName', 'design', 'mode', 'name'],
   ['showTooltip'],
   [],
-  []
+  [],
 );
 
 Icon.displayName = 'Icon';

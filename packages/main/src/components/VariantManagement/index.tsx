@@ -21,7 +21,7 @@ import {
   useEffect,
   useRef,
   useState,
-  version as reactVersion
+  version as reactVersion,
 } from 'react';
 import { MANAGE, MY_VIEWS, SAVE, SAVE_AS, SEARCH, SEARCH_VARIANT, SELECT_VIEW } from '../../i18n/i18n-defaults.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
@@ -53,7 +53,7 @@ const booleanProps = {
   labelReadOnly: true,
   applyAutomatically: true,
   readOnly: true,
-  hideDelete: true
+  hideDelete: true,
 };
 
 /**
@@ -141,7 +141,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   const [saveAsDialogOpen, setSaveAsDialogOpen] = useState(false);
   const [selectedVariant, setSelectedVariantState] = useState<SelectedVariant | undefined>(() => {
     const currentSelectedVariant = safeChildren.find(
-      (item) => isValidElement(item) && (item as ReactElement<VariantItemPropTypes>).props.selected
+      (item) => isValidElement(item) && (item as ReactElement<VariantItemPropTypes>).props.selected,
     ) as ComponentElement<any, any>;
     if (currentSelectedVariant) {
       return { ...currentSelectedVariant.props, variantItem: currentSelectedVariant.ref };
@@ -178,7 +178,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   };
 
   const [selectedSaveViewInputProps, setSelectedSaveViewInputProps] = useState(
-    selectedVariant?.saveViewInputProps ?? {}
+    selectedVariant?.saveViewInputProps ?? {},
   );
 
   const handleClose = () => {
@@ -228,7 +228,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
           const castChild = child as ReactElement<VariantItemPropTypes>;
           let updatedProps: Omit<SelectedVariant, 'children' | 'variantItem'> = {};
           const currentVariant = popoverRef.current.querySelector(
-            `ui5-li[data-children="${CSS.escape(castChild.props.children)}"]`
+            `ui5-li[data-children="${CSS.escape(castChild.props.children)}"]`,
           );
           callbackProperties.prevVariants.push(castChild.props);
           if (defaultView) {
@@ -251,13 +251,13 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
               ...castChild.props,
               ...updatedProps,
               variantItem: currentVariant,
-              prevVariant: { ...castChild.props }
+              prevVariant: { ...castChild.props },
             });
           }
           callbackProperties.variants.push({ ...castChild.props, ...updatedProps, variantItem: currentVariant });
           return cloneElement(castChild, updatedProps);
-        })
-      )
+        }),
+      ),
     );
     if (typeof onSaveManageViews === 'function') {
       onSaveManageViews(enrichEventWithDetails(e, callbackProperties));
@@ -272,7 +272,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
       popoverRef.current.opener = e.target;
       setPopoverOpen(true);
     },
-    [popoverRef]
+    [popoverRef],
   );
 
   const handleCloseVariantManagement = (e) => {
@@ -305,7 +305,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     const selectedChild = safeChildren.find(
       (item) =>
         isValidElement(item) &&
-        (item as ReactElement<VariantItemPropTypes>).props.children === selectedVariant?.children
+        (item as ReactElement<VariantItemPropTypes>).props.children === selectedVariant?.children,
     ) as ReactElement<VariantItemPropTypes>;
     setSelectedSaveViewInputProps(selectedChild?.props.saveViewInputProps ?? {});
   }, [selectedVariant, safeChildren]);
@@ -315,7 +315,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
     const dataset = targetItem.dataset as unknown as SelectedVariantWithStringBool;
     setSelectedVariant({
       ...dataset,
-      variantItem: targetItem
+      variantItem: targetItem,
     });
     selectVariantEventRef.current = e;
     if (closeOnItemSelect) {
@@ -326,7 +326,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
   const variantNames = safeChildren.map((item) =>
     isValidElement(item) && typeof (item as ReactElement<VariantItemPropTypes>).props?.children === 'string'
       ? (item as ReactElement<VariantItemPropTypes>).props.children
-      : ''
+      : '',
   );
 
   const [favoriteChildren, setFavoriteChildren] = useState(undefined);
@@ -340,7 +340,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
             ((child as ReactElement<VariantItemPropTypes>).props.favorite ||
               (child as ReactElement<VariantItemPropTypes>).props.isDefault)
           );
-        })
+        }),
       );
     }
     if (!showOnlyFavorites && favoriteChildren?.length > 0) {
@@ -359,8 +359,8 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
       safeChildrenWithFavorites.filter(
         (child: ComponentElement<any, any>) =>
           typeof child?.props?.children === 'string' &&
-          child.props.children.toLowerCase().includes(e.target.value.toLowerCase())
-      )
+          child.props.children.toLowerCase().includes(e.target.value.toLowerCase()),
+      ),
     );
   };
   useEffect(() => {
@@ -368,8 +368,8 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
       setFilteredChildren(
         safeChildrenWithFavorites.filter(
           (child: ComponentElement<any, any>) =>
-            typeof child?.props?.children === 'string' && child.props.children.toLowerCase().includes(searchValue)
-        )
+            typeof child?.props?.children === 'string' && child.props.children.toLowerCase().includes(searchValue),
+        ),
       );
     }
   }, [safeChildrenWithFavorites]);
@@ -381,7 +381,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
       <VariantManagementContext.Provider
         value={{
           selectVariantItem: setSelectedVariant,
-          selectedVariant
+          selectedVariant,
         }}
       >
         <FlexBox onClick={disabled ? undefined : handleOpenVariantManagement}>

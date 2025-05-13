@@ -11,10 +11,10 @@ const meta = {
   component: Table,
   argTypes: {
     columns: { control: { disable: true } },
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {},
-  tags: ['package:@ui5/webcomponents-compat']
+  tags: ['package:@ui5/webcomponents-compat'],
 } satisfies Meta<typeof Table>;
 
 export default meta;
@@ -81,7 +81,7 @@ export const Default: Story = {
         </TableRow>
       </Table>
     );
-  }
+  },
 };
 
 export const GrowingTable: Story = {
@@ -122,5 +122,5 @@ export const GrowingTable: Story = {
         </Table>
       </div>
     );
-  }
+  },
 };

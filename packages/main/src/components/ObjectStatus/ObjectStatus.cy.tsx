@@ -2,7 +2,7 @@ import {
   VALUE_STATE_ERROR,
   VALUE_STATE_INFORMATION,
   VALUE_STATE_SUCCESS,
-  VALUE_STATE_WARNING
+  VALUE_STATE_WARNING,
 } from '@ui5/webcomponents/dist/generated/i18n/i18n-defaults.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
@@ -28,9 +28,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapButton_Negative_TextColor,
       backgroundColor: ThemingParameters.sapButton_Negative_Background,
-      iconColor: ThemingParameters.sapButton_Negative_TextColor
+      iconColor: ThemingParameters.sapButton_Negative_TextColor,
     },
-    hiddenText: VALUE_STATE_ERROR.defaultText
+    hiddenText: VALUE_STATE_ERROR.defaultText,
   },
   {
     state: 'None',
@@ -39,9 +39,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapTextColor,
       backgroundColor: ThemingParameters.sapNeutralBackground,
-      iconColor: ThemingParameters.sapTextColor
+      iconColor: ThemingParameters.sapTextColor,
     },
-    hiddenText: undefined
+    hiddenText: undefined,
   },
   {
     state: ValueState.Positive,
@@ -51,9 +51,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapButton_Success_TextColor,
       backgroundColor: ThemingParameters.sapButton_Success_Background,
-      iconColor: ThemingParameters.sapButton_Success_TextColor
+      iconColor: ThemingParameters.sapButton_Success_TextColor,
     },
-    hiddenText: VALUE_STATE_SUCCESS.defaultText
+    hiddenText: VALUE_STATE_SUCCESS.defaultText,
   },
   {
     state: ValueState.Critical,
@@ -63,9 +63,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapButton_Critical_TextColor,
       backgroundColor: ThemingParameters.sapButton_Critical_Background,
-      iconColor: ThemingParameters.sapButton_Critical_TextColor
+      iconColor: ThemingParameters.sapButton_Critical_TextColor,
     },
-    hiddenText: VALUE_STATE_WARNING.defaultText
+    hiddenText: VALUE_STATE_WARNING.defaultText,
   },
   {
     state: 'Information',
@@ -75,9 +75,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapButton_Information_TextColor,
       backgroundColor: ThemingParameters.sapButton_Information_Background,
-      iconColor: ThemingParameters.sapButton_Information_TextColor
+      iconColor: ThemingParameters.sapButton_Information_TextColor,
     },
-    hiddenText: VALUE_STATE_INFORMATION.defaultText
+    hiddenText: VALUE_STATE_INFORMATION.defaultText,
   },
   {
     state: 'Indication01',
@@ -86,9 +86,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_1_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_1_Background,
-      iconColor: ThemingParameters.sapIndicationColor_1_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_1_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 1`
+    hiddenText: `${INDICATION_COLOR.defaultText} 1`,
   },
   {
     state: 'Indication02',
@@ -97,9 +97,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_2_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_2_Background,
-      iconColor: ThemingParameters.sapIndicationColor_2_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_2_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 2`
+    hiddenText: `${INDICATION_COLOR.defaultText} 2`,
   },
   {
     state: 'Indication03',
@@ -108,9 +108,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_3_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_3_Background,
-      iconColor: ThemingParameters.sapIndicationColor_3_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_3_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 3`
+    hiddenText: `${INDICATION_COLOR.defaultText} 3`,
   },
   {
     state: 'Indication04',
@@ -119,9 +119,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_4_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_4_Background,
-      iconColor: ThemingParameters.sapIndicationColor_4_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_4_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 4`
+    hiddenText: `${INDICATION_COLOR.defaultText} 4`,
   },
   {
     state: 'Indication05',
@@ -130,9 +130,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_5_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_5_Background,
-      iconColor: ThemingParameters.sapIndicationColor_5_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_5_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 5`
+    hiddenText: `${INDICATION_COLOR.defaultText} 5`,
   },
   {
     state: 'Indication06',
@@ -141,9 +141,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_6_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_6_Background,
-      iconColor: ThemingParameters.sapIndicationColor_6_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_6_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 6`
+    hiddenText: `${INDICATION_COLOR.defaultText} 6`,
   },
   {
     state: 'Indication07',
@@ -152,9 +152,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_7_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_7_Background,
-      iconColor: ThemingParameters.sapIndicationColor_7_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_7_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 7`
+    hiddenText: `${INDICATION_COLOR.defaultText} 7`,
   },
   {
     state: 'Indication08',
@@ -163,9 +163,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_8_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_8_Background,
-      iconColor: ThemingParameters.sapIndicationColor_8_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_8_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 8`
+    hiddenText: `${INDICATION_COLOR.defaultText} 8`,
   },
   {
     state: 'Indication09',
@@ -174,9 +174,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_9_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_9_Background,
-      iconColor: ThemingParameters.sapIndicationColor_9_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_9_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 9`
+    hiddenText: `${INDICATION_COLOR.defaultText} 9`,
   },
   {
     state: 'Indication10',
@@ -185,9 +185,9 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_10_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_10_Background,
-      iconColor: ThemingParameters.sapIndicationColor_10_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_10_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 10`
+    hiddenText: `${INDICATION_COLOR.defaultText} 10`,
   },
   {
     state: 'Indication11',
@@ -197,10 +197,10 @@ const statesWithCSSVars: {
     inverted: {
       color: ThemingParameters.sapIndicationColor_1b_TextColor,
       backgroundColor: ThemingParameters.sapIndicationColor_1b_Background,
-      iconColor: ThemingParameters.sapIndicationColor_1b_TextColor
+      iconColor: ThemingParameters.sapIndicationColor_1b_TextColor,
     },
-    hiddenText: `${INDICATION_COLOR.defaultText} 11`
-  }
+    hiddenText: `${INDICATION_COLOR.defaultText} 11`,
+  },
 ];
 
 describe('ObjectStatus', () => {
@@ -216,7 +216,7 @@ describe('ObjectStatus', () => {
           cy.mount(
             <ObjectStatus data-testid="os" state={stateObj.state} showDefaultIcon inverted={item.inverted}>
               Content
-            </ObjectStatus>
+            </ObjectStatus>,
           );
           if (!item.inverted) {
             cy.findByText('Content').should('have.css', 'color', rgbValColorString);
@@ -241,7 +241,7 @@ describe('ObjectStatus', () => {
             inverted={item.inverted}
           >
             Content
-          </ObjectStatus>
+          </ObjectStatus>,
         );
         if (stateObj.hiddenText) {
           cy.findByText(stateObj.hiddenText).should('exist').and('have.css', 'font-size', '0px');
@@ -263,7 +263,7 @@ describe('ObjectStatus', () => {
     cy.mount(
       <ObjectStatus onClick={click} data-testid="os">
         Content
-      </ObjectStatus>
+      </ObjectStatus>,
     );
     cy.get('button').should('not.exist');
     cy.findByText('Content').click();
@@ -274,7 +274,7 @@ describe('ObjectStatus', () => {
     cy.mount(
       <ObjectStatus onClick={click} interactive data-testid="os">
         Content
-      </ObjectStatus>
+      </ObjectStatus>,
     );
     cy.get('button').should('be.visible');
     cy.findByText('Content').click();
@@ -298,7 +298,7 @@ describe('ObjectStatus', () => {
     cy.mount(
       <ObjectStatus data-testid="os" state={ValueState.Negative} stateAnnouncementText="Custom Text">
         Content
-      </ObjectStatus>
+      </ObjectStatus>,
     );
     cy.findByText(VALUE_STATE_ERROR.defaultText).should('not.exist');
     cy.findByText('Custom Text').should('exist').and('have.css', 'font-size', '0px');
@@ -308,14 +308,14 @@ describe('ObjectStatus', () => {
     cy.mount(
       <ObjectStatus large data-testid="os" state={ValueState.Negative} showDefaultIcon>
         Content
-      </ObjectStatus>
+      </ObjectStatus>,
     );
     cy.findByTestId('os').should('have.css', 'font-size', '24px');
     cy.get('[ui5-icon]').should('have.css', 'height', '24px');
     cy.mount(
       <ObjectStatus large data-testid="os" state={ValueState.Negative} showDefaultIcon inverted>
         Content
-      </ObjectStatus>
+      </ObjectStatus>,
     );
     cy.findByTestId('os').should('have.css', 'font-size', '20px');
     cy.get('[ui5-icon]').should('have.css', 'height', '20px');

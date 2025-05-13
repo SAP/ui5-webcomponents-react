@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/MenuItem.js';
 import type {
   MenuBeforeCloseEventDetail,
   MenuBeforeOpenEventDetail,
-  MenuItemAccessibilityAttributes
+  MenuItemAccessibilityAttributes,
 } from '@ui5/webcomponents/dist/MenuItem.js';
 import type Highlight from '@ui5/webcomponents/dist/types/Highlight.js';
 import type ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
@@ -285,11 +285,11 @@ const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
     'loadingDelay',
     'text',
     'tooltip',
-    'type'
+    'type',
   ],
   ['disabled', 'loading', 'navigated', 'selected'],
   ['deleteButton', 'endContent'],
-  ['before-close', 'before-open', 'close', 'detail-click', 'open']
+  ['before-close', 'before-open', 'close', 'detail-click', 'open'],
 );
 
 MenuItem.displayName = 'MenuItem';

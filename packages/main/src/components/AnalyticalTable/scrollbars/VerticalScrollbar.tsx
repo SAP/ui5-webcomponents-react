@@ -26,7 +26,7 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
     scrollContainerRef,
     nativeScrollbar,
     parentRef,
-    classNames
+    classNames,
   } = props;
   const [componentRef, containerRef] = useSyncRef(ref);
   const scrollElementRef = useRef(null);
@@ -56,14 +56,14 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
     >
       <div
         style={{
-          height: `${internalRowHeight}px`
+          height: `${internalRowHeight}px`,
         }}
         className={classNames.headerSection}
       />
       <div
         ref={componentRef}
         style={{
-          height: tableRef.current ? `${tableBodyHeight}px` : '0'
+          height: tableRef.current ? `${tableBodyHeight}px` : '0',
         }}
         onScroll={handleVerticalScrollBarScroll}
         className={clsx(classNames.scrollbar, nativeScrollbar && 'ui5-content-native-scrollbars')}
@@ -75,7 +75,7 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
           style={{
             height: `${scrollContainerRef.current?.scrollHeight}px`,
             width: '1px',
-            backgroundColor: ThemingParameters.sapList_Background
+            backgroundColor: ThemingParameters.sapList_Background,
           }}
         />
       </div>

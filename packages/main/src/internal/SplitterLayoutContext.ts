@@ -7,5 +7,5 @@ interface ISplitterLayoutContext {
 
 export const SplitterLayoutContext = createContext<ISplitterLayoutContext>({
   vertical: true,
-  reset: false
+  reset: false,
 });

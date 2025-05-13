@@ -172,7 +172,7 @@ const NotificationListItem = withWebComponent<NotificationListItemPropTypes, Not
   ['importance', 'loadingDelay', 'state', 'titleText', 'wrappingType'],
   ['loading', 'read', 'showClose'],
   ['avatar', 'footnotes', 'menu'],
-  ['close']
+  ['close'],
 );
 
 NotificationListItem.displayName = 'NotificationListItem';

@@ -87,7 +87,7 @@ const ListItemGroup = withWebComponent<ListItemGroupPropTypes, ListItemGroupDomR
   ['headerAccessibleName', 'headerText'],
   [],
   ['header'],
-  ['move-over', 'move']
+  ['move-over', 'move'],
 );
 
 ListItemGroup.displayName = 'ListItemGroup';

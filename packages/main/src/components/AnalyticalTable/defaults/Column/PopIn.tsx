@@ -15,7 +15,7 @@ export const PopIn = (instance: TableInstance) => {
     cell,
     row,
     internalRowHeight,
-    webComponentsReactProperties: { classes: classNames }
+    webComponentsReactProperties: { classes: classNames },
   } = instance;
 
   return (
@@ -29,7 +29,7 @@ export const PopIn = (instance: TableInstance) => {
         wrap={FlexBoxWrap.NoWrap}
         className={classNames.defaultCell}
         style={{
-          height: internalRowHeight
+          height: internalRowHeight,
         }}
       >
         {cell.render(contentToRender)}

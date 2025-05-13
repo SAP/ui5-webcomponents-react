@@ -22,7 +22,7 @@ import type {
   InputDomRef,
   ListDomRef,
   ListItemStandardDomRef,
-  ListPropTypes
+  ListPropTypes,
 } from '../../webComponents/index.js';
 import { classNames, styleData } from './SelectDialog.module.css.js';
 
@@ -121,7 +121,7 @@ export interface SelectDialogPropTypes
    * This event will be fired when the clear button has been clicked.
    */
   onClear?: (
-    event: Ui5CustomEvent<ButtonDomRef, { prevSelectedItems: ListItemStandardDomRef[]; nativeDetail: number }>
+    event: Ui5CustomEvent<ButtonDomRef, { prevSelectedItems: ListItemStandardDomRef[]; nativeDetail: number }>,
   ) => void;
   /**
    * This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode.

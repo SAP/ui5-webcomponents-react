@@ -10,15 +10,15 @@ const meta = {
   title: 'Modals & Popovers / Menu',
   component: Menu,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
-    open: isChromatic
+    open: isChromatic,
   },
   parameters: {
-    chromatic: { delay: 1000 }
+    chromatic: { delay: 1000 },
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Menu>;
 
 export default meta;
@@ -62,7 +62,7 @@ export const Default: Story = {
         </Menu>
       </>
     );
-  }
+  },
 };
 
 export const WithSubMenu: Story = {
@@ -111,5 +111,5 @@ export const WithSubMenu: Story = {
         </Menu>
       </>
     );
-  }
+  },
 };

@@ -7,12 +7,12 @@ const meta = {
   component: PromptInput,
   argTypes: {
     children: { control: { disable: true } },
-    valueStateMessage: { control: { disable: true } }
+    valueStateMessage: { control: { disable: true } },
   },
   args: {
-    valueState: ValueState.None
+    valueState: ValueState.None,
   },
-  tags: ['package:@ui5/webcomponents-ai']
+  tags: ['package:@ui5/webcomponents-ai'],
 } satisfies Meta<typeof PromptInput>;
 
 export default meta;

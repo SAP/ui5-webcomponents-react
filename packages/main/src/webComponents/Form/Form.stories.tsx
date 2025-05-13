@@ -10,14 +10,14 @@ const meta = {
   title: 'Layouts & Floorplans / Form',
   component: Form,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
     headerText: 'Test Form',
     layout: 'S1 M1 L2 XL2',
-    labelSpan: 'S12 M4 L4 XL4'
+    labelSpan: 'S12 M4 L4 XL4',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Form>;
 
 export default meta;
@@ -84,7 +84,7 @@ export const Default: Story = {
         </FormGroup>
       </Form>
     );
-  }
+  },
 };
 
 const StandardField = ({ editMode, value, inputType = InputType.Text, onInput, ...rest }) => {
@@ -121,9 +121,9 @@ export const DisplayEditMode: Story = {
         web: 'https://www.sap.com',
         mail: 'john.smith@sap.com',
         twitter: '@sap',
-        phone: '+49 1234 56789'
+        phone: '+49 1234 56789',
       },
-      undefined
+      undefined,
     );
     const { zip, city, name, street, country, web, mail, twitter, phone } = formState;
 
@@ -190,5 +190,5 @@ export const DisplayEditMode: Story = {
         </Form>
       </>
     );
-  }
+  },
 };

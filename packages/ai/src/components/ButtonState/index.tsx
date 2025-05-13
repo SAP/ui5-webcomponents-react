@@ -73,7 +73,7 @@ const ButtonState = withWebComponent<ButtonStatePropTypes, ButtonStateDomRef>(
   ['endIcon', 'icon', 'name', 'text'],
   ['showArrowButton'],
   [],
-  []
+  [],
 );
 
 ButtonState.displayName = 'ButtonState';

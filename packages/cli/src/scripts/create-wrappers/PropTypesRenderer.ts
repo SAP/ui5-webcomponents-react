@@ -4,7 +4,7 @@ import {
   capitalizeFirstLetter,
   propDescriptionFormatter,
   sinceFilter,
-  snakeCaseToCamelCase
+  snakeCaseToCamelCase,
 } from '../../util/formatters.js';
 import { resolveReferenceImports } from '../../util/referenceResolver.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
@@ -23,7 +23,7 @@ export class PropTypesRenderer extends AbstractRenderer {
         if (s.name === 'default') {
           return {
             ...s,
-            name: 'children'
+            name: 'children',
           } as CEM.Slot;
         }
         return s;
@@ -51,24 +51,24 @@ export class PropTypesRenderer extends AbstractRenderer {
         if (!isDefaultSlot) {
           descriptionParts.push(` *`);
           descriptionParts.push(
-            ` * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (\`slot="${slot.name}"\`).`
+            ` * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (\`slot="${slot.name}"\`).`,
           );
           descriptionParts.push(
-            ` * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.`
+            ` * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.`,
           );
           descriptionParts.push(` *`);
           descriptionParts.push(
-            ' * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.'
+            ' * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.',
           );
           descriptionParts.push(
-            `* Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).`
+            `* Learn more about it [here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).`,
           );
         }
 
         if (sinceFilter(slot._ui5since)) {
           descriptionParts.push(` *`);
           descriptionParts.push(
-            ` * **Note:** Available since [v${slot._ui5since}](https://github.com/SAP/ui5-webcomponents/releases/tag/v${slot._ui5since}) of **${context.packageName}**.`
+            ` * **Note:** Available since [v${slot._ui5since}](https://github.com/SAP/ui5-webcomponents/releases/tag/v${slot._ui5since}) of **${context.packageName}**.`,
           );
         }
 
@@ -97,13 +97,13 @@ export class PropTypesRenderer extends AbstractRenderer {
         if (event._ui5allowPreventDefault) {
           descriptionParts.push(` *`);
           descriptionParts.push(
-            ` * **Note:** Call \`event.preventDefault()\` inside the handler of this event to prevent its default action/s.`
+            ` * **Note:** Call \`event.preventDefault()\` inside the handler of this event to prevent its default action/s.`,
           );
         }
         if (sinceFilter(event._ui5since)) {
           descriptionParts.push(` *`);
           descriptionParts.push(
-            ` * **Note:** Available since [v${event._ui5since}](https://github.com/SAP/ui5-webcomponents/releases/tag/v${event._ui5since}) of **${context.packageName}**.`
+            ` * **Note:** Available since [v${event._ui5since}](https://github.com/SAP/ui5-webcomponents/releases/tag/v${event._ui5since}) of **${context.packageName}**.`,
           );
         }
         if (event.deprecated) {

@@ -71,7 +71,7 @@ const TableVirtualizer = withWebComponent<TableVirtualizerPropTypes, TableVirtua
   ['extraRows', 'rowCount', 'rowHeight'],
   [],
   [],
-  ['range-change']
+  ['range-change'],
 );
 
 TableVirtualizer.displayName = 'TableVirtualizer';

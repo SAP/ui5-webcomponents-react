@@ -6,7 +6,7 @@ export enum RenderingPhase {
   props = 'props',
   domRef = 'domRef',
   component = 'component',
-  exports = 'exports'
+  exports = 'exports',
 }
 
 export abstract class AbstractRenderer {

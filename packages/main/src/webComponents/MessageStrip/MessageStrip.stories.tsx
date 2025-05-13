@@ -9,13 +9,13 @@ const meta = {
   component: MessageStrip,
   argTypes: {
     children: { control: 'text' },
-    icon: { control: { disable: true } }
+    icon: { control: { disable: true } },
   },
   args: {
     design: MessageStripDesign.Information,
-    children: 'MessageStrip Text'
+    children: 'MessageStrip Text',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof MessageStrip>;
 
 export default meta;
@@ -25,6 +25,6 @@ export const Default: Story = {};
 
 export const WithIcon: Story = {
   args: {
-    icon: <Icon name={employeeIcon} />
-  }
+    icon: <Icon name={employeeIcon} />,
+  },
 };

@@ -9,15 +9,15 @@ const meta = {
   title: 'Layouts & Floorplans / SplitterLayout',
   component: SplitterLayout,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: { style: { width: isChromatic ? '1200px' : '100%', height: '800px' } },
   parameters: {
     chromatic: {
       delay: 1000,
-      diffThreshold: 0.4
-    }
-  }
+      diffThreshold: 0.4,
+    },
+  },
 } satisfies Meta<typeof SplitterLayout>;
 
 export default meta;
@@ -26,8 +26,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   parameters: {
     chromatic: {
-      diffThreshold: 0.6
-    }
+      diffThreshold: 0.6,
+    },
   },
   render(args) {
     return (
@@ -65,7 +65,7 @@ export const Default: Story = {
         </SplitterElement>
       </SplitterLayout>
     );
-  }
+  },
 };
 
 export const LimitedAreas: Story = {
@@ -98,7 +98,7 @@ export const LimitedAreas: Story = {
         </SplitterElement>
       </SplitterLayout>
     );
-  }
+  },
 };
 
 export const Nested: Story = {
@@ -196,5 +196,5 @@ export const Nested: Story = {
         </SplitterLayout>
       </>
     );
-  }
+  },
 };

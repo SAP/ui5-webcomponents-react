@@ -9,14 +9,14 @@ describe('MessageBox', () => {
     [MessageBoxType.Success, MessageBoxAction.OK],
     [MessageBoxType.Warning, MessageBoxAction.OK],
     [MessageBoxType.Error, MessageBoxAction.Close],
-    [MessageBoxType.Information, MessageBoxAction.OK]
+    [MessageBoxType.Information, MessageBoxAction.OK],
   ].forEach(([type, buttonText]: [MessageBoxType, MessageBoxAction]) => {
     it(type, () => {
       const callback = cy.spy();
       cy.mount(
         <MessageBox type={type} open onClose={callback}>
           My Message Box Content
-        </MessageBox>
+        </MessageBox>,
       );
       cy.findByText(buttonText).click();
       cy.wrap(callback).should('have.been.calledWith', Cypress.sinon.match(buttonText));
@@ -78,11 +78,11 @@ describe('MessageBox', () => {
             Custom
           </Button>,
           'Custom Text Action',
-          MessageBoxAction.OK
+          MessageBoxAction.OK,
         ]}
       >
         My Message Box Content
-      </MessageBox>
+      </MessageBox>,
     );
 
     cy.findByText('Cancel').should('be.visible');
@@ -101,7 +101,7 @@ describe('MessageBox', () => {
     cy.mount(
       <MessageBox type={MessageBoxType.Confirm} open onClose={callback}>
         Confirm
-      </MessageBox>
+      </MessageBox>,
     );
 
     cy.findByText('Cancel').click();
@@ -115,7 +115,7 @@ describe('MessageBox', () => {
     cy.mount(
       <MessageBox open onClose={callback} titleText="Custom" actions={[MessageBoxAction.Yes, MessageBoxAction.No]}>
         Custom
-      </MessageBox>
+      </MessageBox>,
     );
 
     cy.findByText('Yes').click();
@@ -140,7 +140,7 @@ describe('MessageBox', () => {
         icon={<Icon name={addIcon} />}
       >
         Custom Success
-      </MessageBox>
+      </MessageBox>,
     );
     cy.findAllByText('Custom Success').should('have.length', 2);
     cy.findByText('OK').click();
@@ -154,7 +154,7 @@ describe('MessageBox', () => {
     cy.mount(
       <MessageBox open onClose={callback}>
         No Title
-      </MessageBox>
+      </MessageBox>,
     );
 
     cy.findByText('Confirmation').should('be.visible');
@@ -170,7 +170,7 @@ describe('MessageBox', () => {
         onClose={callback}
       >
         My Message Box Content
-      </MessageBox>
+      </MessageBox>,
     );
 
     cy.findByText(MessageBoxAction.OK).should('be.visible').click();
@@ -189,7 +189,7 @@ describe('MessageBox', () => {
       // @ts-expect-error: testing an invalid type
       <MessageBox open onClose={callback} type="FOO_BAR">
         Unknown Type!
-      </MessageBox>
+      </MessageBox>,
     );
     cy.findByText('Unknown Type!').should('be.visible');
   });
@@ -198,7 +198,7 @@ describe('MessageBox', () => {
     cy.mount(
       <MessageBox open type={MessageBoxType.Confirm} initialFocus={MessageBoxAction.Cancel} data-testid="Dialog">
         Content
-      </MessageBox>
+      </MessageBox>,
     );
 
     cy.focused()
@@ -214,7 +214,7 @@ describe('MessageBox', () => {
     cy.mount(
       <MessageBox open header={<span>Custom Header</span>}>
         Content
-      </MessageBox>
+      </MessageBox>,
     );
 
     cy.findByText('Confirmation').should('not.exist');

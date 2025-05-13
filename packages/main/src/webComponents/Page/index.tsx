@@ -95,7 +95,7 @@ const Page = withWebComponent<PagePropTypes, PageDomRef>(
   ['backgroundDesign'],
   ['fixedFooter', 'hideFooter', 'noScrolling'],
   ['footer', 'header'],
-  []
+  [],
 );
 
 Page.displayName = 'Page';

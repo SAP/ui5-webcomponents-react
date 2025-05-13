@@ -25,7 +25,7 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
     columnVirtualizer,
     uniqueId,
     showVerticalEndBorder,
-    classNames
+    classNames,
   } = props;
   const { key, ...reactTableHeaderProps } = headerProps;
 
@@ -46,11 +46,11 @@ export const ColumnHeaderContainer = forwardRef<HTMLDivElement, ColumnHeaderCont
         const resizerDirectionStyle = isRtl
           ? {
               right: `${column.totalFlexWidth + column.totalLeft - (isLastColumn ? 3 : 0)}px`,
-              transform: 'translateX(50%)'
+              transform: 'translateX(50%)',
             }
           : {
               left: `${column.totalFlexWidth + column.totalLeft - (isLastColumn ? 3 : 0)}px`,
-              transform: 'translateX(-50%)'
+              transform: 'translateX(-50%)',
             };
 
         const { key, ...rest } = column.getHeaderProps();

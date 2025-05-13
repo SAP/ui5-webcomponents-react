@@ -120,7 +120,7 @@ const SplitButton = withWebComponent<SplitButtonPropTypes, SplitButtonDomRef>(
   ['accessibleName', 'design', 'icon'],
   ['activeArrowButton', 'disabled'],
   [],
-  ['arrow-click', 'click']
+  ['arrow-click', 'click'],
 );
 
 SplitButton.displayName = 'SplitButton';

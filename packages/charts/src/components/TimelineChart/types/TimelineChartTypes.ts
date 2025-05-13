@@ -99,7 +99,7 @@ export enum TimelineChartConnection {
   Finish_To_Start = 'F2S',
   Start_To_Finish = 'S2F',
   Start_To_Start = 'S2S',
-  Finish_To_Finish = 'F2F'
+  Finish_To_Finish = 'F2F',
 }
 
 export type ITimelineChartMileStone = Omit<ITimelineChartTask, 'duration'>;

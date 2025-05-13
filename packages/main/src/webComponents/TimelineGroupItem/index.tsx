@@ -53,7 +53,7 @@ const TimelineGroupItem = withWebComponent<TimelineGroupItemPropTypes, TimelineG
   ['groupName'],
   ['collapsed'],
   [],
-  ['toggle']
+  ['toggle'],
 );
 
 TimelineGroupItem.displayName = 'TimelineGroupItem';

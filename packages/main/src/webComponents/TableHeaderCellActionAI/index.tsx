@@ -37,7 +37,7 @@ const TableHeaderCellActionAI = withWebComponent<TableHeaderCellActionAIPropType
   [],
   [],
   [],
-  ['click']
+  ['click'],
 );
 
 TableHeaderCellActionAI.displayName = 'TableHeaderCellActionAI';

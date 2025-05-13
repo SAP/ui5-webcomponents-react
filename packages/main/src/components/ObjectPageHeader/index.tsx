@@ -38,7 +38,7 @@ const ObjectPageHeader = forwardRef<HTMLDivElement, InternalProps>((props, ref) 
       return {
         ...style,
         top: `${topHeaderHeight}px`,
-        zIndex: 1
+        zIndex: 1,
       };
     }
     return style;

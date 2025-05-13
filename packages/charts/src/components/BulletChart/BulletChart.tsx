@@ -13,7 +13,7 @@ import {
   ReferenceLine,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
 } from 'recharts';
 import type { YAxisProps } from 'recharts';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
@@ -38,12 +38,12 @@ import { ComparisonLine } from './ComparisonLine.js';
 import { BulletChartPlaceholder } from './Placeholder.js';
 
 const dimensionDefaults = {
-  formatter: defaultFormatter
+  formatter: defaultFormatter,
 };
 
 const measureDefaults = {
   formatter: defaultFormatter,
-  opacity: 1
+  opacity: 1,
 };
 
 interface MeasureConfig extends IChartMeasure {
@@ -162,7 +162,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
     xAxisConfig: {},
     secondYAxisConfig: {},
     secondXAxisConfig: {},
-    ...props.chartConfig
+    ...props.chartConfig,
   };
   const { referenceLine } = chartConfig;
 
@@ -170,7 +170,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
     props.dimensions,
     props.measures,
     dimensionDefaults,
-    measureDefaults
+    measureDefaults,
   );
 
   const sortedMeasures = useMemo(() => {
@@ -193,7 +193,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
 
   const { primaryMeasure, secondaryMeasure } = resolvePrimaryAndSecondaryMeasures(
     sortedMeasures,
-    chartConfig?.secondYAxis?.dataKey
+    chartConfig?.secondYAxis?.dataKey,
   );
 
   const labelFormatter = useLabelFormatter(primaryDimension);
@@ -216,12 +216,12 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
                 ? Object.keys(payload).filter((key) =>
                     payload.value.length
                       ? payload[key] === payload.value[1] - payload.value[0]
-                      : payload[key] === payload.value && key !== 'value'
+                      : payload[key] === payload.value && key !== 'value',
                   )[0]
                 : (payload.dataKey ??
                   Object.keys(payload).find((key) => payload[key] === payload.value && key !== 'value')),
-              payload: payload.payload
-            })
+              payload: payload.payload,
+            }),
           );
         } else {
           onDataPointClick(
@@ -229,13 +229,13 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
               value: eventOrIndex.value,
               dataKey: eventOrIndex.dataKey,
               dataIndex: eventOrIndex.index,
-              payload: eventOrIndex.payload
-            })
+              payload: eventOrIndex.payload,
+            }),
           );
         }
       }
     },
-    [onDataPointClick]
+    [onDataPointClick],
   );
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
@@ -247,7 +247,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
   const [yAxisWidth, legendPosition] = useLongestYAxisLabel(
     dataset,
     layout === 'vertical' ? dimensions : sortedMeasures,
-    chartConfig.legendPosition
+    chartConfig.legendPosition,
   );
 
   const marginChart = useChartMargin(chartConfig.margin, chartConfig.zoomingTool);
@@ -257,7 +257,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
     axisLine: chartConfig.yAxisVisible,
     tickLine: tickLineConfig,
     tickFormatter: primaryMeasure?.formatter,
-    interval: 0
+    interval: 0,
   };
 
   const isRTL = useIsRTL(chartRef);
@@ -306,7 +306,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
               interval: dimension?.interval ?? (isBigDataSet ? 'preserveStartEnd' : 0),
               tickLine: index < 1,
               axisLine: index < 1,
-              allowDuplicatedCategory: index === 0
+              allowDuplicatedCategory: index === 0,
             };
 
             if (layout === 'vertical') {
@@ -353,18 +353,18 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
           <YAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             axisLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
             tick={
               <YAxisTicks
                 config={secondaryMeasure}
                 secondYAxisConfig={{
-                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
               />
             }
             tickLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
@@ -372,7 +372,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
               value: chartConfig.secondYAxis.name,
               offset: 2,
               angle: +90,
-              position: 'center'
+              position: 'center',
             }}
             orientation={isRTL ? 'left' : 'right'}
             interval={0}
@@ -384,18 +384,18 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
           <XAxis
             dataKey={chartConfig.secondYAxis.dataKey}
             axisLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
             tick={
               <XAxisTicks
                 config={secondaryMeasure}
                 secondYAxisConfig={{
-                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+                  color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
               />
             }
             tickLine={{
-              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`
+              stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
@@ -443,7 +443,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
         )}
         {sortedMeasures?.map((element, index) => {
           const chartElementProps: any = {
-            isAnimationActive: !noAnimation
+            isAnimationActive: !noAnimation,
           };
           let labelPosition = 'top';
           switch (element.type) {

@@ -6,14 +6,14 @@ const meta = {
   title: 'Inputs / ToggleButton',
   component: ToggleButton,
   argTypes: {
-    children: { control: 'text' }
+    children: { control: 'text' },
   },
   args: {
     design: ButtonDesign.Default,
     icon: 'employee',
-    children: 'ToggleButton Text'
+    children: 'ToggleButton Text',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof ToggleButton>;
 
 export default meta;

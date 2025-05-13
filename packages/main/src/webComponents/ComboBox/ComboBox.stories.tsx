@@ -15,13 +15,13 @@ const meta = {
   argTypes: {
     children: { control: { disable: true } },
     icon: { control: { disable: true } },
-    valueStateMessage: { control: { disable: true } }
+    valueStateMessage: { control: { disable: true } },
   },
   args: {
     valueState: ValueState.None,
-    icon: <Icon name={employeeIcon} />
+    icon: <Icon name={employeeIcon} />,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof ComboBox>;
 
 // TODO: check why ComboBoxItemGroup is now showing up in subcomponents table in docs
@@ -39,7 +39,7 @@ export const Default: Story = {
         <ComboBoxItem text="ComboBox Entry 5" />
       </ComboBox>
     );
-  }
+  },
 };
 
 export const WithGroups: Story = {
@@ -57,7 +57,7 @@ export const WithGroups: Story = {
         </ComboBoxItemGroup>
       </ComboBox>
     );
-  }
+  },
 };
 
 export const FilterTypes: Story = {
@@ -105,5 +105,5 @@ export const FilterTypes: Story = {
         </FlexBox>
       </FlexBox>
     );
-  }
+  },
 };

@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/AvatarGroup.js';
 import type {
   AvatarGroupAccessibilityAttributes,
   AvatarGroupClickEventDetail,
-  IAvatarGroupItem
+  IAvatarGroupItem,
 } from '@ui5/webcomponents/dist/AvatarGroup.js';
 import type AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
 import type AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
@@ -152,7 +152,7 @@ const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(
   ['accessibilityAttributes', 'type'],
   [],
   ['overflowButton'],
-  ['click', 'overflow']
+  ['click', 'overflow'],
 );
 
 AvatarGroup.displayName = 'AvatarGroup';

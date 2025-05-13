@@ -77,7 +77,7 @@ const MessageItem = forwardRef<ListItemCustomDomRef, MessageItemPropTypes>((prop
     classNames.listItem,
     Reflect.get(classNames, `type${type}`),
     className,
-    subtitleText && classNames.withSubtitle
+    subtitleText && classNames.withSubtitle,
   );
 
   const messageClasses = clsx(classNames.message, hasDetails && classNames.withChildren);

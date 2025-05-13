@@ -15,7 +15,7 @@ const meta = {
   component: Card,
   argTypes: {
     header: { control: { disable: true } },
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
     style: { width: '300px' },
@@ -26,9 +26,9 @@ const meta = {
         additionalText={'3 of 5'}
         avatar={<Icon name={personIcon} />}
       />
-    )
+    ),
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -45,30 +45,30 @@ export const Default: Story = {
         </List>
       </Card>
     );
-  }
+  },
 };
 
 const simpleDataSet = [
   {
     name: 'January',
-    users: 76
+    users: 76,
   },
   {
     name: 'February',
-    users: 230
+    users: 230,
   },
   {
     name: 'March',
-    users: 240
+    users: 240,
   },
   {
     name: 'April',
-    users: 280
+    users: 280,
   },
   {
     name: 'May',
-    users: 100
-  }
+    users: 100,
+  },
 ];
 
 export const WithAnalyticalCardHeader = {
@@ -100,5 +100,5 @@ export const WithAnalyticalCardHeader = {
         />
       </Card>
     );
-  }
+  },
 };

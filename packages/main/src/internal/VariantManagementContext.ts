@@ -13,5 +13,5 @@ export interface SelectedVariant extends VariantItemPropTypes {
 
 export const VariantManagementContext = createContext<VariantManagementContextTypes>({
   selectVariantItem: (_selectedVariant: SelectedVariant) => {},
-  selectedVariant: undefined
+  selectedVariant: undefined,
 });

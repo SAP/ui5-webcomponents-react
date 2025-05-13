@@ -6,12 +6,12 @@ const meta = {
   title: 'Layouts & Floorplans / Carousel',
   component: Carousel,
   argTypes: {
-    children: { control: { disable: true } }
+    children: { control: { disable: true } },
   },
   args: {
-    arrowsPlacement: CarouselArrowsPlacement.Content
+    arrowsPlacement: CarouselArrowsPlacement.Content,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Carousel>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -25,5 +25,5 @@ export const Default: Story = {
         <img src="https://sap.github.io/ui5-webcomponents/images/sample3.jpg" alt="img-sample 3" />
       </Carousel>
     );
-  }
+  },
 };

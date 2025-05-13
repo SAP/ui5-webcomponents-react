@@ -170,7 +170,7 @@ const CheckBox = withWebComponent<CheckBoxPropTypes, CheckBoxDomRef>(
   ['accessibleName', 'accessibleNameRef', 'name', 'text', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'displayOnly', 'indeterminate', 'readonly', 'required'],
   [],
-  ['change']
+  ['change'],
 );
 
 CheckBox.displayName = 'CheckBox';

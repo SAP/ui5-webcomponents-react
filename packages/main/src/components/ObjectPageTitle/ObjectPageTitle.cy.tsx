@@ -8,7 +8,7 @@ import {
   ObjectPageSection,
   Title,
   Toolbar,
-  ToolbarButton
+  ToolbarButton,
 } from '../..';
 import { ObjectPageTitle } from './index.js';
 
@@ -32,7 +32,7 @@ const PageComponent = ({ titleProps = {}, pageProps = {}, childrenScrollable }: 
         {...titleProps}
       />
     ),
-    ...pageProps
+    ...pageProps,
   };
   return (
     <>
@@ -51,9 +51,9 @@ describe('ObjectPageTitle', () => {
         titleProps={{
           header: <Title>This is a pretty long title of the ObjectPageTitle</Title>,
           navigationBar: undefined,
-          children: <div>Content</div>
+          children: <div>Content</div>,
         }}
-      />
+      />,
     );
     cy.findByText('This is a pretty long title of the ObjectPageTitle').should('be.visible');
     cy.findByText('Content').should('exist'); // covered by click span
@@ -72,9 +72,9 @@ describe('ObjectPageTitle', () => {
                 <BreadcrumbsItem key={index}>{`BreadcrumbsItem ${index}`}</BreadcrumbsItem>
               ))}
             </Breadcrumbs>
-          )
+          ),
         }}
-      />
+      />,
     );
     // no nav actions
     cy.findByTestId('breadcrumbs').parent().should('have.css', 'width', '1808px' /*100%*/);
@@ -87,9 +87,9 @@ describe('ObjectPageTitle', () => {
                 <BreadcrumbsItem key={index}>{`BreadcrumbsItem ${index}`}</BreadcrumbsItem>
               ))}
             </Breadcrumbs>
-          )
+          ),
         }}
-      />
+      />,
     );
     // nav actions in actions toolbar
     cy.findByTestId('breadcrumbs').parent().should('have.css', 'width', '1808px' /*100%*/);
@@ -104,7 +104,7 @@ describe('ObjectPageTitle', () => {
       undefined,
       <ObjectPageHeader key="headerContent" style={{ height: '100px', background: 'lightblue' }}>
         Header Section
-      </ObjectPageHeader>
+      </ObjectPageHeader>,
     ].forEach((headerContent) => {
       cy.mount(
         <PageComponent
@@ -112,9 +112,9 @@ describe('ObjectPageTitle', () => {
           pageProps={{ image, headerArea: headerContent, style: { height: '800px' } }}
           titleProps={{
             expandedContent: <div data-testid="expandedContent">expandedContent</div>,
-            snappedContent: <div data-testid="snappedContent">snappedContent</div>
+            snappedContent: <div data-testid="snappedContent">snappedContent</div>,
           }}
-        />
+        />,
       );
       if (headerContent) {
         cy.findByText('expandedContent').should('exist');

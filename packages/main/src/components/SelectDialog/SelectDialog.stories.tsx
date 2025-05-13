@@ -19,9 +19,9 @@ const meta = {
   argTypes: { children: { control: { disable: true } } },
   args: { headerText: 'Select Product', open: isChromatic },
   parameters: {
-    chromatic: { delay: 1000 }
+    chromatic: { delay: 1000 },
   },
-  tags: ['package:@ui5/webcomponents', 'cem-module:Dialog']
+  tags: ['package:@ui5/webcomponents', 'cem-module:Dialog'],
 } satisfies Meta<typeof SelectDialog>;
 
 export default meta;
@@ -31,7 +31,7 @@ const listItems = [
   { img: Laptop1, description: 'LT-10', text: 'Gaming Laptop' },
   { img: Laptop2, description: 'LT-20', text: 'Business Laptop' },
   { img: Pc2, description: 'HT-10', text: 'Gaming PC' },
-  { img: Pc1, description: 'HT-20', text: 'Business PC' }
+  { img: Pc1, description: 'HT-20', text: 'Business PC' },
 ];
 export const Default: Story = {
   render: (args) => {
@@ -65,7 +65,7 @@ export const Default: Story = {
         </SelectDialog>
       </>
     );
-  }
+  },
 };
 
 export const MultiSelect: Story = {
@@ -172,5 +172,5 @@ export const MultiSelect: Story = {
         </FlexBox>
       </>
     );
-  }
+  },
 };

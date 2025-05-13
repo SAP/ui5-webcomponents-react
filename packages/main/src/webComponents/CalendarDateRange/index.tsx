@@ -37,7 +37,7 @@ const CalendarDateRange = withWebComponent<CalendarDateRangePropTypes, CalendarD
   ['endValue', 'startValue'],
   [],
   [],
-  []
+  [],
 );
 
 CalendarDateRange.displayName = 'CalendarDateRange';

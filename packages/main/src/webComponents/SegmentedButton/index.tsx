@@ -3,7 +3,7 @@
 import '@ui5/webcomponents/dist/SegmentedButton.js';
 import type {
   ISegmentedButtonItem,
-  SegmentedButtonSelectionChangeEventDetail
+  SegmentedButtonSelectionChangeEventDetail,
 } from '@ui5/webcomponents/dist/SegmentedButton.js';
 import type SegmentedButtonSelectionMode from '@ui5/webcomponents/dist/types/SegmentedButtonSelectionMode.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
@@ -73,7 +73,7 @@ const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButt
   ['accessibleName', 'selectionMode'],
   [],
   [],
-  ['selection-change']
+  ['selection-change'],
 );
 
 SegmentedButton.displayName = 'SegmentedButton';

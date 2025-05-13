@@ -56,7 +56,7 @@ const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
   ['type'],
   ['navigated', 'selected'],
   [],
-  []
+  [],
 );
 
 TableRow.displayName = 'TableRow';

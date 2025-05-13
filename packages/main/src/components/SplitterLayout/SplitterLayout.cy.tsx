@@ -12,7 +12,7 @@ function TestComp({ vertical, dir }: { vertical: SplitterLayoutPropTypes['vertic
       vertical={vertical}
       style={{
         width: '100vw',
-        height: '100vh'
+        height: '100vh',
       }}
       options={{ resetOnSizeChange: true, resetOnChildrenChange: true, resetOnCustomDepsChange: [dep] }}
     >
@@ -103,7 +103,7 @@ describe('SplitterLayout', () => {
           <SplitterElement resizable={false} data-testid={'se3'}>
             <Button>Button 3</Button>
           </SplitterElement>
-        </SplitterLayout>
+        </SplitterLayout>,
       );
       cy.findByTestId('btn').click();
       cy.get('[role="separator"]').first().click();

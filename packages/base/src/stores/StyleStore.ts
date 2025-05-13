@@ -18,7 +18,7 @@ interface IStyleStore {
 
 const initialStore: IStyleStore = {
   staticCssInjected: false,
-  componentsMap: new Map<string, number>()
+  componentsMap: new Map<string, number>(),
 };
 
 function getListeners(): Array<() => void> {
@@ -60,7 +60,7 @@ export const StyleStore = {
     const curr = getSnapshot();
     STORE_LOCATION[getStyleStoreSymbol()] = {
       ...curr,
-      staticCssInjected
+      staticCssInjected,
     };
     emitChange();
   },
@@ -79,5 +79,5 @@ export const StyleStore = {
       componentsMap.set(componentName, componentsMap.get(componentName) - 1);
     }
     emitChange();
-  }
+  },
 };

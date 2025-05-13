@@ -6,12 +6,12 @@ const meta = {
   title: 'Inputs / TimePicker',
   component: TimePicker,
   argTypes: {
-    valueStateMessage: { control: { disable: true } }
+    valueStateMessage: { control: { disable: true } },
   },
   args: {
-    valueState: ValueState.None
+    valueState: ValueState.None,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof TimePicker>;
 
 export default meta;

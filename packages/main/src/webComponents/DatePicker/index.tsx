@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/DatePicker.js';
 import type {
   DatePickerChangeEventDetail,
   DatePickerInputEventDetail,
-  DatePickerValueStateChangeEventDetail
+  DatePickerValueStateChangeEventDetail,
 } from '@ui5/webcomponents/dist/DatePicker.js';
 import type CalendarWeekNumbering from '@ui5/webcomponents/dist/types/CalendarWeekNumbering.js';
 import type CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';
@@ -334,11 +334,11 @@ const DatePicker = withWebComponent<DatePickerPropTypes, DatePickerDomRef>(
     'primaryCalendarType',
     'secondaryCalendarType',
     'value',
-    'valueState'
+    'valueState',
   ],
   ['disabled', 'hideWeekNumbers', 'open', 'readonly', 'required'],
   ['valueStateMessage'],
-  ['change', 'close', 'input', 'open', 'value-state-change']
+  ['change', 'close', 'input', 'open', 'value-state-change'],
 );
 
 DatePicker.displayName = 'DatePicker';

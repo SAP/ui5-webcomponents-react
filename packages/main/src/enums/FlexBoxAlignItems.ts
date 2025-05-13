@@ -23,5 +23,5 @@ export enum FlexBoxAlignItems {
    * Items are stretched to fill the container.<br />
    * <b>Note:</b> Corresponds to `stretch`.
    */
-  Stretch = 'Stretch'
+  Stretch = 'Stretch',
 }

@@ -5,7 +5,7 @@ import {
   secondaryDimensionDataSet,
   simpleDataSet,
   stackedNormalizedConfig,
-  tooltipConfig
+  tooltipConfig,
 } from '../../resources/DemoProps.js';
 import { BarChart } from './BarChart.js';
 
@@ -14,38 +14,38 @@ const meta = {
   component: BarChart,
   argTypes: {
     dataset: {
-      control: { disable: true }
+      control: { disable: true },
     },
     children: {
-      control: { disable: true }
-    }
+      control: { disable: true },
+    },
   },
   args: {
     dataset: complexDataSet,
     dimensions: [
       {
-        accessor: 'name'
-      }
+        accessor: 'name',
+      },
     ],
     measures: [
       {
         accessor: 'users',
         label: 'Users',
         formatter: (val) => val.toLocaleString(),
-        opacity: 0.6
+        opacity: 0.6,
       },
       {
         accessor: 'sessions',
         label: 'Active Sessions',
         formatter: (val) => `${val} sessions`,
-        hideDataLabel: true
+        hideDataLabel: true,
       },
       {
         accessor: 'volume',
-        label: 'Vol.'
-      }
-    ]
-  }
+        label: 'Vol.',
+      },
+    ],
+  },
 } satisfies Meta<typeof BarChart>;
 
 export default meta;
@@ -56,32 +56,32 @@ export const Default: Story = {};
 export const WithCustomColor: Story = {
   args: {
     measures: [{ accessor: 'users', color: 'red' }],
-    dataset: simpleDataSet
-  }
+    dataset: simpleDataSet,
+  },
 };
 
 export const WithSecondaryDimension: Story = {
   args: {
     dimensions: [{ accessor: 'name' }, { accessor: 'dimension' }],
     measures: [{ accessor: 'users', color: 'red' }],
-    dataset: secondaryDimensionDataSet
-  }
+    dataset: secondaryDimensionDataSet,
+  },
 };
 
 export const WithDataLabels: Story = {
   args: {
     measures: [
       {
-        accessor: 'users'
+        accessor: 'users',
       },
       {
-        accessor: 'sessions'
+        accessor: 'sessions',
       },
       {
-        accessor: 'volume'
-      }
-    ]
-  }
+        accessor: 'volume',
+      },
+    ],
+  },
 };
 
 export const WithFormatter: Story = {
@@ -91,25 +91,25 @@ export const WithFormatter: Story = {
       {
         accessor: 'users',
         formatter: (element) => `${element / 10}`,
-        label: 'number of users'
+        label: 'number of users',
       },
       {
-        accessor: 'sessions'
+        accessor: 'sessions',
       },
       {
-        accessor: 'volume'
-      }
+        accessor: 'volume',
+      },
     ],
     chartConfig: {
-      zoomingTool: true
-    }
-  }
+      zoomingTool: true,
+    },
+  },
 };
 
 export const LoadingPlaceholder: Story = {
   args: {
-    dataset: []
-  }
+    dataset: [],
+  },
 };
 
 export const WithReferenceLine: Story = {
@@ -117,24 +117,24 @@ export const WithReferenceLine: Story = {
     measures: [
       {
         accessor: 'users',
-        stackId: 'A'
+        stackId: 'A',
       },
       {
         accessor: 'sessions',
-        stackId: 'A'
+        stackId: 'A',
       },
       {
-        accessor: 'volume'
-      }
+        accessor: 'volume',
+      },
     ],
     chartConfig: {
       referenceLine: {
         color: 'red',
         label: 'MAX',
-        value: 650
-      }
-    }
-  }
+        value: 650,
+      },
+    },
+  },
 };
 
 export const WithHighlightedMeasure: Story = {
@@ -142,11 +142,11 @@ export const WithHighlightedMeasure: Story = {
     measures: [
       {
         accessor: 'users',
-        stackId: 'A'
+        stackId: 'A',
       },
       {
         accessor: 'sessions',
-        stackId: 'A'
+        stackId: 'A',
       },
       {
         accessor: 'volume',
@@ -154,20 +154,20 @@ export const WithHighlightedMeasure: Story = {
           if (data.name === 'February') {
             return 'red';
           }
-        }
-      }
-    ]
-  }
+        },
+      },
+    ],
+  },
 };
 
 export const WithNormalizedStacks: Story = {
-  args: stackedNormalizedConfig
+  args: stackedNormalizedConfig,
 };
 
 export const WithCustomTooltipConfig: Story = {
-  args: tooltipConfig
+  args: tooltipConfig,
 };
 
 export const WithCustomLegendConfig: Story = {
-  args: legendConfig
+  args: legendConfig,
 };

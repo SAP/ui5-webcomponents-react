@@ -37,7 +37,7 @@ const SearchMessageArea = withWebComponent<SearchMessageAreaPropTypes, SearchMes
   ['description', 'text'],
   [],
   [],
-  []
+  [],
 );
 
 SearchMessageArea.displayName = 'SearchMessageArea';

@@ -191,11 +191,11 @@ const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
     'itemsPerPage',
     'pageIndicatorBackgroundDesign',
     'pageIndicatorBorderDesign',
-    'pageIndicatorType'
+    'pageIndicatorType',
   ],
   ['cyclic', 'hideNavigationArrows', 'hidePageIndicator'],
   [],
-  ['navigate']
+  ['navigate'],
 );
 
 Carousel.displayName = 'Carousel';

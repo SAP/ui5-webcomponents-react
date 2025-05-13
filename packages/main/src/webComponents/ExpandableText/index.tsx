@@ -13,7 +13,7 @@ addCustomCSSWithScoping(
   `
 :host([data-_render-whitespace]) [ui5-text]{
 white-space: pre-wrap;
-}`
+}`,
 );
 
 interface DeprecatedExpandableTextProps {
@@ -97,7 +97,7 @@ const ExpandableText = withWebComponent<ExpandableTextPropTypes, ExpandableTextD
   ['emptyIndicatorMode', 'maxCharacters', 'overflowMode', 'text'],
   [],
   [],
-  []
+  [],
 );
 
 ExpandableText.displayName = 'ExpandableText';

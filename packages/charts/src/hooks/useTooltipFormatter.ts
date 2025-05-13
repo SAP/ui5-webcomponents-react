@@ -9,6 +9,6 @@ export const useTooltipFormatter = (measures) => {
       }
       return value;
     },
-    [measures]
+    [measures],
   );
 };

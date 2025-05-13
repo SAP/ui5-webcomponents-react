@@ -8,7 +8,7 @@ import {
   Icon,
   Input,
   Label,
-  Title
+  Title,
 } from '../..';
 import { FlexBox } from './index.js';
 
@@ -16,14 +16,14 @@ const meta = {
   title: 'Layouts & Floorplans / FlexBox',
   component: FlexBox,
   argTypes: {
-    as: { control: { disable: true } }
+    as: { control: { disable: true } },
   },
   args: {
     justifyContent: FlexBoxJustifyContent.Start,
     alignItems: FlexBoxAlignItems.Stretch,
     direction: FlexBoxDirection.Row,
-    wrap: FlexBoxWrap.NoWrap
-  }
+    wrap: FlexBoxWrap.NoWrap,
+  },
 } satisfies Meta<typeof FlexBox>;
 
 export default meta;
@@ -41,5 +41,5 @@ export const Default: Story = {
         <Label>Item 6</Label>
       </FlexBox>
     );
-  }
+  },
 };

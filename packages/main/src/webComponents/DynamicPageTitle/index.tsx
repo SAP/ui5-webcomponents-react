@@ -172,9 +172,9 @@ const DynamicPageTitle = withWebComponent<DynamicPageTitlePropTypes, DynamicPage
     'snappedHeading',
     'snappedSubheading',
     'snappedTitleOnMobile',
-    'subheading'
+    'subheading',
   ],
-  []
+  [],
 );
 
 DynamicPageTitle.displayName = 'DynamicPageTitle';

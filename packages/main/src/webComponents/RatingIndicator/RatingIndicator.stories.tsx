@@ -6,7 +6,7 @@ const meta = {
   component: RatingIndicator,
   argTypes: {},
   args: {},
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof RatingIndicator>;
 
 export default meta;

@@ -23,5 +23,5 @@ export enum FlexBoxJustifyContent {
    * Items are evenly distributed on the main-axis; first item is on the start line, last item on the end line.<br />
    * <b>Note:</b> Corresponds to `space-between`.
    */
-  SpaceBetween = 'SpaceBetween'
+  SpaceBetween = 'SpaceBetween',
 }

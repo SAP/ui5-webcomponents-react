@@ -70,7 +70,7 @@ const ColorPicker = withWebComponent<ColorPickerPropTypes, ColorPickerDomRef>(
   ['name', 'value'],
   ['simplified'],
   [],
-  ['change']
+  ['change'],
 );
 
 ColorPicker.displayName = 'ColorPicker';

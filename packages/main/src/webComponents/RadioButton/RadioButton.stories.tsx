@@ -12,9 +12,9 @@ const meta = {
   argTypes: {},
   args: {
     valueState: ValueState.None,
-    text: 'RadioButton'
+    text: 'RadioButton',
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof RadioButton>;
 
 export default meta;
@@ -42,7 +42,7 @@ export const RadioButtonGroups: Story = {
         </FlexBox>
       </FlexBox>
     );
-  }
+  },
 };
 
 export const RadioButtonStates: Story = {
@@ -60,5 +60,5 @@ export const RadioButtonStates: Story = {
         <RadioButton text="Warning readonly" readonly valueState={ValueState.Critical} checked />
       </>
     );
-  }
+  },
 };

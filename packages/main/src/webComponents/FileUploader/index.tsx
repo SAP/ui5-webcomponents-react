@@ -3,7 +3,7 @@
 import '@ui5/webcomponents/dist/FileUploader.js';
 import type {
   FileUploaderChangeEventDetail,
-  FileUploaderFileSizeExceedEventDetail
+  FileUploaderFileSizeExceedEventDetail,
 } from '@ui5/webcomponents/dist/FileUploader.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
@@ -153,7 +153,7 @@ const FileUploader = withWebComponent<FileUploaderPropTypes, FileUploaderDomRef>
   ['accept', 'maxFileSize', 'name', 'placeholder', 'value', 'valueState'],
   ['disabled', 'hideInput', 'multiple'],
   ['valueStateMessage'],
-  ['change', 'file-size-exceed']
+  ['change', 'file-size-exceed'],
 );
 
 FileUploader.displayName = 'FileUploader';

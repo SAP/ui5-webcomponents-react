@@ -252,7 +252,7 @@ const Form = withWebComponent<FormPropTypes, FormDomRef>(
   ['accessibleName', 'emptySpan', 'headerLevel', 'headerText', 'itemSpacing', 'labelSpan', 'layout'],
   [],
   ['header'],
-  []
+  [],
 );
 
 Form.displayName = 'Form';

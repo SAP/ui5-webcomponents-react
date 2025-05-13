@@ -17,13 +17,13 @@ const meta = {
   component: Calendar,
   argTypes: {
     children: { control: { disable: true } },
-    specialDates: { control: { disable: true } }
+    specialDates: { control: { disable: true } },
   },
   args: {
     primaryCalendarType: CalendarType.Gregorian,
-    selectionMode: CalendarSelectionMode.Single
+    selectionMode: CalendarSelectionMode.Single,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Calendar>;
 
 export default meta;
@@ -38,8 +38,8 @@ const firstDateOfMonthString = `${yearMonthString}${firstDayOfTheMonth.getDate()
 
 export const SpecialDate: Story = {
   args: {
-    specialDates: <SpecialCalendarDate type={CalendarLegendItemType.Type01} value={firstDateOfMonthString} />
-  }
+    specialDates: <SpecialCalendarDate type={CalendarLegendItemType.Type01} value={firstDateOfMonthString} />,
+  },
 };
 
 export const CalendarLegendStory: Story = {
@@ -62,6 +62,6 @@ export const CalendarLegendStory: Story = {
         <SpecialCalendarDate type={CalendarLegendItemType.Type07} value={`${yearMonthString}13`} />
         <SpecialCalendarDate type={CalendarLegendItemType.Type13} value={`${yearMonthString}26`} />
       </>
-    )
-  }
+    ),
+  },
 };

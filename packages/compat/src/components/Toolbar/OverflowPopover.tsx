@@ -10,7 +10,7 @@ import type { PopoverDomRef } from '@ui5/webcomponents-react/dist/webComponents/
 import { Popover } from '@ui5/webcomponents-react/dist/webComponents/Popover/index.js';
 import type {
   ToggleButtonDomRef,
-  ToggleButtonPropTypes
+  ToggleButtonPropTypes,
 } from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
 import { ToggleButton } from '@ui5/webcomponents-react/dist/webComponents/ToggleButton/index.js';
 import { Device, useI18nBundle, useSyncRef } from '@ui5/webcomponents-react-base';
@@ -45,7 +45,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
     overflowButton,
     overflowPopoverRef,
     setIsMounted,
-    a11yConfig
+    a11yConfig,
   } = props;
   const [pressed, setPressed] = useState(false);
   const toggleBtnRef = useRef<ToggleButtonDomRef>(null);
@@ -140,7 +140,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore: React 19
           id: `${item.props.id}-overflow`,
-          [labelProp]: labelVal
+          [labelProp]: labelVal,
         });
       }
       // @ts-expect-error: if type is not defined, it's not a separator
@@ -151,13 +151,13 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
           style: {
             height: '0.0625rem',
             margin: '0.375rem 0.1875rem',
-            width: '100%'
+            width: '100%',
           },
-          'aria-label': labelVal
+          'aria-label': labelVal,
         });
       }
       return cloneElement<HTMLAttributes<HTMLElement>>(item, {
-        [labelProp]: labelVal
+        [labelProp]: labelVal,
       });
     });
 
@@ -201,7 +201,7 @@ export const OverflowPopover: FC<OverflowPopoverProps> = (props: OverflowPopover
               {filteredChildren}
             </div>
           </Popover>,
-          portalContainer ?? document.body
+          portalContainer ?? document.body,
         )}
     </OverflowPopoverContextProvider>
   );

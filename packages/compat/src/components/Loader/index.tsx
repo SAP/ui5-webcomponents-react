@@ -78,7 +78,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderPropTypes>((props, ref) => {
       slot={slot}
       style={{
         ...style,
-        backgroundSize
+        backgroundSize,
       }}
       {...rest}
     />

@@ -14,7 +14,7 @@ import {
   SEMANTIC_COLOR_CRITICAL,
   SEMANTIC_COLOR_ERROR,
   SEMANTIC_COLOR_GOOD,
-  SEMANTIC_COLOR_NEUTRAL
+  SEMANTIC_COLOR_NEUTRAL,
 } from '../../i18n/i18n-defaults.js';
 import { flattenFragments } from '../../internal/utils.js';
 import type { CommonProps } from '../../types/index.js';
@@ -90,12 +90,12 @@ const semanticColorMap = new Map<AnalyticalCardHeaderPropTypes['state'], any>([
   [ValueColor.Neutral, SEMANTIC_COLOR_NEUTRAL],
   [ValueColor.Good, SEMANTIC_COLOR_GOOD],
   [ValueColor.Critical, SEMANTIC_COLOR_CRITICAL],
-  [ValueColor.Error, SEMANTIC_COLOR_ERROR]
+  [ValueColor.Error, SEMANTIC_COLOR_ERROR],
 ]);
 
 const deviationMap = new Map<AnalyticalCardHeaderPropTypes['trend'], any>([
   [DeviationIndicator.Up, NUMERICCONTENT_DEVIATION_UP],
-  [DeviationIndicator.Down, NUMERICCONTENT_DEVIATION_DOWN]
+  [DeviationIndicator.Down, NUMERICCONTENT_DEVIATION_DOWN],
 ]);
 
 /**
@@ -131,7 +131,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
     state === ValueColor.Good && classNames.good,
     state === ValueColor.Error && classNames.error,
     state === ValueColor.Critical && classNames.critical,
-    state === ValueColor.Neutral && classNames.neutral
+    state === ValueColor.Neutral && classNames.neutral,
   );
 
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
@@ -224,7 +224,7 @@ export const AnalyticalCardHeader = forwardRef<HTMLDivElement, AnalyticalCardHea
           <div className={classNames.sideIndicators}>
             {sideIndicators.map((sideIndicator, index) => {
               return cloneElement(sideIndicator, {
-                id: sideIndicator.props.id ?? `${headerId}-indicator${index}`
+                id: sideIndicator.props.id ?? `${headerId}-indicator${index}`,
               });
             })}
           </div>

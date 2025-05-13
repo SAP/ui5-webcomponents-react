@@ -9,7 +9,7 @@ describe('ExpandableText', () => {
     cy.mount(
       <ExpandableText maxCharacters={Infinity} text={longText}>
         Short text
-      </ExpandableText>
+      </ExpandableText>,
     );
     cy.get('[ui5-text]').should('have.text', longText).and('be.visible');
   });
@@ -25,7 +25,7 @@ describe('ExpandableText', () => {
     cy.get('[ui5-responsive-popover]').should('not.exist');
 
     cy.mount(
-      <ExpandableText maxCharacters={20} text={longText} showOverflowInPopover={false} overflowMode="Popover" />
+      <ExpandableText maxCharacters={20} text={longText} showOverflowInPopover={false} overflowMode="Popover" />,
     );
     cy.get('[ui5-responsive-popover]').should('exist');
   });

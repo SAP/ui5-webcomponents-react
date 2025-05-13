@@ -86,7 +86,7 @@ const CardHeader = withWebComponent<CardHeaderPropTypes, CardHeaderDomRef>(
   ['additionalText', 'subtitleText', 'titleText'],
   ['interactive'],
   ['action', 'avatar'],
-  ['click']
+  ['click'],
 );
 
 CardHeader.displayName = 'CardHeader';

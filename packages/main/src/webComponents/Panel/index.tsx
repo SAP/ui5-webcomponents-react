@@ -150,7 +150,7 @@ const Panel = withWebComponent<PanelPropTypes, PanelDomRef>(
   ['accessibleName', 'accessibleRole', 'headerLevel', 'headerText'],
   ['collapsed', 'fixed', 'noAnimation', 'stickyHeader'],
   ['header'],
-  ['toggle']
+  ['toggle'],
 );
 
 Panel.displayName = 'Panel';

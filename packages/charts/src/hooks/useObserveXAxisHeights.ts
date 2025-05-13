@@ -20,7 +20,7 @@ export const useObserveXAxisHeights = (chartRef: RefObject<SVGElement>, axisCoun
 
       const arraysHaveTheSameLength = mostRecentXAxisHeights.current.length === defaultHeights.length;
       const arrayContentIsIdentical = mostRecentXAxisHeights.current.every(
-        (value, index) => defaultHeights[index] === value
+        (value, index) => defaultHeights[index] === value,
       );
       if (!(arraysHaveTheSameLength && arrayContentIsIdentical)) {
         mostRecentXAxisHeights.current = defaultHeights;
@@ -35,7 +35,7 @@ export const useObserveXAxisHeights = (chartRef: RefObject<SVGElement>, axisCoun
         characterDataOldValue: false,
         attributes: false,
         childList: true,
-        subtree: true
+        subtree: true,
       });
     }
     return () => {

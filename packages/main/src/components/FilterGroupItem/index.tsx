@@ -20,7 +20,7 @@ import {
   MOVE_TO_BOTTOM,
   MOVE_TO_TOP,
   MOVE_UP,
-  UP_ARROW
+  UP_ARROW,
 } from '../../i18n/i18n-defaults.js';
 import type { ReorderDirections } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
@@ -72,7 +72,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
       setShowBtnsOnHover,
       setSelectedKeys,
       setRequiredKeys,
-      prevIsListView
+      prevIsListView,
     } = useContext(FilterBarDialogContext);
 
     const listViewHasChanged = useRef(prevIsListView?.current !== isListView);
@@ -113,7 +113,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
         index,
         direction: e.currentTarget.dataset.reorder as ReorderDirections,
         target: tableRowRef.current,
-        filterKey
+        filterKey,
       });
     };
 
@@ -123,7 +123,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           Home: 'top',
           End: 'bottom',
           ArrowUp: 'up',
-          ArrowDown: 'down'
+          ArrowDown: 'down',
         };
 
         const direction = directionMap[e.key];
@@ -181,7 +181,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
           className={clsx(
             classNames.dialogTableRow,
             withReordering && classNames.withReorderBtns,
-            withReordering && showBtnsOnHover && classNames.withReorderHoverBtns
+            withReordering && showBtnsOnHover && classNames.withReorderHoverBtns,
           )}
           onFocus={withReordering ? handleFocus : undefined}
           onKeyDown={withReordering ? handleKeyDown : undefined}
@@ -287,7 +287,7 @@ const FilterGroupItem = forwardRef<HTMLDivElement, FilterGroupItemPropTypes & Fi
         </div>
       </div>
     );
-  }
+  },
 );
 
 FilterGroupItem.displayName = 'FilterGroupItem';

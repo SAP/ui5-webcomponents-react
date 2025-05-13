@@ -40,7 +40,7 @@ export const Expandable = (props: ExpandableProps) => {
     renderRowSubComponent,
     alwaysShowSubComponent,
     translatableTexts,
-    classes: classNames
+    classes: classNames,
   } = webComponentsReactProperties;
   const currentTheme = useCurrentTheme();
   const shouldRenderButton = currentTheme === 'sap_horizon' || currentTheme === 'sap_horizon_dark';
@@ -48,7 +48,7 @@ export const Expandable = (props: ExpandableProps) => {
     ({ id }) =>
       id !== '__ui5wcr__internal_selection_column' &&
       id !== '__ui5wcr__internal_highlight_column' &&
-      id !== '__ui5wcr__internal_navigation_column'
+      id !== '__ui5wcr__internal_navigation_column',
   );
 
   const columnIndex = tableColumns.findIndex((col) => col.id === column.id);
@@ -107,7 +107,7 @@ export const Expandable = (props: ExpandableProps) => {
               data-component-name="AnalyticalTableNonExpandableCellSpacer"
               className={clsx(
                 classNames.nonExpandableCellSpacer,
-                shouldRenderButton && classNames.withExpandableButton
+                shouldRenderButton && classNames.withExpandableButton,
               )}
               onFocus={(e: FocusEvent<ButtonDomRef>) => {
                 e.target.accessibleName = row.isExpanded

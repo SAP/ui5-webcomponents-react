@@ -130,7 +130,7 @@ const MediaGallery = withWebComponent<MediaGalleryPropTypes, MediaGalleryDomRef>
   ['layout', 'menuHorizontalAlign', 'menuVerticalAlign'],
   ['interactiveDisplayArea', 'showAllThumbnails'],
   [],
-  ['display-area-click', 'overflow-click', 'selection-change']
+  ['display-area-click', 'overflow-click', 'selection-change'],
 );
 
 MediaGallery.displayName = 'MediaGallery';

@@ -15,7 +15,7 @@ import { AnalyticalTable } from './index';
 const pluginsMeta = {
   ...meta,
   title: 'Data Display / AnalyticalTable / Plugin Hooks',
-  tags: ['excludeFromSidebar']
+  tags: ['excludeFromSidebar'],
 } satisfies Meta<typeof AnalyticalTable>;
 export default pluginsMeta;
 type Story = StoryObj<typeof pluginsMeta>;
@@ -27,13 +27,13 @@ export const PluginAnnounceEmptyCells: Story = {
         age: undefined,
         friend: {
           name: null,
-          age: 0
+          age: 0,
         },
-        status: 'Error'
+        status: 'Error',
       },
-      ...dataSmall
+      ...dataSmall,
     ],
-    visibleRows: 5
+    visibleRows: 5,
   },
   render(args) {
     return (
@@ -44,13 +44,13 @@ export const PluginAnnounceEmptyCells: Story = {
         tableHooks={[AnalyticalTableHooks.useAnnounceEmptyCells]}
       />
     );
-  }
+  },
 };
 
 export const PluginDisableRowSelection: Story = {
   args: {
     data: dataLarge.map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
-    selectionMode: AnalyticalTableSelectionMode.Multiple
+    selectionMode: AnalyticalTableSelectionMode.Multiple,
   },
   render: (args) => {
     const disableRowFunc = (row) => row.original.age < 40;
@@ -95,7 +95,7 @@ export const PluginDisableRowSelection: Story = {
         )}
       </>
     );
-  }
+  },
 };
 
 export const PluginIndeterminateRowSelection: Story = {
@@ -116,12 +116,12 @@ export const PluginIndeterminateRowSelection: Story = {
         />
       </>
     );
-  }
+  },
 };
 
 export const PluginManualRowSelect: Story = {
   args: {
-    data: dataManualSelect
+    data: dataManualSelect,
   },
   render: (args) => {
     const [collapsedCode, setCollapsedCode] = useReducer((coll) => !coll, true);
@@ -161,7 +161,7 @@ export const PluginManualRowSelect: Story = {
         )}
       </>
     );
-  }
+  },
 };
 
 export const PluginOnColumnResize: Story = {
@@ -215,30 +215,30 @@ export const PluginOnColumnResize: Story = {
         )}
       </>
     );
-  }
+  },
 };
 
 const orderedMultiSortColumns = [
   {
     Header: 'Name',
     accessor: 'name',
-    enableMultiSort: true
+    enableMultiSort: true,
   },
   {
     Header: 'Age',
     accessor: 'age',
-    enableMultiSort: true
+    enableMultiSort: true,
   },
   {
     Header: 'Name 2',
     accessor: 'name2',
-    enableMultiSort: true
+    enableMultiSort: true,
   },
   {
     Header: 'Age 2',
     accessor: 'age2',
-    enableMultiSort: true
-  }
+    enableMultiSort: true,
+  },
 ];
 const orderedMultiSortData = [
   { name: 'Peter', age: 40, name2: 'Alissa', age2: 18 },
@@ -251,7 +251,7 @@ const orderedMultiSortData = [
   { name: 'Peter', age: 65, name2: 'Rose', age2: 26 },
   { name: 'Graham', age: 65, name2: 'Rose', age2: 26 },
   { name: 'Graham', age: 65, name2: 'Willis', age2: 26 },
-  { name: 'Graham', age: 62, name2: 'Willis', age2: 26 }
+  { name: 'Graham', age: 62, name2: 'Willis', age2: 26 },
 ];
 
 export const PluginOrderedMultiSort = {
@@ -262,8 +262,8 @@ export const PluginOrderedMultiSort = {
       description:
         'Defines the sort priority when sorting by multiple columns, starting with the first column ID.\n' +
         '\n' +
-        '**Note:** Column IDs that are not found in the array use the default priority, so the first sorted column has a higher priority than the next sorted column.'
-    }
+        '**Note:** Column IDs that are not found in the array use the default priority, so the first sorted column has a higher priority than the next sorted column.',
+    },
   },
   render(args) {
     return (
@@ -274,5 +274,5 @@ export const PluginOrderedMultiSort = {
         tableHooks={[AnalyticalTableHooks.useOrderedMultiSort(args.orderedIds)]}
       />
     );
-  }
+  },
 };

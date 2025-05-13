@@ -38,7 +38,7 @@ export const useHandleTabSelect = ({
   objectPageRef,
   debouncedOnSectionChange,
   scrollTimeout,
-  setSelectedSubSectionId
+  setSelectedSubSectionId,
 }: UseHandleTabSelectProps) => {
   const [onSectionSelectedArgs, setOnSectionSelectedArgs] = useState<
     | false
@@ -46,7 +46,7 @@ export const useHandleTabSelect = ({
         Parameters<TabContainerPropTypes['onTabSelect']>[0],
         undefined | string,
         string,
-        ReactElement<ObjectPageSectionPropTypes>
+        ReactElement<ObjectPageSectionPropTypes>,
       ]
   >(false);
 
@@ -81,8 +81,8 @@ export const useHandleTabSelect = ({
         enrichEventWithDetails(event, {
           sectionIndex,
           sectionId,
-          subSectionId
-        })
+          subSectionId,
+        }),
       );
       if (event.defaultPrevented) {
         return;

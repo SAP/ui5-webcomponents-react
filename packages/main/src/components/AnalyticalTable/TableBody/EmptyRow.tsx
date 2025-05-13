@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 export const EmptyRow = ({
   virtualRow,
   className,
-  children
+  children,
 }: {
   virtualRow: VirtualItem;
   className: string;
@@ -18,7 +18,7 @@ export const EmptyRow = ({
       style={{
         height: `${virtualRow.size}px`,
         transform: `translateY(${virtualRow.start}px)`,
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
       }}
     >
       {children}

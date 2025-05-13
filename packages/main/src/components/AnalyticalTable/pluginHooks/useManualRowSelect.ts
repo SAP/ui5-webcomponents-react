@@ -11,7 +11,7 @@ import type { ReactTableHooks, TableInstance } from '../types/index.js';
 export const useManualRowSelect = (manualRowSelectedKey = 'isSelected') => {
   const instanceAfterData = ({
     flatRows,
-    toggleRowSelected
+    toggleRowSelected,
   }: {
     flatRows: TableInstance['flatRows'];
     toggleRowSelected: TableInstance['toggleRowSelected'];

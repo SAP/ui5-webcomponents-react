@@ -10,14 +10,14 @@ const RANGE_DEFINITIONS: Record<RANGE_4_STEPS, [number, number]> = {
   S: [0, 599],
   M: [600, 1023],
   L: [1024, 1439],
-  XL: [1440, -1]
+  XL: [1440, -1],
 };
 
 const newRangeToLegacyRangeMap: Record<RANGE_4_STEPS, RANGE_LEGACY_4_STEPS> = {
   S: 'Phone',
   M: 'Tablet',
   L: 'Desktop',
-  XL: 'LargeDesktop'
+  XL: 'LargeDesktop',
 };
 
 function getQuery(from: number, to: number) {
@@ -35,7 +35,7 @@ function resolveRangeInfo(name: RANGE_4_STEPS): RangeInfo {
   const params: RangeInfo = {
     from: RANGE_DEFINITIONS[name][0],
     name: newRangeToLegacyRangeMap[name],
-    unit: 'px'
+    unit: 'px',
   };
   if (RANGE_DEFINITIONS[name][1] > 0) {
     params.to = RANGE_DEFINITIONS[name][1];
@@ -51,7 +51,7 @@ function initMediaQueries() {
       S: window.matchMedia(getQuery(...RANGE_DEFINITIONS.S)),
       M: window.matchMedia(getQuery(...RANGE_DEFINITIONS.M)),
       L: window.matchMedia(getQuery(...RANGE_DEFINITIONS.L)),
-      XL: window.matchMedia(getQuery(...RANGE_DEFINITIONS.XL))
+      XL: window.matchMedia(getQuery(...RANGE_DEFINITIONS.XL)),
     };
 
     for (const mediaQueriesKey in mediaQueries) {
@@ -74,7 +74,7 @@ export const getCurrentRange = (width?: number): RangeInfo => {
       from: 1024,
       to: 1439,
       name: 'Desktop',
-      unit: 'px'
+      unit: 'px',
     };
   }
   // @ts-expect-error: width can only be undefined or a number, therefore `isNaN` works here

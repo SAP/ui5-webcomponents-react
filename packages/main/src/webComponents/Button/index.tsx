@@ -203,11 +203,11 @@ const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
     'endIcon',
     'icon',
     'tooltip',
-    'type'
+    'type',
   ],
   ['disabled', 'submits'],
   ['badge'],
-  ['click']
+  ['click'],
 );
 
 Button.displayName = 'Button';

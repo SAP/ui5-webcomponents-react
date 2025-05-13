@@ -19,7 +19,7 @@ export const useAnnounceEmptyCells = (hooks: ReactTableHooks) => {
       }
       return cellProps;
     },
-    [emptyCellLabel]
+    [emptyCellLabel],
   );
 
   hooks.getCellProps.push(setCellProps);

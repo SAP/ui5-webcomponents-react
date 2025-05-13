@@ -10,7 +10,7 @@ const meta = {
   component: Dialog,
   argTypes: {
     footer: { control: { disable: true } },
-    header: { control: { disable: true } }
+    header: { control: { disable: true } },
   },
   args: {
     children: (
@@ -21,9 +21,9 @@ const meta = {
       </List>
     ),
     headerText: 'Dialog Header',
-    open: isChromatic
+    open: isChromatic,
   },
-  tags: ['package:@ui5/webcomponents']
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof Dialog>;
 
 export default meta;
@@ -65,5 +65,5 @@ export const Default: Story = {
         />
       </>
     );
-  }
+  },
 };

@@ -7,8 +7,8 @@ const meta = {
   component: ScatterChart,
   argTypes: {
     children: {
-      control: { disable: true }
-    }
+      control: { disable: true },
+    },
   },
   args: {
     dataset: scatterComplexDataSet,
@@ -16,20 +16,20 @@ const meta = {
       {
         accessor: 'users',
         label: 'Users',
-        axis: 'x'
+        axis: 'x',
       },
       {
         accessor: 'sessions',
         label: 'Sessions',
         formatter: (val) => `${val}k`,
-        axis: 'y'
+        axis: 'y',
       },
       {
         accessor: 'volume',
-        axis: 'z'
-      }
-    ]
-  }
+        axis: 'z',
+      },
+    ],
+  },
 } satisfies Meta<typeof ScatterChart>;
 
 export default meta;
@@ -44,31 +44,31 @@ export const WithCustomColor: Story = {
       {
         accessor: 'users',
         label: 'Users',
-        axis: 'x'
+        axis: 'x',
       },
       {
         accessor: 'sessions',
         label: 'Sessions',
-        axis: 'y'
+        axis: 'y',
       },
       {
         accessor: 'volume',
-        axis: 'z'
-      }
-    ]
-  }
+        axis: 'z',
+      },
+    ],
+  },
 };
 
 export const LoadingPlaceholder: Story = {
   args: {
-    dataset: []
-  }
+    dataset: [],
+  },
 };
 
 export const WithCustomTooltipConfig: Story = {
-  args: tooltipConfig
+  args: tooltipConfig,
 };
 
 export const WithCustomLegendConfig: Story = {
-  args: legendConfig
+  args: legendConfig,
 };

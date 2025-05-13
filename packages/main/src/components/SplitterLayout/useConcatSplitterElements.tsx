@@ -17,7 +17,7 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
     }
 
     const childrenArray = Children.toArray(concatSplitterElements?.children).filter(
-      isValidElement
+      isValidElement,
     ) as ReactElement<SplitterElementPropTypes>[];
 
     let splitterCount = 0;
@@ -41,7 +41,7 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
             height={concatSplitterElements?.height}
             width={concatSplitterElements?.width}
             vertical={concatSplitterElements?.vertical}
-          />
+          />,
         );
         // -1 => prev element
         indicesWithSplitter.push(index + 1 + splitterCount - 1);
@@ -60,7 +60,7 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
       const size = childrenArray[index]?.props?.size;
       if (size && size !== 'auto') {
         childrenArray[index] = cloneElement(childrenArray[index], {
-          size: `calc(${size} - var(--_ui5wcr-SplitterSize))`
+          size: `calc(${size} - var(--_ui5wcr-SplitterSize))`,
         });
       }
     });

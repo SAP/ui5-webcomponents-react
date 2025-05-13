@@ -234,11 +234,11 @@ const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, Responsiv
     'initialFocus',
     'opener',
     'placement',
-    'verticalAlign'
+    'verticalAlign',
   ],
   ['allowTargetOverlap', 'hideArrow', 'modal', 'open', 'preventFocusRestore', 'preventInitialFocus'],
   ['footer', 'header'],
-  ['before-close', 'before-open', 'close', 'open']
+  ['before-close', 'before-open', 'close', 'open'],
 );
 
 ResponsivePopover.displayName = 'ResponsivePopover';

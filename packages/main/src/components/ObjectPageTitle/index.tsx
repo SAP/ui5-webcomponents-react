@@ -37,7 +37,7 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
   const [showNavigationInTopArea, setShowNavigationInTopArea] = useState(undefined);
   const isMounted = useRef(false);
   const [isPhone, setIsPhone] = useState(
-    Device.getCurrentRange(dynamicPageTitleRef.current?.getBoundingClientRect().width)?.name === 'Phone'
+    Device.getCurrentRange(dynamicPageTitleRef.current?.getBoundingClientRect().width)?.name === 'Phone',
   );
   const containerClasses = clsx(classNames.container, isPhone && classNames.phone, className);
   const toolbarContainerRef = useRef<HTMLDivElement>(null);
@@ -86,8 +86,8 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
     if (isValidElement(navigationBar) && navigationBar?.type?._displayName === 'UI5WCRToolbar') {
       setWcrNavToolbar(
         cloneElement<any>(navigationBar, {
-          numberOfAlwaysVisibleItems: Infinity
-        })
+          numberOfAlwaysVisibleItems: Infinity,
+        }),
       );
     }
   }, [navigationBar]);

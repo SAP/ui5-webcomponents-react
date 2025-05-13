@@ -1,6 +1,6 @@
 import {
   setCustomElementsScopingRules,
-  setCustomElementsScopingSuffix
+  setCustomElementsScopingSuffix,
 } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
 import type { ButtonDomRef } from '@ui5/webcomponents-react';
 import { Bar, Button, Popover, Switch } from '@ui5/webcomponents-react';
@@ -28,9 +28,9 @@ describe('withWebComponent', () => {
         () => ({
           native: updatedNative,
           nativePassedThrough: updatedNativePassedThrough,
-          custom: updatedCustom
+          custom: updatedCustom,
         }),
-        { native, nativePassedThrough, custom }
+        { native, nativePassedThrough, custom },
       );
       return (
         <>
@@ -77,7 +77,7 @@ describe('withWebComponent', () => {
         }
       >
         Middle Content
-      </Bar>
+      </Bar>,
     );
     cy.findByText('Footer Button 1').click();
     cy.get('@cb1').should('have.been.calledTwice');
@@ -117,7 +117,7 @@ describe('withWebComponent', () => {
             </>
           </>
         }
-      />
+      />,
     );
 
     cy.findByText('not mounted').should('not.exist');

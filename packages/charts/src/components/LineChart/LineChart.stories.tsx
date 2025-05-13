@@ -5,7 +5,7 @@ import {
   legendConfig,
   secondaryDimensionDataSet,
   simpleDataSet,
-  tooltipConfig
+  tooltipConfig,
 } from '../../resources/DemoProps.js';
 import { LineChart } from './LineChart.js';
 
@@ -17,34 +17,34 @@ const meta = {
       {
         accessor: 'name',
         formatter: (d) => `${d} 2019`,
-        interval: 0
-      }
+        interval: 0,
+      },
     ],
     measures: [
       {
         accessor: 'users',
         label: 'Users',
         formatter: (val) => val.toLocaleString(),
-        lineConfig: { type: 'linear' }
+        lineConfig: { type: 'linear' },
       },
       {
         accessor: 'sessions',
         label: 'Active Sessions',
         formatter: (val) => `${val} sessions`,
-        hideDataLabel: true
+        hideDataLabel: true,
       },
       {
         accessor: 'volume',
-        label: 'Vol.'
-      }
+        label: 'Vol.',
+      },
     ],
-    dataset: complexDataSet
+    dataset: complexDataSet,
   },
   argTypes: {
     dataset: {
-      control: { disable: true }
-    }
-  }
+      control: { disable: true },
+    },
+  },
 } satisfies Meta<typeof LineChart>;
 
 export default meta;
@@ -56,16 +56,16 @@ export const WithCustomColor: Story = {
   args: {
     dimensions: [{ accessor: 'name' }],
     measures: [{ accessor: 'users', color: 'red' }],
-    dataset: simpleDataSet
-  }
+    dataset: simpleDataSet,
+  },
 };
 
 export const WithSecondaryDimension: Story = {
   args: {
     dimensions: [{ accessor: 'name' }, { accessor: 'dimension' }],
     measures: [{ accessor: 'users', color: 'red' }],
-    dataset: secondaryDimensionDataSet
-  }
+    dataset: secondaryDimensionDataSet,
+  },
 };
 
 export const WithDataLabels: Story = {
@@ -73,16 +73,16 @@ export const WithDataLabels: Story = {
     dimensions: [{ accessor: 'name' }],
     measures: [
       {
-        accessor: 'users'
+        accessor: 'users',
       },
       {
-        accessor: 'sessions'
+        accessor: 'sessions',
       },
       {
-        accessor: 'volume'
-      }
-    ]
-  }
+        accessor: 'volume',
+      },
+    ],
+  },
 };
 
 export const WithFormatter: Story = {
@@ -92,22 +92,22 @@ export const WithFormatter: Story = {
       {
         accessor: 'users',
         formatter: (element) => `${element / 10}`,
-        label: 'number of users'
+        label: 'number of users',
       },
       {
-        accessor: 'sessions'
+        accessor: 'sessions',
       },
       {
-        accessor: 'volume'
-      }
-    ]
-  }
+        accessor: 'volume',
+      },
+    ],
+  },
 };
 
 export const LoadingPlaceholder: Story = {
   args: {
-    dataset: []
-  }
+    dataset: [],
+  },
 };
 
 export const WithReferenceLine: Story = {
@@ -117,22 +117,22 @@ export const WithReferenceLine: Story = {
       referenceLine: {
         color: 'red',
         label: 'MAX',
-        value: 650
-      }
+        value: 650,
+      },
     },
     measures: [
       {
-        accessor: 'users'
+        accessor: 'users',
       },
       {
-        accessor: 'sessions'
+        accessor: 'sessions',
       },
       {
-        accessor: 'volume'
-      }
+        accessor: 'volume',
+      },
     ],
-    dataset: bigDataSet
-  }
+    dataset: bigDataSet,
+  },
 };
 
 export const WithLinearGradient: Story = {
@@ -153,16 +153,16 @@ export const WithLinearGradient: Story = {
       {
         accessor: 'users',
         width: 2,
-        color: 'url(#colorUsers)'
-      }
-    ]
-  }
+        color: 'url(#colorUsers)',
+      },
+    ],
+  },
 };
 
 export const WithCustomTooltipConfig: Story = {
-  args: tooltipConfig
+  args: tooltipConfig,
 };
 
 export const WithCustomLegendConfig: Story = {
-  args: legendConfig
+  args: legendConfig,
 };

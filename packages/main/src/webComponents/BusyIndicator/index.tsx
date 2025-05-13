@@ -84,7 +84,7 @@ const BusyIndicator = withWebComponent<BusyIndicatorPropTypes, BusyIndicatorDomR
   ['delay', 'size', 'text', 'textPlacement'],
   ['active'],
   [],
-  []
+  [],
 );
 
 BusyIndicator.displayName = 'BusyIndicator';

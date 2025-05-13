@@ -11,7 +11,7 @@ const meta = {
   args: {
     backgroundDesign: PageBackgroundDesign.Solid,
     style: {
-      height: '500px'
+      height: '500px',
     },
     header: (
       <Bar
@@ -35,14 +35,14 @@ const meta = {
           }
         />
       </div>
-    )
+    ),
   },
   argTypes: {
     children: { control: { disable: true } },
     footer: { control: { disable: true } },
-    header: { control: { disable: true } }
+    header: { control: { disable: true } },
   },
-  tags: ['package:@ui5/webcomponents-fiori']
+  tags: ['package:@ui5/webcomponents-fiori'],
 } satisfies Meta<typeof Page>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -99,6 +99,6 @@ export const Default: Story = {
           ultrices. Ac placerat vestibulum lectus mauris ultrices.
         </p>
       </div>
-    )
-  }
+    ),
+  },
 };

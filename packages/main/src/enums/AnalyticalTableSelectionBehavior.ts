@@ -13,5 +13,5 @@ export enum AnalyticalTableSelectionBehavior {
   /**
    * The row is only selectable by clicking on the corresponding field in the selection column.
    */
-  RowSelector = 'RowSelector'
+  RowSelector = 'RowSelector',
 }

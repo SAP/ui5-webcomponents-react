@@ -44,7 +44,7 @@ export const I18nStore = {
       void getI18nBundle(bundleName).then((bundle) => {
         STORE_LOCATION[STORE_SYMBOL] = {
           ...STORE_LOCATION[STORE_SYMBOL],
-          [bundleName]: bundle
+          [bundleName]: bundle,
         };
         emitChange();
       });
@@ -57,10 +57,10 @@ export const I18nStore = {
     STORE_LOCATION[STORE_SYMBOL] = newBundles.reduce(
       (acc, bundle) => ({
         ...acc,
-        [bundle.packageName]: bundle
+        [bundle.packageName]: bundle,
       }),
-      {}
+      {},
     );
     emitChange();
-  }
+  },
 };

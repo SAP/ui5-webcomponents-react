@@ -13,11 +13,11 @@ export const useLegendItemClick = (handler, dataKeyExtractor?) => {
             chartType: payload.type,
             color: payload.color,
             payload: payload.payload,
-            index
-          })
+            index,
+          }),
         );
       }
     },
-    [handler, dataKeyExtractor]
+    [handler, dataKeyExtractor],
   );
 };
