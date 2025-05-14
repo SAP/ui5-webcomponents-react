@@ -7,5 +7,4 @@ dist
 temp
 .out
 
-.nx/cache
-.nx/workspace-data
+.nx

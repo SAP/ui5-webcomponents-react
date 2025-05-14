@@ -26,5 +26,4 @@ packages/main/scripts/wrapperGeneration/json
 packages/main/tmp
 packages/*/src/generated/
 
-.nx/cache
-.nx/workspace-data
+.nx
