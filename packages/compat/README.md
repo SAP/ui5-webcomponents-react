@@ -64,6 +64,8 @@ The script will change the custom element name by adding a `-v1` suffix (via [pa
 <p>The script patches the <code>@ui5/webcomponents-compat</code> and <code>@ui5/webcomponents-react-compat</code> table component and subcomponents components and subcomponents to render with a different custom element name (tag name) compared to the v2 implementation.
 This is done internally using <code>patch-package</code> to adjust the implementation in the <b>node_modules</b>.</p>
 
+<p><b>Note:</b> Since the tag names and the related attribute are changed, any CSS selectors targeting these tags must be updated accordingly!</p>
+
 **How to use**
 
 <p><b>Install</b> the <code>@ui5/webcomponents-react-cli</code> and <code>@ui5/webcomponents-compat</code> packages:</p>
