@@ -61,12 +61,12 @@ The script will change the custom element name by adding a `-v1` suffix (via [pa
 
 **What it does**
 
-<p>The script patches the `@ui5/webcomponents-compat` and `@ui5/webcomponents-react-compat` table component and subcomponents components and subcomponents to render with a different custom element name (tag name) compared to the v2 implementation.
-This is done internally using `patch-package` to adjust the implementation in the **node_modules**.</p>
+<p>The script patches the <code>@ui5/webcomponents-compat</code> and <code>@ui5/webcomponents-react-compat</code> table component and subcomponents components and subcomponents to render with a different custom element name (tag name) compared to the v2 implementation.
+This is done internally using <code>patch-package</code> to adjust the implementation in the <b>node_modules</b>.</p>
 
 **How to use**
 
-<p><b>Install</b> the `@ui5/webcomponents-react-cli` and `@ui5/webcomponents-compat` packages:</p>
+<p><b>Install</b> the <code>@ui5/webcomponents-react-cli</code> and <code>@ui5/webcomponents-compat</code> packages:</p>
 
 ```
 // install `@ui5/webcomponents-compat` explicitly
@@ -80,11 +80,11 @@ npm i @ui5/webcomponents-react-cli @ui5/webcomponents-compat
 ui5-wcr patch-compat-table
 ```
 
-<p>The `ui5-wcr` executable is provided by the `@ui5/webcomponents-react-cli` package. The `patch-compat-table` command applies the necessary patches.</p>
+<p>The <code>ui5-wcr</code> executable is provided by the <code>@ui5/webcomponents-react-cli</code> package. The <code>patch-compat-table</code> command applies the necessary patches.</p>
 
 <p><b>Recommendation:</b></p>
 
-<p>Add the script as `postinstall` script in the `package.json`, so it runs after every module update.</p>
+<p>Add the script as <code>postinstall</code> script in the <code>package.json</code>, so it runs after every module update.</p>
 
 ```
 {
