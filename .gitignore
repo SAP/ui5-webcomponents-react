@@ -8,7 +8,6 @@ yarn-error.log
 .cache
 .out
 lerna-debug.log
-.awcache
 /temp
 *.tsbuildinfo
 
@@ -27,5 +26,4 @@ packages/main/scripts/wrapperGeneration/json
 packages/main/tmp
 packages/*/src/generated/
 
-.nx/cache
-.nx/workspace-data
+.nx

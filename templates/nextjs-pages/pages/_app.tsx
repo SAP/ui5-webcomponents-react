@@ -14,8 +14,8 @@ export default function App({ Component, pageProps }: AppProps) {
           type="application/json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              theme: 'sap_horizon'
-            })
+              theme: 'sap_horizon',
+            }),
           }}
         />
       </Head>

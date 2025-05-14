@@ -5,11 +5,11 @@ import { parseArgs } from 'node:util';
 const options = {
   directory: {
     type: 'string',
-    short: 'd'
+    short: 'd',
   },
   basePath: {
-    type: 'string'
-  }
+    type: 'string',
+  },
 };
 
 const { values } = parseArgs({ options });

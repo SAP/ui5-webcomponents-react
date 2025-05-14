@@ -11,7 +11,7 @@ const PATHS = {
   shared: path.join(root, 'shared'),
   temp: path.join(root, 'temp'),
   nodeModules: path.join(root, 'node_modules'),
-  packages: path.join(root, 'packages')
+  packages: path.join(root, 'packages'),
 };
 
 export default PATHS;

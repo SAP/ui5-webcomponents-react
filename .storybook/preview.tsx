@@ -12,7 +12,7 @@ import languages from './components/languageCodes.json';
 import { MAPPED_THEMES } from './utils';
 
 const argTypesCategoryCommonProps = {
-  table: { category: 'Common props' }
+  table: { category: 'Common props' },
 };
 
 const preview: Preview = {
@@ -20,11 +20,11 @@ const preview: Preview = {
     style: argTypesCategoryCommonProps,
     className: argTypesCategoryCommonProps,
     slot: {
-      table: { disable: true }
+      table: { disable: true },
     },
     ref: {
-      table: { disable: true }
-    }
+      table: { disable: true },
+    },
   },
   decorators: [
     (Story, { globals, viewMode }) => {
@@ -63,7 +63,7 @@ const preview: Preview = {
           </ThemeProvider>
         </StrictMode>
       );
-    }
+    },
   ],
   globalTypes: {
     theme: {
@@ -72,8 +72,8 @@ const preview: Preview = {
       defaultValue: 'sap_horizon',
       toolbar: {
         title: 'Theme',
-        items: MAPPED_THEMES
-      }
+        items: MAPPED_THEMES,
+      },
     },
     contentDensity: {
       title: 'Content Density',
@@ -84,14 +84,14 @@ const preview: Preview = {
         items: [
           {
             value: ContentDensity.Cozy,
-            title: ContentDensity.Cozy
+            title: ContentDensity.Cozy,
           },
           {
             value: ContentDensity.Compact,
-            title: ContentDensity.Compact
-          }
-        ]
-      }
+            title: ContentDensity.Compact,
+          },
+        ],
+      },
     },
     direction: {
       title: 'Direction',
@@ -102,14 +102,14 @@ const preview: Preview = {
         items: [
           {
             value: 'ltr',
-            title: 'LTR'
+            title: 'LTR',
           },
           {
             value: 'rtl',
-            title: 'RTL'
-          }
-        ]
-      }
+            title: 'RTL',
+          },
+        ],
+      },
     },
     language: {
       title: 'Languages',
@@ -117,20 +117,20 @@ const preview: Preview = {
       defaultValue: 'local',
       toolbar: {
         icon: 'globe',
-        items: languages.map((item) => ({ value: item.id, title: item.language }))
-      }
-    }
+        items: languages.map((item) => ({ value: item.id, title: item.language })),
+      },
+    },
   },
   parameters: {
     docs: {
       source: {
-        excludeDecorators: true
-      }
+        excludeDecorators: true,
+      },
     },
     viewMode: 'docs',
     actions: { argTypesRegex: '^on.*' },
     controls: {
-      sort: 'requiredFirst'
+      sort: 'requiredFirst',
     },
     backgrounds: { disable: true },
     options: {
@@ -153,13 +153,13 @@ const preview: Preview = {
           'User Feedback',
           'AI',
           ['Docs'],
-          'Legacy Components'
-        ]
-      }
+          'Legacy Components',
+        ],
+      },
     },
-    chromatic: { pauseAnimationAtEnd: true }
+    chromatic: { pauseAnimationAtEnd: true },
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export default preview;

@@ -7,7 +7,7 @@ import {
   TableHeaderCell,
   TableHeaderRow,
   TableRow,
-  Text
+  Text,
 } from '@ui5/webcomponents-react';
 import { ProductCollection } from './products.json';
 

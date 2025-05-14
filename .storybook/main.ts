@@ -10,8 +10,8 @@ const addons = [
   {
     name: '@storybook/addon-essentials',
     options: {
-      docs: false
-    }
+      docs: false,
+    },
   },
   getAbsolutePath('@storybook/react-vite'),
   {
@@ -19,11 +19,11 @@ const addons = [
     options: {
       mdxPluginOptions: {
         mdxCompileOptions: {
-          remarkPlugins: [remarkGfm]
-        }
-      }
-    }
-  }
+          remarkPlugins: [remarkGfm],
+        },
+      },
+    },
+  },
 ];
 if (isDevMode) {
   addons.push('@storybook/addon-a11y');
@@ -32,7 +32,7 @@ if (isDevMode) {
 const config: StorybookConfig = {
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
-    options: {}
+    options: {},
   },
   stories: isChromatic
     ? ['../packages/main/src/components/**/*.stories.@(tsx|jsx)']
@@ -41,41 +41,41 @@ const config: StorybookConfig = {
         {
           directory: '../docs/knowledge-base',
           files: '*.mdx',
-          titlePrefix: 'Knowledge Base'
+          titlePrefix: 'Knowledge Base',
         },
         {
           directory: '../packages/charts/src/components',
           files: '**/*.@(mdx|stories.@(mdx|tsx))',
-          titlePrefix: 'Charts'
+          titlePrefix: 'Charts',
         },
         {
           directory: '../packages/base',
           files: '*.@(tsx|jsx)',
-          titlePrefix: 'Base'
+          titlePrefix: 'Base',
         },
         {
           directory: '../packages/cypress-commands',
           files: '**/*.mdx',
-          titlePrefix: 'Testing with Cypress'
+          titlePrefix: 'Testing with Cypress',
         },
         '../packages/main/**/*.mdx',
         '../packages/main/**/*.stories.@(tsx|jsx)',
         {
           directory: '../packages/ai',
           files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
-          titlePrefix: 'AI'
+          titlePrefix: 'AI',
         },
         {
           directory: '../packages/compat',
           files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
-          titlePrefix: 'Legacy Components'
-        }
+          titlePrefix: 'Legacy Components',
+        },
       ],
   addons,
   typescript: {
-    reactDocgen: 'react-docgen-typescript'
+    reactDocgen: 'react-docgen-typescript',
   },
-  staticDirs: [isDevMode && 'images-dev', !isDevMode && 'images'].filter(Boolean)
+  staticDirs: [isDevMode && 'images-dev', !isDevMode && 'images'].filter(Boolean),
 };
 
 export default config;

@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "12 3 * * *"
+    - cron: '12 3 * * *'
   workflow_dispatch:
 
 jobs:
@@ -20,11 +20,9 @@ jobs:
         with:
           step-name: artifactPrepareVersion
           flags: --versioningType cloud_noTag
-          
+
       - name: detectExecuteScan
         uses: SAP/project-piper-action@v1.20.0
         with:
           step-name: detectExecuteScan
           flags: '--token ${{ secrets.DETECT_TOKEN }}'
-
-  

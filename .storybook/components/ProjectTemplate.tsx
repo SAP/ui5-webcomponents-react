@@ -10,7 +10,7 @@ import {
   MessageStrip,
   Popover,
   Text,
-  ThemeProvider
+  ThemeProvider,
 } from '@ui5/webcomponents-react';
 import { addCustomCSSWithScoping } from '@ui5/webcomponents-react-base/dist/utils/addCustomCSSWithScoping.js';
 import { clsx } from 'clsx';
@@ -38,7 +38,7 @@ interface ProjectTemplatePropTypes {
 
 addCustomCSSWithScoping(
   'ui5-card-header',
-  ':host([data-project-template]) .ui5-card-header .ui5-card-header-avatar { pointer-events: auto; }'
+  ':host([data-project-template]) .ui5-card-header .ui5-card-header-avatar { pointer-events: auto; }',
 );
 
 export function ProjectTemplate(props: ProjectTemplatePropTypes) {
@@ -54,7 +54,7 @@ export function ProjectTemplate(props: ProjectTemplatePropTypes) {
     isTemplate,
     stackBlitzHref,
     showUnsupportedMessage,
-    note
+    note,
   } = props;
   const [popoverOpen, setPopoverOpen] = useState(false);
   const linkRef = useRef(null);

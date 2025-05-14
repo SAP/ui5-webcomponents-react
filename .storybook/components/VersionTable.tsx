@@ -70,7 +70,7 @@ export function VersionTable() {
                         style={{
                           fontSize: ThemingParameters.sapFontLargeSize,
                           fontFamily: ThemingParameters.sapFontBoldFamily,
-                          marginInlineStart: '0.5rem'
+                          marginInlineStart: '0.5rem',
                         }}
                       >
                         Version 1
@@ -94,7 +94,7 @@ export function VersionTable() {
                         style={{
                           fontSize: ThemingParameters.sapFontLargeSize,
                           fontFamily: ThemingParameters.sapFontBoldFamily,
-                          marginInlineEnd: '0.5rem'
+                          marginInlineEnd: '0.5rem',
                         }}
                       >
                         Version 2

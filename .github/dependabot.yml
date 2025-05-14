@@ -5,15 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem: "github-actions" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: 'github-actions' # See documentation for possible values
+    directory: '/' # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: 'daily'
     open-pull-requests-limit: 0
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: 'npm' # See documentation for possible values
+    directory: '/' # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: 'daily'
     open-pull-requests-limit: 0
     ignore:
       - dependency-name: '@storybook/addon-a11y'
@@ -24,4 +24,3 @@ updates:
       - dependency-name: '@storybook/react-vite'
       - dependency-name: 'storybook'
       - dependency-name: '@types/node'
-

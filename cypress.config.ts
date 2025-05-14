@@ -14,9 +14,9 @@ export default defineConfig({
         'packages/*/src/index.ts',
         'packages/main/src/components/AnalyticalTable/types/*',
         'packages/main/src/webComponents/**',
-        'packages/charts/src/resources/**'
-      ]
-    }
+        'packages/charts/src/resources/**',
+      ],
+    },
   },
   component: {
     setupNodeEvents(on, config) {
@@ -25,13 +25,13 @@ export default defineConfig({
     },
     devServer: {
       framework: 'react',
-      bundler: 'vite'
-    }
+      bundler: 'vite',
+    },
   },
   includeShadowDom: true,
   viewportWidth: 1920,
   viewportHeight: 1080,
   video: false,
   screenshotOnRunFailure: false,
-  scrollBehavior: false
+  scrollBehavior: false,
 });

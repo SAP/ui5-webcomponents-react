@@ -9,7 +9,7 @@ const containerStyles = {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
   rowGap: '1rem',
-  columnGap: '1rem'
+  columnGap: '1rem',
 };
 
 const FONTS = [];
@@ -76,7 +76,7 @@ interface PropsWithStyle extends Props {
 const VariableValue = ({ value, varKey, theme, style = {} }: PropsWithStyle) => {
   const [showCSSVars, toggleCSSVars] = useReducer((prev) => !prev, false);
   const [updatedLabel, setUpdatedLabel] = useState(
-    getComputedStyle(document.documentElement).getPropertyValue(`--${varKey}`)
+    getComputedStyle(document.documentElement).getPropertyValue(`--${varKey}`),
   );
 
   useEffect(() => {
@@ -107,7 +107,7 @@ const ColorVariables = (props: Props) => {
           width: '2rem',
           height: '2rem',
           minWidth: '2rem',
-          border: `1px solid ${ThemingParameters.sapField_BorderColor}`
+          border: `1px solid ${ThemingParameters.sapField_BorderColor}`,
         }}
       />
     </div>
@@ -132,7 +132,7 @@ export const ThemeableCSSVars = () => {
           backgroundColor: ThemingParameters.sapBackgroundColor,
           padding: '1rem',
           borderRadius: ThemingParameters.sapElement_BorderCornerRadius,
-          boxShadow: ThemingParameters.sapContent_Shadow0
+          boxShadow: ThemingParameters.sapContent_Shadow0,
         }}
       >
         <Select

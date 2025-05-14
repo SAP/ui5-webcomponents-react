@@ -59,7 +59,7 @@ export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPro
         color: 'black',
         whiteSpace: 'pre-wrap',
         fontSize: '14px',
-        margin: '0px'
+        margin: '0px',
       }}
     >
       <code style={{ whiteSpace: 'pre' }}>

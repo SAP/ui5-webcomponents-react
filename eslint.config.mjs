@@ -248,6 +248,30 @@ const config = tseslint.config(
     },
   },
 
+  {
+    files: ['packages/cli/**/*, scripts/**/*', '.github/**/*', 'config/**/*'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ['config/*.js', '.github/*.mjs'],
+        },
+      },
+    },
+  },
+
+  {
+    files: ['**/*.js'],
+    rules: {
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
+
   // prettier plugin must be the last entry in the config!
   prettierPlugin,
 );

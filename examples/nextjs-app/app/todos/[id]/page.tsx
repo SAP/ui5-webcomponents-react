@@ -10,7 +10,7 @@ import {
   MessageStrip,
   Switch,
   TextArea,
-  Title
+  Title,
 } from '@ui5/webcomponents-react';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 

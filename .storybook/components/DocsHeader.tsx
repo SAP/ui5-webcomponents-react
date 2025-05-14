@@ -10,7 +10,7 @@ import {
   Link,
   MessageStrip,
   Text,
-  ThemeProvider
+  ThemeProvider,
 } from '@ui5/webcomponents-react';
 import { clsx } from 'clsx';
 import { useContext } from 'react';

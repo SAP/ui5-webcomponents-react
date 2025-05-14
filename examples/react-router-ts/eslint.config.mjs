@@ -8,14 +8,14 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['build', '.react-router', '**/node_modules']
+    ignores: ['build', '.react-router', '**/node_modules'],
   },
   js.configs.recommended,
   {
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.commonjs
+        ...globals.commonjs,
       },
 
       ecmaVersion: 'latest',
@@ -23,26 +23,26 @@ export default tseslint.config(
 
       parserOptions: {
         ecmaFeatures: {
-          jsx: true
-        }
-      }
-    }
+          jsx: true,
+        },
+      },
+    },
   },
   {
     extends: [
       reactPlugin.configs.flat.recommended,
       reactPlugin.configs.flat['jsx-runtime'],
-      jsxA11y.flatConfigs.recommended
+      jsxA11y.flatConfigs.recommended,
     ],
     files: ['**/*.{js,jsx,ts,tsx}'],
 
     plugins: {
-      'react-hooks': reactHooks
+      'react-hooks': reactHooks,
     },
 
     settings: {
       react: {
-        version: 'detect'
+        version: 'detect',
       },
 
       formComponents: ['Form'],
@@ -50,21 +50,21 @@ export default tseslint.config(
       linkComponents: [
         {
           name: 'Link',
-          linkAttribute: 'to'
+          linkAttribute: 'to',
         },
         {
           name: 'NavLink',
-          linkAttribute: 'to'
-        }
+          linkAttribute: 'to',
+        },
       ],
 
       'import/resolver': {
-        typescript: {}
+        typescript: {},
       },
       rules: {
-        ...reactHooks.configs.recommended.rules
-      }
-    }
+        ...reactHooks.configs.recommended.rules,
+      },
+    },
   },
   // Typescript
   {
@@ -72,7 +72,7 @@ export default tseslint.config(
       js.configs.recommended,
       ...tseslint.configs.recommended,
       importPlugin.flatConfigs.recommended,
-      importPlugin.flatConfigs.typescript
+      importPlugin.flatConfigs.typescript,
     ],
     files: ['**/*.{ts,tsx}'],
     settings: {
@@ -80,22 +80,22 @@ export default tseslint.config(
 
       'import/resolver': {
         node: {
-          extensions: ['.ts', '.tsx']
+          extensions: ['.ts', '.tsx'],
         },
 
         typescript: {
-          alwaysTryTypes: true
-        }
-      }
-    }
+          alwaysTryTypes: true,
+        },
+      },
+    },
   },
   // Node
   {
     files: ['**/.eslintrc.cjs'],
     languageOptions: {
       globals: {
-        ...globals.node
-      }
-    }
-  }
+        ...globals.node,
+      },
+    },
+  },
 );

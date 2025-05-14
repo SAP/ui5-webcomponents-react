@@ -11,7 +11,7 @@ import {
   ShellBarItem,
   ShellBarItemPropTypes,
   ListItemStandard,
-  ButtonDomRef
+  ButtonDomRef,
 } from '@ui5/webcomponents-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
@@ -23,7 +23,7 @@ const THEMES = [
   { key: 'sap_horizon', value: 'Morning Horizon (Light)' },
   { key: 'sap_horizon_dark', value: 'Evening Horizon (Dark)' },
   { key: 'sap_horizon_hcb', value: 'Horizon High Contrast Black' },
-  { key: 'sap_horizon_hcw', value: 'Horizon High Contrast White' }
+  { key: 'sap_horizon_hcw', value: 'Horizon High Contrast White' },
 ];
 
 export function AppShellBar() {

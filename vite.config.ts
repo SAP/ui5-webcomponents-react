@@ -9,7 +9,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig(() => {
   return {
     define: {
-      'process.env.STORYBOOK_ENV': `'${process.env.STORYBOOK_ENV}'`
+      'process.env.STORYBOOK_ENV': `'${process.env.STORYBOOK_ENV}'`,
     },
     resolve: {
       alias: {
@@ -19,18 +19,18 @@ export default defineConfig(() => {
         '@ui5/webcomponents-react-charts': fileURLToPath(new URL('./packages/charts/src/index.ts', import.meta.url)),
         '@ui5/webcomponents-react/dist': fileURLToPath(new URL('./packages/main/src/', import.meta.url)),
         '@ui5/webcomponents-react': fileURLToPath(new URL('./packages/main/src/index.ts', import.meta.url)),
-        '@/': fileURLToPath(new URL('./', import.meta.url))
-      }
+        '@/': fileURLToPath(new URL('./', import.meta.url)),
+      },
     },
     plugins: [
       react(),
       process.env.CYPRESS === 'true' &&
         IstanbulPlugin({
-          cypress: true
+          cypress: true,
         }),
       tsconfigPaths({
-        projects: [fileURLToPath(new URL('tsconfig.base.json', import.meta.url))]
-      })
-    ].filter(Boolean)
+        projects: [fileURLToPath(new URL('tsconfig.base.json', import.meta.url))],
+      }),
+    ].filter(Boolean),
   };
 });

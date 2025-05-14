@@ -1,9 +1,8 @@
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
-import { useReducer, useRef, useState } from 'react';
+import type { FilterBarPropTypes } from '@ui5/webcomponents-react';
 import {
   DatePicker,
   FilterBar,
-  FilterBarPropTypes,
   FilterGroupItem,
   FlexBox,
   FlexBoxDirection,
@@ -16,8 +15,9 @@ import {
   StepInput,
   Text,
   ThemeProvider,
-  Title
+  Title,
 } from '@ui5/webcomponents-react';
+import { useReducer, useRef, useState } from 'react';
 import classes from './FilterBarExample.module.css';
 
 const initialState = {
@@ -25,7 +25,7 @@ const initialState = {
   countries: {},
   currency: 'USD',
   date: '',
-  search: ''
+  search: '',
 };
 
 function reducer(state, action) {
@@ -56,7 +56,7 @@ export function FilterBarExample() {
   const [visibleChildrenByKey, setVisibleChildrenByKey] = useState<Record<string, boolean>>({
     '0': true,
     '1': true,
-    '2': true
+    '2': true,
   });
   const [orderedFilterKeys, setOrderedFilterKeys] = useState(['0', '1', '2', '3']);
 
@@ -107,7 +107,7 @@ export function FilterBarExample() {
       e.detail.selectedFilterKeys.reduce((acc, cur) => {
         acc[cur] = true;
         return acc;
-      }, {})
+      }, {}),
     );
     dispatch({ type: 'SET_STATE', payload: dialogStateRef.current });
   };
@@ -116,8 +116,8 @@ export function FilterBarExample() {
     <ThemeProvider>
       <div className={classes.filterBarDemo}>
         <Text>
-          The FilterBar applies filter changes inside the FilterBar immediately and inside the dialog only after 'OK'
-          has been pressed.
+          The FilterBar applies filter changes inside the FilterBar immediately and inside the dialog only after
+          &lsquo;OK&rsquo; has been pressed.
         </Text>
         <FilterBar
           header={

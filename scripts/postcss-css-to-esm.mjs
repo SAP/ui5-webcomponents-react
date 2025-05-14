@@ -43,7 +43,7 @@ function cssToEsmPostcssPlugin(opts) {
     OnceExit(root, { result }) {
       const css = proccessCSS(root.toString());
       const { exportTokens } = result.messages.find(
-        (message) => message.type === 'export' && message.plugin === 'postcss-modules'
+        (message) => message.type === 'export' && message.plugin === 'postcss-modules',
       );
 
       const targetFile = root.source.input.from
@@ -64,7 +64,7 @@ function cssToEsmPostcssPlugin(opts) {
       if (content !== oldContent) {
         fs.writeFileSync(filePath, content);
       }
-    }
+    },
   };
 }
 

@@ -7,7 +7,7 @@ import {
   Label,
   MessageStrip,
   Switch,
-  TextArea
+  TextArea,
 } from '@ui5/webcomponents-react';
 import { useLoaderData } from 'react-router';
 import { Todo } from './mockImplementations/mockData.ts';

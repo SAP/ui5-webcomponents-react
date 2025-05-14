@@ -6,7 +6,7 @@ import appStyles from './globals.css?url';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'stylesheet', href: appStyles },
-  { rel: 'stylesheet', href: wcrStyles }
+  { rel: 'stylesheet', href: wcrStyles },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {

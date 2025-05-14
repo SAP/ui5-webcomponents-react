@@ -1,5 +1,4 @@
-
-[data-sap-theme="sap_horizon"] {
+[data-sap-theme='sap_horizon'] {
   --_ui5wcr_Toolbar_FocusShadow: inset 0 0 0 0.125rem var(--sapContent_FocusColor);
   --_ui5wcr_Toolbar_FocusOutline: none;
   --_ui5wcr_ActionSheet_HeaderBoxShadow: var(--sapContent_HeaderShadow);

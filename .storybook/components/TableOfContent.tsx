@@ -4,7 +4,10 @@ import classes from './ToC.module.css';
 
 export function TableOfContent({
   headingSelector = 'h2:not(.noAnchor), h3:not(.noAnchor), h4:not(.noAnchor)',
-  onlyDisplaySideNav = false
+  onlyDisplaySideNav = false,
+}: {
+  headingSelector?: string;
+  onlyDisplaySideNav?: boolean;
 }) {
   useEffect(() => {
     tocbot.init({
@@ -13,7 +16,7 @@ export function TableOfContent({
       headingSelector,
       orderedList: false,
       collapseDepth: 6,
-      hasInnerContainers: true
+      hasInnerContainers: true,
     });
 
     document.querySelectorAll('.toc-link').forEach((x) => x.setAttribute('target', '_self'));

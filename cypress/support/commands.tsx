@@ -17,7 +17,7 @@ declare global {
         options?: MountOptions & {
           themeProviderProps?: Omit<ThemeProviderPropTypes, 'children'>;
         },
-        rerenderKey?: string
+        rerenderKey?: string,
       ) => Cypress.Chainable<MountReturn>;
 
       /**
@@ -35,7 +35,7 @@ declare global {
         done: Mocha.Done,
         clickOptions?: Partial<Cypress.ClickOptions> & {
           position?: Cypress.PositionType;
-        }
+        },
       ): Chainable<Element>;
     }
   }
@@ -64,5 +64,5 @@ Cypress.Commands.add(
       : cy.wrap(subject).click({ timeout, ...clickOptions });
 
     chainable.then(() => done(new Error('Expected element NOT to be clickable, but click() succeeded')));
-  }
+  },
 );
