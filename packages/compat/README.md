@@ -47,7 +47,7 @@ Following are the imports of duplicate custom element names:
 ### Experimental Patch Script
 
 The `patch-compat-table` script (included in the `@ui5/webcomponents-react-cli` package) is developed to address specific compatibility issues that arise when using the legacy v1 Table component in conjunction with the `FilterBar` or `VariantManagement` components. These components internally rely on the v2 `Table`, and therefore conflicts will occur when using the v1 `Table`.
-The script will change the custom element name by adding a `-v1` suffix (via `patch-package`) to all duplicate v1 table components.
+The script will change the custom element name by adding a `-v1` suffix (via [patch-package](https://github.com/ds300/patch-package)) to all duplicate v1 table components.
 
 > ⚠️ **Experimental**: This script is in experimental state and not subject to semantic versioning.
 
@@ -62,18 +62,18 @@ The script will change the custom element name by adding a `-v1` suffix (via `pa
 **What it does**
 
 <p>The script patches the `@ui5/webcomponents-compat` and `@ui5/webcomponents-react-compat` table component and subcomponents components and subcomponents to render with a different custom element name (tag name) compared to the v2 implementation.
-This is done internally using [patch-package](https://github.com/ds300/patch-package) to adjust the implementation in the **node_modules**.</p>
+This is done internally using `patch-package` to adjust the implementation in the **node_modules**.</p>
 
 **How to use**
 
-<p>**Install** the `@ui5/webcomponents-react-cli` and `@ui5/webcomponents-compat` packages:</p>
+<p><b>Install</b> the `@ui5/webcomponents-react-cli` and `@ui5/webcomponents-compat` packages:</p>
 
 ```
 // install `@ui5/webcomponents-compat` explicitly
 npm i @ui5/webcomponents-react-cli @ui5/webcomponents-compat
 ```
 
-<p>**Run** the script:</p>
+<p><b>Run</b> the script:</p>
 
 ```
 // ui5-wcr is an executable added by the `@ui5/webcomponents-react-cli` package
@@ -82,7 +82,7 @@ ui5-wcr patch-compat-table
 
 <p>The `ui5-wcr` executable is provided by the `@ui5/webcomponents-react-cli` package. The `patch-compat-table` command applies the necessary patches.</p>
 
-<p>**Recommendation:**</p>
+<p><b>Recommendation:</b></p>
 
 <p>Add the script as `postinstall` script in the `package.json`, so it runs after every module update.</p>
 
