@@ -35,5 +35,4 @@ index 6d568f3..e5ace7d 100644
 +const TableRow = withWebComponent('ui5-table-row-v1', ['type'], ['navigated', 'selected'], [], []);
  TableRow.displayName = 'TableRow';
  export { TableRow };
-+console.log("hello")
 \ No newline at end of file
