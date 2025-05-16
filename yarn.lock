@@ -6449,8 +6449,8 @@ __metadata:
     react-content-loader: "npm:7.0.2"
     recharts: "npm:2.15.3"
   peerDependencies:
-    "@ui5/webcomponents-react": ~2.10.0
-    "@ui5/webcomponents-react-base": ~2.10.0
+    "@ui5/webcomponents-react": ~2.11.0-rc.0
+    "@ui5/webcomponents-react-base": ~2.11.0-rc.0
     react: ^18 || ^19
   languageName: unknown
   linkType: soft
@@ -6476,7 +6476,7 @@ __metadata:
     "@types/react": "*"
     "@types/react-dom": "*"
     "@ui5/webcomponents-compat": ~2.10.0
-    "@ui5/webcomponents-react": ~2.10.0
+    "@ui5/webcomponents-react": ~2.11.0-rc.0
     react: ^18 || ^19
     react-dom: ^18 || ^19
   peerDependenciesMeta:
