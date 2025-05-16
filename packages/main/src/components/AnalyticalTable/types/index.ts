@@ -430,7 +430,7 @@ export interface AnalyticalTableColumnDefinition {
    */
   minWidth?: number;
   /**
-   * Maximum with of the column.
+   * Maximum width of the column.
    */
   maxWidth?: number;
   /**
