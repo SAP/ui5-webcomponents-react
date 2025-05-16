@@ -4,7 +4,7 @@ import type { RefObject, Ref, RefCallback } from 'react';
 import { useCallback, useRef } from 'react';
 
 /**
- * A React hook that synchronizes an external ref (callback or object ref) with an internal ref.
+ * A hook that synchronizes an external ref (callback or object) with an internal ref.
  *
  * @example
  * ```tsx
