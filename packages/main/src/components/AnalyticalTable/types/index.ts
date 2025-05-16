@@ -420,7 +420,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Defines the column width. If not set the table will distribute all columns without a width evenly.
    *
-   * __Note:__ Undercutting the `minWidth` value is not supported!
+   * __Note:__ Values lower than `minWidth` are not supported!
    */
   width?: number;
   /**
