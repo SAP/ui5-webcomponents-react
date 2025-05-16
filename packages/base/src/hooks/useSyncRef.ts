@@ -1,6 +1,6 @@
 'use client';
 
-import type { RefObject, Ref, RefCallback } from 'react';
+import type { MutableRefObject, Ref, RefCallback } from 'react';
 import { useCallback, useRef } from 'react';
 
 /**
@@ -24,9 +24,11 @@ import { useCallback, useRef } from 'react';
  * A tuple containing:
  *   - `componentRef`: a stable callback ref to attach to React elements. When the node
  *      updates, it will forward the node to the external `ref` and update the internal one.
- *   - `localRef`: an internal, ref object that always holds the latest node for synchronous reads.
+ *   - `localRef`: an internal, ref object that holds the latest node for synchronous reads.
  */
-export function useSyncRef<RefType = never>(ref: Ref<RefType>): [RefCallback<RefType>, RefObject<RefType | null>] {
+export function useSyncRef<RefType = never>(
+  ref: Ref<RefType>,
+): [RefCallback<RefType>, MutableRefObject<RefType | null>] {
   const localRef = useRef<RefType | null>(null);
 
   const componentRef = useCallback(
@@ -36,7 +38,7 @@ export function useSyncRef<RefType = never>(ref: Ref<RefType>): [RefCallback<Ref
           ref(node);
         }
         if ({}.hasOwnProperty.call(ref, 'current')) {
-          (ref as RefObject<RefType>).current = node;
+          (ref as MutableRefObject<RefType>).current = node;
         }
       }
       localRef.current = node;
