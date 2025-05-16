@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-import { resolve } from 'node:path';
+import { relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
-import path from 'path';
 import * as process from 'process';
 import { $ } from 'execa';
 
@@ -125,7 +124,7 @@ switch (command) {
   }
 
   case 'patch-compat-table': {
-    const patchesPath = path.relative(process.cwd(), fileURLToPath(new URL('../../patches', import.meta.url)));
+    const patchesPath = relative(process.cwd(), fileURLToPath(new URL('../../patches', import.meta.url)));
 
     try {
       await $`patch-package --patch-dir ${patchesPath}`;
