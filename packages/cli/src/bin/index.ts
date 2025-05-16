@@ -1,7 +1,9 @@
 #!/usr/bin/env node
-import { resolve } from 'node:path';
+import { relative, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import * as process from 'process';
+import { $ } from 'execa';
 
 const { positionals } = parseArgs({ allowPositionals: true, strict: false });
 
@@ -118,6 +120,20 @@ switch (command) {
     }
     const codemod = await import('../scripts/codemod/main.js');
     await codemod.default(values.transform!, values.src!, values.typescript);
+    break;
+  }
+
+  case 'patch-compat-table': {
+    const patchesPath = relative(process.cwd(), fileURLToPath(new URL('../../patches', import.meta.url)));
+
+    try {
+      await $`patch-package --patch-dir ${patchesPath}`;
+      console.log('Patches applied successfully!');
+    } catch (error) {
+      console.error('Failed to apply patches:', error);
+      process.exit(1);
+    }
+
     break;
   }
   default:

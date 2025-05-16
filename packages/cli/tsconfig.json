@@ -8,5 +8,5 @@
     "types": ["node"],
     "skipLibCheck": true
   },
-  "include": ["src", "**/*.json"]
+  "include": ["src", "**/*.json", "patches"]
 }
