@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.0...v2.11.0-rc.0) (2025-05-16)
+
+### Bug Fixes
+
+- **cypress-commands:** make the options optional for clickUi5ListItemByText ([#7316](https://github.com/SAP/ui5-webcomponents-react/issues/7316)) ([74ebb19](https://github.com/SAP/ui5-webcomponents-react/commit/74ebb1900ce28afee66a8a268d0af18a289a1ba5))
+- **deps:** pin dependencies (main) ([#7334](https://github.com/SAP/ui5-webcomponents-react/issues/7334)) ([86c9b7b](https://github.com/SAP/ui5-webcomponents-react/commit/86c9b7bd0801628aae42202618c86b7324effb87))
+- **deps:** pin dependency remark-gfm to 4.0.1 (main) ([#7335](https://github.com/SAP/ui5-webcomponents-react/issues/7335)) ([7b76a7e](https://github.com/SAP/ui5-webcomponents-react/commit/7b76a7e139f52940ed3892967aa4c779b55536d9))
+- **SelectDialog:** use `headerText` as `accessibleName` per default ([#7327](https://github.com/SAP/ui5-webcomponents-react/issues/7327)) ([400d46b](https://github.com/SAP/ui5-webcomponents-react/commit/400d46be7e2bf041e0c367161d3edf636d400694)), closes [#7319](https://github.com/SAP/ui5-webcomponents-react/issues/7319)
+
+### Features
+
+- **cli:** add experimental `patch-compat-table` command ([6691958](https://github.com/SAP/ui5-webcomponents-react/commit/6691958d6b5ec2afafc49fc784e62b055e3c56fc))
+
 # [2.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.2...v2.10.0) (2025-05-08)
 
 ### Bug Fixes

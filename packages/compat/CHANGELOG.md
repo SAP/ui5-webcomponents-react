@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0-rc.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.0...v2.11.0-rc.0) (2025-05-16)
+
+### Features
+
+- **cli:** add experimental `patch-compat-table` command ([6691958](https://github.com/SAP/ui5-webcomponents-react/commit/6691958d6b5ec2afafc49fc784e62b055e3c56fc))
+
 # [2.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.2...v2.10.0) (2025-05-08)
 
 ### Features
