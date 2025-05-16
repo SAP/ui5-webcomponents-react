@@ -54,18 +54,19 @@ spawnSync('npx', ['prettier', '--write', path.resolve(SRC_I18N_PROPERTIES, 'i18n
   stdio: [0, 1, 2],
 });
 
-// generate Assets.js and Assets-static.js
+// generate Assets.js and Assets-fetch.js
 const jsonImports = await readdir(TARGET_I18N_JSON_IMPORTS);
 
 const assets = [`import '@ui5/webcomponents/dist/Assets.js';`, `import '@ui5/webcomponents-fiori/dist/Assets.js';`];
-const assetsStatic = [
-  `import '@ui5/webcomponents/dist/Assets-static.js';`,
-  `import '@ui5/webcomponents-fiori/dist/Assets-static.js';`,
+const assetsFetch = [
+  `import '@ui5/webcomponents/dist/Assets-fetch.js';`,
+  //todo: currently the fiori package doesn't include `Assets-fetch` - clarify if this is intended
+  // `import '@ui5/webcomponents-fiori/dist/Assets-fetch.js';`,
 ];
 
 for (const file of jsonImports) {
-  if (file.includes('-static')) {
-    assetsStatic.push(`import './json-imports/${file}';`);
+  if (file.includes('-fetch')) {
+    assetsFetch.push(`import './json-imports/${file}';`);
   } else {
     assets.push(`import './json-imports/${file}';`);
   }
@@ -75,7 +76,8 @@ await writeFile(
   path.resolve(DIST_DIR, 'Assets.js'),
   await prettier.format(assets.join('\n'), { ...prettierConfig, parser: 'babel' }),
 );
+
 await writeFile(
-  path.resolve(DIST_DIR, 'Assets-static.js'),
-  await prettier.format(assetsStatic.join('\n'), { ...prettierConfig, parser: 'babel' }),
+  path.resolve(DIST_DIR, 'Assets-fetch.js'),
+  await prettier.format(assetsFetch.join('\n'), { ...prettierConfig, parser: 'babel' }),
 );
