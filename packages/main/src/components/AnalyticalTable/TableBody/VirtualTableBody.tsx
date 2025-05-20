@@ -34,7 +34,6 @@ interface VirtualTableBodyProps {
   manualGroupBy?: boolean;
   subRowsKey: string;
   scrollContainerRef?: MutableRefObject<HTMLDivElement>;
-  subComponentsBehavior: AnalyticalTablePropTypes['subComponentsBehavior'];
   triggerScroll?: TriggerScrollState;
   scrollToRef: MutableRefObject<ScrollToRefType>;
   rowVirtualizer: Virtualizer<DivWithCustomScrollProp, HTMLElement>;
