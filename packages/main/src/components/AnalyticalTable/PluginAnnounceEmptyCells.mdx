@@ -18,11 +18,13 @@ The `useAnnounceEmptyCells` plugin hook adds screen reader announcements for emp
 <Canvas sourceState="none" of={ComponentStories.PluginAnnounceEmptyCells} />
 
 ```jsx
+const tableHooks = [AnalyticalTableHooks.useAnnounceEmptyCells] // this array should be memoized
+
 <AnalyticalTable
   data={data}
   columns={columns}
   visibleRows={5}
-  tableHooks={[AnalyticalTableHooks.useAnnounceEmptyCells]}
+  tableHooks={tableHooks}
 />
 ```
 
