@@ -2,7 +2,7 @@ import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal.d.ts'
 import dedent from 'dedent';
 import { sinceFilter, snakeCaseToCamelCase, summaryFormatter } from '../../util/formatters.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
-import { WebComponentWrapper } from './WebComponentWrapper.js';
+import type { WebComponentWrapper } from './WebComponentWrapper.js';
 
 export class ComponentRenderer extends AbstractRenderer {
   public phase = RenderingPhase.component;

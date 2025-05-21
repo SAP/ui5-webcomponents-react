@@ -32,9 +32,9 @@ const preview: Preview = {
 
       useEffect(() => {
         if (language === 'local') {
-          setLanguage(null);
+          void setLanguage(null);
         } else {
-          setLanguage(language);
+          void setLanguage(language);
         }
       }, [language]);
 
@@ -48,11 +48,11 @@ const preview: Preview = {
 
       useEffect(() => {
         document.querySelector('html').setAttribute('dir', direction);
-        applyDirection();
+        void applyDirection();
       }, [direction]);
 
       useEffect(() => {
-        setTheme(theme);
+        void setTheme(theme);
       }, [theme]);
 
       return (

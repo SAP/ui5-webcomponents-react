@@ -1,6 +1,6 @@
-import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal.d.ts';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal.d.ts';
 import { setGlobalTagNameMap } from '../../util/formatters.js';
 import { recursiveManifestResolver } from '../../util/recursiveManifestResolver.js';
 import { AttributesRenderer } from './AttributesRenderer.js';

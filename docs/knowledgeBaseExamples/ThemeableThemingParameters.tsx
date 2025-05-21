@@ -139,7 +139,7 @@ export const ThemeableCSSVars = () => {
           onChange={(e) => {
             const theme = e.detail.selectedOption.dataset.value;
             setCurrentTheme(theme);
-            setTheme(theme);
+            void setTheme(theme);
           }}
         >
           {MAPPED_THEMES.map(({ title, value }) => (

@@ -29,6 +29,6 @@ export default VersionInfo;
   await fs.writeFile('src/generated/VersionInfo.ts', fileContent);
 };
 
-generate().then(() => {
+void generate().then(() => {
   console.log('Version info file generated.');
 });

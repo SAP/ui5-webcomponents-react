@@ -1,6 +1,6 @@
-import versionInfo from '@ui5/webcomponents-base/dist/generated/VersionInfo.js';
 import fs from 'node:fs';
-import path, { basename } from 'node:path';
+import path from 'node:path';
+import versionInfo from '@ui5/webcomponents-base/dist/generated/VersionInfo.js';
 
 // patched version of: import scopeVariables from '@ui5/webcomponents-tools/lib/css-processors/scope-variables.mjs';
 function scopeVariables(cssText, packageJSON) {
