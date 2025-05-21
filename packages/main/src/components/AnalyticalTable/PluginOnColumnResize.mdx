@@ -23,19 +23,25 @@ The first parameter is the callback itself (`e: { columnWidth: number; header: R
 
 ```jsx
 const TableComponent = (props) => {
-  const handleColumResize = (e) => {
+  const handleColumResize = useCallback((e) => {
     console.log(e.columnWidth, e.header);
-  };
+  }, []);
+
+  const tableHooks = useMemo(
+    () => [
+      AnalyticalTableHooks.useOnColumnResize(handleColumResize, {
+        liveUpdate: false,
+        wait: 100,
+      }),
+    ],
+    [handleColumResize],
+  );
+
   return (
     <AnalyticalTable
       data={props.data}
       columns={props.columns}
-      tableHooks={[
-        AnalyticalTableHooks.useOnColumnResize(handleColumResize, {
-          liveUpdate: false,
-          wait: 100
-        })
-      ]}
+      tableHooks={tableHooks}
     />
   );
 };

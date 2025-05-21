@@ -853,6 +853,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * You can use this prop to add custom hooks to the table.
    *
+   * __Note:__ Should be memoized!
+   *
    * @default []
    */
   tableHooks?: ((hooks: ReactTableHooks) => void)[];
