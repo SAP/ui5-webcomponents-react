@@ -5,9 +5,9 @@ export interface FilterGroupItemPropTypes extends CommonProps {
   /**
    * The mandatory key each `FilterGroupItem` needs to implement.
    *
-   * __Note:__ `filterKey` needs to be unique for each `FilterGroupItem` per `FilterBar`.
-   *
-   * __Note:__ Whitespaces are not supported!
+   * __Note:__
+   * - `filterKey` needs to be unique for each `FilterGroupItem` per `FilterBar`.
+   * - Whitespace characters are not supported.
    */
   filterKey: string | number;
   /**
@@ -27,7 +27,6 @@ export interface FilterGroupItemPropTypes extends CommonProps {
   /**
    * Defines the group name of the filter.
    *
-   *
    * @default "Basic"
    */
   groupName?: string;
@@ -44,12 +43,13 @@ export interface FilterGroupItemPropTypes extends CommonProps {
   /**
    * Defines whether the filter is required.
    *
-   * __Note:__ Required filters cannot be removed from the `FilterBar`.
+   * __Note:__
+   * - Required filters cannot be removed from the `FilterBar`.
+   * - If `required` is set to `true`, the corresponding input component should also receive the `required` prop explicitly.
    */
   required?: boolean;
   /**
    * Defines whether the filter is hidden.
-   *
    */
   hidden?: boolean;
   /**
