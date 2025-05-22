@@ -19,6 +19,67 @@ import * as ComponentStories from './UserMenu.stories';
 
 <ControlsWithNote of={ComponentStories.Default} />
 
+## Open UserMenu
+
+The `UserMenu` requires an `opener` so it knows where to anchor itself when opened.
+To provide this, you can either:
+
+- Assign an `id` to the element rendered in the `profile` slot.
+- Use the `targetRef` provided in the `detail` of the `onProfileClick` event properties.
+
+### Via `targetRef`
+
+```tsx
+function RefOpener() {
+  const [open, setOpen] = useState(false);
+  const userMenuRef = useRef<UserMenuDomRef>(null);
+  return (
+    <>
+      <ShellBar
+        onProfileClick={(e) => {
+          const { targetRef } = e.detail;
+          userMenuRef.current.opener = targetRef;
+          setOpen(true);
+        }}
+        profile={<Avatar initials="JD" />}
+      />
+      <UserMenu
+        ref={userMenuRef}
+        open={open}
+        onClose={() => {
+          setOpen(false);
+        }}
+      />
+    </>
+  );
+}
+```
+
+### Via `id`
+
+```tsx
+function IdOpener() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <ShellBar
+        onProfileClick={(e) => {
+          setOpen(true);
+        }}
+        profile={<Avatar initials="JD" id="userMenuOpener" />}
+      />
+      <UserMenu
+        open={open}
+        opener="userMenuOpener"
+        onClose={() => {
+          setOpen(false);
+        }}
+      />
+    </>
+  );
+}
+```
+
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## UserMenuAccount
