@@ -44,7 +44,9 @@ export interface FilterGroupItemPropTypes extends CommonProps {
   /**
    * Defines whether the filter is required.
    *
-   * __Note:__ Required filters cannot be removed from the `FilterBar`.
+   * __Note:__
+   * - Required filters cannot be removed from the `FilterBar`.
+   * - If `required` is set to `true`, the corresponding input component should also receive the `required` prop explicitly.
    */
   required?: boolean;
   /**
