@@ -1,4 +1,6 @@
-import type { API, ASTPath, Collection, FileInfo, JSCodeshift, JSXElement, Options } from 'jscodeshift';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access,import/order */
+
+import type { API, ASTPath, Collection, FileInfo, JSCodeshift, JSXElement } from 'jscodeshift';
 
 const config = require('./codemodConfig.json');
 
@@ -70,7 +72,7 @@ function extractValueFromProp(
   return null;
 }
 
-export default function transform(file: FileInfo, api: API, options?: Options): string | undefined {
+export default function transform(file: FileInfo, api: API): string | undefined {
   const j = api.jscodeshift;
   const root = j(file.source);
 

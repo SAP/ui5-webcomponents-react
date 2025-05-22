@@ -3,6 +3,7 @@ import { rename, readdir, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// eslint-disable-next-line import/default
 import prettier from 'prettier';
 import prettierConfig from '../../../prettier.config.js';
 

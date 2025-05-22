@@ -4,7 +4,8 @@
     "lib": ["es2022", "dom"],
     "types": ["cypress", "node", "@testing-library/cypress", "cypress-real-events"],
     "moduleResolution": "Node",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "composite": true
   },
   "include": ["cypress", "**/*.cy.ts", "**/*.cy.tsx", "cypress.config.ts"]
 }

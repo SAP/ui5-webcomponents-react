@@ -12,7 +12,7 @@ export enum RenderingPhase {
 export abstract class AbstractRenderer {
   public readonly phase!: RenderingPhase;
 
-  public prepare(context: WebComponentWrapper) {
+  public prepare(_context: WebComponentWrapper) {
     // optional
   }
   abstract render(context: WebComponentWrapper): string;

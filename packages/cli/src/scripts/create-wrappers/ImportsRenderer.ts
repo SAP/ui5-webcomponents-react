@@ -1,6 +1,6 @@
 import dedent from 'dedent';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
-import { WebComponentWrapper } from './WebComponentWrapper.js';
+import type { WebComponentWrapper } from './WebComponentWrapper.js';
 
 function sortAndMergeMembers(members: Set<string>) {
   return Array.from(members)
@@ -38,7 +38,7 @@ export class ImportsRenderer extends AbstractRenderer {
           regularImports += `{ ${sortAndMergeMembers(config.named)} }`;
         }
 
-        let imports = [];
+        const imports = [];
         if (regularImports.length > 0) {
           imports.push(`import ${regularImports} from '${module}';`);
         }

@@ -8,7 +8,7 @@ import {
 } from '../../util/formatters.js';
 import { resolveReferenceImports } from '../../util/referenceResolver.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
-import { WebComponentWrapper } from './WebComponentWrapper.js';
+import type { WebComponentWrapper } from './WebComponentWrapper.js';
 
 const loggedTypes = new Set<string>();
 

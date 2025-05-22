@@ -3109,6 +3109,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@eslint/compat@npm:1.2.9":
+  version: 1.2.9
+  resolution: "@eslint/compat@npm:1.2.9"
+  peerDependencies:
+    eslint: ^9.10.0
+  peerDependenciesMeta:
+    eslint:
+      optional: true
+  checksum: 10c0/e912058f1e3847a1eec654c0c040467b676bd48171e915c730c7215f57cf5f4db8508c4a431ccb470f4a000d94559b41c4fe8de3d71f23eb8ae7acf4959e1c06
+  languageName: node
+  linkType: hard
+
 "@eslint/config-array@npm:^0.20.0":
   version: 0.20.0
   resolution: "@eslint/config-array@npm:0.20.0"
@@ -11692,12 +11704,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:beta":
-  version: 5.1.0-beta-26f2496093-20240514
-  resolution: "eslint-plugin-react-hooks@npm:5.1.0-beta-26f2496093-20240514"
+"eslint-plugin-react-hooks@npm:5.2.0":
+  version: 5.2.0
+  resolution: "eslint-plugin-react-hooks@npm:5.2.0"
   peerDependencies:
     eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
-  checksum: 10c0/99d399fc985a80126378feca1c84427ae4a63a120a2097761f13b94bea3919a15ee312ee51525b7906d0aef654987e938e1f3ca0c7e2cda72ef739f9671d947d
+  checksum: 10c0/1c8d50fa5984c6dea32470651807d2922cc3934cf3425e78f84a24c2dfd972e7f019bee84aefb27e0cf2c13fea0ac1d4473267727408feeb1c56333ca1489385
   languageName: node
   linkType: hard
 
@@ -23703,6 +23715,7 @@ __metadata:
     "@babel/preset-react": "npm:7.27.1"
     "@babel/preset-typescript": "npm:7.27.1"
     "@cypress/code-coverage": "npm:3.14.2"
+    "@eslint/compat": "npm:1.2.9"
     "@eslint/js": "npm:9.27.0"
     "@semantic-release/github": "npm:11.0.2"
     "@storybook/addon-a11y": "npm:8.6.14"
@@ -23738,7 +23751,7 @@ __metadata:
     eslint-plugin-no-only-tests: "npm:3.3.0"
     eslint-plugin-prettier: "npm:5.4.0"
     eslint-plugin-react: "npm:7.37.5"
-    eslint-plugin-react-hooks: "npm:beta"
+    eslint-plugin-react-hooks: "npm:5.2.0"
     eslint-plugin-storybook: "npm:0.12.0"
     glob: "npm:11.0.2"
     globals: "npm:16.1.0"
