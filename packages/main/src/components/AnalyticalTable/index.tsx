@@ -545,12 +545,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       adjustTableHeightOnPopIn
         ? popInRowHeight
         : internalRowHeight;
+
     if (includeSubCompRowHeight) {
       let initialBodyHeightWithSubComps = 0;
       for (let i = 0; i < rowNum; i++) {
         if (tableState.subComponentsHeight[i]) {
           initialBodyHeightWithSubComps += tableState.subComponentsHeight[i].subComponentHeight + rowHeight;
-        } else if (rows[i]) {
+        } else {
           initialBodyHeightWithSubComps += rowHeight;
         }
       }
@@ -866,7 +867,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   columnVirtualizer={columnVirtualizer}
                   manualGroupBy={reactTableOptions?.manualGroupBy as boolean | undefined}
                   subRowsKey={subRowsKey}
-                  subComponentsBehavior={subComponentsBehavior}
                   triggerScroll={tableState.triggerScroll}
                   rowVirtualizer={rowVirtualizer}
                 />

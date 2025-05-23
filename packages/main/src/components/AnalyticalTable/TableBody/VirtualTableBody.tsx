@@ -2,7 +2,6 @@ import type { Virtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
 import type { MutableRefObject } from 'react';
 import { useEffect, useMemo, useRef } from 'react';
-import { AnalyticalTableSubComponentsBehavior } from '../../../enums/index.js';
 import type {
   AnalyticalTablePropTypes,
   ClassNames,
@@ -35,7 +34,6 @@ interface VirtualTableBodyProps {
   manualGroupBy?: boolean;
   subRowsKey: string;
   scrollContainerRef?: MutableRefObject<HTMLDivElement>;
-  subComponentsBehavior: AnalyticalTablePropTypes['subComponentsBehavior'];
   triggerScroll?: TriggerScrollState;
   scrollToRef: MutableRefObject<ScrollToRefType>;
   rowVirtualizer: Virtualizer<DivWithCustomScrollProp, HTMLElement>;
@@ -62,7 +60,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
     manualGroupBy,
     subRowsKey,
     scrollContainerRef,
-    subComponentsBehavior,
     triggerScroll,
     rowVirtualizer,
   } = props;
@@ -161,21 +158,6 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
         const isNavigatedCell = typeof markNavigatedRow === 'function' ? markNavigatedRow(row) : false;
         const RowSubComponent = typeof renderRowSubComponent === 'function' ? renderRowSubComponent(row) : undefined;
 
-        if (
-          (!RowSubComponent ||
-            (subComponentsBehavior === AnalyticalTableSubComponentsBehavior.IncludeHeightExpandable &&
-              !row.isExpanded)) &&
-          subComponentsHeight &&
-          subComponentsHeight?.[virtualRow.index]?.subComponentHeight
-        ) {
-          dispatch({
-            type: 'SUB_COMPONENTS_HEIGHT',
-            payload: {
-              ...subComponentsHeight,
-              [virtualRow.index]: { subComponentHeight: 0, rowId: row.id },
-            },
-          });
-        }
         let updatedHeight = rowHeight;
         if (
           renderRowSubComponent &&
@@ -205,7 +187,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
               height: `${updatedHeight}px`,
             }}
           >
-            {RowSubComponent && (row.isExpanded || alwaysShowSubComponent) && (
+            {typeof renderRowSubComponent === 'function' && (
               <SubComponent
                 subComponentsHeight={subComponentsHeight}
                 virtualRow={virtualRow}
@@ -216,6 +198,7 @@ export const VirtualTableBody = (props: VirtualTableBodyProps) => {
                 alwaysShowSubComponent={alwaysShowSubComponent}
                 rowIndex={visibleRowIndex + 1}
                 classNames={classes}
+                renderSubComp={RowSubComponent && (row.isExpanded || alwaysShowSubComponent)}
               >
                 {RowSubComponent}
               </SubComponent>
