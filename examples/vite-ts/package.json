@@ -21,10 +21,10 @@
     "@ui5/webcomponents-react": "2.10.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-router": "7.6.0"
+    "react-router": "7.6.1"
   },
   "devDependencies": {
-    "@types/react": "19.1.4",
+    "@types/react": "19.1.5",
     "@types/react-dom": "19.1.5",
     "@ui5/webcomponents-cypress-commands": "2.10.0",
     "@vitejs/plugin-react": "4.4.1",
