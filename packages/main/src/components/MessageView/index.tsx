@@ -186,7 +186,9 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
 
   const handleListItemClick: ListPropTypes['onItemClick'] = (e) => {
     transitionTrigger.current = 'list';
-    onItemSelect(e);
+    if (typeof onItemSelect === 'function') {
+      onItemSelect(e);
+    }
   };
 
   const outerClasses = clsx(classNames.container, className, selectedMessage && classNames.showDetails);
