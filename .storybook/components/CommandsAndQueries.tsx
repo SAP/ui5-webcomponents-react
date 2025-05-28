@@ -1,4 +1,5 @@
 import { Heading, Markdown } from '@storybook/blocks';
+import { Tag as WCRTag } from '@ui5/webcomponents-react';
 import dedent from 'dedent';
 import { Fragment } from 'react';
 
@@ -116,6 +117,7 @@ interface FunctionMetadata {
   members: Members;
   path: Path[];
   namespace: string;
+  deprecated: Record<string, any>;
 }
 
 function generateMdCodeBlock(codeStr: string) {
@@ -196,13 +198,37 @@ function generateDescription(description: RootNode) {
   }, '');
 }
 
+function formatHtmlFromNode(node: any): string {
+  if (!node) return '';
+
+  switch (node.type) {
+    case 'root':
+      return node.children.map(formatHtmlFromNode).join('');
+    case 'paragraph':
+      return `<p>${node.children.map(formatHtmlFromNode).join('')}</p>`;
+    case 'text':
+      return node.value;
+    case 'inlineCode':
+      return `<code>${node.value}</code>`;
+    default:
+      return '';
+  }
+}
+
 export const CommandsAndQueries = ({ api }: { api: FunctionMetadata[] }) => {
   return api
     .sort((a, b) => a.name.localeCompare(b.name))
     .map((item) => {
       return (
         <Fragment key={item.name}>
-          <Heading>{item.name}</Heading>
+          <Heading>
+            {item.name}
+            {!!item.deprecated && (
+              <WCRTag style={{ marginInlineStart: '1rem' }} design="Critical">
+                deprecated
+              </WCRTag>
+            )}
+          </Heading>
           <code>
             {item.name}(
             {item.params
@@ -215,6 +241,12 @@ export const CommandsAndQueries = ({ api }: { api: FunctionMetadata[] }) => {
               return generateGenericType(type);
             })}
           </code>
+          {!!item.deprecated && (
+            <>
+              <br />
+              {<b dangerouslySetInnerHTML={{ __html: formatHtmlFromNode(item.deprecated) }} />}
+            </>
+          )}
           <Markdown>{generateDescription(item.description)}</Markdown>
           {generateExample(item.tags)}
           {!!item.params.length && (
