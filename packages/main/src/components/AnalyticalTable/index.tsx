@@ -877,7 +877,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               </VirtualTableBodyContainer>
             )}
           </div>
-          {(additionalEmptyRowsCount || tableState.isScrollable === undefined || tableState.isScrollable) && (
+          {(additionalEmptyRowsCount || tableState.isScrollable) && (
             <VerticalScrollbar
               tableBodyHeight={tableBodyHeight}
               internalRowHeight={internalHeaderRowHeight}
