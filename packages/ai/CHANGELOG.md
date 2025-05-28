@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.0...v2.10.1) (2025-05-28)
+
+**Note:** Version bump only for package @ui5/webcomponents-ai-react
+
 # [2.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.2...v2.10.0) (2025-05-08)
 
 ### Features
