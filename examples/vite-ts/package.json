@@ -26,7 +26,7 @@
   "devDependencies": {
     "@types/react": "19.1.5",
     "@types/react-dom": "19.1.5",
-    "@ui5/webcomponents-cypress-commands": "2.10.0",
+    "@ui5/webcomponents-cypress-commands": "2.10.1",
     "@vitejs/plugin-react": "4.5.0",
     "cypress": "14.4.0",
     "eslint": "9.27.0",
