@@ -22,6 +22,7 @@ interface UseHandleTabSelectProps {
   debouncedOnSectionChange: ReturnType<typeof debounce>;
   scrollTimeout: RefObject<number>;
   setSelectedSubSectionId: Dispatch<SetStateAction<string>>;
+  setTabSelectId: Dispatch<SetStateAction<string | null>>;
 }
 
 export const useHandleTabSelect = ({
@@ -39,6 +40,7 @@ export const useHandleTabSelect = ({
   debouncedOnSectionChange,
   scrollTimeout,
   setSelectedSubSectionId,
+  setTabSelectId,
 }: UseHandleTabSelectProps) => {
   const [onSectionSelectedArgs, setOnSectionSelectedArgs] = useState<
     | false
@@ -52,8 +54,8 @@ export const useHandleTabSelect = ({
 
   const handleOnSubSectionSelected = (e) => {
     isProgrammaticallyScrolled.current = true;
+    const sectionId = e.detail.sectionId;
     if (mode === ObjectPageMode.IconTabBar) {
-      const sectionId = e.detail.sectionId;
       setInternalSelectedSectionId(sectionId);
       const sectionNodes = objectPageRef.current?.querySelectorAll('section[data-component-name="ObjectPageSection"]');
       const currentIndex = childrenArray.findIndex((objectPageSection) => {
@@ -67,6 +69,7 @@ export const useHandleTabSelect = ({
     const subSectionId = e.detail.subSectionId;
     scrollTimeout.current = performance.now() + 200;
     setSelectedSubSectionId(subSectionId);
+    setTabSelectId(sectionId);
   };
 
   const handleTabItemSelect: TabContainerPropTypes['onTabSelect'] = (event) => {

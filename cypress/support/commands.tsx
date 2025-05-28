@@ -37,6 +37,19 @@ declare global {
           position?: Cypress.PositionType;
         },
       ): Chainable<Element>;
+      /**
+       * Asserts that the element never gains the given attribute.
+       *
+       * __Note:__ An error is thrown if the attribute is not found, therefore it does not block the test if the subject
+       * never includes the given attribute.
+       *
+       *
+       * @param attributeName - The name of the attribute which must not appear.
+       * @param observerTime - How long (in ms) to watch for mutations (default: 500).
+       * @example
+       * cy.get('button').shouldNeverHaveAttribute('disabled', 1000);
+       */
+      shouldNeverHaveAttribute(attributeName: string, observerTime?: number): Chainable<JQuery<HTMLElement>>;
     }
   }
 }
@@ -64,5 +77,38 @@ Cypress.Commands.add(
       : cy.wrap(subject).click({ timeout, ...clickOptions });
 
     chainable.then(() => done(new Error('Expected element NOT to be clickable, but click() succeeded')));
+  },
+);
+
+Cypress.Commands.add(
+  'shouldNeverHaveAttribute',
+  { prevSubject: 'element' },
+  (subject, attributeName, observerTime = 500) => {
+    cy.wrap(subject).then(($el) => {
+      const el = $el[0];
+      const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          if (mutation.attributeName === attributeName) {
+            Cypress.log({
+              name: 'shouldNeverHaveAttribute',
+              message: `${attributeName} was found!`,
+              consoleProps: () => ({
+                attributeName,
+                element: el,
+              }),
+            });
+
+            observer.disconnect();
+            throw new Error(`${attributeName} was found!`);
+          }
+        }
+      });
+
+      observer.observe(el, { attributes: true });
+
+      setTimeout(() => {
+        observer.disconnect();
+      }, observerTime);
+    });
   },
 );
