@@ -16,7 +16,7 @@
     "@ui5/webcomponents-base": "2.10.0",
     "@ui5/webcomponents-fiori": "2.10.0",
     "@ui5/webcomponents-icons": "2.10.0",
-    "@ui5/webcomponents-react": "2.10.0",
+    "@ui5/webcomponents-react": "2.10.1",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
