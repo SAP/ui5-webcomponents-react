@@ -28,13 +28,17 @@ export const stateReducer = (state, action, _prevState, instance: TableInstance)
     };
   }
   switch (action.type) {
-    case 'setFilter':
-      instance.webComponentsReactProperties.onFilter({
-        filters: state.filters,
-        value: action.filterValue,
-        columnId: action.columnId,
-      });
+    case 'setFilter': {
+      const { onFilter } = instance.webComponentsReactProperties;
+      if (typeof onFilter === 'function') {
+        instance.webComponentsReactProperties.onFilter({
+          filters: state.filters,
+          value: action.filterValue,
+          columnId: action.columnId,
+        });
+      }
       return state;
+    }
     case 'toggleRowExpanded':
       // this flag disables scrolling to the top of the table if a table is collapsed
       if (!state.expanded[action.id]) {

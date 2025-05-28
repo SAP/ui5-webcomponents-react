@@ -2027,110 +2027,215 @@ describe('AnalyticalTable', () => {
     cy.get('@more').should('have.been.calledOnce');
   });
 
-  it('pop-in columns', () => {
-    document.body.style.margin = '0px';
+  if (reactVersion.startsWith('19')) {
     ['ltr', 'rtl'].forEach((dir) => {
-      cy.mount(<AnalyticalTable data={data} columns={columnsWithPopIn} dir={dir} />);
-      cy.viewport(801, 1024);
-      cy.findByText('Name').should('be.visible');
-      cy.findByText('Age').should('be.visible');
-      cy.findByText('Friend Name').should('be.visible');
-      cy.findByText('Custom original Header1').should('be.visible');
-      cy.findByText('Custom original Header2').should('be.visible');
-      cy.findByText('Custom Header').should('be.visible');
-      cy.findByText('Custom Header').should('be.visible');
-      cy.findByText('PopinDisplay Modes').should('be.visible').should('have.attr', 'ui5-text');
-      cy.findAllByTestId('popinCell').should('exist');
-      cy.contains('Custom Cell 2').should('be.visible');
+      it(`pop-in columns (${dir})`, () => {
+        document.body.style.margin = '0px';
+        cy.mount(<AnalyticalTable data={data} columns={columnsWithPopIn} dir={dir} />);
+        cy.viewport(801, 1024);
+        cy.findByText('Name').should('be.visible');
+        cy.findByText('Age').should('be.visible');
+        cy.findByText('Friend Name').should('be.visible');
+        cy.findByText('Custom original Header1').should('be.visible');
+        cy.findByText('Custom original Header2').should('be.visible');
+        cy.findByText('Custom Header').should('be.visible');
+        cy.findByText('Custom Header').should('be.visible');
+        cy.findByText('PopinDisplay Modes').should('be.visible').should('have.attr', 'ui5-text');
+        cy.findAllByTestId('popinCell').should('exist');
+        cy.contains('Custom Cell 2').should('be.visible');
 
-      cy.contains('Custom Header 1').should('not.exist');
-      cy.contains('Custom Header 2').should('not.exist');
-      cy.contains('pop-in content').should('not.exist');
+        cy.contains('Custom Header 1').should('not.exist');
+        cy.contains('Custom Header 2').should('not.exist');
+        cy.contains('pop-in content').should('not.exist');
 
-      cy.viewport(800, 1024);
-      cy.wait(200);
+        cy.viewport(800, 1024);
+        cy.wait(200);
 
-      cy.findByText('Name').should('be.visible');
-      cy.findByText('Age').should('be.visible');
-      // header
-      cy.findByText('Friend Name').should('not.exist');
-      // cell
-      cy.contains('Friend Name').should('be.visible');
-      cy.findByText('Custom original Header1').should('not.exist');
-      cy.findByText('Custom original Header2').should('not.exist');
-      cy.contains('Custom Header').should('exist');
-      cy.contains('Custom Cell 2').should('be.visible');
+        cy.findByText('Name').should('be.visible');
+        cy.findByText('Age').should('be.visible');
+        // header
+        cy.findByText('Friend Name').should('not.exist');
+        // cell
+        cy.contains('Friend Name').should('be.visible');
+        cy.findByText('Custom original Header1').should('not.exist');
+        cy.findByText('Custom original Header2').should('not.exist');
+        cy.contains('Custom Header').should('exist');
+        cy.contains('Custom Cell 2').should('be.visible');
 
-      cy.contains('Custom Header 1').should('be.visible');
-      cy.contains('Custom Header 2').should('be.visible');
-      cy.contains('pop-in content').should('exist');
-      cy.contains('C').should('exist');
-      cy.findAllByTestId('popinCell').should('exist');
-      cy.findAllByText('PopinDisplay Modes:').as('popinHeader').should('be.exist');
-      //popinDisplay: Block
-      cy.get('@popinHeader').parent().should('have.css', 'flex-direction', 'column');
+        cy.contains('Custom Header 1').should('be.visible');
+        cy.contains('Custom Header 2').should('be.visible');
+        cy.contains('pop-in content').should('exist');
+        cy.contains('C').should('exist');
+        cy.findAllByTestId('popinCell').should('exist');
+        cy.findAllByText('PopinDisplay Modes:').as('popinHeader').should('be.exist');
+        //popinDisplay: Block
+        cy.get('@popinHeader').parent().should('have.css', 'flex-direction', 'column');
 
-      cy.viewport(600, 1024);
-      cy.wait(200);
-      cy.contains('Age').should('not.exist');
-      cy.contains('40').should('not.exist');
+        cy.viewport(600, 1024);
+        cy.wait(200);
+        cy.contains('Age').should('not.exist');
+        cy.contains('40').should('not.exist');
 
-      cy.mount(
-        <AnalyticalTable
-          data={data}
-          columns={[
-            ...columnsWithPopIn.slice(0, -1),
-            {
-              id: 'popinDisplay',
-              Header: 'PopinDisplay Modes',
-              responsivePopIn: true,
-              responsiveMinWidth: 801,
-              popinDisplay: AnalyticalTablePopinDisplay.Inline,
-              Cell: () => {
-                return (
-                  <Text data-testid="popinCell" maxLines={1}>
-                    Popin Cell
-                  </Text>
-                );
+        cy.mount(
+          <AnalyticalTable
+            data={data}
+            columns={[
+              ...columnsWithPopIn.slice(0, -1),
+              {
+                id: 'popinDisplay',
+                Header: 'PopinDisplay Modes',
+                responsivePopIn: true,
+                responsiveMinWidth: 801,
+                popinDisplay: AnalyticalTablePopinDisplay.Inline,
+                Cell: () => {
+                  return (
+                    <Text data-testid="popinCell" maxLines={1}>
+                      Popin Cell
+                    </Text>
+                  );
+                },
               },
-            },
-          ]}
-          dir={dir}
-        />,
-      );
-      cy.findAllByText('PopinDisplay Modes:').as('popinHeader').should('be.exist');
-      //popinDisplay: Row
-      cy.get('@popinHeader').parent().should('have.css', 'flex-direction', 'row');
-      cy.findAllByTestId('popinCell').should('exist');
+            ]}
+            dir={dir}
+          />,
+        );
+        cy.findAllByText('PopinDisplay Modes:').as('popinHeader').should('be.exist');
+        //popinDisplay: Row
+        cy.get('@popinHeader').parent().should('have.css', 'flex-direction', 'row');
+        cy.findAllByTestId('popinCell').should('exist');
 
-      cy.mount(
-        <AnalyticalTable
-          data={data}
-          columns={[
-            ...columnsWithPopIn.slice(0, -1),
-            {
-              id: 'popinDisplay',
-              Header: 'PopinDisplay Modes',
-              responsivePopIn: true,
-              responsiveMinWidth: 801,
-              popinDisplay: AnalyticalTablePopinDisplay.WithoutHeader,
-              Cell: () => {
-                return (
-                  <Text data-testid="popinCell" maxLines={1}>
-                    Popin Cell
-                  </Text>
-                );
+        cy.mount(
+          <AnalyticalTable
+            data={data}
+            columns={[
+              ...columnsWithPopIn.slice(0, -1),
+              {
+                id: 'popinDisplay',
+                Header: 'PopinDisplay Modes',
+                responsivePopIn: true,
+                responsiveMinWidth: 801,
+                popinDisplay: AnalyticalTablePopinDisplay.WithoutHeader,
+                Cell: () => {
+                  return (
+                    <Text data-testid="popinCell" maxLines={1}>
+                      Popin Cell
+                    </Text>
+                  );
+                },
               },
-            },
-          ]}
-          dir={dir}
-        />,
-      );
-      //popinDisplay: WithoutHeader
-      cy.findAllByText('PopinDisplay Modes:').should('not.exist');
-      cy.findAllByTestId('popinCell').should('exist');
+            ]}
+            dir={dir}
+          />,
+        );
+        //popinDisplay: WithoutHeader
+        cy.findAllByText('PopinDisplay Modes:').should('not.exist');
+        cy.findAllByTestId('popinCell').should('exist');
+      });
     });
-  });
+  } else {
+    ['ltr', 'rtl'].forEach((dir) => {
+      it(`pop-in columns (${dir}) - 801 x 1024`, { viewportWidth: 801, viewportHeight: 1024 }, () => {
+        document.body.style.margin = '0px';
+        cy.mount(<AnalyticalTable data={data} columns={columnsWithPopIn} dir={dir} />);
+        cy.findByText('Name').should('be.visible');
+        cy.findByText('Age').should('be.visible');
+        cy.findByText('Friend Name').should('be.visible');
+        cy.findByText('Custom original Header1').should('be.visible');
+        cy.findByText('Custom original Header2').should('be.visible');
+        cy.findByText('Custom Header').should('be.visible');
+        cy.findByText('Custom Header').should('be.visible');
+        cy.findByText('PopinDisplay Modes').should('be.visible').should('have.attr', 'ui5-text');
+        cy.findAllByTestId('popinCell').should('exist');
+        cy.contains('Custom Cell 2').should('be.visible');
+
+        cy.contains('Custom Header 1').should('not.exist');
+        cy.contains('Custom Header 2').should('not.exist');
+        cy.contains('pop-in content').should('not.exist');
+      });
+      it(`pop-in columns (${dir}) - 800 x 1024`, { viewportWidth: 800, viewportHeight: 1024 }, () => {
+        cy.mount(<AnalyticalTable data={data} columns={columnsWithPopIn} dir={dir} />);
+        cy.findByText('Name').should('be.visible');
+        cy.findByText('Age').should('be.visible');
+        // header
+        cy.findByText('Friend Name').should('not.exist');
+        // cell
+        cy.contains('Friend Name').should('be.visible');
+        cy.findByText('Custom original Header1').should('not.exist');
+        cy.findByText('Custom original Header2').should('not.exist');
+        cy.contains('Custom Header').should('exist');
+        cy.contains('Custom Cell 2').should('be.visible');
+
+        cy.contains('Custom Header 1').should('be.visible');
+        cy.contains('Custom Header 2').should('be.visible');
+        cy.contains('pop-in content').should('exist');
+        cy.contains('C').should('exist');
+        cy.findAllByTestId('popinCell').should('exist');
+        cy.findAllByText('PopinDisplay Modes:').as('popinHeader').should('be.exist');
+        //popinDisplay: Block
+        cy.get('@popinHeader').parent().should('have.css', 'flex-direction', 'column');
+      });
+      it(`pop-in columns (${dir}) - 600 x 1024`, { viewportWidth: 600, viewportHeight: 1024 }, () => {
+        cy.mount(<AnalyticalTable data={data} columns={columnsWithPopIn} dir={dir} />);
+        cy.contains('Age').should('not.exist');
+        cy.contains('40').should('not.exist');
+
+        cy.mount(
+          <AnalyticalTable
+            data={data}
+            columns={[
+              ...columnsWithPopIn.slice(0, -1),
+              {
+                id: 'popinDisplay',
+                Header: 'PopinDisplay Modes',
+                responsivePopIn: true,
+                responsiveMinWidth: 801,
+                popinDisplay: AnalyticalTablePopinDisplay.Inline,
+                Cell: () => {
+                  return (
+                    <Text data-testid="popinCell" maxLines={1}>
+                      Popin Cell
+                    </Text>
+                  );
+                },
+              },
+            ]}
+            dir={dir}
+          />,
+        );
+        cy.findAllByText('PopinDisplay Modes:').as('popinHeader').should('be.exist');
+        //popinDisplay: Row
+        cy.get('@popinHeader').parent().should('have.css', 'flex-direction', 'row');
+        cy.findAllByTestId('popinCell').should('exist');
+
+        cy.mount(
+          <AnalyticalTable
+            data={data}
+            columns={[
+              ...columnsWithPopIn.slice(0, -1),
+              {
+                id: 'popinDisplay',
+                Header: 'PopinDisplay Modes',
+                responsivePopIn: true,
+                responsiveMinWidth: 801,
+                popinDisplay: AnalyticalTablePopinDisplay.WithoutHeader,
+                Cell: () => {
+                  return (
+                    <Text data-testid="popinCell" maxLines={1}>
+                      Popin Cell
+                    </Text>
+                  );
+                },
+              },
+            ]}
+            dir={dir}
+          />,
+        );
+        //popinDisplay: WithoutHeader
+        cy.findAllByText('PopinDisplay Modes:').should('not.exist');
+        cy.findAllByTestId('popinCell').should('exist');
+      });
+    });
+  }
 
   it('pop-in columns: adjustTableHeightOnPopIn ', () => {
     document.body.style.margin = '0px';

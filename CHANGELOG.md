@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.0...v2.10.1) (2025-05-28)
+
+### Bug Fixes
+
+- **AnalyticalTable:** prevent error if `onFilter` is not defined ([#7388](https://github.com/SAP/ui5-webcomponents-react/issues/7388)) ([d30e2d5](https://github.com/SAP/ui5-webcomponents-react/commit/d30e2d5fba309fedf08151c14f6139e5d0c8138b))
+- **Assets:** exclude `-fetch` assets & remove unsupported `Assets-static.js` ([#7344](https://github.com/SAP/ui5-webcomponents-react/issues/7344)) ([5b180b9](https://github.com/SAP/ui5-webcomponents-react/commit/5b180b9c2b0045deb49400fc0b01d0f97cd3dfc9)), closes [#7343](https://github.com/SAP/ui5-webcomponents-react/issues/7343)
+- **cypress-commands:** make the options optional for clickUi5ListItemByText ([#7316](https://github.com/SAP/ui5-webcomponents-react/issues/7316)) ([74ebb19](https://github.com/SAP/ui5-webcomponents-react/commit/74ebb1900ce28afee66a8a268d0af18a289a1ba5))
+- **deps:** pin dependencies (main) ([#7334](https://github.com/SAP/ui5-webcomponents-react/issues/7334)) ([86c9b7b](https://github.com/SAP/ui5-webcomponents-react/commit/86c9b7bd0801628aae42202618c86b7324effb87))
+- **deps:** pin dependency remark-gfm to 4.0.1 (main) ([#7335](https://github.com/SAP/ui5-webcomponents-react/issues/7335)) ([7b76a7e](https://github.com/SAP/ui5-webcomponents-react/commit/7b76a7e139f52940ed3892967aa4c779b55536d9))
+- **deps:** update dependency @tanstack/react-virtual to v3.13.9 (main) ([#7367](https://github.com/SAP/ui5-webcomponents-react/issues/7367)) ([e2b36fd](https://github.com/SAP/ui5-webcomponents-react/commit/e2b36fd6392778ddc6cb86cb8d54ed181c32483d))
+- **MessageView:** prevent error if `onItemSelect` is not defined ([#7389](https://github.com/SAP/ui5-webcomponents-react/issues/7389)) ([bfe3f3a](https://github.com/SAP/ui5-webcomponents-react/commit/bfe3f3a5203f32ee8e37ba98731bd8c65dff95d2))
+- **ObjectPage:** correct position of header feature buttons ([#7374](https://github.com/SAP/ui5-webcomponents-react/issues/7374)) ([d4b4db7](https://github.com/SAP/ui5-webcomponents-react/commit/d4b4db7798a03b62fde99a72455915d7955a9560)), closes [#7362](https://github.com/SAP/ui5-webcomponents-react/issues/7362)
+- **SelectDialog:** use `headerText` as `accessibleName` per default ([#7327](https://github.com/SAP/ui5-webcomponents-react/issues/7327)) ([400d46b](https://github.com/SAP/ui5-webcomponents-react/commit/400d46be7e2bf041e0c367161d3edf636d400694)), closes [#7319](https://github.com/SAP/ui5-webcomponents-react/issues/7319)
+
 # [2.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.2...v2.10.0) (2025-05-08)
 
 ### Bug Fixes

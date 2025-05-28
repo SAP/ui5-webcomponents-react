@@ -188,10 +188,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const tableInstanceRef = useRef<TableInstance>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const dedupedOnFilter = useMemo(() => debounce(onFilter, 0), [onFilter]);
+  const dedupedOnFilter = useMemo(
+    () => (typeof onFilter === 'function' ? debounce(onFilter, 0) : undefined),
+    [onFilter],
+  );
+
   useEffect(
     () => () => {
-      dedupedOnFilter.cancel();
+      dedupedOnFilter?.cancel();
     },
     [dedupedOnFilter],
   );
@@ -873,7 +877,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               </VirtualTableBodyContainer>
             )}
           </div>
-          {(additionalEmptyRowsCount || tableState.isScrollable === undefined || tableState.isScrollable) && (
+          {(additionalEmptyRowsCount || tableState.isScrollable) && (
             <VerticalScrollbar
               tableBodyHeight={tableBodyHeight}
               internalRowHeight={internalHeaderRowHeight}
