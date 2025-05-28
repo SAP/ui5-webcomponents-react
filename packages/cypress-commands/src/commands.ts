@@ -94,7 +94,7 @@ declare global {
        *
        * __Note:__ The select popover must be visible, otherwise it can lead to unwanted side effects.
        *
-       * @deprecated: This command is deprecated. Please use `clickDropdownMenuItem` instead.
+       * @deprecated This command is deprecated. Please use `clickDropdownMenuItem` instead.
        *
        * @example cy.get('[ui5-option]').clickUi5SelectOption();
        */
