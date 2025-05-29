@@ -1,24 +1,26 @@
 import type { VirtualItem } from '@tanstack/react-virtual';
+import { useIsomorphicLayoutEffect } from '@ui5/webcomponents-react-base';
+import { useRef } from 'react';
 import type { ReactNode } from 'react';
-import { useEffect, useRef } from 'react';
-import type { ClassNames } from '../types/index.js';
+import type { ClassNames, RowType } from '../types/index.js';
 
-interface RowSubComponent {
-  subComponentsHeight: Record<string, { rowId: string; subComponentHeight?: number }>;
+interface RowSubComponentProps {
+  subComponentsHeight: Record<string, { rowId: string; subComponentHeight?: number }> | undefined;
   virtualRow: VirtualItem;
   dispatch: (e: { type: string; payload?: Record<string, unknown> }) => void;
-  row: Record<string, unknown>;
+  row: RowType;
   rowHeight: number;
   children: ReactNode | ReactNode[];
-  rows: Record<string, unknown>[];
+  rows: RowType[];
   alwaysShowSubComponent: boolean;
   rowIndex: number;
   classNames: ClassNames;
+  renderSubComp: boolean;
 }
 
-export const RowSubComponent = (props: RowSubComponent) => {
+export function RowSubComponent(props: RowSubComponentProps) {
   const {
-    subComponentsHeight,
+    subComponentsHeight = {},
     virtualRow,
     dispatch,
     row,
@@ -28,79 +30,76 @@ export const RowSubComponent = (props: RowSubComponent) => {
     alwaysShowSubComponent,
     rowIndex,
     classNames,
+    renderSubComp,
   } = props;
-  const subComponentRef = useRef(null);
+  const subComponentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const subComponentHeightObserver = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
-        const target = entry.target.getBoundingClientRect();
-        if (target) {
-          // Firefox implements `borderBoxSize` as a single content rect, rather than an array
-          const borderBoxSize = Array.isArray(entry.borderBoxSize) ? entry.borderBoxSize[0] : entry.borderBoxSize;
-          // Safari doesn't implement `borderBoxSize`
-          const subCompHeight = borderBoxSize?.blockSize ?? target.height;
-          if (subComponentsHeight?.[virtualRow.index]?.subComponentHeight !== subCompHeight && subCompHeight !== 0) {
-            // use most common sub-component height of first 10 sub-components as default height
-            if (alwaysShowSubComponent && subComponentsHeight && Object.keys(subComponentsHeight).length === 10) {
-              const objGroupedByHeight = Object.values(subComponentsHeight).reduce((acc, cur) => {
-                const count = acc?.[cur.subComponentHeight];
-                if (typeof count === 'number') {
-                  return { ...acc, [cur.subComponentHeight]: count + 1 };
-                }
-                return { ...acc, [cur.subComponentHeight]: 1 };
-              }, {});
-
-              const mostUsedHeight = Object.keys(objGroupedByHeight).reduce((a, b) =>
-                objGroupedByHeight[a] > objGroupedByHeight[b] ? a : b,
-              );
-              const estimatedHeights = rows.reduce((acc, cur, index) => {
-                acc[index] = { subComponentHeight: parseInt(mostUsedHeight), rowId: cur.id };
-                return acc;
-              }, {});
-              dispatch({
-                type: 'SUB_COMPONENTS_HEIGHT',
-                payload: { ...estimatedHeights, ...subComponentsHeight },
-              });
-            } else {
-              dispatch({
-                type: 'SUB_COMPONENTS_HEIGHT',
-                payload: {
-                  ...subComponentsHeight,
-                  [virtualRow.index]: { subComponentHeight: subCompHeight, rowId: row.id },
-                },
-              });
-            }
-          }
-          // recalc if row id of row index has changed
-          if (
-            subComponentsHeight?.[virtualRow.index]?.rowId != null &&
-            subComponentsHeight?.[virtualRow.index]?.rowId !== row.id
-          ) {
-            dispatch({
-              type: 'SUB_COMPONENTS_HEIGHT',
-              payload: {
-                ...subComponentsHeight,
-                [virtualRow.index]: { subComponentHeight: subCompHeight, rowId: row.id },
-              },
-            });
-          }
-        }
-      });
-    });
-    if (subComponentRef.current?.firstChild) {
-      subComponentHeightObserver.observe(subComponentRef.current?.firstChild);
+  useIsomorphicLayoutEffect(() => {
+    const subComponentElement = subComponentRef.current;
+    if (!subComponentElement || !renderSubComp) {
+      return;
     }
-    return () => {
-      subComponentHeightObserver.disconnect();
+
+    const measureAndDispatch = (height: number) => {
+      const prev: { rowId?: string; subComponentHeight?: number } = subComponentsHeight?.[virtualRow.index] ?? {};
+      if (height === 0 || (prev.subComponentHeight === height && prev.rowId === row.id)) {
+        return;
+      }
+
+      // use most common subComponentHeight height of first 10 subcomponents as default height
+      if (alwaysShowSubComponent && Object.keys(subComponentsHeight).length === 10) {
+        // create frequency map -> most common height has the highest number
+        const frequencyMap: Record<number, number> = {};
+        Object.values(subComponentsHeight).forEach(({ subComponentHeight }) => {
+          if (subComponentHeight) {
+            frequencyMap[subComponentHeight] = (frequencyMap[subComponentHeight] || 0) + 1;
+          }
+        });
+        const mostUsedHeight = Number(Object.entries(frequencyMap).sort((a, b) => b[1] - a[1])[0]?.[0] || 0);
+        const estimatedHeight: typeof subComponentsHeight = {};
+        rows.forEach((row, index) => {
+          estimatedHeight[index] = { subComponentHeight: mostUsedHeight, rowId: row.id };
+        });
+        dispatch({ type: 'SUB_COMPONENTS_HEIGHT', payload: { ...estimatedHeight, ...subComponentsHeight } });
+      } else {
+        dispatch({
+          type: 'SUB_COMPONENTS_HEIGHT',
+          payload: {
+            ...subComponentsHeight,
+            [virtualRow.index]: { subComponentHeight: height, rowId: row.id },
+          },
+        });
+      }
     };
-  }, [
-    subComponentRef.current?.firstChild,
-    subComponentsHeight,
-    row.id,
-    subComponentsHeight?.[virtualRow.index]?.subComponentHeight,
-    virtualRow.index,
-  ]);
+
+    measureAndDispatch(subComponentElement.getBoundingClientRect().height);
+
+    const observer = new ResizeObserver(([entry]) => {
+      measureAndDispatch(entry.borderBoxSize[0].blockSize);
+    });
+    observer.observe(subComponentElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [renderSubComp, subComponentsHeight, virtualRow.index, row.id, alwaysShowSubComponent, rows]);
+
+  // reset subComponentHeight
+  useIsomorphicLayoutEffect(() => {
+    if (!renderSubComp && subComponentsHeight?.[virtualRow.index]?.subComponentHeight) {
+      dispatch({
+        type: 'SUB_COMPONENTS_HEIGHT',
+        payload: {
+          ...subComponentsHeight,
+          [virtualRow.index]: { subComponentHeight: 0, rowId: row.id },
+        },
+      });
+    }
+  }, [renderSubComp, subComponentsHeight, virtualRow.index, row.id, dispatch]);
+
+  if (!renderSubComp) {
+    return null;
+  }
 
   return (
     <div
@@ -117,6 +116,6 @@ export const RowSubComponent = (props: RowSubComponent) => {
       {children}
     </div>
   );
-};
+}
 
 RowSubComponent.displayName = 'RowSubComponent';
