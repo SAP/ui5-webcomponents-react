@@ -178,6 +178,7 @@ const meta = {
     ],
     highlightField: 'status',
     subRowsKey: 'subRows',
+    visibleRows: 5,
   },
   argTypes: {
     data: { control: { disable: true } },
@@ -371,7 +372,6 @@ export const ResponsiveColumns: Story = {
     // @ts-expect-error: custom prop for the controls table
     containerWidth: 'auto',
     data: dataLarge,
-    visibleRows: 5,
     adjustTableHeightOnPopIn: true,
     columns: [
       {
@@ -578,7 +578,6 @@ export const CustomFilter: Story = {
 };
 
 export const NoData: Story = {
-  args: { visibleRows: 5 },
   render(args, context) {
     const [selected, setSelected] = useState('noData');
     const handleChange: SegmentedButtonPropTypes['onSelectionChange'] = (e) => {

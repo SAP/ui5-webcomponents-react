@@ -9,7 +9,7 @@ export enum AnalyticalTableVisibleRowCountMode {
    */
   Fixed = 'Fixed',
   /**
-   * The number of visible rows displayed depends on the height of the surrounding container.
+   * The number of visible rows depends on the height of the surrounding container. Since this mode can cause the table height to change when filtering, fetching data, etc., we recommend using the `"AutoWithEmptyRows"` mode instead.
    *
    * __Note:__ It's recommended to use a fixed height for the outer container.
    *

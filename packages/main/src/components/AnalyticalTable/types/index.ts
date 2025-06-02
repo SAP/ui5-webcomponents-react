@@ -649,6 +649,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * The minimum number of rows that are displayed. If the data contains fewer entries than `minRows`, it will be filled with empty rows.
    *
+   * __Note:__ To prevent the height of the table from jumping when e.g. filtering or fetching data, it's recommended setting `minRows` to the same value as `visibleRows`.
+   *
    * @default 5
    */
   minRows?: number;
@@ -656,13 +658,13 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines how the table will render rows.
    *
    * - __"Fixed":__ The table always has as many rows as defined in the `visibleRows` prop.
-   * - __"Auto":__ The number of visible rows displayed depends on the height of the surrounding container.
+   * - __"Auto":__ The number of visible rows depends on the height of the surrounding container. Since this mode can cause the table height to change when filtering, fetching data, etc., we recommend using the `"AutoWithEmptyRows"` mode instead.
    * - __"AutoWithEmptyRows":__ The number of rows displayed depends on the height of the surrounding container, if not enough visible rows are available, empty rows are displayed.
    * - __"Interactive":__ Adds a resizer to the bottom of the table to dynamically add or remove visible rows. The initial number of rows is defined by the `visibleRows` prop.
    *
-   * __Default:__ `"Fixed"`
-   *
    * __Note:__ When `"Auto"` or `"AutoWithEmptyRows"` is enabled, we recommend using a fixed height for the parent container.
+   *
+   * @default "Fixed"
    */
   visibleRowCountMode?: AnalyticalTableVisibleRowCountMode | keyof typeof AnalyticalTableVisibleRowCountMode;
   /**
@@ -678,9 +680,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * The number of rows visible without going into overflow.
    *
-   * __Default:__ `15`
+   * __Note:__
+   * - If the data contains more entries than the `visibleRow` count, a vertical scrollbar is rendered and the table goes into overflow.
+   * - To prevent the height of the table from jumping when e.g. filtering or fetching data, it's recommended setting `minRows` to the same value as `visibleRows`.
    *
-   * __Note:__ If the data contains more entries than the `visibleRow` count, a vertical scrollbar is rendered and the table goes into overflow.
+   * @default 15
    */
   visibleRows?: number;
   /**
@@ -982,11 +986,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Fired when a filter is applied to a column.
    */
   onFilter?: (e: OnFilterParam) => void;
-  // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.
    *
-   * __Default:__ `DefaultNoDataComponent`
+   * __Note:__ Although this prop accepts all React components, it is strongly recommended that you use `IllustratedMessage` with `design="Auto"` to preserve the intended design.
    */
   NoDataComponent?: ComponentType<any>;
 
