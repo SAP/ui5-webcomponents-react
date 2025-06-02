@@ -1,7 +1,7 @@
 import type { Dispatch, RefObject, SetStateAction, UIEventHandler } from 'react';
 import { useCallback, useEffect, useRef } from 'react';
 
-const isScrollEndAvailable = 'onscrollend' in document.createElement('div');
+const isScrollEndAvailable = typeof document !== 'undefined' && 'onscrollend' in document.createElement('div');
 
 interface UseOnScrollEndProps {
   objectPageRef: RefObject<HTMLDivElement>;
@@ -26,7 +26,7 @@ export function useOnScrollEnd(props: UseOnScrollEndProps) {
     return () => {
       objectPage.removeEventListener('scrollend', onNativeScrollEnd);
     };
-  }, [objectPageRef]);
+  }, [objectPageRef, setTabSelectId]);
 
   // Fallback in onScroll
   const onObjectPageScroll: UIEventHandler<HTMLDivElement> = useCallback(() => {
