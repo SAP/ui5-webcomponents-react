@@ -990,6 +990,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Component that will be rendered when the table is not loading and has no data.
    *
    * __Note:__ Although this prop accepts all React components, it is strongly recommended that you use `IllustratedMessage` with `design="Auto"` to preserve the intended design.
+   *
+   * @default DefaultNoDataComponent
    */
   NoDataComponent?: ComponentType<any>;
 

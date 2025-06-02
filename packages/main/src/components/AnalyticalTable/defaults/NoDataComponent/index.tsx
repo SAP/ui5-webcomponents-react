@@ -10,3 +10,5 @@ export const DefaultNoDataComponent = ({ noDataText, className }: NoDataComponen
     </div>
   );
 };
+
+DefaultNoDataComponent.displayName = 'DefaultNoDataComponent';
