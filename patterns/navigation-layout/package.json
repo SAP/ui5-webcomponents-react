@@ -1,0 +1,33 @@
+{
+  "name": "navigation-layout",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ui5/webcomponents": "2.10.0",
+    "@ui5/webcomponents-base": "2.10.0",
+    "@ui5/webcomponents-fiori": "2.10.0",
+    "@ui5/webcomponents-icons": "2.10.0",
+    "@ui5/webcomponents-react": "2.10.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.5",
+    "@types/react-dom": "19.1.5",
+    "@vitejs/plugin-react": "4.5.0",
+    "eslint": "9.27.0",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "eslint-plugin-react-refresh": "0.4.20",
+    "globals": "16.2.0",
+    "typescript": "^5.0.2",
+    "typescript-eslint": "8.32.1",
+    "vite": "6.3.5"
+  }
+}
