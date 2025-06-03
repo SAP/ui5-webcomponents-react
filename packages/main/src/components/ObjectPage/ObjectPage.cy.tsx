@@ -1412,7 +1412,8 @@ describe('ObjectPage', () => {
     cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should(($el) => {
       const attrs = $el[0].accessibilityAttributes;
 
-      expect(attrs).to.exist();
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      expect(attrs).to.exist;
       expect(attrs).to.haveOwnProperty('expanded');
       expect(attrs.expanded).to.equal(undefined);
     });
