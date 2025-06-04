@@ -1,0 +1,82 @@
+import bellIcon from '@ui5/webcomponents-icons/dist/bell.js';
+import iphoneIcon from '@ui5/webcomponents-icons/dist/iphone.js';
+import paletteIcon from '@ui5/webcomponents-icons/dist/palette.js';
+import qrCodeIcon from '@ui5/webcomponents-icons/dist/qr-code.js';
+import resetIcon from '@ui5/webcomponents-icons/dist/reset.js';
+import userSettingsIcon from '@ui5/webcomponents-icons/dist/user-settings.js';
+import {
+  Avatar,
+  Button,
+  ButtonPropTypes,
+  CheckBox,
+  ComboBox,
+  ComboBoxItem,
+  Icon,
+  Label,
+  List,
+  ListItemStandard,
+  Panel,
+  RadioButton,
+  Text,
+  Title,
+  Toast,
+  UserSettingsDialog,
+  UserSettingsDialogPropTypes,
+  UserSettingsItem,
+  UserSettingsView,
+} from '@ui5/webcomponents-react';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { AppearanceItem } from './AppearanceItem.tsx';
+import { LanguageRegionItem } from './LanguageRegionItem.tsx';
+import { MobileItem } from './MobileItem.tsx';
+import { ResetItem } from './ResetItem.tsx';
+import { UserAccountItem } from './UserAccountItem.tsx';
+
+interface UserSettingsDialogProps extends Pick<UserSettingsDialogPropTypes, 'open'> {
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export function NLUserSettingsDialog({ open, setOpen }: UserSettingsDialogProps) {
+  const [languageLoading, setLanguageLoading] = useState(false);
+  const closeDialog = () => {
+    setOpen(false);
+  };
+
+  const handleSelectionChange: UserSettingsDialogPropTypes['onSelectionChange'] = (e) => {
+    if (e.detail.item?.text === 'Language & Region') {
+      setLanguageLoading(true);
+      setTimeout(() => {
+        setLanguageLoading(false);
+      }, 1000);
+    }
+  };
+
+  return (
+    <UserSettingsDialog
+      open={open}
+      headerText="Settings"
+      showSearchField
+      onClose={closeDialog}
+      onSelectionChange={handleSelectionChange}
+      fixedItems={<ResetItem setUserSettingsDialogOpen={setOpen} />}
+    >
+      <UserAccountItem />
+      <AppearanceItem />
+      <LanguageRegionItem loading={languageLoading} />
+      <MobileItem />
+      <UserSettingsItem
+        icon={bellIcon}
+        text="Notifications"
+        tooltip="Notifications"
+        headerText="Notifications"
+        pages={
+          <UserSettingsView>
+            <CheckBox checked text="Show High-Priority Notification Alerts" />
+          </UserSettingsView>
+        }
+      />
+    </UserSettingsDialog>
+  );
+}
+
+NLUserSettingsDialog.displayName = 'NLUserSettingsDialog';

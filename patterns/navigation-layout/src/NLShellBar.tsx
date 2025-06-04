@@ -1,50 +1,29 @@
+import NavigationLayoutMode from '@ui5/webcomponents-fiori/dist/types/NavigationLayoutMode.js';
+import da2Icon from '@ui5/webcomponents-icons/dist/da-2.js';
+import daIcon from '@ui5/webcomponents-icons/dist/da.js';
+import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
+import sysHelpIcon from '@ui5/webcomponents-icons/dist/sys-help.js';
 import {
   Avatar,
   Button,
   NavigationLayoutDomRef,
   ResponsivePopoverDomRef,
+  SearchItem,
   SearchScope,
   ShellBar,
   ShellBarItem,
   ShellBarPropTypes,
   ShellBarSearch,
+  ShellBarSearchPropTypes,
   ShellBarSpacer,
   Tag,
   Text,
   ToggleButton,
   ToggleButtonPropTypes,
+  UserMenuDomRef,
 } from '@ui5/webcomponents-react';
-import globeIcon from '@ui5/webcomponents-icons/dist/globe.js';
-import collaborateIcon from '@ui5/webcomponents-icons/dist/collaborate.js';
-import officialServiceIcon from '@ui5/webcomponents-icons/dist/official-service.js';
-import privateIcon from '@ui5/webcomponents-icons/dist/private.js';
-import acceleratedIcon from '@ui5/webcomponents-icons/dist/accelerated.js';
-import daIcon from '@ui5/webcomponents-icons/dist/da.js';
-import da2Icon from '@ui5/webcomponents-icons/dist/da-2.js';
-import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
-import settingsIcon from '@ui5/webcomponents-icons/dist/settings.js';
-import sysHelpIcon from '@ui5/webcomponents-icons/dist/sys-help.js';
-import homeIcon from '@ui5/webcomponents-icons/dist/home.js';
-import favoriteListIcon from '@ui5/webcomponents-icons/dist/favorite-list.js';
-import accountIcon from '@ui5/webcomponents-icons/dist/account.js';
-import businessByDesignIcon from '@ui5/webcomponents-icons/dist/business-by-design.js';
-import crmSalesIcon from '@ui5/webcomponents-icons/dist/crm-sales.js';
-import s4hanaIcon from '@ui5/webcomponents-icons/dist/s4hana.js';
-import addIcon from '@ui5/webcomponents-icons/dist/add.js';
-import managerInsightIcon from '@ui5/webcomponents-icons/dist/manager-insight.js';
-import actionSettingsIcon from '@ui5/webcomponents-icons/dist/action-settings.js';
-import sortIcon from '@ui5/webcomponents-icons/dist/sort.js';
-import messageInformationIcon from '@ui5/webcomponents-icons/dist/message-information.js';
-import expenseReportIcon from '@ui5/webcomponents-icons/dist/expense-report.js';
-import userSettingsIcon from '@ui5/webcomponents-icons/dist/user-settings.js';
-import personPlaceholderIcon from '@ui5/webcomponents-icons/dist/person-placeholder.js';
-import paletteIcon from '@ui5/webcomponents-icons/dist/palette.js';
-import iphoneIcon from '@ui5/webcomponents-icons/dist/iphone.js';
-import qrCodeIcon from '@ui5/webcomponents-icons/dist/qr-code.js';
-import bellIcon from '@ui5/webcomponents-icons/dist/bell.js';
-import resetIcon from '@ui5/webcomponents-icons/dist/reset.js';
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
-import NavigationLayoutMode from '@ui5/webcomponents-fiori/dist/types/NavigationLayoutMode.js';
+import { NLUserMenu } from './NLUserMenu.tsx';
 import { NotificationsPopover } from './NotificationsPopover.tsx';
 
 interface NLShellBarProps extends ShellBarPropTypes {
@@ -54,8 +33,10 @@ interface NLShellBarProps extends ShellBarPropTypes {
 export function NLShellBar(props: NLShellBarProps) {
   const { setMode, ...rest } = props;
   const notificationsPopoverRef = useRef<ResponsivePopoverDomRef>(null);
+  const userMenuRef = useRef<UserMenuDomRef>(null);
   const [assistantBtnPressed, setAssistantBtnPressed] = useState(false);
   const [notificationsPopoverOpen, setNotificationsPopoverOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const handleAssistantClick: ToggleButtonPropTypes['onClick'] = (e) => {
     setAssistantBtnPressed(e.currentTarget!.pressed);
@@ -78,6 +59,13 @@ export function NLShellBar(props: NLShellBarProps) {
     setNotificationsPopoverOpen(false);
   };
 
+  const handleProfileClick: ShellBarPropTypes['onProfileClick'] = (e) => {
+    userMenuRef.current!.opener = e.detail.targetRef;
+    setUserMenuOpen(true);
+  };
+
+  const handleSearchScopeChange: ShellBarSearchPropTypes['onScopeChange'] = (e) => {};
+
   return (
     <>
       <ShellBar
@@ -88,6 +76,7 @@ export function NLShellBar(props: NLShellBarProps) {
         showNotifications
         showProductSwitch
         onNotificationsClick={handleNotificationsClick}
+        onProfileClick={handleProfileClick}
         startButton={
           <Button
             id="menu-button"
@@ -97,13 +86,7 @@ export function NLShellBar(props: NLShellBarProps) {
             onClick={handleMenuBtnClick}
           />
         }
-        logo={
-          <img
-            //todo: sap logo
-            src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/main/assets/ui5-logo.svg"
-            alt="SAP Logo"
-          />
-        }
+        logo={<img src="sap-logo.svg" alt="SAP Logo" />}
         content={
           <>
             <Tag design="Set2" colorScheme="7" data-hide-order="2">
@@ -123,16 +106,27 @@ export function NLShellBar(props: NLShellBarProps) {
           />
         }
         searchField={
-          <ShellBarSearch id="search-scope" showClearIcon placeholder="Search Apps, Products">
-            <SearchScope text="All" selected />
-            <SearchScope text="Apps" />
-            <SearchScope text="Products" />
+          <ShellBarSearch
+            id="search-scope"
+            showClearIcon
+            placeholder="Search Apps, Products"
+            onScopeChange={handleSearchScopeChange}
+            scopes={
+              <>
+                <SearchScope text="All" selected />
+                <SearchScope text="Apps" />
+                <SearchScope text="Products" />
+              </>
+            }
+          >
+            {scopeData.map((item) => (
+              <SearchItem key={item.name} text={item.name} scopeName={item.scope} />
+            ))}
           </ShellBarSearch>
         }
         profile={
           <Avatar>
-            {/*todo person placeholder*/}
-            <img src="../assets/images/avatars/man_avatar_3.png" alt="User Avatar" />
+            <img src="avatar.png" alt="User Avatar" />
           </Avatar>
         }
       >
@@ -144,8 +138,18 @@ export function NLShellBar(props: NLShellBarProps) {
         ref={notificationsPopoverRef}
         closeNotificationsPopover={closeNotificationsPopover}
       />
+      <NLUserMenu open={userMenuOpen} ref={userMenuRef} setOpen={setUserMenuOpen} />
     </>
   );
 }
 
 NLShellBar.displayName = 'NLShellBar';
+
+const scopeData = [
+  { name: 'Laptop', scope: 'products' },
+  { name: 'Leave Requests', scope: 'apps' },
+  { name: 'Log work', scope: 'apps' },
+  { name: 'Manage Products', scope: 'apps' },
+  { name: 'Mobile Phones', scope: 'products' },
+  { name: 'Tablet', scope: 'products' },
+];

@@ -44,6 +44,8 @@ import {
   SideNavigation,
   SideNavigationItem,
   SideNavigationSubItem,
+  ButtonPropTypes,
+  UserSettingsItemPropTypes,
 } from '@ui5/webcomponents-react';
 import NavigationLayoutMode from '@ui5/webcomponents-fiori/dist/types/NavigationLayoutMode.js';
 import globeIcon from '@ui5/webcomponents-icons/dist/globe.js';
@@ -76,28 +78,50 @@ import qrCodeIcon from '@ui5/webcomponents-icons/dist/qr-code.js';
 import bellIcon from '@ui5/webcomponents-icons/dist/bell.js';
 import resetIcon from '@ui5/webcomponents-icons/dist/reset.js';
 import { useState } from 'react';
-import { NLShellBar } from './NLShellBar.tsx';
-import { NLSideNavigation } from './NLSideNavigation.tsx';
 
-function App() {
-  const [mode, setMode] = useState<NavigationLayoutMode>(NavigationLayoutMode.Auto);
-  const [contentTitle, setContentTitle] = useState('Home');
+export function MobileItem(props) {
+  const [selectedView, setSelectedView] = useState('primary');
+  const [viewText, setViewText] = useState('');
+
+  const handleMobileBtnClick: ButtonPropTypes['onClick'] = (e) => {
+    setSelectedView('secondary');
+    setViewText(e.target.innerText);
+  };
+
+  const handleSelectionChange: UserSettingsItemPropTypes['onSelectionChange'] = (e) => {
+    setSelectedView('primary');
+    // doesn't work - issue created
+    // setSelectedView(e.detail.view.dataset.view!);
+  };
+
   return (
-    <>
-      <NavigationLayout
-        id="navigation-layout"
-        header={<NLShellBar setMode={setMode} />}
-        sideContent={<NLSideNavigation setContentTitle={setContentTitle} />}
-        mode={mode}
-      >
-        <div className="mainContent">
-          <Title>{contentTitle}</Title>
-          <br />
-          <Text>Content...</Text>
-        </div>
-      </NavigationLayout>
-    </>
+    <UserSettingsItem
+      icon={iphoneIcon}
+      text="SAP Mobile Start Application"
+      tooltip="SAP Mobile Start Application"
+      headerText="SAP Mobile Start Application"
+      onSelectionChange={handleSelectionChange}
+      pages={
+        <>
+          <UserSettingsView
+            text="SAP Mobile Start Application"
+            data-view="primary"
+            selected={selectedView === 'primary'}
+          >
+            <Button onClick={handleMobileBtnClick}>iOS</Button>
+            <Button onClick={handleMobileBtnClick}>Android</Button>
+          </UserSettingsView>
+          <UserSettingsView text={viewText} secondary data-view="secondary" selected={selectedView === 'secondary'}>
+            <Text>Enable access to your site from the SAP Mobile Start application.</Text>
+            <Button id="mobile-install">Install</Button>
+            <Button id="mobile-register">Register</Button>
+            <Text>Scan the QR Code to install the mobile application</Text>
+            <Icon name={qrCodeIcon} style={{ width: '20rem', height: '20rem' }} />
+          </UserSettingsView>
+        </>
+      }
+    />
   );
 }
 
-export default App;
+MobileItem.displayName = 'MobileItem';

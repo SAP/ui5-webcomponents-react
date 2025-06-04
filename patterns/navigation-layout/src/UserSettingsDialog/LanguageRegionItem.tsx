@@ -44,6 +44,8 @@ import {
   SideNavigation,
   SideNavigationItem,
   SideNavigationSubItem,
+  ButtonPropTypes,
+  UserSettingsItemPropTypes,
 } from '@ui5/webcomponents-react';
 import NavigationLayoutMode from '@ui5/webcomponents-fiori/dist/types/NavigationLayoutMode.js';
 import globeIcon from '@ui5/webcomponents-icons/dist/globe.js';
@@ -76,28 +78,52 @@ import qrCodeIcon from '@ui5/webcomponents-icons/dist/qr-code.js';
 import bellIcon from '@ui5/webcomponents-icons/dist/bell.js';
 import resetIcon from '@ui5/webcomponents-icons/dist/reset.js';
 import { useState } from 'react';
-import { NLShellBar } from './NLShellBar.tsx';
-import { NLSideNavigation } from './NLSideNavigation.tsx';
 
-function App() {
-  const [mode, setMode] = useState<NavigationLayoutMode>(NavigationLayoutMode.Auto);
-  const [contentTitle, setContentTitle] = useState('Home');
+export function LanguageRegionItem({ loading }: Pick<UserSettingsItemPropTypes, 'loading'>) {
   return (
-    <>
-      <NavigationLayout
-        id="navigation-layout"
-        header={<NLShellBar setMode={setMode} />}
-        sideContent={<NLSideNavigation setContentTitle={setContentTitle} />}
-        mode={mode}
-      >
-        <div className="mainContent">
-          <Title>{contentTitle}</Title>
+    <UserSettingsItem
+      text="Language & Region"
+      tooltip="Language & Region"
+      headerText="Language & Region"
+      loading={loading}
+      loadingReason="Language & Region loading data..."
+      pages={
+        <UserSettingsView>
+          <div className="container">
+            <div className="lr-item">
+              <Label>Language and Region:</Label>
+              <ComboBox placeholder="Language" value="Browse Language">
+                <ComboBoxItem text="Browse Language" />
+                <ComboBoxItem text="English" />
+                <ComboBoxItem text="European Spanish" />
+                <ComboBoxItem text="French (France)" />
+                <ComboBoxItem text="Germany" />
+              </ComboBox>
+            </div>
+            <div className="lr-item">
+              <Label for="format">Date Format:</Label>
+              <Text id="format">MMM d, y</Text>
+            </div>
+          </div>
+          <Panel fixed>
+            <Label>
+              The time zone will not be applied in UI5 apps. If you don’t know the type of an app, you can check it the
+              “About” dialog in the “ID of the Application Framework” field.
+            </Label>
+          </Panel>
           <br />
-          <Text>Content...</Text>
-        </div>
-      </NavigationLayout>
-    </>
+          <div className="lt-time-format">
+            <Label for="timeFormat">Time Format:</Label>
+            <RadioButton name="timeFormat" text="12h" />
+            <RadioButton checked name="timeFormat" text="24h" />
+          </div>
+          <Panel fixed>
+            <Label>After you save your settings, the browser will refresh for the new settings to take effect.</Label>
+          </Panel>
+        </UserSettingsView>
+      }
+    ></UserSettingsItem>
   );
 }
 
-export default App;
+LanguageRegionItem.displayName = 'LanguageRegionItem';

@@ -44,6 +44,8 @@ import {
   SideNavigation,
   SideNavigationItem,
   SideNavigationSubItem,
+  ButtonPropTypes,
+  UserSettingsItemPropTypes,
 } from '@ui5/webcomponents-react';
 import NavigationLayoutMode from '@ui5/webcomponents-fiori/dist/types/NavigationLayoutMode.js';
 import globeIcon from '@ui5/webcomponents-icons/dist/globe.js';
@@ -76,28 +78,35 @@ import qrCodeIcon from '@ui5/webcomponents-icons/dist/qr-code.js';
 import bellIcon from '@ui5/webcomponents-icons/dist/bell.js';
 import resetIcon from '@ui5/webcomponents-icons/dist/reset.js';
 import { useState } from 'react';
-import { NLShellBar } from './NLShellBar.tsx';
-import { NLSideNavigation } from './NLSideNavigation.tsx';
 
-function App() {
-  const [mode, setMode] = useState<NavigationLayoutMode>(NavigationLayoutMode.Auto);
-  const [contentTitle, setContentTitle] = useState('Home');
+export function AppearanceItem(props) {
   return (
-    <>
-      <NavigationLayout
-        id="navigation-layout"
-        header={<NLShellBar setMode={setMode} />}
-        sideContent={<NLSideNavigation setContentTitle={setContentTitle} />}
-        mode={mode}
-      >
-        <div className="mainContent">
-          <Title>{contentTitle}</Title>
-          <br />
-          <Text>Content...</Text>
-        </div>
-      </NavigationLayout>
-    </>
+    <UserSettingsItem icon={paletteIcon} text="Appearance" tooltip="Appearance" headerText="Appearance">
+      <UserSettingsView text="Themes">
+        <List separators="Inner" selectionMode="Single">
+          <ListItemStandard icon={paletteIcon} selected>
+            SAP Morning Horizon
+          </ListItemStandard>
+          <ListItemStandard icon={paletteIcon}>SAP Evening Horizon</ListItemStandard>
+          <ListItemStandard icon={paletteIcon}>SAP High Contrast Black (SAP Horizon)</ListItemStandard>
+          <ListItemStandard icon={paletteIcon}>SAP High Contrast White (SAP Horizon)</ListItemStandard>
+        </List>
+        <Button id="themeSave" className="save-btn" design="Emphasized">
+          Save
+        </Button>
+        <Toast id="toastThemeSave">Changes applied.</Toast>
+      </UserSettingsView>
+      <UserSettingsView text="Display settings">
+        <CheckBox checked text="Optimized for Touch Input" />
+        <Panel fixed>
+          <Label>
+            Increases the size and spacing of controls to allow you to interact with them more easily using your
+            fingertip. This is useful for hybrid devices that combine touch and mouse events.
+          </Label>
+        </Panel>
+      </UserSettingsView>
+    </UserSettingsItem>
   );
 }
 
-export default App;
+AppearanceItem.displayName = 'AppearanceItem';

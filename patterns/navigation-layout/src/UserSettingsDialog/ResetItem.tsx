@@ -44,6 +44,8 @@ import {
   SideNavigation,
   SideNavigationItem,
   SideNavigationSubItem,
+  ButtonPropTypes,
+  UserSettingsItemPropTypes,
 } from '@ui5/webcomponents-react';
 import NavigationLayoutMode from '@ui5/webcomponents-fiori/dist/types/NavigationLayoutMode.js';
 import globeIcon from '@ui5/webcomponents-icons/dist/globe.js';
@@ -75,29 +77,62 @@ import iphoneIcon from '@ui5/webcomponents-icons/dist/iphone.js';
 import qrCodeIcon from '@ui5/webcomponents-icons/dist/qr-code.js';
 import bellIcon from '@ui5/webcomponents-icons/dist/bell.js';
 import resetIcon from '@ui5/webcomponents-icons/dist/reset.js';
-import { useState } from 'react';
-import { NLShellBar } from './NLShellBar.tsx';
-import { NLSideNavigation } from './NLSideNavigation.tsx';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { createPortal } from 'react-dom';
 
-function App() {
-  const [mode, setMode] = useState<NavigationLayoutMode>(NavigationLayoutMode.Auto);
-  const [contentTitle, setContentTitle] = useState('Home');
+interface ResetItemProps {
+  slot?: string;
+  setUserSettingsDialogOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export function ResetItem({ slot, setUserSettingsDialogOpen }: ResetItemProps) {
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastText, setToastText] = useState('Changes reset!');
+
+  const handleReset: ButtonPropTypes['onClick'] = (e) => {
+    const target = e.currentTarget;
+    if (target?.dataset.key === 'resetPersonalization') {
+      setToastText('Changes reset!');
+    } else {
+      setToastText('All changes reset!');
+    }
+    setToastOpen(true);
+    setUserSettingsDialogOpen(false);
+  };
+
   return (
     <>
-      <NavigationLayout
-        id="navigation-layout"
-        header={<NLShellBar setMode={setMode} />}
-        sideContent={<NLSideNavigation setContentTitle={setContentTitle} />}
-        mode={mode}
+      <UserSettingsItem
+        slot={slot}
+        icon={resetIcon}
+        text="Reset Settings"
+        tooltip="Reset Settings"
+        headerText="Reset Settings"
       >
-        <div className="mainContent">
-          <Title>{contentTitle}</Title>
-          <br />
-          <Text>Content...</Text>
-        </div>
-      </NavigationLayout>
+        <UserSettingsView text="Reset Personalization">
+          <Button data-key="resetPersonalization" onClick={handleReset}>
+            Reset Personalization content
+          </Button>
+        </UserSettingsView>
+        <UserSettingsView text="Reset All Settings">
+          <Button data-key="resetAll" onClick={handleReset}>
+            Reset All Settings content
+          </Button>
+        </UserSettingsView>
+      </UserSettingsItem>
+      {createPortal(
+        <Toast
+          open={toastOpen}
+          onClose={() => {
+            setToastOpen(false);
+          }}
+        >
+          {toastText}
+        </Toast>,
+        document.body,
+      )}
     </>
   );
 }
 
-export default App;
+ResetItem.displayName = 'ResetItem';
