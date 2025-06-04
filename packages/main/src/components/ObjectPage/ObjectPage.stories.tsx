@@ -11,7 +11,7 @@ import fullscreenIcon from '@ui5/webcomponents-icons/dist/full-screen.js';
 import sunIcon from '@ui5/webcomponents-icons/dist/general-leave-request.js';
 import { useRef } from 'react';
 import { Toolbar as LegacyToolbar, ToolbarSpacer as LegacyToolbarSpacer } from '../../../../compat/src/index.js';
-import type { ButtonPropTypes, ObjectPageDomRef } from '../../index.js';
+import type { ObjectPageDomRef } from '../../index.js';
 import {
   Bar,
   Breadcrumbs,
@@ -41,16 +41,6 @@ import {
   ToolbarButton,
 } from '../../index.js';
 import { ObjectPage } from './index.js';
-import { fn } from '@storybook/test';
-
-const accessibilityAttributes = {
-  objectPageAnchorBar: {
-    expandButton: {
-      expanded: undefined,
-      accessibleName: '',
-    },
-  },
-};
 
 const meta = {
   title: 'Layouts & Floorplans / ObjectPage',
@@ -64,14 +54,11 @@ const meta = {
     accessibilityAttributes: { table: { category: 'Accessibility props' } },
   },
   args: {
-    onToggleHeaderArea: fn(),
-    headerPinned: true,
     mode: ObjectPageMode.Default,
     selectedSectionId: 'goals',
     imageShapeCircle: true,
     image: SampleImage,
     style: { height: '700px', maxHeight: '90vh' },
-    accessibilityAttributes,
     footerArea: (
       <Bar
         design={BarDesign.FloatingFooter}
