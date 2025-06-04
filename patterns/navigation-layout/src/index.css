@@ -53,6 +53,7 @@ body {
   margin: 0.5rem;
   width: auto;
 }
+
 /* End notifications */
 
 /* User Settings Dialog */
@@ -61,6 +62,7 @@ body {
   display: inline;
   margin: 0.5rem;
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -101,4 +103,5 @@ body {
   align-items: center;
   margin: 0 1rem 0 1rem;
 }
+
 /* End User Settings Dialog */

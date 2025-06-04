@@ -1,9 +1,10 @@
 import actionSettingsIcon from '@ui5/webcomponents-icons/dist/action-settings.js';
 import messageInformationIcon from '@ui5/webcomponents-icons/dist/message-information.js';
 import officialServiceIcon from '@ui5/webcomponents-icons/dist/official-service.js';
-import { MessageBox, MessageBoxPropTypes, UserMenuDomRef, UserMenuPropTypes } from '@ui5/webcomponents-react';
-import { UserMenu, UserMenuAccount, UserMenuItem, Text } from '@ui5/webcomponents-react';
-import { Dispatch, forwardRef, SetStateAction, useState } from 'react';
+import type { MessageBoxPropTypes, UserMenuDomRef, UserMenuPropTypes } from '@ui5/webcomponents-react';
+import { MessageBox, Text, UserMenu, UserMenuAccount, UserMenuItem } from '@ui5/webcomponents-react';
+import type { Dispatch, SetStateAction } from 'react';
+import { forwardRef, useState } from 'react';
 import { NLUserSettingsDialog } from './UserSettingsDialog/NLUserSettingsDialog.tsx';
 
 interface NLUserMenuProps extends Pick<UserMenuPropTypes, 'open'> {

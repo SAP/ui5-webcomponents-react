@@ -1,30 +1,31 @@
+import AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
+import type NotificationListItemImportance from '@ui5/webcomponents-fiori/dist/types/NotificationListItemImportance.js';
+import actionSettingsIcon from '@ui5/webcomponents-icons/dist/action-settings.js';
+import crmSalesIcon from '@ui5/webcomponents-icons/dist/crm-sales.js';
+import expenseReportIcon from '@ui5/webcomponents-icons/dist/expense-report.js';
+import sortIcon from '@ui5/webcomponents-icons/dist/sort.js';
+import type {
+  MessageBoxPropTypes,
+  NotificationListGroupItemPropTypes,
+  NotificationListPropTypes,
+  ResponsivePopoverDomRef,
+  ResponsivePopoverPropTypes,
+} from '@ui5/webcomponents-react';
 import {
   Avatar,
   Bar,
   Button,
+  IllustratedMessage,
   Menu,
   MenuItem,
   MessageStrip,
-  NotificationListItem,
-  NotificationListGroupItem,
   NotificationList,
+  NotificationListGroupItem,
+  NotificationListItem,
   ResponsivePopover,
   Title,
-  ResponsivePopoverPropTypes,
-  ResponsivePopoverDomRef,
-  NotificationListPropTypes,
-  NotificationListGroupItemPropTypes,
-  NotificationListItemDomRef,
-  IllustratedMessage,
-  MessageBoxPropTypes,
 } from '@ui5/webcomponents-react';
 import { forwardRef, useState } from 'react';
-import sortIcon from '@ui5/webcomponents-icons/dist/sort.js';
-import actionSettingsIcon from '@ui5/webcomponents-icons/dist/action-settings.js';
-import crmSalesIcon from '@ui5/webcomponents-icons/dist/crm-sales.js';
-import expenseReportIcon from '@ui5/webcomponents-icons/dist/expense-report.js';
-import NotificationListItemImportance from '@ui5/webcomponents-fiori/dist/types/NotificationListItemImportance.js';
-import AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
 import '@ui5/webcomponents-fiori/dist/illustrations/NoNotifications.js';
 import { ClearAllMessageBox } from './ClearAllMessageBox.tsx';
 

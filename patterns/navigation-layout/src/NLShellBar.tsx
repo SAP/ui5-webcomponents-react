@@ -3,26 +3,28 @@ import da2Icon from '@ui5/webcomponents-icons/dist/da-2.js';
 import daIcon from '@ui5/webcomponents-icons/dist/da.js';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import sysHelpIcon from '@ui5/webcomponents-icons/dist/sys-help.js';
+import type {
+  NavigationLayoutDomRef,
+  ResponsivePopoverDomRef,
+  ShellBarPropTypes,
+  ToggleButtonPropTypes,
+  UserMenuDomRef,
+} from '@ui5/webcomponents-react';
 import {
   Avatar,
   Button,
-  NavigationLayoutDomRef,
-  ResponsivePopoverDomRef,
   SearchItem,
   SearchScope,
   ShellBar,
   ShellBarItem,
-  ShellBarPropTypes,
   ShellBarSearch,
-  ShellBarSearchPropTypes,
   ShellBarSpacer,
   Tag,
   Text,
   ToggleButton,
-  ToggleButtonPropTypes,
-  UserMenuDomRef,
 } from '@ui5/webcomponents-react';
-import { Dispatch, SetStateAction, useRef, useState } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
+import { useRef, useState } from 'react';
 import { NLUserMenu } from './NLUserMenu.tsx';
 import { NotificationsPopover } from './NotificationsPopover.tsx';
 
@@ -63,8 +65,6 @@ export function NLShellBar(props: NLShellBarProps) {
     userMenuRef.current!.opener = e.detail.targetRef;
     setUserMenuOpen(true);
   };
-
-  const handleSearchScopeChange: ShellBarSearchPropTypes['onScopeChange'] = (e) => {};
 
   return (
     <>
@@ -110,7 +110,6 @@ export function NLShellBar(props: NLShellBarProps) {
             id="search-scope"
             showClearIcon
             placeholder="Search Apps, Products"
-            onScopeChange={handleSearchScopeChange}
             scopes={
               <>
                 <SearchScope text="All" selected />

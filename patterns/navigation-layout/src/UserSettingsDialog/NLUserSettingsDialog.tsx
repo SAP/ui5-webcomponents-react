@@ -1,31 +1,8 @@
 import bellIcon from '@ui5/webcomponents-icons/dist/bell.js';
-import iphoneIcon from '@ui5/webcomponents-icons/dist/iphone.js';
-import paletteIcon from '@ui5/webcomponents-icons/dist/palette.js';
-import qrCodeIcon from '@ui5/webcomponents-icons/dist/qr-code.js';
-import resetIcon from '@ui5/webcomponents-icons/dist/reset.js';
-import userSettingsIcon from '@ui5/webcomponents-icons/dist/user-settings.js';
-import {
-  Avatar,
-  Button,
-  ButtonPropTypes,
-  CheckBox,
-  ComboBox,
-  ComboBoxItem,
-  Icon,
-  Label,
-  List,
-  ListItemStandard,
-  Panel,
-  RadioButton,
-  Text,
-  Title,
-  Toast,
-  UserSettingsDialog,
-  UserSettingsDialogPropTypes,
-  UserSettingsItem,
-  UserSettingsView,
-} from '@ui5/webcomponents-react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import type { UserSettingsDialogPropTypes } from '@ui5/webcomponents-react';
+import { CheckBox, UserSettingsDialog, UserSettingsItem, UserSettingsView } from '@ui5/webcomponents-react';
+import type { Dispatch, SetStateAction } from 'react';
+import { useState } from 'react';
 import { AppearanceItem } from './AppearanceItem.tsx';
 import { LanguageRegionItem } from './LanguageRegionItem.tsx';
 import { MobileItem } from './MobileItem.tsx';
