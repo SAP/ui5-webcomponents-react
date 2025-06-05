@@ -4695,7 +4695,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stackblitz/sdk@npm:^1.11.0":
+"@stackblitz/sdk@npm:1.11.0":
   version: 1.11.0
   resolution: "@stackblitz/sdk@npm:1.11.0"
   checksum: 10c0/53a3303bf3572d69f31de220c1f23bc727d68f7113fa3cca0e792158b81deb9455d639df28759701af3761af611c1488a98ff16ab66bc3fdc4a08dc9e6bc7174
@@ -6478,8 +6478,8 @@ __metadata:
   resolution: "@ui5/webcomponents-react-cli@workspace:packages/cli"
   dependencies:
     dedent: "npm:1.6.0"
-    execa: "npm:^9.5.3"
-    patch-package: "npm:^8.0.0"
+    execa: "npm:9.5.3"
+    patch-package: "npm:8.0.0"
   bin:
     ui5-wcr: ./dist/bin/index.js
   languageName: unknown
@@ -12183,7 +12183,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^9.5.3":
+"execa@npm:9.5.3":
   version: 9.5.3
   resolution: "execa@npm:9.5.3"
   dependencies:
@@ -19461,7 +19461,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"patch-package@npm:^8.0.0":
+"patch-package@npm:8.0.0":
   version: 8.0.0
   resolution: "patch-package@npm:8.0.0"
   dependencies:
@@ -23993,7 +23993,7 @@ __metadata:
     "@eslint/compat": "npm:1.2.9"
     "@eslint/js": "npm:9.27.0"
     "@semantic-release/github": "npm:11.0.3"
-    "@stackblitz/sdk": "npm:^1.11.0"
+    "@stackblitz/sdk": "npm:1.11.0"
     "@storybook/addon-a11y": "npm:8.6.14"
     "@storybook/addon-essentials": "npm:8.6.14"
     "@storybook/blocks": "npm:8.6.14"
