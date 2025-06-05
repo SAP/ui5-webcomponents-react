@@ -1,7 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/DynamicDateRange.js';
-import type { DynamicDateRangeValue } from '@ui5/webcomponents/dist/DynamicDateRange.js';
+import type {
+  DynamicDateRangeChangeEventDetail,
+  DynamicDateRangeValue,
+} from '@ui5/webcomponents/dist/DynamicDateRange.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
@@ -33,7 +36,7 @@ interface DynamicDateRangePropTypes
    * | :--------: | :-----: |
    * | ✅|✅|
    */
-  onChange?: (event: Ui5CustomEvent<DynamicDateRangeDomRef>) => void;
+  onChange?: (event: Ui5CustomEvent<DynamicDateRangeDomRef, DynamicDateRangeChangeEventDetail>) => void;
 }
 
 /**
