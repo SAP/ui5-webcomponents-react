@@ -16,6 +16,22 @@ Charts only offer limited accessibility support with only basic built-in feature
 
 To use this library with React 19 you have to override your `react-is` version to match your React version!
 
+- **npm:**
+
+  ```json
+    "overrides": {
+      "react-is": "19.1.0"
+    },
+  ```
+
+- **yarn**
+
+  ```json
+    "resolutions": {
+      "react-is": "19.1.0"
+    },
+  ```
+
 ## Documentation
 
 You can find an interactive documentation in our [Storybook](https://sap.github.io/ui5-webcomponents-react/).
