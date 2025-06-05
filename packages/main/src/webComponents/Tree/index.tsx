@@ -7,6 +7,7 @@ import type {
   TreeItemMouseoutEventDetail,
   TreeItemMouseoverEventDetail,
   TreeItemToggleEventDetail,
+  TreeMoveEventDetail,
   TreeSelectionChangeEventDetail,
   WalkCallback,
 } from '@ui5/webcomponents/dist/Tree.js';
@@ -97,6 +98,8 @@ interface TreePropTypes
       | 'onItemMouseout'
       | 'onItemMouseover'
       | 'onItemToggle'
+      | 'onMove'
+      | 'onMoveOver'
       | 'onSelectionChange'
     > {
   /**
@@ -176,6 +179,30 @@ interface TreePropTypes
   onItemToggle?: (event: Ui5CustomEvent<TreeDomRef, TreeItemToggleEventDetail>) => void;
 
   /**
+   * Fired when a movable tree item is moved over a potential drop target during a drag-and-drop operation.
+   *
+   * If the new position is valid, prevent the default action of the event using `preventDefault()`.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onMove?: (event: Ui5CustomEvent<TreeDomRef, TreeMoveEventDetail>) => void;
+
+  /**
+   * Fired when a movable tree item is dropped onto a drop target.
+   *
+   * **Note:** The `move` event is fired only if there was a preceding `move-over` event with prevented default action.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
+   */
+  onMoveOver?: (event: Ui5CustomEvent<TreeDomRef, TreeMoveEventDetail>) => void;
+
+  /**
    * Fired when selection is changed by user interaction
    * in `Single`, `SingleStart`, `SingleEnd` and `Multiple` modes.
    *
@@ -237,7 +264,16 @@ const Tree = withWebComponent<TreePropTypes, TreeDomRef>(
   ],
   [],
   ['header'],
-  ['item-click', 'item-delete', 'item-mouseout', 'item-mouseover', 'item-toggle', 'selection-change'],
+  [
+    'item-click',
+    'item-delete',
+    'item-mouseout',
+    'item-mouseover',
+    'item-toggle',
+    'move-over',
+    'move',
+    'selection-change',
+  ],
 );
 
 Tree.displayName = 'Tree';
