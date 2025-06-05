@@ -650,7 +650,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
             headerContentVisible={headerArea && headerCollapsed !== true}
             hidePinButton={!!hidePinButton}
             headerPinned={headerPinned}
-            accessibilityAttributes={accessibilityAttributes}
+            accessibilityAttributes={accessibilityAttributes?.objectPageAnchorBar}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
             setHeaderPinned={setHeaderPinned}
             onHoverToggleButton={onHoverToggleButton}

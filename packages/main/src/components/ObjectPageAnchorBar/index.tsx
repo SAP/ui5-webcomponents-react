@@ -15,6 +15,7 @@ import type { ButtonDomRef } from '../../webComponents/Button/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import type { ToggleButtonDomRef, ToggleButtonPropTypes } from '../../webComponents/ToggleButton/index.js';
 import { ToggleButton } from '../../webComponents/ToggleButton/index.js';
+import type { ObjectPagePropTypes } from '../ObjectPage/types/index.js';
 import { classNames, styleData } from './ObjectPageAnchorBar.module.css.js';
 
 const _buttonBaseMinWidth = `${cssVarVersionInfoPrefix}button_base_min_width`;
@@ -53,11 +54,7 @@ interface ObjectPageAnchorBarPropTypes extends CommonProps {
   /**
    * Defines internally used accessibility properties/attributes.
    */
-  accessibilityAttributes?: {
-    objectPageAnchorBar?: {
-      role?: string;
-    };
-  };
+  accessibilityAttributes?: ObjectPagePropTypes['accessibilityAttributes']['objectPageAnchorBar'];
   /**
    * Fired when the `headerContent` changes its pinned state.
    */
@@ -114,14 +111,18 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
     const showHideHeaderBtn = showHideHeaderBtnRef.current;
     void customElements.whenDefined(tagName).then(() => {
       if (showHideHeaderBtn) {
+        const expanded =
+          accessibilityAttributes?.expandButton && Object.hasOwn(accessibilityAttributes.expandButton, 'expanded')
+            ? accessibilityAttributes.expandButton.expanded
+            : !!headerContentVisible;
         showHideHeaderBtn.accessibilityAttributes = {
-          expanded: !!headerContentVisible,
+          expanded,
           hasPopup: undefined,
           controls: undefined,
         };
       }
     });
-  }, [!!headerContentVisible]);
+  }, [accessibilityAttributes?.expandButton?.expanded, !!headerContentVisible]);
 
   const onToggleHeaderButtonClick = (e) => {
     onToggleHeaderContentVisibility(enrichEventWithDetails(e, { visible: !headerContentVisible }));
@@ -131,7 +132,7 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
     <section
       data-component-name="ObjectPageAnchorBar"
       style={style}
-      role={accessibilityAttributes?.objectPageAnchorBar?.role}
+      role={accessibilityAttributes?.role}
       className={!hidePinButton ? classNames.container : null}
       ref={ref}
     >
@@ -149,7 +150,10 @@ const ObjectPageAnchorBar = forwardRef<HTMLElement, ObjectPageAnchorBarPropTypes
         onMouseOver={onHoverToggleButton}
         onMouseLeave={onHoverToggleButton}
         tooltip={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
-        accessibleName={i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)}
+        accessibleName={
+          accessibilityAttributes?.expandButton?.accessibleName ??
+          i18nBundle.getText(!headerContentVisible ? EXPAND_HEADER : COLLAPSE_HEADER)
+        }
         data-component-name="ObjectPageAnchorBarExpandBtn"
       />
       {shouldRenderHeaderPinnableButton && (

@@ -1358,6 +1358,70 @@ describe('ObjectPage', () => {
     });
   });
 
+  it('accessibilityAttributes', () => {
+    cy.mount(
+      <ObjectPage data-testid="op" titleArea={DPTitle} headerArea={DPContent} footerArea={Footer}>
+        {OPContent}
+      </ObjectPage>,
+    );
+
+    cy.get('header').should('not.have.attr', 'role');
+    cy.get('header').should('have.attr', 'aria-roledescription', 'Object Page header');
+    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should(($el) => {
+      expect($el[0].accessibilityAttributes.expanded).to.equal(true);
+    });
+    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should(
+      'have.attr',
+      'accessible-name',
+      'Collapse Header',
+    );
+    cy.get('section[data-component-name="ObjectPageAnchorBar"]').should('not.have.attr', 'role');
+    cy.get('footer').should('not.have.attr', 'role');
+
+    const accessibilityAttributes = {
+      objectPageTopHeader: {
+        role: 'banner',
+        ariaRoledescription: 'ariaRoledescription',
+      },
+      objectPageAnchorBar: {
+        expandButton: {
+          expanded: undefined,
+          accessibleName: '',
+        },
+        role: 'not-a-real-role',
+      },
+      objectPageFooterArea: {
+        role: 'contentinfo',
+      },
+    };
+
+    cy.mount(
+      <ObjectPage
+        data-testid="op"
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        footerArea={Footer}
+        accessibilityAttributes={accessibilityAttributes}
+      >
+        {OPContent}
+      </ObjectPage>,
+    );
+
+    cy.get('header').should('have.attr', 'role', 'banner');
+    cy.get('header').should('have.attr', 'aria-roledescription', 'ariaRoledescription');
+    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should(($el) => {
+      const attrs = $el[0].accessibilityAttributes;
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      expect(attrs).to.exist;
+      expect(attrs).to.haveOwnProperty('expanded');
+      expect(attrs.expanded).to.equal(undefined);
+    });
+    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should('have.attr', 'accessible-name', '');
+    cy.get('section[data-component-name="ObjectPageAnchorBar"]').should('have.attr', 'role', 'not-a-real-role');
+    cy.get('footer').should('have.attr', 'role', 'contentinfo');
+  });
+
   cypressPassThroughTestsFactory(ObjectPage);
 });
 
