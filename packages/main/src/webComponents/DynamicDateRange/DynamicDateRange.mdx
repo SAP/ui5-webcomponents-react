@@ -1,0 +1,72 @@
+import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ComponentStories from './DynamicDateRange.stories';
+
+<Meta of={ComponentStories} />
+
+<DocsHeader />
+
+<br />
+
+## Example
+
+<Canvas of={ComponentStories.Default} />
+
+## Properties
+
+<ControlsWithNote of={ComponentStories.Default} />
+
+## More examples
+
+### Value Change
+
+<Canvas of={ComponentStories.ValueChange} />
+
+#### Code
+
+```tsx
+function DynamicDateRangeComponent() {
+  const [selValue, setSelValue] = useState("");
+  const [convertedDates, setConvertedDates] = useState("");
+  return (
+    <>
+      <DynamicDateRange
+        onChange={(e) => {
+          const selectedValue = e.detail.value;
+          setSelValue(JSON.stringify(selectedValue));
+
+          const dates = e.currentTarget.toDates(selectedValue);
+          setConvertedDates(
+            dates.map((date) => date.toLocaleString()).join(" - "),
+          );
+        }}
+      />
+      <hr />
+      <FlexBox alignItems="Center" gap="0.5rem">
+        <Label for="sel-val" showColon>
+          Selected Value
+        </Label>
+        <Input
+          id="sel-val"
+          readonly
+          value={selValue}
+          style={{ width: "100%", maxWidth: "400px" }}
+        />
+      </FlexBox>
+      <FlexBox alignItems="Center" gap="0.5rem">
+        <Label for="conv-val" showColon>
+          Converted Dates
+        </Label>
+        <Input
+          id="conv-val"
+          readonly
+          value={convertedDates}
+          style={{ width: "100%", maxWidth: "400px" }}
+        />
+      </FlexBox>
+    </>
+  );
+}
+```
+
+<Footer />
