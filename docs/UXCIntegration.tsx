@@ -7,7 +7,9 @@ function UXCIntegration() {
   return (
     <div style={{ height: '80vh', position: 'relative' }}>
       <ThemeProvider>
-        <UXCIntegrationApp content={<EmbeddedStackBlitz projectId={'github-k5xmevmm'} />} />
+        <UXCIntegrationApp
+          content={<EmbeddedStackBlitz repoPath="SAP/ui5-webcomponents-react/tree/main/patterns/navigation-layout" />}
+        />
       </ThemeProvider>
     </div>
   );

@@ -1,13 +1,11 @@
 import sdk from '@stackblitz/sdk';
-import type { CSSProperties } from 'react';
 import { useEffect, useRef } from 'react';
 
 interface EmbeddedStackBlitzProps {
-  style?: CSSProperties;
-  projectId: string;
+  repoPath: string;
 }
 
-export function EmbeddedStackBlitz({ style, projectId }: EmbeddedStackBlitzProps) {
+export function EmbeddedStackBlitz({ repoPath }: EmbeddedStackBlitzProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -15,7 +13,7 @@ export function EmbeddedStackBlitz({ style, projectId }: EmbeddedStackBlitzProps
     if (!container) {
       return;
     }
-    sdk.embedProjectId(container, projectId, {
+    sdk.embedGithubProject(container, repoPath, {
       openFile: 'src/App.tsx',
       view: 'editor',
       height: '90%',
@@ -28,9 +26,9 @@ export function EmbeddedStackBlitz({ style, projectId }: EmbeddedStackBlitzProps
         container.innerHTML = '';
       }
     };
-  }, [projectId]);
+  }, [repoPath]);
 
-  return <div ref={containerRef} data-where style={{ height: '80vh', ...style }} />;
+  return <div ref={containerRef} />;
 }
 
 EmbeddedStackBlitz.displayName = 'EmbeddedStackBlitz';
