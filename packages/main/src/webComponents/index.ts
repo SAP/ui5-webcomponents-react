@@ -27,6 +27,7 @@ export * from './DatePicker/index.js';
 export * from './DateRangePicker/index.js';
 export * from './DateTimePicker/index.js';
 export * from './Dialog/index.js';
+export * from './DynamicDateRange/index.js';
 export * from './DynamicPage/index.js';
 export * from './DynamicPageHeader/index.js';
 export * from './DynamicPageTitle/index.js';

@@ -172,6 +172,7 @@
               "privacy": "public",
               "description": "Dot <code>Illustration</code> size (XS breakpoint). Suitable for table rows.",
               "default": "Dot",
+              "deprecated": "Since 2.10.0, use ExtraSmall instead",
               "name": "Dot",
               "readonly": true
             },
@@ -181,6 +182,7 @@
               "privacy": "public",
               "description": "Spot <code>Illustration</code> size (S breakpoint). Suitable for cards (four columns).",
               "default": "Spot",
+              "deprecated": "Since 2.10.0, use Small instead",
               "name": "Spot",
               "readonly": true
             },
@@ -190,6 +192,7 @@
               "privacy": "public",
               "description": "Dialog `Illustration` size (M breakpoint). Suitable for dialogs.",
               "default": "Dialog",
+              "deprecated": "Since 2.10.0, use Medium instead",
               "name": "Dialog",
               "readonly": true
             },
@@ -199,7 +202,44 @@
               "privacy": "public",
               "description": "Scene `Illustration` size (L breakpoint). Suitable for a `Page` or a table.",
               "default": "Scene",
+              "deprecated": "Since 2.10.0, use Large instead",
               "name": "Scene",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "ExtraSmall <code>Illustration</code> size (XS breakpoint). Suitable for table rows.",
+              "default": "ExtraSmall",
+              "name": "ExtraSmall",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Small <code>Illustration</code> size (S breakpoint). Suitable for cards (four columns).",
+              "default": "Small",
+              "name": "Small",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Medium `Illustration` size (M breakpoint). Suitable for dialogs.",
+              "default": "Medium",
+              "name": "Medium",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Large `Illustration` size (L breakpoint). Suitable for a `Page` or a table.",
+              "default": "Large",
+              "name": "Large",
               "readonly": true
             }
           ]
@@ -230,9 +270,63 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
+              "description": "\"Achievement\" illustration type.",
+              "default": "Achievement",
+              "name": "Achievement",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"Adding Columns\" illustration type.",
+              "default": "AddingColumns",
+              "name": "AddingColumns",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"Add People To Calendar\" illustration type.",
+              "default": "AddPeopleToCalendar",
+              "name": "AddPeopleToCalendar",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
               "description": "\"Before Search\" illustration type.",
               "default": "BeforeSearch",
               "name": "BeforeSearch",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"Drag Files To Upload\" illustration type.",
+              "default": "DragFilesToUpload",
+              "name": "DragFilesToUpload",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"Filtering Columns\" illustration type.",
+              "default": "FilteringColumns",
+              "name": "FilteringColumns",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"Grouping Columns\" illustration type.",
+              "default": "GroupingColumns",
+              "name": "GroupingColumns",
               "readonly": true
             },
             {
@@ -286,6 +380,7 @@
               "privacy": "public",
               "description": "\"No Email v1\" illustration type.",
               "default": "NoMail_v1",
+              "deprecated": "Since 2.10.0, use NoMail instead",
               "name": "NoMail_v1",
               "readonly": true
             },
@@ -322,6 +417,7 @@
               "privacy": "public",
               "description": "\"No Saved Items v1\" illustration type.",
               "default": "NoSavedItems_v1",
+              "deprecated": "Since 2.10.0, use NoSavedItems instead",
               "name": "NoSavedItems_v1",
               "readonly": true
             },
@@ -349,6 +445,7 @@
               "privacy": "public",
               "description": "\"No Tasks v1\" illustration type.",
               "default": "NoTasks_v1",
+              "deprecated": "Since 2.10.0, use NoTasks instead",
               "name": "NoTasks_v1",
               "readonly": true
             },
@@ -358,6 +455,7 @@
               "privacy": "public",
               "description": "\"No Dimensions Set\" illustration type.",
               "default": "NoDimensionsSet",
+              "deprecated": "Since 2.10.0, use NoChartData instead",
               "name": "NoDimensionsSet",
               "readonly": true
             },
@@ -403,6 +501,7 @@
               "privacy": "public",
               "description": "\"Add Column\" illustration type.",
               "default": "AddColumn",
+              "deprecated": "Since 2.10.0, use AddingColumns instead",
               "name": "AddColumn",
               "readonly": true
             },
@@ -412,6 +511,7 @@
               "privacy": "public",
               "description": "\"Add People\" illustration type.",
               "default": "AddPeople",
+              "deprecated": "Since 2.10.0, use AddPeopleToCalendar instead",
               "name": "AddPeople",
               "readonly": true
             },
@@ -430,6 +530,7 @@
               "privacy": "public",
               "description": "\"Balloon Sky\" illustration type.",
               "default": "BalloonSky",
+              "deprecated": "Since 2.10.0, use ReceiveAppreciation instead",
               "name": "BalloonSky",
               "readonly": true
             },
@@ -439,6 +540,7 @@
               "privacy": "public",
               "description": "\"Connection\" illustration type.",
               "default": "Connection",
+              "deprecated": "Since 2.10.0, use UnableToLoad instead",
               "name": "Connection",
               "readonly": true
             },
@@ -448,6 +550,7 @@
               "privacy": "public",
               "description": "\"Empty Calendar\" illustration type.",
               "default": "EmptyCalendar",
+              "deprecated": "Since 2.10.0, use NoActivities instead",
               "name": "EmptyCalendar",
               "readonly": true
             },
@@ -457,6 +560,7 @@
               "privacy": "public",
               "description": "\"Empty List\" illustration type.",
               "default": "EmptyList",
+              "deprecated": "Since 2.10.0, use NoEntries instead",
               "name": "EmptyList",
               "readonly": true
             },
@@ -475,6 +579,7 @@
               "privacy": "public",
               "description": "\"Error Screen\" illustration type.",
               "default": "ErrorScreen",
+              "deprecated": "Since 2.10.0, use UnableToUpload instead",
               "name": "ErrorScreen",
               "readonly": true
             },
@@ -484,6 +589,7 @@
               "privacy": "public",
               "description": "\"Filter Table\" illustration type.",
               "default": "FilterTable",
+              "deprecated": "Since 2.10.0, use FilteringColumns instead",
               "name": "FilterTable",
               "readonly": true
             },
@@ -493,7 +599,26 @@
               "privacy": "public",
               "description": "\"Group Table\" illustration type.",
               "default": "GroupTable",
+              "deprecated": "Since 2.10.0, use GroupingColumns instead",
               "name": "GroupTable",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"Key Task\" illustration type.",
+              "default": "KeyTask",
+              "name": "KeyTask",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"No Chart Data\" illustration type.",
+              "default": "NoChartData",
+              "name": "NoChartData",
               "readonly": true
             },
             {
@@ -520,6 +645,7 @@
               "privacy": "public",
               "description": "\"Reload Screen\" illustration type.",
               "default": "ReloadScreen",
+              "deprecated": "Since 2.10.0, use UnableToLoad instead",
               "name": "ReloadScreen",
               "readonly": true
             },
@@ -529,7 +655,26 @@
               "privacy": "public",
               "description": "\"Resize Column\" illustration type.",
               "default": "ResizeColumn",
+              "deprecated": "Since 2.10.0, use ResizingColumns instead",
               "name": "ResizeColumn",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"Resizing Columns\" illustration type.",
+              "default": "ResizingColumns",
+              "name": "ResizingColumns",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"Receive Appreciation\" illustration type.",
+              "default": "ReceiveAppreciation",
+              "name": "ReceiveAppreciation",
               "readonly": true
             },
             {
@@ -538,6 +683,7 @@
               "privacy": "public",
               "description": "\"Search Earth\" illustration type.",
               "default": "SearchEarth",
+              "deprecated": "Since 2.10.0, use BeforeSearch instead",
               "name": "SearchEarth",
               "readonly": true
             },
@@ -547,6 +693,7 @@
               "privacy": "public",
               "description": "\"Search Folder\" illustration type.",
               "default": "SearchFolder",
+              "deprecated": "Since 2.10.0, use NoSearchResults instead",
               "name": "SearchFolder",
               "readonly": true
             },
@@ -565,6 +712,7 @@
               "privacy": "public",
               "description": "\"Simple Balloon\" illustration type.",
               "default": "SimpleBalloon",
+              "deprecated": "Since 2.10.0, use ReceiveAppreciation instead",
               "name": "SimpleBalloon",
               "readonly": true
             },
@@ -574,6 +722,7 @@
               "privacy": "public",
               "description": "\"Simple Bell\" illustration type.",
               "default": "SimpleBell",
+              "deprecated": "Since 2.10.0, use NoNotifications instead",
               "name": "SimpleBell",
               "readonly": true
             },
@@ -583,6 +732,7 @@
               "privacy": "public",
               "description": "\"Simple Calendar\" illustration type.",
               "default": "SimpleCalendar",
+              "deprecated": "Since 2.10.0, use NoActivities instead",
               "name": "SimpleCalendar",
               "readonly": true
             },
@@ -592,6 +742,7 @@
               "privacy": "public",
               "description": "\"Simple CheckMark\" illustration type.",
               "default": "SimpleCheckMark",
+              "deprecated": "Since 2.10.0, use KeyTask instead",
               "name": "SimpleCheckMark",
               "readonly": true
             },
@@ -601,6 +752,7 @@
               "privacy": "public",
               "description": "\"Simple Connection\" illustration type.",
               "default": "SimpleConnection",
+              "deprecated": "Since 2.10.0, use UnableToLoad instead",
               "name": "SimpleConnection",
               "readonly": true
             },
@@ -610,6 +762,7 @@
               "privacy": "public",
               "description": "\"Simple Empty Doc\" illustration type.",
               "default": "SimpleEmptyDoc",
+              "deprecated": "Since 2.10.0, use NoData instead",
               "name": "SimpleEmptyDoc",
               "readonly": true
             },
@@ -619,6 +772,7 @@
               "privacy": "public",
               "description": "\"Simple Empty List\" illustration type.",
               "default": "SimpleEmptyList",
+              "deprecated": "Since 2.10.0, use NoEntries instead",
               "name": "SimpleEmptyList",
               "readonly": true
             },
@@ -628,6 +782,7 @@
               "privacy": "public",
               "description": "\"Simple Error\" illustration type.",
               "default": "SimpleError",
+              "deprecated": "Since 2.10.0, use UnableToUpload instead",
               "name": "SimpleError",
               "readonly": true
             },
@@ -637,6 +792,7 @@
               "privacy": "public",
               "description": "\"Simple Magnifier\" illustration type.",
               "default": "SimpleMagnifier",
+              "deprecated": "Since 2.10.0, use BeforeSearch instead",
               "name": "SimpleMagnifier",
               "readonly": true
             },
@@ -646,6 +802,7 @@
               "privacy": "public",
               "description": "\"Simple Mail\" illustration type.",
               "default": "SimpleMail",
+              "deprecated": "Since 2.10.0, use NoMail instead",
               "name": "SimpleMail",
               "readonly": true
             },
@@ -655,6 +812,7 @@
               "privacy": "public",
               "description": "\"Simple No Saved Items\" illustration type.",
               "default": "SimpleNoSavedItems",
+              "deprecated": "Since 2.10.0, use NoSavedItems instead",
               "name": "SimpleNoSavedItems",
               "readonly": true
             },
@@ -664,6 +822,7 @@
               "privacy": "public",
               "description": "\"Simple Not Found Magnifier\" illustration type.",
               "default": "SimpleNotFoundMagnifier",
+              "deprecated": "Since 2.10.0, use NoSearchResults instead",
               "name": "SimpleNotFoundMagnifier",
               "readonly": true
             },
@@ -673,6 +832,7 @@
               "privacy": "public",
               "description": "\"Simple Reload\" illustration type.",
               "default": "SimpleReload",
+              "deprecated": "Since 2.10.0, use UnableToLoad instead",
               "name": "SimpleReload",
               "readonly": true
             },
@@ -682,6 +842,7 @@
               "privacy": "public",
               "description": "\"Simple Task\" illustration type.",
               "default": "SimpleTask",
+              "deprecated": "Since 2.10.0, use NoTasks instead",
               "name": "SimpleTask",
               "readonly": true
             },
@@ -691,6 +852,7 @@
               "privacy": "public",
               "description": "\"Sleeping Bell\" illustration type.",
               "default": "SleepingBell",
+              "deprecated": "Since 2.10.0, use NoNotifications instead",
               "name": "SleepingBell",
               "readonly": true
             },
@@ -700,7 +862,17 @@
               "privacy": "public",
               "description": "\"Sort Column\" illustration type.",
               "default": "SortColumn",
+              "deprecated": "Since 2.10.0, use SortingColumns instead",
               "name": "SortColumn",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"Sorting Columns\" illustration type.",
+              "default": "SortingColumns",
+              "name": "SortingColumns",
               "readonly": true
             },
             {
@@ -709,6 +881,7 @@
               "privacy": "public",
               "description": "\"Success Balloon\" illustration type.",
               "default": "SuccessBalloon",
+              "deprecated": "Since 2.10.0, use ReceiveAppreciation instead",
               "name": "SuccessBalloon",
               "readonly": true
             },
@@ -718,6 +891,7 @@
               "privacy": "public",
               "description": "\"Success CheckMark\" illustration type.",
               "default": "SuccessCheckMark",
+              "deprecated": "Since 2.10.0, use KeyTask instead",
               "name": "SuccessCheckMark",
               "readonly": true
             },
@@ -727,6 +901,7 @@
               "privacy": "public",
               "description": "\"Success HighFive\" illustration type.",
               "default": "SuccessHighFive",
+              "deprecated": "Since 2.10.0, use ReceiveAppreciation instead",
               "name": "SuccessHighFive",
               "readonly": true
             },
@@ -736,6 +911,7 @@
               "privacy": "public",
               "description": "\"Success Screen\" illustration type.",
               "default": "SuccessScreen",
+              "deprecated": "Since 2.10.0, use KeyTask instead",
               "name": "SuccessScreen",
               "readonly": true
             },
@@ -754,6 +930,7 @@
               "privacy": "public",
               "description": "\"Tent\" illustration type.",
               "default": "Tent",
+              "deprecated": "Since 2.10.0, use NoData instead",
               "name": "Tent",
               "readonly": true
             },
@@ -763,7 +940,17 @@
               "privacy": "public",
               "description": "\"Upload Collection\" illustration type.",
               "default": "UploadCollection",
+              "deprecated": "Since 2.10.0, use DragFilesToUpload instead",
               "name": "UploadCollection",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "\"User Has Signed Up\" illustration type.",
+              "default": "UserHasSignedUp",
+              "name": "UserHasSignedUp",
               "readonly": true
             },
             {
@@ -2096,6 +2283,18 @@
     {
       "kind": "javascript-module",
       "path": "dist/upload-utils/UploadCollectionBodyDnD.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/Assets-fetch.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/Assets-node.js",
       "declarations": [],
       "exports": []
     },
@@ -3601,7 +3800,7 @@
               "default": "\"Auto\"",
               "fieldName": "design",
               "type": {
-                "text": "\"Auto\" | \"Base\" | \"Dot\" | \"Spot\" | \"Dialog\" | \"Scene\""
+                "text": "\"Auto\" | \"Base\" | \"Dot\" | \"Spot\" | \"Dialog\" | \"Scene\" | \"ExtraSmall\" | \"Small\" | \"Medium\" | \"Large\""
               }
             },
             {
@@ -5363,6 +5562,26 @@
                 "name": "SearchField",
                 "module": "dist/SearchField.js"
               }
+            },
+            {
+              "name": "filterButton",
+              "description": "Defines the filter button slot, used to display an additional filtering button.\nThis slot is intended for passing a `ui5-button` with a filter icon to provide extended filtering options.\n\n**Note:** Scope button and Filter button are mutually exclusive.",
+              "_ui5since": "2.11.0",
+              "_ui5type": {
+                "text": "Array<Button>",
+                "references": [
+                  {
+                    "name": "Button",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
             }
           ],
           "members": [
@@ -5708,25 +5927,47 @@
           "kind": "class",
           "description": "### Overview\n\nA `ui5-search-item` is a list item, used for displaying search suggestions\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SearchItem.js\";`",
           "name": "SearchItem",
+          "slots": [
+            {
+              "name": "image",
+              "description": "**Note:** While the slot allows the option of setting a custom avatar, to comply with the\ndesign guidelines, use the `ui5-avatar` with size - XS.",
+              "_ui5since": "2.12.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
           "members": [
             {
               "kind": "field",
               "name": "text",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "\"\"",
               "description": "Defines the heading text of the search item.",
+              "default": "undefined",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the description that appears right under the item text, if available.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.12.0"
             },
             {
               "kind": "field",
               "name": "icon",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "\"\"",
-              "description": "Defines the icon name of the search item.",
+              "description": "Defines the icon name of the search item.\n**Note:** If provided, the image slot will be ignored.",
+              "default": "undefined",
               "privacy": "public"
             },
             {
@@ -5746,7 +5987,7 @@
                 "text": "string | undefined"
               },
               "description": "Defines the scope of the search item",
-              "default": "false",
+              "default": "undefined",
               "privacy": "public"
             }
           ],
@@ -5767,19 +6008,28 @@
             {
               "description": "Defines the heading text of the search item.",
               "name": "text",
-              "default": "\"\"",
+              "default": "undefined",
               "fieldName": "text",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               }
             },
             {
-              "description": "Defines the icon name of the search item.",
+              "description": "Defines the description that appears right under the item text, if available.",
+              "name": "description",
+              "default": "undefined",
+              "fieldName": "description",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the icon name of the search item.\n**Note:** If provided, the image slot will be ignored.",
               "name": "icon",
-              "default": "\"\"",
+              "default": "undefined",
               "fieldName": "icon",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               }
             },
             {
@@ -5794,7 +6044,7 @@
             {
               "description": "Defines the scope of the search item",
               "name": "scope-name",
-              "default": "false",
+              "default": "undefined",
               "fieldName": "scopeName",
               "type": {
                 "text": "string | undefined"
@@ -6379,6 +6629,16 @@
             },
             {
               "kind": "field",
+              "name": "showSearchField",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines, if the Search Field would be displayed when there is a valid `searchField` slot.\n\n**Note:** By default the Search Field is not displayed.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
               "name": "accessibilityAttributes",
               "type": {
                 "text": "ShellBarAccessibilityAttributes",
@@ -6394,16 +6654,6 @@
               "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n- **logo** - `logo.role` and `logo.name`.\n- **notifications** - `notifications.expanded` and `notifications.hasPopup`.\n- **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.\n- **product** - `product.expanded` and `product.hasPopup`.\n- **search** - `search.hasPopup`.\n- **overflow** - `overflow.expanded` and `overflow.hasPopup`.\n- **branding** - `branding.name`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA role of the logo area.\nAccepts the following string values: `button` or `link`.\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
               "privacy": "public",
               "_ui5since": "1.10.0"
-            },
-            {
-              "kind": "field",
-              "name": "showSearchField",
-              "description": "Defines, if the Search Field would be displayed when there is a valid `searchField` slot.\n\n**Note:** By default the Search Field is not displayed.",
-              "default": "false",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              }
             },
             {
               "kind": "method",
@@ -6793,21 +7043,21 @@
               }
             },
             {
+              "description": "Defines, if the Search Field would be displayed when there is a valid `searchField` slot.\n\n**Note:** By default the Search Field is not displayed.",
+              "name": "show-search-field",
+              "default": "false",
+              "fieldName": "showSearchField",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
               "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n- **logo** - `logo.role` and `logo.name`.\n- **notifications** - `notifications.expanded` and `notifications.hasPopup`.\n- **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.\n- **product** - `product.expanded` and `product.hasPopup`.\n- **search** - `search.hasPopup`.\n- **overflow** - `overflow.expanded` and `overflow.hasPopup`.\n- **branding** - `branding.name`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA role of the logo area.\nAccepts the following string values: `button` or `link`.\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
               "name": "accessibility-attributes",
               "default": "{}",
               "fieldName": "accessibilityAttributes",
               "type": {
                 "text": "ShellBarAccessibilityAttributes"
-              }
-            },
-            {
-              "description": "Defines, if the Search Field would be displayed when there is a valid `searchField` slot.\n\n**Note:** By default the Search Field is not displayed.",
-              "name": "show-search-field",
-              "default": "false",
-              "fieldName": "showSearchField",
-              "type": {
-                "text": "any"
               }
             },
             {
@@ -7256,6 +7506,26 @@
                     "name": "ISearchScope",
                     "package": "@ui5/webcomponents-fiori",
                     "module": "dist/SearchField.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "name": "filterButton",
+              "description": "Defines the filter button slot, used to display an additional filtering button.\nThis slot is intended for passing a `ui5-button` with a filter icon to provide extended filtering options.\n\n**Note:** Scope button and Filter button are mutually exclusive.",
+              "_ui5since": "2.11.0",
+              "_ui5type": {
+                "text": "Array<Button>",
+                "references": [
+                  {
+                    "name": "Button",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
                   }
                 ]
               },
@@ -8205,12 +8475,53 @@
               "name": "click",
               "_ui5privacy": "public",
               "type": {
-                "text": "CustomEvent"
+                "text": "CustomEvent<SideNavigationItemClickEventDetail>",
+                "references": [
+                  {
+                    "name": "SideNavigationItemClickEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SideNavigationItemBase.js"
+                  }
+                ]
               },
               "description": "Fired when the component is activated either with a click/tap or by using the [Enter] or [Space] keys.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "altKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"ALT\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "ctrlKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"CTRL\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "metaKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"META\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "shiftKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"SHIFT\" key was pressed when the event was triggered."
+                }
+              ],
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"
@@ -8479,12 +8790,53 @@
               "name": "click",
               "_ui5privacy": "public",
               "type": {
-                "text": "CustomEvent"
+                "text": "CustomEvent<SideNavigationItemClickEventDetail>",
+                "references": [
+                  {
+                    "name": "SideNavigationItemClickEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SideNavigationItemBase.js"
+                  }
+                ]
               },
               "description": "Fired when the component is activated either with a click/tap or by using the [Enter] or [Space] keys.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "altKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"ALT\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "ctrlKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"CTRL\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "metaKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"META\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "shiftKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"SHIFT\" key was pressed when the event was triggered."
+                }
+              ]
             }
           ],
           "attributes": [
@@ -8931,12 +9283,53 @@
               "name": "click",
               "_ui5privacy": "public",
               "type": {
-                "text": "CustomEvent"
+                "text": "CustomEvent<SideNavigationItemClickEventDetail>",
+                "references": [
+                  {
+                    "name": "SideNavigationItemClickEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SideNavigationItemBase.js"
+                  }
+                ]
               },
               "description": "Fired when the component is activated either with a click/tap or by using the [Enter] or [Space] keys.",
-              "_ui5Cancelable": false,
-              "_ui5allowPreventDefault": false,
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "altKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"ALT\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "ctrlKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"CTRL\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "metaKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"META\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "shiftKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"SHIFT\" key was pressed when the event was triggered."
+                }
+              ],
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
                 "module": "dist/SideNavigationSelectableItemBase.js"

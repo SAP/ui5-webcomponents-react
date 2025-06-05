@@ -5,7 +5,7 @@ import type { AvatarAccessibilityAttributes } from '@ui5/webcomponents/dist/Avat
 import type AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
 import type AvatarShape from '@ui5/webcomponents/dist/types/AvatarShape.js';
 import type AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';
-import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 
@@ -114,7 +114,9 @@ interface AvatarAttributes {
 
 interface AvatarDomRef extends Required<AvatarAttributes>, Ui5DomRef {}
 
-interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof AvatarAttributes | 'badge' | 'children'> {
+interface AvatarPropTypes
+  extends AvatarAttributes,
+    Omit<CommonProps, keyof AvatarAttributes | 'badge' | 'children' | 'onClick'> {
   /**
    * Defines the optional badge that will be used for visual affordance.
    *
@@ -141,6 +143,19 @@ interface AvatarPropTypes extends AvatarAttributes, Omit<CommonProps, keyof Avat
    * `}`
    */
   children?: ReactNode | ReactNode[];
+  /**
+   * Fired on mouseup, space and enter if avatar is interactive
+   *
+   * **Note:** The event will not be fired if the `disabled`
+   * property is set to `true`.
+   *
+   * **Note:** Available since [v2.11.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.11.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onClick?: (event: Ui5CustomEvent<AvatarDomRef>) => void;
 }
 
 /**
@@ -164,7 +179,7 @@ const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
   ['accessibilityAttributes', 'accessibleName', 'colorScheme', 'fallbackIcon', 'icon', 'initials', 'shape', 'size'],
   ['disabled', 'interactive'],
   ['badge'],
-  [],
+  ['click'],
 );
 
 Avatar.displayName = 'Avatar';
