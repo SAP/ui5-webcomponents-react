@@ -7,6 +7,7 @@ import type {
   NavigationLayoutDomRef,
   ResponsivePopoverDomRef,
   ShellBarPropTypes,
+  ShellBarSearchPropTypes,
   ToggleButtonPropTypes,
   UserMenuDomRef,
 } from '@ui5/webcomponents-react';
@@ -41,6 +42,7 @@ export function NLShellBar(props: NLShellBarProps) {
   const [assistantBtnPressed, setAssistantBtnPressed] = useState(false);
   const [notificationsPopoverOpen, setNotificationsPopoverOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [scopeData, setScopeData] = useState(_scopeData);
 
   const handleAssistantClick: ToggleButtonPropTypes['onClick'] = (e) => {
     setAssistantBtnPressed(e.currentTarget!.pressed);
@@ -66,6 +68,11 @@ export function NLShellBar(props: NLShellBarProps) {
   const handleProfileClick: ShellBarPropTypes['onProfileClick'] = (e) => {
     userMenuRef.current!.opener = e.detail.targetRef;
     setUserMenuOpen(true);
+  };
+
+  const handleSearchScopeChange: ShellBarSearchPropTypes['onScopeChange'] = (e) => {
+    const scopeText = e.detail.scope?.text === 'All' ? '' : e.detail.scope?.text?.toLowerCase();
+    setScopeData(_scopeData.filter((item) => !scopeText || item.scope === scopeText));
   };
 
   return (
@@ -112,6 +119,7 @@ export function NLShellBar(props: NLShellBarProps) {
             id="search-scope"
             showClearIcon
             placeholder="Search Apps, Products"
+            onScopeChange={handleSearchScopeChange}
             scopes={
               <>
                 <SearchScope text="All" selected />
@@ -146,7 +154,7 @@ export function NLShellBar(props: NLShellBarProps) {
 
 NLShellBar.displayName = 'NLShellBar';
 
-const scopeData = [
+const _scopeData = [
   { name: 'Laptop', scope: 'products' },
   { name: 'Leave Requests', scope: 'apps' },
   { name: 'Log work', scope: 'apps' },
