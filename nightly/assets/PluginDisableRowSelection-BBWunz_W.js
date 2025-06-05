@@ -1,0 +1,61 @@
+import{j as o}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as e}from"./index-B5Ip8tK9.js";import{I as n,F as m}from"./CommandsAndQueries-Dnz_Hw6e.js";import{M as p,C as s}from"./index-DukfgG46.js";import"./index-BWKPikEH.js";import"./index-DG4SW1Na.js";import"./Tag-CFnuOVXp.js";import"./index-U0ga5oGA.js";import"./index-B8m469-U.js";import"./Button-Bjd4zYvH.js";import"./jsx-runtime-2URiGFD4.js";import"./copy-CiPkc0hO.js";import"./WrappingType-BBpR8qCJ.js";import"./Title-BHqLOn3P.js";import{a as l}from"./AnalyticalTableHooks.stories-DSMYW70O.js";import"./preview-CXjsfKgV.js";import"./iframe-DwIyAsRF.js";import"./DocsRenderer-CFRXHY34-DiZSQ5cR.js";import"./react-18-SRpBHcoT.js";import"./index-BVR6w1bU.js";import"./Popover-C0YXxup5.js";import"./slot-_4yKMUwC.js";import"./PopupsCommon.css-Fn6w0Ixx.js";import"./event-strict-DgQLNDEV.js";import"./FocusableElements-CQV0UnrP.js";import"./isElementHidden-B4HqmI2E.js";import"./AccessibilityTextsHelper-4hgGqLyb.js";import"./CustomElementsScope-BI7irdrP.js";import"./Keys-CLyAIm0c.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-DtxVwfCt.js";import"./MediaRange-Bnzt26Xb.js";import"./toLowercaseEnumValue-C_8o5td_.js";import"./parameters-bundle.css-CKhNLE8L.js";import"./getEffectiveScrollbarStyle-zkSO3ShF.js";import"./index-D71WPoKU.js";import"./clsx-B-dksMZM.js";import"./useStylesheet-4DYJndCZ.js";import"./index-C4Jitp5p.js";import"./Label-XJ1zprNH.js";import"./i18n-CjR4HGlq.js";import"./i18n-defaults-D-4MAilP.js";import"./index-Bd-rK44S.js";import"./index-DQrDl5DZ.js";import"./Link-B2LlQwpl.js";import"./Icon-B0-3JSbm.js";import"./index-DVo4jJWd.js";import"./index-D3evOh0J.js";import"./Text-CA10hASc.js";import"./willShowContent-CZcfsNXp.js";import"./addCustomCSSWithScoping-CKnDw5_z.js";import"./index-YPb1U1C6.js";import"./BusyIndicator-DWZUs86e.js";import"./index-D4tId3DQ.js";import"./index-69BlU8QT.js";import"./AvatarSize-BtKTMFJ5.js";import"./employee-CRL-E5Mm.js";import"./index-C9pVJkR7.js";import"./I18nStore-CIGTIwFZ.js";import"./index-BkMq5NNM.js";import"./index-CXQShRbs.js";import"./index-DrFu-skq.js";import"./decline-Dy3AHuu2.js";import"./i18n-defaults-BJtDw6Mf.js";import"./information-CT1WFsrs.js";import"./information-BNPlHszt.js";import"./sys-enter-2-Dn3JsYB_.js";import"./sys-enter-2-CVLhpz1T.js";import"./alert-DsnWREGh.js";import"./sys-help-2-D2pBj4rZ.js";import"./Tooltips-B60tbUjG.js";import"./EventProvider-ChtD9rRX.js";import"./Friends500-CRbR9XAn.js";import"./AnalyticalTable.stories-vH2Y454J.js";import"./delete-CbJEEVk2.js";import"./edit-fmCeAAGt.js";import"./settings-fwE-dOdl.js";import"./NoData-D-AUQcB8.js";import"./IllustratedMessage-CYF8Pyrp.js";import"./i18n-defaults-DmnTJL0W.js";import"./parameters-bundle.css-BSPpStCH.js";import"./sapIllus-Dialog-NoData-FSL26r8i.js";import"./sapIllus-Scene-NoData-aisCUu4O.js";import"./sapIllus-Spot-NoData-eoL49zJv.js";import"./sapIllus-Dot-NoData-DBRN6YSI.js";import"./index-DaDxN_Dk.js";import"./index-yeeqD8T8.js";import"./ValueState-Bg0UWejw.js";import"./slim-arrow-down-Dc1pk-jW.js";import"./ListBoxItemGroupTemplate-6ItlCCEW.js";import"./ListItemGroup-CjFr5KrF.js";import"./DropIndicator-Crz-60Ks.js";import"./TabbableElements-XzXYKyvZ.js";import"./ComboBoxItemGroup-t6JlmkFw.js";import"./ListItemBaseTemplate-BPPHN762.js";import"./Token-DRaVrWjm.js";import"./ItemNavigation-kLVynq3E.js";import"./ScrollEnablement-PeSpYMsY.js";import"./animate-JylhYHXj.js";import"./List-B1HGNjAv.js";import"./TableUtils-lxe5yZEc.js";import"./getNormalizedTarget-C4mxORXI.js";import"./debounce-TTkz9ISH.js";import"./ListItemStandard-pShYMP-O.js";import"./ListItemTemplate-BCkPYKiU.js";import"./ListItemAdditionalText.css-L5JIq5iL.js";import"./slim-arrow-right-DT2xPcsT.js";import"./RadioButton-D9vNEwqD.js";import"./CheckBox-DKGhqTQQ.js";import"./accept-D7J2cWEB.js";import"./ResponsivePopover-YyQcMm4b.js";import"./Dialog-BTP8el_I.js";import"./ResponsivePopoverCommon.css-CBuVONF8.js";import"./Suggestions.css-D1V-E56k.js";import"./ToggleButton-DGL61DIT.js";import"./Input-CN6_PB5E.js";import"./ValueStateMessage.css-CZhOTFvx.js";import"./SuggestionItem-DO_w18Vr.js";import"./index-BfYareqh.js";import"./Option-C5zTtcc2.js";import"./index-B6VFnydU.js";import"./SegmentedButton-Cdgn_CXD.js";import"./index-CdEvPR6v.js";import"./Select-Cy3bmlxW.js";import"./InvisibleMessage-DsEu8Xwr.js";import"./slim-arrow-down-DkEOMp-m.js";import"./i18n-defaults-DtGc6EyS.js";import"./useIsRTL-BTdBrf9I.js";import"./directionChange-BzugKGnv.js";import"./index-4gPPBUqB.js";import"./IconDesign-DXd8PPVF.js";import"./filter-Bl4U8TOj.js";import"./group-2-qhKCxIXF.js";import"./sort-descending-eyJ5M2BX.js";import"./ThemingParameters-BB3UHRT7.js";import"./index-CmiCo9qD.js";import"./stopPropagation-BJWsenK5.js";import"./index-B-dAkJLu.js";import"./utils-Dlhtd8PN.js";import"./index-Km-j2IIh.js";import"./index-9rVnkHMU.js";import"./ListItemCustom-C4pbdwm8.js";import"./index-CdPHtBM5.js";import"./navigation-down-arrow-DqvyQN5N.js";import"./navigation-right-arrow-3TUNYwih.js";import"./navigation-right-arrow-C3Ap_9YQ.js";import"./useCurrentTheme-mFR3DIJy.js";import"./IndicationColor-DVw-fSM_.js";import"./index-BmjASa8E.js";import"./debounce-D7W5PopO.js";import"./index-DX2zFHgp.js";import"./index-CL0CaqN6.js";function r(i){const t={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...e(),...i.components};return o.jsxs(o.Fragment,{children:[o.jsx(p,{title:"Data Display / AnalyticalTable / Plugin Hooks / useRowDisableSelection"}),`
+`,o.jsx(t.h1,{id:"analyticaltable-plugin-userowdisableselection",children:"AnalyticalTable Plugin: useRowDisableSelection"}),`
+`,o.jsx(n,{moduleNames:["AnalyticalTableHooks"],packageName:"@ui5/webcomponents-react"}),`
+`,o.jsx("hr",{}),`
+`,o.jsxs(t.p,{children:[o.jsx(t.strong,{children:"Deprecated!"})," It is not recommended to disable table rows, mainly because of the following reasons:"]}),`
+`,o.jsxs(t.ul,{children:[`
+`,o.jsx(t.li,{children:"Users are not informed why items cannot be selected."}),`
+`,o.jsx(t.li,{children:"ARIA lacks built-in support for selective item selection, complicating accessibility."}),`
+`,o.jsx(t.li,{children:"Consistency to other applications which do not offer disabled items."}),`
+`]}),`
+`,o.jsx("hr",{}),`
+`,o.jsxs(t.p,{children:["With the ",o.jsx(t.code,{children:"useRowDisableSelection"})," it's possible to disable the selection of specific rows. It can receive two types of parameters:"]}),`
+`,o.jsxs(t.ul,{children:[`
+`,o.jsxs(t.li,{children:[o.jsx(t.code,{children:"string"}),": Defines the key in the dataset for disabling rows. If the value of the key is ",o.jsx(t.code,{children:"true"}),", then the row will not be selectable."]}),`
+`,o.jsxs(t.li,{children:[o.jsx(t.code,{children:"Function(row) => boolean"}),": Programmatically disable rows for selection. The function receives the current row as parameter."]}),`
+`]}),`
+`,o.jsxs(t.p,{children:[o.jsx(t.strong,{children:"Note:"}),' The "Select All" checkbox is not available with this hook.']}),`
+`,o.jsxs(t.p,{children:[o.jsx(t.strong,{children:"Note:"})," Using this hook in combination with the ",o.jsx(t.code,{children:"useIndeterminateRowSelection"})," hook is not supported!"]}),`
+`,o.jsx(s,{sourceState:"none",of:l}),`
+`,o.jsx(t.h2,{id:"example",children:"Example"}),`
+`,o.jsx(t.pre,{children:o.jsx(t.code,{className:"language-jsx",children:`const disableRowFunc = (row) => row.original.age < 40;
+const tableHooks = [
+  AnalyticalTableHooks.useRowDisableSelection(disableRowFunc),
+];
+const WithFunctionParameter = () => {
+
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      selectionMode={AnalyticalTableSelectionMode.Multiple}
+      tableHooks={tableHooks}
+    />
+  );
+};
+
+`})}),`
+`,o.jsx(t.pre,{children:o.jsx(t.code,{className:"language-jsx",children:`const data = [
+  {
+    name: "Peter Franco",
+    age: 22,
+    //...
+    disableSelection: Math.random() < 0.5,
+  },
+  //...
+];
+const tableHooks = [
+  AnalyticalTableHooks.useRowDisableSelection("disableSelection"),
+];
+const WithStringParameter = () => {
+  return (
+    <AnalyticalTable
+      data={data}
+      columns={columns}
+      selectionMode={AnalyticalTableSelectionMode.Multiple}
+      tableHooks={tableHooks}
+    />
+  );
+};
+`})}),`
+`,o.jsx(m,{})]})}function ti(i={}){const{wrapper:t}={...e(),...i.components};return t?o.jsx(t,{...i,children:o.jsx(r,{...i})}):r(i)}export{ti as default};
