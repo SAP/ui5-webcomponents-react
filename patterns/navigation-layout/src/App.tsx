@@ -1,12 +1,18 @@
 import NavigationLayoutMode from '@ui5/webcomponents-fiori/dist/types/NavigationLayoutMode.js';
 import { NavigationLayout, Text, Title } from '@ui5/webcomponents-react';
+import type { ReactNode } from 'react';
 import { useState } from 'react';
 import { NLShellBar } from './NLShellBar.tsx';
 import { NLSideNavigation } from './NLSideNavigation.tsx';
 
-function App() {
+interface AppProps {
+  content?: ReactNode;
+}
+
+function App({ content }: AppProps) {
   const [mode, setMode] = useState<NavigationLayoutMode>(NavigationLayoutMode.Auto);
   const [contentTitle, setContentTitle] = useState('Home');
+
   return (
     <>
       <NavigationLayout
@@ -18,7 +24,7 @@ function App() {
         <div className="mainContent">
           <Title>{contentTitle}</Title>
           <br />
-          <Text>Content...</Text>
+          {content ?? <Text>Content...</Text>}
         </div>
       </NavigationLayout>
     </>

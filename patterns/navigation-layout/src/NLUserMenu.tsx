@@ -5,6 +5,7 @@ import type { MessageBoxPropTypes, UserMenuDomRef, UserMenuPropTypes } from '@ui
 import { MessageBox, Text, UserMenu, UserMenuAccount, UserMenuItem } from '@ui5/webcomponents-react';
 import type { Dispatch, SetStateAction } from 'react';
 import { forwardRef, useState } from 'react';
+import avatarPng from './assets/avatar.png';
 import { NLUserSettingsDialog } from './UserSettingsDialog/NLUserSettingsDialog.tsx';
 
 interface NLUserMenuProps extends Pick<UserMenuPropTypes, 'open'> {
@@ -70,7 +71,7 @@ export const NLUserMenu = forwardRef<UserMenuDomRef, NLUserMenuProps>((props, re
           <>
             <UserMenuAccount
               loading={accountsLoading}
-              avatarSrc="avatar.png"
+              avatarSrc={avatarPng}
               titleText="Alain Chevalier 1"
               subtitleText="alian.chevalier@sap.com"
               description="Delivery Manager, SAP SE"

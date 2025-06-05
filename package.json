@@ -64,6 +64,7 @@
     "@eslint/compat": "1.2.9",
     "@eslint/js": "9.27.0",
     "@semantic-release/github": "11.0.3",
+    "@stackblitz/sdk": "^1.11.0",
     "@testing-library/cypress": "10.0.3",
     "@types/jscodeshift": "17.3.0",
     "@types/node": "22.15.21",

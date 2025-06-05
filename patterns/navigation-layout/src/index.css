@@ -11,6 +11,8 @@ body {
 }
 
 .mainContent {
+  box-sizing: border-box;
+  height: 100%;
   padding: var(--sapContent_Gap);
 }
 
@@ -49,7 +51,6 @@ body {
 }
 
 .notificationsMessageStrip {
-  display: none;
   margin: 0.5rem;
   width: auto;
 }

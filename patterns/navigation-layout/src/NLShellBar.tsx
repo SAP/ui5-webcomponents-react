@@ -25,6 +25,8 @@ import {
 } from '@ui5/webcomponents-react';
 import type { Dispatch, SetStateAction } from 'react';
 import { useRef, useState } from 'react';
+import avatarPng from './assets/avatar.png';
+import SapLogoSvg from './assets/sap-logo.svg';
 import { NLUserMenu } from './NLUserMenu.tsx';
 import { NotificationsPopover } from './NotificationsPopover.tsx';
 
@@ -86,7 +88,7 @@ export function NLShellBar(props: NLShellBarProps) {
             onClick={handleMenuBtnClick}
           />
         }
-        logo={<img src="sap-logo.svg" alt="SAP Logo" />}
+        logo={<img src={SapLogoSvg} alt="SAP Logo" />}
         content={
           <>
             <Tag design="Set2" colorScheme="7" data-hide-order="2">
@@ -125,7 +127,7 @@ export function NLShellBar(props: NLShellBarProps) {
         }
         profile={
           <Avatar>
-            <img src="avatar.png" alt="User Avatar" />
+            <img src={avatarPng} alt="User Avatar" />
           </Avatar>
         }
       >
