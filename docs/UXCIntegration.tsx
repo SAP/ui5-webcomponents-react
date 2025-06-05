@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@ui5/webcomponents-react';
+import { MessageStrip, ThemeProvider } from '@ui5/webcomponents-react';
 import UXCIntegrationApp from '../patterns/navigation-layout/src/App.js';
 import '../patterns/navigation-layout/src/index.css';
 import { EmbeddedStackBlitz } from '@/docs/EmbeddedStackBlitz.js';
@@ -8,7 +8,15 @@ function UXCIntegration() {
     <div style={{ height: '80vh', position: 'relative' }}>
       <ThemeProvider>
         <UXCIntegrationApp
-          content={<EmbeddedStackBlitz repoPath="SAP/ui5-webcomponents-react/tree/main/patterns/navigation-layout" />}
+          content={
+            <>
+              <MessageStrip hideCloseButton style={{ marginBlockEnd: '0.25rem' }}>
+                For a full-page view of this pattern, click <b>&#34;Fork on StackBlitz&#34;</b> below to open it in the
+                standalone StackBlitz editor.
+              </MessageStrip>
+              <EmbeddedStackBlitz repoPath="SAP/ui5-webcomponents-react/tree/main/patterns/navigation-layout" />
+            </>
+          }
         />
       </ThemeProvider>
     </div>
