@@ -155,3 +155,10 @@ export interface ObjectPageDomRef extends HTMLDivElement {
    */
   toggleHeaderArea: (snapped?: boolean) => void;
 }
+
+export type HandleOnSectionSelectedType = (
+  targetEvent: Event | Record<string, never>,
+  newSelectionSectionId: string,
+  index: number | string,
+  section: HTMLElement,
+) => void;
