@@ -25,8 +25,14 @@ import type { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection/inde
 import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { classNames, styleData } from './ObjectPage.module.css.js';
 import { getSectionById, getSectionElementById } from './ObjectPageUtils.js';
-import type { ObjectPageDomRef, ObjectPagePropTypes, ObjectPageTitlePropsWithDataAttributes } from './types/index.js';
+import type {
+  HandleOnSectionSelectedType,
+  ObjectPageDomRef,
+  ObjectPagePropTypes,
+  ObjectPageTitlePropsWithDataAttributes,
+} from './types/index.js';
 import { useHandleTabSelect } from './useHandleTabSelect.js';
+import { useOnScrollEnd } from './useOnScrollEnd.js';
 
 const ObjectPageCssVariables = {
   headerDisplay: '--_ui5wcr_ObjectPage_header_display',
@@ -76,6 +82,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState<string | undefined>(
     selectedSectionId ?? firstSectionId,
   );
+  const [tabSelectId, setTabSelectId] = useState<null | string>(null);
 
   const isProgrammaticallyScrolled = useRef(false);
   const [componentRef, objectPageRef] = useSyncRef(ref);
@@ -98,6 +105,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const [currentTabModeSection, setCurrentTabModeSection] = useState(null);
   const [toggledCollapsedHeaderWasVisible, setToggledCollapsedHeaderWasVisible] = useState(false);
   const sections = mode === ObjectPageMode.IconTabBar ? currentTabModeSection : children;
+  const scrollEndHandler = useOnScrollEnd({ objectPageRef, setTabSelectId });
 
   useEffect(() => {
     const currentSection =
@@ -232,7 +240,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   };
 
   // section was selected by clicking on the tab bar buttons
-  const handleOnSectionSelected = (targetEvent, newSelectionSectionId, index: number | string, section) => {
+  const handleOnSectionSelected: HandleOnSectionSelectedType = (targetEvent, newSelectionSectionId, index, section) => {
     isProgrammaticallyScrolled.current = true;
     debouncedOnSectionChange.cancel();
     setSelectedSubSectionId(undefined);
@@ -242,6 +250,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       }
       return newSelectionSectionId;
     });
+    setTabSelectId(newSelectionSectionId);
     scrollEvent.current = targetEvent;
     fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
   };
@@ -527,6 +536,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const onObjectPageScroll: UIEventHandler<HTMLDivElement> = useCallback(
     (e) => {
       const target = e.target as HTMLDivElement;
+      scrollEndHandler(e);
       if (!isToggledRef.current) {
         isToggledRef.current = true;
       }
@@ -583,8 +593,8 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     debouncedOnSectionChange,
     scrollTimeout,
     setSelectedSubSectionId,
+    setTabSelectId,
   });
-
   const objectPageStyles: CSSProperties = {
     ...style,
   };
@@ -650,7 +660,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
             headerContentVisible={headerArea && headerCollapsed !== true}
             hidePinButton={!!hidePinButton}
             headerPinned={headerPinned}
-            accessibilityAttributes={accessibilityAttributes}
+            accessibilityAttributes={accessibilityAttributes?.objectPageAnchorBar}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
             setHeaderPinned={setHeaderPinned}
             onHoverToggleButton={onHoverToggleButton}
@@ -691,7 +701,11 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
                   data-index={index}
                   data-section-id={section.props.id}
                   text={section.props.titleText}
-                  selected={internalSelectedSectionId === section.props?.id || undefined}
+                  selected={
+                    (tabSelectId && tabSelectId === section.props?.id) ||
+                    (!tabSelectId && internalSelectedSectionId === section.props?.id) ||
+                    undefined
+                  }
                   items={subTabs.map((item) => {
                     if (!isValidElement(item)) {
                       return null;

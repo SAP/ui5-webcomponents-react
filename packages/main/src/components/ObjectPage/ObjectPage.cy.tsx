@@ -46,6 +46,8 @@ import {
 } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
+const arbitraryCharsId = `~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`;
+
 describe('ObjectPage', () => {
   [ObjectPageMode.Default, ObjectPageMode.IconTabBar].forEach((mode) => {
     it(`dynamic children selection (mode: ${mode})`, () => {
@@ -360,16 +362,10 @@ describe('ObjectPage', () => {
   it('scroll to sections - default mode', () => {
     document.body.style.margin = '0px';
     cy.mount(
-      <ObjectPage
-        data-testid="op"
-        titleArea={DPTitle}
-        headerArea={DPContent}
-        style={{ height: '100vh', scrollBehavior: 'auto' }}
-      >
+      <ObjectPage data-testid="op" titleArea={DPTitle} headerArea={DPContent} style={{ height: '100vh' }}>
         {OPContent}
       </ObjectPage>,
     );
-
     cy.wait(200);
 
     // first titleText should never be displayed (not.be.visible doesn't work here - only invisible for sighted users)
@@ -382,6 +378,9 @@ describe('ObjectPage', () => {
     cy.findByText('Test').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
+    cy.get('[data-section-id="test"]').shouldNeverHaveAttribute('selected');
+    cy.get('[data-section-id="personal"]').shouldNeverHaveAttribute('selected');
+    cy.get(`[ui5-tab][data-index="3"]`).should('have.attr', 'selected');
     cy.findByText('Employment').should('be.visible');
 
     cy.wait(200);
@@ -404,6 +403,8 @@ describe('ObjectPage', () => {
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
     cy.realPress('Enter');
+    cy.get('[data-section-id="goals"]').shouldNeverHaveAttribute('selected');
+    cy.get('[data-section-id="personal"]').shouldNeverHaveAttribute('selected');
     cy.findByText('Job Relationship').should('be.visible');
 
     cy.mount(
@@ -412,7 +413,7 @@ describe('ObjectPage', () => {
         titleArea={DPTitle}
         headerArea={DPContent}
         footerArea={Footer}
-        style={{ height: '100vh', scrollBehavior: 'auto' }}
+        style={{ height: '100vh' }}
       >
         {OPContent}
       </ObjectPage>,
@@ -433,11 +434,15 @@ describe('ObjectPage', () => {
     cy.wait(200);
     //fallback click
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Employment').realClick();
+    cy.get('[data-section-id="test"]').shouldNeverHaveAttribute('selected');
+    cy.get('[data-section-id="personal"]').shouldNeverHaveAttribute('selected');
     cy.findByTestId('footer').should('be.visible');
     cy.findByText('Employment').should('be.visible');
     cy.findByText('Job Information').should('be.visible');
 
     cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+    cy.get('[data-section-id="test"]').shouldNeverHaveAttribute('selected', 300);
+    cy.get('[data-section-id="personal"]').shouldNeverHaveAttribute('selected');
     cy.findByText('Test').should('be.visible');
     cy.findByTestId('footer').should('be.visible');
 
@@ -447,6 +452,8 @@ describe('ObjectPage', () => {
     cy.realPress('ArrowDown');
     cy.realPress('ArrowDown');
     cy.realPress('Enter');
+    cy.get('[data-section-id="personal"]').shouldNeverHaveAttribute('selected');
+    cy.get(`[ui5-tab][data-index="3"]`).should('have.attr', 'selected');
     // wait for scroll
     cy.wait(200);
     cy.findByText('Job Relationship').should('be.visible');
@@ -459,7 +466,7 @@ describe('ObjectPage', () => {
         titleArea={DPTitle}
         headerArea={DPContent}
         footerArea={Footer}
-        style={{ height: '100vh', scrollBehavior: 'auto' }}
+        style={{ height: '100vh' }}
       >
         {OPContent}
         <ObjectPageSection aria-label="Long Section" id="long-section" titleText="Long Section">
@@ -487,6 +494,9 @@ describe('ObjectPage', () => {
     cy.wait(50);
     cy.realPress('ArrowDown');
     cy.realPress('Enter');
+    cy.get('[data-section-id="test"]').shouldNeverHaveAttribute('selected');
+    cy.get('[data-section-id="personal"]').shouldNeverHaveAttribute('selected');
+    cy.get(`[ui5-tab][data-index="3"]`).shouldNeverHaveAttribute('selected');
     // wait for scroll
     cy.wait(200);
     cy.findByText('Start SubSection2').should('be.visible');
@@ -501,7 +511,7 @@ describe('ObjectPage', () => {
         titleArea={DPTitle}
         headerArea={DPContent}
         footerArea={Footer}
-        style={{ height: '100vh', scrollBehavior: 'auto' }}
+        style={{ height: '100vh' }}
       >
         {OPContent}
         <ObjectPageSection aria-label="Long Section" id="long-section" titleText="Long Section">
@@ -1164,7 +1174,7 @@ describe('ObjectPage', () => {
         .its('secondCall.args[0].detail')
         .should('deep.equal', {
           sectionIndex: 3,
-          sectionId: `~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`,
+          sectionId: arbitraryCharsId,
           subSectionId: 'employment-job-information',
         });
       cy.get('@sectionChangeSpy').should('not.have.been.called');
@@ -1358,6 +1368,70 @@ describe('ObjectPage', () => {
     });
   });
 
+  it('accessibilityAttributes', () => {
+    cy.mount(
+      <ObjectPage data-testid="op" titleArea={DPTitle} headerArea={DPContent} footerArea={Footer}>
+        {OPContent}
+      </ObjectPage>,
+    );
+
+    cy.get('header').should('not.have.attr', 'role');
+    cy.get('header').should('have.attr', 'aria-roledescription', 'Object Page header');
+    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should(($el) => {
+      expect($el[0].accessibilityAttributes.expanded).to.equal(true);
+    });
+    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should(
+      'have.attr',
+      'accessible-name',
+      'Collapse Header',
+    );
+    cy.get('section[data-component-name="ObjectPageAnchorBar"]').should('not.have.attr', 'role');
+    cy.get('footer').should('not.have.attr', 'role');
+
+    const accessibilityAttributes = {
+      objectPageTopHeader: {
+        role: 'banner',
+        ariaRoledescription: 'ariaRoledescription',
+      },
+      objectPageAnchorBar: {
+        expandButton: {
+          expanded: undefined,
+          accessibleName: '',
+        },
+        role: 'not-a-real-role',
+      },
+      objectPageFooterArea: {
+        role: 'contentinfo',
+      },
+    };
+
+    cy.mount(
+      <ObjectPage
+        data-testid="op"
+        titleArea={DPTitle}
+        headerArea={DPContent}
+        footerArea={Footer}
+        accessibilityAttributes={accessibilityAttributes}
+      >
+        {OPContent}
+      </ObjectPage>,
+    );
+
+    cy.get('header').should('have.attr', 'role', 'banner');
+    cy.get('header').should('have.attr', 'aria-roledescription', 'ariaRoledescription');
+    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should(($el) => {
+      const attrs = $el[0].accessibilityAttributes;
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      expect(attrs).to.exist;
+      expect(attrs).to.haveOwnProperty('expanded');
+      expect(attrs.expanded).to.equal(undefined);
+    });
+    cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should('have.attr', 'accessible-name', '');
+    cy.get('section[data-component-name="ObjectPageAnchorBar"]').should('have.attr', 'role', 'not-a-real-role');
+    cy.get('footer').should('have.attr', 'role', 'contentinfo');
+  });
+
   cypressPassThroughTestsFactory(ObjectPage);
 });
 
@@ -1441,7 +1515,7 @@ const OPContent = [
       </div>
     </ObjectPageSubSection>
   </ObjectPageSection>,
-  <ObjectPageSection key="3" titleText="Employment" id={`~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`} aria-label="Employment">
+  <ObjectPageSection key="3" titleText="Employment" id={arbitraryCharsId} aria-label="Employment">
     <ObjectPageSubSection titleText="Job Information" id="employment-job-information" aria-label="Job Information">
       <div style={{ height: '100px', width: '100%', background: 'orange' }}>
         <span data-testid="employment-job-information-content">employment-job-information-content</span>
