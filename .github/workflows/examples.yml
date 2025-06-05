@@ -7,10 +7,12 @@ on:
     paths:
       - 'examples/**/*'
       - 'templates/**/*'
+      - 'patterns/navigation-layout/**/*'
   pull_request:
     paths:
       - 'examples/**/*'
       - 'templates/**/*'
+      - 'patterns/navigation-layout/**/*'
 
 jobs:
   examples:
@@ -54,6 +56,36 @@ jobs:
           - nextjs-app
           - nextjs-pages
           - vite-ts
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install
+        run: npm ci
+        working-directory: templates/${{ matrix.path }}
+
+      - name: Build
+        run: npm run build
+        working-directory: templates/${{ matrix.path }}
+
+      - name: Test
+        run: npm run test --if-present
+        working-directory: templates/${{ matrix.path }}
+
+      - name: ESLint
+        run: npm run lint --if-present
+        working-directory: templates/${{ matrix.path }}
+
+  patterns:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path:
+          - patterns/navigation-layout
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
