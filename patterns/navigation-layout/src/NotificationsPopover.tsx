@@ -85,12 +85,14 @@ export const NotificationsPopover = forwardRef<ResponsivePopoverDomRef, Notifica
           content: `This is dynamically loaded notification #${newIndex}.`,
         };
       });
+      //@ts-expect-error: `items` are available but private
       const focusIndex = e.target.items.length;
       setGroupLoading(true);
       setTimeout(() => {
         setTodayNotifications((prev) => [...prev, ...nextItems]);
         setGroupLoading(false);
         setTimeout(() => {
+          //@ts-expect-error: `items` are available but private
           e.target.items[focusIndex].focus();
         }, 500);
       }, 2000);
