@@ -85,7 +85,7 @@ jobs:
     strategy:
       matrix:
         path:
-          - patterns/navigation-layout
+          - navigation-layout
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
@@ -96,16 +96,16 @@ jobs:
 
       - name: Install
         run: npm ci
-        working-directory: templates/${{ matrix.path }}
+        working-directory: patterns/${{ matrix.path }}
 
       - name: Build
         run: npm run build
-        working-directory: templates/${{ matrix.path }}
+        working-directory: patterns/${{ matrix.path }}
 
       - name: Test
         run: npm run test --if-present
-        working-directory: templates/${{ matrix.path }}
+        working-directory: patterns/${{ matrix.path }}
 
       - name: ESLint
         run: npm run lint --if-present
-        working-directory: templates/${{ matrix.path }}
+        working-directory: patterns/${{ matrix.path }}
