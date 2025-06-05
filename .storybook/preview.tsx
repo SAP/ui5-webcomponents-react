@@ -144,6 +144,7 @@ const preview: Preview = {
           'Knowledge Base',
           'Testing with Cypress',
           ['Setup', 'Commands', 'Queries'],
+          'Patterns',
           'Charts',
           ['Docs'],
           'Data Display',
