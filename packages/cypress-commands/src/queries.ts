@@ -65,18 +65,13 @@ Cypress.Commands.addQuery('findToolbarButtonByText', function (text, options) {
       const err = `findToolbarButtonByText() needs to be chained to a \`ui5-toolbar\`, or not be chained at all.`;
       throw new TypeError(err);
     }
-    const container = subject ? [subject[0]] : document.querySelectorAll('[ui5-toolbar]');
+    const containers = subject ? [subject[0]] : document.querySelectorAll('[ui5-toolbar]');
 
     const toolbarBtns: HTMLElement[] = [];
-    container.forEach((el) => {
+    containers.forEach((el) => {
       if (el) {
-        const toolbarDom = el.getDomRef();
-        const buttons = Cypress.$(toolbarDom).find('[ui5-button]');
-        const matchingButtons = buttons.filter(function () {
-          return Cypress.$(this).text() === text;
-        });
-
-        toolbarBtns.push(...matchingButtons);
+        const buttons = el.querySelectorAll(`[ui5-toolbar-button][text="${text}"]`) as HTMLElement[];
+        buttons.forEach((btn) => toolbarBtns.push(btn));
       }
     });
 
@@ -87,7 +82,7 @@ Cypress.Commands.addQuery('findToolbarButtonByText', function (text, options) {
 
     let toolbarBtn = toolbarBtns[0];
     if (options?.queryShadowButton) {
-      toolbarBtn = toolbarBtn.shadowRoot!.querySelector('button')!;
+      toolbarBtn = toolbarBtn.shadowRoot!.querySelector('[ui5-button]')!.shadowRoot!.querySelector('button')!;
     }
 
     return Cypress.$(toolbarBtn);

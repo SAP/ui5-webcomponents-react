@@ -303,24 +303,54 @@ describe('UI5 Web Components - Child Commands', () => {
   });
 
   it('findToolbarButtonByText', () => {
+    const clickSpy = cy.spy().as('click');
     cy.mount(
       <>
         <Toolbar>
-          <ToolbarButton text="TBB1" />
-          <ToolbarButton text="TBB2" />
+          <ToolbarButton text="TBB1" onClick={clickSpy} />
+          <ToolbarButton text="TBB2" onClick={clickSpy} />
         </Toolbar>
         <Toolbar>
-          <ToolbarButton text="TBB3" />
+          <ToolbarButton text="TBB3" onClick={clickSpy} />
         </Toolbar>
         <Toolbar>
-          <ToolbarButton text="TBB4" style={{ display: 'none' }} />
+          <ToolbarButton text="TBB4" onClick={clickSpy} style={{ display: 'none' }} />
         </Toolbar>
       </>,
     );
 
-    cy.findToolbarButtonByText('TBB1').should('be.visible');
-    cy.findToolbarButtonByText('TBB2').should('be.visible');
-    cy.findToolbarButtonByText('TBB3').should('be.visible');
+    cy.findToolbarButtonByText('TBB1', { queryShadowButton: true }).should('be.visible').and('match', 'button').click();
+    cy.findToolbarButtonByText('TBB2').should('be.visible').click();
+    cy.findToolbarButtonByText('TBB3').should('be.visible').click();
     cy.findToolbarButtonByText('TBB3').should('exist').not('be.visible');
+
+    cy.get('@click').should('have.callCount', 3);
+
+    cy.mount(
+      <>
+        <Toolbar data-testid="tb1">
+          <ToolbarButton text="TBB1" onClick={clickSpy} />
+          <ToolbarButton text="TBB2" onClick={clickSpy} />
+        </Toolbar>
+        <Toolbar data-testid="tb2">
+          <ToolbarButton text="TBB1" onClick={clickSpy} />
+        </Toolbar>
+        <Toolbar data-testid="tb3">
+          <ToolbarButton text="TBB1" onClick={clickSpy} style={{ display: 'none' }} />
+        </Toolbar>
+      </>,
+    );
+
+    cy.findByTestId('tb1')
+      .findToolbarButtonByText('TBB1', { queryShadowButton: true })
+      .should('be.visible')
+      .and('have.length', 1)
+      .and('match', 'button')
+      .click();
+    cy.findByTestId('tb1').findToolbarButtonByText('TBB2').should('be.visible').and('have.length', 1).click();
+    cy.findByTestId('tb2').findToolbarButtonByText('TBB1').should('be.visible').and('have.length', 1).click();
+    cy.findByTestId('tb3').findToolbarButtonByText('TBB1').should('exist').not('be.visible').and('have.length', 1);
+
+    cy.get('@click').should('have.callCount', 6);
   });
 });

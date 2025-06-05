@@ -169,6 +169,9 @@ interface TablePropTypes
   /**
    * Fired when an interactive row is clicked.
    *
+   * **Note:** This event is not fired if the `behavior` property of the selection component is set to `RowOnly`.
+   * In that case, use the `change` event of the selection component instead.
+   *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
    * | ❌|✅|
@@ -179,26 +182,26 @@ interface TablePropTypes
 /**
  * The `Table` component provides a set of sophisticated features for displaying and dealing with vast amounts of data in a responsive manner.
  * To render the `Table`, you need to define the columns and rows. You can use the provided `TableHeaderRow` and `TableRow` components for this purpose.
- * 
+ *
  * ### Features
- * 
+ *
  * The `Table` can be enhanced in its functionalities by applying different features.
  * Features can be slotted into the `features` slot, to enable them in the component.
  * Features need to be imported separately, as they are not enabled by default.
- * 
+ *
  * The following features are currently available:
- * 
+ *
  * * [TableSelection](../TableSelection) - adds selection capabilities to the table
  * * [TableGrowing](../TableGrowing) - provides growing capabilities to load more data
- * 
+ *
  * ### Keyboard Handling
- * 
+ *
  * This component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].
  * In order to use this functionality, you need to import the following module:
  * `import "@ui5/webcomponents-base/dist/features/F6Navigation.js"`
- * 
+ *
  * Furthermore, you can interact with `Table` via the following keys:
- * 
+ *
  * If the focus is on a row, the following keyboard shortcuts are available:
  * * <kbd>Down</kbd> - Navigates down
  * * <kbd>Up</kbd> - Navigates up
@@ -212,8 +215,8 @@ interface TablePropTypes
  * * <kbd>F2</kbd> - Focuses the first tabbable element in the row
  * * <kbd>F7</kbd> - If focus position is remembered, moves focus to the corresponding focus position row, otherwise to the first tabbable element within the row
  * * <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table
- * 
- * 
+ *
+ *
  * If the focus is on a cell, the following keyboard shortcuts are available:
  * * <kbd>Down</kbd> - Navigates down
  * * <kbd>Up</kbd> - Navigates up
@@ -227,13 +230,13 @@ interface TablePropTypes
  * * <kbd>Enter</kbd> - Focuses the first tabbable cell content
  * * <kbd>F7</kbd> - If the focus is on an interactive element inside a row, moves focus to the corresponding row and remembers the focus position of the element within the row
  * * <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table
- * 
- * 
+ *
+ *
  * If the focus is on an interactive cell content, the following keyboard shortcuts are available:
  * * <kbd>Down</kbd> - Move the focus to the interactive element in the same column of the previous row, unless the focused element prevents the default
  * * <kbd>Up</kbd> - Move the focus to the interactive element in the same column of the next row, unless the focused element prevents the default
  * * <kbd>[Shift]Tab</kbd> - Move the focus to the element in the tab chain
- * 
+ *
  * \
  * `import "@ui5/webcomponents/dist/TableRow.js";` (`TableRow`)\
  * `import "@ui5/webcomponents/dist/TableCell.js";` (`TableCell`)\
@@ -243,13 +246,7 @@ interface TablePropTypes
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
  * @since [2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of __@ui5/webcomponents__.
- * @experimental This Table web component is available since 2.0 and has been newly implemented to provide better screen reader and keyboard handling support.
-Currently, it's considered experimental as its API is subject to change.
-This Table replaces the previous Table web component, that has been part of **@ui5/webcomponents** version 1.x.
-For compatibility reasons, we moved the previous Table implementation to the **@ui5/webcomponents-compat** package
-and will be maintained until the new Table is experimental.
-Keep in mind that you can use either the compat/Table, or the main/Table - you can't use them both as they both define the `ui5-table` tag name.
-*/
+ */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
   'ui5-table',
   ['accessibleName', 'accessibleNameRef', 'loadingDelay', 'noDataText', 'overflowMode', 'rowActionCount'],
