@@ -2,8 +2,6 @@ import { addons } from '@storybook/manager-api';
 import { Fiori4ReactTheme } from './theme';
 
 addons.setConfig({
-  //todo: check error
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   theme: Fiori4ReactTheme,
   /**
    * show story component as full screen

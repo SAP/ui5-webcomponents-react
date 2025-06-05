@@ -84,6 +84,7 @@ declare global {
        * @param text text of the ui5-option that should be clicked
        * @param options ClickOptions
        *
+       * @deprecated This command is deprecated. Please use `clickDropdownMenuItemByText` instead.
        *
        * @example cy.get('[ui5-select]').clickUi5SelectOptionByText('Option2');
        */
@@ -94,7 +95,7 @@ declare global {
        *
        * __Note:__ The select popover must be visible, otherwise it can lead to unwanted side effects.
        *
-       * @deprecated: This command is deprecated. Please use `clickDropdownMenuItem` instead.
+       * @deprecated This command is deprecated. Please use `clickDropdownMenuItem` instead.
        *
        * @example cy.get('[ui5-option]').clickUi5SelectOption();
        */
@@ -208,6 +209,14 @@ Cypress.Commands.add('clickUi5ListItemByText', { prevSubject: 'optional' }, (sub
 });
 
 Cypress.Commands.add('clickUi5SelectOptionByText', { prevSubject: 'element' }, (subject, text, options = {}) => {
+  Cypress.log({
+    name: 'Deprecation',
+    message: ['`clickUi5SelectOptionByText` is deprecated! Please use `clickDropdownMenuItemByText` instead.'],
+    consoleProps: () => ({
+      deprecated: 'clickUi5SelectOptionByText',
+      replacement: 'clickDropdownMenuItemByText',
+    }),
+  });
   cy.wrap(subject)
     .contains(text)
     .then(($option) => {
@@ -217,6 +226,14 @@ Cypress.Commands.add('clickUi5SelectOptionByText', { prevSubject: 'element' }, (
 });
 
 Cypress.Commands.add('clickUi5SelectOption', { prevSubject: 'element' }, (subject, options = {}) => {
+  Cypress.log({
+    name: 'Deprecation',
+    message: ['`clickUi5SelectOption` is deprecated! Please use `clickDropdownMenuItem` instead.'],
+    consoleProps: () => ({
+      deprecated: 'clickUi5SelectOption',
+      replacement: 'clickDropdownMenuItem',
+    }),
+  });
   cy.wrap(subject).then(($option) => {
     // @ts-expect-error: cannot set $option to use OptionDomRef
     const domRef = $option.get(0).getDomRef();

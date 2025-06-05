@@ -17,12 +17,14 @@ If this key is found on the original data row, and it is `true`, this row will b
 <Canvas sourceState="none" of={ComponentStories.PluginManualRowSelect} />
 
 ```jsx
+// you could also omit the `'isSelected'`, as this is the default value
+const tableHooks = [AnalyticalTableHooks.useManualRowSelect('isSelected')]; // should be memoized
+
 <AnalyticalTable
   selectionMode={AnalyticalTableSelectionMode.Multiple}
   data={data}
   columns={columns}
-  // you could also omit the `'isSelected'`, as this is the default value
-  tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}
+  tableHooks={tableHooks}
 />
 ```
 

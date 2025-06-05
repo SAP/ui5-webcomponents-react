@@ -418,15 +418,19 @@ export interface AnalyticalTableColumnDefinition {
    */
   cellLabel?: (param?: CellLabelParam) => string;
   /**
-   * Cell width, if not set the table will distribute all columns without a width evenly.
+   * Defines the column width. If not set the table will distribute all columns without a width evenly.
+   *
+   * __Note:__ Values lower than `minWidth` are not supported!
    */
   width?: number;
   /**
-   * Minimum width of the column, e.g. used for resizing.
+   * Minimum width of the column.
+   *
+   * @default: 60
    */
   minWidth?: number;
   /**
-   * Maximum with of the column, e.g. used for resizing.
+   * Maximum width of the column.
    */
   maxWidth?: number;
   /**
@@ -848,6 +852,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   reactTableOptions?: Record<string, unknown>;
   /**
    * You can use this prop to add custom hooks to the table.
+   *
+   * __Note:__ Should be memoized!
    *
    * @default []
    */

@@ -7,7 +7,6 @@ export const useObserveHeights = (
   pageRef,
   topHeaderRef,
   headerContentRef,
-  anchorBarRef,
   [headerCollapsed, setHeaderCollapsed]: [boolean, Dispatch<SetStateAction<boolean>>],
   {
     noHeader,
@@ -101,8 +100,7 @@ export const useObserveHeights = (
       headerContentResizeObserver.disconnect();
     };
   }, [isIntersecting]);
-  const anchorBarHeight = anchorBarRef?.current?.offsetHeight ?? 0;
-  const totalHeaderHeight = (noHeader ? 0 : topHeaderHeight + headerContentHeight) + anchorBarHeight;
+  const totalHeaderHeight = noHeader ? 0 : topHeaderHeight + headerContentHeight;
 
-  return { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight, headerCollapsed };
+  return { topHeaderHeight, headerContentHeight, totalHeaderHeight, headerCollapsed };
 };

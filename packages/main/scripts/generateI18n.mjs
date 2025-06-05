@@ -3,6 +3,7 @@ import { rename, readdir, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// eslint-disable-next-line import/default
 import prettier from 'prettier';
 import prettierConfig from '../../../prettier.config.js';
 
@@ -54,18 +55,14 @@ spawnSync('npx', ['prettier', '--write', path.resolve(SRC_I18N_PROPERTIES, 'i18n
   stdio: [0, 1, 2],
 });
 
-// generate Assets.js and Assets-static.js
+// generate Assets.js
 const jsonImports = await readdir(TARGET_I18N_JSON_IMPORTS);
 
 const assets = [`import '@ui5/webcomponents/dist/Assets.js';`, `import '@ui5/webcomponents-fiori/dist/Assets.js';`];
-const assetsStatic = [
-  `import '@ui5/webcomponents/dist/Assets-static.js';`,
-  `import '@ui5/webcomponents-fiori/dist/Assets-static.js';`,
-];
 
 for (const file of jsonImports) {
-  if (file.includes('-static')) {
-    assetsStatic.push(`import './json-imports/${file}';`);
+  if (file.includes('-fetch')) {
+    //todo: add to Assets-fetch.js
   } else {
     assets.push(`import './json-imports/${file}';`);
   }
@@ -74,8 +71,4 @@ for (const file of jsonImports) {
 await writeFile(
   path.resolve(DIST_DIR, 'Assets.js'),
   await prettier.format(assets.join('\n'), { ...prettierConfig, parser: 'babel' }),
-);
-await writeFile(
-  path.resolve(DIST_DIR, 'Assets-static.js'),
-  await prettier.format(assetsStatic.join('\n'), { ...prettierConfig, parser: 'babel' }),
 );

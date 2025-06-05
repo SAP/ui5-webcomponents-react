@@ -33,12 +33,14 @@ When using this hook, it is recommended to also select all sub-rows when selecti
 <Canvas sourceState="none" of={ComponentStories.PluginIndeterminateRowSelection} />
 
 ```jsx
+const tableHooks = [AnalyticalTableHooks.useIndeterminateRowSelection()]; // should be memoized
+
 <AnalyticalTable
   selectionMode={AnalyticalTableSelectionMode.Multiple}
   data={data}
   columns={columns}
   isTreeTable
-  tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection()]}
+  tableHooks={tableHooks}
   reactTableOptions={{ selectSubRows: true }}
 />
 ```

@@ -115,6 +115,7 @@
 
   &::part(tabstrip) {
     padding: 0;
+    padding-block-start: 4px;
     padding-inline: var(--_ui5wcr_ObjectPage_tab_bar_inline_padding);
     box-shadow:
       inset 0 -0.0625rem var(--sapPageHeader_BorderColor),

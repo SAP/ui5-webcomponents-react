@@ -4,7 +4,7 @@ import dataManualSelect from '@sb/mockData/FriendsManualSelect25.json';
 import dataTree from '@sb/mockData/FriendsTree.json';
 import type { Meta, StoryObj } from '@storybook/react';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
-import { useReducer, useState } from 'react';
+import { useCallback, useMemo, useReducer, useState } from 'react';
 import { AnalyticalTableSelectionMode, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
 import { Button, CheckBox, Input, Label, ToggleButton, Text } from '../../webComponents';
 import { FlexBox } from '../FlexBox';
@@ -20,6 +20,7 @@ const pluginsMeta = {
 export default pluginsMeta;
 type Story = StoryObj<typeof pluginsMeta>;
 
+const tableHooksEmptyCells = [AnalyticalTableHooks.useAnnounceEmptyCells];
 export const PluginAnnounceEmptyCells: Story = {
   args: {
     data: [
@@ -41,19 +42,21 @@ export const PluginAnnounceEmptyCells: Story = {
         columns={args.columns}
         data={args.data}
         visibleRows={args.visibleRows}
-        tableHooks={[AnalyticalTableHooks.useAnnounceEmptyCells]}
+        tableHooks={tableHooksEmptyCells}
       />
     );
   },
 };
 
+const disableRowFunc = (row) => row.original.age < 40;
+const tableHooksDisableRowSel = [AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)];
+const tableHooksDisableRowSel1 = [AnalyticalTableHooks.useRowDisableSelection('disableSelection')];
 export const PluginDisableRowSelection: Story = {
   args: {
     data: dataLarge.map((item) => ({ ...item, disableSelection: Math.random() < 0.5 })),
     selectionMode: AnalyticalTableSelectionMode.Multiple,
   },
   render: (args) => {
-    const disableRowFunc = (row) => row.original.age < 40;
     const [isFunc, setIsFunc] = useState(true);
     return (
       <>
@@ -78,7 +81,7 @@ export const PluginDisableRowSelection: Story = {
             data={args.data}
             columns={args.columns}
             selectionMode={args.selectionMode}
-            tableHooks={[AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)]}
+            tableHooks={tableHooksDisableRowSel}
             visibleRows={10}
             header="All under 40 are not selectable"
           />
@@ -88,7 +91,7 @@ export const PluginDisableRowSelection: Story = {
             columns={args.columns}
             selectionMode={args.selectionMode}
             selectionBehavior={args.selectionBehavior}
-            tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
+            tableHooks={tableHooksDisableRowSel1}
             visibleRows={10}
             header={`All with "disableSelection: true" are not selectable`}
           />
@@ -98,6 +101,7 @@ export const PluginDisableRowSelection: Story = {
   },
 };
 
+const tableHooksIndeterminateRowSel = [AnalyticalTableHooks.useIndeterminateRowSelection()];
 export const PluginIndeterminateRowSelection: Story = {
   render: (args) => {
     const [selectSubRows, setSelectSubRows] = useReducer((prev) => !prev, true);
@@ -111,7 +115,7 @@ export const PluginIndeterminateRowSelection: Story = {
           data={dataTree}
           columns={args.columns}
           isTreeTable
-          tableHooks={[AnalyticalTableHooks.useIndeterminateRowSelection()]}
+          tableHooks={tableHooksIndeterminateRowSel}
           reactTableOptions={{ selectSubRows: selectSubRows }}
         />
       </>
@@ -119,6 +123,7 @@ export const PluginIndeterminateRowSelection: Story = {
   },
 };
 
+const tableHooksManualRowSel = [AnalyticalTableHooks.useManualRowSelect('isSelected')];
 export const PluginManualRowSelect: Story = {
   args: {
     data: dataManualSelect,
@@ -146,7 +151,7 @@ export const PluginManualRowSelect: Story = {
           selectionMode={AnalyticalTableSelectionMode.Multiple}
           data={data}
           columns={args.columns}
-          tableHooks={[AnalyticalTableHooks.useManualRowSelect('isSelected')]}
+          tableHooks={tableHooksManualRowSel}
         />
         <Button onClick={setCollapsedCode}>Show first entries in data array</Button>
         {!collapsedCode && (
@@ -175,9 +180,17 @@ export const PluginOnColumnResize: Story = {
     const handleWaitChange = (e) => {
       setWait(parseInt(e.target.value));
     };
-    const handleColWidthUpdate = (e) => {
-      setUseColResizeEvent(e);
-    };
+    const handleColWidthUpdate = useCallback(
+      (e) => {
+        setUseColResizeEvent(e);
+      },
+      [setUseColResizeEvent],
+    );
+
+    const tableHooksColResize = useMemo(
+      () => [AnalyticalTableHooks.useOnColumnResize(handleColWidthUpdate, { liveUpdate, wait })],
+      [handleColWidthUpdate, liveUpdate, wait],
+    );
     return (
       <>
         <AnalyticalTable
@@ -196,7 +209,7 @@ export const PluginOnColumnResize: Story = {
           }
           data={args.data}
           columns={args.columns}
-          tableHooks={[AnalyticalTableHooks.useOnColumnResize(handleColWidthUpdate, { liveUpdate, wait })]}
+          tableHooks={tableHooksColResize}
         />
         {!!Object.keys(useColResizeEvent).length && (
           <FlexBox direction={FlexBoxDirection.Column}>
@@ -266,12 +279,16 @@ export const PluginOrderedMultiSort = {
     },
   },
   render(args) {
+    const tableHooksOrderedMultiSort = useMemo(
+      () => [AnalyticalTableHooks.useOrderedMultiSort(args.orderedIds)],
+      [args.orderedIds],
+    );
     return (
       <AnalyticalTable
         columns={orderedMultiSortColumns}
         data={orderedMultiSortData}
         sortable
-        tableHooks={[AnalyticalTableHooks.useOrderedMultiSort(args.orderedIds)]}
+        tableHooks={tableHooksOrderedMultiSort}
       />
     );
   },

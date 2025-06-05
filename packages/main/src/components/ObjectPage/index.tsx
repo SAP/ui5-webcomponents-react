@@ -33,7 +33,7 @@ const ObjectPageCssVariables = {
   titleFontSize: '--_ui5wcr_ObjectPage_title_fontsize',
 };
 
-const TAB_CONTAINER_HEADER_HEIGHT = 44;
+const TAB_CONTAINER_HEADER_HEIGHT = 44 + 4; // tabbar height + custom 4px padding-block-start
 
 /**
  * A component that allows apps to easily display information related to a business object.
@@ -83,7 +83,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const prevTopHeaderHeight = useRef(0);
   // @ts-expect-error: useSyncRef will create a ref if not present
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerArea?.ref);
-  const anchorBarRef = useRef<HTMLDivElement>(null);
   const scrollEvent = useRef(undefined);
   const objectPageContentRef = useRef<HTMLDivElement>(null);
   const selectionScrollTimeout = useRef(null);
@@ -128,19 +127,17 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   }, []);
 
   // observe heights of header parts
-  const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight, headerCollapsed } =
-    useObserveHeights(
-      objectPageRef,
-      topHeaderRef,
-      headerContentRef,
-      anchorBarRef,
-      [headerCollapsedInternal, setHeaderCollapsedInternal],
-      {
-        noHeader: !titleArea && !headerArea,
-        fixedHeader: headerPinned,
-        scrollTimeout,
-      },
-    );
+  const { topHeaderHeight, headerContentHeight, totalHeaderHeight, headerCollapsed } = useObserveHeights(
+    objectPageRef,
+    topHeaderRef,
+    headerContentRef,
+    [headerCollapsedInternal, setHeaderCollapsedInternal],
+    {
+      noHeader: !titleArea && !headerArea,
+      fixedHeader: headerPinned,
+      scrollTimeout,
+    },
+  );
 
   useEffect(() => {
     if (typeof onToggleHeaderArea === 'function' && isToggledRef.current) {
@@ -197,7 +194,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         const scrollMargin =
           -1 /* reduce margin-block so that intersection observer detects correct section*/ +
           safeTopHeaderHeight +
-          anchorBarHeight +
           TAB_CONTAINER_HEADER_HEIGHT +
           (headerPinned && !headerCollapsed ? headerContentHeight : 0);
         section.style.scrollMarginBlockStart = scrollMargin + 'px';
@@ -642,7 +638,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       {headerArea && titleArea && (
         <div
           data-component-name="ObjectPageAnchorBar"
-          ref={anchorBarRef}
           className={classNames.anchorBar}
           style={{
             top:

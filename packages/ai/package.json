@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-ai-react",
-  "version": "2.10.0",
+  "version": "2.10.1",
   "description": "React wrapper for `@ui5/webcomponents-ai` web components.",
   "type": "module",
   "main": "dist/index.js",
