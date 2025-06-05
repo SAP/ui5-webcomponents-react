@@ -4,7 +4,7 @@ import '@ui5/webcomponents/dist/Icon.js';
 import type IconDesign from '@ui5/webcomponents/dist/types/IconDesign.js';
 import type IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
-import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
+import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface IconAttributes {
   /**
@@ -70,7 +70,20 @@ interface IconAttributes {
 
 interface IconDomRef extends Required<IconAttributes>, Ui5DomRef {}
 
-interface IconPropTypes extends IconAttributes, Omit<CommonProps, keyof IconAttributes> {}
+interface IconPropTypes extends IconAttributes, Omit<CommonProps, keyof IconAttributes | 'onClick'> {
+  /**
+   * Fired on mouseup, `SPACE` and `ENTER`.
+   * - on mouse click, the icon fires native `click` event
+   * - on `SPACE` and `ENTER`, the icon fires custom `click` event
+   *
+   * **Note:** Available since [v2.11.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.11.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onClick?: (event: Ui5CustomEvent<IconDomRef>) => void;
+}
 
 /**
  * The `Icon` component represents an SVG icon.
@@ -139,7 +152,7 @@ const Icon = withWebComponent<IconPropTypes, IconDomRef>(
   ['accessibleName', 'design', 'mode', 'name'],
   ['showTooltip'],
   [],
-  [],
+  ['click'],
 );
 
 Icon.displayName = 'Icon';

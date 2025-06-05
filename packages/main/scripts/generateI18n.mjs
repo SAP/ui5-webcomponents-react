@@ -63,6 +63,8 @@ const assets = [`import '@ui5/webcomponents/dist/Assets.js';`, `import '@ui5/web
 for (const file of jsonImports) {
   if (file.includes('-fetch')) {
     //todo: add to Assets-fetch.js
+  } else if (file.includes('-node')) {
+    //todo: add to Assets-node.js
   } else {
     assets.push(`import './json-imports/${file}';`);
   }

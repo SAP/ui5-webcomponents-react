@@ -19,6 +19,127 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/DateRange.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "DateRangeRange",
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DateRangeRange",
+            "module": "dist/dynamic-date-range-options/DateRange.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/SingleDate.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SingleDate",
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SingleDate",
+            "module": "dist/dynamic-date-range-options/SingleDate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/Today.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Today",
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Today",
+            "module": "dist/dynamic-date-range-options/Today.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/Tomorrow.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Tomorrow",
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Tomorrow",
+            "module": "dist/dynamic-date-range-options/Tomorrow.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/Yesterday.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Yesterday",
+          "_ui5since": "2.0.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "Yesterday",
+            "module": "dist/dynamic-date-range-options/Yesterday.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/toDates.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/features/ColorPaletteMoreColors.js",
       "declarations": [],
       "exports": []
@@ -383,6 +504,49 @@
           "declaration": {
             "name": "BackgroundDesign",
             "module": "dist/types/BackgroundDesign.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/BarAccessibleRole.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "BarAccessibleRole",
+          "description": "ListItem accessible roles.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.9.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the ARIA role \"toolbar\".",
+              "default": "Toolbar",
+              "name": "Toolbar",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Represents the ARIA role \"none\".",
+              "default": "None",
+              "name": "None",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "BarAccessibleRole",
+            "module": "dist/types/BarAccessibleRole.js"
           }
         }
       ]
@@ -3271,6 +3435,49 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/TableSelectionBehavior.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "TableSelectionBehavior",
+          "description": "Selection behavior of the `ui5-table` selection components.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.11",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Rows can only be selected by using the row selector column.",
+              "default": "RowSelector",
+              "name": "RowSelector",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Rows can only be selected by clicking directly on the row, as the row selector column is hidden.\n\n**Note:** In this mode, the `row-click` event of the `ui5-table` component is not fired.",
+              "default": "RowOnly",
+              "name": "RowOnly",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableSelectionBehavior",
+            "module": "dist/types/TableSelectionBehavior.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/TableSelectionMode.js",
       "declarations": [
         {
@@ -3862,6 +4069,12 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/Assets-node.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Assets.js",
       "declarations": [],
       "exports": []
@@ -4025,6 +4238,20 @@
               "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following field is supported:\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.",
               "privacy": "public",
               "_ui5since": "2.0.0"
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired on mouseup, space and enter if avatar is interactive\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.11.0"
             }
           ],
           "attributes": [
@@ -4466,6 +4693,24 @@
               "default": "\"Header\"",
               "description": "Defines the component's design.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleRole",
+              "type": {
+                "text": "BarAccessibleRole",
+                "references": [
+                  {
+                    "name": "BarAccessibleRole",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/BarAccessibleRole.js"
+                  }
+                ]
+              },
+              "default": "\"Toolbar\"",
+              "description": "Specifies the ARIA role applied to the component for accessibility purposes.\n\n**Note:**\n\n- Set accessibleRole to \"toolbar\" only when the component contains two or more active, interactive elements (such as buttons, links, or input fields) within the bar.\n\n- If there is only one or no active element, it is recommended to avoid using the \"toolbar\" role, as it implies a grouping of multiple interactive controls.",
+              "privacy": "public",
+              "_ui5since": "2.10.0"
             }
           ],
           "attributes": [
@@ -4476,6 +4721,15 @@
               "fieldName": "design",
               "type": {
                 "text": "\"Header\" | \"Subheader\" | \"Footer\" | \"FloatingFooter\""
+              }
+            },
+            {
+              "description": "Specifies the ARIA role applied to the component for accessibility purposes.\n\n**Note:**\n\n- Set accessibleRole to \"toolbar\" only when the component contains two or more active, interactive elements (such as buttons, links, or input fields) within the bar.\n\n- If there is only one or no active element, it is recommended to avoid using the \"toolbar\" role, as it implies a grouping of multiple interactive controls.",
+              "name": "accessible-role",
+              "default": "\"Toolbar\"",
+              "fieldName": "accessibleRole",
+              "type": {
+                "text": "\"Toolbar\" | \"None\""
               }
             }
           ],
@@ -5516,8 +5770,20 @@
               "name": "year-cell-selected"
             },
             {
-              "description": "Used to style the day cells in between of selected years in range.",
+              "description": "Used to style the year cells in between of selected years in range.",
               "name": "year-cell-selected-between"
+            },
+            {
+              "description": "Used to style the year range cells.",
+              "name": "year-range-cell"
+            },
+            {
+              "description": "Used to style the year range cells when selected.",
+              "name": "year-range-cell-selected"
+            },
+            {
+              "description": "Used to style the year range cells in between of selected year ranges.",
+              "name": "year-range-cell-selected-between"
             }
           ],
           "slots": [
@@ -6219,7 +6485,7 @@
               "default": "\"None\"",
               "fieldName": "type",
               "type": {
-                "text": "\"Today\" | \"Selected\" | \"None\" | \"Working\" | \"NonWorking\" | \"Type01\" | \"Type02\" | \"Type03\" | \"Type04\" | \"Type05\" | \"Type06\" | \"Type07\" | \"Type08\" | \"Type09\" | \"Type10\" | \"Type11\" | ... 8 more ... | \"Type20\""
+                "text": "\"None\" | \"Today\" | \"Selected\" | \"Working\" | \"NonWorking\" | \"Type01\" | \"Type02\" | \"Type03\" | \"Type04\" | \"Type05\" | \"Type06\" | \"Type07\" | \"Type08\" | \"Type09\" | \"Type10\" | \"Type11\" | ... 8 more ... | \"Type20\""
               }
             }
           ],
@@ -7448,7 +7714,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -8369,7 +8635,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -9452,7 +9718,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -10147,7 +10413,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "DatePicker",
@@ -10986,7 +11252,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "DatePicker",
@@ -11677,7 +11943,7 @@
               "default": "\"None\"",
               "fieldName": "state",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -11891,6 +12157,113 @@
           "declaration": {
             "name": "DropIndicator",
             "module": "dist/DropIndicator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DynamicDateRange.js",
+      "declarations": [
+        {
+          "kind": "interface",
+          "name": "IDynamicDateRangeOption",
+          "description": "Represents a dynamic date range option used by the `ui5-dynamic-date-range` component.\n\nRepresents a dynamic date range option used for handling dynamic date ranges.\nThis interface defines the structure and behavior required for implementing\ndynamic date range options, including formatting, parsing, validation, and\nconversion of date range values.\n\n * Properties:\n- `icon`: The icon associated with the dynamic date range option, typically used for UI representation.\n- `operator`: A unique operator identifying the dynamic date range option.\n- `text`: The display text for the dynamic date range option.\n- `template` (optional): A JSX template for rendering the dynamic date range option.\n\nMethods:\n- `format(value: DynamicDateRangeValue): string`: Formats the given dynamic date range value into a string representation.\n- `parse(value: string): DynamicDateRangeValue | undefined`: Parses a string into a dynamic date range value.\n- `toDates(value: DynamicDateRangeValue): Date[]`: Converts a dynamic date range value into an array of `Date` objects.\n- `handleSelectionChange?(event: CustomEvent): DynamicDateRangeValue | undefined`: (Optional) Handles selection changes in the UI of the dynamic date range option.\n- `isValidString(value: string): boolean`: Validates whether a given string is a valid representation of the dynamic date range value.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.10.0"
+        },
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-dynamic-date-range` component provides a flexible interface to define date ranges using a combination of absolute dates, relative intervals, and preset ranges (e.g., \"Today\", \"Yesterday\", etc.).\nIt allows users to select a date range from a predefined set of options or enter custom dates.\n\n### Usage\n\nThe component is typically used in scenarios where users need to filter data based on date ranges, such as in reports, dashboards, or data analysis tools.\nIt can be used with the predefined options or extended with custom options to suit specific requirements. You can create your own options by extending the `IDynamicDateRangeOption` interface.\nEvery option should be registered using the `DynamicDateRange.register` method.\n\nIf needed, you can also create a range of dates based on specific option using the `toDates` method.\n\n### Standard Options\n\nThe component comes with a set of standard options, including:\n- \"TODAY\" - Represents the current date. An example value is `{ operator: \"TODAY\"}`. Import: `import \"@ui5/webcomponents/dist/dynamic-date-range-options/Today.js\";`\n- \"YESTERDAY\" - Represents the previous date. An example value is `{ operator: \"YESTERDAY\"}`. Import: `import \"@ui5/webcomponents/dist/dynamic-date-range-options/Yesterday.js\";`\n- \"TOMORROW\" - Represents the next date. An example value is `{ operator: \"TOMORROW\"}`. Import: `import \"@ui5/webcomponents/dist/dynamic-date-range-options/Tomorrow.js\";`\n- \"DATE\" - Represents a single date. An example value is `{ operator: \"DATE\", values: [new Date()]}`. Import: `import \"@ui5/webcomponents/dist/dynamic-date-range-options/SingleDate.js\";`\n- \"DATERANGE\" - Represents a range of dates. An example value is `{ operator: \"DATERANGE\", values: [new Date(), new Date()]}`. Import: `import \"@ui5/webcomponents/dist/dynamic-date-range-options/DateRange.js\";`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/DynamicDateRange.js\";`",
+          "name": "DynamicDateRange",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "DynamicDateRangeValue | undefined",
+                "references": [
+                  {
+                    "name": "DynamicDateRangeValue",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/DynamicDateRange.js"
+                  }
+                ]
+              },
+              "description": "Defines the value object.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5noAttribute": true
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the options listed as a string, separated by commas and using capital case.\nExample: \"TODAY, YESTERDAY, DATERANGE\"",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the input operation has finished by pressing Enter or on focusout or a value is selected in the popover.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the value object.",
+              "name": "value",
+              "default": "undefined",
+              "fieldName": "value",
+              "type": {
+                "text": "DynamicDateRangeValue | undefined"
+              }
+            },
+            {
+              "description": "Defines the options listed as a string, separated by commas and using capital case.\nExample: \"TODAY, YESTERDAY, DATERANGE\"",
+              "name": "options",
+              "default": "\"\"",
+              "fieldName": "options",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-dynamic-date-range",
+          "customElement": true,
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicDateRange",
+            "module": "dist/DynamicDateRange.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-dynamic-date-range",
+          "declaration": {
+            "name": "DynamicDateRange",
+            "module": "dist/DynamicDateRange.js"
           }
         }
       ]
@@ -12313,7 +12686,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -12937,6 +13310,20 @@
               "_ui5since": "2.0.0"
             }
           ],
+          "events": [
+            {
+              "name": "click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired on mouseup, `SPACE` and `ENTER`.\n- on mouse click, the icon fires native `click` event\n- on `SPACE` and `ENTER`, the icon fires custom `click` event",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.11.0"
+            }
+          ],
           "attributes": [
             {
               "description": "Defines the component semantic design.",
@@ -13446,7 +13833,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -14648,7 +15035,7 @@
               "default": "\"None\"",
               "fieldName": "selectionMode",
               "type": {
-                "text": "\"Single\" | \"Multiple\" | \"None\" | \"SingleStart\" | \"SingleEnd\" | \"SingleAuto\" | \"Delete\""
+                "text": "\"None\" | \"Single\" | \"Multiple\" | \"SingleStart\" | \"SingleEnd\" | \"SingleAuto\" | \"Delete\""
               }
             },
             {
@@ -14675,7 +15062,7 @@
               "default": "\"None\"",
               "fieldName": "growing",
               "type": {
-                "text": "\"Button\" | \"None\" | \"Scroll\""
+                "text": "\"None\" | \"Button\" | \"Scroll\""
               }
             },
             {
@@ -14962,7 +15349,7 @@
               "default": "\"None\"",
               "fieldName": "highlight",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -15308,7 +15695,7 @@
               "default": "\"None\"",
               "fieldName": "highlight",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "ListItem",
@@ -15637,7 +16024,7 @@
           ],
           "slots": [
             {
-              "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design. <br/>\n**Note:** Deprecated since version `2.10.0`. Use the `text` property instead. <br/>\nOnly use the default slot if you need to apply custom text formatting with HTML elements (like `<b>`, `<i>`, etc.).",
+              "description": "Defines the custom formatted text of the component.\n\n**Note:** For optimal text wrapping and a consistent layout, it is strongly recommended to use the `text` property.\n\nUse the `default` slot only when custom formatting with HTML elements (e.g., `<b>`, `<i>`) is required.\nBe aware that wrapping (via `wrappingType=\"Normal\"`) may not function correctly with custom HTML content in the `default` slot.\n\nIf both `text` and `default` slot are used, the `text` property takes precedence.",
               "name": "default",
               "_ui5privacy": "public",
               "_ui5type": {
@@ -15956,7 +16343,7 @@
               "default": "\"None\"",
               "fieldName": "additionalTextState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -16044,7 +16431,7 @@
               "default": "\"None\"",
               "fieldName": "highlight",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "ListItem",
@@ -16890,7 +17277,7 @@
               "default": "\"None\"",
               "fieldName": "highlight",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "ListItem",
@@ -17557,7 +17944,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -18651,7 +19038,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "Input",
@@ -20314,7 +20701,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             }
           ],
@@ -20564,7 +20951,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -22600,7 +22987,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -23383,7 +23770,7 @@
               "default": "\"None\"",
               "fieldName": "type",
               "type": {
-                "text": "\"Today\" | \"Selected\" | \"None\" | \"Working\" | \"NonWorking\" | \"Type01\" | \"Type02\" | \"Type03\" | \"Type04\" | \"Type05\" | \"Type06\" | \"Type07\" | \"Type08\" | \"Type09\" | \"Type10\" | \"Type11\" | ... 8 more ... | \"Type20\""
+                "text": "\"None\" | \"Today\" | \"Selected\" | \"Working\" | \"NonWorking\" | \"Type01\" | \"Type02\" | \"Type03\" | \"Type04\" | \"Type05\" | \"Type06\" | \"Type07\" | \"Type08\" | \"Type09\" | \"Type10\" | \"Type11\" | ... 8 more ... | \"Type20\""
               }
             }
           ],
@@ -23876,7 +24263,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -24775,6 +25162,17 @@
               "privacy": "public"
             },
             {
+              "kind": "field",
+              "name": "movable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines if the tab is movable.",
+              "privacy": "public",
+              "_ui5since": "2.0.0"
+            },
+            {
               "kind": "method",
               "name": "getDomRefInStrip",
               "return": {
@@ -24838,6 +25236,15 @@
               "name": "selected",
               "default": "false",
               "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines if the tab is movable.",
+              "name": "movable",
+              "default": "false",
+              "fieldName": "movable",
               "type": {
                 "text": "boolean"
               }
@@ -25509,7 +25916,7 @@
                   }
                 ]
               },
-              "description": "Fired when an interactive row is clicked.",
+              "description": "Fired when an interactive row is clicked.\n\n**Note:** This event is not fired if the `behavior` property of the selection component is set to `RowOnly`.\nIn that case, use the `change` event of the selection component instead.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
@@ -25743,7 +26150,6 @@
           },
           "tagName": "ui5-table",
           "customElement": true,
-          "_ui5experimental": "This Table web component is available since 2.0 and has been newly implemented to provide better screen reader and keyboard handling support.\nCurrently, it's considered experimental as its API is subject to change.\nThis Table replaces the previous Table web component, that has been part of **@ui5/webcomponents** version 1.x.\nFor compatibility reasons, we moved the previous Table implementation to the **@ui5/webcomponents-compat** package\nand will be maintained until the new Table is experimental.\nKeep in mind that you can use either the compat/Table, or the main/Table - you can't use them both as they both define the `ui5-table` tag name.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public"
         }
@@ -25805,7 +26211,6 @@
           },
           "tagName": "ui5-table-cell",
           "customElement": true,
-          "_ui5experimental": "This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public",
           "slots": [
@@ -26056,7 +26461,6 @@
           },
           "tagName": "ui5-table-growing",
           "customElement": true,
-          "_ui5experimental": "This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public"
         }
@@ -26288,7 +26692,6 @@
           },
           "tagName": "ui5-table-header-cell",
           "customElement": true,
-          "_ui5experimental": "This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public"
         }
@@ -26327,7 +26730,6 @@
           },
           "tagName": "ui5-table-header-cell-action-ai",
           "customElement": true,
-          "_ui5experimental": true,
           "_ui5since": "2.8.0",
           "_ui5privacy": "public",
           "events": [
@@ -26505,7 +26907,6 @@
           },
           "tagName": "ui5-table-header-row",
           "customElement": true,
-          "_ui5experimental": "This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public"
         }
@@ -26694,7 +27095,6 @@
           },
           "tagName": "ui5-table-row",
           "customElement": true,
-          "_ui5experimental": "This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.",
           "_ui5since": "2.0.0",
           "_ui5privacy": "public"
         }
@@ -26802,7 +27202,6 @@
           },
           "tagName": "ui5-table-row-action",
           "customElement": true,
-          "_ui5experimental": true,
           "_ui5since": "2.7.0",
           "_ui5privacy": "public",
           "events": [
@@ -26976,7 +27375,6 @@
           },
           "tagName": "ui5-table-row-action-navigation",
           "customElement": true,
-          "_ui5experimental": true,
           "_ui5since": "2.7.0",
           "_ui5privacy": "public",
           "events": [
@@ -27106,7 +27504,7 @@
               "default": "\"Multiple\"",
               "fieldName": "mode",
               "type": {
-                "text": "\"Single\" | \"Multiple\" | \"None\""
+                "text": "\"None\" | \"Single\" | \"Multiple\""
               }
             },
             {
@@ -27171,6 +27569,24 @@
               "privacy": "public"
             },
             {
+              "kind": "field",
+              "name": "behavior",
+              "type": {
+                "text": "TableSelectionBehavior",
+                "references": [
+                  {
+                    "name": "TableSelectionBehavior",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TableSelectionBehavior.js"
+                  }
+                ]
+              },
+              "default": "\"RowSelector\"",
+              "description": "Defines the selection behavior.",
+              "privacy": "public",
+              "_ui5since": "2.11"
+            },
+            {
               "kind": "method",
               "name": "getRowByKey",
               "return": {
@@ -27220,6 +27636,15 @@
               "fieldName": "selected",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the selection behavior.",
+              "name": "behavior",
+              "default": "\"RowSelector\"",
+              "fieldName": "behavior",
+              "type": {
+                "text": "\"RowSelector\" | \"RowOnly\""
               }
             }
           ],
@@ -27318,6 +27743,28 @@
               "privacy": "public"
             },
             {
+              "kind": "field",
+              "name": "behavior",
+              "type": {
+                "text": "TableSelectionBehavior",
+                "references": [
+                  {
+                    "name": "TableSelectionBehavior",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TableSelectionBehavior.js"
+                  }
+                ]
+              },
+              "default": "\"RowSelector\"",
+              "description": "Defines the selection behavior.",
+              "privacy": "public",
+              "_ui5since": "2.11",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
               "kind": "method",
               "name": "getRowByKey",
               "return": {
@@ -27358,6 +27805,19 @@
               "fieldName": "selected",
               "type": {
                 "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "description": "Defines the selection behavior.",
+              "name": "behavior",
+              "default": "\"RowSelector\"",
+              "fieldName": "behavior",
+              "type": {
+                "text": "\"RowSelector\" | \"RowOnly\""
               },
               "inheritedFrom": {
                 "name": "TableSelectionBase",
@@ -27454,6 +27914,28 @@
               "privacy": "public"
             },
             {
+              "kind": "field",
+              "name": "behavior",
+              "type": {
+                "text": "TableSelectionBehavior",
+                "references": [
+                  {
+                    "name": "TableSelectionBehavior",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TableSelectionBehavior.js"
+                  }
+                ]
+              },
+              "default": "\"RowSelector\"",
+              "description": "Defines the selection behavior.",
+              "privacy": "public",
+              "_ui5since": "2.11",
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
               "kind": "method",
               "name": "getRowByKey",
               "return": {
@@ -27494,6 +27976,19 @@
               "fieldName": "selected",
               "type": {
                 "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TableSelectionBase",
+                "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "description": "Defines the selection behavior.",
+              "name": "behavior",
+              "default": "\"RowSelector\"",
+              "fieldName": "behavior",
+              "type": {
+                "text": "\"RowSelector\" | \"RowOnly\""
               },
               "inheritedFrom": {
                 "name": "TableSelectionBase",
@@ -28311,7 +28806,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -28738,7 +29233,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -30648,12 +31143,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/ToolbarRegistry.js",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "dist/ToolbarSelect.js",
       "declarations": [
         {
@@ -30840,7 +31329,7 @@
               "default": "\"None\"",
               "fieldName": "valueState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -31569,6 +32058,78 @@
                   "description": "The item triggering the event."
                 }
               ]
+            },
+            {
+              "name": "move",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<TreeMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "TreeMoveEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Tree.js"
+                  }
+                ]
+              },
+              "description": "Fired when a movable tree item is moved over a potential drop target during a drag-and-drop operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the moved element under the `element` property."
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                }
+              ]
+            },
+            {
+              "name": "move-over",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<TreeMoveEventDetail>",
+                "references": [
+                  {
+                    "name": "TreeMoveEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Tree.js"
+                  }
+                ]
+              },
+              "description": "Fired when a movable tree item is dropped onto a drop target.\n\n**Note:** The `move` event is fired only if there was a preceding `move-over` event with prevented default action.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "source",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the moved element under the `element` property."
+                },
+                {
+                  "type": {
+                    "text": "object"
+                  },
+                  "name": "destination",
+                  "_ui5privacy": "public",
+                  "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                }
+              ]
             }
           ],
           "attributes": [
@@ -31578,7 +32139,7 @@
               "default": "\"None\"",
               "fieldName": "selectionMode",
               "type": {
-                "text": "\"Single\" | \"Multiple\" | \"None\" | \"SingleStart\" | \"SingleEnd\" | \"SingleAuto\" | \"Delete\" | undefined"
+                "text": "\"None\" | \"Single\" | \"Multiple\" | \"SingleStart\" | \"SingleEnd\" | \"SingleAuto\" | \"Delete\" | undefined"
               }
             },
             {
@@ -32043,7 +32604,7 @@
               "default": "\"None\"",
               "fieldName": "additionalTextState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "TreeItemBase",
@@ -32121,7 +32682,7 @@
               "default": "\"None\"",
               "fieldName": "highlight",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "ListItem",
@@ -32583,7 +33144,7 @@
               "default": "\"None\"",
               "fieldName": "additionalTextState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               }
             },
             {
@@ -32653,7 +33214,7 @@
               "default": "\"None\"",
               "fieldName": "highlight",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "ListItem",
@@ -33106,7 +33667,7 @@
               "default": "\"None\"",
               "fieldName": "additionalTextState",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "TreeItemBase",
@@ -33184,7 +33745,7 @@
               "default": "\"None\"",
               "fieldName": "highlight",
               "type": {
-                "text": "\"Positive\" | \"Negative\" | \"None\" | \"Critical\" | \"Information\""
+                "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
               },
               "inheritedFrom": {
                 "name": "ListItem",
@@ -33278,6 +33839,21 @@
           "declaration": {
             "name": "YearPicker",
             "module": "dist/YearPicker.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/YearRangePicker.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "YearRangePicker",
+            "module": "dist/YearRangePicker.js"
           }
         }
       ]

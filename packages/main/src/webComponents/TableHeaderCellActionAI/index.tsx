@@ -30,7 +30,6 @@ interface TableHeaderCellActionAIPropTypes extends TableHeaderCellActionAIAttrib
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  *
  * @since [2.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.8.0) of __@ui5/webcomponents__.
- * @experimental
  */
 const TableHeaderCellActionAI = withWebComponent<TableHeaderCellActionAIPropTypes, TableHeaderCellActionAIDomRef>(
   'ui5-table-header-cell-action-ai',
