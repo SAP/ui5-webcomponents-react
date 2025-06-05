@@ -16,7 +16,7 @@ interface DynamicDateRangeAttributes {
    * Defines the value object.
    * @default undefined
    */
-  value?: DynamicDateRangeValue | undefined | keyof typeof DynamicDateRangeValue;
+  value?: DynamicDateRangeValue | undefined;
 }
 
 interface DynamicDateRangeDomRef extends Required<DynamicDateRangeAttributes>, Ui5DomRef {}
