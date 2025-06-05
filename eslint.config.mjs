@@ -30,6 +30,7 @@ const ignorePatterns = {
     '**/out/**',
     '**/examples',
     '**/templates',
+    '**/patterns/navigation-layout',
   ],
 };
 
