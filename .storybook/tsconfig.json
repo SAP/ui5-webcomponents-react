@@ -3,5 +3,5 @@
   "compilerOptions": {
     "allowJs": true
   },
-  "include": ["./**/*.js", "./**/*.tsx", "./**/*.ts"]
+  "include": ["./**/*.js", "./**/*.tsx", "./**/*.ts", "../patterns/selection-assistant"]
 }
