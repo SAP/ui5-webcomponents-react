@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.1...v2.11.0) (2025-06-06)
+
+### Bug Fixes
+
+- **deps:** pin dependencies (main) ([#7418](https://github.com/SAP/ui5-webcomponents-react/issues/7418)) ([78bd9d8](https://github.com/SAP/ui5-webcomponents-react/commit/78bd9d836a370584d2ade16e6d76632bfee7170a))
+- **deps:** update dependency execa to v9.6.0 (main) ([#7419](https://github.com/SAP/ui5-webcomponents-react/issues/7419)) ([01c0280](https://github.com/SAP/ui5-webcomponents-react/commit/01c0280c6f067c9ce9b9d0de087d171f6392c9e3))
+
+### Features
+
+- **cli:** add experimental `patch-compat-table` command ([#7341](https://github.com/SAP/ui5-webcomponents-react/issues/7341)) ([f85d2c2](https://github.com/SAP/ui5-webcomponents-react/commit/f85d2c2518321c3cb96bb9fa498b0f6cbfe28acc)), closes [#7314](https://github.com/SAP/ui5-webcomponents-react/issues/7314)
+- update to UI5 Web Components 2.11.0 ([#7414](https://github.com/SAP/ui5-webcomponents-react/issues/7414)) ([a5985dd](https://github.com/SAP/ui5-webcomponents-react/commit/a5985dded43d6d28fdd83db94a45834280ab3e77))
+
 ## [2.10.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.0...v2.10.1) (2025-05-28)
 
 ### Bug Fixes
