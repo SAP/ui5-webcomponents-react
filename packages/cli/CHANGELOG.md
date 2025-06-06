@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.11.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.11.0...v2.11.1) (2025-06-06)
+
+### Bug Fixes
+
+- **cli:** update patch ([#7423](https://github.com/SAP/ui5-webcomponents-react/issues/7423)) ([2e5fccb](https://github.com/SAP/ui5-webcomponents-react/commit/2e5fccb900352025a6f3be79f817193cf7f2a0fe))
+
 # [2.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.1...v2.11.0) (2025-06-06)
 
 ### Bug Fixes
