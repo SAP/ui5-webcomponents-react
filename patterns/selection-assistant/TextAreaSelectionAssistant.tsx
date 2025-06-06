@@ -74,7 +74,7 @@ export function TextAreaSelectionAssistant() {
       />
       {showBtn && (
         <Button
-          // This button is positioned absolutely inside a relative container
+          // This button is positioned absolute inside a relative container
           // If instead it were in `body`, containerRect adjustments wouldn't be needed
           style={{ position: 'absolute', zIndex: 2, ...btnStyle }}
           ref={buttonRef}
