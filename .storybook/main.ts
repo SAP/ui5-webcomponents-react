@@ -70,6 +70,11 @@ const config: StorybookConfig = {
           files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
           titlePrefix: 'Legacy Components',
         },
+        {
+          directory: '../patterns',
+          files: '**/*.@(mdx|stories.@(mdx|tsx))',
+          titlePrefix: 'Patterns',
+        },
       ],
   addons,
   typescript: {
