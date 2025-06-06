@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.1...v2.11.0) (2025-06-06)
+
+### Bug Fixes
+
+- **AnalyticalTable - subcomponents:** fix non-breaking React error & improve performance ([#7366](https://github.com/SAP/ui5-webcomponents-react/issues/7366)) ([c0d745a](https://github.com/SAP/ui5-webcomponents-react/commit/c0d745af9905c9fb610f64f60de3f16b12ce33ad)), closes [#6755](https://github.com/SAP/ui5-webcomponents-react/issues/6755)
+- **deps:** pin dependencies (main) ([#7418](https://github.com/SAP/ui5-webcomponents-react/issues/7418)) ([78bd9d8](https://github.com/SAP/ui5-webcomponents-react/commit/78bd9d836a370584d2ade16e6d76632bfee7170a))
+- **deps:** update dependency execa to v9.6.0 (main) ([#7419](https://github.com/SAP/ui5-webcomponents-react/issues/7419)) ([01c0280](https://github.com/SAP/ui5-webcomponents-react/commit/01c0280c6f067c9ce9b9d0de087d171f6392c9e3))
+- **ObjectPage:** prevent jumping of active tab when selecting section ([#7395](https://github.com/SAP/ui5-webcomponents-react/issues/7395)) ([94ca592](https://github.com/SAP/ui5-webcomponents-react/commit/94ca592c5c2412a9e448f01073973acaecae2332)), closes [#7038](https://github.com/SAP/ui5-webcomponents-react/issues/7038)
+
+### Features
+
+- **cli:** add experimental `patch-compat-table` command ([#7341](https://github.com/SAP/ui5-webcomponents-react/issues/7341)) ([f85d2c2](https://github.com/SAP/ui5-webcomponents-react/commit/f85d2c2518321c3cb96bb9fa498b0f6cbfe28acc)), closes [#7314](https://github.com/SAP/ui5-webcomponents-react/issues/7314)
+- **ObjectPage:** extend `accessibilityAttributes` with `expandButton` ([#7405](https://github.com/SAP/ui5-webcomponents-react/issues/7405)) ([fff9fb9](https://github.com/SAP/ui5-webcomponents-react/commit/fff9fb9b5293c1c3e6a35952219d7cb31b9680b5)), closes [#7365](https://github.com/SAP/ui5-webcomponents-react/issues/7365)
+- update to UI5 Web Components 2.11.0 ([#7414](https://github.com/SAP/ui5-webcomponents-react/issues/7414)) ([a5985dd](https://github.com/SAP/ui5-webcomponents-react/commit/a5985dded43d6d28fdd83db94a45834280ab3e77))
+
 ## [2.10.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.0...v2.10.1) (2025-05-28)
 
 ### Bug Fixes
