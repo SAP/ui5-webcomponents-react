@@ -24,6 +24,9 @@ For a complete list of breaking changes in UI5 Web Components, please refer to t
 
 _**Note:** Our `codemod` covers changes from ui5-webcomponents as well._
 
+_**Note:** Setting the scoping suffix should be done before importing any components, as they use the suffix at the top-level of the module - meaning when a component is imported, the suffix has to be known.
+For this to work, calling the method should be done in a separate module (e.g. scoping-config.js) and this module should be imported before any components are imported._
+
 ## Codemod
 
 To make the migration to UI5 Web Components (for React) v2 easier,
