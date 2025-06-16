@@ -1,12 +1,12 @@
 import type { Virtualizer } from '@tanstack/react-virtual';
 import { clsx } from 'clsx';
-import type { MutableRefObject } from 'react';
+import type { MutableRefObject, RefObject } from 'react';
 import { useEffect, useMemo, useRef } from 'react';
 import type {
   AnalyticalTablePropTypes,
   ClassNames,
   DivWithCustomScrollProp,
-  ScrollToRefType,
+  ReactVirtualScrollToMethods,
   TableInstance,
   TriggerScrollState,
 } from '../types/index.js';
@@ -35,7 +35,7 @@ interface VirtualTableBodyProps {
   subRowsKey: string;
   scrollContainerRef?: MutableRefObject<HTMLDivElement>;
   triggerScroll?: TriggerScrollState;
-  scrollToRef: MutableRefObject<ScrollToRefType>;
+  scrollToRef: RefObject<ReactVirtualScrollToMethods>;
   rowVirtualizer: Virtualizer<DivWithCustomScrollProp, HTMLElement>;
 }
 

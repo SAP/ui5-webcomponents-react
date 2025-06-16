@@ -307,9 +307,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const noDataTextLocal =
     noDataText ?? (tableState.filters?.length > 0 || tableState.globalFilter ? noDataTextFiltered : noDataTextI18n);
 
-  const [componentRef, updatedRef] = useSyncRef<AnalyticalTableDomRef>(ref);
+  const [componentRef, analyticalTableRef] = useSyncRef<AnalyticalTableDomRef>(ref);
   //@ts-expect-error: types are compatible
-  const isRtl = useIsRTL(updatedRef);
+  const isRtl = useIsRTL(analyticalTableRef);
 
   const columnVirtualizer = useVirtualizer({
     count: visibleColumnsWidth.length,
@@ -340,7 +340,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     }
   }, [tableState.groupBy, tableState.columnOrder]);
 
-  const [analyticalTableRef, scrollToRef] = useTableScrollHandles(updatedRef, dispatch);
+  const scrollToRef = useTableScrollHandles(analyticalTableRef, dispatch);
 
   if (parentRef.current) {
     scrollToRef.current = {
@@ -357,7 +357,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         columnVirtualizer.scrollToIndex(...triggerScroll.args);
       }
     }
-  }, [triggerScroll]);
+  }, [columnVirtualizer, triggerScroll]);
 
   const includeSubCompRowHeight =
     !!renderRowSubComponent &&
@@ -412,7 +412,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         },
       });
     }
-  }, [tableRef.current, scaleXFactor]);
+  }, [dispatch, scaleXFactor]);
 
   const updateRowsCount = useCallback(() => {
     if (

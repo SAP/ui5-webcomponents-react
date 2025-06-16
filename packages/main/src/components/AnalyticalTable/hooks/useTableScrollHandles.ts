@@ -1,8 +1,7 @@
-import type { ScrollToOptions } from '@tanstack/react-virtual';
-import type { MutableRefObject } from 'react';
-import { useEffect, useRef } from 'react';
+import type { ForwardedRef, RefObject } from 'react';
+import { useImperativeHandle, useRef } from 'react';
 import type { AnalyticalTableScrollMode } from '../../../enums/index.js';
-import type { AnalyticalTableDomRef } from '../types/index.js';
+import type { AnalyticalTableDomRef, ReactVirtualScrollToMethods, TableInstance } from '../types/index.js';
 
 interface ScrollToMethods {
   scrollTo: (offset: number, align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode) => void;
@@ -17,23 +16,16 @@ interface ScrollToMethods {
   ) => void;
 }
 
-interface ReactVirtualScrollToMethods {
-  scrollToOffset?: (offset: number, options?: ScrollToOptions) => void;
-  scrollToIndex?: (index: number, options?: ScrollToOptions) => void;
-  horizontalScrollToOffset?: (offset: number, options?: ScrollToOptions) => void;
-  horizontalScrollToIndex?: (index: number, options?: ScrollToOptions) => void;
-}
-
-export const useTableScrollHandles = (ref, dispatch) => {
-  let analyticalTableRef = useRef(null);
-  if (ref) {
-    analyticalTableRef = ref;
-  }
+export const useTableScrollHandles = (
+  ref: ForwardedRef<AnalyticalTableDomRef>,
+  dispatch: TableInstance['dispatch'],
+): RefObject<ReactVirtualScrollToMethods> => {
   const scrollToRef = useRef<ReactVirtualScrollToMethods>({});
 
-  useEffect(() => {
-    if (analyticalTableRef.current) {
-      Object.assign<MutableRefObject<AnalyticalTableDomRef>, ScrollToMethods>(analyticalTableRef.current, {
+  useImperativeHandle<AnalyticalTableDomRef, AnalyticalTableDomRef & ScrollToMethods>(ref, () => {
+    const atNode = (ref as RefObject<AnalyticalTableDomRef>)?.current;
+    if (atNode) {
+      const scrollMethods: ScrollToMethods = {
         scrollTo: (offset, align) => {
           if (typeof scrollToRef.current?.scrollToOffset === 'function') {
             scrollToRef.current.scrollToOffset(offset, { align });
@@ -74,9 +66,10 @@ export const useTableScrollHandles = (ref, dispatch) => {
             });
           }
         },
-      });
+      };
+      return Object.assign(atNode, scrollMethods);
     }
-  }, []);
+  }, [dispatch, ref]);
 
-  return [analyticalTableRef, scrollToRef];
+  return scrollToRef;
 };
