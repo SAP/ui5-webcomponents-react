@@ -107,8 +107,9 @@ const measureElement = (el: HTMLElement) => {
  */
 const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTypes>((props, ref) => {
   const {
-    alternateRowColor,
     adjustTableHeightOnPopIn,
+    alternateRowColor,
+    alwaysShowBusyIndicator,
     className,
     columnOrder,
     columns,
@@ -750,7 +751,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           className={classNames.tableContainerWithScrollBar}
           data-component-name="AnalyticalTableContainerWithScrollbar"
         >
-          {loading && !!rows.length && (
+          {loading && (!!rows.length || alwaysShowBusyIndicator) && (
             <BusyIndicator
               className={classNames.busyIndicator}
               active={true}
@@ -821,7 +822,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                 tabIndex={0}
                 className={classNames.noDataContainer}
               >
-                {loading ? (
+                {loading && !alwaysShowBusyIndicator ? (
                   <TablePlaceholder
                     columns={visibleColumns}
                     rows={minRows}
