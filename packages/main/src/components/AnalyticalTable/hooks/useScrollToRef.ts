@@ -1,32 +1,20 @@
-import type { ForwardedRef, RefObject } from 'react';
-import { useImperativeHandle, useRef } from 'react';
+import type { RefCallback, RefObject } from 'react';
+import { useCallback, useRef } from 'react';
 import type { AnalyticalTableScrollMode } from '../../../enums/index.js';
-import type { AnalyticalTableDomRef, ReactVirtualScrollToMethods, TableInstance } from '../types/index.js';
+import type { AnalyticalTableDomRef, ScrollToRefType, TableInstance } from '../types/index.js';
 
-interface ScrollToMethods {
-  scrollTo: (offset: number, align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode) => void;
-  scrollToItem: (index: number, align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode) => void;
-  horizontalScrollTo: (
-    offset: number,
-    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode,
-  ) => void;
-  horizontalScrollToItem: (
-    index: number,
-    align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode,
-  ) => void;
-}
-
-export const useTableScrollHandles = (
-  ref: ForwardedRef<AnalyticalTableDomRef>,
+export function useScrollToRef(
+  componentRef: (node: AnalyticalTableDomRef) => void,
   dispatch: TableInstance['dispatch'],
-): RefObject<ReactVirtualScrollToMethods> => {
-  const scrollToRef = useRef<ReactVirtualScrollToMethods>({});
+): [RefCallback<AnalyticalTableDomRef>, RefObject<ScrollToRefType | null>] {
+  const scrollToRef = useRef<ScrollToRefType | null>(null);
 
-  useImperativeHandle<AnalyticalTableDomRef, AnalyticalTableDomRef & ScrollToMethods>(ref, () => {
-    const atNode = (ref as RefObject<AnalyticalTableDomRef>)?.current;
-    if (atNode) {
-      const scrollMethods: ScrollToMethods = {
-        scrollTo: (offset, align) => {
+  const cbRef: RefCallback<AnalyticalTableDomRef> = useCallback(
+    (node) => {
+      if (!node) return;
+
+      const extendedNode = Object.assign(node, {
+        scrollTo: (offset: number, align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode) => {
           if (typeof scrollToRef.current?.scrollToOffset === 'function') {
             scrollToRef.current.scrollToOffset(offset, { align });
           } else {
@@ -36,7 +24,7 @@ export const useTableScrollHandles = (
             });
           }
         },
-        scrollToItem: (index, align) => {
+        scrollToItem: (index: number, align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode) => {
           if (typeof scrollToRef.current?.scrollToIndex === 'function') {
             scrollToRef.current.scrollToIndex(index, { align });
           } else {
@@ -46,7 +34,10 @@ export const useTableScrollHandles = (
             });
           }
         },
-        horizontalScrollTo: (offset, align) => {
+        horizontalScrollTo: (
+          offset: number,
+          align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode,
+        ) => {
           if (typeof scrollToRef.current?.horizontalScrollToOffset === 'function') {
             scrollToRef.current.horizontalScrollToOffset(offset, { align });
           } else {
@@ -56,7 +47,10 @@ export const useTableScrollHandles = (
             });
           }
         },
-        horizontalScrollToItem: (index, align) => {
+        horizontalScrollToItem: (
+          index: number,
+          align?: AnalyticalTableScrollMode | keyof typeof AnalyticalTableScrollMode,
+        ) => {
           if (typeof scrollToRef.current?.horizontalScrollToIndex === 'function') {
             scrollToRef.current.horizontalScrollToIndex(index, { align });
           } else {
@@ -66,10 +60,12 @@ export const useTableScrollHandles = (
             });
           }
         },
-      };
-      return Object.assign(atNode, scrollMethods);
-    }
-  }, [dispatch, ref]);
+      });
 
-  return scrollToRef;
-};
+      componentRef(extendedNode);
+    },
+    [componentRef, dispatch],
+  );
+
+  return [cbRef, scrollToRef];
+}

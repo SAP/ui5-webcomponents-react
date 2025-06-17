@@ -70,10 +70,10 @@ import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig.js';
 import { useRowHighlight } from './hooks/useRowHighlight.js';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator.js';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn.js';
+import { useScrollToRef } from './hooks/useScrollToRef.js';
 import { useSelectionChangeCallback } from './hooks/useSelectionChangeCallback.js';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection.js';
 import { useStyling } from './hooks/useStyling.js';
-import { useTableScrollHandles } from './hooks/useTableScrollHandles.js';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand.js';
 import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth.js';
 import { VerticalScrollbar } from './scrollbars/VerticalScrollbar.js';
@@ -308,7 +308,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     noDataText ?? (tableState.filters?.length > 0 || tableState.globalFilter ? noDataTextFiltered : noDataTextI18n);
 
   const [componentRef, analyticalTableRef] = useSyncRef<AnalyticalTableDomRef>(ref);
-  //@ts-expect-error: types are compatible
+  const [cbRef, scrollToRef] = useScrollToRef(componentRef, dispatch);
+  // @ts-expect-error: is HTMLElement
   const isRtl = useIsRTL(analyticalTableRef);
 
   const columnVirtualizer = useVirtualizer({
@@ -339,8 +340,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       isInitialized.current = true;
     }
   }, [tableState.groupBy, tableState.columnOrder]);
-
-  const scrollToRef = useTableScrollHandles(analyticalTableRef, dispatch);
 
   if (parentRef.current) {
     scrollToRef.current = {
@@ -737,7 +736,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         className={className}
         style={inlineStyle}
         //@ts-expect-error: types are compatible
-        ref={componentRef}
+        ref={cbRef}
         {...rest}
       >
         {header && (
