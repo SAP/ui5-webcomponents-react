@@ -2,45 +2,12 @@
 
 import { debounce, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { CSSProperties, DependencyList, ReactElement } from 'react';
+import type { CSSProperties } from 'react';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 import { SplitterLayoutContext } from '../../internal/SplitterLayoutContext.js';
-import type { CommonProps } from '../../types/index.js';
-import type { SplitterElementPropTypes } from '../SplitterElement/index.js';
 import { classNames, styleData } from './SplitterLayout.module.css.js';
+import type { SplitterLayoutPropTypes } from './types.js';
 import { useConcatSplitterElements } from './useConcatSplitterElements.js';
-
-interface SplitterLayoutOptions {
-  /**
-   * Defines whether the `SplitterLayout` should be reset when its size changes depending on the orientation.
-   */
-  resetOnSizeChange?: boolean;
-  /**
-   * Defines whether the `SplitterLayout` should be reset when its `children` change.
-   */
-  resetOnChildrenChange?: boolean;
-  /**
-   * Defines a list of dependencies that trigger a reset of the `SplitterLayout` when they are changed.
-   *
-   * __Note:__ The order and size of arrays of dependencies must remain constant in React, it's therefore not possible to change size or order between renders.
-   */
-  resetOnCustomDepsChange?: DependencyList;
-}
-
-export interface SplitterLayoutPropTypes extends CommonProps {
-  /**
-   * Controls if a vertical or horizontal `SplitterLayout` is rendered.
-   */
-  vertical?: boolean;
-  /**
-   * The content areas (optional) to be split. The control will show n-1 splitter bars between n controls in this aggregation.
-   */
-  children?: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
-  /**
-   * Defines options to customize the behavior of the SplitterLayout.
-   */
-  options?: SplitterLayoutOptions;
-}
 
 /**
  * A layout that contains several content areas. The content that is added to the `SplitterLayout` should be wrapped
@@ -137,4 +104,5 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
 
 SplitterLayout.displayName = 'SplitterLayout';
 
+export type { SplitterLayoutPropTypes };
 export { SplitterLayout };
