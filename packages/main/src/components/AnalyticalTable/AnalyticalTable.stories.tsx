@@ -109,8 +109,8 @@ const kitchenSinkArgs = {
         // console.log('This is your row data', row.original);
         return (
           <FlexBox>
-            <Button icon="edit" disabled={disabled} />
-            <Button icon="delete" disabled={disabled} />
+            <Button icon="edit" disabled={disabled} accessibleName="Edit" />
+            <Button icon="delete" disabled={disabled} accessibleName="Delete" />
           </FlexBox>
         );
       },
