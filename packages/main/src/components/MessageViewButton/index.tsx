@@ -33,7 +33,7 @@ export interface MessageViewButtonProptypes
   /**
    * Defines the number of messages for a given message type.
    *
-   * __Note:__ Numbers smaller than 2 are not displayed.
+   * __Note:__ Numbers smaller than 1 are not displayed.
    */
   counter?: number;
 }
@@ -78,7 +78,7 @@ const MessageViewButton = forwardRef<ButtonDomRef, MessageViewButtonProptypes>((
       tooltip={tooltip ?? i18nBundle.getText(title)}
       accessibleName={accessibleName ?? label}
     >
-      {counter > 1 && counter}
+      {counter > 0 && counter}
     </Button>
   );
 });
