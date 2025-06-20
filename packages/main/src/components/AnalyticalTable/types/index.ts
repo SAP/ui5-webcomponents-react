@@ -101,7 +101,11 @@ export interface TableInstance {
   disableGlobalFilter?: boolean;
   disableGroupBy?: boolean;
   disableSortBy?: boolean;
-  dispatch?: (action: any) => void;
+  dispatch?: (action: {
+    type: string;
+    payload?: Record<string, unknown> | AnalyticalTableState['popInColumns'] | boolean | string;
+    clientX?: number;
+  }) => void;
   expandedDepth?: number;
   expandedRows?: RowType[];
   filteredFlatRows?: RowType[];
@@ -278,6 +282,13 @@ export interface TriggerScrollState {
   type: 'offset' | 'item';
   direction: 'vertical' | 'horizontal';
   args: [number, Omit<ScrollToOptions, 'behavior'>?];
+}
+
+export interface ReactVirtualScrollToMethods {
+  scrollToOffset?: (offset: number, options?: ScrollToOptions) => void;
+  scrollToIndex?: (index: number, options?: ScrollToOptions) => void;
+  horizontalScrollToOffset?: (offset: number, options?: ScrollToOptions) => void;
+  horizontalScrollToIndex?: (index: number, options?: ScrollToOptions) => void;
 }
 
 interface PopInColumnsState {
