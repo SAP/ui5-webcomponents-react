@@ -755,12 +755,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               active={true}
               delay={loadingDelay}
               data-component-name="AnalyticalTableBusyIndicator"
-            >
-              {/*todo: This is necessary; otherwise, the overlay bg color will not be applied. https://github.com/SAP/ui5-webcomponents/issues/9723 */}
-              <span />
-            </BusyIndicator>
+            />
           )}
-          {/*todo: use global CSS once --sapBlockLayer_Opacity is available*/}
           {showOverlay && (
             <>
               <span id={invalidTableTextId} className={classNames.hiddenA11yText} aria-hidden="true">
