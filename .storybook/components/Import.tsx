@@ -1,4 +1,4 @@
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 
 interface ImportStatementPropTypes {
   /**
@@ -119,17 +119,15 @@ interface ImportProps {
    * Names of module/component (e.g. "Button")
    */
   moduleNames?: ImportStatementPropTypes['moduleNames'];
+  componentId: string;
+  componentName: string;
 }
 
 export const Import = (props: ImportProps) => {
-  //todo: context is not available anymore like this
-  return null;
-  const context = useContext(DocsContext);
-  const isChart = context.componentStories().at(0).id.startsWith('charts-');
-  const isCompat = context.componentStories().at(0).id.startsWith('legacy-');
-  const groups = context.componentStories().at(0).kind.split('/');
-  const module = groups[groups.length - 1].replace('(experimental)', '').trim();
-  const moduleNames = props.moduleNames ?? [module];
+  const { componentId, componentName } = props;
+  const isChart = componentId.startsWith('charts-');
+  const isCompat = componentId.startsWith('legacy-');
+  const moduleNames = props.moduleNames ?? [componentName];
 
   return (
     <ImportStatement

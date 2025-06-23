@@ -26,7 +26,7 @@ export function ControlsWithNote(props: ComponentProps<typeof Controls> & Contro
         </MessageStrip>
       )}
       <Controls {...rest} />
-      <DomRefTable />
+      <DomRefTable of={props.of} />
     </div>
   );
 }
