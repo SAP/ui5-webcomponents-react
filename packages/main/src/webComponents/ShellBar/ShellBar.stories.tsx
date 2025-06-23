@@ -1,5 +1,5 @@
 import image from '@sb/demoImages/Person.png';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import menu2Icon from '@ui5/webcomponents-icons/dist/menu2.js';
 import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';
 import sysHelpIcon from '@ui5/webcomponents-icons/dist/sys-help.js';

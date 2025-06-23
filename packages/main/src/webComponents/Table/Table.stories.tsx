@@ -1,5 +1,5 @@
 import dataLarge from '@sb/mockData/Friends500.json';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import TableGrowingMode from '@ui5/webcomponents/dist/types/TableGrowingMode.js';
 import editIcon from '@ui5/webcomponents-icons/dist/edit.js';
 import saveIcon from '@ui5/webcomponents-icons/dist/save.js';

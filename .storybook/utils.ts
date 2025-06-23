@@ -1,4 +1,4 @@
-import { DocsContext } from '@storybook/blocks';
+import { DocsContext } from '@storybook/addon-docs/blocks';
 import { useContext, useMemo } from 'react';
 // @ts-expect-error: storybook can handle this
 import cemAi from './custom-element-manifests/ai.json';

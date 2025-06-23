@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import { SplitButton } from './index.js';

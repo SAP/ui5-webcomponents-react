@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FlexBox, FlexBoxJustifyContent } from '@ui5/webcomponents-react';
 import { MessageBoxType } from '../../enums/index.js';
 import { Button, MenuItem } from '../../webComponents/index.js';

@@ -1,4 +1,4 @@
-import { DocsContext, Heading } from '@storybook/blocks';
+import { DocsContext, Heading } from '@storybook/addon-docs/blocks';
 import TagDesign from '@ui5/webcomponents/dist/types/TagDesign.js';
 import { Tag, Link, MessageStrip, Popover } from '@ui5/webcomponents-react';
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { complexBulletDataset, legendConfig, tooltipConfig } from '../../resources/DemoProps.js';
 import { BulletChart } from './BulletChart.js';
 

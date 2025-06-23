@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import calendarIcon from '@ui5/webcomponents-icons/dist/calendar.js';
 import chainLinkIcon from '@ui5/webcomponents-icons/dist/chain-link.js';
 import groupIcon from '@ui5/webcomponents-icons/dist/group.js';

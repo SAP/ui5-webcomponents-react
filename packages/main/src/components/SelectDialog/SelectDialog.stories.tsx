@@ -3,7 +3,7 @@ import Laptop2 from '@sb/demoImages/Laptop2.jpg';
 import Pc1 from '@sb/demoImages/PC1.jpg';
 import Pc2 from '@sb/demoImages/PC2.jpg';
 import { isChromatic } from '@sb/utils.js';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../webComponents/Button/index.js';

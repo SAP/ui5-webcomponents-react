@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { LineChart } from '@ui5/webcomponents-react-charts';
 import { DeviationIndicator, ValueColor } from '../../enums';
 import { Card } from '../../webComponents/Card/index';
