@@ -21,17 +21,7 @@ import { GitHubLogo } from './GitHub-Mark';
 import { Import } from './Import';
 import { TableOfContent } from './TableOfContent';
 
-const Links = () => {
-  //todo: context is not available anymore like this
-  // const docsContext = useContext(DocsContext);
-  return null;
-  const docsContext = {};
-  const isChart = docsContext.componentStories().at(0).id.startsWith('charts-');
-
-  // const filePath = docsContext.parameters.fileName.replace(/^\.\//, '');
-  // const folderPath = filePath.substr(0, filePath.lastIndexOf('/'));
-
-  // const githubUrl = `https://github.com/SAP/ui5-webcomponents-react/tree/main/${folderPath}`;
+const Links = ({ isChart }: { isChart?: boolean }) => {
   const githubUrl = `https://github.com/SAP/ui5-webcomponents-react`;
 
   const packageName = `@ui5/webcomponents-react${isChart ? '-charts' : ''}`;
@@ -60,11 +50,9 @@ interface InfoTableProps {
 export const InfoTable = ({ of, since, subComponents, mergeSubComponents }: InfoTableProps) => {
   const context = useOf<'meta'>(of);
   const { csfFile, preparedMeta } = context;
-  console.log(context);
   const moduleName = csfFile.meta.component.displayName;
 
   const wcSubComponents = useGetSubComponentsOfModule(moduleName.replace('V2', ''), preparedMeta.tags);
-  console.log(moduleName);
   const subComps = mergeSubComponents
     ? [...(subComponents ?? []), ...(wcSubComponents ?? [])]
     : (subComponents ?? wcSubComponents);
@@ -88,7 +76,7 @@ export const InfoTable = ({ of, since, subComponents, mergeSubComponents }: Info
             <Label>Usage</Label>
           </th>
           <td data-import-cell={supportsClipboardApi}>
-            <Import componentName={moduleName} componentId={preparedMeta.componentId} />
+            <Import moduleNames={[moduleName]} componentId={preparedMeta.componentId} />
             {supportsClipboardApi && (
               <Button
                 design={ButtonDesign.Transparent}
@@ -117,7 +105,7 @@ export const InfoTable = ({ of, since, subComponents, mergeSubComponents }: Info
               <Label>Subcomponents</Label>
             </th>
             <td data-import-cell={supportsClipboardApi}>
-              <Import moduleNames={subComps} />
+              <Import moduleNames={subComps} componentId={preparedMeta.componentId} />
               {supportsClipboardApi && (
                 <Button
                   design={ButtonDesign.Transparent}
@@ -143,7 +131,7 @@ export const DocsHeader = ({ of, since, subComponents, mergeSubComponents, isCha
         <Title />
         {experimental && <Label className={classes.experimentalLabel}>experimental</Label>}
         <span style={{ flexGrow: 1 }} />
-        <Links />
+        <Links isChart={isChart} />
       </FlexBox>
       <Subtitle />
       <InfoTable of={of} since={since} subComponents={subComponents} mergeSubComponents={mergeSubComponents} />

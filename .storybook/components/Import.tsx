@@ -118,16 +118,14 @@ interface ImportProps {
   /**
    * Names of module/component (e.g. "Button")
    */
-  moduleNames?: ImportStatementPropTypes['moduleNames'];
+  moduleNames: ImportStatementPropTypes['moduleNames'];
   componentId: string;
-  componentName: string;
 }
 
 export const Import = (props: ImportProps) => {
-  const { componentId, componentName } = props;
+  const { componentId, moduleNames } = props;
   const isChart = componentId.startsWith('charts-');
   const isCompat = componentId.startsWith('legacy-');
-  const moduleNames = props.moduleNames ?? [componentName];
 
   return (
     <ImportStatement
