@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { Token } from '../Token/index.js';

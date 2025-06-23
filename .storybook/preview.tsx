@@ -1,6 +1,6 @@
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-base/dist/features/F6Navigation.js';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import { setLanguage } from '@ui5/webcomponents-base/dist/config/Language.js';
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import applyDirection from '@ui5/webcomponents-base/dist/locale/applyDirection.js';

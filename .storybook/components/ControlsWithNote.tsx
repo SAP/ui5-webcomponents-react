@@ -1,4 +1,4 @@
-import { Controls } from '@storybook/blocks';
+import { Controls } from '@storybook/addon-docs/blocks';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import { MessageStrip } from '@ui5/webcomponents-react';
 import type { ComponentProps, ReactNode } from 'react';

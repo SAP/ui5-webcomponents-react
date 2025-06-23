@@ -1,4 +1,3 @@
-import { DocsContext } from '@storybook/addon-docs';
 import { Fragment, useContext } from 'react';
 
 interface ImportStatementPropTypes {
@@ -123,6 +122,8 @@ interface ImportProps {
 }
 
 export const Import = (props: ImportProps) => {
+  //todo: context is not available anymore like this
+  return null;
   const context = useContext(DocsContext);
   const isChart = context.componentStories().at(0).id.startsWith('charts-');
   const isCompat = context.componentStories().at(0).id.startsWith('legacy-');

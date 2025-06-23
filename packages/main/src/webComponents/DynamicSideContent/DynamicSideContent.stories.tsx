@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import SideContentFallDown from '@ui5/webcomponents-fiori/dist/types/SideContentFallDown.js';
 import SideContentPosition from '@ui5/webcomponents-fiori/dist/types/SideContentPosition.js';
 import SideContentVisibility from '@ui5/webcomponents-fiori/dist/types/SideContentVisibility.js';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { legendConfig, scatterColorDataSet, scatterComplexDataSet, tooltipConfig } from '../../resources/DemoProps.js';
 import { ScatterChart } from './ScatterChart.js';
 

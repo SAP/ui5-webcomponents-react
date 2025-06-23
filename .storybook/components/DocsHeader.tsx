@@ -1,4 +1,4 @@
-import { Description, DocsContext, Subtitle, Title } from '@storybook/addon-docs';
+import { Description, Subtitle, Title } from '@storybook/addon-docs/blocks';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import copyIcon from '@ui5/webcomponents-icons/dist/copy.js';
@@ -13,7 +13,6 @@ import {
   ThemeProvider,
 } from '@ui5/webcomponents-react';
 import { clsx } from 'clsx';
-import { useContext } from 'react';
 import { useGetSubComponentsOfModule } from '../utils';
 import classes from './DocsHeader.module.css';
 import { GitHubLogo } from './GitHub-Mark';
@@ -21,7 +20,10 @@ import { Import } from './Import';
 import { TableOfContent } from './TableOfContent';
 
 const Links = () => {
-  const docsContext = useContext(DocsContext);
+  //todo: context is not available anymore like this
+  // const docsContext = useContext(DocsContext);
+  return null;
+  const docsContext = {};
   const isChart = docsContext.componentStories().at(0).id.startsWith('charts-');
 
   // const filePath = docsContext.parameters.fileName.replace(/^\.\//, '');
@@ -53,7 +55,9 @@ interface InfoTableProps {
 }
 
 export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTableProps) => {
-  const context = useContext(DocsContext);
+  //todo: context is not available anymore like this
+  // const context = useContext(DocsContext);
+  return null;
   const groups = context.componentStories().at(0).kind.split('/');
   const moduleName = groups[groups.length - 1].replace('(experimental)', '').trim();
 

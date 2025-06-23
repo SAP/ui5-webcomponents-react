@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import personIcon from '@ui5/webcomponents-icons/dist/person-placeholder.js';
 import { LineChart } from '@ui5/webcomponents-react-charts';
 import { AnalyticalCardHeader } from '../../components/AnalyticalCardHeader';
