@@ -1,9 +1,9 @@
-import { DocsContext, Heading } from '@storybook/addon-docs/blocks';
+import { Heading } from '@storybook/addon-docs/blocks';
 import TagDesign from '@ui5/webcomponents/dist/types/TagDesign.js';
 import { Tag, Link, MessageStrip, Popover } from '@ui5/webcomponents-react';
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types';
 import type { ReactNode } from 'react';
-import { Fragment, useContext, useRef } from 'react';
+import { Fragment, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useGetCem } from '../utils';
 import classes from './DomRefTable.module.css';
@@ -48,7 +48,10 @@ function Name(props: CEM.ClassMember) {
 }
 
 export function DomRefTable() {
-  const docsContext = useContext(DocsContext);
+  return null;
+  //todo: context is not available anymore like this
+  // const docsContext = useContext(DocsContext);
+  const docsContext = {};
   const storyTags: string[] = docsContext.attachedCSFFile?.meta?.tags;
   const cemModuleName = storyTags?.find((tag) => tag.startsWith('cem-module:'));
   const componentName = docsContext.componentStories().at(0)?.component?.displayName;

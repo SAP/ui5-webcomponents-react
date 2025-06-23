@@ -1,5 +1,5 @@
-import { DocsContext } from '@storybook/addon-docs/blocks';
-import { useContext, useMemo } from 'react';
+// import { DocsContext } from '@storybook/addon-docs/blocks';
+import { useMemo } from 'react';
 // @ts-expect-error: storybook can handle this
 import cemAi from './custom-element-manifests/ai.json';
 // @ts-expect-error: storybook can handle this
@@ -23,7 +23,10 @@ export const MAPPED_THEMES = [
 export const excludePropsForAbstract = ['className', 'style'];
 
 export function useGetCem() {
-  const docsContext = useContext(DocsContext);
+  return {};
+  //todo: context is not available anymore like this
+  // const docsContext = useContext(DocsContext);
+
   // @ts-expect-error: private but existing
   const { attachedCSFFiles } = docsContext;
 
