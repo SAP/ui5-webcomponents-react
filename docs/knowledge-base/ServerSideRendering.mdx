@@ -26,10 +26,16 @@ We have templates available for both the pages and the app router.
 
 In case you already have an existing Next.js project and want to add UI5 Web Components for React to it, you first need to follow our [general Getting Started Guide](?path=/docs/getting-started--docs#add-ui5webcomponents-react-to-an-existing-app).
 
-For a better SSR support, we recommend importing our stylesheet bundle inside the `_app` file or the root layout (depending on whether you are using the pages or the app router) and set the `staticCssInjected` prop on our `ThemeProvider`:
+For better SSR support (i.a. to prevent flickering), we recommend importing our stylesheet bundle inside the `_app` file or the root layout (depending on whether you are using the pages or the app router) and set the `staticCssInjected` prop on our `ThemeProvider`:
+
+**Note:** Only import the stylesheets of the packages you are actually using.
 
 ```tsx
-import '@ui5/webcomponents-react/styles.css';
+import '@ui5/webcomponents-react/styles.css'; // main package styles
+// Required only when using the corresponding package
+import '@ui5/webcomponents-react-charts/styles.css'; // chart package styles
+import '@ui5/webcomponents-react-compat/styles.css'; // compat package styles
+
 
 export default function AppOrRootLayout() {
   // ...

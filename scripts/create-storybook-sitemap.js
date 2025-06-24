@@ -14,6 +14,13 @@ const options = {
 
 const { values } = parseArgs({ options });
 
+if (typeof values.directory !== 'string') {
+  throw new Error('Expected --directory to be a string');
+}
+if (typeof values.basePath !== 'string') {
+  throw new Error('Expected --basePath to be a string');
+}
+
 const storybookDir = resolve(process.cwd(), values.directory);
 const stories = readFileSync(resolve(storybookDir, 'index.json'), 'utf-8');
 const storiesJson = JSON.parse(stories);
@@ -26,7 +33,7 @@ const docs = Object.values(storiesJson.entries)
     return `?path=/docs/${story.id}`;
   });
 
-const lastModified = new Date().toISOString().replace(/T[\d:\.]+Z/, '');
+const lastModified = new Date().toISOString().replace(/T[\d:.]+Z/, '');
 let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
 sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 sitemap += `    <url>\n`;

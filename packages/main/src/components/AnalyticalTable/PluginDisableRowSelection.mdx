@@ -32,34 +32,44 @@ With the `useRowDisableSelection` it's possible to disable the selection of spec
 ## Example
 
 ```jsx
+const disableRowFunc = (row) => row.original.age < 40;
+const tableHooks = [
+  AnalyticalTableHooks.useRowDisableSelection(disableRowFunc),
+];
 const WithFunctionParameter = () => {
-  const disableRowFunc = (row) => row.original.age < 40;
+
   return (
     <AnalyticalTable
       data={data}
       columns={columns}
       selectionMode={AnalyticalTableSelectionMode.Multiple}
-      tableHooks={[AnalyticalTableHooks.useRowDisableSelection(disableRowFunc)]}
+      tableHooks={tableHooks}
     />
   );
 };
 
-const WithStringParameter = () => {
+```
+
+```jsx
 const data = [
-    {
-        "name": "Peter Franco",
-        "age": 22,
-         ...
-        "disableSelection": Math.random() < 0.5
-    },
-    ...
+  {
+    name: "Peter Franco",
+    age: 22,
+    //...
+    disableSelection: Math.random() < 0.5,
+  },
+  //...
 ];
+const tableHooks = [
+  AnalyticalTableHooks.useRowDisableSelection("disableSelection"),
+];
+const WithStringParameter = () => {
   return (
     <AnalyticalTable
       data={data}
       columns={columns}
       selectionMode={AnalyticalTableSelectionMode.Multiple}
-      tableHooks={[AnalyticalTableHooks.useRowDisableSelection('disableSelection')]}
+      tableHooks={tableHooks}
     />
   );
 };

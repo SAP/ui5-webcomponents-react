@@ -49,6 +49,7 @@ export interface MessageBoxPropTypes
    * Flag whether the Message Box should be opened or closed
    */
   open?: DialogPropTypes['open'];
+  // todo: add headerText prop and deprecate `titleText`
   /**
    * A custom title for the MessageBox. If not present, it will be derived from the `MessageBox` type.
    */

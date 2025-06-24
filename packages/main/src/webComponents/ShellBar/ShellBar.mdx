@@ -1,5 +1,6 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
+import DesignExamples from '@sb/docs/DesignCompliantExampleSection.md?raw';
 import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks';
 import { ShellBarItem } from '../ShellBarItem/index';
 import { ShellBarSpacer } from '../ShellBarSpacer/index';
@@ -21,13 +22,41 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 <ControlsWithNote of={ComponentStories.Default} />
 
-<br />
+<Markdown>{DesignExamples}</Markdown>
 
-# More Examples
+### All Features
 
-<br />
+A comprehensive ShellBar demonstrating all available features including notifications, search, content items, and profile.
 
-## Open a Popover on ShellBarItem click
+<Canvas of={ComponentStories.AllFeatures} />
+
+### Embedded Back Navigation
+
+ShellBar with embedded back navigation button in the start area.
+
+<Canvas of={ComponentStories.EmbeddedBackNavigation} />
+
+### Trial Example
+
+ShellBar configured for trial environments with trial tags and remaining days indicator.
+
+<Canvas of={ComponentStories.TrialExample} />
+
+### Multiple Productive Instances
+
+ShellBar setup for multiple productive system instances with region indicators.
+
+<Canvas of={ComponentStories.ProductiveInstances} />
+
+### Multiple Non-Productive Instances
+
+ShellBar setup for multiple non-productive system instances with system and region tags.
+
+<Canvas of={ComponentStories.NonProductiveInstances} />
+
+## More examples
+
+### Open a Popover on ShellBarItem click
 
 To open a popover with the `ShellBarItem` you can use the `detail.targetRef` property of the `onClick` event.
 

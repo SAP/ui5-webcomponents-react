@@ -86,4 +86,23 @@ Each component developed by the UI5 Web Components team ([`ui5-webcomponents`](h
 
 If a component does not have this note, it is a React-only component provided exclusively by `ui5-webcomponents-react`.
 
+## Scoping
+
+Starting from UI5 Web Components (for React) 2.0.0, the order if imports with regards to scoping and components matters.
+Setting the scoping suffix must be done before importing any components, as they use the suffix at the top-level of the module - meaning when a component is imported, the suffix has to be known.
+For this to work, calling the method should be done in a separate module (e.g. scoping-config.js) and this module should be imported before any components are imported.
+You can find more information about this in the [UI5 Web Components documentation](https://sap.github.io/ui5-webcomponents/docs/advanced/scoping/).
+
+```ts
+// scoping-config.js
+import { setCustomElementsScopingSuffix } from '@ui5/webcomponents-base/dist/CustomElementsScope.js';
+setCustomElementsScopingSuffix('demo');
+
+// app main file, e.g index.js, main.tsx, etc.
+import './scoping-config.js';
+// now, all other component imports - the scoping config import must be the first import of the app
+import { Button } from '@ui5/webcomponents-react';
+// ...
+```
+
 <Footer />

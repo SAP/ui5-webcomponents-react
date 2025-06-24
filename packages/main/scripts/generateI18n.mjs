@@ -3,6 +3,7 @@ import { rename, readdir, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// eslint-disable-next-line import/default
 import prettier from 'prettier';
 import prettierConfig from '../../../prettier.config.js';
 
@@ -66,7 +67,9 @@ const assetsFetch = [
 
 for (const file of jsonImports) {
   if (file.includes('-fetch')) {
-    assetsFetch.push(`import './json-imports/${file}';`);
+    //todo: add to Assets-fetch.js
+  } else if (file.includes('-node')) {
+    //todo: add to Assets-node.js
   } else {
     assets.push(`import './json-imports/${file}';`);
   }

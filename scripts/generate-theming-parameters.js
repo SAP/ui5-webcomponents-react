@@ -1,8 +1,9 @@
 import { writeFileSync } from 'fs';
-import ThemingParameters from '@sap-theming/theming-base-content/content/Base/baseLib/sap_horizon/variables.json' with { type: 'json' };
-import PATHS from '../config/paths.js';
 import path from 'path';
+import ThemingParameters from '@sap-theming/theming-base-content/content/Base/baseLib/sap_horizon/variables.json' with { type: 'json' };
+// eslint-disable-next-line import/default
 import prettier from 'prettier';
+import PATHS from '../config/paths.js';
 import prettierConfig from '../prettier.config.js';
 
 let fileContent = `/* eslint-disable camelcase */

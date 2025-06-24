@@ -3,6 +3,7 @@ import type { CommonProps, Ui5CustomEvent } from '@ui5/webcomponents-react-base'
 import type { ReactElement, ReactNode } from 'react';
 import type { ObjectPageMode } from '../../../enums/ObjectPageMode.js';
 import type { AvatarPropTypes } from '../../../webComponents/Avatar/index.js';
+import type { ButtonPropTypes } from '../../../webComponents/Button/index.js';
 import type { TabContainerDomRef } from '../../../webComponents/TabContainer/index.js';
 import type { ObjectPageHeaderPropTypes } from '../../ObjectPageHeader/index.js';
 import type { ObjectPageSectionPropTypes } from '../../ObjectPageSection/index.js';
@@ -106,7 +107,12 @@ export interface ObjectPagePropTypes extends Omit<CommonProps, 'placeholder'> {
       role?: string;
       ariaRoledescription?: string;
     };
+    //todo: rename in next major version to better reflect what part of the ObjectPage it describes
     objectPageAnchorBar?: {
+      expandButton?: {
+        expanded?: ButtonPropTypes['accessibilityAttributes']['expanded'] | undefined;
+        accessibleName?: ButtonPropTypes['accessibleName'];
+      };
       role?: string;
     };
     objectPageFooterArea?: {
@@ -149,3 +155,10 @@ export interface ObjectPageDomRef extends HTMLDivElement {
    */
   toggleHeaderArea: (snapped?: boolean) => void;
 }
+
+export type HandleOnSectionSelectedType = (
+  targetEvent: Event | Record<string, never>,
+  newSelectionSectionId: string,
+  index: number | string,
+  section: HTMLElement,
+) => void;

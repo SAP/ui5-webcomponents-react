@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.11.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.11.0...v2.11.1) (2025-06-06)
+
+**Note:** Version bump only for package @ui5/webcomponents-react
+
+# [2.11.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.1...v2.11.0) (2025-06-06)
+
+### Bug Fixes
+
+- **AnalyticalTable - subcomponents:** fix non-breaking React error & improve performance ([#7366](https://github.com/SAP/ui5-webcomponents-react/issues/7366)) ([c0d745a](https://github.com/SAP/ui5-webcomponents-react/commit/c0d745af9905c9fb610f64f60de3f16b12ce33ad)), closes [#6755](https://github.com/SAP/ui5-webcomponents-react/issues/6755)
+- **ObjectPage:** prevent jumping of active tab when selecting section ([#7395](https://github.com/SAP/ui5-webcomponents-react/issues/7395)) ([94ca592](https://github.com/SAP/ui5-webcomponents-react/commit/94ca592c5c2412a9e448f01073973acaecae2332)), closes [#7038](https://github.com/SAP/ui5-webcomponents-react/issues/7038)
+
+### Features
+
+- **ObjectPage:** extend `accessibilityAttributes` with `expandButton` ([#7405](https://github.com/SAP/ui5-webcomponents-react/issues/7405)) ([fff9fb9](https://github.com/SAP/ui5-webcomponents-react/commit/fff9fb9b5293c1c3e6a35952219d7cb31b9680b5)), closes [#7365](https://github.com/SAP/ui5-webcomponents-react/issues/7365)
+- update to UI5 Web Components 2.11.0 ([#7414](https://github.com/SAP/ui5-webcomponents-react/issues/7414)) ([a5985dd](https://github.com/SAP/ui5-webcomponents-react/commit/a5985dded43d6d28fdd83db94a45834280ab3e77))
+
+## [2.10.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.10.0...v2.10.1) (2025-05-28)
+
+### Bug Fixes
+
+- **AnalyticalTable:** prevent error if `onFilter` is not defined ([#7388](https://github.com/SAP/ui5-webcomponents-react/issues/7388)) ([d30e2d5](https://github.com/SAP/ui5-webcomponents-react/commit/d30e2d5fba309fedf08151c14f6139e5d0c8138b))
+- **Assets:** exclude `-fetch` assets & remove unsupported `Assets-static.js` ([#7344](https://github.com/SAP/ui5-webcomponents-react/issues/7344)) ([5b180b9](https://github.com/SAP/ui5-webcomponents-react/commit/5b180b9c2b0045deb49400fc0b01d0f97cd3dfc9)), closes [#7343](https://github.com/SAP/ui5-webcomponents-react/issues/7343)
+- **deps:** pin dependencies (main) ([#7334](https://github.com/SAP/ui5-webcomponents-react/issues/7334)) ([86c9b7b](https://github.com/SAP/ui5-webcomponents-react/commit/86c9b7bd0801628aae42202618c86b7324effb87))
+- **deps:** update dependency @tanstack/react-virtual to v3.13.9 (main) ([#7367](https://github.com/SAP/ui5-webcomponents-react/issues/7367)) ([e2b36fd](https://github.com/SAP/ui5-webcomponents-react/commit/e2b36fd6392778ddc6cb86cb8d54ed181c32483d))
+- **MessageView:** prevent error if `onItemSelect` is not defined ([#7389](https://github.com/SAP/ui5-webcomponents-react/issues/7389)) ([bfe3f3a](https://github.com/SAP/ui5-webcomponents-react/commit/bfe3f3a5203f32ee8e37ba98731bd8c65dff95d2))
+- **ObjectPage:** correct position of header feature buttons ([#7374](https://github.com/SAP/ui5-webcomponents-react/issues/7374)) ([d4b4db7](https://github.com/SAP/ui5-webcomponents-react/commit/d4b4db7798a03b62fde99a72455915d7955a9560)), closes [#7362](https://github.com/SAP/ui5-webcomponents-react/issues/7362)
+- **SelectDialog:** use `headerText` as `accessibleName` per default ([#7327](https://github.com/SAP/ui5-webcomponents-react/issues/7327)) ([400d46b](https://github.com/SAP/ui5-webcomponents-react/commit/400d46be7e2bf041e0c367161d3edf636d400694)), closes [#7319](https://github.com/SAP/ui5-webcomponents-react/issues/7319)
+
 # [2.10.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.9.2...v2.10.0) (2025-05-08)
 
 ### Bug Fixes

@@ -1,5 +1,5 @@
-// @ts-check
-
+import { fileURLToPath } from 'node:url';
+import { includeIgnoreFile } from '@eslint/compat';
 import eslint from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
 import noOnlyTests from 'eslint-plugin-no-only-tests';
@@ -24,16 +24,18 @@ const ignorePatterns = {
     'packages/main/src/generated',
     'packages/cypress-commands/dist',
     '**/generated',
-    '**/scripts',
-    '**/shared',
-    '**/examples',
-    '**/templates',
     '**/*.module.css.ts',
     '.yarn',
+    '.out/**',
+    '**/out/**',
+    '**/examples',
+    '**/templates',
+    '**/patterns/navigation-layout',
   ],
 };
 
 const config = tseslint.config(
+  includeIgnoreFile(fileURLToPath(new URL('.gitignore', import.meta.url))),
   ignorePatterns,
   eslint.configs.recommended,
   // typescript-eslint shared configs
@@ -249,15 +251,10 @@ const config = tseslint.config(
   },
 
   {
-    files: ['packages/cli/**/*, scripts/**/*', '.github/**/*', 'config/**/*'],
+    files: ['packages/cli/**/*', 'scripts/**/*', '.github/**/*', 'config/**/*'],
     languageOptions: {
       globals: {
         ...globals.node,
-      },
-      parserOptions: {
-        projectService: {
-          allowDefaultProject: ['config/*.js', '.github/*.mjs'],
-        },
       },
     },
   },
@@ -268,6 +265,7 @@ const config = tseslint.config(
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },

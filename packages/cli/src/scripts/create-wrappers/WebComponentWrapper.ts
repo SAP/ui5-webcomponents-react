@@ -1,4 +1,5 @@
-import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
+import type { AbstractRenderer } from './AbstractRenderer.js';
+import { RenderingPhase } from './AbstractRenderer.js';
 
 interface ImportConfig {
   default: string | null;

@@ -10,6 +10,12 @@ interface ImportStatementPropTypes {
    * Package name (e.g. "@ui5/webcomponents-react")
    */
   packageName: string;
+  /**
+   * Defines if it's a named or default import.
+   *
+   * __Note:__ If `true`, only a single `moduleName` is supported.
+   */
+  defaultImport?: boolean;
 }
 interface DeepPath {
   path: string;
@@ -37,7 +43,7 @@ function FromPath({ packageName, deepPath }: FromPathPropTypes) {
 
 FromPath.displayName = 'FromPath';
 
-export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPropTypes) => {
+export const ImportStatement = ({ moduleNames, packageName, defaultImport }: ImportStatementPropTypes) => {
   if (!moduleNames) {
     return null;
   }
@@ -68,8 +74,7 @@ export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPro
           if (!deepPath) {
             return (
               <span style={{ fontSize: '14px' }} key="0">
-                {' '}
-                {'{'}
+                {!defaultImport && ' {'}
                 {moduleNames.length > 2 ? (
                   <>
                     {moduleNames.map((item) => {
@@ -86,7 +91,7 @@ export const ImportStatement = ({ moduleNames, packageName }: ImportStatementPro
                 ) : (
                   <>&nbsp;{moduleNames.join(', ')}&nbsp;</>
                 )}
-                {'}'}{' '}
+                {!defaultImport && '} '}
               </span>
             );
           } else {

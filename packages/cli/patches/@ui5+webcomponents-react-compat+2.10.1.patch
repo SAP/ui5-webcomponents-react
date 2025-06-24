@@ -1,0 +1,37 @@
+diff --git a/node_modules/@ui5/webcomponents-react-compat/dist/components/Table/index.js b/node_modules/@ui5/webcomponents-react-compat/dist/components/Table/index.js
+index 41e173b..0b6bd4a 100644
+--- a/node_modules/@ui5/webcomponents-react-compat/dist/components/Table/index.js
++++ b/node_modules/@ui5/webcomponents-react-compat/dist/components/Table/index.js
+@@ -56,7 +56,7 @@ import { withWebComponent } from '@ui5/webcomponents-react-base/dist/wrapper/wit
+  *
+  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
+  */
+-const Table = withWebComponent('ui5-table', [
++const Table = withWebComponent('ui5-table-v1', [
+     'accessibleName',
+     'accessibleNameRef',
+     'busyDelay',
+diff --git a/node_modules/@ui5/webcomponents-react-compat/dist/components/TableCell/index.js b/node_modules/@ui5/webcomponents-react-compat/dist/components/TableCell/index.js
+index 2e5338f..cce3387 100644
+--- a/node_modules/@ui5/webcomponents-react-compat/dist/components/TableCell/index.js
++++ b/node_modules/@ui5/webcomponents-react-compat/dist/components/TableCell/index.js
+@@ -6,6 +6,6 @@ import { withWebComponent } from '@ui5/webcomponents-react-base/dist/wrapper/wit
+  *
+  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
+  */
+-const TableCell = withWebComponent('ui5-table-cell', [], [], [], []);
++const TableCell = withWebComponent('ui5-table-cell-v1', [], [], [], []);
+ TableCell.displayName = 'TableCell';
+ export { TableCell };
+diff --git a/node_modules/@ui5/webcomponents-react-compat/dist/components/TableRow/index.js b/node_modules/@ui5/webcomponents-react-compat/dist/components/TableRow/index.js
+index 6d568f3..0b982f7 100644
+--- a/node_modules/@ui5/webcomponents-react-compat/dist/components/TableRow/index.js
++++ b/node_modules/@ui5/webcomponents-react-compat/dist/components/TableRow/index.js
+@@ -6,6 +6,6 @@ import { withWebComponent } from '@ui5/webcomponents-react-base/dist/wrapper/wit
+  *
+  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
+  */
+-const TableRow = withWebComponent('ui5-table-row', ['type'], ['navigated', 'selected'], [], []);
++const TableRow = withWebComponent('ui5-table-row-v1', ['type'], ['navigated', 'selected'], [], []);
+ TableRow.displayName = 'TableRow';
+ export { TableRow };

@@ -58,7 +58,7 @@ const meta = {
     selectedSectionId: 'goals',
     imageShapeCircle: true,
     image: SampleImage,
-    style: { height: '700px' },
+    style: { height: '700px', maxHeight: '90vh' },
     footerArea: (
       <Bar
         design={BarDesign.FloatingFooter}
@@ -134,8 +134,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render(args) {
     return (
-      // `onBeforeNavigate` has to be called like this, otherwise it's invoked two times for some reason.
-      <ObjectPage {...args} onBeforeNavigate={args.onBeforeNavigate}>
+      // `onBeforeNavigate` & `onToggleHeaderArea` have to be added like this, otherwise Storybook invokes them incorrectly sometimes
+      <ObjectPage {...args} onBeforeNavigate={args.onBeforeNavigate} onToggleHeaderArea={args.onToggleHeaderArea}>
         <ObjectPageSection titleText="Goals" id="goals" aria-label="Goals">
           <Form layout="S1 M2 L3 XL3" labelSpan="S12 M12 L12 XL12">
             <FormItem labelContent={<Label showColon>Evangelize the UI framework across the company</Label>}>

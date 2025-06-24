@@ -2,10 +2,19 @@
 
 import '@ui5/webcomponents/dist/TableSelectionSingle.js';
 import type TableRow from '@ui5/webcomponents/dist/TableRow.js';
+import type TableSelectionBehavior from '@ui5/webcomponents/dist/types/TableSelectionBehavior.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
 interface TableSelectionSingleAttributes {
+  /**
+   * Defines the selection behavior.
+   *
+   * **Note:** Available since [v2.11](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.11) of **@ui5/webcomponents**.
+   * @default "RowSelector"
+   */
+  behavior?: TableSelectionBehavior | keyof typeof TableSelectionBehavior;
+
   /**
    * Defines the `row-key` value of the selected row.
    * @default undefined
@@ -65,7 +74,7 @@ interface TableSelectionSinglePropTypes
  */
 const TableSelectionSingle = withWebComponent<TableSelectionSinglePropTypes, TableSelectionSingleDomRef>(
   'ui5-table-selection-single',
-  ['selected'],
+  ['behavior', 'selected'],
   [],
   [],
   ['change'],

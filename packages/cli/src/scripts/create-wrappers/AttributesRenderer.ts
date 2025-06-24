@@ -8,7 +8,7 @@ import {
 } from '../../util/formatters.js';
 import { resolveReferenceImports } from '../../util/referenceResolver.js';
 import { AbstractRenderer, RenderingPhase } from './AbstractRenderer.js';
-import { WebComponentWrapper } from './WebComponentWrapper.js';
+import type { WebComponentWrapper } from './WebComponentWrapper.js';
 
 const loggedTypes = new Set<string>();
 
@@ -66,11 +66,12 @@ export class AttributesRenderer extends AbstractRenderer {
   }
 
   private propTyping(attribute: CEM.ClassField, context: WebComponentWrapper) {
+    const isAttribute = !attribute._ui5noAttribute;
     let type = attribute.type?.text ?? 'unknown';
     type = mapWebComponentTypeToTsType(type);
 
     const references = attribute.type?.references;
-    const isEnum = references != null && references?.length > 0 && attribute.default !== '{}';
+    const isEnum = references != null && references?.length > 0 && attribute.default !== '{}' && isAttribute;
 
     if (isEnum) {
       type += ` | keyof typeof ${type}`;

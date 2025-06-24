@@ -2,9 +2,10 @@
   "compilerOptions": {
     "target": "ES2021",
     "lib": ["es2022", "dom"],
-    "types": ["cypress", "node", "@testing-library/cypress", "cypress-real-events"],
+    "types": ["cypress", "node", "@testing-library/cypress", "cypress-real-events", "chai"],
     "moduleResolution": "Node",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "composite": true
   },
   "include": ["cypress", "**/*.cy.ts", "**/*.cy.tsx", "cypress.config.ts"]
 }

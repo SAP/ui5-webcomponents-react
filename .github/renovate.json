@@ -72,21 +72,21 @@
       ]
     },
     {
-      "description": "Example & Template dependencies",
+      "description": "Example,Template & Pattern dependencies",
       "extends": ["schedule:weekly"],
-      "matchFileNames": ["examples/**", "templates/**"],
+      "matchFileNames": ["examples/**", "templates/**", "patterns/**"],
       "semanticCommitType": "chore",
-      "groupName": "all non-major dependencies (examples & templates)",
+      "groupName": "all non-major dependencies (examples, templates & patterns)",
       "groupSlug": "examples-all-minor-patch",
       "matchUpdateTypes": ["minor", "patch"],
       "matchBaseBranches": ["main"],
       "matchPackageNames": ["*", "!/^@ui5//"]
     },
     {
-      "description": "UI5 Web Components (for React) in all examples & templates",
-      "groupName": "UI5 Web Components React (examples & templates)",
+      "description": "UI5 Web Components (for React) in all examples, templates & patterns",
+      "groupName": "UI5 Web Components React (examples, templates & patterns)",
       "groupSlug": "examples-ui5-webcomponents-react",
-      "matchFileNames": ["examples/**", "templates/**"],
+      "matchFileNames": ["examples/**", "templates/**", "patterns/**"],
       "semanticCommitType": "chore",
       "matchBaseBranches": ["main"],
       "matchSourceUrls": [

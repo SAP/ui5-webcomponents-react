@@ -25,15 +25,21 @@ import type { ObjectPageSubSectionPropTypes } from '../ObjectPageSubSection/inde
 import { CollapsedAvatar } from './CollapsedAvatar.js';
 import { classNames, styleData } from './ObjectPage.module.css.js';
 import { getSectionById, getSectionElementById } from './ObjectPageUtils.js';
-import type { ObjectPageDomRef, ObjectPagePropTypes, ObjectPageTitlePropsWithDataAttributes } from './types/index.js';
+import type {
+  HandleOnSectionSelectedType,
+  ObjectPageDomRef,
+  ObjectPagePropTypes,
+  ObjectPageTitlePropsWithDataAttributes,
+} from './types/index.js';
 import { useHandleTabSelect } from './useHandleTabSelect.js';
+import { useOnScrollEnd } from './useOnScrollEnd.js';
 
 const ObjectPageCssVariables = {
   headerDisplay: '--_ui5wcr_ObjectPage_header_display',
   titleFontSize: '--_ui5wcr_ObjectPage_title_fontsize',
 };
 
-const TAB_CONTAINER_HEADER_HEIGHT = 44;
+const TAB_CONTAINER_HEADER_HEIGHT = 44 + 4; // tabbar height + custom 4px padding-block-start
 
 /**
  * A component that allows apps to easily display information related to a business object.
@@ -76,6 +82,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const [internalSelectedSectionId, setInternalSelectedSectionId] = useState<string | undefined>(
     selectedSectionId ?? firstSectionId,
   );
+  const [tabSelectId, setTabSelectId] = useState<null | string>(null);
 
   const isProgrammaticallyScrolled = useRef(false);
   const [componentRef, objectPageRef] = useSyncRef(ref);
@@ -83,7 +90,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const prevTopHeaderHeight = useRef(0);
   // @ts-expect-error: useSyncRef will create a ref if not present
   const [componentRefHeaderContent, headerContentRef] = useSyncRef(headerArea?.ref);
-  const anchorBarRef = useRef<HTMLDivElement>(null);
   const scrollEvent = useRef(undefined);
   const objectPageContentRef = useRef<HTMLDivElement>(null);
   const selectionScrollTimeout = useRef(null);
@@ -99,6 +105,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const [currentTabModeSection, setCurrentTabModeSection] = useState(null);
   const [toggledCollapsedHeaderWasVisible, setToggledCollapsedHeaderWasVisible] = useState(false);
   const sections = mode === ObjectPageMode.IconTabBar ? currentTabModeSection : children;
+  const scrollEndHandler = useOnScrollEnd({ objectPageRef, setTabSelectId });
 
   useEffect(() => {
     const currentSection =
@@ -128,19 +135,17 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   }, []);
 
   // observe heights of header parts
-  const { topHeaderHeight, headerContentHeight, anchorBarHeight, totalHeaderHeight, headerCollapsed } =
-    useObserveHeights(
-      objectPageRef,
-      topHeaderRef,
-      headerContentRef,
-      anchorBarRef,
-      [headerCollapsedInternal, setHeaderCollapsedInternal],
-      {
-        noHeader: !titleArea && !headerArea,
-        fixedHeader: headerPinned,
-        scrollTimeout,
-      },
-    );
+  const { topHeaderHeight, headerContentHeight, totalHeaderHeight, headerCollapsed } = useObserveHeights(
+    objectPageRef,
+    topHeaderRef,
+    headerContentRef,
+    [headerCollapsedInternal, setHeaderCollapsedInternal],
+    {
+      noHeader: !titleArea && !headerArea,
+      fixedHeader: headerPinned,
+      scrollTimeout,
+    },
+  );
 
   useEffect(() => {
     if (typeof onToggleHeaderArea === 'function' && isToggledRef.current) {
@@ -197,7 +202,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
         const scrollMargin =
           -1 /* reduce margin-block so that intersection observer detects correct section*/ +
           safeTopHeaderHeight +
-          anchorBarHeight +
           TAB_CONTAINER_HEADER_HEIGHT +
           (headerPinned && !headerCollapsed ? headerContentHeight : 0);
         section.style.scrollMarginBlockStart = scrollMargin + 'px';
@@ -236,7 +240,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   };
 
   // section was selected by clicking on the tab bar buttons
-  const handleOnSectionSelected = (targetEvent, newSelectionSectionId, index: number | string, section) => {
+  const handleOnSectionSelected: HandleOnSectionSelectedType = (targetEvent, newSelectionSectionId, index, section) => {
     isProgrammaticallyScrolled.current = true;
     debouncedOnSectionChange.cancel();
     setSelectedSubSectionId(undefined);
@@ -246,6 +250,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       }
       return newSelectionSectionId;
     });
+    setTabSelectId(newSelectionSectionId);
     scrollEvent.current = targetEvent;
     fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
   };
@@ -531,6 +536,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const onObjectPageScroll: UIEventHandler<HTMLDivElement> = useCallback(
     (e) => {
       const target = e.target as HTMLDivElement;
+      scrollEndHandler(e);
       if (!isToggledRef.current) {
         isToggledRef.current = true;
       }
@@ -587,8 +593,8 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     debouncedOnSectionChange,
     scrollTimeout,
     setSelectedSubSectionId,
+    setTabSelectId,
   });
-
   const objectPageStyles: CSSProperties = {
     ...style,
   };
@@ -642,7 +648,6 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       {headerArea && titleArea && (
         <div
           data-component-name="ObjectPageAnchorBar"
-          ref={anchorBarRef}
           className={classNames.anchorBar}
           style={{
             top:
@@ -655,7 +660,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
             headerContentVisible={headerArea && headerCollapsed !== true}
             hidePinButton={!!hidePinButton}
             headerPinned={headerPinned}
-            accessibilityAttributes={accessibilityAttributes}
+            accessibilityAttributes={accessibilityAttributes?.objectPageAnchorBar}
             onToggleHeaderContentVisibility={onToggleHeaderContentVisibility}
             setHeaderPinned={setHeaderPinned}
             onHoverToggleButton={onHoverToggleButton}
@@ -696,7 +701,11 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
                   data-index={index}
                   data-section-id={section.props.id}
                   text={section.props.titleText}
-                  selected={internalSelectedSectionId === section.props?.id || undefined}
+                  selected={
+                    (tabSelectId && tabSelectId === section.props?.id) ||
+                    (!tabSelectId && internalSelectedSectionId === section.props?.id) ||
+                    undefined
+                  }
                   items={subTabs.map((item) => {
                     if (!isValidElement(item)) {
                       return null;

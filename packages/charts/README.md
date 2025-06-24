@@ -16,6 +16,30 @@ Charts only offer limited accessibility support with only basic built-in feature
 
 To use this library with React 19 you have to override your `react-is` version to match your React version!
 
+- **npm:**
+
+  ```json
+    "overrides": {
+      "react-is": "19.1.0"
+    },
+  ```
+
+- **yarn**
+
+  ```json
+    "resolutions": {
+      "react-is": "19.1.0"
+    },
+  ```
+
+## Static CSS
+
+If you’ve enabled `staticCSSInjected` on the `ThemeProvider` component ([learn more here](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-server-side-rendering--docs#add-to-existing-project)), make sure to also import the `charts` stylesheet. Otherwise, charts won’t be rendered correctly.
+
+```ts
+import '@ui5/webcomponents-react-charts/styles.css';
+```
+
 ## Documentation
 
 You can find an interactive documentation in our [Storybook](https://sap.github.io/ui5-webcomponents-react/).

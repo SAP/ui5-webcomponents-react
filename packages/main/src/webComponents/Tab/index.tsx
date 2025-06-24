@@ -44,6 +44,14 @@ interface TabAttributes {
   icon?: string | undefined;
 
   /**
+   * Defines if the tab is movable.
+   *
+   * **Note:** Available since [v2.0.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.0.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  movable?: boolean;
+
+  /**
    * Specifies if the component is selected.
    * @default false
    */
@@ -99,7 +107,7 @@ interface TabPropTypes extends TabAttributes, Omit<CommonProps, keyof TabAttribu
 const Tab = withWebComponent<TabPropTypes, TabDomRef>(
   'ui5-tab',
   ['additionalText', 'design', 'icon', 'text'],
-  ['disabled', 'selected'],
+  ['disabled', 'movable', 'selected'],
   ['items'],
   [],
 );

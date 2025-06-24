@@ -101,7 +101,11 @@ export interface TableInstance {
   disableGlobalFilter?: boolean;
   disableGroupBy?: boolean;
   disableSortBy?: boolean;
-  dispatch?: (action: any) => void;
+  dispatch?: (action: {
+    type: string;
+    payload?: Record<string, unknown> | AnalyticalTableState['popInColumns'] | boolean | string;
+    clientX?: number;
+  }) => void;
   expandedDepth?: number;
   expandedRows?: RowType[];
   filteredFlatRows?: RowType[];
@@ -280,6 +284,13 @@ export interface TriggerScrollState {
   args: [number, Omit<ScrollToOptions, 'behavior'>?];
 }
 
+export interface ReactVirtualScrollToMethods {
+  scrollToOffset?: (offset: number, options?: ScrollToOptions) => void;
+  scrollToIndex?: (index: number, options?: ScrollToOptions) => void;
+  horizontalScrollToOffset?: (offset: number, options?: ScrollToOptions) => void;
+  horizontalScrollToIndex?: (index: number, options?: ScrollToOptions) => void;
+}
+
 interface PopInColumnsState {
   id: string;
   column: ColumnType;
@@ -418,15 +429,19 @@ export interface AnalyticalTableColumnDefinition {
    */
   cellLabel?: (param?: CellLabelParam) => string;
   /**
-   * Cell width, if not set the table will distribute all columns without a width evenly.
+   * Defines the column width. If not set the table will distribute all columns without a width evenly.
+   *
+   * __Note:__ Values lower than `minWidth` are not supported!
    */
   width?: number;
   /**
-   * Minimum width of the column, e.g. used for resizing.
+   * Minimum width of the column.
+   *
+   * @default: 60
    */
   minWidth?: number;
   /**
-   * Maximum with of the column, e.g. used for resizing.
+   * Maximum width of the column.
    */
   maxWidth?: number;
   /**
@@ -645,6 +660,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * The minimum number of rows that are displayed. If the data contains fewer entries than `minRows`, it will be filled with empty rows.
    *
+   * __Note:__ To prevent the height of the table from jumping when e.g. filtering or fetching data, it's recommended setting `minRows` to the same value as `visibleRows`.
+   *
    * @default 5
    */
   minRows?: number;
@@ -652,13 +669,13 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Defines how the table will render rows.
    *
    * - __"Fixed":__ The table always has as many rows as defined in the `visibleRows` prop.
-   * - __"Auto":__ The number of visible rows displayed depends on the height of the surrounding container.
+   * - __"Auto":__ The number of visible rows depends on the height of the surrounding container. Since this mode can cause the table height to change when filtering, fetching data, etc., we recommend using the `"AutoWithEmptyRows"` mode instead.
    * - __"AutoWithEmptyRows":__ The number of rows displayed depends on the height of the surrounding container, if not enough visible rows are available, empty rows are displayed.
    * - __"Interactive":__ Adds a resizer to the bottom of the table to dynamically add or remove visible rows. The initial number of rows is defined by the `visibleRows` prop.
    *
-   * __Default:__ `"Fixed"`
-   *
    * __Note:__ When `"Auto"` or `"AutoWithEmptyRows"` is enabled, we recommend using a fixed height for the parent container.
+   *
+   * @default "Fixed"
    */
   visibleRowCountMode?: AnalyticalTableVisibleRowCountMode | keyof typeof AnalyticalTableVisibleRowCountMode;
   /**
@@ -674,9 +691,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * The number of rows visible without going into overflow.
    *
-   * __Default:__ `15`
+   * __Note:__
+   * - If the data contains more entries than the `visibleRow` count, a vertical scrollbar is rendered and the table goes into overflow.
+   * - To prevent the height of the table from jumping when e.g. filtering or fetching data, it's recommended setting `minRows` to the same value as `visibleRows`.
    *
-   * __Note:__ If the data contains more entries than the `visibleRow` count, a vertical scrollbar is rendered and the table goes into overflow.
+   * @default 15
    */
   visibleRows?: number;
   /**
@@ -849,6 +868,8 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * You can use this prop to add custom hooks to the table.
    *
+   * __Note:__ Should be memoized!
+   *
    * @default []
    */
   tableHooks?: ((hooks: ReactTableHooks) => void)[];
@@ -976,11 +997,12 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * Fired when a filter is applied to a column.
    */
   onFilter?: (e: OnFilterParam) => void;
-  // default components
   /**
    * Component that will be rendered when the table is not loading and has no data.
    *
-   * __Default:__ `DefaultNoDataComponent`
+   * __Note:__ Although this prop accepts all React components, it is strongly recommended that you use `IllustratedMessage` with `design="Auto"` to preserve the intended design.
+   *
+   * @default DefaultNoDataComponent
    */
   NoDataComponent?: ComponentType<any>;
 

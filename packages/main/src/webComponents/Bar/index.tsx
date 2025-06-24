@@ -1,12 +1,27 @@
 'use client';
 
 import '@ui5/webcomponents/dist/Bar.js';
+import type BarAccessibleRole from '@ui5/webcomponents/dist/types/BarAccessibleRole.js';
 import type BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 
 interface BarAttributes {
+  /**
+   * Specifies the ARIA role applied to the component for accessibility purposes.
+   *
+   * **Note:**
+   *
+   * - Set accessibleRole to "toolbar" only when the component contains two or more active, interactive elements (such as buttons, links, or input fields) within the bar.
+   *
+   * - If there is only one or no active element, it is recommended to avoid using the "toolbar" role, as it implies a grouping of multiple interactive controls.
+   *
+   * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents**.
+   * @default "Toolbar"
+   */
+  accessibleRole?: BarAccessibleRole | keyof typeof BarAccessibleRole;
+
   /**
    * Defines the component's design.
    * @default "Header"
@@ -73,7 +88,13 @@ interface BarPropTypes
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
  */
-const Bar = withWebComponent<BarPropTypes, BarDomRef>('ui5-bar', ['design'], [], ['endContent', 'startContent'], []);
+const Bar = withWebComponent<BarPropTypes, BarDomRef>(
+  'ui5-bar',
+  ['accessibleRole', 'design'],
+  [],
+  ['endContent', 'startContent'],
+  [],
+);
 
 Bar.displayName = 'Bar';
 

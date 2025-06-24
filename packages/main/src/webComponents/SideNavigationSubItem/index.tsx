@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
+import type { SideNavigationItemClickEventDetail } from '@ui5/webcomponents-fiori/dist/SideNavigationItemBase.js';
 import type { SideNavigationItemAccessibilityAttributes } from '@ui5/webcomponents-fiori/dist/SideNavigationSelectableItemBase.js';
 import type SideNavigationItemDesign from '@ui5/webcomponents-fiori/dist/types/SideNavigationItemDesign.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
@@ -128,11 +129,13 @@ interface SideNavigationSubItemPropTypes
   /**
    * Fired when the component is activated either with a click/tap or by using the [Enter] or [Space] keys.
    *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ✅|✅|
    */
-  onClick?: (event: Ui5CustomEvent<SideNavigationSubItemDomRef>) => void;
+  onClick?: (event: Ui5CustomEvent<SideNavigationSubItemDomRef, SideNavigationItemClickEventDetail>) => void;
 }
 
 /**

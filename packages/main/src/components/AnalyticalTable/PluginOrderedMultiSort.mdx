@@ -64,13 +64,14 @@ const data = [
   { name: 'Graham', age: 62, name2: 'Willis', age2: 26 }
 ];
 const orderedIds = ['name', 'name2', 'age', 'age2'];
+const tableHooks = [AnalyticalTableHooks.useOrderedMultiSort(orderedIds)]; // should be memoized
 const TableComponent = () => {
   return (
     <AnalyticalTable
       columns={columns}
       data={data}
       sortable
-      tableHooks={[AnalyticalTableHooks.useOrderedMultiSort(orderedIds)]}
+      tableHooks={tableHooks}
     />
   );
 };

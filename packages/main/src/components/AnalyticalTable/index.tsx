@@ -70,10 +70,10 @@ import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig.js';
 import { useRowHighlight } from './hooks/useRowHighlight.js';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator.js';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn.js';
+import { useScrollToRef } from './hooks/useScrollToRef.js';
 import { useSelectionChangeCallback } from './hooks/useSelectionChangeCallback.js';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection.js';
 import { useStyling } from './hooks/useStyling.js';
-import { useTableScrollHandles } from './hooks/useTableScrollHandles.js';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand.js';
 import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth.js';
 import { VerticalScrollbar } from './scrollbars/VerticalScrollbar.js';
@@ -188,10 +188,14 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const tableInstanceRef = useRef<TableInstance>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const dedupedOnFilter = useMemo(() => debounce(onFilter, 0), [onFilter]);
+  const dedupedOnFilter = useMemo(
+    () => (typeof onFilter === 'function' ? debounce(onFilter, 0) : undefined),
+    [onFilter],
+  );
+
   useEffect(
     () => () => {
-      dedupedOnFilter.cancel();
+      dedupedOnFilter?.cancel();
     },
     [dedupedOnFilter],
   );
@@ -303,9 +307,10 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const noDataTextLocal =
     noDataText ?? (tableState.filters?.length > 0 || tableState.globalFilter ? noDataTextFiltered : noDataTextI18n);
 
-  const [componentRef, updatedRef] = useSyncRef<AnalyticalTableDomRef>(ref);
-  //@ts-expect-error: types are compatible
-  const isRtl = useIsRTL(updatedRef);
+  const [componentRef, analyticalTableRef] = useSyncRef<AnalyticalTableDomRef>(ref);
+  const [cbRef, scrollToRef] = useScrollToRef(componentRef, dispatch);
+  // @ts-expect-error: is HTMLElement
+  const isRtl = useIsRTL(analyticalTableRef);
 
   const columnVirtualizer = useVirtualizer({
     count: visibleColumnsWidth.length,
@@ -336,8 +341,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     }
   }, [tableState.groupBy, tableState.columnOrder]);
 
-  const [analyticalTableRef, scrollToRef] = useTableScrollHandles(updatedRef, dispatch);
-
   if (parentRef.current) {
     scrollToRef.current = {
       ...scrollToRef.current,
@@ -353,7 +356,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         columnVirtualizer.scrollToIndex(...triggerScroll.args);
       }
     }
-  }, [triggerScroll]);
+  }, [columnVirtualizer, triggerScroll]);
 
   const includeSubCompRowHeight =
     !!renderRowSubComponent &&
@@ -408,7 +411,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         },
       });
     }
-  }, [tableRef.current, scaleXFactor]);
+  }, [dispatch, scaleXFactor]);
 
   const updateRowsCount = useCallback(() => {
     if (
@@ -545,12 +548,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
       adjustTableHeightOnPopIn
         ? popInRowHeight
         : internalRowHeight;
+
     if (includeSubCompRowHeight) {
       let initialBodyHeightWithSubComps = 0;
       for (let i = 0; i < rowNum; i++) {
         if (tableState.subComponentsHeight[i]) {
           initialBodyHeightWithSubComps += tableState.subComponentsHeight[i].subComponentHeight + rowHeight;
-        } else if (rows[i]) {
+        } else {
           initialBodyHeightWithSubComps += rowHeight;
         }
       }
@@ -732,7 +736,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         className={className}
         style={inlineStyle}
         //@ts-expect-error: types are compatible
-        ref={componentRef}
+        ref={cbRef}
         {...rest}
       >
         {header && (
@@ -866,14 +870,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                   columnVirtualizer={columnVirtualizer}
                   manualGroupBy={reactTableOptions?.manualGroupBy as boolean | undefined}
                   subRowsKey={subRowsKey}
-                  subComponentsBehavior={subComponentsBehavior}
                   triggerScroll={tableState.triggerScroll}
                   rowVirtualizer={rowVirtualizer}
                 />
               </VirtualTableBodyContainer>
             )}
           </div>
-          {(additionalEmptyRowsCount || tableState.isScrollable === undefined || tableState.isScrollable) && (
+          {(additionalEmptyRowsCount || tableState.isScrollable) && (
             <VerticalScrollbar
               tableBodyHeight={tableBodyHeight}
               internalRowHeight={internalHeaderRowHeight}

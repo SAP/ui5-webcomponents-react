@@ -9,11 +9,10 @@ const __dirname = path.dirname(__filename);
 
 const transformerDir = path.resolve(__dirname, 'transforms');
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export default async function runCodemod(transform: string, inputDir: string, useTypeScript: boolean) {
   if (!SUPPORTED_TRANSFORMERS.includes(transform)) {
-    // eslint-disable-next-line no-console
     console.error('Invalid transform choice, pick one of:');
-    // eslint-disable-next-line no-console
     console.error(SUPPORTED_TRANSFORMERS.map((x) => '- ' + x).join('\n'));
     process.exit(1);
   }
@@ -32,7 +31,6 @@ export default async function runCodemod(transform: string, inputDir: string, us
 
   jscodeshiftOptions.push('--ignore-pattern=**/node_modules/**');
 
-  // eslint-disable-next-line no-console
   console.log(`Executing 'npx jscodeshift ${jscodeshiftOptions.join(' ')} ${inputDir}'`);
   childProcess.spawnSync('npx', ['jscodeshift', ...jscodeshiftOptions, inputDir], {
     stdio: 'inherit',

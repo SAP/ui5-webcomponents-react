@@ -16,6 +16,7 @@ You can find an interactive documentation in our [Storybook](https://sap.github.
 
 - [Wrapper generation](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/knowledge-base-bring-your-own-web-components--docs)
 - [Code-mod](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs#codemod)
+- [Patch compatibility table](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/legacy-components-docs--docs#experimental-patch-script)
 
 ## Contribute
 
