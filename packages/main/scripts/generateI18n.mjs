@@ -61,15 +61,18 @@ const jsonImports = await readdir(TARGET_I18N_JSON_IMPORTS);
 const assets = [`import '@ui5/webcomponents/dist/Assets.js';`, `import '@ui5/webcomponents-fiori/dist/Assets.js';`];
 const assetsFetch = [
   `import '@ui5/webcomponents/dist/Assets-fetch.js';`,
-  //todo: currently the fiori package doesn't include `Assets-fetch` - clarify if this is intended
-  // `import '@ui5/webcomponents-fiori/dist/Assets-fetch.js';`,
+  `import '@ui5/webcomponents-fiori/dist/Assets-fetch.js';`,
+];
+const assetsNode = [
+  `import '@ui5/webcomponents/dist/Assets-node.js';`,
+  `import '@ui5/webcomponents-fiori/dist/Assets-node.js';`,
 ];
 
 for (const file of jsonImports) {
   if (file.includes('-fetch')) {
-    //todo: add to Assets-fetch.js
+    assetsFetch.push(`import './json-imports/${file}';`);
   } else if (file.includes('-node')) {
-    //todo: add to Assets-node.js
+    assetsNode.push(`import './json-imports/${file}';`);
   } else {
     assets.push(`import './json-imports/${file}';`);
   }
@@ -83,4 +86,9 @@ await writeFile(
 await writeFile(
   path.resolve(DIST_DIR, 'Assets-fetch.js'),
   await prettier.format(assetsFetch.join('\n'), { ...prettierConfig, parser: 'babel' }),
+);
+
+await writeFile(
+  path.resolve(DIST_DIR, 'Assets-node.js'),
+  await prettier.format(assetsNode.join('\n'), { ...prettierConfig, parser: 'babel' }),
 );
