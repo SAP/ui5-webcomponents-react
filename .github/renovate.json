@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "baseBranches": ["main", "v1.29.x"],
+  "baseBranches": ["main"],
   "extends": [
     "config:recommended",
     ":disableDependencyDashboard",
@@ -23,11 +23,6 @@
     "**/__fixtures__/**"
   ],
   "packageRules": [
-    {
-      "matchBaseBranches": ["v1.29.x"],
-      "matchPackageNames": ["*"],
-      "enabled": false
-    },
     {
       "groupName": "Rimraf",
       "extends": ["schedule:weekly"],
@@ -102,20 +97,6 @@
       "semanticCommitType": "chore",
       "matchBaseBranches": ["main"],
       "matchSourceUrls": ["https://github.com/SAP/ui5-webcomponents{/,}**"]
-    },
-    {
-      "extends": ["schedule:weekly"],
-      "description": "V1 UI5WC/R dependency updates",
-      "matchBaseBranches": ["v1.29.x"],
-      "groupName": "Legacy Branch Updates",
-      "groupSlug": "legacy-branch-updates",
-      "matchUpdateTypes": ["patch"],
-      "semanticCommitType": "chore",
-      "enabled": true,
-      "matchSourceUrls": [
-        "https://github.com/SAP/ui5-webcomponents{/,}**",
-        "https://github.com/SAP/ui5-webcomponents-react{/,}**"
-      ]
     },
     {
       "groupName": "Typescript",
