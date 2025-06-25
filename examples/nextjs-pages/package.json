@@ -9,17 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ui5/webcomponents": "1.24.9",
-    "@ui5/webcomponents-fiori": "1.24.9",
-    "@ui5/webcomponents-react": "1.29.9",
-    "@types/node": "20.16.2",
-    "@types/react": "18.3.4",
-    "@types/react-dom": "18.3.0",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.2.7",
-    "next": "14.2.7",
+    "@ui5/webcomponents": "1.24.22",
+    "@ui5/webcomponents-fiori": "1.24.22",
+    "@ui5/webcomponents-react": "1.29.19",
+    "@types/node": "20.19.1",
+    "@types/react": "18.3.23",
+    "@types/react-dom": "18.3.7",
+    "eslint": "8.57.1",
+    "eslint-config-next": "14.2.30",
+    "next": "14.2.30",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "typescript": "5.5.4"
+    "typescript": "5.8.3"
   }
 }
