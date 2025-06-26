@@ -225,7 +225,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
                             icon={getIconNameForType(valueState)}
                             className={classNames.button}
                             tooltip={getValueStateMap(i18nBundle)[valueState]}
-                            accessibleName={getValueStateMap(i18nBundle)[valueState]}
+                            accessibleName={`${count} ${getValueStateMap(i18nBundle)[valueState]}`}
                           >
                             {count}
                           </SegmentedButtonItem>
