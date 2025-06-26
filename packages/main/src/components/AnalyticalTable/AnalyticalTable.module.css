@@ -12,6 +12,22 @@
   }
 }
 
+.tableContainerWithScrollBar {
+  position: relative;
+
+  &:has(> .overlay) {
+    > :not(.overlay) {
+      opacity: var(--sapContent_DisabledOpacity);
+    }
+  }
+
+  &:has(> .busyIndicator) {
+    > :not(.busyIndicator) {
+      opacity: var(--sapContent_DisabledOpacity);
+    }
+  }
+}
+
 .table {
   position: relative;
   width: 100%;
@@ -37,10 +53,6 @@
   }
 }
 
-.tableContainerWithScrollBar {
-  position: relative;
-}
-
 .busyIndicator {
   position: absolute;
   z-index: 1;
@@ -52,8 +64,6 @@
   position: absolute;
   z-index: 1;
   inset: 0;
-  background: var(--sapGroup_ContentBackground);
-  opacity: 0.8;
 
   &:focus {
     outline-offset: calc(-1 * var(--sapContent_FocusWidth));
