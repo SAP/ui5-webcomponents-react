@@ -1534,8 +1534,18 @@ describe('AnalyticalTable', () => {
     cy.mount(<AnalyticalTable data={[]} columns={columns} loading loadingDelay={0} />);
     cy.get('[data-component-name="AnalyticalTableLoadingPlaceholder"]').should('be.visible');
     cy.get('.ui5-busy-indicator-busy-area').should('not.exist');
+    cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class*="busyIndicator"])').should(
+      'not.have.css',
+      'opacity',
+      '0.4',
+    );
     cy.mount(<AnalyticalTable data={data} columns={columns} loading />);
     cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class*="busyIndicator"])').should(
+      'have.css',
+      'opacity',
+      '0.4',
+    );
     cy.mount(<AnalyticalTable data={data} columns={columns} loading loadingDelay={50000} />);
     cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('not.exist');
     cy.mount(<AnalyticalTable data={[]} columns={columns} />);
@@ -1886,8 +1896,22 @@ describe('AnalyticalTable', () => {
   });
 
   it('overlay', (done) => {
+    cy.mount(<AnalyticalTable data={data} columns={columns} />);
+    cy.findByRole('region').should('not.exist');
+    cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class^="overlay"])').should(
+      'not.have.css',
+      'opacity',
+      '0.4',
+    );
+    cy.findByText('A').click();
+
     cy.mount(<AnalyticalTable data={data} columns={columns} showOverlay />);
-    cy.findByRole('region').should('be.visible').should('have.css', 'opacity', '0.8');
+    cy.findByRole('region').should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class^="overlay"])').should(
+      'have.css',
+      'opacity',
+      '0.4',
+    );
     cy.findByText('A').shouldNotBeClickable(done);
   });
 
