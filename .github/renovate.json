@@ -1,6 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "baseBranches": ["main"],
   "extends": [
     "config:recommended",
     ":disableDependencyDashboard",
@@ -27,25 +26,21 @@
       "groupName": "Rimraf",
       "extends": ["schedule:weekly"],
       "matchPackageNames": ["rimraf"],
-      "semanticCommitType": "chore",
-      "matchBaseBranches": ["main"]
+      "semanticCommitType": "chore"
     },
     {
       "groupName": "UI5 Web Components",
-      "matchBaseBranches": ["main"],
       "matchSourceUrls": ["https://github.com/SAP/ui5-webcomponents{/,}**"]
     },
     {
       "groupName": "vite & plugins",
-      "matchBaseBranches": ["main"],
       "matchPackageNames": ["/vite/", "!@storybook/react-vite"]
     },
     {
       "extends": ["schedule:weekly"],
       "groupName": "storybook monorepo",
       "matchSourceUrls": ["https://github.com/storybookjs/storybook"],
-      "semanticCommitType": "chore",
-      "matchBaseBranches": ["main"]
+      "semanticCommitType": "chore"
     },
     {
       "description": "root package dependencies",
@@ -55,7 +50,6 @@
       "groupSlug": "root-all-minor-patch",
       "matchFileNames": ["package.json"],
       "matchUpdateTypes": ["minor", "patch"],
-      "matchBaseBranches": ["main"],
       "matchPackageNames": [
         "!react",
         "!react-dom",
@@ -74,7 +68,6 @@
       "groupName": "all non-major dependencies (examples, templates & patterns)",
       "groupSlug": "examples-all-minor-patch",
       "matchUpdateTypes": ["minor", "patch"],
-      "matchBaseBranches": ["main"],
       "matchPackageNames": ["*", "!/^@ui5//"]
     },
     {
@@ -83,7 +76,6 @@
       "groupSlug": "examples-ui5-webcomponents-react",
       "matchFileNames": ["examples/**", "templates/**", "patterns/**"],
       "semanticCommitType": "chore",
-      "matchBaseBranches": ["main"],
       "matchSourceUrls": [
         "https://github.com/SAP/ui5-webcomponents{/,}**",
         "https://github.com/SAP/ui5-webcomponents-react{/,}**"
@@ -95,7 +87,6 @@
       "groupSlug": "root-ui5-webcomponents",
       "matchFileNames": ["package.json"],
       "semanticCommitType": "chore",
-      "matchBaseBranches": ["main"],
       "matchSourceUrls": ["https://github.com/SAP/ui5-webcomponents{/,}**"]
     },
     {
