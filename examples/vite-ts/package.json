@@ -29,11 +29,11 @@
     "@ui5/webcomponents-cypress-commands": "2.11.1",
     "@vitejs/plugin-react": "4.6.0",
     "cypress": "14.5.0",
-    "eslint": "9.29.0",
+    "eslint": "9.30.0",
     "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-react-refresh": "0.4.20",
     "globals": "16.2.0",
-    "typescript-eslint": "8.34.1",
+    "typescript-eslint": "8.35.0",
     "vite": "6.3.5"
   }
 }
