@@ -5088,22 +5088,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-virtual@npm:3.13.11":
-  version: 3.13.11
-  resolution: "@tanstack/react-virtual@npm:3.13.11"
+"@tanstack/react-virtual@npm:3.13.12":
+  version: 3.13.12
+  resolution: "@tanstack/react-virtual@npm:3.13.12"
   dependencies:
-    "@tanstack/virtual-core": "npm:3.13.11"
+    "@tanstack/virtual-core": "npm:3.13.12"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/8cc96a719ea7be1e067051eb443c5570fb61aa332725d513d6cc1b7624948d52dc9487df8486cf9c8aaa1fe78904da769dbe0505850393af03dd77ddc490b1fa
+  checksum: 10c0/0eda3d5691ec3bf93a1cdaa955f4972c7aa9a5026179622824bb52ff8c47e59ee4634208e52d77f43ffb3ce435ee39a0899d6a81f6316918ce89d68122490371
   languageName: node
   linkType: hard
 
-"@tanstack/virtual-core@npm:3.13.11":
-  version: 3.13.11
-  resolution: "@tanstack/virtual-core@npm:3.13.11"
-  checksum: 10c0/8a835c531bf0cbbc4ee558442b80e3f1cc78c96b4e6cdc4d7cdbe3b31d6457f1458e17c6f1fccf1e456593795c218b7f3a064aad5d01ffacdba90cccc677dd31
+"@tanstack/virtual-core@npm:3.13.12":
+  version: 3.13.12
+  resolution: "@tanstack/virtual-core@npm:3.13.12"
+  checksum: 10c0/483f38761b73db05c181c10181f0781c1051be3350ae5c378e65057e5f1fdd6606e06e17dbaad8a5e36c04b208ea1a1344cacd4eca0dcde60f335cf398e4d698
   languageName: node
   linkType: hard
 
@@ -6546,7 +6546,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ui5/webcomponents-react@workspace:packages/main"
   dependencies:
-    "@tanstack/react-virtual": "npm:3.13.11"
+    "@tanstack/react-virtual": "npm:3.13.12"
     "@ui5/webcomponents-react-base": "workspace:~"
     clsx: "npm:2.1.1"
     react-table: "npm:7.8.0"
