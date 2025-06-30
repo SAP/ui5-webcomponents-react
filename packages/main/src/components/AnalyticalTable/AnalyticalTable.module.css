@@ -73,10 +73,6 @@
 
 .tableHeaderRow {
   height: var(--_ui5wcr-AnalyticalTableHeaderRowHeight);
-
-  div:first-child .th {
-    border-inline-start: 1px solid var(--_ui5wcr-AnalyticalTable-OuterBorderInline);
-  }
 }
 
 .hasNavigationIndicator {
@@ -357,7 +353,7 @@
    ========================================================================== */
 
 .thContainer {
-  &:first-child > [role='columnheader'] {
+  & > [role='columnheader'][data-column-index='0'] {
     border-inline-start: var(--_ui5wcr-AnalyticalTable-OuterCellBorder);
   }
 
