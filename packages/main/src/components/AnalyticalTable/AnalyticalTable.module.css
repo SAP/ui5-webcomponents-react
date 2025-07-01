@@ -59,10 +59,6 @@
 
 .tableHeaderRow {
   height: var(--_ui5wcr-AnalyticalTableHeaderRowHeight);
-
-  div:first-child .th {
-    border-inline-start: 1px solid var(--sapList_BorderColor);
-  }
 }
 
 .hasNavigationIndicator {
