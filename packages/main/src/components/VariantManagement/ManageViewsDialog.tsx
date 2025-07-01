@@ -92,7 +92,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   const headerRow = (
     <TableHeaderRow sticky>
       {showOnlyFavorites && <TableHeaderCell key="favorite-variant-item" />}
-      <TableHeaderCell importance={10} minWidth="18rem">
+      <TableHeaderCell importance={10} minWidth="14rem">
         {viewHeaderText}
       </TableHeaderCell>
       {showShare && (
@@ -106,11 +106,11 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         </TableHeaderCell>
       )}
       {showApplyAutomatically && (
-        <TableHeaderCell minWidth={hasApplyAutomaticallyText ? '25rem' : '5rem'}>
+        <TableHeaderCell minWidth={hasApplyAutomaticallyText ? '12.5rem' : '5rem'}>
           {applyAutomaticallyHeaderText}
         </TableHeaderCell>
       )}
-      {showCreatedBy && <TableHeaderCell minWidth="10rem">{createdByHeaderText}</TableHeaderCell>}
+      {showCreatedBy && <TableHeaderCell minWidth="7.125rem">{createdByHeaderText}</TableHeaderCell>}
     </TableHeaderRow>
   );
 
