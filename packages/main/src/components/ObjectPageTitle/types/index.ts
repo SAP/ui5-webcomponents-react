@@ -23,15 +23,33 @@ export interface ObjectPageTitlePropTypes extends CommonProps {
   children?: ReactNode | ReactNode[];
 
   /**
-   * The `header` is positioned in the `ObjectPageTitle` left area.
-   * Use this prop to display a `Title` (or any other component that serves as a heading).
+   * The `header` is displayed in the left area of the `ObjectPageTitle`.
+   * Use this prop to render a `Title` or any other component that serves as a heading.
+   *
+   * __Note:__ If the header is snapped (collapsed), the `snappedHeader` prop is used instead (if defined).
    */
   header?: ReactNode;
   /**
-   * The `subHeader` is positioned in the `ObjectPageTitle` left area below the `header`.
-   * Use this aggregation to display a component like `Label` or any other component that serves as sub header.
+   * The `snappedHeader` is displayed in the left area of the `ObjectPageTitle` when the header is snapped (collapsed).
+   * Use this prop to render a `Title` or any other component that serves as a heading in the snapped view.
+   *
+   * @since 2.12.0
+   */
+  snappedHeader?: ReactNode;
+  /**
+   * The `subHeader` is displayed in the left area of the `ObjectPageTitle`, below the `header`.
+   * Use this prop to render a `Label` or any other component that serves as a sub-header.
+   *
+   * __Note:__ If the header is snapped (collapsed), the `snappedSubHeader` prop is used instead (if defined).
    */
   subHeader?: ReactNode;
+  /**
+   * The `snappedSubHeader` is displayed in the left area of the `ObjectPageTitle` when the header is snapped (collapsed).
+   * Use this prop to render a `Label` or any other component that serves as a sub-header in the snapped view.
+   *
+   * @since 2.12.0
+   */
+  snappedSubHeader?: ReactNode;
   /**
    * Defines navigation-actions bar of the `ObjectPageTitle`.
    *
