@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';
 import { Text } from '../../webComponents/Text';
 import { Select } from '../Select';

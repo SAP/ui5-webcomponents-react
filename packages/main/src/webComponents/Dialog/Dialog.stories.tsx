@@ -1,5 +1,5 @@
 import { isChromatic } from '@sb/utils.js';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FlexBox, FlexBoxJustifyContent } from '@ui5/webcomponents-react';
 import { useEffect, useState } from 'react';
 import { Button, List, ListItemStandard } from '../index.js';

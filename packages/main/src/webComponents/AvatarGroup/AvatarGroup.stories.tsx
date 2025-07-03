@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import AvatarGroupType from '@ui5/webcomponents/dist/types/AvatarGroupType.js';
 import { Avatar } from '../Avatar/index.js';
 import { AvatarGroup } from './index.js';

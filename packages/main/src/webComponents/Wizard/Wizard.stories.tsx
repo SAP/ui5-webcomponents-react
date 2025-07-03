@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';

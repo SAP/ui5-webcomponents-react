@@ -3,7 +3,7 @@ import '@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Islamic.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Japanese.js';
 import '@ui5/webcomponents-localization/dist/features/calendar/Persian.js';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import CalendarLegendItemType from '@ui5/webcomponents/dist/types/CalendarLegendItemType.js';
 import CalendarSelectionMode from '@ui5/webcomponents/dist/types/CalendarSelectionMode.js';
 import CalendarType from '@ui5/webcomponents-base/dist/types/CalendarType.js';

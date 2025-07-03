@@ -2,7 +2,7 @@ import dataSmall from '@sb/mockData/Friends50.json';
 import dataLarge from '@sb/mockData/Friends500.json';
 import dataManualSelect from '@sb/mockData/FriendsManualSelect25.json';
 import dataTree from '@sb/mockData/FriendsTree.json';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import { useCallback, useMemo, useReducer, useState } from 'react';
 import { AnalyticalTableSelectionMode, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';

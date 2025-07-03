@@ -1,5 +1,5 @@
 import { GitHubLogo } from '@sb/components/GitHub-Mark';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';

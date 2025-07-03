@@ -1,4 +1,5 @@
-import { Description, DocsContext, Subtitle, Title } from '@storybook/addon-docs';
+import type { Controls } from '@storybook/addon-docs/blocks';
+import { Description, Subtitle, Title, useOf } from '@storybook/addon-docs/blocks';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import copyIcon from '@ui5/webcomponents-icons/dist/copy.js';
@@ -13,21 +14,14 @@ import {
   ThemeProvider,
 } from '@ui5/webcomponents-react';
 import { clsx } from 'clsx';
-import { useContext } from 'react';
+import type { ComponentProps } from 'react';
 import { useGetSubComponentsOfModule } from '../utils';
 import classes from './DocsHeader.module.css';
 import { GitHubLogo } from './GitHub-Mark';
 import { Import } from './Import';
 import { TableOfContent } from './TableOfContent';
 
-const Links = () => {
-  const docsContext = useContext(DocsContext);
-  const isChart = docsContext.componentStories().at(0).id.startsWith('charts-');
-
-  // const filePath = docsContext.parameters.fileName.replace(/^\.\//, '');
-  // const folderPath = filePath.substr(0, filePath.lastIndexOf('/'));
-
-  // const githubUrl = `https://github.com/SAP/ui5-webcomponents-react/tree/main/${folderPath}`;
+const Links = ({ isChart }: { isChart?: boolean }) => {
   const githubUrl = `https://github.com/SAP/ui5-webcomponents-react`;
 
   const packageName = `@ui5/webcomponents-react${isChart ? '-charts' : ''}`;
@@ -50,14 +44,15 @@ interface InfoTableProps {
   mergeSubComponents?: boolean;
   isChart?: boolean;
   experimental?: boolean;
+  of: ComponentProps<typeof Controls>['of'];
 }
 
-export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTableProps) => {
-  const context = useContext(DocsContext);
-  const groups = context.componentStories().at(0).kind.split('/');
-  const moduleName = groups[groups.length - 1].replace('(experimental)', '').trim();
+export const InfoTable = ({ of, since, subComponents, mergeSubComponents }: InfoTableProps) => {
+  const context = useOf<'meta'>(of);
+  const { csfFile, preparedMeta } = context;
+  const moduleName = csfFile.meta.component.displayName;
 
-  const wcSubComponents = useGetSubComponentsOfModule(moduleName.replace('V2', ''));
+  const wcSubComponents = useGetSubComponentsOfModule(moduleName.replace('V2', ''), preparedMeta.tags);
   const subComps = mergeSubComponents
     ? [...(subComponents ?? []), ...(wcSubComponents ?? [])]
     : (subComponents ?? wcSubComponents);
@@ -81,7 +76,7 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
             <Label>Usage</Label>
           </th>
           <td data-import-cell={supportsClipboardApi}>
-            <Import />
+            <Import moduleNames={[moduleName]} componentId={preparedMeta.componentId} />
             {supportsClipboardApi && (
               <Button
                 design={ButtonDesign.Transparent}
@@ -110,7 +105,7 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
               <Label>Subcomponents</Label>
             </th>
             <td data-import-cell={supportsClipboardApi}>
-              <Import moduleNames={subComps} />
+              <Import moduleNames={subComps} componentId={preparedMeta.componentId} />
               {supportsClipboardApi && (
                 <Button
                   design={ButtonDesign.Transparent}
@@ -129,17 +124,17 @@ export const InfoTable = ({ since, subComponents, mergeSubComponents }: InfoTabl
   );
 };
 
-export const DocsHeader = ({ since, subComponents, mergeSubComponents, isChart, experimental }: InfoTableProps) => {
+export const DocsHeader = ({ of, since, subComponents, mergeSubComponents, isChart, experimental }: InfoTableProps) => {
   return (
     <ThemeProvider>
       <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.titleRow}>
         <Title />
         {experimental && <Label className={classes.experimentalLabel}>experimental</Label>}
         <span style={{ flexGrow: 1 }} />
-        <Links />
+        <Links isChart={isChart} />
       </FlexBox>
       <Subtitle />
-      <InfoTable since={since} subComponents={subComponents} mergeSubComponents={mergeSubComponents} />
+      <InfoTable of={of} since={since} subComponents={subComponents} mergeSubComponents={mergeSubComponents} />
       <TableOfContent />
       <Description />
       {isChart && (

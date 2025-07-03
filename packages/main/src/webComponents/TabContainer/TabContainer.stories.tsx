@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BackgroundDesign from '@ui5/webcomponents/dist/types/BackgroundDesign.js';
 import TabLayout from '@ui5/webcomponents/dist/types/TabLayout.js';
 import activitiesIcon from '@ui5/webcomponents-icons/dist/activities.js';

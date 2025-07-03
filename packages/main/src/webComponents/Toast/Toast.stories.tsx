@@ -1,5 +1,5 @@
 import { isChromatic } from '@sb/utils.js';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ToastPlacement from '@ui5/webcomponents/dist/types/ToastPlacement.js';
 import { useEffect, useState } from 'react';
 import { Button } from '../Button/index.js';
