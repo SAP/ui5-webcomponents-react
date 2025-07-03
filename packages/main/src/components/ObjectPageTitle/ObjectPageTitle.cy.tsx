@@ -129,4 +129,62 @@ describe('ObjectPageTitle', () => {
       cy.findByTestId('expandedContent').should('not.exist');
     });
   });
+
+  [
+    { snappedHeader: 'Snapped Header', header: 'Header' },
+    { snappedHeader: undefined, header: 'Header' },
+    { snappedHeader: undefined, header: undefined },
+    { snappedHeader: 'Snapped Header', header: undefined },
+  ].forEach(({ snappedHeader, header }) => {
+    const titleParts = [];
+    if (snappedHeader) {
+      titleParts.push('snappedHeader');
+    }
+    if (header) {
+      titleParts.push('header');
+    }
+    const title = titleParts.length ? titleParts.join(' & ') : 'no headers';
+
+    it(`renders with ${title}`, () => {
+      cy.mount(
+        <PageComponent
+          childrenScrollable
+          pageProps={{
+            headerArea: (
+              <ObjectPageHeader key="headerContent" style={{ height: '100px', background: 'lightblue' }}>
+                Header Section
+              </ObjectPageHeader>
+            ),
+            style: { height: '800px' },
+          }}
+          titleProps={{
+            snappedHeader,
+            header,
+          }}
+        />,
+      );
+
+      // not snapped - always show header
+      cy.findByText('Snapped Header').should('not.exist');
+      if (header) {
+        cy.findByText('Header').should('exist');
+      } else {
+        cy.findByText('Header').should('not.exist');
+      }
+
+      cy.findByTestId('page').scrollTo('bottom');
+
+      // snapped - show snapped header if defined otherwise show header
+      if (snappedHeader) {
+        cy.findByText('Snapped Header').should('exist');
+        cy.findByText('Header').should('not.exist');
+      } else if (header) {
+        cy.findByText('Snapped Header').should('not.exist');
+        cy.findByText('Header').should('exist');
+      } else {
+        cy.findByText('Snapped Header').should('not.exist');
+        cy.findByText('Header').should('not.exist');
+      }
+    });
+  });
 });

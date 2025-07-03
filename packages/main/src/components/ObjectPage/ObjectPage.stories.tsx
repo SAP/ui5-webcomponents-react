@@ -1,6 +1,7 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/UnableToLoad.js';
 import SampleImage from '@sb/demoImages/Person.png';
 import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
@@ -59,6 +60,7 @@ const meta = {
     imageShapeCircle: true,
     image: SampleImage,
     style: { height: '700px', maxHeight: '90vh' },
+    onToggleHeaderArea: fn(),
     footerArea: (
       <Bar
         design={BarDesign.FloatingFooter}
@@ -73,7 +75,9 @@ const meta = {
     titleArea: (
       <ObjectPageTitle
         header={<Title level="H2">Denise Smith</Title>}
+        snappedHeader={<Title level="H2">Denise Smith (snapped header)</Title>}
         subHeader="Senior UI Developer"
+        snappedSubHeader={'Senior UI Developer (snapped header)'}
         actionsBar={
           <Toolbar design="Transparent">
             <ToolbarButton design={ButtonDesign.Emphasized} text="Primary Action" />

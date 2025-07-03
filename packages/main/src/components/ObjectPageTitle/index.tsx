@@ -28,6 +28,8 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
     onToggleHeaderContentVisibility,
     expandedContent,
     snappedContent,
+    snappedHeader,
+    snappedSubHeader,
     _snappedAvatar,
     ...rest
   } = props as InternalProps;
@@ -41,6 +43,8 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
   );
   const containerClasses = clsx(classNames.container, isPhone && classNames.phone, className);
   const toolbarContainerRef = useRef<HTMLDivElement>(null);
+  const _header = !props?.['data-header-content-visible'] && snappedHeader ? snappedHeader : header;
+  const _subHeader = !props?.['data-header-content-visible'] && snappedSubHeader ? snappedSubHeader : subHeader;
 
   useEffect(() => {
     isMounted.current = true;
@@ -157,9 +161,9 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
             data-component-name="ObjectPageTitleMiddleSection"
           >
             <FlexBox className={classNames.titleMainSection} onClick={onHeaderClick}>
-              {header && (
+              {_header && (
                 <div className={classNames.title} data-component-name="ObjectPageTitleHeader">
-                  {header}
+                  {_header}
                 </div>
               )}
               {children && (
@@ -182,13 +186,13 @@ const ObjectPageTitle = forwardRef<HTMLDivElement, ObjectPageTitlePropTypes>((pr
               </div>
             )}
           </FlexBox>
-          {subHeader && (
+          {_subHeader && (
             <FlexBox id="sub">
               <div
                 className={clsx(classNames.subTitle, classNames.subTitleBottom)}
                 data-component-name="ObjectPageTitleSubHeader"
               >
-                {subHeader}
+                {_subHeader}
               </div>
             </FlexBox>
           )}
