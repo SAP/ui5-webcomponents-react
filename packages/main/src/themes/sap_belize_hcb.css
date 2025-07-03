@@ -3,4 +3,7 @@
   --_ui5wcr_ActionSheet_BoxShadow: var(--sapContent_HeaderShadow);
   --_ui5wcr_Scrollbar_BorderRadius: 0;
   --_ui5wcr_ActionSheet_TopBorderRadius: var(--sapElement_BorderCornerRadius);
+  --_ui5wcr-AnalyticalTable-OuterCellBorder: 1px solid transparent;
+  --_ui5wcr-AnalyticalTable-OuterBorderBlock: none;
+  --_ui5wcr-AnalyticalTable-OuterBorderInline: none;
 }

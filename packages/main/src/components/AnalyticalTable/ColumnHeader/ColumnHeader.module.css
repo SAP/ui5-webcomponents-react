@@ -1,5 +1,5 @@
 .thContainer {
-  &:first-child > [role='columnheader'] {
+  & > [role='columnheader'][data-column-index='0'] {
     border-inline-start: var(--_ui5wcr-AnalyticalTable-OuterCellBorder);
   }
 
