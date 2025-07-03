@@ -23,9 +23,11 @@ import { Bar } from '../../webComponents/Bar/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import type { DialogPropTypes } from '../../webComponents/Dialog/index.js';
 import { Dialog } from '../../webComponents/Dialog/index.js';
-import type { InputDomRef } from '../../webComponents/index.js';
-import { Icon, Input } from '../../webComponents/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import type { InputDomRef } from '../../webComponents/Input/index.js';
+import { Input } from '../../webComponents/Input/index.js';
 import { Table } from '../../webComponents/Table/index.js';
+import type { TablePropTypes } from '../../webComponents/Table/index.js';
 import { TableHeaderCell } from '../../webComponents/TableHeaderCell/index.js';
 import { TableHeaderRow } from '../../webComponents/TableHeaderRow/index.js';
 import { FlexBox } from '../FlexBox/index.js';
@@ -90,7 +92,7 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
   const headerRow = (
     <TableHeaderRow sticky>
       {showOnlyFavorites && <TableHeaderCell key="favorite-variant-item" />}
-      <TableHeaderCell importance={10} min-width="18rem">
+      <TableHeaderCell importance={10} minWidth="14rem">
         {viewHeaderText}
       </TableHeaderCell>
       {showShare && (
@@ -104,12 +106,11 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         </TableHeaderCell>
       )}
       {showApplyAutomatically && (
-        <TableHeaderCell minWidth={hasApplyAutomaticallyText ? '25rem' : '5rem'}>
+        <TableHeaderCell minWidth={hasApplyAutomaticallyText ? '12.5rem' : '5rem'}>
           {applyAutomaticallyHeaderText}
         </TableHeaderCell>
       )}
-      {showCreatedBy && <TableHeaderCell minWidth="10rem">{createdByHeaderText}</TableHeaderCell>}
-      <TableHeaderCell importance={9} width="3rem" key="delete-variant-item" />
+      {showCreatedBy && <TableHeaderCell minWidth="7.125rem">{createdByHeaderText}</TableHeaderCell>}
     </TableHeaderRow>
   );
 
@@ -155,11 +156,12 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
     }
   };
   const deletedTableRows = useRef(new Set([]));
-  const handleDelete = (e) => {
-    deletedTableRows.current.add(e.target.dataset.children);
+  const handleDelete: TablePropTypes['onRowActionClick'] = (e) => {
+    const variantChild = e.detail.row.dataset.id;
+    deletedTableRows.current.add(variantChild);
     setChildrenProps((prev) =>
       prev
-        .filter((item) => item.children !== e.target.dataset.children)
+        .filter((item) => item.children !== variantChild)
         .map((item) => {
           if (Object.prototype.hasOwnProperty.call(changedTableRows.current, item.children)) {
             return { ...item, ...changedTableRows.current[item.children] };
@@ -260,7 +262,12 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
         />
       }
     >
-      <Table headerRow={headerRow} role="table" overflowMode={TableOverflowMode.Popin}>
+      <Table
+        headerRow={headerRow}
+        overflowMode={TableOverflowMode.Popin}
+        rowActionCount={1}
+        onRowActionClick={handleDelete}
+      >
         {filteredProps.map((itemProps) => {
           return (
             <ManageViewsTableRows
@@ -270,7 +277,6 @@ export const ManageViewsDialog = (props: ManageViewsDialogPropTypes) => {
               changedVariantNames={changedVariantNames}
               variantNames={variantNames}
               handleRowChange={handleTableRowChange}
-              handleDelete={handleDelete}
               defaultView={defaultView}
               setDefaultView={setDefaultView}
               showShare={showShare}
