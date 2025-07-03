@@ -337,7 +337,9 @@ describe('FilterBar.cy.tsx', () => {
         // no border for table rows within panel - `getComputedStyle` returns the default value (`separate`) for `unset`
         cy.get('table').should('have.css', 'border-collapse', 'separate');
         // no bottom border for table within panel - `getComputedStyle` sets the border-width to 0 for `none`
-        cy.get('.ui5-table-root').should('have.css', 'border-bottom', '0px none rgb(29, 45, 62)');
+        cy.get('.ui5-table-root')
+          .should('have.css', 'border-bottom-width', '0px')
+          .and('have.css', 'border-bottom-style', 'none');
         // no select-all checkbox (header row is hidden)
         cy.get('thead th.ui5-table-select-all-column').should('not.be.visible');
       });
