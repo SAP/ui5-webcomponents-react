@@ -380,7 +380,7 @@
               "privacy": "public",
               "description": "\"No Email v1\" illustration type.",
               "default": "NoMail_v1",
-              "deprecated": "Since 2.10.0, use NoMail instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoMail instead.",
               "name": "NoMail_v1",
               "readonly": true
             },
@@ -417,7 +417,7 @@
               "privacy": "public",
               "description": "\"No Saved Items v1\" illustration type.",
               "default": "NoSavedItems_v1",
-              "deprecated": "Since 2.10.0, use NoSavedItems instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoSavedItems instead.",
               "name": "NoSavedItems_v1",
               "readonly": true
             },
@@ -445,7 +445,7 @@
               "privacy": "public",
               "description": "\"No Tasks v1\" illustration type.",
               "default": "NoTasks_v1",
-              "deprecated": "Since 2.10.0, use NoTasks instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoTasks instead.",
               "name": "NoTasks_v1",
               "readonly": true
             },
@@ -455,7 +455,7 @@
               "privacy": "public",
               "description": "\"No Dimensions Set\" illustration type.",
               "default": "NoDimensionsSet",
-              "deprecated": "Since 2.10.0, use NoChartData instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoChartData instead.",
               "name": "NoDimensionsSet",
               "readonly": true
             },
@@ -501,7 +501,7 @@
               "privacy": "public",
               "description": "\"Add Column\" illustration type.",
               "default": "AddColumn",
-              "deprecated": "Since 2.10.0, use AddingColumns instead",
+              "deprecated": "Deprecated as of version 2.11.0, use AddingColumns instead.",
               "name": "AddColumn",
               "readonly": true
             },
@@ -511,7 +511,7 @@
               "privacy": "public",
               "description": "\"Add People\" illustration type.",
               "default": "AddPeople",
-              "deprecated": "Since 2.10.0, use AddPeopleToCalendar instead",
+              "deprecated": "Deprecated as of version 2.11.0, use AddPeopleToCalendar instead.",
               "name": "AddPeople",
               "readonly": true
             },
@@ -530,7 +530,7 @@
               "privacy": "public",
               "description": "\"Balloon Sky\" illustration type.",
               "default": "BalloonSky",
-              "deprecated": "Since 2.10.0, use ReceiveAppreciation instead",
+              "deprecated": "Deprecated as of version 2.11.0, use ReceiveAppreciation instead.",
               "name": "BalloonSky",
               "readonly": true
             },
@@ -540,7 +540,7 @@
               "privacy": "public",
               "description": "\"Connection\" illustration type.",
               "default": "Connection",
-              "deprecated": "Since 2.10.0, use UnableToLoad instead",
+              "deprecated": "Deprecated as of version 2.11.0, use UnableToLoad instead.",
               "name": "Connection",
               "readonly": true
             },
@@ -550,7 +550,7 @@
               "privacy": "public",
               "description": "\"Empty Calendar\" illustration type.",
               "default": "EmptyCalendar",
-              "deprecated": "Since 2.10.0, use NoActivities instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoActivities instead.",
               "name": "EmptyCalendar",
               "readonly": true
             },
@@ -560,7 +560,7 @@
               "privacy": "public",
               "description": "\"Empty List\" illustration type.",
               "default": "EmptyList",
-              "deprecated": "Since 2.10.0, use NoEntries instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoEntries instead.",
               "name": "EmptyList",
               "readonly": true
             },
@@ -579,7 +579,7 @@
               "privacy": "public",
               "description": "\"Error Screen\" illustration type.",
               "default": "ErrorScreen",
-              "deprecated": "Since 2.10.0, use UnableToUpload instead",
+              "deprecated": "Deprecated as of version 2.11.0, use UnableToUpload instead.",
               "name": "ErrorScreen",
               "readonly": true
             },
@@ -589,7 +589,7 @@
               "privacy": "public",
               "description": "\"Filter Table\" illustration type.",
               "default": "FilterTable",
-              "deprecated": "Since 2.10.0, use FilteringColumns instead",
+              "deprecated": "Deprecated as of version 2.11.0, use FilteringColumns instead.",
               "name": "FilterTable",
               "readonly": true
             },
@@ -599,7 +599,7 @@
               "privacy": "public",
               "description": "\"Group Table\" illustration type.",
               "default": "GroupTable",
-              "deprecated": "Since 2.10.0, use GroupingColumns instead",
+              "deprecated": "Deprecated as of version 2.11.0, use GroupingColumns instead.",
               "name": "GroupTable",
               "readonly": true
             },
@@ -645,7 +645,7 @@
               "privacy": "public",
               "description": "\"Reload Screen\" illustration type.",
               "default": "ReloadScreen",
-              "deprecated": "Since 2.10.0, use UnableToLoad instead",
+              "deprecated": "Deprecated as of version 2.11.0, use UnableToLoad instead.",
               "name": "ReloadScreen",
               "readonly": true
             },
@@ -655,7 +655,7 @@
               "privacy": "public",
               "description": "\"Resize Column\" illustration type.",
               "default": "ResizeColumn",
-              "deprecated": "Since 2.10.0, use ResizingColumns instead",
+              "deprecated": "Deprecated as of version 2.11.0, use ResizingColumns instead.",
               "name": "ResizeColumn",
               "readonly": true
             },
@@ -683,7 +683,7 @@
               "privacy": "public",
               "description": "\"Search Earth\" illustration type.",
               "default": "SearchEarth",
-              "deprecated": "Since 2.10.0, use BeforeSearch instead",
+              "deprecated": "Deprecated as of version 2.11.0, use BeforeSearch instead.",
               "name": "SearchEarth",
               "readonly": true
             },
@@ -693,7 +693,7 @@
               "privacy": "public",
               "description": "\"Search Folder\" illustration type.",
               "default": "SearchFolder",
-              "deprecated": "Since 2.10.0, use NoSearchResults instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoSearchResults instead.",
               "name": "SearchFolder",
               "readonly": true
             },
@@ -712,7 +712,7 @@
               "privacy": "public",
               "description": "\"Simple Balloon\" illustration type.",
               "default": "SimpleBalloon",
-              "deprecated": "Since 2.10.0, use ReceiveAppreciation instead",
+              "deprecated": "Deprecated as of version 2.11.0, use ReceiveAppreciation instead.",
               "name": "SimpleBalloon",
               "readonly": true
             },
@@ -722,7 +722,7 @@
               "privacy": "public",
               "description": "\"Simple Bell\" illustration type.",
               "default": "SimpleBell",
-              "deprecated": "Since 2.10.0, use NoNotifications instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoNotifications instead.",
               "name": "SimpleBell",
               "readonly": true
             },
@@ -732,7 +732,7 @@
               "privacy": "public",
               "description": "\"Simple Calendar\" illustration type.",
               "default": "SimpleCalendar",
-              "deprecated": "Since 2.10.0, use NoActivities instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoActivities instead.",
               "name": "SimpleCalendar",
               "readonly": true
             },
@@ -742,7 +742,7 @@
               "privacy": "public",
               "description": "\"Simple CheckMark\" illustration type.",
               "default": "SimpleCheckMark",
-              "deprecated": "Since 2.10.0, use KeyTask instead",
+              "deprecated": "Deprecated as of version 2.11.0, use KeyTask instead.",
               "name": "SimpleCheckMark",
               "readonly": true
             },
@@ -752,7 +752,7 @@
               "privacy": "public",
               "description": "\"Simple Connection\" illustration type.",
               "default": "SimpleConnection",
-              "deprecated": "Since 2.10.0, use UnableToLoad instead",
+              "deprecated": "Deprecated as of version 2.11.0, use UnableToLoad instead.",
               "name": "SimpleConnection",
               "readonly": true
             },
@@ -762,7 +762,7 @@
               "privacy": "public",
               "description": "\"Simple Empty Doc\" illustration type.",
               "default": "SimpleEmptyDoc",
-              "deprecated": "Since 2.10.0, use NoData instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoData instead.",
               "name": "SimpleEmptyDoc",
               "readonly": true
             },
@@ -772,7 +772,7 @@
               "privacy": "public",
               "description": "\"Simple Empty List\" illustration type.",
               "default": "SimpleEmptyList",
-              "deprecated": "Since 2.10.0, use NoEntries instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoEntries instead.",
               "name": "SimpleEmptyList",
               "readonly": true
             },
@@ -782,7 +782,7 @@
               "privacy": "public",
               "description": "\"Simple Error\" illustration type.",
               "default": "SimpleError",
-              "deprecated": "Since 2.10.0, use UnableToUpload instead",
+              "deprecated": "Deprecated as of version 2.11.0, use UnableToUpload instead.",
               "name": "SimpleError",
               "readonly": true
             },
@@ -792,7 +792,7 @@
               "privacy": "public",
               "description": "\"Simple Magnifier\" illustration type.",
               "default": "SimpleMagnifier",
-              "deprecated": "Since 2.10.0, use BeforeSearch instead",
+              "deprecated": "Deprecated as of version 2.11.0, use BeforeSearch instead.",
               "name": "SimpleMagnifier",
               "readonly": true
             },
@@ -802,7 +802,7 @@
               "privacy": "public",
               "description": "\"Simple Mail\" illustration type.",
               "default": "SimpleMail",
-              "deprecated": "Since 2.10.0, use NoMail instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoMail instead.",
               "name": "SimpleMail",
               "readonly": true
             },
@@ -812,7 +812,7 @@
               "privacy": "public",
               "description": "\"Simple No Saved Items\" illustration type.",
               "default": "SimpleNoSavedItems",
-              "deprecated": "Since 2.10.0, use NoSavedItems instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoSavedItems instead.",
               "name": "SimpleNoSavedItems",
               "readonly": true
             },
@@ -822,7 +822,7 @@
               "privacy": "public",
               "description": "\"Simple Not Found Magnifier\" illustration type.",
               "default": "SimpleNotFoundMagnifier",
-              "deprecated": "Since 2.10.0, use NoSearchResults instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoSearchResults instead.",
               "name": "SimpleNotFoundMagnifier",
               "readonly": true
             },
@@ -832,7 +832,7 @@
               "privacy": "public",
               "description": "\"Simple Reload\" illustration type.",
               "default": "SimpleReload",
-              "deprecated": "Since 2.10.0, use UnableToLoad instead",
+              "deprecated": "Deprecated as of version 2.11.0, use UnableToLoad instead.",
               "name": "SimpleReload",
               "readonly": true
             },
@@ -842,7 +842,7 @@
               "privacy": "public",
               "description": "\"Simple Task\" illustration type.",
               "default": "SimpleTask",
-              "deprecated": "Since 2.10.0, use NoTasks instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoTasks instead.",
               "name": "SimpleTask",
               "readonly": true
             },
@@ -852,7 +852,7 @@
               "privacy": "public",
               "description": "\"Sleeping Bell\" illustration type.",
               "default": "SleepingBell",
-              "deprecated": "Since 2.10.0, use NoNotifications instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoNotifications instead.",
               "name": "SleepingBell",
               "readonly": true
             },
@@ -862,7 +862,7 @@
               "privacy": "public",
               "description": "\"Sort Column\" illustration type.",
               "default": "SortColumn",
-              "deprecated": "Since 2.10.0, use SortingColumns instead",
+              "deprecated": "Deprecated as of version 2.11.0, use SortingColumns instead.",
               "name": "SortColumn",
               "readonly": true
             },
@@ -881,7 +881,7 @@
               "privacy": "public",
               "description": "\"Success Balloon\" illustration type.",
               "default": "SuccessBalloon",
-              "deprecated": "Since 2.10.0, use ReceiveAppreciation instead",
+              "deprecated": "Deprecated as of version 2.11.0, use ReceiveAppreciation instead.",
               "name": "SuccessBalloon",
               "readonly": true
             },
@@ -891,7 +891,7 @@
               "privacy": "public",
               "description": "\"Success CheckMark\" illustration type.",
               "default": "SuccessCheckMark",
-              "deprecated": "Since 2.10.0, use KeyTask instead",
+              "deprecated": "Deprecated as of version 2.11.0, use KeyTask instead.",
               "name": "SuccessCheckMark",
               "readonly": true
             },
@@ -901,7 +901,7 @@
               "privacy": "public",
               "description": "\"Success HighFive\" illustration type.",
               "default": "SuccessHighFive",
-              "deprecated": "Since 2.10.0, use ReceiveAppreciation instead",
+              "deprecated": "Deprecated as of version 2.11.0, use ReceiveAppreciation instead.",
               "name": "SuccessHighFive",
               "readonly": true
             },
@@ -911,7 +911,7 @@
               "privacy": "public",
               "description": "\"Success Screen\" illustration type.",
               "default": "SuccessScreen",
-              "deprecated": "Since 2.10.0, use KeyTask instead",
+              "deprecated": "Deprecated as of version 2.11.0, use KeyTask instead.",
               "name": "SuccessScreen",
               "readonly": true
             },
@@ -930,7 +930,7 @@
               "privacy": "public",
               "description": "\"Tent\" illustration type.",
               "default": "Tent",
-              "deprecated": "Since 2.10.0, use NoData instead",
+              "deprecated": "Deprecated as of version 2.11.0, use NoData instead.",
               "name": "Tent",
               "readonly": true
             },
@@ -940,7 +940,7 @@
               "privacy": "public",
               "description": "\"Upload Collection\" illustration type.",
               "default": "UploadCollection",
-              "deprecated": "Since 2.10.0, use DragFilesToUpload instead",
+              "deprecated": "Deprecated as of version 2.11.0, use DragFilesToUpload instead.",
               "name": "UploadCollection",
               "readonly": true
             },
@@ -6460,6 +6460,22 @@
               "_ui5privacy": "public"
             },
             {
+              "name": "branding",
+              "description": "Defines the branding slot.\nThe `ui5-shellbar-branding` component is intended to be placed inside this slot.\nContent placed here takes precedence over the `primaryTitle` property and the `logo` content slot.\n\n**Note:** The `branding` slot is in an experimental state and is a subject to change.",
+              "_ui5since": "2.12.0",
+              "_ui5type": {
+                "text": "Array<ShellBarBranding>",
+                "references": [
+                  {
+                    "name": "ShellBarBranding",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/ShellBarBranding.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            },
+            {
               "name": "default",
               "description": "Defines the `ui5-shellbar` additional items.\n\n**Note:**\nYou can use the `<ui5-shellbar-item></ui5-shellbar-item>`.",
               "_ui5propertyName": "items",
@@ -7132,6 +7148,138 @@
           "declaration": {
             "name": "ShellBar",
             "module": "dist/ShellBar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ShellBarBranding.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\nThe `ui5-shellbar-branding` component is intended to be placed inside the branding slot of the\n`ui5-shellbar` component. Its content has higher priority than the `primaryTitle` property\nand the `logo` slot of `ui5-shellbar`.",
+          "name": "ShellBarBranding",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the title for the ui5-shellbar-branding component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
+              "_ui5propertyName": "content",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "logo",
+              "description": "Defines the logo of the `ui5-shellbar`.\nFor example, you can use `ui5-avatar` or `img` elements as logo.",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the component href.\n\n**Note:** Standard hyperlink behavior is supported.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text alternative of the component.\nIf not provided a default text alternative will be set, if present.",
+              "default": "undefined",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired, when the logo is activated.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the component href.\n\n**Note:** Standard hyperlink behavior is supported.",
+              "name": "href",
+              "default": "undefined",
+              "fieldName": "href",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
+              "name": "target",
+              "default": "undefined",
+              "fieldName": "target",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the text alternative of the component.\nIf not provided a default text alternative will be set, if present.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-shellbar-branding",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.12.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ShellBarBranding",
+            "module": "dist/ShellBarBranding.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-shellbar-branding",
+          "declaration": {
+            "name": "ShellBarBranding",
+            "module": "dist/ShellBarBranding.js"
           }
         }
       ]
@@ -8178,7 +8326,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the item is selected",
+              "description": "Defines whether the item is selected.\n\n**Note:** Items that have a set `href` and `target` set to `_blank` should not be selectable.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
@@ -8206,7 +8354,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
+              "description": "Defines the component target.\n\nPossible values:\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `framename`\n\n**Note:** Items that have a defined `href` and `target`\nattribute set to `_blank` should not be selectable.",
               "privacy": "public",
               "default": "undefined",
               "_ui5since": "1.19.0",
@@ -8244,7 +8392,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- External links should be unselectable.\n- Items that trigger actions (with design \"Action\") should be unselectable.",
+              "description": "Indicates whether the navigation item is selectable. By default, all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- Items with an assigned `href` and a target of `_blank` should be marked as unselectable.\n- Items that trigger actions (with design \"Action\") should be marked as unselectable.",
               "privacy": "public",
               "_ui5since": "2.7.0",
               "inheritedFrom": {
@@ -8343,7 +8491,7 @@
               }
             },
             {
-              "description": "Defines whether the item is selected",
+              "description": "Defines whether the item is selected.\n\n**Note:** Items that have a set `href` and `target` set to `_blank` should not be selectable.",
               "name": "selected",
               "default": "false",
               "fieldName": "selected",
@@ -8369,7 +8517,7 @@
               }
             },
             {
-              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
+              "description": "Defines the component target.\n\nPossible values:\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `framename`\n\n**Note:** Items that have a defined `href` and `target`\nattribute set to `_blank` should not be selectable.",
               "name": "target",
               "default": "undefined",
               "fieldName": "target",
@@ -8395,7 +8543,7 @@
               }
             },
             {
-              "description": "Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- External links should be unselectable.\n- Items that trigger actions (with design \"Action\") should be unselectable.",
+              "description": "Indicates whether the navigation item is selectable. By default, all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- Items with an assigned `href` and a target of `_blank` should be marked as unselectable.\n- Items that trigger actions (with design \"Action\") should be marked as unselectable.",
               "name": "unselectable",
               "default": "false",
               "fieldName": "unselectable",
@@ -8668,7 +8816,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the item is selected",
+              "description": "Defines whether the item is selected.\n\n**Note:** Items that have a set `href` and `target` set to `_blank` should not be selectable.",
               "privacy": "public"
             },
             {
@@ -8688,7 +8836,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
+              "description": "Defines the component target.\n\nPossible values:\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `framename`\n\n**Note:** Items that have a defined `href` and `target`\nattribute set to `_blank` should not be selectable.",
               "privacy": "public",
               "default": "undefined",
               "_ui5since": "1.19.0"
@@ -8718,7 +8866,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- External links should be unselectable.\n- Items that trigger actions (with design \"Action\") should be unselectable.",
+              "description": "Indicates whether the navigation item is selectable. By default, all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- Items with an assigned `href` and a target of `_blank` should be marked as unselectable.\n- Items that trigger actions (with design \"Action\") should be marked as unselectable.",
               "privacy": "public",
               "_ui5since": "2.7.0"
             },
@@ -8850,7 +8998,7 @@
               }
             },
             {
-              "description": "Defines whether the item is selected",
+              "description": "Defines whether the item is selected.\n\n**Note:** Items that have a set `href` and `target` set to `_blank` should not be selectable.",
               "name": "selected",
               "default": "false",
               "fieldName": "selected",
@@ -8868,7 +9016,7 @@
               }
             },
             {
-              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
+              "description": "Defines the component target.\n\nPossible values:\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `framename`\n\n**Note:** Items that have a defined `href` and `target`\nattribute set to `_blank` should not be selectable.",
               "name": "target",
               "default": "undefined",
               "fieldName": "target",
@@ -8886,7 +9034,7 @@
               }
             },
             {
-              "description": "Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- External links should be unselectable.\n- Items that trigger actions (with design \"Action\") should be unselectable.",
+              "description": "Indicates whether the navigation item is selectable. By default, all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- Items with an assigned `href` and a target of `_blank` should be marked as unselectable.\n- Items that trigger actions (with design \"Action\") should be marked as unselectable.",
               "name": "unselectable",
               "default": "false",
               "fieldName": "unselectable",
@@ -8995,7 +9143,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the item is selected",
+              "description": "Defines whether the item is selected.\n\n**Note:** Items that have a set `href` and `target` set to `_blank` should not be selectable.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "SideNavigationSelectableItemBase",
@@ -9023,7 +9171,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
+              "description": "Defines the component target.\n\nPossible values:\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `framename`\n\n**Note:** Items that have a defined `href` and `target`\nattribute set to `_blank` should not be selectable.",
               "privacy": "public",
               "default": "undefined",
               "_ui5since": "1.19.0",
@@ -9061,7 +9209,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- External links should be unselectable.\n- Items that trigger actions (with design \"Action\") should be unselectable.",
+              "description": "Indicates whether the navigation item is selectable. By default, all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- Items with an assigned `href` and a target of `_blank` should be marked as unselectable.\n- Items that trigger actions (with design \"Action\") should be marked as unselectable.",
               "privacy": "public",
               "_ui5since": "2.7.0",
               "inheritedFrom": {
@@ -9161,7 +9309,7 @@
               }
             },
             {
-              "description": "Defines whether the item is selected",
+              "description": "Defines whether the item is selected.\n\n**Note:** Items that have a set `href` and `target` set to `_blank` should not be selectable.",
               "name": "selected",
               "default": "false",
               "fieldName": "selected",
@@ -9187,7 +9335,7 @@
               }
             },
             {
-              "description": "Defines the component target.\n\n**Notes:**\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `_search`\n\n**This property must only be used when the `href` property is set.**",
+              "description": "Defines the component target.\n\nPossible values:\n\n- `_self`\n- `_top`\n- `_blank`\n- `_parent`\n- `framename`\n\n**Note:** Items that have a defined `href` and `target`\nattribute set to `_blank` should not be selectable.",
               "name": "target",
               "default": "undefined",
               "fieldName": "target",
@@ -9213,7 +9361,7 @@
               }
             },
             {
-              "description": "Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- External links should be unselectable.\n- Items that trigger actions (with design \"Action\") should be unselectable.",
+              "description": "Indicates whether the navigation item is selectable. By default, all items are selectable unless specifically marked as unselectable.\n\nWhen a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.\nTo improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.\n\n\n**Guidelines**:\n- Items with an assigned `href` and a target of `_blank` should be marked as unselectable.\n- Items that trigger actions (with design \"Action\") should be marked as unselectable.",
               "name": "unselectable",
               "default": "false",
               "fieldName": "unselectable",
@@ -11124,7 +11272,7 @@
             },
             {
               "name": "endContent",
-              "description": "Defines the components that should be displayed at the end of the menu item.\n\n**Note:** It is highly recommended to slot only components of type `ui5-button`,`ui5-link`\nor `ui5-icon` in order to preserve the intended design. If there are components added to this slot,\nand there is text set in `additionalText`, it will not be displayed. If there are items added to `items` slot,\nnether `additionalText` nor components added to this slot would be displayed.\n\nThe priority of what will be displayed at the end of the menu item is as follows:\nsub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.",
+              "description": "Defines the components that should be displayed at the end of the menu item.\n\n**Note:** It is highly recommended to slot only components of type `ui5-button`,`ui5-link`\nor `ui5-icon` in order to preserve the intended design. If there are components added to this slot,\nand there is text set in `additionalText`, it will not be displayed. If there are items added to `items` slot,\nnether `additionalText` nor components added to this slot would be displayed.\n\nThe priority of what will be displayed at the end of the menu item is as follows:\nsub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.\n\nApplication developers are responsible for ensuring that interactive elements placed in the `endContent` slot\nhave the correct accessibility behaviour, including their enabled or disabled states.\nThe menu does not manage these aspects when the menu item state changes.",
               "_ui5since": "2.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
@@ -11201,7 +11349,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether `ui5-menu-item` is in disabled state.\n\n**Note:** A disabled `ui5-menu-item` is noninteractive.",
+              "description": "Defines whether menu item is in disabled state.\n\n**Note:** A disabled menu item is noninteractive.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "ListItemBase",
@@ -11215,7 +11363,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.\n\n**Note:** If set to `true` a `ui5-busy-indicator` component will be displayed into the related one to the current `ui5-menu-item` sub-menu popover.",
+              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.\n\n**Note:** If set to `true` a busy indicator component will be displayed into the related one to the current menu item sub-menu popover.",
               "privacy": "public",
               "_ui5since": "1.13.0"
             },
@@ -11226,7 +11374,7 @@
                 "text": "number"
               },
               "default": "1000",
-              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.",
+              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.",
               "privacy": "public",
               "_ui5since": "1.13.0"
             },
@@ -11259,6 +11407,17 @@
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether menu item is in checked state.\n\n**Note:** checked state is only taken into account when menu item is added to menu item group\nwith `checkMode` other than `None`.\n\n**Note:** A checked menu item has a checkmark displayed at its end.",
+              "privacy": "public",
+              "_ui5since": "2.12.0"
             },
             {
               "kind": "field",
@@ -11381,7 +11540,7 @@
                   },
                   "name": "item",
                   "_ui5privacy": "public",
-                  "description": "The `ui5-menu-item` that triggers opening of the sub-menu or undefined when fired upon root menu opening."
+                  "description": "The menu item that triggers opening of the sub-menu or undefined when fired upon root menu opening."
                 }
               ]
             },
@@ -11438,6 +11597,18 @@
               "_ui5since": "1.10.0"
             },
             {
+              "name": "check",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when an item is checked or unchecked.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.12.0"
+            },
+            {
               "name": "detail-click",
               "_ui5privacy": "public",
               "type": {
@@ -11470,6 +11641,82 @@
           "declaration": {
             "name": "UserMenuItem",
             "module": "dist/UserMenuItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserMenuItemGroup.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-user-menu-item-group` component represents a group of items designed for use inside a `ui5-user-menu`.\nItems belonging to the same group should be wrapped by a `ui5-user-menu-item-group`.\nEach group can have an `itemCheckMode` property, which defines the check mode for the items within the group.\nThe possible values for `itemCheckMode` are:\n- 'None' (default) - no items can be checked\n- 'Single' - Only one item can be checked at a time\n- 'Multiple' - Multiple items can be checked simultaneously\n\n**Note:** If the `itemCheckMode` property is set to 'Single', only one item can remain checked at any given time.\nIf multiple items are marked as checked, the last checked item will take precedence.\n\n### Usage\n\n`ui5-user-menu-item-group` represents a collection of `ui5-user-menu-item` components that can have the same check mode.\nThe items are addeed to the group's `items` slot.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/UserMenuItemGroup.js\";`",
+          "name": "UserMenuItemGroup",
+          "superclass": {
+            "name": "MenuItemGroup",
+            "package": "@ui5/webcomponents",
+            "module": "dist/MenuItemGroup.js"
+          },
+          "tagName": "ui5-user-menu-item-group",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.12.0",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "name": "checkMode",
+              "type": {
+                "text": "MenuItemGroupCheckMode",
+                "references": [
+                  {
+                    "name": "MenuItemGroupCheckMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/MenuItemGroupCheckMode.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines the component's check mode.",
+              "privacy": "public"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the items of this component.\n**Note:** The slot can hold any combination of components of type `ui5-menu-item` or `ui5-menu-separator` or both.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<IMenuItem>",
+                "references": [
+                  {
+                    "name": "IMenuItem",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Menu.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserMenuItemGroup",
+            "module": "dist/UserMenuItemGroup.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-user-menu-item-group",
+          "declaration": {
+            "name": "UserMenuItemGroup",
+            "module": "dist/UserMenuItemGroup.js"
           }
         }
       ]

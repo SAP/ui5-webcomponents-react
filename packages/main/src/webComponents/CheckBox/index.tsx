@@ -103,6 +103,18 @@ interface CheckBoxAttributes {
   text?: string | undefined;
 
   /**
+   * Defines the form value of the component that is submitted when the checkbox is checked.
+   *
+   * When a form containing `CheckBox` elements is submitted, only the values of the
+   * **checked** checkboxes are included in the form data sent to the server. Unchecked
+   * checkboxes do not contribute any data to the form submission.
+   *
+   * This property is particularly useful for **checkbox groups**, where multiple checkboxes with the same `name` but different `value` properties can be used to represent a set of related options.
+   * @default "on"
+   */
+  value?: string;
+
+  /**
    * Defines the value state of the component.
    * @default "None"
    */
@@ -167,7 +179,7 @@ interface CheckBoxPropTypes extends CheckBoxAttributes, Omit<CommonProps, keyof 
  */
 const CheckBox = withWebComponent<CheckBoxPropTypes, CheckBoxDomRef>(
   'ui5-checkbox',
-  ['accessibleName', 'accessibleNameRef', 'name', 'text', 'valueState', 'wrappingType'],
+  ['accessibleName', 'accessibleNameRef', 'name', 'text', 'value', 'valueState', 'wrappingType'],
   ['checked', 'disabled', 'displayOnly', 'indeterminate', 'readonly', 'required'],
   [],
   ['change'],

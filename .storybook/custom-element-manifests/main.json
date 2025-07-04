@@ -25,7 +25,7 @@
           "kind": "class",
           "description": "",
           "name": "DateRangeRange",
-          "_ui5since": "2.0.0",
+          "_ui5since": "2.11.0",
           "_ui5privacy": "public"
         }
       ],
@@ -48,7 +48,7 @@
           "kind": "class",
           "description": "",
           "name": "SingleDate",
-          "_ui5since": "2.0.0",
+          "_ui5since": "2.11.0",
           "_ui5privacy": "public"
         }
       ],
@@ -71,7 +71,7 @@
           "kind": "class",
           "description": "",
           "name": "Today",
-          "_ui5since": "2.0.0",
+          "_ui5since": "2.11.0",
           "_ui5privacy": "public"
         }
       ],
@@ -94,7 +94,7 @@
           "kind": "class",
           "description": "",
           "name": "Tomorrow",
-          "_ui5since": "2.0.0",
+          "_ui5since": "2.11.0",
           "_ui5privacy": "public"
         }
       ],
@@ -117,7 +117,7 @@
           "kind": "class",
           "description": "",
           "name": "Yesterday",
-          "_ui5since": "2.0.0",
+          "_ui5since": "2.11.0",
           "_ui5privacy": "public"
         }
       ],
@@ -2519,6 +2519,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/types/MenuItemGroupCheckMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "MenuItemGroupCheckMode",
+          "description": "Menu item group check modes.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.12.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "default type (items in a group cannot be checked)",
+              "default": "None",
+              "name": "None",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Single item check mode (only one item in a group can be checked at a time)",
+              "default": "Single",
+              "name": "Single",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Multiple items check mode (multiple items in a group can be checked at a time)",
+              "default": "Multiple",
+              "name": "Multiple",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MenuItemGroupCheckMode",
+            "module": "dist/types/MenuItemGroupCheckMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/types/MessageStripDesign.js",
       "declarations": [
         {
@@ -3397,7 +3449,7 @@
         {
           "kind": "enum",
           "name": "TableOverflowMode",
-          "description": "Column mode of the &lt;ui5-table&gt; component.",
+          "description": "Overflow mode of the &lt;ui5-table&gt; component.",
           "_ui5experimental": true,
           "_ui5privacy": "public",
           "members": [
@@ -3525,6 +3577,49 @@
           "declaration": {
             "name": "TableSelectionMode",
             "module": "dist/types/TableSelectionMode.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/TableSelectionMultiHeaderSelector.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "TableSelectionMultiHeaderSelector",
+          "description": "Selectors of the table header row in multi-selection scenarios.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.12",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Renders a checkbox in the table header row that toggles the selection of all rows.",
+              "default": "SelectAll",
+              "name": "SelectAll",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "Renders an icon in the table header row that removes the selection of all rows.",
+              "default": "ClearAll",
+              "name": "ClearAll",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableSelectionMultiHeaderSelector",
+            "module": "dist/types/TableSelectionMultiHeaderSelector.js"
           }
         }
       ]
@@ -4469,6 +4564,28 @@
             },
             {
               "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible name of the AvatarGroup.\nWhen provided, this will override the default aria-label text.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.12.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(s) of the elements that describe the AvatarGroup.\nWhen provided, this will be used as aria-labelledby instead of aria-label.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.12.0"
+            },
+            {
+              "kind": "field",
               "name": "hiddenItems",
               "type": {
                 "text": "Array<IAvatarGroupItem>",
@@ -4572,6 +4689,24 @@
               "fieldName": "accessibilityAttributes",
               "type": {
                 "text": "AvatarGroupAccessibilityAttributes"
+              }
+            },
+            {
+              "description": "Defines the accessible name of the AvatarGroup.\nWhen provided, this will override the default aria-label text.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Receives id(s) of the elements that describe the AvatarGroup.\nWhen provided, this will be used as aria-labelledby instead of aria-label.",
+              "name": "accessible-name-ref",
+              "default": "undefined",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
               }
             },
             {
@@ -5762,6 +5897,10 @@
               "name": "month-cell-selected-between"
             },
             {
+              "description": "Used to style the month picker root container.",
+              "name": "month-picker-root"
+            },
+            {
               "description": "Used to style the year cells.",
               "name": "year-cell"
             },
@@ -5774,6 +5913,10 @@
               "name": "year-cell-selected-between"
             },
             {
+              "description": "Used to style the year picker root container.",
+              "name": "year-picker-root"
+            },
+            {
               "description": "Used to style the year range cells.",
               "name": "year-range-cell"
             },
@@ -5784,6 +5927,10 @@
             {
               "description": "Used to style the year range cells in between of selected year ranges.",
               "name": "year-range-cell-selected-between"
+            },
+            {
+              "description": "Used to style the calendar header middle buttons (month/year/year-range buttons).",
+              "name": "calendar-header-middle-button"
             }
           ],
           "slots": [
@@ -7611,6 +7758,16 @@
               "description": "Determines the name by which the component will be identified upon submission in an HTML form.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
               "default": "undefined",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"on\"",
+              "description": "Defines the form value of the component that is submitted when the checkbox is checked.\n\nWhen a form containing `ui5-checkbox` elements is submitted, only the values of the\n**checked** checkboxes are included in the form data sent to the server. Unchecked\ncheckboxes do not contribute any data to the form submission.\n\nThis property is particularly useful for **checkbox groups**, where multiple checkboxes with the same `name` but different `value` properties can be used to represent a set of related options.",
+              "privacy": "public"
             }
           ],
           "events": [
@@ -7733,6 +7890,15 @@
               "fieldName": "name",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the form value of the component that is submitted when the checkbox is checked.\n\nWhen a form containing `ui5-checkbox` elements is submitted, only the values of the\n**checked** checkboxes are included in the form data sent to the server. Unchecked\ncheckboxes do not contribute any data to the form submission.\n\nThis property is particularly useful for **checkbox groups**, where multiple checkboxes with the same `name` but different `value` properties can be used to represent a set of related options.",
+              "name": "value",
+              "default": "\"on\"",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -11855,6 +12021,36 @@
             },
             {
               "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.11.0",
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that describe the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.11.0",
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "preventInitialFocus",
               "type": {
                 "text": "boolean"
@@ -12005,6 +12201,32 @@
               "fieldName": "accessibleRole",
               "type": {
                 "text": "\"None\" | \"Dialog\" | \"AlertDialog\""
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that describe the component.",
+              "name": "accessible-description-ref",
+              "default": "undefined",
+              "fieldName": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
               },
               "inheritedFrom": {
                 "name": "Popup",
@@ -12170,7 +12392,7 @@
           "name": "IDynamicDateRangeOption",
           "description": "Represents a dynamic date range option used by the `ui5-dynamic-date-range` component.\n\nRepresents a dynamic date range option used for handling dynamic date ranges.\nThis interface defines the structure and behavior required for implementing\ndynamic date range options, including formatting, parsing, validation, and\nconversion of date range values.\n\n * Properties:\n- `icon`: The icon associated with the dynamic date range option, typically used for UI representation.\n- `operator`: A unique operator identifying the dynamic date range option.\n- `text`: The display text for the dynamic date range option.\n- `template` (optional): A JSX template for rendering the dynamic date range option.\n\nMethods:\n- `format(value: DynamicDateRangeValue): string`: Formats the given dynamic date range value into a string representation.\n- `parse(value: string): DynamicDateRangeValue | undefined`: Parses a string into a dynamic date range value.\n- `toDates(value: DynamicDateRangeValue): Date[]`: Converts a dynamic date range value into an array of `Date` objects.\n- `handleSelectionChange?(event: CustomEvent): DynamicDateRangeValue | undefined`: (Optional) Handles selection changes in the UI of the dynamic date range option.\n- `isValidString(value: string): boolean`: Validates whether a given string is a valid representation of the dynamic date range value.",
           "_ui5privacy": "public",
-          "_ui5since": "2.10.0"
+          "_ui5since": "2.11.0"
         },
         {
           "kind": "class",
@@ -12203,6 +12425,35 @@
               },
               "default": "\"\"",
               "description": "Defines the options listed as a string, separated by commas and using capital case.\nExample: \"TODAY, YESTERDAY, DATERANGE\"",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "toDates",
+              "return": {
+                "type": {
+                  "text": "Array<Date>"
+                },
+                "description": "An array of two `Date` objects representing the start and end dates."
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "DynamicDateRangeValue",
+                    "references": [
+                      {
+                        "name": "DynamicDateRangeValue",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/DynamicDateRange.js"
+                      }
+                    ]
+                  },
+                  "description": "The option to convert into an array of date ranges",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Converts a `value` into concrete `startDate` and `endDate` JavaScript `Date` objects.",
               "privacy": "public"
             }
           ],
@@ -12246,6 +12497,7 @@
           },
           "tagName": "ui5-dynamic-date-range",
           "customElement": true,
+          "_ui5since": "2.11.0",
           "_ui5privacy": "public"
         }
       ],
@@ -16510,7 +16762,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\n`ui5-menu` component represents a hierarchical menu structure.\n\n### Structure\n\nThe `ui5-menu` can hold two types of entities:\n\n- `ui5-menu-item` components\n- `ui5-menu-separator` - used to separate menu items with a line\n\nAn arbitrary hierarchy structure can be represented by recursively nesting menu items.\n\n### Keyboard Handling\n\nThe `ui5-menu` provides advanced keyboard handling.\nThe user can use the following keyboard shortcuts in order to navigate trough the tree:\n\n- `Arrow Up` / `Arrow Down` - Navigates up and down the menu items that are currently visible.\n- `Arrow Right`, `Space` or `Enter` - Opens a sub-menu if there are menu items nested\nin the currently clicked menu item.\n- `Arrow Left` or `Escape` - Closes the currently opened sub-menu.\n\nwhen there is `endContent` :\n- `Arrow Left` or `ArrowRight` - Navigate between the menu item actions and the menu item itself\n- `Arrow Up` / `Arrow Down` - Navigates up and down the currently visible menu items\n\nNote: if the text ditrection is set to Right-to-left (RTL), `Arrow Right` and `Arrow Left` functionality is swapped.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Menu.js\";`",
+          "description": "### Overview\n\n`ui5-menu` component represents a hierarchical menu structure.\n\n### Structure\n\nThe `ui5-menu` can hold two types of entities:\n\n- `ui5-menu-item` components\n- `ui5-menu-separator` - used to separate menu items with a line\n\nAn arbitrary hierarchy structure can be represented by recursively nesting menu items.\n\n### Keyboard Handling\n\nThe `ui5-menu` provides advanced keyboard handling.\nThe user can use the following keyboard shortcuts in order to navigate trough the tree:\n\n- `Arrow Up` / `Arrow Down` - Navigates up and down the menu items that are currently visible.\n- `Arrow Right`, `Space` or `Enter` - Opens a sub-menu if there are menu items nested\nin the currently clicked menu item.\n- `Arrow Left` or `Escape` - Closes the currently opened sub-menu.\n\nwhen there is `endContent` :\n- `Arrow Left` or `ArrowRight` - Navigate between the menu item actions and the menu item itself\n- `Arrow Up` / `Arrow Down` - Navigates up and down the currently visible menu items\n\n**Note:** If the text direction is set to Right-to-left (RTL), `Arrow Right` and `Arrow Left` functionality is swapped.\n\nApplication developers are responsible for ensuring that interactive elements placed in the `endContent` slot\nhave the correct accessibility behaviour, including their enabled or disabled states.\nThe menu does not manage these aspects when the menu item state changes.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Menu.js\";`",
           "name": "Menu",
           "slots": [
             {
@@ -16820,7 +17072,7 @@
           "slots": [
             {
               "name": "default",
-              "description": "Defines the items of this component.\n\n**Note:** The slot can hold `ui5-menu-item` and `ui5-menu-separator` items.\n\nIf there are items added to this slot, an arrow will be displayed at the end\nof the item in order to indicate that there are items added. In that case components added\nto `endContent` slot or `additionalText` content will not be displayed.\n\nThe priority of what will be displayed at the end of the menu item is as follows:\nsub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.",
+              "description": "Defines the items of this component.\n\n**Note:** The slot can hold menu item and menu separator items.\n\nIf there are items added to this slot, an arrow will be displayed at the end\nof the item in order to indicate that there are items added. In that case components added\nto `endContent` slot or `additionalText` content will not be displayed.\n\nThe priority of what will be displayed at the end of the menu item is as follows:\nsub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.",
               "_ui5propertyName": "items",
               "_ui5type": {
                 "text": "Array<IMenuItem>",
@@ -16836,7 +17088,7 @@
             },
             {
               "name": "endContent",
-              "description": "Defines the components that should be displayed at the end of the menu item.\n\n**Note:** It is highly recommended to slot only components of type `ui5-button`,`ui5-link`\nor `ui5-icon` in order to preserve the intended design. If there are components added to this slot,\nand there is text set in `additionalText`, it will not be displayed. If there are items added to `items` slot,\nnether `additionalText` nor components added to this slot would be displayed.\n\nThe priority of what will be displayed at the end of the menu item is as follows:\nsub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.",
+              "description": "Defines the components that should be displayed at the end of the menu item.\n\n**Note:** It is highly recommended to slot only components of type `ui5-button`,`ui5-link`\nor `ui5-icon` in order to preserve the intended design. If there are components added to this slot,\nand there is text set in `additionalText`, it will not be displayed. If there are items added to `items` slot,\nnether `additionalText` nor components added to this slot would be displayed.\n\nThe priority of what will be displayed at the end of the menu item is as follows:\nsub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.\n\nApplication developers are responsible for ensuring that interactive elements placed in the `endContent` slot\nhave the correct accessibility behaviour, including their enabled or disabled states.\nThe menu does not manage these aspects when the menu item state changes.",
               "_ui5since": "2.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
@@ -16903,7 +17155,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether `ui5-menu-item` is in disabled state.\n\n**Note:** A disabled `ui5-menu-item` is noninteractive.",
+              "description": "Defines whether menu item is in disabled state.\n\n**Note:** A disabled menu item is noninteractive.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "ListItemBase",
@@ -16917,7 +17169,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.\n\n**Note:** If set to `true` a `ui5-busy-indicator` component will be displayed into the related one to the current `ui5-menu-item` sub-menu popover.",
+              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.\n\n**Note:** If set to `true` a busy indicator component will be displayed into the related one to the current menu item sub-menu popover.",
               "privacy": "public",
               "_ui5since": "1.13.0"
             },
@@ -16928,7 +17180,7 @@
                 "text": "number"
               },
               "default": "1000",
-              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.",
+              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.",
               "privacy": "public",
               "_ui5since": "1.13.0"
             },
@@ -16961,6 +17213,17 @@
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether menu item is in checked state.\n\n**Note:** checked state is only taken into account when menu item is added to menu item group\nwith `checkMode` other than `None`.\n\n**Note:** A checked menu item has a checkmark displayed at its end.",
+              "privacy": "public",
+              "_ui5since": "2.12.0"
             },
             {
               "kind": "field",
@@ -17083,7 +17346,7 @@
                   },
                   "name": "item",
                   "_ui5privacy": "public",
-                  "description": "The `ui5-menu-item` that triggers opening of the sub-menu or undefined when fired upon root menu opening."
+                  "description": "The menu item that triggers opening of the sub-menu or undefined when fired upon root menu opening."
                 }
               ]
             },
@@ -17140,6 +17403,18 @@
               "_ui5since": "1.10.0"
             },
             {
+              "name": "check",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when an item is checked or unchecked.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.12.0"
+            },
+            {
               "name": "detail-click",
               "_ui5privacy": "public",
               "type": {
@@ -17184,7 +17459,7 @@
               }
             },
             {
-              "description": "Defines whether `ui5-menu-item` is in disabled state.\n\n**Note:** A disabled `ui5-menu-item` is noninteractive.",
+              "description": "Defines whether menu item is in disabled state.\n\n**Note:** A disabled menu item is noninteractive.",
               "name": "disabled",
               "default": "false",
               "fieldName": "disabled",
@@ -17193,7 +17468,7 @@
               }
             },
             {
-              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.\n\n**Note:** If set to `true` a `ui5-busy-indicator` component will be displayed into the related one to the current `ui5-menu-item` sub-menu popover.",
+              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.\n\n**Note:** If set to `true` a busy indicator component will be displayed into the related one to the current menu item sub-menu popover.",
               "name": "loading",
               "default": "false",
               "fieldName": "loading",
@@ -17202,7 +17477,7 @@
               }
             },
             {
-              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.",
+              "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.",
               "name": "loading-delay",
               "default": "1000",
               "fieldName": "loadingDelay",
@@ -17230,6 +17505,15 @@
               "inheritedFrom": {
                 "name": "ListItem",
                 "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines whether menu item is in checked state.\n\n**Note:** checked state is only taken into account when menu item is added to menu item group\nwith `checkMode` other than `None`.\n\n**Note:** A checked menu item has a checkmark displayed at its end.",
+              "name": "checked",
+              "default": "false",
+              "fieldName": "checked",
+              "type": {
+                "text": "boolean"
               }
             },
             {
@@ -17331,6 +17615,99 @@
           "declaration": {
             "name": "MenuItem",
             "module": "dist/MenuItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MenuItemGroup.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nThe `ui5-menu-item-group` component represents a group of items designed for use inside a `ui5-menu`.\nItems belonging to the same group should be wrapped by a `ui5-menu-item-group`.\nEach group can have an `checkMode` property, which defines the check mode for the items within the group.\nThe possible values for `checkMode` are:\n- 'None' (default) - no items can be checked\n- 'Single' - Only one item can be checked at a time\n- 'Multiple' - Multiple items can be checked simultaneously\n\n**Note:** If the `checkMode` property is set to 'Single', only one item can remain checked at any given time.\nIf multiple items are marked as checked, the last checked item will take precedence.\n\n### Usage\n\n`ui5-menu-item-group` represents a collection of `ui5-menu-item` components that can have the same check mode.\nThe items are addeed to the group's `items` slot.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/MenuItemGroup.js\";`",
+          "name": "MenuItemGroup",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the items of this component.\n**Note:** The slot can hold any combination of components of type `ui5-menu-item` or `ui5-menu-separator` or both.",
+              "_ui5propertyName": "items",
+              "_ui5type": {
+                "text": "Array<IMenuItem>",
+                "references": [
+                  {
+                    "name": "IMenuItem",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Menu.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "checkMode",
+              "type": {
+                "text": "MenuItemGroupCheckMode",
+                "references": [
+                  {
+                    "name": "MenuItemGroupCheckMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/MenuItemGroupCheckMode.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines the component's check mode.",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the component's check mode.",
+              "name": "check-mode",
+              "default": "\"None\"",
+              "fieldName": "checkMode",
+              "type": {
+                "text": "\"None\" | \"Single\" | \"Multiple\""
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-menu-item-group",
+          "customElement": true,
+          "_ui5since": "2.12.0",
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IMenuItem",
+              "package": "@ui5/webcomponents",
+              "module": "dist/Menu.js"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MenuItemGroup",
+            "module": "dist/MenuItemGroup.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-menu-item-group",
+          "declaration": {
+            "name": "MenuItemGroup",
+            "module": "dist/MenuItemGroup.js"
           }
         }
       ]
@@ -19997,6 +20374,36 @@
             },
             {
               "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.11.0",
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that describe the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.11.0",
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "preventInitialFocus",
               "type": {
                 "text": "boolean"
@@ -20174,6 +20581,32 @@
               "fieldName": "accessibleRole",
               "type": {
                 "text": "\"None\" | \"Dialog\" | \"AlertDialog\""
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that describe the component.",
+              "name": "accessible-description-ref",
+              "default": "undefined",
+              "fieldName": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
               },
               "inheritedFrom": {
                 "name": "Popup",
@@ -20399,6 +20832,28 @@
             },
             {
               "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.11.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that describe the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.11.0"
+            },
+            {
+              "kind": "field",
               "name": "preventInitialFocus",
               "type": {
                 "text": "boolean"
@@ -20539,6 +20994,24 @@
               "fieldName": "accessibleRole",
               "type": {
                 "text": "\"None\" | \"Dialog\" | \"AlertDialog\""
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that describe the component.",
+              "name": "accessible-description-ref",
+              "default": "undefined",
+              "fieldName": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
               }
             },
             {
@@ -21938,6 +22411,36 @@
             },
             {
               "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.11.0",
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that describe the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.11.0",
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "preventInitialFocus",
               "type": {
                 "text": "boolean"
@@ -22195,6 +22698,32 @@
               "fieldName": "accessibleRole",
               "type": {
                 "text": "\"None\" | \"Dialog\" | \"AlertDialog\""
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Popup",
+                "module": "dist/Popup.js"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that describe the component.",
+              "name": "accessible-description-ref",
+              "default": "undefined",
+              "fieldName": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
               },
               "inheritedFrom": {
                 "name": "Popup",
@@ -23719,6 +24248,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SliderTooltip.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SliderTooltip",
+            "module": "dist/SliderTooltip.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SpecialCalendarDate.js",
       "declarations": [
         {
@@ -24922,6 +25466,17 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "1.16.0"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the form value of the component.",
+              "privacy": "public",
+              "_ui5since": "2.12.0"
             }
           ],
           "events": [
@@ -25026,6 +25581,15 @@
               "fieldName": "name",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the form value of the component.",
+              "name": "value",
+              "default": "\"\"",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
               }
             }
           ],
@@ -27693,6 +28257,24 @@
               }
             },
             {
+              "kind": "field",
+              "name": "headerSelector",
+              "type": {
+                "text": "TableSelectionMultiHeaderSelector",
+                "references": [
+                  {
+                    "name": "TableSelectionMultiHeaderSelector",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TableSelectionMultiHeaderSelector.js"
+                  }
+                ]
+              },
+              "default": "\"SelectAll\"",
+              "description": "Defines the selector of the header row.",
+              "privacy": "public",
+              "_ui5since": "2.12"
+            },
+            {
               "kind": "method",
               "name": "getSelectedRows",
               "return": {
@@ -27809,6 +28391,15 @@
               "inheritedFrom": {
                 "name": "TableSelectionBase",
                 "module": "dist/TableSelectionBase.js"
+              }
+            },
+            {
+              "description": "Defines the selector of the header row.",
+              "name": "header-selector",
+              "default": "\"SelectAll\"",
+              "fieldName": "headerSelector",
+              "type": {
+                "text": "\"SelectAll\" | \"ClearAll\""
               }
             },
             {
@@ -29605,7 +30196,7 @@
               "description": "Fired after the component is auto closed.",
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
-              "_ui5Bubbles": true,
+              "_ui5Bubbles": false,
               "_ui5since": "2.0.0"
             }
           ],

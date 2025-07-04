@@ -48,7 +48,7 @@ interface ToastPropTypes extends ToastAttributes, Omit<CommonProps, keyof ToastA
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<ToastDomRef>) => void;
 }
