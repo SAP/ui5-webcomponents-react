@@ -391,10 +391,11 @@ describe('VariantManagement', () => {
   it('Save As', () => {
     const TestComp = ({ onSaveAs }: { onSaveAs: VariantManagementPropTypes['onSaveAs'] }) => {
       const [saved, setSaved] = useState(undefined);
-      const handleSaveAs = (e) => {
+      const handleSaveAs: VariantManagementPropTypes['onSaveAs'] = (e) => {
         onSaveAs(e);
-        const { variantItem: _0, ...rest } = e.detail;
-        setSaved(rest);
+        console.log(e.detail);
+        const { variantItem: _0, children, global, isDefault, nativeDetail, selected, applyAutomatically } = e.detail;
+        setSaved({ nativeDetail, selected, children, isDefault, global, applyAutomatically });
       };
       return (
         <>
@@ -494,11 +495,15 @@ describe('VariantManagement', () => {
       showOnlyFavorites?: VariantManagementPropTypes['showOnlyFavorites'];
     }) => {
       const [save, setSave] = useState(undefined);
-      const handleSave = (e) => {
+      const handleSave: VariantManagementPropTypes['onSaveManageViews'] = (e) => {
+        const { deletedVariants, prevVariants, updatedVariants, variants, nativeDetail } = e.detail;
         onSaveManageViews(e);
         setSave({
-          ...e.detail,
-          variants: e.detail.variants.map((item) => {
+          nativeDetail,
+          deletedVariants,
+          prevVariants,
+          updatedVariants,
+          variants: variants.map((item) => {
             const { variantItem: _0, ...rest } = item;
             return rest;
           }),
@@ -631,11 +636,15 @@ describe('VariantManagement', () => {
       onSaveManageViews: VariantManagementPropTypes['onSaveManageViews'];
     }) => {
       const [save, setSave] = useState(undefined);
-      const handleSave = (e) => {
+      const handleSave: VariantManagementPropTypes['onSaveManageViews'] = (e) => {
+        const { deletedVariants, prevVariants, updatedVariants, variants, nativeDetail } = e.detail;
         onSaveManageViews(e);
         setSave({
-          ...e.detail,
-          variants: e.detail.variants.map((item) => {
+          nativeDetail,
+          deletedVariants,
+          prevVariants,
+          updatedVariants,
+          variants: variants.map((item) => {
             const { variantItem: _0, ...rest } = item;
             return rest;
           }),
