@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { SplitterLayoutPropTypes } from '../..';
+import { FlexBox, SplitterLayoutPropTypes, Text } from '../..';
 import { Button, Label, SplitterElement, SplitterLayout } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
@@ -107,7 +107,7 @@ describe('SplitterLayout', () => {
       );
       cy.findByTestId('btn').click();
       cy.get('[role="separator"]').first().click();
-      // fallback click to prevent fuzzyness
+      // fallback click to prevent flakyness
       cy.get('[role="separator"]')
         .first()
         .click()
@@ -127,6 +127,76 @@ describe('SplitterLayout', () => {
   it('empty content', () => {
     cy.mount(<SplitterLayout data-testid="sl" />);
     cy.findByTestId('sl').should('not.be.visible').should('exist');
+  });
+
+  [true, false].forEach((vertical) => {
+    it.only(`controlled width (${vertical ? 'vertical' : 'horizontal'})`, () => {
+      const resize = cy.spy().as('resize');
+      const TestComp = () => {
+        const [size0, setSize0] = useState('200px');
+        const [size1, setSize1] = useState('200px');
+        const [size2, setSize2] = useState('200px');
+        const [size3, setSize3] = useState('200px');
+        const setter = [setSize0, setSize1, setSize2, setSize3];
+        return (
+          <>
+            <SplitterLayout
+              vertical={vertical}
+              style={{ height: '600px' }}
+              onResize={(e) => {
+                resize(e);
+                e.areas.forEach((item) => {
+                  setter[Number(item.area.dataset.index)](item.size + 'px');
+                });
+              }}
+            >
+              <SplitterElement size={size0} data-index={0}>
+                <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
+                  <Text>Content 1</Text>
+                </FlexBox>
+              </SplitterElement>
+              <SplitterElement size={size1} data-index={1}>
+                <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
+                  <Text style={{ whiteSpace: 'pre-line' }}>{`Content 2
+            with
+            multi
+            lines
+            `}</Text>
+                </FlexBox>
+              </SplitterElement>
+              <SplitterElement size={'auto'} data-index={2}>
+                <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
+                  <Text>
+                    Content 3 with long text: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                    accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+                    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                    accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+                    Lorem ipsum dolor sit amet."
+                  </Text>
+                </FlexBox>
+              </SplitterElement>
+              <SplitterElement data-index={3} size={size3}>
+                <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
+                  <Text>Content 4</Text>
+                </FlexBox>
+              </SplitterElement>
+            </SplitterLayout>
+          </>
+        );
+      };
+
+      cy.mount(<TestComp />);
+
+      cy.get('[data-index="0"]').as('se0');
+      cy.get('[data-index="1"]').as('se1');
+      cy.get('[data-index="2"]').as('se2');
+      cy.get('[data-index="3"]').as('se3');
+      cy.findAllByRole('separator').each(($splitter, index) => {
+        cy.wrap($splitter).as(`splitter${index}`);
+      });
+    });
   });
 
   cypressPassThroughTestsFactory(SplitterLayout, { children: <SplitterElement>Content</SplitterElement> });

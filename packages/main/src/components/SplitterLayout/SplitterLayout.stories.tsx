@@ -30,14 +30,29 @@ export const Default: Story = {
     },
   },
   render(args) {
+    const [size0, setSize0] = useState('200px');
+    const [size1, setSize1] = useState('200px');
+    const [size2, setSize2] = useState('200px');
+    const [size3, setSize3] = useState('200px');
+    const setter = [setSize0, setSize1, setSize2, setSize3];
     return (
-      <SplitterLayout {...args}>
-        <SplitterElement>
+      <SplitterLayout
+        {...args}
+        onResize={(e) => {
+          e.areas.forEach((item) => {
+            console.log('Area', item.area.dataset.index, 'resized:', item.size + 'px');
+            setter[Number(item.area.dataset.index)](item.size + 'px');
+          });
+          // setSize0(e.areas[0].size + 'px');
+          // setSize1(e.areas[1].size + 'px');
+        }}
+      >
+        <SplitterElement size={size0} data-index={0}>
           <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
             <Text>Content 1</Text>
           </FlexBox>
         </SplitterElement>
-        <SplitterElement>
+        <SplitterElement size={size1} data-index={1}>
           <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
             <Text style={{ whiteSpace: 'pre-line' }}>{`Content 2
             with
@@ -46,7 +61,7 @@ export const Default: Story = {
             `}</Text>
           </FlexBox>
         </SplitterElement>
-        <SplitterElement>
+        <SplitterElement size={'auto'} data-index={2}>
           <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
             <Text>
               Content 3 with long text: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
@@ -58,7 +73,7 @@ export const Default: Story = {
             </Text>
           </FlexBox>
         </SplitterElement>
-        <SplitterElement>
+        <SplitterElement data-index={3} size={size3}>
           <FlexBox style={{ height: '100%', width: '100%' }} alignItems="Center" justifyContent="Center">
             <Text>Content 4</Text>
           </FlexBox>
@@ -106,7 +121,7 @@ export const Nested: Story = {
   render(args) {
     const [vertical, setVertical] = useState(args.vertical);
     const handleChange = (e) => {
-      setVertical(e.detail.selectedItem.textContent === 'Vertical');
+      setVertical(e.detail.selectedItems[0].textContent === 'Vertical');
     };
     useEffect(() => {
       setVertical(args.vertical);
