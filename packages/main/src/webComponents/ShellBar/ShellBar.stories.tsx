@@ -7,6 +7,7 @@ import { FlexBox } from '../../components/FlexBox/index.js';
 import { Button } from '../Button/index.js';
 import { Avatar, ShellBarItem, ShellBarSpacer } from '../index.js';
 import { Label } from '../Label/index.js';
+import { ShellBarBranding } from '../ShellBarBranding/index.js';
 import { ShellBarSearch } from '../ShellBarSearch/index.js';
 import { Switch } from '../Switch/index.js';
 import { Tag } from '../Tag/index.js';
@@ -144,5 +145,26 @@ export const NonProductiveInstances: Story = {
         />
       </>
     );
+  },
+};
+
+export const ShellBarBrandingStory: Story = {
+  name: 'with ShellBarBranding',
+  args: {
+    branding: (
+      <ShellBarBranding
+        logo={<img src="https://sap.github.io/ui5-webcomponents/images/sap-logo-svg.svg" alt="SAP Logo" />}
+        href="https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/layouts-floorplans-shellbar--docs"
+        target="_blank"
+        onClick={(e) => {
+          console.log('ShellBarBranding clicked', e);
+        }}
+      >
+        ShellBar Branding
+      </ShellBarBranding>
+    ),
+  },
+  render(args) {
+    return <ShellBar {...args} />;
   },
 };

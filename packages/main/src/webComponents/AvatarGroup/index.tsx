@@ -26,6 +26,24 @@ interface AvatarGroupAttributes {
   accessibilityAttributes?: AvatarGroupAccessibilityAttributes;
 
   /**
+   * Defines the accessible name of the AvatarGroup.
+   * When provided, this will override the default aria-label text.
+   *
+   * **Note:** Available since [v2.12.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.12.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleName?: string | undefined;
+
+  /**
+   * Receives id(s) of the elements that describe the AvatarGroup.
+   * When provided, this will be used as aria-labelledby instead of aria-label.
+   *
+   * **Note:** Available since [v2.12.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.12.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleNameRef?: string | undefined;
+
+  /**
    * Defines the mode of the `AvatarGroup`.
    * @default "Group"
    */
@@ -149,7 +167,7 @@ interface AvatarGroupPropTypes
  */
 const AvatarGroup = withWebComponent<AvatarGroupPropTypes, AvatarGroupDomRef>(
   'ui5-avatar-group',
-  ['accessibilityAttributes', 'type'],
+  ['accessibilityAttributes', 'accessibleName', 'accessibleNameRef', 'type'],
   [],
   ['overflowButton'],
   ['click', 'overflow'],

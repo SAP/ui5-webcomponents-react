@@ -5,6 +5,7 @@ import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks
 import { ShellBarItem } from '../ShellBarItem/index';
 import { ShellBarSpacer } from '../ShellBarSpacer/index';
 import { ShellBarSearch } from '../ShellBarSearch/index';
+import { ShellBarBranding } from '../ShellBarBranding/index';
 import * as ComponentStories from './ShellBar.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -87,6 +88,10 @@ const ShellBarComponent = () => {
 };
 ```
 
+### ShellBar with ShellBarBranding slot
+
+<Canvas of={ComponentStories.ShellBarBrandingStory} />
+
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## ShellBarItem
@@ -103,5 +108,10 @@ const ShellBarComponent = () => {
 
 <Description of={ShellBarSearch} />
 <ArgTypes hideHTMLPropsNote of={ShellBarSearch} />
+
+## ShellBarBranding (experimental)
+
+<Description of={ShellBarBranding} />
+<ArgTypes hideHTMLPropsNote of={ShellBarBranding} />
 
 <Footer />

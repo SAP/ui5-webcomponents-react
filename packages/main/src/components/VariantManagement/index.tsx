@@ -208,7 +208,8 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   const handleSaveView = (e, selectedVariant) => {
     if (typeof onSaveAs === 'function') {
-      onSaveAs(enrichEventWithDetails(e, selectedVariant));
+      //todo: remove nativeDetail in next major
+      onSaveAs(enrichEventWithDetails(e, { ...selectedVariant, nativeDetail: e.detail.originalEvent.detail }));
     }
     setSelectedVariant(selectedVariant);
     if (!e.defaultPrevented) {
@@ -218,7 +219,13 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
 
   const handleSaveManageViews = (e, payload) => {
     const { defaultView, updatedRows, deletedRows } = payload;
-    const callbackProperties = { deletedVariants: [], prevVariants: [], updatedVariants: [], variants: [] };
+    const callbackProperties = {
+      deletedVariants: [],
+      prevVariants: [],
+      updatedVariants: [],
+      variants: [],
+      nativeDetail: null,
+    };
     setSafeChildren((prev) =>
       Children.toArray(
         prev.map((child) => {
@@ -260,6 +267,8 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
       ),
     );
     if (typeof onSaveManageViews === 'function') {
+      //todo: remove in next major
+      callbackProperties.nativeDetail = e.detail.originalEvent.detail;
       onSaveManageViews(enrichEventWithDetails(e, callbackProperties));
     }
     if (!e.defaultPrevented) {

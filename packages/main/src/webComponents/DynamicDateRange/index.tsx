@@ -1,10 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/DynamicDateRange.js';
-import type {
-  DynamicDateRangeChangeEventDetail,
-  DynamicDateRangeValue,
-} from '@ui5/webcomponents/dist/DynamicDateRange.js';
+import type { DynamicDateRangeValue } from '@ui5/webcomponents/dist/DynamicDateRange.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 
@@ -22,7 +19,14 @@ interface DynamicDateRangeAttributes {
   value?: DynamicDateRangeValue | undefined;
 }
 
-interface DynamicDateRangeDomRef extends Required<DynamicDateRangeAttributes>, Ui5DomRef {}
+interface DynamicDateRangeDomRef extends Required<DynamicDateRangeAttributes>, Ui5DomRef {
+  /**
+   * Converts a `value` into concrete `startDate` and `endDate` JavaScript `Date` objects.
+   * @param {DynamicDateRangeValue} value - The option to convert into an array of date ranges
+   * @returns {Array<Date>} - An array of two `Date` objects representing the start and end dates.
+   */
+  toDates: (value: DynamicDateRangeValue) => Array<Date>;
+}
 
 interface DynamicDateRangePropTypes
   extends DynamicDateRangeAttributes,
@@ -36,7 +40,7 @@ interface DynamicDateRangePropTypes
    * | :--------: | :-----: |
    * | ✅|✅|
    */
-  onChange?: (event: Ui5CustomEvent<DynamicDateRangeDomRef, DynamicDateRangeChangeEventDetail>) => void;
+  onChange?: (event: Ui5CustomEvent<DynamicDateRangeDomRef>) => void;
 }
 
 /**
@@ -63,6 +67,8 @@ interface DynamicDateRangePropTypes
  *
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
+ *
+ * @since [2.11.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.11.0) of __@ui5/webcomponents__.
  */
 const DynamicDateRange = withWebComponent<DynamicDateRangePropTypes, DynamicDateRangeDomRef>(
   'ui5-dynamic-date-range',

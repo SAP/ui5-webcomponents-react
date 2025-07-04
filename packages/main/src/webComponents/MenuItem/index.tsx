@@ -49,9 +49,22 @@ interface MenuItemAttributes {
   additionalText?: string | undefined;
 
   /**
-   * Defines whether `MenuItem` is in disabled state.
+   * Defines whether menu item is in checked state.
    *
-   * **Note:** A disabled `MenuItem` is noninteractive.
+   * **Note:** checked state is only taken into account when menu item is added to menu item group
+   * with `checkMode` other than `None`.
+   *
+   * **Note:** A checked menu item has a checkmark displayed at its end.
+   *
+   * **Note:** Available since [v2.12.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.12.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  checked?: boolean;
+
+  /**
+   * Defines whether menu item is in disabled state.
+   *
+   * **Note:** A disabled menu item is noninteractive.
    * @default false
    */
   disabled?: boolean;
@@ -77,9 +90,9 @@ interface MenuItemAttributes {
   icon?: string | undefined;
 
   /**
-   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.
    *
-   * **Note:** If set to `true` a `BusyIndicator` component will be displayed into the related one to the current `MenuItem` sub-menu popover.
+   * **Note:** If set to `true` a busy indicator component will be displayed into the related one to the current menu item sub-menu popover.
    *
    * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
    * @default false
@@ -87,7 +100,7 @@ interface MenuItemAttributes {
   loading?: boolean;
 
   /**
-   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.
    *
    * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents**.
    * @default 1000
@@ -146,6 +159,7 @@ interface MenuItemPropTypes
       | 'endContent'
       | 'onBeforeClose'
       | 'onBeforeOpen'
+      | 'onCheck'
       | 'onClose'
       | 'onDetailClick'
       | 'onOpen'
@@ -153,7 +167,7 @@ interface MenuItemPropTypes
   /**
    * Defines the items of this component.
    *
-   * **Note:** The slot can hold `MenuItem` and `MenuSeparator` items.
+   * **Note:** The slot can hold menu item and menu separator items.
    *
    * If there are items added to this slot, an arrow will be displayed at the end
    * of the item in order to indicate that there are items added. In that case components added
@@ -191,6 +205,10 @@ interface MenuItemPropTypes
    * The priority of what will be displayed at the end of the menu item is as follows:
    * sub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.
    *
+   * Application developers are responsible for ensuring that interactive elements placed in the `endContent` slot
+   * have the correct accessibility behaviour, including their enabled or disabled states.
+   * The menu does not manage these aspects when the menu item state changes.
+   *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="endContent"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
@@ -227,6 +245,17 @@ interface MenuItemPropTypes
    * | ✅|❌|
    */
   onBeforeOpen?: (event: Ui5CustomEvent<MenuItemDomRef, MenuBeforeOpenEventDetail>) => void;
+
+  /**
+   * Fired when an item is checked or unchecked.
+   *
+   * **Note:** Available since [v2.12.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.12.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onCheck?: (event: Ui5CustomEvent<MenuItemDomRef>) => void;
 
   /**
    * Fired after the menu is closed.
@@ -287,9 +316,9 @@ const MenuItem = withWebComponent<MenuItemPropTypes, MenuItemDomRef>(
     'tooltip',
     'type',
   ],
-  ['disabled', 'loading', 'navigated', 'selected'],
+  ['checked', 'disabled', 'loading', 'navigated', 'selected'],
   ['deleteButton', 'endContent'],
-  ['before-close', 'before-open', 'close', 'detail-click', 'open'],
+  ['before-close', 'before-open', 'check', 'close', 'detail-click', 'open'],
 );
 
 MenuItem.displayName = 'MenuItem';

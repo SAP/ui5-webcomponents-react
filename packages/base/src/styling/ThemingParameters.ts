@@ -17,6 +17,7 @@ export const ThemingParameters = {
   sapTextColor: 'var(--sapTextColor)',
   sapLinkColor: 'var(--sapLinkColor)',
   sapCompanyLogo: 'var(--sapCompanyLogo)',
+  sapFavicon: 'var(--sapFavicon)',
   sapBackgroundImage: 'var(--sapBackgroundImage)',
   sapBackgroundImageOpacity: 'var(--sapBackgroundImageOpacity)',
   sapBackgroundImageRepeat: 'var(--sapBackgroundImageRepeat)',

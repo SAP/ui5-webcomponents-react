@@ -3,8 +3,9 @@
 import '@ui5/webcomponents/dist/TableSelectionMulti.js';
 import type TableRow from '@ui5/webcomponents/dist/TableRow.js';
 import type TableSelectionBehavior from '@ui5/webcomponents/dist/types/TableSelectionBehavior.js';
-import { withWebComponent } from '@ui5/webcomponents-react-base';
+import type TableSelectionMultiHeaderSelector from '@ui5/webcomponents/dist/types/TableSelectionMultiHeaderSelector.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
+import { withWebComponent } from '@ui5/webcomponents-react-base';
 
 interface TableSelectionMultiAttributes {
   /**
@@ -14,6 +15,14 @@ interface TableSelectionMultiAttributes {
    * @default "RowSelector"
    */
   behavior?: TableSelectionBehavior | keyof typeof TableSelectionBehavior;
+
+  /**
+   * Defines the selector of the header row.
+   *
+   * **Note:** Available since [v2.12](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.12) of **@ui5/webcomponents**.
+   * @default "SelectAll"
+   */
+  headerSelector?: TableSelectionMultiHeaderSelector | keyof typeof TableSelectionMultiHeaderSelector;
 
   /**
    * Defines the `row-key` values of selected rows, with each value separated by a space.
@@ -87,7 +96,7 @@ interface TableSelectionMultiPropTypes
  */
 const TableSelectionMulti = withWebComponent<TableSelectionMultiPropTypes, TableSelectionMultiDomRef>(
   'ui5-table-selection-multi',
-  ['behavior', 'selected'],
+  ['behavior', 'headerSelector', 'selected'],
   [],
   [],
   ['change'],

@@ -3,6 +3,7 @@ import { ArgTypes, Canvas, Description, Markdown, Meta } from '@storybook/blocks
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { UserMenuAccount } from '../UserMenuAccount/index';
 import { UserMenuItem } from '../UserMenuItem/index';
+import { UserMenuItemGroup } from '../UserMenuItemGroup/index';
 import * as ComponentStories from './UserMenu.stories';
 
 <Meta of={ComponentStories} />
@@ -91,5 +92,10 @@ function IdOpener() {
 
 <Description of={UserMenuItem} />
 <ArgTypes of={UserMenuItem} />
+
+## UserMenuItemGroup
+
+<Description of={UserMenuItemGroup} />
+<ArgTypes of={UserMenuItemGroup} />
 
 <Footer />
