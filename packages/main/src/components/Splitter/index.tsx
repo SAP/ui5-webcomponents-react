@@ -5,15 +5,19 @@ import horizontalGripIcon from '@ui5/webcomponents-icons/dist/horizontal-grip.js
 import verticalGripIcon from '@ui5/webcomponents-icons/dist/vertical-grip.js';
 import { useCurrentTheme, useI18nBundle, useIsRTL, useSyncRef, useStylesheet } from '@ui5/webcomponents-react-base';
 import { forwardRef, useEffect, useRef, useState } from 'react';
+import type { KeyboardEventHandler, PointerEventHandler } from 'react';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults.js';
 import type { CommonProps } from '../../types/index.js';
-import { Button, Icon } from '../../webComponents/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import type { SplitterLayoutPropTypes } from '../SplitterLayout/types.js';
 import { classNames, styleData } from './Splitter.module.css.js';
 
 export interface SplitterPropTypes extends CommonProps {
   height: string | number;
   width: string | number;
   vertical: boolean;
+  onResize: SplitterLayoutPropTypes['onResize'] | undefined;
 }
 
 const verticalPositionInfo = {
@@ -39,7 +43,7 @@ const horizontalPositionInfo = {
 };
 
 const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
-  const { vertical } = props;
+  const { vertical, onResize } = props;
   const i18nBundle = useI18nBundle('@ui5/webcomponents-react');
   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
   const isRtl = useIsRTL(localRef);
@@ -58,6 +62,38 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
   const [isDragging, setIsDragging] = useState<boolean | string>(false);
   const [isSiblings, setIsSiblings] = useState(['previousSibling', 'nextSibling']);
 
+  const animationFrameIdRef = useRef(null);
+  function fireOnResize(prevSibling: HTMLElement, nextSibling: HTMLElement) {
+    if (animationFrameIdRef.current) {
+      cancelAnimationFrame(animationFrameIdRef.current);
+    }
+    if (typeof onResize !== 'function') {
+      return;
+    }
+    animationFrameIdRef.current = requestAnimationFrame(() => {
+      const logicalPrevSibling = isRtl ? nextSibling : prevSibling;
+      const logicalNextSibling = isRtl ? prevSibling : nextSibling;
+      const splitterWidth = localRef.current.getBoundingClientRect()[positionKeys.size];
+      onResize({
+        areas: [
+          {
+            size: logicalPrevSibling.getBoundingClientRect()?.[positionKeys.size] + splitterWidth,
+            area: logicalPrevSibling,
+          },
+          {
+            // last element doesn't have splitter
+            size:
+              logicalNextSibling.getBoundingClientRect()?.[positionKeys.size] +
+              (logicalNextSibling.nextElementSibling !== null ? splitterWidth : 0),
+            area: logicalNextSibling,
+          },
+        ],
+        splitter: localRef.current,
+      });
+      animationFrameIdRef.current = null;
+    });
+  }
+
   const handleSplitterMove = (e) => {
     const offset = resizerClickOffset.current;
     const previousSibling = localRef.current[isSiblings[0]] as HTMLDivElement;
@@ -71,10 +107,10 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
 
     const move = () => {
       previousSibling.style.flex = `0 0 ${previousSiblingSize.current + sizeDiv}px`;
-
       if (nextSibling.nextSibling && previousSiblingSize.current + sizeDiv > 0) {
         nextSibling.style.flex = `0 0 ${nextSiblingSize.current - sizeDiv}px`;
       }
+      fireOnResize(previousSibling, nextSibling);
     };
 
     if (
@@ -126,6 +162,7 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
           (nextSiblingRect?.[positionKeys.size] as number) + prevSiblingRect?.[positionKeys.size]
         }px`;
       }
+      fireOnResize(prevSibling, nextSibling);
     }
 
     // right
@@ -142,10 +179,12 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
           (prevSiblingRect?.[positionKeys.size] as number) + nextSiblingRect?.[positionKeys.size]
         }px`;
       }
+
+      fireOnResize(prevSibling, nextSibling);
     }
   };
 
-  const handleMoveSplitterStart = (e) => {
+  const handleMoveSplitterStart: PointerEventHandler<HTMLDivElement> = (e) => {
     if (e.type === 'pointerdown' && e.pointerType !== 'touch') {
       return;
     }
@@ -175,7 +214,7 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
     start.current = e[`client${positionKeys.position}`];
   };
 
-  const onHandleKeyDown = (e) => {
+  const onHandleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
     const keyEventProperties = e.code ?? e.key;
     if (
       keyEventProperties === 'ArrowRight' ||
@@ -203,6 +242,12 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
         const secondSiblingSize = secondSibling.getBoundingClientRect()?.[positionKeys.size] as number;
         secondSibling.style.flex = `0 0 ${secondSiblingSize - tickSize}px`;
         firstSibling.style.flex = `0 0 ${firstSiblingSize + tickSize}px`;
+
+        if (keyEventProperties === 'ArrowLeft' || keyEventProperties === 'ArrowUp') {
+          fireOnResize(secondSibling, firstSibling);
+        } else {
+          fireOnResize(firstSibling, secondSibling);
+        }
       }
     }
   };

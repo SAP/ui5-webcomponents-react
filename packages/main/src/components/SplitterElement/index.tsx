@@ -20,6 +20,8 @@ export interface SplitterElementPropTypes extends CommonProps {
   /**
    * Defines the initial size of the `SplitterElement`.
    *
+   * __Note:__ In order to preserve the intended design, at least one `SplitterElement` should have a dynamic `size`.
+   *
    * @default `"auto"`
    */
   size?: CSSProperties['width'] | CSSProperties['height'];

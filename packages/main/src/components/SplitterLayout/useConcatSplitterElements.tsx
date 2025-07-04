@@ -9,6 +9,7 @@ interface ConcatSplitterElements {
   width: CSSProperties['width'];
   height: CSSProperties['height'];
   vertical: boolean;
+  onResize: SplitterLayoutPropTypes['onResize'] | undefined;
 }
 
 export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitterElements) => {
@@ -42,6 +43,7 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
             height={concatSplitterElements?.height}
             width={concatSplitterElements?.width}
             vertical={concatSplitterElements?.vertical}
+            onResize={concatSplitterElements?.onResize}
           />,
         );
         // -1 => prev element
