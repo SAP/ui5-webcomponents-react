@@ -61,9 +61,10 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
 
     indicesWithSplitter.forEach((index) => {
       const size = childrenArray[index]?.props?.size;
+      const _size = typeof size === 'number' ? `${size}px` : size;
       if (size && size !== 'auto') {
         childrenArray[index] = cloneElement(childrenArray[index], {
-          size: `calc(${size} - var(--_ui5wcr-SplitterSize))`,
+          size: `calc(${_size} - var(--_ui5wcr-SplitterSize))`,
         });
       }
     });

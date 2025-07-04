@@ -97,7 +97,7 @@ describe('SplitterLayout', () => {
               Button 1
             </Button>
           </SplitterElement>
-          <SplitterElement minSize={300} size={'400px'} data-testid={'se2'}>
+          <SplitterElement minSize={300} size={400} data-testid={'se2'}>
             <Button>Button 2</Button>
           </SplitterElement>
           <SplitterElement resizable={false} data-testid={'se3'}>

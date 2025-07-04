@@ -15,8 +15,6 @@ export function MobileItem() {
 
   const handleSelectionChange: UserSettingsItemPropTypes['onSelectionChange'] = () => {
     setSelectedView('primary');
-    // doesn't work - issue created
-    // setSelectedView(e.detail.view.dataset.view!);
   };
 
   return (
