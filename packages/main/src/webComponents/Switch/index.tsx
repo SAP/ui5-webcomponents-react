@@ -97,6 +97,13 @@ interface SwitchAttributes {
    * @default undefined
    */
   tooltip?: string | undefined;
+
+  /**
+   * Defines the form value of the component.
+   *
+   * **Note:** Available since [v2.12.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.12.0) of **@ui5/webcomponents**.
+   */
+  value?: string;
 }
 
 interface SwitchDomRef extends Required<SwitchAttributes>, Ui5DomRef {}
@@ -133,7 +140,7 @@ interface SwitchPropTypes extends SwitchAttributes, Omit<CommonProps, keyof Swit
  */
 const Switch = withWebComponent<SwitchPropTypes, SwitchDomRef>(
   'ui5-switch',
-  ['accessibleName', 'accessibleNameRef', 'design', 'name', 'textOff', 'textOn', 'tooltip'],
+  ['accessibleName', 'accessibleNameRef', 'design', 'name', 'textOff', 'textOn', 'tooltip', 'value'],
   ['checked', 'disabled', 'required'],
   [],
   ['change'],
