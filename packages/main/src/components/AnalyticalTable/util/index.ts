@@ -60,6 +60,8 @@ export function getBy(obj, path, def) {
 }
 
 export const tagNamesWhichShouldNotSelectARow = new Set([
+  'UI5-AI-BUTTON',
+  'UI5-AI-PROMPT-INPUT',
   'UI5-AVATAR',
   'UI5-BUTTON',
   'UI5-CALENDAR',
@@ -70,10 +72,13 @@ export const tagNamesWhichShouldNotSelectARow = new Set([
   'UI5-DATERANGE-PICKER',
   'UI5-DATETIME-PICKER',
   'UI5-DURATION-PICKER',
+  'UI5-DYNAMIC-DATE-Range',
   'UI5-FILE-UPLOADER',
   'UI5-ICON',
   'UI5-INPUT',
   'UI5-LINK',
+  'UI5-MENU-ITEM',
+  'UI5-MENU-ITEM-GROUP',
   'UI5-MULTI-COMBOBOX',
   'UI5-MULTI-INPUT',
   'UI5-RADIO-BUTTON',
@@ -82,6 +87,7 @@ export const tagNamesWhichShouldNotSelectARow = new Set([
   'UI5-SEGMENTED-BUTTON',
   'UI5-SELECT',
   'UI5-SLIDER',
+  'UI5-SPLIT-BUTTON',
   'UI5-STEP-INPUT',
   'UI5-SWITCH',
   'UI5-TEXT-AREA',
