@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.20](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.19...v1.29.20) (2025-07-07)
+
+### Bug Fixes
+
+- **AnalyticalTable:** fix border styles for different themes ([#7495](https://github.com/SAP/ui5-webcomponents-react/issues/7495)) ([cb4169e](https://github.com/SAP/ui5-webcomponents-react/commit/cb4169e26661e83aeaa84ee6c8095cecf7f722d7)), closes [#7458](https://github.com/SAP/ui5-webcomponents-react/issues/7458)
+- **i18n:** update french translation of cancel ([#7146](https://github.com/SAP/ui5-webcomponents-react/issues/7146)) ([1b497d5](https://github.com/SAP/ui5-webcomponents-react/commit/1b497d56637d40902e45690e5f0f1cd26cd45ec4)), closes [#7141](https://github.com/SAP/ui5-webcomponents-react/issues/7141)
+- **Toolbar - compat:** prevent empty overflow popover ([#7185](https://github.com/SAP/ui5-webcomponents-react/issues/7185)) ([d6325fd](https://github.com/SAP/ui5-webcomponents-react/commit/d6325fd0920efc8774f67832898bb7f3e8a9399d))
+
 ## [1.29.19](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.18...v1.29.19) (2025-03-24)
 
 ### Bug Fixes

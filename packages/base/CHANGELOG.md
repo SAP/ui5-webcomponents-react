@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.20](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.19...v1.29.20) (2025-07-07)
+
+### Bug Fixes
+
+- update `ThemingParameters` ([816c979](https://github.com/SAP/ui5-webcomponents-react/commit/816c979b839833b23aa06238269859ba830c7377))
+
 ## [1.29.14](https://github.com/SAP/ui5-webcomponents-react/compare/v1.29.13...v1.29.14) (2024-11-25)
 
 ### Bug Fixes
