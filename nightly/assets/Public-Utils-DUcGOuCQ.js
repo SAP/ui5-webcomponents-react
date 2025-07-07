@@ -1,0 +1,70 @@
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as p}from"./index-B5Ip8tK9.js";import{M as S,S as s}from"./index-ChnLwV8J.js";import{M as C,a as y}from"./index-DhAwSGME.js";import"./index-CoW7zDxG.js";import"./Tag-afvhVdQ_.js";import{r as l}from"./index-U0ga5oGA.js";import"./index-B8m469-U.js";import{F as D}from"./CommandsAndQueries-Dr4x6rjG.js";import"./Button-CmBjANX3.js";import{r as T,u as P}from"./jsx-runtime-7DBFq8Nb.js";import"./copy-ByMwA9ho.js";import{T as k}from"./TableOfContent-BG9P-NK7.js";import"./WrappingType-BBpR8qCJ.js";import"./Title-Bkeyeot9.js";import{T as o}from"./ThemingParameters-pyhX3s39.js";import"./CustomElementsScope-CL9zjcNa.js";import{M as R}from"./utils-BPMWvBjZ.js";import{T as M}from"./index-B7Jv4B9M.js";import{S as B}from"./index-B3H0LZYM.js";import{O as F}from"./index-MnsrjI8_.js";import{P as d}from"./index-Ddexc5Fe.js";import{F as E,a as I}from"./index-BOHyD95m.js";import{T as O}from"./index-CXHwHWL0.js";import{L as V}from"./index-CR79vD-q.js";import"./iframe-DO6ohzDt.js";import"./index-CXQShRbs.js";import"./index-DrFu-skq.js";import"./slot-_4yKMUwC.js";import"./event-strict-DgQLNDEV.js";import"./i18n-CjR4HGlq.js";import"./Icon-BZ5EcdIf.js";import"./Keys-CLf_QmYW.js";import"./parameters-bundle.css-D0uTR4GL.js";import"./decline-CtrqdeOl.js";import"./i18n-defaults-CmVK7_Fz.js";import"./information-B6RSzyEp.js";import"./information-D1jL324h.js";import"./sys-enter-2-DS9n4Dub.js";import"./sys-enter-2-A7Y23Pfh.js";import"./alert-DnTkm5F5.js";import"./i18n-defaults-D1yurQHO.js";import"./willShowContent-CZcfsNXp.js";import"./sys-help-2-BWOTEP1y.js";import"./index-BVR6w1bU.js";import"./preview-BTEmIzJj.js";import"./DocsRenderer-CFRXHY34-t3055mbn.js";import"./react-18-SRpBHcoT.js";import"./Popover-D2Ha4YTk.js";import"./PopupsCommon.css-CIF0SfCa.js";import"./FocusableElements-Dc0aSsUl.js";import"./isElementHidden-gS67o0pl.js";import"./AccessibilityTextsHelper-4hgGqLyb.js";import"./getActiveElement-kltGt_DR.js";import"./ResizeHandler-Ccnh5zsM.js";import"./MediaRange-Bnzt26Xb.js";import"./toLowercaseEnumValue-C_8o5td_.js";import"./getEffectiveScrollbarStyle-zkSO3ShF.js";import"./index-BtDHGh6c.js";import"./index-stf6IIT3.js";import"./Link-5JEABESN.js";import"./index-B7LmkvXE.js";import"./addCustomCSSWithScoping-BTrjrnXc.js";import"./clsx-B-dksMZM.js";import"./index-qwwFDXH5.js";import"./BusyIndicator-eqRCVs2M.js";import"./Label-CMG0rVlp.js";import"./index-D0D5cipM.js";import"./index-Cf_GJ9tv.js";import"./AvatarSize-BtKTMFJ5.js";import"./employee-BzbMOLEH.js";import"./index-e5WK7n4l.js";import"./Tooltips-DsLvoCTe.js";import"./EventProvider-ChtD9rRX.js";import"./main-Dn6sLQP9.js";import"./I18nStore-DeTYyh4o.js";import"./useStylesheet-DBqLMi8E.js";import"./Select-CFclHNnf.js";import"./InvisibleMessage-Bv4DPI-2.js";import"./ValueState-Bg0UWejw.js";import"./List-CU9j6okB.js";import"./ItemNavigation-zF11pVKR.js";import"./TableUtils-DvE1eKA0.js";import"./DropIndicator-D5z89LGS.js";import"./getNormalizedTarget-C4mxORXI.js";import"./debounce-TTkz9ISH.js";import"./ListItemGroup-DAadSzIh.js";import"./TabbableElements-CqFMEI5U.js";import"./ResponsivePopover-DqKz3OLZ.js";import"./Dialog-D-LeMYyq.js";import"./slim-arrow-down-1vindIgI.js";import"./slim-arrow-down-ltgMHH5H.js";import"./ResponsivePopoverCommon.css-DyB0cOzJ.js";import"./ValueStateMessage.css-DBwWFUV0.js";import"./Option-C86gnRyI.js";import"./ListItemBaseTemplate-B4mmDDI7.js";import"./ListItemAdditionalText.css-R1yZuvQz.js";import"./Panel-BkhgS8uv.js";import"./slideUp-DNFkFHG8.js";import"./animate-JylhYHXj.js";import"./AnimationMode-BPwhsljb.js";import"./slim-arrow-right-kzb6I7tj.js";import"./Text-CteZtvAO.js";const c={display:"grid",gridTemplateColumns:"repeat(3, minmax(0, 1fr))",rowGap:"1rem",columnGap:"1rem"},x=[],u=[],j=[],z=Object.entries(o).filter(([r,i])=>r.includes("Font")?r.includes("FontUrl")?!0:(x.push([r,i]),!1):r.includes("Color")||r.includes("Shadow")||r.includes("Background")||r.includes("Chart")?(u.push([r,i]),!1):r.includes("Space")||r.includes("Margin")||r.includes("Padding")||r.includes("Gap")||r.includes("Breakpoint")?(j.push([r,i]),!1):!0),L=r=>{const i={};return r.includes("Family")||r.includes("FontUrl")?i.fontFamily=r:r.includes("Size")?i.fontSize=r:r.includes("Weight")&&(i.fontWeight=r),i},H=r=>{const i={};return r.includes("Shadow")?i.boxShadow=r:i.backgroundColor=r,i},b=({value:r,varKey:i,theme:n,style:t={}})=>{const[a,g]=l.useReducer(v=>!v,!1),[f,w]=l.useState(getComputedStyle(document.documentElement).getPropertyValue(`--${i}`));return l.useEffect(()=>{setTimeout(()=>{w(getComputedStyle(document.documentElement).getPropertyValue(`--${i}`))},200)},[n]),e.jsxs(E,{direction:I.Column,style:{width:"85%"},children:[e.jsx(O,{title:"Click to show CSS Variable",style:{cursor:"pointer",...t},onClick:g,children:a?r:i}),e.jsx(V,{children:f})]},i)},A=r=>{const{varKey:i,value:n,theme:t}=r;return e.jsxs("div",{style:{display:"inline-flex",alignItems:"center",justifyContent:"space-between"},children:[e.jsx(b,{value:n,varKey:i,theme:t}),e.jsx("div",{style:{...H(n),borderRadius:"50%",width:"2rem",height:"2rem",minWidth:"2rem",border:`1px solid ${o.sapField_BorderColor}`}})]})},h=r=>{const{varKey:i,value:n,theme:t,style:a={}}=r;return e.jsx("div",{style:{display:"inline-flex",alignItems:"center",justifyContent:"space-between"},children:e.jsx(b,{value:n,varKey:i,style:a,them:t})})},G=()=>{const[r,i]=l.useState(T());return e.jsx(M,{children:e.jsxs("div",{style:{backgroundColor:o.sapBackgroundColor,padding:"1rem",borderRadius:o.sapElement_BorderCornerRadius,boxShadow:o.sapContent_Shadow0},children:[e.jsx(B,{onChange:n=>{const t=n.detail.selectedOption.dataset.value;i(t),P(t)},children:R.map(({title:n,value:t})=>e.jsx(F,{"data-value":t,selected:t===r,children:n},t))}),e.jsx("br",{}),e.jsx("br",{}),e.jsx(d,{headerText:"Colors & Shadows",collapsed:!0,children:e.jsx("div",{style:c,children:u.map(([n,t])=>e.jsx(A,{varKey:n,value:t,theme:r},n))})}),e.jsx(d,{headerText:"Fonts",collapsed:!0,children:e.jsx("div",{style:{...c,gridTemplateColumns:"repeat(1, minmax(0, 1fr))"},children:x.map(([n,t])=>e.jsx(h,{varKey:n,value:t,style:{...L(t)},theme:r},n))})}),e.jsx(d,{headerText:"Spacing",collapsed:!0,children:e.jsx("div",{style:c,children:j.map(([n,t])=>e.jsx(h,{varKey:n,value:t,theme:r},n))})}),e.jsx(d,{headerText:"Others",collapsed:!0,children:e.jsx("div",{style:c,children:z.map(([n,t])=>e.jsx(h,{varKey:n,value:t,theme:r},n))})})]})})};function m(r){const i={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",ul:"ul",...p(),...r.components};return e.jsxs(e.Fragment,{children:[e.jsx(S,{title:"Public Utils"}),`
+`,e.jsx(i.h1,{id:"public-utils",children:"Public Utils"}),`
+`,e.jsxs(i.p,{children:["The ",e.jsx(i.code,{children:"@ui5/webcomponents-react-base"})," package is providing a couple of utils, which can be used in your application as well."]}),`
+`,e.jsx(C,{design:y.Critical,hideCloseButton:!0,children:`Please only use the utils mentioned in this document in your application. All other exports are intended for internal
+  use and are not subject to semantic versioning!`}),`
+`,e.jsx("br",{}),`
+`,e.jsx("br",{}),`
+`,e.jsx(k,{}),`
+`,e.jsx(i.h2,{id:"device",children:"Device"}),`
+`,e.jsx(s,{code:"import { Device } from '@ui5/webcomponents-react-base';"}),`
+`,e.jsxs(i.p,{children:["The ",e.jsx(i.code,{children:"Device"})," allows you to detect information about the environment where your app is running:"]}),`
+`,e.jsx(i.h3,{id:"general-device-information",children:"General Device Information"}),`
+`,e.jsxs(i.ul,{children:[`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.isIE()"})," - returns ",e.jsx(i.code,{children:"true"})," if running in Internet Explorer"]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.isSafari()"})," - returns ",e.jsx(i.code,{children:"true"})," if running in Safari"]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.isDesktop()"})," - returns ",e.jsx(i.code,{children:"true"})," if running on desktop devices"]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.isTablet()"})," - returns ",e.jsx(i.code,{children:"true"})," if running on tablet devices"]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.isPhone()"})," - returns ",e.jsx(i.code,{children:"true"})," if running on mobile phone devices"]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.supportsTouch()"})," - returns ",e.jsx(i.code,{children:"true"})," if device supports touch"]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.getCurrentRange(width?: number)"})," ",e.jsx("br",{}),`
+Returns the current media range of the window, or the optionally passed width. `,e.jsx("br",{}),`
+Returns: `,e.jsx(i.code,{children:"{ from: number, to?: number, name: 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop', unit: string }"})]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.getOrientation()"})," ",e.jsx("br",{}),`
+Returns the current orientation of the device, `,e.jsx(i.code,{children:"{ landscape: boolean, portrait: boolean }"}),"."]}),`
+`]}),`
+`,e.jsx(i.h3,{id:"event-listeners",children:"Event Listeners"}),`
+`,e.jsxs(i.ul,{children:[`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.attachResizeHandler(callback)"})," ",e.jsx("br",{}),`
+Attach an event handler which will be invoked whenever the window size has changed.
+`,e.jsx(i.code,{children:"callback"})," is a function which will be called with ",e.jsx(i.code,{children:"{ height: number, width: number }"}),"."]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.detachResizeHandler(callback)"})," ",e.jsx("br",{}),`
+Detach a previously attached resize handler`]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.attachOrientationChangeHandler(callback)"})," ",e.jsx("br",{}),`
+Attach an event handler which will be invoked the orientation of the device has changed e.g., through rotation.
+`,e.jsx(i.code,{children:"callback"})," is a function which will be called with ",e.jsx(i.code,{children:"{ landscape: boolean, portrait: boolean }"}),"."]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.detachOrientationChangeHandler(callback)"})," ",e.jsx("br",{}),`
+Detach a previously attached orientation change handler`]}),`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.attachMediaHandler(callback)"})," ",e.jsx("br",{}),`
+Attach an event handler whenever the window size is matching another media query. `,e.jsx("br",{}),`
+The current window size will be matched against the standard SAP Responsive Breakpoints:`]}),`
+`]}),`
+`,e.jsxs(i.table,{children:[e.jsx(i.thead,{children:e.jsxs(i.tr,{children:[e.jsx(i.th,{children:"Media Query"}),e.jsx(i.th,{children:"Name"})]})}),e.jsxs(i.tbody,{children:[e.jsxs(i.tr,{children:[e.jsx(i.td,{children:e.jsx(i.code,{children:"(max-width:599px)"})}),e.jsx(i.td,{children:e.jsx(i.code,{children:"Phone"})})]}),e.jsxs(i.tr,{children:[e.jsx(i.td,{children:e.jsx(i.code,{children:"(min-width:600px) and (max-width:1023px)"})}),e.jsx(i.td,{children:e.jsx(i.code,{children:"Tablet"})})]}),e.jsxs(i.tr,{children:[e.jsx(i.td,{children:e.jsx(i.code,{children:"(min-width:1024px) and (max-width:1439px)"})}),e.jsx(i.td,{children:e.jsx(i.code,{children:"Desktop"})})]}),e.jsxs(i.tr,{children:[e.jsx(i.td,{children:e.jsx(i.code,{children:"(min-width:1440px)"})}),e.jsx(i.td,{children:e.jsx(i.code,{children:"LargeDesktop"})})]})]})]}),`
+`,e.jsxs(i.p,{children:[e.jsx(i.code,{children:"callback"}),` is a function which will be called with
+`,e.jsx(i.code,{children:"{ from: number, to?: number, name: 'Phone' | 'Tablet' | 'Desktop' | 'LargeDesktop', unit: string }"}),"."]}),`
+`,e.jsxs(i.ul,{children:[`
+`,e.jsxs(i.li,{children:[e.jsx(i.code,{children:"Device.detachMediaHandler(callback)"})," ",e.jsx("br",{}),`
+Detach a previously attached media handler`]}),`
+`]}),`
+`,e.jsx(i.h2,{id:"theming-parameters",children:"Theming Parameters"}),`
+`,e.jsx(s,{code:"import { ThemingParameters } from '@ui5/webcomponents-react-base';"}),`
+`,e.jsxs(i.p,{children:["By using the global ",e.jsx(i.code,{children:"--sap..."}),` CSS variables, you can define the look and feel of your application without the need to hard-code any
+colors. The `,e.jsx(i.code,{children:"ThemingParameters"})," is an JS object containing all available CSS variables mapped to their name."]}),`
+`,e.jsx(i.p,{children:"Example:"}),`
+`,e.jsx(i.pre,{children:e.jsx(i.code,{className:"language-jsx",children:`<div style={{ background: ThemingParameters.sapBackgroundColor }} />
+`})}),`
+`,e.jsx(i.p,{children:"Is equivalent to:"}),`
+`,e.jsx(i.pre,{children:e.jsx(i.code,{className:"language-jsx",children:`<div style={{ background: 'var(--sapBackgroundColor)' }} />
+`})}),`
+`,e.jsxs(i.p,{children:[e.jsx(i.strong,{children:"Note:"})," We don't recommend excessive use of inline-style!"]}),`
+`,e.jsx(G,{}),`
+`,e.jsx(i.h2,{id:"hooks",children:"Hooks"}),`
+`,e.jsx(i.h3,{id:"usei18nbundle",children:e.jsx(i.code,{children:"useI18nBundle"})}),`
+`,e.jsx(s,{code:"import { useI18nBundle } from '@ui5/webcomponents-react-base';"}),`
+`,e.jsxs(i.p,{children:["The ",e.jsx(i.code,{children:"useI18nBundle"}),` hook can be used for adding internationalization to your application. Learn more about it in our
+`,e.jsx(i.a,{href:"?path=/docs/knowledge-base-internationalization--docs",children:"Internationalization Guide"}),"."]}),`
+`,e.jsx(i.h3,{id:"useviewportrange",children:e.jsx(i.code,{children:"useViewportRange"})}),`
+`,e.jsx(s,{code:"import { useViewportRange } from '@ui5/webcomponents-react-base';"}),`
+`,e.jsxs(i.p,{children:["The ",e.jsx(i.code,{children:"useViewportRange"})," hook is a utility hook based on the ",e.jsx(i.code,{children:"Device.getCurrentRange()"})," and ",e.jsx(i.code,{children:"Device.attachMediaHandler"}),` API.
+It will always return a string with the name of the currently active range.`]}),`
+`,e.jsx(D,{})]})}function zi(r={}){const{wrapper:i}={...p(),...r.components};return i?e.jsx(i,{...r,children:e.jsx(m,{...r})}):m(r)}export{zi as default};
