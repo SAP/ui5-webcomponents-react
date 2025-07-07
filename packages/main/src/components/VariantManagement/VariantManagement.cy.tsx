@@ -393,7 +393,6 @@ describe('VariantManagement', () => {
       const [saved, setSaved] = useState(undefined);
       const handleSaveAs: VariantManagementPropTypes['onSaveAs'] = (e) => {
         onSaveAs(e);
-        console.log(e.detail);
         const { variantItem: _0, children, global, isDefault, nativeDetail, selected, applyAutomatically } = e.detail;
         setSaved({ nativeDetail, selected, children, isDefault, global, applyAutomatically });
       };
