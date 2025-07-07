@@ -256,6 +256,16 @@ describe('AnalyticalTable', () => {
   });
 
   it('autoResize', () => {
+    function doubleClickResizer(selector: string, columnName: string, outerWidth: number) {
+      cy.get(selector)
+        .realHover()
+        .should('have.css', 'background-color', cssVarToRgb('--sapContent_DragAndDropActiveColor'))
+        .dblclick()
+        // fallback
+        .realClick({ clickCount: 2 });
+      cy.get(`[data-column-id="${columnName}"]`).invoke('outerWidth').should('equal', outerWidth);
+    }
+
     let resizeColumns = columns.map((el) => {
       return { ...el, autoResizable: true };
     });
@@ -277,26 +287,19 @@ describe('AnalyticalTable', () => {
         }}
       />,
     );
-    cy.wait(100);
 
     cy.get('[data-component-name="AnalyticalTableResizer"]').eq(0).as('resizer1');
     cy.get('[data-component-name="AnalyticalTableResizer"]').eq(1).as('resizer2');
 
-    cy.get('@resizer2').should('be.visible').dblclick();
-    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 476);
-    cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 476);
-
-    cy.get('@resize').should('have.callCount', 2);
+    doubleClickResizer('@resizer2', 'age', 476);
+    doubleClickResizer('@resizer1', 'name', 476);
+    // doubled call count because of fallback
+    cy.get('@resize').should('have.callCount', 4);
 
     cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} onAutoResize={resizeSpy} />);
-    cy.wait(100);
-    cy.get('@resizer2').should('be.visible').dblclick();
-    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
-    cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 129);
-
-    cy.get('@resize').should('have.callCount', 4);
+    doubleClickResizer('@resizer2', 'age', 60);
+    doubleClickResizer('@resizer1', 'name', 129);
+    cy.get('@resize').should('have.callCount', 8);
 
     dataFixed = generateMoreData(200);
 
@@ -319,10 +322,8 @@ describe('AnalyticalTable', () => {
     );
 
     cy.get('[data-component-name="AnalyticalTableBody"]').scrollTo('bottom');
-    cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 93);
-
-    cy.get('@resize').should('have.callCount', 5);
+    doubleClickResizer('@resizer1', 'name', 93);
+    cy.get('@resize').should('have.callCount', 10);
 
     resizeColumns = columns.map((el) => {
       return { ...el, autoResizable: false };
@@ -330,12 +331,10 @@ describe('AnalyticalTable', () => {
 
     cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} />);
     cy.wait(100);
-    cy.get('@resizer2').should('be.visible').dblclick();
-    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 472.75);
-    cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 472.75);
+    doubleClickResizer('@resizer2', 'age', 472.75);
+    doubleClickResizer('@resizer1', 'name', 472.75);
 
-    cy.get('@resize').should('have.callCount', 5);
+    cy.get('@resize').should('have.callCount', 10);
 
     const dataSub = data.map((el, i) => {
       if (i === 2) return { ...el, name: 'Longer Name Too' };
@@ -358,25 +357,17 @@ describe('AnalyticalTable', () => {
         onAutoResize={resizeSpy}
       />,
     );
-    cy.wait(100);
-    cy.get('@resizer2').should('be.visible').dblclick();
-    cy.get('[data-column-id="age"]').invoke('outerWidth').should('equal', 60);
-    cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 165);
-
-    cy.get('@resize').should('have.callCount', 7);
+    doubleClickResizer('@resizer2', 'age', 60);
+    doubleClickResizer('@resizer1', 'name', 165);
+    cy.get('@resize').should('have.callCount', 14);
 
     const dataResizeTree = [...dataTree];
     dataResizeTree[0].subRows[0].name = 'Longer Name To Resize Here';
     cy.mount(<AnalyticalTable columns={resizeColumns} data={dataResizeTree} isTreeTable onAutoResize={resizeSpy} />);
-    cy.wait(100);
-    cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 169);
+    doubleClickResizer('@resizer1', 'name', 169);
     cy.get('[aria-rowindex="1"] > [aria-colindex="1"] > [title="Expand Node"] > [ui5-button]').click();
-    cy.get('@resizer1').should('be.visible').dblclick();
-    cy.get('[data-column-id="name"]').invoke('outerWidth').should('equal', 251);
-
-    cy.get('@resize').should('have.callCount', 9);
+    doubleClickResizer('@resizer1', 'name', 251);
+    cy.get('@resize').should('have.callCount', 18);
   });
 
   it('scrollTo', () => {
@@ -1543,12 +1534,27 @@ describe('AnalyticalTable', () => {
     cy.mount(<AnalyticalTable data={[]} columns={columns} loading loadingDelay={0} />);
     cy.get('[data-component-name="AnalyticalTableLoadingPlaceholder"]').should('be.visible');
     cy.get('.ui5-busy-indicator-busy-area').should('not.exist');
+    cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class*="busyIndicator"])').should(
+      'not.have.css',
+      'opacity',
+      '0.4',
+    );
     cy.mount(<AnalyticalTable data={[]} columns={columns} loading loadingDelay={0} alwaysShowBusyIndicator />);
     cy.get('[data-component-name="AnalyticalTableLoadingPlaceholder"]').should('not.exist');
-    cy.get('.ui5-busy-indicator-busy-area').should('be.visible');
+    cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class*="busyIndicator"])').should(
+      'have.css',
+      'opacity',
+      '0.4',
+    );
     cy.mount(<AnalyticalTable data={data} columns={columns} loading />);
     cy.get('[data-component-name="AnalyticalTableLoadingPlaceholder"]').should('not.exist');
     cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class*="busyIndicator"])').should(
+      'have.css',
+      'opacity',
+      '0.4',
+    );
     cy.mount(<AnalyticalTable data={data} columns={columns} loading loadingDelay={50000} />);
     cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('not.exist');
     cy.mount(<AnalyticalTable data={[]} columns={columns} />);
@@ -1899,8 +1905,22 @@ describe('AnalyticalTable', () => {
   });
 
   it('overlay', (done) => {
+    cy.mount(<AnalyticalTable data={data} columns={columns} />);
+    cy.findByRole('region').should('not.exist');
+    cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class^="overlay"])').should(
+      'not.have.css',
+      'opacity',
+      '0.4',
+    );
+    cy.findByText('A').click();
+
     cy.mount(<AnalyticalTable data={data} columns={columns} showOverlay />);
-    cy.findByRole('region').should('be.visible').should('have.css', 'opacity', '0.8');
+    cy.findByRole('region').should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class^="overlay"])').should(
+      'have.css',
+      'opacity',
+      '0.4',
+    );
     cy.findByText('A').shouldNotBeClickable(done);
   });
 

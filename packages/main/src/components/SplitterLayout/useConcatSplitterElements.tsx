@@ -2,9 +2,10 @@ import type { CSSProperties, ReactElement } from 'react';
 import { Children, cloneElement, isValidElement, useMemo } from 'react';
 import { Splitter } from '../Splitter/index.js';
 import type { SplitterElementPropTypes } from '../SplitterElement/index.js';
+import type { SplitterLayoutPropTypes } from './types.js';
 
 interface ConcatSplitterElements {
-  children: ReactElement<SplitterElementPropTypes> | ReactElement<SplitterElementPropTypes>[];
+  children: SplitterLayoutPropTypes['children'];
   width: CSSProperties['width'];
   height: CSSProperties['height'];
   vertical: boolean;
@@ -58,9 +59,10 @@ export const useConcatSplitterElements = (concatSplitterElements: ConcatSplitter
 
     indicesWithSplitter.forEach((index) => {
       const size = childrenArray[index]?.props?.size;
+      const _size = typeof size === 'number' ? `${size}px` : size;
       if (size && size !== 'auto') {
         childrenArray[index] = cloneElement(childrenArray[index], {
-          size: `calc(${size} - var(--_ui5wcr-SplitterSize))`,
+          size: `calc(${_size} - var(--_ui5wcr-SplitterSize))`,
         });
       }
     });

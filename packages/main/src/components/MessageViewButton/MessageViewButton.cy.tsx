@@ -24,7 +24,7 @@ describe('MessageViewButton', () => {
   it('counter', () => {
     cy.mount(<MessageViewButton data-testid="btn" />);
     cy.findByTestId('btn').should('be.empty');
-    cy.mount(<MessageViewButton data-testid="btn" counter={1} />);
+    cy.mount(<MessageViewButton data-testid="btn" counter={0} />);
     cy.findByTestId('btn').should('be.empty');
     cy.mount(<MessageViewButton data-testid="btn" counter={2} />);
     cy.findByTestId('btn').should('have.text', '2');

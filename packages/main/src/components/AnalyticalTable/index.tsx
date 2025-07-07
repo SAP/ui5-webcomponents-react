@@ -70,10 +70,10 @@ import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig.js';
 import { useRowHighlight } from './hooks/useRowHighlight.js';
 import { useRowNavigationIndicators } from './hooks/useRowNavigationIndicator.js';
 import { useRowSelectionColumn } from './hooks/useRowSelectionColumn.js';
+import { useScrollToRef } from './hooks/useScrollToRef.js';
 import { useSelectionChangeCallback } from './hooks/useSelectionChangeCallback.js';
 import { useSingleRowStateSelection } from './hooks/useSingleRowStateSelection.js';
 import { useStyling } from './hooks/useStyling.js';
-import { useTableScrollHandles } from './hooks/useTableScrollHandles.js';
 import { useToggleRowExpand } from './hooks/useToggleRowExpand.js';
 import { useVisibleColumnsWidth } from './hooks/useVisibleColumnsWidth.js';
 import { VerticalScrollbar } from './scrollbars/VerticalScrollbar.js';
@@ -308,9 +308,10 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const noDataTextLocal =
     noDataText ?? (tableState.filters?.length > 0 || tableState.globalFilter ? noDataTextFiltered : noDataTextI18n);
 
-  const [componentRef, updatedRef] = useSyncRef<AnalyticalTableDomRef>(ref);
-  //@ts-expect-error: types are compatible
-  const isRtl = useIsRTL(updatedRef);
+  const [componentRef, analyticalTableRef] = useSyncRef<AnalyticalTableDomRef>(ref);
+  const [cbRef, scrollToRef] = useScrollToRef(componentRef, dispatch);
+  // @ts-expect-error: is HTMLElement
+  const isRtl = useIsRTL(analyticalTableRef);
 
   const columnVirtualizer = useVirtualizer({
     count: visibleColumnsWidth.length,
@@ -341,8 +342,6 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     }
   }, [tableState.groupBy, tableState.columnOrder]);
 
-  const [analyticalTableRef, scrollToRef] = useTableScrollHandles(updatedRef, dispatch);
-
   if (parentRef.current) {
     scrollToRef.current = {
       ...scrollToRef.current,
@@ -358,7 +357,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         columnVirtualizer.scrollToIndex(...triggerScroll.args);
       }
     }
-  }, [triggerScroll]);
+  }, [columnVirtualizer, triggerScroll]);
 
   const includeSubCompRowHeight =
     !!renderRowSubComponent &&
@@ -413,7 +412,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         },
       });
     }
-  }, [tableRef.current, scaleXFactor]);
+  }, [dispatch, scaleXFactor]);
 
   const updateRowsCount = useCallback(() => {
     if (
@@ -738,7 +737,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         className={className}
         style={inlineStyle}
         //@ts-expect-error: types are compatible
-        ref={componentRef}
+        ref={cbRef}
         {...rest}
       >
         {header && (
@@ -757,12 +756,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               active={true}
               delay={loadingDelay}
               data-component-name="AnalyticalTableBusyIndicator"
-            >
-              {/*todo: This is necessary; otherwise, the overlay bg color will not be applied. https://github.com/SAP/ui5-webcomponents/issues/9723 */}
-              <span />
-            </BusyIndicator>
+            />
           )}
-          {/*todo: use global CSS once --sapBlockLayer_Opacity is available*/}
           {showOverlay && (
             <>
               <span id={invalidTableTextId} className={classNames.hiddenA11yText} aria-hidden="true">
