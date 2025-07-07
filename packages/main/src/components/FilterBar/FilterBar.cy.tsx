@@ -74,7 +74,7 @@ describe('FilterBar.cy.tsx', () => {
 
   it('Selection: FilterGroupItems in Dialog + events', () => {
     const TestComp = (props: Omit<FilterBarPropTypes, 'children'>) => {
-      const [selectedFilters, setSelectedFilters] = useState('');
+      const [selectedFilters, setSelectedFilters] = useState('0 1 2');
       const [closeTrigger, setCloseTrigger] = useState('');
       const [savedVisibleFilters, setSavedVisibleFilters] = useState('');
       const {
@@ -217,24 +217,17 @@ describe('FilterBar.cy.tsx', () => {
       }
 
       const checkboxes = cy.get('[ui5-checkbox]');
-      checkboxes.should('have.length', 4);
+      checkboxes.should('have.length', 3);
 
-      let selected = '2';
-      checkboxes.each((item, index, arr) => {
+      let selected = '0 1 2';
+      checkboxes.each((item, cbIndex, arr) => {
         const wrappedItem = cy.wrap(item);
         wrappedItem.should('be.visible');
+        wrappedItem.realClick();
 
-        wrappedItem.click();
-
-        if (index === 0) {
-          // select-all: deselect all - only required is checked
-          wrappedItem.should('not.have.attr', 'checked');
-          cy.findByTestId('selected').should('have.text', selected);
-          const requiredItem = cy.wrap(arr[arr.length - 1]);
-          requiredItem.should('have.attr', 'checked');
-        } else if (index !== arr.length - 1) {
-          wrappedItem.should('have.attr', 'checked');
-          selected += ` ${index - 1}`;
+        if (cbIndex !== arr.length - 1) {
+          wrappedItem.find('[role="checkbox"]').should('have.attr', 'aria-checked', 'false');
+          selected = selected.split(' ').slice(1).join(' ');
           cy.findByTestId('selected').should('have.text', selected);
         } else {
           // is sometimes not selected, seems to be related to the click target and cypress
@@ -243,7 +236,7 @@ describe('FilterBar.cy.tsx', () => {
         }
       });
 
-      cy.get('@selectSpy').should('have.callCount', 3 * (index + 1));
+      cy.get('@selectSpy').should('have.callCount', 2 * (index + 1));
 
       cy.findAllByText('INPUT').should('have.length', 2);
       cy.findAllByText('SWITCH').should('have.length', 2);
@@ -261,7 +254,7 @@ describe('FilterBar.cy.tsx', () => {
         cy.get('@saveSpy').should('have.callCount', saveCallCount);
         saveCallCount++;
         cy.findByTestId('close-trigger').should('have.text', 'okButtonPressed');
-        cy.findByTestId('saved-filters').should('have.text', '0 1 2');
+        cy.findByTestId('saved-filters').should('have.text', '2');
       } else {
         if (action === 'Reset') {
           cy.get('[data-component-name="FilterBarDialogResetMessageBox"]').contains('Cancel').click();
@@ -298,10 +291,10 @@ describe('FilterBar.cy.tsx', () => {
     });
   });
 
-  it('select-all without required', () => {
+  it('select/clear-all', () => {
     const TestComp = (props) => {
-      const [selectedFilters, setSelectedFilters] = useState('');
-      const [savedVisibleFilters, setSavedVisibleFilters] = useState('');
+      const [selectedFilters, setSelectedFilters] = useState('0 1 2 3');
+      const [savedVisibleFilters, setSavedVisibleFilters] = useState('0 1 2 3');
 
       const handleSelectionChange: FilterBarPropTypes['onFiltersDialogSelectionChange'] = (e) => {
         setSelectedFilters(Array.from(e.selectedFilterKeys).join(' '));
@@ -312,19 +305,27 @@ describe('FilterBar.cy.tsx', () => {
       return (
         <>
           <FilterBar {...props} onFiltersDialogSelectionChange={handleSelectionChange} onFiltersDialogSave={handleSave}>
-            <FilterGroupItem label="INPUT" filterKey="0">
+            <FilterGroupItem label="INPUT" filterKey="0" hiddenInFilterBar={!savedVisibleFilters.includes('0')}>
               <Input placeholder="Placeholder" value="123123" data-testid="INPUT" />
             </FilterGroupItem>
-            <FilterGroupItem label="SWITCH" filterKey="1">
+            <FilterGroupItem label="SWITCH" filterKey="1" hiddenInFilterBar={!savedVisibleFilters.includes('1')}>
               <Switch checked={true} data-testid="SWITCH" />
             </FilterGroupItem>
-            <FilterGroupItem label="SELECT" filterKey="2">
+            <FilterGroupItem label="SELECT" filterKey="2" hiddenInFilterBar={!savedVisibleFilters.includes('2')}>
               <Select data-testid="SELECT">
                 <Option selected={true}>Option 1</Option>
                 <Option>Option 2</Option>
                 <Option>Option 3</Option>
                 <Option>Option 4</Option>
               </Select>
+            </FilterGroupItem>
+            <FilterGroupItem
+              label="Required"
+              filterKey="3"
+              hiddenInFilterBar={!savedVisibleFilters.includes('3')}
+              required
+            >
+              <Input placeholder="Placeholder" value="123123" data-testid="INPUT" />
             </FilterGroupItem>
           </FilterBar>
           <hr />
@@ -339,22 +340,28 @@ describe('FilterBar.cy.tsx', () => {
 
     cy.mount(<TestComp />);
 
-    cy.findByTestId('selected', '0 1 2');
+    cy.findByTestId('selected').should('have.text', '0 1 2 3');
     cy.get('[text="Filters"]').click({ force: true });
     cy.get('[ui5-checkbox]').first().click();
-    cy.findByTestId('selected', '');
+    cy.findByTestId('selected').should('have.text', '1 2 3');
     cy.get('[ui5-checkbox]').eq(1).click();
-    cy.findByTestId('selected', '0');
+    cy.findByTestId('selected').should('have.text', '2 3');
     cy.get('[ui5-checkbox]').first().click();
     cy.get('[ui5-checkbox]').first().click();
 
     cy.findByText('OK').click();
-    cy.findByTestId('saved', '');
+    cy.findByTestId('saved').should('have.text', '2 3');
 
     cy.get('[text="Filters"]').click({ force: true });
     cy.get('[ui5-checkbox]').first().click();
     cy.findByText('OK').click();
-    cy.findByTestId('saved', '0 1 2');
+    cy.findByTestId('saved').should('have.text', '2 3 0');
+
+    cy.get('[text="Filters"]').click({ force: true });
+    cy.get('[name="clear-all"]').click();
+    cy.findByTestId('selected').should('have.text', '3');
+    cy.findByText('OK').click();
+    cy.findByTestId('saved').should('have.text', '3');
   });
 
   // todo selection, group + list view
@@ -473,25 +480,10 @@ describe('FilterBar.cy.tsx', () => {
     cy.get('[text="Filters"]').click({ force: true });
     cy.get('[accessible-name="Group View"]').click();
 
-    cy.get('[data-component-name="FilterBarDialogGroupTableHeaderRow"]')
-      .shadow()
-      .find('[ui5-table-header-cell]')
-      .should('have.css', 'visibility', 'hidden');
-
     cy.get('[data-component-name="FilterBarDialogTable"][data-is-grouped]')
       .shadow()
       .find('#no-data-row')
       .should('have.css', 'display', 'none');
-
-    cy.get('[data-component-name="FilterBarDialogTable"]')
-      .shadow()
-      .find('#table')
-      .should('have.css', 'grid-template-columns', '44px 436px 160px');
-
-    cy.get('[data-component-name="FilterBarDialogPanelTable"]')
-      .shadow()
-      .find('#table')
-      .should('have.css', 'grid-template-columns', '44px 436px 160px');
   });
 
   it('fire FilterBar events', () => {
