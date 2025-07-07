@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { useId, useReducer, useRef, useState } from 'react';
 import { FlexBoxDirection } from '../../enums/index.js';
@@ -42,6 +43,7 @@ const meta = {
       </Title>
     ),
     filterContainerWidth: '13.125rem',
+    onFiltersDialogOpen: fn(),
   },
   argTypes: {
     activeFiltersCount: { control: 'number' },

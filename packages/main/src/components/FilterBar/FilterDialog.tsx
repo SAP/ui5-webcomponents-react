@@ -73,21 +73,8 @@ interface ForceRequiredObject {
 addCustomCSSWithScoping(
   'ui5-table',
   `
-:host([data-component-name="FilterBarDialogTable"][data-with-value="false"]) #table,
-:host([data-component-name="FilterBarDialogPanelTable"][data-with-value="false"]) #table {
-   grid-template-columns: var(--_ui5wcr-CheckBoxWidthHeight) minmax(3rem, auto) minmax(3rem, 25%) !important;
-}
-:host([data-component-name="FilterBarDialogTable"][data-is-grouped]) #no-data-row {
+:host([data-component-name="FilterBarDialogTable"][data-is-grouped="true"]) #no-data-row {
   display: none;
-}
-`,
-);
-
-addCustomCSSWithScoping(
-  'ui5-table-header-row',
-  `
-:host([data-component-name="FilterBarDialogGroupTableHeaderRow"]) :first-child {
-  visibility: hidden;
 }
 `,
 );
@@ -609,20 +596,21 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           ref={tableRef}
           className={!isListView && classNames.inactiveTable}
           data-component-name="FilterBarDialogTable"
-          data-is-grouped={!isListView}
+          data-is-grouped={!isListView ? 'true' : 'false'}
           data-with-value={`${showValues}`}
           noData={!isListView ? <span /> : undefined}
           tabIndex={!isListView ? -1 : undefined}
           features={
-            <>
-              <TableSelectionMulti onChange={handleCheckBoxChange} selected={selected} />
-            </>
+            <TableSelectionMulti onChange={handleCheckBoxChange} selected={selected} headerSelector="ClearAll" />
           }
           headerRow={
             <TableHeaderRow
               data-component-name={!isListView ? 'FilterBarDialogGroupTableHeaderRow' : 'FilterBarDialogTableHeaderRow'}
             >
-              <TableHeaderCell>{filterText}</TableHeaderCell>
+              <TableHeaderCell>
+                {!isListView && <div className={classNames.checkBoxSpacer} />}
+                {filterText}
+              </TableHeaderCell>
               {!showValues && <TableHeaderCell className={classNames.tHactive}>{activeText}</TableHeaderCell>}
             </TableHeaderRow>
           }
