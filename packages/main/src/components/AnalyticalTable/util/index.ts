@@ -72,7 +72,7 @@ export const tagNamesWhichShouldNotSelectARow = new Set([
   'UI5-DATERANGE-PICKER',
   'UI5-DATETIME-PICKER',
   'UI5-DURATION-PICKER',
-  'UI5-DYNAMIC-DATE-Range',
+  'UI5-DYNAMIC-DATE-RANGE',
   'UI5-FILE-UPLOADER',
   'UI5-ICON',
   'UI5-INPUT',
