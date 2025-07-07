@@ -14,13 +14,13 @@ Components in this package will not receive any new features. Only critical bugs
 npm install @ui5/webcomponents-react-compat
 ```
 
-> ⚠️ **Warning:** It is not supported using the v1 `Table` and the v2 `Table` in the same application!
+> ⚠️ **Warning:** It is not supported using the v1 `Table` and the v2 `Table` in the same application without "compat" package scoping!
 
 > ⚠️ **Warning:** Please only import components from this package via the file path!
 
 ## Compatibility
 
-The legacy v1 (compat) `Table` and the modern v2 `Table` component and some subcomponents both register the same custom element names for `ui5-table`, `ui5-table-row` and `ui5-table-cell`, which will lead to conflicts when they coexist in the same application.
+The legacy v1 (compat) `Table` and the modern v2 `Table` component and some subcomponents both register the same custom element names for `ui5-table`, `ui5-table-row` and `ui5-table-cell`, which will lead to conflicts when they coexist in the same application. To solve this, please see the section about scoping below.
 
 ### Recommendation
 
@@ -44,12 +44,31 @@ Following are the imports of duplicate custom element names:
 - `TableCell` (`ui5-table-cell`): `import "@ui5/webcomponents-compat/dist/TableCell.js";`
 - `TableRow` (`ui5-table-row`): `import "@ui5/webcomponents-compat/dist/TableRow.js";`
 
-### Experimental Patch Script
+### Using the Compat (v1) Table Together with the v2 Table in One Application
+
+As of **v2.12.0** of `@ui5/webcomponents-compat`, a dedicated **scoping mechanism** is available for custom elements from the compat package.
+
+> **Note:** This feature is different from the general [scoping mechanism](https://sap.github.io/ui5-webcomponents/docs/advanced/scoping/) and applies **only** to custom elements from the compatibility package (Table and its subcomponents).
+
+Setting up scoping for the compat package is done in the same way as general scoping, but with specific methods coming from `@ui5/webcomponents-compat`.
+
+```js
+//scoping.js
+import { setCompatCustomElementsScopingSuffix } from '@ui5/webcomponents-compat/dist/utils/CompatCustomElementsScope.js';
+setCompatCustomElementsScopingSuffix('compat');
+
+// app main file, e.g index.js, main.tsx, etc.
+import './scoping.js';
+// now, all other component imports - the scoping config import must be the first import of the app
+import { Table } from '@ui5/webcomponents-react-compat';
+```
+
+### Experimental Patch Script (deprecated)
+
+> ⚠️ **Deprecated**: This script is deprecated in favor of scoping the "compat" package components!
 
 The `patch-compat-table` script (included in the `@ui5/webcomponents-react-cli` package) is developed to address specific compatibility issues that arise when using the legacy v1 Table component in conjunction with the `FilterBar` or `VariantManagement` components. These components internally rely on the v2 `Table`, and therefore conflicts will occur when using the v1 `Table`.
 The script will change the custom element name by adding a `-v1` suffix (via [patch-package](https://github.com/ds300/patch-package)) to all duplicate v1 table components.
-
-> ⚠️ **Experimental**: This script is in experimental state and not subject to semantic versioning.
 
 > ⚠️ **Temporary Solution:** This script is intended as a temporary workaround. It is strongly recommended to plan for a migration to the v2 Table component to ensure long-term compatibility and support.
 

@@ -2,9 +2,13 @@
 
 import '@ui5/webcomponents-compat/dist/TableColumn.js';
 import type TableColumnPopinDisplay from '@ui5/webcomponents-compat/dist/types/TableColumnPopinDisplay.js';
+import { getCompatCustomElementsScopingSuffix } from '@ui5/webcomponents-compat/dist/utils/CompatCustomElementsScope.js';
 import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import { withWebComponent } from '@ui5/webcomponents-react-base/dist/wrapper/withWebComponent.js';
 import type { ReactNode } from 'react';
+
+const compatScopingSuffix = getCompatCustomElementsScopingSuffix();
+const tagSuffix = compatScopingSuffix ? `-${compatScopingSuffix}` : '';
 
 interface TableColumnAttributes {
   /**
@@ -64,7 +68,7 @@ interface TableColumnPropTypes
  * @deprecated Deprecated as of version 2.12.0, use `@ui5/webcomponents/dist/Table.js` instead.
  */
 const TableColumn = withWebComponent<TableColumnPropTypes, TableColumnDomRef>(
-  'ui5-table-column',
+  `ui5-table-column${tagSuffix}`,
   ['minWidth', 'popinDisplay', 'popinText'],
   ['demandPopin'],
   [],
