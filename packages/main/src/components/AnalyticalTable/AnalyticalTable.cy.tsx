@@ -1539,7 +1539,16 @@ describe('AnalyticalTable', () => {
       'opacity',
       '0.4',
     );
+    cy.mount(<AnalyticalTable data={[]} columns={columns} loading loadingDelay={0} alwaysShowBusyIndicator />);
+    cy.get('[data-component-name="AnalyticalTableLoadingPlaceholder"]').should('not.exist');
+    cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class*="busyIndicator"])').should(
+      'have.css',
+      'opacity',
+      '0.4',
+    );
     cy.mount(<AnalyticalTable data={data} columns={columns} loading />);
+    cy.get('[data-component-name="AnalyticalTableLoadingPlaceholder"]').should('not.exist');
     cy.get('.ui5-busy-indicator-busy-area', { timeout: 2000 }).should('be.visible');
     cy.get('[data-component-name="AnalyticalTableContainerWithScrollbar"] > :not([class*="busyIndicator"])').should(
       'have.css',
