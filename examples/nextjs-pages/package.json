@@ -13,7 +13,7 @@
     "@ui5/webcomponents-base": "2.12.0",
     "@ui5/webcomponents-fiori": "2.12.0",
     "@ui5/webcomponents-react": "2.12.0",
-    "@types/node": "22.15.34",
+    "@types/node": "22.16.0",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "eslint": "9.30.0",
