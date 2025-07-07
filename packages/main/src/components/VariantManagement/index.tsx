@@ -251,6 +251,7 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
           }
           if (deletedRows.has(castChild.props.children)) {
             callbackProperties.deletedVariants.push(castChild.props);
+            deletedRows.delete(castChild.props.children);
             return false;
           }
           if (Object.keys(updatedProps).length > 0) {
