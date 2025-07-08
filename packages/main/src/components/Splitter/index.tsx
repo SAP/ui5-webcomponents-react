@@ -63,7 +63,7 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
   const [isSiblings, setIsSiblings] = useState(['previousSibling', 'nextSibling']);
 
   const animationFrameIdRef = useRef(null);
-  function fireOnResize(prevSibling: HTMLElement, nextSibling: HTMLElement) {
+  const fireOnResize = (prevSibling: HTMLElement, nextSibling: HTMLElement) => {
     if (animationFrameIdRef.current) {
       cancelAnimationFrame(animationFrameIdRef.current);
     }
@@ -92,7 +92,7 @@ const Splitter = forwardRef<HTMLDivElement, SplitterPropTypes>((props, ref) => {
       });
       animationFrameIdRef.current = null;
     });
-  }
+  };
 
   const handleSplitterMove = (e) => {
     const offset = resizerClickOffset.current;
