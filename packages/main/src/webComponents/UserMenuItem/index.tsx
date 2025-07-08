@@ -49,9 +49,22 @@ interface UserMenuItemAttributes {
   additionalText?: string | undefined;
 
   /**
-   * Defines whether `ui5-menu-item` is in disabled state.
+   * Defines whether menu item is in checked state.
    *
-   * **Note:** A disabled `ui5-menu-item` is noninteractive.
+   * **Note:** checked state is only taken into account when menu item is added to menu item group
+   * with `checkMode` other than `None`.
+   *
+   * **Note:** A checked menu item has a checkmark displayed at its end.
+   *
+   * **Note:** Available since [v2.12.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.12.0) of **@ui5/webcomponents-fiori**.
+   * @default false
+   */
+  checked?: boolean;
+
+  /**
+   * Defines whether menu item is in disabled state.
+   *
+   * **Note:** A disabled menu item is noninteractive.
    * @default false
    */
   disabled?: boolean;
@@ -77,9 +90,9 @@ interface UserMenuItemAttributes {
   icon?: string | undefined;
 
   /**
-   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.
    *
-   * **Note:** If set to `true` a `ui5-busy-indicator` component will be displayed into the related one to the current `ui5-menu-item` sub-menu popover.
+   * **Note:** If set to `true` a busy indicator component will be displayed into the related one to the current menu item sub-menu popover.
    *
    * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents-fiori**.
    * @default false
@@ -87,7 +100,7 @@ interface UserMenuItemAttributes {
   loading?: boolean;
 
   /**
-   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.
+   * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding menu popover.
    *
    * **Note:** Available since [v1.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.13.0) of **@ui5/webcomponents-fiori**.
    * @default 1000
@@ -146,6 +159,7 @@ interface UserMenuItemPropTypes
       | 'endContent'
       | 'onBeforeClose'
       | 'onBeforeOpen'
+      | 'onCheck'
       | 'onClose'
       | 'onDetailClick'
       | 'onOpen'
@@ -184,6 +198,10 @@ interface UserMenuItemPropTypes
    * The priority of what will be displayed at the end of the menu item is as follows:
    * sub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.
    *
+   * Application developers are responsible for ensuring that interactive elements placed in the `endContent` slot
+   * have the correct accessibility behaviour, including their enabled or disabled states.
+   * The menu does not manage these aspects when the menu item state changes.
+   *
    * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="endContent"`).
    * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
    *
@@ -220,6 +238,17 @@ interface UserMenuItemPropTypes
    * | ✅|❌|
    */
   onBeforeOpen?: (event: Ui5CustomEvent<UserMenuItemDomRef, MenuBeforeOpenEventDetail>) => void;
+
+  /**
+   * Fired when an item is checked or unchecked.
+   *
+   * **Note:** Available since [v2.12.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.12.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onCheck?: (event: Ui5CustomEvent<UserMenuItemDomRef>) => void;
 
   /**
    * Fired after the menu is closed.
@@ -281,9 +310,9 @@ const UserMenuItem = withWebComponent<UserMenuItemPropTypes, UserMenuItemDomRef>
     'tooltip',
     'type',
   ],
-  ['disabled', 'loading', 'navigated', 'selected'],
+  ['checked', 'disabled', 'loading', 'navigated', 'selected'],
   ['deleteButton', 'endContent'],
-  ['before-close', 'before-open', 'close', 'detail-click', 'open'],
+  ['before-close', 'before-open', 'check', 'close', 'detail-click', 'open'],
 );
 
 UserMenuItem.displayName = 'UserMenuItem';

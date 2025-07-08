@@ -2,6 +2,7 @@ import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/comp
 import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import * as ComponentStories from './Menu.stories';
 import { MenuItem } from '../MenuItem';
+import { MenuItemGroup } from '../MenuItemGroup';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -59,5 +60,10 @@ const MyComponentWithMenu = () => {
 
 <Description of={MenuItem} />
 <ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MenuItem} />
+
+## MenuItemGroup
+
+<Description of={MenuItemGroup} />
+<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MenuItemGroup} />
 
 <Footer />

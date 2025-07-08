@@ -71,7 +71,9 @@ interface SideNavigationItemAttributes {
   icon?: string | undefined;
 
   /**
-   * Defines whether the item is selected
+   * Defines whether the item is selected.
+   *
+   * **Note:** Items that have a set `href` and `target` set to `_blank` should not be selectable.
    * @default false
    */
   selected?: boolean;
@@ -79,15 +81,16 @@ interface SideNavigationItemAttributes {
   /**
    * Defines the component target.
    *
-   * **Notes:**
+   * Possible values:
    *
    * - `_self`
    * - `_top`
    * - `_blank`
    * - `_parent`
-   * - `_search`
+   * - `framename`
    *
-   * **This property must only be used when the `href` property is set.**
+   * **Note:** Items that have a defined `href` and `target`
+   * attribute set to `_blank` should not be selectable.
    *
    * **Note:** Available since [v1.19.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.19.0) of **@ui5/webcomponents-fiori**.
    * @default undefined
@@ -112,15 +115,15 @@ interface SideNavigationItemAttributes {
   tooltip?: string | undefined;
 
   /**
-   * Indicates whether the navigation item is selectable. By default all items are selectable unless specifically marked as unselectable.
+   * Indicates whether the navigation item is selectable. By default, all items are selectable unless specifically marked as unselectable.
    *
    * When a parent item is marked as unselectable, selecting it will only expand or collapse its sub-items.
    * To improve user experience do not mix unselectable parent items with selectable parent items in a single side navigation.
    *
    *
    * **Guidelines**:
-   * - External links should be unselectable.
-   * - Items that trigger actions (with design "Action") should be unselectable.
+   * - Items with an assigned `href` and a target of `_blank` should be marked as unselectable.
+   * - Items that trigger actions (with design "Action") should be marked as unselectable.
    *
    * **Note:** Available since [v2.7.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.7.0) of **@ui5/webcomponents-fiori**.
    * @default false

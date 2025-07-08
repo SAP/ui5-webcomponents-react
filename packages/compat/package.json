@@ -1,6 +1,6 @@
 {
   "name": "@ui5/webcomponents-react-compat",
-  "version": "2.11.1",
+  "version": "2.12.0",
   "description": "React Wrapper for UI5 Web Components Compat package",
   "type": "module",
   "main": "dist/index.js",
@@ -41,8 +41,8 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents-compat": "~2.11.0",
-    "@ui5/webcomponents-react": "~2.11.0",
+    "@ui5/webcomponents-compat": "~2.12.0",
+    "@ui5/webcomponents-react": "~2.12.0",
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19"
   },

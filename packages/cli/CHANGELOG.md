@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.11.1...v2.12.0) (2025-07-07)
+
+### Features
+
+- **compat:** enable scoping for custom elements in compat package only ([#7514](https://github.com/SAP/ui5-webcomponents-react/issues/7514)) ([13dc7a4](https://github.com/SAP/ui5-webcomponents-react/commit/13dc7a445d1d39c49ffd517d11b1927ee2ad45d3))
+
 ## [2.11.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.11.0...v2.11.1) (2025-06-06)
 
 ### Bug Fixes

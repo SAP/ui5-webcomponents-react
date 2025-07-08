@@ -8,9 +8,13 @@ import type {
 import type { TableRowClickEventDetail } from '@ui5/webcomponents-compat/dist/TableRow.js';
 import type TableGrowingMode from '@ui5/webcomponents-compat/dist/types/TableGrowingMode.js';
 import type TableMode from '@ui5/webcomponents-compat/dist/types/TableMode.js';
+import { getCompatCustomElementsScopingSuffix } from '@ui5/webcomponents-compat/dist/utils/CompatCustomElementsScope.js';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import { withWebComponent } from '@ui5/webcomponents-react-base/dist/wrapper/withWebComponent.js';
 import type { ReactNode } from 'react';
+
+const compatScopingSuffix = getCompatCustomElementsScopingSuffix();
+const tagSuffix = compatScopingSuffix ? `-${compatScopingSuffix}` : '';
 
 interface TableAttributes {
   /**
@@ -266,9 +270,10 @@ interface TablePropTypes
  * - `import "@ui5/webcomponents-compat/dist/TableCell.js";` (`TableCell`)
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
+ * @deprecated Deprecated as of version 2.12.0, use `@ui5/webcomponents/dist/Table.js` instead.
  */
 const Table = withWebComponent<TablePropTypes, TableDomRef>(
-  'ui5-table',
+  `ui5-table${tagSuffix}`,
   [
     'accessibleName',
     'accessibleNameRef',

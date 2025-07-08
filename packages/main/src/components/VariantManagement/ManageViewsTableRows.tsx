@@ -1,4 +1,3 @@
-import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import declineIcon from '@ui5/webcomponents-icons/dist/decline.js';
@@ -20,14 +19,19 @@ import {
   VIEW,
 } from '../../i18n/i18n-defaults.js';
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
-import { Button, CheckBox, Icon, Input, RadioButton, TableCell, TableRow } from '../../webComponents/index.js';
+import { CheckBox } from '../../webComponents/CheckBox/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import { Input } from '../../webComponents/Input/index.js';
+import { RadioButton } from '../../webComponents/RadioButton/index.js';
+import { TableCell } from '../../webComponents/TableCell/index.js';
+import { TableRow } from '../../webComponents/TableRow/index.js';
+import { TableRowAction } from '../../webComponents/TableRowAction/index.js';
 import { Text } from '../../webComponents/Text/index.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
 
 interface ManageViewsTableRowsProps extends Partial<VariantItemPropTypes> {
   variantNames: string[];
   handleRowChange: (e: Event, payload: any) => void;
-  handleDelete: (e: any) => void;
   defaultView: string;
   setDefaultView: (view: string) => void;
   showShare: boolean;
@@ -46,7 +50,6 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     changedVariantNames,
     setChangedVariantNames,
     handleRowChange,
-    handleDelete,
     defaultView,
     setDefaultView,
     showShare,
@@ -170,7 +173,11 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
     );
   };
   return (
-    <TableRow data-id={children} key={`${children}`}>
+    <TableRow
+      data-id={children}
+      key={`${children}`}
+      actions={!(hideDelete ?? global) && <TableRowAction icon={declineIcon} text={a11yDeleteText} />}
+    >
       {showOnlyFavorites && (
         <TableCell>
           {isDefault ? (
@@ -213,18 +220,6 @@ export const ManageViewsTableRows = (props: ManageViewsTableRowsProps) => {
           <Text>{author}</Text>
         </TableCell>
       )}
-      <TableCell>
-        {!(hideDelete ?? global) && (
-          <Button
-            tooltip={a11yDeleteText}
-            accessibleName={a11yDeleteText}
-            icon={declineIcon}
-            design={ButtonDesign.Transparent}
-            onClick={handleDelete}
-            data-children={children}
-          />
-        )}
-      </TableCell>
     </TableRow>
   );
 };

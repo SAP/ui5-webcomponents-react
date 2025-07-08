@@ -297,8 +297,8 @@ export const withRowActions: Story = {
             key={`${row.name}-${row.age}`}
             actions={
               <>
-                <TableRowAction icon={editIcon}>Edit</TableRowAction>
-                <TableRowAction icon={saveIcon}>Save</TableRowAction>
+                <TableRowAction icon={editIcon} text="Edit" />
+                <TableRowAction icon={saveIcon} text="Save" />
                 <TableRowActionNavigation interactive={!!(index % 2)} />
               </>
             }

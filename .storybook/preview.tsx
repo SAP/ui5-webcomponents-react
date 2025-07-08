@@ -1,3 +1,4 @@
+import './scoping.js';
 import '@ui5/webcomponents-icons/dist/AllIcons.js';
 import '@ui5/webcomponents-base/dist/features/F6Navigation.js';
 import type { Preview } from '@storybook/react-vite';

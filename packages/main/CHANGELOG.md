@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.11.1...v2.12.0) (2025-07-07)
+
+### Bug Fixes
+
+- **AnalyticalTable:** correct header row border styles in Quartz theme ([#7459](https://github.com/SAP/ui5-webcomponents-react/issues/7459)) ([adf8982](https://github.com/SAP/ui5-webcomponents-react/commit/adf89826755a0c293ce54cbc49bc78a13bdd8e71))
+- **AnalyticalTable:** update loading indicator and overlay styles ([#7447](https://github.com/SAP/ui5-webcomponents-react/issues/7447)) ([0085aae](https://github.com/SAP/ui5-webcomponents-react/commit/0085aae39504caf20e8f9ac91ea82a3c6d4878a9))
+- **deps:** update dependency @tanstack/react-virtual to v3.13.10 (main) ([#7433](https://github.com/SAP/ui5-webcomponents-react/issues/7433)) ([415e5be](https://github.com/SAP/ui5-webcomponents-react/commit/415e5bee3ff6cbfb0dd953ff8e4f98eaa97fb852))
+- **deps:** update dependency @tanstack/react-virtual to v3.13.11 (main) ([#7467](https://github.com/SAP/ui5-webcomponents-react/issues/7467)) ([b8a3806](https://github.com/SAP/ui5-webcomponents-react/commit/b8a38061feb1282fe20f1f13abf3f2ebded0fd80))
+- **deps:** update dependency @tanstack/react-virtual to v3.13.12 (main) ([#7483](https://github.com/SAP/ui5-webcomponents-react/issues/7483)) ([e91f28c](https://github.com/SAP/ui5-webcomponents-react/commit/e91f28c59ce4040820aaa83e1b43cacc060485ca))
+- **MessageView:** announce SegmentedButton message by with screen readers ([#7455](https://github.com/SAP/ui5-webcomponents-react/issues/7455)) ([f1f271b](https://github.com/SAP/ui5-webcomponents-react/commit/f1f271b266c75363aefcbd0ef5a6487bdea627d7))
+- **MessageViewButton:** remove `counter` restriction ([#7456](https://github.com/SAP/ui5-webcomponents-react/issues/7456)) ([498b5ec](https://github.com/SAP/ui5-webcomponents-react/commit/498b5ecf680d1a983c69d519be4c320b65d65cb3)), closes [#7454](https://github.com/SAP/ui5-webcomponents-react/issues/7454)
+- **ObjectPageTitle:** prevent `header` overflow ([#7498](https://github.com/SAP/ui5-webcomponents-react/issues/7498)) ([e353960](https://github.com/SAP/ui5-webcomponents-react/commit/e3539604ebdb06b373376ceb8f56d7ed17e9858a))
+- **SplitterElement:** allow passing `number` for `size` prop ([#7499](https://github.com/SAP/ui5-webcomponents-react/issues/7499)) ([0869311](https://github.com/SAP/ui5-webcomponents-react/commit/0869311e53f6e94316e7dbb53fc448e18b5013dd))
+- **SplitterLayout - TypeScript:** extend `children` type ([#7457](https://github.com/SAP/ui5-webcomponents-react/issues/7457)) ([1903670](https://github.com/SAP/ui5-webcomponents-react/commit/19036700d66812c3abab78946ba9d4cee824a093))
+- **VariantManagement:** fix delete button alignment & pop-in behavior ([#7496](https://github.com/SAP/ui5-webcomponents-react/issues/7496)) ([80324af](https://github.com/SAP/ui5-webcomponents-react/commit/80324af533d2126c5a6e6e9fd15ee0da0b7ba8df)), closes [#7476](https://github.com/SAP/ui5-webcomponents-react/issues/7476)
+
+### Features
+
+- **AnalyticalTable:** introduce `alwaysShowBusyIndicator` prop ([#7448](https://github.com/SAP/ui5-webcomponents-react/issues/7448)) ([80382b8](https://github.com/SAP/ui5-webcomponents-react/commit/80382b8710e3af2d3e3fce0cd0f3d10612a13d30)), closes [#7402](https://github.com/SAP/ui5-webcomponents-react/issues/7402)
+- **Assets:** add `Assets-fetch.js` ([#7345](https://github.com/SAP/ui5-webcomponents-react/issues/7345)) ([ea8e7a0](https://github.com/SAP/ui5-webcomponents-react/commit/ea8e7a0a6d0889b8d5ea00100037ea22c3a7cf2e))
+- **FilterBar:** support clearing all filters at once ([#7512](https://github.com/SAP/ui5-webcomponents-react/issues/7512)) ([82faa6d](https://github.com/SAP/ui5-webcomponents-react/commit/82faa6d5ff7198625e0d77029b0758040ed46388))
+- **ObjectPageTitle:** introduce `snappedHeader` & `snappedSubHeader`prop ([#7497](https://github.com/SAP/ui5-webcomponents-react/issues/7497)) ([5ebaf8f](https://github.com/SAP/ui5-webcomponents-react/commit/5ebaf8fcda32fd122bcedda40ba6d242c4c3ad0f)), closes [#7490](https://github.com/SAP/ui5-webcomponents-react/issues/7490)
+- update to UI5 Web Components v2.12.0 ([#7505](https://github.com/SAP/ui5-webcomponents-react/issues/7505)) ([84ae471](https://github.com/SAP/ui5-webcomponents-react/commit/84ae471949980686fcd7f1f3b2465fdf5e03fd27))
+
 ## [2.11.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.11.0...v2.11.1) (2025-06-06)
 
 **Note:** Version bump only for package @ui5/webcomponents-react

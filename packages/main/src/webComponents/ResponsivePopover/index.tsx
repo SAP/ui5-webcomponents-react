@@ -12,6 +12,22 @@ import type { ReactNode } from 'react';
 
 interface ResponsivePopoverAttributes {
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.11.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.11.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Receives id(or many ids) of the elements that describe the component.
+   *
+   * **Note:** Available since [v2.11.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.11.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the accessible name of the component.
    * @default undefined
    */
@@ -226,6 +242,8 @@ interface ResponsivePopoverPropTypes
 const ResponsivePopover = withWebComponent<ResponsivePopoverPropTypes, ResponsivePopoverDomRef>(
   'ui5-responsive-popover',
   [
+    'accessibleDescription',
+    'accessibleDescriptionRef',
     'accessibleName',
     'accessibleNameRef',
     'accessibleRole',
