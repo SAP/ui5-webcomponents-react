@@ -2,9 +2,13 @@
 
 import '@ui5/webcomponents-compat/dist/TableRow.js';
 import type TableRowType from '@ui5/webcomponents-compat/dist/types/TableRowType.js';
+import { getCompatCustomElementsScopingSuffix } from '@ui5/webcomponents-compat/dist/utils/CompatCustomElementsScope.js';
 import type { CommonProps, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import { withWebComponent } from '@ui5/webcomponents-react-base/dist/wrapper/withWebComponent.js';
 import type { ReactNode } from 'react';
+
+const compatScopingSuffix = getCompatCustomElementsScopingSuffix();
+const tagSuffix = compatScopingSuffix ? `-${compatScopingSuffix}` : '';
 
 interface TableRowAttributes {
   /**
@@ -50,9 +54,10 @@ interface TableRowPropTypes extends TableRowAttributes, Omit<CommonProps, keyof 
  * The `TableRow` component represents a row in the `Table`.
  *
  * __Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)
+ * @deprecated Deprecated as of version 2.12.0, use `@ui5/webcomponents/dist/TableRow.js` instead.
  */
 const TableRow = withWebComponent<TableRowPropTypes, TableRowDomRef>(
-  'ui5-table-row',
+  `ui5-table-row${tagSuffix}`,
   ['type'],
   ['navigated', 'selected'],
   [],

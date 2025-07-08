@@ -391,10 +391,10 @@ describe('VariantManagement', () => {
   it('Save As', () => {
     const TestComp = ({ onSaveAs }: { onSaveAs: VariantManagementPropTypes['onSaveAs'] }) => {
       const [saved, setSaved] = useState(undefined);
-      const handleSaveAs = (e) => {
+      const handleSaveAs: VariantManagementPropTypes['onSaveAs'] = (e) => {
         onSaveAs(e);
-        const { variantItem: _0, ...rest } = e.detail;
-        setSaved(rest);
+        const { variantItem: _0, children, global, isDefault, nativeDetail, selected, applyAutomatically } = e.detail;
+        setSaved({ nativeDetail, selected, children, isDefault, global, applyAutomatically });
       };
       return (
         <>
@@ -494,11 +494,15 @@ describe('VariantManagement', () => {
       showOnlyFavorites?: VariantManagementPropTypes['showOnlyFavorites'];
     }) => {
       const [save, setSave] = useState(undefined);
-      const handleSave = (e) => {
+      const handleSave: VariantManagementPropTypes['onSaveManageViews'] = (e) => {
+        const { deletedVariants, prevVariants, updatedVariants, variants, nativeDetail } = e.detail;
         onSaveManageViews(e);
         setSave({
-          ...e.detail,
-          variants: e.detail.variants.map((item) => {
+          nativeDetail,
+          deletedVariants,
+          prevVariants,
+          updatedVariants,
+          variants: variants.map((item) => {
             const { variantItem: _0, ...rest } = item;
             return rest;
           }),
@@ -631,11 +635,15 @@ describe('VariantManagement', () => {
       onSaveManageViews: VariantManagementPropTypes['onSaveManageViews'];
     }) => {
       const [save, setSave] = useState(undefined);
-      const handleSave = (e) => {
+      const handleSave: VariantManagementPropTypes['onSaveManageViews'] = (e) => {
+        const { deletedVariants, prevVariants, updatedVariants, variants, nativeDetail } = e.detail;
         onSaveManageViews(e);
         setSave({
-          ...e.detail,
-          variants: e.detail.variants.map((item) => {
+          nativeDetail,
+          deletedVariants,
+          prevVariants,
+          updatedVariants,
+          variants: variants.map((item) => {
             const { variantItem: _0, ...rest } = item;
             return rest;
           }),
@@ -659,11 +667,12 @@ describe('VariantManagement', () => {
     cy.get('[icon="navigation-down-arrow"]').click();
     cy.findByText('Manage').click();
 
-    cy.get('[ui5-button][tooltip="Delete View"]').each(($btn) => {
-      if ($btn[0].getAttribute('data-children') !== 'VariantItem 3') {
-        cy.wrap($btn).click();
+    cy.get('[ui5-table-row-action][text="Delete View"]').each(($action) => {
+      if ($action.parent().attr('data-id') !== 'VariantItem 3') {
+        cy.wrap($action).click();
       }
     });
+
     cy.findByText('Save').click();
     cy.get('@saveView').should('have.been.calledOnce');
     cy.findByText(

@@ -97,3 +97,7 @@
 .inactiveTable {
   pointer-events: none;
 }
+
+.checkBoxSpacer {
+  width: calc(var(--_ui5wcr-CheckBoxWidthHeight) - 11px);
+}

@@ -10,6 +10,22 @@ import type { ReactNode } from 'react';
 
 interface DialogAttributes {
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.11.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.11.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Receives id(or many ids) of the elements that describe the component.
+   *
+   * **Note:** Available since [v2.11.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.11.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the accessible name of the component.
    * @default undefined
    */
@@ -259,7 +275,16 @@ interface DialogPropTypes
  */
 const Dialog = withWebComponent<DialogPropTypes, DialogDomRef>(
   'ui5-dialog',
-  ['accessibleName', 'accessibleNameRef', 'accessibleRole', 'headerText', 'initialFocus', 'state'],
+  [
+    'accessibleDescription',
+    'accessibleDescriptionRef',
+    'accessibleName',
+    'accessibleNameRef',
+    'accessibleRole',
+    'headerText',
+    'initialFocus',
+    'state',
+  ],
   ['draggable', 'open', 'preventFocusRestore', 'preventInitialFocus', 'resizable', 'stretch'],
   ['footer', 'header'],
   ['before-close', 'before-open', 'close', 'open'],

@@ -125,7 +125,9 @@ switch (command) {
 
   case 'patch-compat-table': {
     const patchesPath = relative(process.cwd(), fileURLToPath(new URL('../../patches', import.meta.url)));
-
+    console.warn(
+      'This command is deprecated and will be removed in the future. Please apply scoping to the "compat" table and its subcomponents manually: https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/legacy-components-docs--docs#using-the-compat-v1-table-together-with-the-v2-table-in-one-application',
+    );
     try {
       await $`patch-package --patch-dir ${patchesPath}`;
       console.log('Patches applied successfully!');
