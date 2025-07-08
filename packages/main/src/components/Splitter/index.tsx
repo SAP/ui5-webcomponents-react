@@ -7,13 +7,12 @@ import { useCurrentTheme, useI18nBundle, useIsRTL, useSyncRef, useStylesheet } f
 import { forwardRef, useEffect, useRef, useState } from 'react';
 import type { KeyboardEventHandler, PointerEventHandler } from 'react';
 import { PRESS_ARROW_KEYS_TO_MOVE } from '../../i18n/i18n-defaults.js';
-import type { CommonProps } from '../../types/index.js';
 import { Button } from '../../webComponents/Button/index.js';
 import { Icon } from '../../webComponents/Icon/index.js';
 import type { SplitterLayoutPropTypes } from '../SplitterLayout/types.js';
 import { classNames, styleData } from './Splitter.module.css.js';
 
-export interface SplitterPropTypes extends CommonProps {
+export interface SplitterPropTypes {
   height: string | number;
   width: string | number;
   vertical: boolean;
