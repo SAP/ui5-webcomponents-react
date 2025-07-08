@@ -36,7 +36,7 @@ interface OnResizeParam {
   splitter: HTMLElement;
 }
 
-export interface SplitterLayoutPropTypes extends CommonProps {
+export interface SplitterLayoutPropTypes extends Omit<CommonProps, 'onResize'> {
   /**
    * Controls if a vertical or horizontal `SplitterLayout` is rendered.
    */
