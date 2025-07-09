@@ -16,6 +16,7 @@ import { TableRow } from '../TableRow/index.js';
 import { TableRowAction } from '../TableRowAction/index.js';
 import { TableRowActionNavigation } from '../TableRowActionNavigation/index.js';
 import { TableSelectionMulti } from '../TableSelectionMulti/index.js';
+import type { TableSelectionSinglePropTypes } from '../TableSelectionSingle/index.js';
 import { TableSelectionSingle } from '../TableSelectionSingle/index.js';
 import type { TableVirtualizerPropTypes } from '../TableVirtualizer/index.js';
 import { TableVirtualizer } from '../TableVirtualizer/index.js';
@@ -33,7 +34,7 @@ const popInColumns = (
     <TableHeaderCell minWidth={'200px'}>
       <span>Dimensions</span>
     </TableHeaderCell>
-    <TableHeaderCell minWidth={'100px'} maxWidth="200px">
+    <TableHeaderCell minWidth={'100px'}>
       <span>Weight</span>
     </TableHeaderCell>
     <TableHeaderCell minWidth="200px">
@@ -72,7 +73,7 @@ export const Default: Story = {
   render: (args) => {
     return (
       <Table {...args}>
-        <TableRow>
+        <TableRow rowKey={'0'}>
           <TableCell>
             <span>Notebook Basic</span>
           </TableCell>
@@ -89,7 +90,7 @@ export const Default: Story = {
             <span>956EUR</span>
           </TableCell>
         </TableRow>
-        <TableRow>
+        <TableRow rowKey={'1'}>
           <TableCell>
             <span>Notebook Basic 17HT-1001</span>
           </TableCell>
@@ -166,6 +167,7 @@ export const GrowingTable: Story = {
 export const WithSelection: Story = {
   render(args) {
     const [mode, setMode] = useState<'Single' | 'Multi' | 'None'>('Single');
+    const [behavior, setBehavior] = useState<TableSelectionSinglePropTypes['behavior']>('RowSelector');
     return (
       <>
         <SegmentedButton
@@ -177,16 +179,27 @@ export const WithSelection: Story = {
           <SegmentedButtonItem selected={'Single' === mode}>Single</SegmentedButtonItem>
           <SegmentedButtonItem selected={'Multi' === mode}>Multi</SegmentedButtonItem>
         </SegmentedButton>
+        <Label aria-hidden style={{ marginInline: '0.25rem' }}>
+          |
+        </Label>
+        <SegmentedButton
+          onSelectionChange={(e) => {
+            setBehavior(e.detail.selectedItems[0].textContent as TableSelectionSinglePropTypes['behavior']);
+          }}
+        >
+          <SegmentedButtonItem selected={'RowSelector' === behavior}>RowSelector</SegmentedButtonItem>
+          <SegmentedButtonItem selected={'RowOnly' === behavior}>RowOnly</SegmentedButtonItem>
+        </SegmentedButton>
         <Table
           {...args}
           features={
             <>
-              {'Single' === mode && <TableSelectionSingle />}
-              {'Multi' === mode && <TableSelectionMulti />}
+              {'Single' === mode && <TableSelectionSingle behavior={behavior} />}
+              {'Multi' === mode && <TableSelectionMulti behavior={behavior} />}
             </>
           }
         >
-          <TableRow>
+          <TableRow rowKey={'0'}>
             <TableCell>
               <span>Notebook Basic</span>
             </TableCell>
@@ -203,7 +216,7 @@ export const WithSelection: Story = {
               <span>956EUR</span>
             </TableCell>
           </TableRow>
-          <TableRow>
+          <TableRow rowKey={'1'}>
             <TableCell>
               <span>Notebook Basic 17HT-1001</span>
             </TableCell>
