@@ -82,6 +82,13 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     if (typeof props.onFocus === 'function') {
       props.onFocus(e);
     }
+    // reset tab-index of all sections, so only the focused one is tabbable
+    Array.from(e.currentTarget.parentElement.children as HTMLCollectionOf<HTMLElement>).forEach((el) => {
+      if (el.dataset.componentName === 'ObjectPageSection') {
+        el.tabIndex = -1;
+      }
+    });
+    e.currentTarget.tabIndex = 0;
     const hasSubSection = Children.toArray(children).some(
       // @ts-expect-error: if type is string, then it's not a subcomponent
       (child) => isValidElement(child) && child.type?.displayName === 'ObjectPageSubSection',
@@ -127,7 +134,9 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
           (target.previousElementSibling as HTMLElement).dataset.componentName !== 'ObjectPageSection';
         // header collapse leads to loose scrolling - this fallback makes sure the second section is marked as selected
         if (isFirstSection) {
-          target.parentElement.parentElement.scrollBy(0, 14);
+          setTimeout(() => {
+            target.parentElement.parentElement.scrollBy(0, 14);
+          });
         }
       });
     }
