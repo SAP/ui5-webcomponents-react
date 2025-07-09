@@ -252,6 +252,9 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     });
     setTabSelectId(newSelectionSectionId);
     scrollEvent.current = targetEvent;
+    if (isMounted) {
+      getSectionElementById(objectPageContentRef.current, false, newSelectionSectionId)?.focus({ preventScroll: true });
+    }
     fireOnSelectedChangedEvent(targetEvent, index, newSelectionSectionId, section);
   };
 
@@ -601,6 +604,17 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   if (headerCollapsed === true && headerArea) {
     objectPageStyles[ObjectPageCssVariables.titleFontSize] = ThemingParameters.sapObjectHeader_Title_SnappedFontSize;
   }
+
+  useEffect(() => {
+    if (isMounted && children) {
+      const firstSection: HTMLElement = objectPageContentRef.current.querySelector(
+        '[data-component-name="ObjectPageSection"]',
+      );
+      if (firstSection) {
+        firstSection.tabIndex = 0;
+      }
+    }
+  }, [isMounted, children]);
 
   return (
     <div
