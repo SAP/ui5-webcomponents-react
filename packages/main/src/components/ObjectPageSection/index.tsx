@@ -163,7 +163,7 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     }
     // reference is not updated in time
     requestAnimationFrame(() => {
-      const hasSubSectionDOM = !!sectionRef.current.querySelector('[data-component-name="ObjectPageSubSection"]');
+      const hasSubSectionDOM = !!sectionRef.current?.querySelector('[data-component-name="ObjectPageSubSection"]');
       if (setTabIndexForFirstSubSectionIfFocused(e, sectionRef.current, hasSubSectionDOM)) {
         // if section has subsections, the first subsection should be next in the tab-chain
       } else if (setTabIndexRecursivelyOnSubSections(e, hasSubSectionDOM)) {
