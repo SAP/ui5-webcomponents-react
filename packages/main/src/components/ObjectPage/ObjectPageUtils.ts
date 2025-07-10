@@ -34,7 +34,11 @@ export function navigateSections({ e, onKeyDown, componentName }: NavigateSectio
 
   const nextSibling = e.currentTarget.nextElementSibling as HTMLElement;
   const prevSibling = e.currentTarget.previousElementSibling as HTMLElement;
-  if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && nextSibling.dataset.componentName === componentName) {
+  if (
+    nextSibling &&
+    (e.key === 'ArrowDown' || e.key === 'ArrowRight') &&
+    nextSibling.dataset.componentName === componentName
+  ) {
     e.preventDefault();
     e.currentTarget.tabIndex = -1;
     nextSibling.tabIndex = 0;
@@ -42,7 +46,11 @@ export function navigateSections({ e, onKeyDown, componentName }: NavigateSectio
     nextSibling.scrollIntoView({ behavior: 'instant', block: 'start' });
   }
 
-  if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && prevSibling.dataset.componentName === componentName) {
+  if (
+    prevSibling &&
+    (e.key === 'ArrowUp' || e.key === 'ArrowLeft') &&
+    prevSibling.dataset.componentName === componentName
+  ) {
     e.preventDefault();
     e.currentTarget.tabIndex = -1;
     prevSibling.tabIndex = 0;

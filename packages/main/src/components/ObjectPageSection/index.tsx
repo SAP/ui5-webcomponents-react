@@ -4,7 +4,7 @@ import type TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode, FocusEventHandler, KeyboardEventHandler } from 'react';
-import { Children, isValidElement, forwardRef } from 'react';
+import { Children, isValidElement, forwardRef, useMemo } from 'react';
 import type { CommonProps } from '../../types/index.js';
 import { navigateSections } from '../ObjectPage/ObjectPageUtils.js';
 import { classNames, styleData } from './ObjectPageSection.module.css.js';
@@ -57,6 +57,18 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   header?: ReactNode;
 }
 
+function recursiveSetTabIndexOnSubSection(el: HTMLElement | null, currentTarget: HTMLElement): void {
+  if (!el || el === currentTarget) {
+    return;
+  }
+
+  if (el.dataset.componentName === 'ObjectPageSubSection') {
+    el.tabIndex = 0;
+    return;
+  }
+  return recursiveSetTabIndexOnSubSection(el.parentElement, currentTarget);
+}
+
 /**
  * Top-level information container of an `ObjectPage`.
  */
@@ -77,6 +89,14 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
   useStylesheet(styleData, ObjectPageSection.displayName);
   const htmlId = `ObjectPageSection-${id}`;
   const titleClasses = clsx(classNames.title, titleTextUppercase && classNames.uppercase);
+  const hasSubSection = useMemo(
+    () =>
+      Children.toArray(children).some(
+        // @ts-expect-error: if type is string, then it's not a subcomponent
+        (child) => isValidElement(child) && child.type?.displayName === 'ObjectPageSubSection',
+      ),
+    [children],
+  );
 
   const handleFocus: FocusEventHandler<HTMLElement> = (e) => {
     if (typeof props.onFocus === 'function') {
@@ -88,16 +108,20 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
         el.tabIndex = -1;
       }
     });
+
     e.currentTarget.tabIndex = 0;
-    const hasSubSection = Children.toArray(children).some(
-      // @ts-expect-error: if type is string, then it's not a subcomponent
-      (child) => isValidElement(child) && child.type?.displayName === 'ObjectPageSubSection',
-    );
-    if (hasSubSection && e.target === e.currentTarget) {
+    // if section has subsections, the first subsection should be next in the tab-chain
+    if (e.target === e.currentTarget && hasSubSection) {
       const opSubSection: HTMLElement = e.currentTarget.querySelector('[data-component-name="ObjectPageSubSection"]');
       if (opSubSection) {
         opSubSection.tabIndex = 0;
       }
+      // if the target is a subsection, the section should be the previous element in the tab-chain
+    } else if (e.target.dataset.componentName === 'ObjectPageSubSection') {
+      e.target.tabIndex = 0;
+      // if the target is an interactive element inside a subsection, the subsection should be the next element in the tab-chain
+    } else if (hasSubSection) {
+      recursiveSetTabIndexOnSubSection(e.target, e.currentTarget);
     }
   };
 
@@ -105,10 +129,7 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     if (typeof props.onBlur === 'function') {
       props.onBlur(e);
     }
-    const hasSubSection = Children.toArray(children).some(
-      // @ts-expect-error: if type is string, then it's not a subcomponent
-      (child) => isValidElement(child) && child.type?.displayName === 'ObjectPageSubSection',
-    );
+
     if (hasSubSection && e.target === e.currentTarget) {
       const allSubSections: NodeListOf<HTMLElement> = e.currentTarget.querySelectorAll(
         '[data-component-name="ObjectPageSubSection"]',
