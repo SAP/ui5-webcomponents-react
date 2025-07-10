@@ -55,9 +55,6 @@ export function navigateSections({ e, onKeyDown, componentName }: NavigateSectio
     e.currentTarget.tabIndex = -1;
     prevSibling.tabIndex = 0;
     prevSibling.focus({ preventScroll: true });
-    prevSibling.scrollIntoView({
-      behavior: 'instant',
-      block: 'start',
-    });
+    prevSibling.scrollIntoView({ behavior: 'instant', block: 'start' });
   }
 }

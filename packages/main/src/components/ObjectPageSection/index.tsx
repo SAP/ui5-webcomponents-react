@@ -1,11 +1,13 @@
 'use client';
 
 import type TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
-import { useStylesheet } from '@ui5/webcomponents-react-base';
+import { useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ReactNode, FocusEventHandler, KeyboardEventHandler } from 'react';
+import type { ReactNode, FocusEventHandler, KeyboardEventHandler, FocusEvent } from 'react';
 import { Children, isValidElement, forwardRef, useMemo } from 'react';
+import { ObjectPageMode } from '../../enums/ObjectPageMode.js';
 import type { CommonProps } from '../../types/index.js';
+import { useObjectPageContext } from '../ObjectPage/context.js';
 import { navigateSections } from '../ObjectPage/ObjectPageUtils.js';
 import { classNames, styleData } from './ObjectPageSection.module.css.js';
 
@@ -70,6 +72,39 @@ function recursiveSetTabIndexOnSubSection(el: HTMLElement | null, currentTarget:
 }
 
 /**
+ * If section has subsections, the first subsection should be next in the tab-chain.
+ *
+ * @returns `true` if handled, `false` if not
+ */
+function setTabIndexForFirstSubSectionIfFocused(
+  e: FocusEvent<HTMLElement>,
+  rootElement: HTMLElement,
+  hasSubSection: boolean,
+): boolean {
+  if (e.target === rootElement && hasSubSection) {
+    const opSubSection: HTMLElement = rootElement.querySelector('[data-component-name="ObjectPageSubSection"]');
+    if (opSubSection) {
+      opSubSection.tabIndex = 0;
+    }
+    return true;
+  }
+  return false;
+}
+
+/**
+ * If the target is an interactive element inside a subsection, the subsection should be the next element in the tab-chain.
+ *
+ * @returns `true` if handled, `false` if not
+ */
+function setTabIndexRecursivelyOnSubSections(e: FocusEvent<HTMLElement>, hasSubSection: boolean): boolean {
+  if (hasSubSection) {
+    recursiveSetTabIndexOnSubSection(e.target, e.currentTarget);
+    return true;
+  }
+  return false;
+}
+
+/**
  * Top-level information container of an `ObjectPage`.
  */
 const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((props, ref) => {
@@ -87,6 +122,7 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     ...rest
   } = props;
   useStylesheet(styleData, ObjectPageSection.displayName);
+  const [componentRef, sectionRef] = useSyncRef(ref);
   const htmlId = `ObjectPageSection-${id}`;
   const titleClasses = clsx(classNames.title, titleTextUppercase && classNames.uppercase);
   const hasSubSection = useMemo(
@@ -97,8 +133,9 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
       ),
     [children],
   );
+  const objectPageMode = useObjectPageContext();
 
-  const handleFocus: FocusEventHandler<HTMLElement> = (e) => {
+  const handleFocusDefault = (e: FocusEvent<HTMLElement>) => {
     if (typeof props.onFocus === 'function') {
       props.onFocus(e);
     }
@@ -110,19 +147,29 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     });
 
     e.currentTarget.tabIndex = 0;
-    // if section has subsections, the first subsection should be next in the tab-chain
-    if (e.target === e.currentTarget && hasSubSection) {
-      const opSubSection: HTMLElement = e.currentTarget.querySelector('[data-component-name="ObjectPageSubSection"]');
-      if (opSubSection) {
-        opSubSection.tabIndex = 0;
-      }
-      // if the target is a subsection, the section should be the previous element in the tab-chain
+    if (setTabIndexForFirstSubSectionIfFocused(e, e.currentTarget, hasSubSection)) {
+      // if section has subsections, the first subsection should be next in the tab-chain
     } else if (e.target.dataset.componentName === 'ObjectPageSubSection') {
+      // if the target is a subsection, the section should be the previous element in the tab-chain
       e.target.tabIndex = 0;
-      // if the target is an interactive element inside a subsection, the subsection should be the next element in the tab-chain
-    } else if (hasSubSection) {
-      recursiveSetTabIndexOnSubSection(e.target, e.currentTarget);
+    } else if (setTabIndexRecursivelyOnSubSections(e, hasSubSection)) {
+      // If the target is an interactive element inside a subsection, the subsection should be the next element in the tab-chain.
     }
+  };
+
+  const handleFocusIconTabBar = (e: FocusEvent<HTMLElement>) => {
+    if (typeof props.onFocus === 'function') {
+      props.onFocus(e);
+    }
+    // reference is not updated in time
+    requestAnimationFrame(() => {
+      const hasSubSectionDOM = !!sectionRef.current.querySelector('[data-component-name="ObjectPageSubSection"]');
+      if (setTabIndexForFirstSubSectionIfFocused(e, sectionRef.current, hasSubSectionDOM)) {
+        // if section has subsections, the first subsection should be next in the tab-chain
+      } else if (setTabIndexRecursivelyOnSubSections(e, hasSubSectionDOM)) {
+        // If the target is an interactive element inside a subsection, the subsection should be the next element in the tab-chain.
+      }
+    });
   };
 
   const handleBlur: FocusEventHandler<HTMLElement> = (e) => {
@@ -175,17 +222,17 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
 
   return (
     <section
-      ref={ref}
+      ref={componentRef}
       role="region"
       className={clsx(classNames.section, wrapTitleText && classNames.wrap, className)}
       style={style}
-      tabIndex={-1}
+      tabIndex={objectPageMode === ObjectPageMode.Default ? -1 : 0}
       {...rest}
       id={htmlId}
       data-component-name="ObjectPageSection"
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      onKeyDown={handleKeyDown}
+      onFocus={objectPageMode === ObjectPageMode.Default ? handleFocusDefault : handleFocusIconTabBar}
+      onBlur={objectPageMode === ObjectPageMode.Default ? handleBlur : undefined}
+      onKeyDown={objectPageMode === ObjectPageMode.Default ? handleKeyDown : undefined}
     >
       {!!header && <div className={classNames.headerContainer}>{header}</div>}
       {!hideTitleText && (
