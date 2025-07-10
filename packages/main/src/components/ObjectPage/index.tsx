@@ -109,7 +109,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const sections = mode === ObjectPageMode.IconTabBar ? currentTabModeSection : children;
   const scrollEndHandler = useOnScrollEnd({ objectPageRef, setTabSelectId });
   // only required for IconTabBar mode
-  const [userSectionChange, setUserSectionChange] = useState(false);
+  const [wasUserSectionChange, setWasUserSectionChange] = useState(false);
 
   useEffect(() => {
     const currentSection =
@@ -605,7 +605,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     scrollTimeout,
     setSelectedSubSectionId,
     setTabSelectId,
-    setUserSectionChange,
+    setWasUserSectionChange,
   });
   const objectPageStyles: CSSProperties = {
     ...style,
@@ -765,15 +765,14 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
           className={classNames.content}
           ref={(node) => {
             if (node) {
-              if (mode === ObjectPageMode.IconTabBar && userSectionChange) {
-                console.log('focus');
+              if (mode === ObjectPageMode.IconTabBar && wasUserSectionChange) {
                 node.querySelector('[data-component-name="ObjectPageSection"]')?.focus({
                   preventScroll: true,
                 });
               }
               objectPageContentRef.current = node;
             }
-            setUserSectionChange(false);
+            setWasUserSectionChange(false);
           }}
           // prevent content scroll when elements outside the content are focused
           onFocus={() => {

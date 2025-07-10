@@ -23,7 +23,7 @@ interface UseHandleTabSelectProps {
   scrollTimeout: RefObject<number>;
   setSelectedSubSectionId: Dispatch<SetStateAction<string>>;
   setTabSelectId: Dispatch<SetStateAction<string | null>>;
-  setUserSectionChange: Dispatch<SetStateAction<boolean>>;
+  setWasUserSectionChange: Dispatch<SetStateAction<boolean>>;
 }
 
 export const useHandleTabSelect = ({
@@ -42,7 +42,7 @@ export const useHandleTabSelect = ({
   scrollTimeout,
   setSelectedSubSectionId,
   setTabSelectId,
-  setUserSectionChange,
+  setWasUserSectionChange,
 }: UseHandleTabSelectProps) => {
   const [onSectionSelectedArgs, setOnSectionSelectedArgs] = useState<
     | false
@@ -109,7 +109,7 @@ export const useHandleTabSelect = ({
     }
 
     if (mode === ObjectPageMode.IconTabBar) {
-      setUserSectionChange(true);
+      setWasUserSectionChange(true);
     }
   };
   // effect required - if event is called in `handleTabItemSelect` it's invoked twice in StrictMode
