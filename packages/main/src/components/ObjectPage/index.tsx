@@ -766,7 +766,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
           ref={(node) => {
             if (node) {
               if (mode === ObjectPageMode.IconTabBar && wasUserSectionChange) {
-                node.querySelector('[data-component-name="ObjectPageSection"]')?.focus({
+                node.querySelector<HTMLElement>('[data-component-name="ObjectPageSection"]')?.focus({
                   preventScroll: true,
                 });
               }
