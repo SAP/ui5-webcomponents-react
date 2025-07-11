@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from '@storybook/test';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { useId, useReducer, useRef, useState } from 'react';
+import { fn } from 'storybook/test';
 import { FlexBoxDirection } from '../../enums/index.js';
 import {
   ComboBox,
