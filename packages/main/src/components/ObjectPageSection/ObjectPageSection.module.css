@@ -1,5 +1,14 @@
+.section {
+  box-sizing: border-box;
+}
+
 .section [data-component-name='ObjectPageSubSection']:not(:first-child) {
   padding-block-start: 0.5rem;
+}
+
+.section:focus {
+  outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+  outline-offset: calc(-1 * var(--sapContent_FocusWidth));
 }
 
 .headerContainer {
@@ -53,4 +62,22 @@
   font-family: var(--sapFontFamily);
   height: 100%;
   box-sizing: border-box;
+}
+
+@container (max-width: 599px) {
+  .section {
+    padding-inline: 1rem;
+  }
+}
+
+@container (min-width: 600px) and (max-width: 1439px) {
+  .section {
+    padding-inline: 2rem;
+  }
+}
+
+@container (min-width: 1440px) {
+  .section {
+    padding-inline: 3rem;
+  }
 }
