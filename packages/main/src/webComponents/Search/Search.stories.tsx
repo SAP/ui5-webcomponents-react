@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { SearchItem } from '../SearchItem/index.js';
 import { SearchScope } from '../SearchScope/index.js';
