@@ -231,8 +231,8 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
       id={htmlId}
       data-component-name="ObjectPageSection"
       onFocus={objectPageMode === ObjectPageMode.Default ? handleFocusDefault : handleFocusIconTabBar}
-      onBlur={objectPageMode === ObjectPageMode.Default ? handleBlur : undefined}
-      onKeyDown={objectPageMode === ObjectPageMode.Default ? handleKeyDown : undefined}
+      onBlur={objectPageMode === ObjectPageMode.Default ? handleBlur : props.onBlur}
+      onKeyDown={objectPageMode === ObjectPageMode.Default ? handleKeyDown : props.onKeyDown}
     >
       {!!header && <div className={classNames.headerContainer}>{header}</div>}
       {!hideTitleText && (

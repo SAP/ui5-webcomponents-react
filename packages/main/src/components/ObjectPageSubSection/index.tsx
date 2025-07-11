@@ -88,6 +88,9 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
         navigateSections({ e, onKeyDown: props.onKeyDown, componentName: 'ObjectPageSubSection' });
       }}
       onBlur={(e) => {
+        if (typeof props.onBlur === 'function') {
+          props.onBlur(e);
+        }
         if (e.target === e.currentTarget) {
           e.target.tabIndex = -1;
         }
