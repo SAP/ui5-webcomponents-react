@@ -5796,12 +5796,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:22.16.0":
-  version: 22.16.0
-  resolution: "@types/node@npm:22.16.0"
+"@types/node@npm:22.16.3":
+  version: 22.16.3
+  resolution: "@types/node@npm:22.16.3"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/6219b521062f6c38d4d85ebd25807bd7f2bc703a5acba24e2c6716938d9d6cefd6fafd7b5156f61580eb58a0d82e8921751b778655675389631d813e5f261c03
+  checksum: 10c0/ea6829d0691713e216c15a767f87e412fa0f45c7ed4d49419098d967467e20a5dcdf66fee024e314deab2779f7e5282e1839ee918e845be27f14179247ec947a
   languageName: node
   linkType: hard
 
@@ -24433,7 +24433,7 @@ __metadata:
     "@storybook/theming": "npm:8.6.14"
     "@testing-library/cypress": "npm:10.0.3"
     "@types/jscodeshift": "npm:17.3.0"
-    "@types/node": "npm:22.16.0"
+    "@types/node": "npm:22.16.3"
     "@types/react": "npm:19.1.8"
     "@types/react-dom": "npm:19.1.6"
     "@ui5/webcomponents": "npm:2.12.0"
