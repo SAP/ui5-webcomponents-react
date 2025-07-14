@@ -570,6 +570,8 @@ export interface AnalyticalTableColumnDefinition {
   // usePopIn
   /**
    * Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller than the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.
+   *
+   * __Note:__ At least one column must remain visible at all times!
    */
   responsivePopIn?: boolean;
   /**
