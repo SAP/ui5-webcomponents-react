@@ -390,7 +390,9 @@ const columns = (columns: TableInstance['columns'], { instance }: { instance: Ta
     return columns.map((column) => {
       const calculatedWidth = calculatedWidths[column.id] || calculatedWidths[column.accessor];
       if (typeof calculatedWidth !== 'number') {
-        console.warn('Could not determine column width!');
+        if (visibleColumns.length === columns.length) {
+          console.warn('Could not determine column width!');
+        }
         return column;
       }
       return { ...column, width: calculatedWidth };
