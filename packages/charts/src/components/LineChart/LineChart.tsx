@@ -265,6 +265,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
           orientation={isRTL === true ? 'right' : 'left'}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
+          // todo: multiple `yAxisId`s cause the Cartesian Grid to break
           yAxisId="left"
           tickFormatter={primaryMeasure?.formatter}
           interval={0}
@@ -320,8 +321,6 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
           );
         })}
         {!noLegend && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}

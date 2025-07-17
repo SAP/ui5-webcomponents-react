@@ -6,6 +6,7 @@ import type { CSSProperties } from 'react';
 import { cloneElement, forwardRef, isValidElement, useCallback, useMemo } from 'react';
 import {
   Cell,
+  Curve,
   Label as RechartsLabel,
   Legend,
   Pie,
@@ -253,8 +254,10 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     (props) => {
       const hideDataLabel =
         typeof measure.hideDataLabel === 'function' ? measure.hideDataLabel(props) : measure.hideDataLabel;
-      if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
-      return Pie.renderLabelLineItem({}, props, undefined);
+      if (hideDataLabel || chartConfig.activeSegment === props.index) {
+        return null;
+      }
+      return <Curve {...props} type="linear" className={'recharts-pie-label-line'} />;
     },
     [chartConfig.activeSegment, measure.hideDataLabel],
   );
@@ -311,7 +314,6 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
           isAnimationActive={!noAnimation}
           labelLine={renderLabelLine}
           label={dataLabel}
-          activeIndex={chartConfig.activeSegment}
           activeShape={chartConfig.activeSegment != null && renderActiveShape}
           rootTabIndex={-1}
         >
@@ -335,14 +337,17 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
             {...tooltipConfig}
           />
         )}
+        {chartConfig.activeSegment && (
+          // tooltip that only renders the active shape
+          <Tooltip trigger="click" defaultIndex={chartConfig.activeSegment} active={false} />
+        )}
         {!noLegend && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
             wrapperStyle={legendWrapperStyle}
+            itemSorter={'dataKey'}
             {...chartConfig.legendConfig}
           />
         )}

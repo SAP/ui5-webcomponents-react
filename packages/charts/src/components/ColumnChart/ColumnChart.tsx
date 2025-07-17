@@ -17,7 +17,6 @@ import {
   YAxis,
 } from 'recharts';
 import type { YAxisProps } from 'recharts';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useCancelAnimationFallback } from '../../hooks/useCancelAnimationFallback.js';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
@@ -115,12 +114,6 @@ const measureDefaults = {
   formatter: defaultFormatter,
   opacity: 1,
 };
-
-const valueAccessor =
-  (attribute) =>
-  ({ payload }) => {
-    return getValueByDataKey(payload, attribute);
-  };
 
 /**
  * A `ColumnChart` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted.
@@ -310,6 +303,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
           measures.map((element, index) => {
             return (
               <Column
+                // todo: multiple `yAxisId`s cause the Cartesian Grid to break
                 yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
                 stackId={element.stackId}
                 fillOpacity={element.opacity}
@@ -321,16 +315,13 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
                 fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
                 stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
                 barSize={element.width}
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 onClick={onDataPointClickInternal}
                 isAnimationActive={!noAnimation}
                 onAnimationStart={handleBarAnimationStart}
                 onAnimationEnd={handleBarAnimationEnd}
               >
                 <LabelList
-                  data={dataset}
-                  valueAccessor={valueAccessor(element.accessor)}
+                  dataKey={element.accessor}
                   content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
                 />
                 {dataset.map((data, i) => {
@@ -346,8 +337,6 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
             );
           })}
         {!noLegend && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}

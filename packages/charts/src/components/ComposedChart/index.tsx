@@ -19,7 +19,6 @@ import {
   YAxis,
 } from 'recharts';
 import type { YAxisProps } from 'recharts';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
@@ -203,12 +202,6 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
   const colorSecondY = chartConfig.secondYAxis
     ? dataKeys.findIndex((key) => key === chartConfig.secondYAxis?.dataKey)
     : 0;
-
-  const valueAccessor =
-    (attribute) =>
-    ({ payload }) => {
-      return getValueByDataKey(payload, attribute);
-    };
 
   const onDataPointClickInternal = (payload, eventOrIndex, event) => {
     if (typeof onDataPointClick === 'function') {
@@ -435,8 +428,6 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
           />
         )}
         {!noLegend && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -510,8 +501,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
               {element.type === 'bar' && (
                 <>
                   <LabelList
-                    data={dataset}
-                    valueAccessor={valueAccessor(element.accessor)}
+                    dataKey={element.accessor}
                     content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
                   />
                   {dataset.map((data, i) => {

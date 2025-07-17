@@ -217,8 +217,6 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
           />
         )}
         {!noLegend && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}

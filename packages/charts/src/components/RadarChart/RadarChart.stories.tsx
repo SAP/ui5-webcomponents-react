@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { complexDataSet, legendConfig, simpleDataSet, tooltipConfig } from '../../resources/DemoProps.js';
+import { legendConfig, radarChartDataset, simpleDataSet, tooltipConfig } from '../../resources/DemoProps.js';
 import { RadarChart } from './RadarChart.js';
 
 const meta = {
@@ -9,27 +9,23 @@ const meta = {
     dimensions: [
       {
         accessor: 'name',
-        formatter: (d) => `${d} 2019`,
       },
     ],
     measures: [
       {
-        accessor: 'users',
-        label: 'Users',
-        formatter: (val) => val.toLocaleString(),
+        accessor: 'alpha',
+        label: 'Alpha Series',
       },
       {
-        accessor: 'sessions',
-        label: 'Active Sessions',
-        formatter: (val) => `${val} sessions`,
-        hideDataLabel: true,
+        accessor: 'beta',
+        label: 'Beta Series',
       },
       {
-        accessor: 'volume',
-        label: 'Vol.',
+        accessor: 'gamma',
+        label: 'Gamma Series',
       },
     ],
-    dataset: complexDataSet,
+    dataset: radarChartDataset,
   },
   argTypes: {
     dataset: {
@@ -51,18 +47,23 @@ export const WithCustomColor: Story = {
   },
 };
 
-export const WithDataLabels: Story = {
+export const WithoutDataLabels: Story = {
   args: {
-    dimensions: [{ accessor: 'name' }],
     measures: [
       {
-        accessor: 'users',
+        accessor: 'alpha',
+        label: 'Alpha Series',
+        hideDataLabel: true,
       },
       {
-        accessor: 'sessions',
+        accessor: 'beta',
+        label: 'Beta Series',
+        hideDataLabel: true,
       },
       {
-        accessor: 'volume',
+        accessor: 'gamma',
+        label: 'Gamma Series',
+        hideDataLabel: true,
       },
     ],
   },
@@ -70,20 +71,6 @@ export const WithDataLabels: Story = {
 
 export const Polygon: Story = {
   args: {
-    dimensions: [{ accessor: 'name', formatter: (element) => element.slice(0, 3) }],
-    measures: [
-      {
-        accessor: 'users',
-        formatter: (element) => `${element / 10}`,
-        label: 'number of users',
-      },
-      {
-        accessor: 'sessions',
-      },
-      {
-        accessor: 'volume',
-      },
-    ],
     chartConfig: { polarGridType: 'polygon' },
   },
 };

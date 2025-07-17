@@ -17,7 +17,6 @@ import {
   YAxis,
 } from 'recharts';
 import type { YAxisProps } from 'recharts';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useCancelAnimationFallback } from '../../hooks/useCancelAnimationFallback.js';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
@@ -47,12 +46,6 @@ const measureDefaults = {
   formatter: defaultFormatter,
   opacity: 1,
 };
-
-const valueAccessor =
-  (attribute) =>
-  ({ payload }) => {
-    return getValueByDataKey(payload, attribute);
-  };
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -284,8 +277,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="top"
             interval={0}
@@ -328,16 +319,13 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
                 fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
                 stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
                 barSize={element.width}
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 onClick={onDataPointClickInternal}
                 isAnimationActive={!noAnimation}
                 onAnimationStart={handleBarAnimationStart}
                 onAnimationEnd={handleBarAnimationEnd}
               >
                 <LabelList
-                  data={dataset}
-                  valueAccessor={valueAccessor(element.accessor)}
+                  dataKey={element.accessor}
                   content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}
                 />
                 {dataset.map((data, i) => {
@@ -353,8 +341,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             );
           })}
         {!noLegend && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -371,7 +357,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             label={referenceLine?.label}
           />
         )}
-        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
         {tooltipConfig?.active !== false && (
           <Tooltip
             cursor={tooltipFillOpacity}
