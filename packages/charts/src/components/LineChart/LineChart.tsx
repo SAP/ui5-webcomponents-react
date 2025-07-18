@@ -180,6 +180,8 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
   const preventOnClickCall = useRef(0);
+
+  //todo: check this
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex) => {
       if (eventOrIndex.dataKey && typeof onDataPointClick === 'function') {

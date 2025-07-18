@@ -2,7 +2,7 @@
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { CSSProperties, FC } from 'react';
-import { forwardRef, useCallback } from 'react';
+import { useRef, forwardRef, useCallback } from 'react';
 import {
   Area,
   Bar,
@@ -27,7 +27,7 @@ import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights.js';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter.js';
-import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { ActivePayload, IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
 import type { IChartDimension } from '../../interfaces/IChartDimension.js';
 import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
@@ -188,6 +188,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
     measureDefaults,
   );
 
+  const activePayloadsRef = useRef<ActivePayload[]>(measures);
   const tooltipValueFormatter = useTooltipFormatter(measures);
 
   const primaryDimension = dimensions[0];
@@ -238,7 +239,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
   };
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
-  const onClickInternal = useOnClickInternal(onClick);
+  const onClickInternal = useOnClickInternal(onClick, dataset, activePayloadsRef);
 
   const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
@@ -438,11 +439,22 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
         )}
         {measures?.map((element, index) => {
           const ChartElement = ChartTypes[element.type] as any as FC<any>;
-
           const chartElementProps: any = {
             isAnimationActive: !noAnimation,
           };
           let labelPosition = 'top';
+          const color = element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`;
+          const dataKey = element.accessor;
+          const name = element.label ?? element.accessor;
+          const opacity = element.opacity ?? 1;
+          const hide = element.hide;
+          activePayloadsRef.current[index].color = color;
+          activePayloadsRef.current[index].stroke = color;
+          activePayloadsRef.current[index].dataKey = dataKey;
+          activePayloadsRef.current[index].hide = hide;
+          activePayloadsRef.current[index].name = name;
+          activePayloadsRef.current[index].fillOpacity = opacity;
+          activePayloadsRef.current[index].strokeOpacity = opacity;
 
           switch (element.type) {
             case 'line':
@@ -452,9 +464,12 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.dot = element.showDot ?? !isBigDataSet;
+
+              activePayloadsRef.current[index].fillOpacity = opacity;
+              activePayloadsRef.current[index].strokeOpacity = opacity;
               break;
             case 'bar':
-              chartElementProps.hide = element.hide;
+              chartElementProps.hide = hide;
               chartElementProps.fillOpacity = element.opacity;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.barSize = element.width;
@@ -475,6 +490,9 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
               chartElementProps.activeDot = {
                 onClick: onDataPointClickInternal,
               };
+
+              activePayloadsRef.current[index].fillOpacity = 0.3;
+              activePayloadsRef.current[index].strokeOpacity = opacity;
               break;
           }
 
@@ -486,22 +504,22 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
           return (
             <ChartElement
               key={element.reactKey}
-              name={element.label ?? element.accessor}
+              name={name}
               label={
                 element.type === 'bar' || isBigDataSet ? undefined : (
                   <ChartDataLabel config={element} chartType={element.type} position={labelPosition} />
                 )
               }
-              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
-              fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
+              stroke={color}
+              fill={color}
               type="monotone"
-              dataKey={element.accessor}
+              dataKey={dataKey}
               {...chartElementProps}
             >
               {element.type === 'bar' && (
                 <>
                   <LabelList
-                    dataKey={element.accessor}
+                    dataKey={dataKey}
                     content={<ChartDataLabel config={element} chartType="column" position={'insideTop'} />}
                   />
                   {dataset.map((data, i) => {
