@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import { Icon } from '../Icon/index.js';

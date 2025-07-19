@@ -1,5 +1,4 @@
-import { DocsContext } from '@storybook/blocks';
-import { useContext, useMemo } from 'react';
+import { useMemo } from 'react';
 // @ts-expect-error: storybook can handle this
 import cemAi from './custom-element-manifests/ai.json';
 // @ts-expect-error: storybook can handle this
@@ -22,26 +21,7 @@ export const MAPPED_THEMES = [
 
 export const excludePropsForAbstract = ['className', 'style'];
 
-export function useGetCem() {
-  const docsContext = useContext(DocsContext);
-  // @ts-expect-error: private but existing
-  const { attachedCSFFiles } = docsContext;
-
-  const storyTagsSet = new Set<string>();
-
-  if (attachedCSFFiles?.size) {
-    Array.from(attachedCSFFiles).forEach((cur) => {
-      // @ts-expect-error: private but existing
-      const tags: string[] | undefined = cur?.meta?.tags;
-      if (tags?.length) {
-        tags.forEach((tag) => {
-          storyTagsSet.add(tag);
-        });
-      }
-    });
-  }
-
-  const storyTags = storyTagsSet?.size ? Array.from(storyTagsSet) : [];
+export function useGetCem(storyTags: string[]) {
   const packageAnnotation = storyTags?.find((tag) => tag.startsWith('package:'));
   switch (packageAnnotation) {
     case 'package:@ui5/webcomponents':
@@ -94,8 +74,8 @@ function findSubComponentsRecursively(moduleName: string, cem: any): string[] {
   return Array.from(subComponentsSet);
 }
 
-export function useGetSubComponentsOfModule(moduleName: string) {
-  const cem = useGetCem(); // Assuming useGetCem() is defined elsewhere
+export function useGetSubComponentsOfModule(moduleName: string, tags: string[]) {
+  const cem = useGetCem(tags);
   return useMemo(() => {
     return findSubComponentsRecursively(moduleName, cem);
   }, [cem, moduleName]);
