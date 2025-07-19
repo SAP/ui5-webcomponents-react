@@ -20,9 +20,11 @@ import { useConcatSplitterElements } from './useConcatSplitterElements.js';
  * can be set.
  * The splitter bars are focusable to enable resizing of the content areas via keyboard. The size of the content areas
  * can be manipulated when the splitter bar is focused and Left/Down/Right/Up are pressed.
+ *
+ * __Note:__ In order to preserve the intended design, at least one `SplitterElement` should have a dynamic `size`.
  */
 const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((props, ref) => {
-  const { vertical, children, title, style, className, options, ...rest } = props;
+  const { vertical, children, title, style, className, options, onResize, ...rest } = props;
   const [componentRef, sLRef] = useSyncRef(ref);
   const [reset, setReset] = useState(undefined);
   const prevSize = useRef({ width: undefined, height: undefined });
@@ -34,6 +36,7 @@ const SplitterLayout = forwardRef<HTMLDivElement, SplitterLayoutPropTypes>((prop
     width: style?.width,
     height: style?.height,
     vertical,
+    onResize,
   });
 
   useStylesheet(styleData, SplitterLayout.displayName);
