@@ -5766,12 +5766,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:22.16.3":
-  version: 22.16.3
-  resolution: "@types/node@npm:22.16.3"
+"@types/node@npm:22.16.5":
+  version: 22.16.5
+  resolution: "@types/node@npm:22.16.5"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/ea6829d0691713e216c15a767f87e412fa0f45c7ed4d49419098d967467e20a5dcdf66fee024e314deab2779f7e5282e1839ee918e845be27f14179247ec947a
+  checksum: 10c0/93a245e96a01f4a6aa38475000070292a9299e17b95bc1fc8180c652fb3a62f9b3b9ec0b78f9fc6a78b9274d3dfce456e80c7bb68b5357c8f7dbf581df4408c1
   languageName: node
   linkType: hard
 
@@ -9901,9 +9901,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:14.5.1":
-  version: 14.5.1
-  resolution: "cypress@npm:14.5.1"
+"cypress@npm:14.5.2":
+  version: 14.5.2
+  resolution: "cypress@npm:14.5.2"
   dependencies:
     "@cypress/request": "npm:^3.0.8"
     "@cypress/xvfb": "npm:^1.2.4"
@@ -9951,7 +9951,7 @@ __metadata:
     yauzl: "npm:^2.10.0"
   bin:
     cypress: bin/cypress
-  checksum: 10c0/23c87cafcd2fe949af1b3297cc4c9c8f8d741f5dfa8119ff54b387227dba8dc0dbcfb2d160c4df5d4f281374524753598f3501f0fdf0b1ea66c5b8047484c0d2
+  checksum: 10c0/55d1ba4773dc7d22769e6566bbdd5a78fd16dde4a4806d474de18a2713ed313db3d0734486f774fe11b3078c66d6b03703dfac05c26746ee3d704317734ebc0e
   languageName: node
   linkType: hard
 
@@ -11855,14 +11855,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:10.1.5":
-  version: 10.1.5
-  resolution: "eslint-config-prettier@npm:10.1.5"
+"eslint-config-prettier@npm:10.1.8":
+  version: 10.1.8
+  resolution: "eslint-config-prettier@npm:10.1.8"
   peerDependencies:
     eslint: ">=7.0.0"
   bin:
     eslint-config-prettier: bin/cli.js
-  checksum: 10c0/5486255428e4577e8064b40f27db299faf7312b8e43d7b4bc913a6426e6c0f5950cd519cad81ae24e9aecb4002c502bc665c02e3b52efde57af2debcf27dd6e0
+  checksum: 10c0/e1bcfadc9eccd526c240056b1e59c5cd26544fe59feb85f38f4f1f116caed96aea0b3b87868e68b3099e55caaac3f2e5b9f58110f85db893e83a332751192682
   languageName: node
   linkType: hard
 
@@ -12020,9 +12020,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:5.5.1":
-  version: 5.5.1
-  resolution: "eslint-plugin-prettier@npm:5.5.1"
+"eslint-plugin-prettier@npm:5.5.3":
+  version: 5.5.3
+  resolution: "eslint-plugin-prettier@npm:5.5.3"
   dependencies:
     prettier-linter-helpers: "npm:^1.0.0"
     synckit: "npm:^0.11.7"
@@ -12036,7 +12036,7 @@ __metadata:
       optional: true
     eslint-config-prettier:
       optional: true
-  checksum: 10c0/6ed93faa7d885af2a987d732f7e716e7aaba55e2da2b091e1b16bacf68425bffe91d784803597bd3f3e6201499fabb89ae28a51ac3986659a46e55e729ed2d55
+  checksum: 10c0/7524e381b400fec67dd2bd1a71779c220a5410f0063cd220d144431f291ec800bee1985709ef0dd38d666d01e0e53bec93824063912784d4021db8473fafe73e
   languageName: node
   linkType: hard
 
@@ -24412,7 +24412,7 @@ __metadata:
     "@storybook/theming": "npm:8.6.14"
     "@testing-library/cypress": "npm:10.0.3"
     "@types/jscodeshift": "npm:17.3.0"
-    "@types/node": "npm:22.16.3"
+    "@types/node": "npm:22.16.5"
     "@types/react": "npm:19.1.8"
     "@types/react-dom": "npm:19.1.6"
     "@ui5/webcomponents": "npm:2.12.0"
@@ -24424,16 +24424,16 @@ __metadata:
     "@vitejs/plugin-react": "npm:4.7.0"
     chromatic: "npm:13.1.2"
     cssnano: "npm:7.1.0"
-    cypress: "npm:14.5.1"
+    cypress: "npm:14.5.2"
     cypress-real-events: "npm:1.14.0"
     dedent: "npm:1.6.0"
     documentation: "npm:14.0.3"
     eslint: "npm:9.31.0"
-    eslint-config-prettier: "npm:10.1.5"
+    eslint-config-prettier: "npm:10.1.8"
     eslint-import-resolver-typescript: "npm:4.4.4"
     eslint-plugin-import: "npm:2.32.0"
     eslint-plugin-no-only-tests: "npm:3.3.0"
-    eslint-plugin-prettier: "npm:5.5.1"
+    eslint-plugin-prettier: "npm:5.5.3"
     eslint-plugin-react: "npm:7.37.5"
     eslint-plugin-react-hooks: "npm:5.2.0"
     eslint-plugin-storybook: "npm:0.12.0"
