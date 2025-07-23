@@ -21,7 +21,22 @@ interface SplitterLayoutOptions {
 
 type SplitterLayoutChild = ReactElement<SplitterElementPropTypes> | undefined | false | null;
 
-export interface SplitterLayoutPropTypes extends CommonProps {
+interface ResizeArea {
+  size: number;
+  area: HTMLElement;
+}
+interface OnResizeParam {
+  /**
+   * The `SplitterElement`s that are being resized.
+   * The first element is the previous sibling of the splitter bar, the second element is the next sibling.
+   *
+   * __Note:__ The array reflects the logical position of the `SplitterElement`s.
+   */
+  areas: [ResizeArea, ResizeArea];
+  splitter: HTMLElement;
+}
+
+export interface SplitterLayoutPropTypes extends Omit<CommonProps<HTMLDivElement>, 'onResize'> {
   /**
    * Controls if a vertical or horizontal `SplitterLayout` is rendered.
    */
@@ -34,4 +49,12 @@ export interface SplitterLayoutPropTypes extends CommonProps {
    * Defines options to customize the behavior of the SplitterLayout.
    */
   options?: SplitterLayoutOptions;
+  /**
+   * Fired when contents are resized.
+   *
+   * __Note:__
+   * - Resize events can fire many times in quick succession, it’s therefore strongly recommended to debounce your handler if you’re updating React state or causing other expensive operations.
+   * - The `areas` array reflects the logical position of the `SplitterElement`s relative to the "Splitter".
+   */
+  onResize?: (e: OnResizeParam) => void;
 }
