@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import { useReducer } from 'react';
 import { Button, CheckBox, Input, Label, Link, Option, Select, Text, TextArea } from '../../index';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import '@ui5/webcomponents/dist/features/ColorPaletteMoreColors.js';
 import { ColorPaletteItem } from '../ColorPaletteItem/index.js';
 import { ColorPalette } from './index.js';

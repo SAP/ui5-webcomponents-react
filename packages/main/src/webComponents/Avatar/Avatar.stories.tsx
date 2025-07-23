@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import AvatarColorScheme from '@ui5/webcomponents/dist/types/AvatarColorScheme.js';
 import AvatarShape from '@ui5/webcomponents/dist/types/AvatarShape.js';
 import AvatarSize from '@ui5/webcomponents/dist/types/AvatarSize.js';

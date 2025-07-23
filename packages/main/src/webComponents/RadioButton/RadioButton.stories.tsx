@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { useId } from 'react';
 import { FlexBox } from '../../components/FlexBox/index.js';

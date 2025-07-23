@@ -1,4 +1,4 @@
-import { Heading, Markdown } from '@storybook/blocks';
+import { Heading, Markdown } from '@storybook/addon-docs/blocks';
 import { Tag as WCRTag } from '@ui5/webcomponents-react';
 import dedent from 'dedent';
 import { Fragment } from 'react';
