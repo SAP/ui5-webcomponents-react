@@ -81,6 +81,8 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     ...rest
   } = props;
 
+  const { tabRef: _0, ...propsWithoutOmitted } = rest;
+
   useStylesheet(styleData, ObjectPageSection.displayName);
 
   const htmlId = `ObjectPageSection-${id}`;
@@ -93,7 +95,7 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
       role="region"
       className={clsx(classNames.section, wrapTitleText && classNames.wrap, className)}
       style={style}
-      {...rest}
+      {...propsWithoutOmitted}
       id={htmlId}
       data-component-name="ObjectPageSection"
     >
