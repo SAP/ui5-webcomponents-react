@@ -333,7 +333,6 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
                 onClick={handleSearchSubmit}
                 accessibleName={i18nBundle.getText(SEARCH)}
                 title={i18nBundle.getText(SEARCH)}
-                data-component-name="SelectDialogSearchIcon"
               />
             </>
           }
