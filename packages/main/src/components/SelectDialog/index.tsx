@@ -290,7 +290,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       onBeforeClose={handleBeforeClose}
       accessibleName={accessibleName ?? headerText}
     >
-      <div className={classNames.headerContent} slot="header">
+      <div className={classNames.headerContent} slot="header" data-sap-ui-fastnavgroup="true">
         {showClearButton && headerTextAlignCenter && (
           <Button
             onClick={handleClear}
@@ -355,10 +355,11 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
         onLoadMore={onLoadMore}
         selectionMode={selectionMode}
         onSelectionChange={handleSelectionChange}
+        data-sap-ui-fastnavgroup="true"
       >
         {children}
       </List>
-      <div slot="footer" className={classNames.footer}>
+      <div slot="footer" className={classNames.footer} data-sap-ui-fastnavgroup="true">
         {selectionMode === ListSelectionMode.Multiple && (
           <Button {...confirmButtonProps} onClick={handleConfirm} design={ButtonDesign.Emphasized}>
             {confirmButtonText ?? i18nBundle.getText(SELECT)}
