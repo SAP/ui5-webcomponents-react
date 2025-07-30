@@ -1,5 +1,5 @@
 import { ProductsTable } from '@sb/components/ProductsTable';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BarDesign from '@ui5/webcomponents/dist/types/BarDesign.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';

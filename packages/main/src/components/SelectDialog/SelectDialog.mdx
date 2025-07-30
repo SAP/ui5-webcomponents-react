@@ -1,11 +1,11 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
-import { Canvas, Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
 import { MessageStrip, Text } from '../..';
 import * as ComponentStories from './SelectDialog.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader of={ComponentStories} />
 
 <br />
 

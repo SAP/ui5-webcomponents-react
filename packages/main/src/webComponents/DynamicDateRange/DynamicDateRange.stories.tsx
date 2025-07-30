@@ -3,7 +3,7 @@ import '@ui5/webcomponents/dist/dynamic-date-range-options/Yesterday.js';
 import '@ui5/webcomponents/dist/dynamic-date-range-options/Tomorrow.js';
 import '@ui5/webcomponents/dist/dynamic-date-range-options/SingleDate.js';
 import '@ui5/webcomponents/dist/dynamic-date-range-options/DateRange.js';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { FlexBox } from '../../components/FlexBox/index.js';
 import { Input } from '../Input/index.js';

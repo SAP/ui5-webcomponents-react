@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import NavigationLayoutMode from '@ui5/webcomponents-fiori/dist/types/NavigationLayoutMode.js';
 import menuIcon from '@ui5/webcomponents-icons/dist/menu.js';
 import '@ui5/webcomponents-icons/dist/home.js';

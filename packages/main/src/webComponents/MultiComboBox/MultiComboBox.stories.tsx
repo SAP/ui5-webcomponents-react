@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { MultiComboBoxItem } from '../MultiComboBoxItem/index.js';
 import { MultiComboBoxItemGroup } from '../MultiComboBoxItemGroup/index.js';

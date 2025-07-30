@@ -27,3 +27,5 @@ packages/main/tmp
 packages/*/src/generated/
 
 .nx
+
+debug-storybook.log
