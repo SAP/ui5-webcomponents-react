@@ -27,13 +27,20 @@ describe('SelectDialog', () => {
     );
     cy.findByText('Select Dialog')
       .should('have.css', 'grid-column-start', 'titleStart')
-      .should('have.css', 'grid-column-end', 'titleCenter');
+      .and('have.css', 'grid-column-end', 'titleCenter')
+      .and('have.attr', 'level', 'H1');
     cy.mount(
       <SelectDialog headerText="Select Dialog" headerTextAlignCenter open>
         {listItems}
       </SelectDialog>,
     );
-    cy.findByText('Select Dialog').should('have.css', 'grid-area', 'titleCenter');
+    cy.findByText('Select Dialog').should('have.css', 'grid-area', 'titleCenter').and('have.attr', 'level', 'H1');
+    cy.mount(
+      <SelectDialog headerText="Select Dialog" open headerTextLevel={'H2'}>
+        {listItems}
+      </SelectDialog>,
+    );
+    cy.findByText('Select Dialog').should('have.attr', 'level', 'H2');
   });
 
   it('selection', () => {
