@@ -4,6 +4,7 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
@@ -306,7 +307,10 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
             {i18nBundle.getText(CLEAR)}
           </Button>
         )}
-        <Title className={clsx(classNames.title, headerTextAlignCenter && classNames.titleCenterAlign)}>
+        <Title
+          className={clsx(classNames.title, headerTextAlignCenter && classNames.titleCenterAlign)}
+          level={TitleLevel.H1}
+        >
           {headerText}
         </Title>
         {showClearButton && (
