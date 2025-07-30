@@ -1,8 +1,9 @@
-import { DocsContext, Heading } from '@storybook/blocks';
+import type { ArgTypes } from '@storybook/blocks';
+import { DocsContext, Heading, Subheading } from '@storybook/blocks';
 import TagDesign from '@ui5/webcomponents/dist/types/TagDesign.js';
 import { Tag, Link, MessageStrip, Popover } from '@ui5/webcomponents-react';
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types';
-import type { ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { Fragment, useContext, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useGetCem } from '../utils';
@@ -47,14 +48,20 @@ function Name(props: CEM.ClassMember) {
   );
 }
 
-export function DomRefTable() {
+export function DomRefTable({
+  of,
+  isSubheading,
+}: {
+  of?: ComponentProps<typeof ArgTypes>['of'];
+  isSubheading?: boolean;
+}) {
   const docsContext = useContext(DocsContext);
   const storyTags: string[] = docsContext.attachedCSFFile?.meta?.tags;
   const cemModuleName = storyTags?.find((tag) => tag.startsWith('cem-module:'));
-  const componentName = docsContext.componentStories().at(0)?.component?.displayName;
+  const componentName = of?.displayName ?? docsContext.componentStories().at(0)?.component?.displayName;
   const popoverRef = useRef(null);
 
-  const knownAttributes = new Set(Object.keys(docsContext.primaryStory?.argTypes ?? {}));
+  const knownAttributes = new Set(Object.keys(of?.__docgenInfo?.props ?? docsContext.primaryStory?.argTypes ?? {}));
   const cem = useGetCem();
 
   const moduleName = cemModuleName ? cemModuleName.split(':')[1] : componentName;
@@ -69,12 +76,13 @@ export function DomRefTable() {
       return !(knownAttributes.has(row.name) && !row.type?.text?.includes('HTMLElement'));
     }) ?? [];
   const cssParts: CEM.CssPart[] = componentMembers?.cssParts ?? [];
+  const HeadingComponent = isSubheading ? Subheading : Heading;
 
   return (
     <>
       {rows.length > 0 ? (
         <>
-          <Heading>DOM Properties & Methods</Heading>
+          <HeadingComponent>DOM Properties & Methods</HeadingComponent>
           <p>
             This component exposes public properties and methods. You can use them directly on the instance of the
             component, e.g. by using React Refs.
@@ -150,7 +158,7 @@ export function DomRefTable() {
 
       {cssParts.length > 0 ? (
         <>
-          <Heading>CSS Shadow Parts</Heading>
+          <HeadingComponent>CSS Shadow Parts</HeadingComponent>
           <p>
             <Link target={'_blank'} href={'https://developer.mozilla.org/en-US/docs/Web/CSS/::part'}>
               CSS Shadow Parts
