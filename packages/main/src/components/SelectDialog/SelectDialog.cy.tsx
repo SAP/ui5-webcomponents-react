@@ -215,9 +215,10 @@ describe('SelectDialog', () => {
     cy.get('@search').should('have.callCount', 2);
     cy.get('@input').should('have.callCount', 4);
     cy.get('@reset').should('have.callCount', 0);
-    cy.get('[accessible-name="Reset"][ui5-icon]').click();
+    cy.get('[part="clear-icon"][ui5-icon]').click();
     cy.get('@search').should('have.callCount', 2);
-    cy.get('@input').should('have.callCount', 4);
+    // clearing the input via clear button fires input event as well
+    cy.get('@input').should('have.callCount', 5);
     cy.get('@reset').should('have.callCount', 1);
     cy.get('[accessible-name="Reset"][ui5-icon]').should('not.exist');
   });
