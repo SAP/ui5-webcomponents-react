@@ -67,6 +67,14 @@ export interface SelectDialogPropTypes
    */
   headerTextAlignCenter?: boolean;
   /**
+   * Defines the aria-level of the `headerText`.
+   * Available options are: `"H1"` to `"H6"`.
+   * This property does not influence the style of the `headerText`.
+   *
+   * @default "H1"
+   */
+  headerTextLevel?: TitleLevel | keyof typeof TitleLevel;
+  /**
    * Overwrites the default text for the confirmation button.
    */
   confirmButtonText?: string;
@@ -150,6 +158,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     growing,
     headerText,
     headerTextAlignCenter,
+    headerTextLevel = TitleLevel.H1,
     listProps = {},
     selectionMode = ListSelectionMode.Single,
     numberOfSelectedItems,
@@ -305,7 +314,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
         )}
         <Title
           className={clsx(classNames.title, headerTextAlignCenter && classNames.titleCenterAlign)}
-          level={TitleLevel.H1}
+          level={headerTextLevel}
         >
           {headerText}
         </Title>
