@@ -1,5 +1,6 @@
 'use client';
 
+import type ListItemBase from '@ui5/webcomponents/dist/ListItemBase.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
@@ -130,9 +131,8 @@ export interface SelectDialogPropTypes
   /**
    * This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode.
    */
-  onConfirm?:
-    | ((event: Ui5CustomEvent<ListDomRef, { selectedItems: ListItemStandardDomRef[] }>) => void)
-    | ((event: Ui5CustomEvent<ButtonDomRef, { selectedItems: ListItemStandardDomRef[] }>) => void);
+  onConfirm?: (event: Ui5CustomEvent<ListDomRef | ButtonDomRef, { selectedItems: ListItemBase[] }>) => void;
+
   /**
    * This event will be fired when the cancel button is clicked or ESC key is pressed.
    */
