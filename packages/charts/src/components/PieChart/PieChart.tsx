@@ -320,7 +320,7 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
             dataset.map((data, index) => (
               <Cell
                 key={index}
-                name={dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}
+                name={`${dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}`}
                 fill={measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
               />
             ))}

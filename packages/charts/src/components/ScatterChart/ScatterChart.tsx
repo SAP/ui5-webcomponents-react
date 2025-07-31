@@ -256,7 +256,7 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
           label={
             yMeasure?.label
               ? { value: yMeasure?.label, angle: -90, position: isRTL ? 'insideRight' : 'insideLeft' }
-              : false
+              : null
           }
           type={'number'}
           name={yMeasure?.label}
@@ -267,7 +267,6 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
           interval={0}
           tick={<YAxisTicks formatter={yMeasure?.formatter} />}
           width={yMeasure?.label ? yAxisWidth + 10 : yAxisWidth}
-          margin={yMeasure?.label ? { left: 200 } : 0}
           orientation={isRTL === true ? 'right' : 'left'}
         />
         <ZAxis
