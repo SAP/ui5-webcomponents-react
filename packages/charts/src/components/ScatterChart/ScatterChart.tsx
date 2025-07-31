@@ -245,18 +245,14 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
             dataKey={xMeasure?.accessor}
             xAxisId={0}
             interval={xMeasure?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-            tick={<XAxisTicks config={xMeasure} />}
+            tick={<XAxisTicks formatter={xMeasure?.formatter} />}
             padding={xAxisPadding}
             height={xAxisHeights[0]}
             reversed={isRTL}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             label={xMeasure?.label ? { value: xMeasure?.label, dy: 15, position: 'insideRight' } : 0}
           />
         )}
         <YAxis
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           label={
             yMeasure?.label
               ? { value: yMeasure?.label, angle: -90, position: isRTL ? 'insideRight' : 'insideLeft' }
@@ -268,9 +264,8 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
           tickLine={tickLineConfig}
           key={typeof yMeasure?.accessor !== 'function' ? yMeasure?.accessor : yMeasure?.label}
           dataKey={yMeasure?.accessor}
-          tickFormatter={yMeasure?.formatter}
           interval={0}
-          tick={<YAxisTicks config={yMeasure} />}
+          tick={<YAxisTicks formatter={yMeasure?.formatter} />}
           width={yMeasure?.label ? yAxisWidth + 10 : yAxisWidth}
           margin={yMeasure?.label ? { left: 200 } : 0}
           orientation={isRTL === true ? 'right' : 'left'}
@@ -285,8 +280,6 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
           return (
             <Scatter
               className={typeof onDataPointClick === 'function' ? 'has-click-handler' : undefined}
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
               onMouseDown={onDataPointClickInternal}
               opacity={dataSet.opacity}
               data={dataSet?.data}

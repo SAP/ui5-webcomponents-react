@@ -261,7 +261,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
                 dataKey={dimension.accessor}
                 xAxisId={index}
                 interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-                tick={<XAxisTicks config={dimension} />}
+                tick={<XAxisTicks formatter={dimension?.formatter} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
                 height={xAxisHeights[index]}
@@ -277,7 +277,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
           tickLine={tickLineConfig}
           yAxisId="left"
           interval={0}
-          tick={<YAxisTicks config={primaryMeasure} />}
+          tick={<YAxisTicks formatter={primaryMeasure?.formatter} />}
           width={yAxisWidth}
           {...chartConfig.yAxisConfig}
         />
@@ -289,7 +289,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
             }}
             tick={
               <YAxisTicks
-                config={secondaryMeasure}
+                formatter={secondaryMeasure?.formatter}
                 secondYAxisConfig={{
                   color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
@@ -298,8 +298,6 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation={isRTL === true ? 'left' : 'right'}
             yAxisId="right"
@@ -322,8 +320,6 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
                 fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
                 stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
                 barSize={element.width}
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 onClick={onDataPointClickInternal}
                 isAnimationActive={!noAnimation}
                 onAnimationStart={handleBarAnimationStart}
@@ -347,8 +343,6 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
             );
           })}
         {!noLegend && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -366,7 +360,6 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
             label={referenceLine?.label}
           />
         )}
-        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
         {tooltipConfig?.active !== false && (
           <Tooltip
             cursor={tooltipFillOpacity}
