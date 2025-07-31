@@ -32,6 +32,7 @@ export const truncateLongLabel = (value: string, length = 13) => {
   return value;
 };
 
+// todo: allow to explicitly set primary and secondary measure
 export const resolvePrimaryAndSecondaryMeasures = (measures: IChartMeasure[], secondaryAxisDataKey: string) => {
   const secondaryMeasure = measures.find((measure) => measure.accessor === secondaryAxisDataKey);
   const primaryMeasure = measures[0] === secondaryMeasure ? (measures[1] ?? measures[0]) : measures[0];

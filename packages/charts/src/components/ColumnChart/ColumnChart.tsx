@@ -180,7 +180,8 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
     chartConfig?.secondYAxis?.dataKey,
   );
 
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
+
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
   const dataKeys = measures.map(({ accessor }) => accessor);
@@ -371,7 +372,7 @@ const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) =>
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}

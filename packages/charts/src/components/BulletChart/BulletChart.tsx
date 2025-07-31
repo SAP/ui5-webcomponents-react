@@ -196,7 +196,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
     chartConfig?.secondYAxis?.dataKey,
   );
 
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
   const dataKeys = sortedMeasures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
@@ -426,7 +426,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}

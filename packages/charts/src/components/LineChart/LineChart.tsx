@@ -169,7 +169,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     chartConfig?.secondYAxis?.dataKey,
   );
 
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
@@ -345,7 +345,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}

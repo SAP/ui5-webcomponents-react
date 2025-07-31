@@ -197,7 +197,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
     chartConfig?.secondYAxis?.dataKey,
   );
 
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
   const dataKeys = measures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
@@ -430,7 +430,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}

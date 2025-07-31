@@ -189,7 +189,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
   const onDataPointClickInternal = useCallback(
     (payload, i, event) => {
@@ -258,6 +258,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
           <XAxis
             interval={0}
             type="number"
+            //todo why two times formatter? once in `tick` once in `tickFormatter`
             tick={<XAxisTicks config={primaryMeasure} />}
             axisLine={chartConfig.xAxisVisible}
             tickLine={tickLineConfig}
@@ -377,7 +378,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}
