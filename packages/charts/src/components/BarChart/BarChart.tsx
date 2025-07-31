@@ -258,7 +258,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
           <XAxis
             interval={0}
             type="number"
-            tick={<XAxisTicks formatter={primaryMeasure.formatter} />}
+            tick={<XAxisTicks formatter={primaryMeasure?.formatter} />}
             axisLine={chartConfig.xAxisVisible}
             tickLine={tickLineConfig}
             height={xAxisHeight}
