@@ -28,6 +28,8 @@ export interface MessageViewButtonProptypes
    * Specifies the type of the button.
    *
    * __Note:__ `"None"` is displayed as `"Information"`.
+   *
+   * @default "Negative"
    */
   type?: ValueState | keyof typeof ValueState;
   /**
@@ -76,7 +78,7 @@ const MessageViewButton = forwardRef<ButtonDomRef, MessageViewButtonProptypes>((
       {...rest}
       data-type={type}
       tooltip={tooltip ?? i18nBundle.getText(title)}
-      accessibleName={accessibleName ?? label}
+      accessibleName={accessibleName ?? `${counter > 0 ? `${counter} ` : ''}${label}`}
     >
       {counter > 0 && counter}
     </Button>
