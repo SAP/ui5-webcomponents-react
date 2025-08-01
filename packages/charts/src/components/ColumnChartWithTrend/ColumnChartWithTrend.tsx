@@ -4,7 +4,8 @@ import { ThemingParameters, useStylesheet } from '@ui5/webcomponents-react-base'
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
 import { forwardRef, useId } from 'react';
-import type { TooltipProps, YAxisProps } from 'recharts';
+import type { DefaultLegendContentProps, YAxisProps } from 'recharts';
+import { DefaultLegendContent } from 'recharts';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
 import { usePrepareTrendMeasures } from '../../hooks/usePrepareTrendMeasures.js';
@@ -51,10 +52,7 @@ interface DimensionConfig extends IChartDimension {
 }
 
 export interface ColumnChartWithTrendProps
-  extends Omit<
-    IChartBaseProps<Omit<ICartesianChartConfig, 'secondYAxis' | 'secondYAxisConfig'>>,
-    'syncId' | 'tooltipConfig'
-  > {
+  extends Omit<IChartBaseProps<Omit<ICartesianChartConfig, 'secondYAxis' | 'secondYAxisConfig'>>, 'syncId'> {
   /**
    * An array of config objects. Each object will define one dimension of the chart.
    *
@@ -101,8 +99,6 @@ const measureDefaults = {
   opacity: 1,
 };
 
-const lineTooltipConfig = { wrapperStyle: { visibility: 'hidden' } } as TooltipProps<any, any>;
-
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 type AvailableChartTypes = 'line' | 'bar' | string;
 /**
@@ -120,12 +116,12 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
     onDataPointClick,
     onLegendClick,
     ChartPlaceholder,
+    tooltipConfig,
     ...rest
   } = props;
   const syncId = useId();
 
   useStylesheet(content, ColumnChartWithTrend.displayName);
-
   const chartConfig: ColumnChartWithTrendProps['chartConfig'] = {
     yAxisVisible: false,
     xAxisVisible: true,
@@ -147,21 +143,8 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
     measureDefaults,
   );
 
-  const { lineMeasures, columnMeasures, columnDataset } = usePrepareTrendMeasures(measures, dataset);
-  const [yAxisWidth] = useLongestYAxisLabel(columnDataset, columnMeasures, chartConfig.legendPosition);
-
-  const columnTooltipConfig = {
-    formatter: (value, name, tooltipProps) => {
-      const line = lineMeasures.find(
-        (currLine) => currLine.type === 'line' && currLine.accessor === tooltipProps.dataKey,
-      );
-      if (line) {
-        return line.formatter(tooltipProps.payload[`__${line.accessor}`]);
-      }
-      const column = columnMeasures.find((currLine) => currLine.accessor === tooltipProps.dataKey);
-      return column.formatter(value, name, tooltipProps);
-    },
-  } as TooltipProps<any, any>;
+  const { lineMeasures, columnMeasures } = usePrepareTrendMeasures(measures);
+  const [yAxisWidth] = useLongestYAxisLabel(dataset, columnMeasures, chartConfig.legendPosition);
 
   const { chartConfig: _0, dimensions: _1, measures: _2, ...propsWithoutOmitted } = rest;
 
@@ -173,7 +156,7 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
             typeof onDataPointClick === 'function' || typeof onClick === 'function' ? 'has-click-handler' : undefined,
             classNames.trendContainer,
           )}
-          tooltipConfig={lineTooltipConfig}
+          tooltipConfig={{ ...tooltipConfig, wrapperStyle: { visibility: 'hidden' } }}
           noAnimation={noAnimation}
           loading={loading}
           loadingDelay={loadingDelay}
@@ -201,7 +184,10 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
           classNames.chartContainer,
         )}
         onLegendClick={onLegendClick}
-        tooltipConfig={columnTooltipConfig}
+        tooltipConfig={{
+          includeHidden: true,
+          ...tooltipConfig,
+        }}
         noAnimation={noAnimation}
         noLegend={noLegend}
         loading={loading}
@@ -210,10 +196,13 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
         onDataPointClick={onDataPointClick}
         syncId={syncId}
         ChartPlaceholder={ChartPlaceholder ?? ColumnChartWithTrendPlaceholder}
-        dataset={columnDataset}
+        dataset={dataset}
         measures={columnMeasures}
         dimensions={dimensions}
-        chartConfig={chartConfig}
+        chartConfig={{
+          ...chartConfig,
+          legendConfig: { ...chartConfig?.legendConfig, content: <DefaultLegendContentWithoutInactive /> },
+        }}
       />
     </div>
   );
@@ -222,3 +211,17 @@ const ColumnChartWithTrend = forwardRef<HTMLDivElement, ColumnChartWithTrendProp
 ColumnChartWithTrend.displayName = 'ColumnChartWithTrend';
 
 export { ColumnChartWithTrend };
+
+/**
+ * Helper component to always keep legend items interactive.
+ * This is required, as otherwise internally `hidden` measures are greyed out in the Legend.
+ */
+const DefaultLegendContentWithoutInactive = (props: DefaultLegendContentProps) => {
+  const updatedPayload = props.payload.map((item) => {
+    return { ...item, inactive: undefined };
+  });
+  // @ts-expect-error: Type doesn't seem to allow class components which `DefaultLegendContent` is.
+  return <DefaultLegendContent {...props} payload={updatedPayload} />;
+};
+
+DefaultLegendContentWithoutInactive.displayName = 'DefaultLegendContentWithoutInactive';
