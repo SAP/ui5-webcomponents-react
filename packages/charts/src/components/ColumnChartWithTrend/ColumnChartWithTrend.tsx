@@ -214,7 +214,7 @@ export { ColumnChartWithTrend };
 
 /**
  * Helper component to always keep legend items interactive.
- * This is required, as otherwise internally `hidden` measures are greyed out in the Legend.
+ * This is required, as otherwise internally hidden measures are greyed out in the Legend.
  */
 const DefaultLegendContentWithoutInactive = (props: DefaultLegendContentProps) => {
   const updatedPayload = props.payload.map((item) => {
