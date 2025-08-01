@@ -1,4 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import type { XAxisProps } from 'recharts';
+import type { IChartDimension } from '../interfaces/IChartDimension.js';
 import type { IChartMeasure } from '../interfaces/IChartMeasure.js';
 import { getTextWidth, truncateLongLabel } from './Utils.js';
 
@@ -8,21 +10,20 @@ interface XAxisTicksProps {
   x?: number;
   y?: number;
   payload?: any;
-  config: IChartMeasure;
+  formatter: IChartMeasure['formatter'] | IChartDimension['formatter'];
   secondYAxisConfig?: {
     color: string;
   };
-  tickFormatter?: (value: any, index: number) => string;
+  tickFormatter?: XAxisProps['tickFormatter'];
   index?: number;
 }
 
 export const XAxisTicks = (props: XAxisTicksProps) => {
-  const { x, y, payload, config, visibleTicksCount, width, secondYAxisConfig, tickFormatter, index } = props;
+  const { x, y, payload, visibleTicksCount, width, secondYAxisConfig, tickFormatter, index, formatter } = props;
 
   const bandWidth = width / visibleTicksCount;
   const shouldRotate = bandWidth <= 100;
-
-  const formattedValue = tickFormatter?.(payload.value, index) ?? config.formatter(payload.value);
+  const formattedValue = tickFormatter?.(payload.value, index) ?? formatter(payload.value, payload.index);
   let textToDisplay = formattedValue;
   if (shouldRotate) {
     textToDisplay = truncateLongLabel(formattedValue, 11);
