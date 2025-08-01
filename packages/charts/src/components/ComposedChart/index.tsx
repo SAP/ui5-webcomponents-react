@@ -453,6 +453,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.dot = element.showDot ?? !isBigDataSet;
+              chartElementProps.hide = element.hide;
               break;
             case 'bar':
               chartElementProps.hide = element.hide;

@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import type { IChartMeasure } from '../interfaces/IChartMeasure.js';
 import { defaultFormatter } from '../internal/defaults.js';
 
@@ -7,11 +6,10 @@ interface ITrendChartMeasure extends IChartMeasure {
   type: 'line' | 'bar';
 }
 
-export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset: Record<string, unknown>[]) =>
+export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[]) =>
   useMemo(() => {
     const lineMeasures = [];
     const columnMeasures = [];
-    const columnDataset = [];
 
     measures?.forEach((measure, index) => {
       if (measure.type === 'bar') {
@@ -39,6 +37,7 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
         columnMeasures.push({
           ...measure,
           opacity: 0,
+          hide: true,
           hideDataLabel: true,
           showDot: false,
           formatter: defaultFormatter,
@@ -46,21 +45,5 @@ export const usePrepareTrendMeasures = (measures: ITrendChartMeasure[], dataset:
       }
     });
 
-    dataset?.forEach((data) => {
-      const reducedLineValues = {};
-
-      lineMeasures.forEach((line) => {
-        if (line.type === 'line') {
-          reducedLineValues[`__${line.accessor}`] = getValueByDataKey(data, line.accessor);
-          reducedLineValues[line.accessor] = 1;
-        }
-      });
-
-      columnDataset.push({
-        ...data,
-        ...reducedLineValues,
-      });
-    });
-
-    return { lineMeasures, columnMeasures, columnDataset };
-  }, [measures, dataset]);
+    return { lineMeasures, columnMeasures };
+  }, [measures]);

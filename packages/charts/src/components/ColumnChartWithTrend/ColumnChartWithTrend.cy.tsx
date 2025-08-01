@@ -28,9 +28,9 @@ describe('ColumnChartWithTrend', () => {
     cy.mount(<ColumnChartWithTrend dataset={complexDataSet} dimensions={dimensions} measures={measures} />);
     cy.get('.recharts-responsive-container').should('be.visible');
     cy.get('.recharts-bar').should('have.length', 1);
-    cy.get('.recharts-line').should('have.length', 2); // the column chart includes an empty line
+    cy.get('.recharts-line').should('have.length', 1);
     cy.get('.recharts-bar-rectangles').should('have.length', 1);
-    cy.get('.recharts-line-curve').should('have.length', 2); // the column chart includes an empty line
+    cy.get('.recharts-line-curve').should('have.length', 1);
   });
 
   it('click handlers', () => {
@@ -58,10 +58,9 @@ describe('ColumnChartWithTrend', () => {
           detail: Cypress.sinon.match({
             payload: {
               name: 'January',
-              users: 1,
+              users: 100,
               sessions: 300,
               volume: 756,
-              __users: 100,
             },
           }),
         }),
