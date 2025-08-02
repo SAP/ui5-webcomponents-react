@@ -8,6 +8,7 @@ import { forwardRef } from 'react';
 import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
 import type { CommonProps } from '../../types/index.js';
 import { FlexBox } from '../FlexBox/index.js';
+import { navigateSections } from '../ObjectPage/ObjectPageUtils.js';
 import { classNames, styleData } from './ObjectPageSubSection.module.css.js';
 
 export interface ObjectPageSubSectionPropTypes extends CommonProps {
@@ -83,6 +84,17 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
       style={style}
       tabIndex={-1}
       {...rest}
+      onKeyDown={(e) => {
+        navigateSections({ e, onKeyDown: props.onKeyDown, componentName: 'ObjectPageSubSection' });
+      }}
+      onBlur={(e) => {
+        if (typeof props.onBlur === 'function') {
+          props.onBlur(e);
+        }
+        if (e.target === e.currentTarget) {
+          e.target.tabIndex = -1;
+        }
+      }}
       className={subSectionClassName}
       id={htmlId}
       data-component-name="ObjectPageSubSection"
