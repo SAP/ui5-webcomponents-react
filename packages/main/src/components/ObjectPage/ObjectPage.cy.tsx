@@ -7,7 +7,7 @@ import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
 import type { CSSProperties } from 'react';
-import { useEffect, useReducer, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useReducer, useRef, useState } from 'react';
 import type { ObjectPagePropTypes } from '../..';
 import {
   CheckBox,
@@ -45,6 +45,7 @@ import {
   ToolbarButton,
 } from '../..';
 import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
+import type { TabDomRef } from '../../webComponents/Tab/index.js';
 
 const arbitraryCharsId = `~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`;
 
@@ -1430,6 +1431,45 @@ describe('ObjectPage', () => {
     cy.get('[data-component-name="ObjectPageAnchorBarExpandBtn"]').should('have.attr', 'accessible-name', '');
     cy.get('section[data-component-name="ObjectPageAnchorBar"]').should('have.attr', 'role', 'not-a-real-role');
     cy.get('footer').should('have.attr', 'role', 'contentinfo');
+  });
+
+  it('tabRef', () => {
+    const TestComp = () => {
+      const tabRef = useRef(null);
+
+      useLayoutEffect(() => {
+        if (tabRef.current) {
+          requestAnimationFrame(() => {
+            tabRef.current.getDomRefInStrip().setAttribute('data-hello', 'true');
+          });
+        }
+      }, []);
+
+      return (
+        <ObjectPage>
+          <ObjectPageSection
+            id="0"
+            titleText="callbackRef"
+            tabRef={(node: TabDomRef | null) => {
+              if (node) {
+                requestAnimationFrame(() => {
+                  node.getDomRefInStrip().setAttribute('data-hello', 'true');
+                });
+              }
+            }}
+          >
+            Content
+          </ObjectPageSection>
+          <ObjectPageSection id="1" titleText="refObject" tabRef={tabRef}>
+            Content
+          </ObjectPageSection>
+        </ObjectPage>
+      );
+    };
+
+    cy.mount(<TestComp />);
+
+    cy.get('[data-hello="true"]').should('be.visible').should('have.length', 2);
   });
 
   cypressPassThroughTestsFactory(ObjectPage);

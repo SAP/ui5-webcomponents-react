@@ -698,6 +698,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
               return (
                 <Tab
                   key={`Anchor-${section.props?.id}`}
+                  ref={section.props.tabRef}
                   data-index={index}
                   data-section-id={section.props.id}
                   text={section.props.titleText}

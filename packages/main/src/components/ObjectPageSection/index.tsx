@@ -3,9 +3,10 @@
 import type TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ReactNode } from 'react';
+import type { ReactNode, Ref } from 'react';
 import { forwardRef } from 'react';
 import type { CommonProps } from '../../types/index.js';
+import type { TabDomRef } from '../../webComponents/Tab/index.js';
 import { classNames, styleData } from './ObjectPageSection.module.css.js';
 
 export interface ObjectPageSectionPropTypes extends CommonProps {
@@ -54,6 +55,12 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
    * __Note__: Although this prop accepts all HTML Elements, it is strongly recommended that you only use non-focusable elements to preserve the intended design.
    */
   header?: ReactNode;
+  // the ref is applied in the ObjectPage
+  /**
+   * This ref will be attached to the underlying `ui5-tab` DOM element,
+   * allowing direct access to its instance methods and properties (e.g. `getDomRefInStrip`).
+   */
+  tabRef?: Ref<TabDomRef>;
 }
 
 /**
@@ -74,6 +81,8 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     ...rest
   } = props;
 
+  const { tabRef: _0, ...propsWithoutOmitted } = rest;
+
   useStylesheet(styleData, ObjectPageSection.displayName);
 
   const htmlId = `ObjectPageSection-${id}`;
@@ -86,7 +95,7 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
       role="region"
       className={clsx(classNames.section, wrapTitleText && classNames.wrap, className)}
       style={style}
-      {...rest}
+      {...propsWithoutOmitted}
       id={htmlId}
       data-component-name="ObjectPageSection"
     >
