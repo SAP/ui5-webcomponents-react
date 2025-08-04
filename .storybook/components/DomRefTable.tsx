@@ -51,17 +51,22 @@ function Name(props: CEM.ClassMember) {
 export function DomRefTable({
   of,
   isSubheading,
+  metaOf,
 }: {
   of: ComponentProps<typeof Controls>['of'];
   isSubheading?: boolean;
+  metaOf?: ComponentProps<typeof Controls>['of'];
 }) {
-  const { story: storyContext } = useOf<'story'>(of);
-  const storyTags: string[] = storyContext.tags;
+  const resolvedOf = useOf<'story' | 'component'>(of);
+  const resolvedMetaOf = useOf<'meta'>(metaOf);
+
+  const { story: storyContext, component: componentContext } = resolvedOf;
+  const storyTags: string[] = storyContext?.tags ?? resolvedMetaOf?.preparedMeta?.tags;
   const cemModuleName = storyTags?.find((tag) => tag.startsWith('cem-module:'));
   const componentName = of?.displayName ?? storyContext.component.displayName;
   const popoverRef = useRef(null);
 
-  const knownAttributes = new Set(Object.keys(of?.__docgenInfo?.props ?? storyContext.argTypes));
+  const knownAttributes = new Set(Object.keys(componentContext?.__docgenInfo?.props ?? storyContext.argTypes));
   const cem = useGetCem(storyTags);
   const moduleName = cemModuleName ? cemModuleName.split(':')[1] : componentName;
 
