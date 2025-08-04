@@ -23,10 +23,10 @@ describe('MessageViewButton', () => {
   });
   it('counter', () => {
     cy.mount(<MessageViewButton data-testid="btn" />);
-    cy.findByTestId('btn').should('be.empty');
+    cy.findByTestId('btn').should('be.empty').and('have.attr', 'accessible-name', 'Error Type');
     cy.mount(<MessageViewButton data-testid="btn" counter={0} />);
-    cy.findByTestId('btn').should('be.empty');
+    cy.findByTestId('btn').should('be.empty').and('have.attr', 'accessible-name', 'Error Type');
     cy.mount(<MessageViewButton data-testid="btn" counter={2} />);
-    cy.findByTestId('btn').should('have.text', '2');
+    cy.findByTestId('btn').should('have.text', '2').and('have.attr', 'accessible-name', '2 Error Type');
   });
 });

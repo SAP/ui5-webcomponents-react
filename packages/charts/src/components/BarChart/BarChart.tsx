@@ -189,7 +189,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
   const onDataPointClickInternal = useCallback(
     (payload, i, event) => {
@@ -258,10 +258,9 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
           <XAxis
             interval={0}
             type="number"
-            tick={<XAxisTicks config={primaryMeasure} />}
+            tick={<XAxisTicks formatter={primaryMeasure?.formatter} />}
             axisLine={chartConfig.xAxisVisible}
             tickLine={tickLineConfig}
-            tickFormatter={primaryMeasure?.formatter}
             height={xAxisHeight}
             reversed={isRTL}
             {...chartConfig.xAxisConfig}
@@ -275,7 +274,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             }}
             tick={
               <XAxisTicks
-                config={secondaryMeasure}
+                formatter={secondaryMeasure?.formatter}
                 secondYAxisConfig={{
                   color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
@@ -284,8 +283,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="top"
             interval={0}
@@ -303,7 +300,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
                 type="category"
                 key={dimension.reactKey}
                 dataKey={dimension.accessor}
-                tick={<YAxisTicks config={dimension} />}
+                tick={<YAxisTicks formatter={dimension?.formatter} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
                 yAxisId={index}
@@ -328,8 +325,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
                 fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
                 stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
                 barSize={element.width}
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
                 onClick={onDataPointClickInternal}
                 isAnimationActive={!noAnimation}
                 onAnimationStart={handleBarAnimationStart}
@@ -353,8 +348,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             );
           })}
         {!noLegend && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
@@ -377,7 +370,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}

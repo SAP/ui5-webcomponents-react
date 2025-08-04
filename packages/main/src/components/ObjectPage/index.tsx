@@ -430,7 +430,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
       setScrolledHeaderExpanded(false);
     } else {
       setHeaderCollapsedInternal(false);
-      if (objectPageRef.current.scrollTop >= headerContentHeight) {
+      if (objectPageRef.current.scrollTop >= headerContentHeight && objectPageRef.current.scrollTop > 0) {
         setScrolledHeaderExpanded(true);
       }
     }

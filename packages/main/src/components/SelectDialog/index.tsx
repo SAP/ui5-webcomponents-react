@@ -4,13 +4,13 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
-import iconDecline from '@ui5/webcomponents-icons/dist/decline.js';
+import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
-import { CANCEL, CLEAR, RESET, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
+import { CANCEL, CLEAR, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
 import { Button, Dialog, FlexBox, FlexBoxAlignItems, Icon, Input, List, Text, Title } from '../../index.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
 import type {
@@ -113,6 +113,7 @@ export interface SelectDialogPropTypes
   onSearch?:
     | ((event: Ui5CustomEvent<InputDomRef, { value: string }>) => void)
     | ((event: Ui5CustomEvent<IconDomRef, { value: string }>) => void);
+  // todo: remove `nativeDetail` in next major version
   /**
    * This event will be fired when the reset button has been clicked in the search field or when the dialog is closed.
    */
@@ -196,6 +197,10 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
   };
 
   const handleSearchInput = (e) => {
+    if (!e.target.value && e.detail.inputType === '') {
+      handleResetSearch(e);
+    }
+
     if (typeof onSearchInput === 'function') {
       onSearchInput(enrichEventWithDetails(e, { value: e.target.value }));
     }
@@ -290,7 +295,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
       onBeforeClose={handleBeforeClose}
       accessibleName={accessibleName ?? headerText}
     >
-      <div className={classNames.headerContent} slot="header">
+      <div className={classNames.headerContent} slot="header" data-sap-ui-fastnavgroup="true">
         {showClearButton && headerTextAlignCenter && (
           <Button
             onClick={handleClear}
@@ -302,7 +307,10 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
             {i18nBundle.getText(CLEAR)}
           </Button>
         )}
-        <Title className={clsx(classNames.title, headerTextAlignCenter && classNames.titleCenterAlign)}>
+        <Title
+          className={clsx(classNames.title, headerTextAlignCenter && classNames.titleCenterAlign)}
+          level={TitleLevel.H1}
+        >
           {headerText}
         </Title>
         {showClearButton && (
@@ -318,20 +326,12 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
           onInput={handleSearchInput}
           onKeyUp={handleSearchSubmit}
           type={InputType.Search}
+          showClearIcon
           icon={
             <>
-              {searchValue && (
-                <Icon
-                  accessibleName={i18nBundle.getText(RESET)}
-                  title={i18nBundle.getText(RESET)}
-                  name={iconDecline}
-                  mode={IconMode.Interactive}
-                  onClick={handleResetSearch}
-                  className={classNames.inputIcon}
-                />
-              )}
+              {/*Decorative type while still being interactive is by design (see SapUI5 implementation)*/}
               <Icon
-                mode={IconMode.Interactive}
+                mode={IconMode.Decorative}
                 name={iconSearch}
                 className={classNames.inputIcon}
                 onClick={handleSearchSubmit}
@@ -355,10 +355,11 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
         onLoadMore={onLoadMore}
         selectionMode={selectionMode}
         onSelectionChange={handleSelectionChange}
+        data-sap-ui-fastnavgroup="true"
       >
         {children}
       </List>
-      <div slot="footer" className={classNames.footer}>
+      <div slot="footer" className={classNames.footer} data-sap-ui-fastnavgroup="true">
         {selectionMode === ListSelectionMode.Multiple && (
           <Button {...confirmButtonProps} onClick={handleConfirm} design={ButtonDesign.Emphasized}>
             {confirmButtonText ?? i18nBundle.getText(SELECT)}

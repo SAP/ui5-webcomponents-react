@@ -1,3 +1,4 @@
+import { DomRefTable } from '@sb/components/DomRefTable.js';
 import { ArgTypes } from '@storybook/addon-docs/blocks';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 import { MessageStrip } from '@ui5/webcomponents-react';
@@ -12,13 +13,22 @@ interface ArgTypesWithNotePropTypes {
    * Defaults to: "This component supports all HTML attributes."
    */
   noteText?: ReactNode | ReactNode[];
+  /**
+   * If `true` all headings are rendered as `Heading`s instead of `Subheading`s.
+   */
+  isHeading?: boolean;
 }
 
 export function ArgTypesWithNote(props: ComponentProps<typeof ArgTypes> & ArgTypesWithNotePropTypes) {
-  const { hideHTMLPropsNote, noteText, ...rest } = props;
+  const { hideHTMLPropsNote, noteText, isHeading, ...rest } = props;
 
   if (hideHTMLPropsNote) {
-    return <ArgTypes {...rest} />;
+    return (
+      <>
+        <ArgTypes {...rest} />
+        <DomRefTable of={rest.of} isSubheading={!isHeading} />
+      </>
+    );
   }
   return (
     <div className={classes.tableContainer}>
@@ -26,6 +36,7 @@ export function ArgTypesWithNote(props: ComponentProps<typeof ArgTypes> & ArgTyp
         {noteText ?? 'This component supports all HTML attributes.'}
       </MessageStrip>
       <ArgTypes {...rest} />
+      <DomRefTable of={rest.of} isSubheading={!isHeading} />
     </div>
   );
 }

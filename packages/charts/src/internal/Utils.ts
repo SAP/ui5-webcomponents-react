@@ -25,13 +25,14 @@ export const getTextWidth = (text) => {
   return metrics.width;
 };
 
-export const truncateLongLabel = (value: string, length = 13) => {
-  if (value?.length > length) {
+export const truncateLongLabel = (value: string | number, length = 13) => {
+  if (typeof value === 'string' && value?.length > length) {
     return `${value.slice(0, length - 2)}...`;
   }
   return value;
 };
 
+// todo: allow to explicitly set primary and secondary measure
 export const resolvePrimaryAndSecondaryMeasures = (measures: IChartMeasure[], secondaryAxisDataKey: string) => {
   const secondaryMeasure = measures.find((measure) => measure.accessor === secondaryAxisDataKey);
   const primaryMeasure = measures[0] === secondaryMeasure ? (measures[1] ?? measures[0]) : measures[0];

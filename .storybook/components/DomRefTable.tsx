@@ -1,5 +1,5 @@
 import type { Controls } from '@storybook/addon-docs/blocks';
-import { Heading, useOf } from '@storybook/addon-docs/blocks';
+import { Heading, Subheading, useOf } from '@storybook/addon-docs/blocks';
 import TagDesign from '@ui5/webcomponents/dist/types/TagDesign.js';
 import { Tag, Link, MessageStrip, Popover } from '@ui5/webcomponents-react';
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types';
@@ -48,14 +48,20 @@ function Name(props: CEM.ClassMember) {
   );
 }
 
-export function DomRefTable({ of }: { of: ComponentProps<typeof Controls>['of'] }) {
+export function DomRefTable({
+  of,
+  isSubheading,
+}: {
+  of: ComponentProps<typeof Controls>['of'];
+  isSubheading?: boolean;
+}) {
   const { story: storyContext } = useOf<'story'>(of);
   const storyTags: string[] = storyContext.tags;
   const cemModuleName = storyTags?.find((tag) => tag.startsWith('cem-module:'));
-  const componentName = storyContext.component.displayName;
+  const componentName = of?.displayName ?? storyContext.component.displayName;
   const popoverRef = useRef(null);
 
-  const knownAttributes = new Set(Object.keys(storyContext.argTypes));
+  const knownAttributes = new Set(Object.keys(of?.__docgenInfo?.props ?? storyContext.argTypes));
   const cem = useGetCem(storyTags);
   const moduleName = cemModuleName ? cemModuleName.split(':')[1] : componentName;
 
@@ -69,12 +75,13 @@ export function DomRefTable({ of }: { of: ComponentProps<typeof Controls>['of'] 
       return !(knownAttributes.has(row.name) && !row.type?.text?.includes('HTMLElement'));
     }) ?? [];
   const cssParts: CEM.CssPart[] = componentMembers?.cssParts ?? [];
+  const HeadingComponent = isSubheading ? Subheading : Heading;
 
   return (
     <>
       {rows.length > 0 ? (
         <>
-          <Heading>DOM Properties & Methods</Heading>
+          <HeadingComponent>DOM Properties & Methods</HeadingComponent>
           <p>
             This component exposes public properties and methods. You can use them directly on the instance of the
             component, e.g. by using React Refs.
@@ -150,7 +157,7 @@ export function DomRefTable({ of }: { of: ComponentProps<typeof Controls>['of'] 
 
       {cssParts.length > 0 ? (
         <>
-          <Heading>CSS Shadow Parts</Heading>
+          <HeadingComponent>CSS Shadow Parts</HeadingComponent>
           <p>
             <Link target={'_blank'} href={'https://developer.mozilla.org/en-US/docs/Web/CSS/::part'}>
               CSS Shadow Parts
