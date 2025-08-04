@@ -95,6 +95,24 @@
               "privacy": "public",
               "_ui5since": "2.6.0",
               "_ui5noAttribute": true
+            },
+            {
+              "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "AIButtonAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "AIButtonAccessibilityAttributes",
+                    "package": "@ui5/webcomponents-ai",
+                    "module": "dist/Button.js"
+                  }
+                ]
+              },
+              "default": "{}",
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\n\nThis property allows for fine-tuned control of ARIA attributes for screen reader support.\nIt accepts an object with the following optional fields:\n\n- **root**: Accessibility attributes that will be applied to the root element.\n - **hasPopup**: Indicates the availability and type of interactive popup element (such as a menu or dialog).\n   Accepts string values: `\"dialog\"`, `\"grid\"`, `\"listbox\"`, `\"menu\"`, or `\"tree\"`.\n - **roleDescription**: Defines a human-readable description for the button's role.\n   Accepts any string value.\n\n- **arrowButton**: Accessibility attributes that will be applied to the arrow (split) button element.\n - **hasPopup**: Indicates the type of popup triggered by the arrow button.\n   Accepts string values: `\"dialog\"`, `\"grid\"`, `\"listbox\"`, `\"menu\"`, or `\"tree\"`.\n - **expanded**: Indicates whether the popup controlled by the arrow button is currently expanded.\n   Accepts boolean values: `true` or `false`.",
+              "privacy": "public",
+              "_ui5since": "2.6.0"
             }
           ],
           "events": [
@@ -156,6 +174,15 @@
               "fieldName": "arrowButtonPressed",
               "type": {
                 "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\n\nThis property allows for fine-tuned control of ARIA attributes for screen reader support.\nIt accepts an object with the following optional fields:\n\n- **root**: Accessibility attributes that will be applied to the root element.\n - **hasPopup**: Indicates the availability and type of interactive popup element (such as a menu or dialog).\n   Accepts string values: `\"dialog\"`, `\"grid\"`, `\"listbox\"`, `\"menu\"`, or `\"tree\"`.\n - **roleDescription**: Defines a human-readable description for the button's role.\n   Accepts any string value.\n\n- **arrowButton**: Accessibility attributes that will be applied to the arrow (split) button element.\n - **hasPopup**: Indicates the type of popup triggered by the arrow button.\n   Accepts string values: `\"dialog\"`, `\"grid\"`, `\"listbox\"`, `\"menu\"`, or `\"tree\"`.\n - **expanded**: Indicates whether the popup controlled by the arrow button is currently expanded.\n   Accepts boolean values: `true` or `false`.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "AIButtonAccessibilityAttributes"
               }
             }
           ],

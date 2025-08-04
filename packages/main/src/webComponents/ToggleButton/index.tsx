@@ -99,6 +99,24 @@ interface ToggleButtonAttributes {
   icon?: string | undefined;
 
   /**
+   * Defines whether the button shows a loading indicator.
+   *
+   * **Note:** If set to `true`, a busy indicator component will be displayed on the related button.
+   *
+   * **Note:** Available since [v2.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.13.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  loading?: boolean;
+
+  /**
+   * Specifies the delay in milliseconds before the loading indicator appears within the associated button.
+   *
+   * **Note:** Available since [v2.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.13.0) of **@ui5/webcomponents**.
+   * @default 1000
+   */
+  loadingDelay?: number;
+
+  /**
    * Determines whether the component is displayed as pressed.
    * @default false
    */
@@ -200,10 +218,11 @@ const ToggleButton = withWebComponent<ToggleButtonPropTypes, ToggleButtonDomRef>
     'design',
     'endIcon',
     'icon',
+    'loadingDelay',
     'tooltip',
     'type',
   ],
-  ['disabled', 'pressed', 'submits'],
+  ['disabled', 'loading', 'pressed', 'submits'],
   ['badge'],
   ['click'],
 );

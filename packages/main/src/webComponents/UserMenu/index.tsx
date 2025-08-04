@@ -22,7 +22,7 @@ interface UserMenuAttributes {
    * You can only set the `opener` attribute to a DOM Reference when using JavaScript.
    * @default undefined
    */
-  opener?: HTMLElement | string | undefined;
+  opener?: HTMLElement | string | null | undefined;
 
   /**
    * Defines if the User Menu shows the Edit Accounts option.

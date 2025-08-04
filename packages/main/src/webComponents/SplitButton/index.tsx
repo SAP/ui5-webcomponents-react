@@ -1,12 +1,36 @@
 'use client';
 
 import '@ui5/webcomponents/dist/SplitButton.js';
+import type { SplitButtonAccessibilityAttributes } from '@ui5/webcomponents/dist/SplitButton.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 
 interface SplitButtonAttributes {
+  /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   * The `accessibilityAttributes` property accepts an object with the following optional fields:
+   *
+   * - **root**: Attributes that will be applied to the main (text) button.
+   *   - **hasPopup**: Indicates the presence and type of popup triggered by the button.
+   *     Accepts string values: `"dialog"`, `"grid"`, `"listbox"`, `"menu"`, or `"tree"`.
+   *   - **roleDescription**: Provides a human-readable description for the role of the button.
+   *     Accepts any string value.
+   *   - **title**: Specifies a tooltip or description for screen readers.
+   *     Accepts any string value.
+   *
+   * - **arrowButton**: Attributes applied specifically to the arrow (split) button.
+   *   - **hasPopup**: Indicates the presence and type of popup triggered by the arrow button.
+   *     Accepts string values: `"dialog"`, `"grid"`, `"listbox"`, `"menu"`, or `"tree"`.
+   *   - **expanded**: Indicates whether the popup triggered by the arrow button is currently expanded.
+   *     Accepts boolean values: `true` or `false`.
+   *
+   * **Note:** Available since [v2.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.13.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: SplitButtonAccessibilityAttributes;
+
   /**
    * Defines the accessible ARIA name of the component.
    * @default undefined
@@ -117,7 +141,7 @@ interface SplitButtonPropTypes
  */
 const SplitButton = withWebComponent<SplitButtonPropTypes, SplitButtonDomRef>(
   'ui5-split-button',
-  ['accessibleName', 'design', 'icon'],
+  ['accessibilityAttributes', 'accessibleName', 'design', 'icon'],
   ['activeArrowButton', 'disabled'],
   [],
   ['arrow-click', 'click'],

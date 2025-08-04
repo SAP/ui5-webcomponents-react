@@ -109,7 +109,7 @@ interface PopoverAttributes {
    * **Note:** Available since [v1.2.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.2.0) of **@ui5/webcomponents**.
    * @default undefined
    */
-  opener?: HTMLElement | string | undefined;
+  opener?: HTMLElement | string | null | undefined;
 
   /**
    * Determines on which side the component is placed at.

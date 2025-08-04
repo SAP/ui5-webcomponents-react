@@ -4,6 +4,21 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "dist/bundle-assets/IconPensilLitTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "IconPensilLitTemplate",
+            "module": "dist/bundle-assets/IconPensilLitTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/colorpicker-utils/ColorValue.js",
       "declarations": [],
       "exports": [
@@ -5556,6 +5571,28 @@
               "description": "Describes the accessibility role of the button.\n\n**Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.",
               "privacy": "public",
               "_ui5since": "1.23"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the button shows a loading indicator.\n\n**Note:** If set to `true`, a busy indicator component will be displayed on the related button.",
+              "privacy": "public",
+              "_ui5since": "2.13.0"
+            },
+            {
+              "kind": "field",
+              "name": "loadingDelay",
+              "type": {
+                "text": "number"
+              },
+              "default": "1000",
+              "description": "Specifies the delay in milliseconds before the loading indicator appears within the associated button.",
+              "privacy": "public",
+              "_ui5since": "2.13.0"
             }
           ],
           "events": [
@@ -5729,6 +5766,24 @@
               "fieldName": "accessibleRole",
               "type": {
                 "text": "\"Button\" | \"Link\""
+              }
+            },
+            {
+              "description": "Defines whether the button shows a loading indicator.\n\n**Note:** If set to `true`, a busy indicator component will be displayed on the related button.",
+              "name": "loading",
+              "default": "false",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Specifies the delay in milliseconds before the loading indicator appears within the associated button.",
+              "name": "loading-delay",
+              "default": "1000",
+              "fieldName": "loadingDelay",
+              "type": {
+                "text": "number"
               }
             }
           ],
@@ -6075,7 +6130,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
               "inheritedFrom": {
@@ -6090,7 +6145,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
               "inheritedFrom": {
@@ -6218,7 +6273,7 @@
               }
             },
             {
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "min-date",
               "default": "\"\"",
               "fieldName": "minDate",
@@ -6231,7 +6286,7 @@
               }
             },
             {
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "max-date",
               "default": "\"\"",
               "fieldName": "maxDate",
@@ -6739,7 +6794,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
               "inheritedFrom": {
@@ -6754,7 +6809,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
               "inheritedFrom": {
@@ -6833,7 +6888,7 @@
               }
             },
             {
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "min-date",
               "default": "\"\"",
               "fieldName": "minDate",
@@ -6846,7 +6901,7 @@
               }
             },
             {
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "max-date",
               "default": "\"\"",
               "fieldName": "maxDate",
@@ -8195,7 +8250,7 @@
               "kind": "field",
               "name": "opener",
               "type": {
-                "text": "HTMLElement | string | undefined"
+                "text": "HTMLElement | string | null | undefined"
               },
               "description": "Defines the ID or DOM Reference of the element that the popover is shown at.\nWhen using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.\nYou can only set the `opener` attribute to a DOM Reference when using JavaScript.",
               "privacy": "public",
@@ -8297,7 +8352,7 @@
               "default": "undefined",
               "fieldName": "opener",
               "type": {
-                "text": "string | HTMLElement | undefined"
+                "text": "string | HTMLElement | null | undefined"
               }
             }
           ],
@@ -8457,7 +8512,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-combobox` component represents a drop-down menu with a list of the available options and a text input field to narrow down the options.\n\nIt is commonly used to enable users to select an option from a predefined list.\n\n### Structure\nThe `ui5-combobox` consists of the following elements:\n\n-  Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter their own value.\n-  Drop-down arrow - expands\\collapses the option list.\n-  Option list - the list of available options.\n\n### Keyboard Handling\n\nThe `ui5-combobox` provides advanced keyboard handling.\n\n- [F4], [Alt]+[Up], or [Alt]+[Down] - Toggles the picker.\n- [Escape] - Closes the picker, if open. If closed, cancels changes and reverts the typed in value.\n- [Enter] or [Return] - If picker is open, takes over the currently selected item and closes it.\n- [Down] - Selects the next matching item in the picker.\n- [Up] - Selects the previous matching item in the picker.\n- [Page Down] - Moves selection down by page size (10 items by default).\n- [Page Up] - Moves selection up by page size (10 items by default).\n- [Home] - If focus is in the ComboBox, moves cursor at the beginning of text. If focus is in the picker, selects the first item.\n- [End] - If focus is in the ComboBox, moves cursor at the end of text. If focus is in the picker, selects the last item.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/ComboBox.js\";`",
+          "description": "### Overview\n\nThe `ui5-combobox` component represents a drop-down menu with a list of the available options and a text input field to narrow down the options.\n\nIt is commonly used to enable users to select an option from a predefined list.\n\n### Structure\nThe `ui5-combobox` consists of the following elements:\n\n-  Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter their own value.\n-  Drop-down arrow - expands\\collapses the option list.\n-  Option list - the list of available options.\n\n### Keyboard Handling\n\nThe `ui5-combobox` provides advanced keyboard handling.\n\n- [F4], [Alt]+[Up], or [Alt]+[Down] - Toggles the picker.\n- [Escape] - Closes the picker, if open. If closed, cancels changes and reverts the typed in value.\n- [Enter] or [Return] - If picker is open, takes over the currently selected item and closes it.\n- [Down] - Selects the next matching item in the picker.\n- [Up] - Selects the previous matching item in the picker.\n- [Page Down] - Moves selection down by page size (10 items by default).\n- [Page Up] - Moves selection up by page size (10 items by default).\n- [Home] - If focus is in the ComboBox, moves cursor at the beginning of text. If focus is in the picker, selects the first item.\n- [End] - If focus is in the ComboBox, moves cursor at the end of text. If focus is in the picker, selects the last item.\n- [Ctrl]+[Alt]+[F8] or [Command]+[Option]+[F8] - Focuses the first link in the value state message, if available. Pressing [Tab] moves the focus to the next link in the value state message, or closes the value state message if there are no more links.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/ComboBox.js\";`",
           "name": "ComboBox",
           "slots": [
             {
@@ -9071,6 +9126,28 @@
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "wrappingType",
+              "type": {
+                "text": "WrappingType",
+                "references": [
+                  {
+                    "name": "WrappingType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/WrappingType.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "privacy": "public",
+              "_ui5since": "2.15.0",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
             }
           ],
           "superclass": {
@@ -9121,6 +9198,19 @@
               "fieldName": "headerAccessibleName",
               "type": {
                 "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "name": "wrapping-type",
+              "default": "\"None\"",
+              "fieldName": "wrappingType",
+              "type": {
+                "text": "\"None\" | \"Normal\""
               },
               "inheritedFrom": {
                 "name": "ListItemGroup",
@@ -9294,7 +9384,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6"
             },
@@ -9305,7 +9395,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6"
             },
@@ -9357,7 +9447,7 @@
               }
             },
             {
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "min-date",
               "default": "\"\"",
               "fieldName": "minDate",
@@ -9366,7 +9456,7 @@
               }
             },
             {
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "max-date",
               "default": "\"\"",
               "fieldName": "maxDate",
@@ -9688,7 +9778,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
               "inheritedFrom": {
@@ -9703,7 +9793,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
               "inheritedFrom": {
@@ -10017,7 +10107,7 @@
               }
             },
             {
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "min-date",
               "default": "\"\"",
               "fieldName": "minDate",
@@ -10030,7 +10120,7 @@
               }
             },
             {
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "max-date",
               "default": "\"\"",
               "fieldName": "maxDate",
@@ -10464,7 +10554,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
               "inheritedFrom": {
@@ -10479,7 +10569,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
               "inheritedFrom": {
@@ -10743,7 +10833,7 @@
               }
             },
             {
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "min-date",
               "default": "\"\"",
               "fieldName": "minDate",
@@ -10756,7 +10846,7 @@
               }
             },
             {
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "max-date",
               "default": "\"\"",
               "fieldName": "maxDate",
@@ -11328,7 +11418,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
               "inheritedFrom": {
@@ -11343,7 +11433,7 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.6",
               "inheritedFrom": {
@@ -11595,7 +11685,7 @@
               }
             },
             {
-              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "min-date",
               "default": "\"\"",
               "fieldName": "minDate",
@@ -11608,7 +11698,7 @@
               }
             },
             {
-              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "name": "max-date",
               "default": "\"\"",
               "fieldName": "maxDate",
@@ -12663,7 +12753,7 @@
           "slots": [
             {
               "name": "default",
-              "description": "By default the component contains a single input field. With this slot you can pass any content that you wish to add. See the samples for more information.\n\n**Note:** If no content is provided in this slot, the component will only consist of an input field and will not be interactable using the keyboard.\nAlso it is not recommended to use any non-interactable components, as it may lead to poor accessibility experience.",
+              "description": "This slot allows you to add custom content to the component, such as a button or any other interactive element to trigger the file selection dialog.\n\n**Note:** For best accessibility experience, set a `tabindex` of \"-1\" on your interactive element, or it will be set automatically.\nThis slot is intended for use cases where you want a button-only file uploader.\nIt is recommended to set `hideInput` property to \"true\" when using this slot.\nNot setting `hideInput` may negatively impact the screen reader users.",
               "_ui5propertyName": "content",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
@@ -12698,7 +12788,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "If set to \"true\", the input field of component will not be rendered. Only the default slot that is passed will be rendered.",
+              "description": "If set to \"true\", the input field of component will not be rendered. Only the default slot that is passed will be rendered.\n\n**Note:** Use this property in combination with the default slot to achieve a button-only file uploader design.",
               "privacy": "public"
             },
             {
@@ -12780,6 +12870,39 @@
               "default": "\"None\"",
               "description": "Defines the value state of the component.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the component is required.",
+              "privacy": "public",
+              "_ui5since": "2.13.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.13.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that label the input.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.13.0"
             },
             {
               "kind": "field",
@@ -12870,7 +12993,7 @@
               }
             },
             {
-              "description": "If set to \"true\", the input field of component will not be rendered. Only the default slot that is passed will be rendered.",
+              "description": "If set to \"true\", the input field of component will not be rendered. Only the default slot that is passed will be rendered.\n\n**Note:** Use this property in combination with the default slot to achieve a button-only file uploader design.",
               "name": "hide-input",
               "default": "false",
               "fieldName": "hideInput",
@@ -12939,6 +13062,33 @@
               "fieldName": "valueState",
               "type": {
                 "text": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+              }
+            },
+            {
+              "description": "Defines whether the component is required.",
+              "name": "required",
+              "default": "false",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the accessible ARIA name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that label the input.",
+              "name": "accessible-name-ref",
+              "default": "undefined",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
               }
             },
             {
@@ -13671,7 +13821,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-input` component allows the user to enter and edit text or numeric values in one line.\n\nAdditionally, you can provide `suggestionItems`,\nthat are displayed in a popover right under the input.\n\nThe text field can be editable or read-only (`readonly` property),\nand it can be enabled or disabled (`disabled` property).\nTo visualize semantic states, such as \"Negative\" or \"Critical\", the `valueState` property is provided.\nWhen the user makes changes to the text, the change event is fired,\nwhich enables you to react on any text change.\n\n### Keyboard Handling\nThe `ui5-input` provides the following keyboard shortcuts:\n\n- [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.\n- [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.\n- [Down] - Focuses the next matching item in the suggestion list. Selection-change event is fired.\n- [Up] - Focuses the previous matching item in the suggestion list. Selection-change event is fired.\n- [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.\n- [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.\n- [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.\n- [Page Down] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Input.js\";`",
+          "description": "### Overview\n\nThe `ui5-input` component allows the user to enter and edit text or numeric values in one line.\n\nAdditionally, you can provide `suggestionItems`,\nthat are displayed in a popover right under the input.\n\nThe text field can be editable or read-only (`readonly` property),\nand it can be enabled or disabled (`disabled` property).\nTo visualize semantic states, such as \"Negative\" or \"Critical\", the `valueState` property is provided.\nWhen the user makes changes to the text, the change event is fired,\nwhich enables you to react on any text change.\n\n### Keyboard Handling\nThe `ui5-input` provides the following keyboard shortcuts:\n\n- [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.\n- [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.\n- [Down] - Focuses the next matching item in the suggestion list. Selection-change event is fired.\n- [Up] - Focuses the previous matching item in the suggestion list. Selection-change event is fired.\n- [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.\n- [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.\n- [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.\n- [Page Down] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.\n- [Ctrl]+[Alt]+[F8] or [Command]+[Option]+[F8] - Focuses the first link in the value state message, if available. Pressing [Tab] moves the focus to the next link in the value state message, or closes the value state message if there are no more links.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Input.js\";`",
           "name": "Input",
           "cssParts": [
             {
@@ -14933,6 +15083,24 @@
             },
             {
               "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "ListAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "ListAccessibilityAttributes",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/List.js"
+                  }
+                ]
+              },
+              "default": "{}",
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following field:\n\n - **growingButton**: `growingButton.name`.\n\n The accessibility attributes support the following values:\n\n- **name**: Defines the accessible ARIA name of the growing button.\nAccepts any string.\n\n **Note:** The `accessibilityAttributes` property is in an experimental state and is a subject to change.",
+              "privacy": "public",
+              "_ui5since": "2.13.0"
+            },
+            {
+              "kind": "field",
               "name": "accessibleNameRef",
               "type": {
                 "text": "string | undefined"
@@ -15351,6 +15519,15 @@
               "fieldName": "accessibleName",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following field:\n\n - **growingButton**: `growingButton.name`.\n\n The accessibility attributes support the following values:\n\n- **name**: Defines the accessible ARIA name of the growing button.\nAccepts any string.\n\n **Note:** The `accessibilityAttributes` property is in an experimental state and is a subject to change.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "ListAccessibilityAttributes"
               }
             },
             {
@@ -16081,6 +16258,24 @@
               "description": "Defines the accessible name of the header.",
               "privacy": "public",
               "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "wrappingType",
+              "type": {
+                "text": "WrappingType",
+                "references": [
+                  {
+                    "name": "WrappingType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/WrappingType.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "privacy": "public",
+              "_ui5since": "2.15.0"
             }
           ],
           "events": [
@@ -16176,6 +16371,15 @@
               "fieldName": "headerAccessibleName",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "name": "wrapping-type",
+              "default": "\"None\"",
+              "fieldName": "wrappingType",
+              "type": {
+                "text": "\"None\" | \"Normal\""
               }
             }
           ],
@@ -16276,12 +16480,13 @@
           ],
           "slots": [
             {
-              "description": "Defines the custom formatted text of the component.\n\n**Note:** For optimal text wrapping and a consistent layout, it is strongly recommended to use the `text` property.\n\nUse the `default` slot only when custom formatting with HTML elements (e.g., `<b>`, `<i>`) is required.\nBe aware that wrapping (via `wrappingType=\"Normal\"`) may not function correctly with custom HTML content in the `default` slot.\n\nIf both `text` and `default` slot are used, the `text` property takes precedence.",
               "name": "default",
-              "_ui5privacy": "public",
+              "description": "Defines the custom formatted text of the component.\n\n**Note:** For optimal text wrapping and a consistent layout, it is strongly recommended to use the `text` property.\n\nUse the `default` slot only when custom formatting with HTML elements (e.g., `<b>`, `<i>`) is required.\nBe aware that wrapping (via `wrappingType=\"Normal\"`) may not function correctly with custom HTML content in the `default` slot.\n\nIf both `text` and `default` slot are used, the `text` property takes precedence.",
+              "_ui5propertyName": "content",
               "_ui5type": {
                 "text": "Array<Node>"
-              }
+              },
+              "_ui5privacy": "public"
             },
             {
               "name": "image",
@@ -16847,7 +17052,7 @@
               "kind": "field",
               "name": "opener",
               "type": {
-                "text": "HTMLElement | string | undefined"
+                "text": "HTMLElement | string | null | undefined"
               },
               "description": "Defines the ID or DOM Reference of the element at which the menu is shown.\nWhen using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.\nYou can only set the `opener` attribute to a DOM Reference when using JavaScript.",
               "privacy": "public",
@@ -17027,7 +17232,7 @@
               "default": "undefined",
               "fieldName": "opener",
               "type": {
-                "text": "string | HTMLElement | undefined"
+                "text": "string | HTMLElement | null | undefined"
               }
             }
           ],
@@ -17951,7 +18156,7 @@
         },
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-multi-combobox` component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.\n\nThe drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options.\nThe options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.\n### Structure\nThe `ui5-multi-combobox` consists of the following elements:\n\n-  Tokenizer - a list of tokens with selected options.\n-  Input field - displays the selected option/s as token/s. Users can type to filter the list.\n-  Drop-down arrow - expands\\collapses the option list.\n-  Option list - the list of available options.\n\n### Keyboard Handling\n\nThe `ui5-multi-combobox` provides advanced keyboard handling.\n\n#### Picker\nIf the `ui5-multi-combobox` is focused,\nyou can open or close the drop-down by pressing [F4], [Alt] + [Up] or [Alt] + [Down] keys.\nOnce the drop-down is opened, you can use the `UP` and `DOWN` arrow keys\nto navigate through the available options and select one by pressing the `Space` or `Enter` keys.\n\n#### Tokens\n\n-  Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).\n-  Delete -  deletes the token and focuses the previous token.\n-  Backspace -  deletes the token and focus the next token.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/MultiComboBox.js\";`",
+          "description": "### Overview\n\nThe `ui5-multi-combobox` component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.\n\nThe drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options.\nThe options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.\n### Structure\nThe `ui5-multi-combobox` consists of the following elements:\n\n-  Tokenizer - a list of tokens with selected options.\n-  Input field - displays the selected option/s as token/s. Users can type to filter the list.\n-  Drop-down arrow - expands\\collapses the option list.\n-  Option list - the list of available options.\n\n### Keyboard Handling\n\nThe `ui5-multi-combobox` provides advanced keyboard handling.\n\n#### Picker\nIf the `ui5-multi-combobox` is focused,\nyou can open or close the drop-down by pressing [F4], [Alt] + [Up] or [Alt] + [Down] keys.\nOnce the drop-down is opened, you can use the `UP` and `DOWN` arrow keys\nto navigate through the available options and select one by pressing the `Space` or `Enter` keys.\n[Ctrl]+[Alt]+[F8] or [Command]+[Option]+[F8] - Focuses the first link in the value state message, if available. Pressing [Tab] moves the focus to the next link in the value state message, or closes the value state message if there are no more links.\n\n#### Tokens\n\n-  Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).\n-  Delete -  deletes the token and focuses the previous token.\n-  Backspace -  deletes the token and focus the next token.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/MultiComboBox.js\";`",
           "name": "MultiComboBox",
           "cssParts": [
             {
@@ -18630,6 +18835,28 @@
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "wrappingType",
+              "type": {
+                "text": "WrappingType",
+                "references": [
+                  {
+                    "name": "WrappingType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/WrappingType.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "privacy": "public",
+              "_ui5since": "2.15.0",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
             }
           ],
           "superclass": {
@@ -18679,6 +18906,19 @@
               "fieldName": "headerAccessibleName",
               "type": {
                 "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "name": "wrapping-type",
+              "default": "\"None\"",
+              "fieldName": "wrappingType",
+              "type": {
+                "text": "\"None\" | \"Normal\""
               },
               "inheritedFrom": {
                 "name": "ListItemGroup",
@@ -20287,7 +20527,7 @@
               "privacy": "public",
               "default": "undefined",
               "type": {
-                "text": "HTMLElement | string | undefined"
+                "text": "HTMLElement | string | null | undefined"
               },
               "_ui5since": "1.2.0"
             },
@@ -22320,7 +22560,7 @@
               "privacy": "public",
               "default": "undefined",
               "type": {
-                "text": "HTMLElement | string | undefined"
+                "text": "HTMLElement | string | null | undefined"
               },
               "_ui5since": "1.2.0",
               "inheritedFrom": {
@@ -24440,6 +24680,24 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "SplitButtonAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "SplitButtonAccessibilityAttributes",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/SplitButton.js"
+                  }
+                ]
+              },
+              "default": "{}",
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe `accessibilityAttributes` property accepts an object with the following optional fields:\n\n- **root**: Attributes that will be applied to the main (text) button.\n  - **hasPopup**: Indicates the presence and type of popup triggered by the button.\n    Accepts string values: `\"dialog\"`, `\"grid\"`, `\"listbox\"`, `\"menu\"`, or `\"tree\"`.\n  - **roleDescription**: Provides a human-readable description for the role of the button.\n    Accepts any string value.\n  - **title**: Specifies a tooltip or description for screen readers.\n    Accepts any string value.\n\n- **arrowButton**: Attributes applied specifically to the arrow (split) button.\n  - **hasPopup**: Indicates the presence and type of popup triggered by the arrow button.\n    Accepts string values: `\"dialog\"`, `\"grid\"`, `\"listbox\"`, `\"menu\"`, or `\"tree\"`.\n  - **expanded**: Indicates whether the popup triggered by the arrow button is currently expanded.\n    Accepts boolean values: `true` or `false`.",
+              "privacy": "public",
+              "_ui5since": "2.13.0"
             }
           ],
           "events": [
@@ -24510,6 +24768,15 @@
               "fieldName": "accessibleName",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe `accessibilityAttributes` property accepts an object with the following optional fields:\n\n- **root**: Attributes that will be applied to the main (text) button.\n  - **hasPopup**: Indicates the presence and type of popup triggered by the button.\n    Accepts string values: `\"dialog\"`, `\"grid\"`, `\"listbox\"`, `\"menu\"`, or `\"tree\"`.\n  - **roleDescription**: Provides a human-readable description for the role of the button.\n    Accepts any string value.\n  - **title**: Specifies a tooltip or description for screen readers.\n    Accepts any string value.\n\n- **arrowButton**: Attributes applied specifically to the arrow (split) button.\n  - **hasPopup**: Indicates the presence and type of popup triggered by the arrow button.\n    Accepts string values: `\"dialog\"`, `\"grid\"`, `\"listbox\"`, `\"menu\"`, or `\"tree\"`.\n  - **expanded**: Indicates whether the popup triggered by the arrow button is currently expanded.\n    Accepts boolean values: `true` or `false`.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "SplitButtonAccessibilityAttributes"
               }
             }
           ],
@@ -25174,6 +25441,19 @@
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
               }
+            },
+            {
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "name": "wrapping-type",
+              "default": "\"None\"",
+              "fieldName": "wrappingType",
+              "type": {
+                "text": "\"None\" | \"Normal\""
+              },
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
             }
           ],
           "members": [
@@ -25200,6 +25480,28 @@
               "description": "Defines the accessible name of the header.",
               "privacy": "public",
               "default": "undefined",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "wrappingType",
+              "type": {
+                "text": "WrappingType",
+                "references": [
+                  {
+                    "name": "WrappingType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/WrappingType.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "privacy": "public",
+              "_ui5since": "2.15.0",
               "inheritedFrom": {
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
@@ -27568,7 +27870,7 @@
               "type": {
                 "text": "number | undefined"
               },
-              "description": "Defines the position of the row related to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
+              "description": "Defines the 0-based position of the row related to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "2.5.0"
@@ -27616,7 +27918,7 @@
               }
             },
             {
-              "description": "Defines the position of the row related to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
+              "description": "Defines the 0-based position of the row related to the total number of rows within the table when the `ui5-table-virtualizer` feature is used.",
               "name": "position",
               "default": "undefined",
               "fieldName": "position",
@@ -30481,6 +30783,36 @@
                 "name": "Button",
                 "module": "dist/Button.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the button shows a loading indicator.\n\n**Note:** If set to `true`, a busy indicator component will be displayed on the related button.",
+              "privacy": "public",
+              "_ui5since": "2.13.0",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loadingDelay",
+              "type": {
+                "text": "number"
+              },
+              "default": "1000",
+              "description": "Specifies the delay in milliseconds before the loading indicator appears within the associated button.",
+              "privacy": "public",
+              "_ui5since": "2.13.0",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
             }
           ],
           "attributes": [
@@ -30644,6 +30976,32 @@
               "fieldName": "accessibleRole",
               "type": {
                 "text": "\"Button\" | \"Link\""
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines whether the button shows a loading indicator.\n\n**Note:** If set to `true`, a busy indicator component will be displayed on the related button.",
+              "name": "loading",
+              "default": "false",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Specifies the delay in milliseconds before the loading indicator appears within the associated button.",
+              "name": "loading-delay",
+              "default": "1000",
+              "fieldName": "loadingDelay",
+              "type": {
+                "text": "number"
               },
               "inheritedFrom": {
                 "name": "Button",
