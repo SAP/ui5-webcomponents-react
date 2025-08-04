@@ -39,8 +39,8 @@
     "recharts": "2.15.4"
   },
   "peerDependencies": {
-    "@ui5/webcomponents-react": "~2.12.0",
-    "@ui5/webcomponents-react-base": "~2.12.0",
+    "@ui5/webcomponents-react": "~2.13.0",
+    "@ui5/webcomponents-react-base": "~2.13.0",
     "react": "^18 || ^19"
   },
   "publishConfig": {
