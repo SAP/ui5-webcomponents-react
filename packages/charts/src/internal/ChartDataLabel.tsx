@@ -19,7 +19,6 @@ export const ChartDataLabel = (props: CustomDataLabelProps) => {
     return null;
   }
 
-  // todo: renderDefault? --> config
   if (config.DataLabel) {
     return createElement(config.DataLabel, props);
   }
