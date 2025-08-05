@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import TableGrowingMode from '@ui5/webcomponents-compat/dist/types/TableGrowingMode.js';
 import { useState } from 'react';
 import { TableCell } from '../TableCell/index.js';

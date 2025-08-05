@@ -1,12 +1,12 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import * as ComponentStories from './SplitterLayout.stories';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { SplitterElement } from '../SplitterElement';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader subComponents={['SplitterElement']} />
+<DocsHeader of={ComponentStories} subComponents={['SplitterElement']} />
 
 ## Example
 
@@ -85,6 +85,6 @@ function SplitterLayoutComponent(props) {
 
 <Description of={SplitterElement} />
 
-<ArgTypesWithNote of={SplitterElement} />
+<ArgTypesWithNote metaOf={ComponentStories} of={SplitterElement} />
 
 <Footer />

@@ -1,13 +1,13 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { ColorPaletteItem } from '../ColorPaletteItem';
 import * as ComponentStories from './ColorPalette.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.14.0" />
+<DocsHeader of={ComponentStories} since="0.14.0" />
 
 <br />
 
@@ -24,6 +24,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## ColorPaletteItem
 
 <Description of={ColorPaletteItem} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={ColorPaletteItem} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={ColorPaletteItem} />
 
 <Footer />

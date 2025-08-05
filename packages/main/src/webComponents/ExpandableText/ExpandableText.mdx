@@ -1,10 +1,10 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import * as ComponentStories from './ExpandableText.stories.tsx';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader of={ComponentStories} />
 
 <br />
 

@@ -1,6 +1,6 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import '@ui5/webcomponents-icons/dist/employee.js';
 import { ListItemCustom } from '../ListItemCustom';
 import { ListItemGroup } from '../ListItemGroup';
@@ -9,7 +9,7 @@ import * as ComponentStories from './List.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader of={ComponentStories} />
 
 <br />
 
@@ -28,18 +28,18 @@ import * as ComponentStories from './List.stories';
 ## ListItemStandard
 
 <Description of={ListItemStandard} />
-<ArgTypesWithNote of={ListItemStandard} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ListItemStandard} />
 
 ## ListItemCustom
 
 <Canvas of={ComponentStories.ListItemCustomStory} />
 <Description of={ListItemCustom} />
-<ArgTypesWithNote of={ListItemCustom} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ListItemCustom} />
 
 ## ListItemGroup
 
 <Canvas of={ComponentStories.ListItemGroupStory} />
 <Description of={ListItemGroup} />
-<ArgTypesWithNote of={ListItemGroup} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ListItemGroup} />
 
 <Footer />

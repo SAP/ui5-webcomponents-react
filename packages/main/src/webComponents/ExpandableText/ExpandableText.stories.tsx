@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ExpandableTextOverflowMode from '@ui5/webcomponents/dist/types/ExpandableTextOverflowMode.js';
 import TextEmptyIndicatorMode from '@ui5/webcomponents/dist/types/TextEmptyIndicatorMode.js';
 import { ExpandableText } from './index.js';

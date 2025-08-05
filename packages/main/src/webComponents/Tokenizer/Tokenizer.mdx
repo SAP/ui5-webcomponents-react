@@ -1,5 +1,5 @@
 import { ControlsWithNote, DocsHeader, Footer, ArgTypesWithNote } from '@sb/components';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import * as ComponentStories from './Tokenizer.stories';
 import { Token } from '../Token/index.tsx';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
@@ -8,7 +8,7 @@ import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 
 [//]: # 'todo: check why subcomponents are not displayed via CEM'
 
-<DocsHeader subComponents={['Token']} experimental />
+<DocsHeader of={ComponentStories} subComponents={['Token']} experimental />
 
 <br />
 
@@ -89,6 +89,6 @@ function TokenizerComponent(props) {
 ## Token
 
 <Description of={Token} />
-<ArgTypesWithNote of={Token} />
+<ArgTypesWithNote metaOf={ComponentStories} of={Token} />
 
 <Footer />

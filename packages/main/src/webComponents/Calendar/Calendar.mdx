@@ -1,7 +1,7 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { excludePropsForAbstract } from '@sb/utils';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { CalendarDate } from '../CalendarDate';
 import { CalendarLegend } from '../CalendarLegend';
 import { CalendarLegendItem } from '../CalendarLegendItem';
@@ -10,7 +10,7 @@ import * as ComponentStories from './Calendar.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.13.0" />
+<DocsHeader of={ComponentStories} since="0.13.0" />
 
 <br />
 
@@ -27,24 +27,24 @@ import * as ComponentStories from './Calendar.stories';
 ## CalendarDate
 
 <Description of={CalendarDate} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={CalendarDate} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={CalendarDate} />
 
 ## CalendarLegend
 
 <Description of={CalendarLegend} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={CalendarLegend} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={CalendarLegend} />
 
 <Canvas of={ComponentStories.CalendarLegendStory} />
 
 ## CalendarLegendItem
 
 <Description of={CalendarLegendItem} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={CalendarLegendItem} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={CalendarLegendItem} />
 
 ## SpecialCalendarDate
 
 <Description of={SpecialCalendarDate} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SpecialCalendarDate} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={SpecialCalendarDate} />
 
 <Canvas of={ComponentStories.SpecialDate} />
 

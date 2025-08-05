@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import BreadcrumbsDesign from '@ui5/webcomponents/dist/types/BreadcrumbsDesign.js';
 import BreadcrumbsSeparatorStyle from '@ui5/webcomponents/dist/types/BreadcrumbsSeparator.js';
 import { BreadcrumbsItem } from '../BreadcrumbsItem/index.js';

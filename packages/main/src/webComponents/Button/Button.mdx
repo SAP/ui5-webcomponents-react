@@ -1,12 +1,12 @@
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import * as ComponentStories from './Button.stories';
 import { ButtonBadge } from '../ButtonBadge';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader of={ComponentStories} />
 
 <br />
 
@@ -29,6 +29,6 @@ import { ButtonBadge } from '../ButtonBadge';
 ## ButtonBadge
 
 <Description of={ButtonBadge} />
-<ArgTypesWithNote of={ButtonBadge} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ButtonBadge} />
 
 <Footer />

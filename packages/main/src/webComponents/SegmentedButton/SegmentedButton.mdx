@@ -1,13 +1,13 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { SegmentedButtonItem } from '../SegmentedButtonItem';
 import * as ComponentStories from './SegmentedButton.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.9.0" />
+<DocsHeader of={ComponentStories} since="0.9.0" />
 
 <br />
 
@@ -24,6 +24,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## SegmentedButtonItem
 
 <Description of={SegmentedButtonItem} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SegmentedButtonItem} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={SegmentedButtonItem} />
 
 <Footer />
