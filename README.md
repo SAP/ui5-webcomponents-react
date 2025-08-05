@@ -80,9 +80,9 @@ To consume `ui5-webcomponents-react`, you need to install the npm modules and re
 npm install @ui5/webcomponents-react @ui5/webcomponents @ui5/webcomponents-fiori
 ```
 
-## Ongoing Support for Version 1.x
+## End of Support for Version 1.x
 
-We will continue to support version 1.x until end of June 2025, focusing on bug fixes to ensure continuity for our existing users.
+The support for version 1.x of `ui5-webcomponents-react` has ended on **July 1, 2025**. We recommend migrating to version 2.x as soon as possible. For more information, please refer to our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs).
 
 <!-- *********************************************************************** -->
 

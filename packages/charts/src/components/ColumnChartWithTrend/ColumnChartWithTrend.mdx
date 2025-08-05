@@ -2,6 +2,7 @@ import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import { Canvas, Meta } from '@storybook/addon-docs/blocks';
 import * as ComponentStories from './ColumnChartWithTrend.stories';
 import LegendStory from '../../resources/LegendConfig.mdx';
+import TooltipStory from '../../resources/TooltipConfig.mdx';
 
 <Meta of={ComponentStories} />
 
@@ -16,6 +17,8 @@ import LegendStory from '../../resources/LegendConfig.mdx';
 ### Loading Placeholder
 
 <Canvas of={ComponentStories.LoadingPlaceholder} />
+
+<TooltipStory of={ComponentStories.WithCustomTooltipConfig} additionalDescription={<><b>Note: </b>The <code>tooltipConfig</code> is used for both LineChart and ColumnChart.</>} />
 
 <LegendStory of={ComponentStories.WithCustomLegendConfig} />
 

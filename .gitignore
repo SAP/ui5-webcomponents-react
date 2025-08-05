@@ -26,6 +26,8 @@ packages/main/scripts/wrapperGeneration/json
 packages/main/tmp
 packages/*/src/generated/
 
+cypress/downloads
+
 .nx
 
 debug-storybook.log
