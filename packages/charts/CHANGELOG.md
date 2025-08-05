@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.12.0...v2.13.0) (2025-08-05)
+
+### Bug Fixes
+
+- **deps:** update dependency react-content-loader to v7.1.0 ([#7533](https://github.com/SAP/ui5-webcomponents-react/issues/7533)) ([69eac6f](https://github.com/SAP/ui5-webcomponents-react/commit/69eac6ffa6e660c918f3831ff56fe480735838f5))
+- **deps:** update dependency react-content-loader to v7.1.1 ([#7540](https://github.com/SAP/ui5-webcomponents-react/issues/7540)) ([a12c466](https://github.com/SAP/ui5-webcomponents-react/commit/a12c466b7851ed558b47bffa33cf0b1d18a0080c))
+
+### Features
+
+- **ColumnChartWithTrend:** add `tooltipConfig` prop ([#7607](https://github.com/SAP/ui5-webcomponents-react/issues/7607)) ([b942f5f](https://github.com/SAP/ui5-webcomponents-react/commit/b942f5fae43e31e9bd83cf18ea657b4d0dbf6421)), closes [#7597](https://github.com/SAP/ui5-webcomponents-react/issues/7597)
+- update to UI5 Web Components v2.13.1 ([#7621](https://github.com/SAP/ui5-webcomponents-react/issues/7621)) ([23c89f9](https://github.com/SAP/ui5-webcomponents-react/commit/23c89f9620225a73ed0e8f0c4f68997ca7a54782))
+
 # [2.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.11.1...v2.12.0) (2025-07-07)
 
 ### Bug Fixes
