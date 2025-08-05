@@ -1,5 +1,5 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import * as ComponentStories from './DynamicPage.stories';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { DynamicPageTitle } from '../DynamicPageTitle';
@@ -7,7 +7,7 @@ import { DynamicPageHeader } from '../DynamicPageHeader';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader of={ComponentStories} />
 
 ## Example
 
@@ -121,11 +121,11 @@ Please see the [Docs](?path=/docs/layouts-floorplans-toolbar--docs#open-popovers
 ## DynamicPageHeader
 
 <Description of={DynamicPageHeader} />
-<ArgTypesWithNote of={DynamicPageHeader} />
+<ArgTypesWithNote metaOf={ComponentStories} of={DynamicPageHeader} />
 
 ## DynamicPageTitle
 
 <Description of={DynamicPageTitle} />
-<ArgTypesWithNote of={DynamicPageTitle} />
+<ArgTypesWithNote metaOf={ComponentStories} of={DynamicPageTitle} />
 
 <Footer />

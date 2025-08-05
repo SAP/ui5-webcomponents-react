@@ -1,12 +1,12 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { ToolbarButton, ToolbarSelect, ToolbarSelectOption, ToolbarSeparator, ToolbarSpacer } from '../index.ts';
 import * as ComponentStories from './Toolbar.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="1.19.0" />
+<DocsHeader of={ComponentStories} since="1.19.0" />
 
 <br />
 
@@ -64,26 +64,26 @@ function ToolbarWithPopover() {
 ## ToolbarButton
 
 <Description of={ToolbarButton} />
-<ArgTypesWithNote of={ToolbarButton} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ToolbarButton} />
 
 ## ToolbarSelect
 
 <Description of={ToolbarSelect} />
-<ArgTypesWithNote of={ToolbarSelect} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ToolbarSelect} />
 
 ## ToolbarSelectOption
 
 <Description of={ToolbarSelectOption} />
-<ArgTypesWithNote of={ToolbarSelectOption} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ToolbarSelectOption} />
 
 ## ToolbarSeparator
 
 <Description of={ToolbarSeparator} />
-<ArgTypesWithNote of={ToolbarSeparator} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ToolbarSeparator} />
 
 ## ToolbarSpacer
 
 <Description of={ToolbarSpacer} />
-<ArgTypesWithNote of={ToolbarSpacer} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ToolbarSpacer} />
 
 <Footer />

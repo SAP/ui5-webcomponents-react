@@ -1,11 +1,11 @@
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
-import { Canvas, Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
 import { MessageStrip } from '../../webComponents/index';
 import * as ComponentStories from './ActionSheet.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader subComponents={['Button']} />
+<DocsHeader of={ComponentStories} subComponents={['Button']} />
 
 <br />
 

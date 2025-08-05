@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import UploadState from '@ui5/webcomponents-fiori/dist/types/UploadState.js';
 import documentIcon from '@ui5/webcomponents-icons/dist/document.js';

@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import { IconButton } from '@storybook/components';
-import { addons, types } from '@storybook/manager-api';
 import '@ui5/webcomponents/dist/Menu.js';
 import '@ui5/webcomponents/dist/MenuItem.js';
 import * as React from 'react';
+import { IconButton } from 'storybook/internal/components';
+import { addons, types } from 'storybook/manager-api';
 
 const ADDON_ID = 'version-switch';
 const TOOL_ID = `${ADDON_ID}/toolbar`;

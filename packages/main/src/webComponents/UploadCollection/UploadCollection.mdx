@@ -1,13 +1,13 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems';
 import { UploadCollectionItem } from '../UploadCollectionItem';
 import * as ComponentStories from './UploadCollection.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.9.0" />
+<DocsHeader of={ComponentStories} since="0.9.0" />
 
 <br />
 
@@ -152,6 +152,6 @@ const SimulateUploadComponent = () => {
 ## UploadCollectionItem
 
 <Description of={UploadCollectionItem} />
-<ArgTypesWithNote of={UploadCollectionItem} />
+<ArgTypesWithNote metaOf={ComponentStories} of={UploadCollectionItem} />
 
 <Footer />

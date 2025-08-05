@@ -1,5 +1,5 @@
 import { isChromatic } from '@sb/utils.js';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import addDocumentIcon from '@ui5/webcomponents-icons/dist/add-document.js';
 import boldTextIcon from '@ui5/webcomponents-icons/dist/bold-text.js';
 import italicTextIcon from '@ui5/webcomponents-icons/dist/italic-text.js';

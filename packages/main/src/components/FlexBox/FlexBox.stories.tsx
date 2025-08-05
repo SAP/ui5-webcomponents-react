@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
 import {
   FlexBoxAlignItems,

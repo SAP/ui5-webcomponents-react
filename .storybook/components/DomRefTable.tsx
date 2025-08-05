@@ -1,12 +1,12 @@
-import type { ArgTypes } from '@storybook/blocks';
-import { DocsContext, Heading, Subheading } from '@storybook/blocks';
+import type { Controls } from '@storybook/addon-docs/blocks';
+import { Heading, Subheading, useOf } from '@storybook/addon-docs/blocks';
 import TagDesign from '@ui5/webcomponents/dist/types/TagDesign.js';
 import { Tag, Link, MessageStrip, Popover } from '@ui5/webcomponents-react';
 import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types';
 import type { ComponentProps, ReactNode } from 'react';
-import { Fragment, useContext, useRef } from 'react';
+import { Fragment, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { useGetCem } from '../utils';
+import { useGetCem } from '../utils.js';
 import classes from './DomRefTable.module.css';
 
 export function CodeBlock(props: { children: ReactNode }) {
@@ -51,19 +51,23 @@ function Name(props: CEM.ClassMember) {
 export function DomRefTable({
   of,
   isSubheading,
+  metaOf,
 }: {
-  of?: ComponentProps<typeof ArgTypes>['of'];
+  of: ComponentProps<typeof Controls>['of'];
   isSubheading?: boolean;
+  metaOf?: ComponentProps<typeof Controls>['of'];
 }) {
-  const docsContext = useContext(DocsContext);
-  const storyTags: string[] = docsContext.attachedCSFFile?.meta?.tags;
+  const resolvedOf = useOf<'story' | 'component'>(of);
+  const resolvedMetaOf = useOf<'meta'>(metaOf);
+
+  const { story: storyContext, component: componentContext } = resolvedOf;
+  const storyTags: string[] = storyContext?.tags ?? resolvedMetaOf?.preparedMeta?.tags;
   const cemModuleName = storyTags?.find((tag) => tag.startsWith('cem-module:'));
-  const componentName = of?.displayName ?? docsContext.componentStories().at(0)?.component?.displayName;
+  const componentName = of?.displayName ?? storyContext.component.displayName;
   const popoverRef = useRef(null);
 
-  const knownAttributes = new Set(Object.keys(of?.__docgenInfo?.props ?? docsContext.primaryStory?.argTypes ?? {}));
-  const cem = useGetCem();
-
+  const knownAttributes = new Set(Object.keys(componentContext?.__docgenInfo?.props ?? storyContext.argTypes));
+  const cem = useGetCem(storyTags);
   const moduleName = cemModuleName ? cemModuleName.split(':')[1] : componentName;
 
   const componentMembers =

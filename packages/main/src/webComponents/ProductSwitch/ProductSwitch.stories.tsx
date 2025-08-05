@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import businessObjectsExperienceIcon from '@ui5/webcomponents-icons/dist/business-objects-experience.js';
 import contactsIcon from '@ui5/webcomponents-icons/dist/contacts.js';
 import flightIcon from '@ui5/webcomponents-icons/dist/flight.js';

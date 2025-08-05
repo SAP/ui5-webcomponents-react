@@ -1,12 +1,12 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { MediaGalleryItem } from '../MediaGalleryItem';
 import * as ComponentStories from './MediaGallery.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.21.0" />
+<DocsHeader of={ComponentStories} since="0.21.0" />
 
 <br />
 
@@ -33,6 +33,6 @@ import * as ComponentStories from './MediaGallery.stories';
 ## MediaGalleryItem
 
 <Description of={MediaGalleryItem} />
-<ArgTypesWithNote of={MediaGalleryItem} />
+<ArgTypesWithNote metaOf={ComponentStories} of={MediaGalleryItem} />
 
 <Footer />

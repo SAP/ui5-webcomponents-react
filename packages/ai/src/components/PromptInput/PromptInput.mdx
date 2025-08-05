@@ -1,13 +1,13 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { SuggestionItem, SuggestionItemGroup } from '@ui5/webcomponents-react';
 import * as ComponentStories from './PromptInput.stories.tsx';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader experimental />
+<DocsHeader of={ComponentStories} experimental />
 
 <br />
 
@@ -24,11 +24,11 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## SuggestionItem
 
 <Description of={SuggestionItem} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SuggestionItem} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={SuggestionItem} />
 
 ## SuggestionItemGroup
 
 <Description of={SuggestionItemGroup} />
-<ArgTypesWithNote of={SuggestionItemGroup} hideHTMLPropsNote exclude={excludePropsForAbstract} />
+<ArgTypesWithNote metaOf={ComponentStories} of={SuggestionItemGroup} hideHTMLPropsNote exclude={excludePropsForAbstract} />
 
 <Footer />

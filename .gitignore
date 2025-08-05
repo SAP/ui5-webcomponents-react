@@ -29,3 +29,5 @@ packages/*/src/generated/
 cypress/downloads
 
 .nx
+
+debug-storybook.log

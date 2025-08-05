@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-fiori/dist/illustrations/AllIllustrations.js';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import IllustrationMessageType from '@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js';
 import { IllustratedMessage } from './index';
 

@@ -1,12 +1,12 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { FilterGroupItem } from '../FilterGroupItem';
 import * as ComponentStories from './FilterBar.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader subComponents={['FilterGroupItem']} />
+<DocsHeader of={ComponentStories} subComponents={['FilterGroupItem']} />
 
 <br />
 
@@ -412,6 +412,6 @@ const handleInput = (event) => {
 ## FilterGroupItem
 
 <Description of={FilterGroupItem} />
-<ArgTypesWithNote of={FilterGroupItem} exclude={['data-index']} />
+<ArgTypesWithNote metaOf={ComponentStories} of={FilterGroupItem} exclude={['data-index']} />
 
 <Footer />

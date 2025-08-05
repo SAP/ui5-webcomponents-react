@@ -1,6 +1,6 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import * as ComponentStories from './NavigationLayout.stories';
 import { SideNavigation } from '../SideNavigation/index';
 import { SideNavigationItem } from '../SideNavigationItem/index';
@@ -9,7 +9,7 @@ import { SideNavigationSubItem } from '../SideNavigationSubItem/index';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader />
+<DocsHeader of={ComponentStories} />
 
 <br />
 
@@ -135,21 +135,21 @@ function NavigationLayoutComponent(props) {
 ## SideNavigation
 
 <Description of={SideNavigation} />
-<ArgTypesWithNote of={SideNavigation} />
+<ArgTypesWithNote metaOf={ComponentStories} of={SideNavigation} />
 
 ## SideNavigationItem
 
 <Description of={SideNavigationItem} />
-<ArgTypesWithNote of={SideNavigationItem} />
+<ArgTypesWithNote metaOf={ComponentStories} of={SideNavigationItem} />
 
 ## SideNavigationSubItem
 
 <Description of={SideNavigationSubItem} />
-<ArgTypesWithNote of={SideNavigationSubItem} />
+<ArgTypesWithNote metaOf={ComponentStories} of={SideNavigationSubItem} />
 
 ## SideNavigationGroup
 
 <Description of={SideNavigationGroup} />
-<ArgTypesWithNote of={SideNavigationGroup} />
+<ArgTypesWithNote metaOf={ComponentStories} of={SideNavigationGroup} />
 
 <Footer />
