@@ -37,14 +37,14 @@ interface CalendarAttributes {
   /**
    * Determines the maximum date available for selection.
    *
-   * **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (YYYY-MM-dd).
+   * **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).
    */
   maxDate?: string;
 
   /**
    * Determines the minimum date available for selection.
    *
-   * **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (YYYY-MM-dd).
+   * **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).
    */
   minDate?: string;
 

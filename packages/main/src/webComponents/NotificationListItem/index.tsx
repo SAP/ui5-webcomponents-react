@@ -126,7 +126,7 @@ interface NotificationListItemPropTypes
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ❌|❌|
    */
   onClose?: (event: Ui5CustomEvent<NotificationListItemDomRef, NotificationListItemCloseEventDetail>) => void;
 }

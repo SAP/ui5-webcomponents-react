@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/ListItemGroup.js';
 import type { ListItemGroupMoveEventDetail } from '@ui5/webcomponents/dist/ListItemGroup.js';
+import type WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
@@ -18,6 +19,24 @@ interface ListItemGroupAttributes {
    * @default undefined
    */
   headerText?: string | undefined;
+
+  /**
+   * Defines if the text of the component should wrap when it's too long.
+   * When set to "Normal", the content (title, description) will be wrapped
+   * using the `ExpandableText` component.<br/>
+   *
+   * The text can wrap up to 100 characters on small screens (size S) and
+   * up to 300 characters on larger screens (size M and above). When text exceeds
+   * these limits, it truncates with an ellipsis followed by a text expansion trigger.
+   *
+   * Available options are:
+   * - `None` (default) - The text will truncate with an ellipsis.
+   * - `Normal` - The text will wrap (without truncation).
+   *
+   * **Note:** Available since [v2.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.15.0) of **@ui5/webcomponents**.
+   * @default "None"
+   */
+  wrappingType?: WrappingType | keyof typeof WrappingType;
 }
 
 interface ListItemGroupDomRef extends Required<ListItemGroupAttributes>, Ui5DomRef {}
@@ -84,7 +103,7 @@ interface ListItemGroupPropTypes
  */
 const ListItemGroup = withWebComponent<ListItemGroupPropTypes, ListItemGroupDomRef>(
   'ui5-li-group',
-  ['headerAccessibleName', 'headerText'],
+  ['headerAccessibleName', 'headerText', 'wrappingType'],
   [],
   ['header'],
   ['move-over', 'move'],

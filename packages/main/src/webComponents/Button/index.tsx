@@ -99,6 +99,24 @@ interface ButtonAttributes {
   icon?: string | undefined;
 
   /**
+   * Defines whether the button shows a loading indicator.
+   *
+   * **Note:** If set to `true`, a busy indicator component will be displayed on the related button.
+   *
+   * **Note:** Available since [v2.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.13.0) of **@ui5/webcomponents**.
+   * @default false
+   */
+  loading?: boolean;
+
+  /**
+   * Specifies the delay in milliseconds before the loading indicator appears within the associated button.
+   *
+   * **Note:** Available since [v2.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.13.0) of **@ui5/webcomponents**.
+   * @default 1000
+   */
+  loadingDelay?: number;
+
+  /**
    * When set to `true`, the component will
    * automatically submit the nearest HTML form element on `press`.
    *
@@ -202,10 +220,11 @@ const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
     'design',
     'endIcon',
     'icon',
+    'loadingDelay',
     'tooltip',
     'type',
   ],
-  ['disabled', 'submits'],
+  ['disabled', 'loading', 'submits'],
   ['badge'],
   ['click'],
 );
