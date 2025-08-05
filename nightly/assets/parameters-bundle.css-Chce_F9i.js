@@ -1,0 +1,1 @@
+const T={key:"PROMPT_INPUT_CHARACTERS_LEFT",defaultText:"{0} characters remaining"},e={key:"PROMPT_INPUT_CHARACTERS_EXCEEDED",defaultText:"{0} characters over limit"},t={key:"BUTTON_TOOLTIP_TEXT",defaultText:"{0} with Artificial Intelligence"},E="";export{t as B,T as P,e as a,E as d};
