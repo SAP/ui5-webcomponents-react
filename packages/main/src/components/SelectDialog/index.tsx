@@ -1,16 +1,21 @@
 'use client';
 
+import type ListItemBase from '@ui5/webcomponents/dist/ListItemBase.js';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import IconMode from '@ui5/webcomponents/dist/types/IconMode.js';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
+import InvisibleMessageMode from '@ui5/webcomponents-base/dist/types/InvisibleMessageMode.js';
+import announce from '@ui5/webcomponents-base/dist/util/InvisibleMessage.js';
 import iconSearch from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
-import { CANCEL, CLEAR, SEARCH, SELECT, SELECTED } from '../../i18n/i18n-defaults.js';
+// todo: remove comment once translations are available
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { CANCEL, CLEAR, SEARCH, SELECT, SELECTED, SELECTED_ITEMS } from '../../i18n/i18n-defaults.js';
 import { Button, Dialog, FlexBox, FlexBoxAlignItems, Icon, Input, List, Text, Title } from '../../index.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
 import type {
@@ -135,9 +140,8 @@ export interface SelectDialogPropTypes
   /**
    * This event will be fired when the dialog is confirmed by selecting an item in single selection mode or by pressing the confirmation button in multi selection mode.
    */
-  onConfirm?:
-    | ((event: Ui5CustomEvent<ListDomRef, { selectedItems: ListItemStandardDomRef[] }>) => void)
-    | ((event: Ui5CustomEvent<ButtonDomRef, { selectedItems: ListItemStandardDomRef[] }>) => void);
+  onConfirm?: (event: Ui5CustomEvent<ListDomRef | ButtonDomRef, { selectedItems: ListItemBase[] }>) => void;
+
   /**
    * This event will be fired when the cancel button is clicked or ESC key is pressed.
    */
@@ -232,12 +236,18 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     setSearchValue('');
   };
 
-  const handleSelectionChange = (e) => {
+  const handleSelectionChange: ListPropTypes['onSelectionChange'] = (e) => {
+    const { selectedItems } = e.detail;
     if (typeof listProps?.onSelectionChange === 'function') {
       listProps.onSelectionChange(e);
     }
     if (selectionMode === ListSelectionMode.Multiple) {
-      setSelectedItems(e.detail.selectedItems);
+      setSelectedItems(selectedItems);
+      if (selectedItems.length) {
+        announce('Selected Items ' + selectedItems.length, InvisibleMessageMode.Polite);
+        //todo: uncomment this, once translations are available
+        // announce(i18nBundle.getText(SELECTED_ITEMS, selectedItems.length), InvisibleMessageMode.Polite);
+      }
     } else {
       if (typeof onConfirm === 'function') {
         onConfirm(e);
