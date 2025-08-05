@@ -1,0 +1,15 @@
+Bundled license information:
+
+lit-html/lit-html.js:
+  /**
+   * @license
+   * Copyright 2017 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */
+
+lit-html/static.js:
+  /**
+   * @license
+   * Copyright 2020 Google LLC
+   * SPDX-License-Identifier: BSD-3-Clause
+   */

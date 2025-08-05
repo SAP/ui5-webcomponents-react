@@ -1,0 +1,1 @@
+import{r as c,o as n}from"./iframe-DTnEqaXa.js";const u=e=>c.useCallback((t,r)=>{var s,i;typeof e=="function"&&e(n(r,{payload:(i=(s=t==null?void 0:t.activePayload)==null?void 0:s[0])==null?void 0:i.payload,activePayloads:t==null?void 0:t.activePayload}))},[e]);export{u};
