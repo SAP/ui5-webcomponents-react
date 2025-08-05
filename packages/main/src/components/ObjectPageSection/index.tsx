@@ -3,10 +3,11 @@
 import type TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { ReactNode, FocusEventHandler, KeyboardEventHandler, FocusEvent } from 'react';
+import type { ReactNode, FocusEventHandler, KeyboardEventHandler, FocusEvent, Ref } from 'react';
 import { Children, isValidElement, forwardRef, useMemo } from 'react';
 import { ObjectPageMode } from '../../enums/ObjectPageMode.js';
 import type { CommonProps } from '../../types/index.js';
+import type { TabDomRef } from '../../webComponents/Tab/index.js';
 import { useObjectPageContext } from '../ObjectPage/context.js';
 import { navigateSections } from '../ObjectPage/ObjectPageUtils.js';
 import { classNames, styleData } from './ObjectPageSection.module.css.js';
@@ -57,6 +58,12 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
    * __Note__: Although this prop accepts all HTML Elements, it is strongly recommended that you only use non-focusable elements to preserve the intended design.
    */
   header?: ReactNode;
+  // the ref is applied in the ObjectPage
+  /**
+   * This ref will be attached to the underlying `ui5-tab` DOM element,
+   * allowing direct access to its instance methods and properties (e.g. `getDomRefInStrip`).
+   */
+  tabRef?: Ref<TabDomRef>;
 }
 
 function recursiveSetTabIndexOnSubSection(el: HTMLElement | null, currentTarget: HTMLElement): void {
@@ -121,6 +128,9 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     header,
     ...rest
   } = props;
+
+  const { tabRef: _0, ...propsWithoutOmitted } = rest;
+
   useStylesheet(styleData, ObjectPageSection.displayName);
   const [componentRef, sectionRef] = useSyncRef(ref);
   const htmlId = `ObjectPageSection-${id}`;
@@ -227,7 +237,7 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
       className={clsx(classNames.section, wrapTitleText && classNames.wrap, className)}
       style={style}
       tabIndex={objectPageMode === ObjectPageMode.Default ? -1 : 0}
-      {...rest}
+      {...propsWithoutOmitted}
       id={htmlId}
       data-component-name="ObjectPageSection"
       onFocus={objectPageMode === ObjectPageMode.Default ? handleFocusDefault : handleFocusIconTabBar}
