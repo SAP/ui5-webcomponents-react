@@ -1,7 +1,7 @@
 <!doctype html>
 <!--suppress HtmlUnknownTarget -->
 <html lang="en">
-  <head>
+  <head><script type="module" src="/vite-inject-mocker-entry.js"></script>
     <meta charset="utf-8" />
     <title>Storybook</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,9 +45,9 @@
       window.LOGLEVEL = 'info';
       window.FRAMEWORK_OPTIONS = {};
       window.CHANNEL_OPTIONS = {};
-      window.FEATURES = {"argTypeTargetsV7":true,"legacyDecoratorFileOrder":false,"disallowImplicitActionsInRenderV8":true};
+      window.FEATURES = {"argTypeTargetsV7":true,"legacyDecoratorFileOrder":false,"disallowImplicitActionsInRenderV8":true,"viewport":true,"highlight":true,"controls":true,"interactions":true,"actions":true,"backgrounds":true,"outline":true,"measure":true};
       window.STORIES = [{"titlePrefix":"","directory":"./docs","files":"*.mdx","importPathMatcher":"^\\.[\\\\/](?:docs\\/(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"Knowledge Base","files":"*.mdx","directory":"./docs/knowledge-base","importPathMatcher":"^\\.[\\\\/](?:docs\\/knowledge-base\\/(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"Charts","files":"**/*.@(mdx|stories.@(mdx|tsx))","directory":"./packages/charts/src/components","importPathMatcher":"^\\.[\\\\/](?:packages\\/charts\\/src\\/components(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.(mdx|stories\\.(mdx|tsx)))$"},{"titlePrefix":"Base","files":"*.@(tsx|jsx)","directory":"./packages/base","importPathMatcher":"^\\.[\\\\/](?:packages\\/base\\/(?!\\.)(?=.)[^/]*?\\.(tsx|jsx))$"},{"titlePrefix":"Testing with Cypress","files":"**/*.mdx","directory":"./packages/cypress-commands","importPathMatcher":"^\\.[\\\\/](?:packages\\/cypress-commands(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"","directory":"./packages/main","files":"**/*.mdx","importPathMatcher":"^\\.[\\\\/](?:packages\\/main(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.mdx)$"},{"titlePrefix":"","directory":"./packages/main","files":"**/*.stories.@(tsx|jsx)","importPathMatcher":"^\\.[\\\\/](?:packages\\/main(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(tsx|jsx))$"},{"titlePrefix":"AI","files":"**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))","directory":"./packages/ai","importPathMatcher":"^\\.[\\\\/](?:packages\\/ai(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.(mdx|stories\\.(mdx|js|jsx|mjs|ts|tsx)))$"},{"titlePrefix":"Legacy Components","files":"**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))","directory":"./packages/compat","importPathMatcher":"^\\.[\\\\/](?:packages\\/compat(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.(mdx|stories\\.(mdx|js|jsx|mjs|ts|tsx)))$"},{"titlePrefix":"Patterns","files":"**/*.@(mdx|stories.@(mdx|tsx))","directory":"./patterns","importPathMatcher":"^\\.[\\\\/](?:patterns(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.(mdx|stories\\.(mdx|tsx)))$"}];
-      window.DOCS_OPTIONS = {"defaultName":"Docs","autodocs":"tag"};
+      window.DOCS_OPTIONS = {"defaultName":"Docs"};
       window.TAGS_OPTIONS = {"dev-only":{"excludeFromDocsStories":true},"docs-only":{"excludeFromSidebar":true},"test-only":{"excludeFromSidebar":true,"excludeFromDocsStories":true}};
 
       
@@ -60,8 +60,7 @@
     <base target="_parent" />
 
 <style>
-  /* While we aren't showing the main block yet, but still preparing, we want everything the user
-     has rendered, which may or may not be in #storybook-root, to be display none */
+  /* While we aren't showing the main block yet, but still preparing, we want everything the user has rendered, which may or may not be in #storybook-root, to be display none */
   .sb-show-preparing-story:not(.sb-show-main) > :not(.sb-preparing-story) {
     display: none;
   }
@@ -257,7 +256,8 @@
     line-height: 19px;
     border-radius: 4px;
 
-    font-family: 'Operator Mono', 'Fira Code Retina', 'Fira Code', 'FiraCode-Retina', 'Andale Mono',
+    font-family:
+      'Operator Mono', 'Fira Code Retina', 'Fira Code', 'FiraCode-Retina', 'Andale Mono',
       'Lucida Console', Consolas, Monaco, monospace;
     margin: 0;
     overflow: auto;
@@ -492,11 +492,31 @@
     margin-bottom: 4px;
     padding: 2px 5px;
   }
+
+  .sb-sr-only,
+  .sb-hidden-until-focus:not(:focus) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: none;
+  }
+
+  .sb-hidden-until-focus {
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+  }
+
+  .sb-hidden-until-focus:focus {
+    opacity: 1;
+  }
 </style>
 
 <script>
   /* globals window */
-  /* eslint-disable no-underscore-dangle */
   try {
     if (window.top !== window) {
       window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.top.__REACT_DEVTOOLS_GLOBAL_HOOK__;
@@ -549,8 +569,13 @@
     margin-bottom: 0;
   }
 
+  @media (min-width: 1330px) {
+    .sbdocs-content {
+      padding-inline-end: 200px;
+    }
+  }
   .sbdocs-content {
-    max-width: 1100px !important;
+    max-width: 1300px !important;
   }
 
   .responsiveGridLayoutItem {
@@ -682,7 +707,9 @@
   }
 </script>
 
-    <script type="module" crossorigin src="./assets/iframe-CaDRBkC3.js"></script>
+    <script type="module" crossorigin src="./assets/iframe-CS0WNVf3.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-Dp1pzeXC.js">
+    <link rel="stylesheet" crossorigin href="./assets/iframe-CIHg7SeG.css">
   </head>
 
   <body>
@@ -809,7 +836,6 @@
     <div id="storybook-root"></div>
     <div id="storybook-docs"></div>
     <script>
-      // eslint-disable-next-line no-underscore-dangle, @typescript-eslint/naming-convention
       function __onViteAppLoadingError(event) {
         const hostname = globalThis.location.hostname;
         if (hostname !== 'localhost' && globalThis.CONFIG_TYPE === 'DEVELOPMENT') {
