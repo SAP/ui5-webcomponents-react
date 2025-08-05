@@ -40,11 +40,53 @@ For further details please refer to the [`react-table` v7 documentation](https:/
 
 ## How to select rows containing active elements?
 
-We've restricted the propagation of `click` events of UI5 Web Components elements such as `Button`, `Link`, `Switch`, etc.
-In case you still want to select the row when clicking the respective element, you can "mark" the event to allow such behavior. <br />
+We've restricted the `click` events of UI5 Web Components elements such as `Button`, `Link`, `Switch`, etc. to not fire the `onRowSelect` or `onRowClick` events of the `AnalyticalTable`. This is to prevent unwanted selection or row click behavior when interacting with these elements.
+In case you still want to select or click the row when clicking the respective element, you can "mark" the event to allow such behavior.
+
 Example: `<Link onClick={(e) => {e.markerAllowTableRowSelection = true;}>My Link Text</Link>`
 
-For other elements or components, we recommend disabling event propagation by setting `event.stopPropagation()` on the respective event. Per default, propagation is not prevented!
+For other elements or components, we recommend either disabling event propagation by calling `event.stopPropagation()` in the respective handler, or checking for the target. **Per default, propagation is not prevented!**
+
+<details>
+
+    <summary>UI5 Web Components that Block Row Selection by Default</summary>
+
+    - UI5-AI-BUTTON
+    - UI5-AI-PROMPT-INPUT
+    - UI5-AVATAR
+    - UI5-BUTTON
+    - UI5-CALENDAR
+    - UI5-CHECKBOX
+    - UI5-COLOR-PICKER
+    - UI5-COMBOBOX
+    - UI5-DATE-PICKER
+    - UI5-DATERANGE-PICKER
+    - UI5-DATETIME-PICKER
+    - UI5-DURATION-PICKER
+    - UI5-DYNAMIC-DATE-RANGE
+    - UI5-FILE-UPLOADER
+    - UI5-ICON
+    - UI5-INPUT
+    - UI5-LINK
+    - UI5-MENU-ITEM
+    - UI5-MENU-ITEM-GROUP
+    - UI5-MULTI-COMBOBOX
+    - UI5-MULTI-INPUT
+    - UI5-RADIO-BUTTON
+    - UI5-RANGE-SLIDER
+    - UI5-RATING-INDICATOR
+    - UI5-SEGMENTED-BUTTON
+    - UI5-SELECT
+    - UI5-SLIDER
+    - UI5-SPLIT-BUTTON
+    - UI5-STEP-INPUT
+    - UI5-SWITCH
+    - UI5-TEXT-AREA
+    - UI5-TIME-PICKER
+    - UI5-TOGGLE-BUTTON
+    - UI5-UPLOAD-COLLECTION
+
+</details>
 
 ## How to stop the table state from automatically resetting when the data changes?
 
