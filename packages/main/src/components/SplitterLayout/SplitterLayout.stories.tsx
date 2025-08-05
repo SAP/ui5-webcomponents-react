@@ -106,7 +106,7 @@ export const Nested: Story = {
   render(args) {
     const [vertical, setVertical] = useState(args.vertical);
     const handleChange = (e) => {
-      setVertical(e.detail.selectedItem.textContent === 'Vertical');
+      setVertical(e.detail.selectedItems[0].textContent === 'Vertical');
     };
     useEffect(() => {
       setVertical(args.vertical);

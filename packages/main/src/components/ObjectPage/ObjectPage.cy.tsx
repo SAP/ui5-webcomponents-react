@@ -1473,6 +1473,311 @@ describe('ObjectPage', () => {
   });
 
   cypressPassThroughTestsFactory(ObjectPage);
+
+  it('focus behavior & keyboard navigation', () => {
+    cy.mount(
+      <>
+        <button data-testid="start">Start for tabbing chain</button>
+        <ObjectPage
+          data-testid="op"
+          titleArea={DPTitle}
+          headerArea={DPContent}
+          footerArea={Footer}
+          style={{ height: '700px' }}
+        >
+          <ObjectPageSection titleText="Goals" id="goals" aria-label="Goals">
+            <Form layout="S1 M2 L3 XL3" labelSpan="S12 M12 L12 XL12">
+              <FormItem labelContent={<Label showColon>Evangelize the UI framework across the company</Label>}>
+                <Text>4 days overdue - Cascaded</Text>
+              </FormItem>
+              <FormItem labelContent={<Label showColon>Get trained in development management direction</Label>}>
+                <Text>Due Nov, 21</Text>
+              </FormItem>
+              <FormItem labelContent={<Label showColon>Mentor junior developers</Label>}>
+                <Text>Due Dec, 31 - Cascaded</Text>
+              </FormItem>
+            </Form>
+          </ObjectPageSection>
+          <ObjectPageSection id={'dummy'} titleText={'Dummy'} aria-label={'Dummy'}>
+            Dummy
+          </ObjectPageSection>
+          <ObjectPageSection titleText="Personal" id="personal" aria-label="Personal">
+            <ObjectPageSubSection
+              titleText="Connect"
+              id="personal-connect"
+              aria-label="Connect"
+              actions={
+                <>
+                  <Button design={ButtonDesign.Emphasized} data-testid="customAction">
+                    Custom Action
+                  </Button>
+                </>
+              }
+            >
+              <Form style={{ alignItems: 'baseline' }}>
+                <FormGroup headerText="Phone Numbers">
+                  <FormItem labelContent={<Label showColon>Home</Label>}>
+                    <Text>+1 234-567-8901</Text>
+                    <Text>+1 234-567-5555</Text>
+                  </FormItem>
+                </FormGroup>
+                <FormGroup headerText="Social Accounts">
+                  <FormItem labelContent={<Label showColon>LinkedIn</Label>}>
+                    <Text>/DeniseSmith</Text>
+                  </FormItem>
+                  <FormItem labelContent={<Label showColon>Twitter</Label>}>
+                    <Text>@DeniseSmith</Text>
+                  </FormItem>
+                </FormGroup>
+                <FormGroup headerText="Addresses">
+                  <FormItem labelContent={<Label showColon>Home Address</Label>}>
+                    <Text>2096 Mission Street</Text>
+                  </FormItem>
+                  <FormItem labelContent={<Label showColon>Mailing Address</Label>}>
+                    <Text>PO Box 32114</Text>
+                  </FormItem>
+                </FormGroup>
+                <FormGroup headerText="Mailing Address">
+                  <FormItem labelContent={<Label showColon>Work</Label>}>
+                    <Text>DeniseSmith@sap.com</Text>
+                  </FormItem>
+                </FormGroup>
+              </Form>
+            </ObjectPageSubSection>
+            <ObjectPageSubSection
+              titleText="Payment Information"
+              id="personal-payment-information"
+              aria-label="Payment Information"
+            >
+              <Form>
+                <FormGroup headerText="Salary">
+                  <FormItem labelContent={<Label showColon>Bank Transfer</Label>}>
+                    <Text>Money Bank, Inc.</Text>
+                  </FormItem>
+                </FormGroup>
+                <FormGroup headerText="Payment method for Expenses">
+                  <FormItem labelContent={<Label showColon>Extra Travel Expenses</Label>}>
+                    <Text>Cash 100 USD</Text>
+                  </FormItem>
+                </FormGroup>
+              </Form>
+            </ObjectPageSubSection>
+          </ObjectPageSection>
+          <ObjectPageSection titleText="Employment" id="employment" aria-label="Employment">
+            <ObjectPageSubSection
+              titleText="Job Information"
+              id="employment-job-information"
+              aria-label="Job Information"
+            >
+              <Form>
+                <FormItem labelContent={<Label showColon>Job Classification</Label>}>
+                  <FlexBox direction={FlexBoxDirection.Column}>
+                    <Text>Senior UI Developer</Text>
+                    <Label>(UIDEV-SR)</Label>
+                  </FlexBox>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>Job Title</Label>}>
+                  <Text>Developer</Text>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>Employee Class</Label>}>
+                  <Text>Employee</Text>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>Manager</Label>}>
+                  <FlexBox direction={FlexBoxDirection.Column}>
+                    <Text>Dan Smith</Text>
+                    <Label>Development Manager</Label>
+                  </FlexBox>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>Pay Grade</Label>}>
+                  <Text>Salary Grade 18 (GR-14)</Text>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>FTE</Label>}>
+                  <Text>1</Text>
+                </FormItem>
+              </Form>
+            </ObjectPageSubSection>
+            <ObjectPageSubSection
+              titleText="Employee Details"
+              id="employment-employee-details"
+              aria-label="Employee Details"
+            >
+              <Form>
+                <FormItem labelContent={<Label showColon>Start Date</Label>}>
+                  <Text>Jan 01, 2018</Text>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>End Date</Label>}>
+                  <Text>Dec 31, 9999</Text>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>Payroll Start Date</Label>}>
+                  <Text>Jan 01, 2018</Text>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>Benefits Start Date</Label>}>
+                  <Text>Jul 01, 2018</Text>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>Company Car Eligibility</Label>}>
+                  <Text>Jan 01, 2021</Text>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>Equity Start Date</Label>}>
+                  <Text>Jul 01, 2018</Text>
+                </FormItem>
+              </Form>
+            </ObjectPageSubSection>
+            <ObjectPageSubSection
+              titleText="Job Relationship"
+              id="employment-job-relationship"
+              aria-label="Job Relationship"
+            >
+              <Form>
+                <FormItem labelContent={<Label showColon>Manager</Label>}>
+                  <Text>John Doe</Text>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>Scrum Master</Label>}>
+                  <Text>Michael Adams</Text>
+                </FormItem>
+                <FormItem labelContent={<Label showColon>Product Owner</Label>}>
+                  <Text>John Miller</Text>
+                </FormItem>
+              </Form>
+            </ObjectPageSubSection>
+          </ObjectPageSection>
+          <ObjectPageSection id={'5'} titleText={'SingleSectionInput'} aria-label="SingleSectionInput">
+            <Input data-testid="single" />
+          </ObjectPageSection>
+          <ObjectPageSection id={'6'} titleText={'SubSectionsInput'} aria-label="SubSectionsInput">
+            <ObjectPageSubSection id="6.1" titleText="6.1" aria-label="6.1">
+              Some Text
+            </ObjectPageSubSection>
+            <ObjectPageSubSection id="6.2" titleText="6.2" aria-label="6.2">
+              <Input data-testid="sub" />
+            </ObjectPageSubSection>
+          </ObjectPageSection>
+        </ObjectPage>
+      </>,
+    );
+
+    cy.get('[data-component-name="ObjectPageSection"]').as('sections');
+    cy.get('@sections').eq(0).should('have.attr', 'tabindex', 0);
+    cy.get('@sections').each((section, index) => {
+      if (index !== 0) {
+        cy.wrap(section).should('have.attr', 'tabindex', -1);
+      }
+    });
+    cy.get('[data-component-name="ObjectPageSubSection"]').should('have.attr', 'tabindex', -1);
+
+    cy.findByTestId('start').focus();
+    // breadcrumbs
+    cy.realPress('Tab');
+    //toolbar
+    cy.realPress('Tab');
+    cy.realPress('Tab');
+    // header content (links)
+    cy.realPress('Tab');
+    cy.realPress('Tab');
+    cy.realPress('Tab');
+    // anchor buttons
+    cy.realPress('Tab');
+    cy.realPress('Tab');
+    // tabbar
+    cy.realPress('Tab');
+    // first section
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'aria-label', 'Goals').and('have.attr', 'tabindex', 0);
+    // Personal: custom action
+    cy.realPress('Tab');
+    cy.findByTestId('customAction').should('be.focused');
+    // SingleSectionInput
+    cy.realPress('Tab');
+    cy.findByTestId('single').should('be.focused');
+    // 6.2 input
+    cy.realPress('Tab');
+    cy.findByTestId('sub').should('be.focused');
+    //footer
+    cy.realPress('Tab');
+    cy.findByTestId('footer-accept-btn').should('be.focused');
+    // 6.2 input
+    cy.realPress(['Shift', 'Tab']);
+    cy.findByTestId('sub').should('be.focused');
+    // 6.2 subsection
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'aria-label', '6.2').and('have.attr', 'tabindex', 0);
+    // SubSectionsInput
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'aria-label', 'SubSectionsInput').and('have.attr', 'tabindex', 0);
+    // SingleSectionInput
+    cy.realPress(['Shift', 'Tab']);
+    cy.findByTestId('single').should('be.focused');
+    // section SingleSectionInput
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'aria-label', 'SingleSectionInput').and('have.attr', 'tabindex', 0);
+    // Personal: custom action btn
+    cy.realPress(['Shift', 'Tab']);
+    cy.findByTestId('customAction').should('be.focused');
+    // Personal: Connect - subsection
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'aria-label', 'Connect').and('have.attr', 'tabindex', 0);
+    // Personal: section
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'aria-label', 'Personal').and('have.attr', 'tabindex', 0);
+    // tabbar
+    cy.realPress(['Shift', 'Tab']);
+
+    cy.get('@sections').eq(2).should('have.attr', 'tabindex', 0);
+    cy.get('@sections').each((section, index) => {
+      if (index !== 2) {
+        cy.wrap(section).should('have.attr', 'tabindex', -1);
+      }
+    });
+    cy.get('[data-component-name="ObjectPageSubSection"]').should('have.attr', 'tabindex', -1);
+
+    // click first Tab
+    cy.focused().realClick();
+    cy.focused().should('have.attr', 'aria-label', 'Goals').and('have.attr', 'tabindex', 0);
+
+    // arrow section navigation
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'aria-label', 'Goals').and('have.attr', 'tabindex', 0);
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'aria-label', 'Dummy').and('have.attr', 'tabindex', 0);
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'aria-label', 'Personal').and('have.attr', 'tabindex', 0);
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'aria-label', 'Employment').and('have.attr', 'tabindex', 0);
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'aria-label', 'SingleSectionInput').and('have.attr', 'tabindex', 0);
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'aria-label', 'SubSectionsInput').and('have.attr', 'tabindex', 0);
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'aria-label', 'SubSectionsInput').and('have.attr', 'tabindex', 0);
+
+    // arrow subsection navigation
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'aria-label', '6.1').and('have.attr', 'tabindex', 0);
+    cy.realPress('ArrowUp');
+    cy.focused().should('have.attr', 'aria-label', '6.1').and('have.attr', 'tabindex', 0);
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'aria-label', '6.2').and('have.attr', 'tabindex', 0);
+
+    cy.get('[ui5-tabcontainer]').findUi5TabOpenPopoverButtonByText('Employment').click();
+    cy.get('[ui5-responsive-popover]').should('be.visible');
+    cy.realPress('ArrowDown');
+    cy.realPress('Enter');
+    cy.focused().should('have.attr', 'aria-label', 'Employee Details').and('have.attr', 'tabindex', 0);
+
+    cy.get('[data-component-name="ObjectPageSection"]').as('sections');
+    cy.get('@sections').eq(3).should('have.attr', 'tabindex', 0);
+    cy.get('@sections').each((section, index) => {
+      if (index !== 3) {
+        cy.wrap(section).should('have.attr', 'tabindex', -1);
+      }
+    });
+    cy.get('[data-component-name="ObjectPageSubSection"]').as('subsections');
+    cy.get('@subsections').eq(3).should('have.attr', 'tabindex', 0);
+    cy.get('@subsections').each((section, index) => {
+      if (index !== 3) {
+        cy.wrap(section).should('have.attr', 'tabindex', -1);
+      }
+    });
+  });
 });
 
 const DPTitle = (
@@ -1642,7 +1947,9 @@ const Footer = (
     design={BarDesign.FloatingFooter}
     endContent={
       <>
-        <Button design={ButtonDesign.Positive}>Accept</Button>
+        <Button design={ButtonDesign.Positive} data-testid="footer-accept-btn">
+          Accept
+        </Button>
         <Button design={ButtonDesign.Negative}>Reject</Button>
       </>
     }

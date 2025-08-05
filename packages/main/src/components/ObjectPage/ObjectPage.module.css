@@ -130,8 +130,7 @@
 
 @container (max-width: 599px) {
   .header,
-  .headerContainer,
-  .content {
+  .headerContainer {
     padding-inline: 1rem;
   }
 
@@ -142,8 +141,7 @@
 
 @container (min-width: 600px) and (max-width: 1439px) {
   .header,
-  .headerContainer,
-  .content {
+  .headerContainer {
     padding-inline: 2rem;
   }
 
@@ -154,8 +152,7 @@
 
 @container (min-width: 1440px) {
   .header,
-  .headerContainer,
-  .content {
+  .headerContainer {
     padding-inline: 3rem;
   }
 
