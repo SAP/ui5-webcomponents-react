@@ -57,6 +57,7 @@ export interface RadialChartProps
    */
   onClick?: (
     event: CustomEvent<{
+      // todo: map new values to old ones to prevent breaking changes
       payload: unknown;
       activePayloads: Record<string, unknown>[];
       dataIndex: number;

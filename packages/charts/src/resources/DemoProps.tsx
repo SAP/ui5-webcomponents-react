@@ -269,53 +269,53 @@ export const secondaryDimensionDataSet = [
   {
     name: 'January / Month',
     users: 100,
-    dimension: 'C4S Components',
+    dimension: 'Checkout',
   },
   {
     name: 'February / Month',
-    users: 230,
-    dimension: 'C4S Components',
+    users: 180,
+    dimension: 'Checkout',
   },
   {
     name: 'March / Month',
     users: 240,
-    dimension: 'C4S Components',
+    dimension: 'Checkout',
   },
   {
     name: 'January / Month',
-    users: 20,
-    dimension: 'Harmnony Insight',
+    users: 180,
+    dimension: 'Shopping Cart',
   },
   {
-    name: 'Februar / Month',
+    name: 'February / Month',
     users: 220,
-    dimension: 'Harmnony Insight',
+    dimension: 'Shopping Cart',
   },
   {
     name: 'March / Month',
-    users: 200,
-    dimension: 'Harmnony Insight',
+    users: 250,
+    dimension: 'Shopping Cart',
   },
   {
     name: 'January / Month',
     users: 250,
-    dimension: 'Intelligent Workplace',
+    dimension: 'Entry Page',
   },
   {
     name: 'February / Month',
     users: 240,
-    dimension: 'Intelligent Workplace',
+    dimension: 'Entry Page',
   },
   {
     name: 'March / Month',
     users: 280,
-    dimension: 'Intelligent Workplace',
+    dimension: 'Entry Page',
   },
 ];
 
 export const scatterComplexDataSet = [
   {
-    label: 'Users',
+    label: 'EMEA',
     data: [
       {
         users: 120,
@@ -600,6 +600,45 @@ export const complexBulletDataset = [
     users: 100,
     sessions: 80,
     volume: 320,
+  },
+];
+
+export const radarChartDataset = [
+  {
+    name: 'Clarity',
+    alpha: 95,
+    beta: 75,
+    gamma: 52,
+  },
+  {
+    name: 'Responsiveness',
+    alpha: 90,
+    beta: 75,
+    gamma: 85,
+  },
+  {
+    name: 'Flexibility',
+    alpha: 89,
+    beta: 70,
+    gamma: 50,
+  },
+  {
+    name: 'Innovation',
+    alpha: 65,
+    beta: 78,
+    gamma: 35,
+  },
+  {
+    name: 'Reliability',
+    alpha: 85,
+    beta: 80,
+    gamma: 60,
+  },
+  {
+    name: 'Efficiency',
+    alpha: 92,
+    beta: 75,
+    gamma: 55,
   },
 ];
 

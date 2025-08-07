@@ -2,7 +2,7 @@
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import { forwardRef, useCallback } from 'react';
+import { useRef, forwardRef, useCallback } from 'react';
 import {
   Bar,
   BarChart as BarChartLib,
@@ -17,7 +17,6 @@ import {
   YAxis,
 } from 'recharts';
 import type { YAxisProps } from 'recharts';
-import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useCancelAnimationFallback } from '../../hooks/useCancelAnimationFallback.js';
 import { useChartMargin } from '../../hooks/useChartMargin.js';
 import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
@@ -27,7 +26,7 @@ import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights.js';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter.js';
-import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { ActivePayload, IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
 import type { IChartDimension } from '../../interfaces/IChartDimension.js';
 import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
@@ -47,12 +46,6 @@ const measureDefaults = {
   formatter: defaultFormatter,
   opacity: 1,
 };
-
-const valueAccessor =
-  (attribute) =>
-  ({ payload }) => {
-    return getValueByDataKey(payload, attribute);
-  };
 
 interface MeasureConfig extends IChartMeasure {
   /**
@@ -165,7 +158,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     ...props.chartConfig,
   };
   const referenceLine = chartConfig.referenceLine;
-
   const { dimensions, measures } = usePrepareDimensionsAndMeasures(
     props.dimensions,
     props.measures,
@@ -187,7 +179,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     : 0;
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
-
+  const activePayloadsRef = useRef<ActivePayload[]>(measures);
   const onItemLegendClick = useLegendItemClick(onLegendClick);
   const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
@@ -210,7 +202,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
     [onDataPointClick],
   );
 
-  const onClickInternal = useOnClickInternal(onClick);
+  const onClickInternal = useOnClickInternal(onClick, dataset, activePayloadsRef);
 
   const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;
@@ -313,17 +305,28 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
           })}
         {isMounted &&
           measures.map((element, index) => {
+            const color = element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`;
+            const dataKey = element.accessor;
+            const name = element.label ?? element.accessor;
+            const opacity = element.opacity ?? 1;
+            activePayloadsRef.current[index].color = color;
+            activePayloadsRef.current[index].stroke = color;
+            activePayloadsRef.current[index].dataKey = dataKey;
+            activePayloadsRef.current[index].hide = element.hide;
+            activePayloadsRef.current[index].name = name;
+            activePayloadsRef.current[index].fillOpacity = opacity;
+            activePayloadsRef.current[index].strokeOpacity = opacity;
             return (
               <Bar
-                stackId={element.stackId}
-                fillOpacity={element.opacity}
                 key={element.reactKey}
-                name={element.label ?? element.accessor}
+                fill={color}
+                stroke={color}
+                stackId={element.stackId}
+                name={name}
+                fillOpacity={element.opacity}
                 strokeOpacity={element.opacity}
                 type="monotone"
-                dataKey={element.accessor}
-                fill={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
-                stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
+                dataKey={dataKey}
                 barSize={element.width}
                 onClick={onDataPointClickInternal}
                 isAnimationActive={!noAnimation}
@@ -331,8 +334,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
                 onAnimationEnd={handleBarAnimationEnd}
               >
                 <LabelList
-                  data={dataset}
-                  valueAccessor={valueAccessor(element.accessor)}
+                  dataKey={element.accessor}
                   content={<ChartDataLabel config={element} chartType="bar" position={'insideRight'} />}
                 />
                 {dataset.map((data, i) => {
@@ -364,7 +366,6 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             label={referenceLine?.label}
           />
         )}
-        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
         {tooltipConfig?.active !== false && (
           <Tooltip
             cursor={tooltipFillOpacity}

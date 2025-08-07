@@ -52,7 +52,18 @@ export const Default: Story = {};
 export const WithCustomSize: Story = {
   args: {
     layout: 'vertical',
-    dimensions: [{ accessor: 'name', formatter: (element) => element.slice(0, 3) }],
+    dimensions: [
+      {
+        accessor: 'name',
+        formatter: (element) => {
+          //todo: remove once issue has been fixed (should never be number in this case)
+          if (typeof element === 'string') {
+            return element.slice(0, 3);
+          }
+          return element;
+        },
+      },
+    ],
     measures: [
       {
         accessor: 'users',

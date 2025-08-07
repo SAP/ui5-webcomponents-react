@@ -180,6 +180,8 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
   const preventOnClickCall = useRef(0);
+
+  //todo: check this
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex) => {
       if (eventOrIndex.dataKey && typeof onDataPointClick === 'function') {
@@ -265,6 +267,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
           orientation={isRTL === true ? 'right' : 'left'}
           axisLine={chartConfig.yAxisVisible}
           tickLine={tickLineConfig}
+          // todo: multiple `yAxisId`s cause the Cartesian Grid to break
           yAxisId="left"
           interval={0}
           tick={chartConfig.yAxisTicksVisible && <YAxisTicks formatter={primaryMeasure?.formatter} />}

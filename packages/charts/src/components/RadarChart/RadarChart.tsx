@@ -125,8 +125,10 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
   const preventOnClickCall = useRef(false);
+  //todo: check this
   const onClickInternal = useCallback(
     (payload, event) => {
+      console.log(payload);
       if (typeof onClick === 'function' && !preventOnClickCall.current) {
         onClick(
           enrichEventWithDetails(event, {
@@ -217,8 +219,6 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
           />
         )}
         {!noLegend && (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
