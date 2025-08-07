@@ -1,9 +1,13 @@
-import { Canvas } from '@storybook/addon-docs';
+import { Canvas } from '@storybook/addon-docs/blocks';
 
 ### With Custom Tooltip Config
 
 Via the `tooltipConfig` prop you can override the configuration object for the internally used `recharts` Tooltip popover that is displayed when hovering over data points.
 You can find all possible configuration properties [here](https://recharts.org/en-US/api/Tooltip).
+
+**Note**: It is possible to override the internally used tooltip configurations. Use with caution!
+
+<p>{props.additionalDescription}</p>
 
 <Canvas of={props.of} />
 

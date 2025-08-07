@@ -1,6 +1,6 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { SideNavigationItem } from '../SideNavigationItem';
 import { SideNavigationSubItem } from '../SideNavigationSubItem';
 import { SideNavigationGroup } from '../SideNavigationGroup';
@@ -11,7 +11,7 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 [//]: # 'todo: remove once `_ui5type.references` is available in CEM again'
 
-<DocsHeader since="0.10.0" subComponents={['SideNavigationItem', 'SideNavigationSubItem', 'SideNavigationGroup']} />
+<DocsHeader of={ComponentStories} since="0.10.0" subComponents={['SideNavigationItem', 'SideNavigationSubItem', 'SideNavigationGroup']} />
 
 <br />
 
@@ -28,16 +28,16 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## SideNavigationItem
 
 <Description of={SideNavigationItem} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationItem} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationItem} />
 
 ## SideNavigationSubItem
 
 <Description of={SideNavigationSubItem} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationSubItem} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationSubItem} />
 
 ## SideNavigationGroup
 
 <Description of={SideNavigationGroup} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationGroup} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationGroup} />
 
 <Footer />

@@ -13,6 +13,11 @@ on:
         description: 'pre-release'
         required: false
         default: false
+      skip_versioning:
+        type: boolean
+        description: 'Skip lerna version step'
+        required: false
+        default: false
 
 jobs:
   test:
@@ -81,6 +86,7 @@ jobs:
           yarn install --immutable
 
       - name: version
+        if: github.event.inputs.skip_versioning != 'true'
         run: |
           npm config set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
 

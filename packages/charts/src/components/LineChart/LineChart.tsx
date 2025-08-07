@@ -169,7 +169,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     chartConfig?.secondYAxis?.dataKey,
   );
 
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
 
@@ -252,7 +252,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
               dataKey={dimension.accessor}
               xAxisId={index}
               interval={dimension?.interval ?? (isBigDataSet ? 'preserveStart' : 0)}
-              tick={<XAxisTicks config={dimension} />}
+              tick={<XAxisTicks formatter={dimension?.formatter} />}
               tickLine={index < 1}
               axisLine={index < 1}
               height={chartConfig.xAxisVisible ? xAxisHeights[index] : 0}
@@ -269,9 +269,8 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
           tickLine={tickLineConfig}
           // todo: multiple `yAxisId`s cause the Cartesian Grid to break
           yAxisId="left"
-          tickFormatter={primaryMeasure?.formatter}
           interval={0}
-          tick={chartConfig.yAxisTicksVisible && <YAxisTicks config={primaryMeasure} />}
+          tick={chartConfig.yAxisTicksVisible && <YAxisTicks formatter={primaryMeasure?.formatter} />}
           width={yAxisWidth}
           {...chartConfig.yAxisConfig}
         />
@@ -283,7 +282,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
             }}
             tick={
               <YAxisTicks
-                config={secondaryMeasure}
+                formatter={secondaryMeasure?.formatter}
                 secondYAxisConfig={{
                   color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
@@ -292,8 +291,6 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation={isRTL === true ? 'left' : 'right'}
             yAxisId="right"
@@ -309,8 +306,6 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
               key={element.reactKey}
               name={element.label ?? element.accessor}
               strokeOpacity={element.opacity}
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
               label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
               type="monotone"
               dataKey={element.accessor}
@@ -346,7 +341,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}

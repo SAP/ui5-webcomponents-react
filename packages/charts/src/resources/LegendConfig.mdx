@@ -1,9 +1,11 @@
-import { Canvas } from '@storybook/addon-docs';
+import { Canvas } from '@storybook/addon-docs/blocks';
 
 ### With Custom Legend Config
 
 Via the `chartConfig.legendConfig` property you can override the configuration object for the internally used `recharts` Legend component.
 You can find all possible configuration properties [here](https://recharts.org/en-US/api/Legend).
+
+**Note**: It is possible to override the internally used Legend configurations. Use with caution!
 
 <Canvas of={props.of} />
 

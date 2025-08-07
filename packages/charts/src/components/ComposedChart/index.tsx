@@ -197,7 +197,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
     chartConfig?.secondYAxis?.dataKey,
   );
 
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
   const dataKeys = measures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
@@ -256,7 +256,6 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
   const measureAxisProps = {
     axisLine: chartConfig.yAxisVisible,
     tickLine: tickLineConfig,
-    tickFormatter: primaryMeasure?.formatter,
     interval: 0,
   };
 
@@ -311,14 +310,14 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             axisProps.type = 'category';
             axisProps.visible = false;
             axisProps.hide = !chartConfig.yAxisVisible;
-            axisProps.tick = <YAxisTicks config={dimension} />;
+            axisProps.tick = <YAxisTicks formatter={dimension?.formatter} />;
             axisProps.yAxisId = index;
             axisProps.width = chartConfig.yAxisWidth ?? yAxisWidth;
             AxisComponent = YAxis;
             axisProps.orientation = isRTL ? 'right' : 'left';
           } else {
             axisProps.dataKey = dimension.accessor;
-            axisProps.tick = <XAxisTicks config={dimension} />;
+            axisProps.tick = <XAxisTicks formatter={dimension?.formatter} />;
             axisProps.hide = !chartConfig.xAxisVisible;
             axisProps.xAxisId = index;
             axisProps.height = xAxisHeights[index];
@@ -334,7 +333,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             yAxisId="primary"
             width={chartConfig.yAxisWidth ?? yAxisWidth}
             orientation={isRTL ? 'right' : 'left'}
-            tick={chartConfig.yAxisLabelsVisible ? <YAxisTicks config={primaryMeasure} /> : false}
+            tick={chartConfig.yAxisLabelsVisible ? <YAxisTicks formatter={primaryMeasure?.formatter} /> : false}
             {...chartConfig.yAxisConfig}
           />
         )}
@@ -344,7 +343,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             reversed={isRTL}
             xAxisId="primary"
             type="number"
-            tick={<XAxisTicks config={primaryMeasure} />}
+            tick={<XAxisTicks formatter={primaryMeasure?.formatter} />}
             {...chartConfig.xAxisConfig}
           />
         )}
@@ -357,7 +356,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             }}
             tick={
               <YAxisTicks
-                config={secondaryMeasure}
+                formatter={secondaryMeasure?.formatter}
                 secondYAxisConfig={{
                   color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
@@ -366,8 +365,6 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             label={{
               value: chartConfig.secondYAxis.name,
               offset: 2,
@@ -388,7 +385,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             }}
             tick={
               <XAxisTicks
-                config={secondaryMeasure}
+                formatter={secondaryMeasure?.formatter}
                 secondYAxisConfig={{
                   color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
@@ -397,8 +394,6 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="top"
             interval={0}
@@ -418,13 +413,12 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
             label={referenceLine?.label}
           />
         )}
-        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
         {tooltipConfig?.active !== false && (
           <Tooltip
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}
@@ -464,6 +458,7 @@ const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref
               chartElementProps.strokeWidth = element.width;
               chartElementProps.strokeOpacity = element.opacity;
               chartElementProps.dot = element.showDot ?? !isBigDataSet;
+              chartElementProps.hide = element.hide;
 
               activePayloadsRef.current[index].fillOpacity = opacity;
               activePayloadsRef.current[index].strokeOpacity = opacity;

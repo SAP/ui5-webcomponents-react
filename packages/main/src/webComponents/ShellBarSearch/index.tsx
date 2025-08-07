@@ -20,6 +20,12 @@ interface ShellBarSearchAttributes {
   accessibleName?: string | undefined;
 
   /**
+   * Indicates whether the suggestions popover should be opened on focus.
+   * @default false
+   */
+  autoOpen?: boolean;
+
+  /**
    * Indicates whether a loading indicator should be shown in the popup.
    * @default false
    */
@@ -200,7 +206,7 @@ interface ShellBarSearchPropTypes
 const ShellBarSearch = withWebComponent<ShellBarSearchPropTypes, ShellBarSearchDomRef>(
   'ui5-shellbar-search',
   ['accessibleDescription', 'accessibleName', 'placeholder', 'value'],
-  ['loading', 'noTypeahead', 'open', 'showClearIcon'],
+  ['autoOpen', 'loading', 'noTypeahead', 'open', 'showClearIcon'],
   ['action', 'filterButton', 'illustration', 'messageArea', 'scopes'],
   ['close', 'input', 'open', 'scope-change', 'search'],
 );

@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { complexDataSet, legendConfig } from '../../resources/DemoProps.js';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { complexDataSet, legendConfig, tooltipConfig } from '../../resources/DemoProps.js';
 import { ColumnChartWithTrend } from './ColumnChartWithTrend.js';
 
 const meta = {
@@ -18,7 +18,6 @@ const meta = {
       {
         accessor: 'users',
         label: 'Users',
-        formatter: (val) => val.toLocaleString(),
         type: 'line',
       },
       {
@@ -43,4 +42,8 @@ export const LoadingPlaceholder: Story = {
 
 export const WithCustomLegendConfig: Story = {
   args: legendConfig,
+};
+
+export const WithCustomTooltipConfig: Story = {
+  args: tooltipConfig,
 };

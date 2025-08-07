@@ -181,7 +181,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
   const [componentRef, chartRef] = useSyncRef<any>(ref);
   const activePayloadsRef = useRef<ActivePayload[]>(measures);
   const onItemLegendClick = useLegendItemClick(onLegendClick);
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
   const onDataPointClickInternal = useCallback(
     (payload, i, event) => {
@@ -250,10 +250,9 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
           <XAxis
             interval={0}
             type="number"
-            tick={<XAxisTicks config={primaryMeasure} />}
+            tick={<XAxisTicks formatter={primaryMeasure?.formatter} />}
             axisLine={chartConfig.xAxisVisible}
             tickLine={tickLineConfig}
-            tickFormatter={primaryMeasure?.formatter}
             height={xAxisHeight}
             reversed={isRTL}
             {...chartConfig.xAxisConfig}
@@ -267,7 +266,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             }}
             tick={
               <XAxisTicks
-                config={secondaryMeasure}
+                formatter={secondaryMeasure?.formatter}
                 secondYAxisConfig={{
                   color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
@@ -293,7 +292,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
                 type="category"
                 key={dimension.reactKey}
                 dataKey={dimension.accessor}
-                tick={<YAxisTicks config={dimension} />}
+                tick={<YAxisTicks formatter={dimension?.formatter} />}
                 tickLine={index < 1}
                 axisLine={index < 1}
                 yAxisId={index}
@@ -372,7 +371,7 @@ const BarChart = forwardRef<HTMLDivElement, BarChartProps>((props, ref) => {
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}

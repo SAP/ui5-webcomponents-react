@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents/dist/List.js';
 import type {
+  ListAccessibilityAttributes,
   ListItemClickEventDetail,
   ListItemCloseEventDetail,
   ListItemDeleteEventDetail,
@@ -19,6 +20,25 @@ import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 
 interface ListAttributes {
+  /**
+   * Defines additional accessibility attributes on different areas of the component.
+   *
+   * The accessibilityAttributes object has the following field:
+   *
+   *  - **growingButton**: `growingButton.name`.
+   *
+   *  The accessibility attributes support the following values:
+   *
+   * - **name**: Defines the accessible ARIA name of the growing button.
+   * Accepts any string.
+   *
+   *  **Note:** The `accessibilityAttributes` property is in an experimental state and is a subject to change.
+   *
+   * **Note:** Available since [v2.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.13.0) of **@ui5/webcomponents**.
+   * @default {}
+   */
+  accessibilityAttributes?: ListAccessibilityAttributes;
+
   /**
    * Defines the accessible description of the component.
    *
@@ -323,6 +343,7 @@ interface ListPropTypes
 const List = withWebComponent<ListPropTypes, ListDomRef>(
   'ui5-list',
   [
+    'accessibilityAttributes',
     'accessibleDescription',
     'accessibleDescriptionRef',
     'accessibleName',

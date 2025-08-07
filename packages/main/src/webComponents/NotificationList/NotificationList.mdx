@@ -1,6 +1,6 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
 import { NotificationListGroupItem } from '../NotificationListGroupItem';
@@ -9,7 +9,7 @@ import * as ComponentStories from './NotificationList.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="2.0.0" />
+<DocsHeader of={ComponentStories} since="2.0.0" />
 
 <br />
 
@@ -34,21 +34,21 @@ import * as ComponentStories from './NotificationList.stories';
 ## NotificationListItem
 
 <Description of={NotificationListItem} />
-<ArgTypesWithNote hideHTMLPropsNote of={NotificationListItem} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote of={NotificationListItem} />
 
 ## NotificationListGroupItem
 
 <Description of={NotificationListGroupItem} />
-<ArgTypesWithNote hideHTMLPropsNote of={NotificationListGroupItem} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote of={NotificationListGroupItem} />
 
 ## Menu
 
 <Description of={Menu} />
-<ArgTypesWithNote hideHTMLPropsNote of={Menu} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote of={Menu} />
 
 ## MenuItem
 
 <Description of={MenuItem} />
-<ArgTypesWithNote hideHTMLPropsNote of={MenuItem} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote of={MenuItem} />
 
 <Footer />

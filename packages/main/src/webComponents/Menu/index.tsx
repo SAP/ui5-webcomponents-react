@@ -56,7 +56,7 @@ interface MenuAttributes {
    * **Note:** Available since [v1.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    * @default undefined
    */
-  opener?: HTMLElement | string | undefined;
+  opener?: HTMLElement | string | null | undefined;
 }
 
 interface MenuDomRef extends Required<MenuAttributes>, Ui5DomRef {}

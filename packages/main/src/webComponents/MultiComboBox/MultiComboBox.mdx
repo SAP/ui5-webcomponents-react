@@ -1,6 +1,6 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { MultiComboBoxItemGroup } from '../MultiComboBoxItemGroup';
 import { Token } from '../Token';
 import { MultiComboBoxItem } from '../MultiComboBoxItem';
@@ -9,7 +9,7 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.4.0" />
+<DocsHeader of={ComponentStories} since="0.4.0" />
 
 <br />
 
@@ -32,16 +32,16 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## MultiComboBoxItem
 
 <Description of={MultiComboBoxItem} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MultiComboBoxItem} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={MultiComboBoxItem} />
 
 ## MultiComboBoxItemGroup
 
 <Description of={MultiComboBoxItemGroup} />
-<ArgTypesWithNote hideHTMLPropsNote exclude={excludePropsForAbstract} of={MultiComboBoxItemGroup} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={MultiComboBoxItemGroup} />
 
 ## Token
 
 <Description of={Token} />
-<ArgTypesWithNote hideHTMLPropsNote of={Token} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote of={Token} />
 
 <Footer />

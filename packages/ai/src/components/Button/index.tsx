@@ -2,11 +2,35 @@
 
 import '@ui5/webcomponents-ai/dist/Button.js';
 import type ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
+import type { AIButtonAccessibilityAttributes } from '@ui5/webcomponents-ai/dist/Button.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-react-base';
 import type { ReactNode } from 'react';
 
 interface ButtonAttributes {
+  /**
+   * Defines the additional accessibility attributes that will be applied to the component.
+   *
+   * This property allows for fine-tuned control of ARIA attributes for screen reader support.
+   * It accepts an object with the following optional fields:
+   *
+   * - **root**: Accessibility attributes that will be applied to the root element.
+   *  - **hasPopup**: Indicates the availability and type of interactive popup element (such as a menu or dialog).
+   *    Accepts string values: `"dialog"`, `"grid"`, `"listbox"`, `"menu"`, or `"tree"`.
+   *  - **roleDescription**: Defines a human-readable description for the button's role.
+   *    Accepts any string value.
+   *
+   * - **arrowButton**: Accessibility attributes that will be applied to the arrow (split) button element.
+   *  - **hasPopup**: Indicates the type of popup triggered by the arrow button.
+   *    Accepts string values: `"dialog"`, `"grid"`, `"listbox"`, `"menu"`, or `"tree"`.
+   *  - **expanded**: Indicates whether the popup controlled by the arrow button is currently expanded.
+   *    Accepts boolean values: `true` or `false`.
+   *
+   * **Note:** Available since [v2.6.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.6.0) of **@ui5/webcomponents-ai**.
+   * @default {}
+   */
+  accessibilityAttributes?: AIButtonAccessibilityAttributes;
+
   /**
    * Defines the active state of the arrow button in split mode.
    * Set to true when the button is in split mode and a menu with additional options
@@ -97,7 +121,7 @@ interface ButtonPropTypes
  */
 const Button = withWebComponent<ButtonPropTypes, ButtonDomRef>(
   'ui5-ai-button',
-  ['design', 'state'],
+  ['accessibilityAttributes', 'design', 'state'],
   ['arrowButtonPressed', 'disabled'],
   [],
   ['arrow-button-click', 'click'],

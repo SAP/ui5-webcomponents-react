@@ -1,6 +1,6 @@
 import dataLarge from '@sb/mockData/Friends500.json';
 import dataTree from '@sb/mockData/FriendsTree.json';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';

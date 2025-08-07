@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ListGrowingMode from '@ui5/webcomponents/dist/types/ListGrowingMode.js';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import ListSeparator from '@ui5/webcomponents/dist/types/ListSeparator.js';

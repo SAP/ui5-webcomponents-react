@@ -1,4 +1,6 @@
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
+import type { XAxisProps } from 'recharts';
+import type { IChartDimension } from '../interfaces/IChartDimension.js';
 import type { IChartMeasure } from '../interfaces/IChartMeasure.js';
 import { defaultMaxYAxisWidth } from './defaults.js';
 import { getTextWidth, truncateLongLabel } from './Utils.js';
@@ -7,18 +9,18 @@ interface YAxisTicksProps {
   x?: number;
   y?: number;
   payload?: any;
-  config: IChartMeasure;
+  formatter: IChartMeasure['formatter'] | IChartDimension['formatter'];
   secondYAxisConfig?: {
     color: string;
   };
-  tickFormatter?: (value: any, index: number) => string;
+  tickFormatter?: XAxisProps['tickFormatter'];
   index?: number;
 }
 
 export const YAxisTicks = (props: YAxisTicksProps) => {
-  const { x, y, payload, config, secondYAxisConfig, tickFormatter, index } = props;
+  const { x, y, payload, formatter, secondYAxisConfig, tickFormatter, index } = props;
 
-  const formattedValue = tickFormatter?.(payload.value, index) ?? config.formatter(payload.value);
+  const formattedValue = tickFormatter?.(payload.value, index) ?? formatter(payload.value);
   let textToDisplay = formattedValue;
   if (getTextWidth(formattedValue) > defaultMaxYAxisWidth) {
     for (let i = `${formattedValue}`.length; i > 0; i--) {

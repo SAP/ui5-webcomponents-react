@@ -14,10 +14,11 @@ export interface IChartMeasure {
    * The Label to display in legends or tooltips. Falls back to the <code>accessor</code> if not present.
    */
   label?: string;
+  //todo: types
   /**
    * This function will be called for each data label and allows you to format it according to your needs.
    */
-  formatter?: (value: any) => string;
+  formatter?: (value: any, payload?: any) => string | number;
   /**
    * Flag whether the data labels should be hidden in the chart for this line.
    */

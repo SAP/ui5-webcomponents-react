@@ -1,6 +1,6 @@
 import { SplitterElementContent } from '@sb/components/SplitterElementContent';
 import { isChromatic } from '@sb/utils';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
 import { Button, FlexBox, Label, SegmentedButton, SegmentedButtonItem, SplitterElement, Text } from '../..';
 import { SplitterLayout } from './index.js';
@@ -106,7 +106,7 @@ export const Nested: Story = {
   render(args) {
     const [vertical, setVertical] = useState(args.vertical);
     const handleChange = (e) => {
-      setVertical(e.detail.selectedItem.textContent === 'Vertical');
+      setVertical(e.detail.selectedItems[0].textContent === 'Vertical');
     };
     useEffect(() => {
       setVertical(args.vertical);

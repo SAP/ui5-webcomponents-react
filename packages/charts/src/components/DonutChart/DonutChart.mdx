@@ -1,4 +1,4 @@
-import { Canvas, Meta } from '@storybook/addon-docs';
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
 import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import TooltipStory from '../../resources/TooltipConfig.mdx';
 import * as ComponentStories from './DonutChart.stories';
@@ -6,7 +6,7 @@ import LegendStory from '../../resources/LegendConfig.mdx';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader isChart />
+<DocsHeader of={ComponentStories} isChart />
 
 ## Example
 

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import downloadIcon from '@ui5/webcomponents-icons/dist/download.js';
 import editIcon from '@ui5/webcomponents-icons/dist/edit.js';

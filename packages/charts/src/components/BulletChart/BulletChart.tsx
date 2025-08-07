@@ -197,7 +197,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
     chartConfig?.secondYAxis?.dataKey,
   );
 
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
   const dataKeys = sortedMeasures.map(({ accessor }) => accessor);
   const colorSecondY = chartConfig.secondYAxis
@@ -258,7 +258,6 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
   const measureAxisProps = {
     axisLine: chartConfig.yAxisVisible,
     tickLine: tickLineConfig,
-    tickFormatter: primaryMeasure?.formatter,
     interval: 0,
   };
 
@@ -313,7 +312,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
 
             if (layout === 'vertical') {
               axisProps.type = 'category';
-              axisProps.tick = <YAxisTicks config={dimension} />;
+              axisProps.tick = <YAxisTicks formatter={dimension?.formatter} />;
               axisProps.yAxisId = index;
               axisProps.width = yAxisWidth;
               AxisComponent = YAxis;
@@ -322,7 +321,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
               axisProps.minTickGap = isBigDataSet ? undefined : -10;
             } else {
               axisProps.dataKey = dimension.accessor;
-              axisProps.tick = <XAxisTicks config={dimension} />;
+              axisProps.tick = <XAxisTicks formatter={dimension?.formatter} />;
               axisProps.xAxisId = index;
               axisProps.height = xAxisHeights[index];
               AxisComponent = XAxis;
@@ -337,7 +336,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             yAxisId="primary"
             width={yAxisWidth}
             orientation={isRTL ? 'right' : 'left'}
-            tick={<YAxisTicks config={primaryMeasure} />}
+            tick={<YAxisTicks formatter={primaryMeasure?.formatter} />}
             {...chartConfig.yAxisConfig}
           />
         )}
@@ -347,7 +346,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             reversed={isRTL}
             xAxisId="primary"
             type="number"
-            tick={<XAxisTicks config={primaryMeasure} />}
+            tick={<XAxisTicks formatter={primaryMeasure?.formatter} />}
             {...chartConfig.xAxisConfig}
           />
         )}
@@ -359,7 +358,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             }}
             tick={
               <YAxisTicks
-                config={secondaryMeasure}
+                formatter={secondaryMeasure?.formatter}
                 secondYAxisConfig={{
                   color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
@@ -368,8 +367,6 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             label={{
               value: chartConfig.secondYAxis.name,
               offset: 2,
@@ -390,7 +387,7 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             }}
             tick={
               <XAxisTicks
-                config={secondaryMeasure}
+                formatter={secondaryMeasure?.formatter}
                 secondYAxisConfig={{
                   color: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
                 }}
@@ -399,8 +396,6 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             tickLine={{
               stroke: chartConfig.secondYAxis.color ?? `var(--sapChart_OrderedColor_${(colorSecondY % 12) + 1})`,
             }}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             label={{ value: chartConfig.secondYAxis.name, offset: 2, angle: +90, position: 'center' }}
             orientation="top"
             interval={0}
@@ -422,13 +417,12 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
             label={referenceLine?.label}
           />
         )}
-        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
         {tooltipConfig?.active !== false && (
           <Tooltip
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}

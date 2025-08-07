@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.12.0...v2.13.0) (2025-08-05)
+
+### Bug Fixes
+
+- **AnalyticalTable:** correctly log warning for column width ([#7539](https://github.com/SAP/ui5-webcomponents-react/issues/7539)) ([0b5a163](https://github.com/SAP/ui5-webcomponents-react/commit/0b5a16368166d7c064d062e4acc5606f369d9a9f))
+- **MessageViewButton:** make `counter` accessible to screen readers ([#7602](https://github.com/SAP/ui5-webcomponents-react/issues/7602)) ([de906a1](https://github.com/SAP/ui5-webcomponents-react/commit/de906a171a509e01ea18238e37fe58fc0c6f8501))
+- **ObjectPage:** toggle header correctly when `toggleHeaderArea` is initially called ([#7531](https://github.com/SAP/ui5-webcomponents-react/issues/7531)) ([7625a62](https://github.com/SAP/ui5-webcomponents-react/commit/7625a621ff61eab3da8a836f1b5135c4ee6031ec)), closes [#7527](https://github.com/SAP/ui5-webcomponents-react/issues/7527)
+- **SelectDialog:** adjust heading level to `h1` ([#7594](https://github.com/SAP/ui5-webcomponents-react/issues/7594)) ([60faf04](https://github.com/SAP/ui5-webcomponents-react/commit/60faf04e4756ab2db745ac9f2fccb86541e558fd)), closes [#7568](https://github.com/SAP/ui5-webcomponents-react/issues/7568)
+- **SelectDialog:** apply latest Design and A11y specs ([#7586](https://github.com/SAP/ui5-webcomponents-react/issues/7586)) ([e26f690](https://github.com/SAP/ui5-webcomponents-react/commit/e26f690d47216a6f80c331d5bf1616c55df52b3e)), closes [#7577](https://github.com/SAP/ui5-webcomponents-react/issues/7577)
+- **SelectDialog:** enable F6-Navigation ([#7583](https://github.com/SAP/ui5-webcomponents-react/issues/7583)) ([9cd3f24](https://github.com/SAP/ui5-webcomponents-react/commit/9cd3f24d4bec57b7ed6f538d92307e59874e29f9)), closes [#7567](https://github.com/SAP/ui5-webcomponents-react/issues/7567)
+
+### Features
+
+- **AnalyticalTable:** add components that should not select a row when pressed ([#7517](https://github.com/SAP/ui5-webcomponents-react/issues/7517)) ([4e902af](https://github.com/SAP/ui5-webcomponents-react/commit/4e902af9b1cd52260a735fe553b253fd2d93f6c9)), closes [#7516](https://github.com/SAP/ui5-webcomponents-react/issues/7516)
+- **ObjectPage:** implement keyboard-navigation & focus handling for sections ([#7528](https://github.com/SAP/ui5-webcomponents-react/issues/7528)) ([b36f1fa](https://github.com/SAP/ui5-webcomponents-react/commit/b36f1fa4b63bcf749d35409f7a4fb24947d7acbc)), closes [#7386](https://github.com/SAP/ui5-webcomponents-react/issues/7386) [#7268](https://github.com/SAP/ui5-webcomponents-react/issues/7268) [#7548](https://github.com/SAP/ui5-webcomponents-react/issues/7548)
+- **ObjectPageSection:** add `tabRef` prop ([#7590](https://github.com/SAP/ui5-webcomponents-react/issues/7590)) ([251e20a](https://github.com/SAP/ui5-webcomponents-react/commit/251e20a444a3684405f8a9b89771ec6f460e76d6)), closes [#7589](https://github.com/SAP/ui5-webcomponents-react/issues/7589) [#4369](https://github.com/SAP/ui5-webcomponents-react/issues/4369)
+- **SelectDialog:** add `headerTextLevel` prop ([#7595](https://github.com/SAP/ui5-webcomponents-react/issues/7595)) ([4d45358](https://github.com/SAP/ui5-webcomponents-react/commit/4d45358f11fbd80c62ebf620f28c17d4ec8c7d51)), closes [#7593](https://github.com/SAP/ui5-webcomponents-react/issues/7593) [#7568](https://github.com/SAP/ui5-webcomponents-react/issues/7568)
+- **SelectDialog:** add SR announcement for number of selected items ([#7598](https://github.com/SAP/ui5-webcomponents-react/issues/7598)) ([6f42bcc](https://github.com/SAP/ui5-webcomponents-react/commit/6f42bccce98c3ef4cb594d4f463c293982b01217)), closes [#7592](https://github.com/SAP/ui5-webcomponents-react/issues/7592)
+- **SplitterLayout:** introduce `onResize` event ([#7519](https://github.com/SAP/ui5-webcomponents-react/issues/7519)) ([35b1fc8](https://github.com/SAP/ui5-webcomponents-react/commit/35b1fc85bca23a751b8fdf58e70d21a313f8ebbf)), closes [#7477](https://github.com/SAP/ui5-webcomponents-react/issues/7477)
+- update to UI5 Web Components v2.13.1 ([#7621](https://github.com/SAP/ui5-webcomponents-react/issues/7621)) ([23c89f9](https://github.com/SAP/ui5-webcomponents-react/commit/23c89f9620225a73ed0e8f0c4f68997ca7a54782))
+
 # [2.12.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.11.1...v2.12.0) (2025-07-07)
 
 ### Bug Fixes

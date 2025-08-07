@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import activateIcon from '@ui5/webcomponents-icons/dist/activate.js';
 import { FlexBox } from '@ui5/webcomponents-react/dist/components/FlexBox/index.js';
 import { FlexBoxDirection } from '@ui5/webcomponents-react/dist/enums/FlexBoxDirection.js';

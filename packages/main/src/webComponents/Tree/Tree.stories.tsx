@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import copyIcon from '@ui5/webcomponents-icons/dist/copy.js';
 import dlCloutIcon from '@ui5/webcomponents-icons/dist/download-from-cloud.js';

@@ -65,7 +65,18 @@
 
 .inputIcon {
   cursor: pointer;
-  color: var(--sapContent_IconColor);
+  color: var(--sapField_TextColor);
+
+  &:hover {
+    box-shadow: var(--sapField_Hover_Shadow);
+    background-color: var(--_ui5_input_icon_hover_bg);
+  }
+
+  &:active {
+    box-shadow: var(--sapField_Hover_Shadow);
+    color: var(--sapButton_Active_TextColor);
+    background-color: var(--sapButton_Active_Background);
+  }
 }
 
 .infoBar {

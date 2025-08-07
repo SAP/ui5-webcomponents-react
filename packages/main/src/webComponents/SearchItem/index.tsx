@@ -6,6 +6,12 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui
 
 interface SearchItemAttributes {
   /**
+   * Defines whether the search item is deletable.
+   * @default false
+   */
+  deletable?: boolean;
+
+  /**
    * Defines the description that appears right under the item text, if available.
    *
    * **Note:** Available since [v2.12.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.12.0) of **@ui5/webcomponents-fiori**.
@@ -80,7 +86,7 @@ interface SearchItemPropTypes
 const SearchItem = withWebComponent<SearchItemPropTypes, SearchItemDomRef>(
   'ui5-search-item',
   ['description', 'icon', 'scopeName', 'text'],
-  ['selected'],
+  ['deletable', 'selected'],
   ['image'],
   ['delete'],
 );

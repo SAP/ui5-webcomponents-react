@@ -1,12 +1,12 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import * as ComponentStories from './Toolbar.stories';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { OverflowToolbarButton, OverflowToolbarToggleButton, ToolbarSpacer, ToolbarSeparator } from '../..';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader
+<DocsHeader of={ComponentStories}
   subComponents={['OverflowToolbarButton', 'OverflowToolbarToggleButton', 'ToolbarSpacer', 'ToolbarSeparator']}
 />
 
@@ -238,24 +238,24 @@ const ToolbarComponent = () => {
 
 <Description of={OverflowToolbarButton} />
 
-<ArgTypesWithNote of={OverflowToolbarButton} />
+<ArgTypesWithNote metaOf={ComponentStories} of={OverflowToolbarButton} />
 
 ## OverflowToolbarToggleButton
 
 <Description of={OverflowToolbarToggleButton} />
 
-<ArgTypesWithNote of={OverflowToolbarToggleButton} />
+<ArgTypesWithNote metaOf={ComponentStories} of={OverflowToolbarToggleButton} />
 
 ## ToolbarSpacer
 
 <Description of={ToolbarSpacer} />
 
-<ArgTypesWithNote of={ToolbarSpacer} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ToolbarSpacer} />
 
 ## ToolbarSeparator
 
 <Description of={ToolbarSeparator} />
 
-<ArgTypesWithNote of={ToolbarSeparator} />
+<ArgTypesWithNote metaOf={ComponentStories} of={ToolbarSeparator} />
 
 <Footer />

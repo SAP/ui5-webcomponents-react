@@ -48,7 +48,7 @@ export const tooltipConfig: IChartBaseProps = {
     cursor: { stroke: 'red', strokeWidth: 2, fill: 'transparent' },
     separator: ':~:',
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    formatter: (value, name, props) => {
+    formatter: (value, name, props, index, payload) => {
       if (name === 'Users') {
         return [`${value}👨‍💻`, 'Custom Name in Tooltip!'];
       }

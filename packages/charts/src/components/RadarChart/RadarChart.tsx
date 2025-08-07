@@ -119,7 +119,7 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
 
   const primaryDimension = dimensions[0];
 
-  const labelFormatter = useLabelFormatter(primaryDimension);
+  const tooltipLabelFormatter = useLabelFormatter(primaryDimension?.formatter);
 
   const primaryDimensionAccessor = primaryDimension?.accessor;
 
@@ -214,7 +214,7 @@ const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
             cursor={tooltipFillOpacity}
             formatter={tooltipValueFormatter}
             contentStyle={tooltipContentStyle}
-            labelFormatter={labelFormatter}
+            labelFormatter={tooltipLabelFormatter}
             {...tooltipConfig}
           />
         )}

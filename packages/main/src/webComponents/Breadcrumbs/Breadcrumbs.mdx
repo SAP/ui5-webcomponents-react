@@ -1,13 +1,13 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { BreadcrumbsItem } from '../BreadcrumbsItem';
 import * as ComponentStories from './Breadcrumbs.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.18.0" />
+<DocsHeader of={ComponentStories} since="0.18.0" />
 
 <br />
 
@@ -24,6 +24,6 @@ import { excludePropsForAbstract } from '@sb/utils';
 ## BreadcrumbsItem
 
 <Description of={BreadcrumbsItem} />
-<ArgTypesWithNote exclude={excludePropsForAbstract} hideHTMLPropsNote of={BreadcrumbsItem} />
+<ArgTypesWithNote metaOf={ComponentStories} exclude={excludePropsForAbstract} hideHTMLPropsNote of={BreadcrumbsItem} />
 
 <Footer />

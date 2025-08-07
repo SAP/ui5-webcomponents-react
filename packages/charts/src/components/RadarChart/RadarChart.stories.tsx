@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { legendConfig, radarChartDataset, simpleDataSet, tooltipConfig } from '../../resources/DemoProps.js';
 import { RadarChart } from './RadarChart.js';
 

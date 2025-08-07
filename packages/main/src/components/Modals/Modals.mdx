@@ -1,5 +1,5 @@
 import { DocsHeader, Footer } from '@sb/components';
-import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
 import { Dialog, Menu, Panel, Popover, ResponsivePopover, Toast } from '../../webComponents/index';
 import { MessageBox } from '../MessageBox';
 import * as ComponentStories from './Modals.stories';
@@ -9,7 +9,7 @@ import { Modals } from './index.tsx';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.22.2" />
+<DocsHeader of={ComponentStories} since="0.22.2" />
 
 ## General Usage Information
 

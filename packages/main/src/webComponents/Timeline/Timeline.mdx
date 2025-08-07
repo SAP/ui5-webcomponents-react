@@ -1,13 +1,13 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
-import { Canvas, Description, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
 import { TimelineGroupItem } from '../TimelineGroupItem';
 import { TimelineItem } from '../TimelineItem';
 import * as ComponentStories from './Timeline.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader since="0.4.0" />
+<DocsHeader of={ComponentStories} since="0.4.0" />
 
 <br />
 
@@ -32,11 +32,11 @@ import * as ComponentStories from './Timeline.stories';
 ## TimelineGroupItem
 
 <Description of={TimelineGroupItem} />
-<ArgTypesWithNote of={TimelineGroupItem} />
+<ArgTypesWithNote metaOf={ComponentStories} of={TimelineGroupItem} />
 
 ## TimelineItem
 
 <Description of={TimelineItem} />
-<ArgTypesWithNote of={TimelineItem} />
+<ArgTypesWithNote metaOf={ComponentStories} of={TimelineItem} />
 
 <Footer />

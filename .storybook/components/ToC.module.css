@@ -21,7 +21,6 @@
 .toc :global(.toc-link) {
   font-family: var(--sapFontFamily) !important;
   font-size: var(--sapFontSize) !important;
-  -webkit-font-smoothing: auto;
   line-height: normal;
 }
 
@@ -75,13 +74,14 @@
   .fixedContainer {
     width: 200px;
     position: fixed;
-    top: 75px;
+    top: 38px;
     right: 6px;
     overflow-x: hidden;
     overflow-y: auto;
   }
 
   .toc :global(.toc-list) {
+    margin-block-start: 0;
     padding-inline-start: 1rem;
   }
 
@@ -93,13 +93,13 @@
     width: 4px;
   }
 
-  .toc :global(.toc-list-item) {
-    /*overflow: hidden;*/
-    /*text-overflow: ellipsis;*/
-    /*white-space: nowrap;*/
-  }
-
   .toc :global(.is-active-link)::before {
     background-color: #0a6ed1;
+  }
+}
+
+@media (min-width: 1650px) {
+  .fixedContainer {
+    width: 250px;
   }
 }
