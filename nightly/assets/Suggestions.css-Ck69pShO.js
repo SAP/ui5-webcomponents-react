@@ -1,2 +1,0 @@
-import{p as e,d as o,b as n}from"./iframe-yjMKSaW2.js";e("@ui5/webcomponents-theming","sap_horizon",async()=>o);e("@ui5/webcomponents","sap_horizon",async()=>n);const t=`.ui5-suggestions-popover{box-shadow:var(--sapContent_Shadow1)}.ui5-suggestions-popover::part(header),.ui5-suggestions-popover::part(content){padding:0}.ui5-suggestions-popover::part(footer){padding:0 1rem}.input-root-phone.native-input-wrapper{display:contents}.input-root-phone.native-input-wrapper:before{display:none}.native-input-wrapper .ui5-input-inner-phone{margin:0}
-`;export{t as S};
