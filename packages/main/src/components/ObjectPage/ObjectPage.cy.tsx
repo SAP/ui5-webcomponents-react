@@ -1761,7 +1761,7 @@ describe('ObjectPage', () => {
 
     // click first Tab
     cy.log('click first Tab');
-    cy.focused().realClick();
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.focused().should('have.attr', 'aria-label', 'Goals').and('have.attr', 'tabindex', 0);
 
     // arrow section navigation
