@@ -201,6 +201,7 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     navigateSections({ e, onKeyDown: props.onKeyDown, componentName: 'ObjectPageSection' });
     const target = e.currentTarget as HTMLElement;
     if (
+      target === e.target &&
       (e.key === 'ArrowDown' || e.key === 'ArrowRight') &&
       (target.nextElementSibling as HTMLElement).dataset.componentName === 'ObjectPageSection'
     ) {
@@ -219,6 +220,7 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
       });
     }
     if (
+      target === e.target &&
       (e.key === 'ArrowUp' || e.key === 'ArrowLeft') &&
       (target.previousElementSibling as HTMLElement).dataset.componentName === 'ObjectPageSection'
     ) {

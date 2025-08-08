@@ -43,9 +43,14 @@ import {
   Title,
   Toolbar,
   ToolbarButton,
+  Table,
+  TableCell,
+  TableHeaderCell,
+  TableHeaderRow,
+  TableRow,
 } from '../..';
-import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 import type { TabDomRef } from '../../webComponents/Tab/index.js';
+import { cypressPassThroughTestsFactory } from '@/cypress/support/utils';
 
 const arbitraryCharsId = `~\`!1@#$%^&*()-_+={}[]:;"'z,<.>/?|♥`;
 
@@ -1651,6 +1656,22 @@ describe('ObjectPage', () => {
               <Input data-testid="sub" />
             </ObjectPageSubSection>
           </ObjectPageSection>
+          <ObjectPageSection id={'7'} titleText={'Table'} aria-label="Table">
+            <Table data-testid="table">
+              <TableHeaderRow slot="headerRow">
+                <TableHeaderCell>Product</TableHeaderCell>
+                <TableHeaderCell>Supplier</TableHeaderCell>
+                <TableHeaderCell horizontalAlign="End">Price</TableHeaderCell>
+              </TableHeaderRow>
+              {new Array(20).fill(1337).map((_, i) => (
+                <TableRow key={i}>
+                  <TableCell>Mac</TableCell>
+                  <TableCell>Apple</TableCell>
+                  <TableCell horizontalAlign="End">10.09</TableCell>
+                </TableRow>
+              ))}
+            </Table>
+          </ObjectPageSection>
         </ObjectPage>
       </>,
     );
@@ -1691,9 +1712,18 @@ describe('ObjectPage', () => {
     // 6.2 input
     cy.realPress('Tab');
     cy.findByTestId('sub').should('be.focused');
+    // Table
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'ui5-table-row');
     //footer
     cy.realPress('Tab');
     cy.findByTestId('footer-accept-btn').should('be.focused');
+    // Table
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'ui5-table-row');
+    // Table Section
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'aria-label', 'Table').and('have.attr', 'tabindex', 0);
     // 6.2 input
     cy.realPress(['Shift', 'Tab']);
     cy.findByTestId('sub').should('be.focused');
@@ -1730,10 +1760,12 @@ describe('ObjectPage', () => {
     cy.get('[data-component-name="ObjectPageSubSection"]').should('have.attr', 'tabindex', -1);
 
     // click first Tab
-    cy.focused().realClick();
+    cy.log('click first Tab');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
     cy.focused().should('have.attr', 'aria-label', 'Goals').and('have.attr', 'tabindex', 0);
 
     // arrow section navigation
+    cy.log('arrow section navigation');
     cy.realPress('ArrowUp');
     cy.focused().should('have.attr', 'aria-label', 'Goals').and('have.attr', 'tabindex', 0);
     cy.realPress('ArrowDown');
@@ -1747,9 +1779,25 @@ describe('ObjectPage', () => {
     cy.realPress('ArrowDown');
     cy.focused().should('have.attr', 'aria-label', 'SubSectionsInput').and('have.attr', 'tabindex', 0);
     cy.realPress('ArrowDown');
-    cy.focused().should('have.attr', 'aria-label', 'SubSectionsInput').and('have.attr', 'tabindex', 0);
+    cy.focused()
+      .should('have.attr', 'aria-label', 'Table')
+      .and('have.attr', 'tabindex', 0)
+      .then(($el) => {
+        const rect = $el[0].getBoundingClientRect();
+        expect(rect.top).to.be.at.most(214);
+      });
+    cy.realPress('ArrowDown');
+    cy.focused()
+      .should('have.attr', 'aria-label', 'Table')
+      .and('have.attr', 'tabindex', 0)
+      .then(($el) => {
+        const rect = $el[0].getBoundingClientRect();
+        expect(rect.top).to.be.at.most(211);
+      });
 
     // arrow subsection navigation
+    cy.log('arrow subsection navigation');
+    cy.realPress('ArrowUp');
     cy.realPress('Tab');
     cy.focused().should('have.attr', 'aria-label', '6.1').and('have.attr', 'tabindex', 0);
     cy.realPress('ArrowUp');
@@ -1777,6 +1825,19 @@ describe('ObjectPage', () => {
         cy.wrap(section).should('have.attr', 'tabindex', -1);
       }
     });
+
+    //Table row navigation (relatedTarget not present - scroll-padding fallback)
+    cy.log('Table row navigation');
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Table').click();
+    cy.realPress('Tab');
+    for (let i = 0; i < 15; i++) {
+      cy.realPress('ArrowDown');
+    }
+    cy.focused().should('be.visible').and('have.attr', 'ui5-table-row');
+    for (let i = 0; i < 13; i++) {
+      cy.realPress('ArrowUp');
+    }
+    cy.focused().should('be.visible').and('have.attr', 'ui5-table-row');
   });
 });
 
