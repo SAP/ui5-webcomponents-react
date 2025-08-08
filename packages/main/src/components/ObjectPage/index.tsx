@@ -10,7 +10,7 @@ import {
   useSyncRef,
 } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
-import type { CSSProperties, MouseEventHandler, ReactElement, UIEventHandler } from 'react';
+import type { CSSProperties, FocusEventHandler, MouseEventHandler, ReactElement, UIEventHandler } from 'react';
 import { cloneElement, forwardRef, isValidElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ObjectPageMode } from '../../enums/ObjectPageMode.js';
 import { safeGetChildrenArray } from '../../internal/safeGetChildrenArray.js';
@@ -626,6 +626,25 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
     }
   }, [isMounted, children, mode]);
 
+  const handleContentBlur: FocusEventHandler<HTMLDivElement> = (e) => {
+    const opNode = objectPageRef.current;
+    if (!opNode) return;
+
+    if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget as Node)) {
+      opNode.style.scrollPaddingBlock = '0px';
+      // Fallback: Some (ui5-table) ui5wc components don't implement `relatedTarget` as expected.
+    } else if (!e.relatedTarget) {
+      const currentTarget = e.currentTarget;
+      opNode.style.scrollPaddingBlock = '0px';
+      requestAnimationFrame(() => {
+        if (currentTarget.contains(document.activeElement)) {
+          opNode.style.scrollPaddingBlock = scrollPaddingBlock;
+          document.activeElement.scrollIntoView({ block: 'nearest' });
+        }
+      });
+    }
+  };
+
   return (
     <ObjectPageContext.Provider value={mode}>
       <div
@@ -784,24 +803,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
               opNode.style.scrollPaddingBlock = scrollPaddingBlock;
             }
           }}
-          onBlur={(e) => {
-            const opNode = objectPageRef.current;
-            if (!opNode) return;
-
-            if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget as Node)) {
-              opNode.style.scrollPaddingBlock = '0px';
-              // Fallback: Some (ui5-table) ui5wc components don't implement `relatedTarget` as expected.
-            } else if (!e.relatedTarget) {
-              const currentTarget = e.currentTarget;
-              opNode.style.scrollPaddingBlock = '0px';
-              requestAnimationFrame(() => {
-                if (currentTarget.contains(document.activeElement)) {
-                  opNode.style.scrollPaddingBlock = scrollPaddingBlock;
-                  document.activeElement.scrollIntoView({ block: 'nearest' });
-                }
-              });
-            }
-          }}
+          onBlur={handleContentBlur}
         >
           <div
             style={{
