@@ -1,6 +1,6 @@
 import iconArrowDown from '@ui5/webcomponents-icons/dist/slim-arrow-down.js';
 import iconArrowRight from '@ui5/webcomponents-icons/dist/slim-arrow-right.js';
-import { Button, MessageStrip } from '@ui5/webcomponents-react';
+import { Button, MessageStrip, Link } from '@ui5/webcomponents-react';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { Fragment, useState } from 'react';
 import versionInfo from '../../config/version-info.json';
@@ -17,20 +17,125 @@ export function VersionTable() {
       </MessageStrip>
       <p>
         <b>
-          In order to allow patching releases of UI5 Web Components by yourself, <code>@ui5/webcomponents</code> and
-          &nbsp;
-          <code>@ui5/webcomponents-fiori</code> are peer dependencies of <code>@ui5/webcomponents-react</code>. The
-          following table gives an overview of the required peer dependencies per version:
+          In order to allow patching releases of UI5 Web Components by yourself, packages from{' '}
+          <Link href={'https://github.com/SAP/ui5-webcomponents'} target={'_blank'}>
+            ui5-webcomponents
+          </Link>{' '}
+          are peer dependencies of{' '}
+          <Link href={'https://github.com/SAP/ui5-webcomponents-react'}>ui5-webcomponents-react</Link> packages.
         </b>
       </p>
+      <p>If you&apos;re not clear which package is developed in which repo, expand the table below.</p>
+
+      <details>
+        <summary>Show Package to Repository Mapping</summary>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Repository</th>
+              <th>Packages</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <Link href={'https://github.com/SAP/ui5-webcomponents'} target={'_blank'}>
+                  ui5-webcomponents
+                </Link>
+              </td>
+              <td>
+                <ul>
+                  <li>
+                    <code>@ui5/webcomponents</code> — main components (buttons, inputs, popups, tables, etc.)
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-fiori</code> — Fiori-specific / semantic components
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-ai</code> — AI-specific components
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-base</code> — the framework/base utilities
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-icons</code> — SAP Icons collection
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-icons-tnt</code> — TNT icons collection
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-icons-business-suite</code> — Business Suite icons collection
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-theming</code> — theming assets
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-localization</code> — i18n / CLDR assets
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-tools</code> — libraries, configuration files and build artifacts
+                  </li>
+                  <li>
+                    <code>@ui5/create-package</code> — helper to create new UI5 Web Components packages
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-compat</code> — legacy / v1 compatibility package
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Link href={'https://github.com/SAP/ui5-webcomponents-react'} target={'_blank'}>
+                  ui5-webcomponents-react
+                </Link>
+              </td>
+              <td>
+                <ul>
+                  <li>
+                    <code>@ui5/webcomponents-react</code> — main React wrapper package
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-ai-react</code> — React wrapper for the <code>@ui5/webcomponents-ai</code>{' '}
+                    package
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-react-base</code> — utility / base helpers for the React wrappers
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-react-charts</code> — chart components
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-react-cli</code> — wrapper generation & codemod tooling
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-cypress-commands</code> — custom Cypress commands & queries
+                  </li>
+                  <li>
+                    <code>@ui5/webcomponents-react-compat</code> — legacy / v1 compatibility package
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+
       <table>
         <thead>
           <tr>
             <th>
-              <code>@ui5/webcomponents-react</code> version
+              <Link href={'https://github.com/SAP/ui5-webcomponents-react'} target={'_blank'}>
+                ui5-webcomponents-react
+              </Link>{' '}
+              Versions
             </th>
             <th>
-              <code>@ui5/webcomponents</code> & <code>@ui5/webcomponents-fiori</code> version
+              <Link href={'https://github.com/SAP/ui5-webcomponents'} target={'_blank'}>
+                ui5-webcomponents
+              </Link>{' '}
+              Versions
             </th>
           </tr>
         </thead>
@@ -113,6 +218,12 @@ export function VersionTable() {
           })}
         </tbody>
       </table>
+
+      <MessageStrip hideCloseButton>
+        Please note that if a version doesn&apos;t start with a patch-version of 0 (e.g. <code>~1.10.3</code>), only the
+        specified version is supported and the previous patch-versions will most likely not work with{' '}
+        <code>@ui5/webcomponents-react</code>.
+      </MessageStrip>
     </>
   );
 }
