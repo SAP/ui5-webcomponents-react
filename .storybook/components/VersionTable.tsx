@@ -97,6 +97,10 @@ export function VersionTable() {
                     <code>@ui5/webcomponents-react</code> — main React wrapper package
                   </li>
                   <li>
+                    <code>@ui5/webcomponents-ai-react</code> — React wrapper for the <code>@ui5/webcomponents-ai</code>{' '}
+                    package
+                  </li>
+                  <li>
                     <code>@ui5/webcomponents-react-base</code> — utility / base helpers for the React wrappers
                   </li>
                   <li>
@@ -107,10 +111,6 @@ export function VersionTable() {
                   </li>
                   <li>
                     <code>@ui5/webcomponents-cypress-commands</code> — custom Cypress commands & queries
-                  </li>
-                  <li>
-                    <code>@ui5/webcomponents-ai-react</code> — React wrapper for the <code>@ui5/webcomponents-ai</code>{' '}
-                    package
                   </li>
                   <li>
                     <code>@ui5/webcomponents-react-compat</code> — legacy / v1 compatibility package
