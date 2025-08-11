@@ -2,6 +2,7 @@ import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 import remarkGfm from 'remark-gfm';
 import type { StoriesEntry } from 'storybook/internal/types';
+import { mergeConfig } from 'vite';
 import { isChromatic } from './utils.ts';
 
 const isDevMode = process.env.NODE_ENV === 'development';
@@ -78,6 +79,12 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
   },
   staticDirs: isDevMode ? ['images-dev'] : ['images'],
+  viteFinal: (viteConfig) =>
+    mergeConfig(viteConfig, {
+      build: {
+        target: 'esnext',
+      },
+    }),
 };
 
 export default config;
