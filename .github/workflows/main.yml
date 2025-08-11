@@ -17,7 +17,7 @@ jobs:
   reuse-compliance:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: REUSE Compliance Check
         uses: fsfe/reuse-action@v1.1
@@ -26,7 +26,7 @@ jobs:
     if: ${{ github.base_ref == 'main' }} # only for PRs targeting main branch
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: preactjs/compressed-size-action@2.8.0
         with:
@@ -39,7 +39,7 @@ jobs:
     name: 'Install Dependencies'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v4.4.0
         with:
@@ -63,7 +63,7 @@ jobs:
     env:
       CYPRESS_INSTALL_BINARY: 0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v4.4.0
         with:
@@ -89,7 +89,7 @@ jobs:
     env:
       CYPRESS_INSTALL_BINARY: 0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v4.4.0
         with:
@@ -110,7 +110,7 @@ jobs:
     env:
       CYPRESS_INSTALL_BINARY: 0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.4.0
