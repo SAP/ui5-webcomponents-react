@@ -59,13 +59,11 @@ spawnSync('npx', ['prettier', '--write', path.resolve(SRC_I18N_PROPERTIES, 'i18n
 const jsonImports = await readdir(TARGET_I18N_JSON_IMPORTS);
 
 function createDynamicFioriAssetsImport(suffix) {
-  return `(async () => {
-  try {
-    await import('@ui5/webcomponents-fiori/dist/Assets${suffix}.js');
-  } catch {
-    console.warn("Skipped '@ui5/webcomponents-fiori/dist/Assets${suffix}.js' import!");
-  }
-})();`;
+  return `try {
+  await import('@ui5/webcomponents-fiori/dist/Assets${suffix}.js');
+} catch {
+  console.warn("Skipped '@ui5/webcomponents-fiori/dist/Assets${suffix}.js' import!")
+}`;
 }
 
 const assets = [`import '@ui5/webcomponents/dist/Assets.js';`, createDynamicFioriAssetsImport('')];
