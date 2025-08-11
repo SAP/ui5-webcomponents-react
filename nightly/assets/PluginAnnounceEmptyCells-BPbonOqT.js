@@ -1,0 +1,27 @@
+import{j as t}from"./iframe-DvixYE7k.js";import{useMDXComponents as i}from"./index-DvcP8w-F.js";import{I as n,F as m}from"./CommandsAndQueries-BP59pkyc.js";import{M as p,C as s}from"./blocks-CTAO90yM.js";import"./Tag-CHowEnLY.js";import"./index-BGjL_ZJV.js";import"./copy-CVzsP6l9.js";import{P as a}from"./AnalyticalTableHooks.stories-BFbtBW6-.js";import"./preload-helper-Dp1pzeXC.js";import"./index-YgXxfA7L.js";import"./index-DPl_fZ6u.js";import"./index-hGAVIlM2.js";import"./Link-BZF4G3GW.js";import"./addCustomCSSWithScoping-OBYOAhu2.js";import"./index-Cr8nZe2E.js";import"./index-C2AvZkZh.js";import"./index-_TUZ2Dv_.js";import"./AvatarSize-BtKTMFJ5.js";import"./employee-DJ4BRfb7.js";import"./index-BiNCRTue.js";import"./information-DqheYlV4.js";import"./sys-enter-2-BLeP8wjL.js";import"./alert-B0APzi3M.js";import"./Friends500-CRbR9XAn.js";import"./AnalyticalTable.stories-BV6FmXzT.js";import"./delete-DfkPPTxM.js";import"./settings-CpTWOhw2.js";import"./NoData-MQ_pQWWk.js";import"./IllustratedMessage-BgMufHo_.js";import"./i18n-defaults-dyGKyNAh.js";import"./parameters-bundle.css-B8Lg4lbk.js";import"./sapIllus-Dialog-NoData-FSL26r8i.js";import"./sapIllus-Scene-NoData-aisCUu4O.js";import"./sapIllus-Spot-NoData-eoL49zJv.js";import"./sapIllus-Dot-NoData-DBRN6YSI.js";import"./index-UmpMcvZO.js";import"./index-DXioqJ7a.js";import"./slim-arrow-down-Bl8g1r6x.js";import"./Input-COwe4oO2.js";import"./ResponsivePopoverCommon.css-B5iSbHgX.js";import"./ValueStateMessage.css-Dh9bgGbN.js";import"./Suggestions.css-BE8JkRfe.js";import"./ListBoxItemGroupTemplate-CiMlm5iD.js";import"./ComboBoxItemGroup-B1t1w55_.js";import"./ListItemBaseTemplate-0XXQ3IbQ.js";import"./Token-Cm2Tayzi.js";import"./ScrollEnablement-C5NyvXGb.js";import"./animate-JylhYHXj.js";import"./ListItemStandard-FwzaVAP_.js";import"./ToggleButton-clmXqNez.js";import"./SuggestionItem-JpbR4qH1.js";import"./index-DombZ1wK.js";import"./Option-CbzqeI1G.js";import"./index-6pWnif7a.js";import"./SegmentedButton-yBYK-j2o.js";import"./index-BnQriH7I.js";import"./Select-DsKB4JBR.js";import"./InvisibleMessage-BYn7ctRV.js";import"./slim-arrow-down-BZHFnOJT.js";import"./useIsRTL-fdT0zKkd.js";import"./index-TXUBpY7W.js";import"./IconDesign-DXd8PPVF.js";import"./filter-C26dzaVP.js";import"./group-2-BQg-Xl_q.js";import"./sort-descending-Bs7VQC0E.js";import"./ThemingParameters-pyhX3s39.js";import"./stopPropagation-BJWsenK5.js";import"./index-DYUnAhQW.js";import"./utils-8sBoC5N8.js";import"./index-CGO1z9YQ.js";import"./index-DxdvjxfF.js";import"./index-Hon5Q8Ho.js";import"./navigation-down-arrow-DyLmalXC.js";import"./navigation-right-arrow-Cpn7w1aF.js";import"./navigation-right-arrow-BCj9CE-X.js";import"./useCurrentTheme-BBmJKieJ.js";import"./IndicationColor-DVw-fSM_.js";import"./index-CqX4IX3j.js";import"./debounce-D7W5PopO.js";import"./index-B8ul9-ip.js";function e(r){const o={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",strong:"strong",...i(),...r.components};return t.jsxs(t.Fragment,{children:[t.jsx(p,{title:"Data Display / AnalyticalTable / Plugin Hooks / useAnnounceEmptyCells"}),`
+`,t.jsx(o.h1,{id:"analyticaltable-plugin-useannounceemptycells",children:"AnalyticalTable Plugin: useAnnounceEmptyCells"}),`
+`,t.jsx(n,{moduleNames:["AnalyticalTableHooks"],packageName:"@ui5/webcomponents-react"}),`
+`,t.jsxs(o.p,{children:["The ",t.jsx(o.code,{children:"useAnnounceEmptyCells"})," plugin hook adds screen reader announcements for empty cells."]}),`
+`,t.jsxs(o.p,{children:[t.jsx(o.strong,{children:"Note:"})," Some screen readers (depending on their configuration) automatically detect empty cells, potentially resulting in duplicate announcements of empty cells."]}),`
+`,t.jsx(o.h2,{id:"example",children:"Example"}),`
+`,t.jsx(s,{sourceState:"none",of:a}),`
+`,t.jsx(o.pre,{children:t.jsx(o.code,{className:"language-jsx",children:`const tableHooks = [AnalyticalTableHooks.useAnnounceEmptyCells] // this array should be memoized
+
+<AnalyticalTable
+  data={data}
+  columns={columns}
+  visibleRows={5}
+  tableHooks={tableHooks}
+/>
+`})}),`
+`,t.jsx(o.p,{children:t.jsx(o.strong,{children:"First data entry with empty values or undefined fields:"})}),`
+`,t.jsx(o.pre,{children:t.jsx(o.code,{className:"language-js",children:`{
+  age: undefined,
+  friend: {
+    name: '',
+    age: 0
+  },
+  status: 'Error'
+}
+`})}),`
+`,t.jsx(m,{})]})}function It(r={}){const{wrapper:o}={...i(),...r.components};return o?t.jsx(o,{...r,children:t.jsx(e,{...r})}):e(r)}export{It as default};
