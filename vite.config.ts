@@ -22,6 +22,14 @@ export default defineConfig(() => {
         '@/': fileURLToPath(new URL('./', import.meta.url)),
       },
     },
+    optimizeDeps: {
+      esbuildOptions: {
+        target: 'esnext',
+      },
+    },
+    build: {
+      target: 'esnext',
+    },
     plugins: [
       react(),
       process.env.CYPRESS === 'true' &&
