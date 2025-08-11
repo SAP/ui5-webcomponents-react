@@ -97,7 +97,7 @@ Since version `v2.14.0` of `@ui5/webcomponents-react`, `@ui5/webcomponents-fiori
 **Note:** Most popular bundlers enable tree-shaking for production builds, so there’s no difference in the final bundle size between the recommended and minimal installations.
 
 ```sh
-npm install @ui5/webcomponents-react @ui5/webcomponents-fiori
+npm install @ui5/webcomponents-react @ui5/webcomponents
 ```
 
 ## End of Support for Version 1.x
