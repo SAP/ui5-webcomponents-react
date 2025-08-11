@@ -74,10 +74,30 @@ You can find our documentation under the following links:
 
 ## Download and Installation
 
-To consume `ui5-webcomponents-react`, you need to install the npm modules and required peer dependencies:
+You can install `@ui5/webcomponents-react` along with the required peer-dependencies based on the components you plan to use. **In most cases, the recommended installation is the most maintainable option.**
+
+### Recommended Installation
+
+Install `@ui5/webcomponents-react` along with the `@ui5/webcomponents` and `@ui5/webcomponents-fiori` peer-dependencies as dependencies in your project:
 
 ```sh
 npm install @ui5/webcomponents-react @ui5/webcomponents @ui5/webcomponents-fiori
+```
+
+**Note:** If you import anything from another `@ui5/webcomponents-xyz` package, we recommend installing it as a (dev-)dependency as well, even if it’s already included through another package.
+
+### Minimal Installation
+
+Since version `v2.14.0` of `@ui5/webcomponents-react`, `@ui5/webcomponents-fiori` is an optional peer-dependency. You will still need to install it if:
+
+- You want to use any [component](https://sap.github.io/ui5-webcomponents/components/fiori/) from the `@ui5/webcomponents-fiori` package.
+- You want to use the [VariantManagement](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/inputs-variantmanagement--docs) component.
+- You import anything from the `@ui5/webcomponents-fiori` package.
+
+**Note:** Most popular bundlers enable tree-shaking for production builds, so there’s no difference in the final bundle size between the recommended and minimal installations.
+
+```sh
+npm install @ui5/webcomponents-react @ui5/webcomponents-fiori
 ```
 
 ## End of Support for Version 1.x
@@ -110,38 +130,32 @@ You can find a curated list of project templates and examples on our [Project Te
 
 ### Add `@ui5/webcomponents-react` to an existing app
 
-First of all, you need to add the `@ui5/webcomponents-react` dependency to your project. Please also keep in mind installing the required peer dependencies:
+1. Install all [required dependencies](#download-and-installation)
 
-```sh
-npm install @ui5/webcomponents @ui5/webcomponents-react @ui5/webcomponents-fiori
-```
+2. Import the `ThemeProvider` component and wrap your root component with it:
 
-In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider`.<br/>
-You will find this component most likely in `src/index.js`:
+   ```tsx
+   import { ThemeProvider } from '@ui5/webcomponents-react';
+   ...
+   createRoot(document.getElementById('root') as HTMLElement).render(
+     <ThemeProvider>
+       <App />
+     </ThemeProvider>,
+   );
+   ```
 
-```jsx
-import { ThemeProvider } from '@ui5/webcomponents-react';
-...
-const root = createRoot(document.getElementById("root"));
-root.render(
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
-);
-```
+3. Use `@ui5/webcomponents-react` components in your app by importing them.
+   For example, to use the `Button` component you need to import it:
 
-Then you are ready to use `@ui5/webcomponents-react` and you can import the desired component(s) in your app:<br />
-For example, to use the `Button` component you need to import it:
+   ```jsx
+   import { Button } from '@ui5/webcomponents-react'; // loads ui5-button wrapped in a ui5-webcomponents-react component
+   ```
 
-```jsx
-import { Button } from '@ui5/webcomponents-react'; // loads ui5-button wrapped in a ui5-webcomponents-react component
-```
+4. Add the imported component to your JSX:
 
-Then, you can use the Button in your app:
-
-```jsx
-<Button onClick={() => alert('Hello World!')}>Hello world!</Button>
-```
+   ```jsx
+   <Button onClick={() => alert('Hello World!')}>Hello world!</Button>
+   ```
 
 ### Browser Support
 

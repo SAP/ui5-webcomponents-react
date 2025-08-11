@@ -76,6 +76,9 @@
     },
     "@ui5/webcomponents-icons": {
       "optional": true
+    },
+    "@ui5/webcomponents-fiori": {
+      "optional": true
     }
   },
   "publishConfig": {

@@ -58,15 +58,17 @@ spawnSync('npx', ['prettier', '--write', path.resolve(SRC_I18N_PROPERTIES, 'i18n
 // generate Assets.js and Assets-fetch.js
 const jsonImports = await readdir(TARGET_I18N_JSON_IMPORTS);
 
-const assets = [`import '@ui5/webcomponents/dist/Assets.js';`, `import '@ui5/webcomponents-fiori/dist/Assets.js';`];
-const assetsFetch = [
-  `import '@ui5/webcomponents/dist/Assets-fetch.js';`,
-  `import '@ui5/webcomponents-fiori/dist/Assets-fetch.js';`,
-];
-const assetsNode = [
-  `import '@ui5/webcomponents/dist/Assets-node.js';`,
-  `import '@ui5/webcomponents-fiori/dist/Assets-node.js';`,
-];
+function createDynamicFioriAssetsImport(suffix) {
+  return `try {
+  await import('@ui5/webcomponents-fiori/dist/Assets${suffix}.js');
+} catch {
+  console.warn("Skipped '@ui5/webcomponents-fiori/dist/Assets${suffix}.js' import!")
+}`;
+}
+
+const assets = [`import '@ui5/webcomponents/dist/Assets.js';`, createDynamicFioriAssetsImport('')];
+const assetsFetch = [`import '@ui5/webcomponents/dist/Assets-fetch.js';`, createDynamicFioriAssetsImport('-fetch')];
+const assetsNode = [`import '@ui5/webcomponents/dist/Assets-node.js';`, createDynamicFioriAssetsImport('-node')];
 
 for (const file of jsonImports) {
   if (file.includes('-fetch')) {

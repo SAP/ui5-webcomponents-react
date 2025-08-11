@@ -63,6 +63,8 @@ const booleanProps = {
  *
  * __Note:__ Each `VariantManagement` component can only have one default and one selected variant.
  *
+ * __Note:__ Additionally to the mandatory `@ui5/webcomponents` package, you also need to install `@ui5/webcomponents-fiori` to use this component.
+ *
  * ### Matching header styles
  *
  * To ensure consistent header styles for different use-cases of the `VariantManagement`, we recommend setting the following styles to the `ui5-title` component:
