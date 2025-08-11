@@ -1,0 +1,20 @@
+import{j as t}from"./iframe-BCRKbB-F.js";import{useMDXComponents as c}from"./index-BX-rGI6y.js";import{M as m,C as e}from"./blocks-7Z_E6jI9.js";import"./Tag-DS_H74jk.js";import"./index-D-3HueK4.js";import{C as a}from"./ControlsWithNote-CZlmxkvK.js";import{D as d}from"./DocsHeader-oxYn0Q0e.js";import{F as p}from"./CommandsAndQueries-B-6PqVJi.js";import{C as n,D as r,W as j,a as h,b as l,I as x}from"./ObjectStatus.stories-CjDyoqfx.js";import"./preload-helper-Dp1pzeXC.js";import"./information-DeBw_tQ-.js";import"./sys-enter-2-pSQieqxz.js";import"./alert-xw5ZZb5l.js";import"./index-C9k5hi-S.js";import"./index-DsSU62b9.js";import"./Link-DusYvz_E.js";import"./copy-_UA8GWmu.js";import"./copy-B5cEq6fF.js";import"./GitHub-Mark-C2uv7FuH.js";import"./TableOfContent-DlQOflHd.js";import"./index-BH2JzlMl.js";import"./index-eqaCtQgG.js";import"./addCustomCSSWithScoping-DUsuu1QR.js";import"./index-Cfre80S4.js";import"./index-DNvh-56A.js";import"./index-K2GRSkK5.js";import"./AvatarSize-BtKTMFJ5.js";import"./employee-Mh7-FWH-.js";import"./ThemingParameters-pyhX3s39.js";import"./IndicationColor-DVw-fSM_.js";import"./index-BHna5JQe.js";function i(s){const o={code:"code",h1:"h1",h2:"h2",p:"p",strong:"strong",...c(),...s.components};return t.jsxs(t.Fragment,{children:[t.jsx(m,{of:n}),`
+`,t.jsx(d,{of:n}),`
+`,t.jsx("br",{}),`
+`,t.jsx(o.h2,{id:"example",children:"Example"}),`
+`,t.jsx(e,{of:r}),`
+`,t.jsx(o.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(a,{of:r}),`
+`,t.jsx("br",{}),`
+`,t.jsx(o.h1,{id:"more-examples",children:"More Examples"}),`
+`,t.jsx("br",{}),`
+`,t.jsx(o.h2,{id:"objectstatus-with-default-icons",children:"ObjectStatus with default icons"}),`
+`,t.jsx(e,{of:j}),`
+`,t.jsx(o.h2,{id:"objectstatus-with-custom-icon",children:"ObjectStatus with custom Icon"}),`
+`,t.jsx(e,{of:h}),`
+`,t.jsx(o.h2,{id:"objectstatus-with-icon-only",children:"ObjectStatus with Icon only"}),`
+`,t.jsx(e,{of:l}),`
+`,t.jsx(o.h2,{id:"all-objectstatus-states",children:"All ObjectStatus states"}),`
+`,t.jsxs(o.p,{children:[t.jsx(o.strong,{children:"Note:"})," Only the ",t.jsx(o.code,{children:"inverted"})," ",t.jsx(o.code,{children:"ObjectStatus"})," supports ",t.jsx(o.code,{children:"IndicationColor"}),"s 11-20. For non-inverted ",t.jsx(o.code,{children:"ObjectStatus"}),", these colors default to the ",t.jsx(o.code,{children:'"None"'})," ",t.jsx(o.code,{children:"state"})," color and should ",t.jsx(o.strong,{children:"not"})," be used."]}),`
+`,t.jsx(e,{of:x}),`
+`,t.jsx(p,{})]})}function Q(s={}){const{wrapper:o}={...c(),...s.components};return o?t.jsx(o,{...s,children:t.jsx(i,{...s})}):i(s)}export{Q as default};
