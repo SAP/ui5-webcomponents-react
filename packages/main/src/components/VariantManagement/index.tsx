@@ -63,7 +63,7 @@ const booleanProps = {
  *
  * __Note:__ Each `VariantManagement` component can only have one default and one selected variant.
  *
- * __Note:__ Additionally to the mandatory `@ui5/webcomponents` package, you also need to install `@ui5/webcomponents-fiori` to use this component.
+ * __Note:__  You have to install `@ui5/webcomponents-fiori` to use this component.
  *
  * ### Matching header styles
  *
