@@ -40,7 +40,8 @@ describe('ScatterChart', () => {
       />,
     );
 
-    cy.get('[name="Users"]').eq(0).click();
+    //todo: datapoint click is broken
+    cy.get('[name="APJ"]').eq(0).realClick();
     cy.get('@onClick')
       .should('have.been.calledOnce')
       .and(
@@ -52,12 +53,12 @@ describe('ScatterChart', () => {
         }),
       );
 
-    cy.contains('Users').click();
+    cy.get('[class="recharts-legend-wrapper"]').findByText('APJ').realClick();
     cy.get('@onLegendClick').should(
       'have.been.calledWith',
       Cypress.sinon.match({
         detail: Cypress.sinon.match({
-          value: 'Users',
+          value: 'APJ',
         }),
       }),
     );
