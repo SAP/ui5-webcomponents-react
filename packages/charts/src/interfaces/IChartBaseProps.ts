@@ -13,12 +13,13 @@ export interface ActivePayload {
   color: string;
   stroke: string;
   dataKey: string;
-  hide: boolean;
+  hide?: boolean;
   name: string;
-  fillOpacity: string | number;
-  strokeOpacity: string | number;
+  fillOpacity?: string | number;
+  strokeOpacity?: string | number;
   payload: Record<string, unknown>;
   value: number | string;
+  colors?: string[];
 }
 
 export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonProps, 'onClick'> {

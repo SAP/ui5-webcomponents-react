@@ -6,19 +6,20 @@ import type { ActivePayload, IChartBaseProps } from '../interfaces/IChartBasePro
 export const useOnClickInternal = (
   onClick: IChartBaseProps['onClick'],
   dataset: IChartBaseProps['dataset'],
-  activePayloadsRef: MutableRefObject<ActivePayload[]>,
+  activePayloadsRef: MutableRefObject<ActivePayload[]> | MutableRefObject<ActivePayload>,
 ): CategoricalChartFunc => {
   //todo: deprecate payload & activePayloads?
   return useCallback(
     (nextState, event) => {
       if (typeof onClick === 'function') {
         const payload = nextState.activeIndex != null ? dataset?.[nextState.activeIndex] : undefined;
-        const activePayloads = activePayloadsRef.current.map((item) => ({
+        const activePayloads = (
+          Array.isArray(activePayloadsRef.current) ? activePayloadsRef.current : [activePayloadsRef.current]
+        ).map((item) => ({
           ...item,
           payload,
           value: item.dataKey ? payload?.[item.dataKey] : undefined,
         }));
-        console.log('click enriched');
         onClick(
           //todo: check ts-error
           // @ts-expect-error: check
