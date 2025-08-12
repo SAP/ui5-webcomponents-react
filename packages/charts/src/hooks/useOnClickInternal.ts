@@ -37,23 +37,3 @@ export const useOnClickInternal = (
 };
 
 //todo: integrate LineChart, RadarChart click here as well?
-
-//bar, bullet, column, withTrend, composed, donut, line, pie, radial, scatter
-//activeCoordinate
-// :
-// {x: 746, y: 243.2412109375}
-// activeDataKey
-// :
-// undefined
-// activeIndex
-// :
-// "8"
-// activeLabel
-// :
-// "September"
-// activeTooltipIndex
-// :
-// "8"
-// isTooltipActive
-// :
-// true
