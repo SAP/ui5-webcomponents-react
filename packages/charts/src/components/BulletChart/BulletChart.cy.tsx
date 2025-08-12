@@ -64,7 +64,7 @@ describe('BulletChart', () => {
         }),
       );
 
-    cy.contains('Users').click();
+    cy.get('[class="recharts-legend-wrapper"]').findByText('Users').realClick();
     cy.get('@onLegendClick').should(
       'have.been.calledWith',
       Cypress.sinon.match({

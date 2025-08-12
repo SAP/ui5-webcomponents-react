@@ -175,15 +175,19 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
   const activePayloadsRef = useRef<ActivePayload[]>(measures);
 
   const sortedMeasures = useMemo(() => {
-    return measures.sort((measure) => {
-      if (measure.type === 'comparison') {
-        return 1;
-      }
-
-      if (measure.type === 'primary') {
+    return [...measures].sort((a, b) => {
+      if (a.type === 'primary' && b.type !== 'primary') {
         return -1;
       }
-
+      if (b.type === 'primary' && a.type !== 'primary') {
+        return 1;
+      }
+      if (a.type === 'comparison' && b.type !== 'comparison') {
+        return 1;
+      }
+      if (b.type === 'comparison' && a.type !== 'comparison') {
+        return -1;
+      }
       return 0;
     });
   }, [measures]);
