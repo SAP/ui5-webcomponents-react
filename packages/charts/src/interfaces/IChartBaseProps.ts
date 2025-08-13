@@ -10,10 +10,10 @@ import type { ICartesianChartConfig } from './ICartesianChartConfig.js';
 // }
 
 export interface ActivePayload {
-  color: string;
-  stroke: string;
+  color: string | undefined;
+  stroke: string | undefined;
   dataKey: string;
-  hide?: boolean;
+  hide?: boolean | undefined;
   name: string;
   fillOpacity?: string | number;
   strokeOpacity?: string | number;

@@ -19,9 +19,10 @@ import { useLabelFormatter } from '../../hooks/useLabelFormatter.js';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
 import { useLongestYAxisLabel } from '../../hooks/useLongestYAxisLabel.js';
 import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights.js';
+import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter.js';
-import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { ActivePayload, IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
 import type { IChartDimension } from '../../interfaces/IChartDimension.js';
 import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
@@ -160,7 +161,7 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
     dimensionDefaults,
     measureDefaults,
   );
-
+  const activePayloadsRef = useRef<ActivePayload[]>(measures);
   const tooltipValueFormatter = useTooltipFormatter(measures);
 
   const primaryDimension = dimensions[0];
@@ -180,8 +181,8 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
   const preventOnClickCall = useRef(0);
+  const handleClick = useOnClickInternal(onClick, dataset, activePayloadsRef);
 
-  //todo: check this
   const onDataPointClickInternal = useCallback(
     (payload, eventOrIndex) => {
       if (eventOrIndex.dataKey && typeof onDataPointClick === 'function') {
@@ -195,18 +196,13 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
           }),
         );
       } else if (typeof onClick === 'function' && preventOnClickCall.current === 0) {
-        onClick(
-          enrichEventWithDetails(eventOrIndex, {
-            payload: payload?.activePayload?.[0]?.payload,
-            activePayloads: payload?.activePayload,
-          }),
-        );
+        handleClick(payload, eventOrIndex);
       }
       if (preventOnClickCall.current > 0) {
         preventOnClickCall.current -= 1;
       }
     },
-    [onDataPointClick, preventOnClickCall.current],
+    [handleClick, onClick, onDataPointClick],
   );
 
   const isBigDataSet = dataset?.length > 30;
@@ -299,17 +295,28 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
           />
         )}
         {measures.map((element, index) => {
+          const color = element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`;
+          const dataKey = element.accessor;
+          const name = element.label ?? element.accessor;
+          const opacity = element.opacity ?? 1;
+          activePayloadsRef.current[index].color = color;
+          activePayloadsRef.current[index].stroke = color;
+          activePayloadsRef.current[index].dataKey = dataKey;
+          activePayloadsRef.current[index].hide = element.hide;
+          activePayloadsRef.current[index].name = name;
+          activePayloadsRef.current[index].fillOpacity = opacity;
+          activePayloadsRef.current[index].strokeOpacity = opacity;
           return (
             <Line
               dot={element.showDot ?? !isBigDataSet}
               yAxisId={chartConfig.secondYAxis?.dataKey === element.accessor ? 'right' : 'left'}
               key={element.reactKey}
-              name={element.label ?? element.accessor}
-              strokeOpacity={element.opacity}
+              name={name}
+              strokeOpacity={opacity}
               label={isBigDataSet ? false : <ChartDataLabel config={element} chartType="line" position="top" />}
               type="monotone"
-              dataKey={element.accessor}
-              stroke={element.color ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
+              dataKey={dataKey}
+              stroke={color}
               strokeWidth={element.width}
               activeDot={{ onClick: onDataPointClickInternal }}
               isAnimationActive={!noAnimation}
@@ -335,7 +342,6 @@ const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
             label={referenceLine?.label}
           />
         )}
-        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
         {tooltipConfig?.active !== false && (
           <Tooltip
             cursor={tooltipFillOpacity}
