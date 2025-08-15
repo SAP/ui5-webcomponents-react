@@ -51,7 +51,6 @@ export const NotificationsPopover = forwardRef<ResponsivePopoverDomRef, Notifica
   const [notificationsToday, setTodayNotifications] = useState<Notification[]>(initialNotificationsToday);
   const [notificationsYesterday, setYesterdayNotifications] = useState<Notification[]>(initialNotificationsYesterday);
   const [groupLoading, setGroupLoading] = useState(false);
-  const [showMessageStrip, setShowMessageStrip] = useState(false);
   const [clearAllOpen, setClearAllOpen] = useState(false);
   const [sortMenuOpen, setSortMenuOpen] = useState(false);
 
@@ -130,14 +129,6 @@ export const NotificationsPopover = forwardRef<ResponsivePopoverDomRef, Notifica
               endContent={
                 <>
                   <Button
-                    onClick={() => {
-                      setShowMessageStrip(true);
-                    }}
-                    design="Emphasized"
-                  >
-                    Show M. Strip
-                  </Button>
-                  <Button
                     design="Transparent"
                     accessibilityAttributes={{ hasPopup: 'dialog' }}
                     onClick={() => {
@@ -159,17 +150,6 @@ export const NotificationsPopover = forwardRef<ResponsivePopoverDomRef, Notifica
                 </>
               }
             />
-            {showMessageStrip && (
-              <MessageStrip
-                className="notificationsMessageStrip"
-                design="Negative"
-                onClose={() => {
-                  setShowMessageStrip(false);
-                }}
-              >
-                Something went wrong.
-              </MessageStrip>
-            )}
           </div>
         }
       >

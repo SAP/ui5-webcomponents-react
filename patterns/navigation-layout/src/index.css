@@ -50,11 +50,6 @@ body {
   box-shadow: none;
 }
 
-.notificationsMessageStrip {
-  margin: 0.5rem;
-  width: auto;
-}
-
 /* End notifications */
 
 /* User Settings Dialog */
