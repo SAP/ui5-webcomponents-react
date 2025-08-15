@@ -74,6 +74,9 @@
     "@ui5/webcomponents-base": {
       "optional": true
     },
+    "@ui5/webcomponents-fiori": {
+      "optional": true
+    },
     "@ui5/webcomponents-icons": {
       "optional": true
     }
