@@ -15,16 +15,17 @@ interface CustomDataLabelProps {
 
 export const ChartDataLabel = (props: CustomDataLabelProps) => {
   const { config, chartType, viewBox } = props;
-  if (config.hideDataLabel) {
+  //todo: viewBox is not initially available, check if this is changed in a later version
+  if (config.hideDataLabel || !viewBox) {
     return null;
   }
 
-  if (config.DataLabel) {
+  if (config.DataLabel && !!viewBox) {
     return createElement(config.DataLabel, props);
   }
 
   const formattedLabel = config.formatter(props.value ?? props.children);
-  if (chartType === 'bar' || chartType === 'column') {
+  if ((chartType === 'bar' || chartType === 'column') && !!viewBox) {
     if (Math.abs(viewBox.width) < getTextWidth(formattedLabel)) {
       return null;
     }
@@ -37,7 +38,6 @@ export const ChartDataLabel = (props: CustomDataLabelProps) => {
   if (['area', 'line', 'radar'].includes(chartType)) {
     fill = ThemingParameters.sapTextColor; // label is displayed outside of the colored element
   }
-
   return (
     <Label
       viewBox={viewBox}

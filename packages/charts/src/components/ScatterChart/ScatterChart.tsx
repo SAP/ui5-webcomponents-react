@@ -168,8 +168,10 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
   const [componentRef, chartRef] = useSyncRef<any>(ref);
   const preventOnClickCall = useRef(false);
   const onItemLegendClick = useLegendItemClick(onLegendClick);
+  //todo: error on click
   const onClickInternal = useCallback(
     (payload, event) => {
+      console.log(payload);
       if (typeof onClick === 'function' && !preventOnClickCall.current) {
         onClick(
           enrichEventWithDetails(event, {

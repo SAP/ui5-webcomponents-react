@@ -51,12 +51,13 @@ describe('ComposedChart', () => {
         measures={measures}
         onClick={onClick}
         onLegendClick={onLegendClick}
+        noAnimation
       />,
     );
 
     cy.findByText('January').click();
     cy.get('@onClick').should('have.been.called');
-    cy.get('[name="January"]').eq(0).click();
+    cy.get('[name="January"]').eq(0).realClick({ position: 'topLeft' });
     cy.get('@onClick')
       .should('have.been.calledTwice')
       .and(
@@ -68,7 +69,7 @@ describe('ComposedChart', () => {
         }),
       );
 
-    cy.contains('Users').click();
+    cy.get('[class="recharts-legend-wrapper"]').findByText('Users').realClick();
     cy.get('@onLegendClick').should(
       'have.been.calledWith',
       Cypress.sinon.match({

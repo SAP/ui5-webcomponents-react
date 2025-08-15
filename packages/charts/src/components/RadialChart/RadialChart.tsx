@@ -5,7 +5,7 @@ import { enrichEventWithDetails, ThemingParameters } from '@ui5/webcomponents-re
 import type { CSSProperties } from 'react';
 import { forwardRef } from 'react';
 import { PolarAngleAxis, RadialBar, RadialBarChart } from 'recharts';
-import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
+import type { CategoricalChartFunc } from 'recharts/types/chart/types.js';
 import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
 import { PieChartPlaceholder } from '../PieChart/Placeholder.js';
@@ -18,6 +18,7 @@ interface RadialChartConfig {
 
   [rest: string]: any;
 }
+
 export interface RadialChartProps
   extends Omit<CommonProps, 'onClick' | 'children' | 'onLegendClick'>,
     Pick<IChartBaseProps, 'loading' | 'loadingDelay'> {
@@ -57,6 +58,7 @@ export interface RadialChartProps
    */
   onClick?: (
     event: CustomEvent<{
+      // todo: remove payload and activePayloads in next major?
       payload: unknown;
       activePayloads: Record<string, unknown>[];
       dataIndex: number;
@@ -126,7 +128,15 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
     }
   };
 
-  const onClickInternal = useOnClickInternal(onClick);
+  const handleOnClick: CategoricalChartFunc = (_, e) => {
+    onClick(
+      // @ts-expect-error: enrichEventWithDetails expects a CustomEvent
+      enrichEventWithDetails(e, {
+        // @ts-expect-error: detail property exists
+        activePayloads: [e.detail.payload],
+      }),
+    );
+  };
 
   return (
     <ChartContainer
@@ -142,7 +152,7 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
       {...rest}
     >
       <RadialBarChart
-        onClick={onClickInternal}
+        onClick={handleOnClick}
         innerRadius="90%"
         outerRadius="100%"
         barSize={10}
@@ -167,8 +177,9 @@ const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) =>
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="progress-label"
-            style={{ ...defaultDisplayValueStyles, ...displayValueStyle }}
+            //todo: why do we need this?
+            // className="progress-label"
+            style={displayValueStyle}
           >
             {displayValue}
           </text>

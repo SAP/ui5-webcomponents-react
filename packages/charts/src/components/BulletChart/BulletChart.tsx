@@ -2,7 +2,7 @@
 
 import { enrichEventWithDetails, ThemingParameters, useIsRTL, useSyncRef } from '@ui5/webcomponents-react-base';
 import type { CSSProperties } from 'react';
-import { forwardRef, useCallback, useMemo } from 'react';
+import { useRef, forwardRef, useCallback, useMemo } from 'react';
 import {
   Bar,
   Brush,
@@ -24,7 +24,7 @@ import { useObserveXAxisHeights } from '../../hooks/useObserveXAxisHeights.js';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
 import { usePrepareDimensionsAndMeasures } from '../../hooks/usePrepareDimensionsAndMeasures.js';
 import { useTooltipFormatter } from '../../hooks/useTooltipFormatter.js';
-import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { ActivePayload, IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
 import type { IChartDimension } from '../../interfaces/IChartDimension.js';
 import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import { ChartContainer } from '../../internal/ChartContainer.js';
@@ -172,17 +172,22 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
     dimensionDefaults,
     measureDefaults,
   );
+  const activePayloadsRef = useRef<ActivePayload[]>(measures);
 
   const sortedMeasures = useMemo(() => {
-    return measures.sort((measure) => {
-      if (measure.type === 'comparison') {
-        return 1;
-      }
-
-      if (measure.type === 'primary') {
+    return [...measures].sort((a, b) => {
+      if (a.type === 'primary' && b.type !== 'primary') {
         return -1;
       }
-
+      if (b.type === 'primary' && a.type !== 'primary') {
+        return 1;
+      }
+      if (a.type === 'comparison' && b.type !== 'comparison') {
+        return 1;
+      }
+      if (b.type === 'comparison' && a.type !== 'comparison') {
+        return -1;
+      }
       return 0;
     });
   }, [measures]);
@@ -239,7 +244,8 @@ const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) =>
   );
 
   const onItemLegendClick = useLegendItemClick(onLegendClick);
-  const onClickInternal = useOnClickInternal(onClick);
+  //todo: implement activePayloadsRef
+  const onClickInternal = useOnClickInternal(onClick, dataset, activePayloadsRef);
 
   const isBigDataSet = dataset?.length > 30;
   const primaryDimensionAccessor = primaryDimension?.accessor;

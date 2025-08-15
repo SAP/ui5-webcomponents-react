@@ -1,7 +1,26 @@
 import type { CommonProps } from '@ui5/webcomponents-react';
 import type { ComponentType, ReactNode } from 'react';
 import type { LegendProps, TooltipProps } from 'recharts';
+import type { CategoricalChartFunc } from 'recharts/types/chart/types.js';
 import type { ICartesianChartConfig } from './ICartesianChartConfig.js';
+
+//todo: type measures
+// interface ActivePayload extends IChartMeasure{
+//  opacity?:
+// }
+
+export interface ActivePayload {
+  color: string | undefined;
+  stroke: string | undefined;
+  dataKey: string;
+  hide?: boolean | undefined;
+  name: string;
+  fillOpacity?: string | number;
+  strokeOpacity?: string | number;
+  payload: Record<string, unknown>;
+  value: number | string;
+  colors?: string[];
+}
 
 export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonProps, 'onClick'> {
   /**
@@ -37,7 +56,14 @@ export interface IChartBaseProps<T = ICartesianChartConfig> extends Omit<CommonP
   /**
    * Fired when clicked anywhere in the chart.
    */
-  onClick?: (event: CustomEvent<{ payload: unknown; activePayloads: Record<string, unknown>[] }>) => void;
+  onClick?: (
+    event: CustomEvent<
+      Parameters<CategoricalChartFunc>[0] & {
+        payload: unknown;
+        activePayloads: ActivePayload[];
+      }
+    >,
+  ) => void;
 
   /**
    * The `onDataPointClick` event fires whenever the user clicks on e.g. a  bar in `BarChart` or a point the `LineChart`.

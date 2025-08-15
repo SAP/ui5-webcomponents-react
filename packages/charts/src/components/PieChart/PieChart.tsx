@@ -3,9 +3,10 @@
 import { enrichEventWithDetails, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { CSSProperties } from 'react';
-import { cloneElement, forwardRef, isValidElement, useCallback, useMemo } from 'react';
+import { useRef, cloneElement, forwardRef, isValidElement, useCallback, useMemo } from 'react';
 import {
   Cell,
+  Curve,
   Label as RechartsLabel,
   Legend,
   Pie,
@@ -17,7 +18,7 @@ import {
 import { getValueByDataKey } from 'recharts/lib/util/ChartUtils.js';
 import { useLegendItemClick } from '../../hooks/useLegendItemClick.js';
 import { useOnClickInternal } from '../../hooks/useOnClickInternal.js';
-import type { IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
+import type { ActivePayload, IChartBaseProps } from '../../interfaces/IChartBaseProps.js';
 import type { IChartDimension } from '../../interfaces/IChartDimension.js';
 import type { IChartMeasure } from '../../interfaces/IChartMeasure.js';
 import type { IPolarChartConfig } from '../../interfaces/IPolarChartConfig.js';
@@ -140,6 +141,16 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     }),
     [props.measure],
   );
+  const activePayloadsRef = useRef<ActivePayload>({
+    ...measure,
+    // these properties must be either set in the component, or in the `useOnClickInternal` hook
+    dataKey: measure.accessor,
+    name: measure.accessor,
+    color: '',
+    stroke: '',
+    payload: {},
+    value: '',
+  });
 
   const dataLabel = (props) => {
     const hideDataLabel =
@@ -163,11 +174,12 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
   );
 
   const onItemLegendClick = useLegendItemClick(onLegendClick, () => measure.accessor);
-  const onClickInternal = useOnClickInternal(onClick);
+  const onClickInternal = useOnClickInternal(onClick, dataset, activePayloadsRef);
 
   const onDataPointClickInternal = useCallback(
     (payload, dataIndex, event) => {
       if (payload && payload && typeof onDataPointClick === 'function') {
+        //todo check values
         onDataPointClick(
           enrichEventWithDetails(event, {
             value: payload.value,
@@ -253,8 +265,10 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
     (props) => {
       const hideDataLabel =
         typeof measure.hideDataLabel === 'function' ? measure.hideDataLabel(props) : measure.hideDataLabel;
-      if (hideDataLabel || chartConfig.activeSegment === props.index) return null;
-      return Pie.renderLabelLineItem({}, props, undefined);
+      if (hideDataLabel || chartConfig.activeSegment === props.index) {
+        return null;
+      }
+      return <Curve {...props} type="linear" className={'recharts-pie-label-line'} />;
     },
     [chartConfig.activeSegment, measure.hideDataLabel],
   );
@@ -299,6 +313,10 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
           classNames.piechart,
         )}
       >
+        {/*todo: accessibility layer needs active shape?*/}
+        {/*todo: keyboard nav with active shape doesn't hide the default label of the Cell when active*/}
+        {/*todo: when clicked while activeShape is set, it takes a lot of time to rerender the component, leading to
+        strange behavior*/}
         <Pie
           onClick={onDataPointClickInternal}
           innerRadius={chartConfig.innerRadius}
@@ -311,19 +329,24 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
           isAnimationActive={!noAnimation}
           labelLine={renderLabelLine}
           label={dataLabel}
-          activeIndex={chartConfig.activeSegment}
           activeShape={chartConfig.activeSegment != null && renderActiveShape}
-          rootTabIndex={-1}
+          //todo: why do we need this?
+          // rootTabIndex={-1}
         >
           {centerLabel && <RechartsLabel position="center">{centerLabel}</RechartsLabel>}
           {dataset &&
-            dataset.map((data, index) => (
-              <Cell
-                key={index}
-                name={`${dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}`}
-                fill={measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`}
-              />
-            ))}
+            dataset.map((data, index) => {
+              const color = measure.colors?.[index] ?? `var(--sapChart_OrderedColor_${(index % 12) + 1})`;
+              activePayloadsRef.current.color = color;
+              activePayloadsRef.current.stroke = color;
+              return (
+                <Cell
+                  key={index}
+                  name={`${dimension.formatter(getValueByDataKey(data, dimension.accessor, ''))}`}
+                  fill={color}
+                />
+              );
+            })}
         </Pie>
         {tooltipConfig?.active !== false && (
           <Tooltip
@@ -335,12 +358,17 @@ const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
             {...tooltipConfig}
           />
         )}
+        {chartConfig.activeSegment && (
+          // tooltip that only renders the active shape
+          <Tooltip trigger="click" defaultIndex={chartConfig.activeSegment} active={false} />
+        )}
         {!noLegend && (
           <Legend
             verticalAlign={chartConfig.legendPosition}
             align={chartConfig.legendHorizontalAlign}
             onClick={onItemLegendClick}
             wrapperStyle={legendWrapperStyle}
+            itemSorter={'dataKey'}
             {...chartConfig.legendConfig}
           />
         )}

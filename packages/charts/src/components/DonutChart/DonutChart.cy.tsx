@@ -43,7 +43,7 @@ describe('DonutChart', () => {
         }),
       );
 
-    cy.contains('January').click();
+    cy.get('[class="recharts-legend-wrapper"]').findByText('January').realClick();
     cy.get('@onLegendClick').should(
       'have.been.calledWith',
       Cypress.sinon.match({
