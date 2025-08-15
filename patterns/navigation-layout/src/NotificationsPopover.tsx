@@ -18,7 +18,6 @@ import {
   IllustratedMessage,
   Menu,
   MenuItem,
-  MessageStrip,
   NotificationList,
   NotificationListGroupItem,
   NotificationListItem,
