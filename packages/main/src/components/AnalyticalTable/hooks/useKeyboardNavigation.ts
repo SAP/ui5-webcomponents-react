@@ -1,9 +1,20 @@
+import type { KeyboardEventHandler } from 'react';
 import { useCallback, useEffect, useRef } from 'react';
 import { actions } from 'react-table';
 import type { ColumnType, ReactTableHooks, TableInstance } from '../types/index.js';
 import { getLeafHeaders } from '../util/index.js';
 
 const CELL_DATA_ATTRIBUTES = ['visibleColumnIndex', 'columnIndex', 'rowIndex', 'visibleRowIndex'];
+const NAVIGATION_KEYS = new Set([
+  'End',
+  'Home',
+  'PageDown',
+  'PageUp',
+  'ArrowRight',
+  'ArrowLeft',
+  'ArrowDown',
+  'ArrowUp',
+]);
 
 const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
   if (
@@ -175,9 +186,13 @@ const useGetTableProps = (
           currentlyFocusedCell.current.dataset.rowIndex ?? currentlyFocusedCell.current.dataset.subcomponentRowIndex,
           10,
         );
+
+        if (NAVIGATION_KEYS.has(e.key)) {
+          e.preventDefault();
+        }
+
         switch (e.key) {
           case 'End': {
-            e.preventDefault();
             const visibleColumns = tableRef.current.querySelector(
               `div[data-component-name="AnalyticalTableHeaderRow"]`,
             ).children;
@@ -200,7 +215,6 @@ const useGetTableProps = (
             break;
           }
           case 'Home': {
-            e.preventDefault();
             const newElement = tableRef.current.querySelector(
               `div[data-visible-column-index="0"][data-row-index="${rowIndex}"]`,
             );
@@ -208,7 +222,6 @@ const useGetTableProps = (
             break;
           }
           case 'PageDown': {
-            e.preventDefault();
             if (currentlyFocusedCell.current.dataset.rowIndex === '0') {
               const newElement = tableRef.current.querySelector(
                 `div[data-column-index="${columnIndex}"][data-row-index="${rowIndex + 1}"]`,
@@ -225,7 +238,6 @@ const useGetTableProps = (
             break;
           }
           case 'PageUp': {
-            e.preventDefault();
             if (currentlyFocusedCell.current.dataset.rowIndex <= '1') {
               const newElement = tableRef.current.querySelector(
                 `div[data-column-index="${columnIndex}"][data-row-index="0"]`,
@@ -240,7 +252,6 @@ const useGetTableProps = (
             break;
           }
           case 'ArrowRight': {
-            e.preventDefault();
             if (isActiveItemInSubComponent) {
               navigateFromActiveSubCompItem(currentlyFocusedCell, e);
               return;
@@ -256,7 +267,6 @@ const useGetTableProps = (
             break;
           }
           case 'ArrowLeft': {
-            e.preventDefault();
             if (isActiveItemInSubComponent) {
               navigateFromActiveSubCompItem(currentlyFocusedCell, e);
               return;
@@ -272,7 +282,6 @@ const useGetTableProps = (
             break;
           }
           case 'ArrowDown': {
-            e.preventDefault();
             if (isActiveItemInSubComponent) {
               navigateFromActiveSubCompItem(currentlyFocusedCell, e);
               return;
@@ -296,7 +305,6 @@ const useGetTableProps = (
             break;
           }
           case 'ArrowUp': {
-            e.preventDefault();
             if (isActiveItemInSubComponent) {
               navigateFromActiveSubCompItem(currentlyFocusedCell, e);
               return;
@@ -332,11 +340,25 @@ const useGetTableProps = (
   if (showOverlay) {
     return tableProps;
   }
+
+  // keyboard nav is only enabled if the table is not in edit mode
+  const handleEditModeKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (typeof tableProps.onKeyDown === 'function') {
+      tableProps.onKeyDown(e);
+    }
+    if (NAVIGATION_KEYS.has(e.key)) {
+      e.preventDefault();
+    }
+  };
+
   return [
     tableProps,
     {
       onFocus: onTableFocus,
-      onKeyDown: onKeyboardNavigation,
+      onKeyDown:
+        state.cellContentTabIndex === -1 || state.cellContentTabIndex == null
+          ? onKeyboardNavigation
+          : handleEditModeKeyDown,
       onBlur: onTableBlur,
     },
   ];

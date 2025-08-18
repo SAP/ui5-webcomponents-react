@@ -103,7 +103,7 @@ export interface TableInstance {
   disableSortBy?: boolean;
   dispatch?: (action: {
     type: string;
-    payload?: Record<string, unknown> | AnalyticalTableState['popInColumns'] | boolean | string;
+    payload?: Record<string, unknown> | AnalyticalTableState['popInColumns'] | boolean | string | number;
     clientX?: number;
   }) => void;
   expandedDepth?: number;
@@ -319,6 +319,7 @@ export interface AnalyticalTableState {
   interactiveRowsHavePopIn?: boolean;
   tableColResized?: true;
   triggerScroll?: TriggerScrollState;
+  cellContentTabIndex?: number;
 }
 
 interface Filter {
