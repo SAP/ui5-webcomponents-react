@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.13.0...v2.13.1) (2025-08-14)
+
+### Bug Fixes
+
+- **ObjectPage:** handle `scrollPaddingBlock` when `relatedTarget` is `null` ([#7631](https://github.com/SAP/ui5-webcomponents-react/issues/7631)) ([09d8d19](https://github.com/SAP/ui5-webcomponents-react/commit/09d8d192110c2c4cab851dee891e250dc4566b9b)), closes [#7570](https://github.com/SAP/ui5-webcomponents-react/issues/7570)
+- **SelectDialog:** add translation for selection announcement ([#7647](https://github.com/SAP/ui5-webcomponents-react/issues/7647)) ([29bc18f](https://github.com/SAP/ui5-webcomponents-react/commit/29bc18fa2deee9900247ba90258e6f1754b0639b))
+
 # [2.13.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.12.0...v2.13.0) (2025-08-05)
 
 ### Bug Fixes

@@ -11,6 +11,7 @@ const meta = {
   argTypes: {
     footer: { control: { disable: true } },
     header: { control: { disable: true } },
+    children: { control: { disable: true } },
   },
   args: {
     children: (

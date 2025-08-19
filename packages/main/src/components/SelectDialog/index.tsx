@@ -13,8 +13,6 @@ import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
-// todo: remove comment once translations are available
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { CANCEL, CLEAR, SEARCH, SELECT, SELECTED, SELECTED_ITEMS } from '../../i18n/i18n-defaults.js';
 import { Button, Dialog, FlexBox, FlexBoxAlignItems, Icon, Input, List, Text, Title } from '../../index.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
@@ -244,9 +242,7 @@ const SelectDialog = forwardRef<DialogDomRef, SelectDialogPropTypes>((props, ref
     if (selectionMode === ListSelectionMode.Multiple) {
       setSelectedItems(selectedItems);
       if (selectedItems.length) {
-        announce('Selected Items ' + selectedItems.length, InvisibleMessageMode.Polite);
-        //todo: uncomment this, once translations are available
-        // announce(i18nBundle.getText(SELECTED_ITEMS, selectedItems.length), InvisibleMessageMode.Polite);
+        announce(i18nBundle.getText(SELECTED_ITEMS, selectedItems.length), InvisibleMessageMode.Polite);
       }
     } else {
       if (typeof onConfirm === 'function') {
