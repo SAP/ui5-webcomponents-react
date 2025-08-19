@@ -4,13 +4,24 @@ import dataManualSelect from '@sb/mockData/FriendsManualSelect25.json';
 import dataTree from '@sb/mockData/FriendsTree.json';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import InputType from '@ui5/webcomponents/dist/types/InputType.js';
+import paperPlaneIcon from '@ui5/webcomponents-icons/dist/paper-plane';
 import { useCallback, useMemo, useReducer, useState } from 'react';
 import { AnalyticalTableSelectionMode, FlexBoxAlignItems, FlexBoxDirection } from '../../enums';
-import { Button, CheckBox, Input, Label, ToggleButton, Text } from '../../webComponents';
+import { Button } from '../../webComponents/Button/index.js';
+import { CheckBox } from '../../webComponents/CheckBox/index.js';
+import type { InputDomRef } from '../../webComponents/Input/index.js';
+import { Input } from '../../webComponents/Input/index.js';
+import { Label } from '../../webComponents/Label/index.js';
+import { Switch } from '../../webComponents/Switch/index.js';
+import { Tag } from '../../webComponents/Tag/index.js';
+import { Text } from '../../webComponents/Text/index.js';
+import { ToggleButton } from '../../webComponents/ToggleButton/index.js';
 import { FlexBox } from '../FlexBox';
 import meta from './AnalyticalTable.stories';
 import * as AnalyticalTableHooks from './pluginHooks/AnalyticalTableHooks';
+import { useF2CellEdit } from './pluginHooks/AnalyticalTableHooks';
 import { AnalyticalTable } from './index';
+import type { AnalyticalTableCellInstance, AnalyticalTableColumnDefinition } from './index';
 
 const pluginsMeta = {
   ...meta,
@@ -290,6 +301,78 @@ export const PluginOrderedMultiSort = {
         sortable
         tableHooks={tableHooksOrderedMultiSort}
       />
+    );
+  },
+};
+
+const inputCols: AnalyticalTableColumnDefinition[] = [
+  {
+    Header: 'Input',
+    id: 'input',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<InputDomRef>(props);
+      return <Input ref={callbackRef} />;
+    },
+    interactiveElementName: 'Input',
+  },
+  {
+    Header: 'Input & Button',
+    id: 'input_btn',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef(props);
+      return (
+        <>
+          <Input />
+          <Button ref={callbackRef} icon={paperPlaneIcon} tooltip="Submit" accessibleName="Submit" />
+        </>
+      );
+    },
+    interactiveElementName: 'Input and Button',
+  },
+  {
+    Header: 'Text',
+    accessor: 'name',
+  },
+  {
+    Header: 'Button',
+    id: 'btn',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef(props);
+      return <Button ref={callbackRef}>Button</Button>;
+    },
+    interactiveElementName: () => 'Button',
+  },
+  {
+    Header: 'Non-interactive custom content',
+    accessor: 'friend.name',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      return <Tag>{props.value}</Tag>;
+    },
+  },
+  {
+    Header: 'Switch or CheckBox',
+    id: 'switch_checkbox',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      if (props.row.index % 2) {
+        return <CheckBox accessibleName="Dummy CheckBox" />;
+      }
+      return <Switch accessibleName="Dummy Switch" />;
+    },
+    interactiveElementName: (props: AnalyticalTableCellInstance) => {
+      if (props.row.index % 2) {
+        return 'CheckBox';
+      }
+      return 'Switch';
+    },
+  },
+];
+
+const tableHooks = [useF2CellEdit];
+
+export const F2CellEdit: Story = {
+  render(args) {
+    return (
+      <AnalyticalTable data={args.data.slice(0, 10)} columns={inputCols} tableHooks={tableHooks} visibleRows={5} />
     );
   },
 };

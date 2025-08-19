@@ -1,0 +1,114 @@
+import { ImportStatement } from '@sb/components/Import';
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { Footer } from '@sb/components';
+import * as ComponentStories from './AnalyticalTableHooks.stories';
+
+<Meta title="Data Display / AnalyticalTable / Plugin Hooks / useF2CellEdit" />
+
+# AnalyticalTable Plugin: useF2CellEdit
+
+<ImportStatement moduleNames={['AnalyticalTableHooks']} packageName={'@ui5/webcomponents-react'} />
+
+**Since: v2.14.0**
+
+A plugin hook that enables F2-based cell editing for interactive elements inside a cell.
+
+To **ensure the hook works correctly**, make sure that:
+
+- Each column containing interactive elements has the `interactiveElementName` property set. **Note:** This property is also used to describe the cell's content for screen readers.
+- The callback Ref returned by `useF2CellEdit.useCallbackRef` is attached to every interactive element within the cell.
+
+The hook manages focus, keyboard navigation, and `tabindex` for cells with interactive content:
+
+- Pressing `F2` moves focus between the cell container and its first interactive element.
+- Updates the cell's `aria-label` with the interactive element's name for accessibility.
+- Prevents standard navigation keys from interfering when editing a cell.
+
+## Example
+
+<Canvas of={ComponentStories.F2CellEdit} sourceState="none" />
+
+### Code
+
+```tsx
+import type {
+  AnalyticalTableCellInstance,
+  AnalyticalTableColumnDefinition,
+  InputDomRef,
+  AnalyticalTablePropTypes,
+} from '@ui5/webcomponents-react';
+import { AnalyticalTableHooks, AnalyticalTable, Button, CheckBox, Input, Switch, Tag } from '@ui5/webcomponents-react';
+import paperPlaneIcon from '@ui5/webcomponents-icons/dist/paper-plane';
+
+const { useF2CellEdit } = AnalyticalTableHooks;
+
+const columns: AnalyticalTableColumnDefinition[] = [
+  {
+    Header: 'Input',
+    id: 'input',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<InputDomRef>(props);
+      return <Input ref={callbackRef} />;
+    },
+    interactiveElementName: 'Input',
+  },
+  {
+    Header: 'Input & Button',
+    id: 'input_btn',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef(props);
+      return (
+        <>
+          <Input />
+          <Button ref={callbackRef} icon={paperPlaneIcon} tooltip="Submit" accessibleName="Submit" />
+        </>
+      );
+    },
+    interactiveElementName: 'Input and Button',
+  },
+  {
+    Header: 'Text',
+    accessor: 'name',
+  },
+  {
+    Header: 'Button',
+    id: 'btn',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef(props);
+      return <Button ref={callbackRef}>Button</Button>;
+    },
+    interactiveElementName: () => 'Button',
+  },
+  {
+    Header: 'Non-interactive custom content',
+    accessor: 'friend.name',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      return <Tag>{props.value}</Tag>;
+    },
+  },
+  {
+    Header: 'Switch or CheckBox',
+    id: 'switch_checkbox',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      if (props.row.index % 2) {
+        return <CheckBox accessibleName="Dummy CheckBox" />;
+      }
+      return <Switch accessibleName="Dummy Switch" />;
+    },
+    interactiveElementName: (props: AnalyticalTableCellInstance) => {
+      if (props.row.index % 2) {
+        return 'CheckBox';
+      }
+      return 'Switch';
+    },
+  },
+];
+
+const tableHooks: AnalyticalTablePropTypes['tableHooks'] = [useF2CellEdit];
+
+function TableWithInputs({ data }) {
+  return <AnalyticalTable data={data} columns={columns} tableHooks={tableHooks} visibleRows={5} />;
+}
+```
+
+<Footer />
