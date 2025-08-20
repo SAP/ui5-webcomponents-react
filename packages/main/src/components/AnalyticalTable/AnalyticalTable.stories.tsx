@@ -1,4 +1,3 @@
-import type { ReactTableHooks, TableInstance } from '@/components/AnalyticalTable/types/index.js';
 import dataLarge from '@sb/mockData/Friends500.json';
 import dataTree from '@sb/mockData/FriendsTree.json';
 import type { Meta, StoryObj } from '@storybook/react-vite';
@@ -6,16 +5,7 @@ import '@ui5/webcomponents-icons/dist/delete.js';
 import '@ui5/webcomponents-icons/dist/edit.js';
 import '@ui5/webcomponents-icons/dist/settings.js';
 import NoDataIllustration from '@ui5/webcomponents-fiori/dist/illustrations/NoData.js';
-import {
-  FocusEventHandler,
-  KeyboardEventHandler,
-  useCallback,
-  useEffect,
-  useMemo,
-  useReducer,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import {
   AnalyticalTablePopinDisplay,
   AnalyticalTableScaleWidthMode,
@@ -39,7 +29,6 @@ import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem/ind
 import { Select } from '../../webComponents/Select/index.js';
 import { Tag } from '../../webComponents/Tag/index.js';
 import { Text } from '../../webComponents/Text/index.js';
-import { Input } from '../../webComponents/input/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import type { AnalyticalTableColumnDefinition } from './index.js';
 import { AnalyticalTable } from './index.js';
@@ -634,164 +623,5 @@ export const KitchenSink: Story = {
   args: kitchenSinkArgs,
   render(args, context) {
     return context.viewMode === 'story' ? <AnalyticalTable {...args} /> : <ToggleableTable {...args} />;
-  },
-};
-
-const inputCols = [
-  {
-    Header: 'Input',
-    id: 'input',
-    Cell: (props) => {
-      return (
-        <Input
-          onFocus={console.log}
-          tabIndex={props.state.cellTabIndex}
-          inert={Object.hasOwn(props.state, 'tabIndex') ? props.state.cellTabIndex < 0 : true}
-        />
-      );
-    },
-    interactiveElementName: 'Input',
-  },
-  {
-    Header: 'Button',
-    id: 'btn',
-    Cell: (props) => (
-      <Button tabIndex={props.state.cellTabIndex} inert={props.state.cellTabIndex < 0}>
-        Button
-      </Button>
-    ),
-    interactiveElementName: () => 'Button',
-  },
-];
-
-const useGetTableProps = (props, { instance }) => {
-  const handleFocus: FocusEventHandler<HTMLDivElement> = (e) => {
-    const isCell = e.target.hasAttribute('gridcell') || e.target.hasAttribute('columnheader');
-    if (isCell) {
-    }
-    if (typeof props.onFocus === 'function') {
-      props.onFocus(e);
-    }
-  };
-
-  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {};
-
-  return [props, { onFocus: handleFocus, onKeyDown: handleKeyDown }];
-};
-
-function findFirstFocusableInside(element) {
-  if (!element) return null;
-
-  function recursiveFindInteractiveElement(el) {
-    for (const child of el.children) {
-      const style = getComputedStyle(child);
-      if (child.disabled || style.display === 'none' || style.visibility === 'hidden') {
-        continue; // skip non-interactive
-      }
-
-      const focusableSelectors = [
-        'a[href]',
-        'button',
-        'input',
-        'textarea',
-        'select',
-        '[tabindex]:not([tabindex="-1"])',
-      ];
-
-      if (child.matches(focusableSelectors.join(','))) {
-        return child;
-      }
-
-      if (child.shadowRoot) {
-        const shadowFocusable = recursiveFindInteractiveElement(child.shadowRoot);
-        if (shadowFocusable) return shadowFocusable;
-      }
-
-      const nestedFocusable = recursiveFindInteractiveElement(child);
-      if (nestedFocusable) return nestedFocusable;
-    }
-    return null;
-  }
-
-  return recursiveFindInteractiveElement(element);
-}
-
-const useCellTabIndex = (cols, { instance: { state } }) => {
-  console.log(state.cellTabIndex);
-  return cols.map((col) => {
-    const origCell = col.Cell;
-
-    // only wrap function renderers, non-function renderers don't receive props anyway.
-    if (typeof origCell !== 'function') return col;
-
-    return {
-      ...col,
-      Cell: (props: any) => {
-        return origCell({ ...props, tabIndex: state.cellTabIndex ?? -1 });
-      },
-    };
-  });
-};
-
-const useGetCellProps = (props, { cell, instance, userProps }) => {
-  const { interactiveElementName, Cell } = cell.column;
-
-  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
-    if (e.key === 'F2') {
-      if (e.currentTarget === e.target && interactiveElementName) {
-        let name: string;
-        const interactiveElement = findFirstFocusableInside(e.target);
-        if (interactiveElement) {
-          e.currentTarget.tabIndex = -1;
-          interactiveElement.focus();
-          instance.dispatch({ type: 'CELL_TAB_INDEX', payload: 0 });
-          if (typeof interactiveElementName === 'function') {
-            name = interactiveElementName(cell);
-          } else {
-            name = interactiveElementName;
-          }
-        }
-      }
-      if (e.currentTarget !== e.target) {
-        e.currentTarget.tabIndex = 0;
-        e.currentTarget.focus();
-        instance.dispatch({ type: 'CELL_TAB_INDEX', payload: -1 });
-      }
-    }
-  };
-
-  return [props, { onKeyDown: handleKeyDown }];
-};
-
-const stateReducer = (state, action, _prevState, instance: TableInstance) => {
-  const { payload, type } = action;
-
-  if (type === 'CELL_TAB_INDEX') {
-    return { ...state, cellTabIndex: payload };
-  }
-  return state;
-};
-
-const useF2Navigation = (hooks: ReactTableHooks) => {
-  // const prevFocusedCell = useRef<HTMLDivElement>(null);
-  //todo: param names claim functions are hooks, but they aren't
-  hooks.visibleColumns.push(useCellTabIndex);
-  hooks.getCellProps.push(useGetCellProps);
-  hooks.stateReducers.push(stateReducer);
-  // hooks.getTableProps.push(useGetTableProps);
-  // hooks.getHeaderProps.push(setHeaderProps);
-};
-
-const tableHooks = [useF2Navigation];
-
-export const Test: Story = {
-  render(args) {
-    return (
-      <>
-        <button>Click</button>
-        <AnalyticalTable {...args} columns={[inputCols[0], ...args.columns, inputCols[1]]} tableHooks={tableHooks} />
-        <button>Click</button>
-      </>
-    );
   },
 };

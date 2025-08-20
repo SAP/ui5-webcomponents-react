@@ -322,7 +322,7 @@ const inputCols: AnalyticalTableColumnDefinition[] = [
       const callbackRef = useF2CellEdit.useCallbackRef(props);
       return (
         <>
-          <Input />
+          <Input ref={callbackRef} />
           <Button ref={callbackRef} icon={paperPlaneIcon} tooltip="Submit" accessibleName="Submit" />
         </>
       );
@@ -353,10 +353,11 @@ const inputCols: AnalyticalTableColumnDefinition[] = [
     Header: 'Switch or CheckBox',
     id: 'switch_checkbox',
     Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef(props);
       if (props.row.index % 2) {
-        return <CheckBox accessibleName="Dummy CheckBox" />;
+        return <CheckBox ref={callbackRef} accessibleName="Dummy CheckBox" />;
       }
-      return <Switch accessibleName="Dummy Switch" />;
+      return <Switch ref={callbackRef} accessibleName="Dummy Switch" />;
     },
     interactiveElementName: (props: AnalyticalTableCellInstance) => {
       if (props.row.index % 2) {
