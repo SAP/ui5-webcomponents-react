@@ -1,11 +1,37 @@
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
+import paperPlaneIcon from '@ui5/webcomponents-icons/paper-plane.js';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { useCallback, useEffect, useMemo, useRef, useState, version as reactVersion } from 'react';
 import type {
+  AnalyticalTableCellInstance,
   AnalyticalTableColumnDefinition,
   AnalyticalTableDomRef,
   AnalyticalTablePropTypes,
+  InputDomRef,
   PopoverDomRef,
+  ButtonDomRef,
+  CheckBoxDomRef,
+  ComboBoxDomRef,
+  DatePickerDomRef,
+  DateRangePickerDomRef,
+  DateTimePickerDomRef,
+  DynamicDateRangeDomRef,
+  FileUploaderDomRef,
+  MessageViewButtonDomRef,
+  MultiComboBoxDomRef,
+  MultiInputDomRef,
+  RadioButtonDomRef,
+  RatingIndicatorDomRef,
+  SearchDomRef,
+  SegmentedButtonDomRef,
+  SelectDomRef,
+  SliderDomRef,
+  SplitButtonDomRef,
+  StepInputDomRef,
+  SwitchDomRef,
+  TextAreaDomRef,
+  TimePickerDomRef,
+  ToggleButtonDomRef,
 } from '../..';
 import {
   AnalyticalTable,
@@ -17,11 +43,36 @@ import {
   AnalyticalTableSubComponentsBehavior,
   AnalyticalTableVisibleRowCountMode,
   Button,
+  CheckBox,
+  ComboBox,
+  DatePicker,
+  DateRangePicker,
+  DateTimePicker,
+  DynamicDateRange,
+  FileUploader,
   IndicationColor,
   Input,
+  MessageViewButton,
+  MultiComboBox,
+  MultiInput,
   Popover,
+  RadioButton,
+  RatingIndicator,
+  Search,
+  SegmentedButton,
+  SegmentedButtonItem,
+  Select,
+  Slider,
+  SplitButton,
+  StepInput,
+  Switch,
+  Tag,
   Text,
+  TextArea,
+  TimePicker,
+  ToggleButton,
 } from '../..';
+import { useF2CellEdit } from './pluginHooks/useF2CellEdit.js';
 import { useManualRowSelect } from './pluginHooks/useManualRowSelect';
 import { useRowDisableSelection } from './pluginHooks/useRowDisableSelection';
 import { cssVarToRgb, cypressPassThroughTestsFactory } from '@/cypress/support/utils';
@@ -3864,6 +3915,141 @@ describe('AnalyticalTable', () => {
     });
   });
 
+  it('plugin hook: useF2CellEdit', () => {
+    const tableHooks = [useF2CellEdit];
+    cy.mount(
+      <>
+        <button>Before</button>
+        <AnalyticalTable data={[...data, ...data]} columns={inputCols} tableHooks={tableHooks} visibleRows={5} />{' '}
+        <button>After</button>
+      </>,
+    );
+
+    cy.findByText('Before').click();
+
+    cy.realPress('Tab');
+    cy.log('Cell 0-0');
+    cy.focused().should('have.attr', 'data-row-index', '0');
+    cy.focused().should('have.attr', 'data-column-index', '0');
+
+    cy.realPress('Tab');
+    cy.focused().should('have.text', 'After');
+
+    cy.realPress(['Shift', 'Tab']);
+    cy.log('Cell 0-0');
+    cy.focused().should('have.attr', 'data-row-index', '0');
+    cy.focused().should('have.attr', 'data-column-index', '0');
+
+    cy.log('Cell 1-0');
+    cy.realPress('ArrowDown');
+    cy.focused().should('have.attr', 'data-row-index', '1');
+    cy.focused().should('have.attr', 'data-column-index', '0');
+
+    cy.realPress('Tab');
+    cy.focused().should('have.text', 'After');
+
+    cy.realPress(['Shift', 'Tab']);
+    cy.log('Cell 1-0');
+    cy.focused().should('have.attr', 'data-row-index', '1');
+    cy.focused().should('have.attr', 'data-column-index', '0');
+
+    cy.realPress('F2');
+    cy.log('Input 1-0');
+    cy.focused().should('have.attr', 'type', 'text');
+
+    cy.realPress('Tab');
+    cy.log('Input 1-1');
+    cy.focused().should('have.attr', 'type', 'text');
+
+    cy.realPress('Tab');
+    cy.log('Button 1-1');
+    cy.focused().should('have.attr', 'type', 'button');
+
+    cy.realPress('Tab');
+    cy.log('Button 1-3');
+    cy.focused().should('have.attr', 'type', 'button');
+
+    cy.realPress('Tab');
+    cy.log('Switch 1-5');
+    cy.focused().should('have.attr', 'role', 'switch');
+
+    for (let i = 0; i < 5; i++) {
+      cy.realPress('Tab');
+    }
+    cy.log('CheckBox 2-5');
+    cy.focused().should('have.attr', 'role', 'checkbox');
+
+    cy.realPress('F2');
+    cy.log('Cell 2-5');
+    cy.focused().should('have.attr', 'data-row-index', '2');
+    cy.focused().should('have.attr', 'data-column-index', '5');
+
+    cy.realPress('Tab');
+    cy.focused().should('have.text', 'After');
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'data-row-index', '2');
+    cy.focused().should('have.attr', 'data-column-index', '5');
+
+    cy.realPress('PageDown');
+    cy.log('Cell 7-5');
+    cy.focused().should('have.attr', 'data-row-index', '7');
+    cy.focused().should('have.attr', 'data-column-index', '5');
+
+    cy.realPress('F2');
+    cy.get('[data-component-name="AnalyticalTableBody"]').then(($el) => {
+      const scrollTop = $el[0].scrollTop;
+      cy.realPress('PageUp');
+      cy.wrap($el).should(($elAfter) => {
+        expect($elAfter[0].scrollTop).to.eq(scrollTop);
+      });
+    });
+  });
+
+  it('plugin hook: useF2CellEdit', () => {
+    const tableHooks = [useF2CellEdit];
+    const dummyData = new Array(1).fill({});
+    cy.mount(
+      <>
+        <button>Before</button>
+        <AnalyticalTable
+          data={dummyData}
+          columns={allRelevantInputCompontentsForF2}
+          tableHooks={tableHooks}
+          visibleRows={5}
+          rowHeight={100}
+          headerRowHeight={44}
+        />
+        <button>After</button>
+      </>,
+    );
+
+    cy.findByText('Before').click();
+    cy.realPress('Tab');
+    cy.log('Cell 0-0');
+    cy.focused().should('have.attr', 'data-row-index', '0');
+    cy.focused().should('have.attr', 'data-column-index', '0');
+    cy.realPress('Tab');
+    cy.focused().should('have.text', 'After');
+    cy.realPress(['Shift', 'Tab']);
+    cy.realPress('ArrowDown');
+
+    cy.realPress('F2');
+    allRelevantInputCompontentsForF2.forEach((_) => {
+      cy.realPress('Tab');
+    });
+    // SegmentedButton has two tab stops
+    cy.realPress('Tab');
+    cy.focused().should('have.text', 'After');
+
+    cy.realPress('F2');
+    allRelevantInputCompontentsForF2.forEach((_) => {
+      cy.realPress(['Shift', 'Tab']);
+    });
+    // SegmentedButton has two tab stops
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.text', 'Before');
+  });
+
   cypressPassThroughTestsFactory(AnalyticalTable, { data, columns });
 });
 
@@ -3948,6 +4134,69 @@ const mockNames = [
   'Ximena',
   'Yannick',
   'Zara',
+];
+
+const inputCols: AnalyticalTableColumnDefinition[] = [
+  {
+    Header: 'Input',
+    id: 'input',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<InputDomRef>(props);
+      return <Input ref={callbackRef} />;
+    },
+    interactiveElementName: 'Input',
+  },
+  {
+    Header: 'Input & Button',
+    id: 'input_btn',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef(props);
+      return (
+        <>
+          <Input ref={callbackRef} />
+          <Button ref={callbackRef} icon={paperPlaneIcon} tooltip="Submit" accessibleName="Submit" />
+        </>
+      );
+    },
+    interactiveElementName: 'Input and Button',
+  },
+  {
+    Header: 'Text',
+    accessor: 'name',
+  },
+  {
+    Header: 'Button',
+    id: 'btn',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef(props);
+      return <Button ref={callbackRef}>Button</Button>;
+    },
+    interactiveElementName: () => 'Button',
+  },
+  {
+    Header: 'Non-interactive custom content',
+    accessor: 'friend.name',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      return <Tag>{props.value}</Tag>;
+    },
+  },
+  {
+    Header: 'Switch or CheckBox',
+    id: 'switch_checkbox',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef(props);
+      if (props.row.index % 2) {
+        return <CheckBox ref={callbackRef} accessibleName="Dummy CheckBox" />;
+      }
+      return <Switch ref={callbackRef} accessibleName="Dummy Switch" />;
+    },
+    interactiveElementName: (props: AnalyticalTableCellInstance) => {
+      if (props.row.index % 2) {
+        return 'CheckBox';
+      }
+      return 'Switch';
+    },
+  },
 ];
 
 const columnsWithPopIn = [
@@ -5595,4 +5844,312 @@ const dataTree = [
       },
     ],
   },
+];
+
+const allRelevantInputCompontentsForF2 = [
+  {
+    Header: 'Button',
+    id: 'button',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<ButtonDomRef>(props);
+      return <Button ref={callbackRef} />;
+    },
+    interactiveElementName: 'Button',
+    tagName: 'ui5-button',
+  },
+  // {
+  //   Header: 'Calendar',
+  //   id: 'calendar',
+  //   Cell: (props: AnalyticalTableCellInstance) => {
+  //     const callbackRef = useF2CellEdit.useCallbackRef<CalendarDomRef>(props);
+  //     return <Calendar ref={callbackRef} />;
+  //   },
+  //   interactiveElementName: 'Calendar',
+  //   tagName: 'ui5-calendar',
+  // },
+  {
+    Header: 'CheckBox',
+    id: 'check-box',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<CheckBoxDomRef>(props);
+      return <CheckBox ref={callbackRef} />;
+    },
+    interactiveElementName: 'CheckBox',
+    tagName: 'ui5-checkbox',
+  },
+  // {
+  //   Header: 'ColorPicker',
+  //   id: 'color-picker',
+  //   Cell: (props: AnalyticalTableCellInstance) => {
+  //     const callbackRef = useF2CellEdit.useCallbackRef<ColorPickerDomRef>(props);
+  //     return <ColorPicker ref={callbackRef} />;
+  //   },
+  //   interactiveElementName: 'ColorPicker',
+  //   tagName: 'ui5-color-picker',
+  // },
+  {
+    Header: 'ComboBox',
+    id: 'combo-box',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<ComboBoxDomRef>(props);
+      return <ComboBox ref={callbackRef} />;
+    },
+    interactiveElementName: 'ComboBox',
+    tagName: 'ui5-combobox',
+  },
+  {
+    Header: 'DatePicker',
+    id: 'date-picker',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<DatePickerDomRef>(props);
+      return <DatePicker ref={callbackRef} />;
+    },
+    interactiveElementName: 'DatePicker',
+    tagName: 'ui5-date-picker',
+  },
+  {
+    Header: 'DateRangePicker',
+    id: 'date-range-picker',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<DateRangePickerDomRef>(props);
+      return <DateRangePicker ref={callbackRef} />;
+    },
+    interactiveElementName: 'DateRangePicker',
+    tagName: 'ui5-daterange-picker',
+  },
+  {
+    Header: 'DateTimePicker',
+    id: 'date-time-picker',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<DateTimePickerDomRef>(props);
+      return <DateTimePicker ref={callbackRef} />;
+    },
+    interactiveElementName: 'DateTimePicker',
+    tagName: 'ui5-datetime-picker',
+  },
+  {
+    Header: 'DynamicDateRange',
+    id: 'dynamic-date-range',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<DynamicDateRangeDomRef>(props);
+      return <DynamicDateRange ref={callbackRef} />;
+    },
+    interactiveElementName: 'DynamicDateRange',
+    tagName: 'ui5-dynamic-date-range',
+  },
+  {
+    Header: 'FileUploader',
+    id: 'file-uploader',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<FileUploaderDomRef>(props);
+      return <FileUploader ref={callbackRef} />;
+    },
+    interactiveElementName: 'FileUploader',
+    tagName: 'ui5-file-uploader',
+  },
+  {
+    Header: 'Input',
+    id: 'input',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<InputDomRef>(props);
+      return <Input ref={callbackRef} />;
+    },
+    interactiveElementName: 'Input',
+    tagName: 'ui5-input',
+  },
+  {
+    Header: 'MessageViewButton',
+    id: 'message-view-button',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<MessageViewButtonDomRef>(props);
+      return <MessageViewButton ref={callbackRef} />;
+    },
+    interactiveElementName: 'MessageViewButton',
+    tagName: 'ui5-message-view-button',
+  },
+  {
+    Header: 'MultiComboBox',
+    id: 'multi-combo-box',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<MultiComboBoxDomRef>(props);
+      return <MultiComboBox ref={callbackRef} />;
+    },
+    interactiveElementName: 'MultiComboBox',
+    tagName: 'ui5-multi-combobox',
+  },
+  {
+    Header: 'MultiInput',
+    id: 'multi-input',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<MultiInputDomRef>(props);
+      return <MultiInput ref={callbackRef} />;
+    },
+    interactiveElementName: 'MultiInput',
+    tagName: 'ui5-multi-input',
+  },
+  {
+    Header: 'RadioButton',
+    id: 'radio-button',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<RadioButtonDomRef>(props);
+      return <RadioButton ref={callbackRef} />;
+    },
+    interactiveElementName: 'RadioButton',
+    tagName: 'ui5-radio-button',
+  },
+  // {
+  //   Header: 'RangeSlider',
+  //   id: 'range-slider',
+  //   Cell: (props: AnalyticalTableCellInstance) => {
+  //     const callbackRef = useF2CellEdit.useCallbackRef<RangeSliderDomRef>(props);
+  //     return <RangeSlider ref={callbackRef} />;
+  //   },
+  //   interactiveElementName: 'RangeSlider',
+  //   tagName: 'ui5-range-slider',
+  // },
+  {
+    Header: 'RatingIndicator',
+    id: 'rating-indicator',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<RatingIndicatorDomRef>(props);
+      return <RatingIndicator ref={callbackRef} />;
+    },
+    interactiveElementName: 'RatingIndicator',
+    tagName: 'ui5-rating-indicator',
+  },
+  {
+    Header: 'Search',
+    id: 'search',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<SearchDomRef>(props);
+      return <Search ref={callbackRef} />;
+    },
+    interactiveElementName: 'Search',
+    tagName: 'ui5-search-field',
+  },
+  {
+    Header: 'SegmentedButton',
+    id: 'segmented-button',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<SegmentedButtonDomRef>(props);
+      return (
+        <SegmentedButton ref={callbackRef}>
+          <SegmentedButtonItem ref={callbackRef}>Btn1</SegmentedButtonItem>
+          <SegmentedButtonItem ref={callbackRef}>Btn2</SegmentedButtonItem>
+        </SegmentedButton>
+      );
+    },
+    interactiveElementName: 'SegmentedButton',
+    tagName: 'ui5-segmented-button',
+  },
+  {
+    Header: 'Select',
+    id: 'select',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<SelectDomRef>(props);
+      return <Select ref={callbackRef} />;
+    },
+    interactiveElementName: 'Select',
+    tagName: 'ui5-select',
+  },
+  {
+    Header: 'Slider',
+    id: 'slider',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<SliderDomRef>(props);
+      return <Slider ref={callbackRef} />;
+    },
+    interactiveElementName: 'Slider',
+    tagName: 'ui5-slider',
+  },
+  {
+    Header: 'SplitButton',
+    id: 'split-button',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<SplitButtonDomRef>(props);
+      return <SplitButton ref={callbackRef} />;
+    },
+    interactiveElementName: 'SplitButton',
+    tagName: 'ui5-split-button',
+  },
+  {
+    Header: 'StepInput',
+    id: 'step-input',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<StepInputDomRef>(props);
+      return <StepInput ref={callbackRef} />;
+    },
+    interactiveElementName: 'StepInput',
+    tagName: 'ui5-step-input',
+  },
+  {
+    Header: 'Switch',
+    id: 'switch',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<SwitchDomRef>(props);
+      return <Switch ref={callbackRef} />;
+    },
+    interactiveElementName: 'Switch',
+    tagName: 'ui5-switch',
+  },
+  {
+    Header: 'TextArea',
+    id: 'text-area',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<TextAreaDomRef>(props);
+      return <TextArea ref={callbackRef} />;
+    },
+    interactiveElementName: 'TextArea',
+    tagName: 'ui5-textarea',
+  },
+  {
+    Header: 'TimePicker',
+    id: 'time-picker',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<TimePickerDomRef>(props);
+      return <TimePicker ref={callbackRef} />;
+    },
+    interactiveElementName: 'TimePicker',
+    tagName: 'ui5-time-picker',
+  },
+  {
+    Header: 'ToggleButton',
+    id: 'toggle-button',
+    Cell: (props: AnalyticalTableCellInstance) => {
+      const callbackRef = useF2CellEdit.useCallbackRef<ToggleButtonDomRef>(props);
+      return <ToggleButton ref={callbackRef} />;
+    },
+    interactiveElementName: 'ToggleButton',
+    tagName: 'ui5-toggle-button',
+  },
+  // {
+  //   Header: 'Tokenizer',
+  //   id: 'tokenizer',
+  //   Cell: (props: AnalyticalTableCellInstance) => {
+  //     const callbackRef = useF2CellEdit.useCallbackRef<TokenizerDomRef>(props);
+  //     return <Tokenizer ref={callbackRef} />;
+  //   },
+  //   interactiveElementName: 'Tokenizer',
+  //   tagName: 'ui5-tokenizer',
+  // },
+  // {
+  //   Header: 'UploadCollection',
+  //   id: 'upload-collection',
+  //   Cell: (props: AnalyticalTableCellInstance) => {
+  //     const callbackRef = useF2CellEdit.useCallbackRef<UploadCollectionDomRef>(props);
+  //     return <UploadCollection ref={callbackRef} />;
+  //   },
+  //   interactiveElementName: 'UploadCollection',
+  //   tagName: 'ui5-upload-collection',
+  // },
+  // {
+  //   Header: 'VariantManagement',
+  //   id: 'variant-management',
+  //   Cell: (props: AnalyticalTableCellInstance) => {
+  //     const callbackRef = useF2CellEdit.useCallbackRef<VariantManagementDomRef>(props);
+  //     return <VariantManagement ref={callbackRef} />;
+  //   },
+  //   interactiveElementName: 'VariantManagement',
+  //   tagName: 'ui5-variant-management',
+  // },
 ];
