@@ -7,6 +7,16 @@ import { useCallback, useEffect } from 'react';
 import type { CellInstance, CellType, ReactTableHooks, TableInstance } from '../types/index.js';
 import { NAVIGATION_KEYS } from '../util/index.js';
 
+const NON_STANDARD_INTERACTIVE_ELEMENTS = [
+  '[ui5-checkbox]',
+  '[ui5-switch]',
+  '[ui5-radio-button]',
+  '[ui5-rating-indicator]',
+  '[ui5-segmented-button]',
+  '[ui5-select]',
+  '[ui5-slider]',
+];
+
 /**
  * A plugin hook that enables F2-based cell editing for interactive elements inside a cell.
  *
@@ -133,16 +143,20 @@ useF2CellEdit.useCallbackRef = <T extends HTMLElement = HTMLElement>(props: Cell
   return useCallback(
     (node: T | null) => {
       if (node) {
-        if (node.tagName.startsWith('UI5')) {
-          void (node as unknown as Ui5DomRef)
-            .getFocusDomRefAsync()
-            .then((focusNode) => focusNode.setAttribute('tabindex', cellContentTabIndex))
-            .catch(() => {
-              // fail silently
-            });
-        } else {
-          node.setAttribute('tabindex', cellContentTabIndex);
-        }
+        const setTabIndex = (el: Element | Ui5DomRef) => {
+          if (typeof (el as Ui5DomRef).getFocusDomRefAsync === 'function') {
+            void (el as Ui5DomRef)
+              .getFocusDomRefAsync()
+              .then((resolved) => setTabIndex(resolved))
+              .catch(() => {
+                // fail silently
+              });
+          } else {
+            el.setAttribute('tabindex', cellContentTabIndex);
+          }
+        };
+
+        setTabIndex(node);
       }
     },
     [cellContentTabIndex],
@@ -175,6 +189,7 @@ function findFirstFocusableInside(element: HTMLElement) {
         'textarea',
         'select',
         '[tabindex]:not([tabindex="-1"])',
+        ...NON_STANDARD_INTERACTIVE_ELEMENTS,
       ];
 
       if (child.matches(focusableSelectors.join(','))) {
