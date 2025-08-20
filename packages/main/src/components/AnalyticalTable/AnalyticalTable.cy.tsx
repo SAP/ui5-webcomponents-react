@@ -3915,7 +3915,7 @@ describe('AnalyticalTable', () => {
     });
   });
 
-  it('plugin hook: useF2CellEdit', () => {
+  it('plugin hook: useF2CellEdit - navigation', () => {
     const tableHooks = [useF2CellEdit];
     cy.mount(
       <>
@@ -4005,7 +4005,7 @@ describe('AnalyticalTable', () => {
     });
   });
 
-  it('plugin hook: useF2CellEdit', () => {
+  it('plugin hook: useF2CellEdit - all ui5wc inputs', () => {
     const tableHooks = [useF2CellEdit];
     const dummyData = new Array(1).fill({});
     cy.mount(
