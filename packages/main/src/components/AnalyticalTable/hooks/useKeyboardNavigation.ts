@@ -342,7 +342,7 @@ const useGetTableProps = (
     tableProps,
     {
       onFocus: onTableFocus,
-      onKeyDown: state.cellContentTabIndex === -1 ? onKeyboardNavigation : handleEditModeKeyDown,
+      onKeyDown: state.cellContentTabIndex === 0 ? handleEditModeKeyDown : onKeyboardNavigation,
       onBlur: onTableBlur,
     },
   ];
