@@ -131,16 +131,6 @@ const headerProps = (props, { instance }: { instance: TableInstance }) => {
   return props;
 };
 
-const columnDeps = (deps, { instance: { webComponentsReactProperties } }: { instance: TableInstance }) => {
-  return [...deps, webComponentsReactProperties.selectionMode, webComponentsReactProperties.selectionBehavior];
-};
-
-const visibleColumnsDeps = (deps, { instance }: { instance: TableInstance }) => [
-  ...deps,
-  instance.webComponentsReactProperties.selectionMode,
-  instance.webComponentsReactProperties.selectionBehavior,
-];
-
 const visibleColumns = (
   currentVisibleColumns,
   { instance: { webComponentsReactProperties } }: { instance: TableInstance },
@@ -219,8 +209,6 @@ export const useRowSelectionColumn = (hooks: ReactTableHooks) => {
   hooks.getToggleRowSelectedProps.push(setToggleRowSelectedProps);
   hooks.getToggleAllRowsSelectedProps.push(setToggleAllRowsSelectedProps);
   hooks.columns.push(columns);
-  hooks.columnsDeps.push(columnDeps);
-  hooks.visibleColumnsDeps.push(visibleColumnsDeps);
   hooks.visibleColumns.push(visibleColumns);
 };
 useRowSelectionColumn.pluginName = 'useRowSelectionColumn';

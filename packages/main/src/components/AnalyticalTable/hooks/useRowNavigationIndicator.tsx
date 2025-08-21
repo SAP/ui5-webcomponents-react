@@ -27,13 +27,6 @@ const Cell = (instance) => {
 /*
  * TABLE HOOKS
  */
-const columnsDeps = (deps, { instance: { webComponentsReactProperties } }: { instance: TableInstance }) => {
-  return [...deps, webComponentsReactProperties.withNavigationHighlight];
-};
-const visibleColumnsDeps = (deps, { instance }: { instance: TableInstance }) => [
-  ...deps,
-  instance.webComponentsReactProperties.withNavigationHighlight,
-];
 const visibleColumns = (
   currentVisibleColumns,
   { instance: { webComponentsReactProperties } }: { instance: TableInstance },
@@ -72,7 +65,5 @@ const columns = (currentColumns, { instance }: { instance: TableInstance }) => {
 
 export const useRowNavigationIndicators = (hooks: ReactTableHooks) => {
   hooks.columns.push(columns);
-  hooks.columnsDeps.push(columnsDeps);
-  hooks.visibleColumnsDeps.push(visibleColumnsDeps);
   hooks.visibleColumns.push(visibleColumns);
 };

@@ -62,6 +62,7 @@ import { TablePlaceholder } from './defaults/LoadingComponent/TablePlaceholder.j
 import { DefaultNoDataComponent } from './defaults/NoDataComponent/index.js';
 import { useA11y } from './hooks/useA11y.js';
 import { useAutoResize } from './hooks/useAutoResize.js';
+import { useColumnsDeps } from './hooks/useColumnsDeps.js';
 import { useColumnDragAndDrop } from './hooks/useDragAndDrop.js';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths.js';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation.js';
@@ -268,6 +269,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     useExpanded,
     useRowSelect,
     useResizeColumns,
+    useColumnsDeps,
     useResizeColumnsConfig,
     useRowSelectionColumn,
     useAutoResize,
