@@ -24,6 +24,7 @@ const meta = {
     direction: FlexBoxDirection.Row,
     wrap: FlexBoxWrap.NoWrap,
   },
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof FlexBox>;
 
 export default meta;

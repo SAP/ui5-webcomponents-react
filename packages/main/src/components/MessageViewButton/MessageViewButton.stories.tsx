@@ -9,6 +9,7 @@ const meta = {
   component: MessageViewButton,
   argTypes: {},
   args: {},
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof MessageViewButton>;
 
 export default meta;

@@ -52,6 +52,7 @@ const meta = {
     scale: 'K',
     description: 'Q1, 2018',
   },
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof AnalyticalCardHeader>;
 
 export default meta;

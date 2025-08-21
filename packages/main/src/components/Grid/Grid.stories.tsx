@@ -11,6 +11,7 @@ const meta = {
     hSpacing: '1rem',
   },
   argTypes: { children: { control: { disable: true } } },
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof Grid>;
 
 export default meta;
