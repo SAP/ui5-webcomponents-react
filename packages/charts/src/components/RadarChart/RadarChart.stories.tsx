@@ -5,6 +5,7 @@ import { RadarChart } from './RadarChart.js';
 const meta = {
   title: 'RadarChart',
   component: RadarChart,
+  tags: ['package:@ui5/webcomponents-react-charts'],
   args: {
     dimensions: [
       {

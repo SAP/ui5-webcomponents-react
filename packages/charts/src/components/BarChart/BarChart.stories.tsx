@@ -12,6 +12,7 @@ import { BarChart } from './BarChart.js';
 const meta = {
   title: 'BarChart',
   component: BarChart,
+  tags: ['package:@ui5/webcomponents-react-charts'],
   argTypes: {
     dataset: {
       control: { disable: true },
