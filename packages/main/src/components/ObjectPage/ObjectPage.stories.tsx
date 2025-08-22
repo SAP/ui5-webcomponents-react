@@ -130,7 +130,7 @@ const meta = {
       </ObjectPageHeader>
     ),
   },
-  tags: ['package:@ui5/webcomponents-react-charts'],
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof ObjectPage>;
 
 export default meta;

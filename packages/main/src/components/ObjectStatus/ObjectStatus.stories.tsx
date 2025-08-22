@@ -22,7 +22,7 @@ const meta = {
     children: 'ObjectStatus',
     showDefaultIcon: true,
   },
-  tags: ['package:@ui5/webcomponents-react-charts'],
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof ObjectStatus>;
 
 export default meta;

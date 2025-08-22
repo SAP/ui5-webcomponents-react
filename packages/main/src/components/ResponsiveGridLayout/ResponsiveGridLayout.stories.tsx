@@ -9,7 +9,7 @@ const meta = {
   argTypes: {
     children: { control: { disable: true } },
   },
-  tags: ['package:@ui5/webcomponents-react-charts'],
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof ResponsiveGridLayout>;
 export default meta;
 type Story = StoryObj<typeof meta>;

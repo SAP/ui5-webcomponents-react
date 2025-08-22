@@ -26,7 +26,7 @@ const meta = {
     placement: PopoverPlacement.Bottom,
     level: TitleLevel.H4,
   },
-  tags: ['package:@ui5/webcomponents-react-charts'],
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof VariantManagement>;
 export default meta;
 
