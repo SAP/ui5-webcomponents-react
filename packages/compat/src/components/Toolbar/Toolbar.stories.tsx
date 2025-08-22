@@ -39,6 +39,7 @@ const meta = {
   parameters: {
     chromatic: { delay: 1000 },
   },
+  tags: ['package:@ui5/webcomponents-react-compat'],
 } satisfies Meta<typeof Toolbar>;
 
 export default meta;
