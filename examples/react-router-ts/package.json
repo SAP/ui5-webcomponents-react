@@ -13,9 +13,9 @@
   "dependencies": {
     "@react-router/node": "7.8.1",
     "@react-router/serve": "7.8.1",
-    "@ui5/webcomponents": "2.13.2",
-    "@ui5/webcomponents-base": "2.13.2",
-    "@ui5/webcomponents-fiori": "2.13.2",
+    "@ui5/webcomponents": "2.13.3",
+    "@ui5/webcomponents-base": "2.13.3",
+    "@ui5/webcomponents-fiori": "2.13.3",
     "@ui5/webcomponents-react": "2.13.1",
     "cross-env": "10.0.0",
     "isbot": "5.1.29",
