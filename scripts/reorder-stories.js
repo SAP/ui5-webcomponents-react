@@ -81,7 +81,7 @@ function adjustMdxMetaTitle(content, newFirstSegment) {
   });
 }
 
-function main() {
+(() => {
   const storyFiles = getStoryFiles(ROOT_DIR);
   const mdxFiles = Object.keys(MDX_META_REPLACEMENTS)
     .map((rel) => path.join(ROOT_DIR, rel))
@@ -119,12 +119,16 @@ function main() {
   });
 
   // Build Sb
-  execSync(`npx storybook build -o ${OUTPUT_DIR}`, { stdio: 'inherit' });
+  execSync(`storybook build -o ${OUTPUT_DIR}`, {
+    stdio: 'inherit',
+    env: {
+      ...process.env,
+      STORYBOOK_REORDER: 'true',
+    },
+  });
 
   // Restore originals
   backups.forEach((b) => fs.writeFileSync(b.file, b.content, 'utf-8'));
 
   console.log(`Storybook built in '${OUTPUT_DIR}' and source files restored.`);
-}
-
-main();
+})();
