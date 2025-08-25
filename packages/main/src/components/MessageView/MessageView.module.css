@@ -8,14 +8,22 @@
   > * {
     width: 100%;
     flex-shrink: 0;
-    transition: transform 200ms ease-in-out;
+    transition:
+      transform 200ms ease-in-out,
+      opacity 300ms ease-in-out;
   }
 }
 
-.showDetails {
-  > * {
-    transform: translateX(-100%);
-  }
+.container[data-with-animation='false'] > * {
+  transition: none;
+}
+
+.showDetails > * {
+  transform: translateX(-100%);
+}
+
+:dir(rtl) .showDetails > * {
+  transform: translateX(100%);
 }
 
 .button {
