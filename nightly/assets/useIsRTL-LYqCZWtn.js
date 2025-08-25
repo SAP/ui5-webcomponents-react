@@ -1,1 +1,0 @@
-import{r as a,u,q as n,t as o}from"./iframe-C6IJVCey.js";const i=t=>{const[c,s]=a.useState(!1),r=a.useRef(!1);return u(()=>{r.current=!0,s(t.current?.matches(":dir(rtl)")??!1);const e=()=>{r.current&&s(t.current?.matches(":dir(rtl)")??!1)};return n(e),()=>{r.current=!1,o(e)}},[]),c};export{i as u};
