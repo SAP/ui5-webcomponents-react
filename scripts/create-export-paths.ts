@@ -60,9 +60,6 @@ function updatePackageJson(pkgPath) {
   console.log(`✅ Updated exports in ${packageJsonPath}`);
 }
 
-/**
- * Run updates for all target packages
- */
 TARGET_PACKAGES.forEach((pkg) => {
   const pkgPath = PATHS[pkg];
   updatePackageJson(pkgPath);

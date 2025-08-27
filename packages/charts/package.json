@@ -15,7 +15,55 @@
     "./dist": "./dist/index.js",
     "./dist/*": "./dist/*",
     "./dist/*.js": "./dist/*.js",
-    "./styles.css": "./dist/css/index.css"
+    "./styles.css": "./dist/css/index.css",
+    "./ComposedChart": {
+      "types": "./dist/components/ComposedChart/index.d.ts",
+      "default": "./dist/components/ComposedChart/index.js"
+    },
+    "./BarChart": {
+      "types": "./dist/components/BarChart/index.d.ts",
+      "default": "./dist/components/BarChart/index.js"
+    },
+    "./BulletChart": {
+      "types": "./dist/components/BulletChart/index.d.ts",
+      "default": "./dist/components/BulletChart/index.js"
+    },
+    "./ColumnChart": {
+      "types": "./dist/components/ColumnChart/index.d.ts",
+      "default": "./dist/components/ColumnChart/index.js"
+    },
+    "./ColumnChartWithTrend": {
+      "types": "./dist/components/ColumnChartWithTrend/index.d.ts",
+      "default": "./dist/components/ColumnChartWithTrend/index.js"
+    },
+    "./DonutChart": {
+      "types": "./dist/components/DonutChart/index.d.ts",
+      "default": "./dist/components/DonutChart/index.js"
+    },
+    "./LineChart": {
+      "types": "./dist/components/LineChart/index.d.ts",
+      "default": "./dist/components/LineChart/index.js"
+    },
+    "./PieChart": {
+      "types": "./dist/components/PieChart/index.d.ts",
+      "default": "./dist/components/PieChart/index.js"
+    },
+    "./RadarChart": {
+      "types": "./dist/components/RadarChart/index.d.ts",
+      "default": "./dist/components/RadarChart/index.js"
+    },
+    "./RadialChart": {
+      "types": "./dist/components/RadialChart/index.d.ts",
+      "default": "./dist/components/RadialChart/index.js"
+    },
+    "./ScatterChart": {
+      "types": "./dist/components/ScatterChart/index.d.ts",
+      "default": "./dist/components/ScatterChart/index.js"
+    },
+    "./TimelineChart": {
+      "types": "./dist/components/TimelineChart/index.d.ts",
+      "default": "./dist/components/TimelineChart/index.js"
+    }
   },
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
   "repository": {
