@@ -31,13 +31,6 @@ const Cell = (instance: TableInstance) => {
 /*
  * TABLE HOOKS
  */
-const columnsDeps = (deps, { instance: { webComponentsReactProperties } }: { instance: TableInstance }) => {
-  return [...deps, webComponentsReactProperties.withRowHighlight, webComponentsReactProperties.highlightField];
-};
-const visibleColumnsDeps = (deps, { instance }: { instance: TableInstance }) => [
-  ...deps,
-  instance.webComponentsReactProperties.withRowHighlight,
-];
 const visibleColumns = (
   currentVisibleColumns,
   { instance: { webComponentsReactProperties } }: { instance: TableInstance },
@@ -77,8 +70,6 @@ const columns = (currentColumns, { instance }: { instance: TableInstance }) => {
 
 export const useRowHighlight = (hooks: ReactTableHooks) => {
   hooks.columns.push(columns);
-  hooks.columnsDeps.push(columnsDeps);
-  hooks.visibleColumnsDeps.push(visibleColumnsDeps);
   hooks.visibleColumns.push(visibleColumns);
 };
 

@@ -17,6 +17,7 @@ import {
   SearchItem,
   SearchScope,
   ShellBar,
+  ShellBarBranding,
   ShellBarItem,
   ShellBarSearch,
   ShellBarSpacer,
@@ -80,7 +81,6 @@ export function NLShellBar(props: NLShellBarProps) {
       <ShellBar
         {...rest}
         id="shellbar"
-        primaryTitle="VEGA CRM"
         notificationsCount="10"
         showNotifications
         showProductSwitch
@@ -95,7 +95,7 @@ export function NLShellBar(props: NLShellBarProps) {
             onClick={handleMenuBtnClick}
           />
         }
-        logo={<img src={SapLogoSvg} alt="SAP Logo" />}
+        branding={<ShellBarBranding logo={<img src={SapLogoSvg} alt="SAP Logo" />}>Vega CRM</ShellBarBranding>}
         content={
           <>
             <Tag design="Set2" colorScheme="7" data-hide-order="2">

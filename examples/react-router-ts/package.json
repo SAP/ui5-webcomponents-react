@@ -11,23 +11,23 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@react-router/node": "7.8.0",
-    "@react-router/serve": "7.8.0",
-    "@ui5/webcomponents": "2.13.2",
-    "@ui5/webcomponents-base": "2.13.2",
-    "@ui5/webcomponents-fiori": "2.13.2",
-    "@ui5/webcomponents-react": "2.13.0",
+    "@react-router/node": "7.8.2",
+    "@react-router/serve": "7.8.2",
+    "@ui5/webcomponents": "2.13.3",
+    "@ui5/webcomponents-base": "2.13.3",
+    "@ui5/webcomponents-fiori": "2.13.3",
+    "@ui5/webcomponents-react": "2.13.1",
     "cross-env": "10.0.0",
-    "isbot": "5.1.29",
+    "isbot": "5.1.30",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "react-router": "7.8.0"
+    "react-router": "7.8.2"
   },
   "devDependencies": {
-    "@react-router/dev": "7.8.0",
-    "@types/react": "19.1.9",
+    "@react-router/dev": "7.8.2",
+    "@types/react": "19.1.11",
     "@types/react-dom": "19.1.7",
-    "eslint": "9.33.0",
+    "eslint": "9.34.0",
     "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
@@ -35,7 +35,7 @@
     "eslint-plugin-react-hooks": "5.2.0",
     "globals": "16.3.0",
     "typescript": "5.8.3",
-    "typescript-eslint": "8.39.0",
+    "typescript-eslint": "8.40.0",
     "vite": "6.3.5",
     "vite-tsconfig-paths": "5.1.4"
   },

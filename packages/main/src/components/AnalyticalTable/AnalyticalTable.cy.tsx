@@ -112,24 +112,93 @@ describe('AnalyticalTable', () => {
     cy.findByText('Name').click();
     cy.get('[ui5-popover]').should('be.visible');
     cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
-    cy.get('@onSortSpy').should('have.been.calledWithMatch', {
-      detail: { column: { id: 'name' }, sortDirection: 'asc' },
-    });
+    cy.get('@onSortSpy')
+      .its('lastCall')
+      .should('have.been.calledWithMatch', {
+        detail: { column: { id: 'name' }, sortDirection: 'asc' },
+      });
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', 'C');
 
     cy.findByText('Name').click();
     cy.get('[ui5-list]').clickUi5ListItemByText('Clear Sorting');
-    cy.get('@onSortSpy').should('have.been.calledWithMatch', {
-      detail: { column: { id: 'name' }, sortDirection: 'clear' },
-    });
+    cy.get('@onSortSpy')
+      .its('lastCall')
+      .should('have.been.calledWithMatch', {
+        detail: { column: { id: 'name' }, sortDirection: 'clear' },
+      });
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', 'X');
 
     cy.findByText('Name').click();
     cy.get('[ui5-list]').clickUi5ListItemByText('Sort Descending');
-    cy.get('@onSortSpy').should('have.been.calledWithMatch', {
-      detail: { column: { id: 'name' }, sortDirection: 'desc' },
-    });
+    cy.get('@onSortSpy')
+      .its('lastCall')
+      .should('have.been.calledWithMatch', {
+        detail: { column: { id: 'name' }, sortDirection: 'desc' },
+      });
     cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', 'B');
+
+    cy.log('subRows sorting');
+    const treeData = [
+      {
+        category: 'Number',
+        subRows: [{ category: '2' }, { category: '1' }, { category: '3' }],
+      },
+      {
+        category: 'Alphabet',
+        subRows: [{ category: 'B' }, { category: 'A' }, { category: 'C' }],
+      },
+    ];
+    const treeColumns: AnalyticalTableColumnDefinition[] = [{ Header: 'Category', accessor: 'category' }];
+    cy.mount(<AnalyticalTable data={treeData} columns={treeColumns} sortable isTreeTable onSort={sort} />);
+    // expand rows
+    cy.get('[ui5-button]').click({ multiple: true });
+    cy.findByText('Category').click();
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Ascending');
+    cy.get('@onSortSpy')
+      .its('lastCall')
+      .should('have.been.calledWithMatch', {
+        detail: { column: { id: 'category' }, sortDirection: 'asc' },
+      });
+    cy.get('[aria-rowindex="1"] > [aria-colindex="1"]').should('text', 'Alphabet');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"]').should('text', 'A');
+    cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', 'B');
+    cy.get('[aria-rowindex="4"] > [aria-colindex="1"]').should('text', 'C');
+    cy.get('[aria-rowindex="5"] > [aria-colindex="1"]').should('text', 'Number');
+    cy.get('[aria-rowindex="6"] > [aria-colindex="1"]').should('text', '1');
+    cy.get('[aria-rowindex="7"] > [aria-colindex="1"]').should('text', '2');
+    cy.get('[aria-rowindex="8"] > [aria-colindex="1"]').should('text', '3');
+
+    cy.findByText('Category').click();
+    cy.get('[ui5-list]').clickUi5ListItemByText('Sort Descending');
+    cy.get('@onSortSpy')
+      .its('lastCall')
+      .should('have.been.calledWithMatch', {
+        detail: { column: { id: 'category' }, sortDirection: 'desc' },
+      });
+    cy.get('[aria-rowindex="1"] > [aria-colindex="1"]').should('text', 'Number');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"]').should('text', '3');
+    cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', '2');
+    cy.get('[aria-rowindex="4"] > [aria-colindex="1"]').should('text', '1');
+    cy.get('[aria-rowindex="5"] > [aria-colindex="1"]').should('text', 'Alphabet');
+    cy.get('[aria-rowindex="6"] > [aria-colindex="1"]').should('text', 'C');
+    cy.get('[aria-rowindex="7"] > [aria-colindex="1"]').should('text', 'B');
+    cy.get('[aria-rowindex="8"] > [aria-colindex="1"]').should('text', 'A');
+
+    cy.findByText('Category').click();
+    cy.get('[ui5-list]').clickUi5ListItemByText('Clear Sorting');
+    cy.get('@onSortSpy')
+      .its('lastCall')
+      .should('have.been.calledWithMatch', {
+        detail: { column: { id: 'category' }, sortDirection: 'clear' },
+      });
+    cy.get('[aria-rowindex="1"] > [aria-colindex="1"]').should('text', 'Number');
+    cy.get('[aria-rowindex="2"] > [aria-colindex="1"]').should('text', '2');
+    cy.get('[aria-rowindex="3"] > [aria-colindex="1"]').should('text', '1');
+    cy.get('[aria-rowindex="4"] > [aria-colindex="1"]').should('text', '3');
+    cy.get('[aria-rowindex="5"] > [aria-colindex="1"]').should('text', 'Alphabet');
+    cy.get('[aria-rowindex="6"] > [aria-colindex="1"]').should('text', 'B');
+    cy.get('[aria-rowindex="7"] > [aria-colindex="1"]').should('text', 'A');
+    cy.get('[aria-rowindex="8"] > [aria-colindex="1"]').should('text', 'C');
   });
 
   it('row count modes', () => {
