@@ -7,7 +7,7 @@ import {
   stackedNormalizedConfig,
   tooltipConfig,
 } from '../../resources/DemoProps.js';
-import { BarChart } from './BarChart.js';
+import { BarChart } from './index.js';
 
 const meta = {
   title: 'BarChart',

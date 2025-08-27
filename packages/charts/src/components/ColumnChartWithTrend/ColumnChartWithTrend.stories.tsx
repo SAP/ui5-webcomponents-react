@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { complexDataSet, legendConfig, tooltipConfig } from '../../resources/DemoProps.js';
-import { ColumnChartWithTrend } from './ColumnChartWithTrend.js';
+import { ColumnChartWithTrend } from './index.js';
 
 const meta = {
   title: 'ColumnChartWithTrend',
