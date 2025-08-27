@@ -40,24 +40,10 @@ jobs:
         env:
           NODE_OPTIONS: '--max-old-space-size=4096'
 
-      - name: Build Storybook (reordered)
-        run: |
-          yarn build:storybook-reorder
-        env:
-          NODE_OPTIONS: '--max-old-space-size=4096'
-
       - name: Deploy Docs
         uses: JamesIves/github-pages-deploy-action@6c2d9db40f9296374acc17b90404b6e8864128c8 # v4.7.3
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .out # The folder the action should deploy.
           target-folder: v${{ env.MAJOR_VERSION }}
-          clean: true
-
-      - name: Deploy Docs (reordered)
-        uses: JamesIves/github-pages-deploy-action@6c2d9db40f9296374acc17b90404b6e8864128c8 # v4.7.3
-        with:
-          branch: gh-pages
-          folder: .out-reorder
-          target-folder: reordered
           clean: true

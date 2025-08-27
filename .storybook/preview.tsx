@@ -156,9 +156,6 @@ const preview: Preview = {
           'AI',
           ['Docs'],
           'Legacy Components',
-          // only relevant for reordered sb
-          'ui5-webcomponents-react',
-          ['ui5-webcomponents', 'ui5-webcomponents-fiori'],
         ],
       },
     },

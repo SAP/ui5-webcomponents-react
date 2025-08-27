@@ -6,7 +6,6 @@ import { mergeConfig } from 'vite';
 import { isChromatic } from './utils.ts';
 
 const isDevMode = process.env.NODE_ENV === 'development';
-const useReorder = process.env.STORYBOOK_REORDER === 'true';
 
 const storyList: StoriesEntry[] = isChromatic
   ? ['../packages/main/src/components/**/*.stories.@(tsx|jsx)']
@@ -20,12 +19,12 @@ const storyList: StoriesEntry[] = isChromatic
       {
         directory: '../packages/charts/src/components',
         files: '**/*.@(mdx|stories.@(mdx|tsx))',
-        titlePrefix: useReorder ? 'ui5-webcomponents-react-charts' : 'Charts',
+        titlePrefix: 'Charts',
       },
       {
         directory: '../packages/base',
         files: '*.@(tsx|jsx)',
-        titlePrefix: useReorder ? 'ui5-webcomponents-react-base ' : 'Base',
+        titlePrefix: 'Base',
       },
       {
         directory: '../packages/cypress-commands',
@@ -37,12 +36,12 @@ const storyList: StoriesEntry[] = isChromatic
       {
         directory: '../packages/ai',
         files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
-        titlePrefix: useReorder ? 'ui5-webcomponents-ai-react / ui5-webcomponents-ai' : 'AI',
+        titlePrefix: 'AI',
       },
       {
         directory: '../packages/compat',
         files: '**/*.@(mdx|stories.@(mdx|js|jsx|mjs|ts|tsx))',
-        titlePrefix: useReorder ? 'ui5-webcomponents-react-compat' : 'Legacy Components',
+        titlePrefix: 'Legacy Components',
       },
       {
         directory: '../patterns',
@@ -65,7 +64,6 @@ const addons = [
     },
   },
 ];
-
 if (isDevMode) {
   addons.push('@storybook/addon-a11y');
 }

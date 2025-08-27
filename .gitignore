@@ -7,7 +7,6 @@ yarn-error.log
 @types
 .cache
 .out
-.out-reorder
 lerna-debug.log
 /temp
 *.tsbuildinfo
