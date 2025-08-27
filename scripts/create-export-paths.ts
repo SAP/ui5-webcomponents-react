@@ -3,21 +3,31 @@ import fs from 'fs';
 import path from 'path';
 import PATHS from '../config/paths.js';
 
-const TARGET_PACKAGES = ['ai', 'charts', 'compat', 'main'];
+const TARGET_PACKAGES = ['ai', 'charts', 'compat', 'main'] as const;
 const INTERNAL_COMPONENTS = new Set(['ObjectPageAnchorBar', 'Splitter']);
 
-function getComponentExports(distDir, componentDir) {
+interface ExportEntry {
+  types: string;
+  default: string;
+}
+
+interface ExportsObject {
+  [key: string]: ExportEntry;
+}
+
+function getComponentExports(distDir: string, componentDir: string): ExportsObject {
   const dir = path.join(distDir, componentDir);
   if (!fs.existsSync(dir)) return {};
 
   const entries = fs.readdirSync(dir, { withFileTypes: true });
-  const exportsObj = {};
+  const exportsObj: ExportsObject = {};
 
   entries.forEach((entry) => {
     if (entry.isDirectory()) {
       if (INTERNAL_COMPONENTS.has(entry.name)) {
         return;
       }
+
       const jsPath = path.join(dir, entry.name, 'index.js');
       const dtsPath = path.join(dir, entry.name, 'index.d.ts');
 
@@ -43,10 +53,11 @@ function getComponentExports(distDir, componentDir) {
 
   return exportsObj;
 }
+
 /**
  * Update the package.json of a given package
  */
-function updatePackageJson(pkgPath) {
+function updatePackageJson(pkgPath: string): void {
   const packageJsonPath = path.join(pkgPath, 'package.json');
   const distDir = path.join(pkgPath, 'dist');
 
@@ -55,14 +66,14 @@ function updatePackageJson(pkgPath) {
     return;
   }
 
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+  const packageJson: Record<string, any> = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
   packageJson.exports = packageJson.exports || {};
 
   // collect exports from "components" and "webComponents"
   const componentExports = getComponentExports(distDir, 'components');
   const webComponentExports = getComponentExports(distDir, 'webComponents');
 
-  const newExports = {
+  const newExports: ExportsObject = {
     ...componentExports,
     ...webComponentExports,
   };
@@ -75,7 +86,8 @@ function updatePackageJson(pkgPath) {
   console.log(`✅ Updated exports in ${packageJsonPath}`);
 }
 
+console.log('ℹ️  Make sure all packages are built before running this script!');
 TARGET_PACKAGES.forEach((pkg) => {
-  const pkgPath = PATHS[pkg];
+  const pkgPath = PATHS[pkg as keyof typeof PATHS];
   updatePackageJson(pkgPath);
 });
