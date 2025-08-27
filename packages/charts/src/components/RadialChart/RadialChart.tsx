@@ -91,6 +91,8 @@ const defaultDisplayValueStyles = {
 /**
  * Displays a ring chart highlighting a current status.
  * The status can be emphasized by using the `color` prop.
+ *
+ * __Note:__ Charts are custom-built __without__ defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.
  */
 const RadialChart = forwardRef<HTMLDivElement, RadialChartProps>((props, ref) => {
   const {

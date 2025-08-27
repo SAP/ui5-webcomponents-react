@@ -22,8 +22,12 @@ export const MAPPED_THEMES = [
 export const excludePropsForAbstract = ['className', 'style'];
 
 export function useGetCem(storyTags: string[]) {
+  const extendsAnnotation = storyTags?.find((tag) => tag.startsWith('extends:'));
   const packageAnnotation = storyTags?.find((tag) => tag.startsWith('package:'));
-  switch (packageAnnotation) {
+  const annotation = extendsAnnotation ?? packageAnnotation;
+
+  switch (annotation) {
+    case 'extends:@ui5/webcomponents':
     case 'package:@ui5/webcomponents':
       return cemMain;
     case 'package:@ui5/webcomponents-fiori':

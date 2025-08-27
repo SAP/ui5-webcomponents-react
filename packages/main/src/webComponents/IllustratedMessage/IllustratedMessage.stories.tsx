@@ -17,6 +17,7 @@ const meta = {
       options: Object.values(IllustrationMessageType),
     },
   },
+  tags: ['package:@ui5/webcomponents'],
 } satisfies Meta<typeof IllustratedMessage>;
 
 export default meta;

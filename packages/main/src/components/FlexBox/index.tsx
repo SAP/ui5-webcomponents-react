@@ -63,6 +63,8 @@ export interface FlexBoxPropTypes extends CommonProps {
 
 /**
  * The `FlexBox` builds the container for a flexible box layout by leveraging the CSS flexbox layout.
+ *
+ * __Note:__ Since `FlexBox` is purely a layout component, it does not have any associated global design specifications.
  */
 const FlexBox = forwardRef<HTMLDivElement, FlexBoxPropTypes>((props, ref) => {
   const {

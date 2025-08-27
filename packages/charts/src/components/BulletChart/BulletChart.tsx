@@ -124,6 +124,8 @@ type AvailableChartTypes = 'primary' | 'comparison' | 'additional' | string;
 /**
  * The `BulletChart` is used to compare primary and secondary (comparison) values. The primary and additional values
  * are rendered as a stacked Bar Chart while the comparison value is displayed as a line above.
+ *
+ * __Note:__ Charts are custom-built __without__ defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.
  */
 const BulletChart = forwardRef<HTMLDivElement, BulletChartProps>((props, ref) => {
   const {

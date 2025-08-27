@@ -124,6 +124,8 @@ const valueAccessor =
 
 /**
  * A `ColumnChart` is a data visualization where each category is represented by a rectangle, with the height of the rectangle being proportional to the values being plotted.
+ *
+ * __Note:__ Charts are custom-built __without__ defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.
  */
 const ColumnChart = forwardRef<HTMLDivElement, ColumnChartProps>((props, ref) => {
   const {

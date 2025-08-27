@@ -1,3 +1,4 @@
+import { Badge } from '@sb/components/Badge';
 import type { Controls } from '@storybook/addon-docs/blocks';
 import { Description, Subtitle, Title, useOf } from '@storybook/addon-docs/blocks';
 import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
@@ -45,14 +46,25 @@ interface InfoTableProps {
   isChart?: boolean;
   experimental?: boolean;
   of: ComponentProps<typeof Controls>['of'];
+  deprecationText?: string;
 }
 
-export const InfoTable = ({ of, since, subComponents, mergeSubComponents }: InfoTableProps) => {
+export const InfoTable = ({
+  of,
+  since,
+  subComponents,
+  mergeSubComponents,
+  deprecationText,
+  isChart,
+}: InfoTableProps) => {
   const context = useOf<'meta'>(of);
   const { csfFile, preparedMeta } = context;
+  const { tags } = preparedMeta;
   const moduleName = csfFile.meta.component.displayName;
+  const isDeprecated = tags.includes('deprecated');
+  const isCustom = tags.includes('custom') || isChart;
 
-  const wcSubComponents = useGetSubComponentsOfModule(moduleName.replace('V2', ''), preparedMeta.tags);
+  const wcSubComponents = useGetSubComponentsOfModule(moduleName.replace('V2', ''), tags);
   const subComps = mergeSubComponents
     ? [...(subComponents ?? []), ...(wcSubComponents ?? [])]
     : (subComponents ?? wcSubComponents);
@@ -68,6 +80,7 @@ export const InfoTable = ({ of, since, subComponents, mergeSubComponents }: Info
       await navigator.clipboard.write([data]);
     }
   };
+
   return (
     <table className={classes.infoTable}>
       <tbody>
@@ -99,6 +112,30 @@ export const InfoTable = ({ of, since, subComponents, mergeSubComponents }: Info
             </td>
           </tr>
         )}
+        {isDeprecated && (
+          <tr>
+            <th>
+              <Label>Deprecated</Label>
+            </th>
+            <td>
+              <Text>{deprecationText}</Text>
+            </td>
+          </tr>
+        )}
+        {isCustom && (
+          <tr>
+            <th>
+              <Label>Custom Component</Label>
+            </th>
+            <td>
+              <Text>
+                {isChart
+                  ? 'Charts are custom-built without defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.'
+                  : 'This component either only partially follows design specifications or lacks them entirely. Please refer to the component description for details.'}
+              </Text>
+            </td>
+          </tr>
+        )}
         {!!subComps.length && (
           <tr className={classes.hoverTr}>
             <th>
@@ -124,17 +161,39 @@ export const InfoTable = ({ of, since, subComponents, mergeSubComponents }: Info
   );
 };
 
-export const DocsHeader = ({ of, since, subComponents, mergeSubComponents, isChart, experimental }: InfoTableProps) => {
+export const DocsHeader = ({
+  of,
+  since,
+  subComponents,
+  mergeSubComponents,
+  isChart,
+  experimental,
+  deprecationText,
+}: InfoTableProps) => {
+  const context = useOf<'meta'>(of);
+  const { preparedMeta } = context;
+  const { tags } = preparedMeta;
+  const isDeprecated = tags.includes('deprecated');
+  const isCustom = tags.includes('custom') || isChart;
   return (
     <ThemeProvider>
       <FlexBox alignItems={FlexBoxAlignItems.Center} className={classes.titleRow}>
         <Title />
-        {experimental && <Label className={classes.experimentalLabel}>experimental</Label>}
+        {!isDeprecated && experimental && <Badge type="experimental" />}
+        {!isDeprecated && isCustom && <Badge type="custom" />}
+        {isDeprecated && <Badge type="deprecated" />}
         <span style={{ flexGrow: 1 }} />
         <Links isChart={isChart} />
       </FlexBox>
       <Subtitle />
-      <InfoTable of={of} since={since} subComponents={subComponents} mergeSubComponents={mergeSubComponents} />
+      <InfoTable
+        of={of}
+        since={since}
+        subComponents={subComponents}
+        mergeSubComponents={mergeSubComponents}
+        deprecationText={deprecationText}
+        isChart={isChart}
+      />
       <TableOfContent />
       <Description />
       {isChart && (

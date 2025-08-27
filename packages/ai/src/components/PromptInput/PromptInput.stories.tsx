@@ -12,7 +12,7 @@ const meta = {
   args: {
     valueState: ValueState.None,
   },
-  tags: ['package:@ui5/webcomponents-ai'],
+  tags: ['package:@ui5/webcomponents-ai', 'experimental'],
 } satisfies Meta<typeof PromptInput>;
 
 export default meta;

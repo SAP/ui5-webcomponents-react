@@ -198,6 +198,7 @@ const meta = {
     groupBy: { control: { disable: true } },
     columnOrder: { control: { disable: true } },
   },
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof AnalyticalTable>;
 export default meta;
 type Story = StoryObj<typeof meta>;

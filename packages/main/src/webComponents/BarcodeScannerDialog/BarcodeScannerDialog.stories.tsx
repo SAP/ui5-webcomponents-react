@@ -4,7 +4,7 @@ import { Button } from '../Button/index.js';
 import { BarcodeScannerDialog } from './index.js';
 
 const meta = {
-  title: 'Inputs / BarcodeScannerDialog',
+  title: 'Modals & Popovers / BarcodeScannerDialog',
   component: BarcodeScannerDialog,
   argTypes: {},
   args: {},

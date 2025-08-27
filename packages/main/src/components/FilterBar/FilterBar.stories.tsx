@@ -53,6 +53,7 @@ const meta = {
     filterContainerWidth: { control: 'text' },
     as: { control: { disable: true } },
   },
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof FilterBar>;
 
 export default meta;

@@ -128,6 +128,8 @@ const measureDefaults = {
  *
  * Most commonly, a scatter chart displays the values of three numeric variables,where each observation's data is
  * shown by a circle, while the horizontal and vertical positions of the bubble show the values of two other variables.
+ *
+ * __Note:__ Charts are custom-built __without__ defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.
  */
 const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) => {
   const {

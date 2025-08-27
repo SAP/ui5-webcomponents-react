@@ -18,6 +18,7 @@ const meta = {
       diffThreshold: 0.4,
     },
   },
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof SplitterLayout>;
 
 export default meta;

@@ -5,6 +5,7 @@ import { BulletChart } from './BulletChart.js';
 const meta = {
   title: 'BulletChart',
   component: BulletChart,
+  tags: ['package:@ui5/webcomponents-react-charts'],
   argTypes: {
     dataset: {
       control: { disable: true },
