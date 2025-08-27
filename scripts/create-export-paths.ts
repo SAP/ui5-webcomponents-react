@@ -4,6 +4,7 @@ import path from 'path';
 import PATHS from '../config/paths.js';
 
 const TARGET_PACKAGES = ['ai', 'charts', 'compat', 'main'];
+const INTERNAL_COMPONENTS = new Set(['ObjectPageAnchorBar', 'Splitter']);
 
 function getComponentExports(distDir, componentDir) {
   const dir = path.join(distDir, componentDir);
@@ -14,6 +15,9 @@ function getComponentExports(distDir, componentDir) {
 
   entries.forEach((entry) => {
     if (entry.isDirectory()) {
+      if (INTERNAL_COMPONENTS.has(entry.name)) {
+        return;
+      }
       const jsPath = path.join(dir, entry.name, 'index.js');
       const dtsPath = path.join(dir, entry.name, 'index.d.ts');
 

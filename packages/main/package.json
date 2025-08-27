@@ -24,6 +24,14 @@
     "./dist/*.js": "./dist/*.js",
     "./wrappers/*": "./wrappers/*",
     "./wrappers/*.js": "./wrappers/*.js",
+    "./enums/*": {
+      "types": "./dist/enums/*.d.ts",
+      "default": "./dist/enums/*.js"
+    },
+    "./VersionInfo": {
+      "types": "./dist/generated/VersionInfo.d.ts",
+      "default": "./dist/generated/VersionInfo.js"
+    },
     "./ActionSheet": {
       "types": "./dist/components/ActionSheet/index.d.ts",
       "default": "./dist/components/ActionSheet/index.js"
@@ -35,6 +43,10 @@
     "./AnalyticalTable": {
       "types": "./dist/components/AnalyticalTable/index.d.ts",
       "default": "./dist/components/AnalyticalTable/index.js"
+    },
+    "./AnalyticalTableHooks": {
+      "types": "./dist/components/AnalyticalTable/pluginHooks/AnalyticalTableHooks.d.ts",
+      "default": "./dist/components/AnalyticalTable/pluginHooks/AnalyticalTableHooks.js"
     },
     "./FilterBar": {
       "types": "./dist/components/FilterBar/index.d.ts",
@@ -60,6 +72,10 @@
       "types": "./dist/components/MessageView/index.d.ts",
       "default": "./dist/components/MessageView/index.js"
     },
+    "./MessageItem": {
+      "types": "./dist/components/MessageView/MessageItem.d.ts",
+      "default": "./dist/components/MessageView/MessageItem.js"
+    },
     "./MessageViewButton": {
       "types": "./dist/components/MessageViewButton/index.d.ts",
       "default": "./dist/components/MessageViewButton/index.js"
@@ -75,10 +91,6 @@
     "./ObjectPage": {
       "types": "./dist/components/ObjectPage/index.d.ts",
       "default": "./dist/components/ObjectPage/index.js"
-    },
-    "./ObjectPageAnchorBar": {
-      "types": "./dist/components/ObjectPageAnchorBar/index.d.ts",
-      "default": "./dist/components/ObjectPageAnchorBar/index.js"
     },
     "./ObjectPageHeader": {
       "types": "./dist/components/ObjectPageHeader/index.d.ts",
@@ -108,10 +120,6 @@
       "types": "./dist/components/SelectDialog/index.d.ts",
       "default": "./dist/components/SelectDialog/index.js"
     },
-    "./Splitter": {
-      "types": "./dist/components/Splitter/index.d.ts",
-      "default": "./dist/components/Splitter/index.js"
-    },
     "./SplitterElement": {
       "types": "./dist/components/SplitterElement/index.d.ts",
       "default": "./dist/components/SplitterElement/index.js"
@@ -127,6 +135,10 @@
     "./VariantManagement": {
       "types": "./dist/components/VariantManagement/index.d.ts",
       "default": "./dist/components/VariantManagement/index.js"
+    },
+    "./VariantItem": {
+      "types": "./dist/components/VariantManagement/VariantItem.d.ts",
+      "default": "./dist/components/VariantManagement/VariantItem.js"
     },
     "./Avatar": {
       "types": "./dist/webComponents/Avatar/index.d.ts",
