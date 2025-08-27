@@ -50,7 +50,7 @@ const meta = {
       </>
     ),
   },
-  tags: ['package:@ui5/webcomponents'],
+  tags: ['package:@ui5/webcomponents', 'experimental'],
 } satisfies Meta<typeof UserMenu>;
 
 export default meta;

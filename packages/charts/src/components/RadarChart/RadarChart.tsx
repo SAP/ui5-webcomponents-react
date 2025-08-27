@@ -76,6 +76,8 @@ const measureDefaults = {
 
 /**
  * A radar or spider or web chart is a two-dimensional chart type designed to plot one or more series of values over multiple quantitative variables.
+ *
+ * __Note:__ Charts are custom-built __without__ defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.
  */
 const RadarChart = forwardRef<HTMLDivElement, RadarChartProps>((props, ref) => {
   const {

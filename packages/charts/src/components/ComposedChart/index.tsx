@@ -138,6 +138,8 @@ type AvailableChartTypes = 'line' | 'bar' | 'area' | string;
 
 /**
  * The `ComposedChart` enables you to combine different chart types in one chart, e.g. showing bars together with lines.
+ *
+ * __Note:__ Charts are custom-built __without__ defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.
  */
 const ComposedChart = forwardRef<HTMLDivElement, ComposedChartProps>((props, ref) => {
   const {

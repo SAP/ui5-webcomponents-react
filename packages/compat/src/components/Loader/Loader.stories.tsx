@@ -18,7 +18,7 @@ const meta = {
     type: LoaderType.Indeterminate,
     progress: '60%',
   },
-  tags: ['package:@ui5/webcomponents-react-compat'],
+  tags: ['package:@ui5/webcomponents-react-compat', 'deprecated'],
 } satisfies Meta<typeof Loader>;
 
 export default meta;

@@ -14,7 +14,7 @@ const meta = {
     children: { control: { disable: true } },
   },
   args: {},
-  tags: ['package:@ui5/webcomponents-compat'],
+  tags: ['package:@ui5/webcomponents-compat', 'deprecated'],
 } satisfies Meta<typeof Table>;
 
 export default meta;
