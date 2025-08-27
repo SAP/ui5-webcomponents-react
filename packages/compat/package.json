@@ -15,6 +15,14 @@
     "./styles.css": "./dist/css/index.css",
     "./dist/*": "./dist/*",
     "./dist/*.js": "./dist/*.js",
+    "./enums/*": {
+      "types": "./dist/enums/*.d.ts",
+      "default": "./dist/enums/*.js"
+    },
+    "./VersionInfo": {
+      "types": "./dist/generated/VersionInfo.d.ts",
+      "default": "./dist/generated/VersionInfo.js"
+    },
     "./Loader": {
       "types": "./dist/components/Loader/index.d.ts",
       "default": "./dist/components/Loader/index.js"
