@@ -23,6 +23,17 @@ function getComponentExports(distDir, componentDir) {
           default: `./dist/${componentDir}/${entry.name}/index.js`,
         };
       }
+
+      // charts export "Placeholder" components
+      if (dir.includes('/charts')) {
+        const placeholderJs = path.join(dir, entry.name, 'Placeholder.js');
+        if (fs.existsSync(placeholderJs)) {
+          exportsObj[`./${entry.name}Placeholder`] = {
+            types: `./dist/${componentDir}/${entry.name}/Placeholder.d.ts`,
+            default: `./dist/${componentDir}/${entry.name}/Placeholder.js`,
+          };
+        }
+      }
     }
   });
 

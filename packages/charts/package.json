@@ -16,6 +16,10 @@
     "./dist/*": "./dist/*",
     "./dist/*.js": "./dist/*.js",
     "./styles.css": "./dist/css/index.css",
+    "./VersionInfo": {
+      "types": "./dist/generated/VersionInfo.d.ts",
+      "default": "./dist/generated/VersionInfo.js"
+    },
     "./ComposedChart": {
       "types": "./dist/components/ComposedChart/index.d.ts",
       "default": "./dist/components/ComposedChart/index.js"
@@ -63,6 +67,46 @@
     "./TimelineChart": {
       "types": "./dist/components/TimelineChart/index.d.ts",
       "default": "./dist/components/TimelineChart/index.js"
+    },
+    "./TimelineChartAnnotation": {
+      "types": "./dist/components/TimelineChart/TimelineChartAnnotation.d.ts",
+      "default": "./dist/components/TimelineChart/TimelineChartAnnotation.js"
+    },
+    "./BarChartPlaceholder": {
+      "types": "./dist/components/BarChart/Placeholder.d.ts",
+      "default": "./dist/components/BarChart/Placeholder.js"
+    },
+    "./BulletChartPlaceholder": {
+      "types": "./dist/components/BulletChart/Placeholder.d.ts",
+      "default": "./dist/components/BulletChart/Placeholder.js"
+    },
+    "./ColumnChartPlaceholder": {
+      "types": "./dist/components/ColumnChart/Placeholder.d.ts",
+      "default": "./dist/components/ColumnChart/Placeholder.js"
+    },
+    "./ColumnChartWithTrendPlaceholder": {
+      "types": "./dist/components/ColumnChartWithTrend/Placeholder.d.ts",
+      "default": "./dist/components/ColumnChartWithTrend/Placeholder.js"
+    },
+    "./ComposedChartPlaceholder": {
+      "types": "./dist/components/ComposedChart/Placeholder.d.ts",
+      "default": "./dist/components/ComposedChart/Placeholder.js"
+    },
+    "./LineChartPlaceholder": {
+      "types": "./dist/components/LineChart/Placeholder.d.ts",
+      "default": "./dist/components/LineChart/Placeholder.js"
+    },
+    "./PieChartPlaceholder": {
+      "types": "./dist/components/PieChart/Placeholder.d.ts",
+      "default": "./dist/components/PieChart/Placeholder.js"
+    },
+    "./ScatterChartPlaceholder": {
+      "types": "./dist/components/ScatterChart/Placeholder.d.ts",
+      "default": "./dist/components/ScatterChart/Placeholder.js"
+    },
+    "./TimelineChartPlaceholder": {
+      "types": "./dist/components/TimelineChart/Placeholder.d.ts",
+      "default": "./dist/components/TimelineChart/Placeholder.js"
     }
   },
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
