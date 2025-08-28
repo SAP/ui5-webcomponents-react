@@ -4,6 +4,7 @@ import { Link } from '@ui5/webcomponents-react';
 import { useRef } from 'react';
 import { MessageItem } from './MessageItem';
 import { MessageView } from './index.js';
+import { Dialog } from '../../webComponents/Dialog/index.js';
 
 describe('MessageView', () => {
   it('default & grouped', () => {
@@ -80,54 +81,64 @@ describe('MessageView', () => {
     getAllTextsVisible();
   });
 
-  it('select & nav back', () => {
-    const select = cy.spy().as('select');
-    const TestComp = () => {
-      const ref = useRef(null);
-      return (
-        <>
-          <button
-            onClick={() => {
-              ref.current.navigateBack();
-            }}
-          >
-            nav back
-          </button>
-          <MessageView onItemSelect={select} ref={ref} showDetailsPageHeader>
-            <MessageItem titleText="Error" type={ValueState.Negative} groupName="Group1">
-              Error Message
-            </MessageItem>
-            <MessageItem titleText="Warning" type={ValueState.Critical} groupName="Group1">
-              Warning
-            </MessageItem>
-            <MessageItem titleText="Success" type={ValueState.Positive}>
-              Success
-            </MessageItem>
-            <MessageItem titleText="Information" type={ValueState.Information}>
-              Information Message
-            </MessageItem>
-            <MessageItem titleText="None" type={ValueState.None} groupName="Group2">
-              None
-            </MessageItem>
-          </MessageView>
-        </>
-      );
-    };
-    cy.mount(<TestComp />);
-    cy.findByText('Error').click();
-    cy.findAllByText('Error').should('have.length', 1);
-    cy.findByText('Error Message').should('be.visible');
-    cy.get('[ui5-button]').click();
-    cy.findAllByText('Error').should('have.length', 1);
-    cy.findByText('Error Message').should('not.exist');
-    cy.get('@select').should('have.been.calledOnce');
-    cy.findByText('Information').click();
-    cy.findAllByText('Information').should('have.length', 1);
-    cy.findByText('Information Message').should('be.visible');
-    cy.findByText('nav back').click();
-    cy.findAllByText('Information').should('have.length', 1);
-    cy.findByText('Information Message').should('not.exist');
-    cy.get('@select').should('have.been.calledTwice');
+  [false, true].forEach((inDialog) => {
+    ['ltr', 'rtl'].forEach((dir) => {
+      it(`select & nav back ${inDialog ? 'in Dialog' : ''} (${dir})`, () => {
+        const select = cy.spy().as('select');
+        const TestComp = () => {
+          const ref = useRef(null);
+          const Parent = inDialog ? Dialog : 'div';
+          return (
+            <Parent dir={dir} open style={{ width: '400px' }}>
+              <button
+                slot="header"
+                onClick={() => {
+                  ref.current.navigateBack();
+                }}
+              >
+                nav back
+              </button>
+              <MessageView onItemSelect={select} ref={ref} showDetailsPageHeader={!inDialog}>
+                <MessageItem titleText="Error" type={ValueState.Negative} groupName="Group1">
+                  Error Message
+                </MessageItem>
+                <MessageItem titleText="Warning" type={ValueState.Critical} groupName="Group1">
+                  Warning
+                </MessageItem>
+                <MessageItem titleText="Success" type={ValueState.Positive}>
+                  Success
+                </MessageItem>
+                <MessageItem titleText="Information" type={ValueState.Information}>
+                  Information Message
+                </MessageItem>
+                <MessageItem titleText="None" type={ValueState.None} groupName="Group2">
+                  None
+                </MessageItem>
+              </MessageView>
+            </Parent>
+          );
+        };
+        cy.mount(<TestComp />);
+        cy.findByText('Error').click();
+        cy.findAllByText('Error').should('have.length', 1);
+        cy.findByText('Error Message').should('be.visible');
+        if (inDialog) {
+          cy.findByText('nav back').click();
+        } else {
+          cy.get('[ui5-button]').click();
+        }
+        cy.findAllByText('Error').should('have.length', 1);
+        cy.findByText('Error Message').should('not.exist');
+        cy.get('@select').should('have.been.calledOnce');
+        cy.findByText('Information').click();
+        cy.findAllByText('Information').should('have.length', 1);
+        cy.findByText('Information Message').should('be.visible');
+        cy.findByText('nav back').click();
+        cy.findAllByText('Information').should('have.length', 1);
+        cy.findByText('Information Message').should('not.exist');
+        cy.get('@select').should('have.been.calledTwice');
+      });
+    });
   });
 
   it('one/no message-type/item', () => {
