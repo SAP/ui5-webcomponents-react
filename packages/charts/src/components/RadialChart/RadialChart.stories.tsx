@@ -6,6 +6,7 @@ import { RadialChart } from './index.js';
 const meta = {
   title: 'RadialChart',
   component: RadialChart,
+  tags: ['package:@ui5/webcomponents-react-charts'],
   args: { displayValue: '50%', value: 50, maxValue: 100 },
 } satisfies Meta<typeof RadialChart>;
 

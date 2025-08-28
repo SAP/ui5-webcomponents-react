@@ -5,6 +5,7 @@ import { ComposedChart } from './index.js';
 const meta = {
   title: 'ComposedChart',
   component: ComposedChart,
+  tags: ['package:@ui5/webcomponents-react-charts'],
   argTypes: {
     dataset: {
       control: { disable: true },

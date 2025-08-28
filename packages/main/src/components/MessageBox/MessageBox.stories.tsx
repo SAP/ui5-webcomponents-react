@@ -28,7 +28,7 @@ const meta = {
   parameters: {
     chromatic: { delay: 1000 },
   },
-  tags: ['package:@ui5/webcomponents', 'cem-module:Dialog'],
+  tags: ['extends:@ui5/webcomponents', 'cem-module:Dialog', 'package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof MessageBox>;
 
 export default meta;

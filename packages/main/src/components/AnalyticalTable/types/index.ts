@@ -571,7 +571,10 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Enables the pop-in behavior of the column. When the `responsiveMinWidth` is smaller than the width of the table, the content of each cell will move to the first cell in the row, improving usability on small or mobile devices.
    *
-   * __Note:__ At least one column must remain visible at all times!
+   * __Note:__
+   * - At least one column must remain visible at all times!
+   * - The `sap.ui.table` doesn’t support pop-in behavior (unlike `sap.m.Table`); it’s unclear whether this should be part of the design.
+   *
    */
   responsivePopIn?: boolean;
   /**
@@ -709,7 +712,9 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Indicates whether a loading indicator should be shown.
    *
-   * __Note:__ If the data array is not empty and loading is set to `true` a `BusyIndicator` will be displayed on top of the table, otherwise a skeleton placeholder will be shown. You can control this behavior via the `alwaysShowBusyIndicator` prop.
+   * __Note:__
+   * - If the data array is not empty and loading is set to `true` a `BusyIndicator` will be displayed on top of the table, otherwise a skeleton placeholder will be shown. You can control this behavior via the `alwaysShowBusyIndicator` prop.
+   * - __We recommend setting this prop to `true` when loading times are under 1 second.__
    */
   loading?: boolean;
   /**
@@ -829,9 +834,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    * - **Smart**: Every column gets the space it needs for displaying the full header text. If all header texts need more space than the available table width, horizontal scrolling will be enabled. If there is space left, columns with a long text will get more space until there is no more table space left.
    * - **Grow**: Every column gets the space it needs for displaying its full header text and full text content of all cells. If it requires more space than the table has, horizontal scrolling will be enabled. To prevent huge header text from polluting the table, a max-width of 700px is applied to each column. It can be overwritten by setting the respective column property. This mode adds a calculated `minWidth` to each column. If the internally calculated `minWidth` is larger than the `width` set in the column options, it can lead to an unwanted scrollbar. To prevent this, you can set the `minWidth` in the column options yourself.
    *
-   * __Note:__ Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
-   *
-   * __Note:__ For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
+   * __Note:__
+   * - Custom cells with components instead of text as children are ignored by the `Smart` and `Grow` modes.
+   * - For performance reasons, the `Smart` and `Grow` modes base their calculation for table cell width on a subset of column cells. If the first 20 cells of a column are significantly smaller than the rest of the column cells, the content may still not be fully displayed for all cells.
+   * - Only the default mode is available out of the box for the `sap.m.Table`; similar behavior to the `"Grow"` mode can be achieved in `sap.ui.table` using `autoResizeColumn`.
    *
    * @default "Default"
    *
@@ -910,9 +916,10 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
   /**
    * Defines the subcomponent that should be displayed below each row.
    *
-   * __Note:__ When rendering active elements inside the subcomponent, make sure to add the `data-subcomponent-active-element' attribute, otherwise focus behavior won't be consistent.
-   *
-   * __Note:__ Subcomponents can affect performance, especially when used in a tree table (`isTreeTable={true}`). If you face performance issues, please try memoizing your subcomponent.
+   * __Note:__
+   * - __There is no design concept regarding this functionality!__
+   * - When rendering active elements inside the subcomponent, make sure to add the `data-subcomponent-active-element' attribute, otherwise focus behavior won't be consistent.
+   * - Subcomponents can affect performance, especially when used in a tree table (`isTreeTable={true}`). If you face performance issues, please try memoizing your subcomponent.
    */
   renderRowSubComponent?: (row?: RowType) => ReactNode;
   /**

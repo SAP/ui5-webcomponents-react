@@ -10,7 +10,7 @@ const meta = {
   title: 'Inputs / Tokenizer',
   component: Tokenizer,
   args: { style: { width: '250px' } },
-  tags: ['package:@ui5/webcomponents'],
+  tags: ['package:@ui5/webcomponents', 'experimental'],
 } satisfies Meta<typeof Tokenizer>;
 
 export default meta;

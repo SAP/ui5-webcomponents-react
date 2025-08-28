@@ -5,6 +5,7 @@ import { ColumnChartWithTrend } from './index.js';
 const meta = {
   title: 'ColumnChartWithTrend',
   component: ColumnChartWithTrend,
+  tags: ['package:@ui5/webcomponents-react-charts'],
   args: {
     style: { height: '400px' },
     dataset: complexDataSet,

@@ -10,6 +10,7 @@ const meta = {
       control: { disable: true },
     },
   },
+  tags: ['package:@ui5/webcomponents-react-charts'],
   args: {
     dataset: scatterComplexDataSet,
     measures: [

@@ -8,6 +8,7 @@ import { TimelineChart } from './index.js';
 const meta = {
   title: 'TimelineChart',
   component: TimelineChart,
+  tags: ['package:@ui5/webcomponents-react-charts', 'experimental'],
   argTypes: {
     dataset: {
       control: { disable: true },

@@ -7,6 +7,7 @@ import { Modals } from './index.js';
 const meta = {
   title: 'User Feedback / Modals',
   component: Modals,
+  tags: ['package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof Modals>;
 export default meta;
 type Story = StoryObj<typeof meta>;

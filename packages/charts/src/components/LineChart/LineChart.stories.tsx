@@ -12,6 +12,7 @@ import { LineChart } from './index.js';
 const meta = {
   title: 'LineChart',
   component: LineChart,
+  tags: ['package:@ui5/webcomponents-react-charts'],
   args: {
     dimensions: [
       {

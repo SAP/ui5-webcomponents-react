@@ -6,6 +6,7 @@ import { DonutChart } from './index.js';
 const meta = {
   title: 'DonutChart',
   component: DonutChart,
+  tags: ['package:@ui5/webcomponents-react-charts'],
   argTypes: {
     dataset: {
       control: { disable: true },

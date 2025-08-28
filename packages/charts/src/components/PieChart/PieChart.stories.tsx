@@ -6,6 +6,7 @@ import { PieChart } from './index.js';
 const meta = {
   title: 'PieChart',
   component: PieChart,
+  tags: ['package:@ui5/webcomponents-react-charts'],
   args: {
     dimension: {
       accessor: 'name',
