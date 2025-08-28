@@ -26,12 +26,12 @@ import { Badge } from "@sb/components/Badge.js";
 <br />
 <br />
 
-## Where can I find all compatible versions of `@ui5/webcomponents` and `@ui5/webcomponents-react`?
+## Where Can I Find All Compatible Versions of `@ui5/webcomponents` and `@ui5/webcomponents-react`?
 
 All necessary `@ui5/webcomponents` packages are `peerDependencies` of `@ui5/webcomponents-react`, so if you're using npm v7 or later, then these dependencies should be auto installed when running `npm install`.
 If you want to check which versions are compatible you can find a compatibility table [here](?path=/docs/getting-started--docs#add-ui5webcomponents-react-to-an-existing-app).
 
-## What are "abstract" UI5 Web Components?
+## What Are "abstract" UI5 Web Components?
 
 Abstract UI5 Web Components are mainly there to pass props to the actual component inside the shadow root. Therefore, all attributes passed to the element, will have no effect on the actual component.
 
@@ -60,17 +60,17 @@ Rendering a `ComboBoxItem` with some custom HTML attributes...
 
 As you can see, both `title` and `style` are correctly applied, but since the item doesn't have children, nor a shadow root the attributes don't have an effect on the component.
 
-## How can I style elements inside the shadow root of a web component?
+## How Can I Style Elements Inside the Shadow Root of a Web Component?
 
 Styling elements inside the shadow root is only supported by leveraging the [`::part` pseudo-element](https://developer.mozilla.org/en-US/docs/Web/CSS/::part). You can find out more about this [here](?path=/docs/knowledge-base-styling--docs#css-shadow-parts).
 
-## How can I reuse or change colors, fonts, etc. of UI5 Web Components for React?
+## How Can I Reuse or Change Colors, Fonts, etc. of UI5 Web Components for React?
 
 UI5 Web Components for React comes with a [publicly available](https://github.com/SAP/theming-base-content) set of CSS variables that ensure the same look and feel across applications. Changing these values is not recommended, if you still need to customize them, you can find out more about this [here](?path=/docs/knowledge-base-styling--docs#styling-ui5-web-components-for-react-components).
 
 To reuse these styles, you can either use the CSS variable, or use our [Theming Parameters](?path=/docs/knowledge-base-public-utils--docs#theming-parameters).
 
-## Why is changing the theme not working?
+## Why Is Changing the Theme Not Working?
 
 You have to ensure to import the `Assets` with the different themes, otherwise only the default theme will be used.
 
@@ -80,7 +80,7 @@ import '@ui5/webcomponents-react/dist/Assets';
 
 Further information about theming can be found in our and the UI5 Web Components [Theming documentation](?path=/docs/getting-started--docs#theming).
 
-## How can I distinguish if a component is developed in the `ui5-webcomponents` or `ui5-webcomponents-react` repo?
+## How Can I Distinguish If a Component Is Developed in the `ui5-webcomponents` or `ui5-webcomponents-react` Repo?
 
 Each component developed by the UI5 Web Components team ([`ui5-webcomponents`](https://github.com/SAP/ui5-webcomponents)) that is wrapped by the UI5 Web Components for React ([`ui5-webcomponents-react`](https://github.com/SAP/ui5-webcomponents-react)) wrapper includes the following note in its component description:
 
@@ -92,13 +92,13 @@ Additionally, Storybook supports filtering by tags, allowing you to filter by di
 
 <img src={SbTagFilter} alt="Storybook Tag Filter" height={420} />
 
-## What do the Badges in the Side Navigation mean?
+## What Do the Badges in the Side Navigation Mean?
 
 - <Badge type="custom" />: There are no global design or UX specifications for this component, or it deviates from them partially or fully. More details can be found in the component’s description.
 - <Badge type="experimental" />: The component or pattern is in an experimental state, meaning changes to its public API may occur without a major version update (`v3.0.0`).
 - <Badge type="deprecated" />: The component is deprecated and will be removed in the next major version update (`v3.0.0`). More details can be found the component's description.
 
-## Why isn't scoping working?
+## Why Isn't Scoping working?
 
 Starting from UI5 Web Components (for React) 2.0.0, the order of imports with regard to scoping and components matters.
 Setting the scoping suffix must be done before importing any components, as they use the suffix at the top-level of the module - meaning when a component is imported, the suffix has to be known.
