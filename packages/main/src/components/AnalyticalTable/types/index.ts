@@ -10,18 +10,16 @@ import type {
   RefObject,
   SetStateAction,
 } from 'react';
-import type {
-  AnalyticalTablePopinDisplay,
-  AnalyticalTableScaleWidthMode,
-  AnalyticalTableScrollMode,
-  AnalyticalTableSelectionBehavior,
-  AnalyticalTableSelectionMode,
-  AnalyticalTableSubComponentsBehavior,
-  AnalyticalTableVisibleRowCountMode,
-  IndicationColor,
-  TextAlign,
-  VerticalAlign,
-} from '../../../enums/index.js';
+import type { AnalyticalTablePopinDisplay } from '../../../enums/AnalyticalTablePopinDisplay.js';
+import type { AnalyticalTableScaleWidthMode } from '../../../enums/AnalyticalTableScaleWidthMode.js';
+import type { AnalyticalTableScrollMode } from '../../../enums/AnalyticalTableScrollMode.js';
+import type { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior.js';
+import type { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode.js';
+import type { AnalyticalTableSubComponentsBehavior } from '../../../enums/AnalyticalTableSubComponentsBehavior.js';
+import type { AnalyticalTableVisibleRowCountMode } from '../../../enums/AnalyticalTableVisibleRowCountMode.js';
+import type { IndicationColor } from '../../../enums/IndicationColor.js';
+import type { TextAlign } from '../../../enums/TextAlign.js';
+import type { VerticalAlign } from '../../../enums/VerticalAlign.js';
 import type { CommonProps } from '../../../types/index.js';
 import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
 import type { classNames } from '../AnalyticalTable.module.css.js';

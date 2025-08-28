@@ -7,19 +7,19 @@ import { createPortal } from 'react-dom';
 import { getRandomId } from '../../internal/getRandomId.js';
 import type { IModal } from '../../internal/ModalStore.js';
 import { ModalStore } from '../../internal/ModalStore.js';
+import type { DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog/index.js';
+import { Dialog } from '../../webComponents/Dialog/index.js';
+import type { MenuDomRef, MenuPropTypes } from '../../webComponents/Menu/index.js';
+import { Menu } from '../../webComponents/Menu/index.js';
+import type { PopoverDomRef, PopoverPropTypes } from '../../webComponents/Popover/index.js';
+import { Popover } from '../../webComponents/Popover/index.js';
 import type {
-  DialogDomRef,
-  DialogPropTypes,
-  MenuDomRef,
-  MenuPropTypes,
-  PopoverDomRef,
-  PopoverPropTypes,
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes,
-  ToastDomRef,
-  ToastPropTypes,
-} from '../../webComponents/index.js';
-import { Dialog, Menu, Popover, ResponsivePopover, Toast } from '../../webComponents/index.js';
+} from '../../webComponents/ResponsivePopover/index.js';
+import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
+import type { ToastDomRef, ToastPropTypes } from '../../webComponents/Toast/index.js';
+import { Toast } from '../../webComponents/Toast/index.js';
 import type { MessageBoxPropTypes } from '../MessageBox/index.js';
 import { MessageBox } from '../MessageBox/index.js';
 

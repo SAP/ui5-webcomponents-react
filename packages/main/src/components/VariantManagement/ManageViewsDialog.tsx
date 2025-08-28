@@ -6,7 +6,8 @@ import searchIcon from '@ui5/webcomponents-icons/dist/search.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import type { MouseEventHandler, ReactElement } from 'react';
 import { Children, isValidElement, useEffect, useId, useRef, useState } from 'react';
-import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems.js';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,

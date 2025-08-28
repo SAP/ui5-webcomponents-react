@@ -1,6 +1,6 @@
 import type { RefCallback, RefObject } from 'react';
 import { useCallback, useRef } from 'react';
-import type { AnalyticalTableScrollMode } from '../../../enums/index.js';
+import type { AnalyticalTableScrollMode } from '../../../enums/AnalyticalTableScrollMode.js';
 import type { AnalyticalTableDomRef, ScrollToRefType, TableInstance } from '../types/index.js';
 
 export function useScrollToRef(

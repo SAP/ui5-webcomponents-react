@@ -12,7 +12,7 @@ import { useI18nBundle, useStylesheet, useSyncRef } from '@ui5/webcomponents-rea
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import { useRef, Children, forwardRef, Fragment, isValidElement, useCallback, useEffect, useState } from 'react';
-import { FlexBoxDirection } from '../../enums/index.js';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection.js';
 import { ALL, LIST_NO_DATA, NAVIGATE_BACK, MESSAGE_DETAILS, MESSAGE_TYPES } from '../../i18n/i18n-defaults.js';
 import type { SelectedMessage } from '../../internal/MessageViewContext.js';
 import { MessageViewContext } from '../../internal/MessageViewContext.js';

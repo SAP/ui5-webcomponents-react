@@ -16,7 +16,7 @@ import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MouseEventHandler, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import type { IndicationColor } from '../../enums/index.js';
+import type { IndicationColor } from '../../enums/IndicationColor.js';
 import {
   ARIA_OBJ_STATUS_DESC,
   ARIA_OBJ_STATUS_DESC_INACTIVE,

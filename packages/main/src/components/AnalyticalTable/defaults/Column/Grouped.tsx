@@ -1,8 +1,8 @@
 import iconNavDownArrow from '@ui5/webcomponents-icons/dist/navigation-down-arrow.js';
 import iconNavRightArrow from '@ui5/webcomponents-icons/dist/navigation-right-arrow.js';
 import type { CSSProperties } from 'react';
-import { TextAlign } from '../../../../enums/index.js';
-import { Icon } from '../../../../webComponents/index.js';
+import { TextAlign } from '../../../../enums/TextAlign.js';
+import { Icon } from '../../../../webComponents/Icon/index.js';
 import { RenderColumnTypes } from '../../types/index.js';
 
 const tableGroupExpandCollapseIcon = {

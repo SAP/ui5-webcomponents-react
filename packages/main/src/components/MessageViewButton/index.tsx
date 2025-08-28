@@ -18,8 +18,8 @@ import {
   WARNING,
   INFORMATION,
 } from '../../i18n/i18n-defaults.js';
-import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/index.js';
-import { Button } from '../../webComponents/index.js';
+import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/Button/index.js';
+import { Button } from '../../webComponents/Button/index.js';
 import { classNames, styleData } from './MessageViewButton.module.css.js';
 
 export interface MessageViewButtonProptypes
