@@ -181,7 +181,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
         const selectedItem = listRef.current.querySelector<Ui5DomRef>(
           `[data-title="${CSS.escape(prevSelectedMessage.current.titleTextStr)}"]`,
         );
-        void selectedItem.focus();
+        void selectedItem?.focus();
       });
     }
     transitionTrigger.current = null;
