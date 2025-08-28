@@ -2,6 +2,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 import { Footer, TableOfContent } from '@sb/components';
 import { MessageStrip } from '@ui5/webcomponents-react';
 import SbTagFilter from '@sb/images/sb-pkg-filter.png';
+import { Badge } from "@sb/components/Badge.js";
 
 <Meta title="FAQ" />
 
@@ -87,9 +88,15 @@ Each component developed by the UI5 Web Components team ([`ui5-webcomponents`](h
 
 If a component does not have this note, it is a React-only component provided exclusively by `ui5-webcomponents-react`.
 
-Additionally, Storybook supports filtering by tags, allowing you to filter by different `ui5-webcomponents` packages as well:
+Additionally, Storybook supports filtering by tags, allowing you to filter by different `ui5-webcomponents(-react)` packages as well:
 
-<img src={SbTagFilter} alt="Storybook Tag Filter" height={320} />
+<img src={SbTagFilter} alt="Storybook Tag Filter" height={420} />
+
+## What do the Badges in the Side Navigation mean?
+
+- <Badge type="custom" />: There are no global design or UX specifications for this component, or it deviates from them partially or fully. More details can be found in the component’s description.
+- <Badge type="experimental" />: The component or pattern is in an experimental state, meaning changes to its public API may occur without a major version update (`v3.0.0`).
+- <Badge type="deprecated" />: The component is deprecated and will be removed in the next major version update (`v3.0.0`). More details can be found the component's description.
 
 ## Why isn't scoping working?
 
