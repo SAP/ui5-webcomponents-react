@@ -24,7 +24,7 @@ The `@ui5/webcomponents-react-base` package is providing a couple of utils, whic
 
 ## Device
 
-<Source code={`import { Device } from '@ui5/webcomponents-react-base';`} />
+<Source code={`import * as Device from '@ui5/webcomponents-react-base/Device';`} />
 
 The `Device` allows you to detect information about the environment where your app is running:
 
@@ -73,7 +73,7 @@ The `Device` allows you to detect information about the environment where your a
 
 ## Theming Parameters
 
-<Source code={`import { ThemingParameters } from '@ui5/webcomponents-react-base';`} />
+<Source code={`import { ThemingParameters } from '@ui5/webcomponents-react-base/ThemingParameters';`} />
 
 By using the global `--sap...` CSS variables, you can define the look and feel of your application without the need to hard-code any
 colors. The `ThemingParameters` is an JS object containing all available CSS variables mapped to their name.
@@ -98,14 +98,14 @@ Is equivalent to:
 
 ### `useI18nBundle`
 
-<Source code={`import { useI18nBundle } from '@ui5/webcomponents-react-base';`} />
+<Source code={`import { useI18nBundle } from '@ui5/webcomponents-react-base/hooks';`} />
 
 The `useI18nBundle` hook can be used for adding internationalization to your application. Learn more about it in our
 [Internationalization Guide](?path=/docs/knowledge-base-internationalization--docs).
 
 ### `useViewportRange`
 
-<Source code={`import { useViewportRange } from '@ui5/webcomponents-react-base';`} />
+<Source code={`import { useViewportRange } from '@ui5/webcomponents-react-base/hooks';`} />
 
 The `useViewportRange` hook is a utility hook based on the `Device.getCurrentRange()` and `Device.attachMediaHandler` API.
 It will always return a string with the name of the currently active range.
