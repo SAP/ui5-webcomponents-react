@@ -60,7 +60,7 @@ setCompatCustomElementsScopingSuffix('compat');
 // app main file, e.g index.js, main.tsx, etc.
 import './scoping.js';
 // now, all other component imports - the scoping config import must be the first import of the app
-import { Table } from '@ui5/webcomponents-react-compat';
+import { Table } from '@ui5/webcomponents-react-compat/Table';
 ```
 
 ### Experimental Patch Script (deprecated)

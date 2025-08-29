@@ -1,3 +1,4 @@
+import type * as CEM from '@ui5/webcomponents-tools/lib/cem/types-internal';
 import { useMemo } from 'react';
 // @ts-expect-error: storybook can handle this
 import cemAi from './custom-element-manifests/ai.json';
@@ -50,16 +51,16 @@ const replaceSubComps = {
   TableHeaderCellActionBase: ['TableHeaderCellActionAI'],
 };
 
-function findSubComponentsRecursively(moduleName: string, cem: any): string[] {
+function findSubComponentsRecursively(moduleName: string, cem: CEM.Package): string[] {
   const subComponentsSet = new Set<string>();
 
   const recursiveFind = (moduleName: string) => {
-    const module = cem?.modules.find((module: any) => module.path === `dist/${moduleName}.js`);
+    const module = cem?.modules.find((module: CEM.Module) => module.path === `dist/${moduleName}.js`);
     if (!module) return;
 
-    module.declarations.forEach((decl: any) => {
-      (decl.slots || []).forEach((slot: any) => {
-        (slot._ui5type?.references || []).forEach((ref: any) => {
+    module.declarations.forEach((decl: CEM.CustomElement) => {
+      (decl.slots || []).forEach((slot: CEM.Slot) => {
+        (slot._ui5type?.references || []).forEach((ref: CEM.TypeReference) => {
           const name = ref.name.replace(/^I([A-Z])/g, '$1');
           const subComps = replaceSubComps[name] || [name];
           subComps.forEach((subComp: string) => {

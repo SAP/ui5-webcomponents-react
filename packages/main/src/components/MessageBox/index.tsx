@@ -10,7 +10,8 @@ import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { ReactElement, ReactNode } from 'react';
 import { cloneElement, forwardRef, isValidElement, useId } from 'react';
-import { MessageBoxAction, MessageBoxType } from '../../enums/index.js';
+import { MessageBoxAction } from '../../enums/MessageBoxAction.js';
+import { MessageBoxType } from '../../enums/MessageBoxType.js';
 import {
   ABORT,
   CANCEL,

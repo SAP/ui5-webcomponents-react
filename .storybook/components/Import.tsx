@@ -1,10 +1,8 @@
-import { Fragment } from 'react';
-
 interface ImportStatementPropTypes {
   /**
-   * Names of module/component (e.g. "Button")
+   * Name of module/component (e.g. "Button")
    */
-  moduleNames?: string[];
+  moduleName?: string;
   /**
    * Package name (e.g. "@ui5/webcomponents-react")
    */
@@ -42,16 +40,12 @@ function FromPath({ packageName, deepPath }: FromPathPropTypes) {
 
 FromPath.displayName = 'FromPath';
 
-export const ImportStatement = ({ moduleNames, packageName, defaultImport }: ImportStatementPropTypes) => {
-  if (!moduleNames) {
+export const ImportStatement = ({ moduleName, packageName, defaultImport }: ImportStatementPropTypes) => {
+  if (!moduleName) {
     return null;
   }
   const isCompat = packageName.includes('compat');
-  const paths = isCompat
-    ? moduleNames.map((item) => {
-        return { path: `/dist/components/${item}/index.js`, moduleName: item };
-      })
-    : [null];
+  const deepPath = isCompat ? { path: `/dist/components/${item}/index.js`, moduleName: item } : null;
 
   return (
     <pre
@@ -68,45 +62,27 @@ export const ImportStatement = ({ moduleNames, packageName, defaultImport }: Imp
       }}
     >
       <code style={{ whiteSpace: 'pre' }}>
-        {!paths[0] && <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>}
-        {paths.map((deepPath) => {
-          if (!deepPath) {
-            return (
-              <span style={{ fontSize: '14px' }} key="0">
-                {!defaultImport && ' {'}
-                {moduleNames.length > 2 ? (
-                  <>
-                    {moduleNames.map((item) => {
-                      return (
-                        <Fragment key={item}>
-                          <br />
-                          &nbsp;&nbsp;
-                          {item},
-                        </Fragment>
-                      );
-                    })}
-                    <br />
-                  </>
-                ) : (
-                  <>&nbsp;{moduleNames.join(', ')}&nbsp;</>
-                )}
-                {!defaultImport && '} '}
-              </span>
-            );
-          } else {
-            return (
-              <Fragment key={deepPath.path}>
-                <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>
-                <span style={{ fontSize: '14px' }}>
-                  {' '}
-                  {'{'}&nbsp;{deepPath.moduleName}&nbsp;{'}'}{' '}
-                </span>
-                <FromPath packageName={packageName} deepPath={deepPath} />
-              </Fragment>
-            );
-          }
-        })}
-        {!paths[0] && <FromPath packageName={packageName} />}
+        {!deepPath && <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>}
+        {deepPath ? (
+          <>
+            <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>
+            <span style={{ fontSize: '14px' }}>
+              {' '}
+              {'{'}&nbsp;{deepPath.moduleName}&nbsp;{'}'}{' '}
+            </span>
+            <FromPath packageName={packageName} deepPath={deepPath} />
+          </>
+        ) : (
+          <span style={{ fontSize: '14px' }}>
+            {!defaultImport && ' {'}
+            <>
+              &nbsp;&nbsp;
+              {moduleName}{' '}
+            </>
+            {!defaultImport && '} '}
+          </span>
+        )}
+        {!deepPath && <FromPath packageName={packageName} />}
       </code>
     </pre>
   );
@@ -118,19 +94,19 @@ interface ImportProps {
   /**
    * Names of module/component (e.g. "Button")
    */
-  moduleNames: ImportStatementPropTypes['moduleNames'];
+  moduleName: ImportStatementPropTypes['moduleName'];
   componentId: string;
 }
 
 export const Import = (props: ImportProps) => {
-  const { componentId, moduleNames } = props;
+  const { componentId, moduleName } = props;
   const isChart = componentId.startsWith('charts-');
   const isCompat = componentId.startsWith('legacy-');
 
   return (
     <ImportStatement
-      moduleNames={moduleNames}
-      packageName={`'@ui5/webcomponents-react${isChart ? '-charts' : isCompat ? '-compat' : ''}'`}
+      moduleName={moduleName}
+      packageName={`'@ui5/webcomponents-react${isChart ? '-charts' : isCompat ? '-compat' : ''}'/${moduleName}`}
     />
   );
 };

@@ -15,7 +15,43 @@
     "./dist": "./dist/index.js",
     "./dist/*": "./dist/*",
     "./dist/*.js": "./dist/*.js",
-    "./internal/addCustomCSSWithScoping.js": "./dist/utils/addCustomCSSWithScoping.js"
+    "./internal/addCustomCSSWithScoping.js": "./dist/utils/addCustomCSSWithScoping.js",
+    "./Device": {
+      "types": "./dist/Device/index.d.ts",
+      "default": "./dist/Device/index.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "default": "./dist/hooks/index.js"
+    },
+    "./VersionInfo": {
+      "types": "./dist/generated/VersionInfo.d.ts",
+      "default": "./dist/generated/VersionInfo.js"
+    },
+    "./I18nStore": {
+      "types": "./dist/stores/I18nStore.d.ts",
+      "default": "./dist/stores/I18nStore.js"
+    },
+    "./StyleStore": {
+      "types": "./dist/stores/StyleStore.d.ts",
+      "default": "./dist/stores/StyleStore.js"
+    },
+    "./CssSizeVariables": {
+      "types": "./dist/styling/CssSizeVariables.d.ts",
+      "default": "./dist/styling/CssSizeVariables.js"
+    },
+    "./ThemingParameters": {
+      "types": "./dist/styling/ThemingParameters.d.ts",
+      "default": "./dist/styling/ThemingParameters.js"
+    },
+    "./withWebComponent": {
+      "types": "./dist/wrapper/withWebComponent.d.ts",
+      "default": "./dist/wrapper/withWebComponent.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
+    }
   },
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
   "repository": {

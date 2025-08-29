@@ -1,6 +1,8 @@
 import type { CSSProperties, MouseEvent, ReactElement, ReactNode } from 'react';
 import type { CommonProps } from '../../types/index.js';
-import type { DialogPropTypes, InputPropTypes, ToolbarButtonPropTypes } from '../../webComponents/index.js';
+import type { DialogPropTypes } from '../../webComponents/Dialog/index.js';
+import type { InputPropTypes } from '../../webComponents/Input/index.js';
+import type { ToolbarButtonPropTypes } from '../../webComponents/ToolbarButton/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 
 interface OnToggleFiltersEvent extends Omit<MouseEvent, 'detail'> {

@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior.js';
+import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode.js';
 import type { ReactTableHooks, RowType, TableInstance } from '../types/index.js';
 
 type onIndeterminateChange = (e: {

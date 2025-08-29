@@ -21,7 +21,7 @@ const generate = async () => {
   isNext: ${isNext ? 'true' : 'false'},
   buildTime: ${buildTime}
 };
-
+export const version = VersionInfo.version;
 export default VersionInfo;
 `;
 

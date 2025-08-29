@@ -18,7 +18,8 @@ Only one `Modals` component (`<Modals />`) should be rendered for each applicati
 Example for mounting the `Modals` component:
 
 ```jsx
-import { Modals, ThemeProvider } from '@ui5/webcomponents-react';
+import { Modals } from '@ui5/webcomponents-react/Modals';
+import { ThemeProvider } from '@ui5/webcomponents-react/ThemeProvider';
 ...
 const root = createRoot(document.getElementById("root"));
 root.render(
@@ -36,7 +37,7 @@ root.render(
 #### Usage
 
 ```typescript
-import { Modals } from '@ui5/webcomponents-react';
+import { Modals } from '@ui5/webcomponents-react/Modals';
 
 const { ref, close } = Modals.showDialog(props, container);
 ```
@@ -68,7 +69,7 @@ The `showDialog` method returns an object with the following properties:
 #### Usage
 
 ```typescript
-import { Modals } from '@ui5/webcomponents-react';
+import { Modals } from '@ui5/webcomponents-react/Modals';
 
 const { ref, close } = Modals.showPopover(props, container);
 ```
@@ -100,7 +101,7 @@ The `showPopover` method returns an object with the following properties:
 #### Usage
 
 ```typescript
-import { Modals } from '@ui5/webcomponents-react';
+import { Modals } from '@ui5/webcomponents-react/Modals';
 
 const { ref, close } = Modals.showResponsivePopover(props, container);
 ```
@@ -134,7 +135,7 @@ The `showResponsivePopover` method returns an object with the following properti
 #### Usage
 
 ```typescript
-import { Modals } from '@ui5/webcomponents-react';
+import { Modals } from '@ui5/webcomponents-react/Modals';
 
 const { ref, close } = Modals.showMenu(props, container);
 ```
@@ -166,7 +167,7 @@ The `Menu` method returns an object with the following properties:
 #### Usage
 
 ```typescript
-import { Modals } from '@ui5/webcomponents-react';
+import { Modals } from '@ui5/webcomponents-react/Modals';
 
 const { ref, close } = Modals.showMessageBox(props, container);
 ```
@@ -198,7 +199,7 @@ The `showMessageBox` method returns an object with the following properties:
 #### Usage
 
 ```typescript
-import { Modals } from '@ui5/webcomponents-react';
+import { Modals } from '@ui5/webcomponents-react/Modals';
 
 const { ref } = Modals.showToast(props, container);
 ```

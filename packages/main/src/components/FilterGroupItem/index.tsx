@@ -11,7 +11,9 @@ import moveUpIcon from '@ui5/webcomponents-icons/dist/navigation-up-arrow.js';
 import { useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
-import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems.js';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection.js';
+import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent.js';
 import {
   DOWN_ARROW,
   FILTER_DIALOG_REORDER_FILTERS,
@@ -24,8 +26,14 @@ import {
 } from '../../i18n/i18n-defaults.js';
 import type { ReorderDirections } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
-import type { ButtonPropTypes, TableRowDomRef } from '../../webComponents/index.js';
-import { BusyIndicator, Button, Icon, Label, TableCell, TableRow } from '../../webComponents/index.js';
+import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
+import type { ButtonPropTypes } from '../../webComponents/Button/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import { Label } from '../../webComponents/Label/index.js';
+import { TableCell } from '../../webComponents/TableCell/index.js';
+import type { TableRowDomRef } from '../../webComponents/TableRow/index.js';
+import { TableRow } from '../../webComponents/TableRow/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './FilterGroupItem.module.css.js';
 import type { FilterGroupItemInternalProps, FilterGroupItemPropTypes } from './types.js';

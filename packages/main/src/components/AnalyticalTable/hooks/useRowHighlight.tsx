@@ -1,5 +1,5 @@
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import { IndicationColor } from '../../../enums/index.js';
+import { IndicationColor } from '../../../enums/IndicationColor.js';
 import type { ReactTableHooks, TableInstance } from '../types/index.js';
 
 const baseStyles = {

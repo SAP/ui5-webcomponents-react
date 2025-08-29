@@ -103,8 +103,8 @@ registerI18nLoader('myApp', 'de', async () => {
 
 Add the following import statement to the component where you want to use translated texts:
 
-```js
-import { useI18nBundle } from '@ui5/webcomponents-react-base';
+```ts
+import { useI18nBundle } from '@ui5/webcomponents-react-base/hooks';
 ```
 
 Now, you can use the `useI18nBundle` hook in your functional components in order to access the i18nBundle and get your
