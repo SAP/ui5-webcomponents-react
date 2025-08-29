@@ -76,16 +76,28 @@
     background-color: transparent !important;
   }
 
-  /*experimental components */
-  #ai-promptinput::after,
-  #ai-button::after,
-  #inputs-tokenizer::after,
-  #inputs-search::after,
-  #modals-popovers-usermenu::after,
-  #modals-popovers-usersettingsdialog::after,
-  #charts-timelinechart::after {
-    content: '(experimental)';
-    overflow: hidden;
+  /* hide tags from tags-popover */
+  #list-item-tag-experimental,
+  #list-item-tag-deprecated,
+  #list-item-tag-custom,
+  #list-item-tag-cem-module\:Dialog,
+  #list-item-tag-cem-module\:ResponsivePopover,
+  #list-item-tag-excludeFromSidebar,
+  #list-item-tag-extends\:\@ui5\/webcomponents {
+    display: none;
+  }
+
+  /* side-nav badge styles */
+  .sidebar-item > button,
+  .sidebar-item > a {
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .side-nav-badge {
+    font-size: var(--sapFontSmallSize);
+  }
+  .side-nav-badge::part(root) {
+    padding-block: 0;
   }
 </style>
 
