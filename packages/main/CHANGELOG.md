@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.13.1...v2.13.2) (2025-08-29)
+
+### Bug Fixes
+
+- **AnalyticalTable:** clear sorting correctly in tree table ([#7669](https://github.com/SAP/ui5-webcomponents-react/issues/7669)) ([0fd1c99](https://github.com/SAP/ui5-webcomponents-react/commit/0fd1c9923f7803d4693a236384f50caf3a513c45)), closes [#7649](https://github.com/SAP/ui5-webcomponents-react/issues/7649)
+- **MessageView:** fix rtl behavior & allow disabling animations ([#7686](https://github.com/SAP/ui5-webcomponents-react/issues/7686)) ([145d8be](https://github.com/SAP/ui5-webcomponents-react/commit/145d8bea303f63600713ad27ce7dfc031b4e34e9)), closes [#7682](https://github.com/SAP/ui5-webcomponents-react/issues/7682)
+- **ObjectStatus:** implement delta styles for Quartz theme ([#7685](https://github.com/SAP/ui5-webcomponents-react/issues/7685)) ([9de75d6](https://github.com/SAP/ui5-webcomponents-react/commit/9de75d650287767e76dc66a5c90cdc494b098545)), closes [#7683](https://github.com/SAP/ui5-webcomponents-react/issues/7683)
+
 ## [2.13.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.13.0...v2.13.1) (2025-08-14)
 
 ### Bug Fixes
