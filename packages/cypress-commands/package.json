@@ -25,7 +25,7 @@
   "peerDependencies": {
     "@ui5/webcomponents": "~2.13.1",
     "@ui5/webcomponents-base": "~2.13.1",
-    "cypress": "^12 || ^13 || ^14"
+    "cypress": "^12 || ^13 || ^14 || ^15"
   },
   "peerDependenciesMeta": {
     "@ui5/webcomponents": {

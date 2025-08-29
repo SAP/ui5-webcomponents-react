@@ -4,6 +4,7 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import ListSeparator from '@ui5/webcomponents/dist/types/ListSeparator.js';
 import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import WrappingType from '@ui5/webcomponents/dist/types/WrappingType.js';
+import { getAnimationMode } from '@ui5/webcomponents-base/dist/config/AnimationMode.js';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import announce from '@ui5/webcomponents-base/dist/util/InvisibleMessage.js';
 import iconSlimArrowLeft from '@ui5/webcomponents-icons/dist/slim-arrow-left.js';
@@ -63,6 +64,8 @@ export interface MessageViewPropTypes extends CommonProps {
    */
   onItemSelect?: ListPropTypes['onItemClick'];
 }
+
+const withAnimation = getAnimationMode() !== 'none';
 
 export const resolveMessageTypes = (children: ReactElement<MessageItemPropTypes>[]) => {
   return (children ?? [])
@@ -178,7 +181,7 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
         const selectedItem = listRef.current.querySelector<Ui5DomRef>(
           `[data-title="${CSS.escape(prevSelectedMessage.current.titleTextStr)}"]`,
         );
-        void selectedItem.focus();
+        void selectedItem?.focus();
       });
     }
     transitionTrigger.current = null;
@@ -193,13 +196,22 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
 
   const outerClasses = clsx(classNames.container, className, selectedMessage && classNames.showDetails);
   return (
-    <div ref={componentRef} {...rest} className={outerClasses} onTransitionEnd={handleTransitionEnd}>
+    <div
+      ref={componentRef}
+      {...rest}
+      className={outerClasses}
+      onTransitionEnd={handleTransitionEnd}
+      data-with-animation={`${withAnimation}`}
+    >
       <MessageViewContext.Provider
         value={{
           selectMessage: setSelectedMessage,
         }}
       >
-        <div style={{ visibility: selectedMessage ? 'hidden' : 'visible' }} className={classNames.messagesContainer}>
+        <div
+          style={{ visibility: selectedMessage ? 'hidden' : 'visible', opacity: selectedMessage ? 0.3 : 1 }}
+          className={classNames.messagesContainer}
+        >
           {!selectedMessage && (
             <>
               {filledTypes > 1 && (
@@ -257,7 +269,11 @@ const MessageView = forwardRef<MessageViewDomRef, MessageViewPropTypes>((props, 
             </>
           )}
         </div>
-        <div className={classNames.detailsContainer} data-component-name="MessageViewDetailsContainer">
+        <div
+          className={classNames.detailsContainer}
+          style={{ opacity: selectedMessage ? 1 : 0.3 }}
+          data-component-name="MessageViewDetailsContainer"
+        >
           {childrenArray.length > 0 ? (
             <>
               {showDetailsPageHeader && selectedMessage && (
