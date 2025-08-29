@@ -1,0 +1,49 @@
+import{j as t,e as n}from"./iframe-BwRZ6zH2.js";import{useMDXComponents as x}from"./index-Dha5O7fd.js";import{M as d,C as h,a as j,D as i,A as r}from"./blocks-DL1YgvN4.js";import"./Tag-jzGA4JLS.js";import"./index-Bn-_GOqM.js";import{C as f}from"./ControlsWithNote-DF46a5u6.js";import{D as S}from"./DocsHeader-CihWsTE1.js";import{F as u}from"./CommandsAndQueries-DnahCchN.js";import{S as D}from"./SubcomponentsSection-BVy4lpQe.js";import{C as s,D as m,S as p,F as a,a as c}from"./ViewSettingsDialog.stories-QjJb3DwF.js";import"./preload-helper-D9Z9MdNV.js";import"./information-C-c_P7SM.js";import"./sys-enter-2-Csc9mkjG.js";import"./alert-OSu7g90-.js";import"./index-DNHSASGJ.js";import"./index-B9mzJ7n3.js";import"./Link-CWmfxulK.js";import"./copy-DDuPrkFa.js";import"./copy-14fAizTo.js";import"./GitHub-Mark-Dur4y_WQ.js";import"./TableOfContent-C1cLg550.js";import"./index-DC4jF85u.js";import"./index-BMXWdCHK.js";import"./addCustomCSSWithScoping-C9ks6bKt.js";import"./index-CODnJVEI.js";import"./index-Dvv0G0ud.js";import"./index-daxMvW3Z.js";import"./AvatarSize-BtKTMFJ5.js";import"./employee-BHObXTEz.js";import"./InvisibleMessage-DpqJIsJS.js";import"./sort-BYs1uxGg.js";import"./filter-fBzDQmus.js";import"./i18n-defaults-Cjp7arcT.js";import"./SegmentedButton-BXKvuy9n.js";import"./ListItemStandard-CJECabbX.js";import"./parameters-bundle.css-34zgZIqy.js";function l(e){const o={code:"code",h2:"h2",p:"p",pre:"pre",...x(),...e.components};return t.jsxs(t.Fragment,{children:[t.jsx(d,{of:s}),`
+`,t.jsx(S,{of:s,since:"0.20.0"}),`
+`,t.jsx("br",{}),`
+`,t.jsx(o.h2,{id:"example",children:"Example"}),`
+`,t.jsx(h,{of:m}),`
+`,t.jsx(o.h2,{id:"properties",children:"Properties"}),`
+`,t.jsx(f,{of:m}),`
+`,t.jsx(o.h2,{id:"opening-viewsettingsdialog",children:"Opening ViewSettingsDialog"}),`
+`,t.jsxs(o.p,{children:["You can open and close the ",t.jsx(o.code,{children:"ViewSettingsDialog"})," component in a declarative way using the ",t.jsx(o.code,{children:"open"})," prop."]}),`
+`,t.jsx(o.pre,{children:t.jsx(o.code,{className:"language-jsx",children:`const ViewSettingsDialogComponent = () => {
+  const [showVSD, setShowVSD] = useState(false);
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setShowVSD(true);
+        }}
+      >
+        Open ViewSettingsDialog
+      </Button>
+      <ViewSettingsDialog
+        open={showVSD}
+        onClose={() => {
+          setShowVSD(false);
+        }}
+        sortItems={
+          <>
+            <SortItem text="Name" />
+            <SortItem text="Position" />
+            <SortItem text="Company" />
+            <SortItem text="Department" />
+          </>
+        }
+      />
+    </>
+  );
+};
+`})}),`
+`,t.jsx(j,{children:D}),`
+`,t.jsx(o.h2,{id:"sortitem",children:"SortItem"}),`
+`,t.jsx(i,{of:p}),`
+`,t.jsx(r,{exclude:n,of:p}),`
+`,t.jsx(o.h2,{id:"filteritem",children:"FilterItem"}),`
+`,t.jsx(i,{of:a}),`
+`,t.jsx(r,{exclude:n,of:a}),`
+`,t.jsx(o.h2,{id:"filteritemoption",children:"FilterItemOption"}),`
+`,t.jsx(i,{of:c}),`
+`,t.jsx(r,{exclude:n,of:c}),`
+`,t.jsx(u,{})]})}function et(e={}){const{wrapper:o}={...x(),...e.components};return o?t.jsx(o,{...e,children:t.jsx(l,{...e})}):l(e)}export{et as default};
