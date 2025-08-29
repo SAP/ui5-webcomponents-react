@@ -431,7 +431,7 @@ describe('ObjectPage', () => {
     cy.findByTestId('footer').should('be.visible');
 
     // Select Employment tab
-    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').click();
+    cy.get('[ui5-tabcontainer]').findUi5TabByText('Goals').focus();
     cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
     cy.get('[ui5-tabcontainer]').realPress('ArrowRight');
     cy.get('[ui5-tabcontainer]').realPress('ArrowRight');

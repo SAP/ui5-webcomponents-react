@@ -179,7 +179,7 @@ describe('MessageView', () => {
     // remaining props were already tested
     cy.findByText('SubtitleText').should('be.visible');
     cy.findByText('1337').should('be.visible');
-    cy.get('[name="slim-arrow-right"]').should('be.visible').click();
+    cy.get('[name="slim-arrow-right"]').should('be.visible').realClick();
     cy.findByText('SubtitleText').should('not.exist');
     cy.findByText('1337').should('not.exist');
   });
