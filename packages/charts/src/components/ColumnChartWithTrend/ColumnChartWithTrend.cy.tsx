@@ -1,5 +1,5 @@
 import { complexDataSet } from '../../resources/DemoProps.js';
-import { ColumnChartWithTrend } from './ColumnChartWithTrend.js';
+import { ColumnChartWithTrend } from './index.js';
 import { cypressPassThroughTestsFactory, testChartLegendConfig, testChartZoomingTool } from '@/cypress/support/utils';
 
 const dimensions = [

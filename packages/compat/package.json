@@ -14,7 +14,59 @@
     "./package.json": "./package.json",
     "./styles.css": "./dist/css/index.css",
     "./dist/*": "./dist/*",
-    "./dist/*.js": "./dist/*.js"
+    "./dist/*.js": "./dist/*.js",
+    "./enums/*": {
+      "types": "./dist/enums/*.d.ts",
+      "default": "./dist/enums/*.js"
+    },
+    "./VersionInfo": {
+      "types": "./dist/generated/VersionInfo.d.ts",
+      "default": "./dist/generated/VersionInfo.js"
+    },
+    "./Loader": {
+      "types": "./dist/components/Loader/index.d.ts",
+      "default": "./dist/components/Loader/index.js"
+    },
+    "./OverflowToolbarButton": {
+      "types": "./dist/components/OverflowToolbarButton/index.d.ts",
+      "default": "./dist/components/OverflowToolbarButton/index.js"
+    },
+    "./OverflowToolbarToggleButton": {
+      "types": "./dist/components/OverflowToolbarToggleButton/index.d.ts",
+      "default": "./dist/components/OverflowToolbarToggleButton/index.js"
+    },
+    "./Table": {
+      "types": "./dist/components/Table/index.d.ts",
+      "default": "./dist/components/Table/index.js"
+    },
+    "./TableCell": {
+      "types": "./dist/components/TableCell/index.d.ts",
+      "default": "./dist/components/TableCell/index.js"
+    },
+    "./TableColumn": {
+      "types": "./dist/components/TableColumn/index.d.ts",
+      "default": "./dist/components/TableColumn/index.js"
+    },
+    "./TableGroupRow": {
+      "types": "./dist/components/TableGroupRow/index.d.ts",
+      "default": "./dist/components/TableGroupRow/index.js"
+    },
+    "./TableRow": {
+      "types": "./dist/components/TableRow/index.d.ts",
+      "default": "./dist/components/TableRow/index.js"
+    },
+    "./Toolbar": {
+      "types": "./dist/components/Toolbar/index.d.ts",
+      "default": "./dist/components/Toolbar/index.js"
+    },
+    "./ToolbarSeparator": {
+      "types": "./dist/components/ToolbarSeparator/index.d.ts",
+      "default": "./dist/components/ToolbarSeparator/index.js"
+    },
+    "./ToolbarSpacer": {
+      "types": "./dist/components/ToolbarSpacer/index.d.ts",
+      "default": "./dist/components/ToolbarSpacer/index.js"
+    }
   },
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
   "repository": {

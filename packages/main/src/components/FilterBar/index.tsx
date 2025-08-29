@@ -19,8 +19,13 @@ import {
   SEARCH,
   SHOW_FILTER_BAR,
 } from '../../i18n/i18n-defaults.js';
-import type { ButtonDomRef, DialogDomRef, ToolbarButtonDomRef } from '../../webComponents/index.js';
-import { Button, Icon, Toolbar, ToolbarButton } from '../../webComponents/index.js';
+import type { ButtonDomRef } from '../../webComponents/Button/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import type { DialogDomRef } from '../../webComponents/Dialog/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import { Toolbar } from '../../webComponents/Toolbar/index.js';
+import type { ToolbarButtonDomRef } from '../../webComponents/ToolbarButton/index.js';
+import { ToolbarButton } from '../../webComponents/ToolbarButton/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 import { FlexBox } from '../FlexBox/index.js';

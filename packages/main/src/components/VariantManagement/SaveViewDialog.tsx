@@ -3,7 +3,8 @@ import ButtonDesign from '@ui5/webcomponents/dist/types/ButtonDesign.js';
 import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { useId, useRef, useState } from 'react';
-import { FlexBoxAlignItems, FlexBoxDirection } from '../../enums/index.js';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems.js';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection.js';
 import {
   APPLY_AUTOMATICALLY,
   CANCEL,
@@ -18,8 +19,15 @@ import {
 import { trimAndRemoveSpaces } from '../../internal/utils.js';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
-import type { ButtonDomRef, DialogDomRef, InputPropTypes } from '../../webComponents/index.js';
-import { Bar, Button, CheckBox, Dialog, Input, Label } from '../../webComponents/index.js';
+import { Bar } from '../../webComponents/Bar/index.js';
+import type { ButtonDomRef } from '../../webComponents/Button/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import { CheckBox } from '../../webComponents/CheckBox/index.js';
+import type { DialogDomRef } from '../../webComponents/Dialog/index.js';
+import { Dialog } from '../../webComponents/Dialog/index.js';
+import type { InputPropTypes } from '../../webComponents/Input/index.js';
+import { Input } from '../../webComponents/Input/index.js';
+import { Label } from '../../webComponents/Label/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './SaveViewDialog.module.css.js';
 import type { VariantManagementPropTypes } from './types.js';

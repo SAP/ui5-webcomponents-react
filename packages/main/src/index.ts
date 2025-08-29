@@ -33,7 +33,7 @@ export * from './components/VariantManagement/VariantItem.js';
 export { withWebComponent } from './internal/withWebComponent.js';
 export type { WithWebComponentPropTypes } from './internal/withWebComponent.js';
 export * from './enums/index.js';
-export type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode, Nullable } from './types/index.js';
+export type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from './types/index.js';
 export * from './webComponents/index.js';
 
 export { AnalyticalTableHooks };

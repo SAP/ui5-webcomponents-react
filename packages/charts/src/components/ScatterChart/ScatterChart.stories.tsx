@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { legendConfig, scatterColorDataSet, scatterComplexDataSet, tooltipConfig } from '../../resources/DemoProps.js';
-import { ScatterChart } from './ScatterChart.js';
+import { ScatterChart } from './index.js';
 
 const meta = {
   title: 'ScatterChart',

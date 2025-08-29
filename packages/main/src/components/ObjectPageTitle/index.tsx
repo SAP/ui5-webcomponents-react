@@ -3,9 +3,11 @@
 import { debounce, Device, useStylesheet, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { cloneElement, forwardRef, isValidElement, useEffect, useRef, useState } from 'react';
-import { FlexBoxAlignItems, FlexBoxDirection, FlexBoxJustifyContent } from '../../enums/index.js';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems.js';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection.js';
+import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
-import type { ToolbarDomRef } from '../../webComponents/index.js';
+import type { ToolbarDomRef } from '../../webComponents/Toolbar/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './ObjectPageTitle.module.css.js';
 import type { InternalProps, ObjectPageTitlePropTypes } from './types/index.js';

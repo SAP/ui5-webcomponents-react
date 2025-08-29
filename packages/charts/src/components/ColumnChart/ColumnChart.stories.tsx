@@ -7,7 +7,7 @@ import {
   stackedNormalizedConfig,
   tooltipConfig,
 } from '../../resources/DemoProps.js';
-import { ColumnChart } from './ColumnChart.js';
+import { ColumnChart } from './index.js';
 
 const meta = {
   title: 'ColumnChart',
