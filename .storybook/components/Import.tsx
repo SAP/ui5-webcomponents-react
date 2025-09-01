@@ -22,18 +22,13 @@ interface FromPathPropTypes extends Pick<ImportStatementPropTypes, 'packageName'
   deepPath?: null | undefined | DeepPath;
 }
 
-function FromPath({ packageName, deepPath }: FromPathPropTypes) {
+function FromPath({ packageName }: FromPathPropTypes) {
   return (
     <>
       <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>from</span>
       <span> </span>
-      <span style={{ color: 'rgb(0, 136, 0)', fontSize: '14px' }}>
-        {deepPath ? packageName.slice(0, -1) : packageName}
-        {deepPath && deepPath.path}
-        {deepPath && "'"}
-      </span>
+      <span style={{ color: 'rgb(0, 136, 0)', fontSize: '14px' }}>{packageName}</span>
       <span style={{ fontSize: '14px' }}>;</span>
-      {deepPath && <br />}
     </>
   );
 }
@@ -44,8 +39,6 @@ export const ImportStatement = ({ moduleName, packageName, defaultImport }: Impo
   if (!moduleName) {
     return null;
   }
-  const isCompat = packageName.includes('compat');
-  const deepPath = isCompat ? { path: `/dist/components/${item}/index.js`, moduleName: item } : null;
 
   return (
     <pre
@@ -62,27 +55,16 @@ export const ImportStatement = ({ moduleName, packageName, defaultImport }: Impo
       }}
     >
       <code style={{ whiteSpace: 'pre' }}>
-        {!deepPath && <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>}
-        {deepPath ? (
+        <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>
+        <span style={{ fontSize: '14px' }}>
+          {!defaultImport && ' {'}
           <>
-            <span style={{ color: 'rgb(0, 0, 136)', fontSize: '14px' }}>import</span>
-            <span style={{ fontSize: '14px' }}>
-              {' '}
-              {'{'}&nbsp;{deepPath.moduleName}&nbsp;{'}'}{' '}
-            </span>
-            <FromPath packageName={packageName} deepPath={deepPath} />
+            &nbsp;&nbsp;
+            {moduleName}{' '}
           </>
-        ) : (
-          <span style={{ fontSize: '14px' }}>
-            {!defaultImport && ' {'}
-            <>
-              &nbsp;&nbsp;
-              {moduleName}{' '}
-            </>
-            {!defaultImport && '} '}
-          </span>
-        )}
-        {!deepPath && <FromPath packageName={packageName} />}
+          {!defaultImport && '} '}
+        </span>
+        <FromPath packageName={packageName} />
       </code>
     </pre>
   );
@@ -106,7 +88,7 @@ export const Import = (props: ImportProps) => {
   return (
     <ImportStatement
       moduleName={moduleName}
-      packageName={`'@ui5/webcomponents-react${isChart ? '-charts' : isCompat ? '-compat' : ''}'/${moduleName}`}
+      packageName={`'@ui5/webcomponents-react${isChart ? '-charts' : isCompat ? '-compat' : ''}/${moduleName}'`}
     />
   );
 };
