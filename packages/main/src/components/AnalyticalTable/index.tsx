@@ -393,9 +393,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   }
 
   const prevExtensionsHeight = useRef<number>(0);
-  const titleBarRef = useRef<HTMLElement>(null);
-  const extensionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLElement>(null);
+  const titleBarRef = useRef<HTMLDivElement>(null);
+  const extensionRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const extensionsHeight = getCombinedElementsHeight(prevExtensionsHeight, titleBarRef, extensionRef, headerRef);
 
   const internalRowHeight = getRowHeight(rowHeight, tableRef);
