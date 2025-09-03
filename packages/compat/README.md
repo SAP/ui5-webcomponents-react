@@ -31,20 +31,27 @@ We strongly recommend migrating fully to the v2 `Table`, especially if the `Filt
 Importing components from the root (`import { Toolbar } from "@ui5/webcomponents-react-compat"`) is discouraged.
 The primary reason is that tree-shaking capabilities are limited in the default configurations of most bundlers in dev mode. As a result, custom elements for the v1 table will still be defined, even if only the `Toolbar` is imported. This can cause unexpected behavior if the v2 table is also used in the same app.
 
-E.g.:
-
-- `import { Table } from '@ui5/webcomponents-react-compat/dist/components/Table/index.js';`
-- `import { Toolbar } from '@ui5/webcomponents-react-compat/dist/components/Toolbar/index.js';`
-
-In case you're still facing issues with the custom element definitions of the `Table` in development environments, you can add the web component import before any other component import in your application.
-
 Following are the imports of duplicate custom element names:
 
 - `Table` (`ui5-table`): `import '@ui5/webcomponents-compat/dist/Table.js';`
 - `TableCell` (`ui5-table-cell`): `import "@ui5/webcomponents-compat/dist/TableCell.js";`
 - `TableRow` (`ui5-table-row`): `import "@ui5/webcomponents-compat/dist/TableRow.js";`
 
-### Using the Compat (v1) Table Together with the v2 Table in One Application
+To avoid issues, please always import components from the compat package via the file path.
+
+**Before v2.14.0:**
+
+- `import { Table } from '@ui5/webcomponents-react-compat/dist/components/Table/index.js';`
+- `import { Toolbar } from '@ui5/webcomponents-react-compat/dist/components/Toolbar/index.js';`
+
+**Since v2.14.0:**
+
+- `import { Table } from '@ui5/webcomponents-react-compat/Table';`
+- `import { Toolbar } from '@ui5/webcomponents-react-compat/Toolbar';`
+
+In case you're still facing issues with the custom element definitions of the `Table` in development environments, please consider using compat package scoping.
+
+### Compat Scoping: Using the Compat (v1) Table Together with the v2 Table in One Application
 
 As of **v2.12.0** of `@ui5/webcomponents-compat`, a dedicated **scoping mechanism** is available for custom elements from the compat package.
 
@@ -62,62 +69,6 @@ import './scoping.js';
 // now, all other component imports - the scoping config import must be the first import of the app
 import { Table } from '@ui5/webcomponents-react-compat/Table';
 ```
-
-### Experimental Patch Script (deprecated)
-
-> ⚠️ **Deprecated**: This script is deprecated in favor of scoping the "compat" package components!
-
-The `patch-compat-table` script (included in the `@ui5/webcomponents-react-cli` package) is developed to address specific compatibility issues that arise when using the legacy v1 Table component in conjunction with the `FilterBar` or `VariantManagement` components. These components internally rely on the v2 `Table`, and therefore conflicts will occur when using the v1 `Table`.
-The script will change the custom element name by adding a `-v1` suffix (via [patch-package](https://github.com/ds300/patch-package)) to all duplicate v1 table components.
-
-> ⚠️ **Temporary Solution:** This script is intended as a temporary workaround. It is strongly recommended to plan for a migration to the v2 Table component to ensure long-term compatibility and support.
-
-<details style="cursor:auto;">
-
-<summary><h4 style="display: inline; margin: 0; font-size:18px; cursor:pointer;">Using the script</h4></summary>
-
-<br />
-
-**What it does**
-
-<p>The script patches the <code>@ui5/webcomponents-compat</code> and <code>@ui5/webcomponents-react-compat</code> table component and subcomponents to render with a different custom element name (tag name) compared to the v2 implementation.
-This is done internally using <code>patch-package</code> to adjust the implementation in the <b>node_modules</b>.</p>
-
-<p>⚠️ <b>Note:</b> Since the tag names and the related attribute are changed, any CSS selectors targeting these tags must be updated accordingly!</p>
-
-**How to use**
-
-<p><b>Install</b> the <code>@ui5/webcomponents-react-cli</code> and <code>@ui5/webcomponents-compat</code> packages:</p>
-
-```
-// install `@ui5/webcomponents-compat` explicitly
-npm i @ui5/webcomponents-react-cli @ui5/webcomponents-compat
-```
-
-<p><b>Run</b> the script:</p>
-
-```
-// ui5-wcr is an executable added by the `@ui5/webcomponents-react-cli` package
-ui5-wcr patch-compat-table
-```
-
-<p>The <code>ui5-wcr</code> executable is provided by the <code>@ui5/webcomponents-react-cli</code> package. The <code>patch-compat-table</code> command applies the necessary patches.</p>
-
-<p><b>Recommendation:</b></p>
-
-<p>Add the script as <code>postinstall</code> script in the <code>package.json</code>, so it runs after every module update.</p>
-
-```
-{
-  "//": "rest of your applications package.json",
-  "scripts": {
-    "//": "your other scripts",
-    "postinstall": "ui5-wcr patch-compat-table"
-  }
-}
-```
-
-</details>
 
 ## Documentation
 
