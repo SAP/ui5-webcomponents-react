@@ -177,7 +177,11 @@ export function getLeafHeaders(header) {
   return leafHeaders;
 }
 
-export const getCombinedElementsHeight = (prevHeight: number, ...refs: RefObject<HTMLElement>[]): number => {
+export const getCombinedElementsHeight = (
+  prevHeightRef: RefObject<number>,
+  ...refs: RefObject<HTMLElement>[]
+): number => {
+  const prevHeight = prevHeightRef.current;
   let height = 0;
 
   for (const ref of refs) {
@@ -185,10 +189,11 @@ export const getCombinedElementsHeight = (prevHeight: number, ...refs: RefObject
     if (!el) {
       continue;
     }
-    const elementHeight = el.offsetHeight;
-    height += elementHeight;
+    height += el.offsetHeight;
   }
-
   // Math.abs is required, because of layout thrashing (rounding errors)
-  return Math.abs(prevHeight - height) > 1 ? height : prevHeight;
+  const updatedHeight = Math.abs(prevHeight - height) > 1 ? height : prevHeight;
+  prevHeightRef.current = updatedHeight;
+
+  return updatedHeight;
 };
