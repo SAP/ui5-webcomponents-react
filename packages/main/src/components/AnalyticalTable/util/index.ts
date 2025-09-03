@@ -177,7 +177,7 @@ export function getLeafHeaders(header) {
   return leafHeaders;
 }
 
-export const getObservedCombinedHeight = (prevHeight: number, ...refs: RefObject<HTMLElement>[]): number => {
+export const getCombinedElementsHeight = (prevHeight: number, ...refs: RefObject<HTMLElement>[]): number => {
   let height = 0;
 
   for (const ref of refs) {

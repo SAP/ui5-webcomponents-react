@@ -91,7 +91,7 @@ import type {
   TableInstance,
 } from './types/index.js';
 import {
-  getObservedCombinedHeight,
+  getCombinedElementsHeight,
   getRowHeight,
   getSubRowsByString,
   tagNamesWhichShouldNotSelectARow,
@@ -396,7 +396,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   const extensionRef = useRef(null);
   const headerRef = useRef(null);
 
-  const extensionsHeight = getObservedCombinedHeight(0, titleBarRef, extensionRef, headerRef);
+  const extensionsHeight = getCombinedElementsHeight(0, titleBarRef, extensionRef, headerRef);
 
   const internalRowHeight = getRowHeight(rowHeight, tableRef);
   const internalHeaderRowHeight = headerRowHeight ?? internalRowHeight;
