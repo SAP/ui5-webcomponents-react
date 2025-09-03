@@ -33,7 +33,7 @@
     "patches"
   ],
   "dependencies": {
-    "dedent": "1.6.0",
+    "dedent": "1.7.0",
     "execa": "9.6.0",
     "patch-package": "8.0.0"
   }
