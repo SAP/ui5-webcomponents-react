@@ -19,7 +19,7 @@ const meta = {
   args: {
     design: ButtonDesign.Default,
   },
-  tags: ['package:@ui5/webcomponents-ai'],
+  tags: ['package:@ui5/webcomponents-ai', 'experimental'],
 } satisfies Meta<typeof Button>;
 
 export default meta;

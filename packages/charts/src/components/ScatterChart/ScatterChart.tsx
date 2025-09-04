@@ -103,6 +103,7 @@ export interface ScatterChartProps extends Omit<IChartBaseProps<IScatterChartCon
    * </code>
    */
   dataset?: ScatterDataObject[];
+  //todo: use object instead of array (next major release)
   /**
    * An array of config objects. Each object is defining one axis in the chart.
    *
@@ -115,7 +116,7 @@ export interface ScatterChartProps extends Omit<IChartBaseProps<IScatterChartCon
    *  - `label`: Label to display in tooltips. Falls back to the <code>accessor</code> if not present.
    *  - `formatter`: function will be called for each data label and allows you to format it according to your needs. Also addresses labels of axis.
    */
-  measures?: MeasureConfig[];
+  measures: [MeasureConfig, MeasureConfig, MeasureConfig, ...MeasureConfig[]];
 }
 
 const measureDefaults = {
@@ -128,6 +129,8 @@ const measureDefaults = {
  *
  * Most commonly, a scatter chart displays the values of three numeric variables,where each observation's data is
  * shown by a circle, while the horizontal and vertical positions of the bubble show the values of two other variables.
+ *
+ * __Note:__ Charts are custom-built __without__ defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.
  */
 const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) => {
   const {
@@ -314,7 +317,6 @@ const ScatterChart = forwardRef<HTMLDivElement, ScatterChartProps>((props, ref) 
             label={referenceLineX?.label}
           />
         )}
-        {/*ToDo: remove conditional rendering once `active` is working again (https://github.com/recharts/recharts/issues/2703)*/}
         {tooltipConfig?.active !== false && (
           <Tooltip
             cursor={tooltipFillOpacity}

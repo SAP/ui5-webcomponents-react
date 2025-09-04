@@ -356,6 +356,16 @@
   --_ui5wcr-ObjectStatus-inverted-vs-active-border-color: var(--sapButton_Information_Active_BorderColor);
 }
 
+/*deltas*/
+[data-sap-theme^='sap_fiori_3'] {
+  .objectStatus:is(.inverted.information) {
+    text-shadow: var(--sapContent_ContrastTextShadow);
+  }
+  .objectStatus:is(.inverted.none):hover {
+    text-shadow: var(--sapContent_ContrastTextShadow);
+  }
+}
+
 .objectStatus:is(.inverted.none) {
   text-shadow: var(--sapContent_TextShadow);
 
@@ -400,6 +410,13 @@
     [ui5-icon] {
       color: var(--_ui5wcr-ObjectStatus-inverted-vs-active-text-color);
     }
+  }
+}
+
+/* deltas */
+[data-sap-theme^='sap_fiori_3'] {
+  .objectStatus:is(.inverted):is(.negative, .critical, .positive, .information, .none):active {
+    text-shadow: var(--sapContent_ContrastTextShadow);
   }
 }
 

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.13.1...v2.13.2) (2025-08-29)
+
+### Bug Fixes
+
+- **ScatterChart - TypeScript:** fix `measures` type ([#7692](https://github.com/SAP/ui5-webcomponents-react/issues/7692)) ([79aac33](https://github.com/SAP/ui5-webcomponents-react/commit/79aac33460761debdb8ea72b5298b65bfb280127))
+
 ## [2.13.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.13.0...v2.13.1) (2025-08-14)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-charts

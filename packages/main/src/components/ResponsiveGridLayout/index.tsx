@@ -70,6 +70,9 @@ export interface ResponsiveGridLayoutPropTypes extends CommonProps {
  * With these controls, it is possible to achieve flexible layouts and line breaks for large, medium,
  * and small-sized screens, such as desktop, tablet, and mobile.
  *
+ * @deprecated there are no design concepts regarding this component outside a `Form`.
+ * As the `Form` is now a UI5 web component which implements wrapping behavior on its own, this component is not needed anymore and will be removed in the next major version.
+ *
  * @since 0.16.4
  */
 const ResponsiveGridLayout = forwardRef<HTMLDivElement, ResponsiveGridLayoutPropTypes>((props, ref) => {

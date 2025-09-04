@@ -165,6 +165,17 @@
   }
   /*UserSettingsDialog story - end*/
 
+  /* Badge styles */
+  .side-nav-badge {
+    font-size: var(--sapFontSmallSize);
+    margin-inline-start: 0.25rem;
+    padding-block-end: 0.3rem;
+    align-self: flex-end;
+  }
+  .side-nav-badge::part(root) {
+    padding-block: 0;
+  }
+
   /* TODO remove this workaround as soon as https://github.com/storybookjs/storybook/issues/20497 is fixed */
   .docs-story > div > div[scale] {
     min-height: 20px;

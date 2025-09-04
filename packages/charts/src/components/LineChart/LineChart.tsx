@@ -116,6 +116,8 @@ const measureDefaults = {
 
 /**
  * A `LineChart` is a type of chart used to show information that changes over time - it connects multiple dots.
+ *
+ * __Note:__ Charts are custom-built __without__ defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.
  */
 const LineChart = forwardRef<HTMLDivElement, LineChartProps>((props, ref) => {
   const {

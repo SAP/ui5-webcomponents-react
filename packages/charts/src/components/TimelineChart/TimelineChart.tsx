@@ -123,6 +123,8 @@ export interface TimelineChartProps extends CommonProps {
  * * Choose whether the timeline is discrete or continous.
  * * Show relationships between different items on the timeline using different
  * connections.
+ *
+ * __Note:__ Charts are custom-built __without__ defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.
  */
 const TimelineChart = forwardRef<HTMLDivElement, TimelineChartProps>(
   (

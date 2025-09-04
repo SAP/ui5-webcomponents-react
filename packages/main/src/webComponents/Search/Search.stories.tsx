@@ -15,7 +15,7 @@ const meta = {
     messageArea: { control: { disable: true } },
     action: { control: { disable: true } },
   },
-  tags: ['package:@ui5/webcomponents-fiori'],
+  tags: ['package:@ui5/webcomponents-fiori', 'experimental'],
 } satisfies Meta<typeof Search>;
 
 export default meta;

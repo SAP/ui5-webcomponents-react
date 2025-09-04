@@ -87,6 +87,8 @@ const tooltipItemDefaultStyle = { color: 'var (--sapTextColor)' };
  *
  * In other words, each slice of the pie is relative to the size of that category in the group as a whole.
  * The entire “pie” represents 100 percent of a whole, while the pie “slices” represent portions of the whole.
+ *
+ * __Note:__ Charts are custom-built __without__ defined design specifications! They use the Fiori color palette, but functionality and especially accessibility may not meet standard app requirements.
  */
 const PieChart = forwardRef<HTMLDivElement, PieChartProps>((props, ref) => {
   const {

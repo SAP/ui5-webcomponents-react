@@ -26,7 +26,7 @@ import type { AnalyticalTableCellInstance, AnalyticalTableColumnDefinition } fro
 const pluginsMeta = {
   ...meta,
   title: 'Data Display / AnalyticalTable / Plugin Hooks',
-  tags: ['excludeFromSidebar'],
+  tags: ['excludeFromSidebar', 'package:@ui5/webcomponents-react'],
 } satisfies Meta<typeof AnalyticalTable>;
 export default pluginsMeta;
 type Story = StoryObj<typeof pluginsMeta>;
