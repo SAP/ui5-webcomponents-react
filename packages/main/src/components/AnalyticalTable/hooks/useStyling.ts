@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
-import { AnalyticalTableSelectionBehavior, AnalyticalTableSelectionMode } from '../../../enums/index.js';
+import { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior.js';
+import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode.js';
 import type { ColumnType, ReactTableHooks, RowType, TableInstance } from '../types/index.js';
 import { getSubRowsByString, resolveCellAlignment } from '../util/index.js';
 

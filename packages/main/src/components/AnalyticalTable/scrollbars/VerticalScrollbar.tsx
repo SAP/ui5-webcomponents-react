@@ -2,7 +2,7 @@ import { ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MutableRefObject, RefObject } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
-import { FlexBoxDirection } from '../../../enums/index.js';
+import { FlexBoxDirection } from '../../../enums/FlexBoxDirection.js';
 import { FlexBox } from '../../FlexBox/index.js';
 import type { ClassNames } from '../types/index.js';
 

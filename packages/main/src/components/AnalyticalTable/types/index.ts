@@ -10,18 +10,16 @@ import type {
   RefObject,
   SetStateAction,
 } from 'react';
-import type {
-  AnalyticalTablePopinDisplay,
-  AnalyticalTableScaleWidthMode,
-  AnalyticalTableScrollMode,
-  AnalyticalTableSelectionBehavior,
-  AnalyticalTableSelectionMode,
-  AnalyticalTableSubComponentsBehavior,
-  AnalyticalTableVisibleRowCountMode,
-  IndicationColor,
-  TextAlign,
-  VerticalAlign,
-} from '../../../enums/index.js';
+import type { AnalyticalTablePopinDisplay } from '../../../enums/AnalyticalTablePopinDisplay.js';
+import type { AnalyticalTableScaleWidthMode } from '../../../enums/AnalyticalTableScaleWidthMode.js';
+import type { AnalyticalTableScrollMode } from '../../../enums/AnalyticalTableScrollMode.js';
+import type { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior.js';
+import type { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode.js';
+import type { AnalyticalTableSubComponentsBehavior } from '../../../enums/AnalyticalTableSubComponentsBehavior.js';
+import type { AnalyticalTableVisibleRowCountMode } from '../../../enums/AnalyticalTableVisibleRowCountMode.js';
+import type { IndicationColor } from '../../../enums/IndicationColor.js';
+import type { TextAlign } from '../../../enums/TextAlign.js';
+import type { VerticalAlign } from '../../../enums/VerticalAlign.js';
 import type { CommonProps } from '../../../types/index.js';
 import type { PopoverDomRef } from '../../../webComponents/Popover/index.js';
 import type { classNames } from '../AnalyticalTable.module.css.js';
@@ -91,6 +89,14 @@ export interface ColumnType extends Omit<AnalyticalTableColumnDefinition, 'id'> 
   [key: string]: any;
 }
 
+export interface CellType {
+  column: ColumnType;
+  row: RowType;
+  value: string | undefined;
+  getCellProps: (props?: any) => any;
+  [key: string]: any;
+}
+
 export interface TableInstance {
   allColumns?: ColumnType[];
   allColumnsHidden?: boolean;
@@ -103,7 +109,7 @@ export interface TableInstance {
   disableSortBy?: boolean;
   dispatch?: (action: {
     type: string;
-    payload?: Record<string, unknown> | AnalyticalTableState['popInColumns'] | boolean | string;
+    payload?: Record<string, unknown> | AnalyticalTableState['popInColumns'] | boolean | string | number;
     clientX?: number;
   }) => void;
   expandedDepth?: number;
@@ -249,6 +255,8 @@ export interface WCRPropertiesType {
   onFilter: AnalyticalTablePropTypes['onFilter'];
 }
 
+export type CellInstance = TableInstance & { cell: CellType } & Omit<CellType, 'getCellProps'>;
+
 export interface RowType {
   allCells: Record<string, any>[];
   canExpand: boolean;
@@ -319,6 +327,7 @@ export interface AnalyticalTableState {
   interactiveRowsHavePopIn?: boolean;
   tableColResized?: true;
   triggerScroll?: TriggerScrollState;
+  cellContentTabIndex?: number;
 }
 
 interface Filter {
@@ -328,7 +337,7 @@ interface Filter {
 
 interface CellLabelParam {
   instance: Record<string, any>;
-  cell: Record<string, any>;
+  cell: CellInstance;
 }
 
 interface ScaleWidthModeOptions {
@@ -419,7 +428,7 @@ export interface AnalyticalTableColumnDefinition {
   /**
    * Custom cell renderer. If set, the table will call that component for every cell and pass all required information as props, e.g. the cell value as `props.cell.value`
    */
-  Cell?: string | ComponentType<any> | ((props?: any) => ReactNode);
+  Cell?: string | ComponentType<CellInstance> | ((props?: CellInstance) => ReactNode);
   /**
    * Defines a function that receives an object as a parameter, including the cell and table instance, and should return the `aria-label` of the current cell.
    *
@@ -607,6 +616,17 @@ export interface AnalyticalTableColumnDefinition {
    * __Note:__ When sorting by a column that does not allow multiple sorting, only the current column is sorted and all other sorted columns are reset.
    */
   enableMultiSort?: boolean;
+
+  // useF2CellEdit
+  /**
+   * __Required when using the `useF2CellEdit` plugin hook.__ Without the hook, this property has no effect.
+   *
+   * Defines the name of interactive element(s) inside the cell.
+   * This property is used both to describe the cell's content for screen readers and to manage focus and keyboard navigation.
+   *
+   * @since 2.14.0
+   */
+  interactiveElementName?: string | ((cell: CellInstance) => string);
 
   // all other custom properties of [React Table v7](https://github.com/TanStack/table/blob/v7/docs/src/pages/docs/api/overview.md) column options
   [key: string]: any;

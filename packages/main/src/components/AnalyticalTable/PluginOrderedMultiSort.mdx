@@ -7,7 +7,7 @@ import * as ComponentStories from './AnalyticalTableHooks.stories';
 
 # AnalyticalTable Plugin: useOrderedMultiSort
 
-<ImportStatement moduleNames={['AnalyticalTableHooks']} packageName={'@ui5/webcomponents-react'} />
+<ImportStatement moduleName={'useOrderedMultiSort'} packageName={'@ui5/webcomponents-react/AnalyticalTableHooks'} />
 
 With the `useOrderedMultiSort` it's possible to define the sorting priority if multi-sort is enabled for the respective columns (`enableMultiSort: true`).
 
@@ -64,7 +64,7 @@ const data = [
   { name: 'Graham', age: 62, name2: 'Willis', age2: 26 }
 ];
 const orderedIds = ['name', 'name2', 'age', 'age2'];
-const tableHooks = [AnalyticalTableHooks.useOrderedMultiSort(orderedIds)]; // should be memoized
+const tableHooks = [useOrderedMultiSort(orderedIds)]; // should be memoized
 const TableComponent = () => {
   return (
     <AnalyticalTable

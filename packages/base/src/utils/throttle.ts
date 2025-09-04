@@ -12,6 +12,8 @@ interface Options {
 }
 
 /**
+ * ⚠️ __INTERNAL__ use only! This function is not part of the public API.
+ *
  * Returns a function, that, when invoked, will only be triggered at most once
  * during a given window of time. Normally, the throttled function will run
  * as much as it can, without ever going more than once per `wait` duration;

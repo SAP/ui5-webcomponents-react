@@ -7,7 +7,7 @@ import {
   simpleDataSet,
   tooltipConfig,
 } from '../../resources/DemoProps.js';
-import { LineChart } from './LineChart.js';
+import { LineChart } from './index.js';
 
 const meta = {
   title: 'LineChart',

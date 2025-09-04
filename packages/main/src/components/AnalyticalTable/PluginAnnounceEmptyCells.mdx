@@ -7,7 +7,7 @@ import * as ComponentStories from './AnalyticalTableHooks.stories';
 
 # AnalyticalTable Plugin: useAnnounceEmptyCells
 
-<ImportStatement moduleNames={['AnalyticalTableHooks']} packageName={'@ui5/webcomponents-react'} />
+<ImportStatement moduleName={'useAnnounceEmptyCells'} packageName={'@ui5/webcomponents-react/AnalyticalTableHooks'} />
 
 The `useAnnounceEmptyCells` plugin hook adds screen reader announcements for empty cells.
 
@@ -18,7 +18,7 @@ The `useAnnounceEmptyCells` plugin hook adds screen reader announcements for emp
 <Canvas sourceState="none" of={ComponentStories.PluginAnnounceEmptyCells} />
 
 ```jsx
-const tableHooks = [AnalyticalTableHooks.useAnnounceEmptyCells] // this array should be memoized
+const tableHooks = [useAnnounceEmptyCells] // this array should be memoized
 
 <AnalyticalTable
   data={data}

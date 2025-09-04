@@ -23,7 +23,735 @@
     "./dist/*": "./dist/*",
     "./dist/*.js": "./dist/*.js",
     "./wrappers/*": "./wrappers/*",
-    "./wrappers/*.js": "./wrappers/*.js"
+    "./wrappers/*.js": "./wrappers/*.js",
+    "./enums/*": {
+      "types": "./dist/enums/*.d.ts",
+      "default": "./dist/enums/*.js"
+    },
+    "./VersionInfo": {
+      "types": "./dist/generated/VersionInfo.d.ts",
+      "default": "./dist/generated/VersionInfo.js"
+    },
+    "./ActionSheet": {
+      "types": "./dist/components/ActionSheet/index.d.ts",
+      "default": "./dist/components/ActionSheet/index.js"
+    },
+    "./AnalyticalCardHeader": {
+      "types": "./dist/components/AnalyticalCardHeader/index.d.ts",
+      "default": "./dist/components/AnalyticalCardHeader/index.js"
+    },
+    "./AnalyticalTable": {
+      "types": "./dist/components/AnalyticalTable/index.d.ts",
+      "default": "./dist/components/AnalyticalTable/index.js"
+    },
+    "./AnalyticalTableHooks": {
+      "types": "./dist/components/AnalyticalTable/pluginHooks/AnalyticalTableHooks.d.ts",
+      "default": "./dist/components/AnalyticalTable/pluginHooks/AnalyticalTableHooks.js"
+    },
+    "./FilterBar": {
+      "types": "./dist/components/FilterBar/index.d.ts",
+      "default": "./dist/components/FilterBar/index.js"
+    },
+    "./FilterGroupItem": {
+      "types": "./dist/components/FilterGroupItem/index.d.ts",
+      "default": "./dist/components/FilterGroupItem/index.js"
+    },
+    "./FlexBox": {
+      "types": "./dist/components/FlexBox/index.d.ts",
+      "default": "./dist/components/FlexBox/index.js"
+    },
+    "./Grid": {
+      "types": "./dist/components/Grid/index.d.ts",
+      "default": "./dist/components/Grid/index.js"
+    },
+    "./MessageBox": {
+      "types": "./dist/components/MessageBox/index.d.ts",
+      "default": "./dist/components/MessageBox/index.js"
+    },
+    "./MessageView": {
+      "types": "./dist/components/MessageView/index.d.ts",
+      "default": "./dist/components/MessageView/index.js"
+    },
+    "./MessageItem": {
+      "types": "./dist/components/MessageView/MessageItem.d.ts",
+      "default": "./dist/components/MessageView/MessageItem.js"
+    },
+    "./MessageViewButton": {
+      "types": "./dist/components/MessageViewButton/index.d.ts",
+      "default": "./dist/components/MessageViewButton/index.js"
+    },
+    "./Modals": {
+      "types": "./dist/components/Modals/index.d.ts",
+      "default": "./dist/components/Modals/index.js"
+    },
+    "./NumericSideIndicator": {
+      "types": "./dist/components/NumericSideIndicator/index.d.ts",
+      "default": "./dist/components/NumericSideIndicator/index.js"
+    },
+    "./ObjectPage": {
+      "types": "./dist/components/ObjectPage/index.d.ts",
+      "default": "./dist/components/ObjectPage/index.js"
+    },
+    "./ObjectPageHeader": {
+      "types": "./dist/components/ObjectPageHeader/index.d.ts",
+      "default": "./dist/components/ObjectPageHeader/index.js"
+    },
+    "./ObjectPageSection": {
+      "types": "./dist/components/ObjectPageSection/index.d.ts",
+      "default": "./dist/components/ObjectPageSection/index.js"
+    },
+    "./ObjectPageSubSection": {
+      "types": "./dist/components/ObjectPageSubSection/index.d.ts",
+      "default": "./dist/components/ObjectPageSubSection/index.js"
+    },
+    "./ObjectPageTitle": {
+      "types": "./dist/components/ObjectPageTitle/index.d.ts",
+      "default": "./dist/components/ObjectPageTitle/index.js"
+    },
+    "./ObjectStatus": {
+      "types": "./dist/components/ObjectStatus/index.d.ts",
+      "default": "./dist/components/ObjectStatus/index.js"
+    },
+    "./ResponsiveGridLayout": {
+      "types": "./dist/components/ResponsiveGridLayout/index.d.ts",
+      "default": "./dist/components/ResponsiveGridLayout/index.js"
+    },
+    "./SelectDialog": {
+      "types": "./dist/components/SelectDialog/index.d.ts",
+      "default": "./dist/components/SelectDialog/index.js"
+    },
+    "./SplitterElement": {
+      "types": "./dist/components/SplitterElement/index.d.ts",
+      "default": "./dist/components/SplitterElement/index.js"
+    },
+    "./SplitterLayout": {
+      "types": "./dist/components/SplitterLayout/index.d.ts",
+      "default": "./dist/components/SplitterLayout/index.js"
+    },
+    "./ThemeProvider": {
+      "types": "./dist/components/ThemeProvider/index.d.ts",
+      "default": "./dist/components/ThemeProvider/index.js"
+    },
+    "./VariantManagement": {
+      "types": "./dist/components/VariantManagement/index.d.ts",
+      "default": "./dist/components/VariantManagement/index.js"
+    },
+    "./VariantItem": {
+      "types": "./dist/components/VariantManagement/VariantItem.d.ts",
+      "default": "./dist/components/VariantManagement/VariantItem.js"
+    },
+    "./Avatar": {
+      "types": "./dist/webComponents/Avatar/index.d.ts",
+      "default": "./dist/webComponents/Avatar/index.js"
+    },
+    "./AvatarGroup": {
+      "types": "./dist/webComponents/AvatarGroup/index.d.ts",
+      "default": "./dist/webComponents/AvatarGroup/index.js"
+    },
+    "./Bar": {
+      "types": "./dist/webComponents/Bar/index.d.ts",
+      "default": "./dist/webComponents/Bar/index.js"
+    },
+    "./BarcodeScannerDialog": {
+      "types": "./dist/webComponents/BarcodeScannerDialog/index.d.ts",
+      "default": "./dist/webComponents/BarcodeScannerDialog/index.js"
+    },
+    "./Breadcrumbs": {
+      "types": "./dist/webComponents/Breadcrumbs/index.d.ts",
+      "default": "./dist/webComponents/Breadcrumbs/index.js"
+    },
+    "./BreadcrumbsItem": {
+      "types": "./dist/webComponents/BreadcrumbsItem/index.d.ts",
+      "default": "./dist/webComponents/BreadcrumbsItem/index.js"
+    },
+    "./BusyIndicator": {
+      "types": "./dist/webComponents/BusyIndicator/index.d.ts",
+      "default": "./dist/webComponents/BusyIndicator/index.js"
+    },
+    "./Button": {
+      "types": "./dist/webComponents/Button/index.d.ts",
+      "default": "./dist/webComponents/Button/index.js"
+    },
+    "./ButtonBadge": {
+      "types": "./dist/webComponents/ButtonBadge/index.d.ts",
+      "default": "./dist/webComponents/ButtonBadge/index.js"
+    },
+    "./Calendar": {
+      "types": "./dist/webComponents/Calendar/index.d.ts",
+      "default": "./dist/webComponents/Calendar/index.js"
+    },
+    "./CalendarDate": {
+      "types": "./dist/webComponents/CalendarDate/index.d.ts",
+      "default": "./dist/webComponents/CalendarDate/index.js"
+    },
+    "./CalendarDateRange": {
+      "types": "./dist/webComponents/CalendarDateRange/index.d.ts",
+      "default": "./dist/webComponents/CalendarDateRange/index.js"
+    },
+    "./CalendarLegend": {
+      "types": "./dist/webComponents/CalendarLegend/index.d.ts",
+      "default": "./dist/webComponents/CalendarLegend/index.js"
+    },
+    "./CalendarLegendItem": {
+      "types": "./dist/webComponents/CalendarLegendItem/index.d.ts",
+      "default": "./dist/webComponents/CalendarLegendItem/index.js"
+    },
+    "./Card": {
+      "types": "./dist/webComponents/Card/index.d.ts",
+      "default": "./dist/webComponents/Card/index.js"
+    },
+    "./CardHeader": {
+      "types": "./dist/webComponents/CardHeader/index.d.ts",
+      "default": "./dist/webComponents/CardHeader/index.js"
+    },
+    "./Carousel": {
+      "types": "./dist/webComponents/Carousel/index.d.ts",
+      "default": "./dist/webComponents/Carousel/index.js"
+    },
+    "./CheckBox": {
+      "types": "./dist/webComponents/CheckBox/index.d.ts",
+      "default": "./dist/webComponents/CheckBox/index.js"
+    },
+    "./ColorPalette": {
+      "types": "./dist/webComponents/ColorPalette/index.d.ts",
+      "default": "./dist/webComponents/ColorPalette/index.js"
+    },
+    "./ColorPaletteItem": {
+      "types": "./dist/webComponents/ColorPaletteItem/index.d.ts",
+      "default": "./dist/webComponents/ColorPaletteItem/index.js"
+    },
+    "./ColorPalettePopover": {
+      "types": "./dist/webComponents/ColorPalettePopover/index.d.ts",
+      "default": "./dist/webComponents/ColorPalettePopover/index.js"
+    },
+    "./ColorPicker": {
+      "types": "./dist/webComponents/ColorPicker/index.d.ts",
+      "default": "./dist/webComponents/ColorPicker/index.js"
+    },
+    "./ComboBox": {
+      "types": "./dist/webComponents/ComboBox/index.d.ts",
+      "default": "./dist/webComponents/ComboBox/index.js"
+    },
+    "./ComboBoxItem": {
+      "types": "./dist/webComponents/ComboBoxItem/index.d.ts",
+      "default": "./dist/webComponents/ComboBoxItem/index.js"
+    },
+    "./ComboBoxItemGroup": {
+      "types": "./dist/webComponents/ComboBoxItemGroup/index.d.ts",
+      "default": "./dist/webComponents/ComboBoxItemGroup/index.js"
+    },
+    "./DatePicker": {
+      "types": "./dist/webComponents/DatePicker/index.d.ts",
+      "default": "./dist/webComponents/DatePicker/index.js"
+    },
+    "./DateRangePicker": {
+      "types": "./dist/webComponents/DateRangePicker/index.d.ts",
+      "default": "./dist/webComponents/DateRangePicker/index.js"
+    },
+    "./DateTimePicker": {
+      "types": "./dist/webComponents/DateTimePicker/index.d.ts",
+      "default": "./dist/webComponents/DateTimePicker/index.js"
+    },
+    "./Dialog": {
+      "types": "./dist/webComponents/Dialog/index.d.ts",
+      "default": "./dist/webComponents/Dialog/index.js"
+    },
+    "./DynamicDateRange": {
+      "types": "./dist/webComponents/DynamicDateRange/index.d.ts",
+      "default": "./dist/webComponents/DynamicDateRange/index.js"
+    },
+    "./DynamicPage": {
+      "types": "./dist/webComponents/DynamicPage/index.d.ts",
+      "default": "./dist/webComponents/DynamicPage/index.js"
+    },
+    "./DynamicPageHeader": {
+      "types": "./dist/webComponents/DynamicPageHeader/index.d.ts",
+      "default": "./dist/webComponents/DynamicPageHeader/index.js"
+    },
+    "./DynamicPageTitle": {
+      "types": "./dist/webComponents/DynamicPageTitle/index.d.ts",
+      "default": "./dist/webComponents/DynamicPageTitle/index.js"
+    },
+    "./DynamicSideContent": {
+      "types": "./dist/webComponents/DynamicSideContent/index.d.ts",
+      "default": "./dist/webComponents/DynamicSideContent/index.js"
+    },
+    "./ExpandableText": {
+      "types": "./dist/webComponents/ExpandableText/index.d.ts",
+      "default": "./dist/webComponents/ExpandableText/index.js"
+    },
+    "./FileUploader": {
+      "types": "./dist/webComponents/FileUploader/index.d.ts",
+      "default": "./dist/webComponents/FileUploader/index.js"
+    },
+    "./FilterItem": {
+      "types": "./dist/webComponents/FilterItem/index.d.ts",
+      "default": "./dist/webComponents/FilterItem/index.js"
+    },
+    "./FilterItemOption": {
+      "types": "./dist/webComponents/FilterItemOption/index.d.ts",
+      "default": "./dist/webComponents/FilterItemOption/index.js"
+    },
+    "./FlexibleColumnLayout": {
+      "types": "./dist/webComponents/FlexibleColumnLayout/index.d.ts",
+      "default": "./dist/webComponents/FlexibleColumnLayout/index.js"
+    },
+    "./Form": {
+      "types": "./dist/webComponents/Form/index.d.ts",
+      "default": "./dist/webComponents/Form/index.js"
+    },
+    "./FormGroup": {
+      "types": "./dist/webComponents/FormGroup/index.d.ts",
+      "default": "./dist/webComponents/FormGroup/index.js"
+    },
+    "./FormItem": {
+      "types": "./dist/webComponents/FormItem/index.d.ts",
+      "default": "./dist/webComponents/FormItem/index.js"
+    },
+    "./Icon": {
+      "types": "./dist/webComponents/Icon/index.d.ts",
+      "default": "./dist/webComponents/Icon/index.js"
+    },
+    "./IllustratedMessage": {
+      "types": "./dist/webComponents/IllustratedMessage/index.d.ts",
+      "default": "./dist/webComponents/IllustratedMessage/index.js"
+    },
+    "./Input": {
+      "types": "./dist/webComponents/Input/index.d.ts",
+      "default": "./dist/webComponents/Input/index.js"
+    },
+    "./Label": {
+      "types": "./dist/webComponents/Label/index.d.ts",
+      "default": "./dist/webComponents/Label/index.js"
+    },
+    "./Link": {
+      "types": "./dist/webComponents/Link/index.d.ts",
+      "default": "./dist/webComponents/Link/index.js"
+    },
+    "./List": {
+      "types": "./dist/webComponents/List/index.d.ts",
+      "default": "./dist/webComponents/List/index.js"
+    },
+    "./ListItemCustom": {
+      "types": "./dist/webComponents/ListItemCustom/index.d.ts",
+      "default": "./dist/webComponents/ListItemCustom/index.js"
+    },
+    "./ListItemGroup": {
+      "types": "./dist/webComponents/ListItemGroup/index.d.ts",
+      "default": "./dist/webComponents/ListItemGroup/index.js"
+    },
+    "./ListItemStandard": {
+      "types": "./dist/webComponents/ListItemStandard/index.d.ts",
+      "default": "./dist/webComponents/ListItemStandard/index.js"
+    },
+    "./MediaGallery": {
+      "types": "./dist/webComponents/MediaGallery/index.d.ts",
+      "default": "./dist/webComponents/MediaGallery/index.js"
+    },
+    "./MediaGalleryItem": {
+      "types": "./dist/webComponents/MediaGalleryItem/index.d.ts",
+      "default": "./dist/webComponents/MediaGalleryItem/index.js"
+    },
+    "./Menu": {
+      "types": "./dist/webComponents/Menu/index.d.ts",
+      "default": "./dist/webComponents/Menu/index.js"
+    },
+    "./MenuItem": {
+      "types": "./dist/webComponents/MenuItem/index.d.ts",
+      "default": "./dist/webComponents/MenuItem/index.js"
+    },
+    "./MenuItemGroup": {
+      "types": "./dist/webComponents/MenuItemGroup/index.d.ts",
+      "default": "./dist/webComponents/MenuItemGroup/index.js"
+    },
+    "./MenuSeparator": {
+      "types": "./dist/webComponents/MenuSeparator/index.d.ts",
+      "default": "./dist/webComponents/MenuSeparator/index.js"
+    },
+    "./MessageStrip": {
+      "types": "./dist/webComponents/MessageStrip/index.d.ts",
+      "default": "./dist/webComponents/MessageStrip/index.js"
+    },
+    "./MultiComboBox": {
+      "types": "./dist/webComponents/MultiComboBox/index.d.ts",
+      "default": "./dist/webComponents/MultiComboBox/index.js"
+    },
+    "./MultiComboBoxItem": {
+      "types": "./dist/webComponents/MultiComboBoxItem/index.d.ts",
+      "default": "./dist/webComponents/MultiComboBoxItem/index.js"
+    },
+    "./MultiComboBoxItemGroup": {
+      "types": "./dist/webComponents/MultiComboBoxItemGroup/index.d.ts",
+      "default": "./dist/webComponents/MultiComboBoxItemGroup/index.js"
+    },
+    "./MultiInput": {
+      "types": "./dist/webComponents/MultiInput/index.d.ts",
+      "default": "./dist/webComponents/MultiInput/index.js"
+    },
+    "./NavigationLayout": {
+      "types": "./dist/webComponents/NavigationLayout/index.d.ts",
+      "default": "./dist/webComponents/NavigationLayout/index.js"
+    },
+    "./NotificationList": {
+      "types": "./dist/webComponents/NotificationList/index.d.ts",
+      "default": "./dist/webComponents/NotificationList/index.js"
+    },
+    "./NotificationListGroupItem": {
+      "types": "./dist/webComponents/NotificationListGroupItem/index.d.ts",
+      "default": "./dist/webComponents/NotificationListGroupItem/index.js"
+    },
+    "./NotificationListItem": {
+      "types": "./dist/webComponents/NotificationListItem/index.d.ts",
+      "default": "./dist/webComponents/NotificationListItem/index.js"
+    },
+    "./Option": {
+      "types": "./dist/webComponents/Option/index.d.ts",
+      "default": "./dist/webComponents/Option/index.js"
+    },
+    "./OptionCustom": {
+      "types": "./dist/webComponents/OptionCustom/index.d.ts",
+      "default": "./dist/webComponents/OptionCustom/index.js"
+    },
+    "./Page": {
+      "types": "./dist/webComponents/Page/index.d.ts",
+      "default": "./dist/webComponents/Page/index.js"
+    },
+    "./Panel": {
+      "types": "./dist/webComponents/Panel/index.d.ts",
+      "default": "./dist/webComponents/Panel/index.js"
+    },
+    "./Popover": {
+      "types": "./dist/webComponents/Popover/index.d.ts",
+      "default": "./dist/webComponents/Popover/index.js"
+    },
+    "./ProductSwitch": {
+      "types": "./dist/webComponents/ProductSwitch/index.d.ts",
+      "default": "./dist/webComponents/ProductSwitch/index.js"
+    },
+    "./ProductSwitchItem": {
+      "types": "./dist/webComponents/ProductSwitchItem/index.d.ts",
+      "default": "./dist/webComponents/ProductSwitchItem/index.js"
+    },
+    "./ProgressIndicator": {
+      "types": "./dist/webComponents/ProgressIndicator/index.d.ts",
+      "default": "./dist/webComponents/ProgressIndicator/index.js"
+    },
+    "./RadioButton": {
+      "types": "./dist/webComponents/RadioButton/index.d.ts",
+      "default": "./dist/webComponents/RadioButton/index.js"
+    },
+    "./RangeSlider": {
+      "types": "./dist/webComponents/RangeSlider/index.d.ts",
+      "default": "./dist/webComponents/RangeSlider/index.js"
+    },
+    "./RatingIndicator": {
+      "types": "./dist/webComponents/RatingIndicator/index.d.ts",
+      "default": "./dist/webComponents/RatingIndicator/index.js"
+    },
+    "./ResponsivePopover": {
+      "types": "./dist/webComponents/ResponsivePopover/index.d.ts",
+      "default": "./dist/webComponents/ResponsivePopover/index.js"
+    },
+    "./Search": {
+      "types": "./dist/webComponents/Search/index.d.ts",
+      "default": "./dist/webComponents/Search/index.js"
+    },
+    "./SearchItem": {
+      "types": "./dist/webComponents/SearchItem/index.d.ts",
+      "default": "./dist/webComponents/SearchItem/index.js"
+    },
+    "./SearchItemGroup": {
+      "types": "./dist/webComponents/SearchItemGroup/index.d.ts",
+      "default": "./dist/webComponents/SearchItemGroup/index.js"
+    },
+    "./SearchMessageArea": {
+      "types": "./dist/webComponents/SearchMessageArea/index.d.ts",
+      "default": "./dist/webComponents/SearchMessageArea/index.js"
+    },
+    "./SearchScope": {
+      "types": "./dist/webComponents/SearchScope/index.d.ts",
+      "default": "./dist/webComponents/SearchScope/index.js"
+    },
+    "./SegmentedButton": {
+      "types": "./dist/webComponents/SegmentedButton/index.d.ts",
+      "default": "./dist/webComponents/SegmentedButton/index.js"
+    },
+    "./SegmentedButtonItem": {
+      "types": "./dist/webComponents/SegmentedButtonItem/index.d.ts",
+      "default": "./dist/webComponents/SegmentedButtonItem/index.js"
+    },
+    "./Select": {
+      "types": "./dist/webComponents/Select/index.d.ts",
+      "default": "./dist/webComponents/Select/index.js"
+    },
+    "./ShellBar": {
+      "types": "./dist/webComponents/ShellBar/index.d.ts",
+      "default": "./dist/webComponents/ShellBar/index.js"
+    },
+    "./ShellBarBranding": {
+      "types": "./dist/webComponents/ShellBarBranding/index.d.ts",
+      "default": "./dist/webComponents/ShellBarBranding/index.js"
+    },
+    "./ShellBarItem": {
+      "types": "./dist/webComponents/ShellBarItem/index.d.ts",
+      "default": "./dist/webComponents/ShellBarItem/index.js"
+    },
+    "./ShellBarSearch": {
+      "types": "./dist/webComponents/ShellBarSearch/index.d.ts",
+      "default": "./dist/webComponents/ShellBarSearch/index.js"
+    },
+    "./ShellBarSpacer": {
+      "types": "./dist/webComponents/ShellBarSpacer/index.d.ts",
+      "default": "./dist/webComponents/ShellBarSpacer/index.js"
+    },
+    "./SideNavigation": {
+      "types": "./dist/webComponents/SideNavigation/index.d.ts",
+      "default": "./dist/webComponents/SideNavigation/index.js"
+    },
+    "./SideNavigationGroup": {
+      "types": "./dist/webComponents/SideNavigationGroup/index.d.ts",
+      "default": "./dist/webComponents/SideNavigationGroup/index.js"
+    },
+    "./SideNavigationItem": {
+      "types": "./dist/webComponents/SideNavigationItem/index.d.ts",
+      "default": "./dist/webComponents/SideNavigationItem/index.js"
+    },
+    "./SideNavigationSubItem": {
+      "types": "./dist/webComponents/SideNavigationSubItem/index.d.ts",
+      "default": "./dist/webComponents/SideNavigationSubItem/index.js"
+    },
+    "./Slider": {
+      "types": "./dist/webComponents/Slider/index.d.ts",
+      "default": "./dist/webComponents/Slider/index.js"
+    },
+    "./SortItem": {
+      "types": "./dist/webComponents/SortItem/index.d.ts",
+      "default": "./dist/webComponents/SortItem/index.js"
+    },
+    "./SpecialCalendarDate": {
+      "types": "./dist/webComponents/SpecialCalendarDate/index.d.ts",
+      "default": "./dist/webComponents/SpecialCalendarDate/index.js"
+    },
+    "./SplitButton": {
+      "types": "./dist/webComponents/SplitButton/index.d.ts",
+      "default": "./dist/webComponents/SplitButton/index.js"
+    },
+    "./StepInput": {
+      "types": "./dist/webComponents/StepInput/index.d.ts",
+      "default": "./dist/webComponents/StepInput/index.js"
+    },
+    "./SuggestionItem": {
+      "types": "./dist/webComponents/SuggestionItem/index.d.ts",
+      "default": "./dist/webComponents/SuggestionItem/index.js"
+    },
+    "./SuggestionItemCustom": {
+      "types": "./dist/webComponents/SuggestionItemCustom/index.d.ts",
+      "default": "./dist/webComponents/SuggestionItemCustom/index.js"
+    },
+    "./SuggestionItemGroup": {
+      "types": "./dist/webComponents/SuggestionItemGroup/index.d.ts",
+      "default": "./dist/webComponents/SuggestionItemGroup/index.js"
+    },
+    "./Switch": {
+      "types": "./dist/webComponents/Switch/index.d.ts",
+      "default": "./dist/webComponents/Switch/index.js"
+    },
+    "./Tab": {
+      "types": "./dist/webComponents/Tab/index.d.ts",
+      "default": "./dist/webComponents/Tab/index.js"
+    },
+    "./TabContainer": {
+      "types": "./dist/webComponents/TabContainer/index.d.ts",
+      "default": "./dist/webComponents/TabContainer/index.js"
+    },
+    "./TabSeparator": {
+      "types": "./dist/webComponents/TabSeparator/index.d.ts",
+      "default": "./dist/webComponents/TabSeparator/index.js"
+    },
+    "./Table": {
+      "types": "./dist/webComponents/Table/index.d.ts",
+      "default": "./dist/webComponents/Table/index.js"
+    },
+    "./TableCell": {
+      "types": "./dist/webComponents/TableCell/index.d.ts",
+      "default": "./dist/webComponents/TableCell/index.js"
+    },
+    "./TableGrowing": {
+      "types": "./dist/webComponents/TableGrowing/index.d.ts",
+      "default": "./dist/webComponents/TableGrowing/index.js"
+    },
+    "./TableHeaderCell": {
+      "types": "./dist/webComponents/TableHeaderCell/index.d.ts",
+      "default": "./dist/webComponents/TableHeaderCell/index.js"
+    },
+    "./TableHeaderCellActionAI": {
+      "types": "./dist/webComponents/TableHeaderCellActionAI/index.d.ts",
+      "default": "./dist/webComponents/TableHeaderCellActionAI/index.js"
+    },
+    "./TableHeaderRow": {
+      "types": "./dist/webComponents/TableHeaderRow/index.d.ts",
+      "default": "./dist/webComponents/TableHeaderRow/index.js"
+    },
+    "./TableRow": {
+      "types": "./dist/webComponents/TableRow/index.d.ts",
+      "default": "./dist/webComponents/TableRow/index.js"
+    },
+    "./TableRowAction": {
+      "types": "./dist/webComponents/TableRowAction/index.d.ts",
+      "default": "./dist/webComponents/TableRowAction/index.js"
+    },
+    "./TableRowActionNavigation": {
+      "types": "./dist/webComponents/TableRowActionNavigation/index.d.ts",
+      "default": "./dist/webComponents/TableRowActionNavigation/index.js"
+    },
+    "./TableSelection": {
+      "types": "./dist/webComponents/TableSelection/index.d.ts",
+      "default": "./dist/webComponents/TableSelection/index.js"
+    },
+    "./TableSelectionMulti": {
+      "types": "./dist/webComponents/TableSelectionMulti/index.d.ts",
+      "default": "./dist/webComponents/TableSelectionMulti/index.js"
+    },
+    "./TableSelectionSingle": {
+      "types": "./dist/webComponents/TableSelectionSingle/index.d.ts",
+      "default": "./dist/webComponents/TableSelectionSingle/index.js"
+    },
+    "./TableVirtualizer": {
+      "types": "./dist/webComponents/TableVirtualizer/index.d.ts",
+      "default": "./dist/webComponents/TableVirtualizer/index.js"
+    },
+    "./Tag": {
+      "types": "./dist/webComponents/Tag/index.d.ts",
+      "default": "./dist/webComponents/Tag/index.js"
+    },
+    "./Text": {
+      "types": "./dist/webComponents/Text/index.d.ts",
+      "default": "./dist/webComponents/Text/index.js"
+    },
+    "./TextArea": {
+      "types": "./dist/webComponents/TextArea/index.d.ts",
+      "default": "./dist/webComponents/TextArea/index.js"
+    },
+    "./TimePicker": {
+      "types": "./dist/webComponents/TimePicker/index.d.ts",
+      "default": "./dist/webComponents/TimePicker/index.js"
+    },
+    "./Timeline": {
+      "types": "./dist/webComponents/Timeline/index.d.ts",
+      "default": "./dist/webComponents/Timeline/index.js"
+    },
+    "./TimelineGroupItem": {
+      "types": "./dist/webComponents/TimelineGroupItem/index.d.ts",
+      "default": "./dist/webComponents/TimelineGroupItem/index.js"
+    },
+    "./TimelineItem": {
+      "types": "./dist/webComponents/TimelineItem/index.d.ts",
+      "default": "./dist/webComponents/TimelineItem/index.js"
+    },
+    "./Title": {
+      "types": "./dist/webComponents/Title/index.d.ts",
+      "default": "./dist/webComponents/Title/index.js"
+    },
+    "./Toast": {
+      "types": "./dist/webComponents/Toast/index.d.ts",
+      "default": "./dist/webComponents/Toast/index.js"
+    },
+    "./ToggleButton": {
+      "types": "./dist/webComponents/ToggleButton/index.d.ts",
+      "default": "./dist/webComponents/ToggleButton/index.js"
+    },
+    "./Token": {
+      "types": "./dist/webComponents/Token/index.d.ts",
+      "default": "./dist/webComponents/Token/index.js"
+    },
+    "./Tokenizer": {
+      "types": "./dist/webComponents/Tokenizer/index.d.ts",
+      "default": "./dist/webComponents/Tokenizer/index.js"
+    },
+    "./Toolbar": {
+      "types": "./dist/webComponents/Toolbar/index.d.ts",
+      "default": "./dist/webComponents/Toolbar/index.js"
+    },
+    "./ToolbarButton": {
+      "types": "./dist/webComponents/ToolbarButton/index.d.ts",
+      "default": "./dist/webComponents/ToolbarButton/index.js"
+    },
+    "./ToolbarSelect": {
+      "types": "./dist/webComponents/ToolbarSelect/index.d.ts",
+      "default": "./dist/webComponents/ToolbarSelect/index.js"
+    },
+    "./ToolbarSelectOption": {
+      "types": "./dist/webComponents/ToolbarSelectOption/index.d.ts",
+      "default": "./dist/webComponents/ToolbarSelectOption/index.js"
+    },
+    "./ToolbarSeparator": {
+      "types": "./dist/webComponents/ToolbarSeparator/index.d.ts",
+      "default": "./dist/webComponents/ToolbarSeparator/index.js"
+    },
+    "./ToolbarSpacer": {
+      "types": "./dist/webComponents/ToolbarSpacer/index.d.ts",
+      "default": "./dist/webComponents/ToolbarSpacer/index.js"
+    },
+    "./Tree": {
+      "types": "./dist/webComponents/Tree/index.d.ts",
+      "default": "./dist/webComponents/Tree/index.js"
+    },
+    "./TreeItem": {
+      "types": "./dist/webComponents/TreeItem/index.d.ts",
+      "default": "./dist/webComponents/TreeItem/index.js"
+    },
+    "./TreeItemCustom": {
+      "types": "./dist/webComponents/TreeItemCustom/index.d.ts",
+      "default": "./dist/webComponents/TreeItemCustom/index.js"
+    },
+    "./UploadCollection": {
+      "types": "./dist/webComponents/UploadCollection/index.d.ts",
+      "default": "./dist/webComponents/UploadCollection/index.js"
+    },
+    "./UploadCollectionItem": {
+      "types": "./dist/webComponents/UploadCollectionItem/index.d.ts",
+      "default": "./dist/webComponents/UploadCollectionItem/index.js"
+    },
+    "./UserMenu": {
+      "types": "./dist/webComponents/UserMenu/index.d.ts",
+      "default": "./dist/webComponents/UserMenu/index.js"
+    },
+    "./UserMenuAccount": {
+      "types": "./dist/webComponents/UserMenuAccount/index.d.ts",
+      "default": "./dist/webComponents/UserMenuAccount/index.js"
+    },
+    "./UserMenuItem": {
+      "types": "./dist/webComponents/UserMenuItem/index.d.ts",
+      "default": "./dist/webComponents/UserMenuItem/index.js"
+    },
+    "./UserMenuItemGroup": {
+      "types": "./dist/webComponents/UserMenuItemGroup/index.d.ts",
+      "default": "./dist/webComponents/UserMenuItemGroup/index.js"
+    },
+    "./UserSettingsDialog": {
+      "types": "./dist/webComponents/UserSettingsDialog/index.d.ts",
+      "default": "./dist/webComponents/UserSettingsDialog/index.js"
+    },
+    "./UserSettingsItem": {
+      "types": "./dist/webComponents/UserSettingsItem/index.d.ts",
+      "default": "./dist/webComponents/UserSettingsItem/index.js"
+    },
+    "./UserSettingsView": {
+      "types": "./dist/webComponents/UserSettingsView/index.d.ts",
+      "default": "./dist/webComponents/UserSettingsView/index.js"
+    },
+    "./ViewSettingsDialog": {
+      "types": "./dist/webComponents/ViewSettingsDialog/index.d.ts",
+      "default": "./dist/webComponents/ViewSettingsDialog/index.js"
+    },
+    "./Wizard": {
+      "types": "./dist/webComponents/Wizard/index.d.ts",
+      "default": "./dist/webComponents/Wizard/index.js"
+    },
+    "./WizardStep": {
+      "types": "./dist/webComponents/WizardStep/index.d.ts",
+      "default": "./dist/webComponents/WizardStep/index.js"
+    }
   },
   "homepage": "https://sap.github.io/ui5-webcomponents-react",
   "repository": {

@@ -1,5 +1,5 @@
 import { complexDataSet } from '../../resources/DemoProps.js';
-import { BulletChart } from './BulletChart.js';
+import { BulletChart } from './index.js';
 import { cypressPassThroughTestsFactory, testChartLegendConfig, testChartZoomingTool } from '@/cypress/support/utils';
 
 const dimensions = [

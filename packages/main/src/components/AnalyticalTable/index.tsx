@@ -24,14 +24,12 @@ import {
   useSortBy,
   useTable,
 } from 'react-table';
-import {
-  AnalyticalTablePopinDisplay,
-  AnalyticalTableScaleWidthMode,
-  AnalyticalTableSelectionBehavior,
-  AnalyticalTableSelectionMode,
-  AnalyticalTableSubComponentsBehavior,
-  AnalyticalTableVisibleRowCountMode,
-} from '../../enums/index.js';
+import { AnalyticalTablePopinDisplay } from '../../enums/AnalyticalTablePopinDisplay.js';
+import { AnalyticalTableScaleWidthMode } from '../../enums/AnalyticalTableScaleWidthMode.js';
+import { AnalyticalTableSelectionBehavior } from '../../enums/AnalyticalTableSelectionBehavior.js';
+import { AnalyticalTableSelectionMode } from '../../enums/AnalyticalTableSelectionMode.js';
+import { AnalyticalTableSubComponentsBehavior } from '../../enums/AnalyticalTableSubComponentsBehavior.js';
+import { AnalyticalTableVisibleRowCountMode } from '../../enums/AnalyticalTableVisibleRowCountMode.js';
 import {
   COLLAPSE_NODE,
   COLLAPSE_PRESS_SPACE,
@@ -89,6 +87,7 @@ import type {
   AnalyticalTableState,
   DivWithCustomScrollProp,
   TableInstance,
+  CellInstance,
 } from './types/index.js';
 import { getRowHeight, getSubRowsByString, tagNamesWhichShouldNotSelectARow } from './util/index.js';
 import { VerticalResizer } from './VerticalResizer.js';
@@ -109,14 +108,15 @@ const measureElement = (el: HTMLElement) => {
  * __Note:__ The `AnalyticalTable` has some limitations and includes features that do not have a defined design specification.
  * To follow UXC guidelines, please refer to the table below:
  *
- *| Function / Feature                 | Reason                                                                                                                        |
- *|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
- *| No sticky columns/rows             | Not supported due to technical limitations.                                                                                   |
- *| Pop-in behavior                    | The `sap.ui.table` doesn’t support pop-in behavior (unlike `sap.m.Table`); it’s unclear whether this should be part of the design. |
- *| `visibleRowCountMode: "Auto"`      | `"AutoWithEmptyRows"` is preferred. `"Auto"` mode can lead to inconsistent table heights depending on the container.          |
- *| `alwaysShowBusyIndicator`          | Should generally be `true`, only if loading times are over 1 second, the default skeleton loading indicator is sufficient: [Fiori Skeleton Loading](https://www.sap.com/design-system/fiori-design-ios/ui-elements/patterns/skeleton-loading/?external). |
- *| `scaleWidthMode`                   | Only the default mode is available out of the box for the `sap.m.Table`; similar behavior to the `"Grow"` mode can be achieved in `sap.ui.table` using `autoResizeColumn`.|
- *| `renderRowSubComponent`            | There is no design concept regarding this functionality.                                                                      |
+ *| Function / Feature                    | Reason                                                                                                                                                                                                                                                   |
+ *|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+ *| No sticky columns/rows                | Not supported due to technical limitations.                                                                                                                                                                                                              |
+ *| Pop-in behavior                       | The `sap.ui.table` doesn’t support pop-in behavior (unlike `sap.m.Table`); it’s unclear whether this should be part of the design.                                                                                                                       |
+ *| `visibleRowCountMode: "Auto"`         | `"AutoWithEmptyRows"` is preferred. `"Auto"` mode can lead to inconsistent table heights depending on the container.                                                                                                                                     |
+ *| `alwaysShowBusyIndicator`             | Should generally be `true`, only if loading times are over 1 second, the default skeleton loading indicator is sufficient: [Fiori Skeleton Loading](https://www.sap.com/design-system/fiori-design-ios/ui-elements/patterns/skeleton-loading/?external). |
+ *| `scaleWidthMode`                      | Only the default mode is available out of the box for the `sap.m.Table`; similar behavior to the `"Grow"` mode can be achieved in `sap.ui.table` using `autoResizeColumn`.                                                                               |
+ *| `renderRowSubComponent`               | There is no design concept regarding this functionality.                                                                                                                                                                                                 |
+ *| `useRowDisableSelection` (deprecated) | Table rows should not be disabled.                                                                                                                                                                                                                       |
  */
 const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTypes>((props, ref) => {
   const {
@@ -944,4 +944,6 @@ export type {
   AnalyticalTableDomRef,
   AnalyticalTablePropTypes,
   DivWithCustomScrollProp,
+  TableInstance as AnalyticalTableInstance,
+  CellInstance as AnalyticalTableCellInstance,
 };

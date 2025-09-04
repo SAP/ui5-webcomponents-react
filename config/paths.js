@@ -12,6 +12,13 @@ const PATHS = {
   temp: path.join(root, 'temp'),
   nodeModules: path.join(root, 'node_modules'),
   packages: path.join(root, 'packages'),
+  ai: path.join(root, 'packages', 'ai'),
+  base: path.join(root, 'packages', 'base'),
+  charts: path.join(root, 'packages', 'charts'),
+  cli: path.join(root, 'packages', 'cli'),
+  compat: path.join(root, 'packages', 'compat'),
+  'cypress-commands': path.join(root, 'packages', 'cypress-commands'),
+  main: path.join(root, 'packages', 'main'),
 };
 
 export default PATHS;

@@ -1,13 +1,12 @@
-import { ControlsWithNote, DocsHeader, Footer } from '@sb/components';
-import { Canvas, Meta, Description } from '@storybook/addon-docs/blocks';
-import * as ComponentStories from './AnalyticalTableHooks.stories';
+import { Footer } from '@sb/components';
+import { Meta } from '@storybook/addon-docs/blocks';
 import { ImportStatement } from '@sb/components/Import';
 
-<Meta of={ComponentStories} />
+<Meta title="Data Display / AnalyticalTable / Plugin Hooks"/>
 
 # Plugin Hooks
 
-<ImportStatement moduleNames={['AnalyticalTableHooks']} packageName={'@ui5/webcomponents-react'} />
+<ImportStatement moduleName={'* as AnalyticalTableHooks'} packageName={'@ui5/webcomponents-react/AnalyticalTableHooks'} defaultImport />
 
 We're offering plugin hooks to extend the functionality of the `AnalyticalTable` component. The following hooks are available:
 
@@ -20,12 +19,18 @@ We're offering plugin hooks to extend the functionality of the `AnalyticalTable`
 
 ## Add a Plugin Hook to the AnalyticalTable
 
-Import the hooks from the `@ui5/webcomponents-react` package and incorporate them into your `AnalyticalTable` component by adding them to the `tableHooks` array.
+Import the hooks from the `@ui5/webcomponents-react/AnalyticalTableHooks` package and incorporate them into your `AnalyticalTable` component by adding them to the `tableHooks` array.
 
 **Example:**
 
 ```jsx
-<AnalyticalTable {...otherProps} tableHooks={[AnalyticalTableHooks.useAnnounceEmptyCells]} />
+import {useAnnounceEmptyCells} from '@ui5/webcomponents-react/AnalyticalTableHooks';
+
+const tableHooks = [useAnnounceEmptyCells]; // this array should be memoized
+
+//...
+
+<AnalyticalTable {...otherProps} tableHooks={tableHooks} />
 ```
 
-<Footer />
+<Footer/>

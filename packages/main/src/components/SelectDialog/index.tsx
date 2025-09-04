@@ -13,20 +13,23 @@ import { enrichEventWithDetails, useI18nBundle, useStylesheet, useSyncRef } from
 import { clsx } from 'clsx';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useState } from 'react';
+import { FlexBoxAlignItems } from '../../enums/FlexBoxAlignItems.js';
 import { CANCEL, CLEAR, SEARCH, SELECT, SELECTED, SELECTED_ITEMS } from '../../i18n/i18n-defaults.js';
-import { Button, Dialog, FlexBox, FlexBoxAlignItems, Icon, Input, List, Text, Title } from '../../index.js';
 import type { Ui5CustomEvent } from '../../types/index.js';
-import type {
-  ButtonDomRef,
-  ButtonPropTypes,
-  DialogDomRef,
-  DialogPropTypes,
-  IconDomRef,
-  InputDomRef,
-  ListDomRef,
-  ListItemStandardDomRef,
-  ListPropTypes,
-} from '../../webComponents/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import type { ButtonDomRef, ButtonPropTypes } from '../../webComponents/Button/index.js';
+import { Dialog } from '../../webComponents/Dialog/index.js';
+import type { DialogDomRef, DialogPropTypes } from '../../webComponents/Dialog/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import type { IconDomRef } from '../../webComponents/Icon/index.js';
+import { Input } from '../../webComponents/Input/index.js';
+import type { InputDomRef } from '../../webComponents/Input/index.js';
+import { List } from '../../webComponents/List/index.js';
+import type { ListDomRef, ListPropTypes } from '../../webComponents/List/index.js';
+import type { ListItemStandardDomRef } from '../../webComponents/ListItemStandard/index.js';
+import { Text } from '../../webComponents/Text/index.js';
+import { Title } from '../../webComponents/Title/index.js';
+import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './SelectDialog.module.css.js';
 
 interface ListDomRefWithPrivateAPIs extends ListDomRef {

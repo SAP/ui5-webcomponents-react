@@ -26,7 +26,9 @@ export interface WithWebComponentPropTypes {
 }
 
 const definedWebComponents = new Set<ComponentType>([]);
-
+/**
+ * ⚠️ __INTERNAL__ use only! This function is not part of the public API.
+ */
 export const withWebComponent = <Props extends Record<string, any>, RefType = Ui5DomRef>(
   tagName: string,
   regularProperties: string[],

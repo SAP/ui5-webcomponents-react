@@ -72,7 +72,7 @@ export const InfoTable = ({
   const supportsClipboardApi = typeof ClipboardItem !== 'undefined';
 
   const handleCopy = async (e) => {
-    const importStatementCell = e.currentTarget.parentElement.querySelector('[data-import]');
+    const importStatementCell = e.currentTarget.parentElement.parentElement.querySelector('[data-import-cell]');
     if (supportsClipboardApi && importStatementCell) {
       const html = new Blob([importStatementCell.outerHTML], { type: 'text/html' });
       const text = new Blob([importStatementCell.outerText], { type: 'text/plain' });
@@ -89,7 +89,7 @@ export const InfoTable = ({
             <Label>Usage</Label>
           </th>
           <td data-import-cell={supportsClipboardApi}>
-            <Import moduleNames={[moduleName]} componentId={preparedMeta.componentId} />
+            <Import moduleName={moduleName} componentId={preparedMeta.componentId} />
             {supportsClipboardApi && (
               <Button
                 design={ButtonDesign.Transparent}
@@ -142,7 +142,12 @@ export const InfoTable = ({
               <Label>Subcomponents</Label>
             </th>
             <td data-import-cell={supportsClipboardApi}>
-              <Import moduleNames={subComps} componentId={preparedMeta.componentId} />
+              {subComps.map((subComp) => (
+                <>
+                  <Import key={subComp} moduleName={subComp} componentId={preparedMeta.componentId} />
+                  <br />
+                </>
+              ))}
               {supportsClipboardApi && (
                 <Button
                   design={ButtonDesign.Transparent}

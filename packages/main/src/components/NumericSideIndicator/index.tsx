@@ -3,7 +3,7 @@
 import { useStylesheet } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import { forwardRef } from 'react';
-import { ValueColor } from '../../enums/index.js';
+import { ValueColor } from '../../enums/ValueColor.js';
 import type { CommonProps } from '../../types/index.js';
 import { Text } from '../../webComponents/Text/index.js';
 import { classNames, styleData } from './NumericSideIndicator.module.css.js';
