@@ -94,11 +94,29 @@ Since version `v2.14.0` of `@ui5/webcomponents-react`, `@ui5/webcomponents-fiori
 - You want to use the [VariantManagement](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/inputs-variantmanagement--docs) component.
 - You import anything from the `@ui5/webcomponents-fiori` package.
 
-**Note:** Most popular bundlers enable tree-shaking for production builds, so there’s no difference in the final bundle size between the recommended and minimal installations.
-
 ```sh
 npm install @ui5/webcomponents-react @ui5/webcomponents
 ```
+
+**Note:** Most popular bundlers enable tree-shaking for production builds, so there’s no difference in the final bundle size between the recommended and minimal installations.
+
+> ⚠️ **Warning**
+>
+> If your bundler does **not** support tree-shaking, you must use **subpath imports**.
+>
+> Otherwise, since `@ui5/webcomponents-react` re-exports all components, **every component** (including those that depend on the `@ui5/webcomponents-fiori` package) will be included in your bundle, which will lead to errors due to the missing module.
+>
+> **✅ Do:**
+>
+> ```tsx
+> import { Button } from '@ui5/webcomponents-react/Button';
+> ```
+>
+> **❌ Don’t:**
+>
+> ```tsx
+> import { Button } from '@ui5/webcomponents-react';
+> ```
 
 ## End of Support for Version 1.x
 
@@ -135,7 +153,7 @@ You can find a curated list of project templates and examples on our [Project Te
 2. Import the `ThemeProvider` component and wrap your root component with it:
 
    ```tsx
-   import { ThemeProvider } from '@ui5/webcomponents-react';
+   import { ThemeProvider } from '@ui5/webcomponents-react/ThemeProvider';
    ...
    createRoot(document.getElementById('root') as HTMLElement).render(
      <ThemeProvider>
@@ -148,7 +166,7 @@ You can find a curated list of project templates and examples on our [Project Te
    For example, to use the `Button` component you need to import it:
 
    ```jsx
-   import { Button } from '@ui5/webcomponents-react'; // loads ui5-button wrapped in a ui5-webcomponents-react component
+   import { Button } from '@ui5/webcomponents-react/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react component
    ```
 
 4. Add the imported component to your JSX:

@@ -83,7 +83,7 @@ npm install @ui5/webcomponents-react @ui5/webcomponents
 In order to use `@ui5/webcomponents-react` you have to wrap your application's root component into the `ThemeProvider` component.
 
 ```tsx
-import { ThemeProvider } from '@ui5/webcomponents-react';
+import { ThemeProvider } from '@ui5/webcomponents-react/ThemeProvider';
 ...
 createRoot(document.getElementById('root') as HTMLElement).render(
   <ThemeProvider>
@@ -96,7 +96,7 @@ Then you are ready to use `@ui5/webcomponents-react` and you can import the desi
 For example, to use the `Button` component you need to import it:
 
 ```jsx
-import { Button } from '@ui5/webcomponents-react'; // loads ui5-button wrapped in a ui5-webcomponents-react component
+import { Button } from '@ui5/webcomponents-react/Button'; // loads ui5-button wrapped in a ui5-webcomponents-react component
 ```
 
 Then, you can use the Button in your app:
@@ -161,8 +161,11 @@ Small app with a popover opened by clicking a button including type declarations
 
 ```tsx
 import { useState, useRef } from 'react';
-import type { ButtonPropTypes, PopoverDomRef, PopoverPropTypes } from '@ui5/webcomponents-react';
-import { ThemeProvider, Button, Popover } from '@ui5/webcomponents-react';
+import type { ButtonPropTypes } from '@ui5/webcomponents-react/Button';
+import type { PopoverDomRef, PopoverPropTypes } from '@ui5/webcomponents-react/Popover';
+import { ThemeProvider } from '@ui5/webcomponents-react/ThemeProvider';
+import { Button } from '@ui5/webcomponents-react/Button';
+import { Popover } from '@ui5/webcomponents-react/Popover';
 
 export default function App() {
   const [open, setOpen] = useState<PopoverPropTypes['open']>(false);

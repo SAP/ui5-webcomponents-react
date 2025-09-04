@@ -10,11 +10,8 @@ import { useCallback, useRef } from 'react';
  * ```tsx
  * const MyComponent = forwardRef<HTMLDivElement, PropTypes>((props, ref) => {
  *   const [componentRef, localRef] = useSyncRef<HTMLDivElement>(ref);
- *
- *   useEffect(() => {
- *     // `localRef.current` is always the latest DOM node (or `null`)
- *     console.log('current node:', localRef.current);
- *   }, []);
+ *   // `localRef.current` is always the latest DOM node (or `null`)
+ *   console.log('current node:', localRef.current);
  *
  *   return <div ref={componentRef}>Hello World!</div>;
  * });
