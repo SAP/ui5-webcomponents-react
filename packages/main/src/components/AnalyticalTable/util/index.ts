@@ -191,7 +191,7 @@ export const getCombinedElementsHeight = (
     }
     height += el.offsetHeight;
   }
-  // Math.abs is required, because of layout thrashing (rounding errors)
+  // Math.abs is required, because of subpixel rounding errors
   const updatedHeight = Math.abs(prevHeight - height) > 1 ? height : prevHeight;
   prevHeightRef.current = updatedHeight;
 
