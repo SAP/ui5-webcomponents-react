@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
@@ -23,7 +23,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Publish to Chromatic
-        uses: chromaui/action@58d9ffb36c90c97a02d061544ecc849cc4a242a9 # v13.1.3
+        uses: chromaui/action@d0795df816d05c4a89c80295303970fddd247cce # v13.1.4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
