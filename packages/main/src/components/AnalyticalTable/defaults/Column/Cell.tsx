@@ -1,4 +1,12 @@
-export const Cell = ({ cell: { value = '', isGrouped }, column, row, webComponentsReactProperties }) => {
+import type { CellInstance } from '../../types/index.js';
+
+export const Cell = (props: CellInstance) => {
+  const {
+    cell: { value = '', isGrouped },
+    column,
+    row,
+    webComponentsReactProperties,
+  } = props;
   let cellContent = `${value ?? ''}`;
   if (isGrouped) {
     cellContent += ` (${row.subRows.length})`;

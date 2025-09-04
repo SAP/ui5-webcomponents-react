@@ -87,6 +87,7 @@ import type {
   AnalyticalTableState,
   DivWithCustomScrollProp,
   TableInstance,
+  CellInstance,
 } from './types/index.js';
 import { getRowHeight, getSubRowsByString, tagNamesWhichShouldNotSelectARow } from './util/index.js';
 import { VerticalResizer } from './VerticalResizer.js';
@@ -943,4 +944,6 @@ export type {
   AnalyticalTableDomRef,
   AnalyticalTablePropTypes,
   DivWithCustomScrollProp,
+  TableInstance as AnalyticalTableInstance,
+  CellInstance as AnalyticalTableCellInstance,
 };
