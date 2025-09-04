@@ -1,7 +1,8 @@
+import type { FocusEventHandler, KeyboardEvent, KeyboardEventHandler, MutableRefObject } from 'react';
 import { useCallback, useEffect, useRef } from 'react';
 import { actions } from 'react-table';
 import type { ColumnType, ReactTableHooks, TableInstance } from '../types/index.js';
-import { getLeafHeaders } from '../util/index.js';
+import { getLeafHeaders, NAVIGATION_KEYS } from '../util/index.js';
 
 const CELL_DATA_ATTRIBUTES = ['visibleColumnIndex', 'columnIndex', 'rowIndex', 'visibleRowIndex'];
 
@@ -27,7 +28,7 @@ const getFirstVisibleCell = (target, currentlyFocusedCell, noData) => {
   }
 };
 
-function recursiveSubComponentElementSearch(element) {
+function recursiveSubComponentElementSearch(element: HTMLElement): HTMLElement | null {
   if (!element.parentElement) {
     return null;
   }
@@ -37,7 +38,7 @@ function recursiveSubComponentElementSearch(element) {
   return recursiveSubComponentElementSearch(element.parentElement);
 }
 
-const findParentCell = (target) => {
+const findParentCell = (target: HTMLElement | undefined | null): HTMLElement | null | undefined => {
   if (target === undefined || target === null) return;
   if (
     (target.dataset.rowIndex !== undefined && target.dataset.columnIndex !== undefined) ||
@@ -49,7 +50,7 @@ const findParentCell = (target) => {
   }
 };
 
-const setFocus = (currentlyFocusedCell, nextElement) => {
+const setFocus = (currentlyFocusedCell: MutableRefObject<HTMLElement>, nextElement: HTMLElement | null) => {
   currentlyFocusedCell.current.tabIndex = -1;
   if (nextElement) {
     nextElement.tabIndex = 0;
@@ -58,8 +59,8 @@ const setFocus = (currentlyFocusedCell, nextElement) => {
   }
 };
 
-const navigateFromActiveSubCompItem = (currentlyFocusedCell, e) => {
-  setFocus(currentlyFocusedCell, recursiveSubComponentElementSearch(e.target));
+const navigateFromActiveSubCompItem = (currentlyFocusedCell: MutableRefObject<HTMLElement>, e: KeyboardEvent) => {
+  setFocus(currentlyFocusedCell, recursiveSubComponentElementSearch(e.target as HTMLElement));
 };
 
 const useGetTableProps = (
@@ -67,7 +68,7 @@ const useGetTableProps = (
   { instance: { webComponentsReactProperties, data, columns, state } }: { instance: TableInstance },
 ) => {
   const { showOverlay, tableRef } = webComponentsReactProperties;
-  const currentlyFocusedCell = useRef<HTMLDivElement>(null);
+  const currentlyFocusedCell = useRef<HTMLElement>(null);
   const noData = data.length === 0;
 
   useEffect(() => {
@@ -77,7 +78,7 @@ const useGetTableProps = (
     }
   }, [showOverlay]);
 
-  const onTableBlur = (e) => {
+  const onTableBlur: FocusEventHandler<HTMLElement> = (e) => {
     if (e.target.tagName === 'UI5-LI' || e.target.tagName === 'UI5-LI-CUSTOM') {
       currentlyFocusedCell.current = null;
     }
@@ -175,9 +176,13 @@ const useGetTableProps = (
           currentlyFocusedCell.current.dataset.rowIndex ?? currentlyFocusedCell.current.dataset.subcomponentRowIndex,
           10,
         );
+
+        if (NAVIGATION_KEYS.has(e.key)) {
+          e.preventDefault();
+        }
+
         switch (e.key) {
           case 'End': {
-            e.preventDefault();
             const visibleColumns = tableRef.current.querySelector(
               `div[data-component-name="AnalyticalTableHeaderRow"]`,
             ).children;
@@ -193,31 +198,29 @@ const useGetTableProps = (
                 return 0;
               }, 0);
 
-            const newElement = tableRef.current.querySelector(
+            const newElement: HTMLElement | null = tableRef.current.querySelector(
               `div[data-visible-column-index="${lastVisibleColumn}"][data-row-index="${rowIndex}"]`,
             );
             setFocus(currentlyFocusedCell, newElement);
             break;
           }
           case 'Home': {
-            e.preventDefault();
-            const newElement = tableRef.current.querySelector(
+            const newElement: HTMLElement | null = tableRef.current.querySelector(
               `div[data-visible-column-index="0"][data-row-index="${rowIndex}"]`,
             );
             setFocus(currentlyFocusedCell, newElement);
             break;
           }
           case 'PageDown': {
-            e.preventDefault();
             if (currentlyFocusedCell.current.dataset.rowIndex === '0') {
-              const newElement = tableRef.current.querySelector(
+              const newElement: HTMLElement | null = tableRef.current.querySelector(
                 `div[data-column-index="${columnIndex}"][data-row-index="${rowIndex + 1}"]`,
               );
               setFocus(currentlyFocusedCell, newElement);
             } else {
               const lastVisibleRow = tableRef.current.querySelector(`div[data-component-name="AnalyticalTableBody"]`)
                 ?.children?.[0].children.length;
-              const newElement = tableRef.current.querySelector(
+              const newElement: HTMLElement | null = tableRef.current.querySelector(
                 `div[data-column-index="${columnIndex}"][data-visible-row-index="${lastVisibleRow}"]`,
               );
               setFocus(currentlyFocusedCell, newElement);
@@ -225,14 +228,13 @@ const useGetTableProps = (
             break;
           }
           case 'PageUp': {
-            e.preventDefault();
             if (currentlyFocusedCell.current.dataset.rowIndex <= '1') {
-              const newElement = tableRef.current.querySelector(
+              const newElement: HTMLElement | null = tableRef.current.querySelector(
                 `div[data-column-index="${columnIndex}"][data-row-index="0"]`,
               );
               setFocus(currentlyFocusedCell, newElement);
             } else {
-              const newElement = tableRef.current.querySelector(
+              const newElement: HTMLElement | null = tableRef.current.querySelector(
                 `div[data-column-index="${columnIndex}"][data-visible-row-index="1"]`,
               );
               setFocus(currentlyFocusedCell, newElement);
@@ -240,12 +242,11 @@ const useGetTableProps = (
             break;
           }
           case 'ArrowRight': {
-            e.preventDefault();
             if (isActiveItemInSubComponent) {
               navigateFromActiveSubCompItem(currentlyFocusedCell, e);
               return;
             }
-            const newElement = tableRef.current.querySelector(
+            const newElement: HTMLElement | null = tableRef.current.querySelector(
               `div[data-column-index="${columnIndex + (isRtl ? -1 : 1)}"][data-row-index="${rowIndex}"]`,
             );
             if (newElement) {
@@ -256,12 +257,11 @@ const useGetTableProps = (
             break;
           }
           case 'ArrowLeft': {
-            e.preventDefault();
             if (isActiveItemInSubComponent) {
               navigateFromActiveSubCompItem(currentlyFocusedCell, e);
               return;
             }
-            const newElement = tableRef.current.querySelector(
+            const newElement: HTMLElement | null = tableRef.current.querySelector(
               `div[data-column-index="${columnIndex - (isRtl ? -1 : 1)}"][data-row-index="${rowIndex}"]`,
             );
             if (newElement) {
@@ -272,7 +272,6 @@ const useGetTableProps = (
             break;
           }
           case 'ArrowDown': {
-            e.preventDefault();
             if (isActiveItemInSubComponent) {
               navigateFromActiveSubCompItem(currentlyFocusedCell, e);
               return;
@@ -280,7 +279,7 @@ const useGetTableProps = (
             const parent = currentlyFocusedCell.current.parentElement as HTMLDivElement;
             const firstChildOfParent = parent?.children?.[0] as HTMLDivElement;
             const hasSubcomponent = firstChildOfParent?.dataset?.subcomponent;
-            const newElement = tableRef.current.querySelector(
+            const newElement: HTMLElement | null = tableRef.current.querySelector(
               `div[data-column-index="${columnIndex}"][data-row-index="${rowIndex + 1}"]`,
             );
             if (hasSubcomponent && !currentlyFocusedCell.current?.dataset?.subcomponent) {
@@ -296,7 +295,6 @@ const useGetTableProps = (
             break;
           }
           case 'ArrowUp': {
-            e.preventDefault();
             if (isActiveItemInSubComponent) {
               navigateFromActiveSubCompItem(currentlyFocusedCell, e);
               return;
@@ -306,7 +304,7 @@ const useGetTableProps = (
             if (isSubComponent) {
               prevRowIndex++;
             }
-            const previousRowCell = tableRef.current.querySelector(
+            const previousRowCell: HTMLElement | null = tableRef.current.querySelector(
               `div[data-column-index="${columnIndex}"][data-row-index="${prevRowIndex}"]`,
             );
             const firstChildPrevRow = previousRowCell?.parentElement.children[0] as HTMLDivElement;
@@ -332,20 +330,29 @@ const useGetTableProps = (
   if (showOverlay) {
     return tableProps;
   }
+
+  // keyboard nav is only enabled if the table is not in edit mode
+  const handleEditModeKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (typeof tableProps.onKeyDown === 'function') {
+      tableProps.onKeyDown(e);
+    }
+  };
+
   return [
     tableProps,
     {
       onFocus: onTableFocus,
-      onKeyDown: onKeyboardNavigation,
+      onKeyDown: state.cellContentTabIndex === 0 ? handleEditModeKeyDown : onKeyboardNavigation,
       onBlur: onTableBlur,
     },
   ];
 };
 
-function getPayload(e, column) {
+function getPayload(e: KeyboardEvent, column: ColumnType) {
   e.preventDefault();
   e.stopPropagation();
-  const clientX = e.target.getBoundingClientRect().x + e.target.getBoundingClientRect().width;
+  const target = e.target as HTMLElement;
+  const clientX = target.getBoundingClientRect().x + target.getBoundingClientRect().width;
   const columnId = column.id;
   const columnWidth = column.totalWidth;
   const headersToResize = getLeafHeaders(column);
@@ -358,7 +365,7 @@ const setHeaderProps = (
   { instance: { dispatch }, column }: { instance: TableInstance; column: ColumnType },
 ) => {
   // resize col with keyboard
-  const handleKeyDown = (e) => {
+  const handleKeyDown: KeyboardEventHandler<HTMLElement> = (e) => {
     if (typeof headerProps.onKeyDown === 'function') {
       headerProps.onKeyDown(e);
     }

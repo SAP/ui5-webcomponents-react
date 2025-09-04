@@ -318,13 +318,13 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
   });
 };
 
-const columnsDeps = (
+const useColumnsDeps = (
   deps,
   { instance: { state, webComponentsReactProperties, visibleColumns, data, rows, columns } },
 ) => {
   const isLoadingPlaceholder = !data?.length && webComponentsReactProperties.loading;
   const hasRows = rows?.length > 0;
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   const colsEqual = useMemo(() => {
     return visibleColumns
       ?.filter(
@@ -497,5 +497,5 @@ const columns = (columns: TableInstance['columns'], { instance }: { instance: Ta
 
 export const useDynamicColumnWidths = (hooks: ReactTableHooks) => {
   hooks.columns.push(columns);
-  hooks.columnsDeps.push(columnsDeps);
+  hooks.columnsDeps.push(useColumnsDeps);
 };
