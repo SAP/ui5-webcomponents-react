@@ -464,6 +464,10 @@
       "types": "./dist/webComponents/SearchItemGroup/index.d.ts",
       "default": "./dist/webComponents/SearchItemGroup/index.js"
     },
+    "./SearchItemShowMore": {
+      "types": "./dist/webComponents/SearchItemShowMore/index.d.ts",
+      "default": "./dist/webComponents/SearchItemShowMore/index.js"
+    },
     "./SearchMessageArea": {
       "types": "./dist/webComponents/SearchMessageArea/index.d.ts",
       "default": "./dist/webComponents/SearchMessageArea/index.js"
