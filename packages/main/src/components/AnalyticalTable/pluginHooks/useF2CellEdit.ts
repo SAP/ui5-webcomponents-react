@@ -2,8 +2,7 @@ import type { Ui5DomRef } from '@ui5/webcomponents-react-base';
 import { useI18nBundle } from '@ui5/webcomponents-react-base';
 import type { FocusEventHandler, KeyboardEventHandler } from 'react';
 import { useCallback, useEffect } from 'react';
-//todo: once available - add translation
-// import { INCLUDES_X } from '../../../i18n/i18n-defaults.js';
+import { INCLUDES_X } from '../../../i18n/i18n-defaults.js';
 import type { CellInstance, CellType, ReactTableHooks, TableInstance } from '../types/index.js';
 import { NAVIGATION_KEYS } from '../util/index.js';
 
@@ -70,10 +69,8 @@ export const useF2CellEdit = (hooks: ReactTableHooks) => {
       const { interactiveElementName } = cell.column;
       const inputName =
         typeof interactiveElementName === 'function' ? interactiveElementName(cell) : interactiveElementName;
-      //todo: once available - add translation
-      // const ariaLabel =
-      //   (interactiveElementName ? i18nBundle.getText(INCLUDES_X, inputName) : '') + ' ' + props['aria-label'];
-      const ariaLabel = (interactiveElementName ? `Includes ${inputName}` : '') + ' ' + props['aria-label'];
+      const ariaLabel =
+        (interactiveElementName ? i18nBundle.getText(INCLUDES_X, inputName) : '') + ' ' + props['aria-label'];
 
       const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
         if (state.cellContentTabIndex === 0 && NAVIGATION_KEYS.has(e.key) && !e.key.includes('Arrow')) {
