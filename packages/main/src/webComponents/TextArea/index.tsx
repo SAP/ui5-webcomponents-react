@@ -1,6 +1,7 @@
 'use client';
 
 import '@ui5/webcomponents/dist/TextArea.js';
+import type { TextAreaInputEventDetail } from '@ui5/webcomponents/dist/TextArea.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
@@ -150,11 +151,13 @@ interface TextAreaPropTypes
    * Fired when the value of the component changes at each keystroke or when
    * something is pasted.
    *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
-   * | ❌|✅|
+   * | ✅|✅|
    */
-  onInput?: (event: Ui5CustomEvent<TextAreaDomRef>) => void;
+  onInput?: (event: Ui5CustomEvent<TextAreaDomRef, TextAreaInputEventDetail>) => void;
 
   /**
    * Fired when textarea is scrolled.

@@ -8,6 +8,22 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui
 
 interface TimePickerAttributes {
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Receives id(or many ids) of the elements that describe the input.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the aria-label attribute for the component.
    *
    * **Note:** Available since [v2.1.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.1.0) of **@ui5/webcomponents**.
@@ -202,7 +218,7 @@ interface TimePickerPropTypes
  * the input field, it must fit to the used time format.
  *
  * Supported format options are pattern-based on Unicode LDML Date Format notation.
- * For more information, see [UTS #35: Unicode Locale Data Markup Language](http://unicode.org/reports/tr35/#Date_Field_Symbol_Table).
+ * For more information, see [UTS #35: Unicode Locale Data Markup Language](https://unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
  *
  * For example, if the `format-pattern` is "HH:mm:ss",
  * a valid value string is "11:42:35" and the same is displayed in the input.
@@ -238,7 +254,17 @@ interface TimePickerPropTypes
  */
 const TimePicker = withWebComponent<TimePickerPropTypes, TimePickerDomRef>(
   'ui5-time-picker',
-  ['accessibleName', 'accessibleNameRef', 'formatPattern', 'name', 'placeholder', 'value', 'valueState'],
+  [
+    'accessibleDescription',
+    'accessibleDescriptionRef',
+    'accessibleName',
+    'accessibleNameRef',
+    'formatPattern',
+    'name',
+    'placeholder',
+    'value',
+    'valueState',
+  ],
   ['disabled', 'open', 'readonly', 'required'],
   ['valueStateMessage'],
   ['change', 'close', 'input', 'open'],

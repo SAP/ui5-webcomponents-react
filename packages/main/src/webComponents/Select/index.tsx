@@ -9,6 +9,22 @@ import type { ReactNode } from 'react';
 
 interface SelectAttributes {
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Receives id(or many ids) of the elements that describe the select.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the accessible ARIA name of the component.
    * @default undefined
    */
@@ -244,7 +260,16 @@ interface SelectPropTypes
  */
 const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   'ui5-select',
-  ['accessibleName', 'accessibleNameRef', 'name', 'tooltip', 'value', 'valueState'],
+  [
+    'accessibleDescription',
+    'accessibleDescriptionRef',
+    'accessibleName',
+    'accessibleNameRef',
+    'name',
+    'tooltip',
+    'value',
+    'valueState',
+  ],
   ['disabled', 'readonly', 'required'],
   ['label', 'valueStateMessage'],
   ['change', 'close', 'live-change', 'open'],

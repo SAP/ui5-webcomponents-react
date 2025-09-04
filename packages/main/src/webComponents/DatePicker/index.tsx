@@ -14,6 +14,22 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui
 
 interface DatePickerAttributes {
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Receives id(or many ids) of the elements that describe the input.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the aria-label attribute for the component.
    * @default undefined
    */
@@ -42,7 +58,16 @@ interface DatePickerAttributes {
 
   /**
    * Determines the format, displayed in the input field.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
    * @default undefined
+   */
+  displayFormat?: string | undefined;
+
+  /**
+   * Determines the format, displayed in the input field.
+   * @default undefined
+   * @deprecated Use displayFormat and valueFormat instead
    */
   formatPattern?: string | undefined;
 
@@ -127,6 +152,14 @@ interface DatePickerAttributes {
   value?: string;
 
   /**
+   * Determines the format, used for the value attribute.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  valueFormat?: string | undefined;
+
+  /**
    * Defines the value state of the component.
    * @default "None"
    */
@@ -156,10 +189,26 @@ interface DatePickerDomRef extends Required<DatePickerAttributes>, Ui5DomRef {
 
   /**
    * Checks if a value is valid against the current date format of the DatePicker.
+   *
+   * @deprecated Use isValidValue or isValidDisplayValue instead
    * @param {string} value - A value to be tested against the current date format
    * @returns {boolean}
    */
   isValid: (value: string) => boolean;
+
+  /**
+   * Checks if a value is valid against the current date format of the DatePicker.
+   * @param {string} value - A value to be tested against the current date format
+   * @returns {boolean}
+   */
+  isValidDisplayValue: (value: string) => boolean;
+
+  /**
+   * Checks if a value is valid against the current date format of the DatePicker.
+   * @param {string} value - A value to be tested against the current date format
+   * @returns {boolean}
+   */
+  isValidValue: (value: string) => boolean;
 }
 
 interface DatePickerPropTypes
@@ -269,7 +318,7 @@ interface DatePickerPropTypes
  * the input field, it must fit to the used date format.
  *
  * Supported format options are pattern-based on Unicode LDML Date Format notation.
- * For more information, see [UTS #35: Unicode Locale Data Markup Language](http://unicode.org/reports/tr35/#Date_Field_Symbol_Table).
+ * For more information, see [UTS #35: Unicode Locale Data Markup Language](https://unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
  *
  * For example, if the `format-pattern` is "yyyy-MM-dd",
  * a valid value string is "2015-07-30" and the same is displayed in the input.
@@ -323,9 +372,12 @@ interface DatePickerPropTypes
 const DatePicker = withWebComponent<DatePickerPropTypes, DatePickerDomRef>(
   'ui5-date-picker',
   [
+    'accessibleDescription',
+    'accessibleDescriptionRef',
     'accessibleName',
     'accessibleNameRef',
     'calendarWeekNumbering',
+    'displayFormat',
     'formatPattern',
     'maxDate',
     'minDate',
@@ -334,6 +386,7 @@ const DatePicker = withWebComponent<DatePickerPropTypes, DatePickerDomRef>(
     'primaryCalendarType',
     'secondaryCalendarType',
     'value',
+    'valueFormat',
     'valueState',
   ],
   ['disabled', 'hideWeekNumbers', 'open', 'readonly', 'required'],

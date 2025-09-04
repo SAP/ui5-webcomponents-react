@@ -10,6 +10,7 @@ import type {
   ShellBarProductSwitchClickEventDetail,
   ShellBarProfileClickEventDetail,
   ShellBarSearchButtonEventDetail,
+  ShellBarSearchFieldClearEventDetail,
   ShellBarSearchFieldToggleEventDetail,
 } from '@ui5/webcomponents-fiori/dist/ShellBar.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
@@ -175,6 +176,7 @@ interface ShellBarPropTypes
       | 'onProductSwitchClick'
       | 'onProfileClick'
       | 'onSearchButtonClick'
+      | 'onSearchFieldClear'
       | 'onSearchFieldToggle'
     > {
   /**
@@ -379,6 +381,22 @@ interface ShellBarPropTypes
   onSearchButtonClick?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarSearchButtonEventDetail>) => void;
 
   /**
+   * Fired, when the search cancel button is activated.
+   *
+   * **Note:** You can prevent the default behavior (clearing the search field value) by calling `event.preventDefault()`. The search will still be closed.
+   * **Note:** The `search-field-clear` event is in an experimental state and is a subject to change.
+   *
+   * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents-fiori**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ✅|✅|
+   */
+  onSearchFieldClear?: (event: Ui5CustomEvent<ShellBarDomRef, ShellBarSearchFieldClearEventDetail>) => void;
+
+  /**
    * Fired, when the search field is expanded or collapsed.
    *
    * **Note:** Available since [v2.10.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents-fiori**.
@@ -428,6 +446,7 @@ const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
     'product-switch-click',
     'profile-click',
     'search-button-click',
+    'search-field-clear',
     'search-field-toggle',
   ],
 );

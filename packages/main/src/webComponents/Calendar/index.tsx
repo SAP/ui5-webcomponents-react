@@ -21,7 +21,16 @@ interface CalendarAttributes {
 
   /**
    * Determines the format, displayed in the input field.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
    * @default undefined
+   */
+  displayFormat?: string | undefined;
+
+  /**
+   * Determines the format, displayed in the input field.
+   * @default undefined
+   * @deprecated Use displayFormat and valueFormat instead
    */
   formatPattern?: string | undefined;
 
@@ -72,6 +81,14 @@ interface CalendarAttributes {
    * @default "Single"
    */
   selectionMode?: CalendarSelectionMode | keyof typeof CalendarSelectionMode;
+
+  /**
+   * Determines the format, used for the value attribute.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  valueFormat?: string | undefined;
 }
 
 interface CalendarDomRef extends Required<CalendarAttributes>, Ui5DomRef {}
@@ -219,12 +236,14 @@ const Calendar = withWebComponent<CalendarPropTypes, CalendarDomRef>(
   'ui5-calendar',
   [
     'calendarWeekNumbering',
+    'displayFormat',
     'formatPattern',
     'maxDate',
     'minDate',
     'primaryCalendarType',
     'secondaryCalendarType',
     'selectionMode',
+    'valueFormat',
   ],
   ['hideWeekNumbers'],
   ['calendarLegend', 'specialDates'],

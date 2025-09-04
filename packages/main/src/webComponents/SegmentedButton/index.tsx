@@ -12,12 +12,36 @@ import type { ReactNode } from 'react';
 
 interface SegmentedButtonAttributes {
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.15.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Defines the IDs of the HTML Elements that describe the component.
+   *
+   * **Note:** Available since [v2.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.15.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v1.0.3](https://github.com/SAP/ui5-webcomponents/releases/tag/v1.0.3) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
+
+  /**
+   * Defines the IDs of the HTML Elements that label the component.
+   *
+   * **Note:** Available since [v2.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.15.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleNameRef?: string | undefined;
 
   /**
    * Defines the component selection mode.
@@ -70,7 +94,7 @@ interface SegmentedButtonPropTypes
  */
 const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButtonDomRef>(
   'ui5-segmented-button',
-  ['accessibleName', 'selectionMode'],
+  ['accessibleDescription', 'accessibleDescriptionRef', 'accessibleName', 'accessibleNameRef', 'selectionMode'],
   [],
   [],
   ['selection-change'],
