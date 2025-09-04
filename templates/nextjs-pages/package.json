@@ -12,7 +12,7 @@
     "@ui5/webcomponents": "2.13.3",
     "@ui5/webcomponents-base": "2.13.3",
     "@ui5/webcomponents-fiori": "2.13.3",
-    "@ui5/webcomponents-react": "2.13.1",
+    "@ui5/webcomponents-react": "2.13.2",
     "@types/node": "22.17.2",
     "@types/react": "19.1.11",
     "@types/react-dom": "19.1.7",
