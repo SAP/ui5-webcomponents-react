@@ -89,7 +89,12 @@ import type {
   TableInstance,
   CellInstance,
 } from './types/index.js';
-import { getRowHeight, getSubRowsByString, tagNamesWhichShouldNotSelectARow } from './util/index.js';
+import {
+  getCombinedElementsHeight,
+  getRowHeight,
+  getSubRowsByString,
+  tagNamesWhichShouldNotSelectARow,
+} from './util/index.js';
 import { VerticalResizer } from './VerticalResizer.js';
 
 // When a sorted column is removed from the visible columns array (e.g. when "popped-in"), it doesn't clean up the sorted columns leading to an undefined `sortType`.
@@ -387,14 +392,11 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     tableInstance(tableInstanceRef.current);
   }
 
-  const titleBarRef = useRef(null);
-  const extensionRef = useRef(null);
-  const headerRef = useRef(null);
-
-  const extensionsHeight =
-    (titleBarRef.current?.offsetHeight ?? 0) +
-    (extensionRef.current?.offsetHeight ?? 0) +
-    (headerRef.current?.offsetHeight ?? 0);
+  const prevExtensionsHeight = useRef<number>(0);
+  const titleBarRef = useRef<HTMLDivElement>(null);
+  const extensionRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const extensionsHeight = getCombinedElementsHeight(prevExtensionsHeight, titleBarRef, extensionRef, headerRef);
 
   const internalRowHeight = getRowHeight(rowHeight, tableRef);
   const internalHeaderRowHeight = headerRowHeight ?? internalRowHeight;
