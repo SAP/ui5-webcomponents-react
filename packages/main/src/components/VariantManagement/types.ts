@@ -3,14 +3,12 @@ import type { PopupBeforeCloseEventDetail } from '@ui5/webcomponents/dist/Popup.
 import type { ReactNode } from 'react';
 import type { SelectedVariant } from '../../internal/VariantManagementContext.js';
 import type { CommonProps, Ui5CustomEvent } from '../../types/index.js';
-import type {
-  ButtonPropTypes,
-  DialogPropTypes,
-  InputDomRef,
-  ListDomRef,
-  ResponsivePopoverPropTypes,
-  TitlePropTypes,
-} from '../../webComponents/index.js';
+import type { ButtonPropTypes } from '../../webComponents/Button/index.js';
+import type { DialogPropTypes } from '../../webComponents/Dialog/index.js';
+import type { InputDomRef } from '../../webComponents/Input/index.js';
+import type { ListDomRef } from '../../webComponents/List/index.js';
+import type { ResponsivePopoverPropTypes } from '../../webComponents/ResponsivePopover/index.js';
+import type { TitlePropTypes } from '../../webComponents/Title/index.js';
 import type { VariantItemPropTypes } from './VariantItem.js';
 
 export interface SelectedVariantWithStringBool

@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ThemingParameters } from '@ui5/webcomponents-react-base';
 import { Invention, TimingFigure } from './examples/Annotations.js';
 import { dummyDataSet, dummyDiscreteDataSet, inventionDataset, schedulingEDFData } from './examples/Dataset.js';
-import { TimelineChart } from './TimelineChart.js';
 import { TimelineChartAnnotation } from './TimelineChartAnnotation.js';
+import { TimelineChart } from './index.js';
 
 const meta = {
   title: 'TimelineChart',

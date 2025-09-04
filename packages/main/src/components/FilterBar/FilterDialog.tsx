@@ -8,7 +8,10 @@ import { enrichEventWithDetails, useI18nBundle, useStylesheet } from '@ui5/webco
 import { addCustomCSSWithScoping } from '@ui5/webcomponents-react-base/dist/utils/addCustomCSSWithScoping.js';
 import type { ReactElement, RefObject } from 'react';
 import { Children, cloneElement, useEffect, useId, useReducer, useRef, useState } from 'react';
-import { FlexBoxDirection, FlexBoxJustifyContent, MessageBoxAction, MessageBoxType } from '../../enums/index.js';
+import { FlexBoxDirection } from '../../enums/FlexBoxDirection.js';
+import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent.js';
+import { MessageBoxAction } from '../../enums/MessageBoxAction.js';
+import { MessageBoxType } from '../../enums/MessageBoxType.js';
 import {
   ACTIVE,
   ALL,
@@ -32,30 +35,28 @@ import {
 import type { OnReorderParams } from '../../internal/FilterBarDialogContext.js';
 import { FilterBarDialogContext } from '../../internal/FilterBarDialogContext.js';
 import { stopPropagation } from '../../internal/stopPropagation.js';
+import { Bar } from '../../webComponents/Bar/index.js';
+import { Button } from '../../webComponents/Button/index.js';
+import type { DialogDomRef } from '../../webComponents/Dialog/index.js';
+import { Dialog } from '../../webComponents/Dialog/index.js';
+import { Icon } from '../../webComponents/Icon/index.js';
+import type { InputPropTypes } from '../../webComponents/Input/index.js';
+import { Input } from '../../webComponents/Input/index.js';
+import { Option } from '../../webComponents/Option/index.js';
+import { Panel } from '../../webComponents/Panel/index.js';
+import type { SegmentedButtonPropTypes } from '../../webComponents/SegmentedButton/index.js';
+import { SegmentedButton } from '../../webComponents/SegmentedButton/index.js';
+import { SegmentedButtonItem } from '../../webComponents/SegmentedButtonItem/index.js';
+import { Select } from '../../webComponents/Select/index.js';
+import { Table } from '../../webComponents/Table/index.js';
+import { TableHeaderCell } from '../../webComponents/TableHeaderCell/index.js';
+import { TableHeaderRow } from '../../webComponents/TableHeaderRow/index.js';
 import type {
-  DialogDomRef,
-  InputPropTypes,
-  SegmentedButtonPropTypes,
   TableSelectionMultiDomRef,
   TableSelectionMultiPropTypes,
-} from '../../webComponents/index.js';
-import {
-  Bar,
-  Button,
-  Dialog,
-  Icon,
-  Input,
-  Option,
-  Panel,
-  SegmentedButton,
-  SegmentedButtonItem,
-  Select,
-  Table,
-  TableHeaderCell,
-  TableHeaderRow,
-  TableSelectionMulti,
-  Title,
-} from '../../webComponents/index.js';
+} from '../../webComponents/TableSelectionMulti/index.js';
+import { TableSelectionMulti } from '../../webComponents/TableSelectionMulti/index.js';
+import { Title } from '../../webComponents/Title/index.js';
 import type { FilterGroupItemInternalProps } from '../FilterGroupItem/types.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { MessageBox } from '../MessageBox/index.js';

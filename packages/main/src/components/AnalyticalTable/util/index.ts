@@ -1,5 +1,6 @@
 import type { CSSProperties, RefObject } from 'react';
-import { TextAlign, VerticalAlign } from '../../../enums/index.js';
+import { TextAlign } from '../../../enums/TextAlign.js';
+import { VerticalAlign } from '../../../enums/VerticalAlign.js';
 
 // ╔════════════════════════ Constants ═══════════════════════╗
 

@@ -11,12 +11,13 @@ import { AVAILABLE_ACTIONS, CANCEL, X_OF_Y } from '../../i18n/i18n-defaults.js';
 import { flattenFragments, getUi5TagWithSuffix } from '../../internal/utils.js';
 import { CustomThemingParameters } from '../../themes/CustomVariables.js';
 import type { UI5WCSlotsNode } from '../../types/index.js';
+import type { ButtonPropTypes } from '../../webComponents/Button/index.js';
+import { Button } from '../../webComponents/Button/index.js';
 import type {
-  ButtonPropTypes,
   ResponsivePopoverDomRef,
   ResponsivePopoverPropTypes,
-} from '../../webComponents/index.js';
-import { Button, ResponsivePopover } from '../../webComponents/index.js';
+} from '../../webComponents/ResponsivePopover/index.js';
+import { ResponsivePopover } from '../../webComponents/ResponsivePopover/index.js';
 import { classNames, content } from './ActionSheet.module.css.js';
 
 export interface ActionSheetPropTypes extends Omit<ResponsivePopoverPropTypes, 'header' | 'headerText' | 'children'> {

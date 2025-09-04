@@ -24,14 +24,12 @@ import {
   useSortBy,
   useTable,
 } from 'react-table';
-import {
-  AnalyticalTablePopinDisplay,
-  AnalyticalTableScaleWidthMode,
-  AnalyticalTableSelectionBehavior,
-  AnalyticalTableSelectionMode,
-  AnalyticalTableSubComponentsBehavior,
-  AnalyticalTableVisibleRowCountMode,
-} from '../../enums/index.js';
+import { AnalyticalTablePopinDisplay } from '../../enums/AnalyticalTablePopinDisplay.js';
+import { AnalyticalTableScaleWidthMode } from '../../enums/AnalyticalTableScaleWidthMode.js';
+import { AnalyticalTableSelectionBehavior } from '../../enums/AnalyticalTableSelectionBehavior.js';
+import { AnalyticalTableSelectionMode } from '../../enums/AnalyticalTableSelectionMode.js';
+import { AnalyticalTableSubComponentsBehavior } from '../../enums/AnalyticalTableSubComponentsBehavior.js';
+import { AnalyticalTableVisibleRowCountMode } from '../../enums/AnalyticalTableVisibleRowCountMode.js';
 import {
   COLLAPSE_NODE,
   COLLAPSE_PRESS_SPACE,

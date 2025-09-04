@@ -2,7 +2,6 @@ export type {
   ReducedReactNode,
   ReducedReactNodeWithBoolean,
   UI5WCSlotsNode,
-  Nullable,
   CommonProps,
   Ui5CustomEvent,
   Ui5DomRef,

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
 import { legendConfig, simpleDataSet, simpleDataSetWithSmallValues, tooltipConfig } from '../../resources/DemoProps.js';
-import { PieChart } from './PieChart.js';
+import { PieChart } from './index.js';
 
 const meta = {
   title: 'PieChart',

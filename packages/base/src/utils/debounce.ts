@@ -7,6 +7,8 @@ interface Cancelable {
 }
 
 /**
+ * ⚠️ __INTERNAL__ use only! This function is not part of the public API.
+ *
  * When a sequence of calls of the returned function ends, the argument
  * function is triggered. The end of a sequence is defined by the `wait`
  * parameter.
