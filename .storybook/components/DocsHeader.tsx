@@ -72,7 +72,7 @@ export const InfoTable = ({
   const supportsClipboardApi = typeof ClipboardItem !== 'undefined';
 
   const handleCopy = async (e) => {
-    const importStatementCell = e.currentTarget.parentElement.querySelector('[data-import]');
+    const importStatementCell = e.currentTarget.parentElement.parentElement.querySelector('[data-import-cell]');
     if (supportsClipboardApi && importStatementCell) {
       const html = new Blob([importStatementCell.outerHTML], { type: 'text/html' });
       const text = new Blob([importStatementCell.outerText], { type: 'text/plain' });
