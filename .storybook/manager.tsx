@@ -64,7 +64,7 @@ addons.setConfig({
       const isExperimental = tags.includes('experimental');
       const isDeprecated = tags.includes('deprecated');
 
-      if (item.type !== 'component' && item.type !== 'docs') {
+      if ((item.type !== 'component' && item.type !== 'docs') || (item.type === 'docs' && item.name === 'Docs')) {
         return item.name;
       }
 
