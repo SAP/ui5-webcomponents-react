@@ -189,3 +189,24 @@ export function getLeafHeaders(header) {
   recurseHeader(header);
   return leafHeaders;
 }
+
+export const getCombinedElementsHeight = (
+  prevHeightRef: RefObject<number>,
+  ...refs: RefObject<HTMLElement>[]
+): number => {
+  const prevHeight = prevHeightRef.current;
+  let height = 0;
+
+  for (const ref of refs) {
+    const el = ref.current;
+    if (!el) {
+      continue;
+    }
+    height += el.offsetHeight;
+  }
+  // Math.abs is required, because of subpixel rounding errors
+  const updatedHeight = Math.abs(prevHeight - height) > 1 ? height : prevHeight;
+  prevHeightRef.current = updatedHeight;
+
+  return updatedHeight;
+};
