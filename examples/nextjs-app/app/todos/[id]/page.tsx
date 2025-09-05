@@ -1,17 +1,15 @@
 import { Todo, todos } from '@/app/mockData/todos';
-import {
-  DatePicker,
-  DynamicPage,
-  DynamicPageTitle,
-  Form,
-  FormItem,
-  Input,
-  Label,
-  MessageStrip,
-  Switch,
-  TextArea,
-  Title,
-} from '@ui5/webcomponents-react';
+import { DatePicker } from '@ui5/webcomponents-react/DatePicker';
+import { DynamicPage } from '@ui5/webcomponents-react/DynamicPage';
+import { DynamicPageTitle } from '@ui5/webcomponents-react/DynamicPageTitle';
+import { Form } from '@ui5/webcomponents-react/Form';
+import { FormItem } from '@ui5/webcomponents-react/FormItem';
+import { Input } from '@ui5/webcomponents-react/Input';
+import { Label } from '@ui5/webcomponents-react/Label';
+import { MessageStrip } from '@ui5/webcomponents-react/MessageStrip';
+import { Switch } from '@ui5/webcomponents-react/Switch';
+import { TextArea } from '@ui5/webcomponents-react/TextArea';
+import { Title } from '@ui5/webcomponents-react/Title';
 import MessageStripDesign from '@ui5/webcomponents/dist/types/MessageStripDesign.js';
 
 export default async function TodoDetails(props: { params: Promise<{ id: string }> }) {

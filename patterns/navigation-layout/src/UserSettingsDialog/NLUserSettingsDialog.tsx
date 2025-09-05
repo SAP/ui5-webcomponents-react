@@ -1,6 +1,9 @@
 import bellIcon from '@ui5/webcomponents-icons/dist/bell.js';
-import type { UserSettingsDialogPropTypes } from '@ui5/webcomponents-react';
-import { CheckBox, UserSettingsDialog, UserSettingsItem, UserSettingsView } from '@ui5/webcomponents-react';
+import type { UserSettingsDialogPropTypes } from '@ui5/webcomponents-react/UserSettingsDialog';
+import { CheckBox } from '@ui5/webcomponents-react/CheckBox';
+import { UserSettingsDialog } from '@ui5/webcomponents-react/UserSettingsDialog';
+import { UserSettingsItem } from '@ui5/webcomponents-react/UserSettingsItem';
+import { UserSettingsView } from '@ui5/webcomponents-react/UserSettingsView';
 import type { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
 import { AppearanceItem } from './AppearanceItem.tsx';

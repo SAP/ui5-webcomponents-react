@@ -1,5 +1,6 @@
 import employeeIcon from '@ui5/webcomponents-icons/dist/employee.js';
-import { Avatar, ShellBar } from '@ui5/webcomponents-react';
+import { Avatar } from '@ui5/webcomponents-react/Avatar';
+import { ShellBar } from '@ui5/webcomponents-react/ShellBar';
 
 export default function Home() {
   return (

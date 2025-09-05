@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-react/styles.css';
 import './globals.css';
 import { AppShell } from '@/app/components/AppShell';
-import { ThemeProvider } from '@ui5/webcomponents-react';
+import { ThemeProvider } from '@ui5/webcomponents-react/ThemeProvider';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -1,4 +1,4 @@
-import { BusyIndicator } from '@ui5/webcomponents-react';
+import { BusyIndicator } from '@ui5/webcomponents-react/BusyIndicator';
 import classes from './loading.module.css';
 
 import BusyIndicatorSize from '@ui5/webcomponents/dist/types/BusyIndicatorSize.js';

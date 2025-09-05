@@ -1,7 +1,12 @@
 import iphoneIcon from '@ui5/webcomponents-icons/dist/iphone.js';
 import qrCodeIcon from '@ui5/webcomponents-icons/dist/qr-code.js';
-import type { ButtonPropTypes, UserSettingsItemPropTypes } from '@ui5/webcomponents-react';
-import { Button, Icon, Text, UserSettingsItem, UserSettingsView } from '@ui5/webcomponents-react';
+import type { ButtonPropTypes } from '@ui5/webcomponents-react/Button';
+import type { UserSettingsItemPropTypes } from '@ui5/webcomponents-react/UserSettingsItem';
+import { Button } from '@ui5/webcomponents-react/Button';
+import { Icon } from '@ui5/webcomponents-react/Icon';
+import { Text } from '@ui5/webcomponents-react/Text';
+import { UserSettingsItem } from '@ui5/webcomponents-react/UserSettingsItem';
+import { UserSettingsView } from '@ui5/webcomponents-react/UserSettingsView';
 import { useState } from 'react';
 
 export function MobileItem() {

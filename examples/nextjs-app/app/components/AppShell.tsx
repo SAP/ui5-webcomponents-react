@@ -2,7 +2,7 @@
 
 import '@ui5/webcomponents-react/dist/Assets.js';
 import { AppShellBar } from '@/app/components/AppShellBar';
-import { ThemeProvider } from '@ui5/webcomponents-react';
+import { ThemeProvider } from '@ui5/webcomponents-react/ThemeProvider';
 import { ReactNode } from 'react';
 
 interface AppShellProps {
