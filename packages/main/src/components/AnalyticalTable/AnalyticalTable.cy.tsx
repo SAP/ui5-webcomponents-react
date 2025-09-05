@@ -451,8 +451,8 @@ describe('AnalyticalTable', () => {
 
     cy.mount(<AnalyticalTable data={dataFixed} columns={resizeColumns} />);
     cy.wait(100);
-    doubleClickResizer('@resizer2', 'age', 472);
-    doubleClickResizer('@resizer1', 'name', 472);
+    doubleClickResizer('@resizer2', 'age', 472.75);
+    doubleClickResizer('@resizer1', 'name', 472.75);
 
     cy.get('@resize').should('have.callCount', 10);
 
