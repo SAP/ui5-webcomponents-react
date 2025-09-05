@@ -20,6 +20,22 @@ interface FileUploaderAttributes {
   accept?: string | undefined;
 
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Receives id(or many ids) of the elements that describe the input.
+   *
+   * **Note:** Available since [v2.14.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.14.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the accessible ARIA name of the component.
    *
    * **Note:** Available since [v2.13.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.13.0) of **@ui5/webcomponents**.
@@ -178,7 +194,18 @@ interface FileUploaderPropTypes
  */
 const FileUploader = withWebComponent<FileUploaderPropTypes, FileUploaderDomRef>(
   'ui5-file-uploader',
-  ['accept', 'accessibleName', 'accessibleNameRef', 'maxFileSize', 'name', 'placeholder', 'value', 'valueState'],
+  [
+    'accept',
+    'accessibleDescription',
+    'accessibleDescriptionRef',
+    'accessibleName',
+    'accessibleNameRef',
+    'maxFileSize',
+    'name',
+    'placeholder',
+    'value',
+    'valueState',
+  ],
   ['disabled', 'hideInput', 'multiple', 'required'],
   ['valueStateMessage'],
   ['change', 'file-size-exceed'],

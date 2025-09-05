@@ -7,6 +7,22 @@ import type { ReactNode } from 'react';
 
 interface SegmentedButtonItemAttributes {
   /**
+   * Defines the accessible description of the component.
+   *
+   * **Note:** Available since [v2.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.15.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescription?: string | undefined;
+
+  /**
+   * Defines the IDs of the HTML Elements that describe the component.
+   *
+   * **Note:** Available since [v2.15.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.15.0) of **@ui5/webcomponents**.
+   * @default undefined
+   */
+  accessibleDescriptionRef?: string | undefined;
+
+  /**
    * Defines the accessible ARIA name of the component.
    * @default undefined
    */
@@ -82,7 +98,7 @@ interface SegmentedButtonItemPropTypes
  */
 const SegmentedButtonItem = withWebComponent<SegmentedButtonItemPropTypes, SegmentedButtonItemDomRef>(
   'ui5-segmented-button-item',
-  ['accessibleName', 'accessibleNameRef', 'icon', 'tooltip'],
+  ['accessibleDescription', 'accessibleDescriptionRef', 'accessibleName', 'accessibleNameRef', 'icon', 'tooltip'],
   ['disabled', 'selected'],
   [],
   [],

@@ -16,6 +16,7 @@ import {
 } from '@ui5/webcomponents-react';
 import { clsx } from 'clsx';
 import type { ComponentProps } from 'react';
+import { Fragment } from 'react';
 import { useGetSubComponentsOfModule } from '../utils';
 import classes from './DocsHeader.module.css';
 import { GitHubLogo } from './GitHub-Mark';
@@ -143,10 +144,10 @@ export const InfoTable = ({
             </th>
             <td data-import-cell={supportsClipboardApi}>
               {subComps.map((subComp) => (
-                <>
-                  <Import key={subComp} moduleName={subComp} componentId={preparedMeta.componentId} />
+                <Fragment key={subComp}>
+                  <Import moduleName={subComp} componentId={preparedMeta.componentId} />
                   <br />
-                </>
+                </Fragment>
               ))}
               {supportsClipboardApi && (
                 <Button

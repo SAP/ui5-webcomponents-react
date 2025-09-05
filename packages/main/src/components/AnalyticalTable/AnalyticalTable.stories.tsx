@@ -607,13 +607,18 @@ export const NoData: Story = {
             }
           />
         ) : (
-          <ToggleableTable
-            {...args}
-            data={selected === 'data' ? args.data : []}
-            NoDataComponent={
-              selected === 'noData' ? undefined : () => <IllustratedMessage role="gridcell" name={NoDataIllustration} />
-            }
-          />
+          <>
+            <hr />
+            <ToggleableTable
+              {...args}
+              data={selected === 'data' ? args.data : []}
+              NoDataComponent={
+                selected === 'noData'
+                  ? undefined
+                  : () => <IllustratedMessage role="gridcell" name={NoDataIllustration} />
+              }
+            />
+          </>
         )}
       </>
     );

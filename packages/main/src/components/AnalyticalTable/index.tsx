@@ -188,6 +188,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
   useStylesheet(styleData, AnalyticalTable.displayName);
   const isInitialized = useRef(false);
 
+  const nativeScrollbar = className?.includes('ui5-content-native-scrollbars');
   const alwaysShowSubComponent =
     subComponentsBehavior === AnalyticalTableSubComponentsBehavior.Visible ||
     subComponentsBehavior === AnalyticalTableSubComponentsBehavior.IncludeHeight;
@@ -700,7 +701,9 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
     classNames.table,
     withNavigationHighlight && classNames.hasNavigationIndicator,
     showVerticalEndBorder && classNames.showVerticalEndBorder,
-    className?.includes('ui5-content-native-scrollbars') && 'ui5-content-native-scrollbars',
+    nativeScrollbar
+      ? 'ui5-content-native-scrollbars'
+      : `ui5-content-native-scrollbars ${classNames.analyticalTableDelta}`,
   );
 
   const handleOnLoadMore = (e) => {
@@ -898,7 +901,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
               ref={verticalScrollBarRef}
               scrollContainerRef={scrollContainerRef}
               parentRef={parentRef}
-              nativeScrollbar={className?.includes('ui5-content-native-scrollbars')}
+              nativeScrollbar={nativeScrollbar}
               classNames={classNames}
             />
           )}

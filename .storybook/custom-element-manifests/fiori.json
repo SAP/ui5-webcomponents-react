@@ -1110,6 +1110,15 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
+              "description": "\"TntEmptyContentPane\" illustration type.",
+              "default": "TntEmptyContentPane",
+              "name": "TntEmptyContentPane",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
               "description": "\"TntExternalLink\" illustration type.",
               "default": "TntExternalLink",
               "name": "TntExternalLink",
@@ -3697,7 +3706,7 @@
             },
             {
               "name": "default",
-              "description": "Defines the component actions.",
+              "description": "Defines the component actions.\n\n**Note:** Not displayed when the `design` property is set to `Base`.",
               "_ui5propertyName": "actions",
               "_ui5type": {
                 "text": "Array<IButton>",
@@ -5330,6 +5339,17 @@
           "kind": "class",
           "description": "### Overview\nThe `ui5-product-switch-item` web component represents the items displayed in the\n`ui5-product-switch` web component.\n\n**Note:** `ui5-product-switch-item` is not supported when used outside of `ui5-product-switch`.\n\n### Keyboard Handling\nThe `ui5-product-switch` provides advanced keyboard handling.\nWhen focused, the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [Space] / [Enter] or [Return] - Trigger `ui5-click` event\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ProductSwitchItem.js\";`",
           "name": "ProductSwitchItem",
+          "slots": [
+            {
+              "name": "image",
+              "description": "Defines an image to be displayed instead of the standard icon.\n\n**Note:** The image slot takes precedence over the icon property.\n**Note:** We recommend using non-interactive ui5-avatar with size S, Square shape and Transparent colorScheme for best alignment.",
+              "_ui5since": "2.14.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -6297,6 +6317,87 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SearchItemShowMore.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nA `ui5-search-item-show-more` is a special type of ui5-li that acts as a button to progressively reveal additional (overflow) items within a group.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SearchItemShowMore.js\";`",
+          "name": "SearchItemShowMore",
+          "members": [
+            {
+              "kind": "field",
+              "name": "itemsToShowCount",
+              "type": {
+                "text": "number | undefined"
+              },
+              "description": "Specifies the number of additional items available to show.\nThis value replaces the placeholder (N) in the \"Show more (N)\" text.\nIf not set, the placeholder will remain as (N).",
+              "privacy": "public",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the show more item is selected.",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Specifies the number of additional items available to show.\nThis value replaces the placeholder (N) in the \"Show more (N)\" text.\nIf not set, the placeholder will remain as (N).",
+              "name": "items-to-show-count",
+              "default": "undefined",
+              "fieldName": "itemsToShowCount",
+              "type": {
+                "text": "number | undefined"
+              }
+            },
+            {
+              "description": "Defines whether the show more item is selected.",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ListItemBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ListItemBase.js"
+          },
+          "tagName": "ui5-search-item-show-more",
+          "customElement": true,
+          "_ui5experimental": true,
+          "_ui5since": "2.14.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchItemShowMore",
+            "module": "dist/SearchItemShowMore.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-search-item-show-more",
+          "declaration": {
+            "name": "SearchItemShowMore",
+            "module": "dist/SearchItemShowMore.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SearchMessageArea.js",
       "declarations": [
         {
@@ -6566,12 +6667,12 @@
               "name": "searchField",
               "description": "Defines the `ui5-input`, that will be used as a search field.",
               "_ui5type": {
-                "text": "Array<Input>",
+                "text": "Array<IShellBarSearchField>",
                 "references": [
                   {
-                    "name": "Input",
-                    "package": "@ui5/webcomponents",
-                    "module": "dist/Input.js"
+                    "name": "IShellBarSearchField",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/ShellBar.js"
                   }
                 ]
               },
@@ -6597,14 +6698,7 @@
               "description": "Define the items displayed in the content area.\n\nUse the `data-hide-order` attribute with numeric value to specify the order of the items to be hidden when the space is not enough.\nLower values will be hidden first.\n\n**Note:** The `content` slot is in an experimental state and is a subject to change.",
               "_ui5since": "2.7.0",
               "_ui5type": {
-                "text": "Array<UI5Element>",
-                "references": [
-                  {
-                    "name": "UI5Element",
-                    "package": "@ui5/webcomponents-base",
-                    "module": "dist/UI5Element.js"
-                  }
-                ]
+                "text": "Array<HTMLElement>"
               },
               "_ui5privacy": "public"
             }
@@ -6998,6 +7092,35 @@
                   "name": "expanded",
                   "_ui5privacy": "public",
                   "description": "whether the search field is expanded"
+                }
+              ]
+            },
+            {
+              "name": "search-field-clear",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<ShellBarSearchFieldClearEventDetail>",
+                "references": [
+                  {
+                    "name": "ShellBarSearchFieldClearEventDetail",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/ShellBar.js"
+                  }
+                ]
+              },
+              "description": "Fired, when the search cancel button is activated.\n\n**Note:** You can prevent the default behavior (clearing the search field value) by calling `event.preventDefault()`. The search will still be closed.\n**Note:** The `search-field-clear` event is in an experimental state and is a subject to change.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.14.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "targetRef",
+                  "_ui5privacy": "public",
+                  "description": "dom ref of the cancel button element"
                 }
               ]
             },
@@ -8007,7 +8130,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `SideNavigation` is used as a standard menu in applications.\nIt consists of three containers: header (top-aligned), main navigation section (top-aligned) and the secondary section (bottom-aligned).\n\n - The header is meant for displaying user related information - profile data, avatar, etc.\n - The main navigation section is related to the user’s current work context\n - The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on).\n\n### Usage\n\nUse the available `ui5-side-navigation-group`, `ui5-side-navigation-item`\nand `ui5-side-navigation-sub-item` components to build your menu.\nThe items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all items on one level.\nYou must not combine entries with and without icons on the same level. We strongly recommend that you do not use icons on the second level.\n\nThe `ui5-side-navigation` component is intended for use within an `ui5-navigation-layout` component.\nWhile it can function independently, it is recommended to use it with\nthe `ui5-navigation-layout` for optimal user experience.\n\n### Keyboard Handling\n\n### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigation.js\"`\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationGroup.js\";` (for `ui5-side-navigation-group`)\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationItem.js\";` (for `ui5-side-navigation-item`)\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js\";` (for `ui5-side-navigation-sub-item`)",
+          "description": "### Overview\n\nThe `SideNavigation` is used as a standard menu in applications.\nIt consists of three containers: header (top-aligned), main navigation section (top-aligned) and the secondary section (bottom-aligned).\n\n - The header is meant for displaying user related information - profile data, avatar, etc.\n - The main navigation section is related to the user’s current work context\n - The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on).\n\n### Usage\n\nUse the available `ui5-side-navigation-group`, `ui5-side-navigation-item`\nand `ui5-side-navigation-sub-item` components to build your menu.\nThe items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all items on one level.\nYou must not combine entries with and without icons on the same level. We strongly recommend that you do not use icons on the second level.\n\nThe `ui5-side-navigation` component is designed to be used within a `ui5-navigation-layout` component to ensure an optimal user experience.\n\nUsing it standalone may not match the intended design and functionality.\nFor example, the side navigation may not exhibit the correct behavior on phones and tablets.\nPadding of the `ui5-shellbar` will not match the padding of the side navigation.\n\n### Keyboard Handling\n\n### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigation.js\"`\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationGroup.js\";` (for `ui5-side-navigation-group`)\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationItem.js\";` (for `ui5-side-navigation-item`)\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js\";` (for `ui5-side-navigation-sub-item`)",
           "name": "SideNavigation",
           "slots": [
             {

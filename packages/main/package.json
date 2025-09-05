@@ -464,6 +464,10 @@
       "types": "./dist/webComponents/SearchItemGroup/index.d.ts",
       "default": "./dist/webComponents/SearchItemGroup/index.js"
     },
+    "./SearchItemShowMore": {
+      "types": "./dist/webComponents/SearchItemShowMore/index.d.ts",
+      "default": "./dist/webComponents/SearchItemShowMore/index.js"
+    },
     "./SearchMessageArea": {
       "types": "./dist/webComponents/SearchMessageArea/index.d.ts",
       "default": "./dist/webComponents/SearchMessageArea/index.js"
@@ -785,10 +789,10 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~2.13.1",
-    "@ui5/webcomponents-base": "~2.13.1",
-    "@ui5/webcomponents-fiori": "~2.13.1",
-    "@ui5/webcomponents-icons": "~2.13.1",
+    "@ui5/webcomponents": "~2.14.0",
+    "@ui5/webcomponents-base": "~2.14.0",
+    "@ui5/webcomponents-fiori": "~2.14.0",
+    "@ui5/webcomponents-icons": "~2.14.0",
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19"
   },

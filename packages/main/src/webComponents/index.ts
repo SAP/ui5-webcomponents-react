@@ -79,6 +79,7 @@ export * from './ResponsivePopover/index.js';
 export * from './Search/index.js';
 export * from './SearchItem/index.js';
 export * from './SearchItemGroup/index.js';
+export * from './SearchItemShowMore/index.js';
 export * from './SearchMessageArea/index.js';
 export * from './SearchScope/index.js';
 export * from './SegmentedButton/index.js';

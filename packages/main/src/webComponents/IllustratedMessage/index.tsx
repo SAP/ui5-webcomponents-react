@@ -88,6 +88,8 @@ interface IllustratedMessagePropTypes
     Omit<CommonProps, keyof IllustratedMessageAttributes | 'children' | 'subtitle' | 'title'> {
   /**
    * Defines the component actions.
+   *
+   * **Note:** Not displayed when the `design` property is set to `Base`.
    */
   children?: ReactNode | ReactNode[];
 
