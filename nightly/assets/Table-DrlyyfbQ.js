@@ -1,0 +1,342 @@
+import{c as W,J as $,O as X,d as J,b as Q,aS as E,m as x,a4 as Y,aQ as V,ab as Z,eU as ee,w as U,s as q,bx as ne,by as te,bz as oe,bA as ie,bB as le,j as n}from"./iframe-BGSq42U4.js";import{useMDXComponents as O}from"./index-DdgODfaa.js";import{M as se,C as b,a as ae,D as c,A as d}from"./blocks-DinJR8BJ.js";import"./Tag-DFLgZ7W6.js";import"./index-4G2XFF8s.js";import{C as re}from"./ControlsWithNote-DnZvZ46K.js";import{D as ce}from"./DocsHeader-CwHPHKpF.js";import{F as de}from"./CommandsAndQueries-DmG8Z04y.js";import{S as he}from"./SubcomponentsSection-BVy4lpQe.js";import{c as C,d as v,a as R,b as A}from"./index-BsPmjKfq.js";import{C as j,D as M,G as pe,W as ue,V as me,w as be,d as fe,T as N,a as I,b as D,c as H}from"./Table.stories-BSF9lN1S.js";import{T as B}from"./index-DQqje7sX.js";import{p as K}from"./i18n-DCXZOGva.js";import"./ai-BGloBIHd.js";import{T as k}from"./index-Bqm4aclk.js";import"./preload-helper-D9Z9MdNV.js";import"./information-BYqUssqf.js";import"./sys-enter-2-dj_WkcIy.js";import"./alert-pmNi1f9N.js";import"./index-Dv5XzTWy.js";import"./index-DBkY9uWW.js";import"./Link-YDiGCC73.js";import"./copy-B4CJ-Uvv.js";import"./copy-BkyD6IBJ.js";import"./GitHub-Mark-ClzIIXtg.js";import"./TableOfContent-CeNmhJSM.js";import"./index-CFLPIYxg.js";import"./index-DeoM-MQY.js";import"./addCustomCSSWithScoping-BoN0_mzK.js";import"./index-81YUArEn.js";import"./index-DnKOFCSh.js";import"./index-D1i96R2Q.js";import"./AvatarSize-BtKTMFJ5.js";import"./employee-BJV2VOx9.js";import"./query-CzSBusdE.js";import"./overflow-D34homVp.js";import"./sort-descending-DZbNeaMn.js";import"./IconDesign-DXd8PPVF.js";import"./Friends500-CRbR9XAn.js";import"./index-DsX1x0Cs.js";import"./SegmentedButton-Bs-9-uNd.js";import"./navigation-right-arrow-CLB8HeYS.js";function we(){return W(X,{icon:this._icon,tooltip:this._tooltip,onClick:this._onClick,design:$.Transparent})}K("@ui5/webcomponents-theming","sap_horizon",async()=>J);K("@ui5/webcomponents","sap_horizon",async()=>Q);const ge=`:host{flex-shrink:0}:host([_popin]){margin-inline:.0625rem 0}[ui5-button]{min-width:1.625rem;width:1.625rem;height:1.625rem}[ui5-button]::part(icon){width:1rem;height:1rem}:host([_popin]) [ui5-button]::part(icon){width:.75rem;height:.75rem}
+`;var Te=function(l,e,t,o){var s=arguments.length,i=s<3?e:o===null?o=Object.getOwnPropertyDescriptor(e,t):o,a;if(typeof Reflect=="object"&&typeof Reflect.decorate=="function")i=Reflect.decorate(l,e,t,o);else for(var r=l.length-1;r>=0;r--)(a=l[r])&&(i=(s<3?a(i):s>3?a(e,t,i):a(e,t))||i);return s>3&&i&&Object.defineProperty(e,t,i),i};let T=class extends V{onBeforeRendering(){this.toggleAttribute("_popin",!this.parentElement)}_onClick(e){(this.parentElement?.hasAttribute("ui5-table-header-cell")?this:this.getRootNode().host._headerCell.action[0]).fireDecoratorEvent("click",{targetRef:e.target}),e.stopPropagation()}get _tooltip(){return this.getRenderInfo().tooltip}get _icon(){return this.getRenderInfo().icon}};T=Te([E("click",{bubbles:!1}),x({renderer:Y,styles:ge,template:we})],T);const Se=T;var L=function(l,e,t,o){var s=arguments.length,i=s<3?e:o===null?o=Object.getOwnPropertyDescriptor(e,t):o,a;if(typeof Reflect=="object"&&typeof Reflect.decorate=="function")i=Reflect.decorate(l,e,t,o);else for(var r=l.length-1;r>=0;r--)(a=l[r])&&(i=(s<3?a(i):s>3?a(e,t,i):a(e,t))||i);return s>3&&i&&Object.defineProperty(e,t,i),i},S;let w=S=class extends Se{onAfterRendering(){super.onAfterRendering(),this.toggleAttribute("_popin",!this.parentElement?.hasAttribute("ui5-table-header-cell"))}getRenderInfo(){return{icon:"ai",tooltip:S.i18nBundle.getText(ee)}}};L([Z("@ui5/webcomponents")],w,"i18nBundle",void 0);w=S=L([x({tag:"ui5-table-header-cell-action-ai"})],w);w.define();const p=U("ui5-table-header-cell-action-ai",[],[],[],["click"]);p.displayName="TableHeaderCellActionAI";try{p.displayName="TableHeaderCellActionAI",p.__docgenInfo={description:`The \`TableHeaderCellActionAI\` component defines a dedicated AI action for the table column.
+
+
+
+__Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)`,displayName:"TableHeaderCellActionAI",props:{onClick:{defaultValue:null,description:`Fired when a header cell action is clicked.
+
+**Note:** Available since [v2.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.8.0) of **@ui5/webcomponents**.
+
+| cancelable | bubbles |
+| :--------: | :-----: |
+| ❌|✅|`,name:"onClick",required:!1,type:{name:"(event: Ui5CustomEvent<TableHeaderCellActionAIDomRef, TableHeaderCellActionClickEventDetail>) => void"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}try{p.displayName="TableHeaderCellActionAI",p.__docgenInfo={description:`The \`TableHeaderCellActionAI\` component defines a dedicated AI action for the table column.
+
+
+
+__Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)`,displayName:"TableHeaderCellActionAI",props:{onClick:{defaultValue:null,description:`Fired when a header cell action is clicked.
+
+**Note:** Available since [v2.8.0](https://github.com/SAP/ui5-webcomponents/releases/tag/v2.8.0) of **@ui5/webcomponents**.
+
+| cancelable | bubbles |
+| :--------: | :-----: |
+| ❌|✅|`,name:"onClick",required:!1,type:{name:"(event: Ui5CustomEvent<TableHeaderCellActionAIDomRef, TableHeaderCellActionClickEventDetail>) => void"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}var _;(function(l){l.None="None",l.Single="Single",l.Multiple="Multiple"})(_||(_={}));const h=_;var y=function(l,e,t,o){var s=arguments.length,i=s<3?e:o===null?o=Object.getOwnPropertyDescriptor(e,t):o,a;if(typeof Reflect=="object"&&typeof Reflect.decorate=="function")i=Reflect.decorate(l,e,t,o);else for(var r=l.length-1;r>=0;r--)(a=l[r])&&(i=(s<3?a(i):s>3?a(e,t,i):a(e,t))||i);return s>3&&i&&Object.defineProperty(e,t,i),i};let f=class extends V{constructor(){super(),this.mode="Multiple",this.selected="",this.identifier="TableSelection",this._rowsLength=0,this.onClickCaptureBound=this._onClickCapture.bind(this)}onTableActivate(e){this._table=e,this._invalidateTableAndRows()}onExitDOM(){this.mode=h.None,this._invalidateTableAndRows(),this._table=void 0}onBeforeRendering(){this._invalidateTableAndRows()}onTableBeforeRendering(){this.isMultiSelectable()&&this._table&&this._table.headerRow[0]&&this._rowsLength!==this._table.rows.length&&(this._rowsLength=this._table.rows.length,this._table.headerRow[0]._invalidate++),this._table?.removeEventListener("click",this.onClickCaptureBound)}onTableAfterRendering(){this._table?.addEventListener("click",this.onClickCaptureBound,{capture:!0})}isSelectable(){return this.mode!==h.None}isMultiSelectable(){return this.mode===h.Multiple}isRowSelectorRequired(){return this.mode!==h.None}getAriaDescriptionForTable(){}getAriaDescriptionForColumnHeader(){}getRowKey(e){return e.rowKey||""}isSelected(e){if(!this._table||!this.isSelectable())return!1;if(e.isHeaderRow())return this.areAllRowsSelected();const t=this.getRowKey(e);return this.selectedAsArray.includes(t)}hasSelectedRow(){if(!this._table||!this.isSelectable())return!1;const e=this.selectedAsArray;return this._table.rows.some(t=>{const o=this.getRowKey(t);return e.includes(o)})}areAllRowsSelected(){if(!this._table||!this._table.rows.length||this.mode!==h.Multiple)return!1;const e=this.selectedAsArray;return this._table.rows.every(t=>{const o=this.getRowKey(t);return e.includes(o)})}setSelected(e,t,o=!1){this._rangeSelection?.isMouse&&this._rangeSelection.shiftPressed||(e.isHeaderRow()?this._selectHeaderRow(t):this._selectRow(e,t),o&&this.fireDecoratorEvent("change"))}get selectedAsArray(){return this.selected.split(" ").filter(String)}set selectedAsArray(e){this.selected=e.filter(String).join(" ")}get selectedAsSet(){return new Set(this.selectedAsArray)}set selectedAsSet(e){this.selectedAsArray=[...e]}_selectRow(e,t){const o=this.getRowKey(e);if(this.mode===h.Multiple){const s=this.selectedAsSet;s[t?"add":"delete"](o),this.selectedAsSet=s}else this.selected=t?o:""}_selectHeaderRow(e){const t=this.selectedAsSet;this._table.rows.forEach(o=>{const s=this.getRowKey(o);t[e?"add":"delete"](s)}),this.selectedAsSet=t}_invalidateTableAndRows(){this._table&&(this.isSelectable()?this.isMultiSelectable()||(this.selected=this.selectedAsArray.shift()||""):this.selected="",this._table._invalidate++,this._table.headerRow[0]._invalidate++,this._table.rows.forEach(e=>e._invalidate++))}_onkeydown(e){if(!this.isMultiSelectable()||!this._table||!e.shiftKey)return;const t=ne();if(!(t?.hasAttribute("ui5-table-row")||this._rangeSelection?.isMouse||t?.hasAttribute("ui5-growing-row"))){this._stopRangeSelection();return}if(this._rangeSelection){if(e.key==="ArrowUp"||e.key==="ArrowDown"){const o=te(e)?-1:1;this._handleRangeSelection(t,o)}}else{const o=t;this._startRangeSelection(o,this.isSelected(o))}this._rangeSelection&&(this._rangeSelection.shiftPressed=e.shiftKey)}_onkeyup(e,t){this._table&&((!t.hasAttribute("ui5-table-row")||!this._rangeSelection||!e.shiftKey)&&this._stopRangeSelection(),this._rangeSelection&&(this._rangeSelection.shiftPressed=e.shiftKey))}_onClickCapture(e){if(!this._table||this.mode!==h.Multiple)return;if(oe(e)){this._stopRangeSelection();return}if(!ie(e)){this._stopRangeSelection();return}const t=le(e.composedPath());if(e.shiftKey&&this._rangeSelection?.isMouse){const o=this._rangeSelection.rows[0],s=this._table.rows.indexOf(o),i=this._table.rows.indexOf(t),a=this.isSelected(o);if(t.shadowRoot?.querySelector("#selection-component")?.toggleAttribute("checked",a),e.stopPropagation(),s===-1||i===-1||t.rowKey===o.rowKey||t.rowKey===this._rangeSelection.rows[this._rangeSelection.rows.length-1].rowKey)return;const r=i-s;this._handleRangeSelection(t,r)}else t&&this._startRangeSelection(t,!this.isSelected(t),!0)}_startRangeSelection(e,t,o=!1){this._rangeSelection={selected:t,isUp:null,rows:[e],isMouse:o,shiftPressed:!1}}_handleRangeSelection(e,t){if(!this._rangeSelection)return;const o=t>0;this._rangeSelection.isUp??=o;const s=o!==this._rangeSelection.isUp&&!this._rangeSelection.isMouse;let i=s&&this.isSelected(e);if(s)this._reverseRangeSelection();else{const a=this._table.rows.indexOf(e),[r,F]=[a,a-t].sort((g,m)=>g-m);i=this._table?.rows.slice(r,F+1).reduce((g,m)=>{const G=!this._rangeSelection?.rows.includes(m),z=this.isSelected(m)!==this._rangeSelection.selected;return G&&this._rangeSelection?.rows.push(m),this._selectRow(m,this._rangeSelection.selected),g||z},i)||!1}i&&this.fireDecoratorEvent("change")}_stopRangeSelection(){this._rangeSelection=null}_reverseRangeSelection(){const e=this._rangeSelection?.rows.pop();e&&this._selectRow(e,!1),this._rangeSelection?.rows.length===1&&(this._rangeSelection.isUp=null)}};y([q()],f.prototype,"mode",void 0);y([q()],f.prototype,"selected",void 0);f=y([x({tag:"ui5-table-selection"}),E("change",{bubbles:!0})],f);f.define();const u=U("ui5-table-selection",["mode","selected"],[],[],["change"]);u.displayName="TableSelection";try{u.displayName="TableSelection",u.__docgenInfo={description:'The `TableSelection` component is used inside the `Table` to add key-based selection capabilities to the `Table`.\n\nThe component offers three selection modes:\n* Single - select a single row.\n* Multiple - select multiple rows.\n* None - no selection active.\n\nAs the selection is key-based, `TableRow` components need to define a unique `row-key` property.\n\n### Usage\n\nThe `TableSelection` component is only used inside the `Table` component as a feature.\nIt has to be slotted inside the `Table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<Table>\n	<TableSelection mode="Multiple" slot="features"></TableSelection>\n</Table>\n```\n\n\n\n__Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)',displayName:"TableSelection",props:{onChange:{defaultValue:null,description:`Fired when the selection is changed by user interaction.
+
+| cancelable | bubbles |
+| :--------: | :-----: |
+| ❌|✅|`,name:"onChange",required:!1,type:{name:"(event: Ui5CustomEvent<TableSelectionDomRef, never>) => void"}},mode:{defaultValue:{value:'"Multiple"'},description:"Defines the selection mode.",name:"mode",required:!1,type:{name:"enum",value:[{value:'"None"'},{value:'"Single"'},{value:'"Multiple"'},{value:'"None"'},{value:'"Single"'},{value:'"Multiple"'}]}},selected:{defaultValue:null,description:"Defines the selected rows separated by a space.",name:"selected",required:!1,type:{name:"string"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}try{u.displayName="TableSelection",u.__docgenInfo={description:'The `TableSelection` component is used inside the `Table` to add key-based selection capabilities to the `Table`.\n\nThe component offers three selection modes:\n* Single - select a single row.\n* Multiple - select multiple rows.\n* None - no selection active.\n\nAs the selection is key-based, `TableRow` components need to define a unique `row-key` property.\n\n### Usage\n\nThe `TableSelection` component is only used inside the `Table` component as a feature.\nIt has to be slotted inside the `Table` in the `features` slot.\nThe component is not intended to be used as a standalone component.\n\n```html\n<Table>\n	<TableSelection mode="Multiple" slot="features"></TableSelection>\n</Table>\n```\n\n\n\n__Note__: This is a UI5 Web Component! [Repository](https://github.com/SAP/ui5-webcomponents) | [Documentation](https://sap.github.io/ui5-webcomponents/)',displayName:"TableSelection",props:{onChange:{defaultValue:null,description:`Fired when the selection is changed by user interaction.
+
+| cancelable | bubbles |
+| :--------: | :-----: |
+| ❌|✅|`,name:"onChange",required:!1,type:{name:"(event: Ui5CustomEvent<TableSelectionDomRef, never>) => void"}},mode:{defaultValue:{value:'"Multiple"'},description:"Defines the selection mode.",name:"mode",required:!1,type:{name:"enum",value:[{value:'"None"'},{value:'"Single"'},{value:'"Multiple"'},{value:'"None"'},{value:'"Single"'},{value:'"Multiple"'}]}},selected:{defaultValue:null,description:"Defines the selected rows separated by a space.",name:"selected",required:!1,type:{name:"string"}},className:{defaultValue:null,description:`CSS Class Name which will be appended to the most outer element of a component.
+Use this prop carefully, overwriting CSS rules might break the component.`,name:"className",required:!1,type:{name:"string"}},style:{defaultValue:null,description:`Element style which will be appended to the most outer element of a component.
+Use this prop carefully, some css properties might break the component.`,name:"style",required:!1,type:{name:"CSSProperties"}},waitForDefine:{defaultValue:null,description:`Defines whether the component should wait for the underlying custom element of the web component to be defined. This can be useful, for example, for using instance methods when mounting the component.
+
+__Note:__ This adds a rendering cycle to your component.`,name:"waitForDefine",required:!1,type:{name:"boolean"}}}}}catch{}function P(l){const e={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",strong:"strong",...O(),...l.components};return n.jsxs(n.Fragment,{children:[n.jsx(se,{of:j}),`
+`,n.jsx(ce,{of:j}),`
+`,n.jsx("br",{}),`
+`,n.jsx(e.h2,{id:"example",children:"Example"}),`
+`,n.jsx(b,{of:M}),`
+`,n.jsx(e.h2,{id:"properties",children:"Properties"}),`
+`,n.jsx(re,{of:M}),`
+`,n.jsx("br",{}),`
+`,n.jsx(e.h1,{id:"more-examples",children:"More Examples"}),`
+`,n.jsx("br",{}),`
+`,n.jsx(e.h2,{id:"growing-table",children:"Growing Table"}),`
+`,n.jsxs(e.p,{children:[n.jsx(e.code,{children:"Table"})," with growing feature (",n.jsx(e.code,{children:"<TableGrowing onLoadMore={onLoadMore} mode={TableGrowingMode.Scroll} />"}),"):"]}),`
+`,n.jsx(b,{of:pe}),`
+`,n.jsxs("details",{children:[n.jsx("summary",{children:"Show static code"}),n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-tsx",children:`const createRows = (indexOffset) => {
+  return new Array(25).fill('').map((_, index) => (
+    <TableRow key={\`\${index + indexOffset}-row\`}>
+      <TableCell>
+        <span>{index + indexOffset}</span>
+      </TableCell>
+      <TableCell>
+        <span>Placeholder</span>
+      </TableCell>
+      <TableCell>
+        <span>Placeholder 2</span>
+      </TableCell>
+      <TableCell>
+        <span>Placeholder 3</span>
+      </TableCell>
+      <TableCell>
+        <span>Placeholder 4</span>
+      </TableCell>
+    </TableRow>
+  ));
+};
+
+const GrowingTable = (props) => {
+  const [mode, setMode] = useState<TableGrowingPropTypes['mode']>(TableGrowingMode.Button);
+  const [rows, setRows] = useState(createRows(1));
+  const onLoadMore = () => {
+    setRows((prev) => [...prev, ...createRows(prev.length + 1)]);
+  };
+  return (
+    <>
+      <Label showColon style={{ marginInlineEnd: '0.5rem' }}>
+        Growing <code>mode</code>
+      </Label>
+      <SegmentedButton
+        style={{ marginBlockEnd: '0.5rem' }}
+        onSelectionChange={(e) => {
+          setMode(e.detail.selectedItems[0].textContent as TableGrowingPropTypes['mode']);
+        }}
+      >
+        <SegmentedButtonItem selected={mode === TableGrowingMode.Scroll}>Scroll</SegmentedButtonItem>
+        <SegmentedButtonItem selected={mode === TableGrowingMode.Button}>Button</SegmentedButtonItem>
+      </SegmentedButton>
+      <div style={{ height: '250px', overflow: 'auto' }}>
+        <Table {...props} features={<TableGrowing onLoadMore={onLoadMore} mode={mode} />}>
+          {rows}
+        </Table>
+      </div>
+    </>
+  );
+};
+`})})]}),`
+`,n.jsx(e.h2,{id:"table-with-row-selection",children:"Table with row selection"}),`
+`,n.jsxs(e.p,{children:[n.jsx(e.code,{children:"Table"})," with selection features (",n.jsx(e.code,{children:"<TableSelectionSingle />"})," & ",n.jsx(e.code,{children:"<TableSelectionMulti />"}),")"]}),`
+`,n.jsx(b,{of:ue}),`
+`,n.jsxs("details",{children:[n.jsx("summary",{children:"Show static code"}),n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-tsx",children:`function TableWithRowSelection(props) {
+  const [mode, setMode] = useState<'Single' | 'Multi' | 'None'>('Single');
+  return (
+    <>
+      <SegmentedButton
+        onSelectionChange={(e) => {
+          setMode(e.detail.selectedItems[0].textContent as 'Single' | 'Multi' | 'None');
+        }}
+      >
+        <SegmentedButtonItem selected={'None' === mode}>None</SegmentedButtonItem>
+        <SegmentedButtonItem selected={'Single' === mode}>Single</SegmentedButtonItem>
+        <SegmentedButtonItem selected={'Multi' === mode}>Multi</SegmentedButtonItem>
+      </SegmentedButton>
+      <Table
+        {...props}
+        features={
+          <>
+            {'Single' === mode && <TableSelectionSingle />}
+            {'Multi' === mode && <TableSelectionMulti />}
+          </>
+        }
+      >
+        <TableRow>
+          <TableCell>
+            <span>Notebook Basic</span>
+          </TableCell>
+          <TableCell>
+            <span>Very Best Screens</span>
+          </TableCell>
+          <TableCell>
+            <span>30 x 18 x 3cm</span>
+          </TableCell>
+          <TableCell>
+            <span>4.2KG</span>
+          </TableCell>
+          <TableCell>
+            <span>956EUR</span>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
+            <span>Notebook Basic 17HT-1001</span>
+          </TableCell>
+          <TableCell>
+            <span>Very Best Screens</span>
+          </TableCell>
+          <TableCell>
+            <span>29 x 17 x 3.1cm</span>
+          </TableCell>
+          <TableCell>
+            <span>4.5KG</span>
+          </TableCell>
+          <TableCell>
+            <span>1249EUR</span>
+          </TableCell>
+        </TableRow>
+      </Table>
+    </>
+  );
+}
+`})})]}),`
+`,n.jsx(e.h2,{id:"table-with-virtualized-rows",children:"Table with virtualized rows"}),`
+`,n.jsxs(e.p,{children:[n.jsx(e.code,{children:"Table"})," with virtualization feature (",n.jsx(e.code,{children:"<TableVirtualizer {...props) />"}),"):"]}),`
+`,n.jsx(b,{of:me}),`
+`,n.jsxs("details",{children:[n.jsx("summary",{children:"Show static code"}),n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-tsx",children:`// enrich data with \`position\` (if not already available)
+const dataLargeWithPosition = dataLarge.map((item, index) => ({
+  ...item,
+  position: index
+}));
+
+function VirtualizedTable(props) {
+  const [data, setData] = useState(dataLargeWithPosition.slice(0, 9));
+
+  const handleRangeChange: TableVirtualizerPropTypes['onRangeChange'] = (e) => {
+    const { first, last } = e.detail;
+
+    // render two rows before and after the visible area of the table body container
+    const overscanCountStart = Math.max(first - 2, 0);
+    const overscanCountEnd = Math.min(last + 2, dataLargeWithPosition.length);
+    setData(dataLargeWithPosition.slice(overscanCountStart, overscanCountEnd));
+  };
+  return (
+    <Table
+      {...props}
+      // headerRow + 8 visible rows:
+      // 9 * 44px = 396px (content-density: Cozy)
+      // 9 * 32px = 288px (content-density: Compact)
+      style={{ height: '396px' }}
+      headerRow={
+        <TableHeaderRow sticky>
+          <TableHeaderCell>Name</TableHeaderCell>
+          <TableHeaderCell>Age</TableHeaderCell>
+          <TableHeaderCell>Friend Name</TableHeaderCell>
+          <TableHeaderCell>Friend Age</TableHeaderCell>
+        </TableHeaderRow>
+      }
+      features={<TableVirtualizer rowCount={500} rowHeight={44} onRangeChange={handleRangeChange} />}
+    >
+      {data.map((row) => (
+        <TableRow key={row.position} position={row.position}>
+          <TableCell>
+            <span>{row.name}</span>
+          </TableCell>
+          <TableCell>
+            <span>{row.age}</span>
+          </TableCell>
+          <TableCell>
+            <span>{row.friend.name}</span>
+          </TableCell>
+          <TableCell>
+            <span>{row.friend.age}</span>
+          </TableCell>
+        </TableRow>
+      ))}
+    </Table>
+  );
+}
+`})})]}),`
+`,n.jsx(e.h2,{id:"table-with-row-actions",children:"Table with row actions"}),`
+`,n.jsxs(e.p,{children:["The ",n.jsx(e.code,{children:"TableRowAction"})," & ",n.jsx(e.code,{children:"TableRowActionNavigation"}),` component lets you incorporate interactive elements into table rows, enabling users to take actions directly related to each row.
+The `,n.jsx(e.code,{children:"rowActionCount"})," prop of the ",n.jsx(e.code,{children:"Table"})," component determines the width of the row action column. A maximum value of 3 is recommended, as exceeding this limit may take up too much space on smaller screens. If the number of row actions exceeds the ",n.jsx(e.code,{children:"rowActionCount"}),", an overflow button will appear, providing access to the additional actions."]}),`
+`,n.jsxs(e.p,{children:["The ",n.jsx(e.code,{children:"invisible"})," prop of row actions allows you to hide specific row actions while preserving their space. This can be useful for consistent alignment of row actions across several rows."]}),`
+`,n.jsx(b,{of:be}),`
+`,n.jsx(e.h2,{id:"drag-and-rop-table-rows",children:"Drag and rop table rows"}),`
+`,n.jsxs(e.p,{children:["Enable drag-and-drop by using the ",n.jsx(e.code,{children:"onMoveOver"})," and ",n.jsx(e.code,{children:"onMove"})," event in combination with the ",n.jsx(e.code,{children:"movable"})," prop on the ",n.jsx(e.code,{children:"TableRow"}),"."]}),`
+`,n.jsx(b,{of:fe}),`
+`,n.jsxs("details",{children:[n.jsx("summary",{children:"Show static code"}),n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-tsx",children:`function DragAndDropTableRows(props) {
+  const [rows, setRows] = useState(dataLargeWithPosition.slice(0, 10));
+
+  const handleMove: TablePropTypes["onMove"] = (e) => {
+    const { source, destination } = e.detail;
+
+    setRows((prevRows) => {
+      const sourceIndex = prevRows.findIndex(
+        (row) => \`\${row.position}\` === source.element.dataset.id,
+      );
+      const destinationIndex = prevRows.findIndex(
+        (row) => \`\${row.position}\` === destination.element.dataset.id,
+      );
+
+      if (sourceIndex === -1 || destinationIndex === -1) {
+        return prevRows;
+      }
+
+      const updatedRows = [...prevRows];
+      const [movedRow] = updatedRows.splice(sourceIndex, 1);
+
+      if (destination.placement === "Before") {
+        updatedRows.splice(destinationIndex, 0, movedRow);
+      } else if (destination.placement === "After") {
+        updatedRows.splice(destinationIndex + 1, 0, movedRow);
+      }
+
+      return updatedRows;
+    });
+  };
+
+  const handleMoveOver: TablePropTypes["onMoveOver"] = (e) => {
+    const { source, destination } = e.detail;
+
+    if (
+      source.element.hasAttribute("ui5-table-row") &&
+      destination.element.hasAttribute("ui5-table-row") &&
+      destination.placement !== "On"
+    ) {
+      e.preventDefault();
+    }
+  };
+
+  return (
+    <Table {...props} onMove={handleMove} onMoveOver={handleMoveOver}>
+      {rows.map((row) => (
+        <TableRow key={row.position} movable data-id={row.position}>
+          <TableCell>
+            <span>{row.name}</span>
+          </TableCell>
+          <TableCell>
+            <span>{row.age}</span>
+          </TableCell>
+          <TableCell>
+            <span>{row.friend.name}</span>
+          </TableCell>
+          <TableCell>
+            <span>{row.friend.age}</span>
+          </TableCell>
+        </TableRow>
+      ))}
+    </Table>
+  );
+}
+`})})]}),`
+`,n.jsx(ae,{children:he}),`
+`,n.jsx(e.h2,{id:"tableheaderrow",children:"TableHeaderRow"}),`
+`,n.jsx(c,{of:C}),`
+`,n.jsx(d,{of:C}),`
+`,n.jsx(e.h2,{id:"tableheadercell",children:"TableHeaderCell"}),`
+`,n.jsx(c,{of:v}),`
+`,n.jsx(d,{of:v}),`
+`,n.jsx(e.h2,{id:"tableheadercellactionai",children:"TableHeaderCellActionAI"}),`
+`,n.jsx(c,{of:p}),`
+`,n.jsx(d,{of:p}),`
+`,n.jsx(e.h2,{id:"tablerow",children:"TableRow"}),`
+`,n.jsx(c,{of:R}),`
+`,n.jsx(d,{of:R}),`
+`,n.jsx(e.h2,{id:"tablecell",children:"TableCell"}),`
+`,n.jsx(c,{of:A}),`
+`,n.jsx(d,{of:A}),`
+`,n.jsx(e.h2,{id:"tablerowaction",children:"TableRowAction"}),`
+`,n.jsx(c,{of:B}),`
+`,n.jsx(d,{of:B}),`
+`,n.jsx(e.h2,{id:"tablerowactionnavigation",children:"TableRowActionNavigation"}),`
+`,n.jsx(c,{of:N}),`
+`,n.jsx(d,{of:N}),`
+`,n.jsx(e.h2,{id:"tablegrowing",children:"TableGrowing"}),`
+`,n.jsx(c,{of:I}),`
+`,n.jsx(d,{of:I}),`
+`,n.jsx(e.h2,{id:"tableselectionmulti",children:"TableSelectionMulti"}),`
+`,n.jsx(c,{of:k}),`
+`,n.jsx(d,{of:k}),`
+`,n.jsx(e.h2,{id:"tableselectionsingle",children:"TableSelectionSingle"}),`
+`,n.jsx(c,{of:D}),`
+`,n.jsx(d,{of:D}),`
+`,n.jsx(e.h2,{id:"tablevirtualizer-experimental",children:"TableVirtualizer (experimental)"}),`
+`,n.jsx(c,{of:H}),`
+`,n.jsx(d,{of:H}),`
+`,n.jsx(e.h2,{id:"tableselection-deprecated",children:"TableSelection (deprecated)"}),`
+`,n.jsx(e.p,{children:n.jsx(e.strong,{children:"Deprecated!"})}),`
+`,n.jsx(c,{of:u}),`
+`,n.jsx(d,{of:u}),`
+`,n.jsx(de,{})]})}function un(l={}){const{wrapper:e}={...O(),...l.components};return e?n.jsx(e,{...l,children:n.jsx(P,{...l})}):P(l)}export{un as default};
