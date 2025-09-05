@@ -1,0 +1,1 @@
+import{r as a,u,k as n,l as o}from"./iframe-Dh5R3sl2.js";const i=s=>{const[c,t]=a.useState(!1),r=a.useRef(!1);return u(()=>{r.current=!0,t(s.current?.matches(":dir(rtl)")??!1);const e=()=>{r.current&&t(s.current?.matches(":dir(rtl)")??!1)};return n(e),()=>{r.current=!1,o(e)}},[]),c};export{i as u};
