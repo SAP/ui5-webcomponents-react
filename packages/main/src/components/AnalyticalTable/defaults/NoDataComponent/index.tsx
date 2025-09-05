@@ -1,9 +1,7 @@
-interface NoDataComponentProps {
-  noDataText: string;
-  className: string;
-}
+import type { AnalyticalTablePropTypes } from '../../types/index.js';
 
-export const DefaultNoDataComponent = ({ noDataText, className }: NoDataComponentProps) => {
+export const DefaultNoDataComponent: AnalyticalTablePropTypes['NoDataComponent'] = (props) => {
+  const { noDataText, className } = props;
   return (
     <div className={className} data-component-name="AnalyticalTableNoData" role="gridcell">
       {noDataText}

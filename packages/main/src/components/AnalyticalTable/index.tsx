@@ -24,6 +24,7 @@ import {
   useSortBy,
   useTable,
 } from 'react-table';
+import { AnalyticalTableNoDataReason } from '../../enums/AnalyticalTableNoDataReason.js';
 import { AnalyticalTablePopinDisplay } from '../../enums/AnalyticalTablePopinDisplay.js';
 import { AnalyticalTableScaleWidthMode } from '../../enums/AnalyticalTableScaleWidthMode.js';
 import { AnalyticalTableSelectionBehavior } from '../../enums/AnalyticalTableSelectionBehavior.js';
@@ -85,9 +86,9 @@ import type {
   AnalyticalTableDomRef,
   AnalyticalTablePropTypes,
   AnalyticalTableState,
+  CellInstance,
   DivWithCustomScrollProp,
   TableInstance,
-  CellInstance,
 } from './types/index.js';
 import {
   getCombinedElementsHeight,
@@ -325,8 +326,8 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   const noDataTextI18n = i18nBundle.getText(LIST_NO_DATA);
   const noDataTextFiltered = i18nBundle.getText(NO_DATA_FILTERED);
-  const noDataTextLocal =
-    noDataText ?? (tableState.filters?.length > 0 || tableState.globalFilter ? noDataTextFiltered : noDataTextI18n);
+  const noDataFiltered = tableState.filters?.length > 0 || tableState.globalFilter;
+  const noDataTextLocal = noDataText ?? (noDataFiltered ? noDataTextFiltered : noDataTextI18n);
 
   const [componentRef, analyticalTableRef] = useSyncRef<AnalyticalTableDomRef>(ref);
   const [cbRef, scrollToRef] = useScrollToRef(componentRef, dispatch);
@@ -844,7 +845,13 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
                     pleaseWaitText={i18nBundle.getText(PLEASE_WAIT)}
                   />
                 ) : (
-                  <NoDataComponent noDataText={noDataTextLocal} className={classNames.noData} />
+                  <NoDataComponent
+                    noDataText={noDataTextLocal}
+                    className={classNames.noData}
+                    noDataReason={
+                      noDataFiltered ? AnalyticalTableNoDataReason.Filtered : AnalyticalTableNoDataReason.Empty
+                    }
+                  />
                 )}
               </div>
             )}
