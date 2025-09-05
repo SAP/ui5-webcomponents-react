@@ -1,4 +1,4 @@
-import { ThemingParameters, useSyncRef } from '@ui5/webcomponents-react-base';
+import { useSyncRef } from '@ui5/webcomponents-react-base';
 import { clsx } from 'clsx';
 import type { MutableRefObject, RefObject } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
@@ -51,7 +51,7 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
   return (
     <FlexBox
       direction={FlexBoxDirection.Column}
-      style={{ position: 'relative' }}
+      className={classNames.verticalScrollbarContainer}
       data-component-name="AnalyticalTableVerticalScrollbarContainer"
     >
       <div
@@ -66,16 +66,20 @@ export const VerticalScrollbar = forwardRef<HTMLDivElement, VerticalScrollbarPro
           height: tableRef.current ? `${tableBodyHeight}px` : '0',
         }}
         onScroll={handleVerticalScrollBarScroll}
-        className={clsx(classNames.scrollbar, nativeScrollbar && 'ui5-content-native-scrollbars')}
+        className={clsx(
+          classNames.scrollbar,
+          nativeScrollbar
+            ? 'ui5-content-native-scrollbars'
+            : `ui5-content-native-scrollbars ${classNames.analyticalTableDelta}`,
+        )}
         data-component-name="AnalyticalTableVerticalScrollbar"
         tabIndex={-1}
       >
         <div
           ref={scrollElementRef}
+          className={classNames.verticalScroller}
           style={{
             height: `${scrollContainerRef.current?.scrollHeight}px`,
-            width: '1px',
-            backgroundColor: ThemingParameters.sapList_Background,
           }}
         />
       </div>
