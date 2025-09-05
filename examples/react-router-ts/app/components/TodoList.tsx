@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import { List, ListItemStandard, ListPropTypes } from '@ui5/webcomponents-react';
+import { List, type ListPropTypes } from '@ui5/webcomponents-react/List';
+import { ListItemStandard } from '@ui5/webcomponents-react/ListItemStandard';
 import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import { Todo } from '~/mockData/todos';
 

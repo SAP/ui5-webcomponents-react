@@ -1,4 +1,4 @@
-import { Button } from '@ui5/webcomponents-react';
+import { Button } from '@ui5/webcomponents-react/Button';
 
 describe('Component tests', () => {
   // example for component test

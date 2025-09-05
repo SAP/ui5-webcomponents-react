@@ -2,17 +2,12 @@
 
 import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';
 import paletteIcon from '@ui5/webcomponents-icons/dist/palette.js';
-import {
-  Button,
-  List,
-  ListPropTypes,
-  ResponsivePopover,
-  ShellBar,
-  ShellBarItem,
-  ShellBarItemPropTypes,
-  ListItemStandard,
-  ButtonDomRef,
-} from '@ui5/webcomponents-react';
+import { Button, type ButtonDomRef } from '@ui5/webcomponents-react/Button';
+import { List, type ListPropTypes } from '@ui5/webcomponents-react/List';
+import { ResponsivePopover } from '@ui5/webcomponents-react/ResponsivePopover';
+import { ShellBar } from '@ui5/webcomponents-react/ShellBar';
+import { ShellBarItem, type ShellBarItemPropTypes } from '@ui5/webcomponents-react/ShellBarItem';
+import { ListItemStandard } from '@ui5/webcomponents-react/ListItemStandard';
 import { usePathname, useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import classes from './AppShellBar.module.css';

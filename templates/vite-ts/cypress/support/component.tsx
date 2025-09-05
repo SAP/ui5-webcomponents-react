@@ -13,7 +13,7 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 import '@ui5/webcomponents-react/dist/Assets.js';
-import { ThemeProvider } from '@ui5/webcomponents-react';
+import { ThemeProvider } from '@ui5/webcomponents-react/ThemeProvider';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

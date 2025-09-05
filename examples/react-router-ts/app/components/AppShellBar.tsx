@@ -2,17 +2,12 @@ import { useLocation, useNavigate } from 'react-router';
 import { getTheme, setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
 import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';
 import paletteIcon from '@ui5/webcomponents-icons/dist/palette.js';
-import {
-  Button,
-  List,
-  ListItemStandard,
-  ListPropTypes,
-  ResponsivePopover,
-  ResponsivePopoverDomRef,
-  ShellBar,
-  ShellBarItem,
-  ShellBarItemPropTypes,
-} from '@ui5/webcomponents-react';
+import { Button } from '@ui5/webcomponents-react/Button';
+import { List, type ListPropTypes } from '@ui5/webcomponents-react/List';
+import { ListItemStandard } from '@ui5/webcomponents-react/ListItemStandard';
+import { ResponsivePopover, type ResponsivePopoverDomRef } from '@ui5/webcomponents-react/ResponsivePopover';
+import { ShellBar } from '@ui5/webcomponents-react/ShellBar';
+import { ShellBarItem, type ShellBarItemPropTypes } from '@ui5/webcomponents-react/ShellBarItem';
 import ListSelectionMode from '@ui5/webcomponents/dist/types/ListSelectionMode.js';
 import { useRef, useState } from 'react';
 import classes from './AppShellBar.module.css';

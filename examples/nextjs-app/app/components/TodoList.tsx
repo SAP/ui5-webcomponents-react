@@ -1,6 +1,7 @@
 'use client';
 import { Todo } from '@/app/mockData/todos';
-import { List, ListPropTypes, ListItemStandard } from '@ui5/webcomponents-react';
+import { List, type ListPropTypes } from '@ui5/webcomponents-react/List';
+import { ListItemStandard } from '@ui5/webcomponents-react/ListItemStandard';
 import { useRouter } from 'next/navigation';
 
 import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';

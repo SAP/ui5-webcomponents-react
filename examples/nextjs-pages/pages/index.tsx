@@ -1,5 +1,9 @@
 import ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
-import { Bar, List, ListItemStandard, ListPropTypes, Page, Title } from '@ui5/webcomponents-react';
+import { Bar } from '@ui5/webcomponents-react/Bar';
+import { List, type ListPropTypes } from '@ui5/webcomponents-react/List';
+import { ListItemStandard } from '@ui5/webcomponents-react/ListItemStandard';
+import { Page } from '@ui5/webcomponents-react/Page';
+import { Title } from '@ui5/webcomponents-react/Title';
 import ListItemType from '@ui5/webcomponents/dist/types/ListItemType.js';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';

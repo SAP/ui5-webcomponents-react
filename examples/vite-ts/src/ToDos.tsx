@@ -1,4 +1,7 @@
-import { BusyIndicator, Card, List, ListItemStandard } from '@ui5/webcomponents-react';
+import { BusyIndicator } from '@ui5/webcomponents-react/BusyIndicator';
+import { Card } from '@ui5/webcomponents-react/Card';
+import { List } from '@ui5/webcomponents-react/List';
+import { ListItemStandard } from '@ui5/webcomponents-react/ListItemStandard';
 import { Suspense } from 'react';
 import { Await, useLoaderData, useNavigate } from 'react-router';
 import { Todo } from './mockImplementations/mockData.ts';

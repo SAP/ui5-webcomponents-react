@@ -1,7 +1,7 @@
 import '@ui5/webcomponents-react/styles.css';
 import '../styles/globals.css';
 import '@ui5/webcomponents-react/dist/Assets.js';
-import { ThemeProvider } from '@ui5/webcomponents-react';
+import { ThemeProvider } from '@ui5/webcomponents-react/ThemeProvider';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 

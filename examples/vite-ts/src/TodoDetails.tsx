@@ -1,14 +1,12 @@
-import {
-  Card,
-  DatePicker,
-  Form,
-  FormItem,
-  Input,
-  Label,
-  MessageStrip,
-  Switch,
-  TextArea,
-} from '@ui5/webcomponents-react';
+import { Card } from '@ui5/webcomponents-react/Card';
+import { DatePicker } from '@ui5/webcomponents-react/DatePicker';
+import { Form } from '@ui5/webcomponents-react/Form';
+import { FormItem } from '@ui5/webcomponents-react/FormItem';
+import { Input } from '@ui5/webcomponents-react/Input';
+import { Label } from '@ui5/webcomponents-react/Label';
+import { MessageStrip } from '@ui5/webcomponents-react/MessageStrip';
+import { Switch } from '@ui5/webcomponents-react/Switch';
+import { TextArea } from '@ui5/webcomponents-react/TextArea';
 import { useLoaderData } from 'react-router';
 import { Todo } from './mockImplementations/mockData.ts';
 import classes from './TodoDetails.module.css';
