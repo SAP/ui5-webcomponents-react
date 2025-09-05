@@ -479,6 +479,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
         data-component-name="FilterBarDialog"
         data-is-phone={isPhone}
         onClose={handleClose}
+        accessibleNameRef={`${uniqueId}-fb-dialog-title`}
         onOpen={onAfterFiltersDialogOpen}
         resizable
         draggable
@@ -489,7 +490,7 @@ export const FilterDialog = (props: FilterDialogPropTypes) => {
           <Bar
             design={BarDesign.Header}
             startContent={
-              <Title level={TitleLevel.H4} title={filtersTitle}>
+              <Title level={TitleLevel.H4} title={filtersTitle} id={`${uniqueId}-fb-dialog-title`}>
                 {filtersTitle}
               </Title>
             }
