@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.13.2...v2.14.0) (2025-09-05)
+
+### Bug Fixes
+
+- **deps:** update dependency dedent to v1.7.0 ([#7717](https://github.com/SAP/ui5-webcomponents-react/issues/7717)) ([09418ea](https://github.com/SAP/ui5-webcomponents-react/commit/09418eab155a61651295bcac25f0bd6571e0aa9d))
+
 ## [2.13.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.13.1...v2.13.2) (2025-08-29)
 
 **Note:** Version bump only for package @ui5/webcomponents-react-cli

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.13.2...v2.14.0) (2025-09-05)
+
+### Bug Fixes
+
+- **AnalyticalTable:** safeguard extension, header & title height calc ([#7715](https://github.com/SAP/ui5-webcomponents-react/issues/7715)) ([703dfec](https://github.com/SAP/ui5-webcomponents-react/commit/703dfec363ab0a6a053eabe03a45d0e7b0a70dae)), closes [#7681](https://github.com/SAP/ui5-webcomponents-react/issues/7681)
+- **deps:** update dependency dedent to v1.7.0 ([#7717](https://github.com/SAP/ui5-webcomponents-react/issues/7717)) ([09418ea](https://github.com/SAP/ui5-webcomponents-react/commit/09418eab155a61651295bcac25f0bd6571e0aa9d))
+
+### Features
+
+- **AnalyticalTable:** introduce `useF2CellEdit` plugin hook ([#7666](https://github.com/SAP/ui5-webcomponents-react/issues/7666)) ([86bb7e1](https://github.com/SAP/ui5-webcomponents-react/commit/86bb7e18109ff27ae44ce8f97b9931a104891e39)), closes [#6161](https://github.com/SAP/ui5-webcomponents-react/issues/6161)
+- expose all components via exports maps ([#7690](https://github.com/SAP/ui5-webcomponents-react/issues/7690)) ([4275835](https://github.com/SAP/ui5-webcomponents-react/commit/4275835fe0483355df13ce7f5d7d55499b5f9673)), closes [#7722](https://github.com/SAP/ui5-webcomponents-react/issues/7722)
+- make `@ui5/webcomponents-fiori` peer-dependency optional ([#7640](https://github.com/SAP/ui5-webcomponents-react/issues/7640)) ([da20bb6](https://github.com/SAP/ui5-webcomponents-react/commit/da20bb60cf305538a5e396fa902b60a398f8c74d)), closes [#7720](https://github.com/SAP/ui5-webcomponents-react/issues/7720)
+- update to UI5 Web Components v2.14.0 ([#7726](https://github.com/SAP/ui5-webcomponents-react/issues/7726)) ([e5de4db](https://github.com/SAP/ui5-webcomponents-react/commit/e5de4dbb18319cf16a9e4825b702f429acddeeb1))
+
 ## [2.13.2](https://github.com/SAP/ui5-webcomponents-react/compare/v2.13.1...v2.13.2) (2025-08-29)
 
 ### Bug Fixes
