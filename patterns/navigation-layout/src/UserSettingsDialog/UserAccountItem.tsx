@@ -1,14 +1,16 @@
 import userSettingsIcon from '@ui5/webcomponents-icons/dist/user-settings.js';
-import type { MessageBoxPropTypes } from '@ui5/webcomponents-react/MessageBox';
-import { Avatar } from '@ui5/webcomponents-react/Avatar';
-import { Button } from '@ui5/webcomponents-react/Button';
-import { Label } from '@ui5/webcomponents-react/Label';
-import { MessageBox } from '@ui5/webcomponents-react/MessageBox';
-import { Panel } from '@ui5/webcomponents-react/Panel';
-import { Text } from '@ui5/webcomponents-react/Text';
-import { Title } from '@ui5/webcomponents-react/Title';
-import { UserSettingsItem } from '@ui5/webcomponents-react/UserSettingsItem';
-import { UserSettingsView } from '@ui5/webcomponents-react/UserSettingsView';
+import type { MessageBoxPropTypes } from '@ui5/webcomponents-react';
+import {
+  Avatar,
+  Button,
+  Label,
+  MessageBox,
+  Panel,
+  Text,
+  Title,
+  UserSettingsItem,
+  UserSettingsView,
+} from '@ui5/webcomponents-react';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 

@@ -1,13 +1,15 @@
 import paletteIcon from '@ui5/webcomponents-icons/dist/palette.js';
-import { Button } from '@ui5/webcomponents-react/Button';
-import { CheckBox } from '@ui5/webcomponents-react/CheckBox';
-import { Label } from '@ui5/webcomponents-react/Label';
-import { List } from '@ui5/webcomponents-react/List';
-import { ListItemStandard } from '@ui5/webcomponents-react/ListItemStandard';
-import { Panel } from '@ui5/webcomponents-react/Panel';
-import { Toast } from '@ui5/webcomponents-react/Toast';
-import { UserSettingsItem } from '@ui5/webcomponents-react/UserSettingsItem';
-import { UserSettingsView } from '@ui5/webcomponents-react/UserSettingsView';
+import {
+  Button,
+  CheckBox,
+  Label,
+  List,
+  ListItemStandard,
+  Panel,
+  Toast,
+  UserSettingsItem,
+  UserSettingsView,
+} from '@ui5/webcomponents-react';
 
 export function AppearanceItem() {
   return (

@@ -1,12 +1,14 @@
-import type { UserSettingsItemPropTypes } from '@ui5/webcomponents-react/UserSettingsItem';
-import { ComboBox } from '@ui5/webcomponents-react/ComboBox';
-import { ComboBoxItem } from '@ui5/webcomponents-react/ComboBoxItem';
-import { Label } from '@ui5/webcomponents-react/Label';
-import { Panel } from '@ui5/webcomponents-react/Panel';
-import { RadioButton } from '@ui5/webcomponents-react/RadioButton';
-import { Text } from '@ui5/webcomponents-react/Text';
-import { UserSettingsItem } from '@ui5/webcomponents-react/UserSettingsItem';
-import { UserSettingsView } from '@ui5/webcomponents-react/UserSettingsView';
+import type { UserSettingsItemPropTypes } from '@ui5/webcomponents-react';
+import {
+  ComboBox,
+  ComboBoxItem,
+  Label,
+  Panel,
+  RadioButton,
+  Text,
+  UserSettingsItem,
+  UserSettingsView,
+} from '@ui5/webcomponents-react';
 
 export function LanguageRegionItem({ loading }: Pick<UserSettingsItemPropTypes, 'loading'>) {
   return (
