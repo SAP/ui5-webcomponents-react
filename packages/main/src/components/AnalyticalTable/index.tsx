@@ -51,7 +51,6 @@ import {
   UNSELECT_PRESS_SPACE,
 } from '../../i18n/i18n-defaults.js';
 import { BusyIndicator } from '../../webComponents/BusyIndicator/index.js';
-import { Text } from '../../webComponents/Text/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { classNames, styleData } from './AnalyticalTable.module.css.js';
 import { ColumnHeaderContainer } from './ColumnHeader/ColumnHeaderContainer.js';
@@ -921,22 +920,22 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
           />
         )}
       </div>
-      <Text
+      <span
         aria-hidden="true"
         id={`scaleModeHelper-${uniqueId}`}
         className={classNames.hiddenSmartColMeasure}
         data-component-name="AnalyticalTableScaleModeHelper"
       >
         {''}
-      </Text>
-      <Text
+      </span>
+      <span
         aria-hidden="true"
         id={`scaleModeHelperHeader-${uniqueId}`}
         className={clsx(classNames.hiddenSmartColMeasure, classNames.hiddenSmartColMeasureHeader)}
         data-component-name="AnalyticalTableScaleModeHelperHeader"
       >
         {''}
-      </Text>
+      </span>
     </>
   );
 });
