@@ -118,6 +118,24 @@ npm install @ui5/webcomponents-react @ui5/webcomponents
 > import { Button } from '@ui5/webcomponents-react';
 > ```
 
+#### Importing Assets
+
+The default assets import (`import '@ui5/webcomponents-react/dist/Assets.js';`) includes assets from the fiori package. Due to a limitation of Next.js (top-level await is not supported), we can't dynamically import the assets based on the installed packages.
+If you are using the minimal installation, please import the assets manually as follows:
+
+```ts
+import '@ui5/webcomponents/dist/Assets.js';
+import '@ui5/webcomponents-react/dist/json-imports/i18n.js';
+
+//fetch
+import '@ui5/webcomponents/dist/Assets-fetch.js';
+import '@ui5/webcomponents-react/dist/json-imports/i18n-fetch.js';
+
+//node
+import '@ui5/webcomponents/dist/Assets-node.js';
+import '@ui5/webcomponents-react/dist/json-imports/i18n-node.js';
+```
+
 ## End of Support for Version 1.x
 
 The support for version 1.x of `ui5-webcomponents-react` has ended on **July 1, 2025**. We recommend migrating to version 2.x as soon as possible. For more information, please refer to our [Migration Guide](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/migration-guide--docs).

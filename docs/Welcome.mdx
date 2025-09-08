@@ -68,10 +68,46 @@ Since version `v2.14.0` of `@ui5/webcomponents-react`, `@ui5/webcomponents-fiori
 - You want to use the [VariantManagement](https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/inputs-variantmanagement--docs) component.
 - You import anything from the `@ui5/webcomponents-fiori` package.
 
-**Note:** Most popular bundlers enable tree-shaking for production builds, so there’s no difference in the final bundle size between the recommended and minimal installations.
-
 ```sh
 npm install @ui5/webcomponents-react @ui5/webcomponents
+```
+
+**Note:** Most popular bundlers enable tree-shaking for production builds, so there’s no difference in the final bundle size between the recommended and minimal installations.
+
+> ⚠️ **Warning**
+>
+> If your bundler does **not** support tree-shaking, you must use **subpath imports**.
+>
+> Otherwise, since `@ui5/webcomponents-react` re-exports all components, **every component** (including those that depend on the `@ui5/webcomponents-fiori` package) will be included in your bundle, which will lead to errors due to the missing module.
+>
+> **✅ Do:**
+>
+> ```tsx
+> import { Button } from '@ui5/webcomponents-react/Button';
+> ```
+>
+> **❌ Don’t:**
+>
+> ```tsx
+> import { Button } from '@ui5/webcomponents-react';
+> ```
+
+##### Importing Assets
+
+The default assets import (`import '@ui5/webcomponents-react/dist/Assets.js';`) includes assets from the fiori package. Due to a limitation of Next.js (top-level await is not supported), we can't dynamically import the assets based on the installed packages.
+If you are using the minimal installation, please import the assets manually as follows:
+
+```ts
+import '@ui5/webcomponents/dist/Assets.js';
+import '@ui5/webcomponents-react/dist/json-imports/i18n.js';
+
+//fetch
+import '@ui5/webcomponents/dist/Assets-fetch.js';
+import '@ui5/webcomponents-react/dist/json-imports/i18n-fetch.js';
+
+//node
+import '@ui5/webcomponents/dist/Assets-node.js';
+import '@ui5/webcomponents-react/dist/json-imports/i18n-node.js';
 ```
 
 ### Version Alignment & Package Mapping

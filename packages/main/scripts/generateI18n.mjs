@@ -58,6 +58,8 @@ spawnSync('npx', ['prettier', '--write', path.resolve(SRC_I18N_PROPERTIES, 'i18n
 // generate Assets.js and Assets-fetch.js
 const jsonImports = await readdir(TARGET_I18N_JSON_IMPORTS);
 
+// todo: Next.js does not support top level await
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function createDynamicFioriAssetsImport(suffix) {
   return `try {
   await import('@ui5/webcomponents-fiori/dist/Assets${suffix}.js');
@@ -66,9 +68,13 @@ function createDynamicFioriAssetsImport(suffix) {
 }`;
 }
 
-const assets = [`import '@ui5/webcomponents/dist/Assets.js';`, createDynamicFioriAssetsImport('')];
-const assetsFetch = [`import '@ui5/webcomponents/dist/Assets-fetch.js';`, createDynamicFioriAssetsImport('-fetch')];
-const assetsNode = [`import '@ui5/webcomponents/dist/Assets-node.js';`, createDynamicFioriAssetsImport('-node')];
+function createFioriAssetsImport(suffix) {
+  return `import '@ui5/webcomponents-fiori/dist/Assets${suffix}.js';`;
+}
+
+const assets = [`import '@ui5/webcomponents/dist/Assets.js';`, createFioriAssetsImport('')];
+const assetsFetch = [`import '@ui5/webcomponents/dist/Assets-fetch.js';`, createFioriAssetsImport('-fetch')];
+const assetsNode = [`import '@ui5/webcomponents/dist/Assets-node.js';`, createFioriAssetsImport('-node')];
 
 for (const file of jsonImports) {
   if (file.includes('-fetch')) {
