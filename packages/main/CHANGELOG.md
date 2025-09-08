@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.14.1](https://github.com/SAP/ui5-webcomponents-react/compare/v2.14.0...v2.14.1) (2025-09-08)
+
+### Bug Fixes
+
+- **Assets:** remove top-level `await` ([#7741](https://github.com/SAP/ui5-webcomponents-react/issues/7741)) ([63165f8](https://github.com/SAP/ui5-webcomponents-react/commit/63165f80cedfb6405af78322717bb5c02758f4cd))
+- **FilterBar:** announce filters dialog title by screen readers ([#7730](https://github.com/SAP/ui5-webcomponents-react/issues/7730)) ([1a63673](https://github.com/SAP/ui5-webcomponents-react/commit/1a63673b2b74061c52eb02206e61ca30113bdda8)), closes [#7582](https://github.com/SAP/ui5-webcomponents-react/issues/7582)
+
 # [2.14.0](https://github.com/SAP/ui5-webcomponents-react/compare/v2.13.2...v2.14.0) (2025-09-05)
 
 ### Bug Fixes
