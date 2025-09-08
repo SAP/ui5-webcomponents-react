@@ -1,0 +1,8 @@
+import{j as o}from"./iframe-L-onm66G.js";import{useMDXComponents as p}from"./index-B-8X1idt.js";import{M as e,C as s}from"./blocks-CAXm6uro.js";import"./Tag-o6hxXhYX.js";import"./index-Dko-x7sv.js";import{C as a}from"./ControlsWithNote-D5F52cI6.js";import{D as x}from"./DocsHeader-Bj35IjP-.js";import{F as f}from"./CommandsAndQueries-CjMnaUpZ.js";import{C as m,D as i}from"./Icon.stories-DeszQkxx.js";import"./preload-helper-D9Z9MdNV.js";import"./information-IlAVq7Cq.js";import"./sys-enter-2-CVLUP2WD.js";import"./alert-DwHKgn-N.js";import"./index-8n5QiMPz.js";import"./index-CLaX2vCd.js";import"./Link-CoryH5zD.js";import"./copy-BLNNZART.js";import"./copy-CyGTlTXm.js";import"./GitHub-Mark-BiOcy1h9.js";import"./TableOfContent-Cd4BpqKW.js";import"./index-JuCVJ27S.js";import"./index-CQskOaEx.js";import"./addCustomCSSWithScoping-t6gTkkzF.js";import"./index-DT1EUYqc.js";import"./index-BHqaG8Gu.js";import"./index-ChEZQsiK.js";import"./AvatarSize-BtKTMFJ5.js";import"./employee-D-TcA8Vj.js";import"./employee-eHjS0lCr.js";function n(t){const r={h2:"h2",...p(),...t.components};return o.jsxs(o.Fragment,{children:[o.jsx(e,{of:m}),`
+`,o.jsx(x,{of:m}),`
+`,o.jsx("br",{}),`
+`,o.jsx(r.h2,{id:"example",children:"Example"}),`
+`,o.jsx(s,{of:i}),`
+`,o.jsx(r.h2,{id:"properties",children:"Properties"}),`
+`,o.jsx(a,{of:i}),`
+`,o.jsx(f,{})]})}function B(t={}){const{wrapper:r}={...p(),...t.components};return r?o.jsx(r,{...t,children:o.jsx(n,{...t})}):n(t)}export{B as default};

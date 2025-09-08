@@ -1,1 +1,0 @@
-import{r as i,i as o}from"./iframe-zpPFhmqz.js";const r=a=>i.useCallback((t,e)=>{typeof a=="function"&&a(o(e,{payload:t?.activePayload?.[0]?.payload,activePayloads:t?.activePayload}))},[a]);export{r as u};
