@@ -337,22 +337,17 @@ const calculateSmartAndGrowColumns = (
     return column;
   });
 
-  const columnWithMaxWidthIndex: number[] = [];
-  let maxWidthDifference = 0;
   let fullWidthOfAllColumns = 0;
   let lessThanMaxWidthCount = 0;
 
   /**
    * Step 2: Give all columns more space (priority 2)
    */
-  const visibleColumnsAdaptedPrio2 = visibleColumnsAdaptedPrio1.map((column, index) => {
+  const visibleColumnsAdaptedPrio2 = visibleColumnsAdaptedPrio1.map((column) => {
     const columnIdOrAccessor = (column.id ?? column.accessor) as string;
     const meta = columnMeta[columnIdOrAccessor];
     const { headerPx } = meta;
 
-    if (column.maxWidth && column.maxWidth !== Infinity) {
-      columnWithMaxWidthIndex.push(index);
-    }
     if (meta && !column.minWidth && !column.width) {
       let targetWidth = column.nextWidth || headerPx;
       if (availableWidthPrio2 > 0) {
@@ -365,48 +360,29 @@ const calculateSmartAndGrowColumns = (
         }
       }
       fullWidthOfAllColumns += targetWidth;
-      if (targetWidth >= column.maxWidth) {
-        maxWidthDifference += targetWidth - column.maxWidth;
-      }
       return {
         ...column,
         width: targetWidth,
       };
     } else {
-      const targetWidth = Math.max(column.width || 0, 60, headerPx, column.minWidth);
-      fullWidthOfAllColumns += Math.max(targetWidth, column.minWidth ?? 0);
+      const targetWidth = Math.max(column.width || 0, 60, headerPx, column.minWidth ?? 0);
+      if (targetWidth < (column.maxWidth ?? Infinity)) {
+        lessThanMaxWidthCount++;
+      }
+      fullWidthOfAllColumns += targetWidth;
       return {
         ...column,
-        width: Math.max(column.width || 0, 60, headerPx),
+        width: targetWidth,
       };
     }
   });
 
-  // In Grow mode, all columns implement a maxWidth
-  if (isGrow) {
-    const remainingWidth = totalWidth - fullWidthOfAllColumns;
-    if (remainingWidth > 0) {
-      //Step 3 (Grow): Distribute remaining width to all columns that are not at their maxWidth
-      return visibleColumnsAdaptedPrio2.map((column) => {
-        if (column.width !== column.maxWidth) {
-          return { ...column, width: column.width + remainingWidth / lessThanMaxWidthCount };
-        }
-        return column;
-      });
-    }
-    return visibleColumnsAdaptedPrio2;
-  }
-
-  // Step 3 (Smart): Only if any column has maxWidth defined and there is still space to distribute, distribute the exceeding width to the other columns (priority 3)
-  if (columnWithMaxWidthIndex.length && totalWidth >= fullWidthOfAllColumns) {
-    return visibleColumnsAdaptedPrio2.map((column, index, arr) => {
-      if (!columnWithMaxWidthIndex.includes(index)) {
-        return {
-          ...column,
-          width:
-            Math.max(column.width, column.minWidth ?? 0) +
-            maxWidthDifference / (arr.length - columnWithMaxWidthIndex.length),
-        };
+  // Step 3: Distribute remaining width to all columns that are not at their maxWidth
+  const remainingWidth = totalWidth - fullWidthOfAllColumns;
+  if (remainingWidth > 0) {
+    return visibleColumnsAdaptedPrio2.map((column) => {
+      if (column.width !== column.maxWidth) {
+        return { ...column, width: column.width + remainingWidth / lessThanMaxWidthCount };
       }
       return column;
     });
