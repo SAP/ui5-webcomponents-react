@@ -324,6 +324,7 @@
 }
 
 .hiddenSmartColMeasure {
+  box-sizing: border-box;
   visibility: hidden;
   position: fixed;
   white-space: nowrap;

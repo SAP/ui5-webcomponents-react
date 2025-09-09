@@ -1,13 +1,17 @@
 import { useMemo } from 'react';
 import { AnalyticalTableScaleWidthMode } from '../../../enums/AnalyticalTableScaleWidthMode.js';
-import { DEFAULT_COLUMN_WIDTH } from '../defaults/Column/index.js';
-import type { AnalyticalTableColumnDefinition, ReactTableHooks, TableInstance } from '../types/index.js';
+import type {
+  AnalyticalTableColumnDefinition,
+  ColumnType,
+  ReactTableHooks,
+  TableInstance,
+  RowType,
+} from '../types/index.js';
 
 interface IColumnMeta {
   contentPxAvg: number;
   headerPx: number;
   headerDefinesWidth?: boolean;
-  //todo: not optional?
   maxWidth?: number;
 }
 
@@ -15,12 +19,17 @@ const ROW_SAMPLE_SIZE = 20;
 const MAX_WIDTH = 700;
 export const CELL_PADDING_PX = 18; /* padding left and right 0.5rem each (16px) + borders (1px) + buffer (1px) */
 
-function findLongestString(str1, str2) {
-  if (typeof str1 !== 'string' || typeof str2 !== 'string') {
-    return str1 || str2 || undefined;
-  }
+function getContentPxLongest(rowSample: RowType[], columnIdOrAccessor: string, uniqueId) {
+  return rowSample.reduce((max, item) => {
+    const dataPoint = item.values?.[columnIdOrAccessor];
 
-  return str1.length > str2.length ? str1 : str2;
+    if (dataPoint) {
+      const val = stringToPx(dataPoint, uniqueId) + CELL_PADDING_PX;
+      return Math.max(max, val);
+    }
+
+    return max;
+  }, 0);
 }
 
 function getContentPxAvg(rowSample, columnIdOrAccessor, uniqueId) {
@@ -193,7 +202,12 @@ function calculateDefaultColumnWidths(tableWidth: number, columns: AnalyticalTab
   return result;
 }
 
-const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], instance, hiddenColumns) => {
+const calculateSmartAndGrowColumns = (
+  columns: AnalyticalTableColumnDefinition[],
+  instance: TableInstance,
+  hiddenColumns: ColumnType,
+  isGrow = false,
+) => {
   const { rows, state, webComponentsReactProperties } = instance;
   const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
   const { tableClientWidth: totalWidth } = state;
@@ -217,13 +231,15 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
         return metadata;
       }
 
-      let headerPx: number, contentPxAvg: number;
+      let headerPx: number, contentPxLength: number;
 
       if (column.scaleWidthModeOptions?.cellString) {
-        contentPxAvg =
+        contentPxLength =
           stringToPx(column.scaleWidthModeOptions.cellString, webComponentsReactProperties.uniqueId) + CELL_PADDING_PX;
       } else {
-        contentPxAvg = getContentPxAvg(rowSample, columnIdOrAccessor, webComponentsReactProperties.uniqueId);
+        contentPxLength = isGrow
+          ? getContentPxLongest(rowSample, columnIdOrAccessor, webComponentsReactProperties.uniqueId)
+          : getContentPxAvg(rowSample, columnIdOrAccessor, webComponentsReactProperties.uniqueId);
       }
 
       if (column.scaleWidthModeOptions?.headerString) {
@@ -241,8 +257,9 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
 
       metadata[columnIdOrAccessor] = {
         headerPx,
-        contentPxAvg,
-        maxWidth: column.maxWidth,
+        contentPxAvg: contentPxLength,
+        // When Grow mode is active, static max width should be applied
+        maxWidth: column.maxWidth ?? (isGrow ? MAX_WIDTH : undefined),
       };
       return metadata;
     },
@@ -252,11 +269,25 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
   let totalContentPxAvgPrio1 = 0;
   let totalNumberColPrio2 = 0;
 
-  // width reserved by predefined widths or columns defined by header
+  /**
+   * Width reserved by predefined widths or columns defined by header
+   * Grow: full content width or header width (if wider) if not restricted by maxWidth
+   */
   const reservedWidth: number = visibleColumns.reduce((acc, column) => {
     const columnIdOrAccessor = (column.id ?? column.accessor) as string;
     const { contentPxAvg, headerPx } = columnMeta[columnIdOrAccessor];
+    if (isGrow) {
+      totalContentPxAvgPrio1 += columnMeta[columnIdOrAccessor].contentPxAvg;
+      const targetWidth = Math.min(
+        Math.max(column.minWidth ?? 0, column.width ?? 0, contentPxAvg, headerPx),
+        column.maxWidth ?? MAX_WIDTH,
+      );
 
+      if (targetWidth !== column.maxWidth) {
+        totalNumberColPrio2++;
+      }
+      return acc + targetWidth;
+    }
     if (contentPxAvg > headerPx) {
       if (!column.minWidth && !column.width) {
         totalContentPxAvgPrio1 += columnMeta[columnIdOrAccessor].contentPxAvg;
@@ -278,22 +309,29 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
   const availableWidthPrio1 = totalWidth - reservedWidth;
   let availableWidthPrio2 = availableWidthPrio1;
 
-  // Step 1: Give columns defined by content more space (priority 1)
+  /**
+   * Step 1: Give columns defined by content more space (priority 1)
+   * Grow: Give all columns the required space necessary to display the full content (up to the maxWidth)
+   */
   const visibleColumnsAdaptedPrio1 = visibleColumns.map((column) => {
     const columnIdOrAccessor = (column.id ?? column.accessor) as string;
     const meta = columnMeta[columnIdOrAccessor];
     if (meta && !column.minWidth && !column.width && !meta.headerDefinesWidth) {
-      let targetWidth;
+      let targetWidth: number;
       const { contentPxAvg, headerPx } = meta;
 
-      if (availableWidthPrio1 > 0) {
+      if (isGrow) {
+        targetWidth = Math.min(Math.max(contentPxAvg, headerPx), meta.maxWidth);
+      } else if (availableWidthPrio1 > 0) {
         const factor = contentPxAvg / totalContentPxAvgPrio1;
         targetWidth = Math.max(Math.min(availableWidthPrio1 * factor, contentPxAvg), headerPx);
         availableWidthPrio2 -= targetWidth;
       }
+
       return {
         ...column,
         nextWidth: targetWidth || headerPx,
+        maxWidth: isGrow ? (column?.maxWidth ?? MAX_WIDTH) : Infinity,
       };
     }
     return column;
@@ -302,19 +340,29 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
   const columnWithMaxWidthIndex: number[] = [];
   let maxWidthDifference = 0;
   let fullWidthOfAllColumns = 0;
-  // Step 2: Give all columns more space (priority 2)
+  let lessThanMaxWidthCount = 0;
+
+  /**
+   * Step 2: Give all columns more space (priority 2)
+   */
   const visibleColumnsAdaptedPrio2 = visibleColumnsAdaptedPrio1.map((column, index) => {
     const columnIdOrAccessor = (column.id ?? column.accessor) as string;
     const meta = columnMeta[columnIdOrAccessor];
     const { headerPx } = meta;
 
-    if (column.maxWidth) {
+    if (column.maxWidth && column.maxWidth !== Infinity) {
       columnWithMaxWidthIndex.push(index);
     }
     if (meta && !column.minWidth && !column.width) {
       let targetWidth = column.nextWidth || headerPx;
       if (availableWidthPrio2 > 0) {
-        targetWidth = targetWidth + availableWidthPrio2 * (1 / totalNumberColPrio2);
+        targetWidth = Math.min(
+          targetWidth + availableWidthPrio2 * (1 / totalNumberColPrio2),
+          column.maxWidth ?? Infinity,
+        );
+        if (targetWidth < (column.maxWidth ?? Infinity)) {
+          lessThanMaxWidthCount++;
+        }
       }
       fullWidthOfAllColumns += targetWidth;
       if (targetWidth >= column.maxWidth) {
@@ -334,7 +382,22 @@ const calculateSmartColumns = (columns: AnalyticalTableColumnDefinition[], insta
     }
   });
 
-  // Step 3: Only if any column has maxWidth defined and there is still space to distribute, distribute the exceeding width to the other columns (priority 3)
+  // In Grow mode, all columns implement a maxWidth
+  if (isGrow) {
+    const remainingWidth = totalWidth - fullWidthOfAllColumns;
+    if (remainingWidth > 0) {
+      //Step 3 (Grow): Distribute remaining width to all columns that are not at their maxWidth
+      return visibleColumnsAdaptedPrio2.map((column) => {
+        if (column.width !== column.maxWidth) {
+          return { ...column, width: column.width + remainingWidth / lessThanMaxWidthCount };
+        }
+        return column;
+      });
+    }
+    return visibleColumnsAdaptedPrio2;
+  }
+
+  // Step 3 (Smart): Only if any column has maxWidth defined and there is still space to distribute, distribute the exceeding width to the other columns (priority 3)
   if (columnWithMaxWidthIndex.length && totalWidth >= fullWidthOfAllColumns) {
     return visibleColumnsAdaptedPrio2.map((column, index, arr) => {
       if (!columnWithMaxWidthIndex.includes(index)) {
@@ -390,9 +453,9 @@ const columns = (columns: TableInstance['columns'], { instance }: { instance: Ta
   if (!instance.state || !instance.rows) {
     return columns;
   }
-  const { rows, state } = instance;
+  const { state } = instance;
   const { hiddenColumns, tableClientWidth: totalWidth } = state;
-  const { scaleWidthMode, loading, uniqueId } = instance.webComponentsReactProperties;
+  const { scaleWidthMode, loading } = instance.webComponentsReactProperties;
 
   if (columns.length === 0 || !totalWidth || !AnalyticalTableScaleWidthMode[scaleWidthMode]) {
     return columns;
@@ -412,8 +475,13 @@ const columns = (columns: TableInstance['columns'], { instance }: { instance: Ta
       return column ?? false;
     })
     .filter(Boolean) as TableInstance['columns'];
+
   if (scaleWidthMode === AnalyticalTableScaleWidthMode.Smart) {
-    return calculateSmartColumns(columns, instance, hiddenColumns);
+    return calculateSmartAndGrowColumns(columns, instance, hiddenColumns);
+  }
+
+  if (scaleWidthMode === AnalyticalTableScaleWidthMode.Grow) {
+    return calculateSmartAndGrowColumns(columns, instance, hiddenColumns, true);
   }
 
   const hasData = instance.data.length > 0;
@@ -431,101 +499,6 @@ const columns = (columns: TableInstance['columns'], { instance }: { instance: Ta
       return { ...column, width: calculatedWidth };
     });
   }
-
-  // AnalyticalTableScaleWidthMode.Grow
-
-  const rowSample = rows.slice(0, ROW_SAMPLE_SIZE);
-
-  const columnMeta = visibleColumns.reduce((acc, column) => {
-    const columnIdOrAccessor = (column.id ?? column.accessor) as string;
-    if (
-      column.id === '__ui5wcr__internal_selection_column' ||
-      column.id === '__ui5wcr__internal_highlight_column' ||
-      column.id === '__ui5wcr__internal_navigation_column'
-    ) {
-      acc[columnIdOrAccessor] = {
-        minHeaderWidth: column.width,
-        fullWidth: column.width,
-      };
-      return acc;
-    }
-
-    const smartWidth = findLongestString(
-      column.scaleWidthModeOptions?.headerString,
-      column.scaleWidthModeOptions?.cellString,
-    );
-
-    if (smartWidth) {
-      const width = Math.max(stringToPx(smartWidth, uniqueId) + CELL_PADDING_PX, 60);
-      acc[columnIdOrAccessor] = {
-        minHeaderWidth: width,
-        fullWidth: width,
-      };
-      return acc;
-    }
-
-    const minHeaderWidth =
-      typeof column.Header === 'string'
-        ? stringToPx(column.Header, uniqueId, true) + CELL_PADDING_PX
-        : DEFAULT_COLUMN_WIDTH;
-
-    acc[columnIdOrAccessor] = {
-      minHeaderWidth,
-      fullWidth: Math.max(minHeaderWidth, getContentPxAvg(rowSample, columnIdOrAccessor, uniqueId)),
-    };
-    return acc;
-  }, {});
-
-  let reservedWidth = visibleColumns.reduce((acc, column) => {
-    const { minHeaderWidth, fullWidth } = columnMeta[column.id ?? column.accessor];
-    return acc + Math.max(column.minWidth || 0, column.width || 0, minHeaderWidth || 0, fullWidth) || 0;
-  }, 0);
-
-  let availableWidth = totalWidth - reservedWidth;
-
-  if (availableWidth > 0) {
-    let notReservedCount = 0;
-    reservedWidth = visibleColumns.reduce((acc, column) => {
-      const reserved = Math.max(column.minWidth || 0, column.width || 0) || 0;
-      if (!reserved) {
-        notReservedCount++;
-      }
-      return acc + reserved;
-    }, 0);
-    availableWidth = totalWidth - reservedWidth;
-
-    return columns.map((column) => {
-      const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor);
-      const meta = columnMeta[column.id ?? (column.accessor as string)];
-
-      if (isColumnVisible && meta) {
-        const { minHeaderWidth } = meta;
-
-        const targetWidth = availableWidth / notReservedCount;
-
-        return {
-          ...column,
-          width: column.width ?? Math.min(targetWidth, MAX_WIDTH),
-          minWidth: column.minWidth ?? minHeaderWidth,
-        };
-      }
-      return column;
-    });
-  }
-
-  return columns.map((column) => {
-    const isColumnVisible = (column.isVisible ?? true) && !hiddenColumns.includes(column.id ?? column.accessor);
-    const meta = columnMeta[column.id ?? (column.accessor as string)];
-    if (isColumnVisible && meta) {
-      const { fullWidth } = meta;
-      return {
-        ...column,
-        width: column.width ?? fullWidth,
-        maxWidth: column.maxWidth ?? MAX_WIDTH,
-      };
-    }
-    return column;
-  });
 };
 
 export const useDynamicColumnWidths = (hooks: ReactTableHooks) => {
