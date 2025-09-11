@@ -68,11 +68,11 @@ export const Default: Story = {
       <>
         <ShellBar
           primaryTitle={'Corporate Portal'}
-          logo={<img src="https://sap.github.io/ui5-webcomponents/images/sap-logo-svg.svg" alt="SAP Logo" />}
+          logo={<img src="https://ui5.github.io/webcomponents/images/sap-logo-svg.svg" alt="SAP Logo" />}
           profile={
             <Avatar>
               <img
-                src="https://sap.github.io/ui5-webcomponents/images/avatars/woman_avatar_3.png"
+                src="https://ui5.github.io/webcomponents/images/avatars/woman_avatar_3.png"
                 alt={'Avatar of the current user'}
               />
             </Avatar>

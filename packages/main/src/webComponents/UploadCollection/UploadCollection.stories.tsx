@@ -66,7 +66,7 @@ export const SimulateUpload: Story = {
         fileName={'file-name.txt'}
         uploadState={UploadState.Ready}
         thumbnail={
-          <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents/main/docs/images/UI5_logo_water.png" />
+          <img src="https://raw.githubusercontent.com/UI5/webcomponents/main/docs/images/UI5_logo_water.png" />
         }
       >
         <Text>Uploaded by: Susanne Schmitt · Uploaded On: 2019-04-20</Text>

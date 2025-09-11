@@ -89,7 +89,7 @@ export const WithDifferentColumns: Story = {
           <>
             <ShellBar
               logo={
-                <img src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/main/assets/Logo-Sticker.png" />
+                <img src="https://raw.githubusercontent.com/UI5/webcomponents-react/main/assets/Logo-Sticker.png" />
               }
               primaryTitle="Movie DB"
             />

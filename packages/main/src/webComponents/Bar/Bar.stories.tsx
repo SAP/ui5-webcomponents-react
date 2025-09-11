@@ -40,7 +40,7 @@ export const WithCustomElements: Story = {
           <>
             <Button icon={navBackIcon} design={ButtonDesign.Transparent} />
             <img
-              src="https://raw.githubusercontent.com/SAP/ui5-webcomponents-react/main/assets/Logo-Sticker.png"
+              src="https://raw.githubusercontent.com/UI5/webcomponents-react/main/assets/Logo-Sticker.png"
               alt="logo"
               style={{ marginLeft: '6px', width: '120px' }}
             />
@@ -49,7 +49,7 @@ export const WithCustomElements: Story = {
         endContent={
           <>
             <Input placeholder="Search" />
-            <Link style={{ marginLeft: '6px' }} href="https://github.com/SAP/ui5-webcomponents-react" target="_blank">
+            <Link style={{ marginLeft: '6px' }} href="https://github.com/UI5/webcomponents-react" target="_blank">
               <GitHubLogo />
             </Link>
           </>
