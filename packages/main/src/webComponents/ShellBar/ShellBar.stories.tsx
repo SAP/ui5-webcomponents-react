@@ -29,7 +29,7 @@ const meta = {
     primaryTitle: 'Shell Bar',
     notificationsCount: '10',
     showNotifications: true,
-    logo: <img src="https://sap.github.io/ui5-webcomponents/images/sap-logo-svg.svg" alt="SAP Logo" />,
+    logo: <img src="https://ui5.github.io/webcomponents/images/sap-logo-svg.svg" alt="SAP Logo" />,
     profile: (
       <Avatar>
         <img src={image} alt="person-placeholder" />
@@ -153,8 +153,8 @@ export const ShellBarBrandingStory: Story = {
   args: {
     branding: (
       <ShellBarBranding
-        logo={<img src="https://sap.github.io/ui5-webcomponents/images/sap-logo-svg.svg" alt="SAP Logo" />}
-        href="https://sap.github.io/ui5-webcomponents-react/v2/?path=/docs/layouts-floorplans-shellbar--docs"
+        logo={<img src="https://ui5.github.io/webcomponents/images/sap-logo-svg.svg" alt="SAP Logo" />}
+        href="https://ui5.github.io/webcomponents-react/v2/?path=/docs/layouts-floorplans-shellbar--docs"
         target="_blank"
         onClick={(e) => {
           console.log('ShellBarBranding clicked', e);
