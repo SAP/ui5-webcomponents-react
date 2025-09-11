@@ -443,10 +443,10 @@ const useColumnsDeps = (
 };
 
 const columns = (columns: TableInstance['columns'], { instance }: { instance: TableInstance }) => {
-  const { scaleWidthMode, loading, fontsReady } = instance.webComponentsReactProperties;
+  const { scaleWidthMode, loading } = instance.webComponentsReactProperties;
   const { state } = instance;
   const { hiddenColumns, tableClientWidth: totalWidth } = state;
-  if (!instance.state || !instance.rows || !fontsReady) {
+  if (!instance.state || !instance.rows) {
     return columns;
   }
 
