@@ -3372,8 +3372,8 @@ describe('AnalyticalTable', () => {
       return <AnalyticalTable data={generateMoreData(500)} columns={columns} ref={tableRef} />;
     };
     cy.mount(<ScrollTo />);
-    cy.findByText('Name-12').should('be.visible');
-    cy.findByText('Name-11').should('not.be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainer"]').findByText('Name-12').should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainer"]').findByText('Name-11').should('not.be.visible');
 
     const ScrollToItem = () => {
       const tableRef = useRef(null);
@@ -3383,8 +3383,8 @@ describe('AnalyticalTable', () => {
       return <AnalyticalTable data={generateMoreData(500)} columns={columns} ref={tableRef} />;
     };
     cy.mount(<ScrollToItem />);
-    cy.findByText('Name-12').should('be.visible');
-    cy.findByText('Name-11').should('not.be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainer"]').findByText('Name-12').should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainer"]').findByText('Name-11').should('not.be.visible');
 
     const ScrollToHorizontal = () => {
       const tableRef = useRef(null);
@@ -3403,8 +3403,8 @@ describe('AnalyticalTable', () => {
       );
     };
     cy.mount(<ScrollToHorizontal />);
-    cy.findByText('13').should('be.visible');
-    cy.findByText('12').should('not.be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainer"]').findByText('13').should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainer"]').findByText('12').should('not.be.visible');
     const ScrollToItemHorizontal = () => {
       const tableRef = useRef(null);
       useEffect(() => {
@@ -3419,8 +3419,8 @@ describe('AnalyticalTable', () => {
       );
     };
     cy.mount(<ScrollToItemHorizontal />);
-    cy.findByText('13').should('be.visible');
-    cy.findByText('12').should('not.be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainer"]').findByText('13').should('be.visible');
+    cy.get('[data-component-name="AnalyticalTableContainer"]').findByText('12').should('not.be.visible');
   });
 
   it('additionalEmptyRowsCount', () => {
