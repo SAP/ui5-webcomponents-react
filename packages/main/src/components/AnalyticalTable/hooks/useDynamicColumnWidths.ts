@@ -12,7 +12,8 @@ interface IColumnMeta {
   contentPxAvg: number;
   headerPx: number;
   headerDefinesWidth?: boolean;
-  maxWidth?: number;
+  maxWidth?: number | undefined;
+  width?: number | undefined;
 }
 
 const ROW_SAMPLE_SIZE = 20;
@@ -260,6 +261,7 @@ const calculateSmartAndGrowColumns = (
         contentPxAvg: contentPxLength,
         // When Grow mode is active, static max width should be applied
         maxWidth: column.maxWidth ?? (isGrow ? MAX_WIDTH : undefined),
+        width: column.width,
       };
       return metadata;
     },
@@ -279,7 +281,7 @@ const calculateSmartAndGrowColumns = (
     if (isGrow) {
       totalContentPxAvgPrio1 += columnMeta[columnIdOrAccessor].contentPxAvg;
       const targetWidth = Math.min(
-        Math.max(column.minWidth ?? 0, column.width ?? 0, contentPxAvg, headerPx),
+        Math.max(column.minWidth ?? 0, column.width ?? Math.max(contentPxAvg, headerPx)),
         column.maxWidth ?? MAX_WIDTH,
       );
 
@@ -288,6 +290,7 @@ const calculateSmartAndGrowColumns = (
       }
       return acc + targetWidth;
     }
+
     if (contentPxAvg > headerPx) {
       if (!column.minWidth && !column.width) {
         totalContentPxAvgPrio1 += columnMeta[columnIdOrAccessor].contentPxAvg;
@@ -300,7 +303,7 @@ const calculateSmartAndGrowColumns = (
       if (!column.minWidth && !column.width) {
         totalNumberColPrio2++;
       }
-      const max = Math.max(column.minWidth || 0, column.width || 0, headerPx);
+      const max = Math.max(column.minWidth || 0, column.width ?? headerPx);
       columnMeta[columnIdOrAccessor].headerDefinesWidth = true;
       return acc + max;
     }
@@ -365,8 +368,8 @@ const calculateSmartAndGrowColumns = (
         width: targetWidth,
       };
     } else {
-      const targetWidth = Math.max(column.width || 0, 60, headerPx, column.minWidth ?? 0);
-      if (targetWidth < (column.maxWidth ?? Infinity)) {
+      const targetWidth = Math.max(Math.min(column.width ?? 0, headerPx), column.minWidth ?? 0);
+      if (targetWidth < (column.maxWidth ?? Infinity) && !meta.width) {
         lessThanMaxWidthCount++;
       }
       fullWidthOfAllColumns += targetWidth;
@@ -378,11 +381,24 @@ const calculateSmartAndGrowColumns = (
   });
 
   // Step 3: Distribute remaining width to all columns that are not at their maxWidth
-  const remainingWidth = totalWidth - fullWidthOfAllColumns;
+  let remainingWidth = totalWidth - fullWidthOfAllColumns;
   if (remainingWidth > 0) {
     return visibleColumnsAdaptedPrio2.map((column) => {
-      if (column.width !== column.maxWidth) {
-        return { ...column, width: column.width + remainingWidth / lessThanMaxWidthCount };
+      const columnIdOrAccessor = (column.id ?? column.accessor) as string;
+      const meta = columnMeta[columnIdOrAccessor];
+      if (column.width !== column.maxWidth && !meta.width) {
+        const proportionalRemainingWidth = remainingWidth / (lessThanMaxWidthCount || 1);
+        let proportionalWidth = column.width + proportionalRemainingWidth;
+        // if maxWidth is reached, distribute the remaining width to the other columns
+        if (proportionalWidth > column.maxWidth) {
+          proportionalWidth = column.maxWidth;
+          remainingWidth -= proportionalWidth - column.width;
+          if (lessThanMaxWidthCount >= 2) {
+            lessThanMaxWidthCount -= 1;
+          }
+        }
+
+        return { ...column, width: proportionalWidth };
       }
       return column;
     });
@@ -422,16 +438,17 @@ const useColumnsDeps = (
     state.hiddenColumns.length,
     webComponentsReactProperties.scaleWidthMode,
     isLoadingPlaceholder,
+    webComponentsReactProperties.fontsReady,
   ];
 };
 
 const columns = (columns: TableInstance['columns'], { instance }: { instance: TableInstance }) => {
-  if (!instance.state || !instance.rows) {
-    return columns;
-  }
+  const { scaleWidthMode, loading, fontsReady } = instance.webComponentsReactProperties;
   const { state } = instance;
   const { hiddenColumns, tableClientWidth: totalWidth } = state;
-  const { scaleWidthMode, loading } = instance.webComponentsReactProperties;
+  if (!instance.state || !instance.rows || !fontsReady) {
+    return columns;
+  }
 
   if (columns.length === 0 || !totalWidth || !AnalyticalTableScaleWidthMode[scaleWidthMode]) {
     return columns;

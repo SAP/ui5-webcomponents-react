@@ -62,6 +62,7 @@ import { useAutoResize } from './hooks/useAutoResize.js';
 import { useColumnsDeps } from './hooks/useColumnsDeps.js';
 import { useColumnDragAndDrop } from './hooks/useDragAndDrop.js';
 import { useDynamicColumnWidths } from './hooks/useDynamicColumnWidths.js';
+import { useFontsReady } from './hooks/useFontsReady.js';
 import { useKeyboardNavigation } from './hooks/useKeyboardNavigation.js';
 import { usePopIn } from './hooks/usePopIn.js';
 import { useResizeColumnsConfig } from './hooks/useResizeColumnsConfig.js';
@@ -186,6 +187,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
 
   useStylesheet(styleData, AnalyticalTable.displayName);
   const isInitialized = useRef(false);
+  const fontsReady = useFontsReady();
 
   const nativeScrollbar = className?.includes('ui5-content-native-scrollbars');
   const alwaysShowSubComponent =
@@ -251,6 +253,7 @@ const AnalyticalTable = forwardRef<AnalyticalTableDomRef, AnalyticalTablePropTyp
         alternateRowColor,
         alwaysShowSubComponent,
         classes: classNames,
+        fontsReady,
         highlightField,
         isTreeTable,
         loading,
