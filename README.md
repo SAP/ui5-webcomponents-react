@@ -13,8 +13,8 @@
   <a href="https://openui5.slack.com/archives/CSQEJ2J04" target="_blank">
     <img alt="Slack Badge" src="https://badgen.net/badge/slack/webcomponents-react/orange?icon=slack">
   </a>
-  <a href="https://api.reuse.software/info/github.com/SAP/ui5-webcomponents-react" target="_blank">
-    <img alt="REUSE Status" src="https://api.reuse.software/badge/github.com/SAP/ui5-webcomponents-react"/>
+  <a href="https://api.reuse.software/info/github.com/UI5/webcomponents-react" target="_blank">
+    <img alt="REUSE Status" src="https://api.reuse.software/badge/github.com/UI5/webcomponents-react"/>
   </a>
 </p>
 
