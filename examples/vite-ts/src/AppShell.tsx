@@ -1,21 +1,16 @@
 import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';
 import paletteIcon from '@ui5/webcomponents-icons/dist/palette.js';
-import {
-  Avatar,
-  Breadcrumbs,
-  Button,
-  DynamicPage,
-  DynamicPageTitle,
-  List,
-  ListPropTypes,
-  ResponsivePopover,
-  ShellBar,
-  ShellBarItem,
-  ShellBarItemPropTypes,
-  ListItemStandard,
-  ButtonDomRef,
-  Title,
-} from '@ui5/webcomponents-react';
+import { Avatar } from '@ui5/webcomponents-react/Avatar';
+import { Breadcrumbs } from '@ui5/webcomponents-react/Breadcrumbs';
+import { Button, type ButtonDomRef } from '@ui5/webcomponents-react/Button';
+import { DynamicPage } from '@ui5/webcomponents-react/DynamicPage';
+import { DynamicPageTitle } from '@ui5/webcomponents-react/DynamicPageTitle';
+import { List, type ListPropTypes } from '@ui5/webcomponents-react/List';
+import { ResponsivePopover } from '@ui5/webcomponents-react/ResponsivePopover';
+import { ShellBar } from '@ui5/webcomponents-react/ShellBar';
+import { ShellBarItem, type ShellBarItemPropTypes } from '@ui5/webcomponents-react/ShellBarItem';
+import { ListItemStandard } from '@ui5/webcomponents-react/ListItemStandard';
+import { Title } from '@ui5/webcomponents-react/Title';
 import { useRef, useState } from 'react';
 import { Outlet, useLocation, useMatches, useNavigate } from 'react-router';
 import { SingleTodoHandle } from './main.tsx';

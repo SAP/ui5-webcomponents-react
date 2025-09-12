@@ -1,6 +1,8 @@
 import '@ui5/webcomponents-react/dist/Assets.js';
 import ErrorScreenIllustration from '@ui5/webcomponents-fiori/dist/illustrations/ErrorScreen.js';
-import { BreadcrumbsItem, IllustratedMessage, ThemeProvider } from '@ui5/webcomponents-react';
+import { BreadcrumbsItem } from '@ui5/webcomponents-react/BreadcrumbsItem';
+import { IllustratedMessage } from '@ui5/webcomponents-react/IllustratedMessage';
+import { ThemeProvider } from '@ui5/webcomponents-react/ThemeProvider';
 import { ReactNode, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, LoaderFunctionArgs } from 'react-router';

@@ -1,6 +1,8 @@
 import { TodoList } from '@/app/components/TodoList';
 import { Todo, todos } from '@/app/mockData/todos';
-import { Bar, Page, Title } from '@ui5/webcomponents-react';
+import { Bar } from '@ui5/webcomponents-react/Bar';
+import { Page } from '@ui5/webcomponents-react/Page';
+import { Title } from '@ui5/webcomponents-react/Title';
 
 export default async function Home() {
   // this is a very simple mock which mimics data fetching

@@ -1,5 +1,5 @@
 import '@ui5/webcomponents-react/dist/Assets.js';
-import { ThemeProvider } from '@ui5/webcomponents-react';
+import { ThemeProvider } from '@ui5/webcomponents-react/ThemeProvider';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';

@@ -1,5 +1,6 @@
 import navBackIcon from '@ui5/webcomponents-icons/dist/nav-back.js';
-import { Button, ShellBar } from '@ui5/webcomponents-react';
+import { Button } from '@ui5/webcomponents-react/Button';
+import { ShellBar } from '@ui5/webcomponents-react/ShellBar';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import classes from './AppShell.module.css';
