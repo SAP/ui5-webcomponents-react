@@ -10,6 +10,7 @@ import type {
   RefObject,
   SetStateAction,
 } from 'react';
+import type { AnalyticalTableNoDataReason } from '../../../enums/AnalyticalTableNoDataReason.js';
 import type { AnalyticalTablePopinDisplay } from '../../../enums/AnalyticalTablePopinDisplay.js';
 import type { AnalyticalTableScaleWidthMode } from '../../../enums/AnalyticalTableScaleWidthMode.js';
 import type { AnalyticalTableScrollMode } from '../../../enums/AnalyticalTableScrollMode.js';
@@ -1040,7 +1041,11 @@ export interface AnalyticalTablePropTypes extends Omit<CommonProps, 'title'> {
    *
    * @default DefaultNoDataComponent
    */
-  NoDataComponent?: ComponentType<any>;
+  NoDataComponent?: ComponentType<{
+    noDataText: string;
+    className: string;
+    noDataReason: AnalyticalTableNoDataReason | keyof typeof AnalyticalTableNoDataReason;
+  }>;
 
   /**
    * Exposes the internal table instance.
