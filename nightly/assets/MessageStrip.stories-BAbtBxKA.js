@@ -1,5 +1,0 @@
-import{n as e,r as t}from"./rolldown-runtime-C0FnF6B9.js";import{t as n}from"./jsx-runtime-BdxMnOeJ.js";import{n as r,t as i}from"./Icon-DRvFpEgT.js";import{n as a,t as o}from"./employee-Cs29gMl9.js";import{i as s,n as c,r as l,t as u}from"./MessageStrip-wz0iKuXy.js";var d=t({Default:()=>m,WithIcon:()=>h,__namedExportsOrder:()=>g,default:()=>p}),f,p,m,h,g;function _(){return(_=e((()=>{s(),a(),r(),c(),f=n(),p={title:`Data Display / MessageStrip`,component:u,argTypes:{children:{control:`text`},icon:{control:{disable:!0}}},args:{design:l.Information,children:`MessageStrip Text`},tags:[`package:@ui5/webcomponents`]},m={},h={args:{icon:(0,f.jsx)(i,{name:o})}},g=[`Default`,`WithIcon`],m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{}`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
-  args: {
-    icon: <Icon name={employeeIcon} />
-  }
-}`,...h.parameters?.docs?.source}}}})))()}export{_ as i,d as n,h as r,m as t};

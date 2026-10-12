@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{t}from"./react-DiVRNtpo.js";import{i as n,r}from"./withWebComponent-DDACWNN1.js";var i,a;function o(){return(o=e((()=>{n(),i=t(),a=e=>(0,i.useCallback)((t,n)=>{typeof e==`function`&&e(r(n,{payload:t?.activePayload?.[0]?.payload,activePayloads:t?.activePayload}))},[e])})))()}export{a as n,o as t};
