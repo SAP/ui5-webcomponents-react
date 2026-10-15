@@ -48,7 +48,6 @@
     "@storybook/addon-a11y": "10.6.1",
     "@storybook/addon-docs": "10.6.1",
     "@storybook/react-vite": "10.6.1",
-    "@tanstack/react-virtual": "3.14.13",
     "@ui5/webcomponents": "2.27.2",
     "@ui5/webcomponents-ai": "2.27.2",
     "@ui5/webcomponents-compat": "2.27.2",
