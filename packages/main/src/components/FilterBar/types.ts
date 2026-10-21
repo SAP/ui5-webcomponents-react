@@ -84,7 +84,9 @@ export interface FilterBarPropTypes extends CommonProps {
   /**
    * Defines the search field rendered as first filter item.
    *
-   * __Note:__ By default, `placeholder`, `icon`, `noTypeahead`, `showClearIcon`, and `type` are applied to the search input. Only `placeholder` and `noTypeahead` can be overridden.
+   * __Note:__
+   * - By default, `placeholder`, `icon`, `noTypeahead`, `showClearIcon`, and `type` are applied to the search input. Only `placeholder`, `noTypeahead`, and `icon` can be overridden.
+   * - By default, the search icon is decorative. If the "Go" button is displayed (`showGoOnFB`), pass the `FilterBarSearchIcon` subcomponent to the `icon` prop of the search input to render an interactive search icon that can trigger the search.
    *
    * __Note:__ The field is only available in the FilterBar not inside the filter configuration dialog.
    */

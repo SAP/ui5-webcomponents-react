@@ -10,6 +10,7 @@ export type { ObjectPageHeaderPropTypes } from './components/ObjectPageHeader/in
 export { ObjectPageTitle } from './components/ObjectPageTitle/index.js';
 export type { ObjectPageTitlePropTypes } from './components/ObjectPageTitle/index.js';
 export * from './components/FilterBar/index.js';
+export * from './components/FilterBarSearchIcon/index.js';
 export * from './components/FilterGroupItem/index.js';
 export * from './components/FlexBox/index.js';
 export * from './components/Grid/index.js';

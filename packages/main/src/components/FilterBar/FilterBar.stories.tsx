@@ -3,6 +3,8 @@ import TitleLevel from '@ui5/webcomponents/dist/types/TitleLevel.js';
 import { useId, useReducer, useRef, useState } from 'react';
 import { fn } from 'storybook/test';
 import { FlexBoxDirection } from '../../enums/index.js';
+import type { ComboBoxDomRef } from '../../webComponents/ComboBox/index.js';
+import type { DatePickerDomRef } from '../../webComponents/DatePicker/index.js';
 import {
   ComboBox,
   ComboBoxItem,
@@ -24,7 +26,9 @@ import {
   Title,
   Token,
 } from '../../webComponents/index.js';
+import type { InputDomRef } from '../../webComponents/Input/index.js';
 import { Text } from '../../webComponents/Text/index.js';
+import { FilterBarSearchIcon } from '../FilterBarSearchIcon/index.js';
 import { FilterGroupItem } from '../FilterGroupItem/index.js';
 import { FlexBox } from '../FlexBox/index.js';
 import { VariantItem } from '../VariantItem/index.js';
@@ -619,6 +623,93 @@ export const IdentifyInputEventOrigin: Story = {
         <br />
         <Label>Last fired input event origin:</Label>
         <Text>{origin}</Text>
+      </>
+    );
+  },
+};
+
+interface SearchSubmission {
+  searchTerm: string;
+  date: string;
+  category: string;
+}
+
+const initialSubmission: SearchSubmission = { searchTerm: '', date: '', category: '' };
+
+function submissionReducer(state: SearchSubmission, action: { type: 'submit'; payload: SearchSubmission }) {
+  switch (action.type) {
+    case 'submit':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+export const WithInteractiveSearchIcon: Story = {
+  name: 'with interactive search icon',
+  args: {
+    showGoOnFB: true,
+  },
+  render(args) {
+    const searchRef = useRef<InputDomRef>(null);
+    const dateRef = useRef<DatePickerDomRef>(null);
+    const categoryRef = useRef<ComboBoxDomRef>(null);
+    const [submission, dispatch] = useReducer(submissionReducer, initialSubmission);
+    // pre-controlled: the consumer decides what "trigger search" means
+    const triggerSearch = () => {
+      dispatch({
+        type: 'submit',
+        payload: {
+          searchTerm: searchRef.current?.value ?? '',
+          date: dateRef.current?.value ?? '',
+          category: categoryRef.current?.value ?? '',
+        },
+      });
+    };
+    return (
+      <>
+        <FilterBar
+          {...args}
+          onGo={triggerSearch}
+          search={
+            <Input
+              ref={searchRef}
+              // triggers on Enter / focusout
+              onChange={triggerSearch}
+              // triggers on click/tap or Enter/Space on the icon
+              icon={<FilterBarSearchIcon onClick={triggerSearch} />}
+            />
+          }
+        >
+          <FilterGroupItem filterKey="input" label="Input">
+            <Input placeholder="Placeholder" />
+          </FilterGroupItem>
+          <FilterGroupItem filterKey="date" label="Date">
+            <DatePicker ref={dateRef} style={{ minWidth: 'auto' }} />
+          </FilterGroupItem>
+          <FilterGroupItem filterKey="category" label="Category">
+            <ComboBox ref={categoryRef}>
+              <ComboBoxItem text="Hardware" />
+              <ComboBoxItem text="Software" />
+              <ComboBoxItem text="Services" />
+            </ComboBox>
+          </FilterGroupItem>
+        </FilterBar>
+        <br />
+        <FlexBox direction={FlexBoxDirection.Column}>
+          <FlexBox>
+            <Label showColon>Submitted search term</Label>
+            <Text>{submission.searchTerm}</Text>
+          </FlexBox>
+          <FlexBox>
+            <Label showColon>Submitted date</Label>
+            <Text>{submission.date}</Text>
+          </FlexBox>
+          <FlexBox>
+            <Label showColon>Submitted category</Label>
+            <Text>{submission.category}</Text>
+          </FlexBox>
+        </FlexBox>
       </>
     );
   },
