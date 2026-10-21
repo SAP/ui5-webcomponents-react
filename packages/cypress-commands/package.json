@@ -23,8 +23,8 @@
     "clean": "rimraf dist api-commands.json api-queries.json"
   },
   "peerDependencies": {
-    "@ui5/webcomponents": "~2.27.0",
-    "@ui5/webcomponents-base": "~2.27.0",
+    "@ui5/webcomponents": "~2.27.0 || ~2.28.0",
+    "@ui5/webcomponents-base": "~2.27.0 || ~2.28.0",
     "cypress": "^12 || ^13 || ^14 || ^15 || ^16"
   },
   "peerDependenciesMeta": {
