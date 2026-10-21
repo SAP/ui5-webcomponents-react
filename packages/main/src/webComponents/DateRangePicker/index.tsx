@@ -31,12 +31,16 @@ interface DateRangePickerAttributes {
 
   /**
    * Defines the aria-label attribute for the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
@@ -83,6 +87,8 @@ interface DateRangePickerAttributes {
    *
    * **Note:** For calendars other than Gregorian,
    * the week numbers are not displayed regardless of what is set.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   hideWeekNumbers?: boolean;
@@ -91,6 +97,8 @@ interface DateRangePickerAttributes {
    * Determines the maximum date available for selection.
    *
    * **Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    */
   maxDate?: string;
 
@@ -98,6 +106,8 @@ interface DateRangePickerAttributes {
    * Determines the minimum date available for selection.
    *
    * **Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    */
   minDate?: string;
 
@@ -142,6 +152,8 @@ interface DateRangePickerAttributes {
 
   /**
    * Defines whether the component is required.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   required?: boolean;
@@ -149,6 +161,8 @@ interface DateRangePickerAttributes {
   /**
    * Defines the secondary calendar type.
    * If not set, the calendar will only show the primary calendar type.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   secondaryCalendarType?: CalendarType | undefined | keyof typeof CalendarType;
@@ -289,6 +303,8 @@ interface DateRangePickerPropTypes
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
    *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
+   *
    * __Supported Node Type/s:__ `Array<HTMLElement>`
    */
   valueStateMessage?: UI5WCSlotsNode;
@@ -377,6 +393,8 @@ interface DateRangePickerPropTypes
  * - [Shift] + [Ctrl] + [Page Up] - Increments the corresponding year by one
  *
  * __Note:__ This is a UI5 Web Component! [DateRangePicker UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/DateRangePicker) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const DateRangePicker = withWebComponent<DateRangePickerPropTypes, DateRangePickerDomRef>(
   'ui5-daterange-picker',

@@ -8,6 +8,8 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-
 interface ComboBoxItemAttributes {
   /**
    * Defines the additional text of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   additionalText?: string | undefined;

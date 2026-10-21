@@ -41,7 +41,7 @@
             {
               "name": "default",
               "description": "Receives the desired `<img>` tag\n\n**Note:** If you experience flickering of the provided image, you can hide the component until it is defined with the following CSS:<br/>\n`ui5-avatar:not(:defined) {`<br/>\n&nbsp;&nbsp;&nbsp;&nbsp;`visibility: hidden;`<br/>\n`}`",
-              "_ui5since": "1.0.0-rc.15",
+              "_ui5since": "1.0.0",
               "_ui5propertyName": "image",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
@@ -77,7 +77,7 @@
               "description": "Defines the text alternative of the component.\nIf not provided a default text alternative will be set, if present.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.7"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -113,7 +113,7 @@
                 "text": "string"
               },
               "default": "\"employee\"",
-              "description": "Defines the name of the fallback icon, which should be displayed in the following cases:\n\n\t- If the initials are not valid (more than 3 letters, unsupported languages or empty initials).\n\t- If there are three initials and they do not fit in the shape (e.g. WWW for some of the sizes).\n\t- If the image src is wrong.\n\n**Note:** If not set, a default fallback icon \"employee\" is displayed.\n\n**Note:** You should import the desired icon first, then use its name as \"fallback-icon\".\n\n`import \"@ui5/webcomponents-icons/dist/{icon_name}.js\"`\n\n`<ui5-avatar fallback-icon=\"alert\">`\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the name of the fallback icon, which should be displayed in the following cases:\n\n\t- If the initials are not valid (more than 3 letters or empty initials).\n\t- If the initials do not fit in the shape at the current size (e.g. WWW at size XS).\n\t- If the image src is wrong.\n\n**Note:** If not set, a default fallback icon \"employee\" is displayed.\n\n**Note:** You should import the desired icon first, then use its name as \"fallback-icon\".\n\n`import \"@ui5/webcomponents-icons/dist/{icon_name}.js\"`\n\n`<ui5-avatar fallback-icon=\"alert\">`\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "privacy": "public"
             },
             {
@@ -132,7 +132,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the displayed initials.\n\nUp to three Latin letters can be displayed as initials.",
+              "description": "Defines the displayed initials.\n\nUp to three letters from an alphabetic script can be displayed as initials.\nAll scripts used in SAP-supported languages are accepted, except logographic and\npure syllabic scripts where the concept of initials does not apply: Han (Chinese,\nJapanese kanji), Hiragana, and Katakana. Korean (Hangul) is supported.\nIf the letters do not fit inside the avatar shape at the current size, the fallback\nicon is shown instead.",
               "default": "undefined",
               "privacy": "public"
             },
@@ -163,7 +163,7 @@
               "default": "\"Image\"",
               "description": "Defines the mode of the component.\n\n**Note:**\n- `Image` (default) - renders with role=\"img\"\n- `Decorative` - renders with role=\"presentation\" and aria-hidden=\"true\", making it purely decorative\n- `Interactive` - renders with role=\"button\", focusable (tabindex=\"0\"), and supports keyboard interaction\n\n**Note:** This property is ignored when the `interactive` property is set to `true`.\nIn that case, the avatar will always be rendered as interactive.",
               "privacy": "public",
-              "_ui5since": "2.20"
+              "_ui5since": "2.20.0"
             },
             {
               "kind": "field",
@@ -252,7 +252,7 @@
               }
             },
             {
-              "description": "Defines the name of the fallback icon, which should be displayed in the following cases:\n\n\t- If the initials are not valid (more than 3 letters, unsupported languages or empty initials).\n\t- If there are three initials and they do not fit in the shape (e.g. WWW for some of the sizes).\n\t- If the image src is wrong.\n\n**Note:** If not set, a default fallback icon \"employee\" is displayed.\n\n**Note:** You should import the desired icon first, then use its name as \"fallback-icon\".\n\n`import \"@ui5/webcomponents-icons/dist/{icon_name}.js\"`\n\n`<ui5-avatar fallback-icon=\"alert\">`\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the name of the fallback icon, which should be displayed in the following cases:\n\n\t- If the initials are not valid (more than 3 letters or empty initials).\n\t- If the initials do not fit in the shape at the current size (e.g. WWW at size XS).\n\t- If the image src is wrong.\n\n**Note:** If not set, a default fallback icon \"employee\" is displayed.\n\n**Note:** You should import the desired icon first, then use its name as \"fallback-icon\".\n\n`import \"@ui5/webcomponents-icons/dist/{icon_name}.js\"`\n\n`<ui5-avatar fallback-icon=\"alert\">`\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "name": "fallback-icon",
               "default": "\"employee\"",
               "fieldName": "fallbackIcon",
@@ -270,7 +270,7 @@
               }
             },
             {
-              "description": "Defines the displayed initials.\n\nUp to three Latin letters can be displayed as initials.",
+              "description": "Defines the displayed initials.\n\nUp to three letters from an alphabetic script can be displayed as initials.\nAll scripts used in SAP-supported languages are accepted, except logographic and\npure syllabic scripts where the concept of initials does not apply: Han (Chinese,\nJapanese kanji), Hiragana, and Katakana. Korean (Hangul) is supported.\nIf the letters do not fit inside the avatar shape at the current size, the fallback\nicon is shown instead.",
               "name": "initials",
               "default": "undefined",
               "fieldName": "initials",
@@ -323,8 +323,9 @@
           },
           "tagName": "ui5-avatar",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.6",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
+          "_ui5subcomponents": ["AvatarBadge"],
           "_ui5implements": [
             {
               "name": "IAvatarGroupItem",
@@ -482,6 +483,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/AvatarBadgeTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "AvatarBadgeTemplate",
+            "module": "dist/AvatarBadgeTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/AvatarGroup.js",
       "declarations": [
         {
@@ -508,7 +524,7 @@
             {
               "name": "overflowButton",
               "description": "Defines the overflow button of the component.\n\n**Note:** We recommend using the `ui5-button` component.\n\n**Note:** If this slot is not used, the component will display the built-in overflow button.",
-              "_ui5since": "1.0.0-rc.13",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<IButton>",
                 "references": [
@@ -635,7 +651,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": false,
-              "_ui5since": "1.0.0-rc.11",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -665,7 +681,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": false,
-              "_ui5since": "1.0.0-rc.13"
+              "_ui5since": "1.0.0"
             }
           ],
           "attributes": [
@@ -731,7 +747,7 @@
           },
           "tagName": "ui5-avatar-group",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.11",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         },
         {
@@ -762,11 +778,41 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/AvatarGroupTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "AvatarGroupTemplate",
+            "module": "dist/AvatarGroupTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/AvatarTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "AvatarTemplate",
+            "module": "dist/AvatarTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Bar.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\nThe Bar is a container which is primarily used to hold titles, buttons and input elements\nand its design and functionality is the basis for page headers and footers.\nThe component consists of three areas to hold its content - startContent slot, default slot and endContent slot.\nIt has the capability to center content, such as a title, while having other components on the left and right side.\n\n### Usage\nWith the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter.\n\n**Note:** Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.\n\n### Responsive Behavior\nThe default slot will be centered in the available space between the startContent and the endContent areas,\ntherefore it might not always be centered in the entire bar.\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Bar.js\";`",
+          "description": "### Overview\nThe Bar is a container which is primarily used to hold titles, buttons and input elements\nand its design and functionality is the basis for page headers and footers.\nThe component consists of three areas to hold its content - startContent slot, default slot and endContent slot.\nIt has the capability to center content, such as a title, while having other components on the left and right side.\n\n### Usage\nWith the use of the design property, you can set the style of the Bar to appear designed like a Header, Subheader, Footer and FloatingFooter.\n\n**Note:** Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.\n\n**Note:** The Bar is a structural layout component for organizing page areas (header, footer, subheader) and not an action-oriented toolbar. To group action controls with full keyboard navigation support, use the Toolbar component instead.\n\n### Responsive Behavior\nThe default slot will be centered in the available space between the startContent and the endContent areas,\ntherefore it might not always be centered in the entire bar.\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Bar.js\";`",
           "name": "Bar",
           "cssParts": [
             {
@@ -849,8 +895,8 @@
                   }
                 ]
               },
-              "default": "\"Toolbar\"",
-              "description": "Specifies the ARIA role applied to the component for accessibility purposes.\n\n**Note:**\n\n- By default, accessibleRole is set to \"Toolbar\", which renders the ARIA role \"toolbar\".\n\n- Use the default accessibleRole value \"Toolbar\" only when the component contains two or more active, interactive elements (such as buttons, links, or input fields) within the bar.\n\n- If there is only one or no active element, set accessibleRole to \"None\" to avoid rendering the ARIA role \"toolbar\", as that role implies a grouping of multiple interactive controls.",
+              "default": "\"None\"",
+              "description": "Specifies the ARIA role applied to the component for accessibility purposes.\n\n**Note:** By default, no ARIA role is applied (\"None\"). The Bar derives its semantics\nfrom the container it is placed in, such as a page header or footer.\n\n**Note:** The \"Toolbar\" value is deprecated. The Bar is a structural layout container and does not\nsupport toolbar keyboard interactions (such as arrow-key navigation between components). When 3 or more\ninteractive elements are needed, use the `ui5-toolbar` component instead, which provides the correct\ntoolbar role and arrow-key navigation between components.",
               "privacy": "public",
               "_ui5since": "2.10.0"
             },
@@ -892,9 +938,9 @@
               }
             },
             {
-              "description": "Specifies the ARIA role applied to the component for accessibility purposes.\n\n**Note:**\n\n- By default, accessibleRole is set to \"Toolbar\", which renders the ARIA role \"toolbar\".\n\n- Use the default accessibleRole value \"Toolbar\" only when the component contains two or more active, interactive elements (such as buttons, links, or input fields) within the bar.\n\n- If there is only one or no active element, set accessibleRole to \"None\" to avoid rendering the ARIA role \"toolbar\", as that role implies a grouping of multiple interactive controls.",
+              "description": "Specifies the ARIA role applied to the component for accessibility purposes.\n\n**Note:** By default, no ARIA role is applied (\"None\"). The Bar derives its semantics\nfrom the container it is placed in, such as a page header or footer.\n\n**Note:** The \"Toolbar\" value is deprecated. The Bar is a structural layout container and does not\nsupport toolbar keyboard interactions (such as arrow-key navigation between components). When 3 or more\ninteractive elements are needed, use the `ui5-toolbar` component instead, which provides the correct\ntoolbar role and arrow-key navigation between components.",
               "name": "accessible-role",
-              "default": "\"Toolbar\"",
+              "default": "\"None\"",
               "fieldName": "accessibleRole",
               "type": {
                 "text": "\"None\" | \"Toolbar\""
@@ -917,7 +963,7 @@
           },
           "tagName": "ui5-bar",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.11",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -936,6 +982,21 @@
           "declaration": {
             "name": "Bar",
             "module": "dist/Bar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/BarTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "BarTemplate",
+            "module": "dist/BarTemplate.js"
           }
         }
       ]
@@ -1111,8 +1172,9 @@
           },
           "tagName": "ui5-breadcrumbs",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.15",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
+          "_ui5subcomponents": ["BreadcrumbsItem"],
           "_ui5implements": [
             {
               "name": "IToolbarItemContent",
@@ -1283,7 +1345,7 @@
           },
           "tagName": "ui5-breadcrumbs-item",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.15",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5abstract": true
         }
@@ -1303,6 +1365,36 @@
           "declaration": {
             "name": "BreadcrumbsItem",
             "module": "dist/BreadcrumbsItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/BreadcrumbsPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "BreadcrumbsPopoverTemplate",
+            "module": "dist/BreadcrumbsPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/BreadcrumbsTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "BreadcrumbsTemplate",
+            "module": "dist/BreadcrumbsTemplate.js"
           }
         }
       ]
@@ -1372,7 +1464,7 @@
               "description": "Defines text to be displayed below the component. It can be used to inform the user of the current operation.",
               "privacy": "public",
               "default": "undefined",
-              "_ui5since": "1.0.0-rc.7"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -1446,7 +1538,7 @@
           },
           "tagName": "ui5-busy-indicator",
           "customElement": true,
-          "_ui5since": "0.12.0",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -1465,6 +1557,21 @@
           "declaration": {
             "name": "BusyIndicator",
             "module": "dist/BusyIndicator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/BusyIndicatorTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "BusyIndicatorTemplate",
+            "module": "dist/BusyIndicatorTemplate.js"
           }
         }
       ]
@@ -1557,7 +1664,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -1586,7 +1693,7 @@
               "default": "\"Button\"",
               "description": "Describes the accessibility role of the button.\n\n**Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.",
               "privacy": "public",
-              "_ui5since": "1.23"
+              "_ui5since": "1.23.0"
             },
             {
               "kind": "field",
@@ -1918,6 +2025,7 @@
           "tagName": "ui5-button",
           "customElement": true,
           "_ui5privacy": "public",
+          "_ui5subcomponents": ["ButtonBadge"],
           "_ui5implements": [
             {
               "name": "IButton",
@@ -2037,6 +2145,36 @@
           "declaration": {
             "name": "ButtonBadge",
             "module": "dist/ButtonBadge.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ButtonBadgeTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ButtonTemplate",
+            "module": "dist/ButtonBadgeTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ButtonTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ButtonTemplate",
+            "module": "dist/ButtonTemplate.js"
           }
         }
       ]
@@ -2245,7 +2383,7 @@
               "default": "\"\"",
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -2256,7 +2394,7 @@
               "default": "\"\"",
               "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -2291,7 +2429,7 @@
               "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -2460,8 +2598,9 @@
           },
           "tagName": "ui5-calendar",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.11",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["CalendarDate", "CalendarDateRange", "SpecialCalendarDate"]
         },
         {
           "kind": "interface",
@@ -2647,6 +2786,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/CalendarHeaderTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CalendarHeaderTemplate",
+            "module": "dist/CalendarHeaderTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/CalendarLegend.js",
       "declarations": [
         {
@@ -2759,7 +2913,8 @@
           "tagName": "ui5-calendar-legend",
           "customElement": true,
           "_ui5since": "1.23.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["CalendarLegendItem"]
         }
       ],
       "exports": [
@@ -2870,6 +3025,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/CalendarLegendItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CalendarLegendItemTemplate",
+            "module": "dist/CalendarLegendItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/CalendarLegendTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CalendarLegendTemplate",
+            "module": "dist/CalendarLegendTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/CalendarPart.js",
       "declarations": [
         {
@@ -2926,7 +3111,7 @@
               "default": "\"\"",
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -2937,7 +3122,7 @@
               "default": "\"\"",
               "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -2972,7 +3157,7 @@
               "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -3083,6 +3268,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/CalendarTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CalendarTemplate",
+            "module": "dist/CalendarTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Card.js",
       "declarations": [
         {
@@ -3112,7 +3312,7 @@
             {
               "name": "header",
               "description": "Defines the header of the component.\n\n**Note:** Use `ui5-card-header` for the intended design.",
-              "_ui5since": "1.0.0-rc.15",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<CardHeader>",
                 "references": [
@@ -3136,7 +3336,7 @@
               "description": "Defines the accessible name of the component, which is used as the name of the card region and should be unique per card.\n\n**Note:** `accessibleName` should be always set, unless `accessibleNameRef` is set.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -3147,7 +3347,7 @@
               "description": "Defines the IDs of the elements that label the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -3217,7 +3417,8 @@
           },
           "tagName": "ui5-card",
           "customElement": true,
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["CardHeader"]
         }
       ],
       "exports": [
@@ -3383,7 +3584,7 @@
           },
           "tagName": "ui5-card-header",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.15",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -3402,6 +3603,36 @@
           "declaration": {
             "name": "CardHeader",
             "module": "dist/CardHeader.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/CardHeaderTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CardHeaderTemplate",
+            "module": "dist/CardHeaderTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/CardTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CardTemplate",
+            "module": "dist/CardTemplate.js"
           }
         }
       ]
@@ -3441,7 +3672,7 @@
               "description": "Defines the accessible name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -3452,7 +3683,7 @@
               "description": "Defines the IDs of the elements that label the input.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -3487,7 +3718,7 @@
               "default": "\"Translucent\"",
               "description": "Defines the carousel's background design.",
               "privacy": "public",
-              "_ui5since": "1.14"
+              "_ui5since": "1.14.0"
             },
             {
               "kind": "field",
@@ -3508,7 +3739,7 @@
               "default": "false",
               "description": "Defines the visibility of the navigation arrows.\nIf set to true the navigation arrows will be hidden.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -3519,7 +3750,7 @@
               "default": "false",
               "description": "Defines the visibility of the page indicator.\nIf set to true the page indicator will be hidden.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -3551,7 +3782,7 @@
               ],
               "description": "Changes the currently displayed page.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -3569,7 +3800,7 @@
               "default": "\"Solid\"",
               "description": "Defines the page indicator background design.",
               "privacy": "public",
-              "_ui5since": "1.14"
+              "_ui5since": "1.14.0"
             },
             {
               "kind": "field",
@@ -3587,7 +3818,7 @@
               "default": "\"Solid\"",
               "description": "Defines the page indicator border design.",
               "privacy": "public",
-              "_ui5since": "1.14"
+              "_ui5since": "1.14.0"
             },
             {
               "kind": "field",
@@ -3605,7 +3836,7 @@
               "default": "\"Default\"",
               "description": "Defines the style of the page indicator.\nAvailable options are:\n\n- `Default` - The page indicator will be visualized as dots if there are fewer than 9 pages. If there are more pages, the page indicator will switch to displaying the current page and the total number of pages. (e.g. X of Y)\n- `Numeric` - The page indicator will display the current page and the total number of pages. (e.g. X of Y)",
               "privacy": "public",
-              "_ui5since": "1.10"
+              "_ui5since": "1.10.0"
             },
             {
               "kind": "field",
@@ -3617,7 +3848,7 @@
               "privacy": "public",
               "default": "[]",
               "readonly": true,
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             }
           ],
           "events": [
@@ -3638,7 +3869,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.7",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -3768,7 +3999,7 @@
           },
           "tagName": "ui5-carousel",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.6",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -3787,6 +4018,21 @@
           "declaration": {
             "name": "Carousel",
             "module": "dist/Carousel.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/CarouselTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CarouselTemplate",
+            "module": "dist/CarouselTemplate.js"
           }
         }
       ]
@@ -3878,7 +4124,7 @@
               "default": "false",
               "description": "Defines whether the component is displayed as partially checked.\n\n**Note:** The indeterminate state can be set only programmatically and can’t be achieved by user\ninteraction and the resulting visual state depends on the values of the `indeterminate`\nand `checked` properties:\n\n-  If the component is checked and indeterminate, it will be displayed as partially checked\n-  If the component is checked and it is not indeterminate, it will be displayed as checked\n-  If the component is not checked, it will be displayed as not checked regardless value of the indeterminate attribute",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -4129,6 +4375,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/CheckBoxTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CheckBoxTemplate",
+            "module": "dist/CheckBoxTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ColorPalette.js",
       "declarations": [
         {
@@ -4195,7 +4456,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": false,
-              "_ui5since": "1.0.0-rc.15",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -4235,8 +4496,9 @@
           },
           "tagName": "ui5-color-palette",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.12",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["ColorPaletteItem"]
         },
         {
           "kind": "interface",
@@ -4373,7 +4635,7 @@
           },
           "tagName": "ui5-color-palette-item",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.12",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5implements": [
             {
@@ -4399,6 +4661,21 @@
           "declaration": {
             "name": "ColorPaletteItem",
             "module": "dist/ColorPaletteItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ColorPaletteItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ColorPaletteItemTemplate",
+            "module": "dist/ColorPaletteItemTemplate.js"
           }
         }
       ]
@@ -4665,7 +4942,7 @@
           },
           "tagName": "ui5-color-palette-popover",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.16",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -4684,6 +4961,36 @@
           "declaration": {
             "name": "ColorPalettePopover",
             "module": "dist/ColorPalettePopover.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ColorPalettePopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ColorPalettePopoverTemplate",
+            "module": "dist/ColorPalettePopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ColorPaletteTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ColorPaletteTemplate",
+            "module": "dist/ColorPaletteTemplate.js"
           }
         }
       ]
@@ -4819,7 +5126,7 @@
           },
           "tagName": "ui5-color-picker",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.12",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -4838,6 +5145,21 @@
           "declaration": {
             "name": "ColorPicker",
             "module": "dist/ColorPicker.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ColorPickerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ColorPickerTemplate",
+            "module": "dist/ColorPickerTemplate.js"
           }
         }
       ]
@@ -4870,7 +5192,7 @@
             {
               "name": "icon",
               "description": "Defines the icon to be displayed in the input field.",
-              "_ui5since": "1.0.0-rc.9",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<IIcon>",
                 "references": [
@@ -4886,7 +5208,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the `ui5-combobox` is in `Information`, `Critical` or `Negative` value state.",
-              "_ui5since": "1.0.0-rc.9",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -4903,7 +5225,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -4914,7 +5236,7 @@
               "description": "Receives id(or many ids) of the elements that label the component",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -5102,6 +5424,43 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true
+            },
+            {
+              "name": "load-items",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<ComboBoxLoadItemsEventDetail>",
+                "references": [
+                  {
+                    "name": "ComboBoxLoadItemsEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ComboBox.js"
+                  }
+                ]
+              },
+              "description": "Fired when the application should provide items for the component to render.\nThe event is fired either when text is input or when the user presses arrow down on a combo-box with no items.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.28.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "string"
+                  },
+                  "name": "reason",
+                  "_ui5privacy": "public",
+                  "description": "the reason the event was fired - \"input\" when text is typed, \"open\" when the picker is about to open"
+                },
+                {
+                  "type": {
+                    "text": "string"
+                  },
+                  "name": "value",
+                  "_ui5privacy": "public",
+                  "description": "value of the input"
+                }
+              ]
             },
             {
               "name": "open",
@@ -5304,8 +5663,9 @@
           },
           "tagName": "ui5-combobox",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.6",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["ComboBoxItem", "ComboBoxItemCustom", "ComboBoxItemGroup"]
         },
         {
           "kind": "interface",
@@ -5351,7 +5711,7 @@
               "description": "Defines the additional text of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.11"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -5602,6 +5962,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ComboBoxItemCustomTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ComboBoxItemCustomTemplate",
+            "module": "dist/ComboBoxItemCustomTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ComboBoxItemGroup.js",
       "declarations": [
         {
@@ -5698,7 +6073,7 @@
           },
           "tagName": "ui5-cb-item-group",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.15",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5abstract": true,
           "_ui5implements": [
@@ -5836,6 +6211,66 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ComboBoxItemGroupTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ComboBoxItemGroupTemplate",
+            "module": "dist/ComboBoxItemGroupTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ComboBoxItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ComboBoxItemTemplate",
+            "module": "dist/ComboBoxItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ComboBoxPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ComboBoxPopoverTemplate",
+            "module": "dist/ComboBoxPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ComboBoxTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ComboBoxTemplate",
+            "module": "dist/ComboBoxTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/CustomAnnouncement.js",
       "declarations": [],
       "exports": []
@@ -5898,7 +6333,7 @@
               "default": "\"\"",
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -5909,7 +6344,7 @@
               "default": "\"\"",
               "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -5944,7 +6379,7 @@
               "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -6072,7 +6507,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.",
-              "_ui5since": "1.0.0-rc.7",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -6111,7 +6546,7 @@
               "description": "Defines the aria-label attribute for the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -6122,7 +6557,7 @@
               "description": "Receives id(or many ids) of the elements that label the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -6228,7 +6663,7 @@
               "default": "false",
               "description": "Defines the visibility of the week numbers column.\n\n**Note:** For calendars other than Gregorian,\nthe week numbers are not displayed regardless of what is set.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "method",
@@ -6324,7 +6759,7 @@
               "default": "\"\"",
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -6335,7 +6770,7 @@
               "default": "\"\"",
               "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -6404,7 +6839,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.9"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -6422,7 +6857,7 @@
               "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -6861,6 +7296,51 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/DatePickerInputTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DatePickerInputTemplate",
+            "module": "dist/DatePickerInputTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DatePickerPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DatePickerPopoverTemplate",
+            "module": "dist/DatePickerPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DatePickerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DatePickerTemplate",
+            "module": "dist/DatePickerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/DateRangePicker.js",
       "declarations": [
         {
@@ -6899,7 +7379,7 @@
               "description": "Defines the aria-label attribute for the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -6910,7 +7390,7 @@
               "description": "Receives id(or many ids) of the elements that label the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7048,7 +7528,7 @@
               "default": "false",
               "description": "Defines the visibility of the week numbers column.\n\n**Note:** For calendars other than Gregorian,\nthe week numbers are not displayed regardless of what is set.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "method",
@@ -7144,7 +7624,7 @@
               "default": "\"\"",
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7155,7 +7635,7 @@
               "default": "\"\"",
               "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7224,7 +7704,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.9"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7242,7 +7722,7 @@
               "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7589,13 +8069,13 @@
           },
           "tagName": "ui5-daterange-picker",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "slots": [
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.",
-              "_ui5since": "1.0.0-rc.7",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -7765,6 +8245,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/DateRangePickerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DateRangePickerTemplate",
+            "module": "dist/DateRangePickerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/DateTimeInput.js",
       "declarations": [
         {
@@ -7803,7 +8298,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7814,7 +8309,7 @@
               "description": "Receives id(or many ids) of the elements that label the input.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7853,7 +8348,7 @@
               "description": "Sets the maximum number of characters available in the input field.\n\n**Note:** This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.5"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7916,7 +8411,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.3"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -8029,7 +8524,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.\n\n**Note:** If the component has `suggestionItems`,\nthe `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.",
-              "_ui5since": "1.0.0-rc.6",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -8364,7 +8859,7 @@
               "description": "Defines the aria-label attribute for the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -8375,7 +8870,7 @@
               "description": "Receives id(or many ids) of the elements that label the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -8481,7 +8976,7 @@
               "default": "false",
               "description": "Defines the visibility of the week numbers column.\n\n**Note:** For calendars other than Gregorian,\nthe week numbers are not displayed regardless of what is set.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "method",
@@ -8577,7 +9072,7 @@
               "default": "\"\"",
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -8588,7 +9083,7 @@
               "default": "\"\"",
               "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -8657,7 +9152,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.9"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -8675,7 +9170,7 @@
               "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -8736,13 +9231,13 @@
           },
           "tagName": "ui5-datetime-picker",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.7",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "slots": [
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.",
-              "_ui5since": "1.0.0-rc.7",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -9132,6 +9627,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/DateTimePickerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DateTimePickerTemplate",
+            "module": "dist/DateTimePickerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/DayPicker.js",
       "declarations": [
         {
@@ -9188,7 +9698,7 @@
               "default": "\"\"",
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -9199,7 +9709,7 @@
               "default": "\"\"",
               "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -9234,7 +9744,7 @@
               "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -9354,6 +9864,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/DayPickerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DayPickerTemplate",
+            "module": "dist/DayPickerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Dialog.js",
       "declarations": [
         {
@@ -9433,7 +9958,7 @@
               "description": "Defines the accessible name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -9485,7 +10010,7 @@
               "default": "false",
               "description": "Determines whether the component is draggable.\nIf this property is set to true, the Dialog will be draggable by its header.\n\n**Note:** The component can be draggable only in desktop mode.\n\n**Note:** This property overrides the default HTML \"draggable\" attribute native behavior.\nWhen \"draggable\" is set to true, the native browser \"draggable\"\nbehavior is prevented and only the Dialog custom logic (\"draggable by its header\") works.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.9"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -9527,7 +10052,7 @@
               "default": "false",
               "description": "Defines if the focus should be returned to the previously focused element,\nwhen the popup closes.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -9549,7 +10074,7 @@
               "default": "false",
               "description": "Configures the component to be resizable.\nIf this property is set to true, the Dialog will have a resize handle in its bottom right corner in LTR languages.\nIn RTL languages, the resize handle will be placed in the bottom left corner.\n\n**Note:** The component can be resizable only in desktop mode.\n\n**Note:** Upon resizing, externally defined height and width styling will be ignored.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.10"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -9578,7 +10103,7 @@
               "default": "\"None\"",
               "description": "Defines the state of the `Dialog`.\n\n**Note:** If `\"Negative\"` and `\"Critical\"` states is set, it will change the\naccessibility role to \"alertdialog\", if the accessibleRole property is set to `\"Dialog\"`.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -9822,6 +10347,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/DialogTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DialogTemplate",
+            "module": "dist/DialogTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/DropIndicator.js",
       "declarations": [
         {
@@ -9947,6 +10487,21 @@
           "declaration": {
             "name": "DropIndicator",
             "module": "dist/DropIndicator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DropIndicatorTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DropIndicatorTemplate",
+            "module": "dist/DropIndicatorTemplate.js"
           }
         }
       ]
@@ -10110,6 +10665,51 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/DynamicDateRangeInputTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicDateRangeInputTemplate",
+            "module": "dist/DynamicDateRangeInputTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DynamicDateRangePopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicDateRangePopoverTemplate",
+            "module": "dist/DynamicDateRangePopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DynamicDateRangeTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicDateRangeTemplate",
+            "module": "dist/DynamicDateRangeTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ExpandableText.js",
       "declarations": [
         {
@@ -10242,6 +10842,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ExpandableTextTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ExpandableTextTemplate",
+            "module": "dist/ExpandableTextTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/FileUploader.js",
       "declarations": [
         {
@@ -10261,7 +10876,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.",
-              "_ui5since": "1.0.0-rc.9",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -10646,7 +11261,7 @@
           },
           "tagName": "ui5-file-uploader",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.6",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -10665,6 +11280,36 @@
           "declaration": {
             "name": "FileUploader",
             "module": "dist/FileUploader.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/FileUploaderPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "FileUploaderPopoverTemplate",
+            "module": "dist/FileUploaderPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/FileUploaderTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "FileUploaderTemplate",
+            "module": "dist/FileUploaderTemplate.js"
           }
         }
       ]
@@ -10932,7 +11577,8 @@
           "tagName": "ui5-form",
           "customElement": true,
           "_ui5since": "2.0.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["FormGroup", "FormItem"]
         },
         {
           "kind": "interface",
@@ -11258,6 +11904,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/FormItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "FormItemTemplate",
+            "module": "dist/FormItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/FormTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "FormTemplate",
+            "module": "dist/FormTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/GridWalker.js",
       "declarations": [],
       "exports": [
@@ -11475,6 +12151,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/IconTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "IconTemplate",
+            "module": "dist/IconTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Input.js",
       "declarations": [
         {
@@ -11536,7 +12227,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.\n\n**Note:** If the component has `suggestionItems`,\nthe `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.",
-              "_ui5since": "1.0.0-rc.6",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -11575,7 +12266,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -11586,7 +12277,7 @@
               "description": "Receives id(or many ids) of the elements that label the input.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -11625,7 +12316,7 @@
               "description": "Sets the maximum number of characters available in the input field.\n\n**Note:** This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.5"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -11688,7 +12379,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.3"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -12018,7 +12709,8 @@
           },
           "tagName": "ui5-input",
           "customElement": true,
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["InputIcon", "SuggestionItem", "SuggestionItemCustom", "SuggestionItemGroup"]
         }
       ],
       "exports": [
@@ -12055,7 +12747,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the accessible name of the icon.\n\n**Note:** This property is used for accessibility purposes and will be announced by screen readers.\nWhen set, it is also rendered as a native `title` tooltip.",
+              "description": "Defines the accessible name of the icon.\n\n**Note:** This property is used for accessibility purposes and will be announced by screen readers.\nWhen set, it is also rendered as a native `title` tooltip, unless `hideTooltip` is set.",
               "default": "undefined",
               "privacy": "public"
             },
@@ -12085,7 +12777,7 @@
           ],
           "attributes": [
             {
-              "description": "Defines the accessible name of the icon.\n\n**Note:** This property is used for accessibility purposes and will be announced by screen readers.\nWhen set, it is also rendered as a native `title` tooltip.",
+              "description": "Defines the accessible name of the icon.\n\n**Note:** This property is used for accessibility purposes and will be announced by screen readers.\nWhen set, it is also rendered as a native `title` tooltip, unless `hideTooltip` is set.",
               "name": "accessible-name",
               "default": "undefined",
               "fieldName": "accessibleName",
@@ -12129,6 +12821,51 @@
           "declaration": {
             "name": "InputIcon",
             "module": "dist/InputIcon.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/InputIconTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "InputIconTemplate",
+            "module": "dist/InputIconTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/InputPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "InputPopoverTemplate",
+            "module": "dist/InputPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/InputTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "InputTemplate",
+            "module": "dist/InputTemplate.js"
           }
         }
       ]
@@ -12269,11 +13006,26 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/LabelTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "LabelTemplate",
+            "module": "dist/LabelTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Link.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\nThe `ui5-link` is a hyperlink component that is used to navigate to other\napps and web pages, or to trigger actions.\nIt is a clickable text element, visualized in such a way that it stands out\nfrom the standard text.\nOn hover, it changes its style to an underlined text to provide additional feedback to the user.\n\n### Usage\n\nYou can set the `ui5-link` to be enabled or disabled.\n\nTo create a visual hierarchy in large lists of links, you can set the less important links as\n`Subtle` or the more important ones as `Emphasized`,\nby using the `design` property.\n\nIf the `href` property is set, the link behaves as the HTML\nanchor tag (`<a></a>`) and opens the specified URL in the given target frame (`target` property).\nTo specify where the linked content is opened, you can use the `target` property.\n\n### Responsive behavior\n\nIf there is not enough space, the text of the `ui5-link` becomes truncated.\nIf the `wrappingType` property is set to `\"Normal\"`, the text is displayed\non several lines instead of being truncated.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Link\";`",
+          "description": "### Overview\nThe `ui5-link` is a hyperlink component that is used to navigate to other\napps and web pages, or to trigger actions.\nIt is a clickable text element, visualized in such a way that it stands out\nfrom the standard text.\nOn hover, it changes its style to an underlined text to provide additional feedback to the user.\n\n### Usage\n\nYou can set the `ui5-link` to be enabled or disabled.\n\nTo create a visual hierarchy in large lists of links, you can set the less important links as\n`Subtle` or the more important ones as `Emphasized`,\nby using the `design` property.\n\nIf the `href` property is set, the link behaves as the HTML\nanchor tag (`<a></a>`) and opens the specified URL in the given target frame (`target` property).\nTo specify where the linked content is opened, you can use the `target` property.\n\n### Navigation vs. Action\n\nThe `ui5-link` supports two distinct use cases. Choosing the right one is important for accessibility:\n\n- **Navigation**: set the `href` property (and optionally `target`). The component behaves as a\nstandard anchor tag, and the browser handles navigation, which also enables native\naffordances such as open-in-new-tab, copy link, and hover preview.\n- **Action**: when the link triggers an in-page action (for example, opening a dialog) instead of\nnavigating, leave `href` unset and set `accessibleRole` to `\"Button\"`. This exposes the component\nwith a `button` role, which assistive technologies activate reliably.\n\n**Note:** A link that triggers an action but keeps the default `\"Link\"` role (with no `href`) cannot be\nactivated by some screen readers, such as JAWS in browse mode, because a link without `href` has\nno destination to navigate to. Always set `accessibleRole=\"Button\"` for action-only links.\n\n### Responsive behavior\n\nIf there is not enough space, the text of the `ui5-link` becomes truncated.\nIf the `wrappingType` property is set to `\"Normal\"`, the text is displayed\non several lines instead of being truncated.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Link\";`",
           "name": "Link",
           "cssParts": [
             {
@@ -12345,7 +13097,7 @@
               "description": "Receives id(or many ids) of the elements that label the input",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -12361,7 +13113,7 @@
                 ]
               },
               "default": "\"Link\"",
-              "description": "Defines the ARIA role of the component.\n\n**Note:** Use the <code>LinkAccessibleRole.Button</code> role in cases when navigation is not expected to occur and the href property is not defined.",
+              "description": "Defines the ARIA role of the component.\n\n**Note:** Set the role to <code>LinkAccessibleRole.Button</code> when the link triggers an action instead of navigating (when the <code>href</code> property is not defined). Otherwise, the component keeps the default <code>\"Link\"</code> role, and some screen readers (for example, JAWS in browse mode) cannot activate it, as a link with no <code>href</code> has no destination to navigate to.",
               "privacy": "public",
               "_ui5since": "1.9.0"
             },
@@ -12573,7 +13325,7 @@
               }
             },
             {
-              "description": "Defines the ARIA role of the component.\n\n**Note:** Use the <code>LinkAccessibleRole.Button</code> role in cases when navigation is not expected to occur and the href property is not defined.",
+              "description": "Defines the ARIA role of the component.\n\n**Note:** Set the role to <code>LinkAccessibleRole.Button</code> when the link triggers an action instead of navigating (when the <code>href</code> property is not defined). Otherwise, the component keeps the default <code>\"Link\"</code> role, and some screen readers (for example, JAWS in browse mode) cannot activate it, as a link with no <code>href</code> has no destination to navigate to.",
               "name": "accessible-role",
               "default": "\"Link\"",
               "fieldName": "accessibleRole",
@@ -12694,6 +13446,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/LinkTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "LinkTemplate",
+            "module": "dist/LinkTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/List.js",
       "declarations": [
         {
@@ -12779,7 +13546,7 @@
               "description": "Defines the accessible name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -12790,7 +13557,7 @@
               "description": "Defines the IDs of the elements that label the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -12808,7 +13575,7 @@
               "default": "\"List\"",
               "description": "Defines the accessible role of the component.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -12836,7 +13603,7 @@
               "default": "\"None\"",
               "description": "Defines whether the component will have growing capability either by pressing a `More` button,\nor via user scroll. In both cases `load-more` event is fired.\n\n**Restrictions:** `growing=\"Scroll\"` is not supported for Internet Explorer,\non IE the component will fallback to `growing=\"Button\"`.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.13"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -12847,7 +13614,7 @@
               "description": "Defines the text that will be displayed inside the growing button.\n\n**Note:** If not specified a built-in text will be displayed.\n\n**Note:** This property takes effect if the `growing` property is set to the `Button`.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -12897,7 +13664,7 @@
               "default": "false",
               "description": "Defines if the component would display a loading indicator over the list.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -13011,7 +13778,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.8",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -13068,7 +13835,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.8",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -13090,7 +13857,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "name": "move",
@@ -13387,7 +14154,8 @@
           },
           "tagName": "ui5-list",
           "customElement": true,
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["ListItemCustom", "ListItemGroup", "ListItemStandard"]
         }
       ],
       "exports": [
@@ -13405,6 +14173,21 @@
           "declaration": {
             "name": "List",
             "module": "dist/List.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ListBoxItemGroupTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListItemGroupTemplate",
+            "module": "dist/ListBoxItemGroupTemplate.js"
           }
         }
       ]
@@ -13488,7 +14271,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -13731,6 +14514,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ListItemBaseTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListItemBaseTemplate",
+            "module": "dist/ListItemBaseTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ListItemCustom.js",
       "declarations": [
         {
@@ -13817,7 +14615,7 @@
               "description": "Defines the text alternative of the component.\n\n**Note**: If not provided a default text alternative will be set, if present.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -13853,7 +14651,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -14066,6 +14864,21 @@
           "declaration": {
             "name": "ListItemCustom",
             "module": "dist/ListItemCustom.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ListItemCustomTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListItemCustomTemplate",
+            "module": "dist/ListItemCustomTemplate.js"
           }
         }
       ]
@@ -14497,6 +15310,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ListItemGroupHeaderTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListItemGroupHeaderTemplate",
+            "module": "dist/ListItemGroupHeaderTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ListItemGroupTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListItemGroupTemplate",
+            "module": "dist/ListItemGroupTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ListItemStandard.js",
       "declarations": [
         {
@@ -14609,7 +15452,7 @@
               "description": "Defines the text alternative of the component.\nNote: If not provided a default text alternative will be set, if present.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -14638,7 +15481,7 @@
               "description": "Defines the `additionalText`, displayed in the end of the list item.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -14656,7 +15499,7 @@
               "default": "\"None\"",
               "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -14667,7 +15510,7 @@
               "description": "Defines the description displayed right under the item text, if such is present.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "0.8.0"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -14685,7 +15528,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -15016,6 +15859,51 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ListItemStandardTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListItemStandardTemplate",
+            "module": "dist/ListItemStandardTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ListItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListItemTemplate",
+            "module": "dist/ListItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ListTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListTemplate",
+            "module": "dist/ListTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Menu.js",
       "declarations": [
         {
@@ -15330,7 +16218,8 @@
           "tagName": "ui5-menu",
           "customElement": true,
           "_ui5since": "1.3.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["MenuItem", "MenuItemGroup", "MenuSeparator"]
         }
       ],
       "exports": [
@@ -15499,7 +16388,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -15997,6 +16886,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/MenuItemGroupTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MenuItemGroupTemplate",
+            "module": "dist/MenuItemGroupTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MenuItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MenuItemTemplate",
+            "module": "dist/MenuItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/MenuSeparator.js",
       "declarations": [
         {
@@ -16037,6 +16956,36 @@
           "declaration": {
             "name": "MenuSeparator",
             "module": "dist/MenuSeparator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MenuSeparatorTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MenuSeparatorTemplate",
+            "module": "dist/MenuSeparatorTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MenuTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MenuTemplate",
+            "module": "dist/MenuTemplate.js"
           }
         }
       ]
@@ -16102,7 +17051,7 @@
               "default": "\"Information\"",
               "description": "Defines the component type.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -16123,7 +17072,7 @@
               "default": "false",
               "description": "Defines whether the MessageStrip will show an icon in the beginning.\nYou can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.\n\n * **Note:** If <code>MessageStripDesign.ColorSet1</code> or <code>MessageStripDesign.ColorSet2</code> value is set to the <code>design</code> property, default icon will not be presented.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             }
           ],
           "events": [
@@ -16184,7 +17133,7 @@
           },
           "tagName": "ui5-message-strip",
           "customElement": true,
-          "_ui5since": "0.9.0",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -16203,6 +17152,21 @@
           "declaration": {
             "name": "MessageStrip",
             "module": "dist/MessageStrip.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MessageStripTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MessageStripTemplate",
+            "module": "dist/MessageStripTemplate.js"
           }
         }
       ]
@@ -16265,7 +17229,7 @@
               "default": "\"\"",
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -16276,7 +17240,7 @@
               "default": "\"\"",
               "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -16311,7 +17275,7 @@
               "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -16431,6 +17395,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/MonthPickerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MonthPickerTemplate",
+            "module": "dist/MonthPickerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/MultiComboBox.js",
       "declarations": [
         {
@@ -16469,7 +17448,7 @@
             {
               "name": "icon",
               "description": "Defines the icon to be displayed in the component.",
-              "_ui5since": "1.0.0-rc.9",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<IIcon>",
                 "references": [
@@ -16485,7 +17464,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.",
-              "_ui5since": "1.0.0-rc.9",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -16624,7 +17603,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.5"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -16962,8 +17941,9 @@
           },
           "tagName": "ui5-multi-combobox",
           "customElement": true,
-          "_ui5since": "0.11.0",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["MultiComboBoxItem", "MultiComboBoxItemCustom", "MultiComboBoxItemGroup"]
         }
       ],
       "exports": [
@@ -17003,7 +17983,7 @@
               "description": "Defines the additional text of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.11"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -17275,6 +18255,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/MultiComboBoxItemCustomTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MultiComboBoxItemCustomTemplate",
+            "module": "dist/MultiComboBoxItemCustomTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/MultiComboBoxItemGroup.js",
       "declarations": [
         {
@@ -17508,6 +18503,66 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/MultiComboBoxItemGroupTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MultiComboBoxItemGroupTemplate",
+            "module": "dist/MultiComboBoxItemGroupTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MultiComboBoxItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MultiComboBoxItemTemplate",
+            "module": "dist/MultiComboBoxItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MultiComboBoxPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MultiComboBoxPopoverTemplate",
+            "module": "dist/MultiComboBoxPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MultiComboBoxTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MultiComboBoxTemplate",
+            "module": "dist/MultiComboBoxTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/MultiInput.js",
       "declarations": [
         {
@@ -17564,7 +18619,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.\n\n**Note:** If the component has `suggestionItems`,\nthe `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.",
-              "_ui5since": "1.0.0-rc.6",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -17603,7 +18658,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -17614,7 +18669,7 @@
               "description": "Receives id(or many ids) of the elements that label the input.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -17653,7 +18708,7 @@
               "description": "Sets the maximum number of characters available in the input field.\n\n**Note:** This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.5"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -17716,7 +18771,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.3"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -18104,7 +19159,7 @@
           },
           "tagName": "ui5-multi-input",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.9",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "cssParts": [
             {
@@ -18143,12 +19198,27 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/NumberInput.js",
+      "path": "dist/MultiInputTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MultiInputTemplate",
+            "module": "dist/MultiInputTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/NumericInput.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-number-input` component is a numeric input field. It allows users to enter, edit and select numeric values.\n\n### Usage\n\nThe default step is 1 but the app developer can set a different one.\n\nApp developers can set a maximum and minimum value for `ui5-number-input`.\nThe increase/decrease button and the up/down keyboard navigation become disabled when\nthe value reaches the max/min or a new value is entered from the input which is greater/less than the max/min.\n\n#### When to use:\n\n- To enter or adjust numeric values.\n- To adjust values for a specific step.\n\n#### When not to use:\n\n- To enter a static number (for example, postal code, phone number, or ID). In this case,\nuse the regular `ui5-input` instead.\n- To enter dates and times. In this case, use date/time related components instead.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NumberInput.js\";`",
-          "name": "NumberInput",
+          "description": "### Overview\n\nThe `ui5-numeric-input` component is a numeric input field. It allows users to enter, edit and select numeric values.\n\n### Usage\n\nThe default step is 1 but the app developer can set a different one.\n\nApp developers can set a maximum and minimum value for `ui5-numeric-input`.\nThe increase/decrease button and the up/down keyboard navigation become disabled when\nthe value reaches the max/min or a new value is entered from the input which is greater/less than the max/min.\n\n#### When to use:\n\n- To enter or adjust numeric values.\n- To adjust values for a specific step.\n\n#### When not to use:\n\n- To enter a static number (for example, postal code, phone number, or ID). In this case,\nuse the regular `ui5-input` instead.\n- To enter dates and times. In this case, use date/time related components instead.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/NumericInput.js\";`",
+          "name": "NumericInput",
           "slots": [
             {
               "name": "valueStateMessage",
@@ -18217,6 +19287,16 @@
                 "text": "string | undefined"
               },
               "description": "Determines the name by which the component will be identified upon submission in an HTML form.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines a short hint, intended to aid the user with data entry when the\ncomponent has no value.\n\n**Note:** When no placeholder is set, the format pattern is displayed as a placeholder.\nPassing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.",
               "default": "undefined",
               "privacy": "public"
             },
@@ -18305,12 +19385,12 @@
               "name": "value-state-change",
               "_ui5privacy": "public",
               "type": {
-                "text": "CustomEvent<NumberInputValueStateChangeEventDetail>",
+                "text": "CustomEvent<NumericInputValueStateChangeEventDetail>",
                 "references": [
                   {
-                    "name": "NumberInputValueStateChangeEventDetail",
+                    "name": "NumericInputValueStateChangeEventDetail",
                     "package": "@ui5/webcomponents",
-                    "module": "dist/NumberInput.js"
+                    "module": "dist/NumericInput.js"
                   }
                 ]
               },
@@ -18394,6 +19474,15 @@
               }
             },
             {
+              "description": "Defines a short hint, intended to aid the user with data entry when the\ncomponent has no value.\n\n**Note:** When no placeholder is set, the format pattern is displayed as a placeholder.\nPassing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.",
+              "name": "placeholder",
+              "default": "undefined",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
               "description": "Determines whether the component is displayed as read-only.",
               "name": "readonly",
               "default": "false",
@@ -18444,10 +19533,10 @@
             "package": "@ui5/webcomponents-base",
             "module": "dist/UI5Element.js"
           },
-          "tagName": "ui5-number-input",
+          "tagName": "ui5-numeric-input",
           "customElement": true,
           "_ui5experimental": true,
-          "_ui5since": "2.27.0",
+          "_ui5since": "2.28.0",
           "_ui5privacy": "public"
         }
       ],
@@ -18456,16 +19545,31 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "NumberInput",
-            "module": "dist/NumberInput.js"
+            "name": "NumericInput",
+            "module": "dist/NumericInput.js"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "ui5-number-input",
+          "name": "ui5-numeric-input",
           "declaration": {
-            "name": "NumberInput",
-            "module": "dist/NumberInput.js"
+            "name": "NumericInput",
+            "module": "dist/NumericInput.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/NumericInputTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NumericInputTemplate",
+            "module": "dist/NumericInputTemplate.js"
           }
         }
       ]
@@ -18499,7 +19603,7 @@
               "description": "Defines the `additionalText`, displayed in the end of the option.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -18828,6 +19932,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/OptionCustomTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "OptionCustomTemplate",
+            "module": "dist/OptionCustomTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/OptionGroup.js",
       "declarations": [
         {
@@ -18907,6 +20026,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/OptionGroupTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "OptionGroupTemplate",
+            "module": "dist/OptionGroupTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/OptionTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "OptionTemplate",
+            "module": "dist/OptionTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Panel.js",
       "declarations": [
         {
@@ -18955,7 +20104,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -19030,7 +20179,7 @@
               "default": "false",
               "description": "Indicates whether the transition between the expanded and the collapsed state of the component is animated. By default the animation is enabled.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -19041,7 +20190,7 @@
               "default": "false",
               "description": "Indicates whether the Panel header is sticky or not.\nIf stickyHeader is set to true, then whenever you scroll the content or\nthe application, the header of the panel will be always visible and\na solid color will be used for its design.",
               "privacy": "public",
-              "_ui5since": "1.16.0-rc.1"
+              "_ui5since": "1.16.0"
             }
           ],
           "events": [
@@ -19162,6 +20311,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/PanelTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "PanelTemplate",
+            "module": "dist/PanelTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Popover.js",
       "declarations": [
         {
@@ -19241,7 +20405,7 @@
               "description": "Defines the accessible name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -19313,7 +20477,7 @@
               "default": "false",
               "description": "Determines whether the component arrow is hidden.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -19400,7 +20564,7 @@
               "default": "false",
               "description": "Defines if the focus should be returned to the previously focused element,\nwhen the popup closes.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -19613,7 +20777,7 @@
           },
           "tagName": "ui5-popover",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.6",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "events": [
             {
@@ -19716,6 +20880,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/PopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "PopoverTemplate",
+            "module": "dist/PopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Popup.js",
       "declarations": [
         {
@@ -19765,7 +20944,7 @@
               "description": "Defines the accessible name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -19838,7 +21017,7 @@
               "default": "false",
               "description": "Defines if the focus should be returned to the previously focused element,\nwhen the popup closes.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -20020,6 +21199,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/PopupBlockLayerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "PopubBlockLayerTemplate",
+            "module": "dist/PopupBlockLayerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/PopupTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "PopupTemplate",
+            "module": "dist/PopupTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ProgressIndicator.js",
       "declarations": [
         {
@@ -20150,7 +21359,7 @@
           },
           "tagName": "ui5-progress-indicator",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -20169,6 +21378,21 @@
           "declaration": {
             "name": "ProgressIndicator",
             "module": "dist/ProgressIndicator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ProgressIndicatorTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ProgressIndicatorTemplate",
+            "module": "dist/ProgressIndicatorTemplate.js"
           }
         }
       ]
@@ -20227,7 +21451,7 @@
               "default": "false",
               "description": "Defines whether the component is checked or not.\n\n**Note:** The property value can be changed with user interaction,\neither by clicking/tapping on the component,\nor by using the Space or Enter key.\n\n**Note:** Only enabled radio buttons can be checked.\nRead-only radio buttons are not selectable, and therefore are always unchecked.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15",
+              "_ui5since": "1.0.0",
               "_ui5formProperty": true,
               "_ui5formEvents": "change"
             },
@@ -20338,7 +21562,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             }
           ],
           "attributes": [
@@ -20482,6 +21706,21 @@
           "declaration": {
             "name": "RadioButtonGroup",
             "module": "dist/RadioButtonGroup.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/RadioButtonTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "RadioButtonTemplate",
+            "module": "dist/RadioButtonTemplate.js"
           }
         }
       ]
@@ -20780,7 +22019,7 @@
           },
           "tagName": "ui5-range-slider",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.11",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "events": [
             {
@@ -20829,6 +22068,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/RangeSliderTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "RangeSliderTemplate",
+            "module": "dist/RangeSliderTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/RatingIndicator.js",
       "declarations": [
         {
@@ -20845,7 +22099,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -20888,7 +22142,7 @@
               "default": "5",
               "description": "The number of displayed rating symbols.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -20899,7 +22153,7 @@
               "default": "\"favorite\"",
               "description": "Defines the icon to be displayed for the selected (filled) rating symbol.",
               "privacy": "public",
-              "_ui5since": "2.20"
+              "_ui5since": "2.20.0"
             },
             {
               "kind": "field",
@@ -20960,7 +22214,7 @@
               "default": "\"unfavorite\"",
               "description": "Defines the icon to be displayed for the unselected (empty) rating symbol.",
               "privacy": "public",
-              "_ui5since": "2.20"
+              "_ui5since": "2.20.0"
             },
             {
               "kind": "field",
@@ -21103,7 +22357,7 @@
           },
           "tagName": "ui5-rating-indicator",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -21122,6 +22376,21 @@
           "declaration": {
             "name": "RatingIndicator",
             "module": "dist/RatingIndicator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/RatingIndicatorTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "RatingIndicatorTemplate",
+            "module": "dist/RatingIndicatorTemplate.js"
           }
         }
       ]
@@ -21180,7 +22449,7 @@
               "description": "Defines the accessible name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -21252,7 +22521,7 @@
               "default": "false",
               "description": "Determines whether the component arrow is hidden.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -21339,7 +22608,7 @@
               "default": "false",
               "description": "Defines if the focus should be returned to the previously focused element,\nwhen the popup closes.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -21388,7 +22657,7 @@
           },
           "tagName": "ui5-responsive-popover",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.6",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "slots": [
             {
@@ -21667,6 +22936,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ResponsivePopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ResponsivePopoverTemplate",
+            "module": "dist/ResponsivePopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SegmentedButton.js",
       "declarations": [
         {
@@ -21900,8 +23184,9 @@
           },
           "tagName": "ui5-segmented-button",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.6",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["SegmentedButtonItem"]
         }
       ],
       "exports": [
@@ -21974,7 +23259,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -22177,6 +23462,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SegmentedButtonItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SegmentedButtonItemTemplate",
+            "module": "dist/SegmentedButtonItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SegmentedButtonTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SegmentedButtonTemplate",
+            "module": "dist/SegmentedButtonTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Select.js",
       "declarations": [
         {
@@ -22262,7 +23577,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "privacy": "public",
               "default": "undefined",
-              "_ui5since": "1.0.0-rc.9"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -22273,7 +23588,7 @@
               "description": "Receives id(or many ids) of the elements that label the select.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -22315,7 +23630,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.9"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -22616,8 +23931,9 @@
           },
           "tagName": "ui5-select",
           "customElement": true,
-          "_ui5since": "0.8.0",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["Option", "OptionCustom", "OptionGroup"]
         }
       ],
       "exports": [
@@ -22635,6 +23951,36 @@
           "declaration": {
             "name": "Select",
             "module": "dist/Select.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SelectPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SelectPopoverTemplate",
+            "module": "dist/SelectPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SelectTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SelectTemplate",
+            "module": "dist/SelectTemplate.js"
           }
         }
       ]
@@ -22912,7 +24258,7 @@
           },
           "tagName": "ui5-slider",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.11",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "events": [
             {
@@ -23275,6 +24621,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SliderHandleTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SliderHandleTemplate",
+            "module": "dist/SliderHandleTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SliderScale.js",
       "declarations": [],
       "exports": [
@@ -23284,6 +24645,36 @@
           "declaration": {
             "name": "SliderScale",
             "module": "dist/SliderScale.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SliderScaleTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SliderScaleTemplate",
+            "module": "dist/SliderScaleTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SliderTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SliderTemplate",
+            "module": "dist/SliderTemplate.js"
           }
         }
       ]
@@ -23322,6 +24713,21 @@
           "declaration": {
             "name": "SliderTooltip",
             "module": "dist/SliderTooltip.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SliderTooltipTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SliderTooltipTemplate",
+            "module": "dist/SliderTooltipTemplate.js"
           }
         }
       ]
@@ -23637,6 +25043,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SplitButtonTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SplitButtonTemplate",
+            "module": "dist/SplitButtonTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/StepInput.js",
       "declarations": [
         {
@@ -23663,7 +25084,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -23674,7 +25095,7 @@
               "description": "Receives id(or many ids) of the elements that label the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -23982,7 +25403,7 @@
           },
           "tagName": "ui5-step-input",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.13",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -24007,6 +25428,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/StepInputTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "StepInputTemplate",
+            "module": "dist/StepInputTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SuggestionItem.js",
       "declarations": [
         {
@@ -24023,7 +25459,7 @@
               "description": "Defines the `additionalText`, displayed in the end of the item.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -24230,6 +25666,21 @@
           "declaration": {
             "name": "SuggestionItemCustom",
             "module": "dist/SuggestionItemCustom.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SuggestionItemCustomTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SuggestionItemCustomTemplate",
+            "module": "dist/SuggestionItemCustomTemplate.js"
           }
         }
       ]
@@ -24462,6 +25913,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SuggestionItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SuggestionItemTemplate",
+            "module": "dist/SuggestionItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SuggestionListItem.js",
       "declarations": [
         {
@@ -24552,7 +26018,7 @@
             {
               "name": "richDescription",
               "description": "Defines a description that can contain HTML.\n**Note:** If not specified, the `description` property will be used.",
-              "_ui5since": "1.0.0-rc.8",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -24587,7 +26053,7 @@
               "description": "Defines the text alternative of the component.\nNote: If not provided a default text alternative will be set, if present.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -24616,7 +26082,7 @@
               "description": "Defines the `additionalText`, displayed in the end of the list item.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -24634,7 +26100,7 @@
               "default": "\"None\"",
               "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -24645,7 +26111,7 @@
               "description": "Defines the description displayed right under the item text, if such is present.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "0.8.0"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -24663,7 +26129,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -24994,6 +26460,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SuggestionListItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SuggestionListItemTemplate",
+            "module": "dist/SuggestionListItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Switch.js",
       "declarations": [
         {
@@ -25286,7 +26767,7 @@
           },
           "tagName": "ui5-switch",
           "customElement": true,
-          "_ui5since": "0.8.0",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -25305,6 +26786,21 @@
           "declaration": {
             "name": "Switch",
             "module": "dist/Switch.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SwitchTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SwitchTemplate",
+            "module": "dist/SwitchTemplate.js"
           }
         }
       ]
@@ -25391,7 +26887,7 @@
               },
               "description": "Returns the DOM reference of the tab that is placed in the header.\n\n**Note:** Tabs, placed in the `items` slot of other tabs are not shown in the header. Calling this method on such tabs will return `undefined`.\n\n**Note:** If you need a DOM ref to the tab content please use the `getDomRef` method.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -25612,7 +27108,7 @@
             {
               "name": "overflowButton",
               "description": "Defines the button which will open the overflow menu. If nothing is provided to this slot,\nthe default button will be used.",
-              "_ui5since": "1.0.0-rc.9",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<IButton>",
                 "references": [
@@ -25945,7 +27441,8 @@
           },
           "tagName": "ui5-tabcontainer",
           "customElement": true,
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["Tab", "TabSeparator"]
         }
       ],
       "exports": [
@@ -25963,6 +27460,66 @@
           "declaration": {
             "name": "TabContainer",
             "module": "dist/TabContainer.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TabContainerPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TabContainerPopoverTemplate",
+            "module": "dist/TabContainerPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TabContainerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TabContainerTemplate",
+            "module": "dist/TabContainerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TabInOverflowTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TabInOverflowTemplate",
+            "module": "dist/TabInOverflowTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TabInStripTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TabInStripTemplate",
+            "module": "dist/TabInStripTemplate.js"
           }
         }
       ]
@@ -26021,6 +27578,51 @@
           "declaration": {
             "name": "TabSeparator",
             "module": "dist/TabSeparator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TabSeparatorInOverflowTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TabSeparatorInOverflowTemplate",
+            "module": "dist/TabSeparatorInOverflowTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TabSeparatorInStripTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TabSeparatorInStripTemplate",
+            "module": "dist/TabSeparatorInStripTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TabTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TabTemplate",
+            "module": "dist/TabTemplate.js"
           }
         }
       ]
@@ -26133,7 +27735,7 @@
               "default": "false",
               "description": "Determines whether the table rows are displayed with alternating background colors.",
               "privacy": "public",
-              "_ui5since": "2.17"
+              "_ui5since": "2.17.0"
             },
             {
               "kind": "field",
@@ -26452,7 +28054,22 @@
           "tagName": "ui5-table",
           "customElement": true,
           "_ui5since": "2.0.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": [
+            "TableCell",
+            "TableGroupRow",
+            "TableGrowing",
+            "TableHeaderCell",
+            "TableHeaderCellActionAI",
+            "TableHeaderRow",
+            "TableRow",
+            "TableRowAction",
+            "TableRowActionNavigation",
+            "TableSelection",
+            "TableSelectionMulti",
+            "TableSelectionSingle",
+            "TableVirtualizer"
+          ]
         }
       ],
       "exports": [
@@ -26640,6 +28257,21 @@
           "declaration": {
             "name": "TableCellBase",
             "module": "dist/TableCellBase.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableCellTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableCellTemplate",
+            "module": "dist/TableCellTemplate.js"
           }
         }
       ]
@@ -26864,6 +28496,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TableGroupRowTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableGroupRowTemplate",
+            "module": "dist/TableGroupRowTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/TableGrowing.js",
       "declarations": [
         {
@@ -26977,6 +28624,21 @@
           "declaration": {
             "name": "TableGrowing",
             "module": "dist/TableGrowing.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableGrowingTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableGrowingTemplate",
+            "module": "dist/TableGrowingTemplate.js"
           }
         }
       ]
@@ -27334,6 +28996,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TableHeaderCellActionBaseTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableHeaderCellActionBaseTemplate",
+            "module": "dist/TableHeaderCellActionBaseTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableHeaderCellTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableHeaderCellTemplate",
+            "module": "dist/TableHeaderCellTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/TableHeaderRow.js",
       "declarations": [
         {
@@ -27407,6 +29099,21 @@
           "declaration": {
             "name": "TableHeaderRow",
             "module": "dist/TableHeaderRow.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableHeaderRowTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableHeaderRowTemplate",
+            "module": "dist/TableHeaderRowTemplate.js"
           }
         }
       ]
@@ -27781,6 +29488,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TableRowActionBaseTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableRowActionBaseTemplate",
+            "module": "dist/TableRowActionBaseTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/TableRowActionNavigation.js",
       "declarations": [
         {
@@ -27902,6 +29624,21 @@
           "declaration": {
             "name": "TableRowBase",
             "module": "dist/TableRowBase.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableRowTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableRowTemplate",
+            "module": "dist/TableRowTemplate.js"
           }
         }
       ]
@@ -28033,7 +29770,7 @@
               "default": "\"RowSelector\"",
               "description": "Defines the selection behavior.",
               "privacy": "public",
-              "_ui5since": "2.11"
+              "_ui5since": "2.11.0"
             },
             {
               "kind": "method",
@@ -28153,7 +29890,7 @@
               "default": "\"RowSelector\"",
               "description": "Defines the selection behavior.",
               "privacy": "public",
-              "_ui5since": "2.11"
+              "_ui5since": "2.11.0"
             },
             {
               "kind": "method",
@@ -28228,7 +29965,7 @@
               "default": "\"SelectAll\"",
               "description": "Defines the selector of the header row.",
               "privacy": "public",
-              "_ui5since": "2.12"
+              "_ui5since": "2.12.0"
             },
             {
               "kind": "field",
@@ -28359,7 +30096,7 @@
               "default": "\"RowSelector\"",
               "description": "Defines the selection behavior.",
               "privacy": "public",
-              "_ui5since": "2.11"
+              "_ui5since": "2.11.0"
             },
             {
               "kind": "method",
@@ -28477,6 +30214,21 @@
           "declaration": {
             "name": "TableSelectionSingle",
             "module": "dist/TableSelectionSingle.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TableTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TableTemplate",
+            "module": "dist/TableTemplate.js"
           }
         }
       ]
@@ -28866,6 +30618,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TagTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TagTemplate",
+            "module": "dist/TagTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Text.js",
       "declarations": [
         {
@@ -28981,7 +30748,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n \n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed if the component has\n`valueState` of type `Information`, `Critical` or `Negative`.",
-              "_ui5since": "1.0.0-rc.7",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -29020,7 +30787,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -29031,7 +30798,25 @@
               "description": "Receives id(or many ids) of the elements that label the textarea.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
+            },
+            {
+              "kind": "field",
+              "name": "counterMode",
+              "type": {
+                "text": "TextAreaCounterMode",
+                "references": [
+                  {
+                    "name": "TextAreaCounterMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TextAreaCounterMode.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Determines when the character counter of the component is displayed.\n\nAvailable options are:\n\n- `None` - The counter is never shown and `maxlength` acts as a hard cap.\n- `Always` - The counter is always visible below the component.\n- `Auto` - The counter is shown only when the component is focused, when the character limit\nis exceeded, or when `valueState` is `Critical` or `Negative`. Space is always reserved to\nprevent layout shifts.\n\n**Note:** When set to a value other than `None`, this property takes precedence over the\ndeprecated `showExceededText` property.",
+              "privacy": "public",
+              "_ui5since": "2.28.0"
             },
             {
               "kind": "field",
@@ -29112,7 +30897,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.3"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -29132,7 +30917,8 @@
               },
               "default": "false",
               "description": "Determines whether the characters exceeding the maximum allowed character count are visible\nin the component.\n\nIf set to `false`, the user is not allowed to enter more characters than what is set in the\n`maxlength` property.\nIf set to `true` the characters exceeding the `maxlength` value are selected on\npaste and the counter below the component displays their number.",
-              "privacy": "public"
+              "privacy": "public",
+              "deprecated": "Use `counterMode=\"Always\"` instead."
             },
             {
               "kind": "field",
@@ -29162,7 +30948,7 @@
               "default": "\"None\"",
               "description": "Defines the value state of the component.\n\n**Note:** If `maxlength` property is set,\nthe component turns into \"Critical\" state once the characters exceeds the limit.\nIn this case, only the \"Negative\" state is considered and can be applied.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.7"
+              "_ui5since": "1.0.0"
             }
           ],
           "events": [
@@ -29194,7 +30980,7 @@
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.5",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -29266,6 +31052,15 @@
               "fieldName": "accessibleNameRef",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Determines when the character counter of the component is displayed.\n\nAvailable options are:\n\n- `None` - The counter is never shown and `maxlength` acts as a hard cap.\n- `Always` - The counter is always visible below the component.\n- `Auto` - The counter is shown only when the component is focused, when the character limit\nis exceeded, or when `valueState` is `Critical` or `Negative`. Space is always reserved to\nprevent layout shifts.\n\n**Note:** When set to a value other than `None`, this property takes precedence over the\ndeprecated `showExceededText` property.",
+              "name": "counter-mode",
+              "default": "\"None\"",
+              "fieldName": "counterMode",
+              "type": {
+                "text": "\"Auto\" | \"None\" | \"Always\""
               }
             },
             {
@@ -29356,7 +31151,8 @@
               "fieldName": "showExceededText",
               "type": {
                 "text": "boolean"
-              }
+              },
+              "deprecated": "Use `counterMode=\"Always\"` instead."
             },
             {
               "description": "Defines the value of the component.",
@@ -29424,6 +31220,51 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TextAreaPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TextAreaPopoverTemplate",
+            "module": "dist/TextAreaPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TextAreaTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TextAreaTemplate",
+            "module": "dist/TextAreaTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TextTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TextTemplate",
+            "module": "dist/TextTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/TimePicker.js",
       "declarations": [
         {
@@ -29440,7 +31281,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the `ui5-time-picker`.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the `ui5-time-picker` is in `Information`, `Critical` or `Negative` value state.",
-              "_ui5since": "1.0.0-rc.8",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -29946,7 +31787,7 @@
           },
           "tagName": "ui5-time-picker",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.6",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -30004,6 +31845,21 @@
           "declaration": {
             "name": "TimePickerClock",
             "module": "dist/TimePickerClock.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TimePickerClockTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TimePickerClockTemplate",
+            "module": "dist/TimePickerClockTemplate.js"
           }
         }
       ]
@@ -30076,6 +31932,36 @@
           "declaration": {
             "name": "TimePickerInternals",
             "module": "dist/TimePickerInternals.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TimePickerPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TimePickerPopoverTemplate",
+            "module": "dist/TimePickerPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TimePickerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TimePickerTemplate",
+            "module": "dist/TimePickerTemplate.js"
           }
         }
       ]
@@ -30162,6 +32048,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TimeSelectionClocksTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TimeSelectionClocksTemplate",
+            "module": "dist/TimeSelectionClocksTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/TimeSelectionInputs.js",
       "declarations": [
         {
@@ -30237,6 +32138,21 @@
           "declaration": {
             "name": "TimeSelectionInputs",
             "module": "dist/TimeSelectionInputs.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TimeSelectionInputsTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TimeSelectionInputsTemplate",
+            "module": "dist/TimeSelectionInputsTemplate.js"
           }
         }
       ]
@@ -30372,6 +32288,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TitleTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TitleTemplate",
+            "module": "dist/TitleTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Toast.js",
       "declarations": [
         {
@@ -30478,7 +32409,7 @@
           },
           "tagName": "ui5-toast",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.6",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -30497,6 +32428,21 @@
           "declaration": {
             "name": "Toast",
             "module": "dist/Toast.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ToastTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToastTemplate",
+            "module": "dist/ToastTemplate.js"
           }
         }
       ]
@@ -30548,7 +32494,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -30577,7 +32523,7 @@
               "default": "\"Button\"",
               "description": "Describes the accessibility role of the button.\n\n**Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.",
               "privacy": "public",
-              "_ui5since": "1.23"
+              "_ui5since": "1.23.0"
             },
             {
               "kind": "field",
@@ -30992,6 +32938,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ToggleButtonTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToggleButtonTemplate",
+            "module": "dist/ToggleButtonTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ToggleSpinButton.js",
       "declarations": [
         {
@@ -31037,7 +32998,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -31066,7 +33027,7 @@
               "default": "\"Button\"",
               "description": "Describes the accessibility role of the button.\n\n**Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.",
               "privacy": "public",
-              "_ui5since": "1.23"
+              "_ui5since": "1.23.0"
             },
             {
               "kind": "field",
@@ -31482,6 +33443,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ToggleSpinButtonTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToggleSpinButtonTemplate",
+            "module": "dist/ToggleSpinButtonTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Token.js",
       "declarations": [
         {
@@ -31492,7 +33468,7 @@
             {
               "name": "closeIcon",
               "description": "Defines the close icon for the token. If nothing is provided to this slot, the default close icon will be used.\nAccepts `ui5-icon`.",
-              "_ui5since": "1.0.0-rc.9",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<IIcon>",
                 "references": [
@@ -31555,7 +33531,7 @@
           },
           "tagName": "ui5-token",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.9",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5implements": [
             {
@@ -31581,6 +33557,21 @@
           "declaration": {
             "name": "Token",
             "module": "dist/Token.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TokenTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TokenTemplate",
+            "module": "dist/TokenTemplate.js"
           }
         }
       ]
@@ -31848,6 +33839,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TokenizerPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TokenizerPopoverTemplate",
+            "module": "dist/TokenizerPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TokenizerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TokenizerTemplate",
+            "module": "dist/TokenizerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Toolbar.js",
       "declarations": [
         {
@@ -32006,7 +34027,15 @@
           "tagName": "ui5-toolbar",
           "customElement": true,
           "_ui5since": "1.17.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": [
+            "ToolbarButton",
+            "ToolbarItem",
+            "ToolbarSelect",
+            "ToolbarSelectOption",
+            "ToolbarSeparator",
+            "ToolbarSpacer"
+          ]
         }
       ],
       "exports": [
@@ -32428,6 +34457,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ToolbarButtonTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToolbarButtonTemplate",
+            "module": "dist/ToolbarButtonTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ToolbarItem.js",
       "declarations": [
         {
@@ -32666,6 +34710,21 @@
           "declaration": {
             "name": "ToolbarItemBase",
             "module": "dist/ToolbarItemBase.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ToolbarItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToolbarItemTemplate",
+            "module": "dist/ToolbarItemTemplate.js"
           }
         }
       ]
@@ -33089,6 +35148,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ToolbarSelectTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToolbarSelectTemplate",
+            "module": "dist/ToolbarSelectTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ToolbarSeparator.js",
       "declarations": [
         {
@@ -33197,6 +35271,21 @@
           "declaration": {
             "name": "ToolbarSeparator",
             "module": "dist/ToolbarSeparator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ToolbarSeparatorTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToolbarSeparatorTemplate",
+            "module": "dist/ToolbarSeparatorTemplate.js"
           }
         }
       ]
@@ -33330,6 +35419,21 @@
           "declaration": {
             "name": "ToolbarSpacer",
             "module": "dist/ToolbarSpacer.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ToolbarTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToolbarTemplate",
+            "module": "dist/ToolbarTemplate.js"
           }
         }
       ]
@@ -33563,7 +35667,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.16",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -33592,7 +35696,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.16",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -33830,8 +35934,9 @@
           },
           "tagName": "ui5-tree",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["TreeItem", "TreeItemCustom"]
         }
       ],
       "exports": [
@@ -33932,7 +36037,7 @@
               "description": "Defines the `additionalText`, displayed in the end of the tree item.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -33950,7 +36055,7 @@
               "default": "\"None\"",
               "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -33988,7 +36093,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -34246,7 +36351,7 @@
           },
           "tagName": "ui5-tree-item",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "slots": [
             {
@@ -34469,7 +36574,7 @@
               "default": "\"None\"",
               "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -34507,7 +36612,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -34795,6 +36900,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TreeItemBaseTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TreeItemBaseTemplate",
+            "module": "dist/TreeItemBaseTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/TreeItemCustom.js",
       "declarations": [
         {
@@ -34930,7 +37050,7 @@
               "default": "\"None\"",
               "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -34978,7 +37098,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -35284,6 +37404,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TreeItemCustomTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TreeItemCustomTemplate",
+            "module": "dist/TreeItemCustomTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TreeItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TreeItemTemplate",
+            "module": "dist/TreeItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/TreeList.js",
       "declarations": [],
       "exports": [
@@ -35293,6 +37443,21 @@
           "declaration": {
             "name": "TreeList",
             "module": "dist/TreeList.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TreeTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TreeTemplate",
+            "module": "dist/TreeTemplate.js"
           }
         }
       ]
@@ -35355,7 +37520,7 @@
               "default": "\"\"",
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -35366,7 +37531,7 @@
               "default": "\"\"",
               "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -35401,7 +37566,7 @@
               "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -35521,6 +37686,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/YearPickerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "YearPickerTemplate",
+            "module": "dist/YearPickerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/YearRangePicker.js",
       "declarations": [
         {
@@ -35577,7 +37757,7 @@
               "default": "\"\"",
               "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -35588,7 +37768,7 @@
               "default": "\"\"",
               "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -35623,7 +37803,7 @@
               "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -35743,6 +37923,51 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/YearRangePickerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "YearRangePickerTemplate",
+            "module": "dist/YearRangePickerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/bundle-assets/IconPensilJSXTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "IconPensilJSXTemplate",
+            "module": "dist/bundle-assets/IconPensilJSXTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/colorpicker-utils/ColorValue.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ColorValue",
+            "module": "dist/colorpicker-utils/ColorValue.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/delegate/DragAndDropHandler.js",
       "declarations": [],
       "exports": [
@@ -35788,6 +38013,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/DateRangeTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DateRangeTemplate",
+            "module": "dist/dynamic-date-range-options/DateRangeTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/dynamic-date-range-options/DateTimeRange.js",
       "declarations": [
         {
@@ -35818,6 +38058,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/DateTimeRangeTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DateTimeRangeTemplate",
+            "module": "dist/dynamic-date-range-options/DateTimeRangeTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/dynamic-date-range-options/FromDateTime.js",
       "declarations": [
         {
@@ -35842,6 +38097,36 @@
           "declaration": {
             "name": "FromDateTime",
             "module": "dist/dynamic-date-range-options/FromDateTime.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/FromDateTimeTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "FromDateTime",
+            "module": "dist/dynamic-date-range-options/FromDateTimeTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/LastNextTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "LastNextTemplate",
+            "module": "dist/dynamic-date-range-options/LastNextTemplate.js"
           }
         }
       ]
@@ -35938,6 +38223,21 @@
           "declaration": {
             "name": "SingleDate",
             "module": "dist/dynamic-date-range-options/SingleDate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/dynamic-date-range-options/SingleDateTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SingleDateTemplate",
+            "module": "dist/dynamic-date-range-options/SingleDateTemplate.js"
           }
         }
       ]
@@ -36076,6 +38376,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/features/ColorPaletteMoreColorsTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ColorPaletteMoreColorsTemplate",
+            "module": "dist/features/ColorPaletteMoreColorsTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/features/ComboBoxLazyLoading.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ComboBoxLazyLoading",
+            "module": "dist/features/ComboBoxLazyLoading.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/features/InputComposition.js",
       "declarations": [],
       "exports": [
@@ -36106,9 +38436,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/features/InputSuggestionsTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "InputSuggestionsTemplate",
+            "module": "dist/features/InputSuggestionsTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/features/ListItemStandardExpandableText.js",
       "declarations": [],
       "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/features/ListItemStandardExpandableTextTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ListItemStandardExpandableTextTemplate",
+            "module": "dist/features/ListItemStandardExpandableTextTemplate.js"
+          }
+        }
+      ]
     },
     {
       "kind": "javascript-module",
@@ -36127,21 +38487,6 @@
       "path": "dist/popup-utils/PopoverRegistry.js",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/colorpicker-utils/ColorValue.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "ColorValue",
-            "module": "dist/colorpicker-utils/ColorValue.js"
-          }
-        }
-      ]
     },
     {
       "kind": "javascript-module",
@@ -36541,7 +38886,7 @@
         {
           "kind": "enum",
           "name": "BarAccessibleRole",
-          "description": "ListItem accessible roles.",
+          "description": "Bar accessible roles.",
           "_ui5privacy": "public",
           "_ui5since": "2.9.0",
           "members": [
@@ -36560,6 +38905,7 @@
               "privacy": "public",
               "description": "Represents the ARIA role \"toolbar\".",
               "default": "Toolbar",
+              "deprecated": "The Bar does not implement toolbar keyboard navigation (arrow keys) and should not expose the \"toolbar\" role. Use \"None\" instead.",
               "name": "Toolbar",
               "readonly": true
             }
@@ -36901,7 +39247,7 @@
           "name": "ButtonAccessibleRole",
           "description": "Button accessible roles.",
           "_ui5privacy": "public",
-          "_ui5since": "1.23",
+          "_ui5since": "1.23.0",
           "members": [
             {
               "kind": "field",
@@ -39683,7 +42029,7 @@
           "name": "TableSelectionBehavior",
           "description": "Selection behavior of the `ui5-table` selection components.",
           "_ui5privacy": "public",
-          "_ui5since": "2.11",
+          "_ui5since": "2.11.0",
           "members": [
             {
               "kind": "field",
@@ -39779,7 +42125,7 @@
           "name": "TableSelectionMultiHeaderSelector",
           "description": "Selectors of the table header row in multi-selection scenarios.",
           "_ui5privacy": "public",
-          "_ui5since": "2.12",
+          "_ui5since": "2.12.0",
           "members": [
             {
               "kind": "field",
@@ -39938,6 +42284,58 @@
           "declaration": {
             "name": "TagSize",
             "module": "dist/types/TagSize.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/TextAreaCounterMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "TextAreaCounterMode",
+          "description": "Determines when the character counter of `ui5-textarea` is displayed.",
+          "_ui5privacy": "public",
+          "_ui5since": "2.28.0",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The character counter is always visible below the component. Characters exceeding\nthe `maxlength` value are selected on paste and the counter displays their number.",
+              "default": "Always",
+              "name": "Always",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The character counter is shown only when the component is focused, when the character\nlimit is exceeded, or when `valueState` is `Critical` or `Negative`. Space for the\ncounter is always reserved to prevent layout shifts.",
+              "default": "Auto",
+              "name": "Auto",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "description": "The character counter is never shown. The `maxlength` property acts as a hard cap\nand the user is not allowed to enter more characters than allowed.",
+              "default": "None",
+              "name": "None",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TextAreaCounterMode",
+            "module": "dist/types/TextAreaCounterMode.js"
           }
         }
       ]

@@ -10,12 +10,16 @@ interface CardAttributes {
    * Defines the accessible name of the component, which is used as the name of the card region and should be unique per card.
    *
    * **Note:** `accessibleName` should be always set, unless `accessibleNameRef` is set.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Defines the IDs of the elements that label the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
@@ -57,6 +61,8 @@ interface CardPropTypes extends CardAttributes, Omit<CommonProps, keyof CardAttr
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    *
    * __Supported Node Type/s:__ `Array<CardHeader>`
    */

@@ -19,6 +19,8 @@ interface MessageStripAttributes {
 
   /**
    * Defines the component type.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default "Information"
    */
   design?: MessageStripDesign | keyof typeof MessageStripDesign;
@@ -34,6 +36,8 @@ interface MessageStripAttributes {
    * You can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.
    *
    *  * **Note:** If <code>MessageStripDesign.ColorSet1</code> or <code>MessageStripDesign.ColorSet2</code> value is set to the <code>design</code> property, default icon will not be presented.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   hideIcon?: boolean;
@@ -102,6 +106,8 @@ interface MessageStripPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [MessageStrip UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/MessageStrip) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const MessageStrip = withWebComponent<MessageStripPropTypes, MessageStripDomRef>(
   'ui5-message-strip',

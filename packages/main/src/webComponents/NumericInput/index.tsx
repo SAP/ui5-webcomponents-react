@@ -1,12 +1,12 @@
 'use client';
 
-import '@ui5/webcomponents/dist/NumberInput.js';
-import type { NumberInputValueStateChangeEventDetail } from '@ui5/webcomponents/dist/NumberInput.js';
+import '@ui5/webcomponents/dist/NumericInput.js';
+import type { NumericInputValueStateChangeEventDetail } from '@ui5/webcomponents/dist/NumericInput.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
 import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui5/webcomponents-react-base';
 
-interface NumberInputAttributes {
+interface NumericInputAttributes {
   /**
    * Defines the accessible ARIA name of the component.
    * @default undefined
@@ -46,6 +46,16 @@ interface NumberInputAttributes {
   name?: string | undefined;
 
   /**
+   * Defines a short hint, intended to aid the user with data entry when the
+   * component has no value.
+   *
+   * **Note:** When no placeholder is set, the format pattern is displayed as a placeholder.
+   * Passing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.
+   * @default undefined
+   */
+  placeholder?: string | undefined;
+
+  /**
    * Determines whether the component is displayed as read-only.
    * @default false
    */
@@ -76,14 +86,14 @@ interface NumberInputAttributes {
   valueState?: ValueState | keyof typeof ValueState;
 }
 
-interface NumberInputDomRef extends Required<NumberInputAttributes>, Ui5DomRef {}
+interface NumericInputDomRef extends Required<NumericInputAttributes>, Ui5DomRef {}
 
-interface NumberInputPropTypes
+interface NumericInputPropTypes
   extends
-    NumberInputAttributes,
+    NumericInputAttributes,
     Omit<
       CommonProps,
-      keyof NumberInputAttributes | 'valueStateMessage' | 'onChange' | 'onInput' | 'onValueStateChange'
+      keyof NumericInputAttributes | 'valueStateMessage' | 'onChange' | 'onInput' | 'onValueStateChange'
     > {
   /**
    * Defines the value state message that will be displayed as pop up under the component.
@@ -109,7 +119,7 @@ interface NumberInputPropTypes
    * | :--------: | :-----: |
    * | ❌|✅|
    */
-  onChange?: (event: Ui5CustomEvent<NumberInputDomRef>) => void;
+  onChange?: (event: Ui5CustomEvent<NumericInputDomRef>) => void;
 
   /**
    * Fired when the value of the component changes at each keystroke.
@@ -120,7 +130,7 @@ interface NumberInputPropTypes
    * | :--------: | :-----: |
    * | ✅|✅|
    */
-  onInput?: (event: Ui5CustomEvent<NumberInputDomRef>) => void;
+  onInput?: (event: Ui5CustomEvent<NumericInputDomRef>) => void;
 
   /**
    * Fired before the value state of the component is updated internally.
@@ -133,17 +143,17 @@ interface NumberInputPropTypes
    * | :--------: | :-----: |
    * | ✅|✅|
    */
-  onValueStateChange?: (event: Ui5CustomEvent<NumberInputDomRef, NumberInputValueStateChangeEventDetail>) => void;
+  onValueStateChange?: (event: Ui5CustomEvent<NumericInputDomRef, NumericInputValueStateChangeEventDetail>) => void;
 }
 
 /**
- * The `NumberInput` component is a numeric input field. It allows users to enter, edit and select numeric values.
+ * The `NumericInput` component is a numeric input field. It allows users to enter, edit and select numeric values.
  *
  * ### Usage
  *
  * The default step is 1 but the app developer can set a different one.
  *
- * App developers can set a maximum and minimum value for `NumberInput`.
+ * App developers can set a maximum and minimum value for `NumericInput`.
  * The increase/decrease button and the up/down keyboard navigation become disabled when
  * the value reaches the max/min or a new value is entered from the input which is greater/less than the max/min.
  *
@@ -160,20 +170,31 @@ interface NumberInputPropTypes
  *
  *
  *
- * __Note:__ This is a UI5 Web Component! [NumberInput UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/NumberInput) | [Repository](https://github.com/UI5/webcomponents)
+ * __Note:__ This is a UI5 Web Component! [NumericInput UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/NumericInput) | [Repository](https://github.com/UI5/webcomponents)
  *
- * @since [2.27.0](https://github.com/UI5/webcomponents/releases/tag/v2.27.0) of __@ui5/webcomponents__.
+ * @since [2.28.0](https://github.com/UI5/webcomponents/releases/tag/v2.28.0) of __@ui5/webcomponents__.
  * @experimental
  */
-const NumberInput = withWebComponent<NumberInputPropTypes, NumberInputDomRef>(
-  'ui5-number-input',
-  ['accessibleName', 'accessibleNameRef', 'max', 'min', 'name', 'step', 'value', 'valuePrecision', 'valueState'],
+const NumericInput = withWebComponent<NumericInputPropTypes, NumericInputDomRef>(
+  'ui5-numeric-input',
+  [
+    'accessibleName',
+    'accessibleNameRef',
+    'max',
+    'min',
+    'name',
+    'placeholder',
+    'step',
+    'value',
+    'valuePrecision',
+    'valueState',
+  ],
   ['disabled', 'readonly'],
   ['valueStateMessage'],
   ['change', 'input', 'value-state-change'],
 );
 
-NumberInput.displayName = 'NumberInput';
+NumericInput.displayName = 'NumericInput';
 
-export { NumberInput };
-export type { NumberInputDomRef, NumberInputPropTypes };
+export { NumericInput };
+export type { NumericInputDomRef, NumericInputPropTypes };

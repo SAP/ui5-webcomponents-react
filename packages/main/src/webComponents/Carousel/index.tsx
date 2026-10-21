@@ -14,7 +14,7 @@ interface CarouselAttributes {
   /**
    * Defines the accessible name of the component.
    *
-   * **Note:** Available since [v1.24](https://github.com/UI5/webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.24.0](https://github.com/UI5/webcomponents/releases/tag/v1.24.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
@@ -22,7 +22,7 @@ interface CarouselAttributes {
   /**
    * Defines the IDs of the elements that label the input.
    *
-   * **Note:** Available since [v1.24](https://github.com/UI5/webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.24.0](https://github.com/UI5/webcomponents/releases/tag/v1.24.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
@@ -41,7 +41,7 @@ interface CarouselAttributes {
   /**
    * Defines the carousel's background design.
    *
-   * **Note:** Available since [v1.14](https://github.com/UI5/webcomponents/releases/tag/v1.14) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.14.0](https://github.com/UI5/webcomponents/releases/tag/v1.14.0) of **@ui5/webcomponents**.
    * @default "Translucent"
    */
   backgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
@@ -55,6 +55,8 @@ interface CarouselAttributes {
   /**
    * Defines the visibility of the navigation arrows.
    * If set to true the navigation arrows will be hidden.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   hideNavigationArrows?: boolean;
@@ -62,6 +64,8 @@ interface CarouselAttributes {
   /**
    * Defines the visibility of the page indicator.
    * If set to true the page indicator will be hidden.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   hidePageIndicator?: boolean;
@@ -82,7 +86,7 @@ interface CarouselAttributes {
   /**
    * Defines the page indicator background design.
    *
-   * **Note:** Available since [v1.14](https://github.com/UI5/webcomponents/releases/tag/v1.14) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.14.0](https://github.com/UI5/webcomponents/releases/tag/v1.14.0) of **@ui5/webcomponents**.
    * @default "Solid"
    */
   pageIndicatorBackgroundDesign?: BackgroundDesign | keyof typeof BackgroundDesign;
@@ -90,7 +94,7 @@ interface CarouselAttributes {
   /**
    * Defines the page indicator border design.
    *
-   * **Note:** Available since [v1.14](https://github.com/UI5/webcomponents/releases/tag/v1.14) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.14.0](https://github.com/UI5/webcomponents/releases/tag/v1.14.0) of **@ui5/webcomponents**.
    * @default "Solid"
    */
   pageIndicatorBorderDesign?: BorderDesign | keyof typeof BorderDesign;
@@ -102,7 +106,7 @@ interface CarouselAttributes {
    * - `Default` - The page indicator will be visualized as dots if there are fewer than 9 pages. If there are more pages, the page indicator will switch to displaying the current page and the total number of pages. (e.g. X of Y)
    * - `Numeric` - The page indicator will display the current page and the total number of pages. (e.g. X of Y)
    *
-   * **Note:** Available since [v1.10](https://github.com/UI5/webcomponents/releases/tag/v1.10) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.10.0](https://github.com/UI5/webcomponents/releases/tag/v1.10.0) of **@ui5/webcomponents**.
    * @default "Default"
    */
   pageIndicatorType?: CarouselPageIndicatorType | keyof typeof CarouselPageIndicatorType;
@@ -111,6 +115,8 @@ interface CarouselAttributes {
 interface CarouselDomRef extends Required<CarouselAttributes>, Ui5DomRef {
   /**
    * Changes the currently displayed page.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @param {number} itemIndex - The index of the target item
    * @returns {void}
    */
@@ -118,6 +124,8 @@ interface CarouselDomRef extends Required<CarouselAttributes>, Ui5DomRef {
 
   /**
    * The indices of the currently visible items of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    */
   readonly visibleItemsIndices: Array<number>;
 }
@@ -137,6 +145,8 @@ interface CarouselPropTypes
    * Fired whenever the page changes due to user interaction,
    * when the user clicks on the navigation arrows or while resizing,
    * based on the `items-per-page` property.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
@@ -190,6 +200,8 @@ interface CarouselPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [Carousel UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/Carousel) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const Carousel = withWebComponent<CarouselPropTypes, CarouselDomRef>(
   'ui5-carousel',

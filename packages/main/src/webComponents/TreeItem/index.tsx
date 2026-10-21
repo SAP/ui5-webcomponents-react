@@ -49,6 +49,8 @@ interface TreeItemAttributes {
 
   /**
    * Defines the `additionalText`, displayed in the end of the tree item.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   additionalText?: string | undefined;
@@ -57,6 +59,8 @@ interface TreeItemAttributes {
    * Defines the state of the `additionalText`.
    *
    * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default "None"
    */
   additionalTextState?: ValueState | keyof typeof ValueState;
@@ -81,7 +85,7 @@ interface TreeItemAttributes {
    * Defines the highlight state of the list items.
    * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
    *
-   * **Note:** Available since [v1.24](https://github.com/UI5/webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.24.0](https://github.com/UI5/webcomponents/releases/tag/v1.24.0) of **@ui5/webcomponents**.
    * @default "None"
    */
   highlight?: Highlight | keyof typeof Highlight;
@@ -252,6 +256,8 @@ interface TreeItemPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [TreeItem UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/TreeItem) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const TreeItem = withWebComponent<TreeItemPropTypes, TreeItemDomRef>(
   'ui5-tree-item',

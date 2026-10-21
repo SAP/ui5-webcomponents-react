@@ -27,7 +27,7 @@ interface TableAttributes {
   /**
    * Determines whether the table rows are displayed with alternating background colors.
    *
-   * **Note:** Available since [v2.17](https://github.com/UI5/webcomponents/releases/tag/v2.17) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.17.0](https://github.com/UI5/webcomponents/releases/tag/v2.17.0) of **@ui5/webcomponents**.
    * @default false
    */
   alternateRowColors?: boolean;

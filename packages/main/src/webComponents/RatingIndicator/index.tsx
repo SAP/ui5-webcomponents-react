@@ -8,6 +8,8 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef } from '@ui5/webcomponents-
 interface RatingIndicatorAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
@@ -41,6 +43,8 @@ interface RatingIndicatorAttributes {
 
   /**
    * The number of displayed rating symbols.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default 5
    */
   max?: number;
@@ -48,7 +52,7 @@ interface RatingIndicatorAttributes {
   /**
    * Defines the icon to be displayed for the selected (filled) rating symbol.
    *
-   * **Note:** Available since [v2.20](https://github.com/UI5/webcomponents/releases/tag/v2.20) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.20.0](https://github.com/UI5/webcomponents/releases/tag/v2.20.0) of **@ui5/webcomponents**.
    * @default "favorite"
    */
   ratedIcon?: string;
@@ -89,7 +93,7 @@ interface RatingIndicatorAttributes {
   /**
    * Defines the icon to be displayed for the unselected (empty) rating symbol.
    *
-   * **Note:** Available since [v2.20](https://github.com/UI5/webcomponents/releases/tag/v2.20) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.20.0](https://github.com/UI5/webcomponents/releases/tag/v2.20.0) of **@ui5/webcomponents**.
    * @default "unfavorite"
    */
   unratedIcon?: string;
@@ -147,6 +151,8 @@ interface RatingIndicatorPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [RatingIndicator UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/RatingIndicator) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const RatingIndicator = withWebComponent<RatingIndicatorPropTypes, RatingIndicatorDomRef>(
   'ui5-rating-indicator',

@@ -28,6 +28,8 @@ interface BusyIndicatorAttributes {
 
   /**
    * Defines text to be displayed below the component. It can be used to inform the user of the current operation.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   text?: string | undefined;
@@ -79,6 +81,8 @@ interface BusyIndicatorPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [BusyIndicator UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/BusyIndicator) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const BusyIndicator = withWebComponent<BusyIndicatorPropTypes, BusyIndicatorDomRef>(
   'ui5-busy-indicator',

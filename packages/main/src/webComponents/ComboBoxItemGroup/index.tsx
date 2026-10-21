@@ -100,6 +100,8 @@ interface ComboBoxItemGroupPropTypes
  * that can be used to split the `ComboBox` suggestions into groups.
  *
  * __Note:__ This is a UI5 Web Component! [ComboBoxItemGroup UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/ComboBoxItemGroup) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  * @abstract
  */
 const ComboBoxItemGroup = withWebComponent<ComboBoxItemGroupPropTypes, ComboBoxItemGroupDomRef>(

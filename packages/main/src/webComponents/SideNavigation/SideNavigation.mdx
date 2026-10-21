@@ -4,6 +4,7 @@ import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/block
 import { SideNavigationItem } from '../SideNavigationItem';
 import { SideNavigationSubItem } from '../SideNavigationSubItem';
 import { SideNavigationGroup } from '../SideNavigationGroup';
+import { SideNavigationSearchField } from '../SideNavigationSearchField';
 import * as ComponentStories from './SideNavigation.stories';
 import { excludePropsForAbstract } from '@sb/utils';
 
@@ -11,13 +12,17 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 [//]: # 'todo: remove once `_ui5type.references` is available in CEM again'
 
-<DocsHeader of={ComponentStories} since="0.10.0" subComponents={['SideNavigationItem', 'SideNavigationSubItem', 'SideNavigationGroup']} />
+<DocsHeader of={ComponentStories} since="0.10.0" subComponents={['SideNavigationItem', 'SideNavigationSubItem', 'SideNavigationGroup', 'SideNavigationSearchField']} />
 
 <br />
 
 ## Example
 
 <Canvas of={ComponentStories.Default} />
+
+### With Search Field
+
+<Canvas of={ComponentStories.WithSearchField} />
 
 ## Properties
 
@@ -39,5 +44,10 @@ import { excludePropsForAbstract } from '@sb/utils';
 
 <Description of={SideNavigationGroup} />
 <ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote exclude={excludePropsForAbstract} of={SideNavigationGroup} />
+
+## SideNavigationSearchField
+
+<Description of={SideNavigationSearchField} />
+<ArgTypesWithNote metaOf={ComponentStories} hideHTMLPropsNote of={SideNavigationSearchField} />
 
 <Footer />

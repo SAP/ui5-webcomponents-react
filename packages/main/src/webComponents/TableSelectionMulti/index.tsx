@@ -11,7 +11,7 @@ interface TableSelectionMultiAttributes {
   /**
    * Defines the selection behavior.
    *
-   * **Note:** Available since [v2.11](https://github.com/UI5/webcomponents/releases/tag/v2.11) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.11.0](https://github.com/UI5/webcomponents/releases/tag/v2.11.0) of **@ui5/webcomponents**.
    * @default "RowSelector"
    */
   behavior?: TableSelectionBehavior | keyof typeof TableSelectionBehavior;
@@ -19,7 +19,7 @@ interface TableSelectionMultiAttributes {
   /**
    * Defines the selector of the header row.
    *
-   * **Note:** Available since [v2.12](https://github.com/UI5/webcomponents/releases/tag/v2.12) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.12.0](https://github.com/UI5/webcomponents/releases/tag/v2.12.0) of **@ui5/webcomponents**.
    * @default "SelectAll"
    */
   headerSelector?: TableSelectionMultiHeaderSelector | keyof typeof TableSelectionMultiHeaderSelector;

@@ -9,7 +9,7 @@ interface InputIconAttributes {
    * Defines the accessible name of the icon.
    *
    * **Note:** This property is used for accessibility purposes and will be announced by screen readers.
-   * When set, it is also rendered as a native `title` tooltip.
+   * When set, it is also rendered as a native `title` tooltip, unless `hideTooltip` is set.
    * @default undefined
    */
   accessibleName?: string | undefined;

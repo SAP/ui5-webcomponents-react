@@ -27,6 +27,8 @@ interface DialogAttributes {
 
   /**
    * Defines the accessible name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
@@ -56,6 +58,8 @@ interface DialogAttributes {
    * **Note:** This property overrides the default HTML "draggable" attribute native behavior.
    * When "draggable" is set to true, the native browser "draggable"
    * behavior is prevented and only the Dialog custom logic ("draggable by its header") works.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   draggable?: boolean;
@@ -88,6 +92,8 @@ interface DialogAttributes {
   /**
    * Defines if the focus should be returned to the previously focused element,
    * when the popup closes.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   preventFocusRestore?: boolean;
@@ -108,6 +114,8 @@ interface DialogAttributes {
    * **Note:** The component can be resizable only in desktop mode.
    *
    * **Note:** Upon resizing, externally defined height and width styling will be ignored.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   resizable?: boolean;
@@ -131,6 +139,8 @@ interface DialogAttributes {
    *
    * **Note:** If `"Negative"` and `"Critical"` states is set, it will change the
    * accessibility role to "alertdialog", if the accessibleRole property is set to `"Dialog"`.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default "None"
    */
   state?: ValueState | keyof typeof ValueState;

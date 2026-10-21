@@ -50,6 +50,8 @@ interface WizardStepAttributes {
    * Defines the `subtitleText` of the step.
    *
    * **Note:** the text is displayed in the `Wizard` navigation header.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    * @default undefined
    */
   subtitleText?: string | undefined;
@@ -58,6 +60,8 @@ interface WizardStepAttributes {
    * Defines the `titleText` of the step.
    *
    * **Note:** The text is displayed in the `Wizard` navigation header.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    * @default undefined
    */
   titleText?: string | undefined;
@@ -90,6 +94,8 @@ interface WizardStepPropTypes extends WizardStepAttributes, Omit<CommonProps, ke
  * and should not be used standalone.
  *
  * __Note:__ This is a UI5 Web Component! [WizardStep UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/fiori/WizardStep) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents-fiori__.
  * @abstract
  */
 const WizardStep = withWebComponent<WizardStepPropTypes, WizardStepDomRef>(

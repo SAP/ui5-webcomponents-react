@@ -31,6 +31,8 @@ interface ListItemStandardAttributes {
   /**
    * Defines the text alternative of the component.
    * Note: If not provided a default text alternative will be set, if present.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
@@ -49,6 +51,8 @@ interface ListItemStandardAttributes {
 
   /**
    * Defines the `additionalText`, displayed in the end of the list item.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   additionalText?: string | undefined;
@@ -57,12 +61,16 @@ interface ListItemStandardAttributes {
    * Defines the state of the `additionalText`.
    *
    * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default "None"
    */
   additionalTextState?: ValueState | keyof typeof ValueState;
 
   /**
    * Defines the description displayed right under the item text, if such is present.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   description?: string | undefined;
@@ -71,7 +79,7 @@ interface ListItemStandardAttributes {
    * Defines the highlight state of the list items.
    * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
    *
-   * **Note:** Available since [v1.24](https://github.com/UI5/webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.24.0](https://github.com/UI5/webcomponents/releases/tag/v1.24.0) of **@ui5/webcomponents**.
    * @default "None"
    */
   highlight?: Highlight | keyof typeof Highlight;

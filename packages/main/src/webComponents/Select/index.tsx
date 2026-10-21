@@ -27,12 +27,16 @@ interface SelectAttributes {
 
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the select.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
@@ -66,6 +70,8 @@ interface SelectAttributes {
 
   /**
    * Defines whether the component is required.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   required?: boolean;
@@ -274,6 +280,8 @@ interface SelectPropTypes
  * `import "@ui5/webcomponents/dist/OptionCustom";`
  *
  * __Note:__ This is a UI5 Web Component! [Select UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/Select) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const Select = withWebComponent<SelectPropTypes, SelectDomRef>(
   'ui5-select',

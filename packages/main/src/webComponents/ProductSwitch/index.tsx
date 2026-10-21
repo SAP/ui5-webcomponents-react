@@ -36,6 +36,8 @@ interface ProductSwitchPropTypes extends ProductSwitchAttributes, Omit<CommonPro
  * `import "@ui5/webcomponents-fiori/dist/ProductSwitchItem.js";` (for `ProductSwitchItem`)
  *
  * __Note:__ This is a UI5 Web Component! [ProductSwitch UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/fiori/ProductSwitch) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents-fiori__.
  */
 const ProductSwitch = withWebComponent<ProductSwitchPropTypes, ProductSwitchDomRef>(
   'ui5-product-switch',

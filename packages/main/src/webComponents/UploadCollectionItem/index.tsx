@@ -84,7 +84,7 @@ interface UploadCollectionItemAttributes {
    * Defines the highlight state of the list items.
    * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
    *
-   * **Note:** Available since [v1.24](https://github.com/UI5/webcomponents/releases/tag/v1.24) of **@ui5/webcomponents-fiori**.
+   * **Note:** Available since [v1.24.0](https://github.com/UI5/webcomponents/releases/tag/v1.24.0) of **@ui5/webcomponents-fiori**.
    * @default "None"
    */
   highlight?: Highlight | keyof typeof Highlight;
@@ -280,6 +280,8 @@ interface UploadCollectionItemPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [UploadCollectionItem UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/fiori/UploadCollectionItem) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents-fiori__.
  */
 const UploadCollectionItem = withWebComponent<UploadCollectionItemPropTypes, UploadCollectionItemDomRef>(
   'ui5-upload-collection-item',

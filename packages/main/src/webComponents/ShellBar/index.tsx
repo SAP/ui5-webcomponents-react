@@ -128,26 +128,36 @@ interface ShellBarDomRef extends Required<ShellBarAttributes>, Ui5DomRef {
 
   /**
    * Returns the `logo` DOM ref.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    */
   readonly logoDomRef: HTMLElement | null;
 
   /**
    * Returns the `notifications` icon DOM ref.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    */
   readonly notificationsDomRef: HTMLElement | null;
 
   /**
    * Returns the `overflow` icon DOM ref.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    */
   readonly overflowDomRef: HTMLElement | null;
 
   /**
    * Returns the `product-switch` icon DOM ref.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    */
   readonly productSwitchDomRef: HTMLElement | null;
 
   /**
    * Returns the `profile` icon DOM ref.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    */
   readonly profileDomRef: HTMLElement | null;
 }
@@ -251,6 +261,8 @@ interface ShellBarPropTypes
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
    *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
+   *
    * __Supported Node Type/s:__ `Array<HTMLElement>`
    */
   logo?: UI5WCSlotsNode;
@@ -265,6 +277,8 @@ interface ShellBarPropTypes
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    *
    * __Supported Node Type/s:__ `Array<ListItemBase>`
    */
@@ -282,6 +296,8 @@ interface ShellBarPropTypes
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    *
    * __Supported Node Type/s:__ `Array<HTMLElement>`
    */
@@ -331,6 +347,8 @@ interface ShellBarPropTypes
   /**
    * Fired, when the logo is activated.
    *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
+   *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
    * | ❌|✅|
@@ -343,6 +361,8 @@ interface ShellBarPropTypes
    * **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
@@ -448,6 +468,8 @@ interface ShellBarPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [ShellBar UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/fiori/ShellBar) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents-fiori__.
  */
 const ShellBar = withWebComponent<ShellBarPropTypes, ShellBarDomRef>(
   'ui5-shellbar',

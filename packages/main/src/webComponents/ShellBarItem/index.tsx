@@ -32,6 +32,8 @@ interface ShellBarItemAttributes {
 
   /**
    * Defines the count displayed in badge.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    * @default undefined
    */
   count?: string | undefined;

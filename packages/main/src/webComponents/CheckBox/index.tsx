@@ -64,6 +64,8 @@ interface CheckBoxAttributes {
    * -  If the component is checked and indeterminate, it will be displayed as partially checked
    * -  If the component is checked and it is not indeterminate, it will be displayed as checked
    * -  If the component is not checked, it will be displayed as not checked regardless value of the indeterminate attribute
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   indeterminate?: boolean;

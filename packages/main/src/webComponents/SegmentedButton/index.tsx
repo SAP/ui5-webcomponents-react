@@ -105,6 +105,8 @@ interface SegmentedButtonPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [SegmentedButton UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/SegmentedButton) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const SegmentedButton = withWebComponent<SegmentedButtonPropTypes, SegmentedButtonDomRef>(
   'ui5-segmented-button',

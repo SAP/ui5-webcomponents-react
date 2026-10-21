@@ -21,6 +21,8 @@ interface NotificationListItemAttributes {
 
   /**
    * Defines if a busy indicator would be displayed over the item.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    * @default false
    */
   loading?: boolean;
@@ -64,6 +66,8 @@ interface NotificationListItemAttributes {
    *
    * **Note:** by default the `titleText` and `description`,
    * and a `ShowMore/Less` button would be displayed.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    * @default "None"
    */
   wrappingType?: WrappingType | keyof typeof WrappingType;
@@ -192,6 +196,8 @@ interface NotificationListItemPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [NotificationListItem UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/fiori/NotificationListItem) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents-fiori__.
  */
 const NotificationListItem = withWebComponent<NotificationListItemPropTypes, NotificationListItemDomRef>(
   'ui5-li-notification',
