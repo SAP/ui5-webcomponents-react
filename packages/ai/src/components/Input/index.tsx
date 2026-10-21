@@ -29,12 +29,16 @@ interface InputAttributes {
 
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the input.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
@@ -73,6 +77,8 @@ interface InputAttributes {
    * Sets the maximum number of characters available in the input field.
    *
    * **Note:** This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
    * @default undefined
    */
   maxlength?: number | undefined;
@@ -121,6 +127,8 @@ interface InputAttributes {
 
   /**
    * Defines whether the component is required.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
    * @default false
    */
   required?: boolean;
@@ -255,6 +263,8 @@ interface InputPropTypes
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
    *
    * __Supported Node Type/s:__ `Array<HTMLElement>`
    */

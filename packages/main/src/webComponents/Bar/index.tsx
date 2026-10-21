@@ -27,16 +27,16 @@ interface BarAttributes {
   /**
    * Specifies the ARIA role applied to the component for accessibility purposes.
    *
-   * **Note:**
+   * **Note:** By default, no ARIA role is applied ("None"). The Bar derives its semantics
+   * from the container it is placed in, such as a page header or footer.
    *
-   * - By default, accessibleRole is set to "Toolbar", which renders the ARIA role "toolbar".
-   *
-   * - Use the default accessibleRole value "Toolbar" only when the component contains two or more active, interactive elements (such as buttons, links, or input fields) within the bar.
-   *
-   * - If there is only one or no active element, set accessibleRole to "None" to avoid rendering the ARIA role "toolbar", as that role implies a grouping of multiple interactive controls.
+   * **Note:** The "Toolbar" value is deprecated. The Bar is a structural layout container and does not
+   * support toolbar keyboard interactions (such as arrow-key navigation between components). When 3 or more
+   * interactive elements are needed, use the `Toolbar` component instead, which provides the correct
+   * toolbar role and arrow-key navigation between components.
    *
    * **Note:** Available since [v2.10.0](https://github.com/UI5/webcomponents/releases/tag/v2.10.0) of **@ui5/webcomponents**.
-   * @default "Toolbar"
+   * @default "None"
    */
   accessibleRole?: BarAccessibleRole | keyof typeof BarAccessibleRole;
 
@@ -96,6 +96,8 @@ interface BarPropTypes
  *
  * **Note:** Do not place a Bar inside another Bar or inside any bar-like component. Doing so may cause unpredictable behavior.
  *
+ * **Note:** The Bar is a structural layout component for organizing page areas (header, footer, subheader) and not an action-oriented toolbar. To group action controls with full keyboard navigation support, use the Toolbar component instead.
+ *
  * ### Responsive Behavior
  * The default slot will be centered in the available space between the startContent and the endContent areas,
  * therefore it might not always be centered in the entire bar.
@@ -110,6 +112,8 @@ interface BarPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [Bar UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/Bar) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const Bar = withWebComponent<BarPropTypes, BarDomRef>(
   'ui5-bar',

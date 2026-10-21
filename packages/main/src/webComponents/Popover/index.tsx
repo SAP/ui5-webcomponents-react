@@ -29,6 +29,8 @@ interface PopoverAttributes {
 
   /**
    * Defines the accessible name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
@@ -66,6 +68,8 @@ interface PopoverAttributes {
 
   /**
    * Determines whether the component arrow is hidden.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   hideArrow?: boolean;
@@ -120,6 +124,8 @@ interface PopoverAttributes {
   /**
    * Defines if the focus should be returned to the previously focused element,
    * when the popup closes.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   preventFocusRestore?: boolean;
@@ -266,6 +272,8 @@ interface PopoverPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [Popover UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/Popover) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const Popover = withWebComponent<PopoverPropTypes, PopoverDomRef>(
   'ui5-popover',

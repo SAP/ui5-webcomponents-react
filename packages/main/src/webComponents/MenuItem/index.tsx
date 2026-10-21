@@ -87,7 +87,7 @@ interface MenuItemAttributes {
    * Defines the highlight state of the list items.
    * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
    *
-   * **Note:** Available since [v1.24](https://github.com/UI5/webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.24.0](https://github.com/UI5/webcomponents/releases/tag/v1.24.0) of **@ui5/webcomponents**.
    * @default "None"
    */
   highlight?: Highlight | keyof typeof Highlight;

@@ -25,6 +25,8 @@ interface SegmentedButtonItemAttributes {
 
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;

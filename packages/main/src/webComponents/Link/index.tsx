@@ -44,6 +44,8 @@ interface LinkAttributes {
 
   /**
    * Receives id(or many ids) of the elements that label the input
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
@@ -51,7 +53,7 @@ interface LinkAttributes {
   /**
    * Defines the ARIA role of the component.
    *
-   * **Note:** Use the <code>LinkAccessibleRole.Button</code> role in cases when navigation is not expected to occur and the href property is not defined.
+   * **Note:** Set the role to <code>LinkAccessibleRole.Button</code> when the link triggers an action instead of navigating (when the <code>href</code> property is not defined). Otherwise, the component keeps the default <code>"Link"</code> role, and some screen readers (for example, JAWS in browse mode) cannot activate it, as a link with no <code>href</code> has no destination to navigate to.
    *
    * **Note:** Available since [v1.9.0](https://github.com/UI5/webcomponents/releases/tag/v1.9.0) of **@ui5/webcomponents**.
    * @default "Link"
@@ -201,6 +203,21 @@ interface LinkPropTypes extends LinkAttributes, Omit<CommonProps, keyof LinkAttr
  * If the `href` property is set, the link behaves as the HTML
  * anchor tag (`<a></a>`) and opens the specified URL in the given target frame (`target` property).
  * To specify where the linked content is opened, you can use the `target` property.
+ *
+ * ### Navigation vs. Action
+ *
+ * The `Link` supports two distinct use cases. Choosing the right one is important for accessibility:
+ *
+ * - **Navigation**: set the `href` property (and optionally `target`). The component behaves as a
+ * standard anchor tag, and the browser handles navigation, which also enables native
+ * affordances such as open-in-new-tab, copy link, and hover preview.
+ * - **Action**: when the link triggers an in-page action (for example, opening a dialog) instead of
+ * navigating, leave `href` unset and set `accessibleRole` to `"Button"`. This exposes the component
+ * with a `button` role, which assistive technologies activate reliably.
+ *
+ * **Note:** A link that triggers an action but keeps the default `"Link"` role (with no `href`) cannot be
+ * activated by some screen readers, such as JAWS in browse mode, because a link without `href` has
+ * no destination to navigate to. Always set `accessibleRole="Button"` for action-only links.
  *
  * ### Responsive behavior
  *

@@ -72,6 +72,8 @@ interface TabDomRef extends Required<TabAttributes>, Ui5DomRef {
    * **Note:** Tabs, placed in the `items` slot of other tabs are not shown in the header. Calling this method on such tabs will return `undefined`.
    *
    * **Note:** If you need a DOM ref to the tab content please use the `getDomRef` method.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @returns {HTMLElement | undefined}
    */
   getDomRefInStrip: () => HTMLElement | undefined;

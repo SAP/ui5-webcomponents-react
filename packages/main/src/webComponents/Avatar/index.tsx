@@ -26,6 +26,8 @@ interface AvatarAttributes {
   /**
    * Defines the text alternative of the component.
    * If not provided a default text alternative will be set, if present.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
@@ -48,8 +50,8 @@ interface AvatarAttributes {
   /**
    * Defines the name of the fallback icon, which should be displayed in the following cases:
    *
-   * 	- If the initials are not valid (more than 3 letters, unsupported languages or empty initials).
-   * 	- If there are three initials and they do not fit in the shape (e.g. WWW for some of the sizes).
+   * 	- If the initials are not valid (more than 3 letters or empty initials).
+   * 	- If the initials do not fit in the shape at the current size (e.g. WWW at size XS).
    * 	- If the image src is wrong.
    *
    * **Note:** If not set, a default fallback icon "employee" is displayed.
@@ -86,7 +88,12 @@ interface AvatarAttributes {
   /**
    * Defines the displayed initials.
    *
-   * Up to three Latin letters can be displayed as initials.
+   * Up to three letters from an alphabetic script can be displayed as initials.
+   * All scripts used in SAP-supported languages are accepted, except logographic and
+   * pure syllabic scripts where the concept of initials does not apply: Han (Chinese,
+   * Japanese kanji), Hiragana, and Katakana. Korean (Hangul) is supported.
+   * If the letters do not fit inside the avatar shape at the current size, the fallback
+   * icon is shown instead.
    * @default undefined
    */
   initials?: string | undefined;
@@ -115,7 +122,7 @@ interface AvatarAttributes {
    * **Note:** This property is ignored when the `interactive` property is set to `true`.
    * In that case, the avatar will always be rendered as interactive.
    *
-   * **Note:** Available since [v2.20](https://github.com/UI5/webcomponents/releases/tag/v2.20) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.20.0](https://github.com/UI5/webcomponents/releases/tag/v2.20.0) of **@ui5/webcomponents**.
    * @default "Image"
    */
   mode?: AvatarMode | keyof typeof AvatarMode;
@@ -167,6 +174,8 @@ interface AvatarPropTypes
    * &nbsp;&nbsp;&nbsp;&nbsp;`visibility: hidden;`<br/>
    * `}`
    *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
+   *
    * __Supported Node Type/s:__ `Array<HTMLElement>`
    */
   children?: ReactNode | ReactNode[];
@@ -200,6 +209,8 @@ interface AvatarPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [Avatar UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/Avatar) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const Avatar = withWebComponent<AvatarPropTypes, AvatarDomRef>(
   'ui5-avatar',

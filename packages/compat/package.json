@@ -93,8 +93,8 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents-compat": "~2.27.0",
-    "@ui5/webcomponents-react": "~2.27.0",
+    "@ui5/webcomponents-compat": "~2.28.1",
+    "@ui5/webcomponents-react": "~2.28.1",
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19"
   },

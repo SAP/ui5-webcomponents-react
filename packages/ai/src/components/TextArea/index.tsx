@@ -2,6 +2,7 @@
 
 import '@ui5/webcomponents-ai/dist/TextArea.js';
 import type { TextAreaInputEventDetail } from '@ui5/webcomponents/dist/TextArea.js';
+import type TextAreaCounterMode from '@ui5/webcomponents/dist/types/TextAreaCounterMode.js';
 import type { TextAreaVersionChangeEventDetail } from '@ui5/webcomponents-ai/dist/TextArea.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
@@ -26,15 +27,38 @@ interface TextAreaAttributes {
 
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the textarea.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
+
+  /**
+   * Determines when the character counter of the component is displayed.
+   *
+   * Available options are:
+   *
+   * - `None` - The counter is never shown and `maxlength` acts as a hard cap.
+   * - `Always` - The counter is always visible below the component.
+   * - `Auto` - The counter is shown only when the component is focused, when the character limit
+   * is exceeded, or when `valueState` is `Critical` or `Negative`. Space is always reserved to
+   * prevent layout shifts.
+   *
+   * **Note:** When set to a value other than `None`, this property takes precedence over the
+   * deprecated `showExceededText` property.
+   *
+   * **Note:** Available since [v2.28.0](https://github.com/UI5/webcomponents/releases/tag/v2.28.0) of **@ui5/webcomponents-ai**.
+   * @default "None"
+   */
+  counterMode?: TextAreaCounterMode | keyof typeof TextAreaCounterMode;
 
   /**
    * Indicates the index of the currently displayed version.
@@ -104,6 +128,8 @@ interface TextAreaAttributes {
 
   /**
    * Defines whether the component is required.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
    * @default false
    */
   required?: boolean;
@@ -129,6 +155,7 @@ interface TextAreaAttributes {
    * If set to `true` the characters exceeding the `maxlength` value are selected on
    * paste and the counter below the component displays their number.
    * @default false
+   * @deprecated Use `counterMode="Always"` instead.
    */
   showExceededText?: boolean;
 
@@ -152,6 +179,8 @@ interface TextAreaAttributes {
    * **Note:** If `maxlength` property is set,
    * the component turns into "Critical" state once the characters exceeds the limit.
    * In this case, only the "Negative" state is considered and can be applied.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
    * @default "None"
    */
   valueState?: ValueState | keyof typeof ValueState;
@@ -202,6 +231,8 @@ interface TextAreaPropTypes
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
    *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
+   *
    * __Supported Node Type/s:__ `Array<HTMLElement>`
    */
   valueStateMessage?: UI5WCSlotsNode;
@@ -219,6 +250,8 @@ interface TextAreaPropTypes
    * something is pasted.
    *
    * **Note:** Call `event.preventDefault()` inside the handler of this event to prevent its default action/s.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-ai**.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
@@ -293,6 +326,7 @@ const TextArea = withWebComponent<TextAreaPropTypes, TextAreaDomRef>(
     'accessibleDescriptionRef',
     'accessibleName',
     'accessibleNameRef',
+    'counterMode',
     'currentVersion',
     'growingMaxRows',
     'maxlength',

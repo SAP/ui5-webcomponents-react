@@ -19,6 +19,8 @@ interface ProductSwitchItemAttributes {
 
   /**
    * Defines the subtitle of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    * @default undefined
    */
   subtitleText?: string | undefined;
@@ -47,6 +49,8 @@ interface ProductSwitchItemAttributes {
 
   /**
    * Defines the title of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    * @default undefined
    */
   titleText?: string | undefined;
@@ -100,6 +104,8 @@ interface ProductSwitchItemPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [ProductSwitchItem UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/fiori/ProductSwitchItem) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents-fiori__.
  */
 const ProductSwitchItem = withWebComponent<ProductSwitchItemPropTypes, ProductSwitchItemDomRef>(
   'ui5-product-switch-item',

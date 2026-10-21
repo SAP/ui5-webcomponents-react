@@ -225,6 +225,8 @@ interface FlexibleColumnLayoutPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [FlexibleColumnLayout UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/fiori/FlexibleColumnLayout) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents-fiori__.
  */
 const FlexibleColumnLayout = withWebComponent<FlexibleColumnLayoutPropTypes, FlexibleColumnLayoutDomRef>(
   'ui5-flexible-column-layout',

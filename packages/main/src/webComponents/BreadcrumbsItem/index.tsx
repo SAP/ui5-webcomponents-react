@@ -70,6 +70,8 @@ interface BreadcrumbsItemPropTypes
  * The `BreadcrumbsItem` component defines the content of an item in `Breadcrumbs`.
  *
  * __Note:__ This is a UI5 Web Component! [BreadcrumbsItem UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/BreadcrumbsItem) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  * @abstract
  */
 const BreadcrumbsItem = withWebComponent<BreadcrumbsItemPropTypes, BreadcrumbsItemDomRef>(

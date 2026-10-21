@@ -165,7 +165,7 @@
           },
           "tagName": "ui5-barcode-scanner-dialog",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.15",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -184,6 +184,21 @@
           "declaration": {
             "name": "BarcodeScannerDialog",
             "module": "dist/BarcodeScannerDialog.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/BarcodeScannerDialogTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "BarcodeScannerDialogTemplate",
+            "module": "dist/BarcodeScannerDialogTemplate.js"
           }
         }
       ]
@@ -398,7 +413,8 @@
           "tagName": "ui5-dynamic-page",
           "customElement": true,
           "_ui5since": "2.0.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["DynamicPageHeader", "DynamicPageTitle"]
         }
       ],
       "exports": [
@@ -533,6 +549,51 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/DynamicPageHeaderActionsTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicPageHeaderActionsTemplate",
+            "module": "dist/DynamicPageHeaderActionsTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DynamicPageHeaderTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicPageHeaderTemplate",
+            "module": "dist/DynamicPageHeaderTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DynamicPageTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicPageTemplate",
+            "module": "dist/DynamicPageTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/DynamicPageTitle.js",
       "declarations": [
         {
@@ -656,6 +717,21 @@
           "declaration": {
             "name": "DynamicPageTitle",
             "module": "dist/DynamicPageTitle.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/DynamicPageTitleTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicPageTitleTemplate",
+            "module": "dist/DynamicPageTitleTemplate.js"
           }
         }
       ]
@@ -949,6 +1025,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/DynamicSideContentTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "DynamicSideContentTemplate",
+            "module": "dist/DynamicSideContentTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/FilterItem.js",
       "declarations": [
         {
@@ -1021,7 +1112,7 @@
           },
           "tagName": "ui5-filter-item",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.16",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5abstract": true
         }
@@ -1102,7 +1193,7 @@
           },
           "tagName": "ui5-filter-item-option",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.16",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5abstract": true
         }
@@ -1522,7 +1613,7 @@
           },
           "tagName": "ui5-flexible-column-layout",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -1541,6 +1632,21 @@
           "declaration": {
             "name": "FlexibleColumnLayout",
             "module": "dist/FlexibleColumnLayout.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/FlexibleColumnLayoutTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "FlexibleColumnLayoutTemplate",
+            "module": "dist/FlexibleColumnLayoutTemplate.js"
           }
         }
       ]
@@ -1836,6 +1942,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/HeroBannerTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HeroBannerTemplate",
+            "module": "dist/HeroBannerTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/IllustratedMessage.js",
       "declarations": [
         {
@@ -1868,7 +1989,7 @@
             {
               "name": "subtitle",
               "description": "Defines the subtitle of the component.\n\n**Note:** Using this slot, the default subtitle text of illustration and the value of `subtitleText` property will be overwritten.",
-              "_ui5since": "1.0.0-rc.16",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -2019,7 +2140,7 @@
           },
           "tagName": "ui5-illustrated-message",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.15",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -2038,6 +2159,21 @@
           "declaration": {
             "name": "IllustratedMessage",
             "module": "dist/IllustratedMessage.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/IllustratedMessageTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "IllustratedMessageTemplate",
+            "module": "dist/IllustratedMessageTemplate.js"
           }
         }
       ]
@@ -2254,7 +2390,8 @@
           "tagName": "ui5-media-gallery",
           "customElement": true,
           "_ui5since": "1.1.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["MediaGalleryItem"]
         }
       ],
       "exports": [
@@ -2410,6 +2547,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/MediaGalleryItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MediaGalleryItemTemplate",
+            "module": "dist/MediaGalleryItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/MediaGalleryTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "MediaGalleryTemplate",
+            "module": "dist/MediaGalleryTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/NavigationLayout.js",
       "declarations": [
         {
@@ -2517,6 +2684,21 @@
           "declaration": {
             "name": "NavigationLayout",
             "module": "dist/NavigationLayout.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/NavigationLayoutTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NavigationLayoutTemplate",
+            "module": "dist/NavigationLayoutTemplate.js"
           }
         }
       ]
@@ -2979,7 +3161,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -3438,6 +3620,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/NavigationMenuItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NavigationMenuItemTemplate",
+            "module": "dist/NavigationMenuItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/NavigationMenuTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NavigationMenuTemplate",
+            "module": "dist/NavigationMenuTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/NotificationList.js",
       "declarations": [
         {
@@ -3579,7 +3791,8 @@
           "tagName": "ui5-notification-list",
           "customElement": true,
           "_ui5since": "2.0.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["NotificationListGroupItem", "NotificationListItem"]
         }
       ],
       "exports": [
@@ -3665,7 +3878,7 @@
               "default": "false",
               "description": "Defines if a busy indicator would be displayed over the item.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -3815,7 +4028,7 @@
           },
           "tagName": "ui5-li-notification-group",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -3834,6 +4047,21 @@
           "declaration": {
             "name": "NotificationListGroupItem",
             "module": "dist/NotificationListGroupItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/NotificationListGroupItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NotificationListItemTemplate",
+            "module": "dist/NotificationListGroupItemTemplate.js"
           }
         }
       ]
@@ -3933,7 +4161,7 @@
               "description": "Defines the accessible name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -3944,7 +4172,7 @@
               "description": "Defines the IDs of the elements that label the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -3962,7 +4190,7 @@
               "default": "\"List\"",
               "description": "Defines the accessible role of the component.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -3990,7 +4218,7 @@
               "default": "\"None\"",
               "description": "Defines whether the component will have growing capability either by pressing a `More` button,\nor via user scroll. In both cases `load-more` event is fired.\n\n**Restrictions:** `growing=\"Scroll\"` is not supported for Internet Explorer,\non IE the component will fallback to `growing=\"Button\"`.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.13"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -4001,7 +4229,7 @@
               "description": "Defines the text that will be displayed inside the growing button.\n\n**Note:** If not specified a built-in text will be displayed.\n\n**Note:** This property takes effect if the `growing` property is set to the `Button`.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -4051,7 +4279,7 @@
               "default": "false",
               "description": "Defines if the component would display a loading indicator over the list.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -4165,7 +4393,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.8",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -4222,7 +4450,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.8",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -4244,7 +4472,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "name": "move",
@@ -4650,7 +4878,7 @@
               "description": "Defines the accessible name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -4661,7 +4889,7 @@
               "description": "Defines the IDs of the elements that label the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -4679,7 +4907,7 @@
               "default": "\"List\"",
               "description": "Defines the accessible role of the component.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -4707,7 +4935,7 @@
               "default": "\"None\"",
               "description": "Defines whether the component will have growing capability either by pressing a `More` button,\nor via user scroll. In both cases `load-more` event is fired.\n\n**Restrictions:** `growing=\"Scroll\"` is not supported for Internet Explorer,\non IE the component will fallback to `growing=\"Button\"`.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.13"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -4718,7 +4946,7 @@
               "description": "Defines the text that will be displayed inside the growing button.\n\n**Note:** If not specified a built-in text will be displayed.\n\n**Note:** This property takes effect if the `growing` property is set to the `Button`.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -4768,7 +4996,7 @@
               "default": "false",
               "description": "Defines if the component would display a loading indicator over the list.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -4882,7 +5110,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.8",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -4939,7 +5167,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.8",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -4961,7 +5189,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "name": "move",
@@ -5348,7 +5576,7 @@
               "default": "false",
               "description": "Defines if a busy indicator would be displayed over the item.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -5423,7 +5651,7 @@
               "default": "\"None\"",
               "description": "Defines if the `titleText` and `description` should wrap,\nthey truncate by default.\n\n**Note:** by default the `titleText` and `description`,\nand a `ShowMore/Less` button would be displayed.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             }
           ],
           "events": [
@@ -5566,7 +5794,7 @@
           },
           "tagName": "ui5-li-notification",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -5607,7 +5835,7 @@
               "default": "false",
               "description": "Defines if a busy indicator would be displayed over the item.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.8"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -5684,7 +5912,7 @@
             "module": "dist/ListItemBase.js"
           },
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "events": [
             {
@@ -5726,6 +5954,36 @@
           "declaration": {
             "name": "NotificationListItemBase",
             "module": "dist/NotificationListItemBase.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/NotificationListItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NotificationListItemTemplate",
+            "module": "dist/NotificationListItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/NotificationListTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "NotificationListTemplate",
+            "module": "dist/NotificationListTemplate.js"
           }
         }
       ]
@@ -5865,7 +6123,7 @@
           },
           "tagName": "ui5-page",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.12",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -5884,6 +6142,21 @@
           "declaration": {
             "name": "Page",
             "module": "dist/Page.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/PageTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "PageTemplate",
+            "module": "dist/PageTemplate.js"
           }
         }
       ]
@@ -5927,8 +6200,9 @@
           },
           "tagName": "ui5-product-switch",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.5",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
+          "_ui5subcomponents": ["ProductSwitchItem"],
           "members": []
         }
       ],
@@ -5990,7 +6264,7 @@
               "description": "Defines the subtitle of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -6021,7 +6295,7 @@
               "description": "Defines the title of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             }
           ],
           "events": [
@@ -6091,7 +6365,7 @@
           },
           "tagName": "ui5-product-switch-item",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.5",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5implements": [
             {
@@ -6117,6 +6391,36 @@
           "declaration": {
             "name": "ProductSwitchItem",
             "module": "dist/ProductSwitchItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ProductSwitchItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ProductSwitchItemTemplate",
+            "module": "dist/ProductSwitchItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ProductSwitchTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ProductSwitchTemplate",
+            "module": "dist/ProductSwitchTemplate.js"
           }
         }
       ]
@@ -6501,7 +6805,14 @@
           "customElement": true,
           "_ui5experimental": true,
           "_ui5since": "2.9.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": [
+            "SearchItem",
+            "SearchItemGroup",
+            "SearchItemShowMore",
+            "SearchMessageArea",
+            "SearchScope"
+          ]
         }
       ],
       "exports": [
@@ -6786,6 +7097,36 @@
           "declaration": {
             "name": "SearchField",
             "module": "dist/SearchField.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchFieldScopePopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchFieldScopePopoverTemplate",
+            "module": "dist/SearchFieldScopePopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchFieldTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchFieldTemplate",
+            "module": "dist/SearchFieldTemplate.js"
           }
         }
       ]
@@ -7350,6 +7691,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SearchItemShowMoreTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchItemShowMoreTemplate",
+            "module": "dist/SearchItemShowMoreTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchItemTemplate",
+            "module": "dist/SearchItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SearchMessageArea.js",
       "declarations": [
         {
@@ -7425,6 +7796,36 @@
           "declaration": {
             "name": "SearchMessageArea",
             "module": "dist/SearchMessageArea.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchMessageAreaTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchMessageAreaTemplate",
+            "module": "dist/SearchMessageAreaTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SearchPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchPopoverTemplate",
+            "module": "dist/SearchPopoverTemplate.js"
           }
         }
       ]
@@ -7520,6 +7921,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SearchTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SearchTemplate",
+            "module": "dist/SearchTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ShellBar.js",
       "declarations": [
         {
@@ -7593,7 +8009,7 @@
             {
               "name": "logo",
               "description": "Defines the logo of the `ui5-shellbar`.\nFor example, you can use `ui5-avatar` or `img` elements as logo.",
-              "_ui5since": "1.0.0-rc.8",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -7602,7 +8018,7 @@
             {
               "name": "menuItems",
               "description": "Defines the items displayed in menu after a click on a start button.\n\n**Note:** You can use the  `<ui5-li></ui5-li>` and its ancestors.",
-              "_ui5since": "0.10",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<ListItemBase>",
                 "references": [
@@ -7618,7 +8034,7 @@
             {
               "name": "profile",
               "description": "You can pass `ui5-avatar` to set the profile image/icon.\nIf no profile slot is set - profile will be excluded from actions.\n\n**Note:** We recommend not using the `size` attribute of `ui5-avatar` because\nit should have specific size by design in the context of `ui5-shellbar` profile.",
-              "_ui5since": "1.0.0-rc.6",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -7726,7 +8142,7 @@
               "privacy": "public",
               "default": "null",
               "readonly": true,
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7748,7 +8164,7 @@
               "privacy": "public",
               "default": "null",
               "readonly": true,
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7760,7 +8176,7 @@
               "privacy": "public",
               "default": "null",
               "readonly": true,
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7782,7 +8198,7 @@
               "privacy": "public",
               "default": "null",
               "readonly": true,
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7794,7 +8210,7 @@
               "privacy": "public",
               "default": "null",
               "readonly": true,
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -7884,7 +8300,7 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": true,
-              "_ui5since": "0.10",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -7913,7 +8329,7 @@
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true,
-              "_ui5since": "0.10",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -8239,8 +8655,9 @@
           },
           "tagName": "ui5-shellbar",
           "customElement": true,
-          "_ui5since": "0.8.0",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["ShellBarBranding", "ShellBarItem", "ShellBarSearch", "ShellBarSpacer"]
         }
       ],
       "exports": [
@@ -8396,6 +8813,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ShellBarBrandingTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ShellBarBrandingTemplate",
+            "module": "dist/ShellBarBrandingTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ShellBarItem.js",
       "declarations": [
         {
@@ -8430,7 +8862,7 @@
               "description": "Defines the count displayed in badge.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.6"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -8546,6 +8978,21 @@
           "declaration": {
             "name": "ShellBarItem",
             "module": "dist/ShellBarItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ShellBarItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ShellBarItemTemplate",
+            "module": "dist/ShellBarItemTemplate.js"
           }
         }
       ]
@@ -8973,6 +9420,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ShellBarSearchPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ShellBarSearchPopoverTemplate",
+            "module": "dist/ShellBarSearchPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ShellBarSearchTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ShellBarSearchTemplate",
+            "module": "dist/ShellBarSearchTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/ShellBarSpacer.js",
       "declarations": [
         {
@@ -9013,6 +9490,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ShellBarTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ShellBarTemplate",
+            "module": "dist/ShellBarTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SideNavigation.js",
       "declarations": [
         {
@@ -9037,6 +9529,15 @@
               "_ui5privacy": "public"
             },
             {
+              "name": "filterSection",
+              "description": "Defines the filter section of the `ui5-side-navigation`.\n\n**Note:** The filter section is displayed when the component is expanded - the property `collapsed` is false;",
+              "_ui5since": "2.28.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
               "name": "fixedItems",
               "description": "Defines the fixed items at the bottom of the component.\n\n**Note:** In order to achieve the best user experience, it is recommended that you keep the fixed items \"flat\" (do not pass sub-items)",
               "_ui5type": {
@@ -9054,7 +9555,7 @@
             {
               "name": "header",
               "description": "Defines the header of the `ui5-side-navigation`.\n\n**Note:** The header is displayed when the component is expanded - the property `collapsed` is false;",
-              "_ui5since": "1.0.0-rc.11",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -9074,6 +9575,28 @@
               "_ui5since": "2.9.0"
             },
             {
+              "kind": "method",
+              "name": "announceSearchMatchCount",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "count",
+                  "type": {
+                    "text": "number"
+                  },
+                  "description": "The number of matching navigation items.",
+                  "_ui5privacy": "public"
+                }
+              ],
+              "description": "Announces the number of search matches found in the side navigation to assistive technologies.\n\nThis method uses an invisible live region message so screen readers can inform users\nabout the current number of search matches.",
+              "privacy": "public",
+              "_ui5since": "2.28.0"
+            },
+            {
               "kind": "field",
               "name": "collapsed",
               "type": {
@@ -9082,6 +9605,17 @@
               "default": "false",
               "description": "Defines whether the `ui5-side-navigation` is expanded or collapsed.\n\n**Note:** On small screens (screen width of 599px or less) the collapsed mode is not supported, and in\nexpanded mode the side navigation will take the whole width of the screen.\nThe `ui5-side-navigation` component is intended to be used within a `ui5-navigation-layout`\ncomponent to ensure proper responsive behavior. If you choose not to use the\n`ui5-navigation-layout`, you will need to implement the appropriate responsive patterns yourself,\nparticularly for smaller screens where the collapsed mode should not be used.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "highlightedText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Specifies a term to be highlighted in the navigation items' text.\nWhen set, matching portions of item and group texts are visually emphasized during rendering.",
+              "privacy": "public",
+              "default": "undefined",
+              "_ui5since": "2.28.0"
             }
           ],
           "events": [
@@ -9211,6 +9745,15 @@
               "type": {
                 "text": "boolean"
               }
+            },
+            {
+              "description": "Specifies a term to be highlighted in the navigation items' text.\nWhen set, matching portions of item and group texts are visually emphasized during rendering.",
+              "name": "highlighted-text",
+              "default": "undefined",
+              "fieldName": "highlightedText",
+              "type": {
+                "text": "string | undefined"
+              }
             }
           ],
           "superclass": {
@@ -9220,8 +9763,9 @@
           },
           "tagName": "ui5-side-navigation",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["SideNavigationGroup", "SideNavigationItem", "SideNavigationSubItem"]
         }
       ],
       "exports": [
@@ -9398,6 +9942,21 @@
           "declaration": {
             "name": "SideNavigationGroup",
             "module": "dist/SideNavigationGroup.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SideNavigationGroupTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SideNavigationGroupTemplate",
+            "module": "dist/SideNavigationGroupTemplate.js"
           }
         }
       ]
@@ -9698,7 +10257,7 @@
           },
           "tagName": "ui5-side-navigation-item",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5abstract": true,
           "events": [
@@ -9885,6 +10444,231 @@
           "declaration": {
             "name": "SideNavigationItemBase",
             "module": "dist/SideNavigationItemBase.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SideNavigationItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SideNavigationItemTemplate",
+            "module": "dist/SideNavigationItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SideNavigationPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SideNavigationTemplate",
+            "module": "dist/SideNavigationPopoverTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SideNavigationSearchField.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\nA `ui5-side-navigation-search-field` is a search field,\nused to filter the items of a `ui5-side-navigation`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/SideNavigationSearchField.js\";`",
+          "name": "SideNavigationSearchField",
+          "members": [
+            {
+              "kind": "field",
+              "name": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id (or many ids) of the elements that describe the component.",
+              "privacy": "public",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "privacy": "public",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id (or many ids) of the elements that label the component.",
+              "privacy": "public",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
+              "name": "hideClearIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the clear icon of the search will be hidden.\n\n**Note:** When not set, the clear icon is displayed while the component has a value.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines a short hint intended to aid the user with data entry when the\ncomponent has no value.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the value of the component.\n\n**Note:** The property is updated upon typing.",
+              "privacy": "public"
+            }
+          ],
+          "events": [
+            {
+              "name": "input",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when typing in input or clear icon is pressed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true
+            },
+            {
+              "name": "search",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user has triggered search with Enter key or Search Button press.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Receives id (or many ids) of the elements that describe the component.",
+              "name": "accessible-description-ref",
+              "default": "undefined",
+              "fieldName": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the accessible ARIA name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Receives id (or many ids) of the elements that label the component.",
+              "name": "accessible-name-ref",
+              "default": "undefined",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines whether the clear icon of the search will be hidden.\n\n**Note:** When not set, the clear icon is displayed while the component has a value.",
+              "name": "hide-clear-icon",
+              "default": "false",
+              "fieldName": "hideClearIcon",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines a short hint intended to aid the user with data entry when the\ncomponent has no value.",
+              "name": "placeholder",
+              "default": "undefined",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the value of the component.\n\n**Note:** The property is updated upon typing.",
+              "name": "value",
+              "default": "\"\"",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-side-navigation-search-field",
+          "customElement": true,
+          "_ui5since": "2.28.0",
+          "_ui5privacy": "public"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SideNavigationSearchField",
+            "module": "dist/SideNavigationSearchField.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-side-navigation-search-field",
+          "declaration": {
+            "name": "SideNavigationSearchField",
+            "module": "dist/SideNavigationSearchField.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SideNavigationSearchFieldTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SideNavigationSearchFieldTemplate",
+            "module": "dist/SideNavigationSearchFieldTemplate.js"
           }
         }
       ]
@@ -10368,7 +11152,7 @@
           },
           "tagName": "ui5-side-navigation-sub-item",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.8",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5abstract": true,
           "attributes": [
@@ -10549,6 +11333,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/SideNavigationSubItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SideNavigationSubItemTemplate",
+            "module": "dist/SideNavigationSubItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SideNavigationTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SideNavigationTemplate",
+            "module": "dist/SideNavigationTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/SortItem.js",
       "declarations": [
         {
@@ -10604,7 +11418,7 @@
           },
           "tagName": "ui5-sort-item",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.16",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5abstract": true
         }
@@ -10724,7 +11538,7 @@
               "default": "\"Vertical\"",
               "description": "Defines the items orientation.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -10836,8 +11650,9 @@
           },
           "tagName": "ui5-timeline",
           "customElement": true,
-          "_ui5since": "0.8.0",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["TimelineGroupItem", "TimelineItem"]
         }
       ],
       "exports": [
@@ -10973,6 +11788,21 @@
           "declaration": {
             "name": "TimelineGroupItem",
             "module": "dist/TimelineGroupItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TimelineGroupItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TimelineGroupItemTemplate",
+            "module": "dist/TimelineGroupItemTemplate.js"
           }
         }
       ]
@@ -11193,6 +12023,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/TimelineItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TimelineItemTemplate",
+            "module": "dist/TimelineItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TimelineTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TimelineTemplate",
+            "module": "dist/TimelineTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/UploadCollection.js",
       "declarations": [
         {
@@ -11235,7 +12095,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -11424,8 +12284,9 @@
           },
           "tagName": "ui5-upload-collection",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.7",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["UploadCollectionItem"]
         }
       ],
       "exports": [
@@ -11640,7 +12501,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -11931,7 +12792,7 @@
           },
           "tagName": "ui5-upload-collection-item",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.7",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public"
         }
       ],
@@ -11950,6 +12811,36 @@
           "declaration": {
             "name": "UploadCollectionItem",
             "module": "dist/UploadCollectionItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UploadCollectionItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UploadCollectionItemTemplate",
+            "module": "dist/UploadCollectionItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UploadCollectionTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UploadCollectionTemplate",
+            "module": "dist/UploadCollectionTemplate.js"
           }
         }
       ]
@@ -12316,7 +13207,8 @@
           "tagName": "ui5-user-menu",
           "customElement": true,
           "_ui5since": "2.5.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["UserMenuAccount", "UserMenuItem", "UserMenuItemGroup"]
         }
       ],
       "exports": [
@@ -12717,7 +13609,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -13210,6 +14102,51 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/UserMenuItemGroupTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserMenuItemTemplate",
+            "module": "dist/UserMenuItemGroupTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserMenuItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserMenuItemTemplate",
+            "module": "dist/UserMenuItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserMenuTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserMenuTemplate",
+            "module": "dist/UserMenuTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/UserSettingsAccountView.js",
       "declarations": [
         {
@@ -13392,6 +14329,21 @@
           "declaration": {
             "name": "UserSettingsAccountView",
             "module": "dist/UserSettingsAccountView.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserSettingsAccountViewTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsAccountViewTemplate",
+            "module": "dist/UserSettingsAccountViewTemplate.js"
           }
         }
       ]
@@ -13853,7 +14805,7 @@
               "description": "Defines the text alternative of the component.\n\n**Note**: If not provided a default text alternative will be set, if present.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -13889,7 +14841,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -14197,6 +15149,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/UserSettingsAppearanceViewItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsAppearanceViewItemTemplate",
+            "module": "dist/UserSettingsAppearanceViewItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserSettingsAppearanceViewTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsAppearanceViewTemplate",
+            "module": "dist/UserSettingsAppearanceViewTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/UserSettingsDialog.js",
       "declarations": [
         {
@@ -14416,7 +15398,18 @@
           "tagName": "ui5-user-settings-dialog",
           "customElement": true,
           "_ui5since": "2.8.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": [
+            "UserSettingsAccountView",
+            "UserSettingsAppearanceView",
+            "UserSettingsAppearanceViewGroup",
+            "UserSettingsAppearanceViewItem",
+            "UserSettingsItem",
+            "UserSettingsNotificationsView",
+            "UserSettingsNotificationsViewGroup",
+            "UserSettingsNotificationsViewItem",
+            "UserSettingsView"
+          ]
         }
       ],
       "exports": [
@@ -14434,6 +15427,21 @@
           "declaration": {
             "name": "UserSettingsDialog",
             "module": "dist/UserSettingsDialog.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserSettingsDialogTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsDialogTemplate",
+            "module": "dist/UserSettingsDialogTemplate.js"
           }
         }
       ]
@@ -14717,6 +15725,21 @@
           "declaration": {
             "name": "UserSettingsItem",
             "module": "dist/UserSettingsItem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserSettingsItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsItemTemplate",
+            "module": "dist/UserSettingsItemTemplate.js"
           }
         }
       ]
@@ -15237,7 +16260,7 @@
               "description": "Defines the text alternative of the component.\n\n**Note**: If not provided a default text alternative will be set, if present.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -15273,7 +16296,7 @@
               "default": "\"None\"",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "privacy": "public",
-              "_ui5since": "1.24"
+              "_ui5since": "1.24.0"
             },
             {
               "kind": "field",
@@ -15607,6 +16630,36 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/UserSettingsNotificationsViewItemTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsNotificationsViewItemTemplate",
+            "module": "dist/UserSettingsNotificationsViewItemTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserSettingsNotificationsViewTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsNotificationsViewTemplate",
+            "module": "dist/UserSettingsNotificationsViewTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/UserSettingsView.js",
       "declarations": [
         {
@@ -15711,6 +16764,21 @@
           "declaration": {
             "name": "UserSettingsView",
             "module": "dist/UserSettingsView.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/UserSettingsViewTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "UserSettingsViewTemplate",
+            "module": "dist/UserSettingsViewTemplate.js"
           }
         }
       ]
@@ -16143,8 +17211,15 @@
           },
           "tagName": "ui5-view-settings-dialog",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.16",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": [
+            "FilterItem",
+            "FilterItemOption",
+            "GroupItem",
+            "SortItem",
+            "ViewSettingsDialogCustomTab"
+          ]
         }
       ],
       "exports": [
@@ -16272,6 +17347,36 @@
           "declaration": {
             "name": "ViewSettingsDialogCustomTab",
             "module": "dist/ViewSettingsDialogCustomTab.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ViewSettingsDialogCustomTabTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ViewSettingsDialogCustomTabTemplate",
+            "module": "dist/ViewSettingsDialogCustomTabTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ViewSettingsDialogTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ViewSettingsDialogTemplate",
+            "module": "dist/ViewSettingsDialogTemplate.js"
           }
         }
       ]
@@ -16450,8 +17555,9 @@
           },
           "tagName": "ui5-wizard",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.10",
-          "_ui5privacy": "public"
+          "_ui5since": "1.0.0",
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["WizardStep"]
         }
       ],
       "exports": [
@@ -16469,6 +17575,21 @@
           "declaration": {
             "name": "Wizard",
             "module": "dist/Wizard.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/WizardPopoverTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "WizardPopoverTemplate",
+            "module": "dist/WizardPopoverTemplate.js"
           }
         }
       ]
@@ -16541,7 +17662,7 @@
               "description": "Defines the `subtitleText` of the step.\n\n**Note:** the text is displayed in the `ui5-wizard` navigation header.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -16552,7 +17673,7 @@
               "description": "Defines the `titleText` of the step.\n\n**Note:** The text is displayed in the `ui5-wizard` navigation header.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             }
           ],
           "attributes": [
@@ -16618,7 +17739,7 @@
           },
           "tagName": "ui5-wizard-step",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.10",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "public",
           "_ui5abstract": true
         }
@@ -16676,6 +17797,36 @@
           "declaration": {
             "name": "WizardTab",
             "module": "dist/WizardTab.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/WizardTabTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "WizardTabTemplate",
+            "module": "dist/WizardTabTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/WizardTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "WizardTemplate",
+            "module": "dist/WizardTemplate.js"
           }
         }
       ]
@@ -19150,7 +20301,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16",
+              "_ui5since": "1.0.0",
               "description": "Filter type",
               "default": "Filter",
               "name": "Filter",
@@ -19170,7 +20321,7 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.16",
+              "_ui5since": "1.0.0",
               "description": "Default type",
               "default": "Sort",
               "name": "Sort",

@@ -10,6 +10,8 @@ import type { ReactNode } from 'react';
 interface PanelAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
@@ -53,6 +55,8 @@ interface PanelAttributes {
 
   /**
    * Indicates whether the transition between the expanded and the collapsed state of the component is animated. By default the animation is enabled.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   noAnimation?: boolean;
@@ -62,6 +66,8 @@ interface PanelAttributes {
    * If stickyHeader is set to true, then whenever you scroll the content or
    * the application, the header of the panel will be always visible and
    * a solid color will be used for its design.
+   *
+   * **Note:** Available since [v1.16.0](https://github.com/UI5/webcomponents/releases/tag/v1.16.0) of **@ui5/webcomponents**.
    * @default false
    */
   stickyHeader?: boolean;

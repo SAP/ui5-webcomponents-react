@@ -32,6 +32,8 @@ interface RadioButtonAttributes {
    *
    * **Note:** Only enabled radio buttons can be checked.
    * Read-only radio buttons are not selectable, and therefore are always unchecked.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   checked?: boolean;
@@ -109,6 +111,8 @@ interface RadioButtonPropTypes
   extends RadioButtonAttributes, Omit<CommonProps, keyof RadioButtonAttributes | 'onChange'> {
   /**
    * Fired when the component checked state changes.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |

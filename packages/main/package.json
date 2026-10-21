@@ -431,9 +431,9 @@
       "types": "./dist/webComponents/NotificationListItem/index.d.ts",
       "default": "./dist/webComponents/NotificationListItem/index.js"
     },
-    "./NumberInput": {
-      "types": "./dist/webComponents/NumberInput/index.d.ts",
-      "default": "./dist/webComponents/NumberInput/index.js"
+    "./NumericInput": {
+      "types": "./dist/webComponents/NumericInput/index.d.ts",
+      "default": "./dist/webComponents/NumericInput/index.js"
     },
     "./Option": {
       "types": "./dist/webComponents/Option/index.d.ts",
@@ -554,6 +554,10 @@
     "./SideNavigationItem": {
       "types": "./dist/webComponents/SideNavigationItem/index.d.ts",
       "default": "./dist/webComponents/SideNavigationItem/index.js"
+    },
+    "./SideNavigationSearchField": {
+      "types": "./dist/webComponents/SideNavigationSearchField/index.d.ts",
+      "default": "./dist/webComponents/SideNavigationSearchField/index.js"
     },
     "./SideNavigationSubItem": {
       "types": "./dist/webComponents/SideNavigationSubItem/index.d.ts",
@@ -863,10 +867,10 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@ui5/webcomponents": "~2.27.0",
-    "@ui5/webcomponents-base": "~2.27.0",
-    "@ui5/webcomponents-fiori": "~2.27.0",
-    "@ui5/webcomponents-icons": "~2.27.0",
+    "@ui5/webcomponents": "~2.28.1",
+    "@ui5/webcomponents-base": "~2.28.1",
+    "@ui5/webcomponents-fiori": "~2.28.1",
+    "@ui5/webcomponents-icons": "~2.28.1",
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19"
   },

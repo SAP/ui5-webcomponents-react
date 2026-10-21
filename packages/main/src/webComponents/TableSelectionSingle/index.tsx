@@ -10,7 +10,7 @@ interface TableSelectionSingleAttributes {
   /**
    * Defines the selection behavior.
    *
-   * **Note:** Available since [v2.11](https://github.com/UI5/webcomponents/releases/tag/v2.11) of **@ui5/webcomponents**.
+   * **Note:** Available since [v2.11.0](https://github.com/UI5/webcomponents/releases/tag/v2.11.0) of **@ui5/webcomponents**.
    * @default "RowSelector"
    */
   behavior?: TableSelectionBehavior | keyof typeof TableSelectionBehavior;

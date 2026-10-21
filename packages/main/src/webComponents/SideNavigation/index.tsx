@@ -31,9 +31,30 @@ interface SideNavigationAttributes {
    * @default false
    */
   collapsed?: boolean;
+
+  /**
+   * Specifies a term to be highlighted in the navigation items' text.
+   * When set, matching portions of item and group texts are visually emphasized during rendering.
+   *
+   * **Note:** Available since [v2.28.0](https://github.com/UI5/webcomponents/releases/tag/v2.28.0) of **@ui5/webcomponents-fiori**.
+   * @default undefined
+   */
+  highlightedText?: string | undefined;
 }
 
-interface SideNavigationDomRef extends Required<SideNavigationAttributes>, Ui5DomRef {}
+interface SideNavigationDomRef extends Required<SideNavigationAttributes>, Ui5DomRef {
+  /**
+   * Announces the number of search matches found in the side navigation to assistive technologies.
+   *
+   * This method uses an invisible live region message so screen readers can inform users
+   * about the current number of search matches.
+   *
+   * **Note:** Available since [v2.28.0](https://github.com/UI5/webcomponents/releases/tag/v2.28.0) of **@ui5/webcomponents-fiori**.
+   * @param {number} count - The number of matching navigation items.
+   * @returns {void}
+   */
+  announceSearchMatchCount: (count: number) => void;
+}
 
 interface SideNavigationPropTypes
   extends
@@ -42,6 +63,7 @@ interface SideNavigationPropTypes
       CommonProps,
       | keyof SideNavigationAttributes
       | 'children'
+      | 'filterSection'
       | 'fixedItems'
       | 'header'
       | 'onItemClick'
@@ -54,6 +76,23 @@ interface SideNavigationPropTypes
    * __Supported Node Type/s:__ `Array<SideNavigationItemBase>`
    */
   children?: ReactNode | ReactNode[];
+
+  /**
+   * Defines the filter section of the `SideNavigation`.
+   *
+   * **Note:** The filter section is displayed when the component is expanded - the property `collapsed` is false;
+   *
+   * __Note:__ The content of the prop will be rendered into a [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) by assigning the respective [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute (`slot="filterSection"`).
+   * Since you can't change the DOM order of slots when declaring them within a prop, it might prove beneficial to manually mount them as part of the component's children, especially when facing problems with the reading order of screen readers.
+   *
+   * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
+   * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v2.28.0](https://github.com/UI5/webcomponents/releases/tag/v2.28.0) of **@ui5/webcomponents-fiori**.
+   *
+   * __Supported Node Type/s:__ `Array<HTMLElement>`
+   */
+  filterSection?: UI5WCSlotsNode;
 
   /**
    * Defines the fixed items at the bottom of the component.
@@ -80,6 +119,8 @@ interface SideNavigationPropTypes
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    *
    * __Supported Node Type/s:__ `Array<HTMLElement>`
    */
@@ -164,12 +205,14 @@ interface SideNavigationPropTypes
  * `import "@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js";` (for `SideNavigationSubItem`)
  *
  * __Note:__ This is a UI5 Web Component! [SideNavigation UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/fiori/SideNavigation) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents-fiori__.
  */
 const SideNavigation = withWebComponent<SideNavigationPropTypes, SideNavigationDomRef>(
   'ui5-side-navigation',
-  ['accessibleName'],
+  ['accessibleName', 'highlightedText'],
   ['collapsed'],
-  ['fixedItems', 'header'],
+  ['filterSection', 'fixedItems', 'header'],
   ['item-click', 'item-toggle', 'selection-change'],
 );
 

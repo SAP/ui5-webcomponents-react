@@ -60,18 +60,24 @@ interface ListAttributes {
 
   /**
    * Defines the accessible name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Defines the IDs of the elements that label the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
 
   /**
    * Defines the accessible role of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default "List"
    */
   accessibleRole?: ListAccessibleRole | keyof typeof ListAccessibleRole;
@@ -88,6 +94,8 @@ interface ListAttributes {
    *
    * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer,
    * on IE the component will fallback to `growing="Button"`.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default "None"
    */
   growing?: ListGrowingMode | keyof typeof ListGrowingMode;
@@ -99,7 +107,7 @@ interface ListAttributes {
    *
    * **Note:** This property takes effect if the `growing` property is set to the `Button`.
    *
-   * **Note:** Available since [v1.24](https://github.com/UI5/webcomponents/releases/tag/v1.24) of **@ui5/webcomponents**.
+   * **Note:** Available since [v1.24.0](https://github.com/UI5/webcomponents/releases/tag/v1.24.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   growingButtonText?: string | undefined;
@@ -120,6 +128,8 @@ interface ListAttributes {
 
   /**
    * Defines if the component would display a loading indicator over the list.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default false
    */
   loading?: boolean;
@@ -231,6 +241,8 @@ interface ListPropTypes
    * **Note:** This event is only applicable to list items that can be closed (such as notification list items),
    * not to be confused with `item-delete`.
    *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
+   *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
    * | ❌|✅|
@@ -254,6 +266,8 @@ interface ListPropTypes
    *
    * **Note:** This event is only applicable to list items that can be toggled (such as notification group list items).
    *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
+   *
    * | cancelable | bubbles |
    * | :--------: | :-----: |
    * | ❌|✅|
@@ -264,6 +278,8 @@ interface ListPropTypes
    * Fired when the user scrolls to the bottom of the list.
    *
    * **Note:** The event is fired when the `growing='Scroll'` property is enabled.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    *
    * | cancelable | bubbles |
    * | :--------: | :-----: |

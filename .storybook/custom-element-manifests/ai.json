@@ -195,7 +195,8 @@
           "customElement": true,
           "_ui5experimental": "The **@ui5/webcomponents-ai** package (including Button and ButtonState) is under active development and considered experimental. Component APIs are subject to change.\nFurthermore, the package supports **Horizon** themes only.",
           "_ui5since": "2.0.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5subcomponents": ["ButtonState"]
         }
       ],
       "exports": [
@@ -223,7 +224,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\n`ui5-ai-button-state` is the item to use for defining states of `ui5-ai-button` components.\n\n### Usage\n\n`ui5-ai-button-state` is an abstract element, representing a state of `ui5-ai-button`. It is meant to be used in the `default` slot\nof `ui5-ai-button` and should not be used as standalone component.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/AiButtonState.js\";`",
+          "description": "### Overview\n\n`ui5-ai-button-state` is the item to use for defining states of `ui5-ai-button` components.\n\n### Usage\n\n`ui5-ai-button-state` is an abstract element, representing a state of `ui5-ai-button`. It is meant to be used in the `default` slot\nof `ui5-ai-button` and should not be used as standalone component.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-ai/dist/ButtonState.js\";`",
           "name": "ButtonState",
           "members": [
             {
@@ -359,6 +360,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/ButtonTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ButtonTemplate",
+            "module": "dist/ButtonTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/Input.js",
       "declarations": [
         {
@@ -408,7 +424,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.\n\n**Note:** If the component has `suggestionItems`,\nthe `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.",
-              "_ui5since": "1.0.0-rc.6",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -477,7 +493,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -488,7 +504,7 @@
               "description": "Receives id(or many ids) of the elements that label the input.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -527,7 +543,7 @@
               "description": "Sets the maximum number of characters available in the input field.\n\n**Note:** This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.5"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -590,7 +606,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.3"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -1073,11 +1089,26 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/InputTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "InputTemplate",
+            "module": "dist/InputTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/PromptInput.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-ai-prompt-input` component allows the user to write custom instructions in natural language, so that AI is guided to generate content tailored to user needs.\n\n**Note:** The web component is in an experimental state\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-ai/dist/PromptInput.js\"`",
+          "description": "### Overview\n\nThe `ui5-ai-prompt-input` component allows the user to write custom instructions in natural language, so that AI is guided to generate content tailored to user needs.\n\n**Note:** The web component is in an experimental state\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-ai/dist/PromptInput.js\";`",
           "name": "PromptInput",
           "slots": [
             {
@@ -1386,6 +1417,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/PromptInputTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "PromptInputTemplate",
+            "module": "dist/PromptInputTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/TextArea.js",
       "declarations": [
         {
@@ -1404,7 +1450,7 @@
             {
               "name": "valueStateMessage",
               "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n \n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed if the component has\n`valueState` of type `Information`, `Critical` or `Negative`.",
-              "_ui5since": "1.0.0-rc.7",
+              "_ui5since": "1.0.0",
               "_ui5type": {
                 "text": "Array<HTMLElement>"
               },
@@ -1483,7 +1529,7 @@
               "description": "Defines the accessible ARIA name of the component.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -1494,7 +1540,25 @@
               "description": "Receives id(or many ids) of the elements that label the textarea.",
               "default": "undefined",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.15"
+              "_ui5since": "1.0.0"
+            },
+            {
+              "kind": "field",
+              "name": "counterMode",
+              "type": {
+                "text": "TextAreaCounterMode",
+                "references": [
+                  {
+                    "name": "TextAreaCounterMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/TextAreaCounterMode.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Determines when the character counter of the component is displayed.\n\nAvailable options are:\n\n- `None` - The counter is never shown and `maxlength` acts as a hard cap.\n- `Always` - The counter is always visible below the component.\n- `Auto` - The counter is shown only when the component is focused, when the character limit\nis exceeded, or when `valueState` is `Critical` or `Negative`. Space is always reserved to\nprevent layout shifts.\n\n**Note:** When set to a value other than `None`, this property takes precedence over the\ndeprecated `showExceededText` property.",
+              "privacy": "public",
+              "_ui5since": "2.28.0"
             },
             {
               "kind": "field",
@@ -1575,7 +1639,7 @@
               "default": "false",
               "description": "Defines whether the component is required.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.3"
+              "_ui5since": "1.0.0"
             },
             {
               "kind": "field",
@@ -1595,7 +1659,8 @@
               },
               "default": "false",
               "description": "Determines whether the characters exceeding the maximum allowed character count are visible\nin the component.\n\nIf set to `false`, the user is not allowed to enter more characters than what is set in the\n`maxlength` property.\nIf set to `true` the characters exceeding the `maxlength` value are selected on\npaste and the counter below the component displays their number.",
-              "privacy": "public"
+              "privacy": "public",
+              "deprecated": "Use `counterMode=\"Always\"` instead."
             },
             {
               "kind": "field",
@@ -1625,7 +1690,7 @@
               "default": "\"None\"",
               "description": "Defines the value state of the component.\n\n**Note:** If `maxlength` property is set,\nthe component turns into \"Critical\" state once the characters exceeds the limit.\nIn this case, only the \"Negative\" state is considered and can be applied.",
               "privacy": "public",
-              "_ui5since": "1.0.0-rc.7"
+              "_ui5since": "1.0.0"
             }
           ],
           "events": [
@@ -1696,7 +1761,7 @@
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true,
-              "_ui5since": "1.0.0-rc.5",
+              "_ui5since": "1.0.0",
               "_ui5parameters": [
                 {
                   "type": {
@@ -1807,6 +1872,15 @@
               }
             },
             {
+              "description": "Determines when the character counter of the component is displayed.\n\nAvailable options are:\n\n- `None` - The counter is never shown and `maxlength` acts as a hard cap.\n- `Always` - The counter is always visible below the component.\n- `Auto` - The counter is shown only when the component is focused, when the character limit\nis exceeded, or when `valueState` is `Critical` or `Negative`. Space is always reserved to\nprevent layout shifts.\n\n**Note:** When set to a value other than `None`, this property takes precedence over the\ndeprecated `showExceededText` property.",
+              "name": "counter-mode",
+              "default": "\"None\"",
+              "fieldName": "counterMode",
+              "type": {
+                "text": "\"Auto\" | \"None\" | \"Always\""
+              }
+            },
+            {
               "description": "Indicates whether the user can interact with the component or not.\n\n**Note:** A disabled component is completely noninteractive.",
               "name": "disabled",
               "default": "false",
@@ -1894,7 +1968,8 @@
               "fieldName": "showExceededText",
               "type": {
                 "text": "boolean"
-              }
+              },
+              "deprecated": "Use `counterMode=\"Always\"` instead."
             },
             {
               "description": "Defines the value of the component.",
@@ -1948,6 +2023,21 @@
           "declaration": {
             "name": "TextArea",
             "module": "dist/TextArea.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/TextAreaTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TextAreaTemplate",
+            "module": "dist/TextAreaTemplate.js"
           }
         }
       ]
@@ -2055,7 +2145,7 @@
           },
           "tagName": "ui5-ai-toolbar-label",
           "customElement": true,
-          "_ui5since": "1.0.0-rc.1",
+          "_ui5since": "1.0.0",
           "_ui5privacy": "private",
           "slots": [
             {
@@ -2099,6 +2189,21 @@
           "declaration": {
             "name": "ToolbarLabel",
             "module": "dist/ToolbarLabel.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/ToolbarLabelTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ToolbarLabelTemplate",
+            "module": "dist/ToolbarLabelTemplate.js"
           }
         }
       ]
@@ -2288,11 +2393,26 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/VersioningTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "VersioningTemplate",
+            "module": "dist/VersioningTemplate.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/WritingAssistant.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-ai-textarea-toolbar` component provides a specialized toolbar for AI TextArea functionality.\nIt manages different states of the AI assistant and provides version navigation capabilities.\n\n### Structure\nThe `ui5-ai-textarea-toolbar` consists of the following elements:\n- AI Generate Button: Triggers AI text generation or stops ongoing generation\n- Version Navigation: Allows navigation between multiple AI-generated results\n- Action Label: Displays the current AI action being performed\n\n### ES6 Module Import\n\n`import \"@sap-webcomponents/ai/dist/WritingAssistant.js\";`",
+          "description": "### Overview\n\nThe `ui5-ai-writing-assistant` component provides a specialized toolbar for AI TextArea functionality.\nIt manages different states of the AI assistant and provides version navigation capabilities.\n\n### Structure\nThe `ui5-ai-writing-assistant` consists of the following elements:\n- AI Generate Button: Triggers AI text generation or stops ongoing generation\n- Version Navigation: Allows navigation between multiple AI-generated results\n- Action Label: Displays the current AI action being performed\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-ai/dist/WritingAssistant.js\";`",
           "name": "WritingAssistant",
           "members": [
             {
@@ -2428,6 +2548,21 @@
           "declaration": {
             "name": "WritingAssistant",
             "module": "dist/WritingAssistant.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/WritingAssistantTemplate.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "WritingAssistantTemplate",
+            "module": "dist/WritingAssistantTemplate.js"
           }
         }
       ]

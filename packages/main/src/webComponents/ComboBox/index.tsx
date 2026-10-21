@@ -1,7 +1,10 @@
 'use client';
 
 import '@ui5/webcomponents/dist/ComboBox.js';
-import type { ComboBoxSelectionChangeEventDetail } from '@ui5/webcomponents/dist/ComboBox.js';
+import type {
+  ComboBoxLoadItemsEventDetail,
+  ComboBoxSelectionChangeEventDetail,
+} from '@ui5/webcomponents/dist/ComboBox.js';
 import type ComboBoxFilter from '@ui5/webcomponents/dist/types/ComboBoxFilter.js';
 import type ValueState from '@ui5/webcomponents-base/dist/types/ValueState.js';
 import { withWebComponent } from '@ui5/webcomponents-react-base';
@@ -11,12 +14,16 @@ import type { ReactNode } from 'react';
 interface ComboBoxAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the component
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
@@ -143,6 +150,7 @@ interface ComboBoxPropTypes
       | 'onChange'
       | 'onClose'
       | 'onInput'
+      | 'onLoadItems'
       | 'onOpen'
       | 'onSelectionChange'
     > {
@@ -162,6 +170,8 @@ interface ComboBoxPropTypes
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
    *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
+   *
    * __Supported Node Type/s:__ `Array<IIcon>`
    */
   icon?: UI5WCSlotsNode;
@@ -180,6 +190,8 @@ interface ComboBoxPropTypes
    *
    * __Note:__ When passing a custom React component to this prop, you have to make sure your component reads the `slot` prop and appends it to the most outer element of your component.
    * Learn more about it [here](https://ui5.github.io/webcomponents-react/v2/?path=/docs/knowledge-base-handling-slots--docs).
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    *
    * __Supported Node Type/s:__ `Array<HTMLElement>`
    */
@@ -214,6 +226,18 @@ interface ComboBoxPropTypes
    * | ❌|✅|
    */
   onInput?: (event: Ui5CustomEvent<ComboBoxDomRef>) => void;
+
+  /**
+   * Fired when the application should provide items for the component to render.
+   * The event is fired either when text is input or when the user presses arrow down on a combo-box with no items.
+   *
+   * **Note:** Available since [v2.28.0](https://github.com/UI5/webcomponents/releases/tag/v2.28.0) of **@ui5/webcomponents**.
+   *
+   * | cancelable | bubbles |
+   * | :--------: | :-----: |
+   * | ❌|✅|
+   */
+  onLoadItems?: (event: Ui5CustomEvent<ComboBoxDomRef, ComboBoxLoadItemsEventDetail>) => void;
 
   /**
    * Fired when the dropdown is opened.
@@ -294,13 +318,15 @@ interface ComboBoxPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [ComboBox UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/ComboBox) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const ComboBox = withWebComponent<ComboBoxPropTypes, ComboBoxDomRef>(
   'ui5-combobox',
   ['accessibleName', 'accessibleNameRef', 'filter', 'name', 'placeholder', 'selectedValue', 'value', 'valueState'],
   ['disabled', 'loading', 'noTypeahead', 'open', 'readonly', 'required', 'showClearIcon'],
   ['icon', 'valueStateMessage'],
-  ['change', 'close', 'input', 'open', 'selection-change'],
+  ['change', 'close', 'input', 'load-items', 'open', 'selection-change'],
 );
 
 ComboBox.displayName = 'ComboBox';

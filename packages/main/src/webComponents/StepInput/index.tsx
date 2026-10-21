@@ -9,12 +9,16 @@ import type { CommonProps, Ui5CustomEvent, Ui5DomRef, UI5WCSlotsNode } from '@ui
 interface StepInputAttributes {
   /**
    * Defines the accessible ARIA name of the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleName?: string | undefined;
 
   /**
    * Receives id(or many ids) of the elements that label the component.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents**.
    * @default undefined
    */
   accessibleNameRef?: string | undefined;
@@ -175,6 +179,8 @@ interface StepInputPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [StepInput UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/StepInput) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents__.
  */
 const StepInput = withWebComponent<StepInputPropTypes, StepInputDomRef>(
   'ui5-step-input',

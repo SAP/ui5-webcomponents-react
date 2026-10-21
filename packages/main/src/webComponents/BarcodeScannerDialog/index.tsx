@@ -110,6 +110,8 @@ interface BarcodeScannerDialogPropTypes
  * For a list of supported barcode formats, see the [zxing-js/library](https://github.com/zxing-js/library) documentation.
  *
  * __Note:__ This is a UI5 Web Component! [BarcodeScannerDialog UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/fiori/BarcodeScannerDialog) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents-fiori__.
  */
 const BarcodeScannerDialog = withWebComponent<BarcodeScannerDialogPropTypes, BarcodeScannerDialogDomRef>(
   'ui5-barcode-scanner-dialog',

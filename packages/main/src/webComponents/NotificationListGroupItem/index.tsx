@@ -25,6 +25,8 @@ interface NotificationListGroupItemAttributes {
 
   /**
    * Defines if a busy indicator would be displayed over the item.
+   *
+   * **Note:** Available since [v1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of **@ui5/webcomponents-fiori**.
    * @default false
    */
   loading?: boolean;
@@ -124,6 +126,8 @@ interface NotificationListGroupItemPropTypes
  *
  *
  * __Note:__ This is a UI5 Web Component! [NotificationListGroupItem UI5 Web Component Documentation](https://ui5.github.io/webcomponents/components/fiori/NotificationListGroupItem) | [Repository](https://github.com/UI5/webcomponents)
+ *
+ * @since [1.0.0](https://github.com/UI5/webcomponents/releases/tag/v1.0.0) of __@ui5/webcomponents-fiori__.
  */
 const NotificationListGroupItem = withWebComponent<NotificationListGroupItemPropTypes, NotificationListGroupItemDomRef>(
   'ui5-li-notification-group',
