@@ -1,1 +1,0 @@
-import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{n as t,r as n}from"./jsx-runtime-NHZLEOw0.js";import{n as r,t as i}from"./ExpandableText-B_bX3eEy.js";function a(e){let{className:t,text:r,maxCharacters:a,part:o}=e;return n(i,{part:o,class:t,text:r,maxCharacters:a})}function o(){return(o=e((()=>{t(),r()})))()}o();export{a as default};
