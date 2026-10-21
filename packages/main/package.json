@@ -55,6 +55,10 @@
       "types": "./dist/components/FilterBar/index.d.ts",
       "default": "./dist/components/FilterBar/index.js"
     },
+    "./FilterBarSearchIcon": {
+      "types": "./dist/components/FilterBarSearchIcon/index.d.ts",
+      "default": "./dist/components/FilterBarSearchIcon/index.js"
+    },
     "./FilterGroupItem": {
       "types": "./dist/components/FilterGroupItem/index.d.ts",
       "default": "./dist/components/FilterGroupItem/index.js"

@@ -25,7 +25,7 @@ export const REACT_COMPONENT_CATEGORIES = {
     'ThemeProvider',
     'FilterBar',
   ],
-  Inputs: ['FilterGroupItem', 'VariantManagement', 'VariantItem', 'MessageViewButton'],
+  Inputs: ['FilterGroupItem', 'FilterBarSearchIcon', 'VariantManagement', 'VariantItem', 'MessageViewButton'],
   'Modals & Popovers': ['MessageBox', 'ActionSheet', 'SelectDialog'],
   'User Feedback': ['MessageView', 'MessageItem', 'Modals'],
 };

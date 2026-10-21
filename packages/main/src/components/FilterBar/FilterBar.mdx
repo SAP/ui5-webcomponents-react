@@ -1,12 +1,13 @@
 import { ArgTypesWithNote, ControlsWithNote, DocsHeader, Footer } from '@sb/components';
 import SubcomponentsSection from '@sb/docs/SubcomponentsSection.md?raw';
 import { Canvas, Description, Markdown, Meta } from '@storybook/addon-docs/blocks';
+import { FilterBarSearchIcon } from '../FilterBarSearchIcon';
 import { FilterGroupItem } from '../FilterGroupItem';
 import * as ComponentStories from './FilterBar.stories';
 
 <Meta of={ComponentStories} />
 
-<DocsHeader of={ComponentStories} subComponents={['FilterGroupItem']} />
+<DocsHeader of={ComponentStories} subComponents={['FilterGroupItem', 'FilterBarSearchIcon']} />
 
 <br />
 
@@ -407,11 +408,24 @@ const handleInput = (event) => {
 
 <Canvas of={ComponentStories.IdentifyInputEventOrigin} source />
 
+## Trigger the search via the search icon
+
+By default, the search icon of the `search` input is decorative. To let users trigger the search by activating the search icon (in addition to pressing <kbd>Enter</kbd> in the input), pass the `FilterBarSearchIcon` subcomponent to the `icon` prop of the search input and wire its `onClick` handler.
+
+This is recommended when the "Go" button is displayed (`showGoOnFB`). The `FilterBarSearchIcon` is pre-controlled — you decide what "trigger search" means in its `onClick` handler.
+
+<Canvas of={ComponentStories.WithInteractiveSearchIcon} />
+
 <Markdown>{SubcomponentsSection}</Markdown>
 
 ## FilterGroupItem
 
 <Description of={FilterGroupItem} />
 <ArgTypesWithNote metaOf={ComponentStories} of={FilterGroupItem} exclude={['data-index']} />
+
+## FilterBarSearchIcon
+
+<Description of={FilterBarSearchIcon} />
+<ArgTypesWithNote metaOf={ComponentStories} of={FilterBarSearchIcon} />
 
 <Footer />

@@ -393,7 +393,7 @@ const FilterBar = forwardRef<HTMLDivElement, FilterBarPropTypes>((props, ref) =>
                   noTypeahead: search.props.noTypeahead ?? true,
                   showClearIcon: true,
                   type: InputType.Search,
-                  icon: <Icon name={searchIcon} />,
+                  icon: search.props.icon ?? <Icon name={searchIcon} />,
                 })}
               </div>
             </FilterGroupItem>
