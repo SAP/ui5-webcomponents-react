@@ -4,6 +4,7 @@ description: Guide a complete UI5 Web Components version upgrade in the ui5-webc
 disable-model-invocation: true
 argument-hint: target version (e.g. 2.22.0)
 allowed-tools:
+  - Bash(node skills/maintainer/ui5wc-upgrade/scripts/verify-peer-deps.mjs*)
   - Bash(yarn create-webcomponents-wrapper*)
   - Bash(yarn create-webcomponents-wrapper-ai*)
   - Bash(yarn create-webcomponents-wrapper-compat*)
@@ -28,10 +29,18 @@ Ensure the working tree is clean before starting (`git status` should show no un
 ## Initialization
 
 1. Parse the **target version** from the argument (e.g. `2.25.0` or `2.25.1`).
-2. Derive the **tilde range** `~TARGET_VERSION` for peerDependencies (e.g. `~2.25.1`).
+2. Derive two peerDependency ranges:
+   - **Upstream range:** `~TARGET_VERSION` (e.g. `~2.25.1`) for `@ui5/webcomponents*` packages.
+   - **React wrapper range:** `~TARGET_MAJOR.TARGET_MINOR.0` (e.g. `~2.25.0`) for the
+     `@ui5/webcomponents-react` peer in the compat package. The wrapper release version is
+     aligned to the UI5 Web Components minor, but it does not necessarily share the upstream
+     patch version.
 3. Read the **current version** from root `package.json` → `dependencies["@ui5/webcomponents"]`.
-4. If current matches target, ask if the user wants to re-run wrapper generation only (skip to Step 2).
-5. Check if Renovate already updated root deps — if `dependencies["@ui5/webcomponents"]` already matches target, note that Step 1a can be skipped.
+4. Check if Renovate already updated root deps — if `dependencies["@ui5/webcomponents"]` already matches target,
+   note that Step 1a can be skipped. **Do not skip Step 1b:** Renovate updating the root does not prove that
+   package peerDependencies are correct.
+5. If the whole upgrade may already have been applied, still reconcile and verify Step 1b before deciding
+   whether wrapper generation needs to be re-run.
 
 ---
 
@@ -51,17 +60,19 @@ Update to the exact target version:
 
 ### 1b. Package peerDependencies
 
-Update tilde ranges to `~TARGET_VERSION` in all sub-packages. See `references/package-json-peer-deps.md` for the exact map. Summary:
+Update the upstream tilde ranges to `~TARGET_VERSION` and the compat package's internal React
+wrapper peer to `~TARGET_MAJOR.TARGET_MINOR.0`. See `references/package-json-peer-deps.md` for
+the exact map. Summary:
 
-| File                                     | Keys to update                                          |
-| ---------------------------------------- | ------------------------------------------------------- |
-| `packages/main/package.json`             | `@ui5/webcomponents`, `-base`, `-fiori`, `-icons`       |
-| `packages/base/package.json`             | `@ui5/webcomponents-base`                               |
-| `packages/ai/package.json`               | `@ui5/webcomponents-ai`                                 |
-| `packages/compat/package.json`           | `@ui5/webcomponents-compat`, `@ui5/webcomponents-react` |
-| `packages/cypress-commands/package.json` | `@ui5/webcomponents`, `-base`                           |
+| File                                     | Keys to update                                                                                 |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `packages/main/package.json`             | `@ui5/webcomponents`, `-base`, `-fiori`, `-icons`                                              |
+| `packages/base/package.json`             | `@ui5/webcomponents-base`                                                                      |
+| `packages/ai/package.json`               | `@ui5/webcomponents-ai`                                                                        |
+| `packages/compat/package.json`           | `@ui5/webcomponents-compat` → upstream range; `@ui5/webcomponents-react` → React wrapper range |
+| `packages/cypress-commands/package.json` | `@ui5/webcomponents`, `-base`                                                                  |
 
-> **Note:** `packages/charts/package.json` uses caret ranges (`^`) and does **not** need updating for minor version bumps.
+> **Note:** `packages/charts/package.json` keeps its established `^2.21.0` compatibility floor and does **not** need updating for minor version bumps. The validator confirms that it was not accidentally narrowed.
 
 ### 1c. Install
 
@@ -71,11 +82,28 @@ yarn install
 
 ### Verify
 
+Run the exact-value validator (replace the example with the real target):
+
+```bash
+node skills/maintainer/ui5wc-upgrade/scripts/verify-peer-deps.mjs 2.25.1
+```
+
+It verifies every mapped key against the correct range. Checking only for the old range is not
+sufficient, because it cannot detect an incorrect upstream patch applied to the internal React peer.
+For target `2.25.1`, these values must coexist in compat:
+
+```json
+"@ui5/webcomponents-compat": "~2.25.1",
+"@ui5/webcomponents-react": "~2.25.0"
+```
+
+Also confirm that no old minor range remains:
+
 ```bash
 grep -r "~OLD_MINOR" packages/*/package.json
 ```
 
-Must return zero results (replace OLD_MINOR with the previous minor version tilde range).
+The validator and the old-range check must both pass before continuing.
 
 ---
 
