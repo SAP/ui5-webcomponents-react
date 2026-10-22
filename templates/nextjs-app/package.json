@@ -9,10 +9,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@ui5/webcomponents": "2.27.2",
-    "@ui5/webcomponents-base": "2.27.2",
-    "@ui5/webcomponents-fiori": "2.27.2",
-    "@ui5/webcomponents-react": "2.27.3",
+    "@ui5/webcomponents": "2.28.1",
+    "@ui5/webcomponents-base": "2.28.0",
+    "@ui5/webcomponents-fiori": "2.28.1",
+    "@ui5/webcomponents-react": "2.28.1",
     "@types/node": "24.19.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
