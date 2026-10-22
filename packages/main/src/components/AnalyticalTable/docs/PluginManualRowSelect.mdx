@@ -14,6 +14,8 @@ If this key is found on the original data row, and it is `true`, this row will b
 
 **Note:** This hook sets `autoResetSelectedRows` to `false` by default unless explicitly defined via `reactTableOptions`. [Learn more](?path=/docs/data-display-analyticaltable-faq--docs#how-to-stop-the-table-state-from-automatically-resetting-when-the-data-changes)
 
+**Disabling:** Pass `disabled: true` as the second argument (`useManualRowSelect('isSelected', { disabled: true })`) to turn the hook off while keeping it in `tableHooks`. See [Disabling a Plugin Hook](?path=/docs/data-display-analyticaltable-plugin-hooks--docs#disabling-a-plugin-hook).
+
 ## Example
 
 <Canvas sourceState="none" of={ComponentStories.PluginManualRowSelect} />

@@ -3,7 +3,13 @@
 import { useEffect, useRef } from 'react';
 import { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTableSelectionBehavior.js';
 import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode.js';
-import type { AnalyticalTableState, ReactTableHooks, RowType, TableInstance } from '../types/index.js';
+import type {
+  AnalyticalTablePluginHookOptions,
+  AnalyticalTableState,
+  ReactTableHooks,
+  RowType,
+  TableInstance,
+} from '../types/index.js';
 
 type onIndeterminateChange = (e: {
   indeterminateRowsById: Record<string | number, boolean>;
@@ -60,8 +66,14 @@ const getIndeterminate = (
  * - This hook has to traverse the whole data tree on each selection, which can lead to performance degradation with large datasets. Please use with caution!
  *
  * @param {event} onIndeterminateChange Fired when the indeterminate state of rows is changed.
+ * @param {object} [options] - Additional options.
+ * @param {boolean} [options.disabled=false] - If `true`, the hook does nothing. To toggle at runtime, re-create the hook at the same position in the (memoized) `tableHooks` array — never add or remove array entries.
  */
-export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndeterminateChange) => {
+export const useIndeterminateRowSelection = (
+  onIndeterminateChange?: onIndeterminateChange,
+  options?: AnalyticalTablePluginHookOptions,
+) => {
+  const { disabled = false } = options ?? {};
   const toggleRowProps = (
     rowProps: { checked?: boolean },
     { row, instance }: { row: RowType; instance: TableInstance },
@@ -138,7 +150,7 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
     const lastProcessedSelectedRowIdsRef = useRef(selectedRowIds);
 
     useEffect(() => {
-      if (lastProcessedSelectedRowIdsRef.current === selectedRowIds) {
+      if (disabled || lastProcessedSelectedRowIdsRef.current === selectedRowIds) {
         return;
       }
       lastProcessedSelectedRowIdsRef.current = selectedRowIds;
@@ -154,19 +166,25 @@ export const useIndeterminateRowSelection = (onIndeterminateChange?: onIndetermi
       } else if (typeof indeterminateRows === 'object' && Object.keys(indeterminateRows).length) {
         dispatch({ type: 'INDETERMINATE_ROW_IDS', payload: 'reset' });
       }
-    }, [data, selectedRowIds, isTreeTable, selectionMode, selectionBehavior, dispatch]);
+    }, [data, selectedRowIds, isTreeTable, selectionMode, selectionBehavior, dispatch, disabled]);
 
     useEffect(() => {
+      if (disabled) {
+        return;
+      }
       if (typeof onIndeterminateChange === 'function' && indeterminateRows) {
         onIndeterminateChange({ indeterminateRowsById: indeterminateRows, tableInstance: instance });
       }
-    }, [indeterminateRows]);
+    }, [indeterminateRows, disabled]);
   };
 
   const useIndeterminate = (hooks: ReactTableHooks) => {
+    hooks.useInstanceAfterData.push(useInstanceAfterData);
+    if (disabled) {
+      return;
+    }
     hooks.getToggleRowSelectedProps.push(toggleRowProps);
     hooks.stateReducers.push(stateReducer);
-    hooks.useInstanceAfterData.push(useInstanceAfterData);
   };
 
   useIndeterminate.pluginName = 'useIndeterminate';

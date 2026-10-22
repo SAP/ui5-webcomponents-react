@@ -17,6 +17,8 @@ It receives one parameter that defines the sorting priority by the column id.
 
 **Note:** Column IDs that are not found in the array use the default priority, so the first sorted column has a higher priority than the next sorted column.
 
+**Disabling:** Pass `disabled: true` as the second argument (`useOrderedMultiSort(orderedIds, { disabled: true })`) to turn the hook off while keeping it in `tableHooks`. See [Disabling a Plugin Hook](?path=/docs/data-display-analyticaltable-plugin-hooks--docs#disabling-a-plugin-hook).
+
 ## Example
 
 <Canvas sourceState="none" of={ComponentStories.PluginOrderedMultiSort} />

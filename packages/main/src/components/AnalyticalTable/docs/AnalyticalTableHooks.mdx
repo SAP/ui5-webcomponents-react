@@ -35,4 +35,25 @@ const tableHooks = [useAnnounceEmptyCells]; // this array should be memoized
 <AnalyticalTable {...otherProps} tableHooks={tableHooks} />
 ```
 
+## Disabling a Plugin Hook
+
+Every plugin hook accepts a `disabled` option (default `false`). When `disabled` is `true`, the hook keeps its slot in the `tableHooks` array but does nothing.
+
+React's [rules of hooks](https://react.dev/reference/rules/rules-of-hooks) forbid adding or removing `tableHooks` entries at runtime, so use `disabled` to switch a hook off instead. To toggle it while the table is mounted, re-create the hook **at the same position** in the (memoized) `tableHooks` array with the new `disabled` value — never add, remove, or reorder entries, and keep `disabled` in the array's dependencies.
+
+The two hooks that are usually passed by reference (`useAnnounceEmptyCells`, `useF2CellEdit`) also accept the option when called as a factory. The call form depends on the hook's other parameters:
+
+```jsx
+const tableHooks = useMemo(
+  () => [
+    useAnnounceEmptyCells({ disabled }), // factory form of a by-reference hook
+    useStickyColumns({ disabled }), // options object
+    useManualRowSelect('isSelected', { disabled }), // positional arg + options
+  ],
+  [disabled],
+);
+
+<AnalyticalTable {...otherProps} tableHooks={tableHooks} />;
+```
+
 <Footer/>

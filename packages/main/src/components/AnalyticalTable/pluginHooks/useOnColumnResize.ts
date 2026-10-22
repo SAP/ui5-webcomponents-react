@@ -4,9 +4,9 @@ import { debounce } from '@ui5/webcomponents-react-base/utils';
 import type { MouseEvent, TouchEvent } from 'react';
 import { useEffect, useRef } from 'react';
 import { getProjectedWidth } from '../hooks/useColumnResizing.js';
-import type { ColumnType, ReactTableHooks, TableInstance } from '../types/index.js';
+import type { AnalyticalTablePluginHookOptions, ColumnType, ReactTableHooks, TableInstance } from '../types/index.js';
 
-interface useOnColumnResizeOptions {
+interface useOnColumnResizeOptions extends AnalyticalTablePluginHookOptions {
   /**
    * If `liveUpdate` is `true`, the resize function will fire while the resizer is being dragged according to the `options.wait` delay.
    */
@@ -28,8 +28,10 @@ type useOnColumnResizeFunc = (e: { columnWidth: number; header: ColumnType }) =>
  * @param {Object=} options Additional options.
  * @param {number=} options.wait If `liveUpdate` is `true`, the resize function will fire every time the width has changed depending on the `options.wait` delay.
  * @param {boolean=} options.liveUpdate The number of milliseconds for which the calls are to be delayed. Defaults to `100`.
+ * @param {boolean=} options.disabled If `true`, the hook does nothing. To toggle at runtime, re-create the hook at the same position in the (memoized) `tableHooks` array — never add or remove array entries. Defaults to `false`.
  */
 export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: useOnColumnResizeOptions) => {
+  const disabled = options?.disabled ?? false;
   const debouncedEvent = debounce(callback, options?.wait ?? 100);
 
   // for liveUpdate mousemove/touchmove listeners have to be added via getResizerProps to fire the callback. Number of calls is defined by debounce value `wait`.
@@ -97,13 +99,13 @@ export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: use
     const prevHeaderIsResizing = useRef<string | undefined>(undefined);
 
     useEffect(() => {
-      if (options?.liveUpdate) {
+      if (!disabled && options?.liveUpdate) {
         return () => debouncedEvent.cancel();
       }
     }, []);
 
     useEffect(() => {
-      if (!options?.liveUpdate) {
+      if (!disabled && !options?.liveUpdate) {
         const currentHeader = columns.find((item: ColumnType) => item.id === prevHeaderIsResizing.current);
         if (isResizingColumn) {
           prevHeaderIsResizing.current = isResizingColumn;
@@ -115,11 +117,16 @@ export const useOnColumnResize = (callback: useOnColumnResizeFunc, options?: use
           });
         }
       }
-    }, [columnResizing, columns, isResizingColumn, columnWidths]);
+      // `disabled` changes via plugin re-registration, so it belongs in deps despite the rule's warning.
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [columnResizing, columns, isResizingColumn, columnWidths, disabled]);
   };
 
   const useOnColumnResizeHooks = (hooks: ReactTableHooks) => {
     hooks.useFinalInstance.push(useInstance);
+    if (disabled) {
+      return;
+    }
     if (options?.liveUpdate) {
       hooks.getResizerProps.push(getLiveResizerProps);
     }

@@ -96,30 +96,35 @@ const visibleColumns = (currentVisibleColumns: ColumnType[], { instance }: { ins
   return [...stickyStart, ...nonSticky];
 };
 
-const useStickyMetadata = (instance: TableInstance, onAutoToggleSticky?: OnAutoToggleSticky) => {
+const useStickyMetadata = (instance: TableInstance, onAutoToggleSticky?: OnAutoToggleSticky, disabled = false) => {
   const { visibleColumns: visCols, state, dispatch, flatHeaders } = instance;
   // Native vertical-scrollbar width (0 on overlay systems); reserved in the fit check below.
   const scrollbarSize = instance.webComponentsReactProperties?.scrollbarWidth ?? 0;
 
   // Instance methods + per-column toggle (mirrors useColumnOrder / useColumnVisibility).
-  // eslint-disable-next-line react-hooks/immutability
-  instance.setStickyColumns = useCallback(
+  const setStickyColumns = useCallback(
     (stickyColumns: string[] | ((old: string[]) => string[])) =>
       dispatch({ type: actions.setStickyColumns, stickyColumns }),
     [dispatch],
   );
-  // eslint-disable-next-line react-hooks/immutability
-  instance.toggleStickyColumn = useCallback(
+  const toggleStickyColumn = useCallback(
     (columnId: string, value?: boolean) => dispatch({ type: actions.toggleStickyColumn, columnId, value }),
     [dispatch],
   );
-  flatHeaders?.forEach((column: ColumnType) => {
-    if (column.disableSticky) {
-      return;
-    }
-    column.toggleSticky = (value?: boolean) =>
-      dispatch({ type: actions.toggleStickyColumn, columnId: column.id, value });
-  });
+  if (!disabled) {
+    // `instance` is mutable
+    // eslint-disable-next-line react-hooks/immutability
+    instance.setStickyColumns = setStickyColumns;
+    // eslint-disable-next-line react-hooks/immutability
+    instance.toggleStickyColumn = toggleStickyColumn;
+    flatHeaders?.forEach((column: ColumnType) => {
+      if (column.disableSticky) {
+        return;
+      }
+      column.toggleSticky = (value?: boolean) =>
+        dispatch({ type: actions.toggleStickyColumn, columnId: column.id, value });
+    });
+  }
 
   // No early returns: keep all hooks below unconditional (rules-of-hooks).
   const stickySet = getStickySet(state);
@@ -131,7 +136,7 @@ const useStickyMetadata = (instance: TableInstance, onAutoToggleSticky?: OnAutoT
   let totalStickyStartWidth = 0;
   let autoDisabled = false;
 
-  if (hasUserSticky) {
+  if (!disabled && hasUserSticky) {
     for (let i = 0; i < visCols.length; i++) {
       const col = visCols[i];
       if (isStickyStart(col, stickySet)) {
@@ -165,13 +170,14 @@ const useStickyMetadata = (instance: TableInstance, onAutoToggleSticky?: OnAutoT
     [stickyStartIndicesKey],
   );
 
+  // Assign unconditionally so toggling off clears prior pins (indices are empty when disabled).
   Object.assign(instance, { stickyStartIndices: stableStickyStartIndices, totalStickyStartWidth });
 
   // Notify on width-driven enable/disable transitions (frozen-set config itself is untouched). The
   // transition guard means a stable-vs-new callback identity never causes a spurious re-fire.
   const prevDisabledRef = useRef(false);
   useEffect(() => {
-    if (!hasUserSticky || !measured) {
+    if (disabled || !hasUserSticky || !measured) {
       prevDisabledRef.current = false;
       return;
     }
@@ -179,7 +185,7 @@ const useStickyMetadata = (instance: TableInstance, onAutoToggleSticky?: OnAutoT
       prevDisabledRef.current = autoDisabled;
       onAutoToggleSticky?.({ enabled: !autoDisabled, stickyColumns: state.stickyColumns ?? [] });
     }
-  }, [autoDisabled, hasUserSticky, measured, state.stickyColumns, onAutoToggleSticky]);
+  }, [autoDisabled, hasUserSticky, measured, state.stickyColumns, onAutoToggleSticky, disabled]);
 };
 
 const NAVIGATION_COLUMN = '__ui5wcr__internal_navigation_column';
@@ -211,6 +217,13 @@ export interface UseStickyColumnsOptions {
   onStickyColumnsChange?: OnStickyColumnsChange;
   /** Fired when sticky rendering auto-disables due to limited width, and again when it re-enables. */
   onAutoToggleSticky?: OnAutoToggleSticky;
+  /**
+   * If `true`, the hook does nothing. To toggle at runtime, re-create the hook at the same position in
+   * the (memoized) `tableHooks` array — never add or remove array entries.
+   *
+   * @default false
+   */
+  disabled?: boolean;
 }
 
 // Contributes a Freeze/Unfreeze menu item to the column header popover (generic `columnHeaderModalItems` hook).
@@ -302,23 +315,33 @@ const setHeaderProps = (
  * @param {OnAutoToggleSticky=} options.onAutoToggleSticky Fired when sticky rendering auto-disables due to
  * limited width (`{ enabled: false }`) and again when it re-enables (`{ enabled: true }`). The frozen set
  * itself is unchanged; use this to reflect the state change in the UI (e.g. a toast).
+ * @param {boolean=} options.disabled If `true`, the hook does nothing. To toggle at runtime, re-create the
+ * hook at the same position in the (memoized) `tableHooks` array — never add or remove array entries.
+ * Defaults to `false`.
  *
  * @experimental The API and behavior may change without notice.
  */
 export const useStickyColumns = (options: UseStickyColumnsOptions = {}) => {
-  const { onStickyColumnsChange, onAutoToggleSticky } = options;
+  const { onStickyColumnsChange, onAutoToggleSticky, disabled = false } = options;
   const useStickyColumnsHooks = (hooks: ReactTableHooks) => {
-    hooks.stateReducers.push(reducer);
+    // react-table calls each `useInstance` entry as a hook in stable order every render; the arrow only
+    // threads the options through, so this is not a conditional hook call. It must always be registered
+    // (stable hook count) and no-ops internally when disabled.
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    hooks.useInstance.push((instance) => useStickyMetadata(instance, onAutoToggleSticky, disabled));
+    // Push unconditionally and keep `disabled` in the result: this feeds a `useMemo` deps array whose size
+    // must stay constant, and the memo must re-derive on toggle.
     hooks.visibleColumnsDeps.push((deps, { instance }) => [
       ...deps,
       instance.state.stickyColumns,
       instance.state.groupBy,
+      disabled,
     ]);
+    if (disabled) {
+      return;
+    }
+    hooks.stateReducers.push(reducer);
     hooks.visibleColumns.push(visibleColumns);
-    // react-table calls each `useInstance` entry as a hook in stable order every render; the arrow only
-    // threads the option through, so this is not a conditional hook call.
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    hooks.useInstance.push((instance) => useStickyMetadata(instance, onAutoToggleSticky));
     hooks.getHeaderProps.push(setHeaderProps);
     hooks.columnHeaderModalItems.push((items, meta) => getColumnHeaderModalItems(items, meta, onStickyColumnsChange));
   };

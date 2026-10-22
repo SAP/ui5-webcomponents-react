@@ -4,11 +4,17 @@
  * **Note:** Column IDs that are not found in the array use the default priority, so the first sorted column has a higher priority than the next sorted column.
  *
  * @param {string[]} orderedIds - Array of column IDs, defining the sorting priority.
+ * @param {object} [options] - Additional options.
+ * @param {boolean} [options.disabled=false] - If `true`, the hook does nothing. To toggle at runtime, re-create the hook at the same position in the (memoized) `tableHooks` array — never add or remove array entries.
  */
-import type { ReactTableHooks } from '../types/index.js';
+import type { AnalyticalTablePluginHookOptions, ReactTableHooks } from '../types/index.js';
 
-export const useOrderedMultiSort = (orderedIds: string[]) => {
+export const useOrderedMultiSort = (orderedIds: string[], options?: AnalyticalTablePluginHookOptions) => {
+  const { disabled = false } = options ?? {};
   const useOrderedMultiSortPlugin = (hooks: ReactTableHooks) => {
+    if (disabled) {
+      return;
+    }
     hooks.stateReducers.push((newState, action) => {
       if (action.type === 'toggleSortBy') {
         if (newState.sortBy.length <= 1) {

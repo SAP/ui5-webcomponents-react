@@ -26,6 +26,8 @@ The hook manages focus, keyboard navigation, and `tabindex` for cells with inter
 - Updates the cell's `aria-label` with the interactive element's name for accessibility.
 - Prevents standard navigation keys from interfering when editing a cell.
 
+**Disabling:** Call it as a factory with `disabled: true` (`useF2CellEdit({ disabled: true })`) to turn the hook off while keeping it in `tableHooks`. See [Disabling a Plugin Hook](?path=/docs/data-display-analyticaltable-plugin-hooks--docs#disabling-a-plugin-hook).
+
 ## Example
 
 <Canvas of={ComponentStories.F2CellEdit} sourceState="none" />

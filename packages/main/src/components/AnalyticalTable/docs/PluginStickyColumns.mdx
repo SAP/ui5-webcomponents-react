@@ -44,6 +44,8 @@ The hook accepts an options object with two optional callbacks:
 - `enabled`: `true` if sticky rendering is now active (columns fit), `false` if auto-disabled.
 - `stickyColumns`: the current user-frozen column ids (unchanged by the auto-toggle).
 
+**Disabling:** Pass `disabled: true` (`useStickyColumns({ disabled: true })`) to turn the hook off while keeping it in `tableHooks`. See [Disabling a Plugin Hook](?path=/docs/data-display-analyticaltable-plugin-hooks--docs#disabling-a-plugin-hook).
+
 ## Example
 
 <Canvas sourceState="none" of={ComponentStories.StickyColumns} />

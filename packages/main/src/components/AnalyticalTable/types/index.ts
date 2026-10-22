@@ -1339,6 +1339,23 @@ export type PluginHook = {
   pluginName: string;
 };
 
+/**
+ * Options common to all AnalyticalTable plugin hooks.
+ */
+export interface AnalyticalTablePluginHookOptions {
+  /**
+   * If `true`, the plugin hook does nothing.
+   *
+   * Since plugin hooks cannot be added to or removed from the `tableHooks` array at runtime (doing so would
+   * violate the rules of hooks), use this flag to disable a hook while keeping it in the array. To toggle at
+   * runtime, re-create the hook at the **same position** in the (memoized) `tableHooks` array with the new
+   * `disabled` value — never add or remove array entries, and keep their order stable.
+   *
+   * @default false
+   */
+  disabled?: boolean;
+}
+
 export interface FilterFn {
   (rows: RowType[], columnIds: string[], filterValue: any): RowType[];
   autoRemove?: (filterValue: any, column?: any) => boolean;

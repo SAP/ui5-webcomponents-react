@@ -13,6 +13,8 @@ The `useAnnounceEmptyCells` plugin hook adds screen reader announcements for emp
 
 **Note:** Some screen readers (depending on their configuration) automatically detect empty cells, potentially resulting in duplicate announcements of empty cells.
 
+**Disabling:** Call it as a factory with `disabled: true` (`useAnnounceEmptyCells({ disabled: true })`) to turn the hook off while keeping it in `tableHooks`. See [Disabling a Plugin Hook](?path=/docs/data-display-analyticaltable-plugin-hooks--docs#disabling-a-plugin-hook).
+
 ## Example
 
 <Canvas sourceState="none" of={ComponentStories.PluginAnnounceEmptyCells} />

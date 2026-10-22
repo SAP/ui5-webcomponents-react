@@ -56,4 +56,6 @@ The plugin hook allows passing a callback as parameter with the following struct
 The callback is fired, every time the internal `indeterminateRows` state is changed.
 The event parameter is an object, with all indeterminate rows by id (e.g. `{"0.1":true}`) and the table instance.
 
+**Disabling:** Pass `disabled: true` as the second argument (`useIndeterminateRowSelection(onIndeterminateChange, { disabled: true })`) to turn the hook off while keeping it in `tableHooks`. See [Disabling a Plugin Hook](?path=/docs/data-display-analyticaltable-plugin-hooks--docs#disabling-a-plugin-hook).
+
 <Footer />

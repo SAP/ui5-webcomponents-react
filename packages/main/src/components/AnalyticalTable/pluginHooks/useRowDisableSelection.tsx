@@ -3,7 +3,7 @@ import { AnalyticalTableSelectionBehavior } from '../../../enums/AnalyticalTable
 import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode.js';
 import { CheckBox } from '../../../webComponents/CheckBox/index.js';
 import { getBy } from '../react-table/index.js';
-import type { ReactTableHooks, RowType, TableInstance } from '../types/index.js';
+import type { AnalyticalTablePluginHookOptions, ReactTableHooks, RowType, TableInstance } from '../types/index.js';
 
 type DisableRowSelectionType = string | ((row: RowType) => boolean);
 
@@ -80,13 +80,20 @@ const columns = (columns: TableInstance['columns']) => {
  *
  * @param disableRowSelection - Can be either a `string` or a `function`. `string:` Defines the key in the dataset for disabling rows. If the value of the key is `true`, then the row will not be selectable. `function:` Programmatically disable rows for selection. The function receives the current row as parameter.
  *
+ * @param {object} [options] - Additional options.
+ * @param {boolean} [options.disabled=false] - If `true`, the hook does nothing. To toggle at runtime, re-create the hook at the same position in the (memoized) `tableHooks` array — never add or remove array entries.
+ *
  * @deprecated It is not recommended to disable table rows, mainly because of the following reasons:
  *
  * * Users are not informed why items cannot be selected.
  * * ARIA lacks built-in support for selective item selection, complicating accessibility.
  * * Consistency to other applications which do not offer disabled items.
  */
-export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionType) => {
+export const useRowDisableSelection = (
+  disableRowSelection: DisableRowSelectionType,
+  options?: AnalyticalTablePluginHookOptions,
+) => {
+  const { disabled = false } = options ?? {};
   const disableRowAccessor =
     typeof disableRowSelection === 'function'
       ? disableRowSelection
@@ -132,7 +139,7 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
   };
 
   const columnDeps = (deps) => {
-    return [...deps, disableRowSelection];
+    return [...deps, disableRowSelection, disabled];
   };
 
   const cellProps = (
@@ -170,10 +177,14 @@ export const useRowDisableSelection = (disableRowSelection: DisableRowSelectionT
   };
 
   const useDisableSelectionRow = (hooks: ReactTableHooks) => {
+    // Push unconditionally: feeds a `useMemo` deps array whose size must stay constant across toggles.
+    hooks.columnsDeps.push(columnDeps);
+    if (disabled) {
+      return;
+    }
     hooks.getHeaderProps.push(headerProps);
     hooks.getRowProps.push(getRowProps);
     hooks.columns.push(columns);
-    hooks.columnsDeps.push(columnDeps);
     hooks.getCellProps.push(cellProps);
     hooks.getToggleRowSelectedProps.push(toggleRowSelectedProps);
   };
