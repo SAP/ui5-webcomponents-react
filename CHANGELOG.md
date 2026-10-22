@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.28.0](https://github.com/UI5/webcomponents-react/compare/v2.27.3...v2.28.0) (2026-10-22)
+
+
+### Features
+
+* **FilterBarSearchIcon:** add FilterBarSearchIcon for an interactive search icon inside FilterBar `search` ([#9048](https://github.com/UI5/webcomponents-react/issues/9048)) ([07526fa](https://github.com/UI5/webcomponents-react/commit/07526fa2deb035fabeca5ab9277f6dd2d990bee3)), closes [#9014](https://github.com/UI5/webcomponents-react/issues/9014)
+* update to UI5 Web Components 2.28.1 ([#9084](https://github.com/UI5/webcomponents-react/issues/9084)) ([f3b189c](https://github.com/UI5/webcomponents-react/commit/f3b189cf041299b7ab359b807e13ec98eea407e6))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @tanstack/react-virtual to v3.14.15 ([#9062](https://github.com/UI5/webcomponents-react/issues/9062)) ([c303c64](https://github.com/UI5/webcomponents-react/commit/c303c64d59ee0f68665ee5b0791a9a2883fde793))
+* **deps:** update dependency @tanstack/react-virtual to v3.14.18 ([#9067](https://github.com/UI5/webcomponents-react/issues/9067)) ([999c134](https://github.com/UI5/webcomponents-react/commit/999c1347ad3d42c4ed78804c7598e44eb81ba168))
+* **deps:** update dependency @tanstack/react-virtual to v3.14.20 ([#9070](https://github.com/UI5/webcomponents-react/issues/9070)) ([3d9ca21](https://github.com/UI5/webcomponents-react/commit/3d9ca2142bc0687ad6faab98a3f46d83d6c1c405))
+* **deps:** update dependency @tanstack/react-virtual to v3.14.21 ([#9077](https://github.com/UI5/webcomponents-react/issues/9077)) ([92de097](https://github.com/UI5/webcomponents-react/commit/92de0976ca05d5efae799a40e649902bc98b949e))
+* **deps:** update react monorepo to v19.3.1 ([#9071](https://github.com/UI5/webcomponents-react/issues/9071)) ([53fd374](https://github.com/UI5/webcomponents-react/commit/53fd3741b8cc4953ae078f149f71ee8ac7f1d164))
+
 ## [2.27.3](https://github.com/UI5/webcomponents-react/compare/v2.27.2...v2.27.3) (2026-10-09)
 
 
