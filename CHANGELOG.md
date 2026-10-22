@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.28.1](https://github.com/UI5/webcomponents-react/compare/v2.28.0...v2.28.1) (2026-10-22)
+
+
+### Bug Fixes
+
+* **compat:** use correct `peerDependency` range for `@ui5/webcomponents-react` ([#9090](https://github.com/UI5/webcomponents-react/issues/9090)) ([61ac3e7](https://github.com/UI5/webcomponents-react/commit/61ac3e73d4cc5c4b0b8abe75d6c445fc175e1307))
+* **VariantManagement:** remove ui5 compact class from "Select View" button ([#9089](https://github.com/UI5/webcomponents-react/issues/9089)) ([9b8cd26](https://github.com/UI5/webcomponents-react/commit/9b8cd26cef8ae0cc71c140774d7a429096e83ad3))
+
 ## [2.28.0](https://github.com/UI5/webcomponents-react/compare/v2.27.3...v2.28.0) (2026-10-22)
 
 
