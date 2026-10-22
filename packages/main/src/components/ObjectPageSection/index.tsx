@@ -28,6 +28,8 @@ export interface ObjectPageSectionPropTypes extends CommonProps {
   /**
    * Defines the title of the `ObjectPageSection`.
    *
+   * __Note:__ The title is also used as the accessible name of the section unless `aria-label` or `aria-labelledby` is provided.
+   *
    */
   titleText: string;
   /**
@@ -137,6 +139,8 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
     wrapTitleText,
     header,
     fitContent,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledBy,
     ...rest
   } = props;
 
@@ -257,6 +261,8 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
       style={style}
       tabIndex={objectPageMode === ObjectPageMode.Default ? -1 : 0}
       {...propsWithoutOmitted}
+      aria-label={ariaLabel ?? (ariaLabelledBy == null ? titleText : undefined)}
+      aria-labelledby={ariaLabelledBy}
       id={htmlId}
       data-component-name="ObjectPageSection"
       onFocus={objectPageMode === ObjectPageMode.Default ? handleFocusDefault : handleFocusIconTabBar}

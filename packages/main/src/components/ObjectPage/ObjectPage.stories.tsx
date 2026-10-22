@@ -167,7 +167,7 @@ export const Default: Story = {
     return (
       // `onBeforeNavigate` & `onToggleHeaderArea` have to be added like this, otherwise Storybook invokes them incorrectly sometimes
       <ObjectPage {...args} onBeforeNavigate={args.onBeforeNavigate} onToggleHeaderArea={args.onToggleHeaderArea}>
-        <ObjectPageSection titleText="Goals" id="goals" aria-label="Goals">
+        <ObjectPageSection titleText="Goals" id="goals">
           <Form layout="S1 M2 L3 XL3" labelSpan="S12 M12 L12 XL12">
             <FormItem labelContent={<Label showColon>Evangelize the UI framework across the company</Label>}>
               <Text>4 days overdue - Cascaded</Text>
@@ -180,11 +180,10 @@ export const Default: Story = {
             </FormItem>
           </Form>
         </ObjectPageSection>
-        <ObjectPageSection titleText="Personal" id="personal" aria-label="Personal">
+        <ObjectPageSection titleText="Personal" id="personal">
           <ObjectPageSubSection
             titleText="Connect"
             id="personal-connect"
-            aria-label="Connect"
             actions={
               <>
                 <Button design={ButtonDesign.Emphasized} style={{ minWidth: '120px' }}>
@@ -225,11 +224,7 @@ export const Default: Story = {
               </FormGroup>
             </Form>
           </ObjectPageSubSection>
-          <ObjectPageSubSection
-            titleText="Payment Information"
-            id="personal-payment-information"
-            aria-label="Payment Information"
-          >
+          <ObjectPageSubSection titleText="Payment Information" id="personal-payment-information">
             <Form>
               <FormGroup headerText="Salary">
                 <FormItem labelContent={<Label showColon>Bank Transfer</Label>}>
@@ -244,12 +239,8 @@ export const Default: Story = {
             </Form>
           </ObjectPageSubSection>
         </ObjectPageSection>
-        <ObjectPageSection titleText="Employment" id="employment" aria-label="Employment">
-          <ObjectPageSubSection
-            titleText="Job Information"
-            id="employment-job-information"
-            aria-label="Job Information"
-          >
+        <ObjectPageSection titleText="Employment" id="employment">
+          <ObjectPageSubSection titleText="Job Information" id="employment-job-information">
             <Form>
               <FormItem labelContent={<Label showColon>Job Classification</Label>}>
                 <FlexBox direction={FlexBoxDirection.Column}>
@@ -277,11 +268,7 @@ export const Default: Story = {
               </FormItem>
             </Form>
           </ObjectPageSubSection>
-          <ObjectPageSubSection
-            titleText="Employee Details"
-            id="employment-employee-details"
-            aria-label="Employee Details"
-          >
+          <ObjectPageSubSection titleText="Employee Details" id="employment-employee-details">
             <Form>
               <FormItem labelContent={<Label showColon>Start Date</Label>}>
                 <Text>Jan 01, 2018</Text>
@@ -303,11 +290,7 @@ export const Default: Story = {
               </FormItem>
             </Form>
           </ObjectPageSubSection>
-          <ObjectPageSubSection
-            titleText="Job Relationship"
-            id="employment-job-relationship"
-            aria-label="Job Relationship"
-          >
+          <ObjectPageSubSection titleText="Job Relationship" id="employment-job-relationship">
             <Form>
               <FormItem labelContent={<Label showColon>Manager</Label>}>
                 <Text>John Doe</Text>
@@ -346,26 +329,18 @@ export const SectionWithCustomHeader: Story = {
   render(args) {
     return (
       <ObjectPage {...args} onBeforeNavigate={args.onBeforeNavigate}>
-        <ObjectPageSection
-          titleText="Goals"
-          hideTitleText
-          id="goals"
-          aria-label="Goals"
-          header={<Title>Custom Header Section One</Title>}
-        >
+        <ObjectPageSection titleText="Goals" hideTitleText id="goals" header={<Title>Custom Header Section One</Title>}>
           <div style={{ width: '100%', height: '200px', background: 'cadetblue' }} />
         </ObjectPageSection>
         <ObjectPageSection
           titleText="Personal"
           hideTitleText
           id="personal"
-          aria-label="Personal"
           header={<MessageStrip hideCloseButton>Custom Header Section Two</MessageStrip>}
         >
           <ObjectPageSubSection
             titleText="Connect"
             id="personal-connect"
-            aria-label="Connect"
             actions={
               <>
                 <Button design={ButtonDesign.Emphasized} style={{ minWidth: '120px' }}>
@@ -406,11 +381,7 @@ export const SectionWithCustomHeader: Story = {
               </FormGroup>
             </Form>
           </ObjectPageSubSection>
-          <ObjectPageSubSection
-            titleText="Payment Information"
-            id="personal-payment-information"
-            aria-label="Payment Information"
-          >
+          <ObjectPageSubSection titleText="Payment Information" id="personal-payment-information">
             <Form>
               <FormGroup headerText="Salary">
                 <FormItem labelContent={<Label showColon>Bank Transfer</Label>}>
@@ -429,7 +400,6 @@ export const SectionWithCustomHeader: Story = {
           titleText="Employment"
           hideTitleText
           id="employment"
-          aria-label="Employment"
           header={
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <Icon name={sunIcon} style={{ marginInlineEnd: '2rem' }} />
@@ -538,12 +508,8 @@ export const SingleSection: Story = {
   render(args) {
     return (
       <ObjectPage {...args}>
-        <ObjectPageSection titleText="Employment" id="employment" aria-label="Employment">
-          <ObjectPageSubSection
-            titleText="Job Information"
-            id="employment-job-information"
-            aria-label="Job Information"
-          >
+        <ObjectPageSection titleText="Employment" id="employment">
+          <ObjectPageSubSection titleText="Job Information" id="employment-job-information">
             <Form>
               <FormItem labelContent={<Label showColon>Job Classification</Label>}>
                 <FlexBox direction={FlexBoxDirection.Column}>
@@ -571,11 +537,7 @@ export const SingleSection: Story = {
               </FormItem>
             </Form>
           </ObjectPageSubSection>
-          <ObjectPageSubSection
-            titleText="Employee Details"
-            id="employment-employee-details"
-            aria-label="Employee Details"
-          >
+          <ObjectPageSubSection titleText="Employee Details" id="employment-employee-details">
             <Form>
               <FormItem labelContent={<Label showColon>Start Date</Label>}>
                 <Text>Jan 01, 2018</Text>
@@ -597,11 +559,7 @@ export const SingleSection: Story = {
               </FormItem>
             </Form>
           </ObjectPageSubSection>
-          <ObjectPageSubSection
-            titleText="Job Relationship"
-            id="employment-job-relationship"
-            aria-label="Job Relationship"
-          >
+          <ObjectPageSubSection titleText="Job Relationship" id="employment-job-relationship">
             <Form>
               <FormItem labelContent={<Label showColon>Manager</Label>}>
                 <Text>John Doe</Text>

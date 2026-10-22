@@ -24,6 +24,8 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
   children: ReactNode | ReactNode[];
   /**
    * Defines the title of the `ObjectPageSubSection`.
+   *
+   * __Note:__ The title is also used as the accessible name of the subsection unless `aria-label` or `aria-labelledby` is provided.
    */
   titleText: string;
   /**
@@ -71,6 +73,8 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
     hideTitleText,
     titleTextLevel = 'H4',
     titleTextUppercase,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledBy,
     ...rest
   } = props;
   const htmlId = `ObjectPageSubSection-${id}`;
@@ -86,6 +90,8 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
       style={style}
       tabIndex={-1}
       {...rest}
+      aria-label={ariaLabel ?? (ariaLabelledBy == null ? titleText : undefined)}
+      aria-labelledby={ariaLabelledBy}
       onKeyDown={(e) => {
         navigateSections({ e, onKeyDown: props.onKeyDown, componentName: 'ObjectPageSubSection' });
       }}

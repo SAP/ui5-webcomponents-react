@@ -126,4 +126,23 @@ test.describe('ObjectPage', () => {
     await page.getByRole('tab', { name: 'Short' }).click();
     await expect.poll(topSpacerHeight).toBe(0);
   });
+
+  test('uses titleText as the accessible name and respects explicit names', async ({ mount, page }) => {
+    await mount('ObjectPage/ObjectPageAccessibleNameTestComp');
+
+    const automaticSection = page.getByRole('region', { name: 'Automatic section' });
+    const automaticSubsection = page.getByRole('region', { name: 'Automatic subsection' });
+
+    await expect(automaticSection).toHaveAttribute('aria-label', 'Automatic section');
+    await expect(automaticSubsection).toHaveAttribute('aria-label', 'Automatic subsection');
+
+    await expect(page.getByRole('region', { name: 'Custom section label' })).toHaveAttribute(
+      'aria-label',
+      'Custom section label',
+    );
+    await expect(page.getByRole('region', { name: 'External section label' })).toHaveAttribute(
+      'aria-labelledby',
+      'external-section-label',
+    );
+  });
 });
