@@ -404,7 +404,6 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
         </FlexBox>
         <Button
           className={classNames.navDownBtn}
-          data-ui5-compact-size
           tooltip={selectViewText}
           accessibleName={selectViewText}
           onClick={disabled ? undefined : handleOpenVariantManagement}
