@@ -403,7 +403,8 @@ const VariantManagement = forwardRef<HTMLDivElement, VariantManagementPropTypes>
           {dirtyState && <div className={dirtyStateClasses}>{dirtyStateText}</div>}
         </FlexBox>
         <Button
-          className={clsx(classNames.navDownBtn, 'ui5-content-density-compact')}
+          className={classNames.navDownBtn}
+          data-ui5-compact-size
           tooltip={selectViewText}
           accessibleName={selectViewText}
           onClick={disabled ? undefined : handleOpenVariantManagement}
