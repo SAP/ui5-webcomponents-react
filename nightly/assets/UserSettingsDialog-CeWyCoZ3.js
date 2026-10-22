@@ -1,0 +1,33 @@
+import{n as e}from"./rolldown-runtime-C0FnF6B9.js";import{t}from"./jsx-runtime-BdxMnOeJ.js";import{_ as n,a as r,c as i,g as a,h as o,i as s,l as c,m as l,n as u,o as d,p as f,r as p,s as m,t as h,u as g,v as _}from"./UserSettingsView-DmhUwjli.js";import{i as v,r as y}from"./react-fLZJfuRT.js";import{_ as b,d as x,n as S,o as C,r as w,u as T}from"./blocks-Duz4za69.js";import{b as E,f as D,t as O,u as k}from"./components-DROKtvBr.js";import{n as A,t as j}from"./SubcomponentsSection-Kv79Q7K7.js";import{n as M,r as N,t as P}from"./UserSettingsDialog.stories-gmXMVfgh.js";function F(e){let t={h2:`h2`,...v(),...e.components};return(0,L.jsxs)(L.Fragment,{children:[(0,L.jsx)(x,{of:M}),`
+`,(0,L.jsx)(D,{of:M,mergeSubComponents:!0,subComponents:[`UserSettingsItem`,`UserSettingsView`,`UserSettingsAppearanceView`,`UserSettingsAppearanceViewGroup`,`UserSettingsAppearanceViewItem`,`UserSettingsNotificationsView`,`UserSettingsNotificationsViewGroup`,`UserSettingsNotificationsViewItem`]}),`
+`,(0,L.jsx)(`br`,{}),`
+`,(0,L.jsx)(t.h2,{id:`example`,children:`Example`}),`
+`,(0,L.jsx)(w,{of:P}),`
+`,(0,L.jsx)(t.h2,{id:`properties`,children:`Properties`}),`
+`,(0,L.jsx)(E,{of:P}),`
+`,(0,L.jsx)(T,{children:j}),`
+`,(0,L.jsx)(t.h2,{id:`usersettingsitem`,children:`UserSettingsItem`}),`
+`,(0,L.jsx)(C,{of:c}),`
+`,(0,L.jsx)(S,{of:c}),`
+`,(0,L.jsx)(t.h2,{id:`usersettingsview`,children:`UserSettingsView`}),`
+`,(0,L.jsx)(C,{of:h}),`
+`,(0,L.jsx)(S,{of:h}),`
+`,(0,L.jsx)(t.h2,{id:`usersettingsappearanceview`,children:`UserSettingsAppearanceView`}),`
+`,(0,L.jsx)(C,{of:n}),`
+`,(0,L.jsx)(S,{of:n}),`
+`,(0,L.jsx)(t.h2,{id:`usersettingsappearanceviewgroup`,children:`UserSettingsAppearanceViewGroup`}),`
+`,(0,L.jsx)(C,{of:o}),`
+`,(0,L.jsx)(S,{of:o}),`
+`,(0,L.jsx)(t.h2,{id:`usersettingsappearanceviewitem`,children:`UserSettingsAppearanceViewItem`}),`
+`,(0,L.jsx)(C,{of:f}),`
+`,(0,L.jsx)(S,{of:f}),`
+`,(0,L.jsx)(t.h2,{id:`usersettingsnotificationsview`,children:`UserSettingsNotificationsView`}),`
+`,(0,L.jsx)(C,{of:m}),`
+`,(0,L.jsx)(S,{of:m}),`
+`,(0,L.jsx)(t.h2,{id:`usersettingsnotificationsviewgroup`,children:`UserSettingsNotificationsViewGroup`}),`
+`,(0,L.jsx)(C,{of:r}),`
+`,(0,L.jsx)(S,{of:r}),`
+`,(0,L.jsx)(t.h2,{id:`usersettingsnotificationsviewitem`,children:`UserSettingsNotificationsViewItem`}),`
+`,(0,L.jsx)(C,{of:p}),`
+`,(0,L.jsx)(S,{of:p}),`
+`,(0,L.jsx)(k,{})]})}function I(e={}){let{wrapper:t}={...v(),...e.components};return t?(0,L.jsx)(t,{...e,children:(0,L.jsx)(F,{...e})}):F(e)}var L;function R(){return(R=e((()=>{L=t(),y(),O(),b(),A(),g(),u(),_(),a(),l(),i(),d(),s(),N()})))()}R();export{I as default};
