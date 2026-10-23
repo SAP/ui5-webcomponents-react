@@ -26,6 +26,7 @@
   }
 
   &[data-type='Negative'] {
+    font-weight: var(--sapButton_Emphasized_FontWeight);
     text-shadow: var(--sapContent_ContrastTextShadow);
     color: var(--sapButton_Negative_TextColor);
     background: var(--sapButton_Negative_Background);
@@ -36,12 +37,14 @@
     }
 
     &:hover {
+      text-shadow: none;
       color: var(--sapButton_Negative_Hover_TextColor);
       background: var(--sapButton_Negative_Hover_Background);
       border-color: var(--sapButton_Negative_Hover_BorderColor);
     }
 
     &:active {
+      text-shadow: none;
       color: var(--sapButton_Negative_Active_TextColor);
       background: var(--sapButton_Negative_Active_Background);
       border-color: var(--sapButton_Negative_Active_BorderColor);
@@ -53,6 +56,7 @@
   }
 
   &[data-type='Critical'] {
+    font-weight: var(--sapButton_Emphasized_FontWeight);
     text-shadow: var(--sapContent_ContrastTextShadow);
     color: var(--sapButton_Critical_TextColor);
     background: var(--sapButton_Critical_Background);
@@ -63,12 +67,14 @@
     }
 
     &:hover {
+      text-shadow: none;
       color: var(--sapButton_Critical_Hover_TextColor);
       background: var(--sapButton_Critical_Hover_Background);
       border-color: var(--sapButton_Critical_Hover_BorderColor);
     }
 
     &:active {
+      text-shadow: none;
       color: var(--sapButton_Critical_Active_TextColor);
       background: var(--sapButton_Critical_Active_Background);
       border-color: var(--sapButton_Critical_Active_BorderColor);
@@ -80,6 +86,7 @@
   }
 
   &[data-type='Positive'] {
+    font-weight: var(--sapButton_Emphasized_FontWeight);
     text-shadow: var(--sapContent_ContrastTextShadow);
     color: var(--sapButton_Success_TextColor);
     background: var(--sapButton_Success_Background);
@@ -90,12 +97,14 @@
     }
 
     &:hover {
+      text-shadow: none;
       color: var(--sapButton_Success_Hover_TextColor);
       background: var(--sapButton_Success_Hover_Background);
       border-color: var(--sapButton_Success_Hover_BorderColor);
     }
 
     &:active {
+      text-shadow: none;
       color: var(--sapButton_Success_Active_TextColor);
       background: var(--sapButton_Success_Active_Background);
       border-color: var(--sapButton_Success_Active_BorderColor);
