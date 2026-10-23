@@ -18,15 +18,15 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const Severities: Story = {
-  render() {
+  render(args) {
     return (
       <>
         <Text>These buttons are ordered by severity, from high to low.</Text>
         <FlexBox style={{ gap: '1rem' }}>
-          <MessageViewButton type={ValueState.Negative} />
-          <MessageViewButton type={ValueState.Critical} />
-          <MessageViewButton type={ValueState.Positive} />
-          <MessageViewButton type={ValueState.Information} />
+          <MessageViewButton {...args} type={ValueState.Negative} />
+          <MessageViewButton {...args} type={ValueState.Critical} />
+          <MessageViewButton {...args} type={ValueState.Positive} />
+          <MessageViewButton {...args} type={ValueState.Information} />
         </FlexBox>
       </>
     );
