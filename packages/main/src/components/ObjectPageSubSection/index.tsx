@@ -10,6 +10,7 @@ import { FlexBoxDirection } from '../../enums/FlexBoxDirection.js';
 import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent.js';
 import type { CommonProps } from '../../types/index.js';
 import { FlexBox } from '../FlexBox/index.js';
+import { useObjectPageContext } from '../ObjectPage/context.js';
 import { navigateSections } from '../ObjectPage/ObjectPageUtils.js';
 import { classNames, styleData } from './ObjectPageSubSection.module.css.js';
 
@@ -78,6 +79,7 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
     ...rest
   } = props;
   const htmlId = `ObjectPageSubSection-${id}`;
+  const { hasOnlySingleSection } = useObjectPageContext();
 
   useStylesheet(styleData, ObjectPageSubSection.displayName);
 
@@ -99,7 +101,7 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
         if (typeof props.onBlur === 'function') {
           props.onBlur(e);
         }
-        if (e.target === e.currentTarget) {
+        if (!hasOnlySingleSection && e.target === e.currentTarget) {
           e.target.tabIndex = -1;
         }
       }}

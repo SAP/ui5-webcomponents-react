@@ -145,4 +145,34 @@ test.describe('ObjectPage', () => {
       'external-section-label',
     );
   });
+
+  test('keeps only a single section out of the tab order', async ({ mount, page }) => {
+    await mount('ObjectPage/ObjectPageSingleSectionTestComp');
+
+    const section = page.getByRole('region', { name: 'Single section' });
+    const firstSubSection = page.getByRole('region', { name: 'First subsection' });
+    const secondSubSection = page.getByRole('region', { name: 'Second subsection' });
+
+    expect(await section.getAttribute('tabindex')).toBeNull();
+    await expect(section).toHaveAttribute('aria-label', 'Single section');
+    await expect(firstSubSection).toHaveAttribute('tabindex', '0');
+    await expect(page.locator('[data-component-name="ObjectPageTabContainer"]')).toHaveCount(0);
+
+    await firstSubSection.focus();
+    await page.keyboard.press('ArrowDown');
+    await expect(secondSubSection).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('button', { name: 'After ObjectPage' })).toBeFocused();
+    await page.keyboard.press('Shift+Tab');
+    await expect(secondSubSection).toBeFocused();
+    expect(await section.getAttribute('tabindex')).toBeNull();
+
+    await mount('ObjectPage/ObjectPageSingleSectionIconTabBarTestComp');
+    expect(await page.getByRole('region', { name: 'Single section' }).getAttribute('tabindex')).toBeNull();
+    await expect(page.locator('[data-component-name="ObjectPageTabContainer"]')).toHaveCount(0);
+
+    await mount('ObjectPage/ObjectPageFitContentTabSwitchTestComp');
+    await expect(page.getByRole('region', { name: 'Fit 1' })).toHaveAttribute('tabindex', '0');
+    await expect(page.locator('[data-component-name="ObjectPageTabContainer"]').first()).toBeVisible();
+  });
 });

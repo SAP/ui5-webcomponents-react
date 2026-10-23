@@ -158,20 +158,21 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
       ),
     [children],
   );
-  const objectPageMode = useObjectPageContext();
+  const { mode: objectPageMode, hasOnlySingleSection } = useObjectPageContext();
 
   const handleFocusDefault = (e: FocusEvent<HTMLElement>) => {
     if (typeof props.onFocus === 'function') {
       props.onFocus(e);
     }
-    // reset tab-index of all sections, so only the focused one is tabbable
-    Array.from(e.currentTarget.parentElement.children as HTMLCollectionOf<HTMLElement>).forEach((el) => {
-      if (el.dataset.componentName === 'ObjectPageSection') {
-        el.tabIndex = -1;
-      }
-    });
-
-    e.currentTarget.tabIndex = 0;
+    if (!hasOnlySingleSection) {
+      // reset tab-index of all sections, so only the focused one is tabbable
+      Array.from(e.currentTarget.parentElement.children as HTMLCollectionOf<HTMLElement>).forEach((el) => {
+        if (el.dataset.componentName === 'ObjectPageSection') {
+          el.tabIndex = -1;
+        }
+      });
+      e.currentTarget.tabIndex = 0;
+    }
     if (setTabIndexForFirstSubSectionIfFocused(e, e.currentTarget, hasSubSection)) {
       // if section has subsections, the first subsection should be next in the tab-chain
     } else if (e.target.dataset.componentName === 'ObjectPageSubSection') {
@@ -259,7 +260,7 @@ const ObjectPageSection = forwardRef<HTMLElement, ObjectPageSectionPropTypes>((p
         className,
       )}
       style={style}
-      tabIndex={objectPageMode === ObjectPageMode.Default ? -1 : 0}
+      tabIndex={hasOnlySingleSection ? undefined : objectPageMode === ObjectPageMode.Default ? -1 : 0}
       {...propsWithoutOmitted}
       aria-label={ariaLabel ?? (ariaLabelledBy == null ? titleText : undefined)}
       aria-labelledby={ariaLabelledBy}

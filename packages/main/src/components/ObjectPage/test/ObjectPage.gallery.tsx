@@ -138,3 +138,31 @@ export const ObjectPageAccessibleNameTestComp = () => {
     </>
   );
 };
+
+export const ObjectPageSingleSectionTestComp = () => {
+  return (
+    <>
+      <ObjectPage>
+        <ObjectPageSection id="single" titleText="Single section">
+          <ObjectPageSubSection id="first" titleText="First subsection">
+            First subsection content
+          </ObjectPageSubSection>
+          <ObjectPageSubSection id="second" titleText="Second subsection">
+            Second subsection content
+          </ObjectPageSubSection>
+        </ObjectPageSection>
+      </ObjectPage>
+      <button type="button">After ObjectPage</button>
+    </>
+  );
+};
+
+export const ObjectPageSingleSectionIconTabBarTestComp = () => {
+  return (
+    <ObjectPage mode={ObjectPageMode.IconTabBar}>
+      <ObjectPageSection id="single" titleText="Single section">
+        Single section content
+      </ObjectPageSection>
+    </ObjectPage>
+  );
+};
