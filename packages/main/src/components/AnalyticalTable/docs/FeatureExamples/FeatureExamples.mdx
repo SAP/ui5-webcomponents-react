@@ -1053,4 +1053,40 @@ const columns = [
 <AnalyticalTable data={data} columns={columns} />
 ```
 
+## Custom Border Styles
+
+> **⚠️ Not backed by SAP Design:** there are no design specifications for a fully borderless Grid/AnalyticalTable — for example the [`sap.ui.table.Table`](https://ui5.sap.com/#/entity/sap.ui.table.Table) always renders its borders and exposes no API to remove them. Customizing them is therefore your own responsibility and can lead to visual inconsistencies with other tables in the system. The recipes below also rely on internal CSS custom properties and `data-*` hooks that may change between releases. Use with caution.
+
+There is no public prop for customizing the table's borders. The two opt-in recipes below apply a CSS class to the table — one removes the outer container frame, the other removes the vertical dividers between columns. Each class is applied to the table's root element.
+
+### Borderless Container
+
+Removes the outer container frame (top, inline-end and bottom borders). The class also covers the sibling vertical scrollbar; the cell and row borders are kept.
+
+<Canvas sourceState="none" of={FeatureStories.BorderlessContainer} />
+
+```css
+.at-borderless-container {
+  --_ui5wcr-AnalyticalTable-OuterBorderBlock: none;
+  --_ui5wcr-AnalyticalTable-OuterBorderInline: none;
+  --sapList_TableFooterBorder: transparent;
+}
+.at-borderless-container [data-component-name='AnalyticalTableContainer']::after {
+  display: none;
+}
+```
+
+### Table Without Vertical Cell Borders
+
+Removes the vertical dividers between columns (header and body) while keeping the horizontal row separators.
+
+<Canvas sourceState="none" of={FeatureStories.NoVerticalCellBorders} />
+
+```css
+.at-no-vertical-cell-borders [role='columnheader'],
+.at-no-vertical-cell-borders [data-column-id-cell] {
+  border-inline-end: none;
+}
+```
+
 <Footer />

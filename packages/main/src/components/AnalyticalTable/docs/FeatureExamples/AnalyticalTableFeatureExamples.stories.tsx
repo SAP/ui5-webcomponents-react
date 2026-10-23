@@ -1319,3 +1319,64 @@ export const ColumnClassName: Story = {
     );
   },
 };
+
+const borderlessColumns: AnalyticalTableColumnDefinition[] = [
+  { Header: 'Name', accessor: 'name' },
+  { Header: 'Age', accessor: 'age' },
+  { Header: 'Friend Name', accessor: 'friend.name' },
+  { Header: 'Friend Age', accessor: 'friend.age' },
+];
+
+export const BorderlessContainer: Story = {
+  tags: ['custom'],
+  render() {
+    return (
+      <>
+        <style>{`
+          /* Removes only the outer container frame. The class is applied to the table's
+             root element, so it also covers the sibling vertical scrollbar. */
+          .at-borderless-container {
+            --_ui5wcr-AnalyticalTable-OuterBorderBlock: none;
+            --_ui5wcr-AnalyticalTable-OuterBorderInline: none;
+            --sapList_TableFooterBorder: transparent;
+          }
+          .at-borderless-container [data-component-name="AnalyticalTableContainer"]::after {
+            display: none;
+          }
+        `}</style>
+        <AnalyticalTable
+          className="at-borderless-container"
+          data={dataSmall}
+          columns={borderlessColumns}
+          selectionMode={AnalyticalTableSelectionMode.Multiple}
+          visibleRows={5}
+        />
+      </>
+    );
+  },
+};
+
+export const NoVerticalCellBorders: Story = {
+  tags: ['custom'],
+  render() {
+    return (
+      <>
+        <style>{`
+          /* Removes the vertical dividers between columns (header + body) while keeping
+             the horizontal row separators. */
+          .at-no-vertical-cell-borders [role="columnheader"],
+          .at-no-vertical-cell-borders [data-column-id-cell] {
+            border-inline-end: none;
+          }
+        `}</style>
+        <AnalyticalTable
+          className="at-no-vertical-cell-borders"
+          data={dataSmall}
+          columns={borderlessColumns}
+          selectionMode={AnalyticalTableSelectionMode.Multiple}
+          visibleRows={5}
+        />
+      </>
+    );
+  },
+};
