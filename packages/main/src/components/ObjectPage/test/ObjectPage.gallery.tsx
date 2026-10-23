@@ -5,6 +5,7 @@ import { Title } from '../../../webComponents/Title/index.js';
 import { FlexBox } from '../../FlexBox/index.js';
 import { ObjectPageHeader } from '../../ObjectPageHeader/index.js';
 import { ObjectPageSection } from '../../ObjectPageSection/index.js';
+import { ObjectPageSubSection } from '../../ObjectPageSubSection/index.js';
 import { ObjectPageTitle } from '../../ObjectPageTitle/index.js';
 import { ObjectPage } from '../index.js';
 
@@ -110,6 +111,57 @@ export const ObjectPageShortSectionTabSwitchTestComp = () => {
       </ObjectPageSection>
       <ObjectPageSection titleText="Tall" id="tall" aria-label="Tall">
         <div style={{ height: '2000px', width: '100%', background: 'lightsalmon' }}>Tall section</div>
+      </ObjectPageSection>
+    </ObjectPage>
+  );
+};
+
+export const ObjectPageAccessibleNameTestComp = () => {
+  return (
+    <>
+      <span id="external-section-label">External section label</span>
+      <ObjectPageSection id="automatic" titleText="Automatic section">
+        <ObjectPageSubSection id="automatic-subsection" titleText="Automatic subsection">
+          Content
+        </ObjectPageSubSection>
+      </ObjectPageSection>
+      <ObjectPageSection id="aria-label" titleText="Section with aria-label" aria-label="Custom section label">
+        Content
+      </ObjectPageSection>
+      <ObjectPageSection
+        id="aria-labelledby"
+        titleText="Section with aria-labelledby"
+        aria-labelledby="external-section-label"
+      >
+        Content
+      </ObjectPageSection>
+    </>
+  );
+};
+
+export const ObjectPageSingleSectionTestComp = () => {
+  return (
+    <>
+      <ObjectPage>
+        <ObjectPageSection id="single" titleText="Single section">
+          <ObjectPageSubSection id="first" titleText="First subsection">
+            First subsection content
+          </ObjectPageSubSection>
+          <ObjectPageSubSection id="second" titleText="Second subsection">
+            Second subsection content
+          </ObjectPageSubSection>
+        </ObjectPageSection>
+      </ObjectPage>
+      <button type="button">After ObjectPage</button>
+    </>
+  );
+};
+
+export const ObjectPageSingleSectionIconTabBarTestComp = () => {
+  return (
+    <ObjectPage mode={ObjectPageMode.IconTabBar}>
+      <ObjectPageSection id="single" titleText="Single section">
+        Single section content
       </ObjectPageSection>
     </ObjectPage>
   );

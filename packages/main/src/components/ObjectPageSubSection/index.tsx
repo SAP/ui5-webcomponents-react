@@ -10,6 +10,7 @@ import { FlexBoxDirection } from '../../enums/FlexBoxDirection.js';
 import { FlexBoxJustifyContent } from '../../enums/FlexBoxJustifyContent.js';
 import type { CommonProps } from '../../types/index.js';
 import { FlexBox } from '../FlexBox/index.js';
+import { useObjectPageContext } from '../ObjectPage/context.js';
 import { navigateSections } from '../ObjectPage/ObjectPageUtils.js';
 import { classNames, styleData } from './ObjectPageSubSection.module.css.js';
 
@@ -24,6 +25,8 @@ export interface ObjectPageSubSectionPropTypes extends CommonProps {
   children: ReactNode | ReactNode[];
   /**
    * Defines the title of the `ObjectPageSubSection`.
+   *
+   * __Note:__ The title is also used as the accessible name of the subsection unless `aria-label` or `aria-labelledby` is provided.
    */
   titleText: string;
   /**
@@ -71,9 +74,12 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
     hideTitleText,
     titleTextLevel = 'H4',
     titleTextUppercase,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledBy,
     ...rest
   } = props;
   const htmlId = `ObjectPageSubSection-${id}`;
+  const { hasOnlySingleSection } = useObjectPageContext();
 
   useStylesheet(styleData, ObjectPageSubSection.displayName);
 
@@ -86,6 +92,8 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
       style={style}
       tabIndex={-1}
       {...rest}
+      aria-label={ariaLabel ?? (ariaLabelledBy == null ? titleText : undefined)}
+      aria-labelledby={ariaLabelledBy}
       onKeyDown={(e) => {
         navigateSections({ e, onKeyDown: props.onKeyDown, componentName: 'ObjectPageSubSection' });
       }}
@@ -93,7 +101,7 @@ const ObjectPageSubSection = forwardRef<HTMLDivElement, ObjectPageSubSectionProp
         if (typeof props.onBlur === 'function') {
           props.onBlur(e);
         }
-        if (e.target === e.currentTarget) {
+        if (!hasOnlySingleSection && e.target === e.currentTarget) {
           e.target.tabIndex = -1;
         }
       }}

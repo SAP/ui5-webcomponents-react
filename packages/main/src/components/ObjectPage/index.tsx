@@ -98,6 +98,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   const [tabSelectId, setTabSelectId] = useState<null | string>(null);
   const titleAreaInteractive = headerArea && !preserveHeaderStateOnClick;
   const hasOnlySingleSection = Children.count(children) === 1;
+  const objectPageContextValue = useMemo(() => ({ mode, hasOnlySingleSection }), [mode, hasOnlySingleSection]);
   const tabContainerHeaderHeight = hasOnlySingleSection ? 1 : TAB_CONTAINER_HEADER_HEIGHT;
 
   const isProgrammaticallyScrolled = useRef(false);
@@ -716,15 +717,24 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   }
 
   useEffect(() => {
-    if (isMounted && children && mode === ObjectPageMode.Default) {
+    if (isMounted && children && (mode === ObjectPageMode.Default || hasOnlySingleSection)) {
       const firstSection: HTMLElement = objectPageContentRef.current.querySelector(
         '[data-component-name="ObjectPageSection"]',
       );
       if (firstSection) {
-        firstSection.tabIndex = 0;
+        if (hasOnlySingleSection) {
+          const firstSubSection = firstSection.querySelector<HTMLElement>(
+            '[data-component-name="ObjectPageSubSection"]',
+          );
+          if (firstSubSection) {
+            firstSubSection.tabIndex = 0;
+          }
+        } else if (mode === ObjectPageMode.Default) {
+          firstSection.tabIndex = 0;
+        }
       }
     }
-  }, [isMounted, children, mode]);
+  }, [isMounted, children, mode, hasOnlySingleSection]);
 
   const handleContentBlur: FocusEventHandler<HTMLDivElement> = (e) => {
     const opNode = objectPageRef.current;
@@ -746,7 +756,7 @@ const ObjectPage = forwardRef<ObjectPageDomRef, ObjectPagePropTypes>((props, ref
   };
 
   return (
-    <ObjectPageContext.Provider value={mode}>
+    <ObjectPageContext.Provider value={objectPageContextValue}>
       <div
         ref={componentRef}
         data-component-name="ObjectPage"
