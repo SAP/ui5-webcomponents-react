@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
+import { AnalyticalTableSelectionMode } from '../../../enums/AnalyticalTableSelectionMode.js';
 import { Panel } from '../../../webComponents/Panel/index.js';
 import { Tab } from '../../../webComponents/Tab/index.js';
 import { TabContainer } from '../../../webComponents/TabContainer/index.js';
@@ -211,3 +212,63 @@ export const ColumnsFitWidthHideRevealTestComp = () => {
     </div>
   );
 };
+
+const borderlessData = Array.from({ length: 20 }, (_, i) => ({
+  name: `Name-${i}`,
+  age: i,
+  friend: { name: `Friend-${i}`, age: i + 100 },
+}));
+
+const borderlessColumns: AnalyticalTableColumnDefinition[] = [
+  { Header: 'Name', accessor: 'name' },
+  { Header: 'Age', accessor: 'age' },
+  { Header: 'Friend Name', accessor: 'friend.name' },
+];
+
+// A/B harness for the documented borderless recipes: `default` is the untouched baseline, `outer` removes the
+// container frame, `vertical` removes the inter-column cell borders. 20 rows / visibleRows 5 → the custom vertical
+// scrollbar renders.
+export const BorderlessHarness = () => (
+  <>
+    <style>{`
+      .at-borderless-container {
+        --_ui5wcr-AnalyticalTable-OuterBorderBlock: none;
+        --_ui5wcr-AnalyticalTable-OuterBorderInline: none;
+        --sapList_TableFooterBorder: transparent;
+      }
+      .at-borderless-container [data-component-name="AnalyticalTableContainer"]::after {
+        display: none;
+      }
+      .at-no-vertical-cell-borders [role="columnheader"],
+      .at-no-vertical-cell-borders [data-column-id-cell] {
+        border-inline-end: none;
+      }
+    `}</style>
+    <div data-testid="default">
+      <AnalyticalTable
+        data={borderlessData}
+        columns={borderlessColumns}
+        selectionMode={AnalyticalTableSelectionMode.Multiple}
+        visibleRows={5}
+      />
+    </div>
+    <div data-testid="outer">
+      <AnalyticalTable
+        className="at-borderless-container"
+        data={borderlessData}
+        columns={borderlessColumns}
+        selectionMode={AnalyticalTableSelectionMode.Multiple}
+        visibleRows={5}
+      />
+    </div>
+    <div data-testid="vertical">
+      <AnalyticalTable
+        className="at-no-vertical-cell-borders"
+        data={borderlessData}
+        columns={borderlessColumns}
+        selectionMode={AnalyticalTableSelectionMode.Multiple}
+        visibleRows={5}
+      />
+    </div>
+  </>
+);
